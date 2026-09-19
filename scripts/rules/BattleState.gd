@@ -16,8 +16,26 @@ var discard: Array[String] = []
 
 # --- This turn -------------------------------------------------------------
 var turn := 1
-var energy := 0                    ## spendable now; does not carry over
+var energy := 0                    ## spendable now
 var energy_per_turn := 3
+
+## How energy is handed out.
+##
+##   "per_turn"  refills to energy_per_turn every turn. The normal case.
+##   "pool"      handed out once for the whole stage and never refilled, so
+##               spending it is a budget rather than a rhythm. The caucus.
+var energy_mode := "per_turn"
+
+## How many pips to draw: a turn's worth normally, the whole pool otherwise.
+var energy_max := 3
+
+## How the stage is decided.
+##
+##   "threshold"  reach the win threshold. The normal case.
+##   "score"      there is no threshold. The stage runs its full length and
+##                however high the support got is the result, which later
+##                stages draw on.
+var win_mode := "threshold"
 var hand_size := 5
 
 ## Guard held this turn. Absorbs the opponent's next attack, then resets.

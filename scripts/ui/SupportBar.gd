@@ -19,6 +19,11 @@ extends Control
 ## "Seats" or "Support" — whatever the stage measures in.
 @export var unit: String = "Seats": set = _set_unit
 
+## False in a stage with no threshold to reach, such as the caucus. Both the
+## line and the "X to win" caption are hidden, because there is no number to
+## reach and showing one would be a lie.
+@export var has_threshold: bool = true: set = _set_has_threshold
+
 const HEIGHT := 56.0
 const CORNER := 8.0
 
@@ -58,17 +63,23 @@ func _set_unit(value: String) -> void:
 	_refresh()
 
 
+func _set_has_threshold(value: bool) -> void:
+	has_threshold = value
+	_refresh()
+
+
 func _ready() -> void:
 	custom_minimum_size.y = HEIGHT + 60.0
 	_refresh()
 
 
 ## Takes the numbers straight off a running battle.
-func show_bar(bar: BarModel) -> void:
+func show_bar(bar: BarModel, threshold_applies: bool = true) -> void:
 	maximum = bar.maximum
 	threshold = bar.threshold
 	player = bar.player
 	opponent = bar.opponent
+	has_threshold = threshold_applies
 	_refresh()
 
 
@@ -77,7 +88,10 @@ func _refresh() -> void:
 	if _caption == null:
 		return
 
-	_caption.text = "%d %s to win" % [threshold, unit.to_lower()]
+	if has_threshold:
+		_caption.text = "%d %s to win" % [threshold, unit.to_lower()]
+	else:
+		_caption.text = "Raise %s as high as you can" % unit.to_lower()
 
 	var undecided := maxi(maximum - player - opponent, 0)
 	if undecided > 0:
@@ -103,6 +117,9 @@ func _draw() -> void:
 	draw_rect(Rect2(0, top, player_width, HEIGHT), PLAYER_COLOR)
 	draw_rect(Rect2(width - opponent_width, top, opponent_width, HEIGHT), OPPONENT_COLOR)
 
-	# The threshold. Drawn last so nothing covers it.
-	var line_x := float(threshold) * scale_x
-	draw_line(Vector2(line_x, top - 8.0), Vector2(line_x, top + HEIGHT + 8.0), THRESHOLD_COLOR, 3.0)
+	# The threshold. Drawn last so nothing covers it, and not at all when
+	# there is nothing to reach.
+	if has_threshold:
+		var line_x := float(threshold) * scale_x
+		draw_line(Vector2(line_x, top - 8.0), Vector2(line_x, top + HEIGHT + 8.0),
+			THRESHOLD_COLOR, 3.0)

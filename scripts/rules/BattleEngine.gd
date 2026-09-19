@@ -85,6 +85,8 @@ func setup(config: Dictionary) -> bool:
 
 	state = BattleState.new()
 	state.energy_per_turn = int(_stage.get("energy_per_turn", 3))
+	state.energy_mode = str(_stage.get("energy_mode", "per_turn"))
+	state.win_mode = str(_stage.get("win_mode", "threshold"))
 	state.hand_size = int(_stage.get("hand_size", 5))
 	state.gaffe_limit = int(_stage.get("gaffe_limit", 5))
 
@@ -96,7 +98,16 @@ func setup(config: Dictionary) -> bool:
 		return false
 
 	# Turn 1 begins: energy in, cards out.
-	state.energy = state.energy_per_turn
+	#
+	# A pool stage hands out its whole allowance now and never tops it up,
+	# so the player is budgeting across the stage rather than spending a
+	# fresh allowance each turn.
+	if state.energy_mode == "pool":
+		state.energy = int(_stage.get("energy_pool", state.energy_per_turn))
+	else:
+		state.energy = state.energy_per_turn
+	state.energy_max = state.energy
+
 	_draw_up_to_hand_size()
 	return true
 
@@ -319,7 +330,10 @@ func end_turn() -> Dictionary:
 
 	if not state.is_over():
 		state.turn += 1
-		state.energy = state.energy_per_turn
+		# A pool stage is never topped up: what is left is what is left, and
+		# running out means the turns you have left are empty ones.
+		if state.energy_mode != "pool":
+			state.energy = state.energy_per_turn
 		_draw_up_to_hand_size()
 
 	return {
@@ -391,10 +405,18 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			_finish("loss", "Too many members locked against — a majority is no longer possible.")
 			return
 	else:
-		# A survival stage is the exception: reaching the threshold there is
-		# not a win, it is simply staying alive. The win comes from lasting
-		# the full distance, in _check_turn_limit below.
-		if state.bar.model != BarModel.Model.SURVIVAL and state.bar.player_has_won():
+		# Two stages have no threshold to cross.
+		#
+		# A survival stage is staying alive rather than winning: the win
+		# comes from lasting the full distance.
+		#
+		# A scored stage has no threshold at all. Ending it the moment some
+		# total was passed would cut short the very thing the player is
+		# trying to do, which is get as high as they can in the turns they
+		# have. Both are settled in _check_turn_limit below.
+		var has_threshold := (state.bar.model != BarModel.Model.SURVIVAL
+			and state.win_mode != "score")
+		if has_threshold and state.bar.player_has_won():
 			_finish("win", "The support threshold was reached.")
 			return
 		if bool(_rules.get("opponent_can_win_by_threshold", false)) and state.bar.opponent_has_won():
@@ -420,6 +442,13 @@ func _check_turn_limit() -> void:
 	# turn-limit switch says.
 	if state.bar != null and state.bar.model == BarModel.Model.SURVIVAL:
 		_finish("win", "Survived the whole debate above the line.")
+		return
+
+	# A scored stage is not won or lost on the clock — running out of turns
+	# is simply how it ends. Whatever support was reached is the result, and
+	# later stages of the level draw on it.
+	if state.win_mode == "score":
+		_finish("win", "The caucus closed with %d support." % state.player_score())
 		return
 
 	match str(_rules.get("turn_limit_outcome", "loss")):

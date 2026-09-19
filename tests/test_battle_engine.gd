@@ -556,3 +556,112 @@ func test_losing_a_reachable_majority_ends_the_stage() -> void:
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
 	assert_string_contains(engine.state.outcome_reason, "no longer possible")
+
+
+# ---------------------------------------------------------------------------
+# The caucus: one pool of energy, and a score rather than a win
+# ---------------------------------------------------------------------------
+# Two rules that only the caucus uses. Energy is handed out once for the
+# whole stage instead of each turn, so spending it is a budget rather than a
+# rhythm; and there is no threshold to cross, so how high the support gets
+# IS the result.
+
+func _caucus(overrides: Dictionary = {}) -> Dictionary:
+	var stage := TestFixtures.stage({
+		"stage_id": "PT_S3",
+		"energy_mode": "pool",
+		"energy_pool": 5,
+		"win_mode": "score",
+		"turn_limit": 3,
+		"bar_max": 100,
+		"player_start": 40,
+		"opp_start": 40,
+	})
+	stage.erase("win_threshold")
+	var base := {"stage": stage, "opponent": TestFixtures.opponent([["block", 1]])}
+	base.merge(overrides, true)
+	return base
+
+
+func test_a_pool_stage_starts_with_the_whole_pool() -> void:
+	var engine := _start(_caucus())
+	assert_eq(engine.state.energy, 5, "all five at once, not three a turn")
+
+
+func test_pool_energy_is_not_refilled_between_turns() -> void:
+	# The whole point: spend it when you like, and when it is gone the
+	# remaining turns are empty.
+	var engine := _start(_caucus())
+	engine.state.energy = 2
+
+	engine.end_turn()
+	assert_eq(engine.state.energy, 2, "what was left is what you still have")
+
+
+func test_a_spent_pool_stays_spent() -> void:
+	var engine := _start(_caucus())
+	engine.state.energy = 0
+	_force_into_hand(engine, "GAIN3")
+
+	engine.end_turn()
+	assert_eq(engine.state.energy, 0)
+	assert_false(engine.play_card("GAIN3")["ok"], "nothing can be played with an empty pool")
+
+
+func test_ordinary_stages_still_refill_every_turn() -> void:
+	# The pool must not leak into every other stage.
+	var engine := _start()
+	engine.state.energy = 0
+	engine.end_turn()
+	assert_eq(engine.state.energy, 3, "a normal stage refills")
+
+
+func test_a_scored_stage_does_not_end_early_on_support() -> void:
+	# Crossing some support total must not cut the stage short: the player is
+	# trying to get as high as possible in the turns they have.
+	var engine := _start(_caucus())
+	engine.state.bar.player_gains(55)   # far past any ordinary threshold
+
+	assert_false(engine.state.is_over(), "there is no threshold to cross")
+
+
+func test_a_scored_stage_completes_at_the_turn_limit() -> void:
+	var engine := _start(_caucus())
+	for _index in 3:
+		engine.end_turn()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win", "running out of turns is how it ends, not a loss")
+
+
+func test_the_score_is_the_support_reached() -> void:
+	var engine := _start(_caucus())
+	engine.state.bar.player_gains(12)   # 40 -> 52
+	for _index in 3:
+		engine.end_turn()
+
+	assert_eq(engine.state.player_score(), 52)
+	assert_string_contains(engine.state.outcome_reason, "52")
+
+
+func test_a_scored_stage_can_still_be_lost_on_gaffes() -> void:
+	# Scored does not mean consequence-free.
+	var engine := _start(_caucus({"deck": ["GAFFE2", "GAFFE2", "GAFFE2"]}))
+	engine.state.gaffe = engine.state.gaffe_limit - 1
+	_force_into_hand(engine, "GAFFE2")
+
+	engine.play_card("GAFFE2")
+	assert_eq(engine.state.outcome, "loss")
+	assert_string_contains(engine.state.outcome_reason, "gaffe")
+
+
+func test_the_turn_limit_switch_does_not_override_a_scored_stage() -> void:
+	# Whatever rules.json says about running out of turns, a scored stage
+	# ends by being scored.
+	var engine := _start(_caucus({
+		"rules": TestFixtures.rules({"turn_limit_outcome": "loss"}),
+	}))
+	for _index in 3:
+		engine.end_turn()
+
+	assert_eq(engine.state.outcome, "win")

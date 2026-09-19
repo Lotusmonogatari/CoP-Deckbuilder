@@ -139,7 +139,9 @@ func _refresh() -> void:
 	_intent_label.text = IntentRunner.describe(engine.current_intent())
 
 	if state.bar != null:
-		_support_bar.show_bar(state.bar)
+		# A scored stage has no threshold, so the bar must not draw a line or
+		# claim a number is needed to win.
+		_support_bar.show_bar(state.bar, state.win_mode != "score")
 
 	_refresh_energy(state)
 	_refresh_gaffe(state)
@@ -158,7 +160,10 @@ func _refresh_energy(state: BattleState) -> void:
 	for child in _energy_row.get_children():
 		child.queue_free()
 
-	for index in state.energy_per_turn:
+	# One pip per point available, which is a turn's worth normally and the
+	# whole pool in a caucus. Reading energy_per_turn here would draw three
+	# pips for a five-point pool and quietly lie about what is left.
+	for index in maxi(state.energy_max, 1):
 		var pip := Panel.new()
 		pip.custom_minimum_size = Vector2(26, 26)
 		var box := StyleBoxFlat.new()
@@ -197,6 +202,22 @@ func _refresh_details(state: BattleState) -> void:
 		"Stage: %s (%s)" % [_stage.get("name_en", ""), _stage.get("stage_id", "")],
 		"Opponent: %s, %s" % [_opponent.get("name", ""), _opponent.get("party", "")],
 	]
+
+	# Two rules a player would otherwise have to discover by losing.
+	if state.energy_mode == "pool":
+		lines.append("")
+		lines.append("These %d are for the whole debate. They do not come back "
+			% state.energy_max + "at the start of a turn.")
+
+	if state.win_mode == "score":
+		lines.append("There is nothing to reach here. However high the support "
+			+ "gets is what carries into the floor debate.")
+
+	if GameState.is_in_level():
+		var carried := GameState.level_runner.describe_carried_buffs()
+		if not carried.begins_with("Nothing"):
+			lines.append("")
+			lines.append(carried)
 
 	if engine.used_default_intent_pattern:
 		lines.append("")
@@ -342,11 +363,15 @@ func _show_outcome(state: BattleState) -> void:
 	if _outcome_panel.visible:
 		return
 
-	_outcome_title.text = {
-		"win": "Carried",
-		"loss": "Defeated",
-		"retry": "No decision",
-	}.get(state.outcome, state.outcome)
+	# A scored stage was never won or lost, so "Carried" would be wrong.
+	if state.win_mode == "score" and state.outcome == "win":
+		_outcome_title.text = "Caucus closed"
+	else:
+		_outcome_title.text = {
+			"win": "Carried",
+			"loss": "Defeated",
+			"retry": "No decision",
+		}.get(state.outcome, state.outcome)
 
 	_outcome_reason.text = state.outcome_reason
 	_outcome_panel.show()

@@ -174,3 +174,84 @@ func test_the_opponent_actually_does_something() -> void:
 		"the opponent intends something real: %s" % [intent])
 	assert_false(IntentRunner.describe(intent).is_empty(),
 		"and it can be put into words for the player")
+
+
+# ---------------------------------------------------------------------------
+# The playtest level's caucus, on its real data
+# ---------------------------------------------------------------------------
+# The engine tests prove the pool and the scoring rules in isolation. These
+# prove the actual stage in data/playtest_level.json is wired to use them,
+# and that the score it produces really does reach the floor debate.
+
+func _playtest_stage(stage_id: String) -> Dictionary:
+	for stage: Dictionary in DataDB.playtest_level.get("stages", []):
+		if stage.get("stage_id") == stage_id:
+			return stage
+	return {}
+
+
+func test_the_caucus_stage_hands_out_one_pool_of_energy() -> void:
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S3"))),
+		"%s" % [engine.setup_problems])
+
+	assert_eq(engine.state.energy, 5, "five for the whole debate")
+	assert_eq(engine.state.energy_mode, "pool")
+
+	engine.state.energy = 1
+	engine.end_turn()
+	assert_eq(engine.state.energy, 1, "and no more arrive with the new turn")
+
+
+func test_the_caucus_is_scored_rather_than_won() -> void:
+	var engine := BattleEngine.new()
+	engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S3")))
+
+	# Push the support far past anything that could count as a threshold.
+	engine.state.bar.player_gains(50)
+	assert_false(engine.state.is_over(), "no total ends the caucus early")
+
+	for _index in 4:
+		if not engine.state.is_over():
+			engine.end_turn()
+
+	assert_true(engine.state.is_over(), "it ends when the turns run out")
+	assert_eq(engine.state.outcome, "win", "running out of turns is not a loss here")
+	assert_string_contains(engine.state.outcome_reason, "caucus closed".to_lower())
+
+
+func test_a_good_caucus_reaches_the_floor_debate() -> void:
+	# The whole reason the caucus is scored: a strong showing there should be
+	# worth something later. This follows one score all the way through.
+	var runner := LevelRunner.new(DataDB.playtest_level)
+	runner.finish_stage(LevelRunner.WON)            # committee
+	runner.finish_stage(LevelRunner.WON)            # press conference
+	runner.finish_stage(LevelRunner.WON, 80)        # caucus, scored 80
+
+	var stage := runner.current_stage()
+	assert_eq(stage["stage_id"], "PT_S4", "now on the floor debate")
+
+	var buffs := runner.carried_buffs()
+	assert_gt(int(buffs["support_bonus"]), 0, "the caucus score is worth something")
+
+	var config := BattleSetup.for_playtest_stage(stage, buffs)
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(config), "%s" % [engine.setup_problems])
+
+	var base := int(stage["player_start"])
+	assert_eq(engine.state.bar.player, base + int(buffs["support_bonus"]),
+		"the floor debate starts that much further ahead")
+
+
+func test_a_weak_caucus_costs_nothing_at_the_floor() -> void:
+	var runner := LevelRunner.new(DataDB.playtest_level)
+	runner.finish_stage(LevelRunner.WON)
+	runner.finish_stage(LevelRunner.WON)
+	runner.finish_stage(LevelRunner.WON, 20)        # a poor caucus
+
+	var stage := runner.current_stage()
+	var engine := BattleEngine.new()
+	engine.setup(BattleSetup.for_playtest_stage(stage, runner.carried_buffs()))
+
+	assert_eq(engine.state.bar.player, int(stage["player_start"]),
+		"a bad caucus is worth nothing, not a penalty")
