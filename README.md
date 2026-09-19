@@ -42,7 +42,7 @@ switches for design decisions that are still open — see `CLAUDE.md` section 9.
 
 ## Running it
 
-Open the project folder in Godot 4.4 or newer and press F5. The boot check
+Open the project folder in Godot 4.5.1 or newer and press F5. The boot check
 screen prints the data validation report and confirms the Japanese font
 loaded.
 
