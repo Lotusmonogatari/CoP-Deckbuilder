@@ -1,22 +1,51 @@
 extends Node
-## Holds the state of the current run: where the player is in the campaign,
-## their meta-variables, their deck, and their XP.
+## Holds the state of the current run: which level is being played, how far
+## through it the player is, and how the last one went.
 ##
-## NOT BUILT YET. This is a placeholder so the project structure matches the
-## build brief; it gets filled in at milestone M4, alongside the module runner
-## and auto-saving.
+## This is the campaign's memory. It is deliberately separate from the rules
+## engine, which is the maths of a single battle and remembers nothing.
 ##
-## What will live here:
-##   - the four meta-variables (Jiban, Kanban, Kaban, Party support), each
-##     clamped to the min and max in sanban.json
-##   - which module and step the player is on
-##   - the player's current deck, unlocked cards, and upgraded cards
-##   - XP earned and spent
-##   - which booster organizations are active
-##
-## Deliberately kept separate from the rules engine: this is the campaign's
-## memory, while scripts/rules/ is the maths of a single battle.
+## STILL PARTLY A PLACEHOLDER. Saving to disk, the meta-variables and the
+## deck all arrive at milestone M4. What is here now is the minimum the
+## Office and the battle screen need to hand a level back and forth.
+
+## The level being played, or null when the player is in the Office.
+var level_runner: LevelRunner = null
+
+## How the last finished level went: "win", "loss", or empty if none yet.
+## Lives only for this sitting until M4 adds saving.
+var last_level_outcome: String = ""
+
 
 func _ready() -> void:
-	# Nothing to do until M4. DataDB loads first and prints its own report.
 	pass
+
+
+## Called by the Office when the player starts a level.
+func begin_level(runner: LevelRunner) -> void:
+	level_runner = runner
+	last_level_outcome = ""
+
+
+## True while a level is in progress.
+func is_in_level() -> bool:
+	return level_runner != null and not level_runner.is_finished()
+
+
+## Records how a stage went and moves the level on. Returns true when the
+## level is now over, which is the battle screen's cue to head back.
+func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool:
+	if level_runner == null:
+		return true
+
+	level_runner.finish_stage(outcome, score, boosters)
+
+	if level_runner.is_finished():
+		last_level_outcome = level_runner.outcome()
+		return true
+	return false
+
+
+## Clears the level, on the way back to the Office.
+func end_level() -> void:
+	level_runner = null

@@ -274,9 +274,14 @@ func _refused(reason: String) -> Dictionary:
 
 
 ## The suit multiplier for this card in this stage.
+##
+## A stage may borrow another stage's affinities with "affinity_stage_id".
+## The playtest level uses this: its stages have their own IDs so they do not
+## pick up the canon stages' rules, but a press conference should still
+## favour the same suits wherever it is played.
 func affinity_for(card: Dictionary) -> float:
 	var element := str(card.get("suit", ""))
-	var stage_id := str(_stage.get("stage_id", ""))
+	var stage_id := str(_stage.get("affinity_stage_id", _stage.get("stage_id", "")))
 	var row: Variant = _affinity.get(element)
 	if row is Dictionary and (row as Dictionary).has(stage_id):
 		return float((row as Dictionary)[stage_id])

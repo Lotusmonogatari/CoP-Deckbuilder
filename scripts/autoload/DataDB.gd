@@ -21,8 +21,8 @@ const DATA_PATH := "res://data/"
 ## Every file that must be present for the game to start.
 const REQUIRED_FILES := [
 	"affinity", "balance", "bills", "boosters", "cards", "committee",
-	"lists", "modifiers", "modules", "opponents", "rules", "sanban",
-	"segments", "stages", "suits", "yoron",
+	"lists", "modifiers", "modules", "opponents", "playtest_level", "rules",
+	"sanban", "segments", "stages", "suits", "yoron",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -45,6 +45,10 @@ var affinity: Array = []
 var balance: Dictionary = {}
 var lists: Dictionary = {}
 var rules: Dictionary = {}
+
+## The playtest level. Hand-written like rules.json rather than generated
+## from the workbook, because its shape is still being tried out.
+var playtest_level: Dictionary = {}
 
 # --- Lookup tables ---------------------------------------------------------
 # Built once at startup so nothing has to search a list at runtime.
@@ -97,6 +101,7 @@ func load_all() -> void:
 			"balance": balance = content
 			"lists": lists = content
 			"rules": rules = _flatten_rules(content)
+			"playtest_level": playtest_level = content
 
 	_build_lookups()
 	_validate()

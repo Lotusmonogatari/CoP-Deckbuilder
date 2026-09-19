@@ -68,6 +68,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     echo ">> FAILED: an overlay could not be opened or closed with a real click."
     failures=$((failures + 1))
   fi
+
+  # And that the whole loop is reachable: Office, the stages, back again.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/loop_test.tscn; then
+    echo ">> FAILED: the Office-to-stages-to-Office loop is broken."
+    failures=$((failures + 1))
+  fi
 else
   echo ">> SKIPPED: xvfb-run is not installed, so buttons were not clicked."
   echo "   On Debian or Ubuntu: sudo apt-get install xvfb"

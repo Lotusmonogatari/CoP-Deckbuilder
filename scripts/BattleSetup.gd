@@ -35,6 +35,43 @@ static func for_module_step(module_id: String, seq: int, meta: Dictionary = {}) 
 	return {}
 
 
+## Builds a battle from a stage of the playtest level.
+##
+## The playtest level describes its own stages rather than pointing at rows
+## in the workbook, because its shape is still being tried out and should not
+## disturb the canon stages while it settles. The two routes produce the same
+## kind of dictionary, so BattleEngine cannot tell them apart.
+##
+## `buffs` is whatever earlier stages of the level left behind, from
+## LevelRunner.carried_buffs().
+static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
+		meta: Dictionary = {}) -> Dictionary:
+	if stage.is_empty():
+		return {}
+
+	if meta.is_empty():
+		meta = starting_meta()
+
+	var opponents: Array = stage.get("opponents", [])
+
+	var config := {
+		"stage": stage,
+		# The first opponent; the rest arrive as the stage's sequencing is
+		# built in phase 3. Until then a stage plays its opening opponent.
+		"opponent": opponents[0] if not opponents.is_empty() else {},
+		"opponents": opponents,
+		"cards": card_table(),
+		"affinity": affinity_table(),
+		"rules": DataDB.rules,
+		"meta": meta,
+		"deck": starter_deck(),
+		# A good caucus earlier in the level starts this stage ahead.
+		"start_adjustment": int(buffs.get("support_bonus", 0)),
+	}
+
+	return config
+
+
 ## Builds a battle from a module row that has already been looked up.
 static func from_row(row: Dictionary, meta: Dictionary = {}) -> Dictionary:
 	var stage := DataDB.get_stage(str(row.get("stage_id", "")))

@@ -16,8 +16,10 @@ extends Control
 ## Anything secondary — deck and discard counts, the active modifiers — lives
 ## behind the details button rather than cluttering the main screen.
 
-## Which battle to open. Set these before the scene loads, or leave them and
-## it opens Module 01's floor debate.
+const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
+
+## Which battle to open when no level is in progress — running this scene on
+## its own from the editor. During a level the stage comes from the level.
 @export var module_id: String = "MOD01"
 @export var step: int = 4
 
@@ -25,6 +27,11 @@ var engine: BattleEngine = null
 var _stage: Dictionary = {}
 var _opponent: Dictionary = {}
 var _selected_card_id: String = ""
+
+## False when the battle could not be set up. Everything that would touch
+## the engine checks this first, so a stage that failed to start shows its
+## reason instead of crashing on the next click.
+var _ready_to_play := false
 
 @onready var _stage_name: Label = %StageName
 @onready var _stage_name_jp: Label = %StageNameJP
@@ -55,7 +62,7 @@ func _ready() -> void:
 	%DetailsClose.pressed.connect(func() -> void: _details_panel.hide())
 	%ZoomClose.pressed.connect(func() -> void: _card_zoom.hide())
 	%ZoomPlay.pressed.connect(_play_selected)
-	%OutcomeClose.pressed.connect(func() -> void: get_tree().quit())
+	%OutcomeClose.pressed.connect(_on_outcome_closed)
 
 	_details_panel.hide()
 	_card_zoom.hide()
@@ -64,11 +71,24 @@ func _ready() -> void:
 	start_battle()
 
 
-## Opens the battle named by module_id and step.
+## Opens the next battle.
+##
+## When a level is in progress, that means the level's current stage. When
+## it isn't — opening this scene directly from the editor, say — it falls
+## back to the module and step set in the inspector, so the scene stays
+## runnable on its own.
 func start_battle() -> void:
-	var config := BattleSetup.for_module_step(module_id, step)
+	var config: Dictionary = {}
+
+	if GameState.is_in_level():
+		var runner := GameState.level_runner
+		config = BattleSetup.for_playtest_stage(
+			runner.current_stage(), runner.carried_buffs())
+	else:
+		config = BattleSetup.for_module_step(module_id, step)
+
 	if config.is_empty():
-		_show_notice("There is no step %d in %s." % [step, module_id])
+		_show_notice("There is no stage to play here.")
 		return
 
 	_stage = config.get("stage", {})
@@ -77,11 +97,15 @@ func start_battle() -> void:
 	engine = BattleEngine.new()
 	if not engine.setup(config):
 		# A battle that cannot start says why, in words, rather than
-		# presenting an empty screen.
+		# presenting an empty screen. Nothing is left playable either: a
+		# half-built battle that accepts input crashes instead of failing.
+		_ready_to_play = false
+		_end_turn_button.disabled = true
 		_show_notice("This battle could not start:\n• %s"
 			% "\n• ".join(Array(engine.setup_problems)))
 		return
 
+	_ready_to_play = true
 	_build_static_parts()
 	_refresh()
 
@@ -106,7 +130,7 @@ func _build_static_parts() -> void:
 # ---------------------------------------------------------------------------
 
 func _refresh() -> void:
-	if engine == null:
+	if engine == null or not _ready_to_play:
 		return
 
 	var state := engine.state
@@ -194,6 +218,8 @@ func _refresh_details(state: BattleState) -> void:
 ## Tapping a card opens the zoom view. Nothing is played until the player
 ## confirms there, so a mis-tap never costs a turn.
 func _on_card_chosen(card_id: String) -> void:
+	if not _ready_to_play:
+		return
 	_selected_card_id = card_id
 	var card := DataDB.get_card(card_id)
 
@@ -224,6 +250,8 @@ func _on_card_chosen(card_id: String) -> void:
 
 func _play_selected() -> void:
 	_card_zoom.hide()
+	if not _ready_to_play:
+		return
 	if _selected_card_id.is_empty():
 		return
 
@@ -238,6 +266,8 @@ func _play_selected() -> void:
 
 
 func _on_end_turn() -> void:
+	if not _ready_to_play:
+		return
 	var result := engine.end_turn()
 	if not result.get("ok", false):
 		return
@@ -321,3 +351,44 @@ func _show_outcome(state: BattleState) -> void:
 	_outcome_reason.text = state.outcome_reason
 	_outcome_panel.show()
 	EventBus.battle_ended.emit(state.outcome, state.outcome_reason)
+
+	# Say what happens next, so the button is not a leap in the dark.
+	%OutcomeClose.text = _next_step_label(state)
+
+
+## What pressing the button after a stage actually does.
+func _next_step_label(state: BattleState) -> String:
+	if not GameState.is_in_level():
+		return "Close"
+	if state.outcome == "loss":
+		return "Back to the Office"
+
+	var runner := GameState.level_runner
+	# The runner has not advanced yet, so "current" is the stage just played.
+	if runner.index + 1 >= runner.stage_count():
+		return "Back to the Office"
+	return "On to the next stage"
+
+
+func _on_outcome_closed() -> void:
+	if not GameState.is_in_level():
+		get_tree().quit()
+		return
+
+	if not _ready_to_play:
+		GameState.end_level()
+		get_tree().change_scene_to_file(OFFICE_SCENE)
+		return
+
+	var state := engine.state
+	# A caucus has no threshold: how high the support got is the score, and
+	# that is what later stages draw on.
+	var score := state.player_score()
+	var level_over := GameState.finish_stage(state.outcome, score, [])
+
+	if level_over:
+		GameState.end_level()
+		get_tree().change_scene_to_file(OFFICE_SCENE)
+	else:
+		# Same scene, next stage. Reloading keeps the setup in one place.
+		get_tree().reload_current_scene()
