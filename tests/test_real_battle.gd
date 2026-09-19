@@ -239,7 +239,7 @@ func test_a_good_caucus_reaches_the_floor_debate() -> void:
 	# worth something later. This follows one score all the way through.
 	var runner := LevelRunner.new(DataDB.playtest_level)
 	runner.finish_stage(LevelRunner.WON)            # committee
-	runner.finish_stage(LevelRunner.WON)            # press conference
+	runner.finish_stage(LevelRunner.WON, 50)        # press conference, flat
 	runner.finish_stage(LevelRunner.WON, 80)        # caucus, scored 80
 
 	var stage := runner.current_stage()
@@ -260,7 +260,7 @@ func test_a_good_caucus_reaches_the_floor_debate() -> void:
 func test_a_weak_caucus_costs_nothing_at_the_floor() -> void:
 	var runner := LevelRunner.new(DataDB.playtest_level)
 	runner.finish_stage(LevelRunner.WON)
-	runner.finish_stage(LevelRunner.WON)
+	runner.finish_stage(LevelRunner.WON, 50)        # press conference, flat
 	runner.finish_stage(LevelRunner.WON, 20)        # a poor caucus
 
 	var stage := runner.current_stage()
@@ -269,6 +269,42 @@ func test_a_weak_caucus_costs_nothing_at_the_floor() -> void:
 
 	assert_eq(engine.state.bar.player, int(stage["player_start"]),
 		"a bad caucus is worth nothing, not a penalty")
+
+
+func test_a_bad_press_conference_costs_seats_at_the_floor() -> void:
+	# The caucus forgives a poor showing; the press does not. This is the
+	# difference between the two stages' tone_effects, on the real data.
+	var runner := LevelRunner.new(DataDB.playtest_level)
+	runner.finish_stage(LevelRunner.WON)
+	runner.finish_stage(LevelRunner.WON, 20)        # tone 20: thirty below
+	runner.finish_stage(LevelRunner.WON, 50)        # caucus, flat
+
+	var stage := runner.current_stage()
+	var buffs := runner.carried_buffs()
+	assert_lt(int(buffs["support_bonus"]), 0, "a bad conference is a real debuff")
+
+	var engine := BattleEngine.new()
+	_setup(engine, BattleSetup.for_playtest_stage(stage, buffs))
+
+	assert_lt(engine.state.bar.player, int(stage["player_start"]),
+		"the floor debate starts that much further behind")
+
+
+func test_a_good_press_conference_is_worth_seats_and_reputation() -> void:
+	# Both halves of what the tone is for, from the one number.
+	var press := _playtest_stage("PT_S2")
+
+	assert_eq(LevelRunner.score_to_support(press, 70), 2,
+		"twenty above the baseline is two seats")
+	assert_eq(LevelRunner.score_to_support(press, 30), -2,
+		"and twenty below costs two")
+	assert_eq(LevelRunner.score_to_support(press, 45), 0,
+		"falling just short costs nothing")
+
+	var moved := MetaRules.apply_score_effects(
+		{"Reputation": 50}, press, 70, DataDB.sanban)
+	assert_eq(int(moved["applied"].get("Reputation", 0)), 4,
+		"twenty above the baseline, at five points each, is four reputation")
 
 
 # ---------------------------------------------------------------------------
@@ -385,20 +421,42 @@ func test_answering_every_question_ends_the_press_conference() -> void:
 	assert_eq(engine.questions_remaining(), 0, "because every question was answered")
 
 
-func test_a_data_driven_answer_pleases_the_press() -> void:
-	# The first question invites a Data Driven answer and names BO08.
+func test_answering_in_the_invited_suit_pleases_the_press() -> void:
+	# Deliberately not hardcoding which suit: the pairing of question to suit
+	# is placeholder data Cameron is expected to change, and this should keep
+	# testing the mechanism rather than his current choices.
 	var engine := BattleEngine.new()
 	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S2")))
 
 	var question := engine.current_question()
-	assert_eq(question["prefers_suit"], "Data Driven")
+	var wanted := str(question["prefers_suit"])
 
-	# C13 Present the Stats is Data Driven and costs 1.
-	engine.state.hand.assign(["C13"])
-	engine.play_card("C13")
+	var answer := ""
+	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
+		if str(card.get("suit", "")) == wanted:
+			answer = str(card["card_id"])
+			break
+	assert_false(answer.is_empty(), "a Starter card answers in %s" % wanted)
+
+	engine.state.hand.assign([answer])
+	engine.play_card(answer)
 
 	assert_true(engine.pleased_boosters().has(question["pleases_booster"]),
 		"answering in the suit invited pleases the people who asked")
+
+
+func test_every_question_can_be_answered_in_the_suit_it_invites() -> void:
+	# A question inviting a suit no Starter card has would be unanswerable
+	# without it being obvious from the data. This catches that on Cameron's
+	# next edit rather than in a playtest.
+	var suits: Array[String] = []
+	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
+		suits.append(str(card.get("suit", "")))
+
+	for question: Dictionary in _playtest_stage("PT_S2").get("questions", []):
+		assert_true(suits.has(str(question.get("prefers_suit", ""))),
+			"%s invites %s, and no Starter card is that suit"
+				% [question.get("id"), question.get("prefers_suit")])
 
 
 func test_answering_well_carries_the_press_into_the_floor_debate() -> void:

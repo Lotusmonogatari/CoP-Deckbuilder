@@ -21,8 +21,9 @@ const DATA_PATH := "res://data/"
 ## Every file that must be present for the game to start.
 const REQUIRED_FILES := [
 	"affinity", "balance", "bills", "boosters", "cards", "committee",
-	"lists", "modifiers", "modules", "opponents", "playtest_level", "rules",
-	"sanban", "segments", "stages", "suits", "yoron",
+	"journalists", "lists", "modifiers", "modules", "opponents", "player",
+	"playtest_cards", "playtest_level", "rules", "sanban", "segments",
+	"stages", "suits", "yoron",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -50,6 +51,20 @@ var rules: Dictionary = {}
 ## from the workbook, because its shape is still being tried out.
 var playtest_level: Dictionary = {}
 
+## Who the player is. Hand-written; a placeholder until the protagonist is
+## cast for real.
+var player: Dictionary = {}
+
+## The press pack, hand-written. They ask the questions at a press
+## conference; they do not take turns.
+var journalists: Array = []
+
+## The IDs of cards that came from playtest_cards.json rather than the
+## workbook. They sit in `cards` like any other, and this is only here so
+## that a count against a workbook number knows how many are not the
+## workbook's to account for.
+var playtest_card_ids: Array[String] = []
+
 # --- Lookup tables ---------------------------------------------------------
 # Built once at startup so nothing has to search a list at runtime.
 var _cards_by_id: Dictionary = {}
@@ -61,6 +76,7 @@ var _boosters_by_id: Dictionary = {}
 var _bills_by_id: Dictionary = {}
 var _yoron_by_id: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
+var _journalists_by_id: Dictionary = {}
 var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
 
 ## Problems found at startup. Errors mean something is genuinely broken;
@@ -102,6 +118,16 @@ func load_all() -> void:
 			"lists": lists = content
 			"rules": rules = _flatten_rules(content)
 			"playtest_level": playtest_level = content
+			"player": player = content
+			"journalists": journalists = _list_under(content, "journalists")
+			# Cards that exist for the playtest but are not in the workbook
+			# yet. Appended rather than kept apart, so everything downstream —
+			# the card table, the starter deck, every lookup — treats them as
+			# ordinary cards without knowing where they came from. This runs
+			# after "cards" because REQUIRED_FILES is in alphabetical order,
+			# and "cards" is reassigned on every load, so reloading cannot
+			# stack them up twice.
+			"playtest_cards": _add_playtest_cards(_list_under(content, "cards"))
 
 	_build_lookups()
 	_validate()
@@ -136,6 +162,50 @@ func _read_json(file_name: String) -> Variant:
 	return json.data
 
 
+## Folds the hand-written playtest cards in with the workbook's.
+##
+## A card here that uses an ID the workbook already has would shadow it, so
+## that is refused rather than quietly replacing a real card.
+func _add_playtest_cards(extras: Array) -> void:
+	playtest_card_ids.clear()
+
+	for card: Dictionary in extras:
+		var card_id := str(card.get("card_id", ""))
+		if card_id.is_empty():
+			errors.append("a card in playtest_cards.json has no card_id")
+			continue
+
+		var clash := false
+		for existing: Dictionary in cards:
+			if str(existing.get("card_id", "")) == card_id:
+				clash = true
+				break
+		if clash:
+			errors.append(("playtest_cards.json has a card called '%s', but the "
+				+ "workbook already has one. Give it a different ID.") % card_id)
+			continue
+
+		cards.append(card)
+		playtest_card_ids.append(card_id)
+
+
+## Pulls a list out of a hand-written file that wraps it in an object.
+##
+## The hand-written files carry a "_README" beside their content, so their
+## top level is an object rather than the bare array the exporter writes.
+## This reaches in for the list and returns an empty one rather than failing
+## if the file has been edited into a shape it did not expect.
+func _list_under(content: Variant, key: String) -> Array:
+	if not (content is Dictionary):
+		errors.append("%s.json should be an object with a '%s' list in it." % [key, key])
+		return []
+	var found: Variant = (content as Dictionary).get(key)
+	if not (found is Array):
+		errors.append("%s.json has no '%s' list in it." % [key, key])
+		return []
+	return found
+
+
 ## rules.json keeps each switch alongside notes explaining the options.
 ## The game only needs the chosen value, so pull that out and drop the prose.
 func _flatten_rules(raw: Variant) -> Dictionary:
@@ -159,6 +229,7 @@ func _build_lookups() -> void:
 	_bills_by_id = _index(bills, "bill_id")
 	_yoron_by_id = _index(yoron, "topic_id")
 	_sanban_by_name = _index(sanban, "name_en")
+	_journalists_by_id = _index(journalists, "journalist_id")
 
 	_affinity.clear()
 	for row: Dictionary in affinity:
@@ -183,6 +254,14 @@ func _index(records: Array, key: String) -> Dictionary:
 
 func get_card(card_id: String) -> Dictionary:
 	return _lookup(_cards_by_id, card_id, "card")
+
+
+## A reporter by ID. An empty ID gives an empty result without complaining:
+## a question nobody is credited with is missing an attribution, not broken.
+func get_journalist(journalist_id: String) -> Dictionary:
+	if journalist_id.is_empty():
+		return {}
+	return _lookup(_journalists_by_id, journalist_id, "journalist")
 
 
 func get_stage(stage_id: String) -> Dictionary:

@@ -220,3 +220,61 @@ func test_a_modifier_with_no_audience_condition_is_left_to_the_caller() -> void:
 		"trigger_min_pct": null, "available_to": "Both",
 	}]
 	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 0)
+
+
+# ---------------------------------------------------------------------------
+# What a stage's closing score does to the player's standing
+# ---------------------------------------------------------------------------
+
+func _scored_stage(overrides: Dictionary = {}) -> Dictionary:
+	var effects := {"baseline": 50, "meta": {"Reputation": 5}}
+	effects.merge(overrides, true)
+	return {"name_en": "Press Conference", "tone_effects": effects}
+
+
+func test_a_good_score_raises_the_variable_it_names() -> void:
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 50}, _scored_stage(), 70, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 54, "twenty above, at five each")
+	assert_eq(int(result["applied"]["Reputation"]), 4)
+
+
+func test_a_bad_score_lowers_it() -> void:
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 50}, _scored_stage(), 30, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 46)
+	assert_eq(int(result["applied"]["Reputation"]), -4)
+
+
+func test_falling_just_short_of_the_baseline_costs_nothing() -> void:
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 50}, _scored_stage(), 47, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 50)
+	assert_true(result["applied"].is_empty(), "and nothing is reported as having moved")
+
+
+func test_a_stage_that_says_nothing_changes_nothing() -> void:
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 50}, {"name_en": "Committee"}, 90, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 50)
+	assert_true(result["applied"].is_empty())
+
+
+func test_the_variables_ceiling_is_respected_and_reported_honestly() -> void:
+	# The same rule apply_win_deltas follows: promise only what was delivered.
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 98}, _scored_stage(), 100, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 100, "clamped to the maximum")
+	assert_eq(int(result["applied"]["Reputation"]), 2,
+		"two points, not the ten the score was worth")
+
+
+func test_the_original_standing_is_left_alone() -> void:
+	var before := {"Reputation": 50}
+	MetaRules.apply_score_effects(before, _scored_stage(), 90, SANBAN)
+	assert_eq(int(before["Reputation"]), 50, "a copy came back; this did not change")

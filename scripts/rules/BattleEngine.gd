@@ -282,13 +282,26 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 
 	_check_outcome()
 
-	return {
+	var result := {
 		"ok": true,
 		"card_id": card_id,
 		"effect": effect,
 		"applied": applied,
 		"energy_left": state.energy,
 	}
+
+	# A card that passes the round hands the turn over as it is played, so
+	# the player does not have to press End turn afterwards to mean the thing
+	# they have just said they mean. Declining and then playing on would not
+	# be declining.
+	#
+	# A press conference has no turn to hand over — every card answers the
+	# question in front of it and the next reporter speaks — so this is only
+	# reached where somebody is actually waiting to act.
+	if flags.get("end_turn", false) and not state.is_over() and _intents != null:
+		result["ended_turn"] = end_turn()
+
+	return result
 
 
 ## Applies a resolved card's numbers, in the order the brief sets out:

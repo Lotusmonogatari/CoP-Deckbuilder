@@ -1049,3 +1049,70 @@ func test_the_press_tone_is_a_single_bar() -> void:
 	# Not a shared pool: there is no opposing side holding the rest of it.
 	var engine := _start(_press_alone())
 	assert_eq(engine.state.bar.model, BarModel.Model.SINGLE)
+
+
+# ---------------------------------------------------------------------------
+# Declining: "Don't Engage"
+# ---------------------------------------------------------------------------
+# A card that passes the round rather than arguing. The card's own gaffe
+# number is what it costs; the `pass_turn` special is only what hands the
+# round over.
+
+func _passing(overrides: Dictionary = {}) -> Dictionary:
+	var config := TestFixtures.battle_config(overrides)
+	var cards: Dictionary = config["cards"]
+	cards["PASS"] = TestFixtures.card({
+		"card_id": "PASS", "cost": 0, "gaffe": 1, "special": "pass_turn",
+	})
+	config["cards"] = cards
+	return config
+
+
+func test_a_passing_card_hands_the_turn_over_as_it_is_played() -> void:
+	var engine := _start(_passing())
+	var turn := engine.state.turn
+	_force_into_hand(engine, "PASS")
+
+	var result := engine.play_card("PASS")
+
+	assert_true(result.get("ok", false))
+	assert_true(result.has("ended_turn"), "the turn went with it")
+	assert_eq(engine.state.turn, turn + 1, "and the clock moved on")
+
+
+func test_a_passing_card_still_costs_what_it_says_it_costs() -> void:
+	var engine := _start(_passing())
+	_force_into_hand(engine, "PASS")
+
+	engine.play_card("PASS")
+	assert_eq(engine.state.gaffe, 1, "declining is not free")
+
+
+func test_passing_can_lose_the_stage_on_gaffes() -> void:
+	var engine := _start(_passing())
+	engine.state.gaffe = engine.state.gaffe_limit - 1
+	_force_into_hand(engine, "PASS")
+
+	engine.play_card("PASS")
+	assert_eq(engine.state.outcome, "loss", "the last gaffe is the last gaffe")
+
+
+func test_passing_does_not_hand_over_a_turn_nobody_is_waiting_for() -> void:
+	# In a press conference the round IS the question, and every card answers
+	# one. Ending a turn on top of that would skip a reporter.
+	var config := _press_alone()
+	var cards: Dictionary = TestFixtures.battle_config(config)["cards"]
+	cards["PASS"] = TestFixtures.card({
+		"card_id": "PASS", "cost": 0, "gaffe": 1, "special": "pass_turn",
+	})
+	config["cards"] = cards
+
+	var engine := _start(config)
+	var asked := engine.questions_remaining()
+	engine.state.hand.assign(["PASS", "GAIN3"])
+
+	engine.play_card("PASS")
+
+	assert_eq(engine.questions_remaining(), asked - 1,
+		"exactly one question was declined, not two")
+	assert_eq(engine.state.gaffe, 1, "and it cost what it costs")

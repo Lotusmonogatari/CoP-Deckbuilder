@@ -1,0 +1,48 @@
+{
+  "_README": [
+    "Cards that exist for the playtest but are not in the workbook yet.",
+    "",
+    "WRITTEN BY HAND, like rules.json and playtest_level.json. export_data.py",
+    "never overwrites it. DataDB appends these to the workbook's cards after",
+    "loading, so every existing path treats them as ordinary cards: they are",
+    "looked up the same way, dealt the same way, and a Starter-tier one joins",
+    "the opening deck automatically.",
+    "",
+    "EVERY VALUE BELOW IS A PLACEHOLDER. When a card here earns its place it",
+    "should move into the Cards tab of the workbook and be deleted from this",
+    "file, so the workbook stays the source of truth.",
+    "",
+    "The two fields the workbook computes with formulas - power_score and",
+    "power_per_cost - are left null here rather than guessed. Nothing in the",
+    "game reads them; they are the spreadsheet's own balance arithmetic."
+  ],
+
+  "cards": [
+    {
+      "card_id": "PT_C01",
+      "name_en": "Don't Engage",
+      "name_jp": "関わらない",
+      "romaji": "Kakawaranai",
+      "suit": "Duplicitous",
+      "suit_jp": "二枚舌",
+      "type": "Utility",
+      "cost": 0,
+      "self_plus": 0,
+      "opp_minus": 0,
+      "guard": 0,
+      "draw": 0,
+      "gaffe": 1,
+      "target_segment": "Any",
+      "effect_text": "Pass the round. Gaffe +1.",
+      "upgrade_text": "Pass the round.",
+      "tier": "Starter",
+      "xp_to_unlock": 0,
+      "power_score": null,
+      "power_per_cost": null,
+      "balance_flag": null,
+      "special": "pass_turn",
+      "special_value": null,
+      "target_segment_id": null
+    }
+  ]
+}

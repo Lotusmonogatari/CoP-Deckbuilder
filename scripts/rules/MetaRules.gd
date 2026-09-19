@@ -78,6 +78,48 @@ static func apply_win_deltas(meta: Dictionary, stage: Dictionary,
 	return {"meta": updated, "applied": applied}
 
 
+## Applies what a stage's closing score did to the player's standing.
+##
+## A stage says what its score is worth under "tone_effects.meta": a variable
+## name mapped to how many points of score make one point of it. A press
+## conference that closes ten points above its baseline with a "Reputation"
+## of 5 is worth two reputation; ten points below costs two.
+##
+## Same shape as apply_win_deltas: a new dictionary plus what actually
+## changed once the minimums and maximums had their say.
+static func apply_score_effects(meta: Dictionary, stage: Dictionary, score: int,
+		sanban_rows: Array) -> Dictionary:
+	var updated := meta.duplicate()
+	var applied := {}
+
+	var effects: Dictionary = stage.get("tone_effects", {})
+	var per_variable: Dictionary = effects.get("meta", {})
+	if per_variable.is_empty():
+		return {"meta": updated, "applied": applied}
+
+	var baseline := int(effects.get("baseline", 50))
+	var distance := score - baseline
+
+	for name: String in per_variable.keys():
+		var per := int(per_variable[name])
+		if per <= 0:
+			continue
+
+		# Towards zero in both directions, so falling just short of the
+		# baseline costs nothing rather than a whole point.
+		var delta := int(float(distance) / float(per))
+		if delta == 0:
+			continue
+
+		var variable := _find_variable(sanban_rows, name)
+		var before := int(updated.get(name, variable.get("start", 0)))
+		var after := clamp_meta(before + delta, variable)
+		updated[name] = after
+		applied[name] = after - before
+
+	return {"meta": updated, "applied": applied}
+
+
 ## Which modifiers are switched on by the player's standing with their party.
 ##
 ## Above the allied threshold, the party is behind you (M09 Party Backing).

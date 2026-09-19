@@ -127,11 +127,19 @@ static func starter_deck() -> Array[String]:
 	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
 		deck.append(str(card.get("card_id")))
 
-	var expected := int(DataDB.get_balance("starter_deck_size", float(deck.size())))
-	if deck.size() != expected:
+	# Cards written by hand for the playtest are not the workbook's to count,
+	# so they are taken off before comparing. Otherwise adding one to
+	# playtest_cards.json would make the workbook look wrong.
+	var from_workbook := deck.size()
+	for card_id: String in deck:
+		if DataDB.playtest_card_ids.has(card_id):
+			from_workbook -= 1
+
+	var expected := int(DataDB.get_balance("starter_deck_size", float(from_workbook)))
+	if from_workbook != expected:
 		push_warning(
 			("BattleSetup: the workbook has %d Starter cards but says the starter deck "
-			+ "should be %d. Using the %d that exist.") % [deck.size(), expected, deck.size()])
+			+ "should be %d. Using the %d that exist.") % [from_workbook, expected, deck.size()])
 
 	return deck
 

@@ -151,7 +151,9 @@ func test_carried_buffs_are_described_in_plain_words() -> void:
 	runner.finish_stage(LevelRunner.WON)
 
 	var description := runner.describe_carried_buffs()
-	assert_string_contains(description, "caucus went well")
+	assert_string_contains(description, "First went well",
+		"and says WHICH stage went well, not just that something did")
+	assert_string_contains(description, "3 ahead")
 	assert_string_contains(description, "BO08")
 
 
@@ -219,3 +221,14 @@ func test_the_playtest_level_can_be_walked_end_to_end() -> void:
 	assert_eq(runner.outcome(), LevelRunner.WON)
 	assert_eq(names, ["Committee", "Press Conference", "Caucus Debate",
 		"Parliament Floor Debate"])
+
+
+func test_a_stage_knows_whether_anybody_carries_its_score() -> void:
+	# A stage whose score nobody draws on must not tell the player it was
+	# worth something later.
+	var runner := LevelRunner.new(DataDB.playtest_level)
+
+	assert_false(runner.score_is_carried_from(1), "nothing carries the committee")
+	assert_true(runner.score_is_carried_from(2), "the floor carries the press conference")
+	assert_true(runner.score_is_carried_from(3), "and the caucus")
+	assert_false(runner.score_is_carried_from(4), "nothing comes after the floor")

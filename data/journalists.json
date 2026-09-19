@@ -1,0 +1,27 @@
+{
+  "_README": [
+    "The press pack: who asks the questions at a press conference.",
+    "",
+    "WRITTEN BY HAND, like rules.json and playtest_level.json. export_data.py",
+    "never overwrites it.",
+    "",
+    "EVERY NAME BELOW IS A PLACEHOLDER. They are deliberately called",
+    "'Reporter A' and so on, with no outlet and no politics, because the canon",
+    "rule is that characters come only from the data files and are never",
+    "invented here. Cameron casts them when he is ready.",
+    "",
+    "They ask and they do not fight. A journalist has no intent_pattern, so",
+    "nobody takes a turn in a press conference: the questions are the whole of",
+    "the opposition. Giving one an intent_pattern here would have them",
+    "attacking press tone every turn, which is a different stage from the one",
+    "that was asked for - so that is left switched off until Cameron wants it."
+  ],
+
+  "journalists": [
+    {"journalist_id": "JR_A", "name": "Reporter A", "outlet": "Placeholder"},
+    {"journalist_id": "JR_B", "name": "Reporter B", "outlet": "Placeholder"},
+    {"journalist_id": "JR_C", "name": "Reporter C", "outlet": "Placeholder"},
+    {"journalist_id": "JR_D", "name": "Reporter D", "outlet": "Placeholder"},
+    {"journalist_id": "JR_E", "name": "Reporter E", "outlet": "Placeholder"}
+  ]
+}

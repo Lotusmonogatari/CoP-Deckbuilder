@@ -77,16 +77,16 @@ func _walk_the_loop() -> void:
 
 	print("  returned to the Office after %d of %d stages" % [played, EXPECTED_STAGES])
 
-	# How FAR the loop gets is not asserted yet, on purpose. Losing a stage
-	# ends the level by design, and the caucus cannot currently be won at all
-	# because its "score rather than threshold" rule is not built — it falls
-	# through to the ordinary turn limit and reads as a loss.
+	# All four, now that all four can be won. This was deliberately loose
+	# while the caucus had no scoring rule and the committee's six turns made
+	# it unwinnable; both are fixed, so the loop is held to the whole level.
 	#
-	# So the test checks the loop is a loop: it starts in the Office, plays
-	# stages, and comes back. Once the caucus scores properly this should
-	# tighten to requiring all four.
-	if played < 1:
-		_failures.append("no stage was played at all")
+	# If this starts failing after a balance change, that is the test doing
+	# its job: some stage has become unwinnable by a player who spends what
+	# they have and does not talk themselves into a gaffe.
+	if played < EXPECTED_STAGES:
+		_failures.append("the level stopped after %d of %d stages"
+			% [played, EXPECTED_STAGES])
 
 
 ## Plays the stage on screen to a finish and presses on. Returns its name,

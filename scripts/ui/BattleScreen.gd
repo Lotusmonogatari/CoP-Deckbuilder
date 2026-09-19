@@ -86,8 +86,11 @@ func start_battle() -> void:
 
 	if GameState.is_in_level():
 		var runner := GameState.level_runner
+		# The run's standing, not the starting values: a press conference
+		# earlier in the level has already moved reputation, and the stage
+		# after it should be fought with the reputation you actually have.
 		config = BattleSetup.for_playtest_stage(
-			runner.current_stage(), runner.carried_buffs())
+			runner.current_stage(), runner.carried_buffs(), GameState.meta)
 	else:
 		config = BattleSetup.for_module_step(module_id, step)
 
@@ -128,13 +131,13 @@ func _build_static_parts() -> void:
 func _show_opponent() -> void:
 	var opponent := engine.current_opponent()
 
-	# In a press conference there is nobody sitting opposite: the questions
-	# are the opposition. Showing an empty portrait and the word "Opponent"
-	# over them would be describing somebody who isn't in the room.
+	# In a press conference nobody sits opposite: the questions are the
+	# opposition. The reporter asking this one takes the row instead, so the
+	# question has a face and a name rather than coming from nowhere.
 	if opponent.is_empty() and engine.is_press_conference():
-		_portrait.hide()
-		_opponent_name.hide()
+		_show_journalist(engine.current_question())
 		return
+
 	_portrait.show()
 	_opponent_name.show()
 
@@ -154,6 +157,36 @@ func _show_opponent() -> void:
 		var art := _portrait as PlaceholderArt
 		art.kind = PlaceholderArt.Kind.CHARACTER
 		art.art_id = str(opponent.get("opp_id", ""))
+		art.expression = "neutral"
+
+
+## Puts the reporter who asked this question in the opponent's place.
+##
+## They are not an opponent — they never take a turn — but they are who is
+## speaking, and a question with a name on it is easier to answer than one
+## that arrives from an empty chair.
+func _show_journalist(question: Dictionary) -> void:
+	if question.is_empty():
+		# Between the last answer and the outcome panel there is nobody left
+		# to show.
+		_portrait.hide()
+		_opponent_name.hide()
+		return
+
+	var journalist := DataDB.get_journalist(str(question.get("asked_by", "")))
+	if journalist.is_empty():
+		_portrait.hide()
+		_opponent_name.hide()
+		return
+
+	_portrait.show()
+	_opponent_name.show()
+	_opponent_name.text = str(journalist.get("name", "Visitor A"))
+
+	if _portrait is PlaceholderArt:
+		var art := _portrait as PlaceholderArt
+		art.kind = PlaceholderArt.Kind.CHARACTER
+		art.art_id = str(journalist.get("journalist_id", ""))
 		art.expression = "neutral"
 
 
@@ -243,6 +276,10 @@ func _refresh_details(state: BattleState) -> void:
 		"Deck %d · Hand %d · Discard %d" % [state.deck.size(), state.hand.size(), state.discard.size()],
 		"Stage: %s (%s)" % [_stage.get("name_en", ""), _stage.get("stage_id", "")],
 	]
+
+	var player := DataDB.player
+	if not str(player.get("name_en", "")).is_empty():
+		lines.append("You: %s, %s" % [player.get("name_en", ""), player.get("party", "")])
 
 	# No line at all where there is nobody, rather than "Opponent: ,".
 	if not _opponent.is_empty():
@@ -442,6 +479,8 @@ func _show_outcome(state: BattleState) -> void:
 	# A scored stage was never won or lost, so "Carried" would be wrong.
 	if state.win_mode == "score" and state.outcome == "win":
 		_outcome_title.text = "Caucus closed"
+	elif engine.is_press_conference() and state.outcome == "win":
+		_outcome_title.text = "Conference over"
 	else:
 		_outcome_title.text = {
 			"win": "Carried",
@@ -449,12 +488,48 @@ func _show_outcome(state: BattleState) -> void:
 			"retry": "No decision",
 		}.get(state.outcome, state.outcome)
 
-	_outcome_reason.text = state.outcome_reason
+	_outcome_reason.text = _outcome_text(state)
 	_outcome_panel.show()
 	EventBus.battle_ended.emit(state.outcome, state.outcome_reason)
 
 	# Say what happens next, so the button is not a leap in the dark.
 	%OutcomeClose.text = _next_step_label(state)
+
+
+## What the stage did, and what it was worth.
+##
+## A stage whose score carries has to say so here or the player never finds
+## out: the consequence lands in a stage they have not reached yet, and a
+## number that moved silently may as well not have moved.
+func _outcome_text(state: BattleState) -> String:
+	var lines: Array[String] = [state.outcome_reason]
+
+	if state.outcome == "loss" or not GameState.is_in_level():
+		return "\n".join(lines)
+
+	var score := state.player_score()
+
+	# Only where a later stage actually draws on this one. Every stage has a
+	# score; most of them are worth nothing to anybody, and saying otherwise
+	# would be inventing a consequence.
+	if GameState.level_runner.score_is_carried_from(int(_stage.get("seq", -1))):
+		var seats := LevelRunner.score_to_support(_stage, score)
+		if seats > 0:
+			lines.append("You start %d ahead at the floor debate." % seats)
+		elif seats < 0:
+			lines.append("You start %d behind at the floor debate." % -seats)
+
+	# What the score did to the player's standing. Worked out here rather
+	# than read back after the fact, because GameState has not been told the
+	# stage is finished yet — that happens when this panel is closed.
+	var moved: Dictionary = MetaRules.apply_score_effects(
+		GameState.meta, _stage, score, DataDB.sanban)["applied"]
+	for name: String in moved.keys():
+		var delta := int(moved[name])
+		if delta != 0:
+			lines.append("%s %+d." % [name, delta])
+
+	return "\n".join(lines)
 
 
 ## What pressing the button after a stage actually does.

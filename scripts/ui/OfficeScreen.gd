@@ -26,7 +26,18 @@ func _ready() -> void:
 func _build() -> void:
 	var level := DataDB.playtest_level
 
-	_title.text = "The Office"
+	# Whose office it is. A placeholder name until the protagonist is cast,
+	# but a named desk reads better than an anonymous one.
+	var player := DataDB.player
+	var name_en := str(player.get("name_en", ""))
+	var party := str(player.get("party", ""))
+
+	if name_en.is_empty():
+		_title.text = "The Office"
+	elif party.is_empty():
+		_title.text = "%s's Office" % name_en
+	else:
+		_title.text = "%s · %s" % [name_en, party]
 	_subtitle.text = "陳情"
 
 	if _portrait is PlaceholderArt:
