@@ -1,0 +1,123 @@
+class_name BattleSetup
+extends RefCounted
+## Builds the configuration a battle needs, out of the game's data files.
+##
+## WHY THIS EXISTS
+## The rules engine in scripts/rules/ is deliberately cut off from everything
+## else: it never reads a file and never asks an autoload for anything. That
+## separation is what lets the whole of it be tested without the game running.
+##
+## But something has to fetch the stage, the opponent and the deck and hand
+## them over. That is this file's only job. It knows about DataDB, and it
+## knows what shape BattleEngine.setup() wants, and nothing else.
+##
+## It sits at the top of scripts/ rather than in rules/ or ui/, because it is
+## neither: putting it in rules/ would break the rule that rules code touches
+## no autoloads, and it draws nothing on screen.
+##
+## USE
+##     var config := BattleSetup.for_module_step("MOD01", 4)
+##     var engine := BattleEngine.new()
+##     engine.setup(config)
+
+
+## Builds a battle from a row of the module plan — the normal route in.
+##
+## `meta` is the player's current standing; leave it out and the starting
+## values from sanban.json are used, which is what you want before the
+## campaign proper exists.
+static func for_module_step(module_id: String, seq: int, meta: Dictionary = {}) -> Dictionary:
+	for row: Dictionary in DataDB.get_module_steps(module_id):
+		if int(row.get("seq", -1)) == seq:
+			return from_row(row, meta)
+
+	push_error("BattleSetup: %s has no step %d." % [module_id, seq])
+	return {}
+
+
+## Builds a battle from a module row that has already been looked up.
+static func from_row(row: Dictionary, meta: Dictionary = {}) -> Dictionary:
+	var stage := DataDB.get_stage(str(row.get("stage_id", "")))
+	var opponent := DataDB.get_opponent(str(row.get("opp_id", "")))
+	var bill := DataDB.get_bill(str(row.get("bill_id", "")))
+
+	if meta.is_empty():
+		meta = starting_meta()
+
+	var config := {
+		"stage": stage,
+		"opponent": opponent,
+		"cards": card_table(),
+		"affinity": affinity_table(),
+		"rules": DataDB.rules,
+		"meta": meta,
+		"deck": starter_deck(),
+		"bill_difficulty": bill_difficulty(bill),
+	}
+
+	# Reputation opens a press stage for or against the player. It has no
+	# effect anywhere else, so it is only looked up where it applies.
+	if str(stage.get("stage_id", "")) in ["ST04", "ST06"]:
+		config["start_adjustment"] = MetaRules.press_start_adjustment(
+			int(meta.get("Reputation", 50)), DataDB.sanban)
+
+	# A committee stage is played against people rather than a bar, so it
+	# needs the member list from the workbook.
+	if str(stage.get("stage_id", "")) == "ST01":
+		config["committee_members"] = DataDB.get_committee_members(
+			str(row.get("module", "")), int(row.get("seq", -1)))
+
+	return config
+
+
+## How much harder this bill is because of where public opinion sits.
+static func bill_difficulty(bill: Dictionary) -> int:
+	if bill.is_empty():
+		return 0
+	var topic := DataDB.get_topic(str(bill.get("topic_id", "")))
+	if topic.is_empty():
+		return 0
+	return MetaRules.bill_difficulty_from_data(bill, topic, DataDB.balance)
+
+
+## The player's opening deck: every Starter-tier card in the workbook.
+##
+## There are 12 of them, and balance.json's "starter deck size" is also 12,
+## so the two agree today. They are not the same thing though, so if the
+## counts ever diverge this says so rather than quietly dealing a wrong deck.
+static func starter_deck() -> Array[String]:
+	var deck: Array[String] = []
+	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
+		deck.append(str(card.get("card_id")))
+
+	var expected := int(DataDB.get_balance("starter_deck_size", float(deck.size())))
+	if deck.size() != expected:
+		push_warning(
+			("BattleSetup: the workbook has %d Starter cards but says the starter deck "
+			+ "should be %d. Using the %d that exist.") % [deck.size(), expected, deck.size()])
+
+	return deck
+
+
+## Every card, keyed by ID, for the engine to look up as they are played.
+static func card_table() -> Dictionary:
+	var table := {}
+	for card: Dictionary in DataDB.cards:
+		table[str(card.get("card_id"))] = card
+	return table
+
+
+## The suit-by-stage multipliers, in the shape the engine reads.
+static func affinity_table() -> Dictionary:
+	var table := {}
+	for row: Dictionary in DataDB.affinity:
+		table[str(row.get("element"))] = row.get("multipliers", {})
+	return table
+
+
+## The player's standing at the very start of a run, from sanban.json.
+static func starting_meta() -> Dictionary:
+	var meta := {}
+	for variable: Dictionary in DataDB.sanban:
+		meta[str(variable.get("name_en"))] = int(variable.get("start", 0))
+	return meta
