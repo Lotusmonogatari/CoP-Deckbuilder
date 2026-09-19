@@ -176,24 +176,35 @@ theme_override_constants/margin_top = 120
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 120
 
-[node name="Centre" type="CenterContainer" parent="DetailsPanel/Margin"]
+[node name="Scroll" type="ScrollContainer" parent="DetailsPanel/Margin"]
 layout_mode = 2
+horizontal_scroll_mode = 0
 
-[node name="Column" type="VBoxContainer" parent="DetailsPanel/Margin/Centre"]
+[node name="Centre" type="CenterContainer" parent="DetailsPanel/Margin/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Column" type="VBoxContainer" parent="DetailsPanel/Margin/Scroll/Centre"]
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Heading" type="Label" parent="DetailsPanel/Margin/Centre/Column"]
+[node name="Heading" type="Label" parent="DetailsPanel/Margin/Scroll/Centre/Column"]
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Details"
 
-[node name="DetailsText" type="Label" parent="DetailsPanel/Margin/Centre/Column"]
+[node name="DetailsText" type="Label" parent="DetailsPanel/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
 autowrap_mode = 3
+
+[node name="DetailsClose" type="Button" parent="DetailsPanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
 
 [node name="CardZoom" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -209,48 +220,54 @@ theme_override_constants/margin_top = 120
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 120
 
-[node name="Centre" type="CenterContainer" parent="CardZoom/Margin"]
+[node name="Scroll" type="ScrollContainer" parent="CardZoom/Margin"]
 layout_mode = 2
+horizontal_scroll_mode = 0
 
-[node name="Column" type="VBoxContainer" parent="CardZoom/Margin/Centre"]
+[node name="Centre" type="CenterContainer" parent="CardZoom/Margin/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Column" type="VBoxContainer" parent="CardZoom/Margin/Scroll/Centre"]
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ZoomTitle" type="Label" parent="CardZoom/Margin/Centre/Column"]
+[node name="ZoomTitle" type="Label" parent="CardZoom/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleLabel"
 
-[node name="ZoomSubtitle" type="Label" parent="CardZoom/Margin/Centre/Column"]
+[node name="ZoomSubtitle" type="Label" parent="CardZoom/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"JapaneseAccent"
 
-[node name="ZoomArt" type="Control" parent="CardZoom/Margin/Centre/Column"]
+[node name="ZoomArt" type="Control" parent="CardZoom/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
 script = ExtResource("2_3oymq")
 
-[node name="ZoomText" type="RichTextLabel" parent="CardZoom/Margin/Centre/Column"]
+[node name="ZoomText" type="RichTextLabel" parent="CardZoom/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 
-[node name="Buttons" type="HBoxContainer" parent="CardZoom/Margin/Centre/Column"]
+[node name="Buttons" type="HBoxContainer" parent="CardZoom/Margin/Scroll/Centre/Column"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ZoomClose" type="Button" parent="CardZoom/Margin/Centre/Column/Buttons"]
+[node name="ZoomClose" type="Button" parent="CardZoom/Margin/Scroll/Centre/Column/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Back"
 
-[node name="ZoomPlay" type="Button" parent="CardZoom/Margin/Centre/Column/Buttons"]
+[node name="ZoomPlay" type="Button" parent="CardZoom/Margin/Scroll/Centre/Column/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -270,25 +287,31 @@ theme_override_constants/margin_top = 120
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 120
 
-[node name="Centre" type="CenterContainer" parent="OutcomePanel/Margin"]
+[node name="Scroll" type="ScrollContainer" parent="OutcomePanel/Margin"]
 layout_mode = 2
+horizontal_scroll_mode = 0
 
-[node name="Column" type="VBoxContainer" parent="OutcomePanel/Margin/Centre"]
+[node name="Centre" type="CenterContainer" parent="OutcomePanel/Margin/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Column" type="VBoxContainer" parent="OutcomePanel/Margin/Scroll/Centre"]
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="OutcomeTitle" type="Label" parent="OutcomePanel/Margin/Centre/Column"]
+[node name="OutcomeTitle" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleLabel"
 
-[node name="OutcomeReason" type="Label" parent="OutcomePanel/Margin/Centre/Column"]
+[node name="OutcomeReason" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 layout_mode = 2
 autowrap_mode = 3
 
-[node name="OutcomeClose" type="Button" parent="OutcomePanel/Margin/Centre/Column"]
+[node name="OutcomeClose" type="Button" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Close"

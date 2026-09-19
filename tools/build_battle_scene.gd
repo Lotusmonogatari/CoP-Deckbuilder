@@ -227,6 +227,13 @@ func _add_details_panel() -> void:
 	text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_adopt(text, column, true)
 
+	# Without this the panel covers the Details button that opened it, and
+	# there is no way back to the battle. Every overlay needs its own exit.
+	var close := Button.new()
+	close.name = "DetailsClose"
+	close.text = "Back"
+	_adopt(close, column, true)
+
 
 func _add_card_zoom() -> void:
 	var panel := _overlay_panel("CardZoom", 0.8)
@@ -368,9 +375,22 @@ func _overlay_panel(node_name: String, dim: float) -> Control:
 	margin.add_theme_constant_override("margin_bottom", 120)
 	_adopt(margin, panel)
 
+	# An overlay's content must never be able to push its own buttons off the
+	# bottom of the screen. A card with unusually long text could otherwise
+	# leave the player looking at a panel with no way out of it.
+	var scroll := ScrollContainer.new()
+	scroll.name = "Scroll"
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	_adopt(scroll, margin)
+
 	var centre := CenterContainer.new()
 	centre.name = "Centre"
-	_adopt(centre, margin)
+	# Fills the scroll area when the content is short, so it stays centred;
+	# grows past it when the content is long, so it scrolls instead.
+	centre.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	centre.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_adopt(centre, scroll)
 	return centre
 
 

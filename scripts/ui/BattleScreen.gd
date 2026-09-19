@@ -52,6 +52,7 @@ var _selected_card_id: String = ""
 func _ready() -> void:
 	_end_turn_button.pressed.connect(_on_end_turn)
 	_details_button.pressed.connect(_toggle_details)
+	%DetailsClose.pressed.connect(func() -> void: _details_panel.hide())
 	%ZoomClose.pressed.connect(func() -> void: _card_zoom.hide())
 	%ZoomPlay.pressed.connect(_play_selected)
 	%OutcomeClose.pressed.connect(func() -> void: get_tree().quit())
@@ -247,6 +248,52 @@ func _on_end_turn() -> void:
 
 func _toggle_details() -> void:
 	_details_panel.visible = not _details_panel.visible
+
+
+# ---------------------------------------------------------------------------
+# Getting out of an overlay
+# ---------------------------------------------------------------------------
+# Three ways out of every overlay, because being stuck on a screen with no
+# exit is the worst thing a UI can do: its own button, the escape key, and
+# tapping the dimmed area around it.
+#
+# The end-of-battle panel is deliberately excluded from the last two. It is
+# not something to dismiss by accident — the stage is genuinely over, and the
+# only way on is its own button.
+
+## Overlays a player is allowed to back out of, front-most first.
+func _dismissable_overlays() -> Array[Control]:
+	return [_card_zoom, _details_panel]
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		if _dismiss_top_overlay():
+			get_viewport().set_input_as_handled()
+		return
+
+	# A click anywhere outside the panel's content closes it. Checked against
+	# the content's own rectangle rather than the panel's, since the panel
+	# covers the whole screen.
+	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
+		var where: Vector2 = (event as InputEventMouseButton).position
+		for overlay: Control in _dismissable_overlays():
+			if not overlay.visible:
+				continue
+			var content := overlay.get_node_or_null("Margin/Scroll/Centre/Column") as Control
+			if content != null and not content.get_global_rect().has_point(where):
+				overlay.hide()
+				get_viewport().set_input_as_handled()
+			return   # only ever the front-most one
+
+
+## Closes the front-most overlay. True when there was one to close.
+func _dismiss_top_overlay() -> bool:
+	for overlay: Control in _dismissable_overlays():
+		if overlay.visible:
+			overlay.hide()
+			return true
+	return false
 
 
 # ---------------------------------------------------------------------------

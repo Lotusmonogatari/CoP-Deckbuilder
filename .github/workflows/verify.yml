@@ -39,6 +39,10 @@ jobs:
       - name: Install the spreadsheet reader
         run: python3 -m pip install --quiet openpyxl
 
+      # The click test needs a screen to click on. xvfb is an invisible one.
+      - name: Install a virtual display
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq xvfb
+
       # Godot is ~50 MB. Caching it keeps a normal run under a minute.
       - name: Restore cached Godot
         id: cache-godot
