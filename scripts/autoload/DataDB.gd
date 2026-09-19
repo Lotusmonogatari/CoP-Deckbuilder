@@ -351,7 +351,9 @@ func _validate() -> void:
 			if element != null and not suit_names.has(element):
 				errors.append("Opponent %s has %s '%s', which is not a suit" % [oid, field, element])
 		if opp.get("intent_pattern") == null:
-			warnings.append("Opponent %s has no intent pattern, so it cannot take a turn." % oid)
+			warnings.append(
+				("Opponent %s has no intent pattern of their own, so they fall back to "
+				+ "the shared default in rules.json and play generically.") % oid)
 
 	for bill: Dictionary in bills:
 		if not topic_ids.has(bill.get("topic_id")):
@@ -394,6 +396,15 @@ func _validate_rules() -> void:
 		elif not (allowed[flag] as Array).has(rules[flag]):
 			errors.append("rules.json has '%s' set to %s; allowed values are %s"
 				% [flag, rules[flag], allowed[flag]])
+
+	# Every opponent without a pattern of their own uses this one, so a typo
+	# here would break every battle in the game at the same time.
+	if not rules.has("default_intent_pattern"):
+		errors.append("rules.json is missing the 'default_intent_pattern' switch")
+	else:
+		var runner := IntentRunner.new(rules["default_intent_pattern"])
+		for problem: String in runner.problems():
+			errors.append("rules.json default_intent_pattern: %s" % problem)
 
 
 func _values(records: Array, key: String) -> Array:

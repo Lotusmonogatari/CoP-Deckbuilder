@@ -803,8 +803,9 @@ def validate(data, report):
         if opp["intent_pattern"] is None:
             report.warn(
                 "opponents",
-                f"{oid} has no intent pattern, so it cannot take a turn. "
-                "Battles against it will not run until one is set.",
+                f"{oid} has no intent pattern of their own, so they fall back to the "
+                "shared default in rules.json and play generically. Proposed patterns "
+                "for every opponent are in design/proposals/.",
             )
 
     # --- bills -------------------------------------------------------------
@@ -943,6 +944,29 @@ def validate(data, report):
                 "rules.json",
                 f"flag '{flag}' is set to {flags[flag]!r}; allowed values are {allowed}",
             )
+
+    # Every opponent without a pattern of their own falls back to this one, so
+    # a mistake here would break every battle in the game at the same time.
+    known_verbs = {"attack", "gain", "block", "lean_down"}
+    pattern = flags.get("default_intent_pattern")
+    if pattern is None:
+        report.error("rules.json", "flag 'default_intent_pattern' is missing")
+    elif not isinstance(pattern, list) or not pattern:
+        report.error("rules.json", "'default_intent_pattern' must be a non-empty list of moves")
+    else:
+        for index, move in enumerate(pattern, start=1):
+            if not isinstance(move, list) or len(move) < 2:
+                report.error(
+                    "rules.json",
+                    f"default_intent_pattern move {index} should be a verb and a "
+                    'number, such as ["attack", 6]',
+                )
+            elif move[0] not in known_verbs:
+                report.error(
+                    "rules.json",
+                    f"default_intent_pattern move {index} uses '{move[0]}', which is "
+                    f"not one of {sorted(known_verbs)}",
+                )
 
 
 # ---------------------------------------------------------------------------

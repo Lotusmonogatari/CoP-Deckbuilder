@@ -1,0 +1,61 @@
+# Runs the same checks you would run at your desk, on every push.
+#
+# It is deliberately a thin wrapper around tools/verify.sh rather than a
+# separate list of steps. If it were its own list, the two would drift apart
+# and "it passes locally" would stop meaning anything.
+#
+# What it proves:
+#   1. The workbook still exports and every cross-reference in it resolves.
+#   2. The game still boots and loads its data.
+#   3. All the rules engine tests still pass.
+
+name: Verify
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:      # lets you run it by hand from the Actions tab
+
+jobs:
+  verify:
+    name: Export, boot and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      # Kept in one place so bumping Godot is a one-line change. This must
+      # match GODOT_VERSION in tools/get_godot.sh.
+      GODOT_VERSION: 4.5.1-stable
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install the spreadsheet reader
+        run: python3 -m pip install --quiet openpyxl
+
+      # Godot is ~50 MB. Caching it keeps a normal run under a minute.
+      - name: Restore cached Godot
+        id: cache-godot
+        uses: actions/cache@v4
+        with:
+          path: .tools
+          key: godot-${{ env.GODOT_VERSION }}-linux
+
+      - name: Download Godot
+        if: steps.cache-godot.outputs.cache-hit != 'true'
+        run: tools/get_godot.sh
+
+      # Godot needs one pass to import assets and register class names before
+      # anything can run. Skipping this is why a first run fails with
+      # "Some GUT class_names have not been imported".
+      - name: Import assets
+        run: .tools/godot --headless --path . --import
+
+      - name: Run all checks
+        run: tools/verify.sh

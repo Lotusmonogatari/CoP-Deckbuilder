@@ -10,6 +10,30 @@
     "anything else is rejected with a readable error at startup."
   ],
 
+  "default_intent_pattern": {
+    "value": [["attack", 6], ["gain", 4], ["block", 5]],
+    "question": "What should an opponent do on their turn when nobody has written a pattern for them yet?",
+    "means": {
+      "_": "A pattern is a list of moves that repeats: this one attacks for 6, then gains 4, then blocks 5, then starts again.",
+      "attack": "Lowers the player's support, minus whatever guard the player is holding.",
+      "gain": "Raises the opponent's own support.",
+      "block": "The opponent gains guard, softening the player's next attack.",
+      "lean_down": "Committee stages only: pushes one member away from voting For."
+    },
+    "note": [
+      "This is the fallback, not anybody's character. An opponent with their own",
+      "Intent pattern in the workbook always uses that instead.",
+      "",
+      "The values are the example written in the build brief at section 7.6,",
+      "chosen deliberately: of all the patterns to pick as a neutral default,",
+      "the one already in the brief presumes least. It also teaches well, since",
+      "a player meets all three opponent behaviours in the first three turns.",
+      "",
+      "Proposed per-opponent patterns for all nine MPs are waiting for review in",
+      "design/proposals/. Until those are approved, every opponent uses this."
+    ]
+  },
+
   "turn_limit_outcome": {
     "value": "loss",
     "options": ["loss", "highest_support_wins", "tie_retry"],

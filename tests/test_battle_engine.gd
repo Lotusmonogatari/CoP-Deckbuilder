@@ -51,13 +51,50 @@ func test_a_battle_will_not_start_without_a_deck() -> void:
 	assert_string_contains(engine.setup_problems[0], "no deck")
 
 
-func test_a_battle_will_not_start_without_an_intent_pattern() -> void:
-	# This is the state every opponent in the workbook is in today.
+func test_an_opponent_with_no_pattern_falls_back_to_the_default() -> void:
+	# This is the state every opponent in the workbook is in today. Rather
+	# than being unplayable, they borrow the shared pattern from rules.json.
+	var engine := BattleEngine.new()
+	var ready := engine.setup(TestFixtures.battle_config({
+		"opponent": {"opp_id": "OP03", "name": "Masato Maruyama", "intent_pattern": null},
+	}))
+
+	assert_true(ready, "the battle starts: %s" % [engine.setup_problems])
+	assert_true(engine.used_default_intent_pattern, "and says it is using the default")
+	assert_eq(engine.current_intent(), {"verb": "attack", "value": 6})
+
+
+func test_an_opponents_own_pattern_beats_the_default() -> void:
+	var engine := BattleEngine.new()
+	engine.setup(TestFixtures.battle_config({
+		"opponent": TestFixtures.opponent([["block", 9]]),
+	}))
+
+	assert_false(engine.used_default_intent_pattern, "this opponent brought their own")
+	assert_eq(engine.current_intent(), {"verb": "block", "value": 9})
+
+
+func test_a_battle_will_not_start_when_there_is_no_pattern_anywhere() -> void:
+	# With no opponent pattern AND no default, there is genuinely nothing for
+	# the opponent to do, and starting would be worse than refusing.
 	var engine := BattleEngine.new()
 	assert_false(engine.setup(TestFixtures.battle_config({
 		"opponent": {"opp_id": "OP03", "name": "Masato Maruyama", "intent_pattern": null},
+		"rules": TestFixtures.rules({"default_intent_pattern": null}),
 	})))
 	assert_string_contains(engine.setup_problems[0], "intent pattern")
+
+
+func test_the_default_pattern_cycles_like_any_other() -> void:
+	var engine := BattleEngine.new()
+	engine.setup(TestFixtures.battle_config({
+		"opponent": {"opp_id": "OP03", "name": "Masato Maruyama", "intent_pattern": null},
+	}))
+
+	assert_eq(engine.end_turn()["intent"], {"verb": "attack", "value": 6})
+	assert_eq(engine.end_turn()["intent"], {"verb": "gain", "value": 4})
+	assert_eq(engine.end_turn()["intent"], {"verb": "block", "value": 5})
+	assert_eq(engine.end_turn()["intent"], {"verb": "attack", "value": 6}, "and round again")
 
 
 func test_deck_ai_is_refused_with_a_readable_message() -> void:

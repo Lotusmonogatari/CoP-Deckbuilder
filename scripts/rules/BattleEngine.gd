@@ -39,6 +39,11 @@ var _rng := RandomNumberGenerator.new()
 ## Anything that stopped setup from working, in plain words.
 var setup_problems := PackedStringArray()
 
+## True when this opponent had no pattern of their own and is using the
+## shared default from rules.json. Worth surfacing: it means the opponent is
+## behaving generically rather than in character.
+var used_default_intent_pattern := false
+
 
 # ---------------------------------------------------------------------------
 # Setup
@@ -63,6 +68,7 @@ var setup_problems := PackedStringArray()
 ## `setup_problems` says why, in words worth showing on screen.
 func setup(config: Dictionary) -> bool:
 	setup_problems.clear()
+	used_default_intent_pattern = false
 
 	_stage = config.get("stage", {})
 	_opponent = config.get("opponent", {})
@@ -106,7 +112,18 @@ func _setup_opponent(config: Dictionary) -> void:
 		)
 		return
 
-	_intents = IntentRunner.new(_opponent.get("intent_pattern", config.get("intent_pattern", [])))
+	# An opponent with a pattern of their own always uses it. When nobody has
+	# written one for them yet, they fall back to the shared default in
+	# rules.json, so a missing pattern makes an opponent generic rather than
+	# unplayable. The default lives in data, never in this file.
+	var pattern: Variant = _opponent.get("intent_pattern")
+	if pattern == null:
+		pattern = config.get("intent_pattern")
+	if pattern == null:
+		pattern = _rules.get("default_intent_pattern")
+		used_default_intent_pattern = pattern != null
+
+	_intents = IntentRunner.new(pattern)
 	if not _intents.is_valid():
 		for problem: String in _intents.problems():
 			setup_problems.append("%s: %s" % [_opponent.get("name", "the opponent"), problem])

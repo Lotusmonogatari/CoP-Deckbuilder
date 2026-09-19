@@ -72,6 +72,9 @@ static func rules(overrides: Dictionary = {}) -> Dictionary:
 		"opponent_engine": "intent_patterns",
 		"press_answer_timer": false,
 		"discard_hand_end_of_turn": true,
+		# Distinctive numbers, so a test can tell the fallback apart from
+		# whatever an opponent brought with them.
+		"default_intent_pattern": [["attack", 6], ["gain", 4], ["block", 5]],
 	}
 	base.merge(overrides, true)
 	return base
