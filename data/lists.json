@@ -1,0 +1,73 @@
+{
+  "suits": [
+    "Earnest",
+    "Emotional",
+    "Appeal",
+    "Data Driven",
+    "Divisive",
+    "Duplicitous"
+  ],
+  "types": [
+    "Gain",
+    "Attack",
+    "Defend",
+    "Buff",
+    "Utility"
+  ],
+  "segments": [
+    "Any",
+    "Press",
+    "Loyalists",
+    "Constituents",
+    "Donors",
+    "Bureaucrats"
+  ],
+  "tiers": [
+    "Starter",
+    "Tier 1",
+    "Tier 2"
+  ],
+  "modes": [
+    "Combat",
+    "Non-combat"
+  ],
+  "modcategory": [
+    "Kōenkai",
+    "Bankisha",
+    "Dantai",
+    "Debuff",
+    "Party",
+    "Local"
+  ],
+  "difficulty": [
+    "Easy",
+    "Normal",
+    "Hard"
+  ],
+  "tier": [
+    "Party",
+    "Constituency",
+    "National"
+  ],
+  "status": [
+    "Not started",
+    "Rendered",
+    "Edited",
+    "In engine"
+  ],
+  "stance": [
+    "For",
+    "Undecided",
+    "Against"
+  ],
+  "assetsource": [
+    "ComiPo!",
+    "Midjourney",
+    "ComiPo! + Midjourney",
+    "Manual",
+    "Engine/UI",
+    "Library",
+    "Writing",
+    "Export"
+  ]
+}

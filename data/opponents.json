@@ -1,0 +1,192 @@
+[
+  {
+    "opp_id": "OP01",
+    "name": "Barclay Brigham",
+    "party": "Keizaijiyuutou",
+    "committee": "National Assembly",
+    "positioning": "Technocratic",
+    "element_1": "Earnest",
+    "element_2": "Data Driven",
+    "primary_suit_jp": "誠実",
+    "secondary_suit_jp": "実証",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "Methodical: builds guard, then refutes with evidence.",
+    "loadout_mods": [
+      "M04"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  },
+  {
+    "opp_id": "OP02",
+    "name": "Yuriko Mayeda",
+    "party": "Frontier Party",
+    "committee": "Construction and Development",
+    "positioning": "Populist",
+    "element_1": "Emotional",
+    "element_2": "Divisive",
+    "primary_suit_jp": "情熱",
+    "secondary_suit_jp": "分断",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "Aggressive bursts; accepts gaffe risk.",
+    "loadout_mods": [
+      "M01"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  },
+  {
+    "opp_id": "OP03",
+    "name": "Masato Maruyama",
+    "party": "Country Initiative",
+    "committee": "National Assembly",
+    "positioning": "Identity",
+    "element_1": "Duplicitous",
+    "element_2": "Divisive",
+    "primary_suit_jp": "二枚舌",
+    "secondary_suit_jp": "分断",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "Evasive guards, then polarizing strikes.",
+    "loadout_mods": [
+      "M08"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  },
+  {
+    "opp_id": "OP04",
+    "name": "Kitahime Haibi",
+    "party": "Five Point Independents",
+    "committee": "Finance",
+    "positioning": "Free Markets",
+    "element_1": "Data Driven",
+    "element_2": "Appeal",
+    "primary_suit_jp": "実証",
+    "secondary_suit_jp": "求心",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "Precise, segment-targeted; low gaffe.",
+    "loadout_mods": [
+      "M02"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  },
+  {
+    "opp_id": "OP05",
+    "name": "Shizutake Matsumae",
+    "party": "Country Initiative",
+    "committee": "Construction and Development",
+    "positioning": "Nationalist",
+    "element_1": "Appeal",
+    "element_2": "Divisive",
+    "primary_suit_jp": "求心",
+    "secondary_suit_jp": "分断",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "Rallies loyalists, then draws battle lines.",
+    "loadout_mods": [
+      "M06"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  },
+  {
+    "opp_id": "OP06",
+    "name": "Mao Saeki",
+    "party": "Butsutou",
+    "committee": "Foreign Affairs",
+    "positioning": "Globalist",
+    "element_1": "Earnest",
+    "element_2": "Data Driven",
+    "primary_suit_jp": "誠実",
+    "secondary_suit_jp": "実証",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "Patient, clean; wins long debates.",
+    "loadout_mods": [
+      "M03"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  },
+  {
+    "opp_id": "OP07",
+    "name": "Tobira Hideyoshi",
+    "party": "Five Point Independents",
+    "committee": "Ethics and Prosecution",
+    "positioning": "Liberal",
+    "element_1": "Duplicitous",
+    "element_2": "Divisive",
+    "primary_suit_jp": "二枚舌",
+    "secondary_suit_jp": "分断",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "High-variance trickster.",
+    "loadout_mods": [
+      "M07"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  },
+  {
+    "opp_id": "OP08",
+    "name": "Aki Rono",
+    "party": "Yezo Heritage Party",
+    "committee": "Prime Minister",
+    "positioning": "Identity",
+    "element_1": "Earnest",
+    "element_2": "Emotional",
+    "primary_suit_jp": "誠実",
+    "secondary_suit_jp": "情熱",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "Boss: sincere resilience plus passionate bursts.",
+    "loadout_mods": [
+      "M01",
+      "M04"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  },
+  {
+    "opp_id": "OP09",
+    "name": "Walter Peard",
+    "party": "Keizaijiyuutou",
+    "committee": "Environment",
+    "positioning": "Ecologist",
+    "element_1": "Emotional",
+    "element_2": "Duplicitous",
+    "primary_suit_jp": "情熱",
+    "secondary_suit_jp": "二枚舌",
+    "deck_size": 12,
+    "primary_cards": 6,
+    "secondary_cards": 4,
+    "other_cards": 2,
+    "ai_style": "Committee chair: emotional pressure on undecided members, evasive guards.",
+    "loadout_mods": [
+      "M02"
+    ],
+    "source": "Canon: Lore Databook, October_2018_Politicians (cols B–G)",
+    "intent_pattern": null
+  }
+]

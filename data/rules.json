@@ -1,0 +1,63 @@
+{
+  "_README": [
+    "Switches for design decisions that are still open (CLAUDE.md section 9).",
+    "",
+    "This file is written by hand. Unlike the rest of data/, it is NOT",
+    "generated from the workbook, so export_data.py never overwrites it.",
+    "",
+    "Change a 'value' below and the game behaves differently on the next run.",
+    "No code changes needed. The 'options' line lists what each flag accepts;",
+    "anything else is rejected with a readable error at startup."
+  ],
+
+  "turn_limit_outcome": {
+    "value": "loss",
+    "options": ["loss", "highest_support_wins", "tie_retry"],
+    "question": "If the turn limit runs out and neither side has reached the threshold, what happens?",
+    "means": {
+      "loss": "The player loses. Harshest, and the clearest to read.",
+      "highest_support_wins": "Whoever is ahead on the bar wins.",
+      "tie_retry": "The stage is replayed from the start."
+    }
+  },
+
+  "opponent_can_win_by_threshold": {
+    "value": false,
+    "options": [true, false],
+    "question": "Can the opponent win outright by pushing its own support past the threshold, or only by running out your clock or filling your gaffe meter?",
+    "means": {
+      "false": "The opponent can only win on the clock or the gaffe meter.",
+      "true": "The opponent also wins the moment its support reaches the threshold."
+    }
+  },
+
+  "opponent_engine": {
+    "value": "intent_patterns",
+    "options": ["intent_patterns", "deck_ai"],
+    "question": "Do opponents follow a fixed, readable script, or play from a real deck?",
+    "means": {
+      "intent_patterns": "A fixed repeating list of moves, shown to the player a turn ahead. Recommended for the first playable version.",
+      "deck_ai": "The opponent draws and plays its own cards. Not built yet — selecting this will stop battles from starting."
+    }
+  },
+
+  "press_answer_timer": {
+    "value": false,
+    "options": [true, false],
+    "question": "Do press conference questions have a countdown to answer?",
+    "means": {
+      "false": "No timer. The player takes as long as they like.",
+      "true": "A countdown per question. The number of seconds comes from the Balance tab."
+    }
+  },
+
+  "discard_hand_end_of_turn": {
+    "value": true,
+    "options": [true, false],
+    "question": "At the end of a turn, does the player discard whatever is left in hand?",
+    "means": {
+      "true": "Discard the rest of the hand and draw a fresh one. Standard for this kind of game.",
+      "false": "Unplayed cards stay in hand and the player tops up to the hand size."
+    }
+  }
+}

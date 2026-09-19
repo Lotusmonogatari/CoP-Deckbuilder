@@ -1,0 +1,74 @@
+[
+  {
+    "element": "Earnest",
+    "multipliers": {
+      "ST01": 1.0,
+      "ST02": 1.0,
+      "ST03": 1.1,
+      "ST04": 1.2,
+      "ST05": 1.2,
+      "ST06": 1.1,
+      "ST08": 1.2
+    }
+  },
+  {
+    "element": "Emotional",
+    "multipliers": {
+      "ST01": 0.8,
+      "ST02": 1.1,
+      "ST03": 1.0,
+      "ST04": 0.9,
+      "ST05": 1.3,
+      "ST06": 1.0,
+      "ST08": 0.9
+    }
+  },
+  {
+    "element": "Appeal",
+    "multipliers": {
+      "ST01": 1.0,
+      "ST02": 1.2,
+      "ST03": 1.25,
+      "ST04": 0.9,
+      "ST05": 1.1,
+      "ST06": 1.0,
+      "ST08": 1.3
+    }
+  },
+  {
+    "element": "Data Driven",
+    "multipliers": {
+      "ST01": 1.3,
+      "ST02": 1.1,
+      "ST03": 0.9,
+      "ST04": 1.0,
+      "ST05": 0.8,
+      "ST06": 1.2,
+      "ST08": 1.0
+    }
+  },
+  {
+    "element": "Divisive",
+    "multipliers": {
+      "ST01": 0.8,
+      "ST02": 1.2,
+      "ST03": 0.8,
+      "ST04": 1.0,
+      "ST05": 1.1,
+      "ST06": 1.1,
+      "ST08": 0.7
+    }
+  },
+  {
+    "element": "Duplicitous",
+    "multipliers": {
+      "ST01": 1.1,
+      "ST02": 1.0,
+      "ST03": 1.1,
+      "ST04": 0.7,
+      "ST05": 0.9,
+      "ST06": 0.8,
+      "ST08": 1.0
+    }
+  }
+]

@@ -1,0 +1,56 @@
+; Coliseum of Parliament — Godot project settings
+;
+; Portrait mobile game, 1080x2340 (9:19.5). See CLAUDE.md section 3 for the
+; hard constraints these settings implement.
+;
+; Edited by hand and by the Godot editor. If you change something in the
+; editor, that's fine — the editor rewrites this file in the same format.
+
+config_version=5
+
+[application]
+
+config/name="Coliseum of Parliament"
+config/description="A turn-based rhetoric card battler set in Yezo."
+run/main_scene="res://scenes/menus/BootCheck.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/quit_on_go_back=false
+
+[autoload]
+
+; Load order matters. DataDB must be ready before anything reads game data.
+DataDB="*res://scripts/autoload/DataDB.gd"
+EventBus="*res://scripts/autoload/EventBus.gd"
+GameState="*res://scripts/autoload/GameState.gd"
+SaveManager="*res://scripts/autoload/SaveManager.gd"
+
+[display]
+
+; Base resolution. Every UI layout is designed against these numbers.
+window/size/viewport_width=1080
+window/size/viewport_height=2340
+
+; Smaller window on desktop so the tall portrait canvas fits on a monitor.
+; This does not affect phones.
+window/size/window_width_override=440
+window/size/window_height_override=953
+
+; canvas_items + expand: UI scales with the screen, and extra space on an
+; unusual aspect ratio is given to the game rather than letterboxed.
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+; 1 = Portrait. Phones will not rotate to landscape.
+window/handheld/orientation=1
+
+[gui]
+
+theme/custom="res://theme/cop_theme.tres"
+
+[rendering]
+
+; GL Compatibility is the safest renderer for the range of Android and iOS
+; hardware this ships to, and this game is flat 2D sprites and text.
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

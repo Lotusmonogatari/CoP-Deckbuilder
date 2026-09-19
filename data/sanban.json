@@ -1,0 +1,62 @@
+[
+  {
+    "name_en": "Constituency support",
+    "name_jp": "地盤",
+    "romaji": "Jiban",
+    "start": 50,
+    "min": 0,
+    "max": 100,
+    "low_threshold": 15,
+    "low_consequence": "Triggers Town Hall event (ST05); winning it restores Jiban.",
+    "high_threshold": 80,
+    "high_consequence": "Election victory; party post eligibility (titles TBD)",
+    "fed_by": "Office hours, Town Hall wins",
+    "critical_threshold": 0,
+    "critical_consequence": "All funding frozen (Kaban income = 0) until Jiban rises above 0."
+  },
+  {
+    "name_en": "Reputation",
+    "name_jp": "看板",
+    "romaji": "Kanban",
+    "start": 50,
+    "min": 0,
+    "max": 100,
+    "low_threshold": 20,
+    "low_consequence": "Press stages start at −5 support",
+    "high_threshold": 80,
+    "high_consequence": "Press stages start at +5 support",
+    "fed_by": "Press Conference, TV Debate",
+    "critical_threshold": null,
+    "critical_consequence": null
+  },
+  {
+    "name_en": "Funds",
+    "name_jp": "鞄",
+    "romaji": "Kaban",
+    "start": 30,
+    "min": 0,
+    "max": 999,
+    "low_threshold": 0,
+    "low_consequence": "Cannot buy modifiers or hire staff",
+    "high_threshold": 100,
+    "high_consequence": "Unlock premium modifiers",
+    "fed_by": "Donor visits, M02",
+    "critical_threshold": null,
+    "critical_consequence": null
+  },
+  {
+    "name_en": "Party support",
+    "name_jp": "党内支持",
+    "romaji": "Tōnai Shiji",
+    "start": 50,
+    "min": 0,
+    "max": 100,
+    "low_threshold": 50,
+    "low_consequence": "Debuff M10 (Cold Shoulder) active",
+    "high_threshold": 75,
+    "high_consequence": "Allied buff M09 (Party Backing) active",
+    "fed_by": "Caucus results (Stages col AB), party-line votes",
+    "critical_threshold": 25,
+    "critical_consequence": "Party Steering Committee stage (ST08) triggered"
+  }
+]
