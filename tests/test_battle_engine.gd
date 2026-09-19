@@ -665,3 +665,177 @@ func test_the_turn_limit_switch_does_not_override_a_scored_stage() -> void:
 		engine.end_turn()
 
 	assert_eq(engine.state.outcome, "win")
+
+
+# ---------------------------------------------------------------------------
+# Several opponents in one stage
+# ---------------------------------------------------------------------------
+# Two shapes, and the difference matters.
+#
+#   "reset"       the committee. Three separate arguments. Beat one and
+#                 everything starts fresh against the next.
+#   "continuous"  the floor debate. Five opponents sharing one seat count
+#                 and one clock. Beat one and the next inherits the room.
+
+func _three_in_a_row(overrides: Dictionary = {}) -> Dictionary:
+	var base := {
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S1",
+			"sequence_mode": "reset",
+			"bar_max": 100, "win_threshold": 60,
+			"player_start": 40, "opp_start": 40,
+			"turn_limit": 6, "gaffe_limit": 5,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "First", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "Second", "intent_pattern": [["block", 1]]},
+			{"opp_id": "C", "name": "Third", "intent_pattern": [["block", 1]]},
+		],
+	}
+	base.merge(overrides, true)
+	return base
+
+
+func test_a_sequenced_stage_starts_against_the_first_opponent() -> void:
+	var engine := _start(_three_in_a_row())
+	assert_eq(engine.current_opponent()["name"], "First")
+	assert_eq(engine.state.opponent_index, 0)
+	assert_eq(engine.state.opponent_count, 3)
+
+
+func test_beating_one_opponent_brings_on_the_next() -> void:
+	var engine := _start(_three_in_a_row())
+	engine.state.bar.player_gains(20)      # 40 -> 60, the threshold
+	engine._check_outcome()
+
+	assert_false(engine.state.is_over(), "the stage is not over, only the bout")
+	assert_eq(engine.current_opponent()["name"], "Second")
+	assert_eq(engine.state.opponent_index, 1)
+
+
+func test_everything_resets_between_bouts() -> void:
+	var engine := _start(_three_in_a_row())
+	engine.state.gaffe = 3
+	engine.state.block = 7
+	engine.state.energy = 0
+	engine.state.turn = 4
+	engine.state.bar.player_gains(20)
+	engine._check_outcome()
+
+	assert_eq(engine.state.gaffe, 0, "gaffes are forgotten")
+	assert_eq(engine.state.block, 0, "guard is gone")
+	assert_eq(engine.state.energy, 3, "a fresh turn's energy")
+	assert_eq(engine.state.turn, 1, "the clock starts again")
+	assert_eq(engine.state.bar.player, 40, "support starts level again")
+	assert_eq(engine.state.bar.opponent, 40)
+	assert_eq(engine.state.hand.size(), 5, "and a fresh hand")
+
+
+func test_beating_the_last_opponent_wins_the_stage() -> void:
+	var engine := _start(_three_in_a_row())
+
+	for bout in 3:
+		assert_false(engine.state.is_over(), "still going after %d bout(s)" % bout)
+		engine.state.bar.player_gains(20)
+		engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win")
+	assert_string_contains(engine.state.outcome_reason, "All 3")
+
+
+func test_losing_one_bout_loses_the_whole_stage() -> void:
+	var engine := _start(_three_in_a_row())
+	engine.state.gaffe = engine.state.gaffe_limit
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "loss", "there is no second chance at a bout")
+
+
+func test_each_opponent_brings_their_own_pattern() -> void:
+	var engine := _start(_three_in_a_row({
+		"opponents": [
+			{"opp_id": "A", "name": "First", "intent_pattern": [["attack", 3]]},
+			{"opp_id": "B", "name": "Second", "intent_pattern": [["block", 9]]},
+		],
+	}))
+	assert_eq(engine.current_intent(), {"verb": "attack", "value": 3})
+
+	engine.state.bar.player_gains(20)
+	engine._check_outcome()
+	assert_eq(engine.current_intent(), {"verb": "block", "value": 9},
+		"the new opponent argues their own way")
+
+
+# --- the floor debate's shape ----------------------------------------------
+
+func _five_on_the_floor(overrides: Dictionary = {}) -> Dictionary:
+	var base := {
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S4",
+			"sequence_mode": "continuous",
+			"bar_max": 101, "win_threshold": 51,
+			"player_start": 40, "opp_start": 40,
+			"turn_limit": 20, "gaffe_limit": 6,
+		}),
+		"opponents": [
+			{"opp_id": "F1", "name": "One", "intent_pattern": [["block", 1]]},
+			{"opp_id": "F2", "name": "Two", "intent_pattern": [["block", 1]]},
+		],
+	}
+	base.merge(overrides, true)
+	return base
+
+
+func test_arguing_an_opponent_down_to_nothing_brings_on_the_next() -> void:
+	var engine := _start(_five_on_the_floor())
+	engine.state.bar.opponent_loses(40)      # their seats all go
+	engine._check_outcome()
+
+	assert_false(engine.state.is_over())
+	assert_eq(engine.current_opponent()["name"], "Two", "the next one steps in")
+
+
+func test_the_seats_you_have_won_stay_won() -> void:
+	# The whole difference from the committee: nothing resets.
+	var engine := _start(_five_on_the_floor())
+	engine.state.bar.player_gains(8)         # 40 -> 48
+	engine.state.gaffe = 2
+	engine.state.turn = 5
+	engine.state.bar.opponent_loses(40)
+	engine._check_outcome()
+
+	assert_eq(engine.state.bar.player, 48, "your seats are still yours")
+	assert_eq(engine.state.gaffe, 2, "and so is your record")
+	assert_eq(engine.state.turn, 5, "the clock keeps running")
+
+
+func test_the_new_opponent_takes_their_seats_from_the_undecided() -> void:
+	var engine := _start(_five_on_the_floor())
+	engine.state.bar.opponent_loses(40)
+	engine._check_outcome()
+
+	assert_eq(engine.state.bar.opponent, 40, "the next opponent holds seats of their own")
+	assert_true(engine.state.bar.totals_balance(),
+		"and the house still adds up to %d" % engine.state.bar.maximum)
+
+
+func test_reaching_the_majority_wins_however_many_are_left() -> void:
+	# You do not have to work through all five: 51 seats is 51 seats.
+	var engine := _start(_five_on_the_floor())
+	engine.state.bar.player_gains(11)        # 40 -> 51
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win")
+
+
+func test_beating_the_last_opponent_without_a_majority_still_wins() -> void:
+	var engine := _start(_five_on_the_floor())
+	for _index in 2:
+		engine.state.bar.opponent_loses(engine.state.bar.opponent)
+		engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win", "there is nobody left to argue with")

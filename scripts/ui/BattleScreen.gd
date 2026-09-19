@@ -115,14 +115,31 @@ func _build_static_parts() -> void:
 	_stage_name.text = str(_stage.get("name_en", "Battle"))
 	_stage_name_jp.text = str(_stage.get("name_jp", ""))
 
-	_opponent_name.text = str(_opponent.get("name", "Visitor A"))
+	_support_bar.unit = str(_stage.get("bar_unit", "Support"))
+	_show_opponent()
+
+
+## Draws whoever is being argued with now. Called on every refresh rather
+## than once at the start, because a committee changes opponent mid-stage.
+func _show_opponent() -> void:
+	var opponent := engine.current_opponent()
+	if opponent == _opponent and not _opponent_name.text.is_empty():
+		return
+	_opponent = opponent
+
+	var caption := engine.opponent_caption()
+	if caption.is_empty():
+		_opponent_name.text = str(opponent.get("name", "Visitor A"))
+	else:
+		# "Opponent B  ·  2 of 3", so the player knows how far through a
+		# committee they are without counting.
+		_opponent_name.text = "%s  ·  %s" % [opponent.get("name", "Visitor A"), caption]
+
 	if _portrait is PlaceholderArt:
 		var art := _portrait as PlaceholderArt
 		art.kind = PlaceholderArt.Kind.CHARACTER
-		art.art_id = str(_opponent.get("opp_id", ""))
+		art.art_id = str(opponent.get("opp_id", ""))
 		art.expression = "neutral"
-
-	_support_bar.unit = str(_stage.get("bar_unit", "Support"))
 
 
 # ---------------------------------------------------------------------------
@@ -137,6 +154,7 @@ func _refresh() -> void:
 
 	_turn_label.text = engine.turn_caption()
 	_intent_label.text = IntentRunner.describe(engine.current_intent())
+	_show_opponent()
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
@@ -202,6 +220,17 @@ func _refresh_details(state: BattleState) -> void:
 		"Stage: %s (%s)" % [_stage.get("name_en", ""), _stage.get("stage_id", "")],
 		"Opponent: %s, %s" % [_opponent.get("name", ""), _opponent.get("party", "")],
 	]
+
+	if state.opponent_count > 1:
+		lines.append("")
+		if _stage.get("sequence_mode") == "reset":
+			lines.append("%d opponents, one at a time. Beat one and everything "
+				% state.opponent_count
+				+ "starts again against the next, including your gaffes.")
+		else:
+			lines.append("%d opponents, one at a time. Nothing resets between "
+				% state.opponent_count
+				+ "them: the seats you have won stay won and the clock keeps running.")
 
 	# Two rules a player would otherwise have to discover by losing.
 	if state.energy_mode == "pool":

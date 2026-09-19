@@ -57,6 +57,12 @@ var committee: CommitteeModel = null   ## null everywhere else
 ## Set when a card reveals what the opponent will do after this turn.
 var next_intent_revealed := false
 
+# --- Several opponents in one stage ----------------------------------------
+## Which opponent is being argued with, counting from zero, and how many
+## there are in total. Both are 0 and 1 in an ordinary one-opponent stage.
+var opponent_index := 0
+var opponent_count := 1
+
 ## How the battle finished: "ongoing", "win", "loss", or "retry".
 var outcome := "ongoing"
 var outcome_reason := ""

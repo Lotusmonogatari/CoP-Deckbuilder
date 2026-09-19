@@ -255,3 +255,64 @@ func test_a_weak_caucus_costs_nothing_at_the_floor() -> void:
 
 	assert_eq(engine.state.bar.player, int(stage["player_start"]),
 		"a bad caucus is worth nothing, not a penalty")
+
+
+# ---------------------------------------------------------------------------
+# The playtest level's committee and floor debate, on their real data
+# ---------------------------------------------------------------------------
+
+func test_the_committee_lines_up_three_opponents() -> void:
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S1"))),
+		"%s" % [engine.setup_problems])
+
+	assert_eq(engine.state.opponent_count, 3)
+	assert_eq(engine.opponent_caption(), "1 of 3")
+	assert_false(engine.state.is_committee_stage(),
+		"three ordinary arguments, not the per-member voting model")
+
+
+func test_winning_a_committee_bout_starts_the_next_one_clean() -> void:
+	var engine := BattleEngine.new()
+	engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S1")))
+
+	engine.state.gaffe = 4
+	engine.state.bar.player_gains(engine.state.bar.threshold - engine.state.bar.player)
+	engine._check_outcome()
+
+	assert_false(engine.state.is_over(), "two opponents still to go")
+	assert_eq(engine.opponent_caption(), "2 of 3")
+	assert_eq(engine.state.gaffe, 0, "a clean slate for the next argument")
+
+
+func test_the_floor_debate_lines_up_five_opponents() -> void:
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S4"))),
+		"%s" % [engine.setup_problems])
+
+	assert_eq(engine.state.opponent_count, 5)
+	assert_eq(engine.state.bar.maximum, 101, "the house still has 101 seats")
+	assert_eq(engine.state.bar.threshold, 51, "and a majority is still 51")
+
+
+func test_the_floor_debate_keeps_one_room_across_its_opponents() -> void:
+	var engine := BattleEngine.new()
+	engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S4")))
+
+	engine.state.bar.player_gains(5)
+	var seats := engine.state.bar.player
+	engine.state.turn = 7
+
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine._check_outcome()
+
+	assert_eq(engine.opponent_caption(), "2 of 5")
+	assert_eq(engine.state.bar.player, seats, "your seats survive the change")
+	assert_eq(engine.state.turn, 7, "and so does the clock")
+	assert_true(engine.state.bar.totals_balance())
+
+
+func test_a_whole_floor_debate_can_be_played_out() -> void:
+	var state := _play_out(BattleSetup.for_playtest_stage(_playtest_stage("PT_S4")), 60)
+	assert_true(state.is_over())
+	assert_true(state.bar.totals_balance(), "the house still adds up at the end")

@@ -36,6 +36,17 @@ var _meta: Dictionary = {}         ## Jiban, Kanban, Kaban, Party support
 var _intents: IntentRunner = null
 var _rng := RandomNumberGenerator.new()
 
+## Everyone to be argued with in this stage, in order, and how they follow
+## one another.
+##
+##   "single"      one opponent, the ordinary case
+##   "reset"       the committee: separate arguments, everything starts
+##                 fresh against each new opponent
+##   "continuous"  the floor debate: one room, one clock, and the next
+##                 opponent inherits whatever the last one left behind
+var _opponents: Array = []
+var _sequence_mode := "single"
+
 ## Anything that stopped setup from working, in plain words.
 var setup_problems := PackedStringArray()
 
@@ -123,16 +134,37 @@ func _setup_opponent(config: Dictionary) -> void:
 		)
 		return
 
-	# An opponent with a pattern of their own always uses it. When nobody has
-	# written one for them yet, they fall back to the shared default in
-	# rules.json, so a missing pattern makes an opponent generic rather than
-	# unplayable. The default lives in data, never in this file.
+	# A stage may line up several opponents. One is just a list of one.
+	_opponents = config.get("opponents", [])
+	if _opponents.is_empty():
+		_opponents = [_opponent] if not _opponent.is_empty() else []
+	_sequence_mode = str(_stage.get("sequence_mode", "single"))
+
+	if _opponents.is_empty():
+		setup_problems.append("there is nobody to argue with")
+		return
+
+	state.opponent_index = 0
+	state.opponent_count = _opponents.size()
+	_opponent = _opponents[0]
+
+	_arm_intents(config)
+
+
+## Points the intent runner at whoever is being argued with now.
+##
+## An opponent with a pattern of their own always uses it. When nobody has
+## written one for them yet, they fall back to the shared default in
+## rules.json, so a missing pattern makes an opponent generic rather than
+## unplayable. The default lives in data, never in this file.
+func _arm_intents(config: Dictionary = {}) -> void:
 	var pattern: Variant = _opponent.get("intent_pattern")
 	if pattern == null:
 		pattern = config.get("intent_pattern")
 	if pattern == null:
 		pattern = _rules.get("default_intent_pattern")
-		used_default_intent_pattern = pattern != null
+		if pattern != null:
+			used_default_intent_pattern = true
 
 	_intents = IntentRunner.new(pattern)
 	if not _intents.is_valid():
@@ -416,8 +448,24 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 		# have. Both are settled in _check_turn_limit below.
 		var has_threshold := (state.bar.model != BarModel.Model.SURVIVAL
 			and state.win_mode != "score")
+
 		if has_threshold and state.bar.player_has_won():
-			_finish("win", "The support threshold was reached.")
+			# In a committee, winning the argument wins this bout, not the
+			# stage: the next member of the panel is waiting.
+			if _sequence_mode == "reset" and has_more_opponents():
+				_advance_to_next_opponent()
+				return
+			_finish("win", _victory_reason())
+			return
+
+		# On the floor, arguing an opponent's seats down to nothing brings on
+		# the next. Running out of opponents wins it even short of a majority,
+		# because there is nobody left to argue against.
+		if _sequence_mode == "continuous" and state.bar.opponent <= 0:
+			if has_more_opponents():
+				_advance_to_next_opponent()
+				return
+			_finish("win", "Every opponent has been argued out of the chamber.")
 			return
 		if bool(_rules.get("opponent_can_win_by_threshold", false)) and state.bar.opponent_has_won():
 			_finish("loss", "The opponent reached the threshold first.")
@@ -470,6 +518,88 @@ func _check_turn_limit() -> void:
 
 		_:
 			_finish("loss", "Time ran out before the threshold was reached.")
+
+
+# ---------------------------------------------------------------------------
+# Working through several opponents
+# ---------------------------------------------------------------------------
+
+## Whoever is being argued with at the moment.
+func current_opponent() -> Dictionary:
+	if state.opponent_index < 0 or state.opponent_index >= _opponents.size():
+		return _opponent
+	return _opponents[state.opponent_index]
+
+
+func has_more_opponents() -> bool:
+	return state.opponent_index + 1 < _opponents.size()
+
+
+## "Opponent 2 of 5", for the header. Empty when there is only one.
+func opponent_caption() -> String:
+	if state.opponent_count <= 1:
+		return ""
+	return "%d of %d" % [state.opponent_index + 1, state.opponent_count]
+
+
+## Brings on the next opponent.
+##
+## In a committee this is a fresh argument: support, gaffes, guard, energy,
+## the clock and the cards all start again, because beating someone should
+## not leave you worn down for the next person.
+##
+## On the floor it is the same room carrying on: the seats you have won stay
+## won, your record follows you, and the clock keeps running. The new
+## opponent takes their seats from those not yet committed either way.
+func _advance_to_next_opponent() -> void:
+	state.opponent_index += 1
+	_opponent = _opponents[state.opponent_index]
+	_arm_intents()
+
+	if _sequence_mode == "reset":
+		_reset_for_new_bout()
+	elif state.bar != null:
+		# Their seats have to come from somewhere, and taking them from the
+		# player would punish winning. They come from the undecided.
+		state.bar.opponent_gains(int(_stage.get("opp_start", 0)))
+
+
+## Everything a new bout starts fresh with.
+func _reset_for_new_bout() -> void:
+	state.gaffe = 0
+	state.block = 0
+	state.opponent_block = 0
+	state.next_card_bonus = 0
+	state.next_intent_revealed = false
+	state.turn = 1
+
+	state.energy = state.energy_max
+	if state.energy_mode != "pool":
+		state.energy = state.energy_per_turn
+		state.energy_max = state.energy_per_turn
+
+	if state.bar != null:
+		state.bar = BarModel.create(
+			BarModel.for_stage(_stage),
+			int(_stage.get("bar_max", 100)),
+			int(_stage.get("win_threshold", 51)),
+			int(_stage.get("player_start", 0)),
+			int(_stage.get("opp_start", 0)),
+		)
+
+	# A clean deck, so the last argument's spent cards are not a handicap.
+	state.deck.assign(state.deck + state.hand + state.discard)
+	state.hand.clear()
+	state.discard.clear()
+	_shuffle(state.deck)
+	_draw_up_to_hand_size()
+
+
+## What to say when the player wins, which depends on what they just did.
+func _victory_reason() -> String:
+	if _sequence_mode == "reset" and state.opponent_count > 1:
+		return "All %d were argued down." % state.opponent_count
+	return "The support threshold was reached."
 
 
 func _finish(outcome: String, reason: String) -> void:
