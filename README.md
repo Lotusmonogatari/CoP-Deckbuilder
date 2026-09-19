@@ -40,11 +40,18 @@ Never edit `data/*.json` by hand — the exporter overwrites it. Instead:
 The one exception is `data/rules.json`, which is hand-written. It holds the
 switches for design decisions that are still open — see `CLAUDE.md` section 9.
 
-## Running it
+## Playing it
 
-Open the project folder in Godot 4.5.1 or newer and press F5. The boot check
-screen prints the data validation report and confirms the Japanese font
-loaded.
+Open the project folder in Godot 4.5.1 or newer and press **F5**. That runs
+Module 01's floor debate: 101 seats, 51 to win, eight turns.
+
+Tap a card to look at it properly, then "Play this" to commit to it — tapping
+a card never plays it by accident. "Details" shows your deck and discard
+counts. When the debate ends, "Close" quits.
+
+To see the data report instead — every file loading, every cross-reference
+checked, and the Japanese font — open `scenes/menus/BootCheck.tscn` and press
+**F6**, which runs just that scene.
 
 ## Running the checks
 

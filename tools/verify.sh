@@ -42,7 +42,10 @@ if ! python3 tools/export_data.py; then
 fi
 
 step "2/3  Booting the game"
-if ! "$GODOT" --headless --path . --quit-after 3; then
+# The boot check scene is named explicitly rather than relying on whichever
+# scene happens to be the main one. The main scene is the battle now, and
+# running that here would silently stop checking the data and the font.
+if ! "$GODOT" --headless --path . scenes/menus/BootCheck.tscn --quit-after 3; then
   echo ">> FAILED: the game did not start cleanly."
   failures=$((failures + 1))
 fi
