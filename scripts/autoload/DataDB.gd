@@ -1,0 +1,439 @@
+extends Node
+## Loads every game content file from data/ and hands it out on request.
+##
+## This is the only place that reads data/*.json. Everything else asks DataDB.
+##
+## Nothing in this game hardcodes a card's numbers, a stage's rules, or a
+## character's name — it all comes from the design workbook, via the JSON
+## files that tools/export_data.py writes. If a value looks wrong in-game,
+## the fix is in the workbook, not in the code.
+##
+## On startup it also re-runs the same cross-reference checks the exporter
+## runs, and prints a report. That is deliberate belt-and-braces: the exporter
+## catches problems at Cameron's desk, and this catches a data file that was
+## hand-edited or half-copied afterwards.
+
+## Emitted once every file has loaded and been checked.
+signal data_ready(had_errors: bool)
+
+const DATA_PATH := "res://data/"
+
+## Every file that must be present for the game to start.
+const REQUIRED_FILES := [
+	"affinity", "balance", "bills", "boosters", "cards", "committee",
+	"lists", "modifiers", "modules", "opponents", "rules", "sanban",
+	"segments", "stages", "suits", "yoron",
+]
+
+# --- Raw loaded content ----------------------------------------------------
+# Lists of dictionaries, exactly as they appear in the JSON files.
+var cards: Array = []
+var stages: Array = []
+var suits: Array = []
+var segments: Array = []
+var modifiers: Array = []
+var boosters: Array = []
+var opponents: Array = []
+var yoron: Array = []
+var bills: Array = []
+var committee: Array = []
+var modules: Array = []
+var sanban: Array = []
+var affinity: Array = []
+
+# Objects rather than lists.
+var balance: Dictionary = {}
+var lists: Dictionary = {}
+var rules: Dictionary = {}
+
+# --- Lookup tables ---------------------------------------------------------
+# Built once at startup so nothing has to search a list at runtime.
+var _cards_by_id: Dictionary = {}
+var _stages_by_id: Dictionary = {}
+var _opponents_by_id: Dictionary = {}
+var _segments_by_id: Dictionary = {}
+var _modifiers_by_id: Dictionary = {}
+var _boosters_by_id: Dictionary = {}
+var _bills_by_id: Dictionary = {}
+var _yoron_by_id: Dictionary = {}
+var _sanban_by_name: Dictionary = {}
+var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
+
+## Problems found at startup. Errors mean something is genuinely broken;
+## warnings mean a known gap that the game can still run around.
+var errors: PackedStringArray = []
+var warnings: PackedStringArray = []
+
+var _loaded := false
+
+
+func _ready() -> void:
+	load_all()
+
+
+## Loads and checks everything. Safe to call again — it starts from scratch.
+func load_all() -> void:
+	errors.clear()
+	warnings.clear()
+
+	for file_name in REQUIRED_FILES:
+		var content: Variant = _read_json(file_name)
+		if content == null:
+			continue
+		match file_name:
+			"cards": cards = content
+			"stages": stages = content
+			"suits": suits = content
+			"segments": segments = content
+			"modifiers": modifiers = content
+			"boosters": boosters = content
+			"opponents": opponents = content
+			"yoron": yoron = content
+			"bills": bills = content
+			"committee": committee = content
+			"modules": modules = content
+			"sanban": sanban = content
+			"affinity": affinity = content
+			"balance": balance = content
+			"lists": lists = content
+			"rules": rules = _flatten_rules(content)
+
+	_build_lookups()
+	_validate()
+	_loaded = true
+
+	print_report()
+	data_ready.emit(not errors.is_empty())
+
+
+func is_loaded() -> bool:
+	return _loaded
+
+
+# ---------------------------------------------------------------------------
+# Reading files
+# ---------------------------------------------------------------------------
+
+func _read_json(file_name: String) -> Variant:
+	var path := DATA_PATH + file_name + ".json"
+	if not FileAccess.file_exists(path):
+		errors.append("%s.json is missing. Run: python3 tools/export_data.py" % file_name)
+		return null
+
+	var text := FileAccess.get_file_as_string(path)
+	var json := JSON.new()
+	var parse_result := json.parse(text)
+	if parse_result != OK:
+		errors.append("%s.json is not valid JSON: line %d, %s"
+			% [file_name, json.get_error_line(), json.get_error_message()])
+		return null
+
+	return json.data
+
+
+## rules.json keeps each switch alongside notes explaining the options.
+## The game only needs the chosen value, so pull that out and drop the prose.
+func _flatten_rules(raw: Variant) -> Dictionary:
+	var flat := {}
+	if raw is Dictionary:
+		for key: String in (raw as Dictionary).keys():
+			if key.begins_with("_"):
+				continue   # "_README" and friends are documentation
+			var entry: Variant = raw[key]
+			flat[key] = entry["value"] if entry is Dictionary and entry.has("value") else entry
+	return flat
+
+
+func _build_lookups() -> void:
+	_cards_by_id = _index(cards, "card_id")
+	_stages_by_id = _index(stages, "stage_id")
+	_opponents_by_id = _index(opponents, "opp_id")
+	_segments_by_id = _index(segments, "segment_id")
+	_modifiers_by_id = _index(modifiers, "mod_id")
+	_boosters_by_id = _index(boosters, "booster_id")
+	_bills_by_id = _index(bills, "bill_id")
+	_yoron_by_id = _index(yoron, "topic_id")
+	_sanban_by_name = _index(sanban, "name_en")
+
+	_affinity.clear()
+	for row: Dictionary in affinity:
+		_affinity[row.get("element", "")] = row.get("multipliers", {})
+
+
+func _index(records: Array, key: String) -> Dictionary:
+	var table := {}
+	for record: Dictionary in records:
+		var id_value: Variant = record.get(key)
+		if id_value != null:
+			table[id_value] = record
+	return table
+
+
+# ---------------------------------------------------------------------------
+# Getters
+# ---------------------------------------------------------------------------
+# Each returns an empty dictionary rather than crashing when an ID is unknown,
+# and says so in the console. A missing card should never take the game down
+# mid-battle.
+
+func get_card(card_id: String) -> Dictionary:
+	return _lookup(_cards_by_id, card_id, "card")
+
+
+func get_stage(stage_id: String) -> Dictionary:
+	return _lookup(_stages_by_id, stage_id, "stage")
+
+
+func get_opponent(opp_id: String) -> Dictionary:
+	return _lookup(_opponents_by_id, opp_id, "opponent")
+
+
+func get_segment(segment_id: String) -> Dictionary:
+	return _lookup(_segments_by_id, segment_id, "segment")
+
+
+func get_modifier(mod_id: String) -> Dictionary:
+	return _lookup(_modifiers_by_id, mod_id, "modifier")
+
+
+func get_booster(booster_id: String) -> Dictionary:
+	return _lookup(_boosters_by_id, booster_id, "booster")
+
+
+func get_bill(bill_id: String) -> Dictionary:
+	return _lookup(_bills_by_id, bill_id, "bill")
+
+
+func get_topic(topic_id: String) -> Dictionary:
+	return _lookup(_yoron_by_id, topic_id, "opinion topic")
+
+
+## Meta-variables are looked up by their English name: "Constituency support",
+## "Reputation", "Funds", "Party support".
+func get_sanban(variable_name: String) -> Dictionary:
+	return _lookup(_sanban_by_name, variable_name, "meta-variable")
+
+
+func _lookup(table: Dictionary, key: String, kind: String) -> Dictionary:
+	if table.has(key):
+		return table[key]
+	push_warning("DataDB: no %s with ID '%s'." % [kind, key])
+	return {}
+
+
+## The suit power multiplier for a suit in a stage. Defaults to 1.0 (no
+## effect) when the pairing isn't listed, which is the case for Office Hours.
+func get_affinity(element: String, stage_id: String) -> float:
+	var row: Variant = _affinity.get(element)
+	if row is Dictionary and (row as Dictionary).has(stage_id):
+		return float(row[stage_id])
+	return 1.0
+
+
+## A global tuning number from the Balance tab, e.g. "bill_difficulty_factor".
+func get_balance(lever: String, fallback: float = 0.0) -> float:
+	if balance.has(lever):
+		return float(balance[lever])
+	push_warning("DataDB: no balance lever called '%s'." % lever)
+	return fallback
+
+
+## XP needed to unlock a card of a given tier ("Starter", "Tier 1", ...).
+func get_tier_cost(tier: String) -> int:
+	var tiers: Variant = balance.get("xp_tiers", {})
+	if tiers is Dictionary and (tiers as Dictionary).has(tier):
+		return int(tiers[tier])
+	push_warning("DataDB: no XP tier called '%s'." % tier)
+	return 0
+
+
+## The allowed committee size for a difficulty, as { "min": x, "max": y }.
+func get_committee_size_band(difficulty: String) -> Dictionary:
+	var bands: Variant = balance.get("committee_size_bands", {})
+	if bands is Dictionary and (bands as Dictionary).has(difficulty):
+		return bands[difficulty]
+	return {}
+
+
+## One of the open-design switches from rules.json.
+func get_rule(flag: String, fallback: Variant = null) -> Variant:
+	if rules.has(flag):
+		return rules[flag]
+	push_warning("DataDB: no rule flag called '%s'." % flag)
+	return fallback
+
+
+## The ordered list of stages in a module, e.g. "MOD01".
+func get_module_steps(module_id: String) -> Array:
+	var steps: Array = []
+	for row: Dictionary in modules:
+		if row.get("module") == module_id:
+			steps.append(row)
+	steps.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return int(a.get("seq", 0)) < int(b.get("seq", 0)))
+	return steps
+
+
+## The members of the committee for one step of a module.
+func get_committee_members(module_id: String, seq: int) -> Array:
+	var members: Array = []
+	for row: Dictionary in committee:
+		if row.get("module") == module_id and int(row.get("seq", -1)) == seq:
+			members.append(row)
+	return members
+
+
+## Every card of a given tier — used by the XP shop.
+func get_cards_by_tier(tier: String) -> Array:
+	return cards.filter(func(card: Dictionary) -> bool: return card.get("tier") == tier)
+
+
+# ---------------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------------
+# The same checks tools/export_data.py runs. Kept here as well so a data file
+# that was edited by hand after export still gets caught.
+
+func _validate() -> void:
+	if errors.size() > 0:
+		return   # files are missing or unreadable; the rest would be noise
+
+	var suit_names := _values(suits, "element")
+	var stage_ids := _values(stages, "stage_id")
+	var segment_names := _values(segments, "name_en")
+	var mod_ids := _values(modifiers, "mod_id")
+	var booster_ids := _values(boosters, "booster_id")
+	var opp_ids := _values(opponents, "opp_id")
+	var topic_ids := _values(yoron, "topic_id")
+	var bill_ids := _values(bills, "bill_id")
+
+	for card: Dictionary in cards:
+		var cid: String = str(card.get("card_id"))
+		if not suit_names.has(card.get("suit")):
+			errors.append("Card %s has suit '%s', which is not in suits.json" % [cid, card.get("suit")])
+		var target: Variant = card.get("target_segment")
+		if target != null and target != "Any" and not segment_names.has(target):
+			errors.append("Card %s targets '%s', which is not in segments.json" % [cid, target])
+
+	for row: Dictionary in affinity:
+		if not suit_names.has(row.get("element")):
+			errors.append("affinity.json has a row for '%s', which is not a suit" % row.get("element"))
+		for stage_id: String in (row.get("multipliers", {}) as Dictionary).keys():
+			if not stage_ids.has(stage_id):
+				errors.append("affinity.json has a column for '%s', which is not a stage" % stage_id)
+
+	for stage: Dictionary in stages:
+		var sid: String = str(stage.get("stage_id"))
+		var favored: Variant = stage.get("favored_suit")
+		if favored != null and not suit_names.has(favored):
+			errors.append("Stage %s favours '%s', which is not a suit" % [sid, favored])
+		if stage.get("mode") == "Combat":
+			var total := 0.0
+			for share: float in (stage.get("segment_mix", {}) as Dictionary).values():
+				total += share
+			if absf(total - 1.0) > 0.001:
+				errors.append("Stage %s audience shares add up to %d%%, not 100%%" % [sid, roundi(total * 100.0)])
+
+	for mod: Dictionary in modifiers:
+		var trigger: Variant = mod.get("trigger_segment")
+		if trigger != null and not segment_names.has(trigger):
+			errors.append("Modifier %s triggers on '%s', which is not a segment" % [mod.get("mod_id"), trigger])
+
+	for booster: Dictionary in boosters:
+		for mod_id: String in (booster.get("linked_modifiers", []) as Array):
+			if not mod_ids.has(mod_id):
+				errors.append("Booster %s links '%s', which is not a modifier" % [booster.get("booster_id"), mod_id])
+
+	for opp: Dictionary in opponents:
+		var oid: String = str(opp.get("opp_id"))
+		for field: String in ["element_1", "element_2"]:
+			var element: Variant = opp.get(field)
+			if element != null and not suit_names.has(element):
+				errors.append("Opponent %s has %s '%s', which is not a suit" % [oid, field, element])
+		if opp.get("intent_pattern") == null:
+			warnings.append("Opponent %s has no intent pattern, so it cannot take a turn." % oid)
+
+	for bill: Dictionary in bills:
+		if not topic_ids.has(bill.get("topic_id")):
+			errors.append("Bill %s uses topic '%s', which is not in yoron.json" % [bill.get("bill_id"), bill.get("topic_id")])
+
+	for row: Dictionary in modules:
+		var label := "%s step %s" % [row.get("module"), row.get("seq")]
+		if not stage_ids.has(row.get("stage_id")):
+			errors.append("%s uses stage '%s', which does not exist" % [label, row.get("stage_id")])
+		if row.get("opp_id") != null and not opp_ids.has(row.get("opp_id")):
+			errors.append("%s names opponent '%s', who does not exist" % [label, row.get("opp_id")])
+		if row.get("bill_id") != null and not bill_ids.has(row.get("bill_id")):
+			errors.append("%s uses bill '%s', which does not exist" % [label, row.get("bill_id")])
+		if row.get("stage_id") == "ST01":
+			var members := get_committee_members(str(row.get("module")), int(row.get("seq", -1)))
+			if members.is_empty():
+				errors.append("%s is a committee stage with no members listed" % label)
+
+	for mod: Dictionary in modifiers:
+		var source: Variant = mod.get("source_booster")
+		if source is String and (source as String).begins_with("BO") and not booster_ids.has(source):
+			errors.append("Modifier %s names booster '%s', which does not exist" % [mod.get("mod_id"), source])
+
+	_validate_rules()
+
+
+func _validate_rules() -> void:
+	## Each switch and the values it accepts. Anything else is a typo in
+	## rules.json and would otherwise cause confusing behaviour in a battle.
+	var allowed := {
+		"turn_limit_outcome": ["loss", "highest_support_wins", "tie_retry"],
+		"opponent_can_win_by_threshold": [true, false],
+		"opponent_engine": ["intent_patterns", "deck_ai"],
+		"press_answer_timer": [true, false],
+		"discard_hand_end_of_turn": [true, false],
+	}
+	for flag: String in allowed.keys():
+		if not rules.has(flag):
+			errors.append("rules.json is missing the '%s' switch" % flag)
+		elif not (allowed[flag] as Array).has(rules[flag]):
+			errors.append("rules.json has '%s' set to %s; allowed values are %s"
+				% [flag, rules[flag], allowed[flag]])
+
+
+func _values(records: Array, key: String) -> Array:
+	var found: Array = []
+	for record: Dictionary in records:
+		var value: Variant = record.get(key)
+		if value != null and not found.has(value):
+			found.append(value)
+	return found
+
+
+# ---------------------------------------------------------------------------
+# Report
+# ---------------------------------------------------------------------------
+
+func print_report() -> void:
+	print("\n" + "=".repeat(70))
+	print("GAME DATA")
+	print("=".repeat(70))
+	print("  %d cards, %d stages, %d opponents, %d modifiers, %d boosters"
+		% [cards.size(), stages.size(), opponents.size(), modifiers.size(), boosters.size()])
+
+	if not warnings.is_empty():
+		print("\n  %d warning(s) — known gaps in the design data:" % warnings.size())
+		for line: String in warnings:
+			print("    ! " + line)
+
+	if errors.is_empty():
+		print("\n  No errors. All game data loaded and cross-checked.")
+	else:
+		print("\n  %d ERROR(S) — fix these in the workbook and re-export:" % errors.size())
+		for line: String in errors:
+			print("    X " + line)
+
+	print("=".repeat(70) + "\n")
+
+
+## A one-line summary for the boot check screen.
+func summary_line() -> String:
+	if not errors.is_empty():
+		return "%d error(s), %d warning(s)" % [errors.size(), warnings.size()]
+	return "OK — %d cards, %d stages, %d opponents (%d warnings)" \
+		% [cards.size(), stages.size(), opponents.size(), warnings.size()]
