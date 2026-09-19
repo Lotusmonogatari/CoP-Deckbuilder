@@ -144,6 +144,15 @@ static func card_table() -> Dictionary:
 	return table
 
 
+## What each organisation is called, keyed by ID. The rules engine deals in
+## IDs; anything shown to the player needs the name.
+static func booster_names() -> Dictionary:
+	var names := {}
+	for booster: Dictionary in DataDB.boosters:
+		names[str(booster.get("booster_id"))] = str(booster.get("name_en", ""))
+	return names
+
+
 ## The suit-by-stage multipliers, in the shape the engine reads.
 static func affinity_table() -> Dictionary:
 	var table := {}

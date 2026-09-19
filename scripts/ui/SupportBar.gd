@@ -24,6 +24,11 @@ extends Control
 ## reach and showing one would be a lie.
 @export var has_threshold: bool = true: set = _set_has_threshold
 
+## False when the bar measures one thing rather than a contest over a fixed
+## house — press tone, for instance. There is no opposing share and nothing
+## undecided, so neither is drawn or named.
+@export var two_sided: bool = true: set = _set_two_sided
+
 const HEIGHT := 56.0
 const CORNER := 8.0
 
@@ -68,8 +73,13 @@ func _set_has_threshold(value: bool) -> void:
 	_refresh()
 
 
+func _set_two_sided(value: bool) -> void:
+	two_sided = value
+	_refresh()
+
+
 func _ready() -> void:
-	custom_minimum_size.y = HEIGHT + 60.0
+	custom_minimum_size.y = HEIGHT + 84.0
 	_refresh()
 
 
@@ -80,6 +90,9 @@ func show_bar(bar: BarModel, threshold_applies: bool = true) -> void:
 	player = bar.player
 	opponent = bar.opponent
 	has_threshold = threshold_applies
+	# Only a shared pool has two sides to it. A press tone or a TV debate is
+	# one reading, with nobody holding the rest.
+	two_sided = bar.model == BarModel.Model.SHARED_POOL
 	_refresh()
 
 
@@ -93,6 +106,10 @@ func _refresh() -> void:
 	else:
 		_caption.text = "Raise %s as high as you can" % unit.to_lower()
 
+	if not two_sided:
+		_readout.text = "%s %d of %d" % [unit, player, maximum]
+		return
+
 	var undecided := maxi(maximum - player - opponent, 0)
 	if undecided > 0:
 		_readout.text = "You %d · Undecided %d · Them %d" % [player, undecided, opponent]
@@ -105,7 +122,8 @@ func _draw() -> void:
 	if width <= 0.0:
 		return
 
-	var top := 30.0
+	# Below the caption, which sits on the line above it.
+	var top := 44.0
 	var scale_x := width / float(maximum)
 
 	# Three blocks, left to right: yours, undecided, theirs. Drawing them in
@@ -115,7 +133,9 @@ func _draw() -> void:
 
 	draw_rect(Rect2(0, top, width, HEIGHT), UNDECIDED_COLOR)
 	draw_rect(Rect2(0, top, player_width, HEIGHT), PLAYER_COLOR)
-	draw_rect(Rect2(width - opponent_width, top, opponent_width, HEIGHT), OPPONENT_COLOR)
+	if two_sided:
+		draw_rect(Rect2(width - opponent_width, top, opponent_width, HEIGHT),
+			OPPONENT_COLOR)
 
 	# The threshold. Drawn last so nothing covers it, and not at all when
 	# there is nothing to reach.

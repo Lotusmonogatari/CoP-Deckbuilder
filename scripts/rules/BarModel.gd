@@ -57,7 +57,16 @@ static func create(model_kind: Model, maximum_value: int, threshold_value: int,
 
 
 ## Chooses the right shape for a stage, from its bar unit and signature rule.
+##
+## A stage built out of reporters' questions is a press conference wherever
+## it appears, so it gets the press tone bar without having to be ST04. That
+## is read from the stage's own shape rather than from its name, so a new
+## press conference works the moment it has questions in it.
 static func for_stage(stage: Dictionary) -> Model:
+	var questions: Variant = stage.get("questions")
+	if questions is Array and not (questions as Array).is_empty():
+		return Model.SINGLE
+
 	match str(stage.get("stage_id", "")):
 		"ST04": return Model.SINGLE      # press tone
 		"ST06": return Model.SURVIVAL    # stay above the line every turn

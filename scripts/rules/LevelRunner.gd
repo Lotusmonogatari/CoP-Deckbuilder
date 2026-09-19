@@ -164,7 +164,11 @@ func carried_buffs() -> Dictionary:
 
 
 ## A plain-English summary of what is being carried, for the details panel.
-func describe_carried_buffs() -> String:
+##
+## `names` maps a booster ID to what that organisation is called. The rules
+## engine has no access to the data files, so whoever is showing this passes
+## the names in; without them the IDs are printed as they are.
+func describe_carried_buffs(names: Dictionary = {}) -> String:
 	var buffs := carried_buffs()
 	var lines: Array[String] = []
 
@@ -174,7 +178,10 @@ func describe_carried_buffs() -> String:
 
 	var boosters: Array = buffs["boosters"]
 	if not boosters.is_empty():
-		lines.append("Pleased at the press conference: %s." % ", ".join(boosters))
+		var named: Array[String] = []
+		for booster_id: String in boosters:
+			named.append(str(names.get(booster_id, booster_id)))
+		lines.append("Pleased at the press conference: %s." % ", ".join(named))
 
 	if lines.is_empty():
 		return "Nothing carried over from the earlier stages."

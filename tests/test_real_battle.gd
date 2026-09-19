@@ -20,6 +20,20 @@ const FLOOR_DEBATE_STEP := 4
 const COMMITTEE_STEP := 2
 
 
+## Every battle in this file is set up through here, so the shuffle is the
+## same on every run.
+##
+## Without a fixed seed these tests deal a different hand each time: a
+## failure could not be reproduced and a pass would guarantee nothing. The
+## number itself is arbitrary.
+const SHUFFLE_SEED := 20260919
+
+
+func _setup(engine: BattleEngine, config: Dictionary) -> bool:
+	config["seed"] = SHUFFLE_SEED
+	return engine.setup(config)
+
+
 func before_all() -> void:
 	assert_true(DataDB.is_loaded(), "the game data loaded")
 	assert_eq(DataDB.errors.size(), 0,
@@ -40,7 +54,7 @@ func test_module_01s_floor_debate_can_be_set_up() -> void:
 	assert_eq(stage["win_threshold"], 51, "a majority is 51")
 
 	var engine := BattleEngine.new()
-	assert_true(engine.setup(config), "the battle starts: %s" % [engine.setup_problems])
+	assert_true(_setup(engine, config), "the battle starts: %s" % [engine.setup_problems])
 	assert_eq(engine.state.hand.size(), stage["hand_size"])
 	assert_eq(engine.state.energy, stage["energy_per_turn"])
 
@@ -67,7 +81,7 @@ func test_every_module_step_can_be_set_up() -> void:
 		assert_false(config.is_empty(), "step %d built a config" % seq)
 
 		var engine := BattleEngine.new()
-		assert_true(engine.setup(config),
+		assert_true(_setup(engine, config),
 			"step %d (%s) starts: %s" % [seq, row.get("stage_id"), engine.setup_problems])
 
 
@@ -77,7 +91,7 @@ func test_the_committee_stage_gets_its_members() -> void:
 	assert_gt((config["committee_members"] as Array).size(), 0)
 
 	var engine := BattleEngine.new()
-	assert_true(engine.setup(config), "%s" % [engine.setup_problems])
+	assert_true(_setup(engine, config), "%s" % [engine.setup_problems])
 	assert_true(engine.state.is_committee_stage())
 
 
@@ -89,7 +103,7 @@ func test_the_committee_stage_gets_its_members() -> void:
 ## each turn, then end the turn. Returns the finished state.
 func _play_out(config: Dictionary, max_turns: int = 40) -> BattleState:
 	var engine := BattleEngine.new()
-	assert_true(engine.setup(config), "%s" % [engine.setup_problems])
+	assert_true(_setup(engine, config), "%s" % [engine.setup_problems])
 
 	var safety := 0
 	while not engine.state.is_over() and safety < max_turns:
@@ -164,7 +178,7 @@ func test_the_opponent_actually_does_something() -> void:
 	# from rules.json reaches a real battle rather than only the fixtures.
 	var config := BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP)
 	var engine := BattleEngine.new()
-	engine.setup(config)
+	_setup(engine, config)
 
 	assert_true(engine.used_default_intent_pattern,
 		"OP03 has no pattern yet, so the shared default is in use")
@@ -192,7 +206,7 @@ func _playtest_stage(stage_id: String) -> Dictionary:
 
 func test_the_caucus_stage_hands_out_one_pool_of_energy() -> void:
 	var engine := BattleEngine.new()
-	assert_true(engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S3"))),
+	assert_true(_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S3"))),
 		"%s" % [engine.setup_problems])
 
 	assert_eq(engine.state.energy, 5, "five for the whole debate")
@@ -205,7 +219,7 @@ func test_the_caucus_stage_hands_out_one_pool_of_energy() -> void:
 
 func test_the_caucus_is_scored_rather_than_won() -> void:
 	var engine := BattleEngine.new()
-	engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S3")))
+	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S3")))
 
 	# Push the support far past anything that could count as a threshold.
 	engine.state.bar.player_gains(50)
@@ -236,7 +250,7 @@ func test_a_good_caucus_reaches_the_floor_debate() -> void:
 
 	var config := BattleSetup.for_playtest_stage(stage, buffs)
 	var engine := BattleEngine.new()
-	assert_true(engine.setup(config), "%s" % [engine.setup_problems])
+	assert_true(_setup(engine, config), "%s" % [engine.setup_problems])
 
 	var base := int(stage["player_start"])
 	assert_eq(engine.state.bar.player, base + int(buffs["support_bonus"]),
@@ -251,7 +265,7 @@ func test_a_weak_caucus_costs_nothing_at_the_floor() -> void:
 
 	var stage := runner.current_stage()
 	var engine := BattleEngine.new()
-	engine.setup(BattleSetup.for_playtest_stage(stage, runner.carried_buffs()))
+	_setup(engine, BattleSetup.for_playtest_stage(stage, runner.carried_buffs()))
 
 	assert_eq(engine.state.bar.player, int(stage["player_start"]),
 		"a bad caucus is worth nothing, not a penalty")
@@ -263,7 +277,7 @@ func test_a_weak_caucus_costs_nothing_at_the_floor() -> void:
 
 func test_the_committee_lines_up_three_opponents() -> void:
 	var engine := BattleEngine.new()
-	assert_true(engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S1"))),
+	assert_true(_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S1"))),
 		"%s" % [engine.setup_problems])
 
 	assert_eq(engine.state.opponent_count, 3)
@@ -274,7 +288,7 @@ func test_the_committee_lines_up_three_opponents() -> void:
 
 func test_winning_a_committee_bout_starts_the_next_one_clean() -> void:
 	var engine := BattleEngine.new()
-	engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S1")))
+	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S1")))
 
 	engine.state.gaffe = 4
 	engine.state.bar.player_gains(engine.state.bar.threshold - engine.state.bar.player)
@@ -287,7 +301,7 @@ func test_winning_a_committee_bout_starts_the_next_one_clean() -> void:
 
 func test_the_floor_debate_lines_up_five_opponents() -> void:
 	var engine := BattleEngine.new()
-	assert_true(engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S4"))),
+	assert_true(_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S4"))),
 		"%s" % [engine.setup_problems])
 
 	assert_eq(engine.state.opponent_count, 5)
@@ -297,7 +311,7 @@ func test_the_floor_debate_lines_up_five_opponents() -> void:
 
 func test_the_floor_debate_keeps_one_room_across_its_opponents() -> void:
 	var engine := BattleEngine.new()
-	engine.setup(BattleSetup.for_playtest_stage(_playtest_stage("PT_S4")))
+	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S4")))
 
 	engine.state.bar.player_gains(5)
 	var seats := engine.state.bar.player
@@ -316,3 +330,121 @@ func test_a_whole_floor_debate_can_be_played_out() -> void:
 	var state := _play_out(BattleSetup.for_playtest_stage(_playtest_stage("PT_S4")), 60)
 	assert_true(state.is_over())
 	assert_true(state.bar.totals_balance(), "the house still adds up at the end")
+
+
+# ---------------------------------------------------------------------------
+# The playtest level's press conference, on its real data
+# ---------------------------------------------------------------------------
+
+func test_the_press_conference_deals_its_six_cards() -> void:
+	var engine := BattleEngine.new()
+	assert_true(_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S2"))),
+		"%s" % [engine.setup_problems])
+
+	assert_eq(engine.state.hand.size(), 6, "six cards to open with")
+	assert_eq(engine.state.draw_mode, "none", "and no more after that")
+
+
+func test_the_press_conference_has_its_questions_ready() -> void:
+	var engine := BattleEngine.new()
+	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S2")))
+
+	assert_eq(engine.questions_remaining(), 5)
+	assert_eq(engine.question_caption(), "Question 1 of 5")
+	assert_false(str(engine.current_question().get("text", "")).is_empty(),
+		"and the first one has something to ask")
+
+
+func test_answering_every_question_ends_the_press_conference() -> void:
+	var engine := BattleEngine.new()
+	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S2")))
+
+	var cards := BattleSetup.card_table()
+	var guard := 0
+	while not engine.state.is_over() and guard < 20:
+		guard += 1
+		if engine.state.hand.is_empty():
+			break
+		# Whatever is affordable, but nothing that would fill the gaffe
+		# meter: this checks the questions run out, not that a careless
+		# answer can end a conference early. That it can is tested in
+		# test_battle_engine.gd.
+		var answered := false
+		for card_id: String in engine.state.hand.duplicate():
+			var card: Dictionary = cards.get(card_id, {})
+			if engine.state.gaffe + int(card.get("gaffe", 0)) >= engine.state.gaffe_limit:
+				continue
+			if engine.play_card(card_id).get("ok", false):
+				answered = true
+				break
+		if not answered:
+			engine.end_turn()
+
+	assert_true(engine.state.is_over(), "the conference finished")
+	assert_eq(engine.state.outcome, "win", "it is not a stage you lose on points")
+	assert_eq(engine.questions_remaining(), 0, "because every question was answered")
+
+
+func test_a_data_driven_answer_pleases_the_press() -> void:
+	# The first question invites a Data Driven answer and names BO08.
+	var engine := BattleEngine.new()
+	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S2")))
+
+	var question := engine.current_question()
+	assert_eq(question["prefers_suit"], "Data Driven")
+
+	# C13 Present the Stats is Data Driven and costs 1.
+	engine.state.hand.assign(["C13"])
+	engine.play_card("C13")
+
+	assert_true(engine.pleased_boosters().has(question["pleases_booster"]),
+		"answering in the suit invited pleases the people who asked")
+
+
+func test_answering_well_carries_the_press_into_the_floor_debate() -> void:
+	# The whole point of the stage: who you please in front of the cameras
+	# is meant to be standing behind you on the floor three stages later.
+	var runner := LevelRunner.new(DataDB.playtest_level)
+	while int(runner.current_stage().get("seq", 0)) < 2:
+		runner.finish_stage("win", 0, [])
+
+	var engine := BattleEngine.new()
+	_setup(engine, BattleSetup.for_playtest_stage(runner.current_stage()))
+
+	# One Starter card of each suit, so every question can be answered the
+	# way it asks to be.
+	var by_suit := {
+		"Earnest": "C01", "Emotional": "C06", "Appeal": "C10",
+		"Data Driven": "C13", "Divisive": "C17", "Duplicitous": "C21",
+	}
+
+	var expected: Array[String] = []
+	var guard := 0
+	while not engine.state.is_over() and guard < 20:
+		guard += 1
+		var question := engine.current_question()
+		if question.is_empty():
+			break
+		var card_id := str(by_suit.get(str(question.get("prefers_suit", "")), ""))
+		assert_false(card_id.is_empty(),
+			"no Starter card answers in %s" % question.get("prefers_suit"))
+
+		# The answer, plus one card held back: a conference ends the moment
+		# the player has nothing left to say, and this one is not finished.
+		engine.state.hand.assign([card_id, "C02"])
+		engine.state.energy = engine.state.energy_per_turn
+		if engine.play_card(card_id).get("ok", false):
+			expected.append(str(question.get("pleases_booster", "")))
+
+	assert_eq(engine.questions_remaining(), 0, "every question got an answer")
+
+	# Through the level, not just out of the engine.
+	runner.finish_stage(engine.state.outcome, engine.state.bar.player,
+		engine.pleased_boosters())
+	while int(runner.current_stage().get("seq", 0)) < 4 and not runner.is_finished():
+		runner.finish_stage("win", 0, [])
+
+	var carried: Array = runner.carried_buffs()["boosters"]
+	for booster_id: String in expected:
+		assert_true(carried.has(booster_id),
+			"%s was pleased at the conference and should reach the floor" % booster_id)

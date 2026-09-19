@@ -839,3 +839,213 @@ func test_beating_the_last_opponent_without_a_majority_still_wins() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "win", "there is nobody left to argue with")
+
+
+# ---------------------------------------------------------------------------
+# The press conference: a fixed hand, and one card per question
+# ---------------------------------------------------------------------------
+# Not a battle with turns so much as an interview. Six cards at the start and
+# no more unless a card says otherwise. Each reporter's question takes one
+# card to answer, and answering in the suit the question invites pleases the
+# organisation behind it, which the floor debate later draws on.
+
+func _press(overrides: Dictionary = {}) -> Dictionary:
+	var base := {
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S2",
+			"draw_mode": "none",
+			"opening_hand": 6,
+			"bar_max": 100, "win_threshold": 55,
+			"player_start": 45, "opp_start": 45,
+			"gaffe_limit": 4,
+			"questions": [
+				{"id": "Q1", "text": "First question.",
+				 "prefers_suit": "Data Driven", "pleases_booster": "BO08"},
+				{"id": "Q2", "text": "Second question.",
+				 "prefers_suit": "Earnest", "pleases_booster": "BO03"},
+			],
+		}),
+		"opponent": TestFixtures.opponent([["block", 1]]),
+		"deck": ["GAIN3", "GAIN3", "ATTACK3", "GUARD5", "GAFFE2", "DRAW2",
+				 "GAIN3", "ATTACK3"],
+	}
+	base.merge(overrides, true)
+	return base
+
+
+func test_a_press_conference_deals_its_opening_hand() -> void:
+	var engine := _start(_press())
+	assert_eq(engine.state.hand.size(), 6, "six, not the usual five")
+
+
+func test_a_press_conference_never_deals_more() -> void:
+	var engine := _start(_press())
+	engine.state.hand.clear()
+
+	engine.end_turn()
+	assert_eq(engine.state.hand.size(), 0,
+		"no top-up at the start of a turn: what you were dealt is what you have")
+
+
+func test_a_card_that_draws_still_works_in_a_press_conference() -> void:
+	# "You only draw if a card says so" - so cards must still be able to.
+	var engine := _start(_press())
+	engine.state.hand.assign(["DRAW2"])
+
+	engine.play_card("DRAW2")
+	assert_eq(engine.state.hand.size(), 2, "the card drew its two")
+
+
+func test_ordinary_stages_still_deal_a_fresh_hand() -> void:
+	var engine := _start()
+	# Discarded rather than deleted: clearing the hand outright would destroy
+	# the cards and leave nothing in the deck to top up from, which would
+	# make this pass or fail for the wrong reason.
+	engine.state.discard.assign(engine.state.discard + engine.state.hand)
+	engine.state.hand.clear()
+
+	engine.end_turn()
+	assert_eq(engine.state.hand.size(), 5, "a normal stage tops up")
+
+
+func test_the_first_question_is_waiting_at_the_start() -> void:
+	var engine := _start(_press())
+	assert_eq(engine.current_question()["id"], "Q1")
+	assert_eq(engine.questions_remaining(), 2)
+
+
+func test_answering_moves_on_to_the_next_question() -> void:
+	var engine := _start(_press())
+	engine.state.hand.assign(["GAIN3"])
+
+	engine.play_card("GAIN3")
+	assert_eq(engine.current_question()["id"], "Q2", "one card, one question")
+	assert_eq(engine.questions_remaining(), 1)
+
+
+func test_answering_in_the_suit_invited_pleases_that_organisation() -> void:
+	# ATTACK3 is Data Driven, which is what the first question invites.
+	var engine := _start(_press())
+	engine.state.hand.assign(["ATTACK3"])
+
+	engine.play_card("ATTACK3")
+	assert_true(engine.pleased_boosters().has("BO08"),
+		"the organisation behind that question is pleased")
+
+
+func test_answering_in_the_wrong_suit_pleases_nobody() -> void:
+	# GAIN3 is Earnest; the first question invites Data Driven.
+	var engine := _start(_press())
+	engine.state.hand.assign(["GAIN3"])
+
+	engine.play_card("GAIN3")
+	assert_eq(engine.pleased_boosters().size(), 0)
+
+
+func test_running_out_of_questions_ends_the_conference() -> void:
+	var engine := _start(_press())
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+
+	engine.play_card("GAIN3")
+	assert_false(engine.state.is_over(), "one question left")
+
+	engine.play_card("GAIN3")
+	assert_true(engine.state.is_over(), "and now none")
+	assert_string_contains(engine.state.outcome_reason.to_lower(), "question")
+
+
+func test_running_out_of_cards_ends_the_conference_too() -> void:
+	# With nothing left to answer with, there is no conference to continue.
+	var engine := _start(_press())
+	engine.state.hand.assign(["GAIN3"])
+	engine.state.deck.clear()
+	engine.state.discard.clear()
+
+	engine.play_card("GAIN3")
+	assert_true(engine.state.is_over())
+
+
+func test_a_press_conference_can_still_be_lost_on_gaffes() -> void:
+	var engine := _start(_press())
+	engine.state.gaffe = engine.state.gaffe_limit - 1
+	engine.state.hand.assign(["GAFFE2"])
+
+	engine.play_card("GAFFE2")
+	assert_eq(engine.state.outcome, "loss")
+
+
+# --- with nobody sitting opposite ------------------------------------------
+# The real press conference has no opponent at all: the reporters' questions
+# are the whole of the opposition. Everything above still has to hold when
+# there is nobody there to take a turn.
+
+func _press_alone(overrides: Dictionary = {}) -> Dictionary:
+	var base := _press({"opponent": {}, "opponents": []})
+	base.merge(overrides, true)
+	return base
+
+
+func test_a_press_conference_starts_with_nobody_opposite() -> void:
+	var engine := BattleEngine.new()
+	var ok := engine.setup(TestFixtures.battle_config(_press_alone()))
+
+	assert_true(ok, "a conference with no opponent is not a broken stage")
+	assert_eq(Array(engine.setup_problems), [], "and it complains about nothing")
+	assert_eq(engine.state.opponent_count, 0)
+
+
+func test_any_other_stage_still_needs_somebody_to_argue_with() -> void:
+	# The empty-opponent case is allowed only because the questions replace
+	# them. A stage with neither is still a mistake.
+	var engine := BattleEngine.new()
+	var config := TestFixtures.battle_config(_press_alone())
+	(config["stage"] as Dictionary).erase("questions")
+
+	assert_false(engine.setup(config))
+
+
+func test_ending_a_turn_with_nobody_opposite_does_nothing_to_you() -> void:
+	var engine := _start(_press_alone())
+	var before := engine.state.bar.player
+
+	var result := engine.end_turn()
+
+	assert_true(result.get("ok", false), "the turn ends rather than crashing")
+	assert_eq(str(result["intent"]["verb"]), "none", "nobody acted")
+	assert_eq(engine.state.bar.player, before, "so nothing was taken off you")
+
+
+func test_ending_a_turn_keeps_the_hand_you_cannot_replace() -> void:
+	# The usual rule throws the rest of the hand away at the end of a turn.
+	# In a conference that never draws, that would end it on the spot.
+	var engine := _start(_press_alone())
+	var held := engine.state.hand.size()
+
+	engine.end_turn()
+	assert_eq(engine.state.hand.size(), held, "every card is still in hand")
+	assert_false(engine.state.is_over(), "so the conference carries on")
+
+
+func test_ending_a_turn_refills_the_energy() -> void:
+	var engine := _start(_press_alone())
+	engine.state.energy = 0
+
+	engine.end_turn()
+	assert_eq(engine.state.energy, engine.state.energy_per_turn,
+		"otherwise a hand you cannot afford to play is a dead end")
+
+
+func test_good_press_tone_does_not_cut_the_questions_short() -> void:
+	# Walking out early because the tone happened to be good would skip the
+	# questions still to come, and the answers are the point of the stage.
+	var engine := _start(_press_alone())
+	engine.state.bar.player = engine.state.bar.threshold + 10
+
+	engine.end_turn()
+	assert_false(engine.state.is_over(), "the reporters are not finished")
+
+
+func test_the_press_tone_is_a_single_bar() -> void:
+	# Not a shared pool: there is no opposing side holding the rest of it.
+	var engine := _start(_press_alone())
+	assert_eq(engine.state.bar.model, BarModel.Model.SINGLE)

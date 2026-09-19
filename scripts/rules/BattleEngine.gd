@@ -47,6 +47,9 @@ var _rng := RandomNumberGenerator.new()
 var _opponents: Array = []
 var _sequence_mode := "single"
 
+## The reporters' questions, in a press conference. Empty everywhere else.
+var _questions: Array = []
+
 ## Anything that stopped setup from working, in plain words.
 var setup_problems := PackedStringArray()
 
@@ -98,7 +101,12 @@ func setup(config: Dictionary) -> bool:
 	state.energy_per_turn = int(_stage.get("energy_per_turn", 3))
 	state.energy_mode = str(_stage.get("energy_mode", "per_turn"))
 	state.win_mode = str(_stage.get("win_mode", "threshold"))
-	state.hand_size = int(_stage.get("hand_size", 5))
+	state.draw_mode = str(_stage.get("draw_mode", "refill"))
+	_questions = _stage.get("questions", [])
+
+	# A press conference deals a bigger opening hand and then nothing more,
+	# so "opening_hand" wins over the ordinary hand size where both exist.
+	state.hand_size = int(_stage.get("opening_hand", _stage.get("hand_size", 5)))
 	state.gaffe_limit = int(_stage.get("gaffe_limit", 5))
 
 	_setup_opponent(config)
@@ -141,7 +149,12 @@ func _setup_opponent(config: Dictionary) -> void:
 	_sequence_mode = str(_stage.get("sequence_mode", "single"))
 
 	if _opponents.is_empty():
-		setup_problems.append("there is nobody to argue with")
+		# A press conference has no opponent: the reporters' questions are
+		# what pushes back, so there is nobody to take a turn. Any other
+		# stage with nobody in it is a mistake worth refusing to start.
+		if _questions.is_empty():
+			setup_problems.append("there is nobody to argue with")
+		state.opponent_count = 0
 		return
 
 	state.opponent_index = 0
@@ -264,6 +277,9 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 	if flags.get("reveal_next_intent", false):
 		state.next_intent_revealed = true
 
+	if not _questions.is_empty():
+		_answer_question(card)
+
 	_check_outcome()
 
 	return {
@@ -343,14 +359,23 @@ func end_turn() -> Dictionary:
 		return {"ok": false, "reason": "the battle is already over"}
 
 	# Step 4: the rest of the hand goes, unless the switch says otherwise.
-	if bool(_rules.get("discard_hand_end_of_turn", true)):
+	#
+	# A hand you cannot replace is the exception. In a press conference you
+	# are dealt six cards and draw no more, so throwing the rest away at the
+	# end of a turn would end the conference with questions still coming.
+	if bool(_rules.get("discard_hand_end_of_turn", true)) and state.draw_mode != "none":
 		for card_id: String in state.hand:
 			state.discard.append(card_id)
 		state.hand.clear()
 
-	# Step 5: the opponent acts.
-	var intent := _intents.advance()
-	var opponent_result := _resolve_intent(intent)
+	# Step 5: the opponent acts — if there is one. In a press conference the
+	# reporters' questions are the opposition and nobody takes a turn, so
+	# ending the turn only refills energy and moves the clock on.
+	var intent := {"verb": "none", "value": 0}
+	var opponent_result := {"verb": "none"}
+	if _intents != null:
+		intent = _intents.advance()
+		opponent_result = _resolve_intent(intent)
 
 	# Block is spent at the end of the turn whether or not it was needed.
 	state.block = 0
@@ -366,7 +391,10 @@ func end_turn() -> Dictionary:
 		# running out means the turns you have left are empty ones.
 		if state.energy_mode != "pool":
 			state.energy = state.energy_per_turn
-		_draw_up_to_hand_size()
+		# In a press conference what you were dealt is what you have. A card
+		# that says "draw" still works; the turn itself gives you nothing.
+		if state.draw_mode != "none":
+			_draw_up_to_hand_size()
 
 	return {
 		"ok": true,
@@ -429,6 +457,24 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 		_finish("loss", "The gaffe meter filled.")
 		return
 
+	# A press conference ends when the reporters run out of questions, or
+	# when the player runs out of anything to answer with. Either way it is
+	# over rather than lost: what it produces is the organisations pleased
+	# along the way.
+	if not _questions.is_empty():
+		if questions_remaining() <= 0:
+			_finish("win", "Every question was answered.")
+			return
+		# An empty hand is the end of it. The discard pile is not counted:
+		# in a conference that never draws, a card once played is gone for
+		# good, so cards sitting in the discard are not answers you still have.
+		var can_still_answer := not state.hand.is_empty()
+		if state.draw_mode != "none":
+			can_still_answer = can_still_answer or not state.deck.is_empty()
+		if not can_still_answer:
+			_finish("win", "The questions ran on, but there was nothing left to say.")
+			return
+
 	if state.is_committee_stage():
 		if state.committee.player_has_won():
 			_finish("win", "A majority of the committee locked in favour.")
@@ -437,7 +483,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			_finish("loss", "Too many members locked against — a majority is no longer possible.")
 			return
 	else:
-		# Two stages have no threshold to cross.
+		# Three stages have no threshold to cross.
 		#
 		# A survival stage is staying alive rather than winning: the win
 		# comes from lasting the full distance.
@@ -446,8 +492,13 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 		# total was passed would cut short the very thing the player is
 		# trying to do, which is get as high as they can in the turns they
 		# have. Both are settled in _check_turn_limit below.
+		#
+		# A press conference runs until the reporters are done. Walking out
+		# early because the tone happened to be good would skip the questions
+		# still to come, and the answers are the whole point of the stage.
 		var has_threshold := (state.bar.model != BarModel.Model.SURVIVAL
-			and state.win_mode != "score")
+			and state.win_mode != "score"
+			and _questions.is_empty())
 
 		if has_threshold and state.bar.player_has_won():
 			# In a committee, winning the argument wins this bout, not the
@@ -518,6 +569,61 @@ func _check_turn_limit() -> void:
 
 		_:
 			_finish("loss", "Time ran out before the threshold was reached.")
+
+
+# ---------------------------------------------------------------------------
+# The press conference
+# ---------------------------------------------------------------------------
+
+## True when this stage is driven by reporters' questions rather than by
+## somebody taking turns opposite the player.
+##
+## It stays true once the last question is answered, so the screen does not
+## change its shape at the moment the conference ends.
+func is_press_conference() -> bool:
+	return not _questions.is_empty()
+
+
+## The question waiting to be answered, or empty when there are none left.
+func current_question() -> Dictionary:
+	if state.question_index < 0 or state.question_index >= _questions.size():
+		return {}
+	return _questions[state.question_index]
+
+
+func questions_remaining() -> int:
+	return maxi(_questions.size() - state.question_index, 0)
+
+
+## The organisations pleased so far. The floor debate draws on these.
+func pleased_boosters() -> Array[String]:
+	return state.pleased_boosters
+
+
+## "Question 2 of 5", for the header.
+func question_caption() -> String:
+	if _questions.is_empty():
+		return ""
+	return "Question %d of %d" % [
+		mini(state.question_index + 1, _questions.size()), _questions.size()]
+
+
+## Uses a card as the answer to the question on the floor.
+##
+## Every card answers. Answering in the suit the question invites also
+## pleases the organisation behind it — a data-driven answer to a question
+## about costs satisfies the people who asked it.
+func _answer_question(card: Dictionary) -> void:
+	var question := current_question()
+	if question.is_empty():
+		return
+
+	if card.get("suit") == question.get("prefers_suit"):
+		var booster := str(question.get("pleases_booster", ""))
+		if not booster.is_empty() and not state.pleased_boosters.has(booster):
+			state.pleased_boosters.append(booster)
+
+	state.question_index += 1
 
 
 # ---------------------------------------------------------------------------

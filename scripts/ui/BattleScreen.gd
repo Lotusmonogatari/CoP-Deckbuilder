@@ -68,6 +68,10 @@ func _ready() -> void:
 	_card_zoom.hide()
 	_outcome_panel.hide()
 
+	# A reporter's question is a sentence rather than "Attacking · −6", so
+	# the line it sits on has to be able to wrap.
+	_intent_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+
 	start_battle()
 
 
@@ -123,6 +127,17 @@ func _build_static_parts() -> void:
 ## than once at the start, because a committee changes opponent mid-stage.
 func _show_opponent() -> void:
 	var opponent := engine.current_opponent()
+
+	# In a press conference there is nobody sitting opposite: the questions
+	# are the opposition. Showing an empty portrait and the word "Opponent"
+	# over them would be describing somebody who isn't in the room.
+	if opponent.is_empty() and engine.is_press_conference():
+		_portrait.hide()
+		_opponent_name.hide()
+		return
+	_portrait.show()
+	_opponent_name.show()
+
 	if opponent == _opponent and not _opponent_name.text.is_empty():
 		return
 	_opponent = opponent
@@ -152,14 +167,23 @@ func _refresh() -> void:
 
 	var state := engine.state
 
-	_turn_label.text = engine.turn_caption()
-	_intent_label.text = IntentRunner.describe(engine.current_intent())
+	if engine.is_press_conference():
+		# The reporters' questions are the opposition here, so they take the
+		# place of the turn count and the intent line.
+		var question := engine.current_question()
+		_turn_label.text = engine.question_caption()
+		_intent_label.text = str(question.get("text", "That was the last question."))
+	else:
+		_turn_label.text = engine.turn_caption()
+		_intent_label.text = IntentRunner.describe(engine.current_intent())
 	_show_opponent()
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
-		# claim a number is needed to win.
-		_support_bar.show_bar(state.bar, state.win_mode != "score")
+		# claim a number is needed to win. Neither has a press conference:
+		# it runs until the reporters are finished, whatever the tone.
+		var has_threshold := state.win_mode != "score" and not engine.is_press_conference()
+		_support_bar.show_bar(state.bar, has_threshold)
 
 	_refresh_energy(state)
 	_refresh_gaffe(state)
@@ -218,8 +242,31 @@ func _refresh_details(state: BattleState) -> void:
 	var lines: Array[String] = [
 		"Deck %d · Hand %d · Discard %d" % [state.deck.size(), state.hand.size(), state.discard.size()],
 		"Stage: %s (%s)" % [_stage.get("name_en", ""), _stage.get("stage_id", "")],
-		"Opponent: %s, %s" % [_opponent.get("name", ""), _opponent.get("party", "")],
 	]
+
+	# No line at all where there is nobody, rather than "Opponent: ,".
+	if not _opponent.is_empty():
+		lines.append("Opponent: %s, %s" % [_opponent.get("name", ""), _opponent.get("party", "")])
+
+	if engine.questions_remaining() > 0 or not engine.pleased_boosters().is_empty():
+		lines.append("")
+		var question_now := engine.current_question()
+		if not question_now.is_empty():
+			lines.append("This question invites a %s answer."
+				% question_now.get("prefers_suit", "any"))
+		lines.append("One card answers one question, and you only draw if a "
+			+ "card says so.")
+		var pleased := engine.pleased_boosters()
+		if pleased.is_empty():
+			lines.append("Nobody pleased yet.")
+		else:
+			# Organisations by name, not by the ID the data files use: the
+			# player has no way of knowing what BO08 is.
+			var named: Array[String] = []
+			for booster_id: String in pleased:
+				var booster := DataDB.get_booster(booster_id)
+				named.append(str(booster.get("name_en", booster_id)))
+			lines.append("Pleased so far: %s." % ", ".join(named))
 
 	if state.opponent_count > 1:
 		lines.append("")
@@ -243,7 +290,7 @@ func _refresh_details(state: BattleState) -> void:
 			+ "gets is what carries into the floor debate.")
 
 	if GameState.is_in_level():
-		var carried := GameState.level_runner.describe_carried_buffs()
+		var carried := GameState.level_runner.describe_carried_buffs(BattleSetup.booster_names())
 		if not carried.begins_with("Nothing"):
 			lines.append("")
 			lines.append(carried)
@@ -438,7 +485,8 @@ func _on_outcome_closed() -> void:
 	# A caucus has no threshold: how high the support got is the score, and
 	# that is what later stages draw on.
 	var score := state.player_score()
-	var level_over := GameState.finish_stage(state.outcome, score, [])
+	var level_over := GameState.finish_stage(
+		state.outcome, score, engine.pleased_boosters())
 
 	if level_over:
 		GameState.end_level()

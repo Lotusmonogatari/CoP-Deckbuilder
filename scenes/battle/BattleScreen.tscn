@@ -98,7 +98,7 @@ text = "Waiting"
 
 [node name="SupportBar" type="Control" parent="Safe/Column"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_fj6qp")
@@ -109,8 +109,8 @@ text = "51 seats to win"
 
 [node name="Readout" type="Label" parent="Safe/Column/SupportBar"]
 layout_mode = 0
-offset_top = 96.0
-offset_bottom = 96.0
+offset_top = 108.0
+offset_bottom = 108.0
 theme_type_variation = &"SmallLabel"
 
 [node name="StatusRow" type="HBoxContainer" parent="Safe/Column"]

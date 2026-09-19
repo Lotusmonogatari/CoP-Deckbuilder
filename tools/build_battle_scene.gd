@@ -142,7 +142,7 @@ func _add_support_bar(parent: Control) -> void:
 	var bar := Control.new()
 	bar.name = "SupportBar"
 	bar.set_script(load(SUPPORT_BAR_SCRIPT))
-	bar.custom_minimum_size = Vector2(0, 120)
+	bar.custom_minimum_size = Vector2(0, 140)
 	bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_adopt(bar, parent, true)
 
@@ -152,7 +152,7 @@ func _add_support_bar(parent: Control) -> void:
 	_adopt(caption, bar)
 
 	var readout := _label("Readout", "", "SmallLabel")
-	readout.position = Vector2(0, 96)
+	readout.position = Vector2(0, 108)
 	_adopt(readout, bar)
 
 

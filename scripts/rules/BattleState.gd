@@ -57,6 +57,21 @@ var committee: CommitteeModel = null   ## null everywhere else
 ## Set when a card reveals what the opponent will do after this turn.
 var next_intent_revealed := false
 
+# --- The press conference ---------------------------------------------------
+## How cards arrive.
+##
+##   "refill"  top the hand back up every turn. The normal case.
+##   "none"    you are dealt a hand at the start and that is all you get,
+##             unless a card itself says otherwise.
+var draw_mode := "refill"
+
+## Which reporter's question is waiting, counting from zero.
+var question_index := 0
+
+## The organisations pleased by answering in the suit they invited. These
+## carry out of the stage and into the floor debate.
+var pleased_boosters: Array[String] = []
+
 # --- Several opponents in one stage ----------------------------------------
 ## Which opponent is being argued with, counting from zero, and how many
 ## there are in total. Both are 0 and 1 in an ordinary one-opponent stage.
