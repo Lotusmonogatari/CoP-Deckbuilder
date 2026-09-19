@@ -238,7 +238,7 @@ SHEETS = {
         "out": "opponents.json",
         "key": "opp_id",
         "id_pattern": r"^OP\d+$",
-        "optional": ["Intent pattern [proposed]"],
+        "optional": ["Intent pattern"],
         "columns": [
             ("Opp ID", "opp_id", "id"),
             ("Name", "name", "str"),
@@ -257,7 +257,7 @@ SHEETS = {
             ("Loadout mods", "loadout_mods", "list"),
             ("Source", "source", "str"),
             # Proposed, not yet in the workbook. See design/proposals/.
-            ("Intent pattern [proposed]", "intent_pattern", "json"),
+            ("Intent pattern", "intent_pattern", "json"),
         ],
     },
     "Yoron": {
@@ -326,6 +326,35 @@ SHEETS = {
             ("Difficulty", "difficulty", "str"),
             ("Committee size", "committee_size", "int"),
             ("Size in band?", "size_in_band", "str"),
+        ],
+    },
+    "Visitors": {
+        "out": "visitors.json",
+        "key": "visitor_id",
+        "id_pattern": r"^V\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Visitor ID", "visitor_id", "id"),
+            ("Module", "module", "str"),
+            ("Slot cost", "slot_cost", "int"),
+            ("Visitor (EN)", "name_en", "str"),
+            ("Visitor (JP)", "name_jp", "str"),
+            ("Romaji", "romaji", "str"),
+            ("Segment", "segment", "str"),
+            ("Situation text", "situation_text", "str"),
+            ("Choice A", "choice_a_text", "str"),
+            ("A ΔJiban", "choice_a_delta_jiban", "int"),
+            ("A ΔKaban", "choice_a_delta_kaban", "int"),
+            ("A ΔParty support", "choice_a_delta_party_support", "int"),
+            ("A Yoron topic", "choice_a_yoron_topic", "str"),
+            ("A ΔYoron", "choice_a_delta_yoron", "int"),
+            ("Choice B", "choice_b_text", "str"),
+            ("B ΔJiban", "choice_b_delta_jiban", "int"),
+            ("B ΔKaban", "choice_b_delta_kaban", "int"),
+            ("B ΔParty support", "choice_b_delta_party_support", "int"),
+            ("B Yoron topic", "choice_b_yoron_topic", "str"),
+            ("B ΔYoron", "choice_b_delta_yoron", "int"),
+            ("Note", "note", "str"),
         ],
     },
     "Sanban": {
@@ -792,6 +821,23 @@ def validate(data, report):
                 f"{bill['bill_id']} has direction {bill['direction']}; it must be +1 or -1",
             )
 
+    # --- visitors ----------------------------------------------------------
+    for visitor in data.get("visitors", []):
+        vid = visitor["visitor_id"]
+        for side in ("a", "b"):
+            topic = visitor.get(f"choice_{side}_yoron_topic")
+            if topic and topic not in topic_ids:
+                report.error(
+                    "visitors",
+                    f"{vid} choice {side.upper()} moves topic '{topic}', "
+                    "which is not in the Yoron tab",
+                )
+        if visitor.get("segment") and visitor["segment"] not in segment_names:
+            report.error(
+                "visitors",
+                f"{vid} names segment '{visitor['segment']}', which is not in the Segments tab",
+            )
+
     # --- modules -----------------------------------------------------------
     seen_sequence = set()
     for row in data["modules"]:
@@ -970,7 +1016,10 @@ def main():
     for tab in sorted(present - expected):
         report.warn("workbook", f"tab '{tab}' is not recognised and was not exported")
     for tab in sorted(expected - present):
-        report.error("workbook", f"tab '{tab}' is missing from the workbook")
+        if SHEETS.get(tab, {}).get("optional_sheet"):
+            report.note(f"{tab}: tab not in the workbook yet — see design/proposals/")
+        else:
+            report.error("workbook", f"tab '{tab}' is missing from the workbook")
 
     data = {}
     DATA_DIR.mkdir(exist_ok=True)

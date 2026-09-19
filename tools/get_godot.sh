@@ -7,7 +7,7 @@
 # Usage:  tools/get_godot.sh
 set -euo pipefail
 
-GODOT_VERSION="4.4.1-stable"
+GODOT_VERSION="4.5.1-stable"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TOOLS_DIR="$REPO_ROOT/.tools"
 GODOT_BIN="$TOOLS_DIR/godot"

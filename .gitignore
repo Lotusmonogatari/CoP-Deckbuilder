@@ -24,3 +24,6 @@ __pycache__/
 # OS noise ----------------------------------------------------------------
 .DS_Store
 Thumbs.db
+
+# GUT writes its own temporary doubles and result files here.
+addons/gut/temp/

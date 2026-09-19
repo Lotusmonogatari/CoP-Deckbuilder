@@ -1,0 +1,222 @@
+extends GutTest
+## Tests for the rules that apply between battles: bill difficulty, meta
+## variable rewards, and the thresholds that switch effects on.
+
+
+const BALANCE := {
+	"bill_difficulty_factor": 0.2,
+	"yoron_neutral_point": 50.0,
+	"party_support_allied_buff": 75,
+	"party_support_debuff": 50,
+	"party_support_steering_committee": 25,
+	"jiban_town_hall_trigger": 15,
+	"jiban_funding_freeze": 0,
+}
+
+const SANBAN := [
+	{"name_en": "Constituency support", "start": 50, "min": 0, "max": 100,
+	 "low_threshold": 15, "high_threshold": 80},
+	{"name_en": "Reputation", "start": 50, "min": 0, "max": 100,
+	 "low_threshold": 20, "high_threshold": 80},
+	{"name_en": "Funds", "start": 30, "min": 0, "max": 999},
+	{"name_en": "Party support", "start": 50, "min": 0, "max": 100,
+	 "low_threshold": 50, "high_threshold": 75},
+]
+
+
+# ---------------------------------------------------------------------------
+# How hard a bill is
+# ---------------------------------------------------------------------------
+
+func test_a_bill_the_public_is_neutral_on_is_no_harder() -> void:
+	# This is where every bill sits today: all eight opinion topics are still
+	# at their placeholder 50.
+	assert_eq(MetaRules.bill_difficulty(1, 50, 0.2, 50.0), 0)
+
+
+func test_an_unpopular_bill_puts_the_opponent_ahead() -> void:
+	# Asking for MORE of something the public is cold on (20 out of 100).
+	# (50 - 20) x 0.2 = 6.
+	assert_eq(MetaRules.bill_difficulty(1, 20, 0.2, 50.0), 6)
+
+
+func test_a_popular_bill_gives_the_player_a_head_start() -> void:
+	# (50 - 80) x 0.2 = -6, so the opponent starts six behind.
+	assert_eq(MetaRules.bill_difficulty(1, 80, 0.2, 50.0), -6)
+
+
+func test_a_bill_asking_for_less_reads_the_opinion_backwards() -> void:
+	# A bill CUTTING taxes is easy exactly when the public is cold on
+	# taxation. Opinion 20 means alignment 80, so (50 - 80) x 0.2 = -6.
+	assert_eq(MetaRules.bill_difficulty(-1, 20, 0.2, 50.0), -6)
+
+	# And a tax cut is hard when the public wants more taxation.
+	assert_eq(MetaRules.bill_difficulty(-1, 80, 0.2, 50.0), 6)
+
+
+func test_the_two_directions_are_mirror_images() -> void:
+	for value in [0, 25, 50, 75, 100]:
+		assert_eq(
+			MetaRules.bill_difficulty(1, value, 0.2, 50.0),
+			-MetaRules.bill_difficulty(-1, value, 0.2, 50.0),
+			"opinion %d should mirror" % value
+		)
+
+
+func test_bill_difficulty_reads_straight_from_the_data_files() -> void:
+	var bill := {"bill_id": "B01", "direction": 1, "topic_id": "Y03"}
+	var topic := {"topic_id": "Y03", "start_value": 30}
+	assert_eq(MetaRules.bill_difficulty_from_data(bill, topic, BALANCE), 4)
+
+
+# ---------------------------------------------------------------------------
+# Meta-variables
+# ---------------------------------------------------------------------------
+
+func test_a_meta_variable_stays_inside_its_range() -> void:
+	var jiban := SANBAN[0]
+	assert_eq(MetaRules.clamp_meta(150, jiban), 100, "capped at the maximum")
+	assert_eq(MetaRules.clamp_meta(-10, jiban), 0, "floored at the minimum")
+	assert_eq(MetaRules.clamp_meta(60, jiban), 60, "left alone in between")
+
+
+func test_winning_a_stage_applies_its_rewards() -> void:
+	var stage := TestFixtures.stage({
+		"win_delta_jiban": 1, "win_delta_kanban": 2,
+		"win_delta_kaban": 0, "win_delta_party_support": 3,
+	})
+	var meta := {"Constituency support": 50, "Reputation": 50, "Funds": 30, "Party support": 50}
+
+	var result := MetaRules.apply_win_deltas(meta, stage, SANBAN)
+	assert_eq(result["meta"]["Constituency support"], 51)
+	assert_eq(result["meta"]["Reputation"], 52)
+	assert_eq(result["meta"]["Party support"], 53)
+	assert_eq(result["meta"]["Funds"], 30, "a zero reward changes nothing")
+
+
+func test_the_original_values_are_left_alone() -> void:
+	var meta := {"Reputation": 50}
+	MetaRules.apply_win_deltas(meta, TestFixtures.stage({"win_delta_kanban": 2}), SANBAN)
+	assert_eq(meta["Reputation"], 50, "the caller's dictionary was not modified")
+
+
+func test_a_reward_reports_what_actually_landed() -> void:
+	# Reputation is already at 99 and the reward is 3, but the maximum is 100.
+	# The UI must say "+1", not "+3".
+	var meta := {"Reputation": 99}
+	var result := MetaRules.apply_win_deltas(meta, TestFixtures.stage({"win_delta_kanban": 3}), SANBAN)
+
+	assert_eq(result["meta"]["Reputation"], 100)
+	assert_eq(result["applied"]["Reputation"], 1, "only one point had anywhere to go")
+
+
+func test_a_penalty_is_applied_the_same_way() -> void:
+	# The Steering Committee stage's win row carries negative numbers.
+	var stage := TestFixtures.stage({"win_delta_kanban": -3, "win_delta_kaban": -20})
+	var meta := {"Reputation": 50, "Funds": 30}
+
+	var result := MetaRules.apply_win_deltas(meta, stage, SANBAN)
+	assert_eq(result["meta"]["Reputation"], 47)
+	assert_eq(result["meta"]["Funds"], 10)
+
+
+# ---------------------------------------------------------------------------
+# Party support thresholds
+# ---------------------------------------------------------------------------
+
+func test_a_strong_party_standing_switches_on_party_backing() -> void:
+	assert_eq(MetaRules.party_support_modifiers(80, BALANCE), ["M09"])
+
+
+func test_a_weak_party_standing_switches_on_the_cold_shoulder() -> void:
+	assert_eq(MetaRules.party_support_modifiers(40, BALANCE), ["M10"])
+
+
+func test_neither_applies_in_the_middle() -> void:
+	assert_eq(MetaRules.party_support_modifiers(60, BALANCE), [])
+
+
+func test_the_thresholds_are_exclusive() -> void:
+	# The workbook says "> 75" and "< 50", so sitting exactly on either
+	# number does nothing.
+	assert_eq(MetaRules.party_support_modifiers(75, BALANCE), [], "exactly 75 is not above 75")
+	assert_eq(MetaRules.party_support_modifiers(50, BALANCE), [], "exactly 50 is not below 50")
+
+
+func test_the_steering_committee_is_forced_when_the_party_turns() -> void:
+	assert_true(MetaRules.steering_committee_triggered(20, BALANCE))
+	assert_false(MetaRules.steering_committee_triggered(25, BALANCE), "exactly 25 is not below 25")
+
+
+# ---------------------------------------------------------------------------
+# Local support thresholds
+# ---------------------------------------------------------------------------
+
+func test_a_thin_local_base_calls_for_a_town_hall() -> void:
+	assert_true(MetaRules.town_hall_triggered(15, BALANCE), "the trigger is 15 or below")
+	assert_true(MetaRules.town_hall_triggered(10, BALANCE))
+	assert_false(MetaRules.town_hall_triggered(16, BALANCE))
+
+
+func test_no_local_base_freezes_the_money() -> void:
+	assert_true(MetaRules.funding_frozen(0, BALANCE))
+	assert_false(MetaRules.funding_frozen(1, BALANCE))
+
+
+# ---------------------------------------------------------------------------
+# Reputation in press stages
+# ---------------------------------------------------------------------------
+
+func test_a_strong_reputation_opens_a_press_stage_in_your_favour() -> void:
+	assert_eq(MetaRules.press_start_adjustment(85, SANBAN), 5)
+	assert_eq(MetaRules.press_start_adjustment(80, SANBAN), 5, "exactly on the threshold counts")
+
+
+func test_a_poor_reputation_opens_it_against_you() -> void:
+	assert_eq(MetaRules.press_start_adjustment(15, SANBAN), -5)
+	assert_eq(MetaRules.press_start_adjustment(20, SANBAN), -5)
+
+
+func test_an_ordinary_reputation_changes_nothing() -> void:
+	assert_eq(MetaRules.press_start_adjustment(50, SANBAN), 0)
+
+
+# ---------------------------------------------------------------------------
+# Which modifiers fire for a stage's audience
+# ---------------------------------------------------------------------------
+
+func test_a_modifier_fires_when_its_audience_is_big_enough() -> void:
+	# The test stage's audience is 60% loyalists; this modifier wants 30%.
+	var modifiers := [{
+		"mod_id": "M06", "trigger_segment_id": "SG02",
+		"trigger_min_pct": 0.3, "available_to": "Both",
+	}]
+	var active := MetaRules.active_modifiers(modifiers, TestFixtures.stage())
+	assert_eq(active.size(), 1)
+
+
+func test_a_modifier_stays_quiet_when_its_audience_is_too_small() -> void:
+	# Only 10% of this stage's audience are constituents.
+	var modifiers := [{
+		"mod_id": "M01", "trigger_segment_id": "SG03",
+		"trigger_min_pct": 0.3, "available_to": "Both",
+	}]
+	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 0)
+
+
+func test_an_opponent_only_modifier_does_not_fire_for_the_player() -> void:
+	var modifiers := [{
+		"mod_id": "M07", "trigger_segment_id": "SG01",
+		"trigger_min_pct": 0.1, "available_to": "Opponent",
+	}]
+	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage(), "Player").size(), 0)
+	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage(), "Opponent").size(), 1)
+
+
+func test_a_modifier_with_no_audience_condition_is_left_to_the_caller() -> void:
+	# M09 and M10 are driven by party support, not by who is in the room.
+	var modifiers := [{
+		"mod_id": "M09", "trigger_segment_id": "SG02",
+		"trigger_min_pct": null, "available_to": "Both",
+	}]
+	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 0)

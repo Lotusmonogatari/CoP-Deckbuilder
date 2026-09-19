@@ -49,7 +49,7 @@ fi
 
 step "3/3  Running the rules engine tests"
 if ! "$GODOT" --headless --path . -s addons/gut/gut_cmdln.gd \
-      -gdir=res://tests -ginclude_subdirs -gexit; then
+      -gdir=res://tests -gexit; then
   echo ">> FAILED: one or more tests did not pass."
   failures=$((failures + 1))
 fi
