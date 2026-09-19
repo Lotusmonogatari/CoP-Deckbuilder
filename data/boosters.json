@@ -1,0 +1,123 @@
+[
+  {
+    "booster_id": "BO01",
+    "name_en": "Party Headquarters",
+    "name_jp": "党本部",
+    "romaji": "Tōhonbu",
+    "tier": "Party",
+    "boosts": "Endorsement, funds; protection from Cold Shoulder (M10)",
+    "linked_modifiers": [
+      "M11"
+    ],
+    "modifier_count": 1
+  },
+  {
+    "booster_id": "BO02",
+    "name_en": "Party Faction",
+    "name_jp": "派閥",
+    "romaji": "Habatsu",
+    "tier": "Party",
+    "boosts": "Party support, patronage, small funds",
+    "linked_modifiers": [
+      "M12"
+    ],
+    "modifier_count": 1
+  },
+  {
+    "booster_id": "BO03",
+    "name_en": "Local Kōenkai",
+    "name_jp": "後援会",
+    "romaji": "Kōenkai",
+    "tier": "Constituency",
+    "boosts": "Start support when constituents present; donations",
+    "linked_modifiers": [
+      "M01"
+    ],
+    "modifier_count": 1
+  },
+  {
+    "booster_id": "BO04",
+    "name_en": "Mayors' Network",
+    "name_jp": "市町村長会",
+    "romaji": "Shichōsonchō-kai",
+    "tier": "Constituency",
+    "boosts": "Jiban gains; standing on local bills",
+    "linked_modifiers": [
+      "M13"
+    ],
+    "modifier_count": 1
+  },
+  {
+    "booster_id": "BO05",
+    "name_en": "Chamber of Commerce",
+    "name_jp": "商工会議所",
+    "romaji": "Shōkō Kaigisho",
+    "tier": "National",
+    "boosts": "Funds; donor-audience bonus",
+    "linked_modifiers": [
+      "M02"
+    ],
+    "modifier_count": 1
+  },
+  {
+    "booster_id": "BO06",
+    "name_en": "Neighborhood Associations",
+    "name_jp": "町内会",
+    "romaji": "Chōnaikai",
+    "tier": "Constituency",
+    "boosts": "Town hall bonus; slows Jiban loss",
+    "linked_modifiers": [
+      "M14"
+    ],
+    "modifier_count": 1
+  },
+  {
+    "booster_id": "BO07",
+    "name_en": "Fisheries Cooperative",
+    "name_jp": "漁協",
+    "romaji": "Gyokyō",
+    "tier": "Constituency",
+    "boosts": "Fisheries, environment, and Kuril bills",
+    "linked_modifiers": [
+      "M15"
+    ],
+    "modifier_count": 1
+  },
+  {
+    "booster_id": "BO08",
+    "name_en": "National Media",
+    "name_jp": "全国紙",
+    "romaji": "Zenkokushi",
+    "tier": "National",
+    "boosts": "Press tone; Kanban",
+    "linked_modifiers": [
+      "M03",
+      "M04"
+    ],
+    "modifier_count": 2
+  },
+  {
+    "booster_id": "BO09",
+    "name_en": "Labor Federation",
+    "name_jp": "労働組合連合",
+    "romaji": "Rōdō Kumiai Rengō",
+    "tier": "National",
+    "boosts": "Loyalists; caucus and floor stages",
+    "linked_modifiers": [
+      "M06"
+    ],
+    "modifier_count": 1
+  },
+  {
+    "booster_id": "BO10",
+    "name_en": "Agricultural Cooperatives",
+    "name_jp": "農協",
+    "romaji": "Nōkyō",
+    "tier": "National",
+    "boosts": "Rural Focus bills",
+    "linked_modifiers": [
+      "M05"
+    ],
+    "modifier_count": 1
+  }
+]

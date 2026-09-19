@@ -1,0 +1,193 @@
+class_name LoopDriver
+extends Node
+## Walks the whole playtest loop with real clicks: the Office, all four
+## stages, and back to the Office.
+##
+## WHY THIS IS NOT THE SCENE ITSELF
+## The game changes scenes as it moves from the Office into a stage, and
+## changing a scene frees the old one. A driver that was the current scene
+## would delete itself the moment it pressed Start. So loop_test.tscn adds
+## this as a child of the tree root instead, where it outlives every scene
+## change and can watch the whole journey.
+##
+## Every button press goes through the input system rather than emitting a
+## signal, so a button that cannot actually be reached makes this fail.
+
+const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
+
+## A stage that has not finished within this many turns is stuck.
+const TURN_CEILING := 40
+
+## How many stages the level should have.
+const EXPECTED_STAGES := 4
+
+var _failures: PackedStringArray = []
+
+
+func _ready() -> void:
+	# Deferred so the tree is not busy adding children when the first scene
+	# change happens.
+	_run.call_deferred()
+
+
+func _run() -> void:
+	get_tree().change_scene_to_file(OFFICE_SCENE)
+	await get_tree().process_frame
+	await get_tree().create_timer(0.6).timeout
+
+	await _walk_the_loop()
+
+	print("")
+	if _failures.is_empty():
+		print("LOOP TEST: PASS")
+		get_tree().quit(0)
+	else:
+		print("LOOP TEST: FAIL")
+		for line: String in _failures:
+			print("  X " + line)
+		get_tree().quit(1)
+
+
+func _walk_the_loop() -> void:
+	var office := get_tree().current_scene
+	if office == null or office.name != "OfficeScreen":
+		_failures.append("the game did not start in the Office")
+		return
+	print("  started in the Office")
+
+	await _click(office.get_node("%StartButton"))
+	await get_tree().create_timer(0.6).timeout
+
+	if get_tree().current_scene.name != "BattleScreen":
+		_failures.append("Start did not open a stage")
+		return
+	print("  Start opened the first stage")
+
+	var played := 0
+	while get_tree().current_scene.name == "BattleScreen" and played < EXPECTED_STAGES + 2:
+		var stage_name := await _play_current_stage()
+		if stage_name.is_empty():
+			return
+		played += 1
+		await get_tree().create_timer(0.5).timeout
+
+	if get_tree().current_scene.name != "OfficeScreen":
+		_failures.append("the loop did not return to the Office after %d stage(s)" % played)
+		return
+
+	print("  returned to the Office after %d of %d stages" % [played, EXPECTED_STAGES])
+
+	# How FAR the loop gets is not asserted yet, on purpose. Losing a stage
+	# ends the level by design, and the caucus cannot currently be won at all
+	# because its "score rather than threshold" rule is not built — it falls
+	# through to the ordinary turn limit and reads as a loss.
+	#
+	# So the test checks the loop is a loop: it starts in the Office, plays
+	# stages, and comes back. Once the caucus scores properly this should
+	# tighten to requiring all four.
+	if played < 1:
+		_failures.append("no stage was played at all")
+
+
+## Plays the stage on screen to a finish and presses on. Returns its name,
+## or "" when something went wrong.
+func _play_current_stage() -> String:
+	var screen := get_tree().current_scene
+	var stage_name := str(screen.get_node("%StageName").text)
+
+	var guard := 0
+	while not screen.engine.state.is_over() and guard < TURN_CEILING:
+		guard += 1
+		await _play_affordable_cards(screen)
+		if screen.engine.state.is_over():
+			break
+		await _click(screen.get_node("%EndTurnButton"))
+
+	if not screen.engine.state.is_over():
+		_failures.append("%s never finished within %d turns" % [stage_name, TURN_CEILING])
+		return ""
+
+	await get_tree().create_timer(0.3).timeout
+	if not (screen.get_node("%OutcomePanel") as Control).visible:
+		_failures.append("%s ended but showed no result" % stage_name)
+		return ""
+
+	# Reported rather than asserted. How hard a stage is, is Cameron's call;
+	# the numbers just need to be visible so he can make it.
+	var state = screen.engine.state
+	var standing := ""
+	if state.bar != null:
+		standing = "  you %d, them %d" % [state.bar.player, state.bar.opponent]
+	print("  played: %-24s %s in %d turns%s" % [
+		stage_name, state.outcome.to_upper(), state.turn, standing])
+	print("          %s" % state.outcome_reason)
+
+	await _click(screen.get_node("%OutcomeClose"))
+	await get_tree().create_timer(0.6).timeout
+	return stage_name
+
+
+## Plays whatever the player can afford this turn, the way a person would:
+## tap the card, then confirm in the zoom view. Two clicks, both real.
+##
+## It deliberately plays rather than just ending turns. A driver that never
+## plays a card loses every stage, which would make this a test of the first
+## stage only.
+func _play_affordable_cards(screen: Node) -> void:
+	var hand: Node = screen.get_node("%HandRow")
+
+	for _attempt in 8:
+		if screen.engine.state.is_over():
+			return
+
+		var state = screen.engine.state
+
+		var playable: Control = null
+		for card: Control in hand.get_children():
+			if not (card is Button) or (card as Button).disabled:
+				continue
+			# Skip anything that would fill the gaffe meter. Playing every
+			# card you can afford loses on gaffes rather than on the bar,
+			# which would make this a test of that mistake instead of the
+			# loop. A person would not do it either.
+			var gaffe := int((card as CardView).card.get("gaffe", 0))
+			if state.gaffe + gaffe >= state.gaffe_limit:
+				continue
+			playable = card
+			break
+		if playable == null:
+			return
+
+		await _click(playable)
+		await get_tree().create_timer(0.1).timeout
+
+		var play_button: Button = screen.get_node("%ZoomPlay")
+		if play_button.disabled:
+			# Cannot afford it after all; back out rather than getting stuck.
+			await _click(screen.get_node("%ZoomClose"))
+			return
+		await _click(play_button)
+		await get_tree().create_timer(0.1).timeout
+
+
+func _click(control: Control) -> void:
+	await get_tree().process_frame
+	var rect := control.get_global_rect()
+	if rect.size.x <= 0.0 or rect.size.y <= 0.0:
+		_failures.append("%s has no size, so nothing could click it" % control.name)
+		return
+
+	# Injected clicks are read as window coordinates while control rectangles
+	# are in viewport coordinates, and the two differ: the game is drawn at
+	# 1080 wide inside a 440 wide window.
+	var where: Vector2 = get_viewport().get_screen_transform() * rect.get_center()
+
+	for pressed in [true, false]:
+		var event := InputEventMouseButton.new()
+		event.button_index = MOUSE_BUTTON_LEFT
+		event.pressed = pressed
+		event.position = where
+		event.global_position = where
+		Input.parse_input_event(event)
+		await get_tree().process_frame
+	await get_tree().process_frame

@@ -1,0 +1,29 @@
+# Godot 4 generated files -------------------------------------------------
+# Everything Godot re-creates on import. Safe to delete; never commit.
+.godot/
+*.translation
+
+# Export output -----------------------------------------------------------
+/build/
+/export/
+export_presets.cfg
+
+# Local tooling -----------------------------------------------------------
+# tools/get_godot.sh downloads the engine here so this repo stays source-only.
+.tools/
+
+# Python ------------------------------------------------------------------
+__pycache__/
+*.pyc
+.venv/
+
+# Spreadsheet lock files --------------------------------------------------
+# Excel leaves these behind while a workbook is open.
+~$*.xlsx
+
+# OS noise ----------------------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# GUT writes its own temporary doubles and result files here.
+addons/gut/temp/

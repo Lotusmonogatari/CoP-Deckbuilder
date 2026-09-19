@@ -1,0 +1,159 @@
+{
+  "_README": [
+    "The playtest level: a hub, four stages in order, then back to the hub.",
+    "",
+    "This file is WRITTEN BY HAND, like rules.json. export_data.py never",
+    "overwrites it, and it does not touch the canon workbook at all. That is",
+    "deliberate: this level is a shape being tried out, and nothing here",
+    "should disturb Module 01 or the stages in the workbook while it settles.",
+    "Once the shape is right it can move into the workbook properly.",
+    "",
+    "EVERY NAME AND NUMBER BELOW IS A PLACEHOLDER awaiting Cameron.",
+    "Opponents are deliberately called 'Opponent A' and so on: the canon rule",
+    "is that characters come only from the data files, never invented here.",
+    "Casting these from the real roster (OP01-OP09) is Cameron's call."
+  ],
+
+  "level_id": "PT01",
+  "name_en": "Playtest Level 1",
+  "name_jp": "試作一",
+
+  "stages": [
+    {
+      "seq": 1,
+      "stage_id": "PT_S1",
+      "affinity_stage_id": "ST01",
+      "name_en": "Committee",
+      "name_jp": "委員会",
+      "_shape": "Three opponents one after another. Everything resets between them.",
+      "sequence_mode": "reset",
+      "opponents": [
+        {"opp_id": "PT_A", "name": "Opponent A", "party": "Placeholder"},
+        {"opp_id": "PT_B", "name": "Opponent B", "party": "Placeholder"},
+        {"opp_id": "PT_C", "name": "Opponent C", "party": "Placeholder"}
+      ],
+      "bar_unit": "Support",
+      "bar_max": 100,
+      "win_threshold": 60,
+      "turn_limit": 6,
+      "energy_per_turn": 3,
+      "hand_size": 5,
+      "gaffe_limit": 5,
+      "player_start": 40,
+      "opp_start": 40
+    },
+
+    {
+      "seq": 2,
+      "stage_id": "PT_S2",
+      "affinity_stage_id": "ST04",
+      "name_en": "Press Conference",
+      "name_jp": "記者会見",
+      "_shape": [
+        "Six cards to start and no more: you only draw if a card says so.",
+        "A series of questions, one card spent answering each.",
+        "Answers please or annoy booster groups, which carries into the floor."
+      ],
+      "draw_mode": "none",
+      "opening_hand": 6,
+      "bar_unit": "Press tone",
+      "bar_max": 100,
+      "win_threshold": 55,
+      "energy_per_turn": 3,
+      "gaffe_limit": 4,
+      "player_start": 45,
+      "opp_start": 45,
+      "questions": [
+        {
+          "id": "Q1",
+          "text": "PLACEHOLDER. A reporter asks who really benefits from this bill.",
+          "prefers_suit": "Data Driven",
+          "pleases_booster": "BO08"
+        },
+        {
+          "id": "Q2",
+          "text": "PLACEHOLDER. A reporter raises a complaint from your own district.",
+          "prefers_suit": "Earnest",
+          "pleases_booster": "BO03"
+        },
+        {
+          "id": "Q3",
+          "text": "PLACEHOLDER. A reporter asks what it will cost.",
+          "prefers_suit": "Data Driven",
+          "pleases_booster": "BO05"
+        },
+        {
+          "id": "Q4",
+          "text": "PLACEHOLDER. A reporter asks whether your party is behind you.",
+          "prefers_suit": "Appeal",
+          "pleases_booster": "BO02"
+        },
+        {
+          "id": "Q5",
+          "text": "PLACEHOLDER. A reporter asks about the coastal communities.",
+          "prefers_suit": "Emotional",
+          "pleases_booster": "BO07"
+        }
+      ]
+    },
+
+    {
+      "seq": 3,
+      "stage_id": "PT_S3",
+      "affinity_stage_id": "ST03",
+      "name_en": "Caucus Debate",
+      "name_jp": "議員総会",
+      "_shape": [
+        "One opponent, the caucus panel. Three turns.",
+        "FIVE ENERGY FOR THE WHOLE STAGE, not five each turn: spend it when",
+        "you like, and when it is gone the remaining turns are empty.",
+        "No threshold. However high you get the support is your score, and",
+        "the score becomes a buff going into the floor debate."
+      ],
+      "energy_mode": "pool",
+      "energy_pool": 5,
+      "win_mode": "score",
+      "opponents": [
+        {"opp_id": "PT_PANEL", "name": "The Caucus Panel", "party": "Placeholder"}
+      ],
+      "bar_unit": "Support",
+      "bar_max": 100,
+      "turn_limit": 3,
+      "hand_size": 5,
+      "gaffe_limit": 5,
+      "player_start": 40,
+      "opp_start": 40
+    },
+
+    {
+      "seq": 4,
+      "stage_id": "PT_S4",
+      "affinity_stage_id": "ST02",
+      "name_en": "Parliament Floor Debate",
+      "name_jp": "本会議",
+      "_shape": [
+        "Five opponents one after another, sharing one seat count and one",
+        "clock. Beat one and the next steps in; the seats you have won stay",
+        "won. Carries whatever the press conference and the caucus produced."
+      ],
+      "sequence_mode": "continuous",
+      "carries_buffs_from": [2, 3],
+      "opponents": [
+        {"opp_id": "PT_F1", "name": "Opponent 1", "party": "Placeholder"},
+        {"opp_id": "PT_F2", "name": "Opponent 2", "party": "Placeholder"},
+        {"opp_id": "PT_F3", "name": "Opponent 3", "party": "Placeholder"},
+        {"opp_id": "PT_F4", "name": "Opponent 4", "party": "Placeholder"},
+        {"opp_id": "PT_F5", "name": "Opponent 5", "party": "Placeholder"}
+      ],
+      "bar_unit": "Seats",
+      "bar_max": 101,
+      "win_threshold": 51,
+      "turn_limit": 20,
+      "energy_per_turn": 3,
+      "hand_size": 5,
+      "gaffe_limit": 6,
+      "player_start": 40,
+      "opp_start": 40
+    }
+  ]
+}

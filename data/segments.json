@@ -1,0 +1,37 @@
+[
+  {
+    "segment_id": "SG01",
+    "name_en": "Press",
+    "name_jp": "報道陣",
+    "romaji": "Hōdōjin",
+    "description": "Reporters, editors, camera crews"
+  },
+  {
+    "segment_id": "SG02",
+    "name_en": "Loyalists",
+    "name_jp": "党員",
+    "romaji": "Tōin",
+    "description": "Party members and whips"
+  },
+  {
+    "segment_id": "SG03",
+    "name_en": "Constituents",
+    "name_jp": "有権者",
+    "romaji": "Yūkensha",
+    "description": "Voters of the protagonist's district and the general public"
+  },
+  {
+    "segment_id": "SG04",
+    "name_en": "Donors",
+    "name_jp": "支援者",
+    "romaji": "Shiensha",
+    "description": "Backers, business associations, Kōenkai members"
+  },
+  {
+    "segment_id": "SG05",
+    "name_en": "Bureaucrats",
+    "name_jp": "官僚",
+    "romaji": "Kanryō",
+    "description": "Ministry officials and committee staff"
+  }
+]

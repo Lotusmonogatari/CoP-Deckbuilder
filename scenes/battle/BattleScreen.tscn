@@ -1,0 +1,331 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/BattleScreen.gd" id="1_omdtd"]
+[ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_3oymq"]
+[ext_resource type="Script" path="res://scripts/ui/SupportBar.gd" id="3_fj6qp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydj6j"]
+bg_color = Color(0.07, 0.08, 0.11, 0.9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdnx5"]
+bg_color = Color(0.07, 0.08, 0.11, 1.15)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkaq2"]
+bg_color = Color(0.07, 0.08, 0.11, 0.85)
+
+[node name="BattleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_omdtd")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.09, 0.1, 0.13, 1)
+
+[node name="Safe" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 50
+
+[node name="Column" type="VBoxContainer" parent="Safe"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Header" type="HBoxContainer" parent="Safe/Column"]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="Safe/Column/Header"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StageName" type="Label" parent="Safe/Column/Header/Title"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Floor Debate"
+
+[node name="StageNameJP" type="Label" parent="Safe/Column/Header/Title"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"JapaneseAccent"
+text = "本会議"
+vertical_alignment = 2
+
+[node name="Spacer" type="Control" parent="Safe/Column/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="TurnLabel" type="Label" parent="Safe/Column/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Turn 1 of 8"
+horizontal_alignment = 2
+
+[node name="OpponentRow" type="VBoxContainer" parent="Safe/Column"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Portrait" type="Control" parent="Safe/Column/OpponentRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 620)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_3oymq")
+
+[node name="Details" type="VBoxContainer" parent="Safe/Column/OpponentRow"]
+layout_mode = 2
+
+[node name="OpponentName" type="Label" parent="Safe/Column/OpponentRow/Details"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Opponent"
+
+[node name="IntentLabel" type="Label" parent="Safe/Column/OpponentRow/Details"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Waiting"
+
+[node name="SupportBar" type="Control" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_fj6qp")
+
+[node name="Caption" type="Label" parent="Safe/Column/SupportBar"]
+layout_mode = 0
+text = "51 seats to win"
+
+[node name="Readout" type="Label" parent="Safe/Column/SupportBar"]
+layout_mode = 0
+offset_top = 108.0
+offset_bottom = 108.0
+theme_type_variation = &"SmallLabel"
+
+[node name="StatusRow" type="HBoxContainer" parent="Safe/Column"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="EnergyRow" type="HBoxContainer" parent="Safe/Column/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Spacer" type="Control" parent="Safe/Column/StatusRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="GaffeLabel" type="Label" parent="Safe/Column/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gaffes 0 / 6"
+vertical_alignment = 1
+
+[node name="DetailsButton" type="Button" parent="Safe/Column/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Details"
+
+[node name="VSpacer" type="Control" parent="Safe/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HandScroll" type="ScrollContainer" parent="Safe/Column"]
+custom_minimum_size = Vector2(0, 390)
+layout_mode = 2
+size_flags_vertical = 8
+vertical_scroll_mode = 0
+
+[node name="HandRow" type="HBoxContainer" parent="Safe/Column/HandScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="EndTurnButton" type="Button" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+text = "End turn"
+
+[node name="DetailsPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ydj6j")
+
+[node name="Margin" type="MarginContainer" parent="DetailsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 120
+
+[node name="Scroll" type="ScrollContainer" parent="DetailsPanel/Margin"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Centre" type="CenterContainer" parent="DetailsPanel/Margin/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Column" type="VBoxContainer" parent="DetailsPanel/Margin/Scroll/Centre"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Heading" type="Label" parent="DetailsPanel/Margin/Scroll/Centre/Column"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Details"
+
+[node name="DetailsText" type="Label" parent="DetailsPanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+autowrap_mode = 3
+
+[node name="DetailsClose" type="Button" parent="DetailsPanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
+
+[node name="CardZoom" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jdnx5")
+
+[node name="Margin" type="MarginContainer" parent="CardZoom"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 120
+
+[node name="Scroll" type="ScrollContainer" parent="CardZoom/Margin"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Centre" type="CenterContainer" parent="CardZoom/Margin/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Column" type="VBoxContainer" parent="CardZoom/Margin/Scroll/Centre"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ZoomTitle" type="Label" parent="CardZoom/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+
+[node name="ZoomSubtitle" type="Label" parent="CardZoom/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"JapaneseAccent"
+
+[node name="ZoomArt" type="Control" parent="CardZoom/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+script = ExtResource("2_3oymq")
+
+[node name="ZoomText" type="RichTextLabel" parent="CardZoom/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="Buttons" type="HBoxContainer" parent="CardZoom/Margin/Scroll/Centre/Column"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ZoomClose" type="Button" parent="CardZoom/Margin/Scroll/Centre/Column/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="ZoomPlay" type="Button" parent="CardZoom/Margin/Scroll/Centre/Column/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Play this"
+
+[node name="OutcomePanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wkaq2")
+
+[node name="Margin" type="MarginContainer" parent="OutcomePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 120
+
+[node name="Scroll" type="ScrollContainer" parent="OutcomePanel/Margin"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Centre" type="CenterContainer" parent="OutcomePanel/Margin/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Column" type="VBoxContainer" parent="OutcomePanel/Margin/Scroll/Centre"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="OutcomeTitle" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+
+[node name="OutcomeReason" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="OutcomeClose" type="Button" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
+
+[node name="Notice" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 220.0
+offset_right = 400.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.85)
+theme_override_constants/outline_size = 8
+horizontal_alignment = 1
+autowrap_mode = 3

@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/OfficeScreen.gd" id="1_chib0"]
+[ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_elj5r"]
+
+[node name="OfficeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_chib0")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.11, 0.1, 0.09, 1)
+
+[node name="Safe" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 50
+
+[node name="Column" type="VBoxContainer" parent="Safe"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Heading" type="HBoxContainer" parent="Safe/Column"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Safe/Column/Heading"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "The Office"
+
+[node name="Subtitle" type="Label" parent="Safe/Column/Heading"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"JapaneseAccent"
+text = "陳情"
+vertical_alignment = 2
+
+[node name="Portrait" type="Control" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_elj5r")
+
+[node name="Report" type="Label" parent="Safe/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="VSpacer" type="Control" parent="Safe/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="StartButton" type="Button" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+text = "Start the level"
