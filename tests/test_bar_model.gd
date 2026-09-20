@@ -322,3 +322,72 @@ func test_starting_numbers_that_overfill_the_room_are_trimmed() -> void:
 	assert_eq(bar.opponent, 61)
 	assert_eq(bar.undecided, 0)
 	assert_true(bar.totals_balance())
+
+
+# ---------------------------------------------------------------------------
+# Who actually moved
+# ---------------------------------------------------------------------------
+# A total on its own ("3 seats won over") does not tell the player whether
+# they picked up waverers or prised somebody off the opposition, and those
+# are very different afternoons. The bar records the breakdown so the screen
+# can say which.
+
+func test_a_gain_records_that_it_came_from_the_undecided() -> void:
+	var bar := _floor_debate()
+	bar.player_gains(3)
+
+	assert_eq(bar.last_gain["from_undecided"], 3)
+	assert_eq(bar.last_gain["from_other_side"], 0, "21 were undecided; none had to be prised away")
+	assert_eq(bar.last_gain["wasted"], 0)
+
+
+func test_a_gain_records_the_split_once_the_undecided_run_out() -> void:
+	var bar := _floor_debate(_always(CHEAP))
+	bar.player_gains(21)          # exactly empties the undecided benches
+	bar.last_gain = {}            # prove the next call rewrites it
+	bar.player_gains(2)
+
+	assert_eq(bar.last_gain["from_undecided"], 0)
+	assert_eq(bar.last_gain["from_other_side"], 2, "both had to come off the opposition")
+
+
+func test_a_gain_records_a_mixed_split() -> void:
+	var bar := BarModel.create(BarModel.Model.SHARED_POOL, 101, 51, 40, 59, _always(CHEAP))
+	assert_eq(bar.undecided, 2, "two waverers and nobody else free")
+
+	bar.player_gains(5)
+	assert_eq(bar.last_gain["from_undecided"], 2)
+	assert_eq(bar.last_gain["from_other_side"], 3, "the rest argued off the opposition")
+
+
+func test_points_that_cannot_pay_for_anybody_are_recorded_as_wasted() -> void:
+	# The stubborn cost three and there are two points left: the seat does
+	# not move and the points are gone. The screen has to be able to say so
+	# rather than leaving the player to wonder where the number went.
+	var bar := BarModel.create(BarModel.Model.SHARED_POOL, 101, 51, 40, 61, _always(STUBBORN))
+	assert_eq(bar.undecided, 0)
+
+	var moved := bar.player_gains(5)
+	assert_eq(moved, 1, "three points bought one stubborn vote")
+	assert_eq(bar.last_gain["from_other_side"], 1)
+	assert_eq(bar.last_gain["wasted"], 2, "two points left, and nobody costs two here")
+
+
+func test_the_opponent_gains_record_the_same_way() -> void:
+	# One helper describes either side's move, so both sides fill the same
+	# two keys and "from_other_side" means whoever was taken off the other.
+	var bar := _floor_debate()
+	bar.opponent_gains(25)
+
+	assert_eq(bar.last_gain["from_undecided"], 21)
+	assert_eq(bar.last_gain["from_other_side"], 4, "four taken off the player")
+
+
+func test_a_single_bar_records_its_whole_rise() -> void:
+	# There is nobody to win over on a press tone, so the move is undivided
+	# rather than a split — and never reported as people.
+	var bar := BarModel.create(BarModel.Model.SINGLE, 100, 0, 45, 0)
+	bar.player_gains(3)
+
+	assert_eq(bar.last_gain["from_undecided"], 3)
+	assert_eq(bar.last_gain["from_other_side"], 0)

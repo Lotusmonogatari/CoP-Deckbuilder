@@ -42,6 +42,7 @@ var _ready_to_play := false
 @onready var _support_bar: SupportBar = %SupportBar
 @onready var _energy_row: HBoxContainer = %EnergyRow
 @onready var _guard_label: Label = %GuardLabel
+@onready var _opponent_guard_label: Label = %OpponentGuardLabel
 @onready var _gaffe_label: Label = %GaffeLabel
 @onready var _hand_row: HBoxContainer = %HandRow
 @onready var _end_turn_button: Button = %EndTurnButton
@@ -219,7 +220,11 @@ func _refresh() -> void:
 		# claim a number is needed to win. Neither has a press conference:
 		# it runs until the reporters are finished, whatever the tone.
 		var has_threshold := state.win_mode != "score" and not engine.is_press_conference()
-		_support_bar.show_bar(state.bar, has_threshold)
+		# Reaching the threshold ends the STAGE only when nobody else is
+		# waiting to rise. On the floor it ends one debater of five.
+		var wins_stage := not engine.has_more_opponents()
+		_support_bar.show_bar(state.bar, has_threshold, _opponent_display_name(),
+			BattleNarration.is_percent(_stage), wins_stage)
 
 	_refresh_energy(state)
 	_refresh_gaffe(state)
@@ -264,6 +269,12 @@ func _refresh_gaffe(state: BattleState) -> void:
 	_guard_label.text = "Guarding %d" % state.block
 	_guard_label.visible = state.block > 0
 
+	# And theirs. It has been banked and spent since the last playtest and
+	# never once shown, so the player could only infer it after the fact
+	# from "their guard stopped 3".
+	_opponent_guard_label.text = "They guard %d" % state.opponent_block
+	_opponent_guard_label.visible = state.opponent_block > 0
+
 
 func _refresh_hand(state: BattleState) -> void:
 	for child in _hand_row.get_children():
@@ -286,37 +297,25 @@ func _refresh_hand(state: BattleState) -> void:
 		view.chosen.connect(_on_card_chosen)
 
 
-## What a card just did, in the room's own units.
+## What a card just did, and what the opponent did back.
 ##
-## The card's numbers are a budget, not an outcome: the undecided come across
-## for a point each and the opposition cost more, so a push of five points can
-## win five people or three. Saying which, right after it happens, is the
-## difference between a rule the player learns and a screen they distrust.
+## Both sentences come from BattleNarration so the two sides read as one
+## game. It also knows the difference between a room of people to win over
+## and a mood that rises, which is why a press conference no longer reports
+## "3 press tone won over".
 func _describe_what_happened(result: Dictionary) -> String:
-	var applied: Dictionary = result.get("applied", {})
-	var effect: Dictionary = result.get("effect", {})
-	var unit := str(_stage.get("bar_unit", "support")).to_lower()
+	return BattleNarration.player_move(
+		result, _stage, engine.state, _opponent_display_name())
 
-	var parts: Array[String] = []
 
-	var wanted := int(effect.get("self_plus", 0))
-	var won := int(applied.get("gained", 0))
-	if wanted > 0:
-		if won < wanted:
-			parts.append("%d %s won over — %d %s short"
-				% [won, unit, wanted - won, "point" if wanted - won == 1 else "points"])
-		else:
-			parts.append("%d %s won over" % [won, unit])
-
-	var stopped := int(applied.get("guard_stopped", 0))
-	if stopped > 0:
-		parts.append("their guard stopped %d" % stopped)
-
-	var lost := int(applied.get("opponent_lost", 0))
-	if lost > 0:
-		parts.append("%d argued away from them" % lost)
-
-	return ", ".join(parts).capitalize() + "." if not parts.is_empty() else ""
+## The name of whoever is opposite, for a sentence to use.
+##
+## Empty in a press conference: the journalist asking is named in the speaker
+## row, but nobody there is an opponent whose support can be taken.
+func _opponent_display_name() -> String:
+	if engine.is_press_conference():
+		return ""
+	return str(engine.current_opponent().get("name", ""))
 
 
 ## Who is in the room, and what it takes to win one of them over.
@@ -404,6 +403,10 @@ func _refresh_details(state: BattleState) -> void:
 		lines.append("")
 		lines.append("These %d are for the whole debate. They do not come back "
 			% state.energy_max + "at the start of a turn.")
+		# The figure above matches the pips because both read energy_max —
+		# but it is the number still LEFT that changes, and that was the
+		# number the panel never showed.
+		lines.append("%d of them left." % state.energy)
 
 	if state.win_mode == "score":
 		lines.append("There is nothing to reach here. However high the support "
@@ -498,16 +501,41 @@ func _on_end_turn() -> void:
 		return
 
 	EventBus.turn_ended.emit(engine.state.turn)
+
+	# Read the opponent's move BEFORE refreshing, because a finished bout
+	# swaps in the next opponent and the sentence is about the one who just
+	# acted. The name comes from the same snapshot for the same reason.
+	var speaker := _opponent_display_name()
 	_refresh()
+
+	var lines: Array[String] = []
 
 	# The pass penalty has always worked; nothing ever said so, which is why
 	# a playtest read it as having stopped after the first time. It never
 	# compounds — every quiet turn costs the same one energy.
 	if bool(result.get("passed", false)) and not engine.state.is_over():
 		if engine.is_press_conference():
-			_show_notice("You let that one go. The room cools.")
+			lines.append("You let that one go. The room cools.")
 		else:
-			_show_notice("You said nothing. One less energy this turn.")
+			lines.append("You said nothing. One less energy this turn.")
+
+	# What the opponent did. The engine has always returned this and no
+	# screen has ever read it, so the whole of their turn happened in
+	# silence: guard built, seats taken, a panel member leaned on.
+	var said := BattleNarration.opponent_move(
+		result.get("opponent", {}), _stage, engine.state, speaker)
+	if not said.is_empty():
+		lines.append(said)
+
+	# A debater finished by the clock or by their own attack, rather than by
+	# a card — the same news, from the other end of the turn.
+	var bout: Dictionary = result.get("bout_won", {})
+	if not bout.is_empty():
+		lines.append(BattleNarration.player_move(
+			{"bout_won": bout}, _stage, engine.state, speaker))
+
+	if not lines.is_empty():
+		_show_notice("\n".join(lines))
 
 
 func _toggle_details() -> void:

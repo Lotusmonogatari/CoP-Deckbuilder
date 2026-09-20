@@ -145,7 +145,13 @@
       "seq": 3,
       "stage_id": "PT_S3",
       "affinity_stage_id": "ST03",
-      "name_en": "Caucus Debate",
+      "_name_note": [
+        "{party} is replaced at render time with the player's party from",
+        "player.json, so the caucus is named after whoever the protagonist",
+        "turns out to belong to rather than being fixed here. Any stage can",
+        "use the token; no other stage needs it yet."
+      ],
+      "name_en": "{party} Caucus",
       "name_jp": "議員総会",
       "_shape": [
         "One opponent, the caucus panel. Three turns.",
@@ -175,6 +181,14 @@
         {"opp_id": "PT_PANEL", "name": "The Caucus Panel", "party": "Placeholder"}
       ],
       "bar_unit": "Support",
+      "_bar_as_percent_note": [
+        "Read the bar as a percentage of the caucus rather than a headcount.",
+        "The scale is already 0-100, so this is a LABEL and not a conversion:",
+        "the rules, the score and the seats it carries into the floor debate",
+        "are all unchanged. It exists so a 20-member caucus and a 10-member",
+        "one read the same way."
+      ],
+      "bar_as_percent": true,
       "bar_max": 100,
       "turn_limit": 3,
       "hand_size": 5,

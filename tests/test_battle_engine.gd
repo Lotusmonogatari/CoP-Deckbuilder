@@ -1447,8 +1447,89 @@ func test_everything_counts_in_an_ordinary_battle() -> void:
 
 
 func test_a_card_that_only_gaffes_is_not_called_useless() -> void:
-	# It does something — something bad. Dimming it would suggest it is safe.
+	# It does something — something bad. Calling it useless produced a card
+	# reading "Gaffe +1. Nothing this card does counts in this room.", which
+	# contradicts itself and hides a real cost behind a dimmed face.
 	var engine := _start()
 	var effect := engine.preview(TestFixtures.card({"card_id": "OOPS", "gaffe": 2}))
-	assert_true(bool(effect["does_nothing"]),
-		"nothing it does helps, and the screen says exactly that")
+	assert_false(bool(effect["does_nothing"]),
+		"doing something bad is still doing something")
+
+
+# ---------------------------------------------------------------------------
+# Telling the screen what changed underneath the player
+# ---------------------------------------------------------------------------
+# A card that finishes a debater changes the whole room, and the screen only
+# found out by noticing the name had changed. Cameron read the resulting
+# sentence — "3 seats won over — 1 point short" — as a failure, when in fact
+# he had just beaten opponent four.
+
+func test_a_card_that_finishes_a_debater_says_so() -> void:
+	var engine := _start(_five_on_the_floor())
+	engine.state.bar.player = 50          # one short of the 51 threshold
+	engine.state.bar.undecided = 11
+	engine.state.hand = ["GAIN3"]
+	engine.state.energy = 3
+
+	var result := engine.play_card("GAIN3")
+
+	assert_true(result.has("bout_won"), "the card ended the bout; the screen has to know")
+	assert_eq(result["bout_won"]["finished"], "One")
+	assert_eq(result["bout_won"]["next"], "Two", "and who rises in their place")
+	assert_eq(result["bout_won"]["remaining"], 1)
+
+
+func test_a_card_that_does_not_finish_a_debater_reports_no_bout() -> void:
+	var engine := _start(_five_on_the_floor())
+	engine.state.hand = ["GAIN3"]
+	engine.state.energy = 3
+
+	var result := engine.play_card("GAIN3")
+	assert_false(result.has("bout_won"))
+
+
+func test_ending_a_turn_reports_a_bout_finished_by_the_clock() -> void:
+	var engine := _start(_five_on_the_floor())
+	engine.state.bar.opponent_loses(40)   # nobody left on their benches
+
+	var result := engine.end_turn()
+	assert_eq(result["bout_won"]["finished"], "One")
+
+
+# ---------------------------------------------------------------------------
+# What a card will cost you, before you spend it
+# ---------------------------------------------------------------------------
+
+func test_a_preview_says_a_card_will_answer_the_question() -> void:
+	# Every card answers, including one whose numbers do nothing here. A
+	# draw-1 card was spent in a playtest on the assumption it was free.
+	var engine := _start(_press())
+	var effect := engine.preview(TestFixtures.card({"card_id": "D1", "draw": 1}))
+	assert_true(bool(effect["answers_question"]))
+
+
+func test_a_preview_outside_a_press_conference_answers_nothing() -> void:
+	var engine := _start()
+	var effect := engine.preview(TestFixtures.card({"card_id": "D1", "draw": 1}))
+	assert_false(bool(effect["answers_question"]))
+
+
+func test_the_last_question_answered_leaves_nothing_to_answer() -> void:
+	var engine := _start(_press())
+	while not engine.current_question().is_empty():
+		engine.state.question_index += 1
+
+	var effect := engine.preview(TestFixtures.card({"card_id": "D1", "draw": 1}))
+	assert_false(bool(effect["answers_question"]))
+
+
+func test_a_card_records_who_it_won_over() -> void:
+	var engine := _start()
+	engine.state.hand = ["GAIN3"]
+	engine.state.energy = 3
+
+	var result := engine.play_card("GAIN3")
+	var split: Dictionary = result["applied"]["gain_split"]
+
+	assert_true(split.has("from_undecided"), "the screen needs the breakdown, not just a total")
+	assert_true(split.has("from_other_side"))

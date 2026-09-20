@@ -51,6 +51,23 @@ var undecided := 0
 ## number is not what is being counted.
 var scored_only := false
 
+## How the last gain was actually made, for the screen to describe.
+##
+## `player_gains()` returns a single total, but "3 seats won over" is not the
+## same sentence as "2 from the undecided, 1 argued across" — and Cameron
+## asked for the difference. Rather than change the return type that the
+## whole test suite reads, the breakdown is recorded here and read straight
+## afterwards by whoever wants it.
+##
+## `from_other_side` means whoever was taken off the opposing side, so the
+## same two keys describe either side's move without a perspective flip.
+##
+## `wasted` is the points that could not pay for anybody: leftovers are lost
+## rather than banked, so the screen can say so instead of leaving the
+## player to wonder where the number went.
+var last_gain := {"from_undecided": 0, "from_other_side": 0, "wasted": 0}
+
+
 ## Rolls what the next seat held by the opponent will cost.
 ##
 ## Handed in rather than made here, so the whole battle runs off one seeded
@@ -122,9 +139,14 @@ func player_gains(amount: int) -> int:
 	if amount <= 0:
 		return 0
 
+	last_gain = {"from_undecided": 0, "from_other_side": 0, "wasted": 0}
+
 	if model != Model.SHARED_POOL:
 		var before := player
 		player = clampi(player + amount, 0, maximum)
+		# A single bar is a level, not a room: there is nobody to win over,
+		# so the whole move counts as one undivided rise.
+		last_gain["from_undecided"] = player - before
 		return player - before
 
 	var budget := amount
@@ -138,6 +160,7 @@ func player_gains(amount: int) -> int:
 			undecided -= 1
 			player += 1
 			moved += 1
+			last_gain["from_undecided"] += 1
 			continue
 
 		if opponent <= 0:
@@ -150,7 +173,9 @@ func player_gains(amount: int) -> int:
 		opponent -= 1
 		player += 1
 		moved += 1
+		last_gain["from_other_side"] += 1
 
+	last_gain["wasted"] = budget
 	return moved
 
 
@@ -232,6 +257,13 @@ func opponent_gains(amount: int) -> int:
 	player -= from_player
 	opponent += from_player
 
+	# Recorded the same way the player's gains are, so one helper can
+	# describe either side's move.
+	last_gain = {
+		"from_undecided": from_undecided,
+		"from_other_side": from_player,
+		"wasted": still_wanted - from_player,
+	}
 	return from_undecided + from_player
 
 

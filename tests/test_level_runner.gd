@@ -219,8 +219,11 @@ func test_the_playtest_level_can_be_walked_end_to_end() -> void:
 		runner.finish_stage(LevelRunner.WON, 60)
 
 	assert_eq(runner.outcome(), LevelRunner.WON)
-	assert_eq(names, ["Committee", "Press Conference", "Caucus Debate",
-		"Parliament Floor Debate"])
+	# The caucus is named after the player's party, resolved by DataDB when
+	# the level loads — so this reads whatever party.json settles on rather
+	# than a fixed string.
+	assert_eq(names, ["Committee", "Press Conference",
+		"%s Caucus" % DataDB.player.get("party", ""), "Parliament Floor Debate"])
 
 
 func test_a_stage_knows_whether_anybody_carries_its_score() -> void:

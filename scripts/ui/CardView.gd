@@ -151,6 +151,13 @@ func show_effect_here(effect: Dictionary) -> void:
 	if bool(effect.get("does_nothing", false)):
 		parts.append("Nothing this card does counts in this room.")
 
+	# Every card answers the question in front of you, whatever else it does.
+	# Cameron spent a draw-1 card expecting it to be free and lost a question
+	# to it, because the only place that rule was written down was inside the
+	# details panel.
+	if bool(effect.get("answers_question", false)):
+		parts.append("Answers this question.")
+
 	_effect_label.text = " ".join(parts) if not parts.is_empty() else str(card.get("effect_text", ""))
 
 

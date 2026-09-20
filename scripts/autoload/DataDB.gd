@@ -123,6 +123,7 @@ func load_all() -> void:
 			"rules": rules = _flatten_rules(content)
 			"playtest_level": playtest_level = content
 			"player": player = content
+
 			"journalists": journalists = _list_under(content, "journalists")
 			"booster_standing": booster_standing = content
 			# Cards that exist for the playtest but are not in the workbook
@@ -134,6 +135,7 @@ func load_all() -> void:
 			# stack them up twice.
 			"playtest_cards": _add_playtest_cards(_list_under(content, "cards"))
 
+	_fill_name_tokens()
 	_build_lookups()
 	_validate()
 	_loaded = true
@@ -144,6 +146,35 @@ func load_all() -> void:
 
 func is_loaded() -> bool:
 	return _loaded
+
+
+## Substitutes {party} in stage names with the player's actual party.
+##
+## The caucus is the player's OWN party's caucus, so its name has to follow
+## whoever the protagonist turns out to be — and CLAUDE.md still lists the
+## protagonist's party as an open decision. Writing a party name into
+## playtest_level.json would quietly settle it.
+##
+## Resolved here, once, at load: everything downstream — the rules engine,
+## every screen, the web build — then sees an ordinary name and no consumer
+## has to know tokens exist. This is the same cross-file resolution DataDB
+## already does elsewhere, not presentation.
+func _fill_name_tokens() -> void:
+	var party := str(player.get("party", "")).strip_edges()
+
+	for stage: Variant in playtest_level.get("stages", []):
+		if typeof(stage) != TYPE_DICTIONARY:
+			continue
+		var name_en := str(stage.get("name_en", ""))
+		if not name_en.contains("{party}"):
+			continue
+		if party.is_empty():
+			# No party settled yet. "Party Caucus" reads worse than plain
+			# "Caucus", so the token takes its trailing space with it.
+			stage["name_en"] = (name_en.replace("{party} ", "")
+				.replace("{party}", "").strip_edges())
+		else:
+			stage["name_en"] = name_en.replace("{party}", party)
 
 
 # ---------------------------------------------------------------------------

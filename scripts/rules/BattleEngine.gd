@@ -298,15 +298,29 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 	if not _questions.is_empty():
 		_answer_question(card)
 
+	# Who was in front of us before the outcome was checked. If a card
+	# finishes a debater the whole room changes underneath the player, and
+	# that is the first thing the screen has to say — Cameron watched a card
+	# beat opponent four and was told only that a point had been wasted.
+	var was_facing := state.opponent_index
+	var beaten := current_opponent()
+
 	_check_outcome()
 
-	return {
+	var result := {
 		"ok": true,
 		"card_id": card_id,
 		"effect": effect,
 		"applied": applied,
 		"energy_left": state.energy,
 	}
+	if state.opponent_index != was_facing:
+		result["bout_won"] = {
+			"finished": str(beaten.get("name", "")),
+			"next": str(current_opponent().get("name", "")),
+			"remaining": state.opponent_count - state.opponent_index,
+		}
+	return result
 
 
 ## Applies a resolved card's numbers, in the order the brief sets out:
@@ -327,6 +341,8 @@ func _apply_effect(effect: Dictionary, target_index: int) -> Dictionary:
 		applied["member"] = move
 	else:
 		applied["gained"] = state.bar.player_gains(self_plus)
+		# Who those people were: undecided, or argued off the other side.
+		applied["gain_split"] = state.bar.last_gain.duplicate()
 
 		# Arguing the opposition down is an attack, so their guard is the
 		# first thing it meets and what it absorbs is spent. Until now this
@@ -420,7 +436,16 @@ func end_turn() -> Dictionary:
 	state.cards_played_this_turn = 0
 
 	# Step 6: check, advance, redraw.
+	var was_facing := state.opponent_index
+	var beaten := current_opponent()
 	_check_outcome(true)
+	var bout_won := {}
+	if state.opponent_index != was_facing:
+		bout_won = {
+			"finished": str(beaten.get("name", "")),
+			"next": str(current_opponent().get("name", "")),
+			"remaining": state.opponent_count - state.opponent_index,
+		}
 
 	if not state.is_over():
 		state.turn += 1
@@ -441,6 +466,7 @@ func end_turn() -> Dictionary:
 		"passed": passed,
 		"intent": intent,
 		"opponent": opponent_result,
+		"bout_won": bout_won,
 		"turn": state.turn,
 		"outcome": state.outcome,
 	}
@@ -517,8 +543,14 @@ func _resolve_intent(intent: Dictionary) -> Dictionary:
 			return {"verb": "attack", "absorbed": absorbed, "damage": lost}
 
 		"gain":
-			var gained := 0 if state.is_committee_stage() else state.bar.opponent_gains(value)
-			return {"verb": "gain", "gained": gained}
+			if state.is_committee_stage():
+				return {"verb": "gain", "gained": 0, "gain_split": {}}
+			var gained := state.bar.opponent_gains(value)
+			return {
+				"verb": "gain",
+				"gained": gained,
+				"gain_split": state.bar.last_gain.duplicate(),
+			}
 
 		"block":
 			var before := state.opponent_block
@@ -720,11 +752,21 @@ func preview(card: Dictionary) -> Dictionary:
 	effect["opp_minus_counts"] = reduce_counts
 	effect["guard_counts"] = guard_counts
 
+	# A gaffe counts. It was left out of this test, which produced a card
+	# reading "Gaffe +1. Nothing this card does counts in this room." — a
+	# sentence that contradicts itself. Doing something bad is still doing
+	# something, and the player should be told which.
 	effect["does_nothing"] = (
 		int(effect.get("self_plus", 0)) == 0
 		and int(effect.get("draw", 0)) == 0
+		and int(effect.get("gaffe", 0)) == 0
 		and (int(effect.get("opp_minus", 0)) == 0 or not reduce_counts)
 		and (int(effect.get("guard", 0)) == 0 or not guard_counts))
+
+	# Every card answers the question in front of you, whatever else it does
+	# — so a card whose numbers are all inert here still spends a question.
+	# The card face has to say so, or spending one is an accident.
+	effect["answers_question"] = not current_question().is_empty()
 
 	return effect
 

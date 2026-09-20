@@ -96,6 +96,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Waiting"
 
+[node name="OpponentGuardLabel" type="Label" parent="Safe/Column/OpponentRow/Details"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "They guard 0"
+
 [node name="SupportBar" type="Control" parent="Safe/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 140)
