@@ -516,6 +516,10 @@ class BattleEngine {
     // so "opening_hand" wins over the ordinary hand size where both exist.
     s.hand_size = int(this._stage.opening_hand, int(this._stage.hand_size, 5));
     s.gaffe_limit = int(this._stage.gaffe_limit, 5);
+
+    // A friendly reporter takes some of the heat before a word is said.
+    // Never below zero: backing cannot put the meter into credit.
+    s.gaffe = Math.max(int(config.starting_gaffe, 0), 0);
     s.guard_cap = int(this._rules.guard_cap, 5);
 
     this._setupOpponent(config);
@@ -1400,6 +1404,199 @@ function applyScoreEffects(meta, stage, score, sanbanRows) {
 }
 
 // ---------------------------------------------------------------------------
+// Ledger — what a thing costs, and whether you may have it
+// ---------------------------------------------------------------------------
+// Ported from scripts/rules/Ledger.gd. One place for every kind of purchase,
+// so a screen can never offer what the rules would refuse and the refusal
+// the player reads is the rules' own words.
+
+function cardCost(card) { return int(card.xp_to_unlock, 0); }
+
+function cardRefusal(card, owned, xp) {
+  const cardId = str(card.card_id, '');
+  if (!cardId) return 'This card has no ID.';
+  if (owned.includes(cardId)) return 'Already yours.';
+
+  const cost = cardCost(card);
+  if (cost <= 0) return '';
+  if (xp < cost) return (cost - xp) + ' XP short.';
+  return '';
+}
+
+function modifierCost(modifier) {
+  const cost = modifier.kaban_cost;
+  return (cost === null || cost === undefined) ? 0 : Math.trunc(cost);
+}
+
+function isForSale(modifier) {
+  if (modifierCost(modifier) <= 0) return false;
+  const audience = str(modifier.available_to, 'Both');
+  return audience === 'Both' || audience === 'Player';
+}
+
+function standingNeeded(modifier, settings) {
+  const perModifier = settings.required_standing_by_modifier || {};
+  const modId = str(modifier.mod_id, '');
+  if (modId in perModifier) return int(perModifier[modId], 60);
+  return int(settings.required_standing, 60);
+}
+
+// The party-support pair name a meta-variable in the source_booster column
+// rather than an organisation, so anything that is not a real booster ID is
+// treated as "nobody backs this".
+function backingBooster(modifier, boosterIds) {
+  const source = str(modifier.source_booster, '');
+  return boosterIds.includes(source) ? source : '';
+}
+
+function modifierRefusal(modifier, owned, funds, standing, settings, boosterIds) {
+  const modId = str(modifier.mod_id, '');
+  if (!modId) return 'This modifier has no ID.';
+  if (owned.includes(modId)) return 'Already yours.';
+  if (!isForSale(modifier)) return 'Not for sale.';
+
+  // Standing first: being told the price of something you are not allowed
+  // to buy is worse than being told why you cannot buy it.
+  const booster = backingBooster(modifier, boosterIds);
+  if (booster) {
+    const needed = standingNeeded(modifier, settings);
+    const have = int(standing[booster], 0);
+    if (have < needed) return 'Standing ' + have + ' of ' + needed + ' needed.';
+  }
+
+  const cost = modifierCost(modifier);
+  if (funds < cost) return (cost - funds) + ' short.';
+  return '';
+}
+
+function deckSize(balance) { return Math.max(int(balance.starter_deck_size, 12), 1); }
+
+// Exact rather than "at least": with no upgrades and a growing card set,
+// the only thing making an unlock a decision is having to leave something out.
+function deckRefusal(deck, owned, balance) {
+  const wanted = deckSize(balance);
+
+  for (const cardId of deck) {
+    if (!owned.includes(cardId)) return cardId + ' is not yours.';
+  }
+  const seen = {};
+  for (const cardId of deck) {
+    if (seen[cardId]) return cardId + ' is in twice.';
+    seen[cardId] = true;
+  }
+  if (deck.length < wanted) return (wanted - deck.length) + ' more to choose.';
+  if (deck.length > wanted) return (deck.length - wanted) + ' too many.';
+  return '';
+}
+
+function openingDeck(cards, balance) {
+  const deck = cards.filter(c => str(c.tier, '') === 'Starter').map(c => str(c.card_id, ''));
+  const wanted = deckSize(balance);
+  return deck.length > wanted ? deck.slice(0, wanted) : deck;
+}
+
+// ---------------------------------------------------------------------------
+// ModifierEffects — what an organisation's backing actually does
+// ---------------------------------------------------------------------------
+// Ported from scripts/rules/ModifierEffects.gd. The `effect` column is prose
+// for a designer and CLAUDE.md forbids parsing it, so the machine-readable
+// half is a key plus the magnitude the workbook already carries.
+
+const AT_BATTLE_START = ['player_start_support', 'starting_gaffe'];
+const AFTER_STAGE_WIN = ['kaban_per_stage_win'];
+const NOT_YET_BUILT = [
+  'opp_start_support_on_tag', 'kaban_per_module', 'party_support_per_module',
+  'jiban_per_module_win', 'negates_cold_shoulder', 'start_lean_in_committee',
+  'halve_jiban_losses',
+];
+// Wired and correct, but nothing yet produces the situation it answers: the
+// gaffe meter always opens at zero, so taking a point off it takes nothing.
+const INERT_TODAY = ['starting_gaffe'];
+
+function effectKeyFor(modifier, bridge) {
+  const key = str(modifier.effect_key, '').trim();
+  if (key) return key;
+  return str((bridge || {})[str(modifier.mod_id, '')], '');
+}
+
+function magnitudeOf(modifier) {
+  const value = modifier.magnitude;
+  return (value === null || value === undefined) ? 0 : Math.round(Number(value));
+}
+
+function effectIsImplemented(modifier, bridge) {
+  const key = effectKeyFor(modifier, bridge);
+  if (INERT_TODAY.includes(key)) return false;
+  return AT_BATTLE_START.includes(key) || AFTER_STAGE_WIN.includes(key);
+}
+
+function effectIsInertToday(modifier, bridge) {
+  return INERT_TODAY.includes(effectKeyFor(modifier, bridge));
+}
+
+function effectIsKnownButUnbuilt(modifier, bridge) {
+  return NOT_YET_BUILT.includes(effectKeyFor(modifier, bridge));
+}
+
+// The effect column says "Magnitude" where a number belongs, because it was
+// written for a designer. Putting that on a shop screen asks the player to
+// read a spreadsheet.
+function describeEffect(modifier, bridge) {
+  const magnitude = magnitudeOf(modifier);
+  switch (effectKeyFor(modifier, bridge)) {
+    case 'player_start_support': return 'Start ' + magnitude + ' ahead.';
+    case 'starting_gaffe': return 'Start with ' + magnitude + ' less on the gaffe meter.';
+    case 'kaban_per_stage_win': return '+' + magnitude + ' funds for every stage won.';
+  }
+  const prose = str(modifier.effect, '').trim();
+  if (!prose) return '';
+  return prose.split('Magnitude').join(String(magnitude));
+}
+
+function battleStartBonus(active, bridge) {
+  const bonus = { start_support: 0, starting_gaffe: 0 };
+  for (const modifier of active) {
+    const magnitude = magnitudeOf(modifier);
+    switch (effectKeyFor(modifier, bridge)) {
+      case 'player_start_support': bonus.start_support += magnitude; break;
+      // The column reads "−Magnitude starting gaffe meter": the sign is in
+      // the prose, so the number comes off here.
+      case 'starting_gaffe': bonus.starting_gaffe -= magnitude; break;
+    }
+  }
+  return bonus;
+}
+
+function stageWinFunds(owned, bridge) {
+  let funds = 0;
+  for (const modifier of owned) {
+    if (effectKeyFor(modifier, bridge) === 'kaban_per_stage_win') {
+      funds += magnitudeOf(modifier);
+    }
+  }
+  return funds;
+}
+
+// Which modifiers fire given the room, ported from MetaRules.active_modifiers.
+function activeModifiers(rows, stage, availableTo) {
+  const active = [];
+  const mix = stage.segment_mix || {};
+  for (const modifier of rows) {
+    const audience = modifier.available_to;
+    if (audience !== null && audience !== undefined
+        && audience !== 'Both' && audience !== (availableTo || 'Player')) continue;
+
+    const minimum = modifier.trigger_min_pct;
+    if (minimum === null || minimum === undefined) continue;
+    const segmentId = modifier.trigger_segment_id;
+    if (segmentId === null || segmentId === undefined) continue;
+
+    if (Number(mix[segmentId] || 0) >= Number(minimum)) active.push(modifier);
+  }
+  return active;
+}
+
+// ---------------------------------------------------------------------------
 // BattleSetup — the bridge from the data files to the engine
 // ---------------------------------------------------------------------------
 
@@ -1453,21 +1650,42 @@ function withAudience(data, stage) {
   return Object.assign({}, stage, { segment_mix: canon.segment_mix });
 }
 
-function forPlaytestStage(data, stage, buffs, meta, seed) {
+// `owned` is the run's state: { deck, modifiers }. Absent in a standalone
+// battle, which then deals the Starter twelve and no backing.
+function forPlaytestStage(data, stage, buffs, meta, seed, owned) {
   buffs = buffs || {};
+  owned = owned || {};
   const opponents = stage.opponents || [];
+  const filled = withAudience(data, stage);
+  const backing = backingBonus(data, filled, owned.modifiers || []);
+
   return {
-    stage: withAudience(data, stage),
+    stage: filled,
     opponent: opponents.length > 0 ? opponents[0] : {},
     opponents: opponents,
     cards: cardTable(data),
     affinity: affinityTable(data),
     rules: data.rules,
     meta: meta || startingMeta(data),
-    deck: starterDeck(data),
-    start_adjustment: int(buffs.support_bonus, 0),
+    deck: (owned.deck && owned.deck.length > 0) ? owned.deck.slice() : starterDeck(data),
+    // A good caucus earlier in the level starts this stage ahead, and so
+    // does an organisation whose backing you have bought.
+    start_adjustment: int(buffs.support_bonus, 0) + backing.start_support,
+    starting_gaffe: backing.starting_gaffe,
     seed: seed,
   };
+}
+
+// What the organisations backing you are worth in this room. Backing only
+// counts where the audience it cares about is actually here: a friendly beat
+// reporter does nothing in a caucus with no press in it.
+function backingBonus(data, stage, ownedIds) {
+  if (!ownedIds || ownedIds.length === 0) {
+    return { start_support: 0, starting_gaffe: 0 };
+  }
+  const owned = data.modifiers.filter(m => ownedIds.includes(str(m.mod_id, '')));
+  const active = activeModifiers(owned, stage, 'Player');
+  return battleStartBonus(active, data.modifier_effects || {});
 }
 
 // --- small helpers, so a missing cell reads the same way it does in Godot ---

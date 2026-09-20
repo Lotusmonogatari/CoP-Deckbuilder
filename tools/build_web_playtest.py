@@ -30,7 +30,10 @@ OUTPUT = REPO_ROOT / "web" / "playtest.html"
 # apart without anybody noticing.
 NEEDED = [
     "affinity",
+    "balance",
     "booster_standing",
+    "modifier_effects",
+    "modifiers",
     "boosters",
     "cards",
     "journalists",
@@ -116,7 +119,12 @@ def build_data() -> dict:
 
     return strip_docs({
         "affinity": raw["affinity"],
+        "balance": raw["balance"],
         "booster_standing": raw["booster_standing"],
+        "modifiers": raw["modifiers"],
+        # The temporary bridge from mod_id to a named effect; see the file's
+        # own README. The workbook's own column wins where it exists.
+        "modifier_effects": raw["modifier_effects"].get("effects", {}),
         "boosters": raw["boosters"],
         "cards": cards,
         "journalists": raw["journalists"].get("journalists", []),

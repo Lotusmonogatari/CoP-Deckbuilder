@@ -960,5 +960,155 @@ function runRuleChecks(data) {
     ok(caucus.bar_as_percent, 'and its bar reads as a share of the room');
   });
 
+  // --- the ledger, ported from tests/test_ledger.gd ------------------------
+
+  const BAL = { starter_deck_size: 12 };
+  const STANDING_SETTINGS = { required_standing: 60 };
+  const BOOSTER_IDS = ['BO01', 'BO03', 'BO08'];
+  const aCard = o => Object.assign(
+    { card_id: 'C99', tier: 'Tier 1', xp_to_unlock: 60 }, o || {});
+  const aMod = o => Object.assign(
+    { mod_id: 'M01', kaban_cost: 20, available_to: 'Both', source_booster: 'BO03' },
+    o || {});
+
+  check('a card you cannot afford says how short you are', () => {
+    eq(cardRefusal(aCard(), [], 43), '17 XP short.');
+    eq(cardRefusal(aCard(), [], 60), '', 'exactly enough is enough');
+  });
+
+  check('a card you already own cannot be bought twice', () => {
+    eq(cardRefusal(aCard(), ['C99'], 999), 'Already yours.');
+  });
+
+  check('standing is checked before the price', () => {
+    // Being told the price of something you may not buy is worse than
+    // being told why you may not buy it.
+    eq(modifierRefusal(aMod(), [], 0, { BO03: 10 }, STANDING_SETTINGS, BOOSTER_IDS),
+      'Standing 10 of 60 needed.');
+  });
+
+  check('a backed modifier you can afford is yours', () => {
+    eq(modifierRefusal(aMod(), [], 30, { BO03: 60 }, STANDING_SETTINGS, BOOSTER_IDS), '');
+    eq(modifierRefusal(aMod(), [], 12, { BO03: 99 }, STANDING_SETTINGS, BOOSTER_IDS),
+      '8 short.');
+  });
+
+  check('a modifier with no price is not for sale', () => {
+    ok(!isForSale(aMod({ kaban_cost: null })));
+    ok(!isForSale(aMod({ available_to: 'Opponent' })), 'not on the player shelf');
+  });
+
+  check('a modifier backed by nobody needs no standing', () => {
+    // M09 and M10 name a meta-variable rather than an organisation.
+    const m = aMod({ source_booster: 'Party support (meta)' });
+    eq(backingBooster(m, BOOSTER_IDS), '');
+    eq(modifierRefusal(m, [], 30, {}, STANDING_SETTINGS, BOOSTER_IDS), '');
+  });
+
+  check('a deck is exactly the right size and all yours', () => {
+    const owned = [];
+    for (let i = 0; i < 20; i++) owned.push('C' + i);
+    eq(deckRefusal(owned.slice(0, 12), owned, BAL), '');
+    eq(deckRefusal(owned.slice(0, 9), owned, BAL), '3 more to choose.');
+    eq(deckRefusal(owned.slice(0, 14), owned, BAL), '2 too many.');
+    eq(deckRefusal(['C0', 'NOPE'], ['C0'], BAL), 'NOPE is not yours.');
+  });
+
+  check('a new run opens with the starter cards', () => {
+    const cards = [
+      { card_id: 'S1', tier: 'Starter' },
+      { card_id: 'T1', tier: 'Tier 1' },
+      { card_id: 'S2', tier: 'Starter' },
+    ];
+    eq(openingDeck(cards, BAL).join(','), 'S1,S2', 'the bought cards are not yours yet');
+  });
+
+  // --- what backing does, ported from tests/test_modifier_effects.gd -------
+
+  const BRIDGE = {
+    M01: 'player_start_support', M03: 'starting_gaffe',
+    M02: 'kaban_per_stage_win', M13: 'jiban_per_module_win',
+  };
+
+  check('the workbook column wins over the bridge', () => {
+    // The bridge is temporary; the column must take over without anybody
+    // remembering to delete the file.
+    eq(effectKeyFor(aMod({ effect_key: 'starting_gaffe' }), BRIDGE), 'starting_gaffe');
+    eq(effectKeyFor(aMod({}), BRIDGE), 'player_start_support');
+  });
+
+  check('backing raises where you start, and stacks', () => {
+    const bonus = battleStartBonus(
+      [aMod({ magnitude: 3 }), aMod({ magnitude: 4 })], BRIDGE);
+    eq(bonus.start_support, 7);
+  });
+
+  check('a business circle pays for a stage won', () => {
+    eq(stageWinFunds([aMod({ mod_id: 'M02', magnitude: 5 })], BRIDGE), 5);
+    eq(stageWinFunds([aMod({ mod_id: 'M01', magnitude: 9 })], BRIDGE), 0,
+      'start support is not an income');
+  });
+
+  check('an effect with nothing to bite on is not called built', () => {
+    // The gaffe meter always opens at zero, so taking a point off it takes
+    // nothing. The shop must not sell it as working.
+    const m = aMod({ mod_id: 'M03', magnitude: 1 });
+    ok(effectIsInertToday(m, BRIDGE));
+    ok(!effectIsImplemented(m, BRIDGE));
+    ok(effectIsImplemented(aMod({ magnitude: 3 }), BRIDGE), 'but this one is');
+  });
+
+  check('a module-level effect is known but not built', () => {
+    const m = aMod({ mod_id: 'M13', magnitude: 3 });
+    ok(effectIsKnownButUnbuilt(m, BRIDGE));
+    ok(!effectIsImplemented(m, BRIDGE));
+  });
+
+  check('the player is never shown the word Magnitude', () => {
+    // The effect column says "Magnitude" where a number belongs, because it
+    // was written for a designer.
+    eq(describeEffect(aMod({ magnitude: 3 }), BRIDGE), 'Start 3 ahead.');
+    for (const modifier of data.modifiers) {
+      const text = describeEffect(modifier, data.modifier_effects || {});
+      ok(!text.includes('Magnitude'),
+        modifier.mod_id + ' still shows it: ' + text);
+    }
+  });
+
+  check('every bridged modifier is real and every effect is known', () => {
+    for (const modId of Object.keys(data.modifier_effects || {})) {
+      ok(data.modifiers.some(m => m.mod_id === modId),
+        modId + ' is mapped to an effect but is not a modifier');
+      const key = str((data.modifier_effects || {})[modId], '');
+      ok(AT_BATTLE_START.includes(key) || AFTER_STAGE_WIN.includes(key)
+        || NOT_YET_BUILT.includes(key),
+        modId + " is mapped to '" + key + "', which nothing implements");
+    }
+  });
+
+  check('the deck a battle is dealt is the one the run chose', () => {
+    const floor = data.playtest_level.stages.find(s => s.stage_id === 'PT_S4');
+    const engine = new BattleEngine();
+    engine.setup(forPlaytestStage(data, floor, {}, null, 5,
+      { deck: ['C01', 'C01', 'C01'], modifiers: [] }));
+    eq(engine.state.deck.length + engine.state.hand.length, 3,
+      'three cards in, three cards dealt and held');
+  });
+
+  check('backing you have bought starts you ahead', () => {
+    const floor = data.playtest_level.stages.find(s => s.stage_id === 'PT_S4');
+    const plain = new BattleEngine();
+    plain.setup(forPlaytestStage(data, floor, {}, null, 5, {}));
+
+    const backed = new BattleEngine();
+    backed.setup(forPlaytestStage(data, floor, {}, null, 5,
+      { deck: [], modifiers: ['M01'] }));
+
+    // M01 wants Constituents >= 30% and the floor has 10%, so it does not
+    // fire there — which is the audience gate doing its job.
+    eq(backed.state.bar.player, plain.state.bar.player,
+      'no constituents in the chamber, so the local association is no help');
+  });
+
   return { count: count, failures: failures };
 }

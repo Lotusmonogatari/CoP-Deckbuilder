@@ -46,6 +46,11 @@ const run = {
   // Nothing spends this yet — the XP checkpoint is milestone M5 — but it is
   // banked rather than discarded so the checkpoint opens on a real number.
   xp: 0,
+  // What you own and what you are taking in. The deck is a fixed size, so
+  // unlocking a card means leaving another out.
+  ownedCards: DATA.cards.filter(c => c.tier === 'Starter').map(c => c.card_id),
+  deck: openingDeck(DATA.cards, DATA.balance || {}),
+  ownedModifiers: [],
   engine: null,
   stage: null,
   selected: null,
@@ -131,6 +136,27 @@ function showOffice() {
   start.id = 'start-level';
   start.addEventListener('click', showBriefing);
   root.append(start);
+
+  // What there is to spend, and whether the deck is legal. A shop you have
+  // to open to find out whether you can afford anything is one you stop
+  // opening.
+  const spend = el('p', 'office-report');
+  const deckSay = deckRefusal(run.deck, run.ownedCards, DATA.balance || {});
+  spend.textContent = 'XP ' + run.xp + '  ·  Funds ' + int(run.meta.Funds, 0)
+    + '  ·  Deck ' + run.deck.length + ' of ' + deckSize(DATA.balance || {})
+    + (deckSay ? '  —  ' + deckSay : '');
+  root.append(spend);
+
+  for (const [label, id, handler] of [
+    ['New cards', 'new-cards', showCardShop],
+    ['Your deck', 'your-deck', showDeckScreen],
+    ['Backing', 'backing', showBackingShop],
+  ]) {
+    const button = el('button', 'ghost', label);
+    button.id = id;
+    button.addEventListener('click', handler);
+    root.append(button);
+  }
 
   // Who is behind you, and how far. Secondary, so it lives behind a button.
   const orgs = el('button', 'ghost', 'The organisations');
@@ -276,6 +302,174 @@ function showOrganisations() {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Spending what a run has earned
+// ---------------------------------------------------------------------------
+// Three screens, one shape: a list of things, each with its price and either
+// a button to buy it or the reason you cannot. Every one of those answers
+// comes from the ledger in engine.js, so a screen can never offer what the
+// rules would refuse.
+
+function showCardShop() {
+  overlay('New cards', sheet => {
+    sheet.append(el('p', 'detail-line', 'Cards you unlock join your '
+      + 'collection. What you actually take into a debate is chosen on the '
+      + 'deck screen.'));
+    sheet.append(el('h3', 'org-tier', 'XP ' + run.xp));
+
+    for (const tier of ['Tier 1', 'Tier 2']) {
+      const inTier = DATA.cards.filter(c => c.tier === tier);
+      if (inTier.length === 0) continue;
+      sheet.append(el('h3', 'org-tier', tier));
+
+      for (const card of inTier) {
+        const row = el('div', 'org');
+        row.append(el('p', 'org-name', card.name_en + '  —  ' + cardCost(card) + ' XP'));
+        row.append(el('p', 'org-boosts', card.suit + '  ·  ' + (card.effect_text || '')));
+
+        const refusal = cardRefusal(card, run.ownedCards, run.xp);
+        const buy = el('button', refusal ? 'ghost' : 'primary', refusal || 'Unlock');
+        buy.disabled = !!refusal;
+        if (!refusal) {
+          buy.addEventListener('click', () => {
+            run.xp -= cardCost(card);
+            run.ownedCards.push(card.card_id);
+            sheet.closest('.backdrop').remove();
+            showOffice();
+            showCardShop();
+          });
+        }
+        row.append(buy);
+        sheet.append(row);
+      }
+    }
+
+    const back = el('button', 'ghost', 'Back');
+    back.id = 'cards-close';
+    back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+    sheet.append(back);
+  });
+}
+
+// A fixed size, so unlocking a card means leaving another out. Without that
+// constraint an unlock would be a free upgrade and this screen would have
+// nothing to decide.
+function showDeckScreen() {
+  let draft = run.deck.slice();
+
+  const build = () => {
+    document.querySelectorAll('.backdrop').forEach(n => n.remove());
+    overlay('Your deck', sheet => {
+      const refusal = deckRefusal(draft, run.ownedCards, DATA.balance || {});
+      sheet.append(el('h3', 'org-tier', draft.length + ' of '
+        + deckSize(DATA.balance || {}) + ' chosen' + (refusal ? '  —  ' + refusal : '')));
+      sheet.append(el('p', 'detail-line', 'Tap a card to take it in or leave it out.'));
+
+      for (const cardId of run.ownedCards) {
+        const card = DATA.cards.find(c => c.card_id === cardId);
+        if (!card) continue;
+        const chosen = draft.includes(cardId);
+
+        const row = el('div', 'org');
+        if (!chosen) row.style.opacity = '0.5';
+
+        // The name on the button and the effect beneath it: both on the
+        // button ran a long card off the side of the screen.
+        const toggle = el('button', 'ghost', (chosen ? '✓  ' : '–  ') + card.name_en);
+        toggle.addEventListener('click', () => {
+          draft = chosen ? draft.filter(id => id !== cardId) : draft.concat([cardId]);
+          build();
+        });
+        row.append(toggle);
+        row.append(el('p', 'org-boosts', card.effect_text || ''));
+        sheet.append(row);
+      }
+
+      if (!refusal) {
+        const save = el('button', 'primary', 'Take these in');
+        save.id = 'deck-save';
+        save.addEventListener('click', () => {
+          run.deck = draft.slice();
+          sheet.closest('.backdrop').remove();
+          showOffice();
+        });
+        sheet.append(save);
+      }
+
+      const back = el('button', 'ghost', 'Back');
+      back.id = 'deck-close';
+      back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+      sheet.append(back);
+    });
+  };
+
+  build();
+}
+
+// An organisation will not sell you its backing until you have given it
+// reason to — the first thing standing has ever done.
+function showBackingShop() {
+  overlay('Backing', sheet => {
+    sheet.append(el('p', 'detail-line', 'An organisation backs you once your '
+      + 'standing with it is high enough. Answering a reporter in the suit '
+      + 'their question invites is what raises it.'));
+    sheet.append(el('h3', 'org-tier', 'Funds ' + int(run.meta.Funds, 0)));
+
+    const names = boosterNames(DATA);
+    const ids = DATA.boosters.map(b => b.booster_id);
+    const settings = DATA.booster_standing || {};
+    const bridge = DATA.modifier_effects || {};
+
+    for (const modifier of DATA.modifiers.filter(isForSale)) {
+      const row = el('div', 'org');
+      row.append(el('p', 'org-name',
+        modifier.name_en + '  —  ' + modifierCost(modifier) + ' funds'));
+
+      const booster = backingBooster(modifier, ids);
+      if (booster) {
+        const have = int(run.boosterStanding[booster], 0);
+        const needed = standingNeeded(modifier, settings);
+        row.append(el('p', 'org-boosts', (names[booster] || booster)
+          + (have >= needed ? '  ·  standing ' + have
+                            : '  ·  standing ' + have + ', needs ' + needed)));
+      }
+      row.append(el('p', 'org-boosts', describeEffect(modifier, bridge)));
+
+      // A shop that sells something inert is the trap this project has
+      // walked into twice.
+      if (effectIsInertToday(modifier, bridge)) {
+        row.append(el('p', 'org-boosts', 'No effect yet — your record always '
+          + 'opens clean, so there is nothing here to take off.'));
+      } else if (!effectIsImplemented(modifier, bridge)) {
+        row.append(el('p', 'org-boosts',
+          'Not active yet — this effect is still to be built.'));
+      }
+
+      const refusal = modifierRefusal(modifier, run.ownedModifiers,
+        int(run.meta.Funds, 0), run.boosterStanding, settings, ids);
+      const buy = el('button', refusal ? 'ghost' : 'primary',
+        refusal || 'Take their backing');
+      buy.disabled = !!refusal;
+      if (!refusal) {
+        buy.addEventListener('click', () => {
+          run.meta.Funds = int(run.meta.Funds, 0) - modifierCost(modifier);
+          run.ownedModifiers.push(modifier.mod_id);
+          sheet.closest('.backdrop').remove();
+          showOffice();
+          showBackingShop();
+        });
+      }
+      row.append(buy);
+      sheet.append(row);
+    }
+
+    const back = el('button', 'ghost', 'Back');
+    back.id = 'backing-close';
+    back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+    sheet.append(back);
+  });
+}
+
 // Raises the player's standing with everyone pleased in a stage.
 function pleaseOrganisations(boosters) {
   const step = int(DATA.booster_standing.per_please, 5);
@@ -300,7 +494,8 @@ function openStage() {
 
   const ok = run.engine.setup(forPlaytestStage(
     DATA, run.stage, run.runner.carriedBuffs(), run.meta,
-    Math.floor(Math.random() * 0x7fffffff)));
+    Math.floor(Math.random() * 0x7fffffff),
+    { deck: run.deck, modifiers: run.ownedModifiers }));
 
   if (!ok) {
     root.replaceChildren();
@@ -962,6 +1157,20 @@ function showOutcome() {
           run.lastMetaChange[name] = int(run.lastMetaChange[name], 0) + won.applied[name];
         }
         run.xp = int(run.xp, 0) + int(run.stage.xp_reward, 0);
+
+        // What the organisations backing you pay out for a stage won.
+        // Unlike the battle-start effects, this one does not care who was
+        // in the room: a business circle pays for the result.
+        const owned = DATA.modifiers.filter(
+          m => run.ownedModifiers.includes(str(m.mod_id, '')));
+        const paid = stageWinFunds(owned, DATA.modifier_effects || {});
+        if (paid !== 0) {
+          const row = DATA.sanban.find(v => v.name_en === 'Funds') || {};
+          const before = int(run.meta.Funds, 0);
+          run.meta.Funds = clampMeta(before + paid, row);
+          run.lastMetaChange.Funds =
+            int(run.lastMetaChange.Funds, 0) + (run.meta.Funds - before);
+        }
       }
       const result = applyScoreEffects(run.meta, run.stage, score, DATA.sanban);
       run.meta = result.meta;
