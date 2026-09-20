@@ -97,12 +97,12 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 3. **Player plays cards** by paying their cost. Resolve each card in this order:
    - Look up `m` = affinity[suit][stage]. Multiply `self_plus` and `opp_minus` by `m` and round half up. Guard, draw, and gaffe values are **not** multiplied.
    - Apply any `special` effect.
-   - Add support and subtract opponent support.
-   - Add guard (block).
+   - Add support and subtract opponent support. **Winning somebody over costs points, not one for one:** somebody undecided comes across for 1 point; somebody already with the opposition costs 1 (60%), 2 (30%) or 3 (10%), rolled per person. Points that cannot pay for the next person are lost. Where the opponent's number is not part of the win condition — a press conference, a scored caucus — subtracting opponent support does **nothing**.
+   - Add guard. Guard is a **bank**: it stacks to `guard_cap` (5), carries between turns, and is spent by whatever it stops.
    - Add or subtract gaffe points (floor at 0).
    - Draw cards; when the deck is empty, reshuffle the discard pile.
-4. **End turn:** discard the rest of the hand **[DEFAULT]**.
-5. **Opponent resolves its intent.** An attack of X lowers player support by max(0, X − block). Block then resets to 0.
+4. **End turn:** discard the rest of the hand **[DEFAULT]**, except where the hand cannot be replaced (a press conference). Ending a turn having played **no cards** is a pass: the next turn starts on `energy_per_turn − pass_energy_penalty` (1), and in a press conference it also declines the question in front of you, which costs press tone and pleases nobody.
+5. **Opponent resolves its intent.** An attack of X is met by the target's guard first: the guard absorbs what it can and is spent doing so, and max(0, X − guard) gets through. This applies **both ways** — the opponent's guard absorbs the player's attempts to argue their supporters away. Guard is not cleared at the end of a turn; only an attack takes it.
 6. **Check** win and loss, then advance the turn counter and draw up to hand size.
 
 ### 7.3 Bars by stage type

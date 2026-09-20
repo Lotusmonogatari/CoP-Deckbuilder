@@ -46,6 +46,11 @@ var opponent := 0
 ## Only meaningful for a shared pool: everyone not yet committed either way.
 var undecided := 0
 
+## True in a stage where only the player's own total is being scored — the
+## caucus. Arguing the opposition down achieves nothing there, because their
+## number is not what is being counted.
+var scored_only := false
+
 ## Rolls what the next seat held by the opponent will cost.
 ##
 ## Handed in rather than made here, so the whole battle runs off one seeded
@@ -176,23 +181,38 @@ func _roll_percent() -> int:
 
 ## The player argues the opponent down. Whoever the opponent loses goes back
 ## to undecided — they aren't automatically convinced of the other case.
+##
+## Where the opponent's number is not part of the win condition, this does
+## NOTHING. There is nobody in a press conference whose support you are
+## reducing, and in a caucus only your own total is being scored. Cameron
+## chose this over converting it into your own gain: a card can simply be the
+## wrong tool for the room, which is a real deckbuilding decision rather than
+## a hidden conversion the player has to learn about.
+##
+## The screen has to say so, or the choice is a trap instead of a decision —
+## see `reduce_does_nothing()`.
 func opponent_loses(amount: int) -> int:
 	if amount <= 0:
 		return 0
 
-	if model != Model.SHARED_POOL:
-		# There's no opponent bar in a single-bar stage. A refutation still
-		# helps: it pushes the one bar in the player's favour.
-		#
-		# OPEN QUESTION for Cameron: is that right for a press conference?
-		# The alternative is that "Opponent -3" does nothing there, which
-		# would make every Data Driven card dead weight in ST04.
-		return player_gains(amount)
+	if reduce_does_nothing():
+		return 0
 
 	var moved := mini(amount, opponent)
 	opponent -= moved
 	undecided += moved
 	return moved
+
+
+## True where arguing the opposition down achieves nothing at all.
+##
+## The caucus is the awkward case: it IS a shared pool, so there are real
+## opponent supporters to push into the undecided pile, and doing so used to
+## make room for your next card to convert them at a point each. Scoring it
+## as nothing removes that combination. If the caucus ever feels flat, this
+## is the first thing to reconsider.
+func reduce_does_nothing() -> bool:
+	return model != Model.SHARED_POOL or scored_only
 
 
 ## The opponent wins people over, by the same rules as the player.

@@ -187,13 +187,15 @@ func test_an_attack_bigger_than_the_block_gets_partly_through() -> void:
 	assert_eq(engine.state.bar.player, 37)
 
 
-func test_block_does_not_carry_into_the_next_turn() -> void:
+func test_guard_is_spent_by_what_it_stops_not_by_the_clock() -> void:
+	# It used to be wiped at the end of every turn whether or not it had been
+	# needed. Now only an attack takes it — here the opponent's 5 takes all 5.
 	var engine := _start()
 	_force_into_hand(engine, "GUARD5")
 	engine.play_card("GUARD5")
 	engine.end_turn()
 
-	assert_eq(engine.state.block, 0, "guard is spent at the end of the turn either way")
+	assert_eq(engine.state.block, 0, "their attack of 5 took the whole bank")
 
 
 func test_unspent_energy_does_not_carry_over() -> void:
@@ -985,7 +987,7 @@ func test_running_out_of_questions_ends_the_conference() -> void:
 
 	engine.play_card("GAIN3")
 	assert_true(engine.state.is_over(), "and now none")
-	assert_string_contains(engine.state.outcome_reason.to_lower(), "question")
+	assert_string_contains(engine.state.outcome_reason, "concludes")
 
 
 func test_running_out_of_cards_ends_the_conference_too() -> void:
@@ -1038,8 +1040,12 @@ func test_any_other_stage_still_needs_somebody_to_argue_with() -> void:
 	assert_false(engine.setup(config))
 
 
-func test_ending_a_turn_with_nobody_opposite_does_nothing_to_you() -> void:
-	var engine := _start(_press_alone())
+func test_ending_a_turn_with_nobody_opposite_is_not_an_attack() -> void:
+	# Nobody is sitting there to act. The tone still falls, but that is the
+	# cost of declining the question — not somebody taking a swing at you.
+	var config := _press_alone()
+	(config["stage"] as Dictionary)["decline_tone_cost"] = 0
+	var engine := _start(config)
 	var before := engine.state.bar.player
 
 	var result := engine.end_turn()
@@ -1200,3 +1206,249 @@ func test_the_last_question_cannot_be_declined_twice() -> void:
 
 	engine.end_turn()
 	assert_eq(engine.questions_remaining(), 0)
+
+
+# ---------------------------------------------------------------------------
+# Guard, as a bank
+# ---------------------------------------------------------------------------
+# Not a shield that has to be up at the right moment: a bank that stacks to a
+# cap, stays until something takes it, and is the first thing spent when
+# either side is attacked.
+
+func test_guard_is_still_there_next_turn() -> void:
+	# An opponent who guards rather than attacks, so nothing takes it.
+	var engine := _start({"opponent": TestFixtures.opponent([["block", 1]])})
+	_force_into_hand(engine, "GUARD5")
+	engine.play_card("GUARD5")
+
+	engine.end_turn()
+	assert_eq(engine.state.block, 5, "a quiet turn spent guarding is not wasted")
+
+
+func test_guard_stacks_up_to_the_cap() -> void:
+	var engine := _start()
+	engine.state.guard_cap = 5
+
+	_force_into_hand(engine, "GUARD5")
+	var first := engine.play_card("GUARD5")
+	assert_eq(first["applied"]["guard"], 5)
+
+	_force_into_hand(engine, "GUARD5")
+	var second := engine.play_card("GUARD5")
+	assert_eq(engine.state.block, 5, "held at the cap")
+	assert_eq(second["applied"]["guard"], 0,
+		"and it reports what actually fitted, not what the card said")
+
+
+func test_an_attack_spends_the_guard_it_meets() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent([["attack", 3]])})
+	_force_into_hand(engine, "GUARD5")
+	engine.play_card("GUARD5")
+
+	var turn := engine.end_turn()
+	assert_eq(turn["opponent"]["damage"], 0, "fully absorbed")
+	assert_eq(engine.state.block, 2, "and three of the five were spent doing it")
+
+
+func test_the_opponents_guard_stops_the_player() -> void:
+	# The half that never worked: their "Guarding" intent was decoration.
+	var engine := _start({"opponent": TestFixtures.opponent([["block", 4]])})
+	engine.end_turn()                      # they guard 4
+	assert_eq(engine.state.opponent_block, 4)
+
+	_force_into_hand(engine, "ATTACK3")
+	var result := engine.play_card("ATTACK3")
+
+	assert_eq(int(result["applied"]["guard_stopped"]), 3, "their guard took it all")
+	assert_eq(int(result["applied"]["opponent_lost"]), 0, "so none of their people moved")
+	assert_eq(engine.state.opponent_block, 1, "and three of their four were spent")
+
+
+func test_an_attack_bigger_than_their_guard_gets_through() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent([["block", 1]])})
+	engine.end_turn()
+
+	_force_into_hand(engine, "ATTACK3")
+	var result := engine.play_card("ATTACK3")
+
+	assert_eq(int(result["applied"]["guard_stopped"]), 1)
+	assert_gt(int(result["applied"]["opponent_lost"]), 0, "the rest landed")
+	assert_eq(engine.state.opponent_block, 0, "their guard is spent")
+
+
+func test_the_opponents_guard_also_stacks_to_the_cap() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent([["block", 4]])})
+	engine.state.guard_cap = 5
+
+	engine.end_turn()
+	engine.end_turn()
+	assert_eq(engine.state.opponent_block, 5, "4 then 4 again, held at 5")
+
+
+func test_a_new_committee_bout_clears_both_banks() -> void:
+	# Beating somebody should not leave you holding their guard, or yours.
+	var engine := _start({
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S1", "sequence_mode": "reset", "win_threshold": 45,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "A", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "B", "intent_pattern": [["block", 1]]},
+		],
+	})
+	engine.state.block = 5
+	engine.state.opponent_block = 5
+	engine.state.bar.player = 45
+	engine._check_outcome()
+
+	assert_eq(engine.state.opponent_index, 1, "the next one stepped up")
+	assert_eq(engine.state.block, 0)
+	assert_eq(engine.state.opponent_block, 0)
+
+
+func test_the_guard_cap_comes_from_the_rules_file() -> void:
+	var engine := _start({"rules": TestFixtures.rules({"guard_cap": 2})})
+	_force_into_hand(engine, "GUARD5")
+	engine.play_card("GUARD5")
+
+	assert_eq(engine.state.block, 2, "Cameron's number, not a number in the code")
+
+
+# ---------------------------------------------------------------------------
+# Declining a reporter's question
+# ---------------------------------------------------------------------------
+# Energy is nearly worthless in a press conference, so the ordinary pass cost
+# meant a player could duck every awkward question and walk out with the tone
+# untouched and a clean record. A playtest found exactly that.
+
+func test_declining_cools_the_room() -> void:
+	var config := _press_alone()
+	(config["stage"] as Dictionary)["decline_tone_cost"] = 3
+	var engine := _start(config)
+	var tone := engine.state.bar.player
+
+	engine.end_turn()
+	assert_eq(engine.state.bar.player, tone - 3, "silence costs you the room")
+	assert_eq(engine.state.declined_questions, 1)
+
+
+func test_declining_pleases_nobody() -> void:
+	var engine := _start(_press_alone())
+	engine.end_turn()
+	assert_true(engine.pleased_boosters().is_empty(),
+		"the organisation that asked is not pleased by silence")
+
+
+func test_ducking_every_question_is_no_longer_free() -> void:
+	# The exploit, in one test: five questions declined used to finish with
+	# the tone exactly where it started.
+	var config := _press_alone()
+	(config["stage"] as Dictionary)["decline_tone_cost"] = 3
+	var engine := _start(config)
+	var tone := engine.state.bar.player
+
+	var guard := 0
+	while not engine.state.is_over() and guard < 12:
+		guard += 1
+		engine.end_turn()
+
+	assert_true(engine.state.is_over())
+	assert_lt(engine.state.bar.player, tone, "the room is colder than it started")
+	assert_gt(engine.state.declined_questions, 0)
+
+
+func test_the_closing_line_says_the_conference_concluded() -> void:
+	var engine := _start(_press_alone())
+	engine.state.hand.assign(["GAIN3", "GAIN3", "GAIN3"])
+	engine.play_card("GAIN3")
+	engine.play_card("GAIN3")
+
+	assert_true(engine.state.is_over())
+	assert_string_contains(engine.state.outcome_reason, "The press conference concludes.")
+
+
+func test_the_closing_line_counts_what_went_unanswered() -> void:
+	var engine := _start(_press_alone())
+	engine.end_turn()                    # one declined
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+	engine.play_card("GAIN3")            # the last one answered
+
+	assert_true(engine.state.is_over())
+	assert_string_contains(engine.state.outcome_reason, "One question went unanswered.")
+
+
+func test_the_decline_cost_can_be_switched_off() -> void:
+	var config := _press_alone()
+	(config["stage"] as Dictionary)["decline_tone_cost"] = 0
+	var engine := _start(config)
+	var tone := engine.state.bar.player
+
+	engine.end_turn()
+	assert_eq(engine.state.bar.player, tone, "free when Cameron says it is free")
+	assert_eq(engine.state.declined_questions, 1, "but still recorded")
+
+
+# ---------------------------------------------------------------------------
+# What a card will actually do here
+# ---------------------------------------------------------------------------
+# The printed number is not the outcome: affinity moves the support numbers,
+# and in some rooms a number does nothing at all. A playtest reported this as
+# a card not working, which is what happens when a screen shows a promise the
+# rules do not keep.
+
+func test_the_preview_shows_the_room_not_the_card() -> void:
+	# ATTACK3 is Data Driven, worth 1.1 on the floor: 3 x 1.1 = 3.3 -> 3.
+	var engine := _start()
+	var effect := engine.preview(TestFixtures.card({
+		"card_id": "BIG", "self_plus": 10, "suit": "Data Driven",
+	}))
+	assert_eq(int(effect["self_plus"]), 11, "ten becomes eleven in this room")
+
+
+func test_a_card_that_does_nothing_here_says_so() -> void:
+	# An attack in a press conference: there is nobody whose support it
+	# reduces, so every number on the card is inert.
+	var engine := _start(_press_alone())
+	var effect := engine.preview(TestFixtures.card({
+		"card_id": "ATK", "opp_minus": 4,
+	}))
+
+	assert_false(bool(effect["opp_minus_counts"]), "nobody to reduce")
+	assert_true(bool(effect["does_nothing"]))
+
+
+func test_a_guard_card_does_nothing_where_nobody_attacks() -> void:
+	var engine := _start(_press_alone())
+	var effect := engine.preview(TestFixtures.card({"card_id": "G", "guard": 5}))
+
+	assert_false(bool(effect["guard_counts"]), "no reporter takes a swing at you")
+	assert_true(bool(effect["does_nothing"]))
+
+
+func test_a_card_that_still_works_is_not_marked_useless() -> void:
+	var engine := _start(_press_alone())
+	var effect := engine.preview(TestFixtures.card({
+		"card_id": "MIX", "self_plus": 3, "opp_minus": 4,
+	}))
+
+	assert_false(bool(effect["does_nothing"]), "the gain still counts")
+	assert_false(bool(effect["opp_minus_counts"]), "even though half of it does not")
+
+
+func test_everything_counts_in_an_ordinary_battle() -> void:
+	var engine := _start()
+	var effect := engine.preview(TestFixtures.card({
+		"card_id": "MIX", "self_plus": 3, "opp_minus": 4, "guard": 2,
+	}))
+
+	assert_true(bool(effect["opp_minus_counts"]))
+	assert_true(bool(effect["guard_counts"]))
+	assert_false(bool(effect["does_nothing"]))
+
+
+func test_a_card_that_only_gaffes_is_not_called_useless() -> void:
+	# It does something — something bad. Dimming it would suggest it is safe.
+	var engine := _start()
+	var effect := engine.preview(TestFixtures.card({"card_id": "OOPS", "gaffe": 2}))
+	assert_true(bool(effect["does_nothing"]),
+		"nothing it does helps, and the screen says exactly that")

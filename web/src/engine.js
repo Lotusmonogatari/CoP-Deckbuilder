@@ -368,7 +368,7 @@ class IntentRunner {
     switch (String((move && move.verb) || 'none')) {
       case 'attack': return 'Attacking · −' + value;
       case 'gain': return 'Gaining · +' + value;
-      case 'block': return 'Defending · ' + value;
+      case 'block': return 'Guarding · ' + value;
       case 'lean_down': return 'Pressuring · −' + value;
       default: return 'Waiting';
     }

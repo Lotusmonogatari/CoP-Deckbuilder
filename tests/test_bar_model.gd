@@ -255,13 +255,35 @@ func test_a_single_bar_has_no_opponent_side() -> void:
 	assert_true(bar.player_has_won())
 
 
-func test_a_refutation_pushes_the_single_bar_the_players_way() -> void:
-	# There is no opponent bar to knock down in a press conference, so a
-	# "-3 to the opponent" card moves the one bar instead. Without this, every
-	# Data Driven card would be dead weight there.
+func test_a_refutation_does_nothing_on_a_single_bar() -> void:
+	# There is nobody in a press conference whose support you are reducing,
+	# so a "-3 to the opponent" card achieves nothing there. It used to be
+	# converted into press tone, which meant a card printing both numbers was
+	# worth double — a playtest caught that.
 	var bar := BarModel.create(BarModel.Model.SINGLE, 100, 55, 45, 0)
-	bar.opponent_loses(3)
-	assert_eq(bar.player, 48)
+
+	assert_eq(bar.opponent_loses(3), 0, "nothing moved")
+	assert_eq(bar.player, 45, "and the tone is where it was")
+
+
+func test_a_refutation_does_nothing_in_a_scored_stage() -> void:
+	# The caucus is a shared pool with real opponent supporters in it, but
+	# only the player's own total is scored, so pushing them into the
+	# undecided pile achieves nothing that counts.
+	var bar := _floor_debate()
+	bar.scored_only = true
+
+	assert_eq(bar.opponent_loses(5), 0)
+	assert_eq(bar.opponent, 40, "their supporters stayed where they were")
+	assert_true(bar.totals_balance())
+
+
+func test_a_refutation_still_works_where_the_opponent_is_the_point() -> void:
+	# The floor debate and the committee are unaffected: there the
+	# opposition's number is exactly what you are trying to move.
+	var bar := _floor_debate()
+	assert_eq(bar.opponent_loses(5), 5)
+	assert_eq(bar.opponent, 35)
 
 
 func test_a_single_bar_cannot_exceed_its_maximum() -> void:

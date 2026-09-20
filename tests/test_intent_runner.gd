@@ -112,5 +112,5 @@ func test_every_verb_the_battle_understands_is_accepted() -> void:
 func test_moves_are_described_in_plain_words() -> void:
 	assert_eq(IntentRunner.describe({"verb": "attack", "value": 6}), "Attacking · −6")
 	assert_eq(IntentRunner.describe({"verb": "gain", "value": 4}), "Gaining · +4")
-	assert_eq(IntentRunner.describe({"verb": "block", "value": 5}), "Defending · 5")
+	assert_eq(IntentRunner.describe({"verb": "block", "value": 5}), "Guarding · 5")
 	assert_eq(IntentRunner.describe({"verb": "lean_down", "value": 8}), "Pressuring · −8")

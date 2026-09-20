@@ -85,6 +85,18 @@
         "meta": {"Reputation": 5}
       },
 
+      "_decline_note": [
+        "What ducking a question costs, in press tone. PLACEHOLDER.",
+        "",
+        "Energy is nearly worthless here - six cards for five questions - so",
+        "without this a player could decline every awkward question and walk",
+        "out with the tone untouched and a clean record. Playtesting found",
+        "exactly that. The organisation behind a declined question is also",
+        "left unpleased, which is felt later because standing carries between",
+        "levels."
+      ],
+      "decline_tone_cost": 3,
+
       "_questions_note": [
         "The wording is Cameron's. The suit each question INVITES, and the",
         "organisation it pleases, are my pairing and are placeholders - one",

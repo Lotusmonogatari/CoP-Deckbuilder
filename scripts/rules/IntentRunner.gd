@@ -102,6 +102,6 @@ static func describe(move: Dictionary) -> String:
 	match str(move.get("verb", "none")):
 		"attack": return "Attacking · −%d" % value
 		"gain": return "Gaining · +%d" % value
-		"block": return "Defending · %d" % value
+		"block": return "Guarding · %d" % value
 		"lean_down": return "Pressuring · −%d" % value
 		_: return "Waiting"

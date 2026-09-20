@@ -276,8 +276,47 @@ func _refresh_hand(state: BattleState) -> void:
 		var view := CardView.new()
 		_hand_row.add_child(view)
 		view.show_card(card)
+
+		# What it will do HERE, not what it says on paper. The room moves the
+		# numbers, and in some rooms a number does nothing at all.
+		var effect := engine.preview(card)
+		view.show_effect_here(effect)
 		view.set_affordable(int(card.get("cost", 0)) <= state.energy and not state.is_over())
+		view.set_useless_here(bool(effect.get("does_nothing", false)))
 		view.chosen.connect(_on_card_chosen)
+
+
+## What a card just did, in the room's own units.
+##
+## The card's numbers are a budget, not an outcome: the undecided come across
+## for a point each and the opposition cost more, so a push of five points can
+## win five people or three. Saying which, right after it happens, is the
+## difference between a rule the player learns and a screen they distrust.
+func _describe_what_happened(result: Dictionary) -> String:
+	var applied: Dictionary = result.get("applied", {})
+	var effect: Dictionary = result.get("effect", {})
+	var unit := str(_stage.get("bar_unit", "support")).to_lower()
+
+	var parts: Array[String] = []
+
+	var wanted := int(effect.get("self_plus", 0))
+	var won := int(applied.get("gained", 0))
+	if wanted > 0:
+		if won < wanted:
+			parts.append("%d %s won over — %d %s short"
+				% [won, unit, wanted - won, "point" if wanted - won == 1 else "points"])
+		else:
+			parts.append("%d %s won over" % [won, unit])
+
+	var stopped := int(applied.get("guard_stopped", 0))
+	if stopped > 0:
+		parts.append("their guard stopped %d" % stopped)
+
+	var lost := int(applied.get("opponent_lost", 0))
+	if lost > 0:
+		parts.append("%d argued away from them" % lost)
+
+	return ", ".join(parts).capitalize() + "." if not parts.is_empty() else ""
 
 
 ## Who is in the room, and what it takes to win one of them over.
@@ -448,6 +487,7 @@ func _play_selected() -> void:
 	EventBus.card_played.emit(_selected_card_id, result)
 	_selected_card_id = ""
 	_refresh()
+	_show_notice(_describe_what_happened(result))
 
 
 func _on_end_turn() -> void:
@@ -459,6 +499,15 @@ func _on_end_turn() -> void:
 
 	EventBus.turn_ended.emit(engine.state.turn)
 	_refresh()
+
+	# The pass penalty has always worked; nothing ever said so, which is why
+	# a playtest read it as having stopped after the first time. It never
+	# compounds — every quiet turn costs the same one energy.
+	if bool(result.get("passed", false)) and not engine.state.is_over():
+		if engine.is_press_conference():
+			_show_notice("You let that one go. The room cools.")
+		else:
+			_show_notice("You said nothing. One less energy this turn.")
 
 
 func _toggle_details() -> void:
@@ -516,6 +565,8 @@ func _dismiss_top_overlay() -> bool:
 # ---------------------------------------------------------------------------
 
 func _show_notice(message: String) -> void:
+	if message.is_empty():
+		return
 	_notice.text = message
 	_notice.show()
 	# Long enough to read, short enough not to sit in the way.

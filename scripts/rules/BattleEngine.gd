@@ -108,6 +108,7 @@ func setup(config: Dictionary) -> bool:
 	# so "opening_hand" wins over the ordinary hand size where both exist.
 	state.hand_size = int(_stage.get("opening_hand", _stage.get("hand_size", 5)))
 	state.gaffe_limit = int(_stage.get("gaffe_limit", 5))
+	state.guard_cap = int(_rules.get("guard_cap", 5))
 
 	_setup_opponent(config)
 	_setup_board(config)
@@ -208,7 +209,7 @@ func _setup_board(config: Dictionary) -> void:
 ## One place rather than two, because a continuous stage rebuilds it every
 ## time a new debater rises and the two must not drift apart.
 func _build_bar(player_start: int, opponent_start: int) -> BarModel:
-	return BarModel.create(
+	var bar := BarModel.create(
 		BarModel.for_stage(_stage),
 		int(_stage.get("bar_max", 100)),
 		int(_stage.get("win_threshold", 51)),
@@ -218,6 +219,11 @@ func _build_bar(player_start: int, opponent_start: int) -> BarModel:
 		# generator, so a seeded battle plays out the same way twice.
 		func() -> int: return _rng.randi_range(0, 99),
 	)
+
+	# In a caucus only the player's own total is scored, so there is nothing
+	# to be gained by arguing the other side down.
+	bar.scored_only = str(_stage.get("win_mode", "threshold")) == "score"
+	return bar
 
 
 func _setup_deck(config: Dictionary) -> void:
@@ -321,12 +327,22 @@ func _apply_effect(effect: Dictionary, target_index: int) -> Dictionary:
 		applied["member"] = move
 	else:
 		applied["gained"] = state.bar.player_gains(self_plus)
-		applied["opponent_lost"] = state.bar.opponent_loses(opp_minus)
 
-	# Guard is not multiplied by affinity — see CardResolver.
-	var guard := int(effect.get("guard", 0))
-	state.block += guard
-	applied["guard"] = guard
+		# Arguing the opposition down is an attack, so their guard is the
+		# first thing it meets and what it absorbs is spent. Until now this
+		# went straight through and their "Guarding" intent did nothing at
+		# all, which a playtest caught.
+		var stopped := mini(state.opponent_block, opp_minus)
+		state.opponent_block -= stopped
+		applied["guard_stopped"] = stopped
+		applied["opponent_lost"] = state.bar.opponent_loses(opp_minus - stopped)
+
+	# Guard is not multiplied by affinity — see CardResolver. It goes into a
+	# bank that stays until something attacks, so what is reported is what
+	# actually fitted: guarding 5 when you already hold 4 adds 1, not 5.
+	var before_guard := state.block
+	state.block = mini(state.block + int(effect.get("guard", 0)), state.guard_cap)
+	applied["guard"] = state.block - before_guard
 
 	# The gaffe meter never goes below zero, so an apology on a clean record
 	# is wasted rather than banked.
@@ -396,8 +412,9 @@ func end_turn() -> Dictionary:
 		intent = _intents.advance()
 		opponent_result = _resolve_intent(intent)
 
-	# Block is spent at the end of the turn whether or not it was needed.
-	state.block = 0
+	# Guard is NOT cleared here. It is a bank now: it stays until something
+	# takes it, so a quiet turn spent guarding is still worth something when
+	# the attack finally comes.
 	state.next_card_bonus = 0
 	state.next_intent_revealed = false
 	state.cards_played_this_turn = 0
@@ -457,7 +474,26 @@ func _pass_penalty() -> void:
 		state.energy = maxi(state.energy - _pass_cost(), 0)
 
 	if not _questions.is_empty() and not current_question().is_empty():
-		state.question_index += 1
+		_decline_question()
+
+
+## Ducking the question in front of you.
+##
+## Energy is close to worthless in a press conference — you are dealt six
+## cards for five questions — so the ordinary pass cost meant a player could
+## decline every awkward question and finish with the tone untouched and a
+## clean record. A playtest found exactly that.
+##
+## So silence has its own price here: the room cools, and the organisation
+## that asked is not pleased, which is felt later because standing carries
+## between levels. Both numbers live in the stage's data.
+func _decline_question() -> void:
+	var cost := int(_stage.get("decline_tone_cost", 3))
+	if cost > 0 and state.bar != null:
+		state.bar.player_loses(cost)
+
+	state.declined_questions += 1
+	state.question_index += 1
 
 
 func _resolve_intent(intent: Dictionary) -> Dictionary:
@@ -465,9 +501,12 @@ func _resolve_intent(intent: Dictionary) -> Dictionary:
 
 	match str(intent.get("verb", "none")):
 		"attack":
-			# Block absorbs the attack first. Anything left gets through.
+			# The player's guard is the first thing taken, and what it
+			# absorbs is spent — this is the bank being drawn down rather
+			# than a shield that happened to be up at the right moment.
 			var absorbed := mini(state.block, value)
 			var through := maxi(value - state.block, 0)
+			state.block -= absorbed
 			var lost := 0
 			if state.is_committee_stage():
 				# An attack has no meaning against a set of votes; the chair's
@@ -482,8 +521,9 @@ func _resolve_intent(intent: Dictionary) -> Dictionary:
 			return {"verb": "gain", "gained": gained}
 
 		"block":
-			state.opponent_block += value
-			return {"verb": "block", "guard": value}
+			var before := state.opponent_block
+			state.opponent_block = mini(state.opponent_block + value, state.guard_cap)
+			return {"verb": "block", "guard": state.opponent_block - before}
 
 		"lean_down":
 			if not state.is_committee_stage():
@@ -518,7 +558,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 	# along the way.
 	if not _questions.is_empty():
 		if questions_remaining() <= 0:
-			_finish("win", "Every question was answered.")
+			_finish("win", _conference_closing())
 			return
 		# An empty hand is the end of it. The discard pile is not counted:
 		# in a conference that never draws, a card once played is gone for
@@ -527,7 +567,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 		if state.draw_mode != "none":
 			can_still_answer = can_still_answer or not state.deck.is_empty()
 		if not can_still_answer:
-			_finish("win", "The questions ran on, but there was nothing left to say.")
+			_finish("win", _conference_closing(true))
 			return
 
 	if state.is_committee_stage():
@@ -631,6 +671,63 @@ func _check_turn_limit() -> void:
 # ---------------------------------------------------------------------------
 # The press conference
 # ---------------------------------------------------------------------------
+
+## How a press conference ends.
+##
+## Never won or lost — it closes, and what it produced is the tone and the
+## organisations pleased. The count of unanswered questions is recorded
+## rather than judged: what it should cost beyond the tone is Cameron's, and
+## this is the line those endings will hang off.
+func _conference_closing(ran_out_of_cards: bool = false) -> String:
+	var lines: Array[String] = ["The press conference concludes."]
+
+	if ran_out_of_cards:
+		lines.append("The questions ran on, but there was nothing left to say.")
+
+	var declined := state.declined_questions
+	if declined == 1:
+		lines.append("One question went unanswered.")
+	elif declined > 1:
+		lines.append("%d questions went unanswered." % declined)
+
+	return " ".join(lines)
+
+
+## What a card will actually do in this room, before it is played.
+##
+## The printed number on a card is not what happens: affinity multiplies the
+## two support numbers, so a Divisive "+3" is a 2 in a committee. A playtest
+## reported this as the card not working, which is what happens when a screen
+## shows a promise the rules do not keep.
+##
+## Returns the resolved amounts plus `does_nothing`, which is true when every
+## number on the card is inert here — an attack in a press conference, or a
+## guard card in a room where nobody attacks you.
+func preview(card: Dictionary) -> Dictionary:
+	var effect := CardResolver.resolve(card, {
+		"affinity": affinity_for(card),
+		"segment_share": CardResolver.segment_share(card, _stage),
+		"kanban": int(_meta.get("Reputation", 50)),
+		"opponent_gaffe": state.opponent_gaffe,
+		"next_card_bonus": state.next_card_bonus,
+	})
+
+	# A number the rules will refuse to use is worse than no number: it
+	# invites the player to count on it.
+	var reduce_counts := state.bar == null or not state.bar.reduce_does_nothing()
+	var guard_counts := _intents != null
+
+	effect["opp_minus_counts"] = reduce_counts
+	effect["guard_counts"] = guard_counts
+
+	effect["does_nothing"] = (
+		int(effect.get("self_plus", 0)) == 0
+		and int(effect.get("draw", 0)) == 0
+		and (int(effect.get("opp_minus", 0)) == 0 or not reduce_counts)
+		and (int(effect.get("guard", 0)) == 0 or not guard_counts))
+
+	return effect
+
 
 ## True when this stage is driven by reporters' questions rather than by
 ## somebody taking turns opposite the player.

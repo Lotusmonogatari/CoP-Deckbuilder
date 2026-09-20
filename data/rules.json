@@ -120,5 +120,21 @@
       "1": "One energy off next turn. In a caucus, where energy is a pool that is never refilled, it comes off what is left of the pool instead - the only version that means anything there. In a press conference, passing is also how you decline the question in front of you.",
       "2": "Two energy. Harsh on a three-energy turn: passing would cost you most of a turn on top of the turn you already gave up."
     }
+  },
+  "guard_cap": {
+    "value": 5,
+    "options": [
+      3,
+      5,
+      8,
+      99
+    ],
+    "question": "How much Guard can either side be holding at once?",
+    "means": {
+      "3": "Tight. Guarding is a response to the attack you can see coming, not something you build up.",
+      "5": "Guard stacks up to five and stays until something takes it. Enough to absorb one heavy attack or two light ones.",
+      "8": "Loose. A player who guards for two turns can walk through almost anything on the third.",
+      "99": "No cap in practice. Turtling becomes a strategy, which is why this is not the default."
+    }
   }
 }
