@@ -101,7 +101,6 @@ const KNOWN_SPECIALS = [
   'buff_next_card_this_turn',
   'reveal_next_intent',
   'bonus_opp_minus_if_opp_gaffe',
-  'pass_turn',
 ];
 
 function applySpecial(key, value, effect, context) {
@@ -150,14 +149,6 @@ function applySpecial(key, value, effect, context) {
         result.flags.special_triggered = true;
       }
       break;
-    case 'pass_turn':
-      // The card's own gaffe number is the price; this only hands the round
-      // over. In a press conference the round IS the question, and every card
-      // answers one already, so this does nothing there and the card still
-      // works: you have declined out loud and the next reporter speaks.
-      result.flags.end_turn = true;
-      result.flags.special_triggered = true;
-      break;
   }
 
   return result;
@@ -174,9 +165,28 @@ function applySpecial(key, value, effect, context) {
 
 const SHARED_POOL = 0, SINGLE = 1, SURVIVAL = 2;
 
+// What it costs, in persuasion points, to win over one seat.
+//
+// Somebody not yet committed either way comes across for a single point.
+// Somebody already sitting with the opposition is harder, and how much
+// harder varies from person to person: usually one point, sometimes two,
+// occasionally three. That is what makes the end of a debate slower than the
+// start even though the numbers look the same.
+const UNDECIDED_COST = 1;
+const OPPONENT_COST_ODDS = [
+  { cost: 1, chance: 60 },
+  { cost: 2, chance: 30 },
+  { cost: 3, chance: 10 },
+];
+
 class BarModel {
-  constructor(model, maximum, threshold, playerStart, opponentStart) {
+  constructor(model, maximum, threshold, playerStart, opponentStart, costRoller) {
     this.model = model;
+    // Handed in rather than made here, so the whole battle runs off one
+    // seeded generator and a test can post a fixed answer. A bar built
+    // without one rolls for itself: a missing roller must never quietly turn
+    // the rule off and make every seat cost a point.
+    this._costRoller = costRoller || (() => Math.floor(Math.random() * 100));
     this.maximum = Math.max(maximum, 1);
     this.threshold = threshold;
     this.player = clamp(playerStart, 0, this.maximum);
@@ -205,6 +215,13 @@ class BarModel {
     return SHARED_POOL;
   }
 
+  // `amount` is a budget of persuasion points, not a number of seats. The
+  // undecided come across first at a point each; once they run out, every
+  // further seat has to be bought off the opposition at whatever that person
+  // costs. Points that cannot pay for the next seat are LOST rather than
+  // held over: a big push can fall just short of a stubborn vote.
+  //
+  // Returns the number of seats that actually moved.
   playerGains(amount) {
     if (amount <= 0) return 0;
     if (this.model !== SHARED_POOL) {
@@ -212,15 +229,42 @@ class BarModel {
       this.player = clamp(this.player + amount, 0, this.maximum);
       return this.player - before;
     }
-    const fromUndecided = Math.min(amount, this.undecided);
-    this.undecided -= fromUndecided;
-    this.player += fromUndecided;
 
-    const fromOpponent = Math.min(amount - fromUndecided, this.opponent);
-    this.opponent -= fromOpponent;
-    this.player += fromOpponent;
+    let budget = amount;
+    let moved = 0;
 
-    return fromUndecided + fromOpponent;
+    while (budget > 0) {
+      if (this.undecided > 0) {
+        if (budget < UNDECIDED_COST) break;
+        budget -= UNDECIDED_COST;
+        this.undecided -= 1;
+        this.player += 1;
+        moved += 1;
+        continue;
+      }
+
+      if (this.opponent <= 0) break;   // the whole room is already yours
+
+      const cost = this.rollOpponentCost();
+      if (budget < cost) break;        // and it is not banked
+      budget -= cost;
+      this.opponent -= 1;
+      this.player += 1;
+      moved += 1;
+    }
+
+    return moved;
+  }
+
+  // What the next seat held by the opposition costs, in points.
+  rollOpponentCost() {
+    const roll = this._costRoller();
+    let seen = 0;
+    for (const band of OPPONENT_COST_ODDS) {
+      seen += band.chance;
+      if (roll < seen) return band.cost;
+    }
+    return OPPONENT_COST_ODDS[OPPONENT_COST_ODDS.length - 1].cost;
   }
 
   // Whoever the opponent loses goes back to undecided — they are not
@@ -362,6 +406,11 @@ class BattleState {
     this.bar = null;
     this.next_intent_revealed = false;
 
+    // Ending a turn on zero is how a player passes, and passing costs
+    // something. Counted rather than inferred from the energy spent: a card
+    // can cost nothing, and a pool stage can leave energy unspent.
+    this.cards_played_this_turn = 0;
+
     this.question_index = 0;
     this.pleased_boosters = [];
 
@@ -485,15 +534,24 @@ class BattleEngine {
   }
 
   _setupBoard(config) {
-    const playerStart = int(this._stage.player_start, 0) + int(config.start_adjustment, 0);
-    const opponentStart = int(this._stage.opp_start, 0) + int(config.bill_difficulty, 0);
+    this.state.bar = this._buildBar(
+      int(this._stage.player_start, 0) + int(config.start_adjustment, 0),
+      int(this._stage.opp_start, 0) + int(config.bill_difficulty, 0));
+  }
 
-    this.state.bar = new BarModel(
+  // The seat count, from the stage's own numbers. One place rather than
+  // two, because a continuous stage rebuilds it every time a new debater
+  // rises and the two must not drift apart.
+  _buildBar(playerStart, opponentStart) {
+    return new BarModel(
       BarModel.forStage(this._stage),
       int(this._stage.bar_max, 100),
       int(this._stage.win_threshold, 51),
       playerStart,
-      opponentStart
+      opponentStart,
+      // The bar rolls what a stubborn vote costs off the battle's own
+      // generator, so a seeded battle plays out the same way twice.
+      () => this._rng(100)
     );
   }
 
@@ -546,6 +604,7 @@ class BattleEngine {
 
     s.energy -= cost;
     s.hand.splice(s.hand.indexOf(cardId), 1);
+    s.cards_played_this_turn += 1;
     s.next_card_bonus = 0;
 
     const applied = this._applyEffect(effect);
@@ -563,14 +622,7 @@ class BattleEngine {
 
     this._checkOutcome(false);
 
-    const result = { ok: true, card_id: cardId, effect: effect, applied: applied, energy_left: s.energy };
-
-    // A card that passes the round hands the turn over as it is played.
-    // Declining and then playing on would not be declining.
-    if (flags.end_turn && !s.isOver() && this._intents !== null) {
-      result.ended_turn = this.endTurn();
-    }
-    return result;
+    return { ok: true, card_id: cardId, effect: effect, applied: applied, energy_left: s.energy };
   }
 
   // Support, then guard, then gaffe, then draw.
@@ -595,9 +647,14 @@ class BattleEngine {
     return applied;
   }
 
+  // Ending a turn without having played anything is how you pass, and
+  // passing costs you: see _passPenalty() for what it costs and why.
   endTurn() {
     const s = this.state;
     if (s.isOver()) return { ok: false, reason: 'the battle is already over' };
+
+    const passed = s.cards_played_this_turn === 0;
+    if (passed) this._passPenalty();
 
     // A hand you cannot replace is the exception: in a press conference you
     // are dealt six cards and draw no more, so throwing the rest away would
@@ -618,16 +675,47 @@ class BattleEngine {
     s.block = 0;
     s.next_card_bonus = 0;
     s.next_intent_revealed = false;
+    s.cards_played_this_turn = 0;
 
     this._checkOutcome(true);
 
     if (!s.isOver()) {
       s.turn += 1;
-      if (s.energy_mode !== 'pool') s.energy = s.energy_per_turn;
+      if (s.energy_mode !== 'pool') {
+        s.energy = Math.max(s.energy_per_turn - (passed ? this._passCost() : 0), 0);
+      }
       if (s.draw_mode !== 'none') this._drawUpToHandSize();
     }
 
-    return { ok: true, intent: intent, opponent: opponentResult, turn: s.turn, outcome: s.outcome };
+    return { ok: true, passed: passed, intent: intent, opponent: opponentResult, turn: s.turn, outcome: s.outcome };
+  }
+
+  // What saying nothing costs. One energy, from rules.json.
+  _passCost() { return int(this._rules.pass_energy_penalty, 1); }
+
+  // The price of a turn spent saying nothing.
+  //
+  // Standing up and declining to argue is a real choice — sometimes the
+  // right one — but it should never be the free one, or the best play in a
+  // tight spot would be to keep quiet and let the clock run.
+  //
+  // THE ENERGY normally comes off next turn's allowance, applied where the
+  // turn refills. A pool stage is never refilled, so there is nothing there
+  // to dock and it comes off what is left of the pool straight away — a
+  // permanent cut rather than a lost turn, which is the only version that
+  // means anything in a caucus.
+  //
+  // THE QUESTION: in a press conference the round IS the question in front
+  // of you, so passing is how you decline it. There is no other way to duck
+  // one, because every card you could play would answer it.
+  _passPenalty() {
+    const s = this.state;
+    if (s.energy_mode === 'pool') {
+      s.energy = Math.max(s.energy - this._passCost(), 0);
+    }
+    if (this._questions.length > 0 && this.currentQuestion()) {
+      s.question_index += 1;
+    }
   }
 
   _resolveIntent(intent) {
@@ -679,15 +767,18 @@ class BattleEngine {
       && this._questions.length === 0;
 
     if (hasThreshold && s.bar.playerHasWon()) {
-      // In a committee, winning the argument wins this bout, not the stage.
-      if (this._sequenceMode === 'reset' && this.hasMoreOpponents()) {
+      // Where a stage lines several people up, the threshold is what it
+      // takes to finish THE PERSON IN FRONT OF YOU, not the stage. In a
+      // committee the next member is waiting; on the floor the next debater
+      // rises and the house divides again.
+      if (this._sequenceMode !== 'single' && this.hasMoreOpponents()) {
         return this._advanceToNextOpponent();
       }
       return this._finish('win', this._victoryReason());
     }
 
-    // On the floor, arguing an opponent's seats down to nothing brings on the
-    // next. Running out of opponents wins it even short of a majority.
+    // On the floor, arguing a debater's seats down to nothing ends them too.
+    // Running out of opponents wins it even short of the threshold.
     if (this._sequenceMode === 'continuous' && s.bar.opponent <= 0) {
       if (this.hasMoreOpponents()) return this._advanceToNextOpponent();
       return this._finish('win', 'Every opponent has been argued out of the chamber.');
@@ -744,8 +835,10 @@ class BattleEngine {
     return (this.state.opponent_index + 1) + ' of ' + this.state.opponent_count;
   }
 
-  // In a committee this is a fresh argument. On the floor it is the same room
-  // carrying on: the seats you have won stay won and the clock keeps running.
+  // In a committee this is a fresh argument. On the floor it is a fresh vote
+  // but not a fresh start: the house divides again on the new debater, so the
+  // seat count goes back to where the stage opened — but your gaffes, your
+  // hand, your deck and the clock all follow you in.
   _advanceToNextOpponent() {
     const s = this.state;
     s.opponent_index += 1;
@@ -755,9 +848,9 @@ class BattleEngine {
     if (this._sequenceMode === 'reset') {
       this._resetForNewBout();
     } else if (s.bar) {
-      // Their seats have to come from somewhere, and taking them from the
-      // player would punish winning. They come from the undecided.
-      s.bar.opponentGains(int(this._stage.opp_start, 0));
+      s.bar = this._buildBar(
+        int(this._stage.player_start, 0),
+        int(this._stage.opp_start, 0));
     }
   }
 
@@ -768,6 +861,7 @@ class BattleEngine {
     s.opponent_block = 0;
     s.next_card_bonus = 0;
     s.next_intent_revealed = false;
+    s.cards_played_this_turn = 0;
     s.turn = 1;
 
     s.energy = s.energy_max;
@@ -776,13 +870,9 @@ class BattleEngine {
       s.energy_max = s.energy_per_turn;
     }
 
-    s.bar = new BarModel(
-      BarModel.forStage(this._stage),
-      int(this._stage.bar_max, 100),
-      int(this._stage.win_threshold, 51),
+    s.bar = this._buildBar(
       int(this._stage.player_start, 0),
-      int(this._stage.opp_start, 0)
-    );
+      int(this._stage.opp_start, 0));
 
     // A clean deck, so the last argument's spent cards are not a handicap.
     s.deck = s.deck.concat(s.hand, s.discard);
@@ -793,7 +883,7 @@ class BattleEngine {
   }
 
   _victoryReason() {
-    if (this._sequenceMode === 'reset' && this.state.opponent_count > 1) {
+    if (this._sequenceMode !== 'single' && this.state.opponent_count > 1) {
       return 'All ' + this.state.opponent_count + ' were argued down.';
     }
     return 'The support threshold was reached.';
@@ -1086,11 +1176,33 @@ function startingMeta(data) {
   return meta;
 }
 
+// Fills in who is in the room, where a stage does not say.
+//
+// Every stage in the workbook carries a segment_mix — how much of the
+// audience is Press, Loyalists, Constituents, Donors, Bureaucrats — and the
+// hand-written playtest stages carry none, so every card aimed at a
+// particular audience reads that audience as zero per cent of the room.
+//
+// Rather than invent percentages, a playtest stage borrows the mix of the
+// canon stage it already names in affinity_stage_id. A stage that declares
+// its own keeps it.
+function withAudience(data, stage) {
+  if (stage.segment_mix) return stage;
+
+  const modelledOn = str(stage.affinity_stage_id, '');
+  if (!modelledOn) return stage;
+
+  const canon = (data.stages || []).find(row => row.stage_id === modelledOn);
+  if (!canon || !canon.segment_mix) return stage;
+
+  return Object.assign({}, stage, { segment_mix: canon.segment_mix });
+}
+
 function forPlaytestStage(data, stage, buffs, meta, seed) {
   buffs = buffs || {};
   const opponents = stage.opponents || [];
   return {
-    stage: stage,
+    stage: withAudience(data, stage),
     opponent: opponents.length > 0 ? opponents[0] : {},
     opponents: opponents,
     cards: cardTable(data),

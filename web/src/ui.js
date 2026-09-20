@@ -36,6 +36,11 @@ function placeholderArt(id, size) {
 const run = {
   runner: null,
   meta: startingMeta(DATA),
+  // Where the player stands with each organisation, held between levels —
+  // unlike the pleased list, which lasts one level.
+  boosterStanding: Object.fromEntries(
+    DATA.boosters.map(b => [b.booster_id, int(DATA.booster_standing.start, 50)])),
+  lastBoosterChange: {},
   lastLevelOutcome: '',
   lastMetaChange: {},
   engine: null,
@@ -46,6 +51,39 @@ const run = {
 const root = document.getElementById('screen');
 
 function boosterNameOf(id) { return boosterNames(DATA)[id] || id; }
+
+// How this room is treating this suit, in words rather than a multiplier.
+// "×0.80" is precise and means nothing at the table; what a player needs to
+// know is whether the room is with them, and roughly how much.
+function describeRoomFor(affinity) {
+  if (affinity >= 1.51) return 'Being greatly enhanced by supporters.';
+  if (affinity > 1) return 'Being enhanced by supporters.';
+  if (affinity < 0.5) return 'Being greatly suppressed by opponents.';
+  if (affinity < 1) return 'Being suppressed by detractors.';
+  return 'Landing as written here.';
+}
+
+// Who is in the room, and what it takes to win one of them over. Both are
+// rules a player would otherwise have to work out by losing.
+function roomLines(s) {
+  const lines = [];
+
+  const mix = run.engine._stage.segment_mix || {};
+  const parts = [];
+  for (const segment of DATA.segments) {
+    const share = Number(mix[segment.segment_id] || 0);
+    if (share > 0) parts.push(Math.round(share * 100) + '% ' + segment.name_en);
+  }
+  if (parts.length > 0) lines.push('In the room: ' + parts.join(', ') + '.');
+
+  if (s.bar && s.bar.model === SHARED_POOL) {
+    lines.push('Winning over somebody undecided takes one point. Somebody '
+      + 'already against you takes one, two or three — you find out which as '
+      + 'you go, and points you cannot spend are lost.');
+  }
+
+  return lines;
+}
 
 // ---------------------------------------------------------------------------
 // The Office
@@ -91,6 +129,12 @@ function showOffice() {
   start.addEventListener('click', startLevel);
   root.append(start);
 
+  // Who is behind you, and how far. Secondary, so it lives behind a button.
+  const orgs = el('button', 'ghost', 'The organisations');
+  orgs.id = 'organisations';
+  orgs.addEventListener('click', showOrganisations);
+  root.append(orgs);
+
   root.append(rulesCheckLine());
 }
 
@@ -104,7 +148,63 @@ function startLevel() {
   run.runner = new LevelRunner(DATA.playtest_level);
   run.lastLevelOutcome = '';
   run.lastMetaChange = {};
+  run.lastBoosterChange = {};
   openStage();
+}
+
+// The ten organisations, and where the player stands with each.
+//
+// Grouped by tier rather than listed flat, because the tiers are the real
+// distinction: a Constituency group is worth something different from a
+// National one, and seeing them mixed hides that.
+function showOrganisations() {
+  overlay('The organisations', sheet => {
+    sheet.append(el('p', 'detail-line', 'Answering a reporter in the suit '
+      + 'their question invites pleases the organisation behind it, and that '
+      + 'standing is carried between levels.'));
+
+    for (const tier of ['Party', 'Constituency', 'National']) {
+      const inTier = DATA.boosters.filter(b => b.tier === tier);
+      if (inTier.length === 0) continue;
+
+      sheet.append(el('h3', 'org-tier', tier));
+      for (const booster of inTier) {
+        const row = el('div', 'org');
+        const head = el('p', 'org-name');
+        head.append(booster.name_en + ' ');
+        head.append(el('span', 'jp', booster.name_jp || ''));
+
+        const standing = el('span', 'org-standing',
+          String(run.boosterStanding[booster.booster_id]));
+        const change = run.lastBoosterChange[booster.booster_id];
+        if (change) standing.append(' ', el('span', 'delta up', '+' + change));
+        head.append(' — ', standing);
+
+        row.append(head);
+        row.append(el('p', 'org-boosts', booster.boosts || ''));
+        sheet.append(row);
+      }
+    }
+
+    const back = el('button', 'ghost', 'Back');
+    back.id = 'organisations-close';
+    back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+    sheet.append(back);
+  });
+}
+
+// Raises the player's standing with everyone pleased in a stage.
+function pleaseOrganisations(boosters) {
+  const step = int(DATA.booster_standing.per_please, 5);
+  const low = int(DATA.booster_standing.min, 0);
+  const high = int(DATA.booster_standing.max, 100);
+
+  for (const id of boosters) {
+    const before = run.boosterStanding[id];
+    const after = Math.min(Math.max(before + step, low), high);
+    run.boosterStanding[id] = after;
+    if (after !== before) run.lastBoosterChange[id] = after - before;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -168,6 +268,9 @@ function drawBattle() {
   status.append(pips);
 
   const right = el('div', 'status-right');
+  // How much of the next attack is already covered. Shown only when there is
+  // some: a permanent "Guarding 0" is noise.
+  if (s.block > 0) right.append(el('span', 'guarding', 'Guarding ' + s.block));
   // The gaffe warning turns red ONLY when one more would end the stage.
   right.append(el('span', engine.gaffeIsCritical() ? 'gaffes warn' : 'gaffes',
     'Gaffes ' + s.gaffe + ' / ' + s.gaffe_limit));
@@ -322,13 +425,7 @@ function showCardZoom(card) {
     if (card.name_jp) sheet.append(el('p', 'jp', card.name_jp + '  ' + (card.romaji || '')));
     sheet.append(placeholderArt(card.card_id, '120px'));
     sheet.append(el('p', 'zoom-text', card.effect_text || ''));
-    sheet.append(el('p', 'zoom-upgrade', 'Upgraded: ' + (card.upgrade_text || '—')));
-
-    // Whether this suit lands harder or softer in this particular room.
-    let room = 'This suit lands as written here.';
-    if (affinity > 1) room = 'This suit lands harder here (×' + affinity + ').';
-    if (affinity < 1) room = 'This suit lands softer here (×' + affinity + ').';
-    sheet.append(el('p', 'zoom-room', room));
+    sheet.append(el('p', 'zoom-room', describeRoomFor(affinity)));
 
     const play = el('button', 'primary', 'Play');
     play.id = 'zoom-play';
@@ -371,11 +468,20 @@ function showDetails() {
       if (opponent.name) lines.push('Opponent: ' + opponent.name + ', ' + (opponent.party || ''));
     }
 
+    lines.push('');
+    lines.push(...roomLines(s));
+
     if (s.opponent_count > 1) {
       lines.push('');
-      lines.push(run.stage.sequence_mode === 'reset'
-        ? s.opponent_count + ' opponents, one at a time. Beat one and everything starts again against the next, including your gaffes.'
-        : s.opponent_count + ' opponents, one at a time. Nothing resets between them: the seats you have won stay won and the clock keeps running.');
+      if (run.stage.sequence_mode === 'reset') {
+        lines.push(s.opponent_count + ' opponents, one at a time. Beat one and everything starts again against the next, including your gaffes.');
+      } else {
+        lines.push(s.opponent_count + ' debaters, one at a time, and ' + s.bar.threshold
+          + ' ' + String(run.stage.bar_unit || 'support').toLowerCase()
+          + ' ends the one in front of you — not the stage. Beat them and the house divides again from the start for the next.');
+        lines.push('Your record, your hand and the clock carry across all '
+          + s.opponent_count + ' of them.');
+      }
     }
 
     if (s.energy_mode === 'pool') {
@@ -437,6 +543,7 @@ function showOutcome() {
       const result = applyScoreEffects(run.meta, run.stage, score, DATA.sanban);
       run.meta = result.meta;
       run.lastMetaChange = result.applied;
+      pleaseOrganisations(engine.pleasedBoosters());
 
       run.runner.finishStage(s.outcome, score, engine.pleasedBoosters());
       if (run.runner.isFinished()) {

@@ -184,6 +184,7 @@ button:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
 .status-right { display: flex; align-items: center; gap: 14px; font-size: 13px; }
 .gaffes { color: var(--muted); font-variant-numeric: tabular-nums; }
 .gaffes.warn { color: var(--warn); font-weight: 700; }
+.guarding { color: var(--player); font-weight: 700; font-variant-numeric: tabular-nums; }
 
 .spacer { flex: 1 1 auto; min-height: 8px; }
 
@@ -262,6 +263,19 @@ button:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
 .sheet .primary, .sheet .ghost { margin-top: 4px; }
 .detail-line { margin: 0; font-size: 13.5px; }
 .gap { height: 7px; }
+
+/* The organisations, grouped by tier. */
+.org-tier {
+  margin: 10px 0 0;
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brass);
+}
+.org { display: flex; flex-direction: column; gap: 1px; }
+.org-name { margin: 0; font-size: 13.5px; }
+.org-standing { font-weight: 700; font-variant-numeric: tabular-nums; }
+.org-boosts { margin: 0; font-size: 11.5px; color: var(--muted); line-height: 1.35; }
 
 .zoom-meta { margin: 0; font-size: 13px; color: var(--muted); }
 .zoom-text { margin: 0; }

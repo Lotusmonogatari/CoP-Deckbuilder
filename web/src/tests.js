@@ -63,7 +63,7 @@ function runRuleChecks(data) {
       GUARD5: card({ card_id: 'GUARD5', guard: 5, cost: 1, suit: 'Duplicitous' }),
       GAFFE2: card({ card_id: 'GAFFE2', self_plus: 2, gaffe: 2, cost: 1 }),
       DRAW2: card({ card_id: 'DRAW2', draw: 2, cost: 1 }),
-      PASS: card({ card_id: 'PASS', cost: 0, gaffe: 1, special: 'pass_turn' }),
+      FREE: card({ card_id: 'FREE', cost: 0, self_plus: 1 }),
     };
     return Object.assign({
       stage: stage(),
@@ -127,8 +127,15 @@ function runRuleChecks(data) {
 
   // --- the bar --------------------------------------------------------------
 
+  // A fixed answer instead of a random one, so a test can say exactly what a
+  // stubborn vote costs and then assert exact numbers. The roller returns a
+  // percentile: 0-59 is a one-point vote, 60-89 two, 90-99 three.
+  const CHEAP = 0, AWKWARD = 60, STUBBORN = 90;
+  const always = p => () => p;
+  const floorDebate = (p = CHEAP) => new BarModel(SHARED_POOL, 101, 51, 40, 40, always(p));
+
   check('a shared pool always adds up', () => {
-    const bar = new BarModel(SHARED_POOL, 101, 51, 40, 40);
+    const bar = floorDebate();
     eq(bar.undecided, 21);
     bar.playerGains(10); ok(bar.totalsBalance(), 'after a gain');
     bar.opponentLoses(5); ok(bar.totalsBalance(), 'after a refutation');
@@ -137,7 +144,7 @@ function runRuleChecks(data) {
   });
 
   check('the player takes from the undecided before the opponent', () => {
-    const bar = new BarModel(SHARED_POOL, 101, 51, 40, 40);
+    const bar = floorDebate();
     bar.playerGains(21);
     eq(bar.undecided, 0);
     eq(bar.opponent, 40, 'the opponent has not been touched yet');
@@ -146,7 +153,7 @@ function runRuleChecks(data) {
   });
 
   check("the opponent's losses go back to undecided", () => {
-    const bar = new BarModel(SHARED_POOL, 101, 51, 40, 40);
+    const bar = floorDebate();
     bar.opponentLoses(10);
     eq(bar.opponent, 30);
     eq(bar.undecided, 31, 'not convinced of the other case, just not theirs');
@@ -295,21 +302,110 @@ function runRuleChecks(data) {
 
   // --- declining ------------------------------------------------------------
 
-  check('a passing card hands the turn over as it is played', () => {
+  check('ending a turn having played nothing costs you energy', () => {
     const engine = started();
-    const turn = engine.state.turn;
-    intoHand(engine, 'PASS');
-    const result = engine.playCard('PASS');
-    ok(result.ok);
-    ok(result.ended_turn !== undefined, 'the turn went with it');
-    eq(engine.state.turn, turn + 1);
+    const result = engine.endTurn();
+    ok(result.passed, 'the turn was a pass');
+    eq(engine.state.energy, 2, 'next turn is one short');
   });
 
-  check('a passing card still costs what it says it costs', () => {
+  check('playing anything at all avoids the penalty', () => {
     const engine = started();
-    intoHand(engine, 'PASS');
-    engine.playCard('PASS');
-    eq(engine.state.gaffe, 1, 'declining is not free');
+    intoHand(engine, 'GAIN3');
+    engine.playCard('GAIN3');
+    ok(!engine.endTurn().passed);
+    eq(engine.state.energy, 3, 'a full allowance');
+  });
+
+  check('a free card still counts as saying something', () => {
+    // The count is of cards played, not energy spent.
+    const engine = started();
+    intoHand(engine, 'FREE');
+    engine.playCard('FREE');
+    ok(!engine.endTurn().passed);
+    eq(engine.state.energy, 3);
+  });
+
+  check('the penalty does not follow you into the turn after', () => {
+    const engine = started();
+    engine.endTurn();
+    eq(engine.state.energy, 2);
+    intoHand(engine, 'GAIN3');
+    engine.playCard('GAIN3');
+    engine.endTurn();
+    eq(engine.state.energy, 3, 'one quiet turn is not a running debt');
+  });
+
+  check('the penalty cannot take energy below nothing', () => {
+    const engine = started({
+      stage: stage({ energy_per_turn: 1 }),
+      rules: Object.assign({}, config().rules, { pass_energy_penalty: 5 }),
+    });
+    engine.endTurn();
+    eq(engine.state.energy, 0, 'nothing, rather than a negative allowance');
+  });
+
+  check('the penalty can be switched off', () => {
+    const engine = started({
+      rules: Object.assign({}, config().rules, { pass_energy_penalty: 0 }),
+    });
+    engine.endTurn();
+    eq(engine.state.energy, 3, 'passing is free when Cameron says it is');
+  });
+
+  // --- what a vote costs ---------------------------------------------------
+
+  check('the undecided always cost a point each', () => {
+    const bar = floorDebate(STUBBORN);
+    eq(bar.playerGains(10), 10);
+    eq(bar.undecided, 11);
+    eq(bar.opponent, 40, 'nobody was bought off the opponent');
+  });
+
+  check('an awkward vote costs two points', () => {
+    const bar = floorDebate(AWKWARD);
+    bar.undecided = 0;
+    bar.player = 61;
+    eq(bar.playerGains(6), 3, 'six points bought three votes at two each');
+    eq(bar.opponent, 37);
+    ok(bar.totalsBalance());
+  });
+
+  check('a stubborn vote costs three points', () => {
+    const bar = floorDebate(STUBBORN);
+    bar.undecided = 0;
+    bar.player = 61;
+    eq(bar.playerGains(6), 2, 'six points bought only two at three each');
+    eq(bar.opponent, 38);
+  });
+
+  check('points that cannot afford the next vote are lost', () => {
+    const bar = floorDebate(STUBBORN);
+    bar.undecided = 0;
+    bar.player = 61;
+    eq(bar.playerGains(5), 1, 'three points bought one; the other two bought nothing');
+    eq(bar.opponent, 39);
+    ok(bar.totalsBalance(), 'and the two that were lost are not owed to anybody');
+  });
+
+  check('the bands fall where the odds say', () => {
+    const bar = floorDebate();
+    const counts = { 1: 0, 2: 0, 3: 0 };
+    for (let p = 0; p < 100; p++) {
+      bar._costRoller = always(p);
+      counts[bar.rollOpponentCost()] += 1;
+    }
+    eq(counts[1], 60, '60 rolls in a hundred cost a point');
+    eq(counts[2], 30);
+    eq(counts[3], 10);
+  });
+
+  check('a bar with no roller still charges', () => {
+    // A missing roller must never quietly turn the rule off.
+    const bar = new BarModel(SHARED_POOL, 101, 51, 61, 40);
+    bar.undecided = 0;
+    ok(bar.playerGains(30) <= 30, 'some of those votes cost more than a point');
+    ok(bar.totalsBalance());
   });
 
   // --- the press conference -------------------------------------------------
@@ -410,22 +506,52 @@ function runRuleChecks(data) {
     eq(engine.state.bar.player, 40, 'and a fresh bar');
   });
 
-  check('a floor debate keeps one room across its opponents', () => {
-    const engine = started({
-      stage: stage({ stage_id: 'PT_S4', sequence_mode: 'continuous', opp_start: 20 }),
-      opponents: [
-        { opp_id: 'A', name: 'One', intent_pattern: [['block', 1]] },
-        { opp_id: 'B', name: 'Two', intent_pattern: [['block', 1]] },
-      ],
-    });
-    engine.state.bar.player = 45;
-    engine.state.bar.opponent = 0;
-    engine.state.bar.undecided = 56;
+  const fiveOnTheFloor = () => ({
+    stage: stage({
+      stage_id: 'PT_S4', sequence_mode: 'continuous',
+      bar_max: 101, win_threshold: 51, player_start: 40, opp_start: 40,
+      turn_limit: 20, gaffe_limit: 6,
+    }),
+    opponents: [
+      { opp_id: 'A', name: 'One', intent_pattern: [['block', 1]] },
+      { opp_id: 'B', name: 'Two', intent_pattern: [['block', 1]] },
+    ],
+  });
+
+  check('a new debater means a fresh vote', () => {
+    const engine = started(fiveOnTheFloor());
+    engine.state.bar.playerGains(8);
+    engine.state.gaffe = 2;
+    engine.state.turn = 5;
+    engine.state.bar.opponentLoses(40);
     engine._checkOutcome(false);
-    eq(engine.state.opponent_index, 1);
-    eq(engine.state.bar.player, 45, 'the seats you won stay won');
-    eq(engine.state.bar.opponent, 20, 'the next one brings their own');
+
+    eq(engine.state.bar.player, 40, 'the vote starts again for the new debater');
+    eq(engine.state.bar.opponent, 40, 'and so does theirs');
+    eq(engine.state.gaffe, 2, 'but your record is still your record');
+    eq(engine.state.turn, 5, 'and the clock keeps running');
     ok(engine.state.bar.totalsBalance());
+  });
+
+  check('the threshold ends the debater, not the stage', () => {
+    // The bug Cameron caught: reaching the number with debaters still
+    // waiting used to carry the bill on the spot.
+    const engine = started(fiveOnTheFloor());
+    engine.state.bar.playerGains(11);
+    engine._checkOutcome(false);
+
+    ok(!engine.state.isOver(), 'there is another person to get through');
+    eq(engine.currentOpponent().name, 'Two', 'the next debater rises');
+  });
+
+  check('beating the last debater at the threshold carries the bill', () => {
+    const engine = started(fiveOnTheFloor());
+    for (let i = 0; i < 2; i++) {
+      engine.state.bar.playerGains(11);
+      engine._checkOutcome(false);
+    }
+    ok(engine.state.isOver());
+    eq(engine.state.outcome, 'win');
   });
 
   // --- what a stage leaves behind -------------------------------------------
@@ -536,17 +662,58 @@ function runRuleChecks(data) {
     }
   });
 
-  check("Don't Engage is in the deck and passes the round", () => {
+  check('passing declines the question in front of you', () => {
+    const engine = new BattleEngine();
+    engine.setup(pressConfig());
+    const asked = engine.questionsRemaining();
+    const pleased = engine.pleasedBoosters().length;
+
+    engine.endTurn();
+
+    eq(engine.questionsRemaining(), asked - 1, 'the next reporter speaks');
+    eq(engine.pleasedBoosters().length, pleased, 'and nobody was pleased by silence');
+  });
+
+  check('a pool stage pays the pass out of the pool', () => {
+    // There is no refill in a caucus to take the energy off, so it comes out
+    // of what is left straight away.
+    const caucus = data.playtest_level.stages.find(s => s.stage_id === 'PT_S3');
+    const engine = new BattleEngine();
+    engine.setup(forPlaytestStage(data, caucus, {}, null, 3));
+    const pool = engine.state.energy;
+
+    engine.endTurn();
+    eq(engine.state.energy, pool - 1, 'one off the pool, and it does not come back');
+  });
+
+  check('a playtest stage borrows the room it is modelled on', () => {
+    // The playtest stages carry no audience mix. Rather than invent
+    // percentages, each borrows the canon stage it names.
+    const press = data.playtest_level.stages.find(s => s.stage_id === 'PT_S2');
+    const filled = withAudience(data, press);
+    ok(filled.segment_mix, 'the conference has a room');
+
+    let total = 0;
+    for (const share of Object.values(filled.segment_mix)) total += share;
+    ok(Math.abs(total - 1) < 0.001, 'and it adds up to the whole room');
+  });
+
+  check('the audience reaches the cards', () => {
+    // A card aimed at one part of the room used to read that audience as
+    // nought per cent of it.
+    const press = data.playtest_level.stages.find(s => s.stage_id === 'PT_S2');
+    const c21 = data.cards.find(c => c.card_id === 'C21');   // aimed at the Press
+    ok(segmentShare(c21, withAudience(data, press)) > 0.5,
+      'the room is mostly who this card is aimed at');
+  });
+
+  check('the floor debate asks 55 of each debater', () => {
     const engine = new BattleEngine();
     const floor = data.playtest_level.stages.find(s => s.stage_id === 'PT_S4');
     engine.setup(forPlaytestStage(data, floor, {}, null, 7));
-    ok(starterDeck(data).includes('PT_C01'), 'it is dealt with everything else');
 
-    engine.state.hand.push('PT_C01');
-    const turn = engine.state.turn;
-    engine.playCard('PT_C01');
-    eq(engine.state.turn, turn + 1, 'the round was passed');
-    eq(engine.state.gaffe, 1, 'and it cost a gaffe');
+    eq(engine.state.bar.threshold, 55, 'to end the debater in front of you');
+    eq(engine.state.opponent_count, 5);
   });
 
   return { count: count, failures: failures };

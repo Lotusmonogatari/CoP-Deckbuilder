@@ -30,6 +30,7 @@ OUTPUT = REPO_ROOT / "web" / "playtest.html"
 # apart without anybody noticing.
 NEEDED = [
     "affinity",
+    "booster_standing",
     "boosters",
     "cards",
     "journalists",
@@ -38,6 +39,8 @@ NEEDED = [
     "playtest_level",
     "rules",
     "sanban",
+    "segments",
+    "stages",
     "suits",
 ]
 
@@ -85,6 +88,7 @@ def build_data() -> dict:
 
     return strip_docs({
         "affinity": raw["affinity"],
+        "booster_standing": raw["booster_standing"],
         "boosters": raw["boosters"],
         "cards": cards,
         "journalists": raw["journalists"].get("journalists", []),
@@ -92,6 +96,13 @@ def build_data() -> dict:
         "playtest_level": raw["playtest_level"],
         "rules": flatten_rules(raw["rules"]),
         "sanban": raw["sanban"],
+        "segments": raw["segments"],
+        # Only what a playtest stage borrows: the audience mix of the canon
+        # stage it is modelled on. The rest of a stage row is not used here.
+        "stages": [
+            {"stage_id": row["stage_id"], "segment_mix": row.get("segment_mix", {})}
+            for row in raw["stages"]
+        ],
         "suits": raw["suits"],
     })
 
