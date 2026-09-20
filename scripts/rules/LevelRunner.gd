@@ -141,26 +141,91 @@ func finish_stage(stage_outcome: String, score: int = 0, boosters: Array = []) -
 ##
 ## A stage that names nobody gets nothing, which is the normal case.
 func carried_buffs() -> Dictionary:
-	var stage := current_stage()
 	var buffs := {"support_bonus": 0, "boosters": []}
 
-	for seq: int in stage.get("carries_buffs_from", []):
+	for entry: Dictionary in carried_breakdown():
+		buffs["support_bonus"] = int(buffs["support_bonus"]) + int(entry["support_bonus"])
+
+	for seq: int in current_stage().get("carries_buffs_from", []):
 		var result: Variant = results.get(int(seq))
 		if result == null:
 			continue
-
-		# A caucus score above the halfway mark is worth something; below it
-		# is worth nothing rather than a penalty. Scaled down deliberately:
-		# a good caucus should help, not decide the floor debate on its own.
-		var score := int((result as Dictionary).get("score", 0))
-		if score > 50:
-			buffs["support_bonus"] = int(buffs["support_bonus"]) + int(floor(float(score - 50) / 10.0))
-
 		for booster_id: String in (result as Dictionary).get("boosters", []):
 			if not (buffs["boosters"] as Array).has(booster_id):
 				(buffs["boosters"] as Array).append(booster_id)
 
 	return buffs
+
+
+## The same arithmetic, stage by stage, so it can be explained rather than
+## just applied: one entry per earlier stage that left something behind.
+func carried_breakdown() -> Array:
+	var entries: Array = []
+
+	for seq: int in current_stage().get("carries_buffs_from", []):
+		var result: Variant = results.get(int(seq))
+		if result == null:
+			continue
+
+		var from := stage_by_seq(int(seq))
+		var score := int((result as Dictionary).get("score", 0))
+		entries.append({
+			"seq": int(seq),
+			"name": str(from.get("name_en", "An earlier stage")),
+			"score": score,
+			"support_bonus": score_to_support(from, score),
+		})
+
+	return entries
+
+
+## How much a stage's closing score is worth to a later one.
+##
+## The conversion belongs to the stage that produced the score, under its own
+## "tone_effects", so a press conference and a caucus can be worth different
+## things without either of them being written into this file:
+##
+##   baseline             the score that is worth nothing either way
+##   support_per_points   how many points make one point of support
+##   allow_negative       whether a score below the baseline costs you
+##
+## Rounding is towards zero in both directions, so being five points short of
+## the baseline is worth nothing rather than costing a whole point.
+static func score_to_support(stage: Dictionary, score: int) -> int:
+	var effects: Dictionary = stage.get("tone_effects", {})
+
+	var per := int(effects.get("support_per_points", 10))
+	if per <= 0:
+		return 0
+
+	var baseline := int(effects.get("baseline", 50))
+	var bonus := int(float(score - baseline) / float(per))
+
+	if bonus < 0 and not bool(effects.get("allow_negative", false)):
+		return 0
+	return bonus
+
+
+## Whether any later stage draws on what this one produces.
+##
+## A stage whose score nobody carries should not promise the player that it
+## is worth something later, because it is not.
+func score_is_carried_from(seq: int) -> bool:
+	for stage: Dictionary in stages:
+		if int(stage.get("seq", -1)) <= seq:
+			continue
+		for source: int in stage.get("carries_buffs_from", []):
+			if int(source) == seq:
+				return true
+	return false
+
+
+## A stage of this level by its seq number, or an empty dictionary.
+func stage_by_seq(seq: int) -> Dictionary:
+	for stage: Dictionary in stages:
+		if int(stage.get("seq", -1)) == seq:
+			return stage
+	return {}
 
 
 ## A plain-English summary of what is being carried, for the details panel.
@@ -172,9 +237,15 @@ func describe_carried_buffs(names: Dictionary = {}) -> String:
 	var buffs := carried_buffs()
 	var lines: Array[String] = []
 
-	var bonus := int(buffs["support_bonus"])
-	if bonus > 0:
-		lines.append("The caucus went well: you start %d ahead." % bonus)
+	# Named stage by stage rather than as one number, because "you start 2
+	# behind" without saying what did it is not something a player can act on
+	# next time.
+	for entry: Dictionary in carried_breakdown():
+		var bonus := int(entry["support_bonus"])
+		if bonus > 0:
+			lines.append("%s went well: you start %d ahead." % [entry["name"], bonus])
+		elif bonus < 0:
+			lines.append("%s went badly: you start %d behind." % [entry["name"], -bonus])
 
 	var boosters: Array = buffs["boosters"]
 	if not boosters.is_empty():
@@ -195,3 +266,74 @@ func to_dictionary() -> Dictionary:
 		"results": results.duplicate(true),
 		"outcome": _outcome,
 	}
+
+
+# ---------------------------------------------------------------------------
+# What a stage is worth
+# ---------------------------------------------------------------------------
+# Shared by the briefing screen before a level and the result panel after a
+# stage, so the promise and the receipt cannot describe the same stage
+# differently. Pure data in, plain strings out — no autoloads, no scene tree.
+
+## The meta-variables a stage pays out on a win, as {name: delta}.
+##
+## Zero is left out rather than reported as "+0": a variable this stage does
+## not touch is not news. An empty result means the stage pays nothing flat,
+## which the screens say in words rather than showing four zeroes.
+static func win_rewards(stage: Dictionary) -> Dictionary:
+	var rewards := {}
+	for key: String in WIN_DELTA_KEYS.keys():
+		var delta := int(stage.get(key, 0))
+		if delta != 0:
+			rewards[WIN_DELTA_KEYS[key]] = delta
+	return rewards
+
+
+## The workbook's column names, and what the player calls them.
+const WIN_DELTA_KEYS := {
+	"win_delta_jiban": "Constituency support",
+	"win_delta_kanban": "Reputation",
+	"win_delta_kaban": "Funds",
+	"win_delta_party_support": "Party support",
+}
+
+
+## True where a stage's rewards have not been decided yet.
+##
+## Every playtest stage is in this state on purpose: the slots are in the
+## data with zeroes in them, waiting on Cameron's numbers. The screens must
+## say "not set yet" rather than quietly implying the stage is worthless.
+static func rewards_are_unset(stage: Dictionary) -> bool:
+	if not win_rewards(stage).is_empty():
+		return false
+	if int(stage.get("xp_reward", 0)) != 0:
+		return false
+	return not stage.has("tone_effects")
+
+
+## What a stage produces that is not a flat reward — described, not forecast.
+##
+## Cameron asked the briefing for STATIC values only: a press conference's
+## worth depends on the tone it closes on and a caucus's on its score, so
+## those are named as variable rather than given a number that would be a
+## guess.
+static func variable_rewards(stage: Dictionary) -> Array[String]:
+	var lines: Array[String] = []
+	var effects: Dictionary = stage.get("tone_effects", {})
+
+	var per_variable: Dictionary = effects.get("meta", {})
+	for name: String in per_variable.keys():
+		var per := int(per_variable[name])
+		if per > 0:
+			lines.append("%s, by how far above %d you finish (1 per %d)"
+				% [name, int(effects.get("baseline", 50)), per])
+
+	var per_support := int(effects.get("support_per_points", 0))
+	if per_support > 0:
+		lines.append("A head start later in the level, 1 per %d above %d"
+			% [per_support, int(effects.get("baseline", 50))])
+
+	if not stage.get("questions", []).is_empty():
+		lines.append("Standing with whichever organisations your answers please")
+
+	return lines

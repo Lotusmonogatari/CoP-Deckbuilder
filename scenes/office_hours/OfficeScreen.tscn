@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/ui/OfficeScreen.gd" id="1_chib0"]
-[ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_elj5r"]
+[ext_resource type="Script" path="res://scripts/ui/OfficeScreen.gd" id="1_elj5r"]
+[ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_uyci3"]
+[ext_resource type="Script" path="res://scripts/ui/Overlay.gd" id="3_vhpdr"]
 
 [node name="OfficeScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource("1_chib0")
+script = ExtResource("1_elj5r")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
@@ -52,7 +53,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 700)
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("2_elj5r")
+script = ExtResource("2_uyci3")
 
 [node name="Report" type="Label" parent="Safe/Column"]
 unique_name_in_owner = true
@@ -69,3 +70,23 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
 text = "Start the level"
+
+[node name="OrganisationsButton" type="Button" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "The organisations"
+
+[node name="OrganisationsPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_vhpdr")
+
+[node name="BriefingPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_vhpdr")

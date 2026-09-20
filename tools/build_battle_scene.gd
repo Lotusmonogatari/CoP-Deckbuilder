@@ -171,6 +171,12 @@ func _add_status_row(parent: Control) -> void:
 
 	_adopt(_spacer(), row)
 
+	# What the player is holding against the next attack. Hidden at zero
+	# rather than sitting there as a permanent "Guarding 0".
+	var guard := _label("GuardLabel", "Guarding 5", "SmallLabel")
+	guard.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_adopt(guard, row, true)
+
 	var gaffe := _label("GaffeLabel", "Gaffes 0 / 6")
 	gaffe.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_adopt(gaffe, row, true)

@@ -38,17 +38,37 @@ var energy_max := 3
 var win_mode := "threshold"
 var hand_size := 5
 
-## Guard held this turn. Absorbs the opponent's next attack, then resets.
+## Guard the player is holding, as a bank.
+##
+## It is not spent at the end of a turn: it stacks up to `guard_cap` and stays
+## there until something attacks, at which point it is the first thing taken.
+## That makes guarding an investment you make when you expect trouble, rather
+## than a reaction you have to time exactly right.
 var block := 0
+
+## The same bank on the opponent's side. It absorbs the player's attempts to
+## argue their supporters away, which is what makes their "Guarding" intent
+## mean something.
+var opponent_block := 0
+
+## The most guard either side can be holding at once. Read from balance.json
+## at setup; the cap is what stops a player turtling indefinitely.
+var guard_cap := 5
 
 ## A bonus left behind for the next card played this turn (C11 Groundwork).
 var next_card_bonus := 0
+
+## How many cards have been played this turn. Ending a turn on zero is how a
+## player passes, and passing costs something — see BattleEngine.end_turn().
+##
+## Counted rather than inferred from the energy spent, because a card can
+## cost nothing and a pool stage can leave energy unspent quite legitimately.
+var cards_played_this_turn := 0
 
 # --- Standing --------------------------------------------------------------
 var gaffe := 0
 var gaffe_limit := 5
 var opponent_gaffe := 0
-var opponent_block := 0
 
 # --- The stage --------------------------------------------------------------
 var bar: BarModel = null           ## null in a committee stage
@@ -67,6 +87,10 @@ var draw_mode := "refill"
 
 ## Which reporter's question is waiting, counting from zero.
 var question_index := 0
+
+## How many reporters were left without an answer. Nobody is pleased by
+## silence, and the closing text says how many times it happened.
+var declined_questions := 0
 
 ## The organisations pleased by answering in the suit they invited. These
 ## carry out of the stage and into the floor debate.

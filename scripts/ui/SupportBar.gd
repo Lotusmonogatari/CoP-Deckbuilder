@@ -29,6 +29,28 @@ extends Control
 ## undecided, so neither is drawn or named.
 @export var two_sided: bool = true: set = _set_two_sided
 
+## Who holds the other share. The bar used to call them "Them" even when the
+## stage data named them, which is exactly what Cameron asked to stop: a
+## named character should be named. Falls back to "Them" when there is no
+## name, and to a short form when the name is long enough to break the row.
+@export var opponent_name: String = "": set = _set_opponent_name
+
+## True where the bar should be read as a percentage rather than a headcount.
+## The caucus is already a 0-100 scale, so this is a label rather than any
+## kind of conversion: it stops the player counting heads in a body whose
+## size changes from one party to the next.
+@export var as_percent: bool = false: set = _set_as_percent
+
+## False when beating this threshold finishes the person in front of you
+## rather than the stage. On the floor five debaters rise one after another,
+## and "55 seats to win" read as though the first one ended it.
+@export var threshold_wins_stage: bool = true: set = _set_threshold_wins_stage
+
+## How long a name can be before the readout falls back to "Them". The
+## readout is three columns on a phone; a name of sentence length pushes the
+## numbers off the row.
+const NAME_LIMIT := 18
+
 const HEIGHT := 56.0
 const CORNER := 8.0
 
@@ -41,6 +63,21 @@ const THRESHOLD_COLOR := Color(1, 1, 1, 0.85)
 
 @onready var _caption: Label = $Caption
 @onready var _readout: Label = $Readout
+
+
+func _set_opponent_name(value: String) -> void:
+	opponent_name = value
+	_refresh()
+
+
+func _set_as_percent(value: bool) -> void:
+	as_percent = value
+	_refresh()
+
+
+func _set_threshold_wins_stage(value: bool) -> void:
+	threshold_wins_stage = value
+	_refresh()
 
 
 func _set_maximum(value: int) -> void:
@@ -84,12 +121,16 @@ func _ready() -> void:
 
 
 ## Takes the numbers straight off a running battle.
-func show_bar(bar: BarModel, threshold_applies: bool = true) -> void:
+func show_bar(bar: BarModel, threshold_applies: bool = true,
+		who: String = "", percent: bool = false, wins_stage: bool = true) -> void:
 	maximum = bar.maximum
 	threshold = bar.threshold
 	player = bar.player
 	opponent = bar.opponent
 	has_threshold = threshold_applies
+	opponent_name = who
+	as_percent = percent
+	threshold_wins_stage = wins_stage
 	# Only a shared pool has two sides to it. A press tone or a TV debate is
 	# one reading, with nobody holding the rest.
 	two_sided = bar.model == BarModel.Model.SHARED_POOL
@@ -102,7 +143,13 @@ func _refresh() -> void:
 		return
 
 	if has_threshold:
-		_caption.text = "%d %s to win" % [threshold, unit.to_lower()]
+		# "To win" only where winning here wins the stage. On the floor the
+		# threshold ends ONE debater and the next rises, so a player told
+		# "55 seats to win" reasonably expects the stage to be over.
+		var verb := "to win" if threshold_wins_stage else "to advance"
+		_caption.text = "%s %s" % [_amount(threshold), verb]
+	elif as_percent:
+		_caption.text = "Take as much of the room as you can"
 	else:
 		_caption.text = "Raise %s as high as you can" % unit.to_lower()
 
@@ -111,10 +158,28 @@ func _refresh() -> void:
 		return
 
 	var undecided := maxi(maximum - player - opponent, 0)
-	if undecided > 0:
-		_readout.text = "You %d · Undecided %d · Them %d" % [player, undecided, opponent]
-	else:
-		_readout.text = "You %d · Them %d" % [player, opponent]
+	_readout.text = "You %s · Undecided %s · %s %s" % [
+		_amount(player), _amount(undecided), _other_side(), _amount(opponent)]
+
+
+## A number with its unit, where the unit is worth showing. On a percentage
+## bar every figure carries its sign, because "43" and "43%" are read as
+## different sizes of thing.
+func _amount(value: int) -> String:
+	if as_percent:
+		return "%d%%" % value
+	return str(value)
+
+
+## What to call whoever holds the other share.
+func _other_side() -> String:
+	var name := opponent_name.strip_edges()
+	if name.is_empty():
+		return "Them"
+	# A name too long for the row falls back to "Them" rather than being
+	# shortened. Taking the first word turned "The Caucus Panel" into "The",
+	# which is worse than the generic word it was meant to improve on.
+	return name if name.length() <= NAME_LIMIT else "Them"
 
 
 func _draw() -> void:

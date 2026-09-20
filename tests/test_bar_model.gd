@@ -3,10 +3,25 @@ extends GutTest
 ## debate — the model where every seat won has to come from somewhere.
 
 
-func _floor_debate() -> BarModel:
+## Rolls a fixed answer instead of a random one, so a test can say exactly
+## what a stubborn vote costs and then assert exact numbers.
+##
+## The roller returns a percentile, the same shape the battle hands in: 0-59
+## is a one-point vote, 60-89 costs two, 90-99 costs three.
+func _always(percentile: int) -> Callable:
+	return func() -> int: return percentile
+
+const CHEAP := 0      # a one-point vote
+const AWKWARD := 60   # a two-point vote
+const STUBBORN := 90  # a three-point vote
+
+
+func _floor_debate(cost_roller: Callable = Callable()) -> BarModel:
 	# The real ST02 numbers: 101 seats, 51 to win, both sides starting on 40,
 	# so 21 seats are undecided.
-	return BarModel.create(BarModel.Model.SHARED_POOL, 101, 51, 40, 40)
+	if not cost_roller.is_valid():
+		cost_roller = _always(CHEAP)
+	return BarModel.create(BarModel.Model.SHARED_POOL, 101, 51, 40, 40, cost_roller)
 
 
 # ---------------------------------------------------------------------------
@@ -60,23 +75,116 @@ func test_gains_come_from_the_undecided_first() -> void:
 
 
 func test_gains_take_from_the_opponent_once_the_undecided_run_out() -> void:
-	var bar := _floor_debate()
+	var bar := _floor_debate(_always(CHEAP))
 	var moved := bar.player_gains(25)
 
-	assert_eq(moved, 25)
+	assert_eq(moved, 25, "with every vote costing a point, 25 points is 25 seats")
 	assert_eq(bar.undecided, 0, "all 21 undecided went first")
 	assert_eq(bar.opponent, 36, "then 4 more came off the opponent")
 	assert_eq(bar.player, 65)
 
 
 func test_a_gain_cannot_take_more_than_the_room_holds() -> void:
-	var bar := _floor_debate()
+	var bar := _floor_debate(_always(CHEAP))
 	var moved := bar.player_gains(200)
 
 	assert_eq(moved, 61, "21 undecided plus the opponent's 40")
 	assert_eq(bar.player, 101)
 	assert_eq(bar.opponent, 0)
 	assert_eq(bar.undecided, 0)
+
+
+# ---------------------------------------------------------------------------
+# What a seat costs
+# ---------------------------------------------------------------------------
+# Somebody not yet committed comes across for a point. Somebody already
+# sitting with the opposition is harder, and how much harder varies from
+# person to person. That is what makes the end of a debate slower than the
+# start even though the numbers look the same.
+
+func test_the_undecided_always_cost_a_point_each() -> void:
+	# Even with the roller set to its most stubborn: the cost only applies to
+	# people who have already taken a side.
+	var bar := _floor_debate(_always(STUBBORN))
+	var moved := bar.player_gains(10)
+
+	assert_eq(moved, 10)
+	assert_eq(bar.undecided, 11)
+	assert_eq(bar.opponent, 40, "nobody was bought off the opponent")
+
+
+func test_an_awkward_vote_costs_two_points() -> void:
+	var bar := _floor_debate(_always(AWKWARD))
+	bar.undecided = 0
+	bar.player = 61   # 61 + 40 + 0 = 101
+
+	var moved := bar.player_gains(6)
+	assert_eq(moved, 3, "six points bought three votes at two each")
+	assert_eq(bar.opponent, 37)
+	assert_true(bar.totals_balance())
+
+
+func test_a_stubborn_vote_costs_three_points() -> void:
+	var bar := _floor_debate(_always(STUBBORN))
+	bar.undecided = 0
+	bar.player = 61
+
+	var moved := bar.player_gains(6)
+	assert_eq(moved, 2, "six points bought only two votes at three each")
+	assert_eq(bar.opponent, 38)
+
+
+func test_points_that_cannot_afford_the_next_vote_are_lost() -> void:
+	# A big push can fall just short of a stubborn vote, and what is left
+	# over is not banked for the next card.
+	var bar := _floor_debate(_always(STUBBORN))
+	bar.undecided = 0
+	bar.player = 61
+
+	var moved := bar.player_gains(5)
+	assert_eq(moved, 1, "three points bought one; the other two bought nothing")
+	assert_eq(bar.opponent, 39)
+	assert_true(bar.totals_balance(), "and the two that were lost are not owed to anybody")
+
+
+func test_the_odds_add_up_to_certainty() -> void:
+	# Guards the table itself: a percentile that fell through every band
+	# would silently return the last cost.
+	var total := 0
+	for band: Dictionary in BarModel.OPPONENT_COST_ODDS:
+		total += int(band["chance"])
+	assert_eq(total, 100, "every roll lands in exactly one band")
+
+
+func test_every_percentile_is_priced() -> void:
+	var bar := _floor_debate()
+	for percentile in 100:
+		bar._cost_roller = _always(percentile)
+		var cost := bar.roll_opponent_cost()
+		assert_between(cost, 1, 3, "a roll of %d priced a vote at %d" % [percentile, cost])
+
+
+func test_the_bands_fall_where_the_odds_say() -> void:
+	var bar := _floor_debate()
+	var counts := {1: 0, 2: 0, 3: 0}
+	for percentile in 100:
+		bar._cost_roller = _always(percentile)
+		counts[bar.roll_opponent_cost()] += 1
+
+	assert_eq(counts[1], 60, "60 rolls in a hundred cost a point")
+	assert_eq(counts[2], 30)
+	assert_eq(counts[3], 10)
+
+
+func test_a_bar_with_no_roller_still_charges() -> void:
+	# A missing roller must never quietly turn the rule off: that would play
+	# a different game from the one that was designed, and silently.
+	var bar := BarModel.create(BarModel.Model.SHARED_POOL, 101, 51, 61, 40)
+	bar.undecided = 0
+
+	var moved := bar.player_gains(30)
+	assert_lte(moved, 30, "some of those votes cost more than a point")
+	assert_true(bar.totals_balance())
 
 
 # ---------------------------------------------------------------------------
@@ -147,13 +255,35 @@ func test_a_single_bar_has_no_opponent_side() -> void:
 	assert_true(bar.player_has_won())
 
 
-func test_a_refutation_pushes_the_single_bar_the_players_way() -> void:
-	# There is no opponent bar to knock down in a press conference, so a
-	# "-3 to the opponent" card moves the one bar instead. Without this, every
-	# Data Driven card would be dead weight there.
+func test_a_refutation_does_nothing_on_a_single_bar() -> void:
+	# There is nobody in a press conference whose support you are reducing,
+	# so a "-3 to the opponent" card achieves nothing there. It used to be
+	# converted into press tone, which meant a card printing both numbers was
+	# worth double — a playtest caught that.
 	var bar := BarModel.create(BarModel.Model.SINGLE, 100, 55, 45, 0)
-	bar.opponent_loses(3)
-	assert_eq(bar.player, 48)
+
+	assert_eq(bar.opponent_loses(3), 0, "nothing moved")
+	assert_eq(bar.player, 45, "and the tone is where it was")
+
+
+func test_a_refutation_does_nothing_in_a_scored_stage() -> void:
+	# The caucus is a shared pool with real opponent supporters in it, but
+	# only the player's own total is scored, so pushing them into the
+	# undecided pile achieves nothing that counts.
+	var bar := _floor_debate()
+	bar.scored_only = true
+
+	assert_eq(bar.opponent_loses(5), 0)
+	assert_eq(bar.opponent, 40, "their supporters stayed where they were")
+	assert_true(bar.totals_balance())
+
+
+func test_a_refutation_still_works_where_the_opponent_is_the_point() -> void:
+	# The floor debate and the committee are unaffected: there the
+	# opposition's number is exactly what you are trying to move.
+	var bar := _floor_debate()
+	assert_eq(bar.opponent_loses(5), 5)
+	assert_eq(bar.opponent, 35)
 
 
 func test_a_single_bar_cannot_exceed_its_maximum() -> void:
@@ -192,3 +322,72 @@ func test_starting_numbers_that_overfill_the_room_are_trimmed() -> void:
 	assert_eq(bar.opponent, 61)
 	assert_eq(bar.undecided, 0)
 	assert_true(bar.totals_balance())
+
+
+# ---------------------------------------------------------------------------
+# Who actually moved
+# ---------------------------------------------------------------------------
+# A total on its own ("3 seats won over") does not tell the player whether
+# they picked up waverers or prised somebody off the opposition, and those
+# are very different afternoons. The bar records the breakdown so the screen
+# can say which.
+
+func test_a_gain_records_that_it_came_from_the_undecided() -> void:
+	var bar := _floor_debate()
+	bar.player_gains(3)
+
+	assert_eq(bar.last_gain["from_undecided"], 3)
+	assert_eq(bar.last_gain["from_other_side"], 0, "21 were undecided; none had to be prised away")
+	assert_eq(bar.last_gain["wasted"], 0)
+
+
+func test_a_gain_records_the_split_once_the_undecided_run_out() -> void:
+	var bar := _floor_debate(_always(CHEAP))
+	bar.player_gains(21)          # exactly empties the undecided benches
+	bar.last_gain = {}            # prove the next call rewrites it
+	bar.player_gains(2)
+
+	assert_eq(bar.last_gain["from_undecided"], 0)
+	assert_eq(bar.last_gain["from_other_side"], 2, "both had to come off the opposition")
+
+
+func test_a_gain_records_a_mixed_split() -> void:
+	var bar := BarModel.create(BarModel.Model.SHARED_POOL, 101, 51, 40, 59, _always(CHEAP))
+	assert_eq(bar.undecided, 2, "two waverers and nobody else free")
+
+	bar.player_gains(5)
+	assert_eq(bar.last_gain["from_undecided"], 2)
+	assert_eq(bar.last_gain["from_other_side"], 3, "the rest argued off the opposition")
+
+
+func test_points_that_cannot_pay_for_anybody_are_recorded_as_wasted() -> void:
+	# The stubborn cost three and there are two points left: the seat does
+	# not move and the points are gone. The screen has to be able to say so
+	# rather than leaving the player to wonder where the number went.
+	var bar := BarModel.create(BarModel.Model.SHARED_POOL, 101, 51, 40, 61, _always(STUBBORN))
+	assert_eq(bar.undecided, 0)
+
+	var moved := bar.player_gains(5)
+	assert_eq(moved, 1, "three points bought one stubborn vote")
+	assert_eq(bar.last_gain["from_other_side"], 1)
+	assert_eq(bar.last_gain["wasted"], 2, "two points left, and nobody costs two here")
+
+
+func test_the_opponent_gains_record_the_same_way() -> void:
+	# One helper describes either side's move, so both sides fill the same
+	# two keys and "from_other_side" means whoever was taken off the other.
+	var bar := _floor_debate()
+	bar.opponent_gains(25)
+
+	assert_eq(bar.last_gain["from_undecided"], 21)
+	assert_eq(bar.last_gain["from_other_side"], 4, "four taken off the player")
+
+
+func test_a_single_bar_records_its_whole_rise() -> void:
+	# There is nobody to win over on a press tone, so the move is undivided
+	# rather than a split — and never reported as people.
+	var bar := BarModel.create(BarModel.Model.SINGLE, 100, 0, 45, 0)
+	bar.player_gains(3)
+
+	assert_eq(bar.last_gain["from_undecided"], 3)
+	assert_eq(bar.last_gain["from_other_side"], 0)

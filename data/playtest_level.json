@@ -22,6 +22,26 @@
     {
       "seq": 1,
       "stage_id": "PT_S1",
+      "_rewards_note": [
+        "WHAT WINNING THIS STAGE IS WORTH. Cameron's numbers to set - these",
+        "are deliberately zero, not guesses. The code that applies them is",
+        "wired and tested, so the moment a number here stops being 0 it",
+        "lands on the player's standing and shows in the briefing screen.",
+        "",
+        "Same key names as the canon stages in stages.json, so nothing new",
+        "has to be added to the workbook.",
+        "",
+        "  jiban         constituency support",
+        "  kanban        reputation",
+        "  kaban         funds",
+        "  party_support standing with your own party",
+        "  xp_reward     experience towards unlocking and upgrading cards"
+      ],
+      "win_delta_jiban": 0,
+      "win_delta_kanban": 0,
+      "win_delta_kaban": 0,
+      "win_delta_party_support": 0,
+      "xp_reward": 0,
       "affinity_stage_id": "ST01",
       "name_en": "Committee",
       "name_jp": "委員会",
@@ -35,7 +55,8 @@
       "bar_unit": "Support",
       "bar_max": 100,
       "win_threshold": 60,
-      "turn_limit": 6,
+      "_turn_limit_note": "Twenty turns AGAINST EACH opponent, not twenty for the stage: the clock resets with everything else when one is beaten.",
+      "turn_limit": 20,
       "energy_per_turn": 3,
       "hand_size": 5,
       "gaffe_limit": 5,
@@ -46,53 +67,116 @@
     {
       "seq": 2,
       "stage_id": "PT_S2",
+      "_rewards_note": [
+        "WHAT WINNING THIS STAGE IS WORTH. Cameron's numbers to set - these",
+        "are deliberately zero, not guesses. The code that applies them is",
+        "wired and tested, so the moment a number here stops being 0 it",
+        "lands on the player's standing and shows in the briefing screen.",
+        "",
+        "Same key names as the canon stages in stages.json, so nothing new",
+        "has to be added to the workbook.",
+        "",
+        "  jiban         constituency support",
+        "  kanban        reputation",
+        "  kaban         funds",
+        "  party_support standing with your own party",
+        "  xp_reward     experience towards unlocking and upgrading cards"
+      ],
+      "win_delta_jiban": 0,
+      "win_delta_kanban": 0,
+      "win_delta_kaban": 0,
+      "win_delta_party_support": 0,
+      "xp_reward": 0,
       "affinity_stage_id": "ST04",
       "name_en": "Press Conference",
       "name_jp": "記者会見",
       "_shape": [
         "Six cards to start and no more: you only draw if a card says so.",
         "A series of questions, one card spent answering each.",
-        "Answers please or annoy booster groups, which carries into the floor."
+        "It is never won or lost on the tone. The tone is the RESULT: it",
+        "becomes a buff or a debuff at the floor debate and moves reputation.",
+        "Answers also please booster groups, which carries into the floor."
       ],
       "draw_mode": "none",
       "opening_hand": 6,
       "bar_unit": "Press tone",
       "bar_max": 100,
-      "win_threshold": 55,
       "energy_per_turn": 3,
       "gaffe_limit": 4,
       "player_start": 45,
       "opp_start": 45,
+
+      "_tone_effects_note": [
+        "What the closing press tone is worth. PLACEHOLDER NUMBERS.",
+        "",
+        "support_per_points: every 10 points of tone above or below the",
+        "baseline is one seat at the floor debate, up OR down - allow_negative",
+        "is what makes a bad conference an actual debuff rather than nothing.",
+        "",
+        "meta: every 5 points above or below the baseline is one point of",
+        "Reputation. Reputation is already the press variable in sanban.json",
+        "(below 20 a press stage starts at -5, above 80 at +5), so the tone",
+        "feeding it keeps one loop rather than opening a second one."
+      ],
+      "tone_effects": {
+        "baseline": 50,
+        "support_per_points": 10,
+        "allow_negative": true,
+        "meta": {"Reputation": 5}
+      },
+
+      "_decline_note": [
+        "What ducking a question costs, in press tone. PLACEHOLDER.",
+        "",
+        "Energy is nearly worthless here - six cards for five questions - so",
+        "without this a player could decline every awkward question and walk",
+        "out with the tone untouched and a clean record. Playtesting found",
+        "exactly that. The organisation behind a declined question is also",
+        "left unpleased, which is felt later because standing carries between",
+        "levels."
+      ],
+      "decline_tone_cost": 3,
+
+      "_questions_note": [
+        "The wording is Cameron's. The suit each question INVITES, and the",
+        "organisation it pleases, are my pairing and are placeholders - one",
+        "line each to change."
+      ],
       "questions": [
         {
           "id": "Q1",
-          "text": "PLACEHOLDER. A reporter asks who really benefits from this bill.",
-          "prefers_suit": "Data Driven",
-          "pleases_booster": "BO08"
-        },
-        {
-          "id": "Q2",
-          "text": "PLACEHOLDER. A reporter raises a complaint from your own district.",
+          "asked_by": "JR_A",
+          "text": "What is your stance?",
           "prefers_suit": "Earnest",
           "pleases_booster": "BO03"
         },
         {
+          "id": "Q2",
+          "asked_by": "JR_B",
+          "text": "Is this more important than the whole country?",
+          "prefers_suit": "Emotional",
+          "pleases_booster": "BO07"
+        },
+        {
           "id": "Q3",
-          "text": "PLACEHOLDER. A reporter asks what it will cost.",
+          "asked_by": "JR_C",
+          "text": "People are in disagreement, right?",
           "prefers_suit": "Data Driven",
-          "pleases_booster": "BO05"
+          "pleases_booster": "BO08"
         },
         {
           "id": "Q4",
-          "text": "PLACEHOLDER. A reporter asks whether your party is behind you.",
+          "asked_by": "JR_D",
+          "text": "Will you seek to convince the opposition parties?",
           "prefers_suit": "Appeal",
           "pleases_booster": "BO02"
         },
         {
           "id": "Q5",
-          "text": "PLACEHOLDER. A reporter asks about the coastal communities.",
-          "prefers_suit": "Emotional",
-          "pleases_booster": "BO07"
+          "asked_by": "JR_E",
+          "text": "Will your party leaders support this?",
+          "prefers_suit": "Data Driven",
+          "pleases_booster": "BO05"
         }
       ]
     },
@@ -100,8 +184,34 @@
     {
       "seq": 3,
       "stage_id": "PT_S3",
+      "_rewards_note": [
+        "WHAT WINNING THIS STAGE IS WORTH. Cameron's numbers to set - these",
+        "are deliberately zero, not guesses. The code that applies them is",
+        "wired and tested, so the moment a number here stops being 0 it",
+        "lands on the player's standing and shows in the briefing screen.",
+        "",
+        "Same key names as the canon stages in stages.json, so nothing new",
+        "has to be added to the workbook.",
+        "",
+        "  jiban         constituency support",
+        "  kanban        reputation",
+        "  kaban         funds",
+        "  party_support standing with your own party",
+        "  xp_reward     experience towards unlocking and upgrading cards"
+      ],
+      "win_delta_jiban": 0,
+      "win_delta_kanban": 0,
+      "win_delta_kaban": 0,
+      "win_delta_party_support": 0,
+      "xp_reward": 0,
       "affinity_stage_id": "ST03",
-      "name_en": "Caucus Debate",
+      "_name_note": [
+        "{party} is replaced at render time with the player's party from",
+        "player.json, so the caucus is named after whoever the protagonist",
+        "turns out to belong to rather than being fixed here. Any stage can",
+        "use the token; no other stage needs it yet."
+      ],
+      "name_en": "{party} Caucus",
       "name_jp": "議員総会",
       "_shape": [
         "One opponent, the caucus panel. Three turns.",
@@ -113,10 +223,32 @@
       "energy_mode": "pool",
       "energy_pool": 5,
       "win_mode": "score",
+
+      "_tone_effects_note": [
+        "What the closing caucus support is worth, in the same shape the",
+        "press conference uses. PLACEHOLDER NUMBERS, and these ones are",
+        "exactly what the caucus already did: every 10 points above 50 is one",
+        "seat at the floor debate, and a poor caucus costs nothing rather",
+        "than costing seats. Set allow_negative to true to change that."
+      ],
+      "tone_effects": {
+        "baseline": 50,
+        "support_per_points": 10,
+        "allow_negative": false
+      },
+
       "opponents": [
         {"opp_id": "PT_PANEL", "name": "The Caucus Panel", "party": "Placeholder"}
       ],
       "bar_unit": "Support",
+      "_bar_as_percent_note": [
+        "Read the bar as a percentage of the caucus rather than a headcount.",
+        "The scale is already 0-100, so this is a LABEL and not a conversion:",
+        "the rules, the score and the seats it carries into the floor debate",
+        "are all unchanged. It exists so a 20-member caucus and a 10-member",
+        "one read the same way."
+      ],
+      "bar_as_percent": true,
       "bar_max": 100,
       "turn_limit": 3,
       "hand_size": 5,
@@ -128,15 +260,42 @@
     {
       "seq": 4,
       "stage_id": "PT_S4",
+      "_rewards_note": [
+        "WHAT WINNING THIS STAGE IS WORTH. Cameron's numbers to set - these",
+        "are deliberately zero, not guesses. The code that applies them is",
+        "wired and tested, so the moment a number here stops being 0 it",
+        "lands on the player's standing and shows in the briefing screen.",
+        "",
+        "Same key names as the canon stages in stages.json, so nothing new",
+        "has to be added to the workbook.",
+        "",
+        "  jiban         constituency support",
+        "  kanban        reputation",
+        "  kaban         funds",
+        "  party_support standing with your own party",
+        "  xp_reward     experience towards unlocking and upgrading cards"
+      ],
+      "win_delta_jiban": 0,
+      "win_delta_kanban": 0,
+      "win_delta_kaban": 0,
+      "win_delta_party_support": 0,
+      "xp_reward": 0,
       "affinity_stage_id": "ST02",
       "name_en": "Parliament Floor Debate",
       "name_jp": "本会議",
       "_shape": [
-        "Five opponents one after another, sharing one seat count and one",
-        "clock. Beat one and the next steps in; the seats you have won stay",
-        "won. Carries whatever the press conference and the caucus produced."
+        "Five debaters one after another. Each is their own division of the",
+        "house: reach the threshold and THAT DEBATER is finished, then the",
+        "next rises and the house divides again from the opening numbers.",
+        "",
+        "One clock and one record across all five, though - your gaffes, your",
+        "hand and your deck follow you in, so beating five debaters means",
+        "winning five divisions on one set of nerves and one afternoon.",
+        "",
+        "Carries whatever the press conference and the caucus produced."
       ],
       "sequence_mode": "continuous",
+      "_win_threshold_note": "PER DEBATER, not for the stage: 55 members voting to end this particular speaker. Beating the fifth carries the bill.",
       "carries_buffs_from": [2, 3],
       "opponents": [
         {"opp_id": "PT_F1", "name": "Opponent 1", "party": "Placeholder"},
@@ -147,7 +306,7 @@
       ],
       "bar_unit": "Seats",
       "bar_max": 101,
-      "win_threshold": 51,
+      "win_threshold": 55,
       "turn_limit": 20,
       "energy_per_turn": 3,
       "hand_size": 5,

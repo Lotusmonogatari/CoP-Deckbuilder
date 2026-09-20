@@ -1,0 +1,29 @@
+{
+  "_README": [
+    "Cards that exist for the playtest but are not in the workbook yet.",
+    "",
+    "WRITTEN BY HAND, like rules.json and playtest_level.json. export_data.py",
+    "never overwrites it. DataDB appends these to the workbook's cards after",
+    "loading, so every existing path treats them as ordinary cards: they are",
+    "looked up the same way, dealt the same way, and a Starter-tier one joins",
+    "the opening deck automatically.",
+    "",
+    "EMPTY ON PURPOSE. It held one card, PT_C01 'Don't Engage', which passed",
+    "the round for a gaffe. Playtesting found it pointless: ending a turn",
+    "without playing anything already passed the round and cost nothing, so",
+    "the card was strictly worse than the button next to it. Passing is now a",
+    "rule rather than a card - ending a turn having played nothing costs an",
+    "energy next turn, and in a press conference declines the question - so",
+    "the card had nothing left to do.",
+    "",
+    "The pipeline is kept, and proven, for whatever card comes next. When one",
+    "here earns its place it should move into the Cards tab of the workbook",
+    "and be deleted from this file, so the workbook stays the source of truth.",
+    "",
+    "The shape of a row is every column cards.json has. The two the workbook",
+    "computes with formulas - power_score and power_per_cost - should be left",
+    "null rather than guessed; nothing in the game reads them."
+  ],
+
+  "cards": []
+}

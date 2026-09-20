@@ -96,6 +96,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Waiting"
 
+[node name="OpponentGuardLabel" type="Label" parent="Safe/Column/OpponentRow/Details"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "They guard 0"
+
 [node name="SupportBar" type="Control" parent="Safe/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 140)
@@ -127,6 +133,13 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+
+[node name="GuardLabel" type="Label" parent="Safe/Column/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "Guarding 5"
+vertical_alignment = 1
 
 [node name="GaffeLabel" type="Label" parent="Safe/Column/StatusRow"]
 unique_name_in_owner = true
@@ -305,6 +318,13 @@ theme_override_constants/separation = 20
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleLabel"
+
+[node name="OutcomeHeadline" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+autowrap_mode = 3
 
 [node name="OutcomeReason" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true

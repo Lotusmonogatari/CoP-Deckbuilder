@@ -220,3 +220,97 @@ func test_a_modifier_with_no_audience_condition_is_left_to_the_caller() -> void:
 		"trigger_min_pct": null, "available_to": "Both",
 	}]
 	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 0)
+
+
+# ---------------------------------------------------------------------------
+# What a stage's closing score does to the player's standing
+# ---------------------------------------------------------------------------
+
+func _scored_stage(overrides: Dictionary = {}) -> Dictionary:
+	var effects := {"baseline": 50, "meta": {"Reputation": 5}}
+	effects.merge(overrides, true)
+	return {"name_en": "Press Conference", "tone_effects": effects}
+
+
+func test_a_good_score_raises_the_variable_it_names() -> void:
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 50}, _scored_stage(), 70, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 54, "twenty above, at five each")
+	assert_eq(int(result["applied"]["Reputation"]), 4)
+
+
+func test_a_bad_score_lowers_it() -> void:
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 50}, _scored_stage(), 30, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 46)
+	assert_eq(int(result["applied"]["Reputation"]), -4)
+
+
+func test_falling_just_short_of_the_baseline_costs_nothing() -> void:
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 50}, _scored_stage(), 47, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 50)
+	assert_true(result["applied"].is_empty(), "and nothing is reported as having moved")
+
+
+func test_a_stage_that_says_nothing_changes_nothing() -> void:
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 50}, {"name_en": "Committee"}, 90, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 50)
+	assert_true(result["applied"].is_empty())
+
+
+func test_the_variables_ceiling_is_respected_and_reported_honestly() -> void:
+	# The same rule apply_win_deltas follows: promise only what was delivered.
+	var result := MetaRules.apply_score_effects(
+		{"Reputation": 98}, _scored_stage(), 100, SANBAN)
+
+	assert_eq(int(result["meta"]["Reputation"]), 100, "clamped to the maximum")
+	assert_eq(int(result["applied"]["Reputation"]), 2,
+		"two points, not the ten the score was worth")
+
+
+func test_the_original_standing_is_left_alone() -> void:
+	var before := {"Reputation": 50}
+	MetaRules.apply_score_effects(before, _scored_stage(), 90, SANBAN)
+	assert_eq(int(before["Reputation"]), 50, "a copy came back; this did not change")
+
+
+# ---------------------------------------------------------------------------
+# Winning a stage actually pays out
+# ---------------------------------------------------------------------------
+# apply_win_deltas was written at milestone 1 and had no production caller
+# until now, so every stage in the game was won for nothing.
+
+func test_a_win_and_a_score_both_move_the_same_variable() -> void:
+	# A stage can pay flat for being won AND again for the number it closed
+	# on. The player is owed the total, not whichever landed last.
+	var stage := {
+		"win_delta_kanban": 3,
+		"tone_effects": {"baseline": 50, "meta": {"Reputation": 5}},
+	}
+	var meta := {"Reputation": 50}
+
+	var after_win := MetaRules.apply_win_deltas(meta, stage, DataDB.sanban)
+	var after_score := MetaRules.apply_score_effects(
+		after_win["meta"], stage, 60, DataDB.sanban)
+
+	assert_eq(int(after_win["applied"]["Reputation"]), 3, "flat, for winning")
+	assert_eq(int(after_score["applied"]["Reputation"]), 2, "ten points above 50, at 1 per 5")
+	assert_eq(int(after_score["meta"]["Reputation"]), 55, "and both landed")
+
+
+func test_a_stage_with_zero_deltas_moves_nothing() -> void:
+	# The state every playtest stage is in until Cameron fills the slots.
+	var meta := {"Reputation": 50, "Funds": 50}
+	var result := MetaRules.apply_win_deltas(meta, {
+		"win_delta_jiban": 0, "win_delta_kanban": 0,
+		"win_delta_kaban": 0, "win_delta_party_support": 0,
+	}, DataDB.sanban)
+
+	assert_eq(result["applied"], {}, "nothing set, nothing claimed")
+	assert_eq(result["meta"], meta)

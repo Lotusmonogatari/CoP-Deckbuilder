@@ -212,6 +212,8 @@ func test_the_caucus_stage_hands_out_one_pool_of_energy() -> void:
 	assert_eq(engine.state.energy, 5, "five for the whole debate")
 	assert_eq(engine.state.energy_mode, "pool")
 
+	engine.state.hand.assign(["C01"])
+	engine.play_card("C01")          # so the turn is not a pass
 	engine.state.energy = 1
 	engine.end_turn()
 	assert_eq(engine.state.energy, 1, "and no more arrive with the new turn")
@@ -239,7 +241,7 @@ func test_a_good_caucus_reaches_the_floor_debate() -> void:
 	# worth something later. This follows one score all the way through.
 	var runner := LevelRunner.new(DataDB.playtest_level)
 	runner.finish_stage(LevelRunner.WON)            # committee
-	runner.finish_stage(LevelRunner.WON)            # press conference
+	runner.finish_stage(LevelRunner.WON, 50)        # press conference, flat
 	runner.finish_stage(LevelRunner.WON, 80)        # caucus, scored 80
 
 	var stage := runner.current_stage()
@@ -260,7 +262,7 @@ func test_a_good_caucus_reaches_the_floor_debate() -> void:
 func test_a_weak_caucus_costs_nothing_at_the_floor() -> void:
 	var runner := LevelRunner.new(DataDB.playtest_level)
 	runner.finish_stage(LevelRunner.WON)
-	runner.finish_stage(LevelRunner.WON)
+	runner.finish_stage(LevelRunner.WON, 50)        # press conference, flat
 	runner.finish_stage(LevelRunner.WON, 20)        # a poor caucus
 
 	var stage := runner.current_stage()
@@ -269,6 +271,42 @@ func test_a_weak_caucus_costs_nothing_at_the_floor() -> void:
 
 	assert_eq(engine.state.bar.player, int(stage["player_start"]),
 		"a bad caucus is worth nothing, not a penalty")
+
+
+func test_a_bad_press_conference_costs_seats_at_the_floor() -> void:
+	# The caucus forgives a poor showing; the press does not. This is the
+	# difference between the two stages' tone_effects, on the real data.
+	var runner := LevelRunner.new(DataDB.playtest_level)
+	runner.finish_stage(LevelRunner.WON)
+	runner.finish_stage(LevelRunner.WON, 20)        # tone 20: thirty below
+	runner.finish_stage(LevelRunner.WON, 50)        # caucus, flat
+
+	var stage := runner.current_stage()
+	var buffs := runner.carried_buffs()
+	assert_lt(int(buffs["support_bonus"]), 0, "a bad conference is a real debuff")
+
+	var engine := BattleEngine.new()
+	_setup(engine, BattleSetup.for_playtest_stage(stage, buffs))
+
+	assert_lt(engine.state.bar.player, int(stage["player_start"]),
+		"the floor debate starts that much further behind")
+
+
+func test_a_good_press_conference_is_worth_seats_and_reputation() -> void:
+	# Both halves of what the tone is for, from the one number.
+	var press := _playtest_stage("PT_S2")
+
+	assert_eq(LevelRunner.score_to_support(press, 70), 2,
+		"twenty above the baseline is two seats")
+	assert_eq(LevelRunner.score_to_support(press, 30), -2,
+		"and twenty below costs two")
+	assert_eq(LevelRunner.score_to_support(press, 45), 0,
+		"falling just short costs nothing")
+
+	var moved := MetaRules.apply_score_effects(
+		{"Reputation": 50}, press, 70, DataDB.sanban)
+	assert_eq(int(moved["applied"].get("Reputation", 0)), 4,
+		"twenty above the baseline, at five points each, is four reputation")
 
 
 # ---------------------------------------------------------------------------
@@ -306,22 +344,25 @@ func test_the_floor_debate_lines_up_five_opponents() -> void:
 
 	assert_eq(engine.state.opponent_count, 5)
 	assert_eq(engine.state.bar.maximum, 101, "the house still has 101 seats")
-	assert_eq(engine.state.bar.threshold, 51, "and a majority is still 51")
+	assert_eq(engine.state.bar.threshold, 55,
+		"55 to end the debater in front of you, not 55 to carry the bill")
 
 
-func test_the_floor_debate_keeps_one_room_across_its_opponents() -> void:
+func test_each_floor_debater_gets_their_own_division() -> void:
 	var engine := BattleEngine.new()
 	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S4")))
 
+	var opened_on := engine.state.bar.player
 	engine.state.bar.player_gains(5)
-	var seats := engine.state.bar.player
+	engine.state.gaffe = 3
 	engine.state.turn = 7
 
 	engine.state.bar.opponent_loses(engine.state.bar.opponent)
 	engine._check_outcome()
 
 	assert_eq(engine.opponent_caption(), "2 of 5")
-	assert_eq(engine.state.bar.player, seats, "your seats survive the change")
+	assert_eq(engine.state.bar.player, opened_on, "the house divides again from the start")
+	assert_eq(engine.state.gaffe, 3, "but your record follows you in")
 	assert_eq(engine.state.turn, 7, "and so does the clock")
 	assert_true(engine.state.bar.totals_balance())
 
@@ -385,20 +426,42 @@ func test_answering_every_question_ends_the_press_conference() -> void:
 	assert_eq(engine.questions_remaining(), 0, "because every question was answered")
 
 
-func test_a_data_driven_answer_pleases_the_press() -> void:
-	# The first question invites a Data Driven answer and names BO08.
+func test_answering_in_the_invited_suit_pleases_the_press() -> void:
+	# Deliberately not hardcoding which suit: the pairing of question to suit
+	# is placeholder data Cameron is expected to change, and this should keep
+	# testing the mechanism rather than his current choices.
 	var engine := BattleEngine.new()
 	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S2")))
 
 	var question := engine.current_question()
-	assert_eq(question["prefers_suit"], "Data Driven")
+	var wanted := str(question["prefers_suit"])
 
-	# C13 Present the Stats is Data Driven and costs 1.
-	engine.state.hand.assign(["C13"])
-	engine.play_card("C13")
+	var answer := ""
+	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
+		if str(card.get("suit", "")) == wanted:
+			answer = str(card["card_id"])
+			break
+	assert_false(answer.is_empty(), "a Starter card answers in %s" % wanted)
+
+	engine.state.hand.assign([answer])
+	engine.play_card(answer)
 
 	assert_true(engine.pleased_boosters().has(question["pleases_booster"]),
 		"answering in the suit invited pleases the people who asked")
+
+
+func test_every_question_can_be_answered_in_the_suit_it_invites() -> void:
+	# A question inviting a suit no Starter card has would be unanswerable
+	# without it being obvious from the data. This catches that on Cameron's
+	# next edit rather than in a playtest.
+	var suits: Array[String] = []
+	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
+		suits.append(str(card.get("suit", "")))
+
+	for question: Dictionary in _playtest_stage("PT_S2").get("questions", []):
+		assert_true(suits.has(str(question.get("prefers_suit", ""))),
+			"%s invites %s, and no Starter card is that suit"
+				% [question.get("id"), question.get("prefers_suit")])
 
 
 func test_answering_well_carries_the_press_into_the_floor_debate() -> void:
@@ -448,3 +511,118 @@ func test_answering_well_carries_the_press_into_the_floor_debate() -> void:
 	for booster_id: String in expected:
 		assert_true(carried.has(booster_id),
 			"%s was pleased at the conference and should reach the floor" % booster_id)
+
+
+# ---------------------------------------------------------------------------
+# Who is in the room
+# ---------------------------------------------------------------------------
+
+func test_a_playtest_stage_borrows_the_room_it_is_modelled_on() -> void:
+	# The playtest stages carry no audience mix of their own. Rather than
+	# invent percentages, each borrows the canon stage it already names in
+	# affinity_stage_id — the playtest press conference is modelled on ST04,
+	# so it gets ST04's room.
+	var press := BattleSetup.with_audience(_playtest_stage("PT_S2"))
+	var mix: Dictionary = press.get("segment_mix", {})
+
+	assert_false(mix.is_empty(), "the conference has a room")
+	assert_eq(mix, DataDB.get_stage("ST04")["segment_mix"], "and it is ST04's")
+
+
+func test_every_playtest_stage_has_somebody_in_the_room() -> void:
+	for stage: Dictionary in DataDB.playtest_level["stages"]:
+		var mix: Dictionary = BattleSetup.with_audience(stage).get("segment_mix", {})
+		assert_false(mix.is_empty(), "%s has an audience" % stage.get("stage_id"))
+
+		var total := 0.0
+		for share: float in mix.values():
+			total += share
+		assert_almost_eq(total, 1.0, 0.001,
+			"%s's audience adds up to the whole room" % stage.get("stage_id"))
+
+
+func test_a_stage_with_its_own_room_keeps_it() -> void:
+	var declared := {"SG01": 1.0}
+	var stage := _playtest_stage("PT_S2").duplicate(true)
+	stage["segment_mix"] = declared
+
+	assert_eq(BattleSetup.with_audience(stage)["segment_mix"], declared,
+		"a stage that says who is in the room is not overruled")
+
+
+func test_the_audience_reaches_the_cards() -> void:
+	# The whole point of filling the mix in: a card aimed at one part of the
+	# room used to read that audience as nought per cent of it.
+	var engine := BattleEngine.new()
+	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S2")))
+
+	# C21 Iridescent Answer is aimed at the Press, and a press conference is
+	# mostly press.
+	var share := CardResolver.segment_share(DataDB.get_card("C21"), engine._stage)
+	assert_gt(share, 0.5, "the room is mostly who this card is aimed at")
+
+
+# ---------------------------------------------------------------------------
+# Standing with the organisations
+# ---------------------------------------------------------------------------
+
+func test_every_organisation_starts_level_with_the_player() -> void:
+	GameState.reset_booster_standing()
+
+	assert_eq(GameState.booster_standing.size(), DataDB.boosters.size(),
+		"all ten of them")
+	for booster: Dictionary in DataDB.boosters:
+		assert_eq(int(GameState.booster_standing[booster["booster_id"]]),
+			int(DataDB.booster_standing["start"]))
+
+
+func test_pleasing_an_organisation_raises_your_standing_with_it() -> void:
+	GameState.reset_booster_standing()
+	var before := int(GameState.booster_standing["BO08"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"])
+
+	var step := int(DataDB.booster_standing["per_please"])
+	assert_eq(int(GameState.booster_standing["BO08"]), before + step)
+	assert_eq(int(GameState.last_booster_change["BO08"]), step, "and it says so")
+	assert_eq(int(GameState.booster_standing["BO03"]), before,
+		"nobody else was pleased")
+
+	GameState.end_level()
+
+
+func test_standing_is_held_between_levels() -> void:
+	# Unlike the pleased list, which lasts one level. This is what makes who
+	# you please in front of the cameras worth anything later.
+	GameState.reset_booster_standing()
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"])
+	GameState.end_level()
+	var after_one := int(GameState.booster_standing["BO08"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	assert_eq(int(GameState.booster_standing["BO08"]), after_one,
+		"a new level does not wipe the slate")
+	assert_true(GameState.last_booster_change.is_empty(),
+		"though what changed last time is no longer news")
+
+	GameState.end_level()
+	GameState.reset_booster_standing()
+
+
+func test_standing_cannot_run_past_its_ceiling() -> void:
+	GameState.reset_booster_standing()
+	GameState.booster_standing["BO08"] = int(DataDB.booster_standing["max"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"])
+
+	assert_eq(int(GameState.booster_standing["BO08"]),
+		int(DataDB.booster_standing["max"]))
+	assert_false(GameState.last_booster_change.has("BO08"),
+		"and nothing is reported as having moved when nothing did")
+
+	GameState.end_level()
+	GameState.reset_booster_standing()

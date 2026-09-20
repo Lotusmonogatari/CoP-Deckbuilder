@@ -120,10 +120,58 @@ func show_card(card_row: Dictionary) -> void:
 	tooltip_text = "%s — %s" % [card_row.get("name_en", ""), card_row.get("effect_text", "")]
 
 
+## Replaces the printed text with what this card will actually do here.
+##
+## The workbook's effect_text is what the card says on paper. The room
+## decides what it does: affinity moves the support numbers, and in some
+## rooms a number does nothing at all. Showing the printed value and then
+## quietly doing something else is how a player stops trusting the screen.
+func show_effect_here(effect: Dictionary) -> void:
+	if _effect_label == null:
+		return
+
+	var parts: Array[String] = []
+	var self_plus := int(effect.get("self_plus", 0))
+	var opp_minus := int(effect.get("opp_minus", 0))
+	var guard := int(effect.get("guard", 0))
+	var draw := int(effect.get("draw", 0))
+	var gaffe := int(effect.get("gaffe", 0))
+
+	if self_plus != 0:
+		parts.append("Gain %d." % self_plus)
+	if opp_minus != 0 and bool(effect.get("opp_minus_counts", true)):
+		parts.append("Opponent −%d." % opp_minus)
+	if guard != 0 and bool(effect.get("guard_counts", true)):
+		parts.append("Guard %d." % guard)
+	if draw != 0:
+		parts.append("Draw %d." % draw)
+	if gaffe != 0:
+		parts.append("Gaffe %+d." % gaffe)
+
+	if bool(effect.get("does_nothing", false)):
+		parts.append("Nothing this card does counts in this room.")
+
+	# Every card answers the question in front of you, whatever else it does.
+	# Cameron spent a draw-1 card expecting it to be free and lost a question
+	# to it, because the only place that rule was written down was inside the
+	# details panel.
+	if bool(effect.get("answers_question", false)):
+		parts.append("Answers this question.")
+
+	_effect_label.text = " ".join(parts) if not parts.is_empty() else str(card.get("effect_text", ""))
+
+
 ## Greys the card out when there isn't enough energy left to play it.
 func set_affordable(affordable: bool) -> void:
 	disabled = not affordable
 	modulate = Color(1, 1, 1, 1.0 if affordable else 0.45)
+
+
+## Dims a card whose numbers do nothing here, so that playing it is a
+## decision rather than a discovery.
+func set_useless_here(useless: bool) -> void:
+	if useless:
+		modulate = Color(1, 1, 1, 0.5)
 
 
 func _panel_for(state: String, tint: Color) -> StyleBoxFlat:
