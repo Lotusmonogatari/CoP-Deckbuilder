@@ -29,7 +29,6 @@ const KNOWN_KEYS := [
 	"buff_next_card_this_turn",
 	"reveal_next_intent",
 	"bonus_opp_minus_if_opp_gaffe",
-	"pass_turn",
 ]
 
 
@@ -97,16 +96,5 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			if int(context.get("opponent_gaffe", 0)) > 0:
 				result["opp_minus"] = int(result.get("opp_minus", 0)) + amount
 				result["flags"]["special_triggered"] = true
-
-		"pass_turn":
-			# PT_C01 Don't Engage: "Pass the round."
-			#
-			# The card's own gaffe number is the price; this key only says
-			# that playing it hands the round over. In a press conference the
-			# round IS the question, and every card answers a question
-			# already, so this does nothing there and the card still works:
-			# you have declined, out loud, and the next reporter speaks.
-			result["flags"]["end_turn"] = true
-			result["flags"]["special_triggered"] = true
 
 	return result

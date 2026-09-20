@@ -16,6 +16,13 @@ func _force_into_hand(engine: BattleEngine, card_id: String) -> void:
 		engine.state.hand.append(card_id)
 
 
+## The usual card table with one more card in it.
+func _cards_with(card: Dictionary) -> Dictionary:
+	var cards: Dictionary = TestFixtures.battle_config()["cards"]
+	cards[str(card["card_id"])] = card
+	return cards
+
+
 # ---------------------------------------------------------------------------
 # Setup
 # ---------------------------------------------------------------------------
@@ -191,7 +198,10 @@ func test_block_does_not_carry_into_the_next_turn() -> void:
 
 func test_unspent_energy_does_not_carry_over() -> void:
 	var engine := _start()
+	_force_into_hand(engine, "GAIN3")
+	engine.play_card("GAIN3")        # so the turn is not a pass
 	engine.state.energy = 3
+
 	engine.end_turn()
 	assert_eq(engine.state.energy, 3, "refilled, not added to")
 
@@ -592,6 +602,8 @@ func test_pool_energy_is_not_refilled_between_turns() -> void:
 	# The whole point: spend it when you like, and when it is gone the
 	# remaining turns are empty.
 	var engine := _start(_caucus())
+	_force_into_hand(engine, "GAIN3")
+	engine.play_card("GAIN3")        # so the turn is not a pass
 	engine.state.energy = 2
 
 	engine.end_turn()
@@ -611,7 +623,10 @@ func test_a_spent_pool_stays_spent() -> void:
 func test_ordinary_stages_still_refill_every_turn() -> void:
 	# The pool must not leak into every other stage.
 	var engine := _start()
+	_force_into_hand(engine, "GAIN3")
+	engine.play_card("GAIN3")        # so the turn is not a pass
 	engine.state.energy = 0
+
 	engine.end_turn()
 	assert_eq(engine.state.energy, 3, "a normal stage refills")
 
@@ -797,8 +812,9 @@ func test_arguing_an_opponent_down_to_nothing_brings_on_the_next() -> void:
 	assert_eq(engine.current_opponent()["name"], "Two", "the next one steps in")
 
 
-func test_the_seats_you_have_won_stay_won() -> void:
-	# The whole difference from the committee: nothing resets.
+func test_a_new_debater_means_a_fresh_vote() -> void:
+	# The difference from the committee: the house divides again, but YOU do
+	# not get a fresh start. Your record and the clock follow you in.
 	var engine := _start(_five_on_the_floor())
 	engine.state.bar.player_gains(8)         # 40 -> 48
 	engine.state.gaffe = 2
@@ -806,29 +822,47 @@ func test_the_seats_you_have_won_stay_won() -> void:
 	engine.state.bar.opponent_loses(40)
 	engine._check_outcome()
 
-	assert_eq(engine.state.bar.player, 48, "your seats are still yours")
-	assert_eq(engine.state.gaffe, 2, "and so is your record")
-	assert_eq(engine.state.turn, 5, "the clock keeps running")
+	assert_eq(engine.state.bar.player, 40, "the vote starts again for the new debater")
+	assert_eq(engine.state.bar.opponent, 40, "and so does theirs")
+	assert_eq(engine.state.gaffe, 2, "but your record is still your record")
+	assert_eq(engine.state.turn, 5, "and the clock keeps running")
+	assert_true(engine.state.bar.totals_balance(),
+		"the house still adds up to %d" % engine.state.bar.maximum)
 
 
-func test_the_new_opponent_takes_their_seats_from_the_undecided() -> void:
+func test_your_hand_and_deck_follow_you_to_the_next_debater() -> void:
+	# Unlike a committee bout, which deals you a clean deck.
 	var engine := _start(_five_on_the_floor())
+	engine.state.hand.assign(["GAIN3"])
+	engine.state.discard.assign(["GUARD5", "ATTACK3"])
+
 	engine.state.bar.opponent_loses(40)
 	engine._check_outcome()
 
-	assert_eq(engine.state.bar.opponent, 40, "the next opponent holds seats of their own")
-	assert_true(engine.state.bar.totals_balance(),
-		"and the house still adds up to %d" % engine.state.bar.maximum)
+	assert_eq(engine.state.hand, ["GAIN3"] as Array[String], "the same hand")
+	assert_eq(engine.state.discard.size(), 2, "and what you have already spent is still spent")
 
 
-func test_reaching_the_majority_wins_however_many_are_left() -> void:
-	# You do not have to work through all five: 51 seats is 51 seats.
+func test_the_threshold_ends_the_debater_not_the_stage() -> void:
+	# The bug Cameron caught: reaching the number with four debaters still
+	# waiting used to carry the bill on the spot.
 	var engine := _start(_five_on_the_floor())
-	engine.state.bar.player_gains(11)        # 40 -> 51
+	engine.state.bar.player_gains(11)        # 40 -> 51, the threshold
 	engine._check_outcome()
+
+	assert_false(engine.state.is_over(), "there are four more people to get through")
+	assert_eq(engine.current_opponent()["name"], "Two", "the next debater rises")
+
+
+func test_beating_the_last_debater_at_the_threshold_carries_the_bill() -> void:
+	var engine := _start(_five_on_the_floor())
+	for _index in 2:
+		engine.state.bar.player_gains(11)
+		engine._check_outcome()
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "win")
+	assert_string_contains(engine.state.outcome_reason, "argued down")
 
 
 func test_beating_the_last_opponent_without_a_majority_still_wins() -> void:
@@ -1028,6 +1062,8 @@ func test_ending_a_turn_keeps_the_hand_you_cannot_replace() -> void:
 
 func test_ending_a_turn_refills_the_energy() -> void:
 	var engine := _start(_press_alone())
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+	engine.play_card("GAIN3")        # answered, so the turn is not a pass
 	engine.state.energy = 0
 
 	engine.end_turn()
@@ -1052,67 +1088,115 @@ func test_the_press_tone_is_a_single_bar() -> void:
 
 
 # ---------------------------------------------------------------------------
-# Declining: "Don't Engage"
+# Passing: a turn spent saying nothing
 # ---------------------------------------------------------------------------
-# A card that passes the round rather than arguing. The card's own gaffe
-# number is what it costs; the `pass_turn` special is only what hands the
-# round over.
+# Standing up and declining to argue is a real choice, sometimes the right
+# one, but it should never be the free one — or the best play in a tight spot
+# would be to keep quiet and let the clock run.
 
-func _passing(overrides: Dictionary = {}) -> Dictionary:
-	var config := TestFixtures.battle_config(overrides)
-	var cards: Dictionary = config["cards"]
-	cards["PASS"] = TestFixtures.card({
-		"card_id": "PASS", "cost": 0, "gaffe": 1, "special": "pass_turn",
+func test_ending_a_turn_having_played_nothing_costs_you_energy() -> void:
+	var engine := _start()
+
+	var result := engine.end_turn()
+	assert_true(result["passed"], "the turn was a pass")
+	assert_eq(engine.state.energy, 2, "next turn is one short")
+
+
+func test_playing_anything_at_all_avoids_the_penalty() -> void:
+	var engine := _start()
+	_force_into_hand(engine, "GAIN3")
+	engine.play_card("GAIN3")
+
+	var result := engine.end_turn()
+	assert_false(result["passed"])
+	assert_eq(engine.state.energy, 3, "a full allowance")
+
+
+func test_a_free_card_still_counts_as_saying_something() -> void:
+	# The count is of cards played, not energy spent — a card can cost
+	# nothing, and a pool stage can leave energy unspent quite legitimately.
+	var engine := _start({"cards": _cards_with(
+		TestFixtures.card({"card_id": "FREE", "cost": 0, "self_plus": 1}))})
+	_force_into_hand(engine, "FREE")
+	engine.play_card("FREE")
+
+	assert_false(engine.end_turn()["passed"])
+	assert_eq(engine.state.energy, 3)
+
+
+func test_the_penalty_does_not_follow_you_into_the_turn_after() -> void:
+	var engine := _start()
+	engine.end_turn()                        # passed: next turn is short
+	assert_eq(engine.state.energy, 2)
+
+	_force_into_hand(engine, "GAIN3")
+	engine.play_card("GAIN3")
+	engine.end_turn()
+	assert_eq(engine.state.energy, 3, "one quiet turn is not a running debt")
+
+
+func test_passing_twice_is_short_twice() -> void:
+	var engine := _start()
+	engine.end_turn()
+	assert_eq(engine.state.energy, 2)
+	engine.end_turn()
+	assert_eq(engine.state.energy, 2, "short again, not shorter")
+
+
+func test_the_penalty_cannot_take_energy_below_nothing() -> void:
+	var engine := _start({
+		"stage": TestFixtures.stage({"energy_per_turn": 1}),
+		"rules": TestFixtures.rules({"pass_energy_penalty": 5}),
 	})
-	config["cards"] = cards
-	return config
+
+	engine.end_turn()
+	assert_eq(engine.state.energy, 0, "nothing, rather than a negative allowance")
 
 
-func test_a_passing_card_hands_the_turn_over_as_it_is_played() -> void:
-	var engine := _start(_passing())
-	var turn := engine.state.turn
-	_force_into_hand(engine, "PASS")
+func test_a_pool_stage_pays_out_of_the_pool() -> void:
+	# There is no refill in a caucus to take the energy off, so it comes out
+	# of what is left straight away. That makes passing a permanent cut
+	# rather than a lost turn, which is the only version that bites there.
+	var engine := _start(_caucus())
+	assert_eq(engine.state.energy, 5)
 
-	var result := engine.play_card("PASS")
-
-	assert_true(result.get("ok", false))
-	assert_true(result.has("ended_turn"), "the turn went with it")
-	assert_eq(engine.state.turn, turn + 1, "and the clock moved on")
-
-
-func test_a_passing_card_still_costs_what_it_says_it_costs() -> void:
-	var engine := _start(_passing())
-	_force_into_hand(engine, "PASS")
-
-	engine.play_card("PASS")
-	assert_eq(engine.state.gaffe, 1, "declining is not free")
+	engine.end_turn()
+	assert_eq(engine.state.energy, 4, "one off the pool, and it does not come back")
 
 
-func test_passing_can_lose_the_stage_on_gaffes() -> void:
-	var engine := _start(_passing())
-	engine.state.gaffe = engine.state.gaffe_limit - 1
-	_force_into_hand(engine, "PASS")
+func test_the_penalty_can_be_switched_off() -> void:
+	var engine := _start({"rules": TestFixtures.rules({"pass_energy_penalty": 0})})
 
-	engine.play_card("PASS")
-	assert_eq(engine.state.outcome, "loss", "the last gaffe is the last gaffe")
+	engine.end_turn()
+	assert_eq(engine.state.energy, 3, "passing is free when Cameron says it is")
 
 
-func test_passing_does_not_hand_over_a_turn_nobody_is_waiting_for() -> void:
-	# In a press conference the round IS the question, and every card answers
-	# one. Ending a turn on top of that would skip a reporter.
-	var config := _press_alone()
-	var cards: Dictionary = TestFixtures.battle_config(config)["cards"]
-	cards["PASS"] = TestFixtures.card({
-		"card_id": "PASS", "cost": 0, "gaffe": 1, "special": "pass_turn",
-	})
-	config["cards"] = cards
-
-	var engine := _start(config)
+func test_passing_declines_the_question_in_front_of_you() -> void:
+	# In a press conference the round IS the question, and every card you
+	# could play would answer it — so passing is the only way to duck one.
+	var engine := _start(_press_alone())
 	var asked := engine.questions_remaining()
-	engine.state.hand.assign(["PASS", "GAIN3"])
+	var pleased := engine.pleased_boosters().size()
 
-	engine.play_card("PASS")
+	engine.end_turn()
 
-	assert_eq(engine.questions_remaining(), asked - 1,
-		"exactly one question was declined, not two")
-	assert_eq(engine.state.gaffe, 1, "and it cost what it costs")
+	assert_eq(engine.questions_remaining(), asked - 1, "the next reporter speaks")
+	assert_eq(engine.pleased_boosters().size(), pleased, "and nobody was pleased by silence")
+
+
+func test_answering_a_question_is_not_passing() -> void:
+	var engine := _start(_press_alone())
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+
+	engine.play_card("GAIN3")
+	assert_false(engine.end_turn()["passed"])
+
+
+func test_the_last_question_cannot_be_declined_twice() -> void:
+	# Passing after the reporters have finished must not push the index past
+	# the end of the list.
+	var engine := _start(_press_alone())
+	engine.state.question_index = engine.questions_remaining() + engine.state.question_index
+
+	engine.end_turn()
+	assert_eq(engine.questions_remaining(), 0)

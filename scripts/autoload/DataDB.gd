@@ -20,10 +20,10 @@ const DATA_PATH := "res://data/"
 
 ## Every file that must be present for the game to start.
 const REQUIRED_FILES := [
-	"affinity", "balance", "bills", "boosters", "cards", "committee",
-	"journalists", "lists", "modifiers", "modules", "opponents", "player",
-	"playtest_cards", "playtest_level", "rules", "sanban", "segments",
-	"stages", "suits", "yoron",
+	"affinity", "balance", "bills", "booster_standing", "boosters", "cards",
+	"committee", "journalists", "lists", "modifiers", "modules", "opponents",
+	"player", "playtest_cards", "playtest_level", "rules", "sanban",
+	"segments", "stages", "suits", "yoron",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -58,6 +58,10 @@ var player: Dictionary = {}
 ## The press pack, hand-written. They ask the questions at a press
 ## conference; they do not take turns.
 var journalists: Array = []
+
+## How standing with the ten organisations works: where it starts, what it
+## is bounded by, and what pleasing one is worth. Hand-written.
+var booster_standing: Dictionary = {}
 
 ## The IDs of cards that came from playtest_cards.json rather than the
 ## workbook. They sit in `cards` like any other, and this is only here so
@@ -120,6 +124,7 @@ func load_all() -> void:
 			"playtest_level": playtest_level = content
 			"player": player = content
 			"journalists": journalists = _list_under(content, "journalists")
+			"booster_standing": booster_standing = content
 			# Cards that exist for the playtest but are not in the workbook
 			# yet. Appended rather than kept apart, so everything downstream —
 			# the card table, the starter deck, every lookup — treats them as

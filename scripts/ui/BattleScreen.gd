@@ -41,6 +41,7 @@ var _ready_to_play := false
 @onready var _intent_label: Label = %IntentLabel
 @onready var _support_bar: SupportBar = %SupportBar
 @onready var _energy_row: HBoxContainer = %EnergyRow
+@onready var _guard_label: Label = %GuardLabel
 @onready var _gaffe_label: Label = %GaffeLabel
 @onready var _hand_row: HBoxContainer = %HandRow
 @onready var _end_turn_button: Button = %EndTurnButton
@@ -140,11 +141,13 @@ func _show_opponent() -> void:
 
 	_portrait.show()
 	_opponent_name.show()
-
-	if opponent == _opponent and not _opponent_name.text.is_empty():
-		return
 	_opponent = opponent
 
+	# Written out every refresh rather than only when the opponent changes.
+	# It used to skip the first one — the screen's idea of who was opposite
+	# was set from the same config the engine got, so they matched before the
+	# name had ever been written and the player was left looking at the word
+	# "Opponent". Redrawing a label is not worth guarding against.
 	var caption := engine.opponent_caption()
 	if caption.is_empty():
 		_opponent_name.text = str(opponent.get("name", "Visitor A"))
@@ -255,6 +258,12 @@ func _refresh_gaffe(state: BattleState) -> void:
 	_gaffe_label.text = "Gaffes %d / %d" % [state.gaffe, state.gaffe_limit]
 	_gaffe_label.theme_type_variation = "GaffeWarning" if engine.gaffe_is_critical() else ""
 
+	# How much of the next attack the player has already covered. Shown only
+	# when there is some: a permanent "Guarding 0" is noise, and the number
+	# matters most in the moment it exists.
+	_guard_label.text = "Guarding %d" % state.block
+	_guard_label.visible = state.block > 0
+
 
 func _refresh_hand(state: BattleState) -> void:
 	for child in _hand_row.get_children():
@@ -269,6 +278,34 @@ func _refresh_hand(state: BattleState) -> void:
 		view.show_card(card)
 		view.set_affordable(int(card.get("cost", 0)) <= state.energy and not state.is_over())
 		view.chosen.connect(_on_card_chosen)
+
+
+## Who is in the room, and what it takes to win one of them over.
+##
+## Both of these are rules a player would otherwise have to work out by
+## losing: that the people already against you cost more to win than the
+## people who have not decided, and that the audience is not the same crowd
+## from one stage to the next.
+func _room_lines(state: BattleState) -> Array[String]:
+	var lines: Array[String] = []
+
+	var mix: Dictionary = _stage.get("segment_mix", {})
+	if not mix.is_empty():
+		var parts: Array[String] = []
+		for segment: Dictionary in DataDB.segments:
+			var share := float(mix.get(segment.get("segment_id"), 0.0))
+			if share > 0.0:
+				parts.append("%d%% %s" % [roundi(share * 100.0), segment.get("name_en", "")])
+		if not parts.is_empty():
+			lines.append("In the room: %s." % ", ".join(parts))
+
+	if state.bar != null and state.bar.model == BarModel.Model.SHARED_POOL:
+		lines.append("Winning over somebody undecided takes one point. "
+			+ "Somebody already against you takes one, two or three — "
+			+ "you find out which as you go, and points you cannot spend "
+			+ "are lost.")
+
+	return lines
 
 
 func _refresh_details(state: BattleState) -> void:
@@ -305,6 +342,9 @@ func _refresh_details(state: BattleState) -> void:
 				named.append(str(booster.get("name_en", booster_id)))
 			lines.append("Pleased so far: %s." % ", ".join(named))
 
+	lines.append("")
+	lines.append_array(_room_lines(state))
+
 	if state.opponent_count > 1:
 		lines.append("")
 		if _stage.get("sequence_mode") == "reset":
@@ -312,9 +352,13 @@ func _refresh_details(state: BattleState) -> void:
 				% state.opponent_count
 				+ "starts again against the next, including your gaffes.")
 		else:
-			lines.append("%d opponents, one at a time. Nothing resets between "
-				% state.opponent_count
-				+ "them: the seats you have won stay won and the clock keeps running.")
+			lines.append(("%d debaters, one at a time, and %d %s ends the one "
+				+ "in front of you — not the stage. Beat them and the house "
+				+ "divides again from the start for the next.")
+				% [state.opponent_count, state.bar.threshold,
+					str(_stage.get("bar_unit", "support")).to_lower()])
+			lines.append("Your record, your hand and the clock carry across "
+				+ "all %d of them." % state.opponent_count)
 
 	# Two rules a player would otherwise have to discover by losing.
 	if state.energy_mode == "pool":
@@ -349,6 +393,22 @@ func _refresh_details(state: BattleState) -> void:
 # Input
 # ---------------------------------------------------------------------------
 
+## How this room is treating this suit, in words rather than a multiplier.
+##
+## "×0.80" is precise and means nothing at the table. What a player needs to
+## know is whether the room is with them, and roughly how much.
+static func describe_room_for(affinity: float) -> String:
+	if affinity >= 1.51:
+		return "Being greatly enhanced by supporters."
+	if affinity > 1.0:
+		return "Being enhanced by supporters."
+	if affinity < 0.5:
+		return "Being greatly suppressed by opponents."
+	if affinity < 1.0:
+		return "Being suppressed by detractors."
+	return "Landing as written here."
+
+
 ## Tapping a card opens the zoom view. Nothing is played until the player
 ## confirms there, so a mis-tap never costs a turn.
 func _on_card_chosen(card_id: String) -> void:
@@ -362,21 +422,12 @@ func _on_card_chosen(card_id: String) -> void:
 		art.kind = PlaceholderArt.Kind.CARD
 		art.art_id = card_id
 
-	var affinity := engine.affinity_for(card)
-	var in_this_room := ""
-	if not is_equal_approx(affinity, 1.0):
-		in_this_room = "\n[i]%s lands %s here (×%.2f).[/i]" % [
-			card.get("suit", ""),
-			"harder" if affinity > 1.0 else "softer",
-			affinity,
-		]
-
 	%ZoomTitle.text = str(card.get("name_en", ""))
 	%ZoomSubtitle.text = "%s  %s · %s" % [
 		card.get("name_jp", ""), card.get("romaji", ""), card.get("suit", "")]
-	_zoom_text.text = "[b]Costs %d[/b]\n\n%s\n\nUpgraded: %s%s" % [
+	_zoom_text.text = "[b]Costs %d[/b]\n\n%s\n\n[i]%s[/i]" % [
 		int(card.get("cost", 0)), card.get("effect_text", ""),
-		card.get("upgrade_text", "—"), in_this_room]
+		describe_room_for(engine.affinity_for(card))]
 
 	%ZoomPlay.disabled = int(card.get("cost", 0)) > engine.state.energy
 	_card_zoom.show()

@@ -29,9 +29,20 @@ var meta: Dictionary = {}
 ## reads it to tell the player what just happened to them.
 var last_meta_change: Dictionary = {}
 
+## Where the player stands with each of the ten organisations, by booster ID.
+## Pleasing one at a press conference raises it, and it is held between
+## levels — unlike the pleased list, which lasts one level.
+##
+## Lives only for this sitting until M4 adds saving.
+var booster_standing: Dictionary = {}
+
+## What the last finished level did to those, e.g. { "BO08": 5 }.
+var last_booster_change: Dictionary = {}
+
 
 func _ready() -> void:
 	reset_meta()
+	reset_booster_standing()
 
 
 ## Back to the starting standing in sanban.json.
@@ -40,11 +51,22 @@ func reset_meta() -> void:
 	last_meta_change = {}
 
 
+## Every organisation back to where booster_standing.json starts them.
+func reset_booster_standing() -> void:
+	booster_standing = {}
+	last_booster_change = {}
+
+	var start := int(DataDB.booster_standing.get("start", 50))
+	for booster: Dictionary in DataDB.boosters:
+		booster_standing[str(booster.get("booster_id"))] = start
+
+
 ## Called by the Office when the player starts a level.
 func begin_level(runner: LevelRunner) -> void:
 	level_runner = runner
 	last_level_outcome = ""
 	last_meta_change = {}
+	last_booster_change = {}
 
 
 ## True while a level is in progress.
@@ -61,6 +83,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.
 	_apply_score_effects(level_runner.current_stage(), score)
+	_please_organisations(boosters)
 
 	level_runner.finish_stage(outcome, score, boosters)
 
@@ -82,6 +105,29 @@ func _apply_score_effects(stage: Dictionary, score: int) -> void:
 	var result := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
 	meta = result["meta"]
 	last_meta_change = result["applied"]
+
+
+## Raises the player's standing with everyone pleased in a stage.
+##
+## Standing is what survives the level; the pleased list is what the floor
+## debate draws on inside it. The two are separate on purpose: pleasing the
+## same organisation twice in one level counts once for the floor debate, and
+## once for the standing too, because the pleased list is deduplicated before
+## it ever gets here.
+func _please_organisations(boosters: Array) -> void:
+	if boosters.is_empty():
+		return
+
+	var step := int(DataDB.booster_standing.get("per_please", 5))
+	var low := int(DataDB.booster_standing.get("min", 0))
+	var high := int(DataDB.booster_standing.get("max", 100))
+
+	for booster_id: String in boosters:
+		var before := int(booster_standing.get(booster_id, 50))
+		var after := clampi(before + step, low, high)
+		booster_standing[booster_id] = after
+		if after != before:
+			last_booster_change[booster_id] = after - before
 
 
 ## Clears the level, on the way back to the Office.

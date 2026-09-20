@@ -8,41 +8,22 @@
     "looked up the same way, dealt the same way, and a Starter-tier one joins",
     "the opening deck automatically.",
     "",
-    "EVERY VALUE BELOW IS A PLACEHOLDER. When a card here earns its place it",
-    "should move into the Cards tab of the workbook and be deleted from this",
-    "file, so the workbook stays the source of truth.",
+    "EMPTY ON PURPOSE. It held one card, PT_C01 'Don't Engage', which passed",
+    "the round for a gaffe. Playtesting found it pointless: ending a turn",
+    "without playing anything already passed the round and cost nothing, so",
+    "the card was strictly worse than the button next to it. Passing is now a",
+    "rule rather than a card - ending a turn having played nothing costs an",
+    "energy next turn, and in a press conference declines the question - so",
+    "the card had nothing left to do.",
     "",
-    "The two fields the workbook computes with formulas - power_score and",
-    "power_per_cost - are left null here rather than guessed. Nothing in the",
-    "game reads them; they are the spreadsheet's own balance arithmetic."
+    "The pipeline is kept, and proven, for whatever card comes next. When one",
+    "here earns its place it should move into the Cards tab of the workbook",
+    "and be deleted from this file, so the workbook stays the source of truth.",
+    "",
+    "The shape of a row is every column cards.json has. The two the workbook",
+    "computes with formulas - power_score and power_per_cost - should be left",
+    "null rather than guessed; nothing in the game reads them."
   ],
 
-  "cards": [
-    {
-      "card_id": "PT_C01",
-      "name_en": "Don't Engage",
-      "name_jp": "関わらない",
-      "romaji": "Kakawaranai",
-      "suit": "Duplicitous",
-      "suit_jp": "二枚舌",
-      "type": "Utility",
-      "cost": 0,
-      "self_plus": 0,
-      "opp_minus": 0,
-      "guard": 0,
-      "draw": 0,
-      "gaffe": 1,
-      "target_segment": "Any",
-      "effect_text": "Pass the round. Gaffe +1.",
-      "upgrade_text": "Pass the round.",
-      "tier": "Starter",
-      "xp_to_unlock": 0,
-      "power_score": null,
-      "power_per_cost": null,
-      "balance_flag": null,
-      "special": "pass_turn",
-      "special_value": null,
-      "target_segment_id": null
-    }
-  ]
+  "cards": []
 }

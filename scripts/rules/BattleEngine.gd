@@ -200,12 +200,23 @@ func _setup_board(config: Dictionary) -> void:
 	var player_start := int(_stage.get("player_start", 0)) + int(config.get("start_adjustment", 0))
 	var opponent_start := int(_stage.get("opp_start", 0)) + int(config.get("bill_difficulty", 0))
 
-	state.bar = BarModel.create(
+	state.bar = _build_bar(player_start, opponent_start)
+
+
+## The seat count, from the stage's own numbers.
+##
+## One place rather than two, because a continuous stage rebuilds it every
+## time a new debater rises and the two must not drift apart.
+func _build_bar(player_start: int, opponent_start: int) -> BarModel:
+	return BarModel.create(
 		BarModel.for_stage(_stage),
 		int(_stage.get("bar_max", 100)),
 		int(_stage.get("win_threshold", 51)),
 		player_start,
 		opponent_start,
+		# The bar rolls what a stubborn vote costs off the battle's own
+		# generator, so a seeded battle plays out the same way twice.
+		func() -> int: return _rng.randi_range(0, 99),
 	)
 
 
@@ -261,6 +272,7 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 	# Paying for it, and taking it out of hand.
 	state.energy -= cost
 	state.hand.erase(card_id)
+	state.cards_played_this_turn += 1
 	state.next_card_bonus = 0   # a carried bonus is spent by the card that uses it
 
 	var applied := _apply_effect(effect, target_index)
@@ -282,26 +294,13 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 
 	_check_outcome()
 
-	var result := {
+	return {
 		"ok": true,
 		"card_id": card_id,
 		"effect": effect,
 		"applied": applied,
 		"energy_left": state.energy,
 	}
-
-	# A card that passes the round hands the turn over as it is played, so
-	# the player does not have to press End turn afterwards to mean the thing
-	# they have just said they mean. Declining and then playing on would not
-	# be declining.
-	#
-	# A press conference has no turn to hand over — every card answers the
-	# question in front of it and the next reporter speaks — so this is only
-	# reached where somebody is actually waiting to act.
-	if flags.get("end_turn", false) and not state.is_over() and _intents != null:
-		result["ended_turn"] = end_turn()
-
-	return result
 
 
 ## Applies a resolved card's numbers, in the order the brief sets out:
@@ -366,10 +365,17 @@ func affinity_for(card: Dictionary) -> float:
 
 ## Ends the player's turn and runs the opponent's.
 ##
+## Ending a turn without having played anything is how you pass, and passing
+## costs you: see _pass_penalty() for what it costs and why.
+##
 ## Returns what the opponent did and how the battle stands afterwards.
 func end_turn() -> Dictionary:
 	if state.is_over():
 		return {"ok": false, "reason": "the battle is already over"}
+
+	var passed := state.cards_played_this_turn == 0
+	if passed:
+		_pass_penalty()
 
 	# Step 4: the rest of the hand goes, unless the switch says otherwise.
 	#
@@ -394,6 +400,7 @@ func end_turn() -> Dictionary:
 	state.block = 0
 	state.next_card_bonus = 0
 	state.next_intent_revealed = false
+	state.cards_played_this_turn = 0
 
 	# Step 6: check, advance, redraw.
 	_check_outcome(true)
@@ -403,7 +410,10 @@ func end_turn() -> Dictionary:
 		# A pool stage is never topped up: what is left is what is left, and
 		# running out means the turns you have left are empty ones.
 		if state.energy_mode != "pool":
-			state.energy = state.energy_per_turn
+			var allowance := state.energy_per_turn
+			if passed:
+				allowance -= _pass_cost()
+			state.energy = maxi(allowance, 0)
 		# In a press conference what you were dealt is what you have. A card
 		# that says "draw" still works; the turn itself gives you nothing.
 		if state.draw_mode != "none":
@@ -411,11 +421,43 @@ func end_turn() -> Dictionary:
 
 	return {
 		"ok": true,
+		"passed": passed,
 		"intent": intent,
 		"opponent": opponent_result,
 		"turn": state.turn,
 		"outcome": state.outcome,
 	}
+
+
+## What saying nothing costs. One energy, from rules.json.
+func _pass_cost() -> int:
+	return int(_rules.get("pass_energy_penalty", 1))
+
+
+## The price of a turn spent saying nothing.
+##
+## Standing up and declining to argue is a real choice — sometimes the right
+## one — but it should never be the free one, or the best play in a tight
+## spot would be to keep quiet and let the clock run.
+##
+## Two parts, depending on the stage:
+##
+## THE ENERGY. Normally it comes off next turn's allowance, which is applied
+## where the turn refills. A pool stage is never refilled, so there is
+## nothing there to dock and it has to come off what is left of the pool
+## straight away. That makes it a permanent cut rather than a lost turn,
+## which is the only version that means anything in a caucus.
+##
+## THE QUESTION. In a press conference the round IS the question in front of
+## you, so passing is how you decline it: the next reporter speaks and
+## nobody is pleased. There is no other way to duck one, because every card
+## you could play would answer it.
+func _pass_penalty() -> void:
+	if state.energy_mode == "pool":
+		state.energy = maxi(state.energy - _pass_cost(), 0)
+
+	if not _questions.is_empty() and not current_question().is_empty():
+		state.question_index += 1
 
 
 func _resolve_intent(intent: Dictionary) -> Dictionary:
@@ -514,16 +556,18 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			and _questions.is_empty())
 
 		if has_threshold and state.bar.player_has_won():
-			# In a committee, winning the argument wins this bout, not the
-			# stage: the next member of the panel is waiting.
-			if _sequence_mode == "reset" and has_more_opponents():
+			# Where a stage lines several people up, the threshold is what it
+			# takes to finish THE PERSON IN FRONT OF YOU, not the stage. In a
+			# committee the next member of the panel is waiting; on the floor
+			# the next debater rises and the house divides again.
+			if _sequence_mode != "single" and has_more_opponents():
 				_advance_to_next_opponent()
 				return
 			_finish("win", _victory_reason())
 			return
 
-		# On the floor, arguing an opponent's seats down to nothing brings on
-		# the next. Running out of opponents wins it even short of a majority,
+		# On the floor, arguing a debater's seats down to nothing ends them
+		# too. Running out of opponents wins it even short of the threshold,
 		# because there is nobody left to argue against.
 		if _sequence_mode == "continuous" and state.bar.opponent <= 0:
 			if has_more_opponents():
@@ -667,9 +711,11 @@ func opponent_caption() -> String:
 ## the clock and the cards all start again, because beating someone should
 ## not leave you worn down for the next person.
 ##
-## On the floor it is the same room carrying on: the seats you have won stay
-## won, your record follows you, and the clock keeps running. The new
-## opponent takes their seats from those not yet committed either way.
+## On the floor it is a fresh vote but not a fresh start: the house divides
+## again on the new debater, so the seat count goes back to where the stage
+## opened — but your gaffes, your hand, your deck and the clock all follow
+## you in. Beating five debaters means winning five divisions on one set of
+## nerves and one afternoon.
 func _advance_to_next_opponent() -> void:
 	state.opponent_index += 1
 	_opponent = _opponents[state.opponent_index]
@@ -678,9 +724,9 @@ func _advance_to_next_opponent() -> void:
 	if _sequence_mode == "reset":
 		_reset_for_new_bout()
 	elif state.bar != null:
-		# Their seats have to come from somewhere, and taking them from the
-		# player would punish winning. They come from the undecided.
-		state.bar.opponent_gains(int(_stage.get("opp_start", 0)))
+		state.bar = _build_bar(
+			int(_stage.get("player_start", 0)),
+			int(_stage.get("opp_start", 0)))
 
 
 ## Everything a new bout starts fresh with.
@@ -698,13 +744,9 @@ func _reset_for_new_bout() -> void:
 		state.energy_max = state.energy_per_turn
 
 	if state.bar != null:
-		state.bar = BarModel.create(
-			BarModel.for_stage(_stage),
-			int(_stage.get("bar_max", 100)),
-			int(_stage.get("win_threshold", 51)),
+		state.bar = _build_bar(
 			int(_stage.get("player_start", 0)),
-			int(_stage.get("opp_start", 0)),
-		)
+			int(_stage.get("opp_start", 0)))
 
 	# A clean deck, so the last argument's spent cards are not a handicap.
 	state.deck.assign(state.deck + state.hand + state.discard)
@@ -716,7 +758,7 @@ func _reset_for_new_bout() -> void:
 
 ## What to say when the player wins, which depends on what they just did.
 func _victory_reason() -> String:
-	if _sequence_mode == "reset" and state.opponent_count > 1:
+	if _sequence_mode != "single" and state.opponent_count > 1:
 		return "All %d were argued down." % state.opponent_count
 	return "The support threshold was reached."
 

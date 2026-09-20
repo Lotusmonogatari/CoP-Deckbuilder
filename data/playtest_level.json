@@ -178,11 +178,18 @@
       "name_en": "Parliament Floor Debate",
       "name_jp": "本会議",
       "_shape": [
-        "Five opponents one after another, sharing one seat count and one",
-        "clock. Beat one and the next steps in; the seats you have won stay",
-        "won. Carries whatever the press conference and the caucus produced."
+        "Five debaters one after another. Each is their own division of the",
+        "house: reach the threshold and THAT DEBATER is finished, then the",
+        "next rises and the house divides again from the opening numbers.",
+        "",
+        "One clock and one record across all five, though - your gaffes, your",
+        "hand and your deck follow you in, so beating five debaters means",
+        "winning five divisions on one set of nerves and one afternoon.",
+        "",
+        "Carries whatever the press conference and the caucus produced."
       ],
       "sequence_mode": "continuous",
+      "_win_threshold_note": "PER DEBATER, not for the stage: 55 members voting to end this particular speaker. Beating the fifth carries the bill.",
       "carries_buffs_from": [2, 3],
       "opponents": [
         {"opp_id": "PT_F1", "name": "Opponent 1", "party": "Placeholder"},
@@ -193,7 +200,7 @@
       ],
       "bar_unit": "Seats",
       "bar_max": 101,
-      "win_threshold": 51,
+      "win_threshold": 55,
       "turn_limit": 20,
       "energy_per_turn": 3,
       "hand_size": 5,

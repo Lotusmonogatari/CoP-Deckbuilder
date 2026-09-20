@@ -23,6 +23,20 @@ extends RefCounted
 
 enum Model { SHARED_POOL, SINGLE, SURVIVAL }
 
+## What it costs, in persuasion points, to win over one seat.
+##
+## Somebody not yet committed either way comes across for a single point.
+## Somebody already sitting with the opposition is harder, and how much
+## harder varies from person to person: usually one point, sometimes two,
+## occasionally three. That is what makes the end of a debate slower than
+## the start even though the numbers look the same.
+const UNDECIDED_COST := 1
+const OPPONENT_COST_ODDS := [
+	{"cost": 1, "chance": 60},
+	{"cost": 2, "chance": 30},
+	{"cost": 3, "chance": 10},
+]
+
 var model: Model = Model.SHARED_POOL
 var maximum := 100      ## seats or supporters in the room
 var threshold := 51     ## what the player needs to win
@@ -32,11 +46,21 @@ var opponent := 0
 ## Only meaningful for a shared pool: everyone not yet committed either way.
 var undecided := 0
 
+## Rolls what the next seat held by the opponent will cost.
+##
+## Handed in rather than made here, so the whole battle runs off one seeded
+## generator and a test can post a fixed answer instead of a random one. A
+## bar built without one rolls for itself: a missing roller must never
+## quietly turn the rule off and make every seat cost a point.
+var _cost_roller: Callable = Callable()
+
 
 static func create(model_kind: Model, maximum_value: int, threshold_value: int,
-		player_start: int, opponent_start: int) -> BarModel:
+		player_start: int, opponent_start: int,
+		cost_roller: Callable = Callable()) -> BarModel:
 	var bar := BarModel.new()
 	bar.model = model_kind
+	bar._cost_roller = cost_roller
 	bar.maximum = maxi(maximum_value, 1)
 	bar.threshold = threshold_value
 	bar.player = clampi(player_start, 0, bar.maximum)
@@ -79,9 +103,16 @@ static func for_stage(stage: Dictionary) -> Model:
 
 ## The player wins people over.
 ##
-## In a shared pool this takes from the undecided first and only then from the
-## opponent, which is the rule in the brief. Returns how much actually moved,
-## which can be less than asked for when the room runs out.
+## `amount` is a budget of persuasion points, not a number of seats. In a
+## shared pool the undecided come across first at a point each, and once they
+## run out every further seat has to be bought off the opposition at whatever
+## that person costs.
+##
+## Points that cannot pay for the next seat are LOST rather than held over: a
+## big push can fall just short of a stubborn vote. Returns the number of
+## seats that actually moved, which is what the screen reports.
+##
+## On a single bar there is nobody to buy anyone from, so a point is a point.
 func player_gains(amount: int) -> int:
 	if amount <= 0:
 		return 0
@@ -91,16 +122,56 @@ func player_gains(amount: int) -> int:
 		player = clampi(player + amount, 0, maximum)
 		return player - before
 
-	var from_undecided := mini(amount, undecided)
-	undecided -= from_undecided
-	player += from_undecided
+	var budget := amount
+	var moved := 0
 
-	var still_wanted := amount - from_undecided
-	var from_opponent := mini(still_wanted, opponent)
-	opponent -= from_opponent
-	player += from_opponent
+	while budget > 0:
+		if undecided > 0:
+			if budget < UNDECIDED_COST:
+				break
+			budget -= UNDECIDED_COST
+			undecided -= 1
+			player += 1
+			moved += 1
+			continue
 
-	return from_undecided + from_opponent
+		if opponent <= 0:
+			break   # the whole room is already yours
+
+		var cost := roll_opponent_cost()
+		if budget < cost:
+			break   # not enough left to shift this one, and it is not banked
+		budget -= cost
+		opponent -= 1
+		player += 1
+		moved += 1
+
+	return moved
+
+
+## What the next seat held by the opposition costs, in points.
+func roll_opponent_cost() -> int:
+	var roll := _roll_percent()
+	var seen := 0
+	for band: Dictionary in OPPONENT_COST_ODDS:
+		seen += int(band["chance"])
+		if roll < seen:
+			return int(band["cost"])
+	return int(OPPONENT_COST_ODDS[-1]["cost"])
+
+
+## A number from 0 to 99, from the battle's generator where there is one.
+func _roll_percent() -> int:
+	if _cost_roller.is_valid():
+		return int(_cost_roller.call())
+
+	# No roller was handed in. Rolling for ourselves is worse than being
+	# given the battle's generator — it cannot be replayed from a seed — but
+	# it is far better than silently charging a point for everybody and
+	# playing a different game from the one that was designed.
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	return rng.randi_range(0, 99)
 
 
 ## The player argues the opponent down. Whoever the opponent loses goes back

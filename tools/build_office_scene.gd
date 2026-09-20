@@ -16,6 +16,7 @@ extends SceneTree
 const OUTPUT_PATH := "res://scenes/office_hours/OfficeScreen.tscn"
 const SCREEN_SCRIPT := "res://scripts/ui/OfficeScreen.gd"
 const PLACEHOLDER_SCRIPT := "res://scripts/ui/PlaceholderArt.gd"
+const OVERLAY_SCRIPT := "res://scripts/ui/Overlay.gd"
 
 const SIDE_MARGIN := 40
 const TOP_MARGIN := 70
@@ -86,6 +87,21 @@ func _init() -> void:
 	start.text = "Start the level"
 	start.custom_minimum_size = Vector2(0, 130)
 	_adopt(start, column, true)
+
+	# Who is behind you, and how far. Secondary information, so it lives
+	# behind a button rather than on the desk.
+	var organisations := Button.new()
+	organisations.name = "OrganisationsButton"
+	organisations.text = "The organisations"
+	organisations.custom_minimum_size = Vector2(0, 100)
+	_adopt(organisations, column, true)
+
+	# Covers everything, and knows its own three ways out.
+	var panel := PanelContainer.new()
+	panel.name = "OrganisationsPanel"
+	panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	panel.set_script(load(OVERLAY_SCRIPT))
+	_adopt(panel, _root, true)
 
 	_save()
 

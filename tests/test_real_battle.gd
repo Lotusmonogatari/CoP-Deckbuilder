@@ -212,6 +212,8 @@ func test_the_caucus_stage_hands_out_one_pool_of_energy() -> void:
 	assert_eq(engine.state.energy, 5, "five for the whole debate")
 	assert_eq(engine.state.energy_mode, "pool")
 
+	engine.state.hand.assign(["C01"])
+	engine.play_card("C01")          # so the turn is not a pass
 	engine.state.energy = 1
 	engine.end_turn()
 	assert_eq(engine.state.energy, 1, "and no more arrive with the new turn")
@@ -342,22 +344,25 @@ func test_the_floor_debate_lines_up_five_opponents() -> void:
 
 	assert_eq(engine.state.opponent_count, 5)
 	assert_eq(engine.state.bar.maximum, 101, "the house still has 101 seats")
-	assert_eq(engine.state.bar.threshold, 51, "and a majority is still 51")
+	assert_eq(engine.state.bar.threshold, 55,
+		"55 to end the debater in front of you, not 55 to carry the bill")
 
 
-func test_the_floor_debate_keeps_one_room_across_its_opponents() -> void:
+func test_each_floor_debater_gets_their_own_division() -> void:
 	var engine := BattleEngine.new()
 	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S4")))
 
+	var opened_on := engine.state.bar.player
 	engine.state.bar.player_gains(5)
-	var seats := engine.state.bar.player
+	engine.state.gaffe = 3
 	engine.state.turn = 7
 
 	engine.state.bar.opponent_loses(engine.state.bar.opponent)
 	engine._check_outcome()
 
 	assert_eq(engine.opponent_caption(), "2 of 5")
-	assert_eq(engine.state.bar.player, seats, "your seats survive the change")
+	assert_eq(engine.state.bar.player, opened_on, "the house divides again from the start")
+	assert_eq(engine.state.gaffe, 3, "but your record follows you in")
 	assert_eq(engine.state.turn, 7, "and so does the clock")
 	assert_true(engine.state.bar.totals_balance())
 
@@ -506,3 +511,118 @@ func test_answering_well_carries_the_press_into_the_floor_debate() -> void:
 	for booster_id: String in expected:
 		assert_true(carried.has(booster_id),
 			"%s was pleased at the conference and should reach the floor" % booster_id)
+
+
+# ---------------------------------------------------------------------------
+# Who is in the room
+# ---------------------------------------------------------------------------
+
+func test_a_playtest_stage_borrows_the_room_it_is_modelled_on() -> void:
+	# The playtest stages carry no audience mix of their own. Rather than
+	# invent percentages, each borrows the canon stage it already names in
+	# affinity_stage_id — the playtest press conference is modelled on ST04,
+	# so it gets ST04's room.
+	var press := BattleSetup.with_audience(_playtest_stage("PT_S2"))
+	var mix: Dictionary = press.get("segment_mix", {})
+
+	assert_false(mix.is_empty(), "the conference has a room")
+	assert_eq(mix, DataDB.get_stage("ST04")["segment_mix"], "and it is ST04's")
+
+
+func test_every_playtest_stage_has_somebody_in_the_room() -> void:
+	for stage: Dictionary in DataDB.playtest_level["stages"]:
+		var mix: Dictionary = BattleSetup.with_audience(stage).get("segment_mix", {})
+		assert_false(mix.is_empty(), "%s has an audience" % stage.get("stage_id"))
+
+		var total := 0.0
+		for share: float in mix.values():
+			total += share
+		assert_almost_eq(total, 1.0, 0.001,
+			"%s's audience adds up to the whole room" % stage.get("stage_id"))
+
+
+func test_a_stage_with_its_own_room_keeps_it() -> void:
+	var declared := {"SG01": 1.0}
+	var stage := _playtest_stage("PT_S2").duplicate(true)
+	stage["segment_mix"] = declared
+
+	assert_eq(BattleSetup.with_audience(stage)["segment_mix"], declared,
+		"a stage that says who is in the room is not overruled")
+
+
+func test_the_audience_reaches_the_cards() -> void:
+	# The whole point of filling the mix in: a card aimed at one part of the
+	# room used to read that audience as nought per cent of it.
+	var engine := BattleEngine.new()
+	_setup(engine, BattleSetup.for_playtest_stage(_playtest_stage("PT_S2")))
+
+	# C21 Iridescent Answer is aimed at the Press, and a press conference is
+	# mostly press.
+	var share := CardResolver.segment_share(DataDB.get_card("C21"), engine._stage)
+	assert_gt(share, 0.5, "the room is mostly who this card is aimed at")
+
+
+# ---------------------------------------------------------------------------
+# Standing with the organisations
+# ---------------------------------------------------------------------------
+
+func test_every_organisation_starts_level_with_the_player() -> void:
+	GameState.reset_booster_standing()
+
+	assert_eq(GameState.booster_standing.size(), DataDB.boosters.size(),
+		"all ten of them")
+	for booster: Dictionary in DataDB.boosters:
+		assert_eq(int(GameState.booster_standing[booster["booster_id"]]),
+			int(DataDB.booster_standing["start"]))
+
+
+func test_pleasing_an_organisation_raises_your_standing_with_it() -> void:
+	GameState.reset_booster_standing()
+	var before := int(GameState.booster_standing["BO08"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"])
+
+	var step := int(DataDB.booster_standing["per_please"])
+	assert_eq(int(GameState.booster_standing["BO08"]), before + step)
+	assert_eq(int(GameState.last_booster_change["BO08"]), step, "and it says so")
+	assert_eq(int(GameState.booster_standing["BO03"]), before,
+		"nobody else was pleased")
+
+	GameState.end_level()
+
+
+func test_standing_is_held_between_levels() -> void:
+	# Unlike the pleased list, which lasts one level. This is what makes who
+	# you please in front of the cameras worth anything later.
+	GameState.reset_booster_standing()
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"])
+	GameState.end_level()
+	var after_one := int(GameState.booster_standing["BO08"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	assert_eq(int(GameState.booster_standing["BO08"]), after_one,
+		"a new level does not wipe the slate")
+	assert_true(GameState.last_booster_change.is_empty(),
+		"though what changed last time is no longer news")
+
+	GameState.end_level()
+	GameState.reset_booster_standing()
+
+
+func test_standing_cannot_run_past_its_ceiling() -> void:
+	GameState.reset_booster_standing()
+	GameState.booster_standing["BO08"] = int(DataDB.booster_standing["max"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"])
+
+	assert_eq(int(GameState.booster_standing["BO08"]),
+		int(DataDB.booster_standing["max"]))
+	assert_false(GameState.last_booster_change.has("BO08"),
+		"and nothing is reported as having moved when nothing did")
+
+	GameState.end_level()
+	GameState.reset_booster_standing()

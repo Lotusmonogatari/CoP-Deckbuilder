@@ -55,7 +55,7 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 	var opponents: Array = stage.get("opponents", [])
 
 	var config := {
-		"stage": stage,
+		"stage": with_audience(stage),
 		# The first opponent; the rest arrive as the stage's sequencing is
 		# built in phase 3. Until then a stage plays its opening opponent.
 		"opponent": opponents[0] if not opponents.is_empty() else {},
@@ -70,6 +70,35 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 	}
 
 	return config
+
+
+## Fills in who is in the room, where a stage does not say.
+##
+## Every stage in the workbook carries a segment_mix — how much of the
+## audience is Press, Loyalists, Constituents, Donors, Bureaucrats — and the
+## hand-written playtest stages carry none, so every card aimed at a
+## particular audience currently reads that audience as zero per cent of the
+## room.
+##
+## Rather than invent percentages, a playtest stage borrows the mix of the
+## canon stage it already names in affinity_stage_id: the playtest press
+## conference is modelled on ST04, so it gets ST04's room. A stage that
+## declares its own mix keeps it.
+static func with_audience(stage: Dictionary) -> Dictionary:
+	if stage.has("segment_mix"):
+		return stage
+
+	var modelled_on := str(stage.get("affinity_stage_id", ""))
+	if modelled_on.is_empty():
+		return stage
+
+	var canon := DataDB.get_stage(modelled_on)
+	if not canon.has("segment_mix"):
+		return stage
+
+	var filled := stage.duplicate(true)
+	filled["segment_mix"] = canon["segment_mix"]
+	return filled
 
 
 ## Builds a battle from a module row that has already been looked up.

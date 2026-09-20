@@ -1,0 +1,30 @@
+{
+  "_README": [
+    "Where the player stands with each of the ten organisations.",
+    "",
+    "WRITTEN BY HAND, like rules.json and playtest_level.json. export_data.py",
+    "never overwrites it. The organisations themselves come from the workbook",
+    "(boosters.json); this file only says how standing with them works.",
+    "",
+    "EVERY NUMBER IS A PLACEHOLDER awaiting Cameron.",
+    "",
+    "Pleasing an organisation at a press conference - answering a question in",
+    "the suit it invites - raises your standing with the group behind that",
+    "question by 'per_please'. Standing starts at 'start' for all ten and is",
+    "held between levels.",
+    "",
+    "LIVES FOR THIS SITTING ONLY. Like the meta-variables in sanban.json, it",
+    "is lost when the game is closed until milestone M4 builds saving.",
+    "",
+    "NOT YET WIRED TO ANYTHING MECHANICAL. Standing is shown in the Office and",
+    "moves as you play, but no modifier switches on at a threshold yet -",
+    "modifiers.json is fully authored and has no last mile. What a high or low",
+    "standing should DO is Cameron's to decide, and the natural shape is a",
+    "threshold per organisation that turns its linked modifier on."
+  ],
+
+  "start": 50,
+  "min": 0,
+  "max": 100,
+  "per_please": 5
+}

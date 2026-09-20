@@ -15,11 +15,14 @@ const BATTLE_SCENE := "res://scenes/battle/BattleScreen.tscn"
 @onready var _subtitle: Label = %Subtitle
 @onready var _report: Label = %Report
 @onready var _start_button: Button = %StartButton
+@onready var _organisations_button: Button = %OrganisationsButton
+@onready var _organisations_panel: Overlay = %OrganisationsPanel
 @onready var _portrait: Control = %Portrait
 
 
 func _ready() -> void:
 	_start_button.pressed.connect(_on_start)
+	_organisations_button.pressed.connect(_show_organisations)
 	_build()
 
 
@@ -67,6 +70,70 @@ func _last_level_report() -> String:
 			return "The bill failed. There will be questions."
 		_:
 			return ""
+
+
+## The ten organisations, and where the player stands with each.
+##
+## Grouped by tier rather than listed flat, because the tiers are the real
+## distinction: a Constituency group is worth something different from a
+## National one, and seeing them mixed together hides that.
+func _show_organisations() -> void:
+	var rows: Array[Control] = []
+
+	rows.append(_wrapped_label("Answering a reporter in the suit their "
+		+ "question invites pleases the organisation behind it, and that "
+		+ "standing is carried between levels."))
+
+	for tier: String in ["Party", "Constituency", "National"]:
+		var in_tier := DataDB.boosters.filter(
+			func(b: Dictionary) -> bool: return str(b.get("tier", "")) == tier)
+		if in_tier.is_empty():
+			continue
+
+		rows.append(_heading_label(tier))
+		for booster: Dictionary in in_tier:
+			rows.append(_organisation_row(booster))
+
+	_organisations_panel.open("The organisations", rows)
+
+
+func _organisation_row(booster: Dictionary) -> Control:
+	var booster_id := str(booster.get("booster_id", ""))
+	var standing := int(GameState.booster_standing.get(booster_id, 50))
+
+	var line := "%s %s  —  %d" % [
+		booster.get("name_en", booster_id),
+		booster.get("name_jp", ""),
+		standing,
+	]
+
+	# What moved last level, so a change is visible rather than inferred.
+	var change := int(GameState.last_booster_change.get(booster_id, 0))
+	if change != 0:
+		line += "  (%+d)" % change
+
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 2)
+	box.add_child(_wrapped_label(line))
+	box.add_child(_wrapped_label(str(booster.get("boosts", "")), "SmallLabel"))
+	return box
+
+
+func _heading_label(text: String) -> Label:
+	var label := Label.new()
+	label.text = text
+	label.theme_type_variation = "HeaderLabel"
+	return label
+
+
+func _wrapped_label(text: String, variation: String = "") -> Label:
+	var label := Label.new()
+	label.text = text
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.custom_minimum_size = Vector2(760, 0)
+	if not variation.is_empty():
+		label.theme_type_variation = variation
+	return label
 
 
 func _on_start() -> void:

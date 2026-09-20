@@ -9,9 +9,21 @@
     "No code changes needed. The 'options' line lists what each flag accepts;",
     "anything else is rejected with a readable error at startup."
   ],
-
   "default_intent_pattern": {
-    "value": [["attack", 6], ["gain", 4], ["block", 5]],
+    "value": [
+      [
+        "attack",
+        6
+      ],
+      [
+        "gain",
+        4
+      ],
+      [
+        "block",
+        5
+      ]
+    ],
     "question": "What should an opponent do on their turn when nobody has written a pattern for them yet?",
     "means": {
       "_": "A pattern is a list of moves that repeats: this one attacks for 6, then gains 4, then blocks 5, then starts again.",
@@ -33,10 +45,13 @@
       "design/proposals/. Until those are approved, every opponent uses this."
     ]
   },
-
   "turn_limit_outcome": {
     "value": "loss",
-    "options": ["loss", "highest_support_wins", "tie_retry"],
+    "options": [
+      "loss",
+      "highest_support_wins",
+      "tie_retry"
+    ],
     "question": "If the turn limit runs out and neither side has reached the threshold, what happens?",
     "means": {
       "loss": "The player loses. Harshest, and the clearest to read.",
@@ -44,44 +59,66 @@
       "tie_retry": "The stage is replayed from the start."
     }
   },
-
   "opponent_can_win_by_threshold": {
     "value": false,
-    "options": [true, false],
+    "options": [
+      true,
+      false
+    ],
     "question": "Can the opponent win outright by pushing its own support past the threshold, or only by running out your clock or filling your gaffe meter?",
     "means": {
       "false": "The opponent can only win on the clock or the gaffe meter.",
       "true": "The opponent also wins the moment its support reaches the threshold."
     }
   },
-
   "opponent_engine": {
     "value": "intent_patterns",
-    "options": ["intent_patterns", "deck_ai"],
+    "options": [
+      "intent_patterns",
+      "deck_ai"
+    ],
     "question": "Do opponents follow a fixed, readable script, or play from a real deck?",
     "means": {
       "intent_patterns": "A fixed repeating list of moves, shown to the player a turn ahead. Recommended for the first playable version.",
       "deck_ai": "The opponent draws and plays its own cards. Not built yet — selecting this will stop battles from starting."
     }
   },
-
   "press_answer_timer": {
     "value": false,
-    "options": [true, false],
+    "options": [
+      true,
+      false
+    ],
     "question": "Do press conference questions have a countdown to answer?",
     "means": {
       "false": "No timer. The player takes as long as they like.",
       "true": "A countdown per question. The number of seconds comes from the Balance tab."
     }
   },
-
   "discard_hand_end_of_turn": {
     "value": true,
-    "options": [true, false],
+    "options": [
+      true,
+      false
+    ],
     "question": "At the end of a turn, does the player discard whatever is left in hand?",
     "means": {
       "true": "Discard the rest of the hand and draw a fresh one. Standard for this kind of game.",
       "false": "Unplayed cards stay in hand and the player tops up to the hand size."
+    }
+  },
+  "pass_energy_penalty": {
+    "value": 1,
+    "options": [
+      0,
+      1,
+      2
+    ],
+    "question": "What does it cost to end a turn having played nothing at all?",
+    "means": {
+      "0": "Passing is free. Keeping quiet and letting the clock run becomes a real tactic, which is why this is not the default.",
+      "1": "One energy off next turn. In a caucus, where energy is a pool that is never refilled, it comes off what is left of the pool instead - the only version that means anything there. In a press conference, passing is also how you decline the question in front of you.",
+      "2": "Two energy. Harsh on a three-energy turn: passing would cost you most of a turn on top of the turn you already gave up."
     }
   }
 }

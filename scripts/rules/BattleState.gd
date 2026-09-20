@@ -44,6 +44,13 @@ var block := 0
 ## A bonus left behind for the next card played this turn (C11 Groundwork).
 var next_card_bonus := 0
 
+## How many cards have been played this turn. Ending a turn on zero is how a
+## player passes, and passing costs something — see BattleEngine.end_turn().
+##
+## Counted rather than inferred from the energy spent, because a card can
+## cost nothing and a pool stage can leave energy unspent quite legitimately.
+var cards_played_this_turn := 0
+
 # --- Standing --------------------------------------------------------------
 var gaffe := 0
 var gaffe_limit := 5
