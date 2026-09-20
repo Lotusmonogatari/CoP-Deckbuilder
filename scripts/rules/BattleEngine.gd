@@ -676,7 +676,12 @@ func _check_turn_limit() -> void:
 	# is simply how it ends. Whatever support was reached is the result, and
 	# later stages of the level draw on it.
 	if state.win_mode == "score":
-		_finish("win", "The caucus closed with %d support." % state.player_score())
+		# In the units the stage is read in: a caucus counted as a share of
+		# the room should not close on a headcount.
+		var closing := ("%d%% of the room" % state.player_score()
+			if bool(_stage.get("bar_as_percent", false))
+			else "%d support" % state.player_score())
+		_finish("win", "The caucus closed with %s." % closing)
 		return
 
 	match str(_rules.get("turn_limit_outcome", "loss")):

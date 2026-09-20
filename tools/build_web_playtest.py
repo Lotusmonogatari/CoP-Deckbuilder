@@ -78,6 +78,34 @@ def flatten_rules(raw: dict) -> dict:
     return flat
 
 
+def fill_name_tokens(level: dict, player: dict) -> dict:
+    """Substitutes {party} in stage names with the player's actual party.
+
+    The caucus is the player's OWN party's caucus, so its name has to follow
+    whoever the protagonist turns out to be - and CLAUDE.md still lists the
+    protagonist's party as an open decision. Writing a party name into
+    playtest_level.json would quietly settle it.
+
+    Same as DataDB._fill_name_tokens, and done here for the same reason: this
+    script is the web build's data loader, so by the time the page sees a
+    stage the token is already gone.
+    """
+    party = str(player.get("party", "")).strip()
+
+    for stage in level.get("stages", []):
+        name_en = stage.get("name_en", "")
+        if "{party}" not in name_en:
+            continue
+        if party:
+            stage["name_en"] = name_en.replace("{party}", party)
+        else:
+            # No party settled yet. "Party Caucus" reads worse than plain
+            # "Caucus", so the token takes its trailing space with it.
+            stage["name_en"] = name_en.replace("{party} ", "").replace("{party}", "").strip()
+
+    return level
+
+
 def build_data() -> dict:
     raw = {name: read_json(name) for name in NEEDED}
 
@@ -93,7 +121,7 @@ def build_data() -> dict:
         "cards": cards,
         "journalists": raw["journalists"].get("journalists", []),
         "player": raw["player"],
-        "playtest_level": raw["playtest_level"],
+        "playtest_level": fill_name_tokens(raw["playtest_level"], raw["player"]),
         "rules": flatten_rules(raw["rules"]),
         "sanban": raw["sanban"],
         "segments": raw["segments"],

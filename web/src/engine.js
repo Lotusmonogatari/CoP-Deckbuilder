@@ -207,6 +207,13 @@ class BarModel {
 
     // True in a stage where only the player's own total is scored.
     this.scoredOnly = false;
+
+    // How the last gain was actually made, so a screen can say "2 from the
+    // undecided, 1 argued across" rather than a bare total. `from_other_side`
+    // means whoever was taken off the opposing side, so the same two keys
+    // describe either side's move. `wasted` is the points that could not pay
+    // for anybody: leftovers are lost, and the screen should say so.
+    this.last_gain = { from_undecided: 0, from_other_side: 0, wasted: 0 };
   }
 
   static forStage(stage) {
@@ -227,9 +234,14 @@ class BarModel {
   // Returns the number of seats that actually moved.
   playerGains(amount) {
     if (amount <= 0) return 0;
+    this.last_gain = { from_undecided: 0, from_other_side: 0, wasted: 0 };
+
     if (this.model !== SHARED_POOL) {
       const before = this.player;
       this.player = clamp(this.player + amount, 0, this.maximum);
+      // A single bar is a level, not a room: nobody to win over, so the
+      // whole move counts as one undivided rise.
+      this.last_gain.from_undecided = this.player - before;
       return this.player - before;
     }
 
@@ -243,6 +255,7 @@ class BarModel {
         this.undecided -= 1;
         this.player += 1;
         moved += 1;
+        this.last_gain.from_undecided += 1;
         continue;
       }
 
@@ -254,8 +267,10 @@ class BarModel {
       this.opponent -= 1;
       this.player += 1;
       moved += 1;
+      this.last_gain.from_other_side += 1;
     }
 
+    this.last_gain.wasted = budget;
     return moved;
   }
 
@@ -306,10 +321,18 @@ class BarModel {
     this.undecided -= fromUndecided;
     this.opponent += fromUndecided;
 
-    const fromPlayer = Math.min(amount - fromUndecided, this.player);
+    const stillWanted = amount - fromUndecided;
+    const fromPlayer = Math.min(stillWanted, this.player);
     this.player -= fromPlayer;
     this.opponent += fromPlayer;
 
+    // Recorded the same way the player's gains are, so one helper can
+    // describe either side's move.
+    this.last_gain = {
+      from_undecided: fromUndecided,
+      from_other_side: fromPlayer,
+      wasted: stillWanted - fromPlayer,
+    };
     return fromUndecided + fromPlayer;
   }
 
@@ -651,9 +674,23 @@ class BattleEngine {
 
     if (this._questions.length > 0) this._answerQuestion(card);
 
+    // Who was in front of us before the outcome was checked. A card that
+    // finishes a debater changes the whole room underneath the player, and
+    // that is the first thing the screen has to say.
+    const wasFacing = s.opponent_index;
+    const beaten = this.currentOpponent();
+
     this._checkOutcome(false);
 
-    return { ok: true, card_id: cardId, effect: effect, applied: applied, energy_left: s.energy };
+    const result = { ok: true, card_id: cardId, effect: effect, applied: applied, energy_left: s.energy };
+    if (s.opponent_index !== wasFacing) {
+      result.bout_won = {
+        finished: str(beaten.name, ''),
+        next: str(this.currentOpponent().name, ''),
+        remaining: s.opponent_count - s.opponent_index,
+      };
+    }
+    return result;
   }
 
   // Support, then guard, then gaffe, then draw.
@@ -662,6 +699,8 @@ class BattleEngine {
     const applied = { gained: 0, opponent_lost: 0, guard: 0, gaffe: 0, drawn: 0 };
 
     applied.gained = s.bar.playerGains(int(effect.self_plus, 0));
+    // Who those people were: undecided, or argued off the other side.
+    applied.gain_split = Object.assign({}, s.bar.last_gain);
 
     // Arguing the opposition down is an attack, so their guard is the first
     // thing it meets and what it absorbs is spent. Until now this went
@@ -718,7 +757,17 @@ class BattleEngine {
     s.next_intent_revealed = false;
     s.cards_played_this_turn = 0;
 
+    const wasFacing = s.opponent_index;
+    const beaten = this.currentOpponent();
     this._checkOutcome(true);
+    let boutWon = {};
+    if (s.opponent_index !== wasFacing) {
+      boutWon = {
+        finished: str(beaten.name, ''),
+        next: str(this.currentOpponent().name, ''),
+        remaining: s.opponent_count - s.opponent_index,
+      };
+    }
 
     if (!s.isOver()) {
       s.turn += 1;
@@ -728,7 +777,8 @@ class BattleEngine {
       if (s.draw_mode !== 'none') this._drawUpToHandSize();
     }
 
-    return { ok: true, passed: passed, intent: intent, opponent: opponentResult, turn: s.turn, outcome: s.outcome };
+    return { ok: true, passed: passed, intent: intent, opponent: opponentResult,
+      bout_won: boutWon, turn: s.turn, outcome: s.outcome };
   }
 
   // What saying nothing costs. One energy, from rules.json.
@@ -793,7 +843,11 @@ class BattleEngine {
         return { verb: 'attack', absorbed: absorbed, damage: s.bar.playerLoses(through) };
       }
       case 'gain':
-        return { verb: 'gain', gained: s.bar.opponentGains(value) };
+        {
+          const gained = s.bar.opponentGains(value);
+          return { verb: 'gain', gained: gained,
+            gain_split: Object.assign({}, s.bar.last_gain) };
+        }
       case 'block': {
         const before = s.opponent_block;
         s.opponent_block = Math.min(s.opponent_block + value, s.guard_cap);
@@ -873,7 +927,12 @@ class BattleEngine {
     // A scored stage is not won or lost on the clock — running out of turns
     // is simply how it ends.
     if (s.win_mode === 'score') {
-      return this._finish('win', 'The caucus closed with ' + s.playerScore() + ' support.');
+      // In the units the stage is read in: a caucus counted as a share of
+      // the room should not close on a headcount.
+      const closing = this._stage.bar_as_percent
+        ? s.playerScore() + '% of the room'
+        : s.playerScore() + ' support';
+      return this._finish('win', 'The caucus closed with ' + closing + '.');
     }
 
     switch (str(this._rules.turn_limit_outcome, 'loss')) {
@@ -1017,11 +1076,19 @@ class BattleEngine {
 
     effect.opp_minus_counts = reduceCounts;
     effect.guard_counts = guardCounts;
+    // A gaffe counts. Leaving it out produced a card reading "Gaffe +1.
+    // Nothing this card does counts in this room." — a sentence that
+    // contradicts itself. Doing something bad is still doing something.
     effect.does_nothing = (
       int(effect.self_plus, 0) === 0
       && int(effect.draw, 0) === 0
+      && int(effect.gaffe, 0) === 0
       && (int(effect.opp_minus, 0) === 0 || !reduceCounts)
       && (int(effect.guard, 0) === 0 || !guardCounts));
+
+    // Every card answers the question in front of you, whatever else it
+    // does — so a card whose numbers are all inert here still spends one.
+    effect.answers_question = !!this.currentQuestion();
 
     return effect;
   }
@@ -1221,6 +1288,85 @@ function clampMeta(value, variable) {
 function findVariable(rows, name) {
   for (const row of rows) if (row.name_en === name) return row;
   return {};
+}
+
+// What a stage pays flat for being won, straight off the stage row.
+//
+// This existed in the Godot engine from milestone 1 and had no caller, and
+// no JS counterpart at all — so every stage in the game was won for nothing.
+function applyWinDeltas(meta, stage, sanbanRows) {
+  const updated = Object.assign({}, meta);
+  const applied = {};
+
+  for (const key of Object.keys(WIN_DELTA_KEYS)) {
+    const delta = int(stage[key], 0);
+    if (delta === 0) continue;
+
+    const name = WIN_DELTA_KEYS[key];
+    const variable = findVariable(sanbanRows, name);
+    const before = int(updated[name], int(variable.start, 0));
+    const after = clampMeta(before + delta, variable);
+    updated[name] = after;
+    applied[name] = after - before;
+  }
+
+  return { meta: updated, applied: applied };
+}
+
+// The workbook's column names, and what the player calls them.
+const WIN_DELTA_KEYS = {
+  win_delta_jiban: 'Constituency support',
+  win_delta_kanban: 'Reputation',
+  win_delta_kaban: 'Funds',
+  win_delta_party_support: 'Party support',
+};
+
+// The meta-variables a stage pays out on a win. Zero is left out rather than
+// reported as "+0": a variable this stage does not touch is not news.
+function winRewards(stage) {
+  const rewards = {};
+  for (const key of Object.keys(WIN_DELTA_KEYS)) {
+    const delta = int(stage[key], 0);
+    if (delta !== 0) rewards[WIN_DELTA_KEYS[key]] = delta;
+  }
+  return rewards;
+}
+
+// True where a stage's rewards have not been decided yet. Every playtest
+// stage is in this state on purpose, waiting on Cameron's numbers — the
+// screens must say "not set yet" rather than showing four zeroes.
+function rewardsAreUnset(stage) {
+  if (Object.keys(winRewards(stage)).length > 0) return false;
+  if (int(stage.xp_reward, 0) !== 0) return false;
+  return !stage.tone_effects;
+}
+
+// What a stage produces that is not a flat reward — described, not forecast.
+// A press conference's worth depends on the tone it closes on, so a number
+// here would be a guess presented as a promise.
+function variableRewards(stage) {
+  const lines = [];
+  const effects = stage.tone_effects || {};
+  const baseline = int(effects.baseline, 50);
+
+  const perVariable = effects.meta || {};
+  for (const name of Object.keys(perVariable)) {
+    const per = int(perVariable[name], 0);
+    if (per > 0) {
+      lines.push(name + ', by how far above ' + baseline + ' you finish (1 per ' + per + ')');
+    }
+  }
+
+  const perSupport = int(effects.support_per_points, 0);
+  if (perSupport > 0) {
+    lines.push('A head start later in the level, 1 per ' + perSupport + ' above ' + baseline);
+  }
+
+  if (Array.isArray(stage.questions) && stage.questions.length > 0) {
+    lines.push('Standing with whichever organisations your answers please');
+  }
+
+  return lines;
 }
 
 // A stage says what its score is worth under tone_effects.meta: a variable

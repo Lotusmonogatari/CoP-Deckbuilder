@@ -96,7 +96,7 @@ static func player_move(result: Dictionary, stage: Dictionary,
 
 	var gaffe := int(applied.get("gaffe", 0))
 	if gaffe > 0:
-		parts.append("%d gaffe%s against you" % [gaffe, "" if gaffe == 1 else "s"])
+		parts.append("%d gaffe%s on your record" % [gaffe, "" if gaffe == 1 else "s"])
 
 	return _sentence(parts)
 
@@ -121,7 +121,9 @@ static func opponent_move(opponent_result: Dictionary, stage: Dictionary,
 			if absorbed > 0:
 				parts.append("your guard absorbed %d" % absorbed)
 			if damage > 0:
-				parts.append("%s lost to %s" % [quantity(stage, damage), _them(opponent_name)])
+				# Not "lost to Ito": the sentence already opens with their
+				# name, so repeating it reads as two different people.
+				parts.append("%s taken from you" % quantity(stage, damage))
 			elif absorbed > 0:
 				parts.append("nothing got through")
 			else:

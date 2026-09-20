@@ -43,6 +43,9 @@ const run = {
   lastBoosterChange: {},
   lastLevelOutcome: '',
   lastMetaChange: {},
+  // Nothing spends this yet — the XP checkpoint is milestone M5 — but it is
+  // banked rather than discarded so the checkpoint opens on a real number.
+  xp: 0,
   engine: null,
   stage: null,
   selected: null,
@@ -126,7 +129,7 @@ function showOffice() {
 
   const start = el('button', 'primary', 'Start ' + DATA.playtest_level.name_en);
   start.id = 'start-level';
-  start.addEventListener('click', startLevel);
+  start.addEventListener('click', showBriefing);
   root.append(start);
 
   // Who is behind you, and how far. Secondary, so it lives behind a button.
@@ -142,6 +145,86 @@ function lastLevelReport() {
   if (!run.lastLevelOutcome) return 'Nothing on today. The House sits shortly.';
   if (run.lastLevelOutcome === WON) return 'The bill carried. Word has got round.';
   return 'The bill failed. There will be questions.';
+}
+
+// What the level ahead is worth, before committing to it.
+//
+// Cameron asked for the STATIC values: what a stage pays flat for being won.
+// What a press conference or a caucus produces depends on the number it
+// closes on, so those are named as variable rather than forecast.
+//
+// Every reward in the playtest level is currently zero, and this screen says
+// so in words. Four zeroes would read as "this level is worthless"; "not set
+// yet" is the truth, and it is Cameron's to set.
+function showBriefing() {
+  overlay('Before you go in', sheet => {
+    let anythingSet = false;
+
+    for (const stage of DATA.playtest_level.stages) {
+      sheet.append(el('h2', 'org-tier', stage.name_en));
+
+      const who = opponentsLine(stage);
+      if (who !== '') sheet.append(el('p', 'org-boosts', who));
+
+      if (rewardsAreUnset(stage)) {
+        sheet.append(el('p', 'org-boosts',
+          'What winning this is worth has not been set yet.'));
+        continue;
+      }
+
+      anythingSet = true;
+      const rewards = winRewards(stage);
+      for (const name of Object.keys(rewards)) {
+        sheet.append(el('p', 'detail-line',
+          name + ' ' + (rewards[name] > 0 ? '+' : '\u2212') + Math.abs(rewards[name])));
+      }
+      const xp = int(stage.xp_reward, 0);
+      if (xp > 0) sheet.append(el('p', 'detail-line', xp + ' XP'));
+      for (const line of variableRewards(stage)) {
+        sheet.append(el('p', 'org-boosts', line));
+      }
+    }
+
+    if (!anythingSet) {
+      sheet.append(el('div', 'gap'));
+      sheet.append(el('p', 'detail-line', 'Nothing in this level pays out yet. '
+        + 'The slots are in the data waiting for numbers, and the moment they '
+        + 'have any, they will land here and on your standing.'));
+    }
+
+    // Losing is the same everywhere for now, and saying so is worth a line:
+    // the player should know what they are risking.
+    sheet.append(el('div', 'gap'));
+    sheet.append(el('p', 'org-boosts', 'Lose a stage and you earn nothing from '
+      + 'it. Nothing else is taken off you.'));
+
+    const go = el('button', 'primary', 'Go in');
+    go.id = 'briefing-go';
+    go.addEventListener('click', () => {
+      sheet.closest('.backdrop').remove();
+      startLevel();
+    });
+    sheet.append(go);
+
+    const back = el('button', 'ghost', 'Back');
+    back.id = 'briefing-back';
+    back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+    sheet.append(back);
+  });
+}
+
+// "Against Opponent A, Opponent B and Opponent C" — who is waiting.
+function opponentsLine(stage) {
+  const names = (stage.opponents || [])
+    .map(o => String(o.name || '').trim())
+    .filter(n => n !== '');
+
+  if (names.length === 0) {
+    return (stage.questions || []).length > 0
+      ? 'The reporters ask the questions here.' : '';
+  }
+  if (names.length === 1) return 'Against ' + names[0];
+  return 'Against ' + names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
 }
 
 function startLevel() {
@@ -271,6 +354,11 @@ function drawBattle() {
   // How much of the next attack is already covered. Shown only when there is
   // some: a permanent "Guarding 0" is noise.
   if (s.block > 0) right.append(el('span', 'guarding', 'Guarding ' + s.block));
+  // And theirs. Banked and spent since the last round, never once shown, so
+  // the player could only infer it after the fact from "their guard stopped 3".
+  if (s.opponent_block > 0) {
+    right.append(el('span', 'their-guard', 'They guard ' + s.opponent_block));
+  }
   // The gaffe warning turns red ONLY when one more would end the stage.
   right.append(el('span', engine.gaffeIsCritical() ? 'gaffes warn' : 'gaffes',
     'Gaffes ' + s.gaffe + ' / ' + s.gaffe_limit));
@@ -298,15 +386,32 @@ function drawBattle() {
   endTurn.id = 'end-turn';
   endTurn.disabled = s.isOver();
   endTurn.addEventListener('click', () => {
+    // Read BEFORE ending the turn: a finished bout swaps in the next
+    // opponent, and the sentence is about the one who just acted.
+    const speaker = opponentDisplayName();
     const turn = engine.endTurn();
     drawBattle();
+
+    const lines = [];
     // The pass penalty has always worked; nothing ever said so, which is why
     // a playtest read it as having stopped after the first time.
     if (turn.passed && !engine.state.isOver()) {
-      flash(engine.isPressConference()
+      lines.push(engine.isPressConference()
         ? 'You let that one go. The room cools.'
         : 'You said nothing. One less energy this turn.');
     }
+
+    const said = describeOpponentMove(turn.opponent, stage, engine.state, speaker);
+    if (said !== '') lines.push(said);
+
+    // A debater finished by the clock or by their own attack rather than by
+    // a card — the same news, from the other end of the turn.
+    if (turn.bout_won && Object.keys(turn.bout_won).length > 0) {
+      lines.push(describeWhatHappened(
+        { bout_won: turn.bout_won }, stage, engine.state, speaker));
+    }
+
+    if (lines.length > 0) flash(lines.join(' '));
   });
   root.append(endTurn);
 
@@ -352,10 +457,25 @@ function supportBar() {
   const hasThreshold = s.win_mode !== 'score' && !engine.isPressConference();
   const twoSided = bar.model === SHARED_POOL;
 
+  const percent = isPercent(run.stage);
+  const amount = (value) => percent ? value + '%' : String(value);
+
+  // Reaching the threshold ends the STAGE only when nobody else is waiting
+  // to rise. On the floor it ends one debater of five, and "55 seats to win"
+  // read as though the first one finished it.
+  const winsStage = !engine.hasMoreOpponents();
+
   const wrap = el('section', 'bar-wrap');
-  wrap.append(el('p', 'bar-caption', hasThreshold
-    ? bar.threshold + ' ' + unit.toLowerCase() + ' to win'
-    : 'Raise ' + unit.toLowerCase() + ' as high as you can'));
+  let caption;
+  if (hasThreshold) {
+    caption = amount(bar.threshold) + (percent ? '' : ' ' + unit.toLowerCase())
+      + (winsStage ? ' to win' : ' to advance');
+  } else if (percent) {
+    caption = 'Take as much of the room as you can';
+  } else {
+    caption = 'Raise ' + unit.toLowerCase() + ' as high as you can';
+  }
+  wrap.append(el('p', 'bar-caption', caption));
 
   const track = el('div', 'bar');
   const mine = el('div', 'bar-mine');
@@ -374,8 +494,17 @@ function supportBar() {
   }
   wrap.append(track);
 
+  // Whoever holds the other share, by name. The bar used to say "Them" even
+  // where the stage data named them. A name long enough to break the row on
+  // a phone falls back to its first word, or to "Them".
+  // A name too long for the row falls back to "Them" rather than being
+  // shortened: taking the first word turned "The Caucus Panel" into "The".
+  let other = String(opponentDisplayName() || '').trim();
+  if (other === '' || other.length > 18) other = 'Them';
+
   wrap.append(el('p', 'bar-readout', twoSided
-    ? 'You ' + bar.player + ' · Undecided ' + bar.undecided + ' · Them ' + bar.opponent
+    ? 'You ' + amount(bar.player) + ' · Undecided ' + amount(bar.undecided)
+      + ' · ' + other + ' ' + amount(bar.opponent)
     : unit + ' ' + bar.player + ' of ' + bar.maximum));
   return wrap;
 }
@@ -417,35 +546,199 @@ function effectHere(effect, card) {
 
   if (effect.does_nothing) parts.push('Nothing this card does counts in this room.');
 
+  // Every card answers the question in front of you, whatever else it does.
+  // A draw-1 card was spent in a playtest on the assumption it was free.
+  if (effect.answers_question) parts.push('Answers this question.');
+
   return parts.length > 0 ? parts.join(' ') : (card.effect_text || '');
 }
 
 // What a card just did, in the room's own units. The numbers are a budget,
 // not an outcome: five points can win five people or three.
-function describeWhatHappened(result, stage) {
+// ---------------------------------------------------------------------------
+// What just happened, in the room's own terms
+// ---------------------------------------------------------------------------
+// A faithful port of scripts/ui/BattleNarration.gd. The player's move and the
+// opponent's move use the SAME grammar, or the screen reads as two different
+// games — and the grammar depends on what the bar is measuring:
+//
+//   A room of people — the floor, the committee, the caucus. There are seats,
+//   and winning one means somebody changed their mind. "3 seats won over."
+//
+//   A level that rises — the press conference. Nobody to win over; a mood
+//   going up and down. "Press tone raised by 3." "3 press tone won over" is
+//   what a playtest actually read on screen, and it is nonsense.
+
+// The name of whoever is opposite, for a sentence to use. Empty in a press
+// conference: the journalist asking is named in the speaker row, but nobody
+// there is an opponent whose support can be taken.
+function opponentDisplayName() {
+  if (run.engine.isPressConference()) return '';
+  return str(run.engine.currentOpponent().name, '');
+}
+
+function isARoom(state) {
+  if (state.committee) return true;
+  if (!state.bar) return false;
+  return state.bar.model === SHARED_POOL;
+}
+
+// The caucus is already a 0-100 scale, so this is a label rather than any
+// kind of conversion: it stops the player counting heads in a body whose
+// size changes from one party to the next.
+function isPercent(stage) { return !!stage.bar_as_percent; }
+
+function unitNoun(stage, count) {
+  if (isPercent(stage)) return '%';
+  const unit = String(stage.bar_unit || 'support').toLowerCase();
+  return (count === 1 && unit.endsWith('s')) ? unit.slice(0, -1) : unit;
+}
+
+function quantity(stage, count) {
+  return isPercent(stage) ? count + '%' : count + ' ' + unitNoun(stage, count);
+}
+
+function nameOr(name, fallback) {
+  const trimmed = String(name || '').trim();
+  return trimmed === '' ? fallback : trimmed;
+}
+
+function theirs(name) {
+  const trimmed = String(name || '').trim();
+  return trimmed === '' ? 'their' : trimmed + "'s";
+}
+
+function them(name) {
+  const trimmed = String(name || '').trim();
+  return trimmed === '' ? 'them' : trimmed;
+}
+
+// Joins the clauses and closes the sentence, capitalising only the first
+// letter so a name inside the clause keeps its own.
+function sentence(parts) {
+  if (parts.length === 0) return '';
+  const line = parts.join(', ');
+  return line.charAt(0).toUpperCase() + line.slice(1) + '.';
+}
+
+// "2 from the undecided, 1 argued across" — who those people actually were.
+// Both halves only matter when there are two: "3 from the undecided" when
+// that is all there was adds a clause and no information.
+function splitDetail(stage, split, fromWhom) {
+  if (!split) return '';
+  const undecided = int(split.from_undecided, 0);
+  const other = int(split.from_other_side, 0);
+  if (other <= 0) return '';
+  if (undecided <= 0) return 'all of them off ' + fromWhom;
+  return undecided + ' from the undecided, ' + other + ' off ' + fromWhom;
+}
+
+function boutWonLine(bout) {
+  const who = nameOr(bout.finished, 'That opponent');
+  if (int(bout.remaining, 0) <= 0) return who + ' is finished';
+  return who + ' is finished \u2014 ' + nameOr(bout.next, 'the next') + ' rises';
+}
+
+function gainedLine(stage, state, applied, wanted, won, sayShortfall, opponentName) {
+  // A level that rises has nobody to win over: it goes up, and by how much.
+  if (!isARoom(state)) {
+    const unit = String(stage.bar_unit || 'support');
+    return won > 0 ? unit + ' raised by ' + won : unit + ' did not move';
+  }
+
+  let line = quantity(stage, won) + ' won over';
+
+  const detail = splitDetail(stage, applied.gain_split, them(opponentName));
+  if (detail !== '') line += ' \u2014 ' + detail;
+
+  // The leftover. Points that cannot pay for the next person are LOST rather
+  // than banked, so "nearly persuaded" would promise progress that does not
+  // exist. Suppressed when the card finished a debater: the win is the news,
+  // and a shortfall beside it is what made this line unreadable.
+  const short = wanted - won;
+  if (sayShortfall && short > 0 && won < wanted) {
+    line += ', ' + short + (short === 1 ? ' point' : ' points') + ' short of the next';
+  }
+  return line;
+}
+
+function describeWhatHappened(result, stage, state, opponentName) {
   const applied = result.applied || {};
   const effect = result.effect || {};
-  const unit = String(stage.bar_unit || 'support').toLowerCase();
   const parts = [];
+
+  // A finished debater comes FIRST.
+  const bout = result.bout_won;
+  const hasBout = bout && Object.keys(bout).length > 0;
+  if (hasBout) parts.push(boutWonLine(bout));
 
   const wanted = int(effect.self_plus, 0);
   const won = int(applied.gained, 0);
   if (wanted > 0) {
-    parts.push(won < wanted
-      ? won + ' ' + unit + ' won over \u2014 ' + (wanted - won)
-        + (wanted - won === 1 ? ' point short' : ' points short')
-      : won + ' ' + unit + ' won over');
+    parts.push(gainedLine(stage, state, applied, wanted, won, !hasBout, opponentName));
   }
 
   const stopped = int(applied.guard_stopped, 0);
-  if (stopped > 0) parts.push('their guard stopped ' + stopped);
+  if (stopped > 0) parts.push(theirs(opponentName) + ' guard stopped ' + stopped);
 
   const lost = int(applied.opponent_lost, 0);
-  if (lost > 0) parts.push(lost + ' argued away from them');
+  if (lost > 0) parts.push(quantity(stage, lost) + ' argued away from ' + them(opponentName));
 
-  if (parts.length === 0) return '';
-  const line = parts.join(', ');
-  return line.charAt(0).toUpperCase() + line.slice(1) + '.';
+  const gaffe = int(applied.gaffe, 0);
+  if (gaffe > 0) parts.push(gaffe + ' gaffe' + (gaffe === 1 ? '' : 's') + ' on your record');
+
+  return sentence(parts);
+}
+
+// What the opponent's move just did. The engine has always computed this and
+// thrown it away, so guard built, seats taken and panel members leaned on all
+// happened in complete silence.
+function describeOpponentMove(opponentResult, stage, state, opponentName) {
+  if (!opponentResult || Object.keys(opponentResult).length === 0) return '';
+
+  const who = nameOr(opponentName, 'They');
+  const parts = [];
+
+  switch (str(opponentResult.verb, 'none')) {
+    case 'attack': {
+      const absorbed = int(opponentResult.absorbed, 0);
+      const damage = int(opponentResult.damage, 0);
+      if (absorbed > 0) parts.push('your guard absorbed ' + absorbed);
+      // Not "lost to Ito": the sentence already opens with their name, so
+      // repeating it reads as two different people.
+      if (damage > 0) parts.push(quantity(stage, damage) + ' taken from you');
+      else if (absorbed > 0) parts.push('nothing got through');
+      else parts.push('the attack found nothing to take');
+      break;
+    }
+    case 'gain': {
+      const gained = int(opponentResult.gained, 0);
+      if (gained <= 0) return who + ' pressed the case and won nobody over.';
+      parts.push('won over ' + quantity(stage, gained));
+      const detail = splitDetail(stage, opponentResult.gain_split, 'you');
+      if (detail !== '') parts.push(detail);
+      break;
+    }
+    case 'block': {
+      const guard = int(opponentResult.guard, 0);
+      if (guard <= 0) return who + ' could not guard any further.';
+      parts.push('developed ' + guard + ' guard');
+      break;
+    }
+    case 'lean_down': {
+      const member = opponentResult.member || {};
+      const moved = Math.abs(int(member.moved, 0));
+      if (moved <= 0) return who + ' leaned on the panel and moved nobody.';
+      parts.push('leaned on ' + str(member.name, 'a member') + ', ' + moved + ' against you');
+      break;
+    }
+    default:
+      return who + ' waited.';
+  }
+
+  // Joined directly rather than through sentence(): capitalising and then
+  // lowercasing back would also flatten any name inside the clause.
+  return who + ': ' + parts.join(', ') + '.';
 }
 
 // A short line under the bar, for what just happened.
@@ -503,9 +796,10 @@ function showCardZoom(card) {
     play.disabled = Number(card.cost) > s.energy || s.isOver();
     play.addEventListener('click', () => {
       document.querySelectorAll('.backdrop').forEach(n => n.remove());
+      const who = opponentDisplayName();
       const result = run.engine.playCard(card.card_id);
       drawBattle();
-      flash(describeWhatHappened(result, run.stage));
+      flash(describeWhatHappened(result, run.stage, run.engine.state, who));
     });
     sheet.append(play);
 
@@ -559,6 +853,9 @@ function showDetails() {
     if (s.energy_mode === 'pool') {
       lines.push('');
       lines.push('These ' + s.energy_max + ' are for the whole debate. They do not come back at the start of a turn.');
+      // The figure above matches the pips because both read energy_max — but
+      // it is the number still LEFT that changes, and that was never shown.
+      lines.push(s.energy + ' of them left.');
     }
     if (s.win_mode === 'score') {
       lines.push('There is nothing to reach here. However high the support gets is what carries into the floor debate.');
@@ -588,9 +885,14 @@ function showOutcome() {
 
   // A stage whose score carries has to say so here, or the player never finds
   // out: the consequence lands in a stage they have not reached yet.
+  // "Carried" on its own is a word, not an ending. The last stage of a level
+  // is the bill being adopted, and it should read like it.
+  const lastStage = run.runner.index + 1 >= run.runner.stageCount();
+  const headline = (s.outcome === 'win' && lastStage)
+    ? 'You convinced Parliament and your bill was adopted.' : '';
+
   const lines = [s.outcome_reason];
   const score = s.playerScore();
-  let moved = {};
 
   if (s.outcome !== 'loss') {
     if (run.runner.scoreIsCarriedFrom(int(run.stage.seq, -1))) {
@@ -598,23 +900,74 @@ function showOutcome() {
       if (seats > 0) lines.push('You start ' + seats + ' ahead at the floor debate.');
       else if (seats < 0) lines.push('You start ' + (-seats) + ' behind at the floor debate.');
     }
-    moved = applyScoreEffects(run.meta, run.stage, score, DATA.sanban).applied;
+
+    // What the stage was worth: flat for winning, and again for the number
+    // it closed on. Totalled, so a variable moved twice reports once.
+    const moved = {};
+    const flat = applyWinDeltas(run.meta, run.stage, DATA.sanban).applied;
+    for (const name of Object.keys(flat)) {
+      moved[name] = int(moved[name], 0) + flat[name];
+    }
+    const scored = applyScoreEffects(run.meta, run.stage, score, DATA.sanban).applied;
+    for (const name of Object.keys(scored)) {
+      moved[name] = int(moved[name], 0) + scored[name];
+    }
+
+    const changes = [];
     for (const name of Object.keys(moved)) {
-      lines.push(name + ' ' + (moved[name] > 0 ? '+' : '−') + Math.abs(moved[name]) + '.');
+      if (moved[name] !== 0) {
+        changes.push(name + ' ' + (moved[name] > 0 ? '+' : '\u2212') + Math.abs(moved[name]));
+      }
+    }
+    const xp = int(run.stage.xp_reward, 0);
+    if (xp > 0) changes.push(xp + ' XP');
+
+    // Which organisations the answers pleased. The Office shows the result,
+    // but the connection between an answer and a standing is lost by then.
+    const pleased = engine.pleasedBoosters();
+    if (pleased.length > 0) {
+      const names = boosterNames(DATA);
+      lines.push('');
+      lines.push('Pleased: ' + pleased.map(id => names[id] || id).join(', ') + '.');
+    }
+
+    if (changes.length > 0) {
+      lines.push('');
+      lines.push(changes.join(', ') + '.');
+    } else if (s.outcome === 'win' && rewardsAreUnset(run.stage)) {
+      // The truth, rather than silence that reads as a bug.
+      lines.push('');
+      lines.push('This stage has no rewards set yet.');
     }
   }
 
   overlay(title, sheet => {
-    for (const line of lines) sheet.append(el('p', 'detail-line', line));
+    if (headline !== '') sheet.append(el('h2', 'sheet-title', headline));
+    for (const line of lines) {
+      sheet.append(line === '' ? el('div', 'gap') : el('p', 'detail-line', line));
+    }
 
     const next = el('button', 'primary', nextStepLabel(s));
     next.id = 'outcome-close';
     next.addEventListener('click', () => {
       sheet.closest('.backdrop').remove();
 
+      // Losing a stage earns nothing. Both halves stack, and the change the
+      // Office reports is the total.
+      run.lastMetaChange = {};
+      if (s.outcome === WON) {
+        const won = applyWinDeltas(run.meta, run.stage, DATA.sanban);
+        run.meta = won.meta;
+        for (const name of Object.keys(won.applied)) {
+          run.lastMetaChange[name] = int(run.lastMetaChange[name], 0) + won.applied[name];
+        }
+        run.xp = int(run.xp, 0) + int(run.stage.xp_reward, 0);
+      }
       const result = applyScoreEffects(run.meta, run.stage, score, DATA.sanban);
       run.meta = result.meta;
-      run.lastMetaChange = result.applied;
+      for (const name of Object.keys(result.applied)) {
+        run.lastMetaChange[name] = int(run.lastMetaChange[name], 0) + result.applied[name];
+      }
       pleaseOrganisations(engine.pleasedBoosters());
 
       run.runner.finishStage(s.outcome, score, engine.pleasedBoosters());

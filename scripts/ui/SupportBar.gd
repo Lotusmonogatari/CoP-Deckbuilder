@@ -46,10 +46,10 @@ extends Control
 ## and "55 seats to win" read as though the first one ended it.
 @export var threshold_wins_stage: bool = true: set = _set_threshold_wins_stage
 
-## How long a name can be before the readout uses a short form instead. The
+## How long a name can be before the readout falls back to "Them". The
 ## readout is three columns on a phone; a name of sentence length pushes the
 ## numbers off the row.
-const NAME_LIMIT := 14
+const NAME_LIMIT := 18
 
 const HEIGHT := 56.0
 const CORNER := 8.0
@@ -176,13 +176,10 @@ func _other_side() -> String:
 	var name := opponent_name.strip_edges()
 	if name.is_empty():
 		return "Them"
-	if name.length() > NAME_LIMIT:
-		# A long name becomes its first word, so "The Caucus Panel" reads as
-		# "The" rather than breaking the row — but only where that leaves
-		# something meaningful.
-		var first := name.split(" ")[0]
-		return first if first.length() <= NAME_LIMIT and first.length() > 2 else "Them"
-	return name
+	# A name too long for the row falls back to "Them" rather than being
+	# shortened. Taking the first word turned "The Caucus Panel" into "The",
+	# which is worse than the generic word it was meant to improve on.
+	return name if name.length() <= NAME_LIMIT else "Them"
 
 
 func _draw() -> void:

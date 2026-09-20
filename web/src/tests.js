@@ -839,5 +839,126 @@ function runRuleChecks(data) {
     eq(engine.state.opponent_count, 5);
   });
 
+  // --- who actually moved, ported from tests/test_bar_model.gd -------------
+
+  check('a gain records that it came from the undecided', () => {
+    const bar = new BarModel(SHARED_POOL, 101, 51, 40, 40, () => 0);
+    bar.playerGains(3);
+    eq(bar.last_gain.from_undecided, 3);
+    eq(bar.last_gain.from_other_side, 0, 'none had to be prised away');
+  });
+
+  check('a gain records the split once the undecided run out', () => {
+    const bar = new BarModel(SHARED_POOL, 101, 51, 40, 59, () => 0);
+    eq(bar.undecided, 2, 'two waverers and nobody else free');
+    bar.playerGains(5);
+    eq(bar.last_gain.from_undecided, 2);
+    eq(bar.last_gain.from_other_side, 3, 'the rest argued off the opposition');
+  });
+
+  check('points that cannot pay for anybody are recorded as wasted', () => {
+    // The stubborn cost three and there are two points left: the seat does
+    // not move and the points are gone.
+    const bar = new BarModel(SHARED_POOL, 101, 51, 40, 61, () => 90);
+    eq(bar.playerGains(5), 1, 'three points bought one stubborn vote');
+    eq(bar.last_gain.wasted, 2, 'two points left, and nobody costs two here');
+  });
+
+  check('the opponent gains record the same way', () => {
+    const bar = new BarModel(SHARED_POOL, 101, 51, 40, 40, () => 0);
+    bar.opponentGains(25);
+    eq(bar.last_gain.from_undecided, 21);
+    eq(bar.last_gain.from_other_side, 4, 'four taken off the player');
+  });
+
+  // --- what a card will do, ported from tests/test_battle_engine.gd --------
+
+  check('a card that only gaffes is not called useless', () => {
+    // It does something — something bad. Calling it useless produced a card
+    // reading "Gaffe +1. Nothing this card does counts in this room."
+    const engine = started();
+    const effect = engine.preview(card({ card_id: 'OOPS', gaffe: 2 }));
+    ok(!effect.does_nothing, 'doing something bad is still doing something');
+  });
+
+  check('a preview says a card will answer the question', () => {
+    const engine = new BattleEngine();
+    ok(engine.setup(pressConfig()), engine.setupProblems.join('; '));
+
+    const effect = engine.preview(card({ card_id: 'D1', draw: 1 }));
+    ok(effect.answers_question, 'every card answers, including a draw-only one');
+  });
+
+  check('a preview outside a press conference answers nothing', () => {
+    const engine = started();
+    const effect = engine.preview(card({ card_id: 'D1', draw: 1 }));
+    ok(!effect.answers_question);
+  });
+
+  // --- a finished debater, ported from tests/test_battle_engine.gd ---------
+
+  check('a card that finishes a debater says so', () => {
+    const engine = new BattleEngine();
+    const floor = data.playtest_level.stages.find(s => s.stage_id === 'PT_S4');
+    engine.setup(forPlaytestStage(data, floor, {}, null, 13));
+
+    engine.state.bar.player = engine.state.bar.threshold - 1;
+    engine.state.bar.undecided = 101 - engine.state.bar.player - engine.state.bar.opponent;
+
+    const card = engine.state.hand.find(id => {
+      const c = data.cards.find(x => x.card_id === id);
+      return c && int(c.self_plus, 0) > 0;
+    });
+    ok(card, 'the opening hand has something that persuades');
+    engine.state.energy = 9;
+
+    const result = engine.playCard(card);
+    ok(result.bout_won, 'the card ended the bout; the screen has to know');
+    ok(result.bout_won.next !== '', 'and who rises in their place');
+  });
+
+  // --- what a stage is worth, ported from tests/test_level_runner.gd -------
+
+  check('a stage reports the rewards it carries', () => {
+    const rewards = winRewards({
+      win_delta_jiban: 4, win_delta_kanban: -2,
+      win_delta_kaban: 0, win_delta_party_support: 3,
+    });
+    eq(rewards['Constituency support'], 4);
+    eq(rewards['Reputation'], -2, 'a penalty is a reward the other way');
+    ok(!('Funds' in rewards), 'a variable this stage does not touch is not news');
+  });
+
+  check('a stage with no numbers set says so rather than showing zeroes', () => {
+    ok(rewardsAreUnset({
+      win_delta_jiban: 0, win_delta_kanban: 0,
+      win_delta_kaban: 0, win_delta_party_support: 0, xp_reward: 0,
+    }));
+    ok(!rewardsAreUnset({ xp_reward: 20 }));
+  });
+
+  check('winning a stage applies its rewards', () => {
+    // apply_win_deltas had no caller in either engine, so every stage in the
+    // game was won for nothing.
+    const result = applyWinDeltas({ Reputation: 50 },
+      { win_delta_kanban: 3 }, data.sanban);
+    eq(result.applied['Reputation'], 3);
+    eq(result.meta['Reputation'], 53);
+  });
+
+  check('the real playtest stages have reward slots waiting', () => {
+    for (const stage of data.playtest_level.stages) {
+      ok('win_delta_jiban' in stage, stage.stage_id + ' needs a slot');
+      ok('xp_reward' in stage, stage.stage_id + ' needs an XP slot');
+    }
+  });
+
+  check('the caucus is named after the player\'s party', () => {
+    const caucus = data.playtest_level.stages.find(s => s.stage_id === 'PT_S3');
+    ok(!caucus.name_en.includes('{party}'), 'the token is resolved, not printed');
+    ok(caucus.name_en.includes(data.player.party), 'and resolved to the real party');
+    ok(caucus.bar_as_percent, 'and its bar reads as a share of the room');
+  });
+
   return { count: count, failures: failures };
 }

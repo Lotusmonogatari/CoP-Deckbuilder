@@ -149,7 +149,8 @@ func test_an_attack_says_what_the_guard_ate_and_what_got_through() -> void:
 	var line := BattleNarration.opponent_move(
 		{"verb": "attack", "absorbed": 3, "damage": 2}, SEATS, _state(_room()), "Ito")
 	assert_string_contains(line, "your guard absorbed 3")
-	assert_string_contains(line, "2 seats lost to Ito")
+	assert_string_contains(line, "2 seats taken from you")
+	assert_eq(line.count("Ito"), 1, "the name opens the sentence; repeating it reads as two people")
 
 
 func test_an_attack_fully_absorbed_says_nothing_got_through() -> void:
