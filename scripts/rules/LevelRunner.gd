@@ -266,3 +266,74 @@ func to_dictionary() -> Dictionary:
 		"results": results.duplicate(true),
 		"outcome": _outcome,
 	}
+
+
+# ---------------------------------------------------------------------------
+# What a stage is worth
+# ---------------------------------------------------------------------------
+# Shared by the briefing screen before a level and the result panel after a
+# stage, so the promise and the receipt cannot describe the same stage
+# differently. Pure data in, plain strings out — no autoloads, no scene tree.
+
+## The meta-variables a stage pays out on a win, as {name: delta}.
+##
+## Zero is left out rather than reported as "+0": a variable this stage does
+## not touch is not news. An empty result means the stage pays nothing flat,
+## which the screens say in words rather than showing four zeroes.
+static func win_rewards(stage: Dictionary) -> Dictionary:
+	var rewards := {}
+	for key: String in WIN_DELTA_KEYS.keys():
+		var delta := int(stage.get(key, 0))
+		if delta != 0:
+			rewards[WIN_DELTA_KEYS[key]] = delta
+	return rewards
+
+
+## The workbook's column names, and what the player calls them.
+const WIN_DELTA_KEYS := {
+	"win_delta_jiban": "Constituency support",
+	"win_delta_kanban": "Reputation",
+	"win_delta_kaban": "Funds",
+	"win_delta_party_support": "Party support",
+}
+
+
+## True where a stage's rewards have not been decided yet.
+##
+## Every playtest stage is in this state on purpose: the slots are in the
+## data with zeroes in them, waiting on Cameron's numbers. The screens must
+## say "not set yet" rather than quietly implying the stage is worthless.
+static func rewards_are_unset(stage: Dictionary) -> bool:
+	if not win_rewards(stage).is_empty():
+		return false
+	if int(stage.get("xp_reward", 0)) != 0:
+		return false
+	return not stage.has("tone_effects")
+
+
+## What a stage produces that is not a flat reward — described, not forecast.
+##
+## Cameron asked the briefing for STATIC values only: a press conference's
+## worth depends on the tone it closes on and a caucus's on its score, so
+## those are named as variable rather than given a number that would be a
+## guess.
+static func variable_rewards(stage: Dictionary) -> Array[String]:
+	var lines: Array[String] = []
+	var effects: Dictionary = stage.get("tone_effects", {})
+
+	var per_variable: Dictionary = effects.get("meta", {})
+	for name: String in per_variable.keys():
+		var per := int(per_variable[name])
+		if per > 0:
+			lines.append("%s, by how far above %d you finish (1 per %d)"
+				% [name, int(effects.get("baseline", 50)), per])
+
+	var per_support := int(effects.get("support_per_points", 0))
+	if per_support > 0:
+		lines.append("A head start later in the level, 1 per %d above %d"
+			% [per_support, int(effects.get("baseline", 50))])
+
+	if not stage.get("questions", []).is_empty():
+		lines.append("Standing with whichever organisations your answers please")
+
+	return lines

@@ -55,13 +55,31 @@ func _walk_the_loop() -> void:
 		return
 	print("  started in the Office")
 
+	# Start now opens the briefing — what the level ahead is worth — and the
+	# level itself begins from that panel's own button. Two clicks, and the
+	# first must actually produce a panel: a briefing that fails to open
+	# would otherwise look like a level that refused to start.
 	await _click(office.get_node("%StartButton"))
+	await get_tree().create_timer(0.4).timeout
+
+	var briefing := office.get_node("%BriefingPanel") as Overlay
+	if briefing == null or not briefing.visible:
+		_failures.append("Start did not open the briefing")
+		return
+	print("  Start opened the briefing")
+
+	var go_in := briefing.find_child("Confirm", true, false) as Button
+	if go_in == null or not go_in.visible:
+		_failures.append("the briefing had no way into the level")
+		return
+
+	await _click(go_in)
 	await get_tree().create_timer(0.6).timeout
 
 	if get_tree().current_scene.name != "BattleScreen":
-		_failures.append("Start did not open a stage")
+		_failures.append("the briefing did not open a stage")
 		return
-	print("  Start opened the first stage")
+	print("  the briefing opened the first stage")
 
 	var played := 0
 	while get_tree().current_scene.name == "BattleScreen" and played < EXPECTED_STAGES + 2:

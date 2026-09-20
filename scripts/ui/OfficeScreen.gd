@@ -17,11 +17,13 @@ const BATTLE_SCENE := "res://scenes/battle/BattleScreen.tscn"
 @onready var _start_button: Button = %StartButton
 @onready var _organisations_button: Button = %OrganisationsButton
 @onready var _organisations_panel: Overlay = %OrganisationsPanel
+@onready var _briefing_panel: Overlay = %BriefingPanel
 @onready var _portrait: Control = %Portrait
 
 
 func _ready() -> void:
-	_start_button.pressed.connect(_on_start)
+	_start_button.pressed.connect(_show_briefing)
+	_briefing_panel.confirmed.connect(_on_start)
 	_organisations_button.pressed.connect(_show_organisations)
 	_build()
 
@@ -134,6 +136,82 @@ func _wrapped_label(text: String, variation: String = "") -> Label:
 	if not variation.is_empty():
 		label.theme_type_variation = variation
 	return label
+
+
+## What the level ahead is worth, before committing to it.
+##
+## Cameron asked for the STATIC values: what a stage pays flat for being won.
+## What a press conference or a caucus produces depends on the number it
+## closes on, so those are named as variable rather than forecast — a
+## predicted figure here would be a guess presented as a promise.
+##
+## Every reward in the playtest level is currently zero, and this screen says
+## so in words. Four zeroes would read as "this level is worthless"; "not set
+## yet" is the truth, and it is Cameron's to set.
+func _show_briefing() -> void:
+	var runner := LevelRunner.new(DataDB.playtest_level)
+	if not runner.is_valid():
+		_report.text = "This level cannot start:\n• %s" % "\n• ".join(Array(runner.problems()))
+		return
+
+	var rows: Array[Control] = []
+	var stages: Array = DataDB.playtest_level.get("stages", [])
+	var anything_set := false
+
+	for stage: Variant in stages:
+		if typeof(stage) != TYPE_DICTIONARY:
+			continue
+		rows.append(_heading_label(str(stage.get("name_en", "A stage"))))
+
+		var who := _opponents_line(stage)
+		if not who.is_empty():
+			rows.append(_wrapped_label(who, "SmallLabel"))
+
+		if LevelRunner.rewards_are_unset(stage):
+			rows.append(_wrapped_label(
+				"What winning this is worth has not been set yet.", "SmallLabel"))
+		else:
+			anything_set = true
+			for name: String in LevelRunner.win_rewards(stage).keys():
+				rows.append(_wrapped_label("%s %+d"
+					% [name, LevelRunner.win_rewards(stage)[name]]))
+			var xp := int(stage.get("xp_reward", 0))
+			if xp > 0:
+				rows.append(_wrapped_label("%d XP" % xp))
+			for line: String in LevelRunner.variable_rewards(stage):
+				rows.append(_wrapped_label(line, "SmallLabel"))
+
+	if not anything_set:
+		rows.append(_wrapped_label(""))
+		rows.append(_wrapped_label("Nothing in this level pays out yet. The "
+			+ "slots are in the data waiting for numbers, and the moment "
+			+ "they have any, they will land here and on your standing."))
+
+	# Losing is the same everywhere for now, and saying so is worth a line:
+	# the player should know what they are risking, which is the afternoon.
+	rows.append(_wrapped_label(""))
+	rows.append(_wrapped_label("Lose a stage and you earn nothing from it. "
+		+ "Nothing else is taken off you.", "SmallLabel"))
+
+	_briefing_panel.open("Before you go in", rows, "Go in")
+
+
+## "Against Opponent A, Opponent B and Opponent C" — who is waiting.
+func _opponents_line(stage: Dictionary) -> String:
+	var names: Array[String] = []
+	for entry: Variant in stage.get("opponents", []):
+		if typeof(entry) != TYPE_DICTIONARY:
+			continue
+		var name := str(entry.get("name", "")).strip_edges()
+		if not name.is_empty():
+			names.append(name)
+
+	if names.is_empty():
+		return "The reporters ask the questions here." if not stage.get(
+			"questions", []).is_empty() else ""
+	if names.size() == 1:
+		return "Against %s" % names[0]
+	return "Against %s and %s" % [", ".join(names.slice(0, -1)), names[-1]]
 
 
 func _on_start() -> void:

@@ -29,6 +29,15 @@ var meta: Dictionary = {}
 ## reads it to tell the player what just happened to them.
 var last_meta_change: Dictionary = {}
 
+## Experience earned so far, and by the stage just finished.
+##
+## CLAUDE.md puts the XP checkpoint at milestone M5, so nothing spends this
+## yet. It is banked rather than discarded so the checkpoint has a real
+## number to open with, and so a stage's xp_reward stops being a column the
+## workbook exports and no code has ever read.
+var xp := 0
+var last_xp_gained := 0
+
 ## Where the player stands with each of the ten organisations, by booster ID.
 ## Pleasing one at a press conference raises it, and it is held between
 ## levels — unlike the pleased list, which lasts one level.
@@ -49,6 +58,8 @@ func _ready() -> void:
 func reset_meta() -> void:
 	meta = BattleSetup.starting_meta()
 	last_meta_change = {}
+	xp = 0
+	last_xp_gained = 0
 
 
 ## Every organisation back to where booster_standing.json starts them.
@@ -66,6 +77,7 @@ func begin_level(runner: LevelRunner) -> void:
 	level_runner = runner
 	last_level_outcome = ""
 	last_meta_change = {}
+	last_xp_gained = 0
 	last_booster_change = {}
 
 
@@ -82,7 +94,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.
-	_apply_score_effects(level_runner.current_stage(), score)
+	_apply_stage_rewards(level_runner.current_stage(), outcome, score)
 	_please_organisations(boosters)
 
 	level_runner.finish_stage(outcome, score, boosters)
@@ -93,18 +105,49 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 	return false
 
 
-## Moves the meta-variables by what the stage's closing score was worth.
+## Everything a finished stage is worth, in the order the brief sets out.
 ##
-## The conversion lives in the stage's own data, so what a press conference is
-## worth is a number Cameron can change rather than a rule written in code.
-func _apply_score_effects(stage: Dictionary, score: int) -> void:
+## Two separate things, and they stack:
+##
+##   Win deltas — flat rewards for winning, straight off the stage row.
+##   These have been in the workbook and in MetaRules since milestone 1 and
+##   have never had a caller, so winning a stage moved nothing at all.
+##
+##   Score effects — what the closing number was worth, for the stages that
+##   produce one. The conversion lives in the stage's own data, so what a
+##   press conference is worth is a number Cameron can change rather than a
+##   rule written in code.
+##
+## The playtest stages carry zeroes for the win deltas until Cameron fills
+## them in; the wiring is here so the moment he does, they land.
+func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> void:
 	last_meta_change = {}
+	last_xp_gained = 0
 	if stage.is_empty():
 		return
 
-	var result := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
-	meta = result["meta"]
-	last_meta_change = result["applied"]
+	# Losing a stage earns nothing. A score the player reached on the way to
+	# losing still is not a result.
+	if outcome == LevelRunner.WON:
+		var won := MetaRules.apply_win_deltas(meta, stage, DataDB.sanban)
+		meta = won["meta"]
+		_record_meta_change(won["applied"])
+		last_xp_gained = int(stage.get("xp_reward", 0))
+		xp += last_xp_gained
+
+	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
+	meta = scored["meta"]
+	_record_meta_change(scored["applied"])
+
+
+## Folds one lot of changes into what the screen will report.
+##
+## A stage can move the same variable twice — a flat reward for winning and
+## again for the score it closed on — and the player should be told the
+## total, not shown the second overwriting the first.
+func _record_meta_change(applied: Dictionary) -> void:
+	for name: String in applied.keys():
+		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
 
 
 ## Raises the player's standing with everyone pleased in a stage.

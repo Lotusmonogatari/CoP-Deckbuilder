@@ -43,6 +43,7 @@ var _ready_to_play := false
 @onready var _energy_row: HBoxContainer = %EnergyRow
 @onready var _guard_label: Label = %GuardLabel
 @onready var _opponent_guard_label: Label = %OpponentGuardLabel
+@onready var _outcome_headline: Label = %OutcomeHeadline
 @onready var _gaffe_label: Label = %GaffeLabel
 @onready var _hand_row: HBoxContainer = %HandRow
 @onready var _end_turn_button: Button = %EndTurnButton
@@ -618,6 +619,16 @@ func _show_outcome(state: BattleState) -> void:
 			"retry": "No decision",
 		}.get(state.outcome, state.outcome)
 
+	# "Carried" on its own is a word, not an ending. The last stage of a
+	# level is the bill being adopted, and it should read like it.
+	if state.outcome == "win" and _is_last_stage_of_level():
+		_outcome_title.text = "Carried"
+		_outcome_headline.text = ("You convinced Parliament and your bill "
+			+ "was adopted.")
+		_outcome_headline.show()
+	else:
+		_outcome_headline.hide()
+
 	_outcome_reason.text = _outcome_text(state)
 	_outcome_panel.show()
 	EventBus.battle_ended.emit(state.outcome, state.outcome_reason)
@@ -649,17 +660,64 @@ func _outcome_text(state: BattleState) -> String:
 		elif seats < 0:
 			lines.append("You start %d behind at the floor debate." % -seats)
 
-	# What the score did to the player's standing. Worked out here rather
-	# than read back after the fact, because GameState has not been told the
-	# stage is finished yet — that happens when this panel is closed.
-	var moved: Dictionary = MetaRules.apply_score_effects(
+	# What the stage was worth, worked out here rather than read back after
+	# the fact: GameState has not been told the stage is finished yet — that
+	# happens when this panel is closed. Both halves, in the order they are
+	# applied, and totalled so a variable moved twice reports once.
+	var moved := {}
+
+	var flat: Dictionary = MetaRules.apply_win_deltas(
+		GameState.meta, _stage, DataDB.sanban)["applied"]
+	for name: String in flat.keys():
+		moved[name] = int(moved.get(name, 0)) + int(flat[name])
+
+	var scored: Dictionary = MetaRules.apply_score_effects(
 		GameState.meta, _stage, score, DataDB.sanban)["applied"]
+	for name: String in scored.keys():
+		moved[name] = int(moved.get(name, 0)) + int(scored[name])
+
+	var changes: Array[String] = []
 	for name: String in moved.keys():
-		var delta := int(moved[name])
-		if delta != 0:
-			lines.append("%s %+d." % [name, delta])
+		if int(moved[name]) != 0:
+			changes.append("%s %+d" % [name, int(moved[name])])
+
+	var xp := int(_stage.get("xp_reward", 0))
+	if xp > 0:
+		changes.append("%d XP" % xp)
+
+	# Which organisations the player's answers pleased. They are about to be
+	# applied and the Office shows the result, but the connection between an
+	# answer and a standing is lost by the time the player gets there.
+	var pleased := engine.pleased_boosters()
+	if not pleased.is_empty():
+		var names := BattleSetup.booster_names()
+		var pleased_names: Array[String] = []
+		for booster_id: String in pleased:
+			pleased_names.append(str(names.get(booster_id, booster_id)))
+		lines.append("")
+		lines.append("Pleased: %s." % ", ".join(pleased_names))
+
+	if not changes.is_empty():
+		lines.append("")
+		lines.append(", ".join(changes) + ".")
+	elif state.outcome == "win" and LevelRunner.rewards_are_unset(_stage):
+		# The truth, rather than silence that reads as a bug. Every playtest
+		# stage is in this state until Cameron sets its numbers.
+		lines.append("")
+		lines.append("This stage has no rewards set yet.")
 
 	return "\n".join(lines)
+
+
+## True where the stage just played is the last one in the level.
+##
+## The runner has not advanced yet when this is asked, so "current" is still
+## the stage that just finished.
+func _is_last_stage_of_level() -> bool:
+	if not GameState.is_in_level():
+		return false
+	var runner := GameState.level_runner
+	return runner.index + 1 >= runner.stage_count()
 
 
 ## What pressing the button after a stage actually does.

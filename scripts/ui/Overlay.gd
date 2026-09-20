@@ -21,6 +21,11 @@ extends PanelContainer
 ## Emitted when the player closes it, however they did it.
 signal closed
 
+## Emitted when the player presses the confirm button, where one was asked
+## for. A panel that leads somewhere — a briefing before a level — needs a
+## way to say YES as well as a way to back out, and "Back" cannot be both.
+signal confirmed
+
 ## False for a panel the player must acknowledge rather than wave away.
 @export var dismissable := true
 
@@ -31,6 +36,7 @@ const BACKDROP := Color(0.07, 0.08, 0.11, 0.94)
 var _body: VBoxContainer
 var _title: Label
 var _back: Button
+var _confirm: Button
 
 
 func _ready() -> void:
@@ -80,24 +86,43 @@ func _build() -> void:
 	_back.custom_minimum_size = Vector2(0, 110)
 	_back.pressed.connect(close)
 
+	# Hidden unless a caller asks for it. It sits ABOVE Back so the action
+	# the player most likely wants is the one under their thumb.
+	_confirm = Button.new()
+	_confirm.name = "Confirm"
+	_confirm.custom_minimum_size = Vector2(0, 110)
+	_confirm.hide()
+	_confirm.pressed.connect(_on_confirmed)
+
 
 ## Opens it with a heading and a list of nodes to show between the heading
 ## and the Back button. Anything shown before is cleared.
-func open(heading: String, rows: Array[Control]) -> void:
+func open(heading: String, rows: Array[Control], confirm_text: String = "") -> void:
 	_build()
 	_title.text = heading
 
 	for child in _body.get_children():
 		if child != _title:
 			_body.remove_child(child)
-			if child != _back:
+			if child != _back and child != _confirm:
 				child.queue_free()
 
 	for row: Control in rows:
 		_body.add_child(row)
+
+	_confirm.text = confirm_text
+	_confirm.visible = not confirm_text.is_empty()
+	_body.add_child(_confirm)
 	_body.add_child(_back)
 
 	show()
+
+
+func _on_confirmed() -> void:
+	# Closed first, so the screen it leads to is not built underneath a panel
+	# that is still covering it.
+	hide()
+	confirmed.emit()
 
 
 func close() -> void:

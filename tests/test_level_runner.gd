@@ -235,3 +235,63 @@ func test_a_stage_knows_whether_anybody_carries_its_score() -> void:
 	assert_true(runner.score_is_carried_from(2), "the floor carries the press conference")
 	assert_true(runner.score_is_carried_from(3), "and the caucus")
 	assert_false(runner.score_is_carried_from(4), "nothing comes after the floor")
+
+
+# ---------------------------------------------------------------------------
+# What a stage is worth
+# ---------------------------------------------------------------------------
+# Shared by the briefing before a level and the result panel after a stage,
+# so the promise and the receipt cannot disagree.
+
+func test_a_stage_reports_the_rewards_it_carries() -> void:
+	var stage := {
+		"win_delta_jiban": 4, "win_delta_kanban": -2,
+		"win_delta_kaban": 0, "win_delta_party_support": 3,
+	}
+	var rewards := LevelRunner.win_rewards(stage)
+
+	assert_eq(rewards["Constituency support"], 4)
+	assert_eq(rewards["Reputation"], -2, "a penalty is a reward that goes the other way")
+	assert_eq(rewards["Party support"], 3)
+	assert_false(rewards.has("Funds"), "a variable this stage does not touch is not news")
+
+
+func test_a_stage_with_no_numbers_set_says_so_rather_than_showing_zeroes() -> void:
+	# Every playtest stage is in this state on purpose, waiting on Cameron.
+	# Four zeroes would read as "this level is worthless".
+	assert_true(LevelRunner.rewards_are_unset({
+		"win_delta_jiban": 0, "win_delta_kanban": 0,
+		"win_delta_kaban": 0, "win_delta_party_support": 0, "xp_reward": 0,
+	}))
+
+
+func test_a_stage_with_any_number_set_is_not_unset() -> void:
+	assert_false(LevelRunner.rewards_are_unset({"win_delta_kaban": 1}))
+	assert_false(LevelRunner.rewards_are_unset({"xp_reward": 20}))
+	assert_false(LevelRunner.rewards_are_unset({"tone_effects": {"baseline": 50}}),
+		"a stage whose worth depends on its score is not an empty one")
+
+
+func test_a_variable_reward_is_described_rather_than_forecast() -> void:
+	# Cameron asked the briefing for static values. What a press conference
+	# is worth depends on the tone it closes on, so a number here would be a
+	# guess presented as a promise.
+	var lines := LevelRunner.variable_rewards({
+		"tone_effects": {"baseline": 50, "support_per_points": 10,
+			"meta": {"Reputation": 5}},
+	})
+	var joined := "\n".join(lines)
+
+	assert_string_contains(joined, "Reputation")
+	assert_string_contains(joined, "1 per 5")
+	assert_string_contains(joined, "head start")
+
+
+func test_the_real_playtest_stages_have_reward_slots_waiting() -> void:
+	# The slots exist in the data with zeroes in them, so the moment a
+	# number stops being 0 it lands without any code change.
+	for stage: Dictionary in DataDB.playtest_level.get("stages", []):
+		assert_true(stage.has("win_delta_jiban"),
+			"%s needs a slot for Cameron's numbers" % stage.get("stage_id"))
+		assert_true(stage.has("xp_reward"),
+			"%s needs an XP slot" % stage.get("stage_id"))
