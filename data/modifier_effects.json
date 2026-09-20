@@ -1,0 +1,30 @@
+{
+  "_README": [
+    "Which named effect each modifier runs, by mod_id.",
+    "",
+    "A BRIDGE, AND A TEMPORARY ONE. The modifiers' 'effect' column is prose",
+    "for a designer to read and CLAUDE.md forbids parsing it, so the rules",
+    "need a machine-readable key. The right home for that key is a column in",
+    "the workbook next to 'Magnitude', and Cameron has been asked to approve",
+    "one ('Effect key') in the PROPOSED workbook.",
+    "",
+    "Until he does, this file supplies the same mapping so the five",
+    "straightforward modifiers work rather than being sold inert. The code",
+    "reads the workbook column FIRST and only falls back to this, so the day",
+    "the column lands this file stops being consulted and can be deleted.",
+    "",
+    "WRITTEN BY HAND. export_data.py never overwrites it.",
+    "",
+    "Only the effects that are actually built are mapped here. The other six",
+    "purchasable modifiers are module-level or need bill tags, and the shop",
+    "says 'not active yet' for them rather than pretending."
+  ],
+
+  "effects": {
+    "M01": "player_start_support",
+    "M03": "starting_gaffe",
+    "M04": "player_start_support",
+    "M06": "player_start_support",
+    "M02": "kaban_per_stage_win"
+  }
+}

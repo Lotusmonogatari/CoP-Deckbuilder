@@ -60,6 +60,12 @@ unique_name_in_owner = true
 layout_mode = 2
 autowrap_mode = 3
 
+[node name="Resources" type="Label" parent="Safe/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "XP 0  ·  Funds 0"
+
 [node name="VSpacer" type="Control" parent="Safe/Column"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -70,6 +76,24 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
 text = "Start the level"
+
+[node name="CardsButton" type="Button" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "New cards"
+
+[node name="DeckButton" type="Button" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Your deck"
+
+[node name="BackingButton" type="Button" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Backing"
 
 [node name="OrganisationsButton" type="Button" parent="Safe/Column"]
 unique_name_in_owner = true
@@ -85,6 +109,27 @@ anchor_bottom = 1.0
 script = ExtResource("3_vhpdr")
 
 [node name="BriefingPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_vhpdr")
+
+[node name="CardsPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_vhpdr")
+
+[node name="DeckPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_vhpdr")
+
+[node name="BackingPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0

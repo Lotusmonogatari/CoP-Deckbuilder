@@ -38,6 +38,21 @@ var last_meta_change: Dictionary = {}
 var xp := 0
 var last_xp_gained := 0
 
+## What the player owns, and what they are taking in.
+##
+## `owned_cards` starts as the Starter twelve and grows as XP is spent.
+## `deck` is the subset carried into a battle — a fixed size, so unlocking a
+## card means leaving another out. That trade is the whole point of the deck
+## screen; without it an unlock would be a free upgrade.
+##
+## `owned_modifiers` is the organisations' backing bought with Funds. Held
+## for the run rather than the level, like standing.
+##
+## Lives only for this sitting until M4 adds saving.
+var owned_cards: Array[String] = []
+var deck: Array[String] = []
+var owned_modifiers: Array[String] = []
+
 ## Where the player stands with each of the ten organisations, by booster ID.
 ## Pleasing one at a press conference raises it, and it is held between
 ## levels — unlike the pleased list, which lasts one level.
@@ -60,6 +75,65 @@ func reset_meta() -> void:
 	last_meta_change = {}
 	xp = 0
 	last_xp_gained = 0
+	reset_collection()
+
+
+## Back to the Starter twelve, owned and in the deck.
+##
+## A new run needs no decisions before the first battle: the opening deck is
+## every Starter card, and the deck screen is where the player changes it.
+func reset_collection() -> void:
+	owned_cards = []
+	for card: Dictionary in DataDB.cards:
+		if str(card.get("tier", "")) == "Starter":
+			owned_cards.append(str(card.get("card_id", "")))
+
+	deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
+	owned_modifiers = []
+
+
+# ---------------------------------------------------------------------------
+# Spending
+# ---------------------------------------------------------------------------
+# Every purchase goes through the Ledger first, so a screen cannot spend
+# what the rules would have refused. Each returns the refusal reason, or an
+# empty string when it went through.
+
+## Spends XP on a card. The card joins the collection, not the deck: what
+## you take in is a separate decision, made on the deck screen.
+func buy_card(card_id: String) -> String:
+	var card := DataDB.get_card(card_id)
+	var refusal := Ledger.card_refusal(card, owned_cards, xp)
+	if not refusal.is_empty():
+		return refusal
+
+	xp -= Ledger.card_cost(card)
+	owned_cards.append(card_id)
+	return ""
+
+
+## Spends Funds on an organisation's backing.
+func buy_modifier(mod_id: String) -> String:
+	var modifier := DataDB.get_modifier(mod_id)
+	var refusal := Ledger.modifier_refusal(modifier, owned_modifiers,
+		int(meta.get("Funds", 0)), booster_standing, DataDB.booster_standing,
+		BattleSetup.booster_ids())
+	if not refusal.is_empty():
+		return refusal
+
+	meta["Funds"] = int(meta.get("Funds", 0)) - Ledger.modifier_cost(modifier)
+	owned_modifiers.append(mod_id)
+	return ""
+
+
+## Replaces the deck, if the new one is legal.
+func set_deck(chosen: Array[String]) -> String:
+	var refusal := Ledger.deck_refusal(chosen, owned_cards, DataDB.balance)
+	if not refusal.is_empty():
+		return refusal
+
+	deck = chosen.duplicate()
+	return ""
 
 
 ## Every organisation back to where booster_standing.json starts them.
@@ -138,6 +212,38 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
 	meta = scored["meta"]
 	_record_meta_change(scored["applied"])
+
+	if outcome == LevelRunner.WON:
+		_pay_backing()
+
+
+## What the organisations backing you pay out for a stage won.
+##
+## Unlike the battle-start effects, this one does not care who was in the
+## room: a business circle pays for the result, not the audience.
+func _pay_backing() -> void:
+	var owned: Array = []
+	for mod_id: String in owned_modifiers:
+		var modifier := DataDB.get_modifier(mod_id)
+		if not modifier.is_empty():
+			owned.append(modifier)
+
+	var funds := ModifierEffects.stage_win_funds(owned, DataDB.modifier_effects)
+	if funds == 0:
+		return
+
+	var variable := _sanban_row("Funds")
+	var before := int(meta.get("Funds", 0))
+	var after := MetaRules.clamp_meta(before + funds, variable)
+	meta["Funds"] = after
+	_record_meta_change({"Funds": after - before})
+
+
+func _sanban_row(name: String) -> Dictionary:
+	for row: Dictionary in DataDB.sanban:
+		if row.get("name_en") == name:
+			return row
+	return {"min": 0, "max": 999, "start": 0}
 
 
 ## Folds one lot of changes into what the screen will report.

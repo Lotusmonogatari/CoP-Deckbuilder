@@ -64,12 +64,34 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		"affinity": affinity_table(),
 		"rules": DataDB.rules,
 		"meta": meta,
-		"deck": starter_deck(),
-		# A good caucus earlier in the level starts this stage ahead.
-		"start_adjustment": int(buffs.get("support_bonus", 0)),
+		"deck": player_deck(),
+		# A good caucus earlier in the level starts this stage ahead, and so
+		# does an organisation whose backing you have bought.
+		"start_adjustment": int(buffs.get("support_bonus", 0))
+			+ int(backing_bonus(stage).get("start_support", 0)),
+		"starting_gaffe": int(backing_bonus(stage).get("starting_gaffe", 0)),
 	}
 
 	return config
+
+
+## What the organisations backing you are worth in this room.
+##
+## Backing only counts where the audience it cares about is actually here:
+## a friendly beat reporter does nothing in a caucus with no press in it.
+## MetaRules.active_modifiers decides that, off the stage's own mix.
+static func backing_bonus(stage: Dictionary) -> Dictionary:
+	var owned: Array = []
+	for mod_id: String in GameState.owned_modifiers:
+		var modifier := DataDB.get_modifier(mod_id)
+		if not modifier.is_empty():
+			owned.append(modifier)
+
+	if owned.is_empty():
+		return {"start_support": 0, "starting_gaffe": 0}
+
+	var active := MetaRules.active_modifiers(owned, with_audience(stage), "Player")
+	return ModifierEffects.battle_start_bonus(active, DataDB.modifier_effects)
 
 
 ## Fills in who is in the room, where a stage does not say.
@@ -117,7 +139,7 @@ static func from_row(row: Dictionary, meta: Dictionary = {}) -> Dictionary:
 		"affinity": affinity_table(),
 		"rules": DataDB.rules,
 		"meta": meta,
-		"deck": starter_deck(),
+		"deck": player_deck(),
 		"bill_difficulty": bill_difficulty(bill),
 	}
 
@@ -151,6 +173,17 @@ static func bill_difficulty(bill: Dictionary) -> int:
 ## There are 12 of them, and balance.json's "starter deck size" is also 12,
 ## so the two agree today. They are not the same thing though, so if the
 ## counts ever diverge this says so rather than quietly dealing a wrong deck.
+## The deck the player is taking in.
+##
+## The run's chosen deck where there is one, and the Starter twelve
+## otherwise — a battle started outside a run, or before anything has been
+## chosen, still deals a playable hand rather than nothing.
+static func player_deck() -> Array[String]:
+	if GameState.deck.is_empty():
+		return starter_deck()
+	return GameState.deck.duplicate()
+
+
 static func starter_deck() -> Array[String]:
 	var deck: Array[String] = []
 	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
@@ -183,6 +216,15 @@ static func card_table() -> Dictionary:
 
 ## What each organisation is called, keyed by ID. The rules engine deals in
 ## IDs; anything shown to the player needs the name.
+## Every organisation's ID, so the Ledger can tell a real backer from a
+## modifier that names a meta-variable in the same column.
+static func booster_ids() -> Array:
+	var ids: Array = []
+	for booster: Dictionary in DataDB.boosters:
+		ids.append(str(booster.get("booster_id")))
+	return ids
+
+
 static func booster_names() -> Dictionary:
 	var names := {}
 	for booster: Dictionary in DataDB.boosters:

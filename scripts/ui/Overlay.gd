@@ -31,7 +31,11 @@ signal confirmed
 
 ## The screen behind has to be covered, not tinted: this sits over a portrait
 ## and a heading, and a half-transparent panel makes both unreadable.
-const BACKDROP := Color(0.07, 0.08, 0.11, 0.94)
+##
+## Fully opaque. It was 0.94, which sounds like nothing — but six per cent of
+## light text on a near-black panel is still perfectly readable, and a
+## screenshot showed the Office's headings ghosting through every shop.
+const BACKDROP := Color(0.07, 0.08, 0.11, 1.0)
 
 var _body: VBoxContainer
 var _title: Label

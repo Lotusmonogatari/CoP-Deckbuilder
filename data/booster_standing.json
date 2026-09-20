@@ -16,15 +16,21 @@
     "LIVES FOR THIS SITTING ONLY. Like the meta-variables in sanban.json, it",
     "is lost when the game is closed until milestone M4 builds saving.",
     "",
-    "NOT YET WIRED TO ANYTHING MECHANICAL. Standing is shown in the Office and",
-    "moves as you play, but no modifier switches on at a threshold yet -",
-    "modifiers.json is fully authored and has no last mile. What a high or low",
-    "standing should DO is Cameron's to decide, and the natural shape is a",
-    "threshold per organisation that turns its linked modifier on."
+    "WHAT STANDING DOES. Cameron's decision: an organisation will not sell you",
+    "its backing until you have given it reason to. 'required_standing' is the",
+    "standing you need with the organisation behind a modifier before it can",
+    "be bought at all - the press conference's long-term payoff.",
+    "",
+    "Override it for a single modifier under 'required_standing_by_modifier',",
+    "so a National organisation can ask more than a local one without any of",
+    "it becoming a special case in code. PLACEHOLDER NUMBERS."
   ],
 
   "start": 50,
   "min": 0,
   "max": 100,
-  "per_please": 5
+  "per_please": 5,
+
+  "required_standing": 60,
+  "required_standing_by_modifier": {}
 }

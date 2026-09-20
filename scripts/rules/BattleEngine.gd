@@ -108,6 +108,10 @@ func setup(config: Dictionary) -> bool:
 	# so "opening_hand" wins over the ordinary hand size where both exist.
 	state.hand_size = int(_stage.get("opening_hand", _stage.get("hand_size", 5)))
 	state.gaffe_limit = int(_stage.get("gaffe_limit", 5))
+
+	# A friendly reporter takes some of the heat before a word is said. Never
+	# below zero: backing cannot put the meter into credit.
+	state.gaffe = maxi(int(config.get("starting_gaffe", 0)), 0)
 	state.guard_cap = int(_rules.get("guard_cap", 5))
 
 	_setup_opponent(config)

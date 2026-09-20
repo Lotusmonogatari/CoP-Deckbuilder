@@ -21,7 +21,8 @@ const DATA_PATH := "res://data/"
 ## Every file that must be present for the game to start.
 const REQUIRED_FILES := [
 	"affinity", "balance", "bills", "booster_standing", "boosters", "cards",
-	"committee", "journalists", "lists", "modifiers", "modules", "opponents",
+	"committee", "journalists", "lists", "modifier_effects", "modifiers",
+	"modules", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
 	"segments", "stages", "suits", "yoron",
 ]
@@ -33,6 +34,10 @@ var stages: Array = []
 var suits: Array = []
 var segments: Array = []
 var modifiers: Array = []
+
+## Which named effect each modifier runs, by mod_id. Hand-written bridge;
+## the workbook's own column wins where it exists.
+var modifier_effects: Dictionary = {}
 var boosters: Array = []
 var opponents: Array = []
 var yoron: Array = []
@@ -110,6 +115,9 @@ func load_all() -> void:
 			"suits": suits = content
 			"segments": segments = content
 			"modifiers": modifiers = content
+			# A temporary bridge until the workbook carries an "Effect key"
+			# column; see the file's own README.
+			"modifier_effects": modifier_effects = _map_under(content, "effects")
 			"boosters": boosters = content
 			"opponents": opponents = content
 			"yoron": yoron = content
@@ -239,6 +247,18 @@ func _list_under(content: Variant, key: String) -> Array:
 	if not (found is Array):
 		errors.append("%s.json has no '%s' list in it." % [key, key])
 		return []
+	return found
+
+
+## The same, for a file whose payload is an object rather than a list.
+func _map_under(content: Variant, key: String) -> Dictionary:
+	if not (content is Dictionary):
+		errors.append("%s.json should be an object with a '%s' map in it." % [key, key])
+		return {}
+	var found: Variant = (content as Dictionary).get(key)
+	if not (found is Dictionary):
+		errors.append("%s.json has no '%s' map in it." % [key, key])
+		return {}
 	return found
 
 
