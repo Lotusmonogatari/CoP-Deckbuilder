@@ -204,6 +204,9 @@ class BarModel {
       this.opponent = 0;
       this.undecided = 0;
     }
+
+    // True in a stage where only the player's own total is scored.
+    this.scoredOnly = false;
   }
 
   static forStage(stage) {
@@ -269,14 +272,30 @@ class BarModel {
 
   // Whoever the opponent loses goes back to undecided — they are not
   // automatically convinced of the other case.
+  //
+  // Where the opponent's number is not part of the win condition this does
+  // NOTHING. There is nobody in a press conference whose support you are
+  // reducing, and in a caucus only your own total is scored. It used to
+  // convert into your own gain, which made a card printing both numbers
+  // worth double in a conference — a playtest caught that.
   opponentLoses(amount) {
     if (amount <= 0) return 0;
-    if (this.model !== SHARED_POOL) return this.playerGains(amount);
+    if (this.reduceDoesNothing()) return 0;
 
     const moved = Math.min(amount, this.opponent);
     this.opponent -= moved;
     this.undecided += moved;
     return moved;
+  }
+
+  // True where arguing the opposition down achieves nothing at all.
+  //
+  // The caucus is the awkward case: it IS a shared pool with real opponent
+  // supporters, and pushing them into the undecided pile used to make room
+  // for the next card. Scoring it as nothing removes that combination — if
+  // the caucus ever feels flat, this is the first thing to reconsider.
+  reduceDoesNothing() {
+    return this.model !== SHARED_POOL || this.scoredOnly;
   }
 
   opponentGains(amount) {
@@ -395,13 +414,19 @@ class BattleState {
     this.draw_mode = 'refill';       // 'refill' | 'none'
     this.hand_size = 5;
 
+    // Guard, as a bank on both sides: it stacks to guard_cap, carries
+    // between turns, and is spent by whatever it stops.
     this.block = 0;
+    this.opponent_block = 0;
+    this.guard_cap = 5;
     this.next_card_bonus = 0;
 
     this.gaffe = 0;
     this.gaffe_limit = 5;
     this.opponent_gaffe = 0;
-    this.opponent_block = 0;
+
+    // How many reporters were left without an answer.
+    this.declined_questions = 0;
 
     this.bar = null;
     this.next_intent_revealed = false;
@@ -468,6 +493,7 @@ class BattleEngine {
     // so "opening_hand" wins over the ordinary hand size where both exist.
     s.hand_size = int(this._stage.opening_hand, int(this._stage.hand_size, 5));
     s.gaffe_limit = int(this._stage.gaffe_limit, 5);
+    s.guard_cap = int(this._rules.guard_cap, 5);
 
     this._setupOpponent(config);
     this._setupBoard(config);
@@ -543,7 +569,7 @@ class BattleEngine {
   // two, because a continuous stage rebuilds it every time a new debater
   // rises and the two must not drift apart.
   _buildBar(playerStart, opponentStart) {
-    return new BarModel(
+    const bar = new BarModel(
       BarModel.forStage(this._stage),
       int(this._stage.bar_max, 100),
       int(this._stage.win_threshold, 51),
@@ -553,6 +579,11 @@ class BattleEngine {
       // generator, so a seeded battle plays out the same way twice.
       () => this._rng(100)
     );
+
+    // In a caucus only the player's own total is scored, so there is
+    // nothing to be gained by arguing the other side down.
+    bar.scoredOnly = str(this._stage.win_mode, 'threshold') === 'score';
+    return bar;
   }
 
   _setupDeck(config) {
@@ -631,11 +662,20 @@ class BattleEngine {
     const applied = { gained: 0, opponent_lost: 0, guard: 0, gaffe: 0, drawn: 0 };
 
     applied.gained = s.bar.playerGains(int(effect.self_plus, 0));
-    applied.opponent_lost = s.bar.opponentLoses(int(effect.opp_minus, 0));
 
-    const guard = int(effect.guard, 0);
-    s.block += guard;
-    applied.guard = guard;
+    // Arguing the opposition down is an attack, so their guard is the first
+    // thing it meets and what it absorbs is spent. Until now this went
+    // straight through and their "Guarding" intent did nothing at all.
+    const oppMinus = int(effect.opp_minus, 0);
+    const stopped = Math.min(s.opponent_block, oppMinus);
+    s.opponent_block -= stopped;
+    applied.guard_stopped = stopped;
+    applied.opponent_lost = s.bar.opponentLoses(oppMinus - stopped);
+
+    // Guard goes into a bank, so what is reported is what actually fitted.
+    const beforeGuard = s.block;
+    s.block = Math.min(s.block + int(effect.guard, 0), s.guard_cap);
+    applied.guard = s.block - beforeGuard;
 
     // The gaffe meter never goes below zero, so an apology on a clean record
     // is wasted rather than banked.
@@ -672,7 +712,8 @@ class BattleEngine {
       opponentResult = this._resolveIntent(intent);
     }
 
-    s.block = 0;
+    // Guard is NOT cleared here. It is a bank now: it stays until something
+    // takes it, so a quiet turn spent guarding is still worth something.
     s.next_card_bonus = 0;
     s.next_intent_revealed = false;
     s.cards_played_this_turn = 0;
@@ -714,8 +755,27 @@ class BattleEngine {
       s.energy = Math.max(s.energy - this._passCost(), 0);
     }
     if (this._questions.length > 0 && this.currentQuestion()) {
-      s.question_index += 1;
+      this._declineQuestion();
     }
+  }
+
+  // Ducking the question in front of you.
+  //
+  // Energy is close to worthless in a press conference — six cards for five
+  // questions — so the ordinary pass cost meant a player could decline every
+  // awkward question and finish with the tone untouched and a clean record.
+  // A playtest found exactly that.
+  //
+  // So silence has its own price: the room cools, and the organisation that
+  // asked is not pleased, which is felt later because standing carries
+  // between levels.
+  _declineQuestion() {
+    const s = this.state;
+    const cost = int(this._stage.decline_tone_cost, 3);
+    if (cost > 0 && s.bar) s.bar.playerLoses(cost);
+
+    s.declined_questions += 1;
+    s.question_index += 1;
   }
 
   _resolveIntent(intent) {
@@ -724,15 +784,21 @@ class BattleEngine {
 
     switch (str(intent.verb, 'none')) {
       case 'attack': {
+        // The player's guard is the first thing taken, and what it absorbs
+        // is spent — the bank being drawn down, not a shield that happened
+        // to be up at the right moment.
         const absorbed = Math.min(s.block, value);
         const through = Math.max(value - s.block, 0);
+        s.block -= absorbed;
         return { verb: 'attack', absorbed: absorbed, damage: s.bar.playerLoses(through) };
       }
       case 'gain':
         return { verb: 'gain', gained: s.bar.opponentGains(value) };
-      case 'block':
-        s.opponent_block += value;
-        return { verb: 'block', guard: value };
+      case 'block': {
+        const before = s.opponent_block;
+        s.opponent_block = Math.min(s.opponent_block + value, s.guard_cap);
+        return { verb: 'block', guard: s.opponent_block - before };
+      }
     }
     return { verb: 'none' };
   }
@@ -748,14 +814,14 @@ class BattleEngine {
     // when the player runs out of anything to answer with.
     if (this._questions.length > 0) {
       if (this.questionsRemaining() <= 0) {
-        return this._finish('win', 'Every question was answered.');
+        return this._finish('win', this._conferenceClosing());
       }
       // The discard pile is not counted: in a conference that never draws, a
       // card once played is gone for good.
       let canStillAnswer = s.hand.length > 0;
       if (s.draw_mode !== 'none') canStillAnswer = canStillAnswer || s.deck.length > 0;
       if (!canStillAnswer) {
-        return this._finish('win', 'The questions ran on, but there was nothing left to say.');
+        return this._finish('win', this._conferenceClosing(true));
       }
     }
 
@@ -916,6 +982,49 @@ class BattleEngine {
   }
 
   // --- the press conference ---
+
+  // How a press conference ends. Never won or lost — it closes, and what it
+  // produced is the tone and the organisations pleased. The count of
+  // unanswered questions is recorded rather than judged.
+  _conferenceClosing(ranOutOfCards) {
+    const lines = ['The press conference concludes.'];
+    if (ranOutOfCards) {
+      lines.push('The questions ran on, but there was nothing left to say.');
+    }
+    const declined = this.state.declined_questions;
+    if (declined === 1) lines.push('One question went unanswered.');
+    else if (declined > 1) lines.push(declined + ' questions went unanswered.');
+    return lines.join(' ');
+  }
+
+  // What a card will actually do in this room, before it is played.
+  //
+  // The printed number is not what happens: affinity multiplies the two
+  // support numbers, and in some rooms a number does nothing at all. A
+  // playtest reported this as the card not working, which is what happens
+  // when a screen shows a promise the rules do not keep.
+  preview(card) {
+    const effect = resolveCard(card, {
+      affinity: this.affinityFor(card),
+      segment_share: segmentShare(card, this._stage),
+      kanban: int(this._meta.Reputation, 50),
+      opponent_gaffe: this.state.opponent_gaffe,
+      next_card_bonus: this.state.next_card_bonus,
+    });
+
+    const reduceCounts = !this.state.bar || !this.state.bar.reduceDoesNothing();
+    const guardCounts = this._intents !== null;
+
+    effect.opp_minus_counts = reduceCounts;
+    effect.guard_counts = guardCounts;
+    effect.does_nothing = (
+      int(effect.self_plus, 0) === 0
+      && int(effect.draw, 0) === 0
+      && (int(effect.opp_minus, 0) === 0 || !reduceCounts)
+      && (int(effect.guard, 0) === 0 || !guardCounts));
+
+    return effect;
+  }
 
   // Stays true once the last question is answered, so the screen does not
   // change its shape at the moment the conference ends.

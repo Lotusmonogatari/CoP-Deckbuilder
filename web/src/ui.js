@@ -290,13 +290,24 @@ function drawBattle() {
   for (const cardId of s.hand) {
     hand.append(cardFace(DATA.cards.find(c => c.card_id === cardId), s));
   }
+
   root.append(hand);
 
   // 6. One full-width button.
   const endTurn = el('button', 'primary', 'End turn');
   endTurn.id = 'end-turn';
   endTurn.disabled = s.isOver();
-  endTurn.addEventListener('click', () => { engine.endTurn(); drawBattle(); });
+  endTurn.addEventListener('click', () => {
+    const turn = engine.endTurn();
+    drawBattle();
+    // The pass penalty has always worked; nothing ever said so, which is why
+    // a playtest read it as having stopped after the first time.
+    if (turn.passed && !engine.state.isOver()) {
+      flash(engine.isPressConference()
+        ? 'You let that one go. The room cools.'
+        : 'You said nothing. One less energy this turn.');
+    }
+  });
   root.append(endTurn);
 
   if (s.isOver()) showOutcome();
@@ -377,13 +388,73 @@ function cardFace(card, s) {
   face.classList.add('suit-' + card.suit.toLowerCase().replace(/\s+/g, '-'));
   if (Number(card.cost) > s.energy) face.classList.add('unaffordable');
 
+  // What it will do HERE, not what it says on paper. The room moves the
+  // numbers, and in some rooms a number does nothing at all.
+  const effect = run.engine.preview(card);
+  if (effect.does_nothing) face.classList.add('useless');
+
   face.append(el('span', 'card-cost', String(Math.trunc(card.cost))));
   face.append(el('span', 'card-name', card.name_en));
   if (card.name_jp) face.append(el('span', 'jp card-jp', card.name_jp));
-  face.append(el('span', 'card-text', card.effect_text || ''));
+  face.append(el('span', 'card-text', effectHere(effect, card)));
 
   face.addEventListener('click', () => showCardZoom(card));
   return face;
+}
+
+// A card's numbers as this room will actually use them. Showing the printed
+// value and then quietly doing something else is how a player stops trusting
+// the screen.
+function effectHere(effect, card) {
+  const parts = [];
+  if (effect.self_plus) parts.push('Gain ' + effect.self_plus + '.');
+  if (effect.opp_minus && effect.opp_minus_counts) {
+    parts.push('Opponent \u2212' + effect.opp_minus + '.');
+  }
+  if (effect.guard && effect.guard_counts) parts.push('Guard ' + effect.guard + '.');
+  if (effect.draw) parts.push('Draw ' + effect.draw + '.');
+  if (effect.gaffe) parts.push('Gaffe ' + (effect.gaffe > 0 ? '+' : '') + effect.gaffe + '.');
+
+  if (effect.does_nothing) parts.push('Nothing this card does counts in this room.');
+
+  return parts.length > 0 ? parts.join(' ') : (card.effect_text || '');
+}
+
+// What a card just did, in the room's own units. The numbers are a budget,
+// not an outcome: five points can win five people or three.
+function describeWhatHappened(result, stage) {
+  const applied = result.applied || {};
+  const effect = result.effect || {};
+  const unit = String(stage.bar_unit || 'support').toLowerCase();
+  const parts = [];
+
+  const wanted = int(effect.self_plus, 0);
+  const won = int(applied.gained, 0);
+  if (wanted > 0) {
+    parts.push(won < wanted
+      ? won + ' ' + unit + ' won over \u2014 ' + (wanted - won)
+        + (wanted - won === 1 ? ' point short' : ' points short')
+      : won + ' ' + unit + ' won over');
+  }
+
+  const stopped = int(applied.guard_stopped, 0);
+  if (stopped > 0) parts.push('their guard stopped ' + stopped);
+
+  const lost = int(applied.opponent_lost, 0);
+  if (lost > 0) parts.push(lost + ' argued away from them');
+
+  if (parts.length === 0) return '';
+  const line = parts.join(', ');
+  return line.charAt(0).toUpperCase() + line.slice(1) + '.';
+}
+
+// A short line under the bar, for what just happened.
+function flash(message) {
+  if (!message) return;
+  const bar = document.querySelector('.bar-wrap');
+  if (!bar) return;
+  const note = el('p', 'flash', message);
+  bar.append(note);
 }
 
 // ---------------------------------------------------------------------------
@@ -432,8 +503,9 @@ function showCardZoom(card) {
     play.disabled = Number(card.cost) > s.energy || s.isOver();
     play.addEventListener('click', () => {
       document.querySelectorAll('.backdrop').forEach(n => n.remove());
-      run.engine.playCard(card.card_id);
+      const result = run.engine.playCard(card.card_id);
       drawBattle();
+      flash(describeWhatHappened(result, run.stage));
     });
     sheet.append(play);
 

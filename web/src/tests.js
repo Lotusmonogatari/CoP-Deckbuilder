@@ -166,10 +166,26 @@ function runRuleChecks(data) {
     eq(bar.opponentGains(10), 0, 'there is nothing to raise');
   });
 
-  check('a refutation still helps on a single bar', () => {
+  check('a refutation does nothing on a single bar', () => {
+    // There is nobody in a press conference whose support you are reducing.
+    // It used to convert into tone, making a +3/-3 card worth +6 there.
     const bar = new BarModel(SINGLE, 100, 55, 45, 0);
-    bar.opponentLoses(3);
-    eq(bar.player, 48);
+    eq(bar.opponentLoses(3), 0, 'nothing moved');
+    eq(bar.player, 45, 'and the tone is where it was');
+  });
+
+  check('a refutation does nothing in a scored stage', () => {
+    const bar = floorDebate();
+    bar.scoredOnly = true;
+    eq(bar.opponentLoses(5), 0);
+    eq(bar.opponent, 40, 'their supporters stayed where they were');
+    ok(bar.totalsBalance());
+  });
+
+  check('a refutation still works where the opponent is the point', () => {
+    const bar = floorDebate();
+    eq(bar.opponentLoses(5), 5);
+    eq(bar.opponent, 35);
   });
 
   check('a stage with questions is a press tone bar', () => {
@@ -253,12 +269,59 @@ function runRuleChecks(data) {
     eq(turn.opponent.damage, 3);
   });
 
-  check('block does not carry into the next turn', () => {
+  check('guard is spent by what it stops, not by the clock', () => {
+    // It used to be wiped at the end of every turn whether or not it had
+    // been needed. Now only an attack takes it: here their 5 takes all 5.
     const engine = started();
     intoHand(engine, 'GUARD5');
     engine.playCard('GUARD5');
     engine.endTurn();
-    eq(engine.state.block, 0);
+    eq(engine.state.block, 0, 'their attack of 5 took the whole bank');
+  });
+
+  check('guard is still there next turn when nothing takes it', () => {
+    const engine = started({
+      opponent: { opp_id: 'T', name: 'T', intent_pattern: [['block', 1]] },
+    });
+    intoHand(engine, 'GUARD5');
+    engine.playCard('GUARD5');
+    engine.endTurn();
+    eq(engine.state.block, 5, 'a quiet turn spent guarding is not wasted');
+  });
+
+  check('guard stacks up to the cap', () => {
+    const engine = started();
+    engine.state.guard_cap = 5;
+    intoHand(engine, 'GUARD5');
+    eq(engine.playCard('GUARD5').applied.guard, 5);
+    intoHand(engine, 'GUARD5');
+    eq(engine.playCard('GUARD5').applied.guard, 0, 'it reports what fitted');
+    eq(engine.state.block, 5, 'held at the cap');
+  });
+
+  check('an attack spends the guard it meets', () => {
+    const engine = started({
+      opponent: { opp_id: 'T', name: 'T', intent_pattern: [['attack', 3]] },
+    });
+    intoHand(engine, 'GUARD5');
+    engine.playCard('GUARD5');
+    eq(engine.endTurn().opponent.damage, 0, 'fully absorbed');
+    eq(engine.state.block, 2, 'and three of the five were spent doing it');
+  });
+
+  check("the opponent's guard stops the player", () => {
+    // The half that never worked: their "Guarding" intent was decoration.
+    const engine = started({
+      opponent: { opp_id: 'T', name: 'T', intent_pattern: [['block', 4]] },
+    });
+    engine.endTurn();
+    eq(engine.state.opponent_block, 4);
+
+    intoHand(engine, 'ATTACK3');
+    const result = engine.playCard('ATTACK3');
+    eq(result.applied.guard_stopped, 3, 'their guard took it all');
+    eq(result.applied.opponent_lost, 0, 'so none of their people moved');
+    eq(engine.state.opponent_block, 1, 'and three of their four were spent');
   });
 
   check('the gaffe meter ends the stage when it fills', () => {
@@ -441,14 +504,19 @@ function runRuleChecks(data) {
     ok(!engine.setup(c));
   });
 
-  check('ending a turn with nobody opposite does nothing to you', () => {
+  check('ending a turn with nobody opposite is not an attack', () => {
+    // Nobody is sitting there to act. The tone still falls, but that is the
+    // cost of declining the question — not somebody taking a swing at you.
+    const c = pressConfig();
+    c.stage.decline_tone_cost = 0;
     const engine = new BattleEngine();
-    engine.setup(pressConfig());
+    engine.setup(c);
     const before = engine.state.bar.player;
+
     const result = engine.endTurn();
     ok(result.ok, 'the turn ends rather than crashing');
     eq(result.intent.verb, 'none', 'nobody acted');
-    eq(engine.state.bar.player, before);
+    eq(engine.state.bar.player, before, 'so nothing was taken off you');
   });
 
   check('ending a turn keeps the hand you cannot replace', () => {
@@ -660,6 +728,61 @@ function runRuleChecks(data) {
       ok(suits.includes(question.prefers_suit),
         question.id + ' invites ' + question.prefers_suit + ' and no Starter card is that suit');
     }
+  });
+
+  check('declining cools the room', () => {
+    const c = pressConfig();
+    c.stage.decline_tone_cost = 3;
+    const engine = new BattleEngine();
+    engine.setup(c);
+    const tone = engine.state.bar.player;
+
+    engine.endTurn();
+    eq(engine.state.bar.player, tone - 3, 'silence costs you the room');
+    eq(engine.state.declined_questions, 1);
+  });
+
+  check('the closing line says the conference concluded', () => {
+    const engine = new BattleEngine();
+    engine.setup(pressConfig());
+    engine.state.hand = ['GAIN3', 'GAIN3', 'GAIN3'];
+    engine.playCard('GAIN3');
+    engine.playCard('GAIN3');
+    ok(engine.state.outcome_reason.includes('The press conference concludes.'));
+  });
+
+  check('a card that does nothing here says so', () => {
+    const engine = new BattleEngine();
+    engine.setup(pressConfig());
+    const effect = engine.preview(card({ card_id: 'ATK', opp_minus: 4 }));
+    ok(!effect.opp_minus_counts, 'nobody to reduce');
+    ok(effect.does_nothing);
+  });
+
+  check('a guard card does nothing where nobody attacks', () => {
+    const engine = new BattleEngine();
+    engine.setup(pressConfig());
+    const effect = engine.preview(card({ card_id: 'G', guard: 5 }));
+    ok(!effect.guard_counts, 'no reporter takes a swing at you');
+    ok(effect.does_nothing);
+  });
+
+  check('the preview shows the room, not the card', () => {
+    const engine = started();
+    const effect = engine.preview(card({
+      card_id: 'BIG', self_plus: 10, suit: 'Data Driven',
+    }));
+    eq(effect.self_plus, 11, 'ten becomes eleven in this room');
+  });
+
+  check('everything counts in an ordinary battle', () => {
+    const engine = started();
+    const effect = engine.preview(card({
+      card_id: 'MIX', self_plus: 3, opp_minus: 4, guard: 2,
+    }));
+    ok(effect.opp_minus_counts);
+    ok(effect.guard_counts);
+    ok(!effect.does_nothing);
   });
 
   check('passing declines the question in front of you', () => {
