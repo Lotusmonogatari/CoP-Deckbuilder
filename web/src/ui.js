@@ -709,8 +709,8 @@ function drawBattle() {
     // a playtest read it as having stopped after the first time.
     if (turn.passed && !engine.state.isOver()) {
       lines.push(engine.isPressConference()
-        ? 'You let that one go. The room cools.'
-        : 'You said nothing. One less energy this turn.');
+        ? T('battle.declined')
+        : T('battle.passed'));
     }
 
     const said = describeOpponentMove(turn.opponent, stage, engine.state, speaker);
@@ -957,12 +957,13 @@ function nameOr(name, fallback) {
 
 function theirs(name) {
   const trimmed = String(name || '').trim();
-  return trimmed === '' ? 'their' : trimmed + "'s";
+  return trimmed === '' ? T('narration.their_generic')
+                        : T('narration.their_named', {name: trimmed});
 }
 
 function them(name) {
   const trimmed = String(name || '').trim();
-  return trimmed === '' ? 'them' : trimmed;
+  return trimmed === '' ? T('narration.them_generic') : trimmed;
 }
 
 // Joins the clauses and closes the sentence, capitalising only the first
@@ -981,24 +982,24 @@ function splitDetail(stage, split, fromWhom) {
   const undecided = int(split.from_undecided, 0);
   const other = int(split.from_other_side, 0);
   if (other <= 0) return '';
-  if (undecided <= 0) return 'all of them off ' + fromWhom;
-  return undecided + ' from the undecided, ' + other + ' off ' + fromWhom;
+  if (undecided <= 0) return T('narration.all_off', {whom: fromWhom});
+  return T('narration.split', {undecided: undecided, count: other, whom: fromWhom});
 }
 
 function boutWonLine(bout) {
-  const who = nameOr(bout.finished, 'That opponent');
-  if (int(bout.remaining, 0) <= 0) return who + ' is finished';
-  return who + ' is finished \u2014 ' + nameOr(bout.next, 'the next') + ' rises';
+  const who = nameOr(bout.finished, T('narration.that_opponent'));
+  if (int(bout.remaining, 0) <= 0) return T('narration.bout_finished', {who: who});
+  return who + ' is finished \u2014 ' + nameOr(bout.next, T('narration.the_next')) + ' rises';
 }
 
 function gainedLine(stage, state, applied, wanted, won, sayShortfall, opponentName) {
   // A level that rises has nobody to win over: it goes up, and by how much.
   if (!isARoom(state)) {
     const unit = String(stage.bar_unit || 'support');
-    return won > 0 ? unit + ' raised by ' + won : unit + ' did not move';
+    return won > 0 ? T('narration.raised', {unit: unit, count: won}) : T('narration.unmoved', {unit: unit});
   }
 
-  let line = quantity(stage, won) + ' won over';
+  let line = T('narration.won_over', {amount: quantity(stage, won)});
 
   const detail = splitDetail(stage, applied.gain_split, them(opponentName));
   if (detail !== '') line += ' \u2014 ' + detail;
@@ -1009,7 +1010,7 @@ function gainedLine(stage, state, applied, wanted, won, sayShortfall, opponentNa
   // and a shortfall beside it is what made this line unreadable.
   const short = wanted - won;
   if (sayShortfall && short > 0 && won < wanted) {
-    line += ', ' + short + (short === 1 ? ' point' : ' points') + ' short of the next';
+    line += T('narration.short', {count: short});
   }
   return line;
 }
@@ -1031,13 +1032,13 @@ function describeWhatHappened(result, stage, state, opponentName) {
   }
 
   const stopped = int(applied.guard_stopped, 0);
-  if (stopped > 0) parts.push(theirs(opponentName) + ' guard stopped ' + stopped);
+  if (stopped > 0) parts.push(T('narration.guard_stopped', {who: theirs(opponentName), count: stopped}));
 
   const lost = int(applied.opponent_lost, 0);
-  if (lost > 0) parts.push(quantity(stage, lost) + ' argued away from ' + them(opponentName));
+  if (lost > 0) parts.push(T('narration.argued_away', {amount: quantity(stage, lost), whom: them(opponentName)}));
 
   const gaffe = int(applied.gaffe, 0);
-  if (gaffe > 0) parts.push(gaffe + ' gaffe' + (gaffe === 1 ? '' : 's') + ' on your record');
+  if (gaffe > 0) parts.push(T('narration.gaffe', {count: gaffe}));
 
   return sentence(parts);
 }
@@ -1048,49 +1049,49 @@ function describeWhatHappened(result, stage, state, opponentName) {
 function describeOpponentMove(opponentResult, stage, state, opponentName) {
   if (!opponentResult || Object.keys(opponentResult).length === 0) return '';
 
-  const who = nameOr(opponentName, 'They');
+  const who = nameOr(opponentName, T('narration.they'));
   const parts = [];
 
   switch (str(opponentResult.verb, 'none')) {
     case 'attack': {
       const absorbed = int(opponentResult.absorbed, 0);
       const damage = int(opponentResult.damage, 0);
-      if (absorbed > 0) parts.push('your guard absorbed ' + absorbed);
+      if (absorbed > 0) parts.push(T('narration.absorbed', {count: absorbed}));
       // Not "lost to Ito": the sentence already opens with their name, so
       // repeating it reads as two different people.
-      if (damage > 0) parts.push(quantity(stage, damage) + ' taken from you');
-      else if (absorbed > 0) parts.push('nothing got through');
-      else parts.push('the attack found nothing to take');
+      if (damage > 0) parts.push(T('narration.taken', {amount: quantity(stage, damage)}));
+      else if (absorbed > 0) parts.push(T('narration.nothing_through'));
+      else parts.push(T('narration.nothing_to_take'));
       break;
     }
     case 'gain': {
       const gained = int(opponentResult.gained, 0);
-      if (gained <= 0) return who + ' pressed the case and won nobody over.';
-      parts.push('won over ' + quantity(stage, gained));
+      if (gained <= 0) return T('narration.gain_none', {who: who});
+      parts.push(T('narration.won_over_them', {amount: quantity(stage, gained)}));
       const detail = splitDetail(stage, opponentResult.gain_split, 'you');
       if (detail !== '') parts.push(detail);
       break;
     }
     case 'block': {
       const guard = int(opponentResult.guard, 0);
-      if (guard <= 0) return who + ' could not guard any further.';
-      parts.push('developed ' + guard + ' guard');
+      if (guard <= 0) return T('narration.block_none', {who: who});
+      parts.push(T('narration.guard_built', {count: guard}));
       break;
     }
     case 'lean_down': {
       const member = opponentResult.member || {};
       const moved = Math.abs(int(member.moved, 0));
-      if (moved <= 0) return who + ' leaned on the panel and moved nobody.';
-      parts.push('leaned on ' + str(member.name, 'a member') + ', ' + moved + ' against you');
+      if (moved <= 0) return T('narration.lean_none', {who: who});
+      parts.push('leaned on ' + str(member.name, T('narration.a_member')) + ', ' + moved + ' against you');
       break;
     }
     default:
-      return who + ' waited.';
+      return T('narration.waited', {who: who});
   }
 
   // Joined directly rather than through sentence(): capitalising and then
   // lowercasing back would also flatten any name inside the clause.
-  return who + ': ' + parts.join(', ') + '.';
+  return T('narration.sentence', {who: who, clauses: parts.join(', ')});
 }
 
 // A short line under the bar, for what just happened.

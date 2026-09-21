@@ -1053,12 +1053,25 @@ def check_text_keys(data, report):
                     asked_for.setdefault(key, []).append(
                         f"{path.relative_to(REPO_ROOT)}:{number}")
 
-    for key in sorted(set(asked_for) - in_sheet):
+    # A plural is two rows, key.one and key.other, and the code asks for the
+    # bare key. Either shape satisfies the other, so fold them together
+    # before comparing or every plural reads as both missing and unused.
+    def satisfied(key):
+        return key in in_sheet or (
+            key + ".one" in in_sheet and key + ".other" in in_sheet)
+
+    def wanted(row_key):
+        if row_key in asked_for:
+            return True
+        base, _, suffix = row_key.rpartition(".")
+        return suffix in ("one", "other") and base in asked_for
+
+    for key in sorted(k for k in asked_for if not satisfied(k)):
         report.error("Text tab",
                      f"the code asks for '{key}' and the tab has no such Key "
                      f"({asked_for[key][0]})")
 
-    for key in sorted(in_sheet - set(asked_for)):
+    for key in sorted(k for k in in_sheet if not wanted(k)):
         report.note(f"Text tab: nothing asks for '{key}' yet")
 
     # A placeholder the row uses but does not declare is a warning, because

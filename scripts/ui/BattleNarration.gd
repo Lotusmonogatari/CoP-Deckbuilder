@@ -87,16 +87,17 @@ static func player_move(result: Dictionary, stage: Dictionary,
 
 	var stopped := int(applied.get("guard_stopped", 0))
 	if stopped > 0:
-		parts.append("%s guard stopped %d" % [_their(opponent_name), stopped])
+		parts.append(Text.say("narration.guard_stopped",
+			{"who": _their(opponent_name), "count": stopped}))
 
 	var lost := int(applied.get("opponent_lost", 0))
 	if lost > 0:
-		parts.append("%s argued away from %s"
-			% [quantity(stage, lost), _them(opponent_name)])
+		parts.append(Text.say("narration.argued_away",
+			{"amount": quantity(stage, lost), "whom": _them(opponent_name)}))
 
 	var gaffe := int(applied.get("gaffe", 0))
 	if gaffe > 0:
-		parts.append("%d gaffe%s on your record" % [gaffe, "" if gaffe == 1 else "s"])
+		parts.append(Text.say("narration.gaffe", {"count": gaffe}))
 
 	return _sentence(parts)
 
@@ -111,7 +112,7 @@ static func opponent_move(opponent_result: Dictionary, stage: Dictionary,
 	if opponent_result.is_empty():
 		return ""
 
-	var who := _name_or(opponent_name, "They")
+	var who := _name_or(opponent_name, Text.say("narration.they"))
 	var parts: Array[String] = []
 
 	match str(opponent_result.get("verb", "none")):
@@ -119,22 +120,24 @@ static func opponent_move(opponent_result: Dictionary, stage: Dictionary,
 			var absorbed := int(opponent_result.get("absorbed", 0))
 			var damage := int(opponent_result.get("damage", 0))
 			if absorbed > 0:
-				parts.append("your guard absorbed %d" % absorbed)
+				parts.append(Text.say("narration.absorbed", {"count": absorbed}))
 			if damage > 0:
 				# Not "lost to Ito": the sentence already opens with their
 				# name, so repeating it reads as two different people.
-				parts.append("%s taken from you" % quantity(stage, damage))
+				parts.append(Text.say("narration.taken",
+					{"amount": quantity(stage, damage)}))
 			elif absorbed > 0:
-				parts.append("nothing got through")
+				parts.append(Text.say("narration.nothing_through"))
 			else:
-				parts.append("the attack found nothing to take")
+				parts.append(Text.say("narration.nothing_to_take"))
 
 		"gain":
 			var gained := int(opponent_result.get("gained", 0))
 			if gained <= 0:
-				return "%s pressed the case and won nobody over." % who
+				return Text.say("narration.gain_none", {"who": who})
 			var split: Dictionary = opponent_result.get("gain_split", {})
-			parts.append("won over %s" % quantity(stage, gained))
+			parts.append(Text.say("narration.won_over_them",
+				{"amount": quantity(stage, gained)}))
 			var detail := _split_detail(stage, split, "you")
 			if not detail.is_empty():
 				parts.append(detail)
@@ -142,24 +145,25 @@ static func opponent_move(opponent_result: Dictionary, stage: Dictionary,
 		"block":
 			var guard := int(opponent_result.get("guard", 0))
 			if guard <= 0:
-				return "%s could not guard any further." % who
-			parts.append("developed %d guard" % guard)
+				return Text.say("narration.block_none", {"who": who})
+			parts.append(Text.say("narration.guard_built", {"count": guard}))
 
 		"lean_down":
 			var member: Dictionary = opponent_result.get("member", {})
 			var moved: int = abs(int(member.get("moved", 0)))
 			if moved <= 0:
-				return "%s leaned on the panel and moved nobody." % who
-			var member_name := str(member.get("name", "a member"))
-			parts.append("leaned on %s, %d against you" % [member_name, moved])
+				return Text.say("narration.lean_none", {"who": who})
+			var member_name := str(member.get("name", Text.say("narration.a_member")))
+			parts.append(Text.say("narration.leaned",
+				{"member": member_name, "count": moved}))
 
 		_:
-			return "%s waited." % who
+			return Text.say("narration.waited", {"who": who})
 
 	# Joined directly rather than through _sentence: that capitalises the
 	# first letter, and lowercasing it back again would also flatten any
 	# name inside the clause ("2 seats lost to ito").
-	return "%s: %s." % [who, ", ".join(parts)]
+	return Text.say("narration.sentence", {"who": who, "clauses": ", ".join(parts)})
 
 
 # ---------------------------------------------------------------------------
@@ -171,14 +175,16 @@ static func _gained(stage: Dictionary, state: BattleState, applied: Dictionary,
 	# A level that rises has nobody to win over: it goes up, and by how much.
 	if not is_a_room(state):
 		var unit := str(stage.get("bar_unit", "support"))
-		return "%s raised by %d" % [unit, won] if won > 0 else "%s did not move" % unit
+		if won > 0:
+			return Text.say("narration.raised", {"unit": unit, "count": won})
+		return Text.say("narration.unmoved", {"unit": unit})
 
-	var line := "%s won over" % quantity(stage, won)
+	var line := Text.say("narration.won_over", {"amount": quantity(stage, won)})
 
 	var split: Dictionary = applied.get("gain_split", {})
 	var detail := _split_detail(stage, split, _them(opponent_name))
 	if not detail.is_empty():
-		line += " — %s" % detail
+		line = Text.say("narration.won_over_detail", {"clause": line, "detail": detail})
 
 	# The leftover. Cameron asked for "# nearly persuaded", but he also
 	# decided last round that points which cannot pay for the next person
@@ -189,7 +195,7 @@ static func _gained(stage: Dictionary, state: BattleState, applied: Dictionary,
 	# a shortfall line beside it is what confused him in the first place.
 	var short := wanted - won
 	if say_shortfall and short > 0 and won < wanted:
-		line += ", %d point%s short of the next" % [short, "" if short == 1 else "s"]
+		line += Text.say("narration.short", {"count": short})
 
 	return line
 
@@ -207,32 +213,35 @@ static func _split_detail(stage: Dictionary, split: Dictionary, from_whom: Strin
 	if other <= 0:
 		return ""
 	if undecided <= 0:
-		return "all of them off %s" % from_whom
-	return "%d from the undecided, %d off %s" % [undecided, other, from_whom]
+		return Text.say("narration.all_off", {"whom": from_whom})
+	return Text.say("narration.split",
+		{"undecided": undecided, "count": other, "whom": from_whom})
 
 
 static func _bout_won(bout: Dictionary) -> String:
 	var finished := str(bout.get("finished", ""))
 	var remaining := int(bout.get("remaining", 0))
-	var who := _name_or(finished, "That opponent")
+	var who := _name_or(finished, Text.say("narration.that_opponent"))
 
 	if remaining <= 0:
-		return "%s is finished" % who
+		return Text.say("narration.bout_finished", {"who": who})
 
-	var next_up := _name_or(str(bout.get("next", "")), "the next")
-	return "%s is finished — %s rises" % [who, next_up]
+	var next_up := _name_or(str(bout.get("next", "")), Text.say("narration.the_next"))
+	return Text.say("narration.bout_finished_next", {"who": who, "next": next_up})
 
 
 ## The possessive for whoever is opposite: their actual name where there is
 ## one, so the screen stops saying "them" about a named character.
 static func _their(opponent_name: String) -> String:
 	var name := opponent_name.strip_edges()
-	return "their" if name.is_empty() else "%s's" % name
+	if name.is_empty():
+		return Text.say("narration.their_generic")
+	return Text.say("narration.their_named", {"name": name})
 
 
 static func _them(opponent_name: String) -> String:
 	var name := opponent_name.strip_edges()
-	return "them" if name.is_empty() else name
+	return Text.say("narration.them_generic") if name.is_empty() else name
 
 
 static func _name_or(name: String, fallback: String) -> String:

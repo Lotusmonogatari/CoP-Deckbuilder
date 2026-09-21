@@ -110,5 +110,271 @@
     "english": "On to the next stage",
     "placeholders": null,
     "notes": "The button when the level has another room waiting."
+  },
+  {
+    "key": "battle.no_stage",
+    "where": "Battle — notices",
+    "english": "There is no stage to play here.",
+    "placeholders": null,
+    "notes": "Shown if a stage cannot be found at all."
+  },
+  {
+    "key": "battle.cannot_start",
+    "where": "Battle — notices",
+    "english": "This battle could not start:\n• {problems}",
+    "placeholders": "problems",
+    "notes": "{problems} is a bulleted list the game fills in."
+  },
+  {
+    "key": "battle.card_refused",
+    "where": "Battle — notices",
+    "english": "That card cannot be played.",
+    "placeholders": null,
+    "notes": "A fallback; the engine usually gives its own reason."
+  },
+  {
+    "key": "battle.declined",
+    "where": "Battle — notices",
+    "english": "You let that one go. The room cools.",
+    "placeholders": null,
+    "notes": "Ending a turn without answering the question in front of you."
+  },
+  {
+    "key": "battle.passed",
+    "where": "Battle — notices",
+    "english": "You said nothing. One less energy this turn.",
+    "placeholders": null,
+    "notes": "Ending a turn having played no cards, outside a press conference."
+  },
+  {
+    "key": "narration.sentence",
+    "where": "Battle — what happened",
+    "english": "{who}: {clauses}.",
+    "placeholders": "who, clauses",
+    "notes": "The frame the opponent's move is reported in."
+  },
+  {
+    "key": "narration.they",
+    "where": "Battle — what happened",
+    "english": "They",
+    "placeholders": null,
+    "notes": "Stands in for an opponent with no name."
+  },
+  {
+    "key": "narration.that_opponent",
+    "where": "Battle — what happened",
+    "english": "That opponent",
+    "placeholders": null,
+    "notes": "Stands in for a finished opponent with no name."
+  },
+  {
+    "key": "narration.the_next",
+    "where": "Battle — what happened",
+    "english": "the next",
+    "placeholders": null,
+    "notes": "Stands in for the next opponent up, unnamed."
+  },
+  {
+    "key": "narration.a_member",
+    "where": "Battle — what happened",
+    "english": "a member",
+    "placeholders": null,
+    "notes": "Stands in for a committee member with no name."
+  },
+  {
+    "key": "narration.them_generic",
+    "where": "Battle — what happened",
+    "english": "them",
+    "placeholders": null,
+    "notes": "Used where the opponent has no name."
+  },
+  {
+    "key": "narration.their_generic",
+    "where": "Battle — what happened",
+    "english": "their",
+    "placeholders": null,
+    "notes": "Possessive, where the opponent has no name."
+  },
+  {
+    "key": "narration.their_named",
+    "where": "Battle — what happened",
+    "english": "{name}'s",
+    "placeholders": "name",
+    "notes": "Possessive, where they do have a name."
+  },
+  {
+    "key": "narration.guard_stopped",
+    "where": "Battle — your card",
+    "english": "{who} guard stopped {count}",
+    "placeholders": "who, count",
+    "notes": "{who} is already possessive: \"Ito's\" or \"their\"."
+  },
+  {
+    "key": "narration.argued_away",
+    "where": "Battle — your card",
+    "english": "{amount} argued away from {whom}",
+    "placeholders": "amount, whom",
+    "notes": "{amount} already carries its unit: \"3 seats\", \"5%\"."
+  },
+  {
+    "key": "narration.gaffe.one",
+    "where": "Battle — your card",
+    "english": "{count} gaffe on your record",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "narration.gaffe.other",
+    "where": "Battle — your card",
+    "english": "{count} gaffes on your record",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "narration.won_over",
+    "where": "Battle — your card",
+    "english": "{amount} won over",
+    "placeholders": "amount",
+    "notes": null
+  },
+  {
+    "key": "narration.won_over_detail",
+    "where": "Battle — your card",
+    "english": "{clause} — {detail}",
+    "placeholders": "clause, detail",
+    "notes": "Joins the win to who those people were."
+  },
+  {
+    "key": "narration.raised",
+    "where": "Battle — your card",
+    "english": "{unit} raised by {count}",
+    "placeholders": "unit, count",
+    "notes": "For a room with a mood rather than people: press tone."
+  },
+  {
+    "key": "narration.unmoved",
+    "where": "Battle — your card",
+    "english": "{unit} did not move",
+    "placeholders": "unit",
+    "notes": null
+  },
+  {
+    "key": "narration.short.one",
+    "where": "Battle — your card",
+    "english": ", {count} point short of the next",
+    "placeholders": "count",
+    "notes": "Points that cannot pay for the next person are lost."
+  },
+  {
+    "key": "narration.short.other",
+    "where": "Battle — your card",
+    "english": ", {count} points short of the next",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "narration.all_off",
+    "where": "Battle — your card",
+    "english": "all of them off {whom}",
+    "placeholders": "whom",
+    "notes": null
+  },
+  {
+    "key": "narration.split",
+    "where": "Battle — your card",
+    "english": "{undecided} from the undecided, {count} off {whom}",
+    "placeholders": "undecided, count, whom",
+    "notes": null
+  },
+  {
+    "key": "narration.bout_finished",
+    "where": "Battle — your card",
+    "english": "{who} is finished",
+    "placeholders": "who",
+    "notes": "The last opponent in the room."
+  },
+  {
+    "key": "narration.bout_finished_next",
+    "where": "Battle — your card",
+    "english": "{who} is finished — {next} rises",
+    "placeholders": "who, next",
+    "notes": null
+  },
+  {
+    "key": "narration.absorbed",
+    "where": "Battle — their move",
+    "english": "your guard absorbed {count}",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "narration.taken",
+    "where": "Battle — their move",
+    "english": "{amount} taken from you",
+    "placeholders": "amount",
+    "notes": null
+  },
+  {
+    "key": "narration.nothing_through",
+    "where": "Battle — their move",
+    "english": "nothing got through",
+    "placeholders": null,
+    "notes": "Their attack was entirely absorbed by your guard."
+  },
+  {
+    "key": "narration.nothing_to_take",
+    "where": "Battle — their move",
+    "english": "the attack found nothing to take",
+    "placeholders": null,
+    "notes": "They attacked and you had nothing left to lose."
+  },
+  {
+    "key": "narration.gain_none",
+    "where": "Battle — their move",
+    "english": "{who} pressed the case and won nobody over.",
+    "placeholders": "who",
+    "notes": null
+  },
+  {
+    "key": "narration.guard_built",
+    "where": "Battle — their move",
+    "english": "developed {count} guard",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "narration.block_none",
+    "where": "Battle — their move",
+    "english": "{who} could not guard any further.",
+    "placeholders": "who",
+    "notes": "Their guard is already at the ceiling."
+  },
+  {
+    "key": "narration.leaned",
+    "where": "Battle — their move",
+    "english": "leaned on {member}, {count} against you",
+    "placeholders": "member, count",
+    "notes": "A committee chair pushing one member away from you."
+  },
+  {
+    "key": "narration.lean_none",
+    "where": "Battle — their move",
+    "english": "{who} leaned on the panel and moved nobody.",
+    "placeholders": "who",
+    "notes": null
+  },
+  {
+    "key": "narration.waited",
+    "where": "Battle — their move",
+    "english": "{who} waited.",
+    "placeholders": "who",
+    "notes": "Their move was worth nothing, so they did nothing."
+  },
+  {
+    "key": "narration.won_over_them",
+    "where": "Battle — their move",
+    "english": "won over {amount}",
+    "placeholders": "amount",
+    "notes": "The OPPONENT winning people over. The player's version is narration.won_over, which puts the number first."
   }
 ]

@@ -117,7 +117,7 @@ func start_battle() -> void:
 		config = BattleSetup.for_module_step(module_id, step)
 
 	if config.is_empty():
-		_messages.say("There is no stage to play here.")
+		_messages.say(Text.say("battle.no_stage"))
 		return
 
 	_stage = config.get("stage", {})
@@ -129,8 +129,8 @@ func start_battle() -> void:
 		# half-built battle that accepts input crashes instead of failing.
 		_ready_to_play = false
 		_end_turn_button.disabled = true
-		_messages.say("This battle could not start:\n• %s"
-			% "\n• ".join(Array(engine.setup_problems)))
+		_messages.say(Text.say("battle.cannot_start",
+			{"problems": "\n• ".join(Array(engine.setup_problems))}))
 		return
 
 	_ready_to_play = true
@@ -406,7 +406,7 @@ func _play_selected() -> void:
 
 	var result := engine.play_card(card_id)
 	if not result.get("ok", false):
-		_messages.say(str(result.get("reason", "That card cannot be played.")))
+		_messages.say(str(result.get("reason", Text.say("battle.card_refused"))))
 		return
 
 	_selected_card_id = ""
@@ -445,9 +445,9 @@ func _on_end_turn() -> void:
 	# compounds — every quiet turn costs the same one energy.
 	if bool(result.get("passed", false)) and not engine.state.is_over():
 		if engine.is_press_conference():
-			lines.append("You let that one go. The room cools.")
+			lines.append(Text.say("battle.declined"))
 		else:
-			lines.append("You said nothing. One less energy this turn.")
+			lines.append(Text.say("battle.passed"))
 
 	# What the opponent did. The engine has always returned this and no
 	# screen has ever read it, so the whole of their turn happened in

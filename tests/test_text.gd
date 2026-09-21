@@ -120,3 +120,56 @@ func test_a_level_can_sign_off_on_a_loss() -> void:
 		"the level's own loss line should be what comes back")
 
 	GameState.end_level()
+
+
+# ---------------------------------------------------------------------------
+# Stage 2: the notices and the narration
+# ---------------------------------------------------------------------------
+# The same discipline as above — these are the exact sentences the screen
+# showed before the move, so a line cannot be reworded by accident.
+
+func test_the_turn_notices_still_read_as_they_did() -> void:
+	assert_eq(Text.say("battle.passed"),
+		"You said nothing. One less energy this turn.")
+	assert_eq(Text.say("battle.declined"),
+		"You let that one go. The room cools.")
+	assert_eq(Text.say("battle.no_stage"), "There is no stage to play here.")
+
+
+func test_the_narration_clauses_still_read_as_they_did() -> void:
+	var expected := {
+		"narration.nothing_through": "nothing got through",
+		"narration.nothing_to_take": "the attack found nothing to take",
+		"narration.they": "They",
+		"narration.them_generic": "them",
+		"narration.their_generic": "their",
+		"narration.a_member": "a member",
+	}
+	for key: String in expected.keys():
+		assert_eq(Text.say(key), str(expected[key]), key)
+
+	assert_eq(Text.say("narration.absorbed", {"count": 4}),
+		"your guard absorbed 4")
+	assert_eq(Text.say("narration.guard_built", {"count": 3}),
+		"developed 3 guard")
+	assert_eq(Text.say("narration.their_named", {"name": "Ito"}), "Ito's")
+	assert_eq(Text.say("narration.waited", {"who": "Ito"}), "Ito waited.")
+	assert_eq(Text.say("narration.sentence", {"who": "Ito", "clauses": "a, b"}),
+		"Ito: a, b.")
+
+
+func test_the_two_won_over_clauses_stay_different() -> void:
+	# The player's reads "4 seats won over"; the opponent's reads "won over
+	# 4 seats". Collapsing them onto one key silently reworded the
+	# opponent's line, and the suite caught it — so it is pinned here.
+	assert_eq(Text.say("narration.won_over", {"amount": "4 seats"}),
+		"4 seats won over")
+	assert_eq(Text.say("narration.won_over_them", {"amount": "4 seats"}),
+		"won over 4 seats")
+
+
+func test_the_gaffe_clause_counts_properly() -> void:
+	assert_eq(Text.say("narration.gaffe", {"count": 1}), "1 gaffe on your record")
+	assert_eq(Text.say("narration.gaffe", {"count": 2}), "2 gaffes on your record")
+	assert_eq(Text.say("narration.short", {"count": 1}), ", 1 point short of the next")
+	assert_eq(Text.say("narration.short", {"count": 3}), ", 3 points short of the next")
