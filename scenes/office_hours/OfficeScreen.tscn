@@ -77,23 +77,11 @@ custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
 text = "Start the level"
 
-[node name="CardsButton" type="Button" parent="Safe/Column"]
+[node name="ManagementButton" type="Button" parent="Safe/Column"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "New cards"
-
-[node name="DeckButton" type="Button" parent="Safe/Column"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-text = "Your deck"
-
-[node name="BackingButton" type="Button" parent="Safe/Column"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-text = "Backing"
+text = "Office Management"
 
 [node name="OrganisationsButton" type="Button" parent="Safe/Column"]
 unique_name_in_owner = true
@@ -137,6 +125,13 @@ anchor_bottom = 1.0
 script = ExtResource("3_vhpdr")
 
 [node name="BackingPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_vhpdr")
+
+[node name="ManagementPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0

@@ -153,26 +153,23 @@ function showOffice() {
   start.addEventListener('click', showLevels);
   root.append(start);
 
-  // What there is to spend, and whether the deck is legal. A shop you have
-  // to open to find out whether you can afford anything is one you stop
-  // opening.
-  const spend = el('p', 'office-report');
+  // Everything you can SPEND now lives behind one door. A playtest reported
+  // not being able to find the XP and Funds stores at all, because they sat
+  // as a quiet line of text above three buttons that looked alike and none
+  // of which said which currency it wanted.
+  //
+  // What stays out here is the warning: a deck that is not legal cannot
+  // start a level, and a player must not have to open a panel to find out.
   const deckSay = deckRefusal(run.deck, run.ownedCards, DATA.balance || {});
-  spend.textContent = 'XP ' + run.xp + '  ·  Funds ' + int(run.meta.Funds, 0)
-    + '  ·  Deck ' + run.deck.length + ' of ' + deckSize(DATA.balance || {})
-    + (deckSay ? '  —  ' + deckSay : '');
+  const spend = el('p', 'office-report', deckSay
+    ? 'Your deck: ' + deckSay + '  —  see Office Management.'
+    : 'The office is in order.');
   root.append(spend);
 
-  for (const [label, id, handler] of [
-    ['New cards', 'new-cards', showCardShop],
-    ['Your deck', 'your-deck', showDeckScreen],
-    ['Backing', 'backing', showBackingShop],
-  ]) {
-    const button = el('button', 'ghost', label);
-    button.id = id;
-    button.addEventListener('click', handler);
-    root.append(button);
-  }
+  const management = el('button', 'ghost', 'Office Management');
+  management.id = 'office-management';
+  management.addEventListener('click', showManagement);
+  root.append(management);
 
   // Who is behind you, and how far. Secondary, so it lives behind a button.
   const orgs = el('button', 'ghost', 'The organisations');
@@ -187,6 +184,45 @@ function lastLevelReport() {
   if (!run.lastLevelOutcome) return 'Nothing on today. The House sits shortly.';
   if (run.lastLevelOutcome === WON) return 'The bill carried. Word has got round.';
   return 'The bill failed. There will be questions.';
+}
+
+// Everything there is to spend, and everything to spend it on.
+//
+// One door rather than three side by side, and it leads with the two
+// currencies and what each of them buys. Knowing you have 30 Funds is no use
+// if nothing says that Funds are what backing costs. Mirrors
+// OfficeScreen._show_management.
+function showManagement() {
+  overlay('Office Management', sheet => {
+    const money = [
+      ['XP ' + run.xp, 'Earned by winning stages. Buys new cards.'],
+      ['Funds ' + int(run.meta.Funds, 0),
+        "From donors and backers. Buys the organisations' backing."],
+    ];
+    for (const [heading, note] of money) {
+      sheet.append(el('h2', 'org-tier', heading));
+      sheet.append(el('p', 'org-boosts', note));
+    }
+
+    const refusal = deckRefusal(run.deck, run.ownedCards, DATA.balance || {});
+    sheet.append(el('h2', 'org-tier',
+      'Deck ' + run.deck.length + ' of ' + deckSize(DATA.balance || {})));
+    sheet.append(el('p', 'org-boosts', refusal || 'Ready to go in.'));
+
+    for (const [label, id, handler] of [
+      ['New cards', 'new-cards', showCardShop],
+      ['Your deck', 'your-deck', showDeckScreen],
+      ['Backing', 'backing', showBackingShop],
+    ]) {
+      const button = el('button', 'ghost', label);
+      button.id = id;
+      button.addEventListener('click', () => {
+        sheet.closest('.backdrop').remove();
+        handler();
+      });
+      sheet.append(button);
+    }
+  });
 }
 
 // Which level to play. Six of them now, grouped by tier.
@@ -439,9 +475,16 @@ function showDeckScreen() {
         const row = el('div', 'org');
         if (!chosen) row.style.opacity = '0.5';
 
+        // The cost goes first, because that is what the choice turns on: a
+        // deck of twelve threes cannot be played three energy at a time.
+        //
+        // The PRINTED cost, not what a battle would charge. There is no
+        // battle here, so no discount applies and there is no engine to ask.
+        //
         // The name on the button and the effect beneath it: both on the
         // button ran a long card off the side of the screen.
-        const toggle = el('button', 'ghost', (chosen ? '✓  ' : '–  ') + card.name_en);
+        const toggle = el('button', 'ghost',
+          (chosen ? '✓  ' : '–  ') + int(card.cost, 0) + '  ' + card.name_en);
         toggle.addEventListener('click', () => {
           draft = chosen ? draft.filter(id => id !== cardId) : draft.concat([cardId]);
           build();
@@ -614,11 +657,12 @@ function drawBattle() {
   const right = el('div', 'status-right');
   // How much of the next attack is already covered. Shown only when there is
   // some: a permanent "Guarding 0" is noise.
-  if (s.block > 0) right.append(el('span', 'guarding', 'Guarding ' + s.block));
+  right.append(el('span', 'guarding', 'Guard ' + s.block + ' / ' + s.guard_cap));
   // And theirs. Banked and spent since the last round, never once shown, so
   // the player could only infer it after the fact from "their guard stopped 3".
   if (s.opponent_block > 0) {
-    right.append(el('span', 'their-guard', 'They guard ' + s.opponent_block));
+    right.append(el('span', 'their-guard',
+      'They guard ' + s.opponent_block + ' / ' + s.guard_cap));
   }
   // The gaffe warning turns red ONLY when one more would end the stage.
   right.append(el('span', engine.gaffeIsCritical() ? 'gaffes warn' : 'gaffes',
@@ -793,7 +837,6 @@ function cardFace(card, s) {
   face.append(el('span', 'card-name', card.name_en));
   if (card.name_jp) face.append(el('span', 'card-jp', card.name_jp));
   face.append(el('span', 'card-text', effectHere(effect, card)));
-  face.append(el('span', 'card-band'));
 
   face.addEventListener('click', () => showCardZoom(card));
   return face;
@@ -827,9 +870,9 @@ function cardBack(card, here, room) {
 
   box.append(text);
 
-  const band = el('span', 'card-band');
+  // The suit class paints nothing now that the colour strip is gone. It
+  // stays because it is the hook a per-suit card template will need.
   box.classList.add('suit-' + String(card.suit).toLowerCase().replace(/\s+/g, '-'));
-  box.append(band);
   return box;
 }
 
@@ -1106,22 +1149,139 @@ function showCardZoom(card) {
   });
 }
 
+// How a room works, in plain sentences. Ported from scripts/ui/StageBrief.gd
+// — keep the two in step.
+//
+// THE POINT IS THAT IT STATES THE DEFAULT. A policy study refills energy at
+// the end of the turn, like almost every stage, and asks two questions a turn
+// rather than one. Neither was written down anywhere, so energy looked finite
+// to the player: they spent it, saw it not come back, and had no way to learn
+// that ending the turn is what refills it.
+//
+// Built from the RESOLVED stage, so every number is the one the battle is
+// actually running on. `state` may be null, for a stage described before
+// there is a battle.
+function howThisRoomWorks(stage, state) {
+  const lines = ['How this room works'];
+
+  lines.push('• Turns — ' + briefTurns(stage));
+  lines.push('• Energy — ' + briefEnergy(stage, state));
+
+  const questions = stage.questions || [];
+  if (questions.length > 0) {
+    lines.push('• Questions — ' + briefQuestions(stage, questions.length));
+  }
+
+  lines.push('• Gaffes — ' + briefGaffes(stage));
+  lines.push('• Guard — ' + briefGuard(state));
+  lines.push('• Your hand — ' + briefHand(stage));
+  lines.push('• Winning — ' + briefWinning(stage));
+
+  const decay = int(stage.affinity_decay, 0);
+  if (decay > 0) {
+    lines.push('• Every turn costs you — their interest cools by ' + decay
+      + ', whatever you say.');
+  }
+  return lines;
+}
+
+function briefTurns(stage) {
+  const limit = int(stage.turn_limit, 0);
+  if (limit <= 0) return 'no limit. It ends when the questions run out.';
+  return limit + '. Running out of them is a loss.';
+}
+
+function briefEnergy(stage, state) {
+  if (str(stage.energy_mode, 'per_turn') === 'pool') {
+    const left = state ? '  ' + state.energy + ' left.' : '';
+    return int(stage.energy_pool, 0) + ' for the whole thing. They do NOT come '
+      + 'back at the start of a turn — spend them as a budget.' + left;
+  }
+  // The sentence that prompted all of this: "when you end the turn" is the
+  // step the player could not see.
+  return int(stage.energy_per_turn, 3) + ' a turn, back in full when you end the turn.';
+}
+
+function briefQuestions(stage, total) {
+  const perTurn = Math.max(int(stage.questions_per_turn, 1), 1);
+  let sentence = perTurn === 1
+    ? 'one a turn, ' + total + ' in all. '
+    : perTurn + ' a turn, ' + total + ' in all. A further card still plays, '
+      + 'but nobody is waiting for it. ';
+
+  sentence += 'Leave one unanswered when the turn ends and you have declined it';
+  if (bool(stage.decline_ends_stage, false)) {
+    return sentence + ', and here that ends the stage.';
+  }
+  const cost = int(stage.decline_tone_cost, 3);
+  return cost > 0 ? sentence + ', which costs ' + cost + ' and pleases nobody.' : sentence + '.';
+}
+
+function briefGaffes(stage) {
+  const limit = int(stage.gaffe_limit, 5);
+  const multiplier = Math.max(int(stage.gaffe_multiplier, 1), 1);
+  if (multiplier > 1) {
+    return limit + ' ends the stage at once — and every slip here counts '
+      + multiplier + ' times.';
+  }
+  return limit + ' ends the stage at once.';
+}
+
+function briefGuard(state) {
+  const cap = state ? state.guard_cap : 5;
+  return 'it banks up to ' + cap + ' and carries between turns. Only an attack '
+    + 'takes it, and it is spent stopping one.';
+}
+
+function briefHand(stage) {
+  if (str(stage.draw_mode, 'refill') === 'none') {
+    return int(stage.opening_hand, 8) + ' cards, and you draw no more. '
+      + 'Run out and there is nothing left to say.';
+  }
+  return 'drawn back up to ' + int(stage.hand_size, 5) + ' at the end of every turn.';
+}
+
+function briefWinning(stage) {
+  if (str(stage.win_mode, 'threshold') === 'score') {
+    return 'there is nothing to reach. However high the support gets by the '
+      + 'end is the result, and later stages draw on it.';
+  }
+
+  const threshold = int(stage.win_threshold, 0);
+  const unit = str(stage.bar_unit, 'support').toLowerCase();
+  if (threshold <= 0) return 'hold the room until the questions run out.';
+
+  switch (str(stage.sequence_mode, 'single')) {
+    case 'reset':
+      return threshold + ' ' + unit + ' wins the argument in front of you. The '
+        + 'next one starts again from nothing, gaffes included.';
+    case 'continuous':
+      return threshold + ' ' + unit + ' finishes the one in front of you, not '
+        + 'the stage. Your record, your hand and the clock carry across all of them.';
+    case 'stream':
+      return threshold + ' ' + unit + ' moves the queue along. The clock and '
+        + 'your record carry; each new face is fresh energy.';
+    default:
+      return threshold + ' ' + unit + '.';
+  }
+}
+
 function showDetails() {
   const engine = run.engine;
   const s = engine.state;
 
   overlay('Details', sheet => {
-    const lines = [
+    // The room's own rules come first, defaults included.
+    const lines = howThisRoomWorks(run.stage, s).concat(['',
       'Deck ' + s.deck.length + ' · Hand ' + s.hand.length + ' · Discard ' + s.discard.length,
       'Stage: ' + run.stage.name_en + ' (' + run.stage.stage_id + ')',
       'You: ' + DATA.player.name_en + ', ' + DATA.player.party,
-    ];
+    ]);
 
     if (engine.isPressConference()) {
       const question = engine.currentQuestion();
       lines.push('');
       if (question) lines.push('This question invites a ' + question.prefers_suit + ' answer.');
-      lines.push('One card answers one question, and you only draw if a card says so.');
       const pleased = engine.pleasedBoosters();
       lines.push(pleased.length === 0
         ? 'Nobody pleased yet.'
@@ -1134,28 +1294,12 @@ function showDetails() {
     lines.push('');
     lines.push(...roomLines(s));
 
+    // How many there are to get through. How they follow one another is a
+    // row in the table above, so only the count belongs here.
     if (s.opponent_count > 1) {
       lines.push('');
-      if (run.stage.sequence_mode === 'reset') {
-        lines.push(s.opponent_count + ' opponents, one at a time. Beat one and everything starts again against the next, including your gaffes.');
-      } else {
-        lines.push(s.opponent_count + ' debaters, one at a time, and ' + s.bar.threshold
-          + ' ' + String(run.stage.bar_unit || 'support').toLowerCase()
-          + ' ends the one in front of you — not the stage. Beat them and the house divides again from the start for the next.');
-        lines.push('Your record, your hand and the clock carry across all '
-          + s.opponent_count + ' of them.');
-      }
-    }
-
-    if (s.energy_mode === 'pool') {
-      lines.push('');
-      lines.push('These ' + s.energy_max + ' are for the whole debate. They do not come back at the start of a turn.');
-      // The figure above matches the pips because both read energy_max — but
-      // it is the number still LEFT that changes, and that was never shown.
-      lines.push(s.energy + ' of them left.');
-    }
-    if (s.win_mode === 'score') {
-      lines.push('There is nothing to reach here. However high the support gets is what carries into the floor debate.');
+      lines.push(s.opponent_count + ' of them, one at a time. You are on '
+        + (s.opponent_index + 1) + '.');
     }
 
     const carried = run.runner.describeCarriedBuffs(boosterNames(DATA));

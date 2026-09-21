@@ -225,7 +225,6 @@ button:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
    THE PERCENTAGES ARE THE SAME NUMBERS AS scripts/ui/CardView.gd, measured
    off the 1429x2000 PNG. If the frame is redrawn, change them in both. */
 .card {
-  --suit: var(--line);
   --card-w: 160px;
   position: relative;
   flex: 0 0 var(--card-w);
@@ -310,46 +309,50 @@ button:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
   line-height: 1.22;
   color: var(--card-ink);
 }
-/* The suit, as a band along the footer strip the frame already draws. The
-   frame is one colour for every card, so without this a hand cannot be read
-   by shape at a glance. */
-.card-band {
-  position: absolute;
-  left: 4.5%; top: 91.2%; width: 84.5%; height: 6.2%;
-  background: var(--suit);
-}
 
 /* The card turned over: the same frame's back, with the full text on its
    ruled paper. The rules run at 10.10% and every 7.15% after it, so the line
    height is set to match and each line lands between two of them. */
+/* THE SHAPE IS PINNED, not computed. The sheet this sits in is a column
+   flex box with a max-height, and a flex item shrinks by default — so when
+   the sheet ran out of room it squashed the card's HEIGHT while the width
+   stayed at 300px, and the frame, painted at 100% by 100%, stretched with
+   it. `flex: 0 0 auto` refuses the squash and `aspect-ratio` holds the
+   proportions at whatever width is available. */
 .card-back {
   --card-w: 300px;
   position: relative;
-  width: var(--card-w);
-  height: calc(var(--card-w) / 0.7145);
+  flex: 0 0 auto;
+  width: min(var(--card-w), 100%);
+  aspect-ratio: 1429 / 2000;
+  height: auto;
   margin: 0 auto;
   color: var(--card-ink);
 }
 .card-back .card-frame { background-image: var(--frame-back); }
+/* Sized in container units rather than off --card-w: that variable is now
+   a maximum, and on a narrow screen the card is smaller than it. cqw is one
+   per cent of this card's own width, so the writing shrinks with the paper
+   and the lines keep landing between the rules. */
+.card-back { container-type: inline-size; }
 .card-back-text {
   position: absolute;
   left: 7%; top: 10.1%; width: 86%; height: 71.5%;
   margin: 0;
   overflow: hidden;
-  font-size: calc(var(--card-w) * 0.0455);
-  /* One rule to the next, exactly. */
-  line-height: calc(var(--card-w) / 0.7145 * 0.0715);
+  font-size: 4.55cqw;
+  /* One rule to the next, exactly: the card is 1/0.7145 as tall as wide. */
+  line-height: calc(100cqw / 0.7145 * 0.0715);
 }
 .card-back-text b { font-weight: 700; }
 .card-back-text .faint { color: var(--card-faint); }
 
-/* One hue per suit, so the six are told apart at a glance without reading. */
-.suit-earnest       { --suit: #6FA88B; }
-.suit-emotional     { --suit: #C57B9C; }
-.suit-appeal        { --suit: #D9A14E; }
-.suit-data-driven   { --suit: #5B9BD5; }
-.suit-divisive      { --suit: #9B7BC5; }
-.suit-duplicitous   { --suit: #8A8F9E; }
+/* The six suit classes stay on the card and paint nothing. They are the
+   hook a per-suit card template will need; until those exist, one frame
+   serves every suit and the colour strip that used to sit on the footer has
+   been removed at Cameron's request. */
+.suit-earnest, .suit-emotional, .suit-appeal,
+.suit-data-driven, .suit-divisive, .suit-duplicitous { /* no paint yet */ }
 
 /* --- overlays ----------------------------------------------------------- */
 

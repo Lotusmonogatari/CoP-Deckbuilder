@@ -39,18 +39,11 @@ const TEXT_RECT := Rect2(0.128, 0.676, 0.744, 0.200)
 ## The back's writing grid, for the expanded text.
 const BACK_TEXT_RECT := Rect2(0.060, 0.045, 0.880, 0.830)
 
-## A quiet colour per suit, shown as a band across the footer strip the
-## frame already has. The frame is one colour for every card, so without
-## this a hand cannot be read by shape at a glance.
-const SUIT_COLORS := {
-	"Earnest": Color(0.35, 0.50, 0.42),
-	"Emotional": Color(0.60, 0.38, 0.40),
-	"Appeal": Color(0.55, 0.47, 0.30),
-	"Data Driven": Color(0.33, 0.45, 0.58),
-	"Divisive": Color(0.52, 0.35, 0.52),
-	"Duplicitous": Color(0.42, 0.40, 0.34),
-}
-const SUIT_BAND := Rect2(0.045, 0.912, 0.845, 0.062)
+## NO SUIT COLOUR. There used to be a coloured band across the footer strip,
+## so a hand could be read by suit at a glance. Cameron had it removed on
+## 2026-09-21: each suit is getting its own card template, and a stripe that
+## will not survive those templates is a signal the player would have to
+## unlearn. Until they arrive, one frame serves all six.
 
 ## Ink on a cream box wants to be dark, not the theme's pale text.
 const INK := Color(0.16, 0.13, 0.10)
@@ -69,7 +62,6 @@ var card: Dictionary = {}
 var card_id: String = ""
 
 var _frame: TextureRect
-var _suit_band: ColorRect
 var _cost_label: Label
 var _name_label: Label
 var _art_label: Label
@@ -121,11 +113,6 @@ func _build() -> void:
 	_frame.stretch_mode = TextureRect.STRETCH_SCALE
 	_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_frame)
-
-	# The suit, as a band along the footer the frame already draws.
-	_suit_band = ColorRect.new()
-	place(_suit_band, SUIT_BAND)
-	add_child(_suit_band)
 
 	# The frame leaves the cost disc transparent, so it has to be filled or
 	# the number floats on whatever is behind the card.
@@ -186,9 +173,6 @@ func show_card(card_row: Dictionary) -> void:
 	_name_label.text = str(card_row.get("name_en", "Unnamed"))
 	_art_label.text = str(card_row.get("name_jp", ""))
 	_effect_label.text = str(card_row.get("effect_text", ""))
-
-	var suit := str(card_row.get("suit", ""))
-	_suit_band.color = SUIT_COLORS.get(suit, Color(0.35, 0.35, 0.40))
 
 	tooltip_text = "%s — %s" % [card_row.get("name_en", ""), card_row.get("effect_text", "")]
 

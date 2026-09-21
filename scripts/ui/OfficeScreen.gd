@@ -23,9 +23,8 @@ const BATTLE_SCENE := "res://scenes/battle/BattleScreen.tscn"
 ## The level the player is looking at, chosen on the levels screen.
 var _chosen_level: Dictionary = {}
 @onready var _resources: Label = %Resources
-@onready var _cards_button: Button = %CardsButton
-@onready var _deck_button: Button = %DeckButton
-@onready var _backing_button: Button = %BackingButton
+@onready var _management_button: Button = %ManagementButton
+@onready var _management_panel: Overlay = %ManagementPanel
 @onready var _cards_panel: Overlay = %CardsPanel
 @onready var _deck_panel: Overlay = %DeckPanel
 @onready var _backing_panel: Overlay = %BackingPanel
@@ -41,9 +40,7 @@ func _ready() -> void:
 	_briefing_panel.confirmed.connect(_on_start)
 	_deck_panel.confirmed.connect(_on_deck_confirmed)
 	_organisations_button.pressed.connect(_show_organisations)
-	_cards_button.pressed.connect(_show_cards)
-	_deck_button.pressed.connect(_show_deck)
-	_backing_button.pressed.connect(_show_backing)
+	_management_button.pressed.connect(_show_management)
 	_build()
 
 
@@ -75,22 +72,21 @@ func _build() -> void:
 	_refresh_resources()
 
 
-## What there is to spend, and what the deck looks like.
+## The one line the front page keeps about money.
 ##
-## Two currencies on one line: XP buys cards, Funds buy the organisations'
-## backing. A shop screen the player has to open to find out whether they can
-## afford anything is a shop screen they stop opening.
+## Everything you can SPEND now lives behind Office Management: a playtest
+## reported not being able to find the XP and Funds stores at all, because
+## they sat as a quiet line of text above four buttons that looked alike and
+## none of which said which currency it wanted.
+##
+## What stays out here is the warning. A deck that is not legal cannot start
+## a level, and a player must not have to open a panel to discover that.
 func _refresh_resources() -> void:
-	var funds := int(GameState.meta.get("Funds", 0))
-	var size := Ledger.deck_size(DataDB.balance)
-	_resources.text = "XP %d  ·  Funds %d  ·  Deck %d of %d" % [
-		GameState.xp, funds, GameState.deck.size(), size]
-
-	# A deck that is not legal cannot start a level, so say so here rather
-	# than letting the player find out at the briefing.
 	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance)
-	if not refusal.is_empty():
-		_resources.text += "  —  %s" % refusal
+	if refusal.is_empty():
+		_resources.text = "The office is in order."
+	else:
+		_resources.text = "Your deck: %s  —  see Office Management." % refusal
 
 
 ## What happened last time, if anything has happened yet.
@@ -110,6 +106,45 @@ func _last_level_report() -> String:
 			return "The bill failed. There will be questions."
 		_:
 			return ""
+
+
+## Everything there is to spend, and everything to spend it on.
+##
+## One door rather than three side by side, and it leads with the two
+## currencies and what each of them buys. Cameron could not find the stores
+## at all in the last playtest: knowing you have 30 Funds is no use if
+## nothing says that Funds are what backing costs.
+func _show_management() -> void:
+	var rows: Array[Control] = []
+	var funds := int(GameState.meta.get("Funds", 0))
+	var size := Ledger.deck_size(DataDB.balance)
+
+	rows.append(_heading_label("XP %d" % GameState.xp))
+	rows.append(_wrapped_label(
+		"Earned by winning stages. Buys new cards.", "SmallLabel"))
+	rows.append(_heading_label("Funds %d" % funds))
+	rows.append(_wrapped_label(
+		"From donors and backers. Buys the organisations' backing.", "SmallLabel"))
+
+	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance)
+	rows.append(_heading_label("Deck %d of %d" % [GameState.deck.size(), size]))
+	rows.append(_wrapped_label(
+		"Ready to go in." if refusal.is_empty() else refusal, "SmallLabel"))
+
+	for row: Array in [
+		["New cards", _show_cards],
+		["Your deck", _show_deck],
+		["Backing", _show_backing],
+	]:
+		var button := Button.new()
+		button.custom_minimum_size = Vector2(0, 100)
+		button.text = str(row[0])
+		button.pressed.connect(func() -> void:
+			_management_panel.close()
+			(row[1] as Callable).call())
+		rows.append(button)
+
+	_management_panel.open("Office Management", rows)
 
 
 ## The ten organisations, and where the player stands with each.
@@ -284,9 +319,15 @@ func _deck_row(card: Dictionary, card_id: String) -> Control:
 	# The name goes on the button and the effect underneath it. Both on the
 	# button ran a long card off the side of the screen and gave the panel a
 	# horizontal scrollbar.
+	# The cost goes first, because that is what the choice turns on: a deck
+	# of twelve threes cannot be played three energy at a time.
+	#
+	# The PRINTED cost, not what a battle would charge. There is no battle
+	# here, so there is no discount to apply and no engine to ask.
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 80)
-	button.text = "%s  %s" % ["✓" if chosen else "–", card.get("name_en", card_id)]
+	button.text = "%s  %d  %s" % [
+		"✓" if chosen else "–", int(card.get("cost", 0)), card.get("name_en", card_id)]
 	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	button.pressed.connect(_on_toggle_card.bind(card_id))
 	box.add_child(button)

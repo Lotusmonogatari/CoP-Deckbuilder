@@ -16,7 +16,13 @@ extends Node
 const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 
 ## A stage that has not finished within this many turns is stuck.
-const TURN_CEILING := 40
+##
+## Generous on purpose: a committee is 15 turns against each of two members
+## with a full reset between them, so 30 is the honest worst case and this
+## has to sit clear of it. Too tight and a slow-but-working stage reads as a
+## hang, which is exactly what happened when the committee went from 8 turns
+## to 15.
+const TURN_CEILING := 70
 
 ## How many stages the level should have.
 ## The first Tier 0 level's stage count. The driver plays whichever level it
@@ -142,7 +148,11 @@ func _play_current_stage() -> String:
 		await _click(screen.get_node("%EndTurnButton"))
 
 	if not screen.engine.state.is_over():
-		_failures.append("%s never finished within %d turns" % [stage_name, TURN_CEILING])
+		var state = screen.engine.state
+		_failures.append(("%s never finished within %d turns "
+			+ "(reached turn %d against opponent %d of %d, gaffes %d of %d)")
+			% [stage_name, TURN_CEILING, state.turn, state.opponent_index + 1,
+				state.opponent_count, state.gaffe, state.gaffe_limit])
 		return ""
 
 	await get_tree().create_timer(0.3).timeout
@@ -196,8 +206,33 @@ func _play_affordable_cards(screen: Node) -> void:
 		if playable == null:
 			return
 
+		# THE HAND SCROLLS SIDEWAYS now that the cards are big enough to read,
+		# and only about three of five are on screen at once. A player swipes
+		# to reach the rest; this has to do the same, because a click aimed at
+		# a card that is scrolled out of view lands outside the scroll area and
+		# opens nothing. Without this the driver silently played only the first
+		# few cards of every hand.
+		# The hand row's own parent, rather than a %UniqueName: the scroll
+		# container is not marked unique in the scene, so looking it up by
+		# name returns null and the scrolling silently never happens.
+		var scroller := hand.get_parent() as ScrollContainer
+		if scroller != null:
+			scroller.ensure_control_visible(playable)
+			await get_tree().process_frame
+			await get_tree().process_frame
+
 		await _click(playable)
 		await get_tree().create_timer(0.1).timeout
+
+		# If the zoom did not open, the card was not reachable. Say so rather
+		# than clicking a hidden Play button and pretending a turn happened.
+		var zoom: Control = screen.get_node("%CardZoom")
+		if not zoom.visible:
+			_failures.append(("a card could not be opened from the hand: it sits at %s "
+				+ "and the hand shows %s") % [
+					playable.get_global_rect(),
+					scroller.get_global_rect() if scroller else "nowhere"])
+			return
 
 		var play_button: Button = screen.get_node("%ZoomPlay")
 		if play_button.disabled:

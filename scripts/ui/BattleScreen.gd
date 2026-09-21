@@ -268,16 +268,20 @@ func _refresh_gaffe(state: BattleState) -> void:
 	_gaffe_label.text = "Gaffes %d / %d" % [state.gaffe, state.gaffe_limit]
 	_gaffe_label.theme_type_variation = "GaffeWarning" if engine.gaffe_is_critical() else ""
 
-	# How much of the next attack the player has already covered. Shown only
-	# when there is some: a permanent "Guarding 0" is noise, and the number
-	# matters most in the moment it exists.
-	_guard_label.text = "Guarding %d" % state.block
-	_guard_label.visible = state.block > 0
+	# How much of the next attack the player has already covered, and how
+	# much more would fit. Guard is a bank with a ceiling, and a playtest
+	# asked for the ceiling: without it there is no way to know whether
+	# another Guard card is worth playing or would be thrown away.
+	#
+	# Always shown, including at zero. It used to hide itself when empty,
+	# which made an empty bank look like no bank at all — and it reads as a
+	# pair with "Gaffes 0 / 6" beside it.
+	_guard_label.text = "Guard %d / %d" % [state.block, state.guard_cap]
+	_guard_label.visible = true
 
-	# And theirs. It has been banked and spent since the last playtest and
-	# never once shown, so the player could only infer it after the fact
-	# from "their guard stopped 3".
-	_opponent_guard_label.text = "They guard %d" % state.opponent_block
+	# And theirs, on the same ceiling.
+	_opponent_guard_label.text = "They guard %d / %d" % [
+		state.opponent_block, state.guard_cap]
 	_opponent_guard_label.visible = state.opponent_block > 0
 
 
@@ -352,10 +356,17 @@ func _room_lines(state: BattleState) -> Array[String]:
 
 
 func _refresh_details(state: BattleState) -> void:
-	var lines: Array[String] = [
+	# The room's own rules come first, defaults included. Nine kinds of stage
+	# now differ in how they hand out energy, how many questions they ask and
+	# what winning means, and this panel used to explain only the two cases
+	# that were unusual — so a policy study looked like it had finite energy.
+	var lines: Array[String] = StageBrief.how_this_room_works(_stage, state)
+
+	lines.append("")
+	lines.append_array([
 		"Deck %d · Hand %d · Discard %d" % [state.deck.size(), state.hand.size(), state.discard.size()],
 		"Stage: %s (%s)" % [_stage.get("name_en", ""), _stage.get("stage_id", "")],
-	]
+	])
 
 	var player := DataDB.player
 	if not str(player.get("name_en", "")).is_empty():
@@ -371,8 +382,6 @@ func _refresh_details(state: BattleState) -> void:
 		if not question_now.is_empty():
 			lines.append("This question invites a %s answer."
 				% question_now.get("prefers_suit", "any"))
-		lines.append("One card answers one question, and you only draw if a "
-			+ "card says so.")
 		var pleased := engine.pleased_boosters()
 		if pleased.is_empty():
 			lines.append("Nobody pleased yet.")
@@ -388,34 +397,12 @@ func _refresh_details(state: BattleState) -> void:
 	lines.append("")
 	lines.append_array(_room_lines(state))
 
+	# How many there are to get through. How they follow one another is a row
+	# in the table above, so only the count belongs here.
 	if state.opponent_count > 1:
 		lines.append("")
-		if _stage.get("sequence_mode") == "reset":
-			lines.append("%d opponents, one at a time. Beat one and everything "
-				% state.opponent_count
-				+ "starts again against the next, including your gaffes.")
-		else:
-			lines.append(("%d debaters, one at a time, and %d %s ends the one "
-				+ "in front of you — not the stage. Beat them and the house "
-				+ "divides again from the start for the next.")
-				% [state.opponent_count, state.bar.threshold,
-					str(_stage.get("bar_unit", "support")).to_lower()])
-			lines.append("Your record, your hand and the clock carry across "
-				+ "all %d of them." % state.opponent_count)
-
-	# Two rules a player would otherwise have to discover by losing.
-	if state.energy_mode == "pool":
-		lines.append("")
-		lines.append("These %d are for the whole debate. They do not come back "
-			% state.energy_max + "at the start of a turn.")
-		# The figure above matches the pips because both read energy_max —
-		# but it is the number still LEFT that changes, and that was the
-		# number the panel never showed.
-		lines.append("%d of them left." % state.energy)
-
-	if state.win_mode == "score":
-		lines.append("There is nothing to reach here. However high the support "
-			+ "gets is what carries into the floor debate.")
+		lines.append("%d of them, one at a time. You are on %d."
+			% [state.opponent_count, state.opponent_index + 1])
 
 	if GameState.is_in_level():
 		var carried := GameState.level_runner.describe_carried_buffs(BattleSetup.booster_names())
@@ -478,7 +465,13 @@ func _on_card_chosen(card_id: String) -> void:
 		# Big enough to read at arm's length: at 1250 tall the card is about
 		# 890 wide, which is most of a 1080 screen. The back exists to be
 		# read, so it is worth the room.
-		_card_back.custom_minimum_size = Vector2(0, 1250)
+		#
+		# BOTH numbers, not just the height. Leaving the width at zero meant
+		# the card was laid out once at no width at all and only corrected
+		# itself on the resize that followed — a frame of stretched artwork
+		# every time a card was opened.
+		_card_back.custom_minimum_size = Vector2(
+			1250.0 * CardBackView.ASPECT, 1250.0)
 		_card_back.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		var column := _zoom_text.get_parent()
 		column.add_child(_card_back)

@@ -33,10 +33,6 @@ const RULES_DEEP := 10        # whole cells between the first rule and the last
 const TEXT_LEFT := 0.070
 const TEXT_WIDTH := 0.860
 
-## The same footer band the front uses, so a card is the same colour open
-## or closed.
-const SUIT_BAND := Rect2(0.045, 0.912, 0.845, 0.062)
-
 const INK := Color(0.16, 0.13, 0.10)
 ## For the line that says what the room is doing, which is commentary rather
 ## than anything printed on the card.
@@ -48,7 +44,6 @@ const TITLE_SCALE := 0.62
 const BODY_SCALE := 0.44
 
 var _frame: TextureRect
-var _suit_band: ColorRect
 var _cells: Array[Label] = []
 
 ## What to write, before it is wrapped: {text, scale, color}.
@@ -76,10 +71,6 @@ func _build() -> void:
 	_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_frame)
 
-	_suit_band = ColorRect.new()
-	CardView.place(_suit_band, SUIT_BAND)
-	add_child(_suit_band)
-
 	for i: int in RULES_DEEP:
 		var cell := Label.new()
 		CardView.place(cell, Rect2(
@@ -106,7 +97,6 @@ func show_card(card: Dictionary, here: String, room: String) -> void:
 	_build()
 
 	var suit := str(card.get("suit", ""))
-	_suit_band.color = CardView.SUIT_COLORS.get(suit, Color(0.35, 0.35, 0.40))
 
 	_lines = []
 	_write(str(card.get("name_en", "")), TITLE_SCALE, INK)
