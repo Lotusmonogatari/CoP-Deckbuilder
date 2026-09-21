@@ -73,10 +73,22 @@ The design workbook (`CoP_Starter_Card_Stage_Data.xlsx`) has one tab per table. 
 | `yoron.json` | topic_id | Public-opinion topics, 0–100 value |
 | `bills.json` | bill_id | topic_id, direction (+1/−1), difficulty_mod |
 | `modules.json` | module + seq | Ordered stage list per module, with opponent_id, bill_id, difficulty, committee size |
-| `sanban.json` | variable | Meta-variables with start, min, max, and thresholds |
+| `sanban.json` | variable | Meta-variables with start, min, max, and thresholds. **Four of the names are lookup keys as well as display text** — see §6 |
+| `strings.json` | key | **Every sentence the game says.** From the workbook's Text tab; nothing is typed into a script |
+| `card_cues.json` | card_id | Five spoken lines per card, from the Flavor Text tab |
+| `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit |
 | `rules.json` | flag | **You create this file.** Switches for open design decisions (see §9) |
 
 **Data rules:**
+- **No sentence lives in a script.** Every line the game says is a row in the
+  Text tab, asked for by a Key. The exporter checks both directions: a key the
+  code asks for and the tab has not got is an **error** naming the file and
+  line, and a row nothing asks for is a note. `design/EDITING_TEXT.md` is the
+  guide to editing each kind of prose.
+- **Four names are data, not just words.** "Constituency support",
+  "Reputation", "Funds" and "Party support" are shown on screen *and* are how
+  the code reaches into `sanban.json` and the run's meta. Renaming one in the
+  workbook alone is an **error** at export, naming which files use it.
 - `effect_text` is **display only**. Never parse it. Conditional effects ("doubled if Constituents ≥ 50%") are implemented through a small named-effect registry keyed by a new `special` column. Propose the column and its values to Cameron and let him add them to the workbook.
 - Some workbook cells hold `"varies"` or `"—"`. Treat those as null and resolve them from the module or committee data.
 - On load, `DataDB` validates cross-references (every card suit exists, every module stage and opponent exists, and so on) and prints a readable error report.
@@ -180,6 +192,19 @@ reason — each was about to become a number written into a script:
   the neutral 50, so every bill's difficulty works out to **zero** and the
   whole system currently does nothing. The exporter says so on every run.
 - **Party post titles.**
+- **The `weak_answer_tone_cost` number.** A weak answer costs press tone, per
+  Cameron's rule. The cost is a **placeholder of 1** in `stage_types.json`,
+  chosen only so that a bad answer stings less than the 3 or 5 that declining
+  costs. The right number is a playtest away.
+- **The Theme → organisation mapping.** The workbook's new Question Themes tab
+  maps all 69 themes to one of the ten organisations, with the reasoning for
+  each in a Why column. It is a **draft Claude wrote for Cameron to correct**,
+  not a decision made on his behalf. Only existing booster IDs are used.
+- **Who asks each question.** The journalists are still Reporter A to Reporter
+  E, so the questions are handed round in turn rather than by beat. When they
+  are cast this becomes a column like the mapping above.
+- **Whether the town hall asks questions.** Twenty are written for it; the
+  stage type does not ask any today.
 
 ## 10. UI specification
 
@@ -203,7 +228,7 @@ Build **one milestone at a time**. After each one, stop and give Cameron: (a) wh
 | # | Milestone | Done when | Status (2026-09-21) |
 |---|---|---|---|
 | M0 | Project setup, `export_data.py`, `DataDB` loading and validation, placeholder art loader, font theme | Every JSON file loads; the validation report is clean or lists readable errors; Japanese renders | **Done** |
-| M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking | **Done** — 437 tests |
+| M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking | **Done** — 469 tests |
 | M2 | Battle UI: Floor debate (ST02) vs OP03 | A full battle is playable to a win or loss on desktop | **Done** |
 | M3 | Committee (ST01) and Party Caucus (ST03) | Both playable using Module 01 data | **Done** |
 | M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Part done.** The level runner and meta-variables work; a level plays start to finish. **Auto-save is not built** — `SaveManager` is a stub, so quitting loses the run. Office hours (ST07) and `visitors.json` are not built |
@@ -216,6 +241,19 @@ Build **one milestone at a time**. After each one, stop and give Cameron: (a) wh
 The browser playtest (`web/`), the shoji card frames, booster standing, the
 six playtest levels, scripted intent patterns with ranges, and the audio and
 event seams described in §13.
+
+**Every sentence moved out of the code** (2026-09-21). 200 lines now come from
+the workbook's Text tab, in both builds. `tests/wording_snapshot.json` plus one
+test catches a code change that quietly rewords something; a reword made on
+purpose is recorded with `python3 tools/export_data.py --accept-wording`.
+
+**Cameron's 270 card cues and 100 questions** (2026-09-21). A card says one of
+its five lines when played. Every room that asks questions draws from a pool of
+20 for its kind, seeded, without repeats. A question grades all six suits:
+**S pleases the organisation, M does nothing, W costs press tone**
+(`weak_answer_tone_cost`, a placeholder of 1 awaiting Cameron's number). The
+town hall's 20 are written but not asked — that stage type puts no questions to
+the player today, and giving it some is a design decision.
 
 ### §8 systems that are specified but NOT switched on
 
