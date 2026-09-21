@@ -173,3 +173,50 @@ func test_the_gaffe_clause_counts_properly() -> void:
 	assert_eq(Text.say("narration.gaffe", {"count": 2}), "2 gaffes on your record")
 	assert_eq(Text.say("narration.short", {"count": 1}), ", 1 point short of the next")
 	assert_eq(Text.say("narration.short", {"count": 3}), ", 3 points short of the next")
+
+
+# ---------------------------------------------------------------------------
+# Stage 3: the room brief
+# ---------------------------------------------------------------------------
+# The brief is assembled from templates now, so these check the SENTENCES it
+# produces for a real stage, not just that the rows exist.
+
+func test_the_room_brief_reads_as_it_did() -> void:
+	var stage := {
+		"turn_limit": 15, "energy_per_turn": 3, "gaffe_limit": 5,
+		"hand_size": 5, "win_threshold": 51, "bar_unit": "Seats",
+	}
+	var lines := StageBrief.how_this_room_works(stage)
+
+	assert_eq(lines[0], "How this room works")
+	assert_has(lines, "• Turns — 15. Running out of them is a loss.")
+	assert_has(lines, "• Energy — 3 a turn, back in full when you end the turn.")
+	assert_has(lines, "• Gaffes — 5 ends the stage at once.")
+	assert_has(lines, "• Your hand — drawn back up to 5 at the end of every turn.")
+	assert_has(lines, "• Winning — 51 seats.")
+
+
+func test_the_brief_explains_a_pool_of_energy() -> void:
+	# The sentence a playtest asked for: a policy study only refills energy
+	# when it is spent, so it looked finite.
+	var stage := {"energy_mode": "pool", "energy_pool": 6, "turn_limit": 0}
+	var lines := StageBrief.how_this_room_works(stage)
+	assert_has(lines, "• Turns — no limit. It ends when the questions run out.")
+
+	var energy := ""
+	for line: String in lines:
+		if line.begins_with("• Energy"):
+			energy = line
+	assert_string_contains(energy, "6 for the whole thing")
+	assert_string_contains(energy, "spend them as a budget")
+
+
+func test_each_kind_of_room_says_how_winning_works() -> void:
+	assert_eq(Text.say("brief.winning.score"),
+		"there is nothing to reach. However high the support gets by the end "
+		+ "is the result, and later stages draw on it.")
+	assert_eq(Text.say("brief.winning.reset", {"count": 51, "unit": "seats"}),
+		"51 seats wins the argument in front of you. The next one starts "
+		+ "again from nothing, gaffes included.")
+	assert_eq(Text.say("brief.winning.single", {"count": 51, "unit": "seats"}),
+		"51 seats.")

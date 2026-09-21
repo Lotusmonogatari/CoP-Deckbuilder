@@ -1010,6 +1010,12 @@ TEXT_KEY_CALLS = [
     re.compile(r'Text\.say\(\s*"([^"]+)"'),      # GDScript
     re.compile(r'Text\.has\(\s*"([^"]+)"'),
     re.compile(r"\bT\(\s*'([^']+)'"),           # the browser build's shorthand
+    # A key handed to a helper rather than straight to the lookup — the room
+    # brief passes its labels to _bullet(), for instance. Recognised by the
+    # shape of a key (dotted, lower case) rather than by the call around it,
+    # because there is no end of helpers a key might travel through. The
+    # worst a false match can do is suppress a "nothing asks for this" note.
+    re.compile(r'["\']([a-z][a-z0-9_]*(?:\.[a-z0-9_]+)+)["\']'),
 ]
 
 # Where a key is built at runtime rather than written out, the code says so

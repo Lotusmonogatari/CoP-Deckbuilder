@@ -376,5 +376,236 @@
     "english": "won over {amount}",
     "placeholders": "amount",
     "notes": "The OPPONENT winning people over. The player's version is narration.won_over, which puts the number first."
+  },
+  {
+    "key": "brief.heading",
+    "where": "Details — how this room works",
+    "english": "How this room works",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.bullet",
+    "where": "Details — how this room works",
+    "english": "• {label} — {detail}",
+    "placeholders": "label, detail",
+    "notes": "The shape of every line in the list."
+  },
+  {
+    "key": "brief.label.turns",
+    "where": "Details — how this room works",
+    "english": "Turns",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.label.energy",
+    "where": "Details — how this room works",
+    "english": "Energy",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.label.questions",
+    "where": "Details — how this room works",
+    "english": "Questions",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.label.gaffes",
+    "where": "Details — how this room works",
+    "english": "Gaffes",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.label.guard",
+    "where": "Details — how this room works",
+    "english": "Guard",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.label.hand",
+    "where": "Details — how this room works",
+    "english": "Your hand",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.label.winning",
+    "where": "Details — how this room works",
+    "english": "Winning",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.label.decay",
+    "where": "Details — how this room works",
+    "english": "Every turn costs you",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.turns.none",
+    "where": "Details — how this room works",
+    "english": "no limit. It ends when the questions run out.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.turns.limit",
+    "where": "Details — how this room works",
+    "english": "{count}. Running out of them is a loss.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "brief.energy.pool",
+    "where": "Details — how this room works",
+    "english": "{count} for the whole thing. They do NOT come back at the start of a turn — spend them as a budget.{left}",
+    "placeholders": "count, left",
+    "notes": "{left} is \"  3 left.\" during a battle and empty on the briefing screen."
+  },
+  {
+    "key": "brief.energy.left",
+    "where": "Details — how this room works",
+    "english": "{count} left.",
+    "placeholders": "count",
+    "notes": "Appended to the line above once a battle is running."
+  },
+  {
+    "key": "brief.energy.per_turn",
+    "where": "Details — how this room works",
+    "english": "{count} a turn, back in full when you end the turn.",
+    "placeholders": "count",
+    "notes": "A playtest could not see WHEN energy came back. That is why this line exists."
+  },
+  {
+    "key": "brief.questions.one_a_turn",
+    "where": "Details — how this room works",
+    "english": "one a turn, {total} in all.",
+    "placeholders": "total",
+    "notes": "Note the trailing space: the sentence continues."
+  },
+  {
+    "key": "brief.questions.several",
+    "where": "Details — how this room works",
+    "english": "{per_turn} a turn, {total} in all. A further card still plays, but nobody is waiting for it.",
+    "placeholders": "per_turn, total",
+    "notes": "Trailing space: the sentence continues."
+  },
+  {
+    "key": "brief.questions.decline",
+    "where": "Details — how this room works",
+    "english": "Leave one unanswered when the turn ends and you have declined it",
+    "placeholders": null,
+    "notes": "Joined to whichever ending below applies."
+  },
+  {
+    "key": "brief.questions.ends_stage",
+    "where": "Details — how this room works",
+    "english": ", and here that ends the stage.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.questions.costs",
+    "where": "Details — how this room works",
+    "english": ", which costs {count} and pleases nobody.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "brief.questions.free",
+    "where": "Details — how this room works",
+    "english": ".",
+    "placeholders": null,
+    "notes": "Where declining costs nothing at all."
+  },
+  {
+    "key": "brief.gaffes.plain",
+    "where": "Details — how this room works",
+    "english": "{count} ends the stage at once.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "brief.gaffes.multiplied",
+    "where": "Details — how this room works",
+    "english": "{count} ends the stage at once — and every slip here counts {multiplier} times.",
+    "placeholders": "count, multiplier",
+    "notes": null
+  },
+  {
+    "key": "brief.guard",
+    "where": "Details — how this room works",
+    "english": "it banks up to {count} and carries between turns. Only an attack takes it, and it is spent stopping one.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "brief.hand.none",
+    "where": "Details — how this room works",
+    "english": "{count} cards, and you draw no more. Run out and there is nothing left to say.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "brief.hand.refill",
+    "where": "Details — how this room works",
+    "english": "drawn back up to {count} at the end of every turn.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "brief.winning.score",
+    "where": "Details — how this room works",
+    "english": "there is nothing to reach. However high the support gets by the end is the result, and later stages draw on it.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.winning.hold",
+    "where": "Details — how this room works",
+    "english": "hold the room until the questions run out.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "brief.winning.reset",
+    "where": "Details — how this room works",
+    "english": "{count} {unit} wins the argument in front of you. The next one starts again from nothing, gaffes included.",
+    "placeholders": "count, unit",
+    "notes": null
+  },
+  {
+    "key": "brief.winning.continuous",
+    "where": "Details — how this room works",
+    "english": "{count} {unit} finishes the one in front of you, not the stage. Your record, your hand and the clock carry across all of them.",
+    "placeholders": "count, unit",
+    "notes": null
+  },
+  {
+    "key": "brief.winning.stream",
+    "where": "Details — how this room works",
+    "english": "{count} {unit} moves the queue along. The clock and your record carry; each new face is fresh energy.",
+    "placeholders": "count, unit",
+    "notes": null
+  },
+  {
+    "key": "brief.winning.single",
+    "where": "Details — how this room works",
+    "english": "{count} {unit}.",
+    "placeholders": "count, unit",
+    "notes": null
+  },
+  {
+    "key": "brief.decay",
+    "where": "Details — how this room works",
+    "english": "their interest cools by {count}, whatever you say.",
+    "placeholders": "count",
+    "notes": null
   }
 ]

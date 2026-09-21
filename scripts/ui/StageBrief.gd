@@ -26,110 +26,112 @@ extends RefCounted
 ## `state` may be null: the briefing screen describes a stage before there is
 ## a battle, and then only the things written on the stage can be said.
 static func how_this_room_works(stage: Dictionary, state: BattleState = null) -> Array[String]:
-	var lines: Array[String] = ["How this room works"]
+	var lines: Array[String] = [Text.say("brief.heading")]
 
-	lines.append("• Turns — %s" % _turns(stage))
-	lines.append("• Energy — %s" % _energy(stage, state))
+	lines.append(_bullet("brief.label.turns", _turns(stage)))
+	lines.append(_bullet("brief.label.energy", _energy(stage, state)))
 
 	var questions: Array = stage.get("questions", [])
 	if not questions.is_empty():
-		lines.append("• Questions — %s" % _questions(stage, questions.size()))
+		lines.append(_bullet("brief.label.questions", _questions(stage, questions.size())))
 
-	lines.append("• Gaffes — %s" % _gaffes(stage))
-	lines.append("• Guard — %s" % _guard(state))
-	lines.append("• Your hand — %s" % _hand(stage))
-	lines.append("• Winning — %s" % _winning(stage))
+	lines.append(_bullet("brief.label.gaffes", _gaffes(stage)))
+	lines.append(_bullet("brief.label.guard", _guard(state)))
+	lines.append(_bullet("brief.label.hand", _hand(stage)))
+	lines.append(_bullet("brief.label.winning", _winning(stage)))
 
 	var decay := int(stage.get("affinity_decay", 0))
 	if decay > 0:
-		lines.append("• Every turn costs you — their interest cools by %d, "
-			% decay + "whatever you say.")
+		lines.append(_bullet("brief.label.decay",
+			Text.say("brief.decay", {"count": decay})))
 
 	return lines
+
+
+## One line of the list: its label and what it says.
+static func _bullet(label_key: String, detail: String) -> String:
+	return Text.say("brief.bullet",
+		{"label": Text.say(label_key), "detail": detail})
 
 
 static func _turns(stage: Dictionary) -> String:
 	var limit := int(stage.get("turn_limit", 0))
 	if limit <= 0:
-		return "no limit. It ends when the questions run out."
-	return "%d. Running out of them is a loss." % limit
+		return Text.say("brief.turns.none")
+	return Text.say("brief.turns.limit", {"count": limit})
 
 
 static func _energy(stage: Dictionary, state: BattleState) -> String:
 	if str(stage.get("energy_mode", "per_turn")) == "pool":
 		var pool := int(stage.get("energy_pool", 0))
-		var left := "" if state == null else "  %d left." % state.energy
-		return ("%d for the whole thing. They do NOT come back at the start " % pool
-			+ "of a turn — spend them as a budget.%s" % left)
+		var left := ("" if state == null
+			else Text.say("brief.energy.left", {"count": state.energy}))
+		return Text.say("brief.energy.pool", {"count": pool, "left": left})
 
 	# The sentence that prompted all of this: "when you end the turn" is the
 	# step the player could not see.
-	return ("%d a turn, back in full when you end the turn." % int(
-		stage.get("energy_per_turn", 3)))
+	return Text.say("brief.energy.per_turn",
+		{"count": int(stage.get("energy_per_turn", 3))})
 
 
 static func _questions(stage: Dictionary, total: int) -> String:
 	var per_turn := maxi(int(stage.get("questions_per_turn", 1)), 1)
 	var sentence := ""
 	if per_turn == 1:
-		sentence = "one a turn, %d in all. " % total
+		sentence = Text.say("brief.questions.one_a_turn", {"total": total})
 	else:
-		sentence = ("%d a turn, %d in all. " % [per_turn, total]
-			+ "A further card still plays, but nobody is waiting for it. ")
+		sentence = Text.say("brief.questions.several",
+			{"per_turn": per_turn, "total": total})
 
-	sentence += "Leave one unanswered when the turn ends and you have declined it"
+	sentence += Text.say("brief.questions.decline")
 	if bool(stage.get("decline_ends_stage", false)):
-		return sentence + ", and here that ends the stage."
+		return sentence + Text.say("brief.questions.ends_stage")
 
 	var cost := int(stage.get("decline_tone_cost", 3))
 	if cost > 0:
-		return sentence + ", which costs %d and pleases nobody." % cost
-	return sentence + "."
+		return sentence + Text.say("brief.questions.costs", {"count": cost})
+	return sentence + Text.say("brief.questions.free")
 
 
 static func _gaffes(stage: Dictionary) -> String:
 	var limit := int(stage.get("gaffe_limit", 5))
 	var multiplier := maxi(int(stage.get("gaffe_multiplier", 1)), 1)
 	if multiplier > 1:
-		return ("%d ends the stage at once — and every slip here counts %d times."
-			% [limit, multiplier])
-	return "%d ends the stage at once." % limit
+		return Text.say("brief.gaffes.multiplied",
+			{"count": limit, "multiplier": multiplier})
+	return Text.say("brief.gaffes.plain", {"count": limit})
 
 
 static func _guard(state: BattleState) -> String:
 	var cap := 5 if state == null else state.guard_cap
-	return ("it banks up to %d and carries between turns. " % cap
-		+ "Only an attack takes it, and it is spent stopping one.")
+	return Text.say("brief.guard", {"count": cap})
 
 
 static func _hand(stage: Dictionary) -> String:
 	if str(stage.get("draw_mode", "refill")) == "none":
-		return ("%d cards, and you draw no more. " % int(stage.get("opening_hand", 8))
-			+ "Run out and there is nothing left to say.")
-	return "drawn back up to %d at the end of every turn." % int(
-		stage.get("hand_size", 5))
+		return Text.say("brief.hand.none",
+			{"count": int(stage.get("opening_hand", 8))})
+	return Text.say("brief.hand.refill",
+		{"count": int(stage.get("hand_size", 5))})
 
 
 static func _winning(stage: Dictionary) -> String:
 	if str(stage.get("win_mode", "threshold")) == "score":
-		return ("there is nothing to reach. However high the support gets by "
-			+ "the end is the result, and later stages draw on it.")
+		return Text.say("brief.winning.score")
 
 	var threshold := int(stage.get("win_threshold", 0))
 	var unit := str(stage.get("bar_unit", "support")).to_lower()
 	if threshold <= 0:
-		return "hold the room until the questions run out."
+		return Text.say("brief.winning.hold")
 
 	match str(stage.get("sequence_mode", "single")):
 		"reset":
-			return ("%d %s wins the argument in front of you. " % [threshold, unit]
-				+ "The next one starts again from nothing, gaffes included.")
+			return Text.say("brief.winning.reset", {"count": threshold, "unit": unit})
 		"continuous":
-			return ("%d %s finishes the one in front of you, not the stage. " % [
-				threshold, unit]
-				+ "Your record, your hand and the clock carry across all of them.")
+			return Text.say("brief.winning.continuous",
+				{"count": threshold, "unit": unit})
 		"stream":
-			return ("%d %s moves the queue along. " % [threshold, unit]
-				+ "The clock and your record carry; each new face is fresh energy.")
+			return Text.say("brief.winning.stream", {"count": threshold, "unit": unit})
 		_:
-			return "%d %s." % [threshold, unit]
+			return Text.say("brief.winning.single",
+				{"count": threshold, "unit": unit})

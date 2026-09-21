@@ -1170,107 +1170,98 @@ function showCardZoom(card) {
 // actually running on. `state` may be null, for a stage described before
 // there is a battle.
 function howThisRoomWorks(stage, state) {
-  const lines = ['How this room works'];
+  const bullet = (labelKey, detail) =>
+    T('brief.bullet', {label: T(labelKey), detail: detail});
+  const lines = [T('brief.heading')];
 
-  lines.push('• Turns — ' + briefTurns(stage));
-  lines.push('• Energy — ' + briefEnergy(stage, state));
+  lines.push(bullet('brief.label.turns', briefTurns(stage)));
+  lines.push(bullet('brief.label.energy', briefEnergy(stage, state)));
 
   const questions = stage.questions || [];
   if (questions.length > 0) {
-    lines.push('• Questions — ' + briefQuestions(stage, questions.length));
+    lines.push(bullet('brief.label.questions', briefQuestions(stage, questions.length)));
   }
 
-  lines.push('• Gaffes — ' + briefGaffes(stage));
-  lines.push('• Guard — ' + briefGuard(state));
-  lines.push('• Your hand — ' + briefHand(stage));
-  lines.push('• Winning — ' + briefWinning(stage));
+  lines.push(bullet('brief.label.gaffes', briefGaffes(stage)));
+  lines.push(bullet('brief.label.guard', briefGuard(state)));
+  lines.push(bullet('brief.label.hand', briefHand(stage)));
+  lines.push(bullet('brief.label.winning', briefWinning(stage)));
 
   const decay = int(stage.affinity_decay, 0);
   if (decay > 0) {
-    lines.push('• Every turn costs you — their interest cools by ' + decay
-      + ', whatever you say.');
+    lines.push(bullet('brief.label.decay', T('brief.decay', {count: decay})));
   }
   return lines;
 }
 
 function briefTurns(stage) {
   const limit = int(stage.turn_limit, 0);
-  if (limit <= 0) return 'no limit. It ends when the questions run out.';
-  return limit + '. Running out of them is a loss.';
+  if (limit <= 0) return T('brief.turns.none');
+  return T('brief.turns.limit', {count: limit});
 }
 
 function briefEnergy(stage, state) {
   if (str(stage.energy_mode, 'per_turn') === 'pool') {
-    const left = state ? '  ' + state.energy + ' left.' : '';
-    return int(stage.energy_pool, 0) + ' for the whole thing. They do NOT come '
-      + 'back at the start of a turn — spend them as a budget.' + left;
+    const left = state ? T('brief.energy.left', {count: state.energy}) : '';
+    return T('brief.energy.pool', {count: int(stage.energy_pool, 0), left: left});
   }
   // The sentence that prompted all of this: "when you end the turn" is the
   // step the player could not see.
-  return int(stage.energy_per_turn, 3) + ' a turn, back in full when you end the turn.';
+  return T('brief.energy.per_turn', {count: int(stage.energy_per_turn, 3)});
 }
 
 function briefQuestions(stage, total) {
   const perTurn = Math.max(int(stage.questions_per_turn, 1), 1);
   let sentence = perTurn === 1
-    ? 'one a turn, ' + total + ' in all. '
-    : perTurn + ' a turn, ' + total + ' in all. A further card still plays, '
-      + 'but nobody is waiting for it. ';
+    ? T('brief.questions.one_a_turn', {total: total})
+    : T('brief.questions.several', {per_turn: perTurn, total: total});
 
-  sentence += 'Leave one unanswered when the turn ends and you have declined it';
+  sentence += T('brief.questions.decline');
   if (bool(stage.decline_ends_stage, false)) {
-    return sentence + ', and here that ends the stage.';
+    return sentence + T('brief.questions.ends_stage');
   }
   const cost = int(stage.decline_tone_cost, 3);
-  return cost > 0 ? sentence + ', which costs ' + cost + ' and pleases nobody.' : sentence + '.';
+  return cost > 0
+    ? sentence + T('brief.questions.costs', {count: cost})
+    : sentence + T('brief.questions.free');
 }
 
 function briefGaffes(stage) {
   const limit = int(stage.gaffe_limit, 5);
   const multiplier = Math.max(int(stage.gaffe_multiplier, 1), 1);
   if (multiplier > 1) {
-    return limit + ' ends the stage at once — and every slip here counts '
-      + multiplier + ' times.';
+    return T('brief.gaffes.multiplied', {count: limit, multiplier: multiplier});
   }
-  return limit + ' ends the stage at once.';
+  return T('brief.gaffes.plain', {count: limit});
 }
 
 function briefGuard(state) {
   const cap = state ? state.guard_cap : 5;
-  return 'it banks up to ' + cap + ' and carries between turns. Only an attack '
-    + 'takes it, and it is spent stopping one.';
+  return T('brief.guard', {count: cap});
 }
 
 function briefHand(stage) {
   if (str(stage.draw_mode, 'refill') === 'none') {
-    return int(stage.opening_hand, 8) + ' cards, and you draw no more. '
-      + 'Run out and there is nothing left to say.';
+    return T('brief.hand.none', {count: int(stage.opening_hand, 8)});
   }
-  return 'drawn back up to ' + int(stage.hand_size, 5) + ' at the end of every turn.';
+  return T('brief.hand.refill', {count: int(stage.hand_size, 5)});
 }
 
 function briefWinning(stage) {
   if (str(stage.win_mode, 'threshold') === 'score') {
-    return 'there is nothing to reach. However high the support gets by the '
-      + 'end is the result, and later stages draw on it.';
+    return T('brief.winning.score');
   }
 
   const threshold = int(stage.win_threshold, 0);
   const unit = str(stage.bar_unit, 'support').toLowerCase();
-  if (threshold <= 0) return 'hold the room until the questions run out.';
+  if (threshold <= 0) return T('brief.winning.hold');
 
+  const where = {count: threshold, unit: unit};
   switch (str(stage.sequence_mode, 'single')) {
-    case 'reset':
-      return threshold + ' ' + unit + ' wins the argument in front of you. The '
-        + 'next one starts again from nothing, gaffes included.';
-    case 'continuous':
-      return threshold + ' ' + unit + ' finishes the one in front of you, not '
-        + 'the stage. Your record, your hand and the clock carry across all of them.';
-    case 'stream':
-      return threshold + ' ' + unit + ' moves the queue along. The clock and '
-        + 'your record carry; each new face is fresh energy.';
-    default:
-      return threshold + ' ' + unit + '.';
+    case 'reset':      return T('brief.winning.reset', where);
+    case 'continuous': return T('brief.winning.continuous', where);
+    case 'stream':     return T('brief.winning.stream', where);
+    default:           return T('brief.winning.single', where);
   }
 }
 
