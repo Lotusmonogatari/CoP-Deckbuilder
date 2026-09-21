@@ -1586,6 +1586,11 @@ class LevelRunner {
 // ---------------------------------------------------------------------------
 // MetaRules
 // ---------------------------------------------------------------------------
+// FOUR OF THESE RULES ARE NOT CALLED BY EITHER ENGINE YET, and MetaRules.gd
+// carries the same note: townHallTriggered, steeringCommitteeTriggered,
+// fundingFrozen and partySupportModifiers. Their arithmetic is right and
+// tested; the systems CLAUDE.md §8 describes are simply not switched on, and
+// wait for the module runner at M4. A passing check is not a working feature.
 
 function clampMeta(value, variable) {
   return clamp(value, int(variable.min, 0), int(variable.max, 100));

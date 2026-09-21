@@ -276,11 +276,20 @@ func _move_xp(delta: int) -> void:
 ## The sibling of _move_xp, and separate from _record_meta_change on purpose:
 ## that one also files the change under "what the last stage was worth", and
 ## money spent in the Office is not a stage reward. Both announce.
+## Clamped like every other meta write, and announced with what ACTUALLY
+## moved rather than what was asked for — a ceiling that swallows half a
+## payment should not be reported as a full one.
 func _move_meta(name: String, delta: int) -> void:
 	if delta == 0:
 		return
-	meta[name] = int(meta.get(name, 0)) + delta
-	EventBus.meta_changed.emit(name, int(meta[name]), delta)
+
+	var before := int(meta.get(name, 0))
+	var after := MetaRules.clamp_meta(before + delta, _sanban_row(name))
+	if after == before:
+		return
+
+	meta[name] = after
+	EventBus.meta_changed.emit(name, after, after - before)
 
 
 ## Folds one lot of changes into what the screen will report.

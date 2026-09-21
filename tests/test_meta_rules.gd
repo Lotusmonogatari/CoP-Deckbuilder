@@ -1,6 +1,15 @@
 extends GutTest
 ## Tests for the rules that apply between battles: bill difficulty, meta
 ## variable rewards, and the thresholds that switch effects on.
+##
+## A PASS HERE DOES NOT MEAN THE GAME DOES IT.
+##
+## Four of the rules covered below have no caller anywhere in the project —
+## town_hall_triggered, steering_committee_triggered, funding_frozen and
+## party_support_modifiers. These tests prove the arithmetic is right, and
+## nothing more. The systems CLAUDE.md §8 describes are not switched on, and
+## they wait for the module runner at M4; MetaRules.gd says the same at more
+## length. Do not read a green run here as §8 being finished.
 
 
 const BALANCE := {
