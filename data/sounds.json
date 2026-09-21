@@ -1,0 +1,51 @@
+{
+  "_README": [
+    "WHAT PLAYS WHEN. Hand-written; the exporter never touches this file, the",
+    "same as rules.json, modifier_effects.json and intent_patterns.json.",
+    "",
+    "Nothing here has a sound yet, and that is deliberate: the wiring ships",
+    "silent. Every entry below is already connected to the moment it names, so",
+    "dropping an .ogg into assets/audio/ and writing its filename against the",
+    "right key is the whole job. No code changes.",
+    "",
+    "A key with an empty 'file' is a no-op. A key whose file is not there logs",
+    "one quiet line the first time and is never mentioned again, exactly as",
+    "ArtLoader does for art that has not been drawn.",
+    "",
+    "THE BUSES. Three, so they can be mixed and muted separately:",
+    "  music   — the bed under a stage. One at a time, looped.",
+    "  effects — a card, a gaffe, a turn ending.",
+    "  speech  — spoken lines. Its own bus so it can duck the music later and",
+    "            so a player who wants the words without the score can have",
+    "            them.",
+    "",
+    "SPEECH is keyed by whoever is speaking, not by event, because a line",
+    "belongs to a character, and then by line ID. Empty until Cameron records",
+    "any. It would read:",
+    "  \"speech\": { \"OP03\": { \"opening\": \"op03_opening.ogg\" } }"
+  ],
+
+  "sounds": {
+    "card_played":     { "file": "", "bus": "effects", "when": "any card leaves the hand" },
+    "card_useless":    { "file": "", "bus": "effects", "when": "a card was played that this room ignores" },
+    "turn_started":    { "file": "", "bus": "effects", "when": "the player's turn opens" },
+    "turn_ended":      { "file": "", "bus": "effects", "when": "End turn is pressed" },
+    "intent_revealed": { "file": "", "bus": "effects", "when": "the opponent's next move becomes known" },
+
+    "gaffe":           { "file": "", "bus": "effects", "when": "the gaffe meter rises" },
+    "gaffe_final":     { "file": "", "bus": "effects", "when": "one more gaffe would end the stage" },
+
+    "meta_up":         { "file": "", "bus": "effects", "when": "a standing rose" },
+    "meta_down":       { "file": "", "bus": "effects", "when": "a standing fell" },
+    "xp_gained":       { "file": "", "bus": "effects", "when": "XP was earned" },
+    "xp_spent":        { "file": "", "bus": "effects", "when": "XP was spent in the Office" },
+
+    "battle_won":      { "file": "", "bus": "music", "when": "the stage is carried", "loop": false },
+    "battle_lost":     { "file": "", "bus": "music", "when": "the stage is lost", "loop": false },
+
+    "music_office":    { "file": "", "bus": "music", "when": "asked for by name", "loop": true },
+    "music_battle":    { "file": "", "bus": "music", "when": "asked for by name", "loop": true }
+  },
+
+  "speech": {}
+}

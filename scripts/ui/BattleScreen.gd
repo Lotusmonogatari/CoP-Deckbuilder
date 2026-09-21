@@ -1,9 +1,25 @@
 extends Control
 ## The battle screen.
 ##
-## This draws a battle and takes the player's input. It makes no rules
-## decisions of its own: every question of "can I play this" or "did that win"
-## goes to BattleEngine, and this only shows the answer.
+## This owns the engine and routes the player's input to it. It makes no
+## rules decisions of its own: every question of "can I play this" or "did
+## that win" goes to BattleEngine, and this only shows the answer.
+##
+## WHAT IT KEEPS, AND WHAT IT HANDS OVER
+## It keeps the things that are about the screen as a whole — starting a
+## battle, the refresh that fans out to everything else, the status row,
+## the reference panel, input, and what happens when a stage ends. Four
+## presenters own the rest, each with its own file:
+##
+##   OpponentPresenter  the speaker row, and which face they are wearing
+##   HandPresenter      the cards, kept between refreshes so they can move
+##   MessagePresenter   the passing sentences, queued so none is cut short
+##   OutcomePresenter   the end-of-stage panel
+##
+## The split is not tidiness for its own sake. Everything still to come —
+## a card animating as it is played, a portrait reacting, a sound cued off
+## what just happened — lands in one of those four, and would otherwise all
+## have landed here.
 ##
 ## Layout, top to bottom, following the UI spec:
 ##   header        stage name with a small Japanese accent, and the turn count
@@ -12,9 +28,6 @@ extends Control
 ##   status row    energy pips and the gaffe count
 ##   hand          three to five cards
 ##   footer        End turn
-##
-## Anything secondary — deck and discard counts, the active modifiers — lives
-## behind the details button rather than cluttering the main screen.
 
 const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 
@@ -24,8 +37,8 @@ const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 @export var step: int = 4
 
 var engine: BattleEngine = null
+
 var _stage: Dictionary = {}
-var _opponent: Dictionary = {}
 var _selected_card_id: String = ""
 
 ## False when the battle could not be set up. Everything that would touch
@@ -33,37 +46,38 @@ var _selected_card_id: String = ""
 ## reason instead of crashing on the next click.
 var _ready_to_play := false
 
+# --- The presenters --------------------------------------------------------
+var _speaker: OpponentPresenter = null
+var _hand: HandPresenter = null
+var _messages: MessagePresenter = null
+var _outcome: OutcomePresenter = null
+
+## The opened card, built once and refilled. Created on first use rather
+## than in the scene, so the frame stays a thing the script owns.
+var _card_back: CardBackView = null
+
 @onready var _stage_name: Label = %StageName
 @onready var _stage_name_jp: Label = %StageNameJP
 @onready var _turn_label: Label = %TurnLabel
-@onready var _portrait: Control = %Portrait
-@onready var _opponent_name: Label = %OpponentName
-@onready var _intent_label: Label = %IntentLabel
 @onready var _support_bar: SupportBar = %SupportBar
 @onready var _energy_row: HBoxContainer = %EnergyRow
-@onready var _guard_label: Label = %GuardLabel
-@onready var _opponent_guard_label: Label = %OpponentGuardLabel
-@onready var _outcome_headline: Label = %OutcomeHeadline
 @onready var _gaffe_label: Label = %GaffeLabel
-@onready var _hand_row: HBoxContainer = %HandRow
 @onready var _end_turn_button: Button = %EndTurnButton
 @onready var _details_button: Button = %DetailsButton
 @onready var _details_panel: PanelContainer = %DetailsPanel
 @onready var _details_text: Label = %DetailsText
 @onready var _card_zoom: PanelContainer = %CardZoom
-@onready var _zoom_text: RichTextLabel = %ZoomText
-@onready var _zoom_art: Control = %ZoomArt
-
-## The opened card, built once and refilled. Created on first use rather
-## than in the scene, so the frame stays a thing the script owns.
-var _card_back: CardBackView = null
-@onready var _outcome_panel: PanelContainer = %OutcomePanel
-@onready var _outcome_title: Label = %OutcomeTitle
-@onready var _outcome_reason: Label = %OutcomeReason
-@onready var _notice: Label = %Notice
 
 
 func _ready() -> void:
+	_speaker = OpponentPresenter.new(
+		%Portrait, %OpponentName, %IntentLabel, %GuardLabel, %OpponentGuardLabel)
+	_hand = HandPresenter.new(%HandRow)
+	_hand.card_chosen.connect(_on_card_chosen)
+	_messages = MessagePresenter.new(%Notice, get_tree())
+	_outcome = OutcomePresenter.new(
+		%OutcomePanel, %OutcomeTitle, %OutcomeHeadline, %OutcomeReason, %OutcomeClose)
+
 	_end_turn_button.pressed.connect(_on_end_turn)
 	_details_button.pressed.connect(_toggle_details)
 	%DetailsClose.pressed.connect(func() -> void: _details_panel.hide())
@@ -73,11 +87,7 @@ func _ready() -> void:
 
 	_details_panel.hide()
 	_card_zoom.hide()
-	_outcome_panel.hide()
-
-	# A reporter's question is a sentence rather than "Attacking · −6", so
-	# the line it sits on has to be able to wrap.
-	_intent_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	%OutcomePanel.hide()
 
 	start_battle()
 
@@ -102,11 +112,10 @@ func start_battle() -> void:
 		config = BattleSetup.for_module_step(module_id, step)
 
 	if config.is_empty():
-		_show_notice("There is no stage to play here.")
+		_messages.say("There is no stage to play here.")
 		return
 
 	_stage = config.get("stage", {})
-	_opponent = config.get("opponent", {})
 
 	engine = BattleEngine.new()
 	if not engine.setup(config):
@@ -115,92 +124,23 @@ func start_battle() -> void:
 		# half-built battle that accepts input crashes instead of failing.
 		_ready_to_play = false
 		_end_turn_button.disabled = true
-		_show_notice("This battle could not start:\n• %s"
+		_messages.say("This battle could not start:\n• %s"
 			% "\n• ".join(Array(engine.setup_problems)))
 		return
 
 	_ready_to_play = true
-	_build_static_parts()
-	_refresh()
 
-
-func _build_static_parts() -> void:
 	# English first, with the Japanese beside it as a small muted accent.
 	_stage_name.text = str(_stage.get("name_en", "Battle"))
 	_stage_name_jp.text = str(_stage.get("name_jp", ""))
-
 	_support_bar.unit = str(_stage.get("bar_unit", "Support"))
-	_show_opponent()
 
-
-## Draws whoever is being argued with now. Called on every refresh rather
-## than once at the start, because a committee changes opponent mid-stage.
-func _show_opponent() -> void:
-	var opponent := engine.current_opponent()
-
-	# In a press conference nobody sits opposite: the questions are the
-	# opposition. The reporter asking this one takes the row instead, so the
-	# question has a face and a name rather than coming from nowhere.
-	if opponent.is_empty() and engine.is_press_conference():
-		_show_journalist(engine.current_question())
-		return
-
-	_portrait.show()
-	_opponent_name.show()
-	_opponent = opponent
-
-	# Written out every refresh rather than only when the opponent changes.
-	# It used to skip the first one — the screen's idea of who was opposite
-	# was set from the same config the engine got, so they matched before the
-	# name had ever been written and the player was left looking at the word
-	# "Opponent". Redrawing a label is not worth guarding against.
-	var caption := engine.opponent_caption()
-	if caption.is_empty():
-		_opponent_name.text = str(opponent.get("name", "Visitor A"))
-	else:
-		# "Opponent B  ·  2 of 3", so the player knows how far through a
-		# committee they are without counting.
-		_opponent_name.text = "%s  ·  %s" % [opponent.get("name", "Visitor A"), caption]
-
-	if _portrait is PlaceholderArt:
-		var art := _portrait as PlaceholderArt
-		art.kind = PlaceholderArt.Kind.CHARACTER
-		art.art_id = str(opponent.get("opp_id", ""))
-		art.expression = "neutral"
-
-
-## Puts the reporter who asked this question in the opponent's place.
-##
-## They are not an opponent — they never take a turn — but they are who is
-## speaking, and a question with a name on it is easier to answer than one
-## that arrives from an empty chair.
-func _show_journalist(question: Dictionary) -> void:
-	if question.is_empty():
-		# Between the last answer and the outcome panel there is nobody left
-		# to show.
-		_portrait.hide()
-		_opponent_name.hide()
-		return
-
-	var journalist := DataDB.get_journalist(str(question.get("asked_by", "")))
-	if journalist.is_empty():
-		_portrait.hide()
-		_opponent_name.hide()
-		return
-
-	_portrait.show()
-	_opponent_name.show()
-	_opponent_name.text = str(journalist.get("name", "Visitor A"))
-
-	if _portrait is PlaceholderArt:
-		var art := _portrait as PlaceholderArt
-		art.kind = PlaceholderArt.Kind.CHARACTER
-		art.art_id = str(journalist.get("journalist_id", ""))
-		art.expression = "neutral"
+	EventBus.turn_started.emit(engine.state.turn)
+	_refresh()
 
 
 # ---------------------------------------------------------------------------
-# Drawing the current state
+# Drawing
 # ---------------------------------------------------------------------------
 
 func _refresh() -> void:
@@ -209,16 +149,12 @@ func _refresh() -> void:
 
 	var state := engine.state
 
-	if engine.is_press_conference():
-		# The reporters' questions are the opposition here, so they take the
-		# place of the turn count and the intent line.
-		var question := engine.current_question()
-		_turn_label.text = engine.question_caption()
-		_intent_label.text = str(question.get("text", "That was the last question."))
-	else:
-		_turn_label.text = engine.turn_caption()
-		_intent_label.text = IntentRunner.describe(engine.current_intent())
-	_show_opponent()
+	# The reporters' questions are the opposition in a press conference, so
+	# they take the place of the turn count as well as the intent line.
+	_turn_label.text = (engine.question_caption() if engine.is_press_conference()
+		else engine.turn_caption())
+
+	_speaker.show_state(engine)
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
@@ -228,103 +164,54 @@ func _refresh() -> void:
 		# Reaching the threshold ends the STAGE only when nobody else is
 		# waiting to rise. On the floor it ends one debater of five.
 		var wins_stage := not engine.has_more_opponents()
-		_support_bar.show_bar(state.bar, has_threshold, _opponent_display_name(),
+		_support_bar.show_bar(state.bar, has_threshold,
+			OpponentPresenter.display_name(engine),
 			BattleNarration.is_percent(_stage), wins_stage)
 
 	_refresh_energy(state)
 	_refresh_gaffe(state)
-	_refresh_hand(state)
+	_hand.show_state(engine)
 	_refresh_details(state)
 
 	_end_turn_button.disabled = state.is_over()
 
 	if state.is_over():
-		_show_outcome(state)
+		_outcome.show_outcome(engine, _stage)
 
 
 ## Energy as pips rather than a number: three small marks are quicker to
 ## count than "3 / 3" is to read.
 func _refresh_energy(state: BattleState) -> void:
-	for child in _energy_row.get_children():
-		child.queue_free()
-
 	# One pip per point available, which is a turn's worth normally and the
 	# whole pool in a caucus. Reading energy_per_turn here would draw three
 	# pips for a five-point pool and quietly lie about what is left.
-	for index in maxi(state.energy_max, 1):
+	var wanted := maxi(state.energy_max, 1)
+
+	# Pips are kept rather than rebuilt: they are cheap, but a pip that
+	# survives a refresh is a pip that can be animated when it is spent.
+	while _energy_row.get_child_count() > wanted:
+		_energy_row.get_child(_energy_row.get_child_count() - 1).queue_free()
+		_energy_row.remove_child(_energy_row.get_child(_energy_row.get_child_count() - 1))
+	while _energy_row.get_child_count() < wanted:
 		var pip := Panel.new()
 		pip.custom_minimum_size = Vector2(26, 26)
+		_energy_row.add_child(pip)
+
+	for index in _energy_row.get_child_count():
 		var box := StyleBoxFlat.new()
 		box.set_corner_radius_all(13)
 		box.bg_color = (Color(0.95, 0.85, 0.45) if index < state.energy
 			else Color(0.30, 0.30, 0.34))
-		pip.add_theme_stylebox_override("panel", box)
-		_energy_row.add_child(pip)
+		(_energy_row.get_child(index) as Panel).add_theme_stylebox_override("panel", box)
 
 
 ## The gaffe counter turns red ONLY when one more gaffe would end the stage.
 ## Colouring it earlier would cry wolf and make the real warning meaningless.
 func _refresh_gaffe(state: BattleState) -> void:
+	var critical := engine.gaffe_is_critical()
 	_gaffe_label.text = "Gaffes %d / %d" % [state.gaffe, state.gaffe_limit]
-	_gaffe_label.theme_type_variation = "GaffeWarning" if engine.gaffe_is_critical() else ""
-
-	# How much of the next attack the player has already covered, and how
-	# much more would fit. Guard is a bank with a ceiling, and a playtest
-	# asked for the ceiling: without it there is no way to know whether
-	# another Guard card is worth playing or would be thrown away.
-	#
-	# Always shown, including at zero. It used to hide itself when empty,
-	# which made an empty bank look like no bank at all — and it reads as a
-	# pair with "Gaffes 0 / 6" beside it.
-	_guard_label.text = "Guard %d / %d" % [state.block, state.guard_cap]
-	_guard_label.visible = true
-
-	# And theirs, on the same ceiling.
-	_opponent_guard_label.text = "They guard %d / %d" % [
-		state.opponent_block, state.guard_cap]
-	_opponent_guard_label.visible = state.opponent_block > 0
-
-
-func _refresh_hand(state: BattleState) -> void:
-	for child in _hand_row.get_children():
-		child.queue_free()
-
-	for card_id: String in state.hand:
-		var card := DataDB.get_card(card_id)
-		if card.is_empty():
-			continue
-		var view := CardView.new()
-		_hand_row.add_child(view)
-		view.show_card(card)
-
-		# What it will do HERE, not what it says on paper. The room moves the
-		# numbers, and in some rooms a number does nothing at all.
-		var effect := engine.preview(card)
-		view.show_effect_here(effect)
-		view.set_affordable(engine.card_cost(card) <= state.energy and not state.is_over())
-		view.set_useless_here(bool(effect.get("does_nothing", false)))
-		view.chosen.connect(_on_card_chosen)
-
-
-## What a card just did, and what the opponent did back.
-##
-## Both sentences come from BattleNarration so the two sides read as one
-## game. It also knows the difference between a room of people to win over
-## and a mood that rises, which is why a press conference no longer reports
-## "3 press tone won over".
-func _describe_what_happened(result: Dictionary) -> String:
-	return BattleNarration.player_move(
-		result, _stage, engine.state, _opponent_display_name())
-
-
-## The name of whoever is opposite, for a sentence to use.
-##
-## Empty in a press conference: the journalist asking is named in the speaker
-## row, but nobody there is an opponent whose support can be taken.
-func _opponent_display_name() -> String:
-	if engine.is_press_conference():
-		return ""
-	return str(engine.current_opponent().get("name", ""))
+	_gaffe_label.theme_type_variation = "GaffeWarning" if critical else ""
+	EventBus.gaffe_changed.emit(state.gaffe, state.gaffe_limit, critical)
 
 
 ## Who is in the room, and what it takes to win one of them over.
@@ -364,7 +251,8 @@ func _refresh_details(state: BattleState) -> void:
 
 	lines.append("")
 	lines.append_array([
-		"Deck %d · Hand %d · Discard %d" % [state.deck.size(), state.hand.size(), state.discard.size()],
+		"Deck %d · Hand %d · Discard %d" % [
+			state.deck.size(), state.hand.size(), state.discard.size()],
 		"Stage: %s (%s)" % [_stage.get("name_en", ""), _stage.get("stage_id", "")],
 	])
 
@@ -373,8 +261,9 @@ func _refresh_details(state: BattleState) -> void:
 		lines.append("You: %s, %s" % [player.get("name_en", ""), player.get("party", "")])
 
 	# No line at all where there is nobody, rather than "Opponent: ,".
-	if not _opponent.is_empty():
-		lines.append("Opponent: %s, %s" % [_opponent.get("name", ""), _opponent.get("party", "")])
+	var opponent := engine.current_opponent()
+	if not opponent.is_empty():
+		lines.append("Opponent: %s, %s" % [opponent.get("name", ""), opponent.get("party", "")])
 
 	if engine.questions_remaining() > 0 or not engine.pleased_boosters().is_empty():
 		lines.append("")
@@ -390,8 +279,7 @@ func _refresh_details(state: BattleState) -> void:
 			# player has no way of knowing what BO08 is.
 			var named: Array[String] = []
 			for booster_id: String in pleased:
-				var booster := DataDB.get_booster(booster_id)
-				named.append(str(booster.get("name_en", booster_id)))
+				named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
 			lines.append("Pleased so far: %s." % ", ".join(named))
 
 	lines.append("")
@@ -405,7 +293,8 @@ func _refresh_details(state: BattleState) -> void:
 			% [state.opponent_count, state.opponent_index + 1])
 
 	if GameState.is_in_level():
-		var carried := GameState.level_runner.describe_carried_buffs(BattleSetup.booster_names())
+		var carried := GameState.level_runner.describe_carried_buffs(
+			BattleSetup.booster_names())
 		if not carried.begins_with("Nothing"):
 			lines.append("")
 			lines.append(carried)
@@ -451,15 +340,6 @@ func _on_card_chosen(card_id: String) -> void:
 	_selected_card_id = card_id
 	var card := DataDB.get_card(card_id)
 
-	# The card turned over: Cameron's back frame with everything the front
-	# had no room for. The old placeholder block and the separate text
-	# labels are hidden rather than removed, so the scene file stays as it
-	# is and the zoom is one thing rather than three stacked.
-	_zoom_art.visible = false
-	_zoom_text.visible = false
-	%ZoomTitle.visible = false
-	%ZoomSubtitle.visible = false
-
 	if _card_back == null:
 		_card_back = CardBackView.new()
 		# Big enough to read at arm's length: at 1250 tall the card is about
@@ -473,9 +353,8 @@ func _on_card_chosen(card_id: String) -> void:
 		_card_back.custom_minimum_size = Vector2(
 			1250.0 * CardBackView.ASPECT, 1250.0)
 		_card_back.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		var column := _zoom_text.get_parent()
-		column.add_child(_card_back)
-		column.move_child(_card_back, 0)
+		%ZoomColumn.add_child(_card_back)
+		%ZoomColumn.move_child(_card_back, 0)
 
 	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card),
 		describe_room_for(engine.affinity_for(card)))
@@ -486,20 +365,22 @@ func _on_card_chosen(card_id: String) -> void:
 
 func _play_selected() -> void:
 	_card_zoom.hide()
-	if not _ready_to_play:
-		return
-	if _selected_card_id.is_empty():
+	if not _ready_to_play or _selected_card_id.is_empty():
 		return
 
-	var result := engine.play_card(_selected_card_id)
+	var card_id := _selected_card_id
+	var result := engine.play_card(card_id)
 	if not result.get("ok", false):
-		_show_notice(str(result.get("reason", "That card cannot be played.")))
+		_messages.say(str(result.get("reason", "That card cannot be played.")))
 		return
 
-	EventBus.card_played.emit(_selected_card_id, result)
 	_selected_card_id = ""
+	# Announced before the redraw, so anything listening can reach the card
+	# view that played it while it is still on screen.
+	EventBus.card_played.emit(card_id, result)
 	_refresh()
-	_show_notice(_describe_what_happened(result))
+	_messages.say(BattleNarration.player_move(
+		result, _stage, engine.state, OpponentPresenter.display_name(engine)))
 
 
 func _on_end_turn() -> void:
@@ -514,7 +395,7 @@ func _on_end_turn() -> void:
 	# Read the opponent's move BEFORE refreshing, because a finished bout
 	# swaps in the next opponent and the sentence is about the one who just
 	# acted. The name comes from the same snapshot for the same reason.
-	var speaker := _opponent_display_name()
+	var speaker := OpponentPresenter.display_name(engine)
 	_refresh()
 
 	var lines: Array[String] = []
@@ -543,8 +424,15 @@ func _on_end_turn() -> void:
 		lines.append(BattleNarration.player_move(
 			{"bout_won": bout}, _stage, engine.state, speaker))
 
+	# One notice, not three. The queue below would show them in turn, at two
+	# and a half seconds each, and a turn's worth of news should arrive as a
+	# turn's worth of news.
 	if not lines.is_empty():
-		_show_notice("\n".join(lines))
+		_messages.say("\n".join(lines))
+
+	if not engine.state.is_over():
+		EventBus.turn_started.emit(engine.state.turn)
+		EventBus.intent_revealed.emit(engine.current_intent())
 
 
 func _toggle_details() -> void:
@@ -581,7 +469,11 @@ func _input(event: InputEvent) -> void:
 		for overlay: Control in _dismissable_overlays():
 			if not overlay.visible:
 				continue
-			var content := overlay.get_node_or_null("Margin/Scroll/Centre/Column") as Control
+			# The two panels name their content column differently, so ask
+			# for either rather than assuming one shape.
+			var content := (overlay.get_node_or_null("Margin/Scroll/Centre/Column")
+				if overlay.has_node("Margin/Scroll/Centre/Column")
+				else overlay.get_node_or_null("Margin/Scroll/Centre/ZoomColumn")) as Control
 			if content != null and not content.get_global_rect().has_point(where):
 				overlay.hide()
 				get_viewport().set_input_as_handled()
@@ -598,177 +490,12 @@ func _dismiss_top_overlay() -> bool:
 
 
 # ---------------------------------------------------------------------------
-# Messages
+# Leaving
 # ---------------------------------------------------------------------------
 
-func _show_notice(message: String) -> void:
-	if message.is_empty():
-		return
-	_notice.text = message
-	_notice.show()
-	# Long enough to read, short enough not to sit in the way.
-	await get_tree().create_timer(2.5).timeout
-	_notice.hide()
-
-
-func _show_outcome(state: BattleState) -> void:
-	if _outcome_panel.visible:
-		return
-
-	# A scored stage was never won or lost, so "Carried" would be wrong.
-	#
-	# Named from the stage. Three kinds of stage are scored — the caucus, the
-	# town hall and the TV debate — and this said "Caucus closed" for all
-	# three, so a TV debate ended by announcing it was a caucus.
-	if state.win_mode == "score" and state.outcome == "win":
-		var what := str(_stage.get("name_en", "")).strip_edges()
-		_outcome_title.text = "%s closed" % (what if not what.is_empty() else "It")
-	elif engine.is_press_conference() and state.outcome == "win":
-		_outcome_title.text = "Conference over"
-	else:
-		_outcome_title.text = {
-			"win": "Carried",
-			"loss": "Defeated",
-			"retry": "No decision",
-		}.get(state.outcome, state.outcome)
-
-	# "Carried" on its own is a word, not an ending. The last stage of a level
-	# should read like the end of something.
-	#
-	# IN THE LEVEL'S OWN WORDS, from levels.json. It used to say "you
-	# convinced Parliament and your bill was adopted" whatever the level was,
-	# so a media circuit and a research circuit both ended by announcing a
-	# bill that never existed. A level with nothing written yet names itself
-	# instead, which is true of any of them.
-	if state.outcome == "win" and _is_last_stage_of_level():
-		_outcome_title.text = "Carried"
-		_outcome_headline.text = _level_sign_off("win_text")
-		_outcome_headline.show()
-	else:
-		_outcome_headline.hide()
-
-	_outcome_reason.text = _outcome_text(state)
-	_outcome_panel.show()
-	EventBus.battle_ended.emit(state.outcome, state.outcome_reason)
-
-	# Say what happens next, so the button is not a leap in the dark.
-	%OutcomeClose.text = _next_step_label(state)
-
-
-## What the stage did, and what it was worth.
-##
-## A stage whose score carries has to say so here or the player never finds
-## out: the consequence lands in a stage they have not reached yet, and a
-## number that moved silently may as well not have moved.
-func _outcome_text(state: BattleState) -> String:
-	var lines: Array[String] = [state.outcome_reason]
-
-	if state.outcome == "loss" or not GameState.is_in_level():
-		return "\n".join(lines)
-
-	var score := state.player_score()
-
-	# Only where a later stage actually draws on this one. Every stage has a
-	# score; most of them are worth nothing to anybody, and saying otherwise
-	# would be inventing a consequence.
-	if GameState.level_runner.score_is_carried_from(int(_stage.get("seq", -1))):
-		var seats := LevelRunner.score_to_support(_stage, score)
-		if seats > 0:
-			lines.append("You start %d ahead at the floor debate." % seats)
-		elif seats < 0:
-			lines.append("You start %d behind at the floor debate." % -seats)
-
-	# What the stage was worth, worked out here rather than read back after
-	# the fact: GameState has not been told the stage is finished yet — that
-	# happens when this panel is closed. Both halves, in the order they are
-	# applied, and totalled so a variable moved twice reports once.
-	var moved := {}
-
-	var flat: Dictionary = MetaRules.apply_win_deltas(
-		GameState.meta, _stage, DataDB.sanban)["applied"]
-	for name: String in flat.keys():
-		moved[name] = int(moved.get(name, 0)) + int(flat[name])
-
-	var scored: Dictionary = MetaRules.apply_score_effects(
-		GameState.meta, _stage, score, DataDB.sanban)["applied"]
-	for name: String in scored.keys():
-		moved[name] = int(moved.get(name, 0)) + int(scored[name])
-
-	var changes: Array[String] = []
-	for name: String in moved.keys():
-		if int(moved[name]) != 0:
-			changes.append("%s %+d" % [name, int(moved[name])])
-
-	var xp := int(_stage.get("xp_reward", 0))
-	if xp > 0:
-		changes.append("%d XP" % xp)
-
-	# Which organisations the player's answers pleased. They are about to be
-	# applied and the Office shows the result, but the connection between an
-	# answer and a standing is lost by the time the player gets there.
-	var pleased := engine.pleased_boosters()
-	if not pleased.is_empty():
-		var names := BattleSetup.booster_names()
-		var pleased_names: Array[String] = []
-		for booster_id: String in pleased:
-			pleased_names.append(str(names.get(booster_id, booster_id)))
-		lines.append("")
-		lines.append("Pleased: %s." % ", ".join(pleased_names))
-
-	if not changes.is_empty():
-		lines.append("")
-		lines.append(", ".join(changes) + ".")
-	elif state.outcome == "win" and LevelRunner.rewards_are_unset(_stage):
-		# The truth, rather than silence that reads as a bug. Every playtest
-		# stage is in this state until Cameron sets its numbers.
-		lines.append("")
-		lines.append("This stage has no rewards set yet.")
-
-	return "\n".join(lines)
-
-
-## True where the stage just played is the last one in the level.
-##
-## The runner has not advanced yet when this is asked, so "current" is still
-## the stage that just finished.
-## How this level signs off, in its own words or in none.
-func _level_sign_off(key: String) -> String:
-	if not GameState.is_in_level():
-		return ""
-
-	var level: Dictionary = GameState.level_runner.level
-	var written := str(level.get(key, "")).strip_edges()
-	if not written.is_empty():
-		return written
-
-	var name_en := str(level.get("name_en", "")).strip_edges()
-	if name_en.is_empty():
-		return "That is the end of it."
-	return "%s is behind you." % name_en
-
-
-func _is_last_stage_of_level() -> bool:
-	if not GameState.is_in_level():
-		return false
-	var runner := GameState.level_runner
-	return runner.index + 1 >= runner.stage_count()
-
-
-## What pressing the button after a stage actually does.
-func _next_step_label(state: BattleState) -> String:
-	if not GameState.is_in_level():
-		return "Close"
-	if state.outcome == "loss":
-		return "Back to the Office"
-
-	var runner := GameState.level_runner
-	# The runner has not advanced yet, so "current" is the stage just played.
-	if runner.index + 1 >= runner.stage_count():
-		return "Back to the Office"
-	return "On to the next stage"
-
-
 func _on_outcome_closed() -> void:
+	_messages.clear()
+
 	if not GameState.is_in_level():
 		get_tree().quit()
 		return
@@ -781,9 +508,8 @@ func _on_outcome_closed() -> void:
 	var state := engine.state
 	# A caucus has no threshold: how high the support got is the score, and
 	# that is what later stages draw on.
-	var score := state.player_score()
 	var level_over := GameState.finish_stage(
-		state.outcome, score, engine.pleased_boosters())
+		state.outcome, state.player_score(), engine.pleased_boosters())
 
 	if level_over:
 		GameState.end_level()

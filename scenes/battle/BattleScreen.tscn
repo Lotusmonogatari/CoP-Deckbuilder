@@ -238,45 +238,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Column" type="VBoxContainer" parent="CardZoom/Margin/Scroll/Centre"]
+[node name="ZoomColumn" type="VBoxContainer" parent="CardZoom/Margin/Scroll/Centre"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ZoomTitle" type="Label" parent="CardZoom/Margin/Scroll/Centre/Column"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"TitleLabel"
-
-[node name="ZoomSubtitle" type="Label" parent="CardZoom/Margin/Scroll/Centre/Column"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"JapaneseAccent"
-
-[node name="ZoomArt" type="Control" parent="CardZoom/Margin/Scroll/Centre/Column"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 260)
-layout_mode = 2
-script = ExtResource("2_3oymq")
-
-[node name="ZoomText" type="RichTextLabel" parent="CardZoom/Margin/Scroll/Centre/Column"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 260)
-layout_mode = 2
-bbcode_enabled = true
-fit_content = true
-
-[node name="Buttons" type="HBoxContainer" parent="CardZoom/Margin/Scroll/Centre/Column"]
+[node name="Buttons" type="HBoxContainer" parent="CardZoom/Margin/Scroll/Centre/ZoomColumn"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ZoomClose" type="Button" parent="CardZoom/Margin/Scroll/Centre/Column/Buttons"]
+[node name="ZoomClose" type="Button" parent="CardZoom/Margin/Scroll/Centre/ZoomColumn/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Back"
 
-[node name="ZoomPlay" type="Button" parent="CardZoom/Margin/Scroll/Centre/Column/Buttons"]
+[node name="ZoomPlay" type="Button" parent="CardZoom/Margin/Scroll/Centre/ZoomColumn/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

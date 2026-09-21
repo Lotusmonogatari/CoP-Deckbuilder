@@ -20,8 +20,9 @@ extends Button
 ## The player tapped this card.
 signal chosen(card_id: String)
 
-const FRAME_FRONT := "res://assets/cards/frame_front_shoji.png"
-const FRAME_BACK := "res://assets/cards/frame_back_shoji.png"
+## Resolved once, when the script compiles, rather than looked up again for
+## every card in every hand.
+const FRAME_FRONT := preload("res://assets/cards/frame_front_shoji.png")
 
 ## The frame's own proportions, so the card is never stretched.
 const ASPECT := 1429.0 / 2000.0
@@ -35,9 +36,6 @@ const COST_RECT := Rect2(0.0588, 0.0330, 0.0980, 0.0705)
 const NAME_RECT := Rect2(0.215, 0.042, 0.655, 0.056)
 const ART_RECT := Rect2(0.120, 0.160, 0.760, 0.436)
 const TEXT_RECT := Rect2(0.128, 0.676, 0.744, 0.200)
-
-## The back's writing grid, for the expanded text.
-const BACK_TEXT_RECT := Rect2(0.060, 0.045, 0.880, 0.830)
 
 ## NO SUIT COLOUR. There used to be a coloured band across the footer strip,
 ## so a hand could be read by suit at a glance. Cameron had it removed on
@@ -79,7 +77,12 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	_build()
+	# Only if nothing has built it already. show_card() builds on demand so a
+	# card can be filled in before it is put on screen, and building twice
+	# lays a second set of empty labels over the filled ones — a card with no
+	# name and no Japanese on it, which is exactly what happened.
+	if _effect_label == null:
+		_build()
 	pressed.connect(func() -> void: chosen.emit(card_id))
 
 
@@ -107,7 +110,7 @@ func _build() -> void:
 	add_child(plate)
 
 	_frame = TextureRect.new()
-	_frame.texture = load(FRAME_FRONT)
+	_frame.texture = FRAME_FRONT
 	_frame.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_frame.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_frame.stretch_mode = TextureRect.STRETCH_SCALE

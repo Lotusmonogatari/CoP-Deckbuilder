@@ -19,7 +19,7 @@ extends Control
 ## it, which costs a little wrapping code and buys exact registration: the
 ## title can be twice the size of the body and nothing under it moves.
 
-const FRAME_BACK := "res://assets/cards/frame_back_shoji.png"
+const FRAME_BACK := preload("res://assets/cards/frame_back_shoji.png")
 const ASPECT := 1429.0 / 2000.0
 
 ## The ruled grid, measured off the PNG rather than guessed. Its rules run
@@ -64,7 +64,7 @@ func _build() -> void:
 		return
 
 	_frame = TextureRect.new()
-	_frame.texture = load(FRAME_BACK)
+	_frame.texture = FRAME_BACK
 	_frame.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_frame.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_frame.stretch_mode = TextureRect.STRETCH_SCALE

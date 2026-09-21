@@ -24,7 +24,7 @@ const REQUIRED_FILES := [
 	"committee", "intent_patterns", "journalists", "levels", "lists",
 	"modifier_effects", "modifiers", "modules", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
-	"stage_types",
+	"sounds", "stage_types",
 	"segments", "stages", "suits", "yoron",
 ]
 
@@ -75,6 +75,11 @@ var player: Dictionary = {}
 ## The press pack, hand-written. They ask the questions at a press
 ## conference; they do not take turns.
 var journalists: Array = []
+
+## What plays when, and who says what. Hand-written; see the file's README.
+## Every sound is blank so far, so the game ships silent.
+var sounds: Dictionary = {}
+var speech: Dictionary = {}
 
 ## How standing with the ten organisations works: where it starts, what it
 ## is bounded by, and what pleasing one is worth. Hand-written.
@@ -149,6 +154,9 @@ func load_all() -> void:
 			"player": player = content
 
 			"journalists": journalists = _list_under(content, "journalists")
+			"sounds":
+				sounds = _map_under(content, "sounds")
+				speech = _map_under(content, "speech")
 			"booster_standing": booster_standing = content
 			# Cards that exist for the playtest but are not in the workbook
 			# yet. Appended rather than kept apart, so everything downstream —

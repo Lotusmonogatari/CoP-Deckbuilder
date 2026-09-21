@@ -23,6 +23,14 @@ DataDB="*res://scripts/autoload/DataDB.gd"
 EventBus="*res://scripts/autoload/EventBus.gd"
 GameState="*res://scripts/autoload/GameState.gd"
 SaveManager="*res://scripts/autoload/SaveManager.gd"
+; Audio listens to EventBus, so it loads after it. It reads sounds.json from
+; DataDB, so it loads after that too.
+Audio="*res://scripts/autoload/Audio.gd"
+
+[audio]
+
+; Music, Effects and Speech, so the three can be mixed separately.
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
 
 [display]
 

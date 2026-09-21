@@ -116,7 +116,7 @@ func buy_card(card_id: String) -> String:
 	if not refusal.is_empty():
 		return refusal
 
-	xp -= Ledger.card_cost(card)
+	_move_xp(-Ledger.card_cost(card))
 	owned_cards.append(card_id)
 	return ""
 
@@ -216,7 +216,7 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 		meta = won["meta"]
 		_record_meta_change(won["applied"])
 		last_xp_gained = int(stage.get("xp_reward", 0))
-		xp += last_xp_gained
+		_move_xp(last_xp_gained)
 
 	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
 	meta = scored["meta"]
@@ -255,6 +255,18 @@ func _sanban_row(name: String) -> Dictionary:
 	return {"min": 0, "max": 999, "start": 0}
 
 
+## Earns or spends XP, and says so.
+##
+## Every change to the total goes through here so that nothing can move it
+## quietly. The shop screens want to know the moment it changes, and so will
+## anything that wants to make a sound about it.
+func _move_xp(delta: int) -> void:
+	if delta == 0:
+		return
+	xp += delta
+	EventBus.xp_changed.emit(xp, delta)
+
+
 ## Folds one lot of changes into what the screen will report.
 ##
 ## A stage can move the same variable twice — a flat reward for winning and
@@ -263,6 +275,12 @@ func _sanban_row(name: String) -> Dictionary:
 func _record_meta_change(applied: Dictionary) -> void:
 	for name: String in applied.keys():
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
+		# Announced as well as recorded. The recording is for the result
+		# screen, which asks afterwards; the announcement is for anything that
+		# wants to react as it happens — a sound, or the Office lighting up a
+		# number that just moved.
+		if int(applied[name]) != 0:
+			EventBus.meta_changed.emit(name, int(meta.get(name, 0)), int(applied[name]))
 
 
 ## Raises the player's standing with everyone pleased in a stage.
