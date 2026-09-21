@@ -146,17 +146,40 @@ Opponents use **scripted intent patterns**, not deck AI. Add an `intent_pattern`
 
 ## 9. Open design decisions: implement as switches, do not decide
 
-Create `rules.json` with these flags, set to the listed defaults, and list them in your Milestone 1 report:
+Create `rules.json` with these flags, set to the listed defaults, and list them in your Milestone 1 report.
 
-| Flag | Default | Options |
+**Built and still set to the defaults**, as of 2026-09-21. Every one is read
+at runtime, so changing the file changes the game with no code edit:
+
+| Flag | Default | Currently | Options |
+|---|---|---|---|
+| `turn_limit_outcome` | `"loss"` | `"loss"` | `"loss"`, `"highest_support_wins"`, `"tie_retry"` |
+| `opponent_can_win_by_threshold` | `false` | `false` | `true` / `false` |
+| `opponent_engine` | `"intent_patterns"` | `"intent_patterns"` | `"intent_patterns"`, `"deck_ai"` (not built) |
+| `press_answer_timer` | `false` | `false` | `true` / `false` (seconds value in balance) |
+| `discard_hand_end_of_turn` | `true` | `true` | `true` / `false` |
+
+Three more levers have been added to the same file since, for the same
+reason — each was about to become a number written into a script:
+
+| Flag | Currently | What it does |
 |---|---|---|
-| `turn_limit_outcome` | `"loss"` | `"loss"`, `"highest_support_wins"`, `"tie_retry"` |
-| `opponent_can_win_by_threshold` | `false` | `true` / `false` |
-| `opponent_engine` | `"intent_patterns"` | `"intent_patterns"`, `"deck_ai"` (later) |
-| `press_answer_timer` | `false` | `true` / `false` (seconds value in balance) |
-| `discard_hand_end_of_turn` | `true` | `true` / `false` |
+| `pass_energy_penalty` | `1` | Energy lost on the turn after playing nothing |
+| `guard_cap` | `5` | How high the guard bank stacks |
+| `default_intent_pattern` | `attack 1–6 / gain 1–6 / block 0–2` | What an opponent does when the data gives them no pattern |
 
-Also unresolved (ask, don't guess): the protagonist's identity and party, the Yoron topic list and starting values, and party post titles.
+### Still unresolved — ask, don't guess
+
+- **The protagonist's identity and party.** `data/player.json` holds "Hiro,
+  Frontier Party" as a **placeholder** so the screens have a name to show.
+  Frontier Party is canon (it is OP02 Yuriko Mayeda's), so nothing has been
+  invented — but this is not a casting decision, and the workbook's note on
+  MOD01 seq 3 says the Caucus rival should become a same-party opponent once
+  the party is settled.
+- **The Yoron topic list and starting values.** Every topic still starts at
+  the neutral 50, so every bill's difficulty works out to **zero** and the
+  whole system currently does nothing. The exporter says so on every run.
+- **Party post titles.**
 
 ## 10. UI specification
 
@@ -177,16 +200,38 @@ Placeholder art: a flat colored rectangle labeled with the asset ID, so missing 
 
 Build **one milestone at a time**. After each one, stop and give Cameron: (a) what you built, in plain English; (b) how to test it (exact clicks); (c) any questions or decisions you need from him.
 
-| # | Milestone | Done when |
+| # | Milestone | Done when | Status (2026-09-21) |
+|---|---|---|---|
+| M0 | Project setup, `export_data.py`, `DataDB` loading and validation, placeholder art loader, font theme | Every JSON file loads; the validation report is clean or lists readable errors; Japanese renders | **Done** |
+| M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking | **Done** — 437 tests |
+| M2 | Battle UI: Floor debate (ST02) vs OP03 | A full battle is playable to a win or loss on desktop | **Done** |
+| M3 | Committee (ST01) and Party Caucus (ST03) | Both playable using Module 01 data | **Done** |
+| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Part done.** The level runner and meta-variables work; a level plays start to finish. **Auto-save is not built** — `SaveManager` is a stub, so quitting loses the run. Office hours (ST07) and `visitors.json` are not built |
+| M5 | XP checkpoint shop | Unlocks and upgrades persist across the run | **Part done.** The shops, prices, refusals and deck screen work. The economy is switched off for playtesting: `GameState.open_collection` hands over every card, so XP has nothing to buy. Cards have no upgrades — Cameron settled that |
+| M6 | Android export test, then iOS | Runs on a real phone in portrait with crisp Japanese text | Not started |
+| Later | Press, Town Hall, TV, Steering Committee, booster UI, details panel polish | Staged separately | **Mostly done ahead of schedule.** Press conference, TV debate, town hall, policy study, media ambush and lobbyist meeting all play. The **Steering Committee (ST08) has no stage type** and needs content before code |
+
+### Not on the original list, but built
+
+The browser playtest (`web/`), the shoji card frames, booster standing, the
+six playtest levels, scripted intent patterns with ranges, and the audio and
+event seams described in §13.
+
+### §8 systems that are specified but NOT switched on
+
+Four rules are written and tested and **nothing calls them**, so they do
+nothing in the game today. Named here so a passing test suite is not mistaken
+for a finished feature:
+
+| Rule | §8 says | Waiting on |
 |---|---|---|
-| M0 | Project setup, `export_data.py`, `DataDB` loading and validation, placeholder art loader, font theme | Every JSON file loads; the validation report is clean or lists readable errors; Japanese renders |
-| M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking |
-| M2 | Battle UI: Floor debate (ST02) vs OP03 | A full battle is playable to a win or loss on desktop |
-| M3 | Committee (ST01) and Party Caucus (ST03) | Both playable using Module 01 data |
-| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run |
-| M5 | XP checkpoint shop | Unlocks and upgrades persist across the run |
-| M6 | Android export test, then iOS | Runs on a real phone in portrait with crisp Japanese text |
-| Later | Press, Town Hall, TV, Steering Committee, booster UI, details panel polish | Staged separately |
+| Town Hall trigger | Jiban ≤ 15 inserts ST05 | M4's queue machinery |
+| Steering Committee trigger | Party support < 25 inserts ST08 | M4, **and a stage type for ST08** |
+| Funding freeze | Jiban = 0 stops Kaban income | M4 |
+| Party support modifiers | > 75 gives M09, < 50 gives M10 | M4 |
+
+Six of the fifteen modifiers are inert for the same reason, and the shop says
+"Not active yet" rather than selling something that does nothing.
 
 ## 12. Working agreement
 
@@ -198,3 +243,43 @@ Build **one milestone at a time**. After each one, stop and give Cameron: (a) wh
 - **Small commits**, each with a message a non-programmer can read.
 - If a task will take more than about 150 lines of new code, outline the plan first and wait for approval.
 - When you are unsure, **say so** and offer 2–3 options with your recommendation.
+
+## 13. The seams that are built but carry nothing
+
+Added 2026-09-21, in the debugging and scaling pass. Three places where the
+wiring is finished and the content is not, so that adding the content is the
+whole job rather than the start of one.
+
+**The noticeboard.** `EventBus` carries eight signals, and the rule for that
+file is now written into it: *a signal exists only if something emits it.*
+Five that nothing emitted were deleted. What is there:
+
+```
+card_played(card_id, result)        turn_started / turn_ended(turn)
+intent_revealed(intent)             gaffe_changed(value, delta, limit, final)
+battle_ended(outcome, reason)       meta_changed(name, value, delta)
+                                    xp_changed(total, delta)
+```
+
+`gaffe_changed` fires only when the meter actually moves, and carries the
+direction, so a sound can tell a gaffe earned from a gaffe cleared.
+
+**Audio.** `scripts/autoload/Audio.gd` listens to the noticeboard and plays
+whatever `data/sounds.json` names against each moment. Three buses — Music,
+Effects, Speech — so they mix separately, which spoken lines will need. **No
+filename appears in any script.** There are no sound files, so the game is
+silent; a named file that is missing logs one quiet line and is ignored, the
+same bargain `ArtLoader` strikes with art that has not been drawn.
+
+**Portrait expressions.** `OpponentPresenter` picks a face from what is
+happening — attacking when they wind up, flustered when their support falls,
+defeated when they are argued down. It works with **no art at all**, because
+the placeholder is coloured from the ID and changes with the expression. It
+becomes a face the moment one is drawn to
+`assets/characters/{ID}_{expression}.png`.
+
+**The battle screen was split** to make room for what comes next: it keeps
+the engine, the refresh, the status row and navigation, and four presenters
+own the speaker row, the hand, the passing messages and the outcome panel.
+The hand keeps its card views between refreshes rather than rebuilding them,
+so a card that is played is a node that can still be animated.

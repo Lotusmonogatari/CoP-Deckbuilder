@@ -561,7 +561,14 @@ function showBackingShop() {
       buy.disabled = !!refusal;
       if (!refusal) {
         buy.addEventListener('click', () => {
-          run.meta.Funds = int(run.meta.Funds, 0) - modifierCost(modifier);
+          // Clamped, like the stage payout below and like GameState._move_meta
+          // in the Godot build. The Ledger has already refused anything
+          // unaffordable, so this cannot bite today — but it was the one place
+          // a standing could leave the range sanban.json gives it, and the two
+          // builds should not disagree about their own money.
+          const fundsRow = DATA.sanban.find(v => v.name_en === 'Funds') || {};
+          run.meta.Funds = clampMeta(
+            int(run.meta.Funds, 0) - modifierCost(modifier), fundsRow);
           run.ownedModifiers.push(modifier.mod_id);
           sheet.closest('.backdrop').remove();
           showOffice();
