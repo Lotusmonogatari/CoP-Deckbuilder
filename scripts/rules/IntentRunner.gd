@@ -234,19 +234,24 @@ func _waiting() -> Dictionary:
 ## never actually come out at 0 — a zero would have been stepped over and
 ## something else shown instead — so advertising "0 to 2" would promise an
 ## outcome that cannot happen.
-static func describe(move: Dictionary) -> String:
+##
+## The wording comes from the workbook's Text tab, handed in the way the rest
+## of the rules receive theirs. The signs and the numbers stay here: those are
+## arithmetic, not prose.
+static func describe(move: Dictionary, words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
 	var verb := str(move.get("verb", "none"))
 	if verb == "none":
-		return "Waiting"
+		return say.say("intent.waiting")
 
 	var shape := _shape_of(move)
 
 	match verb:
-		"attack": return "Attacking · %s" % _signed(shape, "−")
-		"gain": return "Gaining · %s" % _signed(shape, "+")
-		"block": return "Guarding · %s" % _plain(shape)
-		"lean_down": return "Pressuring · %s" % _signed(shape, "−")
-		_: return "Waiting"
+		"attack": return say.say("intent.attacking", {"amount": _signed(shape, "−", say)})
+		"gain": return say.say("intent.gaining", {"amount": _signed(shape, "+", say)})
+		"block": return say.say("intent.guarding", {"amount": _plain(shape, say)})
+		"lean_down": return say.say("intent.pressuring", {"amount": _signed(shape, "−", say)})
+		_: return say.say("intent.waiting")
 
 
 ## What this move could come out as: one number, or a low and a high.
@@ -262,13 +267,16 @@ static func _shape_of(move: Dictionary) -> Array:
 	return [low, high]
 
 
-static func _signed(shape: Array, sign_text: String) -> String:
+static func _signed(shape: Array, sign_text: String, say: Phrase) -> String:
 	if shape.size() == 1:
 		return "%s%d" % [sign_text, shape[0]]
-	return "%s%d to %s%d" % [sign_text, shape[0], sign_text, shape[1]]
+	return say.say("intent.range", {
+		"low": "%s%d" % [sign_text, shape[0]],
+		"high": "%s%d" % [sign_text, shape[1]],
+	})
 
 
-static func _plain(shape: Array) -> String:
+static func _plain(shape: Array, say: Phrase) -> String:
 	if shape.size() == 1:
 		return str(shape[0])
-	return "%d to %d" % [shape[0], shape[1]]
+	return say.say("intent.range", {"low": shape[0], "high": shape[1]})

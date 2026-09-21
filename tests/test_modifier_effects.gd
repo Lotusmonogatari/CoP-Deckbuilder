@@ -146,27 +146,43 @@ func test_every_bridged_effect_is_one_the_code_knows() -> void:
 # written for a designer. Putting that on a shop screen asks the player to
 # read a spreadsheet.
 
+## Stand-in wording, so this test checks that the real NUMBER reaches the
+## sentence rather than pinning Cameron's phrasing. The real sentences are
+## pinned once, in test_text.gd.
+const EFFECT_WORDS := {
+	"modifier.player_start_support": "start {count} ahead",
+	"modifier.kaban_per_stage_win": "{count} funds a win",
+}
+
+
+func _words() -> Phrase:
+	return Phrase.new(EFFECT_WORDS)
+
+
 func test_a_built_effect_is_described_with_its_real_number() -> void:
-	assert_eq(ModifierEffects.describe(_mod("M01", 3.0), BRIDGE), "Start 3 ahead.")
-	assert_eq(ModifierEffects.describe(_mod("M02", 5.0), BRIDGE),
-		"+5 funds for every stage won.")
+	assert_eq(ModifierEffects.describe(_mod("M01", 3.0), BRIDGE, _words()),
+		"start 3 ahead")
+	assert_eq(ModifierEffects.describe(_mod("M02", 5.0), BRIDGE, _words()),
+		"5 funds a win")
 
 
 func test_an_unbuilt_effect_keeps_its_prose_but_gains_its_number() -> void:
 	# A display substitution, not the rules reading a sentence.
 	var modifier := _mod("M13", 3.0, {"effect": "+Magnitude Jiban per module win"})
-	assert_eq(ModifierEffects.describe(modifier, BRIDGE), "+3 Jiban per module win")
+	assert_eq(ModifierEffects.describe(modifier, BRIDGE, _words()),
+		"+3 Jiban per module win")
 
 
 func test_a_modifier_with_nothing_written_describes_itself_as_nothing() -> void:
-	assert_eq(ModifierEffects.describe(_mod("M99", 1.0), BRIDGE), "")
+	assert_eq(ModifierEffects.describe(_mod("M99", 1.0), BRIDGE, _words()), "")
 
 
 func test_no_description_leaves_the_word_magnitude_on_screen() -> void:
 	# The guard on the whole idea: whatever a modifier is, the player must
 	# never be shown the designer's placeholder word.
 	for modifier: Dictionary in DataDB.modifiers:
-		var text := ModifierEffects.describe(modifier, DataDB.modifier_effects)
+		var text := ModifierEffects.describe(modifier, DataDB.modifier_effects,
+			Text.phrase())
 		assert_false(text.contains("Magnitude"),
 			"%s still shows the word Magnitude: '%s'" % [modifier.get("mod_id"), text])
 

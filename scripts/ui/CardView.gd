@@ -216,25 +216,25 @@ static func describe_effect(effect: Dictionary, card_row: Dictionary) -> String:
 	var gaffe := int(effect.get("gaffe", 0))
 
 	if self_plus != 0:
-		parts.append("Gain %d." % self_plus)
+		parts.append(Text.say("card.gain", {"count": self_plus}))
 	if opp_minus != 0 and bool(effect.get("opp_minus_counts", true)):
-		parts.append("Opponent −%d." % opp_minus)
+		parts.append(Text.say("card.opponent", {"count": opp_minus}))
 	if guard != 0 and bool(effect.get("guard_counts", true)):
-		parts.append("Guard %d." % guard)
+		parts.append(Text.say("card.guard", {"count": guard}))
 	if draw != 0:
-		parts.append("Draw %d." % draw)
+		parts.append(Text.say("card.draw", {"count": draw}))
 	if gaffe != 0:
-		parts.append("Gaffe %+d." % gaffe)
+		parts.append(Text.say("card.gaffe", {"amount": "%+d" % gaffe}))
 
 	if bool(effect.get("does_nothing", false)):
-		parts.append("Nothing this card does counts in this room.")
+		parts.append(Text.say("card.does_nothing"))
 
 	# Every card answers the question in front of you, whatever else it does.
 	# Cameron spent a draw-1 card expecting it to be free and lost a question
 	# to it, because the only place that rule was written down was inside the
 	# details panel.
 	if bool(effect.get("answers_question", false)):
-		parts.append("Answers this question.")
+		parts.append(Text.say("card.answers_question"))
 
 	if parts.is_empty():
 		return str(card_row.get("effect_text", ""))

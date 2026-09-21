@@ -316,20 +316,21 @@ func _refresh_details(state: BattleState) -> void:
 	# in the table above, so only the count belongs here.
 	if state.opponent_count > 1:
 		lines.append("")
-		lines.append("%d of them, one at a time. You are on %d."
-			% [state.opponent_count, state.opponent_index + 1])
+		lines.append(Text.say("battle.one_at_a_time", {
+			"count": state.opponent_count,
+			"number": state.opponent_index + 1,
+		}))
 
-	if GameState.is_in_level():
-		var carried := GameState.level_runner.describe_carried_buffs(
-			BattleSetup.booster_names())
-		if not carried.begins_with("Nothing"):
-			lines.append("")
-			lines.append(carried)
+	# Asked, not sniffed. This used to test whether the sentence began with
+	# "Nothing", so rewording that line would have silently hidden the block.
+	if GameState.is_in_level() and GameState.level_runner.anything_carried():
+		lines.append("")
+		lines.append(GameState.level_runner.describe_carried_buffs(
+			BattleSetup.booster_names(), Text.phrase()))
 
 	if engine.used_default_intent_pattern:
 		lines.append("")
-		lines.append("This opponent has no move pattern of their own yet, so they are "
-			+ "using the shared default from rules.json and playing generically.")
+		lines.append(Text.say("battle.default_pattern"))
 
 	var rule := str(_stage.get("signature_rule", ""))
 	if not rule.is_empty():

@@ -1094,6 +1094,92 @@ def check_text_keys(data, report):
         report.note(f"Text tab: {len(in_sheet)} lines, {len(asked_for)} asked for by the code")
 
 
+# ---------------------------------------------------------------------------
+# The wording snapshot
+# ---------------------------------------------------------------------------
+# tests/wording_snapshot.json is a copy of every line the game says, as it
+# read the last time somebody deliberately accepted a change.
+#
+# Its job is to make an ACCIDENTAL reword loud and a DELIBERATE one easy. A
+# code change that quietly alters what the player reads shows up as a failing
+# test naming the line. Cameron rewording a line on purpose runs
+#
+#     python3 tools/export_data.py --accept-wording
+#
+# which records the new wording, and git then shows exactly what changed.
+
+SNAPSHOT = REPO_ROOT / "tests" / "wording_snapshot.json"
+
+
+# The four standing names are BOTH display text and lookup keys. They are
+# shown on screen, and they are how the code reaches into sanban.json and
+# into the run's meta dictionary — GameState asks for meta["Funds"],
+# MetaRules files a win delta under "Reputation", and so on.
+#
+# So renaming one in the Sanban tab is not a wording change: it silently
+# disconnects the code from the variable. Checked here so a rename is an
+# error at Cameron's desk with a readable message, rather than a stage
+# quietly paying out nothing.
+#
+# To rename one for real, change it here and in the Sanban tab together,
+# and say so — the files that use each name are listed beside it.
+STANDING_NAMES = {
+    "Constituency support": "MetaRules, LevelRunner",
+    "Reputation": "MetaRules, LevelRunner, BattleSetup, BattleEngine",
+    "Funds": "MetaRules, LevelRunner, GameState, OfficeScreen",
+    "Party support": "MetaRules, LevelRunner",
+}
+
+
+def check_standing_names(data, report):
+    in_sheet = {str(row.get("name_en", "")).strip() for row in data.get("sanban", [])}
+    if not in_sheet:
+        return
+    for name, used_by in STANDING_NAMES.items():
+        if name not in in_sheet:
+            report.error("Sanban",
+                         f"'{name}' is not in the tab any more. That name is a "
+                         f"lookup key as well as display text — {used_by} reach "
+                         f"the variable by it — so renaming it here alone stops "
+                         f"the code finding it. Ask for the rename rather than "
+                         f"making it in the workbook.")
+
+
+def check_wording_snapshot(data, report, accept=False):
+    lines = {str(row.get("key", "")): str(row.get("english", ""))
+             for row in data.get("strings", []) if row.get("key")}
+    if not lines:
+        return
+
+    if accept:
+        SNAPSHOT.parent.mkdir(exist_ok=True)
+        write_json(SNAPSHOT, dict(sorted(lines.items())))
+        report.note(f"Wording: snapshot updated — {len(lines)} lines recorded")
+        return
+
+    if not SNAPSHOT.exists():
+        report.note("Wording: no snapshot yet — run with --accept-wording to record one")
+        return
+
+    recorded = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
+    changed = sorted(k for k in lines if k in recorded and lines[k] != recorded[k])
+    added = sorted(k for k in lines if k not in recorded)
+    gone = sorted(k for k in recorded if k not in lines)
+
+    if not (changed or added or gone):
+        return
+
+    for key in changed:
+        report.note(f"Wording: '{key}' now reads \"{lines[key]}\" "
+                    f"(was \"{recorded[key]}\")")
+    for key in added:
+        report.note(f"Wording: '{key}' is new")
+    for key in gone:
+        report.note(f"Wording: '{key}' is gone")
+    report.note("Wording: if those were your edits, run "
+                "'python3 tools/export_data.py --accept-wording' to record them")
+
+
 def add_segment_ids(data, report):
     by_name = {r["name_en"]: r["segment_id"] for r in data["segments"] if r.get("name_en")}
 
@@ -1211,6 +1297,8 @@ def main():
     add_segment_ids(data, report)
     validate(data, report)
     check_text_keys(data, report)
+    check_standing_names(data, report)
+    check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)
 
     written = 0
     for name, payload in sorted(data.items()):

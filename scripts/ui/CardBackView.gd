@@ -106,13 +106,16 @@ func show_card(card: Dictionary, here: String, room: String) -> void:
 	if not jp.is_empty():
 		_write("%s  %s" % [jp, romaji], BODY_SCALE, FAINT_INK)
 
-	_write("%s · %s · costs %d" % [
-		suit, card.get("type", ""), int(card.get("cost", 0))], BODY_SCALE, INK)
+	_write(Text.say("card.line", {
+		"suit": suit,
+		"type": card.get("type", ""),
+		"cost": int(card.get("cost", 0)),
+	}), BODY_SCALE, INK)
 	_write(str(card.get("effect_text", "")), BODY_SCALE, INK)
 
 	# What it will do HERE, where that differs from what it says on paper.
 	if not here.is_empty() and here != str(card.get("effect_text", "")):
-		_write("In this room: %s" % here, BODY_SCALE, INK)
+		_write(Text.say("card.in_this_room", {"effect": here}), BODY_SCALE, INK)
 
 	if not room.is_empty():
 		_write(room, BODY_SCALE, FAINT_INK)

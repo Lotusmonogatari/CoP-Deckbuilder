@@ -163,7 +163,8 @@ func _what_it_was_worth(stage: Dictionary, score: int) -> Array[String]:
 	var changes: Array[String] = []
 	for name: String in moved.keys():
 		if int(moved[name]) != 0:
-			changes.append("%s %+d" % [name, int(moved[name])])
+			changes.append(Text.say("reward.delta",
+				{"name": name, "amount": "%+d" % int(moved[name])}))
 
 	var xp := int(stage.get("xp_reward", 0))
 	if xp > 0:

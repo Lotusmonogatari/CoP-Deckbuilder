@@ -68,11 +68,11 @@ func show_state(engine: BattleEngine) -> void:
 	var state := engine.state
 
 	if engine.is_press_conference():
-		_intent_label.text = str(
-			engine.current_question().get("text", "That was the last question."))
+		_intent_label.text = str(engine.current_question().get(
+			"text", Text.say("battle.last_question")))
 		_show_journalist(engine.current_question())
 	else:
-		_intent_label.text = IntentRunner.describe(engine.current_intent())
+		_intent_label.text = IntentRunner.describe(engine.current_intent(), Text.phrase())
 		_show_opponent(engine)
 
 	_show_guards(state)
@@ -103,7 +103,8 @@ func _show_opponent(engine: BattleEngine) -> void:
 	var who := str(opponent.get("name", "Visitor A"))
 	# "Opponent B  ·  2 of 3", so the player knows how far through a
 	# committee they are without counting.
-	_name_label.text = who if caption.is_empty() else "%s  ·  %s" % [who, caption]
+	_name_label.text = who if caption.is_empty() else Text.say("battle.who_and_caption",
+		{"who": who, "caption": caption})
 
 	_wear(str(opponent.get("opp_id", "")), _face_for(engine))
 
@@ -183,10 +184,11 @@ func _show_guards(state: BattleState) -> void:
 	# Always shown, including at zero. It used to hide itself when empty,
 	# which made an empty bank look like no bank at all — and it reads as a
 	# pair with "Gaffes 0 / 6" beside it.
-	_guard_label.text = "Guard %d / %d" % [state.block, state.guard_cap]
+	_guard_label.text = Text.say("battle.your_guard",
+		{"count": state.block, "cap": state.guard_cap})
 	_guard_label.visible = true
 
 	# And theirs, on the same ceiling.
-	_opponent_guard_label.text = "They guard %d / %d" % [
-		state.opponent_block, state.guard_cap]
+	_opponent_guard_label.text = Text.say("battle.their_guard",
+		{"count": state.opponent_block, "cap": state.guard_cap})
 	_opponent_guard_label.visible = state.opponent_block > 0

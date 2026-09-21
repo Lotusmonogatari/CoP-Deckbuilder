@@ -580,23 +580,27 @@ class IntentRunner {
   }
 
   // The move written the way the player reads it: "Attacking · −6", or
-  // "Attacking · −1 to −6" where it could be anything in a range.
-  static describe(move) {
+  // "Attacking · −1 to −6" where it could be anything in a range. The
+  // wording is handed in, from the workbook's Text tab; the signs and the
+  // numbers stay here, because those are arithmetic and not prose.
+  static describe(move, words) {
+    const say = words || phrase({});
     const verb = String((move && move.verb) || 'none');
-    if (verb === 'none') return 'Waiting';
+    if (verb === 'none') return say('intent.waiting');
 
     const shape = IntentRunner.shapeOf(move);
+    const range = (low, high) => say('intent.range', { low: low, high: high });
     const signed = (mark) => shape.length === 1
       ? mark + shape[0]
-      : mark + shape[0] + ' to ' + mark + shape[1];
-    const plain = () => shape.length === 1 ? String(shape[0]) : shape[0] + ' to ' + shape[1];
+      : range(mark + shape[0], mark + shape[1]);
+    const plain = () => shape.length === 1 ? String(shape[0]) : range(shape[0], shape[1]);
 
     switch (verb) {
-      case 'attack': return 'Attacking · ' + signed('−');
-      case 'gain': return 'Gaining · ' + signed('+');
-      case 'block': return 'Guarding · ' + plain();
-      case 'lean_down': return 'Pressuring · ' + signed('−');
-      default: return 'Waiting';
+      case 'attack': return say('intent.attacking', { amount: signed('−') });
+      case 'gain': return say('intent.gaining', { amount: signed('+') });
+      case 'block': return say('intent.guarding', { amount: plain() });
+      case 'lean_down': return say('intent.pressuring', { amount: signed('−') });
+      default: return say('intent.waiting');
     }
   }
 }
@@ -1471,8 +1475,12 @@ class LevelRunner {
   isFinished() { return this._outcome !== ONGOING; }
   outcome() { return this._outcome; }
 
-  progressCaption() {
-    return 'Stage ' + Math.min(this.index + 1, this.stages.length) + ' of ' + this.stages.length;
+  progressCaption(words) {
+    const say = words || phrase({});
+    return say('caption.stage', {
+      number: Math.min(this.index + 1, this.stages.length),
+      total: this.stages.length,
+    });
   }
 
   finishStage(stageOutcome, score, boosters) {
@@ -1560,26 +1568,42 @@ class LevelRunner {
     return {};
   }
 
-  describeCarriedBuffs(names) {
+  describeCarriedBuffs(names, words) {
     names = names || {};
+    const say = words || phrase({});
     const lines = [];
 
     for (const entry of this.carriedBreakdown()) {
       if (entry.support_bonus > 0) {
-        lines.push(entry.name + ' went well: you start ' + entry.support_bonus + ' ahead.');
+        lines.push(say('carried.went_well',
+          { name: entry.name, count: entry.support_bonus }));
       } else if (entry.support_bonus < 0) {
-        lines.push(entry.name + ' went badly: you start ' + (-entry.support_bonus) + ' behind.');
+        lines.push(say('carried.went_badly',
+          { name: entry.name, count: -entry.support_bonus }));
       }
     }
 
     const boosters = this.carriedBuffs().boosters;
     if (boosters.length > 0) {
-      lines.push('Pleased at the press conference: '
-        + boosters.map(id => names[id] || id).join(', ') + '.');
+      lines.push(say('carried.pleased',
+        { names: boosters.map(id => names[id] || id).join(', ') }));
     }
 
-    if (lines.length === 0) return 'Nothing carried over from the earlier stages.';
+    if (lines.length === 0) return say('carried.nothing');
     return lines.join('\n');
+  }
+
+  // Whether anything at all carried into this stage.
+  //
+  // The screens used to work this out by looking at the sentence above and
+  // checking whether it began with "Nothing" — so rewording that one line
+  // would have quietly stopped the carried-over block appearing. They ask
+  // here instead, and the wording is free to change.
+  anythingCarried() {
+    for (const entry of this.carriedBreakdown()) {
+      if (entry.support_bonus !== 0) return true;
+    }
+    return this.carriedBuffs().boosters.length > 0;
   }
 }
 
@@ -1655,7 +1679,8 @@ function rewardsAreUnset(stage) {
 // What a stage produces that is not a flat reward — described, not forecast.
 // A press conference's worth depends on the tone it closes on, so a number
 // here would be a guess presented as a promise.
-function variableRewards(stage) {
+function variableRewards(stage, words) {
+  const say = words || phrase({});
   const lines = [];
   const effects = stage.tone_effects || {};
   const baseline = int(effects.baseline, 50);
@@ -1664,17 +1689,17 @@ function variableRewards(stage) {
   for (const name of Object.keys(perVariable)) {
     const per = int(perVariable[name], 0);
     if (per > 0) {
-      lines.push(name + ', by how far above ' + baseline + ' you finish (1 per ' + per + ')');
+      lines.push(say('reward.by_finish', { name: name, baseline: baseline, per: per }));
     }
   }
 
   const perSupport = int(effects.support_per_points, 0);
   if (perSupport > 0) {
-    lines.push('A head start later in the level, 1 per ' + perSupport + ' above ' + baseline);
+    lines.push(say('reward.head_start', { per: perSupport, baseline: baseline }));
   }
 
   if (Array.isArray(stage.questions) && stage.questions.length > 0) {
-    lines.push('Standing with whichever organisations your answers please');
+    lines.push(say('reward.standing'));
   }
 
   return lines;
@@ -1916,12 +1941,16 @@ function effectIsKnownButUnbuilt(modifier, bridge) {
 // The effect column says "Magnitude" where a number belongs, because it was
 // written for a designer. Putting that on a shop screen asks the player to
 // read a spreadsheet.
-function describeEffect(modifier, bridge) {
+function describeEffect(modifier, bridge, words) {
+  const say = words || phrase({});
   const magnitude = magnitudeOf(modifier);
   switch (effectKeyFor(modifier, bridge)) {
-    case 'player_start_support': return 'Start ' + magnitude + ' ahead.';
-    case 'starting_gaffe': return 'Start with ' + magnitude + ' less on the gaffe meter.';
-    case 'kaban_per_stage_win': return '+' + magnitude + ' funds for every stage won.';
+    case 'player_start_support':
+      return say('modifier.player_start_support', { count: magnitude });
+    case 'starting_gaffe':
+      return say('modifier.starting_gaffe', { count: magnitude });
+    case 'kaban_per_stage_win':
+      return say('modifier.kaban_per_stage_win', { count: magnitude });
   }
   const prose = str(modifier.effect, '').trim();
   if (!prose) return '';

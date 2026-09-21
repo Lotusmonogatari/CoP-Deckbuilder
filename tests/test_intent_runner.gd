@@ -109,11 +109,28 @@ func test_every_verb_the_battle_understands_is_accepted() -> void:
 # What the player reads
 # ---------------------------------------------------------------------------
 
+## Stand-in wording, so these tests check the ARITHMETIC and the range rule
+## rather than Cameron's phrasing. The real sentences are pinned once, in
+## test_text.gd, where rewording one is the whole point of the file.
+const INTENT_WORDS := {
+	"intent.waiting": "waiting",
+	"intent.attacking": "attack {amount}",
+	"intent.gaining": "gain {amount}",
+	"intent.guarding": "guard {amount}",
+	"intent.pressuring": "press {amount}",
+	"intent.range": "{low} to {high}",
+}
+
+
+func _words() -> Phrase:
+	return Phrase.new(INTENT_WORDS)
+
+
 func test_moves_are_described_in_plain_words() -> void:
-	assert_eq(IntentRunner.describe({"verb": "attack", "value": 6}), "Attacking · −6")
-	assert_eq(IntentRunner.describe({"verb": "gain", "value": 4}), "Gaining · +4")
-	assert_eq(IntentRunner.describe({"verb": "block", "value": 5}), "Guarding · 5")
-	assert_eq(IntentRunner.describe({"verb": "lean_down", "value": 8}), "Pressuring · −8")
+	assert_eq(IntentRunner.describe({"verb": "attack", "value": 6}, _words()), "attack −6")
+	assert_eq(IntentRunner.describe({"verb": "gain", "value": 4}, _words()), "gain +4")
+	assert_eq(IntentRunner.describe({"verb": "block", "value": 5}, _words()), "guard 5")
+	assert_eq(IntentRunner.describe({"verb": "lean_down", "value": 8}, _words()), "press −8")
 
 
 # ---------------------------------------------------------------------------
@@ -291,11 +308,11 @@ func _rolled_sequence(seed_value: int) -> Array:
 
 func test_a_range_is_described_as_a_range() -> void:
 	assert_eq(IntentRunner.describe(
-		{"verb": "attack", "value": 4, "min": 1, "max": 6}), "Attacking · −1 to −6")
+		{"verb": "attack", "value": 4, "min": 1, "max": 6}, _words()), "attack −1 to −6")
 	assert_eq(IntentRunner.describe(
-		{"verb": "gain", "value": 3, "min": 2, "max": 4}), "Gaining · +2 to +4")
+		{"verb": "gain", "value": 3, "min": 2, "max": 4}, _words()), "gain +2 to +4")
 	assert_eq(IntentRunner.describe(
-		{"verb": "lean_down", "value": 2, "min": 1, "max": 3}), "Pressuring · −1 to −3")
+		{"verb": "lean_down", "value": 2, "min": 1, "max": 3}, _words()), "press −1 to −3")
 
 
 func test_a_described_range_never_promises_a_zero() -> void:
@@ -303,16 +320,16 @@ func test_a_described_range_never_promises_a_zero() -> void:
 	# stepped over and something else shown instead — so saying "0 to 2"
 	# would promise an outcome that cannot happen.
 	assert_eq(IntentRunner.describe(
-		{"verb": "block", "value": 1, "min": 0, "max": 2}), "Guarding · 1 to 2")
+		{"verb": "block", "value": 1, "min": 0, "max": 2}, _words()), "guard 1 to 2")
 
 
 func test_a_range_with_one_value_left_reads_as_one_number() -> void:
 	assert_eq(IntentRunner.describe(
-		{"verb": "gain", "value": 1, "min": 0, "max": 1}), "Gaining · +1")
+		{"verb": "gain", "value": 1, "min": 0, "max": 1}, _words()), "gain +1")
 
 
 func test_waiting_is_still_waiting() -> void:
-	assert_eq(IntentRunner.describe({"verb": "none", "value": 0}), "Waiting")
+	assert_eq(IntentRunner.describe({"verb": "none", "value": 0}, _words()), "waiting")
 
 
 # ---------------------------------------------------------------------------

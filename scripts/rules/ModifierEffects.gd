@@ -103,16 +103,18 @@ static func is_known_but_unbuilt(modifier: Dictionary, bridge: Dictionary = {}) 
 ## the key and the number. Where it is not, the prose is used but with the
 ## word "Magnitude" replaced by the actual figure, which is a display
 ## substitution and not the rules reading a sentence.
-static func describe(modifier: Dictionary, bridge: Dictionary = {}) -> String:
+static func describe(modifier: Dictionary, bridge: Dictionary = {},
+		words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
 	var magnitude := magnitude_of(modifier)
 
 	match key_for(modifier, bridge):
 		"player_start_support":
-			return "Start %d ahead." % magnitude
+			return say.say("modifier.player_start_support", {"count": magnitude})
 		"starting_gaffe":
-			return "Start with %d less on the gaffe meter." % magnitude
+			return say.say("modifier.starting_gaffe", {"count": magnitude})
 		"kaban_per_stage_win":
-			return "+%d funds for every stage won." % magnitude
+			return say.say("modifier.kaban_per_stage_win", {"count": magnitude})
 
 	var prose := str(modifier.get("effect", "")).strip_edges()
 	if prose.is_empty():

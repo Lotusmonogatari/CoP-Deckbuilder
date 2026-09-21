@@ -929,5 +929,474 @@
     "english": "Where you stand",
     "placeholders": null,
     "notes": "Heading above your four standings. Browser build only so far; the Godot Office shows them without a heading."
+  },
+  {
+    "key": "outcome.reason.walked_away",
+    "where": "End of stage — why",
+    "english": "You walked away from the question. That is the story now.",
+    "placeholders": null,
+    "notes": "Declining a question in a room where that ends it."
+  },
+  {
+    "key": "outcome.reason.gaffe_limit",
+    "where": "End of stage — why",
+    "english": "The gaffe meter filled.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.committee_for",
+    "where": "End of stage — why",
+    "english": "A majority of the committee locked in favour.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.committee_against",
+    "where": "End of stage — why",
+    "english": "Too many members locked against — a majority is no longer possible.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.all_argued_out",
+    "where": "End of stage — why",
+    "english": "Every opponent has been argued out of the chamber.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.opponent_first",
+    "where": "End of stage — why",
+    "english": "The opponent reached the threshold first.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.fell_below",
+    "where": "End of stage — why",
+    "english": "Support fell below the line during the debate.",
+    "placeholders": null,
+    "notes": "A TV debate, where you must stay above the line every turn."
+  },
+  {
+    "key": "outcome.reason.survived",
+    "where": "End of stage — why",
+    "english": "Survived the whole debate above the line.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.all_argued_down",
+    "where": "End of stage — why",
+    "english": "All {count} were argued down.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.threshold",
+    "where": "End of stage — why",
+    "english": "The support threshold was reached.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.closed_on",
+    "where": "End of stage — why",
+    "english": "{stage} closed on {closing}.",
+    "placeholders": "stage, closing",
+    "notes": "{closing} is \"46% of the room\" or \"46 support\"."
+  },
+  {
+    "key": "outcome.reason.closed_on_unnamed",
+    "where": "End of stage — why",
+    "english": "It closed on {closing}.",
+    "placeholders": "closing",
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.percent_of_room",
+    "where": "End of stage — why",
+    "english": "{count}% of the room",
+    "placeholders": "count",
+    "notes": "Slots into the line above."
+  },
+  {
+    "key": "outcome.reason.amount_of_unit",
+    "where": "End of stage — why",
+    "english": "{count} {unit}",
+    "placeholders": "count, unit",
+    "notes": "Slots into the line above."
+  },
+  {
+    "key": "outcome.reason.time_ahead",
+    "where": "End of stage — why",
+    "english": "Time ran out with the player ahead.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.time_behind",
+    "where": "End of stage — why",
+    "english": "Time ran out with the player behind.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.time_no_decision",
+    "where": "End of stage — why",
+    "english": "Time ran out with no decision. The stage restarts.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.time_short",
+    "where": "End of stage — why",
+    "english": "Time ran out before the threshold was reached.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.concludes",
+    "where": "End of stage — why",
+    "english": "{stage} concludes.",
+    "placeholders": "stage",
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.concludes_unnamed",
+    "where": "End of stage — why",
+    "english": "It concludes.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.nothing_left",
+    "where": "End of stage — why",
+    "english": "The questions ran on, but there was nothing left to say.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.unanswered.one",
+    "where": "End of stage — why",
+    "english": "One question went unanswered.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "outcome.reason.unanswered.other",
+    "where": "End of stage — why",
+    "english": "{count} questions went unanswered.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "caption.turn",
+    "where": "Battle — header",
+    "english": "Turn {turn} of {total}",
+    "placeholders": "turn, total",
+    "notes": null
+  },
+  {
+    "key": "caption.question",
+    "where": "Battle — header",
+    "english": "Question {number} of {total}",
+    "placeholders": "number, total",
+    "notes": null
+  },
+  {
+    "key": "caption.opponent",
+    "where": "Battle — header",
+    "english": "{number} of {total}",
+    "placeholders": "number, total",
+    "notes": "Beside the opponent's name in a room with several."
+  },
+  {
+    "key": "caption.stage",
+    "where": "Briefing",
+    "english": "Stage {number} of {total}",
+    "placeholders": "number, total",
+    "notes": null
+  },
+  {
+    "key": "intent.waiting",
+    "where": "Battle — their intent",
+    "english": "Waiting",
+    "placeholders": null,
+    "notes": "They have no move, or none worth making."
+  },
+  {
+    "key": "intent.attacking",
+    "where": "Battle — their intent",
+    "english": "Attacking · {amount}",
+    "placeholders": "amount",
+    "notes": "{amount} is \"−6\" or \"−1 to −6\"."
+  },
+  {
+    "key": "intent.gaining",
+    "where": "Battle — their intent",
+    "english": "Gaining · {amount}",
+    "placeholders": "amount",
+    "notes": null
+  },
+  {
+    "key": "intent.guarding",
+    "where": "Battle — their intent",
+    "english": "Guarding · {amount}",
+    "placeholders": "amount",
+    "notes": null
+  },
+  {
+    "key": "intent.pressuring",
+    "where": "Battle — their intent",
+    "english": "Pressuring · {amount}",
+    "placeholders": "amount",
+    "notes": "A committee chair leaning on a member."
+  },
+  {
+    "key": "intent.range",
+    "where": "Battle · opponent intent",
+    "english": "{low} to {high}",
+    "placeholders": "low, high",
+    "notes": "Joins the two ends of a move that could be anything in a range."
+  },
+  {
+    "key": "carried.went_well",
+    "where": "Battle · details panel",
+    "english": "{name} went well: you start {count} ahead.",
+    "placeholders": "name, count",
+    "notes": null
+  },
+  {
+    "key": "carried.went_badly",
+    "where": "Battle · details panel",
+    "english": "{name} went badly: you start {count} behind.",
+    "placeholders": "name, count",
+    "notes": null
+  },
+  {
+    "key": "carried.pleased",
+    "where": "Battle · details panel",
+    "english": "Pleased at the press conference: {names}.",
+    "placeholders": "names",
+    "notes": null
+  },
+  {
+    "key": "carried.nothing",
+    "where": "Battle · details panel",
+    "english": "Nothing carried over from the earlier stages.",
+    "placeholders": null,
+    "notes": "Shown when nothing carried. Reword freely — the screen no longer reads this sentence to decide anything."
+  },
+  {
+    "key": "reward.by_finish",
+    "where": "Office · level briefing",
+    "english": "{name}, by how far above {baseline} you finish (1 per {per})",
+    "placeholders": "name, baseline, per",
+    "notes": "{name} is one of the four standing names — see the warning on those rows."
+  },
+  {
+    "key": "reward.head_start",
+    "where": "Office · level briefing",
+    "english": "A head start later in the level, 1 per {per} above {baseline}",
+    "placeholders": "per, baseline",
+    "notes": null
+  },
+  {
+    "key": "reward.standing",
+    "where": "Office · level briefing",
+    "english": "Standing with whichever organisations your answers please",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "reward.delta",
+    "where": "Office · level briefing",
+    "english": "{name} {amount}",
+    "placeholders": "name, amount",
+    "notes": "{amount} already carries its + or −."
+  },
+  {
+    "key": "reward.nothing_set",
+    "where": "Office · level briefing",
+    "english": "Nothing in this level pays out yet. The slots are in the data waiting for numbers, and the moment they have any, they will land here and on your standing.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "modifier.player_start_support",
+    "where": "Office · backing shop",
+    "english": "Start {count} ahead.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "modifier.starting_gaffe",
+    "where": "Office · backing shop",
+    "english": "Start with {count} less on the gaffe meter.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "modifier.kaban_per_stage_win",
+    "where": "Office · backing shop",
+    "english": "+{count} funds for every stage won.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "battle.one_at_a_time",
+    "where": "Battle · details panel",
+    "english": "{count} of them, one at a time. You are on {number}.",
+    "placeholders": "count, number",
+    "notes": null
+  },
+  {
+    "key": "battle.default_pattern",
+    "where": "Battle · details panel",
+    "english": "This opponent has no move pattern of their own yet, so they are using the shared default from rules.json and playing generically.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "battle.last_question",
+    "where": "Battle · press conference",
+    "english": "That was the last question.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "battle.who_and_caption",
+    "where": "Battle · speaker row",
+    "english": "{who}  ·  {caption}",
+    "placeholders": "who, caption",
+    "notes": null
+  },
+  {
+    "key": "battle.your_guard",
+    "where": "Battle · status row",
+    "english": "Guard {count} / {cap}",
+    "placeholders": "count, cap",
+    "notes": null
+  },
+  {
+    "key": "battle.their_guard",
+    "where": "Battle · status row",
+    "english": "They guard {count} / {cap}",
+    "placeholders": "count, cap",
+    "notes": null
+  },
+  {
+    "key": "bar.to_win",
+    "where": "Battle · support bar",
+    "english": "{amount} to win",
+    "placeholders": "amount",
+    "notes": null
+  },
+  {
+    "key": "bar.to_advance",
+    "where": "Battle · support bar",
+    "english": "{amount} to advance",
+    "placeholders": "amount",
+    "notes": "Shown on the floor, where the threshold ends one debater rather than the stage."
+  },
+  {
+    "key": "bar.take_the_room",
+    "where": "Battle · support bar",
+    "english": "Take as much of the room as you can",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "bar.raise_as_high",
+    "where": "Battle · support bar",
+    "english": "Raise {unit} as high as you can",
+    "placeholders": "unit",
+    "notes": null
+  },
+  {
+    "key": "bar.one_sided",
+    "where": "Battle · support bar",
+    "english": "{unit} {count} of {total}",
+    "placeholders": "unit, count, total",
+    "notes": null
+  },
+  {
+    "key": "bar.two_sided",
+    "where": "Battle · support bar",
+    "english": "You {you} · Undecided {undecided} · {them} {theirs}",
+    "placeholders": "you, undecided, them, theirs",
+    "notes": null
+  },
+  {
+    "key": "bar.them",
+    "where": "Battle · support bar",
+    "english": "Them",
+    "placeholders": null,
+    "notes": "Stands in for an opponent with no name, or one too long for the row."
+  },
+  {
+    "key": "card.gain",
+    "where": "Card · effect line",
+    "english": "Gain {count}.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "card.opponent",
+    "where": "Card · effect line",
+    "english": "Opponent −{count}.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "card.guard",
+    "where": "Card · effect line",
+    "english": "Guard {count}.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "card.draw",
+    "where": "Card · effect line",
+    "english": "Draw {count}.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "card.gaffe",
+    "where": "Card · effect line",
+    "english": "Gaffe {amount}.",
+    "placeholders": "amount",
+    "notes": "{amount} already carries its + or −."
+  },
+  {
+    "key": "card.does_nothing",
+    "where": "Card · effect line",
+    "english": "Nothing this card does counts in this room.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "card.answers_question",
+    "where": "Card · effect line",
+    "english": "Answers this question.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "card.line",
+    "where": "Card · opened card",
+    "english": "{suit} · {type} · costs {cost}",
+    "placeholders": "suit, type, cost",
+    "notes": null
+  },
+  {
+    "key": "card.in_this_room",
+    "where": "Card · opened card",
+    "english": "In this room: {effect}",
+    "placeholders": "effect",
+    "notes": null
   }
 ]

@@ -84,9 +84,14 @@ func stage_count() -> int:
 	return stages.size()
 
 
-## "Stage 2 of 4", for the header.
-func progress_caption() -> String:
-	return "Stage %d of %d" % [mini(index + 1, stages.size()), stages.size()]
+## "Stage 2 of 4", for the header. The wording is handed in, like every
+## other sentence the rules say.
+func progress_caption(words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
+	return say.say("caption.stage", {
+		"number": mini(index + 1, stages.size()),
+		"total": stages.size(),
+	})
 
 
 func is_finished() -> bool:
@@ -233,7 +238,8 @@ func stage_by_seq(seq: int) -> Dictionary:
 ## `names` maps a booster ID to what that organisation is called. The rules
 ## engine has no access to the data files, so whoever is showing this passes
 ## the names in; without them the IDs are printed as they are.
-func describe_carried_buffs(names: Dictionary = {}) -> String:
+func describe_carried_buffs(names: Dictionary = {}, words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
 	var buffs := carried_buffs()
 	var lines: Array[String] = []
 
@@ -243,20 +249,35 @@ func describe_carried_buffs(names: Dictionary = {}) -> String:
 	for entry: Dictionary in carried_breakdown():
 		var bonus := int(entry["support_bonus"])
 		if bonus > 0:
-			lines.append("%s went well: you start %d ahead." % [entry["name"], bonus])
+			lines.append(say.say("carried.went_well",
+				{"name": entry["name"], "count": bonus}))
 		elif bonus < 0:
-			lines.append("%s went badly: you start %d behind." % [entry["name"], -bonus])
+			lines.append(say.say("carried.went_badly",
+				{"name": entry["name"], "count": -bonus}))
 
 	var boosters: Array = buffs["boosters"]
 	if not boosters.is_empty():
 		var named: Array[String] = []
 		for booster_id: String in boosters:
 			named.append(str(names.get(booster_id, booster_id)))
-		lines.append("Pleased at the press conference: %s." % ", ".join(named))
+		lines.append(say.say("carried.pleased", {"names": ", ".join(named)}))
 
 	if lines.is_empty():
-		return "Nothing carried over from the earlier stages."
+		return say.say("carried.nothing")
 	return "\n".join(lines)
+
+
+## Whether anything at all carried into this stage.
+##
+## The screens used to work this out by looking at the sentence above and
+## checking whether it began with "Nothing" — so rewording that one line
+## would have quietly stopped the carried-over block appearing. They ask
+## here instead, and the wording is free to change.
+func anything_carried() -> bool:
+	for entry: Dictionary in carried_breakdown():
+		if int(entry["support_bonus"]) != 0:
+			return true
+	return not (carried_buffs()["boosters"] as Array).is_empty()
 
 
 func to_dictionary() -> Dictionary:
@@ -317,7 +338,8 @@ static func rewards_are_unset(stage: Dictionary) -> bool:
 ## worth depends on the tone it closes on and a caucus's on its score, so
 ## those are named as variable rather than given a number that would be a
 ## guess.
-static func variable_rewards(stage: Dictionary) -> Array[String]:
+static func variable_rewards(stage: Dictionary, words: Phrase = null) -> Array[String]:
+	var say := words if words != null else Phrase.new()
 	var lines: Array[String] = []
 	var effects: Dictionary = stage.get("tone_effects", {})
 
@@ -325,15 +347,20 @@ static func variable_rewards(stage: Dictionary) -> Array[String]:
 	for name: String in per_variable.keys():
 		var per := int(per_variable[name])
 		if per > 0:
-			lines.append("%s, by how far above %d you finish (1 per %d)"
-				% [name, int(effects.get("baseline", 50)), per])
+			lines.append(say.say("reward.by_finish", {
+				"name": name,
+				"baseline": int(effects.get("baseline", 50)),
+				"per": per,
+			}))
 
 	var per_support := int(effects.get("support_per_points", 0))
 	if per_support > 0:
-		lines.append("A head start later in the level, 1 per %d above %d"
-			% [per_support, int(effects.get("baseline", 50))])
+		lines.append(say.say("reward.head_start", {
+			"per": per_support,
+			"baseline": int(effects.get("baseline", 50)),
+		}))
 
 	if not stage.get("questions", []).is_empty():
-		lines.append("Standing with whichever organisations your answers please")
+		lines.append(say.say("reward.standing"))
 
 	return lines

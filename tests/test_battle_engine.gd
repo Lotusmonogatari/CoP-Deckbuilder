@@ -3,6 +3,29 @@ extends GutTest
 ## every way a stage can end.
 
 
+## A few lines of our own, for the checks that need to see a sentence
+## ASSEMBLED rather than just to know which ending was reached.
+##
+## Deliberately not the workbook's wording: these tests are about the engine
+## putting the right number and the right unit into the right sentence, and
+## pinning Cameron's phrasing here would mean a reword of his broke the
+## suite. Everywhere else the fixtures pass no table at all, so a reason
+## comes back as its key and the check reads as "which ending was this".
+const CLOSING_WORDS := {
+	"outcome.reason.closed_on": "{stage} closed on {closing}.",
+	"outcome.reason.percent_of_room": "{count} per cent",
+	"outcome.reason.amount_of_unit": "{count} {unit}",
+}
+
+
+func _start_with_words(overrides: Dictionary = {}) -> BattleEngine:
+	var config := TestFixtures.battle_config(overrides)
+	config["strings"] = CLOSING_WORDS
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(config), "setup failed: %s" % [engine.setup_problems])
+	return engine
+
+
 func _start(overrides: Dictionary = {}) -> BattleEngine:
 	var engine := BattleEngine.new()
 	var ready := engine.setup(TestFixtures.battle_config(overrides))
@@ -238,7 +261,7 @@ func test_filling_the_gaffe_meter_loses_the_stage_immediately() -> void:
 	engine.play_card("GAFFE2")
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "gaffe meter")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.gaffe_limit")
 
 
 func test_the_gaffe_warning_only_lights_at_one_from_the_end() -> void:
@@ -389,7 +412,7 @@ func test_running_out_of_turns_loses_by_default() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "Time ran out")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.time_")
 
 
 func test_running_out_of_turns_can_hand_it_to_whoever_is_ahead() -> void:
@@ -444,7 +467,7 @@ func test_slipping_below_the_line_loses_the_tv_debate() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "below the line")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.fell_below")
 
 
 func test_staying_on_the_line_is_survivable() -> void:
@@ -462,7 +485,7 @@ func test_surviving_to_the_end_wins_the_tv_debate() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "win")
-	assert_string_contains(engine.state.outcome_reason, "Survived")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.survived")
 
 
 # ---------------------------------------------------------------------------
@@ -567,7 +590,7 @@ func test_losing_a_reachable_majority_ends_the_stage() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "no longer possible")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.committee_against")
 
 
 # ---------------------------------------------------------------------------
@@ -658,7 +681,7 @@ func test_the_score_is_the_support_reached() -> void:
 		engine.end_turn()
 
 	assert_eq(engine.state.player_score(), 52)
-	assert_string_contains(engine.state.outcome_reason, "52")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.closed_on")
 
 
 func test_a_scored_stage_can_still_be_lost_on_gaffes() -> void:
@@ -669,7 +692,7 @@ func test_a_scored_stage_can_still_be_lost_on_gaffes() -> void:
 
 	engine.play_card("GAFFE2")
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "gaffe")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.gaffe_limit")
 
 
 func test_the_turn_limit_switch_does_not_override_a_scored_stage() -> void:
@@ -758,7 +781,7 @@ func test_beating_the_last_opponent_wins_the_stage() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "win")
-	assert_string_contains(engine.state.outcome_reason, "All 3")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.all_argued_down")
 
 
 func test_losing_one_bout_loses_the_whole_stage() -> void:
@@ -864,7 +887,7 @@ func test_beating_the_last_debater_at_the_threshold_carries_the_bill() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "win")
-	assert_string_contains(engine.state.outcome_reason, "argued down")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.all_argued_down")
 
 
 func test_beating_the_last_opponent_without_a_majority_still_wins() -> void:
@@ -987,7 +1010,7 @@ func test_running_out_of_questions_ends_the_conference() -> void:
 
 	engine.play_card("GAIN3")
 	assert_true(engine.state.is_over(), "and now none")
-	assert_string_contains(engine.state.outcome_reason, "concludes")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.concludes")
 
 
 func test_running_out_of_cards_ends_the_conference_too() -> void:
@@ -1369,7 +1392,7 @@ func test_the_closing_line_says_the_conference_concluded() -> void:
 	assert_true(engine.state.is_over())
 	# Named from the stage: a study session and a lobbyist meeting also run
 	# on questions and neither of them is a press conference.
-	assert_string_contains(engine.state.outcome_reason, "concludes.")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.concludes")
 
 
 func test_the_closing_line_counts_what_went_unanswered() -> void:
@@ -1379,7 +1402,7 @@ func test_the_closing_line_counts_what_went_unanswered() -> void:
 	engine.play_card("GAIN3")            # the last one answered
 
 	assert_true(engine.state.is_over())
-	assert_string_contains(engine.state.outcome_reason, "One question went unanswered.")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.unanswered")
 
 
 func test_the_decline_cost_can_be_switched_off() -> void:
@@ -1735,7 +1758,7 @@ func test_ducking_a_question_ends_an_ambush() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "walked away")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.walked_away")
 
 
 func test_a_lobbyists_interest_cools_every_turn() -> void:
@@ -1802,24 +1825,26 @@ func test_a_scored_stage_closes_in_its_own_name() -> void:
 	engine.end_turn()
 
 	assert_true(engine.state.is_over())
-	assert_string_contains(engine.state.outcome_reason, "TV Debate closed on")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.closed_on")
 	assert_false(engine.state.outcome_reason.to_lower().contains("caucus"),
 		"a TV debate is not a caucus: %s" % engine.state.outcome_reason)
 
 
 func test_a_scored_stage_closes_in_its_own_units() -> void:
 	# "34 support" on a press tone bar was how the wrong unit showed up.
-	var engine := _start(_scored_stage())
+	var engine := _start_with_words(_scored_stage())
 	engine.end_turn()
-	assert_string_contains(engine.state.outcome_reason, "press tone")
+	assert_string_contains(engine.state.outcome_reason, "press tone",
+		"the TV debate should close on its own unit: %s" % engine.state.outcome_reason)
 
 
 func test_a_stage_counted_as_a_share_still_closes_on_a_share() -> void:
-	var engine := _start(_scored_stage({
+	var engine := _start_with_words(_scored_stage({
 		"name_en": "Party Caucus", "bar_as_percent": true,
 	}))
 	engine.end_turn()
-	assert_string_contains(engine.state.outcome_reason, "% of the room")
+	assert_string_contains(engine.state.outcome_reason, "per cent",
+		"a caucus is counted as a share: %s" % engine.state.outcome_reason)
 	assert_string_contains(engine.state.outcome_reason, "Party Caucus closed on")
 
 

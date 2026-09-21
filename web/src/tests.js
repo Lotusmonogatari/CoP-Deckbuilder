@@ -328,22 +328,34 @@ function runRuleChecks(data) {
     eq(runner.peek().value, revealed.value);
   });
 
+  // Stand-in wording, for the same reason the shop refusals below use one:
+  // these checks are about the ARITHMETIC and the range rule, and pinning
+  // Cameron's phrasing here made a reword look like the two engines drifting.
+  const INTENT_WORDS = phrase({
+    'intent.waiting': 'waiting',
+    'intent.attacking': 'attack {amount}',
+    'intent.gaining': 'gain {amount}',
+    'intent.guarding': 'guard {amount}',
+    'intent.pressuring': 'press {amount}',
+    'intent.range': '{low} to {high}',
+  });
+
   check('a range is described as a range', () => {
-    eq(IntentRunner.describe({ verb: 'attack', value: 4, min: 1, max: 6 }),
-      'Attacking · −1 to −6');
-    eq(IntentRunner.describe({ verb: 'gain', value: 3, min: 2, max: 4 }),
-      'Gaining · +2 to +4');
-    eq(IntentRunner.describe({ verb: 'lean_down', value: 2, min: 1, max: 3 }),
-      'Pressuring · −1 to −3');
+    eq(IntentRunner.describe({ verb: 'attack', value: 4, min: 1, max: 6 }, INTENT_WORDS),
+      'attack −1 to −6');
+    eq(IntentRunner.describe({ verb: 'gain', value: 3, min: 2, max: 4 }, INTENT_WORDS),
+      'gain +2 to +4');
+    eq(IntentRunner.describe({ verb: 'lean_down', value: 2, min: 1, max: 3 }, INTENT_WORDS),
+      'press −1 to −3');
   });
 
   check('a described range never promises a zero', () => {
     // A "block 0 to 2" cannot actually come out at 0 — a zero would have
     // been stepped over and something else shown instead.
-    eq(IntentRunner.describe({ verb: 'block', value: 1, min: 0, max: 2 }),
-      'Guarding · 1 to 2');
-    eq(IntentRunner.describe({ verb: 'gain', value: 1, min: 0, max: 1 }),
-      'Gaining · +1', 'a range with one value left reads as one number');
+    eq(IntentRunner.describe({ verb: 'block', value: 1, min: 0, max: 2 }, INTENT_WORDS),
+      'guard 1 to 2');
+    eq(IntentRunner.describe({ verb: 'gain', value: 1, min: 0, max: 1 }, INTENT_WORDS),
+      'gain +1', 'a range with one value left reads as one number');
   });
 
   check('every pattern in the data can be played', () => {
@@ -1590,9 +1602,11 @@ function runRuleChecks(data) {
   check('the player is never shown the word Magnitude', () => {
     // The effect column says "Magnitude" where a number belongs, because it
     // was written for a designer.
-    eq(describeEffect(aMod({ magnitude: 3 }), BRIDGE), 'Start 3 ahead.');
+    eq(describeEffect(aMod({ magnitude: 3 }), BRIDGE,
+      phrase({ 'modifier.player_start_support': 'start {count} ahead' })),
+      'start 3 ahead');
     for (const modifier of data.modifiers) {
-      const text = describeEffect(modifier, data.modifier_effects || {});
+      const text = describeEffect(modifier, data.modifier_effects || {}, phrase(STRINGS));
       ok(!text.includes('Magnitude'),
         modifier.mod_id + ' still shows it: ' + text);
     }

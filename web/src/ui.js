@@ -300,21 +300,21 @@ function showBriefing() {
       anythingSet = true;
       const rewards = winRewards(stage);
       for (const name of Object.keys(rewards)) {
-        sheet.append(el('p', 'detail-line',
-          name + ' ' + (rewards[name] > 0 ? '+' : '\u2212') + Math.abs(rewards[name])));
+        sheet.append(el('p', 'detail-line', T('reward.delta', {
+          name: name,
+          amount: (rewards[name] > 0 ? '+' : '\u2212') + Math.abs(rewards[name]),
+        })));
       }
       const xp = int(stage.xp_reward, 0);
-      if (xp > 0) sheet.append(el('p', 'detail-line', xp + ' XP'));
-      for (const line of variableRewards(stage)) {
+      if (xp > 0) sheet.append(el('p', 'detail-line', T('outcome.xp', { count: xp })));
+      for (const line of variableRewards(stage, phrase(STRINGS))) {
         sheet.append(el('p', 'org-boosts', line));
       }
     }
 
     if (!anythingSet) {
       sheet.append(el('div', 'gap'));
-      sheet.append(el('p', 'detail-line', 'Nothing in this level pays out yet. '
-        + 'The slots are in the data waiting for numbers, and the moment they '
-        + 'have any, they will land here and on your standing.'));
+      sheet.append(el('p', 'detail-line', T('reward.nothing_set')));
     }
 
     // Losing is the same everywhere for now, and saying so is worth a line:
@@ -536,7 +536,7 @@ function showBackingShop() {
           + (have >= needed ? '  ·  standing ' + have
                             : '  ·  standing ' + have + ', needs ' + needed)));
       }
-      row.append(el('p', 'org-boosts', describeEffect(modifier, bridge)));
+      row.append(el('p', 'org-boosts', describeEffect(modifier, bridge, phrase(STRINGS))));
 
       // A shop that sells something inert is the trap this project has
       // walked into twice.
@@ -657,12 +657,13 @@ function drawBattle() {
   const right = el('div', 'status-right');
   // How much of the next attack is already covered. Shown only when there is
   // some: a permanent "Guarding 0" is noise.
-  right.append(el('span', 'guarding', 'Guard ' + s.block + ' / ' + s.guard_cap));
+  right.append(el('span', 'guarding',
+    T('battle.your_guard', { count: s.block, cap: s.guard_cap })));
   // And theirs. Banked and spent since the last round, never once shown, so
   // the player could only infer it after the fact from "their guard stopped 3".
   if (s.opponent_block > 0) {
     right.append(el('span', 'their-guard',
-      'They guard ' + s.opponent_block + ' / ' + s.guard_cap));
+      T('battle.their_guard', { count: s.opponent_block, cap: s.guard_cap })));
   }
   // The gaffe warning turns red ONLY when one more would end the stage.
   right.append(el('span', engine.gaffeIsCritical() ? 'gaffes warn' : 'gaffes',
@@ -737,7 +738,8 @@ function speakerRow() {
       row.append(placeholderArt(journalist.journalist_id, '64px'));
       text.append(el('h2', null, journalist.name));
     }
-    text.append(el('p', 'says', question ? question.text : 'That was the last question.'));
+    text.append(el('p', 'says',
+      question ? question.text : T('battle.last_question')));
     row.append(text);
     return row;
   }
@@ -745,8 +747,11 @@ function speakerRow() {
   const opponent = engine.currentOpponent();
   const caption = engine.opponentCaption();
   row.append(placeholderArt(String(opponent.opp_id || ''), '64px'));
-  text.append(el('h2', null, (opponent.name || 'Visitor A') + (caption ? '  ·  ' + caption : '')));
-  text.append(el('p', 'says', IntentRunner.describe(engine.currentIntent())));
+  text.append(el('h2', null, caption
+    ? T('battle.who_and_caption', { who: opponent.name || 'Visitor A', caption: caption })
+    : (opponent.name || 'Visitor A')));
+  text.append(el('p', 'says',
+    IntentRunner.describe(engine.currentIntent(), phrase(STRINGS))));
   row.append(text);
   return row;
 }
@@ -773,12 +778,13 @@ function supportBar() {
   const wrap = el('section', 'bar-wrap');
   let caption;
   if (hasThreshold) {
-    caption = amount(bar.threshold) + (percent ? '' : ' ' + unit.toLowerCase())
-      + (winsStage ? ' to win' : ' to advance');
+    caption = T(winsStage ? 'bar.to_win' : 'bar.to_advance', {
+      amount: amount(bar.threshold) + (percent ? '' : ' ' + unit.toLowerCase()),
+    });
   } else if (percent) {
-    caption = 'Take as much of the room as you can';
+    caption = T('bar.take_the_room');
   } else {
-    caption = 'Raise ' + unit.toLowerCase() + ' as high as you can';
+    caption = T('bar.raise_as_high', { unit: unit.toLowerCase() });
   }
   wrap.append(el('p', 'bar-caption', caption));
 
@@ -805,12 +811,16 @@ function supportBar() {
   // A name too long for the row falls back to "Them" rather than being
   // shortened: taking the first word turned "The Caucus Panel" into "The".
   let other = String(opponentDisplayName() || '').trim();
-  if (other === '' || other.length > 18) other = 'Them';
+  if (other === '' || other.length > 18) other = T('bar.them');
 
   wrap.append(el('p', 'bar-readout', twoSided
-    ? 'You ' + amount(bar.player) + ' · Undecided ' + amount(bar.undecided)
-      + ' · ' + other + ' ' + amount(bar.opponent)
-    : unit + ' ' + bar.player + ' of ' + bar.maximum));
+    ? T('bar.two_sided', {
+        you: amount(bar.player),
+        undecided: amount(bar.undecided),
+        them: other,
+        theirs: amount(bar.opponent),
+      })
+    : T('bar.one_sided', { unit: unit, count: bar.player, total: bar.maximum })));
   return wrap;
 }
 
@@ -861,10 +871,12 @@ function cardBack(card, here, room) {
   if (card.name_jp) {
     line('<span class="faint">' + safe(card.name_jp) + '  ' + safe(card.romaji) + '</span>');
   }
-  line(safe(card.suit) + ' · ' + safe(card.type) + ' · costs ' + run.engine.cardCost(card));
+  line(safe(T('card.line', {
+    suit: card.suit, type: card.type, cost: run.engine.cardCost(card),
+  })));
   line(safe(card.effect_text));
   if (here && here !== String(card.effect_text || '')) {
-    line('<b>In this room:</b> ' + safe(here));
+    line(safe(T('card.in_this_room', { effect: here })));
   }
   if (room) line('<span class="faint">' + safe(room) + '</span>');
 
@@ -881,19 +893,22 @@ function cardBack(card, here, room) {
 // the screen.
 function effectHere(effect, card) {
   const parts = [];
-  if (effect.self_plus) parts.push('Gain ' + effect.self_plus + '.');
+  if (effect.self_plus) parts.push(T('card.gain', { count: effect.self_plus }));
   if (effect.opp_minus && effect.opp_minus_counts) {
-    parts.push('Opponent \u2212' + effect.opp_minus + '.');
+    parts.push(T('card.opponent', { count: effect.opp_minus }));
   }
-  if (effect.guard && effect.guard_counts) parts.push('Guard ' + effect.guard + '.');
-  if (effect.draw) parts.push('Draw ' + effect.draw + '.');
-  if (effect.gaffe) parts.push('Gaffe ' + (effect.gaffe > 0 ? '+' : '') + effect.gaffe + '.');
+  if (effect.guard && effect.guard_counts) parts.push(T('card.guard', { count: effect.guard }));
+  if (effect.draw) parts.push(T('card.draw', { count: effect.draw }));
+  if (effect.gaffe) {
+    parts.push(T('card.gaffe',
+      { amount: (effect.gaffe > 0 ? '+' : '') + effect.gaffe }));
+  }
 
-  if (effect.does_nothing) parts.push('Nothing this card does counts in this room.');
+  if (effect.does_nothing) parts.push(T('card.does_nothing'));
 
   // Every card answers the question in front of you, whatever else it does.
   // A draw-1 card was spent in a playtest on the assumption it was free.
-  if (effect.answers_question) parts.push('Answers this question.');
+  if (effect.answers_question) parts.push(T('card.answers_question'));
 
   return parts.length > 0 ? parts.join(' ') : (card.effect_text || '');
 }
@@ -1290,12 +1305,16 @@ function showDetails() {
     // row in the table above, so only the count belongs here.
     if (s.opponent_count > 1) {
       lines.push('');
-      lines.push(s.opponent_count + ' of them, one at a time. You are on '
-        + (s.opponent_index + 1) + '.');
+      lines.push(T('battle.one_at_a_time',
+        { count: s.opponent_count, number: s.opponent_index + 1 }));
     }
 
-    const carried = run.runner.describeCarriedBuffs(boosterNames(DATA));
-    if (!carried.startsWith('Nothing')) { lines.push(''); lines.push(carried); }
+    // Asked, not sniffed. This used to test whether the sentence began with
+    // "Nothing", so rewording that line would have silently hidden the block.
+    if (run.runner.anythingCarried()) {
+      lines.push('');
+      lines.push(run.runner.describeCarriedBuffs(boosterNames(DATA), phrase(STRINGS)));
+    }
 
     for (const line of lines) {
       sheet.append(line === '' ? el('div', 'gap') : el('p', 'detail-line', line));
@@ -1414,11 +1433,14 @@ function showOutcome() {
     const changes = [];
     for (const name of Object.keys(moved)) {
       if (moved[name] !== 0) {
-        changes.push(name + ' ' + (moved[name] > 0 ? '+' : '\u2212') + Math.abs(moved[name]));
+        changes.push(T('reward.delta', {
+          name: name,
+          amount: (moved[name] > 0 ? '+' : '\u2212') + Math.abs(moved[name]),
+        }));
       }
     }
     const xp = int(run.stage.xp_reward, 0);
-    if (xp > 0) changes.push(xp + ' XP');
+    if (xp > 0) changes.push(T('outcome.xp', { count: xp }));
 
     // Which organisations the answers pleased. The Office shows the result,
     // but the connection between an answer and a standing is lost by then.

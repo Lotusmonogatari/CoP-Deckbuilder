@@ -407,7 +407,8 @@ func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
 	# What it does, in a sentence with the real number in it — not the
 	# workbook's "+Magnitude player start support".
 	box.add_child(_wrapped_label(
-		ModifierEffects.describe(modifier, DataDB.modifier_effects), "SmallLabel"))
+		ModifierEffects.describe(modifier, DataDB.modifier_effects, Text.phrase()),
+		"SmallLabel"))
 
 	# An effect nothing implements yet is said out loud. A shop that sells
 	# something inert is the trap this project has walked into twice.
@@ -530,19 +531,19 @@ func _show_briefing() -> void:
 		else:
 			anything_set = true
 			for name: String in LevelRunner.win_rewards(stage).keys():
-				rows.append(_wrapped_label("%s %+d"
-					% [name, LevelRunner.win_rewards(stage)[name]]))
+				rows.append(_wrapped_label(Text.say("reward.delta", {
+					"name": name,
+					"amount": "%+d" % int(LevelRunner.win_rewards(stage)[name]),
+				})))
 			var xp := int(stage.get("xp_reward", 0))
 			if xp > 0:
-				rows.append(_wrapped_label("%d XP" % xp))
-			for line: String in LevelRunner.variable_rewards(stage):
+				rows.append(_wrapped_label(Text.say("outcome.xp", {"count": xp})))
+			for line: String in LevelRunner.variable_rewards(stage, Text.phrase()):
 				rows.append(_wrapped_label(line, "SmallLabel"))
 
 	if not anything_set:
 		rows.append(_wrapped_label(""))
-		rows.append(_wrapped_label("Nothing in this level pays out yet. The "
-			+ "slots are in the data waiting for numbers, and the moment "
-			+ "they have any, they will land here and on your standing."))
+		rows.append(_wrapped_label(Text.say("reward.nothing_set")))
 
 	# Losing is the same everywhere for now, and saying so is worth a line:
 	# the player should know what they are risking, which is the afternoon.

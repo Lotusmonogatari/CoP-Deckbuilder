@@ -33,6 +33,9 @@ var _cards: Dictionary = {}        ## card_id -> card row
 var _affinity: Dictionary = {}     ## element -> { stage_id -> multiplier }
 var _rules: Dictionary = {}
 var _meta: Dictionary = {}         ## Jiban, Kanban, Kaban, Party support
+
+## Every sentence this engine says to the player, from the workbook.
+var _words: Phrase = Phrase.new()
 var _intents: IntentRunner = null
 var _rng := RandomNumberGenerator.new()
 
@@ -90,6 +93,11 @@ func setup(config: Dictionary) -> bool:
 	_affinity = config.get("affinity", {})
 	_rules = config.get("rules", {})
 	_meta = config.get("meta", {})
+
+	# The wording, handed in like everything else. Left out — as the headless
+	# fixtures leave it out — every sentence below comes back as its key,
+	# which is harmless and is what those tests assert against.
+	_words = Phrase.new(config.get("strings", {}))
 
 	if _stage.is_empty():
 		setup_problems.append("no stage was given")
@@ -592,7 +600,7 @@ func _decline_question() -> void:
 	# In an ambush there is nowhere to go. Ducking one question ends it,
 	# which is the whole character of the stage.
 	if bool(_stage.get("decline_ends_stage", false)):
-		_finish("loss", "You walked away from the question. That is the story now.")
+		_finish("loss", _words.say("outcome.reason.walked_away"))
 
 
 func _resolve_intent(intent: Dictionary) -> Dictionary:
@@ -654,7 +662,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 
 	# Losing on gaffes happens the moment it happens, mid-turn.
 	if state.gaffe >= state.gaffe_limit:
-		_finish("loss", "The gaffe meter filled.")
+		_finish("loss", _words.say("outcome.reason.gaffe_limit"))
 		return
 
 	# A press conference ends when the reporters run out of questions, or
@@ -677,10 +685,10 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 
 	if state.is_committee_stage():
 		if state.committee.player_has_won():
-			_finish("win", "A majority of the committee locked in favour.")
+			_finish("win", _words.say("outcome.reason.committee_for"))
 			return
 		if not state.committee.majority_still_reachable():
-			_finish("loss", "Too many members locked against — a majority is no longer possible.")
+			_finish("loss", _words.say("outcome.reason.committee_against"))
 			return
 	else:
 		# Three stages have no threshold to cross.
@@ -718,16 +726,16 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			if has_more_opponents():
 				_advance_to_next_opponent()
 				return
-			_finish("win", "Every opponent has been argued out of the chamber.")
+			_finish("win", _words.say("outcome.reason.all_argued_out"))
 			return
 		if bool(_rules.get("opponent_can_win_by_threshold", false)) and state.bar.opponent_has_won():
-			_finish("loss", "The opponent reached the threshold first.")
+			_finish("loss", _words.say("outcome.reason.opponent_first"))
 			return
 
 		# The TV debate is survived, not won: the player has to be at or above
 		# the line at the end of every turn.
 		if end_of_turn and state.bar.model == BarModel.Model.SURVIVAL and state.bar.player_below_threshold():
-			_finish("loss", "Support fell below the line during the debate.")
+			_finish("loss", _words.say("outcome.reason.fell_below"))
 			return
 
 	if end_of_turn:
@@ -742,7 +750,7 @@ func _check_turn_limit() -> void:
 	# Surviving to the end IS the win in a TV debate, whatever the general
 	# turn-limit switch says.
 	if state.bar != null and state.bar.model == BarModel.Model.SURVIVAL:
-		_finish("win", "Survived the whole debate above the line.")
+		_finish("win", _words.say("outcome.reason.survived"))
 		return
 
 	# A scored stage is not won or lost on the clock — running out of turns
@@ -752,17 +760,21 @@ func _check_turn_limit() -> void:
 		# In the units the stage is read in: a caucus counted as a share of
 		# the room should not close on a headcount, and a TV debate should
 		# close on press tone rather than on "support".
-		var closing := ("%d%% of the room" % state.player_score()
+		var closing := (_words.say("outcome.reason.percent_of_room",
+				{"count": state.player_score()})
 			if bool(_stage.get("bar_as_percent", false))
-			else "%d %s" % [state.player_score(),
-				str(_stage.get("bar_unit", "support")).to_lower()])
+			else _words.say("outcome.reason.amount_of_unit", {
+				"count": state.player_score(),
+				"unit": str(_stage.get("bar_unit", "support")).to_lower()}))
 
 		# NAMED FROM THE STAGE. Three kinds of stage are scored — the caucus,
 		# the town hall and the TV debate — and this said "the caucus closed"
 		# for all three until a playtest screenshot caught a TV debate
 		# claiming to be one.
 		var what := str(_stage.get("name_en", "")).strip_edges()
-		_finish("win", "%s closed on %s." % [what if not what.is_empty() else "It", closing])
+		_finish("win", (_words.say("outcome.reason.closed_on",
+		{"stage": what, "closing": closing}) if not what.is_empty()
+		else _words.say("outcome.reason.closed_on_unnamed", {"closing": closing})))
 		return
 
 	match str(_rules.get("turn_limit_outcome", "loss")):
@@ -775,15 +787,15 @@ func _check_turn_limit() -> void:
 				else:
 					_finish("loss", "Time ran out without a majority.")
 			elif state.bar.player > state.bar.opponent:
-				_finish("win", "Time ran out with the player ahead.")
+				_finish("win", _words.say("outcome.reason.time_ahead"))
 			else:
-				_finish("loss", "Time ran out with the player behind.")
+				_finish("loss", _words.say("outcome.reason.time_behind"))
 
 		"tie_retry":
-			_finish("retry", "Time ran out with no decision. The stage restarts.")
+			_finish("retry", _words.say("outcome.reason.time_no_decision"))
 
 		_:
-			_finish("loss", "Time ran out before the threshold was reached.")
+			_finish("loss", _words.say("outcome.reason.time_short"))
 
 
 # ---------------------------------------------------------------------------
@@ -801,16 +813,16 @@ func _conference_closing(ran_out_of_cards: bool = false) -> String:
 	# meeting both run on questions and neither of them is a press
 	# conference. It said so anyway until a playtest read it.
 	var what := str(_stage.get("name_en", "")).strip_edges()
-	var lines: Array[String] = ["%s concludes." % (what if not what.is_empty() else "It")]
+	var lines: Array[String] = [
+		_words.say("outcome.reason.concludes", {"stage": what}) if not what.is_empty()
+		else _words.say("outcome.reason.concludes_unnamed")]
 
 	if ran_out_of_cards:
-		lines.append("The questions ran on, but there was nothing left to say.")
+		lines.append(_words.say("outcome.reason.nothing_left"))
 
 	var declined := state.declined_questions
-	if declined == 1:
-		lines.append("One question went unanswered.")
-	elif declined > 1:
-		lines.append("%d questions went unanswered." % declined)
+	if declined > 0:
+		lines.append(_words.say("outcome.reason.unanswered", {"count": declined}))
 
 	return " ".join(lines)
 
@@ -914,8 +926,9 @@ func pleased_boosters() -> Array[String]:
 func question_caption() -> String:
 	if _questions.is_empty():
 		return ""
-	return "Question %d of %d" % [
-		mini(state.question_index + 1, _questions.size()), _questions.size()]
+	return _words.say("caption.question", {
+		"number": mini(state.question_index + 1, _questions.size()),
+		"total": _questions.size()})
 
 
 ## Uses a card as the answer to the question on the floor.
@@ -955,7 +968,8 @@ func has_more_opponents() -> bool:
 func opponent_caption() -> String:
 	if state.opponent_count <= 1:
 		return ""
-	return "%d of %d" % [state.opponent_index + 1, state.opponent_count]
+	return _words.say("caption.opponent", {
+		"number": state.opponent_index + 1, "total": state.opponent_count})
 
 
 ## Brings on the next opponent.
@@ -1025,8 +1039,8 @@ func _reset_for_new_bout() -> void:
 ## What to say when the player wins, which depends on what they just did.
 func _victory_reason() -> String:
 	if _sequence_mode != "single" and state.opponent_count > 1:
-		return "All %d were argued down." % state.opponent_count
-	return "The support threshold was reached."
+		return _words.say("outcome.reason.all_argued_down", {"count": state.opponent_count})
+	return _words.say("outcome.reason.threshold")
 
 
 func _finish(outcome: String, reason: String) -> void:
@@ -1092,4 +1106,5 @@ func gaffe_is_critical() -> bool:
 
 ## "Turn 3 of 8" for the header.
 func turn_caption() -> String:
-	return "Turn %d of %d" % [state.turn, int(_stage.get("turn_limit", 0))]
+	return _words.say("caption.turn", {
+		"turn": state.turn, "total": int(_stage.get("turn_limit", 0))})
