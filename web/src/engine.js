@@ -399,10 +399,35 @@ function clamp(value, low, high) { return Math.min(Math.max(value, low), high); 
 
 const KNOWN_VERBS = ['attack', 'gain', 'block', 'lean_down'];
 
+// A pattern is a list of moves. A move is a verb and either one number or a
+// range to roll between, inclusive at both ends:
+//
+//     [["attack", 4], ["gain", 0, 1], ["block", 3, 5]]
+//
+// THE ZERO RULE. A move that comes out at zero is NOT TAKEN: the opponent
+// steps to the next move in the cycle and does that instead, so nobody ever
+// spends a turn guarding nothing. An opponent whose pattern carries a flat
+// "block 0" simply never guards.
+//
+// WHEN THE ROLL HAPPENS, and why it matters: at peek, once, and then held.
+// The screen repaints several times a turn, so rolling inside peek() without
+// holding would re-roll the intent on every repaint. And skipping a zero
+// CHANGES THE VERB — if the skip happened when the move resolved, the screen
+// could announce "Guarding" and the opponent could attack instead.
+function zeroShape() { return { verb: 'none', value: 0 }; }
+
 class IntentRunner {
-  constructor(pattern) {
+  // `roller` is handed in so the whole battle runs off one seeded generator
+  // and a test can post a fixed answer, the same arrangement BarModel uses
+  // for what a stubborn vote costs.
+  constructor(pattern, roller) {
     this.pattern = Array.isArray(pattern) ? JSON.parse(JSON.stringify(pattern)) : [];
     this.position = 0;
+    this._roller = roller || ((low, high) => low + Math.floor(Math.random() * (high - low + 1)));
+    this._pending = null;
+    this._pendingIndex = 0;
+    this._ahead = null;
+    this._aheadIndex = 0;
   }
 
   isValid() { return this.pattern.length > 0 && this.problems().length === 0; }
@@ -413,6 +438,9 @@ class IntentRunner {
       found.push('the opponent has no intent pattern, so it cannot take a turn');
       return found;
     }
+
+    let anythingCanHappen = false;
+
     this.pattern.forEach((move, index) => {
       if (!Array.isArray(move) || move.length < 2) {
         found.push('move ' + (index + 1) + ' should be a verb and a number, such as ["attack", 6]');
@@ -421,32 +449,139 @@ class IntentRunner {
       if (!KNOWN_VERBS.includes(String(move[0]))) {
         found.push('move ' + (index + 1) + " uses '" + move[0] + "', which is not one of " + KNOWN_VERBS.join(', '));
       }
+      // The largest this move could ever be. A move that can only come out
+      // at zero is never taken, which is fine on its own — but a pattern
+      // made entirely of them would leave the opponent standing there.
+      const biggest = move.length >= 3
+        ? Math.max(Math.trunc(move[1]), Math.trunc(move[2]))
+        : Math.trunc(move[1]);
+      if (biggest > 0) anythingCanHappen = true;
     });
+
+    if (!anythingCanHappen) {
+      found.push('every move in this pattern is worth nothing, so the opponent would never act');
+    }
     return found;
   }
 
-  moveAt(index) {
-    if (this.pattern.length === 0) return { verb: 'none', value: 0 };
-    const move = this.pattern[((index % this.pattern.length) + this.pattern.length) % this.pattern.length];
-    return { verb: String(move[0]), value: Math.trunc(move[1]) };
+  // Finds the next move worth making, stepping past any that come out at
+  // zero. Bounded to one lap: a pattern of nothing but zeros would otherwise
+  // spin forever.
+  _resolveFrom(index) {
+    if (this.pattern.length === 0) return { move: zeroShape(), index: index };
+
+    for (let step = 0; step < this.pattern.length; step++) {
+      const at = this._wrap(index + step);
+      const move = this._roll(this.pattern[at]);
+      if (Math.trunc(move.value) !== 0) return { move: move, index: at };
+    }
+    return { move: zeroShape(), index: this._wrap(index) };
   }
 
-  peek() { return this.moveAt(this.position); }
-  peekAhead() { return this.moveAt(this.position + 1); }
+  // Turns one written move into one that has happened. min and max ride
+  // along only on a move that HAS a range: a fixed move keeps the plain
+  // shape it has always had.
+  _roll(raw) {
+    if (!Array.isArray(raw) || raw.length < 2) return zeroShape();
+
+    const verb = String(raw[0]);
+    let low = Math.trunc(raw[1]);
+    if (raw.length < 3) return { verb: verb, value: low };
+
+    let high = Math.trunc(raw[2]);
+    if (high < low) { const swap = low; low = high; high = swap; }
+
+    return {
+      verb: verb,
+      value: high <= low ? low : Math.trunc(this._roller(low, high)),
+      min: low,
+      max: high,
+    };
+  }
+
+  _wrap(index) {
+    const size = this.pattern.length;
+    return ((index % size) + size) % size;
+  }
+
+  peek() {
+    if (this._pending === null) {
+      const found = this._resolveFrom(this.position);
+      this._pending = found.move;
+      this._pendingIndex = found.index;
+    }
+    return this._pending;
+  }
+
+  peekAhead() {
+    // The current move has to be settled first: where it lands is where the
+    // one after it starts from, once any zeros have been stepped over.
+    this.peek();
+    if (this._ahead === null) {
+      const found = this._resolveFrom(this._pendingIndex + 1);
+      this._ahead = found.move;
+      this._aheadIndex = found.index;
+    }
+    return this._ahead;
+  }
 
   advance() {
-    const move = this.moveAt(this.position);
-    this.position = (this.position + 1) % Math.max(this.pattern.length, 1);
+    const move = this.peek();
+    this.position = (this._pendingIndex + 1) % Math.max(this.pattern.length, 1);
+
+    // Whatever Head Count already revealed becomes the next move rather than
+    // being thrown away and rolled again, or the card would have lied.
+    if (this._ahead === null) {
+      this._pending = null;
+    } else {
+      this._pending = this._ahead;
+      this._pendingIndex = this._aheadIndex;
+    }
+    this._ahead = null;
+
     return move;
   }
 
+  setPosition(value) {
+    const size = this.pattern.length;
+    this.position = size === 0 ? 0 : ((value % size) + size) % size;
+    // A held roll belongs to the position it was rolled for.
+    this._pending = null;
+    this._ahead = null;
+  }
+
+  // What this move could come out as: one number, or a low and a high.
+  //
+  // NEVER BELOW 1. A "block 0 to 2" cannot actually come out at 0 — a zero
+  // would have been stepped over and something else shown instead — so
+  // advertising "0 to 2" would promise an outcome that cannot happen.
+  static shapeOf(move) {
+    if (!move || move.min === undefined || move.max === undefined) {
+      return [Math.trunc((move && move.value) || 0)];
+    }
+    const low = Math.max(Math.trunc(move.min), 1);
+    const high = Math.trunc(move.max);
+    if (high <= low) return [high > 0 ? high : low];
+    return [low, high];
+  }
+
+  // The move written the way the player reads it: "Attacking · −6", or
+  // "Attacking · −1 to −6" where it could be anything in a range.
   static describe(move) {
-    const value = Math.trunc((move && move.value) || 0);
-    switch (String((move && move.verb) || 'none')) {
-      case 'attack': return 'Attacking · −' + value;
-      case 'gain': return 'Gaining · +' + value;
-      case 'block': return 'Guarding · ' + value;
-      case 'lean_down': return 'Pressuring · −' + value;
+    const verb = String((move && move.verb) || 'none');
+    if (verb === 'none') return 'Waiting';
+
+    const shape = IntentRunner.shapeOf(move);
+    const signed = (mark) => shape.length === 1
+      ? mark + shape[0]
+      : mark + shape[0] + ' to ' + mark + shape[1];
+    const plain = () => shape.length === 1 ? String(shape[0]) : shape[0] + ' to ' + shape[1];
+
+    switch (verb) {
+      case 'attack': return 'Attacking · ' + signed('−');
+      case 'gain': return 'Gaining · ' + signed('+');
+      case 'block': return 'Guarding · ' + plain();
+      case 'lean_down': return 'Pressuring · ' + signed('−');
       default: return 'Waiting';
     }
   }
@@ -619,7 +754,10 @@ class BattleEngine {
       if (pattern !== null && pattern !== undefined) this.usedDefaultIntentPattern = true;
     }
 
-    this._intents = new IntentRunner(pattern);
+    // The opponent rolls its ranges off the battle's own generator, so a
+    // seeded battle plays out the same way twice.
+    this._intents = new IntentRunner(
+      pattern, (low, high) => low + this._rng(high - low + 1));
     if (!this._intents.isValid()) {
       for (const problem of this._intents.problems()) {
         this.setupProblems.push((this._opponent.name || 'the opponent') + ': ' + problem);

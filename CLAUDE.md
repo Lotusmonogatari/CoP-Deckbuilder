@@ -68,7 +68,7 @@ The design workbook (`CoP_Starter_Card_Stage_Data.xlsx`) has one tab per table. 
 | `segments.json` | segment_id | Press, Loyalists, Constituents, Donors, Bureaucrats |
 | `modifiers.json` | mod_id | category, trigger_segment, trigger_min_pct, effect, magnitude, kaban_cost, available_to, source_booster |
 | `boosters.json` | booster_id | 10 organizations; tier (Party / Constituency / National); linked modifiers |
-| `opponents.json` | opp_id | name, party, committee, positioning, element_1, element_2, deck sizes, ai_style |
+| `opponents.json` | opp_id | name, party, committee, positioning, element_1, element_2, deck sizes. Turn behaviour is an `intent_pattern`; until the workbook carries that column it comes from `intent_patterns.json` |
 | `committee.json` | module + seq | Committee members for a committee stage, with starting stance (For / Undecided / Against) |
 | `yoron.json` | topic_id | Public-opinion topics, 0–100 value |
 | `bills.json` | bill_id | topic_id, direction (+1/−1), difficulty_mod |

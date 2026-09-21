@@ -258,10 +258,16 @@ SHEETS = {
             ("Primary cards", "primary_cards", "int"),
             ("Secondary cards", "secondary_cards", "int"),
             ("Other cards", "other_cards", "int"),
-            ("AI style [proposed]", "ai_style", "str"),
             ("Loadout mods", "loadout_mods", "list"),
             ("Source", "source", "str"),
-            # Proposed, not yet in the workbook. See design/proposals/.
+            # Not in the workbook yet. Until an "Intent pattern" column
+            # lands there, the patterns come from data/intent_patterns.json,
+            # a hand-written bridge the exporter never touches.
+            #
+            # The old "AI style" column is deliberately NOT exported any
+            # more: Cameron dropped the prose on 2026-09-21 in favour of
+            # rebuilding opponent character from the numbers. It may stay in
+            # the workbook; nothing reads it.
             ("Intent pattern", "intent_pattern", "json"),
         ],
     },

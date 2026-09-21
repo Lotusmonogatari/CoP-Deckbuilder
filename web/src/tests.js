@@ -216,6 +216,161 @@ function runRuleChecks(data) {
     ok(runner.problems()[0].includes('filibuster'));
   });
 
+  // --- ranges, and the zero rule --------------------------------------------
+  // Ported from tests/test_intent_runner.gd. Cameron's five patterns,
+  // 2026-09-21.
+
+  // A roller that hands back a fixed answer, so a test can say what was
+  // rolled; and one that walks a list, to script a sequence of rolls.
+  const fixedRoll = (value) => (low, high) => Math.min(Math.max(value, low), high);
+  const scriptedRoll = (values) => {
+    let i = 0;
+    return (low, high) => {
+      const value = values[i % values.length];
+      i += 1;
+      return Math.min(Math.max(value, low), high);
+    };
+  };
+
+  check('a range is rolled between its ends', () => {
+    const move = new IntentRunner([['attack', 1, 6]], fixedRoll(4)).advance();
+    eq(move.verb, 'attack');
+    eq(move.value, 4);
+    eq(move.min, 1, 'and it says what was possible');
+    eq(move.max, 6);
+  });
+
+  check('a range never lands outside its ends', () => {
+    const runner = new IntentRunner([['attack', 2, 5]]);
+    for (let i = 0; i < 200; i++) {
+      const value = runner.advance().value;
+      ok(value >= 2 && value <= 5, 'rolled ' + value);
+    }
+  });
+
+  check('a fixed move keeps its plain shape', () => {
+    // No min or max on a move that has no range: the battle and the screen
+    // both read the absence as "this is exactly what happens".
+    const move = new IntentRunner([['attack', 6]]).advance();
+    eq(move.min, undefined);
+    eq(move.value, 6);
+  });
+
+  check('the ends are included', () => {
+    eq(new IntentRunner([['attack', 3, 7]], fixedRoll(3)).advance().value, 3);
+    eq(new IntentRunner([['attack', 3, 7]], fixedRoll(7)).advance().value, 7);
+  });
+
+  check('a flat zero move is never taken', () => {
+    // Pattern 4: attack 5 / gain 0-2 / block 0. That opponent never guards.
+    const runner = new IntentRunner(
+      [['attack', 5], ['gain', 0, 2], ['block', 0]], fixedRoll(2));
+    const verbs = [];
+    for (let i = 0; i < 12; i++) verbs.push(runner.advance().verb);
+
+    ok(!verbs.includes('block'), 'the block is worth nothing, so it never happens');
+    ok(verbs.includes('attack'));
+    ok(verbs.includes('gain'));
+  });
+
+  check('a range that rolls zero gives way to the next move', () => {
+    const runner = new IntentRunner(
+      [['block', 0, 2], ['attack', 4]], scriptedRoll([0]));
+    eq(runner.peek().verb, 'attack', 'the block rolled nothing');
+    eq(runner.advance().value, 4);
+  });
+
+  check('no move ever comes out at nothing', () => {
+    const runner = new IntentRunner([['attack', 0, 6], ['gain', 2, 4], ['block', 1, 3]]);
+    for (let i = 0; i < 300; i++) ok(Math.trunc(runner.advance().value) !== 0);
+  });
+
+  check('a pattern of nothing but zeros waits rather than hanging', () => {
+    const runner = new IntentRunner([['block', 0], ['gain', 0]]);
+    eq(runner.advance().verb, 'none');
+    ok(!runner.isValid(), 'and the data check refuses it up front');
+    ok(runner.problems()[0].includes('never act'));
+  });
+
+  check('the skipped moves are used up', () => {
+    const runner = new IntentRunner(
+      [['attack', 5], ['gain', 1], ['block', 0]], fixedRoll(1));
+    eq(runner.advance().verb, 'attack');
+    eq(runner.advance().verb, 'gain');
+    eq(runner.advance().verb, 'attack', 'the block was stepped over, not queued');
+  });
+
+  check('peeking rolls once however often the screen asks', () => {
+    let rolls = 0;
+    const counting = (low) => { rolls += 1; return low + 1; };
+    const runner = new IntentRunner([['attack', 1, 6]], counting);
+    for (let i = 0; i < 10; i++) runner.peek();
+    eq(rolls, 1, 'ten repaints, one roll');
+  });
+
+  check('what was shown is what happens', () => {
+    const runner = new IntentRunner(
+      [['block', 0, 2], ['attack', 1, 6]], scriptedRoll([0, 5]));
+    const shown = runner.peek();
+    const done = runner.advance();
+    eq(done.verb, shown.verb, 'the verb holds');
+    eq(done.value, shown.value, 'and so does the number');
+  });
+
+  check('head count is not a lie', () => {
+    // C12 reveals the move after next. That move must then be the one that
+    // happens, rather than being rolled again when it comes round.
+    const runner = new IntentRunner(
+      [['attack', 1, 6], ['gain', 1, 6]], scriptedRoll([2, 5, 1]));
+    const revealed = runner.peekAhead();
+    runner.advance();
+    eq(runner.peek().verb, revealed.verb, 'what Head Count showed is what arrives');
+    eq(runner.peek().value, revealed.value);
+  });
+
+  check('a range is described as a range', () => {
+    eq(IntentRunner.describe({ verb: 'attack', value: 4, min: 1, max: 6 }),
+      'Attacking · −1 to −6');
+    eq(IntentRunner.describe({ verb: 'gain', value: 3, min: 2, max: 4 }),
+      'Gaining · +2 to +4');
+    eq(IntentRunner.describe({ verb: 'lean_down', value: 2, min: 1, max: 3 }),
+      'Pressuring · −1 to −3');
+  });
+
+  check('a described range never promises a zero', () => {
+    // A "block 0 to 2" cannot actually come out at 0 — a zero would have
+    // been stepped over and something else shown instead.
+    eq(IntentRunner.describe({ verb: 'block', value: 1, min: 0, max: 2 }),
+      'Guarding · 1 to 2');
+    eq(IntentRunner.describe({ verb: 'gain', value: 1, min: 0, max: 1 }),
+      'Gaining · +1', 'a range with one value left reads as one number');
+  });
+
+  check('every pattern in the data can be played', () => {
+    let checked = 0;
+
+    for (const level of data.levels) {
+      for (const stage of level.stages) {
+        for (const opponent of (stage.opponents || [])) {
+          ok(opponent.intent_pattern !== undefined,
+            (opponent.name || opponent.opp_id) + ' has no pattern');
+          const runner = new IntentRunner(opponent.intent_pattern);
+          ok(runner.isValid(),
+            (opponent.name || opponent.opp_id) + ': ' + runner.problems().join(', '));
+          checked += 1;
+        }
+      }
+    }
+
+    for (const oppId of Object.keys(data.intent_patterns || {})) {
+      const runner = new IntentRunner(data.intent_patterns[oppId]);
+      ok(runner.isValid(), oppId + ': ' + runner.problems().join(', '));
+      checked += 1;
+    }
+
+    ok(checked > 20, 'every opponent in every level, plus the nine MPs');
+  });
+
   // --- playing a battle -----------------------------------------------------
 
   check('a battle starts with a full hand and full energy', () => {

@@ -184,14 +184,19 @@ func test_a_battle_can_be_lost_on_gaffes() -> void:
 
 
 func test_the_opponent_actually_does_something() -> void:
-	# OP03 has no pattern of their own yet, so this also proves the default
-	# from rules.json reaches a real battle rather than only the fixtures.
+	# OP03 now carries a pattern of their own, which reaches a real battle
+	# through data/intent_patterns.json — the hand-written bridge that stands
+	# in until the workbook has an Intent pattern column. If that bridge ever
+	# stops being read, this is where it shows up: the opponent would quietly
+	# fall back to the shared default and play like everybody else.
 	var config := BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP)
 	var engine := BattleEngine.new()
 	_setup(engine, config)
 
-	assert_true(engine.used_default_intent_pattern,
-		"OP03 has no pattern yet, so the shared default is in use")
+	assert_false(engine.used_default_intent_pattern,
+		"OP03 has a pattern of their own, so the shared default is not needed")
+	assert_eq(config["opponent"]["intent_pattern"], DataDB.intent_patterns["OP03"],
+		"and it is the one written down for them")
 
 	var intent := engine.current_intent()
 	assert_true(IntentRunner.KNOWN_VERBS.has(intent["verb"]),

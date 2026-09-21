@@ -21,8 +21,8 @@ const DATA_PATH := "res://data/"
 ## Every file that must be present for the game to start.
 const REQUIRED_FILES := [
 	"affinity", "balance", "bills", "booster_standing", "boosters", "cards",
-	"committee", "journalists", "levels", "lists", "modifier_effects",
-	"modifiers", "modules", "opponents",
+	"committee", "intent_patterns", "journalists", "levels", "lists",
+	"modifier_effects", "modifiers", "modules", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
 	"stage_types",
 	"segments", "stages", "suits", "yoron",
@@ -39,6 +39,12 @@ var modifiers: Array = []
 ## Which named effect each modifier runs, by mod_id. Hand-written bridge;
 ## the workbook's own column wins where it exists.
 var modifier_effects: Dictionary = {}
+
+## What each of the workbook's MPs does on their turn, by opp_id. The same
+## kind of hand-written bridge, for the same reason: opponents.json is
+## regenerated from the workbook and would throw away anything written into
+## it. The workbook's own column wins where it exists.
+var intent_patterns: Dictionary = {}
 var boosters: Array = []
 var opponents: Array = []
 var yoron: Array = []
@@ -124,6 +130,8 @@ func load_all() -> void:
 			# A temporary bridge until the workbook carries an "Effect key"
 			# column; see the file's own README.
 			"modifier_effects": modifier_effects = _map_under(content, "effects")
+			# The same bridge again, for opponent behaviour.
+			"intent_patterns": intent_patterns = _map_under(content, "patterns")
 			"boosters": boosters = content
 			"opponents": opponents = content
 			"yoron": yoron = content
@@ -332,8 +340,29 @@ func get_stage(stage_id: String) -> Dictionary:
 	return _lookup(_stages_by_id, stage_id, "stage")
 
 
+## An opponent, with their intent pattern filled in if it is not on the row.
+##
+## opponents.json comes out of the workbook, which has no Intent pattern
+## column yet, so the patterns live in the hand-written bridge instead. The
+## merge happens here rather than at each call site: an opponent handed out
+## without their behaviour is an opponent who plays as the generic default,
+## and that is a bug nobody notices until a battle feels wrong.
+##
+## The row's own value always wins, so the day the column lands this stops
+## doing anything.
 func get_opponent(opp_id: String) -> Dictionary:
-	return _lookup(_opponents_by_id, opp_id, "opponent")
+	var opponent := _lookup(_opponents_by_id, opp_id, "opponent")
+	if opponent.is_empty() or opponent.get("intent_pattern") != null:
+		return opponent
+	if not intent_patterns.has(opp_id):
+		return opponent
+
+	# Copied rather than written into: _opponents_by_id holds the loaded
+	# data, and a caller that edits what it is given must not change it for
+	# everyone else.
+	var filled := opponent.duplicate(true)
+	filled["intent_pattern"] = intent_patterns[opp_id]
+	return filled
 
 
 func get_segment(segment_id: String) -> Dictionary:
@@ -498,10 +527,19 @@ func _validate() -> void:
 			var element: Variant = opp.get(field)
 			if element != null and not suit_names.has(element):
 				errors.append("Opponent %s has %s '%s', which is not a suit" % [oid, field, element])
-		if opp.get("intent_pattern") == null:
+		# Their own column first, then the hand-written bridge, then nothing.
+		var pattern: Variant = opp.get("intent_pattern")
+		if pattern == null:
+			pattern = intent_patterns.get(oid)
+		if pattern == null:
 			warnings.append(
 				("Opponent %s has no intent pattern of their own, so they fall back to "
 				+ "the shared default in rules.json and play generically.") % oid)
+		else:
+			# A pattern that cannot be played is worse than none at all: the
+			# fallback would at least let the battle start.
+			for problem: String in IntentRunner.new(pattern).problems():
+				errors.append("Opponent %s's intent pattern: %s" % [oid, problem])
 
 	for bill: Dictionary in bills:
 		if not topic_ids.has(bill.get("topic_id")):
@@ -553,6 +591,30 @@ func _validate_rules() -> void:
 		var runner := IntentRunner.new(rules["default_intent_pattern"])
 		for problem: String in runner.problems():
 			errors.append("rules.json default_intent_pattern: %s" % problem)
+
+	# And every pattern written into a level. These are the opponents the
+	# playtest actually fights, so a typo here is the one that gets noticed.
+	for level: Variant in levels:
+		if typeof(level) != TYPE_DICTIONARY:
+			continue
+		var level_id := str((level as Dictionary).get("level_id", "?"))
+		for stage: Variant in (level as Dictionary).get("stages", []):
+			if typeof(stage) != TYPE_DICTIONARY:
+				continue
+			for opponent: Variant in (stage as Dictionary).get("opponents", []):
+				if typeof(opponent) != TYPE_DICTIONARY:
+					continue
+				var row: Dictionary = opponent
+				var pattern: Variant = row.get("intent_pattern")
+				if pattern == null:
+					warnings.append(
+						("%s: %s has no intent pattern, so they fall back to the "
+						+ "shared default and play generically.")
+						% [level_id, row.get("name", row.get("opp_id", "?"))])
+					continue
+				for problem: String in IntentRunner.new(pattern).problems():
+					errors.append("%s: %s's intent pattern: %s"
+						% [level_id, row.get("name", row.get("opp_id", "?")), problem])
 
 
 func _values(records: Array, key: String) -> Array:

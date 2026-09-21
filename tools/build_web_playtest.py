@@ -38,6 +38,7 @@ NEEDED = [
     "modifiers",
     "boosters",
     "cards",
+    "intent_patterns",
     "journalists",
     "levels",
     "player",
@@ -178,6 +179,11 @@ def build_data() -> dict:
         "boosters": raw["boosters"],
         "cards": cards,
         "journalists": raw["journalists"].get("journalists", []),
+        # What each of the workbook's nine MPs does on their turn. The six
+        # levels carry their opponents' patterns inline, so nothing in the
+        # page reads this yet — it rides along so the page's own rules check
+        # can confirm the two engines agree about every pattern in the game.
+        "intent_patterns": raw["intent_patterns"].get("patterns", {}),
         "player": raw["player"],
         # The six levels, with every stage already expanded from its type.
         "levels": resolve_levels(

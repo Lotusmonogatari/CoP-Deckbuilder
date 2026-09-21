@@ -184,7 +184,12 @@ func _arm_intents(config: Dictionary = {}) -> void:
 		if pattern != null:
 			used_default_intent_pattern = true
 
-	_intents = IntentRunner.new(pattern)
+	# The opponent rolls its ranges off the battle's own generator, so a
+	# seeded battle plays out the same way twice — the same arrangement the
+	# bar uses for what a stubborn vote costs.
+	_intents = IntentRunner.new(
+		pattern,
+		func(low: int, high: int) -> int: return _rng.randi_range(low, high))
 	if not _intents.is_valid():
 		for problem: String in _intents.problems():
 			setup_problems.append("%s: %s" % [_opponent.get("name", "the opponent"), problem])
