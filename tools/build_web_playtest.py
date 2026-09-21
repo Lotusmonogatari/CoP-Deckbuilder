@@ -16,12 +16,14 @@ tests.js re-runs the engine's assertions in the page so that if the two ever
 drift apart it says so.
 """
 
+import base64
 import json
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
+ASSET_DIR = REPO_ROOT / "assets"
 SRC_DIR = REPO_ROOT / "web" / "src"
 OUTPUT = REPO_ROOT / "web" / "playtest.html"
 
@@ -37,9 +39,11 @@ NEEDED = [
     "boosters",
     "cards",
     "journalists",
+    "levels",
     "player",
     "playtest_cards",
     "playtest_level",
+    "stage_types",
     "rules",
     "sanban",
     "segments",
@@ -109,6 +113,52 @@ def fill_name_tokens(level: dict, player: dict) -> dict:
     return level
 
 
+def resolve_type(stage: dict, types: dict, player: dict) -> dict:
+    """Expands a level's stage row into a full stage.
+
+    A row in levels.json names a TYPE and overrides only what it wants to
+    differ; everything else comes from stage_types.json, so "the default
+    committee is 60 votes" is one number in one place.
+
+    This is scripts/BattleSetup.gd resolve_type, done here for the same reason
+    fill_name_tokens is: this script IS the web build's data loader, so by the
+    time the page sees a stage it is already a plain stage like any other and
+    the page needs no idea that stage types exist. Keep the two in step.
+
+    A stage with no type is returned untouched, so the old hand-written
+    playtest level still works.
+    """
+    type_id = str(stage.get("type", ""))
+    if not type_id:
+        return stage
+
+    template = types.get(type_id)
+    if not template:
+        sys.exit(f"levels.json asks for a stage type called {type_id!r}, which does not exist")
+
+    resolved = dict(template)
+    resolved.update(stage)   # the level's own values win
+
+    # A stage needs an ID: the type plus its place in the level, so two study
+    # sessions in one level are still told apart in a report.
+    resolved.setdefault("stage_id", f"{type_id.upper()}_{int(stage.get('seq', 0))}")
+    return resolved
+
+
+def resolve_levels(levels: list, types: dict, player: dict) -> list:
+    out = []
+    for level in levels:
+        built = dict(level)
+        built["stages"] = [resolve_type(s, types, player) for s in level.get("stages", [])]
+        # The one underscore key the page actually shows. strip_docs drops
+        # every _key as documentation, which is right for the rest of them
+        # and wrong for this one: the level list prints it.
+        if level.get("_blurb"):
+            built["blurb"] = level["_blurb"]
+        out.append(fill_name_tokens(built, player))
+    return out
+
+
 def build_data() -> dict:
     raw = {name: read_json(name) for name in NEEDED}
 
@@ -129,6 +179,11 @@ def build_data() -> dict:
         "cards": cards,
         "journalists": raw["journalists"].get("journalists", []),
         "player": raw["player"],
+        # The six levels, with every stage already expanded from its type.
+        "levels": resolve_levels(
+            raw["levels"].get("levels", []),
+            raw["stage_types"].get("types", {}),
+            raw["player"]),
         "playtest_level": fill_name_tokens(raw["playtest_level"], raw["player"]),
         "rules": flatten_rules(raw["rules"]),
         "sanban": raw["sanban"],
@@ -141,6 +196,21 @@ def build_data() -> dict:
         ],
         "suits": raw["suits"],
     })
+
+
+def data_uri(relative: str) -> str:
+    """Reads an asset and returns it as a data: URI.
+
+    The page has to be ONE file - Cameron opens it from a link on a phone,
+    with no server to fetch a second request from - so the card frames are
+    carried inside it rather than referenced. They are the only art the page
+    has; everything else is still a labelled placeholder block.
+    """
+    path = ASSET_DIR / relative
+    if not path.exists():
+        sys.exit(f"Missing {path}")
+    encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+    return f"data:image/png;base64,{encoded}"
 
 
 def read_source(name: str) -> str:
@@ -161,6 +231,8 @@ def main() -> int:
     page = read_source("index.html")
     for marker, replacement in [
         ("/*{{DATA}}*/ {}", data_json),
+        ("/*{{FRAME_FRONT}}*/", data_uri("cards/frame_front_shoji.png")),
+        ("/*{{FRAME_BACK}}*/", data_uri("cards/frame_back_shoji.png")),
         ("/*{{ENGINE}}*/", read_source("engine.js")),
         ("/*{{TESTS}}*/", read_source("tests.js")),
         ("/*{{UI}}*/", read_source("ui.js")),
@@ -174,8 +246,9 @@ def main() -> int:
 
     size_kb = len(page.encode("utf-8")) / 1024
     print(f"  {OUTPUT.relative_to(REPO_ROOT)}  {size_kb:.0f} KB")
-    print(f"  {len(data['cards'])} cards, {len(data['playtest_level']['stages'])} stages, "
-          f"{len(data['journalists'])} reporters")
+    stages = sum(len(level["stages"]) for level in data["levels"])
+    print(f"  {len(data['cards'])} cards, {len(data['levels'])} levels, "
+          f"{stages} stages, {len(data['journalists'])} reporters")
     return 0
 
 

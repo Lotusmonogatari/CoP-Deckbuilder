@@ -101,6 +101,10 @@ const KNOWN_SPECIALS = [
   'buff_next_card_this_turn',
   'reveal_next_intent',
   'bonus_opp_minus_if_opp_gaffe',
+  'pierce_guard',
+  'bonus_if_self_gaffe_0',
+  'bonus_if_behind',
+  'discount_next_card_this_turn',
 ];
 
 function applySpecial(key, value, effect, context) {
@@ -148,6 +152,37 @@ function applySpecial(key, value, effect, context) {
         result.opp_minus += amount;
         result.flags.special_triggered = true;
       }
+      break;
+    case 'pierce_guard':
+      // C16, C42, C49: "Ignores N of the opponent's Guard."
+      //
+      // A flag rather than a number change: the guard is not spent by being
+      // ignored, so the battle has to take it off the opponent's bank BEFORE
+      // the attack and put it back after. Doing it here would either
+      // double-count or leave the bank wrong.
+      result.flags.pierce_guard = amount;
+      result.flags.special_triggered = true;
+      break;
+    case 'bonus_if_self_gaffe_0':
+      // C25, C29: the reward for a clean record, and the reason to keep one.
+      if (Math.trunc(context.self_gaffe || 0) === 0) {
+        result.self_plus += amount;
+        result.flags.special_triggered = true;
+      }
+      break;
+    case 'bonus_if_behind':
+      // C33, C53. Strictly behind: level pegging is not behind. A comeback
+      // card that also fired when you were even would fire most of the time.
+      if (Math.trunc(context.player_support || 0) < Math.trunc(context.opponent_support || 0)) {
+        result.self_plus += amount;
+        result.flags.special_triggered = true;
+      }
+      break;
+    case 'discount_next_card_this_turn':
+      // C36, the mirror of buff_next_card_this_turn: the battle spends it on
+      // the next card played and it does not survive the turn.
+      result.flags.next_card_discount = amount;
+      result.flags.special_triggered = true;
       break;
   }
 
@@ -443,6 +478,9 @@ class BattleState {
     this.opponent_block = 0;
     this.guard_cap = 5;
     this.next_card_bonus = 0;
+    // A discount a card left behind for the next one played this turn. It
+    // does not survive the turn.
+    this.next_card_discount = 0;
 
     this.gaffe = 0;
     this.gaffe_limit = 5;
@@ -460,6 +498,9 @@ class BattleState {
     this.cards_played_this_turn = 0;
 
     this.question_index = 0;
+    // How many of this turn's questions have been answered. A room can take
+    // more than one: the policy study session takes two.
+    this.questions_answered_this_turn = 0;
     this.pleased_boosters = [];
 
     this.opponent_index = 0;
@@ -648,22 +689,25 @@ class BattleEngine {
     const card = this._cards[cardId];
     if (!card) return refused("there is no card with the ID '" + cardId + "'");
 
-    const cost = int(card.cost, 0);
+    // A discount left behind by an earlier card this turn. Never below zero:
+    // a card cannot pay you to play it.
+    const cost = this.cardCost(card);
     if (cost > s.energy) return refused('not enough time left this turn');
 
-    const context = {
+    const context = Object.assign({
       affinity: this.affinityFor(card),
       segment_share: segmentShare(card, this._stage),
       kanban: int(this._meta.Reputation, 50),
       opponent_gaffe: s.opponent_gaffe,
       next_card_bonus: s.next_card_bonus,
-    };
+    }, this._standingContext());
     const effect = resolveCard(card, context);
 
     s.energy -= cost;
     s.hand.splice(s.hand.indexOf(cardId), 1);
     s.cards_played_this_turn += 1;
-    s.next_card_bonus = 0;
+    s.next_card_bonus = 0;     // a carried bonus is spent by the card using it
+    s.next_card_discount = 0;  // and so is a carried discount
 
     const applied = this._applyEffect(effect);
 
@@ -674,9 +718,16 @@ class BattleEngine {
 
     const flags = effect.flags || {};
     if (flags.next_card_bonus !== undefined) s.next_card_bonus = Math.trunc(flags.next_card_bonus);
+    if (flags.next_card_discount !== undefined) s.next_card_discount = Math.trunc(flags.next_card_discount);
     if (flags.reveal_next_intent) s.next_intent_revealed = true;
 
-    if (this._questions.length > 0) this._answerQuestion(card);
+    // A room can take more than one question a turn — the policy study
+    // session takes two. Cards played past the quota still do everything
+    // else they do; they just are not answers.
+    if (this._questions.length > 0 && s.questions_answered_this_turn < this._questionsPerTurn()) {
+      this._answerQuestion(card);
+      s.questions_answered_this_turn += 1;
+    }
 
     // Who was in front of us before the outcome was checked. A card that
     // finishes a debater changes the whole room underneath the player, and
@@ -709,11 +760,22 @@ class BattleEngine {
     // Arguing the opposition down is an attack, so their guard is the first
     // thing it meets and what it absorbs is spent. Until now this went
     // straight through and their "Guarding" intent did nothing at all.
+    //
+    // Piercing IGNORES guard rather than spending it, so the pierced amount
+    // is lifted off the bank before the attack lands and put back afterwards.
+    // Subtracting it for real would let one pierce card strip a guard the
+    // card never claimed to remove.
     const oppMinus = int(effect.opp_minus, 0);
+    const pierced = Math.min(int((effect.flags || {}).pierce_guard, 0), s.opponent_block);
+    s.opponent_block -= pierced;
+
     const stopped = Math.min(s.opponent_block, oppMinus);
     s.opponent_block -= stopped;
+    applied.guard_pierced = pierced;
     applied.guard_stopped = stopped;
     applied.opponent_lost = s.bar.opponentLoses(oppMinus - stopped);
+
+    s.opponent_block += pierced;
 
     // Guard goes into a bank, so what is reported is what actually fitted.
     const beforeGuard = s.block;
@@ -722,8 +784,14 @@ class BattleEngine {
 
     // The gaffe meter never goes below zero, so an apology on a clean record
     // is wasted rather than banked.
+    //
+    // A stage can make a slip cost double — the media ambush does. Only a
+    // gaffe GAINED is multiplied: an apology should not be worth less in a
+    // hard room than an easy one.
+    let gaffe = int(effect.gaffe, 0);
+    if (gaffe > 0) gaffe *= this._gaffeMultiplier();
     const beforeGaffe = s.gaffe;
-    s.gaffe = Math.max(s.gaffe + int(effect.gaffe, 0), 0);
+    s.gaffe = Math.max(s.gaffe + gaffe, 0);
     applied.gaffe = s.gaffe - beforeGaffe;
 
     applied.drawn = this._draw(int(effect.draw, 0));
@@ -757,9 +825,28 @@ class BattleEngine {
 
     // Guard is NOT cleared here. It is a bank now: it stays until something
     // takes it, so a quiet turn spent guarding is still worth something.
+
+    // A question left unanswered when the turn ends is a question declined.
+    // Passing is not the only way to duck one now that a turn can hold more
+    // cards than it holds questions.
+    if (this._questions.length > 0 && !passed) {
+      const unanswered = this._questionsPerTurn() - s.questions_answered_this_turn;
+      for (let i = 0; i < Math.max(unanswered, 0); i++) {
+        if (!this.currentQuestion()) break;
+        this._declineQuestion();
+      }
+    }
+
+    // A lobbyist's interest cools while you talk, whatever you said.
+    if (this._affinityDecay() > 0 && s.bar !== null && !s.isOver()) {
+      s.bar.playerLoses(this._affinityDecay());
+    }
+
     s.next_card_bonus = 0;
+    s.next_card_discount = 0;
     s.next_intent_revealed = false;
     s.cards_played_this_turn = 0;
+    s.questions_answered_this_turn = 0;
 
     const wasFacing = s.opponent_index;
     const beaten = this.currentOpponent();
@@ -787,6 +874,41 @@ class BattleEngine {
 
   // What saying nothing costs. One energy, from rules.json.
   _passCost() { return int(this._rules.pass_energy_penalty, 1); }
+
+  // How many questions this room asks in a turn.
+  //
+  // A press conference asks one, a policy study session two. Before this
+  // every CARD answered a question, so three energy could burn through three
+  // reporters in a single turn.
+  _questionsPerTurn() { return Math.max(int(this._stage.questions_per_turn, 1), 1); }
+
+  // What a slip costs here. Doubled in a media ambush.
+  _gaffeMultiplier() { return Math.max(int(this._stage.gaffe_multiplier, 1), 1); }
+
+  // How much of a lobbyist's interest cools each turn, whatever you say.
+  _affinityDecay() { return Math.max(int(this._stage.affinity_decay, 0), 0); }
+
+  // What this card costs right now, after any discount a card left behind.
+  //
+  // Public because the hand has to show it: a card whose face says 2 and
+  // then charges 1 is a screen the player stops trusting, and so is the
+  // reverse. Floors at zero — a card cannot pay you to play it.
+  cardCost(card) {
+    return Math.max(int(card.cost, 0) - this.state.next_card_discount, 0);
+  }
+
+  // Where the player stands, for the effects that care.
+  //
+  // Read fresh each time rather than cached: "if you trail the opponent" has
+  // to mean the moment the card is played, not the moment the hand was dealt.
+  _standingContext() {
+    const s = this.state;
+    return {
+      self_gaffe: s.gaffe,
+      player_support: s.bar === null ? 0 : s.bar.player,
+      opponent_support: s.bar === null ? 0 : s.bar.opponent,
+    };
+  }
 
   // The price of a turn spent saying nothing.
   //
@@ -830,6 +952,12 @@ class BattleEngine {
 
     s.declined_questions += 1;
     s.question_index += 1;
+
+    // In an ambush there is nowhere to go. Ducking one question ends it,
+    // which is the whole character of the stage.
+    if (bool(this._stage.decline_ends_stage, false)) {
+      this._finish('loss', 'You walked away from the question. That is the story now.');
+    }
   }
 
   _resolveIntent(intent) {
@@ -976,6 +1104,19 @@ class BattleEngine {
 
     if (this._sequenceMode === 'reset') {
       this._resetForNewBout();
+    } else if (this._sequenceMode === 'stream') {
+      // A town hall: the clock and your record carry across the queue, but
+      // each new face is a fresh three energy. Neither of the other two
+      // modes does that — "reset" would wipe the gaffes you have earned, and
+      // "continuous" would leave you empty-handed in front of somebody who
+      // has not heard you speak yet.
+      s.energy = s.energy_per_turn;
+      s.energy_max = s.energy_per_turn;
+      if (s.bar) {
+        s.bar = this._buildBar(
+          int(this._stage.player_start, 0),
+          int(this._stage.opp_start, 0));
+      }
     } else if (s.bar) {
       s.bar = this._buildBar(
         int(this._stage.player_start, 0),
@@ -989,6 +1130,7 @@ class BattleEngine {
     s.block = 0;
     s.opponent_block = 0;
     s.next_card_bonus = 0;
+    s.next_card_discount = 0;
     s.next_intent_revealed = false;
     s.cards_played_this_turn = 0;
     s.turn = 1;
@@ -1050,7 +1192,11 @@ class BattleEngine {
   // produced is the tone and the organisations pleased. The count of
   // unanswered questions is recorded rather than judged.
   _conferenceClosing(ranOutOfCards) {
-    const lines = ['The press conference concludes.'];
+    // Named from the stage, because a policy study session and a lobbyist
+    // meeting both run on questions and neither of them is a press
+    // conference. It said so anyway until a playtest read it.
+    const what = str(this._stage.name_en, '').trim();
+    const lines = [(what || 'It') + ' concludes.'];
     if (ranOutOfCards) {
       lines.push('The questions ran on, but there was nothing left to say.');
     }
@@ -1067,13 +1213,13 @@ class BattleEngine {
   // playtest reported this as the card not working, which is what happens
   // when a screen shows a promise the rules do not keep.
   preview(card) {
-    const effect = resolveCard(card, {
+    const effect = resolveCard(card, Object.assign({
       affinity: this.affinityFor(card),
       segment_share: segmentShare(card, this._stage),
       kanban: int(this._meta.Reputation, 50),
       opponent_gaffe: this.state.opponent_gaffe,
       next_card_bonus: this.state.next_card_bonus,
-    });
+    }, this._standingContext()));
 
     const reduceCounts = !this.state.bar || !this.state.bar.reduceDoesNothing();
     const guardCounts = this._intents !== null;
@@ -1410,6 +1556,13 @@ function applyScoreEffects(meta, stage, score, sanbanRows) {
 // so a screen can never offer what the rules would refuse and the refusal
 // the player reads is the rules' own words.
 
+// The tier a player owns from the first moment, named once.
+//
+// It was "Starter" until the 2026-09-21 card slate renamed the tiers to 0-3.
+// Several places checked that string; now they ask here instead, so the next
+// rename is one line. Mirrors Ledger.OPENING_TIER.
+const OPENING_TIER = '0';
+
 function cardCost(card) { return int(card.xp_to_unlock, 0); }
 
 function cardRefusal(card, owned, xp) {
@@ -1489,10 +1642,46 @@ function deckRefusal(deck, owned, balance) {
   return '';
 }
 
+// Every opening-tier card first — those are yours from the beginning and
+// there is one per suit. The 2026-09-21 slate has six of them against a deck
+// of twelve, so the rest is filled a suit at a time from the next tiers up,
+// lowest card ID first.
+//
+// That fill is a SUGGESTION, not a design decision: it keeps all six suits
+// represented so a first battle is playable, and the deck screen exists
+// precisely so the player changes it.
 function openingDeck(cards, balance) {
-  const deck = cards.filter(c => str(c.tier, '') === 'Starter').map(c => str(c.card_id, ''));
   const wanted = deckSize(balance);
-  return deck.length > wanted ? deck.slice(0, wanted) : deck;
+  const deck = cards
+    .filter(c => str(c.tier, '') === OPENING_TIER)
+    .map(c => str(c.card_id, ''));
+
+  if (deck.length > wanted) return deck.slice(0, wanted);
+
+  // Round-robin by suit, so the fill cannot hand out six cards of one
+  // element and none of another.
+  const suits = [];
+  for (const card of cards) {
+    const suit = str(card.suit, '');
+    if (suit && !suits.includes(suit)) suits.push(suit);
+  }
+
+  while (deck.length < wanted) {
+    let added = false;
+    for (const suit of suits) {
+      if (deck.length >= wanted) break;
+      for (const card of cards) {
+        const cardId = str(card.card_id, '');
+        if (str(card.suit, '') !== suit || deck.includes(cardId)) continue;
+        deck.push(cardId);
+        added = true;
+        break;
+      }
+    }
+    if (!added) break;   // every card there is, is already in
+  }
+
+  return deck;
 }
 
 // ---------------------------------------------------------------------------
@@ -1607,7 +1796,7 @@ function cardTable(data) {
 }
 
 function starterDeck(data) {
-  return data.cards.filter(c => c.tier === 'Starter').map(c => c.card_id);
+  return data.cards.filter(c => str(c.tier, '') === OPENING_TIER).map(c => c.card_id);
 }
 
 function affinityTable(data) {
@@ -1651,7 +1840,7 @@ function withAudience(data, stage) {
 }
 
 // `owned` is the run's state: { deck, modifiers }. Absent in a standalone
-// battle, which then deals the Starter twelve and no backing.
+// battle, which then deals the opening twelve and no backing.
 function forPlaytestStage(data, stage, buffs, meta, seed, owned) {
   buffs = buffs || {};
   owned = owned || {};

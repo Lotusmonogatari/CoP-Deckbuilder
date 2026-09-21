@@ -476,7 +476,8 @@ function runRuleChecks(data) {
   function pressConfig(overrides) {
     return config(Object.assign({
       stage: stage({
-        stage_id: 'PT_S2', draw_mode: 'none', opening_hand: 6,
+        stage_id: 'PT_S2', name_en: 'Press Conference',
+        draw_mode: 'none', opening_hand: 6,
         bar_max: 100, player_start: 45, opp_start: 45, gaffe_limit: 4,
         turn_limit: 0,
         questions: [
@@ -545,12 +546,18 @@ function runRuleChecks(data) {
   });
 
   check('running out of questions ends the conference', () => {
+    // One question a turn, so answering both takes two turns. A card is
+    // held back so that what ends the stage is the questions running out
+    // rather than the hand running dry.
     const engine = new BattleEngine();
     engine.setup(pressConfig());
-    engine.state.hand = ['GAIN3', 'GAIN3', 'GAIN3'];
+    engine.state.hand = ['GAIN3', 'GAIN3', 'GUARD5'];
     engine.playCard('GAIN3');
+    ok(!engine.state.isOver(), 'one question left');
+
+    engine.endTurn();
     engine.playCard('GAIN3');
-    ok(engine.state.isOver());
+    ok(engine.state.isOver(), 'and now none');
     eq(engine.state.outcome, 'win', 'it is not a stage you lose on points');
   });
 
@@ -705,9 +712,42 @@ function runRuleChecks(data) {
 
   check('the starter deck comes from the workbook', () => {
     const deck = starterDeck(data);
-    ok(deck.length > 0, 'there are Starter-tier cards');
+    ok(deck.length > 0, 'there are opening-tier cards');
     for (const cardId of deck) {
       ok(cardTable(data)[cardId] !== undefined, cardId + ' is a real card');
+    }
+  });
+
+  check('every stage of every level can be set up', () => {
+    // The stage types were merged into the levels by the BUILD SCRIPT
+    // (tools/build_web_playtest.py resolve_type), so what the page holds is
+    // already a plain stage. If that merge ever drops a field, a stage fails
+    // to start here rather than in front of a player.
+    let checked = 0;
+    for (const level of data.levels) {
+      const runner = new LevelRunner(level);
+      ok(runner.stageCount() > 0, level.level_id + ' has no stages');
+      for (const st of runner.stages) {
+        const engine = new BattleEngine();
+        ok(engine.setup(forPlaytestStage(data, st, {}, null, 1)),
+          level.level_id + ' ' + st.stage_id + ' starts: ' + engine.setupProblems.join('; '));
+        checked += 1;
+      }
+    }
+    eq(checked, 24, 'six levels, twenty-four stages');
+  });
+
+  check('every level names a stage type that exists', () => {
+    // A row that named a type the build script could not find would have
+    // stopped the build, so this is really asking the opposite: that the
+    // merge left every stage with the things a stage needs.
+    for (const level of data.levels) {
+      for (const st of level.stages) {
+        ok(str(st.stage_id, '') !== '', level.level_id + ' has a stage with no ID');
+        ok(str(st.name_en, '') !== '', st.stage_id + ' has no name');
+        ok(str(st.affinity_stage_id, '') !== '',
+          st.stage_id + ' has no room for affinity to read');
+      }
     }
   });
 
@@ -722,12 +762,206 @@ function runRuleChecks(data) {
   });
 
   check('every question can be answered in the suit it invites', () => {
-    const suits = data.cards.filter(c => c.tier === 'Starter').map(c => c.suit);
+    const suits = data.cards.filter(c => str(c.tier, '') === OPENING_TIER).map(c => c.suit);
     const press = data.playtest_level.stages.find(s => s.stage_id === 'PT_S2');
     for (const question of press.questions) {
       ok(suits.includes(question.prefers_suit),
-        question.id + ' invites ' + question.prefers_suit + ' and no Starter card is that suit');
+        question.id + ' invites ' + question.prefers_suit + ' and no opening card is that suit');
     }
+  });
+
+  // --- the four specials the 2026-09-21 card slate introduced --------------
+  // Ported from tests/test_battle_engine.gd.
+
+  check('piercing ignores guard without spending it', () => {
+    // The distinction that matters: a pierced guard is bypassed, not
+    // removed. Subtracting it for real would let one card strip protection
+    // it never claimed to take.
+    const engine = started({ opponent: { opp_id: 'T', name: 'T', intent_pattern: [['block', 1]] } });
+    engine.state.opponent_block = 5;
+    engine._cards.PIERCE = card({
+      card_id: 'PIERCE', opp_minus: 4, special: 'pierce_guard', special_value: 3,
+    });
+    engine.state.hand = ['PIERCE'];
+    engine.state.energy = 3;
+
+    const applied = engine.playCard('PIERCE').applied;
+    eq(applied.guard_pierced, 3, 'three of the five were ignored');
+    eq(applied.guard_stopped, 2, 'the other two still stopped what they could');
+    eq(applied.opponent_lost, 2, 'so two of the four got through');
+    eq(engine.state.opponent_block, 3,
+      'the pierced three are still theirs; only the two that worked were spent');
+  });
+
+  check('piercing more than they have is not a bonus', () => {
+    const engine = started({ opponent: { opp_id: 'T', name: 'T', intent_pattern: [['block', 1]] } });
+    engine.state.opponent_block = 1;
+    engine._cards.PIERCE = card({
+      card_id: 'PIERCE', opp_minus: 3, special: 'pierce_guard', special_value: 9,
+    });
+    engine.state.hand = ['PIERCE'];
+    engine.state.energy = 3;
+
+    const applied = engine.playCard('PIERCE').applied;
+    eq(applied.guard_pierced, 1, 'you cannot pierce guard they do not have');
+    eq(applied.opponent_lost, 3, 'and the whole attack lands');
+  });
+
+  check('a clean record pays off', () => {
+    const engine = started();
+    const c = card({
+      card_id: 'CLEAN', self_plus: 5, special: 'bonus_if_self_gaffe_0', special_value: 2,
+    });
+    engine.state.gaffe = 0;
+    eq(engine.preview(c).self_plus, 7, '5 plus the 2 for a clean record');
+    engine.state.gaffe = 1;
+    eq(engine.preview(c).self_plus, 5, 'one slip and the bonus is gone');
+  });
+
+  check('trailing the opponent pays off', () => {
+    const engine = started();
+    const c = card({
+      card_id: 'BEHIND', self_plus: 3, special: 'bonus_if_behind', special_value: 3,
+    });
+    engine.state.bar.player = 30;
+    engine.state.bar.opponent = 50;
+    eq(engine.preview(c).self_plus, 6, 'behind, so the comeback fires');
+
+    engine.state.bar.player = 50;
+    eq(engine.preview(c).self_plus, 3, 'level pegging is not behind');
+
+    engine.state.bar.player = 60;
+    eq(engine.preview(c).self_plus, 3, 'and ahead is certainly not behind');
+  });
+
+  check('a discount makes the next card cheaper', () => {
+    const engine = started();
+    engine._cards.QUIET = card({
+      card_id: 'QUIET', cost: 1, self_plus: 2,
+      special: 'discount_next_card_this_turn', special_value: 1,
+    });
+    engine.state.hand = ['QUIET', 'GAIN3'];
+    engine.state.energy = 3;
+
+    engine.playCard('QUIET');
+    eq(engine.state.next_card_discount, 1);
+    eq(engine.cardCost(engine._cards.GAIN3), 0,
+      'a cost-1 card is free while the discount is up');
+
+    engine.playCard('GAIN3');
+    eq(engine.state.next_card_discount, 0, 'and the discount is spent by the card using it');
+  });
+
+  check('a discount cannot pay you to play', () => {
+    const engine = started();
+    engine.state.next_card_discount = 5;
+    eq(engine.cardCost(card({ card_id: 'FREE2', cost: 1 })), 0, 'floored at nothing');
+  });
+
+  check('a discount does not survive the turn', () => {
+    const engine = started();
+    engine.state.next_card_discount = 1;
+    engine.endTurn();
+    eq(engine.state.next_card_discount, 0);
+  });
+
+  // --- the stage levers Cameron's Levels Design Scheme introduced ----------
+
+  function questionsConfig(overrides) {
+    const c = pressConfig();
+    c.stage = Object.assign({}, c.stage, overrides || {});
+    return c;
+  }
+
+  check('a turn presents one question however many cards you play', () => {
+    // Before this, three energy could burn through three reporters in a
+    // single turn. A conference is paced by the room, not by your hand.
+    const engine = started(questionsConfig({ questions_per_turn: 1 }));
+    const before = engine.questionsRemaining();
+    engine.state.hand = ['GAIN3', 'GAIN3'];
+    engine.state.energy = 3;
+    engine.playCard('GAIN3');
+    engine.playCard('GAIN3');
+    eq(engine.questionsRemaining(), before - 1,
+      'the second card played, but no reporter was waiting for it');
+  });
+
+  check('a study session asks two a turn', () => {
+    const engine = started(questionsConfig({ questions_per_turn: 2 }));
+    const before = engine.questionsRemaining();
+    engine.state.hand = ['GAIN3', 'GAIN3'];
+    engine.state.energy = 3;
+    engine.playCard('GAIN3');
+    engine.playCard('GAIN3');
+    eq(engine.questionsRemaining(), before - 2);
+  });
+
+  check('a question left hanging at the end of a turn is declined', () => {
+    const engine = started(questionsConfig({ questions_per_turn: 2, decline_tone_cost: 3 }));
+    // A card held back: a conference ends the moment the player has nothing
+    // left to say, and this one is not finished.
+    engine.state.hand = ['GAIN3', 'GUARD5'];
+    engine.state.energy = 1;
+    engine.playCard('GAIN3');
+    engine.endTurn();
+    eq(engine.state.declined_questions, 1, 'the second went unanswered');
+  });
+
+  check('a gaffe costs double in an ambush', () => {
+    const engine = started(questionsConfig({ gaffe_multiplier: 2 }));
+    engine.state.hand = ['GAFFE2'];
+    engine.state.energy = 3;
+    engine.playCard('GAFFE2');
+    eq(engine.state.gaffe, 4, 'two on the card, four in this room');
+  });
+
+  check('an apology is not worth less in a hard room', () => {
+    // Only a gaffe gained is doubled. Multiplying a reduction would make the
+    // ambush easier to clean up in than an ordinary conference.
+    const engine = started(questionsConfig({ gaffe_multiplier: 2 }));
+    engine.state.gaffe = 3;
+    engine._applyEffect({ gaffe: -2 });
+    eq(engine.state.gaffe, 1);
+  });
+
+  check('ducking a question ends an ambush', () => {
+    const engine = started(questionsConfig({ decline_ends_stage: true, decline_tone_cost: 0 }));
+    engine.endTurn();               // played nothing, so the question is ducked
+    ok(engine.state.isOver());
+    eq(engine.state.outcome, LOST);
+    ok(engine.state.outcome_reason.includes('walked away'), engine.state.outcome_reason);
+  });
+
+  check("a lobbyist's interest cools every turn", () => {
+    const engine = started(questionsConfig({ affinity_decay: 5, decline_tone_cost: 0 }));
+    const before = engine.state.bar.player;
+    engine.state.hand = ['GAIN3', 'GUARD5'];
+    engine.state.energy = 1;
+    engine.playCard('GAIN3');       // +3 on the bar
+    engine.endTurn();               // then 5 off, whatever was said
+    eq(engine.state.bar.player, before + 3 - 5, 'the clock is working against you');
+  });
+
+  check('a town hall keeps the clock but refreshes the energy', () => {
+    const engine = started({
+      stage: stage({ stage_id: 'TOWNHALL', sequence_mode: 'stream', win_threshold: 45, turn_limit: 12 }),
+      opponents: [
+        { opp_id: 'A', name: 'A farmer', intent_pattern: [['block', 1]] },
+        { opp_id: 'B', name: 'A shopkeeper', intent_pattern: [['block', 1]] },
+      ],
+    });
+
+    engine.state.gaffe = 2;
+    engine.state.turn = 6;
+    engine.state.energy = 0;
+    engine.state.bar.player = 45;
+    engine._checkOutcome(false);
+
+    eq(engine.currentOpponent().name, 'A shopkeeper', 'the queue moved on');
+    eq(engine.state.gaffe, 2, 'your record follows you down the queue');
+    eq(engine.state.turn, 6, 'and so does the clock');
+    eq(engine.state.energy, engine.state.energy_per_turn,
+      'but the next person gets your full attention');
   });
 
   check('declining cools the room', () => {
@@ -742,13 +976,18 @@ function runRuleChecks(data) {
     eq(engine.state.declined_questions, 1);
   });
 
-  check('the closing line says the conference concluded', () => {
+  check('the closing line names the stage it closed', () => {
+    // Named from the stage, because a policy study session and a lobbyist
+    // meeting both run on questions and neither of them is a press
+    // conference. It said so anyway until a playtest read it.
     const engine = new BattleEngine();
     engine.setup(pressConfig());
-    engine.state.hand = ['GAIN3', 'GAIN3', 'GAIN3'];
+    engine.state.hand = ['GAIN3', 'GAIN3', 'GUARD5'];
     engine.playCard('GAIN3');
+    engine.endTurn();
     engine.playCard('GAIN3');
-    ok(engine.state.outcome_reason.includes('The press conference concludes.'));
+    ok(engine.state.outcome_reason.includes('Press Conference concludes.'),
+      engine.state.outcome_reason);
   });
 
   check('a card that does nothing here says so', () => {
@@ -1014,13 +1253,35 @@ function runRuleChecks(data) {
     eq(deckRefusal(['C0', 'NOPE'], ['C0'], BAL), 'NOPE is not yours.');
   });
 
-  check('a new run opens with the starter cards', () => {
+  check('a new run opens with the opening-tier cards', () => {
+    // Twelve wanted, two at the opening tier, so the rest is filled a suit
+    // at a time from the tiers above. The opening two come first.
     const cards = [
-      { card_id: 'S1', tier: 'Starter' },
-      { card_id: 'T1', tier: 'Tier 1' },
-      { card_id: 'S2', tier: 'Starter' },
+      { card_id: 'S1', tier: OPENING_TIER, suit: 'Earnest' },
+      { card_id: 'T1', tier: '1', suit: 'Earnest' },
+      { card_id: 'S2', tier: OPENING_TIER, suit: 'Appeal' },
+      { card_id: 'T2', tier: '1', suit: 'Appeal' },
     ];
-    eq(openingDeck(cards, BAL).join(','), 'S1,S2', 'the bought cards are not yours yet');
+    const deck = openingDeck(cards, BAL);
+    eq(deck.slice(0, 2).join(','), 'S1,S2', 'the opening tier is dealt first');
+    eq(deck.length, 4, 'and the fill stops when there is nothing left to add');
+  });
+
+  check('the fill keeps every suit represented', () => {
+    // Six suits, one opening card each, twelve wanted. The fill must not
+    // hand out six more of one element and none of another.
+    const cards = [];
+    const suits = ['Earnest', 'Emotional', 'Appeal', 'Data Driven', 'Divisive', 'Duplicitous'];
+    for (const suit of suits) {
+      cards.push({ card_id: 'O' + suit, tier: OPENING_TIER, suit: suit });
+      for (let i = 0; i < 4; i++) cards.push({ card_id: 'X' + suit + i, tier: '1', suit: suit });
+    }
+    const deck = openingDeck(cards, BAL);
+    eq(deck.length, 12);
+    const byId = Object.fromEntries(cards.map(c => [c.card_id, c]));
+    for (const suit of suits) {
+      eq(deck.filter(id => byId[id].suit === suit).length, 2, suit + ' is in twice');
+    }
   });
 
   // --- what backing does, ported from tests/test_modifier_effects.gd -------

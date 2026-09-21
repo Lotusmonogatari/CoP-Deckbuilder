@@ -9,6 +9,10 @@
 
 const DATA = window.COP_DATA;
 
+// PLAYTEST SETTING, mirroring GameState.open_collection in the Godot build.
+// See where ownedCards is built, below, for what it is for.
+const OPEN_COLLECTION = true;
+
 const el = (tag, className, text) => {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -48,9 +52,21 @@ const run = {
   xp: 0,
   // What you own and what you are taking in. The deck is a fixed size, so
   // unlocking a card means leaving another out.
-  ownedCards: DATA.cards.filter(c => c.tier === 'Starter').map(c => c.card_id),
+  //
+  // OPEN_COLLECTION is a playtest setting, matching GameState.open_collection
+  // in the Godot build: true hands you every card in the workbook from the
+  // first moment. Cameron asked for the XP and Yen economy to be left aside
+  // while he prices it by playing, and an unreachable card cannot be
+  // playtested. Set it false and the collection starts at the opening tier
+  // again; nothing else changes, because the Ledger still refuses anything
+  // unaffordable.
+  ownedCards: DATA.cards
+    .filter(c => OPEN_COLLECTION || str(c.tier, '') === OPENING_TIER)
+    .map(c => c.card_id),
   deck: openingDeck(DATA.cards, DATA.balance || {}),
   ownedModifiers: [],
+  // The level picked in the Office, and the one a briefing describes.
+  chosenLevel: null,
   engine: null,
   stage: null,
   selected: null,
@@ -132,9 +148,9 @@ function showOffice() {
   standing.append(grid);
   root.append(standing);
 
-  const start = el('button', 'primary', 'Start ' + DATA.playtest_level.name_en);
+  const start = el('button', 'primary', 'Go to the House');
   start.id = 'start-level';
-  start.addEventListener('click', showBriefing);
+  start.addEventListener('click', showLevels);
   root.append(start);
 
   // What there is to spend, and whether the deck is legal. A shop you have
@@ -173,6 +189,50 @@ function lastLevelReport() {
   return 'The bill failed. There will be questions.';
 }
 
+// Which level to play. Six of them now, grouped by tier.
+//
+// Tier 1 and 2 are bought with XP in the finished game; while Cameron prices
+// the economy by playing, every level is simply open. Mirrors
+// OfficeScreen._show_levels.
+function showLevels() {
+  overlay('Levels', sheet => {
+    sheet.append(el('p', 'detail-line', 'Each level is a run of stages. Pick '
+      + 'one and you will see what it holds before you commit.'));
+
+    const byTier = {};
+    for (const level of DATA.levels) {
+      const tier = int(level.tier, 0);
+      (byTier[tier] = byTier[tier] || []).push(level);
+    }
+
+    for (const tier of [0, 1, 2]) {
+      if (!byTier[tier]) continue;
+      sheet.append(el('h2', 'org-tier', 'Tier ' + tier));
+      for (const level of byTier[tier]) sheet.append(levelRow(level, sheet));
+    }
+  });
+}
+
+function levelRow(level, sheet) {
+  const box = el('div', 'level-row');
+  const count = (level.stages || []).length;
+
+  box.append(el('p', 'detail-line',
+    str(level.name_en, '') + '  ' + str(level.name_jp, '')));
+  box.append(el('p', 'org-boosts',
+    count + ' stage' + (count === 1 ? '' : 's') + '  ·  ' + str(level.blurb, '')));
+
+  const button = el('button', 'ghost', 'Look it over');
+  button.className = 'ghost level-pick';
+  button.addEventListener('click', () => {
+    run.chosenLevel = level;
+    sheet.closest('.backdrop').remove();
+    showBriefing();
+  });
+  box.append(button);
+  return box;
+}
+
 // What the level ahead is worth, before committing to it.
 //
 // Cameron asked for the STATIC values: what a stage pays flat for being won.
@@ -183,10 +243,13 @@ function lastLevelReport() {
 // so in words. Four zeroes would read as "this level is worthless"; "not set
 // yet" is the truth, and it is Cameron's to set.
 function showBriefing() {
-  overlay('Before you go in', sheet => {
+  const level = run.chosenLevel;
+  if (!level) { showLevels(); return; }
+
+  overlay(level.name_en, sheet => {
     let anythingSet = false;
 
-    for (const stage of DATA.playtest_level.stages) {
+    for (const stage of level.stages) {
       sheet.append(el('h2', 'org-tier', stage.name_en));
 
       const who = opponentsLine(stage);
@@ -232,9 +295,12 @@ function showBriefing() {
     });
     sheet.append(go);
 
-    const back = el('button', 'ghost', 'Back');
+    const back = el('button', 'ghost', 'Pick another');
     back.id = 'briefing-back';
-    back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+    back.addEventListener('click', () => {
+      sheet.closest('.backdrop').remove();
+      showLevels();
+    });
     sheet.append(back);
   });
 }
@@ -254,7 +320,7 @@ function opponentsLine(stage) {
 }
 
 function startLevel() {
-  run.runner = new LevelRunner(DATA.playtest_level);
+  run.runner = new LevelRunner(run.chosenLevel);
   run.lastLevelOutcome = '';
   run.lastMetaChange = {};
   run.lastBoosterChange = {};
@@ -710,20 +776,61 @@ function cardFace(card, s) {
   const face = el('button', 'card');
   face.dataset.cardId = card.card_id;
   face.classList.add('suit-' + card.suit.toLowerCase().replace(/\s+/g, '-'));
-  if (Number(card.cost) > s.energy) face.classList.add('unaffordable');
+  if (run.engine.cardCost(card) > s.energy) face.classList.add('unaffordable');
 
   // What it will do HERE, not what it says on paper. The room moves the
   // numbers, and in some rooms a number does nothing at all.
   const effect = run.engine.preview(card);
   if (effect.does_nothing) face.classList.add('useless');
 
-  face.append(el('span', 'card-cost', String(Math.trunc(card.cost))));
+  // The plate goes UNDER the frame: the picture window is a hole in an
+  // otherwise opaque PNG, so anything laid beneath shows through exactly the
+  // hole and cannot spill over the border the artwork draws around it.
+  face.append(el('span', 'card-plate'));
+  face.append(el('span', 'card-frame'));
+  // And the cost disc goes OVER it, because that hole is the game's to fill.
+  face.append(el('span', 'card-cost', String(run.engine.cardCost(card))));
   face.append(el('span', 'card-name', card.name_en));
-  if (card.name_jp) face.append(el('span', 'jp card-jp', card.name_jp));
+  if (card.name_jp) face.append(el('span', 'card-jp', card.name_jp));
   face.append(el('span', 'card-text', effectHere(effect, card)));
+  face.append(el('span', 'card-band'));
 
   face.addEventListener('click', () => showCardZoom(card));
   return face;
+}
+
+// A card turned over: the same frame's back, with everything the front had
+// no room for written on its ruled paper.
+//
+// Mirrors scripts/ui/CardBackView.gd. The line height is set in CSS to one
+// rule exactly, so every line lands between two of them — text that does not
+// know where the rules are sits ON them and reads as a mistake.
+function cardBack(card, here, room) {
+  const box = el('div', 'card-back');
+  box.append(el('span', 'card-frame'));
+
+  const text = el('p', 'card-back-text');
+  const line = (html) => { const n = el('span'); n.innerHTML = html; text.append(n, el('br')); };
+  const safe = (value) => String(value === undefined || value === null ? '' : value)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  line('<b>' + safe(card.name_en) + '</b>');
+  if (card.name_jp) {
+    line('<span class="faint">' + safe(card.name_jp) + '  ' + safe(card.romaji) + '</span>');
+  }
+  line(safe(card.suit) + ' · ' + safe(card.type) + ' · costs ' + run.engine.cardCost(card));
+  line(safe(card.effect_text));
+  if (here && here !== String(card.effect_text || '')) {
+    line('<b>In this room:</b> ' + safe(here));
+  }
+  if (room) line('<span class="faint">' + safe(room) + '</span>');
+
+  box.append(text);
+
+  const band = el('span', 'card-band');
+  box.classList.add('suit-' + String(card.suit).toLowerCase().replace(/\s+/g, '-'));
+  box.append(band);
+  return box;
 }
 
 // A card's numbers as this room will actually use them. Showing the printed
@@ -978,17 +1085,12 @@ function showCardZoom(card) {
   const affinity = run.engine.affinityFor(card);
 
   overlay(card.name_en, sheet => {
-    const meta = el('p', 'zoom-meta', card.suit + ' · ' + card.type
-      + ' · ' + Math.trunc(card.cost) + ' energy');
-    sheet.append(meta);
-    if (card.name_jp) sheet.append(el('p', 'jp', card.name_jp + '  ' + (card.romaji || '')));
-    sheet.append(placeholderArt(card.card_id, '120px'));
-    sheet.append(el('p', 'zoom-text', card.effect_text || ''));
-    sheet.append(el('p', 'zoom-room', describeRoomFor(affinity)));
+    sheet.append(cardBack(card, effectHere(run.engine.preview(card), card),
+      describeRoomFor(affinity)));
 
     const play = el('button', 'primary', 'Play');
     play.id = 'zoom-play';
-    play.disabled = Number(card.cost) > s.energy || s.isOver();
+    play.disabled = run.engine.cardCost(card) > s.energy || s.isOver();
     play.addEventListener('click', () => {
       document.querySelectorAll('.backdrop').forEach(n => n.remove());
       const who = opponentDisplayName();
