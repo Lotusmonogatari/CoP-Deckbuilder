@@ -24,7 +24,7 @@ const REQUIRED_FILES := [
 	"committee", "intent_patterns", "journalists", "levels", "lists",
 	"modifier_effects", "modifiers", "modules", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
-	"sounds", "stage_types",
+	"sounds", "stage_types", "strings",
 	"segments", "stages", "suits", "yoron",
 ]
 
@@ -80,6 +80,11 @@ var journalists: Array = []
 ## Every sound is blank so far, so the game ships silent.
 var sounds: Dictionary = {}
 var speech: Dictionary = {}
+
+## Every line the game says to the player, by key, from the workbook's Text
+## tab. Flattened to key -> English here so nothing downstream has to know
+## the sheet has a Where or a Notes column. Text.gd hands these out.
+var strings: Dictionary = {}
 
 ## How standing with the ten organisations works: where it starts, what it
 ## is bounded by, and what pleasing one is worth. Hand-written.
@@ -154,6 +159,7 @@ func load_all() -> void:
 			"player": player = content
 
 			"journalists": journalists = _list_under(content, file_name, "journalists")
+			"strings": strings = _strings_by_key(content)
 			"sounds":
 				sounds = _map_under(content, file_name, "sounds")
 				speech = _map_under(content, file_name, "speech")
@@ -291,6 +297,26 @@ func _map_under(content: Variant, file_name: String, key: String) -> Dictionary:
 		errors.append("%s.json has no '%s' map in it." % [file_name, key])
 		return {}
 	return found
+
+
+## Turns the Text tab's rows into a plain key -> English lookup.
+##
+## The sheet carries Where, Placeholders and Notes columns so that Cameron can
+## find and understand a line; none of that reaches the game, so it is dropped
+## here rather than everywhere downstream.
+func _strings_by_key(content: Variant) -> Dictionary:
+	var table := {}
+	if not (content is Array):
+		errors.append("strings.json should be a list of lines from the Text tab.")
+		return table
+	for row: Variant in content:
+		if not (row is Dictionary):
+			continue
+		var key := str((row as Dictionary).get("key", "")).strip_edges()
+		if key.is_empty():
+			continue
+		table[key] = str((row as Dictionary).get("english", ""))
+	return table
 
 
 ## rules.json keeps each switch alongside notes explaining the options.

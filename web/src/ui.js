@@ -1323,6 +1323,45 @@ function showDetails() {
   });
 }
 
+// ---------------------------------------------------------------------------
+// What the game says
+// ---------------------------------------------------------------------------
+// The same table the Godot build reads: the Text tab of the design workbook,
+// exported to data/strings.json. Cameron rewords a line there and it changes
+// in BOTH builds, because both look it up rather than each holding a copy.
+//
+// Plurals are two rows, key.one and key.other, picked by a `count` value.
+// A key with no row shows the key itself — the exporter refuses to write the
+// file while the code asks for one the sheet has not got, so it should never
+// be seen in a built page.
+
+const STRINGS = (() => {
+  const table = {};
+  for (const row of (DATA.strings || [])) {
+    const key = str(row.key, '').trim();
+    if (key) table[key] = str(row.english, '');
+  }
+  return table;
+})();
+
+function T(key, values) {
+  values = values || {};
+  let template = null;
+
+  if (Object.prototype.hasOwnProperty.call(values, 'count')) {
+    const suffix = int(values.count, 0) === 1 ? '.one' : '.other';
+    if (STRINGS[key + suffix] !== undefined) template = STRINGS[key + suffix];
+  }
+  if (template === null && STRINGS[key] !== undefined) template = STRINGS[key];
+  if (template === null) return key;
+
+  let filled = template;
+  for (const name of Object.keys(values)) {
+    filled = filled.split('{' + name + '}').join(String(values[name]));
+  }
+  return filled;
+}
+
 // How this level signs off, in its own words or in none.
 function levelSignOff(key) {
   const level = (run.runner && run.runner.level) || {};
@@ -1330,21 +1369,24 @@ function levelSignOff(key) {
   if (written) return written;
 
   const name = str(level.name_en, '').trim();
-  return name ? name + ' is behind you.' : 'That is the end of it.';
+  return name ? T('outcome.sign_off_named', {level: name})
+              : T('outcome.sign_off_unwritten');
 }
 
 function showOutcome() {
   const engine = run.engine;
   const s = engine.state;
 
-  let title = { win: 'Carried', loss: 'Defeated', retry: 'No decision' }[s.outcome] || s.outcome;
+  let title = { win: T('outcome.carried'), loss: T('outcome.defeated'),
+                retry: T('outcome.no_decision') }[s.outcome] || s.outcome;
   // Named from the stage. Three kinds of stage are scored — the caucus, the
   // town hall and the TV debate — and this said "Caucus closed" for all
   // three, so a TV debate ended by announcing it was a caucus.
   if (s.win_mode === 'score' && s.outcome === 'win') {
-    title = (str(run.stage.name_en, '').trim() || 'It') + ' closed';
+    const named = str(run.stage.name_en, '').trim();
+    title = named ? T('outcome.closed', {stage: named}) : T('outcome.closed_unnamed');
   } else if (engine.isPressConference() && s.outcome === 'win') {
-    title = 'Conference over';
+    title = T('outcome.conference_over');
   }
 
   // A stage whose score carries has to say so here, or the player never finds
@@ -1356,7 +1398,11 @@ function showOutcome() {
   // so a media circuit and a research circuit both ended by announcing a bill
   // that never existed. A level with nothing written yet names itself.
   const lastStage = run.runner.index + 1 >= run.runner.stageCount();
-  const headline = (s.outcome === 'win' && lastStage) ? levelSignOff('win_text') : '';
+  // WIN OR LOSE. This only ever asked for win_text, so the loss lines in
+  // levels.json had never once reached the screen.
+  const headline = (lastStage && (s.outcome === 'win' || s.outcome === 'loss'))
+    ? levelSignOff(s.outcome === 'win' ? 'win_text' : 'loss_text')
+    : '';
 
   const lines = [s.outcome_reason];
   const score = s.playerScore();
@@ -1364,8 +1410,8 @@ function showOutcome() {
   if (s.outcome !== 'loss') {
     if (run.runner.scoreIsCarriedFrom(int(run.stage.seq, -1))) {
       const seats = LevelRunner.scoreToSupport(run.stage, score);
-      if (seats > 0) lines.push('You start ' + seats + ' ahead at the floor debate.');
-      else if (seats < 0) lines.push('You start ' + (-seats) + ' behind at the floor debate.');
+      if (seats > 0) lines.push(T('outcome.ahead', {count: seats}));
+      else if (seats < 0) lines.push(T('outcome.behind', {count: -seats}));
     }
 
     // What the stage was worth: flat for winning, and again for the number
@@ -1395,7 +1441,8 @@ function showOutcome() {
     if (pleased.length > 0) {
       const names = boosterNames(DATA);
       lines.push('');
-      lines.push('Pleased: ' + pleased.map(id => names[id] || id).join(', ') + '.');
+      lines.push(T('outcome.pleased',
+        {names: pleased.map(id => names[id] || id).join(', ')}));
     }
 
     if (changes.length > 0) {
@@ -1404,7 +1451,7 @@ function showOutcome() {
     } else if (s.outcome === 'win' && rewardsAreUnset(run.stage)) {
       // The truth, rather than silence that reads as a bug.
       lines.push('');
-      lines.push('This stage has no rewards set yet.');
+      lines.push(T('outcome.no_rewards'));
     }
   }
 
@@ -1465,9 +1512,9 @@ function showOutcome() {
 }
 
 function nextStepLabel(s) {
-  if (s.outcome === 'loss') return 'Back to the Office';
-  if (run.runner.index + 1 >= run.runner.stageCount()) return 'Back to the Office';
-  return 'On to the next stage';
+  if (s.outcome === 'loss') return T('outcome.back_to_office');
+  if (run.runner.index + 1 >= run.runner.stageCount()) return T('outcome.back_to_office');
+  return T('outcome.next_stage');
 }
 
 // ---------------------------------------------------------------------------

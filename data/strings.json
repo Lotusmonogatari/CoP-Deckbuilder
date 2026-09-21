@@ -1,0 +1,114 @@
+[
+  {
+    "key": "outcome.carried",
+    "where": "End of stage — title",
+    "english": "Carried",
+    "placeholders": null,
+    "notes": "The title when you win a stage."
+  },
+  {
+    "key": "outcome.defeated",
+    "where": "End of stage — title",
+    "english": "Defeated",
+    "placeholders": null,
+    "notes": "The title when you lose."
+  },
+  {
+    "key": "outcome.no_decision",
+    "where": "End of stage — title",
+    "english": "No decision",
+    "placeholders": null,
+    "notes": "The title when the turn limit ran out with no result."
+  },
+  {
+    "key": "outcome.conference_over",
+    "where": "End of stage — title",
+    "english": "Conference over",
+    "placeholders": null,
+    "notes": "Instead of Carried, where the room was a press conference and nobody was beaten."
+  },
+  {
+    "key": "outcome.closed",
+    "where": "End of stage — title",
+    "english": "{stage} closed",
+    "placeholders": "stage",
+    "notes": "For a room that is scored rather than won: the caucus, the town hall, the TV debate."
+  },
+  {
+    "key": "outcome.closed_unnamed",
+    "where": "End of stage — title",
+    "english": "It closed",
+    "placeholders": null,
+    "notes": "The same line where the stage has no name to use."
+  },
+  {
+    "key": "outcome.ahead",
+    "where": "End of stage — what it was worth",
+    "english": "You start {count} ahead at the floor debate.",
+    "placeholders": "count",
+    "notes": "Shown when this stage's score carries into a later one."
+  },
+  {
+    "key": "outcome.behind",
+    "where": "End of stage — what it was worth",
+    "english": "You start {count} behind at the floor debate.",
+    "placeholders": "count",
+    "notes": "The same, where the score went against you. {count} is already positive."
+  },
+  {
+    "key": "outcome.pleased",
+    "where": "End of stage — what it was worth",
+    "english": "Pleased: {names}.",
+    "placeholders": "names",
+    "notes": "Which organisations your answers pleased."
+  },
+  {
+    "key": "outcome.no_rewards",
+    "where": "End of stage — what it was worth",
+    "english": "This stage has no rewards set yet.",
+    "placeholders": null,
+    "notes": "The truth, rather than silence that reads as a bug. Every playtest stage says this until its numbers are set."
+  },
+  {
+    "key": "outcome.xp",
+    "where": "End of stage — what it was worth",
+    "english": "{count} XP",
+    "placeholders": "count",
+    "notes": "Listed alongside the standings that moved."
+  },
+  {
+    "key": "outcome.sign_off_unwritten",
+    "where": "End of stage — last stage of a level",
+    "english": "That is the end of it.",
+    "placeholders": null,
+    "notes": "Used when a level has no win_text or loss_text of its own AND no name."
+  },
+  {
+    "key": "outcome.sign_off_named",
+    "where": "End of stage — last stage of a level",
+    "english": "{level} is behind you.",
+    "placeholders": "level",
+    "notes": "Used when a level has no win_text or loss_text written yet. True of any level."
+  },
+  {
+    "key": "outcome.close",
+    "where": "End of stage — button",
+    "english": "Close",
+    "placeholders": null,
+    "notes": "The button when you are not in a level."
+  },
+  {
+    "key": "outcome.back_to_office",
+    "where": "End of stage — button",
+    "english": "Back to the Office",
+    "placeholders": null,
+    "notes": "The button after the last stage of a level, or after a loss."
+  },
+  {
+    "key": "outcome.next_stage",
+    "where": "End of stage — button",
+    "english": "On to the next stage",
+    "placeholders": null,
+    "notes": "The button when the level has another room waiting."
+  }
+]

@@ -49,6 +49,7 @@ NEEDED = [
     "sanban",
     "segments",
     "stages",
+    "strings",
     "suits",
 ]
 
@@ -194,6 +195,10 @@ def build_data() -> dict:
         "rules": flatten_rules(raw["rules"]),
         "sanban": raw["sanban"],
         "segments": raw["segments"],
+        # Every line the game says, from the workbook's Text tab. The page
+        # looks these up exactly as the Godot build does, so rewording one in
+        # the spreadsheet changes both rather than only one of them.
+        "strings": raw["strings"],
         # Only what a playtest stage borrows: the audience mix of the canon
         # stage it is modelled on. The rest of a stage row is not used here.
         "stages": [

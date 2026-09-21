@@ -1,0 +1,122 @@
+extends GutTest
+## The lines the game says, and the table they now come from.
+##
+## Cameron writes the wording in the Text tab of the design workbook. These
+## tests cover the lookup itself, and — more importantly — check that moving
+## a line out of the code did not quietly reword it.
+
+func test_the_table_loaded() -> void:
+	assert_gt(DataDB.strings.size(), 0,
+		"strings.json should have come out of the workbook's Text tab")
+
+
+func test_a_line_comes_back_as_written() -> void:
+	assert_eq(Text.say("outcome.carried"), "Carried")
+
+
+func test_a_placeholder_is_filled_in() -> void:
+	assert_eq(Text.say("outcome.closed", {"stage": "Party Caucus"}),
+		"Party Caucus closed")
+
+
+func test_a_missing_key_does_not_crash() -> void:
+	# It shows the key instead, which is ugly and obvious. The exporter
+	# refuses to write the file while the code asks for a key the sheet has
+	# not got, so this should only ever be seen mid-edit.
+	assert_eq(Text.say("nothing.like.this"), "nothing.like.this")
+
+
+func test_has_reports_whether_a_line_exists() -> void:
+	assert_true(Text.has("outcome.carried"))
+	assert_false(Text.has("nothing.like.this"))
+
+
+# ---------------------------------------------------------------------------
+# Plurals
+# ---------------------------------------------------------------------------
+
+func test_a_count_of_one_picks_the_singular() -> void:
+	# The sheet carries .one and .other as two plain rows rather than one
+	# row with a clever separator in it.
+	DataDB.strings["spec.thing.one"] = "{count} thing"
+	DataDB.strings["spec.thing.other"] = "{count} things"
+
+	assert_eq(Text.say("spec.thing", {"count": 1}), "1 thing")
+	assert_eq(Text.say("spec.thing", {"count": 3}), "3 things")
+	assert_eq(Text.say("spec.thing", {"count": 0}), "0 things")
+
+	DataDB.strings.erase("spec.thing.one")
+	DataDB.strings.erase("spec.thing.other")
+
+
+func test_one_wording_serves_both_where_that_is_right() -> void:
+	# Most lines read the same either way and should not need two rows.
+	DataDB.strings["spec.flat"] = "{count} XP"
+	assert_eq(Text.say("spec.flat", {"count": 1}), "1 XP")
+	assert_eq(Text.say("spec.flat", {"count": 9}), "9 XP")
+	DataDB.strings.erase("spec.flat")
+
+
+# ---------------------------------------------------------------------------
+# The wording did not change
+# ---------------------------------------------------------------------------
+# These are the exact sentences the outcome panel showed before the move. If
+# one of them fails, a line was reworded by accident rather than on purpose —
+# which is the one thing this whole change must not do.
+
+func test_the_outcome_panel_still_reads_as_it_did() -> void:
+	var expected := {
+		"outcome.carried": "Carried",
+		"outcome.defeated": "Defeated",
+		"outcome.no_decision": "No decision",
+		"outcome.conference_over": "Conference over",
+		"outcome.close": "Close",
+		"outcome.back_to_office": "Back to the Office",
+		"outcome.next_stage": "On to the next stage",
+		"outcome.no_rewards": "This stage has no rewards set yet.",
+		"outcome.sign_off_unwritten": "That is the end of it.",
+	}
+	for key: String in expected.keys():
+		assert_eq(Text.say(key), str(expected[key]), key)
+
+
+func test_the_sentences_with_numbers_still_read_as_they_did() -> void:
+	assert_eq(Text.say("outcome.ahead", {"count": 3}),
+		"You start 3 ahead at the floor debate.")
+	assert_eq(Text.say("outcome.behind", {"count": 2}),
+		"You start 2 behind at the floor debate.")
+	assert_eq(Text.say("outcome.pleased", {"names": "The Harbour Union"}),
+		"Pleased: The Harbour Union.")
+	assert_eq(Text.say("outcome.xp", {"count": 12}), "12 XP")
+	assert_eq(Text.say("outcome.sign_off_named", {"level": "Bill on the Floor"}),
+		"Bill on the Floor is behind you.")
+
+
+# ---------------------------------------------------------------------------
+# A level that ends badly now says so
+# ---------------------------------------------------------------------------
+
+func test_a_level_can_sign_off_on_a_loss() -> void:
+	# THE BUG THIS COVERS. The panel only ever asked for win_text, so the
+	# four loss lines written in levels.json had never once reached the
+	# screen: a level ended badly in silence, and rewording the line changed
+	# nothing at all.
+	var with_loss_text: Array[Dictionary] = []
+	for level: Dictionary in DataDB.levels:
+		if not str(level.get("loss_text", "")).strip_edges().is_empty():
+			with_loss_text.append(level)
+
+	assert_gt(with_loss_text.size(), 0,
+		"levels.json should still carry loss lines for this to matter")
+
+	var level: Dictionary = with_loss_text[0]
+	var runner := LevelRunner.new(level)
+	GameState.begin_level(runner)
+	# Stand at the last stage, which is where a level signs off.
+	runner.index = runner.stage_count() - 1
+
+	assert_eq(OutcomePresenter.sign_off("loss_text"),
+		str(level.get("loss_text", "")).strip_edges(),
+		"the level's own loss line should be what comes back")
+
+	GameState.end_level()

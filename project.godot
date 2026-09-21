@@ -21,6 +21,9 @@ config/quit_on_go_back=false
 ; Load order matters. DataDB must be ready before anything reads game data.
 DataDB="*res://scripts/autoload/DataDB.gd"
 EventBus="*res://scripts/autoload/EventBus.gd"
+; Text reads its table from DataDB, so it loads after it. Everything that
+; puts a sentence on screen asks Text for it.
+Text="*res://scripts/autoload/Text.gd"
 GameState="*res://scripts/autoload/GameState.gd"
 SaveManager="*res://scripts/autoload/SaveManager.gd"
 ; Audio listens to EventBus, so it loads after it. It reads sounds.json from

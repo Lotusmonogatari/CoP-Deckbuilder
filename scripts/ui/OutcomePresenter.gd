@@ -49,9 +49,15 @@ func show_outcome(engine: BattleEngine, stage: Dictionary) -> void:
 	# so a media circuit and a research circuit both ended by announcing a
 	# bill that never existed. A level with nothing written yet names itself
 	# instead, which is true of any of them.
-	if state.outcome == "win" and is_last_stage_of_level():
-		_title.text = "Carried"
-		_headline.text = sign_off("win_text")
+	#
+	# WIN OR LOSE. This only ever asked for win_text, so the four loss lines
+	# Cameron wrote in levels.json had never once reached the screen — a level
+	# ended badly in silence, and rewriting the line changed nothing.
+	if is_last_stage_of_level() and state.outcome in ["win", "loss"]:
+		if state.outcome == "win":
+			_title.text = Text.say("outcome.carried")
+		_headline.text = sign_off(
+			"win_text" if state.outcome == "win" else "loss_text")
 		_headline.show()
 	else:
 		_headline.hide()
@@ -75,15 +81,17 @@ func _title_for(engine: BattleEngine, stage: Dictionary) -> String:
 	# three, so a TV debate ended by announcing it was a caucus.
 	if state.win_mode == "score" and state.outcome == "win":
 		var what := str(stage.get("name_en", "")).strip_edges()
-		return "%s closed" % (what if not what.is_empty() else "It")
+		if what.is_empty():
+			return Text.say("outcome.closed_unnamed")
+		return Text.say("outcome.closed", {"stage": what})
 
 	if engine.is_press_conference() and state.outcome == "win":
-		return "Conference over"
+		return Text.say("outcome.conference_over")
 
 	return {
-		"win": "Carried",
-		"loss": "Defeated",
-		"retry": "No decision",
+		"win": Text.say("outcome.carried"),
+		"loss": Text.say("outcome.defeated"),
+		"retry": Text.say("outcome.no_decision"),
 	}.get(state.outcome, state.outcome)
 
 
@@ -107,9 +115,9 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 	if GameState.level_runner.score_is_carried_from(int(stage.get("seq", -1))):
 		var seats := LevelRunner.score_to_support(stage, score)
 		if seats > 0:
-			lines.append("You start %d ahead at the floor debate." % seats)
+			lines.append(Text.say("outcome.ahead", {"count": seats}))
 		elif seats < 0:
-			lines.append("You start %d behind at the floor debate." % -seats)
+			lines.append(Text.say("outcome.behind", {"count": -seats}))
 
 	# Which organisations the player's answers pleased. They are about to be
 	# applied and the Office shows the result, but the connection between an
@@ -121,7 +129,7 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 		for booster_id: String in pleased:
 			pleased_names.append(str(names.get(booster_id, booster_id)))
 		lines.append("")
-		lines.append("Pleased: %s." % ", ".join(pleased_names))
+		lines.append(Text.say("outcome.pleased", {"names": ", ".join(pleased_names)}))
 
 	var changes := _what_it_was_worth(stage, score)
 	if not changes.is_empty():
@@ -131,7 +139,7 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 		# The truth, rather than silence that reads as a bug. Every playtest
 		# stage is in this state until Cameron sets its numbers.
 		lines.append("")
-		lines.append("This stage has no rewards set yet.")
+		lines.append(Text.say("outcome.no_rewards"))
 
 	return "\n".join(lines)
 
@@ -159,7 +167,7 @@ func _what_it_was_worth(stage: Dictionary, score: int) -> Array[String]:
 
 	var xp := int(stage.get("xp_reward", 0))
 	if xp > 0:
-		changes.append("%d XP" % xp)
+		changes.append(Text.say("outcome.xp", {"count": xp}))
 	return changes
 
 
@@ -175,8 +183,8 @@ static func sign_off(key: String) -> String:
 
 	var name_en := str(level.get("name_en", "")).strip_edges()
 	if name_en.is_empty():
-		return "That is the end of it."
-	return "%s is behind you." % name_en
+		return Text.say("outcome.sign_off_unwritten")
+	return Text.say("outcome.sign_off_named", {"level": name_en})
 
 
 ## True where the stage just played is the last one in the level.
@@ -193,7 +201,8 @@ static func is_last_stage_of_level() -> bool:
 ## What pressing the button after a stage actually does.
 static func next_step_label(state: BattleState) -> String:
 	if not GameState.is_in_level():
-		return "Close"
+		return Text.say("outcome.close")
 	if state.outcome == "loss":
-		return "Back to the Office"
-	return "Back to the Office" if is_last_stage_of_level() else "On to the next stage"
+		return Text.say("outcome.back_to_office")
+	return (Text.say("outcome.back_to_office") if is_last_stage_of_level()
+		else Text.say("outcome.next_stage"))

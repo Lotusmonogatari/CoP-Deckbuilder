@@ -120,6 +120,21 @@ SHEETS = {
             ("Cards in pool", "cards_in_pool", "int"),
         ],
     },
+    # Every line the game says to the player. Cameron's to reword; the code
+    # asks for a Key and never holds a sentence of its own. A key the code
+    # asks for and this tab does not have is an ERROR, checked below, so a
+    # typo is caught here rather than appearing on screen mid-playtest.
+    "Text": {
+        "out": "strings.json",
+        "key": "key",
+        "columns": [
+            ("Key", "key", "id"),
+            ("Where", "where", "str"),
+            ("English", "english", "str"),
+            ("Placeholders", "placeholders", "str"),
+            ("Notes", "notes", "str"),
+        ],
+    },
     "Segments": {
         "out": "segments.json",
         "key": "segment_id",
@@ -987,6 +1002,79 @@ def validate(data, report):
 # the engine wants its ID ("SG01"). Resolving that here, once, keeps the
 # lookup out of the game code.
 
+# ---------------------------------------------------------------------------
+# Does every line the code asks for actually exist?
+# ---------------------------------------------------------------------------
+
+TEXT_KEY_CALLS = [
+    re.compile(r'Text\.say\(\s*"([^"]+)"'),      # GDScript
+    re.compile(r'Text\.has\(\s*"([^"]+)"'),
+    re.compile(r"\bT\(\s*'([^']+)'"),           # the browser build's shorthand
+]
+
+# Where a key is built at runtime rather than written out, the code says so
+# with this marker and the check skips the line instead of guessing.
+TEXT_DYNAMIC = "text-key-built-at-runtime"
+
+
+def check_text_keys(data, report):
+    """Every key the code asks for must be a row in the Text tab.
+
+    This is the safety net that makes the wording safe to hand over. A key
+    that has no row shows up on screen as the key itself, which is the kind
+    of thing a playtester finds and nobody else does — so it is an ERROR
+    here, in the report Cameron already reads after every export.
+
+    A row nothing asks for is only a warning: it is probably a typo in the
+    Key column, but it might equally be a line written ahead of the screen
+    that will use it.
+    """
+    rows = data.get("strings")
+    if rows is None:
+        return
+
+    in_sheet = {str(row.get("key", "")) for row in rows}
+    asked_for = {}
+
+    searched = list(REPO_ROOT.glob("scripts/**/*.gd")) + list(REPO_ROOT.glob("web/src/*.js"))
+    for path in searched:
+        text = path.read_text(encoding="utf-8")
+        for number, line in enumerate(text.splitlines(), 1):
+            if TEXT_DYNAMIC in line:
+                continue
+            # Comments explain the lookup and quote example keys, so reading
+            # them would report lines nothing actually asks for. A docstring
+            # showing Text.say("narration.gaffe") is documentation, not a use.
+            stripped = line.lstrip()
+            if stripped.startswith("#") or stripped.startswith("//"):
+                continue
+            for pattern in TEXT_KEY_CALLS:
+                for key in pattern.findall(line):
+                    asked_for.setdefault(key, []).append(
+                        f"{path.relative_to(REPO_ROOT)}:{number}")
+
+    for key in sorted(set(asked_for) - in_sheet):
+        report.error("Text tab",
+                     f"the code asks for '{key}' and the tab has no such Key "
+                     f"({asked_for[key][0]})")
+
+    for key in sorted(in_sheet - set(asked_for)):
+        report.note(f"Text tab: nothing asks for '{key}' yet")
+
+    # A placeholder the row uses but does not declare is a warning, because
+    # the Placeholders column is what tells Cameron what he may move around.
+    for row in rows:
+        used = set(re.findall(r"\{(\w+)\}", str(row.get("english", ""))))
+        declared = {p.strip() for p in str(row.get("placeholders") or "").split(",") if p.strip()}
+        for name in sorted(used - declared):
+            report.warn("Text tab",
+                        f"'{row.get('key')}' uses {{{name}}} but does not list it "
+                        f"in Placeholders")
+
+    if in_sheet:
+        report.note(f"Text tab: {len(in_sheet)} lines, {len(asked_for)} asked for by the code")
+
+
 def add_segment_ids(data, report):
     by_name = {r["name_en"]: r["segment_id"] for r in data["segments"] if r.get("name_en")}
 
@@ -1103,6 +1191,7 @@ def main():
 
     add_segment_ids(data, report)
     validate(data, report)
+    check_text_keys(data, report)
 
     written = 0
     for name, payload in sorted(data.items()):
