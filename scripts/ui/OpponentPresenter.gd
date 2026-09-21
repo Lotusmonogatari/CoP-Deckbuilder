@@ -38,8 +38,15 @@ var _opponent_guard_label: Label
 
 ## Where the opponent stood when this bout began, so "losing badly" can mean
 ## something. Reset whenever the opponent changes.
+##
+## `_watched_anyone` rather than comparing `_watching` against "": an opponent
+## whose ID happened to be blank would match the starting value, the opening
+## support would never be recorded, and they could never look rattled. Every
+## opponent in the data has an ID today, so this cannot happen — but it would
+## fail silently if one ever lost it.
 var _opened_on := 0
 var _watching := ""
+var _watched_anyone := false
 
 
 func _init(portrait: Control, name_label: Label, intent_label: Label,
@@ -137,7 +144,8 @@ func _face_for(engine: BattleEngine) -> String:
 
 	# A new opponent: remember where they started, so a fall can be measured.
 	var opp_id := str(opponent.get("opp_id", ""))
-	if opp_id != _watching:
+	if not _watched_anyone or opp_id != _watching:
+		_watched_anyone = true
 		_watching = opp_id
 		_opened_on = state.bar.opponent if state.bar != null else 0
 

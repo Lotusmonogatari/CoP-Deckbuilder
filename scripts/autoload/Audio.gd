@@ -67,8 +67,11 @@ func play(sound_name: String) -> void:
 		_: _play_effect(stream)
 
 
-## Starts a piece of music by its name in sounds.json, or stops the music
-## when given a name that has no file behind it.
+## Starts a piece of music by its name in sounds.json.
+##
+## A name with no file behind it leaves whatever is playing alone rather than
+## stopping it — call stop_music() for that. Silence and "carry on" are the
+## same thing while there are no sound files, and will not be later.
 func play_music(sound_name: String) -> void:
 	play(sound_name)
 
@@ -82,9 +85,12 @@ func stop_music() -> void:
 ## currently always silent — it exists so that the call site can be written
 ## and reviewed now rather than retrofitted later.
 func say(speaker_id: String, line_id: String) -> void:
-	var lines: Dictionary = DataDB.speech.get(speaker_id, {})
-	var file := str(lines.get(line_id, ""))
-	var stream := _stream(file)
+	# Asked for rather than assumed: a speaker's entry is hand-written, and a
+	# malformed one should be silent rather than bring the game down.
+	var lines: Variant = DataDB.speech.get(speaker_id)
+	if not (lines is Dictionary):
+		return
+	var stream := _stream(str((lines as Dictionary).get(line_id, "")))
 	if stream != null:
 		_play_on(_speech, stream)
 
@@ -134,13 +140,19 @@ func _listen() -> void:
 
 
 func _on_card_played(_card_id: String, result: Dictionary) -> void:
-	# A card the room ignores should not sound like one that landed.
+	# A card the room ignores should not sound like one that landed. The
+	# battle screen puts this flag in, because whether a card is worth
+	# anything HERE is a presentation question the engine's play_card()
+	# result does not answer.
 	play("card_useless" if bool(result.get("does_nothing", false)) else "card_played")
 
 
-func _on_gaffe_changed(value: int, _limit: int, is_final_warning: bool) -> void:
-	# Only when it rose. Cards that clear a gaffe should not sound alarmed.
-	if value <= 0:
+func _on_gaffe_changed(_value: int, delta: int, _limit: int, is_final_warning: bool) -> void:
+	# Only when it ROSE. A card that clears a gaffe is good news and should
+	# not sound alarmed — this used to test the meter's value instead of its
+	# direction, so clearing a gaffe from three to one still set off the
+	# alarm, which is the opposite of what the line above it promised.
+	if delta <= 0:
 		return
 	play("gaffe_final" if is_final_warning else "gaffe")
 
@@ -209,13 +221,19 @@ func _play_effect(stream: AudioStream) -> void:
 	_play_on(player, stream)
 
 
+## Sets the loop flag on a COPY, never on the loaded resource.
+##
+## load() hands back one shared, cached instance, so setting .loop on it
+## would change it for everybody: the same file used once as a looping bed
+## and once as a one-shot sting would take whichever setting played last.
 func _play_music_stream(stream: AudioStream, should_loop: bool) -> void:
-	if stream is AudioStreamOggVorbis:
-		(stream as AudioStreamOggVorbis).loop = should_loop
-	elif stream is AudioStreamWAV:
-		(stream as AudioStreamWAV).loop_mode = (
+	var mine := stream.duplicate() as AudioStream
+	if mine is AudioStreamOggVorbis:
+		(mine as AudioStreamOggVorbis).loop = should_loop
+	elif mine is AudioStreamWAV:
+		(mine as AudioStreamWAV).loop_mode = (
 			AudioStreamWAV.LOOP_FORWARD if should_loop else AudioStreamWAV.LOOP_DISABLED)
-	_play_on(_music, stream)
+	_play_on(_music, mine)
 
 
 func _play_on(player: AudioStreamPlayer, stream: AudioStream) -> void:

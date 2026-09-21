@@ -27,9 +27,16 @@ signal turn_ended(turn_number: int)
 ## The opponent's move for the coming turn is now known and can be shown.
 signal intent_revealed(intent: Dictionary)
 
-## The gaffe meter changed. `is_final_warning` is true only when one more
-## gaffe would end the stage — that's the only time the UI turns red.
-signal gaffe_changed(value: int, limit: int, is_final_warning: bool)
+## The gaffe meter moved. Sent ONLY when it actually moved, or when the
+## warning turned on or off — never on a redraw that changed nothing.
+##
+## `delta` is signed, so a listener can tell a gaffe earned from one a card
+## cleared. Without it, "the meter is at 3" reads the same whether you just
+## made a mistake or just undid one, and a warning sound would play for both.
+##
+## `is_final_warning` is true only when one more gaffe would end the stage —
+## that's the only time the UI turns red.
+signal gaffe_changed(value: int, delta: int, limit: int, is_final_warning: bool)
 
 ## The stage ended. `outcome` is "win" or "loss"; `reason` explains why.
 signal battle_ended(outcome: String, reason: String)

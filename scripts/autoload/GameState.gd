@@ -130,7 +130,11 @@ func buy_modifier(mod_id: String) -> String:
 	if not refusal.is_empty():
 		return refusal
 
-	meta["Funds"] = int(meta.get("Funds", 0)) - Ledger.modifier_cost(modifier)
+	# Announced, the same as spending XP is. This used to write the number
+	# straight in, so the Office's two spending doors behaved differently:
+	# buying a card told the world and buying backing did not.
+	_move_meta("Funds", -Ledger.modifier_cost(modifier))
+
 	owned_modifiers.append(mod_id)
 	return ""
 
@@ -265,6 +269,18 @@ func _move_xp(delta: int) -> void:
 		return
 	xp += delta
 	EventBus.xp_changed.emit(xp, delta)
+
+
+## Moves one meta-variable outside a stage, and says so.
+##
+## The sibling of _move_xp, and separate from _record_meta_change on purpose:
+## that one also files the change under "what the last stage was worth", and
+## money spent in the Office is not a stage reward. Both announce.
+func _move_meta(name: String, delta: int) -> void:
+	if delta == 0:
+		return
+	meta[name] = int(meta.get(name, 0)) + delta
+	EventBus.meta_changed.emit(name, int(meta[name]), delta)
 
 
 ## Folds one lot of changes into what the screen will report.

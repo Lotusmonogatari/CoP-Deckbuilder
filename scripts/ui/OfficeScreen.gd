@@ -41,6 +41,12 @@ func _ready() -> void:
 	_deck_panel.confirmed.connect(_on_deck_confirmed)
 	_organisations_button.pressed.connect(_show_organisations)
 	_management_button.pressed.connect(_show_management)
+
+	# The Office's own bed. Silent until there is a file named against
+	# music_office in sounds.json; this is here so that adding one is the
+	# whole job, with nothing to wire up afterwards.
+	Audio.play_music("music_office")
+
 	_build()
 
 

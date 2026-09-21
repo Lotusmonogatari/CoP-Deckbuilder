@@ -48,17 +48,22 @@ func show_state(engine: BattleEngine) -> void:
 			continue
 
 		var view := _take(spare, card_id)
-		var is_new := view == null
-		if is_new:
+		if view == null:
 			view = CardView.new()
 			view.chosen.connect(func(id: String) -> void: card_chosen.emit(id))
 
 		# On screen first, then filled in. A CardView builds its labels when
 		# it enters the tree, and filling it before that means building them
-		# twice over.
+		# twice over — which is how a hand of nameless cards happened once.
 		_row.add_child(view)
-		if is_new:
-			view.show_card(card)
+
+		# Written every refresh, on a reused view as well as a new one.
+		# Keeping a view is about keeping the NODE alive so that a card can be
+		# animated as it is played; it was never about skipping the labels. A
+		# view filled in once and never again would quietly go on showing the
+		# old numbers as soon as a card can be upgraded, which is M5.
+		view.show_card(card)
+
 		if not _views.has(card_id):
 			_views[card_id] = []
 		(_views[card_id] as Array).append(view)
@@ -67,8 +72,13 @@ func show_state(engine: BattleEngine) -> void:
 		# numbers, and in some rooms a number does nothing at all.
 		var effect := engine.preview(card)
 		view.show_effect_here(effect)
-		view.set_affordable(
-			engine.card_cost(card) <= state.energy and not state.is_over())
+
+		# The real cost, after any discount a card played earlier this turn
+		# left behind. The same number decides the disc and the dimming, so
+		# the card can no longer say "2" while being playable on 1 energy.
+		var cost := engine.card_cost(card)
+		view.show_cost(cost)
+		view.set_affordable(cost <= state.energy and not state.is_over())
 		view.set_useless_here(bool(effect.get("does_nothing", false)))
 
 	# Whatever this hand did not want.

@@ -172,12 +172,26 @@ func show_card(card_row: Dictionary) -> void:
 	if _effect_label == null:
 		_build()
 
-	_cost_label.text = str(int(card_row.get("cost", 0)))
+	# The printed cost. A battle overrides it with show_cost() when something
+	# has made this card cheaper than the workbook says.
+	show_cost(int(card_row.get("cost", 0)))
 	_name_label.text = str(card_row.get("name_en", "Unnamed"))
 	_art_label.text = str(card_row.get("name_jp", ""))
 	_effect_label.text = str(card_row.get("effect_text", ""))
 
 	tooltip_text = "%s — %s" % [card_row.get("name_en", ""), card_row.get("effect_text", "")]
+
+
+## What this card costs RIGHT NOW, which is not always what is printed on it.
+##
+## C36 makes the next card of the turn cost one less, and the disc used to go
+## on showing the workbook's number: the card read "2", cost 1, and lit up as
+## playable on a single point of energy. The hand asks the engine for the
+## real cost to decide whether a card is affordable, and now writes the same
+## number here, so the two cannot disagree.
+func show_cost(cost: int) -> void:
+	if _cost_label != null:
+		_cost_label.text = str(cost)
 
 
 ## Replaces the printed text with what this card will actually do here.

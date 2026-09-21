@@ -46,6 +46,11 @@ var _selected_card_id: String = ""
 ## reason instead of crashing on the next click.
 var _ready_to_play := false
 
+## The gaffe count and warning state last announced on the noticeboard, so a
+## refresh that changed nothing says nothing. Reset when a stage opens.
+var _announced_gaffe := 0
+var _announced_critical := false
+
 # --- The presenters --------------------------------------------------------
 var _speaker: OpponentPresenter = null
 var _hand: HandPresenter = null
@@ -135,7 +140,18 @@ func start_battle() -> void:
 	_stage_name_jp.text = str(_stage.get("name_jp", ""))
 	_support_bar.unit = str(_stage.get("bar_unit", "Support"))
 
+	# A fresh stage announces its own opening gaffe count rather than
+	# inheriting whatever the last one finished on.
+	_announced_gaffe = 0
+	_announced_critical = false
+
+	Audio.play_music("music_battle")
+
 	EventBus.turn_started.emit(engine.state.turn)
+	# And what the opponent opens with. This used to be left out, so the very
+	# first intent of every stage — the one the player reads before playing
+	# anything — never reached the noticeboard at all.
+	EventBus.intent_revealed.emit(engine.current_intent())
 	_refresh()
 
 
@@ -211,7 +227,18 @@ func _refresh_gaffe(state: BattleState) -> void:
 	var critical := engine.gaffe_is_critical()
 	_gaffe_label.text = "Gaffes %d / %d" % [state.gaffe, state.gaffe_limit]
 	_gaffe_label.theme_type_variation = "GaffeWarning" if critical else ""
-	EventBus.gaffe_changed.emit(state.gaffe, state.gaffe_limit, critical)
+
+	# Announced only when it MOVED. This used to fire on every refresh — every
+	# card, every turn, every stage opened — so a gaffe sound would have gone
+	# off several times a turn, including on turns where nothing happened. The
+	# label is redrawn regardless; redrawing a label is cheap and announcing a
+	# thing that did not happen is not.
+	if state.gaffe == _announced_gaffe and critical == _announced_critical:
+		return
+	var delta := state.gaffe - _announced_gaffe
+	_announced_gaffe = state.gaffe
+	_announced_critical = critical
+	EventBus.gaffe_changed.emit(state.gaffe, delta, state.gaffe_limit, critical)
 
 
 ## Who is in the room, and what it takes to win one of them over.
@@ -369,6 +396,14 @@ func _play_selected() -> void:
 		return
 
 	var card_id := _selected_card_id
+
+	# Asked BEFORE the card is played, while it is still in hand. The engine
+	# works out whether a card does anything in this room in preview() and
+	# nowhere else, so playing first and asking after would be too late.
+	# The hand already uses the same call to dim a card that is useless here.
+	var useless := bool(engine.preview(DataDB.get_card(card_id))
+		.get("does_nothing", false))
+
 	var result := engine.play_card(card_id)
 	if not result.get("ok", false):
 		_messages.say(str(result.get("reason", "That card cannot be played.")))
@@ -377,6 +412,11 @@ func _play_selected() -> void:
 	_selected_card_id = ""
 	# Announced before the redraw, so anything listening can reach the card
 	# view that played it while it is still on screen.
+	#
+	# The engine's own result says what the card did; whether it was worth
+	# anything in this room is added here, because that is a question the
+	# screen asks and the rules do not answer in play_card().
+	result["does_nothing"] = useless
 	EventBus.card_played.emit(card_id, result)
 	_refresh()
 	_messages.say(BattleNarration.player_move(

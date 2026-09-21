@@ -134,9 +134,9 @@ func load_all() -> void:
 			"modifiers": modifiers = content
 			# A temporary bridge until the workbook carries an "Effect key"
 			# column; see the file's own README.
-			"modifier_effects": modifier_effects = _map_under(content, "effects")
+			"modifier_effects": modifier_effects = _map_under(content, file_name, "effects")
 			# The same bridge again, for opponent behaviour.
-			"intent_patterns": intent_patterns = _map_under(content, "patterns")
+			"intent_patterns": intent_patterns = _map_under(content, file_name, "patterns")
 			"boosters": boosters = content
 			"opponents": opponents = content
 			"yoron": yoron = content
@@ -149,14 +149,14 @@ func load_all() -> void:
 			"lists": lists = content
 			"rules": rules = _flatten_rules(content)
 			"playtest_level": playtest_level = content
-			"levels": levels = _list_under(content, "levels")
-			"stage_types": stage_types = _map_under(content, "types")
+			"levels": levels = _list_under(content, file_name, "levels")
+			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": player = content
 
-			"journalists": journalists = _list_under(content, "journalists")
+			"journalists": journalists = _list_under(content, file_name, "journalists")
 			"sounds":
-				sounds = _map_under(content, "sounds")
-				speech = _map_under(content, "speech")
+				sounds = _map_under(content, file_name, "sounds")
+				speech = _map_under(content, file_name, "speech")
 			"booster_standing": booster_standing = content
 			# Cards that exist for the playtest but are not in the workbook
 			# yet. Appended rather than kept apart, so everything downstream —
@@ -165,7 +165,7 @@ func load_all() -> void:
 			# after "cards" because REQUIRED_FILES is in alphabetical order,
 			# and "cards" is reassigned on every load, so reloading cannot
 			# stack them up twice.
-			"playtest_cards": _add_playtest_cards(_list_under(content, "cards"))
+			"playtest_cards": _add_playtest_cards(_list_under(content, file_name, "cards"))
 
 	_fill_name_tokens()
 	_build_lookups()
@@ -263,25 +263,32 @@ func _add_playtest_cards(extras: Array) -> void:
 ## top level is an object rather than the bare array the exporter writes.
 ## This reaches in for the list and returns an empty one rather than failing
 ## if the file has been edited into a shape it did not expect.
-func _list_under(content: Variant, key: String) -> Array:
+##
+## `file_name` is passed in rather than assumed from `key`: the two are
+## usually different, and building the message out of the key sent the reader
+## to a file that was not the broken one. `playtest_cards.json` reported its
+## problems against `cards.json` — a real file, and an innocent one.
+func _list_under(content: Variant, file_name: String, key: String) -> Array:
 	if not (content is Dictionary):
-		errors.append("%s.json should be an object with a '%s' list in it." % [key, key])
+		errors.append("%s.json should be an object with a '%s' list in it."
+			% [file_name, key])
 		return []
 	var found: Variant = (content as Dictionary).get(key)
 	if not (found is Array):
-		errors.append("%s.json has no '%s' list in it." % [key, key])
+		errors.append("%s.json has no '%s' list in it." % [file_name, key])
 		return []
 	return found
 
 
 ## The same, for a file whose payload is an object rather than a list.
-func _map_under(content: Variant, key: String) -> Dictionary:
+func _map_under(content: Variant, file_name: String, key: String) -> Dictionary:
 	if not (content is Dictionary):
-		errors.append("%s.json should be an object with a '%s' map in it." % [key, key])
+		errors.append("%s.json should be an object with a '%s' map in it."
+			% [file_name, key])
 		return {}
 	var found: Variant = (content as Dictionary).get(key)
 	if not (found is Dictionary):
-		errors.append("%s.json has no '%s' map in it." % [key, key])
+		errors.append("%s.json has no '%s' map in it." % [file_name, key])
 		return {}
 	return found
 

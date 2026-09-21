@@ -56,7 +56,7 @@ func _init(label: Label, tree: SceneTree) -> void:
 
 ## Says something, after whatever is already being said.
 func say(message: String) -> void:
-	if _label == null or message.strip_edges().is_empty():
+	if not is_instance_valid(_label) or message.strip_edges().is_empty():
 		return
 	_queue.append(message)
 	if not _busy:
@@ -71,20 +71,28 @@ func clear() -> void:
 	_queue = PackedStringArray()
 	_busy = false
 	_shown += 1        # anything still counting down is now stale
-	if _label != null:
+	if is_instance_valid(_label):
 		_label.hide()
 
 
 ## True when there is something on screen. The tests read this.
 func is_saying_something() -> bool:
-	return _label != null and _label.visible
+	return is_instance_valid(_label) and _label.visible
 
 
 func _show_next() -> void:
+	# is_instance_valid, not "!= null". A freed node is NOT equal to null in
+	# GDScript — it is a reference to a dead object, and touching it errors.
+	# This is reached after an await, so the scene it draws into may well have
+	# gone in the meantime.
+	if not is_instance_valid(_label):
+		_queue = PackedStringArray()
+		_busy = false
+		return
+
 	if _queue.is_empty():
 		_busy = false
-		if _label != null:
-			_label.hide()
+		_label.hide()
 		return
 
 	_busy = true
