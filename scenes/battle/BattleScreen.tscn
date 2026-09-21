@@ -73,6 +73,7 @@ horizontal_alignment = 2
 
 [node name="OpponentRow" type="VBoxContainer" parent="Safe/Column"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 16
 
 [node name="Portrait" type="Control" parent="Safe/Column/OpponentRow"]
@@ -80,6 +81,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 620)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("2_3oymq")
 
 [node name="Details" type="VBoxContainer" parent="Safe/Column/OpponentRow"]
@@ -152,13 +154,8 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Details"
 
-[node name="VSpacer" type="Control" parent="Safe/Column"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
 [node name="HandScroll" type="ScrollContainer" parent="Safe/Column"]
-custom_minimum_size = Vector2(0, 390)
+custom_minimum_size = Vector2(0, 490)
 layout_mode = 2
 size_flags_vertical = 8
 vertical_scroll_mode = 0
@@ -166,7 +163,6 @@ vertical_scroll_mode = 0
 [node name="HandRow" type="HBoxContainer" parent="Safe/Column/HandScroll"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
 [node name="EndTurnButton" type="Button" parent="Safe/Column"]

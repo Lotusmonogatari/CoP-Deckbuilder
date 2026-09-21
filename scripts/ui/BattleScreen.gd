@@ -53,6 +53,10 @@ var _ready_to_play := false
 @onready var _card_zoom: PanelContainer = %CardZoom
 @onready var _zoom_text: RichTextLabel = %ZoomText
 @onready var _zoom_art: Control = %ZoomArt
+
+## The opened card, built once and refilled. Created on first use rather
+## than in the scene, so the frame stays a thing the script owns.
+var _card_back: CardBackView = null
 @onready var _outcome_panel: PanelContainer = %OutcomePanel
 @onready var _outcome_title: Label = %OutcomeTitle
 @onready var _outcome_reason: Label = %OutcomeReason
@@ -293,7 +297,7 @@ func _refresh_hand(state: BattleState) -> void:
 		# numbers, and in some rooms a number does nothing at all.
 		var effect := engine.preview(card)
 		view.show_effect_here(effect)
-		view.set_affordable(int(card.get("cost", 0)) <= state.energy and not state.is_over())
+		view.set_affordable(engine.card_cost(card) <= state.energy and not state.is_over())
 		view.set_useless_here(bool(effect.get("does_nothing", false)))
 		view.chosen.connect(_on_card_chosen)
 
@@ -460,19 +464,30 @@ func _on_card_chosen(card_id: String) -> void:
 	_selected_card_id = card_id
 	var card := DataDB.get_card(card_id)
 
-	if _zoom_art is PlaceholderArt:
-		var art := _zoom_art as PlaceholderArt
-		art.kind = PlaceholderArt.Kind.CARD
-		art.art_id = card_id
+	# The card turned over: Cameron's back frame with everything the front
+	# had no room for. The old placeholder block and the separate text
+	# labels are hidden rather than removed, so the scene file stays as it
+	# is and the zoom is one thing rather than three stacked.
+	_zoom_art.visible = false
+	_zoom_text.visible = false
+	%ZoomTitle.visible = false
+	%ZoomSubtitle.visible = false
 
-	%ZoomTitle.text = str(card.get("name_en", ""))
-	%ZoomSubtitle.text = "%s  %s · %s" % [
-		card.get("name_jp", ""), card.get("romaji", ""), card.get("suit", "")]
-	_zoom_text.text = "[b]Costs %d[/b]\n\n%s\n\n[i]%s[/i]" % [
-		int(card.get("cost", 0)), card.get("effect_text", ""),
-		describe_room_for(engine.affinity_for(card))]
+	if _card_back == null:
+		_card_back = CardBackView.new()
+		# Big enough to read at arm's length: at 1250 tall the card is about
+		# 890 wide, which is most of a 1080 screen. The back exists to be
+		# read, so it is worth the room.
+		_card_back.custom_minimum_size = Vector2(0, 1250)
+		_card_back.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		var column := _zoom_text.get_parent()
+		column.add_child(_card_back)
+		column.move_child(_card_back, 0)
 
-	%ZoomPlay.disabled = int(card.get("cost", 0)) > engine.state.energy
+	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card),
+		describe_room_for(engine.affinity_for(card)))
+
+	%ZoomPlay.disabled = engine.card_cost(card) > engine.state.energy
 	_card_zoom.show()
 
 
