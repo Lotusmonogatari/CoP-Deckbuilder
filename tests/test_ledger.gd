@@ -6,6 +6,14 @@ extends GutTest
 
 
 const BALANCE := {"starter_deck_size": 12}
+
+## The real wording, so these tests assert the sentences a player reads.
+##
+## The Ledger is pure rules and cannot reach an autoload, so it is handed the
+## table the way it is handed `balance`. Called without one it returns the
+## keys instead, which is what a headless fixture sees.
+func _words() -> Phrase:
+	return Phrase.new(DataDB.strings)
 const SETTINGS := {"required_standing": 60}
 const BOOSTERS := ["BO01", "BO03", "BO08"]
 
@@ -30,29 +38,29 @@ func _modifier(overrides: Dictionary = {}) -> Dictionary:
 # ---------------------------------------------------------------------------
 
 func test_a_card_you_can_afford_is_yours_to_buy() -> void:
-	assert_true(Ledger.can_buy_card(_card(), [], 60))
-	assert_eq(Ledger.card_refusal(_card(), [], 60), "")
+	assert_true(Ledger.can_buy_card(_card(), [], 60, _words()))
+	assert_eq(Ledger.card_refusal(_card(), [], 60, _words()), "")
 
 
 func test_a_card_you_cannot_afford_says_how_short_you_are() -> void:
 	# The number matters: "60 XP" tells you nothing you did not know, and
 	# "17 XP short" tells you whether the next stage will cover it.
-	assert_eq(Ledger.card_refusal(_card(), [], 43), "17 XP short.")
-	assert_false(Ledger.can_buy_card(_card(), [], 43))
+	assert_eq(Ledger.card_refusal(_card(), [], 43, _words()), "17 XP short.")
+	assert_false(Ledger.can_buy_card(_card(), [], 43, _words()))
 
 
 func test_a_card_you_already_own_cannot_be_bought_twice() -> void:
-	assert_eq(Ledger.card_refusal(_card(), ["C99"], 999), "Already yours.")
+	assert_eq(Ledger.card_refusal(_card(), ["C99"], 999, _words()), "Already yours.")
 
 
 func test_exactly_enough_xp_is_enough() -> void:
-	assert_true(Ledger.can_buy_card(_card({"xp_to_unlock": 60}), [], 60),
+	assert_true(Ledger.can_buy_card(_card({"xp_to_unlock": 60}), [], 60, _words()),
 		"60 of 60 buys it; a boundary that goes the other way is a bug players notice")
 
 
 func test_a_starter_card_costs_nothing() -> void:
 	assert_eq(Ledger.card_cost(_card({"tier": "Starter", "xp_to_unlock": 0})), 0)
-	assert_true(Ledger.can_buy_card(_card({"xp_to_unlock": 0}), [], 0))
+	assert_true(Ledger.can_buy_card(_card({"xp_to_unlock": 0}), [], 0, _words()))
 
 
 # ---------------------------------------------------------------------------
@@ -61,36 +69,36 @@ func test_a_starter_card_costs_nothing() -> void:
 
 func test_a_backed_modifier_you_can_afford_is_yours() -> void:
 	assert_eq(Ledger.modifier_refusal(
-		_modifier(), [], 30, {"BO03": 60}, SETTINGS, BOOSTERS), "")
+		_modifier(), [], 30, {"BO03": 60}, SETTINGS, BOOSTERS, _words()), "")
 
 
 func test_standing_is_checked_before_the_price() -> void:
 	# Being told the price of something you are not allowed to buy is worse
 	# than being told why you cannot buy it.
 	var refusal := Ledger.modifier_refusal(
-		_modifier(), [], 0, {"BO03": 10}, SETTINGS, BOOSTERS)
+		_modifier(), [], 0, {"BO03": 10}, SETTINGS, BOOSTERS, _words())
 	assert_eq(refusal, "Standing 10 of 60 needed.",
 		"the gate, not the empty wallet")
 
 
 func test_standing_short_of_the_threshold_refuses() -> void:
 	assert_false(Ledger.can_buy_modifier(
-		_modifier(), [], 999, {"BO03": 59}, SETTINGS, BOOSTERS))
+		_modifier(), [], 999, {"BO03": 59}, SETTINGS, BOOSTERS, _words()))
 	assert_true(Ledger.can_buy_modifier(
-		_modifier(), [], 999, {"BO03": 60}, SETTINGS, BOOSTERS),
+		_modifier(), [], 999, {"BO03": 60}, SETTINGS, BOOSTERS, _words()),
 		"exactly the threshold is enough")
 
 
 func test_funds_short_says_how_short() -> void:
 	assert_eq(Ledger.modifier_refusal(
-		_modifier(), [], 12, {"BO03": 99}, SETTINGS, BOOSTERS), "8 short.")
+		_modifier(), [], 12, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "8 short.")
 
 
 func test_a_modifier_with_no_price_is_not_for_sale() -> void:
 	# The opponent-only ones, and the pair switched on by party support.
 	assert_false(Ledger.is_for_sale(_modifier({"kaban_cost": null})))
 	assert_eq(Ledger.modifier_refusal(_modifier({"kaban_cost": null}),
-		[], 999, {"BO03": 99}, SETTINGS, BOOSTERS), "Not for sale.")
+		[], 999, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "Not for sale.")
 
 
 func test_an_opponent_only_modifier_is_not_on_the_players_shelf() -> void:
@@ -102,7 +110,7 @@ func test_a_modifier_backed_by_nobody_needs_no_standing() -> void:
 	# is nobody to have standing with.
 	var m := _modifier({"source_booster": "Party support (meta)"})
 	assert_eq(Ledger.backing_booster(m, BOOSTERS), "")
-	assert_eq(Ledger.modifier_refusal(m, [], 30, {}, SETTINGS, BOOSTERS), "")
+	assert_eq(Ledger.modifier_refusal(m, [], 30, {}, SETTINGS, BOOSTERS, _words()), "")
 
 
 func test_a_threshold_can_be_set_per_modifier() -> void:
@@ -116,7 +124,7 @@ func test_a_threshold_can_be_set_per_modifier() -> void:
 
 func test_a_modifier_you_own_cannot_be_bought_twice() -> void:
 	assert_eq(Ledger.modifier_refusal(
-		_modifier(), ["M01"], 999, {"BO03": 99}, SETTINGS, BOOSTERS),
+		_modifier(), ["M01"], 999, {"BO03": 99}, SETTINGS, BOOSTERS, _words()),
 		"Already yours.")
 
 
@@ -136,25 +144,25 @@ func _deck(count: int) -> Array:
 
 
 func test_a_full_deck_of_cards_you_own_is_legal() -> void:
-	assert_true(Ledger.deck_is_legal(_deck(12), _owned(20), BALANCE))
+	assert_true(Ledger.deck_is_legal(_deck(12), _owned(20), BALANCE, _words()))
 
 
 func test_a_short_deck_says_how_many_more() -> void:
-	assert_eq(Ledger.deck_refusal(_deck(9), _owned(20), BALANCE), "3 more to choose.")
+	assert_eq(Ledger.deck_refusal(_deck(9), _owned(20), BALANCE, _words()), "3 more to choose.")
 
 
 func test_an_overfull_deck_says_how_many_too_many() -> void:
-	assert_eq(Ledger.deck_refusal(_deck(14), _owned(20), BALANCE), "2 too many.")
+	assert_eq(Ledger.deck_refusal(_deck(14), _owned(20), BALANCE, _words()), "2 too many.")
 
 
 func test_a_deck_cannot_hold_a_card_you_do_not_own() -> void:
-	assert_eq(Ledger.deck_refusal(["C00", "NOPE"], ["C00"], BALANCE), "NOPE is not yours.")
+	assert_eq(Ledger.deck_refusal(["C00", "NOPE"], ["C00"], BALANCE, _words()), "NOPE is not yours.")
 
 
 func test_a_deck_cannot_hold_the_same_card_twice() -> void:
 	var deck := _deck(12)
 	deck[11] = deck[0]
-	assert_eq(Ledger.deck_refusal(deck, _owned(20), BALANCE), "C00 is in twice.")
+	assert_eq(Ledger.deck_refusal(deck, _owned(20), BALANCE, _words()), "C00 is in twice.")
 
 
 func test_the_deck_size_is_a_lever() -> void:

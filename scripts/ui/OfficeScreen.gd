@@ -60,7 +60,7 @@ func _build() -> void:
 	var party := str(player.get("party", ""))
 
 	if name_en.is_empty():
-		_title.text = "The Office"
+		_title.text = Text.say("office.title")
 	elif party.is_empty():
 		_title.text = "%s's Office" % name_en
 	else:
@@ -73,7 +73,7 @@ func _build() -> void:
 		art.art_id = "PROTAGONIST"
 		art.expression = "neutral"
 
-	_start_button.text = "Choose a level"
+	_start_button.text = Text.say("office.choose_level")
 	_report.text = _last_level_report()
 	_refresh_resources()
 
@@ -88,11 +88,11 @@ func _build() -> void:
 ## What stays out here is the warning. A deck that is not legal cannot start
 ## a level, and a player must not have to open a panel to discover that.
 func _refresh_resources() -> void:
-	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance)
+	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance, Text.phrase())
 	if refusal.is_empty():
-		_resources.text = "The office is in order."
+		_resources.text = Text.say("office.in_order")
 	else:
-		_resources.text = "Your deck: %s  —  see Office Management." % refusal
+		_resources.text = Text.say("office.deck_warning", {"reason": refusal})
 
 
 ## What happened last time, if anything has happened yet.
@@ -103,13 +103,13 @@ func _refresh_resources() -> void:
 func _last_level_report() -> String:
 	var outcome: Variant = GameState.last_level_outcome
 	if outcome == null or str(outcome).is_empty():
-		return "Nothing on today. The House sits shortly."
+		return Text.say("office.report.none")
 
 	match str(outcome):
 		LevelRunner.WON:
-			return "The bill carried. Word has got round."
+			return Text.say("office.report.won")
 		LevelRunner.LOST:
-			return "The bill failed. There will be questions."
+			return Text.say("office.report.lost")
 		_:
 			return ""
 
@@ -125,22 +125,23 @@ func _show_management() -> void:
 	var funds := int(GameState.meta.get("Funds", 0))
 	var size := Ledger.deck_size(DataDB.balance)
 
-	rows.append(_heading_label("XP %d" % GameState.xp))
+	rows.append(_heading_label(Text.say("office.xp", {"count": GameState.xp})))
 	rows.append(_wrapped_label(
-		"Earned by winning stages. Buys new cards.", "SmallLabel"))
-	rows.append(_heading_label("Funds %d" % funds))
+		Text.say("office.xp_buys"), "SmallLabel"))
+	rows.append(_heading_label(Text.say("office.funds", {"count": funds})))
 	rows.append(_wrapped_label(
-		"From donors and backers. Buys the organisations' backing.", "SmallLabel"))
+		Text.say("office.funds_buys"), "SmallLabel"))
 
-	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance)
-	rows.append(_heading_label("Deck %d of %d" % [GameState.deck.size(), size]))
+	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance, Text.phrase())
+	rows.append(_heading_label(Text.say("office.deck_count",
+		{"count": GameState.deck.size(), "size": size})))
 	rows.append(_wrapped_label(
-		"Ready to go in." if refusal.is_empty() else refusal, "SmallLabel"))
+		Text.say("office.deck_ready") if refusal.is_empty() else refusal, "SmallLabel"))
 
 	for row: Array in [
-		["New cards", _show_cards],
-		["Your deck", _show_deck],
-		["Backing", _show_backing],
+		[Text.say("office.new_cards"), _show_cards],
+		[Text.say("office.your_deck"), _show_deck],
+		[Text.say("office.backing"), _show_backing],
 	]:
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(0, 100)
@@ -150,7 +151,7 @@ func _show_management() -> void:
 			(row[1] as Callable).call())
 		rows.append(button)
 
-	_management_panel.open("Office Management", rows)
+	_management_panel.open(Text.say("office.management"), rows)
 
 
 ## The ten organisations, and where the player stands with each.
@@ -161,9 +162,7 @@ func _show_management() -> void:
 func _show_organisations() -> void:
 	var rows: Array[Control] = []
 
-	rows.append(_wrapped_label("Answering a reporter in the suit their "
-		+ "question invites pleases the organisation behind it, and that "
-		+ "standing is carried between levels."))
+	rows.append(_wrapped_label(Text.say("office.orgs_blurb")))
 
 	for tier: String in ["Party", "Constituency", "National"]:
 		var in_tier := DataDB.boosters.filter(
@@ -175,7 +174,7 @@ func _show_organisations() -> void:
 		for booster: Dictionary in in_tier:
 			rows.append(_organisation_row(booster))
 
-	_organisations_panel.open("The organisations", rows)
+	_organisations_panel.open(Text.say("office.organisations"), rows)
 
 
 func _organisation_row(booster: Dictionary) -> Control:
@@ -232,9 +231,8 @@ func _wrapped_label(text: String, variation: String = "") -> Label:
 ## remember why you cannot buy something.
 func _show_cards() -> void:
 	var rows: Array[Control] = []
-	rows.append(_wrapped_label("Cards you unlock join your collection. What "
-		+ "you actually take into a debate is chosen on the deck screen."))
-	rows.append(_wrapped_label("XP %d" % GameState.xp, "HeaderLabel"))
+	rows.append(_wrapped_label(Text.say("office.cards_blurb")))
+	rows.append(_wrapped_label(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
 
 	for tier: String in ["Tier 1", "Tier 2"]:
 		var in_tier := DataDB.get_cards_by_tier(tier)
@@ -247,10 +245,10 @@ func _show_cards() -> void:
 	var owned_extra := GameState.owned_cards.size() - DataDB.get_cards_by_tier(Ledger.OPENING_TIER).size()
 	if owned_extra > 0:
 		rows.append(_wrapped_label(""))
-		rows.append(_wrapped_label("%d card%s unlocked so far."
-			% [owned_extra, "" if owned_extra == 1 else "s"], "SmallLabel"))
+		rows.append(_wrapped_label(Text.say("office.cards_unlocked",
+			{"count": owned_extra}), "SmallLabel"))
 
-	_cards_panel.open("New cards", rows)
+	_cards_panel.open(Text.say("office.new_cards"), rows)
 
 
 func _card_row(card: Dictionary) -> Control:
@@ -258,16 +256,18 @@ func _card_row(card: Dictionary) -> Control:
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 2)
 
-	box.add_child(_wrapped_label("%s %s  —  %d XP" % [
-		card.get("name_en", card_id), card.get("name_jp", ""),
-		Ledger.card_cost(card)]))
-	box.add_child(_wrapped_label("%s  ·  %s" % [
-		card.get("suit", ""), card.get("effect_text", "")], "SmallLabel"))
+	box.add_child(_wrapped_label(Text.say("office.card_title", {
+		"name": card.get("name_en", card_id),
+		"name_jp": card.get("name_jp", ""),
+		"cost": Ledger.card_cost(card)})))
+	box.add_child(_wrapped_label(Text.say("office.card_line", {
+		"suit": card.get("suit", ""),
+		"effect": card.get("effect_text", "")}), "SmallLabel"))
 
-	var refusal := Ledger.card_refusal(card, GameState.owned_cards, GameState.xp)
+	var refusal := Ledger.card_refusal(card, GameState.owned_cards, GameState.xp, Text.phrase())
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
-	button.text = "Unlock" if refusal.is_empty() else refusal
+	button.text = Text.say("office.unlock") if refusal.is_empty() else refusal
 	button.disabled = not refusal.is_empty()
 	if refusal.is_empty():
 		button.pressed.connect(_on_buy_card.bind(card_id))
@@ -298,11 +298,12 @@ func _build_deck_screen() -> void:
 	var size := Ledger.deck_size(DataDB.balance)
 	var rows: Array[Control] = []
 
-	var refusal := Ledger.deck_refusal(_draft_deck, GameState.owned_cards, DataDB.balance)
-	rows.append(_wrapped_label("%d of %d chosen%s" % [
-		_draft_deck.size(), size,
-		"" if refusal.is_empty() else "  —  " + refusal], "HeaderLabel"))
-	rows.append(_wrapped_label("Tap a card to take it in or leave it out."))
+	var refusal := Ledger.deck_refusal(_draft_deck, GameState.owned_cards, DataDB.balance, Text.phrase())
+	var warning := ("" if refusal.is_empty()
+		else Text.say("office.deck_warning_suffix", {"reason": refusal}))
+	rows.append(_wrapped_label(Text.say("office.deck_chosen",
+		{"count": _draft_deck.size(), "size": size, "warning": warning}), "HeaderLabel"))
+	rows.append(_wrapped_label(Text.say("office.deck_tap")))
 
 	for card_id: String in GameState.owned_cards:
 		var card := DataDB.get_card(card_id)
@@ -312,8 +313,8 @@ func _build_deck_screen() -> void:
 
 	# Confirmed rather than saved as you go: a half-built deck should not be
 	# able to become the deck you start a level with.
-	_deck_panel.open("Your deck", rows,
-		"Take these in" if refusal.is_empty() else "")
+	_deck_panel.open(Text.say("office.your_deck"), rows,
+		Text.say("office.deck_confirm") if refusal.is_empty() else "")
 
 
 func _deck_row(card: Dictionary, card_id: String) -> Control:
@@ -370,18 +371,16 @@ func _on_deck_confirmed() -> void:
 ## done. Pleasing a group at a press conference is what raises it.
 func _show_backing() -> void:
 	var rows: Array[Control] = []
-	rows.append(_wrapped_label("An organisation backs you once your standing "
-		+ "with it is high enough. Answering a reporter in the suit their "
-		+ "question invites is what raises it."))
-	rows.append(_wrapped_label("Funds %d" % int(GameState.meta.get("Funds", 0)),
-		"HeaderLabel"))
+	rows.append(_wrapped_label(Text.say("office.backing_blurb")))
+	rows.append(_wrapped_label(Text.say("office.funds",
+		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 
 	var names := BattleSetup.booster_names()
 	var for_sale := DataDB.modifiers.filter(
 		func(m: Dictionary) -> bool: return Ledger.is_for_sale(m))
 
 	if for_sale.is_empty():
-		rows.append(_wrapped_label("Nothing is for sale."))
+		rows.append(_wrapped_label(Text.say("office.nothing_for_sale")))
 	for modifier: Dictionary in for_sale:
 		rows.append(_modifier_row(modifier, names))
 
@@ -413,18 +412,16 @@ func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
 	# An effect nothing implements yet is said out loud. A shop that sells
 	# something inert is the trap this project has walked into twice.
 	if ModifierEffects.is_inert_today(modifier, DataDB.modifier_effects):
-		box.add_child(_wrapped_label("No effect yet — your record always "
-			+ "opens clean, so there is nothing here to take off.", "SmallLabel"))
+		box.add_child(_wrapped_label(Text.say("office.no_effect_yet"), "SmallLabel"))
 	elif not ModifierEffects.is_implemented(modifier, DataDB.modifier_effects):
-		box.add_child(_wrapped_label("Not active yet — this effect is still "
-			+ "to be built.", "SmallLabel"))
+		box.add_child(_wrapped_label(Text.say("office.not_active_yet"), "SmallLabel"))
 
 	var refusal := Ledger.modifier_refusal(modifier, GameState.owned_modifiers,
 		int(GameState.meta.get("Funds", 0)), GameState.booster_standing,
-		DataDB.booster_standing, BattleSetup.booster_ids())
+		DataDB.booster_standing, BattleSetup.booster_ids(), Text.phrase())
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
-	button.text = "Take their backing" if refusal.is_empty() else refusal
+	button.text = Text.say("office.take_backing") if refusal.is_empty() else refusal
 	button.disabled = not refusal.is_empty()
 	if refusal.is_empty():
 		button.pressed.connect(_on_buy_modifier.bind(mod_id))

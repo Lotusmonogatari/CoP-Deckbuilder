@@ -607,5 +607,327 @@
     "english": "their interest cools by {count}, whatever you say.",
     "placeholders": "count",
     "notes": null
+  },
+  {
+    "key": "office.title",
+    "where": "Office",
+    "english": "The Office",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.choose_level",
+    "where": "Office — buttons",
+    "english": "Choose a level",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.management",
+    "where": "Office — buttons",
+    "english": "Office Management",
+    "placeholders": null,
+    "notes": "One door for everything you can spend."
+  },
+  {
+    "key": "office.organisations",
+    "where": "Office — buttons",
+    "english": "The organisations",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.in_order",
+    "where": "Office",
+    "english": "The office is in order.",
+    "placeholders": null,
+    "notes": "Shown when your deck is legal and there is nothing to fix."
+  },
+  {
+    "key": "office.deck_warning",
+    "where": "Office",
+    "english": "Your deck: {reason}  —  see Office Management.",
+    "placeholders": "reason",
+    "notes": null
+  },
+  {
+    "key": "office.report.none",
+    "where": "Office",
+    "english": "Nothing on today. The House sits shortly.",
+    "placeholders": null,
+    "notes": "Before your first level."
+  },
+  {
+    "key": "office.report.won",
+    "where": "Office",
+    "english": "The bill carried. Word has got round.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.report.lost",
+    "where": "Office",
+    "english": "The bill failed. There will be questions.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.xp",
+    "where": "Office — management",
+    "english": "XP {count}",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "office.xp_buys",
+    "where": "Office — management",
+    "english": "Earned by winning stages. Buys new cards.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.funds",
+    "where": "Office — management",
+    "english": "Funds {count}",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "office.funds_buys",
+    "where": "Office — management",
+    "english": "From donors and backers. Buys the organisations' backing.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.deck_count",
+    "where": "Office — management",
+    "english": "Deck {count} of {size}",
+    "placeholders": "count, size",
+    "notes": null
+  },
+  {
+    "key": "office.deck_ready",
+    "where": "Office — management",
+    "english": "Ready to go in.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.new_cards",
+    "where": "Office — cards",
+    "english": "New cards",
+    "placeholders": null,
+    "notes": "Panel title and button."
+  },
+  {
+    "key": "office.your_deck",
+    "where": "Office — deck",
+    "english": "Your deck",
+    "placeholders": null,
+    "notes": "Panel title and button."
+  },
+  {
+    "key": "office.backing",
+    "where": "Office — backing",
+    "english": "Backing",
+    "placeholders": null,
+    "notes": "Button into the backing shop."
+  },
+  {
+    "key": "office.cards_blurb",
+    "where": "Office — cards",
+    "english": "Cards you unlock join your collection. What you actually take into a debate is chosen on the deck screen.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.cards_unlocked.one",
+    "where": "Office — cards",
+    "english": "{count} card unlocked so far.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "office.cards_unlocked.other",
+    "where": "Office — cards",
+    "english": "{count} cards unlocked so far.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "office.unlock",
+    "where": "Office — cards",
+    "english": "Unlock",
+    "placeholders": null,
+    "notes": "The button on a card you can afford."
+  },
+  {
+    "key": "office.card_line",
+    "where": "Office — cards",
+    "english": "{suit} · {effect}",
+    "placeholders": "suit, effect",
+    "notes": null
+  },
+  {
+    "key": "office.deck_chosen",
+    "where": "Office — deck",
+    "english": "{count} of {size} chosen{warning}",
+    "placeholders": "count, size, warning",
+    "notes": "{warning} is empty when the deck is legal."
+  },
+  {
+    "key": "office.deck_warning_suffix",
+    "where": "Office — deck",
+    "english": "—  {reason}",
+    "placeholders": "reason",
+    "notes": null
+  },
+  {
+    "key": "office.deck_tap",
+    "where": "Office — deck",
+    "english": "Tap a card to take it in or leave it out.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.deck_confirm",
+    "where": "Office — deck",
+    "english": "Take these in",
+    "placeholders": null,
+    "notes": "Only offered when the deck is legal."
+  },
+  {
+    "key": "office.orgs_blurb",
+    "where": "Office — organisations",
+    "english": "Answering a reporter in the suit their question invites pleases the organisation behind it, and that standing is carried between levels.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.backing_blurb",
+    "where": "Office — backing",
+    "english": "An organisation backs you once your standing with it is high enough. Answering a reporter in the suit their question invites is what raises it.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.nothing_for_sale",
+    "where": "Office — backing",
+    "english": "Nothing is for sale.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.take_backing",
+    "where": "Office — backing",
+    "english": "Take their backing",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.no_effect_yet",
+    "where": "Office — backing",
+    "english": "No effect yet — your record always opens clean, so there is nothing here to take off.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.not_active_yet",
+    "where": "Office — backing",
+    "english": "Not active yet — this effect is still to be built.",
+    "placeholders": null,
+    "notes": "Six of the fifteen organisations' effects need machinery that is not built."
+  },
+  {
+    "key": "shop.card_no_id",
+    "where": "Shop — refusals",
+    "english": "This card has no ID.",
+    "placeholders": null,
+    "notes": "Should never be seen; it means the data is broken."
+  },
+  {
+    "key": "shop.already_yours",
+    "where": "Shop — refusals",
+    "english": "Already yours.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.xp_short",
+    "where": "Shop — refusals",
+    "english": "{count} XP short.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "shop.mod_no_id",
+    "where": "Shop — refusals",
+    "english": "This modifier has no ID.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.not_for_sale",
+    "where": "Shop — refusals",
+    "english": "Not for sale.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.standing_needed",
+    "where": "Shop — refusals",
+    "english": "Standing {have} of {needed} needed.",
+    "placeholders": "have, needed",
+    "notes": null
+  },
+  {
+    "key": "shop.funds_short",
+    "where": "Shop — refusals",
+    "english": "{count} short.",
+    "placeholders": "count",
+    "notes": "Funds, not XP — the sentence sits under a Funds heading."
+  },
+  {
+    "key": "shop.not_yours",
+    "where": "Shop — refusals",
+    "english": "{card} is not yours.",
+    "placeholders": "card",
+    "notes": null
+  },
+  {
+    "key": "shop.in_twice",
+    "where": "Shop — refusals",
+    "english": "{card} is in twice.",
+    "placeholders": "card",
+    "notes": null
+  },
+  {
+    "key": "shop.more_to_choose",
+    "where": "Shop — refusals",
+    "english": "{count} more to choose.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "shop.too_many",
+    "where": "Shop — refusals",
+    "english": "{count} too many.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "office.card_title",
+    "where": "Office — cards",
+    "english": "{name} {name_jp}  —  {cost} XP",
+    "placeholders": "name, name_jp, cost",
+    "notes": null
+  },
+  {
+    "key": "office.where_you_stand",
+    "where": "Office",
+    "english": "Where you stand",
+    "placeholders": null,
+    "notes": "Heading above your four standings. Browser build only so far; the Godot Office shows them without a heading."
   }
 ]

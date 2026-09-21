@@ -112,7 +112,7 @@ func reset_collection() -> void:
 ## you take in is a separate decision, made on the deck screen.
 func buy_card(card_id: String) -> String:
 	var card := DataDB.get_card(card_id)
-	var refusal := Ledger.card_refusal(card, owned_cards, xp)
+	var refusal := Ledger.card_refusal(card, owned_cards, xp, Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 
@@ -126,7 +126,7 @@ func buy_modifier(mod_id: String) -> String:
 	var modifier := DataDB.get_modifier(mod_id)
 	var refusal := Ledger.modifier_refusal(modifier, owned_modifiers,
 		int(meta.get("Funds", 0)), booster_standing, DataDB.booster_standing,
-		BattleSetup.booster_ids())
+		BattleSetup.booster_ids(), Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 
@@ -141,7 +141,7 @@ func buy_modifier(mod_id: String) -> String:
 
 ## Replaces the deck, if the new one is legal.
 func set_deck(chosen: Array[String]) -> String:
-	var refusal := Ledger.deck_refusal(chosen, owned_cards, DataDB.balance)
+	var refusal := Ledger.deck_refusal(chosen, owned_cards, DataDB.balance, Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 

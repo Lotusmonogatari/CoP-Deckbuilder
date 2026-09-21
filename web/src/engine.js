@@ -1724,16 +1724,39 @@ function applyScoreEffects(meta, stage, score, sanbanRows) {
 // rename is one line. Mirrors Ledger.OPENING_TIER.
 const OPENING_TIER = '0';
 
+// The wording, handed in rather than held here — the mirror of Phrase.gd.
+// Called without a table every refusal comes back as its key, which is what
+// the headless fixtures in tests.js see.
+function phrase(table) {
+  const lines = table || {};
+  return function say(key, values) {
+    values = values || {};
+    let template = null;
+    if (Object.prototype.hasOwnProperty.call(values, 'count')) {
+      const suffix = int(values.count, 0) === 1 ? '.one' : '.other';
+      if (lines[key + suffix] !== undefined) template = lines[key + suffix];
+    }
+    if (template === null && lines[key] !== undefined) template = lines[key];
+    if (template === null) return key;
+    let filled = template;
+    for (const name of Object.keys(values)) {
+      filled = filled.split('{' + name + '}').join(String(values[name]));
+    }
+    return filled;
+  };
+}
+
 function cardCost(card) { return int(card.xp_to_unlock, 0); }
 
-function cardRefusal(card, owned, xp) {
+function cardRefusal(card, owned, xp, words) {
+  const say = words || phrase();
   const cardId = str(card.card_id, '');
-  if (!cardId) return 'This card has no ID.';
-  if (owned.includes(cardId)) return 'Already yours.';
+  if (!cardId) return say('shop.card_no_id');
+  if (owned.includes(cardId)) return say('shop.already_yours');
 
   const cost = cardCost(card);
   if (cost <= 0) return '';
-  if (xp < cost) return (cost - xp) + ' XP short.';
+  if (xp < cost) return say('shop.xp_short', {count: cost - xp});
   return '';
 }
 
@@ -1763,11 +1786,12 @@ function backingBooster(modifier, boosterIds) {
   return boosterIds.includes(source) ? source : '';
 }
 
-function modifierRefusal(modifier, owned, funds, standing, settings, boosterIds) {
+function modifierRefusal(modifier, owned, funds, standing, settings, boosterIds, words) {
+  const say = words || phrase();
   const modId = str(modifier.mod_id, '');
-  if (!modId) return 'This modifier has no ID.';
-  if (owned.includes(modId)) return 'Already yours.';
-  if (!isForSale(modifier)) return 'Not for sale.';
+  if (!modId) return say('shop.mod_no_id');
+  if (owned.includes(modId)) return say('shop.already_yours');
+  if (!isForSale(modifier)) return say('shop.not_for_sale');
 
   // Standing first: being told the price of something you are not allowed
   // to buy is worse than being told why you cannot buy it.
@@ -1775,11 +1799,11 @@ function modifierRefusal(modifier, owned, funds, standing, settings, boosterIds)
   if (booster) {
     const needed = standingNeeded(modifier, settings);
     const have = int(standing[booster], 0);
-    if (have < needed) return 'Standing ' + have + ' of ' + needed + ' needed.';
+    if (have < needed) return say('shop.standing_needed', {have: have, needed: needed});
   }
 
   const cost = modifierCost(modifier);
-  if (funds < cost) return (cost - funds) + ' short.';
+  if (funds < cost) return say('shop.funds_short', {count: cost - funds});
   return '';
 }
 
@@ -1787,19 +1811,20 @@ function deckSize(balance) { return Math.max(int(balance.starter_deck_size, 12),
 
 // Exact rather than "at least": with no upgrades and a growing card set,
 // the only thing making an unlock a decision is having to leave something out.
-function deckRefusal(deck, owned, balance) {
+function deckRefusal(deck, owned, balance, words) {
+  const say = words || phrase();
   const wanted = deckSize(balance);
 
   for (const cardId of deck) {
-    if (!owned.includes(cardId)) return cardId + ' is not yours.';
+    if (!owned.includes(cardId)) return say('shop.not_yours', {card: cardId});
   }
   const seen = {};
   for (const cardId of deck) {
-    if (seen[cardId]) return cardId + ' is in twice.';
+    if (seen[cardId]) return say('shop.in_twice', {card: cardId});
     seen[cardId] = true;
   }
-  if (deck.length < wanted) return (wanted - deck.length) + ' more to choose.';
-  if (deck.length > wanted) return (deck.length - wanted) + ' too many.';
+  if (deck.length < wanted) return say('shop.more_to_choose', {count: wanted - deck.length});
+  if (deck.length > wanted) return say('shop.too_many', {count: deck.length - wanted});
   return '';
 }
 

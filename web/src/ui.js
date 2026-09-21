@@ -132,7 +132,7 @@ function showOffice() {
   // The player's standing. Nothing else in the level shows these, and the
   // press conference now moves one of them.
   const standing = el('section', 'standing');
-  standing.append(el('h2', 'label', 'Where you stand'));
+  standing.append(el('h2', 'label', T('office.where_you_stand')));
   const grid = el('dl', 'standing-grid');
   for (const row of DATA.sanban) {
     const change = run.lastMetaChange[row.name_en];
@@ -148,7 +148,7 @@ function showOffice() {
   standing.append(grid);
   root.append(standing);
 
-  const start = el('button', 'primary', 'Go to the House');
+  const start = el('button', 'primary', T('office.choose_level'));
   start.id = 'start-level';
   start.addEventListener('click', showLevels);
   root.append(start);
@@ -160,19 +160,19 @@ function showOffice() {
   //
   // What stays out here is the warning: a deck that is not legal cannot
   // start a level, and a player must not have to open a panel to find out.
-  const deckSay = deckRefusal(run.deck, run.ownedCards, DATA.balance || {});
+  const deckSay = deckRefusal(run.deck, run.ownedCards, DATA.balance || {}, phrase(STRINGS));
   const spend = el('p', 'office-report', deckSay
-    ? 'Your deck: ' + deckSay + '  —  see Office Management.'
-    : 'The office is in order.');
+    ? T('office.deck_warning', {reason: deckSay})
+    : T('office.in_order'));
   root.append(spend);
 
-  const management = el('button', 'ghost', 'Office Management');
+  const management = el('button', 'ghost', T('office.management'));
   management.id = 'office-management';
   management.addEventListener('click', showManagement);
   root.append(management);
 
   // Who is behind you, and how far. Secondary, so it lives behind a button.
-  const orgs = el('button', 'ghost', 'The organisations');
+  const orgs = el('button', 'ghost', T('office.organisations'));
   orgs.id = 'organisations';
   orgs.addEventListener('click', showOrganisations);
   root.append(orgs);
@@ -181,9 +181,9 @@ function showOffice() {
 }
 
 function lastLevelReport() {
-  if (!run.lastLevelOutcome) return 'Nothing on today. The House sits shortly.';
-  if (run.lastLevelOutcome === WON) return 'The bill carried. Word has got round.';
-  return 'The bill failed. There will be questions.';
+  if (!run.lastLevelOutcome) return T('office.report.none');
+  if (run.lastLevelOutcome === WON) return T('office.report.won');
+  return T('office.report.lost');
 }
 
 // Everything there is to spend, and everything to spend it on.
@@ -193,26 +193,26 @@ function lastLevelReport() {
 // if nothing says that Funds are what backing costs. Mirrors
 // OfficeScreen._show_management.
 function showManagement() {
-  overlay('Office Management', sheet => {
+  overlay(T('office.management'), sheet => {
     const money = [
-      ['XP ' + run.xp, 'Earned by winning stages. Buys new cards.'],
+      ['XP ' + run.xp, T('office.xp_buys')],
       ['Funds ' + int(run.meta.Funds, 0),
-        "From donors and backers. Buys the organisations' backing."],
+        T('office.funds_buys')],
     ];
     for (const [heading, note] of money) {
       sheet.append(el('h2', 'org-tier', heading));
       sheet.append(el('p', 'org-boosts', note));
     }
 
-    const refusal = deckRefusal(run.deck, run.ownedCards, DATA.balance || {});
+    const refusal = deckRefusal(run.deck, run.ownedCards, DATA.balance || {}, phrase(STRINGS));
     sheet.append(el('h2', 'org-tier',
       'Deck ' + run.deck.length + ' of ' + deckSize(DATA.balance || {})));
-    sheet.append(el('p', 'org-boosts', refusal || 'Ready to go in.'));
+    sheet.append(el('p', 'org-boosts', refusal || T('office.deck_ready')));
 
     for (const [label, id, handler] of [
-      ['New cards', 'new-cards', showCardShop],
-      ['Your deck', 'your-deck', showDeckScreen],
-      ['Backing', 'backing', showBackingShop],
+      [T('office.new_cards'), 'new-cards', showCardShop],
+      [T('office.your_deck'), 'your-deck', showDeckScreen],
+      [T('office.backing'), 'backing', showBackingShop],
     ]) {
       const button = el('button', 'ghost', label);
       button.id = id;
@@ -369,10 +369,8 @@ function startLevel() {
 // distinction: a Constituency group is worth something different from a
 // National one, and seeing them mixed hides that.
 function showOrganisations() {
-  overlay('The organisations', sheet => {
-    sheet.append(el('p', 'detail-line', 'Answering a reporter in the suit '
-      + 'their question invites pleases the organisation behind it, and that '
-      + 'standing is carried between levels.'));
+  overlay(T('office.organisations'), sheet => {
+    sheet.append(el('p', 'detail-line', T('office.orgs_blurb')));
 
     for (const tier of ['Party', 'Constituency', 'National']) {
       const inTier = DATA.boosters.filter(b => b.tier === tier);
@@ -413,10 +411,8 @@ function showOrganisations() {
 // rules would refuse.
 
 function showCardShop() {
-  overlay('New cards', sheet => {
-    sheet.append(el('p', 'detail-line', 'Cards you unlock join your '
-      + 'collection. What you actually take into a debate is chosen on the '
-      + 'deck screen.'));
+  overlay(T('office.new_cards'), sheet => {
+    sheet.append(el('p', 'detail-line', T('office.cards_blurb')));
     sheet.append(el('h3', 'org-tier', 'XP ' + run.xp));
 
     for (const tier of ['Tier 1', 'Tier 2']) {
@@ -429,8 +425,8 @@ function showCardShop() {
         row.append(el('p', 'org-name', card.name_en + '  —  ' + cardCost(card) + ' XP'));
         row.append(el('p', 'org-boosts', card.suit + '  ·  ' + (card.effect_text || '')));
 
-        const refusal = cardRefusal(card, run.ownedCards, run.xp);
-        const buy = el('button', refusal ? 'ghost' : 'primary', refusal || 'Unlock');
+        const refusal = cardRefusal(card, run.ownedCards, run.xp, phrase(STRINGS));
+        const buy = el('button', refusal ? 'ghost' : 'primary', refusal || T('office.unlock'));
         buy.disabled = !!refusal;
         if (!refusal) {
           buy.addEventListener('click', () => {
@@ -461,11 +457,11 @@ function showDeckScreen() {
 
   const build = () => {
     document.querySelectorAll('.backdrop').forEach(n => n.remove());
-    overlay('Your deck', sheet => {
-      const refusal = deckRefusal(draft, run.ownedCards, DATA.balance || {});
+    overlay(T('office.your_deck'), sheet => {
+      const refusal = deckRefusal(draft, run.ownedCards, DATA.balance || {}, phrase(STRINGS));
       sheet.append(el('h3', 'org-tier', draft.length + ' of '
         + deckSize(DATA.balance || {}) + ' chosen' + (refusal ? '  —  ' + refusal : '')));
-      sheet.append(el('p', 'detail-line', 'Tap a card to take it in or leave it out.'));
+      sheet.append(el('p', 'detail-line', T('office.deck_tap')));
 
       for (const cardId of run.ownedCards) {
         const card = DATA.cards.find(c => c.card_id === cardId);
@@ -495,7 +491,7 @@ function showDeckScreen() {
       }
 
       if (!refusal) {
-        const save = el('button', 'primary', 'Take these in');
+        const save = el('button', 'primary', T('office.deck_confirm'));
         save.id = 'deck-save';
         save.addEventListener('click', () => {
           run.deck = draft.slice();
@@ -518,10 +514,8 @@ function showDeckScreen() {
 // An organisation will not sell you its backing until you have given it
 // reason to — the first thing standing has ever done.
 function showBackingShop() {
-  overlay('Backing', sheet => {
-    sheet.append(el('p', 'detail-line', 'An organisation backs you once your '
-      + 'standing with it is high enough. Answering a reporter in the suit '
-      + 'their question invites is what raises it.'));
+  overlay(T('office.backing'), sheet => {
+    sheet.append(el('p', 'detail-line', T('office.backing_blurb')));
     sheet.append(el('h3', 'org-tier', 'Funds ' + int(run.meta.Funds, 0)));
 
     const names = boosterNames(DATA);
@@ -547,17 +541,16 @@ function showBackingShop() {
       // A shop that sells something inert is the trap this project has
       // walked into twice.
       if (effectIsInertToday(modifier, bridge)) {
-        row.append(el('p', 'org-boosts', 'No effect yet — your record always '
-          + 'opens clean, so there is nothing here to take off.'));
+        row.append(el('p', 'org-boosts', T('office.no_effect_yet')));
       } else if (!effectIsImplemented(modifier, bridge)) {
         row.append(el('p', 'org-boosts',
-          'Not active yet — this effect is still to be built.'));
+          T('office.not_active_yet')));
       }
 
       const refusal = modifierRefusal(modifier, run.ownedModifiers,
-        int(run.meta.Funds, 0), run.boosterStanding, settings, ids);
+        int(run.meta.Funds, 0), run.boosterStanding, settings, ids, phrase(STRINGS));
       const buy = el('button', refusal ? 'ghost' : 'primary',
-        refusal || 'Take their backing');
+        refusal || T('office.take_backing'));
       buy.disabled = !!refusal;
       if (!refusal) {
         buy.addEventListener('click', () => {

@@ -18,6 +18,13 @@ extends RefCounted
 ##   Funds  the Kaban meta-variable, earned the same way, spent on the
 ##          organisations' modifiers.
 ##
+## THE WORDING COMES IN, IT IS NOT HELD HERE. Every refusal below is a
+## sentence a player reads on a button, so it belongs in the workbook with
+## the rest of the prose. This file is pure rules and cannot reach an
+## autoload, so a caller hands it a Phrase — the same table, arriving the way
+## `balance` and `settings` already arrive. Left out, the refusals come back
+## as their keys, which is what the headless tests see and is harmless.
+##
 ## Cards have no upgrades: Cameron settled that. XP buys new cards out of a
 ## growing set, and the deck is a fixed size, so taking a new card in means
 ## leaving one out. That trade is the whole point of the deck screen.
@@ -49,23 +56,26 @@ static func card_cost(card: Dictionary) -> int:
 ## Returns an empty string when it can. Anything else is the reason, ready to
 ## put on screen: a refusal the player cannot read is the same as a button
 ## that does nothing.
-static func card_refusal(card: Dictionary, owned: Array, xp: int) -> String:
+static func card_refusal(card: Dictionary, owned: Array, xp: int,
+		words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
 	var card_id := str(card.get("card_id", ""))
 	if card_id.is_empty():
-		return "This card has no ID."
+		return say.say("shop.card_no_id")
 	if owned.has(card_id):
-		return "Already yours."
+		return say.say("shop.already_yours")
 
 	var cost := card_cost(card)
 	if cost <= 0:
 		return ""   # a free card you somehow do not own: let it through
 	if xp < cost:
-		return "%d XP short." % (cost - xp)
+		return say.say("shop.xp_short", {"count": cost - xp})
 	return ""
 
 
-static func can_buy_card(card: Dictionary, owned: Array, xp: int) -> bool:
-	return card_refusal(card, owned, xp) == AFFORDABLE
+static func can_buy_card(card: Dictionary, owned: Array, xp: int,
+		words: Phrase = null) -> bool:
+	return card_refusal(card, owned, xp, words) == AFFORDABLE
 
 
 # ---------------------------------------------------------------------------
@@ -112,14 +122,16 @@ static func backing_booster(modifier: Dictionary, booster_ids: Array) -> String:
 
 ## Whether a modifier can be bought, and if not, why not.
 static func modifier_refusal(modifier: Dictionary, owned: Array, funds: int,
-		standing: Dictionary, settings: Dictionary, booster_ids: Array) -> String:
+		standing: Dictionary, settings: Dictionary, booster_ids: Array,
+		words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
 	var mod_id := str(modifier.get("mod_id", ""))
 	if mod_id.is_empty():
-		return "This modifier has no ID."
+		return say.say("shop.mod_no_id")
 	if owned.has(mod_id):
-		return "Already yours."
+		return say.say("shop.already_yours")
 	if not is_for_sale(modifier):
-		return "Not for sale."
+		return say.say("shop.not_for_sale")
 
 	# Standing first: being told the price of something you are not allowed
 	# to buy is worse than being told why you cannot buy it.
@@ -128,18 +140,20 @@ static func modifier_refusal(modifier: Dictionary, owned: Array, funds: int,
 		var needed := standing_needed(modifier, settings)
 		var have := int(standing.get(booster, 0))
 		if have < needed:
-			return "Standing %d of %d needed." % [have, needed]
+			return say.say("shop.standing_needed",
+				{"have": have, "needed": needed})
 
 	var cost := modifier_cost(modifier)
 	if funds < cost:
-		return "%d short." % (cost - funds)
+		return say.say("shop.funds_short", {"count": cost - funds})
 	return ""
 
 
 static func can_buy_modifier(modifier: Dictionary, owned: Array, funds: int,
-		standing: Dictionary, settings: Dictionary, booster_ids: Array) -> bool:
+		standing: Dictionary, settings: Dictionary, booster_ids: Array,
+		words: Phrase = null) -> bool:
 	return modifier_refusal(modifier, owned, funds, standing, settings,
-		booster_ids) == AFFORDABLE
+		booster_ids, words) == AFFORDABLE
 
 
 # ---------------------------------------------------------------------------
@@ -157,28 +171,31 @@ static func deck_size(balance: Dictionary) -> int:
 ## rather than "at least" on purpose: with no upgrades and a growing card
 ## set, the only thing making an unlock a decision is having to leave
 ## something out.
-static func deck_refusal(deck: Array, owned: Array, balance: Dictionary) -> String:
+static func deck_refusal(deck: Array, owned: Array, balance: Dictionary,
+		words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
 	var wanted := deck_size(balance)
 
 	for card_id: String in deck:
 		if not owned.has(card_id):
-			return "%s is not yours." % card_id
+			return say.say("shop.not_yours", {"card": card_id})
 
 	var seen := {}
 	for card_id: String in deck:
 		if seen.has(card_id):
-			return "%s is in twice." % card_id
+			return say.say("shop.in_twice", {"card": card_id})
 		seen[card_id] = true
 
 	if deck.size() < wanted:
-		return "%d more to choose." % (wanted - deck.size())
+		return say.say("shop.more_to_choose", {"count": wanted - deck.size()})
 	if deck.size() > wanted:
-		return "%d too many." % (deck.size() - wanted)
+		return say.say("shop.too_many", {"count": deck.size() - wanted})
 	return ""
 
 
-static func deck_is_legal(deck: Array, owned: Array, balance: Dictionary) -> bool:
-	return deck_refusal(deck, owned, balance) == AFFORDABLE
+static func deck_is_legal(deck: Array, owned: Array, balance: Dictionary,
+		words: Phrase = null) -> bool:
+	return deck_refusal(deck, owned, balance, words) == AFFORDABLE
 
 
 ## The deck a new run starts with.

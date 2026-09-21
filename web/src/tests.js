@@ -1448,6 +1448,24 @@ function runRuleChecks(data) {
   const BAL = { starter_deck_size: 12 };
   const STANDING_SETTINGS = { required_standing: 60 };
   const BOOSTER_IDS = ['BO01', 'BO03', 'BO08'];
+  // A SMALL TABLE OF OUR OWN, not the workbook's.
+  //
+  // These checks used to assert Cameron's exact wording — '17 XP short.' —
+  // which made the cross-engine check fail the moment he reworded a line,
+  // reporting that the two engines had drifted when they had not. The job
+  // here is "did the rule pick the right refusal, and did the right number
+  // reach it", so the wording is a fixture and his is left alone.
+  const REFUSALS = phrase({
+    'shop.already_yours': 'already yours',
+    'shop.not_for_sale': 'not for sale',
+    'shop.xp_short': 'short by {count} xp',
+    'shop.funds_short': 'short by {count}',
+    'shop.standing_needed': 'standing {have} of {needed}',
+    'shop.more_to_choose': 'choose {count} more',
+    'shop.too_many': '{count} too many',
+    'shop.not_yours': '{card} not yours',
+  });
+
   const aCard = o => Object.assign(
     { card_id: 'C99', tier: 'Tier 1', xp_to_unlock: 60 }, o || {});
   const aMod = o => Object.assign(
@@ -1455,25 +1473,25 @@ function runRuleChecks(data) {
     o || {});
 
   check('a card you cannot afford says how short you are', () => {
-    eq(cardRefusal(aCard(), [], 43), '17 XP short.');
+    eq(cardRefusal(aCard(), [], 43, REFUSALS), 'short by 17 xp');
     eq(cardRefusal(aCard(), [], 60), '', 'exactly enough is enough');
   });
 
   check('a card you already own cannot be bought twice', () => {
-    eq(cardRefusal(aCard(), ['C99'], 999), 'Already yours.');
+    eq(cardRefusal(aCard(), ['C99'], 999, REFUSALS), 'already yours');
   });
 
   check('standing is checked before the price', () => {
     // Being told the price of something you may not buy is worse than
     // being told why you may not buy it.
-    eq(modifierRefusal(aMod(), [], 0, { BO03: 10 }, STANDING_SETTINGS, BOOSTER_IDS),
-      'Standing 10 of 60 needed.');
+    eq(modifierRefusal(aMod(), [], 0, { BO03: 10 }, STANDING_SETTINGS,
+      BOOSTER_IDS, REFUSALS), 'standing 10 of 60');
   });
 
   check('a backed modifier you can afford is yours', () => {
     eq(modifierRefusal(aMod(), [], 30, { BO03: 60 }, STANDING_SETTINGS, BOOSTER_IDS), '');
-    eq(modifierRefusal(aMod(), [], 12, { BO03: 99 }, STANDING_SETTINGS, BOOSTER_IDS),
-      '8 short.');
+    eq(modifierRefusal(aMod(), [], 12, { BO03: 99 }, STANDING_SETTINGS,
+      BOOSTER_IDS, REFUSALS), 'short by 8');
   });
 
   check('a modifier with no price is not for sale', () => {
@@ -1492,9 +1510,9 @@ function runRuleChecks(data) {
     const owned = [];
     for (let i = 0; i < 20; i++) owned.push('C' + i);
     eq(deckRefusal(owned.slice(0, 12), owned, BAL), '');
-    eq(deckRefusal(owned.slice(0, 9), owned, BAL), '3 more to choose.');
-    eq(deckRefusal(owned.slice(0, 14), owned, BAL), '2 too many.');
-    eq(deckRefusal(['C0', 'NOPE'], ['C0'], BAL), 'NOPE is not yours.');
+    eq(deckRefusal(owned.slice(0, 9), owned, BAL, REFUSALS), 'choose 3 more');
+    eq(deckRefusal(owned.slice(0, 14), owned, BAL, REFUSALS), '2 too many');
+    eq(deckRefusal(['C0', 'NOPE'], ['C0'], BAL, REFUSALS), 'NOPE not yours');
   });
 
   check('a new run opens with the opening-tier cards', () => {
