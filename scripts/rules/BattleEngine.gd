@@ -750,11 +750,19 @@ func _check_turn_limit() -> void:
 	# later stages of the level draw on it.
 	if state.win_mode == "score":
 		# In the units the stage is read in: a caucus counted as a share of
-		# the room should not close on a headcount.
+		# the room should not close on a headcount, and a TV debate should
+		# close on press tone rather than on "support".
 		var closing := ("%d%% of the room" % state.player_score()
 			if bool(_stage.get("bar_as_percent", false))
-			else "%d support" % state.player_score())
-		_finish("win", "The caucus closed with %s." % closing)
+			else "%d %s" % [state.player_score(),
+				str(_stage.get("bar_unit", "support")).to_lower()])
+
+		# NAMED FROM THE STAGE. Three kinds of stage are scored — the caucus,
+		# the town hall and the TV debate — and this said "the caucus closed"
+		# for all three until a playtest screenshot caught a TV debate
+		# claiming to be one.
+		var what := str(_stage.get("name_en", "")).strip_edges()
+		_finish("win", "%s closed on %s." % [what if not what.is_empty() else "It", closing])
 		return
 
 	match str(_rules.get("turn_limit_outcome", "loss")):

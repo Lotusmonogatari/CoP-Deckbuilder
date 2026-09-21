@@ -1316,21 +1316,40 @@ function showDetails() {
   });
 }
 
+// How this level signs off, in its own words or in none.
+function levelSignOff(key) {
+  const level = (run.runner && run.runner.level) || {};
+  const written = str(level[key], '').trim();
+  if (written) return written;
+
+  const name = str(level.name_en, '').trim();
+  return name ? name + ' is behind you.' : 'That is the end of it.';
+}
+
 function showOutcome() {
   const engine = run.engine;
   const s = engine.state;
 
   let title = { win: 'Carried', loss: 'Defeated', retry: 'No decision' }[s.outcome] || s.outcome;
-  if (s.win_mode === 'score' && s.outcome === 'win') title = 'Caucus closed';
-  else if (engine.isPressConference() && s.outcome === 'win') title = 'Conference over';
+  // Named from the stage. Three kinds of stage are scored — the caucus, the
+  // town hall and the TV debate — and this said "Caucus closed" for all
+  // three, so a TV debate ended by announcing it was a caucus.
+  if (s.win_mode === 'score' && s.outcome === 'win') {
+    title = (str(run.stage.name_en, '').trim() || 'It') + ' closed';
+  } else if (engine.isPressConference() && s.outcome === 'win') {
+    title = 'Conference over';
+  }
 
   // A stage whose score carries has to say so here, or the player never finds
   // out: the consequence lands in a stage they have not reached yet.
+  //
   // "Carried" on its own is a word, not an ending. The last stage of a level
-  // is the bill being adopted, and it should read like it.
+  // signs off IN THE LEVEL'S OWN WORDS, from levels.json. It used to say "you
+  // convinced Parliament and your bill was adopted" whatever the level was,
+  // so a media circuit and a research circuit both ended by announcing a bill
+  // that never existed. A level with nothing written yet names itself.
   const lastStage = run.runner.index + 1 >= run.runner.stageCount();
-  const headline = (s.outcome === 'win' && lastStage)
-    ? 'You convinced Parliament and your bill was adopted.' : '';
+  const headline = (s.outcome === 'win' && lastStage) ? levelSignOff('win_text') : '';
 
   const lines = [s.outcome_reason];
   const score = s.playerScore();

@@ -205,6 +205,8 @@
    "name_en": "TV Debate",
    "name_jp": "テレビ討論",
    "affinity_stage_id": "ST06",
+   "_note_bar": "One bar, not a room. A TV debate is a press-tone stage like the conference: there is no undecided pile and no opposing headcount, so a card that only reduces the opponent does nothing here. Declared rather than guessed — it used to be recognised by the ID ST06, which a generated stage never has.",
+   "bar_model": "single",
    "_shape": "Ten turns, ten points of energy, and three gaffes is the end of you. No refills either way.",
    "_note": "Cameron's 2026-09-21 definition, which replaces the survival model in CLAUDE.md 7.3 for this stage.",
    "energy_mode": "pool",

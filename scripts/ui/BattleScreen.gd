@@ -616,8 +616,13 @@ func _show_outcome(state: BattleState) -> void:
 		return
 
 	# A scored stage was never won or lost, so "Carried" would be wrong.
+	#
+	# Named from the stage. Three kinds of stage are scored — the caucus, the
+	# town hall and the TV debate — and this said "Caucus closed" for all
+	# three, so a TV debate ended by announcing it was a caucus.
 	if state.win_mode == "score" and state.outcome == "win":
-		_outcome_title.text = "Caucus closed"
+		var what := str(_stage.get("name_en", "")).strip_edges()
+		_outcome_title.text = "%s closed" % (what if not what.is_empty() else "It")
 	elif engine.is_press_conference() and state.outcome == "win":
 		_outcome_title.text = "Conference over"
 	else:
@@ -627,12 +632,17 @@ func _show_outcome(state: BattleState) -> void:
 			"retry": "No decision",
 		}.get(state.outcome, state.outcome)
 
-	# "Carried" on its own is a word, not an ending. The last stage of a
-	# level is the bill being adopted, and it should read like it.
+	# "Carried" on its own is a word, not an ending. The last stage of a level
+	# should read like the end of something.
+	#
+	# IN THE LEVEL'S OWN WORDS, from levels.json. It used to say "you
+	# convinced Parliament and your bill was adopted" whatever the level was,
+	# so a media circuit and a research circuit both ended by announcing a
+	# bill that never existed. A level with nothing written yet names itself
+	# instead, which is true of any of them.
 	if state.outcome == "win" and _is_last_stage_of_level():
 		_outcome_title.text = "Carried"
-		_outcome_headline.text = ("You convinced Parliament and your bill "
-			+ "was adopted.")
+		_outcome_headline.text = _level_sign_off("win_text")
 		_outcome_headline.show()
 	else:
 		_outcome_headline.hide()
@@ -721,6 +731,22 @@ func _outcome_text(state: BattleState) -> String:
 ##
 ## The runner has not advanced yet when this is asked, so "current" is still
 ## the stage that just finished.
+## How this level signs off, in its own words or in none.
+func _level_sign_off(key: String) -> String:
+	if not GameState.is_in_level():
+		return ""
+
+	var level: Dictionary = GameState.level_runner.level
+	var written := str(level.get(key, "")).strip_edges()
+	if not written.is_empty():
+		return written
+
+	var name_en := str(level.get("name_en", "")).strip_edges()
+	if name_en.is_empty():
+		return "That is the end of it."
+	return "%s is behind you." % name_en
+
+
 func _is_last_stage_of_level() -> bool:
 	if not GameState.is_in_level():
 		return false

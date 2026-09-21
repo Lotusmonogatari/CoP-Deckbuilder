@@ -1778,3 +1778,86 @@ func test_a_town_hall_keeps_the_clock_but_refreshes_the_energy() -> void:
 	assert_eq(engine.state.turn, 6, "and so does the clock")
 	assert_eq(engine.state.energy, engine.state.energy_per_turn,
 		"but the next person gets your full attention")
+
+
+# ---------------------------------------------------------------------------
+# The ending is named from the stage
+# ---------------------------------------------------------------------------
+# Three kinds of stage are scored — the caucus, the town hall and the TV
+# debate — and all three used to close by announcing they were a caucus.
+
+func _scored_stage(overrides: Dictionary = {}) -> Dictionary:
+	var stage := TestFixtures.stage({
+		"stage_id": "SCORED", "name_en": "TV Debate",
+		"win_mode": "score", "turn_limit": 1,
+		"bar_unit": "Press tone", "bar_max": 100,
+		"player_start": 40, "opp_start": 40,
+	})
+	stage.merge(overrides, true)
+	return {"stage": stage}
+
+
+func test_a_scored_stage_closes_in_its_own_name() -> void:
+	var engine := _start(_scored_stage())
+	engine.end_turn()
+
+	assert_true(engine.state.is_over())
+	assert_string_contains(engine.state.outcome_reason, "TV Debate closed on")
+	assert_false(engine.state.outcome_reason.to_lower().contains("caucus"),
+		"a TV debate is not a caucus: %s" % engine.state.outcome_reason)
+
+
+func test_a_scored_stage_closes_in_its_own_units() -> void:
+	# "34 support" on a press tone bar was how the wrong unit showed up.
+	var engine := _start(_scored_stage())
+	engine.end_turn()
+	assert_string_contains(engine.state.outcome_reason, "press tone")
+
+
+func test_a_stage_counted_as_a_share_still_closes_on_a_share() -> void:
+	var engine := _start(_scored_stage({
+		"name_en": "Party Caucus", "bar_as_percent": true,
+	}))
+	engine.end_turn()
+	assert_string_contains(engine.state.outcome_reason, "% of the room")
+	assert_string_contains(engine.state.outcome_reason, "Party Caucus closed on")
+
+
+# ---------------------------------------------------------------------------
+# A stage says what kind of bar it wants
+# ---------------------------------------------------------------------------
+
+func test_a_stage_can_declare_its_own_bar() -> void:
+	# THE BUG THIS EXISTS FOR. The model used to be picked by matching the
+	# literal IDs "ST04" and "ST06", which the six levels never have: they
+	# generate theirs from the type and the sequence. The TV debate was
+	# therefore a room full of undecided people with a bar labelled "Press
+	# tone", for three versions, until a playtest screenshot caught it.
+	assert_eq(BarModel.for_stage({"stage_id": "TV_DEBATE_2", "bar_model": "single"}),
+		BarModel.Model.SINGLE)
+	assert_eq(BarModel.for_stage({"stage_id": "ANYTHING", "bar_model": "survival"}),
+		BarModel.Model.SURVIVAL)
+	assert_eq(BarModel.for_stage({"stage_id": "ANYTHING", "bar_model": "shared_pool"}),
+		BarModel.Model.SHARED_POOL)
+
+
+func test_a_stage_that_says_nothing_is_still_guessed_at() -> void:
+	# The workbook's own stages carry no bar_model column, so the old rules
+	# have to keep working for them.
+	assert_eq(BarModel.for_stage({"stage_id": "ST04"}), BarModel.Model.SINGLE)
+	assert_eq(BarModel.for_stage({"stage_id": "ST06"}), BarModel.Model.SURVIVAL)
+	assert_eq(BarModel.for_stage({"stage_id": "ST02"}), BarModel.Model.SHARED_POOL)
+	assert_eq(BarModel.for_stage({"stage_id": "X", "questions": [{"id": "Q1"}]}),
+		BarModel.Model.SINGLE, "questions still make a press conference")
+
+
+func test_the_tv_debate_in_the_data_is_one_bar() -> void:
+	var tv: Dictionary = DataDB.stage_types.get("tv_debate", {})
+	assert_false(tv.is_empty(), "there is a tv_debate stage type")
+	assert_eq(BarModel.for_stage(tv), BarModel.Model.SINGLE,
+		"a TV debate is press tone, not a room of people")
+
+	var bar := BarModel.create(
+		BarModel.for_stage(tv), 100, 0, 40, 40, func() -> int: return 0)
+	assert_eq(bar.undecided, 0, "no undecided pile on a single bar")
+	assert_eq(bar.opponent, 0, "and nobody opposite holding a headcount")

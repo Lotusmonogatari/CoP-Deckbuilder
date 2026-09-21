@@ -863,6 +863,95 @@ function runRuleChecks(data) {
     eq(Object.keys(result.applied).length, 0);
   });
 
+  // --- the ending is named from the stage ----------------------------------
+  // Three kinds of stage are scored — the caucus, the town hall and the TV
+  // debate — and all three used to close by announcing they were a caucus.
+
+  function scoredConfig(overrides) {
+    return config({
+      stage: stage(Object.assign({
+        stage_id: 'SCORED', name_en: 'TV Debate',
+        win_mode: 'score', turn_limit: 1,
+        bar_unit: 'Press tone', bar_max: 100,
+        player_start: 40, opp_start: 40,
+      }, overrides || {})),
+    });
+  }
+
+  check('a scored stage closes in its own name', () => {
+    const engine = started(scoredConfig());
+    engine.endTurn();
+    ok(engine.state.isOver());
+    ok(engine.state.outcome_reason.includes('TV Debate closed on'),
+      engine.state.outcome_reason);
+    ok(!engine.state.outcome_reason.toLowerCase().includes('caucus'),
+      'a TV debate is not a caucus: ' + engine.state.outcome_reason);
+  });
+
+  check('a scored stage closes in its own units', () => {
+    // "34 support" on a press tone bar was how the wrong unit showed up.
+    const engine = started(scoredConfig());
+    engine.endTurn();
+    ok(engine.state.outcome_reason.includes('press tone'), engine.state.outcome_reason);
+  });
+
+  check('a stage counted as a share still closes on a share', () => {
+    const engine = started(scoredConfig({ name_en: 'Party Caucus', bar_as_percent: true }));
+    engine.endTurn();
+    ok(engine.state.outcome_reason.includes('% of the room'), engine.state.outcome_reason);
+    ok(engine.state.outcome_reason.includes('Party Caucus closed on'),
+      engine.state.outcome_reason);
+  });
+
+  // --- a stage says what kind of bar it wants -------------------------------
+
+  check('a stage can declare its own bar', () => {
+    // THE BUG THIS EXISTS FOR. The model used to be picked by matching the
+    // literal IDs "ST04" and "ST06", which the six levels never have: they
+    // generate theirs from the type and the sequence. The TV debate was
+    // therefore a room full of undecided people with a bar labelled "Press
+    // tone", for three versions.
+    eq(BarModel.forStage({ stage_id: 'TV_DEBATE_2', bar_model: 'single' }), SINGLE);
+    eq(BarModel.forStage({ stage_id: 'ANYTHING', bar_model: 'survival' }), SURVIVAL);
+    eq(BarModel.forStage({ stage_id: 'ANYTHING', bar_model: 'shared_pool' }), SHARED_POOL);
+  });
+
+  check('a stage that says nothing is still guessed at', () => {
+    eq(BarModel.forStage({ stage_id: 'ST04' }), SINGLE);
+    eq(BarModel.forStage({ stage_id: 'ST06' }), SURVIVAL);
+    eq(BarModel.forStage({ stage_id: 'ST02' }), SHARED_POOL);
+    eq(BarModel.forStage({ stage_id: 'X', questions: [{ id: 'Q1' }] }), SINGLE,
+      'questions still make a press conference');
+  });
+
+  check('every TV debate in the data is one bar', () => {
+    let checked = 0;
+    for (const level of data.levels) {
+      for (const st of level.stages) {
+        if (st.type !== 'tv_debate') continue;
+        eq(BarModel.forStage(st), SINGLE,
+          level.level_id + ': a TV debate is press tone, not a room of people');
+        checked += 1;
+      }
+    }
+    ok(checked > 0, 'there are TV debates to check');
+  });
+
+  check('a level with nothing written signs off by naming itself', () => {
+    // LV03 and LV04 are not about a bill, so they carry no win_text yet and
+    // must not claim Parliament adopted one.
+    for (const level of data.levels) {
+      const written = str(level.win_text, '').trim();
+      if (written) {
+        ok(!['LV03', 'LV04'].includes(level.level_id),
+          level.level_id + ' is not a bill level but carries a bill line');
+      } else {
+        ok(str(level.name_en, '') !== '',
+          level.level_id + ' has no sign-off and no name to fall back on');
+      }
+    }
+  });
+
   // --- the real data --------------------------------------------------------
 
   check('the starter deck comes from the workbook', () => {

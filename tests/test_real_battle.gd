@@ -248,7 +248,11 @@ func test_the_caucus_is_scored_rather_than_won() -> void:
 
 	assert_true(engine.state.is_over(), "it ends when the turns run out")
 	assert_eq(engine.state.outcome, "win", "running out of turns is not a loss here")
-	assert_string_contains(engine.state.outcome_reason, "caucus closed".to_lower())
+	# Named from the stage, not from the word "caucus": three kinds of stage
+	# are scored, and this line used to claim all three were caucuses.
+	var stage := _playtest_stage("PT_S3")
+	assert_string_contains(engine.state.outcome_reason,
+		"%s closed on" % stage.get("name_en", ""))
 
 
 func test_a_good_caucus_reaches_the_floor_debate() -> void:

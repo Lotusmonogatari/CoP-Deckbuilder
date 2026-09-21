@@ -26,6 +26,8 @@
    "name_en": "Committee Hearing",
    "name_jp": "委員会審査",
    "_blurb": "A study session, then the committee itself.",
+   "win_text": "You convinced Parliament and your bill was adopted.",
+   "loss_text": "The bill failed. There will be questions.",
    "stages": [
     {
      "seq": 1,
@@ -115,6 +117,8 @@
    "name_en": "Bill on the Floor",
    "name_jp": "本会議上程",
    "_blurb": "The chamber, then the cameras waiting outside it.",
+   "win_text": "You convinced Parliament and your bill was adopted.",
+   "loss_text": "The bill failed. There will be questions.",
    "stages": [
     {
      "seq": 1,
@@ -237,6 +241,9 @@
    "name_en": "Media Marathon",
    "name_jp": "報道漬け",
    "_blurb": "A conference and a studio, back to back.",
+   "_win_text_note": "FOR CAMERON. This level is not about a bill, so it has no sign-off line yet. Write one into win_text and loss_text below and it appears on the last stage's result panel. Left empty, the game names the level instead rather than claiming Parliament adopted something.",
+   "win_text": "",
+   "loss_text": "",
    "stages": [
     {
      "seq": 1,
@@ -309,6 +316,9 @@
    "name_en": "Policy Research Circuit",
    "name_jp": "政策行脚",
    "_blurb": "Five rooms in a day, and the last one is the ambush.",
+   "_win_text_note": "FOR CAMERON. This level is not about a bill, so it has no sign-off line yet. Write one into win_text and loss_text below and it appears on the last stage's result panel. Left empty, the game names the level instead rather than claiming Parliament adopted something.",
+   "win_text": "",
+   "loss_text": "",
    "pleases_on_win": [
     "BO03",
     "BO06",
@@ -544,6 +554,8 @@
    "name_en": "Party Bill Advocacy",
    "name_jp": "党内調整",
    "_blurb": "Win the party first, then the country.",
+   "win_text": "You convinced Parliament and your bill was adopted.",
+   "loss_text": "The bill failed. There will be questions.",
    "pleases_on_win": [
     "BO01",
     "BO02"
@@ -753,6 +765,8 @@
    "name_en": "Sponsored Fisheries Bill Gauntlet",
    "name_jp": "漁業法案の関門",
    "_blurb": "Nine rooms. Everything the game has, in order.",
+   "win_text": "You convinced Parliament and your bill was adopted.",
+   "loss_text": "The bill failed. There will be questions.",
    "pleases_on_win": [
     "BO07",
     "BO07",

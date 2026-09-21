@@ -251,10 +251,24 @@ class BarModel {
     this.last_gain = { from_undecided: 0, from_other_side: 0, wasted: 0 };
   }
 
+  // A STAGE THAT SAYS WHAT IT WANTS GETS IT. Everything below that is a
+  // guess made from the stage's shape, and a guess is only as good as the
+  // shapes it has seen: the TV debate spent three versions as a room full of
+  // undecided people while its bar was labelled "Press tone", because it was
+  // recognised by the literal ID "ST06" and the six levels generate IDs of
+  // their own (TV_DEBATE_2 and the like).
   static forStage(stage) {
+    switch (str(stage.bar_model, '')) {
+      case 'single': return SINGLE;
+      case 'survival': return SURVIVAL;
+      case 'shared_pool': return SHARED_POOL;
+    }
+
     // A stage built out of reporters' questions is a press conference
     // wherever it appears, read from its shape rather than from its name.
     if (Array.isArray(stage.questions) && stage.questions.length > 0) return SINGLE;
+
+    // The workbook's own stages, which have fixed IDs and no bar_model.
     if (stage.stage_id === 'ST04') return SINGLE;
     if (stage.stage_id === 'ST06') return SURVIVAL;
     return SHARED_POOL;
@@ -1198,11 +1212,15 @@ class BattleEngine {
     // is simply how it ends.
     if (s.win_mode === 'score') {
       // In the units the stage is read in: a caucus counted as a share of
-      // the room should not close on a headcount.
+      // the room should not close on a headcount, and a TV debate should
+      // close on press tone rather than on "support".
       const closing = this._stage.bar_as_percent
         ? s.playerScore() + '% of the room'
-        : s.playerScore() + ' support';
-      return this._finish('win', 'The caucus closed with ' + closing + '.');
+        : s.playerScore() + ' ' + str(this._stage.bar_unit, 'support').toLowerCase();
+      // Named from the stage: the caucus, the town hall and the TV debate
+      // are all scored, and this said "the caucus" for all three.
+      const what = str(this._stage.name_en, '').trim();
+      return this._finish('win', (what || 'It') + ' closed on ' + closing + '.');
     }
 
     switch (str(this._rules.turn_limit_outcome, 'loss')) {
