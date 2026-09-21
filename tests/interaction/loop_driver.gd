@@ -19,7 +19,9 @@ const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 const TURN_CEILING := 40
 
 ## How many stages the level should have.
-const EXPECTED_STAGES := 4
+## The first Tier 0 level's stage count. The driver plays whichever level it
+## picks first, so this follows levels.json rather than leading it.
+const EXPECTED_STAGES := 2
 
 var _failures: PackedStringArray = []
 
@@ -55,18 +57,36 @@ func _walk_the_loop() -> void:
 		return
 	print("  started in the Office")
 
-	# Start now opens the briefing — what the level ahead is worth — and the
-	# level itself begins from that panel's own button. Two clicks, and the
-	# first must actually produce a panel: a briefing that fails to open
-	# would otherwise look like a level that refused to start.
+	# Start opens the LEVELS screen now that there are six of them. Pick the
+	# first, look it over, then go in: three clicks, and each screen must
+	# actually appear or a later failure would be blamed on the wrong one.
 	await _click(office.get_node("%StartButton"))
+	await get_tree().create_timer(0.4).timeout
+
+	var levels := office.get_node("%LevelsPanel") as Overlay
+	if levels == null or not levels.visible:
+		_failures.append("Start did not open the levels screen")
+		return
+	print("  Start opened the levels screen")
+
+	var look := levels.find_child("Look it over", true, false)
+	if look == null:
+		for node in levels.find_children("", "Button", true, false):
+			if (node as Button).text == "Look it over":
+				look = node
+				break
+	if look == null:
+		_failures.append("no level could be chosen")
+		return
+
+	await _click(look as Control)
 	await get_tree().create_timer(0.4).timeout
 
 	var briefing := office.get_node("%BriefingPanel") as Overlay
 	if briefing == null or not briefing.visible:
-		_failures.append("Start did not open the briefing")
+		_failures.append("choosing a level did not open the briefing")
 		return
-	print("  Start opened the briefing")
+	print("  chose a level and read the briefing")
 
 	var go_in := briefing.find_child("Confirm", true, false) as Button
 	if go_in == null or not go_in.visible:

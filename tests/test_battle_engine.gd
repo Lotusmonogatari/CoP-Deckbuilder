@@ -1358,13 +1358,18 @@ func test_ducking_every_question_is_no_longer_free() -> void:
 
 
 func test_the_closing_line_says_the_conference_concluded() -> void:
+	# One question a turn now, so answering both takes two turns. A second
+	# card in the same turn plays, but no reporter is waiting for it.
 	var engine := _start(_press_alone())
 	engine.state.hand.assign(["GAIN3", "GAIN3", "GAIN3"])
 	engine.play_card("GAIN3")
+	engine.end_turn()
 	engine.play_card("GAIN3")
 
 	assert_true(engine.state.is_over())
-	assert_string_contains(engine.state.outcome_reason, "The press conference concludes.")
+	# Named from the stage: a study session and a lobbyist meeting also run
+	# on questions and neither of them is a press conference.
+	assert_string_contains(engine.state.outcome_reason, "concludes.")
 
 
 func test_the_closing_line_counts_what_went_unanswered() -> void:
@@ -1533,3 +1538,243 @@ func test_a_card_records_who_it_won_over() -> void:
 
 	assert_true(split.has("from_undecided"), "the screen needs the breakdown, not just a total")
 	assert_true(split.has("from_other_side"))
+
+
+# ---------------------------------------------------------------------------
+# The four specials the 2026-09-21 card slate introduced
+# ---------------------------------------------------------------------------
+
+func test_piercing_ignores_guard_without_spending_it() -> void:
+	# The distinction that matters: a pierced guard is bypassed, not removed.
+	# Subtracting it for real would let one card strip protection it never
+	# claimed to take.
+	var engine := _start({"opponent": TestFixtures.opponent([["block", 1]])})
+	engine.state.opponent_block = 5
+
+	var card := TestFixtures.card({
+		"card_id": "PIERCE", "opp_minus": 4,
+		"special": "pierce_guard", "special_value": 3,
+	})
+	engine._cards["PIERCE"] = card
+	engine.state.hand = ["PIERCE"]
+	engine.state.energy = 3
+
+	var result := engine.play_card("PIERCE")
+	var applied: Dictionary = result["applied"]
+
+	assert_eq(applied["guard_pierced"], 3, "three of the five were ignored")
+	assert_eq(applied["guard_stopped"], 2, "the other two still stopped what they could")
+	assert_eq(applied["opponent_lost"], 2, "so two of the four got through")
+	assert_eq(engine.state.opponent_block, 3,
+		"the pierced three are still theirs; only the two that worked were spent")
+
+
+func test_piercing_more_than_they_have_is_not_a_bonus() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent([["block", 1]])})
+	engine.state.opponent_block = 1
+
+	var card := TestFixtures.card({
+		"card_id": "PIERCE", "opp_minus": 3,
+		"special": "pierce_guard", "special_value": 9,
+	})
+	engine._cards["PIERCE"] = card
+	engine.state.hand = ["PIERCE"]
+	engine.state.energy = 3
+
+	var result := engine.play_card("PIERCE")
+	assert_eq(result["applied"]["guard_pierced"], 1, "you cannot pierce guard they do not have")
+	assert_eq(result["applied"]["opponent_lost"], 3, "and the whole attack lands")
+
+
+func test_a_clean_record_pays_off() -> void:
+	var engine := _start()
+	var card := TestFixtures.card({
+		"card_id": "CLEAN", "self_plus": 5,
+		"special": "bonus_if_self_gaffe_0", "special_value": 2,
+	})
+
+	engine.state.gaffe = 0
+	assert_eq(engine.preview(card)["self_plus"], 7, "5 plus the 2 for a clean record")
+
+	engine.state.gaffe = 1
+	assert_eq(engine.preview(card)["self_plus"], 5, "one slip and the bonus is gone")
+
+
+func test_trailing_the_opponent_pays_off() -> void:
+	var engine := _start()
+	var card := TestFixtures.card({
+		"card_id": "BEHIND", "self_plus": 3,
+		"special": "bonus_if_behind", "special_value": 3,
+	})
+
+	engine.state.bar.player = 30
+	engine.state.bar.opponent = 50
+	assert_eq(engine.preview(card)["self_plus"], 6, "behind, so the comeback fires")
+
+	engine.state.bar.player = 50
+	engine.state.bar.opponent = 50
+	assert_eq(engine.preview(card)["self_plus"], 3,
+		"level pegging is not behind — a comeback card that fires when even fires nearly always")
+
+	engine.state.bar.player = 60
+	assert_eq(engine.preview(card)["self_plus"], 3, "and ahead is certainly not behind")
+
+
+func test_a_discount_makes_the_next_card_cheaper() -> void:
+	var engine := _start()
+	var opener := TestFixtures.card({
+		"card_id": "QUIET", "cost": 1, "self_plus": 2,
+		"special": "discount_next_card_this_turn", "special_value": 1,
+	})
+	engine._cards["QUIET"] = opener
+	engine.state.hand = ["QUIET", "GAIN3"]
+	engine.state.energy = 3
+
+	engine.play_card("QUIET")
+	assert_eq(engine.state.next_card_discount, 1)
+	assert_eq(engine.card_cost(engine._cards["GAIN3"]), 0,
+		"a cost-1 card is free while the discount is up")
+
+	engine.play_card("GAIN3")
+	assert_eq(engine.state.next_card_discount, 0, "and the discount is spent by the card using it")
+
+
+func test_a_discount_cannot_pay_you_to_play() -> void:
+	var engine := _start()
+	engine.state.next_card_discount = 5
+	var card := TestFixtures.card({"card_id": "FREE2", "cost": 1})
+	assert_eq(engine.card_cost(card), 0, "floored at nothing, never negative")
+
+
+func test_a_discount_does_not_survive_the_turn() -> void:
+	var engine := _start()
+	engine.state.next_card_discount = 1
+	engine.end_turn()
+	assert_eq(engine.state.next_card_discount, 0)
+
+
+# ---------------------------------------------------------------------------
+# The stage levers Cameron's Levels Design Scheme introduced
+# ---------------------------------------------------------------------------
+
+func _questions_stage(overrides: Dictionary = {}) -> Dictionary:
+	var base := _press_alone()
+	var stage: Dictionary = (base["stage"] as Dictionary).duplicate(true)
+	stage.merge(overrides, true)
+	base["stage"] = stage
+	return base
+
+
+func test_a_turn_presents_one_question_however_many_cards_you_play() -> void:
+	# Before this, three energy could burn through three reporters in a
+	# single turn. A conference is paced by the room, not by your hand.
+	var engine := _start(_questions_stage({"questions_per_turn": 1}))
+	var before := engine.questions_remaining()
+
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+	engine.state.energy = 3
+	engine.play_card("GAIN3")
+	engine.play_card("GAIN3")
+
+	assert_eq(engine.questions_remaining(), before - 1,
+		"the second card played, but no reporter was waiting for it")
+
+
+func test_a_study_session_asks_two_a_turn() -> void:
+	var engine := _start(_questions_stage({"questions_per_turn": 2}))
+	var before := engine.questions_remaining()
+
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+	engine.state.energy = 3
+	engine.play_card("GAIN3")
+	engine.play_card("GAIN3")
+
+	assert_eq(engine.questions_remaining(), before - 2)
+
+
+func test_a_question_left_hanging_at_the_end_of_a_turn_is_declined() -> void:
+	# Playing a card that is not an answer must not be a way to duck a
+	# reporter for free now that a turn can hold more cards than questions.
+	var engine := _start(_questions_stage({
+		"questions_per_turn": 2, "decline_tone_cost": 3,
+	}))
+	# A card held back: a conference ends the moment the player has nothing
+	# left to say, and this one is not finished.
+	engine.state.hand.assign(["GAIN3", "GUARD5"])
+	engine.state.energy = 1
+
+	engine.play_card("GAIN3")        # answers the first of the turn's two
+	engine.end_turn()
+
+	assert_eq(engine.state.declined_questions, 1, "the second went unanswered")
+
+
+func test_a_gaffe_costs_double_in_an_ambush() -> void:
+	var engine := _start(_questions_stage({"gaffe_multiplier": 2}))
+	engine.state.hand.assign(["GAFFE2"])
+	engine.state.energy = 3
+
+	engine.play_card("GAFFE2")
+	assert_eq(engine.state.gaffe, 4, "two on the card, four in this room")
+
+
+func test_an_apology_is_not_worth_less_in_a_hard_room() -> void:
+	# Only a gaffe gained is doubled. Multiplying a reduction would make
+	# the ambush easier to clean up in than an ordinary conference.
+	var engine := _start(_questions_stage({"gaffe_multiplier": 2}))
+	engine.state.gaffe = 3
+	engine._apply_effect({"gaffe": -2}, -1)
+	assert_eq(engine.state.gaffe, 1)
+
+
+func test_ducking_a_question_ends_an_ambush() -> void:
+	var engine := _start(_questions_stage({
+		"decline_ends_stage": true, "decline_tone_cost": 0,
+	}))
+	engine.end_turn()               # played nothing, so the question is ducked
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "loss")
+	assert_string_contains(engine.state.outcome_reason, "walked away")
+
+
+func test_a_lobbyists_interest_cools_every_turn() -> void:
+	var engine := _start(_questions_stage({
+		"affinity_decay": 5, "decline_tone_cost": 0,
+	}))
+	var before := engine.state.bar.player
+	engine.state.hand.assign(["GAIN3", "GUARD5"])
+	engine.state.energy = 1
+	engine.play_card("GAIN3")       # +3 on the bar
+	engine.end_turn()               # then 5 off, whatever was said
+
+	assert_eq(engine.state.bar.player, before + 3 - 5,
+		"the clock is working against you")
+
+
+func test_a_town_hall_keeps_the_clock_but_refreshes_the_energy() -> void:
+	# Neither of the other two modes does this: "reset" would wipe the
+	# gaffes you have earned, "continuous" would leave you empty-handed in
+	# front of somebody who has not heard you speak yet.
+	var engine := _start({
+		"stage": TestFixtures.stage({
+			"stage_id": "TOWNHALL", "sequence_mode": "stream",
+			"win_threshold": 45, "turn_limit": 12,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "A farmer", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "A shopkeeper", "intent_pattern": [["block", 1]]},
+		],
+	})
+
+	engine.state.gaffe = 2
+	engine.state.turn = 6
+	engine.state.energy = 0
+	engine.state.bar.player = 45
+	engine._check_outcome()
+
+	assert_eq(engine.current_opponent()["name"], "A shopkeeper", "the queue moved on")
+	assert_eq(engine.state.gaffe, 2, "your record follows you down the queue")
+	assert_eq(engine.state.turn, 6, "and so does the clock")
+	assert_eq(engine.state.energy, engine.state.energy_per_turn,
+		"but the next person gets your full attention")

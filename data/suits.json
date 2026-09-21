@@ -5,7 +5,7 @@
     "romaji": "Seijitsu",
     "gloss": "sincerity",
     "play_pattern": "Steady own-support gain; resists and cleans up gaffes",
-    "cards_in_pool": 4
+    "cards_in_pool": null
   },
   {
     "element": "Emotional",
@@ -13,7 +13,7 @@
     "romaji": "Jōnetsu",
     "gloss": "passion",
     "play_pattern": "Burst gains that scale with crowd size; some gaffe risk",
-    "cards_in_pool": 4
+    "cards_in_pool": null
   },
   {
     "element": "Appeal",
@@ -21,7 +21,7 @@
     "romaji": "Kyūshin",
     "gloss": "rallying pull",
     "play_pattern": "Segment-targeted gains, setup and card flow (根回し)",
-    "cards_in_pool": 4
+    "cards_in_pool": null
   },
   {
     "element": "Data Driven",
@@ -29,7 +29,7 @@
     "romaji": "Jisshō",
     "gloss": "evidence",
     "play_pattern": "Refutation: lowers opponent support; strong in committee",
-    "cards_in_pool": 4
+    "cards_in_pool": null
   },
   {
     "element": "Divisive",
@@ -37,7 +37,7 @@
     "romaji": "Bundan",
     "gloss": "division",
     "play_pattern": "Steals support both ways; polarizes; moderate gaffe risk",
-    "cards_in_pool": 4
+    "cards_in_pool": null
   },
   {
     "element": "Duplicitous",
@@ -45,6 +45,6 @@
     "romaji": "Nimaijita",
     "gloss": "two tongues",
     "play_pattern": "High power and strong guards, heavy gaffe accrual",
-    "cards_in_pool": 4
+    "cards_in_pool": null
   }
 ]

@@ -171,7 +171,16 @@ SHEETS = {
         "out": "cards.json",
         "key": "card_id",
         "id_pattern": r"^C\d+$",
-        "optional": ["Special", "Special value"],
+        # The card sheet was replaced wholesale on 2026-09-21 with Cameron's
+        # 54-card slate. Gone with it: "Upgrade (+)" (the game has no upgrade
+        # mechanic, so every card stands on its printed values), and the
+        # Power Score / Power per Cost / Balance flag columns, which were
+        # the balancing model's working-out rather than card data. They live
+        # in design/CoP_Cards.xlsx if the model is ever revisited.
+        #
+        # "XP to unlock" is optional: the economy is being priced by
+        # playtest rather than by the sheet, so a missing column is fine.
+        "optional": ["XP to unlock", "Special", "Special value", "Special note"],
         "columns": [
             ("Card ID", "card_id", "id"),
             ("Name (EN)", "name_en", "str"),
@@ -188,15 +197,11 @@ SHEETS = {
             ("Gaffe +/−", "gaffe", "int"),
             ("Target segment", "target_segment", "str"),
             ("Effect text", "effect_text", "str"),
-            ("Upgrade (+)", "upgrade_text", "str"),
             ("Tier", "tier", "str"),
             ("XP to unlock", "xp_to_unlock", "int"),
-            ("Power Score", "power_score", "num"),
-            ("Power / Cost", "power_per_cost", "num"),
-            ("Balance flag", "balance_flag", "str"),
-            # Proposed, not yet in the workbook. See design/proposals/.
             ("Special", "special", "str"),
             ("Special value", "special_value", "num"),
+            ("Special note", "special_note", "str"),
         ],
     },
     "Modifiers": {

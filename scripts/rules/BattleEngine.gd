@@ -266,7 +266,9 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 	if card.is_empty():
 		return _refused("there is no card with the ID '%s'" % card_id)
 
-	var cost := int(card.get("cost", 0))
+	# A discount left behind by an earlier card this turn. Never below zero:
+	# a card cannot pay you to play it.
+	var cost := card_cost(card)
 	if cost > state.energy:
 		return _refused("not enough time left this turn")
 
@@ -277,13 +279,15 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 		"opponent_gaffe": state.opponent_gaffe,
 		"next_card_bonus": state.next_card_bonus,
 	}
+	context.merge(_standing_context(), true)
 	var effect := CardResolver.resolve(card, context)
 
 	# Paying for it, and taking it out of hand.
 	state.energy -= cost
 	state.hand.erase(card_id)
 	state.cards_played_this_turn += 1
-	state.next_card_bonus = 0   # a carried bonus is spent by the card that uses it
+	state.next_card_bonus = 0     # a carried bonus is spent by the card using it
+	state.next_card_discount = 0  # and so is a carried discount
 
 	var applied := _apply_effect(effect, target_index)
 
@@ -296,11 +300,14 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 	var flags: Dictionary = effect.get("flags", {})
 	if flags.has("next_card_bonus"):
 		state.next_card_bonus = int(flags["next_card_bonus"])
+	if flags.has("next_card_discount"):
+		state.next_card_discount = int(flags["next_card_discount"])
 	if flags.get("reveal_next_intent", false):
 		state.next_intent_revealed = true
 
-	if not _questions.is_empty():
+	if not _questions.is_empty() and state.questions_answered_this_turn < _questions_per_turn():
 		_answer_question(card)
+		state.questions_answered_this_turn += 1
 
 	# Who was in front of us before the outcome was checked. If a card
 	# finishes a debater the whole room changes underneath the player, and
@@ -352,10 +359,22 @@ func _apply_effect(effect: Dictionary, target_index: int) -> Dictionary:
 		# first thing it meets and what it absorbs is spent. Until now this
 		# went straight through and their "Guarding" intent did nothing at
 		# all, which a playtest caught.
+		#
+		# Piercing IGNORES guard rather than spending it, so the pierced
+		# amount is lifted off the bank before the attack lands and put back
+		# afterwards. Subtracting it for real would let one pierce card
+		# strip a guard that the card never claimed to remove.
+		var pierced := mini(
+			int(effect.get("flags", {}).get("pierce_guard", 0)), state.opponent_block)
+		state.opponent_block -= pierced
+
 		var stopped := mini(state.opponent_block, opp_minus)
 		state.opponent_block -= stopped
+		applied["guard_pierced"] = pierced
 		applied["guard_stopped"] = stopped
 		applied["opponent_lost"] = state.bar.opponent_loses(opp_minus - stopped)
+
+		state.opponent_block += pierced
 
 	# Guard is not multiplied by affinity — see CardResolver. It goes into a
 	# bank that stays until something attacks, so what is reported is what
@@ -368,6 +387,11 @@ func _apply_effect(effect: Dictionary, target_index: int) -> Dictionary:
 	# is wasted rather than banked.
 	var gaffe := int(effect.get("gaffe", 0))
 	var before_gaffe := state.gaffe
+	# A stage can make a slip cost double — the media ambush does. Only a
+	# gaffe GAINED is multiplied: an apology should not be worth less in a
+	# hard room than an easy one.
+	if gaffe > 0:
+		gaffe *= _gaffe_multiplier()
 	state.gaffe = maxi(state.gaffe + gaffe, 0)
 	applied["gaffe"] = state.gaffe - before_gaffe
 
@@ -435,9 +459,25 @@ func end_turn() -> Dictionary:
 	# Guard is NOT cleared here. It is a bank now: it stays until something
 	# takes it, so a quiet turn spent guarding is still worth something when
 	# the attack finally comes.
+	# A question left unanswered when the turn ends is a question declined.
+	# Passing is not the only way to duck one now that a turn can hold more
+	# cards than it holds questions.
+	if not _questions.is_empty() and not passed:
+		var unanswered := _questions_per_turn() - state.questions_answered_this_turn
+		for _i in maxi(unanswered, 0):
+			if current_question().is_empty():
+				break
+			_decline_question()
+
+	# A lobbyist's interest cools while you talk, whatever you said.
+	if _affinity_decay() > 0 and state.bar != null and not state.is_over():
+		state.bar.player_loses(_affinity_decay())
+
 	state.next_card_bonus = 0
+	state.next_card_discount = 0
 	state.next_intent_revealed = false
 	state.cards_played_this_turn = 0
+	state.questions_answered_this_turn = 0
 
 	# Step 6: check, advance, redraw.
 	var was_facing := state.opponent_index
@@ -474,6 +514,25 @@ func end_turn() -> Dictionary:
 		"turn": state.turn,
 		"outcome": state.outcome,
 	}
+
+
+## How many questions a turn presents.
+##
+## Cameron's design scheme: a press conference asks one a turn, a policy
+## study session two. Before this every CARD answered a question, so three
+## energy could burn through three reporters in one turn.
+func _questions_per_turn() -> int:
+	return maxi(int(_stage.get("questions_per_turn", 1)), 1)
+
+
+## What a slip costs here. Doubled in a media ambush.
+func _gaffe_multiplier() -> int:
+	return maxi(int(_stage.get("gaffe_multiplier", 1)), 1)
+
+
+## How much of a lobbyist's interest cools each turn, whatever you say.
+func _affinity_decay() -> int:
+	return maxi(int(_stage.get("affinity_decay", 0)), 0)
 
 
 ## What saying nothing costs. One energy, from rules.json.
@@ -524,6 +583,11 @@ func _decline_question() -> void:
 
 	state.declined_questions += 1
 	state.question_index += 1
+
+	# In an ambush there is nowhere to go. Ducking one question ends it,
+	# which is the whole character of the stage.
+	if bool(_stage.get("decline_ends_stage", false)):
+		_finish("loss", "You walked away from the question. That is the story now.")
 
 
 func _resolve_intent(intent: Dictionary) -> Dictionary:
@@ -720,7 +784,11 @@ func _check_turn_limit() -> void:
 ## rather than judged: what it should cost beyond the tone is Cameron's, and
 ## this is the line those endings will hang off.
 func _conference_closing(ran_out_of_cards: bool = false) -> String:
-	var lines: Array[String] = ["The press conference concludes."]
+	# Named from the stage, because a policy study session and a lobbyist
+	# meeting both run on questions and neither of them is a press
+	# conference. It said so anyway until a playtest read it.
+	var what := str(_stage.get("name_en", "")).strip_edges()
+	var lines: Array[String] = ["%s concludes." % (what if not what.is_empty() else "It")]
 
 	if ran_out_of_cards:
 		lines.append("The questions ran on, but there was nothing left to say.")
@@ -732,6 +800,27 @@ func _conference_closing(ran_out_of_cards: bool = false) -> String:
 		lines.append("%d questions went unanswered." % declined)
 
 	return " ".join(lines)
+
+
+## What this card costs right now, after any discount a card left behind.
+##
+## Public because the hand has to show it: a card whose face says 2 and
+## which then charges 1 is a screen the player stops trusting, and so is the
+## reverse. Floors at zero — a card cannot pay you to play it.
+func card_cost(card: Dictionary) -> int:
+	return maxi(int(card.get("cost", 0)) - state.next_card_discount, 0)
+
+
+## Where the player stands, for the effects that care.
+##
+## Read fresh each time rather than cached: "if you trail the opponent" has
+## to mean the moment the card is played, not the moment the hand was dealt.
+func _standing_context() -> Dictionary:
+	return {
+		"self_gaffe": state.gaffe,
+		"player_support": state.bar.player if state.bar != null else 0,
+		"opponent_support": state.bar.opponent if state.bar != null else 0,
+	}
 
 
 ## What a card will actually do in this room, before it is played.
@@ -751,6 +840,9 @@ func preview(card: Dictionary) -> Dictionary:
 		"kanban": int(_meta.get("Reputation", 50)),
 		"opponent_gaffe": state.opponent_gaffe,
 		"next_card_bonus": state.next_card_bonus,
+		"self_gaffe": state.gaffe,
+		"player_support": state.bar.player if state.bar != null else 0,
+		"opponent_support": state.bar.opponent if state.bar != null else 0,
 	})
 
 	# A number the rules will refuse to use is worse than no number: it
@@ -871,6 +963,18 @@ func _advance_to_next_opponent() -> void:
 
 	if _sequence_mode == "reset":
 		_reset_for_new_bout()
+	elif _sequence_mode == "stream":
+		# A town hall: the clock and your record carry across the queue, but
+		# each new face is a fresh three energy. Neither of the other two
+		# modes does that — "reset" would wipe the gaffes you have earned
+		# and "continuous" would leave you empty-handed in front of somebody
+		# who has not heard you speak yet.
+		state.energy = state.energy_per_turn
+		state.energy_max = state.energy_per_turn
+		if state.bar != null:
+			state.bar = _build_bar(
+				int(_stage.get("player_start", 0)),
+				int(_stage.get("opp_start", 0)))
 	elif state.bar != null:
 		state.bar = _build_bar(
 			int(_stage.get("player_start", 0)),
@@ -883,6 +987,7 @@ func _reset_for_new_bout() -> void:
 	state.block = 0
 	state.opponent_block = 0
 	state.next_card_bonus = 0
+	state.next_card_discount = 0
 	state.next_intent_revealed = false
 	state.turn = 1
 

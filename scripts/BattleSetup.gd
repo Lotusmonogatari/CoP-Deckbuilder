@@ -49,6 +49,8 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 	if stage.is_empty():
 		return {}
 
+	stage = resolve_type(stage)
+
 	if meta.is_empty():
 		meta = starting_meta()
 
@@ -92,6 +94,50 @@ static func backing_bonus(stage: Dictionary) -> Dictionary:
 
 	var active := MetaRules.active_modifiers(owned, with_audience(stage), "Player")
 	return ModifierEffects.battle_start_bonus(active, DataDB.modifier_effects)
+
+
+## Expands a level's stage row into a full stage.
+##
+## A row in levels.json names a TYPE and overrides only what it wants to
+## differ. Everything else comes from stage_types.json, so "the default
+## committee is 60 votes" is one number in one place rather than one per
+## level that happens to contain a committee.
+##
+## A stage with no type is returned untouched: the old hand-written
+## playtest level still works, and so does a module row from the workbook.
+static func resolve_type(stage: Dictionary) -> Dictionary:
+	var type_id := str(stage.get("type", ""))
+	if type_id.is_empty():
+		return stage
+
+	var template: Dictionary = DataDB.stage_types.get(type_id, {})
+	if template.is_empty():
+		push_warning("BattleSetup: no stage type called '%s'." % type_id)
+		return stage
+
+	var resolved := template.duplicate(true)
+	resolved.merge(stage, true)   # the level's own values win
+
+	# A stage needs an ID: the type plus its place in the level, so two
+	# study sessions in one level are still told apart in a report.
+	if not resolved.has("stage_id"):
+		resolved["stage_id"] = "%s_%d" % [type_id.to_upper(), int(stage.get("seq", 0))]
+
+	resolved["name_en"] = fill_tokens(str(resolved.get("name_en", "")))
+	return resolved
+
+
+## Fills the tokens a stage name may carry.
+##
+## Only {party} so far: a caucus is the player's own party's caucus, and
+## naming it in the data would fix a party CLAUDE.md still lists as open.
+static func fill_tokens(text: String) -> String:
+	if not text.contains("{party}"):
+		return text
+	var party := str(DataDB.player.get("party", "")).strip_edges()
+	if party.is_empty():
+		return text.replace("{party} ", "").replace("{party}", "").strip_edges()
+	return text.replace("{party}", party)
 
 
 ## Fills in who is in the room, where a stage does not say.
@@ -186,7 +232,7 @@ static func player_deck() -> Array[String]:
 
 static func starter_deck() -> Array[String]:
 	var deck: Array[String] = []
-	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
+	for card: Dictionary in DataDB.get_cards_by_tier(Ledger.OPENING_TIER):
 		deck.append(str(card.get("card_id")))
 
 	# Cards written by hand for the playtest are not the workbook's to count,

@@ -164,12 +164,16 @@ func test_the_deck_size_is_a_lever() -> void:
 
 func test_a_new_run_opens_with_the_starter_cards() -> void:
 	var cards: Array = [
-		{"card_id": "S1", "tier": "Starter"},
-		{"card_id": "T1", "tier": "Tier 1"},
-		{"card_id": "S2", "tier": "Starter"},
+		{"card_id": "S1", "tier": "0", "suit": "Earnest"},
+		{"card_id": "T1", "tier": "1", "suit": "Earnest"},
+		{"card_id": "S2", "tier": "0", "suit": "Appeal"},
 	]
-	assert_eq(Ledger.opening_deck(cards, BALANCE), ["S1", "S2"] as Array[String],
-		"the bought cards are not yours yet")
+	# Opening-tier first; the deck is then filled towards its size from the
+	# tiers above, a suit at a time.
+	var deck := Ledger.opening_deck(cards, BALANCE)
+	assert_eq(deck.slice(0, 2), ["S1", "S2"] as Array[String],
+		"the opening tier leads")
+	assert_true(deck.has("T1"), "and the rest is filled from above")
 
 
 func test_an_opening_deck_never_exceeds_the_deck_size() -> void:
@@ -177,5 +181,5 @@ func test_an_opening_deck_never_exceeds_the_deck_size() -> void:
 	# hand a silent choice nobody made.
 	var cards: Array = []
 	for i in 20:
-		cards.append({"card_id": "S%02d" % i, "tier": "Starter"})
+		cards.append({"card_id": "S%02d" % i, "tier": "0", "suit": "Earnest"})
 	assert_eq(Ledger.opening_deck(cards, BALANCE).size(), 12)

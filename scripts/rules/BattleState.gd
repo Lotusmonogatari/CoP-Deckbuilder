@@ -58,12 +58,22 @@ var guard_cap := 5
 ## A bonus left behind for the next card played this turn (C11 Groundwork).
 var next_card_bonus := 0
 
+## A discount a card left for the next one played this turn (C36 Offer a
+## Private Word). Spent by the card that uses it and cleared at end of turn,
+## exactly like next_card_bonus.
+var next_card_discount := 0
+
 ## How many cards have been played this turn. Ending a turn on zero is how a
 ## player passes, and passing costs something — see BattleEngine.end_turn().
 ##
 ## Counted rather than inferred from the energy spent, because a card can
 ## cost nothing and a pool stage can leave energy unspent quite legitimately.
 var cards_played_this_turn := 0
+
+## How many of this turn's questions have been answered. A press conference
+## presents one a turn and a study session two; cards beyond that play
+## normally without consuming a reporter.
+var questions_answered_this_turn := 0
 
 # --- Standing --------------------------------------------------------------
 var gaffe := 0

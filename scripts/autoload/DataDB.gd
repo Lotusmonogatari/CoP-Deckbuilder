@@ -21,9 +21,10 @@ const DATA_PATH := "res://data/"
 ## Every file that must be present for the game to start.
 const REQUIRED_FILES := [
 	"affinity", "balance", "bills", "booster_standing", "boosters", "cards",
-	"committee", "journalists", "lists", "modifier_effects", "modifiers",
-	"modules", "opponents",
+	"committee", "journalists", "levels", "lists", "modifier_effects",
+	"modifiers", "modules", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
+	"stage_types",
 	"segments", "stages", "suits", "yoron",
 ]
 
@@ -55,6 +56,11 @@ var rules: Dictionary = {}
 ## The playtest level. Hand-written like rules.json rather than generated
 ## from the workbook, because its shape is still being tried out.
 var playtest_level: Dictionary = {}
+
+## The six playtest levels, and the nine kinds of stage they are built from.
+## Hand-written; see each file's own README.
+var levels: Array = []
+var stage_types: Dictionary = {}
 
 ## Who the player is. Hand-written; a placeholder until the protagonist is
 ## cast for real.
@@ -130,6 +136,8 @@ func load_all() -> void:
 			"lists": lists = content
 			"rules": rules = _flatten_rules(content)
 			"playtest_level": playtest_level = content
+			"levels": levels = _list_under(content, "levels")
+			"stage_types": stage_types = _map_under(content, "types")
 			"player": player = content
 
 			"journalists": journalists = _list_under(content, "journalists")
@@ -378,7 +386,7 @@ func get_balance(lever: String, fallback: float = 0.0) -> float:
 	return fallback
 
 
-## XP needed to unlock a card of a given tier ("Starter", "Tier 1", ...).
+## XP needed to unlock a card of a given tier ("0", "1", "2", "3").
 func get_tier_cost(tier: String) -> int:
 	var tiers: Variant = balance.get("xp_tiers", {})
 	if tiers is Dictionary and (tiers as Dictionary).has(tier):

@@ -67,14 +67,22 @@ func test_the_starter_deck_comes_from_the_workbook() -> void:
 	for card_id: String in deck:
 		var card := DataDB.get_card(card_id)
 		assert_false(card.is_empty(), "%s is a real card" % card_id)
-		assert_eq(card["tier"], "Starter", "%s is a starter card" % card_id)
+		assert_eq(card["tier"], Ledger.OPENING_TIER, "%s is an opening-tier card" % card_id)
 
 
 func test_every_module_step_can_be_set_up() -> void:
 	# The check that would catch a module row pointing at something deleted.
+	#
+	# The mode belongs to the STAGE, not the module row — the Modules sheet
+	# has no Mode column at all. Reading it off the row meant this test
+	# skipped every step and asserted nothing, which GUT flagged as risky
+	# the moment there was nothing else failing to hide behind.
+	var checked := 0
 	for row: Dictionary in DataDB.get_module_steps(MODULE):
-		if row.get("mode") != "Combat":
+		var stage := DataDB.get_stage(str(row.get("stage_id", "")))
+		if str(stage.get("mode", "")) != "Combat":
 			continue   # office hours is not a battle
+		checked += 1
 
 		var seq := int(row["seq"])
 		var config := BattleSetup.from_row(row)
@@ -83,6 +91,8 @@ func test_every_module_step_can_be_set_up() -> void:
 		var engine := BattleEngine.new()
 		assert_true(_setup(engine, config),
 			"step %d (%s) starts: %s" % [seq, row.get("stage_id"), engine.setup_problems])
+
+	assert_gt(checked, 0, "the module has combat steps to check")
 
 
 func test_the_committee_stage_gets_its_members() -> void:
@@ -437,7 +447,7 @@ func test_answering_in_the_invited_suit_pleases_the_press() -> void:
 	var wanted := str(question["prefers_suit"])
 
 	var answer := ""
-	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
+	for card: Dictionary in DataDB.get_cards_by_tier(Ledger.OPENING_TIER):
 		if str(card.get("suit", "")) == wanted:
 			answer = str(card["card_id"])
 			break
@@ -455,7 +465,7 @@ func test_every_question_can_be_answered_in_the_suit_it_invites() -> void:
 	# without it being obvious from the data. This catches that on Cameron's
 	# next edit rather than in a playtest.
 	var suits: Array[String] = []
-	for card: Dictionary in DataDB.get_cards_by_tier("Starter"):
+	for card: Dictionary in DataDB.get_cards_by_tier(Ledger.OPENING_TIER):
 		suits.append(str(card.get("suit", "")))
 
 	for question: Dictionary in _playtest_stage("PT_S2").get("questions", []):
@@ -490,7 +500,7 @@ func test_answering_well_carries_the_press_into_the_floor_debate() -> void:
 			break
 		var card_id := str(by_suit.get(str(question.get("prefers_suit", "")), ""))
 		assert_false(card_id.is_empty(),
-			"no Starter card answers in %s" % question.get("prefers_suit"))
+			"no opening-tier card answers in %s" % question.get("prefers_suit"))
 
 		# The answer, plus one card held back: a conference ends the moment
 		# the player has nothing left to say, and this one is not finished.
@@ -498,6 +508,12 @@ func test_answering_well_carries_the_press_into_the_floor_debate() -> void:
 		engine.state.energy = engine.state.energy_per_turn
 		if engine.play_card(card_id).get("ok", false):
 			expected.append(str(question.get("pleases_booster", "")))
+
+		# One question a turn: the next reporter does not speak until this
+		# turn is over. Ending it here answers each question in its own turn
+		# rather than racing through the lot on the opening hand.
+		if not engine.state.is_over() and engine.questions_remaining() > 0:
+			engine.end_turn()
 
 	assert_eq(engine.questions_remaining(), 0, "every question got an answer")
 

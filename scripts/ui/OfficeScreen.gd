@@ -18,6 +18,10 @@ const BATTLE_SCENE := "res://scenes/battle/BattleScreen.tscn"
 @onready var _organisations_button: Button = %OrganisationsButton
 @onready var _organisations_panel: Overlay = %OrganisationsPanel
 @onready var _briefing_panel: Overlay = %BriefingPanel
+@onready var _levels_panel: Overlay = %LevelsPanel
+
+## The level the player is looking at, chosen on the levels screen.
+var _chosen_level: Dictionary = {}
 @onready var _resources: Label = %Resources
 @onready var _cards_button: Button = %CardsButton
 @onready var _deck_button: Button = %DeckButton
@@ -33,7 +37,7 @@ var _draft_deck: Array[String] = []
 
 
 func _ready() -> void:
-	_start_button.pressed.connect(_show_briefing)
+	_start_button.pressed.connect(_show_levels)
 	_briefing_panel.confirmed.connect(_on_start)
 	_deck_panel.confirmed.connect(_on_deck_confirmed)
 	_organisations_button.pressed.connect(_show_organisations)
@@ -66,7 +70,7 @@ func _build() -> void:
 		art.art_id = "PROTAGONIST"
 		art.expression = "neutral"
 
-	_start_button.text = "Start %s" % level.get("name_en", "the level")
+	_start_button.text = "Choose a level"
 	_report.text = _last_level_report()
 	_refresh_resources()
 
@@ -199,7 +203,7 @@ func _show_cards() -> void:
 		for card: Dictionary in in_tier:
 			rows.append(_card_row(card))
 
-	var owned_extra := GameState.owned_cards.size() - DataDB.get_cards_by_tier("Starter").size()
+	var owned_extra := GameState.owned_cards.size() - DataDB.get_cards_by_tier(Ledger.OPENING_TIER).size()
 	if owned_extra > 0:
 		rows.append(_wrapped_label(""))
 		rows.append(_wrapped_label("%d card%s unlocked so far."
@@ -400,14 +404,71 @@ func _on_buy_modifier(mod_id: String) -> void:
 ## Every reward in the playtest level is currently zero, and this screen says
 ## so in words. Four zeroes would read as "this level is worthless"; "not set
 ## yet" is the truth, and it is Cameron's to set.
+## Which level to play. Six of them now, grouped by tier.
+##
+## Tier 1 and 2 are bought with XP in the finished game; while Cameron
+## prices the economy by playing, every level is simply open.
+func _show_levels() -> void:
+	var rows: Array[Control] = []
+	rows.append(_wrapped_label("Each level is a run of stages. Pick one and "
+		+ "you will see what it holds before you commit."))
+
+	var by_tier := {}
+	for level: Variant in DataDB.levels:
+		if typeof(level) != TYPE_DICTIONARY:
+			continue
+		var tier := int((level as Dictionary).get("tier", 0))
+		if not by_tier.has(tier):
+			by_tier[tier] = []
+		by_tier[tier].append(level)
+
+	for tier: int in [0, 1, 2]:
+		if not by_tier.has(tier):
+			continue
+		rows.append(_heading_label("Tier %d" % tier))
+		for level: Dictionary in by_tier[tier]:
+			rows.append(_level_row(level))
+
+	_levels_panel.open("Levels", rows)
+
+
+func _level_row(level: Dictionary) -> Control:
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 2)
+
+	var stages: Array = level.get("stages", [])
+	box.add_child(_wrapped_label("%s %s" % [
+		level.get("name_en", ""), level.get("name_jp", "")]))
+	box.add_child(_wrapped_label("%d stage%s  ·  %s" % [
+		stages.size(), "" if stages.size() == 1 else "s",
+		level.get("_blurb", "")], "SmallLabel"))
+
+	var button := Button.new()
+	button.custom_minimum_size = Vector2(0, 90)
+	button.text = "Look it over"
+	button.pressed.connect(_on_level_chosen.bind(level))
+	box.add_child(button)
+	return box
+
+
+func _on_level_chosen(level: Dictionary) -> void:
+	_chosen_level = level
+	_levels_panel.close()
+	_show_briefing()
+
+
 func _show_briefing() -> void:
-	var runner := LevelRunner.new(DataDB.playtest_level)
+	if _chosen_level.is_empty():
+		_show_levels()
+		return
+
+	var runner := LevelRunner.new(_chosen_level)
 	if not runner.is_valid():
 		_report.text = "This level cannot start:\n• %s" % "\n• ".join(Array(runner.problems()))
 		return
 
 	var rows: Array[Control] = []
-	var stages: Array = DataDB.playtest_level.get("stages", [])
+	var stages: Array = _chosen_level.get("stages", [])
 	var anything_set := false
 
 	for stage: Variant in stages:
@@ -445,7 +506,8 @@ func _show_briefing() -> void:
 	rows.append(_wrapped_label("Lose a stage and you earn nothing from it. "
 		+ "Nothing else is taken off you.", "SmallLabel"))
 
-	_briefing_panel.open("Before you go in", rows, "Go in")
+	_briefing_panel.open(str(_chosen_level.get("name_en", "Before you go in")),
+		rows, "Go in")
 
 
 ## "Against Opponent A, Opponent B and Opponent C" — who is waiting.
@@ -467,7 +529,7 @@ func _opponents_line(stage: Dictionary) -> String:
 
 
 func _on_start() -> void:
-	var runner := LevelRunner.new(DataDB.playtest_level)
+	var runner := LevelRunner.new(_chosen_level)
 	if not runner.is_valid():
 		_report.text = "This level cannot start:\n• %s" % "\n• ".join(Array(runner.problems()))
 		return

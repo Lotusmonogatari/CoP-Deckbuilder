@@ -25,6 +25,13 @@ extends RefCounted
 ## Why a purchase was refused, in words a screen can show as-is.
 const AFFORDABLE := ""
 
+## The tier a player owns from the first moment, named once.
+##
+## It was "Starter" until the 2026-09-21 card slate renamed the tiers to
+## 0-3. Seven places checked that string; now they ask here instead, so the
+## next rename is one line.
+const OPENING_TIER := "0"
+
 enum Currency { XP, FUNDS }
 
 
@@ -174,20 +181,49 @@ static func deck_is_legal(deck: Array, owned: Array, balance: Dictionary) -> boo
 	return deck_refusal(deck, owned, balance) == AFFORDABLE
 
 
-## The deck a new run starts with: every Starter card, in workbook order.
+## The deck a new run starts with.
 ##
-## Starter cards are owned from the beginning rather than bought, so a first
-## deck needs no decisions before the first battle.
+## Every opening-tier card first — those are yours from the beginning and
+## there is one per suit. The 2026-09-21 slate has six of them against a
+## deck of twelve, so the rest is filled a suit at a time from the next
+## tiers up, lowest card ID first.
+##
+## That fill is a SUGGESTION, not a design decision: it keeps all six suits
+## represented so a first battle is playable, and the deck screen exists
+## precisely so the player changes it. Nothing downstream depends on which
+## cards these are.
 static func opening_deck(cards: Array, balance: Dictionary) -> Array[String]:
+	var wanted := deck_size(balance)
 	var deck: Array[String] = []
+
 	for card: Dictionary in cards:
-		if str(card.get("tier", "")) == "Starter":
+		if str(card.get("tier", "")) == OPENING_TIER:
 			deck.append(str(card.get("card_id", "")))
 
-	# More Starter cards than a deck holds would make the opening hand a
-	# silent choice nobody made. Trimmed, and the deck screen is where the
-	# player picks differently.
-	var wanted := deck_size(balance)
 	if deck.size() > wanted:
-		deck = deck.slice(0, wanted)
+		return deck.slice(0, wanted)
+
+	# Round-robin by suit so the fill cannot hand out six cards of one
+	# element and none of another.
+	var suits: Array[String] = []
+	for card: Dictionary in cards:
+		var suit := str(card.get("suit", ""))
+		if not suit.is_empty() and not suits.has(suit):
+			suits.append(suit)
+
+	while deck.size() < wanted:
+		var added := false
+		for suit: String in suits:
+			if deck.size() >= wanted:
+				break
+			for card: Dictionary in cards:
+				var card_id := str(card.get("card_id", ""))
+				if str(card.get("suit", "")) != suit or deck.has(card_id):
+					continue
+				deck.append(card_id)
+				added = true
+				break
+		if not added:
+			break   # every card there is, is already in
+
 	return deck

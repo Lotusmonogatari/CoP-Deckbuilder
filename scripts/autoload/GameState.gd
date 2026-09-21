@@ -49,6 +49,15 @@ var last_xp_gained := 0
 ## for the run rather than the level, like standing.
 ##
 ## Lives only for this sitting until M4 adds saving.
+## PLAYTEST SETTING. True hands the player every card in the workbook from
+## the first moment, so a session can try the whole slate without earning
+## it. Cameron asked for the XP and Yen economy to be left aside while he
+## prices it by playing, and an unreachable card cannot be playtested.
+##
+## Set it false and the collection starts at the opening tier again; nothing
+## else changes, because the Ledger still refuses anything unaffordable.
+var open_collection := true
+
 var owned_cards: Array[String] = []
 var deck: Array[String] = []
 var owned_modifiers: Array[String] = []
@@ -85,7 +94,7 @@ func reset_meta() -> void:
 func reset_collection() -> void:
 	owned_cards = []
 	for card: Dictionary in DataDB.cards:
-		if str(card.get("tier", "")) == "Starter":
+		if open_collection or str(card.get("tier", "")) == Ledger.OPENING_TIER:
 			owned_cards.append(str(card.get("card_id", "")))
 
 	deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
