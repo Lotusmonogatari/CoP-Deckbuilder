@@ -37,6 +37,7 @@ NEEDED = [
     "modifier_effects",
     "modifiers",
     "boosters",
+    "card_cues",
     "cards",
     "intent_patterns",
     "journalists",
@@ -44,6 +45,7 @@ NEEDED = [
     "player",
     "playtest_cards",
     "playtest_level",
+    "questions",
     "stage_types",
     "rules",
     "sanban",
@@ -199,6 +201,10 @@ def build_data() -> dict:
         # looks these up exactly as the Godot build does, so rewording one in
         # the spreadsheet changes both rather than only one of them.
         "strings": raw["strings"],
+        # The questions each kind of room can ask, and the five spoken lines
+        # each card has. Both Cameron's writing, both from the workbook.
+        "questions": raw["questions"],
+        "card_cues": raw["card_cues"],
         # Only what a playtest stage borrows: the audience mix of the canon
         # stage it is modelled on. The rest of a stage row is not used here.
         "stages": [

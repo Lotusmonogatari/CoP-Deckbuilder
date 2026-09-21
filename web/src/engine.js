@@ -641,6 +641,10 @@ class BattleState {
 
     // How many reporters were left without an answer.
     this.declined_questions = 0;
+    // How many were answered in a suit the question grades weak. Counted
+    // rather than only felt, so the closing text can tell a stage lost to
+    // bad answers from one lost to silence.
+    this.weak_answers = 0;
 
     this.bar = null;
     this.next_intent_revealed = false;
@@ -691,6 +695,11 @@ class BattleEngine {
     this._rules = config.rules || {};
     this._meta = config.meta || {};
 
+    // The wording, handed in like everything else. Left out — as the
+    // headless fixtures leave it out — every sentence below comes back as
+    // its key, which is harmless and is what those tests assert against.
+    this._words = phrase(config.strings || {});
+
     if (Object.keys(this._stage).length === 0) {
       this.setupProblems.push('no stage was given');
       return false;
@@ -705,6 +714,9 @@ class BattleEngine {
     s.win_mode = str(this._stage.win_mode, 'threshold');
     s.draw_mode = str(this._stage.draw_mode, 'refill');
     this._questions = this._stage.questions || [];
+    if (this._questions.length === 0) {
+      this._questions = this._drawQuestions(config.question_pool || []);
+    }
 
     // A press conference deals a bigger opening hand and then nothing more,
     // so "opening_hand" wins over the ordinary hand size where both exist.
@@ -1112,7 +1124,7 @@ class BattleEngine {
     // In an ambush there is nowhere to go. Ducking one question ends it,
     // which is the whole character of the stage.
     if (bool(this._stage.decline_ends_stage, false)) {
-      this._finish('loss', 'You walked away from the question. That is the story now.');
+      this._finish('loss', this._words('outcome.reason.walked_away'));
     }
   }
 
@@ -1150,7 +1162,9 @@ class BattleEngine {
     if (s.isOver()) return;
 
     // Losing on gaffes happens the moment it happens, mid-turn.
-    if (s.gaffe >= s.gaffe_limit) return this._finish('loss', 'The gaffe meter filled.');
+    if (s.gaffe >= s.gaffe_limit) {
+      return this._finish('loss', this._words('outcome.reason.gaffe_limit'));
+    }
 
     // A press conference ends when the reporters run out of questions, or
     // when the player runs out of anything to answer with.
@@ -1189,15 +1203,15 @@ class BattleEngine {
     // Running out of opponents wins it even short of the threshold.
     if (this._sequenceMode === 'continuous' && s.bar.opponent <= 0) {
       if (this.hasMoreOpponents()) return this._advanceToNextOpponent();
-      return this._finish('win', 'Every opponent has been argued out of the chamber.');
+      return this._finish('win', this._words('outcome.reason.all_argued_out'));
     }
 
     if (bool(this._rules.opponent_can_win_by_threshold, false) && s.bar.opponentHasWon()) {
-      return this._finish('loss', 'The opponent reached the threshold first.');
+      return this._finish('loss', this._words('outcome.reason.opponent_first'));
     }
 
     if (endOfTurn && s.bar.model === SURVIVAL && s.bar.playerBelowThreshold()) {
-      return this._finish('loss', 'Support fell below the line during the debate.');
+      return this._finish('loss', this._words('outcome.reason.fell_below'));
     }
 
     if (endOfTurn) this._checkTurnLimit();
@@ -1209,7 +1223,7 @@ class BattleEngine {
     if (limit <= 0 || s.turn < limit) return;
 
     if (s.bar && s.bar.model === SURVIVAL) {
-      return this._finish('win', 'Survived the whole debate above the line.');
+      return this._finish('win', this._words('outcome.reason.survived'));
     }
 
     // A scored stage is not won or lost on the clock — running out of turns
@@ -1219,23 +1233,28 @@ class BattleEngine {
       // the room should not close on a headcount, and a TV debate should
       // close on press tone rather than on "support".
       const closing = this._stage.bar_as_percent
-        ? s.playerScore() + '% of the room'
-        : s.playerScore() + ' ' + str(this._stage.bar_unit, 'support').toLowerCase();
+        ? this._words('outcome.reason.percent_of_room', { count: s.playerScore() })
+        : this._words('outcome.reason.amount_of_unit', {
+            count: s.playerScore(),
+            unit: str(this._stage.bar_unit, 'support').toLowerCase(),
+          });
       // Named from the stage: the caucus, the town hall and the TV debate
       // are all scored, and this said "the caucus" for all three.
       const what = str(this._stage.name_en, '').trim();
-      return this._finish('win', (what || 'It') + ' closed on ' + closing + '.');
+      return this._finish('win', what
+        ? this._words('outcome.reason.closed_on', { stage: what, closing: closing })
+        : this._words('outcome.reason.closed_on_unnamed', { closing: closing }));
     }
 
     switch (str(this._rules.turn_limit_outcome, 'loss')) {
       case 'highest_support_wins':
         return s.bar.player > s.bar.opponent
-          ? this._finish('win', 'Time ran out with the player ahead.')
-          : this._finish('loss', 'Time ran out with the player behind.');
+          ? this._finish('win', this._words('outcome.reason.time_ahead'))
+          : this._finish('loss', this._words('outcome.reason.time_behind'));
       case 'tie_retry':
-        return this._finish('retry', 'Time ran out with no decision. The stage restarts.');
+        return this._finish('retry', this._words('outcome.reason.time_no_decision'));
       default:
-        return this._finish('loss', 'Time ran out before the threshold was reached.');
+        return this._finish('loss', this._words('outcome.reason.time_short'));
     }
   }
 
@@ -1315,9 +1334,10 @@ class BattleEngine {
 
   _victoryReason() {
     if (this._sequenceMode !== 'single' && this.state.opponent_count > 1) {
-      return 'All ' + this.state.opponent_count + ' were argued down.';
+      return this._words('outcome.reason.all_argued_down',
+        { count: this.state.opponent_count });
     }
-    return 'The support threshold was reached.';
+    return this._words('outcome.reason.threshold');
   }
 
   _finish(outcome, reason) {
@@ -1356,13 +1376,16 @@ class BattleEngine {
     // meeting both run on questions and neither of them is a press
     // conference. It said so anyway until a playtest read it.
     const what = str(this._stage.name_en, '').trim();
-    const lines = [(what || 'It') + ' concludes.'];
+    const lines = [what
+      ? this._words('outcome.reason.concludes', { stage: what })
+      : this._words('outcome.reason.concludes_unnamed')];
     if (ranOutOfCards) {
-      lines.push('The questions ran on, but there was nothing left to say.');
+      lines.push(this._words('outcome.reason.nothing_left'));
     }
     const declined = this.state.declined_questions;
-    if (declined === 1) lines.push('One question went unanswered.');
-    else if (declined > 1) lines.push(declined + ' questions went unanswered.');
+    if (declined > 0) {
+      lines.push(this._words('outcome.reason.unanswered', { count: declined }));
+    }
     return lines.join(' ');
   }
 
@@ -1430,13 +1453,74 @@ class BattleEngine {
   _answerQuestion(card) {
     const question = this.currentQuestion();
     if (!question) return;
-    if (card.suit === question.prefers_suit) {
-      const booster = String(question.pleases_booster || '');
-      if (booster && !this.state.pleased_boosters.includes(booster)) {
-        this.state.pleased_boosters.push(booster);
+
+    switch (this._gradeOf(card, question)) {
+      case 'S': {
+        // A strong answer pleases whoever asked, as it always has.
+        const booster = String(question.pleases_booster || '');
+        if (booster && !this.state.pleased_boosters.includes(booster)) {
+          this.state.pleased_boosters.push(booster);
+        }
+        break;
+      }
+      case 'W': {
+        // A weak answer is worse than a bland one: the room cools, the same
+        // way declining does but by a smaller amount. The number is the
+        // stage's, beside the decline cost it sits next to.
+        const cost = int(this._stage.weak_answer_tone_cost, 0);
+        if (cost > 0 && this.state.bar) this.state.bar.playerLoses(cost);
+        this.state.weak_answers += 1;
+        break;
       }
     }
+
     this.state.question_index += 1;
+  }
+
+  // How well this card's suit answers this question: 'S', 'M' or 'W'.
+  //
+  // Two shapes of question are understood. The questions Cameron wrote in
+  // the workbook grade all six suits; the earlier hand-written ones name a
+  // single suit they prefer, which reads as S for that suit and M for the
+  // rest.
+  _gradeOf(card, question) {
+    const grades = question.grades || {};
+    if (Object.keys(grades).length > 0) {
+      return String(grades[card.suit] || 'M');
+    }
+    return card.suit === question.prefers_suit ? 'S' : 'M';
+  }
+
+  // Deals this stage's questions out of its type's pool.
+  //
+  // A room that asks questions no longer names its own: it draws from the
+  // pool for its kind, so a new question is one row in the workbook rather
+  // than an edit to every level that has a press conference in it.
+  //
+  // Dealt from the battle's own seeded generator, so the same seed asks the
+  // same questions, and without repeats — being asked the same thing twice
+  // in one sitting reads as a bug whatever the dice say. A pool smaller
+  // than the stage needs is used whole rather than padded.
+  _drawQuestions(pool) {
+    if (!Array.isArray(pool) || pool.length === 0) return [];
+
+    // How many this room asks. A stage that says so outright wins: these
+    // rooms have no turn limit, so the number of questions IS the length of
+    // the stage and it is the level's to set.
+    let wanted = int(this._stage.questions_count, 0);
+    if (wanted <= 0) {
+      wanted = Math.max(this._questionsPerTurn(), 1)
+        * Math.max(int(this._stage.turn_limit, 0), 1);
+    }
+
+    const bag = pool.slice();
+    for (let i = bag.length - 1; i > 0; i--) {
+      const j = this._rng(i + 1);
+      const held = bag[i];
+      bag[i] = bag[j];
+      bag[j] = held;
+    }
+    return bag.slice(0, Math.min(wanted, bag.length));
   }
 
   currentIntent() { return this._intents ? this._intents.peek() : { verb: 'none', value: 0 }; }
@@ -2055,6 +2139,21 @@ function withAudience(data, stage) {
 }
 
 // `owned` is the run's state: { deck, modifiers }. Absent in a standalone
+// Every line the game says, by key. Built from the exported Text tab once
+// rather than per battle, because a stage can start several times in a run.
+let _stringsTable = null;
+function stringsTable(data) {
+  if (_stringsTable === null) {
+    _stringsTable = {};
+    for (const row of (data.strings || [])) {
+      const key = str(row.key, '').trim();
+      if (key) _stringsTable[key] = str(row.english, '');
+    }
+  }
+  return _stringsTable;
+}
+
+
 // battle, which then deals the opening twelve and no backing.
 function forPlaytestStage(data, stage, buffs, meta, seed, owned) {
   buffs = buffs || {};
@@ -2070,7 +2169,13 @@ function forPlaytestStage(data, stage, buffs, meta, seed, owned) {
     cards: cardTable(data),
     affinity: affinityTable(data),
     rules: data.rules,
+    // Every sentence the engine says, from the workbook's Text tab.
+    strings: stringsTable(data),
     meta: meta || startingMeta(data),
+    // The questions this kind of room can ask. The engine deals from it
+    // with the battle's own seed, and only where the stage has not written
+    // its own questions out longhand.
+    question_pool: (data.questions || {})[str(stage.type, '')] || [],
     deck: (owned.deck && owned.deck.length > 0) ? owned.deck.slice() : starterDeck(data),
     // A good caucus earlier in the level starts this stage ahead, and so
     // does an organisation whose backing you have bought.

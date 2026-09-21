@@ -1,0 +1,1512 @@
+{
+  "press_conference": [
+    {
+      "id": "Q01",
+      "text": "What will this legislation mean for ordinary families?",
+      "theme": "Impact",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "Q02",
+      "text": "Where exactly do you stand on this bill?",
+      "theme": "Position",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO01",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "Q03",
+      "text": "Some call this bill reckless. How do you respond?",
+      "theme": "Criticism",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "Q04",
+      "text": "Do you have the votes to pass this?",
+      "theme": "Votes",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO01",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "Q05",
+      "text": "Who really benefits from this legislation?",
+      "theme": "Beneficiaries",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "Q06",
+      "text": "Is your party truly united behind this?",
+      "theme": "Unity",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO01",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "Q07",
+      "text": "How do you plan to pay for it?",
+      "theme": "Cost",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "Q08",
+      "text": "What evidence supports this approach?",
+      "theme": "Evidence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "Q09",
+      "text": "Yes or no: will you see this through?",
+      "theme": "Commitment",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO01",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "Q10",
+      "text": "Is this about the public, or about politics?",
+      "theme": "Motive",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "Q11",
+      "text": "Some say this goes too far. Your answer?",
+      "theme": "Scope",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "Q12",
+      "text": "Some say this is too timid. Your answer?",
+      "theme": "Scope",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "Q13",
+      "text": "Will you work with the opposition on this?",
+      "theme": "Cooperation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO02",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "Q14",
+      "text": "Are special interests shaping this legislation?",
+      "theme": "Influence",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "Q15",
+      "text": "What do you say to people who feel left behind?",
+      "theme": "Constituents",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "Q16",
+      "text": "Will you take responsibility if this fails?",
+      "theme": "Accountability",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "Q17",
+      "text": "Why should anyone trust you on this?",
+      "theme": "Trust",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "Q18",
+      "text": "Is there something in this bill you're not telling us?",
+      "theme": "Transparency",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "Q19",
+      "text": "What happens if members of your party break ranks?",
+      "theme": "Discipline",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO01",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "Q20",
+      "text": "Is this really the right priority for the country?",
+      "theme": "Priority",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_E"
+    }
+  ],
+  "town_hall": [
+    {
+      "id": "T01",
+      "text": "How does this bill help my family?",
+      "theme": "Impact",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "T02",
+      "text": "Why should working people believe you?",
+      "theme": "Trust",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "T03",
+      "text": "Who are you really listening to?",
+      "theme": "Loyalty",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO01",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "T04",
+      "text": "What will this cost people like me?",
+      "theme": "Cost",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "T05",
+      "text": "Does our town matter to you at all?",
+      "theme": "Neglect",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "T06",
+      "text": "Are you going to fight for us?",
+      "theme": "Resolve",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO02",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "T07",
+      "text": "Can you explain this bill in plain words?",
+      "theme": "Clarity",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "T08",
+      "text": "Why does it feel like nobody hears us?",
+      "theme": "Neglect",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "T09",
+      "text": "Will this bill protect jobs in our area?",
+      "theme": "Livelihood",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO07",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "T10",
+      "text": "Is this bill for us, or for big business?",
+      "theme": "Motive",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "T11",
+      "text": "What happens to people who can't keep up?",
+      "theme": "Vulnerable",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "T12",
+      "text": "Why should I vote for you?",
+      "theme": "Trust",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "T13",
+      "text": "Will you listen if we disagree with you?",
+      "theme": "Openness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "T14",
+      "text": "Are you on our side or theirs?",
+      "theme": "Loyalty",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO01",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "T15",
+      "text": "What do you say to families struggling to get by?",
+      "theme": "Hardship",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "T16",
+      "text": "How can we trust politicians at all?",
+      "theme": "Trust",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "T17",
+      "text": "Who is behind this bill?",
+      "theme": "Influence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "T18",
+      "text": "What can ordinary people do to help?",
+      "theme": "Participation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "T19",
+      "text": "Will you keep your promises to us?",
+      "theme": "Commitment",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO01",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "T20",
+      "text": "Why should young people care about this?",
+      "theme": "Stakes",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_E"
+    }
+  ],
+  "lobbyist_meeting": [
+    {
+      "id": "L01",
+      "text": "Can our members count on your support?",
+      "theme": "Support",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO10",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "L02",
+      "text": "What would it take to earn your vote?",
+      "theme": "Price",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "L03",
+      "text": "Is there room to adjust the bill's language?",
+      "theme": "Drafting",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "L04",
+      "text": "Our industry has concerns. Will you hear them?",
+      "theme": "Access",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO07",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "L05",
+      "text": "Can we speak off the record?",
+      "theme": "Secrecy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "L06",
+      "text": "Who else is lobbying you on this?",
+      "theme": "Competition",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "L07",
+      "text": "How can we help you get this passed?",
+      "theme": "Assistance",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "L08",
+      "text": "You know our members vote in your district, right?",
+      "theme": "Leverage",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO10",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "L09",
+      "text": "Would a study of the costs change your mind?",
+      "theme": "Persuasion",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO02",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "L10",
+      "text": "Is your party's position final?",
+      "theme": "Flexibility",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "L11",
+      "text": "What are your red lines on this bill?",
+      "theme": "Limits",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "L12",
+      "text": "Can we draft an amendment together?",
+      "theme": "Drafting",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "L13",
+      "text": "Our members would be grateful. You understand?",
+      "theme": "Inducement",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO10",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "L14",
+      "text": "Who is advising you on this bill?",
+      "theme": "Influence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "L15",
+      "text": "Is there anything we can do for you?",
+      "theme": "Inducement",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO10",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "L16",
+      "text": "How firm is your commitment on this?",
+      "theme": "Resolve",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO02",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "L17",
+      "text": "Would you consider a compromise position?",
+      "theme": "Compromise",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO02",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "L18",
+      "text": "Do you understand what this means for our industry?",
+      "theme": "Impact",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "L19",
+      "text": "Can we keep this conversation between us?",
+      "theme": "Secrecy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "L20",
+      "text": "What message should we take back to our members?",
+      "theme": "Signal",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO02",
+      "asked_by": "JR_E"
+    }
+  ],
+  "policy_study": [
+    {
+      "id": "B01",
+      "text": "How will this be implemented in practice?",
+      "theme": "Implementation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO04",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "B02",
+      "text": "What problem is this legislation meant to solve?",
+      "theme": "Purpose",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "B03",
+      "text": "Which agency is responsible for enforcement?",
+      "theme": "Enforcement",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "B04",
+      "text": "Is there a cost estimate for this?",
+      "theme": "Cost",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "B05",
+      "text": "How are key terms in the bill defined?",
+      "theme": "Definitions",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "B06",
+      "text": "What data supports this approach?",
+      "theme": "Evidence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "B07",
+      "text": "Are there unintended consequences to consider?",
+      "theme": "Risk",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "B08",
+      "text": "How will success be measured?",
+      "theme": "Metrics",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "B09",
+      "text": "Does this conflict with existing law?",
+      "theme": "Legality",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO09",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "B10",
+      "text": "Which communities will be affected most?",
+      "theme": "Impact",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO06",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "B11",
+      "text": "Will affected groups be consulted?",
+      "theme": "Consultation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO04",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "B12",
+      "text": "What resources will the department need?",
+      "theme": "Resources",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO04",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "B13",
+      "text": "Is there a review process built in?",
+      "theme": "Oversight",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "B14",
+      "text": "How does this interact with regional authorities?",
+      "theme": "Coordination",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO04",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "B15",
+      "text": "What happens if the targets aren't met?",
+      "theme": "Accountability",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "B16",
+      "text": "Could this be simplified without losing its intent?",
+      "theme": "Simplicity",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "B17",
+      "text": "Where can the department find flexibility?",
+      "theme": "Flexibility",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "B18",
+      "text": "Who will bear the administrative burden?",
+      "theme": "Burden",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO04",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "B19",
+      "text": "Are the projections realistic?",
+      "theme": "Feasibility",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO04",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "B20",
+      "text": "Is there broad support for this within government?",
+      "theme": "Support",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO10",
+      "asked_by": "JR_E"
+    }
+  ],
+  "media_ambush": [
+    {
+      "id": "A01",
+      "text": "Are you hiding something from the public?",
+      "theme": "Secrecy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "A02",
+      "text": "Who's really pulling your strings?",
+      "theme": "Influence",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "A03",
+      "text": "Do your donors write your bills?",
+      "theme": "Money",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "A04",
+      "text": "Is this bill a favor to your friends?",
+      "theme": "Cronyism",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "A05",
+      "text": "Should anyone believe a word you say?",
+      "theme": "Credibility",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "A06",
+      "text": "Are you in over your head?",
+      "theme": "Competence",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "A07",
+      "text": "Do you even understand what's in this bill?",
+      "theme": "Competence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "A08",
+      "text": "Is your party abandoning you?",
+      "theme": "Isolation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO02",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "A09",
+      "text": "Are you running from the press?",
+      "theme": "Evasion",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "A10",
+      "text": "Is this a cover-up?",
+      "theme": "Scandal",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "A11",
+      "text": "Would you live under this law yourself?",
+      "theme": "Hypocrisy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "A12",
+      "text": "Who gets rich off this bill?",
+      "theme": "Money",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO05",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "A13",
+      "text": "Are you lying to the public?",
+      "theme": "Honesty",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "A14",
+      "text": "Is anyone in your party loyal to you?",
+      "theme": "Isolation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO02",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "A15",
+      "text": "Isn't this just about winning votes?",
+      "theme": "Motive",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_E"
+    },
+    {
+      "id": "A16",
+      "text": "Will you resign if this fails?",
+      "theme": "Accountability",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_A"
+    },
+    {
+      "id": "A17",
+      "text": "Yes or no: is this bill a failure?",
+      "theme": "Verdict",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_B"
+    },
+    {
+      "id": "A18",
+      "text": "What are you so afraid of?",
+      "theme": "Fear",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_C"
+    },
+    {
+      "id": "A19",
+      "text": "Can you look voters in the eye and defend this?",
+      "theme": "Conviction",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_booster": "BO03",
+      "asked_by": "JR_D"
+    },
+    {
+      "id": "A20",
+      "text": "Why should anyone take you seriously?",
+      "theme": "Credibility",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_booster": "BO08",
+      "asked_by": "JR_E"
+    }
+  ]
+}

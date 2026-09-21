@@ -67,6 +67,10 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		"rules": DataDB.rules,
 		"strings": DataDB.strings,
 		"meta": meta,
+		# The questions this kind of room can ask. The engine deals from it
+		# with the battle's own seed, and only where the stage has not
+		# written its own questions out longhand.
+		"question_pool": DataDB.questions.get(str(stage.get("type", "")), []),
 		"deck": player_deck(),
 		# A good caucus earlier in the level starts this stage ahead, and so
 		# does an organisation whose backing you have bought.

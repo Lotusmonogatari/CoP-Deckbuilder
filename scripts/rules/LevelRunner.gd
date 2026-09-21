@@ -61,9 +61,20 @@ func problems() -> PackedStringArray:
 		# A stage needs someone or something to push back. Usually that is
 		# opponents; in a press conference it is the reporters' questions,
 		# which is why either will do.
-		if stage.get("opponents", []).is_empty() and stage.get("questions", []).is_empty():
+		if stage.get("opponents", []).is_empty() and not _asks_questions(stage):
 			found.append("stage %d has neither opponents nor questions" % seq)
 	return found
+
+
+## Whether this room puts questions to the player.
+##
+## Two ways of saying so: a stage may write its questions out longhand, or
+## name a number and draw that many from the pool for its type. Asked in one
+## place so neither shape is forgotten.
+static func _asks_questions(stage: Dictionary) -> bool:
+	if not stage.get("questions", []).is_empty():
+		return true
+	return int(stage.get("questions_count", 0)) > 0
 
 
 func is_valid() -> bool:
@@ -360,7 +371,7 @@ static func variable_rewards(stage: Dictionary, words: Phrase = null) -> Array[S
 			"baseline": int(effects.get("baseline", 50)),
 		}))
 
-	if not stage.get("questions", []).is_empty():
+	if _asks_questions(stage):
 		lines.append(say.say("reward.standing"))
 
 	return lines

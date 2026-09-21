@@ -102,6 +102,11 @@ var question_index := 0
 ## silence, and the closing text says how many times it happened.
 var declined_questions := 0
 
+## How many were answered in a suit the question grades weak. Counted rather
+## than only felt, so the closing text can tell a stage lost to bad answers
+## from one lost to silence.
+var weak_answers := 0
+
 ## The organisations pleased by answering in the suit they invited. These
 ## carry out of the stage and into the floor debate.
 var pleased_boosters: Array[String] = []

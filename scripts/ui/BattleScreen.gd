@@ -420,6 +420,17 @@ func _play_selected() -> void:
 	result["does_nothing"] = useless
 	EventBus.card_played.emit(card_id, result)
 	_refresh()
+
+	# What the player actually says, before what it did to the room. The
+	# line is Cameron's, from the workbook; a card with none written yet
+	# goes straight to the narration, which is how it read before.
+	var cue := CardCues.for_card(
+		card_id, str(_stage.get("stage_id", "")), engine.state.turn)
+	if not str(cue["text"]).is_empty():
+		_messages.say(str(cue["text"]))
+		# And the recording of it, when there is one. Silent until then: no
+		# filename appears in any script, the same as every other sound.
+		Audio.say(CardCues.SPEAKER, str(cue["line_id"]))
 	_messages.say(BattleNarration.player_move(
 		result, _stage, engine.state, OpponentPresenter.display_name(engine)))
 

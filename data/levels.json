@@ -17,7 +17,15 @@
   "names, per CLAUDE.md: no canon character is invented here.",
   "",
   "pleases_on_win lists the organisations a finished level pleases, which",
-  "is the bonus reward in the design scheme."
+  "is the bonus reward in the design scheme.",
+  "",
+  "2026-09-21: the twelve stages that asked questions used to carry their",
+  "own four to six, written as placeholders and repeated verbatim between",
+  "levels. They now carry questions_count instead and draw that many from",
+  "the pool for their stage type in data/questions.json, which is Cameron's",
+  "own writing from the workbook. Each stage asks exactly as many as it did",
+  "before, so no stage got longer or shorter; only the text changed. The old",
+  "placeholder questions are in git if any is wanted back."
  ],
  "levels": [
   {
@@ -32,33 +40,7 @@
     {
      "seq": 1,
      "type": "policy_study",
-     "questions": [
-      {
-       "id": "SQ1",
-       "asked_by": "JR_A",
-       "text": "Which section does this actually amend?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO09"
-      },
-      {
-       "id": "SQ2",
-       "asked_by": "JR_B",
-       "text": "Has the ministry costed it?",
-       "prefers_suit": "Data Driven"
-      },
-      {
-       "id": "SQ3",
-       "asked_by": "JR_C",
-       "text": "What precedent are you relying on?",
-       "prefers_suit": "Earnest"
-      },
-      {
-       "id": "SQ4",
-       "asked_by": "JR_D",
-       "text": "How will compliance be measured?",
-       "prefers_suit": "Data Driven"
-      }
-     ]
+     "questions_count": 4
     },
     {
      "seq": 2,
@@ -192,43 +174,7 @@
     {
      "seq": 2,
      "type": "press_conference",
-     "questions": [
-      {
-       "id": "PQ1",
-       "asked_by": "JR_A",
-       "text": "What is your stance?",
-       "prefers_suit": "Earnest",
-       "pleases_booster": "BO03"
-      },
-      {
-       "id": "PQ2",
-       "asked_by": "JR_B",
-       "text": "Is this more important than the whole country?",
-       "prefers_suit": "Emotional",
-       "pleases_booster": "BO07"
-      },
-      {
-       "id": "PQ3",
-       "asked_by": "JR_C",
-       "text": "People are in disagreement, right?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO08"
-      },
-      {
-       "id": "PQ4",
-       "asked_by": "JR_D",
-       "text": "Will you seek to convince the opposition parties?",
-       "prefers_suit": "Appeal",
-       "pleases_booster": "BO02"
-      },
-      {
-       "id": "PQ5",
-       "asked_by": "JR_E",
-       "text": "Will your party leaders support this?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO05"
-      }
-     ],
+     "questions_count": 5,
      "carries_buffs_from": [
       1
      ]
@@ -248,36 +194,7 @@
     {
      "seq": 1,
      "type": "press_conference",
-     "questions": [
-      {
-       "id": "PQ1",
-       "asked_by": "JR_A",
-       "text": "What is your stance?",
-       "prefers_suit": "Earnest",
-       "pleases_booster": "BO03"
-      },
-      {
-       "id": "PQ2",
-       "asked_by": "JR_B",
-       "text": "Is this more important than the whole country?",
-       "prefers_suit": "Emotional",
-       "pleases_booster": "BO07"
-      },
-      {
-       "id": "PQ3",
-       "asked_by": "JR_C",
-       "text": "People are in disagreement, right?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO08"
-      },
-      {
-       "id": "PQ4",
-       "asked_by": "JR_D",
-       "text": "Will you seek to convince the opposition parties?",
-       "prefers_suit": "Appeal",
-       "pleases_booster": "BO02"
-      }
-     ]
+     "questions_count": 4
     },
     {
      "seq": 2,
@@ -328,46 +245,7 @@
     {
      "seq": 1,
      "type": "policy_study",
-     "questions": [
-      {
-       "id": "SQ1",
-       "asked_by": "JR_A",
-       "text": "Which section does this actually amend?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO09"
-      },
-      {
-       "id": "SQ2",
-       "asked_by": "JR_B",
-       "text": "Has the ministry costed it?",
-       "prefers_suit": "Data Driven"
-      },
-      {
-       "id": "SQ3",
-       "asked_by": "JR_C",
-       "text": "What precedent are you relying on?",
-       "prefers_suit": "Earnest"
-      },
-      {
-       "id": "SQ4",
-       "asked_by": "JR_D",
-       "text": "How will compliance be measured?",
-       "prefers_suit": "Data Driven"
-      },
-      {
-       "id": "SQ5",
-       "asked_by": "JR_E",
-       "text": "Who administers it locally?",
-       "prefers_suit": "Appeal",
-       "pleases_booster": "BO04"
-      },
-      {
-       "id": "SQ6",
-       "asked_by": "JR_A",
-       "text": "What is the review period?",
-       "prefers_suit": "Earnest"
-      }
-     ]
+     "questions_count": 6
     },
     {
      "seq": 2,
@@ -445,34 +323,7 @@
     {
      "seq": 3,
      "type": "media_ambush",
-     "questions": [
-      {
-       "id": "AQ1",
-       "asked_by": "JR_C",
-       "text": "You have avoided this question all week.",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO08"
-      },
-      {
-       "id": "AQ2",
-       "asked_by": "JR_C",
-       "text": "Whose money is behind this bill?",
-       "prefers_suit": "Earnest",
-       "pleases_booster": "BO08"
-      },
-      {
-       "id": "AQ3",
-       "asked_by": "JR_C",
-       "text": "Do you stand by what you said in committee?",
-       "prefers_suit": "Duplicitous"
-      },
-      {
-       "id": "AQ4",
-       "asked_by": "JR_C",
-       "text": "Will you resign if it fails?",
-       "prefers_suit": "Emotional"
-      }
-     ],
+     "questions_count": 4,
      "carries_buffs_from": [
       2
      ]
@@ -480,34 +331,7 @@
     {
      "seq": 4,
      "type": "lobbyist_meeting",
-     "questions": [
-      {
-       "id": "LQ1",
-       "asked_by": "JR_A",
-       "text": "What is in this for our members?",
-       "prefers_suit": "Appeal",
-       "pleases_booster": "BO05"
-      },
-      {
-       "id": "LQ2",
-       "asked_by": "JR_B",
-       "text": "Your party voted against us last session.",
-       "prefers_suit": "Earnest",
-       "pleases_booster": "BO05"
-      },
-      {
-       "id": "LQ3",
-       "asked_by": "JR_C",
-       "text": "Can you guarantee the timetable?",
-       "prefers_suit": "Data Driven"
-      },
-      {
-       "id": "LQ4",
-       "asked_by": "JR_D",
-       "text": "What happens if the ministry objects?",
-       "prefers_suit": "Duplicitous"
-      }
-     ],
+     "questions_count": 4,
      "carries_buffs_from": [
       3
      ]
@@ -515,33 +339,7 @@
     {
      "seq": 5,
      "type": "policy_study",
-     "questions": [
-      {
-       "id": "SQ1",
-       "asked_by": "JR_A",
-       "text": "Which section does this actually amend?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO09"
-      },
-      {
-       "id": "SQ2",
-       "asked_by": "JR_B",
-       "text": "Has the ministry costed it?",
-       "prefers_suit": "Data Driven"
-      },
-      {
-       "id": "SQ3",
-       "asked_by": "JR_C",
-       "text": "What precedent are you relying on?",
-       "prefers_suit": "Earnest"
-      },
-      {
-       "id": "SQ4",
-       "asked_by": "JR_D",
-       "text": "How will compliance be measured?",
-       "prefers_suit": "Data Driven"
-      }
-     ],
+     "questions_count": 4,
      "carries_buffs_from": [
       4
      ]
@@ -621,43 +419,7 @@
     {
      "seq": 3,
      "type": "press_conference",
-     "questions": [
-      {
-       "id": "PQ1",
-       "asked_by": "JR_A",
-       "text": "What is your stance?",
-       "prefers_suit": "Earnest",
-       "pleases_booster": "BO03"
-      },
-      {
-       "id": "PQ2",
-       "asked_by": "JR_B",
-       "text": "Is this more important than the whole country?",
-       "prefers_suit": "Emotional",
-       "pleases_booster": "BO07"
-      },
-      {
-       "id": "PQ3",
-       "asked_by": "JR_C",
-       "text": "People are in disagreement, right?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO08"
-      },
-      {
-       "id": "PQ4",
-       "asked_by": "JR_D",
-       "text": "Will you seek to convince the opposition parties?",
-       "prefers_suit": "Appeal",
-       "pleases_booster": "BO02"
-      },
-      {
-       "id": "PQ5",
-       "asked_by": "JR_E",
-       "text": "Will your party leaders support this?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO05"
-      }
-     ],
+     "questions_count": 5,
      "carries_buffs_from": [
       2
      ]
@@ -778,87 +540,12 @@
     {
      "seq": 1,
      "type": "policy_study",
-     "questions": [
-      {
-       "id": "SQ1",
-       "asked_by": "JR_A",
-       "text": "Which section does this actually amend?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO09"
-      },
-      {
-       "id": "SQ2",
-       "asked_by": "JR_B",
-       "text": "Has the ministry costed it?",
-       "prefers_suit": "Data Driven"
-      },
-      {
-       "id": "SQ3",
-       "asked_by": "JR_C",
-       "text": "What precedent are you relying on?",
-       "prefers_suit": "Earnest"
-      },
-      {
-       "id": "SQ4",
-       "asked_by": "JR_D",
-       "text": "How will compliance be measured?",
-       "prefers_suit": "Data Driven"
-      },
-      {
-       "id": "SQ5",
-       "asked_by": "JR_E",
-       "text": "Who administers it locally?",
-       "prefers_suit": "Appeal",
-       "pleases_booster": "BO04"
-      },
-      {
-       "id": "SQ6",
-       "asked_by": "JR_A",
-       "text": "What is the review period?",
-       "prefers_suit": "Earnest"
-      }
-     ]
+     "questions_count": 6
     },
     {
      "seq": 2,
      "type": "press_conference",
-     "questions": [
-      {
-       "id": "PQ1",
-       "asked_by": "JR_A",
-       "text": "What is your stance?",
-       "prefers_suit": "Earnest",
-       "pleases_booster": "BO03"
-      },
-      {
-       "id": "PQ2",
-       "asked_by": "JR_B",
-       "text": "Is this more important than the whole country?",
-       "prefers_suit": "Emotional",
-       "pleases_booster": "BO07"
-      },
-      {
-       "id": "PQ3",
-       "asked_by": "JR_C",
-       "text": "People are in disagreement, right?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO08"
-      },
-      {
-       "id": "PQ4",
-       "asked_by": "JR_D",
-       "text": "Will you seek to convince the opposition parties?",
-       "prefers_suit": "Appeal",
-       "pleases_booster": "BO02"
-      },
-      {
-       "id": "PQ5",
-       "asked_by": "JR_E",
-       "text": "Will your party leaders support this?",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO05"
-      }
-     ],
+     "questions_count": 5,
      "carries_buffs_from": [
       1
      ]
@@ -866,34 +553,7 @@
     {
      "seq": 3,
      "type": "lobbyist_meeting",
-     "questions": [
-      {
-       "id": "LQ1",
-       "asked_by": "JR_A",
-       "text": "What is in this for our members?",
-       "prefers_suit": "Appeal",
-       "pleases_booster": "BO05"
-      },
-      {
-       "id": "LQ2",
-       "asked_by": "JR_B",
-       "text": "Your party voted against us last session.",
-       "prefers_suit": "Earnest",
-       "pleases_booster": "BO05"
-      },
-      {
-       "id": "LQ3",
-       "asked_by": "JR_C",
-       "text": "Can you guarantee the timetable?",
-       "prefers_suit": "Data Driven"
-      },
-      {
-       "id": "LQ4",
-       "asked_by": "JR_D",
-       "text": "What happens if the ministry objects?",
-       "prefers_suit": "Duplicitous"
-      }
-     ],
+     "questions_count": 4,
      "carries_buffs_from": [
       2
      ]
@@ -1079,34 +739,7 @@
     {
      "seq": 7,
      "type": "media_ambush",
-     "questions": [
-      {
-       "id": "AQ1",
-       "asked_by": "JR_C",
-       "text": "You have avoided this question all week.",
-       "prefers_suit": "Data Driven",
-       "pleases_booster": "BO08"
-      },
-      {
-       "id": "AQ2",
-       "asked_by": "JR_C",
-       "text": "Whose money is behind this bill?",
-       "prefers_suit": "Earnest",
-       "pleases_booster": "BO08"
-      },
-      {
-       "id": "AQ3",
-       "asked_by": "JR_C",
-       "text": "Do you stand by what you said in committee?",
-       "prefers_suit": "Duplicitous"
-      },
-      {
-       "id": "AQ4",
-       "asked_by": "JR_C",
-       "text": "Will you resign if it fails?",
-       "prefers_suit": "Emotional"
-      }
-     ],
+     "questions_count": 4,
      "carries_buffs_from": [
       6
      ]

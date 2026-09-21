@@ -124,6 +124,130 @@ SHEETS = {
     # asks for a Key and never holds a sentence of its own. A key the code
     # asks for and this tab does not have is an ERROR, checked below, so a
     # typo is caught here rather than appearing on screen mid-playtest.
+    # The five spoken lines a card can say when it is played. One row per
+    # card, joined to Cards by Card ID. The word-count columns beside them
+    # are Cameron's own check and are not exported.
+    "Flavor Text": {
+        "out": "card_cues.json",
+        "key": "card_id",
+        "id_pattern": r"^C\d+$",
+        "columns": [
+            ("Card ID", "card_id", "id"),
+            ("Cue 1", "cue_1", "str"),
+            ("Cue 2", "cue_2", "str"),
+            ("Cue 3", "cue_3", "str"),
+            ("Cue 4", "cue_4", "str"),
+            ("Cue 5", "cue_5", "str"),
+        ],
+    },
+    # Press Questions: 20 questions for the press conference stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Press Questions": {
+        "out": "q_press.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Town Hall Questions: 20 questions for the town hall stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Town Hall Questions": {
+        "out": "q_town_hall.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Lobbyist Questions: 20 questions for the lobbyist meeting stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Lobbyist Questions": {
+        "out": "q_lobbyist.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Study Session Questions: 20 questions for the policy study stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Study Session Questions": {
+        "out": "q_study_session.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Media Ambush Questions: 20 questions for the media ambush stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Media Ambush Questions": {
+        "out": "q_media_ambush.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Which organisation cares about each question theme. A DRAFT: Claude
+    # proposed the mapping and Cameron corrects it in the workbook. The Why
+    # column is the reasoning, so a wrong row is obvious without reading the
+    # questions. Only booster IDs that exist may be used — checked below.
+    "Question Themes": {
+        "out": "question_themes.json",
+        "key": "theme",
+        "columns": [
+            ("Theme", "theme", "id"),
+            ("Organisation", "pleases_booster", "str"),
+            ("Why (Claude's reasoning - correct freely)", "why", "str"),
+        ],
+    },
     "Text": {
         "out": "strings.json",
         "key": "key",
@@ -409,6 +533,7 @@ SHEETS = {
 # They are deliberately not exported; the game never reads them.
 NOT_EXPORTED = {
     "README": "documentation",
+    "Tone Guide": "writing guidance for the cues, for Cameron not the game",
     "CardStage": "a derived view — the engine recomputes this from cards + affinity",
     "Assets": "art production tracker, not game data",
 }
@@ -1131,6 +1256,93 @@ STANDING_NAMES = {
 }
 
 
+# Which stage type each question tab belongs to. The tabs are named for the
+# room; stage_types.json names the type. One place holds the join.
+QUESTION_TABS = {
+    "q_press": "press_conference",
+    "q_town_hall": "town_hall",
+    "q_lobbyist": "lobbyist_meeting",
+    "q_study_session": "policy_study",
+    "q_media_ambush": "media_ambush",
+}
+
+SUIT_COLUMNS = ["earnest", "emotional", "appeal", "data_driven",
+                "divisive", "duplicitous"]
+
+
+def fold_questions(data, report):
+    """Five question tabs become one questions.json, keyed by stage type.
+
+    A stage draws its questions from the pool for its type rather than
+    naming them itself, so a new question is one row in the workbook.
+    Each question grades all six suits S (strong), M (medium) or W (weak).
+    """
+    suit_names = {row["element"].lower().replace(" ", "_"): row["element"]
+                  for row in data.get("suits", []) if row.get("element")}
+
+    by_theme = {row["theme"]: str(row.get("pleases_booster") or "").strip()
+                for row in data.get("question_themes", [])}
+    booster_ids = {row["booster_id"] for row in data.get("boosters", [])}
+    for theme, booster in sorted(by_theme.items()):
+        if booster and booster not in booster_ids:
+            report.error("Question Themes",
+                         f"'{theme}' names organisation '{booster}', "
+                         f"which is not in the Boosters tab")
+
+    # Who asks. The journalists are still Reporter A to Reporter E — nobody
+    # is cast yet — so they take the questions in turn rather than by beat.
+    # When Cameron names them, this becomes a column like the one above.
+    reporters = []
+    journalists_path = DATA_DIR / "journalists.json"
+    if journalists_path.exists():
+        raw = json.loads(journalists_path.read_text(encoding="utf-8"))
+        reporters = [row["journalist_id"]
+                     for row in raw.get("journalists", [])
+                     if row.get("journalist_id")]
+
+    pools = {}
+    for source, stage_type in QUESTION_TABS.items():
+        rows = data.pop(source, [])
+        pool = []
+        for row in rows:
+            grades = {}
+            for column in SUIT_COLUMNS:
+                grade = str(row.get(column) or "").strip().upper()
+                if grade not in ("S", "M", "W"):
+                    report.error(stage_type,
+                                 f"question {row.get('q_id')} grades "
+                                 f"{column} as '{grade}' — it must be S, M or W")
+                    continue
+                # Back under the suit's own name, so the engine can look a
+                # card's suit up directly.
+                grades[suit_names.get(column, column)] = grade
+            if len(grades) == len(SUIT_COLUMNS):
+                theme = row.get("theme", "")
+                question = {
+                    "id": row["q_id"],
+                    "text": row.get("text", ""),
+                    "theme": theme,
+                    "grades": grades,
+                }
+                if by_theme.get(theme):
+                    question["pleases_booster"] = by_theme[theme]
+                elif theme:
+                    report.warn(stage_type,
+                                f"question {row['q_id']} has the theme "
+                                f"'{theme}', which no row in Question Themes "
+                                f"maps to an organisation — a strong answer "
+                                f"will please nobody")
+                if reporters:
+                    question["asked_by"] = reporters[len(pool) % len(reporters)]
+                pool.append(question)
+        pools[stage_type] = pool
+        report.note(f"{stage_type}: {len(pool)} questions in the pool")
+
+    data["questions"] = pools
+    # The mapping has been folded in; it is not a file of its own.
+    data.pop("question_themes", None)
+
+
 def check_standing_names(data, report):
     in_sheet = {str(row.get("name_en", "")).strip() for row in data.get("sanban", [])}
     if not in_sheet:
@@ -1295,6 +1507,7 @@ def main():
         data["rules"] = {}
 
     add_segment_ids(data, report)
+    fold_questions(data, report)
     validate(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)

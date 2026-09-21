@@ -111,6 +111,8 @@ func setup(config: Dictionary) -> bool:
 	state.win_mode = str(_stage.get("win_mode", "threshold"))
 	state.draw_mode = str(_stage.get("draw_mode", "refill"))
 	_questions = _stage.get("questions", [])
+	if _questions.is_empty():
+		_questions = _draw_questions(config.get("question_pool", []))
 
 	# A press conference deals a bigger opening hand and then nothing more,
 	# so "opening_hand" wins over the ordinary hand size where both exist.
@@ -528,6 +530,40 @@ func end_turn() -> Dictionary:
 		"outcome": state.outcome,
 	}
 
+## Deals this stage's questions out of its type's pool.
+##
+## A room that asks questions no longer names its own: it draws from the
+## pool for its kind, so a new question is one row in the workbook rather
+## than an edit to every level that has a press conference in it.
+##
+## Dealt from the battle's own seeded generator, so the same seed asks the
+## same questions, and without repeats — being asked the same thing twice in
+## one sitting reads as a bug whatever the dice say. A pool smaller than the
+## stage needs is used whole rather than padded.
+func _draw_questions(pool: Array) -> Array:
+	if pool.is_empty():
+		return []
+
+	# How many this room asks. A stage that says so outright wins: these
+	# rooms have no turn limit, so the number of questions IS the length of
+	# the stage and it is the level's to set. Otherwise it works out from
+	# the clock.
+	var wanted := int(_stage.get("questions_count", 0))
+	if wanted <= 0:
+		wanted = maxi(_questions_per_turn(), 1) * maxi(int(_stage.get("turn_limit", 0)), 1)
+	var bag := pool.duplicate()
+
+	# Fisher-Yates on the battle's generator, the same shuffle the deck gets.
+	for index in range(bag.size() - 1, 0, -1):
+		var swap := _rng.randi_range(0, index)
+		var held: Variant = bag[index]
+		bag[index] = bag[swap]
+		bag[swap] = held
+
+	return bag.slice(0, mini(wanted, bag.size()))
+
+
+
 
 ## How many questions a turn presents.
 ##
@@ -941,12 +977,37 @@ func _answer_question(card: Dictionary) -> void:
 	if question.is_empty():
 		return
 
-	if card.get("suit") == question.get("prefers_suit"):
-		var booster := str(question.get("pleases_booster", ""))
-		if not booster.is_empty() and not state.pleased_boosters.has(booster):
-			state.pleased_boosters.append(booster)
+	match _grade_of(card, question):
+		"S":
+			# A strong answer pleases whoever asked, as it always has.
+			var booster := str(question.get("pleases_booster", ""))
+			if not booster.is_empty() and not state.pleased_boosters.has(booster):
+				state.pleased_boosters.append(booster)
+		"W":
+			# A weak answer is worse than a bland one: the room cools, the
+			# same way declining does but by a smaller amount. The number is
+			# the stage's, beside the decline cost it sits next to.
+			var cost := int(_stage.get("weak_answer_tone_cost", 0))
+			if cost > 0 and state.bar != null:
+				state.bar.player_loses(cost)
+			state.weak_answers += 1
 
 	state.question_index += 1
+
+
+## How well this card's suit answers this question: "S", "M" or "W".
+##
+## Two shapes of question are understood. The questions Cameron wrote in the
+## workbook grade all six suits; the earlier hand-written ones name a single
+## suit they prefer, which reads as S for that suit and M for the rest.
+func _grade_of(card: Dictionary, question: Dictionary) -> String:
+	var suit := str(card.get("suit", ""))
+
+	var grades: Dictionary = question.get("grades", {})
+	if not grades.is_empty():
+		return str(grades.get(suit, "M"))
+
+	return "S" if suit == str(question.get("prefers_suit", "")) else "M"
 
 
 # ---------------------------------------------------------------------------

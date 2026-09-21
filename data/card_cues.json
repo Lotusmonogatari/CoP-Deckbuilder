@@ -1,0 +1,434 @@
+[
+  {
+    "card_id": "C01",
+    "cue_1": "Judge me by my record.",
+    "cue_2": "My record speaks louder than my speeches.",
+    "cue_3": "Results matter more than rhetoric.",
+    "cue_4": "Look at the work, not the words.",
+    "cue_5": "I let my results do the talking."
+  },
+  {
+    "card_id": "C02",
+    "cue_1": "Fair question. Here's my honest answer.",
+    "cue_2": "I won't dodge this one.",
+    "cue_3": "Let me answer you directly.",
+    "cue_4": "You deserve a straight reply.",
+    "cue_5": "No spin. Just the truth as I see it."
+  },
+  {
+    "card_id": "C03",
+    "cue_1": "I sincerely apologize.",
+    "cue_2": "I take full responsibility, and I'm sorry.",
+    "cue_3": "There is no excuse. Please forgive me.",
+    "cue_4": "I bow my head and ask your forgiveness.",
+    "cue_5": "I owe you an apology, and I offer it."
+  },
+  {
+    "card_id": "C04",
+    "cue_1": "Let me remind you why I serve.",
+    "cue_2": "I'm here to serve, not to climb.",
+    "cue_3": "Back to basics: who are we here for?",
+    "cue_4": "I know exactly who I work for.",
+    "cue_5": "Strip away the noise. This is what matters."
+  },
+  {
+    "card_id": "C25",
+    "cue_1": "When I make a promise, I keep it.",
+    "cue_2": "My word is my bond.",
+    "cue_3": "Check my promises against my results.",
+    "cue_4": "Every commitment I make, I honor.",
+    "cue_5": "I give my word, and it holds."
+  },
+  {
+    "card_id": "C26",
+    "cue_1": "When I'm wrong, I say so.",
+    "cue_2": "I own my mistakes, fully and publicly.",
+    "cue_3": "No excuses. Accountability starts with me.",
+    "cue_4": "I'd rather admit fault than hide it.",
+    "cue_5": "Mistakes are human. Hiding them isn't."
+  },
+  {
+    "card_id": "C27",
+    "cue_1": "This isn't about party. It's about people.",
+    "cue_2": "My door is open to the other side.",
+    "cue_3": "Let's set party aside and solve this together.",
+    "cue_4": "Good ideas don't belong to one party.",
+    "cue_5": "I'll work with anyone who wants results."
+  },
+  {
+    "card_id": "C28",
+    "cue_1": "This letter comes from a mother in my district.",
+    "cue_2": "Let me read you a farmer's words.",
+    "cue_3": "These letters are why I'm standing here.",
+    "cue_4": "One student asks a simple question. Listen.",
+    "cue_5": "Hundreds of letters. Listen to their words."
+  },
+  {
+    "card_id": "C29",
+    "cue_1": "Let your conscience decide.",
+    "cue_2": "You know in your heart this is right.",
+    "cue_3": "History will judge what we do here.",
+    "cue_4": "Vote as if your children were watching.",
+    "cue_5": "Set aside the party line. Do what's right."
+  },
+  {
+    "card_id": "C05",
+    "cue_1": "I will not stand by while families suffer!",
+    "cue_2": "This is the fight that defines us!",
+    "cue_3": "Enough talk. Our people need action!",
+    "cue_4": "I'll fight for this with everything I have!",
+    "cue_5": "Our towns deserve better than this!"
+  },
+  {
+    "card_id": "C06",
+    "cue_1": "Forgive me. This one is personal.",
+    "cue_2": "They're not statistics. They're our neighbors.",
+    "cue_3": "Every family has a story like this.",
+    "cue_4": "I carry their faces with me.",
+    "cue_5": "Think of your own mother, your own child."
+  },
+  {
+    "card_id": "C07",
+    "cue_1": "Say it with me: enough is enough!",
+    "cue_2": "You feel that? That's momentum!",
+    "cue_3": "That's the sound of a movement!",
+    "cue_4": "Let them know where you stand!",
+    "cue_5": "Louder, so everyone can hear!"
+  },
+  {
+    "card_id": "C08",
+    "cue_1": "I'm going to speak from the heart.",
+    "cue_2": "Put the notes away. Here's what I believe.",
+    "cue_3": "Everything I am, I owe to this land.",
+    "cue_4": "I refuse to whisper when it matters.",
+    "cue_5": "This is the speech I live for."
+  },
+  {
+    "card_id": "C30",
+    "cue_1": "Who's ready to win this thing?!",
+    "cue_2": "Loyal hearts, one more push!",
+    "cue_3": "You are the reason I keep fighting!",
+    "cue_4": "You are the heart of this movement!",
+    "cue_5": "Stand firm, friends. We can win this!"
+  },
+  {
+    "card_id": "C31",
+    "cue_1": "How dare anyone treat families this way!",
+    "cue_2": "This is an outrage, and you know it!",
+    "cue_3": "Shame on anyone who defends this!",
+    "cue_4": "I am furious, and so are they!",
+    "cue_5": "You should be ashamed of yourself!"
+  },
+  {
+    "card_id": "C32",
+    "cue_1": "No, you will hear me out!",
+    "cue_2": "I will not be shouted down!",
+    "cue_3": "Let me finish! Let me finish!",
+    "cue_4": "I'm raising my voice because they can't!",
+    "cue_5": "Go on, try to silence me."
+  },
+  {
+    "card_id": "C33",
+    "cue_1": "I will not yield. Full stop.",
+    "cue_2": "Knock me down. I'll get back up.",
+    "cue_3": "Count me out at your peril.",
+    "cue_4": "Underestimate me. See what happens.",
+    "cue_5": "Not one step back. Not one inch."
+  },
+  {
+    "card_id": "C34",
+    "cue_1": "Rise with me, and let's finish this!",
+    "cue_2": "This is our chance! Take it!",
+    "cue_3": "Together, nothing can stop us!",
+    "cue_4": "Tell them who we are!",
+    "cue_5": "The whole country is watching. Show them!"
+  },
+  {
+    "card_id": "C09",
+    "cue_1": "We are stronger standing together.",
+    "cue_2": "Let's leave the infighting to others.",
+    "cue_3": "One purpose, one voice, one people.",
+    "cue_4": "Whatever divides us, this unites us.",
+    "cue_5": "Stand with me, and stand with each other."
+  },
+  {
+    "card_id": "C10",
+    "cue_1": "Where I'm from, neighbors look out for each other.",
+    "cue_2": "My hometown's values guide every decision.",
+    "cue_3": "Ask anyone on Main Street. They'll tell you.",
+    "cue_4": "I speak for the people of my district.",
+    "cue_5": "Small towns are this country's backbone."
+  },
+  {
+    "card_id": "C11",
+    "cue_1": "I believe we understand each other.",
+    "cue_2": "We're more agreed than it appears.",
+    "cue_3": "Let's not pretend we're far apart.",
+    "cue_4": "You know where I stand, and why.",
+    "cue_5": "Everyone here wants the same outcome."
+  },
+  {
+    "card_id": "C12",
+    "cue_1": "So tell me. Who's with me?",
+    "cue_2": "Let's see where everyone stands.",
+    "cue_3": "I need to know who I can count on.",
+    "cue_4": "Tell me honestly: are you in?",
+    "cue_5": "Let's take the temperature of the room."
+  },
+  {
+    "card_id": "C35",
+    "cue_1": "Our party speaks with one voice on this.",
+    "cue_2": "Remember whose banner you stand under.",
+    "cue_3": "Unity isn't optional on this one.",
+    "cue_4": "Break ranks, and it will be remembered.",
+    "cue_5": "The party's position is settled. We stand together."
+  },
+  {
+    "card_id": "C36",
+    "cue_1": "Walk with me, just the two of us.",
+    "cue_2": "Between us, I think we can work something out.",
+    "cue_3": "Lean in. This is just for you.",
+    "cue_4": "Let's keep this conversation private.",
+    "cue_5": "Do me a favor. Hear me out."
+  },
+  {
+    "card_id": "C37",
+    "cue_1": "Our goals are closer than you think.",
+    "cue_2": "Let's build something neither of us could alone.",
+    "cue_3": "Join us, and we all come out ahead.",
+    "cue_4": "Different paths, same destination. Walk with us.",
+    "cue_5": "There's room at this table for everyone."
+  },
+  {
+    "card_id": "C38",
+    "cue_1": "One good turn deserves another.",
+    "cue_2": "Friends stand by friends. Stand by me.",
+    "cue_3": "This is where loyalty counts.",
+    "cue_4": "I'm asking you, as a friend.",
+    "cue_5": "You know what our friendship is worth."
+  },
+  {
+    "card_id": "C39",
+    "cue_1": "Count them yourself. We have the votes.",
+    "cue_2": "The numbers are on our side.",
+    "cue_3": "The outcome is decided. You can join us.",
+    "cue_4": "We don't need your vote. We'd like it.",
+    "cue_5": "The majority stands with us."
+  },
+  {
+    "card_id": "C13",
+    "cue_1": "Let's look at the actual numbers.",
+    "cue_2": "The data tells a different story.",
+    "cue_3": "Here's the chart. Explain this line.",
+    "cue_4": "Facts don't care about talking points.",
+    "cue_5": "The statistics speak for themselves."
+  },
+  {
+    "card_id": "C14",
+    "cue_1": "I'd like the full report on the record.",
+    "cue_2": "Please submit the original documents.",
+    "cue_3": "Show us the paperwork, please.",
+    "cue_4": "We request all related correspondence.",
+    "cue_5": "Produce the receipts, please."
+  },
+  {
+    "card_id": "C15",
+    "cue_1": "Which is it? You can't have both.",
+    "cue_2": "Your position contradicts itself.",
+    "cue_3": "You're arguing both sides of this.",
+    "cue_4": "Your words and your plan don't match.",
+    "cue_5": "Pick one position and defend it."
+  },
+  {
+    "card_id": "C16",
+    "cue_1": "Two hundred pages of evidence. Read them.",
+    "cue_2": "Our findings are published. Refute them.",
+    "cue_3": "Every claim here is sourced and verified.",
+    "cue_4": "This white paper answers your question.",
+    "cue_5": "The research is thorough. The case is closed."
+  },
+  {
+    "card_id": "C40",
+    "cue_1": "Who pays for this proposal?",
+    "cue_2": "Follow the donations, and it all makes sense.",
+    "cue_3": "Where does this money actually come from?",
+    "cue_4": "Who benefits most? Follow that thread.",
+    "cue_5": "Disclose the funding, and we'll talk."
+  },
+  {
+    "card_id": "C41",
+    "cue_1": "Allow me to correct the record.",
+    "cue_2": "For accuracy, here are the real figures.",
+    "cue_3": "Let's clear up a misunderstanding.",
+    "cue_4": "The facts, plainly stated, are these.",
+    "cue_5": "Precision matters. Here's the accurate version."
+  },
+  {
+    "card_id": "C42",
+    "cue_1": "Yes or no? It's a simple question.",
+    "cue_2": "Answer the question, please.",
+    "cue_3": "A simple question: will you commit?",
+    "cue_4": "Lots of words. No answer.",
+    "cue_5": "Stop dodging and answer plainly."
+  },
+  {
+    "card_id": "C43",
+    "cue_1": "Source, please?",
+    "cue_2": "Where's your evidence?",
+    "cue_3": "Speak with facts, not guesses.",
+    "cue_4": "Facts, not feelings, please.",
+    "cue_5": "Let's verify that, shall we?"
+  },
+  {
+    "card_id": "C44",
+    "cue_1": "Let an independent panel decide.",
+    "cue_2": "If you're innocent, welcome the inquiry.",
+    "cue_3": "Bring in outside eyes on this.",
+    "cue_4": "Why fear an audit if nothing's wrong?",
+    "cue_5": "Only an impartial investigator can settle this."
+  },
+  {
+    "card_id": "C17",
+    "cue_1": "You are a shill for special interests!",
+    "cue_2": "Typical out-of-touch elitist.",
+    "cue_3": "A true radical, through and through.",
+    "cue_4": "The establishment's favorite puppet.",
+    "cue_5": "Another career politician, protecting their own."
+  },
+  {
+    "card_id": "C18",
+    "cue_1": "There are two sides here. Pick one.",
+    "cue_2": "They stand for themselves. We stand for you.",
+    "cue_3": "It's us against them, plain and simple.",
+    "cue_4": "You're either with the people or against them.",
+    "cue_5": "On one side, workers. On the other, them."
+  },
+  {
+    "card_id": "C19",
+    "cue_1": "They're taking what's yours. Will you let them?",
+    "cue_2": "Wake up! They're laughing at you!",
+    "cue_3": "They think you won't fight back.",
+    "cue_4": "Your jobs, your homes. They want it all.",
+    "cue_5": "Will you let them walk all over you?"
+  },
+  {
+    "card_id": "C20",
+    "cue_1": "Oppose this, and you're not one of us.",
+    "cue_2": "Prove whose side you're really on.",
+    "cue_3": "Step forward, or step aside.",
+    "cue_4": "Your choice here shows your true colors.",
+    "cue_5": "No fence-sitting. Choose."
+  },
+  {
+    "card_id": "C45",
+    "cue_1": "Everyone here should know your name.",
+    "cue_2": "I'll say your name so people remember.",
+    "cue_3": "Let the public judge what you stand for.",
+    "cue_4": "Remember this face. Remember this name.",
+    "cue_5": "Shame on you, and everyone should know it."
+  },
+  {
+    "card_id": "C46",
+    "cue_1": "Farmers or foreign interests. Choose.",
+    "cue_2": "Yes or no. There is no middle.",
+    "cue_3": "Either you back our workers, or you don't.",
+    "cue_4": "You can't serve two masters. Choose one.",
+    "cue_5": "Pick a side. The voters are watching."
+  },
+  {
+    "card_id": "C47",
+    "cue_1": "Who do you really answer to?",
+    "cue_2": "You sound more like them than us.",
+    "cue_3": "Are you truly one of us?",
+    "cue_4": "Some here forget who they serve.",
+    "cue_5": "I wonder who's really writing your speeches."
+  },
+  {
+    "card_id": "C48",
+    "cue_1": "Let the whole country hear this.",
+    "cue_2": "The public deserves to know this.",
+    "cue_3": "Everyone should hear what they're hiding.",
+    "cue_4": "Spread the word: they can't be trusted.",
+    "cue_5": "Repeat this everywhere. Let people decide."
+  },
+  {
+    "card_id": "C49",
+    "cue_1": "You are unfit to hold this office.",
+    "cue_2": "You don't have the nation's confidence.",
+    "cue_3": "Step aside for someone who can lead.",
+    "cue_4": "You are failing the people you serve.",
+    "cue_5": "Resign, and spare the country the shame."
+  },
+  {
+    "card_id": "C21",
+    "cue_1": "There's truth on every side of this.",
+    "cue_2": "I support the spirit of both positions.",
+    "cue_3": "It's complicated, and I respect all views.",
+    "cue_4": "We'll find a balance that pleases everyone.",
+    "cue_5": "I'm for progress, and also for caution."
+  },
+  {
+    "card_id": "C22",
+    "cue_1": "I have no recollection of that.",
+    "cue_2": "I don't recall any such thing.",
+    "cue_3": "That doesn't ring a bell.",
+    "cue_4": "I can neither confirm nor deny that.",
+    "cue_5": "I'd have to check my calendar."
+  },
+  {
+    "card_id": "C23",
+    "cue_1": "The real question is why you're asking.",
+    "cue_2": "Let's talk about what really matters.",
+    "cue_3": "That's a distraction from the actual issue.",
+    "cue_4": "Interesting, but consider the bigger picture.",
+    "cue_5": "Why not ask them the same question?"
+  },
+  {
+    "card_id": "C24",
+    "cue_1": "Rest assured, you'll be taken care of.",
+    "cue_2": "Nothing in writing, but consider it done.",
+    "cue_3": "Let's just say your concerns are understood.",
+    "cue_4": "Support me, and I'll remember it.",
+    "cue_5": "My friends are well looked after."
+  },
+  {
+    "card_id": "C50",
+    "cue_1": "We will consider that positively.",
+    "cue_2": "I'll take it under advisement.",
+    "cue_3": "That matter is under review.",
+    "cue_4": "We're studying all options carefully.",
+    "cue_5": "A committee will look into it."
+  },
+  {
+    "card_id": "C51",
+    "cue_1": "Look closer at their expenses. Trust me.",
+    "cue_2": "You didn't hear it from me, but...",
+    "cue_3": "Ask them about their friends in business.",
+    "cue_4": "There's more to this story. Keep digging.",
+    "cue_5": "I'd look into that, if I were you."
+  },
+  {
+    "card_id": "C52",
+    "cue_1": "Per subsection four, paragraph two, clause B...",
+    "cue_2": "As outlined in appendix nine, footnote thirty...",
+    "cue_3": "It depends on seventeen interlocking variables.",
+    "cue_4": "The technical framework is quite involved, actually.",
+    "cue_5": "Let me walk you through all forty provisions."
+  },
+  {
+    "card_id": "C53",
+    "cue_1": "Of course I'm with you on this.",
+    "cue_2": "You and I see this exactly the same.",
+    "cue_3": "I champion your cause, wholeheartedly.",
+    "cue_4": "Your concerns are my top priority.",
+    "cue_5": "Nobody fights harder for people like you."
+  },
+  {
+    "card_id": "C54",
+    "cue_1": "Between us, here's how it really is.",
+    "cue_2": "Don't repeat this, but...",
+    "cue_3": "No names, no notes. Understood?",
+    "cue_4": "This stays in the room.",
+    "cue_5": "You can't quote me, but here's the truth."
+  }
+]

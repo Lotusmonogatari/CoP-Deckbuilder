@@ -24,6 +24,7 @@ const REQUIRED_FILES := [
 	"committee", "intent_patterns", "journalists", "levels", "lists",
 	"modifier_effects", "modifiers", "modules", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
+	"card_cues", "questions",
 	"sounds", "stage_types", "strings",
 	"segments", "stages", "suits", "yoron",
 ]
@@ -85,6 +86,16 @@ var speech: Dictionary = {}
 ## tab. Flattened to key -> English here so nothing downstream has to know
 ## the sheet has a Where or a Notes column. Text.gd hands these out.
 var strings: Dictionary = {}
+
+## The five spoken lines each card can say when it is played, by card ID,
+## from the workbook's Flavor Text tab. Flattened here from the sheet's five
+## columns into one list per card, so nothing downstream counts columns.
+var card_cues: Dictionary = {}
+
+## The questions each kind of room can ask, by stage type, from the five
+## question tabs. A stage draws from the pool for its type rather than
+## naming its own, so a new question is one row in the workbook.
+var questions: Dictionary = {}
 
 ## How standing with the ten organisations works: where it starts, what it
 ## is bounded by, and what pleasing one is worth. Hand-written.
@@ -160,6 +171,8 @@ func load_all() -> void:
 
 			"journalists": journalists = _list_under(content, file_name, "journalists")
 			"strings": strings = _strings_by_key(content)
+			"card_cues": card_cues = _cues_by_card(content)
+			"questions": questions = content
 			"sounds":
 				sounds = _map_under(content, file_name, "sounds")
 				speech = _map_under(content, file_name, "speech")
@@ -297,6 +310,30 @@ func _map_under(content: Variant, file_name: String, key: String) -> Dictionary:
 		errors.append("%s.json has no '%s' map in it." % [file_name, key])
 		return {}
 	return found
+
+
+## The Flavor Text tab's five cue columns, folded into one list per card.
+##
+## A card with no cues written yet comes back as an empty list rather than
+## five blanks, so "has this card anything to say" is one is_empty() call.
+func _cues_by_card(rows: Variant) -> Dictionary:
+	var by_card := {}
+	if not (rows is Array):
+		return by_card
+	for row: Variant in rows:
+		if not (row is Dictionary):
+			continue
+		var card_id := str(row.get("card_id", "")).strip_edges()
+		if card_id.is_empty():
+			continue
+		var lines: Array[String] = []
+		for index in range(1, 6):
+			var line := str(row.get("cue_%d" % index, "")).strip_edges()
+			if not line.is_empty():
+				lines.append(line)
+		by_card[card_id] = lines
+	return by_card
+
 
 
 ## Turns the Text tab's rows into a plain key -> English lookup.

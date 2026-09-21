@@ -640,8 +640,22 @@ function runRuleChecks(data) {
 
   // --- the press conference -------------------------------------------------
 
-  function pressConfig(overrides) {
-    return config(Object.assign({
+  // Stand-in wording for the closing lines, for the same reason the shop
+  // refusals use one: these checks are about WHICH stage and WHICH unit the
+  // sentence names, and pinning Cameron's phrasing here made a reword look
+  // like the two engines drifting apart.
+  const CLOSING = {
+    'outcome.reason.closed_on': '{stage} closed on {closing}.',
+    'outcome.reason.closed_on_unnamed': 'It closed on {closing}.',
+    'outcome.reason.percent_of_room': '{count}% of the room',
+    'outcome.reason.amount_of_unit': '{count} {unit}',
+    'outcome.reason.concludes': '{stage} concludes.',
+    'outcome.reason.concludes_unnamed': 'It concludes.',
+    'outcome.reason.walked_away': 'walked away',
+  };
+
+  function pressConfig(overrides, words) {
+    const built = config(Object.assign({
       stage: stage({
         stage_id: 'PT_S2', name_en: 'Press Conference',
         draw_mode: 'none', opening_hand: 6,
@@ -656,6 +670,8 @@ function runRuleChecks(data) {
       opponents: [],
       deck: ['GAIN3', 'GAIN3', 'ATTACK3', 'GUARD5', 'GAFFE2', 'DRAW2', 'GAIN3', 'ATTACK3'],
     }, overrides || {}));
+    if (words) built.strings = words;
+    return built;
   }
 
   check('a press conference starts with nobody opposite', () => {
@@ -717,7 +733,7 @@ function runRuleChecks(data) {
     // held back so that what ends the stage is the questions running out
     // rather than the hand running dry.
     const engine = new BattleEngine();
-    engine.setup(pressConfig());
+    engine.setup(pressConfig({}, CLOSING));
     engine.state.hand = ['GAIN3', 'GAIN3', 'GUARD5'];
     engine.playCard('GAIN3');
     ok(!engine.state.isOver(), 'one question left');
@@ -879,8 +895,8 @@ function runRuleChecks(data) {
   // Three kinds of stage are scored — the caucus, the town hall and the TV
   // debate — and all three used to close by announcing they were a caucus.
 
-  function scoredConfig(overrides) {
-    return config({
+  function scoredConfig(overrides, words) {
+    const built = config({
       stage: stage(Object.assign({
         stage_id: 'SCORED', name_en: 'TV Debate',
         win_mode: 'score', turn_limit: 1,
@@ -888,10 +904,12 @@ function runRuleChecks(data) {
         player_start: 40, opp_start: 40,
       }, overrides || {})),
     });
+    if (words) built.strings = words;
+    return built;
   }
 
   check('a scored stage closes in its own name', () => {
-    const engine = started(scoredConfig());
+    const engine = started(scoredConfig({}, CLOSING));
     engine.endTurn();
     ok(engine.state.isOver());
     ok(engine.state.outcome_reason.includes('TV Debate closed on'),
@@ -902,13 +920,14 @@ function runRuleChecks(data) {
 
   check('a scored stage closes in its own units', () => {
     // "34 support" on a press tone bar was how the wrong unit showed up.
-    const engine = started(scoredConfig());
+    const engine = started(scoredConfig({}, CLOSING));
     engine.endTurn();
     ok(engine.state.outcome_reason.includes('press tone'), engine.state.outcome_reason);
   });
 
   check('a stage counted as a share still closes on a share', () => {
-    const engine = started(scoredConfig({ name_en: 'Party Caucus', bar_as_percent: true }));
+    const engine = started(
+      scoredConfig({ name_en: 'Party Caucus', bar_as_percent: true }, CLOSING));
     engine.endTurn();
     ok(engine.state.outcome_reason.includes('% of the room'), engine.state.outcome_reason);
     ok(engine.state.outcome_reason.includes('Party Caucus closed on'),
@@ -1123,11 +1142,147 @@ function runRuleChecks(data) {
 
   // --- the stage levers Cameron's Levels Design Scheme introduced ----------
 
-  function questionsConfig(overrides) {
-    const c = pressConfig();
+  function questionsConfig(overrides, words) {
+    const c = pressConfig(null, words);
     c.stage = Object.assign({}, c.stage, overrides || {});
     return c;
   }
+
+  // --- strong, medium and weak answers --------------------------------------
+  // Cameron's rule, settled 2026-09-21: a question grades all six suits, a
+  // STRONG answer pleases whoever asked, a MEDIUM one does nothing, and a
+  // WEAK one costs press tone.
+
+  const GRADED = {
+    Earnest: 'S', Emotional: 'M', Appeal: 'W',
+    'Data Driven': 'M', Divisive: 'M', Duplicitous: 'M',
+  };
+
+  function gradedQuestion(over) {
+    return Object.assign({
+      id: 'Q1', text: 'Where do you stand?', theme: 'Position',
+      grades: Object.assign({}, GRADED), pleases_booster: 'BO08',
+    }, over || {});
+  }
+
+  // GAIN3 is Earnest, ATTACK3 is Data Driven, GUARD5 is Duplicitous — so
+  // the fixtures already have a strong and two medium answers. A weak one
+  // needs an Appeal card.
+  function gradedConfig(over) {
+    const c = questionsConfig(Object.assign({
+      questions: [gradedQuestion()], weak_answer_tone_cost: 2,
+      decline_tone_cost: 3,
+    }, over || {}));
+    c.cards = Object.assign({}, c.cards, {
+      WEAK: Object.assign({}, c.cards.GAIN3, { card_id: 'WEAK', suit: 'Appeal' }),
+    });
+    return c;
+  }
+
+  check('a strong answer pleases the organisation', () => {
+    const engine = started(gradedConfig());
+    const before = engine.state.bar.player;
+    engine.state.hand = ['GAIN3'];       // Earnest, graded S
+    engine.playCard('GAIN3');
+    ok(engine.state.pleased_boosters.includes('BO08'));
+    eq(engine.state.bar.player, before + 3, 'and the card still does its work');
+  });
+
+  check('a medium answer does nothing either way', () => {
+    const engine = started(gradedConfig());
+    const before = engine.state.bar.player;
+    engine.state.hand = ['ATTACK3'];     // Data Driven, graded M
+    engine.playCard('ATTACK3');
+    eq(engine.state.pleased_boosters.length, 0);
+    eq(engine.state.weak_answers, 0);
+    eq(engine.state.bar.player, before, 'nothing lost');
+  });
+
+  check('a weak answer costs press tone', () => {
+    const engine = started(gradedConfig());
+    const before = engine.state.bar.player;
+    engine.state.hand = ['WEAK'];        // Appeal, graded W
+    engine.state.energy = 3;
+    engine.playCard('WEAK');
+    eq(engine.state.pleased_boosters.length, 0);
+    eq(engine.state.weak_answers, 1);
+    eq(engine.state.bar.player, before + 3 - 2, 'the room cools by the stage\'s cost');
+  });
+
+  check('the weak-answer cost is the stage\'s to set', () => {
+    const engine = started(gradedConfig({ weak_answer_tone_cost: 0 }));
+    const before = engine.state.bar.player;
+    engine.state.hand = ['WEAK'];
+    engine.state.energy = 3;
+    engine.playCard('WEAK');
+    eq(engine.state.bar.player, before + 3, 'a cost of zero takes nothing');
+  });
+
+  check('a question that names one suit still works', () => {
+    // The earlier hand-written questions named a single preferred suit
+    // rather than grading all six. They must keep working.
+    const engine = started(gradedConfig({
+      questions: [{ id: 'OLD', text: 'Your stance?',
+        prefers_suit: 'Earnest', pleases_booster: 'BO03' }],
+    }));
+    const before = engine.state.bar.player;
+    engine.state.hand = ['WEAK'];
+    engine.state.energy = 3;
+    engine.playCard('WEAK');
+    eq(engine.state.bar.player, before + 3, 'an ungraded question has no weak answers');
+    eq(engine.state.pleased_boosters.length, 0);
+  });
+
+  // --- drawing from the pool ------------------------------------------------
+
+  function pool(size) {
+    const out = [];
+    for (let i = 0; i < size; i++) out.push(gradedQuestion({ id: 'P' + i }));
+    return out;
+  }
+
+  function drawn(size, count, seed) {
+    const c = questionsConfig({ questions_count: count });
+    delete c.stage.questions;
+    c.question_pool = pool(size);
+    c.seed = seed;
+    const engine = new BattleEngine();
+    engine.setup(c);
+    return engine._questions.map(q => q.id);
+  }
+
+  check('a stage draws as many questions as it asks for', () => {
+    eq(drawn(20, 5, 1).length, 5);
+    eq(drawn(20, 4, 1).length, 4);
+  });
+
+  check('the same seed asks the same questions', () => {
+    eq(drawn(20, 5, 77).join(','), drawn(20, 5, 77).join(','));
+  });
+
+  check('a different seed asks different questions', () => {
+    ok(drawn(20, 5, 1).join(',') !== drawn(20, 5, 2).join(','),
+      'the same room twice should not be the same interview');
+  });
+
+  check('no question is asked twice in one stage', () => {
+    for (let seed = 1; seed < 30; seed++) {
+      const asked = drawn(20, 6, seed);
+      eq(new Set(asked).size, asked.length, 'a repeat on seed ' + seed);
+    }
+  });
+
+  check('a pool smaller than the stage wants is used whole', () => {
+    eq(drawn(3, 6, 1).length, 3);
+  });
+
+  check('a stage that writes its own questions keeps them', () => {
+    const c = questionsConfig({ questions: [gradedQuestion({ id: 'MINE' })] });
+    c.question_pool = pool(20);
+    const engine = new BattleEngine();
+    engine.setup(c);
+    eq(engine._questions.map(q => q.id).join(','), 'MINE');
+  });
 
   check('a turn presents one question however many cards you play', () => {
     // Before this, three energy could burn through three reporters in a
@@ -1181,7 +1336,8 @@ function runRuleChecks(data) {
   });
 
   check('ducking a question ends an ambush', () => {
-    const engine = started(questionsConfig({ decline_ends_stage: true, decline_tone_cost: 0 }));
+    const engine = started(questionsConfig(
+      { decline_ends_stage: true, decline_tone_cost: 0 }, CLOSING));
     engine.endTurn();               // played nothing, so the question is ducked
     ok(engine.state.isOver());
     eq(engine.state.outcome, LOST);
@@ -1237,7 +1393,7 @@ function runRuleChecks(data) {
     // meeting both run on questions and neither of them is a press
     // conference. It said so anyway until a playtest read it.
     const engine = new BattleEngine();
-    engine.setup(pressConfig());
+    engine.setup(pressConfig({}, CLOSING));
     engine.state.hand = ['GAIN3', 'GAIN3', 'GUARD5'];
     engine.playCard('GAIN3');
     engine.endTurn();

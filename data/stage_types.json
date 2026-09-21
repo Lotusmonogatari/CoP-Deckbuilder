@@ -13,7 +13,15 @@
   "",
   "affinity_stage_id points at the canon stage whose suit multipliers and",
   "audience mix this type borrows, so a press conference favours the same",
-  "suits wherever it is played."
+  "suits wherever it is played.",
+  "",
+  "weak_answer_tone_cost is a PLACEHOLDER of 1, set 2026-09-21 and waiting",
+  "on Cameron. Every question in the workbook grades all six suits S, M or",
+  "W: a strong answer pleases whoever asked, a medium one does nothing, and",
+  "a weak one costs this much press tone. 1 is a guess beside the decline",
+  "cost it sits next to — a weak answer should sting less than saying",
+  "nothing at all, and 1 against a decline of 3 or 5 does that, but the",
+  "right number is a playtest away."
  ],
  "types": {
   "committee_debate": {
@@ -63,6 +71,7 @@
    "player_start": 45,
    "opp_start": 45,
    "decline_tone_cost": 3,
+   "weak_answer_tone_cost": 1,
    "tone_effects": {
     "baseline": 50,
     "support_per_points": 10,
@@ -141,6 +150,7 @@
    "player_start": 45,
    "opp_start": 45,
    "decline_tone_cost": 0,
+   "weak_answer_tone_cost": 1,
    "tone_effects": {
     "baseline": 50,
     "support_per_points": 10,
@@ -168,6 +178,7 @@
    "player_start": 50,
    "opp_start": 50,
    "decline_tone_cost": 5,
+   "weak_answer_tone_cost": 1,
    "tone_effects": {
     "baseline": 50,
     "support_per_points": 10,
@@ -192,6 +203,7 @@
    "player_start": 45,
    "opp_start": 45,
    "decline_tone_cost": 3,
+   "weak_answer_tone_cost": 1,
    "tone_effects": {
     "baseline": 50,
     "support_per_points": 10,
