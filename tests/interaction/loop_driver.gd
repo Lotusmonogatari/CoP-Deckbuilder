@@ -27,7 +27,12 @@ const TURN_CEILING := 70
 ## How many stages the level should have.
 ## The first Tier 0 level's stage count. The driver plays whichever level it
 ## picks first, so this follows levels.json rather than leading it.
-const EXPECTED_STAGES := 2
+##
+## 2026-09-22 workbook: the level list is now the real 30-row Levels tab
+## (LV01-30) instead of the old six-level hand-written draft, and LV01 — the
+## first Tier 0 level in file order, and so the first one this driver ever
+## clicks — is a single-stage Town Hall.
+const EXPECTED_STAGES := 1
 
 var _failures: PackedStringArray = []
 

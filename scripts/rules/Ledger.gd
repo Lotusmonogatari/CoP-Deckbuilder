@@ -29,6 +29,11 @@ extends RefCounted
 ## growing set, and the deck is a fixed size, so taking a new card in means
 ## leaving one out. That trade is the whole point of the deck screen.
 
+## The Staff roles, and the order the Recruitment shop lists them in — the
+## same order data/staff.json's own SF01-21 rows come in (see the workbook's
+## Staff tab), not a rule this file invented.
+const STAFF_ROLES := ["Policy Research Assistant", "Media Spokesperson", "District Representative"]
+
 ## Why a purchase was refused, in words a screen can show as-is.
 const AFFORDABLE := ""
 
@@ -82,20 +87,37 @@ static func can_buy_card(card: Dictionary, owned: Array, xp: int,
 # Modifiers — the organisations' backing
 # ---------------------------------------------------------------------------
 
-## What a modifier costs in Funds. A modifier with no price is not for sale:
-## the opponent-only ones and the two driven by party support are switched on
-## by circumstance rather than bought.
+## 2026-09-22 workbook: a modifier's price is no longer one "Kaban cost"
+## column. It is three separate activation costs — reputation_cost,
+## jiban_cost, funds_cost — any or all of which can be non-zero. There is
+## also no more "available_to" column saying whether a modifier is something
+## only an opponent can carry, so every modifier with a price on it is
+## treated as something the player can buy. (If some of these are meant to be
+## opponent-only or free-standing, that is a workbook question for Cameron,
+## not something this code can tell from the data it has.)
+
+## Every activation cost a modifier asks for, by the meta-variable it is
+## charged against. A cost of 0 means that currency is not part of the price.
+static func modifier_costs(modifier: Dictionary) -> Dictionary:
+	return {
+		"Funds": int(modifier.get("funds_cost", 0)),
+		"Reputation": int(modifier.get("reputation_cost", 0)),
+		"Constituency support": int(modifier.get("jiban_cost", 0)),
+	}
+
+
+## The Funds part of the price alone, for the shop lines that show one number
+## next to a modifier's name. Where Reputation or Constituency support is also
+## charged, `modifier_costs()` is what actually gates the purchase.
 static func modifier_cost(modifier: Dictionary) -> int:
-	var cost: Variant = modifier.get("kaban_cost")
-	return 0 if cost == null else int(cost)
+	return int(modifier.get("funds_cost", 0))
 
 
 static func is_for_sale(modifier: Dictionary) -> bool:
-	if modifier_cost(modifier) <= 0:
-		return false
-	# Something only an opponent can carry is not on the player's shelf.
-	var audience := str(modifier.get("available_to", "Both"))
-	return audience == "Both" or audience == "Player"
+	for cost: int in modifier_costs(modifier).values():
+		if cost > 0:
+			return true
+	return false
 
 
 ## How much standing with the backing organisation a modifier asks for.
@@ -113,16 +135,27 @@ static func standing_needed(modifier: Dictionary, settings: Dictionary) -> int:
 
 ## The organisation behind a modifier, or empty where none is.
 ##
-## The party-support pair name a meta-variable here rather than a booster, so
-## anything that is not a real booster ID is treated as "nobody backs this".
-static func backing_booster(modifier: Dictionary, booster_ids: Array) -> String:
-	var source := str(modifier.get("source_booster", ""))
-	return source if booster_ids.has(source) else ""
+## 2026-09-22 workbook: modifiers.json no longer carries a "source_booster"
+## column naming its own owner — the split "Trigger segment or booster" is
+## about what switches the modifier ON in a room, which is a different
+## question (see MetaRules.active_modifiers). Which organisation SELLS a
+## modifier is read the other way round instead: boosters.json's own
+## "linked_modifiers" list is the real ownership link, so this searches that.
+static func backing_booster(modifier: Dictionary, boosters: Array) -> String:
+	var mod_id := str(modifier.get("mod_id", ""))
+	for booster: Dictionary in boosters:
+		if (booster.get("linked_modifiers", []) as Array).has(mod_id):
+			return str(booster.get("booster_id", ""))
+	return ""
 
 
 ## Whether a modifier can be bought, and if not, why not.
-static func modifier_refusal(modifier: Dictionary, owned: Array, funds: int,
-		standing: Dictionary, settings: Dictionary, booster_ids: Array,
+##
+## `meta` is the player's current standing on every meta-variable a modifier
+## might charge against (Funds, Reputation, Constituency support) — not just
+## Funds, now that a modifier can cost any mix of the three.
+static func modifier_refusal(modifier: Dictionary, owned: Array, meta: Dictionary,
+		standing: Dictionary, settings: Dictionary, boosters: Array,
 		words: Phrase = null) -> String:
 	var say := words if words != null else Phrase.new()
 	var mod_id := str(modifier.get("mod_id", ""))
@@ -135,7 +168,7 @@ static func modifier_refusal(modifier: Dictionary, owned: Array, funds: int,
 
 	# Standing first: being told the price of something you are not allowed
 	# to buy is worse than being told why you cannot buy it.
-	var booster := backing_booster(modifier, booster_ids)
+	var booster := backing_booster(modifier, boosters)
 	if not booster.is_empty():
 		var needed := standing_needed(modifier, settings)
 		var have := int(standing.get(booster, 0))
@@ -143,17 +176,26 @@ static func modifier_refusal(modifier: Dictionary, owned: Array, funds: int,
 			return say.say("shop.standing_needed",
 				{"have": have, "needed": needed})
 
-	var cost := modifier_cost(modifier)
-	if funds < cost:
-		return say.say("shop.funds_short", {"count": cost - funds})
+	# Every currency this modifier charges, checked in the order the workbook
+	# lists them (Funds, then Reputation, then Constituency support). The
+	# wording is the same generic "N short" for all three — there is no
+	# per-currency phrasing in the Text tab yet — but which one is short is
+	# still findable from the shop line showing the price.
+	for name: String in modifier_costs(modifier).keys():
+		var cost: int = modifier_costs(modifier)[name]
+		if cost <= 0:
+			continue
+		var have := int(meta.get(name, 0))
+		if have < cost:
+			return say.say("shop.funds_short", {"count": cost - have})
 	return ""
 
 
-static func can_buy_modifier(modifier: Dictionary, owned: Array, funds: int,
-		standing: Dictionary, settings: Dictionary, booster_ids: Array,
+static func can_buy_modifier(modifier: Dictionary, owned: Array, meta: Dictionary,
+		standing: Dictionary, settings: Dictionary, boosters: Array,
 		words: Phrase = null) -> bool:
-	return modifier_refusal(modifier, owned, funds, standing, settings,
-		booster_ids, words) == AFFORDABLE
+	return modifier_refusal(modifier, owned, meta, standing, settings,
+		boosters, words) == AFFORDABLE
 
 
 # ---------------------------------------------------------------------------
@@ -196,6 +238,69 @@ static func deck_refusal(deck: Array, owned: Array, balance: Dictionary,
 static func deck_is_legal(deck: Array, owned: Array, balance: Dictionary,
 		words: Phrase = null) -> bool:
 	return deck_refusal(deck, owned, balance, words) == AFFORDABLE
+
+
+# ---------------------------------------------------------------------------
+# Staff — the Recruitment shop
+# ---------------------------------------------------------------------------
+# One hired candidate per role, Yen-only, no upgrades once a role is vacant
+# (there is no "fire" — see CLAUDE.md/the Recruitment brief). Both prices
+# funnel through the same "shop.funds_short" wording the modifier shop
+# already uses, so a short-Funds refusal reads the same everywhere.
+
+## Whether a role's chosen candidate can be hired right now, and if not, why.
+## `hired` is whatever staff_hired.json/GameState already has for this ROLE
+## (not this candidate) — empty means the role is vacant.
+static func staff_hire_refusal(candidate: Dictionary, hired_for_role: Dictionary,
+		funds: int, words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
+	if str(candidate.get("staff_id", "")).is_empty():
+		return say.say("shop.mod_no_id")
+	if not hired_for_role.is_empty():
+		return say.say("shop.already_yours")
+
+	var cost := int(candidate.get("hiring_cost_yen", 0))
+	if funds < cost:
+		return say.say("shop.funds_short", {"count": cost - funds})
+	return ""
+
+
+static func can_hire_staff(candidate: Dictionary, hired_for_role: Dictionary,
+		funds: int, words: Phrase = null) -> bool:
+	return staff_hire_refusal(candidate, hired_for_role, funds, words) == AFFORDABLE
+
+
+## What upgrading a hired candidate from `tier` to `tier + 1` costs, or null
+## when that step does not exist for them — either because they are already
+## at their highest_tier, or because the column for that step is blank (a
+## candidate who starts at tier 1, like SF05 or SF07, has no 0-to-1 cost:
+## tier 0 was never on offer for them).
+static func staff_upgrade_cost(candidate: Dictionary, tier: int) -> Variant:
+	if tier >= int(candidate.get("highest_tier", 0)):
+		return null
+	match tier:
+		0: return candidate.get("upgrade_cost_0_to_1_yen")
+		1: return candidate.get("upgrade_cost_1_to_2_yen")
+		_: return null
+
+
+## Whether the hired candidate at `tier` can be upgraded right now.
+static func staff_upgrade_refusal(candidate: Dictionary, tier: int, funds: int,
+		words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
+	var cost_value: Variant = staff_upgrade_cost(candidate, tier)
+	if cost_value == null:
+		return say.say("office.staff_at_max")
+
+	var cost := int(cost_value)
+	if funds < cost:
+		return say.say("shop.funds_short", {"count": cost - funds})
+	return ""
+
+
+static func can_upgrade_staff(candidate: Dictionary, tier: int, funds: int,
+		words: Phrase = null) -> bool:
+	return staff_upgrade_refusal(candidate, tier, funds, words) == AFFORDABLE
 
 
 ## The deck a new run starts with.

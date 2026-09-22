@@ -76,10 +76,12 @@ static func apply_win_deltas(meta: Dictionary, stage: Dictionary,
 	var updated := meta.duplicate()
 	var applied := {}
 
+	# 2026-09-22 workbook: win_delta_kanban/win_delta_kaban were renamed to
+	# win_delta_reputation/win_delta_yen in stages.json.
 	var deltas := {
 		"Constituency support": int(stage.get("win_delta_jiban", 0)),
-		"Reputation": int(stage.get("win_delta_kanban", 0)),
-		"Funds": int(stage.get("win_delta_kaban", 0)),
+		"Reputation": int(stage.get("win_delta_reputation", 0)),
+		"Funds": int(stage.get("win_delta_yen", 0)),
 		"Party support": int(stage.get("win_delta_party_support", 0)),
 	}
 

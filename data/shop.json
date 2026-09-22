@@ -1,0 +1,263 @@
+[
+  {
+    "item_id": "SH01",
+    "name": "Commission Policy Research",
+    "description": "Spend Office Funds to increase one randomly-selected Party-tier booster group's relationship. Available once per Office screen; resets after completion of a level (success or failure).",
+    "cost_xp": 0,
+    "cost_yen": 200000,
+    "bonus_condition_1": "Policy Research Assistant is Tier 1: +1 to the selected Party booster group.",
+    "bonus_condition_2": "Policy Research Assistant is Tier 2: +2 to the selected Party booster group."
+  },
+  {
+    "item_id": "SH02",
+    "name": "Commission Press Engagement",
+    "description": "Spend Office Funds to increase one randomly-selected National-tier booster group's relationship. Available once per Office screen; resets after completion of a level (success or failure).",
+    "cost_xp": 0,
+    "cost_yen": 200000,
+    "bonus_condition_1": "Media Spokesperson is Tier 1: +2 to the selected National booster group.",
+    "bonus_condition_2": "Media Spokesperson is Tier 2: +4 to the selected National booster group."
+  },
+  {
+    "item_id": "SH03",
+    "name": "Commission District Engagement",
+    "description": "Spend Office Funds to increase one randomly-selected Constituency-tier booster group's relationship. Available once per Office screen; resets after completion of a level.",
+    "cost_xp": 0,
+    "cost_yen": 200000,
+    "bonus_condition_1": "District Representative is Tier 1: +2 to the selected Constituency booster group.",
+    "bonus_condition_2": "District Representative is Tier 2: +4 to the selected Constituency booster group."
+  },
+  {
+    "item_id": "SH04",
+    "name": "“ね3” Coffee",
+    "description": "One-use item. Grants +1 energy for the first stage of the next level played.",
+    "cost_xp": 0,
+    "cost_yen": 10000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH05",
+    "name": "“ミレニ姫” Tea",
+    "description": "One-use item. Grants +1 gaffe (失言) counter cap for the first stage of the next level played.",
+    "cost_xp": 0,
+    "cost_yen": 10000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH06",
+    "name": "Paperwork Automation",
+    "description": "One-use item. Grants +1 card drawn for the first stage of the next level played.",
+    "cost_xp": 0,
+    "cost_yen": 10000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH07",
+    "name": "Wristwatch",
+    "description": "One-use item. Grants +1 turn for the first stage of the next level played.",
+    "cost_xp": 0,
+    "cost_yen": 10000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH08",
+    "name": "Meditation Session",
+    "description": "One-use item. Grants +1 guard for the first stage of the next level played.",
+    "cost_xp": 0,
+    "cost_yen": 10000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH09",
+    "name": "Blue Profile Package",
+    "description": "Cosmetic character profile appearance package. Placeholder; will be replaced by character art later.",
+    "cost_xp": 0,
+    "cost_yen": 10000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH10",
+    "name": "Red Profile Package",
+    "description": "Cosmetic character profile appearance package. Placeholder; will be replaced by character art later.",
+    "cost_xp": 0,
+    "cost_yen": 15000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH11",
+    "name": "Blue Background Package",
+    "description": "Cosmetic Office background appearance package. Placeholder; will be replaced by artwork later.",
+    "cost_xp": 0,
+    "cost_yen": 10000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH12",
+    "name": "Red Background Package",
+    "description": "Cosmetic Office background appearance package. Placeholder; will be replaced by artwork later.",
+    "cost_xp": 0,
+    "cost_yen": 15000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH13",
+    "name": "Unlock Tier 1 Level",
+    "description": "Base cost to open a Tier 1 level for play.",
+    "cost_xp": 40,
+    "cost_yen": 0,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH14",
+    "name": "Unlock Tier 2 Level",
+    "description": "Base cost to open a Tier 2 level for play.",
+    "cost_xp": 40,
+    "cost_yen": 0,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH15",
+    "name": "Unlock Random Tier 1 Card",
+    "description": "Unlocks one new Tier 1 card at random, making it available for the deck.",
+    "cost_xp": 250,
+    "cost_yen": 0,
+    "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH16",
+    "name": "Unlock Random Tier 2 Card",
+    "description": "Unlocks one new Tier 2 card at random, making it available for the deck.",
+    "cost_xp": 500,
+    "cost_yen": 0,
+    "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH17",
+    "name": "Unlock Random Tier 3 Card",
+    "description": "Unlocks one new Tier 3 card at random, making it available for the deck.",
+    "cost_xp": 1000,
+    "cost_yen": 0,
+    "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH18",
+    "name": "Unlock New Staff Recruitment Tier",
+    "description": "Unlocks the next tier of staff recruitment, allowing higher-tier staff hires.",
+    "cost_xp": 500,
+    "cost_yen": 0,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH19",
+    "name": "Increase Office Funds Cap",
+    "description": "Increases the Office Funds cap by 100,000円. Repeatable.",
+    "cost_xp": 100,
+    "cost_yen": 0,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH20",
+    "name": "Extra Draw (Level Buff)",
+    "description": "One-use buff applied for the entire duration of the next level played: +1 card drawn.",
+    "cost_xp": 50,
+    "cost_yen": 0,
+    "bonus_condition_1": "Stackable up to +2 total per level; each additional stack costs another 50 XP.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH21",
+    "name": "Extra Energy (Level Buff)",
+    "description": "One-use buff applied for the entire duration of the next level played: +1 energy.",
+    "cost_xp": 60,
+    "cost_yen": 0,
+    "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 60 XP.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH22",
+    "name": "Extra Guard (Level Buff)",
+    "description": "One-use buff applied for the entire duration of the next level played: +1 guard.",
+    "cost_xp": 70,
+    "cost_yen": 0,
+    "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 70 XP.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH23",
+    "name": "Extra Gaffe Counter Cap (Level Buff)",
+    "description": "One-use buff applied for the entire duration of the next level played: +1 gaffe (失言) counter cap.",
+    "cost_xp": 80,
+    "cost_yen": 0,
+    "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 80 XP.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH24",
+    "name": "Extra Turn (Level Buff)",
+    "description": "One-use buff applied for the entire duration of the next level played: +1 turn on the stage clock.",
+    "cost_xp": 100,
+    "cost_yen": 0,
+    "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 100 XP.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH25",
+    "name": "Host National Booster Dinner",
+    "description": "Host a dinner for a player-selected National-tier booster group.",
+    "cost_xp": 20,
+    "cost_yen": 20000,
+    "bonus_condition_1": "+2 relationship for the selected group.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH26",
+    "name": "Host District Walking Tour",
+    "description": "Host a walking tour for a player-selected Constituency-tier booster group.",
+    "cost_xp": 10,
+    "cost_yen": 10000,
+    "bonus_condition_1": "+1 relationship for the selected group.",
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH27",
+    "name": "Purchase Random Tier 1 Card",
+    "description": "Purchases one new Tier 1 card at random from Tier 1 cards previously unlocked, making it available for the deck.",
+    "cost_xp": 0,
+    "cost_yen": 15000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH28",
+    "name": "Purchase Random Tier 2 Card",
+    "description": "Purchases one new Tier 2 card at random from Tier 2 cards previously unlocked, making it available for the deck.",
+    "cost_xp": 0,
+    "cost_yen": 25000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  },
+  {
+    "item_id": "SH29",
+    "name": "Purchase Random Tier 3 Card",
+    "description": "Purchases one new Tier 3 card at random from Tier 3 cards previously unlocked, making it available for the deck.",
+    "cost_xp": 0,
+    "cost_yen": 30000,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null
+  }
+]

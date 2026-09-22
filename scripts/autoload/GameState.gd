@@ -33,7 +33,7 @@ var last_meta_change: Dictionary = {}
 ##
 ## CLAUDE.md puts the XP checkpoint at milestone M5, so nothing spends this
 ## yet. It is banked rather than discarded so the checkpoint has a real
-## number to open with, and so a stage's xp_reward stops being a column the
+## number to open with, and so a stage's win_delta_xp stops being a column the
 ## workbook exports and no code has ever read.
 var xp := 0
 var last_xp_gained := 0
@@ -72,10 +72,38 @@ var booster_standing: Dictionary = {}
 ## What the last finished level did to those, e.g. { "BO08": 5 }.
 var last_booster_change: Dictionary = {}
 
+## Where the player stands with each of the 5 audience segments, by segment
+## ID (SG01-05). Starts at that segment's "Initial Favorability %" from
+## segments.json and is held between levels, the same way booster_standing
+## is. This is a DIFFERENT number from a card's "segment_share" (how much of
+## a STAGE's audience is a given segment — CardResolver.segment_share(),
+## static per-stage data) or a modifier's audience trigger (MetaRules.
+## active_modifiers(), same static per-stage data) — those two read
+## stages.json's segment_mix and are unrelated to this. This is the
+## PERSISTENT sentiment score Staff tier rewards move (Ledger.gd / Staff
+## section; a reward's SGxx target lands here).
+##
+## Lives only for this sitting until M4 adds saving, same as booster_standing.
+var segment_favorability: Dictionary = {}
+
+## What the last staff hire/upgrade did to those, e.g. { "SG03": 2 }.
+var last_segment_change: Dictionary = {}
+
+## Who is hired into each of the three Staff roles, and at what tier:
+## { "Policy Research Assistant": { "staff_id": "SF04", "tier": 1 }, ... }.
+## A role with no entry is vacant. There is no "fire" — once a role is
+## filled it only ever upgrades (see Ledger.gd's Staff section and
+## hire_staff()/upgrade_staff() below).
+##
+## Lives only for this sitting until M4 adds saving, same as everything else
+## on this page.
+var staff_hired: Dictionary = {}
+
 
 func _ready() -> void:
 	reset_meta()
 	reset_booster_standing()
+	reset_segment_favorability()
 
 
 ## Back to the starting standing in sanban.json.
@@ -85,6 +113,12 @@ func reset_meta() -> void:
 	xp = 0
 	last_xp_gained = 0
 	reset_collection()
+	reset_staff()
+
+
+## Every Staff role back to vacant.
+func reset_staff() -> void:
+	staff_hired = {}
 
 
 ## Back to the Starter twelve, owned and in the deck.
@@ -121,22 +155,118 @@ func buy_card(card_id: String) -> String:
 	return ""
 
 
-## Spends Funds on an organisation's backing.
+## Spends an organisation's activation cost (Funds, and since 2026-09-22
+## sometimes Reputation and/or Constituency support too) on its backing.
 func buy_modifier(mod_id: String) -> String:
 	var modifier := DataDB.get_modifier(mod_id)
 	var refusal := Ledger.modifier_refusal(modifier, owned_modifiers,
-		int(meta.get("Funds", 0)), booster_standing, DataDB.booster_standing,
-		BattleSetup.booster_ids(), Text.phrase())
+		meta, booster_standing, DataDB.booster_standing,
+		DataDB.boosters, Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 
 	# Announced, the same as spending XP is. This used to write the number
 	# straight in, so the Office's two spending doors behaved differently:
-	# buying a card told the world and buying backing did not.
-	_move_meta("Funds", -Ledger.modifier_cost(modifier))
+	# buying a card told the world and buying backing did not. Every
+	# non-zero currency the modifier charges is spent, not just Funds.
+	var costs := Ledger.modifier_costs(modifier)
+	for name: String in costs.keys():
+		var cost: int = costs[name]
+		if cost > 0:
+			_move_meta(name, -cost)
 
 	owned_modifiers.append(mod_id)
 	return ""
+
+
+## Hires a candidate into their role, spending Funds, if the role is vacant
+## and the price is affordable. Immediately applies whichever tier_N_reward
+## matches the tier they START at (candidates do not all start at tier 0 —
+## SF05 and SF07 start at tier 1).
+func hire_staff(staff_id: String) -> String:
+	var candidate := DataDB.get_staff(staff_id)
+	if candidate.is_empty():
+		return "Unknown staff candidate."
+
+	var role := str(candidate.get("role", ""))
+	var funds := int(meta.get("Funds", 0))
+	var refusal := Ledger.staff_hire_refusal(
+		candidate, staff_hired.get(role, {}), funds, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	_move_meta("Funds", -int(candidate.get("hiring_cost_yen", 0)))
+	var starting_tier := int(candidate.get("starting_tier", 0))
+	staff_hired[role] = {"staff_id": staff_id, "tier": starting_tier}
+	_apply_staff_reward(candidate, starting_tier)
+	return ""
+
+
+## Upgrades a role's hired candidate to the next tier, spending Funds, if that
+## step exists for them and is affordable. Applies the new tier's reward on
+## top of whatever hiring (and any earlier upgrade) already gave — these are
+## one-time bonuses per tier reached, not a repeating income, the same way a
+## modifier's RESOURCE_BONUS_ON_WIN tier is a flat payment rather than a rate
+## (see ModifierEffects.gd).
+func upgrade_staff(role: String) -> String:
+	var hired: Dictionary = staff_hired.get(role, {})
+	if hired.is_empty():
+		return "Nobody is hired for this role yet."
+
+	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
+	if candidate.is_empty():
+		return "Unknown staff candidate."
+
+	var tier := int(hired.get("tier", 0))
+	var funds := int(meta.get("Funds", 0))
+	var refusal := Ledger.staff_upgrade_refusal(candidate, tier, funds, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	var cost := int(Ledger.staff_upgrade_cost(candidate, tier))
+	_move_meta("Funds", -cost)
+
+	var new_tier := tier + 1
+	hired["tier"] = new_tier
+	staff_hired[role] = hired
+	_apply_staff_reward(candidate, new_tier)
+	return ""
+
+
+## A staff tier's reward, applied the moment it is reached (on hire, and
+## again on every upgrade that reaches a new tier).
+##
+## Each reward is {"delta": int, "target": "BOxx or SGxx"}. A BOxx target
+## moves booster_standing exactly the way _apply_level_bonus_win()'s own
+## booster loop already does; an SGxx target moves segment_favorability the
+## same way, clamped 0-100 (segments.json carries no min/max of its own, so
+## this uses the same default range booster_standing falls back to).
+func _apply_staff_reward(candidate: Dictionary, tier: int) -> void:
+	var rewards: Variant = candidate.get("tier_%d_reward" % tier)
+	if not (rewards is Array):
+		return
+
+	var booster_low := int(DataDB.booster_standing.get("min", 0))
+	var booster_high := int(DataDB.booster_standing.get("max", 100))
+	for reward: Variant in rewards:
+		if not (reward is Dictionary):
+			continue
+		var target := str((reward as Dictionary).get("target", ""))
+		var delta := int((reward as Dictionary).get("delta", 0))
+		if delta == 0:
+			continue
+
+		if target.begins_with("BO"):
+			var before := int(booster_standing.get(target, 50))
+			var after := clampi(before + delta, booster_low, booster_high)
+			booster_standing[target] = after
+			if after != before:
+				last_booster_change[target] = int(last_booster_change.get(target, 0)) + (after - before)
+		elif target.begins_with("SG"):
+			var before_fav := int(segment_favorability.get(target, 50))
+			var after_fav := clampi(before_fav + delta, 0, 100)
+			segment_favorability[target] = after_fav
+			last_segment_change[target] = after_fav - before_fav
 
 
 ## Replaces the deck, if the new one is legal.
@@ -157,6 +287,21 @@ func reset_booster_standing() -> void:
 	var start := int(DataDB.booster_standing.get("start", 50))
 	for booster: Dictionary in DataDB.boosters:
 		booster_standing[str(booster.get("booster_id"))] = start
+
+
+## Every segment back to its own "Initial Favorability %" from the workbook.
+## Unlike booster_standing, there's no hand-written config file for this —
+## the workbook already gives each segment its own starting number, so there
+## is nothing left for a config file to add. 50 is the fallback only for a
+## segment row that somehow has no value at all.
+func reset_segment_favorability() -> void:
+	segment_favorability = {}
+	last_segment_change = {}
+
+	for segment: Dictionary in DataDB.segments:
+		var segment_id := str(segment.get("segment_id"))
+		var start: Variant = segment.get("initial_favorability_pct")
+		segment_favorability[segment_id] = int(start) if start != null else 50
 
 
 ## Called by the Office when the player starts a level.
@@ -188,6 +333,9 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 
 	if level_runner.is_finished():
 		last_level_outcome = level_runner.outcome()
+		if last_level_outcome == LevelRunner.WON:
+			_pay_level_rewards()
+			_apply_level_bonus_win(level_runner.level)
 		return true
 	return false
 
@@ -215,41 +363,114 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 
 	# Losing a stage earns nothing. A score the player reached on the way to
 	# losing still is not a result.
+	# 2026-09-22 workbook: xp_reward was renamed win_delta_xp, alongside the
+	# other stage win_delta_* columns MetaRules.apply_win_deltas already reads.
 	if outcome == LevelRunner.WON:
 		var won := MetaRules.apply_win_deltas(meta, stage, DataDB.sanban)
 		meta = won["meta"]
 		_record_meta_change(won["applied"])
-		last_xp_gained = int(stage.get("xp_reward", 0))
+		last_xp_gained = int(stage.get("win_delta_xp", 0))
 		_move_xp(last_xp_gained)
 
 	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
 	meta = scored["meta"]
 	_record_meta_change(scored["applied"])
 
-	if outcome == LevelRunner.WON:
-		_pay_backing()
 
-
-## What the organisations backing you pay out for a stage won.
+## What the organisations backing you pay out for winning a LEVEL — not a
+## single stage. RESOURCE_BONUS_ON_WIN's own workbook wording says "after
+## successful completion of a level", so this is called once, when
+## finish_stage() sees the level itself is won, rather than after every stage.
 ##
-## Unlike the battle-start effects, this one does not care who was in the
+## Unlike the battle-start effects, this does not care who was in the
 ## room: a business circle pays for the result, not the audience.
-func _pay_backing() -> void:
+func _pay_level_rewards() -> void:
 	var owned: Array = []
 	for mod_id: String in owned_modifiers:
 		var modifier := DataDB.get_modifier(mod_id)
 		if not modifier.is_empty():
 			owned.append(modifier)
-
-	var funds := ModifierEffects.stage_win_funds(owned, DataDB.modifier_effects)
-	if funds == 0:
+	if owned.is_empty():
 		return
 
-	var variable := _sanban_row("Funds")
-	var before := int(meta.get("Funds", 0))
-	var after := MetaRules.clamp_meta(before + funds, variable)
-	meta["Funds"] = after
-	_record_meta_change({"Funds": after - before})
+	# XP first — it is not a sanban row, so it goes through _move_xp rather
+	# than the clamp-and-record path the other three share.
+	var xp_bonus := ModifierEffects.level_win_resource_bonus(owned, "XP")
+	if xp_bonus != 0:
+		_move_xp(xp_bonus)
+		last_xp_gained += xp_bonus
+
+	for name: String in ["Funds", "Constituency support", "Party support"]:
+		var bonus := ModifierEffects.level_win_resource_bonus(owned, name)
+		if bonus == 0:
+			continue
+		var variable := _sanban_row(name)
+		var before := int(meta.get(name, 0))
+		var after := MetaRules.clamp_meta(before + bonus, variable)
+		meta[name] = after
+		_record_meta_change({name: after - before})
+
+
+## The level's own "bonus_win_range_*" and "win_delta_bo01..16" columns,
+## rolled and applied. Called on the same LEVEL win as _pay_level_rewards().
+##
+## [DEFAULT] "bonus win" is not a concept CLAUDE.md or the rest of the code
+## defines anywhere — there is no separate "ordinary win" the workbook
+## contrasts it with, and no flag anywhere marking some level wins as bonus
+## and others not. Rather than invent that distinction, every one of these
+## ranges is rolled on every win of the level that carries it, per the
+## brief's own fallback for this case. If Cameron means something more
+## specific by "bonus" — a clean win, a win within the turn limit, a
+## first-time clear — that is a design decision for him to make, not one
+## to guess at here.
+func _apply_level_bonus_win(level: Dictionary) -> void:
+	const RANGE_TO_META := {
+		"bonus_win_range_jiban": "Constituency support",
+		"bonus_win_range_yen": "Funds",
+		"bonus_win_range_reputation": "Reputation",
+		"bonus_win_range_party_support": "Party support",
+	}
+	for key: String in RANGE_TO_META.keys():
+		var amount := _roll_range(level.get(key))
+		if amount == 0:
+			continue
+		var name: String = RANGE_TO_META[key]
+		var variable := _sanban_row(name)
+		var before := int(meta.get(name, 0))
+		var after := MetaRules.clamp_meta(before + amount, variable)
+		meta[name] = after
+		_record_meta_change({name: after - before})
+
+	var xp_amount := _roll_range(level.get("bonus_win_range_xp"))
+	if xp_amount != 0:
+		_move_xp(xp_amount)
+		last_xp_gained += xp_amount
+
+	var low := int(DataDB.booster_standing.get("min", 0))
+	var high := int(DataDB.booster_standing.get("max", 100))
+	for n in range(1, 17):
+		var booster_id := "BO%02d" % n
+		var amount := _roll_range(level.get("win_delta_bo%02d" % n))
+		if amount == 0:
+			continue
+		var before := int(booster_standing.get(booster_id, 50))
+		var after := clampi(before + amount, low, high)
+		booster_standing[booster_id] = after
+		if after != before:
+			last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
+
+
+## A level's range columns are {"min": x, "max": y} or null ("this level
+## carries no such bonus"). Rolled inclusively; null or a malformed value
+## rolls nothing, same as an unset flat reward pays nothing.
+func _roll_range(range_value: Variant) -> int:
+	if not (range_value is Dictionary) or not (range_value as Dictionary).has("min"):
+		return 0
+	var low := int((range_value as Dictionary)["min"])
+	var high := int((range_value as Dictionary)["max"])
+	if high <= low:
+		return low
+	return randi_range(low, high)
 
 
 func _sanban_row(name: String) -> Dictionary:

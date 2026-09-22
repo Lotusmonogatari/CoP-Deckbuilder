@@ -7,8 +7,10 @@ extends GutTest
 ## still be REWRITTEN every refresh, or it goes stale; and the cost it shows
 ## must be the cost the battle will actually charge.
 
-const MODULE := "MOD01"
-const FLOOR_DEBATE_STEP := 4
+## 2026-09-22 workbook: the old Modules sheet is gone. LV06's stage_7 is a
+## real floor debate (ST02); any real level+stage would do here.
+const FLOOR_DEBATE_LEVEL := "LV06"
+const FLOOR_DEBATE_STAGE := "ST02"
 const SHUFFLE_SEED := 20260919
 
 var _scroll: ScrollContainer
@@ -25,7 +27,7 @@ func before_each() -> void:
 	_scroll.add_child(_row)
 	add_child_autofree(_scroll)
 
-	var config := BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP)
+	var config := BattleSetup.for_level_stage(FLOOR_DEBATE_LEVEL, FLOOR_DEBATE_STAGE)
 	config["seed"] = SHUFFLE_SEED
 	_engine = BattleEngine.new()
 	assert_true(_engine.setup(config), "the battle starts")

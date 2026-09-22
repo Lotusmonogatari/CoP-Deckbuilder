@@ -93,7 +93,12 @@ func test_buying_backing_announces_the_spend() -> void:
 	# Buying a card has always announced its XP; buying backing used to write
 	# the number straight in and say nothing, so the two shops would have
 	# behaved differently.
-	GameState.meta["Funds"] = 999
+	#
+	# 2026-09-22: a modifier's price can now be any mix of Funds, Reputation
+	# and Constituency support, so every currency a purchase might touch is
+	# maxed out here rather than just Funds.
+	for name: String in ["Funds", "Reputation", "Constituency support"]:
+		GameState.meta[name] = 999
 	_earn_everyones_backing()
 
 	var modifier := _an_affordable_modifier()
@@ -127,8 +132,8 @@ func _an_affordable_modifier() -> Dictionary:
 		if GameState.owned_modifiers.has(str(modifier.get("mod_id", ""))):
 			continue
 		var refusal := Ledger.modifier_refusal(modifier, GameState.owned_modifiers,
-			int(GameState.meta.get("Funds", 0)), GameState.booster_standing,
-			DataDB.booster_standing, BattleSetup.booster_ids())
+			GameState.meta, GameState.booster_standing,
+			DataDB.booster_standing, DataDB.boosters)
 		if refusal.is_empty():
 			return modifier
 	return {}

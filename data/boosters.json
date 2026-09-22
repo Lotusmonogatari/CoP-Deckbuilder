@@ -5,11 +5,11 @@
     "name_jp": "党本部",
     "romaji": "Tōhonbu",
     "tier": "Party",
-    "boosts": "Endorsement, funds; protection from Cold Shoulder (M10)",
     "linked_modifiers": [
-      "M11"
-    ],
-    "modifier_count": null
+      "M10",
+      "M11",
+      "M16"
+    ]
   },
   {
     "booster_id": "BO02",
@@ -17,11 +17,11 @@
     "name_jp": "派閥",
     "romaji": "Habatsu",
     "tier": "Party",
-    "boosts": "Party support, patronage, small funds",
     "linked_modifiers": [
-      "M12"
-    ],
-    "modifier_count": null
+      "M08",
+      "M12",
+      "M17"
+    ]
   },
   {
     "booster_id": "BO03",
@@ -29,11 +29,9 @@
     "name_jp": "後援会",
     "romaji": "Kōenkai",
     "tier": "Constituency",
-    "boosts": "Start support when constituents present; donations",
     "linked_modifiers": [
-      "M01"
-    ],
-    "modifier_count": null
+      "M18"
+    ]
   },
   {
     "booster_id": "BO04",
@@ -41,11 +39,10 @@
     "name_jp": "市町村長会",
     "romaji": "Shichōsonchō-kai",
     "tier": "Constituency",
-    "boosts": "Jiban gains; standing on local bills",
     "linked_modifiers": [
-      "M13"
-    ],
-    "modifier_count": null
+      "M13",
+      "M19"
+    ]
   },
   {
     "booster_id": "BO05",
@@ -53,11 +50,9 @@
     "name_jp": "商工会議所",
     "romaji": "Shōkō Kaigisho",
     "tier": "National",
-    "boosts": "Funds; donor-audience bonus",
     "linked_modifiers": [
-      "M02"
-    ],
-    "modifier_count": null
+      "M20"
+    ]
   },
   {
     "booster_id": "BO06",
@@ -65,11 +60,9 @@
     "name_jp": "町内会",
     "romaji": "Chōnaikai",
     "tier": "Constituency",
-    "boosts": "Town hall bonus; slows Jiban loss",
     "linked_modifiers": [
-      "M14"
-    ],
-    "modifier_count": null
+      "M21"
+    ]
   },
   {
     "booster_id": "BO07",
@@ -77,11 +70,9 @@
     "name_jp": "漁協",
     "romaji": "Gyokyō",
     "tier": "Constituency",
-    "boosts": "Fisheries, environment, and Kuril bills",
     "linked_modifiers": [
-      "M15"
-    ],
-    "modifier_count": null
+      "M22"
+    ]
   },
   {
     "booster_id": "BO08",
@@ -89,12 +80,10 @@
     "name_jp": "全国紙",
     "romaji": "Zenkokushi",
     "tier": "National",
-    "boosts": "Press tone; Kanban",
     "linked_modifiers": [
-      "M03",
-      "M04"
-    ],
-    "modifier_count": null
+      "M07",
+      "M23"
+    ]
   },
   {
     "booster_id": "BO09",
@@ -102,11 +91,10 @@
     "name_jp": "労働組合連合",
     "romaji": "Rōdō Kumiai Rengō",
     "tier": "National",
-    "boosts": "Loyalists; caucus and floor stages",
     "linked_modifiers": [
-      "M06"
-    ],
-    "modifier_count": null
+      "M06",
+      "M24"
+    ]
   },
   {
     "booster_id": "BO10",
@@ -114,10 +102,70 @@
     "name_jp": "農協",
     "romaji": "Nōkyō",
     "tier": "National",
-    "boosts": "Rural Focus bills",
     "linked_modifiers": [
-      "M05"
-    ],
-    "modifier_count": null
+      "M05",
+      "M15",
+      "M25"
+    ]
+  },
+  {
+    "booster_id": "BO11",
+    "name_en": "Students",
+    "name_jp": "学生団体",
+    "romaji": "Gakusei Dantai",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M26"
+    ]
+  },
+  {
+    "booster_id": "BO12",
+    "name_en": "Families",
+    "name_jp": "子育て世代の会",
+    "romaji": "Kosodate Sedai no Kai",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M27"
+    ]
+  },
+  {
+    "booster_id": "BO13",
+    "name_en": "Artisans",
+    "name_jp": "職人組合",
+    "romaji": "Shokunin Kumiai",
+    "tier": "National",
+    "linked_modifiers": [
+      "M28"
+    ]
+  },
+  {
+    "booster_id": "BO14",
+    "name_en": "Commuters",
+    "name_jp": "通勤者連盟",
+    "romaji": "Tsūkinsha Renmei",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M29"
+    ]
+  },
+  {
+    "booster_id": "BO15",
+    "name_en": "Traditionalists",
+    "name_jp": "伝統保守の会",
+    "romaji": "Dentō Hoshu no Kai",
+    "tier": "National",
+    "linked_modifiers": [
+      "M30"
+    ]
+  },
+  {
+    "booster_id": "BO16",
+    "name_en": "Modernists",
+    "name_jp": "革新の会",
+    "romaji": "Kakushin no Kai",
+    "tier": "National",
+    "linked_modifiers": [
+      "M31"
+    ]
   }
 ]

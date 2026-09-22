@@ -15,9 +15,15 @@ extends GutTest
 ## particular number of turns, which is a balance question and yours to
 ## change freely.
 
-const MODULE := "MOD01"
-const FLOOR_DEBATE_STEP := 4
-const COMMITTEE_STEP := 2
+## 2026-09-22 workbook: the old Modules sheet (MOD01, with numbered steps) is
+## gone — a level's stages are levels.json's own flat stage_1..stage_10 now.
+## LV06 and LV09 are two of the 30 real levels that happen to carry the two
+## stage shapes these tests care about: a floor debate (ST02) and a committee
+## (ST01). Picked for what they contain, not because either is special.
+const FLOOR_DEBATE_LEVEL := "LV06"
+const FLOOR_DEBATE_STAGE := "ST02"
+const COMMITTEE_LEVEL := "LV09"
+const COMMITTEE_STAGE := "ST01"
 
 
 ## Every battle in this file is set up through here, so the shuffle is the
@@ -44,9 +50,9 @@ func before_all() -> void:
 # Setting a battle up from the workbook
 # ---------------------------------------------------------------------------
 
-func test_module_01s_floor_debate_can_be_set_up() -> void:
-	var config := BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP)
-	assert_false(config.is_empty(), "the module step was found")
+func test_a_real_levels_floor_debate_can_be_set_up() -> void:
+	var config := BattleSetup.for_level_stage(FLOOR_DEBATE_LEVEL, FLOOR_DEBATE_STAGE)
+	assert_false(config.is_empty(), "the level's stage was found")
 
 	var stage: Dictionary = config["stage"]
 	assert_eq(stage["stage_id"], "ST02")
@@ -70,33 +76,30 @@ func test_the_starter_deck_comes_from_the_workbook() -> void:
 		assert_eq(card["tier"], Ledger.OPENING_TIER, "%s is an opening-tier card" % card_id)
 
 
-func test_every_module_step_can_be_set_up() -> void:
-	# The check that would catch a module row pointing at something deleted.
-	#
-	# The mode belongs to the STAGE, not the module row — the Modules sheet
-	# has no Mode column at all. Reading it off the row meant this test
-	# skipped every step and asserted nothing, which GUT flagged as risky
-	# the moment there was nothing else failing to hide behind.
+func test_every_real_level_can_be_set_up() -> void:
+	# The check that would catch a level naming a stage that no longer
+	# exists, or a combat stage nothing is eligible to fight.
 	var checked := 0
-	for row: Dictionary in DataDB.get_module_steps(MODULE):
-		var stage := DataDB.get_stage(str(row.get("stage_id", "")))
-		if str(stage.get("mode", "")) != "Combat":
-			continue   # office hours is not a battle
-		checked += 1
+	for level: Dictionary in DataDB.levels:
+		var expanded := BattleSetup.expand_level(level)
+		for stage: Dictionary in expanded.get("stages", []):
+			if str(stage.get("mode", "")) != "Combat":
+				continue   # office hours is not a battle
+			checked += 1
 
-		var seq := int(row["seq"])
-		var config := BattleSetup.from_row(row)
-		assert_false(config.is_empty(), "step %d built a config" % seq)
+			var config := BattleSetup.for_playtest_stage(stage)
+			assert_false(config.is_empty(), "%s's %s built a config"
+				% [level.get("level_id"), stage.get("stage_id")])
 
-		var engine := BattleEngine.new()
-		assert_true(_setup(engine, config),
-			"step %d (%s) starts: %s" % [seq, row.get("stage_id"), engine.setup_problems])
+			var engine := BattleEngine.new()
+			assert_true(_setup(engine, config),
+				"%s's %s starts: %s" % [level.get("level_id"), stage.get("stage_id"), engine.setup_problems])
 
-	assert_gt(checked, 0, "the module has combat steps to check")
+	assert_gt(checked, 0, "there are combat stages across the real levels to check")
 
 
-func test_the_committee_stage_gets_its_members() -> void:
-	var config := BattleSetup.for_module_step(MODULE, COMMITTEE_STEP)
+func test_a_committee_stage_gets_its_members() -> void:
+	var config := BattleSetup.for_level_stage(COMMITTEE_LEVEL, COMMITTEE_STAGE)
 	assert_true(config.has("committee_members"), "members were fetched")
 	assert_gt((config["committee_members"] as Array).size(), 0)
 
@@ -138,7 +141,7 @@ func _play_out(config: Dictionary, max_turns: int = 40) -> BattleState:
 
 
 func test_a_floor_debate_plays_to_a_finish() -> void:
-	var state := _play_out(BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP))
+	var state := _play_out(BattleSetup.for_level_stage(FLOOR_DEBATE_LEVEL, FLOOR_DEBATE_STAGE))
 
 	assert_true(state.is_over(), "the battle ended")
 	assert_true(["win", "loss", "retry"].has(state.outcome),
@@ -149,7 +152,7 @@ func test_a_floor_debate_plays_to_a_finish() -> void:
 func test_the_seats_still_add_up_after_a_whole_battle() -> void:
 	# The shared pool's one unbreakable rule, checked against real data after
 	# a full game rather than a handful of operations.
-	var state := _play_out(BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP))
+	var state := _play_out(BattleSetup.for_level_stage(FLOOR_DEBATE_LEVEL, FLOOR_DEBATE_STAGE))
 
 	assert_not_null(state.bar)
 	assert_true(state.bar.totals_balance(),
@@ -160,7 +163,7 @@ func test_the_seats_still_add_up_after_a_whole_battle() -> void:
 func test_a_battle_can_be_won() -> void:
 	# Stacked in the player's favour so the win path is genuinely exercised,
 	# rather than assuming it works because the loss path does.
-	var config := BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP)
+	var config := BattleSetup.for_level_stage(FLOOR_DEBATE_LEVEL, FLOOR_DEBATE_STAGE)
 	var stage: Dictionary = (config["stage"] as Dictionary).duplicate(true)
 	stage["player_start"] = 50      # one seat short of a majority
 	config["stage"] = stage
@@ -170,7 +173,7 @@ func test_a_battle_can_be_won() -> void:
 
 
 func test_a_battle_can_be_lost_on_gaffes() -> void:
-	var config := BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP)
+	var config := BattleSetup.for_level_stage(FLOOR_DEBATE_LEVEL, FLOOR_DEBATE_STAGE)
 	var stage: Dictionary = (config["stage"] as Dictionary).duplicate(true)
 	stage["gaffe_limit"] = 1        # the very first gaffe ends it
 	config["stage"] = stage
@@ -184,19 +187,20 @@ func test_a_battle_can_be_lost_on_gaffes() -> void:
 
 
 func test_the_opponent_actually_does_something() -> void:
-	# OP03 now carries a pattern of their own, which reaches a real battle
-	# through data/intent_patterns.json — the hand-written bridge that stands
-	# in until the workbook has an Intent pattern column. If that bridge ever
-	# stops being read, this is where it shows up: the opponent would quietly
-	# fall back to the shared default and play like everybody else.
-	var config := BattleSetup.for_module_step(MODULE, FLOOR_DEBATE_STEP)
+	# The opponent this level's floor debate dynamically picks (the lowest
+	# opp_id eligible for ST02 — see BattleSetup._opponent_for()) carries
+	# their own intent_*_range columns, which DataDB.get_opponent() turns
+	# into a real pattern. If that stopped working, this is where it would
+	# show up: the opponent would quietly fall back to the shared default
+	# and play like everybody else.
+	var config := BattleSetup.for_level_stage(FLOOR_DEBATE_LEVEL, FLOOR_DEBATE_STAGE)
 	var engine := BattleEngine.new()
 	_setup(engine, config)
 
 	assert_false(engine.used_default_intent_pattern,
-		"OP03 has a pattern of their own, so the shared default is not needed")
-	assert_eq(config["opponent"]["intent_pattern"], DataDB.intent_patterns["OP03"],
-		"and it is the one written down for them")
+		"a real opponent's own ranges are used, so the shared default is not needed")
+	assert_false((config["opponent"]["intent_pattern"] as Array).is_empty(),
+		"and a real pattern was built from their ranges")
 
 	var intent := engine.current_intent()
 	assert_true(IntentRunner.KNOWN_VERBS.has(intent["verb"]),
@@ -437,8 +441,19 @@ func test_answering_every_question_ends_the_press_conference() -> void:
 			if engine.play_card(card_id).get("ok", false):
 				answered = true
 				break
-		if not answered:
-			engine.end_turn()
+		# One turn, whatever happened in it. BattleEngine.play_card() only
+		# answers a question for the FIRST card played each turn
+		# (questions_answered_this_turn / _questions_per_turn()); without
+		# this call, the loop above could play several cheap cards back to
+		# back inside a single un-ended turn, burning through the hand
+		# without the question count ever catching up — 6 cards for 5
+		# questions failing not because a question went unanswered, but
+		# because the turn that would have answered it never closed. Found
+		# 2026-09-22: the new 54-card slate's cheaper Tier-0 cards made this
+		# latent loop bug bite for the first time (2 of 5 questions left
+		# unanswered every run); the room's own numbers were never the
+		# problem.
+		engine.end_turn()
 
 	assert_true(engine.state.is_over(), "the conference finished")
 	assert_eq(engine.state.outcome, "win", "it is not a stage you lose on points")
@@ -556,10 +571,14 @@ func test_a_playtest_stage_borrows_the_room_it_is_modelled_on() -> void:
 
 func test_every_playtest_stage_has_somebody_in_the_room() -> void:
 	for stage: Dictionary in DataDB.playtest_level["stages"]:
-		var mix: Dictionary = BattleSetup.with_audience(stage).get("segment_mix", {})
+		var borrowed := BattleSetup.with_audience(stage)
+		var mix: Dictionary = borrowed.get("segment_mix", {})
 		assert_false(mix.is_empty(), "%s has an audience" % stage.get("stage_id"))
 
-		var total := 0.0
+		# 2026-09-22 workbook: a canon stage's audience can include a
+		# "% Other" share (pct_other) that isn't a segments.json row, the
+		# same one DataDB.gd's own cross-check now counts — see its note.
+		var total := float(borrowed.get("pct_other", 0.0))
 		for share: float in mix.values():
 			total += share
 		assert_almost_eq(total, 1.0, 0.001,

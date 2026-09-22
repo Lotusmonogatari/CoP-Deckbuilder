@@ -4,34 +4,39 @@
     "name_en": "Press",
     "name_jp": "報道陣",
     "romaji": "Hōdōjin",
-    "description": "Reporters, editors, camera crews"
+    "description": "Reporters, editors, camera crews",
+    "initial_favorability_pct": 5.0
   },
   {
     "segment_id": "SG02",
-    "name_en": "Loyalists",
+    "name_en": "Party Members",
     "name_jp": "党員",
     "romaji": "Tōin",
-    "description": "Party members and whips"
+    "description": "Party members and whips",
+    "initial_favorability_pct": 10.0
   },
   {
     "segment_id": "SG03",
     "name_en": "Constituents",
     "name_jp": "有権者",
     "romaji": "Yūkensha",
-    "description": "Voters of the protagonist's district and the general public"
+    "description": "Voters of the protagonist's district and the general public",
+    "initial_favorability_pct": 15.0
   },
   {
     "segment_id": "SG04",
     "name_en": "Donors",
     "name_jp": "支援者",
     "romaji": "Shiensha",
-    "description": "Backers, business associations, Kōenkai members"
+    "description": "Backers, business associations, Kōenkai members",
+    "initial_favorability_pct": 5.0
   },
   {
     "segment_id": "SG05",
     "name_en": "Bureaucrats",
     "name_jp": "官僚",
     "romaji": "Kanryō",
-    "description": "Ministry officials and committee staff"
+    "description": "Ministry officials and committee staff",
+    "initial_favorability_pct": 5.0
   }
 ]

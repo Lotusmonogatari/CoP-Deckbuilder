@@ -28,6 +28,11 @@ Thumbs.db
 # GUT writes its own temporary doubles and result files here.
 addons/gut/temp/
 
+# Claude Code agent worktree scaffolding -----------------------------------
+# Created locally when a background sub-agent runs in an isolated worktree;
+# never repo content.
+.claude/
+
 # The built web playtest page. It is generated from web/src/ and data/*.json
 # by tools/build_web_playtest.py, so it is reproducible rather than a source
 # file — and committing a 100 KB generated blob makes every data change look

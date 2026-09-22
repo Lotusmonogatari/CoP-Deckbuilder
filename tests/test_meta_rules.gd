@@ -91,8 +91,8 @@ func test_a_meta_variable_stays_inside_its_range() -> void:
 
 func test_winning_a_stage_applies_its_rewards() -> void:
 	var stage := TestFixtures.stage({
-		"win_delta_jiban": 1, "win_delta_kanban": 2,
-		"win_delta_kaban": 0, "win_delta_party_support": 3,
+		"win_delta_jiban": 1, "win_delta_reputation": 2,
+		"win_delta_yen": 0, "win_delta_party_support": 3,
 	})
 	var meta := {"Constituency support": 50, "Reputation": 50, "Funds": 30, "Party support": 50}
 
@@ -105,7 +105,7 @@ func test_winning_a_stage_applies_its_rewards() -> void:
 
 func test_the_original_values_are_left_alone() -> void:
 	var meta := {"Reputation": 50}
-	MetaRules.apply_win_deltas(meta, TestFixtures.stage({"win_delta_kanban": 2}), SANBAN)
+	MetaRules.apply_win_deltas(meta, TestFixtures.stage({"win_delta_reputation": 2}), SANBAN)
 	assert_eq(meta["Reputation"], 50, "the caller's dictionary was not modified")
 
 
@@ -113,7 +113,7 @@ func test_a_reward_reports_what_actually_landed() -> void:
 	# Reputation is already at 99 and the reward is 3, but the maximum is 100.
 	# The UI must say "+1", not "+3".
 	var meta := {"Reputation": 99}
-	var result := MetaRules.apply_win_deltas(meta, TestFixtures.stage({"win_delta_kanban": 3}), SANBAN)
+	var result := MetaRules.apply_win_deltas(meta, TestFixtures.stage({"win_delta_reputation": 3}), SANBAN)
 
 	assert_eq(result["meta"]["Reputation"], 100)
 	assert_eq(result["applied"]["Reputation"], 1, "only one point had anywhere to go")
@@ -121,7 +121,7 @@ func test_a_reward_reports_what_actually_landed() -> void:
 
 func test_a_penalty_is_applied_the_same_way() -> void:
 	# The Steering Committee stage's win row carries negative numbers.
-	var stage := TestFixtures.stage({"win_delta_kanban": -3, "win_delta_kaban": -20})
+	var stage := TestFixtures.stage({"win_delta_reputation": -3, "win_delta_yen": -20})
 	var meta := {"Reputation": 50, "Funds": 30}
 
 	var result := MetaRules.apply_win_deltas(meta, stage, SANBAN)
@@ -299,7 +299,7 @@ func test_a_win_and_a_score_both_move_the_same_variable() -> void:
 	# A stage can pay flat for being won AND again for the number it closed
 	# on. The player is owed the total, not whichever landed last.
 	var stage := {
-		"win_delta_kanban": 3,
+		"win_delta_reputation": 3,
 		"tone_effects": {"baseline": 50, "meta": {"Reputation": 5}},
 	}
 	var meta := {"Reputation": 50}
@@ -317,8 +317,8 @@ func test_a_stage_with_zero_deltas_moves_nothing() -> void:
 	# The state every playtest stage is in until Cameron fills the slots.
 	var meta := {"Reputation": 50, "Funds": 50}
 	var result := MetaRules.apply_win_deltas(meta, {
-		"win_delta_jiban": 0, "win_delta_kanban": 0,
-		"win_delta_kaban": 0, "win_delta_party_support": 0,
+		"win_delta_jiban": 0, "win_delta_reputation": 0,
+		"win_delta_yen": 0, "win_delta_party_support": 0,
 	}, DataDB.sanban)
 
 	assert_eq(result["applied"], {}, "nothing set, nothing claimed")

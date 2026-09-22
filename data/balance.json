@@ -7,31 +7,6 @@
   "starter_deck_size": 12,
   "primary_suit_share": 0.5,
   "secondary_suit_share": 0.3,
-  "0": 0,
-  "1": 0,
-  "2": 0,
-  "3": 0,
-  "bill_difficulty_factor": 0.2,
-  "yoron_neutral_point": 50,
-  "committee_share_of_members_opposed_at_start": 0.4,
-  "jiban_town_hall_trigger": 15,
-  "jiban_funding_freeze": 0,
-  "party_support_allied_buff": 75,
-  "party_support_debuff": 50,
-  "party_support_steering_committee": 25,
   "xp_tiers": {},
-  "committee_size_bands": {
-    "Easy": {
-      "min": 3,
-      "max": 5
-    },
-    "Normal": {
-      "min": 6,
-      "max": 7
-    },
-    "Hard": {
-      "min": 8,
-      "max": 10
-    }
-  }
+  "committee_size_bands": {}
 }

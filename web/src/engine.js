@@ -2034,7 +2034,10 @@ function describeEffect(modifier, bridge, words) {
     case 'starting_gaffe':
       return say('modifier.starting_gaffe', { count: magnitude });
     case 'kaban_per_stage_win':
-      return say('modifier.kaban_per_stage_win', { count: magnitude });
+      // Renamed 2026-09-22 alongside the GDScript build's ModifierEffects.gd;
+      // see that file's own note. The browser build's data pipeline has not
+      // otherwise been migrated to the new workbook schema in this pass.
+      return say('modifier.reputation_per_stage_win', { count: magnitude });
   }
   const prose = str(modifier.effect, '').trim();
   if (!prose) return '';

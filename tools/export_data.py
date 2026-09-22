@@ -116,8 +116,7 @@ SHEETS = {
             ("Suit (JP)", "suit_jp", "str"),
             ("Romaji", "romaji", "str"),
             ("Gloss", "gloss", "str"),
-            ("Play pattern", "play_pattern", "str"),
-            ("Cards in pool", "cards_in_pool", "int"),
+            ("Card Design Template", "card_design_template", "str"),
         ],
     },
     # Every line the game says to the player. Cameron's to reword; the code
@@ -263,12 +262,16 @@ SHEETS = {
         "out": "segments.json",
         "key": "segment_id",
         "id_pattern": r"^SG\d+$",
+        "optional": ["Initial Favorability %"],
         "columns": [
             ("Segment ID", "segment_id", "id"),
             ("Segment (EN)", "name_en", "str"),
             ("Segment (JP)", "name_jp", "str"),
             ("Romaji", "romaji", "str"),
             ("Description", "description", "str"),
+            # Stored 0-100 (a percent), not a 0-1 fraction like the "pct"
+            # columns elsewhere, since the workbook writes it as a whole number.
+            ("Initial Favorability %", "initial_favorability_pct", "num"),
         ],
     },
     "Stages": {
@@ -282,6 +285,9 @@ SHEETS = {
             ("Romaji", "romaji", "str"),
             ("Mode", "mode", "str"),
             ("Bar unit", "bar_unit", "str"),
+            # "Numerical" / "Members" etc — describes how the bar reads, not
+            # a starting value. Player/Opp start below carry the real numbers.
+            ("Bar value", "bar_value_kind", "str"),
             ("Bar max", "bar_max", "int"),
             ("Win threshold", "win_threshold", "int"),
             ("Win %", "win_pct", "num"),
@@ -292,18 +298,23 @@ SHEETS = {
             ("Player start", "player_start", "int"),
             ("Opp start", "opp_start", "int"),
             ("% Press", "pct_press", "pct"),
-            ("% Loyalists", "pct_loyalists", "pct"),
+            ("% Party Members", "pct_party_members", "pct"),
             ("% Constituents", "pct_constituents", "pct"),
             ("% Donors", "pct_donors", "pct"),
             ("% Bureaucrats", "pct_bureaucrats", "pct"),
+            ("% Other", "pct_other", "pct"),
             ("Segment check", "segment_check", "num"),
             ("Favored suit", "favored_suit", "str"),
             ("Win ΔJiban", "win_delta_jiban", "int"),
-            ("Win ΔKanban", "win_delta_kanban", "int"),
-            ("Win ΔKaban", "win_delta_kaban", "int"),
-            ("XP reward", "xp_reward", "int"),
-            ("Signature rule", "signature_rule", "str"),
+            ("Win ΔYen", "win_delta_yen", "int"),
+            ("Win ΔReputation", "win_delta_reputation", "int"),
+            ("Win ΔXP", "win_delta_xp", "int"),
             ("Win ΔParty support", "win_delta_party_support", "int"),
+            ("Loss ΔJiban", "loss_delta_jiban", "int"),
+            ("Loss ΔYen", "loss_delta_yen", "int"),
+            ("Loss ΔReputation", "loss_delta_reputation", "int"),
+            ("Loss ΔXP", "loss_delta_xp", "int"),
+            ("Loss ΔParty support", "loss_delta_party_support", "int"),
         ],
     },
     "Cards": {
@@ -349,18 +360,26 @@ SHEETS = {
         "id_pattern": r"^M\d+$",
         "columns": [
             ("Mod ID", "mod_id", "id"),
-            ("Category", "category", "str"),
-            ("Category (JP)", "category_jp", "str"),
             ("Name (EN)", "name_en", "str"),
             ("Name (JP)", "name_jp", "str"),
             ("Romaji", "romaji", "str"),
-            ("Trigger segment", "trigger_segment", "str"),
-            ("Trigger min %", "trigger_min_pct", "pct"),
+            # Holds an SGxx (Segments) or a BOxx (Boosters) ID — check the
+            # prefix before looking it up. Not every modifier has one.
+            ("Trigger segment or booster", "trigger_segment_or_booster", "str"),
+            # Written as a whole number (15 means 15%), unlike the Stages
+            # tab's "pct" columns — "num" here so the fraction warning
+            # doesn't fire on every row.
+            ("Trigger min %", "trigger_min_pct", "num"),
             ("Effect", "effect", "str"),
-            ("Magnitude", "magnitude", "num"),
-            ("Kaban cost", "kaban_cost", "int"),
-            ("Available to", "available_to", "str"),
-            ("Source booster", "source_booster", "str"),
+            ("Reputation cost to activate", "reputation_cost", "int"),
+            ("Jiban cost to activate", "jiban_cost", "int"),
+            ("Funds (Yen) cost to activate", "funds_cost", "int"),
+            # Effect is display-only prose (CLAUDE.md §6). Effect Type is the
+            # closed dispatch enum; read Target/Value per the type. See the
+            # Claude Code data guide, Part 2.1.
+            ("Effect Type", "effect_type", "str"),
+            ("Effect Target", "effect_target", "str"),
+            ("Effect Value", "effect_value", "num"),
         ],
     },
     "Boosters": {
@@ -373,47 +392,47 @@ SHEETS = {
             ("Organization (JP)", "name_jp", "str"),
             ("Romaji", "romaji", "str"),
             ("Tier", "tier", "str"),
-            ("Boosts", "boosts", "str"),
             ("Linked modifiers", "linked_modifiers", "list"),
-            ("Modifier count", "modifier_count", "int"),
         ],
     },
     "Opponents": {
         "out": "opponents.json",
         "key": "opp_id",
         "id_pattern": r"^OP\d+$",
-        "optional": ["Intent pattern"],
         "columns": [
             ("Opp ID", "opp_id", "id"),
             ("Name", "name", "str"),
+            ("Title", "title", "str"),
+            ("Gender", "gender", "str"),
             ("Party", "party", "str"),
-            ("Committee", "committee", "str"),
-            ("Positioning", "positioning", "str"),
-            ("Element 1", "element_1", "str"),
-            ("Element 2", "element_2", "str"),
-            ("Primary suit", "primary_suit_jp", "str"),
-            ("Secondary suit", "secondary_suit_jp", "str"),
-            ("Deck size", "deck_size", "int"),
-            ("Primary cards", "primary_cards", "int"),
-            ("Secondary cards", "secondary_cards", "int"),
-            ("Other cards", "other_cards", "int"),
-            ("Loadout mods", "loadout_mods", "list"),
-            ("Source", "source", "str"),
-            # Not in the workbook yet. Until an "Intent pattern" column
-            # lands there, the patterns come from data/intent_patterns.json,
-            # a hand-written bridge the exporter never touches.
-            #
-            # The old "AI style" column is deliberately NOT exported any
-            # more: Cameron dropped the prose on 2026-09-21 in favour of
-            # rebuilding opponent character from the numbers. It may stay in
-            # the workbook; nothing reads it.
-            ("Intent pattern", "intent_pattern", "json"),
+            ("Party Acronym", "party_acronym", "str"),
+            ("Affiliation", "affiliation", "str"),
+            # "; "-separated STxx list — an opponent can appear in several
+            # stages. A committee stage's roster is every opponent whose
+            # Stage list names that STxx (Cameron, 2026-09-22); there is no
+            # separate committee roster tab any more.
+            ("Stage", "stages", "stage_list"),
+            ("Suit 1", "suit_1", "str"),
+            ("Suit 2", "suit_2", "str"),
+            ("Suit 3", "suit_3", "str"),
+            # Range-strings: "min-max" rolls between them, a bare number is
+            # both min and max, and "0" is the hard sentinel "never uses
+            # this move" (not a move that always rolls zero). See the data
+            # guide, Part 2.3.
+            ("Intent Pattern Range for Attack", "intent_attack_range", "range"),
+            ("Intent Pattern Range for Gain", "intent_gain_range", "range"),
+            ("Intent Pattern Range for Block", "intent_block_range", "range"),
         ],
     },
+    # Not in this workbook pull (2026-09-22) — the tab has been dropped from
+    # the current tab list, not merged elsewhere. Marked optional so its
+    # absence is a note, not an export-blocking error; data/yoron.json is
+    # simply left as it was on the last run that had this tab.
     "Yoron": {
         "out": "yoron.json",
         "key": "topic_id",
         "id_pattern": r"^Y\d+$",
+        "optional_sheet": True,
         "columns": [
             ("Topic ID", "topic_id", "id"),
             ("Topic (databook dimension)", "name_en", "str"),
@@ -423,10 +442,12 @@ SHEETS = {
             ("Note", "note", "str"),
         ],
     },
+    # Not in this workbook pull either (2026-09-22) — see the Yoron note above.
     "Bills": {
         "out": "bills.json",
         "key": "bill_id",
         "id_pattern": r"^B\d+$",
+        "optional_sheet": True,
         "columns": [
             ("Bill ID", "bill_id", "id"),
             ("Title [placeholder]", "title", "str"),
@@ -439,43 +460,101 @@ SHEETS = {
             ("Note", "note", "str"),
         ],
     },
-    "Committee": {
-        "out": "committee.json",
-        "key": None,  # keyed by module + seq, not a single ID
-        "id_pattern": r"^MOD\d+$",
+    # Levels replace what used to be called "Modules" — Cameron's term for a
+    # sequence of linked stages is now "Level" throughout (2026-09-22);
+    # "module" survives only as a description of how a level is built, not
+    # as data. There's no separate Committee tab any more either: a
+    # committee-stage roster is read off the Opponents tab instead (every
+    # opponent whose Stage list names that STxx).
+    # 2026-09-22: Cameron confirmed the workbook's 30-row LV01-30 table is now
+    # the real level data. His old hand-written levels.json (LV01-06, nested
+    # stage/opponent objects) was a draft and has been retired — this tab now
+    # writes straight to data/levels.json.
+    "Levels": {
+        "out": "levels.json",
+        "key": "level_id",
+        "id_pattern": r"^LV\d+$",
         "columns": [
-            ("Module", "module", "id"),
-            ("Seq", "seq", "int"),
-            ("Member", "member", "str"),
-            ("Party", "party", "str"),
-            ("Positioning", "positioning", "str"),
-            ("Element 1", "element_1", "str"),
-            ("Element 2", "element_2", "str"),
-            ("Starting stance [proposed]", "starting_stance", "str"),
-            ("Primary suit", "primary_suit_jp", "str"),
-            ("Source", "source", "str"),
+            ("Level ID", "level_id", "id"),
+            ("Level Description", "description", "str"),
+            ("Cooldown Period  (# of other levels to play before this level is available to play again)",
+             "cooldown", "int"),
+            ("Level Tier", "tier", "int"),
+            ("Cost in XP to Unlock if Policy Research Assistant is Vacant", "unlock_cost_vacant", "int"),
+            ("Cost in XP to Unlock if Policy Research Assistant is Tier 0", "unlock_cost_tier_0", "int"),
+            ("Cost in XP to Unlock if Policy Research Assistant is Tier 1", "unlock_cost_tier_1", "int"),
+            ("Cost in XP to Unlock if Policy Research Assistant is Tier 2", "unlock_cost_tier_2", "int"),
+            ("Stage ID for Part 1", "stage_1", "str"),
+            ("Stage ID for Part 2", "stage_2", "str"),
+            ("Stage ID for Part 3", "stage_3", "str"),
+            ("Stage ID for Part 4", "stage_4", "str"),
+            ("Stage ID for Part 5", "stage_5", "str"),
+            ("Stage ID for Part 6", "stage_6", "str"),
+            ("Stage ID for Part 7", "stage_7", "str"),
+            ("Stage ID for Part 8", "stage_8", "str"),
+            ("Stage ID for Part 9", "stage_9", "str"),
+            ("Stage ID for Part 10", "stage_10", "str"),
+            ("Bonus  Win Range ΔJiban", "bonus_win_range_jiban", "range"),
+            ("Bonus  Win Range ΔYen", "bonus_win_range_yen", "range"),
+            ("Bonus  Win Range ΔReputation", "bonus_win_range_reputation", "range"),
+            ("Bonus  Win Range ΔXP", "bonus_win_range_xp", "range"),
+            ("Bonus  Win Range ΔParty support", "bonus_win_range_party_support", "range"),
+            ("Win ΔBO01", "win_delta_bo01", "range"),
+            ("Win ΔBO02", "win_delta_bo02", "range"),
+            ("Win ΔBO03", "win_delta_bo03", "range"),
+            ("Win ΔBO04", "win_delta_bo04", "range"),
+            ("Win ΔBO05", "win_delta_bo05", "range"),
+            ("Win ΔBO06", "win_delta_bo06", "range"),
+            ("Win ΔBO07", "win_delta_bo07", "range"),
+            ("Win ΔBO08", "win_delta_bo08", "range"),
+            ("Win ΔBO09", "win_delta_bo09", "range"),
+            ("Win ΔBO10", "win_delta_bo10", "range"),
+            ("Win ΔBO11", "win_delta_bo11", "range"),
+            ("Win ΔBO12", "win_delta_bo12", "range"),
+            ("Win ΔBO13", "win_delta_bo13", "range"),
+            ("Win ΔBO14", "win_delta_bo14", "range"),
+            ("Win ΔBO15", "win_delta_bo15", "range"),
+            ("Win ΔBO16", "win_delta_bo16", "range"),
         ],
     },
-    "Modules": {
-        "out": "modules.json",
-        "key": None,  # keyed by module + seq
-        "id_pattern": r"^MOD\d+$",
+    # 3 roles (Policy Research Assistant, Media Spokesperson, District
+    # Representative) x 7 starting/upgrade tier configs each. The Reward
+    # columns are free text ("+2 for BO05; +2 for SG01", or "N/A") — parsed
+    # into a list of {delta, target} at export time, per the data guide §2.5.
+    "Staff": {
+        "out": "staff.json",
+        "key": "staff_id",
+        "id_pattern": r"^SF\d+$",
         "columns": [
-            ("Module", "module", "id"),
-            ("Seq", "seq", "int"),
-            ("Stage ID", "stage_id", "str"),
-            ("Stage", "stage_name", "str"),
-            ("Mode", "mode", "str"),
-            ("Opp ID", "opp_id", "str"),
-            ("Opponent", "opponent_name", "str"),
-            ("Bill ID", "bill_id", "str"),
-            ("Opp start support", "opp_start_support", "int"),
-            ("Win threshold", "win_threshold", "int"),
-            ("XP reward", "xp_reward", "int"),
-            ("Note", "note", "str"),
-            ("Difficulty", "difficulty", "str"),
-            ("Committee size", "committee_size", "int"),
-            ("Size in band?", "size_in_band", "str"),
+            ("Staff ID", "staff_id", "id"),
+            ("Staff Role", "role", "str"),
+            ("Name", "name", "str"),
+            ("Starting Tier for Staff Role", "starting_tier", "int"),
+            ("Highest Upgradable Tier for Staff Role", "highest_tier", "int"),
+            ("Hiring Cost from Funds (Yen)", "hiring_cost_yen", "int"),
+            ("Cost to Upgrade from Tier 0 to Tier 1 from Funds (Yen)", "upgrade_cost_0_to_1_yen", "int"),
+            ("Cost to Upgrade from Tier 1 to Tier 2 from Funds (Yen)", "upgrade_cost_1_to_2_yen", "int"),
+            ("Staff Role Tier 0 Reward", "tier_0_reward", "reward_list"),
+            ("Staff Role Tier 1 Reward", "tier_1_reward", "reward_list"),
+            ("Staff Role Tier 2 Reward", "tier_2_reward", "reward_list"),
+        ],
+    },
+    # Bonus Condition 1/2 are free text in three shapes (a staff-tier gate,
+    # an unlock gate, a stacking-buff rule) plus literal "N/A" — not a fixed
+    # grammar like the reward/range fields, so they export as-is (data guide
+    # §2.6). Classifying them is engine work, not exporter work.
+    "Shop": {
+        "out": "shop.json",
+        "key": "item_id",
+        "id_pattern": r"^SH\d+$",
+        "columns": [
+            ("Item ID", "item_id", "id"),
+            ("Item Name", "name", "str"),
+            ("Description", "description", "str"),
+            ("Purchase Cost from XP", "cost_xp", "int"),
+            ("Purchase Cost from Funds (Yen)", "cost_yen", "int"),
+            ("Bonus Condition 1", "bonus_condition_1", "str"),
+            ("Bonus Condition 2", "bonus_condition_2", "str"),
         ],
     },
     "Visitors": {
@@ -507,6 +586,8 @@ SHEETS = {
             ("Note", "note", "str"),
         ],
     },
+    # "Fed by" and the Critical tier are gone from this tab — the 4 Sanban
+    # variables now carry only one consequence threshold on each side.
     "Sanban": {
         "out": "sanban.json",
         "key": "variable",
@@ -520,11 +601,8 @@ SHEETS = {
             ("Max", "max", "int"),
             ("Low threshold", "low_threshold", "int"),
             ("Low consequence", "low_consequence", "str"),
-            ("High threshold", "high_threshold", "int"),
+            ("HighThreshold", "high_threshold", "int"),
             ("High consequence", "high_consequence", "str"),
-            ("Fed by", "fed_by", "str"),
-            ("Critical threshold", "critical_threshold", "int"),
-            ("Critical consequence", "critical_consequence", "str"),
         ],
     },
 }
@@ -606,6 +684,44 @@ def coerce(value, kind, where, report):
     if kind == "list":
         # "M03, M04" -> ["M03", "M04"]
         return [part.strip() for part in text.split(",") if part.strip()]
+
+    if kind == "stage_list":
+        # "ST10; ST01; ST02; ST06" -> ["ST10", "ST01", "ST02", "ST06"]
+        return [part.strip() for part in text.split(";") if part.strip()]
+
+    if kind == "range":
+        # The range-string convention shared by Levels and Opponents (data
+        # guide §2.3): "min-max" rolls between them, a bare number is both
+        # min and max, and a bare "0" is the hard sentinel "never happens" —
+        # not a roll that always comes out zero — so it exports as null,
+        # the same as N/A.
+        stripped = text.rstrip("%").strip()
+        if stripped == "0":
+            return None
+        match = re.match(r"^(-?\d+)\s*-\s*(-?\d+)$", stripped)
+        if match:
+            return {"min": int(match.group(1)), "max": int(match.group(2))}
+        try:
+            value = int(round(float(stripped)))
+        except ValueError:
+            report.error(where, f"is not a range, a number, or '0' ({text!r})")
+            return None
+        return {"min": value, "max": value}
+
+    if kind == "reward_list":
+        # "+2 for BO05; +2 for SG01" -> [{"delta": 2, "target": "BO05"}, ...]
+        # (data guide §2.5). "N/A" is already None by the time we get here.
+        rewards = []
+        for clause in text.split(";"):
+            clause = clause.strip()
+            if not clause:
+                continue
+            match = re.match(r"^([+-]?\d+)\s+for\s+(\S+)$", clause, re.IGNORECASE)
+            if not match:
+                report.error(where, f"reward clause {clause!r} doesn't match '+N for <ID>'")
+                continue
+            rewards.append({"delta": int(match.group(1)), "target": match.group(2)})
+        return rewards
 
     if kind == "json":
         try:
@@ -812,13 +928,20 @@ def validate(data, report):
     suits = ids_from(data["suits"], "element")
     stage_ids = ids_from(data["stages"], "stage_id")
     segment_names = {r["name_en"] for r in data["segments"] if r.get("name_en")}
+    segment_ids = ids_from(data["segments"], "segment_id")
     card_ids = ids_from(data["cards"], "card_id")
     mod_ids = ids_from(data["modifiers"], "mod_id")
     booster_ids = ids_from(data["boosters"], "booster_id")
     opp_ids = ids_from(data["opponents"], "opp_id")
-    topic_ids = ids_from(data["yoron"], "topic_id")
-    bill_ids = ids_from(data["bills"], "bill_id")
-    module_ids = {r["module"] for r in data["modules"] if r.get("module")}
+    # Yoron and Bills weren't in this workbook pull (2026-09-22); validating
+    # against them is skipped rather than erroring, and the existing
+    # yoron.json/bills.json on disk are left untouched by main().
+    topic_ids = ids_from(data.get("yoron", []), "topic_id")
+    bill_ids = ids_from(data.get("bills", []), "bill_id")
+    level_ids = ids_from(data["levels"], "level_id")
+    staff_ids = ids_from(data["staff"], "staff_id")
+    # The Balance tab's XP-tier sub-table is gone from this workbook pull, so
+    # this is always empty for now, and the card-tier check below is skipped.
     tier_names = set(data["balance"].get("xp_tiers", {}).keys())
     lists = data.get("lists", {})
 
@@ -826,7 +949,8 @@ def validate(data, report):
     for name, key in [
         ("cards", "card_id"), ("stages", "stage_id"), ("segments", "segment_id"),
         ("modifiers", "mod_id"), ("boosters", "booster_id"), ("opponents", "opp_id"),
-        ("yoron", "topic_id"), ("bills", "bill_id"), ("suits", "element"),
+        ("suits", "element"), ("levels", "level_id"), ("staff", "staff_id"),
+        ("shop", "item_id"),
     ]:
         seen = set()
         for record in data[name]:
@@ -882,7 +1006,9 @@ def validate(data, report):
             report.error("stages", f"{sid} favours '{stage['favored_suit']}', which is not a suit")
 
         mix = stage["segment_mix"]
-        total = sum(v for v in mix.values() if v is not None)
+        # "% Other" isn't a segment (no matching Segments row), but it's
+        # still part of the audience and belongs in the 100% check.
+        total = sum(v for v in mix.values() if v is not None) + (stage.get("pct_other") or 0)
         if mix and abs(total - 1.0) > 0.001:
             report.error(
                 "stages",
@@ -902,28 +1028,56 @@ def validate(data, report):
                     )
 
     # --- modifiers ---------------------------------------------------------
+    valid_effect_types = {
+        "RESOURCE_BONUS_ON_WIN", "STAGE_START_BONUS", "HAND_SIZE_BONUS",
+        "GAFFE_LIMIT_BONUS", "UNLOCK_DISCOUNT",
+    }
     for mod in data["modifiers"]:
         mid = mod["mod_id"]
-        if mod["trigger_segment"] and mod["trigger_segment"] not in segment_names:
-            report.error(
-                "modifiers",
-                f"{mid} triggers on segment '{mod['trigger_segment']}', "
-                "which is not in the Segments tab",
-            )
-        if mod["source_booster"] and mod["source_booster"] not in booster_ids:
-            # Opponent-only debuffs and meta-driven modifiers have no booster.
-            if not mod["source_booster"].startswith("Party support"):
+        trigger = mod["trigger_segment_or_booster"]
+        if trigger:
+            if trigger.startswith("SG") and trigger not in segment_ids:
                 report.error(
                     "modifiers",
-                    f"{mid} names source booster '{mod['source_booster']}', "
-                    "which is not in the Boosters tab",
+                    f"{mid} triggers on segment '{trigger}', which is not in the Segments tab",
                 )
-        if mod["trigger_min_pct"] is None and mod["trigger_segment"]:
+            elif trigger.startswith("BO") and trigger not in booster_ids:
+                report.error(
+                    "modifiers",
+                    f"{mid} triggers on booster '{trigger}', which is not in the Boosters tab",
+                )
+            elif not trigger.startswith("SG") and not trigger.startswith("BO"):
+                report.error(
+                    "modifiers",
+                    f"{mid} has trigger '{trigger}', which is neither an SGxx segment "
+                    "nor a BOxx booster ID",
+                )
+        if mod["trigger_min_pct"] is None and trigger:
             report.warn(
                 "modifiers",
-                f"{mid} names a trigger segment but no trigger min % — "
+                f"{mid} names a trigger but no trigger min % — "
                 "treated as always active once its other condition is met",
             )
+        if mod["effect_type"] and mod["effect_type"] not in valid_effect_types:
+            report.error(
+                "modifiers",
+                f"{mid} has Effect Type '{mod['effect_type']}', which is not one of "
+                f"{sorted(valid_effect_types)} (data guide §2.1)",
+            )
+        if mod["effect_type"] in ("STAGE_START_BONUS", "HAND_SIZE_BONUS", "GAFFE_LIMIT_BONUS"):
+            if mod["effect_target"] not in stage_ids:
+                report.error(
+                    "modifiers",
+                    f"{mid} ({mod['effect_type']}) targets '{mod['effect_target']}', "
+                    "which is not a stage in the Stages tab",
+                )
+        if mod["effect_type"] == "RESOURCE_BONUS_ON_WIN":
+            if mod["effect_target"] not in ("XP", "Yen", "Jiban", "PartySupport"):
+                report.error(
+                    "modifiers",
+                    f"{mid} (RESOURCE_BONUS_ON_WIN) targets '{mod['effect_target']}', "
+                    "which is not one of XP/Yen/Jiban/PartySupport",
+                )
 
     # --- boosters ----------------------------------------------------------
     for booster in data["boosters"]:
@@ -934,51 +1088,43 @@ def validate(data, report):
                     f"{booster['booster_id']} links modifier '{mod_id}', "
                     "which is not in the Modifiers tab",
                 )
-        linked = len(booster["linked_modifiers"] or [])
-        if booster["modifier_count"] is not None and booster["modifier_count"] != linked:
-            report.error(
-                "boosters",
-                f"{booster['booster_id']} says it has {booster['modifier_count']} "
-                f"modifiers but lists {linked}",
-            )
 
-    # --- opponents ---------------------------------------------------------
+    # --- opponents -----------------------------------------------------------
     for opp in data["opponents"]:
         oid = opp["opp_id"]
-        for field in ("element_1", "element_2"):
+        for field in ("suit_1", "suit_2", "suit_3"):
             if opp[field] and opp[field] not in suits:
                 report.error("opponents", f"{oid} has {field} '{opp[field]}', which is not a suit")
-        for mod_id in opp["loadout_mods"] or []:
-            if mod_id not in mod_ids:
-                report.error("opponents", f"{oid} loads modifier '{mod_id}', which does not exist")
-        if opp["intent_pattern"] is None:
-            report.warn(
-                "opponents",
-                f"{oid} has no intent pattern of their own, so they fall back to the "
-                "shared default in rules.json and play generically. Proposed patterns "
-                "for every opponent are in design/proposals/.",
-            )
+        for stage_id in opp["stages"] or []:
+            if stage_id not in stage_ids:
+                report.error(
+                    "opponents",
+                    f"{oid} is listed for stage '{stage_id}', which is not in the Stages tab",
+                )
+        if not opp["stages"]:
+            report.warn("opponents", f"{oid} has no Stage listed, so they never appear in a level")
 
-    # --- bills -------------------------------------------------------------
-    for bill in data["bills"]:
-        if bill["topic_id"] not in topic_ids:
-            report.error(
-                "bills",
-                f"{bill['bill_id']} uses topic '{bill['topic_id']}', "
-                "which is not in the Yoron tab",
-            )
-        if bill["direction"] not in (1, -1):
-            report.error(
-                "bills",
-                f"{bill['bill_id']} has direction {bill['direction']}; it must be +1 or -1",
-            )
+    # --- bills (skipped entirely if Bills/Yoron weren't in this pull) ------
+    if "bills" in data:
+        for bill in data["bills"]:
+            if topic_ids and bill["topic_id"] not in topic_ids:
+                report.error(
+                    "bills",
+                    f"{bill['bill_id']} uses topic '{bill['topic_id']}', "
+                    "which is not in the Yoron tab",
+                )
+            if bill["direction"] not in (1, -1):
+                report.error(
+                    "bills",
+                    f"{bill['bill_id']} has direction {bill['direction']}; it must be +1 or -1",
+                )
 
-    # --- visitors ----------------------------------------------------------
+    # --- visitors ------------------------------------------------------------
     for visitor in data.get("visitors", []):
         vid = visitor["visitor_id"]
         for side in ("a", "b"):
             topic = visitor.get(f"choice_{side}_yoron_topic")
-            if topic and topic not in topic_ids:
+            if topic and topic_ids and topic not in topic_ids:
                 report.error(
                     "visitors",
                     f"{vid} choice {side.upper()} moves topic '{topic}', "
@@ -990,60 +1136,46 @@ def validate(data, report):
                 f"{vid} names segment '{visitor['segment']}', which is not in the Segments tab",
             )
 
-    # --- modules -----------------------------------------------------------
-    seen_sequence = set()
-    for row in data["modules"]:
-        label = f"{row['module']} step {row['seq']}"
-        if (row["module"], row["seq"]) in seen_sequence:
-            report.error("modules", f"{label} appears more than once")
-        seen_sequence.add((row["module"], row["seq"]))
+    # --- levels --------------------------------------------------------------
+    booster_delta_keys = [f"win_delta_bo{n:02d}" for n in range(1, 17)]
+    for level in data["levels"]:
+        lid = level["level_id"]
+        stage_slots = [level[f"stage_{n}"] for n in range(1, 11) if level.get(f"stage_{n}")]
+        if not stage_slots:
+            report.error("levels", f"{lid} names no stages at all")
+        for slot in stage_slots:
+            if slot not in stage_ids:
+                report.error("levels", f"{lid} uses stage '{slot}', which does not exist")
+        for key in booster_delta_keys:
+            bo_id = "BO" + key[-2:]
+            if level.get(key) is not None and bo_id not in booster_ids:
+                report.error("levels", f"{lid} has a '{key}' column, but {bo_id} is not in the Boosters tab")
 
-        if row["stage_id"] not in stage_ids:
-            report.error("modules", f"{label} uses stage '{row['stage_id']}', which does not exist")
-        if row["opp_id"] and row["opp_id"] not in opp_ids:
-            report.error("modules", f"{label} names opponent '{row['opp_id']}', who does not exist")
-        if row["bill_id"] and row["bill_id"] not in bill_ids:
-            report.error("modules", f"{label} uses bill '{row['bill_id']}', which does not exist")
-        if row["mode"] == "Combat" and not row["opp_id"]:
-            report.error("modules", f"{label} is a combat stage with no opponent")
-
-        # Committee stages need members, and the size must sit in the band
-        # the difficulty promises.
-        if row["stage_id"] == "ST01":
-            members = [m for m in data["committee"]
-                       if m["module"] == row["module"] and m["seq"] == row["seq"]]
-            if not members:
-                report.error("modules", f"{label} is a committee stage with no members listed")
-            elif row["committee_size"] is not None and len(members) != row["committee_size"]:
-                report.error(
-                    "modules",
-                    f"{label} says committee size {row['committee_size']} "
-                    f"but the Committee tab lists {len(members)} members",
-                )
-            band = data["balance"]["committee_size_bands"].get(row["difficulty"])
-            if band and row["committee_size"] is not None:
-                if not (band["min"] <= row["committee_size"] <= band["max"]):
+    # --- staff ---------------------------------------------------------------
+    for member in data["staff"]:
+        sfid = member["staff_id"]
+        for tier_key in ("tier_0_reward", "tier_1_reward", "tier_2_reward"):
+            for reward in member.get(tier_key) or []:
+                target = reward["target"]
+                if target.startswith("BO") and target not in booster_ids:
                     report.error(
-                        "modules",
-                        f"{label} has {row['committee_size']} members, outside the "
-                        f"{row['difficulty']} band of {band['min']}-{band['max']}",
+                        "staff", f"{sfid} {tier_key} rewards booster '{target}', which does not exist",
+                    )
+                elif target.startswith("SG") and target not in segment_ids:
+                    report.error(
+                        "staff", f"{sfid} {tier_key} rewards segment '{target}', which does not exist",
+                    )
+                elif not target.startswith("BO") and not target.startswith("SG"):
+                    report.error(
+                        "staff",
+                        f"{sfid} {tier_key} rewards '{target}', which is neither a BOxx "
+                        "booster nor an SGxx segment",
                     )
 
-    # --- committee ---------------------------------------------------------
-    stances = set(lists.get("stance", []))
-    for member in data["committee"]:
-        label = f"{member['module']} step {member['seq']}, {member['member']}"
-        if member["module"] not in module_ids:
-            report.error("committee", f"{label} belongs to module '{member['module']}', which does not exist")
-        if stances and member["starting_stance"] not in stances:
-            report.error(
-                "committee",
-                f"{label} has stance '{member['starting_stance']}', "
-                f"which is not one of {sorted(stances)}",
-            )
-        for field in ("element_1", "element_2"):
-            if member[field] and member[field] not in suits:
-                report.error("committee", f"{label} has {field} '{member[field]}', which is not a suit")
+    # --- shop ------------------------------------------------------------------
+    for item in data["shop"]:
+        if item["cost_xp"] is None and item["cost_yen"] is None:
+            report.warn("shop", f"{item['item_id']} has no XP or Yen cost set")
 
     # --- sanban ------------------------------------------------------------
     for variable in data["sanban"]:
@@ -1059,9 +1191,10 @@ def validate(data, report):
 
     # --- design placeholders ----------------------------------------------
     neutral = data["balance"].get("yoron_neutral_point")
-    if neutral is not None:
-        flat = [t["topic_id"] for t in data["yoron"] if t["start_value"] == neutral]
-        if len(flat) == len(data["yoron"]) and data["yoron"]:
+    yoron = data.get("yoron", [])
+    if neutral is not None and yoron:
+        flat = [t["topic_id"] for t in yoron if t["start_value"] == neutral]
+        if len(flat) == len(yoron):
             report.warn(
                 "yoron",
                 f"every topic still starts at the neutral value ({neutral:g}), so every "
@@ -1395,11 +1528,14 @@ def check_wording_snapshot(data, report, accept=False):
 def add_segment_ids(data, report):
     by_name = {r["name_en"]: r["segment_id"] for r in data["segments"] if r.get("name_en")}
 
-    # Stages: turn the five "% Press"-style columns into one keyed object.
+    # Stages: turn the "% Press"-style columns into one keyed object. "%
+    # Other" has no matching Segments row — it's the audience share outside
+    # the 5 tracked segments, so it stays a plain field on the stage rather
+    # than joining the mix.
     for stage in data["stages"]:
         mix = {}
         for name, segment_id in by_name.items():
-            column = f"pct_{name.lower()}"
+            column = f"pct_{slugify(name)}"
             if column in stage:
                 if stage[column] is not None:
                     mix[segment_id] = stage.pop(column)
@@ -1407,14 +1543,54 @@ def add_segment_ids(data, report):
                     stage.pop(column)
         stage["segment_mix"] = mix
 
-    # Modifiers: keep the readable name, add the ID next to it.
+    # Modifiers: "Trigger segment or booster" already holds an SGxx or a
+    # BOxx ID directly, so split it by prefix rather than resolving a name.
     for mod in data["modifiers"]:
-        mod["trigger_segment_id"] = by_name.get(mod["trigger_segment"])
+        trigger = mod.get("trigger_segment_or_booster")
+        mod["trigger_segment_id"] = trigger if trigger and trigger.startswith("SG") else None
+        mod["trigger_booster_id"] = trigger if trigger and trigger.startswith("BO") else None
 
     # Cards: same, with "Any" meaning no particular segment.
     for card in data["cards"]:
         segment = card.get("target_segment")
         card["target_segment_id"] = None if segment in (None, "Any") else by_name.get(segment)
+
+
+def apply_staff_names(data, report):
+    """Fill in blank Staff names from the hand-written data/staff_names.json.
+
+    The workbook's Name column is empty for all 21 Staff rows today (see
+    data/staff_names.json's _README). The workbook always wins: a row whose
+    Name cell is non-blank is left exactly as read. A row that is still blank
+    is filled from the fallback file and NOTEd, not warned about — this is
+    expected until Cameron types names into the workbook, not a gap.
+    """
+    staff = data.get("staff")
+    if not staff:
+        return
+
+    names_path = DATA_DIR / "staff_names.json"
+    if not names_path.exists():
+        report.warn("staff", "data/staff_names.json is missing — every blank Name stays blank")
+        return
+
+    fallback = json.loads(names_path.read_text(encoding="utf-8")).get("names", {})
+    used_fallback = []
+    for member in staff:
+        if is_null(member.get("name")):
+            sfid = member["staff_id"]
+            if sfid in fallback:
+                member["name"] = fallback[sfid]
+                used_fallback.append(sfid)
+            else:
+                report.warn("staff", f"{sfid} has no Name in the workbook and no "
+                            "fallback in data/staff_names.json")
+    if used_fallback:
+        report.note(
+            f"staff: {len(used_fallback)} name(s) came from data/staff_names.json "
+            f"(the workbook's own Name column is still blank for these): "
+            f"{', '.join(used_fallback)}",
+        )
 
 
 def reshape_affinity(rows):
@@ -1456,8 +1632,14 @@ def main():
     for tab in sorted(present - expected):
         report.warn("workbook", f"tab '{tab}' is not recognised and was not exported")
     for tab in sorted(expected - present):
-        if SHEETS.get(tab, {}).get("optional_sheet"):
-            report.note(f"{tab}: tab not in the workbook yet — see design/proposals/")
+        if SHEETS.get(tab, {}).get("optional_sheet") or tab in NOT_EXPORTED:
+            # NOT_EXPORTED tabs were never required to exist — only skipped
+            # when they do.
+            report.note(f"{tab}: tab not in the workbook — see design/proposals/")
+        elif tab == "Lists":
+            # Dropped from the workbook (2026-09-22). Every validation check
+            # that used it already degrades to "skipped" without it.
+            report.note("Lists: tab not in the workbook — checks that used it were skipped")
         else:
             report.error("workbook", f"tab '{tab}' is missing from the workbook")
 
@@ -1507,6 +1689,7 @@ def main():
         data["rules"] = {}
 
     add_segment_ids(data, report)
+    apply_staff_names(data, report)
     fold_questions(data, report)
     validate(data, report)
     check_text_keys(data, report)

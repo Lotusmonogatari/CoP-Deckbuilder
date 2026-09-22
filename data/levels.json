@@ -1,897 +1,1949 @@
-{
- "_README": [
-  "The six levels of Cameron's 2026-09-21 Levels Design Scheme.",
-  "",
-  "WRITTEN BY HAND. export_data.py never overwrites it.",
-  "",
-  "A stage names a TYPE from stage_types.json and overrides only what it",
-  "wants to differ - who is opposite, which questions are asked, what it",
-  "carries in from earlier. Everything else comes from the type, so the",
-  "shape of a press conference lives in one place rather than six.",
-  "",
-  "Tier 0 levels are free and available from the start. Tier 1 and 2 are",
-  "bought with XP in the finished game; while Cameron prices the economy",
-  "by playtest they are simply all available.",
-  "",
-  "The opponents, constituents and questions are PLACEHOLDERS with neutral",
-  "names, per CLAUDE.md: no canon character is invented here.",
-  "",
-  "pleases_on_win lists the organisations a finished level pleases, which",
-  "is the bonus reward in the design scheme.",
-  "",
-  "2026-09-21: the twelve stages that asked questions used to carry their",
-  "own four to six, written as placeholders and repeated verbatim between",
-  "levels. They now carry questions_count instead and draw that many from",
-  "the pool for their stage type in data/questions.json, which is Cameron's",
-  "own writing from the workbook. Each stage asks exactly as many as it did",
-  "before, so no stage got longer or shorter; only the text changed. The old",
-  "placeholder questions are in git if any is wanted back."
- ],
- "levels": [
+[
   {
-   "level_id": "LV01",
-   "tier": 0,
-   "name_en": "Committee Hearing",
-   "name_jp": "委員会審査",
-   "_blurb": "A study session, then the committee itself.",
-   "win_text": "You convinced Parliament and your bill was adopted.",
-   "loss_text": "The bill failed. There will be questions.",
-   "stages": [
-    {
-     "seq": 1,
-     "type": "policy_study",
-     "questions_count": 4
+    "level_id": "LV01",
+    "description": "Talking with Constituents",
+    "cooldown": 2,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST05",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": {
+      "min": 0,
+      "max": 1
     },
-    {
-     "seq": 2,
-     "type": "committee_debate",
-     "opponents": [
-      {
-       "opp_id": "PT_A",
-       "name": "Committee Member A",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         6
-        ],
-        [
-         "gain",
-         1,
-         6
-        ],
-        [
-         "block",
-         0,
-         2
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_B",
-       "name": "Committee Member B",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         4
-        ],
-        [
-         "gain",
-         0,
-         1
-        ],
-        [
-         "block",
-         3,
-         5
-        ]
-       ]
-      }
-     ]
-    }
-   ]
+    "win_delta_bo04": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo05": null,
+    "win_delta_bo06": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
   },
   {
-   "level_id": "LV02",
-   "tier": 0,
-   "name_en": "Bill on the Floor",
-   "name_jp": "本会議上程",
-   "_blurb": "The chamber, then the cameras waiting outside it.",
-   "win_text": "You convinced Parliament and your bill was adopted.",
-   "loss_text": "The bill failed. There will be questions.",
-   "stages": [
-    {
-     "seq": 1,
-     "type": "floor_debate",
-     "opponents": [
-      {
-       "opp_id": "PT_F1",
-       "name": "Opponent 1",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         5
-        ],
-        [
-         "gain",
-         0,
-         2
-        ],
-        [
-         "block",
-         0
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F2",
-       "name": "Opponent 2",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         3
-        ],
-        [
-         "gain",
-         3,
-         5
-        ],
-        [
-         "block",
-         4
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F3",
-       "name": "Opponent 3",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         6
-        ],
-        [
-         "gain",
-         1,
-         6
-        ],
-        [
-         "block",
-         0,
-         2
-        ]
-       ]
-      }
-     ]
-    },
-    {
-     "seq": 2,
-     "type": "press_conference",
-     "questions_count": 5,
-     "carries_buffs_from": [
-      1
-     ]
-    }
-   ]
+    "level_id": "LV02",
+    "description": "Meeting Lobbyists",
+    "cooldown": 1,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST20",
+    "stage_2": "ST19",
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
   },
   {
-   "level_id": "LV03",
-   "tier": 0,
-   "name_en": "Media Marathon",
-   "name_jp": "報道漬け",
-   "_blurb": "A conference and a studio, back to back.",
-   "_win_text_note": "FOR CAMERON. This level is not about a bill, so it has no sign-off line yet. Write one into win_text and loss_text below and it appears on the last stage's result panel. Left empty, the game names the level instead rather than claiming Parliament adopted something.",
-   "win_text": "",
-   "loss_text": "",
-   "stages": [
-    {
-     "seq": 1,
-     "type": "press_conference",
-     "questions_count": 4
+    "level_id": "LV03",
+    "description": "Policy Listening and Study",
+    "cooldown": 3,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST05",
+    "stage_2": "ST20",
+    "stage_3": "ST21",
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": {
+      "min": 0,
+      "max": 1
     },
-    {
-     "seq": 2,
-     "type": "tv_debate",
-     "opponents": [
-      {
-       "opp_id": "PT_TV",
-       "name": "Studio Opponent",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         5
-        ],
-        [
-         "gain",
-         0,
-         2
-        ],
-        [
-         "block",
-         0
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      1
-     ]
-    }
-   ]
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
   },
   {
-   "level_id": "LV04",
-   "tier": 1,
-   "name_en": "Policy Research Circuit",
-   "name_jp": "政策行脚",
-   "_blurb": "Five rooms in a day, and the last one is the ambush.",
-   "_win_text_note": "FOR CAMERON. This level is not about a bill, so it has no sign-off line yet. Write one into win_text and loss_text below and it appears on the last stage's result panel. Left empty, the game names the level instead rather than claiming Parliament adopted something.",
-   "win_text": "",
-   "loss_text": "",
-   "pleases_on_win": [
-    "BO03",
-    "BO06",
-    "BO05"
-   ],
-   "stages": [
-    {
-     "seq": 1,
-     "type": "policy_study",
-     "questions_count": 6
+    "level_id": "LV04",
+    "description": "Hearing at the Committee on the Environment",
+    "cooldown": 3,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST03",
+    "stage_2": "ST04",
+    "stage_3": "ST10",
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 3
     },
-    {
-     "seq": 2,
-     "type": "town_hall",
-     "opponents": [
-      {
-       "opp_id": "PT_C1",
-       "name": "A farmer",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         3
-        ],
-        [
-         "gain",
-         3,
-         5
-        ],
-        [
-         "block",
-         4
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_C2",
-       "name": "A shopkeeper",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         6
-        ],
-        [
-         "gain",
-         1,
-         6
-        ],
-        [
-         "block",
-         0,
-         2
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_C3",
-       "name": "A retired teacher",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         4
-        ],
-        [
-         "gain",
-         0,
-         1
-        ],
-        [
-         "block",
-         3,
-         5
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      1
-     ]
+    "bonus_win_range_yen": {
+      "min": 0,
+      "max": 1100
     },
-    {
-     "seq": 3,
-     "type": "media_ambush",
-     "questions_count": 4,
-     "carries_buffs_from": [
-      2
-     ]
+    "bonus_win_range_reputation": {
+      "min": 0,
+      "max": 5
     },
-    {
-     "seq": 4,
-     "type": "lobbyist_meeting",
-     "questions_count": 4,
-     "carries_buffs_from": [
-      3
-     ]
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": {
+      "min": 0,
+      "max": 1
     },
-    {
-     "seq": 5,
-     "type": "policy_study",
-     "questions_count": 4,
-     "carries_buffs_from": [
-      4
-     ]
-    }
-   ]
+    "win_delta_bo04": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo05": null,
+    "win_delta_bo06": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
   },
   {
-   "level_id": "LV05",
-   "tier": 1,
-   "name_en": "Party Bill Advocacy",
-   "name_jp": "党内調整",
-   "_blurb": "Win the party first, then the country.",
-   "win_text": "You convinced Parliament and your bill was adopted.",
-   "loss_text": "The bill failed. There will be questions.",
-   "pleases_on_win": [
-    "BO01",
-    "BO02"
-   ],
-   "stages": [
-    {
-     "seq": 1,
-     "type": "party_caucus",
-     "opponents": [
-      {
-       "opp_id": "PT_PANEL",
-       "name": "The Caucus Panel",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         0,
-         6
-        ],
-        [
-         "gain",
-         2,
-         4
-        ],
-        [
-         "block",
-         1,
-         3
-        ]
-       ]
-      }
-     ]
+    "level_id": "LV05",
+    "description": "Media Rounds",
+    "cooldown": 5,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST04",
+    "stage_2": "ST06",
+    "stage_3": "ST03",
+    "stage_4": "ST05",
+    "stage_5": "ST19",
+    "stage_6": "ST06",
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": {
+      "min": 0,
+      "max": 5000
     },
-    {
-     "seq": 2,
-     "type": "tv_debate",
-     "opponents": [
-      {
-       "opp_id": "PT_TV",
-       "name": "Studio Opponent",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         5
-        ],
-        [
-         "gain",
-         0,
-         2
-        ],
-        [
-         "block",
-         0
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      1
-     ]
+    "bonus_win_range_reputation": {
+      "min": 2,
+      "max": 2
     },
-    {
-     "seq": 3,
-     "type": "press_conference",
-     "questions_count": 5,
-     "carries_buffs_from": [
-      2
-     ]
+    "bonus_win_range_xp": {
+      "min": 25,
+      "max": 25
     },
-    {
-     "seq": 4,
-     "type": "floor_debate",
-     "opponents": [
-      {
-       "opp_id": "PT_F1",
-       "name": "Opponent 1",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         5
-        ],
-        [
-         "gain",
-         0,
-         2
-        ],
-        [
-         "block",
-         0
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F2",
-       "name": "Opponent 2",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         3
-        ],
-        [
-         "gain",
-         3,
-         5
-        ],
-        [
-         "block",
-         4
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F3",
-       "name": "Opponent 3",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         6
-        ],
-        [
-         "gain",
-         1,
-         6
-        ],
-        [
-         "block",
-         0,
-         2
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F4",
-       "name": "Opponent 4",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         4
-        ],
-        [
-         "gain",
-         0,
-         1
-        ],
-        [
-         "block",
-         3,
-         5
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      1,
-      2,
-      3
-     ]
-    }
-   ]
+    "bonus_win_range_party_support": {
+      "min": 0,
+      "max": 3
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo03": {
+      "min": 0,
+      "max": 5
+    },
+    "win_delta_bo04": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo05": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo06": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo07": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo08": {
+      "min": 2,
+      "max": 7
+    },
+    "win_delta_bo09": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo10": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
   },
   {
-   "level_id": "LV06",
-   "tier": 2,
-   "name_en": "Sponsored Fisheries Bill Gauntlet",
-   "name_jp": "漁業法案の関門",
-   "_blurb": "Nine rooms. Everything the game has, in order.",
-   "win_text": "You convinced Parliament and your bill was adopted.",
-   "loss_text": "The bill failed. There will be questions.",
-   "pleases_on_win": [
-    "BO07",
-    "BO07",
-    "BO07",
-    "BO01",
-    "BO03"
-   ],
-   "stages": [
-    {
-     "seq": 1,
-     "type": "policy_study",
-     "questions_count": 6
+    "level_id": "LV06",
+    "description": "Providing the Party Agricultural Policy Support",
+    "cooldown": 7,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST03",
+    "stage_2": "ST04",
+    "stage_3": "ST20",
+    "stage_4": "ST21",
+    "stage_5": "ST03",
+    "stage_6": "ST13",
+    "stage_7": "ST02",
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 3
     },
-    {
-     "seq": 2,
-     "type": "press_conference",
-     "questions_count": 5,
-     "carries_buffs_from": [
-      1
-     ]
+    "bonus_win_range_yen": {
+      "min": 0,
+      "max": 22000
     },
-    {
-     "seq": 3,
-     "type": "lobbyist_meeting",
-     "questions_count": 4,
-     "carries_buffs_from": [
-      2
-     ]
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": {
+      "min": 5,
+      "max": 5
     },
-    {
-     "seq": 4,
-     "type": "town_hall",
-     "opponents": [
-      {
-       "opp_id": "PT_C1",
-       "name": "A fisher",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         3
-        ],
-        [
-         "gain",
-         3,
-         5
-        ],
-        [
-         "block",
-         4
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_C2",
-       "name": "A co-op delegate",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         6
-        ],
-        [
-         "gain",
-         1,
-         6
-        ],
-        [
-         "block",
-         0,
-         2
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_C3",
-       "name": "A harbour master",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         4
-        ],
-        [
-         "gain",
-         0,
-         1
-        ],
-        [
-         "block",
-         3,
-         5
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      3
-     ]
+    "bonus_win_range_party_support": {
+      "min": 2,
+      "max": 10
     },
-    {
-     "seq": 5,
-     "type": "committee_debate",
-     "opponents": [
-      {
-       "opp_id": "PT_A",
-       "name": "Committee Member A",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         6
-        ],
-        [
-         "gain",
-         1,
-         6
-        ],
-        [
-         "block",
-         0,
-         2
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_B",
-       "name": "Committee Member B",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         4
-        ],
-        [
-         "gain",
-         0,
-         1
-        ],
-        [
-         "block",
-         3,
-         5
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_C",
-       "name": "Committee Member C",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         0,
-         6
-        ],
-        [
-         "gain",
-         2,
-         4
-        ],
-        [
-         "block",
-         1,
-         3
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      4
-     ]
+    "win_delta_bo01": {
+      "min": 0,
+      "max": 3
     },
-    {
-     "seq": 6,
-     "type": "party_caucus",
-     "opponents": [
-      {
-       "opp_id": "PT_PANEL",
-       "name": "The Caucus Panel",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         0,
-         6
-        ],
-        [
-         "gain",
-         2,
-         4
-        ],
-        [
-         "block",
-         1,
-         3
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      5
-     ]
+    "win_delta_bo02": {
+      "min": 0,
+      "max": 3
     },
-    {
-     "seq": 7,
-     "type": "media_ambush",
-     "questions_count": 4,
-     "carries_buffs_from": [
-      6
-     ]
+    "win_delta_bo03": {
+      "min": 0,
+      "max": 1
     },
-    {
-     "seq": 8,
-     "type": "tv_debate",
-     "opponents": [
-      {
-       "opp_id": "PT_TV",
-       "name": "Studio Opponent",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         5
-        ],
-        [
-         "gain",
-         0,
-         2
-        ],
-        [
-         "block",
-         0
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      7
-     ]
+    "win_delta_bo04": {
+      "min": 0,
+      "max": 1
     },
-    {
-     "seq": 9,
-     "type": "floor_debate",
-     "opponents": [
-      {
-       "opp_id": "PT_F1",
-       "name": "Opponent 1",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         5
-        ],
-        [
-         "gain",
-         0,
-         2
-        ],
-        [
-         "block",
-         0
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F2",
-       "name": "Opponent 2",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         3
-        ],
-        [
-         "gain",
-         3,
-         5
-        ],
-        [
-         "block",
-         4
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F3",
-       "name": "Opponent 3",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         1,
-         6
-        ],
-        [
-         "gain",
-         1,
-         6
-        ],
-        [
-         "block",
-         0,
-         2
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F4",
-       "name": "Opponent 4",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         4
-        ],
-        [
-         "gain",
-         0,
-         1
-        ],
-        [
-         "block",
-         3,
-         5
-        ]
-       ]
-      },
-      {
-       "opp_id": "PT_F5",
-       "name": "Opponent 5",
-       "party": "Placeholder",
-       "intent_pattern": [
-        [
-         "attack",
-         0,
-         6
-        ],
-        [
-         "gain",
-         2,
-         4
-        ],
-        [
-         "block",
-         1,
-         3
-        ]
-       ]
-      }
-     ],
-     "carries_buffs_from": [
-      2,
-      3,
-      6,
-      8
-     ]
+    "win_delta_bo05": null,
+    "win_delta_bo06": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo07": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo08": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo09": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo10": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV07",
+    "description": "Providing the Party Infrastructure Policy Support",
+    "cooldown": 10,
+    "tier": 0,
+    "unlock_cost_vacant": 25,
+    "unlock_cost_tier_0": 20,
+    "unlock_cost_tier_1": 10,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST20",
+    "stage_2": "ST21",
+    "stage_3": "ST03",
+    "stage_4": "ST06",
+    "stage_5": "ST15",
+    "stage_6": "ST02",
+    "stage_7": "ST19",
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 2
+    },
+    "bonus_win_range_yen": {
+      "min": 0,
+      "max": 25000
+    },
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": {
+      "min": 5,
+      "max": 5
+    },
+    "bonus_win_range_party_support": {
+      "min": 3,
+      "max": 12
+    },
+    "win_delta_bo01": {
+      "min": 0,
+      "max": 3
+    },
+    "win_delta_bo02": {
+      "min": 0,
+      "max": 3
+    },
+    "win_delta_bo03": null,
+    "win_delta_bo04": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo05": {
+      "min": 0,
+      "max": 3
+    },
+    "win_delta_bo06": null,
+    "win_delta_bo07": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo08": null,
+    "win_delta_bo09": {
+      "min": 0,
+      "max": 6
+    },
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV08",
+    "description": "Fighting on the Floor for the Party",
+    "cooldown": 15,
+    "tier": 0,
+    "unlock_cost_vacant": 50,
+    "unlock_cost_tier_0": 25,
+    "unlock_cost_tier_1": 15,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST04",
+    "stage_2": "ST02",
+    "stage_3": "ST04",
+    "stage_4": "ST02",
+    "stage_5": "ST19",
+    "stage_6": "ST02",
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": {
+      "min": 3000,
+      "max": 19000
+    },
+    "bonus_win_range_reputation": {
+      "min": 7,
+      "max": 7
+    },
+    "bonus_win_range_xp": {
+      "min": 15,
+      "max": 15
+    },
+    "bonus_win_range_party_support": {
+      "min": 10,
+      "max": 17
+    },
+    "win_delta_bo01": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo02": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo08": {
+      "min": 0,
+      "max": 4
+    },
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV09",
+    "description": "Filling in at Committees",
+    "cooldown": 15,
+    "tier": 0,
+    "unlock_cost_vacant": 50,
+    "unlock_cost_tier_0": 25,
+    "unlock_cost_tier_1": 15,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST01",
+    "stage_2": "ST10",
+    "stage_3": "ST21",
+    "stage_4": "ST17",
+    "stage_5": "ST01",
+    "stage_6": "ST14",
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": {
+      "min": 0,
+      "max": 22000
+    },
+    "bonus_win_range_reputation": {
+      "min": 3,
+      "max": 3
+    },
+    "bonus_win_range_xp": {
+      "min": 10,
+      "max": 10
+    },
+    "bonus_win_range_party_support": {
+      "min": 10,
+      "max": 22
+    },
+    "win_delta_bo01": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo02": {
+      "min": 1,
+      "max": 5
+    },
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV10",
+    "description": "Advacing a Bill to Protect Hometown Markets",
+    "cooldown": 20,
+    "tier": 0,
+    "unlock_cost_vacant": 50,
+    "unlock_cost_tier_0": 25,
+    "unlock_cost_tier_1": 15,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST05",
+    "stage_2": "ST04",
+    "stage_3": "ST05",
+    "stage_4": "ST21",
+    "stage_5": "ST20",
+    "stage_6": "ST21",
+    "stage_7": "ST01",
+    "stage_8": "ST06",
+    "stage_9": "ST15",
+    "stage_10": "ST02",
+    "bonus_win_range_jiban": {
+      "min": 4,
+      "max": 16
+    },
+    "bonus_win_range_yen": {
+      "min": 5000,
+      "max": 25000
+    },
+    "bonus_win_range_reputation": {
+      "min": 6,
+      "max": 12
+    },
+    "bonus_win_range_xp": {
+      "min": 55,
+      "max": 95
+    },
+    "bonus_win_range_party_support": {
+      "min": 2,
+      "max": 6
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": {
+      "min": 5,
+      "max": 9
+    },
+    "win_delta_bo04": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo05": {
+      "min": 0,
+      "max": 4
+    },
+    "win_delta_bo06": {
+      "min": 1,
+      "max": 4
+    },
+    "win_delta_bo07": {
+      "min": 3,
+      "max": 6
+    },
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": {
+      "min": 2,
+      "max": 8
+    },
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV11",
+    "description": "Meeting with Student Organizers",
+    "cooldown": 5,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST07",
+    "stage_2": "ST05",
+    "stage_3": "ST21",
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 1
+    },
+    "bonus_win_range_yen": {
+      "min": 3000,
+      "max": 12000
+    },
+    "bonus_win_range_reputation": {
+      "min": 1,
+      "max": 2
+    },
+    "bonus_win_range_xp": {
+      "min": 15,
+      "max": 30
+    },
+    "bonus_win_range_party_support": {
+      "min": 1,
+      "max": 4
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV12",
+    "description": "Family Outreach Tour",
+    "cooldown": 6,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST07",
+    "stage_2": "ST05",
+    "stage_3": "ST10",
+    "stage_4": "ST15",
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 2
+    },
+    "bonus_win_range_yen": {
+      "min": 5000,
+      "max": 15000
+    },
+    "bonus_win_range_reputation": {
+      "min": 1,
+      "max": 3
+    },
+    "bonus_win_range_xp": {
+      "min": 20,
+      "max": 35
+    },
+    "bonus_win_range_party_support": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": {
+      "min": 1,
+      "max": 2
+    },
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV13",
+    "description": "Backing the Local Artisans",
+    "cooldown": 6,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST20",
+    "stage_2": "ST02",
+    "stage_3": "ST16",
+    "stage_4": "ST15",
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 2
+    },
+    "bonus_win_range_yen": {
+      "min": 5000,
+      "max": 18000
+    },
+    "bonus_win_range_reputation": {
+      "min": 1,
+      "max": 3
+    },
+    "bonus_win_range_xp": {
+      "min": 20,
+      "max": 35
+    },
+    "bonus_win_range_party_support": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": {
+      "min": 1,
+      "max": 2
+    },
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV14",
+    "description": "Fixing the Daily Commute",
+    "cooldown": 8,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST07",
+    "stage_2": "ST20",
+    "stage_3": "ST15",
+    "stage_4": "ST17",
+    "stage_5": "ST02",
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 2
+    },
+    "bonus_win_range_yen": {
+      "min": 6000,
+      "max": 20000
+    },
+    "bonus_win_range_reputation": {
+      "min": 1,
+      "max": 3
+    },
+    "bonus_win_range_xp": {
+      "min": 25,
+      "max": 40
+    },
+    "bonus_win_range_party_support": {
+      "min": 2,
+      "max": 6
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": {
+      "min": 1,
+      "max": 2
+    },
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV15",
+    "description": "Courting the Traditionalist Wing",
+    "cooldown": 10,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST03",
+    "stage_2": "ST06",
+    "stage_3": "ST14",
+    "stage_4": "ST18",
+    "stage_5": "ST04",
+    "stage_6": "ST02",
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 1,
+      "max": 3
+    },
+    "bonus_win_range_yen": {
+      "min": 8000,
+      "max": 22000
+    },
+    "bonus_win_range_reputation": {
+      "min": 2,
+      "max": 4
+    },
+    "bonus_win_range_xp": {
+      "min": 25,
+      "max": 45
+    },
+    "bonus_win_range_party_support": {
+      "min": 3,
+      "max": 7
+    },
+    "win_delta_bo01": {
+      "min": 1,
+      "max": 2
+    },
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV16",
+    "description": "Running with the Reform Caucus",
+    "cooldown": 12,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST04",
+    "stage_2": "ST06",
+    "stage_3": "ST12",
+    "stage_4": "ST16",
+    "stage_5": "ST17",
+    "stage_6": "ST21",
+    "stage_7": "ST19",
+    "stage_8": "ST02",
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 1,
+      "max": 3
+    },
+    "bonus_win_range_yen": {
+      "min": 10000,
+      "max": 25000
+    },
+    "bonus_win_range_reputation": {
+      "min": 2,
+      "max": 5
+    },
+    "bonus_win_range_xp": {
+      "min": 30,
+      "max": 55
+    },
+    "bonus_win_range_party_support": {
+      "min": 3,
+      "max": 8
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": {
+      "min": 1,
+      "max": 2
+    },
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": {
+      "min": 2,
+      "max": 4
     }
-   ]
+  },
+  {
+    "level_id": "LV17",
+    "description": "Building the Next-Generation Coalition",
+    "cooldown": 14,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST07",
+    "stage_2": "ST05",
+    "stage_3": "ST21",
+    "stage_4": "ST05",
+    "stage_5": "ST10",
+    "stage_6": "ST15",
+    "stage_7": "ST04",
+    "stage_8": "ST19",
+    "stage_9": "ST02",
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 1,
+      "max": 4
+    },
+    "bonus_win_range_yen": {
+      "min": 12000,
+      "max": 28000
+    },
+    "bonus_win_range_reputation": {
+      "min": 2,
+      "max": 5
+    },
+    "bonus_win_range_xp": {
+      "min": 35,
+      "max": 60
+    },
+    "bonus_win_range_party_support": {
+      "min": 4,
+      "max": 9
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo12": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV18",
+    "description": "Uniting Main Street and Transit Riders",
+    "cooldown": 15,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST20",
+    "stage_2": "ST02",
+    "stage_3": "ST16",
+    "stage_4": "ST15",
+    "stage_5": "ST17",
+    "stage_6": "ST20",
+    "stage_7": "ST02",
+    "stage_8": "ST19",
+    "stage_9": "ST04",
+    "stage_10": "ST02",
+    "bonus_win_range_jiban": {
+      "min": 2,
+      "max": 4
+    },
+    "bonus_win_range_yen": {
+      "min": 15000,
+      "max": 30000
+    },
+    "bonus_win_range_reputation": {
+      "min": 3,
+      "max": 6
+    },
+    "bonus_win_range_xp": {
+      "min": 40,
+      "max": 65
+    },
+    "bonus_win_range_party_support": {
+      "min": 5,
+      "max": 10
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo05": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo14": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV19",
+    "description": "Bridging Old Guard and New Wave",
+    "cooldown": 15,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST03",
+    "stage_2": "ST06",
+    "stage_3": "ST18",
+    "stage_4": "ST14",
+    "stage_5": "ST04",
+    "stage_6": "ST12",
+    "stage_7": "ST16",
+    "stage_8": "ST17",
+    "stage_9": "ST21",
+    "stage_10": "ST02",
+    "bonus_win_range_jiban": {
+      "min": 2,
+      "max": 4
+    },
+    "bonus_win_range_yen": {
+      "min": 15000,
+      "max": 30000
+    },
+    "bonus_win_range_reputation": {
+      "min": 3,
+      "max": 6
+    },
+    "bonus_win_range_xp": {
+      "min": 40,
+      "max": 65
+    },
+    "bonus_win_range_party_support": {
+      "min": 5,
+      "max": 10
+    },
+    "win_delta_bo01": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo16": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "level_id": "LV20",
+    "description": "Rallying Youth and Labor",
+    "cooldown": 10,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST21",
+    "stage_2": "ST08",
+    "stage_3": "ST03",
+    "stage_4": "ST02",
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 2,
+      "max": 5
+    },
+    "bonus_win_range_yen": {
+      "min": 15000,
+      "max": 35000
+    },
+    "bonus_win_range_reputation": {
+      "min": 3,
+      "max": 7
+    },
+    "bonus_win_range_xp": {
+      "min": 40,
+      "max": 70
+    },
+    "bonus_win_range_party_support": {
+      "min": 5,
+      "max": 10
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo10": null,
+    "win_delta_bo11": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV21",
+    "description": "The Neighborhood Family Compact",
+    "cooldown": 12,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST05",
+    "stage_2": "ST10",
+    "stage_3": "ST15",
+    "stage_4": "ST08",
+    "stage_5": "ST02",
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 2,
+      "max": 5
+    },
+    "bonus_win_range_yen": {
+      "min": 18000,
+      "max": 38000
+    },
+    "bonus_win_range_reputation": {
+      "min": 3,
+      "max": 7
+    },
+    "bonus_win_range_xp": {
+      "min": 45,
+      "max": 75
+    },
+    "bonus_win_range_party_support": {
+      "min": 6,
+      "max": 11
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV22",
+    "description": "The Small Business Coalition",
+    "cooldown": 15,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST20",
+    "stage_2": "ST02",
+    "stage_3": "ST16",
+    "stage_4": "ST04",
+    "stage_5": "ST06",
+    "stage_6": "ST15",
+    "stage_7": "ST02",
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 3,
+      "max": 6
+    },
+    "bonus_win_range_yen": {
+      "min": 20000,
+      "max": 42000
+    },
+    "bonus_win_range_reputation": {
+      "min": 4,
+      "max": 8
+    },
+    "bonus_win_range_xp": {
+      "min": 50,
+      "max": 85
+    },
+    "bonus_win_range_party_support": {
+      "min": 7,
+      "max": 13
+    },
+    "win_delta_bo01": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV23",
+    "description": "The Metro Infrastructure Push",
+    "cooldown": 20,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST07",
+    "stage_2": "ST20",
+    "stage_3": "ST17",
+    "stage_4": "ST15",
+    "stage_5": "ST02",
+    "stage_6": "ST04",
+    "stage_7": "ST19",
+    "stage_8": "ST08",
+    "stage_9": "ST16",
+    "stage_10": "ST02",
+    "bonus_win_range_jiban": {
+      "min": 4,
+      "max": 8
+    },
+    "bonus_win_range_yen": {
+      "min": 25000,
+      "max": 55000
+    },
+    "bonus_win_range_reputation": {
+      "min": 5,
+      "max": 10
+    },
+    "bonus_win_range_xp": {
+      "min": 60,
+      "max": 100
+    },
+    "bonus_win_range_party_support": {
+      "min": 8,
+      "max": 16
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo05": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": {
+      "min": 3,
+      "max": 6
+    },
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV24",
+    "description": "Guarding the Old Order",
+    "cooldown": 20,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST03",
+    "stage_2": "ST08",
+    "stage_3": "ST18",
+    "stage_4": "ST14",
+    "stage_5": "ST06",
+    "stage_6": "ST04",
+    "stage_7": "ST11",
+    "stage_8": "ST02",
+    "stage_9": "ST19",
+    "stage_10": "ST02",
+    "bonus_win_range_jiban": {
+      "min": 4,
+      "max": 8
+    },
+    "bonus_win_range_yen": {
+      "min": 25000,
+      "max": 55000
+    },
+    "bonus_win_range_reputation": {
+      "min": 5,
+      "max": 10
+    },
+    "bonus_win_range_xp": {
+      "min": 60,
+      "max": 100
+    },
+    "bonus_win_range_party_support": {
+      "min": 8,
+      "max": 16
+    },
+    "win_delta_bo01": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo02": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": {
+      "min": 3,
+      "max": 6
+    },
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV25",
+    "description": "Riding the Reform Wave",
+    "cooldown": 20,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST04",
+    "stage_2": "ST06",
+    "stage_3": "ST19",
+    "stage_4": "ST12",
+    "stage_5": "ST16",
+    "stage_6": "ST17",
+    "stage_7": "ST21",
+    "stage_8": "ST02",
+    "stage_9": "ST08",
+    "stage_10": "ST18",
+    "bonus_win_range_jiban": {
+      "min": 4,
+      "max": 8
+    },
+    "bonus_win_range_yen": {
+      "min": 25000,
+      "max": 55000
+    },
+    "bonus_win_range_reputation": {
+      "min": 5,
+      "max": 10
+    },
+    "bonus_win_range_xp": {
+      "min": 60,
+      "max": 100
+    },
+    "bonus_win_range_party_support": {
+      "min": 8,
+      "max": 16
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo09": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": {
+      "min": 3,
+      "max": 6
+    }
+  },
+  {
+    "level_id": "LV26",
+    "description": "Coalition Building 101",
+    "cooldown": 5,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST07",
+    "stage_2": "ST05",
+    "stage_3": "ST20",
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 1
+    },
+    "bonus_win_range_yen": {
+      "min": 2000,
+      "max": 10000
+    },
+    "bonus_win_range_reputation": {
+      "min": 1,
+      "max": 2
+    },
+    "bonus_win_range_xp": {
+      "min": 15,
+      "max": 25
+    },
+    "bonus_win_range_party_support": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo12": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo13": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo14": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo15": {
+      "min": 0,
+      "max": 1
+    },
+    "win_delta_bo16": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "level_id": "LV27",
+    "description": "Rural Youth Initiative",
+    "cooldown": 13,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST07",
+    "stage_2": "ST21",
+    "stage_3": "ST13",
+    "stage_4": "ST10",
+    "stage_5": "ST05",
+    "stage_6": "ST02",
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 2,
+      "max": 5
+    },
+    "bonus_win_range_yen": {
+      "min": 18000,
+      "max": 38000
+    },
+    "bonus_win_range_reputation": {
+      "min": 3,
+      "max": 7
+    },
+    "bonus_win_range_xp": {
+      "min": 45,
+      "max": 75
+    },
+    "bonus_win_range_party_support": {
+      "min": 6,
+      "max": 11
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo11": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV28",
+    "description": "Kōenkai Family Ties",
+    "cooldown": 15,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST05",
+    "stage_2": "ST07",
+    "stage_3": "ST10",
+    "stage_4": "ST15",
+    "stage_5": "ST03",
+    "stage_6": "ST08",
+    "stage_7": "ST02",
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 3,
+      "max": 6
+    },
+    "bonus_win_range_yen": {
+      "min": 20000,
+      "max": 42000
+    },
+    "bonus_win_range_reputation": {
+      "min": 4,
+      "max": 8
+    },
+    "bonus_win_range_xp": {
+      "min": 50,
+      "max": 85
+    },
+    "bonus_win_range_party_support": {
+      "min": 7,
+      "max": 13
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": {
+      "min": 2,
+      "max": 4
+    },
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": {
+      "min": 2,
+      "max": 5
+    },
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV29",
+    "description": "The Main Street Infrastructure Bill",
+    "cooldown": 17,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST20",
+    "stage_2": "ST02",
+    "stage_3": "ST16",
+    "stage_4": "ST15",
+    "stage_5": "ST17",
+    "stage_6": "ST04",
+    "stage_7": "ST19",
+    "stage_8": "ST18",
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 3,
+      "max": 7
+    },
+    "bonus_win_range_yen": {
+      "min": 22000,
+      "max": 48000
+    },
+    "bonus_win_range_reputation": {
+      "min": 4,
+      "max": 9
+    },
+    "bonus_win_range_xp": {
+      "min": 55,
+      "max": 90
+    },
+    "bonus_win_range_party_support": {
+      "min": 7,
+      "max": 14
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo05": {
+      "min": 0,
+      "max": 2
+    },
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": {
+      "min": 3,
+      "max": 6
+    },
+    "win_delta_bo14": {
+      "min": 3,
+      "max": 6
+    },
+    "win_delta_bo15": null,
+    "win_delta_bo16": null
+  },
+  {
+    "level_id": "LV30",
+    "description": "The Grand Bargain",
+    "cooldown": 18,
+    "tier": 2,
+    "unlock_cost_vacant": 300,
+    "unlock_cost_tier_0": 250,
+    "unlock_cost_tier_1": 200,
+    "unlock_cost_tier_2": 100,
+    "stage_1": "ST03",
+    "stage_2": "ST18",
+    "stage_3": "ST06",
+    "stage_4": "ST04",
+    "stage_5": "ST12",
+    "stage_6": "ST16",
+    "stage_7": "ST17",
+    "stage_8": "ST08",
+    "stage_9": "ST02",
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 5,
+      "max": 10
+    },
+    "bonus_win_range_yen": {
+      "min": 40000,
+      "max": 80000
+    },
+    "bonus_win_range_reputation": {
+      "min": 8,
+      "max": 15
+    },
+    "bonus_win_range_xp": {
+      "min": 90,
+      "max": 150
+    },
+    "bonus_win_range_party_support": {
+      "min": 12,
+      "max": 25
+    },
+    "win_delta_bo01": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": {
+      "min": 1,
+      "max": 3
+    },
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": {
+      "min": 3,
+      "max": 6
+    },
+    "win_delta_bo16": {
+      "min": 3,
+      "max": 6
+    }
   }
- ]
-}
+]

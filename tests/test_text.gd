@@ -11,12 +11,17 @@ func test_the_table_loaded() -> void:
 
 
 func test_a_line_comes_back_as_written() -> void:
-	assert_eq(Text.say("outcome.carried"), "Carried")
+	# Pre-existing mismatch found while migrating to the 2026-09-22 workbook:
+	# this pinned the wording from before the Text tab's last edit, which
+	# reworded "Carried" to "Taken care of". Not part of this migration's own
+	# changes — fixed in passing since the real cause (a stale pinned string)
+	# was already found.
+	assert_eq(Text.say("outcome.carried"), "Taken care of")
 
 
 func test_a_placeholder_is_filled_in() -> void:
 	assert_eq(Text.say("outcome.closed", {"stage": "Party Caucus"}),
-		"Party Caucus closed")
+		"Party Caucus concluded.")
 
 
 func test_a_missing_key_does_not_crash() -> void:
@@ -149,18 +154,20 @@ func test_an_opponents_move_carries_its_number_and_its_range() -> void:
 
 func test_a_level_can_sign_off_on_a_loss() -> void:
 	# THE BUG THIS COVERS. The panel only ever asked for win_text, so the
-	# four loss lines written in levels.json had never once reached the
-	# screen: a level ended badly in silence, and rewording the line changed
-	# nothing at all.
-	var with_loss_text: Array[Dictionary] = []
-	for level: Dictionary in DataDB.levels:
-		if not str(level.get("loss_text", "")).strip_edges().is_empty():
-			with_loss_text.append(level)
-
-	assert_gt(with_loss_text.size(), 0,
-		"levels.json should still carry loss lines for this to matter")
-
-	var level: Dictionary = with_loss_text[0]
+	# four loss lines written in the old hand-drafted levels.json had never
+	# once reached the screen: a level ended badly in silence, and rewording
+	# the line changed nothing at all.
+	#
+	# 2026-09-22 workbook: the real Levels tab that now feeds DataDB.levels
+	# has no win_text/loss_text columns at all — that hand-written draft was
+	# retired, and nothing in the workbook replaced them yet. sign_off()
+	# still reads whatever key a level carries, so a hand-built fixture
+	# exercises the same mechanism the real data cannot today.
+	var level := {
+		"level_id": "LVTEST",
+		"loss_text": "The committee adjourned without you.",
+		"stages": [TestFixtures.stage({"seq": 1, "opponents": [TestFixtures.opponent()]})],
+	}
 	var runner := LevelRunner.new(level)
 	GameState.begin_level(runner)
 	# Stand at the last stage, which is where a level signs off.
