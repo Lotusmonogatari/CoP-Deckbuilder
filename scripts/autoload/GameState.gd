@@ -72,6 +72,23 @@ var booster_standing: Dictionary = {}
 ## What the last finished level did to those, e.g. { "BO08": 5 }.
 var last_booster_change: Dictionary = {}
 
+## Where the player stands with each of the 5 audience segments, by segment
+## ID (SG01-05). Starts at that segment's "Initial Favorability %" from
+## segments.json and is held between levels, the same way booster_standing
+## is. This is a DIFFERENT number from a card's "segment_share" (how much of
+## a STAGE's audience is a given segment — CardResolver.segment_share(),
+## static per-stage data) or a modifier's audience trigger (MetaRules.
+## active_modifiers(), same static per-stage data) — those two read
+## stages.json's segment_mix and are unrelated to this. This is the
+## PERSISTENT sentiment score Staff tier rewards move (Ledger.gd / Staff
+## section; a reward's SGxx target lands here).
+##
+## Lives only for this sitting until M4 adds saving, same as booster_standing.
+var segment_favorability: Dictionary = {}
+
+## What the last staff hire/upgrade did to those, e.g. { "SG03": 2 }.
+var last_segment_change: Dictionary = {}
+
 ## Who is hired into each of the three Staff roles, and at what tier:
 ## { "Policy Research Assistant": { "staff_id": "SF04", "tier": 1 }, ... }.
 ## A role with no entry is vacant. There is no "fire" — once a role is
@@ -86,6 +103,7 @@ var staff_hired: Dictionary = {}
 func _ready() -> void:
 	reset_meta()
 	reset_booster_standing()
+	reset_segment_favorability()
 
 
 ## Back to the starting standing in sanban.json.
@@ -220,35 +238,35 @@ func upgrade_staff(role: String) -> String:
 ##
 ## Each reward is {"delta": int, "target": "BOxx or SGxx"}. A BOxx target
 ## moves booster_standing exactly the way _apply_level_bonus_win()'s own
-## booster loop already does, below.
-##
-## SGxx TARGETS ARE SKIPPED, ON PURPOSE. There is nowhere in this game —
-## GameState or otherwise — that tracks a CURRENT, mutable favourability per
-## audience segment; segments.json is static reference data (names, starting
-## audience shares), not player state. Inventing a new tracked value here,
-## as a side effect of the Staff feature, would be a real new system and not
-## something this brief asked for. Flagged for Cameron rather than guessed
-## at; see the Recruitment shop's report. Only BOxx-targeted rewards apply.
+## booster loop already does; an SGxx target moves segment_favorability the
+## same way, clamped 0-100 (segments.json carries no min/max of its own, so
+## this uses the same default range booster_standing falls back to).
 func _apply_staff_reward(candidate: Dictionary, tier: int) -> void:
 	var rewards: Variant = candidate.get("tier_%d_reward" % tier)
 	if not (rewards is Array):
 		return
 
-	var low := int(DataDB.booster_standing.get("min", 0))
-	var high := int(DataDB.booster_standing.get("max", 100))
+	var booster_low := int(DataDB.booster_standing.get("min", 0))
+	var booster_high := int(DataDB.booster_standing.get("max", 100))
 	for reward: Variant in rewards:
 		if not (reward is Dictionary):
 			continue
 		var target := str((reward as Dictionary).get("target", ""))
 		var delta := int((reward as Dictionary).get("delta", 0))
-		if not target.begins_with("BO") or delta == 0:
-			continue   # SGxx target: see the note above
+		if delta == 0:
+			continue
 
-		var before := int(booster_standing.get(target, 50))
-		var after := clampi(before + delta, low, high)
-		booster_standing[target] = after
-		if after != before:
-			last_booster_change[target] = int(last_booster_change.get(target, 0)) + (after - before)
+		if target.begins_with("BO"):
+			var before := int(booster_standing.get(target, 50))
+			var after := clampi(before + delta, booster_low, booster_high)
+			booster_standing[target] = after
+			if after != before:
+				last_booster_change[target] = int(last_booster_change.get(target, 0)) + (after - before)
+		elif target.begins_with("SG"):
+			var before_fav := int(segment_favorability.get(target, 50))
+			var after_fav := clampi(before_fav + delta, 0, 100)
+			segment_favorability[target] = after_fav
+			last_segment_change[target] = after_fav - before_fav
 
 
 ## Replaces the deck, if the new one is legal.
@@ -269,6 +287,21 @@ func reset_booster_standing() -> void:
 	var start := int(DataDB.booster_standing.get("start", 50))
 	for booster: Dictionary in DataDB.boosters:
 		booster_standing[str(booster.get("booster_id"))] = start
+
+
+## Every segment back to its own "Initial Favorability %" from the workbook.
+## Unlike booster_standing, there's no hand-written config file for this —
+## the workbook already gives each segment its own starting number, so there
+## is nothing left for a config file to add. 50 is the fallback only for a
+## segment row that somehow has no value at all.
+func reset_segment_favorability() -> void:
+	segment_favorability = {}
+	last_segment_change = {}
+
+	for segment: Dictionary in DataDB.segments:
+		var segment_id := str(segment.get("segment_id"))
+		var start: Variant = segment.get("initial_favorability_pct")
+		segment_favorability[segment_id] = int(start) if start != null else 50
 
 
 ## Called by the Office when the player starts a level.

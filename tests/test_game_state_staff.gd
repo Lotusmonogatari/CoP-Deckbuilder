@@ -6,13 +6,15 @@ extends GutTest
 ##
 ## Uses the real data/staff.json rows by ID rather than a hand-built fixture,
 ## because the point under test — a BOxx reward moving booster_standing, an
-## SGxx reward being skipped — is exactly the shape those real rows carry
-## (see GameState._apply_staff_reward()'s own note on why SGxx is skipped).
+## SGxx reward moving segment_favorability — is exactly the shape those real
+## rows carry (see GameState._apply_staff_reward()).
 
 var _meta_before: Dictionary = {}
 var _staff_before: Dictionary = {}
 var _standing_before: Dictionary = {}
 var _change_before: Dictionary = {}
+var _favorability_before: Dictionary = {}
+var _segment_change_before: Dictionary = {}
 
 
 func before_each() -> void:
@@ -20,6 +22,8 @@ func before_each() -> void:
 	_staff_before = GameState.staff_hired.duplicate(true)
 	_standing_before = GameState.booster_standing.duplicate(true)
 	_change_before = GameState.last_booster_change.duplicate(true)
+	_favorability_before = GameState.segment_favorability.duplicate(true)
+	_segment_change_before = GameState.last_segment_change.duplicate(true)
 	GameState.staff_hired = {}
 
 
@@ -28,6 +32,8 @@ func after_each() -> void:
 	GameState.staff_hired = _staff_before.duplicate(true)
 	GameState.booster_standing = _standing_before.duplicate(true)
 	GameState.last_booster_change = _change_before.duplicate(true)
+	GameState.segment_favorability = _favorability_before.duplicate(true)
+	GameState.last_segment_change = _segment_change_before.duplicate(true)
 
 
 # ---------------------------------------------------------------------------
@@ -87,18 +93,29 @@ func test_hiring_applies_a_boxx_reward_to_booster_standing() -> void:
 	assert_eq(int(GameState.booster_standing.get("BO05")), before + 2)
 
 
-func test_an_sgxx_only_reward_moves_nothing_and_does_not_crash() -> void:
+func test_hiring_applies_an_sgxx_reward_to_segment_favorability() -> void:
 	# SF01's tier_0_reward is [{"delta": 1, "target": "SG03"}] — no BOxx at
-	# all. Nothing tracks a current segment favourability (see the note on
-	# GameState._apply_staff_reward), so this should simply do nothing.
+	# all, and should move segment_favorability without touching any booster.
 	var standing_before := GameState.booster_standing.duplicate(true)
+	var before := int(GameState.segment_favorability.get("SG03", 50))
 	GameState.meta["Funds"] = 999999
 
 	var refusal := GameState.hire_staff("SF01")
 
 	assert_eq(refusal, "")
+	assert_eq(int(GameState.segment_favorability.get("SG03")), before + 1)
+	assert_eq(int(GameState.last_segment_change.get("SG03")), 1)
 	assert_eq(GameState.booster_standing, standing_before,
 		"an SGxx-only reward touches no booster")
+
+
+func test_segment_favorability_clamps_at_100() -> void:
+	GameState.segment_favorability["SG03"] = 100
+	GameState.meta["Funds"] = 999999
+
+	GameState.hire_staff("SF01")   # +1 to SG03
+
+	assert_eq(int(GameState.segment_favorability.get("SG03")), 100, "clamped, not 101")
 
 
 # ---------------------------------------------------------------------------
@@ -134,3 +151,17 @@ func test_a_candidate_at_their_highest_tier_cannot_be_upgraded_further() -> void
 func test_upgrading_an_empty_role_is_refused() -> void:
 	var refusal := GameState.upgrade_staff("Media Spokesperson")
 	assert_ne(refusal, "")
+
+
+# ---------------------------------------------------------------------------
+# Segment favorability starts where segments.json says it should
+# ---------------------------------------------------------------------------
+
+func test_reset_seeds_segment_favorability_from_the_workbook() -> void:
+	GameState.reset_segment_favorability()
+
+	for segment: Dictionary in DataDB.segments:
+		var segment_id := str(segment.get("segment_id"))
+		var expected := int(segment.get("initial_favorability_pct", 50))
+		assert_eq(int(GameState.segment_favorability.get(segment_id)), expected,
+			"%s should start at its own Initial Favorability %%" % segment_id)
