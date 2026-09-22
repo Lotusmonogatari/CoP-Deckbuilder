@@ -441,8 +441,19 @@ func test_answering_every_question_ends_the_press_conference() -> void:
 			if engine.play_card(card_id).get("ok", false):
 				answered = true
 				break
-		if not answered:
-			engine.end_turn()
+		# One turn, whatever happened in it. BattleEngine.play_card() only
+		# answers a question for the FIRST card played each turn
+		# (questions_answered_this_turn / _questions_per_turn()); without
+		# this call, the loop above could play several cheap cards back to
+		# back inside a single un-ended turn, burning through the hand
+		# without the question count ever catching up — 6 cards for 5
+		# questions failing not because a question went unanswered, but
+		# because the turn that would have answered it never closed. Found
+		# 2026-09-22: the new 54-card slate's cheaper Tier-0 cards made this
+		# latent loop bug bite for the first time (2 of 5 questions left
+		# unanswered every run); the room's own numbers were never the
+		# problem.
+		engine.end_turn()
 
 	assert_true(engine.state.is_over(), "the conference finished")
 	assert_eq(engine.state.outcome, "win", "it is not a stage you lose on points")
