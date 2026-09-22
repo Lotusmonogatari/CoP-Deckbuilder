@@ -305,7 +305,7 @@ function showBriefing() {
           amount: (rewards[name] > 0 ? '+' : '\u2212') + Math.abs(rewards[name]),
         })));
       }
-      const xp = int(stage.xp_reward, 0);
+      const xp = stageXpReward(stage);
       if (xp > 0) sheet.append(el('p', 'detail-line', T('outcome.xp', { count: xp })));
       for (const line of variableRewards(stage, phrase(STRINGS))) {
         sheet.append(el('p', 'org-boosts', line));
@@ -390,7 +390,18 @@ function showOrganisations() {
         head.append(' — ', standing);
 
         row.append(head);
-        row.append(el('p', 'org-boosts', booster.boosts || ''));
+
+        // 2026-09-22 workbook: boosters.json no longer has a "boosts"
+        // summary column — what an organisation does is the modifiers it
+        // links, so that list is shown by name instead. Ported from
+        // OfficeScreen.gd's own `_organisation_row()`.
+        const linkedNames = (booster.linked_modifiers || [])
+          .map(modId => DATA.modifiers.find(m => m.mod_id === modId))
+          .filter(m => m)
+          .map(m => m.name_en);
+        if (linkedNames.length > 0) {
+          row.append(el('p', 'org-boosts', linkedNames.join(', ')));
+        }
         sheet.append(row);
       }
     }
@@ -521,7 +532,6 @@ function showBackingShop() {
     const names = boosterNames(DATA);
     const ids = DATA.boosters.map(b => b.booster_id);
     const settings = DATA.booster_standing || {};
-    const bridge = DATA.modifier_effects || {};
 
     for (const modifier of DATA.modifiers.filter(isForSale)) {
       const row = el('div', 'org');
@@ -536,15 +546,15 @@ function showBackingShop() {
           + (have >= needed ? '  ·  standing ' + have
                             : '  ·  standing ' + have + ', needs ' + needed)));
       }
-      row.append(el('p', 'org-boosts', describeEffect(modifier, bridge, phrase(STRINGS))));
+      row.append(el('p', 'org-boosts', describeEffect(modifier, phrase(STRINGS))));
 
       // A shop that sells something inert is the trap this project has
-      // walked into twice.
-      if (effectIsInertToday(modifier, bridge)) {
-        row.append(el('p', 'org-boosts', T('office.no_effect_yet')));
-      } else if (!effectIsImplemented(modifier, bridge)) {
-        row.append(el('p', 'org-boosts',
-          T('office.not_active_yet')));
+      // walked into twice. 2026-09-22 workbook: every modifier now carries a
+      // real effect_type ModifierEffects.gd/js knows how to run, so this is
+      // just the one check — the old "inert today" / "known but unbuilt"
+      // split is gone along with the bridge file it was reading.
+      if (!effectIsImplemented(modifier)) {
+        row.append(el('p', 'org-boosts', T('office.not_active_yet')));
       }
 
       const refusal = modifierRefusal(modifier, run.ownedModifiers,
@@ -1439,7 +1449,7 @@ function showOutcome() {
         }));
       }
     }
-    const xp = int(run.stage.xp_reward, 0);
+    const xp = stageXpReward(run.stage);
     if (xp > 0) changes.push(T('outcome.xp', { count: xp }));
 
     // Which organisations the answers pleased. The Office shows the result,
@@ -1482,21 +1492,7 @@ function showOutcome() {
         for (const name of Object.keys(won.applied)) {
           run.lastMetaChange[name] = int(run.lastMetaChange[name], 0) + won.applied[name];
         }
-        run.xp = int(run.xp, 0) + int(run.stage.xp_reward, 0);
-
-        // What the organisations backing you pay out for a stage won.
-        // Unlike the battle-start effects, this one does not care who was
-        // in the room: a business circle pays for the result.
-        const owned = DATA.modifiers.filter(
-          m => run.ownedModifiers.includes(str(m.mod_id, '')));
-        const paid = stageWinFunds(owned, DATA.modifier_effects || {});
-        if (paid !== 0) {
-          const row = DATA.sanban.find(v => v.name_en === 'Funds') || {};
-          const before = int(run.meta.Funds, 0);
-          run.meta.Funds = clampMeta(before + paid, row);
-          run.lastMetaChange.Funds =
-            int(run.lastMetaChange.Funds, 0) + (run.meta.Funds - before);
-        }
+        run.xp = int(run.xp, 0) + stageXpReward(run.stage);
       }
       const result = applyScoreEffects(run.meta, run.stage, score, DATA.sanban);
       run.meta = result.meta;
@@ -1507,6 +1503,31 @@ function showOutcome() {
 
       run.runner.finishStage(s.outcome, score, engine.pleasedBoosters());
       if (run.runner.isFinished()) {
+        // What the organisations backing you pay out for winning a LEVEL —
+        // not a single stage. RESOURCE_BONUS_ON_WIN's own workbook wording
+        // says "after successful completion of a level" (ModifierEffects.gd,
+        // GameState.gd's _pay_level_rewards()), so this runs once here
+        // rather than after every stage, and does not care who was in the
+        // room: a business circle pays for the result, not the audience.
+        if (run.runner.outcome() === WON) {
+          const owned = DATA.modifiers.filter(
+            m => run.ownedModifiers.includes(str(m.mod_id, '')));
+          if (owned.length > 0) {
+            const xpBonus = levelWinResourceBonus(owned, 'XP');
+            if (xpBonus !== 0) run.xp = int(run.xp, 0) + xpBonus;
+
+            for (const name of ['Funds', 'Constituency support', 'Party support']) {
+              const bonus = levelWinResourceBonus(owned, name);
+              if (bonus === 0) continue;
+              const row = DATA.sanban.find(v => v.name_en === name) || {};
+              const before = int(run.meta[name], 0);
+              run.meta[name] = clampMeta(before + bonus, row);
+              run.lastMetaChange[name] =
+                int(run.lastMetaChange[name], 0) + (run.meta[name] - before);
+            }
+          }
+        }
+
         run.lastLevelOutcome = run.runner.outcome();
         run.runner = null;
         showOffice();

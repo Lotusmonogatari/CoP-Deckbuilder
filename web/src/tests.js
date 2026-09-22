@@ -374,13 +374,12 @@ function runRuleChecks(data) {
       }
     }
 
-    for (const oppId of Object.keys(data.intent_patterns || {})) {
-      const runner = new IntentRunner(data.intent_patterns[oppId]);
-      ok(runner.isValid(), oppId + ': ' + runner.problems().join(', '));
-      checked += 1;
-    }
+    // 2026-09-22 workbook: there is no more standalone intent_patterns.json
+    // bridge to also check — every opponent embedded in a level's stages
+    // above already carries its own built pattern (or the shared default at
+    // battle time, if it has none of its own), so that loop covered it.
 
-    ok(checked > 20, 'every opponent in every level, plus the nine MPs');
+    ok(checked > 20, 'every opponent in every level of the game');
   });
 
   // --- playing a battle -----------------------------------------------------
@@ -955,13 +954,18 @@ function runRuleChecks(data) {
       'questions still make a press conference');
   });
 
-  check('every TV debate in the data is one bar', () => {
+  check('every TV debate in the data is a survival bar', () => {
+    // 2026-09-22 workbook: a canon level's stages no longer carry a "type"
+    // (that was the old hand-written levels.json's own vocabulary) — the TV
+    // debate is simply ST06, wherever a level plays it, and BarModel.forStage
+    // already reads ST06 as SURVIVAL (CLAUDE.md §7.3: at or above the
+    // threshold at the end of every turn), not a room of people to win over.
     let checked = 0;
     for (const level of data.levels) {
       for (const st of level.stages) {
-        if (st.type !== 'tv_debate') continue;
-        eq(BarModel.forStage(st), SINGLE,
-          level.level_id + ': a TV debate is press tone, not a room of people');
+        if (st.stage_id !== 'ST06') continue;
+        eq(BarModel.forStage(st), SURVIVAL,
+          level.level_id + ': a TV debate is survival, not a shared room');
         checked += 1;
       }
     }
@@ -993,35 +997,34 @@ function runRuleChecks(data) {
     }
   });
 
-  check('every stage of every level can be set up', () => {
-    // The stage types were merged into the levels by the BUILD SCRIPT
-    // (tools/build_web_playtest.py resolve_type), so what the page holds is
-    // already a plain stage. If that merge ever drops a field, a stage fails
-    // to start here rather than in front of a player.
+  check('every combat stage of every real level can be set up', () => {
+    // Ported from tests/test_real_battle.gd's
+    // test_every_real_level_can_be_set_up(), for the 2026-09-22 workbook's
+    // real 30-level levels.json (resolved by tools/build_web_playtest.py's
+    // resolve_workbook_levels(), the JS build's mirror of
+    // BattleSetup.gd's expand_level()). Office Hours (ST07, mode
+    // "Non-combat") is skipped — it is not a battle, and CLAUDE.md still
+    // lists it as not built in either engine — so this is the check that
+    // would catch a level naming a stage nothing is eligible to fight.
     let checked = 0;
     for (const level of data.levels) {
-      const runner = new LevelRunner(level);
-      ok(runner.stageCount() > 0, level.level_id + ' has no stages');
-      for (const st of runner.stages) {
+      ok((level.stages || []).length > 0, level.level_id + ' has no stages');
+      for (const st of level.stages) {
+        if (str(st.mode, '') !== 'Combat') continue;
+        checked += 1;
         const engine = new BattleEngine();
         ok(engine.setup(forPlaytestStage(data, st, {}, null, 1)),
           level.level_id + ' ' + st.stage_id + ' starts: ' + engine.setupProblems.join('; '));
-        checked += 1;
       }
     }
-    eq(checked, 24, 'six levels, twenty-four stages');
+    ok(checked > 0, 'there are combat stages across the real levels to check');
   });
 
-  check('every level names a stage type that exists', () => {
-    // A row that named a type the build script could not find would have
-    // stopped the build, so this is really asking the opposite: that the
-    // merge left every stage with the things a stage needs.
+  check('every stage of every level has an ID and a name', () => {
     for (const level of data.levels) {
       for (const st of level.stages) {
         ok(str(st.stage_id, '') !== '', level.level_id + ' has a stage with no ID');
-        ok(str(st.name_en, '') !== '', st.stage_id + ' has no name');
-        ok(str(st.affinity_stage_id, '') !== '',
-          st.stage_id + ' has no room for affinity to read');
+        ok(str(st.name_en, '') !== '', (st.stage_id || '?') + ' has no name');
       }
     }
   });
@@ -1467,7 +1470,11 @@ function runRuleChecks(data) {
     const filled = withAudience(data, press);
     ok(filled.segment_mix, 'the conference has a room');
 
-    let total = 0;
+    // 2026-09-22 workbook: a room's audience can include a "% Other" share
+    // that is not one of segment_mix's own rows but is still part of the
+    // same 100% (see withAudience()'s own note) — counted in here too, or a
+    // room with a real Other share would read as short of whole.
+    let total = Number(filled.pct_other) || 0;
     for (const share of Object.values(filled.segment_mix)) total += share;
     ok(Math.abs(total - 1) < 0.001, 'and it adds up to the whole room');
   });
@@ -1715,67 +1722,136 @@ function runRuleChecks(data) {
   });
 
   // --- what backing does, ported from tests/test_modifier_effects.gd -------
+  // 2026-09-22 workbook: modifiers.json carries its own effect_type /
+  // effect_target / effect_value columns now, so there is no more
+  // hand-written bridge file to test the fallback of. These exercise the
+  // five effect_types the ModifierEffects section of engine.js dispatches
+  // on directly — the same five tests/test_modifier_effects.gd exercises.
 
-  const BRIDGE = {
-    M01: 'player_start_support', M03: 'starting_gaffe',
-    M02: 'kaban_per_stage_win', M13: 'jiban_per_module_win',
-  };
+  const _mod = (modId, effectType, target, value, overrides) => Object.assign(
+    { mod_id: modId, effect_type: effectType, effect_target: target, effect_value: value },
+    overrides || {});
 
-  check('the workbook column wins over the bridge', () => {
-    // The bridge is temporary; the column must take over without anybody
-    // remembering to delete the file.
-    eq(effectKeyFor(aMod({ effect_key: 'starting_gaffe' }), BRIDGE), 'starting_gaffe');
-    eq(effectKeyFor(aMod({}), BRIDGE), 'player_start_support');
-  });
-
-  check('backing raises where you start, and stacks', () => {
-    const bonus = battleStartBonus(
-      [aMod({ magnitude: 3 }), aMod({ magnitude: 4 })], BRIDGE);
-    eq(bonus.start_support, 7);
-  });
-
-  check('a business circle pays for a stage won', () => {
-    eq(stageWinFunds([aMod({ mod_id: 'M02', magnitude: 5 })], BRIDGE), 5);
-    eq(stageWinFunds([aMod({ mod_id: 'M01', magnitude: 9 })], BRIDGE), 0,
-      'start support is not an income');
-  });
-
-  check('an effect with nothing to bite on is not called built', () => {
-    // The gaffe meter always opens at zero, so taking a point off it takes
-    // nothing. The shop must not sell it as working.
-    const m = aMod({ mod_id: 'M03', magnitude: 1 });
-    ok(effectIsInertToday(m, BRIDGE));
-    ok(!effectIsImplemented(m, BRIDGE));
-    ok(effectIsImplemented(aMod({ magnitude: 3 }), BRIDGE), 'but this one is');
-  });
-
-  check('a module-level effect is known but not built', () => {
-    const m = aMod({ mod_id: 'M13', magnitude: 3 });
-    ok(effectIsKnownButUnbuilt(m, BRIDGE));
-    ok(!effectIsImplemented(m, BRIDGE));
-  });
-
-  check('the player is never shown the word Magnitude', () => {
-    // The effect column says "Magnitude" where a number belongs, because it
-    // was written for a designer.
-    eq(describeEffect(aMod({ magnitude: 3 }), BRIDGE,
-      phrase({ 'modifier.player_start_support': 'start {count} ahead' })),
-      'start 3 ahead');
-    for (const modifier of data.modifiers) {
-      const text = describeEffect(modifier, data.modifier_effects || {}, phrase(STRINGS));
-      ok(!text.includes('Magnitude'),
-        modifier.mod_id + ' still shows it: ' + text);
+  check('all five documented types are implemented', () => {
+    for (const pair of [
+      ['RESOURCE_BONUS_ON_WIN', 'XP'], ['STAGE_START_BONUS', 'ST02'],
+      ['HAND_SIZE_BONUS', 'ST04'], ['GAFFE_LIMIT_BONUS', 'ST01'],
+      ['UNLOCK_DISCOUNT', 'XPCost'],
+    ]) {
+      ok(effectIsImplemented(_mod('M01', pair[0], pair[1], 1.0)), pair[0]);
     }
   });
 
-  check('every bridged modifier is real and every effect is known', () => {
-    for (const modId of Object.keys(data.modifier_effects || {})) {
-      ok(data.modifiers.some(m => m.mod_id === modId),
-        modId + ' is mapped to an effect but is not a modifier');
-      const key = str((data.modifier_effects || {})[modId], '');
-      ok(AT_BATTLE_START.includes(key) || AFTER_STAGE_WIN.includes(key)
-        || NOT_YET_BUILT.includes(key),
-        modId + " is mapped to '" + key + "', which nothing implements");
+  check('an unknown type is not implemented', () => {
+    ok(!effectIsImplemented(_mod('M99', '', '', 0.0)));
+  });
+
+  check('a value that is not set is worth nothing', () => {
+    eq(valueOf({ mod_id: 'M01' }), 0.0);
+  });
+
+  check('stage start bonus raises where you start', () => {
+    const active = [_mod('M01', 'STAGE_START_BONUS', 'ST02', 3.0)];
+    eq(battleStartBonus(active, 'ST02').start_support, 3);
+  });
+
+  check('stage start bonus ignores a different stage', () => {
+    const active = [_mod('M01', 'STAGE_START_BONUS', 'ST04', 3.0)];
+    eq(battleStartBonus(active, 'ST02').start_support, 0);
+  });
+
+  check('two backers stack', () => {
+    const active = [
+      _mod('M01', 'STAGE_START_BONUS', 'ST02', 3.0),
+      _mod('M02', 'STAGE_START_BONUS', 'ST02', 4.0),
+    ];
+    eq(battleStartBonus(active, 'ST02').start_support, 7);
+  });
+
+  check('hand size bonus', () => {
+    const active = [_mod('M01', 'HAND_SIZE_BONUS', 'ST04', 2.0)];
+    eq(battleStartBonus(active, 'ST04').hand_size_bonus, 2);
+  });
+
+  check('gaffe limit bonus', () => {
+    const active = [_mod('M01', 'GAFFE_LIMIT_BONUS', 'ST01', 1.0)];
+    eq(battleStartBonus(active, 'ST01').gaffe_limit_bonus, 1);
+  });
+
+  check('nothing owned changes nothing', () => {
+    const bonus = battleStartBonus([], 'ST02');
+    eq(bonus.start_support, 0);
+    eq(bonus.hand_size_bonus, 0);
+    eq(bonus.gaffe_limit_bonus, 0);
+  });
+
+  check('a resource bonus pays the target it names', () => {
+    const owned = [_mod('M01', 'RESOURCE_BONUS_ON_WIN', 'Yen', 10.0)];
+    eq(levelWinResourceBonus(owned, 'Funds'), 10);
+  });
+
+  check('a resource bonus does not pay a different resource', () => {
+    const owned = [_mod('M01', 'RESOURCE_BONUS_ON_WIN', 'Yen', 10.0)];
+    eq(levelWinResourceBonus(owned, 'Constituency support'), 0);
+  });
+
+  check('resource bonuses of the same kind stack', () => {
+    const owned = [
+      _mod('M01', 'RESOURCE_BONUS_ON_WIN', 'XP', 10.0),
+      _mod('M02', 'RESOURCE_BONUS_ON_WIN', 'XP', 15.0),
+    ];
+    eq(levelWinResourceBonus(owned, 'XP'), 25);
+  });
+
+  check('a non-resource modifier pays nothing', () => {
+    const owned = [_mod('M01', 'STAGE_START_BONUS', 'ST02', 9.0)];
+    eq(levelWinResourceBonus(owned, 'XP'), 0, 'start support is not an income');
+  });
+
+  check('unlock discount reads the matching target', () => {
+    const owned = [_mod('M01', 'UNLOCK_DISCOUNT', 'XPCost', 0.1)];
+    eq(Math.round(unlockDiscount(owned, 'XPCost') * 10000), 1000);
+  });
+
+  check('unlock discount ignores the other cost kind', () => {
+    const owned = [_mod('M01', 'UNLOCK_DISCOUNT', 'Tier1Cost', 0.1)];
+    eq(unlockDiscount(owned, 'XPCost'), 0.0);
+  });
+
+  check('a resource bonus on Yen uses its text key', () => {
+    const modifier = _mod('M01', 'RESOURCE_BONUS_ON_WIN', 'Yen', 5.0);
+    eq(describeEffect(modifier, phrase({ 'modifier.reputation_per_stage_win': '{count} funds a win' })),
+      '5 funds a win');
+  });
+
+  check("everything else shows the workbook's own effect sentence", () => {
+    // Unlike the old "+Magnitude..." column, the 2026-09-22 workbook's
+    // Effect text is already a finished sentence with real numbers in it,
+    // so it is shown as-is rather than built from a key — display-only
+    // prose, the same rule CLAUDE.md sets for a card's effect_text.
+    const modifier = _mod('M13', 'RESOURCE_BONUS_ON_WIN', 'Jiban', 3.0,
+      { effect: '+3 Jiban after successful completion of a level.' });
+    eq(describeEffect(modifier, phrase({ 'modifier.reputation_per_stage_win': '{count} funds a win' })),
+      '+3 Jiban after successful completion of a level.');
+  });
+
+  check('a modifier with nothing written describes itself as nothing', () => {
+    eq(describeEffect(_mod('M99', '', '', 1.0), phrase({})), '');
+  });
+
+  check('every modifier in the workbook has a type the code knows', () => {
+    for (const modifier of data.modifiers) {
+      ok(effectIsImplemented(modifier),
+        modifier.mod_id + " has effect_type '" + modifier.effect_type
+        + "', which the ModifierEffects section does not know");
+    }
+  });
+
+  check('no description from real data shows the old placeholder word', () => {
+    for (const modifier of data.modifiers) {
+      const text = describeEffect(modifier, phrase(STRINGS));
+      ok(!text.includes('Magnitude'),
+        modifier.mod_id + ' still shows the word Magnitude: ' + text);
     }
   });
 

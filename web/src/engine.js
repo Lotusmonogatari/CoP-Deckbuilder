@@ -720,8 +720,15 @@ class BattleEngine {
 
     // A press conference deals a bigger opening hand and then nothing more,
     // so "opening_hand" wins over the ordinary hand size where both exist.
-    s.hand_size = int(this._stage.opening_hand, int(this._stage.hand_size, 5));
-    s.gaffe_limit = int(this._stage.gaffe_limit, 5);
+    //
+    // hand_size_bonus / gaffe_limit_bonus come from an organisation's
+    // backing — modifiers.json's HAND_SIZE_BONUS and GAFFE_LIMIT_BONUS
+    // effect types, added up by forPlaytestStage() for whichever modifiers
+    // are active in this room and aimed at this stage. Zero when nothing
+    // applies.
+    s.hand_size = int(this._stage.opening_hand, int(this._stage.hand_size, 5))
+      + int(config.hand_size_bonus, 0);
+    s.gaffe_limit = int(this._stage.gaffe_limit, 5) + int(config.gaffe_limit_bonus, 0);
 
     // A friendly reporter takes some of the heat before a word is said.
     // Never below zero: backing cannot put the meter into credit.
@@ -1733,12 +1740,31 @@ function applyWinDeltas(meta, stage, sanbanRows) {
 }
 
 // The workbook's column names, and what the player calls them.
+//
+// 2026-09-22 workbook: stages.json renamed win_delta_kanban/win_delta_kaban
+// to win_delta_reputation/win_delta_yen (see MetaRules.gd's apply_win_deltas
+// and its own note on the same rename). data/playtest_level.json is
+// hand-written and NOT part of that migration, so its stages still use the
+// old names — both are listed here so a canon level and the playtest hub
+// are each read correctly. A stage only ever carries one spelling, so there
+// is no double-counting.
 const WIN_DELTA_KEYS = {
   win_delta_jiban: 'Constituency support',
+  win_delta_reputation: 'Reputation',
+  win_delta_yen: 'Funds',
   win_delta_kanban: 'Reputation',
   win_delta_kaban: 'Funds',
   win_delta_party_support: 'Party support',
 };
+
+// win_delta_xp is the 2026-09-22 workbook's name for what playtest_level.json
+// still calls xp_reward (that file is hand-written and untouched by the
+// migration — see WIN_DELTA_KEYS' own note). Either name is read here so a
+// canon stage and a playtest stage both report what they pay.
+function stageXpReward(stage) {
+  const xp = int(stage.win_delta_xp, null);
+  return xp !== null ? xp : int(stage.xp_reward, 0);
+}
 
 // The meta-variables a stage pays out on a win. Zero is left out rather than
 // reported as "+0": a variable this stage does not touch is not news.
@@ -1756,7 +1782,7 @@ function winRewards(stage) {
 // screens must say "not set yet" rather than showing four zeroes.
 function rewardsAreUnset(stage) {
   if (Object.keys(winRewards(stage)).length > 0) return false;
-  if (int(stage.xp_reward, 0) !== 0) return false;
+  if (stageXpReward(stage) !== 0) return false;
   return !stage.tone_effects;
 }
 
@@ -1982,90 +2008,124 @@ function openingDeck(cards, balance) {
 // ---------------------------------------------------------------------------
 // ModifierEffects — what an organisation's backing actually does
 // ---------------------------------------------------------------------------
-// Ported from scripts/rules/ModifierEffects.gd. The `effect` column is prose
-// for a designer and CLAUDE.md forbids parsing it, so the machine-readable
-// half is a key plus the magnitude the workbook already carries.
+// Ported from scripts/rules/ModifierEffects.gd (2026-09-22 workbook).
+//
+// modifiers.json now carries the machine-readable half directly —
+// effect_type / effect_target / effect_value — so the hand-written bridge
+// (data/modifier_effects.json) that used to fill in for a missing "effect
+// key" column is gone, and so is the old key/magnitude scheme below it. Every
+// modifier row now says exactly what it does.
+//
+// THE FIVE TYPES:
+//   RESOURCE_BONUS_ON_WIN  target XP/Yen/Jiban/PartySupport, value a flat
+//                          amount paid out when a LEVEL is won — not a
+//                          stage (the workbook's own Effect column says so).
+//   STAGE_START_BONUS      target an STxx, value added to that stage's
+//                          starting support before the first turn.
+//   HAND_SIZE_BONUS        target an STxx, value +N cards drawn at the start
+//                          of that stage.
+//   GAFFE_LIMIT_BONUS      target an STxx, value +N to the gaffe limit for
+//                          that stage.
+//   UNLOCK_DISCOUNT        target XPCost or Tier1Cost, value a fraction
+//                          (0.1 = 10%) off that unlock cost.
 
-const AT_BATTLE_START = ['player_start_support', 'starting_gaffe'];
-const AFTER_STAGE_WIN = ['kaban_per_stage_win'];
-const NOT_YET_BUILT = [
-  'opp_start_support_on_tag', 'kaban_per_module', 'party_support_per_module',
-  'jiban_per_module_win', 'negates_cold_shoulder', 'start_lean_in_committee',
-  'halve_jiban_losses',
+const RESOURCE_BONUS_ON_WIN = 'RESOURCE_BONUS_ON_WIN';
+const STAGE_START_BONUS = 'STAGE_START_BONUS';
+const HAND_SIZE_BONUS = 'HAND_SIZE_BONUS';
+const GAFFE_LIMIT_BONUS = 'GAFFE_LIMIT_BONUS';
+const UNLOCK_DISCOUNT = 'UNLOCK_DISCOUNT';
+
+const KNOWN_MODIFIER_EFFECT_TYPES = [
+  RESOURCE_BONUS_ON_WIN, STAGE_START_BONUS, HAND_SIZE_BONUS,
+  GAFFE_LIMIT_BONUS, UNLOCK_DISCOUNT,
 ];
-// Wired and correct, but nothing yet produces the situation it answers: the
-// gaffe meter always opens at zero, so taking a point off it takes nothing.
-const INERT_TODAY = ['starting_gaffe'];
 
-function effectKeyFor(modifier, bridge) {
-  const key = str(modifier.effect_key, '').trim();
-  if (key) return key;
-  return str((bridge || {})[str(modifier.mod_id, '')], '');
+// Which sanban.json meta-variable a RESOURCE_BONUS_ON_WIN target name means.
+// "XP" is not a sanban row (it lives on the run's own state instead), so it
+// is handled separately wherever this map is used.
+const RESOURCE_TARGET_TO_META = {
+  Yen: 'Funds',
+  Jiban: 'Constituency support',
+  PartySupport: 'Party support',
+};
+
+// The effect_value column, as a number — the workbook stores it as a real
+// number already (10, 0.1, ...), never a "Magnitude" placeholder to resolve.
+function valueOf(modifier) {
+  const value = modifier.effect_value;
+  return (value === null || value === undefined) ? 0 : Number(value);
 }
 
-function magnitudeOf(modifier) {
-  const value = modifier.magnitude;
-  return (value === null || value === undefined) ? 0 : Math.round(Number(value));
+function typeOf(modifier) { return str(modifier.effect_type, ''); }
+function targetOf(modifier) { return str(modifier.effect_target, ''); }
+
+// True where the modifier's effect_type is one this file knows how to run.
+function effectIsImplemented(modifier) {
+  return KNOWN_MODIFIER_EFFECT_TYPES.includes(typeOf(modifier));
 }
 
-function effectIsImplemented(modifier, bridge) {
-  const key = effectKeyFor(modifier, bridge);
-  if (INERT_TODAY.includes(key)) return false;
-  return AT_BATTLE_START.includes(key) || AFTER_STAGE_WIN.includes(key);
-}
-
-function effectIsInertToday(modifier, bridge) {
-  return INERT_TODAY.includes(effectKeyFor(modifier, bridge));
-}
-
-function effectIsKnownButUnbuilt(modifier, bridge) {
-  return NOT_YET_BUILT.includes(effectKeyFor(modifier, bridge));
-}
-
-// The effect column says "Magnitude" where a number belongs, because it was
-// written for a designer. Putting that on a shop screen asks the player to
-// read a spreadsheet.
-function describeEffect(modifier, bridge, words) {
+// What a modifier does, in words for the player.
+//
+// RESOURCE_BONUS_ON_WIN targeting Yen has a Text tab line already
+// (modifier.reputation_per_stage_win); every other combination is shown
+// straight from the workbook's own "Effect" column, which is already a
+// finished sentence with the real number in it — display-only prose, the
+// same rule CLAUDE.md sets for a card's effect_text, not the rules engine
+// parsing anything.
+function describeEffect(modifier, words) {
   const say = words || phrase({});
-  const magnitude = magnitudeOf(modifier);
-  switch (effectKeyFor(modifier, bridge)) {
-    case 'player_start_support':
-      return say('modifier.player_start_support', { count: magnitude });
-    case 'starting_gaffe':
-      return say('modifier.starting_gaffe', { count: magnitude });
-    case 'kaban_per_stage_win':
-      // Renamed 2026-09-22 alongside the GDScript build's ModifierEffects.gd;
-      // see that file's own note. The browser build's data pipeline has not
-      // otherwise been migrated to the new workbook schema in this pass.
-      return say('modifier.reputation_per_stage_win', { count: magnitude });
+  if (typeOf(modifier) === RESOURCE_BONUS_ON_WIN && targetOf(modifier) === 'Yen') {
+    return say('modifier.reputation_per_stage_win', { count: Math.round(valueOf(modifier)) });
   }
-  const prose = str(modifier.effect, '').trim();
-  if (!prose) return '';
-  return prose.split('Magnitude').join(String(magnitude));
+  return str(modifier.effect, '').trim();
 }
 
-function battleStartBonus(active, bridge) {
-  const bonus = { start_support: 0, starting_gaffe: 0 };
+// What the owned, active modifiers add to a stage before its first turn.
+//
+// `active` is already filtered to modifiers whose trigger condition is met
+// in this stage's room (activeModifiers()). `stageId` narrows the three
+// stage-scoped types to the ones actually aimed at this stage.
+function battleStartBonus(active, stageId) {
+  const bonus = { start_support: 0, hand_size_bonus: 0, gaffe_limit_bonus: 0 };
   for (const modifier of active) {
-    const magnitude = magnitudeOf(modifier);
-    switch (effectKeyFor(modifier, bridge)) {
-      case 'player_start_support': bonus.start_support += magnitude; break;
-      // The column reads "−Magnitude starting gaffe meter": the sign is in
-      // the prose, so the number comes off here.
-      case 'starting_gaffe': bonus.starting_gaffe -= magnitude; break;
+    if (targetOf(modifier) !== stageId) continue;
+    const value = Math.round(valueOf(modifier));
+    switch (typeOf(modifier)) {
+      case STAGE_START_BONUS: bonus.start_support += value; break;
+      case HAND_SIZE_BONUS: bonus.hand_size_bonus += value; break;
+      case GAFFE_LIMIT_BONUS: bonus.gaffe_limit_bonus += value; break;
     }
   }
   return bonus;
 }
 
-function stageWinFunds(owned, bridge) {
-  let funds = 0;
+// What the owned modifiers pay a resource when a LEVEL is won. `resource` is
+// "XP", or one of RESOURCE_TARGET_TO_META's meta-variable names.
+function levelWinResourceBonus(owned, resource) {
+  let target = resource;
+  for (const key of Object.keys(RESOURCE_TARGET_TO_META)) {
+    if (RESOURCE_TARGET_TO_META[key] === resource) { target = key; break; }
+  }
+  let total = 0;
   for (const modifier of owned) {
-    if (effectKeyFor(modifier, bridge) === 'kaban_per_stage_win') {
-      funds += magnitudeOf(modifier);
+    if (typeOf(modifier) === RESOURCE_BONUS_ON_WIN && targetOf(modifier) === target) {
+      total += Math.round(valueOf(modifier));
     }
   }
-  return funds;
+  return total;
+}
+
+// The fraction knocked off an unlock cost by the owned UNLOCK_DISCOUNT
+// modifiers. `costKind` is "XPCost" or "Tier1Cost". Discounts from more than
+// one modifier add together rather than compounding.
+function unlockDiscount(owned, costKind) {
+  let discount = 0;
+  for (const modifier of owned) {
+    if (typeOf(modifier) === UNLOCK_DISCOUNT && targetOf(modifier) === costKind) {
+      discount += valueOf(modifier);
+    }
+  }
+  return discount;
 }
 
 // Which modifiers fire given the room, ported from MetaRules.active_modifiers.
@@ -2138,7 +2198,14 @@ function withAudience(data, stage) {
   const canon = (data.stages || []).find(row => row.stage_id === modelledOn);
   if (!canon || !canon.segment_mix) return stage;
 
-  return Object.assign({}, stage, { segment_mix: canon.segment_mix });
+  const filled = Object.assign({}, stage, { segment_mix: canon.segment_mix });
+  // 2026-09-22 workbook: a room's audience can include a "% Other" share
+  // (pct_other) that isn't one of segment_mix's rows but is still part of
+  // the 100% — borrowed alongside segment_mix (BattleSetup.gd's own
+  // with_audience() does the same) so a playtest stage modelled on a canon
+  // room gets the same total, not 100% minus whatever Other was.
+  if (canon.pct_other !== undefined) filled.pct_other = canon.pct_other;
+  return filled;
 }
 
 // `owned` is the run's state: { deck, modifiers }. Absent in a standalone
@@ -2169,6 +2236,12 @@ function forPlaytestStage(data, stage, buffs, meta, seed, owned) {
     stage: filled,
     opponent: opponents.length > 0 ? opponents[0] : {},
     opponents: opponents,
+    // Rows from opponents.json eligible for this stage, for a committee
+    // stage (BattleSetup.gd's COMMITTEE_STAGE_IDS). Passed through even
+    // though the browser engine has no per-member committee model yet — see
+    // the migration report — so a level's own data always carries the full
+    // shape the Godot build reads.
+    committee_members: stage.committee_members || [],
     cards: cardTable(data),
     affinity: affinityTable(data),
     rules: data.rules,
@@ -2181,23 +2254,27 @@ function forPlaytestStage(data, stage, buffs, meta, seed, owned) {
     question_pool: (data.questions || {})[str(stage.type, '')] || [],
     deck: (owned.deck && owned.deck.length > 0) ? owned.deck.slice() : starterDeck(data),
     // A good caucus earlier in the level starts this stage ahead, and so
-    // does an organisation whose backing you have bought.
+    // does an organisation whose backing you have bought (STAGE_START_BONUS).
     start_adjustment: int(buffs.support_bonus, 0) + backing.start_support,
-    starting_gaffe: backing.starting_gaffe,
+    hand_size_bonus: backing.hand_size_bonus,
+    gaffe_limit_bonus: backing.gaffe_limit_bonus,
     seed: seed,
   };
 }
 
 // What the organisations backing you are worth in this room. Backing only
 // counts where the audience it cares about is actually here: a friendly beat
-// reporter does nothing in a caucus with no press in it.
+// reporter does nothing in a caucus with no press in it. Which of the three
+// stage-scoped effect types actually apply is narrowed again by stage ID,
+// inside battleStartBonus().
 function backingBonus(data, stage, ownedIds) {
-  if (!ownedIds || ownedIds.length === 0) {
-    return { start_support: 0, starting_gaffe: 0 };
-  }
+  const empty = { start_support: 0, hand_size_bonus: 0, gaffe_limit_bonus: 0 };
+  if (!ownedIds || ownedIds.length === 0) return empty;
   const owned = data.modifiers.filter(m => ownedIds.includes(str(m.mod_id, '')));
+  if (owned.length === 0) return empty;
   const active = activeModifiers(owned, stage, 'Player');
-  return battleStartBonus(active, data.modifier_effects || {});
+  if (active.length === 0) return empty;
+  return battleStartBonus(active, str(stage.stage_id, ''));
 }
 
 // --- small helpers, so a missing cell reads the same way it does in Godot ---
