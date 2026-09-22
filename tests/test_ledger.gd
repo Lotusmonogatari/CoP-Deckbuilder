@@ -216,3 +216,65 @@ func test_an_opening_deck_never_exceeds_the_deck_size() -> void:
 	for i in 20:
 		cards.append({"card_id": "S%02d" % i, "tier": "0", "suit": "Earnest"})
 	assert_eq(Ledger.opening_deck(cards, BALANCE).size(), 12)
+
+
+# ---------------------------------------------------------------------------
+# Staff — the Recruitment shop
+# ---------------------------------------------------------------------------
+# Shapes drawn from the real data/staff.json rows named in the brief: SF04
+# starts at tier 0 and can reach tier 2 (both upgrade steps exist); SF05
+# starts at tier 1 and has nowhere further to go despite highest_tier 1
+# (its 0-to-1 cost is null because tier 0 was never on offer for them).
+
+func _candidate(overrides: Dictionary = {}) -> Dictionary:
+	var base := {
+		"staff_id": "SF04", "role": "Policy Research Assistant",
+		"starting_tier": 0, "highest_tier": 2, "hiring_cost_yen": 50000,
+		"upgrade_cost_0_to_1_yen": 30000, "upgrade_cost_1_to_2_yen": 50000,
+	}
+	base.merge(overrides, true)
+	return base
+
+
+func test_a_vacant_role_can_be_hired_if_affordable() -> void:
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, 50000, _words()), "")
+	assert_true(Ledger.can_hire_staff(_candidate(), {}, 50000, _words()))
+
+
+func test_hiring_says_how_many_yen_short() -> void:
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, 40000, _words()), "10000 short.")
+
+
+func test_a_filled_role_cannot_be_hired_into_again() -> void:
+	var hired := {"staff_id": "SF03", "tier": 0}
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), hired, 999999, _words()), "Already yours.")
+
+
+func test_the_first_upgrade_step_is_the_hiring_tier() -> void:
+	assert_eq(Ledger.staff_upgrade_cost(_candidate(), 0), 30000)
+	assert_eq(Ledger.staff_upgrade_cost(_candidate(), 1), 50000)
+
+
+func test_a_candidate_at_their_highest_tier_has_no_further_step() -> void:
+	assert_eq(Ledger.staff_upgrade_cost(_candidate(), 2), null)
+	assert_eq(Ledger.staff_upgrade_refusal(_candidate(), 2, 999999, _words()),
+		"At their highest tier.")
+
+
+func test_a_candidate_who_starts_above_tier_zero_has_no_0_to_1_step() -> void:
+	# SF05's own shape: starting_tier 1, highest_tier 1, and a null
+	# upgrade_cost_0_to_1_yen because tier 0 was never sold for them.
+	var sf05 := _candidate({
+		"staff_id": "SF05", "starting_tier": 1, "highest_tier": 1,
+		"upgrade_cost_0_to_1_yen": null, "upgrade_cost_1_to_2_yen": null,
+	})
+	assert_eq(Ledger.staff_upgrade_cost(sf05, 1), null,
+		"already at their only tier — nothing left to buy")
+
+
+func test_an_upgrade_you_cannot_afford_says_how_short_you_are() -> void:
+	assert_eq(Ledger.staff_upgrade_refusal(_candidate(), 0, 10000, _words()), "20000 short.")
+
+
+func test_an_affordable_upgrade_is_allowed() -> void:
+	assert_true(Ledger.can_upgrade_staff(_candidate(), 0, 30000, _words()))

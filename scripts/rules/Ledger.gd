@@ -29,6 +29,11 @@ extends RefCounted
 ## growing set, and the deck is a fixed size, so taking a new card in means
 ## leaving one out. That trade is the whole point of the deck screen.
 
+## The Staff roles, and the order the Recruitment shop lists them in — the
+## same order data/staff.json's own SF01-21 rows come in (see the workbook's
+## Staff tab), not a rule this file invented.
+const STAFF_ROLES := ["Policy Research Assistant", "Media Spokesperson", "District Representative"]
+
 ## Why a purchase was refused, in words a screen can show as-is.
 const AFFORDABLE := ""
 
@@ -233,6 +238,69 @@ static func deck_refusal(deck: Array, owned: Array, balance: Dictionary,
 static func deck_is_legal(deck: Array, owned: Array, balance: Dictionary,
 		words: Phrase = null) -> bool:
 	return deck_refusal(deck, owned, balance, words) == AFFORDABLE
+
+
+# ---------------------------------------------------------------------------
+# Staff — the Recruitment shop
+# ---------------------------------------------------------------------------
+# One hired candidate per role, Yen-only, no upgrades once a role is vacant
+# (there is no "fire" — see CLAUDE.md/the Recruitment brief). Both prices
+# funnel through the same "shop.funds_short" wording the modifier shop
+# already uses, so a short-Funds refusal reads the same everywhere.
+
+## Whether a role's chosen candidate can be hired right now, and if not, why.
+## `hired` is whatever staff_hired.json/GameState already has for this ROLE
+## (not this candidate) — empty means the role is vacant.
+static func staff_hire_refusal(candidate: Dictionary, hired_for_role: Dictionary,
+		funds: int, words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
+	if str(candidate.get("staff_id", "")).is_empty():
+		return say.say("shop.mod_no_id")
+	if not hired_for_role.is_empty():
+		return say.say("shop.already_yours")
+
+	var cost := int(candidate.get("hiring_cost_yen", 0))
+	if funds < cost:
+		return say.say("shop.funds_short", {"count": cost - funds})
+	return ""
+
+
+static func can_hire_staff(candidate: Dictionary, hired_for_role: Dictionary,
+		funds: int, words: Phrase = null) -> bool:
+	return staff_hire_refusal(candidate, hired_for_role, funds, words) == AFFORDABLE
+
+
+## What upgrading a hired candidate from `tier` to `tier + 1` costs, or null
+## when that step does not exist for them — either because they are already
+## at their highest_tier, or because the column for that step is blank (a
+## candidate who starts at tier 1, like SF05 or SF07, has no 0-to-1 cost:
+## tier 0 was never on offer for them).
+static func staff_upgrade_cost(candidate: Dictionary, tier: int) -> Variant:
+	if tier >= int(candidate.get("highest_tier", 0)):
+		return null
+	match tier:
+		0: return candidate.get("upgrade_cost_0_to_1_yen")
+		1: return candidate.get("upgrade_cost_1_to_2_yen")
+		_: return null
+
+
+## Whether the hired candidate at `tier` can be upgraded right now.
+static func staff_upgrade_refusal(candidate: Dictionary, tier: int, funds: int,
+		words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
+	var cost_value: Variant = staff_upgrade_cost(candidate, tier)
+	if cost_value == null:
+		return say.say("office.staff_at_max")
+
+	var cost := int(cost_value)
+	if funds < cost:
+		return say.say("shop.funds_short", {"count": cost - funds})
+	return ""
+
+
+static func can_upgrade_staff(candidate: Dictionary, tier: int, funds: int,
+		words: Phrase = null) -> bool:
+	return staff_upgrade_refusal(candidate, tier, funds, words) == AFFORDABLE
 
 
 ## The deck a new run starts with.

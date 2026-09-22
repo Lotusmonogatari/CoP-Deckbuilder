@@ -1556,6 +1556,43 @@ def add_segment_ids(data, report):
         card["target_segment_id"] = None if segment in (None, "Any") else by_name.get(segment)
 
 
+def apply_staff_names(data, report):
+    """Fill in blank Staff names from the hand-written data/staff_names.json.
+
+    The workbook's Name column is empty for all 21 Staff rows today (see
+    data/staff_names.json's _README). The workbook always wins: a row whose
+    Name cell is non-blank is left exactly as read. A row that is still blank
+    is filled from the fallback file and NOTEd, not warned about — this is
+    expected until Cameron types names into the workbook, not a gap.
+    """
+    staff = data.get("staff")
+    if not staff:
+        return
+
+    names_path = DATA_DIR / "staff_names.json"
+    if not names_path.exists():
+        report.warn("staff", "data/staff_names.json is missing — every blank Name stays blank")
+        return
+
+    fallback = json.loads(names_path.read_text(encoding="utf-8")).get("names", {})
+    used_fallback = []
+    for member in staff:
+        if is_null(member.get("name")):
+            sfid = member["staff_id"]
+            if sfid in fallback:
+                member["name"] = fallback[sfid]
+                used_fallback.append(sfid)
+            else:
+                report.warn("staff", f"{sfid} has no Name in the workbook and no "
+                            "fallback in data/staff_names.json")
+    if used_fallback:
+        report.note(
+            f"staff: {len(used_fallback)} name(s) came from data/staff_names.json "
+            f"(the workbook's own Name column is still blank for these): "
+            f"{', '.join(used_fallback)}",
+        )
+
+
 def reshape_affinity(rows):
     """
     Turns the affinity grid into one row per suit with its stage multipliers
@@ -1652,6 +1689,7 @@ def main():
         data["rules"] = {}
 
     add_segment_ids(data, report)
+    apply_staff_names(data, report)
     fold_questions(data, report)
     validate(data, report)
     check_text_keys(data, report)

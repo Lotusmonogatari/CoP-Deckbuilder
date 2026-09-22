@@ -1398,5 +1398,54 @@
     "english": "In this room: {effect}",
     "placeholders": "effect",
     "notes": null
+  },
+  {
+    "key": "office.staff",
+    "where": "Office — management menu, Recruitment shop title",
+    "english": "Staff",
+    "placeholders": null,
+    "notes": "Hand-added 2026-09-22 for the Recruitment shop (Part B). Not yet in the workbook's Text tab — see the report for the exact row to paste in."
+  },
+  {
+    "key": "office.staff_blurb",
+    "where": "Office — Recruitment shop",
+    "english": "Each role can hold one hire at a time. Hiring and upgrading are paid from Funds.",
+    "placeholders": null,
+    "notes": "Hand-added 2026-09-22. Not yet in the workbook's Text tab."
+  },
+  {
+    "key": "office.staff_candidate",
+    "where": "Office — Recruitment shop, a vacant role's candidates",
+    "english": "{name}  —  {cost} Yen",
+    "placeholders": "name, cost",
+    "notes": "Hand-added 2026-09-22. Not yet in the workbook's Text tab."
+  },
+  {
+    "key": "office.hire",
+    "where": "Office — Recruitment shop, hire button",
+    "english": "Hire",
+    "placeholders": null,
+    "notes": "Hand-added 2026-09-22. Not yet in the workbook's Text tab."
+  },
+  {
+    "key": "office.staff_hired",
+    "where": "Office — Recruitment shop, a filled role",
+    "english": "{name}  —  Tier {tier} of {highest}",
+    "placeholders": "name, tier, highest",
+    "notes": "Hand-added 2026-09-22. Not yet in the workbook's Text tab."
+  },
+  {
+    "key": "office.upgrade",
+    "where": "Office — Recruitment shop, upgrade button",
+    "english": "Upgrade — {cost} Yen",
+    "placeholders": "cost",
+    "notes": "Hand-added 2026-09-22. Not yet in the workbook's Text tab."
+  },
+  {
+    "key": "office.staff_at_max",
+    "where": "Office — Recruitment shop, upgrade button when none is left",
+    "english": "At their highest tier.",
+    "placeholders": null,
+    "notes": "Hand-added 2026-09-22. Not yet in the workbook's Text tab."
   }
 ]

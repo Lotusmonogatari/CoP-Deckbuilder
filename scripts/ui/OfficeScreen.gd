@@ -28,6 +28,7 @@ var _chosen_level: Dictionary = {}
 @onready var _cards_panel: Overlay = %CardsPanel
 @onready var _deck_panel: Overlay = %DeckPanel
 @onready var _backing_panel: Overlay = %BackingPanel
+@onready var _staff_panel: Overlay = %StaffPanel
 
 ## The deck being built, while the deck screen is open. Kept here rather
 ## than read back off the buttons so the caption can count it as it changes.
@@ -142,6 +143,7 @@ func _show_management() -> void:
 		[Text.say("office.new_cards"), _show_cards],
 		[Text.say("office.your_deck"), _show_deck],
 		[Text.say("office.backing"), _show_backing],
+		[Text.say("office.staff"), _show_staff],
 	]:
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(0, 100)
@@ -460,6 +462,104 @@ func _on_buy_modifier(mod_id: String) -> void:
 		return
 	_refresh_resources()
 	_show_backing()
+
+
+## The Recruitment shop: one hired staff member per role, paid from Funds.
+##
+## Three roles, always shown in the same order (Ledger.STAFF_ROLES). A vacant
+## role lists its seven candidates as hire choices; a filled role shows who
+## is there and, where a next tier exists, the upgrade to it. There is no way
+## to replace a hire once made — see CLAUDE.md's Recruitment brief, and
+## GameState.hire_staff()/upgrade_staff().
+func _show_staff() -> void:
+	var rows: Array[Control] = []
+	rows.append(_wrapped_label(Text.say("office.staff_blurb")))
+	rows.append(_wrapped_label(Text.say("office.funds",
+		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
+
+	for role: String in Ledger.STAFF_ROLES:
+		rows.append(_heading_label(role))
+		var hired: Dictionary = GameState.staff_hired.get(role, {})
+		if hired.is_empty():
+			for candidate: Dictionary in DataDB.get_staff_by_role(role):
+				rows.append(_staff_candidate_row(candidate))
+		else:
+			rows.append(_staff_hired_row(role, hired))
+
+	_staff_panel.open(Text.say("office.staff"), rows)
+
+
+## One candidate for a vacant role, with a Hire button.
+func _staff_candidate_row(candidate: Dictionary) -> Control:
+	var staff_id := str(candidate.get("staff_id", ""))
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 2)
+
+	box.add_child(_wrapped_label(Text.say("office.staff_candidate", {
+		"name": candidate.get("name", staff_id),
+		"cost": int(candidate.get("hiring_cost_yen", 0)),
+	})))
+
+	var funds := int(GameState.meta.get("Funds", 0))
+	var refusal := Ledger.staff_hire_refusal(candidate,
+		GameState.staff_hired.get(str(candidate.get("role", "")), {}), funds, Text.phrase())
+	var button := Button.new()
+	button.custom_minimum_size = Vector2(0, 90)
+	button.text = Text.say("office.hire") if refusal.is_empty() else refusal
+	button.disabled = not refusal.is_empty()
+	if refusal.is_empty():
+		button.pressed.connect(_on_hire_staff.bind(staff_id))
+	box.add_child(button)
+	return box
+
+
+## The one candidate hired into a role, with an Upgrade button where a next
+## tier exists.
+func _staff_hired_row(role: String, hired: Dictionary) -> Control:
+	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
+	var tier := int(hired.get("tier", 0))
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 2)
+
+	box.add_child(_wrapped_label(Text.say("office.staff_hired", {
+		"name": candidate.get("name", hired.get("staff_id", "")),
+		"tier": tier,
+		"highest": int(candidate.get("highest_tier", 0)),
+	})))
+
+	var funds := int(GameState.meta.get("Funds", 0))
+	var refusal := Ledger.staff_upgrade_refusal(candidate, tier, funds, Text.phrase())
+	var button := Button.new()
+	button.custom_minimum_size = Vector2(0, 90)
+	var cost: Variant = Ledger.staff_upgrade_cost(candidate, tier)
+	if cost == null:
+		button.text = Text.say("office.staff_at_max")
+		button.disabled = true
+	else:
+		button.text = Text.say("office.upgrade", {"cost": int(cost)}) if refusal.is_empty() else refusal
+		button.disabled = not refusal.is_empty()
+		if refusal.is_empty():
+			button.pressed.connect(_on_upgrade_staff.bind(role))
+	box.add_child(button)
+	return box
+
+
+func _on_hire_staff(staff_id: String) -> void:
+	var refusal := GameState.hire_staff(staff_id)
+	if not refusal.is_empty():
+		_report.text = refusal
+		return
+	_refresh_resources()
+	_show_staff()   # rebuilt: the role just filled, and its price is spent
+
+
+func _on_upgrade_staff(role: String) -> void:
+	var refusal := GameState.upgrade_staff(role)
+	if not refusal.is_empty():
+		_report.text = refusal
+		return
+	_refresh_resources()
+	_show_staff()
 
 
 ## What the level ahead is worth, before committing to it.

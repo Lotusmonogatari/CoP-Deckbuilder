@@ -72,6 +72,16 @@ var booster_standing: Dictionary = {}
 ## What the last finished level did to those, e.g. { "BO08": 5 }.
 var last_booster_change: Dictionary = {}
 
+## Who is hired into each of the three Staff roles, and at what tier:
+## { "Policy Research Assistant": { "staff_id": "SF04", "tier": 1 }, ... }.
+## A role with no entry is vacant. There is no "fire" — once a role is
+## filled it only ever upgrades (see Ledger.gd's Staff section and
+## hire_staff()/upgrade_staff() below).
+##
+## Lives only for this sitting until M4 adds saving, same as everything else
+## on this page.
+var staff_hired: Dictionary = {}
+
 
 func _ready() -> void:
 	reset_meta()
@@ -85,6 +95,12 @@ func reset_meta() -> void:
 	xp = 0
 	last_xp_gained = 0
 	reset_collection()
+	reset_staff()
+
+
+## Every Staff role back to vacant.
+func reset_staff() -> void:
+	staff_hired = {}
 
 
 ## Back to the Starter twelve, owned and in the deck.
@@ -143,6 +159,96 @@ func buy_modifier(mod_id: String) -> String:
 
 	owned_modifiers.append(mod_id)
 	return ""
+
+
+## Hires a candidate into their role, spending Funds, if the role is vacant
+## and the price is affordable. Immediately applies whichever tier_N_reward
+## matches the tier they START at (candidates do not all start at tier 0 —
+## SF05 and SF07 start at tier 1).
+func hire_staff(staff_id: String) -> String:
+	var candidate := DataDB.get_staff(staff_id)
+	if candidate.is_empty():
+		return "Unknown staff candidate."
+
+	var role := str(candidate.get("role", ""))
+	var funds := int(meta.get("Funds", 0))
+	var refusal := Ledger.staff_hire_refusal(
+		candidate, staff_hired.get(role, {}), funds, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	_move_meta("Funds", -int(candidate.get("hiring_cost_yen", 0)))
+	var starting_tier := int(candidate.get("starting_tier", 0))
+	staff_hired[role] = {"staff_id": staff_id, "tier": starting_tier}
+	_apply_staff_reward(candidate, starting_tier)
+	return ""
+
+
+## Upgrades a role's hired candidate to the next tier, spending Funds, if that
+## step exists for them and is affordable. Applies the new tier's reward on
+## top of whatever hiring (and any earlier upgrade) already gave — these are
+## one-time bonuses per tier reached, not a repeating income, the same way a
+## modifier's RESOURCE_BONUS_ON_WIN tier is a flat payment rather than a rate
+## (see ModifierEffects.gd).
+func upgrade_staff(role: String) -> String:
+	var hired: Dictionary = staff_hired.get(role, {})
+	if hired.is_empty():
+		return "Nobody is hired for this role yet."
+
+	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
+	if candidate.is_empty():
+		return "Unknown staff candidate."
+
+	var tier := int(hired.get("tier", 0))
+	var funds := int(meta.get("Funds", 0))
+	var refusal := Ledger.staff_upgrade_refusal(candidate, tier, funds, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	var cost := int(Ledger.staff_upgrade_cost(candidate, tier))
+	_move_meta("Funds", -cost)
+
+	var new_tier := tier + 1
+	hired["tier"] = new_tier
+	staff_hired[role] = hired
+	_apply_staff_reward(candidate, new_tier)
+	return ""
+
+
+## A staff tier's reward, applied the moment it is reached (on hire, and
+## again on every upgrade that reaches a new tier).
+##
+## Each reward is {"delta": int, "target": "BOxx or SGxx"}. A BOxx target
+## moves booster_standing exactly the way _apply_level_bonus_win()'s own
+## booster loop already does, below.
+##
+## SGxx TARGETS ARE SKIPPED, ON PURPOSE. There is nowhere in this game —
+## GameState or otherwise — that tracks a CURRENT, mutable favourability per
+## audience segment; segments.json is static reference data (names, starting
+## audience shares), not player state. Inventing a new tracked value here,
+## as a side effect of the Staff feature, would be a real new system and not
+## something this brief asked for. Flagged for Cameron rather than guessed
+## at; see the Recruitment shop's report. Only BOxx-targeted rewards apply.
+func _apply_staff_reward(candidate: Dictionary, tier: int) -> void:
+	var rewards: Variant = candidate.get("tier_%d_reward" % tier)
+	if not (rewards is Array):
+		return
+
+	var low := int(DataDB.booster_standing.get("min", 0))
+	var high := int(DataDB.booster_standing.get("max", 100))
+	for reward: Variant in rewards:
+		if not (reward is Dictionary):
+			continue
+		var target := str((reward as Dictionary).get("target", ""))
+		var delta := int((reward as Dictionary).get("delta", 0))
+		if not target.begins_with("BO") or delta == 0:
+			continue   # SGxx target: see the note above
+
+		var before := int(booster_standing.get(target, 50))
+		var after := clampi(before + delta, low, high)
+		booster_standing[target] = after
+		if after != before:
+			last_booster_change[target] = int(last_booster_change.get(target, 0)) + (after - before)
 
 
 ## Replaces the deck, if the new one is legal.

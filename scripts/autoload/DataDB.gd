@@ -39,7 +39,7 @@ const REQUIRED_FILES := [
 	"modifiers", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
 	"card_cues", "questions",
-	"sounds", "stage_types", "strings",
+	"sounds", "staff", "stage_types", "strings",
 	"segments", "stages", "suits", "yoron",
 ]
 
@@ -71,6 +71,13 @@ var yoron: Array = []
 var bills: Array = []
 var sanban: Array = []
 var affinity: Array = []
+
+## The 21 hireable Staff candidates (SF01-21): 3 roles x 7 candidates each.
+## Names come from the workbook's own Name column where it is filled in, and
+## from data/staff_names.json (a hand-written fallback) where it is not — see
+## tools/export_data.py's apply_staff_names(). Read by the Office's
+## Recruitment shop; see GameState.staff_hired for who is actually hired.
+var staff: Array = []
 
 ## The 30 rows of the workbook's Levels tab (LV01-30), flat: level_id,
 ## description, unlock costs, stage_1..stage_10, bonus win ranges, win deltas
@@ -152,6 +159,7 @@ var _yoron_by_id: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
 var _journalists_by_id: Dictionary = {}
 var _levels_by_id: Dictionary = {}
+var _staff_by_id: Dictionary = {}
 var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
 
 ## Problems found at startup. Errors mean something is genuinely broken;
@@ -187,6 +195,7 @@ func load_all() -> void:
 			"bills": bills = content
 			"sanban": sanban = content
 			"affinity": affinity = content
+			"staff": staff = content
 			"balance": balance = content
 			"lists": lists = content
 			"rules": rules = _flatten_rules(content)
@@ -413,6 +422,7 @@ func _build_lookups() -> void:
 	_sanban_by_name = _index(sanban, "name_en")
 	_journalists_by_id = _index(journalists, "journalist_id")
 	_levels_by_id = _index(levels, "level_id")
+	_staff_by_id = _index(staff, "staff_id")
 
 	_affinity.clear()
 	for row: Dictionary in affinity:
@@ -522,6 +532,18 @@ func get_opponents_for_stage(stage_id: String) -> Array:
 ## A level row from levels.json, by its LV-number ID.
 func get_level(level_id: String) -> Dictionary:
 	return _lookup(_levels_by_id, level_id, "level")
+
+
+func get_staff(staff_id: String) -> Dictionary:
+	return _lookup(_staff_by_id, staff_id, "staff candidate")
+
+
+## Every candidate for one Staff role ("Policy Research Assistant", "Media
+## Spokesperson", "District Representative"), in staff.json's own order
+## (SF01-07, SF08-14, SF15-21) — that order is Cameron's own workbook layout,
+## not something this file decides.
+func get_staff_by_role(role: String) -> Array:
+	return staff.filter(func(member: Dictionary) -> bool: return member.get("role") == role)
 
 
 func get_segment(segment_id: String) -> Dictionary:
