@@ -1,0 +1,593 @@
+[
+  {
+    "staff_id": "SF01",
+    "role": "Policy Research Assistant",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 0,
+    "hiring_cost_yen": 10000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 1,
+        "target": "SG03"
+      }
+    ],
+    "tier_1_reward": null,
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF02",
+    "role": "Policy Research Assistant",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 1,
+    "hiring_cost_yen": 25000,
+    "upgrade_cost_0_to_1_yen": 50000,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO05"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO04"
+      },
+      {
+        "delta": 2,
+        "target": "SG01"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF03",
+    "role": "Policy Research Assistant",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 1,
+    "hiring_cost_yen": 25000,
+    "upgrade_cost_0_to_1_yen": 50000,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO05"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 4,
+        "target": "BO05"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF04",
+    "role": "Policy Research Assistant",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 2,
+    "hiring_cost_yen": 50000,
+    "upgrade_cost_0_to_1_yen": 30000,
+    "upgrade_cost_1_to_2_yen": 50000,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "SG03"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
+        "target": "SG05"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
+        "target": "SG05"
+      },
+      {
+        "delta": 2,
+        "target": "BO02"
+      }
+    ]
+  },
+  {
+    "staff_id": "SF05",
+    "role": "Policy Research Assistant",
+    "name": null,
+    "starting_tier": 1,
+    "highest_tier": 1,
+    "hiring_cost_yen": 75000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": null,
+    "tier_1_reward": [
+      {
+        "delta": 3,
+        "target": "SG04"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF06",
+    "role": "Policy Research Assistant",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 2,
+    "hiring_cost_yen": 90000,
+    "upgrade_cost_0_to_1_yen": 30000,
+    "upgrade_cost_1_to_2_yen": 10000,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO02"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO02"
+      },
+      {
+        "delta": 2,
+        "target": "SG02"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO02"
+      },
+      {
+        "delta": 2,
+        "target": "SG02"
+      },
+      {
+        "delta": 2,
+        "target": "BO01"
+      }
+    ]
+  },
+  {
+    "staff_id": "SF07",
+    "role": "Policy Research Assistant",
+    "name": null,
+    "starting_tier": 1,
+    "highest_tier": 2,
+    "hiring_cost_yen": 100000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": 25000,
+    "tier_0_reward": null,
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO09"
+      },
+      {
+        "delta": 2,
+        "target": "SG04"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO09"
+      },
+      {
+        "delta": 4,
+        "target": "SG04"
+      }
+    ]
+  },
+  {
+    "staff_id": "SF08",
+    "role": "Media Spokesperson",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 0,
+    "hiring_cost_yen": 10000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 1,
+        "target": "SG01"
+      }
+    ],
+    "tier_1_reward": null,
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF09",
+    "role": "Media Spokesperson",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 1,
+    "hiring_cost_yen": 25000,
+    "upgrade_cost_0_to_1_yen": 50000,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO01"
+      },
+      {
+        "delta": 2,
+        "target": "SG01"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF10",
+    "role": "Media Spokesperson",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 1,
+    "hiring_cost_yen": 25000,
+    "upgrade_cost_0_to_1_yen": 50000,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 4,
+        "target": "BO08"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF11",
+    "role": "Media Spokesperson",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 2,
+    "hiring_cost_yen": 50000,
+    "upgrade_cost_0_to_1_yen": 30000,
+    "upgrade_cost_1_to_2_yen": 50000,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "SG01"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "SG01"
+      },
+      {
+        "delta": 2,
+        "target": "SG04"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "SG01"
+      },
+      {
+        "delta": 2,
+        "target": "SG04"
+      },
+      {
+        "delta": 2,
+        "target": "BO08"
+      }
+    ]
+  },
+  {
+    "staff_id": "SF12",
+    "role": "Media Spokesperson",
+    "name": null,
+    "starting_tier": 1,
+    "highest_tier": 1,
+    "hiring_cost_yen": 75000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": null,
+    "tier_1_reward": [
+      {
+        "delta": 3,
+        "target": "SG01"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF13",
+    "role": "Media Spokesperson",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 2,
+    "hiring_cost_yen": 90000,
+    "upgrade_cost_0_to_1_yen": 30000,
+    "upgrade_cost_1_to_2_yen": 10000,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      },
+      {
+        "delta": 2,
+        "target": "SG02"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      },
+      {
+        "delta": 2,
+        "target": "SG02"
+      },
+      {
+        "delta": 2,
+        "target": "BO01"
+      }
+    ]
+  },
+  {
+    "staff_id": "SF14",
+    "role": "Media Spokesperson",
+    "name": null,
+    "starting_tier": 1,
+    "highest_tier": 2,
+    "hiring_cost_yen": 100000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": 25000,
+    "tier_0_reward": null,
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      },
+      {
+        "delta": 2,
+        "target": "SG04"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      },
+      {
+        "delta": 4,
+        "target": "SG04"
+      }
+    ]
+  },
+  {
+    "staff_id": "SF15",
+    "role": "District Representative",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 0,
+    "hiring_cost_yen": 10000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 1,
+        "target": "BO03"
+      }
+    ],
+    "tier_1_reward": null,
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF16",
+    "role": "District Representative",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 1,
+    "hiring_cost_yen": 25000,
+    "upgrade_cost_0_to_1_yen": 50000,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO03"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO04"
+      },
+      {
+        "delta": 2,
+        "target": "SG03"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF17",
+    "role": "District Representative",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 1,
+    "hiring_cost_yen": 25000,
+    "upgrade_cost_0_to_1_yen": 50000,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO03"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 4,
+        "target": "BO03"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF18",
+    "role": "District Representative",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 2,
+    "hiring_cost_yen": 50000,
+    "upgrade_cost_0_to_1_yen": 30000,
+    "upgrade_cost_1_to_2_yen": 50000,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "SG03"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
+        "target": "BO06"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
+        "target": "BO06"
+      },
+      {
+        "delta": 2,
+        "target": "BO04"
+      }
+    ]
+  },
+  {
+    "staff_id": "SF19",
+    "role": "District Representative",
+    "name": null,
+    "starting_tier": 1,
+    "highest_tier": 1,
+    "hiring_cost_yen": 75000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": null,
+    "tier_0_reward": null,
+    "tier_1_reward": [
+      {
+        "delta": 3,
+        "target": "SG03"
+      }
+    ],
+    "tier_2_reward": null
+  },
+  {
+    "staff_id": "SF20",
+    "role": "District Representative",
+    "name": null,
+    "starting_tier": 0,
+    "highest_tier": 2,
+    "hiring_cost_yen": 90000,
+    "upgrade_cost_0_to_1_yen": 30000,
+    "upgrade_cost_1_to_2_yen": 10000,
+    "tier_0_reward": [
+      {
+        "delta": 2,
+        "target": "BO04"
+      }
+    ],
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO04"
+      },
+      {
+        "delta": 2,
+        "target": "SG03"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO04"
+      },
+      {
+        "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
+        "target": "BO03"
+      }
+    ]
+  },
+  {
+    "staff_id": "SF21",
+    "role": "District Representative",
+    "name": null,
+    "starting_tier": 1,
+    "highest_tier": 2,
+    "hiring_cost_yen": 100000,
+    "upgrade_cost_0_to_1_yen": null,
+    "upgrade_cost_1_to_2_yen": 25000,
+    "tier_0_reward": null,
+    "tier_1_reward": [
+      {
+        "delta": 2,
+        "target": "BO14"
+      },
+      {
+        "delta": 2,
+        "target": "SG03"
+      }
+    ],
+    "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO14"
+      },
+      {
+        "delta": 4,
+        "target": "SG03"
+      }
+    ]
+  }
+]

@@ -4,47 +4,41 @@
     "suit_jp": "誠実",
     "romaji": "Seijitsu",
     "gloss": "sincerity",
-    "play_pattern": "Steady own-support gain; resists and cleans up gaffes",
-    "cards_in_pool": null
+    "card_design_template": "Sumo"
   },
   {
     "element": "Emotional",
     "suit_jp": "情熱",
     "romaji": "Jōnetsu",
     "gloss": "passion",
-    "play_pattern": "Burst gains that scale with crowd size; some gaffe risk",
-    "cards_in_pool": null
+    "card_design_template": "Sakura"
   },
   {
     "element": "Appeal",
     "suit_jp": "求心",
     "romaji": "Kyūshin",
     "gloss": "rallying pull",
-    "play_pattern": "Segment-targeted gains, setup and card flow (根回し)",
-    "cards_in_pool": null
+    "card_design_template": "Ukiyoe"
   },
   {
     "element": "Data Driven",
     "suit_jp": "実証",
     "romaji": "Jisshō",
     "gloss": "evidence",
-    "play_pattern": "Refutation: lowers opponent support; strong in committee",
-    "cards_in_pool": null
+    "card_design_template": "Shoji"
   },
   {
     "element": "Divisive",
     "suit_jp": "分断",
     "romaji": "Bundan",
     "gloss": "division",
-    "play_pattern": "Steals support both ways; polarizes; moderate gaffe risk",
-    "cards_in_pool": null
+    "card_design_template": "Castle"
   },
   {
     "element": "Duplicitous",
     "suit_jp": "二枚舌",
     "romaji": "Nimaijita",
     "gloss": "two tongues",
-    "play_pattern": "High power and strong guards, heavy gaffe accrual",
-    "cards_in_pool": null
+    "card_design_template": "Ninja"
   }
 ]

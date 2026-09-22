@@ -2,7 +2,7 @@
   {
     "key": "outcome.carried",
     "where": "End of stage — title",
-    "english": "Carried",
+    "english": "Taken care of",
     "placeholders": null,
     "notes": "The title when you win a stage."
   },
@@ -30,7 +30,7 @@
   {
     "key": "outcome.closed",
     "where": "End of stage — title",
-    "english": "{stage} closed",
+    "english": "{stage} concluded.",
     "placeholders": "stage",
     "notes": "For a room that is scored rather than won: the caucus, the town hall, the TV debate."
   },
@@ -653,21 +653,21 @@
   {
     "key": "office.report.none",
     "where": "Office",
-    "english": "Nothing on today. The House sits shortly.",
+    "english": "Chatter fills the National Assembly halls.",
     "placeholders": null,
     "notes": "Before your first level."
   },
   {
     "key": "office.report.won",
     "where": "Office",
-    "english": "The bill carried. Word has got round.",
+    "english": "Your performance is getting attention.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "office.report.lost",
     "where": "Office",
-    "english": "The bill failed. There will be questions.",
+    "english": "Your performance is … stirring up rumors.",
     "placeholders": null,
     "notes": null
   },
@@ -1239,7 +1239,7 @@
     "notes": null
   },
   {
-    "key": "modifier.kaban_per_stage_win",
+    "key": "modifier.reputation_per_stage_win",
     "where": "Office · backing shop",
     "english": "+{count} funds for every stage won.",
     "placeholders": "count",
