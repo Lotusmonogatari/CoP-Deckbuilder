@@ -9,6 +9,10 @@
 
 const DATA = window.COP_DATA;
 
+// PLAYTEST SETTING, mirroring GameState.open_collection in the Godot build.
+// See where ownedCards is built, below, for what it is for.
+const OPEN_COLLECTION = true;
+
 const el = (tag, className, text) => {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -46,6 +50,23 @@ const run = {
   // Nothing spends this yet — the XP checkpoint is milestone M5 — but it is
   // banked rather than discarded so the checkpoint opens on a real number.
   xp: 0,
+  // What you own and what you are taking in. The deck is a fixed size, so
+  // unlocking a card means leaving another out.
+  //
+  // OPEN_COLLECTION is a playtest setting, matching GameState.open_collection
+  // in the Godot build: true hands you every card in the workbook from the
+  // first moment. Cameron asked for the XP and Yen economy to be left aside
+  // while he prices it by playing, and an unreachable card cannot be
+  // playtested. Set it false and the collection starts at the opening tier
+  // again; nothing else changes, because the Ledger still refuses anything
+  // unaffordable.
+  ownedCards: DATA.cards
+    .filter(c => OPEN_COLLECTION || str(c.tier, '') === OPENING_TIER)
+    .map(c => c.card_id),
+  deck: openingDeck(DATA.cards, DATA.balance || {}),
+  ownedModifiers: [],
+  // The level picked in the Office, and the one a briefing describes.
+  chosenLevel: null,
   engine: null,
   stage: null,
   selected: null,
@@ -111,7 +132,7 @@ function showOffice() {
   // The player's standing. Nothing else in the level shows these, and the
   // press conference now moves one of them.
   const standing = el('section', 'standing');
-  standing.append(el('h2', 'label', 'Where you stand'));
+  standing.append(el('h2', 'label', T('office.where_you_stand')));
   const grid = el('dl', 'standing-grid');
   for (const row of DATA.sanban) {
     const change = run.lastMetaChange[row.name_en];
@@ -127,13 +148,31 @@ function showOffice() {
   standing.append(grid);
   root.append(standing);
 
-  const start = el('button', 'primary', 'Start ' + DATA.playtest_level.name_en);
+  const start = el('button', 'primary', T('office.choose_level'));
   start.id = 'start-level';
-  start.addEventListener('click', showBriefing);
+  start.addEventListener('click', showLevels);
   root.append(start);
 
+  // Everything you can SPEND now lives behind one door. A playtest reported
+  // not being able to find the XP and Funds stores at all, because they sat
+  // as a quiet line of text above three buttons that looked alike and none
+  // of which said which currency it wanted.
+  //
+  // What stays out here is the warning: a deck that is not legal cannot
+  // start a level, and a player must not have to open a panel to find out.
+  const deckSay = deckRefusal(run.deck, run.ownedCards, DATA.balance || {}, phrase(STRINGS));
+  const spend = el('p', 'office-report', deckSay
+    ? T('office.deck_warning', {reason: deckSay})
+    : T('office.in_order'));
+  root.append(spend);
+
+  const management = el('button', 'ghost', T('office.management'));
+  management.id = 'office-management';
+  management.addEventListener('click', showManagement);
+  root.append(management);
+
   // Who is behind you, and how far. Secondary, so it lives behind a button.
-  const orgs = el('button', 'ghost', 'The organisations');
+  const orgs = el('button', 'ghost', T('office.organisations'));
   orgs.id = 'organisations';
   orgs.addEventListener('click', showOrganisations);
   root.append(orgs);
@@ -142,9 +181,92 @@ function showOffice() {
 }
 
 function lastLevelReport() {
-  if (!run.lastLevelOutcome) return 'Nothing on today. The House sits shortly.';
-  if (run.lastLevelOutcome === WON) return 'The bill carried. Word has got round.';
-  return 'The bill failed. There will be questions.';
+  if (!run.lastLevelOutcome) return T('office.report.none');
+  if (run.lastLevelOutcome === WON) return T('office.report.won');
+  return T('office.report.lost');
+}
+
+// Everything there is to spend, and everything to spend it on.
+//
+// One door rather than three side by side, and it leads with the two
+// currencies and what each of them buys. Knowing you have 30 Funds is no use
+// if nothing says that Funds are what backing costs. Mirrors
+// OfficeScreen._show_management.
+function showManagement() {
+  overlay(T('office.management'), sheet => {
+    const money = [
+      ['XP ' + run.xp, T('office.xp_buys')],
+      ['Funds ' + int(run.meta.Funds, 0),
+        T('office.funds_buys')],
+    ];
+    for (const [heading, note] of money) {
+      sheet.append(el('h2', 'org-tier', heading));
+      sheet.append(el('p', 'org-boosts', note));
+    }
+
+    const refusal = deckRefusal(run.deck, run.ownedCards, DATA.balance || {}, phrase(STRINGS));
+    sheet.append(el('h2', 'org-tier',
+      'Deck ' + run.deck.length + ' of ' + deckSize(DATA.balance || {})));
+    sheet.append(el('p', 'org-boosts', refusal || T('office.deck_ready')));
+
+    for (const [label, id, handler] of [
+      [T('office.new_cards'), 'new-cards', showCardShop],
+      [T('office.your_deck'), 'your-deck', showDeckScreen],
+      [T('office.backing'), 'backing', showBackingShop],
+    ]) {
+      const button = el('button', 'ghost', label);
+      button.id = id;
+      button.addEventListener('click', () => {
+        sheet.closest('.backdrop').remove();
+        handler();
+      });
+      sheet.append(button);
+    }
+  });
+}
+
+// Which level to play. Six of them now, grouped by tier.
+//
+// Tier 1 and 2 are bought with XP in the finished game; while Cameron prices
+// the economy by playing, every level is simply open. Mirrors
+// OfficeScreen._show_levels.
+function showLevels() {
+  overlay('Levels', sheet => {
+    sheet.append(el('p', 'detail-line', 'Each level is a run of stages. Pick '
+      + 'one and you will see what it holds before you commit.'));
+
+    const byTier = {};
+    for (const level of DATA.levels) {
+      const tier = int(level.tier, 0);
+      (byTier[tier] = byTier[tier] || []).push(level);
+    }
+
+    for (const tier of [0, 1, 2]) {
+      if (!byTier[tier]) continue;
+      sheet.append(el('h2', 'org-tier', 'Tier ' + tier));
+      for (const level of byTier[tier]) sheet.append(levelRow(level, sheet));
+    }
+  });
+}
+
+function levelRow(level, sheet) {
+  const box = el('div', 'level-row');
+  const count = (level.stages || []).length;
+
+  box.append(el('p', 'detail-line',
+    str(level.name_en, '') + '  ' + str(level.name_jp, '')));
+  box.append(el('p', 'org-boosts',
+    count + ' stage' + (count === 1 ? '' : 's') + '  ·  ' + str(level.blurb, '')));
+
+  const button = el('button', 'ghost', 'Look it over');
+  button.className = 'ghost level-pick';
+  button.addEventListener('click', () => {
+    run.chosenLevel = level;
+    sheet.closest('.backdrop').remove();
+    showBriefing();
+  });
+  box.append(button);
+  return box;
 }
 
 // What the level ahead is worth, before committing to it.
@@ -157,10 +279,13 @@ function lastLevelReport() {
 // so in words. Four zeroes would read as "this level is worthless"; "not set
 // yet" is the truth, and it is Cameron's to set.
 function showBriefing() {
-  overlay('Before you go in', sheet => {
+  const level = run.chosenLevel;
+  if (!level) { showLevels(); return; }
+
+  overlay(level.name_en, sheet => {
     let anythingSet = false;
 
-    for (const stage of DATA.playtest_level.stages) {
+    for (const stage of level.stages) {
       sheet.append(el('h2', 'org-tier', stage.name_en));
 
       const who = opponentsLine(stage);
@@ -175,21 +300,21 @@ function showBriefing() {
       anythingSet = true;
       const rewards = winRewards(stage);
       for (const name of Object.keys(rewards)) {
-        sheet.append(el('p', 'detail-line',
-          name + ' ' + (rewards[name] > 0 ? '+' : '\u2212') + Math.abs(rewards[name])));
+        sheet.append(el('p', 'detail-line', T('reward.delta', {
+          name: name,
+          amount: (rewards[name] > 0 ? '+' : '\u2212') + Math.abs(rewards[name]),
+        })));
       }
       const xp = int(stage.xp_reward, 0);
-      if (xp > 0) sheet.append(el('p', 'detail-line', xp + ' XP'));
-      for (const line of variableRewards(stage)) {
+      if (xp > 0) sheet.append(el('p', 'detail-line', T('outcome.xp', { count: xp })));
+      for (const line of variableRewards(stage, phrase(STRINGS))) {
         sheet.append(el('p', 'org-boosts', line));
       }
     }
 
     if (!anythingSet) {
       sheet.append(el('div', 'gap'));
-      sheet.append(el('p', 'detail-line', 'Nothing in this level pays out yet. '
-        + 'The slots are in the data waiting for numbers, and the moment they '
-        + 'have any, they will land here and on your standing.'));
+      sheet.append(el('p', 'detail-line', T('reward.nothing_set')));
     }
 
     // Losing is the same everywhere for now, and saying so is worth a line:
@@ -206,9 +331,12 @@ function showBriefing() {
     });
     sheet.append(go);
 
-    const back = el('button', 'ghost', 'Back');
+    const back = el('button', 'ghost', 'Pick another');
     back.id = 'briefing-back';
-    back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+    back.addEventListener('click', () => {
+      sheet.closest('.backdrop').remove();
+      showLevels();
+    });
     sheet.append(back);
   });
 }
@@ -228,7 +356,7 @@ function opponentsLine(stage) {
 }
 
 function startLevel() {
-  run.runner = new LevelRunner(DATA.playtest_level);
+  run.runner = new LevelRunner(run.chosenLevel);
   run.lastLevelOutcome = '';
   run.lastMetaChange = {};
   run.lastBoosterChange = {};
@@ -241,10 +369,8 @@ function startLevel() {
 // distinction: a Constituency group is worth something different from a
 // National one, and seeing them mixed hides that.
 function showOrganisations() {
-  overlay('The organisations', sheet => {
-    sheet.append(el('p', 'detail-line', 'Answering a reporter in the suit '
-      + 'their question invites pleases the organisation behind it, and that '
-      + 'standing is carried between levels.'));
+  overlay(T('office.organisations'), sheet => {
+    sheet.append(el('p', 'detail-line', T('office.orgs_blurb')));
 
     for (const tier of ['Party', 'Constituency', 'National']) {
       const inTier = DATA.boosters.filter(b => b.tier === tier);
@@ -276,6 +402,183 @@ function showOrganisations() {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Spending what a run has earned
+// ---------------------------------------------------------------------------
+// Three screens, one shape: a list of things, each with its price and either
+// a button to buy it or the reason you cannot. Every one of those answers
+// comes from the ledger in engine.js, so a screen can never offer what the
+// rules would refuse.
+
+function showCardShop() {
+  overlay(T('office.new_cards'), sheet => {
+    sheet.append(el('p', 'detail-line', T('office.cards_blurb')));
+    sheet.append(el('h3', 'org-tier', 'XP ' + run.xp));
+
+    for (const tier of ['Tier 1', 'Tier 2']) {
+      const inTier = DATA.cards.filter(c => c.tier === tier);
+      if (inTier.length === 0) continue;
+      sheet.append(el('h3', 'org-tier', tier));
+
+      for (const card of inTier) {
+        const row = el('div', 'org');
+        row.append(el('p', 'org-name', card.name_en + '  —  ' + cardCost(card) + ' XP'));
+        row.append(el('p', 'org-boosts', card.suit + '  ·  ' + (card.effect_text || '')));
+
+        const refusal = cardRefusal(card, run.ownedCards, run.xp, phrase(STRINGS));
+        const buy = el('button', refusal ? 'ghost' : 'primary', refusal || T('office.unlock'));
+        buy.disabled = !!refusal;
+        if (!refusal) {
+          buy.addEventListener('click', () => {
+            run.xp -= cardCost(card);
+            run.ownedCards.push(card.card_id);
+            sheet.closest('.backdrop').remove();
+            showOffice();
+            showCardShop();
+          });
+        }
+        row.append(buy);
+        sheet.append(row);
+      }
+    }
+
+    const back = el('button', 'ghost', 'Back');
+    back.id = 'cards-close';
+    back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+    sheet.append(back);
+  });
+}
+
+// A fixed size, so unlocking a card means leaving another out. Without that
+// constraint an unlock would be a free upgrade and this screen would have
+// nothing to decide.
+function showDeckScreen() {
+  let draft = run.deck.slice();
+
+  const build = () => {
+    document.querySelectorAll('.backdrop').forEach(n => n.remove());
+    overlay(T('office.your_deck'), sheet => {
+      const refusal = deckRefusal(draft, run.ownedCards, DATA.balance || {}, phrase(STRINGS));
+      sheet.append(el('h3', 'org-tier', draft.length + ' of '
+        + deckSize(DATA.balance || {}) + ' chosen' + (refusal ? '  —  ' + refusal : '')));
+      sheet.append(el('p', 'detail-line', T('office.deck_tap')));
+
+      for (const cardId of run.ownedCards) {
+        const card = DATA.cards.find(c => c.card_id === cardId);
+        if (!card) continue;
+        const chosen = draft.includes(cardId);
+
+        const row = el('div', 'org');
+        if (!chosen) row.style.opacity = '0.5';
+
+        // The cost goes first, because that is what the choice turns on: a
+        // deck of twelve threes cannot be played three energy at a time.
+        //
+        // The PRINTED cost, not what a battle would charge. There is no
+        // battle here, so no discount applies and there is no engine to ask.
+        //
+        // The name on the button and the effect beneath it: both on the
+        // button ran a long card off the side of the screen.
+        const toggle = el('button', 'ghost',
+          (chosen ? '✓  ' : '–  ') + int(card.cost, 0) + '  ' + card.name_en);
+        toggle.addEventListener('click', () => {
+          draft = chosen ? draft.filter(id => id !== cardId) : draft.concat([cardId]);
+          build();
+        });
+        row.append(toggle);
+        row.append(el('p', 'org-boosts', card.effect_text || ''));
+        sheet.append(row);
+      }
+
+      if (!refusal) {
+        const save = el('button', 'primary', T('office.deck_confirm'));
+        save.id = 'deck-save';
+        save.addEventListener('click', () => {
+          run.deck = draft.slice();
+          sheet.closest('.backdrop').remove();
+          showOffice();
+        });
+        sheet.append(save);
+      }
+
+      const back = el('button', 'ghost', 'Back');
+      back.id = 'deck-close';
+      back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+      sheet.append(back);
+    });
+  };
+
+  build();
+}
+
+// An organisation will not sell you its backing until you have given it
+// reason to — the first thing standing has ever done.
+function showBackingShop() {
+  overlay(T('office.backing'), sheet => {
+    sheet.append(el('p', 'detail-line', T('office.backing_blurb')));
+    sheet.append(el('h3', 'org-tier', 'Funds ' + int(run.meta.Funds, 0)));
+
+    const names = boosterNames(DATA);
+    const ids = DATA.boosters.map(b => b.booster_id);
+    const settings = DATA.booster_standing || {};
+    const bridge = DATA.modifier_effects || {};
+
+    for (const modifier of DATA.modifiers.filter(isForSale)) {
+      const row = el('div', 'org');
+      row.append(el('p', 'org-name',
+        modifier.name_en + '  —  ' + modifierCost(modifier) + ' funds'));
+
+      const booster = backingBooster(modifier, ids);
+      if (booster) {
+        const have = int(run.boosterStanding[booster], 0);
+        const needed = standingNeeded(modifier, settings);
+        row.append(el('p', 'org-boosts', (names[booster] || booster)
+          + (have >= needed ? '  ·  standing ' + have
+                            : '  ·  standing ' + have + ', needs ' + needed)));
+      }
+      row.append(el('p', 'org-boosts', describeEffect(modifier, bridge, phrase(STRINGS))));
+
+      // A shop that sells something inert is the trap this project has
+      // walked into twice.
+      if (effectIsInertToday(modifier, bridge)) {
+        row.append(el('p', 'org-boosts', T('office.no_effect_yet')));
+      } else if (!effectIsImplemented(modifier, bridge)) {
+        row.append(el('p', 'org-boosts',
+          T('office.not_active_yet')));
+      }
+
+      const refusal = modifierRefusal(modifier, run.ownedModifiers,
+        int(run.meta.Funds, 0), run.boosterStanding, settings, ids, phrase(STRINGS));
+      const buy = el('button', refusal ? 'ghost' : 'primary',
+        refusal || T('office.take_backing'));
+      buy.disabled = !!refusal;
+      if (!refusal) {
+        buy.addEventListener('click', () => {
+          // Clamped, like the stage payout below and like GameState._move_meta
+          // in the Godot build. The Ledger has already refused anything
+          // unaffordable, so this cannot bite today — but it was the one place
+          // a standing could leave the range sanban.json gives it, and the two
+          // builds should not disagree about their own money.
+          const fundsRow = DATA.sanban.find(v => v.name_en === 'Funds') || {};
+          run.meta.Funds = clampMeta(
+            int(run.meta.Funds, 0) - modifierCost(modifier), fundsRow);
+          run.ownedModifiers.push(modifier.mod_id);
+          sheet.closest('.backdrop').remove();
+          showOffice();
+          showBackingShop();
+        });
+      }
+      row.append(buy);
+      sheet.append(row);
+    }
+
+    const back = el('button', 'ghost', 'Back');
+    back.id = 'backing-close';
+    back.addEventListener('click', () => sheet.closest('.backdrop').remove());
+    sheet.append(back);
+  });
+}
+
 // Raises the player's standing with everyone pleased in a stage.
 function pleaseOrganisations(boosters) {
   const step = int(DATA.booster_standing.per_please, 5);
@@ -300,7 +603,8 @@ function openStage() {
 
   const ok = run.engine.setup(forPlaytestStage(
     DATA, run.stage, run.runner.carriedBuffs(), run.meta,
-    Math.floor(Math.random() * 0x7fffffff)));
+    Math.floor(Math.random() * 0x7fffffff),
+    { deck: run.deck, modifiers: run.ownedModifiers }));
 
   if (!ok) {
     root.replaceChildren();
@@ -353,11 +657,13 @@ function drawBattle() {
   const right = el('div', 'status-right');
   // How much of the next attack is already covered. Shown only when there is
   // some: a permanent "Guarding 0" is noise.
-  if (s.block > 0) right.append(el('span', 'guarding', 'Guarding ' + s.block));
+  right.append(el('span', 'guarding',
+    T('battle.your_guard', { count: s.block, cap: s.guard_cap })));
   // And theirs. Banked and spent since the last round, never once shown, so
   // the player could only infer it after the fact from "their guard stopped 3".
   if (s.opponent_block > 0) {
-    right.append(el('span', 'their-guard', 'They guard ' + s.opponent_block));
+    right.append(el('span', 'their-guard',
+      T('battle.their_guard', { count: s.opponent_block, cap: s.guard_cap })));
   }
   // The gaffe warning turns red ONLY when one more would end the stage.
   right.append(el('span', engine.gaffeIsCritical() ? 'gaffes warn' : 'gaffes',
@@ -397,8 +703,8 @@ function drawBattle() {
     // a playtest read it as having stopped after the first time.
     if (turn.passed && !engine.state.isOver()) {
       lines.push(engine.isPressConference()
-        ? 'You let that one go. The room cools.'
-        : 'You said nothing. One less energy this turn.');
+        ? T('battle.declined')
+        : T('battle.passed'));
     }
 
     const said = describeOpponentMove(turn.opponent, stage, engine.state, speaker);
@@ -432,7 +738,8 @@ function speakerRow() {
       row.append(placeholderArt(journalist.journalist_id, '64px'));
       text.append(el('h2', null, journalist.name));
     }
-    text.append(el('p', 'says', question ? question.text : 'That was the last question.'));
+    text.append(el('p', 'says',
+      question ? question.text : T('battle.last_question')));
     row.append(text);
     return row;
   }
@@ -440,8 +747,11 @@ function speakerRow() {
   const opponent = engine.currentOpponent();
   const caption = engine.opponentCaption();
   row.append(placeholderArt(String(opponent.opp_id || ''), '64px'));
-  text.append(el('h2', null, (opponent.name || 'Visitor A') + (caption ? '  ·  ' + caption : '')));
-  text.append(el('p', 'says', IntentRunner.describe(engine.currentIntent())));
+  text.append(el('h2', null, caption
+    ? T('battle.who_and_caption', { who: opponent.name || 'Visitor A', caption: caption })
+    : (opponent.name || 'Visitor A')));
+  text.append(el('p', 'says',
+    IntentRunner.describe(engine.currentIntent(), phrase(STRINGS))));
   row.append(text);
   return row;
 }
@@ -468,12 +778,13 @@ function supportBar() {
   const wrap = el('section', 'bar-wrap');
   let caption;
   if (hasThreshold) {
-    caption = amount(bar.threshold) + (percent ? '' : ' ' + unit.toLowerCase())
-      + (winsStage ? ' to win' : ' to advance');
+    caption = T(winsStage ? 'bar.to_win' : 'bar.to_advance', {
+      amount: amount(bar.threshold) + (percent ? '' : ' ' + unit.toLowerCase()),
+    });
   } else if (percent) {
-    caption = 'Take as much of the room as you can';
+    caption = T('bar.take_the_room');
   } else {
-    caption = 'Raise ' + unit.toLowerCase() + ' as high as you can';
+    caption = T('bar.raise_as_high', { unit: unit.toLowerCase() });
   }
   wrap.append(el('p', 'bar-caption', caption));
 
@@ -500,12 +811,16 @@ function supportBar() {
   // A name too long for the row falls back to "Them" rather than being
   // shortened: taking the first word turned "The Caucus Panel" into "The".
   let other = String(opponentDisplayName() || '').trim();
-  if (other === '' || other.length > 18) other = 'Them';
+  if (other === '' || other.length > 18) other = T('bar.them');
 
   wrap.append(el('p', 'bar-readout', twoSided
-    ? 'You ' + amount(bar.player) + ' · Undecided ' + amount(bar.undecided)
-      + ' · ' + other + ' ' + amount(bar.opponent)
-    : unit + ' ' + bar.player + ' of ' + bar.maximum));
+    ? T('bar.two_sided', {
+        you: amount(bar.player),
+        undecided: amount(bar.undecided),
+        them: other,
+        theirs: amount(bar.opponent),
+      })
+    : T('bar.one_sided', { unit: unit, count: bar.player, total: bar.maximum })));
   return wrap;
 }
 
@@ -515,20 +830,62 @@ function cardFace(card, s) {
   const face = el('button', 'card');
   face.dataset.cardId = card.card_id;
   face.classList.add('suit-' + card.suit.toLowerCase().replace(/\s+/g, '-'));
-  if (Number(card.cost) > s.energy) face.classList.add('unaffordable');
+  if (run.engine.cardCost(card) > s.energy) face.classList.add('unaffordable');
 
   // What it will do HERE, not what it says on paper. The room moves the
   // numbers, and in some rooms a number does nothing at all.
   const effect = run.engine.preview(card);
   if (effect.does_nothing) face.classList.add('useless');
 
-  face.append(el('span', 'card-cost', String(Math.trunc(card.cost))));
+  // The plate goes UNDER the frame: the picture window is a hole in an
+  // otherwise opaque PNG, so anything laid beneath shows through exactly the
+  // hole and cannot spill over the border the artwork draws around it.
+  face.append(el('span', 'card-plate'));
+  face.append(el('span', 'card-frame'));
+  // And the cost disc goes OVER it, because that hole is the game's to fill.
+  face.append(el('span', 'card-cost', String(run.engine.cardCost(card))));
   face.append(el('span', 'card-name', card.name_en));
-  if (card.name_jp) face.append(el('span', 'jp card-jp', card.name_jp));
+  if (card.name_jp) face.append(el('span', 'card-jp', card.name_jp));
   face.append(el('span', 'card-text', effectHere(effect, card)));
 
   face.addEventListener('click', () => showCardZoom(card));
   return face;
+}
+
+// A card turned over: the same frame's back, with everything the front had
+// no room for written on its ruled paper.
+//
+// Mirrors scripts/ui/CardBackView.gd. The line height is set in CSS to one
+// rule exactly, so every line lands between two of them — text that does not
+// know where the rules are sits ON them and reads as a mistake.
+function cardBack(card, here, room) {
+  const box = el('div', 'card-back');
+  box.append(el('span', 'card-frame'));
+
+  const text = el('p', 'card-back-text');
+  const line = (html) => { const n = el('span'); n.innerHTML = html; text.append(n, el('br')); };
+  const safe = (value) => String(value === undefined || value === null ? '' : value)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  line('<b>' + safe(card.name_en) + '</b>');
+  if (card.name_jp) {
+    line('<span class="faint">' + safe(card.name_jp) + '  ' + safe(card.romaji) + '</span>');
+  }
+  line(safe(T('card.line', {
+    suit: card.suit, type: card.type, cost: run.engine.cardCost(card),
+  })));
+  line(safe(card.effect_text));
+  if (here && here !== String(card.effect_text || '')) {
+    line(safe(T('card.in_this_room', { effect: here })));
+  }
+  if (room) line('<span class="faint">' + safe(room) + '</span>');
+
+  box.append(text);
+
+  // The suit class paints nothing now that the colour strip is gone. It
+  // stays because it is the hook a per-suit card template will need.
+  box.classList.add('suit-' + String(card.suit).toLowerCase().replace(/\s+/g, '-'));
+  return box;
 }
 
 // A card's numbers as this room will actually use them. Showing the printed
@@ -536,19 +893,22 @@ function cardFace(card, s) {
 // the screen.
 function effectHere(effect, card) {
   const parts = [];
-  if (effect.self_plus) parts.push('Gain ' + effect.self_plus + '.');
+  if (effect.self_plus) parts.push(T('card.gain', { count: effect.self_plus }));
   if (effect.opp_minus && effect.opp_minus_counts) {
-    parts.push('Opponent \u2212' + effect.opp_minus + '.');
+    parts.push(T('card.opponent', { count: effect.opp_minus }));
   }
-  if (effect.guard && effect.guard_counts) parts.push('Guard ' + effect.guard + '.');
-  if (effect.draw) parts.push('Draw ' + effect.draw + '.');
-  if (effect.gaffe) parts.push('Gaffe ' + (effect.gaffe > 0 ? '+' : '') + effect.gaffe + '.');
+  if (effect.guard && effect.guard_counts) parts.push(T('card.guard', { count: effect.guard }));
+  if (effect.draw) parts.push(T('card.draw', { count: effect.draw }));
+  if (effect.gaffe) {
+    parts.push(T('card.gaffe',
+      { amount: (effect.gaffe > 0 ? '+' : '') + effect.gaffe }));
+  }
 
-  if (effect.does_nothing) parts.push('Nothing this card does counts in this room.');
+  if (effect.does_nothing) parts.push(T('card.does_nothing'));
 
   // Every card answers the question in front of you, whatever else it does.
   // A draw-1 card was spent in a playtest on the assumption it was free.
-  if (effect.answers_question) parts.push('Answers this question.');
+  if (effect.answers_question) parts.push(T('card.answers_question'));
 
   return parts.length > 0 ? parts.join(' ') : (card.effect_text || '');
 }
@@ -605,12 +965,13 @@ function nameOr(name, fallback) {
 
 function theirs(name) {
   const trimmed = String(name || '').trim();
-  return trimmed === '' ? 'their' : trimmed + "'s";
+  return trimmed === '' ? T('narration.their_generic')
+                        : T('narration.their_named', {name: trimmed});
 }
 
 function them(name) {
   const trimmed = String(name || '').trim();
-  return trimmed === '' ? 'them' : trimmed;
+  return trimmed === '' ? T('narration.them_generic') : trimmed;
 }
 
 // Joins the clauses and closes the sentence, capitalising only the first
@@ -629,24 +990,24 @@ function splitDetail(stage, split, fromWhom) {
   const undecided = int(split.from_undecided, 0);
   const other = int(split.from_other_side, 0);
   if (other <= 0) return '';
-  if (undecided <= 0) return 'all of them off ' + fromWhom;
-  return undecided + ' from the undecided, ' + other + ' off ' + fromWhom;
+  if (undecided <= 0) return T('narration.all_off', {whom: fromWhom});
+  return T('narration.split', {undecided: undecided, count: other, whom: fromWhom});
 }
 
 function boutWonLine(bout) {
-  const who = nameOr(bout.finished, 'That opponent');
-  if (int(bout.remaining, 0) <= 0) return who + ' is finished';
-  return who + ' is finished \u2014 ' + nameOr(bout.next, 'the next') + ' rises';
+  const who = nameOr(bout.finished, T('narration.that_opponent'));
+  if (int(bout.remaining, 0) <= 0) return T('narration.bout_finished', {who: who});
+  return who + ' is finished \u2014 ' + nameOr(bout.next, T('narration.the_next')) + ' rises';
 }
 
 function gainedLine(stage, state, applied, wanted, won, sayShortfall, opponentName) {
   // A level that rises has nobody to win over: it goes up, and by how much.
   if (!isARoom(state)) {
     const unit = String(stage.bar_unit || 'support');
-    return won > 0 ? unit + ' raised by ' + won : unit + ' did not move';
+    return won > 0 ? T('narration.raised', {unit: unit, count: won}) : T('narration.unmoved', {unit: unit});
   }
 
-  let line = quantity(stage, won) + ' won over';
+  let line = T('narration.won_over', {amount: quantity(stage, won)});
 
   const detail = splitDetail(stage, applied.gain_split, them(opponentName));
   if (detail !== '') line += ' \u2014 ' + detail;
@@ -657,7 +1018,7 @@ function gainedLine(stage, state, applied, wanted, won, sayShortfall, opponentNa
   // and a shortfall beside it is what made this line unreadable.
   const short = wanted - won;
   if (sayShortfall && short > 0 && won < wanted) {
-    line += ', ' + short + (short === 1 ? ' point' : ' points') + ' short of the next';
+    line += T('narration.short', {count: short});
   }
   return line;
 }
@@ -679,13 +1040,13 @@ function describeWhatHappened(result, stage, state, opponentName) {
   }
 
   const stopped = int(applied.guard_stopped, 0);
-  if (stopped > 0) parts.push(theirs(opponentName) + ' guard stopped ' + stopped);
+  if (stopped > 0) parts.push(T('narration.guard_stopped', {who: theirs(opponentName), count: stopped}));
 
   const lost = int(applied.opponent_lost, 0);
-  if (lost > 0) parts.push(quantity(stage, lost) + ' argued away from ' + them(opponentName));
+  if (lost > 0) parts.push(T('narration.argued_away', {amount: quantity(stage, lost), whom: them(opponentName)}));
 
   const gaffe = int(applied.gaffe, 0);
-  if (gaffe > 0) parts.push(gaffe + ' gaffe' + (gaffe === 1 ? '' : 's') + ' on your record');
+  if (gaffe > 0) parts.push(T('narration.gaffe', {count: gaffe}));
 
   return sentence(parts);
 }
@@ -696,49 +1057,49 @@ function describeWhatHappened(result, stage, state, opponentName) {
 function describeOpponentMove(opponentResult, stage, state, opponentName) {
   if (!opponentResult || Object.keys(opponentResult).length === 0) return '';
 
-  const who = nameOr(opponentName, 'They');
+  const who = nameOr(opponentName, T('narration.they'));
   const parts = [];
 
   switch (str(opponentResult.verb, 'none')) {
     case 'attack': {
       const absorbed = int(opponentResult.absorbed, 0);
       const damage = int(opponentResult.damage, 0);
-      if (absorbed > 0) parts.push('your guard absorbed ' + absorbed);
+      if (absorbed > 0) parts.push(T('narration.absorbed', {count: absorbed}));
       // Not "lost to Ito": the sentence already opens with their name, so
       // repeating it reads as two different people.
-      if (damage > 0) parts.push(quantity(stage, damage) + ' taken from you');
-      else if (absorbed > 0) parts.push('nothing got through');
-      else parts.push('the attack found nothing to take');
+      if (damage > 0) parts.push(T('narration.taken', {amount: quantity(stage, damage)}));
+      else if (absorbed > 0) parts.push(T('narration.nothing_through'));
+      else parts.push(T('narration.nothing_to_take'));
       break;
     }
     case 'gain': {
       const gained = int(opponentResult.gained, 0);
-      if (gained <= 0) return who + ' pressed the case and won nobody over.';
-      parts.push('won over ' + quantity(stage, gained));
+      if (gained <= 0) return T('narration.gain_none', {who: who});
+      parts.push(T('narration.won_over_them', {amount: quantity(stage, gained)}));
       const detail = splitDetail(stage, opponentResult.gain_split, 'you');
       if (detail !== '') parts.push(detail);
       break;
     }
     case 'block': {
       const guard = int(opponentResult.guard, 0);
-      if (guard <= 0) return who + ' could not guard any further.';
-      parts.push('developed ' + guard + ' guard');
+      if (guard <= 0) return T('narration.block_none', {who: who});
+      parts.push(T('narration.guard_built', {count: guard}));
       break;
     }
     case 'lean_down': {
       const member = opponentResult.member || {};
       const moved = Math.abs(int(member.moved, 0));
-      if (moved <= 0) return who + ' leaned on the panel and moved nobody.';
-      parts.push('leaned on ' + str(member.name, 'a member') + ', ' + moved + ' against you');
+      if (moved <= 0) return T('narration.lean_none', {who: who});
+      parts.push('leaned on ' + str(member.name, T('narration.a_member')) + ', ' + moved + ' against you');
       break;
     }
     default:
-      return who + ' waited.';
+      return T('narration.waited', {who: who});
   }
 
   // Joined directly rather than through sentence(): capitalising and then
   // lowercasing back would also flatten any name inside the clause.
-  return who + ': ' + parts.join(', ') + '.';
+  return T('narration.sentence', {who: who, clauses: parts.join(', ')});
 }
 
 // A short line under the bar, for what just happened.
@@ -783,17 +1144,12 @@ function showCardZoom(card) {
   const affinity = run.engine.affinityFor(card);
 
   overlay(card.name_en, sheet => {
-    const meta = el('p', 'zoom-meta', card.suit + ' · ' + card.type
-      + ' · ' + Math.trunc(card.cost) + ' energy');
-    sheet.append(meta);
-    if (card.name_jp) sheet.append(el('p', 'jp', card.name_jp + '  ' + (card.romaji || '')));
-    sheet.append(placeholderArt(card.card_id, '120px'));
-    sheet.append(el('p', 'zoom-text', card.effect_text || ''));
-    sheet.append(el('p', 'zoom-room', describeRoomFor(affinity)));
+    sheet.append(cardBack(card, effectHere(run.engine.preview(card), card),
+      describeRoomFor(affinity)));
 
     const play = el('button', 'primary', 'Play');
     play.id = 'zoom-play';
-    play.disabled = Number(card.cost) > s.energy || s.isOver();
+    play.disabled = run.engine.cardCost(card) > s.energy || s.isOver();
     play.addEventListener('click', () => {
       document.querySelectorAll('.backdrop').forEach(n => n.remove());
       const who = opponentDisplayName();
@@ -809,22 +1165,130 @@ function showCardZoom(card) {
   });
 }
 
+// How a room works, in plain sentences. Ported from scripts/ui/StageBrief.gd
+// — keep the two in step.
+//
+// THE POINT IS THAT IT STATES THE DEFAULT. A policy study refills energy at
+// the end of the turn, like almost every stage, and asks two questions a turn
+// rather than one. Neither was written down anywhere, so energy looked finite
+// to the player: they spent it, saw it not come back, and had no way to learn
+// that ending the turn is what refills it.
+//
+// Built from the RESOLVED stage, so every number is the one the battle is
+// actually running on. `state` may be null, for a stage described before
+// there is a battle.
+function howThisRoomWorks(stage, state) {
+  const bullet = (labelKey, detail) =>
+    T('brief.bullet', {label: T(labelKey), detail: detail});
+  const lines = [T('brief.heading')];
+
+  lines.push(bullet('brief.label.turns', briefTurns(stage)));
+  lines.push(bullet('brief.label.energy', briefEnergy(stage, state)));
+
+  const questions = stage.questions || [];
+  if (questions.length > 0) {
+    lines.push(bullet('brief.label.questions', briefQuestions(stage, questions.length)));
+  }
+
+  lines.push(bullet('brief.label.gaffes', briefGaffes(stage)));
+  lines.push(bullet('brief.label.guard', briefGuard(state)));
+  lines.push(bullet('brief.label.hand', briefHand(stage)));
+  lines.push(bullet('brief.label.winning', briefWinning(stage)));
+
+  const decay = int(stage.affinity_decay, 0);
+  if (decay > 0) {
+    lines.push(bullet('brief.label.decay', T('brief.decay', {count: decay})));
+  }
+  return lines;
+}
+
+function briefTurns(stage) {
+  const limit = int(stage.turn_limit, 0);
+  if (limit <= 0) return T('brief.turns.none');
+  return T('brief.turns.limit', {count: limit});
+}
+
+function briefEnergy(stage, state) {
+  if (str(stage.energy_mode, 'per_turn') === 'pool') {
+    const left = state ? T('brief.energy.left', {count: state.energy}) : '';
+    return T('brief.energy.pool', {count: int(stage.energy_pool, 0), left: left});
+  }
+  // The sentence that prompted all of this: "when you end the turn" is the
+  // step the player could not see.
+  return T('brief.energy.per_turn', {count: int(stage.energy_per_turn, 3)});
+}
+
+function briefQuestions(stage, total) {
+  const perTurn = Math.max(int(stage.questions_per_turn, 1), 1);
+  let sentence = perTurn === 1
+    ? T('brief.questions.one_a_turn', {total: total})
+    : T('brief.questions.several', {per_turn: perTurn, total: total});
+
+  sentence += T('brief.questions.decline');
+  if (bool(stage.decline_ends_stage, false)) {
+    return sentence + T('brief.questions.ends_stage');
+  }
+  const cost = int(stage.decline_tone_cost, 3);
+  return cost > 0
+    ? sentence + T('brief.questions.costs', {count: cost})
+    : sentence + T('brief.questions.free');
+}
+
+function briefGaffes(stage) {
+  const limit = int(stage.gaffe_limit, 5);
+  const multiplier = Math.max(int(stage.gaffe_multiplier, 1), 1);
+  if (multiplier > 1) {
+    return T('brief.gaffes.multiplied', {count: limit, multiplier: multiplier});
+  }
+  return T('brief.gaffes.plain', {count: limit});
+}
+
+function briefGuard(state) {
+  const cap = state ? state.guard_cap : 5;
+  return T('brief.guard', {count: cap});
+}
+
+function briefHand(stage) {
+  if (str(stage.draw_mode, 'refill') === 'none') {
+    return T('brief.hand.none', {count: int(stage.opening_hand, 8)});
+  }
+  return T('brief.hand.refill', {count: int(stage.hand_size, 5)});
+}
+
+function briefWinning(stage) {
+  if (str(stage.win_mode, 'threshold') === 'score') {
+    return T('brief.winning.score');
+  }
+
+  const threshold = int(stage.win_threshold, 0);
+  const unit = str(stage.bar_unit, 'support').toLowerCase();
+  if (threshold <= 0) return T('brief.winning.hold');
+
+  const where = {count: threshold, unit: unit};
+  switch (str(stage.sequence_mode, 'single')) {
+    case 'reset':      return T('brief.winning.reset', where);
+    case 'continuous': return T('brief.winning.continuous', where);
+    case 'stream':     return T('brief.winning.stream', where);
+    default:           return T('brief.winning.single', where);
+  }
+}
+
 function showDetails() {
   const engine = run.engine;
   const s = engine.state;
 
   overlay('Details', sheet => {
-    const lines = [
+    // The room's own rules come first, defaults included.
+    const lines = howThisRoomWorks(run.stage, s).concat(['',
       'Deck ' + s.deck.length + ' · Hand ' + s.hand.length + ' · Discard ' + s.discard.length,
       'Stage: ' + run.stage.name_en + ' (' + run.stage.stage_id + ')',
       'You: ' + DATA.player.name_en + ', ' + DATA.player.party,
-    ];
+    ]);
 
     if (engine.isPressConference()) {
       const question = engine.currentQuestion();
       lines.push('');
       if (question) lines.push('This question invites a ' + question.prefers_suit + ' answer.');
-      lines.push('One card answers one question, and you only draw if a card says so.');
       const pleased = engine.pleasedBoosters();
       lines.push(pleased.length === 0
         ? 'Nobody pleased yet.'
@@ -837,32 +1301,20 @@ function showDetails() {
     lines.push('');
     lines.push(...roomLines(s));
 
+    // How many there are to get through. How they follow one another is a
+    // row in the table above, so only the count belongs here.
     if (s.opponent_count > 1) {
       lines.push('');
-      if (run.stage.sequence_mode === 'reset') {
-        lines.push(s.opponent_count + ' opponents, one at a time. Beat one and everything starts again against the next, including your gaffes.');
-      } else {
-        lines.push(s.opponent_count + ' debaters, one at a time, and ' + s.bar.threshold
-          + ' ' + String(run.stage.bar_unit || 'support').toLowerCase()
-          + ' ends the one in front of you — not the stage. Beat them and the house divides again from the start for the next.');
-        lines.push('Your record, your hand and the clock carry across all '
-          + s.opponent_count + ' of them.');
-      }
+      lines.push(T('battle.one_at_a_time',
+        { count: s.opponent_count, number: s.opponent_index + 1 }));
     }
 
-    if (s.energy_mode === 'pool') {
+    // Asked, not sniffed. This used to test whether the sentence began with
+    // "Nothing", so rewording that line would have silently hidden the block.
+    if (run.runner.anythingCarried()) {
       lines.push('');
-      lines.push('These ' + s.energy_max + ' are for the whole debate. They do not come back at the start of a turn.');
-      // The figure above matches the pips because both read energy_max — but
-      // it is the number still LEFT that changes, and that was never shown.
-      lines.push(s.energy + ' of them left.');
+      lines.push(run.runner.describeCarriedBuffs(boosterNames(DATA), phrase(STRINGS)));
     }
-    if (s.win_mode === 'score') {
-      lines.push('There is nothing to reach here. However high the support gets is what carries into the floor debate.');
-    }
-
-    const carried = run.runner.describeCarriedBuffs(boosterNames(DATA));
-    if (!carried.startsWith('Nothing')) { lines.push(''); lines.push(carried); }
 
     for (const line of lines) {
       sheet.append(line === '' ? el('div', 'gap') : el('p', 'detail-line', line));
@@ -875,21 +1327,86 @@ function showDetails() {
   });
 }
 
+// ---------------------------------------------------------------------------
+// What the game says
+// ---------------------------------------------------------------------------
+// The same table the Godot build reads: the Text tab of the design workbook,
+// exported to data/strings.json. Cameron rewords a line there and it changes
+// in BOTH builds, because both look it up rather than each holding a copy.
+//
+// Plurals are two rows, key.one and key.other, picked by a `count` value.
+// A key with no row shows the key itself — the exporter refuses to write the
+// file while the code asks for one the sheet has not got, so it should never
+// be seen in a built page.
+
+const STRINGS = (() => {
+  const table = {};
+  for (const row of (DATA.strings || [])) {
+    const key = str(row.key, '').trim();
+    if (key) table[key] = str(row.english, '');
+  }
+  return table;
+})();
+
+function T(key, values) {
+  values = values || {};
+  let template = null;
+
+  if (Object.prototype.hasOwnProperty.call(values, 'count')) {
+    const suffix = int(values.count, 0) === 1 ? '.one' : '.other';
+    if (STRINGS[key + suffix] !== undefined) template = STRINGS[key + suffix];
+  }
+  if (template === null && STRINGS[key] !== undefined) template = STRINGS[key];
+  if (template === null) return key;
+
+  let filled = template;
+  for (const name of Object.keys(values)) {
+    filled = filled.split('{' + name + '}').join(String(values[name]));
+  }
+  return filled;
+}
+
+// How this level signs off, in its own words or in none.
+function levelSignOff(key) {
+  const level = (run.runner && run.runner.level) || {};
+  const written = str(level[key], '').trim();
+  if (written) return written;
+
+  const name = str(level.name_en, '').trim();
+  return name ? T('outcome.sign_off_named', {level: name})
+              : T('outcome.sign_off_unwritten');
+}
+
 function showOutcome() {
   const engine = run.engine;
   const s = engine.state;
 
-  let title = { win: 'Carried', loss: 'Defeated', retry: 'No decision' }[s.outcome] || s.outcome;
-  if (s.win_mode === 'score' && s.outcome === 'win') title = 'Caucus closed';
-  else if (engine.isPressConference() && s.outcome === 'win') title = 'Conference over';
+  let title = { win: T('outcome.carried'), loss: T('outcome.defeated'),
+                retry: T('outcome.no_decision') }[s.outcome] || s.outcome;
+  // Named from the stage. Three kinds of stage are scored — the caucus, the
+  // town hall and the TV debate — and this said "Caucus closed" for all
+  // three, so a TV debate ended by announcing it was a caucus.
+  if (s.win_mode === 'score' && s.outcome === 'win') {
+    const named = str(run.stage.name_en, '').trim();
+    title = named ? T('outcome.closed', {stage: named}) : T('outcome.closed_unnamed');
+  } else if (engine.isPressConference() && s.outcome === 'win') {
+    title = T('outcome.conference_over');
+  }
 
   // A stage whose score carries has to say so here, or the player never finds
   // out: the consequence lands in a stage they have not reached yet.
+  //
   // "Carried" on its own is a word, not an ending. The last stage of a level
-  // is the bill being adopted, and it should read like it.
+  // signs off IN THE LEVEL'S OWN WORDS, from levels.json. It used to say "you
+  // convinced Parliament and your bill was adopted" whatever the level was,
+  // so a media circuit and a research circuit both ended by announcing a bill
+  // that never existed. A level with nothing written yet names itself.
   const lastStage = run.runner.index + 1 >= run.runner.stageCount();
-  const headline = (s.outcome === 'win' && lastStage)
-    ? 'You convinced Parliament and your bill was adopted.' : '';
+  // WIN OR LOSE. This only ever asked for win_text, so the loss lines in
+  // levels.json had never once reached the screen.
+  const headline = (lastStage && (s.outcome === 'win' || s.outcome === 'loss'))
+    ? levelSignOff(s.outcome === 'win' ? 'win_text' : 'loss_text')
+    : '';
 
   const lines = [s.outcome_reason];
   const score = s.playerScore();
@@ -897,8 +1414,8 @@ function showOutcome() {
   if (s.outcome !== 'loss') {
     if (run.runner.scoreIsCarriedFrom(int(run.stage.seq, -1))) {
       const seats = LevelRunner.scoreToSupport(run.stage, score);
-      if (seats > 0) lines.push('You start ' + seats + ' ahead at the floor debate.');
-      else if (seats < 0) lines.push('You start ' + (-seats) + ' behind at the floor debate.');
+      if (seats > 0) lines.push(T('outcome.ahead', {count: seats}));
+      else if (seats < 0) lines.push(T('outcome.behind', {count: -seats}));
     }
 
     // What the stage was worth: flat for winning, and again for the number
@@ -916,11 +1433,14 @@ function showOutcome() {
     const changes = [];
     for (const name of Object.keys(moved)) {
       if (moved[name] !== 0) {
-        changes.push(name + ' ' + (moved[name] > 0 ? '+' : '\u2212') + Math.abs(moved[name]));
+        changes.push(T('reward.delta', {
+          name: name,
+          amount: (moved[name] > 0 ? '+' : '\u2212') + Math.abs(moved[name]),
+        }));
       }
     }
     const xp = int(run.stage.xp_reward, 0);
-    if (xp > 0) changes.push(xp + ' XP');
+    if (xp > 0) changes.push(T('outcome.xp', { count: xp }));
 
     // Which organisations the answers pleased. The Office shows the result,
     // but the connection between an answer and a standing is lost by then.
@@ -928,7 +1448,8 @@ function showOutcome() {
     if (pleased.length > 0) {
       const names = boosterNames(DATA);
       lines.push('');
-      lines.push('Pleased: ' + pleased.map(id => names[id] || id).join(', ') + '.');
+      lines.push(T('outcome.pleased',
+        {names: pleased.map(id => names[id] || id).join(', ')}));
     }
 
     if (changes.length > 0) {
@@ -937,7 +1458,7 @@ function showOutcome() {
     } else if (s.outcome === 'win' && rewardsAreUnset(run.stage)) {
       // The truth, rather than silence that reads as a bug.
       lines.push('');
-      lines.push('This stage has no rewards set yet.');
+      lines.push(T('outcome.no_rewards'));
     }
   }
 
@@ -962,6 +1483,20 @@ function showOutcome() {
           run.lastMetaChange[name] = int(run.lastMetaChange[name], 0) + won.applied[name];
         }
         run.xp = int(run.xp, 0) + int(run.stage.xp_reward, 0);
+
+        // What the organisations backing you pay out for a stage won.
+        // Unlike the battle-start effects, this one does not care who was
+        // in the room: a business circle pays for the result.
+        const owned = DATA.modifiers.filter(
+          m => run.ownedModifiers.includes(str(m.mod_id, '')));
+        const paid = stageWinFunds(owned, DATA.modifier_effects || {});
+        if (paid !== 0) {
+          const row = DATA.sanban.find(v => v.name_en === 'Funds') || {};
+          const before = int(run.meta.Funds, 0);
+          run.meta.Funds = clampMeta(before + paid, row);
+          run.lastMetaChange.Funds =
+            int(run.lastMetaChange.Funds, 0) + (run.meta.Funds - before);
+        }
       }
       const result = applyScoreEffects(run.meta, run.stage, score, DATA.sanban);
       run.meta = result.meta;
@@ -984,9 +1519,9 @@ function showOutcome() {
 }
 
 function nextStepLabel(s) {
-  if (s.outcome === 'loss') return 'Back to the Office';
-  if (run.runner.index + 1 >= run.runner.stageCount()) return 'Back to the Office';
-  return 'On to the next stage';
+  if (s.outcome === 'loss') return T('outcome.back_to_office');
+  if (run.runner.index + 1 >= run.runner.stageCount()) return T('outcome.back_to_office');
+  return T('outcome.next_stage');
 }
 
 // ---------------------------------------------------------------------------

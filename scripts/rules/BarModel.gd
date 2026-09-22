@@ -102,17 +102,30 @@ static func create(model_kind: Model, maximum_value: int, threshold_value: int,
 	return bar
 
 
-## Chooses the right shape for a stage, from its bar unit and signature rule.
+## Chooses the right shape for a stage.
 ##
-## A stage built out of reporters' questions is a press conference wherever
-## it appears, so it gets the press tone bar without having to be ST04. That
-## is read from the stage's own shape rather than from its name, so a new
-## press conference works the moment it has questions in it.
+## A STAGE THAT SAYS WHAT IT WANTS GETS IT. Everything below that is a guess
+## made from the stage's shape, and a guess is only as good as the shapes it
+## has seen: the TV debate spent three versions as a room full of undecided
+## people while its bar was labelled "Press tone", because it was recognised
+## by the literal ID "ST06" and the six levels generate IDs of their own
+## (TV_DEBATE_2 and the like). Declaring `bar_model` in stage_types.json is
+## how a stage stops depending on being recognised.
 static func for_stage(stage: Dictionary) -> Model:
+	match str(stage.get("bar_model", "")):
+		"single": return Model.SINGLE
+		"survival": return Model.SURVIVAL
+		"shared_pool": return Model.SHARED_POOL
+
+	# A stage built out of reporters' questions is a press conference wherever
+	# it appears, so it gets the press tone bar without having to say so. That
+	# is read from the stage's own shape rather than from its name, so a new
+	# press conference works the moment it has questions in it.
 	var questions: Variant = stage.get("questions")
 	if questions is Array and not (questions as Array).is_empty():
 		return Model.SINGLE
 
+	# The workbook's own stages, which have fixed IDs and no bar_model column.
 	match str(stage.get("stage_id", "")):
 		"ST04": return Model.SINGLE      # press tone
 		"ST06": return Model.SURVIVAL    # stay above the line every turn

@@ -9,7 +9,7 @@
     "linked_modifiers": [
       "M11"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   },
   {
     "booster_id": "BO02",
@@ -21,7 +21,7 @@
     "linked_modifiers": [
       "M12"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   },
   {
     "booster_id": "BO03",
@@ -33,7 +33,7 @@
     "linked_modifiers": [
       "M01"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   },
   {
     "booster_id": "BO04",
@@ -45,7 +45,7 @@
     "linked_modifiers": [
       "M13"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   },
   {
     "booster_id": "BO05",
@@ -57,7 +57,7 @@
     "linked_modifiers": [
       "M02"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   },
   {
     "booster_id": "BO06",
@@ -69,7 +69,7 @@
     "linked_modifiers": [
       "M14"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   },
   {
     "booster_id": "BO07",
@@ -81,7 +81,7 @@
     "linked_modifiers": [
       "M15"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   },
   {
     "booster_id": "BO08",
@@ -94,7 +94,7 @@
       "M03",
       "M04"
     ],
-    "modifier_count": 2
+    "modifier_count": null
   },
   {
     "booster_id": "BO09",
@@ -106,7 +106,7 @@
     "linked_modifiers": [
       "M06"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   },
   {
     "booster_id": "BO10",
@@ -118,6 +118,6 @@
     "linked_modifiers": [
       "M05"
     ],
-    "modifier_count": 1
+    "modifier_count": null
   }
 ]

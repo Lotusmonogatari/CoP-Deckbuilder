@@ -13,20 +13,23 @@
     "value": [
       [
         "attack",
+        1,
         6
       ],
       [
         "gain",
-        4
+        1,
+        6
       ],
       [
         "block",
-        5
+        0,
+        2
       ]
     ],
     "question": "What should an opponent do on their turn when nobody has written a pattern for them yet?",
     "means": {
-      "_": "A pattern is a list of moves that repeats: this one attacks for 6, then gains 4, then blocks 5, then starts again.",
+      "_": "A pattern is a list of moves that repeats. A move is a verb and either one number or a range to roll between, inclusive at both ends. A move that comes out at zero is not taken: the opponent steps to the next move and does that instead, so nobody spends a turn guarding nothing.",
       "attack": "Lowers the player's support, minus whatever guard the player is holding.",
       "gain": "Raises the opponent's own support.",
       "block": "The opponent gains guard, softening the player's next attack.",
@@ -34,15 +37,14 @@
     },
     "note": [
       "This is the fallback, not anybody's character. An opponent with their own",
-      "Intent pattern in the workbook always uses that instead.",
+      "Intent pattern always uses that instead, and every opponent the six levels",
+      "put in front of the player now has one.",
       "",
-      "The values are the example written in the build brief at section 7.6,",
-      "chosen deliberately: of all the patterns to pick as a neutral default,",
-      "the one already in the brief presumes least. It also teaches well, since",
-      "a player meets all three opponent behaviours in the first three turns.",
-      "",
-      "Proposed per-opponent patterns for all nine MPs are waiting for review in",
-      "design/proposals/. Until those are approved, every opponent uses this."
+      "Pattern 1 of Cameron's five, chosen by him on 2026-09-21 as the neutral",
+      "default: the most middle-of-the-road of the set, and far gentler than the",
+      "attack 6 / gain 4 / block 5 it replaces. That one averaged a flat 6 every",
+      "third turn and measured LV01's committee as unwinnable, 0 wins in 20",
+      "seeded runs."
     ]
   },
   "turn_limit_outcome": {

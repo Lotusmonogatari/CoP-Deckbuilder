@@ -101,6 +101,10 @@ const KNOWN_SPECIALS = [
   'buff_next_card_this_turn',
   'reveal_next_intent',
   'bonus_opp_minus_if_opp_gaffe',
+  'pierce_guard',
+  'bonus_if_self_gaffe_0',
+  'bonus_if_behind',
+  'discount_next_card_this_turn',
 ];
 
 function applySpecial(key, value, effect, context) {
@@ -148,6 +152,37 @@ function applySpecial(key, value, effect, context) {
         result.opp_minus += amount;
         result.flags.special_triggered = true;
       }
+      break;
+    case 'pierce_guard':
+      // C16, C42, C49: "Ignores N of the opponent's Guard."
+      //
+      // A flag rather than a number change: the guard is not spent by being
+      // ignored, so the battle has to take it off the opponent's bank BEFORE
+      // the attack and put it back after. Doing it here would either
+      // double-count or leave the bank wrong.
+      result.flags.pierce_guard = amount;
+      result.flags.special_triggered = true;
+      break;
+    case 'bonus_if_self_gaffe_0':
+      // C25, C29: the reward for a clean record, and the reason to keep one.
+      if (Math.trunc(context.self_gaffe || 0) === 0) {
+        result.self_plus += amount;
+        result.flags.special_triggered = true;
+      }
+      break;
+    case 'bonus_if_behind':
+      // C33, C53. Strictly behind: level pegging is not behind. A comeback
+      // card that also fired when you were even would fire most of the time.
+      if (Math.trunc(context.player_support || 0) < Math.trunc(context.opponent_support || 0)) {
+        result.self_plus += amount;
+        result.flags.special_triggered = true;
+      }
+      break;
+    case 'discount_next_card_this_turn':
+      // C36, the mirror of buff_next_card_this_turn: the battle spends it on
+      // the next card played and it does not survive the turn.
+      result.flags.next_card_discount = amount;
+      result.flags.special_triggered = true;
       break;
   }
 
@@ -216,10 +251,24 @@ class BarModel {
     this.last_gain = { from_undecided: 0, from_other_side: 0, wasted: 0 };
   }
 
+  // A STAGE THAT SAYS WHAT IT WANTS GETS IT. Everything below that is a
+  // guess made from the stage's shape, and a guess is only as good as the
+  // shapes it has seen: the TV debate spent three versions as a room full of
+  // undecided people while its bar was labelled "Press tone", because it was
+  // recognised by the literal ID "ST06" and the six levels generate IDs of
+  // their own (TV_DEBATE_2 and the like).
   static forStage(stage) {
+    switch (str(stage.bar_model, '')) {
+      case 'single': return SINGLE;
+      case 'survival': return SURVIVAL;
+      case 'shared_pool': return SHARED_POOL;
+    }
+
     // A stage built out of reporters' questions is a press conference
     // wherever it appears, read from its shape rather than from its name.
     if (Array.isArray(stage.questions) && stage.questions.length > 0) return SINGLE;
+
+    // The workbook's own stages, which have fixed IDs and no bar_model.
     if (stage.stage_id === 'ST04') return SINGLE;
     if (stage.stage_id === 'ST06') return SURVIVAL;
     return SHARED_POOL;
@@ -364,10 +413,35 @@ function clamp(value, low, high) { return Math.min(Math.max(value, low), high); 
 
 const KNOWN_VERBS = ['attack', 'gain', 'block', 'lean_down'];
 
+// A pattern is a list of moves. A move is a verb and either one number or a
+// range to roll between, inclusive at both ends:
+//
+//     [["attack", 4], ["gain", 0, 1], ["block", 3, 5]]
+//
+// THE ZERO RULE. A move that comes out at zero is NOT TAKEN: the opponent
+// steps to the next move in the cycle and does that instead, so nobody ever
+// spends a turn guarding nothing. An opponent whose pattern carries a flat
+// "block 0" simply never guards.
+//
+// WHEN THE ROLL HAPPENS, and why it matters: at peek, once, and then held.
+// The screen repaints several times a turn, so rolling inside peek() without
+// holding would re-roll the intent on every repaint. And skipping a zero
+// CHANGES THE VERB — if the skip happened when the move resolved, the screen
+// could announce "Guarding" and the opponent could attack instead.
+function zeroShape() { return { verb: 'none', value: 0 }; }
+
 class IntentRunner {
-  constructor(pattern) {
+  // `roller` is handed in so the whole battle runs off one seeded generator
+  // and a test can post a fixed answer, the same arrangement BarModel uses
+  // for what a stubborn vote costs.
+  constructor(pattern, roller) {
     this.pattern = Array.isArray(pattern) ? JSON.parse(JSON.stringify(pattern)) : [];
     this.position = 0;
+    this._roller = roller || ((low, high) => low + Math.floor(Math.random() * (high - low + 1)));
+    this._pending = null;
+    this._pendingIndex = 0;
+    this._ahead = null;
+    this._aheadIndex = 0;
   }
 
   isValid() { return this.pattern.length > 0 && this.problems().length === 0; }
@@ -378,6 +452,9 @@ class IntentRunner {
       found.push('the opponent has no intent pattern, so it cannot take a turn');
       return found;
     }
+
+    let anythingCanHappen = false;
+
     this.pattern.forEach((move, index) => {
       if (!Array.isArray(move) || move.length < 2) {
         found.push('move ' + (index + 1) + ' should be a verb and a number, such as ["attack", 6]');
@@ -386,33 +463,144 @@ class IntentRunner {
       if (!KNOWN_VERBS.includes(String(move[0]))) {
         found.push('move ' + (index + 1) + " uses '" + move[0] + "', which is not one of " + KNOWN_VERBS.join(', '));
       }
+      // The largest this move could ever be. A move that can only come out
+      // at zero is never taken, which is fine on its own — but a pattern
+      // made entirely of them would leave the opponent standing there.
+      const biggest = move.length >= 3
+        ? Math.max(Math.trunc(move[1]), Math.trunc(move[2]))
+        : Math.trunc(move[1]);
+      if (biggest > 0) anythingCanHappen = true;
     });
+
+    if (!anythingCanHappen) {
+      found.push('every move in this pattern is worth nothing, so the opponent would never act');
+    }
     return found;
   }
 
-  moveAt(index) {
-    if (this.pattern.length === 0) return { verb: 'none', value: 0 };
-    const move = this.pattern[((index % this.pattern.length) + this.pattern.length) % this.pattern.length];
-    return { verb: String(move[0]), value: Math.trunc(move[1]) };
+  // Finds the next move worth making, stepping past any that come out at
+  // zero. Bounded to one lap: a pattern of nothing but zeros would otherwise
+  // spin forever.
+  _resolveFrom(index) {
+    if (this.pattern.length === 0) return { move: zeroShape(), index: index };
+
+    for (let step = 0; step < this.pattern.length; step++) {
+      const at = this._wrap(index + step);
+      const move = this._roll(this.pattern[at]);
+      if (Math.trunc(move.value) !== 0) return { move: move, index: at };
+    }
+    return { move: zeroShape(), index: this._wrap(index) };
   }
 
-  peek() { return this.moveAt(this.position); }
-  peekAhead() { return this.moveAt(this.position + 1); }
+  // Turns one written move into one that has happened. min and max ride
+  // along only on a move that HAS a range: a fixed move keeps the plain
+  // shape it has always had.
+  _roll(raw) {
+    if (!Array.isArray(raw) || raw.length < 2) return zeroShape();
+
+    const verb = String(raw[0]);
+    let low = Math.trunc(raw[1]);
+    if (raw.length < 3) return { verb: verb, value: low };
+
+    let high = Math.trunc(raw[2]);
+    if (high < low) { const swap = low; low = high; high = swap; }
+
+    return {
+      verb: verb,
+      value: high <= low ? low : Math.trunc(this._roller(low, high)),
+      min: low,
+      max: high,
+    };
+  }
+
+  _wrap(index) {
+    const size = this.pattern.length;
+    return ((index % size) + size) % size;
+  }
+
+  peek() {
+    if (this._pending === null) {
+      const found = this._resolveFrom(this.position);
+      this._pending = found.move;
+      this._pendingIndex = found.index;
+    }
+    return this._pending;
+  }
+
+  peekAhead() {
+    // The current move has to be settled first: where it lands is where the
+    // one after it starts from, once any zeros have been stepped over.
+    this.peek();
+    if (this._ahead === null) {
+      const found = this._resolveFrom(this._pendingIndex + 1);
+      this._ahead = found.move;
+      this._aheadIndex = found.index;
+    }
+    return this._ahead;
+  }
 
   advance() {
-    const move = this.moveAt(this.position);
-    this.position = (this.position + 1) % Math.max(this.pattern.length, 1);
+    const move = this.peek();
+    this.position = (this._pendingIndex + 1) % Math.max(this.pattern.length, 1);
+
+    // Whatever Head Count already revealed becomes the next move rather than
+    // being thrown away and rolled again, or the card would have lied.
+    if (this._ahead === null) {
+      this._pending = null;
+    } else {
+      this._pending = this._ahead;
+      this._pendingIndex = this._aheadIndex;
+    }
+    this._ahead = null;
+
     return move;
   }
 
-  static describe(move) {
-    const value = Math.trunc((move && move.value) || 0);
-    switch (String((move && move.verb) || 'none')) {
-      case 'attack': return 'Attacking · −' + value;
-      case 'gain': return 'Gaining · +' + value;
-      case 'block': return 'Guarding · ' + value;
-      case 'lean_down': return 'Pressuring · −' + value;
-      default: return 'Waiting';
+  setPosition(value) {
+    const size = this.pattern.length;
+    this.position = size === 0 ? 0 : ((value % size) + size) % size;
+    // A held roll belongs to the position it was rolled for.
+    this._pending = null;
+    this._ahead = null;
+  }
+
+  // What this move could come out as: one number, or a low and a high.
+  //
+  // NEVER BELOW 1. A "block 0 to 2" cannot actually come out at 0 — a zero
+  // would have been stepped over and something else shown instead — so
+  // advertising "0 to 2" would promise an outcome that cannot happen.
+  static shapeOf(move) {
+    if (!move || move.min === undefined || move.max === undefined) {
+      return [Math.trunc((move && move.value) || 0)];
+    }
+    const low = Math.max(Math.trunc(move.min), 1);
+    const high = Math.trunc(move.max);
+    if (high <= low) return [high > 0 ? high : low];
+    return [low, high];
+  }
+
+  // The move written the way the player reads it: "Attacking · −6", or
+  // "Attacking · −1 to −6" where it could be anything in a range. The
+  // wording is handed in, from the workbook's Text tab; the signs and the
+  // numbers stay here, because those are arithmetic and not prose.
+  static describe(move, words) {
+    const say = words || phrase({});
+    const verb = String((move && move.verb) || 'none');
+    if (verb === 'none') return say('intent.waiting');
+
+    const shape = IntentRunner.shapeOf(move);
+    const range = (low, high) => say('intent.range', { low: low, high: high });
+    const signed = (mark) => shape.length === 1
+      ? mark + shape[0]
+      : range(mark + shape[0], mark + shape[1]);
+    const plain = () => shape.length === 1 ? String(shape[0]) : range(shape[0], shape[1]);
+
+    switch (verb) {
+      case 'attack': return say('intent.attacking', { amount: signed('−') });
+      case 'gain': return say('intent.gaining', { amount: signed('+') });
+      case 'block': return say('intent.guarding', { amount: plain() });
+      case 'lean_down': return say('intent.pressuring', { amount: signed('−') });
+      default: return say('intent.waiting');
     }
   }
 }
@@ -443,6 +631,9 @@ class BattleState {
     this.opponent_block = 0;
     this.guard_cap = 5;
     this.next_card_bonus = 0;
+    // A discount a card left behind for the next one played this turn. It
+    // does not survive the turn.
+    this.next_card_discount = 0;
 
     this.gaffe = 0;
     this.gaffe_limit = 5;
@@ -450,6 +641,10 @@ class BattleState {
 
     // How many reporters were left without an answer.
     this.declined_questions = 0;
+    // How many were answered in a suit the question grades weak. Counted
+    // rather than only felt, so the closing text can tell a stage lost to
+    // bad answers from one lost to silence.
+    this.weak_answers = 0;
 
     this.bar = null;
     this.next_intent_revealed = false;
@@ -460,6 +655,9 @@ class BattleState {
     this.cards_played_this_turn = 0;
 
     this.question_index = 0;
+    // How many of this turn's questions have been answered. A room can take
+    // more than one: the policy study session takes two.
+    this.questions_answered_this_turn = 0;
     this.pleased_boosters = [];
 
     this.opponent_index = 0;
@@ -497,6 +695,11 @@ class BattleEngine {
     this._rules = config.rules || {};
     this._meta = config.meta || {};
 
+    // The wording, handed in like everything else. Left out — as the
+    // headless fixtures leave it out — every sentence below comes back as
+    // its key, which is harmless and is what those tests assert against.
+    this._words = phrase(config.strings || {});
+
     if (Object.keys(this._stage).length === 0) {
       this.setupProblems.push('no stage was given');
       return false;
@@ -511,11 +714,18 @@ class BattleEngine {
     s.win_mode = str(this._stage.win_mode, 'threshold');
     s.draw_mode = str(this._stage.draw_mode, 'refill');
     this._questions = this._stage.questions || [];
+    if (this._questions.length === 0) {
+      this._questions = this._drawQuestions(config.question_pool || []);
+    }
 
     // A press conference deals a bigger opening hand and then nothing more,
     // so "opening_hand" wins over the ordinary hand size where both exist.
     s.hand_size = int(this._stage.opening_hand, int(this._stage.hand_size, 5));
     s.gaffe_limit = int(this._stage.gaffe_limit, 5);
+
+    // A friendly reporter takes some of the heat before a word is said.
+    // Never below zero: backing cannot put the meter into credit.
+    s.gaffe = Math.max(int(config.starting_gaffe, 0), 0);
     s.guard_cap = int(this._rules.guard_cap, 5);
 
     this._setupOpponent(config);
@@ -574,7 +784,10 @@ class BattleEngine {
       if (pattern !== null && pattern !== undefined) this.usedDefaultIntentPattern = true;
     }
 
-    this._intents = new IntentRunner(pattern);
+    // The opponent rolls its ranges off the battle's own generator, so a
+    // seeded battle plays out the same way twice.
+    this._intents = new IntentRunner(
+      pattern, (low, high) => low + this._rng(high - low + 1));
     if (!this._intents.isValid()) {
       for (const problem of this._intents.problems()) {
         this.setupProblems.push((this._opponent.name || 'the opponent') + ': ' + problem);
@@ -644,22 +857,25 @@ class BattleEngine {
     const card = this._cards[cardId];
     if (!card) return refused("there is no card with the ID '" + cardId + "'");
 
-    const cost = int(card.cost, 0);
+    // A discount left behind by an earlier card this turn. Never below zero:
+    // a card cannot pay you to play it.
+    const cost = this.cardCost(card);
     if (cost > s.energy) return refused('not enough time left this turn');
 
-    const context = {
+    const context = Object.assign({
       affinity: this.affinityFor(card),
       segment_share: segmentShare(card, this._stage),
       kanban: int(this._meta.Reputation, 50),
       opponent_gaffe: s.opponent_gaffe,
       next_card_bonus: s.next_card_bonus,
-    };
+    }, this._standingContext());
     const effect = resolveCard(card, context);
 
     s.energy -= cost;
     s.hand.splice(s.hand.indexOf(cardId), 1);
     s.cards_played_this_turn += 1;
-    s.next_card_bonus = 0;
+    s.next_card_bonus = 0;     // a carried bonus is spent by the card using it
+    s.next_card_discount = 0;  // and so is a carried discount
 
     const applied = this._applyEffect(effect);
 
@@ -670,9 +886,16 @@ class BattleEngine {
 
     const flags = effect.flags || {};
     if (flags.next_card_bonus !== undefined) s.next_card_bonus = Math.trunc(flags.next_card_bonus);
+    if (flags.next_card_discount !== undefined) s.next_card_discount = Math.trunc(flags.next_card_discount);
     if (flags.reveal_next_intent) s.next_intent_revealed = true;
 
-    if (this._questions.length > 0) this._answerQuestion(card);
+    // A room can take more than one question a turn — the policy study
+    // session takes two. Cards played past the quota still do everything
+    // else they do; they just are not answers.
+    if (this._questions.length > 0 && s.questions_answered_this_turn < this._questionsPerTurn()) {
+      this._answerQuestion(card);
+      s.questions_answered_this_turn += 1;
+    }
 
     // Who was in front of us before the outcome was checked. A card that
     // finishes a debater changes the whole room underneath the player, and
@@ -705,11 +928,22 @@ class BattleEngine {
     // Arguing the opposition down is an attack, so their guard is the first
     // thing it meets and what it absorbs is spent. Until now this went
     // straight through and their "Guarding" intent did nothing at all.
+    //
+    // Piercing IGNORES guard rather than spending it, so the pierced amount
+    // is lifted off the bank before the attack lands and put back afterwards.
+    // Subtracting it for real would let one pierce card strip a guard the
+    // card never claimed to remove.
     const oppMinus = int(effect.opp_minus, 0);
+    const pierced = Math.min(int((effect.flags || {}).pierce_guard, 0), s.opponent_block);
+    s.opponent_block -= pierced;
+
     const stopped = Math.min(s.opponent_block, oppMinus);
     s.opponent_block -= stopped;
+    applied.guard_pierced = pierced;
     applied.guard_stopped = stopped;
     applied.opponent_lost = s.bar.opponentLoses(oppMinus - stopped);
+
+    s.opponent_block += pierced;
 
     // Guard goes into a bank, so what is reported is what actually fitted.
     const beforeGuard = s.block;
@@ -718,8 +952,14 @@ class BattleEngine {
 
     // The gaffe meter never goes below zero, so an apology on a clean record
     // is wasted rather than banked.
+    //
+    // A stage can make a slip cost double — the media ambush does. Only a
+    // gaffe GAINED is multiplied: an apology should not be worth less in a
+    // hard room than an easy one.
+    let gaffe = int(effect.gaffe, 0);
+    if (gaffe > 0) gaffe *= this._gaffeMultiplier();
     const beforeGaffe = s.gaffe;
-    s.gaffe = Math.max(s.gaffe + int(effect.gaffe, 0), 0);
+    s.gaffe = Math.max(s.gaffe + gaffe, 0);
     applied.gaffe = s.gaffe - beforeGaffe;
 
     applied.drawn = this._draw(int(effect.draw, 0));
@@ -753,9 +993,28 @@ class BattleEngine {
 
     // Guard is NOT cleared here. It is a bank now: it stays until something
     // takes it, so a quiet turn spent guarding is still worth something.
+
+    // A question left unanswered when the turn ends is a question declined.
+    // Passing is not the only way to duck one now that a turn can hold more
+    // cards than it holds questions.
+    if (this._questions.length > 0 && !passed) {
+      const unanswered = this._questionsPerTurn() - s.questions_answered_this_turn;
+      for (let i = 0; i < Math.max(unanswered, 0); i++) {
+        if (!this.currentQuestion()) break;
+        this._declineQuestion();
+      }
+    }
+
+    // A lobbyist's interest cools while you talk, whatever you said.
+    if (this._affinityDecay() > 0 && s.bar !== null && !s.isOver()) {
+      s.bar.playerLoses(this._affinityDecay());
+    }
+
     s.next_card_bonus = 0;
+    s.next_card_discount = 0;
     s.next_intent_revealed = false;
     s.cards_played_this_turn = 0;
+    s.questions_answered_this_turn = 0;
 
     const wasFacing = s.opponent_index;
     const beaten = this.currentOpponent();
@@ -783,6 +1042,41 @@ class BattleEngine {
 
   // What saying nothing costs. One energy, from rules.json.
   _passCost() { return int(this._rules.pass_energy_penalty, 1); }
+
+  // How many questions this room asks in a turn.
+  //
+  // A press conference asks one, a policy study session two. Before this
+  // every CARD answered a question, so three energy could burn through three
+  // reporters in a single turn.
+  _questionsPerTurn() { return Math.max(int(this._stage.questions_per_turn, 1), 1); }
+
+  // What a slip costs here. Doubled in a media ambush.
+  _gaffeMultiplier() { return Math.max(int(this._stage.gaffe_multiplier, 1), 1); }
+
+  // How much of a lobbyist's interest cools each turn, whatever you say.
+  _affinityDecay() { return Math.max(int(this._stage.affinity_decay, 0), 0); }
+
+  // What this card costs right now, after any discount a card left behind.
+  //
+  // Public because the hand has to show it: a card whose face says 2 and
+  // then charges 1 is a screen the player stops trusting, and so is the
+  // reverse. Floors at zero — a card cannot pay you to play it.
+  cardCost(card) {
+    return Math.max(int(card.cost, 0) - this.state.next_card_discount, 0);
+  }
+
+  // Where the player stands, for the effects that care.
+  //
+  // Read fresh each time rather than cached: "if you trail the opponent" has
+  // to mean the moment the card is played, not the moment the hand was dealt.
+  _standingContext() {
+    const s = this.state;
+    return {
+      self_gaffe: s.gaffe,
+      player_support: s.bar === null ? 0 : s.bar.player,
+      opponent_support: s.bar === null ? 0 : s.bar.opponent,
+    };
+  }
 
   // The price of a turn spent saying nothing.
   //
@@ -826,6 +1120,12 @@ class BattleEngine {
 
     s.declined_questions += 1;
     s.question_index += 1;
+
+    // In an ambush there is nowhere to go. Ducking one question ends it,
+    // which is the whole character of the stage.
+    if (bool(this._stage.decline_ends_stage, false)) {
+      this._finish('loss', this._words('outcome.reason.walked_away'));
+    }
   }
 
   _resolveIntent(intent) {
@@ -862,7 +1162,9 @@ class BattleEngine {
     if (s.isOver()) return;
 
     // Losing on gaffes happens the moment it happens, mid-turn.
-    if (s.gaffe >= s.gaffe_limit) return this._finish('loss', 'The gaffe meter filled.');
+    if (s.gaffe >= s.gaffe_limit) {
+      return this._finish('loss', this._words('outcome.reason.gaffe_limit'));
+    }
 
     // A press conference ends when the reporters run out of questions, or
     // when the player runs out of anything to answer with.
@@ -901,15 +1203,15 @@ class BattleEngine {
     // Running out of opponents wins it even short of the threshold.
     if (this._sequenceMode === 'continuous' && s.bar.opponent <= 0) {
       if (this.hasMoreOpponents()) return this._advanceToNextOpponent();
-      return this._finish('win', 'Every opponent has been argued out of the chamber.');
+      return this._finish('win', this._words('outcome.reason.all_argued_out'));
     }
 
     if (bool(this._rules.opponent_can_win_by_threshold, false) && s.bar.opponentHasWon()) {
-      return this._finish('loss', 'The opponent reached the threshold first.');
+      return this._finish('loss', this._words('outcome.reason.opponent_first'));
     }
 
     if (endOfTurn && s.bar.model === SURVIVAL && s.bar.playerBelowThreshold()) {
-      return this._finish('loss', 'Support fell below the line during the debate.');
+      return this._finish('loss', this._words('outcome.reason.fell_below'));
     }
 
     if (endOfTurn) this._checkTurnLimit();
@@ -921,29 +1223,38 @@ class BattleEngine {
     if (limit <= 0 || s.turn < limit) return;
 
     if (s.bar && s.bar.model === SURVIVAL) {
-      return this._finish('win', 'Survived the whole debate above the line.');
+      return this._finish('win', this._words('outcome.reason.survived'));
     }
 
     // A scored stage is not won or lost on the clock — running out of turns
     // is simply how it ends.
     if (s.win_mode === 'score') {
       // In the units the stage is read in: a caucus counted as a share of
-      // the room should not close on a headcount.
+      // the room should not close on a headcount, and a TV debate should
+      // close on press tone rather than on "support".
       const closing = this._stage.bar_as_percent
-        ? s.playerScore() + '% of the room'
-        : s.playerScore() + ' support';
-      return this._finish('win', 'The caucus closed with ' + closing + '.');
+        ? this._words('outcome.reason.percent_of_room', { count: s.playerScore() })
+        : this._words('outcome.reason.amount_of_unit', {
+            count: s.playerScore(),
+            unit: str(this._stage.bar_unit, 'support').toLowerCase(),
+          });
+      // Named from the stage: the caucus, the town hall and the TV debate
+      // are all scored, and this said "the caucus" for all three.
+      const what = str(this._stage.name_en, '').trim();
+      return this._finish('win', what
+        ? this._words('outcome.reason.closed_on', { stage: what, closing: closing })
+        : this._words('outcome.reason.closed_on_unnamed', { closing: closing }));
     }
 
     switch (str(this._rules.turn_limit_outcome, 'loss')) {
       case 'highest_support_wins':
         return s.bar.player > s.bar.opponent
-          ? this._finish('win', 'Time ran out with the player ahead.')
-          : this._finish('loss', 'Time ran out with the player behind.');
+          ? this._finish('win', this._words('outcome.reason.time_ahead'))
+          : this._finish('loss', this._words('outcome.reason.time_behind'));
       case 'tie_retry':
-        return this._finish('retry', 'Time ran out with no decision. The stage restarts.');
+        return this._finish('retry', this._words('outcome.reason.time_no_decision'));
       default:
-        return this._finish('loss', 'Time ran out before the threshold was reached.');
+        return this._finish('loss', this._words('outcome.reason.time_short'));
     }
   }
 
@@ -972,6 +1283,19 @@ class BattleEngine {
 
     if (this._sequenceMode === 'reset') {
       this._resetForNewBout();
+    } else if (this._sequenceMode === 'stream') {
+      // A town hall: the clock and your record carry across the queue, but
+      // each new face is a fresh three energy. Neither of the other two
+      // modes does that — "reset" would wipe the gaffes you have earned, and
+      // "continuous" would leave you empty-handed in front of somebody who
+      // has not heard you speak yet.
+      s.energy = s.energy_per_turn;
+      s.energy_max = s.energy_per_turn;
+      if (s.bar) {
+        s.bar = this._buildBar(
+          int(this._stage.player_start, 0),
+          int(this._stage.opp_start, 0));
+      }
     } else if (s.bar) {
       s.bar = this._buildBar(
         int(this._stage.player_start, 0),
@@ -985,6 +1309,7 @@ class BattleEngine {
     s.block = 0;
     s.opponent_block = 0;
     s.next_card_bonus = 0;
+    s.next_card_discount = 0;
     s.next_intent_revealed = false;
     s.cards_played_this_turn = 0;
     s.turn = 1;
@@ -1009,9 +1334,10 @@ class BattleEngine {
 
   _victoryReason() {
     if (this._sequenceMode !== 'single' && this.state.opponent_count > 1) {
-      return 'All ' + this.state.opponent_count + ' were argued down.';
+      return this._words('outcome.reason.all_argued_down',
+        { count: this.state.opponent_count });
     }
-    return 'The support threshold was reached.';
+    return this._words('outcome.reason.threshold');
   }
 
   _finish(outcome, reason) {
@@ -1046,13 +1372,20 @@ class BattleEngine {
   // produced is the tone and the organisations pleased. The count of
   // unanswered questions is recorded rather than judged.
   _conferenceClosing(ranOutOfCards) {
-    const lines = ['The press conference concludes.'];
+    // Named from the stage, because a policy study session and a lobbyist
+    // meeting both run on questions and neither of them is a press
+    // conference. It said so anyway until a playtest read it.
+    const what = str(this._stage.name_en, '').trim();
+    const lines = [what
+      ? this._words('outcome.reason.concludes', { stage: what })
+      : this._words('outcome.reason.concludes_unnamed')];
     if (ranOutOfCards) {
-      lines.push('The questions ran on, but there was nothing left to say.');
+      lines.push(this._words('outcome.reason.nothing_left'));
     }
     const declined = this.state.declined_questions;
-    if (declined === 1) lines.push('One question went unanswered.');
-    else if (declined > 1) lines.push(declined + ' questions went unanswered.');
+    if (declined > 0) {
+      lines.push(this._words('outcome.reason.unanswered', { count: declined }));
+    }
     return lines.join(' ');
   }
 
@@ -1063,13 +1396,13 @@ class BattleEngine {
   // playtest reported this as the card not working, which is what happens
   // when a screen shows a promise the rules do not keep.
   preview(card) {
-    const effect = resolveCard(card, {
+    const effect = resolveCard(card, Object.assign({
       affinity: this.affinityFor(card),
       segment_share: segmentShare(card, this._stage),
       kanban: int(this._meta.Reputation, 50),
       opponent_gaffe: this.state.opponent_gaffe,
       next_card_bonus: this.state.next_card_bonus,
-    });
+    }, this._standingContext()));
 
     const reduceCounts = !this.state.bar || !this.state.bar.reduceDoesNothing();
     const guardCounts = this._intents !== null;
@@ -1120,13 +1453,74 @@ class BattleEngine {
   _answerQuestion(card) {
     const question = this.currentQuestion();
     if (!question) return;
-    if (card.suit === question.prefers_suit) {
-      const booster = String(question.pleases_booster || '');
-      if (booster && !this.state.pleased_boosters.includes(booster)) {
-        this.state.pleased_boosters.push(booster);
+
+    switch (this._gradeOf(card, question)) {
+      case 'S': {
+        // A strong answer pleases whoever asked, as it always has.
+        const booster = String(question.pleases_booster || '');
+        if (booster && !this.state.pleased_boosters.includes(booster)) {
+          this.state.pleased_boosters.push(booster);
+        }
+        break;
+      }
+      case 'W': {
+        // A weak answer is worse than a bland one: the room cools, the same
+        // way declining does but by a smaller amount. The number is the
+        // stage's, beside the decline cost it sits next to.
+        const cost = int(this._stage.weak_answer_tone_cost, 0);
+        if (cost > 0 && this.state.bar) this.state.bar.playerLoses(cost);
+        this.state.weak_answers += 1;
+        break;
       }
     }
+
     this.state.question_index += 1;
+  }
+
+  // How well this card's suit answers this question: 'S', 'M' or 'W'.
+  //
+  // Two shapes of question are understood. The questions Cameron wrote in
+  // the workbook grade all six suits; the earlier hand-written ones name a
+  // single suit they prefer, which reads as S for that suit and M for the
+  // rest.
+  _gradeOf(card, question) {
+    const grades = question.grades || {};
+    if (Object.keys(grades).length > 0) {
+      return String(grades[card.suit] || 'M');
+    }
+    return card.suit === question.prefers_suit ? 'S' : 'M';
+  }
+
+  // Deals this stage's questions out of its type's pool.
+  //
+  // A room that asks questions no longer names its own: it draws from the
+  // pool for its kind, so a new question is one row in the workbook rather
+  // than an edit to every level that has a press conference in it.
+  //
+  // Dealt from the battle's own seeded generator, so the same seed asks the
+  // same questions, and without repeats — being asked the same thing twice
+  // in one sitting reads as a bug whatever the dice say. A pool smaller
+  // than the stage needs is used whole rather than padded.
+  _drawQuestions(pool) {
+    if (!Array.isArray(pool) || pool.length === 0) return [];
+
+    // How many this room asks. A stage that says so outright wins: these
+    // rooms have no turn limit, so the number of questions IS the length of
+    // the stage and it is the level's to set.
+    let wanted = int(this._stage.questions_count, 0);
+    if (wanted <= 0) {
+      wanted = Math.max(this._questionsPerTurn(), 1)
+        * Math.max(int(this._stage.turn_limit, 0), 1);
+    }
+
+    const bag = pool.slice();
+    for (let i = bag.length - 1; i > 0; i--) {
+      const j = this._rng(i + 1);
+      const held = bag[i];
+      bag[i] = bag[j];
+      bag[j] = held;
+    }
+    return bag.slice(0, Math.min(wanted, bag.length));
   }
 
   currentIntent() { return this._intents ? this._intents.peek() : { verb: 'none', value: 0 }; }
@@ -1165,8 +1559,12 @@ class LevelRunner {
   isFinished() { return this._outcome !== ONGOING; }
   outcome() { return this._outcome; }
 
-  progressCaption() {
-    return 'Stage ' + Math.min(this.index + 1, this.stages.length) + ' of ' + this.stages.length;
+  progressCaption(words) {
+    const say = words || phrase({});
+    return say('caption.stage', {
+      number: Math.min(this.index + 1, this.stages.length),
+      total: this.stages.length,
+    });
   }
 
   finishStage(stageOutcome, score, boosters) {
@@ -1254,32 +1652,53 @@ class LevelRunner {
     return {};
   }
 
-  describeCarriedBuffs(names) {
+  describeCarriedBuffs(names, words) {
     names = names || {};
+    const say = words || phrase({});
     const lines = [];
 
     for (const entry of this.carriedBreakdown()) {
       if (entry.support_bonus > 0) {
-        lines.push(entry.name + ' went well: you start ' + entry.support_bonus + ' ahead.');
+        lines.push(say('carried.went_well',
+          { name: entry.name, count: entry.support_bonus }));
       } else if (entry.support_bonus < 0) {
-        lines.push(entry.name + ' went badly: you start ' + (-entry.support_bonus) + ' behind.');
+        lines.push(say('carried.went_badly',
+          { name: entry.name, count: -entry.support_bonus }));
       }
     }
 
     const boosters = this.carriedBuffs().boosters;
     if (boosters.length > 0) {
-      lines.push('Pleased at the press conference: '
-        + boosters.map(id => names[id] || id).join(', ') + '.');
+      lines.push(say('carried.pleased',
+        { names: boosters.map(id => names[id] || id).join(', ') }));
     }
 
-    if (lines.length === 0) return 'Nothing carried over from the earlier stages.';
+    if (lines.length === 0) return say('carried.nothing');
     return lines.join('\n');
+  }
+
+  // Whether anything at all carried into this stage.
+  //
+  // The screens used to work this out by looking at the sentence above and
+  // checking whether it began with "Nothing" — so rewording that one line
+  // would have quietly stopped the carried-over block appearing. They ask
+  // here instead, and the wording is free to change.
+  anythingCarried() {
+    for (const entry of this.carriedBreakdown()) {
+      if (entry.support_bonus !== 0) return true;
+    }
+    return this.carriedBuffs().boosters.length > 0;
   }
 }
 
 // ---------------------------------------------------------------------------
 // MetaRules
 // ---------------------------------------------------------------------------
+// FOUR OF THESE RULES ARE NOT CALLED BY EITHER ENGINE YET, and MetaRules.gd
+// carries the same note: townHallTriggered, steeringCommitteeTriggered,
+// fundingFrozen and partySupportModifiers. Their arithmetic is right and
+// tested; the systems CLAUDE.md §8 describes are simply not switched on, and
+// wait for the module runner at M4. A passing check is not a working feature.
 
 function clampMeta(value, variable) {
   return clamp(value, int(variable.min, 0), int(variable.max, 100));
@@ -1344,7 +1763,8 @@ function rewardsAreUnset(stage) {
 // What a stage produces that is not a flat reward — described, not forecast.
 // A press conference's worth depends on the tone it closes on, so a number
 // here would be a guess presented as a promise.
-function variableRewards(stage) {
+function variableRewards(stage, words) {
+  const say = words || phrase({});
   const lines = [];
   const effects = stage.tone_effects || {};
   const baseline = int(effects.baseline, 50);
@@ -1353,17 +1773,17 @@ function variableRewards(stage) {
   for (const name of Object.keys(perVariable)) {
     const per = int(perVariable[name], 0);
     if (per > 0) {
-      lines.push(name + ', by how far above ' + baseline + ' you finish (1 per ' + per + ')');
+      lines.push(say('reward.by_finish', { name: name, baseline: baseline, per: per }));
     }
   }
 
   const perSupport = int(effects.support_per_points, 0);
   if (perSupport > 0) {
-    lines.push('A head start later in the level, 1 per ' + perSupport + ' above ' + baseline);
+    lines.push(say('reward.head_start', { per: perSupport, baseline: baseline }));
   }
 
   if (Array.isArray(stage.questions) && stage.questions.length > 0) {
-    lines.push('Standing with whichever organisations your answers please');
+    lines.push(say('reward.standing'));
   }
 
   return lines;
@@ -1400,6 +1820,271 @@ function applyScoreEffects(meta, stage, score, sanbanRows) {
 }
 
 // ---------------------------------------------------------------------------
+// Ledger — what a thing costs, and whether you may have it
+// ---------------------------------------------------------------------------
+// Ported from scripts/rules/Ledger.gd. One place for every kind of purchase,
+// so a screen can never offer what the rules would refuse and the refusal
+// the player reads is the rules' own words.
+
+// The tier a player owns from the first moment, named once.
+//
+// It was "Starter" until the 2026-09-21 card slate renamed the tiers to 0-3.
+// Several places checked that string; now they ask here instead, so the next
+// rename is one line. Mirrors Ledger.OPENING_TIER.
+const OPENING_TIER = '0';
+
+// The wording, handed in rather than held here — the mirror of Phrase.gd.
+// Called without a table every refusal comes back as its key, which is what
+// the headless fixtures in tests.js see.
+function phrase(table) {
+  const lines = table || {};
+  return function say(key, values) {
+    values = values || {};
+    let template = null;
+    if (Object.prototype.hasOwnProperty.call(values, 'count')) {
+      const suffix = int(values.count, 0) === 1 ? '.one' : '.other';
+      if (lines[key + suffix] !== undefined) template = lines[key + suffix];
+    }
+    if (template === null && lines[key] !== undefined) template = lines[key];
+    if (template === null) return key;
+    let filled = template;
+    for (const name of Object.keys(values)) {
+      filled = filled.split('{' + name + '}').join(String(values[name]));
+    }
+    return filled;
+  };
+}
+
+function cardCost(card) { return int(card.xp_to_unlock, 0); }
+
+function cardRefusal(card, owned, xp, words) {
+  const say = words || phrase();
+  const cardId = str(card.card_id, '');
+  if (!cardId) return say('shop.card_no_id');
+  if (owned.includes(cardId)) return say('shop.already_yours');
+
+  const cost = cardCost(card);
+  if (cost <= 0) return '';
+  if (xp < cost) return say('shop.xp_short', {count: cost - xp});
+  return '';
+}
+
+function modifierCost(modifier) {
+  const cost = modifier.kaban_cost;
+  return (cost === null || cost === undefined) ? 0 : Math.trunc(cost);
+}
+
+function isForSale(modifier) {
+  if (modifierCost(modifier) <= 0) return false;
+  const audience = str(modifier.available_to, 'Both');
+  return audience === 'Both' || audience === 'Player';
+}
+
+function standingNeeded(modifier, settings) {
+  const perModifier = settings.required_standing_by_modifier || {};
+  const modId = str(modifier.mod_id, '');
+  if (modId in perModifier) return int(perModifier[modId], 60);
+  return int(settings.required_standing, 60);
+}
+
+// The party-support pair name a meta-variable in the source_booster column
+// rather than an organisation, so anything that is not a real booster ID is
+// treated as "nobody backs this".
+function backingBooster(modifier, boosterIds) {
+  const source = str(modifier.source_booster, '');
+  return boosterIds.includes(source) ? source : '';
+}
+
+function modifierRefusal(modifier, owned, funds, standing, settings, boosterIds, words) {
+  const say = words || phrase();
+  const modId = str(modifier.mod_id, '');
+  if (!modId) return say('shop.mod_no_id');
+  if (owned.includes(modId)) return say('shop.already_yours');
+  if (!isForSale(modifier)) return say('shop.not_for_sale');
+
+  // Standing first: being told the price of something you are not allowed
+  // to buy is worse than being told why you cannot buy it.
+  const booster = backingBooster(modifier, boosterIds);
+  if (booster) {
+    const needed = standingNeeded(modifier, settings);
+    const have = int(standing[booster], 0);
+    if (have < needed) return say('shop.standing_needed', {have: have, needed: needed});
+  }
+
+  const cost = modifierCost(modifier);
+  if (funds < cost) return say('shop.funds_short', {count: cost - funds});
+  return '';
+}
+
+function deckSize(balance) { return Math.max(int(balance.starter_deck_size, 12), 1); }
+
+// Exact rather than "at least": with no upgrades and a growing card set,
+// the only thing making an unlock a decision is having to leave something out.
+function deckRefusal(deck, owned, balance, words) {
+  const say = words || phrase();
+  const wanted = deckSize(balance);
+
+  for (const cardId of deck) {
+    if (!owned.includes(cardId)) return say('shop.not_yours', {card: cardId});
+  }
+  const seen = {};
+  for (const cardId of deck) {
+    if (seen[cardId]) return say('shop.in_twice', {card: cardId});
+    seen[cardId] = true;
+  }
+  if (deck.length < wanted) return say('shop.more_to_choose', {count: wanted - deck.length});
+  if (deck.length > wanted) return say('shop.too_many', {count: deck.length - wanted});
+  return '';
+}
+
+// Every opening-tier card first — those are yours from the beginning and
+// there is one per suit. The 2026-09-21 slate has six of them against a deck
+// of twelve, so the rest is filled a suit at a time from the next tiers up,
+// lowest card ID first.
+//
+// That fill is a SUGGESTION, not a design decision: it keeps all six suits
+// represented so a first battle is playable, and the deck screen exists
+// precisely so the player changes it.
+function openingDeck(cards, balance) {
+  const wanted = deckSize(balance);
+  const deck = cards
+    .filter(c => str(c.tier, '') === OPENING_TIER)
+    .map(c => str(c.card_id, ''));
+
+  if (deck.length > wanted) return deck.slice(0, wanted);
+
+  // Round-robin by suit, so the fill cannot hand out six cards of one
+  // element and none of another.
+  const suits = [];
+  for (const card of cards) {
+    const suit = str(card.suit, '');
+    if (suit && !suits.includes(suit)) suits.push(suit);
+  }
+
+  while (deck.length < wanted) {
+    let added = false;
+    for (const suit of suits) {
+      if (deck.length >= wanted) break;
+      for (const card of cards) {
+        const cardId = str(card.card_id, '');
+        if (str(card.suit, '') !== suit || deck.includes(cardId)) continue;
+        deck.push(cardId);
+        added = true;
+        break;
+      }
+    }
+    if (!added) break;   // every card there is, is already in
+  }
+
+  return deck;
+}
+
+// ---------------------------------------------------------------------------
+// ModifierEffects — what an organisation's backing actually does
+// ---------------------------------------------------------------------------
+// Ported from scripts/rules/ModifierEffects.gd. The `effect` column is prose
+// for a designer and CLAUDE.md forbids parsing it, so the machine-readable
+// half is a key plus the magnitude the workbook already carries.
+
+const AT_BATTLE_START = ['player_start_support', 'starting_gaffe'];
+const AFTER_STAGE_WIN = ['kaban_per_stage_win'];
+const NOT_YET_BUILT = [
+  'opp_start_support_on_tag', 'kaban_per_module', 'party_support_per_module',
+  'jiban_per_module_win', 'negates_cold_shoulder', 'start_lean_in_committee',
+  'halve_jiban_losses',
+];
+// Wired and correct, but nothing yet produces the situation it answers: the
+// gaffe meter always opens at zero, so taking a point off it takes nothing.
+const INERT_TODAY = ['starting_gaffe'];
+
+function effectKeyFor(modifier, bridge) {
+  const key = str(modifier.effect_key, '').trim();
+  if (key) return key;
+  return str((bridge || {})[str(modifier.mod_id, '')], '');
+}
+
+function magnitudeOf(modifier) {
+  const value = modifier.magnitude;
+  return (value === null || value === undefined) ? 0 : Math.round(Number(value));
+}
+
+function effectIsImplemented(modifier, bridge) {
+  const key = effectKeyFor(modifier, bridge);
+  if (INERT_TODAY.includes(key)) return false;
+  return AT_BATTLE_START.includes(key) || AFTER_STAGE_WIN.includes(key);
+}
+
+function effectIsInertToday(modifier, bridge) {
+  return INERT_TODAY.includes(effectKeyFor(modifier, bridge));
+}
+
+function effectIsKnownButUnbuilt(modifier, bridge) {
+  return NOT_YET_BUILT.includes(effectKeyFor(modifier, bridge));
+}
+
+// The effect column says "Magnitude" where a number belongs, because it was
+// written for a designer. Putting that on a shop screen asks the player to
+// read a spreadsheet.
+function describeEffect(modifier, bridge, words) {
+  const say = words || phrase({});
+  const magnitude = magnitudeOf(modifier);
+  switch (effectKeyFor(modifier, bridge)) {
+    case 'player_start_support':
+      return say('modifier.player_start_support', { count: magnitude });
+    case 'starting_gaffe':
+      return say('modifier.starting_gaffe', { count: magnitude });
+    case 'kaban_per_stage_win':
+      return say('modifier.kaban_per_stage_win', { count: magnitude });
+  }
+  const prose = str(modifier.effect, '').trim();
+  if (!prose) return '';
+  return prose.split('Magnitude').join(String(magnitude));
+}
+
+function battleStartBonus(active, bridge) {
+  const bonus = { start_support: 0, starting_gaffe: 0 };
+  for (const modifier of active) {
+    const magnitude = magnitudeOf(modifier);
+    switch (effectKeyFor(modifier, bridge)) {
+      case 'player_start_support': bonus.start_support += magnitude; break;
+      // The column reads "−Magnitude starting gaffe meter": the sign is in
+      // the prose, so the number comes off here.
+      case 'starting_gaffe': bonus.starting_gaffe -= magnitude; break;
+    }
+  }
+  return bonus;
+}
+
+function stageWinFunds(owned, bridge) {
+  let funds = 0;
+  for (const modifier of owned) {
+    if (effectKeyFor(modifier, bridge) === 'kaban_per_stage_win') {
+      funds += magnitudeOf(modifier);
+    }
+  }
+  return funds;
+}
+
+// Which modifiers fire given the room, ported from MetaRules.active_modifiers.
+function activeModifiers(rows, stage, availableTo) {
+  const active = [];
+  const mix = stage.segment_mix || {};
+  for (const modifier of rows) {
+    const audience = modifier.available_to;
+    if (audience !== null && audience !== undefined
+        && audience !== 'Both' && audience !== (availableTo || 'Player')) continue;
+
+    const minimum = modifier.trigger_min_pct;
+    if (minimum === null || minimum === undefined) continue;
+    const segmentId = modifier.trigger_segment_id;
+    if (segmentId === null || segmentId === undefined) continue;
+
+    if (Number(mix[segmentId] || 0) >= Number(minimum)) active.push(modifier);
+  }
+  return active;
+}
+
+// ---------------------------------------------------------------------------
 // BattleSetup — the bridge from the data files to the engine
 // ---------------------------------------------------------------------------
 
@@ -1410,7 +2095,7 @@ function cardTable(data) {
 }
 
 function starterDeck(data) {
-  return data.cards.filter(c => c.tier === 'Starter').map(c => c.card_id);
+  return data.cards.filter(c => str(c.tier, '') === OPENING_TIER).map(c => c.card_id);
 }
 
 function affinityTable(data) {
@@ -1453,21 +2138,63 @@ function withAudience(data, stage) {
   return Object.assign({}, stage, { segment_mix: canon.segment_mix });
 }
 
-function forPlaytestStage(data, stage, buffs, meta, seed) {
+// `owned` is the run's state: { deck, modifiers }. Absent in a standalone
+// Every line the game says, by key. Built from the exported Text tab once
+// rather than per battle, because a stage can start several times in a run.
+let _stringsTable = null;
+function stringsTable(data) {
+  if (_stringsTable === null) {
+    _stringsTable = {};
+    for (const row of (data.strings || [])) {
+      const key = str(row.key, '').trim();
+      if (key) _stringsTable[key] = str(row.english, '');
+    }
+  }
+  return _stringsTable;
+}
+
+
+// battle, which then deals the opening twelve and no backing.
+function forPlaytestStage(data, stage, buffs, meta, seed, owned) {
   buffs = buffs || {};
+  owned = owned || {};
   const opponents = stage.opponents || [];
+  const filled = withAudience(data, stage);
+  const backing = backingBonus(data, filled, owned.modifiers || []);
+
   return {
-    stage: withAudience(data, stage),
+    stage: filled,
     opponent: opponents.length > 0 ? opponents[0] : {},
     opponents: opponents,
     cards: cardTable(data),
     affinity: affinityTable(data),
     rules: data.rules,
+    // Every sentence the engine says, from the workbook's Text tab.
+    strings: stringsTable(data),
     meta: meta || startingMeta(data),
-    deck: starterDeck(data),
-    start_adjustment: int(buffs.support_bonus, 0),
+    // The questions this kind of room can ask. The engine deals from it
+    // with the battle's own seed, and only where the stage has not written
+    // its own questions out longhand.
+    question_pool: (data.questions || {})[str(stage.type, '')] || [],
+    deck: (owned.deck && owned.deck.length > 0) ? owned.deck.slice() : starterDeck(data),
+    // A good caucus earlier in the level starts this stage ahead, and so
+    // does an organisation whose backing you have bought.
+    start_adjustment: int(buffs.support_bonus, 0) + backing.start_support,
+    starting_gaffe: backing.starting_gaffe,
     seed: seed,
   };
+}
+
+// What the organisations backing you are worth in this room. Backing only
+// counts where the audience it cares about is actually here: a friendly beat
+// reporter does nothing in a caucus with no press in it.
+function backingBonus(data, stage, ownedIds) {
+  if (!ownedIds || ownedIds.length === 0) {
+    return { start_support: 0, starting_gaffe: 0 };
+  }
+  const owned = data.modifiers.filter(m => ownedIds.includes(str(m.mod_id, '')));
+  const active = activeModifiers(owned, stage, 'Player');
+  return battleStartBonus(active, data.modifier_effects || {});
 }
 
 // --- small helpers, so a missing cell reads the same way it does in Godot ---

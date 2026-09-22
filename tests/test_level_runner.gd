@@ -75,18 +75,36 @@ func test_nothing_moves_once_the_level_is_over() -> void:
 	assert_eq(runner.index, before, "finishing a stage after the end does nothing")
 
 
+## Stand-in wording, so these tests check the COUNTING rather than Cameron's
+## phrasing. The real sentences are pinned once, in test_text.gd.
+const RUNNER_WORDS := {
+	"caption.stage": "{number}/{total}",
+	"carried.went_well": "{name} well +{count}",
+	"carried.went_badly": "{name} badly -{count}",
+	"carried.pleased": "pleased {names}",
+	"carried.nothing": "nothing carried",
+	"reward.by_finish": "{name} above {baseline}, 1 per {per}",
+	"reward.head_start": "head start 1 per {per} above {baseline}",
+	"reward.standing": "standing",
+}
+
+
+func _words() -> Phrase:
+	return Phrase.new(RUNNER_WORDS)
+
+
 func test_the_progress_caption_reads_correctly() -> void:
 	var runner := _runner()
-	assert_eq(runner.progress_caption(), "Stage 1 of 3")
+	assert_eq(runner.progress_caption(_words()), "1/3")
 	runner.finish_stage(LevelRunner.WON)
-	assert_eq(runner.progress_caption(), "Stage 2 of 3")
+	assert_eq(runner.progress_caption(_words()), "2/3")
 
 
 func test_the_caption_does_not_overrun_at_the_end() -> void:
 	var runner := _runner()
 	for _index in 3:
 		runner.finish_stage(LevelRunner.WON)
-	assert_eq(runner.progress_caption(), "Stage 3 of 3", "not 'Stage 4 of 3'")
+	assert_eq(runner.progress_caption(_words()), "3/3", "not '4/3'")
 
 
 # ---------------------------------------------------------------------------
@@ -150,15 +168,20 @@ func test_carried_buffs_are_described_in_plain_words() -> void:
 	runner.finish_stage(LevelRunner.WON, 80, ["BO08"])
 	runner.finish_stage(LevelRunner.WON)
 
-	var description := runner.describe_carried_buffs()
-	assert_string_contains(description, "First went well",
+	var description := runner.describe_carried_buffs({}, _words())
+	assert_string_contains(description, "First",
 		"and says WHICH stage went well, not just that something did")
-	assert_string_contains(description, "3 ahead")
+	assert_string_contains(description, "+3")
 	assert_string_contains(description, "BO08")
+	assert_true(runner.anything_carried(),
+		"and says so without the screen having to read the sentence")
 
 
 func test_nothing_carried_says_so_rather_than_being_blank() -> void:
-	assert_string_contains(_runner().describe_carried_buffs(), "Nothing carried")
+	assert_eq(_runner().describe_carried_buffs({}, _words()), "nothing carried")
+	assert_false(_runner().anything_carried(),
+		"THE BUG THIS COVERS: the screens used to work this out by checking "
+		+ "whether the sentence began with the word Nothing")
 
 
 # ---------------------------------------------------------------------------
@@ -279,7 +302,7 @@ func test_a_variable_reward_is_described_rather_than_forecast() -> void:
 	var lines := LevelRunner.variable_rewards({
 		"tone_effects": {"baseline": 50, "support_per_points": 10,
 			"meta": {"Reputation": 5}},
-	})
+	}, _words())
 	var joined := "\n".join(lines)
 
 	assert_string_contains(joined, "Reputation")

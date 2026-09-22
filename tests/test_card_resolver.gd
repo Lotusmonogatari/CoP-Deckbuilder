@@ -172,6 +172,12 @@ func test_every_known_special_key_is_handled() -> void:
 	# Guards against adding a key to the list and forgetting to implement it.
 	for key: String in SpecialEffects.KNOWN_KEYS:
 		var card := TestFixtures.card({"self_plus": 4, "special": key, "special_value": 1})
-		var effect := CardResolver.resolve(card, {"affinity": 1.0, "segment_share": 1.0, "kanban": 99, "opponent_gaffe": 1})
+		# Every condition satisfied at once, so a key that does nothing here
+		# really does nothing rather than simply not applying.
+		var effect := CardResolver.resolve(card, {
+			"affinity": 1.0, "segment_share": 1.0, "kanban": 99,
+			"opponent_gaffe": 1, "self_gaffe": 0,
+			"player_support": 10, "opponent_support": 20,
+		})
 		assert_true(effect["flags"].get("special_triggered", false),
 			"'%s' is in KNOWN_KEYS but does nothing" % key)

@@ -9,6 +9,11 @@ extends Node
 ## The rules engine in scripts/rules/ does NOT use this. Rules code never
 ## emits or listens to signals — it takes values in and hands results back.
 ## That's what lets it be tested without any of the game running.
+##
+## THE RULE FOR THIS FILE: a signal exists only if something emits it. Five
+## used to sit here describing events nothing announced, which is worse than
+## no noticeboard at all — it reads as a seam that is already wired up. If you
+## need a new one, add it in the same commit as its emitter.
 
 # --- Battle ----------------------------------------------------------------
 
@@ -22,15 +27,16 @@ signal turn_ended(turn_number: int)
 ## The opponent's move for the coming turn is now known and can be shown.
 signal intent_revealed(intent: Dictionary)
 
-## A support bar changed, so the UI should animate it to the new value.
-signal support_changed(who: String, value: int)
-
-## The gaffe meter changed. `is_final_warning` is true only when one more
-## gaffe would end the stage — that's the only time the UI turns red.
-signal gaffe_changed(value: int, limit: int, is_final_warning: bool)
-
-## A committee member's lean moved, or their vote locked.
-signal member_changed(member_index: int, lean: int, locked_as: String)
+## The gaffe meter moved. Sent ONLY when it actually moved, or when the
+## warning turned on or off — never on a redraw that changed nothing.
+##
+## `delta` is signed, so a listener can tell a gaffe earned from one a card
+## cleared. Without it, "the meter is at 3" reads the same whether you just
+## made a mistake or just undid one, and a warning sound would play for both.
+##
+## `is_final_warning` is true only when one more gaffe would end the stage —
+## that's the only time the UI turns red.
+signal gaffe_changed(value: int, delta: int, limit: int, is_final_warning: bool)
 
 ## The stage ended. `outcome` is "win" or "loss"; `reason` explains why.
 signal battle_ended(outcome: String, reason: String)
@@ -40,16 +46,5 @@ signal battle_ended(outcome: String, reason: String)
 ## A meta-variable moved: Jiban, Kanban, Kaban, or Party support.
 signal meta_changed(variable_name: String, value: int, delta: int)
 
-## A module step finished and the run moved on.
-signal module_step_completed(module_id: String, seq: int)
-
 ## XP was earned or spent.
 signal xp_changed(total: int, delta: int)
-
-# --- Housekeeping ----------------------------------------------------------
-
-## The game was saved. Useful for showing a brief confirmation.
-signal game_saved()
-
-## Something went wrong that the player should be told about in plain words.
-signal player_facing_error(message: String)

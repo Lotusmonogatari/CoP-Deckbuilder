@@ -21,8 +21,11 @@ const DATA_PATH := "res://data/"
 ## Every file that must be present for the game to start.
 const REQUIRED_FILES := [
 	"affinity", "balance", "bills", "booster_standing", "boosters", "cards",
-	"committee", "journalists", "lists", "modifiers", "modules", "opponents",
+	"committee", "intent_patterns", "journalists", "levels", "lists",
+	"modifier_effects", "modifiers", "modules", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
+	"card_cues", "questions",
+	"sounds", "stage_types", "strings",
 	"segments", "stages", "suits", "yoron",
 ]
 
@@ -33,6 +36,16 @@ var stages: Array = []
 var suits: Array = []
 var segments: Array = []
 var modifiers: Array = []
+
+## Which named effect each modifier runs, by mod_id. Hand-written bridge;
+## the workbook's own column wins where it exists.
+var modifier_effects: Dictionary = {}
+
+## What each of the workbook's MPs does on their turn, by opp_id. The same
+## kind of hand-written bridge, for the same reason: opponents.json is
+## regenerated from the workbook and would throw away anything written into
+## it. The workbook's own column wins where it exists.
+var intent_patterns: Dictionary = {}
 var boosters: Array = []
 var opponents: Array = []
 var yoron: Array = []
@@ -51,6 +64,11 @@ var rules: Dictionary = {}
 ## from the workbook, because its shape is still being tried out.
 var playtest_level: Dictionary = {}
 
+## The six playtest levels, and the nine kinds of stage they are built from.
+## Hand-written; see each file's own README.
+var levels: Array = []
+var stage_types: Dictionary = {}
+
 ## Who the player is. Hand-written; a placeholder until the protagonist is
 ## cast for real.
 var player: Dictionary = {}
@@ -58,6 +76,26 @@ var player: Dictionary = {}
 ## The press pack, hand-written. They ask the questions at a press
 ## conference; they do not take turns.
 var journalists: Array = []
+
+## What plays when, and who says what. Hand-written; see the file's README.
+## Every sound is blank so far, so the game ships silent.
+var sounds: Dictionary = {}
+var speech: Dictionary = {}
+
+## Every line the game says to the player, by key, from the workbook's Text
+## tab. Flattened to key -> English here so nothing downstream has to know
+## the sheet has a Where or a Notes column. Text.gd hands these out.
+var strings: Dictionary = {}
+
+## The five spoken lines each card can say when it is played, by card ID,
+## from the workbook's Flavor Text tab. Flattened here from the sheet's five
+## columns into one list per card, so nothing downstream counts columns.
+var card_cues: Dictionary = {}
+
+## The questions each kind of room can ask, by stage type, from the five
+## question tabs. A stage draws from the pool for its type rather than
+## naming its own, so a new question is one row in the workbook.
+var questions: Dictionary = {}
 
 ## How standing with the ten organisations works: where it starts, what it
 ## is bounded by, and what pleasing one is worth. Hand-written.
@@ -110,6 +148,11 @@ func load_all() -> void:
 			"suits": suits = content
 			"segments": segments = content
 			"modifiers": modifiers = content
+			# A temporary bridge until the workbook carries an "Effect key"
+			# column; see the file's own README.
+			"modifier_effects": modifier_effects = _map_under(content, file_name, "effects")
+			# The same bridge again, for opponent behaviour.
+			"intent_patterns": intent_patterns = _map_under(content, file_name, "patterns")
 			"boosters": boosters = content
 			"opponents": opponents = content
 			"yoron": yoron = content
@@ -122,9 +165,17 @@ func load_all() -> void:
 			"lists": lists = content
 			"rules": rules = _flatten_rules(content)
 			"playtest_level": playtest_level = content
+			"levels": levels = _list_under(content, file_name, "levels")
+			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": player = content
 
-			"journalists": journalists = _list_under(content, "journalists")
+			"journalists": journalists = _list_under(content, file_name, "journalists")
+			"strings": strings = _strings_by_key(content)
+			"card_cues": card_cues = _cues_by_card(content)
+			"questions": questions = content
+			"sounds":
+				sounds = _map_under(content, file_name, "sounds")
+				speech = _map_under(content, file_name, "speech")
 			"booster_standing": booster_standing = content
 			# Cards that exist for the playtest but are not in the workbook
 			# yet. Appended rather than kept apart, so everything downstream —
@@ -133,7 +184,7 @@ func load_all() -> void:
 			# after "cards" because REQUIRED_FILES is in alphabetical order,
 			# and "cards" is reassigned on every load, so reloading cannot
 			# stack them up twice.
-			"playtest_cards": _add_playtest_cards(_list_under(content, "cards"))
+			"playtest_cards": _add_playtest_cards(_list_under(content, file_name, "cards"))
 
 	_fill_name_tokens()
 	_build_lookups()
@@ -231,15 +282,78 @@ func _add_playtest_cards(extras: Array) -> void:
 ## top level is an object rather than the bare array the exporter writes.
 ## This reaches in for the list and returns an empty one rather than failing
 ## if the file has been edited into a shape it did not expect.
-func _list_under(content: Variant, key: String) -> Array:
+##
+## `file_name` is passed in rather than assumed from `key`: the two are
+## usually different, and building the message out of the key sent the reader
+## to a file that was not the broken one. `playtest_cards.json` reported its
+## problems against `cards.json` — a real file, and an innocent one.
+func _list_under(content: Variant, file_name: String, key: String) -> Array:
 	if not (content is Dictionary):
-		errors.append("%s.json should be an object with a '%s' list in it." % [key, key])
+		errors.append("%s.json should be an object with a '%s' list in it."
+			% [file_name, key])
 		return []
 	var found: Variant = (content as Dictionary).get(key)
 	if not (found is Array):
-		errors.append("%s.json has no '%s' list in it." % [key, key])
+		errors.append("%s.json has no '%s' list in it." % [file_name, key])
 		return []
 	return found
+
+
+## The same, for a file whose payload is an object rather than a list.
+func _map_under(content: Variant, file_name: String, key: String) -> Dictionary:
+	if not (content is Dictionary):
+		errors.append("%s.json should be an object with a '%s' map in it."
+			% [file_name, key])
+		return {}
+	var found: Variant = (content as Dictionary).get(key)
+	if not (found is Dictionary):
+		errors.append("%s.json has no '%s' map in it." % [file_name, key])
+		return {}
+	return found
+
+
+## The Flavor Text tab's five cue columns, folded into one list per card.
+##
+## A card with no cues written yet comes back as an empty list rather than
+## five blanks, so "has this card anything to say" is one is_empty() call.
+func _cues_by_card(rows: Variant) -> Dictionary:
+	var by_card := {}
+	if not (rows is Array):
+		return by_card
+	for row: Variant in rows:
+		if not (row is Dictionary):
+			continue
+		var card_id := str(row.get("card_id", "")).strip_edges()
+		if card_id.is_empty():
+			continue
+		var lines: Array[String] = []
+		for index in range(1, 6):
+			var line := str(row.get("cue_%d" % index, "")).strip_edges()
+			if not line.is_empty():
+				lines.append(line)
+		by_card[card_id] = lines
+	return by_card
+
+
+
+## Turns the Text tab's rows into a plain key -> English lookup.
+##
+## The sheet carries Where, Placeholders and Notes columns so that Cameron can
+## find and understand a line; none of that reaches the game, so it is dropped
+## here rather than everywhere downstream.
+func _strings_by_key(content: Variant) -> Dictionary:
+	var table := {}
+	if not (content is Array):
+		errors.append("strings.json should be a list of lines from the Text tab.")
+		return table
+	for row: Variant in content:
+		if not (row is Dictionary):
+			continue
+		var key := str((row as Dictionary).get("key", "")).strip_edges()
+		if key.is_empty():
+			continue
+		table[key] = str((row as Dictionary).get("english", ""))
+	return table
 
 
 ## rules.json keeps each switch alongside notes explaining the options.
@@ -304,8 +418,29 @@ func get_stage(stage_id: String) -> Dictionary:
 	return _lookup(_stages_by_id, stage_id, "stage")
 
 
+## An opponent, with their intent pattern filled in if it is not on the row.
+##
+## opponents.json comes out of the workbook, which has no Intent pattern
+## column yet, so the patterns live in the hand-written bridge instead. The
+## merge happens here rather than at each call site: an opponent handed out
+## without their behaviour is an opponent who plays as the generic default,
+## and that is a bug nobody notices until a battle feels wrong.
+##
+## The row's own value always wins, so the day the column lands this stops
+## doing anything.
 func get_opponent(opp_id: String) -> Dictionary:
-	return _lookup(_opponents_by_id, opp_id, "opponent")
+	var opponent := _lookup(_opponents_by_id, opp_id, "opponent")
+	if opponent.is_empty() or opponent.get("intent_pattern") != null:
+		return opponent
+	if not intent_patterns.has(opp_id):
+		return opponent
+
+	# Copied rather than written into: _opponents_by_id holds the loaded
+	# data, and a caller that edits what it is given must not change it for
+	# everyone else.
+	var filled := opponent.duplicate(true)
+	filled["intent_pattern"] = intent_patterns[opp_id]
+	return filled
 
 
 func get_segment(segment_id: String) -> Dictionary:
@@ -358,7 +493,7 @@ func get_balance(lever: String, fallback: float = 0.0) -> float:
 	return fallback
 
 
-## XP needed to unlock a card of a given tier ("Starter", "Tier 1", ...).
+## XP needed to unlock a card of a given tier ("0", "1", "2", "3").
 func get_tier_cost(tier: String) -> int:
 	var tiers: Variant = balance.get("xp_tiers", {})
 	if tiers is Dictionary and (tiers as Dictionary).has(tier):
@@ -470,10 +605,19 @@ func _validate() -> void:
 			var element: Variant = opp.get(field)
 			if element != null and not suit_names.has(element):
 				errors.append("Opponent %s has %s '%s', which is not a suit" % [oid, field, element])
-		if opp.get("intent_pattern") == null:
+		# Their own column first, then the hand-written bridge, then nothing.
+		var pattern: Variant = opp.get("intent_pattern")
+		if pattern == null:
+			pattern = intent_patterns.get(oid)
+		if pattern == null:
 			warnings.append(
 				("Opponent %s has no intent pattern of their own, so they fall back to "
 				+ "the shared default in rules.json and play generically.") % oid)
+		else:
+			# A pattern that cannot be played is worse than none at all: the
+			# fallback would at least let the battle start.
+			for problem: String in IntentRunner.new(pattern).problems():
+				errors.append("Opponent %s's intent pattern: %s" % [oid, problem])
 
 	for bill: Dictionary in bills:
 		if not topic_ids.has(bill.get("topic_id")):
@@ -525,6 +669,30 @@ func _validate_rules() -> void:
 		var runner := IntentRunner.new(rules["default_intent_pattern"])
 		for problem: String in runner.problems():
 			errors.append("rules.json default_intent_pattern: %s" % problem)
+
+	# And every pattern written into a level. These are the opponents the
+	# playtest actually fights, so a typo here is the one that gets noticed.
+	for level: Variant in levels:
+		if typeof(level) != TYPE_DICTIONARY:
+			continue
+		var level_id := str((level as Dictionary).get("level_id", "?"))
+		for stage: Variant in (level as Dictionary).get("stages", []):
+			if typeof(stage) != TYPE_DICTIONARY:
+				continue
+			for opponent: Variant in (stage as Dictionary).get("opponents", []):
+				if typeof(opponent) != TYPE_DICTIONARY:
+					continue
+				var row: Dictionary = opponent
+				var pattern: Variant = row.get("intent_pattern")
+				if pattern == null:
+					warnings.append(
+						("%s: %s has no intent pattern, so they fall back to the "
+						+ "shared default and play generically.")
+						% [level_id, row.get("name", row.get("opp_id", "?"))])
+					continue
+				for problem: String in IntentRunner.new(pattern).problems():
+					errors.append("%s: %s's intent pattern: %s"
+						% [level_id, row.get("name", row.get("opp_id", "?")), problem])
 
 
 func _values(records: Array, key: String) -> Array:

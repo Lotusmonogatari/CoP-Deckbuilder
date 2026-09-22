@@ -10,6 +10,24 @@ extends RefCounted
 ##   Reputation (Kanban)           how you play in the press
 ##   Funds (Kaban)                 money
 ##   Party support                 how your own party feels about you
+##
+## FOUR OF THE RULES BELOW ARE NOT CALLED BY THE GAME YET.
+##
+## Their arithmetic is right and it is tested, which is exactly the problem:
+## a green test suite reads as though CLAUDE.md §8 were implemented, and four
+## of its systems currently do nothing at all. Named here so that nobody —
+## me included, six weeks from now — mistakes tested for wired:
+##
+##   town_hall_triggered          §8: Jiban ≤ 15 inserts a Town Hall (ST05)
+##   steering_committee_triggered §8: party support < 25 inserts ST08
+##   funding_frozen               §8: Jiban at 0 stops Kaban income
+##   party_support_modifiers      §8: > 75 gives M09, < 50 gives M10
+##
+## They wait for the module runner at M4, which is where the brief puts the
+## machinery that would insert a stage into a level. One thing that milestone
+## will need FIRST: there is no "steering_committee" stage type in
+## data/stage_types.json, so ST08 needs content from Cameron before it needs
+## code. Inventing one here would be inventing canon.
 
 
 ## How much harder a bill is because the public disagrees with it.

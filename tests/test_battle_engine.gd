@@ -3,6 +3,29 @@ extends GutTest
 ## every way a stage can end.
 
 
+## A few lines of our own, for the checks that need to see a sentence
+## ASSEMBLED rather than just to know which ending was reached.
+##
+## Deliberately not the workbook's wording: these tests are about the engine
+## putting the right number and the right unit into the right sentence, and
+## pinning Cameron's phrasing here would mean a reword of his broke the
+## suite. Everywhere else the fixtures pass no table at all, so a reason
+## comes back as its key and the check reads as "which ending was this".
+const CLOSING_WORDS := {
+	"outcome.reason.closed_on": "{stage} closed on {closing}.",
+	"outcome.reason.percent_of_room": "{count} per cent",
+	"outcome.reason.amount_of_unit": "{count} {unit}",
+}
+
+
+func _start_with_words(overrides: Dictionary = {}) -> BattleEngine:
+	var config := TestFixtures.battle_config(overrides)
+	config["strings"] = CLOSING_WORDS
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(config), "setup failed: %s" % [engine.setup_problems])
+	return engine
+
+
 func _start(overrides: Dictionary = {}) -> BattleEngine:
 	var engine := BattleEngine.new()
 	var ready := engine.setup(TestFixtures.battle_config(overrides))
@@ -238,7 +261,7 @@ func test_filling_the_gaffe_meter_loses_the_stage_immediately() -> void:
 	engine.play_card("GAFFE2")
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "gaffe meter")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.gaffe_limit")
 
 
 func test_the_gaffe_warning_only_lights_at_one_from_the_end() -> void:
@@ -389,7 +412,7 @@ func test_running_out_of_turns_loses_by_default() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "Time ran out")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.time_")
 
 
 func test_running_out_of_turns_can_hand_it_to_whoever_is_ahead() -> void:
@@ -444,7 +467,7 @@ func test_slipping_below_the_line_loses_the_tv_debate() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "below the line")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.fell_below")
 
 
 func test_staying_on_the_line_is_survivable() -> void:
@@ -462,7 +485,7 @@ func test_surviving_to_the_end_wins_the_tv_debate() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "win")
-	assert_string_contains(engine.state.outcome_reason, "Survived")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.survived")
 
 
 # ---------------------------------------------------------------------------
@@ -567,7 +590,7 @@ func test_losing_a_reachable_majority_ends_the_stage() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "no longer possible")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.committee_against")
 
 
 # ---------------------------------------------------------------------------
@@ -658,7 +681,7 @@ func test_the_score_is_the_support_reached() -> void:
 		engine.end_turn()
 
 	assert_eq(engine.state.player_score(), 52)
-	assert_string_contains(engine.state.outcome_reason, "52")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.closed_on")
 
 
 func test_a_scored_stage_can_still_be_lost_on_gaffes() -> void:
@@ -669,7 +692,7 @@ func test_a_scored_stage_can_still_be_lost_on_gaffes() -> void:
 
 	engine.play_card("GAFFE2")
 	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "gaffe")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.gaffe_limit")
 
 
 func test_the_turn_limit_switch_does_not_override_a_scored_stage() -> void:
@@ -758,7 +781,7 @@ func test_beating_the_last_opponent_wins_the_stage() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "win")
-	assert_string_contains(engine.state.outcome_reason, "All 3")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.all_argued_down")
 
 
 func test_losing_one_bout_loses_the_whole_stage() -> void:
@@ -864,7 +887,7 @@ func test_beating_the_last_debater_at_the_threshold_carries_the_bill() -> void:
 
 	assert_true(engine.state.is_over())
 	assert_eq(engine.state.outcome, "win")
-	assert_string_contains(engine.state.outcome_reason, "argued down")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.all_argued_down")
 
 
 func test_beating_the_last_opponent_without_a_majority_still_wins() -> void:
@@ -987,7 +1010,7 @@ func test_running_out_of_questions_ends_the_conference() -> void:
 
 	engine.play_card("GAIN3")
 	assert_true(engine.state.is_over(), "and now none")
-	assert_string_contains(engine.state.outcome_reason, "concludes")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.concludes")
 
 
 func test_running_out_of_cards_ends_the_conference_too() -> void:
@@ -1358,13 +1381,18 @@ func test_ducking_every_question_is_no_longer_free() -> void:
 
 
 func test_the_closing_line_says_the_conference_concluded() -> void:
+	# One question a turn now, so answering both takes two turns. A second
+	# card in the same turn plays, but no reporter is waiting for it.
 	var engine := _start(_press_alone())
 	engine.state.hand.assign(["GAIN3", "GAIN3", "GAIN3"])
 	engine.play_card("GAIN3")
+	engine.end_turn()
 	engine.play_card("GAIN3")
 
 	assert_true(engine.state.is_over())
-	assert_string_contains(engine.state.outcome_reason, "The press conference concludes.")
+	# Named from the stage: a study session and a lobbyist meeting also run
+	# on questions and neither of them is a press conference.
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.concludes")
 
 
 func test_the_closing_line_counts_what_went_unanswered() -> void:
@@ -1374,7 +1402,7 @@ func test_the_closing_line_counts_what_went_unanswered() -> void:
 	engine.play_card("GAIN3")            # the last one answered
 
 	assert_true(engine.state.is_over())
-	assert_string_contains(engine.state.outcome_reason, "One question went unanswered.")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.unanswered")
 
 
 func test_the_decline_cost_can_be_switched_off() -> void:
@@ -1533,3 +1561,328 @@ func test_a_card_records_who_it_won_over() -> void:
 
 	assert_true(split.has("from_undecided"), "the screen needs the breakdown, not just a total")
 	assert_true(split.has("from_other_side"))
+
+
+# ---------------------------------------------------------------------------
+# The four specials the 2026-09-21 card slate introduced
+# ---------------------------------------------------------------------------
+
+func test_piercing_ignores_guard_without_spending_it() -> void:
+	# The distinction that matters: a pierced guard is bypassed, not removed.
+	# Subtracting it for real would let one card strip protection it never
+	# claimed to take.
+	var engine := _start({"opponent": TestFixtures.opponent([["block", 1]])})
+	engine.state.opponent_block = 5
+
+	var card := TestFixtures.card({
+		"card_id": "PIERCE", "opp_minus": 4,
+		"special": "pierce_guard", "special_value": 3,
+	})
+	engine._cards["PIERCE"] = card
+	engine.state.hand = ["PIERCE"]
+	engine.state.energy = 3
+
+	var result := engine.play_card("PIERCE")
+	var applied: Dictionary = result["applied"]
+
+	assert_eq(applied["guard_pierced"], 3, "three of the five were ignored")
+	assert_eq(applied["guard_stopped"], 2, "the other two still stopped what they could")
+	assert_eq(applied["opponent_lost"], 2, "so two of the four got through")
+	assert_eq(engine.state.opponent_block, 3,
+		"the pierced three are still theirs; only the two that worked were spent")
+
+
+func test_piercing_more_than_they_have_is_not_a_bonus() -> void:
+	var engine := _start({"opponent": TestFixtures.opponent([["block", 1]])})
+	engine.state.opponent_block = 1
+
+	var card := TestFixtures.card({
+		"card_id": "PIERCE", "opp_minus": 3,
+		"special": "pierce_guard", "special_value": 9,
+	})
+	engine._cards["PIERCE"] = card
+	engine.state.hand = ["PIERCE"]
+	engine.state.energy = 3
+
+	var result := engine.play_card("PIERCE")
+	assert_eq(result["applied"]["guard_pierced"], 1, "you cannot pierce guard they do not have")
+	assert_eq(result["applied"]["opponent_lost"], 3, "and the whole attack lands")
+
+
+func test_a_clean_record_pays_off() -> void:
+	var engine := _start()
+	var card := TestFixtures.card({
+		"card_id": "CLEAN", "self_plus": 5,
+		"special": "bonus_if_self_gaffe_0", "special_value": 2,
+	})
+
+	engine.state.gaffe = 0
+	assert_eq(engine.preview(card)["self_plus"], 7, "5 plus the 2 for a clean record")
+
+	engine.state.gaffe = 1
+	assert_eq(engine.preview(card)["self_plus"], 5, "one slip and the bonus is gone")
+
+
+func test_trailing_the_opponent_pays_off() -> void:
+	var engine := _start()
+	var card := TestFixtures.card({
+		"card_id": "BEHIND", "self_plus": 3,
+		"special": "bonus_if_behind", "special_value": 3,
+	})
+
+	engine.state.bar.player = 30
+	engine.state.bar.opponent = 50
+	assert_eq(engine.preview(card)["self_plus"], 6, "behind, so the comeback fires")
+
+	engine.state.bar.player = 50
+	engine.state.bar.opponent = 50
+	assert_eq(engine.preview(card)["self_plus"], 3,
+		"level pegging is not behind — a comeback card that fires when even fires nearly always")
+
+	engine.state.bar.player = 60
+	assert_eq(engine.preview(card)["self_plus"], 3, "and ahead is certainly not behind")
+
+
+func test_a_discount_makes_the_next_card_cheaper() -> void:
+	var engine := _start()
+	var opener := TestFixtures.card({
+		"card_id": "QUIET", "cost": 1, "self_plus": 2,
+		"special": "discount_next_card_this_turn", "special_value": 1,
+	})
+	engine._cards["QUIET"] = opener
+	engine.state.hand = ["QUIET", "GAIN3"]
+	engine.state.energy = 3
+
+	engine.play_card("QUIET")
+	assert_eq(engine.state.next_card_discount, 1)
+	assert_eq(engine.card_cost(engine._cards["GAIN3"]), 0,
+		"a cost-1 card is free while the discount is up")
+
+	engine.play_card("GAIN3")
+	assert_eq(engine.state.next_card_discount, 0, "and the discount is spent by the card using it")
+
+
+func test_a_discount_cannot_pay_you_to_play() -> void:
+	var engine := _start()
+	engine.state.next_card_discount = 5
+	var card := TestFixtures.card({"card_id": "FREE2", "cost": 1})
+	assert_eq(engine.card_cost(card), 0, "floored at nothing, never negative")
+
+
+func test_a_discount_does_not_survive_the_turn() -> void:
+	var engine := _start()
+	engine.state.next_card_discount = 1
+	engine.end_turn()
+	assert_eq(engine.state.next_card_discount, 0)
+
+
+# ---------------------------------------------------------------------------
+# The stage levers Cameron's Levels Design Scheme introduced
+# ---------------------------------------------------------------------------
+
+func _questions_stage(overrides: Dictionary = {}) -> Dictionary:
+	var base := _press_alone()
+	var stage: Dictionary = (base["stage"] as Dictionary).duplicate(true)
+	stage.merge(overrides, true)
+	base["stage"] = stage
+	return base
+
+
+func test_a_turn_presents_one_question_however_many_cards_you_play() -> void:
+	# Before this, three energy could burn through three reporters in a
+	# single turn. A conference is paced by the room, not by your hand.
+	var engine := _start(_questions_stage({"questions_per_turn": 1}))
+	var before := engine.questions_remaining()
+
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+	engine.state.energy = 3
+	engine.play_card("GAIN3")
+	engine.play_card("GAIN3")
+
+	assert_eq(engine.questions_remaining(), before - 1,
+		"the second card played, but no reporter was waiting for it")
+
+
+func test_a_study_session_asks_two_a_turn() -> void:
+	var engine := _start(_questions_stage({"questions_per_turn": 2}))
+	var before := engine.questions_remaining()
+
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+	engine.state.energy = 3
+	engine.play_card("GAIN3")
+	engine.play_card("GAIN3")
+
+	assert_eq(engine.questions_remaining(), before - 2)
+
+
+func test_a_question_left_hanging_at_the_end_of_a_turn_is_declined() -> void:
+	# Playing a card that is not an answer must not be a way to duck a
+	# reporter for free now that a turn can hold more cards than questions.
+	var engine := _start(_questions_stage({
+		"questions_per_turn": 2, "decline_tone_cost": 3,
+	}))
+	# A card held back: a conference ends the moment the player has nothing
+	# left to say, and this one is not finished.
+	engine.state.hand.assign(["GAIN3", "GUARD5"])
+	engine.state.energy = 1
+
+	engine.play_card("GAIN3")        # answers the first of the turn's two
+	engine.end_turn()
+
+	assert_eq(engine.state.declined_questions, 1, "the second went unanswered")
+
+
+func test_a_gaffe_costs_double_in_an_ambush() -> void:
+	var engine := _start(_questions_stage({"gaffe_multiplier": 2}))
+	engine.state.hand.assign(["GAFFE2"])
+	engine.state.energy = 3
+
+	engine.play_card("GAFFE2")
+	assert_eq(engine.state.gaffe, 4, "two on the card, four in this room")
+
+
+func test_an_apology_is_not_worth_less_in_a_hard_room() -> void:
+	# Only a gaffe gained is doubled. Multiplying a reduction would make
+	# the ambush easier to clean up in than an ordinary conference.
+	var engine := _start(_questions_stage({"gaffe_multiplier": 2}))
+	engine.state.gaffe = 3
+	engine._apply_effect({"gaffe": -2}, -1)
+	assert_eq(engine.state.gaffe, 1)
+
+
+func test_ducking_a_question_ends_an_ambush() -> void:
+	var engine := _start(_questions_stage({
+		"decline_ends_stage": true, "decline_tone_cost": 0,
+	}))
+	engine.end_turn()               # played nothing, so the question is ducked
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "loss")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.walked_away")
+
+
+func test_a_lobbyists_interest_cools_every_turn() -> void:
+	var engine := _start(_questions_stage({
+		"affinity_decay": 5, "decline_tone_cost": 0,
+	}))
+	var before := engine.state.bar.player
+	engine.state.hand.assign(["GAIN3", "GUARD5"])
+	engine.state.energy = 1
+	engine.play_card("GAIN3")       # +3 on the bar
+	engine.end_turn()               # then 5 off, whatever was said
+
+	assert_eq(engine.state.bar.player, before + 3 - 5,
+		"the clock is working against you")
+
+
+func test_a_town_hall_keeps_the_clock_but_refreshes_the_energy() -> void:
+	# Neither of the other two modes does this: "reset" would wipe the
+	# gaffes you have earned, "continuous" would leave you empty-handed in
+	# front of somebody who has not heard you speak yet.
+	var engine := _start({
+		"stage": TestFixtures.stage({
+			"stage_id": "TOWNHALL", "sequence_mode": "stream",
+			"win_threshold": 45, "turn_limit": 12,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "A farmer", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "A shopkeeper", "intent_pattern": [["block", 1]]},
+		],
+	})
+
+	engine.state.gaffe = 2
+	engine.state.turn = 6
+	engine.state.energy = 0
+	engine.state.bar.player = 45
+	engine._check_outcome()
+
+	assert_eq(engine.current_opponent()["name"], "A shopkeeper", "the queue moved on")
+	assert_eq(engine.state.gaffe, 2, "your record follows you down the queue")
+	assert_eq(engine.state.turn, 6, "and so does the clock")
+	assert_eq(engine.state.energy, engine.state.energy_per_turn,
+		"but the next person gets your full attention")
+
+
+# ---------------------------------------------------------------------------
+# The ending is named from the stage
+# ---------------------------------------------------------------------------
+# Three kinds of stage are scored — the caucus, the town hall and the TV
+# debate — and all three used to close by announcing they were a caucus.
+
+func _scored_stage(overrides: Dictionary = {}) -> Dictionary:
+	var stage := TestFixtures.stage({
+		"stage_id": "SCORED", "name_en": "TV Debate",
+		"win_mode": "score", "turn_limit": 1,
+		"bar_unit": "Press tone", "bar_max": 100,
+		"player_start": 40, "opp_start": 40,
+	})
+	stage.merge(overrides, true)
+	return {"stage": stage}
+
+
+func test_a_scored_stage_closes_in_its_own_name() -> void:
+	var engine := _start(_scored_stage())
+	engine.end_turn()
+
+	assert_true(engine.state.is_over())
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.closed_on")
+	assert_false(engine.state.outcome_reason.to_lower().contains("caucus"),
+		"a TV debate is not a caucus: %s" % engine.state.outcome_reason)
+
+
+func test_a_scored_stage_closes_in_its_own_units() -> void:
+	# "34 support" on a press tone bar was how the wrong unit showed up.
+	var engine := _start_with_words(_scored_stage())
+	engine.end_turn()
+	assert_string_contains(engine.state.outcome_reason, "press tone",
+		"the TV debate should close on its own unit: %s" % engine.state.outcome_reason)
+
+
+func test_a_stage_counted_as_a_share_still_closes_on_a_share() -> void:
+	var engine := _start_with_words(_scored_stage({
+		"name_en": "Party Caucus", "bar_as_percent": true,
+	}))
+	engine.end_turn()
+	assert_string_contains(engine.state.outcome_reason, "per cent",
+		"a caucus is counted as a share: %s" % engine.state.outcome_reason)
+	assert_string_contains(engine.state.outcome_reason, "Party Caucus closed on")
+
+
+# ---------------------------------------------------------------------------
+# A stage says what kind of bar it wants
+# ---------------------------------------------------------------------------
+
+func test_a_stage_can_declare_its_own_bar() -> void:
+	# THE BUG THIS EXISTS FOR. The model used to be picked by matching the
+	# literal IDs "ST04" and "ST06", which the six levels never have: they
+	# generate theirs from the type and the sequence. The TV debate was
+	# therefore a room full of undecided people with a bar labelled "Press
+	# tone", for three versions, until a playtest screenshot caught it.
+	assert_eq(BarModel.for_stage({"stage_id": "TV_DEBATE_2", "bar_model": "single"}),
+		BarModel.Model.SINGLE)
+	assert_eq(BarModel.for_stage({"stage_id": "ANYTHING", "bar_model": "survival"}),
+		BarModel.Model.SURVIVAL)
+	assert_eq(BarModel.for_stage({"stage_id": "ANYTHING", "bar_model": "shared_pool"}),
+		BarModel.Model.SHARED_POOL)
+
+
+func test_a_stage_that_says_nothing_is_still_guessed_at() -> void:
+	# The workbook's own stages carry no bar_model column, so the old rules
+	# have to keep working for them.
+	assert_eq(BarModel.for_stage({"stage_id": "ST04"}), BarModel.Model.SINGLE)
+	assert_eq(BarModel.for_stage({"stage_id": "ST06"}), BarModel.Model.SURVIVAL)
+	assert_eq(BarModel.for_stage({"stage_id": "ST02"}), BarModel.Model.SHARED_POOL)
+	assert_eq(BarModel.for_stage({"stage_id": "X", "questions": [{"id": "Q1"}]}),
+		BarModel.Model.SINGLE, "questions still make a press conference")
+
+
+func test_the_tv_debate_in_the_data_is_one_bar() -> void:
+	var tv: Dictionary = DataDB.stage_types.get("tv_debate", {})
+	assert_false(tv.is_empty(), "there is a tv_debate stage type")
+	assert_eq(BarModel.for_stage(tv), BarModel.Model.SINGLE,
+		"a TV debate is press tone, not a room of people")
+
+	var bar := BarModel.create(
+		BarModel.for_stage(tv), 100, 0, 40, 40, func() -> int: return 0)
+	assert_eq(bar.undecided, 0, "no undecided pile on a single bar")
+	assert_eq(bar.opponent, 0, "and nobody opposite holding a headcount")

@@ -38,6 +38,30 @@ var last_meta_change: Dictionary = {}
 var xp := 0
 var last_xp_gained := 0
 
+## What the player owns, and what they are taking in.
+##
+## `owned_cards` starts as the Starter twelve and grows as XP is spent.
+## `deck` is the subset carried into a battle — a fixed size, so unlocking a
+## card means leaving another out. That trade is the whole point of the deck
+## screen; without it an unlock would be a free upgrade.
+##
+## `owned_modifiers` is the organisations' backing bought with Funds. Held
+## for the run rather than the level, like standing.
+##
+## Lives only for this sitting until M4 adds saving.
+## PLAYTEST SETTING. True hands the player every card in the workbook from
+## the first moment, so a session can try the whole slate without earning
+## it. Cameron asked for the XP and Yen economy to be left aside while he
+## prices it by playing, and an unreachable card cannot be playtested.
+##
+## Set it false and the collection starts at the opening tier again; nothing
+## else changes, because the Ledger still refuses anything unaffordable.
+var open_collection := true
+
+var owned_cards: Array[String] = []
+var deck: Array[String] = []
+var owned_modifiers: Array[String] = []
+
 ## Where the player stands with each of the ten organisations, by booster ID.
 ## Pleasing one at a press conference raises it, and it is held between
 ## levels — unlike the pleased list, which lasts one level.
@@ -60,6 +84,69 @@ func reset_meta() -> void:
 	last_meta_change = {}
 	xp = 0
 	last_xp_gained = 0
+	reset_collection()
+
+
+## Back to the Starter twelve, owned and in the deck.
+##
+## A new run needs no decisions before the first battle: the opening deck is
+## every Starter card, and the deck screen is where the player changes it.
+func reset_collection() -> void:
+	owned_cards = []
+	for card: Dictionary in DataDB.cards:
+		if open_collection or str(card.get("tier", "")) == Ledger.OPENING_TIER:
+			owned_cards.append(str(card.get("card_id", "")))
+
+	deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
+	owned_modifiers = []
+
+
+# ---------------------------------------------------------------------------
+# Spending
+# ---------------------------------------------------------------------------
+# Every purchase goes through the Ledger first, so a screen cannot spend
+# what the rules would have refused. Each returns the refusal reason, or an
+# empty string when it went through.
+
+## Spends XP on a card. The card joins the collection, not the deck: what
+## you take in is a separate decision, made on the deck screen.
+func buy_card(card_id: String) -> String:
+	var card := DataDB.get_card(card_id)
+	var refusal := Ledger.card_refusal(card, owned_cards, xp, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	_move_xp(-Ledger.card_cost(card))
+	owned_cards.append(card_id)
+	return ""
+
+
+## Spends Funds on an organisation's backing.
+func buy_modifier(mod_id: String) -> String:
+	var modifier := DataDB.get_modifier(mod_id)
+	var refusal := Ledger.modifier_refusal(modifier, owned_modifiers,
+		int(meta.get("Funds", 0)), booster_standing, DataDB.booster_standing,
+		BattleSetup.booster_ids(), Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	# Announced, the same as spending XP is. This used to write the number
+	# straight in, so the Office's two spending doors behaved differently:
+	# buying a card told the world and buying backing did not.
+	_move_meta("Funds", -Ledger.modifier_cost(modifier))
+
+	owned_modifiers.append(mod_id)
+	return ""
+
+
+## Replaces the deck, if the new one is legal.
+func set_deck(chosen: Array[String]) -> String:
+	var refusal := Ledger.deck_refusal(chosen, owned_cards, DataDB.balance, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	deck = chosen.duplicate()
+	return ""
 
 
 ## Every organisation back to where booster_standing.json starts them.
@@ -133,11 +220,76 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 		meta = won["meta"]
 		_record_meta_change(won["applied"])
 		last_xp_gained = int(stage.get("xp_reward", 0))
-		xp += last_xp_gained
+		_move_xp(last_xp_gained)
 
 	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
 	meta = scored["meta"]
 	_record_meta_change(scored["applied"])
+
+	if outcome == LevelRunner.WON:
+		_pay_backing()
+
+
+## What the organisations backing you pay out for a stage won.
+##
+## Unlike the battle-start effects, this one does not care who was in the
+## room: a business circle pays for the result, not the audience.
+func _pay_backing() -> void:
+	var owned: Array = []
+	for mod_id: String in owned_modifiers:
+		var modifier := DataDB.get_modifier(mod_id)
+		if not modifier.is_empty():
+			owned.append(modifier)
+
+	var funds := ModifierEffects.stage_win_funds(owned, DataDB.modifier_effects)
+	if funds == 0:
+		return
+
+	var variable := _sanban_row("Funds")
+	var before := int(meta.get("Funds", 0))
+	var after := MetaRules.clamp_meta(before + funds, variable)
+	meta["Funds"] = after
+	_record_meta_change({"Funds": after - before})
+
+
+func _sanban_row(name: String) -> Dictionary:
+	for row: Dictionary in DataDB.sanban:
+		if row.get("name_en") == name:
+			return row
+	return {"min": 0, "max": 999, "start": 0}
+
+
+## Earns or spends XP, and says so.
+##
+## Every change to the total goes through here so that nothing can move it
+## quietly. The shop screens want to know the moment it changes, and so will
+## anything that wants to make a sound about it.
+func _move_xp(delta: int) -> void:
+	if delta == 0:
+		return
+	xp += delta
+	EventBus.xp_changed.emit(xp, delta)
+
+
+## Moves one meta-variable outside a stage, and says so.
+##
+## The sibling of _move_xp, and separate from _record_meta_change on purpose:
+## that one also files the change under "what the last stage was worth", and
+## money spent in the Office is not a stage reward. Both announce.
+## Clamped like every other meta write, and announced with what ACTUALLY
+## moved rather than what was asked for — a ceiling that swallows half a
+## payment should not be reported as a full one.
+func _move_meta(name: String, delta: int) -> void:
+	if delta == 0:
+		return
+
+	var before := int(meta.get(name, 0))
+	var after := MetaRules.clamp_meta(before + delta, _sanban_row(name))
+	if after == before:
+		return
+
+	meta[name] = after
+	EventBus.meta_changed.emit(name, after, after - before)
 
 
 ## Folds one lot of changes into what the screen will report.
@@ -148,6 +300,12 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 func _record_meta_change(applied: Dictionary) -> void:
 	for name: String in applied.keys():
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
+		# Announced as well as recorded. The recording is for the result
+		# screen, which asks afterwards; the announcement is for anything that
+		# wants to react as it happens — a sound, or the Office lighting up a
+		# number that just moved.
+		if int(applied[name]) != 0:
+			EventBus.meta_changed.emit(name, int(meta.get(name, 0)), int(applied[name]))
 
 
 ## Raises the player's standing with everyone pleased in a stage.

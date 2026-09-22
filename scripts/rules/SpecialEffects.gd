@@ -29,6 +29,10 @@ const KNOWN_KEYS := [
 	"buff_next_card_this_turn",
 	"reveal_next_intent",
 	"bonus_opp_minus_if_opp_gaffe",
+	"pierce_guard",
+	"bonus_if_self_gaffe_0",
+	"bonus_if_behind",
+	"discount_next_card_this_turn",
 ]
 
 
@@ -43,6 +47,9 @@ const KNOWN_KEYS := [
 ##   segment_share       0..1, how much of this audience is the card's target
 ##   kanban              the player's reputation
 ##   opponent_gaffe      the opponent's gaffe meter
+##   self_gaffe          the player's own gaffe meter
+##   player_support      where the player stands on the bar
+##   opponent_support    where the opponent stands on it
 static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dictionary) -> Dictionary:
 	var result := effect.duplicate()
 	result["flags"] = effect.get("flags", {}).duplicate()
@@ -96,5 +103,39 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			if int(context.get("opponent_gaffe", 0)) > 0:
 				result["opp_minus"] = int(result.get("opp_minus", 0)) + amount
 				result["flags"]["special_triggered"] = true
+
+		"pierce_guard":
+			# C16, C42, C49: "Ignores N of the opponent's Guard."
+			#
+			# A flag rather than a number change: the guard is not spent by
+			# being ignored, so the battle has to take it off the opponent's
+			# bank BEFORE the attack lands rather than afterwards. Doing it
+			# here would either double-count or leave the bank wrong.
+			result["flags"]["pierce_guard"] = amount
+			result["flags"]["special_triggered"] = true
+
+		"bonus_if_self_gaffe_0":
+			# C25, C29: "+N more if YOUR gaffe meter is 0."
+			# The reward for a clean record, and the reason to keep one.
+			if int(context.get("self_gaffe", 0)) == 0:
+				result["self_plus"] = int(result.get("self_plus", 0)) + amount
+				result["flags"]["special_triggered"] = true
+
+		"bonus_if_behind":
+			# C33, C53: "+N more if you trail the opponent in support."
+			#
+			# Strictly behind: level pegging is not behind. A comeback card
+			# that also fires when you are even would be a card that fires
+			# most of the time.
+			if int(context.get("player_support", 0)) < int(context.get("opponent_support", 0)):
+				result["self_plus"] = int(result.get("self_plus", 0)) + amount
+				result["flags"]["special_triggered"] = true
+
+		"discount_next_card_this_turn":
+			# C36: "Your next card this turn costs 1 less."
+			# The mirror of buff_next_card_this_turn: the battle spends it
+			# on the next card played and it does not survive the turn.
+			result["flags"]["next_card_discount"] = amount
+			result["flags"]["special_triggered"] = true
 
 	return result

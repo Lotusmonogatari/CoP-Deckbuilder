@@ -120,6 +120,145 @@ SHEETS = {
             ("Cards in pool", "cards_in_pool", "int"),
         ],
     },
+    # Every line the game says to the player. Cameron's to reword; the code
+    # asks for a Key and never holds a sentence of its own. A key the code
+    # asks for and this tab does not have is an ERROR, checked below, so a
+    # typo is caught here rather than appearing on screen mid-playtest.
+    # The five spoken lines a card can say when it is played. One row per
+    # card, joined to Cards by Card ID. The word-count columns beside them
+    # are Cameron's own check and are not exported.
+    "Flavor Text": {
+        "out": "card_cues.json",
+        "key": "card_id",
+        "id_pattern": r"^C\d+$",
+        "columns": [
+            ("Card ID", "card_id", "id"),
+            ("Cue 1", "cue_1", "str"),
+            ("Cue 2", "cue_2", "str"),
+            ("Cue 3", "cue_3", "str"),
+            ("Cue 4", "cue_4", "str"),
+            ("Cue 5", "cue_5", "str"),
+        ],
+    },
+    # Press Questions: 20 questions for the press conference stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Press Questions": {
+        "out": "q_press.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Town Hall Questions: 20 questions for the town hall stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Town Hall Questions": {
+        "out": "q_town_hall.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Lobbyist Questions: 20 questions for the lobbyist meeting stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Lobbyist Questions": {
+        "out": "q_lobbyist.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Study Session Questions: 20 questions for the policy study stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Study Session Questions": {
+        "out": "q_study_session.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Media Ambush Questions: 20 questions for the media ambush stage type, each graded
+    # S / M / W per suit. Reshaped below into one questions.json keyed by
+    # stage type, so a stage draws from a pool rather than naming its own.
+    "Media Ambush Questions": {
+        "out": "q_media_ambush.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
+        ],
+    },
+    # Which organisation cares about each question theme. A DRAFT: Claude
+    # proposed the mapping and Cameron corrects it in the workbook. The Why
+    # column is the reasoning, so a wrong row is obvious without reading the
+    # questions. Only booster IDs that exist may be used — checked below.
+    "Question Themes": {
+        "out": "question_themes.json",
+        "key": "theme",
+        "columns": [
+            ("Theme", "theme", "id"),
+            ("Organisation", "pleases_booster", "str"),
+            ("Why (Claude's reasoning - correct freely)", "why", "str"),
+        ],
+    },
+    "Text": {
+        "out": "strings.json",
+        "key": "key",
+        "columns": [
+            ("Key", "key", "id"),
+            ("Where", "where", "str"),
+            ("English", "english", "str"),
+            ("Placeholders", "placeholders", "str"),
+            ("Notes", "notes", "str"),
+        ],
+    },
     "Segments": {
         "out": "segments.json",
         "key": "segment_id",
@@ -171,7 +310,16 @@ SHEETS = {
         "out": "cards.json",
         "key": "card_id",
         "id_pattern": r"^C\d+$",
-        "optional": ["Special", "Special value"],
+        # The card sheet was replaced wholesale on 2026-09-21 with Cameron's
+        # 54-card slate. Gone with it: "Upgrade (+)" (the game has no upgrade
+        # mechanic, so every card stands on its printed values), and the
+        # Power Score / Power per Cost / Balance flag columns, which were
+        # the balancing model's working-out rather than card data. They live
+        # in design/CoP_Cards.xlsx if the model is ever revisited.
+        #
+        # "XP to unlock" is optional: the economy is being priced by
+        # playtest rather than by the sheet, so a missing column is fine.
+        "optional": ["XP to unlock", "Special", "Special value", "Special note"],
         "columns": [
             ("Card ID", "card_id", "id"),
             ("Name (EN)", "name_en", "str"),
@@ -188,15 +336,11 @@ SHEETS = {
             ("Gaffe +/−", "gaffe", "int"),
             ("Target segment", "target_segment", "str"),
             ("Effect text", "effect_text", "str"),
-            ("Upgrade (+)", "upgrade_text", "str"),
             ("Tier", "tier", "str"),
             ("XP to unlock", "xp_to_unlock", "int"),
-            ("Power Score", "power_score", "num"),
-            ("Power / Cost", "power_per_cost", "num"),
-            ("Balance flag", "balance_flag", "str"),
-            # Proposed, not yet in the workbook. See design/proposals/.
             ("Special", "special", "str"),
             ("Special value", "special_value", "num"),
+            ("Special note", "special_note", "str"),
         ],
     },
     "Modifiers": {
@@ -253,10 +397,16 @@ SHEETS = {
             ("Primary cards", "primary_cards", "int"),
             ("Secondary cards", "secondary_cards", "int"),
             ("Other cards", "other_cards", "int"),
-            ("AI style [proposed]", "ai_style", "str"),
             ("Loadout mods", "loadout_mods", "list"),
             ("Source", "source", "str"),
-            # Proposed, not yet in the workbook. See design/proposals/.
+            # Not in the workbook yet. Until an "Intent pattern" column
+            # lands there, the patterns come from data/intent_patterns.json,
+            # a hand-written bridge the exporter never touches.
+            #
+            # The old "AI style" column is deliberately NOT exported any
+            # more: Cameron dropped the prose on 2026-09-21 in favour of
+            # rebuilding opponent character from the numbers. It may stay in
+            # the workbook; nothing reads it.
             ("Intent pattern", "intent_pattern", "json"),
         ],
     },
@@ -383,6 +533,7 @@ SHEETS = {
 # They are deliberately not exported; the game never reads them.
 NOT_EXPORTED = {
     "README": "documentation",
+    "Tone Guide": "writing guidance for the cues, for Cameron not the game",
     "CardStage": "a derived view — the engine recomputes this from cards + affinity",
     "Assets": "art production tracker, not game data",
 }
@@ -976,6 +1127,271 @@ def validate(data, report):
 # the engine wants its ID ("SG01"). Resolving that here, once, keeps the
 # lookup out of the game code.
 
+# ---------------------------------------------------------------------------
+# Does every line the code asks for actually exist?
+# ---------------------------------------------------------------------------
+
+TEXT_KEY_CALLS = [
+    re.compile(r'Text\.say\(\s*"([^"]+)"'),      # GDScript
+    re.compile(r'Text\.has\(\s*"([^"]+)"'),
+    re.compile(r"\bT\(\s*'([^']+)'"),           # the browser build's shorthand
+    # A key handed to a helper rather than straight to the lookup — the room
+    # brief passes its labels to _bullet(), for instance. Recognised by the
+    # shape of a key (dotted, lower case) rather than by the call around it,
+    # because there is no end of helpers a key might travel through. The
+    # worst a false match can do is suppress a "nothing asks for this" note.
+    re.compile(r'["\']([a-z][a-z0-9_]*(?:\.[a-z0-9_]+)+)["\']'),
+]
+
+# Where a key is built at runtime rather than written out, the code says so
+# with this marker and the check skips the line instead of guessing.
+TEXT_DYNAMIC = "text-key-built-at-runtime"
+
+
+def check_text_keys(data, report):
+    """Every key the code asks for must be a row in the Text tab.
+
+    This is the safety net that makes the wording safe to hand over. A key
+    that has no row shows up on screen as the key itself, which is the kind
+    of thing a playtester finds and nobody else does — so it is an ERROR
+    here, in the report Cameron already reads after every export.
+
+    A row nothing asks for is only a warning: it is probably a typo in the
+    Key column, but it might equally be a line written ahead of the screen
+    that will use it.
+    """
+    rows = data.get("strings")
+    if rows is None:
+        return
+
+    in_sheet = {str(row.get("key", "")) for row in rows}
+    asked_for = {}
+
+    searched = list(REPO_ROOT.glob("scripts/**/*.gd")) + list(REPO_ROOT.glob("web/src/*.js"))
+    for path in searched:
+        text = path.read_text(encoding="utf-8")
+        for number, line in enumerate(text.splitlines(), 1):
+            if TEXT_DYNAMIC in line:
+                continue
+            # Comments explain the lookup and quote example keys, so reading
+            # them would report lines nothing actually asks for. A docstring
+            # showing Text.say("narration.gaffe") is documentation, not a use.
+            stripped = line.lstrip()
+            if stripped.startswith("#") or stripped.startswith("//"):
+                continue
+            for pattern in TEXT_KEY_CALLS:
+                for key in pattern.findall(line):
+                    asked_for.setdefault(key, []).append(
+                        f"{path.relative_to(REPO_ROOT)}:{number}")
+
+    # A plural is two rows, key.one and key.other, and the code asks for the
+    # bare key. Either shape satisfies the other, so fold them together
+    # before comparing or every plural reads as both missing and unused.
+    def satisfied(key):
+        return key in in_sheet or (
+            key + ".one" in in_sheet and key + ".other" in in_sheet)
+
+    def wanted(row_key):
+        if row_key in asked_for:
+            return True
+        base, _, suffix = row_key.rpartition(".")
+        return suffix in ("one", "other") and base in asked_for
+
+    for key in sorted(k for k in asked_for if not satisfied(k)):
+        report.error("Text tab",
+                     f"the code asks for '{key}' and the tab has no such Key "
+                     f"({asked_for[key][0]})")
+
+    for key in sorted(k for k in in_sheet if not wanted(k)):
+        report.note(f"Text tab: nothing asks for '{key}' yet")
+
+    # A placeholder the row uses but does not declare is a warning, because
+    # the Placeholders column is what tells Cameron what he may move around.
+    for row in rows:
+        used = set(re.findall(r"\{(\w+)\}", str(row.get("english", ""))))
+        declared = {p.strip() for p in str(row.get("placeholders") or "").split(",") if p.strip()}
+        for name in sorted(used - declared):
+            report.warn("Text tab",
+                        f"'{row.get('key')}' uses {{{name}}} but does not list it "
+                        f"in Placeholders")
+
+    if in_sheet:
+        report.note(f"Text tab: {len(in_sheet)} lines, {len(asked_for)} asked for by the code")
+
+
+# ---------------------------------------------------------------------------
+# The wording snapshot
+# ---------------------------------------------------------------------------
+# tests/wording_snapshot.json is a copy of every line the game says, as it
+# read the last time somebody deliberately accepted a change.
+#
+# Its job is to make an ACCIDENTAL reword loud and a DELIBERATE one easy. A
+# code change that quietly alters what the player reads shows up as a failing
+# test naming the line. Cameron rewording a line on purpose runs
+#
+#     python3 tools/export_data.py --accept-wording
+#
+# which records the new wording, and git then shows exactly what changed.
+
+SNAPSHOT = REPO_ROOT / "tests" / "wording_snapshot.json"
+
+
+# The four standing names are BOTH display text and lookup keys. They are
+# shown on screen, and they are how the code reaches into sanban.json and
+# into the run's meta dictionary — GameState asks for meta["Funds"],
+# MetaRules files a win delta under "Reputation", and so on.
+#
+# So renaming one in the Sanban tab is not a wording change: it silently
+# disconnects the code from the variable. Checked here so a rename is an
+# error at Cameron's desk with a readable message, rather than a stage
+# quietly paying out nothing.
+#
+# To rename one for real, change it here and in the Sanban tab together,
+# and say so — the files that use each name are listed beside it.
+STANDING_NAMES = {
+    "Constituency support": "MetaRules, LevelRunner",
+    "Reputation": "MetaRules, LevelRunner, BattleSetup, BattleEngine",
+    "Funds": "MetaRules, LevelRunner, GameState, OfficeScreen",
+    "Party support": "MetaRules, LevelRunner",
+}
+
+
+# Which stage type each question tab belongs to. The tabs are named for the
+# room; stage_types.json names the type. One place holds the join.
+QUESTION_TABS = {
+    "q_press": "press_conference",
+    "q_town_hall": "town_hall",
+    "q_lobbyist": "lobbyist_meeting",
+    "q_study_session": "policy_study",
+    "q_media_ambush": "media_ambush",
+}
+
+SUIT_COLUMNS = ["earnest", "emotional", "appeal", "data_driven",
+                "divisive", "duplicitous"]
+
+
+def fold_questions(data, report):
+    """Five question tabs become one questions.json, keyed by stage type.
+
+    A stage draws its questions from the pool for its type rather than
+    naming them itself, so a new question is one row in the workbook.
+    Each question grades all six suits S (strong), M (medium) or W (weak).
+    """
+    suit_names = {row["element"].lower().replace(" ", "_"): row["element"]
+                  for row in data.get("suits", []) if row.get("element")}
+
+    by_theme = {row["theme"]: str(row.get("pleases_booster") or "").strip()
+                for row in data.get("question_themes", [])}
+    booster_ids = {row["booster_id"] for row in data.get("boosters", [])}
+    for theme, booster in sorted(by_theme.items()):
+        if booster and booster not in booster_ids:
+            report.error("Question Themes",
+                         f"'{theme}' names organisation '{booster}', "
+                         f"which is not in the Boosters tab")
+
+    # Who asks. The journalists are still Reporter A to Reporter E — nobody
+    # is cast yet — so they take the questions in turn rather than by beat.
+    # When Cameron names them, this becomes a column like the one above.
+    reporters = []
+    journalists_path = DATA_DIR / "journalists.json"
+    if journalists_path.exists():
+        raw = json.loads(journalists_path.read_text(encoding="utf-8"))
+        reporters = [row["journalist_id"]
+                     for row in raw.get("journalists", [])
+                     if row.get("journalist_id")]
+
+    pools = {}
+    for source, stage_type in QUESTION_TABS.items():
+        rows = data.pop(source, [])
+        pool = []
+        for row in rows:
+            grades = {}
+            for column in SUIT_COLUMNS:
+                grade = str(row.get(column) or "").strip().upper()
+                if grade not in ("S", "M", "W"):
+                    report.error(stage_type,
+                                 f"question {row.get('q_id')} grades "
+                                 f"{column} as '{grade}' — it must be S, M or W")
+                    continue
+                # Back under the suit's own name, so the engine can look a
+                # card's suit up directly.
+                grades[suit_names.get(column, column)] = grade
+            if len(grades) == len(SUIT_COLUMNS):
+                theme = row.get("theme", "")
+                question = {
+                    "id": row["q_id"],
+                    "text": row.get("text", ""),
+                    "theme": theme,
+                    "grades": grades,
+                }
+                if by_theme.get(theme):
+                    question["pleases_booster"] = by_theme[theme]
+                elif theme:
+                    report.warn(stage_type,
+                                f"question {row['q_id']} has the theme "
+                                f"'{theme}', which no row in Question Themes "
+                                f"maps to an organisation — a strong answer "
+                                f"will please nobody")
+                if reporters:
+                    question["asked_by"] = reporters[len(pool) % len(reporters)]
+                pool.append(question)
+        pools[stage_type] = pool
+        report.note(f"{stage_type}: {len(pool)} questions in the pool")
+
+    data["questions"] = pools
+    # The mapping has been folded in; it is not a file of its own.
+    data.pop("question_themes", None)
+
+
+def check_standing_names(data, report):
+    in_sheet = {str(row.get("name_en", "")).strip() for row in data.get("sanban", [])}
+    if not in_sheet:
+        return
+    for name, used_by in STANDING_NAMES.items():
+        if name not in in_sheet:
+            report.error("Sanban",
+                         f"'{name}' is not in the tab any more. That name is a "
+                         f"lookup key as well as display text — {used_by} reach "
+                         f"the variable by it — so renaming it here alone stops "
+                         f"the code finding it. Ask for the rename rather than "
+                         f"making it in the workbook.")
+
+
+def check_wording_snapshot(data, report, accept=False):
+    lines = {str(row.get("key", "")): str(row.get("english", ""))
+             for row in data.get("strings", []) if row.get("key")}
+    if not lines:
+        return
+
+    if accept:
+        SNAPSHOT.parent.mkdir(exist_ok=True)
+        write_json(SNAPSHOT, dict(sorted(lines.items())))
+        report.note(f"Wording: snapshot updated — {len(lines)} lines recorded")
+        return
+
+    if not SNAPSHOT.exists():
+        report.note("Wording: no snapshot yet — run with --accept-wording to record one")
+        return
+
+    recorded = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
+    changed = sorted(k for k in lines if k in recorded and lines[k] != recorded[k])
+    added = sorted(k for k in lines if k not in recorded)
+    gone = sorted(k for k in recorded if k not in lines)
+
+    if not (changed or added or gone):
+        return
+
+    for key in changed:
+        report.note(f"Wording: '{key}' now reads \"{lines[key]}\" "
+                    f"(was \"{recorded[key]}\")")
+    for key in added:
+        report.note(f"Wording: '{key}' is new")
+    for key in gone:
+        report.note(f"Wording: '{key}' is gone")
+    report.note("Wording: if those were your edits, run "
+                "'python3 tools/export_data.py --accept-wording' to record them")
+
+
 def add_segment_ids(data, report):
     by_name = {r["name_en"]: r["segment_id"] for r in data["segments"] if r.get("name_en")}
 
@@ -1091,7 +1507,11 @@ def main():
         data["rules"] = {}
 
     add_segment_ids(data, report)
+    fold_questions(data, report)
     validate(data, report)
+    check_text_keys(data, report)
+    check_standing_names(data, report)
+    check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)
 
     written = 0
     for name, payload in sorted(data.items()):

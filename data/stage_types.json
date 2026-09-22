@@ -1,0 +1,244 @@
+{
+ "_README": [
+  "The nine kinds of stage a level can be built from.",
+  "",
+  "WRITTEN BY HAND. export_data.py never overwrites it. The canon stage",
+  "rows in stages.json are the workbook's; this file is the playtest's own",
+  "vocabulary, taken from Cameron's Levels Design Scheme of 2026-09-21.",
+  "",
+  "A level names a type and overrides whatever it wants to differ - the",
+  "number of opponents, the threshold, the turn limit. Everything not",
+  "overridden comes from here, so 'the default committee is 60 votes' is",
+  "one number in one place.",
+  "",
+  "affinity_stage_id points at the canon stage whose suit multipliers and",
+  "audience mix this type borrows, so a press conference favours the same",
+  "suits wherever it is played.",
+  "",
+  "weak_answer_tone_cost is a PLACEHOLDER of 1, set 2026-09-21 and waiting",
+  "on Cameron. Every question in the workbook grades all six suits S, M or",
+  "W: a strong answer pleases whoever asked, a medium one does nothing, and",
+  "a weak one costs this much press tone. 1 is a guess beside the decline",
+  "cost it sits next to — a weak answer should sting less than saying",
+  "nothing at all, and 1 against a decline of 3 or 5 does that, but the",
+  "right number is a playtest away."
+ ],
+ "types": {
+  "committee_debate": {
+   "name_en": "Committee Debate",
+   "name_jp": "委員会",
+   "affinity_stage_id": "ST01",
+   "_shape": "One committee member at a time. Each is a fresh argument: turns, gaffes and energy all start again. Fifteen turns, set by Cameron on 2026-09-21: at eight the stage measured 0 wins in 20 seeded runs, because reaching 60 means winning over every single undecided member and there is no slack in the clock to do it.",
+   "sequence_mode": "reset",
+   "bar_unit": "Votes",
+   "bar_max": 100,
+   "win_threshold": 60,
+   "turn_limit": 15,
+   "energy_per_turn": 3,
+   "hand_size": 5,
+   "gaffe_limit": 5,
+   "player_start": 40,
+   "opp_start": 40
+  },
+  "floor_debate": {
+   "name_en": "Parliament Floor Debate",
+   "name_jp": "本会議",
+   "affinity_stage_id": "ST02",
+   "_shape": "One debater after another on one clock. Your record, your hand and the turns carry across all of them.",
+   "sequence_mode": "continuous",
+   "bar_unit": "Seats",
+   "bar_max": 101,
+   "win_threshold": 55,
+   "turn_limit": 20,
+   "energy_per_turn": 3,
+   "hand_size": 5,
+   "gaffe_limit": 6,
+   "player_start": 40,
+   "opp_start": 40
+  },
+  "press_conference": {
+   "name_en": "Press Conference",
+   "name_jp": "記者会見",
+   "affinity_stage_id": "ST04",
+   "_shape": "One question per turn. Energy comes back each turn; the hand does not.",
+   "questions_per_turn": 1,
+   "draw_mode": "none",
+   "opening_hand": 8,
+   "bar_unit": "Press tone",
+   "bar_max": 100,
+   "energy_per_turn": 3,
+   "gaffe_limit": 4,
+   "player_start": 45,
+   "opp_start": 45,
+   "decline_tone_cost": 3,
+   "weak_answer_tone_cost": 1,
+   "tone_effects": {
+    "baseline": 50,
+    "support_per_points": 10,
+    "allow_negative": true,
+    "meta": {
+     "Reputation": 5
+    }
+   }
+  },
+  "party_caucus": {
+   "name_en": "{party} Caucus",
+   "name_jp": "議員総会",
+   "affinity_stage_id": "ST03",
+   "_shape": "One bank of energy for the whole meeting. However high the room gets is the result.",
+   "energy_mode": "pool",
+   "energy_pool": 6,
+   "win_mode": "score",
+   "bar_as_percent": true,
+   "bar_unit": "Support",
+   "bar_max": 100,
+   "turn_limit": 4,
+   "hand_size": 5,
+   "gaffe_limit": 5,
+   "player_start": 40,
+   "opp_start": 40,
+   "tone_effects": {
+    "baseline": 50,
+    "support_per_points": 10,
+    "allow_negative": false,
+    "meta": {
+     "Party support": 5
+    }
+   }
+  },
+  "town_hall": {
+   "name_en": "Town Hall",
+   "name_jp": "住民説明会",
+   "affinity_stage_id": "ST05",
+   "_shape": "Constituents one after another. The clock and your record carry; the energy does not - each new face is a fresh three.",
+   "sequence_mode": "stream",
+   "win_mode": "score",
+   "bar_as_percent": true,
+   "bar_unit": "Support",
+   "bar_max": 100,
+   "win_threshold": 60,
+   "turn_limit": 12,
+   "energy_per_turn": 3,
+   "hand_size": 5,
+   "gaffe_limit": 5,
+   "player_start": 40,
+   "opp_start": 40,
+   "tone_effects": {
+    "baseline": 50,
+    "support_per_points": 10,
+    "allow_negative": false,
+    "meta": {
+     "Constituency support": 5
+    }
+   }
+  },
+  "media_ambush": {
+   "name_en": "Media Ambush",
+   "name_jp": "囲み取材",
+   "affinity_stage_id": "ST04",
+   "_shape": "One reporter, no escape. One bank of energy for the whole thing, every gaffe counts double, and ducking a question ends it.",
+   "questions_per_turn": 1,
+   "energy_mode": "pool",
+   "energy_pool": 6,
+   "draw_mode": "none",
+   "opening_hand": 8,
+   "gaffe_multiplier": 2,
+   "decline_ends_stage": true,
+   "bar_unit": "Press tone",
+   "bar_max": 100,
+   "gaffe_limit": 4,
+   "player_start": 45,
+   "opp_start": 45,
+   "decline_tone_cost": 0,
+   "weak_answer_tone_cost": 1,
+   "tone_effects": {
+    "baseline": 50,
+    "support_per_points": 10,
+    "allow_negative": true,
+    "meta": {
+     "Reputation": 5
+    }
+   }
+  },
+  "lobbyist_meeting": {
+   "name_en": "Lobbyist Meeting",
+   "name_jp": "陳情面談",
+   "affinity_stage_id": "ST07",
+   "_shape": "Their interest cools while you talk. One bank of energy, and the clock is working against you.",
+   "questions_per_turn": 1,
+   "energy_mode": "pool",
+   "energy_pool": 6,
+   "draw_mode": "none",
+   "opening_hand": 8,
+   "affinity_decay": 5,
+   "bar_as_percent": true,
+   "bar_unit": "Affinity",
+   "bar_max": 100,
+   "gaffe_limit": 4,
+   "player_start": 50,
+   "opp_start": 50,
+   "decline_tone_cost": 5,
+   "weak_answer_tone_cost": 1,
+   "tone_effects": {
+    "baseline": 50,
+    "support_per_points": 10,
+    "allow_negative": true,
+    "meta": {
+     "Funds": 10
+    }
+   }
+  },
+  "policy_study": {
+   "name_en": "Policy Study Session",
+   "name_jp": "政策勉強会",
+   "affinity_stage_id": "ST01",
+   "_shape": "Officials ask two questions a turn. Energy comes back each turn; the hand does not.",
+   "questions_per_turn": 2,
+   "draw_mode": "none",
+   "opening_hand": 8,
+   "bar_unit": "Influence",
+   "bar_max": 100,
+   "energy_per_turn": 3,
+   "gaffe_limit": 4,
+   "player_start": 45,
+   "opp_start": 45,
+   "decline_tone_cost": 3,
+   "weak_answer_tone_cost": 1,
+   "tone_effects": {
+    "baseline": 50,
+    "support_per_points": 10,
+    "allow_negative": true,
+    "meta": {
+     "Party support": 10
+    }
+   }
+  },
+  "tv_debate": {
+   "name_en": "TV Debate",
+   "name_jp": "テレビ討論",
+   "affinity_stage_id": "ST06",
+   "_note_bar": "One bar, not a room. A TV debate is a press-tone stage like the conference: there is no undecided pile and no opposing headcount, so a card that only reduces the opponent does nothing here. Declared rather than guessed — it used to be recognised by the ID ST06, which a generated stage never has.",
+   "bar_model": "single",
+   "_shape": "Ten turns, ten points of energy, and three gaffes is the end of you. No refills either way.",
+   "_note": "Cameron's 2026-09-21 definition, which replaces the survival model in CLAUDE.md 7.3 for this stage.",
+   "energy_mode": "pool",
+   "energy_pool": 10,
+   "win_mode": "score",
+   "bar_unit": "Press tone",
+   "bar_max": 100,
+   "turn_limit": 10,
+   "hand_size": 5,
+   "gaffe_limit": 3,
+   "player_start": 45,
+   "opp_start": 45,
+   "tone_effects": {
+    "baseline": 50,
+    "support_per_points": 10,
+    "allow_negative": true,
+    "meta": {
+     "Reputation": 10
+    }
+   }
+  }
+ }
+}

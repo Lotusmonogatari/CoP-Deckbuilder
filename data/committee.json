@@ -8,7 +8,7 @@
     "element_1": "Earnest",
     "element_2": "Data Driven",
     "starting_stance": "Undecided",
-    "primary_suit_jp": "誠実",
+    "primary_suit_jp": null,
     "source": "Canon: Lore Databook, Environment committee (2018)"
   },
   {
@@ -20,7 +20,7 @@
     "element_1": "Earnest",
     "element_2": "Emotional",
     "starting_stance": "Undecided",
-    "primary_suit_jp": "誠実",
+    "primary_suit_jp": null,
     "source": "Canon: Lore Databook, Environment committee (2018)"
   },
   {
@@ -32,7 +32,7 @@
     "element_1": "Appeal",
     "element_2": "Emotional",
     "starting_stance": "Undecided",
-    "primary_suit_jp": "求心",
+    "primary_suit_jp": null,
     "source": "Canon: Lore Databook, Environment committee (2018)"
   },
   {
@@ -44,7 +44,7 @@
     "element_1": "Appeal",
     "element_2": "Divisive",
     "starting_stance": "Against",
-    "primary_suit_jp": "求心",
+    "primary_suit_jp": null,
     "source": "Canon: Lore Databook, Environment committee (2018)"
   }
 ]

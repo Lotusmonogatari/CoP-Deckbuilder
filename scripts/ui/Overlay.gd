@@ -18,8 +18,13 @@ extends PanelContainer
 ## says a stage is over — sets `dismissable` to false and keeps only its own
 ## button.
 
-## Emitted when the player closes it, however they did it.
-signal closed
+## THERE IS NO "closed" SIGNAL. There was one, emitted from close() and
+## connected by nobody, while the confirm button bypassed it entirely — so a
+## panel had two ways out that behaved differently for no reason, and a seam
+## that looked wired up but carried nothing. Same rule as EventBus: wiring
+## that nothing uses is worse than no wiring, because it reads as finished.
+## If something needs to know a panel shut, add it back with its listener in
+## the same change.
 
 ## Emitted when the player presses the confirm button, where one was asked
 ## for. A panel that leads somewhere — a briefing before a level — needs a
@@ -31,7 +36,11 @@ signal confirmed
 
 ## The screen behind has to be covered, not tinted: this sits over a portrait
 ## and a heading, and a half-transparent panel makes both unreadable.
-const BACKDROP := Color(0.07, 0.08, 0.11, 0.94)
+##
+## Fully opaque. It was 0.94, which sounds like nothing — but six per cent of
+## light text on a near-black panel is still perfectly readable, and a
+## screenshot showed the Office's headings ghosting through every shop.
+const BACKDROP := Color(0.07, 0.08, 0.11, 1.0)
 
 var _body: VBoxContainer
 var _title: Label
@@ -119,9 +128,9 @@ func open(heading: String, rows: Array[Control], confirm_text: String = "") -> v
 
 
 func _on_confirmed() -> void:
-	# Closed first, so the screen it leads to is not built underneath a panel
-	# that is still covering it.
-	hide()
+	# Out of the way first, so the screen it leads to is not built underneath
+	# a panel that is still covering it.
+	close()
 	confirmed.emit()
 
 
@@ -129,7 +138,6 @@ func close() -> void:
 	if not visible:
 		return
 	hide()
-	closed.emit()
 
 
 ## The content's own rectangle, so a caller can tell a tap on the dimmed

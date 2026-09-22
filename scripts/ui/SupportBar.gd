@@ -146,20 +146,25 @@ func _refresh() -> void:
 		# "To win" only where winning here wins the stage. On the floor the
 		# threshold ends ONE debater and the next rises, so a player told
 		# "55 seats to win" reasonably expects the stage to be over.
-		var verb := "to win" if threshold_wins_stage else "to advance"
-		_caption.text = "%s %s" % [_amount(threshold), verb]
+		var key := "bar.to_win" if threshold_wins_stage else "bar.to_advance"
+		_caption.text = Text.say(key, {"amount": _amount(threshold)})
 	elif as_percent:
-		_caption.text = "Take as much of the room as you can"
+		_caption.text = Text.say("bar.take_the_room")
 	else:
-		_caption.text = "Raise %s as high as you can" % unit.to_lower()
+		_caption.text = Text.say("bar.raise_as_high", {"unit": unit.to_lower()})
 
 	if not two_sided:
-		_readout.text = "%s %d of %d" % [unit, player, maximum]
+		_readout.text = Text.say("bar.one_sided",
+			{"unit": unit, "count": player, "total": maximum})
 		return
 
 	var undecided := maxi(maximum - player - opponent, 0)
-	_readout.text = "You %s · Undecided %s · %s %s" % [
-		_amount(player), _amount(undecided), _other_side(), _amount(opponent)]
+	_readout.text = Text.say("bar.two_sided", {
+		"you": _amount(player),
+		"undecided": _amount(undecided),
+		"them": _other_side(),
+		"theirs": _amount(opponent),
+	})
 
 
 ## A number with its unit, where the unit is worth showing. On a percentage
@@ -175,11 +180,11 @@ func _amount(value: int) -> String:
 func _other_side() -> String:
 	var name := opponent_name.strip_edges()
 	if name.is_empty():
-		return "Them"
+		return Text.say("bar.them")
 	# A name too long for the row falls back to "Them" rather than being
 	# shortened. Taking the first word turned "The Caucus Panel" into "The",
 	# which is worse than the generic word it was meant to improve on.
-	return name if name.length() <= NAME_LIMIT else "Them"
+	return name if name.length() <= NAME_LIMIT else Text.say("bar.them")
 
 
 func _draw() -> void:
