@@ -466,14 +466,12 @@ SHEETS = {
     # as data. There's no separate Committee tab any more either: a
     # committee-stage roster is read off the Opponents tab instead (every
     # opponent whose Stage list names that STxx).
-    # NOTE: "levels.json" is already taken — it's Cameron's hand-written,
-    # currently-playable level scheme (LV01-06, nested stages/opponents),
-    # read by BattleSetup.gd/DataDB.gd/OfficeScreen.gd/OutcomePresenter.gd.
-    # This tab's raw 30-row LV01-30 table exports separately as
-    # level_table.json until the hand scheme is reconciled with it — ask
-    # Cameron before ever making this tab replace or feed the hand file.
+    # 2026-09-22: Cameron confirmed the workbook's 30-row LV01-30 table is now
+    # the real level data. His old hand-written levels.json (LV01-06, nested
+    # stage/opponent objects) was a draft and has been retired — this tab now
+    # writes straight to data/levels.json.
     "Levels": {
-        "out": "level_table.json",
+        "out": "levels.json",
         "key": "level_id",
         "id_pattern": r"^LV\d+$",
         "columns": [
@@ -940,7 +938,7 @@ def validate(data, report):
     # yoron.json/bills.json on disk are left untouched by main().
     topic_ids = ids_from(data.get("yoron", []), "topic_id")
     bill_ids = ids_from(data.get("bills", []), "bill_id")
-    level_ids = ids_from(data["level_table"], "level_id")
+    level_ids = ids_from(data["levels"], "level_id")
     staff_ids = ids_from(data["staff"], "staff_id")
     # The Balance tab's XP-tier sub-table is gone from this workbook pull, so
     # this is always empty for now, and the card-tier check below is skipped.
@@ -951,7 +949,7 @@ def validate(data, report):
     for name, key in [
         ("cards", "card_id"), ("stages", "stage_id"), ("segments", "segment_id"),
         ("modifiers", "mod_id"), ("boosters", "booster_id"), ("opponents", "opp_id"),
-        ("suits", "element"), ("level_table", "level_id"), ("staff", "staff_id"),
+        ("suits", "element"), ("levels", "level_id"), ("staff", "staff_id"),
         ("shop", "item_id"),
     ]:
         seen = set()
@@ -1140,7 +1138,7 @@ def validate(data, report):
 
     # --- levels --------------------------------------------------------------
     booster_delta_keys = [f"win_delta_bo{n:02d}" for n in range(1, 17)]
-    for level in data["level_table"]:
+    for level in data["levels"]:
         lid = level["level_id"]
         stage_slots = [level[f"stage_{n}"] for n in range(1, 11) if level.get(f"stage_{n}")]
         if not stage_slots:

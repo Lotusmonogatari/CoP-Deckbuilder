@@ -33,8 +33,8 @@ const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 
 ## Which battle to open when no level is in progress — running this scene on
 ## its own from the editor. During a level the stage comes from the level.
-@export var module_id: String = "MOD01"
-@export var step: int = 4
+@export var level_id: String = "LV06"
+@export var stage_id: String = "ST02"
 
 var engine: BattleEngine = null
 
@@ -114,7 +114,7 @@ func start_battle() -> void:
 		config = BattleSetup.for_playtest_stage(
 			runner.current_stage(), runner.carried_buffs(), GameState.meta)
 	else:
-		config = BattleSetup.for_module_step(module_id, step)
+		config = BattleSetup.for_level_stage(level_id, stage_id)
 
 	if config.is_empty():
 		_messages.say(Text.say("battle.no_stage"))
@@ -332,6 +332,11 @@ func _refresh_details(state: BattleState) -> void:
 		lines.append("")
 		lines.append(Text.say("battle.default_pattern"))
 
+	# 2026-09-22 workbook: stages.json no longer carries "signature_rule" at
+	# all, so this is always empty now and the block below never shows. Left
+	# in rather than deleted — it costs nothing, and degrades to nothing
+	# happening rather than an error if the column ever comes back under a
+	# different name.
 	var rule := str(_stage.get("signature_rule", ""))
 	if not rule.is_empty():
 		lines.append("")

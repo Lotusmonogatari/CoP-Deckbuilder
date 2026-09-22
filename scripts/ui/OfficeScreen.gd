@@ -195,7 +195,18 @@ func _organisation_row(booster: Dictionary) -> Control:
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 2)
 	box.add_child(_wrapped_label(line))
-	box.add_child(_wrapped_label(str(booster.get("boosts", "")), "SmallLabel"))
+
+	# 2026-09-22 workbook: boosters.json no longer has a "boosts" summary
+	# column — what an organisation does is the modifiers it links, so that
+	# list is shown by name instead.
+	var linked: Array = booster.get("linked_modifiers", [])
+	var names: Array[String] = []
+	for mod_id: String in linked:
+		var modifier := DataDB.get_modifier(mod_id)
+		if not modifier.is_empty():
+			names.append(str(modifier.get("name_en", mod_id)))
+	if not names.is_empty():
+		box.add_child(_wrapped_label(", ".join(names), "SmallLabel"))
 	return box
 
 
@@ -392,10 +403,13 @@ func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 2)
 
-	box.add_child(_wrapped_label("%s  —  %d funds" % [
-		modifier.get("name_en", mod_id), Ledger.modifier_cost(modifier)]))
+	# The price line names every currency this modifier charges — most cost
+	# only Funds, but 2026-09-22 added separate Reputation and Constituency
+	# support costs, and a modifier can ask for any mix of the three.
+	box.add_child(_wrapped_label("%s  —  %s" % [
+		modifier.get("name_en", mod_id), _cost_line(modifier)]))
 
-	var booster := Ledger.backing_booster(modifier, BattleSetup.booster_ids())
+	var booster := Ledger.backing_booster(modifier, DataDB.boosters)
 	if not booster.is_empty():
 		var have := int(GameState.booster_standing.get(booster, 0))
 		var needed := Ledger.standing_needed(modifier, DataDB.booster_standing)
@@ -404,22 +418,18 @@ func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
 			else "%s  ·  standing %d, needs %d" % [names.get(booster, booster), have, needed])
 		box.add_child(_wrapped_label(standing, "SmallLabel"))
 
-	# What it does, in a sentence with the real number in it — not the
-	# workbook's "+Magnitude player start support".
-	box.add_child(_wrapped_label(
-		ModifierEffects.describe(modifier, DataDB.modifier_effects, Text.phrase()),
-		"SmallLabel"))
+	# What it does, in the workbook's own words (or, for the one case with a
+	# Text tab line of its own, that line with the real number in it).
+	box.add_child(_wrapped_label(ModifierEffects.describe(modifier, Text.phrase()), "SmallLabel"))
 
 	# An effect nothing implements yet is said out loud. A shop that sells
 	# something inert is the trap this project has walked into twice.
-	if ModifierEffects.is_inert_today(modifier, DataDB.modifier_effects):
-		box.add_child(_wrapped_label(Text.say("office.no_effect_yet"), "SmallLabel"))
-	elif not ModifierEffects.is_implemented(modifier, DataDB.modifier_effects):
+	if not ModifierEffects.is_implemented(modifier):
 		box.add_child(_wrapped_label(Text.say("office.not_active_yet"), "SmallLabel"))
 
 	var refusal := Ledger.modifier_refusal(modifier, GameState.owned_modifiers,
-		int(GameState.meta.get("Funds", 0)), GameState.booster_standing,
-		DataDB.booster_standing, BattleSetup.booster_ids(), Text.phrase())
+		GameState.meta, GameState.booster_standing,
+		DataDB.booster_standing, DataDB.boosters, Text.phrase())
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
 	button.text = Text.say("office.take_backing") if refusal.is_empty() else refusal
@@ -428,6 +438,19 @@ func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
 		button.pressed.connect(_on_buy_modifier.bind(mod_id))
 	box.add_child(button)
 	return box
+
+
+## "10 Funds" or, where a modifier charges more than one currency,
+## "10 Funds, 5 Reputation". The three currency names are sanban.json's own
+## names, the same ones the rest of the screen already shows.
+func _cost_line(modifier: Dictionary) -> String:
+	var parts: Array[String] = []
+	var costs := Ledger.modifier_costs(modifier)
+	for name: String in costs.keys():
+		var cost: int = costs[name]
+		if cost > 0:
+			parts.append("%d %s" % [cost, name])
+	return ", ".join(parts) if not parts.is_empty() else "free"
 
 
 func _on_buy_modifier(mod_id: String) -> void:
@@ -449,27 +472,36 @@ func _on_buy_modifier(mod_id: String) -> void:
 ## Every reward in the playtest level is currently zero, and this screen says
 ## so in words. Four zeroes would read as "this level is worthless"; "not set
 ## yet" is the truth, and it is Cameron's to set.
-## Which level to play. Six of them now, grouped by tier.
+## Which level to play. 30 of them now (LV01-30), grouped by tier.
 ##
-## Tier 1 and 2 are bought with XP in the finished game; while Cameron
-## prices the economy by playing, every level is simply open.
+## 2026-09-22 workbook: a level row (data/levels.json) is flat — a
+## description and stage_1..stage_10, no embedded name_jp/opponents/blurb the
+## way the old hand-written draft had. BattleSetup.expand_level() is what
+## turns a chosen row into the ordered, opponent-filled stage list the
+## briefing and the battle actually need; the list here works off the raw
+## rows, which is all choosing one needs.
+##
+## Tier 1 and 2 are meant to cost XP to unlock, gated by the Policy Research
+## Assistant staff role's tier (unlock_cost_vacant/_tier_0/_1/_2) — but there
+## is no staff-hiring system built yet (data/staff.json loads, nothing spends
+## against it), so every level is left open here, the same way
+## GameState.open_collection currently leaves every card open. The unlock
+## price is still shown, as information, so it is not invented later.
 func _show_levels() -> void:
 	var rows: Array[Control] = []
 	rows.append(_wrapped_label("Each level is a run of stages. Pick one and "
 		+ "you will see what it holds before you commit."))
 
 	var by_tier := {}
-	for level: Variant in DataDB.levels:
-		if typeof(level) != TYPE_DICTIONARY:
-			continue
-		var tier := int((level as Dictionary).get("tier", 0))
+	for level: Dictionary in DataDB.levels:
+		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):
 			by_tier[tier] = []
 		by_tier[tier].append(level)
 
-	for tier: int in [0, 1, 2]:
-		if not by_tier.has(tier):
-			continue
+	var tiers: Array = by_tier.keys()
+	tiers.sort()
+	for tier: int in tiers:
 		rows.append(_heading_label("Tier %d" % tier))
 		for level: Dictionary in by_tier[tier]:
 			rows.append(_level_row(level))
@@ -481,12 +513,15 @@ func _level_row(level: Dictionary) -> Control:
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 2)
 
-	var stages: Array = level.get("stages", [])
-	box.add_child(_wrapped_label("%s %s" % [
-		level.get("name_en", ""), level.get("name_jp", "")]))
+	var stage_count := 0
+	for slot in range(1, 11):
+		if not str(level.get("stage_%d" % slot, "")).is_empty():
+			stage_count += 1
+
+	box.add_child(_wrapped_label(str(level.get("level_id", ""))))
 	box.add_child(_wrapped_label("%d stage%s  ·  %s" % [
-		stages.size(), "" if stages.size() == 1 else "s",
-		level.get("_blurb", "")], "SmallLabel"))
+		stage_count, "" if stage_count == 1 else "s",
+		level.get("description", "")], "SmallLabel"))
 
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
@@ -507,18 +542,17 @@ func _show_briefing() -> void:
 		_show_levels()
 		return
 
-	var runner := LevelRunner.new(_chosen_level)
+	var expanded := BattleSetup.expand_level(_chosen_level)
+	var runner := LevelRunner.new(expanded)
 	if not runner.is_valid():
 		_report.text = "This level cannot start:\n• %s" % "\n• ".join(Array(runner.problems()))
 		return
 
 	var rows: Array[Control] = []
-	var stages: Array = _chosen_level.get("stages", [])
+	var stages: Array = expanded.get("stages", [])
 	var anything_set := false
 
-	for stage: Variant in stages:
-		if typeof(stage) != TYPE_DICTIONARY:
-			continue
+	for stage: Dictionary in stages:
 		rows.append(_heading_label(str(stage.get("name_en", "A stage"))))
 
 		var who := _opponents_line(stage)
@@ -535,7 +569,7 @@ func _show_briefing() -> void:
 					"name": name,
 					"amount": "%+d" % int(LevelRunner.win_rewards(stage)[name]),
 				})))
-			var xp := int(stage.get("xp_reward", 0))
+			var xp := int(stage.get("win_delta_xp", 0))
 			if xp > 0:
 				rows.append(_wrapped_label(Text.say("outcome.xp", {"count": xp})))
 			for line: String in LevelRunner.variable_rewards(stage, Text.phrase()):
@@ -551,7 +585,7 @@ func _show_briefing() -> void:
 	rows.append(_wrapped_label("Lose a stage and you earn nothing from it. "
 		+ "Nothing else is taken off you.", "SmallLabel"))
 
-	_briefing_panel.open(str(_chosen_level.get("name_en", "Before you go in")),
+	_briefing_panel.open(str(_chosen_level.get("level_id", "Before you go in")),
 		rows, "Go in")
 
 
@@ -574,7 +608,8 @@ func _opponents_line(stage: Dictionary) -> String:
 
 
 func _on_start() -> void:
-	var runner := LevelRunner.new(_chosen_level)
+	var expanded := BattleSetup.expand_level(_chosen_level)
+	var runner := LevelRunner.new(expanded)
 	if not runner.is_valid():
 		_report.text = "This level cannot start:\n• %s" % "\n• ".join(Array(runner.problems()))
 		return

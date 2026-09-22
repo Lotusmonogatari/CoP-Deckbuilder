@@ -26,6 +26,23 @@ extends RefCounted
 
 var state := BattleState.new()
 
+## Which stage IDs use the per-member committee model (§7.5) rather than a
+## shared support bar. ST01 plus the ten workbook committees, ST09-ST18. ST08
+## (Party Steering Committee) LOOKS like a committee by name but plays the
+## same shared-pool model as ST03/ST05 — CLAUDE.md §7.3 is explicit that it is
+## not one of these.
+##
+## Hardcoded rather than read from stages.json because nothing in the new
+## workbook data distinguishes a committee stage from a shared-pool one:
+## ST18 (a committee) and ST21 (not one) have the same bar_unit/bar_value_kind
+## shape. DataDB.gd keeps the same list for the same reason, under
+## `is_committee_stage()` — rules code cannot read DataDB, so it cannot be
+## deduplicated further than "keep both lists in sync if this ever changes."
+const COMMITTEE_STAGE_IDS := [
+	"ST01", "ST09", "ST10", "ST11", "ST12", "ST13", "ST14", "ST15", "ST16",
+	"ST17", "ST18",
+]
+
 # --- Everything the engine was given at setup ------------------------------
 var _stage: Dictionary = {}
 var _opponent: Dictionary = {}
@@ -76,9 +93,13 @@ var used_default_intent_pattern := false
 ##   affinity          element -> { stage_id -> multiplier }
 ##   rules             the switches from rules.json
 ##   meta              current Jiban / Kanban / Kaban / Party support
-##   committee_members rows from committee.json, for a committee stage
+##   committee_members rows from opponents.json eligible for this stage,
+##                      for a committee stage (see COMMITTEE_STAGE_IDS)
 ##   bill_difficulty   added to the opponent's starting support
-##   start_adjustment  reputation's effect in a press stage
+##   start_adjustment  reputation's effect in a press stage, plus any
+##                      STAGE_START_BONUS modifier active for this stage
+##   hand_size_bonus   +N cards from an active HAND_SIZE_BONUS modifier
+##   gaffe_limit_bonus +N to the gaffe limit from an active GAFFE_LIMIT_BONUS
 ##   seed              fixes the shuffle, so a test always deals the same hand
 ##
 ## Returns true when the battle is ready to play. When it returns false,
@@ -116,8 +137,14 @@ func setup(config: Dictionary) -> bool:
 
 	# A press conference deals a bigger opening hand and then nothing more,
 	# so "opening_hand" wins over the ordinary hand size where both exist.
-	state.hand_size = int(_stage.get("opening_hand", _stage.get("hand_size", 5)))
-	state.gaffe_limit = int(_stage.get("gaffe_limit", 5))
+	#
+	# hand_size_bonus / gaffe_limit_bonus come from an organisation's backing
+	# — modifiers.json's HAND_SIZE_BONUS and GAFFE_LIMIT_BONUS effect types,
+	# added up by BattleSetup for whichever modifiers are active in this room
+	# and aimed at this stage. Zero when nothing applies.
+	state.hand_size = (int(_stage.get("opening_hand", _stage.get("hand_size", 5)))
+		+ int(config.get("hand_size_bonus", 0)))
+	state.gaffe_limit = int(_stage.get("gaffe_limit", 5)) + int(config.get("gaffe_limit_bonus", 0))
 
 	# A friendly reporter takes some of the heat before a word is said. Never
 	# below zero: backing cannot put the meter into credit.
@@ -208,7 +235,7 @@ func _arm_intents(config: Dictionary = {}) -> void:
 func _setup_board(config: Dictionary) -> void:
 	var members: Array = config.get("committee_members", [])
 
-	if str(_stage.get("stage_id", "")) == "ST01":
+	if COMMITTEE_STAGE_IDS.has(str(_stage.get("stage_id", ""))):
 		if members.is_empty():
 			setup_problems.append("a committee stage needs its members, and none were given")
 			return

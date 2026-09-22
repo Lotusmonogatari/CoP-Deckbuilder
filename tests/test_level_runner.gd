@@ -267,9 +267,11 @@ func test_a_stage_knows_whether_anybody_carries_its_score() -> void:
 # so the promise and the receipt cannot disagree.
 
 func test_a_stage_reports_the_rewards_it_carries() -> void:
+	# 2026-09-22: win_delta_kanban/win_delta_kaban were renamed
+	# win_delta_reputation/win_delta_yen.
 	var stage := {
-		"win_delta_jiban": 4, "win_delta_kanban": -2,
-		"win_delta_kaban": 0, "win_delta_party_support": 3,
+		"win_delta_jiban": 4, "win_delta_reputation": -2,
+		"win_delta_yen": 0, "win_delta_party_support": 3,
 	}
 	var rewards := LevelRunner.win_rewards(stage)
 
@@ -283,14 +285,14 @@ func test_a_stage_with_no_numbers_set_says_so_rather_than_showing_zeroes() -> vo
 	# Every playtest stage is in this state on purpose, waiting on Cameron.
 	# Four zeroes would read as "this level is worthless".
 	assert_true(LevelRunner.rewards_are_unset({
-		"win_delta_jiban": 0, "win_delta_kanban": 0,
-		"win_delta_kaban": 0, "win_delta_party_support": 0, "xp_reward": 0,
+		"win_delta_jiban": 0, "win_delta_reputation": 0,
+		"win_delta_yen": 0, "win_delta_party_support": 0, "win_delta_xp": 0,
 	}))
 
 
 func test_a_stage_with_any_number_set_is_not_unset() -> void:
-	assert_false(LevelRunner.rewards_are_unset({"win_delta_kaban": 1}))
-	assert_false(LevelRunner.rewards_are_unset({"xp_reward": 20}))
+	assert_false(LevelRunner.rewards_are_unset({"win_delta_yen": 1}))
+	assert_false(LevelRunner.rewards_are_unset({"win_delta_xp": 20}))
 	assert_false(LevelRunner.rewards_are_unset({"tone_effects": {"baseline": 50}}),
 		"a stage whose worth depends on its score is not an empty one")
 

@@ -33,7 +33,7 @@ var last_meta_change: Dictionary = {}
 ##
 ## CLAUDE.md puts the XP checkpoint at milestone M5, so nothing spends this
 ## yet. It is banked rather than discarded so the checkpoint has a real
-## number to open with, and so a stage's xp_reward stops being a column the
+## number to open with, and so a stage's win_delta_xp stops being a column the
 ## workbook exports and no code has ever read.
 var xp := 0
 var last_xp_gained := 0
@@ -121,19 +121,25 @@ func buy_card(card_id: String) -> String:
 	return ""
 
 
-## Spends Funds on an organisation's backing.
+## Spends an organisation's activation cost (Funds, and since 2026-09-22
+## sometimes Reputation and/or Constituency support too) on its backing.
 func buy_modifier(mod_id: String) -> String:
 	var modifier := DataDB.get_modifier(mod_id)
 	var refusal := Ledger.modifier_refusal(modifier, owned_modifiers,
-		int(meta.get("Funds", 0)), booster_standing, DataDB.booster_standing,
-		BattleSetup.booster_ids(), Text.phrase())
+		meta, booster_standing, DataDB.booster_standing,
+		DataDB.boosters, Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 
 	# Announced, the same as spending XP is. This used to write the number
 	# straight in, so the Office's two spending doors behaved differently:
-	# buying a card told the world and buying backing did not.
-	_move_meta("Funds", -Ledger.modifier_cost(modifier))
+	# buying a card told the world and buying backing did not. Every
+	# non-zero currency the modifier charges is spent, not just Funds.
+	var costs := Ledger.modifier_costs(modifier)
+	for name: String in costs.keys():
+		var cost: int = costs[name]
+		if cost > 0:
+			_move_meta(name, -cost)
 
 	owned_modifiers.append(mod_id)
 	return ""
@@ -188,6 +194,9 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 
 	if level_runner.is_finished():
 		last_level_outcome = level_runner.outcome()
+		if last_level_outcome == LevelRunner.WON:
+			_pay_level_rewards()
+			_apply_level_bonus_win(level_runner.level)
 		return true
 	return false
 
@@ -215,41 +224,114 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 
 	# Losing a stage earns nothing. A score the player reached on the way to
 	# losing still is not a result.
+	# 2026-09-22 workbook: xp_reward was renamed win_delta_xp, alongside the
+	# other stage win_delta_* columns MetaRules.apply_win_deltas already reads.
 	if outcome == LevelRunner.WON:
 		var won := MetaRules.apply_win_deltas(meta, stage, DataDB.sanban)
 		meta = won["meta"]
 		_record_meta_change(won["applied"])
-		last_xp_gained = int(stage.get("xp_reward", 0))
+		last_xp_gained = int(stage.get("win_delta_xp", 0))
 		_move_xp(last_xp_gained)
 
 	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
 	meta = scored["meta"]
 	_record_meta_change(scored["applied"])
 
-	if outcome == LevelRunner.WON:
-		_pay_backing()
 
-
-## What the organisations backing you pay out for a stage won.
+## What the organisations backing you pay out for winning a LEVEL — not a
+## single stage. RESOURCE_BONUS_ON_WIN's own workbook wording says "after
+## successful completion of a level", so this is called once, when
+## finish_stage() sees the level itself is won, rather than after every stage.
 ##
-## Unlike the battle-start effects, this one does not care who was in the
+## Unlike the battle-start effects, this does not care who was in the
 ## room: a business circle pays for the result, not the audience.
-func _pay_backing() -> void:
+func _pay_level_rewards() -> void:
 	var owned: Array = []
 	for mod_id: String in owned_modifiers:
 		var modifier := DataDB.get_modifier(mod_id)
 		if not modifier.is_empty():
 			owned.append(modifier)
-
-	var funds := ModifierEffects.stage_win_funds(owned, DataDB.modifier_effects)
-	if funds == 0:
+	if owned.is_empty():
 		return
 
-	var variable := _sanban_row("Funds")
-	var before := int(meta.get("Funds", 0))
-	var after := MetaRules.clamp_meta(before + funds, variable)
-	meta["Funds"] = after
-	_record_meta_change({"Funds": after - before})
+	# XP first — it is not a sanban row, so it goes through _move_xp rather
+	# than the clamp-and-record path the other three share.
+	var xp_bonus := ModifierEffects.level_win_resource_bonus(owned, "XP")
+	if xp_bonus != 0:
+		_move_xp(xp_bonus)
+		last_xp_gained += xp_bonus
+
+	for name: String in ["Funds", "Constituency support", "Party support"]:
+		var bonus := ModifierEffects.level_win_resource_bonus(owned, name)
+		if bonus == 0:
+			continue
+		var variable := _sanban_row(name)
+		var before := int(meta.get(name, 0))
+		var after := MetaRules.clamp_meta(before + bonus, variable)
+		meta[name] = after
+		_record_meta_change({name: after - before})
+
+
+## The level's own "bonus_win_range_*" and "win_delta_bo01..16" columns,
+## rolled and applied. Called on the same LEVEL win as _pay_level_rewards().
+##
+## [DEFAULT] "bonus win" is not a concept CLAUDE.md or the rest of the code
+## defines anywhere — there is no separate "ordinary win" the workbook
+## contrasts it with, and no flag anywhere marking some level wins as bonus
+## and others not. Rather than invent that distinction, every one of these
+## ranges is rolled on every win of the level that carries it, per the
+## brief's own fallback for this case. If Cameron means something more
+## specific by "bonus" — a clean win, a win within the turn limit, a
+## first-time clear — that is a design decision for him to make, not one
+## to guess at here.
+func _apply_level_bonus_win(level: Dictionary) -> void:
+	const RANGE_TO_META := {
+		"bonus_win_range_jiban": "Constituency support",
+		"bonus_win_range_yen": "Funds",
+		"bonus_win_range_reputation": "Reputation",
+		"bonus_win_range_party_support": "Party support",
+	}
+	for key: String in RANGE_TO_META.keys():
+		var amount := _roll_range(level.get(key))
+		if amount == 0:
+			continue
+		var name: String = RANGE_TO_META[key]
+		var variable := _sanban_row(name)
+		var before := int(meta.get(name, 0))
+		var after := MetaRules.clamp_meta(before + amount, variable)
+		meta[name] = after
+		_record_meta_change({name: after - before})
+
+	var xp_amount := _roll_range(level.get("bonus_win_range_xp"))
+	if xp_amount != 0:
+		_move_xp(xp_amount)
+		last_xp_gained += xp_amount
+
+	var low := int(DataDB.booster_standing.get("min", 0))
+	var high := int(DataDB.booster_standing.get("max", 100))
+	for n in range(1, 17):
+		var booster_id := "BO%02d" % n
+		var amount := _roll_range(level.get("win_delta_bo%02d" % n))
+		if amount == 0:
+			continue
+		var before := int(booster_standing.get(booster_id, 50))
+		var after := clampi(before + amount, low, high)
+		booster_standing[booster_id] = after
+		if after != before:
+			last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
+
+
+## A level's range columns are {"min": x, "max": y} or null ("this level
+## carries no such bonus"). Rolled inclusively; null or a malformed value
+## rolls nothing, same as an unset flat reward pays nothing.
+func _roll_range(range_value: Variant) -> int:
+	if not (range_value is Dictionary) or not (range_value as Dictionary).has("min"):
+		return 0
+	var low := int((range_value as Dictionary)["min"])
+	var high := int((range_value as Dictionary)["max"])
+	if high <= low:
+		return low
+	return randi_range(low, high)
 
 
 func _sanban_row(name: String) -> Dictionary:

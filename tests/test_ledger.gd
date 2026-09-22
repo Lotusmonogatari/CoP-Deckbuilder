@@ -15,7 +15,20 @@ const BALANCE := {"starter_deck_size": 12}
 func _words() -> Phrase:
 	return Phrase.new(DataDB.strings)
 const SETTINGS := {"required_standing": 60}
-const BOOSTERS := ["BO01", "BO03", "BO08"]
+
+## 2026-09-22: modifiers no longer name their own booster — a booster names
+## the modifiers IT sells, via linked_modifiers (see Ledger.backing_booster).
+## BO03 is the one that sells M01 here; the other two sell nothing, standing
+## in for the other nine organisations a real BOOSTERS list would carry.
+const BOOSTERS := [
+	{"booster_id": "BO01", "linked_modifiers": []},
+	{"booster_id": "BO03", "linked_modifiers": ["M01"]},
+	{"booster_id": "BO08", "linked_modifiers": []},
+]
+
+## Every currency at a level that affords any single-currency test price
+## below, so a test only has to override the one cost it cares about.
+const RICH_META := {"Funds": 999, "Reputation": 999, "Constituency support": 999}
 
 
 func _card(overrides: Dictionary = {}) -> Dictionary:
@@ -24,11 +37,12 @@ func _card(overrides: Dictionary = {}) -> Dictionary:
 	return base
 
 
+## 2026-09-22: kaban_cost became three separate costs (funds_cost,
+## reputation_cost, jiban_cost); available_to and source_booster are gone
+## entirely (see Ledger.gd's own note on why). Defaults to a Funds-only price
+## so the existing tests read the same way they always did.
 func _modifier(overrides: Dictionary = {}) -> Dictionary:
-	var base := {
-		"mod_id": "M01", "kaban_cost": 20,
-		"available_to": "Both", "source_booster": "BO03",
-	}
+	var base := {"mod_id": "M01", "funds_cost": 20}
 	base.merge(overrides, true)
 	return base
 
@@ -69,48 +83,59 @@ func test_a_starter_card_costs_nothing() -> void:
 
 func test_a_backed_modifier_you_can_afford_is_yours() -> void:
 	assert_eq(Ledger.modifier_refusal(
-		_modifier(), [], 30, {"BO03": 60}, SETTINGS, BOOSTERS, _words()), "")
+		_modifier(), [], {"Funds": 30}, {"BO03": 60}, SETTINGS, BOOSTERS, _words()), "")
 
 
 func test_standing_is_checked_before_the_price() -> void:
 	# Being told the price of something you are not allowed to buy is worse
 	# than being told why you cannot buy it.
 	var refusal := Ledger.modifier_refusal(
-		_modifier(), [], 0, {"BO03": 10}, SETTINGS, BOOSTERS, _words())
+		_modifier(), [], {"Funds": 0}, {"BO03": 10}, SETTINGS, BOOSTERS, _words())
 	assert_eq(refusal, "Standing 10 of 60 needed.",
 		"the gate, not the empty wallet")
 
 
 func test_standing_short_of_the_threshold_refuses() -> void:
 	assert_false(Ledger.can_buy_modifier(
-		_modifier(), [], 999, {"BO03": 59}, SETTINGS, BOOSTERS, _words()))
+		_modifier(), [], RICH_META, {"BO03": 59}, SETTINGS, BOOSTERS, _words()))
 	assert_true(Ledger.can_buy_modifier(
-		_modifier(), [], 999, {"BO03": 60}, SETTINGS, BOOSTERS, _words()),
+		_modifier(), [], RICH_META, {"BO03": 60}, SETTINGS, BOOSTERS, _words()),
 		"exactly the threshold is enough")
 
 
 func test_funds_short_says_how_short() -> void:
 	assert_eq(Ledger.modifier_refusal(
-		_modifier(), [], 12, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "8 short.")
+		_modifier(), [], {"Funds": 12}, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "8 short.")
+
+
+func test_a_reputation_cost_is_checked_too() -> void:
+	# 2026-09-22: a modifier's price can be Reputation and/or Constituency
+	# support as well as Funds, all three checked the same way.
+	var m := _modifier({"funds_cost": 0, "reputation_cost": 10})
+	assert_eq(Ledger.modifier_refusal(
+		m, [], {"Reputation": 4}, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "6 short.")
+	assert_eq(Ledger.modifier_refusal(
+		m, [], {"Reputation": 10}, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "")
 
 
 func test_a_modifier_with_no_price_is_not_for_sale() -> void:
-	# The opponent-only ones, and the pair switched on by party support.
-	assert_false(Ledger.is_for_sale(_modifier({"kaban_cost": null})))
-	assert_eq(Ledger.modifier_refusal(_modifier({"kaban_cost": null}),
-		[], 999, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "Not for sale.")
+	assert_false(Ledger.is_for_sale(_modifier({"funds_cost": 0})))
+	assert_eq(Ledger.modifier_refusal(_modifier({"funds_cost": 0}),
+		[], RICH_META, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "Not for sale.")
 
 
-func test_an_opponent_only_modifier_is_not_on_the_players_shelf() -> void:
-	assert_false(Ledger.is_for_sale(_modifier({"available_to": "Opponent"})))
+func test_a_modifier_with_any_nonzero_cost_is_for_sale() -> void:
+	assert_true(Ledger.is_for_sale(_modifier({"funds_cost": 0, "jiban_cost": 5})),
+		"any of the three costs is enough to be for sale")
 
 
 func test_a_modifier_backed_by_nobody_needs_no_standing() -> void:
 	# M09 and M10 name a meta-variable rather than an organisation, so there
-	# is nobody to have standing with.
-	var m := _modifier({"source_booster": "Party support (meta)"})
+	# is nobody to have standing with — no booster's linked_modifiers names
+	# them.
+	var m := _modifier({"mod_id": "M09"})
 	assert_eq(Ledger.backing_booster(m, BOOSTERS), "")
-	assert_eq(Ledger.modifier_refusal(m, [], 30, {}, SETTINGS, BOOSTERS, _words()), "")
+	assert_eq(Ledger.modifier_refusal(m, [], RICH_META, {}, SETTINGS, BOOSTERS, _words()), "")
 
 
 func test_a_threshold_can_be_set_per_modifier() -> void:
@@ -124,7 +149,7 @@ func test_a_threshold_can_be_set_per_modifier() -> void:
 
 func test_a_modifier_you_own_cannot_be_bought_twice() -> void:
 	assert_eq(Ledger.modifier_refusal(
-		_modifier(), ["M01"], 999, {"BO03": 99}, SETTINGS, BOOSTERS, _words()),
+		_modifier(), ["M01"], RICH_META, {"BO03": 99}, SETTINGS, BOOSTERS, _words()),
 		"Already yours.")
 
 

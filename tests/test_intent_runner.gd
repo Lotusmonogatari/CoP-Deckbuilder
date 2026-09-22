@@ -336,24 +336,23 @@ func test_waiting_is_still_waiting() -> void:
 # The patterns that are actually in the game
 # ---------------------------------------------------------------------------
 
-func test_every_pattern_in_the_data_can_be_played() -> void:
+## 2026-09-22 workbook: opponents no longer carry a pattern written out in a
+## level, or in a hand-written bridge file — DataDB.get_opponent() builds one
+## from each opponents.json row's own intent_*_range columns. Every opponent
+## with at least one non-null range is checked here; one with all three null
+## is the [DEFAULT]-eligible "no pattern of their own" case DataDB.gd already
+## warns about, and IntentRunner correctly calls that not-valid on an empty
+## pattern, which is exactly what the fallback in rules.json exists for.
+func test_every_real_opponents_pattern_can_be_played() -> void:
 	var checked := 0
 
-	for level: Variant in DataDB.levels:
-		for stage: Variant in (level as Dictionary).get("stages", []):
-			for opponent: Variant in (stage as Dictionary).get("opponents", []):
-				var row: Dictionary = opponent
-				var pattern: Variant = row.get("intent_pattern")
-				assert_not_null(pattern, "%s has no pattern" % row.get("name", "?"))
-				var runner := IntentRunner.new(pattern)
-				assert_true(runner.is_valid(), "%s: %s"
-					% [row.get("name", "?"), ", ".join(Array(runner.problems()))])
-				checked += 1
-
-	for opp_id: String in DataDB.intent_patterns.keys():
-		var runner := IntentRunner.new(DataDB.intent_patterns[opp_id])
+	for opponent: Dictionary in DataDB.opponents:
+		var pattern: Array = DataDB.get_opponent(str(opponent.get("opp_id", ""))).get("intent_pattern", [])
+		if pattern.is_empty():
+			continue
+		var runner := IntentRunner.new(pattern)
 		assert_true(runner.is_valid(), "%s: %s"
-			% [opp_id, ", ".join(Array(runner.problems()))])
+			% [opponent.get("name", "?"), ", ".join(Array(runner.problems()))])
 		checked += 1
 
-	assert_gt(checked, 20, "every opponent in every level, plus the nine MPs")
+	assert_gt(checked, 20, "most of the 125 opponents have at least one non-null intent range")

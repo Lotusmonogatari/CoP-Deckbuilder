@@ -59,7 +59,11 @@ static func stage(overrides: Dictionary = {}) -> Dictionary:
 	return base
 
 
-## The five committee starting stances, as committee.json writes them.
+## A committee member with a chosen starting stance, in the shape the old
+## committee.json rows used ("member" for the name, "starting_stance"). Real
+## rosters no longer carry a stance at all (see CommitteeModel.create()'s own
+## note) — this fixture exists so CommitteeModel's stance-reading branches
+## stay tested even though nothing in the live data exercises them today.
 static func committee_member(name: String, stance: String = "Undecided") -> Dictionary:
 	return {"member": name, "party": "Test Party", "starting_stance": stance}
 
@@ -85,8 +89,8 @@ static func opponent(pattern: Array = [["attack", 5]]) -> Dictionary:
 	return {
 		"opp_id": "OPTEST",
 		"name": "Test Opponent",
-		"element_1": "Earnest",
-		"element_2": "Data Driven",
+		"suit_1": "Earnest",
+		"suit_2": "Data Driven",
 		"intent_pattern": pattern,
 	}
 

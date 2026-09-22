@@ -321,11 +321,13 @@ static func win_rewards(stage: Dictionary) -> Dictionary:
 	return rewards
 
 
-## The workbook's column names, and what the player calls them.
+## The workbook's column names, and what the player calls them. Renamed
+## 2026-09-22: win_delta_kanban/win_delta_kaban became win_delta_reputation/
+## win_delta_yen in stages.json.
 const WIN_DELTA_KEYS := {
 	"win_delta_jiban": "Constituency support",
-	"win_delta_kanban": "Reputation",
-	"win_delta_kaban": "Funds",
+	"win_delta_reputation": "Reputation",
+	"win_delta_yen": "Funds",
 	"win_delta_party_support": "Party support",
 }
 
@@ -338,7 +340,8 @@ const WIN_DELTA_KEYS := {
 static func rewards_are_unset(stage: Dictionary) -> bool:
 	if not win_rewards(stage).is_empty():
 		return false
-	if int(stage.get("xp_reward", 0)) != 0:
+	# 2026-09-22: xp_reward was renamed win_delta_xp.
+	if int(stage.get("win_delta_xp", 0)) != 0:
 		return false
 	return not stage.has("tone_effects")
 

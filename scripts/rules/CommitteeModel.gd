@@ -25,18 +25,29 @@ const UNDECIDED_LEAN := 50
 var members: Array[Dictionary] = []
 
 
-## Builds the committee from committee.json rows.
+## Builds the committee from a roster of opponents.json rows.
 ##
-## A member listed as "Against" starts locked against you rather than merely
-## leaning that way. That is the default the brief specifies, and it is the
-## harsher of the two readings — it means an opposed member cannot be turned.
-## It is behind this one line if Cameron wants it softened.
+## 2026-09-22 workbook: the old Committee tab is gone, and with it the
+## "starting_stance" column that told a member's opening lean. A committee's
+## roster is now built by BattleSetup from opponents.json — every opponent
+## whose own "stages" list names the committee's STxx — and those rows carry
+## no stance of any kind, so `row.get("starting_stance", "Undecided")` below
+## always falls through to "Undecided" today. That is CLAUDE.md §7.5's own
+## [DEFAULT] for a member with no data ("Undecided members start at 50"), so
+## nothing is being invented here — every member opens undecided until
+## Cameron's workbook has something to say about who starts where. The
+## "For"/"Against" branches are left in place rather than deleted: they cost
+## nothing to keep, and the day starting stances come back into the data
+## (whatever shape that takes) this function does not need touching again.
 static func create(member_rows: Array) -> CommitteeModel:
 	var committee := CommitteeModel.new()
 	for row: Dictionary in member_rows:
 		var stance := str(row.get("starting_stance", "Undecided"))
 		var member := {
-			"name": str(row.get("member", "Visitor A")),
+			# opponents.json rows use "name"; "member" is kept as a fallback
+			# only so a stray hand-written fixture in the old shape still
+			# reads sensibly rather than showing every member as "Visitor A".
+			"name": str(row.get("name", row.get("member", "Visitor A"))),
 			"party": str(row.get("party", "")),
 			"lean": UNDECIDED_LEAN,
 			"locked": "",

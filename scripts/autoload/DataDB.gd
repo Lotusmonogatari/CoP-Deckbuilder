@@ -19,14 +19,43 @@ signal data_ready(had_errors: bool)
 const DATA_PATH := "res://data/"
 
 ## Every file that must be present for the game to start.
+##
+## 2026-09-22 workbook: "committee", "intent_patterns" and "modifier_effects"
+## were hand-written bridge files for columns the workbook now carries
+## directly (a committee's roster comes from opponents.json's own "stages"
+## list; an opponent's intent_*_range fields build their pattern; a
+## modifier's effect_type/target/value replace the old key lookup) — see
+## get_opponent(), is_committee_stage() and ModifierEffects.gd. "modules" is
+## gone the same way: a level's stage order is levels.json's own
+## stage_1..stage_10 now (see BattleSetup.expand_level()). All four bridge
+## files are deleted; nothing reads them any more.
+##
+## "level_opponent_overrides" is new: the hand-written pin file that lets
+## Cameron name a specific opponent for a specific level+stage slot, for the
+## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "balance", "bills", "booster_standing", "boosters", "cards",
-	"committee", "intent_patterns", "journalists", "levels", "lists",
-	"modifier_effects", "modifiers", "modules", "opponents",
+	"journalists", "level_opponent_overrides", "levels", "lists",
+	"modifiers", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
 	"card_cues", "questions",
 	"sounds", "stage_types", "strings",
 	"segments", "stages", "suits", "yoron",
+]
+
+## Which stage IDs use the per-member committee model (CLAUDE.md §7.5) rather
+## than a shared support bar: ST01 plus the ten workbook committees,
+## ST09-ST18. ST08 (Party Steering Committee) is NOT one of these — it shares
+## ST03/ST05's shared-pool model despite the name.
+##
+## Nothing in the new stages.json distinguishes a committee stage from a
+## shared-pool one (ST18 and ST21 have the same bar_unit/bar_value_kind
+## shape), so this is a fixed list rather than a data-driven check. Rules
+## code cannot read this table — scripts/rules/ never touches an autoload —
+## so BattleEngine.gd keeps its own copy of the same list; keep both in sync.
+const COMMITTEE_STAGE_IDS := [
+	"ST01", "ST09", "ST10", "ST11", "ST12", "ST13", "ST14", "ST15", "ST16",
+	"ST17", "ST18",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -36,24 +65,27 @@ var stages: Array = []
 var suits: Array = []
 var segments: Array = []
 var modifiers: Array = []
-
-## Which named effect each modifier runs, by mod_id. Hand-written bridge;
-## the workbook's own column wins where it exists.
-var modifier_effects: Dictionary = {}
-
-## What each of the workbook's MPs does on their turn, by opp_id. The same
-## kind of hand-written bridge, for the same reason: opponents.json is
-## regenerated from the workbook and would throw away anything written into
-## it. The workbook's own column wins where it exists.
-var intent_patterns: Dictionary = {}
 var boosters: Array = []
 var opponents: Array = []
 var yoron: Array = []
 var bills: Array = []
-var committee: Array = []
-var modules: Array = []
 var sanban: Array = []
 var affinity: Array = []
+
+## The 30 rows of the workbook's Levels tab (LV01-30), flat: level_id,
+## description, unlock costs, stage_1..stage_10, bonus win ranges, win deltas
+## per booster. Retired Cameron's old hand-written six-level draft
+## (level_id LV01-06, nested stage/opponent objects) 2026-09-22 — this IS the
+## level data now. BattleSetup.expand_level() turns one row into the ordered,
+## opponent-filled shape LevelRunner.gd plays.
+var levels: Array = []
+
+## The hand-written pin file letting a level+stage slot name a specific
+## opponent instead of the dynamic "every eligible opponent" pick. One entry
+## per pin: { level_id, slot (1-10, matching stage_1..stage_10), opp_id }.
+## Most levels have none. See data/level_opponent_overrides.json's own
+## README for how Cameron uses it.
+var level_opponent_overrides: Array = []
 
 # Objects rather than lists.
 var balance: Dictionary = {}
@@ -64,9 +96,9 @@ var rules: Dictionary = {}
 ## from the workbook, because its shape is still being tried out.
 var playtest_level: Dictionary = {}
 
-## The six playtest levels, and the nine kinds of stage they are built from.
-## Hand-written; see each file's own README.
-var levels: Array = []
+## The nine kinds of stage the OLD hand-written playtest levels were built
+## from. Hand-written; see the file's own README. (`levels` — the real
+## per-level data — is declared above, alongside level_opponent_overrides.)
 var stage_types: Dictionary = {}
 
 ## Who the player is. Hand-written; a placeholder until the protagonist is
@@ -119,6 +151,7 @@ var _bills_by_id: Dictionary = {}
 var _yoron_by_id: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
 var _journalists_by_id: Dictionary = {}
+var _levels_by_id: Dictionary = {}
 var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
 
 ## Problems found at startup. Errors mean something is genuinely broken;
@@ -148,24 +181,23 @@ func load_all() -> void:
 			"suits": suits = content
 			"segments": segments = content
 			"modifiers": modifiers = content
-			# A temporary bridge until the workbook carries an "Effect key"
-			# column; see the file's own README.
-			"modifier_effects": modifier_effects = _map_under(content, file_name, "effects")
-			# The same bridge again, for opponent behaviour.
-			"intent_patterns": intent_patterns = _map_under(content, file_name, "patterns")
 			"boosters": boosters = content
 			"opponents": opponents = content
 			"yoron": yoron = content
 			"bills": bills = content
-			"committee": committee = content
-			"modules": modules = content
 			"sanban": sanban = content
 			"affinity": affinity = content
 			"balance": balance = content
 			"lists": lists = content
 			"rules": rules = _flatten_rules(content)
 			"playtest_level": playtest_level = content
-			"levels": levels = _list_under(content, file_name, "levels")
+			# 2026-09-22: the workbook's Levels tab exports straight to
+			# levels.json now, as a plain 30-row array — not wrapped the way
+			# the old hand-written file was, so this is a direct assignment
+			# rather than a _list_under() unwrap.
+			"levels": levels = content if content is Array else []
+			"level_opponent_overrides":
+				level_opponent_overrides = _list_under(content, file_name, "overrides")
 			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": player = content
 
@@ -380,6 +412,7 @@ func _build_lookups() -> void:
 	_yoron_by_id = _index(yoron, "topic_id")
 	_sanban_by_name = _index(sanban, "name_en")
 	_journalists_by_id = _index(journalists, "journalist_id")
+	_levels_by_id = _index(levels, "level_id")
 
 	_affinity.clear()
 	for row: Dictionary in affinity:
@@ -418,29 +451,77 @@ func get_stage(stage_id: String) -> Dictionary:
 	return _lookup(_stages_by_id, stage_id, "stage")
 
 
-## An opponent, with their intent pattern filled in if it is not on the row.
+## An opponent, with their intent pattern built from the workbook's own
+## intent_attack_range / intent_gain_range / intent_block_range columns.
 ##
-## opponents.json comes out of the workbook, which has no Intent pattern
-## column yet, so the patterns live in the hand-written bridge instead. The
-## merge happens here rather than at each call site: an opponent handed out
-## without their behaviour is an opponent who plays as the generic default,
-## and that is a bug nobody notices until a battle feels wrong.
+## 2026-09-22 workbook: those three columns replace the old single
+## "intent_pattern" JSON blob (and the hand-written bridge that used to fill
+## it in before the workbook had one). Each is either null — this opponent
+## never uses that move — or {"min": x, "max": y}, in the fixed order attack,
+## gain, block. IntentRunner.gd's pattern shape is a list of
+## [verb, low, high] moves, so this is a straight translation, not a design
+## choice: which three verbs exist and what order they cycle in is
+## CLAUDE.md §7.6's, unchanged since M1.
 ##
-## The row's own value always wins, so the day the column lands this stops
-## doing anything.
+## The row's own "intent_pattern" wins if a row somehow has one (a hand-built
+## fixture in the old shape, say), so nothing here fights real data.
 func get_opponent(opp_id: String) -> Dictionary:
 	var opponent := _lookup(_opponents_by_id, opp_id, "opponent")
 	if opponent.is_empty() or opponent.get("intent_pattern") != null:
 		return opponent
-	if not intent_patterns.has(opp_id):
+
+	var pattern := _intent_pattern_from_ranges(opponent)
+	if pattern.is_empty():
 		return opponent
 
 	# Copied rather than written into: _opponents_by_id holds the loaded
 	# data, and a caller that edits what it is given must not change it for
 	# everyone else.
 	var filled := opponent.duplicate(true)
-	filled["intent_pattern"] = intent_patterns[opp_id]
+	filled["intent_pattern"] = pattern
 	return filled
+
+
+## The [verb, low, high] pattern IntentRunner.gd wants, built from one
+## opponent row's three intent_*_range columns. A verb whose range is null —
+## the hard sentinel for "this opponent never does this" — is left out of the
+## pattern entirely, rather than turned into a [verb, 0, 0] move: the zero
+## rule in IntentRunner.gd already treats a move worth zero as skipped, but a
+## real range that happens to roll 0-0 is a different fact than "never rolls
+## this at all", and collapsing them would hide the difference in a report.
+func _intent_pattern_from_ranges(opponent: Dictionary) -> Array:
+	var pattern: Array = []
+	for pair: Array in [
+		["attack", "intent_attack_range"], ["gain", "intent_gain_range"],
+		["block", "intent_block_range"],
+	]:
+		var range_value: Variant = opponent.get(pair[1])
+		if range_value is Dictionary and (range_value as Dictionary).has("min"):
+			pattern.append([pair[0], int(range_value["min"]), int(range_value["max"])])
+	return pattern
+
+
+## Whether a stage plays the per-member committee model. See
+## COMMITTEE_STAGE_IDS for which ones, and why this is a fixed list.
+func is_committee_stage(stage_id: String) -> bool:
+	return COMMITTEE_STAGE_IDS.has(stage_id)
+
+
+## Every opponent eligible for a stage — every row whose own "stages" list
+## names this STxx. Used by BattleSetup to pick who a level's stage fights,
+## and to build a committee's roster; kept here too since DataDB is where
+## opponents.json itself lives and this is a pure lookup over it.
+func get_opponents_for_stage(stage_id: String) -> Array:
+	var found: Array = []
+	for opponent: Dictionary in opponents:
+		if (opponent.get("stages", []) as Array).has(stage_id):
+			found.append(opponent)
+	return found
+
+
+## A level row from levels.json, by its LV-number ID.
+func get_level(level_id: String) -> Dictionary:
+	return _lookup(_levels_by_id, level_id, "level")
 
 
 func get_segment(segment_id: String) -> Dictionary:
@@ -518,26 +599,6 @@ func get_rule(flag: String, fallback: Variant = null) -> Variant:
 	return fallback
 
 
-## The ordered list of stages in a module, e.g. "MOD01".
-func get_module_steps(module_id: String) -> Array:
-	var steps: Array = []
-	for row: Dictionary in modules:
-		if row.get("module") == module_id:
-			steps.append(row)
-	steps.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-		return int(a.get("seq", 0)) < int(b.get("seq", 0)))
-	return steps
-
-
-## The members of the committee for one step of a module.
-func get_committee_members(module_id: String, seq: int) -> Array:
-	var members: Array = []
-	for row: Dictionary in committee:
-		if row.get("module") == module_id and int(row.get("seq", -1)) == seq:
-			members.append(row)
-	return members
-
-
 ## Every card of a given tier — used by the XP shop.
 func get_cards_by_tier(tier: String) -> Array:
 	return cards.filter(func(card: Dictionary) -> bool: return card.get("tier") == tier)
@@ -556,11 +617,10 @@ func _validate() -> void:
 	var suit_names := _values(suits, "element")
 	var stage_ids := _values(stages, "stage_id")
 	var segment_names := _values(segments, "name_en")
+	var segment_ids := _values(segments, "segment_id")
 	var mod_ids := _values(modifiers, "mod_id")
-	var booster_ids := _values(boosters, "booster_id")
 	var opp_ids := _values(opponents, "opp_id")
 	var topic_ids := _values(yoron, "topic_id")
-	var bill_ids := _values(bills, "bill_id")
 
 	for card: Dictionary in cards:
 		var cid: String = str(card.get("card_id"))
@@ -586,12 +646,21 @@ func _validate() -> void:
 			var total := 0.0
 			for share: float in (stage.get("segment_mix", {}) as Dictionary).values():
 				total += share
+			# 2026-09-22 workbook: "% Other" (pct_other) isn't a segments.json
+			# row, but it's still part of the room, so it belongs in the 100%
+			# check the same way tools/export_data.py's own copy of this
+			# check already counts it. Without this, every stage with any
+			# "Other" share in its audience looked broken.
+			total += float(stage.get("pct_other", 0.0))
 			if absf(total - 1.0) > 0.001:
 				errors.append("Stage %s audience shares add up to %d%%, not 100%%" % [sid, roundi(total * 100.0)])
 
+	# 2026-09-22 workbook: "trigger_segment" was split into trigger_segment_id
+	# / trigger_booster_id by the exporter (see tools/export_data.py); only
+	# the segment half is a segments.json cross-reference.
 	for mod: Dictionary in modifiers:
-		var trigger: Variant = mod.get("trigger_segment")
-		if trigger != null and not segment_names.has(trigger):
+		var trigger: Variant = mod.get("trigger_segment_id")
+		if trigger != null and not segment_ids.has(trigger):
 			errors.append("Modifier %s triggers on '%s', which is not a segment" % [mod.get("mod_id"), trigger])
 
 	for booster: Dictionary in boosters:
@@ -599,16 +668,27 @@ func _validate() -> void:
 			if not mod_ids.has(mod_id):
 				errors.append("Booster %s links '%s', which is not a modifier" % [booster.get("booster_id"), mod_id])
 
+	# 2026-09-22 workbook: element_1/element_2 were renamed suit_1/suit_2, and
+	# a third, suit_3, was added. The intent pattern used to be one JSON blob
+	# column with a hand-written fallback for when it was missing; now it is
+	# three range columns (get_opponent()/_intent_pattern_from_ranges()
+	# builds the pattern IntentRunner.gd wants from them), so what used to be
+	# "no pattern written" is now "all three ranges are null".
 	for opp: Dictionary in opponents:
 		var oid: String = str(opp.get("opp_id"))
-		for field: String in ["element_1", "element_2"]:
+		for field: String in ["suit_1", "suit_2", "suit_3"]:
 			var element: Variant = opp.get(field)
 			if element != null and not suit_names.has(element):
 				errors.append("Opponent %s has %s '%s', which is not a suit" % [oid, field, element])
-		# Their own column first, then the hand-written bridge, then nothing.
+		for stage_id: String in (opp.get("stages", []) as Array):
+			if not stage_ids.has(stage_id):
+				errors.append("Opponent %s is eligible for stage '%s', which does not exist" % [oid, stage_id])
+
 		var pattern: Variant = opp.get("intent_pattern")
 		if pattern == null:
-			pattern = intent_patterns.get(oid)
+			pattern = _intent_pattern_from_ranges(opp)
+			if (pattern as Array).is_empty():
+				pattern = null
 		if pattern == null:
 			warnings.append(
 				("Opponent %s has no intent pattern of their own, so they fall back to "
@@ -623,23 +703,60 @@ func _validate() -> void:
 		if not topic_ids.has(bill.get("topic_id")):
 			errors.append("Bill %s uses topic '%s', which is not in yoron.json" % [bill.get("bill_id"), bill.get("topic_id")])
 
-	for row: Dictionary in modules:
-		var label := "%s step %s" % [row.get("module"), row.get("seq")]
-		if not stage_ids.has(row.get("stage_id")):
-			errors.append("%s uses stage '%s', which does not exist" % [label, row.get("stage_id")])
-		if row.get("opp_id") != null and not opp_ids.has(row.get("opp_id")):
-			errors.append("%s names opponent '%s', who does not exist" % [label, row.get("opp_id")])
-		if row.get("bill_id") != null and not bill_ids.has(row.get("bill_id")):
-			errors.append("%s uses bill '%s', which does not exist" % [label, row.get("bill_id")])
-		if row.get("stage_id") == "ST01":
-			var members := get_committee_members(str(row.get("module")), int(row.get("seq", -1)))
-			if members.is_empty():
-				errors.append("%s is a committee stage with no members listed" % label)
+	# 2026-09-22 workbook: modules.json/committee.json are retired — a
+	# level's stage order is its own stage_1..stage_10 now, and a committee's
+	# roster is opponents eligible for that STxx (see
+	# get_opponents_for_stage()). Checked the same way modules used to be.
+	for level: Dictionary in levels:
+		var lid := str(level.get("level_id", "?"))
+		var named_any := false
+		for slot in range(1, 11):
+			var stage_id: Variant = level.get("stage_%d" % slot)
+			if stage_id == null or str(stage_id).is_empty():
+				continue
+			named_any = true
+			if not stage_ids.has(str(stage_id)):
+				errors.append("%s names stage '%s' at slot %d, which does not exist" % [lid, stage_id, slot])
+				continue
+			if is_committee_stage(str(stage_id)):
+				if get_opponents_for_stage(str(stage_id)).is_empty():
+					errors.append(
+						"%s's committee stage '%s' (slot %d) has no eligible opponents in opponents.json"
+						% [lid, stage_id, slot])
+			elif get_opponents_for_stage(str(stage_id)).is_empty():
+				warnings.append(
+					("%s's stage '%s' (slot %d) has no eligible opponent in opponents.json, "
+					+ "so it cannot be fought until level_opponent_overrides.json pins one "
+					+ "or the workbook adds one.") % [lid, stage_id, slot])
+		if not named_any:
+			errors.append("%s names no stages at all" % lid)
 
-	for mod: Dictionary in modifiers:
-		var source: Variant = mod.get("source_booster")
-		if source is String and (source as String).begins_with("BO") and not booster_ids.has(source):
-			errors.append("Modifier %s names booster '%s', which does not exist" % [mod.get("mod_id"), source])
+	for override_row: Dictionary in level_opponent_overrides:
+		var lid := str(override_row.get("level_id", ""))
+		var slot := int(override_row.get("slot", -1))
+		var opp_id := str(override_row.get("opp_id", ""))
+		var level := get_level(lid)
+		if level.is_empty():
+			errors.append("level_opponent_overrides.json pins slot %d of '%s', which is not a level" % [slot, lid])
+			continue
+		if slot < 1 or slot > 10:
+			errors.append("level_opponent_overrides.json: the slot for '%s' must be 1-10, not %d" % [lid, slot])
+			continue
+		# An unused slot is JSON null, not "" — str(null) is the literal text
+		# "<null>", so the null check has to come before the str() cast (see
+		# BattleSetup.expand_level()'s matching note).
+		var raw_stage_id: Variant = level.get("stage_%d" % slot)
+		var stage_id := "" if raw_stage_id == null else str(raw_stage_id)
+		if stage_id.is_empty():
+			errors.append("level_opponent_overrides.json pins %s slot %d, which %s does not use" % [lid, slot, lid])
+			continue
+		if not opp_ids.has(opp_id):
+			errors.append("level_opponent_overrides.json pins unknown opponent '%s' for %s slot %d" % [opp_id, lid, slot])
+		elif not (get_opponent(opp_id).get("stages", []) as Array).has(stage_id):
+			warnings.append(
+				("level_opponent_overrides.json pins %s to %s slot %d (%s), but %s is not "
+				+ "eligible for %s, so the game will fall back to the dynamic pick there.")
+				% [opp_id, lid, slot, stage_id, opp_id, stage_id])
 
 	_validate_rules()
 
@@ -670,29 +787,10 @@ func _validate_rules() -> void:
 		for problem: String in runner.problems():
 			errors.append("rules.json default_intent_pattern: %s" % problem)
 
-	# And every pattern written into a level. These are the opponents the
-	# playtest actually fights, so a typo here is the one that gets noticed.
-	for level: Variant in levels:
-		if typeof(level) != TYPE_DICTIONARY:
-			continue
-		var level_id := str((level as Dictionary).get("level_id", "?"))
-		for stage: Variant in (level as Dictionary).get("stages", []):
-			if typeof(stage) != TYPE_DICTIONARY:
-				continue
-			for opponent: Variant in (stage as Dictionary).get("opponents", []):
-				if typeof(opponent) != TYPE_DICTIONARY:
-					continue
-				var row: Dictionary = opponent
-				var pattern: Variant = row.get("intent_pattern")
-				if pattern == null:
-					warnings.append(
-						("%s: %s has no intent pattern, so they fall back to the "
-						+ "shared default and play generically.")
-						% [level_id, row.get("name", row.get("opp_id", "?"))])
-					continue
-				for problem: String in IntentRunner.new(pattern).problems():
-					errors.append("%s: %s's intent pattern: %s"
-						% [level_id, row.get("name", row.get("opp_id", "?")), problem])
+	# 2026-09-22 workbook: a level no longer embeds its own opponent rows —
+	# every one it can fight is a row of opponents.json, and every one of
+	# those was already walked, and had its pattern checked, in the main
+	# opponents loop above. Nothing further to check here per level.
 
 
 func _values(records: Array, key: String) -> Array:

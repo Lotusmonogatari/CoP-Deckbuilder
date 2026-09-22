@@ -166,7 +166,7 @@ func _what_it_was_worth(stage: Dictionary, score: int) -> Array[String]:
 			changes.append(Text.say("reward.delta",
 				{"name": name, "amount": "%+d" % int(moved[name])}))
 
-	var xp := int(stage.get("xp_reward", 0))
+	var xp := int(stage.get("win_delta_xp", 0))
 	if xp > 0:
 		changes.append(Text.say("outcome.xp", {"count": xp}))
 	return changes
