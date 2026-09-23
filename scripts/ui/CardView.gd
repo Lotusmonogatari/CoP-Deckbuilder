@@ -1,6 +1,6 @@
 class_name CardView
 extends Button
-## One card in the player's hand, on Cameron's shoji frame.
+## One card in the player's hand, using the front frame assigned to its suit.
 ##
 ## The frame is a single 1429x2000 PNG with the furniture already drawn on
 ## it: a cost disc top left, a name bar beside it, a window where the art
@@ -10,8 +10,7 @@ extends Button
 ## size the hand row gives it.
 ##
 ## THE REGIONS were measured off the PNG rather than guessed, and they are
-## the only numbers in this file that matter. If Cameron redraws the frame,
-## re-measure and change them here; everything else follows.
+## the only numbers in this file that matter. 
 ##
 ## It is a Button so that tapping, keyboard focus and the disabled look all
 ## come for free. Tapping opens the card rather than playing it, so a
@@ -20,9 +19,19 @@ extends Button
 ## The player tapped this card.
 signal chosen(card_id: String)
 
-## Resolved once, when the script compiles, rather than looked up again for
-## every card in every hand.
-const FRAME_FRONT := preload("res://assets/cards/frame_front_shoji.png")
+## The temporary illustration sits inside the art window, behind the frame.
+const TEMPORARY_CARD_ART: Texture2D = preload("res://assets/cards/card_temporary_image.png")
+const CARD_FONT: FontFile = preload("res://assets/fonts/AntakaBrushDisplay-Regular.ttf")
+
+## Canonical suit-to-front-template mapping from data/suits.json.
+const FRAME_BY_SUIT := {
+	"Earnest": preload("res://assets/cards/front_sumo.png"),
+	"Emotional": preload("res://assets/cards/front_sakura.png"),
+	"Appeal": preload("res://assets/cards/front_ukiyoe.png"),
+	"Data Driven": preload("res://assets/cards/frame_front_shoji.png"),
+	"Divisive": preload("res://assets/cards/front_castle.png"),
+	"Duplicitous": preload("res://assets/cards/front_ninja.png"),
+}
 
 ## The frame's own proportions, so the card is never stretched.
 const ASPECT := 1429.0 / 2000.0
@@ -33,15 +42,14 @@ const WIDTH := HEIGHT * ASPECT
 ## The cost disc is a transparent HOLE in the frame, not a white circle:
 ## the artwork leaves it for the game to fill. Measured off the PNG.
 const COST_RECT := Rect2(0.0588, 0.0330, 0.0980, 0.0705)
-const NAME_RECT := Rect2(0.215, 0.042, 0.655, 0.056)
-const ART_RECT := Rect2(0.120, 0.160, 0.760, 0.436)
-const TEXT_RECT := Rect2(0.128, 0.676, 0.744, 0.200)
+const COST_LABEL_LIFT := 0.008
+const NAME_RECT := Rect2(0.215, 0.032, 0.655, 0.056)
+const ART_RECT := Rect2(0.130, 0.210, 0.740, 0.370)
+const TEXT_RECT := Rect2(0.128, 0.700, 0.744, 0.175)
+const EFFECT_FONT_SIZE := 23
+const EFFECT_FONT_SIZE_MIN := 12
 
-## NO SUIT COLOUR. There used to be a coloured band across the footer strip,
-## so a hand could be read by suit at a glance. Cameron had it removed on
-## 2026-09-21: each suit is getting its own card template, and a stripe that
-## will not survive those templates is a signal the player would have to
-## unlearn. Until they arrive, one frame serves all six.
+
 
 ## Ink on a cream box wants to be dark, not the theme's pale text.
 const INK := Color(0.16, 0.13, 0.10)
@@ -60,6 +68,7 @@ var card: Dictionary = {}
 var card_id: String = ""
 
 var _frame: TextureRect
+var _art_image: TextureRect
 var _cost_label: Label
 var _name_label: Label
 var _art_label: Label
@@ -101,16 +110,22 @@ static func place(node: Control, where: Rect2) -> void:
 
 
 func _build() -> void:
-	# Behind the frame, not over it: the window is a hole in an otherwise
-	# opaque PNG, so anything laid underneath shows through exactly the hole
-	# and cannot spill over the border the artwork draws around it.
+	# Artwork is deliberately smaller than the card and sits behind its frame.
+	# This keeps it inside the shared art window and prevents spill over the
+	# template border.
 	var plate := ColorRect.new()
 	place(plate, ART_RECT)
 	plate.color = PLATE
 	add_child(plate)
 
+	_art_image = TextureRect.new()
+	_art_image.texture = TEMPORARY_CARD_ART
+	place(_art_image, ART_RECT)
+	_art_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_art_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	add_child(_art_image)
+
 	_frame = TextureRect.new()
-	_frame.texture = FRAME_FRONT
 	_frame.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_frame.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_frame.stretch_mode = TextureRect.STRETCH_SCALE
@@ -128,18 +143,31 @@ func _build() -> void:
 	add_child(disc)
 
 	_cost_label = Label.new()
-	place(_cost_label, COST_RECT)
+	# Use the full circle rectangle with no added margin. Its center is the
+	# measured center of the printed cost circle on the card templates.
+	place(_cost_label, Rect2(
+		COST_RECT.position.x,
+		COST_RECT.position.y - COST_LABEL_LIFT,
+		COST_RECT.size.x,
+		COST_RECT.size.y))
 	_cost_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_cost_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_cost_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_cost_label.add_theme_constant_override("line_spacing", 0)
 	_cost_label.add_theme_color_override("font_color", INK)
-	_cost_label.add_theme_font_size_override("font_size", 40)
 	add_child(_cost_label)
+	var cost_font := FontVariation.new()
+	cost_font.base_font = CARD_FONT
+	cost_font.variation_embolden = 0.15
+	_cost_label.add_theme_font_override("font", cost_font)
+	_cost_label.add_theme_font_size_override("font_size", 31)
 
 	_name_label = Label.new()
 	place(_name_label, NAME_RECT)
 	_name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_name_label.add_theme_color_override("font_color", INK)
+	_name_label.add_theme_font_override("font", CARD_FONT)
 	_name_label.add_theme_font_size_override("font_size", 26)
 	_name_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	add_child(_name_label)
@@ -152,6 +180,7 @@ func _build() -> void:
 	_art_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_art_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_art_label.add_theme_color_override("font_color", Color(0.45, 0.38, 0.30, 0.85))
+	_art_label.add_theme_font_override("font", CARD_FONT)
 	_art_label.add_theme_font_size_override("font_size", 30)
 	add_child(_art_label)
 
@@ -160,7 +189,10 @@ func _build() -> void:
 	_effect_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_effect_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	_effect_label.add_theme_color_override("font_color", INK)
-	_effect_label.add_theme_font_size_override("font_size", 23)
+	_effect_label.add_theme_font_override("font", CARD_FONT)
+	_effect_label.add_theme_font_size_override("font_size", EFFECT_FONT_SIZE)
+	_effect_label.add_theme_constant_override("line_spacing", 0)
+	_effect_label.clip_text = true
 	add_child(_effect_label)
 
 
@@ -178,6 +210,8 @@ func show_card(card_row: Dictionary) -> void:
 	_name_label.text = str(card_row.get("name_en", "Unnamed"))
 	_art_label.text = str(card_row.get("name_jp", ""))
 	_effect_label.text = str(card_row.get("effect_text", ""))
+	_frame.texture = FRAME_BY_SUIT.get(str(card_row.get("suit", "")), FRAME_BY_SUIT["Data Driven"])
+	_fit_effect_label.call_deferred()
 
 	tooltip_text = "%s — %s" % [card_row.get("name_en", ""), card_row.get("effect_text", "")]
 
@@ -204,6 +238,37 @@ func show_effect_here(effect: Dictionary) -> void:
 	if _effect_label == null:
 		return
 	_effect_label.text = describe_effect(effect, card)
+	_fit_effect_label.call_deferred()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_RESIZED and _effect_label != null:
+		_fit_effect_label.call_deferred()
+
+
+## Shrinks the front effect text only when its wrapped lines would exceed the
+## text box, and recalculates when the card is shown or its size changes.
+func _fit_effect_label() -> void:
+	if _effect_label == null or _effect_label.text.is_empty():
+		return
+	if _effect_label.size.x <= 0.0 or _effect_label.size.y <= 0.0:
+		return
+
+	var font: Font = _effect_label.get_theme_font("font")
+	if font == null:
+		return
+	var available_width := maxf(_effect_label.size.x - 4.0, 1.0)
+	var available_height := maxf(_effect_label.size.y - 4.0, 1.0)
+	for font_size: int in range(EFFECT_FONT_SIZE, EFFECT_FONT_SIZE_MIN - 1, -1):
+		var measured := font.get_multiline_string_size(
+			_effect_label.text,
+			HORIZONTAL_ALIGNMENT_LEFT,
+			available_width,
+			font_size)
+		if measured.y <= available_height:
+			_effect_label.add_theme_font_size_override("font_size", font_size)
+			return
+	_effect_label.add_theme_font_size_override("font_size", EFFECT_FONT_SIZE_MIN)
 
 
 ## The same sentence, as a static so the zoom can print it too.
@@ -230,9 +295,6 @@ static func describe_effect(effect: Dictionary, card_row: Dictionary) -> String:
 		parts.append(Text.say("card.does_nothing"))
 
 	# Every card answers the question in front of you, whatever else it does.
-	# Cameron spent a draw-1 card expecting it to be free and lost a question
-	# to it, because the only place that rule was written down was inside the
-	# details panel.
 	if bool(effect.get("answers_question", false)):
 		parts.append(Text.say("card.answers_question"))
 

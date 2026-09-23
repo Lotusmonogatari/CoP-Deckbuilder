@@ -1,6 +1,6 @@
 class_name CardBackView
 extends Control
-## A card opened up: Cameron's back frame, with the full text on its grid.
+## A card opened up: the back frame paired with its suit's front template.
 ##
 ## The back is a sheet of writing paper — 原稿用紙 ruling with a 蓮物語
 ## watermark — and everything the front had no room for goes on it: the
@@ -19,7 +19,15 @@ extends Control
 ## it, which costs a little wrapping code and buys exact registration: the
 ## title can be twice the size of the body and nothing under it moves.
 
-const FRAME_BACK := preload("res://assets/cards/frame_back_shoji.png")
+const FRAME_BACK_BY_SUIT: Dictionary = {
+	"Earnest": preload("res://assets/cards/back_sumo.png"),
+	"Emotional": preload("res://assets/cards/back_sakura.png"),
+	"Appeal": preload("res://assets/cards/back_ukiyoe.png"),
+	"Data Driven": preload("res://assets/cards/frame_back_shoji.png"),
+	"Divisive": preload("res://assets/cards/back_castle.png"),
+	"Duplicitous": preload("res://assets/cards/back_ninja.png"),
+}
+const CARD_FONT: FontFile = preload("res://assets/fonts/AntakaBrushDisplay-Regular.ttf")
 const ASPECT := 1429.0 / 2000.0
 
 ## The ruled grid, measured off the PNG rather than guessed. Its rules run
@@ -32,6 +40,7 @@ const RULES_DEEP := 10        # whole cells between the first rule and the last
 ## text is inset from both so a long romaji name cannot run out over it.
 const TEXT_LEFT := 0.070
 const TEXT_WIDTH := 0.860
+const TEXT_VEIL_RECT := Rect2(0.055, 0.085, 0.890, 0.750)
 
 const INK := Color(0.16, 0.13, 0.10)
 ## For the line that says what the room is doing, which is commentary rather
@@ -64,12 +73,38 @@ func _build() -> void:
 		return
 
 	_frame = TextureRect.new()
-	_frame.texture = FRAME_BACK
+	_frame.texture = FRAME_BACK_BY_SUIT["Data Driven"]
 	_frame.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_frame.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_frame.stretch_mode = TextureRect.STRETCH_SCALE
 	_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_frame)
+
+	# Nested rounded layers create a soft veil: more transparent at the edges,
+	# stronger behind the text. The neutral light tone keeps the dark lettering
+	# readable across templates with very different colors and ornament.
+	var veil_layers: Array[Dictionary] = [
+		{"inset": 0.000, "alpha": 0.04},
+		{"inset": 0.003, "alpha": 0.05},
+		{"inset": 0.006, "alpha": 0.07},
+		{"inset": 0.009, "alpha": 0.10},
+		{"inset": 0.012, "alpha": 0.14},
+		{"inset": 0.015, "alpha": 0.19},
+		{"inset": 0.018, "alpha": 0.25},
+		{"inset": 0.021, "alpha": 0.34},
+	]
+	for layer: Dictionary in veil_layers:
+		var inset := float(layer["inset"])
+		var inset_vector := Vector2(inset, inset)
+		var veil := Panel.new()
+		CardView.place(veil, Rect2(
+			TEXT_VEIL_RECT.position + inset_vector,
+			TEXT_VEIL_RECT.size - inset_vector * 2.0))
+		var veil_style := StyleBoxFlat.new()
+		veil_style.bg_color = Color(0.91, 0.90, 0.87, float(layer["alpha"]))
+		veil_style.set_corner_radius_all(22)
+		veil.add_theme_stylebox_override("panel", veil_style)
+		add_child(veil)
 
 	for i: int in RULES_DEEP:
 		var cell := Label.new()
@@ -77,6 +112,7 @@ func _build() -> void:
 			TEXT_LEFT, RULE_TOP + i * RULE_PITCH, TEXT_WIDTH, RULE_PITCH))
 		cell.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		cell.add_theme_color_override("font_color", INK)
+		cell.add_theme_font_override("font", CARD_FONT)
 		# A line that somehow still will not fit is trimmed rather than
 		# allowed to run out over the border.
 		cell.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -97,14 +133,15 @@ func show_card(card: Dictionary, here: String, room: String) -> void:
 	_build()
 
 	var suit := str(card.get("suit", ""))
+	_frame.texture = FRAME_BACK_BY_SUIT.get(
+		suit, FRAME_BACK_BY_SUIT["Data Driven"])
 
 	_lines = []
 	_write(str(card.get("name_en", "")), TITLE_SCALE, INK)
 
 	var jp := str(card.get("name_jp", ""))
-	var romaji := str(card.get("romaji", ""))
 	if not jp.is_empty():
-		_write("%s  %s" % [jp, romaji], BODY_SCALE, FAINT_INK)
+		_write(jp, BODY_SCALE, FAINT_INK)
 
 	_write(Text.say("card.line", {
 		"suit": suit,
