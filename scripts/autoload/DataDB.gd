@@ -511,9 +511,18 @@ func _intent_pattern_from_ranges(opponent: Dictionary) -> Array:
 	return pattern
 
 
-## Whether a stage plays the per-member committee model. See
-## COMMITTEE_STAGE_IDS for which ones, and why this is a fixed list.
+## Whether a stage plays the per-member committee model. A stage_id whose
+## own stages.json row declares "bar_model": "committee" is trusted first —
+## same rule BattleEngine.is_committee_stage() follows, kept in step for the
+## reason its own comment gives. COMMITTEE_STAGE_IDS is only the fallback for
+## a row with no bar_model column, which is every canon row today.
 func is_committee_stage(stage_id: String) -> bool:
+	# "bar_model" is an explicit JSON null on a row that doesn't set it, not
+	# an absent key (see BarModel.for_stage()'s own note on why str(null) is
+	# checked for before str()-casting).
+	var declared: Variant = get_stage(stage_id).get("bar_model")
+	if declared != null and not str(declared).is_empty():
+		return str(declared) == "committee"
 	return COMMITTEE_STAGE_IDS.has(stage_id)
 
 

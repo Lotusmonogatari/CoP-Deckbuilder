@@ -278,6 +278,15 @@ SHEETS = {
         "out": "stages.json",
         "key": "stage_id",
         "id_pattern": r"^ST\d+$",
+        # 2026-09-24: the "living rules set" columns proposed in
+        # design/proposals/stage_rules_columns.md. Not in the workbook yet —
+        # optional so their absence is a warning, not an error — but the
+        # engine already reads every one of them where a stage carries it,
+        # falling back to its old hardcoded behaviour where it does not.
+        "optional": [
+            "Bar Model", "Energy Mode", "Energy Pool", "Sequence Mode",
+            "Opponent Count", "Question Pool", "Reputation Affects Start",
+        ],
         "columns": [
             ("Stage ID", "stage_id", "id"),
             ("Stage (EN)", "name_en", "str"),
@@ -315,6 +324,17 @@ SHEETS = {
             ("Loss ΔReputation", "loss_delta_reputation", "int"),
             ("Loss ΔXP", "loss_delta_xp", "int"),
             ("Loss ΔParty support", "loss_delta_party_support", "int"),
+            # See design/proposals/stage_rules_columns.md for what each of
+            # these replaces and the full default table for every existing
+            # stage. Blank on a row is a deliberate "use the old hardcoded
+            # rule for this one" — not an error.
+            ("Bar Model", "bar_model", "str"),
+            ("Energy Mode", "energy_mode", "str"),
+            ("Energy Pool", "energy_pool", "int"),
+            ("Sequence Mode", "sequence_mode", "str"),
+            ("Opponent Count", "opponent_count", "range"),
+            ("Question Pool", "question_pool", "str"),
+            ("Reputation Affects Start", "reputation_affects_start", "str"),
         ],
     },
     "Cards": {

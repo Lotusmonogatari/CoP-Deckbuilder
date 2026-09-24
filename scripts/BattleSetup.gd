@@ -86,8 +86,7 @@ static func expand_level(level: Dictionary) -> Dictionary:
 				else [])
 			stage["committee_members"] = committee["members"]
 		else:
-			var opponent := _opponent_for(level_id, stage_id, slot)
-			stage["opponents"] = [opponent] if not opponent.is_empty() else []
+			stage["opponents"] = _opponents_for(level_id, stage_id, slot, _opponent_count(stage))
 			stage["committee_members"] = []
 
 		stages.append(stage)
@@ -143,6 +142,57 @@ static func _opponent_for(level_id: String, stage_id: String, slot: int) -> Dict
 	if not pinned.is_empty():
 		return pinned
 	return eligible[0] if not eligible.is_empty() else {}
+
+
+## How many opponents a non-committee stage fights, from its own
+## "opponent_count" range column (a proposed stages.json addition, the same
+## "min-max" range-string convention as Levels' bonus-win columns — exported
+## as {"min","max"} or null). No column, or a range that only ever rolls 1,
+## is the same single-opponent stage every canon row plays today; the roll
+## itself is unseeded, matching how every other range in the game (a level's
+## bonus_win_range_*, GameState._roll_range()) is already rolled.
+static func _opponent_count(stage: Dictionary) -> int:
+	var declared: Variant = stage.get("opponent_count")
+	if not (declared is Dictionary) or not (declared as Dictionary).has("min"):
+		return 1
+	var low := int((declared as Dictionary)["min"])
+	var high := int((declared as Dictionary)["max"])
+	if high <= low:
+		return maxi(low, 1)
+	return randi_range(low, high)
+
+
+## `count` opponents for a non-committee stage whose "opponent_count" calls
+## for more than one, in sequence — what CARRIES OVER between them (energy,
+## hand, gaffe, or a fresh start each time) is a separate question, answered
+## entirely by the stage's own "sequence_mode" (BattleEngine._sequence_mode);
+## this function only decides WHO is in the sequence. Same dynamic-by-default
+## rule as _opponent_for(): a pin fills the first slot, lowest opp_id among
+## the rest of the eligible pool fills however many more are needed. A stage
+## whose eligible pool is smaller than its own opponent_count plays with
+## whoever exists rather than failing setup outright — BattleEngine already
+## reports "a committee stage needs its members" style problems for an empty
+## list, and an empty one here does the same through has_more_opponents().
+static func _opponents_for(level_id: String, stage_id: String, slot: int, count: int) -> Array:
+	if count <= 1:
+		var opponent := _opponent_for(level_id, stage_id, slot)
+		return [opponent] if not opponent.is_empty() else []
+
+	var eligible := eligible_opponents(stage_id)
+	var chosen: Array = []
+
+	var pinned := _resolve_pin(level_id, stage_id, slot)
+	if not pinned.is_empty():
+		chosen.append(pinned)
+
+	for candidate: Dictionary in eligible:
+		if chosen.size() >= count:
+			break
+		if not pinned.is_empty() and str(candidate.get("opp_id", "")) == str(pinned.get("opp_id", "")):
+			continue
+		chosen.append(candidate)
+
+	return chosen
 
 
 ## The committee roster and chair for a committee stage: { chair, members }.
@@ -221,6 +271,36 @@ const QUESTION_POOL_BY_STAGE := {
 	"ST21": "policy_study",
 }
 
+## The fallback for _reputation_affects_start() below, for a stage row with
+## no "reputation_affects_start" column of its own — every canon row today.
+const REPUTATION_START_STAGE_IDS := ["ST04", "ST06"]
+
+
+## Whether Reputation nudges this stage's opening bar. Checks the stage's own
+## "reputation_affects_start" (Yes/No, from a proposed stages.json column)
+## first; REPUTATION_START_STAGE_IDS is the fallback.
+## Which of data/questions.json's five pools a stage draws from: its own
+## "type" (the hand-written playtest vocabulary) if set, else its own
+## "question_pool" column (a proposed stages.json addition) if set, else
+## QUESTION_POOL_BY_STAGE's fallback for a canon row with neither.
+static func _question_pool_name(stage: Dictionary, stage_id: String) -> String:
+	var type_value: Variant = stage.get("type")
+	if type_value != null and not str(type_value).is_empty():
+		return str(type_value)
+	var pool_value: Variant = stage.get("question_pool")
+	if pool_value != null and not str(pool_value).is_empty():
+		return str(pool_value)
+	return str(QUESTION_POOL_BY_STAGE.get(stage_id, ""))
+
+
+static func _reputation_affects_start(stage: Dictionary, stage_id: String) -> bool:
+	var raw: Variant = stage.get("reputation_affects_start")
+	if raw != null:
+		var declared := str(raw).strip_edges()
+		if not declared.is_empty():
+			return declared.to_lower() == "yes"
+	return REPUTATION_START_STAGE_IDS.has(stage_id)
+
 
 ## Builds a battle from one stage — a canon stages.json row, whether it
 ## arrived via a level's expand_level() (with "opponents"/"committee_members"
@@ -248,7 +328,7 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 	# Reputation opens a press stage for or against the player — the same
 	# effect from_row() used to apply for the workbook's module route, now
 	# folded in here since a level's expanded stages are real ST04/ST06 rows.
-	if stage_id in ["ST04", "ST06"]:
+	if _reputation_affects_start(stage, stage_id):
 		start_adjustment += MetaRules.press_start_adjustment(
 			int(meta.get("Reputation", 50)), DataDB.sanban)
 
@@ -266,9 +346,10 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		"meta": meta,
 		# The questions this kind of room can ask. The engine deals from it
 		# with the battle's own seed, and only where the stage has not
-		# written its own questions out longhand.
-		"question_pool": DataDB.questions.get(
-			str(stage.get("type", QUESTION_POOL_BY_STAGE.get(stage_id, ""))), []),
+		# written its own questions out longhand. A stage's own type or
+		# "question_pool" column (a proposed stages.json addition) wins;
+		# QUESTION_POOL_BY_STAGE is the fallback for a canon row with neither.
+		"question_pool": DataDB.questions.get(_question_pool_name(stage, stage_id), []),
 		"deck": player_deck(),
 		# A good caucus earlier in the level starts this stage ahead, and so
 		# does an organisation whose backing you have bought (STAGE_START_BONUS).

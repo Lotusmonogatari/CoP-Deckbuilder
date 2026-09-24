@@ -43,6 +43,30 @@ const COMMITTEE_STAGE_IDS := [
 	"ST17", "ST18",
 ]
 
+## True for a committee stage. A STAGE THAT SAYS WHAT IT WANTS GETS IT, same
+## rule BarModel.for_stage() already follows for bar_model "single"/
+## "survival"/"shared_pool" — a "committee" value here is checked first, and
+## only a stage with none at all (every canon row today) falls back to
+## COMMITTEE_STAGE_IDS above. Kept in step with DataDB.is_committee_stage(),
+## which makes the same check for the same reason (rules code cannot read
+## DataDB, so the fallback list has to be duplicated; the data-driven path
+## does not).
+## A string field that may be an explicit JSON null (stages.json's optional
+## "living rules" columns, 2026-09-24 — every canon row carries the key even
+## where it is blank) rather than genuinely absent. str(null) is the literal
+## text "<null>", not "", so the null has to be caught before the str() cast
+## or a blank cell stops looking blank and a default never applies.
+static func _string_field(stage: Dictionary, key: String, fallback: String) -> String:
+	var value: Variant = stage.get(key)
+	return str(value) if value != null else fallback
+
+
+static func is_committee_stage(stage: Dictionary) -> bool:
+	var declared: Variant = stage.get("bar_model")
+	if declared != null and not str(declared).is_empty():
+		return str(declared) == "committee"
+	return COMMITTEE_STAGE_IDS.has(str(stage.get("stage_id", "")))
+
 # --- Everything the engine was given at setup ------------------------------
 var _stage: Dictionary = {}
 var _opponent: Dictionary = {}
@@ -128,7 +152,7 @@ func setup(config: Dictionary) -> bool:
 
 	state = BattleState.new()
 	state.energy_per_turn = int(_stage.get("energy_per_turn", 3))
-	state.energy_mode = str(_stage.get("energy_mode", "per_turn"))
+	state.energy_mode = _string_field(_stage, "energy_mode", "per_turn")
 	state.win_mode = str(_stage.get("win_mode", "threshold"))
 	state.draw_mode = str(_stage.get("draw_mode", "refill"))
 	_questions = _stage.get("questions", [])
@@ -164,7 +188,8 @@ func setup(config: Dictionary) -> bool:
 	# so the player is budgeting across the stage rather than spending a
 	# fresh allowance each turn.
 	if state.energy_mode == "pool":
-		state.energy = int(_stage.get("energy_pool", state.energy_per_turn))
+		var pool: Variant = _stage.get("energy_pool")
+		state.energy = int(pool) if pool != null else state.energy_per_turn
 	else:
 		state.energy = state.energy_per_turn
 	state.energy_max = state.energy
@@ -188,7 +213,7 @@ func _setup_opponent(config: Dictionary) -> void:
 	_opponents = config.get("opponents", [])
 	if _opponents.is_empty():
 		_opponents = [_opponent] if not _opponent.is_empty() else []
-	_sequence_mode = str(_stage.get("sequence_mode", "single"))
+	_sequence_mode = _string_field(_stage, "sequence_mode", "single")
 
 	if _opponents.is_empty():
 		# A press conference has no opponent: the reporters' questions are
@@ -235,7 +260,7 @@ func _arm_intents(config: Dictionary = {}) -> void:
 func _setup_board(config: Dictionary) -> void:
 	var members: Array = config.get("committee_members", [])
 
-	if COMMITTEE_STAGE_IDS.has(str(_stage.get("stage_id", ""))):
+	if is_committee_stage(_stage):
 		if members.is_empty():
 			setup_problems.append("a committee stage needs its members, and none were given")
 			return
