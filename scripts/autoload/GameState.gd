@@ -6,22 +6,31 @@ extends Node
 ## This is the campaign's memory. It is deliberately separate from the rules
 ## engine, which is the maths of a single battle and remembers nothing.
 ##
-## STILL PARTLY A PLACEHOLDER. Saving to disk and the deck arrive at milestone
-## M4. The meta-variables now live here, but only the press conference moves
-## them so far — the stage win deltas in the workbook are still unwired.
+## Everything here is written to disk by SaveManager (to_save() and
+## load_save() below), so quitting and reopening carries on the same run.
+## A battle itself is not saved: reopening mid-stage starts that stage again.
+
+## Which of the four protagonists (data/player.json) this run is played as.
+var protagonist_id: String = ""
+
+## True from boot until a protagonist is chosen, when there was no save to
+## load. The Office opens the New Game screen while it is set. SaveManager
+## sets it; tests and the editor never do, so they start as the default.
+var awaiting_new_game := false
+
+## True while a stage is being fought. A save is not taken then — the last
+## one, from the stage boundary, is the one to come back to.
+var mid_stage := false
 
 ## The level being played, or null when the player is in the Office.
 var level_runner: LevelRunner = null
 
 ## How the last finished level went: "win", "loss", or empty if none yet.
-## Lives only for this sitting until M4 adds saving.
 var last_level_outcome: String = ""
 
 ## The player's standing: constituency support, reputation, funds and party
 ## support, by the English names sanban.json gives them. Seeded from that
 ## file's starting values and then moved by what happens in a stage.
-##
-## Lives only for this sitting until M4 adds saving.
 var meta: Dictionary = {}
 
 ## What the last finished stage did to those variables, e.g.
@@ -47,8 +56,6 @@ var last_xp_gained := 0
 ##
 ## `owned_modifiers` is the organisations' backing bought with Funds. Held
 ## for the run rather than the level, like standing.
-##
-## Lives only for this sitting until M4 adds saving.
 var owned_cards: Array[String] = []
 var deck: Array[String] = []
 var owned_modifiers: Array[String] = []
@@ -57,8 +64,6 @@ var owned_modifiers: Array[String] = []
 ## { "SH04": 2 }. Filled by buying in the Office's Supplies shop and by an
 ## Office Hours visitor's reward; emptied one at a time by the Use button in
 ## the Office or during a stage. See design/proposals/inventory.md.
-##
-## Lives only for this sitting until M4 adds saving, same as owned_modifiers.
 var inventory: Dictionary = {}
 
 ## How many of each item have been bought during the current level. An
@@ -83,8 +88,6 @@ var level_bonuses: Dictionary = {}
 ## Where the player stands with each of the ten organisations, by booster ID.
 ## Pleasing one at a press conference raises it, and it is held between
 ## levels — unlike the pleased list, which lasts one level.
-##
-## Lives only for this sitting until M4 adds saving.
 var booster_standing: Dictionary = {}
 
 ## What the last finished level did to those, e.g. { "BO08": 5 }.
@@ -100,8 +103,6 @@ var last_booster_change: Dictionary = {}
 ## stages.json's segment_mix and are unrelated to this. This is the
 ## PERSISTENT sentiment score Staff tier rewards move (Ledger.gd / Staff
 ## section; a reward's SGxx target lands here).
-##
-## Lives only for this sitting until M4 adds saving, same as booster_standing.
 var segment_favorability: Dictionary = {}
 
 ## What the last staff hire/upgrade did to those, e.g. { "SG03": 2 }.
@@ -112,18 +113,12 @@ var last_segment_change: Dictionary = {}
 ## A role with no entry is vacant. There is no "fire" — once a role is
 ## filled it only ever upgrades (see Ledger.gd's Staff section and
 ## hire_staff()/upgrade_staff() below).
-##
-## Lives only for this sitting until M4 adds saving, same as everything else
-## on this page.
 var staff_hired: Dictionary = {}
 
 ## Level IDs the player has paid XP to unlock — only meaningful once
 ## rules.json's "level_gating_enabled" is true. A level whose relevant
 ## unlock_cost_* is already 0 does not need an entry here to be playable; see
 ## Ledger.is_level_unlocked().
-##
-## Lives only for this sitting until M4 adds saving, same as everything else
-## on this page.
 var levels_unlocked: Array[String] = []
 
 ## How many levels have been FINISHED so far this sitting — win or loss both
@@ -141,9 +136,76 @@ var level_last_completed_at: Dictionary = {}
 
 
 func _ready() -> void:
+	protagonist_id = str(DataDB.player.get("player_id", ""))
 	reset_meta()
 	reset_booster_standing()
 	reset_segment_favorability()
+
+
+## A fresh run as `player_id`: every number back to its start. False, and
+## nothing changes, when there is no such protagonist.
+func start_new_run(player_id: String) -> bool:
+	if not DataDB.use_protagonist(player_id):
+		return false
+	protagonist_id = player_id
+	level_runner = null
+	last_level_outcome = ""
+	mid_stage = false
+	reset_meta()
+	reset_booster_standing()
+	reset_segment_favorability()
+	awaiting_new_game = false
+	return true
+
+
+# ---------------------------------------------------------------------------
+# Saving
+# ---------------------------------------------------------------------------
+# One list of what a run is, used both ways, so a field added to the run and
+# forgotten here is forgotten in both directions and caught by the round-trip
+# test rather than half-saved.
+
+const _SAVED_FIELDS := [
+	"protagonist_id", "last_level_outcome", "meta", "xp",
+	"owned_cards", "deck", "owned_modifiers",
+	"inventory", "shop_bought_this_level",
+	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
+	"booster_standing", "segment_favorability", "staff_hired",
+	"levels_unlocked", "levels_completed_count", "level_last_completed_at",
+]
+
+
+## The run, as plain data.
+func to_save() -> Dictionary:
+	var saved := {}
+	for field: String in _SAVED_FIELDS:
+		var value: Variant = get(field)
+		saved[field] = value.duplicate(true) if (value is Dictionary or value is Array) else value
+	saved["level_runner"] = level_runner.snapshot() if level_runner != null else null
+	return saved
+
+
+## Puts a run from to_save() back. A field the save lacks (one written by an
+## older build) keeps its fresh-run value rather than failing the load.
+func load_save(saved: Dictionary) -> void:
+	var player_id := str(saved.get("protagonist_id", protagonist_id))
+	if not start_new_run(player_id):
+		start_new_run(str(DataDB.player.get("player_id", "")))
+
+	for field: String in _SAVED_FIELDS:
+		if not saved.has(field) or field == "protagonist_id":
+			continue
+		var current: Variant = get(field)
+		var value: Variant = saved[field]
+		if current is Array and value is Array:
+			(current as Array).assign(value)   # keeps Array[String] typed
+		elif typeof(current) == typeof(value):
+			set(field, value)
+
+	var runner: Variant = saved.get("level_runner")
+	level_runner = LevelRunner.restored(runner) if runner is Dictionary else null
+	if level_runner != null and level_runner.is_finished():
+		level_runner = null
 
 
 ## Back to the starting standing in sanban.json.
@@ -369,6 +431,7 @@ func reset_segment_favorability() -> void:
 ## Called by the Office when the player starts a level.
 func begin_level(runner: LevelRunner) -> void:
 	level_runner = runner
+	mid_stage = false
 	last_level_outcome = ""
 	last_meta_change = {}
 	last_xp_gained = 0
@@ -387,6 +450,7 @@ func is_in_level() -> bool:
 ## Records how a stage went and moves the level on. Returns true when the
 ## level is now over, which is the battle screen's cue to head back.
 func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool:
+	mid_stage = false
 	if level_runner == null:
 		return true
 
@@ -416,7 +480,9 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 		if last_level_outcome == LevelRunner.WON:
 			_pay_level_rewards()
 			_apply_level_bonus_win(level_runner.level)
+		SaveManager.autosave()
 		return true
+	SaveManager.autosave()
 	return false
 
 

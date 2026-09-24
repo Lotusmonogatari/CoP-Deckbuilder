@@ -82,6 +82,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     echo ">> FAILED: an item could not be bought or used with real clicks."
     failures=$((failures + 1))
   fi
+
+  # And New Game: the first-launch picker, and starting over.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/new_game_test.tscn; then
+    echo ">> FAILED: a protagonist could not be chosen with real clicks."
+    failures=$((failures + 1))
+  fi
 else
   echo ">> SKIPPED: xvfb-run is not installed, so buttons were not clicked."
   echo "   On Debian or Ubuntu: sudo apt-get install xvfb"

@@ -124,7 +124,7 @@ function showOffice() {
   head.append(el('p', 'jp', '陳情'));
   root.append(head);
 
-  root.append(placeholderArt('PROTAGONIST', '148px'));
+  root.append(placeholderArt(player.player_id, '148px'));
 
   const report = el('p', 'office-report', lastLevelReport());
   root.append(report);

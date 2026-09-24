@@ -34,7 +34,7 @@ const DATA_PATH := "res://data/"
 ## Cameron name a specific opponent for a specific level+stage slot, for the
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
-	"affinity", "balance", "bills", "booster_standing", "boosters", "cards",
+	"affinity", "art", "balance", "bills", "booster_standing", "boosters", "cards",
 	"journalists", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
@@ -128,9 +128,17 @@ var playtest_level: Dictionary = {}
 ## per-level data — is declared above, alongside level_opponent_overrides.)
 var stage_types: Dictionary = {}
 
-## Who the player is. Hand-written; a placeholder until the protagonist is
-## cast for real.
+## Who the player is: the protagonist in play, one row of `protagonists`.
+## Hand-written placeholders until the cast is decided (data/player.json).
+## Switched by use_protagonist(), which GameState calls at New Game and on
+## loading a save.
 var player: Dictionary = {}
+
+## Every main character the player can choose, in data/player.json's order.
+var protagonists: Array = []
+
+## Where art lives and what it is called (data/art.json). ArtLoader reads it.
+var art: Dictionary = {}
 
 ## The press pack, hand-written. They ask the questions at a press
 ## conference; they do not take turns.
@@ -222,6 +230,7 @@ func load_all() -> void:
 			"bills": bills = content
 			"sanban": sanban = content
 			"affinity": affinity = content
+			"art": art = content if content is Dictionary else {}
 			"staff": staff = content
 			"balance": balance = content
 			"lists": lists = content
@@ -237,7 +246,7 @@ func load_all() -> void:
 			"level_visitor_overrides":
 				level_visitor_overrides = _list_under(content, file_name, "overrides")
 			"stage_types": stage_types = _map_under(content, file_name, "types")
-			"player": player = content
+			"player": _load_protagonists(content)
 
 			"journalists": journalists = _list_under(content, file_name, "journalists")
 			"strings": strings = _strings_by_key(content)
@@ -289,7 +298,11 @@ func _fill_name_tokens() -> void:
 	for stage: Variant in playtest_level.get("stages", []):
 		if typeof(stage) != TYPE_DICTIONARY:
 			continue
-		var name_en := str(stage.get("name_en", ""))
+		# The unfilled name is kept, so choosing a different protagonist
+		# refills it with the new party instead of finding the token gone.
+		if not stage.has("_name_template"):
+			stage["_name_template"] = str(stage.get("name_en", ""))
+		var name_en := str(stage["_name_template"])
 		if not name_en.contains("{party}"):
 			continue
 		if party.is_empty():
@@ -299,6 +312,39 @@ func _fill_name_tokens() -> void:
 				.replace("{party}", "").strip_edges())
 		else:
 			stage["name_en"] = name_en.replace("{party}", party)
+
+
+# ---------------------------------------------------------------------------
+# The protagonist
+# ---------------------------------------------------------------------------
+
+func _load_protagonists(content: Variant) -> void:
+	protagonists = _list_under(content, "player", "protagonists")
+	var default_id := ""
+	if content is Dictionary:
+		default_id = str((content as Dictionary).get("default_protagonist", ""))
+	player = get_protagonist(default_id)
+	if player.is_empty() and not protagonists.is_empty():
+		player = protagonists[0]
+
+
+## One protagonist by ID, or an empty dictionary.
+func get_protagonist(player_id: String) -> Dictionary:
+	for entry: Variant in protagonists:
+		if entry is Dictionary and str((entry as Dictionary).get("player_id", "")) == player_id:
+			return entry
+	return {}
+
+
+## Makes `player_id` the protagonist in play. False, and nothing changes,
+## when there is no such protagonist.
+func use_protagonist(player_id: String) -> bool:
+	var chosen := get_protagonist(player_id)
+	if chosen.is_empty():
+		return false
+	player = chosen
+	_fill_name_tokens()
+	return true
 
 
 # ---------------------------------------------------------------------------
@@ -786,6 +832,8 @@ func _validate() -> void:
 	var opp_ids := _values(opponents, "opp_id")
 	var topic_ids := _values(yoron, "topic_id")
 
+	_validate_protagonists()
+
 	for card: Dictionary in cards:
 		var cid: String = str(card.get("card_id"))
 		if not suit_names.has(card.get("suit")):
@@ -1017,6 +1065,21 @@ func _validate() -> void:
 ## A single target_delta_list entry (a Visitor's Reward or Penalty column) —
 ## its target must match a known ID prefix (RewardTargets.gd) AND actually
 ## exist, or the reward silently does nothing the moment a player earns it.
+func _validate_protagonists() -> void:
+	if protagonists.is_empty():
+		errors.append("player.json has no protagonists")
+		return
+	var seen: Array[String] = []
+	for entry: Variant in protagonists:
+		var player_id := str((entry as Dictionary).get("player_id", "")) if entry is Dictionary else ""
+		if player_id.is_empty():
+			errors.append("a protagonist in player.json has no player_id")
+		elif seen.has(player_id):
+			errors.append("player.json lists protagonist %s twice" % player_id)
+		else:
+			seen.append(player_id)
+
+
 func _validate_reward_target(owner_id: String, column: String, entry: Dictionary) -> void:
 	# A pool ("BO01|BO02 +1") is checked member by member: every one of them
 	# has to be real, since any one of them can be the one picked.

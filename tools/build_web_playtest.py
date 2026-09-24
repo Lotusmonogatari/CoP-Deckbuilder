@@ -129,6 +129,20 @@ def fill_name_tokens(level: dict, player: dict) -> dict:
     return level
 
 
+def default_protagonist(player_file: dict) -> dict:
+    """player.json lists four protagonists; the page plays as the default one.
+
+    The page has no New Game screen, so it is always whoever
+    default_protagonist names - the same one the Godot build starts as.
+    """
+    protagonists = player_file.get("protagonists", [])
+    wanted = player_file.get("default_protagonist", "")
+    for entry in protagonists:
+        if entry.get("player_id") == wanted:
+            return entry
+    return protagonists[0] if protagonists else {}
+
+
 def _intent_pattern_from_ranges(opponent: dict) -> list:
     """The [verb, low, high] pattern IntentRunner wants, off one opponent's
     three intent_*_range columns.
@@ -315,6 +329,7 @@ def resolve_workbook_levels(levels: list, stages: list, opponents: list,
 
 def build_data() -> dict:
     raw = {name: read_json(name) for name in NEEDED}
+    raw["player"] = default_protagonist(raw["player"])
 
     cards = list(raw["cards"])
     # Hand-written playtest cards are appended to the workbook's, exactly as

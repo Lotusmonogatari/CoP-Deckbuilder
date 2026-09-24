@@ -1713,5 +1713,68 @@
     "english": "{name}  —  choose a group",
     "placeholders": "name",
     "notes": "Shown instead of the ordinary pop-up when the Shop tab's Player Choice cell for this item is Yes."
+  },
+  {
+    "key": "office.resume_level",
+    "where": "Office, Start button, when a saved run stopped partway through a level",
+    "english": "Resume level",
+    "placeholders": null,
+    "notes": "Takes the player straight back into the level they were playing, at the stage they had reached."
+  },
+  {
+    "key": "office.new_game",
+    "where": "Office Management, button; and the heading of the warning it opens",
+    "english": "New game",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.new_game_warning",
+    "where": "New game, the warning before the run is thrown away",
+    "english": "Starting a new game ends this run. Your standing, cards, staff and items all go back to the start.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.new_game_confirm",
+    "where": "New game warning, confirm button",
+    "english": "Start over",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.new_game_started",
+    "where": "Office report line, after a protagonist is chosen",
+    "english": "A new run begins. Welcome to the Office, {name}.",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "new_game.title",
+    "where": "New Game screen heading",
+    "english": "Choose your legislator",
+    "placeholders": null,
+    "notes": "Shown on first launch, and after New game."
+  },
+  {
+    "key": "new_game.blurb",
+    "where": "New Game screen, line under the heading",
+    "english": "Who are you in Parliament? You play the whole run as the one you choose.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "new_game.no_party",
+    "where": "New Game screen, a protagonist with no party set in player.json",
+    "english": "No party yet",
+    "placeholders": null,
+    "notes": "All four protagonists are placeholders until the cast is decided (data/player.json)."
+  },
+  {
+    "key": "new_game.choose",
+    "where": "New Game screen, button under each protagonist",
+    "english": "Play as {name}",
+    "placeholders": "name",
+    "notes": null
   }
 ]

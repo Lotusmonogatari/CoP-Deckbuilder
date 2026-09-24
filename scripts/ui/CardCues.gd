@@ -16,9 +16,10 @@ extends RefCounted
 ## written yet simply says nothing — the same bargain ArtLoader strikes with
 ## art that has not been drawn.
 
-## The player's constant name in the speech table. Not a character name:
-## who the protagonist is remains open, and CLAUDE.md says not to decide it.
-const SPEAKER := "PROTAGONIST"
+## Who is speaking: the chosen protagonist's ID, which is also their key in
+## sounds.json's speech table.
+static func speaker() -> String:
+	return str(DataDB.player.get("player_id", ""))
 
 
 ## One of the card's lines for this moment: what is said, and the key a

@@ -24,12 +24,16 @@
   "any. It would read:",
   "  \"speech\": { \"OP03\": { \"opening\": \"op03_opening.ogg\" } }",
   "",
-  "2026-09-21: the speech table is now filled in, under PROTAGONIST, with one",
+  "2026-09-21: the speech table is now filled in, under PC01, with one",
   "key per card cue — C01_1 through C54_5, matching the five columns of the",
   "workbook's Flavor Text tab. Every filename is empty, so the game is still",
   "silent; recording a line is writing its filename against the key, and the",
   "battle screen already calls for it at the moment the card is played.",
-  "Opponents' lines go in beside PROTAGONIST under their own opp_id."
+  "Opponents' lines go in beside PC01 under their own opp_id.",
+  "",
+  "Each of the four protagonists (player.json, PC01-PC04) speaks under their",
+  "own ID. Only PC01's table is written out; a protagonist with no table is",
+  "silent, the same as a missing file. Copy PC01's block to start another."
  ],
  "sounds": {
   "card_played": {
@@ -113,7 +117,7 @@
   }
  },
  "speech": {
-  "PROTAGONIST": {
+  "PC01": {
    "C01_1": "",
    "C01_2": "",
    "C01_3": "",

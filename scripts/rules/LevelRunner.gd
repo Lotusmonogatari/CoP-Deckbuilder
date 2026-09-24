@@ -322,6 +322,31 @@ func to_dictionary() -> Dictionary:
 	}
 
 
+## Everything needed to pick this level up again later: the level exactly as
+## it was dealt (its opponents and visitors are drawn at random when it
+## starts, so they are kept rather than drawn again), and how far through it
+## the player is.
+func snapshot() -> Dictionary:
+	var saved := to_dictionary()
+	saved["level"] = level.duplicate(true)
+	return saved
+
+
+## A runner rebuilt from snapshot(). Returns null when the snapshot is not
+## one, so a damaged save falls back to the Office instead of a broken level.
+static func restored(saved: Dictionary) -> LevelRunner:
+	if not (saved.get("level") is Dictionary):
+		return null
+	var runner := LevelRunner.new(saved["level"])
+	if runner.stages.is_empty():
+		return null
+	runner.index = clampi(int(saved.get("index", 0)), 0, runner.stages.size())
+	runner.results = (saved.get("results", {}) as Dictionary).duplicate(true)
+	var outcome := str(saved.get("outcome", ONGOING))
+	runner._outcome = outcome if outcome in [ONGOING, WON, LOST] else ONGOING
+	return runner
+
+
 # ---------------------------------------------------------------------------
 # What a stage is worth
 # ---------------------------------------------------------------------------

@@ -18,13 +18,11 @@ extends PanelContainer
 ## says a stage is over — sets `dismissable` to false and keeps only its own
 ## button.
 
-## THERE IS NO "closed" SIGNAL. There was one, emitted from close() and
-## connected by nobody, while the confirm button bypassed it entirely — so a
-## panel had two ways out that behaved differently for no reason, and a seam
-## that looked wired up but carried nothing. Same rule as EventBus: wiring
-## that nothing uses is worse than no wiring, because it reads as finished.
-## If something needs to know a panel shut, add it back with its listener in
-## the same change.
+## `closed` fires however the panel shuts — Back, escape, a tap outside, or
+## confirm. Its listener is the Office's first-run New Game screen, which
+## must still leave the player as somebody if they back out of choosing.
+## Same rule as EventBus: a signal exists only while something listens.
+signal closed
 
 ## Emitted when the player presses the confirm button, where one was asked
 ## for. A panel that leads somewhere — a briefing before a level — needs a
@@ -46,6 +44,11 @@ var _body: VBoxContainer
 var _title: Label
 var _back: Button
 var _confirm: Button
+
+## Where a press outside the content began, or null. A tap outside closes
+## the panel on the finger lifting, not landing, so a drag that starts in the
+## margin scrolls instead of shutting it.
+var _outside_press: Variant = null
 
 
 func _ready() -> void:
@@ -77,6 +80,7 @@ func _build() -> void:
 	var scroll := ScrollContainer.new()
 	scroll.name = "Scroll"
 	margin.add_child(scroll)
+	DragScroll.attach(scroll)
 
 	var centre := CenterContainer.new()
 	centre.name = "Centre"
@@ -148,6 +152,7 @@ func close() -> void:
 	if not visible:
 		return
 	hide()
+	closed.emit()
 
 
 ## The content's own rectangle, so a caller can tell a tap on the dimmed
@@ -165,7 +170,18 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 
-	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
-		if not content_rect().has_point((event as InputEventMouseButton).position):
+	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+		var where := (event as InputEventMouseButton).position
+		if (event as InputEventMouseButton).pressed:
+			_outside_press = where if not content_rect().has_point(where) else null
+		elif is_tap_outside(_outside_press, where, content_rect()):
+			_outside_press = null
 			close()
 			get_viewport().set_input_as_handled()
+
+
+## True when a press at `pressed_at` (null if it began inside) and a release
+## at `released_at` make one tap outside `content`, rather than a drag.
+static func is_tap_outside(pressed_at: Variant, released_at: Vector2, content: Rect2) -> bool:
+	return pressed_at is Vector2 and not content.has_point(released_at) \
+		and (pressed_at as Vector2).distance_to(released_at) < DragScroll.DRAG_START

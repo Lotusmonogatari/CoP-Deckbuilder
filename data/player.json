@@ -1,23 +1,64 @@
 {
   "_README": [
-    "Who the player is.",
+    "Who the player can be. Four main characters, one chosen at New Game.",
     "",
     "WRITTEN BY HAND, like rules.json and playtest_level.json. export_data.py",
     "never overwrites it and the canon workbook has no tab for it.",
     "",
-    "PLACEHOLDER, chosen by Cameron as a temporary stand-in so the screens",
-    "have a name to show. CLAUDE.md still lists the protagonist's identity",
-    "and party as an open decision, and the workbook's README tab records it",
-    "as open decisions #2 and #11.",
+    "ALL FOUR ARE PLACEHOLDERS. CLAUDE.md lists the protagonist's identity and",
+    "party as an open decision. PC01 keeps the stand-in Cameron chose earlier",
+    "(Hiro, Frontier Party - Frontier Party is canon, it is OP02 Yuriko",
+    "Mayeda's party). PC02-PC04 are neutral stand-ins with no party, so",
+    "nothing here invents a character or a party. Replace them freely.",
+    "",
+    "FIELDS, per protagonist:",
+    "  player_id   PC01-PC04. Also the art ID and the speech ID:",
+    "              assets/characters/protagonists/PC01_neutral.png, and",
+    "              sounds.json's speech table under \"PC01\".",
+    "  name_en     Shown on the Office and the New Game screen.",
+    "  name_jp     Optional small accent beside it.",
+    "  party       The caucus is this party's caucus ({party} in stage names).",
+    "              Blank means the stage is just called \"Caucus\".",
+    "  blurb       One or two lines for the New Game screen. Blank is fine.",
+    "",
+    "default_protagonist is who you are before anyone has been chosen - the",
+    "tests, and the browser playtest, which has no New Game screen.",
     "",
     "The party matters mechanically later: the workbook note on MOD01 seq 3",
     "says the Caucus rival should be replaced with a same-party opponent once",
-    "the protagonist's party is settled. Frontier Party is canon - it is",
-    "OP02 Yuriko Mayeda's party - so nothing here invents a new one."
+    "the protagonist's party is settled."
   ],
 
-  "player_id": "PROTAGONIST",
-  "name_en": "Hiro",
-  "name_jp": "",
-  "party": "Frontier Party"
+  "default_protagonist": "PC01",
+
+  "protagonists": [
+    {
+      "player_id": "PC01",
+      "name_en": "Hiro",
+      "name_jp": "",
+      "party": "Frontier Party",
+      "blurb": ""
+    },
+    {
+      "player_id": "PC02",
+      "name_en": "Protagonist B",
+      "name_jp": "",
+      "party": "",
+      "blurb": ""
+    },
+    {
+      "player_id": "PC03",
+      "name_en": "Protagonist C",
+      "name_jp": "",
+      "party": "",
+      "blurb": ""
+    },
+    {
+      "player_id": "PC04",
+      "name_en": "Protagonist D",
+      "name_jp": "",
+      "party": "",
+      "blurb": ""
+    }
+  ]
 }

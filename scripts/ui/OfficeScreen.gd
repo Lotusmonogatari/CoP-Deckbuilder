@@ -41,14 +41,21 @@ var _draft_deck: Array[String] = []
 var _inventory_panel: InventoryPanel
 var _supplies_panel: Overlay
 
+## New Game: the warning before a run is thrown away, and the choice of
+## protagonist. Built in code, like the inventory.
+var _new_game_panel: Overlay
+
 
 func _ready() -> void:
-	_start_button.pressed.connect(_show_levels)
+	_start_button.pressed.connect(_on_start_pressed)
 	_briefing_panel.confirmed.connect(_on_start)
 	_deck_panel.confirmed.connect(_on_deck_confirmed)
 	_organisations_button.pressed.connect(_show_organisations)
 	_management_button.pressed.connect(_show_management)
 	_build_inventory()
+	_new_game_panel = Overlay.new()
+	_new_game_panel.name = "NewGamePanel"
+	add_child(_new_game_panel)
 
 	# The Office's own bed. Silent until there is a file named against
 	# music_office in sounds.json; this is here so that adding one is the
@@ -56,6 +63,12 @@ func _ready() -> void:
 	Audio.play_music("music_office")
 
 	_build()
+
+	# No save to come back to: a new player chooses who they are first.
+	if GameState.awaiting_new_game:
+		_show_new_game(true)
+	else:
+		SaveManager.autosave()
 
 
 func _build() -> void:
@@ -78,10 +91,13 @@ func _build() -> void:
 	if _portrait is PlaceholderArt:
 		var art := _portrait as PlaceholderArt
 		art.kind = PlaceholderArt.Kind.CHARACTER
-		art.art_id = "PROTAGONIST"
+		art.art_id = str(player.get("player_id", ""))
 		art.expression = "neutral"
 
-	_start_button.text = Text.say("office.choose_level")
+	# A save taken between the stages of a level comes back here, and the
+	# button goes straight back into that level rather than choosing another.
+	_start_button.text = Text.say(
+		"office.resume_level" if GameState.is_in_level() else "office.choose_level")
 	_report.text = _last_level_report()
 	_refresh_resources()
 
@@ -152,6 +168,7 @@ func _show_management() -> void:
 		[Text.say("office.backing"), _show_backing],
 		[Text.say("office.staff"), _show_staff],
 		[Text.say("shop.supplies"), _show_supplies],
+		[Text.say("office.new_game"), _confirm_new_game],
 	]:
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(0, 100)
@@ -296,7 +313,95 @@ func _after_spending(refusal: String, reopen: Callable) -> void:
 		_report.text = refusal
 		return
 	_refresh_resources()
+	SaveManager.autosave()
 	reopen.call()
+
+
+# ---------------------------------------------------------------------------
+# New game, and who you are
+# ---------------------------------------------------------------------------
+
+## Starting over throws the run away, so it asks first.
+func _confirm_new_game() -> void:
+	_new_game_panel.open(Text.say("office.new_game"),
+		[UiKit.line(Text.say("office.new_game_warning"))],
+		Text.say("office.new_game_confirm"))
+	if not _new_game_panel.confirmed.is_connected(_on_new_game_confirmed):
+		_new_game_panel.confirmed.connect(_on_new_game_confirmed)
+
+
+func _on_new_game_confirmed() -> void:
+	_new_game_panel.confirmed.disconnect(_on_new_game_confirmed)
+	_show_new_game.call_deferred(false)
+
+
+## The four protagonists (data/player.json), each with a portrait and a
+## button. `first_run` is the very first launch: backing out of it still
+## leaves the player as the default protagonist, so there is a run to save.
+func _show_new_game(first_run: bool) -> void:
+	var rows: Array[Control] = [UiKit.line(Text.say("new_game.blurb"))]
+	for protagonist: Dictionary in DataDB.protagonists:
+		rows.append(_protagonist_row(protagonist))
+	_new_game_panel.open(Text.say("new_game.title"), rows)
+	if first_run and not _new_game_panel.closed.is_connected(_on_first_run_closed):
+		_new_game_panel.closed.connect(_on_first_run_closed)
+
+
+func _protagonist_row(protagonist: Dictionary) -> Control:
+	var player_id := str(protagonist.get("player_id", ""))
+	var row := HBoxContainer.new()
+	row.name = "Protagonist_" + player_id
+	row.add_theme_constant_override("separation", 20)
+
+	var portrait := PlaceholderArt.new()
+	portrait.custom_minimum_size = Vector2(200, 260)
+	portrait.kind = PlaceholderArt.Kind.CHARACTER
+	portrait.art_id = player_id
+	row.add_child(portrait)
+
+	var box := UiKit.tight_column()
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(box)
+	var name_line := UiKit.heading(str(protagonist.get("name_en", player_id)))
+	box.add_child(name_line)
+	var name_jp := str(protagonist.get("name_jp", ""))
+	if not name_jp.is_empty():
+		box.add_child(UiKit.line(name_jp, "JapaneseAccent"))
+	var party := str(protagonist.get("party", ""))
+	box.add_child(UiKit.line(party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel"))
+	var blurb := str(protagonist.get("blurb", ""))
+	if not blurb.is_empty():
+		box.add_child(UiKit.line(blurb, "SmallLabel"))
+	for label: Label in box.get_children().filter(func(n: Node) -> bool: return n is Label):
+		label.custom_minimum_size.x = UiKit.LINE_WIDTH - 220.0
+
+	var choose := UiKit.action_button(Text.say("new_game.choose",
+		{"name": protagonist.get("name_en", player_id)}), "", _on_protagonist_chosen.bind(player_id))
+	choose.name = "Choose"
+	box.add_child(choose)
+	return row
+
+
+func _on_protagonist_chosen(player_id: String) -> void:
+	if _new_game_panel.closed.is_connected(_on_first_run_closed):
+		_new_game_panel.closed.disconnect(_on_first_run_closed)
+	_new_game_panel.close()
+	if not GameState.start_new_run(player_id):
+		return
+	SaveManager.autosave()
+	_build()
+	_report.text = Text.say("office.new_game_started",
+		{"name": DataDB.player.get("name_en", player_id)})
+
+
+## Backed out of the first-run choice: play as the default, and save, so the
+## next launch does not ask again from nothing.
+func _on_first_run_closed() -> void:
+	_new_game_panel.closed.disconnect(_on_first_run_closed)
+	if GameState.awaiting_new_game:
+		GameState.start_new_run(str(DataDB.player.get("player_id", "")))
+		SaveManager.autosave()
+		_build()
 
 
 ## The Inventory button beside Office Management, and the two panels it and
@@ -305,7 +410,9 @@ func _build_inventory() -> void:
 	_inventory_panel = InventoryPanel.new()
 	_inventory_panel.name = "InventoryPanel"
 	_inventory_panel.context = Items.OFFICE
-	_inventory_panel.on_used = func(_result: Dictionary) -> void: _refresh_resources()
+	_inventory_panel.on_used = func(_result: Dictionary) -> void:
+		_refresh_resources()
+		SaveManager.autosave()
 	add_child(_inventory_panel)
 
 	_supplies_panel = Overlay.new()
@@ -471,6 +578,7 @@ func _on_deck_confirmed() -> void:
 	if not refusal.is_empty():
 		_report.text = refusal
 	_refresh_resources()
+	SaveManager.autosave()
 
 
 ## The organisations' backing, bought with Funds.
@@ -817,6 +925,15 @@ func _opponents_line(stage: Dictionary) -> String:
 	if names.size() == 1:
 		return "Against %s" % names[0]
 	return "Against %s and %s" % [", ".join(names.slice(0, -1)), names[-1]]
+
+
+## Start: choose a level — or, when a saved run stopped between the stages
+## of one, go straight back into it.
+func _on_start_pressed() -> void:
+	if GameState.is_in_level():
+		get_tree().change_scene_to_file(BATTLE_SCENE)
+		return
+	_show_levels()
 
 
 func _on_start() -> void:
