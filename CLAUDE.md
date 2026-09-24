@@ -1,6 +1,6 @@
 # Coliseum of Parliament — Build Brief for an AI Coding Agent
 
-> **How to use (for Cameron):** Save this file as `CLAUDE.md` in the project root (Claude Code) or paste it into the project instructions (Summer Engine). Put the exported workbook JSON in `/data/`. Then ask the agent to start **Milestone 0** and work one milestone at a time.
+> **How to use:** This file records the game's design constraints and implementation brief. Its milestone and progress notes are historical; use the checked-in code and data to establish current behavior, and see `README.md` for a concise project snapshot.
 
 ---
 
@@ -56,7 +56,12 @@ Expressions for character art: `neutral`, `attacking`, `confident`, `flustered`,
 
 ## 6. Data contract
 
-The design workbook (`CoP_Starter_Card_Stage_Data.xlsx`) has one tab per table. `/tools/export_data.py` converts each tab to `/data/{tab}.json`, an array of objects keyed by snake_case column names.
+The design workbook (`design/CoP_Starter_Card_Stage_Data.xlsx`) is exported by
+`tools/export_data.py`. The exporter maps workbook tabs into JSON files; some
+outputs are objects or nested structures rather than arrays, and some runtime
+files are maintained by hand. Follow the exporter and the `_README` fields in
+the current data files when changing the data contract. The checked-in snapshot
+contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 
 | File | Key | Purpose |
 |---|---|---|
@@ -67,17 +72,16 @@ The design workbook (`CoP_Starter_Card_Stage_Data.xlsx`) has one tab per table. 
 | `stages.json` | stage_id | mode, bar_unit, bar_max, win_threshold, turn_limit, energy_per_turn, hand_size, gaffe_limit, player_start, opp_start, segment mix %, win deltas, xp_reward, signature_rule |
 | `segments.json` | segment_id | Press, Loyalists, Constituents, Donors, Bureaucrats |
 | `modifiers.json` | mod_id | category, trigger_segment, trigger_min_pct, effect, magnitude, kaban_cost, available_to, source_booster |
-| `boosters.json` | booster_id | 10 organizations; tier (Party / Constituency / National); linked modifiers |
-| `opponents.json` | opp_id | name, party, committee, positioning, element_1, element_2, deck sizes. Turn behaviour is an `intent_pattern`; until the workbook carries that column it comes from `intent_patterns.json` |
-| `committee.json` | module + seq | Committee members for a committee stage, with starting stance (For / Undecided / Against) |
+| `boosters.json` | booster_id | Organizations; tier (Party / Constituency / National); linked modifiers |
+| `opponents.json` | opp_id | Opponent data and intent patterns |
 | `yoron.json` | topic_id | Public-opinion topics, 0–100 value |
 | `bills.json` | bill_id | topic_id, direction (+1/−1), difficulty_mod |
-| `modules.json` | module + seq | Ordered stage list per module, with opponent_id, bill_id, difficulty, committee size |
+| `levels.json` | level_id | Workbook-derived level data and ordered stage references |
 | `sanban.json` | variable | Meta-variables with start, min, max, and thresholds. **Four of the names are lookup keys as well as display text** — see §6 |
 | `strings.json` | key | **Every sentence the game says.** From the workbook's Text tab; nothing is typed into a script |
 | `card_cues.json` | card_id | Five spoken lines per card, from the Flavor Text tab |
 | `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit |
-| `rules.json` | flag | **You create this file.** Switches for open design decisions (see §9) |
+| `rules.json`, `stage_types.json`, `player.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |
 
 **Data rules:**
 - **No sentence lives in a script.** Every line the game says is a row in the
@@ -89,7 +93,7 @@ The design workbook (`CoP_Starter_Card_Stage_Data.xlsx`) has one tab per table. 
   "Reputation", "Funds" and "Party support" are shown on screen *and* are how
   the code reaches into `sanban.json` and the run's meta. Renaming one in the
   workbook alone is an **error** at export, naming which files use it.
-- `effect_text` is **display only**. Never parse it. Conditional effects ("doubled if Constituents ≥ 50%") are implemented through a small named-effect registry keyed by a new `special` column. Propose the column and its values to Cameron and let him add them to the workbook.
+- `effect_text` is **display only**. Never parse it. Conditional effects use the structured special-effect fields in the current exported card data.
 - Some workbook cells hold `"varies"` or `"—"`. Treat those as null and resolve them from the module or committee data.
 - On load, `DataDB` validates cross-references (every card suit exists, every module stage and opponent exists, and so on) and prints a readable error report.
 
@@ -131,7 +135,7 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 - **Win:** the bar reaches its threshold, or a committee majority locks For.
 
 ### 7.5 Committee stage
-- Members come from `committee.json`. The committee chair is the module's `opponent_id` and is not a voting tile.
+- Members are selected from opponents eligible for the committee stage. The stage's opponent is the committee chair and is not a voting tile.
 - Each member has a lean from 0 to 100. Undecided members start at 50. An "Against" stance means the member starts **locked Against** **[DEFAULT]**.
 - The player targets one member with each card. `self_plus` and `opp_minus` (after affinity) both add lean to that member **[DEFAULT]**.
 - At lean ≥ 66 the member locks For; at ≤ 33 the member locks Against **[DEFAULT]**.
@@ -139,7 +143,7 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 - Win when locked-For members reach a majority: floor(size ÷ 2) + 1. Lose if a majority is no longer reachable, or at the turn limit.
 
 ### 7.6 Opponent behavior (MVP)
-Opponents use **scripted intent patterns**, not deck AI. Add an `intent_pattern` field per opponent (for example `[["attack",6],["gain",4],["block",5]]`) that cycles in order. Propose default patterns based on each opponent's element pair and ask Cameron to confirm them.
+Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and block ranges are exported with the opponent data. When a pattern is missing, the fallback comes from `data/rules.json`.
 
 ## 8. Meta systems
 
@@ -158,27 +162,19 @@ Opponents use **scripted intent patterns**, not deck AI. Add an `intent_pattern`
 
 ## 9. Open design decisions: implement as switches, do not decide
 
-Create `rules.json` with these flags, set to the listed defaults, and list them in your Milestone 1 report.
+`data/rules.json` holds the current runtime settings. Its values and accepted
+options are authoritative; the table below describes the current settings:
 
-**Built and still set to the defaults**, as of 2026-09-21. Every one is read
-at runtime, so changing the file changes the game with no code edit:
-
-| Flag | Default | Currently | Options |
+| Flag | Current value |
 |---|---|---|---|
-| `turn_limit_outcome` | `"loss"` | `"loss"` | `"loss"`, `"highest_support_wins"`, `"tie_retry"` |
-| `opponent_can_win_by_threshold` | `false` | `false` | `true` / `false` |
-| `opponent_engine` | `"intent_patterns"` | `"intent_patterns"` | `"intent_patterns"`, `"deck_ai"` (not built) |
-| `press_answer_timer` | `false` | `false` | `true` / `false` (seconds value in balance) |
-| `discard_hand_end_of_turn` | `true` | `true` | `true` / `false` |
-
-Three more levers have been added to the same file since, for the same
-reason — each was about to become a number written into a script:
-
-| Flag | Currently | What it does |
-|---|---|---|
-| `pass_energy_penalty` | `1` | Energy lost on the turn after playing nothing |
-| `guard_cap` | `5` | How high the guard bank stacks |
-| `default_intent_pattern` | `attack 1–6 / gain 1–6 / block 0–2` | What an opponent does when the data gives them no pattern |
+| `turn_limit_outcome` | `"loss"` |
+| `opponent_can_win_by_threshold` | `false` |
+| `opponent_engine` | `"intent_patterns"` |
+| `press_answer_timer` | `false` |
+| `discard_hand_end_of_turn` | `true` |
+| `pass_energy_penalty` | `1` |
+| `guard_cap` | `5` |
+| `default_intent_pattern` | attack 1–6 / gain 1–6 / block 0–2 |
 
 ### Still unresolved — ask, don't guess
 
@@ -188,16 +184,14 @@ reason — each was about to become a number written into a script:
   invented — but this is not a casting decision, and the workbook's note on
   MOD01 seq 3 says the Caucus rival should become a same-party opponent once
   the party is settled.
-- **The Yoron topic list and starting values.** Every topic still starts at
-  the neutral 50, so every bill's difficulty works out to **zero** and the
-  whole system currently does nothing. The exporter says so on every run.
+- **The Yoron topic list and starting values.** The eight values in
+  `data/yoron.json` are currently 50 and marked as placeholders; they are not
+  final balance decisions.
 - **Party post titles.**
-- **The `weak_answer_tone_cost` number.** A weak answer costs press tone, per
-  Cameron's rule. The cost is a **placeholder of 1** in `stage_types.json`,
-  chosen only so that a bad answer stings less than the 3 or 5 that declining
-  costs. The right number is a playtest away.
-- **The Theme → organisation mapping.** The workbook's new Question Themes tab
-  maps all 69 themes to one of the ten organisations, with the reasoning for
+- **The `weak_answer_tone_cost` number.** The current value is 1 in
+  `stage_types.json`; the file labels it as a placeholder pending playtesting.
+- **The Theme → organisation mapping.** The workbook's Question Themes tab
+  maps its themes to organizations, with the reasoning for
   each in a Why column. It is a **draft Claude wrote for Cameron to correct**,
   not a decision made on his behalf. Only existing booster IDs are used.
 - **Who asks each question.** The journalists are still Reporter A to Reporter
@@ -225,35 +219,24 @@ Placeholder art: a flat colored rectangle labeled with the asset ID, so missing 
 
 Build **one milestone at a time**. After each one, stop and give Cameron: (a) what you built, in plain English; (b) how to test it (exact clicks); (c) any questions or decisions you need from him.
 
-| # | Milestone | Done when | Status (2026-09-21) |
+| # | Milestone | Done when | Current status |
 |---|---|---|---|
 | M0 | Project setup, `export_data.py`, `DataDB` loading and validation, placeholder art loader, font theme | Every JSON file loads; the validation report is clean or lists readable errors; Japanese renders | **Done** |
-| M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking | **Done** — 469 tests |
+| M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking | **Done** |
 | M2 | Battle UI: Floor debate (ST02) vs OP03 | A full battle is playable to a win or loss on desktop | **Done** |
 | M3 | Committee (ST01) and Party Caucus (ST03) | Both playable using Module 01 data | **Done** |
-| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Part done.** The level runner and meta-variables work; a level plays start to finish. **Auto-save is not built** — `SaveManager` is a stub, so quitting loses the run. Office hours (ST07) and `visitors.json` are not built |
-| M5 | XP checkpoint shop | Unlocks and upgrades persist across the run | **Part done.** The shops, prices, refusals and deck screen work. The economy is switched off for playtesting: `GameState.open_collection` hands over every card, so XP has nothing to buy. Cards have no upgrades — Cameron settled that |
+| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Part done.** The level runner and meta-variable handling exist. Saving and Office Hours visitor events are not implemented. |
+| M5 | XP checkpoint shop | Unlocks and upgrades persist across the run | **Part done.** The shops, prices, refusals, and deck screen exist. The card collection is open for playtesting, so XP does not gate card unlocks. |
 | M6 | Android export test, then iOS | Runs on a real phone in portrait with crisp Japanese text | Not started |
-| Later | Press, Town Hall, TV, Steering Committee, booster UI, details panel polish | Staged separately | **Mostly done ahead of schedule.** Press conference, TV debate, town hall, policy study, media ambush and lobbyist meeting all play. The **Steering Committee (ST08) has no stage type** and needs content before code |
+| Later | Additional room systems and mobile export | Defined as needed | The project includes nine playtest stage types. The conditional Town Hall and Steering Committee triggers are not connected to the level queue; the latter still needs a dedicated stage type and design content. |
 
-### Not on the original list, but built
+### Implemented systems and remaining work
 
-The browser playtest (`web/`), the shoji card frames, booster standing, the
-six playtest levels, scripted intent patterns with ranges, and the audio and
-event seams described in §13.
-
-**Every sentence moved out of the code** (2026-09-21). 200 lines now come from
-the workbook's Text tab, in both builds. `tests/wording_snapshot.json` plus one
-test catches a code change that quietly rewords something; a reword made on
-purpose is recorded with `python3 tools/export_data.py --accept-wording`.
-
-**Cameron's 270 card cues and 100 questions** (2026-09-21). A card says one of
-its five lines when played. Every room that asks questions draws from a pool of
-20 for its kind, seeded, without repeats. A question grades all six suits:
-**S pleases the organisation, M does nothing, W costs press tone**
-(`weak_answer_tone_cost`, a placeholder of 1 awaiting Cameron's number). The
-town hall's 20 are written but not asked — that stage type puts no questions to
-the player today, and giving it some is a design decision.
+The project also contains a browser playtest, booster standing, scripted intent
+patterns, card cues, and a text catalog exported from the workbook. The
+Town Hall question bank exists, but the current Town Hall stage type does not
+ask those questions. The weak-answer tone cost remains a placeholder value of
+1 pending playtesting.
 
 ### §8 systems that are specified but NOT switched on
 
@@ -264,7 +247,7 @@ for a finished feature:
 | Rule | §8 says | Waiting on |
 |---|---|---|
 | Town Hall trigger | Jiban ≤ 15 inserts ST05 | M4's queue machinery |
-| Steering Committee trigger | Party support < 25 inserts ST08 | M4, **and a stage type for ST08** |
+| Steering Committee trigger | Party support < 25 inserts ST08 | M4 and a dedicated `steering_committee` stage type |
 | Funding freeze | Jiban = 0 stops Kaban income | M4 |
 | Party support modifiers | > 75 gives M09, < 50 gives M10 | M4 |
 
@@ -284,9 +267,7 @@ Six of the fifteen modifiers are inert for the same reason, and the shop says
 
 ## 13. The seams that are built but carry nothing
 
-Added 2026-09-21, in the debugging and scaling pass. Three places where the
-wiring is finished and the content is not, so that adding the content is the
-whole job rather than the start of one.
+These systems have working structure while some content remains incomplete.
 
 **The noticeboard.** `EventBus` carries eight signals, and the rule for that
 file is now written into it: *a signal exists only if something emits it.*

@@ -43,7 +43,7 @@ Then open `web/playtest.html`.
 | Which organisation a question's theme belongs to | **Question Themes** | Organisation |
 | How well each suit answers a question | the five question tabs | Earnest … Duplicitous |
 | Anything else on any screen | **Text** | English |
-| A level's blurb and closing lines | `data/levels.json` | `_blurb`, `win_text`, `loss_text` |
+| A level's description | **Levels** worksheet | Level Description |
 | The four standing names | **Sanban** | ask first — see the warning below |
 
 ---
@@ -52,7 +52,7 @@ Then open `web/playtest.html`.
 
 Everything the game says that is not a card, a question or a level line: the
 buttons, the outcome panel, the room brief, the shop refusals, the narration
-after a card lands. 200 lines.
+after a card lands. The Text worksheet is the source for these catalog strings.
 
 | Column | What it is |
 |---|---|
@@ -158,52 +158,38 @@ for it at the right moment.
 A grade that is not S, M or W is an **error** and the export names the
 question.
 
-**Adding a question** is one row. A room draws as many as it needs from the
-whole tab, so a 21st question starts appearing immediately. **How many** a
-room asks is `questions_count` on that stage in `data/levels.json`, not the
-number of rows here.
+**Adding a question** is one row. The current project has 20 questions per
+question worksheet. Adding rows changes the available question pool; it does
+not by itself change how many questions a room asks. Check the current stage
+configuration and code before changing that behavior; this workbook does not
+define a general `questions_count` field.
 
-> The **town hall's** twenty are written but not asked: that stage does not
-> put questions to the player today. Say the word and it will.
+> The **town hall's** question bank is present, but the current Town Hall stage
+> type does not ask those questions.
 
 ---
 
 ## 5 · Who cares about a question — the **Question Themes** tab
 
-69 themes, each mapped to one of the ten organisations. **This mapping is a
-draft I wrote — correct anything that reads wrong.** The **Why** column says
-what the reasoning was, so a bad row should be obvious without reading the
-questions.
+69 themes, each mapped to an existing booster organization. **This mapping is
+a draft for review.** The **Why** column explains the reasoning, so a row can
+be reviewed without reading every related question.
 
-- **Organisation** must be a booster ID that exists (`BO01`–`BO10`). Anything
-  else is an error at export.
+- **Organisation** must be a booster ID that exists in the current workbook.
+  Anything else is an error at export.
 - Change a theme's organisation and every question with that theme follows.
 - A theme with no organisation is a **warning**: answering those well pleases
   nobody.
 
 ---
 
-## 6 · Level blurbs and sign-offs — `data/levels.json`
+## 6 · Level descriptions — the **Levels** worksheet
 
-This is a text file rather than a workbook tab, so open it in any text
-editor. Each level has:
-
-| Field | When it is shown |
-|---|---|
-| `name_en`, `name_jp` | On the level's card in the Office |
-| `_blurb` | On the same card, one line under the name |
-| `win_text` | After the last stage, on a win |
-| `loss_text` | After any stage lost |
-
-There is no written intro: the briefing you see before a level is assembled
-from what the stages actually are, so it cannot promise something the level
-does not do.
-
-Keep the quotes and the commas exactly as they are. Nothing needs to be
-re-exported: the game reads this file directly. Rebuild the browser playtest
-to see it there.
-
-> `LV03` and `LV04` have no `win_text` yet.
+The Levels worksheet contains the canonical level descriptions and stage
+references. `data/levels.json` is generated from that worksheet; do not edit
+the JSON directly. Run the exporter after workbook changes. The currently
+used playtest level has a separate hand-maintained configuration in
+`data/playtest_level.json`.
 
 ---
 
