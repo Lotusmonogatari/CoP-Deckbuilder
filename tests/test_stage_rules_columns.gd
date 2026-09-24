@@ -43,6 +43,21 @@ func test_bar_model_null_falls_back_to_the_old_id_guess() -> void:
 	assert_eq(BarModel.for_stage(ordinary), BarModel.Model.SHARED_POOL)
 
 
+func test_bar_model_reads_are_case_insensitive() -> void:
+	# The proposal doc (design/proposals/stage_rules_columns.md) and the
+	# values actually pasted into the workbook are Capitalized ("Committee",
+	# "Single", "Survival", "Shared_pool") — a spreadsheet editor's natural
+	# way to type a word — while every match against a declared value is a
+	# lowercase literal. Caught once already: without the .to_lower() on the
+	# read side, a Capitalized cell would silently mismatch every time and
+	# fall through to the old ID-based guess forever, making the column
+	# inert the moment anyone actually used it as written.
+	assert_eq(BarModel.for_stage({"stage_id": "ST02", "bar_model": "Survival"}),
+		BarModel.Model.SURVIVAL, "declared Capitalized, same as the workbook, not lowercase")
+	assert_true(BattleEngine.is_committee_stage({"stage_id": "ST21", "bar_model": "Committee"}))
+	assert_false(DataDB.is_committee_stage("ST21"), "sanity: ST21 is not a committee by ID")
+
+
 func test_bar_model_committee_is_recognised_by_declared_value() -> void:
 	# ST21 (Policy Study) is not in COMMITTEE_STAGE_IDS — declaring
 	# bar_model "committee" on it should still be honoured.

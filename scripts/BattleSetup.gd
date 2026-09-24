@@ -289,7 +289,7 @@ static func _question_pool_name(stage: Dictionary, stage_id: String) -> String:
 		return str(type_value)
 	var pool_value: Variant = stage.get("question_pool")
 	if pool_value != null and not str(pool_value).is_empty():
-		return str(pool_value)
+		return str(pool_value).to_lower()
 	return str(QUESTION_POOL_BY_STAGE.get(stage_id, ""))
 
 

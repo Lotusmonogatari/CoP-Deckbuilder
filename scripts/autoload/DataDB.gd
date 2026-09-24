@@ -522,7 +522,7 @@ func is_committee_stage(stage_id: String) -> bool:
 	# checked for before str()-casting).
 	var declared: Variant = get_stage(stage_id).get("bar_model")
 	if declared != null and not str(declared).is_empty():
-		return str(declared) == "committee"
+		return str(declared).to_lower() == "committee"
 	return COMMITTEE_STAGE_IDS.has(stage_id)
 
 

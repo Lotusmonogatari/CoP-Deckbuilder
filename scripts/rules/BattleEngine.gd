@@ -56,15 +56,18 @@ const COMMITTEE_STAGE_IDS := [
 ## where it is blank) rather than genuinely absent. str(null) is the literal
 ## text "<null>", not "", so the null has to be caught before the str() cast
 ## or a blank cell stops looking blank and a default never applies.
+## Lowercased so a workbook cell can read naturally ("Pool", "Continuous")
+## while every comparison against it (state.energy_mode == "pool",
+## _sequence_mode == "reset", etc.) can stay a plain lowercase literal.
 static func _string_field(stage: Dictionary, key: String, fallback: String) -> String:
 	var value: Variant = stage.get(key)
-	return str(value) if value != null else fallback
+	return str(value).to_lower() if value != null else fallback
 
 
 static func is_committee_stage(stage: Dictionary) -> bool:
 	var declared: Variant = stage.get("bar_model")
 	if declared != null and not str(declared).is_empty():
-		return str(declared) == "committee"
+		return str(declared).to_lower() == "committee"
 	return COMMITTEE_STAGE_IDS.has(str(stage.get("stage_id", "")))
 
 # --- Everything the engine was given at setup ------------------------------

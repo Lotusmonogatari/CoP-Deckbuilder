@@ -116,8 +116,10 @@ static func for_stage(stage: Dictionary) -> Model:
 	# row that doesn't set it (2026-09-24's optional-column export), not an
 	# absent key — str(null) is the literal text "<null>", not "", so the
 	# null has to be caught before str() or a blank cell stops looking blank.
+	# Lowercased so a workbook cell can read naturally ("Single", "Committee")
+	# while this match stays a plain lowercase literal.
 	var declared: Variant = stage.get("bar_model")
-	match (str(declared) if declared != null else ""):
+	match (str(declared).to_lower() if declared != null else ""):
 		"single": return Model.SINGLE
 		"survival": return Model.SURVIVAL
 		"shared_pool": return Model.SHARED_POOL
