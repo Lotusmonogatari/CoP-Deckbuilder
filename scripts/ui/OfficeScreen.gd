@@ -133,17 +133,17 @@ func _show_management() -> void:
 	var funds := int(GameState.meta.get("Funds", 0))
 	var size := Ledger.deck_size(DataDB.balance)
 
-	rows.append(_heading_label(Text.say("office.xp", {"count": GameState.xp})))
-	rows.append(_wrapped_label(
+	rows.append(UiKit.heading(Text.say("office.xp", {"count": GameState.xp})))
+	rows.append(UiKit.line(
 		Text.say("office.xp_buys"), "SmallLabel"))
-	rows.append(_heading_label(Text.say("office.funds", {"count": funds})))
-	rows.append(_wrapped_label(
+	rows.append(UiKit.heading(Text.say("office.funds", {"count": funds})))
+	rows.append(UiKit.line(
 		Text.say("office.funds_buys"), "SmallLabel"))
 
 	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance, Text.phrase())
-	rows.append(_heading_label(Text.say("office.deck_count",
+	rows.append(UiKit.heading(Text.say("office.deck_count",
 		{"count": GameState.deck.size(), "size": size})))
-	rows.append(_wrapped_label(
+	rows.append(UiKit.line(
 		Text.say("office.deck_ready") if refusal.is_empty() else refusal, "SmallLabel"))
 
 	for row: Array in [
@@ -172,7 +172,7 @@ func _show_management() -> void:
 func _show_organisations() -> void:
 	var rows: Array[Control] = []
 
-	rows.append(_wrapped_label(Text.say("office.orgs_blurb")))
+	rows.append(UiKit.line(Text.say("office.orgs_blurb")))
 
 	for tier: String in ["Party", "Constituency", "National"]:
 		var in_tier := DataDB.boosters.filter(
@@ -180,7 +180,7 @@ func _show_organisations() -> void:
 		if in_tier.is_empty():
 			continue
 
-		rows.append(_heading_label(tier))
+		rows.append(UiKit.heading(tier))
 		for booster: Dictionary in in_tier:
 			rows.append(_organisation_row(booster))
 
@@ -202,9 +202,8 @@ func _organisation_row(booster: Dictionary) -> Control:
 	if change != 0:
 		line += "  (%+d)" % change
 
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
-	box.add_child(_wrapped_label(line))
+	var box := UiKit.tight_column()
+	box.add_child(UiKit.line(line))
 
 	# 2026-09-22 workbook: boosters.json no longer has a "boosts" summary
 	# column — what an organisation does is the modifiers it links, so that
@@ -216,25 +215,8 @@ func _organisation_row(booster: Dictionary) -> Control:
 		if not modifier.is_empty():
 			names.append(str(modifier.get("name_en", mod_id)))
 	if not names.is_empty():
-		box.add_child(_wrapped_label(", ".join(names), "SmallLabel"))
+		box.add_child(UiKit.line(", ".join(names), "SmallLabel"))
 	return box
-
-
-func _heading_label(text: String) -> Label:
-	var label := Label.new()
-	label.text = text
-	label.theme_type_variation = "HeaderLabel"
-	return label
-
-
-func _wrapped_label(text: String, variation: String = "") -> Label:
-	var label := Label.new()
-	label.text = text
-	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.custom_minimum_size = Vector2(760, 0)
-	if not variation.is_empty():
-		label.theme_type_variation = variation
-	return label
 
 
 # ---------------------------------------------------------------------------
@@ -252,8 +234,8 @@ func _wrapped_label(text: String, variation: String = "") -> Label:
 ## remember why you cannot buy something.
 func _show_cards() -> void:
 	var rows: Array[Control] = []
-	rows.append(_wrapped_label(Text.say("office.cards_blurb")))
-	rows.append(_wrapped_label(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
+	rows.append(UiKit.line(Text.say("office.cards_blurb")))
+	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
 
 	# cards.json's real "tier" values are the string digits "0"/"1"/"2"/"3"
 	# since the 2026-09-21 tier rename (Ledger.OPENING_TIER == "0"), not the
@@ -272,14 +254,14 @@ func _show_cards() -> void:
 		var in_tier := DataDB.get_cards_by_tier(tier)
 		if in_tier.is_empty():
 			continue
-		rows.append(_heading_label("Tier %s" % tier))
+		rows.append(UiKit.heading("Tier %s" % tier))
 		for card: Dictionary in in_tier:
 			rows.append(_card_row(card))
 
 	var owned_extra := GameState.owned_cards.size() - DataDB.get_cards_by_tier(Ledger.OPENING_TIER).size()
 	if owned_extra > 0:
-		rows.append(_wrapped_label(""))
-		rows.append(_wrapped_label(Text.say("office.cards_unlocked",
+		rows.append(UiKit.line(""))
+		rows.append(UiKit.line(Text.say("office.cards_unlocked",
 			{"count": owned_extra}), "SmallLabel"))
 
 	_cards_panel.open(Text.say("office.new_cards"), rows)
@@ -287,35 +269,34 @@ func _show_cards() -> void:
 
 func _card_row(card: Dictionary) -> Control:
 	var card_id := str(card.get("card_id", ""))
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+	var box := UiKit.tight_column()
 
-	box.add_child(_wrapped_label(Text.say("office.card_title", {
+	box.add_child(UiKit.line(Text.say("office.card_title", {
 		"name": card.get("name_en", card_id),
 		"name_jp": card.get("name_jp", ""),
 		"cost": Ledger.card_cost(card)})))
-	box.add_child(_wrapped_label(Text.say("office.card_line", {
+	box.add_child(UiKit.line(Text.say("office.card_line", {
 		"suit": card.get("suit", ""),
 		"effect": card.get("effect_text", "")}), "SmallLabel"))
 
 	var refusal := Ledger.card_refusal(card, GameState.owned_cards, GameState.xp, Text.phrase())
-	var button := Button.new()
-	button.custom_minimum_size = Vector2(0, 90)
-	button.text = Text.say("office.unlock") if refusal.is_empty() else refusal
-	button.disabled = not refusal.is_empty()
-	if refusal.is_empty():
-		button.pressed.connect(_on_buy_card.bind(card_id))
-	box.add_child(button)
+	box.add_child(UiKit.action_button(Text.say("office.unlock"), refusal, _on_buy_card.bind(card_id)))
 	return box
 
 
 func _on_buy_card(card_id: String) -> void:
-	var refusal := GameState.buy_card(card_id)
+	_after_spending(GameState.buy_card(card_id), _show_cards)
+
+
+## Every purchase ends the same way: the refusal on the front page if it was
+## refused, otherwise the numbers redrawn and the shop rebuilt, so the prices
+## and what is left are current.
+func _after_spending(refusal: String, reopen: Callable) -> void:
 	if not refusal.is_empty():
 		_report.text = refusal
 		return
 	_refresh_resources()
-	_show_cards()   # rebuilt, so the price and what is left are current
+	reopen.call()
 
 
 ## The Inventory button beside Office Management, and the two panels it and
@@ -347,9 +328,9 @@ func _build_inventory() -> void:
 ## Limit for this level is reached, a greyed-out "Out of Stock".
 func _show_supplies() -> void:
 	var rows: Array[Control] = []
-	rows.append(_wrapped_label(Text.say("shop.supplies_blurb")))
-	rows.append(_wrapped_label(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
-	rows.append(_wrapped_label(Text.say("office.funds",
+	rows.append(UiKit.line(Text.say("shop.supplies_blurb")))
+	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
+	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 	for item: Dictionary in DataDB.shop:
 		rows.append(_supply_row(item))
@@ -369,28 +350,22 @@ func _supply_row(item: Dictionary) -> Control:
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	row.add_child(icon)
 
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+	var box := UiKit.tight_column()
 	row.add_child(box)
 
-	var title := _wrapped_label(Text.say("shop.item_title", {
+	var title := UiKit.line(Text.say("shop.item_title", {
 		"name": item.get("name", item_id), "price": _price_text(item)}))
 	title.custom_minimum_size = Vector2(620, 0)
 	box.add_child(title)
-	var line := _wrapped_label(str(item.get("description", "")), "SmallLabel")
+	var line := UiKit.line(str(item.get("description", "")), "SmallLabel")
 	line.custom_minimum_size = Vector2(620, 0)
 	box.add_child(line)
 
 	var bought := int(GameState.shop_bought_this_level.get(item_id, 0))
 	var refusal := Items.buy_refusal(item, GameState.item_count(item_id), bought,
 		GameState.xp, int(GameState.meta.get("Funds", 0)), Text.phrase())
-	var button := Button.new()
+	var button := UiKit.action_button(Text.say("shop.buy"), refusal, _on_buy_item.bind(item_id))
 	button.name = "Buy"
-	button.custom_minimum_size = Vector2(0, 90)
-	button.text = Text.say("shop.buy") if refusal.is_empty() else refusal
-	button.disabled = not refusal.is_empty()
-	if refusal.is_empty():
-		button.pressed.connect(_on_buy_item.bind(item_id))
 	box.add_child(button)
 
 	# Out of Stock greys the whole row, not just its button, so a sold-out
@@ -413,13 +388,10 @@ func _price_text(item: Dictionary) -> String:
 
 func _on_buy_item(item_id: String) -> void:
 	var refusal := GameState.buy_shop_item(item_id)
-	if not refusal.is_empty():
-		_report.text = refusal
-		return
-	_report.text = Text.say("shop.item_bought",
-		{"name": DataDB.get_shop_item(item_id).get("name", item_id)})
-	_refresh_resources()
-	_show_supplies()   # rebuilt, so prices, stock and what is left are current
+	if refusal.is_empty():
+		_report.text = Text.say("shop.item_bought",
+			{"name": DataDB.get_shop_item(item_id).get("name", item_id)})
+	_after_spending(refusal, _show_supplies)
 
 
 ## The deck: which of the cards you own are going in.
@@ -439,9 +411,9 @@ func _build_deck_screen() -> void:
 	var refusal := Ledger.deck_refusal(_draft_deck, GameState.owned_cards, DataDB.balance, Text.phrase())
 	var warning := ("" if refusal.is_empty()
 		else Text.say("office.deck_warning_suffix", {"reason": refusal}))
-	rows.append(_wrapped_label(Text.say("office.deck_chosen",
+	rows.append(UiKit.line(Text.say("office.deck_chosen",
 		{"count": _draft_deck.size(), "size": size, "warning": warning}), "HeaderLabel"))
-	rows.append(_wrapped_label(Text.say("office.deck_tap")))
+	rows.append(UiKit.line(Text.say("office.deck_tap")))
 
 	for card_id: String in GameState.owned_cards:
 		var card := DataDB.get_card(card_id)
@@ -458,8 +430,7 @@ func _build_deck_screen() -> void:
 func _deck_row(card: Dictionary, card_id: String) -> Control:
 	var chosen := _draft_deck.has(card_id)
 
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+	var box := UiKit.tight_column()
 
 	# The name goes on the button and the effect underneath it. Both on the
 	# button ran a long card off the side of the screen and gave the panel a
@@ -477,7 +448,7 @@ func _deck_row(card: Dictionary, card_id: String) -> Control:
 	button.pressed.connect(_on_toggle_card.bind(card_id))
 	box.add_child(button)
 
-	var effect := _wrapped_label(str(card.get("effect_text", "")), "SmallLabel")
+	var effect := UiKit.line(str(card.get("effect_text", "")), "SmallLabel")
 	box.add_child(effect)
 
 	# Dimmed as a whole when it is being left out, so the deck reads at a
@@ -509,8 +480,8 @@ func _on_deck_confirmed() -> void:
 ## done. Pleasing a group at a press conference is what raises it.
 func _show_backing() -> void:
 	var rows: Array[Control] = []
-	rows.append(_wrapped_label(Text.say("office.backing_blurb")))
-	rows.append(_wrapped_label(Text.say("office.funds",
+	rows.append(UiKit.line(Text.say("office.backing_blurb")))
+	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 
 	var names := BattleSetup.booster_names()
@@ -518,7 +489,7 @@ func _show_backing() -> void:
 		func(m: Dictionary) -> bool: return Ledger.is_for_sale(m))
 
 	if for_sale.is_empty():
-		rows.append(_wrapped_label(Text.say("office.nothing_for_sale")))
+		rows.append(UiKit.line(Text.say("office.nothing_for_sale")))
 	for modifier: Dictionary in for_sale:
 		rows.append(_modifier_row(modifier, names))
 
@@ -527,13 +498,12 @@ func _show_backing() -> void:
 
 func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
 	var mod_id := str(modifier.get("mod_id", ""))
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+	var box := UiKit.tight_column()
 
 	# The price line names every currency this modifier charges — most cost
 	# only Funds, but 2026-09-22 added separate Reputation and Constituency
 	# support costs, and a modifier can ask for any mix of the three.
-	box.add_child(_wrapped_label("%s  —  %s" % [
+	box.add_child(UiKit.line("%s  —  %s" % [
 		modifier.get("name_en", mod_id), _cost_line(modifier)]))
 
 	var booster := Ledger.backing_booster(modifier, DataDB.boosters)
@@ -543,27 +513,22 @@ func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
 		var standing := ("%s  ·  standing %d" % [names.get(booster, booster), have]
 			if have >= needed
 			else "%s  ·  standing %d, needs %d" % [names.get(booster, booster), have, needed])
-		box.add_child(_wrapped_label(standing, "SmallLabel"))
+		box.add_child(UiKit.line(standing, "SmallLabel"))
 
 	# What it does, in the workbook's own words (or, for the one case with a
 	# Text tab line of its own, that line with the real number in it).
-	box.add_child(_wrapped_label(ModifierEffects.describe(modifier, Text.phrase()), "SmallLabel"))
+	box.add_child(UiKit.line(ModifierEffects.describe(modifier, Text.phrase()), "SmallLabel"))
 
 	# An effect nothing implements yet is said out loud. A shop that sells
 	# something inert is the trap this project has walked into twice.
 	if not ModifierEffects.is_implemented(modifier):
-		box.add_child(_wrapped_label(Text.say("office.not_active_yet"), "SmallLabel"))
+		box.add_child(UiKit.line(Text.say("office.not_active_yet"), "SmallLabel"))
 
 	var refusal := Ledger.modifier_refusal(modifier, GameState.owned_modifiers,
 		GameState.meta, GameState.booster_standing,
 		DataDB.booster_standing, DataDB.boosters, Text.phrase())
-	var button := Button.new()
-	button.custom_minimum_size = Vector2(0, 90)
-	button.text = Text.say("office.take_backing") if refusal.is_empty() else refusal
-	button.disabled = not refusal.is_empty()
-	if refusal.is_empty():
-		button.pressed.connect(_on_buy_modifier.bind(mod_id))
-	box.add_child(button)
+	box.add_child(UiKit.action_button(Text.say("office.take_backing"), refusal,
+		_on_buy_modifier.bind(mod_id)))
 	return box
 
 
@@ -581,12 +546,7 @@ func _cost_line(modifier: Dictionary) -> String:
 
 
 func _on_buy_modifier(mod_id: String) -> void:
-	var refusal := GameState.buy_modifier(mod_id)
-	if not refusal.is_empty():
-		_report.text = refusal
-		return
-	_refresh_resources()
-	_show_backing()
+	_after_spending(GameState.buy_modifier(mod_id), _show_backing)
 
 
 ## The Recruitment shop: one hired staff member per role, paid from Funds.
@@ -598,12 +558,12 @@ func _on_buy_modifier(mod_id: String) -> void:
 ## GameState.hire_staff()/upgrade_staff().
 func _show_staff() -> void:
 	var rows: Array[Control] = []
-	rows.append(_wrapped_label(Text.say("office.staff_blurb")))
-	rows.append(_wrapped_label(Text.say("office.funds",
+	rows.append(UiKit.line(Text.say("office.staff_blurb")))
+	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 
 	for role: String in Ledger.STAFF_ROLES:
-		rows.append(_heading_label(role))
+		rows.append(UiKit.heading(role))
 		var hired: Dictionary = GameState.staff_hired.get(role, {})
 		if hired.is_empty():
 			for candidate: Dictionary in DataDB.get_staff_by_role(role):
@@ -617,10 +577,9 @@ func _show_staff() -> void:
 ## One candidate for a vacant role, with a Hire button.
 func _staff_candidate_row(candidate: Dictionary) -> Control:
 	var staff_id := str(candidate.get("staff_id", ""))
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+	var box := UiKit.tight_column()
 
-	box.add_child(_wrapped_label(Text.say("office.staff_candidate", {
+	box.add_child(UiKit.line(Text.say("office.staff_candidate", {
 		"name": candidate.get("name", staff_id),
 		"cost": int(candidate.get("hiring_cost_yen", 0)),
 	})))
@@ -628,13 +587,7 @@ func _staff_candidate_row(candidate: Dictionary) -> Control:
 	var funds := int(GameState.meta.get("Funds", 0))
 	var refusal := Ledger.staff_hire_refusal(candidate,
 		GameState.staff_hired.get(str(candidate.get("role", "")), {}), funds, Text.phrase())
-	var button := Button.new()
-	button.custom_minimum_size = Vector2(0, 90)
-	button.text = Text.say("office.hire") if refusal.is_empty() else refusal
-	button.disabled = not refusal.is_empty()
-	if refusal.is_empty():
-		button.pressed.connect(_on_hire_staff.bind(staff_id))
-	box.add_child(button)
+	box.add_child(UiKit.action_button(Text.say("office.hire"), refusal, _on_hire_staff.bind(staff_id)))
 	return box
 
 
@@ -643,10 +596,9 @@ func _staff_candidate_row(candidate: Dictionary) -> Control:
 func _staff_hired_row(role: String, hired: Dictionary) -> Control:
 	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
 	var tier := int(hired.get("tier", 0))
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+	var box := UiKit.tight_column()
 
-	box.add_child(_wrapped_label(Text.say("office.staff_hired", {
+	box.add_child(UiKit.line(Text.say("office.staff_hired", {
 		"name": candidate.get("name", hired.get("staff_id", "")),
 		"tier": tier,
 		"highest": int(candidate.get("highest_tier", 0)),
@@ -654,37 +606,21 @@ func _staff_hired_row(role: String, hired: Dictionary) -> Control:
 
 	var funds := int(GameState.meta.get("Funds", 0))
 	var refusal := Ledger.staff_upgrade_refusal(candidate, tier, funds, Text.phrase())
-	var button := Button.new()
-	button.custom_minimum_size = Vector2(0, 90)
 	var cost: Variant = Ledger.staff_upgrade_cost(candidate, tier)
 	if cost == null:
-		button.text = Text.say("office.staff_at_max")
-		button.disabled = true
+		box.add_child(UiKit.action_button("", Text.say("office.staff_at_max"), Callable()))
 	else:
-		button.text = Text.say("office.upgrade", {"cost": int(cost)}) if refusal.is_empty() else refusal
-		button.disabled = not refusal.is_empty()
-		if refusal.is_empty():
-			button.pressed.connect(_on_upgrade_staff.bind(role))
-	box.add_child(button)
+		box.add_child(UiKit.action_button(Text.say("office.upgrade", {"cost": int(cost)}),
+			refusal, _on_upgrade_staff.bind(role)))
 	return box
 
 
 func _on_hire_staff(staff_id: String) -> void:
-	var refusal := GameState.hire_staff(staff_id)
-	if not refusal.is_empty():
-		_report.text = refusal
-		return
-	_refresh_resources()
-	_show_staff()   # rebuilt: the role just filled, and its price is spent
+	_after_spending(GameState.hire_staff(staff_id), _show_staff)
 
 
 func _on_upgrade_staff(role: String) -> void:
-	var refusal := GameState.upgrade_staff(role)
-	if not refusal.is_empty():
-		_report.text = refusal
-		return
-	_refresh_resources()
-	_show_staff()
+	_after_spending(GameState.upgrade_staff(role), _show_staff)
 
 
 ## What the level ahead is worth, before committing to it.
@@ -715,7 +651,7 @@ func _on_upgrade_staff(role: String) -> void:
 ## section, and GameState.levels_unlocked/levels_completed_count).
 func _show_levels() -> void:
 	var rows: Array[Control] = []
-	rows.append(_wrapped_label("Each level is a run of stages. Pick one and "
+	rows.append(UiKit.line("Each level is a run of stages. Pick one and "
 		+ "you will see what it holds before you commit."))
 
 	var by_tier := {}
@@ -728,7 +664,7 @@ func _show_levels() -> void:
 	var tiers: Array = by_tier.keys()
 	tiers.sort()
 	for tier: int in tiers:
-		rows.append(_heading_label("Tier %d" % tier))
+		rows.append(UiKit.heading("Tier %d" % tier))
 		for level: Dictionary in by_tier[tier]:
 			rows.append(_level_row(level))
 
@@ -736,16 +672,15 @@ func _show_levels() -> void:
 
 
 func _level_row(level: Dictionary) -> Control:
-	var box := VBoxContainer.new()
-	box.add_theme_constant_override("separation", 2)
+	var box := UiKit.tight_column()
 
 	var stage_count := 0
 	for slot in range(1, 11):
 		if not str(level.get("stage_%d" % slot, "")).is_empty():
 			stage_count += 1
 
-	box.add_child(_wrapped_label(str(level.get("level_id", ""))))
-	box.add_child(_wrapped_label("%d stage%s  ·  %s" % [
+	box.add_child(UiKit.line(str(level.get("level_id", ""))))
+	box.add_child(UiKit.line("%d stage%s  ·  %s" % [
 		stage_count, "" if stage_count == 1 else "s",
 		level.get("description", "")], "SmallLabel"))
 
@@ -787,11 +722,7 @@ func _level_row(level: Dictionary) -> Control:
 ## Spends XP to unlock a level, then rebuilds the panel so the price and what
 ## is left are current — the same shape as _on_buy_card().
 func _on_unlock_level(level_id: String) -> void:
-	var refusal := GameState.unlock_level(level_id)
-	if not refusal.is_empty():
-		_report.text = refusal
-		return
-	_show_levels()
+	_after_spending(GameState.unlock_level(level_id), _show_levels)
 
 
 func _on_level_chosen(level: Dictionary) -> void:
@@ -817,42 +748,42 @@ func _show_briefing() -> void:
 
 	for stage: Dictionary in stages:
 		if _reveal_in_briefing(stage):
-			rows.append(_heading_label(str(stage.get("name_en", "A stage"))))
+			rows.append(UiKit.heading(str(stage.get("name_en", "A stage"))))
 			var who := _opponents_line(stage)
 			if not who.is_empty():
-				rows.append(_wrapped_label(who, "SmallLabel"))
+				rows.append(UiKit.line(who, "SmallLabel"))
 		else:
 			# A stage marked "No" (Media Ambush, an ambush by name) does not
 			# get to say what it is or who is waiting — that is the surprise.
 			# Its rewards still show below, same as any other stage, so the
 			# player can weigh what they are risking without being told what
 			# is coming for it.
-			rows.append(_heading_label(Text.say("office.briefing.surprise_stage")))
+			rows.append(UiKit.heading(Text.say("office.briefing.surprise_stage")))
 
 		if LevelRunner.rewards_are_unset(stage):
-			rows.append(_wrapped_label(
+			rows.append(UiKit.line(
 				"What winning this is worth has not been set yet.", "SmallLabel"))
 		else:
 			anything_set = true
 			for name: String in LevelRunner.win_rewards(stage).keys():
-				rows.append(_wrapped_label(Text.say("reward.delta", {
+				rows.append(UiKit.line(Text.say("reward.delta", {
 					"name": name,
 					"amount": "%+d" % int(LevelRunner.win_rewards(stage)[name]),
 				})))
 			var xp := int(stage.get("win_delta_xp", 0))
 			if xp > 0:
-				rows.append(_wrapped_label(Text.say("outcome.xp", {"count": xp})))
+				rows.append(UiKit.line(Text.say("outcome.xp", {"count": xp})))
 			for line: String in LevelRunner.variable_rewards(stage, Text.phrase()):
-				rows.append(_wrapped_label(line, "SmallLabel"))
+				rows.append(UiKit.line(line, "SmallLabel"))
 
 	if not anything_set:
-		rows.append(_wrapped_label(""))
-		rows.append(_wrapped_label(Text.say("reward.nothing_set")))
+		rows.append(UiKit.line(""))
+		rows.append(UiKit.line(Text.say("reward.nothing_set")))
 
 	# Losing is the same everywhere for now, and saying so is worth a line:
 	# the player should know what they are risking, which is the afternoon.
-	rows.append(_wrapped_label(""))
-	rows.append(_wrapped_label("Lose a stage and you earn nothing from it. "
+	rows.append(UiKit.line(""))
+	rows.append(UiKit.line("Lose a stage and you earn nothing from it. "
 		+ "Nothing else is taken off you.", "SmallLabel"))
 
 	_briefing_panel.open(str(_chosen_level.get("level_id", "Before you go in")),

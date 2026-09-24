@@ -314,37 +314,21 @@ func upgrade_staff(role: String) -> String:
 ## A staff tier's reward, applied the moment it is reached (on hire, and
 ## again on every upgrade that reaches a new tier).
 ##
-## Each reward is {"delta": int, "target": "BOxx or SGxx"}. A BOxx target
-## moves booster_standing exactly the way _apply_level_bonus_win()'s own
-## booster loop already does; an SGxx target moves segment_favorability the
-## same way, clamped 0-100 (segments.json carries no min/max of its own, so
-## this uses the same default range booster_standing falls back to).
+## Each reward is {"delta": int, "target": "BOxx or SGxx"}.
 func _apply_staff_reward(candidate: Dictionary, tier: int) -> void:
 	var rewards: Variant = candidate.get("tier_%d_reward" % tier)
 	if not (rewards is Array):
 		return
 
-	var booster_low := int(DataDB.booster_standing.get("min", 0))
-	var booster_high := int(DataDB.booster_standing.get("max", 100))
 	for reward: Variant in rewards:
 		if not (reward is Dictionary):
 			continue
 		var target := str((reward as Dictionary).get("target", ""))
 		var delta := int((reward as Dictionary).get("delta", 0))
-		if delta == 0:
-			continue
-
 		if target.begins_with("BO"):
-			var before := int(booster_standing.get(target, 50))
-			var after := clampi(before + delta, booster_low, booster_high)
-			booster_standing[target] = after
-			if after != before:
-				last_booster_change[target] = int(last_booster_change.get(target, 0)) + (after - before)
+			_apply_booster_delta(target, delta)
 		elif target.begins_with("SG"):
-			var before_fav := int(segment_favorability.get(target, 50))
-			var after_fav := clampi(before_fav + delta, 0, 100)
-			segment_favorability[target] = after_fav
-			last_segment_change[target] = after_fav - before_fav
+			_apply_segment_delta(target, delta)
 
 
 ## Replaces the deck, if the new one is legal.
@@ -497,14 +481,7 @@ func _pay_level_rewards() -> void:
 		last_xp_gained += xp_bonus
 
 	for name: String in ["Funds", "Constituency support", "Party support"]:
-		var bonus := ModifierEffects.level_win_resource_bonus(owned, name)
-		if bonus == 0:
-			continue
-		var variable := _sanban_row(name)
-		var before := int(meta.get(name, 0))
-		var after := MetaRules.clamp_meta(before + bonus, variable)
-		meta[name] = after
-		_record_meta_change({name: after - before})
+		_apply_meta_reward(name, ModifierEffects.level_win_resource_bonus(owned, name))
 
 
 ## The level's own "bonus_win_range_*" and "win_delta_bo01..16" columns,
@@ -527,33 +504,26 @@ func _apply_level_bonus_win(level: Dictionary) -> void:
 		"bonus_win_range_party_support": "Party support",
 	}
 	for key: String in RANGE_TO_META.keys():
-		var amount := _roll_range(level.get(key))
-		if amount == 0:
-			continue
-		var name: String = RANGE_TO_META[key]
-		var variable := _sanban_row(name)
-		var before := int(meta.get(name, 0))
-		var after := MetaRules.clamp_meta(before + amount, variable)
-		meta[name] = after
-		_record_meta_change({name: after - before})
+		_apply_meta_reward(RANGE_TO_META[key], _roll_range(level.get(key)))
 
 	var xp_amount := _roll_range(level.get("bonus_win_range_xp"))
 	if xp_amount != 0:
 		_move_xp(xp_amount)
 		last_xp_gained += xp_amount
 
-	var low := int(DataDB.booster_standing.get("min", 0))
-	var high := int(DataDB.booster_standing.get("max", 100))
 	for n in range(1, 17):
-		var booster_id := "BO%02d" % n
-		var amount := _roll_range(level.get("win_delta_bo%02d" % n))
-		if amount == 0:
-			continue
-		var before := int(booster_standing.get(booster_id, 50))
-		var after := clampi(before + amount, low, high)
-		booster_standing[booster_id] = after
-		if after != before:
-			last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
+		_apply_booster_delta("BO%02d" % n, _roll_range(level.get("win_delta_bo%02d" % n)))
+
+
+## A stage or level reward to one meta-variable: clamped, and filed under
+## what the last stage was worth.
+func _apply_meta_reward(name: String, amount: int) -> void:
+	if amount == 0:
+		return
+	var before := int(meta.get(name, 0))
+	var after := MetaRules.clamp_meta(before + amount, _sanban_row(name))
+	meta[name] = after
+	_record_meta_change({name: after - before})
 
 
 ## A level's range columns are {"min": x, "max": y} or null ("this level
@@ -637,15 +607,8 @@ func _please_organisations(boosters: Array) -> void:
 		return
 
 	var step := int(DataDB.booster_standing.get("per_please", 5))
-	var low := int(DataDB.booster_standing.get("min", 0))
-	var high := int(DataDB.booster_standing.get("max", 100))
-
 	for booster_id: String in boosters:
-		var before := int(booster_standing.get(booster_id, 50))
-		var after := clampi(before + step, low, high)
-		booster_standing[booster_id] = after
-		if after != before:
-			last_booster_change[booster_id] = after - before
+		_apply_booster_delta(booster_id, step)
 
 
 ## Office Hours (design/proposals/office_hours.md): applies one visitor's
@@ -892,10 +855,8 @@ func _staff_bonus_total(item: Dictionary) -> int:
 	return total
 
 
-## A booster standing change by an arbitrary signed amount, clamped the same
-## way every other booster standing change is — the general form of
-## _please_organisations()'s fixed "per_please" step, for a visitor's own
-## delta instead.
+## Every booster standing change goes through here: clamped to
+## booster_standing.json's range, and added to what the last level did.
 func _apply_booster_delta(booster_id: String, delta: int) -> void:
 	if delta == 0:
 		return
@@ -908,9 +869,8 @@ func _apply_booster_delta(booster_id: String, delta: int) -> void:
 		last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
 
 
-## A segment favorability change by an arbitrary signed amount, clamped
-## 0-100 — the same bounds and the same math _apply_staff_reward() already
-## uses for its own SGxx targets, generalised for a visitor's own delta.
+## Every segment favorability change goes through here, clamped 0-100
+## (segments.json carries no range of its own).
 func _apply_segment_delta(segment_id: String, delta: int) -> void:
 	if delta == 0:
 		return

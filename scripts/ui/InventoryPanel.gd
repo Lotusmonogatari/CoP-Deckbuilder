@@ -42,12 +42,12 @@ func show_inventory() -> void:
 	_showing_item = ""
 	var rows: Array[Control] = []
 	if not _notice.is_empty():
-		rows.append(_label(_notice))
+		rows.append(UiKit.line(_notice))
 		_notice = ""
 
 	var held := _held_items()
 	if held.is_empty():
-		rows.append(_label(Text.say("inventory.empty")))
+		rows.append(UiKit.line(Text.say("inventory.empty")))
 	else:
 		var grid := GridContainer.new()
 		grid.name = "Items"
@@ -74,18 +74,18 @@ func show_item(item_id: String) -> void:
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	rows.append(icon)
 
-	rows.append(_label(Text.say("item.quantity", {"count": GameState.item_count(item_id)})))
+	rows.append(UiKit.line(Text.say("item.quantity", {"count": GameState.item_count(item_id)})))
 	var cap := Items.stack_cap(item)
 	if cap > 0:
-		rows.append(_label(Text.say("item.stack_cap", {"count": cap}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("item.stack_cap", {"count": cap}), "SmallLabel"))
 	# The Description is display text, straight off the Shop tab — shown,
 	# never read for what the item does (that is the Grants column's job).
-	rows.append(_label(str(item.get("description", "")), "SmallLabel"))
-	rows.append(_label(Items.timing_line(item, context, Text.phrase()), "SmallLabel"))
+	rows.append(UiKit.line(str(item.get("description", "")), "SmallLabel"))
+	rows.append(UiKit.line(Items.timing_line(item, context, Text.phrase()), "SmallLabel"))
 
 	var refusal := _refusal(item_id, item)
 	if not refusal.is_empty():
-		rows.append(_label(refusal))
+		rows.append(UiKit.line(refusal))
 
 	open(str(item.get("name", item_id)), rows,
 		Text.say("item.use") if refusal.is_empty() else "",
@@ -137,7 +137,7 @@ func _show_choice_picker(item_id: String) -> void:
 		# A data problem (DataDB's own validation should have caught it at
 		# boot), not a player mistake — but the panel still has to say
 		# something rather than open empty.
-		rows.append(_label(Text.say("item.refused.no_effect")))
+		rows.append(UiKit.line(Text.say("item.refused.no_effect")))
 	else:
 		var grid := GridContainer.new()
 		grid.name = "Choices"
@@ -200,12 +200,3 @@ func _item_button(item_id: String) -> Button:
 	button.pressed.connect(show_item.bind(item_id))
 	return button
 
-
-func _label(text: String, variation: String = "") -> Label:
-	var label := Label.new()
-	label.text = text
-	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.custom_minimum_size = Vector2(760, 0)
-	if not variation.is_empty():
-		label.theme_type_variation = variation
-	return label
