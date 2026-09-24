@@ -577,8 +577,18 @@ func _apply_level_bonus_win(level: Dictionary) -> void:
 		_move_xp(xp_amount)
 		last_xp_gained += xp_amount
 
-	for n in range(1, 17):
-		_apply_booster_delta("BO%02d" % n, _roll_range(level.get("win_delta_bo%02d" % n)))
+	# Every booster gets a chance at its own win_delta_boNN column, not just
+	# the 16 that exist today — sorted by ID first so a booster added to the
+	# workbook later rolls in the same order these always have (each roll
+	# consumes the unseeded RNG, so the ORDER of these calls is part of what
+	# "behaviour-neutral" means here, not just the set of keys read).
+	var booster_ids: Array[String] = []
+	for booster: Dictionary in DataDB.boosters:
+		booster_ids.append(str(booster.get("booster_id", "")))
+	booster_ids.sort()
+	for booster_id: String in booster_ids:
+		var key := "win_delta_" + booster_id.to_lower()
+		_apply_booster_delta(booster_id, _roll_range(level.get(key)))
 
 
 ## A stage or level reward to one meta-variable: clamped, and filed under
