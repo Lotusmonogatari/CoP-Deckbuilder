@@ -35,8 +35,6 @@ const PLAY_LIFT := 220.0
 ## The tint a lifted card takes once letting go would play it.
 const READY_TINT := Color(1.0, 0.93, 0.6)
 
-## The temporary illustration sits inside the art window, behind the frame.
-const TEMPORARY_CARD_ART: Texture2D = preload("res://assets/cards/card_temporary_image.png")
 const CARD_FONT: FontFile = preload("res://assets/fonts/AntakaBrushDisplay-Regular.ttf")
 
 ## Canonical suit-to-front-template mapping from data/suits.json.
@@ -60,7 +58,20 @@ const WIDTH := HEIGHT * ASPECT
 const COST_RECT := Rect2(0.0588, 0.0330, 0.0980, 0.0705)
 const COST_LABEL_LIFT := 0.008
 const NAME_RECT := Rect2(0.215, 0.032, 0.655, 0.056)
-const ART_RECT := Rect2(0.130, 0.210, 0.740, 0.370)
+
+## Where the art sits, measured from every front template's OWN transparent
+## window (tools/measure at the time was a one-off script over each PNG's
+## alpha channel, not kept) rather than one of them — the six frames do not
+## all cut their window in quite the same place (front_sumo's top edge alone
+## is 0.04 lower than front_ninja's). This is the UNION of all six, plus a
+## small bleed past that: the art is drawn a little BIGGER than any single
+## frame's own window, so it runs a few pixels under that frame's opaque
+## border instead of stopping short of it. Layered under the frame (see
+## _build()'s add_child order below), the overflow is invisible; falling
+## short would show whatever is behind the card instead — which is how a
+## visible dark gap between the art and the border was reported, 2026-09-27.
+const ART_RECT := Rect2(0.106, 0.144, 0.787, 0.470)
+
 const TEXT_RECT := Rect2(0.128, 0.700, 0.744, 0.175)
 const EFFECT_FONT_SIZE := 23
 const EFFECT_FONT_SIZE_MIN := 12
@@ -131,16 +142,17 @@ static func place(node: Control, where: Rect2) -> void:
 
 
 func _build() -> void:
-	# Artwork is deliberately smaller than the card and sits behind its frame.
-	# This keeps it inside the shared art window and prevents spill over the
-	# template border.
+	# The plate is a safety net, not the normal case: ArtLoader.card() always
+	# returns SOME texture (real art, or a coloured placeholder square when
+	# there is none yet), covering ART_RECT completely via
+	# STRETCH_KEEP_ASPECT_COVERED below. It only shows if that were ever not
+	# true. Sits behind the frame either way, same as the art itself.
 	var plate := ColorRect.new()
 	place(plate, ART_RECT)
 	plate.color = PLATE
 	add_child(plate)
 
 	_art_image = TextureRect.new()
-	_art_image.texture = TEMPORARY_CARD_ART
 	place(_art_image, ART_RECT)
 	_art_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_art_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
@@ -232,6 +244,11 @@ func show_card(card_row: Dictionary) -> void:
 	_art_label.text = str(card_row.get("name_jp", ""))
 	_effect_label.text = str(card_row.get("effect_text", ""))
 	_frame.texture = FRAME_BY_SUIT.get(str(card_row.get("suit", "")), FRAME_BY_SUIT["Data Driven"])
+	# By card ID (data/art.json's `card` folder), same as every other piece of
+	# art in the game — a card with nothing drawn yet gets ArtLoader's own
+	# ID-coloured placeholder rather than one fixed stand-in photo shared by
+	# all 54 cards, so drawn and undrawn cards are told apart at a glance.
+	_art_image.texture = ArtLoader.card(card_id)
 	_fit_effect_label.call_deferred()
 
 	tooltip_text = "%s — %s" % [card_row.get("name_en", ""), card_row.get("effect_text", "")]
