@@ -581,33 +581,59 @@ SHEETS = {
             ("Bonus Condition 2", "bonus_condition_2", "str"),
         ],
     },
+    # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
+    # original §8 Office Hours brief). Cameron's real design: multiple
+    # choice, several possible questions per visitor (the linked "Visitor
+    # Questions" tab below), and rewards/penalties that move a Booster
+    # standing, grant a Modifier, or grant a Shop item — not raw meta-
+    # variable deltas. See design/proposals/office_hours.md.
     "Visitors": {
         "out": "visitors.json",
         "key": "visitor_id",
-        "id_pattern": r"^V\d+$",
+        "id_pattern": r"^VI\d+$",
         "optional_sheet": True,
         "columns": [
             ("Visitor ID", "visitor_id", "id"),
-            ("Module", "module", "str"),
-            ("Slot cost", "slot_cost", "int"),
             ("Visitor (EN)", "name_en", "str"),
             ("Visitor (JP)", "name_jp", "str"),
             ("Romaji", "romaji", "str"),
-            ("Segment", "segment", "str"),
-            ("Situation text", "situation_text", "str"),
-            ("Choice A", "choice_a_text", "str"),
-            ("A ΔJiban", "choice_a_delta_jiban", "int"),
-            ("A ΔKaban", "choice_a_delta_kaban", "int"),
-            ("A ΔParty support", "choice_a_delta_party_support", "int"),
-            ("A Yoron topic", "choice_a_yoron_topic", "str"),
-            ("A ΔYoron", "choice_a_delta_yoron", "int"),
-            ("Choice B", "choice_b_text", "str"),
-            ("B ΔJiban", "choice_b_delta_jiban", "int"),
-            ("B ΔKaban", "choice_b_delta_kaban", "int"),
-            ("B ΔParty support", "choice_b_delta_party_support", "int"),
-            ("B Yoron topic", "choice_b_yoron_topic", "str"),
-            ("B ΔYoron", "choice_b_delta_yoron", "int"),
-            ("Note", "note", "str"),
+            ("Role", "title", "str"),
+            # Same convention as Opponents' own "Stage" column: which STxx
+            # this visitor can be drawn for.
+            ("Stage", "stages", "stage_list"),
+            # "BO05 +1; M12; SH04" — a booster standing bump, a modifier
+            # grant, a shop item grant, any mix, in one cell. Which kind
+            # each target is comes from its own ID prefix at runtime
+            # (RewardTargets.kind_of()), not from a separate column.
+            ("Reward", "reward", "target_delta_list"),
+            # Same format, applied on a wrong answer instead of a right one
+            # — typically a negative delta against a booster ("BO05 -2"),
+            # not a Sanban meta-variable hit.
+            ("Penalty", "penalty", "target_delta_list"),
+        ],
+    },
+    # One row = one possible exchange; many rows can share a Visitor ID —
+    # the "several questions per visitor" shape, resolved by drawing one at
+    # battle setup the same way BattleEngine._draw_questions() already
+    # draws from a stage's question pool.
+    "Visitor Questions": {
+        "out": "visitor_questions.json",
+        "key": "question_id",
+        "id_pattern": r"^VQ\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Question ID", "question_id", "id"),
+            ("Visitor ID", "visitor_id", "str"),
+            ("Question text", "question_text", "str"),
+            ("Choice A", "choice_a", "str"),
+            ("Choice B", "choice_b", "str"),
+            ("Choice C", "choice_c", "str"),
+            ("Choice D", "choice_d", "str"),
+            ("Correct Choice", "correct_choice", "str"),
+            ("Response - Right", "response_right", "str"),
+            ("Response - Wrong", "response_wrong", "str"),
+            ("Reaction - Right", "reaction_right", "str"),
+            ("Reaction - Wrong", "reaction_wrong", "str"),
         ],
     },
     # "Fed by" and the Critical tier are gone from this tab — the 4 Sanban
@@ -746,6 +772,36 @@ def coerce(value, kind, where, report):
                 continue
             rewards.append({"delta": int(match.group(1)), "target": match.group(2)})
         return rewards
+
+    if kind == "target_delta_list":
+        # "BO05 +1; M12 -2; SH04" -> [{"target": "BO05", "delta": 1},
+        # {"target": "M12", "delta": -2}, {"target": "SH04", "delta": None}]
+        #
+        # Cameron's own format (2026-09-25), for the Office Hours Visitors
+        # tab's Reward/Penalty columns: unlike "reward_list" above (Staff's
+        # "+N for <ID>", one fixed sign of thing per column), a single cell
+        # here can mix targets AND signs together — a visitor's Reward
+        # column can read "BO05 +1", a Penalty column "BO05 -2" — because
+        # which kind of thing a target IS (a booster standing bump, a
+        # modifier grant, a shop item) is read from its own ID prefix at
+        # runtime, not from this column. A delta is optional: a modifier or
+        # shop item is granted outright ("M12" alone), not incremented, so
+        # a bare ID with no number is valid and its "delta" comes back null.
+        entries = []
+        for clause in text.split(";"):
+            clause = clause.strip()
+            if not clause:
+                continue
+            match = re.match(r"^(\S+)(?:\s+([+-]\d+))?$", clause)
+            if not match:
+                report.error(where, f"target clause {clause!r} doesn't match '<ID>' or '<ID> +N'")
+                continue
+            target, delta = match.group(1), match.group(2)
+            entries.append({
+                "target": target,
+                "delta": int(delta) if delta is not None else None,
+            })
+        return entries
 
     if kind == "json":
         try:

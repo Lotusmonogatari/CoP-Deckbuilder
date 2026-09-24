@@ -38,7 +38,7 @@ const REQUIRED_FILES := [
 	"journalists", "level_opponent_overrides", "levels", "lists",
 	"modifiers", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
-	"card_cues", "questions",
+	"card_cues", "questions", "shop",
 	"sounds", "staff", "stage_types", "strings",
 	"segments", "stages", "suits", "yoron",
 ]
@@ -71,6 +71,13 @@ var yoron: Array = []
 var bills: Array = []
 var sanban: Array = []
 var affinity: Array = []
+
+## data/shop.json's SHxx rows — one-time Office actions (see the file's own
+## comments), not previously loaded by anything. Added 2026-09-25 so a
+## reward column (a visitor's, a modifier's, anywhere else an ID list names
+## a target) can actually resolve a SHxx it finds by prefix, the same way it
+## already resolves a BOxx or MODxx.
+var shop: Array = []
 
 ## The 21 hireable Staff candidates (SF01-21): 3 roles x 7 candidates each.
 ## Names come from the workbook's own Name column where it is filled in, and
@@ -154,6 +161,7 @@ var _opponents_by_id: Dictionary = {}
 var _segments_by_id: Dictionary = {}
 var _modifiers_by_id: Dictionary = {}
 var _boosters_by_id: Dictionary = {}
+var _shop_by_id: Dictionary = {}
 var _bills_by_id: Dictionary = {}
 var _yoron_by_id: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
@@ -218,6 +226,7 @@ func load_all() -> void:
 				sounds = _map_under(content, file_name, "sounds")
 				speech = _map_under(content, file_name, "speech")
 			"booster_standing": booster_standing = content
+			"shop": shop = content
 			# Cards that exist for the playtest but are not in the workbook
 			# yet. Appended rather than kept apart, so everything downstream —
 			# the card table, the starter deck, every lookup — treats them as
@@ -417,6 +426,7 @@ func _build_lookups() -> void:
 	_segments_by_id = _index(segments, "segment_id")
 	_modifiers_by_id = _index(modifiers, "mod_id")
 	_boosters_by_id = _index(boosters, "booster_id")
+	_shop_by_id = _index(shop, "item_id")
 	_bills_by_id = _index(bills, "bill_id")
 	_yoron_by_id = _index(yoron, "topic_id")
 	_sanban_by_name = _index(sanban, "name_en")
@@ -565,6 +575,42 @@ func get_modifier(mod_id: String) -> Dictionary:
 
 func get_booster(booster_id: String) -> Dictionary:
 	return _lookup(_boosters_by_id, booster_id, "booster")
+
+
+func get_shop_item(item_id: String) -> Dictionary:
+	return _lookup(_shop_by_id, item_id, "shop item")
+
+
+## Pulls the real record a reward/penalty target ID names — a
+## "target_delta_list" entry (RewardTargets.gd's classification plus the
+## actual DataDB row), e.g. from a Visitor's Reward/Penalty column:
+## { "target": "SH04", "delta": null } in, { "kind": "shop_item", "id":
+## "SH04", "delta": null, "record": {...the real SH04 row...} } out.
+##
+## An unknown prefix or a target that doesn't actually exist both come back
+## with an empty "record" and a warning — same "readable problem, not a
+## crash" contract as every other DataDB lookup — rather than the caller
+## having to know three different getters and three different empty shapes.
+func resolve_reward_target(entry: Dictionary) -> Dictionary:
+	var target_id := str(entry.get("target", ""))
+	var kind := RewardTargets.kind_of(target_id)
+	var record: Dictionary
+	match kind:
+		RewardTargets.BOOSTER:
+			record = get_booster(target_id)
+		RewardTargets.MODIFIER:
+			record = get_modifier(target_id)
+		RewardTargets.SHOP_ITEM:
+			record = get_shop_item(target_id)
+		_:
+			warnings.append("reward target '%s' does not match any known ID prefix "
+				% target_id + "(BOxx, Mxx, SHxx)")
+	return {
+		"kind": kind,
+		"id": target_id,
+		"delta": entry.get("delta"),
+		"record": record,
+	}
 
 
 func get_bill(bill_id: String) -> Dictionary:
