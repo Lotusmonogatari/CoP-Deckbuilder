@@ -53,6 +53,10 @@ var _opened_on := 0
 var _watching := ""
 var _watched_anyone := false
 
+## The stage in play, for a stage-specific outfit (ArtLoader, entirely
+## optional). Set each show_state() from whoever calls this.
+var stage_id := ""
+
 
 func _init(portrait: Control, name_label: Label, intent_label: Label,
 		guard_label: Label, opponent_guard_label: Label) -> void:
@@ -68,8 +72,10 @@ func _init(portrait: Control, name_label: Label, intent_label: Label,
 		_intent_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
 
-## Draws the whole row for this moment of the battle.
-func show_state(engine: BattleEngine) -> void:
+## Draws the whole row for this moment of the battle. `stage_id` is only
+## for a stage-specific outfit (ArtLoader) — entirely optional.
+func show_state(engine: BattleEngine, stage: String = "") -> void:
+	stage_id = stage
 	var state := engine.state
 
 	if engine.is_press_conference():
@@ -195,6 +201,7 @@ func _wear(art_id: String, expression: String) -> void:
 	var art := _portrait as PlaceholderArt
 	art.kind = PlaceholderArt.Kind.CHARACTER
 	art.art_id = art_id
+	art.stage_id = stage_id
 	art.expression = expression
 
 

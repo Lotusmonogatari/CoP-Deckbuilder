@@ -10,6 +10,10 @@ extends RefCounted
 ##     ArtLoader.character("OP03", "attacking")
 ##         -> assets/characters/opponents/OP03_attacking.png, or failing that
 ##            OP03_neutral.png, or failing that a coloured placeholder
+##     ArtLoader.character("OP03", "attacking", "ST04")
+##         -> OP03_ST04_attacking.png first (a press-conference-only outfit,
+##            say), then falls through to the plain chain above exactly as
+##            if no stage_id had been given
 ##     ArtLoader.card("C11")          -> assets/cards/art/C11.png
 ##     ArtLoader.background("ST02")   -> assets/backgrounds/ST02.png
 ##     ArtLoader.icon("BO04")         -> assets/icons/BO04.png
@@ -52,9 +56,12 @@ static var _placeholder_cache: Dictionary = {}
 # ---------------------------------------------------------------------------
 
 ## A character portrait, by ID and expression: any protagonist, opponent,
-## staff member, visitor or reporter.
-static func character(character_id: String, expression: String = NEUTRAL) -> Texture2D:
-	return _load(character_path(character_id, expression), character_id)
+## staff member, visitor or reporter. `stage_id`, when given, is tried first
+## for a stage-specific outfit — entirely optional; nothing has to be drawn
+## for it, and the plain portrait is used everywhere it isn't.
+static func character(character_id: String, expression: String = NEUTRAL,
+		stage_id: String = "") -> Texture2D:
+	return _load(character_path(character_id, expression, stage_id), character_id)
 
 
 ## A card's picture, by card ID.
@@ -92,7 +99,21 @@ static func item_icon(icon_name: String) -> Texture2D:
 ## The file a character's face is read from: the expression asked for, then
 ## each fallback, then neutral — in the character's own folder first and the
 ## old shared folder last. Empty when none of them is drawn.
-static func character_path(character_id: String, expression: String = NEUTRAL) -> String:
+##
+## `stage_id`, when given, is tried for each expression BEFORE the plain
+## file of that same expression — a drawn stage outfit beats falling back to
+## a plain drawing of a worse-matching expression, but a plain drawing of
+## the RIGHT expression still beats a stage outfit of the wrong one.
+static func character_path(character_id: String, expression: String = NEUTRAL,
+		stage_id: String = "") -> String:
+	return _first_existing(character_path_candidates(character_id, expression, stage_id))
+
+
+## The ordered list character_path() searches, most-specific first — split
+## out so the ORDER is something a test can check without any file needing
+## to exist on disk.
+static func character_path_candidates(character_id: String, expression: String = NEUTRAL,
+		stage_id: String = "") -> Array[String]:
 	var candidates: Array[String] = []
 	var folders: Array[String] = [character_folder(character_id)]
 	var legacy := str(_art().get("legacy_folders", {}).get("character", ""))
@@ -100,8 +121,10 @@ static func character_path(character_id: String, expression: String = NEUTRAL) -
 		folders.append(legacy)
 	for face: String in expression_chain(expression):
 		for where: String in folders:
+			if not stage_id.is_empty():
+				candidates.append(where + "%s_%s_%s.png" % [character_id, stage_id, face])
 			candidates.append(where + "%s_%s.png" % [character_id, face])
-	return _first_existing(candidates)
+	return candidates
 
 
 static func card_path(card_id: String) -> String:
