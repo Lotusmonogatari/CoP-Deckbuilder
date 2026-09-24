@@ -170,8 +170,10 @@ None of these were touched.
 
 ## 3. Definition-of-done check
 
-- [x] Baseline recorded; green before and after (677/677, same count — this
-      pass added no tests since it changed no observable behaviour to test).
+- [x] Baseline recorded; green before and after (677/677 → 680/680 — the
+      three new tests are B2's, which is the one item that changed an actual
+      code path rather than only comments; every other item is comment-only
+      or a pure delegation with no new behaviour to test).
 - [x] Web parity unchanged (172/172 both before and after).
 - [x] `tests/wording_snapshot.json` untouched.
 - [x] No file under `data/` or `design/*.xlsx` changed.
