@@ -68,14 +68,14 @@ func _init() -> void:
 	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_adopt(scrim, _root)
 
-	var panel := ColorRect.new()
-	panel.name = "BackgroundPanel"
-	panel.anchor_top = BAND_HEIGHT
-	panel.anchor_right = 1.0
-	panel.anchor_bottom = 1.0
-	panel.color = Color(0.09, 0.07, 0.06, 1.0)
-	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_adopt(panel, _root)
+	var background_panel := ColorRect.new()
+	background_panel.name = "BackgroundPanel"
+	background_panel.anchor_top = BAND_HEIGHT
+	background_panel.anchor_right = 1.0
+	background_panel.anchor_bottom = 1.0
+	background_panel.color = Color(0.09, 0.07, 0.06, 1.0)
+	background_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_adopt(background_panel, _root)
 
 	var safe := MarginContainer.new()
 	safe.name = "Safe"
