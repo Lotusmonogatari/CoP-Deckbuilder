@@ -1,10 +1,68 @@
 [
   {
     "visitor_id": "VI01",
-    "name_en": "Sample Constituent",
-    "name_jp": null,
-    "romaji": "Sampuru",
+    "name_en": "Dog Man",
+    "name_jp": "犬男",
+    "romaji": "Inuotoko",
     "title": "Constituent",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": 1
+      },
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI02",
+    "name_en": "Brad Chunchun",
+    "name_jp": "ブラド ちゅんちゅん",
+    "romaji": "Brado Chunchun",
+    "title": "Celebrity",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": 1
+      },
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI03",
+    "name_en": "Aso Takeda",
+    "name_jp": "武田あそ",
+    "romaji": "Aso Takeda",
+    "title": "Company Boss",
     "stages": [
       "ST07"
     ],
