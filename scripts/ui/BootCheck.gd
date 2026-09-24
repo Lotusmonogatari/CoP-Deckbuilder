@@ -110,7 +110,7 @@ func _build_art_section() -> void:
 
 	# One tile per kind, so every fallback path gets exercised.
 	_add_tile(row, PlaceholderArt.Kind.CHARACTER, "OP03")
-	_add_tile(row, PlaceholderArt.Kind.CHARACTER, "PROTAGONIST")
+	_add_tile(row, PlaceholderArt.Kind.CHARACTER, str(DataDB.player.get("player_id", "PC01")))
 	_add_tile(row, PlaceholderArt.Kind.CARD, "C11")
 	_add_tile(row, PlaceholderArt.Kind.BACKGROUND, "ST02")
 	_add_tile(row, PlaceholderArt.Kind.ICON, "BO04")
@@ -132,14 +132,8 @@ func _add_tile(parent: Control, kind: PlaceholderArt.Kind, id: String) -> void:
 
 func _count_missing_art() -> int:
 	var missing := 0
-	for path: String in [
-		ArtLoader.CHARACTERS + "OP03_neutral.png",
-		ArtLoader.CHARACTERS + "PROTAGONIST_neutral.png",
-		ArtLoader.CARDS + "C11.png",
-		ArtLoader.BACKGROUNDS + "ST02.png",
-		ArtLoader.ICONS + "BO04.png",
-	]:
-		if not ArtLoader.exists(path):
+	for tile: Node in _content.get_children().back().get_children():
+		if tile is PlaceholderArt and (tile as PlaceholderArt).is_placeholder():
 			missing += 1
 	return missing
 

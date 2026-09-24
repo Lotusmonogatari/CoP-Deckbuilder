@@ -28,8 +28,9 @@ enum Kind { CHARACTER, CARD, BACKGROUND, ICON }
 		art_id = value
 		_refresh()
 
-## Only used for characters: neutral, attacking, confident, flustered,
-## defeated, and victory for the protagonist.
+## Only used for characters: neutral, attacking, guarding, gaining, damaged
+## (data/art.json), plus the optional defeated and victory. A face that is
+## not drawn falls back, in the end to neutral.
 @export var expression: String = "neutral":
 	set(value):
 		expression = value
@@ -84,8 +85,7 @@ func _refresh() -> void:
 		_label.text = ""
 		return
 
-	var path := _expected_path()
-	_is_placeholder = not ArtLoader.exists(path)
+	_is_placeholder = not ArtLoader.exists(_found_path())
 
 	match kind:
 		Kind.CHARACTER: _texture_rect.texture = ArtLoader.character(art_id, expression)
@@ -97,19 +97,20 @@ func _refresh() -> void:
 	_label.text = _label_text() if _is_placeholder else ""
 
 
-## The file this control is looking for. Shown on the placeholder so whoever
-## is drawing the art knows exactly what to name it.
-func _expected_path() -> String:
+## The drawing actually shown, after fallbacks, or "" for none.
+func _found_path() -> String:
 	match kind:
-		Kind.CHARACTER: return ArtLoader.CHARACTERS + "%s_%s.png" % [art_id, expression]
-		Kind.CARD: return ArtLoader.CARDS + art_id + ".png"
-		Kind.BACKGROUND: return ArtLoader.BACKGROUNDS + art_id + ".png"
-		_: return ArtLoader.ICONS + art_id + ".png"
+		Kind.CHARACTER: return ArtLoader.character_path(art_id, expression)
+		Kind.CARD: return ArtLoader.card_path(art_id)
+		Kind.BACKGROUND: return ArtLoader.folder("background") + art_id + ".png"
+		_: return ArtLoader.folder("icon") + art_id + ".png"
 
 
+## Shown on the placeholder so whoever is drawing the art knows exactly what
+## to name the file.
 func _label_text() -> String:
 	if kind == Kind.CHARACTER:
-		return "%s\n%s" % [art_id, expression]
+		return ArtLoader.expected_character_path(art_id, expression).get_file()
 	return art_id
 
 

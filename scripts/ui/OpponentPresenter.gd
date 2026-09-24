@@ -18,17 +18,22 @@ extends RefCounted
 ## changes. That means the wiring can be finished and tested now and simply
 ## becomes a face when Cameron draws one.
 
-## Faces, as the brief names them. A portrait file is
-## {ID}_{expression}.png, so these are the words that reach the filename.
-const NEUTRAL := "neutral"
-const ATTACKING := "attacking"
-const CONFIDENT := "confident"
-const FLUSTERED := "flustered"
-const DEFEATED := "defeated"
+## Faces (data/art.json). A portrait file is {ID}_{expression}.png, so
+## these are the words that reach the filename; ArtLoader falls back to
+## neutral for any face not drawn yet.
+const NEUTRAL := ArtLoader.NEUTRAL
+const ATTACKING := ArtLoader.ATTACKING
+const GUARDING := ArtLoader.GUARDING
+const GAINING := ArtLoader.GAINING
+const DAMAGED := ArtLoader.DAMAGED
+const DEFEATED := ArtLoader.DEFEATED
+
+## How long an opponent shows the damaged face after a card lands on them.
+const FLINCH_SECONDS := 0.9
 
 ## How far an opponent's support has to fall, as a share of where they
-## started, before they look rattled rather than composed.
-const FLUSTERED_BELOW := 0.75
+## started, before they look hurt rather than composed.
+const DAMAGED_BELOW := 0.75
 
 var _portrait: Control
 var _name_label: Label
@@ -155,15 +160,33 @@ func _face_for(engine: BattleEngine) -> String:
 
 	if state.bar != null and _opened_on > 0:
 		var share := float(state.bar.opponent) / float(_opened_on)
-		if share <= FLUSTERED_BELOW:
-			return FLUSTERED
+		if share <= DAMAGED_BELOW:
+			return DAMAGED
 
 	# Otherwise, what they are about to do. An intent is known a turn ahead,
 	# so this is the face of somebody winding up rather than reacting.
 	match str(engine.current_intent().get("verb", "none")):
 		"attack", "lean_down": return ATTACKING
-		"block": return CONFIDENT
+		"block": return GUARDING
+		"gain": return GAINING
 		_: return NEUTRAL
+
+
+## A card just landed on them: the damaged face for a moment, then back to
+## whatever show_state() last decided. Shown only when the card actually
+## cost them something.
+func flinch() -> void:
+	if not (_portrait is PlaceholderArt) or not _portrait.is_inside_tree():
+		return
+	var art := _portrait as PlaceholderArt
+	var settled := art.expression
+	if settled == DEFEATED:
+		return
+	art.expression = DAMAGED
+	await _portrait.get_tree().create_timer(FLINCH_SECONDS).timeout
+	# Unless something else changed the face meanwhile.
+	if is_instance_valid(art) and art.expression == DAMAGED:
+		art.expression = settled
 
 
 func _wear(art_id: String, expression: String) -> void:

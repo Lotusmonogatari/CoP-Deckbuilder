@@ -1,0 +1,79 @@
+{
+  "_README": [
+    "Where every picture lives, and what it is called. WRITTEN BY HAND.",
+    "",
+    "Drop a PNG into the right folder under the right name and it appears in",
+    "the game - no code, no re-export. Anything not drawn yet shows as a",
+    "coloured placeholder labelled with the file it is waiting for.",
+    "",
+    "CHARACTERS: {ID}_{expression}.png in the folder for their kind.",
+    "  protagonists  PC01-PC04          player.json",
+    "  opponents     OP01...            opponents.json",
+    "  staff         SF01...            staff.json",
+    "  visitors      VI01...            visitors.json",
+    "  journalists   JR_A...            journalists.json",
+    "  e.g. assets/characters/opponents/OP03_attacking.png",
+    "",
+    "EXPRESSIONS: the five every character should have, in the order to draw",
+    "them. neutral first - it is what every other face falls back to.",
+    "  neutral    at rest, listening",
+    "  attacking  about to go for you (their intent is an attack)",
+    "  guarding   bracing, arms folded (their intent is to block)",
+    "  gaining    rallying their side (their intent is to gain support)",
+    "  damaged    just hit, or losing the room",
+    "Two optional extras: defeated (argued down) and victory (protagonist,",
+    "on winning). A face that is missing uses expression_fallbacks, and in",
+    "the end neutral, so a character with only a neutral drawing works.",
+    "",
+    "EVERYTHING ELSE: {ID}.png",
+    "  cards        card art by card ID, e.g. C11.png (the picture in the",
+    "               card's window, not the frame)",
+    "  backgrounds  by stage ID, e.g. ST02.png, plus OFFICE.png",
+    "  icons        organisations (BO04.png), items (the Shop tab's Icon",
+    "               name), suits, meta-variables",
+    "",
+    "SIZES (portrait canvas is 1080 x 2340): characters 1024 x 1280",
+    "(4:5, figure from the waist up, transparent background); card art",
+    "1024 x 768; backgrounds 1080 x 2340; icons 256 x 256.",
+    "",
+    "legacy_folders: where art was looked for before this scheme. Still",
+    "checked last, so nothing already drawn goes missing. Move files into the",
+    "new folders when convenient.",
+    "",
+    "tools/art_checklist.py writes design/ART_CHECKLIST.md: every file the",
+    "data asks for, and which are drawn."
+  ],
+
+  "folders": {
+    "protagonist": "res://assets/characters/protagonists/",
+    "opponent": "res://assets/characters/opponents/",
+    "staff": "res://assets/characters/staff/",
+    "visitor": "res://assets/characters/visitors/",
+    "journalist": "res://assets/characters/journalists/",
+    "card": "res://assets/cards/art/",
+    "background": "res://assets/backgrounds/",
+    "icon": "res://assets/icons/"
+  },
+
+  "character_prefixes": {
+    "PC": "protagonist",
+    "OP": "opponent",
+    "SF": "staff",
+    "VI": "visitor",
+    "JR": "journalist"
+  },
+
+  "expressions": ["neutral", "attacking", "guarding", "gaining", "damaged"],
+
+  "optional_expressions": ["defeated", "victory"],
+
+  "expression_fallbacks": {
+    "defeated": "damaged",
+    "victory": "gaining"
+  },
+
+  "legacy_folders": {
+    "character": "res://assets/characters/",
+    "card": "res://assets/cards/"
+  }
+}
