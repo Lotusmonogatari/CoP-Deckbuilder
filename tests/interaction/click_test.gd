@@ -154,7 +154,9 @@ func _check_hand_drags_sideways() -> void:
 		return
 	scroll.scroll_horizontal = 0
 	var start := (hand.get_child(0) as Control).get_global_rect().get_center()
-	await _drag(start, start + Vector2(-400, 0))
+	# Drag right to bring the cards further right into view — the scroll
+	# position now moves WITH the finger, not against it.
+	await _drag(start, start + Vector2(400, 0))
 	await get_tree().create_timer(0.6).timeout
 	if scroll.scroll_horizontal <= 0:
 		_failures.append("dragging sideways across the hand did not scroll it")

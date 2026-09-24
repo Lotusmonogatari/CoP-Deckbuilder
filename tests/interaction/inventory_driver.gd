@@ -84,7 +84,9 @@ func _walk() -> void:
 	await get_tree().process_frame
 	var start := (supplies.find_child("Supply_" + COFFEE, true, false)
 		.find_child("Buy", true, false) as Control).get_global_rect().get_center()
-	await _drag(start, start + Vector2(0, -700))
+	# Drag down to bring what is further down the list into view — the
+	# scroll position now moves WITH the finger, not against it.
+	await _drag(start, start + Vector2(0, 700))
 	await _wait(0.5)
 	if scroll.scroll_vertical <= 0:
 		_failures.append("dragging the Supplies list did not scroll it")

@@ -95,12 +95,17 @@ func _input(event: InputEvent) -> void:
 			_cancel_press()
 
 		var now := Time.get_ticks_msec()
-		var step := (_last.y - where.y) if _vertical else (_last.x - where.x)
+		# The scroll position moves WITH the finger's own direction of travel
+		# (drag right to bring content on the right into view), not against
+		# it — Cameron, 2026-09-24: the reverse ("content follows the
+		# finger", the usual touchscreen pan) made you drag the opposite way
+		# from wherever you meant to go.
+		var step := (where.y - _last.y) if _vertical else (where.x - _last.x)
 		var seconds := maxf(float(now - _last_time) / 1000.0, 0.001)
 		_velocity = clampf(step / seconds, -MAX_GLIDE, MAX_GLIDE)
 		_last = where
 		_last_time = now
-		_set_position(_start_scroll - (moved.y if _vertical else moved.x))
+		_set_position(_start_scroll + (moved.y if _vertical else moved.x))
 		get_viewport().set_input_as_handled()
 
 

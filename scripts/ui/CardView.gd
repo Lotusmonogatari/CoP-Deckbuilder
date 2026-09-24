@@ -37,6 +37,14 @@ const READY_TINT := Color(1.0, 0.93, 0.6)
 
 const CARD_FONT: FontFile = preload("res://assets/fonts/AntakaBrushDisplay-Regular.ttf")
 
+## Every card without its own drawn art shows this ONE picture, rather than
+## ArtLoader's usual per-ID coloured square — Cameron, 2026-09-24: a card
+## game's hand should look like a set even before the art is finished, so
+## undrawn cards share a single placeholder image instead of each getting
+## its own colour. A card WITH real art still shows that real art; this is
+## only the backup for the ones that don't have any yet.
+const PLACEHOLDER_CARD_ART: Texture2D = preload("res://assets/cards/card_temporary_image.png")
+
 ## Canonical suit-to-front-template mapping from data/suits.json.
 const FRAME_BY_SUIT := {
 	"Earnest": preload("res://assets/cards/front_sumo.png"),
@@ -244,11 +252,11 @@ func show_card(card_row: Dictionary) -> void:
 	_art_label.text = str(card_row.get("name_jp", ""))
 	_effect_label.text = str(card_row.get("effect_text", ""))
 	_frame.texture = FRAME_BY_SUIT.get(str(card_row.get("suit", "")), FRAME_BY_SUIT["Data Driven"])
-	# By card ID (data/art.json's `card` folder), same as every other piece of
-	# art in the game — a card with nothing drawn yet gets ArtLoader's own
-	# ID-coloured placeholder rather than one fixed stand-in photo shared by
-	# all 54 cards, so drawn and undrawn cards are told apart at a glance.
-	_art_image.texture = ArtLoader.card(card_id)
+	# By card ID (data/art.json's `card` folder) when it has been drawn;
+	# PLACEHOLDER_CARD_ART otherwise, the one shared stand-in every undrawn
+	# card uses (see its own comment above).
+	var drawn_path := ArtLoader.card_path(card_id)
+	_art_image.texture = load(drawn_path) as Texture2D if not drawn_path.is_empty() else PLACEHOLDER_CARD_ART
 	_fit_effect_label.call_deferred()
 
 	tooltip_text = "%s — %s" % [card_row.get("name_en", ""), card_row.get("effect_text", "")]
