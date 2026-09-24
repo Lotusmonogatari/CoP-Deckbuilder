@@ -760,7 +760,17 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 	# when the player runs out of anything to answer with. Either way it is
 	# over rather than lost: what it produces is the organisations pleased
 	# along the way.
-	if not _questions.is_empty():
+	#
+	# This is bar_model "Single" specifically (is_press_conference()), not
+	# "any room with a question pool" — 2026-09-25 fix. ST19/ST20/ST21
+	# (Media Ambush, Lobbyist Meeting, Policy Study) also draw from a
+	# question pool, but they are real Shared_pool-bar rooms with a real
+	# support threshold; treating "ran out of questions" as an automatic win
+	# for them let a room end the moment its questions were used up, at
+	# whatever the bar happened to read — reported as ST21 "ending at 8"
+	# instead of its actual win_threshold. Only a stage whose own bar_model
+	# is genuinely tone-only (no threshold to race toward) ends this way.
+	if is_press_conference():
 		if questions_remaining() <= 0:
 			_finish("win", _conference_closing())
 			return
@@ -795,9 +805,17 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 		# A press conference runs until the reporters are done. Walking out
 		# early because the tone happened to be good would skip the questions
 		# still to come, and the answers are the whole point of the stage.
+		#
+		# 2026-09-25: this used to read "and _questions.is_empty()", which
+		# denied a threshold to ANY room with a question pool — including
+		# ST19/20/21, whose bar is an ordinary Shared_pool with a real
+		# win_threshold and whose questions are flavor on top of it, not the
+		# win condition. Only the true press-tone room (bar_model Single, see
+		# is_press_conference() above) should run out the question pool
+		# instead of checking a threshold.
 		var has_threshold := (state.bar.model != BarModel.Model.SURVIVAL
 			and state.win_mode != "score"
-			and _questions.is_empty())
+			and state.bar.model != BarModel.Model.SINGLE)
 
 		if has_threshold and state.bar.player_has_won():
 			# Where a stage lines several people up, the threshold is what it
@@ -993,8 +1011,18 @@ func preview(card: Dictionary) -> Dictionary:
 ##
 ## It stays true once the last question is answered, so the screen does not
 ## change its shape at the moment the conference ends.
+##
+## 2026-09-25: a question pool alone is not enough. ST19/20/21 (Media Ambush,
+## Lobbyist Meeting, Policy Study Session) also draw from a question pool but
+## are real Shared_pool rooms with a named opponent and a genuine win
+## threshold — treating them as a press conference made the opponent row show
+## "Reporter" instead of the real person (playtest #4) and made the room end
+## the moment the pool ran dry instead of at its threshold (playtest #7).
+## Only a stage whose declared bar_model is Single is the true press-tone
+## room; everything else with a question pool asks questions on top of an
+## ordinary bar.
 func is_press_conference() -> bool:
-	return not _questions.is_empty()
+	return not _questions.is_empty() and state.bar != null and state.bar.model == BarModel.Model.SINGLE
 
 
 ## The question waiting to be answered, or empty when there are none left.

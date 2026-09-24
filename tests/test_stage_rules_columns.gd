@@ -133,3 +133,50 @@ func test_opponent_count_a_real_range_rolls_within_it() -> void:
 	for _i in 20:
 		var count := BattleSetup._opponent_count(stage)
 		assert_between(count, 2, 4)
+
+
+# ---------------------------------------------------------------------------
+# bar_model drives is_press_conference() / has_threshold —
+# BattleEngine._check_outcome()
+#
+# Playtest bugs #4 and #7 (2026-09-25): ST19/20/21 draw from a question pool
+# the same way ST04 does, but they are Shared_pool rooms with a named
+# opponent and a real win_threshold, not a tone-only press conference. Before
+# this fix, ANY question pool made is_press_conference() true, which showed
+# "Reporter" instead of the real opponent and ended the room the moment the
+# questions ran out instead of at its threshold (reported as ST21 "ending at
+# 8" rather than its real threshold of 35).
+# ---------------------------------------------------------------------------
+
+func test_st04_is_still_a_true_press_conference() -> void:
+	var stage := DataDB.get_stage("ST04").duplicate(true)
+	stage["opponents"] = []
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(BattleSetup.for_playtest_stage(stage)))
+	assert_true(engine.is_press_conference(),
+		"ST04's declared bar_model is Single, so it is a true press conference")
+
+
+func test_st21_with_a_question_pool_is_not_a_press_conference() -> void:
+	# Policy Study Session: Shared_pool bar, real win_threshold, but still
+	# asks questions from its own pool like ST04 does.
+	var stage := DataDB.get_stage("ST21").duplicate(true)
+	stage["opponents"] = [DataDB.get_opponents_for_stage("ST21")[0]]
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(BattleSetup.for_playtest_stage(stage)))
+	assert_false(engine.is_press_conference(),
+		"ST21's bar_model is Shared_pool, not Single — it has a real opponent and threshold")
+
+
+func test_st21s_threshold_is_checked_even_though_it_has_questions() -> void:
+	var stage := DataDB.get_stage("ST21").duplicate(true)
+	stage["opponents"] = [DataDB.get_opponents_for_stage("ST21")[0]]
+	var engine := BattleEngine.new()
+	engine.setup(BattleSetup.for_playtest_stage(stage))
+
+	# Drive the bar straight to its threshold and confirm the stage is won on
+	# the threshold rather than staying open just because questions remain.
+	engine.state.bar.player = int(stage.get("win_threshold", 35))
+	engine._check_outcome()
+	assert_eq(engine.state.outcome, "win",
+		"reaching the real threshold should win ST21 even with questions left in the pool")
