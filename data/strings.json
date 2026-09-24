@@ -1706,5 +1706,12 @@
     "english": "This item has no ID.",
     "placeholders": null,
     "notes": "A data-integrity guard, not expected to be seen by a player."
+  },
+  {
+    "key": "item.choose_heading",
+    "where": "Item pop-up, Player Choice item, picker heading",
+    "english": "{name}  —  choose a group",
+    "placeholders": "name",
+    "notes": "Shown instead of the ordinary pop-up when the Shop tab's Player Choice cell for this item is Yes."
   }
 ]

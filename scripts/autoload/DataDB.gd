@@ -608,6 +608,32 @@ func get_booster(booster_id: String) -> Dictionary:
 	return _lookup(_boosters_by_id, booster_id, "booster")
 
 
+## Every booster of one tier ("Party"/"Constituency"/"National"), read live —
+## a booster added to the workbook later joins this with no other edit.
+## Used both for a "TIER:X" reward target (a random pick from the tier) and
+## for the player-choice picker (Items.is_player_choice()), which offers
+## every one of them.
+func boosters_for_tier(tier: String) -> Array:
+	return boosters.filter(func(b: Dictionary) -> bool: return str(b.get("tier", "")) == tier)
+
+
+## The real options a Player Choice item's picker offers — every booster in
+## Items.choice_pool_spec(item)'s pool or tier, as full records (names,
+## current everything). Empty when the item has nothing to choose from.
+func choice_options(item: Dictionary) -> Array:
+	var spec: Variant = Items.choice_pool_spec(item)
+	if spec is String and RewardTargets.is_booster_tier(str(spec)):
+		return boosters_for_tier(str(spec).substr(RewardTargets.TIER_PREFIX.length()))
+	if spec is Array:
+		var found: Array = []
+		for target_id: Variant in spec:
+			var booster := get_booster(str(target_id))
+			if not booster.is_empty():
+				found.append(booster)
+		return found
+	return []
+
+
 func get_shop_item(item_id: String) -> Dictionary:
 	return _lookup(_shop_by_id, item_id, "shop item")
 
@@ -635,6 +661,10 @@ func resolve_reward_target(entry: Dictionary) -> Dictionary:
 			record = get_shop_item(target_id)
 		RewardTargets.SEGMENT:
 			record = get_segment(target_id)
+		RewardTargets.BOOSTER_TIER:
+			# Not a row of its own — every booster of that tier, live.
+			record = {"tier": target_id.substr(RewardTargets.TIER_PREFIX.length()),
+				"boosters": boosters_for_tier(target_id.substr(RewardTargets.TIER_PREFIX.length()))}
 		RewardTargets.STAGE_EFFECT:
 			# Not a row anywhere — one of RewardTargets.STAGE_EFFECT_TOKENS.
 			record = {"token": target_id.to_upper()}
@@ -955,7 +985,7 @@ func _validate() -> void:
 	# "Stage", so anything unrecognised is reported rather than guessed at.
 	for item: Dictionary in shop:
 		var iid := str(item.get("item_id", ""))
-		for column: String in ["use_in_office", "use_in_stage"]:
+		for column: String in ["use_in_office", "use_in_stage", "player_choice"]:
 			var yes_no: Variant = item.get(column)
 			if yes_no != null and not ["yes", "no", "y", "n", "true", "false", "1", "0"].has(
 					str(yes_no).strip_edges().to_lower()):
@@ -967,6 +997,19 @@ func _validate() -> void:
 		if grants is Array:
 			for entry: Dictionary in grants:
 				_validate_reward_target(iid, "Grants", entry)
+
+		# Player Choice needs something to choose from — a pool or a tier —
+		# or the picker it opens would have nothing to show.
+		if Items.is_player_choice(item) and Items.choice_pool_spec(item) == null:
+			errors.append("Shop item %s is Player Choice but its Grants has no pool or tier to choose from" % iid)
+
+		# The Bonus 1/2/3 Role columns (design/proposals/inventory.md,
+		# 2026-09-25 follow-up): each named role has to be a real Staff role,
+		# or the bonus can never actually trigger.
+		for row: Dictionary in Items.staff_bonus_rows(item):
+			if not Ledger.STAFF_ROLES.has(row["role"]):
+				errors.append("Shop item %s names Staff role '%s', which is not %s"
+					% [iid, row["role"], ", ".join(Ledger.STAFF_ROLES)])
 
 	_validate_rules()
 
@@ -999,9 +1042,15 @@ func _validate_reward_target(owner_id: String, column: String, entry: Dictionary
 			record = get_segment(target_id)
 		RewardTargets.STAGE_EFFECT:
 			return   # one of a closed list; recognising it is the whole check
+		RewardTargets.BOOSTER_TIER:
+			var tier_name := target_id.substr(RewardTargets.TIER_PREFIX.length())
+			if not ["Party", "Constituency", "National"].has(tier_name):
+				errors.append("%s's %s names tier '%s', which is not Party, Constituency or National"
+					% [owner_id, column, tier_name])
+			return
 		_:
 			errors.append(("%s's %s names '%s', which doesn't match any known ID prefix "
-				+ "(BOxx, Mxx, SHxx, SGxx) or stage effect (%s)")
+				+ "(BOxx, Mxx, SHxx, SGxx), a stage effect (%s), or a tier (TIER:Party etc.)")
 				% [owner_id, column, target_id, ", ".join(RewardTargets.STAGE_EFFECT_TOKENS)])
 			return
 	if record.is_empty():

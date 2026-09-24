@@ -663,28 +663,44 @@ func apply_visitor_reward_entries(entries: Array) -> void:
 ## The one place a target_delta_list entry becomes a real effect — a
 ## visitor's Reward/Penalty, or a shop item's own Grants when it is used.
 ##
-## A pooled entry ("BO01|BO02 +1") picks one of its targets first, then
-## applies like any other. A shop item (SHxx) named here goes INTO THE
-## INVENTORY, the same as buying one — Cameron, 2026-09-25: one consistent
-## place for items to land — so there is nothing to recurse into and no way
-## for two items to loop on each other. A stage effect (ENERGY, GUARD, ...)
-## named here, outside an item being used, waits for the next stage.
-func _apply_reward_entries(entries: Array) -> void:
+## A pooled entry ("BO01|BO02 +1") or a tier ("TIER:Party +1") picks one of
+## its targets first, then applies like any other — UNLESS `chosen_target`
+## is given, in which case that target is used instead of picking (an item
+## marked Player Choice, design/proposals/inventory.md; the player already
+## chose in the UI, so there is nothing left to roll). `extra_delta` is a
+## flat amount added to every booster/segment entry's own delta — an item's
+## staff bonus (Items.staff_bonus_rows()), already totalled by the caller,
+## layered on top of the base effect wherever it lands.
+##
+## A shop item (SHxx) named here goes INTO THE INVENTORY, the same as
+## buying one — Cameron, 2026-09-25: one consistent place for items to land
+## — so there is nothing to recurse into and no way for two items to loop on
+## each other. A stage effect (ENERGY, GUARD, ...) named here, outside an
+## item being used, waits for the next stage.
+func _apply_reward_entries(entries: Array, chosen_target: String = "", extra_delta: int = 0) -> void:
 	for raw: Variant in entries:
 		if not (raw is Dictionary):
 			continue
-		var entry := _pick_from_pool(raw)
+		var entry := _choose_target(raw, chosen_target)
 		var resolved := DataDB.resolve_reward_target(entry)
 		var kind: String = resolved.get("kind", "")
 		var target_id: String = resolved.get("id", "")
 		match kind:
 			RewardTargets.BOOSTER:
-				_apply_booster_delta(target_id, _resolve_delta(resolved.get("delta")))
+				_apply_booster_delta(target_id, _resolve_delta(resolved.get("delta")) + extra_delta)
+			RewardTargets.BOOSTER_TIER:
+				# Only reached when nothing was chosen — a chosen target
+				# already replaced this with a plain BOOSTER above.
+				var pool: Array = (resolved.get("record", {}) as Dictionary).get("boosters", [])
+				if not pool.is_empty():
+					var picked: Dictionary = pool[randi() % pool.size()]
+					_apply_booster_delta(str(picked.get("booster_id", "")),
+						_resolve_delta(resolved.get("delta")) + extra_delta)
 			RewardTargets.MODIFIER:
 				if not owned_modifiers.has(target_id):
 					owned_modifiers.append(target_id)
 			RewardTargets.SEGMENT:
-				_apply_segment_delta(target_id, _resolve_delta(resolved.get("delta")))
+				_apply_segment_delta(target_id, _resolve_delta(resolved.get("delta")) + extra_delta)
 			RewardTargets.SHOP_ITEM:
 				# A delta, when given, is how many; a bare "SH04" is one.
 				add_item(target_id, maxi(_resolve_delta(resolved.get("delta")), 1))
@@ -694,10 +710,17 @@ func _apply_reward_entries(entries: Array) -> void:
 				push_warning("GameState: reward/penalty target '%s' did not resolve to anything." % target_id)
 
 
-## A pooled entry ({"target_pool": [...], "delta": ...}) as a plain one, with
-## one target picked at random from the pool. Unseeded, like every other roll
-## here. An entry without a pool comes back unchanged.
-func _pick_from_pool(entry: Dictionary) -> Dictionary:
+## A pool-shaped entry ("BO01|BO02 +1" or "TIER:Party +1"), decided:
+## `chosen_target` wins when given (the player already picked it in the
+## UI); otherwise a pool is randomly narrowed to one plain target here —
+## unseeded, like every other roll here — and a tier is left for
+## resolve_reward_target()/_apply_reward_entries() to pick from, since only
+## DataDB knows which boosters currently belong to it. A plain entry
+## (neither) comes back unchanged either way.
+func _choose_target(entry: Dictionary, chosen_target: String) -> Dictionary:
+	if not chosen_target.is_empty() and RewardTargets.is_pool_shaped(entry):
+		return {"target": chosen_target, "delta": entry.get("delta")}
+
 	var pool: Variant = entry.get("target_pool")
 	if not (pool is Array) or (pool as Array).is_empty():
 		return entry
@@ -747,16 +770,25 @@ func buy_shop_item(item_id: String) -> String:
 ## Uses one item from the Office. Its standing effects (boosters, segments,
 ## modifiers) apply now; its stage effects wait for the next stage, or the
 ## whole next level when its Duration is "Level".
-## Returns { "ok": bool, "message": String }.
-func use_item_in_office(item_id: String) -> Dictionary:
+##
+## `chosen_target` is which of a Player Choice item's pool to use — required
+## the moment Items.is_player_choice(item) is true; left empty first, this
+## returns { "ok": false, "needs_choice": true } instead of a refusal, which
+## tells the UI to open the picker and call this again with the answer,
+## rather than a reason to show the player.
+##
+## Returns { "ok": bool, "message": String } or { "ok": false, "needs_choice": true }.
+func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.use_refusal(item, Items.OFFICE, item_count(item_id), Text.phrase())
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
+	if Items.is_player_choice(item) and chosen_target.is_empty():
+		return {"ok": false, "needs_choice": true}
 
 	_take_item(item_id)
 	var split := Items.split_grants(item)
-	_apply_reward_entries(split["meta"])
+	_apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
 	var name := str(item.get("name", item_id))
 	if (split["stage"] as Array).is_empty():
 		return {"ok": true, "message": Text.say("item.used", {"name": name})}
@@ -774,11 +806,16 @@ func use_item_in_office(item_id: String) -> Dictionary:
 ## buff keeps running for the rest of the level too. Standing effects apply
 ## now, the same as in the Office. Nothing is taken from the inventory if
 ## the battle refuses.
-func use_item_in_stage(item_id: String, engine: BattleEngine) -> Dictionary:
+##
+## `chosen_target` — see use_item_in_office()'s own note; the same
+## needs_choice contract applies here.
+func use_item_in_stage(item_id: String, engine: BattleEngine, chosen_target: String = "") -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.use_refusal(item, Items.STAGE, item_count(item_id), Text.phrase())
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
+	if Items.is_player_choice(item) and chosen_target.is_empty():
+		return {"ok": false, "needs_choice": true}
 
 	var split := Items.split_grants(item)
 	var effects := _resolve_stage_effects(split["stage"])
@@ -787,7 +824,7 @@ func use_item_in_stage(item_id: String, engine: BattleEngine) -> Dictionary:
 		return {"ok": false, "message": str(result.get("reason", ""))}
 
 	_take_item(item_id)
-	_apply_reward_entries(split["meta"])
+	_apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
 	if Items.duration(item) == Items.DURATION_LEVEL:
 		for effect: Dictionary in effects:
 			_add_bonus(level_bonuses, str(effect["token"]), int(effect["amount"]))
@@ -820,7 +857,7 @@ func _resolve_stage_effects(entries: Array) -> Array:
 	for raw: Variant in entries:
 		if not (raw is Dictionary):
 			continue
-		var entry := _pick_from_pool(raw)
+		var entry := _choose_target(raw, "")
 		effects.append({
 			"token": str(entry.get("target", "")).to_upper(),
 			"amount": _stage_effect_amount(entry.get("delta")),
@@ -839,6 +876,20 @@ func _add_bonus(bonuses: Dictionary, token: String, amount: int) -> void:
 		return
 	var key := token.to_upper()
 	bonuses[key] = int(bonuses.get(key, 0)) + amount
+
+
+## The sum of an item's Bonus 1/2/3 rows whose named Staff role is hired at
+## or above that row's Min Tier — 0 where nobody qualifies. Cameron,
+## 2026-09-25: SH01-03 work without the role; having it layers this on top.
+func _staff_bonus_total(item: Dictionary) -> int:
+	var total := 0
+	for row: Dictionary in Items.staff_bonus_rows(item):
+		var hired: Dictionary = staff_hired.get(str(row["role"]), {})
+		if hired.is_empty():
+			continue
+		if int(hired.get("tier", -1)) >= int(row["min_tier"]):
+			total += int(row["amount"])
+	return total
 
 
 ## A booster standing change by an arbitrary signed amount, clamped the same

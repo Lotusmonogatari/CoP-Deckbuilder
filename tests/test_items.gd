@@ -125,3 +125,54 @@ func test_stage_effect_words_are_recognised_by_reward_targets() -> void:
 		assert_eq(RewardTargets.kind_of(token), RewardTargets.STAGE_EFFECT)
 	assert_eq(RewardTargets.kind_of("energy"), RewardTargets.STAGE_EFFECT, "case-insensitive")
 	assert_eq(RewardTargets.first_target({"target_pool": ["BO03", "BO04"]}), "BO03")
+
+
+# ---------------------------------------------------------------------------
+# Player Choice and staff bonuses (design/proposals/inventory.md,
+# 2026-09-25 follow-up)
+# ---------------------------------------------------------------------------
+
+func test_player_choice_reads_the_yes_no_cell() -> void:
+	assert_true(Items.is_player_choice(_item({"player_choice": "Yes"})))
+	assert_false(Items.is_player_choice(_item()), "blank means No, same as every other Yes/No cell")
+
+
+func test_choice_pool_spec_reads_a_pool_or_a_tier() -> void:
+	assert_eq(Items.choice_pool_spec(_item({"grants": [{"target_pool": ["BO01", "BO02"], "delta": 1}]})),
+		["BO01", "BO02"])
+	assert_eq(Items.choice_pool_spec(_item({"grants": [{"target": "TIER:Party", "delta": 1}]})), "TIER:Party")
+	assert_null(Items.choice_pool_spec(_item({"grants": [{"target": "BO01", "delta": 1}]})),
+		"a single fixed target has nothing to choose from")
+
+
+func test_staff_bonus_rows_reads_only_the_filled_in_rows() -> void:
+	var item := _item({
+		"bonus_1_role": "Policy Research Assistant", "bonus_1_min_tier": 1, "bonus_1_amount": 0,
+		"bonus_2_role": "Policy Research Assistant", "bonus_2_min_tier": 2, "bonus_2_amount": 1,
+	})
+	var rows := Items.staff_bonus_rows(item)
+	assert_eq(rows.size(), 2, "Bonus 3's Role is blank, so only 2 rows")
+	assert_eq(rows[1], {"role": "Policy Research Assistant", "min_tier": 2, "amount": 1})
+
+
+func test_staff_bonus_rows_is_empty_when_no_role_is_set() -> void:
+	assert_eq(Items.staff_bonus_rows(_item()), [])
+
+
+# ---------------------------------------------------------------------------
+# BOOSTER_TIER — RewardTargets.kind_of() recognising "TIER:X"
+# ---------------------------------------------------------------------------
+
+func test_a_tier_target_is_recognised() -> void:
+	assert_eq(RewardTargets.kind_of("TIER:Party"), RewardTargets.BOOSTER_TIER)
+	assert_true(RewardTargets.is_booster_tier("TIER:National"))
+
+
+func test_a_bare_tier_prefix_with_nothing_after_it_is_unknown() -> void:
+	assert_eq(RewardTargets.kind_of("TIER:"), RewardTargets.UNKNOWN)
+
+
+func test_is_pool_shaped_covers_both_an_explicit_pool_and_a_tier() -> void:
+	assert_true(RewardTargets.is_pool_shaped({"target_pool": ["BO01", "BO02"]}))
+	assert_true(RewardTargets.is_pool_shaped({"target": "TIER:Party"}))
+	assert_false(RewardTargets.is_pool_shaped({"target": "BO01"}))

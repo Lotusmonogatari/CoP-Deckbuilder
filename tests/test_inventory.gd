@@ -4,10 +4,13 @@ extends GutTest
 ## in the Office (queued for the next stage or level) or during a stage.
 ## Uses the real Shop-tab rows, so a workbook change that breaks a rule shows
 ## up here too:
-##   SH01 Commission Policy Research  Now, pool "BO01|BO02 +1", limit 1/level
+##   SH01 Commission Policy Research  Now, "TIER:Party +1", limit 1/level,
+##                                    +1 more once Policy Research Assistant
+##                                    reaches Tier 2 (Party tier is BO01/BO02)
 ##   SH04 Coffee                      Stage, "ENERGY +1"
 ##   SH20 Extra Draw                  Level, "DRAW +1", cap 2, limit 2/level
 ##   SH09 Blue Profile                No for both places, no Grants
+##   SH25 Host National Booster Dinner  Now, Player Choice, "TIER:National +2"
 
 var _saved: Dictionary = {}
 
@@ -22,6 +25,7 @@ func before_each() -> void:
 		"xp": GameState.xp,
 		"meta": GameState.meta.duplicate(true),
 		"standing": GameState.booster_standing.duplicate(true),
+		"staff_hired": GameState.staff_hired.duplicate(true),
 	}
 	GameState.inventory = {}
 	GameState.shop_bought_this_level = {}
@@ -30,6 +34,7 @@ func before_each() -> void:
 	GameState.level_bonuses = {}
 	GameState.xp = 10000
 	GameState.meta["Funds"] = 900000
+	GameState.staff_hired = {}
 
 
 func after_each() -> void:
@@ -41,6 +46,7 @@ func after_each() -> void:
 	GameState.xp = _saved["xp"]
 	GameState.meta = _saved["meta"]
 	GameState.booster_standing = _saved["standing"]
+	GameState.staff_hired = _saved["staff_hired"]
 
 
 # ---------------------------------------------------------------------------
@@ -78,6 +84,88 @@ func test_a_now_item_used_in_the_office_moves_one_booster_from_its_pool() -> voi
 	var moved := int(GameState.booster_standing["BO01"]) + int(GameState.booster_standing["BO02"]) - 100
 	assert_eq(moved, 1)
 	assert_eq(GameState.item_count("SH01"), 0)
+
+
+func test_a_tier_pool_only_ever_moves_a_booster_of_that_tier() -> void:
+	# SH01's Grants is "TIER:Party +1" — Party is BO01/BO02 only; nothing
+	# outside that tier should ever move.
+	for _i in 20:
+		GameState.inventory["SH01"] = 1
+		GameState.booster_standing["BO01"] = 50
+		GameState.booster_standing["BO02"] = 50
+		GameState.booster_standing["BO03"] = 50   # Constituency — not in the pool
+		GameState.use_item_in_office("SH01")
+		assert_eq(int(GameState.booster_standing["BO03"]), 50)
+
+
+func test_hiring_the_named_staff_at_tier_2_layers_the_bonus_on_top() -> void:
+	# SH01's Bonus 2 Role/Min Tier/Amount: Policy Research Assistant, Tier 2,
+	# +1 — added to the base "TIER:Party +1", reaching +2, whichever Party
+	# booster the base effect happens to land on.
+	GameState.staff_hired["Policy Research Assistant"] = {"staff_id": "SF01", "tier": 2}
+	GameState.inventory["SH01"] = 1
+	GameState.booster_standing["BO01"] = 50
+	GameState.booster_standing["BO02"] = 50
+	GameState.use_item_in_office("SH01")
+	var moved := int(GameState.booster_standing["BO01"]) + int(GameState.booster_standing["BO02"]) - 100
+	assert_eq(moved, 2, "base +1, Tier 2 bonus +1 more")
+
+
+func test_hiring_the_staff_at_only_tier_1_does_not_reach_the_tier_2_bonus() -> void:
+	# Bonus 1 Amount is 0 for SH01 — Tier 1 alone changes nothing.
+	GameState.staff_hired["Policy Research Assistant"] = {"staff_id": "SF01", "tier": 1}
+	GameState.inventory["SH01"] = 1
+	GameState.booster_standing["BO01"] = 50
+	GameState.booster_standing["BO02"] = 50
+	GameState.use_item_in_office("SH01")
+	var moved := int(GameState.booster_standing["BO01"]) + int(GameState.booster_standing["BO02"]) - 100
+	assert_eq(moved, 1)
+
+
+func test_hiring_a_different_role_does_not_trigger_the_bonus() -> void:
+	GameState.staff_hired["Media Spokesperson"] = {"staff_id": "SF08", "tier": 2}
+	GameState.inventory["SH01"] = 1
+	GameState.booster_standing["BO01"] = 50
+	GameState.booster_standing["BO02"] = 50
+	GameState.use_item_in_office("SH01")
+	var moved := int(GameState.booster_standing["BO01"]) + int(GameState.booster_standing["BO02"]) - 100
+	assert_eq(moved, 1)
+
+
+# ---------------------------------------------------------------------------
+# Player Choice — SH25/26 ("Host a dinner for a player-selected group")
+# ---------------------------------------------------------------------------
+
+func test_a_player_choice_item_asks_for_a_choice_before_doing_anything() -> void:
+	GameState.inventory["SH25"] = 1
+	var result := GameState.use_item_in_office("SH25")
+	assert_false(result.get("ok", true))
+	assert_true(result.get("needs_choice", false))
+	assert_eq(GameState.item_count("SH25"), 1, "nothing taken until a choice is actually made")
+
+
+func test_a_player_choice_item_moves_exactly_the_chosen_booster() -> void:
+	# SH25 is TIER:National — pick one specific National booster and confirm
+	# only THAT one moved, never a random other member of the tier.
+	GameState.inventory["SH25"] = 1
+	GameState.booster_standing["BO05"] = 50
+	GameState.booster_standing["BO08"] = 50
+	var result := GameState.use_item_in_office("SH25", "BO08")
+	assert_true(result.get("ok", false))
+	assert_eq(int(GameState.booster_standing["BO08"]), 52, "SH25's own +2")
+	assert_eq(int(GameState.booster_standing["BO05"]), 50, "not the chosen one — untouched")
+	assert_eq(GameState.item_count("SH25"), 0)
+
+
+func test_choice_options_lists_every_booster_of_the_items_tier() -> void:
+	var item := DataDB.get_shop_item("SH25")
+	var options := DataDB.choice_options(item)
+	var ids: Array = []
+	for booster: Dictionary in options:
+		ids.append(booster.get("booster_id"))
+	assert_eq(ids, DataDB.boosters_for_tier("National").map(
+		func(b: Dictionary) -> String: return str(b.get("booster_id"))))
+	assert_gt(ids.size(), 1, "sanity: National has more than one booster to choose from")
 
 
 func test_a_stage_item_used_in_the_office_waits_for_the_next_stage_only() -> void:

@@ -116,3 +116,27 @@ func test_shop_json_is_actually_loaded() -> void:
 	# Regression guard for the gap this file closes: shop.json existed on
 	# disk with 29 real items and nothing ever read it.
 	assert_gt(DataDB.shop.size(), 0, "data/shop.json should be loaded")
+
+
+# ---------------------------------------------------------------------------
+# BOOSTER_TIER (design/proposals/inventory.md, 2026-09-25 follow-up) — a
+# "TIER:Party" target resolves to every current Party-tier booster, read
+# live, rather than a fixed list a workbook edit could fall out of sync with.
+# ---------------------------------------------------------------------------
+
+func test_resolving_a_tier_target_lists_every_booster_of_that_tier() -> void:
+	var resolved := DataDB.resolve_reward_target({"target": "TIER:Party", "delta": 1})
+	assert_eq(resolved["kind"], RewardTargets.BOOSTER_TIER)
+	var record: Dictionary = resolved["record"]
+	assert_eq(record["tier"], "Party")
+	var ids: Array = []
+	for booster: Dictionary in (record["boosters"] as Array):
+		ids.append(booster.get("booster_id"))
+	assert_eq(ids, DataDB.boosters_for_tier("Party").map(
+		func(b: Dictionary) -> String: return str(b.get("booster_id"))))
+	assert_gt(ids.size(), 0, "sanity: Party has real boosters")
+
+
+func test_boosters_for_tier_only_returns_that_tier() -> void:
+	for booster: Dictionary in DataDB.boosters_for_tier("National"):
+		assert_eq(booster.get("tier"), "National")

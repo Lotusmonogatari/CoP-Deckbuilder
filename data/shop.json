@@ -9,10 +9,7 @@
     "bonus_condition_2": "Policy Research Assistant is Tier 2: +2 to the selected Party booster group.",
     "grants": [
       {
-        "target_pool": [
-          "BO01",
-          "BO02"
-        ],
+        "target": "TIER:Party",
         "delta": 1
       }
     ],
@@ -22,7 +19,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": 1
+    "purchase_limit": 1,
+    "player_choice": null,
+    "bonus_1_role": "Policy Research Assistant",
+    "bonus_1_min_tier": 1,
+    "bonus_1_amount": 0,
+    "bonus_2_role": "Policy Research Assistant",
+    "bonus_2_min_tier": 2,
+    "bonus_2_amount": 1,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH02",
@@ -34,15 +41,7 @@
     "bonus_condition_2": "Media Spokesperson is Tier 2: +4 to the selected National booster group.",
     "grants": [
       {
-        "target_pool": [
-          "BO05",
-          "BO08",
-          "BO09",
-          "BO10",
-          "BO13",
-          "BO15",
-          "BO16"
-        ],
+        "target": "TIER:National",
         "delta": 2
       }
     ],
@@ -52,7 +51,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": 1
+    "purchase_limit": 1,
+    "player_choice": null,
+    "bonus_1_role": "Media Spokesperson",
+    "bonus_1_min_tier": 1,
+    "bonus_1_amount": 0,
+    "bonus_2_role": "Media Spokesperson",
+    "bonus_2_min_tier": 2,
+    "bonus_2_amount": 2,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH03",
@@ -64,15 +73,7 @@
     "bonus_condition_2": "District Representative is Tier 2: +4 to the selected Constituency booster group.",
     "grants": [
       {
-        "target_pool": [
-          "BO03",
-          "BO04",
-          "BO06",
-          "BO07",
-          "BO11",
-          "BO12",
-          "BO14"
-        ],
+        "target": "TIER:Constituency",
         "delta": 2
       }
     ],
@@ -82,7 +83,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": 1
+    "purchase_limit": 1,
+    "player_choice": null,
+    "bonus_1_role": "District Representative",
+    "bonus_1_min_tier": 1,
+    "bonus_1_amount": 0,
+    "bonus_2_role": "District Representative",
+    "bonus_2_min_tier": 2,
+    "bonus_2_amount": 2,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH04",
@@ -104,7 +115,17 @@
     "duration": "Stage",
     "uses_per_turn": 1,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH05",
@@ -126,7 +147,17 @@
     "duration": "Stage",
     "uses_per_turn": 1,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH06",
@@ -148,7 +179,17 @@
     "duration": "Stage",
     "uses_per_turn": 1,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH07",
@@ -170,7 +211,17 @@
     "duration": "Stage",
     "uses_per_turn": 1,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH08",
@@ -192,7 +243,17 @@
     "duration": "Stage",
     "uses_per_turn": 1,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH09",
@@ -209,7 +270,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH10",
@@ -226,7 +297,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH11",
@@ -243,7 +324,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH12",
@@ -260,7 +351,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH13",
@@ -277,7 +378,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH14",
@@ -294,7 +405,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH15",
@@ -311,7 +432,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH16",
@@ -328,7 +459,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH17",
@@ -345,7 +486,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH18",
@@ -362,7 +513,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH19",
@@ -379,7 +540,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH20",
@@ -401,7 +572,17 @@
     "duration": "Level",
     "uses_per_turn": 1,
     "stack_cap": 2,
-    "purchase_limit": 2
+    "purchase_limit": 2,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH21",
@@ -423,7 +604,17 @@
     "duration": "Level",
     "uses_per_turn": 1,
     "stack_cap": 3,
-    "purchase_limit": 3
+    "purchase_limit": 3,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH22",
@@ -445,7 +636,17 @@
     "duration": "Level",
     "uses_per_turn": 1,
     "stack_cap": 5,
-    "purchase_limit": 5
+    "purchase_limit": 5,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH23",
@@ -467,7 +668,17 @@
     "duration": "Level",
     "uses_per_turn": 1,
     "stack_cap": 5,
-    "purchase_limit": 5
+    "purchase_limit": 5,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH24",
@@ -489,7 +700,17 @@
     "duration": "Level",
     "uses_per_turn": 1,
     "stack_cap": 3,
-    "purchase_limit": 3
+    "purchase_limit": 3,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH25",
@@ -499,14 +720,29 @@
     "cost_yen": 20000,
     "bonus_condition_1": "+2 relationship for the selected group.",
     "bonus_condition_2": null,
-    "grants": null,
+    "grants": [
+      {
+        "target": "TIER:National",
+        "delta": 2
+      }
+    ],
     "icon": "booster_dinner",
-    "use_in_office": "No",
+    "use_in_office": "Yes",
     "use_in_stage": "No",
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": "Yes",
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH26",
@@ -516,14 +752,29 @@
     "cost_yen": 10000,
     "bonus_condition_1": "+1 relationship for the selected group.",
     "bonus_condition_2": null,
-    "grants": null,
+    "grants": [
+      {
+        "target": "TIER:Constituency",
+        "delta": 1
+      }
+    ],
     "icon": "walking_tour",
-    "use_in_office": "No",
+    "use_in_office": "Yes",
     "use_in_stage": "No",
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": "Yes",
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH27",
@@ -540,7 +791,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH28",
@@ -557,7 +818,17 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   },
   {
     "item_id": "SH29",
@@ -574,6 +845,16 @@
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
-    "purchase_limit": null
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null
   }
 ]

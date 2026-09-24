@@ -4,6 +4,8 @@ extends Node
 ##
 ##   Office → Office Management → Supplies → buy two Coffees
 ##   Office → Inventory → Coffee → Use     (queued for the next stage)
+##   Office → Inventory → Host National Booster Dinner → Use → pick a booster
+##                                                     (lands on that one only)
 ##   Start a level → the first stage starts with +1 energy per turn
 ##   Battle → Inventory → Coffee → Use     (lands now, +1 energy)
 ##
@@ -14,6 +16,7 @@ extends Node
 
 const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 const COFFEE := "SH04"
+const DINNER := "SH25"   # Player Choice, "TIER:National +2"
 
 var _failures: PackedStringArray = []
 
@@ -87,6 +90,10 @@ func _walk() -> void:
 	inventory.close()
 	await _wait(0.2)
 
+	# --- Player Choice item: pick a booster from the picker -------------------
+	if not await _walk_choice_picker(office):
+		return
+
 	# --- Into the first level ------------------------------------------------
 	await _click(office.get_node("%StartButton"))
 	var levels := office.get_node("%LevelsPanel") as Overlay
@@ -124,6 +131,61 @@ func _walk() -> void:
 	print("  used the second Coffee mid-stage; +1 energy now")
 	battle_inventory.close()
 	GameState.end_level()
+
+
+## Gives the player a Host National Booster Dinner, opens it from the Office
+## inventory, presses Use (which — Items.is_player_choice() — opens the
+## picker instead of using it right away), picks one specific National
+## booster, and confirms only that booster moved.
+func _walk_choice_picker(office: Node) -> bool:
+	GameState.inventory[DINNER] = 1
+	var national := DataDB.boosters_for_tier("National")
+	if national.size() < 2:
+		_failures.append("National needs at least 2 boosters for this test to mean anything")
+		return false
+	var chosen_id := str(national[0].get("booster_id"))
+	var other_id := str(national[1].get("booster_id"))
+	GameState.booster_standing[chosen_id] = 50
+	GameState.booster_standing[other_id] = 50
+
+	await _click(office.find_child("InventoryButton", true, false) as Control)
+	var inventory := office.get_node("InventoryPanel") as InventoryPanel
+	if not inventory.visible:
+		_failures.append("the Inventory button did not reopen the inventory")
+		return false
+	var icon := inventory.find_child("Item_" + DINNER, true, false) as Control
+	if icon == null:
+		_failures.append("the inventory does not show the Booster Dinner")
+		return false
+	await _click(icon)
+	var use := inventory.find_child("Confirm", true, false) as Button
+	if use == null or not use.visible:
+		_failures.append("the Booster Dinner pop-up has no Use button")
+		return false
+	await _click(use)
+
+	var choice := inventory.find_child("Choice_" + chosen_id, true, false) as Button
+	if choice == null:
+		_failures.append("pressing Use did not open a picker with the chosen booster in it")
+		return false
+	if GameState.item_count(DINNER) != 1:
+		_failures.append("opening the picker already consumed the item, before a choice was made")
+		return false
+	await _click(choice)
+
+	if GameState.item_count(DINNER) != 0:
+		_failures.append("choosing a booster did not use the Booster Dinner")
+		return false
+	if int(GameState.booster_standing[chosen_id]) != 52:
+		_failures.append("the chosen booster did not gain the Dinner's +2")
+		return false
+	if int(GameState.booster_standing[other_id]) != 50:
+		_failures.append("a booster nobody picked moved anyway")
+		return false
+	print("  used the Booster Dinner; the chosen booster (only) gained +2")
+	inventory.close()
+	await _wait(0.2)
+	return true
 
 
 ## Opens Coffee's pop-up from an open inventory and presses Use.

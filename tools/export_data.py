@@ -578,7 +578,10 @@ SHEETS = {
         # "not structured yet", the same "optional means Cameron hasn't
         # gotten to it" convention as the Stages living-rules columns.
         "optional": ["Grants", "Icon", "Use In Office", "Use In Stage", "Duration",
-                     "Uses Per Turn", "Stack Cap", "Purchase Limit"],
+                     "Uses Per Turn", "Stack Cap", "Purchase Limit", "Player Choice",
+                     "Bonus 1 Role", "Bonus 1 Min Tier", "Bonus 1 Amount",
+                     "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
+                     "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -615,6 +618,27 @@ SHEETS = {
             ("Uses Per Turn", "uses_per_turn", "int"),
             ("Stack Cap", "stack_cap", "int"),
             ("Purchase Limit", "purchase_limit", "int"),
+            # 2026-09-25 follow-up. "Player Choice": Yes means Use asks
+            # WHICH of Grants' pool/tier the effect lands on (SH25/26,
+            # "player-selected" in their own Description) instead of picking
+            # one at random (SH01-03, "randomly-selected"). "Bonus N Role/
+            # Min Tier/Amount": an extra delta layered onto the base Grants
+            # effect once the named Staff role (Ledger.STAFF_ROLES) is hired
+            # at or above that tier — SH01-03 work without the role; having
+            # it adds this on top. Each row's Amount is what THAT row adds
+            # beyond a lower row already counted, not the running total (see
+            # Items.staff_bonus_rows()'s own comment). Up to 3 rows, blank
+            # Role means that row is unused.
+            ("Player Choice", "player_choice", "str"),
+            ("Bonus 1 Role", "bonus_1_role", "str"),
+            ("Bonus 1 Min Tier", "bonus_1_min_tier", "int"),
+            ("Bonus 1 Amount", "bonus_1_amount", "int"),
+            ("Bonus 2 Role", "bonus_2_role", "str"),
+            ("Bonus 2 Min Tier", "bonus_2_min_tier", "int"),
+            ("Bonus 2 Amount", "bonus_2_amount", "int"),
+            ("Bonus 3 Role", "bonus_3_role", "str"),
+            ("Bonus 3 Min Tier", "bonus_3_min_tier", "int"),
+            ("Bonus 3 Amount", "bonus_3_amount", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's

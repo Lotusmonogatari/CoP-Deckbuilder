@@ -77,11 +77,83 @@ item in the Office, checks the next stage starts with the bonus, then uses an
 item mid-stage. It runs in `tools/verify.sh`. 618 unit tests and all three
 click tests pass.
 
-**Still open:** Q5 (SH25–SH26 "player-selected" booster groups: those items
-are marked No/No until designed), Q6 (the base amount for SH01–SH03 with no
-staff hired), Q8 (per-item use text), and the XP price that rises with each
+**Still open:** Q8 (per-item use text), and the XP price that rises with each
 extra stack in SH20–SH24's own text. That last one is not built: each stack
-currently costs the same.
+currently costs the same (confirmed correct by Cameron, 2026-09-26 — SH20–24
+cost the same per purchase and stack to their cap).
+
+## 0.1 Follow-up: SH25/26's picker, and the SH01–03 staff bonus (2026-09-26)
+
+Cameron asked for three things, answered here in order, plus a fourth: he
+invited a structural change if one would cut code complexity.
+
+**1. SH25/SH26 ("player-selected" group) now have a real picker.** Both
+items' Grants are filled in (`SH25` = `TIER:National +2`, `SH26` =
+`TIER:Constituency +1`) and marked **Player Choice = Yes**. Pressing Use on
+a Player Choice item opens a third `InventoryPanel` view instead of using it
+straight away: a grid of every booster in the item's group, each button
+showing that booster's current standing. Tapping one applies the item to
+that booster only and closes the picker. `DataDB.choice_options()` builds
+the grid live from `DataDB.boosters`, so a booster added to a tier later
+appears with no edit to SH25/26 themselves — this is what answers "flexible
+for if more are added."
+
+**2. SH20–24 confirmed as already correct** — no code change. They already
+charged the same price per stack and capped at the number in their own
+text; this was a check, not a gap.
+
+**3. SH01–03 now work without staff, and layer a bonus when the named staff
+is hired.** Three new **Bonus 1/2/3 Role / Min Tier / Amount** column
+triples on the Shop tab hold what Bonus Condition 1–3's prose already said
+in words: hiring the row's named Staff role, at or above the row's tier,
+adds the row's amount on top of the item's own Grants, read fresh every time
+the item is used (not a one-time payout — unlike the tier rewards a Staff
+hire itself already pays out). Amounts are **additive layers**, not
+restated totals, so a total the text states at Tier 2 becomes (Tier 2's row
+amount) added on top of (Tier 1's row amount, usually 0):
+
+| Item | Base (no staff) | Role | Tier 1 adds | Tier 2 adds |
+|---|---|---|---|---|
+| SH01 Commission Policy Research | `TIER:Party +1` | Policy Research Assistant | +0 | +1 |
+| SH02 Commission Press Engagement | `TIER:National +2` | Media Spokesperson | +0 | +2 |
+| SH03 Commission District Engagement | `TIER:Constituency +2` | District Representative | +0 | +2 |
+
+**The structural revision (answering "reduce code complexity"): `TIER:X`
+pools.** SH01–03's old draft Grants (§2.4) were fixed ID lists —
+`BO01|BO02 +1`, then every National ID spelled out, then every Constituency
+ID spelled out. Two problems: a booster added later falls out of sync
+silently, and SH25/26 needed the same "which boosters count as this tier"
+answer a second time for their own picker. Both are now one mechanism: a
+`Grants` cell can read `TIER:Party`, `TIER:National` or `TIER:Constituency`
+instead of a target ID, and `DataDB.boosters_for_tier()` resolves it live
+from each booster's own Tier cell — a `booster_tier` target kind alongside
+the existing booster/modifier/segment/shop_item/stage_effect kinds
+(`RewardTargets.BOOSTER_TIER`). SH01–03 keep their random pick from the
+tier (unchanged behaviour); SH25/26 use the same tier list to build a
+picker instead of rolling one. One new column value replaces two
+hand-maintained ID lists.
+
+**Code:** `RewardTargets.gd` (`BOOSTER_TIER`, `TIER:` prefix, `is_pool_shaped()`
+covering both an explicit pool and a tier), `Items.gd` (`is_player_choice()`,
+`choice_pool_spec()`, `staff_bonus_rows()`), `DataDB.gd`
+(`boosters_for_tier()`, `choice_options()`, BOOSTER_TIER resolution and
+validation), `GameState.gd` (`_choose_target()` — renamed from
+`_pick_from_pool()` to cover a player's chosen target as well as a random
+pool pick; `_staff_bonus_total()`; `use_item_in_office()`/
+`use_item_in_stage()` take an optional `chosen_target` and return
+`{"ok": false, "needs_choice": true}` when a Player Choice item is used with
+none given), `InventoryPanel.gd` (the picker view, `_choice_button()`).
+
+**Workbook:** Shop tab gained **Player Choice** (Yes/No) and three **Bonus N
+Role / Min Tier / Amount** column triples. Text tab gained
+`item.choose_heading`. SH01–03 and SH25–26's Grants cells were filled in as
+above.
+
+**Tests:** 16 new — `test_reward_targets.gd`, `test_items.gd` and
+`test_inventory.gd` each gained coverage for `TIER:` resolution, Player
+Choice, and the staff-bonus layering, and `tests/interaction/inventory_test.tscn`
+now also clicks through buying, using, and picking a booster from SH25's
+picker. 634 unit tests and all three click tests pass.
 
 ## Executive summary
 

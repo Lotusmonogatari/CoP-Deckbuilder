@@ -2,11 +2,13 @@ class_name InventoryPanel
 extends Overlay
 ## The inventory, and the pop-up for one item in it.
 ##
-## One panel, two views: the grid of everything held (tap an icon), then
-## that item's details — icon, how many, stack cap, what it does, when it
-## lands — with Use and Close. Built on Overlay so it keeps the three ways
-## out every panel here has, and shared by the Office and the battle screen
-## so the two can never drift apart; `context` is the only difference.
+## One panel, three views: the grid of everything held (tap an icon), that
+## item's details — icon, how many, stack cap, what it does, when it lands —
+## with Use and Close, and, for a Player Choice item (Items.is_player_
+## choice()), a third view picking which booster group Use lands on. Built
+## on Overlay so it keeps the three ways out every panel here has, and
+## shared by the Office and the battle screen so the two can never drift
+## apart; `context` is the only difference.
 ##
 ## Every sentence comes from the Text tab and every rule from Items.gd /
 ## GameState — this file only draws. See design/proposals/inventory.md.
@@ -114,11 +116,60 @@ func _refusal(item_id: String, item: Dictionary) -> String:
 func _on_use_pressed() -> void:
 	if _showing_item.is_empty():
 		return
+	var item := DataDB.get_shop_item(_showing_item)
+	if Items.is_player_choice(item):
+		_show_choice_picker(_showing_item)
+		return
+	_use(_showing_item, "")
+
+
+## Which booster gets a Player Choice item's effect — "Host a dinner for a
+## player-selected booster group" (SH25/26), and any later item the Player
+## Choice column marks the same way. Every booster in the item's pool or
+## tier, read live off DataDB.boosters, so a group added later appears here
+## with no edit to the item itself.
+func _show_choice_picker(item_id: String) -> void:
+	var item := DataDB.get_shop_item(item_id)
+	var options := DataDB.choice_options(item)
+	var rows: Array[Control] = []
+
+	if options.is_empty():
+		# A data problem (DataDB's own validation should have caught it at
+		# boot), not a player mistake — but the panel still has to say
+		# something rather than open empty.
+		rows.append(_label(Text.say("item.refused.no_effect")))
+	else:
+		var grid := GridContainer.new()
+		grid.name = "Choices"
+		grid.columns = 2
+		grid.add_theme_constant_override("h_separation", 16)
+		grid.add_theme_constant_override("v_separation", 16)
+		for booster: Dictionary in options:
+			grid.add_child(_choice_button(item_id, booster))
+		rows.append(grid)
+
+	open(Text.say("item.choose_heading", {"name": item.get("name", item_id)}),
+		rows, "", Text.say("item.close"))
+
+
+func _choice_button(item_id: String, booster: Dictionary) -> Button:
+	var booster_id := str(booster.get("booster_id", ""))
+	var button := Button.new()
+	button.name = "Choice_" + booster_id
+	button.custom_minimum_size = Vector2(0, 100)
+	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var standing := int(GameState.booster_standing.get(booster_id, 50))
+	button.text = "%s  —  %d" % [booster.get("name_en", booster_id), standing]
+	button.pressed.connect(_use.bind(item_id, booster_id))
+	return button
+
+
+func _use(item_id: String, chosen_target: String) -> void:
 	var result: Dictionary
 	if context == Items.STAGE:
-		result = GameState.use_item_in_stage(_showing_item, engine)
+		result = GameState.use_item_in_stage(item_id, engine, chosen_target)
 	else:
-		result = GameState.use_item_in_office(_showing_item)
+		result = GameState.use_item_in_office(item_id, chosen_target)
 	_notice = str(result.get("message", ""))
 	if on_used.is_valid():
 		on_used.call(result)

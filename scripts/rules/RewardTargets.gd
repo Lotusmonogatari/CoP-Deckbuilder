@@ -20,7 +20,17 @@ const MODIFIER := "modifier"
 const SHOP_ITEM := "shop_item"
 const SEGMENT := "segment"
 const STAGE_EFFECT := "stage_effect"
+const BOOSTER_TIER := "booster_tier"
 const UNKNOWN := ""
+
+## A booster tier group, written "TIER:Party"/"TIER:Constituency"/
+## "TIER:National" — every booster of that tier is one thing to pick from
+## (design/proposals/inventory.md, Cameron 2026-09-25: SH01-03/SH25-26).
+## Which boosters currently belong to a tier is read live from
+## DataDB.boosters, so a booster added later joins the pool with no
+## workbook edit to the item itself — unlike an explicit "BO01|BO02" pool,
+## which only ever means those exact IDs.
+const TIER_PREFIX := "TIER:"
 
 ## The closed list of stage-effect words a Grants/Reward cell may name
 ## (design/proposals/inventory.md §2.2). Each is a number added to one part
@@ -43,6 +53,8 @@ static func kind_of(target_id: String) -> String:
 	var id := target_id.strip_edges()
 	if STAGE_EFFECT_TOKENS.has(id.to_upper()):
 		return STAGE_EFFECT
+	if id.begins_with(TIER_PREFIX) and id.length() > TIER_PREFIX.length():
+		return BOOSTER_TIER
 	if id.begins_with("BO") and _digits_after(id, 2):
 		return BOOSTER
 	if id.begins_with("SH") and _digits_after(id, 2):
@@ -70,6 +82,10 @@ static func is_segment(target_id: String) -> bool:
 	return kind_of(target_id) == SEGMENT
 
 
+static func is_booster_tier(target_id: String) -> bool:
+	return kind_of(target_id) == BOOSTER_TIER
+
+
 ## An entry's target, or the first of its pool — a pool ("BO01|BO02 +1",
 ## exported as "target_pool") is one kind of thing to pick from, so its
 ## first member speaks for its kind. Empty when neither is present.
@@ -78,6 +94,17 @@ static func first_target(entry: Dictionary) -> String:
 	if pool is Array and not (pool as Array).is_empty():
 		return str((pool as Array)[0])
 	return str(entry.get("target", ""))
+
+
+## True when an entry offers more than one thing to pick from — an explicit
+## "BO01|BO02" pool, or a "TIER:X" group — either randomly (the default) or
+## by a player's own choice (Items.is_player_choice()). A plain single
+## target ("BO05", "M12") is neither.
+static func is_pool_shaped(entry: Dictionary) -> bool:
+	var pool: Variant = entry.get("target_pool")
+	if pool is Array and not (pool as Array).is_empty():
+		return true
+	return is_booster_tier(str(entry.get("target", "")))
 
 
 static func _digits_after(id: String, prefix_length: int) -> bool:

@@ -14,6 +14,12 @@ extends RefCounted
 ##   Stack Cap                      how many the player may hold (blank = no cap)
 ##   Purchase Limit                 how many may be bought per level (blank = no limit)
 ##   Grants                         what using it does (target_delta_list)
+##   Player Choice                  Yes: the player picks which of Grants' pool
+##                                   it lands on, instead of a random pick
+##   Bonus 1/2/3 Role/Min Tier/Amount   an extra delta layered on top of Grants
+##                                       when the named Staff role is hired at
+##                                       or above that tier (design/proposals/
+##                                       inventory.md, 2026-09-25 follow-up)
 ##
 ## Pure, like everything in scripts/rules/: no autoload, no file, no scene.
 ## Callers hand over the item row and the counts; refusals come back as the
@@ -99,6 +105,50 @@ static func split_grants(item: Dictionary) -> Dictionary:
 static func has_effect(item: Dictionary) -> bool:
 	var split := split_grants(item)
 	return not ((split["meta"] as Array).is_empty() and (split["stage"] as Array).is_empty())
+
+
+## "Player Choice" — Yes means using this item asks WHICH of its pool the
+## effect lands on, rather than picking one at random. Cameron, 2026-09-25:
+## SH25/26 ("Host a dinner for a player-selected booster group") need this;
+## SH01-03 ("one randomly-selected group") don't.
+static func is_player_choice(item: Dictionary) -> bool:
+	return is_yes(item.get("player_choice"))
+
+
+## The pool or tier the player picks from when is_player_choice() is true —
+## an entry's own "target_pool" list, or its "TIER:X" target. Read off the
+## item's first Grants entry that has one; every item built so far has at
+## most one. Pure: what a "TIER:X" spec actually CONTAINS is DataDB's
+## question (DataDB.choice_options()), not this file's — this only says
+## which spec to ask about. Null when nothing in Grants offers a choice.
+static func choice_pool_spec(item: Dictionary) -> Variant:
+	for entry: Dictionary in (split_grants(item)["meta"] as Array):
+		if RewardTargets.is_pool_shaped(entry):
+			var pool: Variant = entry.get("target_pool")
+			return pool if pool is Array else str(entry.get("target", ""))
+	return null
+
+
+## The Bonus 1/2/3 Role/Min Tier/Amount columns, as
+## [ { "role", "min_tier", "amount" }, ... ] — only the rows whose Role cell
+## is filled in. Cameron, 2026-09-25: SH01-03 work without the named Staff
+## role hired; hiring them layers this amount on top of the base Grants
+## effect once their tier reaches Min Tier. Each row's Amount is what THAT
+## row adds on top of whatever a lower row already gave — not the running
+## total — so a Tier 2 row reading "+1" on top of a Tier 1 row already
+## counted is written as Amount 1, not 2.
+static func staff_bonus_rows(item: Dictionary) -> Array:
+	var rows: Array = []
+	for n in [1, 2, 3]:
+		var role: Variant = item.get("bonus_%d_role" % n)
+		if role == null or str(role).strip_edges().is_empty():
+			continue
+		rows.append({
+			"role": str(role).strip_edges(),
+			"min_tier": int(item.get("bonus_%d_min_tier" % n, 0)),
+			"amount": int(item.get("bonus_%d_amount" % n, 0)),
+		})
+	return rows
 
 
 ## Why this item cannot be bought, in the player's words, or "" when it can.
