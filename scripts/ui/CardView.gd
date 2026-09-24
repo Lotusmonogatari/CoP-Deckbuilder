@@ -15,9 +15,25 @@ extends Button
 ## It is a Button so that tapping, keyboard focus and the disabled look all
 ## come for free. Tapping opens the card rather than playing it, so a
 ## mis-tap never costs a turn — the zoom carries the Play button.
+##
+## DRAG TO PLAY. Pulling a playable card upwards lifts it off the hand; let
+## go once it has risen PLAY_LIFT pixels and it is played, with no zoom in
+## between. Let go sooner and it drops back. A sideways drag is the hand
+## scrolling (DragScroll), and never lifts a card.
 
 ## The player tapped this card.
 signal chosen(card_id: String)
+
+## The player dragged this card up far enough and let go: play it.
+signal flung(card_id: String)
+
+## How far up a press must move before the card lifts, and how far it must
+## rise before letting go plays it.
+const LIFT_START := 30.0
+const PLAY_LIFT := 220.0
+
+## The tint a lifted card takes once letting go would play it.
+const READY_TINT := Color(1.0, 0.93, 0.6)
 
 ## The temporary illustration sits inside the art window, behind the frame.
 const TEMPORARY_CARD_ART: Texture2D = preload("res://assets/cards/card_temporary_image.png")
@@ -73,6 +89,11 @@ var _cost_label: Label
 var _name_label: Label
 var _art_label: Label
 var _effect_label: Label
+
+var _press_at := Vector2.ZERO
+var _pressing := false
+var _lifting := false
+var _rest_y := 0.0
 
 
 func _init() -> void:
@@ -301,6 +322,72 @@ static func describe_effect(effect: Dictionary, card_row: Dictionary) -> String:
 	if parts.is_empty():
 		return str(card_row.get("effect_text", ""))
 	return " ".join(parts)
+
+
+# ---------------------------------------------------------------------------
+# Drag to play
+# ---------------------------------------------------------------------------
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+		var button := event as InputEventMouseButton
+		if button.pressed:
+			_press_at = button.global_position
+			_pressing = not disabled
+			_lifting = false
+		else:
+			if _lifting:
+				_drop(_press_at.y - button.global_position.y)
+			_pressing = false
+		return
+
+	if event is InputEventMouseMotion and _pressing:
+		var where := (event as InputEventMouseMotion).global_position
+		var up := _press_at.y - where.y
+		if not _lifting and up > LIFT_START and up > absf(where.x - _press_at.x):
+			_lift()
+		if _lifting:
+			position.y = _rest_y - maxf(up, 0.0)
+			self_modulate = READY_TINT if up >= PLAY_LIFT else Color.WHITE
+			accept_event()
+
+
+func _lift() -> void:
+	_lifting = true
+	_rest_y = position.y
+	z_index = 20
+	# A lift is not a tap: forget the press, so letting go does not also open
+	# the zoom (BaseButton.set_disabled drops a press in progress).
+	disabled = true
+	disabled = false
+	# The hand is clipped to its own strip; a lifted card has to be seen
+	# rising above it.
+	var scroll := _hand_scroll()
+	if scroll != null:
+		scroll.clip_contents = false
+
+
+func _drop(risen: float) -> void:
+	_lifting = false
+	z_index = 0
+	self_modulate = Color.WHITE
+	var scroll := _hand_scroll()
+	if scroll != null:
+		scroll.clip_contents = true
+	var container := get_parent() as Container
+	if container != null:
+		container.queue_sort()   # back into its place in the hand
+	else:
+		position.y = _rest_y
+	if risen >= PLAY_LIFT:
+		flung.emit(card_id)
+
+
+func _hand_scroll() -> ScrollContainer:
+	var node := get_parent()
+	while node != null and not (node is ScrollContainer):
+		node = node.get_parent()
+	return node as ScrollContainer
 
 
 ## Greys the card out when there isn't enough energy left to play it.

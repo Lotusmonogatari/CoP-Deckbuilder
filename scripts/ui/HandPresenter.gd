@@ -18,6 +18,9 @@ extends RefCounted
 ## The player tapped a card. The screen decides what that means.
 signal card_chosen(card_id: String)
 
+## The player dragged a card up and let go: play it now.
+signal card_flung(card_id: String)
+
 var _row: HBoxContainer
 var _scroll: ScrollContainer
 
@@ -29,6 +32,9 @@ var _views: Dictionary = {}
 func _init(row: HBoxContainer) -> void:
 	_row = row
 	_scroll = row.get_parent() as ScrollContainer
+	# A sideways drag scrolls the hand; an upward one lifts a card (CardView).
+	if _scroll != null:
+		DragScroll.attach(_scroll, false)
 
 
 ## Redraws the hand for this moment.
@@ -51,6 +57,7 @@ func show_state(engine: BattleEngine) -> void:
 		if view == null:
 			view = CardView.new()
 			view.chosen.connect(func(id: String) -> void: card_chosen.emit(id))
+			view.flung.connect(func(id: String) -> void: card_flung.emit(id))
 
 		# On screen first, then filled in. A CardView builds its labels when
 		# it enters the tree, and filling it before that means building them

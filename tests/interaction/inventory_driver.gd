@@ -75,6 +75,24 @@ func _walk() -> void:
 		_failures.append("two Buy presses left %d Coffees, not 2" % GameState.item_count(COFFEE))
 		return
 	print("  bought two Coffees in Supplies")
+
+	# A long list is dragged, not hunted through: a drag that starts on a Buy
+	# button scrolls the shop and buys nothing.
+	var scroll := supplies.get_node("Margin/Scroll") as ScrollContainer
+	var funds_before := int(GameState.meta.get("Funds", 0))
+	scroll.scroll_vertical = 0
+	await get_tree().process_frame
+	var start := (supplies.find_child("Supply_" + COFFEE, true, false)
+		.find_child("Buy", true, false) as Control).get_global_rect().get_center()
+	await _drag(start, start + Vector2(0, -700))
+	await _wait(0.5)
+	if scroll.scroll_vertical <= 0:
+		_failures.append("dragging the Supplies list did not scroll it")
+		return
+	if GameState.item_count(COFFEE) != 2 or int(GameState.meta.get("Funds", 0)) != funds_before:
+		_failures.append("dragging the Supplies list also bought something")
+		return
+	print("  dragging the Supplies list scrolls it and buys nothing")
 	supplies.close()
 	await _wait(0.2)
 
@@ -209,6 +227,32 @@ func _use_from(inventory: InventoryPanel, where: String) -> bool:
 		_failures.append("pressing Use in %s did not take a Coffee" % where)
 		return false
 	return true
+
+
+func _drag(from: Vector2, to: Vector2, steps: int = 12) -> void:
+	var transform := get_viewport().get_screen_transform()
+	var press := InputEventMouseButton.new()
+	press.button_index = MOUSE_BUTTON_LEFT
+	press.pressed = true
+	press.position = transform * from
+	press.global_position = press.position
+	Input.parse_input_event(press)
+	await get_tree().process_frame
+	for step in range(1, steps + 1):
+		var motion := InputEventMouseMotion.new()
+		motion.position = transform * from.lerp(to, float(step) / steps)
+		motion.global_position = motion.position
+		motion.button_mask = MOUSE_BUTTON_MASK_LEFT
+		Input.parse_input_event(motion)
+		await get_tree().process_frame
+	var release := InputEventMouseButton.new()
+	release.button_index = MOUSE_BUTTON_LEFT
+	release.pressed = false
+	release.position = transform * to
+	release.global_position = release.position
+	Input.parse_input_event(release)
+	await get_tree().process_frame
+	await get_tree().process_frame
 
 
 func _button_with_text(root: Node, text: String) -> Control:

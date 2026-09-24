@@ -29,6 +29,16 @@ const SIZE_BUTTON := 40
 const SIZE_JP_ACCENT := 24
 const JP_ACCENT_ALPHA := 0.55
 
+## The card-cue banner's line.
+const SIZE_CUE := 64
+
+## Scrollbars, sized for a thumb. The bar is this wide; the grabber is never
+## shorter than twice this.
+const SCROLLBAR_WIDTH := 36
+const SCROLL_TRACK := Color(1, 1, 1, 0.08)
+const SCROLL_GRABBER := Color(1, 1, 1, 0.45)
+const SCROLL_GRABBER_HOT := Color(0.95, 0.85, 0.45, 0.9)
+
 
 func _init() -> void:
 	var base_font := load(FONT_PATH)
@@ -78,6 +88,13 @@ func _init() -> void:
 	_add_label_variation(theme, "GaffeWarning", bold, SIZE_BODY)
 	theme.set_color("font_color", "GaffeWarning", Color(0.9, 0.25, 0.2))
 
+	# The spoken line that sweeps across the screen when a card is played
+	# (CueBanner.gd). Big enough to read in the second it is on screen.
+	_add_label_variation(theme, "CueBanner", bold, SIZE_CUE)
+	_add_label_variation(theme, "CueSpeaker", bold, SIZE_HEADER)
+
+	_add_scrollbars(theme)
+
 	var error := DirAccess.make_dir_recursive_absolute(OUTPUT_PATH.get_base_dir())
 	if error != OK and error != ERR_ALREADY_EXISTS:
 		push_error("Could not create the theme folder: %d" % error)
@@ -92,6 +109,40 @@ func _init() -> void:
 
 	print("Wrote %s" % OUTPUT_PATH)
 	quit(0)
+
+
+## Scrollbars a thumb can find. Godot's default is a few pixels wide, which
+## on a phone is a line you can see and never hit.
+func _add_scrollbars(theme: Theme) -> void:
+	for bar: String in ["VScrollBar", "HScrollBar"]:
+		var vertical := bar == "VScrollBar"
+
+		var track := StyleBoxFlat.new()
+		track.bg_color = SCROLL_TRACK
+		track.set_corner_radius_all(SCROLLBAR_WIDTH / 2)
+		if vertical:
+			track.content_margin_left = SCROLLBAR_WIDTH / 2.0
+			track.content_margin_right = SCROLLBAR_WIDTH / 2.0
+		else:
+			track.content_margin_top = SCROLLBAR_WIDTH / 2.0
+			track.content_margin_bottom = SCROLLBAR_WIDTH / 2.0
+		theme.set_stylebox("scroll", bar, track)
+		theme.set_stylebox("scroll_focus", bar, track)
+
+		for state: Array in [["grabber", SCROLL_GRABBER],
+				["grabber_highlight", SCROLL_GRABBER_HOT],
+				["grabber_pressed", SCROLL_GRABBER_HOT]]:
+			var grabber := StyleBoxFlat.new()
+			grabber.bg_color = state[1]
+			grabber.set_corner_radius_all(SCROLLBAR_WIDTH / 2)
+			# A grabber never shorter than a fingertip, however long the list.
+			if vertical:
+				grabber.content_margin_top = SCROLLBAR_WIDTH
+				grabber.content_margin_bottom = SCROLLBAR_WIDTH
+			else:
+				grabber.content_margin_left = SCROLLBAR_WIDTH
+				grabber.content_margin_right = SCROLLBAR_WIDTH
+			theme.set_stylebox(state[0], bar, grabber)
 
 
 func _add_label_variation(theme: Theme, name: String, font: Font, size: int) -> void:

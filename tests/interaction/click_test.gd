@@ -35,6 +35,8 @@ func _ready() -> void:
 	await _check_card_zoom()
 	await _check_escape_key()
 	await _check_click_outside()
+	await _check_hand_drags_sideways()
+	await _check_drag_card_to_play()
 
 	print("")
 	if _failures.is_empty():
@@ -116,6 +118,87 @@ func _check_click_outside() -> void:
 		panel.hide()
 	else:
 		print("  clicking outside an overlay closes it")
+
+
+## A sideways drag across the hand scrolls it, and does not open the card
+## the finger started on.
+func _check_hand_drags_sideways() -> void:
+	var hand: Control = _screen.get_node("%HandRow")
+	var scroll := hand.get_parent() as ScrollContainer
+	if hand.get_child_count() == 0 or scroll == null:
+		_failures.append("no hand to drag")
+		return
+	scroll.scroll_horizontal = 0
+	var start := (hand.get_child(0) as Control).get_global_rect().get_center()
+	await _drag(start, start + Vector2(-400, 0))
+	await get_tree().create_timer(0.6).timeout
+	if scroll.scroll_horizontal <= 0:
+		_failures.append("dragging sideways across the hand did not scroll it")
+	elif _screen.get_node("%CardZoom").visible:
+		_failures.append("dragging the hand also opened a card")
+		_screen.get_node("%CardZoom").hide()
+	else:
+		print("  dragging the hand sideways scrolls it")
+	scroll.scroll_horizontal = 0
+	await get_tree().process_frame
+
+
+## Pulling a playable card up out of the hand and letting go plays it.
+func _check_drag_card_to_play() -> void:
+	var engine: BattleEngine = _screen.engine
+	var hand: Control = _screen.get_node("%HandRow")
+	var card: CardView = null
+	for child in hand.get_children():
+		if child is CardView and not (child as CardView).disabled \
+				and (child as Control).get_global_rect().get_center().x < 1000:
+			card = child
+			break
+	if card == null:
+		_failures.append("no playable card on screen to drag")
+		return
+	var held := engine.state.hand.size()
+	var start := card.get_global_rect().get_center()
+
+	# A short lift drops back and plays nothing.
+	await _drag(start, start + Vector2(0, -80))
+	if engine.state.hand.size() != held:
+		_failures.append("a short lift played the card anyway")
+		return
+
+	await _drag(start, start + Vector2(0, -(CardView.PLAY_LIFT + 120)))
+	if _screen.get_node("%CardZoom").visible:
+		_failures.append("dragging a card up opened the zoom instead of playing it")
+	elif engine.state.hand.size() >= held and engine.state.discard.is_empty():
+		_failures.append("dragging a card up and letting go did not play it")
+	else:
+		print("  dragging a card up plays it")
+
+
+## A real press, a movement in steps, and a release.
+func _drag(from: Vector2, to: Vector2, steps: int = 12) -> void:
+	var transform := get_viewport().get_screen_transform()
+	var press := InputEventMouseButton.new()
+	press.button_index = MOUSE_BUTTON_LEFT
+	press.pressed = true
+	press.position = transform * from
+	press.global_position = press.position
+	Input.parse_input_event(press)
+	await get_tree().process_frame
+	for step in range(1, steps + 1):
+		var motion := InputEventMouseMotion.new()
+		motion.position = transform * from.lerp(to, float(step) / steps)
+		motion.global_position = motion.position
+		motion.button_mask = MOUSE_BUTTON_MASK_LEFT
+		Input.parse_input_event(motion)
+		await get_tree().process_frame
+	var release := InputEventMouseButton.new()
+	release.button_index = MOUSE_BUTTON_LEFT
+	release.pressed = false
+	release.position = transform * to
+	release.global_position = release.position
+	Input.parse_input_event(release)
+	await get_tree().process_frame
+	await get_tree().process_frame
 
 
 ## A real press and release at the control's own screen position.
