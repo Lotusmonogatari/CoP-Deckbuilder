@@ -541,16 +541,21 @@ func _on_end_turn() -> void:
 	var speaker := OpponentPresenter.display_name(engine)
 	_refresh()
 
-	var lines: Array[String] = []
-
 	# The pass penalty has always worked; nothing ever said so, which is why
 	# a playtest read it as having stopped after the first time. It never
 	# compounds — every quiet turn costs the same one energy.
+	#
+	# This is the PLAYER's own consequence, not anything the opponent said —
+	# it used to ride along inside their banner under their name tag, which
+	# read as if Emi were telling you off for your own silence. It belongs
+	# with the quiet notices (a refused card, "no stage to play") instead.
 	if bool(result.get("passed", false)) and not engine.state.is_over():
 		if engine.is_press_conference():
-			lines.append(Text.say("battle.declined"))
+			_messages.say(Text.say("battle.declined"))
 		else:
-			lines.append(Text.say("battle.passed"))
+			_messages.say(Text.say("battle.passed"))
+
+	var lines: Array[String] = []
 
 	# What the opponent did. The engine has always returned this and no
 	# screen has ever read it, so the whole of their turn happened in
@@ -569,8 +574,9 @@ func _on_end_turn() -> void:
 		lines.append(BattleNarration.player_move(
 			{"bout_won": bout}, _stage, engine.state, speaker))
 
-	# One line, not three: a turn's worth of news arrives as a turn's worth
-	# of news, from the other side of the room.
+	# One line, not two: what the OPPONENT did this turn, all of it from the
+	# same side of the room. The player's own pass penalty above is never
+	# folded in here any more.
 	if not lines.is_empty():
 		_banner.say(CueBanner.OPPONENT, speaker, "\n".join(lines))
 
