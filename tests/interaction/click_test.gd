@@ -121,10 +121,11 @@ func _check_click_outside() -> void:
 		print("  clicking outside an overlay closes it")
 
 
-## The stage background is named for the real stage, and the player's own
-## corner portrait draws in FRONT of the opponent's placeholder texture
-## rather than being silently painted over by it (found 2026-09-27: the
-## opponent's texture landed after this static child, hiding it completely).
+## The stage background is named for the real stage, and the player's and
+## opponent's full-body portraits sit as two separate cutouts in the art
+## box's bottom corners (2026-09-24: was a small chip nested inside the
+## opponent's own portrait; the two are now siblings, so there is nothing
+## for either to be silently painted over by).
 func _check_background_and_player_portrait() -> void:
 	var background := _screen.get_node("%Background") as PlaceholderArt
 	if background.art_id.is_empty():
@@ -137,15 +138,10 @@ func _check_background_and_player_portrait() -> void:
 	if not player_portrait.visible:
 		_failures.append("the player's own portrait is not visible")
 		return
-	var chip := player_portrait.get_parent()
-	if portrait.get_node("PlayerPortraitFrame") != chip:
-		_failures.append("the player's portrait chip is not where the battle screen expects it")
+	if player_portrait.get_parent() != portrait.get_parent():
+		_failures.append("the player's portrait is not sharing the opponent's art box")
 		return
-	if chip.get_index() != portrait.get_child_count() - 1:
-		_failures.append("the player's portrait chip is not the front-most child, "
-			+ "so the opponent's own art can paint over it")
-		return
-	print("  the player's own portrait draws in front of the opponent's")
+	print("  the player's and opponent's portraits share the art box as separate cutouts")
 
 
 ## A sideways drag across the hand scrolls it, and does not open the card

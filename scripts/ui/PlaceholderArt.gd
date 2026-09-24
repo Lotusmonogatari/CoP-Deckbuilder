@@ -77,6 +77,10 @@ func _build() -> void:
 	_texture_rect = TextureRect.new()
 	_texture_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	# The real mode is set per-kind in _refresh() (kind can change at runtime —
+	# OpponentPresenter and PlayerPortraitPresenter swap it between CHARACTER
+	# outfits). STRETCH_SCALE here is only ever seen for the one frame before
+	# _refresh() runs first.
 	_texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
 	add_child(_texture_rect)
 	move_child(_texture_rect, 0)
@@ -111,6 +115,17 @@ func _refresh() -> void:
 		Kind.CARD: _texture_rect.texture = ArtLoader.card(art_id)
 		Kind.BACKGROUND: _texture_rect.texture = ArtLoader.background(art_id)
 		Kind.ICON: _texture_rect.texture = ArtLoader.icon(art_id)
+
+	# A character is a full-body cutout: shown whole, never cropped, so its
+	# feet and head both stay on screen whatever the box's own proportions
+	# are. A background instead FILLS its box with no letterboxing, cropping
+	# whatever overflows — it is the room, not a figure standing in it. Cards
+	# and icons keep the old fill-the-box behaviour; their own template
+	# already draws to the box's exact edges.
+	match kind:
+		Kind.CHARACTER: _texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		Kind.BACKGROUND: _texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		_: _texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
 
 	_label.visible = _is_placeholder and show_label
 	_label.text = _label_text() if _is_placeholder else ""

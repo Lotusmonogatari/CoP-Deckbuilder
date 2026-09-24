@@ -211,7 +211,7 @@ options are authoritative; the table below describes the current settings:
 Every screen is portrait, uncluttered, and English-first. Layout from top to bottom:
 
 1. **Header:** stage name in English with a small muted Japanese accent (for example "Floor debate 本会議"), and on the right, "Turn 3 of 8".
-2. **Opponent row:** portrait (initials placeholder) against the stage's own background, name, and the intent in plain words (for example "Attacking · −6"). Your own face sits in a small corner inset, reacting to what you just did.
+2. **Opponent row:** an art box showing the stage's own background, with two full-body cutouts in its bottom corners — the opponent (lower right), name and intent in plain words (for example "Attacking · −6") shown beside it; and your own face (lower left), reacting to what you just did.
 3. **Win condition:** the support bar with a visible threshold line and a caption such as "51 seats to win". Committee stages show member tiles instead; press conferences show the current question.
 4. **Status row:** Energy pips and "Gaffes 2 / 6". The gaffe warning turns red **only** when one more gaffe would end the stage.
 5. **Hand:** 3–5 cards. Each card face shows cost, English name, and a one-line effect. At most one small Japanese accent per card. Tapping a card opens a zoom view with the full text, suit, art, and Japanese name; dragging a card up out of the hand plays it directly.
@@ -304,14 +304,15 @@ at all**: the placeholder is labelled with the file it wants. It becomes a
 face the moment one is drawn to
 `assets/characters/opponents/{ID}_{expression}.png`.
 
-**Your own face** (`PlayerPortraitPresenter`) sits in a small framed inset in
-the corner of the opponent's portrait — the screen only has room for one big
-portrait, so this is a "you" chip rather than a second scene. Unlike the
-opponent, nothing is known ahead of time about what you will do, so it
-reacts to what you just did instead: attacking when a card argues the room
-away from the opponent, gaining when it wins support, guarding when it only
-banks guard, damaged for a moment when an opponent's attack actually lands,
-victory on a win. It works with no art either, the same bargain.
+**Your own face** (`PlayerPortraitPresenter`) is a full-body cutout in the
+art box's lower-left corner, matching the opponent's own cutout in the
+lower right — the two read as a pair rather than the opponent's portrait
+with a "you" chip in front of it (2026-09-24: that was the earlier layout).
+Unlike the opponent, nothing is known ahead of time about what you will do,
+so it reacts to what you just did instead: attacking when a card argues the
+room away from the opponent, gaining when it wins support, guarding when it
+only banks guard, damaged for a moment when an opponent's attack actually
+lands, victory on a win. It works with no art either, the same bargain.
 
 **Stage backgrounds.** Both the battle screen and the Office show the room's
 own picture behind everything (`data/art.json`'s `background` folder —
@@ -339,10 +340,14 @@ of the hand and let go is played; a short pull drops back. Scrollbars are
 **A note for whoever next touches `PlaceholderArt.gd`.** Its own art and
 label are always pushed to the very back of its children (`_build()`'s
 `move_child()` calls) rather than left wherever `add_child()` happens to put
-them — the player's own portrait chip is a STATIC child of the opponent
-portrait, present in the scene file before `_ready()` runs, and without this
-the opponent's own texture would land on top of it and hide it completely.
-`tests/test_art_scheme.gd` guards this with a real scene-tree test.
+them — a caller can add its OWN static child to a PlaceholderArt in the
+scene file (present before `_ready()` runs), and without this the texture
+just drawn would land on top of it and hide it completely. No node in the
+current battle screen relies on this today (the player's own portrait chip
+used to be nested inside the opponent's, 2026-09-24: the two are now
+siblings, so neither paints over the other), but the guarantee stays in
+place for the next caller that nests something inside a PlaceholderArt.
+`tests/test_art_scheme.gd` guards it with a real scene-tree test.
 
 **A note for whoever next runs the scene builders.** `tools/build_battle_
 scene.gd` is kept in sync with the real `.tscn` (2026-09-27 fixed two spots

@@ -148,7 +148,8 @@ func _add_header(parent: Control) -> void:
 	_adopt(turn, header, true)
 
 
-## Portrait, name, and what they are about to do in plain words.
+## The art box (stage background showing through behind two full-body
+## cutouts), name, and what the opponent is about to do in plain words.
 func _add_opponent_row(parent: Control) -> void:
 	var row := VBoxContainer.new()
 	row.name = "OpponentRow"
@@ -160,43 +161,39 @@ func _add_opponent_row(parent: Control) -> void:
 	row.add_theme_constant_override("separation", 16)
 	_adopt(row, parent)
 
-	var portrait := Control.new()
-	portrait.name = "Portrait"
-	portrait.set_script(load(PLACEHOLDER_SCRIPT))
-	portrait.custom_minimum_size = Vector2(0, 620)
-	portrait.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_adopt(portrait, row, true)
+	# A plain box, not a PlaceholderArt itself: the stage's own picture
+	# (scene root's Background) already shows through it, full-bleed, so
+	# this only holds the two full-body cutouts. Cameron, 2026-09-24: the
+	# opponent's own portrait used to fill nearly this whole box; now it and
+	# the player's portrait sit as two equally-sized cutouts in the box's
+	# bottom corners, the stage art showing through above and between them.
+	var art_box := Control.new()
+	art_box.name = "ArtBox"
+	art_box.custom_minimum_size = Vector2(0, 620)
+	art_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	art_box.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_adopt(art_box, row)
 
-	# Your own face, as a small inset in the opponent portrait's corner — the
-	# room is big enough for one full portrait, not two, so this is a "you"
-	# chip rather than a second scene the way an opponent's is. It reacts to
-	# what you just did (PlayerPortraitPresenter) rather than to an intent,
-	# since only the opponent's next move is known ahead of time.
-	var player_frame := PanelContainer.new()
-	player_frame.name = "PlayerPortraitFrame"
-	player_frame.anchor_left = 0.0
-	# 0.685, not 0.58: a quarter shorter (2026-09-27, Cameron) — was 0.42 of
-	# the portrait's own height, now 0.315.
-	player_frame.anchor_top = 0.685
-	player_frame.anchor_right = 0.34
-	player_frame.anchor_bottom = 1.0
-	player_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var frame_box := StyleBoxFlat.new()
-	frame_box.bg_color = Color(0.07, 0.08, 0.11, 0.85)
-	frame_box.border_color = Color(0.95, 0.82, 0.38, 0.9)
-	frame_box.set_border_width_all(4)
-	frame_box.set_corner_radius_all(10)
-	frame_box.content_margin_left = 4
-	frame_box.content_margin_right = 4
-	frame_box.content_margin_top = 4
-	frame_box.content_margin_bottom = 4
-	player_frame.add_theme_stylebox_override("panel", frame_box)
-	_adopt(player_frame, portrait)
-
+	# Your own face, reacting to what you just did (PlayerPortraitPresenter)
+	# rather than to an intent, since only the opponent's next move is known
+	# ahead of time. No frame around it — the two cutouts read as a matched
+	# pair, not "you" versus "the room".
 	var player_portrait := Control.new()
 	player_portrait.name = "PlayerPortrait"
 	player_portrait.set_script(load(PLACEHOLDER_SCRIPT))
-	_adopt(player_portrait, player_frame, true)
+	player_portrait.anchor_top = 0.30
+	player_portrait.anchor_right = 0.46
+	player_portrait.anchor_bottom = 1.0
+	_adopt(player_portrait, art_box, true)
+
+	var portrait := Control.new()
+	portrait.name = "Portrait"
+	portrait.set_script(load(PLACEHOLDER_SCRIPT))
+	portrait.anchor_left = 0.54
+	portrait.anchor_top = 0.30
+	portrait.anchor_right = 1.0
+	portrait.anchor_bottom = 1.0
+	_adopt(portrait, art_box, true)
 
 	var details := VBoxContainer.new()
 	details.name = "Details"
