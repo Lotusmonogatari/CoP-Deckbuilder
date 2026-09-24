@@ -336,7 +336,6 @@ function runRuleChecks(data) {
     'intent.attacking': 'attack {amount}',
     'intent.gaining': 'gain {amount}',
     'intent.guarding': 'guard {amount}',
-    'intent.pressuring': 'press {amount}',
     'intent.range': '{low} to {high}',
   });
 
@@ -345,8 +344,6 @@ function runRuleChecks(data) {
       'attack −1 to −6');
     eq(IntentRunner.describe({ verb: 'gain', value: 3, min: 2, max: 4 }, INTENT_WORDS),
       'gain +2 to +4');
-    eq(IntentRunner.describe({ verb: 'lean_down', value: 2, min: 1, max: 3 }, INTENT_WORDS),
-      'press −1 to −3');
   });
 
   check('a described range never promises a zero', () => {

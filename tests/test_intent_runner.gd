@@ -117,7 +117,6 @@ const INTENT_WORDS := {
 	"intent.attacking": "attack {amount}",
 	"intent.gaining": "gain {amount}",
 	"intent.guarding": "guard {amount}",
-	"intent.pressuring": "press {amount}",
 	"intent.range": "{low} to {high}",
 }
 
@@ -130,7 +129,6 @@ func test_moves_are_described_in_plain_words() -> void:
 	assert_eq(IntentRunner.describe({"verb": "attack", "value": 6}, _words()), "attack −6")
 	assert_eq(IntentRunner.describe({"verb": "gain", "value": 4}, _words()), "gain +4")
 	assert_eq(IntentRunner.describe({"verb": "block", "value": 5}, _words()), "guard 5")
-	assert_eq(IntentRunner.describe({"verb": "lean_down", "value": 8}, _words()), "press −8")
 
 
 # ---------------------------------------------------------------------------
@@ -311,8 +309,6 @@ func test_a_range_is_described_as_a_range() -> void:
 		{"verb": "attack", "value": 4, "min": 1, "max": 6}, _words()), "attack −1 to −6")
 	assert_eq(IntentRunner.describe(
 		{"verb": "gain", "value": 3, "min": 2, "max": 4}, _words()), "gain +2 to +4")
-	assert_eq(IntentRunner.describe(
-		{"verb": "lean_down", "value": 2, "min": 1, "max": 3}, _words()), "press −1 to −3")
 
 
 func test_a_described_range_never_promises_a_zero() -> void:

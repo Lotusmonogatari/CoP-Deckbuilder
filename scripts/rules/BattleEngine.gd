@@ -715,8 +715,11 @@ func _resolve_intent(intent: Dictionary) -> Dictionary:
 			state.block -= absorbed
 			var lost := 0
 			if state.is_committee_stage():
-				# An attack has no meaning against a set of votes; the chair's
-				# pressure is the "lean_down" verb instead.
+				# An attack has no meaning against a set of votes: there is no
+				# shared bar for it to lower. The committee chair currently has
+				# no move of their own at all (the "lean_down" verb that once
+				# gave them one was removed as outdated, 2026-09-24) — a
+				# committee stage is decided purely by what the player does.
 				lost = 0
 			else:
 				lost = state.bar.player_loses(through)
@@ -736,13 +739,6 @@ func _resolve_intent(intent: Dictionary) -> Dictionary:
 			var before := state.opponent_block
 			state.opponent_block = mini(state.opponent_block + value, state.guard_cap)
 			return {"verb": "block", "guard": state.opponent_block - before}
-
-		"lean_down":
-			if not state.is_committee_stage():
-				return {"verb": "lean_down", "moved": 0}
-			var index := state.committee.most_persuaded_unlocked()
-			var move := state.committee.chair_pressure(index, value)
-			return {"verb": "lean_down", "member_index": index, "member": move}
 
 	return {"verb": "none"}
 

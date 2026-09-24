@@ -19,7 +19,6 @@ extends RefCounted
 ##   attack     lowers the player's support by the number, minus any block
 ##   gain       raises the opponent's own support
 ##   block      the opponent gains guard, reducing the player's next attack
-##   lean_down  committee stages only: pushes one member away from For
 ##
 ## THE ZERO RULE
 ## A move that comes out at zero is NOT TAKEN. The opponent steps to the next
@@ -41,7 +40,7 @@ extends RefCounted
 
 ## Every verb this understands. A pattern using anything else is rejected at
 ## setup with a readable message rather than doing nothing mid-battle.
-const KNOWN_VERBS := ["attack", "gain", "block", "lean_down"]
+const KNOWN_VERBS := ["attack", "gain", "block"]
 
 var _pattern: Array = []
 var _position := 0
@@ -250,7 +249,6 @@ static func describe(move: Dictionary, words: Phrase = null) -> String:
 		"attack": return say.say("intent.attacking", {"amount": _signed(shape, "−", say)})
 		"gain": return say.say("intent.gaining", {"amount": _signed(shape, "+", say)})
 		"block": return say.say("intent.guarding", {"amount": _plain(shape, say)})
-		"lean_down": return say.say("intent.pressuring", {"amount": _signed(shape, "−", say)})
 		_: return say.say("intent.waiting")
 
 

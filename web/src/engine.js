@@ -411,7 +411,7 @@ function clamp(value, low, high) { return Math.min(Math.max(value, low), high); 
 // IntentRunner
 // ---------------------------------------------------------------------------
 
-const KNOWN_VERBS = ['attack', 'gain', 'block', 'lean_down'];
+const KNOWN_VERBS = ['attack', 'gain', 'block'];
 
 // A pattern is a list of moves. A move is a verb and either one number or a
 // range to roll between, inclusive at both ends:
@@ -599,7 +599,6 @@ class IntentRunner {
       case 'attack': return say('intent.attacking', { amount: signed('−') });
       case 'gain': return say('intent.gaining', { amount: signed('+') });
       case 'block': return say('intent.guarding', { amount: plain() });
-      case 'lean_down': return say('intent.pressuring', { amount: signed('−') });
       default: return say('intent.waiting');
     }
   }

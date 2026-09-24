@@ -1096,13 +1096,6 @@ function describeOpponentMove(opponentResult, stage, state, opponentName) {
       parts.push(T('narration.guard_built', {count: guard}));
       break;
     }
-    case 'lean_down': {
-      const member = opponentResult.member || {};
-      const moved = Math.abs(int(member.moved, 0));
-      if (moved <= 0) return T('narration.lean_none', {who: who});
-      parts.push('leaned on ' + str(member.name, T('narration.a_member')) + ', ' + moved + ' against you');
-      break;
-    }
     default:
       return T('narration.waited', {who: who});
   }

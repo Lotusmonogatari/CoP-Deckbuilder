@@ -32,8 +32,7 @@
       "_": "A pattern is a list of moves that repeats. A move is a verb and either one number or a range to roll between, inclusive at both ends. A move that comes out at zero is not taken: the opponent steps to the next move and does that instead, so nobody spends a turn guarding nothing.",
       "attack": "Lowers the player's support, minus whatever guard the player is holding.",
       "gain": "Raises the opponent's own support.",
-      "block": "The opponent gains guard, softening the player's next attack.",
-      "lean_down": "Committee stages only: pushes one member away from voting For."
+      "block": "The opponent gains guard, softening the player's next attack."
     },
     "note": [
       "This is the fallback, not anybody's character. An opponent with their own",

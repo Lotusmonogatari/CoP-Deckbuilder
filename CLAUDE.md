@@ -145,7 +145,7 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 - Each member has a lean from 0 to 100. Undecided members start at 50. An "Against" stance means the member starts **locked Against** **[DEFAULT]**.
 - The player targets one member with each card. `self_plus` and `opp_minus` (after affinity) both add lean to that member **[DEFAULT]**.
 - At lean ≥ 66 the member locks For; at ≤ 33 the member locks Against **[DEFAULT]**.
-- The chair's intent lowers one member's lean.
+- The chair has no move of their own: an attack has no shared bar to lower, so it does nothing here, and a committee turn is decided purely by what the player does. (The `lean_down` verb that once let the chair push a member's lean down was removed as outdated, 2026-09-24.)
 - Win when locked-For members reach a majority: floor(size ÷ 2) + 1. Lose if a majority is no longer reachable, or at the turn limit.
 
 ### 7.6 Opponent behavior (MVP)

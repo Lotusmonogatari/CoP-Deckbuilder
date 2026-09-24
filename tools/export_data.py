@@ -1407,7 +1407,7 @@ def validate(data, report):
 
     # Every opponent without a pattern of their own falls back to this one, so
     # a mistake here would break every battle in the game at the same time.
-    known_verbs = {"attack", "gain", "block", "lean_down"}
+    known_verbs = {"attack", "gain", "block"}
     pattern = flags.get("default_intent_pattern")
     if pattern is None:
         report.error("rules.json", "flag 'default_intent_pattern' is missing")

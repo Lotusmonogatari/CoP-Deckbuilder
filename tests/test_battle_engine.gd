@@ -499,7 +499,10 @@ func _committee_battle() -> BattleEngine:
 			"bar_max": null, "win_threshold": null, "turn_limit": 6,
 			"player_start": null, "opp_start": null, "gaffe_limit": 5,
 		}),
-		"opponent": TestFixtures.opponent([["lean_down", 8]]),
+		# Committee: an attack does nothing (no shared bar to lower — the
+		# chair has no move of their own here since "lean_down" was removed
+		# as outdated), so this is just a valid, inert pattern for setup.
+		"opponent": TestFixtures.opponent([["attack", 8]]),
 		"committee_members": [
 			TestFixtures.committee_member("Member A"),
 			TestFixtures.committee_member("Member B"),
@@ -540,7 +543,7 @@ func test_both_halves_of_a_cards_persuasion_go_into_one_member() -> void:
 	# -3" is six points of persuasion aimed at one person.
 	var engine := _start({
 		"stage": TestFixtures.stage({"stage_id": "ST01", "turn_limit": 6}),
-		"opponent": TestFixtures.opponent([["lean_down", 8]]),
+		"opponent": TestFixtures.opponent([["attack", 8]]),
 		"committee_members": [
 			TestFixtures.committee_member("A"), TestFixtures.committee_member("B"),
 			TestFixtures.committee_member("C"),
@@ -554,15 +557,6 @@ func test_both_halves_of_a_cards_persuasion_go_into_one_member() -> void:
 
 	engine.play_card("BOTH", 0)
 	assert_eq(engine.state.committee.members[0]["lean"], 56)
-
-
-func test_the_chair_pushes_a_member_back_at_the_end_of_the_turn() -> void:
-	var engine := _committee_battle()
-	_force_into_hand(engine, "GAIN3")
-	engine.play_card("GAIN3", 0)   # Member A to 53, the highest in play
-
-	engine.end_turn()
-	assert_eq(engine.state.committee.members[0]["lean"], 45, "53 minus the chair's 8")
 
 
 func test_locking_a_majority_wins_the_committee() -> void:

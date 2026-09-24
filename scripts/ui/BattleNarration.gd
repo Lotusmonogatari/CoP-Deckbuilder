@@ -148,15 +148,6 @@ static func opponent_move(opponent_result: Dictionary, stage: Dictionary,
 				return Text.say("narration.block_none", {"who": who})
 			parts.append(Text.say("narration.guard_built", {"count": guard}))
 
-		"lean_down":
-			var member: Dictionary = opponent_result.get("member", {})
-			var moved: int = abs(int(member.get("moved", 0)))
-			if moved <= 0:
-				return Text.say("narration.lean_none", {"who": who})
-			var member_name := str(member.get("name", Text.say("narration.a_member")))
-			parts.append(Text.say("narration.leaned",
-				{"member": member_name, "count": moved}))
-
 		_:
 			return Text.say("narration.waited", {"who": who})
 

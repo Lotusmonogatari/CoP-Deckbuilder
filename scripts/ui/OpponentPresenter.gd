@@ -172,7 +172,7 @@ func _face_for(engine: BattleEngine) -> String:
 	# Otherwise, what they are about to do. An intent is known a turn ahead,
 	# so this is the face of somebody winding up rather than reacting.
 	match str(engine.current_intent().get("verb", "none")):
-		"attack", "lean_down": return ATTACKING
+		"attack": return ATTACKING
 		"block": return GUARDING
 		"gain": return GAINING
 		_: return NEUTRAL
