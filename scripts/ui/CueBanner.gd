@@ -41,6 +41,13 @@ const SLIDE_IN := 0.16
 const BAND_CENTRE := 0.42
 const SLIDE_OUT := 0.14
 
+## Kept clear of the true screen edges, the same margin the rest of the
+## battle screen's own Safe area uses (tools/build_battle_scene.gd's
+## SIDE_MARGIN) — Cameron, 2026-09-24: the band used to run edge to edge,
+## which on a real phone runs it under the camera cutout and the rounded
+## corners everything else is kept clear of.
+const SIDE_MARGIN := 40.0
+
 ## Multiplies every duration. 1.0 in play.
 var speed := 1.0
 
@@ -126,7 +133,7 @@ func _show_next() -> void:
 	_band.position.x = from
 	_band.show()
 	var slide := create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	slide.tween_property(_band, "position:x", 0.0, SLIDE_IN * speed)
+	slide.tween_property(_band, "position:x", SIDE_MARGIN, SLIDE_IN * speed)
 	_impact()
 
 	var text_length := str(entry["line"]).length() + str(entry["detail"]).length()
@@ -160,12 +167,14 @@ func _present(entry: Dictionary) -> void:
 	_detail.visible = not _detail.text.is_empty()
 
 
-## The band is exactly as wide as the screen and exactly as tall as its
-## text, centred a little above the middle. Sized by hand every time: a
-## wrapping label measured before it knows its width reports itself as
-## thousands of pixels tall, and the band would fill the screen.
+## The band is exactly as wide as the screen minus SIDE_MARGIN on each edge,
+## and exactly as tall as its text, centred a little above the middle. Sized
+## by hand every time: a wrapping label measured before it knows its width
+## reports itself as thousands of pixels tall, and the band would fill the
+## screen.
 func _fit_band(width: float) -> void:
-	var text_width := width - _band_box.content_margin_left - _band_box.content_margin_right
+	var band_width := width - SIDE_MARGIN * 2.0
+	var text_width := band_width - _band_box.content_margin_left - _band_box.content_margin_right
 	for label: Label in [_line, _detail]:
 		label.custom_minimum_size.x = text_width
 		label.size = Vector2(text_width, 0.0)   # a wrap is measured at its current width
@@ -177,7 +186,7 @@ func _fit_band(width: float) -> void:
 ## control never gets smaller on its own.
 func _fit_height() -> void:
 	var height := _band.get_combined_minimum_size().y
-	_band.size = Vector2(get_viewport_rect().size.x, height)
+	_band.size = Vector2(get_viewport_rect().size.x - SIDE_MARGIN * 2.0, height)
 	_band.position.y = get_viewport_rect().size.y * BAND_CENTRE - height / 2.0
 
 
