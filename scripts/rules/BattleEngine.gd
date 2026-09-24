@@ -48,11 +48,10 @@ const COMMITTEE_STAGE_IDS := [
 ## "survival"/"shared_pool" — a "committee" value here is checked first, and
 ## only a stage with none at all (every canon row today) falls back to
 ## COMMITTEE_STAGE_IDS above.
-## A string field that may be an explicit JSON null (stages.json's optional
-## "living rules" columns, 2026-09-24 — every canon row carries the key even
-## where it is blank) rather than genuinely absent. str(null) is the literal
-## text "<null>", not "", so the null has to be caught before the str() cast
-## or a blank cell stops looking blank and a default never applies.
+## An optional stages.json column, read past the <null> trap (see
+## BarModel.for_stage()'s own comment for what that is). Unlike for_stage(),
+## an EMPTY (non-null) string here is kept as-is rather than treated as
+## absent — a workbook cell cleared to "" still overrides `fallback`.
 ## Lowercased so a workbook cell can read naturally ("Pool", "Continuous")
 ## while every comparison against it (state.energy_mode == "pool",
 ## _sequence_mode == "reset", etc.) can stay a plain lowercase literal.

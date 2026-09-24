@@ -398,13 +398,12 @@ const QUESTION_POOL_BY_STAGE := {
 const REPUTATION_START_STAGE_IDS := ["ST04", "ST06"]
 
 
-## Whether Reputation nudges this stage's opening bar. Checks the stage's own
-## "reputation_affects_start" (Yes/No, from a proposed stages.json column)
-## first; REPUTATION_START_STAGE_IDS is the fallback.
 ## Which of data/questions.json's five pools a stage draws from: its own
 ## "type" (the hand-written playtest vocabulary) if set, else its own
 ## "question_pool" column (a proposed stages.json addition) if set, else
-## QUESTION_POOL_BY_STAGE's fallback for a canon row with neither.
+## QUESTION_POOL_BY_STAGE's fallback for a canon row with neither. Each
+## field is read past the <null> trap (BarModel.for_stage()'s own comment)
+## separately, empty treated as absent same as there.
 static func _question_pool_name(stage: Dictionary, stage_id: String) -> String:
 	var type_value: Variant = stage.get("type")
 	if type_value != null and not str(type_value).is_empty():
@@ -415,6 +414,11 @@ static func _question_pool_name(stage: Dictionary, stage_id: String) -> String:
 	return str(QUESTION_POOL_BY_STAGE.get(stage_id, ""))
 
 
+## Whether Reputation nudges this stage's opening bar. Checks the stage's own
+## "reputation_affects_start" (Yes/No, from a proposed stages.json column,
+## read past the <null> trap — BarModel.for_stage()'s own comment — then
+## trimmed, unlike that one) first; REPUTATION_START_STAGE_IDS is the
+## fallback for a row with no column at all, which is every canon row today.
 static func _reputation_affects_start(stage: Dictionary, stage_id: String) -> bool:
 	var raw: Variant = stage.get("reputation_affects_start")
 	if raw != null:

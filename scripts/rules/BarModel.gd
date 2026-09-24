@@ -112,12 +112,19 @@ static func create(model_kind: Model, maximum_value: int, threshold_value: int,
 ## (TV_DEBATE_2 and the like). Declaring `bar_model` in stage_types.json is
 ## how a stage stops depending on being recognised.
 static func for_stage(stage: Dictionary) -> Model:
-	# stages.json now carries "bar_model" as an explicit JSON null on every
-	# row that doesn't set it (2026-09-24's optional-column export), not an
-	# absent key — str(null) is the literal text "<null>", not "", so the
-	# null has to be caught before str() or a blank cell stops looking blank.
-	# Lowercased so a workbook cell can read naturally ("Single", "Committee")
-	# while this match stays a plain lowercase literal.
+	# THE <null> TRAP, explained once here — every other place in
+	# scripts/rules/ and scripts/BattleSetup.gd that reads an optional
+	# stages.json column points back to this paragraph rather than
+	# repeating it: the workbook's optional columns are exported as an
+	# explicit JSON null on a row that doesn't set them, not an absent key.
+	# str(null) is the literal text "<null>", not "", so the null has to be
+	# caught before str() or a blank cell stops looking blank and its
+	# default never applies. Lowercased here so a workbook cell can read
+	# naturally ("Single", "Committee") while this match stays a plain
+	# lowercase literal — a caller that needs different treatment of an
+	# empty (non-null) string, trimming, or a non-string result makes its
+	# own choice on top of the same null check; those differ by call site
+	# and are not part of the trap itself.
 	var declared: Variant = stage.get("bar_model")
 	match (str(declared).to_lower() if declared != null else ""):
 		"single": return Model.SINGLE
