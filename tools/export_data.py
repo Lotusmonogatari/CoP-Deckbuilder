@@ -774,8 +774,9 @@ def coerce(value, kind, where, report):
         return rewards
 
     if kind == "target_delta_list":
-        # "BO05 +1; M12 -2; SH04" -> [{"target": "BO05", "delta": 1},
-        # {"target": "M12", "delta": -2}, {"target": "SH04", "delta": None}]
+        # "BO05 +1; M12 -2; SH04; BO01 +1-6" -> [{"target": "BO05", "delta": 1},
+        # {"target": "M12", "delta": -2}, {"target": "SH04", "delta": None},
+        # {"target": "BO01", "delta": {"min": 1, "max": 6}}]
         #
         # Cameron's own format (2026-09-25), for the Office Hours Visitors
         # tab's Reward/Penalty columns: unlike "reward_list" above (Staff's
@@ -784,23 +785,44 @@ def coerce(value, kind, where, report):
         # column can read "BO05 +1", a Penalty column "BO05 -2" — because
         # which kind of thing a target IS (a booster standing bump, a
         # modifier grant, a shop item) is read from its own ID prefix at
-        # runtime, not from this column. A delta is optional: a modifier or
-        # shop item is granted outright ("M12" alone), not incremented, so
-        # a bare ID with no number is valid and its "delta" comes back null.
+        # runtime, not from this column. A target's delta is one of three
+        # shapes: absent (a modifier/shop item is granted outright, not
+        # incremented — "M12" alone is valid), a single fixed signed number
+        # ("+1", "-2"), or a range to roll at apply time ("+1-6", same
+        # "min-max" shape the "range" kind above already uses elsewhere,
+        # with an optional leading "+" as pure decoration — "1-6" means the
+        # same thing). Rolling a range delta is the applying code's job
+        # (mirroring how BattleSetup._opponent_count() rolls its own range),
+        # not this exporter's — this only ever produces the {"min","max"}
+        # shape, never a rolled number.
         entries = []
         for clause in text.split(";"):
             clause = clause.strip()
             if not clause:
                 continue
-            match = re.match(r"^(\S+)(?:\s+([+-]\d+))?$", clause)
-            if not match:
-                report.error(where, f"target clause {clause!r} doesn't match '<ID>' or '<ID> +N'")
+            head_match = re.match(r"^(\S+)(?:\s+(.+))?$", clause)
+            if not head_match:
+                report.error(where,
+                    f"target clause {clause!r} doesn't match '<ID>', '<ID> +N', or '<ID> min-max'")
                 continue
-            target, delta = match.group(1), match.group(2)
-            entries.append({
-                "target": target,
-                "delta": int(delta) if delta is not None else None,
-            })
+            target, rest = head_match.group(1), head_match.group(2)
+            if rest is None:
+                entries.append({"target": target, "delta": None})
+                continue
+            rest = rest.strip()
+            range_match = re.match(r"^\+?(-?\d+)\s*-\s*(-?\d+)$", rest)
+            if range_match:
+                entries.append({
+                    "target": target,
+                    "delta": {"min": int(range_match.group(1)), "max": int(range_match.group(2))},
+                })
+                continue
+            fixed_match = re.match(r"^([+-]\d+)$", rest)
+            if fixed_match:
+                entries.append({"target": target, "delta": int(fixed_match.group(1))})
+                continue
+            report.error(where,
+                f"target clause {clause!r} doesn't match '<ID>', '<ID> +N', or '<ID> min-max'")
         return entries
 
     if kind == "json":

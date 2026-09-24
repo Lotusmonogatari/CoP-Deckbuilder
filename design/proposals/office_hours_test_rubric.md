@@ -36,6 +36,7 @@ the rest of this rubric. Everything else below is still to build.
 | B5 | A visitor with a **blank** Reward cell: correct answer packages `reward == []`, not a malformed list |
 | B6 | A visitor with a **blank** Penalty cell: wrong answer packages `penalty == []`, not a malformed list |
 | B6a | A visitor whose Reward mixes kinds (`"BO05 +1; M12; SH04"`): all three resolve, each with the right `kind` — this is the direct engine-level proof of Cameron's own example format |
+| B6b | A visitor whose Reward has a range delta (`"BO01 +1-6"`): the engine rolls it to a real integer within range at the point open point 5 (proposal §4) settles, and never hands GameState a `{"min","max"}` dict to apply directly |
 | B7 | `advance()` after the last visitor does not throw and leaves `is_finished()` true |
 | B8 | `outcome()` after a mixed run (2 right, 1 wrong) reports the right counts and both a reward and a penalty in its lists |
 | B9 | A visitor with several eligible questions: setup draws exactly one, deterministically reproducible under a fixed seed (mirrors `_draw_questions()`'s existing seeding discipline) |

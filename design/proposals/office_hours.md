@@ -48,16 +48,32 @@ second tab, because one visitor can ask from several.
 | Reward | `reward` | **target_delta_list** *(built)* | `"BO05 +1; M12; SH04"` — a booster standing bump, a modifier grant, a shop item grant, any mix, in one cell. Blank = no reward. |
 | Penalty | `penalty` | **target_delta_list** *(built)* | Same format, applied on a wrong answer — typically `"BO05 -2"` against a booster, not a Sanban meta-variable. Blank = no penalty. |
 
-**`target_delta_list`** (new exporter coerce kind, built 2026-09-25):
-`"<ID> [+N]; <ID> [+N]; ..."` → `[{"target": "BO05", "delta": 1}, {"target": "M12", "delta": null}]`.
-A delta is optional — a modifier or shop item is granted outright, not
-incremented, so a bare ID is valid and its `delta` comes back `null`. Which
-*kind* of thing a target is comes from its own prefix, read by
+**`target_delta_list`** (new exporter coerce kind, built 2026-09-25; range
+support added the same day after a follow-up question caught the gap):
+`"<ID>; <ID> +N; <ID> min-max; ..."` → a mix of
+`{"target": "BO05", "delta": 1}`, `{"target": "M12", "delta": null}`, and
+`{"target": "BO01", "delta": {"min": 1, "max": 6}}`. A target's delta is one
+of three shapes:
+
+- absent — a modifier or shop item is granted outright, not incremented,
+  so a bare ID (`"M12"`) is valid
+- a single fixed signed number (`"+1"`, `"-2"`)
+- a range to roll (`"+1-6"` or `"1-6"` — the leading `+` is decorative,
+  same `min-max` shape the `range` coerce kind already uses elsewhere)
+
+Rolling a range into a real number is **not** this exporter's job — it only
+ever produces the `{"min", "max"}` shape. Whatever applies a reward later
+rolls it the same way `BattleSetup._opponent_count()` already rolls its own
+range (unseeded `randi_range`), when that apply path exists (§4, still
+open).
+
+Which *kind* of thing a target is comes from its own prefix, read by
 `scripts/rules/RewardTargets.gd` (`BOxx` → booster, `Mxx` → modifier, `SHxx`
 → shop item; a real modifier's ID is bare `M##`, not `MOD##` — checked
 against the live ID patterns in `export_data.py`, not assumed). Pulling the
 real record a target names is `DataDB.resolve_reward_target(entry)`, which
-now works for all three kinds, `SHxx` included — see §6.
+now works for all three kinds and all three delta shapes, `SHxx` included —
+see §6.
 
 ### 1.2 `Visitor Questions` tab → `data/visitor_questions.json`
 
@@ -201,6 +217,7 @@ stage's `mode` first.
 | 2 | Reaction text split | Split into Right/Wrong (matching Response text's own split) | Confirm, vs. one shared "Reaction" column regardless of outcome |
 | 3 | Can a player skip/decline a visitor rather than always picking one of 4? | No — must pick one of the four, no decline | Confirm this matches intent; a press conference's "decline" mechanic could be mirrored if not |
 | 4 | Repeat visits — can the same visitor/question reappear in a later level, or once answered are they retired for the run? | Unset — no dedup, a visitor can reappear (same as opponents can) | Confirm |
+| 5 | A range delta (`"BO01 +1-6"`) rolls a real number somewhere — when? Once, the moment `answer()` resolves that visitor (matching how a stage's own `question_pool` is drawn once at setup, not re-rolled), or shown to the player as a range and rolled only when applied to GameState? | Roll once, at the same point the reward/penalty is resolved — not shown as a range to the player | Confirm; doesn't block anything built so far, only the eventual `OfficeHoursEngine`/apply-path work |
 
 *(The old #2, "what does a wrong answer's penalty touch" — resolved, see the confirmations table above: Penalty is the same booster/modifier/shop-item format as Reward, not a Sanban meta-variable.)*
 
@@ -226,7 +243,9 @@ Cameron's follow-up settled the Reward/Penalty format and asked for the
 SHxx pull specifically — both self-contained enough to build now, without
 waiting on the rest of the plan above:
 
-- **`tools/export_data.py`**: the `target_delta_list` coerce kind; the
+- **`tools/export_data.py`**: the `target_delta_list` coerce kind,
+  including range deltas (`"BO01 +1-6"` → `{"min": 1, "max": 6}`, caught as
+  a gap and added the same day — see the delta-shape table above); the
   `Visitors` tab schema rewritten to the resolved 8-column shape in §1.1
   (replacing the dead 2-choice stub); the new `Visitor Questions` tab
   schema from §1.2. Neither tab exists in the real workbook yet — both are
@@ -239,8 +258,9 @@ waiting on the rest of the plan above:
   (`var shop`, `get_shop_item()`) — it existed on disk with 29 real rows
   and nothing read it before today. New `resolve_reward_target(entry)`
   pulls the real record for any target_delta_list entry, of any of the
-  three kinds.
-- **12 new GUT tests** (`tests/test_reward_targets.gd`), all passing
+  three kinds, and any of the three delta shapes (absent / fixed / range —
+  a range passes through unrolled; nothing rolls it yet, see §4).
+- **13 new GUT tests** (`tests/test_reward_targets.gd`), all passing
   alongside the full 528-test suite and the real click-driven loop test.
 
 Not built by this: `OfficeHoursEngine.gd`, the Visitors/Visitor Questions

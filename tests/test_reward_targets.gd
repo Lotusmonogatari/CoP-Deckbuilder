@@ -61,6 +61,18 @@ func test_resolving_a_booster_target_pulls_the_real_row() -> void:
 	assert_false((resolved["record"] as Dictionary).is_empty(), "BO01 is real data")
 
 
+func test_resolving_a_range_delta_target_passes_the_range_through_untouched() -> void:
+	# tools/export_data.py's target_delta_list now accepts a range clause
+	# ("BO01 +1-6" -> {"target": "BO01", "delta": {"min": 1, "max": 6}}).
+	# Rolling that range into a real number is the applying code's job
+	# (mirroring BattleSetup._opponent_count()) — nothing built yet touches
+	# it — so this only proves resolve_reward_target() carries the shape
+	# through opaque and unmodified, the same as it does an int or null.
+	var resolved := DataDB.resolve_reward_target({"target": "BO01", "delta": {"min": 1, "max": 6}})
+	assert_eq(resolved["kind"], RewardTargets.BOOSTER)
+	assert_eq(resolved["delta"], {"min": 1, "max": 6})
+
+
 func test_resolving_a_modifier_target_pulls_the_real_row() -> void:
 	var resolved := DataDB.resolve_reward_target({"target": "M01", "delta": null})
 	assert_eq(resolved["kind"], RewardTargets.MODIFIER)
