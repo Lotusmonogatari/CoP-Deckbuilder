@@ -1,44 +1,48 @@
-# The web build: what it is, and what it is not
+# Coliseum of Parliament
 
-This folder is a browser copy of the game used for playtesting. Open
-`index.html`, or use the published link.
+A single-player, portrait-mode, turn-based card battler built in Godot 4
+(GDScript). The player is a legislator who fights rhetorical battles —
+committee hearings, floor debates, party caucuses, press conferences, town
+halls, TV debates — with a hand of argument cards, in the fictional
+parliamentary nation of Yezo.
 
-## It is the rules, mirrored exactly
+Cameron (the designer) owns every design and canon decision. See
+`CLAUDE.md` for the full build brief: hard constraints, canon rules, the
+data contract, and the milestone log.
 
-`web/src/engine.js` is a hand-port of `scripts/rules/`. Every rule the Godot
-engine applies, this one applies the same way and reaches the same numbers.
+## Running it
 
-The browser page runs shared rules assertions and prints a parity summary at
-the bottom:
+Open the project in the Godot 4 editor (`project.godot` at the repo root),
+or run it headless if Godot is on the PATH — `tools/get_godot.sh` downloads
+one into `.tools/` if it is not. The main scene is the Office
+(`scenes/office_hours/OfficeScreen.tscn`).
 
-If the summary reports a mismatch, investigate the two implementations before
-using the browser build for balance conclusions.
+To check the whole project in one go — re-exports the workbook, boots the
+game, runs the rules engine's GUT tests, and clicks through the UI with a
+real display (needs `xvfb-run`) — run:
 
-So: a change to `scripts/rules/` is mirrored here in the same commit, and the
-count goes up when tests are added, never down.
+```
+tools/verify.sh
+```
 
-## It is not the presentation
+## Where things live
 
-**The rules are mirrored; the presentation is Godot-only.**
-
-Portrait expressions, sound, music, spoken lines, card animations, the shoji
-frames, screen layout — none of these are copied here and none of them should
-be. The page needs to be playable and honest about the numbers. It does not
-need to be pretty, and every hour spent making it pretty is an hour not spent
-on the game that actually ships to a phone.
-
-If you find yourself about to port an animation into this folder, this
-paragraph is here to stop you.
-
-## Which is which
-
-| Lives in Godot only | Mirrored in both |
+| | |
 |---|---|
-| `scripts/ui/`, `scenes/`, `theme/`, `assets/` | `scripts/rules/` ↔ `web/src/engine.js` |
-| Audio, expressions, animation, layout | Card maths, affinity, guard, gaffes, intents, win and loss |
-| — | `data/*.json`, which both read |
+| `data/*.json` | The source of truth for all content, exported from the design workbook. Never hand-edited except a few files `tools/export_data.py`'s own comments mark as hand-maintained. |
+| `design/CoP_Starter_Card_Stage_Data.xlsx` | The design workbook itself. Cameron's. |
+| `design/proposals/` | Design docs and plans written for Cameron's review, one per feature area. |
+| `scripts/rules/` | The battle and meta rules, as plain GDScript with no scene or autoload access — provably headless, and mirrored in `web/src/engine.js` (see below). |
+| `scripts/autoload/` | Game state, the data loader, and the other singletons the screens read from. |
+| `scripts/ui/`, `scenes/` | Everything the player sees. |
+| `tests/` | GUT unit tests for `scripts/rules/`, plus a few real click-driven interaction tests under `tests/interaction/`. |
+| `tools/` | The workbook exporter, the scene builders, the web build, and `verify.sh`. |
 
-## Running the check
+## The web build
 
-Open the page and scroll to the bottom, or run the whole project's checks
-with `tools/verify.sh`, which covers the Godot side.
+`web/` is a browser mirror of the rules, used for playtesting without
+installing Godot. Build it with `python3 tools/build_web_playtest.py`, which
+writes `web/playtest.html` (gitignored — reproducible from `web/src/` and
+`data/*.json`, not committed). See `web/README.md` for what the mirror is
+and, just as importantly, what it deliberately is not (a second copy of the
+presentation).
