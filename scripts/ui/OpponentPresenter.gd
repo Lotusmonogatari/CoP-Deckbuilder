@@ -40,6 +40,7 @@ var _name_label: Label
 var _intent_label: Label
 var _guard_label: Label
 var _opponent_guard_label: Label
+var _upcoming_intent_label: Label
 
 ## Where the opponent stood when this bout began, so "losing badly" can mean
 ## something. Reset whenever the opponent changes.
@@ -59,12 +60,14 @@ var stage_id := ""
 
 
 func _init(portrait: Control, name_label: Label, intent_label: Label,
-		guard_label: Label, opponent_guard_label: Label) -> void:
+		guard_label: Label, opponent_guard_label: Label,
+		upcoming_intent_label: Label = null) -> void:
 	_portrait = portrait
 	_name_label = name_label
 	_intent_label = intent_label
 	_guard_label = guard_label
 	_opponent_guard_label = opponent_guard_label
+	_upcoming_intent_label = upcoming_intent_label
 
 	# A reporter's question is a sentence rather than "Attacking · −6", so
 	# the line it sits on has to be able to wrap.
@@ -82,11 +85,27 @@ func show_state(engine: BattleEngine, stage: String = "") -> void:
 		_intent_label.text = str(engine.current_question().get(
 			"text", Text.say("battle.last_question")))
 		_show_journalist(engine.current_question())
+		_show_upcoming_intent({})
 	else:
 		_intent_label.text = IntentRunner.describe(engine.current_intent(), Text.phrase())
 		_show_opponent(engine)
+		_show_upcoming_intent(engine.upcoming_intent())
 
 	_show_guards(state)
+
+
+## The move after next, once a card (C12 Head Count) has revealed it — blank
+## otherwise, and always blank in a press conference (there is no pattern to
+## peek ahead in; the reporters' questions are drawn fresh each time).
+func _show_upcoming_intent(intent: Dictionary) -> void:
+	if _upcoming_intent_label == null:
+		return
+	if intent.is_empty():
+		_upcoming_intent_label.hide()
+		return
+	_upcoming_intent_label.text = Text.say("battle.upcoming_intent",
+		{"intent": IntentRunner.describe(intent, Text.phrase())})
+	_upcoming_intent_label.show()
 
 
 ## The name of whoever is opposite, for a sentence to use.

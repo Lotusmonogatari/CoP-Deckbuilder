@@ -202,6 +202,11 @@ func _add_opponent_row(parent: Control) -> void:
 	_adopt(_label("OpponentName", "Opponent", "HeaderLabel"), details, true)
 	_adopt(_label("IntentLabel", "Waiting"), details, true)
 
+	# Hidden until a card (C12 Head Count) reveals the move after next.
+	var upcoming_intent := _label("UpcomingIntentLabel", "Then: Waiting", "SmallLabel")
+	upcoming_intent.visible = false
+	_adopt(upcoming_intent, details, true)
+
 	# Hidden until OpponentPresenter._show_guards() has something to say —
 	# most stages never build any guard against the player at all.
 	var opponent_guard := _label("OpponentGuardLabel", "They guard 0")

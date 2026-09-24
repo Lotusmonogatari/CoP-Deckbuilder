@@ -100,7 +100,8 @@ func _ready() -> void:
 	_background.show_label = false
 
 	_speaker = OpponentPresenter.new(
-		%Portrait, %OpponentName, %IntentLabel, %GuardLabel, %OpponentGuardLabel)
+		%Portrait, %OpponentName, %IntentLabel, %GuardLabel, %OpponentGuardLabel,
+		%UpcomingIntentLabel)
 	_player_portrait = PlayerPortraitPresenter.new(%PlayerPortrait)
 	_hand = HandPresenter.new(%HandRow)
 	_hand.card_chosen.connect(_on_card_chosen)

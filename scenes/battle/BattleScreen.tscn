@@ -131,6 +131,13 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Waiting"
 
+[node name="UpcomingIntentLabel" type="Label" parent="Safe/Column/OpponentRow/Details"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "Then: Waiting"
+
 [node name="OpponentGuardLabel" type="Label" parent="Safe/Column/OpponentRow/Details"]
 unique_name_in_owner = true
 visible = false

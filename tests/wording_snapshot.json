@@ -15,6 +15,7 @@
   "battle.one_at_a_time": "{count} of them, one at a time. You are on {number}.",
   "battle.passed": "You said nothing. One less energy this turn.",
   "battle.their_guard": "They guard {count} / {cap}",
+  "battle.upcoming_intent": "Then: {intent}",
   "battle.who_and_caption": "{who}  ·  {caption}",
   "battle.your_guard": "Guard {count} / {cap}",
   "brief.bullet": "• {label} — {detail}",

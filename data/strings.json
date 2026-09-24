@@ -1776,5 +1776,12 @@
     "english": "Play as {name}",
     "placeholders": "name",
     "notes": null
+  },
+  {
+    "key": "battle.upcoming_intent",
+    "where": "Battle - opponent row, shown only after a card reveals the move after next (C12 Head Count)",
+    "english": "Then: {intent}",
+    "placeholders": "intent",
+    "notes": null
   }
 ]
