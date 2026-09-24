@@ -207,11 +207,15 @@ static func active_modifiers(modifier_rows: Array, stage: Dictionary,
 		if minimum == null:
 			continue   # not audience-driven; the caller decides
 
-		var segment_id: Variant = modifier.get("trigger_segment_id")
-		if segment_id == null:
-			continue
-
-		if float(mix.get(segment_id, 0.0)) >= float(minimum):
+		# "SG03; SG05" — ANY one of the modifier's own segments reaching the
+		# threshold is enough; they are alternatives, not all required.
+		var segment_ids: Array = modifier.get("trigger_segment_ids", [])
+		var triggered := false
+		for segment_id: String in segment_ids:
+			if float(mix.get(segment_id, 0.0)) >= float(minimum):
+				triggered = true
+				break
+		if triggered:
 			active.append(modifier)
 
 	return active

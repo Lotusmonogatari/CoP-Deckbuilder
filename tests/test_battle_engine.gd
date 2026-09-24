@@ -913,9 +913,9 @@ func _press(overrides: Dictionary = {}) -> Dictionary:
 			"gaffe_limit": 4,
 			"questions": [
 				{"id": "Q1", "text": "First question.",
-				 "prefers_suit": "Data Driven", "pleases_booster": "BO08"},
+				 "prefers_suit": "Data Driven", "pleases_boosters": ["BO08"]},
 				{"id": "Q2", "text": "Second question.",
-				 "prefers_suit": "Earnest", "pleases_booster": "BO03"},
+				 "prefers_suit": "Earnest", "pleases_boosters": ["BO03"]},
 			],
 		}),
 		"opponent": TestFixtures.opponent([["block", 1]]),
@@ -984,6 +984,26 @@ func test_answering_in_the_suit_invited_pleases_that_organisation() -> void:
 	engine.play_card("ATTACK3")
 	assert_true(engine.pleased_boosters().has("BO08"),
 		"the organisation behind that question is pleased")
+
+
+func test_a_strong_answer_can_please_several_organisations_at_once() -> void:
+	# "BO01; BO02" in the workbook's Question Themes Organisation column —
+	# one theme, several organisations pleased by the same strong answer.
+	var engine := _start(_press({
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S2", "draw_mode": "none", "opening_hand": 6,
+			"bar_max": 100, "win_threshold": 55, "player_start": 45,
+			"opp_start": 45, "gaffe_limit": 4,
+			"questions": [{"id": "Q1", "text": "First question.",
+				"prefers_suit": "Data Driven", "pleases_boosters": ["BO01", "BO02"]}],
+		}),
+	}))
+	engine.state.hand.assign(["ATTACK3"])
+
+	engine.play_card("ATTACK3")
+	assert_true(engine.pleased_boosters().has("BO01"))
+	assert_true(engine.pleased_boosters().has("BO02"))
+	assert_eq(engine.pleased_boosters().size(), 2)
 
 
 func test_answering_in_the_wrong_suit_pleases_nobody() -> void:

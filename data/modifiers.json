@@ -4,7 +4,9 @@
     "name_en": "Local Support Association",
     "name_jp": "地元後援会",
     "romaji": "Jimoto Kōenkai",
-    "trigger_segment_or_booster": "SG03",
+    "trigger_segment_or_booster": [
+      "SG03"
+    ],
     "trigger_min_pct": 0.65,
     "effect": "+10 XP after successful completion of a level.",
     "reputation_cost": 10,
@@ -13,15 +15,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "XP",
     "effect_value": 10.0,
-    "trigger_segment_id": "SG03",
-    "trigger_booster_id": null
+    "trigger_segment_ids": [
+      "SG03"
+    ],
+    "trigger_booster_ids": []
   },
   {
     "mod_id": "M02",
     "name_en": "Shotengai Association",
     "name_jp": "商店街の会",
     "romaji": "Shōtengai  no Kai",
-    "trigger_segment_or_booster": "SG04",
+    "trigger_segment_or_booster": [
+      "SG04"
+    ],
     "trigger_min_pct": 0.65,
     "effect": "+1,500 Funds (Yen) after successful completion of a level.",
     "reputation_cost": 10,
@@ -30,15 +36,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
     "effect_value": 1500.0,
-    "trigger_segment_id": "SG04",
-    "trigger_booster_id": null
+    "trigger_segment_ids": [
+      "SG04"
+    ],
+    "trigger_booster_ids": []
   },
   {
     "mod_id": "M03",
     "name_en": "Commission a Press Profile",
     "name_jp": "好意的な番記者",
     "romaji": "Kōiteki na Bankisha",
-    "trigger_segment_or_booster": "SG01",
+    "trigger_segment_or_booster": [
+      "SG01"
+    ],
     "trigger_min_pct": 0.35,
     "effect": "ST04 starts with +5 Press tone.",
     "reputation_cost": 5,
@@ -47,15 +57,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST04",
     "effect_value": 5.0,
-    "trigger_segment_id": "SG01",
-    "trigger_booster_id": null
+    "trigger_segment_ids": [
+      "SG01"
+    ],
+    "trigger_booster_ids": []
   },
   {
     "mod_id": "M04",
     "name_en": "Editorial Board Backing",
     "name_jp": "論説委員の支持",
     "romaji": "Ronsetsu Iin no Shiji",
-    "trigger_segment_or_booster": "SG01",
+    "trigger_segment_or_booster": [
+      "SG01"
+    ],
     "trigger_min_pct": 0.5,
     "effect": "ST06 TV Debate starts with +10 Press tone.",
     "reputation_cost": 5,
@@ -64,15 +78,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST06",
     "effect_value": 10.0,
-    "trigger_segment_id": "SG01",
-    "trigger_booster_id": null
+    "trigger_segment_ids": [
+      "SG01"
+    ],
+    "trigger_booster_ids": []
   },
   {
     "mod_id": "M05",
     "name_en": "Agricultural Cooperatives",
     "name_jp": "農協",
     "romaji": "Nōkyō",
-    "trigger_segment_or_booster": "BO10",
+    "trigger_segment_or_booster": [
+      "BO10"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "+1,000 Funds (Yen) after successful completion of a level.",
     "reputation_cost": 5,
@@ -81,15 +99,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
     "effect_value": 1000.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO10"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO10"
+    ]
   },
   {
     "mod_id": "M06",
     "name_en": "Labor Federation",
     "name_jp": "労働組合連合",
     "romaji": "Rōdō Kumiai Rengō",
-    "trigger_segment_or_booster": "BO09",
+    "trigger_segment_or_booster": [
+      "BO09"
+    ],
     "trigger_min_pct": 20.0,
     "effect": "+15 XP after successful completion of a level.",
     "reputation_cost": 5,
@@ -98,15 +120,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "XP",
     "effect_value": 15.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO09"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO09"
+    ]
   },
   {
     "mod_id": "M07",
     "name_en": "Scandal Coverage",
     "name_jp": "スキャンダル報道",
     "romaji": "Sukyandaru Hōdō",
-    "trigger_segment_or_booster": "BO08",
+    "trigger_segment_or_booster": [
+      "BO08"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "ST06 TV Debate gaffe (失言) limit +1.",
     "reputation_cost": 15,
@@ -115,15 +141,19 @@
     "effect_type": "GAFFE_LIMIT_BONUS",
     "effect_target": "ST06",
     "effect_value": 1.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO08"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO08"
+    ]
   },
   {
     "mod_id": "M08",
     "name_en": "Faction Rebellion",
     "name_jp": "造反",
     "romaji": "Zōhan",
-    "trigger_segment_or_booster": "BO02",
+    "trigger_segment_or_booster": [
+      "BO02"
+    ],
     "trigger_min_pct": 10.0,
     "effect": "ST03 Party Caucus starts with +10 Support.",
     "reputation_cost": 0,
@@ -132,15 +162,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST03",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO02"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO02"
+    ]
   },
   {
     "mod_id": "M09",
     "name_en": "Party Backing",
     "name_jp": "党の後押し",
     "romaji": "Tō no Atooshi",
-    "trigger_segment_or_booster": "SG02",
+    "trigger_segment_or_booster": [
+      "SG02"
+    ],
     "trigger_min_pct": 0.6,
     "effect": "+5 Party support after successful completion of a level.",
     "reputation_cost": 0,
@@ -149,15 +183,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "PartySupport",
     "effect_value": 5.0,
-    "trigger_segment_id": "SG02",
-    "trigger_booster_id": null
+    "trigger_segment_ids": [
+      "SG02"
+    ],
+    "trigger_booster_ids": []
   },
   {
     "mod_id": "M10",
     "name_en": "Cold Shoulder",
     "name_jp": "党内の冷遇",
     "romaji": "Tōnai no Reigū",
-    "trigger_segment_or_booster": "BO01",
+    "trigger_segment_or_booster": [
+      "BO01"
+    ],
     "trigger_min_pct": 5.0,
     "effect": "Level unlock XP cost reduced 10% (independent fundraising when HQ withholds support).",
     "reputation_cost": 0,
@@ -166,15 +204,19 @@
     "effect_type": "UNLOCK_DISCOUNT",
     "effect_target": "XPCost",
     "effect_value": 0.1,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO01"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO01"
+    ]
   },
   {
     "mod_id": "M11",
     "name_en": "Official Endorsement",
     "name_jp": "党公認",
     "romaji": "Tō Kōnin",
-    "trigger_segment_or_booster": "BO01",
+    "trigger_segment_or_booster": [
+      "BO01"
+    ],
     "trigger_min_pct": 20.0,
     "effect": "+2 Jiban after successful completion of a level.",
     "reputation_cost": 5,
@@ -183,15 +225,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Jiban",
     "effect_value": 2.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO01"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO01"
+    ]
   },
   {
     "mod_id": "M12",
     "name_en": "Faction Patronage",
     "name_jp": "派閥の庇護",
     "romaji": "Habatsu no Higo",
-    "trigger_segment_or_booster": "BO02",
+    "trigger_segment_or_booster": [
+      "BO02"
+    ],
     "trigger_min_pct": 20.0,
     "effect": "Tier 1 level unlock XP cost reduced 15%.",
     "reputation_cost": 0,
@@ -200,15 +246,19 @@
     "effect_type": "UNLOCK_DISCOUNT",
     "effect_target": "Tier1Cost",
     "effect_value": 0.15,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO02"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO02"
+    ]
   },
   {
     "mod_id": "M13",
     "name_en": "Mayors' Endorsement",
     "name_jp": "首長の推薦",
     "romaji": "Shuchō no Suisen",
-    "trigger_segment_or_booster": "BO04",
+    "trigger_segment_or_booster": [
+      "BO04"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "ST15 Committee on Construction and Development starts with +10 Favourability.",
     "reputation_cost": 5,
@@ -217,15 +267,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST15",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO04"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO04"
+    ]
   },
   {
     "mod_id": "M14",
     "name_en": "Community Canvass",
     "name_jp": "町内会の支援",
     "romaji": "Chōnaikai no Shien",
-    "trigger_segment_or_booster": "SG03",
+    "trigger_segment_or_booster": [
+      "SG03"
+    ],
     "trigger_min_pct": 0.5,
     "effect": "+1 card drawn at the start of ST05 Town Hall.",
     "reputation_cost": 0,
@@ -234,15 +288,19 @@
     "effect_type": "HAND_SIZE_BONUS",
     "effect_target": "ST05",
     "effect_value": 1.0,
-    "trigger_segment_id": "SG03",
-    "trigger_booster_id": null
+    "trigger_segment_ids": [
+      "SG03"
+    ],
+    "trigger_booster_ids": []
   },
   {
     "mod_id": "M15",
     "name_en": "Fishing Fleet Support",
     "name_jp": "漁協の支援",
     "romaji": "Gyokyō no Shien",
-    "trigger_segment_or_booster": "BO10",
+    "trigger_segment_or_booster": [
+      "BO10"
+    ],
     "trigger_min_pct": 25.0,
     "effect": "+2,000 Funds (Yen) after successful completion of a level.",
     "reputation_cost": 5,
@@ -251,15 +309,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
     "effect_value": 2000.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO10"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO10"
+    ]
   },
   {
     "mod_id": "M16",
     "name_en": "Party Headquarters",
     "name_jp": "党本部の全面支援",
     "romaji": "Tōhonbu no Zenmen Shien",
-    "trigger_segment_or_booster": "BO01",
+    "trigger_segment_or_booster": [
+      "BO01"
+    ],
     "trigger_min_pct": 30.0,
     "effect": "ST08 Party Steering Committee starts with +15 Support.",
     "reputation_cost": 10,
@@ -268,15 +330,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST08",
     "effect_value": 15.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO01"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO01"
+    ]
   },
   {
     "mod_id": "M17",
     "name_en": "Party Faction",
     "name_jp": "派閥の後押し",
     "romaji": "Habatsu no Atooshi",
-    "trigger_segment_or_booster": "BO02",
+    "trigger_segment_or_booster": [
+      "BO02"
+    ],
     "trigger_min_pct": 30.0,
     "effect": "+3 Party support after successful completion of a level.",
     "reputation_cost": 0,
@@ -285,15 +351,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "PartySupport",
     "effect_value": 3.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO02"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO02"
+    ]
   },
   {
     "mod_id": "M18",
     "name_en": "Local Kōenkai",
     "name_jp": "後援会の地盤固め",
     "romaji": "Kōenkai no Jiban Gatame",
-    "trigger_segment_or_booster": "BO03",
+    "trigger_segment_or_booster": [
+      "BO03"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "+2 Jiban after successful completion of a level.",
     "reputation_cost": 0,
@@ -302,15 +372,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Jiban",
     "effect_value": 2.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO03"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO03"
+    ]
   },
   {
     "mod_id": "M19",
     "name_en": "Mayors' Network",
     "name_jp": "市町村長会の口利き",
     "romaji": "Shichōsonchō-kai no Kuchikiki",
-    "trigger_segment_or_booster": "BO04",
+    "trigger_segment_or_booster": [
+      "BO04"
+    ],
     "trigger_min_pct": 25.0,
     "effect": "ST17 Committee on Government Administration starts with +10 Favourability.",
     "reputation_cost": 5,
@@ -319,15 +393,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST17",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO04"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO04"
+    ]
   },
   {
     "mod_id": "M20",
     "name_en": "Chamber of Commerce",
     "name_jp": "商工会議所の資金援助",
     "romaji": "Shōkō Kaigisho no Shikin Enjo",
-    "trigger_segment_or_booster": "BO05",
+    "trigger_segment_or_booster": [
+      "BO05"
+    ],
     "trigger_min_pct": 20.0,
     "effect": "+2,500 Funds (Yen) after successful completion of a level.",
     "reputation_cost": 5,
@@ -336,15 +414,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
     "effect_value": 2500.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO05"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO05"
+    ]
   },
   {
     "mod_id": "M21",
     "name_en": "Neighborhood Associations",
     "name_jp": "町内会の動員",
     "romaji": "Chōnaikai no Dōin",
-    "trigger_segment_or_booster": "BO06",
+    "trigger_segment_or_booster": [
+      "BO06"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "+1 card drawn at the start of ST01 Special Committee.",
     "reputation_cost": 0,
@@ -353,15 +435,19 @@
     "effect_type": "HAND_SIZE_BONUS",
     "effect_target": "ST01",
     "effect_value": 1.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO06"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO06"
+    ]
   },
   {
     "mod_id": "M22",
     "name_en": "Fisheries Cooperative",
     "name_jp": "漁協の後押し",
     "romaji": "Gyokyō no Atooshi",
-    "trigger_segment_or_booster": "BO07",
+    "trigger_segment_or_booster": [
+      "BO07"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "ST13 Committee on Agriculture starts with +10 Favourability.",
     "reputation_cost": 5,
@@ -370,15 +456,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST13",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO07"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO07"
+    ]
   },
   {
     "mod_id": "M23",
     "name_en": "National Media",
     "name_jp": "全国紙の好意的報道",
     "romaji": "Zenkokushi no Kōiteki Hōdō",
-    "trigger_segment_or_booster": "BO08",
+    "trigger_segment_or_booster": [
+      "BO08"
+    ],
     "trigger_min_pct": 25.0,
     "effect": "ST04 Press Conference starts with +10 Press tone.",
     "reputation_cost": 10,
@@ -387,15 +477,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST04",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO08"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO08"
+    ]
   },
   {
     "mod_id": "M24",
     "name_en": "Labor Federation",
     "name_jp": "労組の集票力",
     "romaji": "Rōso no Shūhyōryoku",
-    "trigger_segment_or_booster": "BO09",
+    "trigger_segment_or_booster": [
+      "BO09"
+    ],
     "trigger_min_pct": 30.0,
     "effect": "ST02 Floor Debate starts with +10 Seats.",
     "reputation_cost": 5,
@@ -404,15 +498,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST02",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO09"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO09"
+    ]
   },
   {
     "mod_id": "M25",
     "name_en": "Agricultural Cooperatives",
     "name_jp": "農協の集票力",
     "romaji": "Nōkyō no Shūhyōryoku",
-    "trigger_segment_or_booster": "BO10",
+    "trigger_segment_or_booster": [
+      "BO10"
+    ],
     "trigger_min_pct": 30.0,
     "effect": "ST10 Committee on the Environment starts with +10 Favourability.",
     "reputation_cost": 5,
@@ -421,15 +519,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST10",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO10"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO10"
+    ]
   },
   {
     "mod_id": "M26",
     "name_en": "Campus Organizing Network",
     "name_jp": "学生運動ネットワーク",
     "romaji": "Gakusei Undō Nettowāku",
-    "trigger_segment_or_booster": "BO11",
+    "trigger_segment_or_booster": [
+      "BO11"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "+1 card drawn at the start of ST21 Policy Study Session.",
     "reputation_cost": 0,
@@ -438,15 +540,19 @@
     "effect_type": "HAND_SIZE_BONUS",
     "effect_target": "ST21",
     "effect_value": 1.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO11"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO11"
+    ]
   },
   {
     "mod_id": "M27",
     "name_en": "PTA Network",
     "name_jp": "保護者会ネットワーク",
     "romaji": "Hogosha-kai Nettowāku",
-    "trigger_segment_or_booster": "BO12",
+    "trigger_segment_or_booster": [
+      "BO12"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "ST05 Town Hall starts with +10 Appeasement.",
     "reputation_cost": 0,
@@ -455,15 +561,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST05",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO12"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO12"
+    ]
   },
   {
     "mod_id": "M28",
     "name_en": "Traditional Craft Guild Backing",
     "name_jp": "伝統工芸組合の支援",
     "romaji": "Dentō Kōgei Kumiai no Shien",
-    "trigger_segment_or_booster": "BO13",
+    "trigger_segment_or_booster": [
+      "BO13"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "+1,500 Funds (Yen) after successful completion of a level.",
     "reputation_cost": 5,
@@ -472,15 +582,19 @@
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
     "effect_value": 1500.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO13"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO13"
+    ]
   },
   {
     "mod_id": "M29",
     "name_en": "Commuter Rail Advocacy",
     "name_jp": "通勤鉄道推進の会",
     "romaji": "Tsūkin Tetsudō Suishin no Kai",
-    "trigger_segment_or_booster": "BO14",
+    "trigger_segment_or_booster": [
+      "BO14"
+    ],
     "trigger_min_pct": 15.0,
     "effect": "ST01 Special Committee starts with +5 Members.",
     "reputation_cost": 0,
@@ -489,15 +603,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST01",
     "effect_value": 5.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO14"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO14"
+    ]
   },
   {
     "mod_id": "M30",
     "name_en": "Traditionalist Bloc Support",
     "name_jp": "保守派ブロックの支持",
     "romaji": "Hoshu-ha Burokku no Shiji",
-    "trigger_segment_or_booster": "BO15",
+    "trigger_segment_or_booster": [
+      "BO15"
+    ],
     "trigger_min_pct": 20.0,
     "effect": "ST18 Committee of the Cabinet starts with +10 Consensus.",
     "reputation_cost": 10,
@@ -506,15 +624,19 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST18",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO15"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO15"
+    ]
   },
   {
     "mod_id": "M31",
     "name_en": "Reform Caucus Support",
     "name_jp": "改革派議員連盟の支持",
     "romaji": "Kaikaku-ha Giin Renmei no Shiji",
-    "trigger_segment_or_booster": "BO16",
+    "trigger_segment_or_booster": [
+      "BO16"
+    ],
     "trigger_min_pct": 20.0,
     "effect": "ST16 Committee on Finance starts with +10 Favourability.",
     "reputation_cost": 10,
@@ -523,7 +645,9 @@
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST16",
     "effect_value": 10.0,
-    "trigger_segment_id": null,
-    "trigger_booster_id": "BO16"
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO16"
+    ]
   }
 ]

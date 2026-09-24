@@ -197,7 +197,7 @@ func test_an_ordinary_reputation_changes_nothing() -> void:
 func test_a_modifier_fires_when_its_audience_is_big_enough() -> void:
 	# The test stage's audience is 60% loyalists; this modifier wants 30%.
 	var modifiers := [{
-		"mod_id": "M06", "trigger_segment_id": "SG02",
+		"mod_id": "M06", "trigger_segment_ids": ["SG02"],
 		"trigger_min_pct": 0.3, "available_to": "Both",
 	}]
 	var active := MetaRules.active_modifiers(modifiers, TestFixtures.stage())
@@ -207,7 +207,7 @@ func test_a_modifier_fires_when_its_audience_is_big_enough() -> void:
 func test_a_modifier_stays_quiet_when_its_audience_is_too_small() -> void:
 	# Only 10% of this stage's audience are constituents.
 	var modifiers := [{
-		"mod_id": "M01", "trigger_segment_id": "SG03",
+		"mod_id": "M01", "trigger_segment_ids": ["SG03"],
 		"trigger_min_pct": 0.3, "available_to": "Both",
 	}]
 	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 0)
@@ -215,7 +215,7 @@ func test_a_modifier_stays_quiet_when_its_audience_is_too_small() -> void:
 
 func test_an_opponent_only_modifier_does_not_fire_for_the_player() -> void:
 	var modifiers := [{
-		"mod_id": "M07", "trigger_segment_id": "SG01",
+		"mod_id": "M07", "trigger_segment_ids": ["SG01"],
 		"trigger_min_pct": 0.1, "available_to": "Opponent",
 	}]
 	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage(), "Player").size(), 0)
@@ -225,8 +225,26 @@ func test_an_opponent_only_modifier_does_not_fire_for_the_player() -> void:
 func test_a_modifier_with_no_audience_condition_is_left_to_the_caller() -> void:
 	# M09 and M10 are driven by party support, not by who is in the room.
 	var modifiers := [{
-		"mod_id": "M09", "trigger_segment_id": "SG02",
+		"mod_id": "M09", "trigger_segment_ids": ["SG02"],
 		"trigger_min_pct": null, "available_to": "Both",
+	}]
+	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 0)
+
+
+func test_a_modifier_fires_if_any_one_of_several_segments_is_big_enough() -> void:
+	# "SG03; SG02" — SG03 alone (10%) is too small, but SG02 (60%) clears
+	# the bar, and either one is enough to trigger this modifier.
+	var modifiers := [{
+		"mod_id": "M20", "trigger_segment_ids": ["SG03", "SG02"],
+		"trigger_min_pct": 0.3, "available_to": "Both",
+	}]
+	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 1)
+
+
+func test_a_modifier_stays_quiet_when_none_of_several_segments_are_big_enough() -> void:
+	var modifiers := [{
+		"mod_id": "M21", "trigger_segment_ids": ["SG03", "SG05"],
+		"trigger_min_pct": 0.3, "available_to": "Both",
 	}]
 	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 0)
 

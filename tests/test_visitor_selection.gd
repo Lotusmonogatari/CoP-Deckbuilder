@@ -43,7 +43,7 @@ func test_visitors_for_a_stage_with_no_eligible_pool_is_empty() -> void:
 
 func test_question_for_visitor_returns_one_of_the_visitors_real_questions() -> void:
 	var question := BattleSetup._question_for_visitor("VI01")
-	assert_eq(question.get("visitor_id"), "VI01")
+	assert_true((question.get("visitor_ids", []) as Array).has("VI01"))
 	assert_false(str(question.get("question_text", "")).is_empty())
 
 
@@ -57,21 +57,39 @@ func test_a_unique_visitors_questions_are_never_drawn_for_another_visitor() -> v
 	# is no shared pool at all here (unlike press_conference/media_ambush/
 	# etc, which really are one pool several stages draw from).
 	# get_questions_for_visitor()/_question_for_visitor() only ever look at
-	# rows whose own "visitor_id" matches the one asked for, so a visitor
+	# rows whose own "visitor_ids" includes the one asked for, so a visitor
 	# with their own dedicated rows in Visitor Questions can never draw
 	# another visitor's — no extra flag or column needed. This uses two
 	# fake visitor_questions.json rows, temporarily, since the real data
 	# has only one visitor to prove isolation against.
 	var before := DataDB.visitor_questions.duplicate(true)
-	DataDB.visitor_questions.append({"question_id": "VQ_UNIQUE_A", "visitor_id": "VI_UNIQUE_A",
+	DataDB.visitor_questions.append({"question_id": "VQ_UNIQUE_A", "visitor_ids": ["VI_UNIQUE_A"],
 		"question_text": "Only VI_UNIQUE_A ever asks this."})
-	DataDB.visitor_questions.append({"question_id": "VQ_UNIQUE_B", "visitor_id": "VI_UNIQUE_B",
+	DataDB.visitor_questions.append({"question_id": "VQ_UNIQUE_B", "visitor_ids": ["VI_UNIQUE_B"],
 		"question_text": "Only VI_UNIQUE_B ever asks this."})
 	DataDB._build_lookups()
 
 	for _i in 10:
 		assert_eq(BattleSetup._question_for_visitor("VI_UNIQUE_A").get("question_id"), "VQ_UNIQUE_A")
 		assert_eq(BattleSetup._question_for_visitor("VI_UNIQUE_B").get("question_id"), "VQ_UNIQUE_B")
+
+	DataDB.visitor_questions = before
+	DataDB._build_lookups()
+
+
+func test_one_question_can_be_shared_by_several_visitors() -> void:
+	# "VI01; VI02" in the workbook's Visitor ID column — one row, drawable
+	# for either visitor, not two rows to keep in sync by hand.
+	var before := DataDB.visitor_questions.duplicate(true)
+	DataDB.visitor_questions.append({"question_id": "VQ_SHARED",
+		"visitor_ids": ["VI_SHARED_A", "VI_SHARED_B"], "question_text": "Shared."})
+	DataDB._build_lookups()
+
+	assert_eq(BattleSetup._question_for_visitor("VI_SHARED_A").get("question_id"), "VQ_SHARED")
+	assert_eq(BattleSetup._question_for_visitor("VI_SHARED_B").get("question_id"), "VQ_SHARED")
+
+	DataDB.visitor_questions = before
+	DataDB._build_lookups()
 
 	DataDB.visitor_questions = before
 	DataDB._build_lookups()

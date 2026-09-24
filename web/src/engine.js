@@ -1479,10 +1479,13 @@ class BattleEngine {
 
     switch (this._gradeOf(card, question)) {
       case 'S': {
-        // A strong answer pleases whoever asked, as it always has.
-        const booster = String(question.pleases_booster || '');
-        if (booster && !this.state.pleased_boosters.includes(booster)) {
-          this.state.pleased_boosters.push(booster);
+        // A strong answer pleases whoever asked, as it always has - and a
+        // theme can now name more than one organisation at once ("BO01;
+        // BO02"), so it can please several with a single answer.
+        for (const booster of (question.pleases_boosters || [])) {
+          if (!this.state.pleased_boosters.includes(booster)) {
+            this.state.pleased_boosters.push(booster);
+          }
         }
         break;
       }
@@ -2155,10 +2158,12 @@ function activeModifiers(rows, stage, availableTo) {
 
     const minimum = modifier.trigger_min_pct;
     if (minimum === null || minimum === undefined) continue;
-    const segmentId = modifier.trigger_segment_id;
-    if (segmentId === null || segmentId === undefined) continue;
 
-    if (Number(mix[segmentId] || 0) >= Number(minimum)) active.push(modifier);
+    // "SG03; SG05" — ANY one of the modifier's own segments reaching the
+    // threshold is enough; they are alternatives, not all required.
+    const segmentIds = modifier.trigger_segment_ids || [];
+    const triggered = segmentIds.some((id) => Number(mix[id] || 0) >= Number(minimum));
+    if (triggered) active.push(modifier);
   }
   return active;
 }

@@ -503,8 +503,9 @@ func test_answering_in_the_invited_suit_pleases_the_press() -> void:
 	engine.state.hand.assign([answer])
 	engine.play_card(answer)
 
-	assert_true(engine.pleased_boosters().has(question["pleases_booster"]),
-		"answering in the suit invited pleases the people who asked")
+	for booster: String in (question.get("pleases_boosters", []) as Array):
+		assert_true(engine.pleased_boosters().has(booster),
+			"answering in the suit invited pleases the people who asked")
 
 
 func test_every_question_can_be_answered_in_the_suit_it_invites() -> void:
@@ -554,7 +555,7 @@ func test_answering_well_carries_the_press_into_the_floor_debate() -> void:
 		engine.state.hand.assign([card_id, "C02"])
 		engine.state.energy = engine.state.energy_per_turn
 		if engine.play_card(card_id).get("ok", false):
-			expected.append(str(question.get("pleases_booster", "")))
+			expected.append_array(question.get("pleases_boosters", []))
 
 		# One question a turn: the next reporter does not speak until this
 		# turn is over. Ending it here answers each question in its own turn

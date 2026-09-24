@@ -45,7 +45,7 @@ func _question(overrides: Dictionary = {}) -> Dictionary:
 		"text": "Where do you stand?",
 		"theme": "Position",
 		"grades": GRADED.duplicate(),
-		"pleases_booster": "BO08",
+		"pleases_boosters": ["BO08"],
 	}
 	question.merge(overrides, true)
 	return question
@@ -119,7 +119,7 @@ func test_a_question_that_names_one_suit_still_works() -> void:
 	# strong and every other as medium.
 	var engine := _conference({"questions": [{
 		"id": "OLD", "text": "Your stance?",
-		"prefers_suit": "Earnest", "pleases_booster": "BO03",
+		"prefers_suit": "Earnest", "pleases_boosters": ["BO03"],
 	}]})
 	var before := engine.state.bar.player
 
@@ -239,8 +239,12 @@ func test_every_question_has_somebody_to_please_and_somebody_asking() -> void:
 
 	for stage_type: String in DataDB.questions.keys():
 		for question: Dictionary in DataDB.questions[stage_type]:
-			assert_has(booster_ids, str(question.get("pleases_booster", "")),
-				"%s names an organisation that does not exist" % question.get("id"))
+			var pleases: Array = question.get("pleases_boosters", [])
+			assert_false(pleases.is_empty(),
+				"%s names no organisation to please" % question.get("id"))
+			for booster: String in pleases:
+				assert_has(booster_ids, booster,
+					"%s names an organisation that does not exist" % question.get("id"))
 			assert_ne(str(question.get("asked_by", "")), "",
 				"%s has nobody asking it" % question.get("id"))
 

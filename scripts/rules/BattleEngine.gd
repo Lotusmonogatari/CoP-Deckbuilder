@@ -1066,10 +1066,12 @@ func _answer_question(card: Dictionary) -> void:
 
 	match _grade_of(card, question):
 		"S":
-			# A strong answer pleases whoever asked, as it always has.
-			var booster := str(question.get("pleases_booster", ""))
-			if not booster.is_empty() and not state.pleased_boosters.has(booster):
-				state.pleased_boosters.append(booster)
+			# A strong answer pleases whoever asked, as it always has — and
+			# a theme can now name more than one organisation at once
+			# ("BO01; BO02"), so it can please several with a single answer.
+			for booster: String in (question.get("pleases_boosters", []) as Array):
+				if not state.pleased_boosters.has(booster):
+					state.pleased_boosters.append(booster)
 		"W":
 			# A weak answer is worse than a bland one: the room cools, the
 			# same way declining does but by a smaller amount. The number is

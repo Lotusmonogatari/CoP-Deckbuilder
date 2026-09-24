@@ -658,8 +658,8 @@ function runRuleChecks(data) {
         bar_max: 100, player_start: 45, opp_start: 45, gaffe_limit: 4,
         turn_limit: 0,
         questions: [
-          { id: 'Q1', text: 'First question.', prefers_suit: 'Data Driven', pleases_booster: 'BO08' },
-          { id: 'Q2', text: 'Second question.', prefers_suit: 'Earnest', pleases_booster: 'BO03' },
+          { id: 'Q1', text: 'First question.', prefers_suit: 'Data Driven', pleases_boosters: ['BO08'] },
+          { id: 'Q2', text: 'Second question.', prefers_suit: 'Earnest', pleases_boosters: ['BO03'] },
         ],
       }),
       opponent: {},
@@ -1161,7 +1161,7 @@ function runRuleChecks(data) {
   function gradedQuestion(over) {
     return Object.assign({
       id: 'Q1', text: 'Where do you stand?', theme: 'Position',
-      grades: Object.assign({}, GRADED), pleases_booster: 'BO08',
+      grades: Object.assign({}, GRADED), pleases_boosters: ['BO08'],
     }, over || {});
   }
 
@@ -1223,7 +1223,7 @@ function runRuleChecks(data) {
     // rather than grading all six. They must keep working.
     const engine = started(gradedConfig({
       questions: [{ id: 'OLD', text: 'Your stance?',
-        prefers_suit: 'Earnest', pleases_booster: 'BO03' }],
+        prefers_suit: 'Earnest', pleases_boosters: ['BO03'] }],
     }));
     const before = engine.state.bar.player;
     engine.state.hand = ['WEAK'];

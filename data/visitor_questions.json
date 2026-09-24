@@ -1,8 +1,44 @@
 [
   {
     "question_id": "VQ01",
-    "visitor_id": "VI01",
+    "visitor_ids": [
+      "VI01"
+    ],
     "question_text": "What does the district need most right now?",
+    "choice_a": "More funding for schools",
+    "choice_b": "Lower local taxes",
+    "choice_c": "Nothing, everything is fine",
+    "choice_d": "A new stadium",
+    "correct_choice": "A",
+    "response_right": "Exactly what I've been saying!",
+    "response_wrong": "Hm, I'm not sure that's right.",
+    "reaction_right": "Nods approvingly.",
+    "reaction_wrong": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ02",
+    "visitor_ids": [
+      "VI01",
+      "VI02"
+    ],
+    "question_text": "When will we fly?",
+    "choice_a": "More funding for schools",
+    "choice_b": "Lower local taxes",
+    "choice_c": "Nothing, everything is fine",
+    "choice_d": "A new stadium",
+    "correct_choice": "A",
+    "response_right": "Exactly what I've been saying!",
+    "response_wrong": "Hm, I'm not sure that's right.",
+    "reaction_right": "Nods approvingly.",
+    "reaction_wrong": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ03",
+    "visitor_ids": [
+      "VI01",
+      "VI03"
+    ],
+    "question_text": "Buy my steam shovel?",
     "choice_a": "More funding for schools",
     "choice_b": "Lower local taxes",
     "choice_c": "Nothing, everything is fine",

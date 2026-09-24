@@ -485,10 +485,13 @@ func _build_lookups() -> void:
 
 	_questions_by_visitor.clear()
 	for question: Dictionary in visitor_questions:
-		var vid := str(question.get("visitor_id", ""))
-		if not _questions_by_visitor.has(vid):
-			_questions_by_visitor[vid] = []
-		(_questions_by_visitor[vid] as Array).append(question)
+		# "VI01; VI02" — one question shared by several visitors — is already
+		# a list by the time it gets here (tools/export_data.py's "id_list"),
+		# so it is registered under every one of them.
+		for vid: String in (question.get("visitor_ids", []) as Array):
+			if not _questions_by_visitor.has(vid):
+				_questions_by_visitor[vid] = []
+			(_questions_by_visitor[vid] as Array).append(question)
 	_bills_by_id = _index(bills, "bill_id")
 	_yoron_by_id = _index(yoron, "topic_id")
 	_sanban_by_name = _index(sanban, "name_en")
@@ -848,13 +851,14 @@ func _validate() -> void:
 			if absf(total - 1.0) > 0.001:
 				errors.append("Stage %s audience shares add up to %d%%, not 100%%" % [sid, roundi(total * 100.0)])
 
-	# 2026-09-22 workbook: "trigger_segment" was split into trigger_segment_id
-	# / trigger_booster_id by the exporter (see tools/export_data.py); only
-	# the segment half is a segments.json cross-reference.
+	# 2026-09-22 workbook: "trigger_segment" was split into trigger_segment_ids
+	# / trigger_booster_ids by the exporter (see tools/export_data.py); only
+	# the segment half is a segments.json cross-reference. A modifier can name
+	# more than one now ("SG03; SG05" — any one of them can trigger it).
 	for mod: Dictionary in modifiers:
-		var trigger: Variant = mod.get("trigger_segment_id")
-		if trigger != null and not segment_ids.has(trigger):
-			errors.append("Modifier %s triggers on '%s', which is not a segment" % [mod.get("mod_id"), trigger])
+		for trigger: String in (mod.get("trigger_segment_ids", []) as Array):
+			if not segment_ids.has(trigger):
+				errors.append("Modifier %s triggers on '%s', which is not a segment" % [mod.get("mod_id"), trigger])
 
 	for booster: Dictionary in boosters:
 		for mod_id: String in (booster.get("linked_modifiers", []) as Array):
@@ -998,9 +1002,12 @@ func _validate() -> void:
 
 	for question: Dictionary in visitor_questions:
 		var qid := str(question.get("question_id"))
-		var q_vid := str(question.get("visitor_id"))
-		if not visitor_ids.has(q_vid):
-			errors.append("Visitor Question %s names visitor '%s', which does not exist" % [qid, q_vid])
+		var q_vids: Array = question.get("visitor_ids", [])
+		if q_vids.is_empty():
+			errors.append("Visitor Question %s names no visitor" % qid)
+		for q_vid: String in q_vids:
+			if not visitor_ids.has(q_vid):
+				errors.append("Visitor Question %s names visitor '%s', which does not exist" % [qid, q_vid])
 		var correct := str(question.get("correct_choice", "")).strip_edges().to_upper()
 		if not ["A", "B", "C", "D"].has(correct):
 			errors.append("Visitor Question %s's Correct Choice is '%s', not A/B/C/D"

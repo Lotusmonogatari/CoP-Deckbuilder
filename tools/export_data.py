@@ -243,7 +243,9 @@ SHEETS = {
         "key": "theme",
         "columns": [
             ("Theme", "theme", "id"),
-            ("Organisation", "pleases_booster", "str"),
+            # "BO01" or "BO01; BO02" — a strong answer on this theme can
+            # please more than one organisation at once.
+            ("Organisation", "pleases_boosters", "id_list"),
             ("Why (Claude's reasoning - correct freely)", "why", "str"),
         ],
     },
@@ -387,9 +389,10 @@ SHEETS = {
             ("Name (EN)", "name_en", "str"),
             ("Name (JP)", "name_jp", "str"),
             ("Romaji", "romaji", "str"),
-            # Holds an SGxx (Segments) or a BOxx (Boosters) ID — check the
-            # prefix before looking it up. Not every modifier has one.
-            ("Trigger segment or booster", "trigger_segment_or_booster", "str"),
+            # One or more SGxx (Segments) / BOxx (Boosters) IDs — "SG03" or
+            # "SG03; BO04" — check each one's own prefix before looking it
+            # up. Not every modifier has a trigger at all.
+            ("Trigger segment or booster", "trigger_segment_or_booster", "id_list"),
             # Written as a whole number (15 means 15%), unlike the Stages
             # tab's "pct" columns — "num" here so the fraction warning
             # doesn't fire on every row.
@@ -683,7 +686,9 @@ SHEETS = {
         "optional_sheet": True,
         "columns": [
             ("Question ID", "question_id", "id"),
-            ("Visitor ID", "visitor_id", "str"),
+            # "VI01" or "VI01; VI02" — one question several visitors can
+            # equally ask, not one row per visitor.
+            ("Visitor ID", "visitor_ids", "id_list"),
             ("Question text", "question_text", "str"),
             ("Choice A", "choice_a", "str"),
             ("Choice B", "choice_b", "str"),
@@ -795,8 +800,10 @@ def coerce(value, kind, where, report):
         # "M03, M04" -> ["M03", "M04"]
         return [part.strip() for part in text.split(",") if part.strip()]
 
-    if kind == "stage_list":
-        # "ST10; ST01; ST02; ST06" -> ["ST10", "ST01", "ST02", "ST06"]
+    if kind in ("stage_list", "id_list"):
+        # "ST10; ST01; ST02; ST06" -> ["ST10", "ST01", "ST02", "ST06"]. Same
+        # split either name: "stage_list" predates this one and several
+        # columns already use it, so it stays rather than being renamed.
         return [part.strip() for part in text.split(";") if part.strip()]
 
     if kind == "range":
@@ -1208,8 +1215,8 @@ def validate(data, report):
     }
     for mod in data["modifiers"]:
         mid = mod["mod_id"]
-        trigger = mod["trigger_segment_or_booster"]
-        if trigger:
+        triggers = mod["trigger_segment_or_booster"] or []
+        for trigger in triggers:
             if trigger.startswith("SG") and trigger not in segment_ids:
                 report.error(
                     "modifiers",
@@ -1226,7 +1233,7 @@ def validate(data, report):
                     f"{mid} has trigger '{trigger}', which is neither an SGxx segment "
                     "nor a BOxx booster ID",
                 )
-        if mod["trigger_min_pct"] is None and trigger:
+        if mod["trigger_min_pct"] is None and triggers:
             report.warn(
                 "modifiers",
                 f"{mid} names a trigger but no trigger min % — "
@@ -1589,14 +1596,15 @@ def fold_questions(data, report):
     suit_names = {row["element"].lower().replace(" ", "_"): row["element"]
                   for row in data.get("suits", []) if row.get("element")}
 
-    by_theme = {row["theme"]: str(row.get("pleases_booster") or "").strip()
+    by_theme = {row["theme"]: (row.get("pleases_boosters") or [])
                 for row in data.get("question_themes", [])}
     booster_ids = {row["booster_id"] for row in data.get("boosters", [])}
-    for theme, booster in sorted(by_theme.items()):
-        if booster and booster not in booster_ids:
-            report.error("Question Themes",
-                         f"'{theme}' names organisation '{booster}', "
-                         f"which is not in the Boosters tab")
+    for theme, boosters in sorted(by_theme.items()):
+        for booster in boosters:
+            if booster not in booster_ids:
+                report.error("Question Themes",
+                             f"'{theme}' names organisation '{booster}', "
+                             f"which is not in the Boosters tab")
 
     # Who asks. The journalists are still Reporter A to Reporter E — nobody
     # is cast yet — so they take the questions in turn rather than by beat.
@@ -1634,7 +1642,7 @@ def fold_questions(data, report):
                     "grades": grades,
                 }
                 if by_theme.get(theme):
-                    question["pleases_booster"] = by_theme[theme]
+                    question["pleases_boosters"] = by_theme[theme]
                 elif theme:
                     report.warn(stage_type,
                                 f"question {row['q_id']} has the theme "
@@ -1719,12 +1727,15 @@ def add_segment_ids(data, report):
                     stage.pop(column)
         stage["segment_mix"] = mix
 
-    # Modifiers: "Trigger segment or booster" already holds an SGxx or a
-    # BOxx ID directly, so split it by prefix rather than resolving a name.
+    # Modifiers: "Trigger segment or booster" already holds one or more SGxx
+    # / BOxx IDs directly, so each is sorted by its own prefix rather than a
+    # name being resolved. A modifier is active if ANY of its segments meets
+    # its trigger_min_pct (MetaRules.active_modifiers) — "SG03; SG05" means
+    # either audience, not both at once.
     for mod in data["modifiers"]:
-        trigger = mod.get("trigger_segment_or_booster")
-        mod["trigger_segment_id"] = trigger if trigger and trigger.startswith("SG") else None
-        mod["trigger_booster_id"] = trigger if trigger and trigger.startswith("BO") else None
+        triggers = mod.get("trigger_segment_or_booster") or []
+        mod["trigger_segment_ids"] = [t for t in triggers if t.startswith("SG")]
+        mod["trigger_booster_ids"] = [t for t in triggers if t.startswith("BO")]
 
     # Cards: same, with "Any" meaning no particular segment.
     for card in data["cards"]:
