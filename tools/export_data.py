@@ -139,6 +139,32 @@ SHEETS = {
             ("Cue 5", "cue_5", "str"),
         ],
     },
+    # Opponent Cues: what an opponent might say on their turn, drawn instead
+    # of the narration sentence when a line exists (scripts/ui/OpponentCues.gd).
+    # A row with no Opponent ID is the general pool every opponent with that
+    # Suit draws from for that Verb; a row naming one or more opponents is a
+    # bespoke line for them only, checked first, never blended with the
+    # general pool. Not in this workbook pull yet (2026-09-24) — the feature
+    # is new and Cameron has only seen a separate draft tab.
+    "Opponent Cues": {
+        "out": "opponent_cues.json",
+        "key": "cue_id",
+        "id_pattern": r"^OC\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Cue ID", "cue_id", "id"),
+            ("Suit", "suit", "str"),
+            ("Verb", "verb", "str"),
+            # Blank = the general pool for this Suit; "OP03" or "OP03; OP07"
+            # = a bespoke line for those opponents only.
+            ("Opponent ID", "opponent_ids", "id_list"),
+            ("Cue 1", "cue_1", "str"),
+            ("Cue 2", "cue_2", "str"),
+            ("Cue 3", "cue_3", "str"),
+            ("Cue 4", "cue_4", "str"),
+            ("Cue 5", "cue_5", "str"),
+        ],
+    },
     # Press Questions: 20 questions for the press conference stage type, each graded
     # S / M / W per suit. Reshaped below into one questions.json keyed by
     # stage type, so a stage draws from a pool rather than naming its own.
@@ -1284,6 +1310,31 @@ def validate(data, report):
                 )
         if not opp["stages"]:
             report.warn("opponents", f"{oid} has no Stage listed, so they never appear in a level")
+
+    # --- opponent cues -------------------------------------------------------
+    # lean_down was removed as a game mechanic (2026-09-24, IntentRunner.gd)
+    # — a Verb outside these three is either a typo or a stale reference to it.
+    valid_verbs = {"attack", "gain", "block"}
+    for cue in data.get("opponent_cues", []):
+        cue_id = cue["cue_id"]
+        if cue["suit"] not in suits:
+            report.error(
+                "opponent_cues",
+                f"{cue_id} has suit '{cue['suit']}', which is not in the Suits tab",
+            )
+        if cue["verb"] not in valid_verbs:
+            report.error(
+                "opponent_cues",
+                f"{cue_id} has verb '{cue['verb']}', which must be attack, gain, or block",
+            )
+        for opp_id in cue["opponent_ids"] or []:
+            if opp_id not in opp_ids:
+                report.error(
+                    "opponent_cues",
+                    f"{cue_id} names opponent '{opp_id}', which is not in the Opponents tab",
+                )
+        if not any(cue.get(f"cue_{i}") for i in range(1, 6)):
+            report.warn("opponent_cues", f"{cue_id} has no cue lines written")
 
     # --- bills (skipped entirely if Bills/Yoron weren't in this pull) ------
     if "bills" in data:

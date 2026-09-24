@@ -36,7 +36,7 @@ const DATA_PATH := "res://data/"
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "bills", "booster_standing", "boosters", "cards",
 	"journalists", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
-	"modifiers", "opponents",
+	"modifiers", "opponent_cues", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
@@ -144,6 +144,12 @@ var strings: Dictionary = {}
 ## columns into one list per card, so nothing downstream counts columns.
 var card_cues: Dictionary = {}
 
+## What an opponent might say on their turn, from the workbook's Opponent
+## Cues tab — raw rows, kept for OpponentCues.gd and the tests; see
+## _opponent_cues_by_suit_verb / _opponent_cues_by_opponent_verb below for
+## what actually gets looked up.
+var opponent_cues: Array = []
+
 ## The questions each kind of room can ask, by stage type, from the five
 ## question tabs. A stage draws from the pool for its type rather than
 ## naming its own, so a new question is one row in the workbook.
@@ -174,6 +180,13 @@ var _visitors_by_id: Dictionary = {}
 ## Built once here rather than filtered fresh on every draw, the same reason
 ## _index() exists at all.
 var _questions_by_visitor: Dictionary = {}
+
+## "{suit}|{verb}" -> Array[String] of lines, for the general pool every
+## opponent with that suit draws from. "{opp_id}|{verb}" -> Array[String],
+## for a bespoke row that names one or more Opponent IDs — checked first,
+## and never blended with the general pool (OpponentCues.gd).
+var _opponent_cues_by_suit_verb: Dictionary = {}
+var _opponent_cues_by_opponent_verb: Dictionary = {}
 var _bills_by_id: Dictionary = {}
 var _yoron_by_id: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
@@ -236,6 +249,7 @@ func load_all() -> void:
 			"journalists": journalists = _list_under(content, file_name, "journalists")
 			"strings": strings = _strings_by_key(content)
 			"card_cues": card_cues = _cues_by_card(content)
+			"opponent_cues": opponent_cues = content if content is Array else []
 			"questions": questions = content
 			"sounds":
 				sounds = _map_under(content, file_name, "sounds")
@@ -430,13 +444,20 @@ func _cues_by_card(rows: Variant) -> Dictionary:
 		var card_id := str(row.get("card_id", "")).strip_edges()
 		if card_id.is_empty():
 			continue
-		var lines: Array[String] = []
-		for index in range(1, 6):
-			var line := str(row.get("cue_%d" % index, "")).strip_edges()
-			if not line.is_empty():
-				lines.append(line)
-		by_card[card_id] = lines
+		by_card[card_id] = _cue_lines(row)
 	return by_card
+
+
+## The five "Cue N" columns Flavor Text and Opponent Cues both use, flattened
+## into one list — blank cells dropped, so a row with fewer than five lines
+## written still works.
+func _cue_lines(row: Dictionary) -> Array[String]:
+	var lines: Array[String] = []
+	for index in range(1, 6):
+		var line := str(row.get("cue_%d" % index, "")).strip_edges()
+		if not line.is_empty():
+			lines.append(line)
+	return lines
 
 
 
@@ -492,6 +513,30 @@ func _build_lookups() -> void:
 			if not _questions_by_visitor.has(vid):
 				_questions_by_visitor[vid] = []
 			(_questions_by_visitor[vid] as Array).append(question)
+
+	_opponent_cues_by_suit_verb.clear()
+	_opponent_cues_by_opponent_verb.clear()
+	for row: Dictionary in opponent_cues:
+		var suit := str(row.get("suit", ""))
+		var verb := str(row.get("verb", ""))
+		var lines: Array[String] = _cue_lines(row)
+		if lines.is_empty():
+			continue
+		var opp_ids: Array = row.get("opponent_ids", [])
+		if opp_ids.is_empty():
+			# The general pool: every opponent with this suit draws from it
+			# for this verb.
+			var key := "%s|%s" % [suit, verb]
+			_opponent_cues_by_suit_verb[key] = (
+				_opponent_cues_by_suit_verb.get(key, []) as Array) + lines
+		else:
+			# A bespoke row: registered under EACH named opponent, never
+			# folded into the general pool.
+			for opp_id: String in opp_ids:
+				var opp_key := "%s|%s" % [opp_id, verb]
+				_opponent_cues_by_opponent_verb[opp_key] = (
+					_opponent_cues_by_opponent_verb.get(opp_key, []) as Array) + lines
+
 	_bills_by_id = _index(bills, "bill_id")
 	_yoron_by_id = _index(yoron, "topic_id")
 	_sanban_by_name = _index(sanban, "name_en")
@@ -728,6 +773,27 @@ func get_visitors_for_stage(stage_id: String) -> Array:
 ## drawn from this list elsewhere (BattleSetup), not decided here.
 func get_questions_for_visitor(visitor_id: String) -> Array:
 	return (_questions_by_visitor.get(visitor_id, []) as Array).duplicate()
+
+
+## What a specific opponent might say on this verb, if the Opponent Cues tab
+## has a bespoke row naming them — checked first by OpponentCues.gd, and
+## never blended with the general per-suit pool below.
+func get_bespoke_opponent_cue_lines(opponent_id: String, verb: String) -> Array[String]:
+	var key := "%s|%s" % [opponent_id, verb]
+	var found: Array = _opponent_cues_by_opponent_verb.get(key, [])
+	var lines: Array[String] = []
+	lines.assign(found)
+	return lines
+
+
+## The general pool every opponent with this suit draws from for this verb,
+## when no bespoke row names them.
+func get_general_opponent_cue_lines(suit: String, verb: String) -> Array[String]:
+	var key := "%s|%s" % [suit, verb]
+	var found: Array = _opponent_cues_by_suit_verb.get(key, [])
+	var lines: Array[String] = []
+	lines.assign(found)
+	return lines
 
 
 func get_bill(bill_id: String) -> Dictionary:

@@ -538,8 +538,10 @@ func _on_end_turn() -> void:
 
 	# Read the opponent's move BEFORE refreshing, because a finished bout
 	# swaps in the next opponent and the sentence is about the one who just
-	# acted. The name comes from the same snapshot for the same reason.
+	# acted. The name — and, for OpponentCues below, the whole opponent row —
+	# comes from the same snapshot for the same reason.
 	var speaker := OpponentPresenter.display_name(engine)
+	var acting_opponent := engine.current_opponent()
 	_refresh()
 
 	# The pass penalty has always worked; nothing ever said so, which is why
@@ -575,10 +577,22 @@ func _on_end_turn() -> void:
 		lines.append(BattleNarration.player_move(
 			{"bout_won": bout}, _stage, engine.state, speaker))
 
+	# What they SAY, from the workbook's Opponent Cues tab, same bargain as
+	# the player's own CardCues: a line becomes the banner's big type, with
+	# what it did (the narration above) demoted underneath it. An opponent
+	# or suit with nothing written yet falls back to narration alone, same
+	# as it always has.
+	var move_cue := OpponentCues.for_move(
+		acting_opponent, str(opponent_result.get("verb", "")),
+		str(_stage.get("stage_id", "")), engine.state.turn)
+
 	# One line, not two: what the OPPONENT did this turn, all of it from the
 	# same side of the room. The player's own pass penalty above is never
 	# folded in here any more.
-	if not lines.is_empty():
+	if not str(move_cue["text"]).is_empty():
+		_banner.say(CueBanner.OPPONENT, speaker, str(move_cue["text"]), "\n".join(lines))
+		Audio.say(str(acting_opponent.get("opp_id", "")), str(move_cue["line_id"]))
+	elif not lines.is_empty():
 		_banner.say(CueBanner.OPPONENT, speaker, "\n".join(lines))
 
 	if not engine.state.is_over():
