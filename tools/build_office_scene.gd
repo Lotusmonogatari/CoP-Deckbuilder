@@ -28,6 +28,9 @@ const SCREEN_SCRIPT := "res://scripts/ui/OfficeScreen.gd"
 const PLACEHOLDER_SCRIPT := "res://scripts/ui/PlaceholderArt.gd"
 const OVERLAY_SCRIPT := "res://scripts/ui/Overlay.gd"
 
+## Same fraction as the battle screen's own BAND_HEIGHT — see its comment.
+const BAND_HEIGHT := 0.75
+
 const SIDE_MARGIN := 40
 const TOP_MARGIN := 70
 const BOTTOM_MARGIN := 50
@@ -45,18 +48,34 @@ func _init() -> void:
 	# OfficeScreen._ready() sets its kind, art_id and show_label at runtime —
 	# the same convention every other PlaceholderArt here follows, so the
 	# custom exported properties are never touched from this @tool script.
+	#
+	# 2026-09-27, Cameron: shrunk to the top BAND_HEIGHT of the screen (was
+	# full-bleed), with BackgroundPanel — a plain opaque colour — filling
+	# the rest, so the buttons read against a calm panel rather than
+	# competing with art. Same change as the battle screen's.
 	var background := Control.new()
 	background.name = "Background"
 	background.set_script(load(PLACEHOLDER_SCRIPT))
-	background.set_anchors_preset(Control.PRESET_FULL_RECT)
+	background.anchor_right = 1.0
+	background.anchor_bottom = BAND_HEIGHT
 	_adopt(background, _root, true)
 
 	var scrim := ColorRect.new()
 	scrim.name = "BackgroundScrim"
-	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scrim.anchor_right = 1.0
+	scrim.anchor_bottom = BAND_HEIGHT
 	scrim.color = Color(0.09, 0.07, 0.06, 0.55)   # a warmer scrim than the battle's
 	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_adopt(scrim, _root)
+
+	var panel := ColorRect.new()
+	panel.name = "BackgroundPanel"
+	panel.anchor_top = BAND_HEIGHT
+	panel.anchor_right = 1.0
+	panel.anchor_bottom = 1.0
+	panel.color = Color(0.09, 0.07, 0.06, 1.0)
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_adopt(panel, _root)
 
 	var safe := MarginContainer.new()
 	safe.name = "Safe"
@@ -85,10 +104,13 @@ func _init() -> void:
 	_adopt(subtitle, heading, true)
 
 	# The protagonist's desk. A placeholder until there is art.
+	# 700 * 0.75 = 525 — Cameron, 2026-09-27: a quarter shorter, given
+	# straight to VSpacer below (the only other expanding child in this
+	# column, so the shrink lands there with no ratio math needed).
 	var portrait := Control.new()
 	portrait.name = "Portrait"
 	portrait.set_script(load(PLACEHOLDER_SCRIPT))
-	portrait.custom_minimum_size = Vector2(0, 700)
+	portrait.custom_minimum_size = Vector2(0, 525)
 	portrait.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_adopt(portrait, column, true)
 

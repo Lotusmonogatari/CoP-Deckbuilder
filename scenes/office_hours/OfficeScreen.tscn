@@ -9,21 +9,31 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_elj5r")
 
 [node name="Background" type="Control" parent="."]
 unique_name_in_owner = true
 anchors_preset = 0
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.75
 script = ExtResource("2_uyci3")
 
 [node name="BackgroundScrim" type="ColorRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.75
 mouse_filter = 2
 color = Color(0.09, 0.07, 0.06, 0.55)
+
+[node name="BackgroundPanel" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.09, 0.07, 0.06, 1)
 
 [node name="Safe" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -57,7 +67,7 @@ vertical_alignment = 2
 
 [node name="Portrait" type="Control" parent="Safe/Column"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 700)
+custom_minimum_size = Vector2(0, 525)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_uyci3")

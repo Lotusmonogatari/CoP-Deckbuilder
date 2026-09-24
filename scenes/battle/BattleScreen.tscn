@@ -34,21 +34,31 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_omdtd")
 
 [node name="Background" type="Control" parent="."]
 unique_name_in_owner = true
 anchors_preset = 0
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.75
 script = ExtResource("2_3oymq")
 
 [node name="BackgroundScrim" type="ColorRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.75
 mouse_filter = 2
 color = Color(0.05, 0.05, 0.07, 0.55)
+
+[node name="BackgroundPanel" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.07, 1)
 
 [node name="Safe" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -97,6 +107,7 @@ horizontal_alignment = 2
 [node name="OpponentRow" type="VBoxContainer" parent="Safe/Column"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 theme_override_constants/separation = 16
 
 [node name="Portrait" type="Control" parent="Safe/Column/OpponentRow"]
@@ -109,7 +120,7 @@ script = ExtResource("2_3oymq")
 
 [node name="PlayerPortraitFrame" type="PanelContainer" parent="Safe/Column/OpponentRow/Portrait"]
 layout_mode = 0
-anchor_top = 0.58
+anchor_top = 0.685
 anchor_right = 0.34
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -189,6 +200,11 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 text = "Details"
+
+[node name="VSpacer" type="Control" parent="Safe/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="HandScroll" type="ScrollContainer" parent="Safe/Column"]
 custom_minimum_size = Vector2(0, 490)

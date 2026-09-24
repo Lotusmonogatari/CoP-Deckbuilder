@@ -71,19 +71,38 @@ func _init() -> void:
 ## placeholder — same bargain as every other missing art. A dark scrim sits
 ## over it so text stays readable whatever the art turns out to look like,
 ## the way the flat colour it replaces always was.
+##
+## 2026-09-27, Cameron: the art band shrunk to the top BAND_HEIGHT of the
+## screen (was full-bleed) — behind the header and the opponent, where a
+## scene picture is worth having. Below that is BackgroundPanel, a plain
+## opaque colour: the hand and the buttons read better against a calm panel
+## than against art competing for attention under them.
+const BAND_HEIGHT := 0.75
+
 func _add_background() -> void:
 	var background := Control.new()
 	background.name = "Background"
 	background.set_script(load(PLACEHOLDER_SCRIPT))
-	background.set_anchors_preset(Control.PRESET_FULL_RECT)
+	background.anchor_right = 1.0
+	background.anchor_bottom = BAND_HEIGHT
 	_adopt(background, _root, true)
 
 	var scrim := ColorRect.new()
 	scrim.name = "BackgroundScrim"
-	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scrim.anchor_right = 1.0
+	scrim.anchor_bottom = BAND_HEIGHT
 	scrim.color = Color(0.05, 0.05, 0.07, 0.55)
 	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_adopt(scrim, _root)
+
+	var panel := ColorRect.new()
+	panel.name = "BackgroundPanel"
+	panel.anchor_top = BAND_HEIGHT
+	panel.anchor_right = 1.0
+	panel.anchor_bottom = 1.0
+	panel.color = Color(0.05, 0.05, 0.07, 1.0)
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_adopt(panel, _root)
 
 
 func _build_frame() -> VBoxContainer:
@@ -133,6 +152,11 @@ func _add_header(parent: Control) -> void:
 func _add_opponent_row(parent: Control) -> void:
 	var row := VBoxContainer.new()
 	row.name = "OpponentRow"
+	row.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	# Shares the column's leftover height with VSpacer at 3:1 rather than
+	# having it all to itself — Cameron, 2026-09-27: shrink the portrait by
+	# about a quarter and give that back to the hand and the buttons below.
+	row.size_flags_stretch_ratio = 3.0
 	row.add_theme_constant_override("separation", 16)
 	_adopt(row, parent)
 
@@ -151,7 +175,9 @@ func _add_opponent_row(parent: Control) -> void:
 	var player_frame := PanelContainer.new()
 	player_frame.name = "PlayerPortraitFrame"
 	player_frame.anchor_left = 0.0
-	player_frame.anchor_top = 0.58
+	# 0.685, not 0.58: a quarter shorter (2026-09-27, Cameron) — was 0.42 of
+	# the portrait's own height, now 0.315.
+	player_frame.anchor_top = 0.685
 	player_frame.anchor_right = 0.34
 	player_frame.anchor_bottom = 1.0
 	player_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
