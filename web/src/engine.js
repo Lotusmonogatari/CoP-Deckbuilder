@@ -94,10 +94,18 @@ function resolveCard(card, context) {
 // SpecialEffects
 // ---------------------------------------------------------------------------
 
+// The bonus_if_target_segment_ge_10 .. _100 family, one string per
+// ten-point threshold - spelled out rather than generated, the same
+// reason SpecialEffects.gd does: this is what a workbook value is
+// checked against, so every value it can actually be needs to appear
+// literally.
+const TARGET_SEGMENT_BONUS_PREFIX = 'bonus_if_target_segment_ge_';
+const TARGET_SEGMENT_THRESHOLDS = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
 const KNOWN_SPECIALS = [
   'bonus_if_kanban_ge_60',
   'double_if_target_segment_ge_50',
-  'bonus_if_target_segment_ge_50',
+  ...TARGET_SEGMENT_THRESHOLDS.map((n) => TARGET_SEGMENT_BONUS_PREFIX + n),
   'buff_next_card_this_turn',
   'reveal_next_intent',
   'bonus_opp_minus_if_opp_gaffe',
@@ -112,7 +120,8 @@ function applySpecial(key, value, effect, context) {
   result.flags = Object.assign({}, effect.flags || {});
 
   if (key === null || key === undefined || key === '') return result;
-  if (!KNOWN_SPECIALS.includes(String(key))) {
+  const specialKey = String(key);
+  if (!KNOWN_SPECIALS.includes(specialKey)) {
     console.warn("SpecialEffects: no effect called '" + key + "'. The card plays as its plain numbers.");
     return result;
   }
@@ -120,8 +129,22 @@ function applySpecial(key, value, effect, context) {
   const amount = value === null || value === undefined ? 0 : Math.trunc(value);
   const share = Number(context.segment_share || 0);
 
-  switch (String(key)) {
+  // The whole ge_10 .. ge_100 family in one place: the threshold is the
+  // number on the end of the key, not a value column, so C04 (>= 30%) and
+  // C09 (>= 50%) are the same effect at two different marks.
+  if (specialKey.startsWith(TARGET_SEGMENT_BONUS_PREFIX)) {
+    const threshold = Number(specialKey.slice(TARGET_SEGMENT_BONUS_PREFIX.length));
+    if (share >= threshold / 100) {
+      result.self_plus += amount;
+      result.flags.special_triggered = true;
+    }
+    return result;
+  }
+
+  switch (specialKey) {
     case 'bonus_if_kanban_ge_60':
+      // Not used by any card today (C04 moved to the target-segment family
+      // above), kept for the next card that wants a Reputation threshold.
       if (Math.trunc(context.kanban || 0) >= 60) {
         result.self_plus += amount;
         result.flags.special_triggered = true;
@@ -130,12 +153,6 @@ function applySpecial(key, value, effect, context) {
     case 'double_if_target_segment_ge_50':
       if (share >= 0.5) {
         result.self_plus *= 2;
-        result.flags.special_triggered = true;
-      }
-      break;
-    case 'bonus_if_target_segment_ge_50':
-      if (share >= 0.5) {
-        result.self_plus += amount;
         result.flags.special_triggered = true;
       }
       break;

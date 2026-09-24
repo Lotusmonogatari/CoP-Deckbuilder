@@ -22,10 +22,26 @@ extends RefCounted
 ## Every key this registry understands. The exporter and the tests check
 ## against this list, so a typo in the workbook is caught rather than
 ## silently doing nothing.
+## The family bonus_if_target_segment_ge_10 .. _100 (see apply()) is spelled
+## out here too, one string per ten-point threshold, rather than generated —
+## KNOWN_KEYS is a const and this is what the exporter and the tests check a
+## workbook value against, so every value it can actually be needs to appear
+## literally.
+const TARGET_SEGMENT_BONUS_PREFIX := "bonus_if_target_segment_ge_"
+
 const KNOWN_KEYS := [
 	"bonus_if_kanban_ge_60",
 	"double_if_target_segment_ge_50",
+	"bonus_if_target_segment_ge_10",
+	"bonus_if_target_segment_ge_20",
+	"bonus_if_target_segment_ge_30",
+	"bonus_if_target_segment_ge_40",
 	"bonus_if_target_segment_ge_50",
+	"bonus_if_target_segment_ge_60",
+	"bonus_if_target_segment_ge_70",
+	"bonus_if_target_segment_ge_80",
+	"bonus_if_target_segment_ge_90",
+	"bonus_if_target_segment_ge_100",
 	"buff_next_card_this_turn",
 	"reveal_next_intent",
 	"bonus_opp_minus_if_opp_gaffe",
@@ -66,9 +82,23 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 	var amount := 0 if value == null else int(value)
 	var share := float(context.get("segment_share", 0.0))
 
+	# The whole ge_10 .. ge_100 family in one place: the threshold is the
+	# number on the end of the key, not a value column, so C04 (>= 30%) and
+	# C09 (>= 50%) are the same effect at two different marks rather than
+	# two effects to maintain.
+	if special_key.begins_with(TARGET_SEGMENT_BONUS_PREFIX):
+		var threshold := int(special_key.substr(TARGET_SEGMENT_BONUS_PREFIX.length()))
+		if share >= threshold / 100.0:
+			result["self_plus"] = int(result.get("self_plus", 0)) + amount
+			result["flags"]["special_triggered"] = true
+		return result
+
 	match special_key:
 		"bonus_if_kanban_ge_60":
-			# C04: "Gain 6; +2 more if Kanban >= 60."
+			# "Gain N; +M more if Kanban (Reputation) >= 60." Not used by any
+			# card today (C04 moved to the target-segment family above), kept
+			# for the next card that wants a Reputation threshold instead of
+			# an audience one.
 			if int(context.get("kanban", 0)) >= 60:
 				result["self_plus"] = int(result.get("self_plus", 0)) + amount
 				result["flags"]["special_triggered"] = true
@@ -77,14 +107,6 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			# C06: "Gain 4; doubled if Constituents >= 50%."
 			if share >= 0.5:
 				result["self_plus"] = int(result.get("self_plus", 0)) * 2
-				result["flags"]["special_triggered"] = true
-
-		"bonus_if_target_segment_ge_50":
-			# C09 and C10: "+2 if Loyalists / Constituents >= 50%."
-			# One effect covers both, because the card's target_segment
-			# already says which audience to look at.
-			if share >= 0.5:
-				result["self_plus"] = int(result.get("self_plus", 0)) + amount
 				result["flags"]["special_triggered"] = true
 
 		"buff_next_card_this_turn":
