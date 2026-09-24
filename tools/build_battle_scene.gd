@@ -64,13 +64,26 @@ func _init() -> void:
 # The main column
 # ---------------------------------------------------------------------------
 
+## The stage's own picture (data/art.json, `background` folder). BattleScreen
+## sets its kind, art_id and show_label at runtime (start_battle()), the same
+## way every other PlaceholderArt here is left blank at build time and filled
+## in by the presenter that owns it. Blank shows as an ID-coloured
+## placeholder — same bargain as every other missing art. A dark scrim sits
+## over it so text stays readable whatever the art turns out to look like,
+## the way the flat colour it replaces always was.
 func _add_background() -> void:
-	var background := ColorRect.new()
+	var background := Control.new()
 	background.name = "Background"
+	background.set_script(load(PLACEHOLDER_SCRIPT))
 	background.set_anchors_preset(Control.PRESET_FULL_RECT)
-	background.color = Color(0.09, 0.10, 0.13)
-	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_adopt(background, _root)
+	_adopt(background, _root, true)
+
+	var scrim := ColorRect.new()
+	scrim.name = "BackgroundScrim"
+	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scrim.color = Color(0.05, 0.05, 0.07, 0.55)
+	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_adopt(scrim, _root)
 
 
 func _build_frame() -> VBoxContainer:
@@ -130,12 +143,47 @@ func _add_opponent_row(parent: Control) -> void:
 	portrait.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_adopt(portrait, row, true)
 
+	# Your own face, as a small inset in the opponent portrait's corner — the
+	# room is big enough for one full portrait, not two, so this is a "you"
+	# chip rather than a second scene the way an opponent's is. It reacts to
+	# what you just did (PlayerPortraitPresenter) rather than to an intent,
+	# since only the opponent's next move is known ahead of time.
+	var player_frame := PanelContainer.new()
+	player_frame.name = "PlayerPortraitFrame"
+	player_frame.anchor_left = 0.0
+	player_frame.anchor_top = 0.58
+	player_frame.anchor_right = 0.34
+	player_frame.anchor_bottom = 1.0
+	player_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var frame_box := StyleBoxFlat.new()
+	frame_box.bg_color = Color(0.07, 0.08, 0.11, 0.85)
+	frame_box.border_color = Color(0.95, 0.82, 0.38, 0.9)
+	frame_box.set_border_width_all(4)
+	frame_box.set_corner_radius_all(10)
+	frame_box.content_margin_left = 4
+	frame_box.content_margin_right = 4
+	frame_box.content_margin_top = 4
+	frame_box.content_margin_bottom = 4
+	player_frame.add_theme_stylebox_override("panel", frame_box)
+	_adopt(player_frame, portrait)
+
+	var player_portrait := Control.new()
+	player_portrait.name = "PlayerPortrait"
+	player_portrait.set_script(load(PLACEHOLDER_SCRIPT))
+	_adopt(player_portrait, player_frame, true)
+
 	var details := VBoxContainer.new()
 	details.name = "Details"
 	_adopt(details, row)
 
 	_adopt(_label("OpponentName", "Opponent", "HeaderLabel"), details, true)
 	_adopt(_label("IntentLabel", "Waiting"), details, true)
+
+	# Hidden until OpponentPresenter._show_guards() has something to say —
+	# most stages never build any guard against the player at all.
+	var opponent_guard := _label("OpponentGuardLabel", "They guard 0")
+	opponent_guard.visible = false
+	_adopt(opponent_guard, details, true)
 
 
 func _add_support_bar(parent: Control) -> void:
@@ -244,8 +292,12 @@ func _add_details_panel() -> void:
 func _add_card_zoom() -> void:
 	var panel := _overlay_panel("CardZoom", 0.8)
 
+	# Named "ZoomColumn" rather than the "Column" every other overlay uses —
+	# BattleScreen._on_card_chosen() reaches it directly by %ZoomColumn to
+	# insert the card back view, and _overlay_content() tells this panel
+	# apart from an ordinary one by that same name.
 	var column := VBoxContainer.new()
-	column.name = "Column"
+	column.name = "ZoomColumn"
 	column.add_theme_constant_override("separation", 16)
 	column.custom_minimum_size = Vector2(900, 0)
 	_adopt(column, panel)
@@ -294,6 +346,12 @@ func _add_outcome_panel() -> void:
 	_adopt(column, panel)
 
 	_adopt(_label("OutcomeTitle", "", "TitleLabel"), column, true)
+
+	# Hidden until OutcomePresenter has a headline worth showing — most
+	# outcomes are said in OutcomeReason alone.
+	var headline := _label("OutcomeHeadline", "", "HeaderLabel")
+	headline.visible = false
+	_adopt(headline, column, true)
 
 	var reason := _label("OutcomeReason", "")
 	reason.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

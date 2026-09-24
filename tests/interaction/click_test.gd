@@ -37,6 +37,7 @@ func _ready() -> void:
 	await _check_click_outside()
 	await _check_hand_drags_sideways()
 	await _check_drag_card_to_play()
+	_check_background_and_player_portrait()
 
 	print("")
 	if _failures.is_empty():
@@ -118,6 +119,33 @@ func _check_click_outside() -> void:
 		panel.hide()
 	else:
 		print("  clicking outside an overlay closes it")
+
+
+## The stage background is named for the real stage, and the player's own
+## corner portrait draws in FRONT of the opponent's placeholder texture
+## rather than being silently painted over by it (found 2026-09-27: the
+## opponent's texture landed after this static child, hiding it completely).
+func _check_background_and_player_portrait() -> void:
+	var background := _screen.get_node("%Background") as PlaceholderArt
+	if background.art_id.is_empty():
+		_failures.append("the battle background was never told which stage it is")
+		return
+	print("  the stage background is set (%s)" % background.art_id)
+
+	var portrait := _screen.get_node("%Portrait") as Control
+	var player_portrait := _screen.get_node("%PlayerPortrait") as Control
+	if not player_portrait.visible:
+		_failures.append("the player's own portrait is not visible")
+		return
+	var chip := player_portrait.get_parent()
+	if portrait.get_node("PlayerPortraitFrame") != chip:
+		_failures.append("the player's portrait chip is not where the battle screen expects it")
+		return
+	if chip.get_index() != portrait.get_child_count() - 1:
+		_failures.append("the player's portrait chip is not the front-most child, "
+			+ "so the opponent's own art can paint over it")
+		return
+	print("  the player's own portrait draws in front of the opponent's")
 
 
 ## A sideways drag across the hand scrolls it, and does not open the card

@@ -81,13 +81,27 @@ var _card_back: CardBackView = null
 ## The inventory, opened from its button in the header.
 var _inventory: InventoryPanel
 
+## The stage's own picture, behind everything. Blank until start_battle()
+## names the stage; a background never needs the ID-label a missing
+## character portrait gets (PlaceholderArt.show_label).
+@onready var _background: PlaceholderArt = %Background
+
+## Your own face, reacting to what you just did (PlayerPortraitPresenter),
+## rather than the opponent's own show_state() which reads what they are
+## about to do.
+var _player_portrait: PlayerPortraitPresenter = null
+
 ## Where a press outside an open panel's content began (see _input()).
 var _outside_press: Variant = null
 
 
 func _ready() -> void:
+	_background.kind = PlaceholderArt.Kind.BACKGROUND
+	_background.show_label = false
+
 	_speaker = OpponentPresenter.new(
 		%Portrait, %OpponentName, %IntentLabel, %GuardLabel, %OpponentGuardLabel)
+	_player_portrait = PlayerPortraitPresenter.new(%PlayerPortrait)
 	_hand = HandPresenter.new(%HandRow)
 	_hand.card_chosen.connect(_on_card_chosen)
 	_hand.card_flung.connect(_on_card_flung)
@@ -167,6 +181,9 @@ func start_battle() -> void:
 		return
 
 	_stage = config.get("stage", {})
+	var stage_id := str(_stage.get("stage_id", ""))
+	_background.art_id = stage_id
+	_player_portrait.show_state(stage_id)
 
 	engine = BattleEngine.new()
 	_inventory.engine = engine
@@ -220,7 +237,7 @@ func _refresh() -> void:
 	_turn_label.text = (engine.question_caption() if engine.is_press_conference()
 		else engine.turn_caption())
 
-	_speaker.show_state(engine)
+	_speaker.show_state(engine, str(_stage.get("stage_id", "")))
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
@@ -242,6 +259,8 @@ func _refresh() -> void:
 	_end_turn_button.disabled = state.is_over()
 
 	if state.is_over():
+		if state.outcome == "win":
+			_player_portrait.show_victory()
 		_outcome.show_outcome(engine, _stage)
 
 
@@ -484,8 +503,10 @@ func _play_selected() -> void:
 	result["does_nothing"] = useless
 	EventBus.card_played.emit(card_id, result)
 	_refresh()
-	if int((result.get("applied", {}) as Dictionary).get("opponent_lost", 0)) > 0:
+	var applied: Dictionary = result.get("applied", {})
+	if int(applied.get("opponent_lost", 0)) > 0:
 		_speaker.flinch()
+	_player_portrait.react_to_card(applied)
 
 	# What the player actually says, in big type across the screen, with
 	# what it did to the room underneath. The line is Cameron's, from the
@@ -534,10 +555,12 @@ func _on_end_turn() -> void:
 	# What the opponent did. The engine has always returned this and no
 	# screen has ever read it, so the whole of their turn happened in
 	# silence: guard built, seats taken, a panel member leaned on.
+	var opponent_result: Dictionary = result.get("opponent", {})
 	var said := BattleNarration.opponent_move(
-		result.get("opponent", {}), _stage, engine.state, speaker)
+		opponent_result, _stage, engine.state, speaker)
 	if not said.is_empty():
 		lines.append(said)
+	_player_portrait.react_to_opponent(opponent_result)
 
 	# A debater finished by the clock or by their own attack, rather than by
 	# a card — the same news, from the other end of the turn.
