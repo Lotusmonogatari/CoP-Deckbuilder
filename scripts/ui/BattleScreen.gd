@@ -57,6 +57,11 @@ var _hand: HandPresenter = null
 var _messages: MessagePresenter = null
 var _outcome: OutcomePresenter = null
 
+## What is said out loud — the card's spoken line, the opponent's answer —
+## slammed across the screen (CueBanner.gd). Quieter notices, such as a card
+## being refused, stay in _messages.
+var _banner: CueBanner = null
+
 ## The opened card, built once and refilled. Created on first use rather
 ## than in the scene, so the frame stays a thing the script owns.
 var _card_back: CardBackView = null
@@ -76,12 +81,16 @@ var _card_back: CardBackView = null
 ## The inventory, opened from its button in the header.
 var _inventory: InventoryPanel
 
+## Where a press outside an open panel's content began (see _input()).
+var _outside_press: Variant = null
+
 
 func _ready() -> void:
 	_speaker = OpponentPresenter.new(
 		%Portrait, %OpponentName, %IntentLabel, %GuardLabel, %OpponentGuardLabel)
 	_hand = HandPresenter.new(%HandRow)
 	_hand.card_chosen.connect(_on_card_chosen)
+	_hand.card_flung.connect(_on_card_flung)
 	_messages = MessagePresenter.new(%Notice, get_tree())
 	_outcome = OutcomePresenter.new(
 		%OutcomePanel, %OutcomeTitle, %OutcomeHeadline, %OutcomeReason, %OutcomeClose)
@@ -95,9 +104,16 @@ func _ready() -> void:
 
 	_details_panel.hide()
 	_card_zoom.hide()
+	for panel: Control in [_details_panel, _card_zoom]:
+		var scroll := panel.get_node_or_null("Margin/Scroll") as ScrollContainer
+		if scroll != null:
+			DragScroll.attach(scroll)
 	%OutcomePanel.hide()
 
 	_build_inventory()
+	_banner = CueBanner.new()
+	_banner.name = "CueBanner"
+	add_child(_banner)
 	start_battle()
 
 
@@ -165,6 +181,9 @@ func start_battle() -> void:
 		return
 
 	_ready_to_play = true
+	# From here until the stage is finished, nothing is saved: coming back
+	# to a save means coming back to the start of this stage.
+	GameState.mid_stage = GameState.is_in_level()
 
 	# English first, with the Japanese beside it as a small muted accent.
 	_stage_name.text = str(_stage.get("name_en", "Battle"))
@@ -427,6 +446,15 @@ func _on_card_chosen(card_id: String) -> void:
 	_card_zoom.show()
 
 
+## A card dragged up out of the hand and let go: played straight away, the
+## same as opening it and pressing Play.
+func _on_card_flung(card_id: String) -> void:
+	if not _ready_to_play:
+		return
+	_selected_card_id = card_id
+	_play_selected()
+
+
 func _play_selected() -> void:
 	_card_zoom.hide()
 	if not _ready_to_play or _selected_card_id.is_empty():
@@ -456,19 +484,25 @@ func _play_selected() -> void:
 	result["does_nothing"] = useless
 	EventBus.card_played.emit(card_id, result)
 	_refresh()
+	if int((result.get("applied", {}) as Dictionary).get("opponent_lost", 0)) > 0:
+		_speaker.flinch()
 
-	# What the player actually says, before what it did to the room. The
-	# line is Cameron's, from the workbook; a card with none written yet
-	# goes straight to the narration, which is how it read before.
+	# What the player actually says, in big type across the screen, with
+	# what it did to the room underneath. The line is Cameron's, from the
+	# workbook; a card with none written yet puts what it did on the band
+	# instead, so every card still lands with a line.
 	var cue := CardCues.for_card(
 		card_id, str(_stage.get("stage_id", "")), engine.state.turn)
+	var did := BattleNarration.player_move(
+		result, _stage, engine.state, OpponentPresenter.display_name(engine))
+	var me := str(DataDB.player.get("name_en", ""))
 	if not str(cue["text"]).is_empty():
-		_messages.say(str(cue["text"]))
+		_banner.say(CueBanner.PLAYER, me, str(cue["text"]), did)
 		# And the recording of it, when there is one. Silent until then: no
 		# filename appears in any script, the same as every other sound.
-		Audio.say(CardCues.SPEAKER, str(cue["line_id"]))
-	_messages.say(BattleNarration.player_move(
-		result, _stage, engine.state, OpponentPresenter.display_name(engine)))
+		Audio.say(CardCues.speaker(), str(cue["line_id"]))
+	else:
+		_banner.say(CueBanner.PLAYER, me, did)
 
 
 func _on_end_turn() -> void:
@@ -512,11 +546,10 @@ func _on_end_turn() -> void:
 		lines.append(BattleNarration.player_move(
 			{"bout_won": bout}, _stage, engine.state, speaker))
 
-	# One notice, not three. The queue below would show them in turn, at two
-	# and a half seconds each, and a turn's worth of news should arrive as a
-	# turn's worth of news.
+	# One line, not three: a turn's worth of news arrives as a turn's worth
+	# of news, from the other side of the room.
 	if not lines.is_empty():
-		_messages.say("\n".join(lines))
+		_banner.say(CueBanner.OPPONENT, speaker, "\n".join(lines))
 
 	if not engine.state.is_over():
 		EventBus.turn_started.emit(engine.state.turn)
@@ -549,23 +582,33 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 		return
 
-	# A click anywhere outside the panel's content closes it. Checked against
-	# the content's own rectangle rather than the panel's, since the panel
-	# covers the whole screen.
-	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
+	# A tap anywhere outside the panel's content closes it — on the finger
+	# lifting, and only if it did not move, so a drag scrolls instead. Checked
+	# against the content's own rectangle rather than the panel's, since the
+	# panel covers the whole screen.
+	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
 		var where: Vector2 = (event as InputEventMouseButton).position
 		for overlay: Control in _dismissable_overlays():
 			if not overlay.visible:
 				continue
-			# The two panels name their content column differently, so ask
-			# for either rather than assuming one shape.
-			var content := (overlay.get_node_or_null("Margin/Scroll/Centre/Column")
-				if overlay.has_node("Margin/Scroll/Centre/Column")
-				else overlay.get_node_or_null("Margin/Scroll/Centre/ZoomColumn")) as Control
-			if content != null and not content.get_global_rect().has_point(where):
+			var content := _overlay_content(overlay)
+			if content == null:
+				return
+			if (event as InputEventMouseButton).pressed:
+				_outside_press = where if not content.get_global_rect().has_point(where) else null
+			elif Overlay.is_tap_outside(_outside_press, where, content.get_global_rect()):
+				_outside_press = null
 				overlay.hide()
 				get_viewport().set_input_as_handled()
 			return   # only ever the front-most one
+
+
+## The two panels name their content column differently, so ask for either
+## rather than assuming one shape.
+func _overlay_content(overlay: Control) -> Control:
+	if overlay.has_node("Margin/Scroll/Centre/Column"):
+		return overlay.get_node("Margin/Scroll/Centre/Column") as Control
+	return overlay.get_node_or_null("Margin/Scroll/Centre/ZoomColumn") as Control
 
 
 ## Closes the front-most overlay. True when there was one to close.
@@ -583,6 +626,7 @@ func _dismiss_top_overlay() -> bool:
 
 func _on_outcome_closed() -> void:
 	_messages.clear()
+	_banner.clear()
 
 	if not GameState.is_in_level():
 		get_tree().quit()

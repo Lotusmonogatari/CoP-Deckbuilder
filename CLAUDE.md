@@ -36,11 +36,15 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 
 ```
 /data/              JSON exported from the design workbook (source of truth)
-/assets/
-  characters/       {OPPONENT_ID}_{expression}.png  e.g. OP03_neutral.png
-                    PROTAGONIST_{expression}.png
-  cards/            {CARD_ID}.png                   e.g. C11.png
-  backgrounds/      {STAGE_ID}.png                  e.g. ST02.png
+/assets/            (the scheme is data/art.json; tools/art_checklist.py lists what is drawn)
+  characters/
+    protagonists/   {PC01-PC04}_{expression}.png    e.g. PC01_neutral.png
+    opponents/      {OPPONENT_ID}_{expression}.png  e.g. OP03_attacking.png
+    staff/          {SF..}_{expression}.png
+    visitors/       {VI..}_{expression}.png
+    journalists/    {JR_..}_{expression}.png
+  cards/art/        {CARD_ID}.png                   e.g. C11.png (frames stay in cards/)
+  backgrounds/      {STAGE_ID}.png                  e.g. ST02.png, OFFICE.png
   icons/            {ICON_NAME}.png, {BOOSTER_ID}.png
   fonts/            NotoSansJP-*.ttf
 /scripts/
@@ -52,7 +56,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 /tests/             GUT unit tests for /scripts/rules/
 ```
 
-Expressions for character art: `neutral`, `attacking`, `confident`, `flustered`, `defeated` (the protagonist also has `victory`).
+Expressions for character art (data/art.json): `neutral`, `attacking`, `guarding`, `gaining`, `damaged`, plus the optional `defeated` and `victory`. A missing face falls back (defeated → damaged, victory → gaining) and finally to `neutral`; the old flat `assets/characters/` and `assets/cards/` folders are still checked last.
 
 ## 6. Data contract
 
@@ -81,7 +85,9 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `strings.json` | key | **Every sentence the game says.** From the workbook's Text tab; nothing is typed into a script |
 | `card_cues.json` | card_id | Five spoken lines per card, from the Flavor Text tab |
 | `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit |
-| `rules.json`, `stage_types.json`, `player.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |
+| `player.json` | player_id | The four choosable protagonists (PC01–PC04, all placeholders) and the default |
+| `art.json` | kind | Where each kind of picture lives, the expression list and fallbacks |
+| `rules.json`, `stage_types.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |
 
 **Data rules:**
 - **No sentence lives in a script.** Every line the game says is a row in the
@@ -158,7 +164,7 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 | Bills and opinion | Bill difficulty = round((50 − alignment) × factor), where alignment is the Yoron value for the bill's topic, or 100 minus that value when the bill's direction is −1. |
 | Office hours (ST07) | Non-combat. Five time slots. Visitor event cards come from a new `visitors.json` (propose the schema). Each card offers 2 choices, and each choice has outcome deltas to Jiban, Kaban, party support, or Yoron. Create 6 placeholder events. |
 | XP checkpoint | Shown between modules. Spend XP to unlock cards at their tier cost from `balance.json`. Upgrade cost is 30 XP **[DEFAULT]**. |
-| Save | Auto-save JSON to `user://` after every stage and at every checkpoint. |
+| Save | **Built.** One slot, `user://savegame.json`, written after every stage, whenever the Office opens or something is bought or changed there, and when the app is backgrounded outside a stage. A stage in progress is never saved: reopening mid-stage restarts that stage. No save on launch opens the New Game screen. |
 
 ## 9. Open design decisions: implement as switches, do not decide
 
@@ -178,12 +184,12 @@ options are authoritative; the table below describes the current settings:
 
 ### Still unresolved — ask, don't guess
 
-- **The protagonist's identity and party.** `data/player.json` holds "Hiro,
-  Frontier Party" as a **placeholder** so the screens have a name to show.
-  Frontier Party is canon (it is OP02 Yuriko Mayeda's), so nothing has been
-  invented — but this is not a casting decision, and the workbook's note on
-  MOD01 seq 3 says the Caucus rival should become a same-party opponent once
-  the party is settled.
+- **The protagonists' identities and parties.** `data/player.json` now holds
+  **four** choosable protagonists. PC01 keeps the earlier placeholder "Hiro,
+  Frontier Party" (Frontier Party is canon — OP02 Yuriko Mayeda's); PC02–PC04
+  are neutral stand-ins ("Protagonist B/C/D", no party). None is a casting
+  decision, and the workbook's note on MOD01 seq 3 says the Caucus rival
+  should become a same-party opponent once the party is settled.
 - **The Yoron topic list and starting values.** The eight values in
   `data/yoron.json` are currently 50 and marked as placeholders; they are not
   final balance decisions.
@@ -208,7 +214,7 @@ Every screen is portrait, uncluttered, and English-first. Layout from top to bot
 2. **Opponent row:** portrait (initials placeholder), name, and the intent in plain words (for example "Attacking · −6").
 3. **Win condition:** the support bar with a visible threshold line and a caption such as "51 seats to win". Committee stages show member tiles instead; press conferences show the current question.
 4. **Status row:** Energy pips and "Gaffes 2 / 6". The gaffe warning turns red **only** when one more gaffe would end the stage.
-5. **Hand:** 3–5 cards. Each card face shows cost, English name, and a one-line effect. At most one small Japanese accent per card. Tapping a card opens a zoom view with the full text, suit, art, and Japanese name.
+5. **Hand:** 3–5 cards. Each card face shows cost, English name, and a one-line effect. At most one small Japanese accent per card. Tapping a card opens a zoom view with the full text, suit, art, and Japanese name; dragging a card up out of the hand plays it directly.
 6. **Footer:** a full-width "End turn" button.
 
 Secondary information (deck and discard counts, active modifiers, opinion topics) goes in a **details panel** opened from an icon, not on the main screen.
@@ -225,7 +231,7 @@ Build **one milestone at a time**. After each one, stop and give Cameron: (a) wh
 | M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking | **Done** |
 | M2 | Battle UI: Floor debate (ST02) vs OP03 | A full battle is playable to a win or loss on desktop | **Done** |
 | M3 | Committee (ST01) and Party Caucus (ST03) | Both playable using Module 01 data | **Done** |
-| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Part done.** The level runner and meta-variable handling exist. Saving and Office Hours visitor events are not implemented. |
+| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Mostly done.** The level runner, meta-variables and saving/resuming exist (resuming mid-level returns to the start of the current stage). Office Hours visitor events are not implemented. |
 | M5 | XP checkpoint shop | Unlocks and upgrades persist across the run | **Part done.** The shops, prices, refusals, and deck screen exist. The card collection is open for playtesting, so XP does not gate card unlocks. |
 | M6 | Android export test, then iOS | Runs on a real phone in portrait with crisp Japanese text | Not started |
 | Later | Additional room systems and mobile export | Defined as needed | The project includes nine playtest stage types. The conditional Town Hall and Steering Committee triggers are not connected to the level queue; the latter still needs a dedicated stage type and design content. |
@@ -291,11 +297,22 @@ silent; a named file that is missing logs one quiet line and is ignored, the
 same bargain `ArtLoader` strikes with art that has not been drawn.
 
 **Portrait expressions.** `OpponentPresenter` picks a face from what is
-happening — attacking when they wind up, flustered when their support falls,
-defeated when they are argued down. It works with **no art at all**, because
-the placeholder is coloured from the ID and changes with the expression. It
-becomes a face the moment one is drawn to
-`assets/characters/{ID}_{expression}.png`.
+happening — attacking, guarding or gaining to match the intent they are
+winding up, damaged when their support has fallen (and for a moment after a
+card hits them), defeated when they are argued down. It works with **no art
+at all**: the placeholder is labelled with the file it wants. It becomes a
+face the moment one is drawn to
+`assets/characters/opponents/{ID}_{expression}.png`.
+
+**The cue banner.** `CueBanner` throws the spoken line across the middle of
+the screen, Ace Attorney style: the player's card cue from the left (blue
+name tag) with what the card did underneath, the opponent's turn from the
+right (red). Lines queue; tapping the band skips; it never blocks the hand.
+
+**Touch.** Every scrolling list drags with a finger (`DragScroll`); a drag
+that starts on a button scrolls and does not press it. A card pulled up out
+of the hand and let go is played; a short pull drops back. Scrollbars are
+36 px wide (`tools/build_theme.gd`).
 
 **The battle screen was split** to make room for what comes next: it keeps
 the engine, the refresh, the status row and navigation, and four presenters
