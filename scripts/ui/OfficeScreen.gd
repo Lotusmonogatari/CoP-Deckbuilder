@@ -247,11 +247,24 @@ func _show_cards() -> void:
 	rows.append(_wrapped_label(Text.say("office.cards_blurb")))
 	rows.append(_wrapped_label(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
 
-	for tier: String in ["Tier 1", "Tier 2"]:
+	# cards.json's real "tier" values are the string digits "0"/"1"/"2"/"3"
+	# since the 2026-09-21 tier rename (Ledger.OPENING_TIER == "0"), not the
+	# literal words "Tier 1"/"Tier 2" this used to compare against — that
+	# comparison never matched anything, so the shop always listed zero cards.
+	# Tiers are read off the real cards rather than hardcoded, so a new tier
+	# added to the workbook shows up here without a code change.
+	var tiers: Array[String] = []
+	for card: Dictionary in DataDB.cards:
+		var tier := str(card.get("tier", ""))
+		if tier != Ledger.OPENING_TIER and not tiers.has(tier):
+			tiers.append(tier)
+	tiers.sort()
+
+	for tier: String in tiers:
 		var in_tier := DataDB.get_cards_by_tier(tier)
 		if in_tier.is_empty():
 			continue
-		rows.append(_heading_label(tier))
+		rows.append(_heading_label("Tier %s" % tier))
 		for card: Dictionary in in_tier:
 			rows.append(_card_row(card))
 
@@ -581,12 +594,13 @@ func _on_upgrade_staff(role: String) -> void:
 ## briefing and the battle actually need; the list here works off the raw
 ## rows, which is all choosing one needs.
 ##
-## Tier 1 and 2 are meant to cost XP to unlock, gated by the Policy Research
-## Assistant staff role's tier (unlock_cost_vacant/_tier_0/_1/_2) — but there
-## is no staff-hiring system built yet (data/staff.json loads, nothing spends
-## against it), so every level is left open here, the same way
-## GameState.open_collection currently leaves every card open. The unlock
-## price is still shown, as information, so it is not invented later.
+## Unlock cost and cooldown (levels.json's own unlock_cost_vacant/_tier_0/_1/_2
+## and cooldown columns) are gated behind rules.json's "level_gating_enabled",
+## default false — so every level stays open today, the same way
+## rules.json's "open_card_collection" currently leaves every card open.
+## Flip it true and a locked or on-cooldown level shows why, with an Unlock
+## button where it can be bought (see _level_row(), Ledger.gd's "Levels"
+## section, and GameState.levels_unlocked/levels_completed_count).
 func _show_levels() -> void:
 	var rows: Array[Control] = []
 	rows.append(_wrapped_label("Each level is a run of stages. Pick one and "
@@ -625,10 +639,47 @@ func _level_row(level: Dictionary) -> Control:
 
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
-	button.text = "Look it over"
+
+	# A locked or cooling-down level is SHOWN, not hidden — the same choice
+	# the card and Staff shops make: a player should see what is coming, not
+	# have it quietly vanish. Nothing below runs while rules.json's
+	# "level_gating_enabled" is off, which is today's default, so a plain
+	# "Look it over" is what every existing playtest still sees.
+	if DataDB.get_rule("level_gating_enabled", false):
+		var level_id := str(level.get("level_id", ""))
+		var cooldown := Ledger.level_cooldown_remaining(
+			level, GameState.levels_completed_count, GameState.level_last_completed_at)
+
+		if cooldown > 0:
+			button.text = Text.say("office.level_cooldown", {"count": cooldown})
+			button.disabled = true
+		elif not Ledger.is_level_unlocked(level, GameState.levels_unlocked, GameState.staff_hired):
+			var cost := Ledger.level_unlock_cost(level, GameState.staff_hired)
+			var refusal := Ledger.level_unlock_refusal(
+				level, GameState.levels_unlocked, GameState.staff_hired, GameState.xp, Text.phrase())
+			if refusal.is_empty():
+				button.text = Text.say("office.level_unlock_cost", {"cost": cost})
+				button.pressed.connect(_on_unlock_level.bind(level_id))
+			else:
+				button.text = refusal
+				button.disabled = true
+			box.add_child(button)
+			return box
+
+	button.text = Text.say("office.look_it_over")
 	button.pressed.connect(_on_level_chosen.bind(level))
 	box.add_child(button)
 	return box
+
+
+## Spends XP to unlock a level, then rebuilds the panel so the price and what
+## is left are current — the same shape as _on_buy_card().
+func _on_unlock_level(level_id: String) -> void:
+	var refusal := GameState.unlock_level(level_id)
+	if not refusal.is_empty():
+		_report.text = refusal
+		return
+	_show_levels()
 
 
 func _on_level_chosen(level: Dictionary) -> void:

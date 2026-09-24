@@ -49,15 +49,6 @@ var last_xp_gained := 0
 ## for the run rather than the level, like standing.
 ##
 ## Lives only for this sitting until M4 adds saving.
-## PLAYTEST SETTING. True hands the player every card in the workbook from
-## the first moment, so a session can try the whole slate without earning
-## it. Cameron asked for the XP and Yen economy to be left aside while he
-## prices it by playing, and an unreachable card cannot be playtested.
-##
-## Set it false and the collection starts at the opening tier again; nothing
-## else changes, because the Ledger still refuses anything unaffordable.
-var open_collection := true
-
 var owned_cards: Array[String] = []
 var deck: Array[String] = []
 var owned_modifiers: Array[String] = []
@@ -99,6 +90,28 @@ var last_segment_change: Dictionary = {}
 ## on this page.
 var staff_hired: Dictionary = {}
 
+## Level IDs the player has paid XP to unlock — only meaningful once
+## rules.json's "level_gating_enabled" is true. A level whose relevant
+## unlock_cost_* is already 0 does not need an entry here to be playable; see
+## Ledger.is_level_unlocked().
+##
+## Lives only for this sitting until M4 adds saving, same as everything else
+## on this page.
+var levels_unlocked: Array[String] = []
+
+## How many levels have been FINISHED so far this sitting — win or loss both
+## count. [DEFAULT] The workbook's own note on levels.json's cooldown column
+## reads "# of OTHER LEVELS TO PLAY before this level is available to play
+## again", and "play" most naturally means "finish", not "specifically win",
+## so a loss burns down a cooldown exactly like a win does. If that reading
+## is wrong, this is the one line to change (see Ledger.level_cooldown_remaining).
+var levels_completed_count: int = 0
+
+## { level_id -> the levels_completed_count value at the moment it last
+## finished }. A level with no entry has never been finished and so is never
+## on cooldown, no matter what its cooldown number says.
+var level_last_completed_at: Dictionary = {}
+
 
 func _ready() -> void:
 	reset_meta()
@@ -114,11 +127,19 @@ func reset_meta() -> void:
 	last_xp_gained = 0
 	reset_collection()
 	reset_staff()
+	reset_levels()
 
 
 ## Every Staff role back to vacant.
 func reset_staff() -> void:
 	staff_hired = {}
+
+
+## Every level back to locked-by-its-price and off cooldown.
+func reset_levels() -> void:
+	levels_unlocked = []
+	levels_completed_count = 0
+	level_last_completed_at = {}
 
 
 ## Back to the Starter twelve, owned and in the deck.
@@ -127,8 +148,19 @@ func reset_staff() -> void:
 ## every Starter card, and the deck screen is where the player changes it.
 func reset_collection() -> void:
 	owned_cards = []
+
+	# PLAYTEST SETTING, rules.json's own "open_card_collection" (moved off a
+	# hardcoded source constant 2026-09-22, so this is a switch like every
+	# other open decision rather than a line only a programmer can flip).
+	# True hands the player every card in the workbook from the first
+	# moment, so a session can try the whole slate without earning it —
+	# Cameron asked for the XP and card economy to be left aside while he
+	# prices xp_to_unlock by playing. Flip it false and the collection
+	# starts at the opening tier again; nothing else changes, because the
+	# Ledger still refuses anything unaffordable.
+	var open: bool = DataDB.get_rule("open_card_collection", true)
 	for card: Dictionary in DataDB.cards:
-		if open_collection or str(card.get("tier", "")) == Ledger.OPENING_TIER:
+		if open or str(card.get("tier", "")) == Ledger.OPENING_TIER:
 			owned_cards.append(str(card.get("card_id", "")))
 
 	deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
@@ -152,6 +184,20 @@ func buy_card(card_id: String) -> String:
 
 	_move_xp(-Ledger.card_cost(card))
 	owned_cards.append(card_id)
+	return ""
+
+
+## Spends XP to unlock a level (rules.json's "level_gating_enabled" only —
+## OfficeScreen does not offer this button while gating is off, but the
+## Ledger refusal is the real gate either way).
+func unlock_level(level_id: String) -> String:
+	var level := DataDB.get_level(level_id)
+	var refusal := Ledger.level_unlock_refusal(level, levels_unlocked, staff_hired, xp, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	_move_xp(-Ledger.level_unlock_cost(level, staff_hired))
+	levels_unlocked.append(level_id)
 	return ""
 
 
@@ -333,6 +379,16 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 
 	if level_runner.is_finished():
 		last_level_outcome = level_runner.outcome()
+
+		# Cooldown counts every completion, win or loss (see the comment on
+		# levels_completed_count) — recorded here regardless of which way
+		# last_level_outcome comes out, right where the level as a whole (not
+		# just the stage just played) is known to be over.
+		var level_id := str(level_runner.level.get("level_id", ""))
+		if not level_id.is_empty():
+			levels_completed_count += 1
+			level_last_completed_at[level_id] = levels_completed_count
+
 		if last_level_outcome == LevelRunner.WON:
 			_pay_level_rewards()
 			_apply_level_bonus_win(level_runner.level)

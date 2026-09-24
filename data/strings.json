@@ -1447,5 +1447,33 @@
     "english": "At their highest tier.",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "office.look_it_over",
+    "where": "Office — levels",
+    "english": "Look it over",
+    "placeholders": null,
+    "notes": "Was a literal string in OfficeScreen.gd; moved to the Text tab 2026-09-24 alongside the level-gating work."
+  },
+  {
+    "key": "office.level_unlock_cost",
+    "where": "Office — levels",
+    "english": "Unlock — {cost} XP",
+    "placeholders": "cost",
+    "notes": "Shown on a locked level button when level_gating_enabled is true and the level is affordable."
+  },
+  {
+    "key": "office.level_cooldown",
+    "where": "Office — levels",
+    "english": "{count} more level(s) first",
+    "placeholders": "count",
+    "notes": "Shown on a level still on cooldown when level_gating_enabled is true."
+  },
+  {
+    "key": "shop.level_no_id",
+    "where": "Shop — refusals",
+    "english": "This level has no ID.",
+    "placeholders": null,
+    "notes": "A data-integrity guard, not expected to be seen by a player — every real levels.json row has a level_id."
   }
 ]

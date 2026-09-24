@@ -303,6 +303,95 @@ static func can_upgrade_staff(candidate: Dictionary, tier: int, funds: int,
 	return staff_upgrade_refusal(candidate, tier, funds, words) == AFFORDABLE
 
 
+# ---------------------------------------------------------------------------
+# Levels — unlock cost and cooldown
+# ---------------------------------------------------------------------------
+# Gated by rules.json's "level_gating_enabled" (default false, so every level
+# stays open today) — see GameState.gd's levels_unlocked/levels_completed_count
+# and OfficeScreen.gd's _level_row().
+
+## What each staff tier count costs to unlock a level, when unlock_cost_2 is
+## the last tier the workbook prices (LV01-30 all have exactly _vacant,
+## _tier_0, _tier_1, _tier_2 — see data/levels.json).
+const LEVEL_UNLOCK_MAX_TIER := 2
+
+## The Staff role whose tier decides a level's unlock price — see
+## data/levels.json's own unlock_cost_vacant/_tier_0/_1/_2 columns and
+## Ledger.STAFF_ROLES.
+const LEVEL_UNLOCK_ROLE := "Policy Research Assistant"
+
+
+## What unlocking a level costs right now, in XP, given who (if anyone) is
+## hired as the Policy Research Assistant.
+##
+## A vacant role charges unlock_cost_vacant; a hired one charges whichever
+## unlock_cost_tier_N matches their CURRENT tier, clamped to the highest tier
+## the workbook prices (a PRA tier above that just keeps the cheapest price).
+static func level_unlock_cost(level: Dictionary, staff_hired: Dictionary) -> int:
+	var hired: Dictionary = staff_hired.get(LEVEL_UNLOCK_ROLE, {})
+	if hired.is_empty():
+		return int(level.get("unlock_cost_vacant", 0))
+	var tier: int = clampi(int(hired.get("tier", 0)), 0, LEVEL_UNLOCK_MAX_TIER)
+	return int(level.get("unlock_cost_tier_%d" % tier, 0))
+
+
+## Whether a level is playable without a purchase: either it was already
+## bought (its ID is in `unlocked`), or the cost that applies right now is
+## zero — most of LV01-10 never charge anything at all, so nothing needs to
+## be added to `unlocked` just to make them playable from the start.
+static func is_level_unlocked(level: Dictionary, unlocked: Array,
+		staff_hired: Dictionary) -> bool:
+	var level_id := str(level.get("level_id", ""))
+	if unlocked.has(level_id):
+		return true
+	return level_unlock_cost(level, staff_hired) <= 0
+
+
+## Whether a level can be bought right now, and if not, why not. Only about
+## the PURCHASE — a level that is unlocked but on cooldown is a different
+## question, answered by level_cooldown_remaining() below.
+static func level_unlock_refusal(level: Dictionary, unlocked: Array,
+		staff_hired: Dictionary, xp: int, words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
+	var level_id := str(level.get("level_id", ""))
+	if level_id.is_empty():
+		return say.say("shop.level_no_id")
+	if is_level_unlocked(level, unlocked, staff_hired):
+		return ""
+
+	var cost := level_unlock_cost(level, staff_hired)
+	if xp < cost:
+		return say.say("shop.xp_short", {"count": cost - xp})
+	return ""
+
+
+## How many MORE level completions (win or loss — see the note on
+## GameState.levels_completed_count) must happen before this level is
+## playable again, or 0 when it is not on cooldown at all.
+##
+## `completed_count` is the running total of every level finished so far in
+## this sitting; `last_completed_at` is { level_id -> that total's value the
+## last time THIS level finished }. A level never played has no entry, so it
+## is never on cooldown regardless of its cooldown number.
+static func level_cooldown_remaining(level: Dictionary, completed_count: int,
+		last_completed_at: Dictionary) -> int:
+	var level_id := str(level.get("level_id", ""))
+	var cooldown := int(level.get("cooldown", 0))
+	if cooldown <= 0:
+		return 0
+
+	var last: Variant = last_completed_at.get(level_id)
+	if last == null:
+		return 0
+
+	var since := completed_count - int(last)
+	return maxi(cooldown - since, 0)
+
+
+# ---------------------------------------------------------------------------
+# The deck
+# ---------------------------------------------------------------------------
+
 ## The deck a new run starts with.
 ##
 ## Every opening-tier card first — those are yours from the beginning and

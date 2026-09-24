@@ -123,6 +123,30 @@
       "2": "Two energy. Harsh on a three-energy turn: passing would cost you most of a turn on top of the turn you already gave up."
     }
   },
+  "open_card_collection": {
+    "value": true,
+    "options": [
+      true,
+      false
+    ],
+    "question": "Does a new run start owning every card in the workbook, or just the opening tier?",
+    "means": {
+      "true": "PLAYTEST SETTING. Every card is owned from the first moment, so a session can try the whole slate without earning it — Cameron asked for the XP and card economy to be left aside while he prices xp_to_unlock by playing. Used to be a hardcoded constant (GameState.open_collection); moved here 2026-09-22 so it is a switch like every other open decision, not a line only a programmer can flip.",
+      "false": "A new run starts owning only the opening tier (Ledger.OPENING_TIER). Every other card must be unlocked with XP, at the cost in cards.json's xp_to_unlock column — which is null on all 54 cards today, so nothing costs anything until Cameron fills that column in."
+    }
+  },
+  "level_gating_enabled": {
+    "value": false,
+    "options": [
+      true,
+      false
+    ],
+    "question": "Do levels.json's own cooldown and unlock_cost_* columns actually gate which levels the Office will let you play?",
+    "means": {
+      "false": "Every level stays open, regardless of cooldown or unlock cost — today's behaviour. The costs and cooldowns are still shown, as information, so they are not invented later.",
+      "true": "A level whose relevant unlock_cost_* is more than 0 must be bought with XP before it can be played (GameState.levels_unlocked / Ledger.level_unlock_cost), and a level just finished stays on cooldown for its own cooldown value's worth of OTHER level completions (GameState.levels_completed_count / level_last_completed_at) before it can be played again."
+    }
+  },
   "guard_cap": {
     "value": 5,
     "options": [

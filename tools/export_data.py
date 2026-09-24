@@ -1218,6 +1218,8 @@ def validate(data, report):
         "opponent_engine": ["intent_patterns", "deck_ai"],
         "press_answer_timer": [True, False],
         "discard_hand_end_of_turn": [True, False],
+        "open_card_collection": [True, False],
+        "level_gating_enabled": [True, False],
     }
     flags = data.get("rules", {})
     for flag, allowed in expected_flags.items():
