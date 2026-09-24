@@ -39,6 +39,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.1,
       "SG02": 0.4,
@@ -87,6 +88,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.2,
       "SG02": 0.35,
@@ -135,6 +137,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.55,
@@ -183,6 +186,7 @@
     },
     "question_pool": "press_conference",
     "reputation_affects_start": "Yes",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.9,
       "SG02": 0.0,
@@ -231,6 +235,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.1,
       "SG02": 0.1,
@@ -279,6 +284,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "Yes",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.8,
       "SG02": 0.0,
@@ -327,6 +333,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,
@@ -375,6 +382,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.7,
@@ -423,6 +431,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.35,
       "SG02": 0.4,
@@ -471,6 +480,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.1,
@@ -519,6 +529,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.55,
       "SG02": 0.0,
@@ -567,6 +578,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.5,
@@ -615,6 +627,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.2,
@@ -663,6 +676,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.4,
       "SG02": 0.2,
@@ -711,6 +725,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.2,
       "SG02": 0.0,
@@ -759,6 +774,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.25,
       "SG02": 0.0,
@@ -807,6 +823,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.15,
       "SG02": 0.0,
@@ -855,6 +872,7 @@
     },
     "question_pool": null,
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.1,
@@ -903,6 +921,7 @@
     },
     "question_pool": "media_ambush",
     "reputation_affects_start": "No",
+    "reveal_in_briefing": "No",
     "segment_mix": {
       "SG01": 1.0,
       "SG02": 0.0,
@@ -951,6 +970,7 @@
     },
     "question_pool": "lobbyist_meeting",
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,
@@ -999,6 +1019,7 @@
     },
     "question_pool": "policy_study",
     "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,

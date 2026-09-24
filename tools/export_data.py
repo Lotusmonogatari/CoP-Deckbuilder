@@ -286,6 +286,7 @@ SHEETS = {
         "optional": [
             "Bar Model", "Energy Mode", "Energy Pool", "Sequence Mode",
             "Opponent Count", "Question Pool", "Reputation Affects Start",
+            "Reveal In Briefing",
         ],
         "columns": [
             ("Stage ID", "stage_id", "id"),
@@ -335,6 +336,9 @@ SHEETS = {
             ("Opponent Count", "opponent_count", "range"),
             ("Question Pool", "question_pool", "str"),
             ("Reputation Affects Start", "reputation_affects_start", "str"),
+            # Blank means "Yes" — a stage tells the player what is coming
+            # unless it is explicitly marked to spring it on them instead.
+            ("Reveal In Briefing", "reveal_in_briefing", "str"),
         ],
     },
     "Cards": {

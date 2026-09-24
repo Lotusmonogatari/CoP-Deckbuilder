@@ -111,6 +111,7 @@
   "narration.won_over_them": "won over {amount}",
   "office.backing": "Backing",
   "office.backing_blurb": "An organisation backs you once your standing with it is high enough. Answering a reporter in the suit their question invites is what raises it.",
+  "office.briefing.surprise_stage": "Something is coming — you will not know what until you are in the room.",
   "office.card_line": "{suit} · {effect}",
   "office.card_title": "{name} {name_jp}  —  {cost} XP",
   "office.cards_blurb": "Cards you unlock join your collection. What you actually take into a debate is chosen on the deck screen.",

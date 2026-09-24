@@ -704,11 +704,18 @@ func _show_briefing() -> void:
 	var anything_set := false
 
 	for stage: Dictionary in stages:
-		rows.append(_heading_label(str(stage.get("name_en", "A stage"))))
-
-		var who := _opponents_line(stage)
-		if not who.is_empty():
-			rows.append(_wrapped_label(who, "SmallLabel"))
+		if _reveal_in_briefing(stage):
+			rows.append(_heading_label(str(stage.get("name_en", "A stage"))))
+			var who := _opponents_line(stage)
+			if not who.is_empty():
+				rows.append(_wrapped_label(who, "SmallLabel"))
+		else:
+			# A stage marked "No" (Media Ambush, an ambush by name) does not
+			# get to say what it is or who is waiting — that is the surprise.
+			# Its rewards still show below, same as any other stage, so the
+			# player can weigh what they are risking without being told what
+			# is coming for it.
+			rows.append(_heading_label(Text.say("office.briefing.surprise_stage")))
 
 		if LevelRunner.rewards_are_unset(stage):
 			rows.append(_wrapped_label(
@@ -738,6 +745,17 @@ func _show_briefing() -> void:
 
 	_briefing_panel.open(str(_chosen_level.get("level_id", "Before you go in")),
 		rows, "Go in")
+
+
+## True unless the Stages tab's "Reveal In Briefing" column is explicitly
+## "No" for this stage. Blank (null, the shape every stage has today except
+## the one that has been set) keeps the old behaviour: every stage says what
+## it is before the player goes in.
+func _reveal_in_briefing(stage: Dictionary) -> bool:
+	var value: Variant = stage.get("reveal_in_briefing")
+	if value == null:
+		return true
+	return str(value).strip_edges().to_lower() != "no"
 
 
 ## "Against Opponent A, Opponent B and Opponent C" — who is waiting.

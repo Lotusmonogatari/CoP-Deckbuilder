@@ -1475,5 +1475,12 @@
     "english": "This level has no ID.",
     "placeholders": null,
     "notes": "A data-integrity guard, not expected to be seen by a player — every real levels.json row has a level_id."
+  },
+  {
+    "key": "office.briefing.surprise_stage",
+    "where": "Office — briefing",
+    "english": "Something is coming — you will not know what until you are in the room.",
+    "placeholders": null,
+    "notes": "Shown in place of a stage's name and opponent when its Reveal In Briefing column is No, so a stage meant as a surprise (an ambush) is not spoiled before the player goes in."
   }
 ]

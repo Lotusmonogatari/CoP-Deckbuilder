@@ -1,12 +1,19 @@
 # Proposal: a living rules set for the Stages tab
 
-Seven new columns for the **Stages** tab, each replacing a rule that
+Eight new columns for the **Stages** tab, each replacing a rule that
 currently lives in GDScript rather than in the workbook. None of this
 changes how the game plays today — every column's default, below, is
 chosen to reproduce the exact current hardcoded behaviour. The engine
-already reads all seven; a blank cell means "use the old hardcoded rule for
+already reads all eight; a blank cell means "use the old hardcoded rule for
 this stage," so these can be filled in one stage at a time, or not at all,
 without anything breaking.
+
+**Status (2026-09-25):** the first seven columns are pasted into the master
+workbook with their safe defaults. `Reveal In Briefing` was added the same
+way, set to `No` on `ST19` (Media Ambush) only — the fix for the playtest
+report that Media Ambush was spoiled by name in the pre-stage briefing.
+Every value in the table below is live in the real Stages tab today, not
+just a proposal.
 
 ## Why each column exists
 
@@ -19,6 +26,7 @@ without anything breaking.
 | `Opponent Count` | The engine always resolving exactly one opponent for a non-committee stage | `BattleSetup.expand_level()` / `_opponent_count()` |
 | `Question Pool` | A hardcoded dict mapping 4 stage IDs to which of the 5 question pools they draw from | `BattleSetup.QUESTION_POOL_BY_STAGE` |
 | `Reputation Affects Start` | A hardcoded 2-ID list (`ST04`, `ST06`) deciding whether Reputation nudges the opening bar | `BattleSetup._reputation_affects_start()`'s fallback list |
+| `Reveal In Briefing` | Nothing before this — every stage always named itself and its opponent in the pre-stage briefing, with no way to keep a stage a surprise | `OfficeScreen._reveal_in_briefing()` |
 
 ## How to fill in a cell
 
@@ -45,35 +53,41 @@ without anything breaking.
   that doesn't ask reporter-style questions at all.
 - **Reputation Affects Start**: `Yes` or `No`. Blank = `No`, except for
   `ST04`/`ST06` where blank still means `Yes` (the old hardcoded list).
+- **Reveal In Briefing**: `Yes` or `No`. Blank = `Yes` — the stage names
+  itself and who's waiting, as every stage has always done. Set `No` on a
+  stage meant to ambush the player (today: `ST19`, Media Ambush) and the
+  briefing shows a generic "something is coming" line instead, with the
+  stage's rewards still shown underneath so the player can still weigh
+  what they're risking.
 
 ## The full default table
 
 Every value below reproduces exactly what the game does today. Pasting
 this table into the workbook with no changes is a safe, inert no-op.
 
-| Stage | Name | Bar Model | Energy Mode | Energy Pool | Sequence Mode | Opponent Count | Question Pool | Reputation Affects Start |
-|---|---|---|---|---|---|---|---|---|
-| ST01 | Special Committee | Committee | per_turn | | single | 1 | | No |
-| ST02 | Floor Debate | Shared_pool | per_turn | | single | 1 | | No |
-| ST03 | Party Caucus | Shared_pool | per_turn | | single | 1 | | No |
-| ST04 | Press Conference | Single | per_turn | | single | 1 | press_conference | Yes |
-| ST05 | Town Hall | Shared_pool | per_turn | | single | 1 | | No |
-| ST06 | TV Debate | Survival | per_turn | | single | 1 | | Yes |
-| ST07 | Office Hours | Shared_pool | per_turn | | single | 1 | | No |
-| ST08 | Party Steering Committee | Shared_pool | per_turn | | single | 1 | | No |
-| ST09 | Committee on Ethics and Prosecution | Committee | per_turn | | single | 1 | | No |
-| ST10 | Committee on the Environment | Committee | per_turn | | single | 1 | | No |
-| ST11 | Committee on War | Committee | per_turn | | single | 1 | | No |
-| ST12 | Committee on the National Assembly | Committee | per_turn | | single | 1 | | No |
-| ST13 | Committee on Agriculture | Committee | per_turn | | single | 1 | | No |
-| ST14 | Committee on Foreign Affairs | Committee | per_turn | | single | 1 | | No |
-| ST15 | Committee on Construction and Development | Committee | per_turn | | single | 1 | | No |
-| ST16 | Committee on Finance | Committee | per_turn | | single | 1 | | No |
-| ST17 | Committee on Government Administration | Committee | per_turn | | single | 1 | | No |
-| ST18 | Committee of the Cabinet | Committee | per_turn | | single | 1 | | No |
-| ST19 | Media Ambush | Shared_pool | per_turn | | single | 1 | media_ambush | No |
-| ST20 | Lobbyist Meeting | Shared_pool | per_turn | | single | 1 | lobbyist_meeting | No |
-| ST21 | Policy Study Session | Shared_pool | per_turn | | single | 1 | policy_study | No |
+| Stage | Name | Bar Model | Energy Mode | Energy Pool | Sequence Mode | Opponent Count | Question Pool | Reputation Affects Start | Reveal In Briefing |
+|---|---|---|---|---|---|---|---|---|---|
+| ST01 | Special Committee | Committee | per_turn | | single | 1 | | No | Yes |
+| ST02 | Floor Debate | Shared_pool | per_turn | | single | 1 | | No | Yes |
+| ST03 | Party Caucus | Shared_pool | per_turn | | single | 1 | | No | Yes |
+| ST04 | Press Conference | Single | per_turn | | single | 1 | press_conference | Yes | Yes |
+| ST05 | Town Hall | Shared_pool | per_turn | | single | 1 | | No | Yes |
+| ST06 | TV Debate | Survival | per_turn | | single | 1 | | Yes | Yes |
+| ST07 | Office Hours | Shared_pool | per_turn | | single | 1 | | No | Yes |
+| ST08 | Party Steering Committee | Shared_pool | per_turn | | single | 1 | | No | Yes |
+| ST09 | Committee on Ethics and Prosecution | Committee | per_turn | | single | 1 | | No | Yes |
+| ST10 | Committee on the Environment | Committee | per_turn | | single | 1 | | No | Yes |
+| ST11 | Committee on War | Committee | per_turn | | single | 1 | | No | Yes |
+| ST12 | Committee on the National Assembly | Committee | per_turn | | single | 1 | | No | Yes |
+| ST13 | Committee on Agriculture | Committee | per_turn | | single | 1 | | No | Yes |
+| ST14 | Committee on Foreign Affairs | Committee | per_turn | | single | 1 | | No | Yes |
+| ST15 | Committee on Construction and Development | Committee | per_turn | | single | 1 | | No | Yes |
+| ST16 | Committee on Finance | Committee | per_turn | | single | 1 | | No | Yes |
+| ST17 | Committee on Government Administration | Committee | per_turn | | single | 1 | | No | Yes |
+| ST18 | Committee of the Cabinet | Committee | per_turn | | single | 1 | | No | Yes |
+| ST19 | Media Ambush | Shared_pool | per_turn | | single | 1 | media_ambush | No | No |
+| ST20 | Lobbyist Meeting | Shared_pool | per_turn | | single | 1 | lobbyist_meeting | No | Yes |
+| ST21 | Policy Study Session | Shared_pool | per_turn | | single | 1 | policy_study | No | Yes |
 
 A note on ST07 (Office Hours): it's the one Non-combat stage, so none of
 this ever actually runs for it today — its `Bar Model` row above is what
