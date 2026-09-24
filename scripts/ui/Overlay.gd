@@ -49,7 +49,12 @@ var _confirm: Button
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	# Anchors AND offsets. Anchors alone keep whatever rectangle the node
+	# already has, which is fine for a panel placed in a scene (it arrives
+	# full-screen) but leaves one built in code at 0 x 0 — its content then
+	# sits outside a zero-size scroll area, drawn but unclickable. Found by
+	# the inventory click test, 2026-09-25.
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	hide()
 	_build()
 
@@ -106,9 +111,14 @@ func _build() -> void:
 
 ## Opens it with a heading and a list of nodes to show between the heading
 ## and the Back button. Anything shown before is cleared.
-func open(heading: String, rows: Array[Control], confirm_text: String = "") -> void:
+##
+## `back_text` relabels the way out for a panel where "Back" reads wrongly —
+## an item pop-up closes rather than goes back. Blank keeps "Back".
+func open(heading: String, rows: Array[Control], confirm_text: String = "",
+		back_text: String = "") -> void:
 	_build()
 	_title.text = heading
+	_back.text = back_text if not back_text.is_empty() else "Back"
 
 	for child in _body.get_children():
 		if child != _title:

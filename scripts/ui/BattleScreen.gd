@@ -73,6 +73,9 @@ var _card_back: CardBackView = null
 @onready var _details_text: Label = %DetailsText
 @onready var _card_zoom: PanelContainer = %CardZoom
 
+## The inventory, opened from its button in the header.
+var _inventory: InventoryPanel
+
 
 func _ready() -> void:
 	_speaker = OpponentPresenter.new(
@@ -94,7 +97,30 @@ func _ready() -> void:
 	_card_zoom.hide()
 	%OutcomePanel.hide()
 
+	_build_inventory()
 	start_battle()
+
+
+## The Inventory button beside Details, and the panel it opens — the same
+## InventoryPanel the Office uses, in its stage mode, so an item is used on
+## this battle (design/proposals/inventory.md). Using one is free and is not
+## a card play; the screen just redraws what it changed.
+func _build_inventory() -> void:
+	_inventory = InventoryPanel.new()
+	_inventory.name = "InventoryPanel"
+	_inventory.context = Items.STAGE
+	_inventory.on_used = func(_result: Dictionary) -> void: _refresh()
+	add_child(_inventory)
+
+	var button := Button.new()
+	button.name = "InventoryButton"
+	button.text = Text.say("inventory.button")
+	button.custom_minimum_size = _details_button.custom_minimum_size
+	button.size_flags_vertical = _details_button.size_flags_vertical
+	button.pressed.connect(_inventory.show_inventory)
+	var parent := _details_button.get_parent()
+	parent.add_child(button)
+	parent.move_child(button, _details_button.get_index())
 
 
 ## Opens the next battle.
@@ -113,6 +139,10 @@ func start_battle() -> void:
 		# after it should be fought with the reputation you actually have.
 		config = BattleSetup.for_playtest_stage(
 			runner.current_stage(), runner.carried_buffs(), GameState.meta)
+		# Items used before this stage: a Coffee from the Office for "the
+		# next stage", and any level buff still running. Spent by asking.
+		if not config.is_empty():
+			config["item_bonuses"] = GameState.take_item_bonuses_for_stage()
 	else:
 		config = BattleSetup.for_level_stage(level_id, stage_id)
 
@@ -123,6 +153,7 @@ func start_battle() -> void:
 	_stage = config.get("stage", {})
 
 	engine = BattleEngine.new()
+	_inventory.engine = engine
 	if not engine.setup(config):
 		# A battle that cannot start says why, in words, rather than
 		# presenting an empty screen. Nothing is left playable either: a

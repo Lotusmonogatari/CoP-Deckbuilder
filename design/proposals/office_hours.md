@@ -199,8 +199,9 @@ once, at the moment it's actually applied, per the confirmed answer above)
 |---|---|
 | `booster` (`BOxx`) | standing moves by the resolved delta, clamped to `booster_standing`'s floor/ceiling — the general form of `_please_organisations()`'s fixed step |
 | `modifier` (`Mxx`) | `owned_modifiers.append(id)` if not already owned — a free version of what `buy_modifier()` already does, minus the cost/refusal checks; the delta is ignored, a grant is binary |
+| `stage_effect` (`ENERGY`, `GUARD`, `DRAW`, `TURNS`, `GAFFE_CAP`) | waits for the next stage (added with the inventory) |
 | `segment` (`SGxx`) | favorability moves by the resolved delta, clamped 0-100 — the same clamp `_apply_staff_reward()`'s own SGxx handling already used, generalised |
-| `shop_item` (`SHxx`) | recorded on `owned_shop_items` (carried to the next level — this recording IS "using" it, there is no separate step); its own `Grants` list (Shop's new column, same format) then applies through this identical function, **but** any `shop_item`-kind entry found inside THAT list is refused rather than chased — one item cannot grant a second item |
+| `shop_item` (`SHxx`) | **Superseded 2026-09-25 by the inventory (`design/proposals/inventory.md`)**: the item goes into `GameState.inventory` (a delta, when given, is how many; capped by the item's Stack Cap), exactly like buying one. Its Grants apply only when the player later presses **Use**, never on the spot. Nothing recurses, so two items can no longer loop on each other |
 | unresolvable (bad prefix, or a well-formed ID that doesn't exist) | logged, does not stop the rest of the list from applying |
 | *(empty list)* | nothing happens |
 

@@ -1,9 +1,87 @@
 # Proposal: Item inventory, the Supplies shop, and item use
 
-**Status: plan only. Nothing here is built.** Written 2026-09-25 for Cameron's
-nine-point request. This is well over the 150-line threshold in CLAUDE.md §12,
-so it waits for approval before any code is written. Section 8 lists the
-decisions only Cameron can make.
+**Status: built (2026-09-25).** Written as a plan for Cameron's nine-point
+request, then built after his answers. **Section 0 is the authoritative
+description of what exists.** Sections 1–8 are the plan that led to it, and
+Section 0 notes where the build differs from them.
+
+## 0. What was built, after Cameron's answers
+
+**Cameron's decisions (2026-09-25):**
+
+| Question | Answer |
+|---|---|
+| Where can an item be used? | A Yes/No cell per item, for every category of item, so a cosmetic could later be made usable in a stage without code. **Where** and **how long** are separate columns |
+| Using an item in a stage | Free, not a card play, **once per turn by default**, with a per-item cell to raise that cap |
+| Office Hours shop-item rewards | Go **into the inventory**, like a purchase, for consistency |
+| Buy and stack limits | A **Stack Cap** column, shown in the item's pop-up. A **Purchase Limit** column that resets when a level concludes, win or loss. A sold-out item is greyed out with "Out of Stock", and that wording is editable in the Text tab |
+
+**Shop tab columns** (all optional; blank means the default shown):
+
+| Column | Meaning | Blank means |
+|---|---|---|
+| Grants | What using it does (`target_delta_list`). Accepts booster, modifier, segment and item targets, the stage-effect words `ENERGY` `GUARD` `DRAW` `TURNS` `GAFFE_CAP`, and pools such as `BO01\|BO02 +1` | Nothing: the item is refused with "no effect set yet" rather than being used up |
+| Icon | File name in `assets/icons/`, without `.png` | The item ID. A missing file shows a blue square |
+| Use In Office | Yes/No: can **Use** be pressed in the Office | No |
+| Use In Stage | Yes/No: can **Use** be pressed during a stage | No |
+| Duration | `Stage` or `Level`: how long a stage effect lasts | Stage |
+| Uses Per Turn | How many times it can be used per turn in a stage | 1 |
+| Stack Cap | The most the player may hold | No cap |
+| Purchase Limit | The most that can be bought per level | No limit |
+
+**How the timing works:**
+
+| Where it's used | Duration Stage | Duration Level |
+|---|---|---|
+| Office | Applies to the next stage only | Applies to every stage of the next level |
+| During a stage | Applies now, for the rest of this stage | Applies now, and to every later stage of this level |
+
+Booster, segment and modifier effects apply immediately wherever the item is
+used.
+
+**Values filled in the real workbook.** These are proposals for Cameron to
+change in the Shop tab:
+
+| Items | Grants | Where | Duration | Stack / Purchase limit |
+|---|---|---|---|---|
+| SH01–SH03 | `BO01\|BO02 +1`, all National-tier boosters `+2`, all Constituency-tier boosters `+2` | Office only | — | Purchase limit 1 per level ("once per Office screen") |
+| SH04–SH08 (Coffee, Tea, Paperwork, Wristwatch, Meditation) | `ENERGY` / `GAFFE_CAP` / `DRAW` / `TURNS` / `GUARD` `+1` | Office and stage | Stage | — |
+| SH20–SH24 (level buffs) | Same five effects, `+1` | Office and stage | Level | Stack cap and purchase limit both set to the "+N per level" number in each item's own text (2, 3, 5, 5, 3) |
+| All others | Blank | No / No | — | — |
+
+**Code:**
+
+| File | Role |
+|---|---|
+| `scripts/rules/Items.gd` (new) | Pure rules: where an item works, duration, caps and limits, and refusals |
+| `RewardTargets.gd` | Adds the stage-effect words and pool support |
+| `BattleEngine.gd` | Reads `item_bonuses` at setup. New `use_item()` enforces Uses Per Turn and resets the count each turn. `turn_limit()` includes turns added by items |
+| `GameState.gd` | `inventory`, `buy_shop_item()`, `use_item_in_office()`, `use_item_in_stage()`, the queues for the next stage and next level, and the per-level purchase counts |
+| `InventoryPanel.gd` (new) | The grid and the item pop-up, shared by the Office and the stage |
+| `OfficeScreen.gd` | Inventory button, and the Supplies shop inside Office Management |
+| `BattleScreen.gd` | Inventory button beside Details. Passes item bonuses into each stage |
+| `ArtLoader.item_icon()` | Loads an item icon, or the blue fallback square |
+
+The Text tab gained 32 rows for the new screens and messages. The same pass
+added the five keys whose absence made every export report errors.
+
+**A bug found and fixed along the way.** `Overlay` set only its anchors. That
+works for panels placed in a scene file, but a panel built in code stayed
+0×0, so its buttons were drawn on screen and ignored every tap. The new
+inventory click test found it before any player could.
+
+**Tests:** `test_items.gd`, `test_battle_items.gd` and `test_inventory.gd`,
+plus the rewritten Office Hours reward tests. There is also a new real-click
+test, `tests/interaction/inventory_test.tscn`, which buys in Supplies, uses an
+item in the Office, checks the next stage starts with the bonus, then uses an
+item mid-stage. It runs in `tools/verify.sh`. 618 unit tests and all three
+click tests pass.
+
+**Still open:** Q5 (SH25–SH26 "player-selected" booster groups: those items
+are marked No/No until designed), Q6 (the base amount for SH01–SH03 with no
+staff hired), Q8 (per-item use text), and the XP price that rises with each
+extra stack in SH20–SH24's own text. That last one is not built: each stack
+currently costs the same.
 
 ## Executive summary
 

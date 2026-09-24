@@ -75,6 +75,16 @@ var cards_played_this_turn := 0
 ## normally without consuming a reporter.
 var questions_answered_this_turn := 0
 
+## How many times each item (SHxx) has been used this turn, e.g.
+## { "SH04": 1 }. Using an item is free and is not a card play, so it does
+## not count towards cards_played_this_turn — but each item has its own
+## Uses Per Turn cap, and this is what that cap is checked against.
+var items_used_this_turn: Dictionary = {}
+
+## Turns added to the stage's own turn limit by an item (TURNS). Kept apart
+## from the stage row so the stage data itself is never changed.
+var turn_limit_bonus := 0
+
 # --- Standing --------------------------------------------------------------
 var gaffe := 0
 var gaffe_limit := 5

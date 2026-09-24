@@ -635,9 +635,12 @@ func resolve_reward_target(entry: Dictionary) -> Dictionary:
 			record = get_shop_item(target_id)
 		RewardTargets.SEGMENT:
 			record = get_segment(target_id)
+		RewardTargets.STAGE_EFFECT:
+			# Not a row anywhere — one of RewardTargets.STAGE_EFFECT_TOKENS.
+			record = {"token": target_id.to_upper()}
 		_:
 			warnings.append("reward target '%s' does not match any known ID prefix "
-				% target_id + "(BOxx, Mxx, SHxx, SGxx)")
+				% target_id + "(BOxx, Mxx, SHxx, SGxx) or stage effect")
 	return {
 		"kind": kind,
 		"id": target_id,
@@ -947,6 +950,24 @@ func _validate() -> void:
 			if str(question.get("choice_%s" % letter.to_lower(), "")).strip_edges().is_empty():
 				errors.append("Visitor Question %s has no Choice %s text" % [qid, letter])
 
+	# The Shop tab's item columns (design/proposals/inventory.md). A typo in
+	# a Yes/No or Duration cell would otherwise quietly read as "No" or
+	# "Stage", so anything unrecognised is reported rather than guessed at.
+	for item: Dictionary in shop:
+		var iid := str(item.get("item_id", ""))
+		for column: String in ["use_in_office", "use_in_stage"]:
+			var yes_no: Variant = item.get(column)
+			if yes_no != null and not ["yes", "no", "y", "n", "true", "false", "1", "0"].has(
+					str(yes_no).strip_edges().to_lower()):
+				errors.append("Shop item %s's %s is '%s', not Yes or No" % [iid, column, yes_no])
+		var duration: Variant = item.get("duration")
+		if duration != null and not ["stage", "level"].has(str(duration).strip_edges().to_lower()):
+			errors.append("Shop item %s's Duration is '%s', not Stage or Level" % [iid, duration])
+		var grants: Variant = item.get("grants")
+		if grants is Array:
+			for entry: Dictionary in grants:
+				_validate_reward_target(iid, "Grants", entry)
+
 	_validate_rules()
 
 
@@ -954,6 +975,16 @@ func _validate() -> void:
 ## its target must match a known ID prefix (RewardTargets.gd) AND actually
 ## exist, or the reward silently does nothing the moment a player earns it.
 func _validate_reward_target(owner_id: String, column: String, entry: Dictionary) -> void:
+	# A pool ("BO01|BO02 +1") is checked member by member: every one of them
+	# has to be real, since any one of them can be the one picked.
+	var pool: Variant = entry.get("target_pool")
+	if pool is Array:
+		if (pool as Array).is_empty():
+			errors.append("%s's %s has an empty pool" % [owner_id, column])
+		for member: Variant in pool:
+			_validate_reward_target(owner_id, column, {"target": str(member), "delta": entry.get("delta")})
+		return
+
 	var target_id := str(entry.get("target", ""))
 	var kind := RewardTargets.kind_of(target_id)
 	var record: Dictionary
@@ -966,9 +997,12 @@ func _validate_reward_target(owner_id: String, column: String, entry: Dictionary
 			record = get_shop_item(target_id)
 		RewardTargets.SEGMENT:
 			record = get_segment(target_id)
+		RewardTargets.STAGE_EFFECT:
+			return   # one of a closed list; recognising it is the whole check
 		_:
-			errors.append("%s's %s names '%s', which doesn't match any known ID prefix (BOxx, Mxx, SHxx, SGxx)"
-				% [owner_id, column, target_id])
+			errors.append(("%s's %s names '%s', which doesn't match any known ID prefix "
+				+ "(BOxx, Mxx, SHxx, SGxx) or stage effect (%s)")
+				% [owner_id, column, target_id, ", ".join(RewardTargets.STAGE_EFFECT_TOKENS)])
 			return
 	if record.is_empty():
 		errors.append("%s's %s names '%s', which does not exist" % [owner_id, column, target_id])

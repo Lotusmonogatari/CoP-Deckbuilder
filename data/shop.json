@@ -7,7 +7,22 @@
     "cost_yen": 200000,
     "bonus_condition_1": "Policy Research Assistant is Tier 1: +1 to the selected Party booster group.",
     "bonus_condition_2": "Policy Research Assistant is Tier 2: +2 to the selected Party booster group.",
-    "grants": null
+    "grants": [
+      {
+        "target_pool": [
+          "BO01",
+          "BO02"
+        ],
+        "delta": 1
+      }
+    ],
+    "icon": "policy_research",
+    "use_in_office": "Yes",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": 1
   },
   {
     "item_id": "SH02",
@@ -17,7 +32,27 @@
     "cost_yen": 200000,
     "bonus_condition_1": "Media Spokesperson is Tier 1: +2 to the selected National booster group.",
     "bonus_condition_2": "Media Spokesperson is Tier 2: +4 to the selected National booster group.",
-    "grants": null
+    "grants": [
+      {
+        "target_pool": [
+          "BO05",
+          "BO08",
+          "BO09",
+          "BO10",
+          "BO13",
+          "BO15",
+          "BO16"
+        ],
+        "delta": 2
+      }
+    ],
+    "icon": "press_engagement",
+    "use_in_office": "Yes",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": 1
   },
   {
     "item_id": "SH03",
@@ -27,7 +62,27 @@
     "cost_yen": 200000,
     "bonus_condition_1": "District Representative is Tier 1: +2 to the selected Constituency booster group.",
     "bonus_condition_2": "District Representative is Tier 2: +4 to the selected Constituency booster group.",
-    "grants": null
+    "grants": [
+      {
+        "target_pool": [
+          "BO03",
+          "BO04",
+          "BO06",
+          "BO07",
+          "BO11",
+          "BO12",
+          "BO14"
+        ],
+        "delta": 2
+      }
+    ],
+    "icon": "district_engagement",
+    "use_in_office": "Yes",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": 1
   },
   {
     "item_id": "SH04",
@@ -37,7 +92,19 @@
     "cost_yen": 10000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "ENERGY",
+        "delta": 1
+      }
+    ],
+    "icon": "coffee",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Stage",
+    "uses_per_turn": 1,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH05",
@@ -47,7 +114,19 @@
     "cost_yen": 10000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "GAFFE_CAP",
+        "delta": 1
+      }
+    ],
+    "icon": "tea",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Stage",
+    "uses_per_turn": 1,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH06",
@@ -57,7 +136,19 @@
     "cost_yen": 10000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "DRAW",
+        "delta": 1
+      }
+    ],
+    "icon": "paperwork_automation",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Stage",
+    "uses_per_turn": 1,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH07",
@@ -67,7 +158,19 @@
     "cost_yen": 10000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "TURNS",
+        "delta": 1
+      }
+    ],
+    "icon": "wristwatch",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Stage",
+    "uses_per_turn": 1,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH08",
@@ -77,7 +180,19 @@
     "cost_yen": 10000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "GUARD",
+        "delta": 1
+      }
+    ],
+    "icon": "meditation",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Stage",
+    "uses_per_turn": 1,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH09",
@@ -87,7 +202,14 @@
     "cost_yen": 10000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "blue_profile",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH10",
@@ -97,7 +219,14 @@
     "cost_yen": 15000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "red_profile",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH11",
@@ -107,7 +236,14 @@
     "cost_yen": 10000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "blue_background",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH12",
@@ -117,7 +253,14 @@
     "cost_yen": 15000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "red_background",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH13",
@@ -127,7 +270,14 @@
     "cost_yen": 0,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "unlock_level_t1",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH14",
@@ -137,7 +287,14 @@
     "cost_yen": 0,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "unlock_level_t2",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH15",
@@ -147,7 +304,14 @@
     "cost_yen": 0,
     "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "unlock_card_t1",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH16",
@@ -157,7 +321,14 @@
     "cost_yen": 0,
     "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "unlock_card_t2",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH17",
@@ -167,7 +338,14 @@
     "cost_yen": 0,
     "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "unlock_card_t3",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH18",
@@ -177,7 +355,14 @@
     "cost_yen": 0,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "staff_tier",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH19",
@@ -187,7 +372,14 @@
     "cost_yen": 0,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "funds_cap",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH20",
@@ -197,7 +389,19 @@
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +2 total per level; each additional stack costs another 50 XP.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "DRAW",
+        "delta": 1
+      }
+    ],
+    "icon": "buff_draw",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Level",
+    "uses_per_turn": 1,
+    "stack_cap": 2,
+    "purchase_limit": 2
   },
   {
     "item_id": "SH21",
@@ -207,7 +411,19 @@
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 60 XP.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "ENERGY",
+        "delta": 1
+      }
+    ],
+    "icon": "buff_energy",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Level",
+    "uses_per_turn": 1,
+    "stack_cap": 3,
+    "purchase_limit": 3
   },
   {
     "item_id": "SH22",
@@ -217,7 +433,19 @@
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 70 XP.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "GUARD",
+        "delta": 1
+      }
+    ],
+    "icon": "buff_guard",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Level",
+    "uses_per_turn": 1,
+    "stack_cap": 5,
+    "purchase_limit": 5
   },
   {
     "item_id": "SH23",
@@ -227,7 +455,19 @@
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 80 XP.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "GAFFE_CAP",
+        "delta": 1
+      }
+    ],
+    "icon": "buff_gaffe_cap",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Level",
+    "uses_per_turn": 1,
+    "stack_cap": 5,
+    "purchase_limit": 5
   },
   {
     "item_id": "SH24",
@@ -237,7 +477,19 @@
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 100 XP.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": [
+      {
+        "target": "TURNS",
+        "delta": 1
+      }
+    ],
+    "icon": "buff_turn",
+    "use_in_office": "Yes",
+    "use_in_stage": "Yes",
+    "duration": "Level",
+    "uses_per_turn": 1,
+    "stack_cap": 3,
+    "purchase_limit": 3
   },
   {
     "item_id": "SH25",
@@ -247,7 +499,14 @@
     "cost_yen": 20000,
     "bonus_condition_1": "+2 relationship for the selected group.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "booster_dinner",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH26",
@@ -257,7 +516,14 @@
     "cost_yen": 10000,
     "bonus_condition_1": "+1 relationship for the selected group.",
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "walking_tour",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH27",
@@ -267,7 +533,14 @@
     "cost_yen": 15000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "buy_card_t1",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH28",
@@ -277,7 +550,14 @@
     "cost_yen": 25000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "buy_card_t2",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   },
   {
     "item_id": "SH29",
@@ -287,6 +567,13 @@
     "cost_yen": 30000,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
-    "grants": null
+    "grants": null,
+    "icon": "buy_card_t3",
+    "use_in_office": "No",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null
   }
 ]

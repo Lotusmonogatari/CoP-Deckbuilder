@@ -178,6 +178,14 @@ func setup(config: Dictionary) -> bool:
 	state.gaffe = maxi(int(config.get("starting_gaffe", 0)), 0)
 	state.guard_cap = int(_rules.get("guard_cap", 5))
 
+	# Items used before this stage began — a Coffee from the Office, or a
+	# level buff still running (GameState.take_item_bonuses_for_stage()).
+	# { "ENERGY": 1, "DRAW": 2, ... }; applied before energy is handed out
+	# and the opening hand is dealt, so both already include them.
+	var item_bonuses: Dictionary = config.get("item_bonuses", {})
+	for token: String in item_bonuses.keys():
+		_apply_item_bonus(token, int(item_bonuses[token]), false)
+
 	_setup_opponent(config)
 	_setup_board(config)
 	_setup_deck(config)
@@ -192,7 +200,10 @@ func setup(config: Dictionary) -> bool:
 	# fresh allowance each turn.
 	if state.energy_mode == "pool":
 		var pool: Variant = _stage.get("energy_pool")
-		state.energy = int(pool) if pool != null else state.energy_per_turn
+		# An item's ENERGY already raised energy_per_turn above; a stage with
+		# its own pool size needs the same bonus added to the pool instead.
+		state.energy = (int(pool) + int(item_bonuses.get("ENERGY", 0))) if pool != null \
+			else state.energy_per_turn
 	else:
 		state.energy = state.energy_per_turn
 	state.energy_max = state.energy
@@ -547,6 +558,7 @@ func end_turn() -> Dictionary:
 	state.next_card_discount = 0
 	state.next_intent_revealed = false
 	state.cards_played_this_turn = 0
+	state.items_used_this_turn = {}
 	state.questions_answered_this_turn = 0
 
 	# Step 6: check, advance, redraw.
@@ -852,7 +864,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 
 
 func _check_turn_limit() -> void:
-	var limit := int(_stage.get("turn_limit", 0))
+	var limit := turn_limit()
 	if limit <= 0 or state.turn < limit:
 		return
 
@@ -1248,7 +1260,65 @@ func gaffe_is_critical() -> bool:
 	return state.gaffe >= state.gaffe_limit - 1
 
 
+## The stage's turn limit including any turns an item added. 0 still means
+## "no limit" — an item cannot put a clock on a stage that has none.
+func turn_limit() -> int:
+	var base := int(_stage.get("turn_limit", 0))
+	return base + state.turn_limit_bonus if base > 0 else 0
+
+
+# ---------------------------------------------------------------------------
+# Items (design/proposals/inventory.md)
+# ---------------------------------------------------------------------------
+
+## Uses an item mid-stage. `effects` is the item's stage effects, already
+## resolved to real numbers by the caller: [ { "token": "ENERGY", "amount": 1 } ].
+## Free, and not a card play — it does not touch cards_played_this_turn, so
+## it neither costs energy nor saves the player from the pass penalty.
+##
+## Refused, with the reason's Text key, when the stage is over or the item
+## has already been used `uses_per_turn` times this turn. The engine cannot
+## see the inventory; whether the player HAS one is the caller's question.
+func use_item(item_id: String, effects: Array, uses_per_turn: int) -> Dictionary:
+	if state.is_over():
+		return {"ok": false, "reason": _words.say("item.refused.battle_over")}
+	var used := int(state.items_used_this_turn.get(item_id, 0))
+	if used >= uses_per_turn:
+		return {"ok": false, "reason": _words.say("item.refused.turn_limit")}
+
+	for effect: Dictionary in effects:
+		_apply_item_bonus(str(effect.get("token", "")), int(effect.get("amount", 0)), true)
+	state.items_used_this_turn[item_id] = used + 1
+	return {"ok": true}
+
+
+## One stage effect. The same five words mean the same thing whether the item
+## was used in the Office (applied at setup, `now` false) or mid-stage (`now`
+## true): "+1 energy for the stage" is +1 energy every turn of it, so a
+## mid-stage ENERGY also tops up the turn in progress, and a mid-stage DRAW
+## raises the hand size and deals the card straight away.
+func _apply_item_bonus(token: String, amount: int, now: bool) -> void:
+	if amount == 0:
+		return
+	match token.to_upper():
+		"ENERGY":
+			state.energy_per_turn += amount
+			if now:
+				state.energy = maxi(state.energy + amount, 0)
+				state.energy_max = maxi(state.energy_max, state.energy)
+		"GUARD":
+			state.block = clampi(state.block + amount, 0, state.guard_cap)
+		"DRAW":
+			state.hand_size = maxi(state.hand_size + amount, 0)
+			if now and amount > 0:
+				_draw(amount)
+		"TURNS":
+			state.turn_limit_bonus += amount
+		"GAFFE_CAP":
+			state.gaffe_limit = maxi(state.gaffe_limit + amount, 1)
+
+
 ## "Turn 3 of 8" for the header.
 func turn_caption() -> String:
 	return _words.say("caption.turn", {
-		"turn": state.turn, "total": int(_stage.get("turn_limit", 0))})
+		"turn": state.turn, "total": turn_limit()})

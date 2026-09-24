@@ -577,7 +577,8 @@ SHEETS = {
         # Modifiers' Effect column — never parsed). Blank on a row means
         # "not structured yet", the same "optional means Cameron hasn't
         # gotten to it" convention as the Stages living-rules columns.
-        "optional": ["Grants"],
+        "optional": ["Grants", "Icon", "Use In Office", "Use In Stage", "Duration",
+                     "Uses Per Turn", "Stack Cap", "Purchase Limit"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -596,6 +597,24 @@ SHEETS = {
             # yet (every real row today) still shows its Description prose;
             # it just has nothing to apply.
             ("Grants", "grants", "target_delta_list"),
+            # The inventory columns (design/proposals/inventory.md, Cameron
+            # 2026-09-25) — every one of them per item, so what an item can
+            # do and where is a workbook edit, never a code change.
+            #   Icon            file name in assets/icons/, without ".png"
+            #   Use In Office   Yes/No: can the Use button work in the Office
+            #   Use In Stage    Yes/No: can it work during a stage
+            #   Duration        Stage or Level: how long its stage effects last
+            #   Uses Per Turn   how often it may be used in one turn (blank = 1)
+            #   Stack Cap       most the player may hold (blank = no cap)
+            #   Purchase Limit  most that may be bought per level (blank = no
+            #                   limit); resets when a level concludes
+            ("Icon", "icon", "str"),
+            ("Use In Office", "use_in_office", "str"),
+            ("Use In Stage", "use_in_stage", "str"),
+            ("Duration", "duration", "str"),
+            ("Uses Per Turn", "uses_per_turn", "int"),
+            ("Stack Cap", "stack_cap", "int"),
+            ("Purchase Limit", "purchase_limit", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
@@ -823,20 +842,32 @@ def coerce(value, kind, where, report):
                     f"target clause {clause!r} doesn't match '<ID>', '<ID> +N', or '<ID> min-max'")
                 continue
             target, rest = head_match.group(1), head_match.group(2)
+            # A pool: "BO01|BO02|BO03 +1" — one of these is picked at random
+            # when the entry is applied (Cameron, 2026-09-25: the pool is set
+            # in the cell, the code only picks). Exported as "target_pool"
+            # rather than "target", so nothing can mistake the whole string
+            # for a single ID.
+            head = {"target": target}
+            if "|" in target:
+                pool = [part.strip() for part in target.split("|") if part.strip()]
+                if not pool:
+                    report.error(where, f"target clause {clause!r} has an empty pool")
+                    continue
+                head = {"target_pool": pool}
             if rest is None:
-                entries.append({"target": target, "delta": None})
+                entries.append({**head, "delta": None})
                 continue
             rest = rest.strip()
             range_match = re.match(r"^\+?(-?\d+)\s*-\s*(-?\d+)$", rest)
             if range_match:
                 entries.append({
-                    "target": target,
+                    **head,
                     "delta": {"min": int(range_match.group(1)), "max": int(range_match.group(2))},
                 })
                 continue
             fixed_match = re.match(r"^([+-]\d+)$", rest)
             if fixed_match:
-                entries.append({"target": target, "delta": int(fixed_match.group(1))})
+                entries.append({**head, "delta": int(fixed_match.group(1))})
                 continue
             report.error(where,
                 f"target clause {clause!r} doesn't match '<ID>', '<ID> +N', or '<ID> min-max'")

@@ -53,15 +53,32 @@ var owned_cards: Array[String] = []
 var deck: Array[String] = []
 var owned_modifiers: Array[String] = []
 
-## A shop item (SHxx) granted by a visitor's Reward/Penalty (Office Hours,
-## design/proposals/office_hours.md open point 1, answered 2026-09-25).
-## There is no purchase screen and no inventory to open — being granted IS
-## using it, so this is simply the record of which ones the run has. What
-## consuming one at the NEXT stage actually does is a separate, still-open
-## question; nothing reads this list yet.
+## The inventory: shop items (SHxx) held and how many of each, e.g.
+## { "SH04": 2 }. Filled by buying in the Office's Supplies shop and by an
+## Office Hours visitor's reward; emptied one at a time by the Use button in
+## the Office or during a stage. See design/proposals/inventory.md.
 ##
 ## Lives only for this sitting until M4 adds saving, same as owned_modifiers.
-var owned_shop_items: Array[String] = []
+var inventory: Dictionary = {}
+
+## How many of each item have been bought during the current level. An
+## item's Purchase Limit is checked against this; it resets when a level
+## concludes, win or loss.
+var shop_bought_this_level: Dictionary = {}
+
+## Stage effects waiting for the next stage — an item with Duration "Stage"
+## used in the Office. { "ENERGY": 1, ... }; handed to that stage's setup and
+## then cleared (take_item_bonuses_for_stage()).
+var pending_stage_bonuses: Dictionary = {}
+
+## Stage effects waiting for the next LEVEL — an item with Duration "Level"
+## used in the Office. They become level_bonuses when that level begins.
+var pending_level_bonuses: Dictionary = {}
+
+## Stage effects active for every stage of the level in progress: a level
+## buff used in the Office before it, or one used mid-stage (which covers the
+## rest of the level). Cleared when the level concludes.
+var level_bonuses: Dictionary = {}
 
 ## Where the player stands with each of the ten organisations, by booster ID.
 ## Pleasing one at a press conference raises it, and it is held between
@@ -175,7 +192,11 @@ func reset_collection() -> void:
 
 	deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
 	owned_modifiers = []
-	owned_shop_items = []
+	inventory = {}
+	shop_bought_this_level = {}
+	pending_stage_bonuses = {}
+	pending_level_bonuses = {}
+	level_bonuses = {}
 
 
 # ---------------------------------------------------------------------------
@@ -369,6 +390,10 @@ func begin_level(runner: LevelRunner) -> void:
 	last_xp_gained = 0
 	last_booster_change = {}
 
+	# A level buff used in the Office now runs for every stage of this level.
+	level_bonuses = pending_level_bonuses.duplicate()
+	pending_level_bonuses = {}
+
 
 ## True while a level is in progress.
 func is_in_level() -> bool:
@@ -399,6 +424,10 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 		if not level_id.is_empty():
 			levels_completed_count += 1
 			level_last_completed_at[level_id] = levels_completed_count
+
+		# The level has concluded, success or failure: each Supplies item's
+		# Purchase Limit starts counting again, and level buffs run out.
+		_conclude_level_items()
 
 		if last_level_outcome == LevelRunner.WON:
 			_pay_level_rewards()
@@ -628,18 +657,23 @@ func _please_organisations(boosters: Array) -> void:
 ## applied — not shown to the player as a range and not rolled earlier at
 ## setup (open point 5 in the proposal).
 func apply_visitor_reward_entries(entries: Array) -> void:
-	_apply_reward_entries(entries, true)
+	_apply_reward_entries(entries)
 
 
-## `allow_shop_items` is false for a shop item's OWN "grants" list — an item
-## can move a booster/modifier/segment when granted, same as anywhere else
-## in the game, but cannot grant a second item. Not a depth limit, a hard
-## rule: buying a thing that hands you another thing to open later is a real
-## design a shop could want, but nothing has asked for it, and allowing it
-## by accident here would be an infinite loop the moment two items name each
-## other. See tools/export_data.py's own comment on Shop's "Grants" column.
-func _apply_reward_entries(entries: Array, allow_shop_items: bool) -> void:
-	for entry: Dictionary in entries:
+## The one place a target_delta_list entry becomes a real effect — a
+## visitor's Reward/Penalty, or a shop item's own Grants when it is used.
+##
+## A pooled entry ("BO01|BO02 +1") picks one of its targets first, then
+## applies like any other. A shop item (SHxx) named here goes INTO THE
+## INVENTORY, the same as buying one — Cameron, 2026-09-25: one consistent
+## place for items to land — so there is nothing to recurse into and no way
+## for two items to loop on each other. A stage effect (ENERGY, GUARD, ...)
+## named here, outside an item being used, waits for the next stage.
+func _apply_reward_entries(entries: Array) -> void:
+	for raw: Variant in entries:
+		if not (raw is Dictionary):
+			continue
+		var entry := _pick_from_pool(raw)
 		var resolved := DataDB.resolve_reward_target(entry)
 		var kind: String = resolved.get("kind", "")
 		var target_id: String = resolved.get("id", "")
@@ -652,42 +686,159 @@ func _apply_reward_entries(entries: Array, allow_shop_items: bool) -> void:
 			RewardTargets.SEGMENT:
 				_apply_segment_delta(target_id, _resolve_delta(resolved.get("delta")))
 			RewardTargets.SHOP_ITEM:
-				if not allow_shop_items:
-					push_warning(("GameState: %s's own Grants names another shop item ('%s'); "
-						+ "an item cannot grant a second item.") % [target_id, target_id])
-					continue
-				_grant_shop_item(target_id, resolved.get("record", {}))
+				# A delta, when given, is how many; a bare "SH04" is one.
+				add_item(target_id, maxi(_resolve_delta(resolved.get("delta")), 1))
+			RewardTargets.STAGE_EFFECT:
+				_add_bonus(pending_stage_bonuses, target_id, _stage_effect_amount(resolved.get("delta")))
 			_:
 				push_warning("GameState: reward/penalty target '%s' did not resolve to anything." % target_id)
 
 
-## Office Hours (design/proposals/office_hours.md, open point 1, answered
-## 2026-09-25): buying a shop item has never had a purchase path of its own
-## — there is no inventory screen, nothing to open or activate. Granting one
-## IS using it: it goes straight onto the run's carried list (persists to
-## the next level the same way owned_modifiers/owned_cards already do — no
-## separate "carry it forward" step is needed, this already is that step),
-## and whatever it GRANTS (its own "Grants" column — the same
-## target_delta_list shape a Visitor's Reward column uses) applies right
-## now, the same way a Visitor's own booster/modifier/segment reward does.
-##
-## Every real shop.json row today has an empty Grants list (the column
-## exists but nothing has filled it in — see export_data.py), so this
-## records the item as carried and applies nothing further, which is
-## correct: there is nothing structured to apply yet, only prose in the
-## item's Description that nothing here parses (same rule as a modifier's
-## Effect column — display text is never parsed for behaviour).
-func _grant_shop_item(item_id: String, record: Dictionary) -> void:
-	if not owned_shop_items.has(item_id):
-		owned_shop_items.append(item_id)
-	# Every real shop.json row leaves "grants" as an explicit JSON null
-	# (a blank optional column, not an absent key) — .get(key, []) only
-	# falls back to [] for a MISSING key, not a present null one, so the
-	# null check has to come before use, same gotcha this project has hit
-	# on every other optional column (BarModel.for_stage() and friends).
-	var grants: Variant = record.get("grants")
-	if grants is Array and not (grants as Array).is_empty():
-		_apply_reward_entries(grants, false)
+## A pooled entry ({"target_pool": [...], "delta": ...}) as a plain one, with
+## one target picked at random from the pool. Unseeded, like every other roll
+## here. An entry without a pool comes back unchanged.
+func _pick_from_pool(entry: Dictionary) -> Dictionary:
+	var pool: Variant = entry.get("target_pool")
+	if not (pool is Array) or (pool as Array).is_empty():
+		return entry
+	var picked := entry.duplicate()
+	picked.erase("target_pool")
+	picked["target"] = str((pool as Array)[randi() % (pool as Array).size()])
+	return picked
+
+
+# ---------------------------------------------------------------------------
+# The inventory (design/proposals/inventory.md)
+# ---------------------------------------------------------------------------
+
+func item_count(item_id: String) -> int:
+	return int(inventory.get(item_id, 0))
+
+
+## Adds up to `count` of an item, never past its Stack Cap. Returns how many
+## actually went in — a visitor's gift beyond the cap is lost, not banked.
+func add_item(item_id: String, count: int = 1) -> int:
+	var item := DataDB.get_shop_item(item_id)
+	var cap := Items.stack_cap(item)
+	var room := count if cap <= 0 else clampi(cap - item_count(item_id), 0, count)
+	if room > 0:
+		inventory[item_id] = item_count(item_id) + room
+	return room
+
+
+## Buys one item from the Supplies shop: the Ledger-style refusal first, then
+## every non-zero price (XP and/or Funds) is spent and announced, and the item
+## goes into the inventory. Returns the refusal, or "" when it went through.
+func buy_shop_item(item_id: String) -> String:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := Items.buy_refusal(item, item_count(item_id),
+		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	var price := Items.costs(item)
+	_move_xp(-int(price["XP"]))
+	_move_meta("Funds", -int(price["Funds"]))
+	add_item(item_id, 1)
+	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
+	return ""
+
+
+## Uses one item from the Office. Its standing effects (boosters, segments,
+## modifiers) apply now; its stage effects wait for the next stage, or the
+## whole next level when its Duration is "Level".
+## Returns { "ok": bool, "message": String }.
+func use_item_in_office(item_id: String) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := Items.use_refusal(item, Items.OFFICE, item_count(item_id), Text.phrase())
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+
+	_take_item(item_id)
+	var split := Items.split_grants(item)
+	_apply_reward_entries(split["meta"])
+	var name := str(item.get("name", item_id))
+	if (split["stage"] as Array).is_empty():
+		return {"ok": true, "message": Text.say("item.used", {"name": name})}
+
+	var level := Items.duration(item) == Items.DURATION_LEVEL
+	var target := pending_level_bonuses if level else pending_stage_bonuses
+	for effect: Dictionary in _resolve_stage_effects(split["stage"]):
+		_add_bonus(target, str(effect["token"]), int(effect["amount"]))
+	return {"ok": true, "message": Text.say(
+		"item.queued_level" if level else "item.queued", {"name": name})}
+
+
+## Uses one item during a stage. Its stage effects land on the battle now
+## (BattleEngine.use_item(), which also enforces Uses Per Turn); a level
+## buff keeps running for the rest of the level too. Standing effects apply
+## now, the same as in the Office. Nothing is taken from the inventory if
+## the battle refuses.
+func use_item_in_stage(item_id: String, engine: BattleEngine) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := Items.use_refusal(item, Items.STAGE, item_count(item_id), Text.phrase())
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+
+	var split := Items.split_grants(item)
+	var effects := _resolve_stage_effects(split["stage"])
+	var result := engine.use_item(item_id, effects, Items.uses_per_turn(item))
+	if not result.get("ok", false):
+		return {"ok": false, "message": str(result.get("reason", ""))}
+
+	_take_item(item_id)
+	_apply_reward_entries(split["meta"])
+	if Items.duration(item) == Items.DURATION_LEVEL:
+		for effect: Dictionary in effects:
+			_add_bonus(level_bonuses, str(effect["token"]), int(effect["amount"]))
+	return {"ok": true, "message": Text.say("item.used", {"name": str(item.get("name", item_id))})}
+
+
+## Everything item-driven the next stage starts with: the level's running
+## buffs plus anything used in the Office for "the next stage", which is
+## spent by asking. { "ENERGY": 2, ... }.
+func take_item_bonuses_for_stage() -> Dictionary:
+	var bonuses := level_bonuses.duplicate()
+	for token: String in pending_stage_bonuses.keys():
+		_add_bonus(bonuses, token, int(pending_stage_bonuses[token]))
+	pending_stage_bonuses = {}
+	return bonuses
+
+
+func _take_item(item_id: String) -> void:
+	var left := item_count(item_id) - 1
+	if left > 0:
+		inventory[item_id] = left
+	else:
+		inventory.erase(item_id)
+
+
+## An item's stage-effect entries as [ { "token", "amount" } ], each pool
+## picked and each range rolled once, here, at the moment of use.
+func _resolve_stage_effects(entries: Array) -> Array:
+	var effects: Array = []
+	for raw: Variant in entries:
+		if not (raw is Dictionary):
+			continue
+		var entry := _pick_from_pool(raw)
+		effects.append({
+			"token": str(entry.get("target", "")).to_upper(),
+			"amount": _stage_effect_amount(entry.get("delta")),
+		})
+	return effects
+
+
+## A stage effect written bare ("ENERGY") means +1 — the natural reading,
+## unlike a booster target where a bare ID has no amount to apply.
+func _stage_effect_amount(delta: Variant) -> int:
+	return 1 if delta == null else _resolve_delta(delta)
+
+
+func _add_bonus(bonuses: Dictionary, token: String, amount: int) -> void:
+	if amount == 0:
+		return
+	var key := token.to_upper()
+	bonuses[key] = int(bonuses.get(key, 0)) + amount
 
 
 ## A booster standing change by an arbitrary signed amount, clamped the same
@@ -734,3 +885,11 @@ func _resolve_delta(delta: Variant) -> int:
 ## Clears the level, on the way back to the Office.
 func end_level() -> void:
 	level_runner = null
+	# Level buffs belong to the level; nothing else here to clear, since
+	# finish_stage() already reset the purchase counts when it concluded.
+	level_bonuses = {}
+
+
+func _conclude_level_items() -> void:
+	shop_bought_this_level = {}
+	level_bonuses = {}

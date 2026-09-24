@@ -35,6 +35,12 @@ var _chosen_level: Dictionary = {}
 var _draft_deck: Array[String] = []
 @onready var _portrait: Control = %Portrait
 
+## The inventory and the Supplies shop (design/proposals/inventory.md).
+## Built in code rather than placed in the scene, the same way the battle
+## screen builds its card zoom: they are this script's to own.
+var _inventory_panel: InventoryPanel
+var _supplies_panel: Overlay
+
 
 func _ready() -> void:
 	_start_button.pressed.connect(_show_levels)
@@ -42,6 +48,7 @@ func _ready() -> void:
 	_deck_panel.confirmed.connect(_on_deck_confirmed)
 	_organisations_button.pressed.connect(_show_organisations)
 	_management_button.pressed.connect(_show_management)
+	_build_inventory()
 
 	# The Office's own bed. Silent until there is a file named against
 	# music_office in sounds.json; this is here so that adding one is the
@@ -144,6 +151,7 @@ func _show_management() -> void:
 		[Text.say("office.your_deck"), _show_deck],
 		[Text.say("office.backing"), _show_backing],
 		[Text.say("office.staff"), _show_staff],
+		[Text.say("shop.supplies"), _show_supplies],
 	]:
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(0, 100)
@@ -308,6 +316,110 @@ func _on_buy_card(card_id: String) -> void:
 		return
 	_refresh_resources()
 	_show_cards()   # rebuilt, so the price and what is left are current
+
+
+## The Inventory button beside Office Management, and the two panels it and
+## the Supplies shop open. Added last so they draw over everything else.
+func _build_inventory() -> void:
+	_inventory_panel = InventoryPanel.new()
+	_inventory_panel.name = "InventoryPanel"
+	_inventory_panel.context = Items.OFFICE
+	_inventory_panel.on_used = func(_result: Dictionary) -> void: _refresh_resources()
+	add_child(_inventory_panel)
+
+	_supplies_panel = Overlay.new()
+	_supplies_panel.name = "SuppliesPanel"
+	add_child(_supplies_panel)
+
+	var button := Button.new()
+	button.name = "InventoryButton"
+	button.text = Text.say("inventory.button")
+	button.custom_minimum_size = _management_button.custom_minimum_size
+	button.size_flags_horizontal = _management_button.size_flags_horizontal
+	button.pressed.connect(_inventory_panel.show_inventory)
+	var parent := _management_button.get_parent()
+	parent.add_child(button)
+	parent.move_child(button, _management_button.get_index() + 1)
+
+
+## Supplies: the Shop tab's items, bought into the inventory. Each row is the
+## item's icon, name and price, what it does, and Buy — or, once its Purchase
+## Limit for this level is reached, a greyed-out "Out of Stock".
+func _show_supplies() -> void:
+	var rows: Array[Control] = []
+	rows.append(_wrapped_label(Text.say("shop.supplies_blurb")))
+	rows.append(_wrapped_label(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
+	rows.append(_wrapped_label(Text.say("office.funds",
+		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
+	for item: Dictionary in DataDB.shop:
+		rows.append(_supply_row(item))
+	_supplies_panel.open(Text.say("shop.supplies"), rows)
+
+
+func _supply_row(item: Dictionary) -> Control:
+	var item_id := str(item.get("item_id", ""))
+	var row := HBoxContainer.new()
+	row.name = "Supply_" + item_id
+	row.add_theme_constant_override("separation", 16)
+
+	var icon := TextureRect.new()
+	icon.texture = ArtLoader.item_icon(InventoryPanel.icon_name(item))
+	icon.custom_minimum_size = Vector2(120, 120)
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	row.add_child(icon)
+
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 2)
+	row.add_child(box)
+
+	var title := _wrapped_label(Text.say("shop.item_title", {
+		"name": item.get("name", item_id), "price": _price_text(item)}))
+	title.custom_minimum_size = Vector2(620, 0)
+	box.add_child(title)
+	var line := _wrapped_label(str(item.get("description", "")), "SmallLabel")
+	line.custom_minimum_size = Vector2(620, 0)
+	box.add_child(line)
+
+	var bought := int(GameState.shop_bought_this_level.get(item_id, 0))
+	var refusal := Items.buy_refusal(item, GameState.item_count(item_id), bought,
+		GameState.xp, int(GameState.meta.get("Funds", 0)), Text.phrase())
+	var button := Button.new()
+	button.name = "Buy"
+	button.custom_minimum_size = Vector2(0, 90)
+	button.text = Text.say("shop.buy") if refusal.is_empty() else refusal
+	button.disabled = not refusal.is_empty()
+	if refusal.is_empty():
+		button.pressed.connect(_on_buy_item.bind(item_id))
+	box.add_child(button)
+
+	# Out of Stock greys the whole row, not just its button, so a sold-out
+	# item reads as unavailable at a glance.
+	if Items.is_out_of_stock(item, bought):
+		row.modulate = Color(1, 1, 1, 0.45)
+	return row
+
+
+## "40 XP", "10000 Yen", both joined, or "Free".
+func _price_text(item: Dictionary) -> String:
+	var price := Items.costs(item)
+	var parts: Array[String] = []
+	if int(price["XP"]) > 0:
+		parts.append(Text.say("shop.item_price_xp", {"count": price["XP"]}))
+	if int(price["Funds"]) > 0:
+		parts.append(Text.say("shop.item_price_yen", {"count": price["Funds"]}))
+	return Text.say("shop.item_free") if parts.is_empty() else " + ".join(parts)
+
+
+func _on_buy_item(item_id: String) -> void:
+	var refusal := GameState.buy_shop_item(item_id)
+	if not refusal.is_empty():
+		_report.text = refusal
+		return
+	_report.text = Text.say("shop.item_bought",
+		{"name": DataDB.get_shop_item(item_id).get("name", item_id)})
+	_refresh_resources()
+	_show_supplies()   # rebuilt, so prices, stock and what is left are current
 
 
 ## The deck: which of the cards you own are going in.

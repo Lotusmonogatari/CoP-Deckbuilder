@@ -55,6 +55,32 @@ static func icon(icon_name: String) -> Texture2D:
 	return _load(ICONS + icon_name + ".png", icon_name)
 
 
+## A shop item's icon (the Shop tab's Icon column). A missing file shows a
+## plain blue square — Cameron, 2026-09-25 — rather than the ID-coloured
+## placeholder other art gets, so every item without art yet looks the same
+## and obviously unfinished. The item's name is written on the button
+## beneath it, so the square never has to carry a label itself.
+static func item_icon(icon_name: String) -> Texture2D:
+	var path := ICONS + icon_name + ".png"
+	if not icon_name.is_empty() and ResourceLoader.exists(path):
+		var texture := load(path) as Texture2D
+		if texture != null:
+			return texture
+	return _blue_square()
+
+
+const ITEM_ICON_FALLBACK := Color(0.2, 0.42, 0.85)
+static var _blue_icon: Texture2D = null
+
+
+static func _blue_square() -> Texture2D:
+	if _blue_icon == null:
+		var image := Image.create(PLACEHOLDER_SIZE, PLACEHOLDER_SIZE, false, Image.FORMAT_RGBA8)
+		image.fill(ITEM_ICON_FALLBACK)
+		_blue_icon = ImageTexture.create_from_image(image)
+	return _blue_icon
+
+
 ## True when the real artwork exists. The boot check screen uses this to
 ## count how much art is still outstanding.
 static func exists(path: String) -> bool:

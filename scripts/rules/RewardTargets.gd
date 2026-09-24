@@ -19,7 +19,15 @@ const BOOSTER := "booster"
 const MODIFIER := "modifier"
 const SHOP_ITEM := "shop_item"
 const SEGMENT := "segment"
+const STAGE_EFFECT := "stage_effect"
 const UNKNOWN := ""
+
+## The closed list of stage-effect words a Grants/Reward cell may name
+## (design/proposals/inventory.md §2.2). Each is a number added to one part
+## of a stage: energy per turn, starting guard, hand size, the turn limit,
+## the gaffe limit. A closed list for the same reason Modifiers' Effect Type
+## is one: an unknown word is a typo to report, not something to guess at.
+const STAGE_EFFECT_TOKENS := ["ENERGY", "GUARD", "DRAW", "TURNS", "GAFFE_CAP"]
 
 ## Boosters (BOxx), shop items (SHxx) and segments (SGxx) checked before
 ## modifiers (Mxx) — not because of any real ambiguity (no real ID matches
@@ -33,6 +41,8 @@ const UNKNOWN := ""
 ## reusable, not a new idea.
 static func kind_of(target_id: String) -> String:
 	var id := target_id.strip_edges()
+	if STAGE_EFFECT_TOKENS.has(id.to_upper()):
+		return STAGE_EFFECT
 	if id.begins_with("BO") and _digits_after(id, 2):
 		return BOOSTER
 	if id.begins_with("SH") and _digits_after(id, 2):
@@ -58,6 +68,16 @@ static func is_shop_item(target_id: String) -> bool:
 
 static func is_segment(target_id: String) -> bool:
 	return kind_of(target_id) == SEGMENT
+
+
+## An entry's target, or the first of its pool — a pool ("BO01|BO02 +1",
+## exported as "target_pool") is one kind of thing to pick from, so its
+## first member speaks for its kind. Empty when neither is present.
+static func first_target(entry: Dictionary) -> String:
+	var pool: Variant = entry.get("target_pool")
+	if pool is Array and not (pool as Array).is_empty():
+		return str((pool as Array)[0])
+	return str(entry.get("target", ""))
 
 
 static func _digits_after(id: String, prefix_length: int) -> bool:

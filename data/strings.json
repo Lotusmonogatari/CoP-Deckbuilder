@@ -1449,18 +1449,11 @@
     "notes": null
   },
   {
-    "key": "office.look_it_over",
-    "where": "Office — levels",
-    "english": "Look it over",
+    "key": "office.briefing.surprise_stage",
+    "where": "Office — briefing",
+    "english": "Something is coming — you will not know what until you are in the room.",
     "placeholders": null,
-    "notes": "Was a literal string in OfficeScreen.gd; moved to the Text tab 2026-09-24 alongside the level-gating work."
-  },
-  {
-    "key": "office.level_unlock_cost",
-    "where": "Office — levels",
-    "english": "Unlock — {cost} XP",
-    "placeholders": "cost",
-    "notes": "Shown on a locked level button when level_gating_enabled is true and the level is affordable."
+    "notes": "Shown in place of a stage's name and opponent when its Reveal In Briefing column is No, so a stage meant as a surprise (an ambush) is not spoiled before the player goes in."
   },
   {
     "key": "office.level_cooldown",
@@ -1470,6 +1463,20 @@
     "notes": "Shown on a level still on cooldown when level_gating_enabled is true."
   },
   {
+    "key": "office.level_unlock_cost",
+    "where": "Office — levels",
+    "english": "Unlock — {cost} XP",
+    "placeholders": "cost",
+    "notes": "Shown on a locked level button when level_gating_enabled is true and the level is affordable."
+  },
+  {
+    "key": "office.look_it_over",
+    "where": "Office — levels",
+    "english": "Look it over",
+    "placeholders": null,
+    "notes": "Was a literal string in OfficeScreen.gd; moved to the Text tab 2026-09-24 alongside the level-gating work."
+  },
+  {
     "key": "shop.level_no_id",
     "where": "Shop — refusals",
     "english": "This level has no ID.",
@@ -1477,10 +1484,227 @@
     "notes": "A data-integrity guard, not expected to be seen by a player — every real levels.json row has a level_id."
   },
   {
-    "key": "office.briefing.surprise_stage",
-    "where": "Office — briefing",
-    "english": "Something is coming — you will not know what until you are in the room.",
+    "key": "inventory.button",
+    "where": "Office main screen and battle header, Inventory button",
+    "english": "Inventory",
     "placeholders": null,
-    "notes": "Shown in place of a stage's name and opponent when its Reveal In Briefing column is No, so a stage meant as a surprise (an ambush) is not spoiled before the player goes in."
+    "notes": null
+  },
+  {
+    "key": "inventory.title",
+    "where": "Inventory panel, heading",
+    "english": "Inventory",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "inventory.empty",
+    "where": "Inventory panel, when nothing is held",
+    "english": "Nothing here yet. Supplies you buy or are given will appear here.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "inventory.entry",
+    "where": "Inventory panel, one item's button",
+    "english": "{name} ×{count}",
+    "placeholders": "name, count",
+    "notes": null
+  },
+  {
+    "key": "item.quantity",
+    "where": "Item pop-up",
+    "english": "You have {count}.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "item.stack_cap",
+    "where": "Item pop-up, when the item has a Stack Cap",
+    "english": "You can carry up to {count}.",
+    "placeholders": "count",
+    "notes": "Shown only when the Shop tab's Stack Cap is set for this item."
+  },
+  {
+    "key": "item.use",
+    "where": "Item pop-up, use button",
+    "english": "Use",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.close",
+    "where": "Item pop-up, close button",
+    "english": "Close",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.timing.now",
+    "where": "Item pop-up, an item with no stage effect",
+    "english": "Takes effect immediately.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.timing.stage_next",
+    "where": "Item pop-up, in the Office, Duration Stage",
+    "english": "Takes effect at the start of your next stage.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.timing.level_next",
+    "where": "Item pop-up, in the Office, Duration Level",
+    "english": "Lasts for the whole of your next level.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.timing.stage_now",
+    "where": "Item pop-up, during a stage, Duration Stage",
+    "english": "Takes effect now, for the rest of this stage.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.timing.level_now",
+    "where": "Item pop-up, during a stage, Duration Level",
+    "english": "Takes effect now and lasts for the rest of this level.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.used",
+    "where": "Message after using an item",
+    "english": "{name} used.",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "item.queued",
+    "where": "Message after using a Stage item in the Office",
+    "english": "{name} is ready for your next stage.",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "item.queued_level",
+    "where": "Message after using a Level item in the Office",
+    "english": "{name} will last through your next level.",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "item.refused.none_left",
+    "where": "Item pop-up, refusal",
+    "english": "You have none left.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.refused.not_here",
+    "where": "Item pop-up, refusal",
+    "english": "This can't be used here.",
+    "placeholders": null,
+    "notes": "The Shop tab's Use In Office / Use In Stage cell for this item says No."
+  },
+  {
+    "key": "item.refused.no_effect",
+    "where": "Item pop-up, refusal",
+    "english": "This item has no effect set yet.",
+    "placeholders": null,
+    "notes": "The Shop tab's Grants cell for this item is blank."
+  },
+  {
+    "key": "item.refused.turn_limit",
+    "where": "Item pop-up, refusal during a stage",
+    "english": "You can't use this again until next turn.",
+    "placeholders": null,
+    "notes": "The Shop tab's Uses Per Turn cap for this item is reached."
+  },
+  {
+    "key": "item.refused.battle_over",
+    "where": "Item pop-up, refusal during a stage",
+    "english": "This stage is already over.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.supplies",
+    "where": "Office Management, Supplies button and panel heading",
+    "english": "Supplies",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.supplies_blurb",
+    "where": "Supplies panel",
+    "english": "Supplies go into your inventory. Open the inventory from the Office or during a stage to use them.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.item_title",
+    "where": "Supplies panel, one item",
+    "english": "{name}  —  {price}",
+    "placeholders": "name, price",
+    "notes": null
+  },
+  {
+    "key": "shop.item_price_xp",
+    "where": "Supplies panel, price part",
+    "english": "{count} XP",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "shop.item_price_yen",
+    "where": "Supplies panel, price part",
+    "english": "{count} Yen",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "shop.item_free",
+    "where": "Supplies panel, an item with no price",
+    "english": "Free",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.buy",
+    "where": "Supplies panel, buy button",
+    "english": "Buy",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.item_bought",
+    "where": "Office report after buying",
+    "english": "{name} added to your inventory.",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "shop.out_of_stock",
+    "where": "Supplies panel, item at its Purchase Limit for this level",
+    "english": "Out of Stock",
+    "placeholders": null,
+    "notes": "Resets when a level concludes, win or loss."
+  },
+  {
+    "key": "shop.stack_full",
+    "where": "Supplies panel, item at its Stack Cap",
+    "english": "You can't carry any more of these.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.item_no_id",
+    "where": "Shop — refusals",
+    "english": "This item has no ID.",
+    "placeholders": null,
+    "notes": "A data-integrity guard, not expected to be seen by a player."
   }
 ]
