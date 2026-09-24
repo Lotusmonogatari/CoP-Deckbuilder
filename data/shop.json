@@ -6,7 +6,8 @@
     "cost_xp": 0,
     "cost_yen": 200000,
     "bonus_condition_1": "Policy Research Assistant is Tier 1: +1 to the selected Party booster group.",
-    "bonus_condition_2": "Policy Research Assistant is Tier 2: +2 to the selected Party booster group."
+    "bonus_condition_2": "Policy Research Assistant is Tier 2: +2 to the selected Party booster group.",
+    "grants": null
   },
   {
     "item_id": "SH02",
@@ -15,7 +16,8 @@
     "cost_xp": 0,
     "cost_yen": 200000,
     "bonus_condition_1": "Media Spokesperson is Tier 1: +2 to the selected National booster group.",
-    "bonus_condition_2": "Media Spokesperson is Tier 2: +4 to the selected National booster group."
+    "bonus_condition_2": "Media Spokesperson is Tier 2: +4 to the selected National booster group.",
+    "grants": null
   },
   {
     "item_id": "SH03",
@@ -24,7 +26,8 @@
     "cost_xp": 0,
     "cost_yen": 200000,
     "bonus_condition_1": "District Representative is Tier 1: +2 to the selected Constituency booster group.",
-    "bonus_condition_2": "District Representative is Tier 2: +4 to the selected Constituency booster group."
+    "bonus_condition_2": "District Representative is Tier 2: +4 to the selected Constituency booster group.",
+    "grants": null
   },
   {
     "item_id": "SH04",
@@ -33,7 +36,8 @@
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH05",
@@ -42,7 +46,8 @@
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH06",
@@ -51,7 +56,8 @@
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH07",
@@ -60,7 +66,8 @@
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH08",
@@ -69,7 +76,8 @@
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH09",
@@ -78,7 +86,8 @@
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH10",
@@ -87,7 +96,8 @@
     "cost_xp": 0,
     "cost_yen": 15000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH11",
@@ -96,7 +106,8 @@
     "cost_xp": 0,
     "cost_yen": 10000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH12",
@@ -105,7 +116,8 @@
     "cost_xp": 0,
     "cost_yen": 15000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH13",
@@ -114,7 +126,8 @@
     "cost_xp": 40,
     "cost_yen": 0,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH14",
@@ -123,7 +136,8 @@
     "cost_xp": 40,
     "cost_yen": 0,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH15",
@@ -132,7 +146,8 @@
     "cost_xp": 250,
     "cost_yen": 0,
     "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH16",
@@ -141,7 +156,8 @@
     "cost_xp": 500,
     "cost_yen": 0,
     "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH17",
@@ -150,7 +166,8 @@
     "cost_xp": 1000,
     "cost_yen": 0,
     "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH18",
@@ -159,7 +176,8 @@
     "cost_xp": 500,
     "cost_yen": 0,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH19",
@@ -168,7 +186,8 @@
     "cost_xp": 100,
     "cost_yen": 0,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH20",
@@ -177,7 +196,8 @@
     "cost_xp": 50,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +2 total per level; each additional stack costs another 50 XP.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH21",
@@ -186,7 +206,8 @@
     "cost_xp": 60,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 60 XP.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH22",
@@ -195,7 +216,8 @@
     "cost_xp": 70,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 70 XP.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH23",
@@ -204,7 +226,8 @@
     "cost_xp": 80,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +5 total per level; each additional stack costs another 80 XP.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH24",
@@ -213,7 +236,8 @@
     "cost_xp": 100,
     "cost_yen": 0,
     "bonus_condition_1": "Stackable up to +3 total per level; each additional stack costs another 100 XP.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH25",
@@ -222,7 +246,8 @@
     "cost_xp": 20,
     "cost_yen": 20000,
     "bonus_condition_1": "+2 relationship for the selected group.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH26",
@@ -231,7 +256,8 @@
     "cost_xp": 10,
     "cost_yen": 10000,
     "bonus_condition_1": "+1 relationship for the selected group.",
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH27",
@@ -240,7 +266,8 @@
     "cost_xp": 0,
     "cost_yen": 15000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH28",
@@ -249,7 +276,8 @@
     "cost_xp": 0,
     "cost_yen": 25000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   },
   {
     "item_id": "SH29",
@@ -258,6 +286,7 @@
     "cost_xp": 0,
     "cost_yen": 30000,
     "bonus_condition_1": null,
-    "bonus_condition_2": null
+    "bonus_condition_2": null,
+    "grants": null
   }
 ]

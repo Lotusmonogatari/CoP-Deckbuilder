@@ -53,6 +53,16 @@ var owned_cards: Array[String] = []
 var deck: Array[String] = []
 var owned_modifiers: Array[String] = []
 
+## A shop item (SHxx) granted by a visitor's Reward/Penalty (Office Hours,
+## design/proposals/office_hours.md open point 1, answered 2026-09-25).
+## There is no purchase screen and no inventory to open — being granted IS
+## using it, so this is simply the record of which ones the run has. What
+## consuming one at the NEXT stage actually does is a separate, still-open
+## question; nothing reads this list yet.
+##
+## Lives only for this sitting until M4 adds saving, same as owned_modifiers.
+var owned_shop_items: Array[String] = []
+
 ## Where the player stands with each of the ten organisations, by booster ID.
 ## Pleasing one at a press conference raises it, and it is held between
 ## levels — unlike the pleased list, which lasts one level.
@@ -165,6 +175,7 @@ func reset_collection() -> void:
 
 	deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
 	owned_modifiers = []
+	owned_shop_items = []
 
 
 # ---------------------------------------------------------------------------
@@ -617,6 +628,17 @@ func _please_organisations(boosters: Array) -> void:
 ## applied — not shown to the player as a range and not rolled earlier at
 ## setup (open point 5 in the proposal).
 func apply_visitor_reward_entries(entries: Array) -> void:
+	_apply_reward_entries(entries, true)
+
+
+## `allow_shop_items` is false for a shop item's OWN "grants" list — an item
+## can move a booster/modifier/segment when granted, same as anywhere else
+## in the game, but cannot grant a second item. Not a depth limit, a hard
+## rule: buying a thing that hands you another thing to open later is a real
+## design a shop could want, but nothing has asked for it, and allowing it
+## by accident here would be an infinite loop the moment two items name each
+## other. See tools/export_data.py's own comment on Shop's "Grants" column.
+func _apply_reward_entries(entries: Array, allow_shop_items: bool) -> void:
 	for entry: Dictionary in entries:
 		var resolved := DataDB.resolve_reward_target(entry)
 		var kind: String = resolved.get("kind", "")
@@ -627,16 +649,45 @@ func apply_visitor_reward_entries(entries: Array) -> void:
 			RewardTargets.MODIFIER:
 				if not owned_modifiers.has(target_id):
 					owned_modifiers.append(target_id)
+			RewardTargets.SEGMENT:
+				_apply_segment_delta(target_id, _resolve_delta(resolved.get("delta")))
 			RewardTargets.SHOP_ITEM:
-				# The pull is real (DataDB.resolve_reward_target()); what
-				# granting a shop item actually DOES is not decided yet
-				# (office_hours.md §4, open point 1) — this deliberately
-				# applies nothing rather than guess at inventory/consumable
-				# semantics nobody has confirmed.
-				push_warning(("GameState: shop item reward '%s' resolved but nothing applies it yet "
-					+ "(see design/proposals/office_hours.md open point 1).") % target_id)
+				if not allow_shop_items:
+					push_warning(("GameState: %s's own Grants names another shop item ('%s'); "
+						+ "an item cannot grant a second item.") % [target_id, target_id])
+					continue
+				_grant_shop_item(target_id, resolved.get("record", {}))
 			_:
 				push_warning("GameState: reward/penalty target '%s' did not resolve to anything." % target_id)
+
+
+## Office Hours (design/proposals/office_hours.md, open point 1, answered
+## 2026-09-25): buying a shop item has never had a purchase path of its own
+## — there is no inventory screen, nothing to open or activate. Granting one
+## IS using it: it goes straight onto the run's carried list (persists to
+## the next level the same way owned_modifiers/owned_cards already do — no
+## separate "carry it forward" step is needed, this already is that step),
+## and whatever it GRANTS (its own "Grants" column — the same
+## target_delta_list shape a Visitor's Reward column uses) applies right
+## now, the same way a Visitor's own booster/modifier/segment reward does.
+##
+## Every real shop.json row today has an empty Grants list (the column
+## exists but nothing has filled it in — see export_data.py), so this
+## records the item as carried and applies nothing further, which is
+## correct: there is nothing structured to apply yet, only prose in the
+## item's Description that nothing here parses (same rule as a modifier's
+## Effect column — display text is never parsed for behaviour).
+func _grant_shop_item(item_id: String, record: Dictionary) -> void:
+	if not owned_shop_items.has(item_id):
+		owned_shop_items.append(item_id)
+	# Every real shop.json row leaves "grants" as an explicit JSON null
+	# (a blank optional column, not an absent key) — .get(key, []) only
+	# falls back to [] for a MISSING key, not a present null one, so the
+	# null check has to come before use, same gotcha this project has hit
+	# on every other optional column (BarModel.for_stage() and friends).
+	var grants: Variant = record.get("grants")
+	if grants is Array and not (grants as Array).is_empty():
+		_apply_reward_entries(grants, false)
 
 
 ## A booster standing change by an arbitrary signed amount, clamped the same
@@ -653,6 +704,19 @@ func _apply_booster_delta(booster_id: String, delta: int) -> void:
 	booster_standing[booster_id] = after
 	if after != before:
 		last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
+
+
+## A segment favorability change by an arbitrary signed amount, clamped
+## 0-100 — the same bounds and the same math _apply_staff_reward() already
+## uses for its own SGxx targets, generalised for a visitor's own delta.
+func _apply_segment_delta(segment_id: String, delta: int) -> void:
+	if delta == 0:
+		return
+	var before := int(segment_favorability.get(segment_id, 50))
+	var after := clampi(before + delta, 0, 100)
+	segment_favorability[segment_id] = after
+	if after != before:
+		last_segment_change[segment_id] = int(last_segment_change.get(segment_id, 0)) + (after - before)
 
 
 ## A target_delta_list entry's delta, resolved to a real number: null is no

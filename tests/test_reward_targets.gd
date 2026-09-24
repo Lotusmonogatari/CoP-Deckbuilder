@@ -27,11 +27,20 @@ func test_a_bare_m_id_is_a_modifier() -> void:
 	assert_true(RewardTargets.is_modifier("M12"))
 
 
+func test_an_sg_id_is_a_segment() -> void:
+	assert_eq(RewardTargets.kind_of("SG02"), RewardTargets.SEGMENT)
+	assert_true(RewardTargets.is_segment("SG02"))
+
+
 func test_sh_is_checked_before_the_bare_m_prefix() -> void:
 	# "SH04" also starts with neither "BO" nor a modifier-shaped "M04" —
 	# this just pins down that a two-letter prefix is read as a whole, not
 	# as "starts with S" or any other partial match.
 	assert_eq(RewardTargets.kind_of("SH04"), RewardTargets.SHOP_ITEM)
+
+
+func test_sg_is_checked_before_the_bare_m_prefix_too() -> void:
+	assert_eq(RewardTargets.kind_of("SG02"), RewardTargets.SEGMENT)
 
 
 func test_something_with_no_digits_is_unknown() -> void:
@@ -88,6 +97,13 @@ func test_resolving_a_shop_item_target_pulls_the_real_row() -> void:
 	assert_eq(resolved["kind"], RewardTargets.SHOP_ITEM)
 	assert_eq(resolved["record"], DataDB.get_shop_item("SH01"))
 	assert_false((resolved["record"] as Dictionary).is_empty(), "SH01 is real data")
+
+
+func test_resolving_a_segment_target_pulls_the_real_row() -> void:
+	var resolved := DataDB.resolve_reward_target({"target": "SG02", "delta": 3})
+	assert_eq(resolved["kind"], RewardTargets.SEGMENT)
+	assert_eq(resolved["record"], DataDB.get_segment("SG02"))
+	assert_false((resolved["record"] as Dictionary).is_empty(), "SG02 is real data")
 
 
 func test_resolving_an_unknown_target_comes_back_empty_not_broken() -> void:

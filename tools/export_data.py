@@ -571,6 +571,13 @@ SHEETS = {
         "out": "shop.json",
         "key": "item_id",
         "id_pattern": r"^SH\d+$",
+        # 2026-09-25: "Grants" is optional — nothing in the workbook sets it
+        # yet, so the whole shop is still an existing-code gap (no purchase
+        # path exists, and Description is display-only prose, same rule as
+        # Modifiers' Effect column — never parsed). Blank on a row means
+        # "not structured yet", the same "optional means Cameron hasn't
+        # gotten to it" convention as the Stages living-rules columns.
+        "optional": ["Grants"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -579,6 +586,16 @@ SHEETS = {
             ("Purchase Cost from Funds (Yen)", "cost_yen", "int"),
             ("Bonus Condition 1", "bonus_condition_1", "str"),
             ("Bonus Condition 2", "bonus_condition_2", "str"),
+            # Same "BO05 +1; SG02 -3; M12" shape as a Visitor's Reward
+            # column (target_delta_list) — what buying (or being granted)
+            # this item actually DOES. A target naming another SHxx is
+            # allowed by this column's own format, but GameState refuses to
+            # chase it at apply time (a recursion guard, not an export-time
+            # one) — an item cannot grant itself or another item, only
+            # boosters/modifiers/segments. An item with no structured effect
+            # yet (every real row today) still shows its Description prose;
+            # it just has nothing to apply.
+            ("Grants", "grants", "target_delta_list"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's

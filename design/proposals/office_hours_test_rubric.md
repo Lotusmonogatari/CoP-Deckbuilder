@@ -6,13 +6,14 @@ group above it is green — a real click test that "passes" over a rules bug
 is worse than no test, per this project's usual order (data → rules →
 UI → real clicks).
 
-**Status (2026-09-25, updated): groups A, B, and C are green.** Data,
-selection, the rules engine, and reward/penalty application are all built
-and tested (566 GUT tests total, including 48 new ones across this
-feature). **Group E (real click-driven UI) is the only thing not built** —
+**Status (2026-09-25, updated twice): groups A, B, C, and D are green.**
+Data, selection, the rules engine, and reward/penalty application —
+including shop items and segments — are all built and tested (576/576 GUT
+tests passing). Both of D's questions are answered (no loss state; a unique
+character's questions are already exclusively theirs, no change needed).
+**Group E (real click-driven UI) is the only thing not built** —
 `VisitorScreen.tscn` doesn't exist yet, so there's nothing to click through.
-Group D is partly answered (D1, yes; D2 still needs Cameron's call). See
-`design/proposals/office_hours.md` §6 for the exact file-by-file list.
+See `design/proposals/office_hours.md` §6 for the exact file-by-file list.
 
 ## A. Data & validation
 
@@ -52,15 +53,17 @@ Group D is partly answered (D1, yes; D2 still needs Cameron's call). See
 |---|---|
 | C1 | ✅ A `booster`-kind entry bumps the right BOxx's standing by its `delta`, clamped to floor/ceiling — fixed and range deltas both tested, and a negative `delta` (a Penalty) is a real test case, not just a positive Reward |
 | C2 | ✅ A `modifier`-kind entry adds the Mxx to `owned_modifiers` exactly once, even granted twice in one run (no duplicate) |
-| C3 | ❌ **Still blocked** — a `shop_item`-kind entry resolves to the real row and applies nothing (deliberately, per open point 1); revisit the moment that's answered |
+| C2a | ✅ A `segment`-kind entry moves favorability by its `delta`, clamped 0-100, both signs tested — `test_visitor_reward_application.gd`'s segment section |
+| C3 | ✅ **Resolved.** A `shop_item`-kind entry is recorded on `owned_shop_items` and its own `Grants` list applies through the identical function — `test_a_shop_items_own_grants_apply_when_it_is_granted`. A `shop_item` found inside THAT list is refused, not chased — `test_a_shop_item_cannot_grant_a_second_shop_item`. Real per-item `Grants` content is still Cameron's to fill in (every real row is blank today); the mechanism itself is proven with an injected fixture |
 | C4 | ❌ **Not built** — nothing yet bridges `OfficeHoursEngine.outcome()` to `LevelRunner.finish_stage()`/the auto-save point; that bridge lives in whatever screen calls the engine, which doesn't exist yet (§3) |
 
-## D. Design-level correctness (needs an answer from open point 4 in the proposal first)
+## D. Design-level correctness
 
 | # | Check |
 |---|---|
 | D1 | ✅ A whole Office Hours stage with 0 visitors drawn is caught by `LevelRunner.problems()` — `test_a_non_combat_stage_with_no_eligible_visitors_is_rejected` |
-| D2 | ⚠️ Built as "no loss condition exists at all" (`OfficeHoursEngine` has no loss path, period) — matches the rubric's own suggested default, but this was never put to Cameron directly as its own question the way the other four were; worth a one-line confirmation before it's load-bearing |
+| D2 | ✅ **Confirmed with Cameron 2026-09-25**: no loss state — finishing is completion, wrong-answer penalties are sufficient. Matches what was already built (`OfficeHoursEngine` has no loss path, period) |
+| D3 | ✅ **Confirmed with Cameron 2026-09-25**: a unique, one-off character's questions can never be drawn for another visitor — already true by construction, no code needed. `test_a_unique_visitors_questions_are_never_drawn_for_another_visitor` |
 
 ## E. Real click-driven interaction test
 

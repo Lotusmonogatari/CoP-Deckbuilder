@@ -633,9 +633,11 @@ func resolve_reward_target(entry: Dictionary) -> Dictionary:
 			record = get_modifier(target_id)
 		RewardTargets.SHOP_ITEM:
 			record = get_shop_item(target_id)
+		RewardTargets.SEGMENT:
+			record = get_segment(target_id)
 		_:
 			warnings.append("reward target '%s' does not match any known ID prefix "
-				% target_id + "(BOxx, Mxx, SHxx)")
+				% target_id + "(BOxx, Mxx, SHxx, SGxx)")
 	return {
 		"kind": kind,
 		"id": target_id,
@@ -962,8 +964,10 @@ func _validate_reward_target(owner_id: String, column: String, entry: Dictionary
 			record = get_modifier(target_id)
 		RewardTargets.SHOP_ITEM:
 			record = get_shop_item(target_id)
+		RewardTargets.SEGMENT:
+			record = get_segment(target_id)
 		_:
-			errors.append("%s's %s names '%s', which doesn't match any known ID prefix (BOxx, Mxx, SHxx)"
+			errors.append("%s's %s names '%s', which doesn't match any known ID prefix (BOxx, Mxx, SHxx, SGxx)"
 				% [owner_id, column, target_id])
 			return
 	if record.is_empty():

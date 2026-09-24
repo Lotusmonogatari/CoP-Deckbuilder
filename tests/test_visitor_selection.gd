@@ -51,6 +51,32 @@ func test_question_for_visitor_with_no_questions_returns_empty() -> void:
 	assert_eq(BattleSetup._question_for_visitor("NOT_A_REAL_VISITOR_ID"), {})
 
 
+func test_a_unique_visitors_questions_are_never_drawn_for_another_visitor() -> void:
+	# Cameron, 2026-09-25: can a special, one-off character have a question
+	# set that belongs only to them? Yes, already, by construction — there
+	# is no shared pool at all here (unlike press_conference/media_ambush/
+	# etc, which really are one pool several stages draw from).
+	# get_questions_for_visitor()/_question_for_visitor() only ever look at
+	# rows whose own "visitor_id" matches the one asked for, so a visitor
+	# with their own dedicated rows in Visitor Questions can never draw
+	# another visitor's — no extra flag or column needed. This uses two
+	# fake visitor_questions.json rows, temporarily, since the real data
+	# has only one visitor to prove isolation against.
+	var before := DataDB.visitor_questions.duplicate(true)
+	DataDB.visitor_questions.append({"question_id": "VQ_UNIQUE_A", "visitor_id": "VI_UNIQUE_A",
+		"question_text": "Only VI_UNIQUE_A ever asks this."})
+	DataDB.visitor_questions.append({"question_id": "VQ_UNIQUE_B", "visitor_id": "VI_UNIQUE_B",
+		"question_text": "Only VI_UNIQUE_B ever asks this."})
+	DataDB._build_lookups()
+
+	for _i in 10:
+		assert_eq(BattleSetup._question_for_visitor("VI_UNIQUE_A").get("question_id"), "VQ_UNIQUE_A")
+		assert_eq(BattleSetup._question_for_visitor("VI_UNIQUE_B").get("question_id"), "VQ_UNIQUE_B")
+
+	DataDB.visitor_questions = before
+	DataDB._build_lookups()
+
+
 func test_a_level_visitor_override_pin_is_honoured() -> void:
 	DataDB.level_visitor_overrides = [
 		{"level_id": "LVTEST", "slot": 1, "visitor_id": "VI01"},
