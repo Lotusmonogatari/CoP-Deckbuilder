@@ -50,7 +50,7 @@ static func for_level_stage(level_id: String, stage_id: String, meta: Dictionary
 ##   seq                1, 2, 3... in stage_1..stage_10 order, skipping nulls
 ##   opponents          [the opponent], for a non-committee combat stage
 ##   committee_members  the roster, for a committee stage (see
-##                      DataDB.COMMITTEE_STAGE_IDS)
+##                      DataDB.is_committee_stage())
 ##
 ## Who fights whom is not in the workbook — see _opponent_for()'s own
 ## comment for how that is decided, and how to pin one by hand.

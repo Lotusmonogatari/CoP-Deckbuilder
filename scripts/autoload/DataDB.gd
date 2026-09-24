@@ -43,21 +43,6 @@ const REQUIRED_FILES := [
 	"segments", "stages", "suits", "yoron",
 ]
 
-## Which stage IDs use the per-member committee model (CLAUDE.md §7.5) rather
-## than a shared support bar: ST01 plus the ten workbook committees,
-## ST09-ST18. ST08 (Party Steering Committee) is NOT one of these — it shares
-## ST03/ST05's shared-pool model despite the name.
-##
-## Nothing in the new stages.json distinguishes a committee stage from a
-## shared-pool one (ST18 and ST21 have the same bar_unit/bar_value_kind
-## shape), so this is a fixed list rather than a data-driven check. Rules
-## code cannot read this table — scripts/rules/ never touches an autoload —
-## so BattleEngine.gd keeps its own copy of the same list; keep both in sync.
-const COMMITTEE_STAGE_IDS := [
-	"ST01", "ST09", "ST10", "ST11", "ST12", "ST13", "ST14", "ST15", "ST16",
-	"ST17", "ST18",
-]
-
 # --- Raw loaded content ----------------------------------------------------
 # Lists of dictionaries, exactly as they appear in the JSON files.
 var cards: Array = []
@@ -598,19 +583,15 @@ func _intent_pattern_from_ranges(opponent: Dictionary) -> Array:
 	return pattern
 
 
-## Whether a stage plays the per-member committee model. A stage_id whose
-## own stages.json row declares "bar_model": "committee" is trusted first —
-## same rule BattleEngine.is_committee_stage() follows, kept in step for the
-## reason its own comment gives. COMMITTEE_STAGE_IDS is only the fallback for
-## a row with no bar_model column, which is every canon row today.
+## Whether a stage plays the per-member committee model (CLAUDE.md §7.5).
+## DataDB is allowed to call scripts/rules/ (only the reverse is forbidden —
+## CLAUDE.md §5, §12), so the one real list of which stage IDs use this
+## model — BattleEngine.COMMITTEE_STAGE_IDS, ST01 plus the ten workbook
+## committees ST09-ST18 — lives in exactly one place. An unknown stage_id
+## resolves the same way BattleEngine.is_committee_stage({}) would: not a
+## committee.
 func is_committee_stage(stage_id: String) -> bool:
-	# "bar_model" is an explicit JSON null on a row that doesn't set it, not
-	# an absent key (see BarModel.for_stage()'s own note on why str(null) is
-	# checked for before str()-casting).
-	var declared: Variant = get_stage(stage_id).get("bar_model")
-	if declared != null and not str(declared).is_empty():
-		return str(declared).to_lower() == "committee"
-	return COMMITTEE_STAGE_IDS.has(stage_id)
+	return BattleEngine.is_committee_stage(get_stage(stage_id))
 
 
 ## Every opponent eligible for a stage — every row whose own "stages" list

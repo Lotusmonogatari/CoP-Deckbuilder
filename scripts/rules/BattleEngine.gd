@@ -35,9 +35,9 @@ var state := BattleState.new()
 ## Hardcoded rather than read from stages.json because nothing in the new
 ## workbook data distinguishes a committee stage from a shared-pool one:
 ## ST18 (a committee) and ST21 (not one) have the same bar_unit/bar_value_kind
-## shape. DataDB.gd keeps the same list for the same reason, under
-## `is_committee_stage()` — rules code cannot read DataDB, so it cannot be
-## deduplicated further than "keep both lists in sync if this ever changes."
+## shape. The ONE copy of this list — DataDB.is_committee_stage() reads it
+## through is_committee_stage() below rather than keeping a second one, since
+## an autoload may call scripts/rules/ even though the reverse is forbidden.
 const COMMITTEE_STAGE_IDS := [
 	"ST01", "ST09", "ST10", "ST11", "ST12", "ST13", "ST14", "ST15", "ST16",
 	"ST17", "ST18",
@@ -47,10 +47,7 @@ const COMMITTEE_STAGE_IDS := [
 ## rule BarModel.for_stage() already follows for bar_model "single"/
 ## "survival"/"shared_pool" — a "committee" value here is checked first, and
 ## only a stage with none at all (every canon row today) falls back to
-## COMMITTEE_STAGE_IDS above. Kept in step with DataDB.is_committee_stage(),
-## which makes the same check for the same reason (rules code cannot read
-## DataDB, so the fallback list has to be duplicated; the data-driven path
-## does not).
+## COMMITTEE_STAGE_IDS above.
 ## A string field that may be an explicit JSON null (stages.json's optional
 ## "living rules" columns, 2026-09-24 — every canon row carries the key even
 ## where it is blank) rather than genuinely absent. str(null) is the literal
