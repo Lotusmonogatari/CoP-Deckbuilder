@@ -61,7 +61,21 @@ func problems() -> PackedStringArray:
 		# A stage needs someone or something to push back. Usually that is
 		# opponents; in a press conference it is the reporters' questions,
 		# which is why either will do.
-		if stage.get("opponents", []).is_empty() and not _asks_questions(stage):
+		#
+		# Non-combat is the one declared exception — Office Hours (ST07) is
+		# not a battle at all (CLAUDE.md §8), so it has neither, by design,
+		# until its own visitor-event system exists. test_real_battle.gd's
+		# test_every_real_level_can_be_set_up() already skips it the same
+		# way; without this check here too, every level that includes it
+		# (LV11, LV12, LV14, LV17, LV23, LV26, LV27, LV28 today) failed to
+		# start at all — not just its Office Hours stage, the whole level.
+		#
+		# Missing "mode" (every hand-written playtest fixture, and the two
+		# tests just above this one) still gets the check — only a stage that
+		# explicitly declares itself Non-combat is exempt, not merely "not
+		# declared Combat".
+		if str(stage.get("mode", "")) != "Non-combat" \
+				and stage.get("opponents", []).is_empty() and not _asks_questions(stage):
 			found.append("stage %d has neither opponents nor questions" % seq)
 	return found
 

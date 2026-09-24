@@ -180,3 +180,43 @@ func test_st21s_threshold_is_checked_even_though_it_has_questions() -> void:
 	engine._check_outcome()
 	assert_eq(engine.state.outcome, "win",
 		"reaching the real threshold should win ST21 even with questions left in the pool")
+
+
+# ---------------------------------------------------------------------------
+# expand_level() resolves question_pool into questions_count —
+# BattleSetup.expand_level() / LevelRunner.problems()
+#
+# Playtest report (2026-09-25): several levels said "no questions or
+# opponents found". Root cause: expand_level() has always resolved a
+# stage's real "opponents" from its opponent pool, but never resolved its
+# "question_pool" name into anything LevelRunner.problems() could see —
+# that check only ever looked at "questions"/"questions_count", a shape
+# only hand-written playtest fixtures use. It happened to be harmless for
+# ST04/19/20/21 today only because they also always have opponents.
+# ---------------------------------------------------------------------------
+
+func test_expand_level_resolves_a_real_stages_question_pool_into_a_count() -> void:
+	# LV04's second stage is ST04 (Press Conference), a real question_pool
+	# stage with no hand-written "questions" list anywhere in stages.json.
+	var level := DataDB.get_level("LV04")
+	assert_false(level.is_empty(), "sanity: LV04 exists")
+	var expanded := BattleSetup.expand_level(level)
+
+	var press: Dictionary = {}
+	for stage: Dictionary in expanded.get("stages", []):
+		if stage.get("stage_id") == "ST04":
+			press = stage
+			break
+	assert_false(press.is_empty(), "sanity: LV04 has an ST04 stage")
+	assert_eq(int(press.get("questions_count", 0)), DataDB.questions.get("press_conference", []).size(),
+		"the real press_conference pool's size, not 0")
+
+
+func test_expand_level_leaves_questions_count_at_zero_for_a_stage_with_no_pool() -> void:
+	var level := DataDB.get_level("LV01")
+	assert_false(level.is_empty(), "sanity: LV01 exists")
+	var expanded := BattleSetup.expand_level(level)
+	for stage: Dictionary in expanded.get("stages", []):
+		assert_eq(int(stage.get("questions_count", -1)), 0,
+			"%s has no question_pool, so its count should be 0, not left unset"
+				% stage.get("stage_id"))

@@ -89,6 +89,19 @@ static func expand_level(level: Dictionary) -> Dictionary:
 			stage["opponents"] = _opponents_for(level_id, stage_id, slot, _opponent_count(stage))
 			stage["committee_members"] = []
 
+		# LevelRunner.problems() needs to know whether a stage has anything to
+		# push back with — opponents, or questions — before it can be played,
+		# but it never touches DataDB itself. A real workbook stage never
+		# writes its questions out longhand (that "questions" key is a
+		# hand-written playtest fixture's shape); it names its pool in
+		# "question_pool" instead and the questions are drawn from
+		# DataDB.questions at battle setup. Resolving the count here, the same
+		# place "opponents" is resolved, is what lets LevelRunner's existing
+		# "questions_count" check see a real stage's pool at all — without it,
+		# ST04/19/20/21 all looked like they had no questions, which happened
+		# to be harmless only because they also always have opponents.
+		stage["questions_count"] = DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
+
 		stages.append(stage)
 
 	var expanded := level.duplicate(true)

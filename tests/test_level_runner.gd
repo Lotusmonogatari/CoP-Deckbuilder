@@ -222,6 +222,39 @@ func test_a_press_conference_needs_questions_rather_than_opponents() -> void:
 	assert_true(runner.is_valid(), "%s" % [runner.problems()])
 
 
+func test_a_real_stages_question_pool_counts_as_pushing_back() -> void:
+	# A real workbook stage (ST04/19/20/21) never writes "questions" out
+	# longhand — BattleSetup.expand_level() resolves its question_pool name
+	# into a "questions_count" instead, the same place it resolves
+	# "opponents". This is that resolved shape, not the hand-written
+	# fixture's "questions" list above.
+	var runner := _runner({"stages": [
+		{"seq": 1, "opponents": [], "questions_count": 20},
+	]})
+	assert_true(runner.is_valid(), "%s" % [runner.problems()])
+
+
+func test_a_non_combat_stage_does_not_need_opponents_or_questions() -> void:
+	# Office Hours (ST07): Non-combat, and not yet a battle at all (CLAUDE.md
+	# §8) — it has neither opponents nor a question pool by design, until its
+	# own visitor-event system exists. Before this was recognised, every
+	# level that included it (LV11, LV12, LV14, LV17, LV23, LV26, LV27, LV28)
+	# failed to start entirely, not just that one stage.
+	var runner := _runner({"stages": [
+		{"seq": 1, "mode": "Non-combat", "opponents": []},
+	]})
+	assert_true(runner.is_valid(), "%s" % [runner.problems()])
+
+
+func test_a_missing_mode_still_needs_opponents_or_questions() -> void:
+	# Only an EXPLICIT "Non-combat" is exempt — a stage that simply never
+	# says what mode it is (every hand-written playtest fixture; the same
+	# shape test_a_stage_with_nothing_pushing_back_is_rejected() above uses)
+	# still has to have something to push back with.
+	var runner := _runner({"stages": [{"seq": 1, "opponents": []}]})
+	assert_false(runner.is_valid())
+
+
 # ---------------------------------------------------------------------------
 # The real playtest level
 # ---------------------------------------------------------------------------
@@ -231,6 +264,23 @@ func test_the_playtest_level_on_disk_is_usable() -> void:
 	var runner := LevelRunner.new(DataDB.playtest_level)
 	assert_true(runner.is_valid(), "%s" % [runner.problems()])
 	assert_eq(runner.stage_count(), 4, "hub, then four stages")
+
+
+func test_every_real_level_is_usable() -> void:
+	# Playtest report (2026-09-25): several levels said "no questions or
+	# opponents found" and would not start at all. LV11, LV12, LV14, LV17,
+	# LV23, LV26, LV27 and LV28 all include ST07 (Office Hours), which has
+	# neither by design — this is the direct, whole-level proof that fixing
+	# expand_level()'s question_pool resolution and LevelRunner's Non-combat
+	# exemption actually reaches every real level, not just the fixtures
+	# above.
+	var checked := 0
+	for level: Dictionary in DataDB.levels:
+		var expanded := BattleSetup.expand_level(level)
+		var runner := LevelRunner.new(expanded)
+		assert_true(runner.is_valid(), "%s: %s" % [level.get("level_id"), runner.problems()])
+		checked += 1
+	assert_eq(checked, DataDB.levels.size())
 
 
 func test_the_playtest_level_can_be_walked_end_to_end() -> void:
