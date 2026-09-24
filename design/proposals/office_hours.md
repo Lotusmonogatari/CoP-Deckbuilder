@@ -8,26 +8,36 @@ drawn dynamically per stage (the same way opponents already are), and
 rewards pulled from the game's existing booster/modifier/shop-item systems
 rather than raw meta-variable deltas.
 
-Not started. This document is the plan; nothing below is built yet.
+**Status (2026-09-25, updated): everything except the UI screen is built.**
+Data, DataDB validation, visitor selection, the rules engine, and the
+GameState reward/penalty application all exist and are tested (566 GUT
+tests passing). What's NOT built: `VisitorScreen.tscn` — nothing routes a
+Non-combat stage anywhere yet, so reaching one today shows BattleScreen's
+existing "cannot start" refusal (`BattleEngine` correctly says "there is
+nobody to argue with" rather than crashing — see §6 and
+`tests/test_real_battle.gd`'s `test_a_non_combat_stage_fails_battleengine_
+setup_safely_for_now`). §6 below is the authoritative "what's actually
+built" list; treat the rest of this document as the plan that produced it.
 
-## Three things confirmed with Cameron before writing this
+## Four things confirmed with Cameron before writing this
 
 | Question | Answer | What it decided |
 |---|---|---|
-| One question per visitor, or several? | **Several per visitor** | Needs a second, linked tab — one visitor, many possible questions — the same shape Opponents/Press Questions already use, not a single wide row. |
-| What does a wrong answer cost? | **Something, not just "no reward"** | Needs a real penalty column. |
-| What can Reward/Penalty actually touch, and in what shape? | **A Booster standing / Modifier grant / Shop item, in one cell, mixed, e.g. "BO05 +1; BO03 -2"** (2026-09-25) | Replaces the 3-column Reward Type/Target/Value + 2-column Miss Penalty split originally sketched here with **one column each** (Reward, Penalty), both the same new `target_delta_list` format — the kind of each target (booster/modifier/shop item) is read from its own ID prefix at runtime (`RewardTargets.gd`), not a separate column. **Built already** — see §1.1 and §6. |
+| One question per visitor, or several? | **Several per visitor** | Needs a second, linked tab — one visitor, many possible questions — the same shape Opponents/Press Questions already use, not a single wide row. **Built.** |
+| What does a wrong answer cost? | **Something, not just "no reward"** | Needs a real penalty column. **Built** — see the next row. |
+| What can Reward/Penalty actually touch, and in what shape? | **A Booster standing / Modifier grant / Shop item, in one cell, mixed, e.g. "BO05 +1; BO03 -2"** (2026-09-25) | Replaces the 3-column Reward Type/Target/Value + 2-column Miss Penalty split originally sketched here with **one column each** (Reward, Penalty), both the same `target_delta_list` format — the kind of each target (booster/modifier/shop item) is read from its own ID prefix at runtime (`RewardTargets.gd`), not a separate column. **Built.** |
+| When does Reward apply vs. Penalty? | **Reward on a correct answer, Penalty on a wrong one — never both, per question** (2026-09-25) | Confirms the shape already designed in §2: `OfficeHoursEngine.answer()` returns the visitor's Reward list on a hit or Penalty list on a miss, the other always empty. **Built.** |
 
 ## Executive summary
 
-| Layer | What's new | Reuses |
+| Layer | Status | What it is |
 |---|---|---|
-| Data | 2 workbook tabs: **Visitors** (identity + eligibility + reward + penalty), **Visitor Questions** (the dialogue content, many rows per visitor) — schema **built**, tabs not yet in the workbook | The Opponents/stage-eligibility pattern; the Press-Questions-style pool pattern; the `range` and `stage_list` coerce kinds already in the exporter |
-| Selection | Draw N visitors for a stage from its eligible pool | **The existing `Opponent Count` column and `_opponents_for()` logic on Stages — no new stage column.** A stage doesn't know or care whether its "count" resolves to opponents or visitors; that's decided by whether the stage is Combat or Non-combat. |
-| Rules engine | New `scripts/rules/OfficeHoursEngine.gd` — pure, headless, no cards/energy/gaffe | `LevelRunner`'s shape (current/advance/is_finished/outcome); `BattleEngine._draw_questions()`'s draw-and-shuffle pattern |
-| Reward/penalty application | Resolve a visitor's Reward/Penalty list (Booster standing / Modifier grant / Shop item, mixed, in one cell) — resolution **built** (`RewardTargets.gd`, `DataDB.resolve_reward_target()`), applying the result to GameState still open | `GameState.owned_modifiers`, `GameState._please_organisations()`-style booster bump, `Ledger`'s existing refusal/cost helpers as a model |
-| UI | New `scenes/office_hours/VisitorScreen.tscn` — background + portrait (kept, as asked), a dialogue text block, 4 choice buttons | `ArtLoader`'s placeholder-portrait fallback; `OpponentPresenter`'s expression-from-state pattern, twinned as `VisitorPresenter` |
-| Validation | `DataDB` cross-checks: every Visitor Question's `visitor_id` exists; every Visitor's reward/penalty target exists; every stage-eligible Visitor has at least one question | Same "readable error report at load" DataDB already does for cards/stages/opponents |
+| Data | **Built** | 2 real workbook tabs, `data/visitors.json` / `data/visitor_questions.json`, one template visitor+question (`VI01`/`VQ01`) demonstrating a static reward, a range reward, and a penalty |
+| Selection | **Built** | `BattleSetup.eligible_visitors()` / `_visitors_for()` / `data/level_visitor_overrides.json`, reusing the existing `Opponent Count` column — no new stage column |
+| Rules engine | **Built** | `scripts/rules/OfficeHoursEngine.gd` — pure, headless, no cards/energy/gaffe |
+| Reward/penalty application | **Built** | `GameState.apply_visitor_reward_entries()` resolves each target (`RewardTargets.gd` + `DataDB.resolve_reward_target()`), rolls a range delta once at apply time, and applies a booster standing change or a modifier grant. Shop item: pulls the real record, applies nothing yet — still open, see §4 |
+| Validation | **Built** | `DataDB` cross-checks every Visitor's stage eligibility and Reward/Penalty targets, every Visitor Question's link back to a real Visitor and a real, answerable A–D, and a `level_visitor_overrides.json` pin the same way opponent pins are checked |
+| UI | **Not built** | `scenes/office_hours/VisitorScreen.tscn` — background + portrait (kept, as asked), a dialogue text block, 4 choice buttons; `OfficeScreen._on_start()` still always opens `BattleScreen.tscn` regardless of stage mode |
 
 ## 1. Data model
 
@@ -59,13 +69,17 @@ of three shapes:
   so a bare ID (`"M12"`) is valid
 - a single fixed signed number (`"+1"`, `"-2"`)
 - a range to roll (`"+1-6"` or `"1-6"` — the leading `+` is decorative,
-  same `min-max` shape the `range` coerce kind already uses elsewhere)
+  same `min-max` shape the `range` coerce kind already uses elsewhere).
+  **Can be negative on either or both ends** — `"-3-3"` (min −3, max 3) and
+  `"-6--1"` (min −6, max −1) both parse correctly; there is no separate
+  "negative range" syntax, just negative numbers in the same `min-max`
+  shape.
 
 Rolling a range into a real number is **not** this exporter's job — it only
-ever produces the `{"min", "max"}` shape. Whatever applies a reward later
-rolls it the same way `BattleSetup._opponent_count()` already rolls its own
-range (unseeded `randi_range`), when that apply path exists (§4, still
-open).
+ever produces the `{"min", "max"}` shape. `GameState.apply_visitor_reward_
+entries()` rolls it (built, §2/§6) the same way `_roll_range()` already
+rolls a level's bonus-win ranges, once, at the moment the reward or penalty
+is actually applied.
 
 Which *kind* of thing a target is comes from its own prefix, read by
 `scripts/rules/RewardTargets.gd` (`BOxx` → booster, `Mxx` → modifier, `SHxx`
@@ -130,7 +144,7 @@ drawn question already attached (`visitor["question"] = {...}`), the same
 way a press-conference stage's questions are resolved once at setup rather
 than re-rolled mid-battle.
 
-## 2. Rules engine — `scripts/rules/OfficeHoursEngine.gd`
+## 2. Rules engine — `scripts/rules/OfficeHoursEngine.gd` (built)
 
 Pure `RefCounted`, no autoload or file access — same discipline as every
 other file in `scripts/rules/`, and the same reason: it has to run
@@ -144,44 +158,48 @@ OfficeHoursEngine
   current_question() -> Dictionary
   answer(choice: String) -> Dictionary
       returns { "correct": bool, "response_text": String, "reaction": String,
-                "reward": {...} or {}, "penalty": {...} or {} }
-      — a result dictionary the screen narrates and GameState applies,
-      exactly the shape BattleEngine already returns from end_turn() for
-      the opponent's move. The engine never touches GameState directly.
+                "reward": [...], "penalty": [...] }
+      — the raw, UNRESOLVED target_delta_list from the visitor's own Reward
+      or Penalty column (whichever applies; the other is always []). This
+      class has no DataDB to resolve a target's real kind in — same
+      separation BattleEngine keeps for the opponent's move, which it also
+      hands back raw for the screen/GameState to interpret.
   advance() -> void       # moves to the next visitor
   is_finished() -> bool
+  visitor_count() / visitor_index() -> int
   outcome() -> Dictionary # { "visited": n, "correct": n, "rewards": [...], "penalties": [...] }
+      rewards/penalties here are also the raw lists, collected across every
+      visitor actually answered.
 ```
 
 No energy, no hand, no cards, no gaffe meter, no turn limit distinct from
 "one exchange per visitor, then the next." This is deliberately a simpler
-machine than `BattleEngine` — Office Hours was never a card battle.
+machine than `BattleEngine` — Office Hours was never a card battle. There is
+no way to lose it — see §4 open point D2's rubric entry.
 
-### Reward / penalty dispatch
+### Reward / penalty dispatch — `GameState.apply_visitor_reward_entries()` (built)
 
-On `answer()`, the engine reads the *current visitor's* Reward column (on a
-correct pick) or Penalty column (on a wrong one) — not the question's;
-reward and penalty are per-visitor, per Cameron's brief — resolves every
-entry in that `target_delta_list` through `DataDB.resolve_reward_target()`
-(built, §6), and packages, but does not apply, the results:
+Resolving and applying is deliberately NOT the engine's job (it can't touch
+DataDB), and NOT resolved ahead of time at setup either (a range delta rolls
+once, at the moment it's actually applied, per the confirmed answer to open
+point 5 below) — so this one GameState function is where a raw entry
+(`{"target": "BO05", "delta": 1}`) becomes a real effect:
 
-```
-"reward": [
-  { "kind": "booster", "id": "BO05", "delta": 1, "record": {...} },
-  { "kind": "modifier", "id": "M12", "delta": null, "record": {...} },
-]
-```
+1. `DataDB.resolve_reward_target(entry)` — the target's real kind
+   (`RewardTargets.gd`, by ID prefix) and its real record.
+2. A range delta (`{"min", "max"}`) is rolled here, once — never shown to
+   the player as a range.
 
-| Kind (by ID prefix) | Applied by (GameState) |
+| Kind (by ID prefix) | What actually happens |
 |---|---|
-| `booster` (`BOxx`) | the same standing-bump path `_please_organisations()` already uses, by `delta` |
-| `modifier` (`Mxx`) | `owned_modifiers.append(id)` if not already owned — a free version of what `buy_modifier()` already does, minus the cost/refusal checks; `delta` is ignored, a grant is binary |
-| `shop_item` (`SHxx`) | **`DataDB.resolve_reward_target()` now pulls the real row — application semantics still open, see §4** |
-| `""` (unrecognised prefix) | logged as a data warning by `resolve_reward_target()`, applies nothing |
-| *(blank cell)* | empty list, nothing to apply |
+| `booster` (`BOxx`) | standing moves by the resolved delta, clamped to `booster_standing`'s floor/ceiling — the general form of `_please_organisations()`'s fixed step |
+| `modifier` (`Mxx`) | `owned_modifiers.append(id)` if not already owned — a free version of what `buy_modifier()` already does, minus the cost/refusal checks; the delta is ignored, a grant is binary |
+| `shop_item` (`SHxx`) | the real row resolves; nothing applies it — **still open, see §4** |
+| unresolvable (bad prefix, or a well-formed ID that doesn't exist) | logged, does not stop the rest of the list from applying |
+| *(empty list)* | nothing happens |
 
-A `Penalty` entry runs through the identical path — most often a negative
-`delta` against a `booster`, per Cameron's own example
+A `Penalty` entry runs through the identical function — most often a
+negative `delta` against a `booster`, per Cameron's own example
 (`"BO05 +1; BO05 -2"` shows both signs of the same target kind).
 
 ## 3. UI — a dedicated scene, not a BattleScreen branch
@@ -205,66 +223,94 @@ Cameron asked to keep —
 - four choice buttons (the four `choice_a`..`choice_d` texts)
 - a response line that appears after the pick, before moving on
 
-`OfficeScreen.gd` routes into it the same way it already routes into
-`BattleScreen.tscn` today (`_on_start()`), just checking the current
-stage's `mode` first.
+`OfficeScreen.gd` still always opens `BattleScreen.tscn` regardless of
+stage `mode` — this section (and `VisitorScreen.tscn`/`VisitorPresenter.gd`
+themselves) is the one part of the plan **not** built yet.
 
 ## 4. Open points — flagging rather than deciding
 
 | # | Point | My default (used above) | Needs |
 |---|---|---|---|
-| 1 | **What a `shop_item` reward/penalty actually DOES at runtime.** The prefix now resolves to a real row (§6) — `data/shop.json`'s SHxx rows are one-time-use *actions* ("Commission Policy Research"), reset per Office visit, with no ownership/inventory concept at all. Cameron's example ("coffee, tea") sounds like small consumable flavor items, which don't exist in the Shop tab today. | Left unresolved — the *pull* is built, the *apply* is not | Cameron: are "coffee, tea" new SHxx-style rows to add (and if so, does granting one via a visitor make it free-to-use once, or add it to a running inventory)? Or a different, smaller mechanic entirely? |
-| 2 | Reaction text split | Split into Right/Wrong (matching Response text's own split) | Confirm, vs. one shared "Reaction" column regardless of outcome |
-| 3 | Can a player skip/decline a visitor rather than always picking one of 4? | No — must pick one of the four, no decline | Confirm this matches intent; a press conference's "decline" mechanic could be mirrored if not |
+| 1 | **What a `shop_item` reward/penalty actually DOES at runtime.** The prefix resolves to a real row (`DataDB.resolve_reward_target()`, built) and `GameState.apply_visitor_reward_entries()` reaches the case and applies nothing (built, deliberately) — `data/shop.json`'s SHxx rows are one-time-use *actions* ("Commission Policy Research"), reset per Office visit, with no ownership/inventory concept at all. Cameron's example ("coffee, tea") sounds like small consumable flavor items, which don't exist in the Shop tab today. | Left unresolved — the *pull* and the *dispatch point* are built, the *effect* is not | Cameron: are "coffee, tea" new SHxx-style rows to add (and if so, does granting one via a visitor make it free-to-use once, or add it to a running inventory)? Or a different, smaller mechanic entirely? |
+| 2 | Reaction text split | Split into Right/Wrong (matching Response text's own split) | Confirm, vs. one shared "Reaction" column regardless of outcome — **built** as split; cheap to collapse later if wrong |
+| 3 | Can a player skip/decline a visitor rather than always picking one of 4? | No — must pick one of the four, no decline | Confirm this matches intent; a press conference's "decline" mechanic could be mirrored if not. Not reachable yet — no UI to skip from |
 | 4 | Repeat visits — can the same visitor/question reappear in a later level, or once answered are they retired for the run? | Unset — no dedup, a visitor can reappear (same as opponents can) | Confirm |
-| 5 | A range delta (`"BO01 +1-6"`) rolls a real number somewhere — when? Once, the moment `answer()` resolves that visitor (matching how a stage's own `question_pool` is drawn once at setup, not re-rolled), or shown to the player as a range and rolled only when applied to GameState? | Roll once, at the same point the reward/penalty is resolved — not shown as a range to the player | Confirm; doesn't block anything built so far, only the eventual `OfficeHoursEngine`/apply-path work |
+| 5 | A range delta rolls a real number when? | **Resolved 2026-09-25**: once, the moment the reward/penalty is actually applied (`GameState.apply_visitor_reward_entries()`), never shown to the player as a range. **Built.** | — |
 
-*(The old #2, "what does a wrong answer's penalty touch" — resolved, see the confirmations table above: Penalty is the same booster/modifier/shop-item format as Reward, not a Sanban meta-variable.)*
+## 5. Build order — updated to reflect what's actually built
 
-## 5. Build order
-
-1. Exporter + workbook: both new tabs, `data/visitors.json` /
-   `data/visitor_questions.json`, `DataDB` loading + cross-reference
-   validation. ~6 placeholder visitors / ~10 placeholder questions to build
-   and test against, same as CLAUDE.md's original "create 6 placeholder
-   events" ask.
-2. `BattleSetup` selection: `eligible_visitors()`, `_visitors_for()`,
-   `level_visitor_overrides.json`, `expand_level()` wiring.
-3. `OfficeHoursEngine.gd` + full headless GUT coverage (rubric below) —
-   built and tested before any UI exists, same discipline as `BattleEngine`.
-4. Reward/penalty application in `GameState`.
-5. `VisitorScreen.tscn` + `VisitorPresenter.gd` + `OfficeScreen.gd` routing.
+1. ~~Exporter + workbook: both new tabs...~~ **Built** — one template
+   visitor+question (`VI01`/`VQ01`), not the full ~6/~10 placeholder set;
+   see §6.
+2. ~~`BattleSetup` selection...~~ **Built.**
+3. ~~`OfficeHoursEngine.gd` + full headless GUT coverage...~~ **Built.**
+4. ~~Reward/penalty application in `GameState`...~~ **Built.**
+5. `VisitorScreen.tscn` + `VisitorPresenter.gd` + `OfficeScreen.gd`
+   routing. **Not built** — the one remaining step.
 6. Real click-driven interaction test (`tests/interaction/`), extending
-   `loop_driver.gd`'s pattern to walk a Non-combat stage.
+   `loop_driver.gd`'s pattern to walk a Non-combat stage. **Not built** —
+   needs step 5 first.
 
-## 6. Built already (2026-09-25, ahead of the rest of the build)
-
-Cameron's follow-up settled the Reward/Penalty format and asked for the
-SHxx pull specifically — both self-contained enough to build now, without
-waiting on the rest of the plan above:
+## 6. Built already (2026-09-25)
 
 - **`tools/export_data.py`**: the `target_delta_list` coerce kind,
   including range deltas (`"BO01 +1-6"` → `{"min": 1, "max": 6}`, caught as
   a gap and added the same day — see the delta-shape table above); the
   `Visitors` tab schema rewritten to the resolved 8-column shape in §1.1
   (replacing the dead 2-choice stub); the new `Visitor Questions` tab
-  schema from §1.2. Neither tab exists in the real workbook yet — both are
-  `"optional_sheet": True`, so exporting today is unaffected; the schema is
-  just ready for whenever the tabs are added.
-- **`scripts/rules/RewardTargets.gd`** (new): pure ID-prefix classifier —
-  `BOxx` → booster, `Mxx` → modifier, `SHxx` → shop item. No data access,
-  fully unit-testable.
-- **`scripts/autoload/DataDB.gd`**: `shop.json` is now actually loaded
-  (`var shop`, `get_shop_item()`) — it existed on disk with 29 real rows
-  and nothing read it before today. New `resolve_reward_target(entry)`
-  pulls the real record for any target_delta_list entry, of any of the
-  three kinds, and any of the three delta shapes (absent / fixed / range —
-  a range passes through unrolled; nothing rolls it yet, see §4).
-- **13 new GUT tests** (`tests/test_reward_targets.gd`), all passing
-  alongside the full 528-test suite and the real click-driven loop test.
+  schema from §1.2.
+- **The real master workbook** now has both tabs — added via the
+  established raw XML zip-surgery method (new sheet files plus the three
+  registry parts that reference them; every pre-existing sheet's bytes,
+  cached formulas included, verified byte-identical before the file was
+  replaced). One template row in each: visitor `VI01` ("Sample
+  Constituent", eligible for ST07), question `VQ01` (a 4-choice exchange),
+  `VI01`'s Reward is `"BO01 +1; BO02 +1-3"` — one static entry and one
+  range entry, exactly the shapes point 3 asked to demonstrate — and its
+  Penalty is `"BO01 -1"`.
+- **`data/visitors.json` / `data/visitor_questions.json`**: real, exported
+  files (1 row each) — not the ~6/~10 placeholder set the original build
+  order sketched; expanding the roster is content work for Cameron, not a
+  code gap.
+- **`scripts/rules/RewardTargets.gd`**: pure ID-prefix classifier — `BOxx`
+  → booster, `Mxx` → modifier, `SHxx` → shop item. No data access, fully
+  unit-testable.
+- **`scripts/autoload/DataDB.gd`**: loads `shop.json` (existed on disk with
+  29 real rows, nothing read it before 2026-09-25), `visitors.json`,
+  `visitor_questions.json`, and `level_visitor_overrides.json` (new, a
+  visitor-pin file with the same shape and purpose as
+  `level_opponent_overrides.json`, kept separate rather than widening it).
+  `resolve_reward_target(entry)` pulls the real record for any
+  target_delta_list entry, any kind, any delta shape. Boot-time validation
+  now cross-checks every Visitor's stage eligibility and Reward/Penalty
+  targets, every Visitor Question's link to a real Visitor and a real,
+  answerable A–D, and visitor pins the same way opponent pins are checked.
+- **`scripts/BattleSetup.gd`**: `eligible_visitors()` / `_visitors_for()` /
+  `_resolve_visitor_pin()` / `_question_for_visitor()` — direct twins of
+  the opponent-selection functions, same dynamic-by-default rule.
+  `expand_level()` now draws a stage's real `visitors` list (each with its
+  own drawn question already attached) whenever the stage's `mode` is
+  `Non-combat`, the same place it already draws `opponents` for Combat.
+- **`scripts/rules/LevelRunner.gd`**: a Non-combat stage with an empty
+  drawn visitor pool is now rejected by `problems()`, the same as an empty
+  combat opponent pool — closing the gap the earlier Non-combat exemption
+  (2026-09-25, the "no questions or opponents found" fix) deliberately left
+  open until visitors were real.
+- **`scripts/rules/OfficeHoursEngine.gd`** (new): the actual rules engine —
+  see §2.
+- **`scripts/autoload/GameState.gd`**: `apply_visitor_reward_entries()` —
+  see §2.
+- **48 new GUT tests** across 4 new files
+  (`test_reward_targets.gd`, `test_office_hours_engine.gd`,
+  `test_visitor_reward_application.gd`, `test_visitor_selection.gd`) plus
+  one in `test_level_runner.gd` and one in `test_real_battle.gd` pinning
+  down today's safe-failure behavior at the UI boundary. 566/566 passing,
+  real click-driven loop test still clean.
 
-Not built by this: `OfficeHoursEngine.gd`, the Visitors/Visitor Questions
-DataDB loading + cross-reference validation (steps 1-2 above still need the
-actual tabs to exist before there's anything to validate), and everything
-from step 3 on. §4's open point 1 (what a `shop_item` reward *does*) is
-narrower now — the pull works, the apply is still undecided.
+**Not built:** the UI (§3) — `VisitorScreen.tscn`, `VisitorPresenter.gd`,
+and `OfficeScreen.gd` routing. Today, a level that reaches a Non-combat
+stage opens `BattleScreen.tscn` as normal and gets a clean refusal
+("there is nobody to argue with") rather than a crash or a broken battle —
+safe, but not playable. That refusal is itself covered by a test
+(`test_real_battle.gd`) so it can't silently start doing something worse
+before the UI exists to replace it.

@@ -35,10 +35,10 @@ const DATA_PATH := "res://data/"
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "balance", "bills", "booster_standing", "boosters", "cards",
-	"journalists", "level_opponent_overrides", "levels", "lists",
+	"journalists", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban",
-	"card_cues", "questions", "shop",
+	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
 	"segments", "stages", "suits", "yoron",
 ]
@@ -79,6 +79,14 @@ var affinity: Array = []
 ## already resolves a BOxx or MODxx.
 var shop: Array = []
 
+## Office Hours (design/proposals/office_hours.md): visitors.json is one row
+## per character — identity, which STxx they can be drawn for, and their
+## Reward/Penalty target_delta_list. visitor_questions.json is one row per
+## POSSIBLE exchange — many rows can share a visitor_id, the "several
+## questions per visitor" shape Cameron asked for 2026-09-25.
+var visitors: Array = []
+var visitor_questions: Array = []
+
 ## The 21 hireable Staff candidates (SF01-21): 3 roles x 7 candidates each.
 ## Names come from the workbook's own Name column where it is filled in, and
 ## from data/staff_names.json (a hand-written fallback) where it is not — see
@@ -100,6 +108,11 @@ var levels: Array = []
 ## Most levels have none. See data/level_opponent_overrides.json's own
 ## README for how Cameron uses it.
 var level_opponent_overrides: Array = []
+
+## Same shape and purpose as level_opponent_overrides, for a Non-combat
+## stage's visitors instead of a Combat stage's opponent. Separate file
+## rather than widened onto the opponent one — see its own README.
+var level_visitor_overrides: Array = []
 
 # Objects rather than lists.
 var balance: Dictionary = {}
@@ -162,6 +175,12 @@ var _segments_by_id: Dictionary = {}
 var _modifiers_by_id: Dictionary = {}
 var _boosters_by_id: Dictionary = {}
 var _shop_by_id: Dictionary = {}
+var _visitors_by_id: Dictionary = {}
+
+## visitor_id -> Array of that visitor's own rows in visitor_questions.json.
+## Built once here rather than filtered fresh on every draw, the same reason
+## _index() exists at all.
+var _questions_by_visitor: Dictionary = {}
 var _bills_by_id: Dictionary = {}
 var _yoron_by_id: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
@@ -215,6 +234,8 @@ func load_all() -> void:
 			"levels": levels = content if content is Array else []
 			"level_opponent_overrides":
 				level_opponent_overrides = _list_under(content, file_name, "overrides")
+			"level_visitor_overrides":
+				level_visitor_overrides = _list_under(content, file_name, "overrides")
 			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": player = content
 
@@ -227,6 +248,8 @@ func load_all() -> void:
 				speech = _map_under(content, file_name, "speech")
 			"booster_standing": booster_standing = content
 			"shop": shop = content
+			"visitors": visitors = content
+			"visitor_questions": visitor_questions = content
 			# Cards that exist for the playtest but are not in the workbook
 			# yet. Appended rather than kept apart, so everything downstream —
 			# the card table, the starter deck, every lookup — treats them as
@@ -427,6 +450,14 @@ func _build_lookups() -> void:
 	_modifiers_by_id = _index(modifiers, "mod_id")
 	_boosters_by_id = _index(boosters, "booster_id")
 	_shop_by_id = _index(shop, "item_id")
+	_visitors_by_id = _index(visitors, "visitor_id")
+
+	_questions_by_visitor.clear()
+	for question: Dictionary in visitor_questions:
+		var vid := str(question.get("visitor_id", ""))
+		if not _questions_by_visitor.has(vid):
+			_questions_by_visitor[vid] = []
+		(_questions_by_visitor[vid] as Array).append(question)
 	_bills_by_id = _index(bills, "bill_id")
 	_yoron_by_id = _index(yoron, "topic_id")
 	_sanban_by_name = _index(sanban, "name_en")
@@ -611,6 +642,27 @@ func resolve_reward_target(entry: Dictionary) -> Dictionary:
 		"delta": entry.get("delta"),
 		"record": record,
 	}
+
+
+func get_visitor(visitor_id: String) -> Dictionary:
+	return _lookup(_visitors_by_id, visitor_id, "visitor")
+
+
+## Every visitor eligible for a stage — every visitors.json row whose own
+## "stages" list names this STxx — same shape as get_opponents_for_stage().
+func get_visitors_for_stage(stage_id: String) -> Array:
+	var found: Array = []
+	for visitor: Dictionary in visitors:
+		if (visitor.get("stages", []) as Array).has(stage_id):
+			found.append(visitor)
+	return found
+
+
+## Every possible question a visitor might ask — visitor_questions.json rows
+## sharing that visitor_id. Which ONE is actually asked in a given stage is
+## drawn from this list elsewhere (BattleSetup), not decided here.
+func get_questions_for_visitor(visitor_id: String) -> Array:
+	return (_questions_by_visitor.get(visitor_id, []) as Array).duplicate()
 
 
 func get_bill(bill_id: String) -> Dictionary:
@@ -835,7 +887,87 @@ func _validate() -> void:
 				+ "eligible for %s, so the game will fall back to the dynamic pick there.")
 				% [opp_id, lid, slot, stage_id, opp_id, stage_id])
 
+	# Office Hours (design/proposals/office_hours.md). Every Visitor's stage
+	# eligibility and Reward/Penalty targets, and every Visitor Question's
+	# link back to a real Visitor and a real, answerable set of choices.
+	var visitor_ids := _values(visitors, "visitor_id")
+
+	for override_row: Dictionary in level_visitor_overrides:
+		var lid := str(override_row.get("level_id", ""))
+		var slot := int(override_row.get("slot", -1))
+		var visitor_id := str(override_row.get("visitor_id", ""))
+		var level := get_level(lid)
+		if level.is_empty():
+			errors.append("level_visitor_overrides.json pins slot %d of '%s', which is not a level" % [slot, lid])
+			continue
+		if slot < 1 or slot > 10:
+			errors.append("level_visitor_overrides.json: the slot for '%s' must be 1-10, not %d" % [lid, slot])
+			continue
+		var raw_stage_id: Variant = level.get("stage_%d" % slot)
+		var stage_id := "" if raw_stage_id == null else str(raw_stage_id)
+		if stage_id.is_empty():
+			errors.append("level_visitor_overrides.json pins %s slot %d, which %s does not use" % [lid, slot, lid])
+			continue
+		if not visitor_ids.has(visitor_id):
+			errors.append("level_visitor_overrides.json pins unknown visitor '%s' for %s slot %d" % [visitor_id, lid, slot])
+		elif not (get_visitor(visitor_id).get("stages", []) as Array).has(stage_id):
+			warnings.append(
+				("level_visitor_overrides.json pins %s to %s slot %d (%s), but %s is not "
+				+ "eligible for %s, so the game will fall back to the dynamic pick there.")
+				% [visitor_id, lid, slot, stage_id, visitor_id, stage_id])
+
+	for visitor: Dictionary in visitors:
+		var vid := str(visitor.get("visitor_id"))
+		for stage_id: String in (visitor.get("stages", []) as Array):
+			if not stage_ids.has(stage_id):
+				errors.append("Visitor %s is eligible for stage '%s', which does not exist" % [vid, stage_id])
+		for entry: Dictionary in (visitor.get("reward", []) as Array):
+			_validate_reward_target(vid, "Reward", entry)
+		for entry: Dictionary in (visitor.get("penalty", []) as Array):
+			_validate_reward_target(vid, "Penalty", entry)
+		if get_questions_for_visitor(vid).is_empty():
+			# Not an error: a visitor mid-authoring (identity written, no
+			# question yet) is a normal draft state, not broken data — but a
+			# stage could draw this visitor and have nothing to ask them,
+			# which is worth knowing about before it happens at runtime.
+			warnings.append("Visitor %s has no Visitor Questions, so it has nothing to ask if drawn" % vid)
+
+	for question: Dictionary in visitor_questions:
+		var qid := str(question.get("question_id"))
+		var q_vid := str(question.get("visitor_id"))
+		if not visitor_ids.has(q_vid):
+			errors.append("Visitor Question %s names visitor '%s', which does not exist" % [qid, q_vid])
+		var correct := str(question.get("correct_choice", "")).strip_edges().to_upper()
+		if not ["A", "B", "C", "D"].has(correct):
+			errors.append("Visitor Question %s's Correct Choice is '%s', not A/B/C/D"
+				% [qid, question.get("correct_choice")])
+		for letter in ["A", "B", "C", "D"]:
+			if str(question.get("choice_%s" % letter.to_lower(), "")).strip_edges().is_empty():
+				errors.append("Visitor Question %s has no Choice %s text" % [qid, letter])
+
 	_validate_rules()
+
+
+## A single target_delta_list entry (a Visitor's Reward or Penalty column) —
+## its target must match a known ID prefix (RewardTargets.gd) AND actually
+## exist, or the reward silently does nothing the moment a player earns it.
+func _validate_reward_target(owner_id: String, column: String, entry: Dictionary) -> void:
+	var target_id := str(entry.get("target", ""))
+	var kind := RewardTargets.kind_of(target_id)
+	var record: Dictionary
+	match kind:
+		RewardTargets.BOOSTER:
+			record = get_booster(target_id)
+		RewardTargets.MODIFIER:
+			record = get_modifier(target_id)
+		RewardTargets.SHOP_ITEM:
+			record = get_shop_item(target_id)
+		_:
+			errors.append("%s's %s names '%s', which doesn't match any known ID prefix (BOxx, Mxx, SHxx)"
+				% [owner_id, column, target_id])
+			return
+	if record.is_empty():
+		errors.append("%s's %s names '%s', which does not exist" % [owner_id, column, target_id])
 
 
 func _validate_rules() -> void:

@@ -85,9 +85,24 @@ static func expand_level(level: Dictionary) -> Dictionary:
 			stage["opponents"] = ([committee["chair"]] if not (committee["chair"] as Dictionary).is_empty()
 				else [])
 			stage["committee_members"] = committee["members"]
+			stage["visitors"] = []
+		elif str(stage.get("mode", "")) == "Non-combat":
+			# Office Hours: not a battle, so no opponent at all — a drawn
+			# pool of visitors instead, each with its own drawn question
+			# already attached, resolved once here the same way a combat
+			# stage's opponent(s) and question pool are.
+			stage["opponents"] = []
+			stage["committee_members"] = []
+			var drawn_visitors: Array = []
+			for visitor: Dictionary in _visitors_for(level_id, stage_id, slot, _opponent_count(stage)):
+				var with_question := visitor.duplicate(true)
+				with_question["question"] = _question_for_visitor(str(visitor.get("visitor_id", "")))
+				drawn_visitors.append(with_question)
+			stage["visitors"] = drawn_visitors
 		else:
 			stage["opponents"] = _opponents_for(level_id, stage_id, slot, _opponent_count(stage))
 			stage["committee_members"] = []
+			stage["visitors"] = []
 
 		# LevelRunner.problems() needs to know whether a stage has anything to
 		# push back with — opponents, or questions — before it can be played,
@@ -262,6 +277,100 @@ static func _resolve_pin(level_id: String, stage_id: String, slot: int) -> Dicti
 			+ "Falling back to the dynamic pick.") % [level_id, slot, opp_id, stage_id])
 		return {}
 	return pinned
+
+
+# ---------------------------------------------------------------------------
+# Office Hours (design/proposals/office_hours.md) — visitor selection.
+#
+# Every function below is the direct twin of the opponent one just above it:
+# same dynamic-by-default rule (every eligible visitor, lowest visitor_id
+# first, a pin in level_visitor_overrides.json can name one specifically),
+# same fallback behaviour on an unresolvable pin. Kept as separate functions
+# rather than generalising both into one, because "eligible for a stage" and
+# "who is in the room" mean different things for a person you argue with and
+# a person you talk to — the moment they diverge (and Office Hours already
+# diverges: no committee shape, no sequence_mode) sharing the code would cost
+# more than these few lines of duplication save.
+# ---------------------------------------------------------------------------
+
+## Every visitor eligible for a stage, in a stable, deterministic order
+## (lowest visitor_id first) — the same shape and reason as
+## eligible_opponents().
+static func eligible_visitors(stage_id: String) -> Array:
+	var found := DataDB.get_visitors_for_stage(stage_id)
+	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return str(a.get("visitor_id", "")) < str(b.get("visitor_id", "")))
+	return found
+
+
+## The hand-written pin for one level+slot from
+## data/level_visitor_overrides.json, or null when there isn't one.
+static func _visitor_override_for(level_id: String, slot: int) -> Variant:
+	for row: Dictionary in DataDB.level_visitor_overrides:
+		if str(row.get("level_id", "")) == level_id and int(row.get("slot", -1)) == slot:
+			return row
+	return null
+
+
+## Looks up and validates one level+slot's visitor pin, if any — same
+## contract as _resolve_pin().
+static func _resolve_visitor_pin(level_id: String, stage_id: String, slot: int) -> Dictionary:
+	var override_row: Variant = _visitor_override_for(level_id, slot)
+	if override_row == null:
+		return {}
+
+	var visitor_id := str((override_row as Dictionary).get("visitor_id", ""))
+	var pinned := DataDB.get_visitor(visitor_id)
+	if pinned.is_empty():
+		push_warning("BattleSetup: %s slot %d pins unknown visitor '%s'." % [level_id, slot, visitor_id])
+		return {}
+	if not (pinned.get("stages", []) as Array).has(stage_id):
+		push_warning(("BattleSetup: %s slot %d pins visitor %s, who is not eligible for %s. "
+			+ "Falling back to the dynamic pick.") % [level_id, slot, visitor_id, stage_id])
+		return {}
+	return pinned
+
+
+## `count` visitors for a Non-combat stage, drawn from its eligible pool —
+## same shape as _opponents_for(), reusing that same "count" (the stage's
+## own Opponent Count range column; Office Hours does not get a second,
+## parallel column just to mean the same thing for visitors instead of
+## opponents, per office_hours.md §1.3).
+static func _visitors_for(level_id: String, stage_id: String, slot: int, count: int) -> Array:
+	var eligible := eligible_visitors(stage_id)
+	var pinned := _resolve_visitor_pin(level_id, stage_id, slot)
+
+	if count <= 1:
+		if not pinned.is_empty():
+			return [pinned]
+		return [eligible[0]] if not eligible.is_empty() else []
+
+	var chosen: Array = []
+	if not pinned.is_empty():
+		chosen.append(pinned)
+
+	for candidate: Dictionary in eligible:
+		if chosen.size() >= count:
+			break
+		if not pinned.is_empty() and str(candidate.get("visitor_id", "")) == str(pinned.get("visitor_id", "")):
+			continue
+		chosen.append(candidate)
+
+	return chosen
+
+
+## Which one of a visitor's several possible questions this exchange asks —
+## drawn once, here, at setup time, the same reason a stage's own question
+## pool is drawn once rather than re-rolled mid-battle. Unseeded, matching
+## every other draw/roll in this file. Empty when the visitor has no
+## questions at all (DataDB already warns about this at load time; setup
+## does not crash over it, the same way a committee with an empty roster
+## does not crash — OfficeHoursEngine reports the real problem instead).
+static func _question_for_visitor(visitor_id: String) -> Dictionary:
+	var questions := DataDB.get_questions_for_visitor(visitor_id)
+	if questions.is_empty():
+		return {}
+	return questions[randi() % questions.size()]
 
 
 ## Which stage IDs draw from which of data/questions.json's five pools.

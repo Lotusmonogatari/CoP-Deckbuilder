@@ -77,6 +77,14 @@ func problems() -> PackedStringArray:
 		if str(stage.get("mode", "")) != "Non-combat" \
 				and stage.get("opponents", []).is_empty() and not _asks_questions(stage):
 			found.append("stage %d has neither opponents nor questions" % seq)
+
+		# A Non-combat stage's own equivalent, now that Office Hours draws a
+		# real visitor pool (BattleSetup.expand_level()): a stage with an
+		# empty pool is silently unplayable in exactly the same way an empty
+		# opponent pool used to be, so it gets the same hard check rather
+		# than a quiet empty screen.
+		if str(stage.get("mode", "")) == "Non-combat" and stage.get("visitors", []).is_empty():
+			found.append("stage %d has no eligible visitors" % seq)
 	return found
 
 

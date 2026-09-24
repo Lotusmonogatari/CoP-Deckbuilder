@@ -608,6 +608,65 @@ func _please_organisations(boosters: Array) -> void:
 			last_booster_change[booster_id] = after - before
 
 
+## Office Hours (design/proposals/office_hours.md): applies one visitor's
+## Reward column (on a correct answer) or Penalty column (on a wrong one) —
+## OfficeHoursEngine.answer() hands back the raw, unresolved list exactly as
+## stored on the visitor (it has no DataDB access, same as every other rules
+## class), so resolving each target's real kind and record, and rolling any
+## range delta, both happen here, once, at the moment the reward is actually
+## applied — not shown to the player as a range and not rolled earlier at
+## setup (open point 5 in the proposal).
+func apply_visitor_reward_entries(entries: Array) -> void:
+	for entry: Dictionary in entries:
+		var resolved := DataDB.resolve_reward_target(entry)
+		var kind: String = resolved.get("kind", "")
+		var target_id: String = resolved.get("id", "")
+		match kind:
+			RewardTargets.BOOSTER:
+				_apply_booster_delta(target_id, _resolve_delta(resolved.get("delta")))
+			RewardTargets.MODIFIER:
+				if not owned_modifiers.has(target_id):
+					owned_modifiers.append(target_id)
+			RewardTargets.SHOP_ITEM:
+				# The pull is real (DataDB.resolve_reward_target()); what
+				# granting a shop item actually DOES is not decided yet
+				# (office_hours.md §4, open point 1) — this deliberately
+				# applies nothing rather than guess at inventory/consumable
+				# semantics nobody has confirmed.
+				push_warning(("GameState: shop item reward '%s' resolved but nothing applies it yet "
+					+ "(see design/proposals/office_hours.md open point 1).") % target_id)
+			_:
+				push_warning("GameState: reward/penalty target '%s' did not resolve to anything." % target_id)
+
+
+## A booster standing change by an arbitrary signed amount, clamped the same
+## way every other booster standing change is — the general form of
+## _please_organisations()'s fixed "per_please" step, for a visitor's own
+## delta instead.
+func _apply_booster_delta(booster_id: String, delta: int) -> void:
+	if delta == 0:
+		return
+	var low := int(DataDB.booster_standing.get("min", 0))
+	var high := int(DataDB.booster_standing.get("max", 100))
+	var before := int(booster_standing.get(booster_id, 50))
+	var after := clampi(before + delta, low, high)
+	booster_standing[booster_id] = after
+	if after != before:
+		last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
+
+
+## A target_delta_list entry's delta, resolved to a real number: null is no
+## magnitude (0), a plain number passes through, and a {"min","max"} range is
+## rolled — unseeded, the same as every other range roll in the game
+## (_roll_range() itself, BattleSetup._opponent_count()).
+func _resolve_delta(delta: Variant) -> int:
+	if delta is Dictionary and (delta as Dictionary).has("min"):
+		return _roll_range(delta)
+	if delta == null:
+		return 0
+	return int(delta)
+
+
 ## Clears the level, on the way back to the Office.
 func end_level() -> void:
 	level_runner = null

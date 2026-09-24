@@ -235,15 +235,27 @@ func test_a_real_stages_question_pool_counts_as_pushing_back() -> void:
 
 
 func test_a_non_combat_stage_does_not_need_opponents_or_questions() -> void:
-	# Office Hours (ST07): Non-combat, and not yet a battle at all (CLAUDE.md
-	# §8) — it has neither opponents nor a question pool by design, until its
-	# own visitor-event system exists. Before this was recognised, every
-	# level that included it (LV11, LV12, LV14, LV17, LV23, LV26, LV27, LV28)
-	# failed to start entirely, not just that one stage.
+	# Office Hours (ST07): Non-combat, so it never needs opponents or a
+	# question pool — a real visitor pool is what pushes back instead (see
+	# the next test). Before "mode" was recognised at all, every level that
+	# included ST07 (LV11, LV12, LV14, LV17, LV23, LV26, LV27, LV28) failed
+	# to start entirely, not just that one stage.
 	var runner := _runner({"stages": [
-		{"seq": 1, "mode": "Non-combat", "opponents": []},
+		{"seq": 1, "mode": "Non-combat", "opponents": [], "visitors": [{"visitor_id": "VI01"}]},
 	]})
 	assert_true(runner.is_valid(), "%s" % [runner.problems()])
+
+
+func test_a_non_combat_stage_with_no_eligible_visitors_is_rejected() -> void:
+	# The Non-combat equivalent of test_a_stage_with_nothing_pushing_back_is
+	# _rejected() above — an empty visitor pool is exactly as unplayable as
+	# an empty opponent pool, now that BattleSetup.expand_level() actually
+	# draws one (2026-09-25).
+	var runner := _runner({"stages": [
+		{"seq": 1, "mode": "Non-combat", "opponents": [], "visitors": []},
+	]})
+	assert_false(runner.is_valid())
+	assert_string_contains(runner.problems()[0], "no eligible visitors")
 
 
 func test_a_missing_mode_still_needs_opponents_or_questions() -> void:

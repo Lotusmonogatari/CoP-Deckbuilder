@@ -6,59 +6,61 @@ group above it is green — a real click test that "passes" over a rules bug
 is worse than no test, per this project's usual order (data → rules →
 UI → real clicks).
 
-**Already green (2026-09-25):** the reward/penalty target-resolution slice
-— `RewardTargets.gd`'s prefix classification and
-`DataDB.resolve_reward_target()`'s pull, `SHxx` included — is built and
-covered by 12 passing GUT tests (`tests/test_reward_targets.gd`), ahead of
-the rest of this rubric. Everything else below is still to build.
+**Status (2026-09-25, updated): groups A, B, and C are green.** Data,
+selection, the rules engine, and reward/penalty application are all built
+and tested (566 GUT tests total, including 48 new ones across this
+feature). **Group E (real click-driven UI) is the only thing not built** —
+`VisitorScreen.tscn` doesn't exist yet, so there's nothing to click through.
+Group D is partly answered (D1, yes; D2 still needs Cameron's call). See
+`design/proposals/office_hours.md` §6 for the exact file-by-file list.
 
 ## A. Data & validation
 
 | # | Check | How |
 |---|---|---|
-| A1 | Every canon Visitor's `stages` list names only real STxx IDs | `DataDB` boot-time cross-reference (extend the existing report) |
-| A2 | Every Visitor Question's `visitor_id` names a real Visitor | same |
-| A3 | Every Visitor Question has all four choices non-empty and `correct_choice` is one of A–D | same, error not warning — an unanswerable question is a data bug |
-| A4 | Every entry in every Visitor's `reward`/`penalty` list resolves to a real record — `DataDB.resolve_reward_target(entry)["record"]` is non-empty for every one | same — **the resolver itself is built and unit-tested (`tests/test_reward_targets.gd`); this row is "wire it into the boot-time report," not "build it"** |
+| A1 | ✅ Every canon Visitor's `stages` list names only real STxx IDs | `DataDB._validate()` |
+| A2 | ✅ Every Visitor Question's `visitor_id` names a real Visitor | same |
+| A3 | ✅ Every Visitor Question has all four choices non-empty and `correct_choice` is one of A–D | same, error not warning — an unanswerable question is a data bug |
+| A4 | ✅ Every entry in every Visitor's `reward`/`penalty` list resolves to a real record | `DataDB._validate_reward_target()`, called for every Reward and Penalty entry |
 | A5 | *(retired — penalty is no longer a Sanban meta-variable; A4 already covers it, since Penalty uses the same `target_delta_list` shape as Reward)* | — |
-| A6 | Every ST07-eligible Visitor has **at least one** Visitor Question | same — the exact class of bug this whole feature exists to prevent (an empty pool at runtime) |
-| A7 | `python3 tools/export_data.py` runs clean against the patched workbook — no new errors, only expected warnings | `tools/verify.sh` step 1 |
-| A8 | A target whose prefix doesn't match `BOxx`/`Mxx`/`SHxx` (a typo) is a boot-time **error**, not just `resolve_reward_target()`'s runtime warning — a bad reward should never reach a player silently | extend the existing DataDB validation report |
+| A6 | ⚠️ Every ST07-eligible Visitor has **at least one** Visitor Question | built as a **warning**, not an error — a visitor mid-authoring (identity written, question not yet) is a normal draft state; only an empty pool for a whole STAGE (D1) is a hard error |
+| A7 | ✅ `python3 tools/export_data.py` runs clean against the patched workbook — no new errors, only expected warnings | confirmed by hand against the real workbook when the tabs were added |
+| A8 | ✅ A target whose prefix doesn't match `BOxx`/`Mxx`/`SHxx` (a typo) is a boot-time **error** | `DataDB._validate_reward_target()`'s `_` match case |
 
 ## B. Rules engine (headless GUT, `scripts/rules/`)
 
 | # | Check |
 |---|---|
-| B1 | `setup()` with 1 visitor, 1 question: `current_visitor()`/`current_question()` return that visitor/question |
-| B2 | `setup()` with N visitors: `is_finished()` is false until all N are answered, true after |
-| B3 | `answer()` with the correct choice: `result.correct == true`, `response_text == response_right`, `reaction == reaction_right`, `reward` is that visitor's `reward` list, each entry resolved through `DataDB.resolve_reward_target()`; `penalty == []` |
-| B4 | `answer()` with any wrong choice (test all 3 wrong letters, not just one): `result.correct == false`, `response_text == response_wrong`, `reaction == reaction_wrong`, `reward == []`, `penalty` is that visitor's resolved `penalty` list |
-| B5 | A visitor with a **blank** Reward cell: correct answer packages `reward == []`, not a malformed list |
-| B6 | A visitor with a **blank** Penalty cell: wrong answer packages `penalty == []`, not a malformed list |
-| B6a | A visitor whose Reward mixes kinds (`"BO05 +1; M12; SH04"`): all three resolve, each with the right `kind` — this is the direct engine-level proof of Cameron's own example format |
-| B6b | A visitor whose Reward has a range delta (`"BO01 +1-6"`): the engine rolls it to a real integer within range at the point open point 5 (proposal §4) settles, and never hands GameState a `{"min","max"}` dict to apply directly |
-| B7 | `advance()` after the last visitor does not throw and leaves `is_finished()` true |
-| B8 | `outcome()` after a mixed run (2 right, 1 wrong) reports the right counts and both a reward and a penalty in its lists |
-| B9 | A visitor with several eligible questions: setup draws exactly one, deterministically reproducible under a fixed seed (mirrors `_draw_questions()`'s existing seeding discipline) |
-| B10 | `eligible_visitors("ST07")` returns only visitors whose `stages` names ST07, sorted by lowest `visitor_id` first (mirrors `eligible_opponents()`'s own test) |
-| B11 | `_visitors_for()` honors a `level_visitor_overrides.json` pin the same way `_opponents_for()` honors an opponent pin — including the "pin names someone ineligible" warning-and-fallback case |
-| B12 | `BattleSetup._opponent_count()`'s existing range behavior, exercised through a Non-combat stage's `Opponent Count`, produces the right *visitor* count (reuse, not reimplementation — this test is really checking that reuse actually happened) |
+| B1 | ✅ `setup()` with 1 visitor, 1 question: `current_visitor()`/`current_question()` return that visitor/question |
+| B2 | ✅ `setup()` with N visitors: `is_finished()` is false until all N are answered+advanced, true after |
+| B3 | ⚠️ `answer()` with the correct choice: `result.correct == true`, texts match, `reward` is that visitor's **raw, unresolved** `reward` list (not pre-resolved — resolving is `GameState.apply_visitor_reward_entries()`'s job, not the engine's, since the engine has no DataDB), `penalty == []` |
+| B4 | ✅ `answer()` with any wrong choice (all 3 wrong letters tested, not just one): symmetric to B3 for `penalty` |
+| B5 | ✅ A visitor with a **blank** Reward: correct answer packages `reward == []` |
+| B6 | ✅ A visitor with a **blank** Penalty: wrong answer packages `penalty == []` |
+| B6a | ✅ (moved to C1/C-mixed) A visitor whose Reward mixes kinds resolves correctly — proven at the `GameState.apply_visitor_reward_entries()` level (`test_a_mixed_list_applies_every_entry`), since resolution happens there, not in the engine |
+| B6b | ✅ (moved to C) A range delta rolls within its own bounds, once, at apply time — `test_a_range_delta_rolls_within_its_own_bounds` |
+| B7 | ✅ `advance()` after the last visitor does not throw and leaves `is_finished()` true |
+| B8 | ✅ `outcome()` after a mixed run (2 right, 1 wrong) reports the right counts and both a reward and a penalty in its lists |
+| B9 | ⚠️ A visitor with several eligible questions: setup draws one. **Unseeded** (`randi() % size`, matching `_opponent_count()`'s own convention, not a seeded RNG) — no determinism test exists, and none is intended; only one real question exists per visitor today anyway, so this path is barely exercised by real data yet |
+| B10 | ✅ `eligible_visitors("ST07")` returns the real template visitor; sorting is by construction (same `sort_custom` as `eligible_opponents()`), not independently proven with a multi-candidate fixture — same lighter bar the opponent equivalent was held to |
+| B11 | ✅ `_visitors_for()`/`_resolve_visitor_pin()` honor a `level_visitor_overrides.json` pin, including the "pin names someone ineligible" and "pin names someone unknown" fallback cases |
+| B12 | ✅ Reuse (not reimplementation) of `_opponent_count()` for visitor count, proven via `expand_level()`'s real output shape |
 
 ## C. GameState integration
 
 | # | Check |
 |---|---|
-| C1 | A `booster`-kind reward/penalty entry bumps the right BOxx's standing by its `delta`, clamped to floor/ceiling like every other standing change — a negative `delta` (a Penalty) is a real test case here, not just a positive Reward |
-| C2 | A `modifier`-kind entry adds the Mxx to `owned_modifiers` exactly once, even if the same modifier is granted twice in one run (no duplicate entries) — and does nothing destructive on a negative `delta` (a modifier can't be "un-granted" by a number; confirm the apply path ignores `delta` for this kind entirely, matching §2's dispatch table) |
-| C3 | A `shop_item`-kind entry applies *something* defined and reproducible — blocked on open point 1 (proposal §4) until Cameron says what "granting a shop item" does |
-| C4 | Office Hours completing (win or loss — see D-series for whether this stage even has a "loss") triggers the same auto-save point every other stage does |
+| C1 | ✅ A `booster`-kind entry bumps the right BOxx's standing by its `delta`, clamped to floor/ceiling — fixed and range deltas both tested, and a negative `delta` (a Penalty) is a real test case, not just a positive Reward |
+| C2 | ✅ A `modifier`-kind entry adds the Mxx to `owned_modifiers` exactly once, even granted twice in one run (no duplicate) |
+| C3 | ❌ **Still blocked** — a `shop_item`-kind entry resolves to the real row and applies nothing (deliberately, per open point 1); revisit the moment that's answered |
+| C4 | ❌ **Not built** — nothing yet bridges `OfficeHoursEngine.outcome()` to `LevelRunner.finish_stage()`/the auto-save point; that bridge lives in whatever screen calls the engine, which doesn't exist yet (§3) |
 
 ## D. Design-level correctness (needs an answer from open point 4 in the proposal first)
 
 | # | Check |
 |---|---|
-| D1 | A whole Office Hours stage with 0 visitors drawn (empty eligible pool for that STxx) is caught by `LevelRunner.problems()` the same way an empty combat pool is today — not a silent empty screen |
-| D2 | Finishing every visitor (regardless of right/wrong mix) ends the stage — Office Hours does not "lose" on a bad answer the way a battle loses on gaffes, unless Cameron says otherwise |
+| D1 | ✅ A whole Office Hours stage with 0 visitors drawn is caught by `LevelRunner.problems()` — `test_a_non_combat_stage_with_no_eligible_visitors_is_rejected` |
+| D2 | ⚠️ Built as "no loss condition exists at all" (`OfficeHoursEngine` has no loss path, period) — matches the rubric's own suggested default, but this was never put to Cameron directly as its own question the way the other four were; worth a one-line confirmation before it's load-bearing |
 
 ## E. Real click-driven interaction test
 

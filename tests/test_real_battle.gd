@@ -98,6 +98,29 @@ func test_every_real_level_can_be_set_up() -> void:
 	assert_gt(checked, 0, "there are combat stages across the real levels to check")
 
 
+func test_a_non_combat_stage_fails_battleengine_setup_safely_for_now() -> void:
+	# 2026-09-25: Office Hours now has a real rules engine of its own
+	# (OfficeHoursEngine.gd) and BattleSetup draws it a real visitor pool —
+	# but no screen routes into that engine yet (OfficeScreen._on_start()
+	# still always opens BattleScreen.tscn, whatever the first stage's mode
+	# is). This pins down what happens TODAY if a player's level reaches
+	# ST07: BattleEngine.setup() — which knows nothing about visitors —
+	# refuses cleanly ("there is nobody to argue with") rather than crashing
+	# or playing a battle against an empty chair. Update or delete this test
+	# the moment a screen actually routes Non-combat stages to
+	# OfficeHoursEngine instead.
+	var level := DataDB.get_level("LV11")   # a real level whose stage_1 is ST07
+	assert_false(level.is_empty(), "sanity: LV11 exists")
+	var expanded := BattleSetup.expand_level(level)
+	var stage: Dictionary = expanded["stages"][0]
+	assert_eq(stage.get("stage_id"), "ST07", "sanity: LV11's first stage is Office Hours")
+
+	var config := BattleSetup.for_playtest_stage(stage)
+	var engine := BattleEngine.new()
+	assert_false(_setup(engine, config), "BattleEngine should refuse a Non-combat stage today")
+	assert_string_contains(engine.setup_problems[0], "nobody to argue with")
+
+
 func test_a_committee_stage_gets_its_members() -> void:
 	var config := BattleSetup.for_level_stage(COMMITTEE_LEVEL, COMMITTEE_STAGE)
 	assert_true(config.has("committee_members"), "members were fetched")
