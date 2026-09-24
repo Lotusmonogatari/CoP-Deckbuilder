@@ -1,8 +1,24 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/BattleScreen.gd" id="1_omdtd"]
 [ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_3oymq"]
 [ext_resource type="Script" path="res://scripts/ui/SupportBar.gd" id="3_fj6qp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omdtd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.07, 0.08, 0.11, 0.85)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.95, 0.82, 0.38, 0.9)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydj6j"]
 bg_color = Color(0.07, 0.08, 0.11, 0.9)
@@ -15,17 +31,24 @@ bg_color = Color(0.07, 0.08, 0.11, 0.85)
 
 [node name="BattleScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_omdtd")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_3oymq")
+
+[node name="BackgroundScrim" type="ColorRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color(0.09, 0.1, 0.13, 1)
+color = Color(0.05, 0.05, 0.07, 0.55)
 
 [node name="Safe" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -82,6 +105,19 @@ custom_minimum_size = Vector2(0, 620)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("2_3oymq")
+
+[node name="PlayerPortraitFrame" type="PanelContainer" parent="Safe/Column/OpponentRow/Portrait"]
+layout_mode = 0
+anchor_top = 0.58
+anchor_right = 0.34
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_omdtd")
+
+[node name="PlayerPortrait" type="Control" parent="Safe/Column/OpponentRow/Portrait/PlayerPortraitFrame"]
+unique_name_in_owner = true
+layout_mode = 2
 script = ExtResource("2_3oymq")
 
 [node name="Details" type="VBoxContainer" parent="Safe/Column/OpponentRow"]

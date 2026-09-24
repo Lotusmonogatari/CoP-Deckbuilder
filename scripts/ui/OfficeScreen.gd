@@ -35,6 +35,11 @@ var _chosen_level: Dictionary = {}
 var _draft_deck: Array[String] = []
 @onready var _portrait: Control = %Portrait
 
+## The Office's own picture, data/art.json's "OFFICE" background. Fixed —
+## unlike the battle screen's, it never changes stage — so it is set once
+## here rather than by whatever opens the screen.
+@onready var _background: PlaceholderArt = %Background
+
 ## The inventory and the Supplies shop (design/proposals/inventory.md).
 ## Built in code rather than placed in the scene, the same way the battle
 ## screen builds its card zoom: they are this script's to own.
@@ -47,6 +52,10 @@ var _new_game_panel: Overlay
 
 
 func _ready() -> void:
+	_background.kind = PlaceholderArt.Kind.BACKGROUND
+	_background.art_id = "OFFICE"
+	_background.show_label = false
+
 	_start_button.pressed.connect(_on_start_pressed)
 	_briefing_panel.confirmed.connect(_on_start)
 	_deck_panel.confirmed.connect(_on_deck_confirmed)

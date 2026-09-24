@@ -12,6 +12,16 @@ extends SceneTree
 ##
 ## The Office is deliberately sparse. For now it exists to be the place a
 ## run begins and ends; everything else it will eventually hold comes later.
+##
+## DO NOT RUN THIS TODAY. It has drifted badly from the real scene: Office
+## Management, Resources, Supplies, Cards, Deck, Backing, Staff and Levels
+## were all added straight to scenes/office_hours/OfficeScreen.tscn as the
+## Office grew, without ever being folded back in here (2026-09-27 found the
+## gap — running this would have silently deleted all of them). Bring this
+## script up to date with the real scene FIRST, verify with a structural
+## diff against the committed .tscn (no removed or unexpectedly changed
+## nodes), and only then run it. Until that happens, add a node to the real
+## scene by hand in the editor, or edit .tscn text directly.
 
 const OUTPUT_PATH := "res://scenes/office_hours/OfficeScreen.tscn"
 const SCREEN_SCRIPT := "res://scripts/ui/OfficeScreen.gd"
@@ -31,12 +41,22 @@ func _init() -> void:
 	_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_root.set_script(load(SCREEN_SCRIPT))
 
-	var background := ColorRect.new()
+	# The Office's own picture, data/art.json's "OFFICE" background.
+	# OfficeScreen._ready() sets its kind, art_id and show_label at runtime —
+	# the same convention every other PlaceholderArt here follows, so the
+	# custom exported properties are never touched from this @tool script.
+	var background := Control.new()
 	background.name = "Background"
+	background.set_script(load(PLACEHOLDER_SCRIPT))
 	background.set_anchors_preset(Control.PRESET_FULL_RECT)
-	background.color = Color(0.11, 0.10, 0.09)   # warmer than a battle
-	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_adopt(background, _root)
+	_adopt(background, _root, true)
+
+	var scrim := ColorRect.new()
+	scrim.name = "BackgroundScrim"
+	scrim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	scrim.color = Color(0.09, 0.07, 0.06, 0.55)   # a warmer scrim than the battle's
+	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_adopt(scrim, _root)
 
 	var safe := MarginContainer.new()
 	safe.name = "Safe"

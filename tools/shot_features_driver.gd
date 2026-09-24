@@ -18,6 +18,8 @@ func _run() -> void:
 
 	var office := get_tree().current_scene
 	office.call("_on_protagonist_chosen", "PC01")
+	await get_tree().create_timer(0.3).timeout
+	await _shot("20a-office-background")
 	GameState.meta["Funds"] = 900000
 	office.call("_show_supplies")
 	await get_tree().create_timer(0.5).timeout
@@ -28,6 +30,8 @@ func _run() -> void:
 	get_tree().change_scene_to_file("res://scenes/battle/BattleScreen.tscn")
 	await get_tree().create_timer(1.2).timeout
 	var battle := get_tree().current_scene
+	await _shot("22a-battle-open")
+
 	for card: Node in battle.get_node("%HandRow").get_children():
 		if card is CardView and not (card as CardView).disabled:
 			battle.call("_on_card_flung", (card as CardView).card_id)
@@ -38,6 +42,7 @@ func _run() -> void:
 	battle.call("_on_end_turn")
 	await get_tree().create_timer(0.35).timeout
 	await _shot("23-banner-opponent")
+
 	print("SHOTS DONE")
 	get_tree().quit()
 

@@ -211,7 +211,7 @@ options are authoritative; the table below describes the current settings:
 Every screen is portrait, uncluttered, and English-first. Layout from top to bottom:
 
 1. **Header:** stage name in English with a small muted Japanese accent (for example "Floor debate 本会議"), and on the right, "Turn 3 of 8".
-2. **Opponent row:** portrait (initials placeholder), name, and the intent in plain words (for example "Attacking · −6").
+2. **Opponent row:** portrait (initials placeholder) against the stage's own background, name, and the intent in plain words (for example "Attacking · −6"). Your own face sits in a small corner inset, reacting to what you just did.
 3. **Win condition:** the support bar with a visible threshold line and a caption such as "51 seats to win". Committee stages show member tiles instead; press conferences show the current question.
 4. **Status row:** Energy pips and "Gaffes 2 / 6". The gaffe warning turns red **only** when one more gaffe would end the stage.
 5. **Hand:** 3–5 cards. Each card face shows cost, English name, and a one-line effect. At most one small Japanese accent per card. Tapping a card opens a zoom view with the full text, suit, art, and Japanese name; dragging a card up out of the hand plays it directly.
@@ -304,6 +304,28 @@ at all**: the placeholder is labelled with the file it wants. It becomes a
 face the moment one is drawn to
 `assets/characters/opponents/{ID}_{expression}.png`.
 
+**Your own face** (`PlayerPortraitPresenter`) sits in a small framed inset in
+the corner of the opponent's portrait — the screen only has room for one big
+portrait, so this is a "you" chip rather than a second scene. Unlike the
+opponent, nothing is known ahead of time about what you will do, so it
+reacts to what you just did instead: attacking when a card argues the room
+away from the opponent, gaining when it wins support, guarding when it only
+banks guard, damaged for a moment when an opponent's attack actually lands,
+victory on a win. It works with no art either, the same bargain.
+
+**Stage backgrounds.** Both the battle screen and the Office show the room's
+own picture behind everything (`data/art.json`'s `background` folder —
+`{STAGE_ID}.png`, or `OFFICE.png` for the Office), with a dark scrim over it
+so text stays readable whatever the art turns out to look like. Blank shows
+as an ID-coloured placeholder, same as any other missing art.
+
+**Stage outfits.** Entirely optional: a character can have a one-off look
+for a single room —
+`assets/characters/{kind}/{ID}_{STAGE_ID}_{expression}.png`, e.g.
+`OP03_ST04_attacking.png` for how OP03 dresses only at a press conference.
+Tried before the plain file of that same expression; nothing has to be drawn
+for it and it is not counted by `tools/art_checklist.py`.
+
 **The cue banner.** `CueBanner` throws the spoken line across the middle of
 the screen, Ace Attorney style: the player's card cue from the left (blue
 name tag) with what the card did underneath, the opponent's turn from the
@@ -313,6 +335,22 @@ right (red). Lines queue; tapping the band skips; it never blocks the hand.
 that starts on a button scrolls and does not press it. A card pulled up out
 of the hand and let go is played; a short pull drops back. Scrollbars are
 36 px wide (`tools/build_theme.gd`).
+
+**A note for whoever next touches `PlaceholderArt.gd`.** Its own art and
+label are always pushed to the very back of its children (`_build()`'s
+`move_child()` calls) rather than left wherever `add_child()` happens to put
+them — the player's own portrait chip is a STATIC child of the opponent
+portrait, present in the scene file before `_ready()` runs, and without this
+the opponent's own texture would land on top of it and hide it completely.
+`tests/test_art_scheme.gd` guards this with a real scene-tree test.
+
+**A note for whoever next runs the scene builders.** `tools/build_battle_
+scene.gd` is kept in sync with the real `.tscn` (2026-09-27 fixed two spots
+where it had drifted — the card zoom's content column and the outcome
+panel's headline — and re-verified with a structural diff). `tools/
+build_office_scene.gd` is NOT: it predates most of the Office and would
+delete Office Management, Supplies, the deck screen and more if run. See its
+own doc comment before touching it.
 
 **The battle screen was split** to make room for what comes next: it keeps
 the engine, the refresh, the status row and navigation, and four presenters
