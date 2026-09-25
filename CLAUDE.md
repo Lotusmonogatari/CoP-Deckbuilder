@@ -141,6 +141,7 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 ### 7.4 Win and loss
 - **Loss:** the gaffe meter reaches `gaffe_limit` (immediate), or the turn limit ends without a win (§9 switch).
 - **Win:** the bar reaches its threshold, or a committee majority locks For.
+- **Whether a loss ends the level**, `stages.json`'s `loss_ends_level` (Stages tab, blank = Yes): normally yes — a lost stage sends the player back to the Office. Press conference (ST04) and Media Ambush (ST19) are marked "No" — Cameron, 2026-09-26: their threshold only decides which reward table applies (`win_delta_*`/`loss_delta_*`, already resolved from `state.outcome` before this is checked), not whether the level continues. `LevelRunner.loss_ends_level()` is the one place this is read; `OutcomePresenter.next_step_label()` reads the same flag so the button never says "Back to the Office" when the level is actually about to move on.
 
 ### 7.5 Committee stage
 - A committee (ST01, ST09-ST18) is an **ordinary sequential battle**, not a separate mechanic. It draws `opponent_count` opponents from its eligible pool — every opponents.json row whose own "stages" list names that STxx, the same dynamic-by-default selection every other Combat stage uses (`BattleSetup._opponents_for()`) — and fights them **one at a time**.

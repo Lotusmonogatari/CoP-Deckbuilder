@@ -66,6 +66,44 @@ func test_losing_a_stage_ends_the_level_there() -> void:
 	assert_eq(runner.outcome(), LevelRunner.LOST)
 
 
+## A press conference/media ambush's threshold only picks which reward table
+## applied — Cameron, 2026-09-26 — so losing one of these must not end the
+## level: the next stage plays exactly as it would after a win.
+func test_a_stage_marked_loss_ends_level_no_does_not_stop_the_level() -> void:
+	var runner := _runner({"stages": [
+		{"seq": 1, "name_en": "First", "opponents": [{"opp_id": "A"}],
+		 "loss_ends_level": "No"},
+		{"seq": 2, "name_en": "Second", "opponents": [{"opp_id": "B"}]},
+	]})
+	runner.finish_stage(LevelRunner.LOST)
+
+	assert_false(runner.is_finished(), "a press-conference-shaped loss carries on")
+	assert_eq(runner.current_stage()["name_en"], "Second")
+
+
+## The last stage's own "loss_ends_level: No" still lets the level finish —
+## there is simply nothing left to advance to, the same as a win would.
+func test_losing_the_last_stage_of_such_a_level_still_finishes_it() -> void:
+	var runner := _runner({"stages": [
+		{"seq": 1, "name_en": "Only", "opponents": [{"opp_id": "A"}],
+		 "loss_ends_level": "No"},
+	]})
+	runner.finish_stage(LevelRunner.LOST)
+
+	assert_true(runner.is_finished())
+	assert_eq(runner.outcome(), LevelRunner.WON,
+		"nothing left to fail at, the same as finishing a win would")
+
+
+func test_loss_ends_level_defaults_true_on_a_blank_or_null_column() -> void:
+	assert_true(LevelRunner.loss_ends_level({}), "no column at all")
+	assert_true(LevelRunner.loss_ends_level({"loss_ends_level": null}),
+		"the workbook's own <null> trap: present but blank")
+	assert_false(LevelRunner.loss_ends_level({"loss_ends_level": "No"}))
+	assert_false(LevelRunner.loss_ends_level({"loss_ends_level": "no"}),
+		"case-insensitive, like every other Yes/No column")
+
+
 func test_nothing_moves_once_the_level_is_over() -> void:
 	var runner := _runner()
 	runner.finish_stage(LevelRunner.LOST)

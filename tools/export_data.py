@@ -314,7 +314,7 @@ SHEETS = {
         "optional": [
             "Bar Model", "Energy Mode", "Energy Pool", "Sequence Mode",
             "Opponent Count", "Question Pool", "Reputation Affects Start",
-            "Reveal In Briefing",
+            "Reveal In Briefing", "Loss Ends Level",
         ],
         "columns": [
             ("Stage ID", "stage_id", "id"),
@@ -367,6 +367,13 @@ SHEETS = {
             # Blank means "Yes" — a stage tells the player what is coming
             # unless it is explicitly marked to spring it on them instead.
             ("Reveal In Briefing", "reveal_in_briefing", "str"),
+            # Blank means "Yes" — losing a stage ends the level, the game's
+            # long-standing default. "No" is for a stage whose threshold is
+            # only a bonus/penalty switch, not a stop sign: a press
+            # conference or a media ambush that runs out of turns should
+            # still apply its loss deltas, but the level goes on to the
+            # next stage rather than sending the player back to the Office.
+            ("Loss Ends Level", "loss_ends_level", "str"),
         ],
     },
     "Cards": {

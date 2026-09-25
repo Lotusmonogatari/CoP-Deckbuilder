@@ -141,7 +141,11 @@ func outcome() -> String:
 ## there is no threshold and how far you got is the point. `boosters` are the
 ## organisations pleased along the way, which later stages can draw on.
 ##
-## Losing any stage ends the level: you go back to the Office either way.
+## Losing any stage ends the level, you go back to the Office either way —
+## unless the stage itself is marked "Loss Ends Level: No" (a press
+## conference, a media ambush): there the threshold only decides which
+## reward table applied (already handled before this is called), and the
+## level carries on to the next stage regardless.
 func finish_stage(stage_outcome: String, score: int = 0, boosters: Array = []) -> void:
 	if is_finished():
 		return
@@ -156,13 +160,30 @@ func finish_stage(stage_outcome: String, score: int = 0, boosters: Array = []) -
 		"boosters": boosters.duplicate(),
 	}
 
-	if stage_outcome == LOST:
+	if stage_outcome == LOST and loss_ends_level(stage):
 		_outcome = LOST
 		return
 
 	index += 1
 	if index >= stages.size():
 		_outcome = WON
+
+
+## Whether losing `stage` ends the level — public (rather than the usual
+## underscore-prefixed instance helper) because scripts/ui/OutcomePresenter.gd
+## needs the same answer to word its "what happens next" button correctly,
+## and it must never guess at a second copy of this rule.
+##
+## Reads past the <null> trap the same way BattleEngine.gd's own optional
+## columns do (see its _string_field()'s comment for what that is): the
+## workbook writes a blank cell as an explicit JSON null, not an absent key,
+## so the null has to be caught before str() turns it into the literal text
+## "<null>" instead of the "use the default" blank it actually is.
+static func loss_ends_level(stage: Dictionary) -> bool:
+	var declared: Variant = stage.get("loss_ends_level")
+	if declared == null:
+		return true
+	return str(declared).strip_edges().to_lower() != "no"
 
 
 # ---------------------------------------------------------------------------

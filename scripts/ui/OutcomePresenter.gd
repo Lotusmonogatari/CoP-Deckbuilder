@@ -203,7 +203,11 @@ static func is_last_stage_of_level() -> bool:
 static func next_step_label(state: BattleState) -> String:
 	if not GameState.is_in_level():
 		return Text.say("outcome.close")
-	if state.outcome == "loss":
+	# A loss usually ends the level, but not every stage's threshold is a
+	# stop sign — a press conference or a media ambush running out of turns
+	# only decides which reward table applied (LevelRunner.loss_ends_level());
+	# the level goes on to the next stage exactly like a win would.
+	if state.outcome == "loss" and LevelRunner.loss_ends_level(GameState.level_runner.current_stage()):
 		return Text.say("outcome.back_to_office")
 	return (Text.say("outcome.back_to_office") if is_last_stage_of_level()
 		else Text.say("outcome.next_stage"))
