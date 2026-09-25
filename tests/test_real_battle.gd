@@ -131,6 +131,33 @@ func test_a_committee_stage_gets_its_members() -> void:
 	assert_true(engine.state.is_committee_stage())
 
 
+## A full playtest found ST01's eligible pool alone (11 voting members after
+## the chair) is more than its own 7-turn, 21-energy budget can ever
+## persuade to a majority. balance.json's committee_size_bands now caps it,
+## per the current protagonist's own difficulty (data/player.json).
+func test_a_committee_roster_is_capped_by_the_current_difficulty_band() -> void:
+	var player_before := DataDB.player.duplicate(true)
+	DataDB.use_protagonist("PC01")   # Normal: max 7 (Balance tab)
+
+	var config := BattleSetup.for_level_stage(COMMITTEE_LEVEL, COMMITTEE_STAGE)
+	var members := config["committee_members"] as Array
+	assert_gt(members.size(), 0)
+	assert_lte(members.size(), 7, "capped to the Normal band's max")
+
+	DataDB.player = player_before
+
+
+func test_a_committee_roster_is_unbounded_without_band_data() -> void:
+	var bands_before: Dictionary = (DataDB.balance.get("committee_size_bands", {}) as Dictionary).duplicate(true)
+	DataDB.balance["committee_size_bands"] = {}
+
+	var config := BattleSetup.for_level_stage(COMMITTEE_LEVEL, COMMITTEE_STAGE)
+	var members := config["committee_members"] as Array
+	assert_gt(members.size(), 7, "no band data means the full eligible pool, same as before this was wired up")
+
+	DataDB.balance["committee_size_bands"] = bands_before
+
+
 # ---------------------------------------------------------------------------
 # Playing one through
 # ---------------------------------------------------------------------------

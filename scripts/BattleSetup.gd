@@ -260,8 +260,18 @@ static func _opponents_for(level_id: String, stage_id: String, slot: int, count:
 ## lowest opp_id among those eligible, since nothing in the new data says who
 ## chairs which committee; ask Cameron before this is treated as final. A pin
 ## for a committee slot means "make sure this opponent is on the roster, as
-## its chair", not "replace the roster" — a committee needs its full eligible
-## pool to have anyone left to persuade.
+## its chair", not "replace the roster".
+##
+## The roster itself is then capped to balance.json's committee_size_bands
+## for the current protagonist's own difficulty (data/player.json,
+## DataDB.get_committee_size_band()) — added 2026-09-25 after a full
+## playtest found every committee using its ENTIRE eligible pool, up to 13
+## voting members for a single stage, far more than the stage's own turn and
+## energy budget can ever persuade to a majority. Truncating the existing
+## lowest-opp_id-first order (rather than a random pick) keeps this the same
+## stable, testable selection every other "who's in the room" pick in this
+## file already uses. No band data for the current difficulty (or a smaller
+## eligible pool than the cap) leaves the roster exactly as it was.
 static func _committee_for(level_id: String, stage_id: String, slot: int) -> Dictionary:
 	var eligible := eligible_opponents(stage_id)
 	var chair: Dictionary = eligible[0] if not eligible.is_empty() else {}
@@ -283,6 +293,12 @@ static func _committee_for(level_id: String, stage_id: String, slot: int) -> Dic
 			if str(members[index].get("opp_id", "")) == str(chair.get("opp_id", "")):
 				members.remove_at(index)
 				break
+
+	var difficulty := str(DataDB.player.get("difficulty", "Normal"))
+	var band := DataDB.get_committee_size_band(difficulty)
+	var cap := int(band.get("max", 0))
+	if cap > 0 and members.size() > cap:
+		members = members.slice(0, cap)
 
 	return {"chair": chair, "members": members}
 

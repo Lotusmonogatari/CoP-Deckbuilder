@@ -135,7 +135,7 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 | Floor debate (ST02), unit "Seats" | Shared pool of `bar_max` (101). Undecided = pool − player − opponent. Player gains come from Undecided first, then from the opponent **[DEFAULT]**. Opponent losses return to Undecided. Win at `win_threshold` (51). |
 | Caucus, Town Hall, Steering Committee (ST03, ST05, ST08), unit "Support" | The same shared-pool model on a 0–100 scale. |
 | Press conference (ST04) | A single "press tone" bar starting at `player_start`. Reporter questions are the opponent intents. |
-| TV debate (ST06) | A single bar. The player wins only if it is **at or above the threshold at the end of every turn** (survival). |
+| TV debate (ST06) | A single bar. The player wins only if it is **at or above the threshold at the end of every turn** (survival). Retuned 2026-09-25 (energy 3→5, hand 5→6, player_start 50→60) after a full playtest found the room mathematically unwinnable on turn 1 as originally tuned — the best possible turn-1 gain, any suit, full collection, was 12, short of the 15 needed from 50 to the 65 threshold. First-draft numbers, Cameron's to retune further. |
 | Committee (ST01) | Per-member model; see §7.5. |
 
 ### 7.4 Win and loss
@@ -143,7 +143,7 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 - **Win:** the bar reaches its threshold, or a committee majority locks For.
 
 ### 7.5 Committee stage
-- Members are selected from opponents eligible for the committee stage. The stage's opponent is the committee chair and is not a voting tile.
+- Members are selected from opponents eligible for the committee stage. The stage's opponent is the committee chair and is not a voting tile. The roster is capped to `balance.json`'s `committee_size_bands` (Balance tab, "COMMITTEE SIZE BY DIFFICULTY") for the current protagonist's own `difficulty` (`data/player.json`) — wired 2026-09-25, `BattleSetup._committee_for()`, after a full playtest found every committee using its entire eligible pool (up to 13 voting members for one stage) regardless of what its own turn and energy budget could actually persuade to a majority. First-draft band numbers, Cameron's to tune.
 - Each member has a lean from 0 to 100. Undecided members start at 50. An "Against" stance means the member starts **locked Against** **[DEFAULT]**.
 - The player targets one member with each card. `self_plus` and `opp_minus` (after affinity) both add lean to that member **[DEFAULT]**.
 - At lean ≥ 66 the member locks For; at ≤ 33 the member locks Against **[DEFAULT]**.
