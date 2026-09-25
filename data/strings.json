@@ -1783,5 +1783,54 @@
     "english": "Then: {intent}",
     "placeholders": "intent",
     "notes": null
+  },
+  {
+    "key": "office_hours.cannot_start",
+    "where": "Office Hours — notices",
+    "english": "This room could not open:\n• {problems}",
+    "placeholders": "problems",
+    "notes": null
+  },
+  {
+    "key": "office_hours.continue",
+    "where": "Office Hours — button",
+    "english": "Continue",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office_hours.done",
+    "where": "Office Hours — outcome title",
+    "english": "That's everyone.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office_hours.summary",
+    "where": "Office Hours — outcome body",
+    "english": "{correct} of {visited} won over.",
+    "placeholders": "correct, visited",
+    "notes": null
+  },
+  {
+    "key": "battle.question_prompt",
+    "where": "Battle — a room whose cards answer a drawn question but is not shaped like a press conference (e.g. Town Hall)",
+    "english": "They ask: {question}",
+    "placeholders": "question",
+    "notes": null
+  },
+  {
+    "key": "new_game.starting_stats",
+    "where": "New Game screen, heading over each protagonist's starting numbers",
+    "english": "Starting numbers:",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "new_game.stat_line",
+    "where": "New Game screen, one line per starting number",
+    "english": "{name}: {value}",
+    "placeholders": "name, value",
+    "notes": null
   }
 ]

@@ -381,13 +381,20 @@ static func _question_for_visitor(visitor_id: String) -> Dictionary:
 ## not line up with the real committee stages this migration adds (it points
 ## policy_study at ST01 and lobbyist_meeting at ST07, which are not their
 ## real workbook counterparts). Mapped directly here instead, by the plainest
-## reading of each pool's name against the 21 canon stages. ST05 Town Hall is
-## deliberately left out: CLAUDE.md already documents that its 20 questions
-## are written but the stage does not ask them yet, and this migration is not
-## the place to decide that it should. ST06 TV Debate is not one of the five
-## pools either, same as before.
+## reading of each pool's name against the 21 canon stages. ST06 TV Debate is
+## not one of the five pools.
+##
+## ST05 Town Hall now draws too (2026-09-25, Cameron): its bar is
+## Shared_pool rather than Single, so it is never is_press_conference() and
+## the reporter-shaped question UI never applies to it — see
+## OpponentPresenter.show_state()'s own branch on that same check. Instead
+## every card played still quietly answers the drawn question the same way
+## (BattleEngine._answer_question()), and BattleScreen shows what is being
+## asked in its own small panel (%QuestionPrompt) rather than swapping the
+## opponent row for a reporter the way a press conference does.
 const QUESTION_POOL_BY_STAGE := {
 	"ST04": "press_conference",
+	"ST05": "town_hall",
 	"ST19": "media_ambush",
 	"ST20": "lobbyist_meeting",
 	"ST21": "policy_study",
@@ -681,8 +688,39 @@ static func affinity_table() -> Dictionary:
 
 
 ## The player's standing at the very start of a run, from sanban.json.
+## The player's opening standing: sanban.json's own starting values, with
+## whichever protagonist is currently chosen (DataDB.player) allowed to
+## override any of them via their own optional "starting_meta" (data/
+## player.json) — blank or missing there, true of all four protagonists
+## today, means "use the sanban.json default", exactly what this always
+## returned before protagonists could differ at all. The mechanism exists so
+## a real per-character difference — Cameron's call, not this code's — has
+## somewhere to go once one is written; nothing plays differently until then.
 static func starting_meta() -> Dictionary:
+	return starting_meta_for(DataDB.player)
+
+
+## As starting_meta(), for an arbitrary protagonist rather than the one
+## currently chosen — the New Game screen's own use, to show each
+## candidate's own numbers before picking one commits to them.
+static func starting_meta_for(protagonist: Dictionary) -> Dictionary:
 	var meta := {}
 	for variable: Dictionary in DataDB.sanban:
 		meta[str(variable.get("name_en"))] = int(variable.get("start", 0))
+
+	var overrides: Dictionary = protagonist.get("starting_meta", {})
+	for name: String in overrides.keys():
+		if meta.has(name):
+			meta[name] = int(overrides[name])
 	return meta
+
+
+## The player's opening XP: 0 unless the chosen protagonist names their own
+## "starting_xp" (data/player.json) — same override/default split as
+## starting_meta(), and the same "nothing differs today" state.
+static func starting_xp() -> int:
+	return starting_xp_for(DataDB.player)
+
+
+static func starting_xp_for(protagonist: Dictionary) -> int:
+	return int(protagonist.get("starting_xp", 0))

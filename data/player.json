@@ -12,14 +12,24 @@
     "nothing here invents a character or a party. Replace them freely.",
     "",
     "FIELDS, per protagonist:",
-    "  player_id   PC01-PC04. Also the art ID and the speech ID:",
-    "              assets/characters/protagonists/PC01_neutral.png, and",
-    "              sounds.json's speech table under \"PC01\".",
-    "  name_en     Shown on the Office and the New Game screen.",
-    "  name_jp     Optional small accent beside it.",
-    "  party       The caucus is this party's caucus ({party} in stage names).",
-    "              Blank means the stage is just called \"Caucus\".",
-    "  blurb       One or two lines for the New Game screen. Blank is fine.",
+    "  player_id       PC01-PC04. Also the art ID and the speech ID:",
+    "                  assets/characters/protagonists/PC01_neutral.png, and",
+    "                  sounds.json's speech table under \"PC01\".",
+    "  name_en         Shown on the Office and the New Game screen.",
+    "  name_jp         Optional small accent beside it.",
+    "  party           The caucus is this party's caucus ({party} in stage",
+    "                  names). Blank means the stage is just called \"Caucus\".",
+    "  blurb           One or two lines for the New Game screen. Blank is fine.",
+    "  starting_meta   Optional overrides of sanban.json's own starting",
+    "                  values, by the same four names (\"Constituency",
+    "                  support\", \"Reputation\", \"Funds\", \"Party support\") —",
+    "                  a name left out uses sanban.json's default. Empty on",
+    "                  all four protagonists today: nobody starts any",
+    "                  differently yet. Shown on the New Game screen",
+    "                  alongside starting_xp so the choice is an informed one",
+    "                  whenever real numbers are written here.",
+    "  starting_xp     Optional starting XP. 0 (sanban.json has no XP row of",
+    "                  its own) when left out, true of all four today.",
     "",
     "default_protagonist is who you are before anyone has been chosen - the",
     "tests, and the browser playtest, which has no New Game screen.",
@@ -37,28 +47,36 @@
       "name_en": "Hiro",
       "name_jp": "",
       "party": "Frontier Party",
-      "blurb": ""
+      "blurb": "",
+      "starting_meta": {},
+      "starting_xp": 0
     },
     {
       "player_id": "PC02",
       "name_en": "Protagonist B",
       "name_jp": "",
       "party": "",
-      "blurb": ""
+      "blurb": "",
+      "starting_meta": {},
+      "starting_xp": 0
     },
     {
       "player_id": "PC03",
       "name_en": "Protagonist C",
       "name_jp": "",
       "party": "",
-      "blurb": ""
+      "blurb": "",
+      "starting_meta": {},
+      "starting_xp": 0
     },
     {
       "player_id": "PC04",
       "name_en": "Protagonist D",
       "name_jp": "",
       "party": "",
-      "blurb": ""
+      "blurb": "",
+      "starting_meta": {},
+      "starting_xp": 0
     }
   ]
 }

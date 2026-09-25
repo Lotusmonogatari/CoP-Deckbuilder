@@ -986,6 +986,15 @@ func _validate() -> void:
 					errors.append(
 						"%s's committee stage '%s' (slot %d) has no eligible opponents in opponents.json"
 						% [lid, stage_id, slot])
+			elif str(get_stage(str(stage_id)).get("mode", "")) == "Non-combat":
+				# Office Hours: draws visitors, not opponents — checking
+				# opponents.json here always warned, even once VI01 existed,
+				# because nothing about this stage was ever going to have one.
+				if get_visitors_for_stage(str(stage_id)).is_empty():
+					warnings.append(
+						("%s's stage '%s' (slot %d) has no eligible visitor in visitors.json, "
+						+ "so it cannot open until level_visitor_overrides.json pins one "
+						+ "or the workbook adds one.") % [lid, stage_id, slot])
 			elif get_opponents_for_stage(str(stage_id)).is_empty():
 				warnings.append(
 					("%s's stage '%s' (slot %d) has no eligible opponent in opponents.json, "

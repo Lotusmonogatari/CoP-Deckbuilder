@@ -231,7 +231,7 @@ Build **one milestone at a time**. After each one, stop and give Cameron: (a) wh
 | M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking | **Done** |
 | M2 | Battle UI: Floor debate (ST02) vs OP03 | A full battle is playable to a win or loss on desktop | **Done** |
 | M3 | Committee (ST01) and Party Caucus (ST03) | Both playable using Module 01 data | **Done** |
-| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Mostly done.** The level runner, meta-variables and saving/resuming exist (resuming mid-level returns to the start of the current stage). Office Hours visitor events are not implemented. |
+| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Done.** The level runner, meta-variables and saving/resuming exist (resuming mid-level returns to the start of the current stage). Office Hours visitor events are playable end to end (`design/proposals/office_hours.md`): a multiple-choice visitor room, its own `VisitorScreen`, and `StageRouting.gd` sending a level to the right screen stage by stage as it mixes Combat and Non-combat rooms. |
 | M5 | XP checkpoint shop | Unlocks and upgrades persist across the run | **Part done.** The shops, prices, refusals, and deck screen exist. The card collection is open for playtesting, so XP does not gate card unlocks. |
 | M6 | Android export test, then iOS | Runs on a real phone in portrait with crisp Japanese text | Not started |
 | Later | Additional room systems and mobile export | Defined as needed | The project includes nine playtest stage types. The conditional Town Hall and Steering Committee triggers are not connected to the level queue; the latter still needs a dedicated stage type and design content. |
@@ -239,10 +239,15 @@ Build **one milestone at a time**. After each one, stop and give Cameron: (a) wh
 ### Implemented systems and remaining work
 
 The project also contains a browser playtest, booster standing, scripted intent
-patterns, card cues, and a text catalog exported from the workbook. The
-Town Hall question bank exists, but the current Town Hall stage type does not
-ask those questions. The weak-answer tone cost remains a placeholder value of
-1 pending playtesting.
+patterns, card cues, opponent cues, and a text catalog exported from the
+workbook. Canon Town Hall (ST05) now draws its own written questions the
+same way a press conference does (`BattleSetup.QUESTION_POOL_BY_STAGE`), and
+BattleScreen shows what is being asked in a small panel of its own
+(`%QuestionPrompt`) since its Shared_pool bar means it never gets the
+press-conference-shaped opponent row. The weak-answer tone cost remains a
+placeholder value of 1 pending playtesting, and ST05 does not set it at all
+today, so a weak answer there costs nothing yet — Cameron's number to set,
+not a gap in the wiring.
 
 ### §8 systems that are specified but NOT switched on
 
@@ -332,6 +337,16 @@ the screen, Ace Attorney style: the player's card cue from the left (blue
 name tag) with what the card did underneath, the opponent's turn from the
 right (red). Lines queue; tapping the band skips; it never blocks the hand.
 
+**Starting numbers, per protagonist.** The New Game screen now lists each
+protagonist's opening Constituency support/Reputation/Funds/Party
+support/XP (`OfficeScreen._starting_stat_lines()`), read through
+`BattleSetup.starting_meta_for()`/`starting_xp_for()`. All four
+protagonists' own `starting_meta`/`starting_xp` (`data/player.json`) are
+empty/0 today, so every row still shows sanban.json's one shared set of
+numbers — the seam exists so a real per-character difference, Cameron's
+call, has somewhere to go, the same bargain `ArtLoader` strikes with art
+that has not been drawn.
+
 **Touch.** Every scrolling list drags with a finger (`DragScroll`); a drag
 that starts on a button scrolls and does not press it. A card pulled up out
 of the hand and let go is played; a short pull drops back. Scrollbars are
@@ -350,12 +365,19 @@ place for the next caller that nests something inside a PlaceholderArt.
 `tests/test_art_scheme.gd` guards it with a real scene-tree test.
 
 **A note for whoever next runs the scene builders.** `tools/build_battle_
-scene.gd` is kept in sync with the real `.tscn` (2026-09-27 fixed two spots
-where it had drifted — the card zoom's content column and the outcome
-panel's headline — and re-verified with a structural diff). `tools/
-build_office_scene.gd` is NOT: it predates most of the Office and would
-delete Office Management, Supplies, the deck screen and more if run. See its
-own doc comment before touching it.
+scene.gd` drifted again after its 2026-09-27 re-sync (2026-09-25: rerunning
+it to add `%QuestionPrompt` lost the card zoom's `ZoomColumn` its
+`unique_name_in_owner`, breaking the click-test interaction suite, and a few
+sizes/anchors no longer match the checked-in scene either) — fixed the one
+regression that actually broke something, but the file is not fully
+re-synced again; `%QuestionPrompt` itself was added straight to the real
+`.tscn` by hand instead, specifically to avoid widening that gap further.
+Confirm with a structural diff before trusting a rerun, the same discipline
+the 2026-09-27 fix used. `tools/build_visitor_scene.gd` (2026-09-25, new)
+builds `scenes/office_hours/VisitorScreen.tscn` the same way. `tools/
+build_office_scene.gd` is NOT kept in sync at all: it predates most of the
+Office and would delete Office Management, Supplies, the deck screen and
+more if run. See its own doc comment before touching it.
 
 **The battle screen was split** to make room for what comes next: it keeps
 the engine, the refresh, the status row and navigation, and four presenters

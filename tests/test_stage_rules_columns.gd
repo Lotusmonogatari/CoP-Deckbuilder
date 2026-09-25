@@ -212,11 +212,43 @@ func test_expand_level_resolves_a_real_stages_question_pool_into_a_count() -> vo
 		"the real press_conference pool's size, not 0")
 
 
-func test_expand_level_leaves_questions_count_at_zero_for_a_stage_with_no_pool() -> void:
+func test_expand_level_resolves_st05_town_halls_own_question_pool_too() -> void:
+	# 2026-09-25, Cameron: Town Hall's 20 written questions were sitting
+	# unused (CLAUDE.md §11) because ST05 was deliberately left out of
+	# QUESTION_POOL_BY_STAGE pending a decision on how to show them, since
+	# its Shared_pool bar means it is never is_press_conference(). Now
+	# resolved — BattleScreen shows the drawn question in its own
+	# %QuestionPrompt panel (see test_battle_screen equivalents, if any) —
+	# so this is the same shape of proof test_expand_level_resolves_a_real_
+	# stages_question_pool_into_a_count() already gives ST04.
 	var level := DataDB.get_level("LV01")
 	assert_false(level.is_empty(), "sanity: LV01 exists")
 	var expanded := BattleSetup.expand_level(level)
+
+	var town_hall: Dictionary = {}
 	for stage: Dictionary in expanded.get("stages", []):
-		assert_eq(int(stage.get("questions_count", -1)), 0,
-			"%s has no question_pool, so its count should be 0, not left unset"
-				% stage.get("stage_id"))
+		if stage.get("stage_id") == "ST05":
+			town_hall = stage
+			break
+	assert_false(town_hall.is_empty(), "sanity: LV01 has an ST05 stage")
+	assert_eq(int(town_hall.get("questions_count", 0)), DataDB.questions.get("town_hall", []).size(),
+		"the real town_hall pool's size, not 0")
+
+
+func test_expand_level_leaves_questions_count_at_zero_for_a_stage_with_no_pool() -> void:
+	# LV04's first and third stages, ST03 (Caucus) and ST10, are neither
+	# BattleSetup.QUESTION_POOL_BY_STAGE entries nor hand-written "questions"
+	# stages — unlike its own second stage, ST04, checked by the sibling
+	# test above. (LV01's only stage used to serve this test too, until
+	# ST05 Town Hall got its own real pool wired in, 2026-09-25.)
+	var level := DataDB.get_level("LV04")
+	assert_false(level.is_empty(), "sanity: LV04 exists")
+	var expanded := BattleSetup.expand_level(level)
+	var checked := 0
+	for stage: Dictionary in expanded.get("stages", []):
+		if stage.get("stage_id") in ["ST03", "ST10"]:
+			checked += 1
+			assert_eq(int(stage.get("questions_count", -1)), 0,
+				"%s has no question_pool, so its count should be 0, not left unset"
+					% stage.get("stage_id"))
+	assert_eq(checked, 2, "sanity: both ST03 and ST10 were found and checked")

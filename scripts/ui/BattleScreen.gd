@@ -69,6 +69,7 @@ var _card_back: CardBackView = null
 @onready var _stage_name: Label = %StageName
 @onready var _stage_name_jp: Label = %StageNameJP
 @onready var _turn_label: Label = %TurnLabel
+@onready var _question_prompt: Label = %QuestionPrompt
 @onready var _support_bar: SupportBar = %SupportBar
 @onready var _energy_row: HBoxContainer = %EnergyRow
 @onready var _gaffe_label: Label = %GaffeLabel
@@ -239,6 +240,7 @@ func _refresh() -> void:
 		else engine.turn_caption())
 
 	_speaker.show_state(engine, str(_stage.get("stage_id", "")))
+	_refresh_question_prompt(engine)
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
@@ -263,6 +265,25 @@ func _refresh() -> void:
 		if state.outcome == "win":
 			_player_portrait.show_victory()
 		_outcome.show_outcome(engine, _stage)
+
+
+## What is being asked, for a room whose questions are answered by whichever
+## card is played (BattleSetup.QUESTION_POOL_BY_STAGE) but whose bar is not
+## Single, so the reporter-shaped row a press conference gets never shows it
+## (OpponentPresenter.show_state()'s own check). Blank and hidden everywhere
+## else, including a press conference itself — that room already says this
+## in the opponent row, and saying it twice would be clutter, not clarity.
+func _refresh_question_prompt(active_engine: BattleEngine) -> void:
+	if active_engine.is_press_conference():
+		_question_prompt.hide()
+		return
+	var question := active_engine.current_question()
+	if question.is_empty():
+		_question_prompt.hide()
+		return
+	_question_prompt.text = Text.say(
+		"battle.question_prompt", {"question": str(question.get("text", ""))})
+	_question_prompt.show()
 
 
 ## Energy as pips rather than a number: three small marks are quicker to
@@ -691,5 +712,12 @@ func _on_outcome_closed() -> void:
 		GameState.end_level()
 		get_tree().change_scene_to_file(OFFICE_SCENE)
 	else:
-		# Same scene, next stage. Reloading keeps the setup in one place.
-		get_tree().reload_current_scene()
+		# Same scene, next stage — unless it's an Office Hours stage, which
+		# plays on VisitorScreen instead. Reloading (rather than a plain
+		# change_scene back to this same path) keeps the setup in one place
+		# for the common case, where the next stage is another battle.
+		var next_scene := StageRouting.scene_for(GameState.level_runner.current_stage())
+		if next_scene == StageRouting.BATTLE_SCENE:
+			get_tree().reload_current_scene()
+		else:
+			get_tree().change_scene_to_file(next_scene)

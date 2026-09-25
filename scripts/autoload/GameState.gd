@@ -212,7 +212,7 @@ func load_save(saved: Dictionary) -> void:
 func reset_meta() -> void:
 	meta = BattleSetup.starting_meta()
 	last_meta_change = {}
-	xp = 0
+	xp = BattleSetup.starting_xp()
 	last_xp_gained = 0
 	reset_collection()
 	reset_staff()

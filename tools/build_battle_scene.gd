@@ -13,6 +13,16 @@ extends SceneTree
 ## Re-run this only if you want to regenerate the layout from scratch; it
 ## overwrites any edits made in the editor.
 ##
+## 2026-09-25: running it to add %QuestionPrompt surfaced real drift beyond
+## the two spots the 2026-09-27 fix (see the file's own history) already
+## caught — ZoomColumn had lost its unique_name_in_owner along the way
+## (fixed here, in _add_card_zoom()), and a few sizes/anchors also no longer
+## match the checked-in scene. %QuestionPrompt itself was added straight to
+## the real .tscn by hand instead, specifically to avoid re-introducing that
+## drift while it isn't otherwise being investigated. Whoever next re-syncs
+## this file against the real scene should treat this note the way the
+## 2026-09-27 one still stands: confirm with a structural diff, not a glance.
+##
 ## The order of the sections below is the order they appear on screen, and
 ## follows the layout in the build brief at section 10.
 
@@ -40,6 +50,7 @@ func _init() -> void:
 
 	var column := _build_frame()
 	_add_header(column)
+	_add_question_prompt(column)
 	_add_opponent_row(column)
 	_add_support_bar(column)
 	_add_status_row(column)
@@ -150,6 +161,20 @@ func _add_header(parent: Control) -> void:
 
 ## The art box (stage background showing through behind two full-body
 ## cutouts), name, and what the opponent is about to do in plain words.
+## A room whose cards silently double as answers to a drawn question
+## (BattleEngine._answer_question(), Cameron's 2026-09-25 Town Hall wiring)
+## but whose bar is not Single — so it never gets the press conference's own
+## reporter-shaped row (OpponentPresenter.show_state()) — still says what is
+## being asked, here, rather than leaving the effect invisible. Hidden until
+## BattleScreen._refresh() has a question and a room that is not already
+## showing one this way.
+func _add_question_prompt(parent: Control) -> void:
+	var prompt := _label("QuestionPrompt", "", "SmallLabel")
+	prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	prompt.visible = false
+	_adopt(prompt, parent, true)
+
+
 func _add_opponent_row(parent: Control) -> void:
 	var row := VBoxContainer.new()
 	row.name = "OpponentRow"
@@ -328,7 +353,11 @@ func _add_card_zoom() -> void:
 	column.name = "ZoomColumn"
 	column.add_theme_constant_override("separation", 16)
 	column.custom_minimum_size = Vector2(900, 0)
-	_adopt(column, panel)
+	# Unique: BattleScreen._on_card_chosen() reaches it directly by
+	# %ZoomColumn (this fell out of sync with the real .tscn at some point —
+	# caught 2026-09-25 when regenerating for %QuestionPrompt broke the
+	# click-test interaction suite).
+	_adopt(column, panel, true)
 
 	_adopt(_label("ZoomTitle", "", "TitleLabel"), column, true)
 	_adopt(_label("ZoomSubtitle", "", "JapaneseAccent"), column, true)

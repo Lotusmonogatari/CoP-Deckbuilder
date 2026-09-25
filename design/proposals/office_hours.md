@@ -8,18 +8,20 @@ drawn dynamically per stage (the same way opponents already are), and
 rewards pulled from the game's existing booster/modifier/shop-item systems
 rather than raw meta-variable deltas.
 
-**Status (2026-09-25, updated twice): everything except the UI screen is
-built**, including shop-item and segment rewards and the loss-state
-question, both settled in the second follow-up. Data, DataDB validation,
-visitor selection, the rules engine, and the GameState reward/penalty
-application all exist and are tested (576 GUT tests passing). What's NOT
-built: `VisitorScreen.tscn` — nothing routes a Non-combat stage anywhere
-yet, so reaching one today shows BattleScreen's existing "cannot start"
-refusal (`BattleEngine` correctly says "there is nobody to argue with"
-rather than crashing — see §6 and `tests/test_real_battle.gd`'s
-`test_a_non_combat_stage_fails_battleengine_setup_safely_for_now`). §6
-below is the authoritative "what's actually built" list; treat the rest of
-this document as the plan that produced it.
+**Status (2026-09-25, updated three times): everything, including the UI
+screen, is built.** Data, DataDB validation, visitor selection, the rules
+engine, the GameState reward/penalty application, and now `VisitorScreen.
+tscn` all exist and are tested (715 GUT tests passing, plus a real
+click-driven interaction test — `tests/interaction/office_hours_test.tscn`
+— that walks a real Office Hours stage and on into the next one). §6 below
+is the authoritative "what's actually built" list; treat the rest of this
+document as the plan that produced it.
+
+A `BattleEngine` "there is nobody to argue with" refusal (§6,
+`tests/test_real_battle.gd`'s `test_a_non_combat_stage_fails_battleengine_
+setup_safely_for_now`) still exists and is still tested — it is what a
+Non-combat stage would hit if something ever routed it to BattleScreen by
+mistake, which `StageRouting.gd` now exists specifically to prevent.
 
 ## Confirmed with Cameron before/while building this
 
@@ -42,7 +44,7 @@ this document as the plan that produced it.
 | Rules engine | **Built** | `scripts/rules/OfficeHoursEngine.gd` — pure, headless, no cards/energy/gaffe, no loss state |
 | Reward/penalty application | **Built** | `GameState.apply_visitor_reward_entries()` resolves each target (`RewardTargets.gd` + `DataDB.resolve_reward_target()`), rolls a range delta once at apply time, and applies a booster standing change, a segment favorability change, or a modifier grant. A shop item is recorded as owned and its own `Grants` list applies the same way, recursively (one level only — an item cannot grant a second item) |
 | Validation | **Built** | `DataDB` cross-checks every Visitor's stage eligibility and Reward/Penalty targets (now including `SGxx`), every Visitor Question's link back to a real Visitor and a real, answerable A–D, and a `level_visitor_overrides.json` pin the same way opponent pins are checked |
-| UI | **Not built** | `scenes/office_hours/VisitorScreen.tscn` — background + portrait (kept, as asked), a dialogue text block, 4 choice buttons; `OfficeScreen._on_start()` still always opens `BattleScreen.tscn` regardless of stage mode |
+| UI | **Built** | `scenes/office_hours/VisitorScreen.tscn` / `scripts/ui/VisitorScreen.gd` — background + portrait (`VisitorPresenter.gd`, a near-twin of `OpponentPresenter.gd`), a dialogue text block, 4 choice buttons, a response line on the same `CueBanner` every other spoken line uses, and an outcome panel. `StageRouting.gd` decides which scene a stage plays on (`OfficeScreen`'s two start paths, and both `BattleScreen`/`VisitorScreen`'s own "move on to the next stage" close out through it), so a level can freely mix Combat and Non-combat stages |
 
 ## 1. Data model
 
@@ -230,9 +232,15 @@ Cameron asked to keep —
 - four choice buttons (the four `choice_a`..`choice_d` texts)
 - a response line that appears after the pick, before moving on
 
-`OfficeScreen.gd` still always opens `BattleScreen.tscn` regardless of
-stage `mode` — this section (and `VisitorScreen.tscn`/`VisitorPresenter.gd`
-themselves) is the one part of the plan **not** built yet.
+**Built 2026-09-25**, exactly as sketched above, plus one addition: a
+response line appears on the same `CueBanner` every other spoken line in
+the game already uses (red/OPPONENT side, the visitor's own name), rather
+than a bespoke label, so a visitor's answer reads the same way an
+opponent's turn does. `OfficeScreen.gd`'s two start paths and both
+`BattleScreen`/`VisitorScreen`'s own "move on to the next stage" close-outs
+now go through `StageRouting.scene_for(stage)` rather than assuming
+`BattleScreen.tscn`, so a level can freely mix Combat and Non-combat
+stages.
 
 ## 4. Open points — flagging rather than deciding
 
@@ -254,11 +262,12 @@ themselves) is the one part of the plan **not** built yet.
 2. ~~`BattleSetup` selection...~~ **Built.**
 3. ~~`OfficeHoursEngine.gd` + full headless GUT coverage...~~ **Built.**
 4. ~~Reward/penalty application in `GameState`...~~ **Built.**
-5. `VisitorScreen.tscn` + `VisitorPresenter.gd` + `OfficeScreen.gd`
-   routing. **Not built** — the one remaining step.
-6. Real click-driven interaction test (`tests/interaction/`), extending
-   `loop_driver.gd`'s pattern to walk a Non-combat stage. **Not built** —
-   needs step 5 first.
+5. ~~`VisitorScreen.tscn` + `VisitorPresenter.gd` + `OfficeScreen.gd`
+   routing.~~ **Built** — see §3.
+6. ~~Real click-driven interaction test...~~ **Built** —
+   `tests/interaction/office_hours_test.tscn` walks a real ST07 stage (LV11)
+   and on into its next stage, proving `StageRouting.gd` hands off correctly
+   both ways.
 
 ## 6. Built already (2026-09-25)
 
@@ -323,14 +332,21 @@ themselves) is the one part of the plan **not** built yet.
 - Tests across 4 new files (`test_reward_targets.gd`,
   `test_office_hours_engine.gd`, `test_visitor_reward_application.gd`,
   `test_visitor_selection.gd`) plus regression coverage in
-  `test_level_runner.gd` and `test_real_battle.gd` pinning down today's
-  safe-failure behavior at the UI boundary. **576/576 passing**, real
-  click-driven loop test still clean.
+  `test_level_runner.gd` and `test_real_battle.gd` pinning down the
+  BattleEngine refusal below.
+- **The UI (§3), built 2026-09-25**: `scenes/office_hours/VisitorScreen.tscn`
+  / `scripts/ui/VisitorScreen.gd`, `scripts/ui/VisitorPresenter.gd`, and
+  `scripts/ui/StageRouting.gd` (which `OfficeScreen.gd`'s two start paths
+  and `BattleScreen.gd`'s own "move on to the next stage" now go through
+  too, so a level mixing Combat and Non-combat stages routes correctly both
+  ways). `tests/test_stage_routing.gd` covers the routing decision itself,
+  and `tests/interaction/office_hours_test.tscn` walks a real stage
+  (LV11's ST07, then on into its ST05) with real clicks. **715/715 GUT
+  tests passing**, all 5 interaction tests (including this new one) clean.
 
-**Not built:** the UI (§3) — `VisitorScreen.tscn`, `VisitorPresenter.gd`,
-and `OfficeScreen.gd` routing. Today, a level that reaches a Non-combat
-stage opens `BattleScreen.tscn` as normal and gets a clean refusal
-("there is nobody to argue with") rather than a crash or a broken battle —
-safe, but not playable. That refusal is itself covered by a test
-(`test_real_battle.gd`) so it can't silently start doing something worse
-before the UI exists to replace it.
+The `BattleEngine` "there is nobody to argue with" refusal
+(`test_real_battle.gd`'s `test_a_non_combat_stage_fails_battleengine_
+setup_safely_for_now`) is still there and still tested — it is the safety
+net for a Non-combat stage reaching `BattleScreen` by mistake, which
+`StageRouting.gd` now exists specifically to prevent, not a live code path
+under normal play any more.

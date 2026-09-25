@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/interaction/office_hours_test.gd" id="1_officehourstest"]
+
+[node name="OfficeHoursTest" type="Node"]
+script = ExtResource("1_officehourstest")

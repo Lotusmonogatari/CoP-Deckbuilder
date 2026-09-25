@@ -508,6 +508,43 @@ func test_answering_in_the_invited_suit_pleases_the_press() -> void:
 			"answering in the suit invited pleases the people who asked")
 
 
+func test_st05_town_hall_actually_answers_its_drawn_question_too() -> void:
+	# 2026-09-25: ST05's own bar is Shared_pool, so it is never
+	# is_press_conference() — proving here, against the real level/stage
+	# rather than a playtest fixture, that _answer_question() still runs
+	# for it (BattleEngine.play_card() gates on _questions being non-empty,
+	# not on bar model) and that a card graded "S" for the drawn question
+	# still pleases whoever asked, the same as a press conference.
+	var config := BattleSetup.for_level_stage("LV01", "ST05")
+	var engine := BattleEngine.new()
+	_setup(engine, config)
+
+	var question := engine.current_question()
+	assert_false(question.is_empty(), "sanity: ST05 drew a real town_hall question")
+	var grades: Dictionary = question.get("grades", {})
+
+	var wanted := ""
+	for suit: String in grades.keys():
+		if str(grades[suit]) == "S":
+			wanted = suit
+			break
+	assert_false(wanted.is_empty(), "sanity: the drawn question grades some suit S")
+
+	var answer := ""
+	for card: Dictionary in DataDB.get_cards_by_tier(Ledger.OPENING_TIER):
+		if str(card.get("suit", "")) == wanted:
+			answer = str(card["card_id"])
+			break
+	assert_false(answer.is_empty(), "a Starter card answers in %s" % wanted)
+
+	engine.state.hand.assign([answer])
+	engine.play_card(answer)
+
+	for booster: String in (question.get("pleases_boosters", []) as Array):
+		assert_true(engine.pleased_boosters().has(booster),
+			"an S-graded answer in Town Hall pleases whoever asked, same as a press conference")
+
+
 func test_every_question_can_be_answered_in_the_suit_it_invites() -> void:
 	# A question inviting a suit no Starter card has would be unanswerable
 	# without it being obvious from the data. This catches that on Cameron's

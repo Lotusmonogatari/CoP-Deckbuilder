@@ -9,8 +9,6 @@ extends Control
 ## It also reports how the last level went, because going back to a hub that
 ## does not acknowledge what just happened feels like a bug.
 
-const BATTLE_SCENE := "res://scenes/battle/BattleScreen.tscn"
-
 @onready var _title: Label = %Title
 @onready var _subtitle: Label = %Subtitle
 @onready var _report: Label = %Report
@@ -381,6 +379,9 @@ func _protagonist_row(protagonist: Dictionary) -> Control:
 	var blurb := str(protagonist.get("blurb", ""))
 	if not blurb.is_empty():
 		box.add_child(UiKit.line(blurb, "SmallLabel"))
+	box.add_child(UiKit.line(Text.say("new_game.starting_stats"), "SmallLabel"))
+	for line: String in _starting_stat_lines(protagonist):
+		box.add_child(UiKit.line(line, "SmallLabel"))
 	for label: Label in box.get_children().filter(func(n: Node) -> bool: return n is Label):
 		label.custom_minimum_size.x = UiKit.LINE_WIDTH - 220.0
 
@@ -389,6 +390,23 @@ func _protagonist_row(protagonist: Dictionary) -> Control:
 	choose.name = "Choose"
 	box.add_child(choose)
 	return row
+
+
+## Constituency support, Reputation, Funds, Party support and XP this
+## protagonist actually opens the run with — sanban.json's defaults, with
+## any of their own starting_meta/starting_xp overrides (data/player.json)
+## layered on. All four protagonists override nothing today, so every row
+## reads the same set of numbers; the line exists so the choice stops being
+## a guess the moment one of them does.
+func _starting_stat_lines(protagonist: Dictionary) -> Array[String]:
+	var lines: Array[String] = []
+	var meta := BattleSetup.starting_meta_for(protagonist)
+	for variable: Dictionary in DataDB.sanban:
+		var name := str(variable.get("name_en", ""))
+		lines.append(Text.say("new_game.stat_line", {"name": name, "value": meta.get(name, 0)}))
+	lines.append(Text.say("new_game.stat_line",
+		{"name": "XP", "value": BattleSetup.starting_xp_for(protagonist)}))
+	return lines
 
 
 func _on_protagonist_chosen(player_id: String) -> void:
@@ -940,7 +958,7 @@ func _opponents_line(stage: Dictionary) -> String:
 ## of one, go straight back into it.
 func _on_start_pressed() -> void:
 	if GameState.is_in_level():
-		get_tree().change_scene_to_file(BATTLE_SCENE)
+		get_tree().change_scene_to_file(StageRouting.scene_for(GameState.level_runner.current_stage()))
 		return
 	_show_levels()
 
@@ -955,4 +973,4 @@ func _on_start() -> void:
 	# The runner is handed over rather than rebuilt, so the level keeps its
 	# place and its carried buffs as the battle screen moves through it.
 	GameState.begin_level(runner)
-	get_tree().change_scene_to_file(BATTLE_SCENE)
+	get_tree().change_scene_to_file(StageRouting.scene_for(runner.current_stage()))
