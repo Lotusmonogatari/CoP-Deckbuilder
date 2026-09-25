@@ -348,7 +348,9 @@ func _refresh_energy(state: BattleState) -> void:
 func _refresh_gaffe(state: BattleState) -> void:
 	var critical := engine.gaffe_is_critical()
 	_gaffe_label.text = "Gaffes %d / %d" % [state.gaffe, state.gaffe_limit]
-	_gaffe_label.theme_type_variation = "GaffeWarning" if critical else ""
+	# SmallLabel either way — same size as Guard beside it — so turning
+	# critical only changes the colour and weight, never the size.
+	_gaffe_label.theme_type_variation = "GaffeWarning" if critical else "SmallLabel"
 
 	# Announced only when it MOVED. This used to fire on every refresh — every
 	# card, every turn, every stage opened — so a gaffe sound would have gone

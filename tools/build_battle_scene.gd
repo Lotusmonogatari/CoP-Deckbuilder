@@ -281,7 +281,10 @@ func _add_status_row(parent: Control) -> void:
 	guard.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_adopt(guard, row, true)
 
-	var gaffe := _label("GaffeLabel", "Gaffes 0 / 6")
+	# Same size as Guard beside it (2026-09-26: it used to be the default,
+	# larger Label size) — BattleScreen._refresh_gaffe() switches this to
+	# GaffeWarning when critical, which matches this same size too.
+	var gaffe := _label("GaffeLabel", "Gaffes 0 / 6", "SmallLabel")
 	gaffe.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_adopt(gaffe, row, true)
 

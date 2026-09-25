@@ -83,9 +83,10 @@ func _init() -> void:
 	_add_label_variation(theme, "JapaneseAccent", regular, SIZE_JP_ACCENT)
 	theme.set_color("font_color", "JapaneseAccent", Color(1, 1, 1, JP_ACCENT_ALPHA))
 
-	# The gaffe counter. Normal until one more gaffe would end the stage,
-	# then GaffeWarning turns it red — and only then.
-	_add_label_variation(theme, "GaffeWarning", bold, SIZE_BODY)
+	# The gaffe counter. SmallLabel-sized, matching Guard beside it, until one
+	# more gaffe would end the stage — then GaffeWarning turns it red and
+	# bold without growing it past that same size.
+	_add_label_variation(theme, "GaffeWarning", bold, SIZE_SMALL)
 	theme.set_color("font_color", "GaffeWarning", Color(0.9, 0.25, 0.2))
 
 	# The spoken line that sweeps across the screen when a card is played
