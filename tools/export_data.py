@@ -618,7 +618,7 @@ SHEETS = {
                      "Uses Per Turn", "Stack Cap", "Purchase Limit", "Player Choice",
                      "Bonus 1 Role", "Bonus 1 Min Tier", "Bonus 1 Amount",
                      "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
-                     "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount"],
+                     "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Card Tier"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -676,6 +676,16 @@ SHEETS = {
             ("Bonus 3 Role", "bonus_3_role", "str"),
             ("Bonus 3 Min Tier", "bonus_3_min_tier", "int"),
             ("Bonus 3 Amount", "bonus_3_amount", "int"),
+            # 2026-09-26, Cameron: SH27-29 ("Purchase Random Tier N Card")
+            # were bought-then-unusable — Use In Office/Stage both blank
+            # ("No") and Grants empty, so nothing about buying one did
+            # anything, matching their own Description's "takes effect
+            # immediately": they were never meant to sit in the inventory
+            # and be Used at all. This is that immediate effect, in the
+            # same spirit as Grants but not shaped like it (a random
+            # UNOWNED card of a tier is not a standing delta) — blank on
+            # every other row, 1/2/3 on SH27/28/29.
+            ("Card Tier", "card_tier", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's

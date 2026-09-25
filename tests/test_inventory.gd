@@ -11,6 +11,8 @@ extends GutTest
 ##   SH20 Extra Draw                  Level, "DRAW +1", cap 2, limit 2/level
 ##   SH09 Blue Profile                No for both places, no Grants
 ##   SH25 Host National Booster Dinner  Now, Player Choice, "TIER:National +2"
+##   SH27/28/29 Purchase Random Tier 1/2/3 Card  effect on purchase, not
+##                                    held/Used at all — see card_tier
 
 var _saved: Dictionary = {}
 
@@ -26,6 +28,7 @@ func before_each() -> void:
 		"meta": GameState.meta.duplicate(true),
 		"standing": GameState.booster_standing.duplicate(true),
 		"staff_hired": GameState.staff_hired.duplicate(true),
+		"owned_cards": GameState.owned_cards.duplicate(),
 	}
 	GameState.inventory = {}
 	GameState.shop_bought_this_level = {}
@@ -47,6 +50,7 @@ func after_each() -> void:
 	GameState.meta = _saved["meta"]
 	GameState.booster_standing = _saved["standing"]
 	GameState.staff_hired = _saved["staff_hired"]
+	GameState.owned_cards = _saved["owned_cards"]
 
 
 # ---------------------------------------------------------------------------
@@ -230,3 +234,56 @@ func test_a_level_item_used_mid_stage_also_covers_the_rest_of_the_level() -> voi
 	GameState.inventory["SH20"] = 1
 	GameState.use_item_in_stage("SH20", engine)
 	assert_eq(GameState.take_item_bonuses_for_stage(), {"DRAW": 1})
+
+
+# ---------------------------------------------------------------------------
+# Purchase Random Tier N Card (SH27/28/29) — effect on purchase, no inventory
+# ---------------------------------------------------------------------------
+# The real bug this guards: these three had Use In Office/Stage both blank
+# ("No") and no Grants, so a bought one only ever sat in the inventory
+# refusing "This can't be used here." Their own Description already said
+# "takes effect immediately" — buy_random_card() is that effect, standing
+# apart from every other Supplies item, which is bought first and Used later.
+
+func test_buying_a_random_card_grants_one_of_the_right_tier_immediately() -> void:
+	GameState.owned_cards = []
+	var funds := int(GameState.meta["Funds"])
+	var result := GameState.buy_random_card("SH28")   # Tier 2
+
+	assert_true(result["ok"])
+	assert_eq(GameState.owned_cards.size(), 1)
+	var card := DataDB.get_card(GameState.owned_cards[0])
+	assert_eq(int(card.get("tier")), 2)
+	assert_eq(int(GameState.meta["Funds"]), funds - int(DataDB.get_shop_item("SH28")["cost_yen"]))
+	assert_string_contains(result["message"], str(card.get("name_en")))
+
+
+func test_a_random_card_purchase_never_repeats_an_owned_card() -> void:
+	GameState.owned_cards = []
+	var tier_1_ids: Array[String] = []
+	for card: Dictionary in DataDB.cards:
+		if int(card.get("tier", -1)) == 1:
+			tier_1_ids.append(str(card["card_id"]))
+	# Own every Tier 1 card but one, so the purchase has exactly one
+	# possible outcome and repeating it would be immediately visible.
+	for card_id: String in tier_1_ids.slice(1):
+		GameState.owned_cards.append(card_id)
+
+	var result := GameState.buy_random_card("SH27")   # Tier 1
+
+	assert_true(result["ok"])
+	assert_true(GameState.owned_cards.has(tier_1_ids[0]),
+		"the one card left unowned is the only one this purchase could grant")
+	assert_eq(GameState.owned_cards.size(), tier_1_ids.size())
+
+
+func test_owning_every_card_of_a_tier_refuses_the_purchase() -> void:
+	for card: Dictionary in DataDB.cards:
+		if int(card.get("tier", -1)) == 3 and not GameState.owned_cards.has(card["card_id"]):
+			GameState.owned_cards.append(str(card["card_id"]))
+	var funds := int(GameState.meta["Funds"])
+
+	var result := GameState.buy_random_card("SH29")   # Tier 3
+
+	assert_false(result["ok"])
+	assert_eq(int(GameState.meta["Funds"]), funds, "a refusal never spends anything")

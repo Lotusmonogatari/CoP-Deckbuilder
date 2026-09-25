@@ -1073,6 +1073,43 @@ func buy_shop_item(item_id: String) -> String:
 	return ""
 
 
+## SH27/28/29 ("Purchase Random Tier N Card"): its own Description says
+## "takes effect immediately", and it always did — it just had nowhere to
+## do it, since Use In Office/Stage were both blank ("No") and Grants was
+## empty, so a bought one only ever sat in the inventory refusing "This
+## can't be used here." (Cameron, 2026-09-26). This is that immediate
+## effect: pay the same way any shop item does, then grant ownership of one
+## random card of shop.json's own "card_tier" that the player does not
+## already own — no inventory step at all, unlike every other item here.
+##
+## Returns { "ok": bool, "message": String }: a refusal (not ok), or what
+## to tell the player about which card they got.
+func buy_random_card(item_id: String) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := Items.buy_refusal(item, item_count(item_id),
+		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+
+	var tier := int(item.get("card_tier", 0))
+	var choices: Array[String] = []
+	for card: Dictionary in DataDB.cards:
+		if int(card.get("tier", -1)) == tier and not owned_cards.has(str(card.get("card_id", ""))):
+			choices.append(str(card.get("card_id", "")))
+	if choices.is_empty():
+		return {"ok": false, "message": Text.say("shop.no_cards_left_at_tier", {"tier": tier})}
+
+	var price := Items.costs(item)
+	_move_xp(-int(price["XP"]))
+	_move_meta("Funds", -int(price["Funds"]))
+	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
+
+	var card_id: String = choices[randi() % choices.size()]
+	owned_cards.append(card_id)
+	var card_name := str(DataDB.get_card(card_id).get("name_en", card_id))
+	return {"ok": true, "message": Text.say("shop.card_unlocked", {"name": card_name})}
+
+
 ## Uses one item from the Office. Its standing effects (boosters, segments,
 ## modifiers) apply now; its stage effects wait for the next stage, or the
 ## whole next level when its Duration is "Level".

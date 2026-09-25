@@ -1909,5 +1909,19 @@
     "english": "{count} gaffes this run — Constituency support took a {amount} hit.",
     "placeholders": "count, amount",
     "notes": null
+  },
+  {
+    "key": "shop.card_unlocked",
+    "where": "Office report after buying a random-tier card",
+    "english": "{name} unlocked and added to your collection.",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "shop.no_cards_left_at_tier",
+    "where": "Shop — refusals",
+    "english": "Every Tier {tier} card is already yours.",
+    "placeholders": "tier",
+    "notes": null
   }
 ]

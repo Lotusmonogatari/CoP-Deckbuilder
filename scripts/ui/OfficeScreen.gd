@@ -563,6 +563,20 @@ func _price_text(item: Dictionary) -> String:
 
 
 func _on_buy_item(item_id: String) -> void:
+	var item := DataDB.get_shop_item(item_id)
+	# "Purchase Random Tier N Card" (card_tier set) takes effect on
+	# purchase — a random unowned card of that tier, no inventory step —
+	# rather than being held and Used like every other Supplies item.
+	if item.get("card_tier") != null:
+		var result := GameState.buy_random_card(item_id)
+		var message := str(result.get("message", ""))
+		if result.get("ok", false):
+			_report.text = message
+			_after_spending("", _show_supplies)
+		else:
+			_after_spending(message, _show_supplies)
+		return
+
 	var refusal := GameState.buy_shop_item(item_id)
 	if refusal.is_empty():
 		_report.text = Text.say("shop.item_bought",
