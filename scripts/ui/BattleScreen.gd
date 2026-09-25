@@ -751,13 +751,16 @@ func _on_outcome_closed() -> void:
 
 	var state := engine.state
 	# A caucus has no threshold: how high the support got is the score, and
-	# that is what later stages draw on. outcome_reason/gaffe feed
-	# GameState's own lifetime tracking (stages lost to the gaffe meter
-	# specifically, and the running gaffe total) — they change nothing
-	# about what the stage is worth.
+	# that is what later stages draw on. The gaffe-loss flag and gaffe count
+	# feed GameState's own lifetime tracking (stages lost to the gaffe meter
+	# specifically, and the running gaffe total) — they change nothing about
+	# what the stage is worth. Checked directly off the numbers, not
+	# state.outcome_reason's own (already-translated) text — comparing
+	# translated text against a key never matches in a real build.
+	var gaffe_caused_loss := state.outcome == "loss" and state.gaffe >= state.gaffe_limit
 	var level_over := GameState.finish_stage(
 		state.outcome, state.player_score(), engine.pleased_boosters(),
-		state.outcome_reason, state.gaffe)
+		gaffe_caused_loss, state.gaffe)
 
 	if level_over:
 		GameState.end_level()

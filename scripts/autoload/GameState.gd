@@ -559,20 +559,28 @@ func is_in_level() -> bool:
 ## Records how a stage went and moves the level on. Returns true when the
 ## level is now over, which is the battle screen's cue to head back.
 ##
-## `reason` (BattleState.outcome_reason — BattleScreen passes it straight
-## through) and `gaffes` (the stage's own final BattleState.gaffe, 0 from
-## VisitorScreen, which has no gaffe meter at all) feed the lifetime
-## tracking below; neither changes what a stage is WORTH, only what gets
-## counted about it.
+## `gaffe_caused_loss` (BattleScreen: `state.gaffe >= state.gaffe_limit`,
+## false from VisitorScreen, which has no gaffe meter at all — see
+## test_game_state_meta_tracking.gd) and `gaffes` (the stage's own final
+## BattleState.gaffe) feed the lifetime tracking below; neither changes
+## what a stage is WORTH, only what gets counted about it.
+##
+## `gaffe_caused_loss` is a plain boolean rather than BattleState.
+## outcome_reason's own text on purpose: that text is already translated
+## by the time BattleScreen sees it (Phrase.say()), so comparing it against
+## a key string never matches in a real build — only in a hand-built test
+## fixture with an empty wording table, which is exactly the bug a first
+## version of this parameter had (caught in review, 2026-09-25, before it
+## shipped anywhere real).
 func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
-		reason: String = "", gaffes: int = 0) -> bool:
+		gaffe_caused_loss: bool = false, gaffes: int = 0) -> bool:
 	mid_stage = false
 	if level_runner == null:
 		return true
 
 	var stage := level_runner.current_stage()
 	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
-	_record_lifetime_gaffes(gaffes, outcome, reason)
+	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)
 
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.
@@ -636,10 +644,10 @@ func _record_stage_type_result(stage_id: String, outcome: String) -> void:
 ## Adds this stage's own gaffe count to the run's lifetime total, counts a
 ## gaffe-caused loss, and applies the one-time Jiban penalty the moment the
 ## lifetime total crosses the Balance tab's own threshold.
-func _record_lifetime_gaffes(gaffes: int, outcome: String, reason: String) -> void:
+func _record_lifetime_gaffes(gaffes: int, outcome: String, gaffe_caused_loss: bool) -> void:
 	if gaffes > 0:
 		lifetime_gaffes += gaffes
-	if outcome == LevelRunner.LOST and reason == "outcome.reason.gaffe_limit":
+	if outcome == LevelRunner.LOST and gaffe_caused_loss:
 		stages_lost_to_gaffes += 1
 
 	if gaffe_penalty_applied:

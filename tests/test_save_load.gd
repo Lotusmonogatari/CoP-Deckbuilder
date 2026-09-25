@@ -32,6 +32,13 @@ func _a_run_in_progress() -> void:
 	GameState.levels_unlocked.assign(["LV02"])
 	GameState.level_last_completed_at = {"LV01": 1}
 	GameState.levels_completed_count = 1
+	GameState.town_hall_active = true
+	GameState.steering_committee_active = false
+	GameState.funding_frozen_active = true
+	GameState.stage_type_results = {"ST02": {"wins": 3, "losses": 1}}
+	GameState.lifetime_gaffes = 27
+	GameState.stages_lost_to_gaffes = 2
+	GameState.gaffe_penalty_applied = true
 
 
 func test_a_run_comes_back_exactly_as_it_was_saved() -> void:

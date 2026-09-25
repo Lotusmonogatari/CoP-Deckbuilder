@@ -382,3 +382,69 @@ func test_the_real_playtest_stages_have_reward_slots_waiting() -> void:
 			"%s needs a slot for Cameron's numbers" % stage.get("stage_id"))
 		assert_true(stage.has("xp_reward"),
 			"%s needs an XP slot" % stage.get("stage_id"))
+
+
+# ---------------------------------------------------------------------------
+# Forcing a stage in mid-level (GameState.gd's crisis triggers)
+# ---------------------------------------------------------------------------
+
+func test_inserting_a_stage_puts_it_at_the_given_index() -> void:
+	var runner := _runner()
+	runner.insert_stage({"stage_id": "ST05", "name_en": "Forced"}, 1)
+
+	var names: Array = []
+	for stage: Dictionary in runner.stages:
+		names.append(stage.get("name_en"))
+	assert_eq(names, ["First", "Forced", "Second", "Third"])
+
+
+func test_inserting_at_the_current_index_makes_it_the_next_stage_played() -> void:
+	var runner := _runner()
+	runner.insert_stage({"stage_id": "ST05", "name_en": "Forced"}, runner.index)
+	assert_eq(runner.current_stage()["name_en"], "Forced")
+
+
+func test_inserting_renumbers_seq_gaplessly() -> void:
+	var runner := _runner()
+	runner.insert_stage({"stage_id": "ST05", "name_en": "Forced"}, 1)
+
+	var seqs: Array = []
+	for stage: Dictionary in runner.stages:
+		seqs.append(stage.get("seq"))
+	assert_eq(seqs, [1, 2, 3, 4])
+
+
+func test_inserting_does_not_touch_already_played_stages_results() -> void:
+	var runner := _runner()
+	runner.finish_stage(LevelRunner.WON)   # "First" (seq 1) is now in results
+	runner.insert_stage({"stage_id": "ST05", "name_en": "Forced"}, runner.index)
+
+	assert_eq(runner.results.get(1, {}).get("outcome"), LevelRunner.WON,
+		"the already-played stage's own seq (and its results entry) is untouched")
+	assert_eq(runner.current_stage()["name_en"], "Forced")
+
+
+func test_inserting_before_a_carries_buffs_from_chain_remaps_it() -> void:
+	# "Third" carries from seq 1 and 2. Inserting ahead of ALL of them shifts
+	# every one of those seq numbers, so "Third"'s own reference has to move
+	# with them or it would silently start pointing at whatever now sits at
+	# its old seq number instead of the stage that was actually meant.
+	var runner := _runner()
+	runner.insert_stage({"stage_id": "ST05", "name_en": "Forced"}, 0)
+
+	var third := runner.stage_by_seq(4)   # "Third", shifted from 3 to 4
+	assert_eq(third["name_en"], "Third")
+	assert_eq(third["carries_buffs_from"], [2, 3],
+		"seq 1→2 and 2→3, so the reference moves with them")
+
+
+func test_inserting_after_a_carries_buffs_from_chain_leaves_it_alone() -> void:
+	# The opposite case: the insertion point is AFTER everything "Third"
+	# carries from, so neither seq 1 nor seq 2 moves and the reference is
+	# already correct.
+	var runner := _runner()
+	runner.insert_stage({"stage_id": "ST05", "name_en": "Forced"}, 2)
+
+	var third := runner.stage_by_seq(4)   # "Third", shifted from 3 to 4
+	assert_eq(third["name_en"], "Third")
+	assert_eq(third["carries_buffs_from"], [1, 2], "unaffected — neither source moved")
