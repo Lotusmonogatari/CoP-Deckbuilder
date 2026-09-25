@@ -123,7 +123,7 @@
     }
   },
   "open_card_collection": {
-    "value": true,
+    "value": false,
     "options": [
       true,
       false
@@ -135,7 +135,7 @@
     }
   },
   "level_gating_enabled": {
-    "value": false,
+    "value": true,
     "options": [
       true,
       false

@@ -1027,5 +1027,54 @@
       "SG04": 0.0,
       "SG05": 0.8
     }
+  },
+  {
+    "stage_id": "ST22",
+    "name_en": "Party Steering Committee Check-In",
+    "name_jp": "党運営委員会面談",
+    "romaji": "Tō Un'ei Iinkai Mendan",
+    "mode": "Non-combat",
+    "bar_unit": "Time slots",
+    "bar_value_kind": "Numerical",
+    "bar_max": 10,
+    "win_threshold": 10,
+    "win_pct": 1.0,
+    "turn_limit": 10,
+    "energy_per_turn": 5,
+    "hand_size": 5,
+    "gaffe_limit": 7,
+    "player_start": 0,
+    "opp_start": 0,
+    "pct_other": 0.0,
+    "segment_check": 1.0,
+    "favored_suit": null,
+    "win_delta_jiban": 0,
+    "win_delta_yen": 0,
+    "win_delta_reputation": 0,
+    "win_delta_xp": 30,
+    "win_delta_party_support": 5,
+    "loss_delta_jiban": 0,
+    "loss_delta_yen": 0,
+    "loss_delta_reputation": 0,
+    "loss_delta_xp": 0,
+    "loss_delta_party_support": 0,
+    "bar_model": "Shared_pool",
+    "energy_mode": "per_turn",
+    "energy_pool": null,
+    "sequence_mode": "single",
+    "opponent_count": {
+      "min": 1,
+      "max": 1
+    },
+    "question_pool": null,
+    "reputation_affects_start": "No",
+    "reveal_in_briefing": null,
+    "segment_mix": {
+      "SG01": 0.0,
+      "SG02": 0.7,
+      "SG03": 0.0,
+      "SG04": 0.3,
+      "SG05": 0.0
+    }
   }
 ]

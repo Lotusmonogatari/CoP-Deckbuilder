@@ -266,6 +266,47 @@ func stage_by_seq(seq: int) -> Dictionary:
 	return {}
 
 
+# ---------------------------------------------------------------------------
+# Forcing a stage in mid-level
+# ---------------------------------------------------------------------------
+# A crisis trigger (GameState.gd — Jiban/party support crossing a threshold)
+# needs to put a stage into the queue that was not there when the level was
+# dealt. Only ever called while the level is still ongoing (there is nowhere
+# to insert a stage into a level that has already ended) and only ahead of
+# wherever play actually is — everything already in `results` is untouched.
+
+## Puts `stage` (already shaped by BattleSetup.build_inserted_stage() — real
+## opponents/visitors/committee_members attached, not a bare stages.json row)
+## at `at_index`, and renumbers every not-yet-played stage's `seq` from there
+## on so the sequence stays a clean, gapless 1..N — including rewriting any
+## of THEIR OWN `carries_buffs_from` references that pointed at another
+## stage in that same shifted range, so a buff chain still points at the
+## right stage after the shift rather than at whatever now sits at its old
+## seq number.
+func insert_stage(stage: Dictionary, at_index: int) -> void:
+	at_index = clampi(at_index, 0, stages.size())
+
+	var remap := {}
+	for offset in range(stages.size() - at_index):
+		var old_seq := int((stages[at_index + offset] as Dictionary).get("seq", 0))
+		remap[old_seq] = at_index + offset + 2   # its seq after the shift
+
+	var inserted := stage.duplicate(true)
+	inserted["seq"] = at_index + 1
+	stages.insert(at_index, inserted)
+
+	for i in range(at_index + 1, stages.size()):
+		var later := stages[i] as Dictionary
+		later["seq"] = i + 1
+		var carries: Array = later.get("carries_buffs_from", [])
+		if carries.is_empty():
+			continue
+		var remapped: Array = []
+		for old: int in carries:
+			remapped.append(int(remap.get(old, old)))
+		later["carries_buffs_from"] = remapped
+
+
 ## A plain-English summary of what is being carried, for the details panel.
 ##
 ## `names` maps a booster ID to what that organisation is called. The rules

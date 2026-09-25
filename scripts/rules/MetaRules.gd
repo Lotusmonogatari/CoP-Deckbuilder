@@ -11,23 +11,28 @@ extends RefCounted
 ##   Funds (Kaban)                 money
 ##   Party support                 how your own party feels about you
 ##
-## FOUR OF THE RULES BELOW ARE NOT CALLED BY THE GAME YET.
+## ALL FOUR ARE WIRED NOW (2026-09-25) — GameState.finish_stage() checks
+## each one after every stage and acts on it:
 ##
-## Their arithmetic is right and it is tested, which is exactly the problem:
-## a green test suite reads as though CLAUDE.md §8 were implemented, and four
-## of its systems currently do nothing at all. Named here so that nobody —
-## me included, six weeks from now — mistakes tested for wired:
+##   town_hall_triggered          Jiban ≤ 15 inserts a Town Hall (ST05)
+##   steering_committee_triggered party support < 25 inserts the Party
+##                                 Steering Committee check-in (ST22, a new
+##                                 Non-combat room — ST08 itself, the
+##                                 canon committee, is untouched: it stays
+##                                 hand-placed in the levels that already
+##                                 use it, per Cameron, 2026-09-25)
+##   funding_frozen               party support at 0 stops Funds income
+##                                 (redesigned from Jiban, Cameron's call,
+##                                 2026-09-25 — see M32 "Funding Freeze")
+##   party_support_modifiers      > 75 grants M09 free, < 50 grants M10
+##                                 free, <= 0 grants M32 (funding freeze)
 ##
-##   town_hall_triggered          §8: Jiban ≤ 15 inserts a Town Hall (ST05)
-##   steering_committee_triggered §8: party support < 25 inserts ST08
-##   funding_frozen               §8: Jiban at 0 stops Kaban income
-##   party_support_modifiers      §8: > 75 gives M09, < 50 gives M10
-##
-## They wait for the module runner at M4, which is where the brief puts the
-## machinery that would insert a stage into a level. One thing that milestone
-## will need FIRST: there is no "steering_committee" stage type in
-## data/stage_types.json, so ST08 needs content from Cameron before it needs
-## code. Inventing one here would be inventing canon.
+## Each of the first three fires once on the way INTO its threshold and
+## stays quiet — even while the condition keeps holding — until the player
+## has come back OUT; GameState's own town_hall_active/steering_committee_
+## active/funding_frozen_active flags are what track that, not anything
+## here. This file only ever answers "is the condition true right now" —
+## it has no memory of what happened last time it was asked.
 
 
 ## How much harder a bill is because the public disagrees with it.
@@ -143,12 +148,18 @@ static func apply_score_effects(meta: Dictionary, stage: Dictionary, score: int,
 ## Which modifiers are switched on by the player's standing with their party.
 ##
 ## Above the allied threshold, the party is behind you (M09 Party Backing).
-## Below the debuff threshold, it is not (M10 Cold Shoulder). In between,
-## neither applies.
+## Below the debuff threshold, it is not (M10 Cold Shoulder). At the very
+## bottom — party support has hit zero — funding itself is frozen (M32,
+## "Funding Freeze"), which wins over the debuff band it also sits inside.
+## All three are live, continuously-re-evaluated conditions, never owned:
+## they hold only while the number is where it needs to be.
 static func party_support_modifiers(party_support: int, balance: Dictionary) -> Array:
+	var freeze := int(balance.get("party_support_funding_freeze", 0))
 	var allied := int(balance.get("party_support_allied_buff", 75))
 	var debuff := int(balance.get("party_support_debuff", 50))
 
+	if party_support <= freeze:
+		return ["M32"]
 	if party_support > allied:
 		return ["M09"]
 	if party_support < debuff:
@@ -166,9 +177,12 @@ static func town_hall_triggered(jiban: int, balance: Dictionary) -> bool:
 	return jiban <= int(balance.get("jiban_town_hall_trigger", 15))
 
 
-## Whether funding is frozen. At zero local support the money stops.
-static func funding_frozen(jiban: int, balance: Dictionary) -> bool:
-	return jiban <= int(balance.get("jiban_funding_freeze", 0))
+## Whether funding is frozen. At zero party support, the party cuts you off —
+## Cameron's call, 2026-09-25 (design/proposals — see the staff-firing-style
+## brief this session): party support, not Jiban, is what CLAUDE.md §8's
+## original spec used. Same live condition M32 (above) names for the shop.
+static func funding_frozen(party_support: int, balance: Dictionary) -> bool:
+	return party_support <= int(balance.get("party_support_funding_freeze", 0))
 
 
 ## Reputation's effect on a press stage's starting support.

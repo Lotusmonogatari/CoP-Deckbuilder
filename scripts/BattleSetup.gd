@@ -73,55 +73,85 @@ static func expand_level(level: Dictionary) -> Dictionary:
 		if stage_id.is_empty():
 			continue
 
-		var stage := DataDB.get_stage(stage_id)
+		var stage := build_stage_for_slot(level_id, stage_id, slot)
 		if stage.is_empty():
-			push_warning("BattleSetup: %s names stage '%s', which does not exist." % [level_id, stage_id])
 			continue
-		stage = stage.duplicate(true)
 		stage["seq"] = stages.size() + 1
-
-		if DataDB.is_committee_stage(stage_id):
-			var committee := _committee_for(level_id, stage_id, slot)
-			stage["opponents"] = ([committee["chair"]] if not (committee["chair"] as Dictionary).is_empty()
-				else [])
-			stage["committee_members"] = committee["members"]
-			stage["visitors"] = []
-		elif str(stage.get("mode", "")) == "Non-combat":
-			# Office Hours: not a battle, so no opponent at all — a drawn
-			# pool of visitors instead, each with its own drawn question
-			# already attached, resolved once here the same way a combat
-			# stage's opponent(s) and question pool are.
-			stage["opponents"] = []
-			stage["committee_members"] = []
-			var drawn_visitors: Array = []
-			for visitor: Dictionary in _visitors_for(level_id, stage_id, slot, _opponent_count(stage)):
-				var with_question := visitor.duplicate(true)
-				with_question["question"] = _question_for_visitor(str(visitor.get("visitor_id", "")))
-				drawn_visitors.append(with_question)
-			stage["visitors"] = drawn_visitors
-		else:
-			stage["opponents"] = _opponents_for(level_id, stage_id, slot, _opponent_count(stage))
-			stage["committee_members"] = []
-			stage["visitors"] = []
-
-		# LevelRunner.problems() needs to know whether a stage has anything to
-		# push back with — opponents, or questions — before it can be played,
-		# but it never touches DataDB itself. A real workbook stage never
-		# writes its questions out longhand (that "questions" key is a
-		# hand-written playtest fixture's shape); it names its pool in
-		# "question_pool" instead and the questions are drawn from
-		# DataDB.questions at battle setup. Resolving the count here, the same
-		# place "opponents" is resolved, is what lets LevelRunner's existing
-		# "questions_count" check see a real stage's pool at all — without it,
-		# ST04/19/20/21 all looked like they had no questions, which happened
-		# to be harmless only because they also always have opponents.
-		stage["questions_count"] = DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
-
 		stages.append(stage)
 
 	var expanded := level.duplicate(true)
 	expanded["stages"] = stages
 	return expanded
+
+
+## Enriches a bare stages.json row into a battle/visitor-ready stage dict —
+## opponents, or a committee roster, or a drawn visitor pool, plus
+## questions_count — exactly what expand_level()'s own per-slot loop needs,
+## factored out here so a stage dealt with the level from the start and one
+## forced in later by a crisis trigger (GameState.gd, LevelRunner.
+## insert_stage()) are built identically. Leaves `seq` for the caller: only
+## it knows where in the queue this stage is landing.
+##
+## Empty (with a warning already logged) when `stage_id` doesn't exist —
+## the same failure expand_level() always tolerated for a bad levels.json
+## row.
+static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) -> Dictionary:
+	var stage := DataDB.get_stage(stage_id)
+	if stage.is_empty():
+		push_warning("BattleSetup: %s names stage '%s', which does not exist." % [level_id, stage_id])
+		return {}
+	stage = stage.duplicate(true)
+
+	if DataDB.is_committee_stage(stage_id):
+		var committee := _committee_for(level_id, stage_id, slot)
+		stage["opponents"] = ([committee["chair"]] if not (committee["chair"] as Dictionary).is_empty()
+			else [])
+		stage["committee_members"] = committee["members"]
+		stage["visitors"] = []
+	elif str(stage.get("mode", "")) == "Non-combat":
+		# Office Hours (and now the Steering Committee check-in, ST22): not a
+		# battle, so no opponent at all — a drawn pool of visitors instead,
+		# each with its own drawn question already attached, resolved once
+		# here the same way a combat stage's opponent(s) and question pool
+		# are.
+		stage["opponents"] = []
+		stage["committee_members"] = []
+		var drawn_visitors: Array = []
+		for visitor: Dictionary in _visitors_for(level_id, stage_id, slot, _opponent_count(stage)):
+			var with_question := visitor.duplicate(true)
+			with_question["question"] = _question_for_visitor(str(visitor.get("visitor_id", "")))
+			drawn_visitors.append(with_question)
+		stage["visitors"] = drawn_visitors
+	else:
+		stage["opponents"] = _opponents_for(level_id, stage_id, slot, _opponent_count(stage))
+		stage["committee_members"] = []
+		stage["visitors"] = []
+
+	# LevelRunner.problems() needs to know whether a stage has anything to
+	# push back with — opponents, or questions — before it can be played,
+	# but it never touches DataDB itself. A real workbook stage never
+	# writes its questions out longhand (that "questions" key is a
+	# hand-written playtest fixture's shape); it names its pool in
+	# "question_pool" instead and the questions are drawn from
+	# DataDB.questions at battle setup. Resolving the count here, the same
+	# place "opponents" is resolved, is what lets LevelRunner's existing
+	# "questions_count" check see a real stage's pool at all — without it,
+	# ST04/19/20/21 all looked like they had no questions, which happened
+	# to be harmless only because they also always have opponents.
+	stage["questions_count"] = DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
+
+	return stage
+
+
+## The same enrichment, for a stage forced into an ALREADY-RUNNING level by
+## a crisis trigger rather than dealt with it from the start (Jiban/party
+## support crossing a threshold — GameState.gd, MetaRules.gd). Slot is
+## always -1: a dynamically-inserted stage is never a hand-authored
+## level_opponent_overrides.json/level_visitor_overrides.json pin (those
+## always match a real slot, >= 1), so this always gets the dynamic pick,
+## the same as a level with no pin for that slot.
+static func build_inserted_stage(level_id: String, stage_id: String) -> Dictionary:
+	return build_stage_for_slot(level_id, stage_id, -1)
 
 
 ## Every opponent eligible for a stage — every opponents.json row whose own

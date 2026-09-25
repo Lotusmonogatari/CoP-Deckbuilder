@@ -48,5 +48,21 @@
     "response_wrong": "Hm, I'm not sure that's right.",
     "reaction_right": "Nods approvingly.",
     "reaction_wrong": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ04",
+    "visitor_ids": [
+      "VI04"
+    ],
+    "question_text": "Where do you stand on the party's current platform?",
+    "choice_a": "Fully behind it",
+    "choice_b": "I have reservations",
+    "choice_c": "I'd rather not say",
+    "choice_d": "Against it",
+    "correct_choice": "A",
+    "response_right": "Good. That's what we like to hear.",
+    "response_wrong": "...I see.",
+    "reaction_right": "Nods, satisfied.",
+    "reaction_wrong": "Frowns, taking note."
   }
 ]

@@ -7,6 +7,13 @@
   "starter_deck_size": 12,
   "primary_suit_share": 0.5,
   "secondary_suit_share": 0.3,
+  "jiban_town_hall_trigger": 15,
+  "party_support_funding_freeze": 0,
+  "party_support_steering_committee": 25,
+  "party_support_allied_buff": 75,
+  "party_support_debuff": 50,
+  "gaffes_lifetime_penalty_threshold": 50,
+  "gaffes_lifetime_penalty_jiban_delta": -15,
   "xp_tiers": {},
   "committee_size_bands": {}
 }

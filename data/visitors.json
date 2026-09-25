@@ -85,5 +85,34 @@
         "delta": -1
       }
     ]
+  },
+  {
+    "visitor_id": "VI04",
+    "name_en": "Party Member A",
+    "name_jp": "党員A",
+    "romaji": "Tōin A",
+    "title": "Steering Committee Member",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": 1
+      },
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
   }
 ]

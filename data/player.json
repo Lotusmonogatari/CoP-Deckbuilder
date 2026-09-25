@@ -23,20 +23,29 @@
     "  starting_meta   Optional overrides of sanban.json's own starting",
     "                  values, by the same four names (\"Constituency",
     "                  support\", \"Reputation\", \"Funds\", \"Party support\") —",
-    "                  a name left out uses sanban.json's default. Empty on",
-    "                  all four protagonists today: nobody starts any",
-    "                  differently yet. Shown on the New Game screen",
-    "                  alongside starting_xp so the choice is an informed one",
-    "                  whenever real numbers are written here.",
+    "                  a name left out uses sanban.json's default. Shown on",
+    "                  the New Game screen alongside starting_xp so the",
+    "                  choice is an informed one.",
     "  starting_xp     Optional starting XP. 0 (sanban.json has no XP row of",
-    "                  its own) when left out, true of all four today.",
+    "                  its own) when left out.",
     "",
     "default_protagonist is who you are before anyone has been chosen - the",
     "tests, and the browser playtest, which has no New Game screen.",
     "",
     "The party matters mechanically later: the workbook note on MOD01 seq 3",
     "says the Caucus rival should be replaced with a same-party opponent once",
-    "the protagonist's party is settled."
+    "the protagonist's party is settled.",
+    "",
+    "A DIFFICULTY LADDER, added 2026-09-25 alongside CLAUDE.md §8's crisis",
+    "triggers going live (MetaRules.gd / GameState.gd): each protagonist's",
+    "starting_meta now genuinely differs, anchored on PC01 keeping sanban.",
+    "json's own baseline exactly (so nothing about the DEFAULT protagonist's",
+    "behavior changed by adding this). PC02 opens clear of every crisis",
+    "trigger; PC03 opens already past the Town Hall's own threshold; PC04",
+    "opens past it AND at exactly 0 Party support — funding frozen and the",
+    "Steering Committee forced in from the very first level. First-draft",
+    "numbers, the same as every other placeholder in this project — a",
+    "tuning pass, not a balance decision made here."
   ],
 
   "default_protagonist": "PC01",
@@ -47,8 +56,13 @@
       "name_en": "Hiro",
       "name_jp": "",
       "party": "Frontier Party",
-      "blurb": "",
-      "starting_meta": {},
+      "blurb": "A steady start. Normal difficulty.",
+      "starting_meta": {
+        "Constituency support": 15,
+        "Reputation": 6,
+        "Funds": 50000,
+        "Party support": 10
+      },
       "starting_xp": 0
     },
     {
@@ -56,17 +70,27 @@
       "name_en": "Protagonist B",
       "name_jp": "",
       "party": "",
-      "blurb": "",
-      "starting_meta": {},
-      "starting_xp": 0
+      "blurb": "A strong footing to begin with. Easy difficulty.",
+      "starting_meta": {
+        "Constituency support": 35,
+        "Reputation": 25,
+        "Funds": 100000,
+        "Party support": 40
+      },
+      "starting_xp": 60
     },
     {
       "player_id": "PC03",
       "name_en": "Protagonist C",
       "name_jp": "",
       "party": "",
-      "blurb": "",
-      "starting_meta": {},
+      "blurb": "An uphill climb from day one. Hard difficulty.",
+      "starting_meta": {
+        "Constituency support": 10,
+        "Reputation": 3,
+        "Funds": 25000,
+        "Party support": 15
+      },
       "starting_xp": 0
     },
     {
@@ -74,8 +98,13 @@
       "name_en": "Protagonist D",
       "name_jp": "",
       "party": "",
-      "blurb": "",
-      "starting_meta": {},
+      "blurb": "Already in crisis before your first vote. Very Hard difficulty.",
+      "starting_meta": {
+        "Constituency support": 5,
+        "Reputation": 0,
+        "Funds": 10000,
+        "Party support": 0
+      },
       "starting_xp": 0
     }
   ]

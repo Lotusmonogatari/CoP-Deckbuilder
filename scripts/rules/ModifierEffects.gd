@@ -30,16 +30,32 @@ extends RefCounted
 ## modifier is not owned, or its trigger condition (MetaRules.active_modifiers)
 ## is not met in this stage's room, it simply contributes nothing; that is a
 ## normal day for a modifier, not a bug.
+##
+## A SIXTH TYPE, added 2026-09-25 alongside CLAUDE.md §8's wiring:
+##
+##   FUNDS_INCOME_FREEZE    no target/value. M32 (Funding Freeze) is the one
+##                          row that uses it — purely descriptive; unlike
+##                          the five above it is never owned or purchased
+##                          (M32 prices at 0 everywhere, so Ledger.
+##                          is_for_sale() always refuses it). The freeze
+##                          itself is enforced directly in
+##                          GameState._apply_stage_rewards(), checked live
+##                          off MetaRules.party_support_modifiers() — this
+##                          type exists so the mechanic has a name and a
+##                          description in the Backing panel like every
+##                          other effect, not so this file does anything
+##                          with it.
 
 const RESOURCE_BONUS_ON_WIN := "RESOURCE_BONUS_ON_WIN"
 const STAGE_START_BONUS := "STAGE_START_BONUS"
 const HAND_SIZE_BONUS := "HAND_SIZE_BONUS"
 const GAFFE_LIMIT_BONUS := "GAFFE_LIMIT_BONUS"
 const UNLOCK_DISCOUNT := "UNLOCK_DISCOUNT"
+const FUNDS_INCOME_FREEZE := "FUNDS_INCOME_FREEZE"
 
 const KNOWN_TYPES := [
 	RESOURCE_BONUS_ON_WIN, STAGE_START_BONUS, HAND_SIZE_BONUS,
-	GAFFE_LIMIT_BONUS, UNLOCK_DISCOUNT,
+	GAFFE_LIMIT_BONUS, UNLOCK_DISCOUNT, FUNDS_INCOME_FREEZE,
 ]
 
 ## Which sanban.json meta-variable a RESOURCE_BONUS_ON_WIN target name means.

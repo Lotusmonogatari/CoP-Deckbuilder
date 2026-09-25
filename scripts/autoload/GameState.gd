@@ -143,6 +143,60 @@ var levels_completed_count: int = 0
 var level_last_completed_at: Dictionary = {}
 
 
+# ---------------------------------------------------------------------------
+# Crisis triggers (CLAUDE.md §8) — Town Hall, Steering Committee, funding
+# freeze, and lifetime win/loss/gaffe tracking. Wired 2026-09-25.
+# ---------------------------------------------------------------------------
+# Each "_active" flag tracks whether the trigger is CURRENTLY in its zone,
+# not merely whether the condition is true this instant — that distinction
+# is the whole mechanism (see _check_crisis_triggers()): a trigger fires
+# once on the way IN and stays quiet, even while its condition keeps
+# holding, until the player crosses back OUT. Cameron, 2026-09-25: losing
+# the Town Hall while Jiban is still low must not immediately queue another
+# one. Persisted, so this holds across levels, not just within one.
+
+## Whether a Town Hall (ST05) is currently the queue's business — set the
+## moment MetaRules.town_hall_triggered() first turns true, cleared the
+## moment Jiban rises back above its threshold.
+var town_hall_active := false
+
+## Same shape, for the Party Steering Committee check-in (ST22).
+var steering_committee_active := false
+
+## Same shape, for the Funding Freeze (M32) — tracked here purely to detect
+## the edge for the Office alert; the freeze's actual enforcement
+## (MetaRules.party_support_modifiers()) is checked live and needs no latch.
+var funding_frozen_active := false
+
+## News from the level just finished, for the Office to show once and
+## forget — NOT in _SAVED_FIELDS on purpose, the same lifetime as
+## last_level_outcome/last_meta_change. Each entry is
+## {"kind": "town_hall"/"steering_committee"/"funding_freeze"/"gaffe_penalty",
+## "edge": "entered"/"left"}.
+var pending_trigger_alerts: Array[Dictionary] = []
+
+## { stage_id: {"wins": N, "losses": N} }, lazily created per stage_id the
+## first time it's played — keying by the real stage_id rather than some
+## coarser category is what makes this track a stage type nobody has
+## invented yet for free, with no code change needed when it arrives.
+var stage_type_results: Dictionary = {}
+
+## Every gaffe made, summed across every stage this run, this run's own
+## final gaffe count each time (BattleState.gaffe at finish_stage()) —
+## never reset mid-run, unlike a single stage's own gaffe meter.
+var lifetime_gaffes := 0
+
+## How many stages this run have been lost specifically to the gaffe
+## meter filling, as opposed to the clock or any other loss reason.
+var stages_lost_to_gaffes := 0
+
+## Whether the one-time lifetime-gaffe penalty (Balance tab:
+## gaffes_lifetime_penalty_threshold/_jiban_delta) has already fired.
+## Lifetime gaffes never go back down, so unlike the three triggers above
+## this never resets — it is a single event, not a zone.
+var gaffe_penalty_applied := false
+
+
 func _ready() -> void:
 	protagonist_id = str(DataDB.player.get("player_id", ""))
 	reset_meta()
@@ -180,6 +234,9 @@ const _SAVED_FIELDS := [
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
 	"booster_standing", "segment_favorability", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active",
+	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
+	"gaffe_penalty_applied",
 ]
 
 
@@ -225,6 +282,20 @@ func reset_meta() -> void:
 	reset_collection()
 	reset_staff()
 	reset_levels()
+	reset_crisis_triggers()
+
+
+## Every crisis trigger back to its rest state, and the lifetime counters
+## back to zero, for a fresh run.
+func reset_crisis_triggers() -> void:
+	town_hall_active = false
+	steering_committee_active = false
+	funding_frozen_active = false
+	pending_trigger_alerts = []
+	stage_type_results = {}
+	lifetime_gaffes = 0
+	stages_lost_to_gaffes = 0
+	gaffe_penalty_applied = false
 
 
 ## Every Staff role back to vacant, and every firing forgotten.
@@ -487,17 +558,40 @@ func is_in_level() -> bool:
 
 ## Records how a stage went and moves the level on. Returns true when the
 ## level is now over, which is the battle screen's cue to head back.
-func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool:
+##
+## `reason` (BattleState.outcome_reason — BattleScreen passes it straight
+## through) and `gaffes` (the stage's own final BattleState.gaffe, 0 from
+## VisitorScreen, which has no gaffe meter at all) feed the lifetime
+## tracking below; neither changes what a stage is WORTH, only what gets
+## counted about it.
+func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
+		reason: String = "", gaffes: int = 0) -> bool:
 	mid_stage = false
 	if level_runner == null:
 		return true
 
+	var stage := level_runner.current_stage()
+	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
+	_record_lifetime_gaffes(gaffes, outcome, reason)
+
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.
-	_apply_stage_rewards(level_runner.current_stage(), outcome, score)
+	_apply_stage_rewards(stage, outcome, score)
 	_please_organisations(boosters)
 
 	level_runner.finish_stage(outcome, score, boosters)
+
+	# Funding freeze has nothing to insert into the queue, so both its edges
+	# are always checked — a level ending on this very stage doesn't stop
+	# the player finding out their money is frozen (or freed) once they're
+	# back in the Office. Town Hall/Steering Committee insert a stage, so
+	# their own checks internally skip entering a zone when there is
+	# nowhere left to put one (level_runner.is_finished()) — leaving a zone
+	# never needs anywhere to put anything, so that half always fires.
+	_check_funding_freeze()
+	var level_id := str(level_runner.level.get("level_id", ""))
+	_check_town_hall(level_id)
+	_check_steering_committee(level_id)
 
 	if level_runner.is_finished():
 		last_level_outcome = level_runner.outcome()
@@ -506,7 +600,6 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 		# levels_completed_count) — recorded here regardless of which way
 		# last_level_outcome comes out, right where the level as a whole (not
 		# just the stage just played) is known to be over.
-		var level_id := str(level_runner.level.get("level_id", ""))
 		if not level_id.is_empty():
 			levels_completed_count += 1
 			level_last_completed_at[level_id] = levels_completed_count
@@ -522,6 +615,93 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = []) -> bool
 		return true
 	SaveManager.autosave()
 	return false
+
+
+# ---------------------------------------------------------------------------
+# Crisis triggers and lifetime tracking (finish_stage()'s own helpers)
+# ---------------------------------------------------------------------------
+
+## Wins/losses for this stage_id, lazily bucketed.
+func _record_stage_type_result(stage_id: String, outcome: String) -> void:
+	if stage_id.is_empty():
+		return
+	var bucket: Dictionary = stage_type_results.get(stage_id, {"wins": 0, "losses": 0})
+	if outcome == LevelRunner.WON:
+		bucket["wins"] = int(bucket.get("wins", 0)) + 1
+	elif outcome == LevelRunner.LOST:
+		bucket["losses"] = int(bucket.get("losses", 0)) + 1
+	stage_type_results[stage_id] = bucket
+
+
+## Adds this stage's own gaffe count to the run's lifetime total, counts a
+## gaffe-caused loss, and applies the one-time Jiban penalty the moment the
+## lifetime total crosses the Balance tab's own threshold.
+func _record_lifetime_gaffes(gaffes: int, outcome: String, reason: String) -> void:
+	if gaffes > 0:
+		lifetime_gaffes += gaffes
+	if outcome == LevelRunner.LOST and reason == "outcome.reason.gaffe_limit":
+		stages_lost_to_gaffes += 1
+
+	if gaffe_penalty_applied:
+		return
+	var threshold := int(DataDB.balance.get("gaffes_lifetime_penalty_threshold", 50))
+	if lifetime_gaffes < threshold:
+		return
+
+	gaffe_penalty_applied = true
+	var delta := int(DataDB.balance.get("gaffes_lifetime_penalty_jiban_delta", -15))
+	_move_meta("Constituency support", delta)
+	pending_trigger_alerts.append({"kind": "gaffe_penalty", "edge": "entered",
+		"count": lifetime_gaffes, "amount": absi(delta)})
+
+
+## Funding freeze inserts nothing, so both edges always fire — there is no
+## "nowhere to put it" case the way there is for a forced-in stage.
+func _check_funding_freeze() -> void:
+	var frozen := MetaRules.funding_frozen(int(meta.get("Party support", 0)), DataDB.balance)
+	if frozen and not funding_frozen_active:
+		funding_frozen_active = true
+		pending_trigger_alerts.append({"kind": "funding_freeze", "edge": "entered"})
+	elif not frozen and funding_frozen_active:
+		funding_frozen_active = false
+		pending_trigger_alerts.append({"kind": "funding_freeze", "edge": "left"})
+
+
+## Inserts ST05 the moment Jiban first crosses the Town Hall threshold, and
+## says nothing further until Jiban has climbed back out again — losing the
+## inserted Town Hall while Jiban is still low must not immediately queue
+## a second one (Cameron, 2026-09-25). Entering with nowhere left to put a
+## stage (the level just ended) simply does nothing this call; the same
+## check runs again at the next finish_stage(), in the level after this one.
+func _check_town_hall(level_id: String) -> void:
+	var jiban := int(meta.get("Constituency support", 0))
+	var triggered := MetaRules.town_hall_triggered(jiban, DataDB.balance)
+	if triggered and not town_hall_active:
+		if level_runner == null or level_runner.is_finished():
+			return
+		level_runner.insert_stage(BattleSetup.build_inserted_stage(level_id, "ST05"), level_runner.index)
+		town_hall_active = true
+		pending_trigger_alerts.append({"kind": "town_hall", "edge": "entered", "count": jiban})
+	elif not triggered and town_hall_active:
+		town_hall_active = false
+		pending_trigger_alerts.append({"kind": "town_hall", "edge": "left"})
+
+
+## Same shape as _check_town_hall(), for the Party Steering Committee
+## check-in (ST22, Non-combat, VI04 — see design's Part D) forced in when
+## party support falls below its own threshold.
+func _check_steering_committee(level_id: String) -> void:
+	var party_support := int(meta.get("Party support", 0))
+	var triggered := MetaRules.steering_committee_triggered(party_support, DataDB.balance)
+	if triggered and not steering_committee_active:
+		if level_runner == null or level_runner.is_finished():
+			return
+		level_runner.insert_stage(BattleSetup.build_inserted_stage(level_id, "ST22"), level_runner.index)
+		steering_committee_active = true
+		pending_trigger_alerts.append({"kind": "steering_committee", "edge": "entered", "count": party_support})
+	elif not triggered and steering_committee_active:
+		steering_committee_active = false
+		pending_trigger_alerts.append({"kind": "steering_committee", "edge": "left"})
 
 
 ## Everything a finished stage is worth, in the order the brief sets out.
@@ -550,7 +730,15 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	# 2026-09-22 workbook: xp_reward was renamed win_delta_xp, alongside the
 	# other stage win_delta_* columns MetaRules.apply_win_deltas already reads.
 	if outcome == LevelRunner.WON:
-		var won := MetaRules.apply_win_deltas(meta, stage, DataDB.sanban)
+		var reward_stage := stage
+		# Funding Freeze (M32) — party support at or below the Balance tab's
+		# own threshold. Zeroed at the source rather than undone afterward,
+		# so this is the one and only place Funds income can be frozen; XP
+		# and every other win delta are untouched.
+		if "M32" in MetaRules.party_support_modifiers(int(meta.get("Party support", 0)), DataDB.balance):
+			reward_stage = stage.duplicate(true)
+			reward_stage["win_delta_yen"] = 0
+		var won := MetaRules.apply_win_deltas(meta, reward_stage, DataDB.sanban)
 		meta = won["meta"]
 		_record_meta_change(won["applied"])
 		last_xp_gained = int(stage.get("win_delta_xp", 0))
@@ -561,6 +749,28 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	_record_meta_change(scored["applied"])
 
 
+## owned_modifiers, plus whichever of M09 (Party Backing)/M10 (Cold
+## Shoulder) party_support_modifiers() currently grants for free — CLAUDE.md
+## §8: "> 75 gives M09, < 50 gives M10", never added to owned_modifiers
+## itself, so losing the standing later correctly turns the free grant back
+## off and buying one yourself is never made pointless by already having it
+## free. M32 (Funding Freeze) is deliberately excluded here: it is a
+## penalty enforced directly in _apply_stage_rewards(), not a bonus a
+## reward-paying function should ever hand out.
+func _effectively_owned_modifiers() -> Array:
+	var mod_ids: Array[String] = owned_modifiers.duplicate()
+	for mod_id: String in MetaRules.party_support_modifiers(int(meta.get("Party support", 0)), DataDB.balance):
+		if mod_id != "M32" and not mod_ids.has(mod_id):
+			mod_ids.append(mod_id)
+
+	var found: Array = []
+	for id: String in mod_ids:
+		var modifier := DataDB.get_modifier(id)
+		if not modifier.is_empty():
+			found.append(modifier)
+	return found
+
+
 ## What the organisations backing you pay out for winning a LEVEL — not a
 ## single stage. RESOURCE_BONUS_ON_WIN's own workbook wording says "after
 ## successful completion of a level", so this is called once, when
@@ -569,11 +779,12 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 ## Unlike the battle-start effects, this does not care who was in the
 ## room: a business circle pays for the result, not the audience.
 func _pay_level_rewards() -> void:
-	var owned: Array = []
-	for mod_id: String in owned_modifiers:
-		var modifier := DataDB.get_modifier(mod_id)
-		if not modifier.is_empty():
-			owned.append(modifier)
+	# M10's own effect (UNLOCK_DISCOUNT) has no consumer anywhere in the
+	# project yet — a pre-existing gap, not one this wiring pass opened —
+	# so granting M10 free changes nothing observable today. M09's
+	# RESOURCE_BONUS_ON_WIN is the one of the two this function actually
+	# pays out.
+	var owned := _effectively_owned_modifiers()
 	if owned.is_empty():
 		return
 

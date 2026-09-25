@@ -649,5 +649,22 @@
     "trigger_booster_ids": [
       "BO16"
     ]
+  },
+  {
+    "mod_id": "M32",
+    "name_en": "Funding Freeze",
+    "name_jp": "資金凍結",
+    "romaji": "Shikin Tōketsu",
+    "trigger_segment_or_booster": null,
+    "trigger_min_pct": null,
+    "effect": "Funding is frozen while party support is at or below the Balance tab's own threshold.",
+    "reputation_cost": 0,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "FUNDS_INCOME_FREEZE",
+    "effect_target": null,
+    "effect_value": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": []
   }
 ]

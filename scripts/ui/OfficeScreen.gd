@@ -57,6 +57,12 @@ var _fire_staff_panel: Overlay
 ## (which the panel's `confirmed` signal carries no argument for) knows who.
 var _firing_role := ""
 
+## What a crisis trigger firing or resolving looks like, once the player is
+## back at the Office to hear about it — same idea as the battle screen's
+## own outcome panel, built in code the same way _fire_staff_panel is.
+## GameState.pending_trigger_alerts is the news; this is just how it's read.
+var _trigger_alert_panel: Overlay
+
 
 func _ready() -> void:
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
@@ -76,6 +82,9 @@ func _ready() -> void:
 	_fire_staff_panel.name = "FireStaffPanel"
 	add_child(_fire_staff_panel)
 	_fire_staff_panel.confirmed.connect(_on_fire_staff_confirmed)
+	_trigger_alert_panel = Overlay.new()
+	_trigger_alert_panel.name = "TriggerAlertPanel"
+	add_child(_trigger_alert_panel)
 
 	# The Office's own bed. Silent until there is a file named against
 	# music_office in sounds.json; this is here so that adding one is the
@@ -120,6 +129,26 @@ func _build() -> void:
 		"office.resume_level" if GameState.is_in_level() else "office.choose_level")
 	_report.text = _last_level_report()
 	_refresh_resources()
+	_show_trigger_alerts_if_any()
+
+
+## A crisis trigger firing or resolving since the last time the player was
+## here (GameState.finish_stage()'s own edge-checks) — one popup, one line
+## per event, shown once and then forgotten so it can never appear twice.
+func _show_trigger_alerts_if_any() -> void:
+	if GameState.pending_trigger_alerts.is_empty():
+		return
+
+	var rows: Array[Control] = []
+	for alert: Dictionary in GameState.pending_trigger_alerts:
+		var key := "office.trigger.%s.%s" % [alert.get("kind", ""), alert.get("edge", "")]
+		rows.append(UiKit.line(Text.say(key, {
+			"count": int(alert.get("count", 0)),
+			"amount": int(alert.get("amount", 0)),
+		})))
+	GameState.pending_trigger_alerts = []
+
+	_trigger_alert_panel.open(Text.say("office.trigger_alert_title"), rows)
 
 
 ## The one line the front page keeps about money.

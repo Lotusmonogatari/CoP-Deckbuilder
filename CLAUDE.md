@@ -158,11 +158,11 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 | System | Rule |
 |---|---|
 | Stage rewards | On a win, apply the stage's win deltas to constituency support (Jiban), reputation (Kanban), funds (Kaban), party support, and XP. Clamp every meta-variable to its min and max. |
-| Jiban ≤ 15 | Insert a Town Hall stage (ST05) event into the module queue. |
-| Jiban = 0 | Funding frozen: Kaban income becomes 0 until Jiban rises above 0. |
-| Party support > 75 | Modifier M09 (Party Backing) is active. |
-| Party support < 50 | Modifier M10 (Cold Shoulder) is active. |
-| Party support < 25 | Insert the Steering Committee stage (ST08). Its entry cost disables one Kōenkai and one Bankisha modifier for the next module. |
+| Jiban ≤ 15 | **Built** (2026-09-25). Inserts a Town Hall stage (ST05) into the level queue — `GameState._check_town_hall()`, `MetaRules.town_hall_triggered()`. |
+| Party support = 0 | **Built** (2026-09-25), redesigned from Jiban = 0 (Cameron's call — the party cutting you off reads better than your constituents controlling party money). Funding frozen: Funds income becomes 0 until party support rises back above. `GameState._check_funding_freeze()`, `MetaRules.funding_frozen()`; named for the shop as modifier M32 "Funding Freeze" (`ModifierEffects.FUNDS_INCOME_FREEZE`), never purchasable. |
+| Party support > 75 | **Built** (2026-09-25). Modifier M09 (Party Backing) is active for free, in addition to anything owned — `MetaRules.party_support_modifiers()`, `GameState._effectively_owned_modifiers()`. |
+| Party support < 50 | **Built** (2026-09-25), same mechanism, M10 (Cold Shoulder) — though M10's own effect (UNLOCK_DISCOUNT) has no consumer anywhere yet, a pre-existing gap this wiring didn't open. |
+| Party support < 25 | **Built** (2026-09-25), redesigned from "insert the Steering Committee stage (ST08)": ST08 is already a Combat stage hand-placed in 7 real levels, so repurposing it would have changed what they do. Inserts a **new** Non-combat stage instead, ST22 "Party Steering Committee Check-In" — Office Hours' own visitor-event machinery, reused wholesale, with one placeholder visitor (VI04) and question (VQ04). The original entry-cost idea (disabling a Kōenkai/Bankisha modifier) is not built — "Bankisha" doesn't map to any of the 16 current organisations. |
 | Bills and opinion | Bill difficulty = round((50 − alignment) × factor), where alignment is the Yoron value for the bill's topic, or 100 minus that value when the bill's direction is −1. |
 | Office hours (ST07) | Non-combat. Five time slots. Visitor event cards come from a new `visitors.json` (propose the schema). Each card offers 2 choices, and each choice has outcome deltas to Jiban, Kaban, party support, or Yoron. Create 6 placeholder events. |
 | XP checkpoint | Shown between modules. Spend XP to unlock cards at their tier cost from `balance.json`. Upgrade cost is 30 XP **[DEFAULT]**. |
@@ -234,9 +234,9 @@ Build **one milestone at a time**. After each one, stop and give Cameron: (a) wh
 | M2 | Battle UI: Floor debate (ST02) vs OP03 | A full battle is playable to a win or loss on desktop | **Done** |
 | M3 | Committee (ST01) and Party Caucus (ST03) | Both playable using Module 01 data | **Done** |
 | M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Done.** The level runner, meta-variables and saving/resuming exist (resuming mid-level returns to the start of the current stage). Office Hours visitor events are playable end to end (`design/proposals/office_hours.md`): a multiple-choice visitor room, its own `VisitorScreen`, and `StageRouting.gd` sending a level to the right screen stage by stage as it mixes Combat and Non-combat rooms. |
-| M5 | XP checkpoint shop | Unlocks and upgrades persist across the run | **Part done.** The shops, prices, refusals, and deck screen exist. The card collection is open for playtesting, so XP does not gate card unlocks. |
+| M5 | XP checkpoint shop | Unlocks and upgrades persist across the run | **Part done.** The shops, prices, refusals, and deck screen exist. `rules.json`'s `open_card_collection` is now `false` and `level_gating_enabled` is now `true` (2026-09-25, both fully built, just switched on) — XP genuinely gates card unlocks (`cards.json`'s own `xp_to_unlock`, filled in for all 54 cards) and level unlocks/cooldowns for the first time. |
 | M6 | Android export test, then iOS | Runs on a real phone in portrait with crisp Japanese text | Not started |
-| Later | Additional room systems and mobile export | Defined as needed | The project includes nine playtest stage types. The conditional Town Hall and Steering Committee triggers are not connected to the level queue; the latter still needs a dedicated stage type and design content. |
+| Later | Additional room systems and mobile export | Defined as needed | The project includes nine playtest stage types. The Town Hall and Steering Committee triggers are connected to the level queue now (2026-09-25) — see §8. |
 
 ### Implemented systems and remaining work
 
@@ -257,21 +257,27 @@ of 1 pending playtesting, and ST05 does not set it at all today, so a weak
 answer there costs nothing yet — Cameron's number to set, not a gap in the
 wiring.
 
-### §8 systems that are specified but NOT switched on
+### §8's four crisis triggers — now wired (2026-09-25)
 
-Four rules are written and tested and **nothing calls them**, so they do
-nothing in the game today. Named here so a passing test suite is not mistaken
-for a finished feature:
+All four are live: see §8's own table above for what each does today and
+where. `MetaRules.gd`'s own file comment carries the same summary next to
+the pure functions themselves. Each of the three that inserts or freezes
+something (Town Hall, Steering Committee, funding freeze) fires once on the
+way INTO its threshold and stays quiet — even while the condition keeps
+holding — until the player has come back OUT (`GameState.town_hall_active`/
+`steering_committee_active`/`funding_frozen_active`); a Town Hall lost while
+Jiban is still low does not immediately queue a second one. The player
+finds out about either edge — entering or leaving — through a popup on the
+Office screen the next time they're there (`GameState.pending_trigger_
+alerts`, `OfficeScreen._show_trigger_alerts_if_any()`), the same panel
+pattern the battle screen's own outcome panel uses.
 
-| Rule | §8 says | Waiting on |
-|---|---|---|
-| Town Hall trigger | Jiban ≤ 15 inserts ST05 | M4's queue machinery |
-| Steering Committee trigger | Party support < 25 inserts ST08 | M4 and a dedicated `steering_committee` stage type |
-| Funding freeze | Jiban = 0 stops Kaban income | M4 |
-| Party support modifiers | > 75 gives M09, < 50 gives M10 | M4 |
-
-Six of the fifteen modifiers are inert for the same reason, and the shop says
-"Not active yet" rather than selling something that does nothing.
+A fifth, related system went in alongside these: lifetime meta-variables —
+`GameState.stage_type_results` (wins/losses per stage_id, including any
+stage type added later, with no code change needed), `lifetime_gaffes`,
+`stages_lost_to_gaffes`. At `gaffes_lifetime_penalty_threshold` (Balance
+tab, 50 today) lifetime gaffes, a one-time `gaffes_lifetime_penalty_jiban_
+delta` (−15 today) hits Constituency support once and never again this run.
 
 ## 12. Working agreement
 

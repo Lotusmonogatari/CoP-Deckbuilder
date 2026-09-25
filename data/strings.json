@@ -1853,5 +1853,61 @@
     "english": "Fired — will not work for you again.",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "office.trigger_alert_title",
+    "where": "Office — a popup on return, when a crisis trigger fired or resolved",
+    "english": "Since your last visit",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.trigger.town_hall.entered",
+    "where": "Office — crisis alert",
+    "english": "Constituency support fell to {count} — a Town Hall has been added to your schedule.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "office.trigger.town_hall.left",
+    "where": "Office — crisis alert",
+    "english": "Constituency support has recovered — no Town Hall is pending.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.trigger.steering_committee.entered",
+    "where": "Office — crisis alert",
+    "english": "Party support fell to {count} — the Steering Committee wants to see you.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "office.trigger.steering_committee.left",
+    "where": "Office — crisis alert",
+    "english": "Party support has recovered — the Steering Committee is no longer waiting.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.trigger.funding_freeze.entered",
+    "where": "Office — crisis alert",
+    "english": "Party support hit zero. Funding is frozen until it recovers.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.trigger.funding_freeze.left",
+    "where": "Office — crisis alert",
+    "english": "Party support has recovered. Funding has resumed.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.trigger.gaffe_penalty.entered",
+    "where": "Office — crisis alert",
+    "english": "{count} gaffes this run — Constituency support took a {amount} hit.",
+    "placeholders": "count, amount",
+    "notes": null
   }
 ]

@@ -1238,7 +1238,7 @@ def validate(data, report):
     # --- modifiers ---------------------------------------------------------
     valid_effect_types = {
         "RESOURCE_BONUS_ON_WIN", "STAGE_START_BONUS", "HAND_SIZE_BONUS",
-        "GAFFE_LIMIT_BONUS", "UNLOCK_DISCOUNT",
+        "GAFFE_LIMIT_BONUS", "UNLOCK_DISCOUNT", "FUNDS_INCOME_FREEZE",
     }
     for mod in data["modifiers"]:
         mid = mod["mod_id"]

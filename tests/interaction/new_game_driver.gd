@@ -73,7 +73,11 @@ func _walk() -> void:
 	await get_tree().create_timer(0.3).timeout
 	if not await _choose(panel, "PC02"):
 		return
-	if GameState.protagonist_id != "PC02" or GameState.xp != 0:
+	# PC02's own starting_xp (the difficulty ladder, data/player.json,
+	# 2026-09-25) rather than a bare 0 — "fresh run" means PC02's real
+	# starting numbers, not that every protagonist starts at zero.
+	if GameState.protagonist_id != "PC02" \
+			or GameState.xp != BattleSetup.starting_xp_for(DataDB.get_protagonist("PC02")):
 		_failures.append("starting over did not begin a fresh run as PC02")
 		return
 	print("  New game asks first, then starts a fresh run")

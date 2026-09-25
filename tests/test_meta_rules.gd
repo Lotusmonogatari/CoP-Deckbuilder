@@ -2,14 +2,12 @@ extends GutTest
 ## Tests for the rules that apply between battles: bill difficulty, meta
 ## variable rewards, and the thresholds that switch effects on.
 ##
-## A PASS HERE DOES NOT MEAN THE GAME DOES IT.
-##
-## Four of the rules covered below have no caller anywhere in the project —
 ## town_hall_triggered, steering_committee_triggered, funding_frozen and
-## party_support_modifiers. These tests prove the arithmetic is right, and
-## nothing more. The systems CLAUDE.md §8 describes are not switched on, and
-## they wait for the module runner at M4; MetaRules.gd says the same at more
-## length. Do not read a green run here as §8 being finished.
+## party_support_modifiers ARE wired into the level flow now
+## (GameState.finish_stage(), 2026-09-25) — see test_game_state_meta_tracking.gd
+## for that wiring's own tests (the edge/hysteresis behavior in particular).
+## These tests are still what they always were: proof the arithmetic itself
+## is right, in isolation.
 
 
 const BALANCE := {
@@ -18,8 +16,8 @@ const BALANCE := {
 	"party_support_allied_buff": 75,
 	"party_support_debuff": 50,
 	"party_support_steering_committee": 25,
+	"party_support_funding_freeze": 0,
 	"jiban_town_hall_trigger": 15,
-	"jiban_funding_freeze": 0,
 }
 
 const SANBAN := [
@@ -152,6 +150,14 @@ func test_the_thresholds_are_exclusive() -> void:
 	assert_eq(MetaRules.party_support_modifiers(50, BALANCE), [], "exactly 50 is not below 50")
 
 
+func test_zero_party_support_freezes_funding_instead_of_the_cold_shoulder() -> void:
+	# M32 wins over M10 at the very bottom of the debuff band — the two
+	# conditions overlap (0 is also < 50) and only one modifier can be
+	# active, so the more severe one takes it.
+	assert_eq(MetaRules.party_support_modifiers(0, BALANCE), ["M32"])
+	assert_eq(MetaRules.party_support_modifiers(1, BALANCE), ["M10"], "1 is above the freeze, still below the debuff")
+
+
 func test_the_steering_committee_is_forced_when_the_party_turns() -> void:
 	assert_true(MetaRules.steering_committee_triggered(20, BALANCE))
 	assert_false(MetaRules.steering_committee_triggered(25, BALANCE), "exactly 25 is not below 25")
@@ -167,7 +173,9 @@ func test_a_thin_local_base_calls_for_a_town_hall() -> void:
 	assert_false(MetaRules.town_hall_triggered(16, BALANCE))
 
 
-func test_no_local_base_freezes_the_money() -> void:
+func test_no_party_support_freezes_the_money() -> void:
+	# Party support, not Jiban — Cameron's call, 2026-09-25: the party
+	# cutting you off, not your constituents.
 	assert_true(MetaRules.funding_frozen(0, BALANCE))
 	assert_false(MetaRules.funding_frozen(1, BALANCE))
 
