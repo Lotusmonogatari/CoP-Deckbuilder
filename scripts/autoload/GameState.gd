@@ -333,6 +333,16 @@ func reset_collection() -> void:
 			owned_cards.append(str(card.get("card_id", "")))
 
 	deck = Ledger.opening_deck(DataDB.cards, DataDB.balance)
+
+	# opening_deck() fills past the opening tier from the suits above it (see
+	# its own test, "the rest is filled from above") whenever there aren't
+	# enough opening-tier cards to fill a deck. Whatever it picked has to be
+	# owned too, or the very first deck of a run would contain cards the
+	# collection screen says the player doesn't have.
+	if not open:
+		for card_id: String in deck:
+			if not owned_cards.has(card_id):
+				owned_cards.append(card_id)
 	owned_modifiers = []
 	inventory = {}
 	shop_bought_this_level = {}
