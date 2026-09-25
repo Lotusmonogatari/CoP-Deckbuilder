@@ -32,17 +32,8 @@ tools/verify.sh
 | `data/*.json` | The source of truth for all content, exported from the design workbook. Never hand-edited except a few files `tools/export_data.py`'s own comments mark as hand-maintained. |
 | `design/CoP_Starter_Card_Stage_Data.xlsx` | The design workbook itself. Cameron's. |
 | `design/proposals/` | Design docs and plans written for Cameron's review, one per feature area. |
-| `scripts/rules/` | The battle and meta rules, as plain GDScript with no scene or autoload access — provably headless, and mirrored in `web/src/engine.js` (see below). |
+| `scripts/rules/` | The battle and meta rules, as plain GDScript with no scene or autoload access — provably headless. |
 | `scripts/autoload/` | Game state, the data loader, and the other singletons the screens read from. |
 | `scripts/ui/`, `scenes/` | Everything the player sees. |
 | `tests/` | GUT unit tests for `scripts/rules/`, plus a few real click-driven interaction tests under `tests/interaction/`. |
-| `tools/` | The workbook exporter, the scene builders, the web build, and `verify.sh`. |
-
-## The web build
-
-`web/` is a browser mirror of the rules, used for playtesting without
-installing Godot. Build it with `python3 tools/build_web_playtest.py`, which
-writes `web/playtest.html` (gitignored — reproducible from `web/src/` and
-`data/*.json`, not committed). See `web/README.md` for what the mirror is
-and, just as importantly, what it deliberately is not (a second copy of the
-presentation).
+| `tools/` | The workbook exporter, the scene builders, and `verify.sh`. |

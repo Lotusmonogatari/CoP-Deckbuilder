@@ -22,14 +22,6 @@ It rewrites `data/*.json` and prints a report. Read the last line:
 | **Wording: …** | Your wording changed. If that was deliberate, run it again with `--accept-wording` (below). |
 | **N ERROR(S)** | It names the tab and the row. Nothing was written to the game until you fix it. |
 
-To see the change in the browser playtest as well:
-
-```
-python3 tools/build_web_playtest.py
-```
-
-Then open `web/playtest.html`.
-
 ---
 
 ## Quick reference
@@ -236,12 +228,10 @@ naming the line.
 | A dotted name on screen, like `outcome.carried` | That Key has no English. The export would normally refuse, so this means the game is running on older data — re-export. |
 | The export says **ERROR** | Nothing was written. Fix what it names and run it again. |
 | The game looks unchanged after an edit | The export was not run, or it errored. Run it and read the last line. |
-| The browser playtest looks unchanged | `python3 tools/build_web_playtest.py` after the export. |
 
 Everything in one go, including the tests:
 
 ```
 python3 tools/export_data.py
-python3 tools/build_web_playtest.py
 tools/verify.sh
 ```

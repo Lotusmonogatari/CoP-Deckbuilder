@@ -1535,7 +1535,7 @@ def check_text_keys(data, report):
     in_sheet = {str(row.get("key", "")) for row in rows}
     asked_for = {}
 
-    searched = list(REPO_ROOT.glob("scripts/**/*.gd")) + list(REPO_ROOT.glob("web/src/*.js"))
+    searched = list(REPO_ROOT.glob("scripts/**/*.gd"))
     for path in searched:
         text = path.read_text(encoding="utf-8")
         for number, line in enumerate(text.splitlines(), 1):
