@@ -85,11 +85,27 @@ static func is_implemented(modifier: Dictionary) -> bool:
 ## That column is exactly what CLAUDE.md calls display-only prose: showing it
 ## verbatim is not the rules engine parsing a sentence, any more than showing
 ## a card's effect_text is.
-static func describe(modifier: Dictionary, words: Phrase = null) -> String:
+##
+## `stage_names` (stage_id -> name_en, e.g. from DataDB.stages) lets a
+## stage-scoped effect ("ST06 TV Debate gaffe limit +1.") drop the internal
+## STxx code and read as "TV Debate gaffe limit +1." — the code is workbook
+## bookkeeping, not something a player needs to see. Left empty, the sentence
+## is shown exactly as written, so every existing call site is unaffected.
+static func describe(modifier: Dictionary, words: Phrase = null,
+		stage_names: Dictionary = {}) -> String:
 	var say := words if words != null else Phrase.new()
 	if type_of(modifier) == RESOURCE_BONUS_ON_WIN and target_of(modifier) == "Yen":
 		return say.say("modifier.reputation_per_stage_win", {"count": int(round(value_of(modifier)))})
-	return str(modifier.get("effect", "")).strip_edges()
+	var text := str(modifier.get("effect", "")).strip_edges()
+	var target := target_of(modifier)
+	if target.begins_with("ST") and stage_names.has(target):
+		var name := str(stage_names[target])
+		var with_name := "%s %s" % [target, name]
+		if text.contains(with_name):
+			text = text.replace(with_name, name)
+		elif text.contains(target):
+			text = text.replace(target, name)
+	return text
 
 
 ## What the owned, active modifiers add to a stage before its first turn.

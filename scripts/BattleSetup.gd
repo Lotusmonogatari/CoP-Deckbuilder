@@ -680,6 +680,15 @@ static func booster_names() -> Dictionary:
 	return names
 
 
+## stage_id -> name_en, for dropping an internal STxx code from workbook
+## prose (ModifierEffects.describe) without the rules layer touching UI.
+static func stage_names() -> Dictionary:
+	var names := {}
+	for stage: Dictionary in DataDB.stages:
+		names[str(stage.get("stage_id"))] = str(stage.get("name_en", ""))
+	return names
+
+
 ## The suit-by-stage multipliers, in the shape the engine reads.
 static func affinity_table() -> Dictionary:
 	var table := {}

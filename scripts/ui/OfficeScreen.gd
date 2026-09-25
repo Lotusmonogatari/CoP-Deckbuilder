@@ -620,18 +620,19 @@ func _show_backing() -> void:
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 
 	var names := BattleSetup.booster_names()
+	var stage_names := BattleSetup.stage_names()
 	var for_sale := DataDB.modifiers.filter(
 		func(m: Dictionary) -> bool: return Ledger.is_for_sale(m))
 
 	if for_sale.is_empty():
 		rows.append(UiKit.line(Text.say("office.nothing_for_sale")))
 	for modifier: Dictionary in for_sale:
-		rows.append(_modifier_row(modifier, names))
+		rows.append(_modifier_row(modifier, names, stage_names))
 
 	_backing_panel.open("Backing", rows)
 
 
-func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
+func _modifier_row(modifier: Dictionary, names: Dictionary, stage_names: Dictionary) -> Control:
 	var mod_id := str(modifier.get("mod_id", ""))
 	var box := UiKit.tight_column()
 
@@ -652,7 +653,8 @@ func _modifier_row(modifier: Dictionary, names: Dictionary) -> Control:
 
 	# What it does, in the workbook's own words (or, for the one case with a
 	# Text tab line of its own, that line with the real number in it).
-	box.add_child(UiKit.line(ModifierEffects.describe(modifier, Text.phrase()), "SmallLabel"))
+	box.add_child(UiKit.line(
+		ModifierEffects.describe(modifier, Text.phrase(), stage_names), "SmallLabel"))
 
 	# An effect nothing implements yet is said out loud. A shop that sells
 	# something inert is the trap this project has walked into twice.

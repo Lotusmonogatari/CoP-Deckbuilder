@@ -162,6 +162,42 @@ func test_a_modifier_with_nothing_written_describes_itself_as_nothing() -> void:
 	assert_eq(ModifierEffects.describe(_mod("M99", "", "", 1.0), _words()), "")
 
 
+func test_a_stage_name_lookup_drops_the_internal_stxx_code() -> void:
+	# "ST06 TV Debate gaffe limit +1." reads to the player as "TV Debate gaffe
+	# limit +1." — the STxx code is workbook bookkeeping, not something a
+	# player needs to see. Cameron, 2026-09-25.
+	var modifier := _mod("M07", "GAFFE_LIMIT_BONUS", "ST06", 1.0,
+		{"effect": "ST06 TV Debate gaffe limit +1."})
+	assert_eq(ModifierEffects.describe(modifier, _words(), {"ST06": "TV Debate"}),
+		"TV Debate gaffe limit +1.")
+
+
+func test_a_stage_name_lookup_still_names_the_stage_when_the_sentence_lacked_one() -> void:
+	# Some workbook rows name the STxx code with no stage name after it at
+	# all ("ST04 starts with +5 Press tone."); the lookup fills that gap
+	# rather than leaving a sentence with no subject.
+	var modifier := _mod("M03", "STAGE_START_BONUS", "ST04", 5.0,
+		{"effect": "ST04 starts with +5 Press tone."})
+	assert_eq(ModifierEffects.describe(modifier, _words(), {"ST04": "Press Conference"}),
+		"Press Conference starts with +5 Press tone.")
+
+
+func test_a_stage_name_lookup_finds_the_code_mid_sentence_too() -> void:
+	var modifier := _mod("M14", "HAND_SIZE_BONUS", "ST05", 1.0,
+		{"effect": "+1 card drawn at the start of ST05 Town Hall."})
+	assert_eq(ModifierEffects.describe(modifier, _words(), {"ST05": "Town Hall"}),
+		"+1 card drawn at the start of Town Hall.")
+
+
+func test_with_no_stage_name_lookup_the_stxx_code_is_left_alone() -> void:
+	# Every existing call site that does not pass stage_names keeps seeing
+	# exactly what the workbook wrote, unchanged.
+	var modifier := _mod("M07", "GAFFE_LIMIT_BONUS", "ST06", 1.0,
+		{"effect": "ST06 TV Debate gaffe limit +1."})
+	assert_eq(ModifierEffects.describe(modifier, _words()),
+		"ST06 TV Debate gaffe limit +1.")
+
+
 # ---------------------------------------------------------------------------
 # Against the real data
 # ---------------------------------------------------------------------------

@@ -21,6 +21,15 @@ extends Node
 ## enough that a slightly shaky tap is still a tap.
 const DRAG_START := 24.0
 
+## How far one notch of a mouse wheel moves the list, in pixels. Godot's own
+## default wheel step is small and fixed regardless of the list, so a tall
+## panel (Backing, with 31 modifiers to scroll past) reads as far slower
+## than dragging the hand even though a hand-drag itself is already the same
+## one-pixel-of-finger-equals-one-pixel-of-list ratio everywhere. This makes
+## the wheel move roughly as far as a deliberate flick of the hand does,
+## the same amount on every list this is attached to. Cameron, 2026-09-25.
+const WHEEL_STEP := 160.0
+
 ## How quickly a flung list slows down, per second (0 stops dead, 1 never).
 const GLIDE_KEEP_PER_SECOND := 0.03
 
@@ -78,6 +87,23 @@ func _input(event: InputEvent) -> void:
 			# That button has already forgotten its press (_cancel_press()).
 			_tracking = false
 			_dragging = false
+		return
+
+	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed:
+		var wheel := event as InputEventMouseButton
+		var direction := 0.0
+		if _vertical and wheel.button_index == MOUSE_BUTTON_WHEEL_UP:
+			direction = -1.0
+		elif _vertical and wheel.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			direction = 1.0
+		elif not _vertical and wheel.button_index == MOUSE_BUTTON_WHEEL_LEFT:
+			direction = -1.0
+		elif not _vertical and wheel.button_index == MOUSE_BUTTON_WHEEL_RIGHT:
+			direction = 1.0
+		if direction != 0.0 and _scroll.get_global_rect().has_point(wheel.position):
+			_velocity = 0.0
+			_set_position(_position() + direction * WHEEL_STEP)
+			get_viewport().set_input_as_handled()
 		return
 
 	if event is InputEventMouseMotion and _tracking:
