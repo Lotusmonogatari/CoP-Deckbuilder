@@ -30,7 +30,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH02",
@@ -63,7 +66,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH03",
@@ -96,7 +102,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH04",
@@ -129,7 +138,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH05",
@@ -162,7 +174,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH06",
@@ -195,7 +210,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH07",
@@ -228,7 +246,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH08",
@@ -261,7 +282,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH09",
@@ -289,7 +313,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH10",
@@ -317,7 +344,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH11",
@@ -345,7 +375,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH12",
@@ -373,7 +406,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH13",
@@ -401,7 +437,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": 1,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH14",
@@ -429,7 +468,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": 2,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH15",
@@ -457,7 +499,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": 1,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH16",
@@ -485,7 +530,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": 2,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH17",
@@ -513,7 +561,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": 3,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH18",
@@ -541,7 +592,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": "Yes",
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH19",
@@ -569,7 +623,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": 100000
   },
   {
     "item_id": "SH20",
@@ -602,7 +659,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH21",
@@ -635,7 +695,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH22",
@@ -668,7 +731,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH23",
@@ -701,7 +767,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH24",
@@ -734,7 +803,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH25",
@@ -767,7 +839,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH26",
@@ -800,7 +875,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": null
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH27",
@@ -828,7 +906,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": 1
+    "card_tier": 1,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH28",
@@ -856,7 +937,10 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": 2
+    "card_tier": 2,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   },
   {
     "item_id": "SH29",
@@ -884,6 +968,9 @@
     "bonus_3_role": null,
     "bonus_3_min_tier": null,
     "bonus_3_amount": null,
-    "card_tier": 3
+    "card_tier": 3,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null
   }
 ]

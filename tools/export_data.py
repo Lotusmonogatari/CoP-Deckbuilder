@@ -618,7 +618,8 @@ SHEETS = {
                      "Uses Per Turn", "Stack Cap", "Purchase Limit", "Player Choice",
                      "Bonus 1 Role", "Bonus 1 Min Tier", "Bonus 1 Amount",
                      "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
-                     "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Card Tier"],
+                     "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Card Tier",
+                     "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -686,6 +687,16 @@ SHEETS = {
             # UNOWNED card of a tier is not a standing delta) — blank on
             # every other row, 1/2/3 on SH27/28/29.
             ("Card Tier", "card_tier", "int"),
+            # 2026-09-26 follow-up, same reason and same shape as Card Tier:
+            # SH13/14 ("Unlock Tier N Level") and SH19 ("Increase Office
+            # Funds Cap") were the same kind of bought-then-unusable gap.
+            # SH18 ("Unlock New Staff Recruitment Tier") described a gate
+            # that did not exist anywhere in the Staff system yet — Cameron
+            # settled it as "a candidate's own highest_tier must be at or
+            # below GameState.staff_recruitment_tier", raised by 1 here.
+            ("Level Tier", "level_tier", "int"),
+            ("Unlocks Recruitment Tier", "unlocks_recruitment_tier", "str"),
+            ("Funds Cap Increase", "funds_cap_increase", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's

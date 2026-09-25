@@ -237,25 +237,37 @@ func _candidate(overrides: Dictionary = {}) -> Dictionary:
 
 
 func test_a_vacant_role_can_be_hired_if_affordable() -> void:
-	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 50000, _words()), "")
-	assert_true(Ledger.can_hire_staff(_candidate(), {}, false, 50000, _words()))
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 50000, 2, _words()), "")
+	assert_true(Ledger.can_hire_staff(_candidate(), {}, false, 50000, 2, _words()))
 
 
 func test_hiring_says_how_many_yen_short() -> void:
-	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 40000, _words()), "10000 short.")
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 40000, 2, _words()), "10000 short.")
 
 
 func test_a_filled_role_cannot_be_hired_into_again() -> void:
 	var hired := {"staff_id": "SF03", "tier": 0}
-	assert_eq(Ledger.staff_hire_refusal(_candidate(), hired, false, 999999, _words()), "Already yours.")
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), hired, false, 999999, 2, _words()), "Already yours.")
 
 
 func test_a_fired_candidate_can_never_be_hired_again() -> void:
 	# Even into a role that's vacant right now — Cameron's decision,
 	# 2026-09-25 (design/proposals/staff_firing.md): firing is permanent.
-	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, true, 999999, _words()),
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, true, 999999, 2, _words()),
 		"Fired — will not work for you again.")
-	assert_false(Ledger.can_hire_staff(_candidate(), {}, true, 999999, _words()))
+	assert_false(Ledger.can_hire_staff(_candidate(), {}, true, 999999, 2, _words()))
+
+
+## SH18, "Unlock New Staff Recruitment Tier" — a candidate above the
+## currently-unlocked tier is not offered yet, whatever the player can afford.
+func test_a_candidate_above_the_unlocked_recruitment_tier_is_not_offered() -> void:
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 999999, 1, _words()),
+		"Not open to recruitment yet.")
+	assert_false(Ledger.can_hire_staff(_candidate(), {}, false, 999999, 1, _words()))
+
+
+func test_a_candidate_at_the_unlocked_recruitment_tier_is_offered() -> void:
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 999999, 2, _words()), "")
 
 
 func test_the_first_upgrade_step_is_the_hiring_tier() -> void:

@@ -255,8 +255,12 @@ static func deck_is_legal(deck: Array, owned: Array, balance: Dictionary,
 ## (not this candidate) — empty means the role is vacant. `fired` is whether
 ## THIS candidate was fired earlier this run (GameState.staff_fired) — once
 ## true, they are never hireable again, even into a role that is vacant now.
+## `recruitment_tier` is GameState.staff_recruitment_tier — a candidate whose
+## own highest_tier is above it is not offered yet (SH18, "Unlock New Staff
+## Recruitment Tier", raises it by 1 per purchase; 0 at a fresh run, so only
+## the three highest_tier-0 candidates — one per role — start hireable).
 static func staff_hire_refusal(candidate: Dictionary, hired_for_role: Dictionary,
-		fired: bool, funds: int, words: Phrase = null) -> String:
+		fired: bool, funds: int, recruitment_tier: int, words: Phrase = null) -> String:
 	var say := words if words != null else Phrase.new()
 	if str(candidate.get("staff_id", "")).is_empty():
 		return say.say("shop.mod_no_id")
@@ -264,6 +268,8 @@ static func staff_hire_refusal(candidate: Dictionary, hired_for_role: Dictionary
 		return say.say("office.staff_fired")
 	if not hired_for_role.is_empty():
 		return say.say("shop.already_yours")
+	if int(candidate.get("highest_tier", 0)) > recruitment_tier:
+		return say.say("office.recruitment_tier_locked")
 
 	var cost := int(candidate.get("hiring_cost_yen", 0))
 	if funds < cost:
@@ -272,8 +278,9 @@ static func staff_hire_refusal(candidate: Dictionary, hired_for_role: Dictionary
 
 
 static func can_hire_staff(candidate: Dictionary, hired_for_role: Dictionary,
-		fired: bool, funds: int, words: Phrase = null) -> bool:
-	return staff_hire_refusal(candidate, hired_for_role, fired, funds, words) == AFFORDABLE
+		fired: bool, funds: int, recruitment_tier: int, words: Phrase = null) -> bool:
+	return staff_hire_refusal(candidate, hired_for_role, fired, funds,
+		recruitment_tier, words) == AFFORDABLE
 
 
 ## What upgrading a hired candidate from `tier` to `tier + 1` costs, or null

@@ -562,19 +562,27 @@ func _price_text(item: Dictionary) -> String:
 	return Text.say("shop.item_free") if parts.is_empty() else " + ".join(parts)
 
 
+## Four Supplies items (card_tier/level_tier/unlocks_recruitment_tier/
+## funds_cap_increase, each SH27-29/SH13-14/SH18/SH19) take effect the
+## moment they are bought instead of going into the inventory to be Used
+## later like every other item here — Cameron, 2026-09-26: they never had
+## anywhere to apply their effect (Use In Office/Stage both blank), and
+## their own Description already says as much ("takes effect immediately").
+## Checked off the item's own data, never its ID, the same rule as every
+## other branch in this screen.
 func _on_buy_item(item_id: String) -> void:
 	var item := DataDB.get_shop_item(item_id)
-	# "Purchase Random Tier N Card" (card_tier set) takes effect on
-	# purchase — a random unowned card of that tier, no inventory step —
-	# rather than being held and Used like every other Supplies item.
 	if item.get("card_tier") != null:
-		var result := GameState.buy_random_card(item_id)
-		var message := str(result.get("message", ""))
-		if result.get("ok", false):
-			_report.text = message
-			_after_spending("", _show_supplies)
-		else:
-			_after_spending(message, _show_supplies)
+		_report_purchase_result(GameState.buy_random_card(item_id))
+		return
+	if item.get("level_tier") != null:
+		_report_purchase_result(GameState.buy_random_level(item_id))
+		return
+	if Items.is_yes(item.get("unlocks_recruitment_tier")):
+		_report_purchase_result(GameState.buy_staff_recruitment_tier(item_id))
+		return
+	if item.get("funds_cap_increase") != null:
+		_report_purchase_result(GameState.buy_funds_cap(item_id))
 		return
 
 	var refusal := GameState.buy_shop_item(item_id)
@@ -582,6 +590,16 @@ func _on_buy_item(item_id: String) -> void:
 		_report.text = Text.say("shop.item_bought",
 			{"name": DataDB.get_shop_item(item_id).get("name", item_id)})
 	_after_spending(refusal, _show_supplies)
+
+
+## Shared by every "takes effect on purchase" branch above: { "ok", "message" }.
+func _report_purchase_result(result: Dictionary) -> void:
+	var message := str(result.get("message", ""))
+	if result.get("ok", false):
+		_report.text = message
+		_after_spending("", _show_supplies)
+	else:
+		_after_spending(message, _show_supplies)
 
 
 ## The deck: which of the cards you own are going in.
@@ -787,7 +805,8 @@ func _staff_candidate_row(candidate: Dictionary) -> Control:
 	else:
 		var funds := int(GameState.meta.get("Funds", 0))
 		var refusal := Ledger.staff_hire_refusal(candidate,
-			GameState.staff_hired.get(str(candidate.get("role", "")), {}), false, funds, Text.phrase())
+			GameState.staff_hired.get(str(candidate.get("role", "")), {}), false, funds,
+			GameState.staff_recruitment_tier, Text.phrase())
 		box.add_child(UiKit.action_button(Text.say("office.hire"), refusal, _on_hire_staff.bind(staff_id)))
 	return box
 

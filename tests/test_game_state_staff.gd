@@ -16,6 +16,7 @@ var _standing_before: Dictionary = {}
 var _change_before: Dictionary = {}
 var _favorability_before: Dictionary = {}
 var _segment_change_before: Dictionary = {}
+var _recruitment_tier_before := 0
 
 
 func before_each() -> void:
@@ -26,8 +27,13 @@ func before_each() -> void:
 	_change_before = GameState.last_booster_change.duplicate(true)
 	_favorability_before = GameState.segment_favorability.duplicate(true)
 	_segment_change_before = GameState.last_segment_change.duplicate(true)
+	_recruitment_tier_before = GameState.staff_recruitment_tier
 	GameState.staff_hired = {}
 	GameState.staff_fired = {}
+	# This file is about hiring/firing/reward mechanics, not the SH18
+	# recruitment-tier gate (that has its own coverage) — open every tier
+	# so a real candidate's own highest_tier never refuses these hires.
+	GameState.staff_recruitment_tier = 2
 
 
 func after_each() -> void:
@@ -38,6 +44,7 @@ func after_each() -> void:
 	GameState.last_booster_change = _change_before.duplicate(true)
 	GameState.segment_favorability = _favorability_before.duplicate(true)
 	GameState.last_segment_change = _segment_change_before.duplicate(true)
+	GameState.staff_recruitment_tier = _recruitment_tier_before
 
 
 # ---------------------------------------------------------------------------

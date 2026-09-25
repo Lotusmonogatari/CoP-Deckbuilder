@@ -13,6 +13,13 @@ extends GutTest
 ##   SH25 Host National Booster Dinner  Now, Player Choice, "TIER:National +2"
 ##   SH27/28/29 Purchase Random Tier 1/2/3 Card  effect on purchase, not
 ##                                    held/Used at all — see card_tier
+##   SH13/14   Unlock Tier 1/2 Level  same shape, see level_tier
+##   SH15/16/17 Unlock Random Tier 1/2/3 Card  reuses buy_random_card(), the
+##                                    same card_tier column SH27-29 use, XP
+##                                    instead of Yen
+##   SH18      Unlock New Staff Recruitment Tier  same shape, see
+##                                    unlocks_recruitment_tier
+##   SH19      Increase Office Funds Cap  same shape, see funds_cap_increase
 
 var _saved: Dictionary = {}
 
@@ -29,6 +36,9 @@ func before_each() -> void:
 		"standing": GameState.booster_standing.duplicate(true),
 		"staff_hired": GameState.staff_hired.duplicate(true),
 		"owned_cards": GameState.owned_cards.duplicate(),
+		"levels_unlocked": GameState.levels_unlocked.duplicate(),
+		"staff_recruitment_tier": GameState.staff_recruitment_tier,
+		"funds_cap_bonus": GameState.funds_cap_bonus,
 	}
 	GameState.inventory = {}
 	GameState.shop_bought_this_level = {}
@@ -51,6 +61,9 @@ func after_each() -> void:
 	GameState.booster_standing = _saved["standing"]
 	GameState.staff_hired = _saved["staff_hired"]
 	GameState.owned_cards = _saved["owned_cards"]
+	GameState.levels_unlocked = _saved["levels_unlocked"]
+	GameState.staff_recruitment_tier = _saved["staff_recruitment_tier"]
+	GameState.funds_cap_bonus = _saved["funds_cap_bonus"]
 
 
 # ---------------------------------------------------------------------------
@@ -287,3 +300,112 @@ func test_owning_every_card_of_a_tier_refuses_the_purchase() -> void:
 
 	assert_false(result["ok"])
 	assert_eq(int(GameState.meta["Funds"]), funds, "a refusal never spends anything")
+
+
+# ---------------------------------------------------------------------------
+# Unlock Tier N Level (SH13/14) — same on-purchase shape as random cards
+# ---------------------------------------------------------------------------
+
+func test_buying_a_random_level_unlock_opens_one_of_the_right_tier() -> void:
+	GameState.levels_unlocked = []
+	var xp := GameState.xp
+
+	var result := GameState.buy_random_level("SH14")   # Tier 2
+
+	assert_true(result["ok"])
+	assert_eq(GameState.levels_unlocked.size(), 1)
+	var level := DataDB.get_level(GameState.levels_unlocked[0])
+	assert_eq(int(level.get("tier")), 2)
+	assert_lt(GameState.xp, xp, "SH14 costs XP, not Yen")
+
+
+func test_every_level_of_a_tier_already_open_refuses_the_purchase() -> void:
+	for level: Dictionary in DataDB.levels:
+		var level_id := str(level.get("level_id", ""))
+		if int(level.get("tier", -1)) == 1 and not GameState.levels_unlocked.has(level_id):
+			GameState.levels_unlocked.append(level_id)
+
+	var result := GameState.buy_random_level("SH13")   # Tier 1
+
+	assert_false(result["ok"])
+
+
+# ---------------------------------------------------------------------------
+# Unlock Random Tier N Card (SH15/16/17) — same buy_random_card() effect as
+# SH27/28/29, just XP-costed instead of Yen. No new code: their own Card
+# Tier column is all that was missing.
+# ---------------------------------------------------------------------------
+
+func test_buying_a_random_card_unlock_costs_xp_not_yen() -> void:
+	GameState.owned_cards = []
+	var xp := GameState.xp
+	var funds := int(GameState.meta["Funds"])
+
+	var result := GameState.buy_random_card("SH16")   # Tier 2
+
+	assert_true(result["ok"])
+	assert_eq(GameState.owned_cards.size(), 1)
+	var card := DataDB.get_card(GameState.owned_cards[0])
+	assert_eq(int(card.get("tier")), 2)
+	assert_lt(GameState.xp, xp, "SH16 costs XP, not Yen")
+	assert_eq(int(GameState.meta["Funds"]), funds, "SH16 does not touch Funds")
+
+
+# ---------------------------------------------------------------------------
+# Unlock New Staff Recruitment Tier (SH18)
+# ---------------------------------------------------------------------------
+
+func test_buying_a_recruitment_tier_raises_it_by_one() -> void:
+	GameState.staff_recruitment_tier = 0
+	var result := GameState.buy_staff_recruitment_tier("SH18")
+
+	assert_true(result["ok"])
+	assert_eq(GameState.staff_recruitment_tier, 1)
+
+
+func test_a_maxed_recruitment_tier_refuses_the_purchase() -> void:
+	var highest := 0
+	for candidate: Dictionary in DataDB.staff:
+		highest = maxi(highest, int(candidate.get("highest_tier", 0)))
+	GameState.staff_recruitment_tier = highest
+
+	var result := GameState.buy_staff_recruitment_tier("SH18")
+	assert_false(result["ok"])
+
+
+func test_a_candidate_above_the_unlocked_tier_cannot_be_hired() -> void:
+	GameState.staff_recruitment_tier = 0
+	var tier_2_candidate: Dictionary = {}
+	for candidate: Dictionary in DataDB.staff:
+		if int(candidate.get("highest_tier", 0)) == 2:
+			tier_2_candidate = candidate
+			break
+	assert_false(tier_2_candidate.is_empty(), "the fixture needs a real Tier 2 candidate")
+	assert_ne(GameState.hire_staff(str(tier_2_candidate["staff_id"])), "")
+
+
+# ---------------------------------------------------------------------------
+# Increase Office Funds Cap (SH19)
+# ---------------------------------------------------------------------------
+
+func _funds_row() -> Dictionary:
+	for row: Dictionary in DataDB.sanban:
+		if row.get("name_en") == "Funds":
+			return row
+	return {}
+
+
+func test_buying_a_funds_cap_increase_raises_the_effective_cap() -> void:
+	GameState.funds_cap_bonus = 0
+	var base_max := int(_funds_row().get("max", 0))
+	var result := GameState.buy_funds_cap("SH19")
+
+	assert_true(result["ok"])
+	assert_eq(GameState.funds_cap_bonus, 100000)
+
+	# The raised cap is real, not just the counter: Funds can now go past
+	# the base sanban.json max.
+	GameState.meta["Funds"] = 0
+	GameState._move_meta("Funds", base_max + 2000000)
+	assert_eq(int(GameState.meta["Funds"]), base_max + 100000,
+		"the ceiling itself moved by the purchased amount")

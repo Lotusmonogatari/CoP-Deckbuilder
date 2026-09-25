@@ -1923,5 +1923,47 @@
     "english": "Every Tier {tier} card is already yours.",
     "placeholders": "tier",
     "notes": null
+  },
+  {
+    "key": "office.recruitment_tier_locked",
+    "where": "Staff panel, candidate above the unlocked recruitment tier",
+    "english": "Not open to recruitment yet.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.no_levels_left_at_tier",
+    "where": "Shop — refusals",
+    "english": "Every Tier {tier} level is already open.",
+    "placeholders": "tier",
+    "notes": null
+  },
+  {
+    "key": "shop.level_unlocked",
+    "where": "Office report after buying a random-tier level unlock",
+    "english": "{name} unlocked.",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "shop.recruitment_tier_maxed",
+    "where": "Shop — refusals",
+    "english": "Every recruitment tier is already open.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.recruitment_tier_unlocked",
+    "where": "Office report after buying a staff recruitment tier",
+    "english": "A new staff recruitment tier is open.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.funds_cap_increased",
+    "where": "Office report after buying a Funds cap increase",
+    "english": "Funds cap raised by {count}.",
+    "placeholders": "count",
+    "notes": null
   }
 ]

@@ -142,6 +142,19 @@ var levels_completed_count: int = 0
 ## on cooldown, no matter what its cooldown number says.
 var level_last_completed_at: Dictionary = {}
 
+## How many of Staff's highest_tier steps are open to hire from, 0 at a
+## fresh run (SF01/SF08/SF15, the three highest_tier-0 candidates, are the
+## only ones hireable). SH18 ("Unlock New Staff Recruitment Tier") raises
+## this by 1 — Ledger.staff_hire_refusal() is where it actually gates a
+## candidate.
+var staff_recruitment_tier: int = 0
+
+## Added to sanban.json's own Funds "max" every time Funds is clamped (see
+## _sanban_row()) — SH19 ("Increase Office Funds Cap") raises this by its
+## own funds_cap_increase, repeatable, with no limit. The base max in the
+## data is never touched; this is purely additive on top of it.
+var funds_cap_bonus: int = 0
+
 
 # ---------------------------------------------------------------------------
 # Crisis triggers (CLAUDE.md §8) — Town Hall, Steering Committee, funding
@@ -234,6 +247,7 @@ const _SAVED_FIELDS := [
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
 	"booster_standing", "segment_favorability", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at",
+	"staff_recruitment_tier", "funds_cap_bonus",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied",
@@ -279,6 +293,7 @@ func reset_meta() -> void:
 	last_meta_change = {}
 	xp = BattleSetup.starting_xp()
 	last_xp_gained = 0
+	funds_cap_bonus = 0
 	reset_collection()
 	reset_staff()
 	reset_levels()
@@ -298,10 +313,12 @@ func reset_crisis_triggers() -> void:
 	gaffe_penalty_applied = false
 
 
-## Every Staff role back to vacant, and every firing forgotten.
+## Every Staff role back to vacant, every firing forgotten, and recruitment
+## back to only highest_tier-0 candidates.
 func reset_staff() -> void:
 	staff_hired = {}
 	staff_fired = {}
+	staff_recruitment_tier = 0
 
 
 ## Every level back to locked-by-its-price and off cooldown.
@@ -421,7 +438,7 @@ func hire_staff(staff_id: String) -> String:
 	var role := str(candidate.get("role", ""))
 	var funds := int(meta.get("Funds", 0))
 	var refusal := Ledger.staff_hire_refusal(candidate, staff_hired.get(role, {}),
-		bool(staff_fired.get(staff_id, false)), funds, Text.phrase())
+		bool(staff_fired.get(staff_id, false)), funds, staff_recruitment_tier, Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 
@@ -885,6 +902,10 @@ func _roll_range(range_value: Variant) -> int:
 func _sanban_row(name: String) -> Dictionary:
 	for row: Dictionary in DataDB.sanban:
 		if row.get("name_en") == name:
+			if name == "Funds" and funds_cap_bonus != 0:
+				var with_bonus := row.duplicate()
+				with_bonus["max"] = int(row.get("max", 0)) + funds_cap_bonus
+				return with_bonus
 			return row
 	return {"min": 0, "max": 999, "start": 0}
 
@@ -1108,6 +1129,86 @@ func buy_random_card(item_id: String) -> Dictionary:
 	owned_cards.append(card_id)
 	var card_name := str(DataDB.get_card(card_id).get("name_en", card_id))
 	return {"ok": true, "message": Text.say("shop.card_unlocked", {"name": card_name})}
+
+
+## SH13/14 ("Unlock Tier N Level"): the same on-purchase shape as
+## buy_random_card() above, and for the same reason — pays, then
+## immediately unlocks one random not-yet-unlocked level of shop.json's
+## own "level_tier". Ledger.is_level_unlocked() (not a bare levels_unlocked
+## check) is what decides "not-yet-unlocked", so a level that is already
+## open for some other reason (its own unlock cost is 0) is correctly
+## never offered here.
+func buy_random_level(item_id: String) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := Items.buy_refusal(item, item_count(item_id),
+		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+
+	var tier := int(item.get("level_tier", 0))
+	var choices: Array[String] = []
+	for level: Dictionary in DataDB.levels:
+		if int(level.get("tier", -1)) == tier \
+				and not Ledger.is_level_unlocked(level, levels_unlocked, staff_hired):
+			choices.append(str(level.get("level_id", "")))
+	if choices.is_empty():
+		return {"ok": false, "message": Text.say("shop.no_levels_left_at_tier", {"tier": tier})}
+
+	var price := Items.costs(item)
+	_move_xp(-int(price["XP"]))
+	_move_meta("Funds", -int(price["Funds"]))
+	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
+
+	var level_id: String = choices[randi() % choices.size()]
+	levels_unlocked.append(level_id)
+	var level_name := str(DataDB.get_level(level_id).get("description", level_id))
+	return {"ok": true, "message": Text.say("shop.level_unlocked", {"name": level_name})}
+
+
+## SH18 ("Unlock New Staff Recruitment Tier"): pays, then raises
+## staff_recruitment_tier by 1 — Ledger.staff_hire_refusal() is where that
+## actually opens up candidates. Refuses once every candidate's own
+## highest_tier is already open, rather than let a purchase do nothing.
+func buy_staff_recruitment_tier(item_id: String) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := Items.buy_refusal(item, item_count(item_id),
+		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+
+	var highest := 0
+	for candidate: Dictionary in DataDB.staff:
+		highest = maxi(highest, int(candidate.get("highest_tier", 0)))
+	if staff_recruitment_tier >= highest:
+		return {"ok": false, "message": Text.say("shop.recruitment_tier_maxed")}
+
+	var price := Items.costs(item)
+	_move_xp(-int(price["XP"]))
+	_move_meta("Funds", -int(price["Funds"]))
+	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
+
+	staff_recruitment_tier += 1
+	return {"ok": true, "message": Text.say("shop.recruitment_tier_unlocked")}
+
+
+## SH19 ("Increase Office Funds Cap"): pays, then permanently raises how
+## high Funds can go by the item's own "funds_cap_increase" — repeatable,
+## no limit. See _sanban_row(), where funds_cap_bonus is actually applied.
+func buy_funds_cap(item_id: String) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := Items.buy_refusal(item, item_count(item_id),
+		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+
+	var price := Items.costs(item)
+	_move_xp(-int(price["XP"]))
+	_move_meta("Funds", -int(price["Funds"]))
+	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
+
+	var increase := int(item.get("funds_cap_increase", 0))
+	funds_cap_bonus += increase
+	return {"ok": true, "message": Text.say("shop.funds_cap_increased", {"count": increase})}
 
 
 ## Uses one item from the Office. Its standing effects (boosters, segments,
