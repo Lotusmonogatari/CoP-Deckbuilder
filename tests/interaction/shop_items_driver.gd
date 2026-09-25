@@ -340,9 +340,9 @@ func _buy(supplies: Overlay, item_id: String) -> bool:
 
 
 ## Checks the card reveal popup a successful SH15/16/17 (or SH27-29) buy
-## opens on top of Supplies — a real CardView is showing, with a real
-## texture and the newly-owned card's own name on it — then dismisses it
-## with its Confirm button, the way a player taps past a reveal.
+## opens on top of Supplies — a real CardView (front) AND a real
+## CardBackView (rear) are both showing, for the newly-owned card — then
+## dismisses it with its Confirm button, the way a player taps past a reveal.
 func _check_and_dismiss_card_reveal(office: Node) -> bool:
 	var panel := office.get_node_or_null("CardRevealPanel") as Overlay
 	if panel == null or not panel.visible:
@@ -350,12 +350,17 @@ func _check_and_dismiss_card_reveal(office: Node) -> bool:
 		return false
 
 	var view: CardView = null
+	var back: CardBackView = null
 	for node in panel.find_children("*", "", true, false):
 		if node is CardView:
 			view = node as CardView
-			break
+		elif node is CardBackView:
+			back = node as CardBackView
 	if view == null:
-		_failures.append("the card reveal popup has no CardView in it")
+		_failures.append("the card reveal popup has no CardView (front) in it")
+		return false
+	if back == null:
+		_failures.append("the card reveal popup has no CardBackView (rear) in it")
 		return false
 	if view.card_id.is_empty():
 		_failures.append("the card reveal popup's CardView was never filled in")
@@ -363,6 +368,13 @@ func _check_and_dismiss_card_reveal(office: Node) -> bool:
 	if not GameState.owned_cards.has(view.card_id):
 		_failures.append("the card reveal popup shows %s, which was not actually granted"
 			% view.card_id)
+		return false
+	# CardBackView.show_card() takes no card_id of its own to check the way
+	# CardView does — it is proven by size instead: the real bug class here
+	# (CLAUDE.md's own note on BattleScreen's zoom) is the back rendered at
+	# zero width because only its height was ever set.
+	if back.size.x <= 0.0:
+		_failures.append("the card reveal popup's CardBackView has no width — see BattleScreen's own note on setting BOTH size numbers")
 		return false
 
 	DirAccess.make_dir_recursive_absolute("user://shots")

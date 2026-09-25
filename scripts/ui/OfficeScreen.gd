@@ -619,23 +619,41 @@ func _report_purchase_result(result: Dictionary) -> void:
 
 
 ## A random-card purchase's own reveal (SH15-17, SH27-29): the card itself,
-## full size, on top of the Supplies list _on_buy_item() already reopened
-## underneath it. CardView is the same component the hand and deck screen
-## use, so a drawn card shows its real art here too, by the same card_id.
+## front then back, on top of the Supplies list _on_buy_item() already
+## reopened underneath it — Cameron, 2026-09-25: the same two views a tap on
+## a card in a battle shows (CardView for the front, CardBackView for the
+## full printed text), stacked vertically here rather than a tap swapping
+## one for the other, since a reveal has nothing else competing for the
+## screen. Both read straight off the card's own ID, so real art and real
+## text show the moment they exist, the same bargain every other view here
+## makes with undrawn art.
 func _show_card_reveal(card_id: String) -> void:
 	var card := DataDB.get_card(card_id)
 	if card.is_empty():
 		return
 
-	var view := CardView.new()
-	view.show_card(card)
-	view.disabled = true   # a reveal, not a hand — tapping it does nothing
+	var front := CardView.new()
+	front.show_card(card)
+	front.disabled = true   # a reveal, not a hand — tapping it does nothing
+	var front_frame := CenterContainer.new()
+	front_frame.add_child(front)
 
-	var frame := CenterContainer.new()
-	frame.add_child(view)
+	# Sized to match the front's own height, so the pair reads as one card
+	# shown both sides rather than a small card under a much bigger one —
+	# CardBackView otherwise has no size of its own (see BattleScreen's own
+	# 1250-tall zoom, which has the whole screen to fill; this popup does not).
+	var back := CardBackView.new()
+	back.custom_minimum_size = Vector2(CardView.HEIGHT * CardBackView.ASPECT, CardView.HEIGHT)
+	back.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	# No battle room to describe an effect "here" or narrate — just the card
+	# as printed, the same as looking at it in the deck screen.
+	back.show_card(card, "", "")
+	var back_frame := CenterContainer.new()
+	back_frame.add_child(back)
 
 	var rows: Array[Control] = [
-		frame,
+		front_frame,
+		back_frame,
 		UiKit.line(Text.say("shop.card_unlocked", {"name": card.get("name_en", card_id)})),
 	]
 	_card_reveal_panel.open(Text.say("shop.card_reveal_title"), rows,
