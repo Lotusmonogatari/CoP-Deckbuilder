@@ -13,8 +13,12 @@ extends Node
 ## stage again, with the items and standing the player had going in.
 ##
 ## WHEN IT LOADS
-## Once, at boot. No save means a new player, so GameState is told to show
-## the New Game screen.
+## When the player presses Continue on the title screen (IntroScreen.gd) —
+## not eagerly at boot any more (2026-09-26): the title screen is the
+## game's first scene, and reading the save back in is a real, checkable
+## action the player takes there, not something that has already silently
+## happened by the time anything is drawn. has_save() (a plain file check)
+## is all _ready() below still does — enough to grey Continue out or not.
 ##
 ## THE FILE
 ## { "version": 1, "saved_at": "...", "run": <GameState.to_save()> }, with
@@ -34,7 +38,7 @@ func _ready() -> void:
 	enabled = not _is_test_run()
 	if not enabled:
 		return
-	if not load_game():
+	if not has_save():
 		GameState.awaiting_new_game = true
 
 

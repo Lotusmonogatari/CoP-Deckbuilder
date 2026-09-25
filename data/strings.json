@@ -1832,5 +1832,26 @@
     "english": "{name}: {value}",
     "placeholders": "name, value",
     "notes": null
+  },
+  {
+    "key": "intro.title",
+    "where": "Intro (title) screen, heading",
+    "english": "Coliseum of Parliament",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "intro.continue",
+    "where": "Intro (title) screen, button",
+    "english": "Continue",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "intro.new_game",
+    "where": "Intro (title) screen, button",
+    "english": "New Game",
+    "placeholders": null,
+    "notes": null
   }
 ]

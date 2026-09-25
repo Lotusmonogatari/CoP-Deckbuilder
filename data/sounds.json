@@ -114,6 +114,12 @@
    "bus": "music",
    "when": "asked for by name",
    "loop": true
+  },
+  "music_title": {
+   "file": "",
+   "bus": "music",
+   "when": "asked for by name",
+   "loop": true
   }
  },
  "speech": {

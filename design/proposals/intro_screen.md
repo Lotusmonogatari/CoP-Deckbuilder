@@ -1,8 +1,12 @@
 # Proposal: an Intro (title) screen
 
-**Status: plan only — not built.** Cameron asked for "an intro screen with
+**Status: built (2026-09-26).** Cameron asked for "an intro screen with
 options to Continue (Load Game); Start New Game (opens prompt to select a
-main character)." This is the plan; nothing here is built yet.
+main character)." Built exactly as planned below, plus one addition §3
+didn't call out by name: New Game warns before overwriting a save on disk
+nobody has loaded yet, the same words Office Management's own "New game"
+uses, built in code the same way (`IntroScreen._overwrite_warning`,
+an `Overlay`) rather than as a fourth Text-tab key.
 
 ## 0. What happens today, for contrast
 
@@ -53,13 +57,15 @@ surprise no matter which door you came in through.
 
 | File | Change |
 |---|---|
-| `scenes/menus/IntroScreen.tscn` (new) | Background (art id `TITLE`, new — falls back to a labelled placeholder like every other missing background), title + Japanese accent, Continue button, New Game button. Built by a generator script, same convention as `tools/build_battle_scene.gd`/`build_visitor_scene.gd` |
+| `scenes/menus/IntroScreen.tscn` (new) | Background (art id `TITLE`, new — falls back to a labelled placeholder like every other missing background), title, Continue button, New Game button. Built by a generator script, same convention as `tools/build_battle_scene.gd`/`build_visitor_scene.gd`. **No Japanese accent on the title** — Cameron hasn't given the game an official Japanese name, and inventing a translation isn't this build's call (CLAUDE.md §4/§12) |
 | `tools/build_intro_scene.gd` (new) | Generates the `.tscn` above |
-| `scripts/ui/IntroScreen.gd` (new) | Wires the two buttons; `_ready()` sets `%ContinueButton.disabled = not SaveManager.has_save()` |
+| `scripts/ui/IntroScreen.gd` (new) | Wires the two buttons; `_ready()` sets `%ContinueButton.disabled = not SaveManager.has_save()`. New Game builds and owns its own overwrite-warning `Overlay`, same pattern as `OfficeScreen._new_game_panel` |
 | `project.godot` | `run/main_scene` → `res://scenes/menus/IntroScreen.tscn` |
 | `scripts/autoload/SaveManager.gd` | `_ready()` stops calling `load_game()` eagerly — it only sets `awaiting_new_game = true` when there's no save, same as today. The actual load moves to the Continue button, as an explicit, checkable action rather than something that has already silently happened by the time a screen shows anything. `has_save()` (already exists) is what Continue's enabled state reads |
-| `data/strings.json` (via the workbook, the usual XML-surgery pass) | New Text-tab rows: `intro.title`, `intro.continue`, `intro.new_game` — the button/title copy, editable like every other sentence in the game |
-| `tests/interaction/intro_test.tscn` + driver (new) | Real clicks: no save → Continue disabled, New Game opens the picker; a save present → Continue disabled state is false and loads straight into the Office as that protagonist; New Game over an existing save warns first |
+| `data/strings.json` (via the workbook, the usual XML-surgery pass) | New Text-tab rows: `intro.title`, `intro.continue`, `intro.new_game`. The overwrite warning reuses `office.new_game`/`office.new_game_warning`/`office.new_game_confirm` verbatim rather than adding a fourth |
+| `data/sounds.json` | New `music_title` entry (blank file, same as every other named moment — silent until one is drawn/recorded) |
+| `tests/interaction/intro_test.tscn` + driver (new) | Real clicks: no save → Continue disabled, New Game opens the picker directly; a save on disk → Continue is enabled and loads it into the Office as that protagonist, and New Game warns first and leaves the save untouched if you back out |
+| `tools/shot_intro.gd`/`.tscn` + driver (new) | Same screenshot-tool convention as `shot_town_hall.gd` — walks all four states (no save, picker open, save present, overwrite warning) and photographs them |
 
 Nothing in `scripts/rules/` changes — this is presentation only, the same
 boundary every other screen in this project already keeps.
@@ -73,19 +79,20 @@ boundary every other screen in this project already keeps.
 - The protagonist picker itself, its warning-before-overwrite, its art,
   its starting-numbers sheet — all reused as-is (open question 1).
 
-## 5. Build order
+## 5. Build order (all done)
 
-1. `tools/build_intro_scene.gd` + the `.tscn` it produces.
-2. `scripts/ui/IntroScreen.gd`, wired to the existing `SaveManager`/
-   `GameState` calls — no new autoload behaviour beyond §3's one change.
-3. `project.godot`'s main scene switch, and the `SaveManager._ready()`
-   change.
-4. The three new Text-tab rows (real workbook, XML surgery, as usual).
-5. `tests/interaction/intro_test.tscn` + its driver.
-6. Full pipeline: export, boot check, GUT suite, all interaction tests
-   (existing ones are unaffected — they open their own scene directly and
-   never go through `project.godot`'s main scene), web-parity check.
-
-Rough size: comfortably past the 150-line outline-first threshold (new
-scene + script + generator + test + driver + two small existing-file
-edits), which is why this is a plan and not a diff yet.
+1. ~~`tools/build_intro_scene.gd` + the `.tscn` it produces.~~ **Built.**
+2. ~~`scripts/ui/IntroScreen.gd`...~~ **Built**, plus the overwrite-warning
+   `Overlay` (§0).
+3. ~~`project.godot`'s main scene switch, and the `SaveManager._ready()`
+   change.~~ **Built.**
+4. ~~The three new Text-tab rows...~~ **Built** (real workbook, XML
+   surgery, verified byte-identical against every other cell before the
+   file was replaced, same as every prior pass).
+5. ~~`tests/interaction/intro_test.tscn` + its driver.~~ **Built** — covers
+   both save states and the overwrite warning, including backing out of it.
+6. Full pipeline: export (0 errors), boot check (0 warnings), GUT suite
+   (715/715), all 6 interaction tests including the new one, web-parity
+   check (172/172). The 5 pre-existing interaction tests were confirmed
+   unaffected, as predicted — they open their own scene directly and never
+   go through `project.godot`'s main scene.
