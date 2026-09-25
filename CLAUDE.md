@@ -36,7 +36,9 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 
 ```
 /data/              JSON exported from the design workbook (source of truth)
-/assets/            (the scheme is data/art.json; tools/art_checklist.py lists what is drawn)
+/assets/            (the scheme is data/art.json; tools/art_checklist.py lists what is drawn,
+                     and the workbook's own "Assets" tab, 2026-09-26, is the fuller production
+                     tracker — naming convention, folder, purpose and minimum size per file)
   characters/
     protagonists/   {PC01-PC04}_{expression}.png    e.g. PC01_neutral.png
     opponents/      {OPPONENT_ID}_{expression}.png  e.g. OP03_attacking.png
