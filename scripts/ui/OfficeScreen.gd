@@ -881,15 +881,14 @@ func _show_levels() -> void:
 func _level_row(level: Dictionary) -> Control:
 	var box := UiKit.tight_column()
 
-	var stage_count := 0
-	for slot in range(1, 11):
-		if not str(level.get("stage_%d" % slot, "")).is_empty():
-			stage_count += 1
-
-	box.add_child(UiKit.line(str(level.get("level_id", ""))))
-	box.add_child(UiKit.line("%d stage%s  ·  %s" % [
-		stage_count, "" if stage_count == 1 else "s",
-		level.get("description", "")], "SmallLabel"))
+	# Neither the level ID nor a stage count is shown — Cameron, 2026-09-26:
+	# the count in particular read as wrong for almost every level (it named
+	# 10 no matter how many stages a level actually had) because levels.json
+	# writes an unused stage_N slot as an explicit JSON null rather than
+	# leaving the key out, and str(null) is the literal text "<null>", never
+	# empty — the count was silently always 10. Simplest fix and the one
+	# asked for: just the name, which is what a player actually reads.
+	box.add_child(UiKit.line(str(level.get("description", ""))))
 
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
