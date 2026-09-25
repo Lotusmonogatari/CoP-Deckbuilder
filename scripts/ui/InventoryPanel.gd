@@ -156,7 +156,15 @@ func _choice_button(item_id: String, booster: Dictionary) -> Button:
 	var booster_id := str(booster.get("booster_id", ""))
 	var button := Button.new()
 	button.name = "Choice_" + booster_id
-	button.custom_minimum_size = Vector2(0, 100)
+	# A zero width here, same as autowrap's other user (_item_button() below),
+	# makes word-wrap shrink to fit — every word on its own line, 0 wide and
+	# taller than the screen. A group with several boosters (SH26's
+	# Constituency tier, seven of them) then renders as nothing at all: the
+	# panel's CenterContainer only ever grants a child its own minimum size,
+	# so there is no later layout pass to correct a minimum this wrong. A
+	# real width, the same way _item_button() already gives its own grid
+	# cells one, is what keeps this from happening again.
+	button.custom_minimum_size = Vector2(340, 100)
 	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var standing := int(GameState.booster_standing.get(booster_id, 50))
 	button.text = "%s  —  %d" % [booster.get("name_en", booster_id), standing]

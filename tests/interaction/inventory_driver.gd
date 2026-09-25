@@ -114,6 +114,10 @@ func _walk() -> void:
 	if not await _walk_choice_picker(office):
 		return
 
+	# --- Player Choice item with a bigger pool: every choice fits on screen ---
+	if not await _walk_choice_picker_stays_visible_with_more_choices(office):
+		return
+
 	# --- Into the first level ------------------------------------------------
 	await _click(office.get_node("%StartButton"))
 	var levels := office.get_node("%LevelsPanel") as Overlay
@@ -200,6 +204,16 @@ func _walk_choice_picker(office: Node) -> bool:
 	if choice == null:
 		_failures.append("pressing Use did not open a picker with the chosen booster in it")
 		return false
+	# A real bug (2026-09-26): autowrap on a button with no real width wraps
+	# every word onto its own line, shrinking to a few px wide and hundreds
+	# tall — present enough for _click()'s "size > 0" guard to miss, but
+	# nothing a player could see or tap. _click() would still (just barely)
+	# succeed below, so the size itself has to be checked here.
+	var choice_rect := choice.get_global_rect()
+	if choice_rect.size.x < 100.0 or choice_rect.size.y > 300.0:
+		_failures.append("Choice_%s has a degenerate size %s — a player could not see or tap it"
+			% [chosen_id, choice_rect.size])
+		return false
 	if GameState.item_count(DINNER) != 1:
 		_failures.append("opening the picker already consumed the item, before a choice was made")
 		return false
@@ -215,6 +229,45 @@ func _walk_choice_picker(office: Node) -> bool:
 		_failures.append("a booster nobody picked moved anyway")
 		return false
 	print("  used the Booster Dinner; the chosen booster (only) gained +2")
+	inventory.close()
+	await _wait(0.2)
+	return true
+
+
+## SH26 (Constituency tier) has more boosters than SH25's National tier —
+## the real report this guards was a District Walking Tour picker that
+## opened to an entirely blank panel because every one of its choices had
+## collapsed to a sliver, not just the first. Checks every button, not one.
+const WALKING_TOUR := "SH26"
+
+func _walk_choice_picker_stays_visible_with_more_choices(office: Node) -> bool:
+	GameState.inventory[WALKING_TOUR] = 1
+	var constituency := DataDB.boosters_for_tier("Constituency")
+
+	await _click(office.find_child("InventoryButton", true, false) as Control)
+	var inventory := office.get_node("InventoryPanel") as InventoryPanel
+	var icon := inventory.find_child("Item_" + WALKING_TOUR, true, false) as Control
+	if icon == null:
+		_failures.append("the inventory does not show the Walking Tour")
+		return false
+	await _click(icon)
+	var use := inventory.find_child("Confirm", true, false) as Button
+	await _click(use)
+
+	for booster: Dictionary in constituency:
+		var booster_id := str(booster.get("booster_id"))
+		var choice := inventory.find_child("Choice_" + booster_id, true, false) as Button
+		if choice == null:
+			_failures.append("the Walking Tour picker is missing %s" % booster_id)
+			return false
+		var rect := choice.get_global_rect()
+		if rect.size.x < 100.0 or rect.size.y > 300.0:
+			_failures.append("Choice_%s has a degenerate size %s in a %d-choice picker"
+				% [booster_id, rect.size, constituency.size()])
+			return false
+
+	print("  a %d-choice picker (Walking Tour) shows every choice at a real size"
+		% constituency.size())
 	inventory.close()
 	await _wait(0.2)
 	return true
