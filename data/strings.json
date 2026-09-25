@@ -175,13 +175,6 @@
     "notes": "Stands in for the next opponent up, unnamed."
   },
   {
-    "key": "narration.a_member",
-    "where": "Battle — what happened",
-    "english": "a member",
-    "placeholders": null,
-    "notes": "Stands in for a committee member with no name."
-  },
-  {
     "key": "narration.them_generic",
     "where": "Battle — what happened",
     "english": "them",
@@ -348,20 +341,6 @@
     "english": "{who} could not guard any further.",
     "placeholders": "who",
     "notes": "Their guard is already at the ceiling."
-  },
-  {
-    "key": "narration.leaned",
-    "where": "Battle — their move",
-    "english": "leaned on {member}, {count} against you",
-    "placeholders": "member, count",
-    "notes": "A committee chair pushing one member away from you."
-  },
-  {
-    "key": "narration.lean_none",
-    "where": "Battle — their move",
-    "english": "{who} leaned on the panel and moved nobody.",
-    "placeholders": "who",
-    "notes": null
   },
   {
     "key": "narration.waited",
@@ -1146,13 +1125,6 @@
     "english": "Guarding · {amount}",
     "placeholders": "amount",
     "notes": null
-  },
-  {
-    "key": "intent.pressuring",
-    "where": "Battle — their intent",
-    "english": "Pressuring · {amount}",
-    "placeholders": "amount",
-    "notes": "A committee chair leaning on a member."
   },
   {
     "key": "intent.range",
