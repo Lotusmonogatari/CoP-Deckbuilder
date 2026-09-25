@@ -1,0 +1,601 @@
+<title>Coliseum of Parliament</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #221c16;
+    --ink-soft: #55493d;
+    --paper: #f6f1e6;
+    --surface: #ffffff;
+    --surface-2: #efe7d6;
+    --rule: #ddd2b8;
+    --accent: #a5341c;
+    --accent-soft: #c96a3e;
+    --accent-wash: #f4e3d6;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #ece4d4;
+      --ink-soft: #b8ac96;
+      --paper: #17130f;
+      --surface: #221c15;
+      --surface-2: #2b241a;
+      --rule: #3c3324;
+      --accent: #e07a4e;
+      --accent-soft: #c96a3e;
+      --accent-wash: #33241a;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ink: #ece4d4;
+    --ink-soft: #b8ac96;
+    --paper: #17130f;
+    --surface: #221c15;
+    --surface-2: #2b241a;
+    --rule: #3c3324;
+    --accent: #e07a4e;
+    --accent-soft: #c96a3e;
+    --accent-wash: #33241a;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.65;
+    padding-inline: 20px;
+    padding-block: 28px 64px;
+  }
+
+  a { color: var(--accent); }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .masthead {
+    text-align: center;
+    padding-block: 8px 30px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+
+  .kicker {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1.title {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 10px 0 6px;
+  }
+
+  .jp {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .dek {
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 14px auto 0;
+    text-wrap: balance;
+  }
+
+  /* stat strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 26px 0 34px;
+  }
+  .stat {
+    background: var(--surface);
+    padding: 12px 6px;
+    text-align: center;
+  }
+  .stat .n {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--accent);
+    display: block;
+  }
+  .stat .l {
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 2px;
+  }
+  @media (max-width: 620px) {
+    .stats { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* toc */
+  nav.toc {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 40px;
+  }
+  nav.toc .toc-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    display: block;
+  }
+  nav.toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 2;
+    column-gap: 20px;
+  }
+  nav.toc li { break-inside: avoid; margin-bottom: 6px; }
+  nav.toc a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.92rem;
+  }
+  nav.toc a:hover { color: var(--accent); }
+  nav.toc .num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    color: var(--accent-soft);
+    font-size: 0.78rem;
+    margin-right: 6px;
+  }
+  @media (max-width: 520px) {
+    nav.toc ol { columns: 1; }
+  }
+
+  article section {
+    margin-bottom: 44px;
+    scroll-margin-top: 18px;
+  }
+
+  h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.55rem;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+    margin: 0 0 4px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+
+  section:first-of-type h2 { border-top: none; padding-top: 0; }
+
+  h2 .idx {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+    color: var(--accent-soft);
+    font-weight: 500;
+    margin-right: 10px;
+    vertical-align: 2px;
+  }
+
+  h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.08rem;
+    margin: 22px 0 6px;
+  }
+
+  p { margin: 0 0 14px; max-width: 66ch; }
+  section > p:first-of-type { margin-top: 12px; }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  em.term { font-style: italic; color: var(--ink); }
+
+  ul.plain, ol.plain { margin: 0 0 14px; padding-left: 0; list-style: none; }
+
+  /* shape cards */
+  .shapes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 18px 0 20px;
+  }
+  @media (max-width: 560px) { .shapes { grid-template-columns: 1fr; } }
+  .shape {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .shape .name {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+  .shape .rooms {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .shape p { font-size: 0.92rem; margin-bottom: 0; max-width: none; }
+
+  /* callout: not yet active */
+  .callout {
+    border: 1px dashed var(--accent-soft);
+    background: var(--accent-wash);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .callout .tag {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  .callout p { margin-bottom: 0; font-size: 0.94rem; }
+
+  /* data table */
+  table.data {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 0.92rem;
+  }
+  table.data th, table.data td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  table.data th {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .tblwrap { overflow-x: auto; }
+
+  /* system list (office loop) */
+  .systems { display: flex; flex-direction: column; gap: 12px; margin: 18px 0 20px; }
+  .system {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+  .system .name {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .system p { margin-bottom: 0; font-size: 0.95rem; max-width: none; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <span class="kicker">Design reference · as currently built</span>
+    <h1 class="title">Coliseum of Parliament</h1>
+    <div class="jp">国会コロシアム</div>
+    <p class="dek">How the mechanics fit together, today — not the long-term vision. Where a system is
+      built but not yet switched on, that's said plainly where it comes up.</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><span class="n">54</span><span class="l">Cards</span></div>
+    <div class="stat"><span class="n">125</span><span class="l">Opponents</span></div>
+    <div class="stat"><span class="n">30</span><span class="l">Levels</span></div>
+    <div class="stat"><span class="n">21</span><span class="l">Rooms</span></div>
+    <div class="stat"><span class="n">16</span><span class="l">Orgs</span></div>
+    <div class="stat"><span class="n">31</span><span class="l">Modifiers</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <span class="toc-label">On this page</span>
+    <ol>
+      <li><a href="#premise"><span class="num">01</span>The premise</a></li>
+      <li><a href="#hand"><span class="num">02</span>Playing a hand</a></li>
+      <li><a href="#suits"><span class="num">03</span>Suits &amp; affinity</a></li>
+      <li><a href="#shapes"><span class="num">04</span>Five shapes a room can take</a></li>
+      <li><a href="#segments"><span class="num">05</span>Segments &amp; boosters</a></li>
+      <li><a href="#meta"><span class="num">06</span>The four numbers</a></li>
+      <li><a href="#office"><span class="num">07</span>The Office loop</a></li>
+      <li><a href="#protagonist"><span class="num">08</span>Choosing who you are</a></li>
+      <li><a href="#gaps"><span class="num">09</span>Designed, not load-bearing</a></li>
+    </ol>
+  </nav>
+
+  <article>
+
+    <section id="premise">
+      <h2><span class="idx">01</span>The premise</h2>
+      <p>You are a freshly elected legislator in Yezo, a fictional unicameral parliament of 101 seats
+        (51 to a majority). You have no army, no budget of your own worth mentioning yet, and no natural
+        allies — only the ability to argue. Every fight in the game is a room full of people you are
+        trying to win over or hold off: a committee, the whole floor, your own party's caucus, a press
+        conference, a town hall, a television debate. You fight with a hand of <em class="term">argument
+        cards</em> — turns of phrase, gambits, and rhetorical moves, each belonging to one of six
+        <em class="term">suits</em> of persuasion — and each room plays by its own version of the same
+        underlying rules.</p>
+      <p>Between fights you return to your Office, where the <strong>result</strong> of every fight
+        becomes the <strong>ammunition</strong> for the next one: reputation you can spend, organisations
+        whose backing you've earned, money, and experience. The game is really two loops wearing one
+        skin — a card battle, and a resource loop that decides how hard the next battle will be — and the
+        whole design is about how tightly those two loops feed each other.</p>
+    </section>
+
+    <section id="hand">
+      <h2><span class="idx">02</span>The core exchange: playing a hand</h2>
+      <p>A battle is a race, measured in turns (5 to 10 depending on the room), to push a support number
+        past a threshold before the clock runs out or you talk yourself into too many gaffes.</p>
+      <p>Each turn you're shown what your opponent intends to do — attack, block, or rally support of
+        their own, with a number attached — <strong>before</strong> you act, so every hand is played
+        against a known threat rather than a guess. You then spend <em class="term">energy</em> (refilled
+        each turn, never carried over) playing cards from a hand of three to five, in any order, until
+        you're out of energy or choose to stop.</p>
+      <p>Every card does some mix of five things: it moves support (yours up, theirs down, or both), it
+        banks guard (a standing shield that carries between turns and absorbs the next hit aimed at you,
+        capped at 5), it costs or clears gaffes (a mistake meter that ends the fight outright if it
+        fills), and it draws more cards. A card's stated numbers are adjusted first by which suit it
+        belongs to and which room you're in, before anything else happens.</p>
+
+      <h3>Winning someone over costs more the more opposed they already are</h3>
+      <p>Support isn't simply added and subtracted; the game models an audience of individual people.
+        Someone currently undecided comes over to you for a single point of support. Someone who already
+        opposes you costs more — most often 1 point, sometimes 2, occasionally 3, rolled per person as
+        your argument works through the room — and if your card runs out of support mid-conversion,
+        whatever's left over is simply lost rather than carried to the next person. A big, flashy number
+        on a card is not the same thing as winning that many people; it's an upper bound on how many you
+        might reach, spent from the hardest case first.</p>
+
+      <div class="tblwrap">
+        <table class="data">
+          <thead><tr><th>Target</th><th>Cost per person</th><th>Odds</th></tr></thead>
+          <tbody>
+            <tr><td>Undecided</td><td>1 point</td><td>always</td></tr>
+            <tr><td>Already opposed</td><td>1 point</td><td>60%</td></tr>
+            <tr><td>Already opposed</td><td>2 points</td><td>30%</td></tr>
+            <tr><td>Already opposed</td><td>3 points</td><td>10%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>At the end of your turn, whatever you didn't play is discarded (except in a press conference,
+        where you can't simply refresh your hand — declining to answer the question in front of you has
+        its own cost). A turn where you play nothing at all is a pass: it costs you one energy at the
+        start of your next turn, a small, permanent tax on hesitation. Then your opponent's intent
+        resolves — their attack is met by your banked guard first, and only the excess actually lands;
+        the same is true in reverse for your own attacks against them, since guard defends both
+        directions.</p>
+    </section>
+
+    <section id="suits">
+      <h2><span class="idx">03</span>Suits, affinity, and the room's own bias</h2>
+      <p>Every card belongs to one of six suits of persuasion — <strong>Earnest, Emotional, Appeal, Data
+        Driven, Divisive, Duplicitous</strong> — six equally-sized families of nine cards each, so no
+        single approach dominates by weight of numbers alone. What separates them is fit: each of the 21
+        kinds of room in the game has its own affinity table, multiplying a card's support numbers up or
+        down (roughly 0.7× to 1.3×) by how well that suit plays in that room. A floor debate rewards
+        different instincts than a press conference; the same card in your hand is meaningfully stronger
+        in one room and weaker in another. Guard, draw, and gaffe numbers are never touched by this — only
+        the persuasion itself is.</p>
+      <p>This is the first real point of interdependence: <strong>which cards you own and have upgraded
+        decides which rooms you're naturally strong in</strong>, and the game's progression is built
+        around gradually giving you a wider spread of suits so fewer rooms catch you flat-footed.</p>
+    </section>
+
+    <section id="shapes">
+      <h2><span class="idx">04</span>Five shapes a room can take</h2>
+      <p>Every stage in the game is one of a handful of underlying shapes, and knowing the shape tells you
+        how to read the number on screen.</p>
+
+      <div class="shapes">
+        <div class="shape">
+          <div class="name">Shared pool</div>
+          <div class="rooms">floor debates, caucuses, town halls, steering committees, media ambushes,
+            lobbyist meetings, policy study sessions</div>
+          <p>One pool of support splits three ways — you, your opponent, and everyone still undecided.
+            Gains pull from Undecided first, then from your opponent once Undecided runs dry; support your
+            opponent loses returns to Undecided rather than vanishing.</p>
+        </div>
+        <div class="shape">
+          <div class="name">Single</div>
+          <div class="rooms">press conferences</div>
+          <p>One tone meter, no opposing number at all — you're not fighting a person so much as a mood in
+            the room. Reporters' questions stand in for the opponent's intent, and the suit you answer with
+            is also graded against the question being asked.</p>
+        </div>
+        <div class="shape">
+          <div class="name">Survival</div>
+          <div class="rooms">the TV debate</div>
+          <p>The same single meter, but you don't win by crossing the threshold once — you have to be at
+            or above it at the end of <em>every</em> turn, so a strong opening doesn't forgive a bad middle
+            turn.</p>
+        </div>
+        <div class="shape">
+          <div class="name">Committee</div>
+          <div class="rooms">11 named committees, from Ethics to Finance to the Cabinet</div>
+          <p>A roster of individual members, each with a private lean from 0 to 100. Every card targets one
+            member; a member locks in for good above 66 or below 33. You win the moment a majority is
+            locked in your favour. The chair has no vote and no move of their own.</p>
+        </div>
+        <div class="shape" style="grid-column: 1 / -1;">
+          <div class="name">Non-combat</div>
+          <div class="rooms">Office Hours</div>
+          <p>No cards, no energy, no bar at all — a visitor asks you one multiple-choice question, you pick
+            an answer, and the right one pays out (usually raising an organisation's opinion of you) while
+            the wrong one costs you something similar. There is no way to lose an Office Hours visit.</p>
+        </div>
+      </div>
+
+      <p>A <strong>level</strong> is an ordered chain of these rooms — the game currently ships 30 of
+        them — usually built around getting one piece of legislation through. What one room leaves behind
+        can genuinely change how the next one plays: a level can carry a support bonus or an
+        organisation's newly earned goodwill forward into its very next stage, and reputation earned in an
+        earlier press-shaped room nudges where a later one starts. Losing any single stage ends the level
+        there and sends you back to the Office; finishing every stage carries you through to the level's
+        own reward.</p>
+    </section>
+
+    <section id="segments">
+      <h2><span class="idx">05</span>Segments and boosters: who's actually in the room</h2>
+      <p>Every room has an audience made of five kinds of people — <strong>Press, Party Members,
+        Constituents, Donors, Bureaucrats</strong> — mixed in different proportions depending on the room,
+        and that mix quietly decides which of the game's 31 modifiers are switched on for this particular
+        fight (a modifier fires only once its trigger segment makes up enough of the audience). A press
+        conference full of reporters behaves differently, mechanically as well as thematically, from a
+        caucus full of your own party.</p>
+      <p>Sixteen <strong>organisations</strong> — Party Headquarters, the Chamber of Commerce, local
+        Kōenkai associations, Labor, and so on, split into Party, Constituency and National tiers — sit
+        behind those modifiers as the thing actually being pleased or annoyed. Playing a strong answer to
+        a themed question (in a press conference, media ambush, lobbyist meeting, town hall, or policy
+        study session) pleases whichever organisation asked it; a weak answer costs you tone in the room
+        instead. What those organisations think of you doesn't evaporate at the end of the fight — it
+        becomes your <strong>standing</strong> with them, held between levels, and modifiers tied to
+        strong standing quietly start giving you a better opening position in later fights.</p>
+      <p>This is the second big point of interdependence: <strong>who you please in one room can make a
+        later, unrelated room easier</strong>, entirely through which organisation happens to be
+        watching.</p>
+    </section>
+
+    <section id="meta">
+      <h2><span class="idx">06</span>The four numbers that follow you everywhere</h2>
+      <p>Outside any single fight, your standing as a legislator is tracked in four meta-variables, shown
+        on screen by name because they're also how the game itself reaches for them: <strong>Constituency
+        support</strong>, <strong>Reputation</strong>, <strong>Funds</strong>, and <strong>Party
+        support</strong>. Winning a level moves some mix of these (and awards XP) according to that
+        level's own numbers; losing costs a smaller, separate set of penalties. Reputation in particular
+        leans on a fight before it's even fought — entering a press-shaped room with strong reputation
+        nudges its opening number in your favour by a fixed amount at set thresholds, and weak reputation
+        nudges it the other way.</p>
+
+      <div class="callout">
+        <span class="tag">Not yet triggered</span>
+        <p>These four numbers are also meant to be the game's early-warning system — low Constituency
+          support should force a Town Hall into your schedule, Funds at exactly zero should freeze your
+          income until it recovers, and Party support crossing 75 or falling under 50 should switch a
+          standing organisational modifier on or off automatically. <strong>These consequences are written
+          into the data and tested, but nothing in the level flow triggers them yet</strong> — today
+          they're numbers you watch and manage by choice, not by mechanical force.</p>
+      </div>
+    </section>
+
+    <section id="office">
+      <h2><span class="idx">07</span>Turning results into strength: the Office loop</h2>
+      <p>Between levels, the Office is where a level's rewards become next level's capability, through
+        three parallel systems.</p>
+
+      <div class="systems">
+        <div class="system">
+          <div class="name">Cards</div>
+          <p>XP earned from wins unlocks new cards at a cost set by their tier (0 through 3), and upgrades
+            an owned card further. This is the slow, deliberate way you broaden which suits you're strong
+            in — today, every card is actually available to try in the deck screen regardless of XP, so
+            this gate is open for playtesting rather than closed as final balance.</p>
+        </div>
+        <div class="system">
+          <div class="name">Staff</div>
+          <p>Three roles — Policy Research Assistant, Media Spokesperson, District Representative — seven
+            hireable candidates deep each, cost Funds to hire and can be upgraded a tier at a time. A
+            handful of Shop items pay out more once the matching staff role is hired at a high enough
+            tier — hiring the right staff makes an existing Office action quietly better rather than
+            unlocking something new outright.</p>
+        </div>
+        <div class="system">
+          <div class="name">Supplies &amp; inventory</div>
+          <p>29 purchasable items, bought with Funds and/or XP, from one-stage consumables (a coffee for +1
+            energy, paperwork automation for +1 card drawn) through whole-level buffs, to organisation-
+            standing actions and permanent unlocks. An item goes into your bag when bought and does nothing
+            until you press Use — from the Office (queued for your next stage or level) or mid-fight
+            (immediate, for the rest of that fight).</p>
+        </div>
+      </div>
+
+      <p>An Office Hours visit is really this same loop wearing a different face — instead of Funds buying
+        an item, a right answer buys organisational goodwill directly, on the spot.</p>
+    </section>
+
+    <section id="protagonist">
+      <h2><span class="idx">08</span>Choosing who you are</h2>
+      <p>Before any of this starts, a title screen offers <strong>Continue</strong>, which reads your one
+        save slot back in, or <strong>New Game</strong>, which hands you a choice of four protagonists —
+        each with their own name, party (or lack of one), and short blurb — and, on the same screen,
+        exactly what standing and XP you'd start with as them. Today all four start identically; the
+        screen already shows the numbers so that giving one of them a real head start, later, is a data
+        change rather than a new system.</p>
+      <p>Progress is saved automatically after every stage, whenever the Office opens, and whenever
+        anything is bought or changed there — but never in the middle of a stage itself, so reopening the
+        game mid-fight always restarts that one fight fresh rather than resuming it half-played.</p>
+    </section>
+
+    <section id="gaps">
+      <h2><span class="idx">09</span>What's designed but not yet load-bearing</h2>
+      <p>For a complete, honest picture: four of the meta-variable consequences above (the Town Hall
+        trigger, the funding freeze, and both Party-support modifiers) exist as written, tested rules with
+        nothing in the level flow calling them yet, and six of the sixteen organisations' modifiers sit
+        inert for the same reason. A Steering Committee trigger is specified but still needs its own room
+        built. Card unlocks are gated by data but left open for playtesting rather than enforced. None of
+        this changes how the game plays today — it's simply where the next layer of pressure is already
+        wired and waiting.</p>
+    </section>
+
+  </article>
+
+  <footer>
+    Coliseum of Parliament — design reference, current as of the checked-in data.
+  </footer>
+
+</div>
