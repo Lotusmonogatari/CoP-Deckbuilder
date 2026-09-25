@@ -390,8 +390,9 @@ static func _question_for_visitor(visitor_id: String) -> Dictionary:
 ## OpponentPresenter.show_state()'s own branch on that same check. Instead
 ## every card played still quietly answers the drawn question the same way
 ## (BattleEngine._answer_question()), and BattleScreen shows what is being
-## asked in its own small panel (%QuestionPrompt) rather than swapping the
-## opponent row for a reporter the way a press conference does.
+## asked on the CueBanner itself, as its own default content
+## (_announce_question()), rather than swapping the opponent row for a
+## reporter the way a press conference does.
 const QUESTION_POOL_BY_STAGE := {
 	"ST04": "press_conference",
 	"ST05": "town_hall",

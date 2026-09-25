@@ -242,12 +242,18 @@ The project also contains a browser playtest, booster standing, scripted intent
 patterns, card cues, opponent cues, and a text catalog exported from the
 workbook. Canon Town Hall (ST05) now draws its own written questions the
 same way a press conference does (`BattleSetup.QUESTION_POOL_BY_STAGE`), and
-BattleScreen shows what is being asked in a small panel of its own
-(`%QuestionPrompt`) since its Shared_pool bar means it never gets the
-press-conference-shaped opponent row. The weak-answer tone cost remains a
-placeholder value of 1 pending playtesting, and ST05 does not set it at all
-today, so a weak answer there costs nothing yet — Cameron's number to set,
-not a gap in the wiring.
+BattleScreen shows what is being asked on the CueBanner itself
+(`_announce_question()`), as its own default content until the player's turn
+gives the banner something else to say, since ST05's Shared_pool bar means
+it never gets the press-conference-shaped opponent row. What actually
+happened — the opponent's own narration, a bout finishing, or the player's
+own pass/decline penalty — moved to a small `%RoomNotice` label instead
+(2026-09-26), so the banner in a question-asking room is never anything but
+the question or the opponent's own cue, and never restates a name its own
+tag already carries. The weak-answer tone cost remains a placeholder value
+of 1 pending playtesting, and ST05 does not set it at all today, so a weak
+answer there costs nothing yet — Cameron's number to set, not a gap in the
+wiring.
 
 ### §8 systems that are specified but NOT switched on
 
@@ -366,14 +372,15 @@ place for the next caller that nests something inside a PlaceholderArt.
 
 **A note for whoever next runs the scene builders.** `tools/build_battle_
 scene.gd` drifted again after its 2026-09-27 re-sync (2026-09-25: rerunning
-it to add `%QuestionPrompt` lost the card zoom's `ZoomColumn` its
-`unique_name_in_owner`, breaking the click-test interaction suite, and a few
-sizes/anchors no longer match the checked-in scene either) — fixed the one
-regression that actually broke something, but the file is not fully
-re-synced again; `%QuestionPrompt` itself was added straight to the real
-`.tscn` by hand instead, specifically to avoid widening that gap further.
-Confirm with a structural diff before trusting a rerun, the same discipline
-the 2026-09-27 fix used. `tools/build_visitor_scene.gd` (2026-09-25, new)
+it to add the label that became `%RoomNotice` lost the card zoom's
+`ZoomColumn` its `unique_name_in_owner`, breaking the click-test interaction
+suite, and a few sizes/anchors no longer match the checked-in scene either)
+— fixed the one regression that actually broke something, but the file is
+not fully re-synced again; the label itself, and its 2026-09-26 rename from
+`%QuestionPrompt`, were both made straight to the real `.tscn` by hand
+instead, specifically to avoid widening that gap further. Confirm with a
+structural diff before trusting a rerun, the same discipline the 2026-09-27
+fix used. `tools/build_visitor_scene.gd` (2026-09-25, new)
 builds `scenes/office_hours/VisitorScreen.tscn` the same way. `tools/
 build_office_scene.gd` is NOT kept in sync at all: it predates most of the
 Office and would delete Office Management, Supplies, the deck screen and

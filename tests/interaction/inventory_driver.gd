@@ -136,6 +136,18 @@ func _walk() -> void:
 		return
 	print("  the first stage opened with +1 energy per turn from the Coffee")
 
+	# LV01's own stage is ST05 Town Hall, which now opens by announcing its
+	# drawn question on the CueBanner (BattleScreen._announce_question(),
+	# 2026-09-26) — the same band a card cue or the opponent's own turn
+	# sweeps across, and, like both of those, it sits in front of
+	# everything else on screen for a few seconds. Skipped here the way a
+	# player taps past it, so the click meant for InventoryButton actually
+	# reaches it instead of dismissing the band.
+	var banner: Node = battle.get_node("CueBanner")
+	if bool(banner.call("is_showing")):
+		banner.call("skip")
+		await _wait(0.1)
+
 	# --- Inventory mid-stage: use the second one now -------------------------
 	var energy_before: int = battle.engine.state.energy
 	await _click(battle.find_child("InventoryButton", true, false) as Control)

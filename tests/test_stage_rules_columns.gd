@@ -217,9 +217,9 @@ func test_expand_level_resolves_st05_town_halls_own_question_pool_too() -> void:
 	# unused (CLAUDE.md §11) because ST05 was deliberately left out of
 	# QUESTION_POOL_BY_STAGE pending a decision on how to show them, since
 	# its Shared_pool bar means it is never is_press_conference(). Now
-	# resolved — BattleScreen shows the drawn question in its own
-	# %QuestionPrompt panel (see test_battle_screen equivalents, if any) —
-	# so this is the same shape of proof test_expand_level_resolves_a_real_
+	# resolved — BattleScreen shows the drawn question on the CueBanner
+	# itself, as its own default content (_announce_question()) — so this
+	# is the same shape of proof test_expand_level_resolves_a_real_
 	# stages_question_pool_into_a_count() already gives ST04.
 	var level := DataDB.get_level("LV01")
 	assert_false(level.is_empty(), "sanity: LV01 exists")

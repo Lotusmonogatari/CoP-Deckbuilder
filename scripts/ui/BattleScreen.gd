@@ -69,7 +69,7 @@ var _card_back: CardBackView = null
 @onready var _stage_name: Label = %StageName
 @onready var _stage_name_jp: Label = %StageNameJP
 @onready var _turn_label: Label = %TurnLabel
-@onready var _question_prompt: Label = %QuestionPrompt
+@onready var _room_notice: Label = %RoomNotice
 @onready var _support_bar: SupportBar = %SupportBar
 @onready var _energy_row: HBoxContainer = %EnergyRow
 @onready var _gaffe_label: Label = %GaffeLabel
@@ -213,6 +213,7 @@ func start_battle() -> void:
 	# inheriting whatever the last one finished on.
 	_announced_gaffe = 0
 	_announced_critical = false
+	_room_notice.hide()
 
 	Audio.play_music("music_battle")
 
@@ -222,6 +223,9 @@ func start_battle() -> void:
 	# anything — never reached the noticeboard at all.
 	EventBus.intent_revealed.emit(engine.current_intent())
 	_refresh()
+	# The opening question, the same way the opponent's own opening intent
+	# just was — the room's first word, before the player has done anything.
+	_announce_question()
 
 
 # ---------------------------------------------------------------------------
@@ -240,7 +244,6 @@ func _refresh() -> void:
 		else engine.turn_caption())
 
 	_speaker.show_state(engine, str(_stage.get("stage_id", "")))
-	_refresh_question_prompt(engine)
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
@@ -267,23 +270,51 @@ func _refresh() -> void:
 		_outcome.show_outcome(engine, _stage)
 
 
-## What is being asked, for a room whose questions are answered by whichever
-## card is played (BattleSetup.QUESTION_POOL_BY_STAGE) but whose bar is not
-## Single, so the reporter-shaped row a press conference gets never shows it
-## (OpponentPresenter.show_state()'s own check). Blank and hidden everywhere
-## else, including a press conference itself — that room already says this
-## in the opponent row, and saying it twice would be clutter, not clarity.
-func _refresh_question_prompt(active_engine: BattleEngine) -> void:
-	if active_engine.is_press_conference():
-		_question_prompt.hide()
+## A room whose cards are answers to a drawn question (BattleSetup.
+## QUESTION_POOL_BY_STAGE — Town Hall today) but whose bar is not Single, so
+## the reporter-shaped row a press conference gets never shows it
+## (OpponentPresenter.show_state()'s own check). A press conference itself
+## is excluded too — that room already says this in the opponent row.
+##
+## Gates two things, both 2026-09-26: which room gets the CueBanner showing
+## the question by default and the opponent's own cue after the player
+## acts, rather than narration (see _announce_question()/_on_end_turn());
+## and which room gets %RoomNotice at all (_show_room_notice()).
+func _stage_asks_questions() -> bool:
+	return engine != null and not engine.is_press_conference() \
+		and int(_stage.get("questions_count", 0)) > 0
+
+
+## The drawn question, as the CueBanner's own default content — what is on
+## screen until the player's turn gives the banner something else to say
+## (_on_end_turn()'s own cue-or-silence). Cameron, 2026-09-26: this used to
+## be a separate, always-on label; now it rides the same banner every other
+## spoken line in the game does, and the label that used to hold it
+## (%RoomNotice) carries what actually HAPPENED instead — see
+## _show_room_notice(). Does nothing outside a question-asking room.
+func _announce_question() -> void:
+	if not _stage_asks_questions():
 		return
-	var question := active_engine.current_question()
+	var question := engine.current_question()
 	if question.is_empty():
-		_question_prompt.hide()
 		return
-	_question_prompt.text = Text.say(
-		"battle.question_prompt", {"question": str(question.get("text", ""))})
-	_question_prompt.show()
+	_banner.say(CueBanner.OPPONENT, OpponentPresenter.display_name(engine),
+		Text.say("battle.question_prompt", {"question": str(question.get("text", ""))}))
+
+
+## What just happened, in a question-asking room only: the opponent's own
+## narration, a bout finishing, or the player's own pass/decline penalty —
+## everything that used to compete with the question/cue for the CueBanner,
+## or sit in the separate %Notice queue, moved here instead. Blank text
+## hides the label rather than leaving stale words up from a turn ago.
+func _show_room_notice(text: String) -> void:
+	if not _stage_asks_questions():
+		return
+	if text.is_empty():
+		_room_notice.hide()
+		return
+	_room_notice.text = text
+	_room_notice.show()
 
 
 ## Energy as pips rather than a number: three small marks are quicker to
@@ -565,6 +596,8 @@ func _on_end_turn() -> void:
 	var acting_opponent := engine.current_opponent()
 	_refresh()
 
+	var asks_questions := _stage_asks_questions()
+
 	# The pass penalty has always worked; nothing ever said so, which is why
 	# a playtest read it as having stopped after the first time. It never
 	# compounds — every quiet turn costs the same one energy.
@@ -572,14 +605,17 @@ func _on_end_turn() -> void:
 	# This is the PLAYER's own consequence, not anything the opponent said —
 	# it used to ride along inside their banner under their name tag, which
 	# read as if Emi were telling you off for your own silence. It belongs
-	# with the quiet notices (a refused card, "no stage to play") instead.
-	if bool(result.get("passed", false)) and not engine.state.is_over():
-		if engine.is_press_conference():
-			_messages.say(Text.say("battle.declined"))
-		else:
-			_messages.say(Text.say("battle.passed"))
-
+	# with the quiet notices (a refused card, "no stage to play") instead —
+	# %RoomNotice in a question-asking room, the ordinary %Notice queue
+	# everywhere else.
 	var lines: Array[String] = []
+	if bool(result.get("passed", false)) and not engine.state.is_over():
+		var passed_text := (Text.say("battle.declined") if engine.is_press_conference()
+			else Text.say("battle.passed"))
+		if asks_questions:
+			lines.append(passed_text)
+		else:
+			_messages.say(passed_text)
 
 	# What the opponent did. The engine has always returned this and no
 	# screen has ever read it, so the whole of their turn happened in
@@ -598,27 +634,36 @@ func _on_end_turn() -> void:
 		lines.append(BattleNarration.player_move(
 			{"bout_won": bout}, _stage, engine.state, speaker))
 
-	# What they SAY, from the workbook's Opponent Cues tab, same bargain as
-	# the player's own CardCues: a line becomes the banner's big type, with
-	# what it did (the narration above) demoted underneath it. An opponent
-	# or suit with nothing written yet falls back to narration alone, same
-	# as it always has.
+	# What they SAY, from the workbook's Opponent Cues tab.
 	var move_cue := OpponentCues.for_move(
 		acting_opponent, str(opponent_result.get("verb", "")),
 		str(_stage.get("stage_id", "")), engine.state.turn)
+	var has_cue := not str(move_cue["text"]).is_empty()
 
-	# One line, not two: what the OPPONENT did this turn, all of it from the
-	# same side of the room. The player's own pass penalty above is never
-	# folded in here any more.
-	if not str(move_cue["text"]).is_empty():
-		_banner.say(CueBanner.OPPONENT, speaker, str(move_cue["text"]), "\n".join(lines))
-		Audio.say(str(acting_opponent.get("opp_id", "")), str(move_cue["line_id"]))
-	elif not lines.is_empty():
-		_banner.say(CueBanner.OPPONENT, speaker, "\n".join(lines))
+	if asks_questions:
+		# The CueBanner here is ONLY ever the question or the opponent's own
+		# cue (Cameron, 2026-09-26) — never narration, and never restating
+		# the name the banner's own tag already carries. Nothing written for
+		# this opponent/verb yet leaves the banner showing whatever it last
+		# said (the question) rather than falling back to narration.
+		if has_cue:
+			_banner.say(CueBanner.OPPONENT, speaker, str(move_cue["text"]))
+			Audio.say(str(acting_opponent.get("opp_id", "")), str(move_cue["line_id"]))
+		_show_room_notice("\n".join(lines))
+	else:
+		# Unchanged: a line becomes the banner's big type, with what it did
+		# demoted underneath it; nothing written yet falls back to narration
+		# alone, same as it always has.
+		if has_cue:
+			_banner.say(CueBanner.OPPONENT, speaker, str(move_cue["text"]), "\n".join(lines))
+			Audio.say(str(acting_opponent.get("opp_id", "")), str(move_cue["line_id"]))
+		elif not lines.is_empty():
+			_banner.say(CueBanner.OPPONENT, speaker, "\n".join(lines))
 
 	if not engine.state.is_over():
 		EventBus.turn_started.emit(engine.state.turn)
 		EventBus.intent_revealed.emit(engine.current_intent())
+		_announce_question()
 
 
 func _toggle_details() -> void:

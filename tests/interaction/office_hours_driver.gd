@@ -3,8 +3,8 @@ extends Node
 ## Walks a real Office Hours stage with real clicks, then on into whatever
 ## follows it — LV11 is ST07 (Office Hours) then ST05 (Town Hall) then ST21,
 ## so this also proves the routing from VisitorScreen back onto BattleScreen
-## for the next stage, and that Town Hall's own %QuestionPrompt actually
-## shows once there.
+## for the next stage, and that Town Hall's own drawn question actually
+## reaches the CueBanner once there (BattleScreen._announce_question()).
 ##
 ## Run it with:
 ##     xvfb-run .tools/godot --path . tests/interaction/office_hours_test.tscn
@@ -73,11 +73,12 @@ func _walk() -> void:
 	print("  moved on to the next stage: %s" % str(get_tree().current_scene.get_node("%StageName").text))
 
 	await get_tree().create_timer(0.3).timeout
-	var prompt := get_tree().current_scene.get_node("%QuestionPrompt") as Label
-	if prompt == null or not prompt.visible or prompt.text.is_empty():
-		_failures.append("Town Hall did not show a current question in %QuestionPrompt")
+	var banner: Node = get_tree().current_scene.get_node("CueBanner")
+	var shown := str(banner.call("current_line"))
+	if shown.is_empty():
+		_failures.append("Town Hall did not show its drawn question on the CueBanner")
 		return
-	print("  Town Hall shows its drawn question: %s" % prompt.text)
+	print("  Town Hall shows its drawn question: %s" % shown)
 
 
 ## Answers one visitor (always choice A, whatever it costs) and presses

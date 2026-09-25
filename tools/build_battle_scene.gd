@@ -13,15 +13,17 @@ extends SceneTree
 ## Re-run this only if you want to regenerate the layout from scratch; it
 ## overwrites any edits made in the editor.
 ##
-## 2026-09-25: running it to add %QuestionPrompt surfaced real drift beyond
-## the two spots the 2026-09-27 fix (see the file's own history) already
-## caught — ZoomColumn had lost its unique_name_in_owner along the way
-## (fixed here, in _add_card_zoom()), and a few sizes/anchors also no longer
-## match the checked-in scene. %QuestionPrompt itself was added straight to
-## the real .tscn by hand instead, specifically to avoid re-introducing that
-## drift while it isn't otherwise being investigated. Whoever next re-syncs
-## this file against the real scene should treat this note the way the
-## 2026-09-27 one still stands: confirm with a structural diff, not a glance.
+## 2026-09-25: running it to add %QuestionPrompt (renamed %RoomNotice,
+## 2026-09-26 — see _add_room_notice()) surfaced real drift beyond the two
+## spots the 2026-09-27 fix (see the file's own history) already caught —
+## ZoomColumn had lost its unique_name_in_owner along the way (fixed here,
+## in _add_card_zoom()), and a few sizes/anchors also no longer match the
+## checked-in scene. The label itself, and its later rename, were both made
+## straight to the real .tscn by hand instead of by rerunning this script,
+## specifically to avoid re-introducing that drift while it isn't otherwise
+## being investigated. Whoever next re-syncs this file against the real
+## scene should treat this note the way the 2026-09-27 one still stands:
+## confirm with a structural diff, not a glance.
 ##
 ## The order of the sections below is the order they appear on screen, and
 ## follows the layout in the build brief at section 10.
@@ -50,7 +52,7 @@ func _init() -> void:
 
 	var column := _build_frame()
 	_add_header(column)
-	_add_question_prompt(column)
+	_add_room_notice(column)
 	_add_opponent_row(column)
 	_add_support_bar(column)
 	_add_status_row(column)
@@ -159,20 +161,21 @@ func _add_header(parent: Control) -> void:
 	_adopt(turn, header, true)
 
 
-## The art box (stage background showing through behind two full-body
-## cutouts), name, and what the opponent is about to do in plain words.
-## A room whose cards silently double as answers to a drawn question
-## (BattleEngine._answer_question(), Cameron's 2026-09-25 Town Hall wiring)
-## but whose bar is not Single — so it never gets the press conference's own
-## reporter-shaped row (OpponentPresenter.show_state()) — still says what is
-## being asked, here, rather than leaving the effect invisible. Hidden until
-## BattleScreen._refresh() has a question and a room that is not already
-## showing one this way.
-func _add_question_prompt(parent: Control) -> void:
-	var prompt := _label("QuestionPrompt", "", "SmallLabel")
-	prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	prompt.visible = false
-	_adopt(prompt, parent, true)
+## What just happened, in a room whose cards silently double as answers to a
+## drawn question (BattleEngine._answer_question(), Cameron's 2026-09-25
+## Town Hall wiring) but whose bar is not Single — so it never gets the
+## press conference's own reporter-shaped row (OpponentPresenter.
+## show_state()). The question itself now rides the CueBanner as its own
+## default content (BattleScreen._announce_question()); this label holds
+## what the CueBanner used to (Cameron, 2026-09-26: narration and the pass
+## penalty shouldn't compete with the question/cue for the banner, or
+## restate a name the banner's own tag already carries). Hidden until
+## BattleScreen._show_room_notice() has something to say.
+func _add_room_notice(parent: Control) -> void:
+	var notice := _label("RoomNotice", "", "SmallLabel")
+	notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	notice.visible = false
+	_adopt(notice, parent, true)
 
 
 func _add_opponent_row(parent: Control) -> void:
