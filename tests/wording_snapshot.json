@@ -253,6 +253,8 @@
   "shop.already_yours": "Already yours.",
   "shop.buy": "Buy",
   "shop.card_no_id": "This card has no ID.",
+  "shop.card_reveal_confirm": "Nice.",
+  "shop.card_reveal_title": "New Card!",
   "shop.card_unlocked": "{name} unlocked and added to your collection.",
   "shop.funds_cap_increased": "Funds cap raised by {count}.",
   "shop.funds_short": "{count} short.",

@@ -81,17 +81,27 @@ func _walk() -> void:
 		return
 
 	# --- SH15/16/17: Unlock Random Tier N Card --------------------------------
+	# Each one now pops a reveal of the actual card on top of Supplies
+	# (Cameron, 2026-09-25) — dismissed here the way a player would tap
+	# past it, or every later click in this walk would land on the reveal
+	# instead of whatever it is meant to hit.
 	if not await _buy(supplies, "SH15"):
+		return
+	if not await _check_and_dismiss_card_reveal(office):
 		return
 	if GameState.owned_cards.size() != 1:
 		_failures.append("SH15: expected 1 owned card, got %d" % GameState.owned_cards.size())
 		return
 	if not await _buy(supplies, "SH16"):
 		return
+	if not await _check_and_dismiss_card_reveal(office):
+		return
 	if GameState.owned_cards.size() != 2:
 		_failures.append("SH16: expected 2 owned cards, got %d" % GameState.owned_cards.size())
 		return
 	if not await _buy(supplies, "SH17"):
+		return
+	if not await _check_and_dismiss_card_reveal(office):
 		return
 	if GameState.owned_cards.size() != 3:
 		_failures.append("SH17: expected 3 owned cards, got %d" % GameState.owned_cards.size())
@@ -326,6 +336,50 @@ func _buy(supplies: Overlay, item_id: String) -> bool:
 		return false
 
 	print("  bought %s -> %s" % [item_id, message])
+	return true
+
+
+## Checks the card reveal popup a successful SH15/16/17 (or SH27-29) buy
+## opens on top of Supplies — a real CardView is showing, with a real
+## texture and the newly-owned card's own name on it — then dismisses it
+## with its Confirm button, the way a player taps past a reveal.
+func _check_and_dismiss_card_reveal(office: Node) -> bool:
+	var panel := office.get_node_or_null("CardRevealPanel") as Overlay
+	if panel == null or not panel.visible:
+		_failures.append("buying a random card did not open the card reveal popup")
+		return false
+
+	var view: CardView = null
+	for node in panel.find_children("*", "", true, false):
+		if node is CardView:
+			view = node as CardView
+			break
+	if view == null:
+		_failures.append("the card reveal popup has no CardView in it")
+		return false
+	if view.card_id.is_empty():
+		_failures.append("the card reveal popup's CardView was never filled in")
+		return false
+	if not GameState.owned_cards.has(view.card_id):
+		_failures.append("the card reveal popup shows %s, which was not actually granted"
+			% view.card_id)
+		return false
+
+	DirAccess.make_dir_recursive_absolute("user://shots")
+	await get_tree().process_frame
+	await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png("user://shots/shop_items_card_reveal.png")
+
+	var confirm := panel.find_child("Confirm", true, false) as Button
+	if confirm == null or not confirm.visible:
+		_failures.append("the card reveal popup has no Confirm button")
+		return false
+	await _click(confirm)
+	if panel.visible:
+		_failures.append("pressing Confirm did not close the card reveal popup")
+		return false
+
+	print("  the card reveal popup showed %s and dismissed cleanly" % view.card_id)
 	return true
 
 

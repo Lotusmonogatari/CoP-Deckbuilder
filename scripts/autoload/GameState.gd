@@ -1103,8 +1103,10 @@ func buy_shop_item(item_id: String) -> String:
 ## random card of shop.json's own "card_tier" that the player does not
 ## already own — no inventory step at all, unlike every other item here.
 ##
-## Returns { "ok": bool, "message": String }: a refusal (not ok), or what
-## to tell the player about which card they got.
+## Returns { "ok": bool, "message": String }: a refusal (not ok), or, on a
+## success, also { "card_id": String } — the card's own art asset ID
+## (CLAUDE.md §5: cards/art/{CARD_ID}.png), so a caller can show the actual
+## card that was drawn rather than just naming it in a sentence.
 func buy_random_card(item_id: String) -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.buy_refusal(item, item_count(item_id),
@@ -1128,7 +1130,8 @@ func buy_random_card(item_id: String) -> Dictionary:
 	var card_id: String = choices[randi() % choices.size()]
 	owned_cards.append(card_id)
 	var card_name := str(DataDB.get_card(card_id).get("name_en", card_id))
-	return {"ok": true, "message": Text.say("shop.card_unlocked", {"name": card_name})}
+	return {"ok": true, "card_id": card_id,
+		"message": Text.say("shop.card_unlocked", {"name": card_name})}
 
 
 ## SH13/14 ("Unlock Tier N Level"): the same on-purchase shape as

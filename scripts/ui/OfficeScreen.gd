@@ -44,6 +44,13 @@ var _draft_deck: Array[String] = []
 var _inventory_panel: InventoryPanel
 var _supplies_panel: Overlay
 
+## The reveal shown after a random-card purchase (SH15-17, SH27-29) actually
+## grants one — Cameron, 2026-09-25: showing the card itself, not just
+## naming it in a sentence, is what makes drawing a random one feel like a
+## pull rather than a database write. Built in code, the same reason
+## _supplies_panel is.
+var _card_reveal_panel: Overlay
+
 ## New Game: the warning before a run is thrown away, and the choice of
 ## protagonist. Built in code, like the inventory.
 var _new_game_panel: Overlay
@@ -85,6 +92,9 @@ func _ready() -> void:
 	_trigger_alert_panel = Overlay.new()
 	_trigger_alert_panel.name = "TriggerAlertPanel"
 	add_child(_trigger_alert_panel)
+	_card_reveal_panel = Overlay.new()
+	_card_reveal_panel.name = "CardRevealPanel"
+	add_child(_card_reveal_panel)
 
 	# The Office's own bed. Silent until there is a file named against
 	# music_office in sounds.json; this is here so that adding one is the
@@ -573,7 +583,13 @@ func _price_text(item: Dictionary) -> String:
 func _on_buy_item(item_id: String) -> void:
 	var item := DataDB.get_shop_item(item_id)
 	if item.get("card_tier") != null:
-		_report_purchase_result(GameState.buy_random_card(item_id))
+		var result := GameState.buy_random_card(item_id)
+		if result.get("ok", false):
+			_report.text = str(result.get("message", ""))
+			_after_spending("", _show_supplies)
+			_show_card_reveal(str(result.get("card_id", "")))
+		else:
+			_report_purchase_result(result)
 		return
 	if item.get("level_tier") != null:
 		_report_purchase_result(GameState.buy_random_level(item_id))
@@ -600,6 +616,30 @@ func _report_purchase_result(result: Dictionary) -> void:
 		_after_spending("", _show_supplies)
 	else:
 		_after_spending(message, _show_supplies)
+
+
+## A random-card purchase's own reveal (SH15-17, SH27-29): the card itself,
+## full size, on top of the Supplies list _on_buy_item() already reopened
+## underneath it. CardView is the same component the hand and deck screen
+## use, so a drawn card shows its real art here too, by the same card_id.
+func _show_card_reveal(card_id: String) -> void:
+	var card := DataDB.get_card(card_id)
+	if card.is_empty():
+		return
+
+	var view := CardView.new()
+	view.show_card(card)
+	view.disabled = true   # a reveal, not a hand — tapping it does nothing
+
+	var frame := CenterContainer.new()
+	frame.add_child(view)
+
+	var rows: Array[Control] = [
+		frame,
+		UiKit.line(Text.say("shop.card_unlocked", {"name": card.get("name_en", card_id)})),
+	]
+	_card_reveal_panel.open(Text.say("shop.card_reveal_title"), rows,
+		Text.say("shop.card_reveal_confirm"))
 
 
 ## The deck: which of the cards you own are going in.

@@ -1965,5 +1965,19 @@
     "english": "Funds cap raised by {count}.",
     "placeholders": "count",
     "notes": null
+  },
+  {
+    "key": "shop.card_reveal_title",
+    "where": "Office — heading shown when an SH15-17/27-29 purchase reveals the card",
+    "english": "New Card!",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "shop.card_reveal_confirm",
+    "where": "Office — button that dismisses the card reveal pop-up",
+    "english": "Nice.",
+    "placeholders": null,
+    "notes": null
   }
 ]

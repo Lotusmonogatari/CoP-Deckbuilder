@@ -269,6 +269,10 @@ func test_buying_a_random_card_grants_one_of_the_right_tier_immediately() -> voi
 	assert_eq(int(card.get("tier")), 2)
 	assert_eq(int(GameState.meta["Funds"]), funds - int(DataDB.get_shop_item("SH28")["cost_yen"]))
 	assert_string_contains(result["message"], str(card.get("name_en")))
+	# The card's own art asset ID (its card_id — CLAUDE.md §5) comes back too,
+	# so a caller can show the actual card drawn, not just name it in text
+	# (OfficeScreen._show_card_reveal(), 2026-09-25).
+	assert_eq(str(result["card_id"]), GameState.owned_cards[0])
 
 
 func test_a_random_card_purchase_never_repeats_an_owned_card() -> void:
