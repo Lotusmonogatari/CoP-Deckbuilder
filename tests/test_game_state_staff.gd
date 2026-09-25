@@ -11,6 +11,7 @@ extends GutTest
 
 var _meta_before: Dictionary = {}
 var _staff_before: Dictionary = {}
+var _fired_before: Dictionary = {}
 var _standing_before: Dictionary = {}
 var _change_before: Dictionary = {}
 var _favorability_before: Dictionary = {}
@@ -20,16 +21,19 @@ var _segment_change_before: Dictionary = {}
 func before_each() -> void:
 	_meta_before = GameState.meta.duplicate(true)
 	_staff_before = GameState.staff_hired.duplicate(true)
+	_fired_before = GameState.staff_fired.duplicate(true)
 	_standing_before = GameState.booster_standing.duplicate(true)
 	_change_before = GameState.last_booster_change.duplicate(true)
 	_favorability_before = GameState.segment_favorability.duplicate(true)
 	_segment_change_before = GameState.last_segment_change.duplicate(true)
 	GameState.staff_hired = {}
+	GameState.staff_fired = {}
 
 
 func after_each() -> void:
 	GameState.meta = _meta_before.duplicate(true)
 	GameState.staff_hired = _staff_before.duplicate(true)
+	GameState.staff_fired = _fired_before.duplicate(true)
 	GameState.booster_standing = _standing_before.duplicate(true)
 	GameState.last_booster_change = _change_before.duplicate(true)
 	GameState.segment_favorability = _favorability_before.duplicate(true)
@@ -151,6 +155,85 @@ func test_a_candidate_at_their_highest_tier_cannot_be_upgraded_further() -> void
 func test_upgrading_an_empty_role_is_refused() -> void:
 	var refusal := GameState.upgrade_staff("Media Spokesperson")
 	assert_ne(refusal, "")
+
+
+# ---------------------------------------------------------------------------
+# Firing
+# ---------------------------------------------------------------------------
+
+func test_firing_empties_the_role_and_spends_the_severance() -> void:
+	var candidate := DataDB.get_staff("SF02")
+	var role := str(candidate.get("role"))
+	var severance := int(candidate.get("firing_cost_yen", 0))
+	GameState.meta["Funds"] = 999999
+	GameState.hire_staff("SF02")
+	GameState.meta["Funds"] = severance
+
+	var refusal := GameState.fire_staff(role)
+
+	assert_eq(refusal, "", "should have gone through: %s" % refusal)
+	assert_true(GameState.staff_hired.get(role, {}).is_empty(), "the role is vacant again")
+	assert_eq(int(GameState.meta["Funds"]), 0, "the severance is spent")
+
+
+func test_a_fired_candidate_is_remembered_and_never_hireable_again() -> void:
+	GameState.meta["Funds"] = 999999
+	GameState.hire_staff("SF02")
+	var role := str(DataDB.get_staff("SF02").get("role"))
+
+	GameState.fire_staff(role)
+
+	assert_true(bool(GameState.staff_fired.get("SF02", false)))
+	var refusal := GameState.hire_staff("SF02")
+	assert_ne(refusal, "", "SF02 was fired and cannot be re-hired")
+	assert_true(GameState.staff_hired.get(role, {}).is_empty())
+
+
+func test_firing_lets_a_different_candidate_fill_the_role_right_away() -> void:
+	GameState.meta["Funds"] = 999999
+	GameState.hire_staff("SF02")
+	var role := str(DataDB.get_staff("SF02").get("role"))
+	GameState.fire_staff(role)
+
+	# SF03 is a different candidate for the same role (Policy Research
+	# Assistant) — see test_a_role_that_is_already_filled_cannot_be_hired_into_again.
+	var refusal := GameState.hire_staff("SF03")
+
+	assert_eq(refusal, "", "should have gone through: %s" % refusal)
+	assert_eq(GameState.staff_hired.get(role, {}).get("staff_id"), "SF03")
+
+
+func test_firing_does_not_claw_back_the_reward_already_earned() -> void:
+	# SF02's tier_0_reward is [{"delta": 2, "target": "BO05"}] — Cameron's
+	# decision, 2026-09-25 (design/proposals/staff_firing.md): firing never
+	# refunds Funds spent or the standing/favourability already granted.
+	var before := int(GameState.booster_standing.get("BO05", 50))
+	var role := str(DataDB.get_staff("SF02").get("role"))
+	GameState.meta["Funds"] = 999999
+	GameState.hire_staff("SF02")
+	GameState.fire_staff(role)
+
+	assert_eq(int(GameState.booster_standing.get("BO05")), before + 2,
+		"the reward from hiring SF02 stands, even after firing them")
+
+
+func test_firing_an_empty_role_is_refused() -> void:
+	var refusal := GameState.fire_staff("Media Spokesperson")
+	assert_ne(refusal, "")
+
+
+func test_firing_without_enough_funds_is_refused_and_the_hire_stays() -> void:
+	var candidate := DataDB.get_staff("SF02")
+	var role := str(candidate.get("role"))
+	GameState.meta["Funds"] = 999999
+	GameState.hire_staff("SF02")
+	GameState.meta["Funds"] = 0
+
+	var refusal := GameState.fire_staff(role)
+
+	assert_ne(refusal, "")
+	assert_eq(GameState.staff_hired.get(role, {}).get("staff_id"), "SF02",
+		"still hired — the severance was never affordable")
 
 
 # ---------------------------------------------------------------------------

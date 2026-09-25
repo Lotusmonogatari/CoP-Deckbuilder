@@ -1,12 +1,9 @@
 # Proposal: firing (replacing) hired Staff
 
-**Status: scoping only — nothing built yet.** Cameron asked "how do I fire
-staff?" There currently is no way to, on purpose (see §0). This is the plan
-for adding one, plus the decisions only Cameron can make before any code
-gets written — CLAUDE.md's working agreement asks for this outline-first
-where a task is nontrivial, and firing touches money, standing, and a
-design call ("a role holds one hire for the run") that was made
-deliberately, not by omission.
+**Status: built (2026-09-25).** Cameron asked "how do I fire staff?" There
+was no way to, on purpose (see §0). Built as scoped below, once Cameron
+answered the five open questions — see §2 for the decisions and §3 for
+what actually shipped.
 
 ## 0. What happens today, for contrast
 
@@ -40,36 +37,29 @@ its seven candidates, including the one just fired (rehireable later at
 their normal price and starting tier — see open question 2 on whether
 that price should be normal).
 
-## 2. Open questions — Cameron's call, not mine
+## 2. Decisions (Cameron, 2026-09-25)
 
-| # | Question | Why it's not mine to default |
+| # | Question | Answer |
 |---|---|---|
-| 1 | **Does firing cost anything, or refund anything?** A firing that's free and instant makes "hire the wrong one, fire them, hire the right one" essentially costless scouting. A firing that costs Funds (a severance) or refunds a fraction of the hiring cost are both reasonable, opposite designs. | Pure balance/tone call — how forgiving mis-hiring should feel. |
-| 2 | **Does the one-time standing/favourability reward get clawed back?** Per §0, that delta isn't tracked as "belonging" to this hire once applied — it's merged into the pool. Clawing it back means adding bookkeeping (remember what each hire granted) that nothing else in the game does today; leaving it alone means firing someone is free standing, permanently, every time. | Changes the data model (`staff_hired` would need to remember its own grants) — a schema question, which CLAUDE.md asks me to raise rather than decide. |
-| 3 | **Is there a cooldown, or a limit on how often a role can be re-filled?** Unlimited instant re-hiring turns Recruitment into a slot machine for the right one-time reward; a cooldown (a number of stages, or once per level) curbs that at the cost of complexity. | Balance/pacing call. |
-| 4 | **Can the fired candidate be re-hired at all**, or are they gone from that save for good (so a "bad" hire is a real, permanent loss unless undone by firing)? | Design tone — how punishing a wrong hire should be. |
-| 5 | Recruitment's own blurb text currently says "Each role can hold one hire at a time" with no mention of firing — if this ships, that Text-tab line (`office.staff_blurb`) needs a rewrite Cameron approves, the same as any other Text tab change. | CLAUDE.md: no sentence lives in a script, and text changes go through the workbook. |
+| 1 | Does firing cost anything, or refund anything? | **Costs a severance.** 10% of hiring cost by default, but it's a real column in the Staff tab (`Firing Cost from Funds (Yen)` → `firing_cost_yen`) Cameron can price per candidate — not a hardcoded 10% in code. |
+| 2 | Does the one-time standing/favourability reward get clawed back? | **No.** Firing never refunds anything already spent or already earned — the reward from hiring/upgrading stands. |
+| 3 | Is there a cooldown on re-filling a role? | **No.** A role can be filled with a different candidate immediately after firing. |
+| 4 | Can the fired candidate be re-hired at all? | **No, permanently.** They're greyed out with no Hire button wherever they'd otherwise be listed, for the rest of that run. |
+| 5 | Does `office.staff_blurb` need a rewrite? | **Yes.** |
 
-My own recommendation, if useful: **no refund, no clawback, a modest
-Funds cost to fire (severance), and free re-hiring afterwards** — it
-keeps the one-time reward meaningful (you don't lose it once earned,
-matching how nothing else in the game claws back a standing gain
-either), while a real cost stops "fire and re-hire" from being a free
-do-over. But this is a recommendation, not a default I'd build without
-your answer.
-
-## 3. What changes, file by file (once the above is answered)
+## 3. What was built
 
 | File | Change |
 |---|---|
-| `scripts/rules/Ledger.gd` | New `staff_fire_refusal()`/`can_fire_staff()` (empty-role guard, and whatever cost/cooldown check §2 lands on) |
-| `scripts/autoload/GameState.gd` | New `fire_staff(role)`: clears `staff_hired[role]`, applies whatever cost or clawback §2 decides |
-| `scripts/ui/OfficeScreen.gd` | `_staff_hired_row()` gets a Fire button beside Upgrade, behind an `Overlay` confirmation |
-| `data/strings.json` (workbook) | `office.fire_staff` (button), a confirmation line, and a rewrite of `office.staff_blurb` if question 5 changes it |
-| `tests/test_ledger.gd`, a new `tests/test_game_state_staff.gd` or similar | The refusal rules and the state change, the same coverage hiring/upgrading already have |
+| `design/CoP_Starter_Card_Stage_Data.xlsx` (Staff tab) | New column M, `Firing Cost from Funds (Yen)` — every existing row priced at 10% of its hiring cost, Cameron's to retune per candidate. Four new Text-tab rows (`office.fire_staff`, `office.fire_staff_warning`, `office.fire_staff_confirm`, `office.staff_fired`) and a rewritten `office.staff_blurb`. |
+| `tools/export_data.py` | Staff column mapping reads `firing_cost_yen` from the new column. |
+| `scripts/rules/Ledger.gd` | `staff_firing_cost()` (the workbook column, falling back to 10% of hiring cost for a hand-built candidate that lacks it), `staff_fire_refusal()`/`can_fire_staff()`. `staff_hire_refusal()`/`can_hire_staff()` gained a `fired` parameter — a fired candidate refuses with `office.staff_fired`, checked before every other reason. |
+| `scripts/autoload/GameState.gd` | New `staff_fired: Dictionary` (staff_id → true, persisted in `_SAVED_FIELDS`), cleared by `reset_staff()`. New `fire_staff(role)`: pays the severance, empties the role, marks the candidate fired. Nothing about `hire_staff()`/`upgrade_staff()`'s spending or rewards changed. |
+| `scripts/ui/OfficeScreen.gd` | A vacant role's candidate list greys out anyone already fired (no Hire button, just their name and "Fired — will not work for you again."). A filled role's row gets a Fire button beside Upgrade, behind a confirm `Overlay` (`_fire_staff_panel`, built in code like `_new_game_panel`) naming the severance cost before it's spent. |
+| `tests/test_ledger.gd`, `tests/test_game_state_staff.gd`, `tests/test_save_load.gd` | The refusal rules, the state change (including the no-clawback and no-re-hire guarantees), and the save round-trip — the same coverage hiring/upgrading already had. |
 
-Nothing in `scripts/rules/BattleEngine.gd`/`CardResolver.gd` is touched —
-this is entirely an Office-side, meta-progression change.
+Nothing in `scripts/rules/BattleEngine.gd`/`CardResolver.gd` was touched —
+this stayed entirely an Office-side, meta-progression change.
 
 ## 4. What does NOT change
 

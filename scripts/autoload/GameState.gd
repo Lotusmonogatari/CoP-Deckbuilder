@@ -110,10 +110,18 @@ var last_segment_change: Dictionary = {}
 
 ## Who is hired into each of the three Staff roles, and at what tier:
 ## { "Policy Research Assistant": { "staff_id": "SF04", "tier": 1 }, ... }.
-## A role with no entry is vacant. There is no "fire" — once a role is
-## filled it only ever upgrades (see Ledger.gd's Staff section and
-## hire_staff()/upgrade_staff() below).
+## A role with no entry is vacant, either because nobody has ever been
+## hired into it or because its hire was fired (see staff_fired below and
+## fire_staff()) — see Ledger.gd's Staff section and
+## hire_staff()/upgrade_staff()/fire_staff().
 var staff_hired: Dictionary = {}
+
+## Every staff_id ever fired this run, { "SF04": true, ... }. Firing costs a
+## severance (Ledger.staff_firing_cost()) and is permanent, Cameron's call,
+## 2026-09-25 (design/proposals/staff_firing.md): a fired candidate never
+## appears hireable again for the rest of this run, so the Recruitment shop
+## checks this before listing anyone as a candidate.
+var staff_fired: Dictionary = {}
 
 ## Level IDs the player has paid XP to unlock — only meaningful once
 ## rules.json's "level_gating_enabled" is true. A level whose relevant
@@ -170,7 +178,7 @@ const _SAVED_FIELDS := [
 	"owned_cards", "deck", "owned_modifiers",
 	"inventory", "shop_bought_this_level",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "staff_hired",
+	"booster_standing", "segment_favorability", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at",
 ]
 
@@ -219,9 +227,10 @@ func reset_meta() -> void:
 	reset_levels()
 
 
-## Every Staff role back to vacant.
+## Every Staff role back to vacant, and every firing forgotten.
 func reset_staff() -> void:
 	staff_hired = {}
+	staff_fired = {}
 
 
 ## Every level back to locked-by-its-price and off cooldown.
@@ -330,8 +339,8 @@ func hire_staff(staff_id: String) -> String:
 
 	var role := str(candidate.get("role", ""))
 	var funds := int(meta.get("Funds", 0))
-	var refusal := Ledger.staff_hire_refusal(
-		candidate, staff_hired.get(role, {}), funds, Text.phrase())
+	var refusal := Ledger.staff_hire_refusal(candidate, staff_hired.get(role, {}),
+		bool(staff_fired.get(staff_id, false)), funds, Text.phrase())
 	if not refusal.is_empty():
 		return refusal
 
@@ -370,6 +379,35 @@ func upgrade_staff(role: String) -> String:
 	hired["tier"] = new_tier
 	staff_hired[role] = hired
 	_apply_staff_reward(candidate, new_tier)
+	return ""
+
+
+## Fires a role's hired candidate, spending a severance (Ledger.
+## staff_firing_cost()) from Funds. The role goes vacant and can be filled
+## with a different candidate right away — but not with this one: whatever
+## the hire and every upgrade already paid out (Funds spent, standing and
+## favourability gained) stands; nothing is refunded or clawed back, and the
+## fired candidate is marked in staff_fired so they never appear hireable
+## again this run. Cameron's decision, 2026-09-25
+## (design/proposals/staff_firing.md).
+func fire_staff(role: String) -> String:
+	var hired: Dictionary = staff_hired.get(role, {})
+	if hired.is_empty():
+		return "Nobody is hired for this role yet."
+
+	var staff_id := str(hired.get("staff_id", ""))
+	var candidate := DataDB.get_staff(staff_id)
+	if candidate.is_empty():
+		return "Unknown staff candidate."
+
+	var funds := int(meta.get("Funds", 0))
+	var refusal := Ledger.staff_fire_refusal(candidate, funds, Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	_move_meta("Funds", -Ledger.staff_firing_cost(candidate))
+	staff_hired.erase(role)
+	staff_fired[staff_id] = true
 	return ""
 
 

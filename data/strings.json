@@ -1409,7 +1409,7 @@
   {
     "key": "office.staff_blurb",
     "where": "Office · Recruitment shop",
-    "english": "Each role can hold one hire at a time. Hiring and upgrading are paid from Funds.",
+    "english": "Each role can hold one hire at a time. Hiring, upgrading and firing are all paid from Funds — firing costs a severance, and someone you fire will never work for you again.",
     "placeholders": null,
     "notes": null
   },
@@ -1851,6 +1851,34 @@
     "key": "intro.new_game",
     "where": "Intro (title) screen, button",
     "english": "New Game",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.fire_staff",
+    "where": "Office · Recruitment shop, a filled role's row — button",
+    "english": "Fire",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.fire_staff_warning",
+    "where": "Office · Recruitment shop, the warning before firing someone",
+    "english": "Firing {name} costs {cost} Yen in severance. They will never work for you again.",
+    "placeholders": "name, cost",
+    "notes": null
+  },
+  {
+    "key": "office.fire_staff_confirm",
+    "where": "Fire warning, confirm button",
+    "english": "Fire them",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.staff_fired",
+    "where": "Office · Recruitment shop, a role's candidate list — someone fired earlier",
+    "english": "Fired — will not work for you again.",
     "placeholders": null,
     "notes": null
   }

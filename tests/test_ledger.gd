@@ -237,17 +237,25 @@ func _candidate(overrides: Dictionary = {}) -> Dictionary:
 
 
 func test_a_vacant_role_can_be_hired_if_affordable() -> void:
-	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, 50000, _words()), "")
-	assert_true(Ledger.can_hire_staff(_candidate(), {}, 50000, _words()))
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 50000, _words()), "")
+	assert_true(Ledger.can_hire_staff(_candidate(), {}, false, 50000, _words()))
 
 
 func test_hiring_says_how_many_yen_short() -> void:
-	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, 40000, _words()), "10000 short.")
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 40000, _words()), "10000 short.")
 
 
 func test_a_filled_role_cannot_be_hired_into_again() -> void:
 	var hired := {"staff_id": "SF03", "tier": 0}
-	assert_eq(Ledger.staff_hire_refusal(_candidate(), hired, 999999, _words()), "Already yours.")
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), hired, false, 999999, _words()), "Already yours.")
+
+
+func test_a_fired_candidate_can_never_be_hired_again() -> void:
+	# Even into a role that's vacant right now — Cameron's decision,
+	# 2026-09-25 (design/proposals/staff_firing.md): firing is permanent.
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, true, 999999, _words()),
+		"Fired — will not work for you again.")
+	assert_false(Ledger.can_hire_staff(_candidate(), {}, true, 999999, _words()))
 
 
 func test_the_first_upgrade_step_is_the_hiring_tier() -> void:
@@ -278,3 +286,24 @@ func test_an_upgrade_you_cannot_afford_says_how_short_you_are() -> void:
 
 func test_an_affordable_upgrade_is_allowed() -> void:
 	assert_true(Ledger.can_upgrade_staff(_candidate(), 0, 30000, _words()))
+
+
+func test_firing_costs_the_workbooks_own_severance_column() -> void:
+	assert_eq(Ledger.staff_firing_cost(_candidate({"firing_cost_yen": 5000})), 5000)
+
+
+func test_firing_falls_back_to_a_tenth_of_the_hiring_cost() -> void:
+	# Only for a hand-built candidate with no firing_cost_yen at all — the
+	# real data (data/staff.json) always has the workbook's own column.
+	assert_eq(Ledger.staff_firing_cost(_candidate({"firing_cost_yen": null})), 5000)
+
+
+func test_an_affordable_firing_is_allowed() -> void:
+	var candidate := _candidate({"firing_cost_yen": 5000})
+	assert_eq(Ledger.staff_fire_refusal(candidate, 5000, _words()), "")
+	assert_true(Ledger.can_fire_staff(candidate, 5000, _words()))
+
+
+func test_firing_says_how_many_yen_short() -> void:
+	var candidate := _candidate({"firing_cost_yen": 5000})
+	assert_eq(Ledger.staff_fire_refusal(candidate, 1000, _words()), "4000 short.")

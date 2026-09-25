@@ -587,6 +587,7 @@ SHEETS = {
             ("Hiring Cost from Funds (Yen)", "hiring_cost_yen", "int"),
             ("Cost to Upgrade from Tier 0 to Tier 1 from Funds (Yen)", "upgrade_cost_0_to_1_yen", "int"),
             ("Cost to Upgrade from Tier 1 to Tier 2 from Funds (Yen)", "upgrade_cost_1_to_2_yen", "int"),
+            ("Firing Cost from Funds (Yen)", "firing_cost_yen", "int"),
             ("Staff Role Tier 0 Reward", "tier_0_reward", "reward_list"),
             ("Staff Role Tier 1 Reward", "tier_1_reward", "reward_list"),
             ("Staff Role Tier 2 Reward", "tier_2_reward", "reward_list"),

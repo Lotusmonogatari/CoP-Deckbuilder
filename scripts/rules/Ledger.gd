@@ -243,19 +243,25 @@ static func deck_is_legal(deck: Array, owned: Array, balance: Dictionary,
 # ---------------------------------------------------------------------------
 # Staff — the Recruitment shop
 # ---------------------------------------------------------------------------
-# One hired candidate per role, Yen-only, no upgrades once a role is vacant
-# (there is no "fire" — see CLAUDE.md/the Recruitment brief). Both prices
-# funnel through the same "shop.funds_short" wording the modifier shop
-# already uses, so a short-Funds refusal reads the same everywhere.
+# One hired candidate per role, Yen-only. A role can be fired and instantly
+# re-filled with a different candidate, but a fired candidate never comes
+# back for the rest of the run — Cameron's decision, 2026-09-25
+# (design/proposals/staff_firing.md). Every price funnels through the same
+# "shop.funds_short" wording the modifier shop already uses, so a
+# short-Funds refusal reads the same everywhere.
 
 ## Whether a role's chosen candidate can be hired right now, and if not, why.
 ## `hired` is whatever staff_hired.json/GameState already has for this ROLE
-## (not this candidate) — empty means the role is vacant.
+## (not this candidate) — empty means the role is vacant. `fired` is whether
+## THIS candidate was fired earlier this run (GameState.staff_fired) — once
+## true, they are never hireable again, even into a role that is vacant now.
 static func staff_hire_refusal(candidate: Dictionary, hired_for_role: Dictionary,
-		funds: int, words: Phrase = null) -> String:
+		fired: bool, funds: int, words: Phrase = null) -> String:
 	var say := words if words != null else Phrase.new()
 	if str(candidate.get("staff_id", "")).is_empty():
 		return say.say("shop.mod_no_id")
+	if fired:
+		return say.say("office.staff_fired")
 	if not hired_for_role.is_empty():
 		return say.say("shop.already_yours")
 
@@ -266,8 +272,8 @@ static func staff_hire_refusal(candidate: Dictionary, hired_for_role: Dictionary
 
 
 static func can_hire_staff(candidate: Dictionary, hired_for_role: Dictionary,
-		funds: int, words: Phrase = null) -> bool:
-	return staff_hire_refusal(candidate, hired_for_role, funds, words) == AFFORDABLE
+		fired: bool, funds: int, words: Phrase = null) -> bool:
+	return staff_hire_refusal(candidate, hired_for_role, fired, funds, words) == AFFORDABLE
 
 
 ## What upgrading a hired candidate from `tier` to `tier + 1` costs, or null
@@ -301,6 +307,36 @@ static func staff_upgrade_refusal(candidate: Dictionary, tier: int, funds: int,
 static func can_upgrade_staff(candidate: Dictionary, tier: int, funds: int,
 		words: Phrase = null) -> bool:
 	return staff_upgrade_refusal(candidate, tier, funds, words) == AFFORDABLE
+
+
+## The severance it costs to fire a hired candidate. The workbook's own
+## "Firing Cost from Funds (Yen)" column (data/staff.json's firing_cost_yen);
+## the 10%-of-hiring-cost fallback is only for a candidate dict built by hand
+## without that field (a test, or an older save's cached copy), never the
+## real data, which always has it filled in.
+static func staff_firing_cost(candidate: Dictionary) -> int:
+	var explicit: Variant = candidate.get("firing_cost_yen")
+	if explicit != null:
+		return int(explicit)
+	return int(round(int(candidate.get("hiring_cost_yen", 0)) * 0.10))
+
+
+## Whether the hired candidate in a role can be fired right now. There is no
+## "nobody's hired" case here — the Fire button only exists on a filled
+## role's row, so an empty `hired_for_role` is a caller bug, not a refusal a
+## player reads; see GameState.fire_staff().
+static func staff_fire_refusal(candidate: Dictionary, funds: int,
+		words: Phrase = null) -> String:
+	var say := words if words != null else Phrase.new()
+	var cost := staff_firing_cost(candidate)
+	if funds < cost:
+		return say.say("shop.funds_short", {"count": cost - funds})
+	return ""
+
+
+static func can_fire_staff(candidate: Dictionary, funds: int,
+		words: Phrase = null) -> bool:
+	return staff_fire_refusal(candidate, funds, words) == AFFORDABLE
 
 
 # ---------------------------------------------------------------------------
