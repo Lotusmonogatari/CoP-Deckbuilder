@@ -489,105 +489,6 @@ func test_surviving_to_the_end_wins_the_tv_debate() -> void:
 
 
 # ---------------------------------------------------------------------------
-# A committee battle, end to end
-# ---------------------------------------------------------------------------
-
-func _committee_battle() -> BattleEngine:
-	return _start({
-		"stage": TestFixtures.stage({
-			"stage_id": "ST01", "mode": "Combat", "bar_unit": "Members",
-			"bar_max": null, "win_threshold": null, "turn_limit": 6,
-			"player_start": null, "opp_start": null, "gaffe_limit": 5,
-		}),
-		# Committee: an attack does nothing (no shared bar to lower — the
-		# chair has no move of their own here since "lean_down" was removed
-		# as outdated), so this is just a valid, inert pattern for setup.
-		"opponent": TestFixtures.opponent([["attack", 8]]),
-		"committee_members": [
-			TestFixtures.committee_member("Member A"),
-			TestFixtures.committee_member("Member B"),
-			TestFixtures.committee_member("Member C"),
-			TestFixtures.committee_member("Member D", "Against"),
-		],
-	})
-
-
-func test_a_committee_stage_sets_up_member_tiles_instead_of_a_bar() -> void:
-	var engine := _committee_battle()
-	assert_true(engine.state.is_committee_stage())
-	assert_null(engine.state.bar)
-	assert_eq(engine.state.committee.size(), 4)
-	assert_eq(engine.state.committee.majority_needed(), 3)
-
-
-func test_a_committee_stage_needs_its_members() -> void:
-	var engine := BattleEngine.new()
-	assert_false(engine.setup(TestFixtures.battle_config({
-		"stage": TestFixtures.stage({"stage_id": "ST01"}),
-		"committee_members": [],
-	})))
-	assert_string_contains(engine.setup_problems[0], "members")
-
-
-func test_a_card_moves_the_member_it_is_aimed_at() -> void:
-	var engine := _committee_battle()
-	_force_into_hand(engine, "GAIN3")
-
-	engine.play_card("GAIN3", 0)
-	assert_eq(engine.state.committee.members[0]["lean"], 53, "50 plus 3")
-	assert_eq(engine.state.committee.members[1]["lean"], 50, "the others are untouched")
-
-
-func test_both_halves_of_a_cards_persuasion_go_into_one_member() -> void:
-	# In a committee there is no separate opponent bar, so "gain 3, opponent
-	# -3" is six points of persuasion aimed at one person.
-	var engine := _start({
-		"stage": TestFixtures.stage({"stage_id": "ST01", "turn_limit": 6}),
-		"opponent": TestFixtures.opponent([["attack", 8]]),
-		"committee_members": [
-			TestFixtures.committee_member("A"), TestFixtures.committee_member("B"),
-			TestFixtures.committee_member("C"),
-		],
-		"cards": {"BOTH": TestFixtures.card({
-			"card_id": "BOTH", "self_plus": 3, "opp_minus": 3, "cost": 1,
-		})},
-		"deck": ["BOTH", "BOTH"],
-	})
-	_force_into_hand(engine, "BOTH")
-
-	engine.play_card("BOTH", 0)
-	assert_eq(engine.state.committee.members[0]["lean"], 56)
-
-
-func test_locking_a_majority_wins_the_committee() -> void:
-	var engine := _committee_battle()
-	engine.state.committee.persuade(0, 20)
-	engine.state.committee.persuade(1, 20)
-	_force_into_hand(engine, "GAIN3")
-
-	# The third member is at 50; 16 more locks them. Push them over directly,
-	# then play a card so the engine re-checks the outcome.
-	engine.state.committee.persuade(2, 13)
-	engine.play_card("GAIN3", 2)
-
-	assert_true(engine.state.is_over())
-	assert_eq(engine.state.outcome, "win")
-
-
-func test_losing_a_reachable_majority_ends_the_stage() -> void:
-	var engine := _committee_battle()
-	_force_into_hand(engine, "GAIN3")
-
-	# One member is already Against. Lose a second and three For is gone.
-	engine.state.committee.persuade(0, -20)
-	engine.play_card("GAIN3", 1)
-
-	assert_true(engine.state.is_over())
-	assert_eq(engine.state.outcome, "loss")
-	assert_string_contains(engine.state.outcome_reason, "outcome.reason.committee_against")
-
-
-# ---------------------------------------------------------------------------
 # The caucus: one pool of energy, and a score rather than a win
 # ---------------------------------------------------------------------------
 # Two rules that only the caucus uses. Energy is handed out once for the
@@ -1760,7 +1661,7 @@ func test_an_apology_is_not_worth_less_in_a_hard_room() -> void:
 	# the ambush easier to clean up in than an ordinary conference.
 	var engine := _start(_questions_stage({"gaffe_multiplier": 2}))
 	engine.state.gaffe = 3
-	engine._apply_effect({"gaffe": -2}, -1)
+	engine._apply_effect({"gaffe": -2})
 	assert_eq(engine.state.gaffe, 1)
 
 

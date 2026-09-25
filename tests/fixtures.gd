@@ -59,15 +59,6 @@ static func stage(overrides: Dictionary = {}) -> Dictionary:
 	return base
 
 
-## A committee member with a chosen starting stance, in the shape the old
-## committee.json rows used ("member" for the name, "starting_stance"). Real
-## rosters no longer carry a stance at all (see CommitteeModel.create()'s own
-## note) — this fixture exists so CommitteeModel's stance-reading branches
-## stay tested even though nothing in the live data exercises them today.
-static func committee_member(name: String, stance: String = "Undecided") -> Dictionary:
-	return {"member": name, "party": "Test Party", "starting_stance": stance}
-
-
 ## The default switches, matching rules.json.
 static func rules(overrides: Dictionary = {}) -> Dictionary:
 	var base := {

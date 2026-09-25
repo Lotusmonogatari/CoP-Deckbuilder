@@ -23,10 +23,11 @@ const DATA_PATH := "res://data/"
 ## 2026-09-22 workbook: "committee", "intent_patterns" and "modifier_effects"
 ## were hand-written bridge files for columns the workbook now carries
 ## directly (a committee's roster comes from opponents.json's own "stages"
-## list; an opponent's intent_*_range fields build their pattern; a
-## modifier's effect_type/target/value replace the old key lookup) — see
-## get_opponent(), is_committee_stage() and ModifierEffects.gd. "modules" is
-## gone the same way: a level's stage order is levels.json's own
+## list, the same as any other combat stage's opponents; an opponent's
+## intent_*_range fields build their pattern; a modifier's effect_type/
+## target/value replace the old key lookup) — see get_opponent() and
+## ModifierEffects.gd. "modules" is gone the same way: a level's stage order
+## is levels.json's own
 ## stage_1..stage_10 now (see BattleSetup.expand_level()). All four bridge
 ## files are deleted; nothing reads them any more.
 ##
@@ -631,21 +632,11 @@ func _intent_pattern_from_ranges(opponent: Dictionary) -> Array:
 	return pattern
 
 
-## Whether a stage plays the per-member committee model (CLAUDE.md §7.5).
-## DataDB is allowed to call scripts/rules/ (only the reverse is forbidden —
-## CLAUDE.md §5, §12), so the one real list of which stage IDs use this
-## model — BattleEngine.COMMITTEE_STAGE_IDS, ST01 plus the ten workbook
-## committees ST09-ST18 — lives in exactly one place. An unknown stage_id
-## resolves the same way BattleEngine.is_committee_stage({}) would: not a
-## committee.
-func is_committee_stage(stage_id: String) -> bool:
-	return BattleEngine.is_committee_stage(get_stage(stage_id))
-
-
 ## Every opponent eligible for a stage — every row whose own "stages" list
-## names this STxx. Used by BattleSetup to pick who a level's stage fights,
-## and to build a committee's roster; kept here too since DataDB is where
-## opponents.json itself lives and this is a pure lookup over it.
+## names this STxx. Used by BattleSetup to pick who a level's stage fights —
+## a committee stage among them, drawing several from this same pool — kept
+## here too since DataDB is where opponents.json itself lives and this is a
+## pure lookup over it.
 func get_opponents_for_stage(stage_id: String) -> Array:
 	var found: Array = []
 	for opponent: Dictionary in opponents:
@@ -843,14 +834,6 @@ func get_tier_cost(tier: String) -> int:
 	return 0
 
 
-## The allowed committee size for a difficulty, as { "min": x, "max": y }.
-func get_committee_size_band(difficulty: String) -> Dictionary:
-	var bands: Variant = balance.get("committee_size_bands", {})
-	if bands is Dictionary and (bands as Dictionary).has(difficulty):
-		return bands[difficulty]
-	return {}
-
-
 ## One of the open-design switches from rules.json.
 func get_rule(flag: String, fallback: Variant = null) -> Variant:
 	if rules.has(flag):
@@ -968,8 +951,9 @@ func _validate() -> void:
 
 	# 2026-09-22 workbook: modules.json/committee.json are retired — a
 	# level's stage order is its own stage_1..stage_10 now, and a committee's
-	# roster is opponents eligible for that STxx (see
-	# get_opponents_for_stage()). Checked the same way modules used to be.
+	# roster is opponents eligible for that STxx, the same as any other
+	# combat stage (see get_opponents_for_stage()). Checked the same way
+	# modules used to be.
 	for level: Dictionary in levels:
 		var lid := str(level.get("level_id", "?"))
 		var named_any := false
@@ -981,12 +965,7 @@ func _validate() -> void:
 			if not stage_ids.has(str(stage_id)):
 				errors.append("%s names stage '%s' at slot %d, which does not exist" % [lid, stage_id, slot])
 				continue
-			if is_committee_stage(str(stage_id)):
-				if get_opponents_for_stage(str(stage_id)).is_empty():
-					errors.append(
-						"%s's committee stage '%s' (slot %d) has no eligible opponents in opponents.json"
-						% [lid, stage_id, slot])
-			elif str(get_stage(str(stage_id)).get("mode", "")) == "Non-combat":
+			if str(get_stage(str(stage_id)).get("mode", "")) == "Non-combat":
 				# Office Hours: draws visitors, not opponents — checking
 				# opponents.json here always warned, even once VI01 existed,
 				# because nothing about this stage was ever going to have one.

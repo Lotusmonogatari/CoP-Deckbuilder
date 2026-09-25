@@ -132,7 +132,6 @@ func test_expand_level_attaches_visitors_with_a_drawn_question_for_a_non_combat_
 	var stage: Dictionary = expanded["stages"][0]
 
 	assert_eq(stage.get("opponents"), [])
-	assert_eq(stage.get("committee_members"), [])
 	var drawn: Array = stage.get("visitors", [])
 	assert_eq(drawn.size(), 1)
 	assert_eq(drawn[0].get("visitor_id"), "VI01")

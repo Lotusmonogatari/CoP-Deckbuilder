@@ -71,7 +71,7 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 
 | File | Key | Purpose |
 |---|---|---|
-| `balance.json` | lever name | Global numbers: thresholds, XP tiers, bill difficulty factor, committee size bands |
+| `balance.json` | lever name | Global numbers: thresholds, XP tiers, bill difficulty factor |
 | `suits.json` | element | 6 suits: Earnest, Emotional, Appeal, Data Driven, Divisive, Duplicitous |
 | `affinity.json` | element × stage_id | Suit power multipliers per stage (0.7–1.3) |
 | `cards.json` | card_id | name_en, name_jp, suit, type, cost, self_plus, opp_minus, guard, draw, gaffe, target_segment, effect_text, upgrade_text, tier |
@@ -136,19 +136,17 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 | Caucus, Town Hall, Steering Committee (ST03, ST05, ST08), unit "Support" | The same shared-pool model on a 0–100 scale. |
 | Press conference (ST04) | A single "press tone" bar starting at `player_start`. Reporter questions are the opponent intents. |
 | TV debate (ST06) | A single bar. The player wins only if it is **at or above the threshold at the end of every turn** (survival). Retuned 2026-09-25 (energy 3→5, hand 5→6, player_start 50→60) after a full playtest found the room mathematically unwinnable on turn 1 as originally tuned — the best possible turn-1 gain, any suit, full collection, was 12, short of the 15 needed from 50 to the 65 threshold. First-draft numbers, Cameron's to retune further. |
-| Committee (ST01) | Per-member model; see §7.5. |
+| Committee (ST01, ST09-ST18) | An ordinary Shared_pool bar. `sequence_mode: "reset"` draws several opponents from the stage's eligible pool (`opponent_count`) and fights them one at a time, a full reset between each — see §7.5. |
 
 ### 7.4 Win and loss
 - **Loss:** the gaffe meter reaches `gaffe_limit` (immediate), or the turn limit ends without a win (§9 switch).
 - **Win:** the bar reaches its threshold, or a committee majority locks For.
 
 ### 7.5 Committee stage
-- Members are selected from opponents eligible for the committee stage. The stage's opponent is the committee chair and is not a voting tile. The roster is capped to `balance.json`'s `committee_size_bands` (Balance tab, "COMMITTEE SIZE BY DIFFICULTY") for the current protagonist's own `difficulty` (`data/player.json`) — wired 2026-09-25, `BattleSetup._committee_for()`, after a full playtest found every committee using its entire eligible pool (up to 13 voting members for one stage) regardless of what its own turn and energy budget could actually persuade to a majority. First-draft band numbers, Cameron's to tune.
-- Each member has a lean from 0 to 100. Undecided members start at 50. An "Against" stance means the member starts **locked Against** **[DEFAULT]**.
-- The player targets one member with each card. `self_plus` and `opp_minus` (after affinity) both add lean to that member **[DEFAULT]**.
-- At lean ≥ 66 the member locks For; at ≤ 33 the member locks Against **[DEFAULT]**.
-- The chair has no move of their own: an attack has no shared bar to lower, so it does nothing here, and a committee turn is decided purely by what the player does. (The `lean_down` verb that once let the chair push a member's lean down was removed as outdated, 2026-09-24.)
-- Win when locked-For members reach a majority: floor(size ÷ 2) + 1. Lose if a majority is no longer reachable, or at the turn limit.
+- A committee (ST01, ST09-ST18) is an **ordinary sequential battle**, not a separate mechanic. It draws `opponent_count` opponents from its eligible pool — every opponents.json row whose own "stages" list names that STxx, the same dynamic-by-default selection every other Combat stage uses (`BattleSetup._opponents_for()`) — and fights them **one at a time**.
+- `sequence_mode: "reset"` (`BattleEngine._advance_to_next_opponent()`/`_reset_for_new_bout()`) is what makes each opponent a fresh argument: support, gaffes, guard, energy, the clock and the hand all start again the moment the last one is beaten. `bar_model` is left blank on these rows, so the bar itself is the ordinary Shared_pool default (`BarModel.for_stage()`).
+- Win by getting through every opponent in the sequence — the same win condition any multi-opponent stage uses. Lose on the gaffe limit, or on the turn limit of whichever bout is in progress.
+- Corrected 2026-09-25: an earlier pass built a separate per-member "lean/lock" persuasion model (locking a simultaneous majority of up to 13 voting members) that did not match this design. It's gone — `CommitteeModel.gd`, `BattleState.committee`, and every `is_committee_stage()` special-case were removed, and the 11 committee stages now use the `sequence_mode: "reset"` mechanism above, which was already built and tested (`data/playtest_level.json`'s `PT_S1` fixture) but never wired to the real canon rows. `opponent_count` on these rows is a first-draft `{min:3, max:3}` — Cameron's to tune per stage.
 
 ### 7.6 Opponent behavior (MVP)
 Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and block ranges are exported with the opponent data. When a pattern is missing, the fallback comes from `data/rules.json`.
@@ -214,7 +212,7 @@ Every screen is portrait, uncluttered, and English-first. Layout from top to bot
 
 1. **Header:** stage name in English with a small muted Japanese accent (for example "Floor debate 本会議"), and on the right, "Turn 3 of 8".
 2. **Opponent row:** an art box showing the stage's own background, with two full-body cutouts in its bottom corners — the opponent (lower right), name and intent in plain words (for example "Attacking · −6") shown beside it; and your own face (lower left), reacting to what you just did.
-3. **Win condition:** the support bar with a visible threshold line and a caption such as "51 seats to win". Committee stages show member tiles instead; press conferences show the current question.
+3. **Win condition:** the support bar with a visible threshold line and a caption such as "51 seats to win". A committee stage shows the same bar against whichever member is currently up, with an "Opponent 2 of 5" style caption for how far through the sequence the player is; press conferences show the current question instead.
 4. **Status row:** Energy pips and "Gaffes 2 / 6". The gaffe warning turns red **only** when one more gaffe would end the stage.
 5. **Hand:** 3–5 cards. Each card face shows cost, English name, and a one-line effect. At most one small Japanese accent per card. Tapping a card opens a zoom view with the full text, suit, art, and Japanese name; dragging a card up out of the hand plays it directly.
 6. **Footer:** a full-width "End turn" button.

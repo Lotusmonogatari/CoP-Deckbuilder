@@ -91,8 +91,7 @@ var gaffe_limit := 5
 var opponent_gaffe := 0
 
 # --- The stage --------------------------------------------------------------
-var bar: BarModel = null           ## null in a committee stage
-var committee: CommitteeModel = null   ## null everywhere else
+var bar: BarModel = null
 
 ## Set when a card reveals what the opponent will do after this turn.
 var next_intent_revealed := false
@@ -136,15 +135,8 @@ func is_over() -> bool:
 	return outcome != "ongoing"
 
 
-func is_committee_stage() -> bool:
-	return committee != null
-
-
-## The player's current standing, whichever shape the stage uses. Committee
-## stages count locked-For votes; everything else reads the bar.
+## The player's current standing, whichever shape the stage uses.
 func player_score() -> int:
-	if committee != null:
-		return committee.locked_for()
 	return bar.player if bar != null else 0
 
 
@@ -161,7 +153,6 @@ func to_dictionary() -> Dictionary:
 		"opponent_gaffe": opponent_gaffe,
 		"opponent_block": opponent_block,
 		"bar": bar.to_dictionary() if bar != null else null,
-		"committee": committee.to_dictionary() if committee != null else null,
 		"outcome": outcome,
 		"outcome_reason": outcome_reason,
 	}

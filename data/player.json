@@ -13,11 +13,6 @@
     "",
     "FIELDS, per protagonist:",
     "  player_id       PC01-PC04. Also the art ID and the speech ID:",
-    "  difficulty      \"Normal\"/\"Easy\"/\"Hard\"/\"Very Hard\" - matches a",
-    "                  label in balance.json's committee_size_bands (Balance",
-    "                  tab, \"COMMITTEE SIZE BY DIFFICULTY\"). BattleSetup.",
-    "                  _committee_for() reads DataDB.player's own difficulty",
-    "                  to cap a committee's size. Added 2026-09-25.",
     "                  assets/characters/protagonists/PC01_neutral.png, and",
     "                  sounds.json's speech table under \"PC01\".",
     "  name_en         Shown on the Office and the New Game screen.",
@@ -61,7 +56,6 @@
       "name_en": "Hiro",
       "name_jp": "",
       "party": "Frontier Party",
-      "difficulty": "Normal",
       "blurb": "A steady start. Normal difficulty.",
       "starting_meta": {
         "Constituency support": 15,
@@ -76,7 +70,6 @@
       "name_en": "Protagonist B",
       "name_jp": "",
       "party": "",
-      "difficulty": "Easy",
       "blurb": "A strong footing to begin with. Easy difficulty.",
       "starting_meta": {
         "Constituency support": 35,
@@ -91,7 +84,6 @@
       "name_en": "Protagonist C",
       "name_jp": "",
       "party": "",
-      "difficulty": "Hard",
       "blurb": "An uphill climb from day one. Hard difficulty.",
       "starting_meta": {
         "Constituency support": 10,
@@ -106,7 +98,6 @@
       "name_en": "Protagonist D",
       "name_jp": "",
       "party": "",
-      "difficulty": "Very Hard",
       "blurb": "Already in crisis before your first vote. Very Hard difficulty.",
       "starting_meta": {
         "Constituency support": 5,

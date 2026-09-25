@@ -25,8 +25,6 @@ extends RefCounted
 
 ## True where the bar counts people rather than measuring a mood.
 static func is_a_room(state: BattleState) -> bool:
-	if state.committee != null:
-		return true
 	if state.bar == null:
 		return false
 	return state.bar.model == BarModel.Model.SHARED_POOL

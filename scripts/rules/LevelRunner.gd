@@ -276,7 +276,7 @@ func stage_by_seq(seq: int) -> Dictionary:
 # wherever play actually is — everything already in `results` is untouched.
 
 ## Puts `stage` (already shaped by BattleSetup.build_inserted_stage() — real
-## opponents/visitors/committee_members attached, not a bare stages.json row)
+## opponents/visitors attached, not a bare stages.json row)
 ## at `at_index`, and renumbers every not-yet-played stage's `seq` from there
 ## on so the sequence stays a clean, gapless 1..N — including rewriting any
 ## of THEIR OWN `carries_buffs_from` references that pointed at another

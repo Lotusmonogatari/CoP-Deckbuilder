@@ -48,9 +48,9 @@ static func for_level_stage(level_id: String, stage_id: String, meta: Dictionary
 ## every win_delta_*/loss_delta_* field, everything LevelRunner already reads
 ## is present) plus:
 ##   seq                1, 2, 3... in stage_1..stage_10 order, skipping nulls
-##   opponents          [the opponent], for a non-committee combat stage
-##   committee_members  the roster, for a committee stage (see
-##                      DataDB.is_committee_stage())
+##   opponents          the opponent(s) for a combat stage — one, or several
+##                      drawn from the eligible pool when sequence_mode
+##                      calls for it (a committee stage among them)
 ##
 ## Who fights whom is not in the workbook — see _opponent_for()'s own
 ## comment for how that is decided, and how to pin one by hand.
@@ -85,7 +85,7 @@ static func expand_level(level: Dictionary) -> Dictionary:
 
 
 ## Enriches a bare stages.json row into a battle/visitor-ready stage dict —
-## opponents, or a committee roster, or a drawn visitor pool, plus
+## opponents, or a drawn visitor pool, plus
 ## questions_count — exactly what expand_level()'s own per-slot loop needs,
 ## factored out here so a stage dealt with the level from the start and one
 ## forced in later by a crisis trigger (GameState.gd, LevelRunner.
@@ -102,20 +102,13 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		return {}
 	stage = stage.duplicate(true)
 
-	if DataDB.is_committee_stage(stage_id):
-		var committee := _committee_for(level_id, stage_id, slot)
-		stage["opponents"] = ([committee["chair"]] if not (committee["chair"] as Dictionary).is_empty()
-			else [])
-		stage["committee_members"] = committee["members"]
-		stage["visitors"] = []
-	elif str(stage.get("mode", "")) == "Non-combat":
-		# Office Hours (and now the Steering Committee check-in, ST22): not a
+	if str(stage.get("mode", "")) == "Non-combat":
+		# Office Hours (and the Steering Committee check-in, ST22): not a
 		# battle, so no opponent at all — a drawn pool of visitors instead,
 		# each with its own drawn question already attached, resolved once
 		# here the same way a combat stage's opponent(s) and question pool
 		# are.
 		stage["opponents"] = []
-		stage["committee_members"] = []
 		var drawn_visitors: Array = []
 		for visitor: Dictionary in _visitors_for(level_id, stage_id, slot, _opponent_count(stage)):
 			var with_question := visitor.duplicate(true)
@@ -123,8 +116,11 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 			drawn_visitors.append(with_question)
 		stage["visitors"] = drawn_visitors
 	else:
+		# A committee stage (ST01, ST09-ST18) is an ordinary Combat stage
+		# like any other here — sequence_mode "reset" and a real
+		# opponent_count are what make it draw several opponents from its
+		# eligible pool and fight them one at a time, not a special branch.
 		stage["opponents"] = _opponents_for(level_id, stage_id, slot, _opponent_count(stage))
-		stage["committee_members"] = []
 		stage["visitors"] = []
 
 	# LevelRunner.problems() needs to know whether a stage has anything to
@@ -228,9 +224,9 @@ static func _opponent_count(stage: Dictionary) -> int:
 ## rule as _opponent_for(): a pin fills the first slot, lowest opp_id among
 ## the rest of the eligible pool fills however many more are needed. A stage
 ## whose eligible pool is smaller than its own opponent_count plays with
-## whoever exists rather than failing setup outright — BattleEngine already
-## reports "a committee stage needs its members" style problems for an empty
-## list, and an empty one here does the same through has_more_opponents().
+## whoever exists rather than failing setup outright — an empty list here
+## simply means the stage has nobody to fight, the same as any other empty
+## opponent pool.
 static func _opponents_for(level_id: String, stage_id: String, slot: int, count: int) -> Array:
 	if count <= 1:
 		var opponent := _opponent_for(level_id, stage_id, slot)
@@ -251,56 +247,6 @@ static func _opponents_for(level_id: String, stage_id: String, slot: int, count:
 		chosen.append(candidate)
 
 	return chosen
-
-
-## The committee roster and chair for a committee stage: { chair, members }.
-##
-## Same dynamic-by-default rule as _opponent_for(). [DEFAULT] the chair —
-## who runs the meeting and is not a voting tile, CLAUDE.md §7.5 — is the
-## lowest opp_id among those eligible, since nothing in the new data says who
-## chairs which committee; ask Cameron before this is treated as final. A pin
-## for a committee slot means "make sure this opponent is on the roster, as
-## its chair", not "replace the roster".
-##
-## The roster itself is then capped to balance.json's committee_size_bands
-## for the current protagonist's own difficulty (data/player.json,
-## DataDB.get_committee_size_band()) — added 2026-09-25 after a full
-## playtest found every committee using its ENTIRE eligible pool, up to 13
-## voting members for a single stage, far more than the stage's own turn and
-## energy budget can ever persuade to a majority. Truncating the existing
-## lowest-opp_id-first order (rather than a random pick) keeps this the same
-## stable, testable selection every other "who's in the room" pick in this
-## file already uses. No band data for the current difficulty (or a smaller
-## eligible pool than the cap) leaves the roster exactly as it was.
-static func _committee_for(level_id: String, stage_id: String, slot: int) -> Dictionary:
-	var eligible := eligible_opponents(stage_id)
-	var chair: Dictionary = eligible[0] if not eligible.is_empty() else {}
-
-	var pinned := _resolve_pin(level_id, stage_id, slot)
-	if not pinned.is_empty():
-		chair = pinned
-		var already := false
-		for member: Dictionary in eligible:
-			if str(member.get("opp_id", "")) == str(pinned.get("opp_id", "")):
-				already = true
-				break
-		if not already:
-			eligible.append(pinned)
-
-	var members := eligible.duplicate()
-	if not chair.is_empty():
-		for index in members.size():
-			if str(members[index].get("opp_id", "")) == str(chair.get("opp_id", "")):
-				members.remove_at(index)
-				break
-
-	var difficulty := str(DataDB.player.get("difficulty", "Normal"))
-	var band := DataDB.get_committee_size_band(difficulty)
-	var cap := int(band.get("max", 0))
-	if cap > 0 and members.size() > cap:
-		members = members.slice(0, cap)
-
-	return {"chair": chair, "members": members}
 
 
 ## Looks up and validates one level+slot's override row, if any. Returns an
@@ -483,10 +429,9 @@ static func _reputation_affects_start(stage: Dictionary, stage_id: String) -> bo
 
 
 ## Builds a battle from one stage — a canon stages.json row, whether it
-## arrived via a level's expand_level() (with "opponents"/"committee_members"
-## already attached) or the old hand-written playtest stage shape. The two
-## produce the same kind of dictionary, so BattleEngine cannot tell them
-## apart.
+## arrived via a level's expand_level() (with "opponents" already attached)
+## or the old hand-written playtest stage shape. The two produce the same
+## kind of dictionary, so BattleEngine cannot tell them apart.
 ##
 ## `buffs` is whatever earlier stages of the level left behind, from
 ## LevelRunner.carried_buffs().
@@ -518,7 +463,6 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		# built in phase 3. Until then a stage plays its opening opponent.
 		"opponent": opponents[0] if not opponents.is_empty() else {},
 		"opponents": opponents,
-		"committee_members": stage.get("committee_members", []),
 		"cards": card_table(),
 		"affinity": affinity_table(),
 		"rules": DataDB.rules,

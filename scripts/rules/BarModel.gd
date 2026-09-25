@@ -1,6 +1,6 @@
 class_name BarModel
 extends RefCounted
-## The support bar, in its three non-committee shapes.
+## The support bar, in its three shapes.
 ##
 ## Different stages measure "winning" differently, and the difference is real
 ## rather than cosmetic:
@@ -120,7 +120,7 @@ static func for_stage(stage: Dictionary) -> Model:
 	# str(null) is the literal text "<null>", not "", so the null has to be
 	# caught before str() or a blank cell stops looking blank and its
 	# default never applies. Lowercased here so a workbook cell can read
-	# naturally ("Single", "Committee") while this match stays a plain
+	# naturally ("Single", "Survival") while this match stays a plain
 	# lowercase literal — a caller that needs different treatment of an
 	# empty (non-null) string, trimming, or a non-string result makes its
 	# own choice on top of the same null check; those differ by call site

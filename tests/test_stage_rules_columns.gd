@@ -18,8 +18,7 @@ extends GutTest
 
 
 # ---------------------------------------------------------------------------
-# bar_model — BarModel.for_stage(), BattleEngine.is_committee_stage(),
-# DataDB.is_committee_stage()
+# bar_model — BarModel.for_stage()
 # ---------------------------------------------------------------------------
 
 func test_bar_model_declared_wins_over_the_stage_id_guess() -> void:
@@ -54,26 +53,6 @@ func test_bar_model_reads_are_case_insensitive() -> void:
 	# inert the moment anyone actually used it as written.
 	assert_eq(BarModel.for_stage({"stage_id": "ST02", "bar_model": "Survival"}),
 		BarModel.Model.SURVIVAL, "declared Capitalized, same as the workbook, not lowercase")
-	assert_true(BattleEngine.is_committee_stage({"stage_id": "ST21", "bar_model": "Committee"}))
-	assert_false(DataDB.is_committee_stage("ST21"), "sanity: ST21 is not a committee by ID")
-
-
-func test_bar_model_committee_is_recognised_by_declared_value() -> void:
-	# ST21 (Policy Study) is not in COMMITTEE_STAGE_IDS — declaring
-	# bar_model "committee" on it should still be honoured.
-	var stage := {"stage_id": "ST21", "bar_model": "committee"}
-	assert_true(BattleEngine.is_committee_stage(stage))
-
-
-func test_bar_model_null_falls_back_to_committee_stage_ids() -> void:
-	assert_true(BattleEngine.is_committee_stage({"stage_id": "ST01", "bar_model": null}))
-	assert_false(BattleEngine.is_committee_stage({"stage_id": "ST21", "bar_model": null}))
-
-
-func test_datadb_is_committee_stage_also_honours_a_declared_bar_model() -> void:
-	# ST18 is a real committee stage (COMMITTEE_STAGE_IDS) — a declared
-	# non-committee bar_model on its row should override that.
-	assert_true(DataDB.is_committee_stage("ST18"), "sanity: ST18 is a committee today")
 
 
 # ---------------------------------------------------------------------------

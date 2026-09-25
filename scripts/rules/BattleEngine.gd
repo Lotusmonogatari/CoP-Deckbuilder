@@ -26,28 +26,6 @@ extends RefCounted
 
 var state := BattleState.new()
 
-## Which stage IDs use the per-member committee model (§7.5) rather than a
-## shared support bar. ST01 plus the ten workbook committees, ST09-ST18. ST08
-## (Party Steering Committee) LOOKS like a committee by name but plays the
-## same shared-pool model as ST03/ST05 — CLAUDE.md §7.3 is explicit that it is
-## not one of these.
-##
-## Hardcoded rather than read from stages.json because nothing in the new
-## workbook data distinguishes a committee stage from a shared-pool one:
-## ST18 (a committee) and ST21 (not one) have the same bar_unit/bar_value_kind
-## shape. The ONE copy of this list — DataDB.is_committee_stage() reads it
-## through is_committee_stage() below rather than keeping a second one, since
-## an autoload may call scripts/rules/ even though the reverse is forbidden.
-const COMMITTEE_STAGE_IDS := [
-	"ST01", "ST09", "ST10", "ST11", "ST12", "ST13", "ST14", "ST15", "ST16",
-	"ST17", "ST18",
-]
-
-## True for a committee stage. A STAGE THAT SAYS WHAT IT WANTS GETS IT, same
-## rule BarModel.for_stage() already follows for bar_model "single"/
-## "survival"/"shared_pool" — a "committee" value here is checked first, and
-## only a stage with none at all (every canon row today) falls back to
-## COMMITTEE_STAGE_IDS above.
 ## An optional stages.json column, read past the <null> trap (see
 ## BarModel.for_stage()'s own comment for what that is). Unlike for_stage(),
 ## an EMPTY (non-null) string here is kept as-is rather than treated as
@@ -58,13 +36,6 @@ const COMMITTEE_STAGE_IDS := [
 static func _string_field(stage: Dictionary, key: String, fallback: String) -> String:
 	var value: Variant = stage.get(key)
 	return str(value).to_lower() if value != null else fallback
-
-
-static func is_committee_stage(stage: Dictionary) -> bool:
-	var declared: Variant = stage.get("bar_model")
-	if declared != null and not str(declared).is_empty():
-		return str(declared).to_lower() == "committee"
-	return COMMITTEE_STAGE_IDS.has(str(stage.get("stage_id", "")))
 
 # --- Everything the engine was given at setup ------------------------------
 var _stage: Dictionary = {}
@@ -116,8 +87,6 @@ var used_default_intent_pattern := false
 ##   affinity          element -> { stage_id -> multiplier }
 ##   rules             the switches from rules.json
 ##   meta              current Jiban / Kanban / Kaban / Party support
-##   committee_members rows from opponents.json eligible for this stage,
-##                      for a committee stage (see COMMITTEE_STAGE_IDS)
 ##   bill_difficulty   added to the opponent's starting support
 ##   start_adjustment  reputation's effect in a press stage, plus any
 ##                      STAGE_START_BONUS modifier active for this stage
@@ -268,15 +237,6 @@ func _arm_intents(config: Dictionary = {}) -> void:
 
 
 func _setup_board(config: Dictionary) -> void:
-	var members: Array = config.get("committee_members", [])
-
-	if is_committee_stage(_stage):
-		if members.is_empty():
-			setup_problems.append("a committee stage needs its members, and none were given")
-			return
-		state.committee = CommitteeModel.create(members)
-		return
-
 	# The opponent starts further ahead when the bill is unpopular, and the
 	# player starts ahead or behind on reputation in a press stage.
 	var player_start := int(_stage.get("player_start", 0)) + int(config.get("start_adjustment", 0))
@@ -328,12 +288,9 @@ func _setup_deck(config: Dictionary) -> void:
 
 ## Plays a card from hand.
 ##
-## `target_index` picks the committee member to aim at; it is ignored
-## everywhere else.
-##
 ## Returns what happened: `ok` is false with a `reason` when the card cannot
 ## be played, and the battle is left untouched.
-func play_card(card_id: String, target_index: int = -1) -> Dictionary:
+func play_card(card_id: String) -> Dictionary:
 	if state.is_over():
 		return _refused("the battle is already over")
 	if not state.hand.has(card_id):
@@ -366,7 +323,7 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 	state.next_card_bonus = 0     # a carried bonus is spent by the card using it
 	state.next_card_discount = 0  # and so is a carried discount
 
-	var applied := _apply_effect(effect, target_index)
+	var applied := _apply_effect(effect)
 
 	# Into the discard pile only AFTER its effects have resolved. Otherwise a
 	# card that draws could empty the deck, reshuffle, and deal the player
@@ -413,45 +370,36 @@ func play_card(card_id: String, target_index: int = -1) -> Dictionary:
 
 ## Applies a resolved card's numbers, in the order the brief sets out:
 ## support, then guard, then gaffe, then draw.
-func _apply_effect(effect: Dictionary, target_index: int) -> Dictionary:
+func _apply_effect(effect: Dictionary) -> Dictionary:
 	var applied := {"gained": 0, "opponent_lost": 0, "guard": 0, "gaffe": 0, "drawn": 0}
 
 	var self_plus := int(effect.get("self_plus", 0))
 	var opp_minus := int(effect.get("opp_minus", 0))
 
-	if state.is_committee_stage():
-		# In a committee there is one bar per person, so both halves of a
-		# card's persuasion go into the member being targeted: winning them
-		# over and talking down the case against are the same act here.
-		var index := target_index if target_index >= 0 else state.committee.most_persuaded_unlocked()
-		var move := state.committee.persuade(index, self_plus + opp_minus)
-		applied["gained"] = int(move.get("moved", 0))
-		applied["member"] = move
-	else:
-		applied["gained"] = state.bar.player_gains(self_plus)
-		# Who those people were: undecided, or argued off the other side.
-		applied["gain_split"] = state.bar.last_gain.duplicate()
+	applied["gained"] = state.bar.player_gains(self_plus)
+	# Who those people were: undecided, or argued off the other side.
+	applied["gain_split"] = state.bar.last_gain.duplicate()
 
-		# Arguing the opposition down is an attack, so their guard is the
-		# first thing it meets and what it absorbs is spent. Until now this
-		# went straight through and their "Guarding" intent did nothing at
-		# all, which a playtest caught.
-		#
-		# Piercing IGNORES guard rather than spending it, so the pierced
-		# amount is lifted off the bank before the attack lands and put back
-		# afterwards. Subtracting it for real would let one pierce card
-		# strip a guard that the card never claimed to remove.
-		var pierced := mini(
-			int(effect.get("flags", {}).get("pierce_guard", 0)), state.opponent_block)
-		state.opponent_block -= pierced
+	# Arguing the opposition down is an attack, so their guard is the
+	# first thing it meets and what it absorbs is spent. Until now this
+	# went straight through and their "Guarding" intent did nothing at
+	# all, which a playtest caught.
+	#
+	# Piercing IGNORES guard rather than spending it, so the pierced
+	# amount is lifted off the bank before the attack lands and put back
+	# afterwards. Subtracting it for real would let one pierce card
+	# strip a guard that the card never claimed to remove.
+	var pierced := mini(
+		int(effect.get("flags", {}).get("pierce_guard", 0)), state.opponent_block)
+	state.opponent_block -= pierced
 
-		var stopped := mini(state.opponent_block, opp_minus)
-		state.opponent_block -= stopped
-		applied["guard_pierced"] = pierced
-		applied["guard_stopped"] = stopped
-		applied["opponent_lost"] = state.bar.opponent_loses(opp_minus - stopped)
+	var stopped := mini(state.opponent_block, opp_minus)
+	state.opponent_block -= stopped
+	applied["guard_pierced"] = pierced
+	applied["guard_stopped"] = stopped
+	applied["opponent_lost"] = state.bar.opponent_loses(opp_minus - stopped)
 
-		state.opponent_block += pierced
+	state.opponent_block += pierced
 
 	# Guard is not multiplied by affinity — see CardResolver. It goes into a
 	# bank that stays until something attacks, so what is reported is what
@@ -713,21 +661,10 @@ func _resolve_intent(intent: Dictionary) -> Dictionary:
 			var absorbed := mini(state.block, value)
 			var through := maxi(value - state.block, 0)
 			state.block -= absorbed
-			var lost := 0
-			if state.is_committee_stage():
-				# An attack has no meaning against a set of votes: there is no
-				# shared bar for it to lower. The committee chair currently has
-				# no move of their own at all (the "lean_down" verb that once
-				# gave them one was removed as outdated, 2026-09-24) — a
-				# committee stage is decided purely by what the player does.
-				lost = 0
-			else:
-				lost = state.bar.player_loses(through)
+			var lost := state.bar.player_loses(through)
 			return {"verb": "attack", "absorbed": absorbed, "damage": lost}
 
 		"gain":
-			if state.is_committee_stage():
-				return {"verb": "gain", "gained": 0, "gain_split": {}}
 			var gained := state.bar.opponent_gains(value)
 			return {
 				"verb": "gain",
@@ -788,68 +725,60 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			_finish("win", _conference_closing(true))
 			return
 
-	if state.is_committee_stage():
-		if state.committee.player_has_won():
-			_finish("win", _words.say("outcome.reason.committee_for"))
-			return
-		if not state.committee.majority_still_reachable():
-			_finish("loss", _words.say("outcome.reason.committee_against"))
-			return
-	else:
-		# Three stages have no threshold to cross.
-		#
-		# A survival stage is staying alive rather than winning: the win
-		# comes from lasting the full distance.
-		#
-		# A scored stage has no threshold at all. Ending it the moment some
-		# total was passed would cut short the very thing the player is
-		# trying to do, which is get as high as they can in the turns they
-		# have. Both are settled in _check_turn_limit below.
-		#
-		# A press conference runs until the reporters are done. Walking out
-		# early because the tone happened to be good would skip the questions
-		# still to come, and the answers are the whole point of the stage.
-		#
-		# 2026-09-25: this used to read "and _questions.is_empty()", which
-		# denied a threshold to ANY room with a question pool — including
-		# ST19/20/21, whose bar is an ordinary Shared_pool with a real
-		# win_threshold and whose questions are flavor on top of it, not the
-		# win condition. Only the true press-tone room (bar_model Single, see
-		# is_press_conference() above) should run out the question pool
-		# instead of checking a threshold.
-		var has_threshold := (state.bar.model != BarModel.Model.SURVIVAL
-			and state.win_mode != "score"
-			and state.bar.model != BarModel.Model.SINGLE)
+	# Three stages have no threshold to cross.
+	#
+	# A survival stage is staying alive rather than winning: the win
+	# comes from lasting the full distance.
+	#
+	# A scored stage has no threshold at all. Ending it the moment some
+	# total was passed would cut short the very thing the player is
+	# trying to do, which is get as high as they can in the turns they
+	# have. Both are settled in _check_turn_limit below.
+	#
+	# A press conference runs until the reporters are done. Walking out
+	# early because the tone happened to be good would skip the questions
+	# still to come, and the answers are the whole point of the stage.
+	#
+	# 2026-09-25: this used to read "and _questions.is_empty()", which
+	# denied a threshold to ANY room with a question pool — including
+	# ST19/20/21, whose bar is an ordinary Shared_pool with a real
+	# win_threshold and whose questions are flavor on top of it, not the
+	# win condition. Only the true press-tone room (bar_model Single, see
+	# is_press_conference() above) should run out the question pool
+	# instead of checking a threshold.
+	var has_threshold := (state.bar.model != BarModel.Model.SURVIVAL
+		and state.win_mode != "score"
+		and state.bar.model != BarModel.Model.SINGLE)
 
-		if has_threshold and state.bar.player_has_won():
-			# Where a stage lines several people up, the threshold is what it
-			# takes to finish THE PERSON IN FRONT OF YOU, not the stage. In a
-			# committee the next member of the panel is waiting; on the floor
-			# the next debater rises and the house divides again.
-			if _sequence_mode != "single" and has_more_opponents():
-				_advance_to_next_opponent()
-				return
-			_finish("win", _victory_reason())
+	if has_threshold and state.bar.player_has_won():
+		# Where a stage lines several people up, the threshold is what it
+		# takes to finish THE PERSON IN FRONT OF YOU, not the stage. In a
+		# committee the next member of the panel is waiting; on the floor
+		# the next debater rises and the house divides again.
+		if _sequence_mode != "single" and has_more_opponents():
+			_advance_to_next_opponent()
 			return
+		_finish("win", _victory_reason())
+		return
 
-		# On the floor, arguing a debater's seats down to nothing ends them
-		# too. Running out of opponents wins it even short of the threshold,
-		# because there is nobody left to argue against.
-		if _sequence_mode == "continuous" and state.bar.opponent <= 0:
-			if has_more_opponents():
-				_advance_to_next_opponent()
-				return
-			_finish("win", _words.say("outcome.reason.all_argued_out"))
+	# On the floor, arguing a debater's seats down to nothing ends them
+	# too. Running out of opponents wins it even short of the threshold,
+	# because there is nobody left to argue against.
+	if _sequence_mode == "continuous" and state.bar.opponent <= 0:
+		if has_more_opponents():
+			_advance_to_next_opponent()
 			return
-		if bool(_rules.get("opponent_can_win_by_threshold", false)) and state.bar.opponent_has_won():
-			_finish("loss", _words.say("outcome.reason.opponent_first"))
-			return
+		_finish("win", _words.say("outcome.reason.all_argued_out"))
+		return
+	if bool(_rules.get("opponent_can_win_by_threshold", false)) and state.bar.opponent_has_won():
+		_finish("loss", _words.say("outcome.reason.opponent_first"))
+		return
 
-		# The TV debate is survived, not won: the player has to be at or above
-		# the line at the end of every turn.
-		if end_of_turn and state.bar.model == BarModel.Model.SURVIVAL and state.bar.player_below_threshold():
-			_finish("loss", _words.say("outcome.reason.fell_below"))
-			return
+	# The TV debate is survived, not won: the player has to be at or above
+	# the line at the end of every turn.
+	if end_of_turn and state.bar.model == BarModel.Model.SURVIVAL and state.bar.player_below_threshold():
+		_finish("loss", _words.say("outcome.reason.fell_below"))
+		return
 
 	if end_of_turn:
 		_check_turn_limit()
@@ -892,14 +821,7 @@ func _check_turn_limit() -> void:
 
 	match str(_rules.get("turn_limit_outcome", "loss")):
 		"highest_support_wins":
-			if state.is_committee_stage():
-				var for_votes := state.committee.locked_for()
-				var against := state.committee.locked_against()
-				if for_votes > against:
-					_finish("win", "Time ran out with more members in favour than against.")
-				else:
-					_finish("loss", "Time ran out without a majority.")
-			elif state.bar.player > state.bar.opponent:
+			if state.bar.player > state.bar.opponent:
 				_finish("win", _words.say("outcome.reason.time_ahead"))
 			else:
 				_finish("loss", _words.say("outcome.reason.time_behind"))

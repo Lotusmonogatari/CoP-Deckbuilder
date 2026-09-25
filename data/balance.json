@@ -15,22 +15,5 @@
   "gaffes_lifetime_penalty_threshold": 50,
   "gaffes_lifetime_penalty_jiban_delta": -15,
   "xp_tiers": {},
-  "committee_size_bands": {
-    "Easy": {
-      "min": 5,
-      "max": 6
-    },
-    "Normal": {
-      "min": 6,
-      "max": 7
-    },
-    "Hard": {
-      "min": 7,
-      "max": 9
-    },
-    "Very Hard": {
-      "min": 8,
-      "max": 11
-    }
-  }
+  "committee_size_bands": {}
 }

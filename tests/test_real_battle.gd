@@ -121,41 +121,20 @@ func test_a_non_combat_stage_fails_battleengine_setup_safely_for_now() -> void:
 	assert_string_contains(engine.setup_problems[0], "nobody to argue with")
 
 
-func test_a_committee_stage_gets_its_members() -> void:
+## A committee stage is an ordinary sequential battle: several opponents
+## drawn from its eligible pool (opponent_count), fought one at a time with
+## a full reset between them (sequence_mode "reset"), on an ordinary bar
+## (bar_model falls back to Shared_pool). Not a per-member voting puzzle.
+func test_a_committee_stage_lines_up_several_real_opponents() -> void:
 	var config := BattleSetup.for_level_stage(COMMITTEE_LEVEL, COMMITTEE_STAGE)
-	assert_true(config.has("committee_members"), "members were fetched")
-	assert_gt((config["committee_members"] as Array).size(), 0)
+	var opponents := config["opponents"] as Array
+	assert_gt(opponents.size(), 1, "several real opponents drawn from the eligible pool")
 
 	var engine := BattleEngine.new()
 	assert_true(_setup(engine, config), "%s" % [engine.setup_problems])
-	assert_true(engine.state.is_committee_stage())
-
-
-## A full playtest found ST01's eligible pool alone (11 voting members after
-## the chair) is more than its own 7-turn, 21-energy budget can ever
-## persuade to a majority. balance.json's committee_size_bands now caps it,
-## per the current protagonist's own difficulty (data/player.json).
-func test_a_committee_roster_is_capped_by_the_current_difficulty_band() -> void:
-	var player_before := DataDB.player.duplicate(true)
-	DataDB.use_protagonist("PC01")   # Normal: max 7 (Balance tab)
-
-	var config := BattleSetup.for_level_stage(COMMITTEE_LEVEL, COMMITTEE_STAGE)
-	var members := config["committee_members"] as Array
-	assert_gt(members.size(), 0)
-	assert_lte(members.size(), 7, "capped to the Normal band's max")
-
-	DataDB.player = player_before
-
-
-func test_a_committee_roster_is_unbounded_without_band_data() -> void:
-	var bands_before: Dictionary = (DataDB.balance.get("committee_size_bands", {}) as Dictionary).duplicate(true)
-	DataDB.balance["committee_size_bands"] = {}
-
-	var config := BattleSetup.for_level_stage(COMMITTEE_LEVEL, COMMITTEE_STAGE)
-	var members := config["committee_members"] as Array
-	assert_gt(members.size(), 7, "no band data means the full eligible pool, same as before this was wired up")
-
-	DataDB.balance["committee_size_bands"] = bands_before
+	assert_eq(engine.state.opponent_count, opponents.size())
+	assert_true(engine.state.bar != null)
+	assert_eq(engine.state.bar.model, BarModel.Model.SHARED_POOL)
 
 
 # ---------------------------------------------------------------------------
@@ -393,8 +372,7 @@ func test_the_committee_lines_up_three_opponents() -> void:
 
 	assert_eq(engine.state.opponent_count, 3)
 	assert_eq(engine.opponent_caption(), "1 of 3")
-	assert_false(engine.state.is_committee_stage(),
-		"three ordinary arguments, not the per-member voting model")
+	assert_true(engine.state.bar != null, "three ordinary arguments, not a per-member voting model")
 
 
 func test_winning_a_committee_bout_starts_the_next_one_clean() -> void:
