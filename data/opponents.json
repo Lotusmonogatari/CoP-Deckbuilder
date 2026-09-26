@@ -1140,9 +1140,7 @@
     "party_acronym": "KJT",
     "affiliation": "BO17",
     "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15"
-    ],
+    "stages": null,
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
     "suit_3": "Appeal",
@@ -1339,10 +1337,7 @@
     "party_acronym": "FP",
     "affiliation": "BO17",
     "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14",
-      "ST08"
-    ],
+    "stages": null,
     "suit_1": "Earnest",
     "suit_2": "Divisive",
     "suit_3": "Duplicitous",
@@ -1717,10 +1712,7 @@
     "party_acronym": "CI",
     "affiliation": "BO17",
     "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12",
-      "ST02"
-    ],
+    "stages": null,
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
     "suit_3": "Emotional",
@@ -1861,9 +1853,7 @@
     "party_acronym": "FP",
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09"
-    ],
+    "stages": null,
     "suit_1": "Earnest",
     "suit_2": "Emotional",
     "suit_3": "Duplicitous",

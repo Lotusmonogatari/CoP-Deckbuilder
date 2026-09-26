@@ -130,7 +130,7 @@ func _show_opponent(engine: BattleEngine) -> void:
 	# name had ever been written and the player was left looking at the word
 	# "Opponent". Redrawing a label is not worth guarding against.
 	var caption := engine.opponent_caption()
-	var who := str(opponent.get("name", "Visitor A"))
+	var who := _named_with_title(opponent)
 	# "Opponent B  ·  2 of 3", so the player knows how far through a
 	# committee they are without counting.
 	_name_label.text = who if caption.is_empty() else Text.say("battle.who_and_caption",
@@ -139,11 +139,14 @@ func _show_opponent(engine: BattleEngine) -> void:
 	_wear(str(opponent.get("opp_id", "")), _face_for(engine))
 
 
-## Puts the reporter who asked this question in the opponent's place.
+## Puts the opponent who asked this question in the opponent's place.
 ##
 ## They are not an opponent — they never take a turn — but they are who is
 ## speaking, and a question with a name on it is easier to answer than one
-## that arrives from an empty chair.
+## that arrives from an empty chair. "Asked by" is a real opp_id now
+## (2026-09-26, Cameron: "the databook is the governing data" — an actual
+## Opponents-tab row, not a hand-written placeholder roster), so this reads
+## the same table every other opponent does.
 func _show_journalist(question: Dictionary) -> void:
 	if question.is_empty():
 		# Between the last answer and the outcome panel there is nobody left
@@ -152,17 +155,30 @@ func _show_journalist(question: Dictionary) -> void:
 		_name_label.hide()
 		return
 
-	var journalist := DataDB.get_journalist(str(question.get("asked_by", "")))
-	if journalist.is_empty():
+	var asker := DataDB.get_opponent(str(question.get("asked_by", "")))
+	if asker.is_empty():
 		_portrait.hide()
 		_name_label.hide()
 		return
 
 	_portrait.show()
 	_name_label.show()
-	_name_label.text = str(journalist.get("name", "Visitor A"))
-	# A reporter asking a question is doing their job, not emoting at you.
-	_wear(str(journalist.get("journalist_id", "")), NEUTRAL)
+	var who := _named_with_title(asker)
+	var org := OpponentDisplay.affiliation_name_for(asker, DataDB.boosters)
+	_name_label.text = who if org.is_empty() else Text.say("battle.speaker_and_org",
+		{"who": who, "org": org})
+	# Asking a question is doing their job, not emoting at you.
+	_wear(str(asker.get("opp_id", "")), NEUTRAL)
+
+
+## "{name}, {title}" — the real Title where there is one, the Role
+## otherwise, nothing extra when neither resolves to anything (see
+## OpponentDisplay.title_for()).
+func _named_with_title(opponent: Dictionary) -> String:
+	var name := str(opponent.get("name", "Visitor A"))
+	var title := OpponentDisplay.title_for(opponent)
+	return name if title.is_empty() else Text.say("battle.name_and_title",
+		{"name": name, "title": title})
 
 
 ## Which face this opponent is wearing, from what is happening to them.

@@ -159,9 +159,19 @@ static func build_inserted_stage(level_id: String, stage_id: String) -> Dictiona
 ## an opponent handed to a battle without it plays as the generic default,
 ## which is exactly the bug this would otherwise reintroduce for every level.
 static func eligible_opponents(stage_id: String) -> Array:
+	# Never the player's own name (Cameron, 2026-09-26): four opponents share
+	# a name with a protagonist — the same character, before being cast as
+	# playable — and the workbook leaves their own Stage column blank so the
+	# dynamic pick never reaches them. This is the general case that guards
+	# for: whoever plays as them should never then run into themselves,
+	# whether that is one of today's four or one the workbook adds later.
+	var player_name := str(DataDB.player.get("name_en", "")).strip_edges()
 	var found: Array = []
 	for opponent: Dictionary in DataDB.get_opponents_for_stage(stage_id):
-		found.append(DataDB.get_opponent(str(opponent.get("opp_id", ""))))
+		var candidate := DataDB.get_opponent(str(opponent.get("opp_id", "")))
+		if not player_name.is_empty() and str(candidate.get("name", "")).strip_edges() == player_name:
+			continue
+		found.append(candidate)
 	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return str(a.get("opp_id", "")) < str(b.get("opp_id", "")))
 	return found

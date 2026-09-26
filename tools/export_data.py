@@ -1794,19 +1794,39 @@ def fold_questions(data, report):
                              f"'{theme}' names organisation '{booster}', "
                              f"which is not in the Boosters tab")
 
-    # Who asks. The journalists are still Reporter A to Reporter E — nobody
-    # is cast yet — so they take the questions in turn rather than by beat.
-    # When Cameron names them, this becomes a column like the one above.
-    reporters = []
-    journalists_path = DATA_DIR / "journalists.json"
-    if journalists_path.exists():
-        raw = json.loads(journalists_path.read_text(encoding="utf-8"))
-        reporters = [row["journalist_id"]
-                     for row in raw.get("journalists", [])
-                     if row.get("journalist_id")]
+    # Who asks (2026-09-26, Cameron: "the databook is the governing data" —
+    # call an opponent up by their own Stage ID, never a hand-maintained
+    # placeholder roster or a text description). Every opponent whose own
+    # Stage list names the room's STxx is eligible to ask there, the exact
+    # same dynamic pool BattleSetup._opponents_for() draws FIGHTERS from —
+    # a press conference draws its questioners from ordinary committee MPs
+    # this way (most have ST04 alongside their real committee), a Town Hall
+    # from constituents (ST05), Media Ambush from journalists (ST19), a
+    # Lobbyist Meeting from lobbyists (ST20). No Role check: the Stage ID is
+    # what governs eligibility everywhere else in this project, so it is
+    # what governs it here too.
+    stage_id_by_pool = {}
+    for stage in data.get("stages", []):
+        pool_name = stage.get("question_pool")
+        if pool_name:
+            stage_id_by_pool[pool_name] = stage["stage_id"]
+    # ST05 Town Hall has no "question_pool" column of its own in the
+    # workbook (BattleSetup.QUESTION_POOL_BY_STAGE's own fallback covers the
+    # same gap on the GDScript side) — the one stage_type this can't read
+    # off data["stages"] today.
+    stage_id_by_pool.setdefault("town_hall", "ST05")
+
+    reporters_by_pool = {}
+    for stage_type, stage_id in stage_id_by_pool.items():
+        askers = sorted(
+            row["opp_id"] for row in data.get("opponents", [])
+            if stage_id in (row.get("stages") or [])
+        )
+        reporters_by_pool[stage_type] = askers
 
     pools = {}
     for source, stage_type in QUESTION_TABS.items():
+        reporters = reporters_by_pool.get(stage_type, [])
         rows = data.pop(source, [])
         pool = []
         for row in rows:

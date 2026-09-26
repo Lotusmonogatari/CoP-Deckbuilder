@@ -39,7 +39,6 @@ const _DEFAULT_FOLDERS := {
 	"opponent": "res://assets/characters/opponents/",
 	"staff": "res://assets/characters/staff/",
 	"visitor": "res://assets/characters/visitors/",
-	"journalist": "res://assets/characters/journalists/",
 	"card": "res://assets/cards/art/",
 	"background": "res://assets/backgrounds/",
 	"icon": "res://assets/icons/",
@@ -152,8 +151,8 @@ static func character_folder(character_id: String) -> String:
 	return folder("opponent")
 
 
-## A folder by kind: protagonist, opponent, staff, visitor, journalist,
-## card, background, icon.
+## A folder by kind: protagonist, opponent, staff, visitor, card,
+## background, icon. Journalists are opponents (2026-09-26 pull).
 static func folder(kind: String) -> String:
 	var folders: Dictionary = _art().get("folders", {})
 	return str(folders.get(kind, _DEFAULT_FOLDERS.get(kind, "res://assets/")))

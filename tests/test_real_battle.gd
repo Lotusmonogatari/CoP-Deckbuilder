@@ -137,6 +137,31 @@ func test_a_committee_stage_lines_up_several_real_opponents() -> void:
 	assert_eq(engine.state.bar.model, BarModel.Model.SHARED_POOL)
 
 
+## Cameron, 2026-09-26: four opponents share a name with a protagonist — the
+## same character, before being cast as playable — and the real workbook
+## keeps them out by leaving their own Stage column blank. This proves the
+## general case BattleSetup.eligible_opponents() itself now guards for, so a
+## FUTURE opponent sharing a FUTURE protagonist's name is caught even if the
+## workbook forgets to blank its Stage column too.
+func test_the_player_never_meets_an_opponent_with_their_own_name() -> void:
+	var opponents_before: Array = DataDB.opponents.duplicate(true)
+	var stage_id := "ST02"
+	var real_eligible := BattleSetup.eligible_opponents(stage_id)
+	assert_false(real_eligible.is_empty(), "the fixture needs a stage with real eligible opponents")
+
+	var decoy := (real_eligible[0] as Dictionary).duplicate(true)
+	decoy["opp_id"] = "OP_DECOY"
+	decoy["name"] = str(DataDB.player.get("name_en", ""))
+	assert_false(decoy["name"].is_empty(), "the fixture needs a real protagonist name")
+	DataDB.opponents.append(decoy)
+
+	var eligible := BattleSetup.eligible_opponents(stage_id)
+	var ids: Array = eligible.map(func(o: Dictionary) -> String: return str(o.get("opp_id", "")))
+	assert_false(ids.has("OP_DECOY"), "an opponent sharing the player's own name is never eligible")
+
+	DataDB.opponents = opponents_before
+
+
 # ---------------------------------------------------------------------------
 # Playing one through
 # ---------------------------------------------------------------------------

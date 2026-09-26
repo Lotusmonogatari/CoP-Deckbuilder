@@ -7,7 +7,10 @@ func test_each_kind_of_character_has_its_own_folder() -> void:
 	assert_eq(ArtLoader.character_folder("OP03"), ArtLoader.folder("opponent"))
 	assert_eq(ArtLoader.character_folder("SF02"), ArtLoader.folder("staff"))
 	assert_eq(ArtLoader.character_folder("VI01"), ArtLoader.folder("visitor"))
-	assert_eq(ArtLoader.character_folder("JR_A"), ArtLoader.folder("journalist"))
+	# Journalists are opponents.json rows now (Role=Journalist), no separate
+	# folder or ID prefix of their own (2026-09-26 pull) — OP110 (a real
+	# journalist) goes with the opponents, same as any other OPxx.
+	assert_eq(ArtLoader.character_folder("OP110"), ArtLoader.folder("opponent"))
 
 
 func test_a_committee_members_name_goes_with_the_opponents() -> void:

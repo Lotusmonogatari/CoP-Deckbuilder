@@ -1979,5 +1979,19 @@
     "english": "Nice.",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "battle.name_and_title",
+    "where": "Battle heading over an opponent, with their title or role next to their name",
+    "english": "{name}, {title}",
+    "placeholders": "name, title",
+    "notes": null
+  },
+  {
+    "key": "battle.speaker_and_org",
+    "where": "Battle heading over a question asker, with their organisation",
+    "english": "{who} — {org}",
+    "placeholders": "who, org",
+    "notes": null
   }
 ]

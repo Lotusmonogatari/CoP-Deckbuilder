@@ -68,8 +68,8 @@ func test_a_missing_list_names_the_file_it_is_missing_from() -> void:
 
 
 func test_a_list_file_of_the_wrong_shape_names_itself() -> void:
-	DataDB._list_under("not an object at all", "journalists", "journalists")
-	assert_string_contains(_last_error(), "journalists.json")
+	DataDB._list_under("not an object at all", "level_opponent_overrides", "overrides")
+	assert_string_contains(_last_error(), "level_opponent_overrides.json")
 
 
 # ---------------------------------------------------------------------------

@@ -36,7 +36,7 @@ const DATA_PATH := "res://data/"
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "bills", "booster_standing", "boosters", "cards",
-	"journalists", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
+	"level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponent_cues", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
@@ -131,10 +131,6 @@ var protagonists: Array = []
 ## Where art lives and what it is called (data/art.json). ArtLoader reads it.
 var art: Dictionary = {}
 
-## The press pack, hand-written. They ask the questions at a press
-## conference; they do not take turns.
-var journalists: Array = []
-
 ## What plays when, and who says what. Hand-written; see the file's README.
 ## Every sound is blank so far, so the game ships silent.
 var sounds: Dictionary = {}
@@ -196,7 +192,6 @@ var _opponent_cues_by_opponent_verb: Dictionary = {}
 var _bills_by_id: Dictionary = {}
 var _yoron_by_id: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
-var _journalists_by_id: Dictionary = {}
 var _levels_by_id: Dictionary = {}
 var _staff_by_id: Dictionary = {}
 var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
@@ -253,7 +248,6 @@ func load_all() -> void:
 			"player": _load_protagonists(content)
 			"office_notices": office_notices = content if content is Array else []
 
-			"journalists": journalists = _list_under(content, file_name, "journalists")
 			"strings": strings = _strings_by_key(content)
 			"card_cues": card_cues = _cues_by_card(content)
 			"opponent_cues": opponent_cues = content if content is Array else []
@@ -273,6 +267,16 @@ func load_all() -> void:
 			# and "cards" is reassigned on every load, so reloading cannot
 			# stack them up twice.
 			"playtest_cards": _add_playtest_cards(_list_under(content, file_name, "cards"))
+
+	# The <null> trap again (BarModel.for_stage()'s own comment): a blank
+	# Stage column exports as JSON null, not [] — real now for the four
+	# opponents who share a name with a protagonist (2026-09-26, Cameron:
+	# blanked on purpose so the dynamic pick never reaches them — see
+	# eligible_opponents()). Normalized once here rather than at every one
+	# of the dozen-plus places an opponent's own "stages" gets read.
+	for opponent: Dictionary in opponents:
+		if not (opponent.get("stages") is Array):
+			opponent["stages"] = []
 
 	_fill_name_tokens()
 	_build_lookups()
@@ -553,7 +557,6 @@ func _build_lookups() -> void:
 	_bills_by_id = _index(bills, "bill_id")
 	_yoron_by_id = _index(yoron, "topic_id")
 	_sanban_by_name = _index(sanban, "name_en")
-	_journalists_by_id = _index(journalists, "journalist_id")
 	_levels_by_id = _index(levels, "level_id")
 	_staff_by_id = _index(staff, "staff_id")
 
@@ -580,14 +583,6 @@ func _index(records: Array, key: String) -> Dictionary:
 
 func get_card(card_id: String) -> Dictionary:
 	return _lookup(_cards_by_id, card_id, "card")
-
-
-## A reporter by ID. An empty ID gives an empty result without complaining:
-## a question nobody is credited with is missing an attribution, not broken.
-func get_journalist(journalist_id: String) -> Dictionary:
-	if journalist_id.is_empty():
-		return {}
-	return _lookup(_journalists_by_id, journalist_id, "journalist")
 
 
 func get_stage(stage_id: String) -> Dictionary:

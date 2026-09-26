@@ -11,8 +11,12 @@
     "  opponents     OP01...            opponents.json",
     "  staff         SF01...            staff.json",
     "  visitors      VI01...            visitors.json",
-    "  journalists   JR_A...            journalists.json",
     "  e.g. assets/characters/opponents/OP03_attacking.png",
+    "",
+    "Journalists are opponents.json rows now (Role=Journalist), so their art",
+    "lives in the opponents folder by their own OP id, the same as any other",
+    "opponent - no separate journalist folder or ID prefix any more",
+    "(2026-09-26 pull).",
     "",
     "EXPRESSIONS: the five every character should have, in the order to draw",
     "them. neutral first - it is what every other face falls back to.",
@@ -59,7 +63,6 @@
     "opponent": "res://assets/characters/opponents/",
     "staff": "res://assets/characters/staff/",
     "visitor": "res://assets/characters/visitors/",
-    "journalist": "res://assets/characters/journalists/",
     "card": "res://assets/cards/art/",
     "background": "res://assets/backgrounds/",
     "icon": "res://assets/icons/"
@@ -69,8 +72,7 @@
     "PC": "protagonist",
     "OP": "opponent",
     "SF": "staff",
-    "VI": "visitor",
-    "JR": "journalist"
+    "VI": "visitor"
   },
 
   "expressions": ["neutral", "attacking", "guarding", "gaining", "damaged"],
