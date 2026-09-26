@@ -79,15 +79,15 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `segments.json` | segment_id | Press, Loyalists, Constituents, Donors, Bureaucrats |
 | `modifiers.json` | mod_id | category, trigger_segment, trigger_min_pct, effect, magnitude, kaban_cost, available_to, source_booster |
 | `boosters.json` | booster_id | Organizations; tier (Party / Constituency / National); linked modifiers |
-| `opponents.json` | opp_id | Opponent data and intent patterns |
-| `yoron.json` | topic_id | Public-opinion topics, 0–100 value |
-| `bills.json` | bill_id | topic_id, direction (+1/−1), difficulty_mod |
+| `opponents.json` | opp_id | Opponent data and intent patterns. Affiliation is a booster_id (their org); Role is their real-world job (MP, journalist, staffer...); Title, when a row has one, overrides Role for display — see `OpponentDisplay.gd` |
+| `opponent_cues.json` | cue_id | Spoken lines per opponent for battle, keyed by `opponent_ids` |
 | `levels.json` | level_id | Workbook-derived level data and ordered stage references |
 | `sanban.json` | variable | Meta-variables with start, min, max, and thresholds. **Four of the names are lookup keys as well as display text** — see §6 |
 | `strings.json` | key | **Every sentence the game says.** From the workbook's Text tab; nothing is typed into a script |
 | `card_cues.json` | card_id | Five spoken lines per card, from the Flavor Text tab |
-| `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit |
-| `player.json` | player_id | The four choosable protagonists (PC01–PC04, all placeholders) and the default |
+| `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit. `asked_by` is an opp_id, resolved dynamically from whichever opponents.json rows list that room's stage_id in their own `stages` — never a hardcoded reporter list (`export_data.py`'s `fold_questions()`) |
+| `player.json` | player_id | The four choosable protagonists (PC01–PC04), all cast with real names and parties as of the 2026-09-26 databook. New fields beyond name/party/blurb are display-only for now (Cameron's call) |
+| `office_notices.json` | notice_id | One line of Office-screen flavor text per slot, conditioned on staff hired or a meta-variable threshold — see §13-adjacent `OfficeNotices.gd` |
 | `art.json` | kind | Where each kind of picture lives, the expression list and fallbacks |
 | `rules.json`, `stage_types.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |
 
@@ -111,7 +111,7 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 
 ### 7.1 Setup
 1. Load the stage, opponent, and bill from the current module row.
-2. Starting support = stage `player_start` / `opp_start`, plus the bill's `difficulty_mod` added to the opponent, plus reputation (Kanban) effects in press stages (±5 at the Sanban thresholds).
+2. Starting support = stage `player_start` / `opp_start`, plus reputation (Kanban) effects in press stages (±5 at the Sanban thresholds).
 3. Apply every modifier whose trigger segment's share of the stage audience is at least `trigger_min_pct`. The gaffe meter starts at 0 and is then adjusted by modifiers.
 4. Shuffle the player deck and draw up to `hand_size`.
 
@@ -162,10 +162,20 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 | Party support > 75 | **Built** (2026-09-25). Modifier M09 (Party Backing) is active for free, in addition to anything owned — `MetaRules.party_support_modifiers()`, `GameState._effectively_owned_modifiers()`. |
 | Party support < 50 | **Built** (2026-09-25), same mechanism, M10 (Cold Shoulder) — though M10's own effect (UNLOCK_DISCOUNT) has no consumer anywhere yet, a pre-existing gap this wiring didn't open. |
 | Party support < 25 | **Built** (2026-09-25), redesigned from "insert the Steering Committee stage (ST08)": ST08 is already a Combat stage hand-placed in 7 real levels, so repurposing it would have changed what they do. Inserts a **new** Non-combat stage instead, ST22 "Party Steering Committee Check-In" — Office Hours' own visitor-event machinery, reused wholesale, with one placeholder visitor (VI04) and question (VQ04). The original entry-cost idea (disabling a Kōenkai/Bankisha modifier) is not built — "Bankisha" doesn't map to any of the 16 current organisations. |
-| Bills and opinion | Bill difficulty = round((50 − alignment) × factor), where alignment is the Yoron value for the bill's topic, or 100 minus that value when the bill's direction is −1. |
-| Office hours (ST07) | Non-combat. Five time slots. Visitor event cards come from a new `visitors.json` (propose the schema). Each card offers 2 choices, and each choice has outcome deltas to Jiban, Kaban, party support, or Yoron. Create 6 placeholder events. |
+| Office hours (ST07) | Non-combat. Five time slots. Visitor event cards come from `visitors.json`. Each card offers 2 choices, and each choice has outcome deltas to Jiban, Kaban, party support, or funds. |
 | XP checkpoint | Shown between modules. Spend XP to unlock cards at their tier cost from `balance.json`. Upgrade cost is 30 XP **[DEFAULT]**. |
 | Save | **Built.** One slot, `user://savegame.json`, written after every stage, whenever the Office opens or something is bought or changed there, and when the app is backgrounded outside a stage. A stage in progress is never saved: reopening mid-stage restarts that stage. No save on launch opens the New Game screen. |
+
+**Yoron/Bills removed** (2026-09-26, Cameron: "the deletion of yoron (remove
+that mechanic)"). The public-opinion topic list (`data/yoron.json`), bills
+(`data/bills.json`), bill difficulty (`MetaRules.bill_difficulty*()`,
+`BattleSetup.bill_difficulty()`, and the `bill_difficulty` config field
+`BattleEngine._setup_board()` used to add to the opponent's starting
+support), and the visitor `choice_X_yoron_topic` field are all gone — every
+call site was checked first and confirmed dead (no real workbook data ever
+populated a topic choice, and nothing outside these functions read the
+result). A press stage's starting support is now just `player_start` plus
+reputation (Kanban) effects, per §7.1.
 
 ## 9. Open design decisions: implement as switches, do not decide
 
@@ -185,25 +195,16 @@ options are authoritative; the table below describes the current settings:
 
 ### Still unresolved — ask, don't guess
 
-- **The protagonists' identities and parties.** `data/player.json` now holds
-  **four** choosable protagonists. PC01 keeps the earlier placeholder "Hiro,
-  Frontier Party" (Frontier Party is canon — OP02 Yuriko Mayeda's); PC02–PC04
-  are neutral stand-ins ("Protagonist B/C/D", no party). None is a casting
-  decision, and the workbook's note on MOD01 seq 3 says the Caucus rival
-  should become a same-party opponent once the party is settled.
-- **The Yoron topic list and starting values.** The eight values in
-  `data/yoron.json` are currently 50 and marked as placeholders; they are not
-  final balance decisions.
-- **Party post titles.**
+- **Party post titles.** `data/opponents.json`'s Title column overrides Role
+  for display when a row has one (`OpponentDisplay.title_for()`); which
+  real-world post titles Yezo's parties actually use is Cameron's to define,
+  not a decision made on his behalf.
 - **The `weak_answer_tone_cost` number.** The current value is 1 in
   `stage_types.json`; the file labels it as a placeholder pending playtesting.
 - **The Theme → organisation mapping.** The workbook's Question Themes tab
   maps its themes to organizations, with the reasoning for
   each in a Why column. It is a **draft Claude wrote for Cameron to correct**,
   not a decision made on his behalf. Only existing booster IDs are used.
-- **Who asks each question.** The journalists are still Reporter A to Reporter
-  E, so the questions are handed round in turn rather than by beat. When they
-  are cast this becomes a column like the mapping above.
 - **Whether the town hall asks questions.** Twenty are written for it; the
   stage type does not ask any today.
 
@@ -232,7 +233,7 @@ Build **one milestone at a time**. After each one, stop and give Cameron: (a) wh
 | M1 | Headless rules engine plus GUT tests | Tests pass for affinity math, block, gaffe loss, intent cycling, shared-pool seats, and committee locking | **Done** |
 | M2 | Battle UI: Floor debate (ST02) vs OP03 | A full battle is playable to a win or loss on desktop | **Done** |
 | M3 | Committee (ST01) and Party Caucus (ST03) | Both playable using Module 01 data | **Done** |
-| M4 | Office hours, module runner for MOD01, meta-variables, auto-save | MOD01 plays start to finish; quitting and reopening resumes the run | **Done.** The level runner, meta-variables and saving/resuming exist (resuming mid-level returns to the start of the current stage). Office Hours visitor events are playable end to end (`design/proposals/office_hours.md`): a multiple-choice visitor room, its own `VisitorScreen`, and `StageRouting.gd` sending a level to the right screen stage by stage as it mixes Combat and Non-combat rooms. |
+| M4 | Office hours, module runner, meta-variables, auto-save | A full level plays start to finish; quitting and reopening resumes the run | **Done.** The level runner, meta-variables and saving/resuming exist (resuming mid-level returns to the start of the current stage). Office Hours visitor events are playable end to end (`design/proposals/office_hours.md`): a multiple-choice visitor room, its own `VisitorScreen`, and `StageRouting.gd` sending a level to the right screen stage by stage as it mixes Combat and Non-combat rooms. |
 | M5 | XP checkpoint shop | Unlocks and upgrades persist across the run | **Done.** The shops, prices, refusals, and deck screen exist. `rules.json`'s `open_card_collection` is now `false` and `level_gating_enabled` is now `true` (2026-09-25, both fully built, just switched on) — XP genuinely gates card unlocks (`cards.json`'s own `xp_to_unlock`, filled in for all 54 cards) and level unlocks/cooldowns for the first time. A second, Yen-based route now exists alongside it (2026-09-26, Cameron): Supplies' "Purchase Random Tier N Card" (SH27/28/29) grants a random unowned card of that tier on purchase — `GameState.buy_random_card()`, `shop.json`'s own `card_tier` column — rather than sitting in the inventory unusable, which is what these three did before (`Use In Office`/`Use In Stage` were both blank, so nothing could ever use one). The remaining seven items (SH13-19, Cameron, 2026-09-25) are now wired the same way, each its own purchase-time effect rather than an inventory item to Use: SH13/14 ("Unlock Tier 1/2 Level") grant one random not-yet-unlocked level of that `level_tier` (`GameState.buy_random_level()`); SH15/16/17 ("Unlock Random Tier 1/2/3 Card") reuse `buy_random_card()` outright — they only needed their own `card_tier` set, the same column SH27-29 use, XP-costed instead of Yen; SH19 ("Increase Office Funds Cap") raises the Funds ceiling by its own `funds_cap_increase`, repeatable (`GameState.funds_cap_bonus`, read in `_sanban_row()`). SH18 ("Unlock New Staff Recruitment Tier") is a genuinely new rule, not just a wiring gap: staff candidates now gate on a candidate's own `highest_tier` against a new persistent `staff_recruitment_tier` counter (starts at 0 — only Tier 0 candidates are hireable at a new game), which SH18 raises by 1 per purchase (`Ledger.staff_hire_refusal()`/`can_hire_staff()`, `GameState.buy_staff_recruitment_tier()`) — Cameron's call, since no such gate existed anywhere before. A random card grant (SH15-17 and SH27-29 alike, since both are the same `buy_random_card()` effect) now shows the actual card instead of only naming it (2026-09-25, Cameron — asked for full reveal popups specifically): `buy_random_card()`'s result carries the drawn card's own `card_id` (its art asset ID, cards/art/{CARD_ID}.png) alongside its message, and `OfficeScreen._show_card_reveal()` puts up a pop-up on top of Supplies with the card's front (`CardView`) and, stacked below it (Cameron, 2026-09-25 — the same two views a tap on a card in battle shows, front and back, here one under the other since nothing else needs the screen), its back (`CardBackView`, full printed text, no "in this room" line since there is no room), then the "unlocked" line and a "Nice." button to dismiss it, below both. |
 | M6 | Android export test, then iOS | Runs on a real phone in portrait with crisp Japanese text | Not started |
 | Later | Additional room systems and mobile export | Defined as needed | The project includes nine playtest stage types. The Town Hall and Steering Committee triggers are connected to the level queue now (2026-09-25) — see §8. |
@@ -277,6 +278,56 @@ stage type added later, with no code change needed), `lifetime_gaffes`,
 `stages_lost_to_gaffes`. At `gaffes_lifetime_penalty_threshold` (Balance
 tab, 50 today) lifetime gaffes, a one-time `gaffes_lifetime_penalty_jiban_
 delta` (−15 today) hits Constituency support once and never again this run.
+
+### The 2026-09-26 databook pull
+
+A new export of the workbook expanded Player, Opponents, Boosters and
+Opponent Cues, and added Office Notices; four things came out of it.
+
+- **Player is now real data.** All four protagonists (`data/player.json`)
+  are cast with real names and parties, exported by `export_data.py`'s new
+  `fold_player()` from a Player tab (was hand-maintained placeholder data
+  before). Fields beyond name/party/blurb (a per-protagonist `starting_meta`
+  and `starting_xp`) exist but are display-only for now, per Cameron.
+- **Opponents split Affiliation from Role**, rather than one free-text
+  field doing both jobs: Affiliation is a booster_id (their organisation),
+  Role is their real-world job. A Title column, when a row has one,
+  overrides Role for display (`OpponentDisplay.title_for()`) — party post
+  titles themselves are still Cameron's to define (§9).
+- **Journalists are opponents.json rows now**, not a separate
+  `journalists.json` (deleted, along with `ArtLoader`'s "journalist" art
+  kind and folder — a journalist's portrait is an ordinary opponent
+  portrait now). `asked_by` on a question is resolved by checking which
+  opponents.json rows list that room's own stage_id in their `stages`
+  (`export_data.py`'s `fold_questions()`, `DataDB.get_opponent()`) — the
+  same dynamic-by-stage-ID selection every other room uses for its
+  opponents, never a hardcoded reporter list or a Role text match.
+- **Four opponents (OP15/22/35/40) have a blank Stage on purpose**: each
+  shares a name with a protagonist — literally the same character, before
+  being cast as playable — so the workbook leaves them out of the dynamic
+  pool rather than risk the player fighting themselves.
+  `BattleSetup.eligible_opponents()` now also guards this generally: any
+  opponent whose name matches the current protagonist's name is skipped,
+  whoever they are, so a future addition to the workbook can't reopen the
+  same problem (`tests/test_real_battle.gd`'s `test_the_player_never_
+  meets_an_opponent_with_their_own_name`).
+
+**Office Notices** (new): one line of Office-screen flavor text per named
+slot, each row (`data/office_notices.json`, hand-seeded) conditioned on
+whether a staff role is hired or a meta-variable crosses a threshold —
+Cameron's own example, `"{staff} is greeting visitors"` /
+`"{if reputation < 30} Yezo News has not covered your work recently."` The
+first row per slot whose condition holds wins; `OfficeNotices.resolve()` is
+pure logic (`tests/test_office_notices.gd`), wired onto the Office screen
+as a label under Resources (`OfficeScreen._refresh_notices()`).
+
+**Yoron and Bills removed** (Cameron: "the deletion of yoron (remove that
+mechanic)") — see §8's own note. **MOD01 and the caucus rival are gone**:
+the old numbered-step Modules sheet was already retired in an earlier
+session, and there was never a caucus-rival *mechanic* in code to remove
+(no script referenced one) — the phrase only lived in `data/player.json`'s
+old placeholder blurb and in this file's own §9, both now corrected to
+match the real cast above.
 
 ## 12. Working agreement
 

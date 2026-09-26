@@ -599,23 +599,6 @@ static func with_audience(stage: Dictionary) -> Dictionary:
 	return filled
 
 
-## How much harder a bill is because of where public opinion sits.
-##
-## Kept even though nothing calls it any more: the Bills and Yoron tabs are
-## not in the 2026-09-22 workbook pull (bills.json/yoron.json on disk are
-## stale leftovers from the previous one), so there is currently no route
-## that has a bill to look up. The maths is still right and still tested —
-## MetaRules.bill_difficulty_from_data does the real work — so this is one
-## line to delete rather than a system to rebuild the day bills come back.
-static func bill_difficulty(bill: Dictionary) -> int:
-	if bill.is_empty():
-		return 0
-	var topic := DataDB.get_topic(str(bill.get("topic_id", "")))
-	if topic.is_empty():
-		return 0
-	return MetaRules.bill_difficulty_from_data(bill, topic, DataDB.balance)
-
-
 ## The player's opening deck: every Starter-tier card in the workbook.
 ##
 ## There are 12 of them, and balance.json's "starter deck size" is also 12,

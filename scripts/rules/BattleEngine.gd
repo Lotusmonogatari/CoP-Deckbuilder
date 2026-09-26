@@ -87,7 +87,6 @@ var used_default_intent_pattern := false
 ##   affinity          element -> { stage_id -> multiplier }
 ##   rules             the switches from rules.json
 ##   meta              current Jiban / Kanban / Kaban / Party support
-##   bill_difficulty   added to the opponent's starting support
 ##   start_adjustment  reputation's effect in a press stage, plus any
 ##                      STAGE_START_BONUS modifier active for this stage
 ##   hand_size_bonus   +N cards from an active HAND_SIZE_BONUS modifier
@@ -237,10 +236,9 @@ func _arm_intents(config: Dictionary = {}) -> void:
 
 
 func _setup_board(config: Dictionary) -> void:
-	# The opponent starts further ahead when the bill is unpopular, and the
-	# player starts ahead or behind on reputation in a press stage.
+	# The player starts ahead or behind on reputation in a press stage.
 	var player_start := int(_stage.get("player_start", 0)) + int(config.get("start_adjustment", 0))
-	var opponent_start := int(_stage.get("opp_start", 0)) + int(config.get("bill_difficulty", 0))
+	var opponent_start := int(_stage.get("opp_start", 0))
 
 	state.bar = _build_bar(player_start, opponent_start)
 

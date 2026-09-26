@@ -35,13 +35,13 @@ const DATA_PATH := "res://data/"
 ## Cameron name a specific opponent for a specific level+stage slot, for the
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
-	"affinity", "art", "balance", "bills", "booster_standing", "boosters", "cards",
+	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponent_cues", "opponents",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
-	"segments", "stages", "suits", "yoron",
+	"segments", "stages", "suits",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -53,8 +53,6 @@ var segments: Array = []
 var modifiers: Array = []
 var boosters: Array = []
 var opponents: Array = []
-var yoron: Array = []
-var bills: Array = []
 var sanban: Array = []
 var affinity: Array = []
 
@@ -189,8 +187,6 @@ var _questions_by_visitor: Dictionary = {}
 ## and never blended with the general pool (OpponentCues.gd).
 var _opponent_cues_by_suit_verb: Dictionary = {}
 var _opponent_cues_by_opponent_verb: Dictionary = {}
-var _bills_by_id: Dictionary = {}
-var _yoron_by_id: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
 var _levels_by_id: Dictionary = {}
 var _staff_by_id: Dictionary = {}
@@ -225,8 +221,6 @@ func load_all() -> void:
 			"modifiers": modifiers = content
 			"boosters": boosters = content
 			"opponents": opponents = content
-			"yoron": yoron = content
-			"bills": bills = content
 			"sanban": sanban = content
 			"affinity": affinity = content
 			"art": art = content if content is Dictionary else {}
@@ -554,8 +548,6 @@ func _build_lookups() -> void:
 				_opponent_cues_by_opponent_verb[opp_key] = (
 					_opponent_cues_by_opponent_verb.get(opp_key, []) as Array) + lines
 
-	_bills_by_id = _index(bills, "bill_id")
-	_yoron_by_id = _index(yoron, "topic_id")
 	_sanban_by_name = _index(sanban, "name_en")
 	_levels_by_id = _index(levels, "level_id")
 	_staff_by_id = _index(staff, "staff_id")
@@ -794,14 +786,6 @@ func get_general_opponent_cue_lines(suit: String, verb: String) -> Array[String]
 	return lines
 
 
-func get_bill(bill_id: String) -> Dictionary:
-	return _lookup(_bills_by_id, bill_id, "bill")
-
-
-func get_topic(topic_id: String) -> Dictionary:
-	return _lookup(_yoron_by_id, topic_id, "opinion topic")
-
-
 ## Meta-variables are looked up by their English name: "Constituency support",
 ## "Reputation", "Funds", "Party support".
 func get_sanban(variable_name: String) -> Dictionary:
@@ -824,7 +808,7 @@ func get_affinity(element: String, stage_id: String) -> float:
 	return 1.0
 
 
-## A global tuning number from the Balance tab, e.g. "bill_difficulty_factor".
+## A global tuning number from the Balance tab, e.g. "guard_cap".
 func get_balance(lever: String, fallback: float = 0.0) -> float:
 	if balance.has(lever):
 		return float(balance[lever])
@@ -870,8 +854,6 @@ func _validate() -> void:
 	var segment_ids := _values(segments, "segment_id")
 	var mod_ids := _values(modifiers, "mod_id")
 	var opp_ids := _values(opponents, "opp_id")
-	var topic_ids := _values(yoron, "topic_id")
-
 	_validate_protagonists()
 
 	for card: Dictionary in cards:
@@ -955,10 +937,6 @@ func _validate() -> void:
 			# fallback would at least let the battle start.
 			for problem: String in IntentRunner.new(pattern).problems():
 				errors.append("Opponent %s's intent pattern: %s" % [oid, problem])
-
-	for bill: Dictionary in bills:
-		if not topic_ids.has(bill.get("topic_id")):
-			errors.append("Bill %s uses topic '%s', which is not in yoron.json" % [bill.get("bill_id"), bill.get("topic_id")])
 
 	# 2026-09-22 workbook: modules.json/committee.json are retired — a
 	# level's stage order is its own stage_1..stage_10 now, and a committee's

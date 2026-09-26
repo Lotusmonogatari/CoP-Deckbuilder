@@ -64,12 +64,6 @@ func test_the_starting_support_comes_from_the_stage() -> void:
 	assert_eq(engine.state.bar.opponent, 40)
 
 
-func test_an_unpopular_bill_puts_the_opponent_further_ahead() -> void:
-	var engine := _start({"bill_difficulty": 6})
-	assert_eq(engine.state.bar.opponent, 46)
-	assert_eq(engine.state.bar.player, 40, "the player is unaffected")
-
-
 func test_reputation_shifts_the_players_start_in_a_press_stage() -> void:
 	var engine := _start({"start_adjustment": -5})
 	assert_eq(engine.state.bar.player, 35)

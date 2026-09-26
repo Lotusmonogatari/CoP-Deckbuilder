@@ -1,6 +1,6 @@
 extends GutTest
-## Tests for the rules that apply between battles: bill difficulty, meta
-## variable rewards, and the thresholds that switch effects on.
+## Tests for the rules that apply between battles: meta variable rewards,
+## and the thresholds that switch effects on.
 ##
 ## town_hall_triggered, steering_committee_triggered, funding_frozen and
 ## party_support_modifiers ARE wired into the level flow now
@@ -11,8 +11,6 @@ extends GutTest
 
 
 const BALANCE := {
-	"bill_difficulty_factor": 0.2,
-	"yoron_neutral_point": 50.0,
 	"party_support_allied_buff": 75,
 	"party_support_debuff": 50,
 	"party_support_steering_committee": 25,
@@ -29,51 +27,6 @@ const SANBAN := [
 	{"name_en": "Party support", "start": 50, "min": 0, "max": 100,
 	 "low_threshold": 50, "high_threshold": 75},
 ]
-
-
-# ---------------------------------------------------------------------------
-# How hard a bill is
-# ---------------------------------------------------------------------------
-
-func test_a_bill_the_public_is_neutral_on_is_no_harder() -> void:
-	# This is where every bill sits today: all eight opinion topics are still
-	# at their placeholder 50.
-	assert_eq(MetaRules.bill_difficulty(1, 50, 0.2, 50.0), 0)
-
-
-func test_an_unpopular_bill_puts_the_opponent_ahead() -> void:
-	# Asking for MORE of something the public is cold on (20 out of 100).
-	# (50 - 20) x 0.2 = 6.
-	assert_eq(MetaRules.bill_difficulty(1, 20, 0.2, 50.0), 6)
-
-
-func test_a_popular_bill_gives_the_player_a_head_start() -> void:
-	# (50 - 80) x 0.2 = -6, so the opponent starts six behind.
-	assert_eq(MetaRules.bill_difficulty(1, 80, 0.2, 50.0), -6)
-
-
-func test_a_bill_asking_for_less_reads_the_opinion_backwards() -> void:
-	# A bill CUTTING taxes is easy exactly when the public is cold on
-	# taxation. Opinion 20 means alignment 80, so (50 - 80) x 0.2 = -6.
-	assert_eq(MetaRules.bill_difficulty(-1, 20, 0.2, 50.0), -6)
-
-	# And a tax cut is hard when the public wants more taxation.
-	assert_eq(MetaRules.bill_difficulty(-1, 80, 0.2, 50.0), 6)
-
-
-func test_the_two_directions_are_mirror_images() -> void:
-	for value in [0, 25, 50, 75, 100]:
-		assert_eq(
-			MetaRules.bill_difficulty(1, value, 0.2, 50.0),
-			-MetaRules.bill_difficulty(-1, value, 0.2, 50.0),
-			"opinion %d should mirror" % value
-		)
-
-
-func test_bill_difficulty_reads_straight_from_the_data_files() -> void:
-	var bill := {"bill_id": "B01", "direction": 1, "topic_id": "Y03"}
-	var topic := {"topic_id": "Y03", "start_value": 30}
-	assert_eq(MetaRules.bill_difficulty_from_data(bill, topic, BALANCE), 4)
 
 
 # ---------------------------------------------------------------------------

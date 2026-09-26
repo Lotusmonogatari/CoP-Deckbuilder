@@ -35,34 +35,6 @@ extends RefCounted
 ## it has no memory of what happened last time it was asked.
 
 
-## How much harder a bill is because the public disagrees with it.
-##
-##     difficulty = round((neutral - alignment) x factor)
-##
-## `alignment` is how much the public wants what the bill does. When the bill
-## asks for MORE of a topic, that's simply the opinion value. When it asks for
-## LESS, it's the opposite — 100 minus the value. So a bill cutting taxes is
-## easy exactly when the public is cold on taxation.
-##
-## The result is added to the opponent's starting support: an unpopular bill
-## means starting further behind.
-static func bill_difficulty(direction: int, yoron_value: int,
-		factor: float, neutral_point: float) -> int:
-	var alignment := yoron_value if direction >= 0 else 100 - yoron_value
-	return CardResolver.round_half_up((neutral_point - float(alignment)) * factor)
-
-
-## The same thing, reading straight from the data files.
-static func bill_difficulty_from_data(bill: Dictionary, topic: Dictionary,
-		balance: Dictionary) -> int:
-	return bill_difficulty(
-		int(bill.get("direction", 1)),
-		int(topic.get("start_value", 50)),
-		float(balance.get("bill_difficulty_factor", 0.2)),
-		float(balance.get("yoron_neutral_point", 50.0)),
-	)
-
-
 ## Keeps a meta-variable inside the range sanban.json gives it.
 static func clamp_meta(value: int, variable: Dictionary) -> int:
 	var low := int(variable.get("min", 0))

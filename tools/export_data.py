@@ -545,42 +545,6 @@ SHEETS = {
             ("Intent Pattern Range for Block", "intent_block_range", "range"),
         ],
     },
-    # Not in this workbook pull (2026-09-22) — the tab has been dropped from
-    # the current tab list, not merged elsewhere. Marked optional so its
-    # absence is a note, not an export-blocking error; data/yoron.json is
-    # simply left as it was on the last run that had this tab.
-    "Yoron": {
-        "out": "yoron.json",
-        "key": "topic_id",
-        "id_pattern": r"^Y\d+$",
-        "optional_sheet": True,
-        "columns": [
-            ("Topic ID", "topic_id", "id"),
-            ("Topic (databook dimension)", "name_en", "str"),
-            ("Topic (JP)", "name_jp", "str"),
-            ("Romaji", "romaji", "str"),
-            ("Start value (0–100)", "start_value", "int"),
-            ("Note", "note", "str"),
-        ],
-    },
-    # Not in this workbook pull either (2026-09-22) — see the Yoron note above.
-    "Bills": {
-        "out": "bills.json",
-        "key": "bill_id",
-        "id_pattern": r"^B\d+$",
-        "optional_sheet": True,
-        "columns": [
-            ("Bill ID", "bill_id", "id"),
-            ("Title [placeholder]", "title", "str"),
-            ("Topic ID", "topic_id", "str"),
-            ("Topic", "topic", "str"),
-            ("Direction (+1 more / −1 less)", "direction", "int"),
-            ("Yoron value", "yoron_value", "int"),
-            ("Alignment", "alignment", "int"),
-            ("Difficulty mod (opp start +)", "difficulty_mod", "int"),
-            ("Note", "note", "str"),
-        ],
-    },
     # Levels replace what used to be called "Modules" — Cameron's term for a
     # sequence of linked stages is now "Level" throughout (2026-09-22);
     # "module" survives only as a description of how a level is built, not
@@ -1230,11 +1194,6 @@ def validate(data, report):
     mod_ids = ids_from(data["modifiers"], "mod_id")
     booster_ids = ids_from(data["boosters"], "booster_id")
     opp_ids = ids_from(data["opponents"], "opp_id")
-    # Yoron and Bills weren't in this workbook pull (2026-09-22); validating
-    # against them is skipped rather than erroring, and the existing
-    # yoron.json/bills.json on disk are left untouched by main().
-    topic_ids = ids_from(data.get("yoron", []), "topic_id")
-    bill_ids = ids_from(data.get("bills", []), "bill_id")
     level_ids = ids_from(data["levels"], "level_id")
     staff_ids = ids_from(data["staff"], "staff_id")
     # The Balance tab's XP-tier sub-table is gone from this workbook pull, so
@@ -1436,32 +1395,9 @@ def validate(data, report):
         if not any(cue.get(f"cue_{i}") for i in range(1, 6)):
             report.warn("opponent_cues", f"{cue_id} has no cue lines written")
 
-    # --- bills (skipped entirely if Bills/Yoron weren't in this pull) ------
-    if "bills" in data:
-        for bill in data["bills"]:
-            if topic_ids and bill["topic_id"] not in topic_ids:
-                report.error(
-                    "bills",
-                    f"{bill['bill_id']} uses topic '{bill['topic_id']}', "
-                    "which is not in the Yoron tab",
-                )
-            if bill["direction"] not in (1, -1):
-                report.error(
-                    "bills",
-                    f"{bill['bill_id']} has direction {bill['direction']}; it must be +1 or -1",
-                )
-
     # --- visitors ------------------------------------------------------------
     for visitor in data.get("visitors", []):
         vid = visitor["visitor_id"]
-        for side in ("a", "b"):
-            topic = visitor.get(f"choice_{side}_yoron_topic")
-            if topic and topic_ids and topic not in topic_ids:
-                report.error(
-                    "visitors",
-                    f"{vid} choice {side.upper()} moves topic '{topic}', "
-                    "which is not in the Yoron tab",
-                )
         if visitor.get("segment") and visitor["segment"] not in segment_names:
             report.error(
                 "visitors",
@@ -1519,19 +1455,6 @@ def validate(data, report):
                 "sanban",
                 f"{label} starts at {variable['start']}, outside its range of "
                 f"{variable['min']}-{variable['max']}",
-            )
-
-    # --- design placeholders ----------------------------------------------
-    neutral = data["balance"].get("yoron_neutral_point")
-    yoron = data.get("yoron", [])
-    if neutral is not None and yoron:
-        flat = [t["topic_id"] for t in yoron if t["start_value"] == neutral]
-        if len(flat) == len(yoron):
-            report.warn(
-                "yoron",
-                f"every topic still starts at the neutral value ({neutral:g}), so every "
-                "bill's difficulty works out to 0. Bill difficulty does nothing until "
-                "these are set (open decision #3).",
             )
 
     missing_special = [c["card_id"] for c in data["cards"]
