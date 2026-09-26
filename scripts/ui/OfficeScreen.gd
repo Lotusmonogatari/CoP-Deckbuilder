@@ -21,6 +21,13 @@ extends Control
 ## The level the player is looking at, chosen on the levels screen.
 var _chosen_level: Dictionary = {}
 @onready var _resources: Label = %Resources
+
+## The Office's own dynamic flavor line(s) — data/office_notices.json,
+## resolved fresh every _build() against the current staff and meta
+## (OfficeNotices.gd). Built in code and inserted right after %Resources,
+## the same reason _supplies_panel is: no scene-file edit needed for one
+## more label in an existing column.
+var _notices_label: Label
 @onready var _management_button: Button = %ManagementButton
 @onready var _management_panel: Overlay = %ManagementPanel
 @onready var _cards_panel: Overlay = %CardsPanel
@@ -95,6 +102,14 @@ func _ready() -> void:
 	_card_reveal_panel = Overlay.new()
 	_card_reveal_panel.name = "CardRevealPanel"
 	add_child(_card_reveal_panel)
+
+	_notices_label = Label.new()
+	_notices_label.name = "NoticesLabel"
+	_notices_label.theme_type_variation = &"SmallLabel"
+	_notices_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var column := _resources.get_parent()
+	column.add_child(_notices_label)
+	column.move_child(_notices_label, _resources.get_index() + 1)
 
 	# The Office's own bed. Silent until there is a file named against
 	# music_office in sounds.json; this is here so that adding one is the
@@ -176,6 +191,17 @@ func _refresh_resources() -> void:
 		_resources.text = Text.say("office.in_order")
 	else:
 		_resources.text = Text.say("office.deck_warning", {"reason": refusal})
+	_refresh_notices()
+
+
+## What the Office looks like right now — data/office_notices.json resolved
+## against the current staff and meta (OfficeNotices.gd). Hidden entirely
+## when nothing qualifies, rather than an empty line holding its place.
+func _refresh_notices() -> void:
+	var lines := OfficeNotices.resolve(
+		DataDB.office_notices, GameState.staff_hired, GameState.meta, DataDB.staff)
+	_notices_label.visible = not lines.is_empty()
+	_notices_label.text = "\n".join(lines)
 
 
 ## What happened last time, if anything has happened yet.
