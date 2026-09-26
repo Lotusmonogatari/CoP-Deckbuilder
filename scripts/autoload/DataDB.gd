@@ -38,7 +38,7 @@ const REQUIRED_FILES := [
 	"affinity", "art", "balance", "bills", "booster_standing", "boosters", "cards",
 	"journalists", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponent_cues", "opponents",
-	"player", "playtest_cards", "playtest_level", "rules", "sanban",
+	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
 	"segments", "stages", "suits", "yoron",
@@ -57,6 +57,11 @@ var yoron: Array = []
 var bills: Array = []
 var sanban: Array = []
 var affinity: Array = []
+
+## The Office's own dynamic flavor lines (design proposal, 2026-09-26):
+## each row shows when its one condition (a staff role hired/not-hired, or a
+## meta variable against a threshold) is true. See OfficeNotices.gd.
+var office_notices: Array = []
 
 ## data/shop.json's SHxx rows — one-time Office actions (see the file's own
 ## comments), not previously loaded by anything. Added 2026-09-25 so a
@@ -246,6 +251,7 @@ func load_all() -> void:
 				level_visitor_overrides = _list_under(content, file_name, "overrides")
 			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": _load_protagonists(content)
+			"office_notices": office_notices = content if content is Array else []
 
 			"journalists": journalists = _list_under(content, file_name, "journalists")
 			"strings": strings = _strings_by_key(content)

@@ -1,0 +1,38 @@
+[
+  {
+    "notice_id": "ON01",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is greeting visitors."
+  },
+  {
+    "notice_id": "ON02",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "District Representative",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "No one is at the front desk to greet visitors."
+  },
+  {
+    "notice_id": "ON03",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "<",
+    "condition_value": 30.0,
+    "text_en": "Yezo News has not covered your work recently."
+  },
+  {
+    "notice_id": "ON04",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": ">=",
+    "condition_value": 30.0,
+    "text_en": "Yezo News profiled you last week."
+  }
+]

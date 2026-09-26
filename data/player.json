@@ -1,75 +1,9 @@
 {
-  "_README": [
-    "Who the player can be. Four main characters, one chosen at New Game.",
-    "",
-    "WRITTEN BY HAND, like rules.json and playtest_level.json. export_data.py",
-    "never overwrites it and the canon workbook has no tab for it.",
-    "",
-    "ALL FOUR ARE PLACEHOLDERS. CLAUDE.md lists the protagonist's identity and",
-    "party as an open decision. PC01 keeps the stand-in Cameron chose earlier",
-    "(Hiro, Frontier Party - Frontier Party is canon, it is OP02 Yuriko",
-    "Mayeda's party). PC02-PC04 are neutral stand-ins with no party, so",
-    "nothing here invents a character or a party. Replace them freely.",
-    "",
-    "FIELDS, per protagonist:",
-    "  player_id       PC01-PC04. Also the art ID and the speech ID:",
-    "                  assets/characters/protagonists/PC01_neutral.png, and",
-    "                  sounds.json's speech table under \"PC01\".",
-    "  name_en         Shown on the Office and the New Game screen.",
-    "  name_jp         Optional small accent beside it.",
-    "  party           The caucus is this party's caucus ({party} in stage",
-    "                  names). Blank means the stage is just called \"Caucus\".",
-    "  blurb           One or two lines for the New Game screen. Blank is fine.",
-    "  starting_meta   Optional overrides of sanban.json's own starting",
-    "                  values, by the same four names (\"Constituency",
-    "                  support\", \"Reputation\", \"Funds\", \"Party support\") —",
-    "                  a name left out uses sanban.json's default. Shown on",
-    "                  the New Game screen alongside starting_xp so the",
-    "                  choice is an informed one.",
-    "  starting_xp     Optional starting XP. 0 (sanban.json has no XP row of",
-    "                  its own) when left out.",
-    "",
-    "default_protagonist is who you are before anyone has been chosen - the",
-    "tests, and the browser playtest, which has no New Game screen.",
-    "",
-    "The party matters mechanically later: the workbook note on MOD01 seq 3",
-    "says the Caucus rival should be replaced with a same-party opponent once",
-    "the protagonist's party is settled.",
-    "",
-    "A DIFFICULTY LADDER, added 2026-09-25 alongside CLAUDE.md §8's crisis",
-    "triggers going live (MetaRules.gd / GameState.gd): each protagonist's",
-    "starting_meta now genuinely differs, anchored on PC01 keeping sanban.",
-    "json's own baseline exactly (so nothing about the DEFAULT protagonist's",
-    "behavior changed by adding this). PC02 opens clear of every crisis",
-    "trigger; PC03 opens already past the Town Hall's own threshold; PC04",
-    "opens past it AND at exactly 0 Party support — funding frozen and the",
-    "Steering Committee forced in from the very first level. First-draft",
-    "numbers, the same as every other placeholder in this project — a",
-    "tuning pass, not a balance decision made here."
-  ],
-
-  "default_protagonist": "PC01",
-
   "protagonists": [
     {
       "player_id": "PC01",
-      "name_en": "Hiro",
-      "name_jp": "",
+      "name_en": "Kenshin Sako",
       "party": "Frontier Party",
-      "blurb": "A steady start. Normal difficulty.",
-      "starting_meta": {
-        "Constituency support": 15,
-        "Reputation": 6,
-        "Funds": 50000,
-        "Party support": 10
-      },
-      "starting_xp": 0
-    },
-    {
-      "player_id": "PC02",
-      "name_en": "Protagonist B",
-      "name_jp": "",
-      "party": "",
       "blurb": "A strong footing to begin with. Easy difficulty.",
       "starting_meta": {
         "Constituency support": 35,
@@ -77,27 +11,62 @@
         "Funds": 100000,
         "Party support": 40
       },
-      "starting_xp": 60
+      "starting_xp": 60,
+      "gender": "M",
+      "committee": "Committee on Ethics and Prosecution",
+      "positioning": "Liberal",
+      "element_1": "Earnest",
+      "element_2": "Emotional",
+      "region": "Sōya",
+      "district_name": "Sōya - Wakkanai",
+      "district_type": "Single Member"
+    },
+    {
+      "player_id": "PC02",
+      "name_en": "Haru Yashi",
+      "party": "Frontier Party",
+      "blurb": "A steady start. Normal difficulty.",
+      "starting_meta": {
+        "Constituency support": 20,
+        "Reputation": 15,
+        "Funds": 50000,
+        "Party support": 10
+      },
+      "starting_xp": 30,
+      "gender": "F",
+      "committee": "Committee on Foreign Affairs",
+      "positioning": "Nationalist",
+      "element_1": "Earnest",
+      "element_2": "Divisive",
+      "region": "Iburi",
+      "district_name": "Tomakomai City",
+      "district_type": "Single Member"
     },
     {
       "player_id": "PC03",
-      "name_en": "Protagonist C",
-      "name_jp": "",
-      "party": "",
+      "name_en": "Edward Grinner",
+      "party": "Keizaijiyuutou",
       "blurb": "An uphill climb from day one. Hard difficulty.",
       "starting_meta": {
         "Constituency support": 10,
-        "Reputation": 3,
+        "Reputation": 5,
         "Funds": 25000,
         "Party support": 15
       },
-      "starting_xp": 0
+      "starting_xp": 0,
+      "gender": "F",
+      "committee": "Committee on Construction and Development",
+      "positioning": "Technocratic",
+      "element_1": "Emotional",
+      "element_2": "Data Driven",
+      "region": "Kushiro",
+      "district_name": "Kushiro Proportional Block 4",
+      "district_type": "Proportional Block"
     },
     {
       "player_id": "PC04",
-      "name_en": "Protagonist D",
-      "name_jp": "",
-      "party": "",
+      "name_en": "Jurou Nishihara",
+      "party": "Country Initiative",
       "blurb": "Already in crisis before your first vote. Very Hard difficulty.",
       "starting_meta": {
         "Constituency support": 5,
@@ -105,7 +74,15 @@
         "Funds": 10000,
         "Party support": 0
       },
-      "starting_xp": 0
+      "starting_xp": 0,
+      "gender": "M",
+      "committee": "Committee on the National Assembly",
+      "positioning": "Traditionalist",
+      "element_1": "Appeal",
+      "element_2": "Duplicitous",
+      "region": "Aomori",
+      "district_name": "Aomori Proportional Block 3",
+      "district_type": "Proportional Block"
     }
   ]
 }

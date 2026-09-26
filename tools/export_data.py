@@ -119,6 +119,55 @@ SHEETS = {
             ("Card Design Template", "card_design_template", "str"),
         ],
     },
+    # Who the player can be (2026-09-26 pull — was data/player.json, written
+    # by hand, until now). Reshaped below (fold_player()) into
+    # {"protagonists": [...]}: the four meta columns fold into one
+    # starting_meta dict per row, matching what DataDB._load_protagonists()
+    # has always expected. No "default protagonist" column — the first row
+    # is the default, the same fallback _load_protagonists() already uses
+    # when data/player.json's own default_protagonist is missing or unknown.
+    "Player": {
+        "out": "player_raw.json",
+        "key": "player_id",
+        "id_pattern": r"^PC\d+$",
+        "columns": [
+            ("player_id", "player_id", "id"),
+            ("name_en", "name_en", "str"),
+            ("party", "party", "str"),
+            ("blurb", "blurb", "str"),
+            ("Constituency support", "starting_jiban", "int"),
+            ("Reputation", "starting_kanban", "int"),
+            ("Funds", "starting_yen", "int"),
+            ("Party support", "starting_party_support", "int"),
+            ("starting_xp", "starting_xp", "int"),
+            ("Gender", "gender", "str"),
+            ("Committee", "committee", "str"),
+            ("Positioning", "positioning", "str"),
+            ("Element 1", "element_1", "str"),
+            ("Element 2", "element_2", "str"),
+            ("Region", "region", "str"),
+            ("District Name", "district_name", "str"),
+            ("District Type", "district_type", "str"),
+        ],
+    },
+    # The Office's own dynamic flavor lines (design proposal, 2026-09-26):
+    # a notice shows when its one condition (a staff role hired/not-hired, or
+    # a meta variable's value against a threshold) is true. See
+    # OfficeNotices.gd for how a row is checked and CLAUDE.md for the schema.
+    "Office Notices": {
+        "out": "office_notices.json",
+        "key": "notice_id",
+        "id_pattern": r"^ON\d+$",
+        "columns": [
+            ("notice_id", "notice_id", "id"),
+            ("slot", "slot", "str"),
+            ("condition_type", "condition_type", "str"),
+            ("condition_target", "condition_target", "str"),
+            ("condition_op", "condition_op", "str"),
+            ("condition_value", "condition_value", "num"),
+            ("text_en", "text_en", "str"),
+        ],
+    },
     # Every line the game says to the player. Cameron's to reword; the code
     # asks for a Key and never holds a sentence of its own. A key the code
     # asks for and this tab does not have is an ERROR, checked below, so a
@@ -1674,6 +1723,43 @@ STANDING_NAMES = {
 }
 
 
+def fold_player(data, report):
+    """The Player tab (2026-09-26 pull) becomes {"protagonists": [...]},
+    with the four meta columns folded into one starting_meta dict per row —
+    the shape DataDB._load_protagonists() has always expected, back when
+    data/player.json was written by hand. No default_protagonist: the first
+    row is the default, the same fallback _load_protagonists() already uses
+    when one is missing or names an unknown player_id.
+    """
+    rows = data.pop("player_raw", [])
+    protagonists = []
+    for row in rows:
+        protagonists.append({
+            "player_id": row["player_id"],
+            "name_en": row["name_en"],
+            "party": row["party"],
+            "blurb": row["blurb"],
+            "starting_meta": {
+                "Constituency support": row["starting_jiban"],
+                "Reputation": row["starting_kanban"],
+                "Funds": row["starting_yen"],
+                "Party support": row["starting_party_support"],
+            },
+            "starting_xp": row["starting_xp"],
+            "gender": row["gender"],
+            "committee": row["committee"],
+            "positioning": row["positioning"],
+            "element_1": row["element_1"],
+            "element_2": row["element_2"],
+            "region": row["region"],
+            "district_name": row["district_name"],
+            "district_type": row["district_type"],
+        })
+    if not protagonists:
+        report.error("Player", "no protagonists found")
+    data["player"] = {"protagonists": protagonists}
+
+
 # Which stage type each question tab belongs to. The tabs are named for the
 # room; stage_types.json names the type. One place holds the join.
 QUESTION_TABS = {
@@ -1979,6 +2065,7 @@ def main():
 
     add_segment_ids(data, report)
     apply_staff_names(data, report)
+    fold_player(data, report)
     fold_questions(data, report)
     validate(data, report)
     check_text_keys(data, report)

@@ -39,7 +39,11 @@ func test_a_new_run_starts_every_number_again() -> void:
 	GameState.xp = 500
 	GameState.inventory = {"SH04": 3}
 	GameState.start_new_run("PC01")
-	assert_eq(GameState.xp, 0)
+	# PC01's own starting_xp (2026-09-26 pull: real, cast protagonists each
+	# have their own starting numbers now, not a shared 0) — read from data
+	# rather than hardcoded, so a future tuning pass can't make this test
+	# lie about what "starts every number again" actually means.
+	assert_eq(GameState.xp, int(DataDB.get_protagonist("PC01").get("starting_xp", 0)))
 	assert_true(GameState.inventory.is_empty())
 	assert_false(GameState.awaiting_new_game)
 
@@ -47,10 +51,16 @@ func test_a_new_run_starts_every_number_again() -> void:
 func test_the_caucus_is_named_for_the_chosen_protagonists_party() -> void:
 	GameState.start_new_run("PC01")
 	var party := str(DataDB.player.get("party", ""))
+	assert_false(party.is_empty(), "the fixture needs a real protagonist with a party")
 	assert_eq(BattleSetup.fill_tokens("{party} Caucus"), "%s Caucus" % party)
-	# PC02 has no party yet, so the stage is just "Caucus".
-	GameState.start_new_run("PC02")
+
+	# No real protagonist has a blank party any more (all four are cast,
+	# 2026-09-26 pull) — the "just Caucus" fallback is still real code
+	# (BattleSetup.fill_tokens()), so it is proven directly instead.
+	var party_before: Variant = DataDB.player.get("party")
+	DataDB.player["party"] = ""
 	assert_eq(BattleSetup.fill_tokens("{party} Caucus"), "Caucus")
+	DataDB.player["party"] = party_before
 
 
 func test_the_cue_speaker_is_the_chosen_protagonist() -> void:
