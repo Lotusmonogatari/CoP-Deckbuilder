@@ -1,12 +1,15 @@
 class_name ShopItemsDriver
 extends Node
-## Walks the SH13-19 Supplies purchases with real clicks (CLAUDE.md M5,
-## 2026-09-25): each one takes effect the moment it is bought rather than
-## sitting in the inventory to be Used, and this proves that end to end —
-## the actual Buy button, the actual report line, and the actual downstream
-## screens (Staff, Levels) that are supposed to notice the change — the way
-## the GUT unit tests (tests/test_inventory.gd) do not, since those call
-## GameState.buy_*() directly and never touch a button or a label.
+## Walks the SH13-19 Supplies purchases, plus SH27-29 (the Yen-costed twin
+## of SH15-17), with real clicks (CLAUDE.md M5, 2026-09-25 and 2026-09-25's
+## card reveal popup): each one takes effect the moment it is bought rather
+## than sitting in the inventory to be Used, and this proves that end to
+## end — the actual Buy button, the actual report line, the card reveal
+## popup's front and back views for the six random-card items, and the
+## actual downstream screens (Staff, Levels) that are supposed to notice
+## the change — the way the GUT unit tests (tests/test_inventory.gd) do
+## not, since those call GameState.buy_*() directly and never touch a
+## button, a label, or a popup.
 ##
 ## Lives outside the current scene, the same reason inventory_driver.gd
 ## does, though nothing here changes scenes.
@@ -106,6 +109,39 @@ func _walk() -> void:
 	if GameState.owned_cards.size() != 3:
 		_failures.append("SH17: expected 3 owned cards, got %d" % GameState.owned_cards.size())
 		return
+
+	# --- SH27/28/29: Purchase Random Tier N Card ------------------------------
+	# The Yen-costed twin of SH15-17 — same buy_random_card() effect, same
+	# reveal, just paid for differently. Proven here rather than assumed from
+	# SH15-17 passing, since the whole point of a real-click playtest is not
+	# to take "it's the same function" on faith.
+	var funds_before_sh27 := int(GameState.meta.get("Funds", 0))
+	if not await _buy(supplies, "SH27"):
+		return
+	if not await _check_and_dismiss_card_reveal(office):
+		return
+	if GameState.owned_cards.size() != 4:
+		_failures.append("SH27: expected 4 owned cards, got %d" % GameState.owned_cards.size())
+		return
+	if int(GameState.meta.get("Funds", 0)) >= funds_before_sh27:
+		_failures.append("SH27: bought a card but Funds did not go down (%d -> %d)"
+			% [funds_before_sh27, int(GameState.meta.get("Funds", 0))])
+		return
+	if not await _buy(supplies, "SH28"):
+		return
+	if not await _check_and_dismiss_card_reveal(office):
+		return
+	if GameState.owned_cards.size() != 5:
+		_failures.append("SH28: expected 5 owned cards, got %d" % GameState.owned_cards.size())
+		return
+	if not await _buy(supplies, "SH29"):
+		return
+	if not await _check_and_dismiss_card_reveal(office):
+		return
+	if GameState.owned_cards.size() != 6:
+		_failures.append("SH29: expected 6 owned cards, got %d" % GameState.owned_cards.size())
+		return
+	print("  bought one of each SH27-29 (Yen-costed); each showed the same reveal as SH15-17")
 
 	# --- A screenshot of the Supplies list with all seven rows visible -------
 	# Real bug class this catches: a row whose label overflows, a missing
