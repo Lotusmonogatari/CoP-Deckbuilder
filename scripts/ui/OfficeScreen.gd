@@ -283,8 +283,11 @@ func _organisation_row(booster: Dictionary) -> Control:
 
 	# 2026-09-22 workbook: boosters.json no longer has a "boosts" summary
 	# column — what an organisation does is the modifiers it links, so that
-	# list is shown by name instead.
-	var linked: Array = booster.get("linked_modifiers", [])
+	# list is shown by name instead. A booster with no Linked modifiers at
+	# all (BO17/BO18, 2026-09-26) exports as JSON null, not [] — the <null>
+	# trap again (BarModel.for_stage()'s own comment).
+	var linked_raw: Variant = booster.get("linked_modifiers")
+	var linked: Array = linked_raw if linked_raw is Array else []
 	var names: Array[String] = []
 	for mod_id: String in linked:
 		var modifier := DataDB.get_modifier(mod_id)

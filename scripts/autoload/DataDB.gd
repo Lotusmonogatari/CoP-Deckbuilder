@@ -523,7 +523,13 @@ func _build_lookups() -> void:
 		var lines: Array[String] = _cue_lines(row)
 		if lines.is_empty():
 			continue
-		var opp_ids: Array = row.get("opponent_ids", [])
+		# The <null> trap again (BarModel.for_stage()'s own comment): a blank
+		# "Opponent ID" cell exports as JSON null, not [] — the key IS
+		# present, so .get()'s default never fires. Every row in the real
+		# workbook is blank here today (the general pool), so this crashed
+		# on the first real Opponent Cues data the game ever loaded.
+		var opp_ids_raw: Variant = row.get("opponent_ids")
+		var opp_ids: Array = opp_ids_raw if opp_ids_raw is Array else []
 		if opp_ids.is_empty():
 			# The general pool: every opponent with this suit draws from it
 			# for this verb.
@@ -910,7 +916,11 @@ func _validate() -> void:
 				errors.append("Modifier %s triggers on '%s', which is not a segment" % [mod.get("mod_id"), trigger])
 
 	for booster: Dictionary in boosters:
-		for mod_id: String in (booster.get("linked_modifiers", []) as Array):
+		# The <null> trap again: BO17/BO18 (2026-09-26 pull) have no Linked
+		# modifiers at all, which exports as JSON null, not [] — same
+		# pattern as opponent_cues' opponent_ids just above.
+		var linked_raw: Variant = booster.get("linked_modifiers")
+		for mod_id: String in (linked_raw if linked_raw is Array else []):
 			if not mod_ids.has(mod_id):
 				errors.append("Booster %s links '%s', which is not a modifier" % [booster.get("booster_id"), mod_id])
 

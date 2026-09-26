@@ -110,7 +110,7 @@
   },
   {
     "booster_id": "BO11",
-    "name_en": "Students",
+    "name_en": "Students United",
     "name_jp": "学生団体",
     "romaji": "Gakusei Dantai",
     "tier": "Constituency",
@@ -120,7 +120,7 @@
   },
   {
     "booster_id": "BO12",
-    "name_en": "Families",
+    "name_en": "Family Network",
     "name_jp": "子育て世代の会",
     "romaji": "Kosodate Sedai no Kai",
     "tier": "Constituency",
@@ -130,7 +130,7 @@
   },
   {
     "booster_id": "BO13",
-    "name_en": "Artisans",
+    "name_en": "Yezo Artisans Guild",
     "name_jp": "職人組合",
     "romaji": "Shokunin Kumiai",
     "tier": "National",
@@ -140,7 +140,7 @@
   },
   {
     "booster_id": "BO14",
-    "name_en": "Commuters",
+    "name_en": "Commuter Committee",
     "name_jp": "通勤者連盟",
     "romaji": "Tsūkinsha Renmei",
     "tier": "Constituency",
@@ -150,7 +150,7 @@
   },
   {
     "booster_id": "BO15",
-    "name_en": "Traditionalists",
+    "name_en": "Our Traditional Society",
     "name_jp": "伝統保守の会",
     "romaji": "Dentō Hoshu no Kai",
     "tier": "National",
@@ -160,12 +160,28 @@
   },
   {
     "booster_id": "BO16",
-    "name_en": "Modernists",
+    "name_en": "Innovation Society",
     "name_jp": "革新の会",
     "romaji": "Kakushin no Kai",
     "tier": "National",
     "linked_modifiers": [
       "M31"
     ]
+  },
+  {
+    "booster_id": "BO17",
+    "name_en": "Member of Parliament",
+    "name_jp": "国会議員",
+    "romaji": "Kokkai Giin",
+    "tier": "National",
+    "linked_modifiers": null
+  },
+  {
+    "booster_id": "BO18",
+    "name_en": "Constituency Voters",
+    "name_jp": "選挙区の有権者",
+    "romaji": "Senkyoku no Yūkensha",
+    "tier": "Constituency",
+    "linked_modifiers": null
   }
 ]

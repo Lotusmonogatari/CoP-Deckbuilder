@@ -22,14 +22,18 @@ func after_each() -> void:
 	DataDB.boosters = _boosters_before.duplicate(true)
 
 
-## A 17th booster, past the old hardcoded range(1, 17) — the actual point
-## of this simplification (B2). Proves the loop reaches whatever
-## DataDB.boosters holds, not a number baked into GameState.gd.
+## A booster past the old hardcoded range(1, 17) — the actual point of this
+## simplification (B2). Proves the loop reaches whatever DataDB.boosters
+## holds, not a number baked into GameState.gd. BO99 rather than BO17:
+## BO17/BO18 are real boosters since the 2026-09-26 pull (Member of
+## Parliament / Constituency Voters), and appending a second, fake "BO17"
+## alongside the real one made the loop apply this test's own win_delta_bo17
+## twice — once per row sharing that ID.
 func test_a_booster_past_the_old_hardcoded_sixteen_still_gets_its_column() -> void:
-	DataDB.boosters.append({"booster_id": "BO17", "name_en": "Test Booster"})
-	GameState.booster_standing["BO17"] = 50
-	GameState._apply_level_bonus_win({"win_delta_bo17": {"min": 4, "max": 4}})
-	assert_eq(int(GameState.booster_standing["BO17"]), 54)
+	DataDB.boosters.append({"booster_id": "BO99", "name_en": "Test Booster"})
+	GameState.booster_standing["BO99"] = 50
+	GameState._apply_level_bonus_win({"win_delta_bo99": {"min": 4, "max": 4}})
+	assert_eq(int(GameState.booster_standing["BO99"]), 54)
 
 
 ## A flat delta (not a range) for every real booster moves every real

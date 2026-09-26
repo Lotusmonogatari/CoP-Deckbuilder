@@ -2,10 +2,12 @@ extends GutTest
 ## OpponentCues.gd — the opponent's own twin of CardCues.gd, plus the
 ## suit-weighting it does before picking a line (CardCues never has to,
 ## since the player only ever has the one card in hand). Uses fake
-## opponent_cues.json rows throughout (the real workbook has none yet — see
-## tools/export_data.py's "Opponent Cues" entry), the same way
-## test_visitor_selection.gd proves multi-ID sharing against fake
-## visitor_questions.json rows rather than real data.
+## opponent_cues.json rows throughout, the same way test_visitor_selection.gd
+## proves multi-ID sharing against fake visitor_questions.json rows rather
+## than real data. The real workbook has 18 rows now (2026-09-26 pull), all
+## in the general pool (a blank "Opponent ID" column) — see
+## test_a_blank_opponent_ids_column_reads_as_the_general_pool_not_a_crash
+## below for the one real bug that data actually found.
 ##
 ## Every for_move() call below passes suit_roll/other_suit_roll explicitly,
 ## so which suit gets drawn from is pinned rather than left to randf() — the
@@ -30,6 +32,21 @@ func test_falls_back_to_empty_when_nothing_is_written() -> void:
 		{"opp_id": "OP_NONE", "suit_1": "Earnest"}, "attack", "ST02", 1, 0.0)
 	assert_eq(cue["text"], "")
 	assert_eq(cue["line_id"], "")
+
+
+## Real workbook export puts a JSON null in a blank list column, not [] —
+## the exact shape every "Opponent ID" cell has today (DataDB._build_lookups()
+## crashed on the game's own real data the first time this ever loaded,
+## "Trying to assign value of type 'Nil' to a variable of type 'Array'").
+func test_a_blank_opponent_ids_column_reads_as_the_general_pool_not_a_crash() -> void:
+	DataDB.opponent_cues = [
+		{"cue_id": "OC01", "suit": "Earnest", "verb": "attack", "opponent_ids": null,
+			"cue_1": "General Earnest attack line."},
+	]
+	DataDB._build_lookups()
+	var cue := OpponentCues.for_move(
+		{"opp_id": "OP_ANY", "suit_1": "Earnest"}, "attack", "ST02", 1, 0.0)
+	assert_eq(cue["text"], "General Earnest attack line.")
 
 
 func test_draws_from_the_general_pool_by_suit_when_no_bespoke_line_exists() -> void:

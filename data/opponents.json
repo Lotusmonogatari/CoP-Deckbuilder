@@ -6,7 +6,8 @@
     "gender": "F",
     "party": "Five Point Independents",
     "party_acronym": "FPI",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10",
       "ST01",
@@ -36,7 +37,8 @@
     "gender": "F",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST08"
@@ -64,7 +66,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
     "stages": [
       "ST16",
       "ST02"
@@ -92,7 +95,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST01"
@@ -117,7 +121,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO18",
+    "role": "Committee on Finance",
     "stages": [
       "ST16",
       "ST04"
@@ -145,7 +150,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13",
       "ST02"
@@ -173,7 +179,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
     "stages": [
       "ST16",
       "ST02"
@@ -201,7 +208,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST01"
@@ -229,7 +237,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
       "ST02"
@@ -257,7 +266,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee of the Cabinet",
+    "affiliation": "BO17",
+    "role": "Committee of the Cabinet",
     "stages": [
       "ST18",
       "ST01",
@@ -286,7 +296,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST21"
@@ -314,7 +325,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Construction and Development",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
       "ST03"
@@ -339,7 +351,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Local Kōenkai",
+    "affiliation": "BO03",
+    "role": "Kōenkai Member",
     "stages": [
       "ST05"
     ],
@@ -366,7 +379,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Neighborhood Associations",
+    "affiliation": "BO06",
+    "role": "Neighborhood Association Member",
     "stages": [
       "ST05"
     ],
@@ -393,7 +407,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Families",
+    "affiliation": "BO12",
+    "role": "Family Network Member",
     "stages": [
       "ST05"
     ],
@@ -420,7 +435,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Students",
+    "affiliation": "BO11",
+    "role": "Student",
     "stages": [
       "ST05"
     ],
@@ -447,7 +463,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Commuters",
+    "affiliation": "BO18",
+    "role": "Constituent",
     "stages": [
       "ST05"
     ],
@@ -474,7 +491,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Constituents",
+    "affiliation": "BO18",
+    "role": "Constituent",
     "stages": [
       "ST05"
     ],
@@ -501,7 +519,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Town Hall",
+    "affiliation": "BO18",
+    "role": "Constituent",
     "stages": [
       "ST05"
     ],
@@ -528,7 +547,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Town Hall",
+    "affiliation": "BO11",
+    "role": "Student",
     "stages": [
       "ST05"
     ],
@@ -553,9 +573,10 @@
     "name": "Barclay Brigham",
     "title": null,
     "gender": "M",
-    "party": null,
-    "party_acronym": null,
-    "affiliation": "Committee on the National Assembly",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST21"
@@ -583,7 +604,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "National Media",
+    "affiliation": "BO08",
+    "role": "Journalist",
     "stages": [
       "ST19"
     ],
@@ -610,7 +632,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "National Media",
+    "affiliation": "BO08",
+    "role": "Journalist",
     "stages": [
       "ST19"
     ],
@@ -637,7 +660,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "National Media",
+    "affiliation": "BO08",
+    "role": "Journalist",
     "stages": [
       "ST19"
     ],
@@ -664,7 +688,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "National Media",
+    "affiliation": "BO08",
+    "role": "Journalist",
     "stages": [
       "ST19"
     ],
@@ -691,7 +716,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "National Media",
+    "affiliation": "BO08",
+    "role": "Journalist",
     "stages": [
       "ST19"
     ],
@@ -718,7 +744,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "National Media",
+    "affiliation": "BO08",
+    "role": "Journalist",
     "stages": [
       "ST19"
     ],
@@ -745,7 +772,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "National Media",
+    "affiliation": "BO08",
+    "role": "Journalist",
     "stages": [
       "ST19"
     ],
@@ -772,7 +800,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "National Media",
+    "affiliation": "BO08",
+    "role": "Journalist",
     "stages": [
       "ST19"
     ],
@@ -795,11 +824,12 @@
   {
     "opp_id": "OP118",
     "name": "Fumihiko Takashiro",
-    "title": "Senior Lobbyist, Chamber of Commerce",
+    "title": null,
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Chamber of Commerce",
+    "affiliation": "BO05",
+    "role": "Chamber of Commerce Lobbyist",
     "stages": [
       "ST20"
     ],
@@ -826,7 +856,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Labor Federation",
+    "affiliation": "BO09",
+    "role": "Labor Federation Member",
     "stages": [
       "ST20"
     ],
@@ -853,7 +884,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST21"
@@ -881,7 +913,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Agricultural Cooperatives",
+    "affiliation": "BO10",
+    "role": "Agricultural Cooperative Member",
     "stages": [
       "ST20"
     ],
@@ -908,7 +941,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Fisheries Cooperative",
+    "affiliation": "BO07",
+    "role": "Fisheries Cooperative Member",
     "stages": [
       "ST20"
     ],
@@ -935,7 +969,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Mayors' Network",
+    "affiliation": "BO04",
+    "role": "Mayors' Network Representative",
     "stages": [
       "ST20"
     ],
@@ -962,7 +997,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Neighborhood Associations",
+    "affiliation": "BO06",
+    "role": "Neighborhood Association Member",
     "stages": [
       "ST20"
     ],
@@ -989,7 +1025,8 @@
     "gender": "M",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Students",
+    "affiliation": "BO11",
+    "role": "Student",
     "stages": [
       "ST20"
     ],
@@ -1016,7 +1053,8 @@
     "gender": "F",
     "party": null,
     "party_acronym": null,
-    "affiliation": "Traditionalists",
+    "affiliation": "BO15",
+    "role": "Our Traditional Society Member",
     "stages": [
       "ST20"
     ],
@@ -1043,7 +1081,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Construction and Development",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
       "ST02"
@@ -1071,7 +1110,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09"
     ],
@@ -1098,7 +1138,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Construction and Development",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
     "stages": [
       "ST15"
     ],
@@ -1125,7 +1166,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST21"
@@ -1153,7 +1195,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10"
     ],
@@ -1180,7 +1223,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
       "ST21"
@@ -1208,7 +1252,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on Construction and Development",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
     "stages": [
       "ST15"
     ],
@@ -1235,7 +1280,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14"
     ],
@@ -1262,7 +1308,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on War",
+    "affiliation": "BO17",
+    "role": "Committee on War",
     "stages": [
       "ST11",
       "ST02"
@@ -1290,7 +1337,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
       "ST08"
@@ -1318,7 +1366,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10"
     ],
@@ -1345,7 +1394,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10"
     ],
@@ -1372,7 +1422,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13"
     ],
@@ -1399,7 +1450,8 @@
     "gender": "F",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST08"
@@ -1427,7 +1479,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST18",
@@ -1456,7 +1509,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST02"
@@ -1484,7 +1538,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13",
       "ST18",
@@ -1513,7 +1568,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10",
       "ST03"
@@ -1541,7 +1597,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST03"
@@ -1569,7 +1626,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
     "stages": [
       "ST16",
       "ST04"
@@ -1597,7 +1655,8 @@
     "gender": "F",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10",
       "ST18",
@@ -1628,7 +1687,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09"
     ],
@@ -1655,7 +1715,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST02"
@@ -1683,7 +1744,8 @@
     "gender": "M",
     "party": "Five Point Independents",
     "party_acronym": "FPI",
-    "affiliation": "Committee on Construction and Development",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
       "ST18",
@@ -1712,7 +1774,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10"
     ],
@@ -1739,7 +1802,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
       "ST01"
@@ -1767,7 +1831,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
     "stages": [
       "ST16"
     ],
@@ -1794,7 +1859,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09"
     ],
@@ -1821,7 +1887,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
     "stages": [
       "ST16",
       "ST04"
@@ -1849,7 +1916,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10",
       "ST21"
@@ -1877,7 +1945,8 @@
     "gender": "F",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13",
       "ST02"
@@ -1905,7 +1974,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14"
     ],
@@ -1932,7 +2002,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
       "ST01"
@@ -1960,7 +2031,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13",
       "ST21"
@@ -1988,7 +2060,8 @@
     "gender": "F",
     "party": "Five Point Independents",
     "party_acronym": "FPI",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
     "stages": [
       "ST16",
       "ST18",
@@ -2017,7 +2090,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12"
     ],
@@ -2044,7 +2118,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17"
     ],
@@ -2071,7 +2146,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
       "ST01"
@@ -2099,7 +2175,8 @@
     "gender": "F",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10",
       "ST02"
@@ -2127,7 +2204,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on War",
+    "affiliation": "BO17",
+    "role": "Committee on War",
     "stages": [
       "ST11",
       "ST03"
@@ -2155,7 +2233,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17"
     ],
@@ -2182,7 +2261,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on War",
+    "affiliation": "BO17",
+    "role": "Committee on War",
     "stages": [
       "ST11",
       "ST04"
@@ -2210,7 +2290,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14"
     ],
@@ -2237,7 +2318,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
       "ST08"
@@ -2265,7 +2347,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on War",
+    "affiliation": "BO17",
+    "role": "Committee on War",
     "stages": [
       "ST11",
       "ST18",
@@ -2294,7 +2377,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST03"
@@ -2322,7 +2406,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
       "ST21"
@@ -2350,7 +2435,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09"
     ],
@@ -2377,7 +2463,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14"
     ],
@@ -2404,7 +2491,8 @@
     "gender": "F",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Construction and Development",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
       "ST21"
@@ -2432,7 +2520,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on War",
+    "affiliation": "BO17",
+    "role": "Committee on War",
     "stages": [
       "ST11"
     ],
@@ -2459,7 +2548,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10"
     ],
@@ -2486,7 +2576,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
       "ST04"
@@ -2514,7 +2605,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on War",
+    "affiliation": "BO17",
+    "role": "Committee on War",
     "stages": [
       "ST11",
       "ST03"
@@ -2542,7 +2634,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on War",
+    "affiliation": "BO17",
+    "role": "Committee on War",
     "stages": [
       "ST11",
       "ST02",
@@ -2572,7 +2665,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Construction and Development",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
     "stages": [
       "ST15"
     ],
@@ -2599,7 +2693,8 @@
     "gender": "F",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
       "ST04"
@@ -2627,7 +2722,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13"
     ],
@@ -2654,7 +2750,8 @@
     "gender": "F",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10",
       "ST21"
@@ -2682,7 +2779,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
       "ST01"
@@ -2710,7 +2808,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on War",
+    "affiliation": "BO17",
+    "role": "Committee on War",
     "stages": [
       "ST11",
       "ST04"
@@ -2738,7 +2837,8 @@
     "gender": "F",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13",
       "ST04"
@@ -2766,7 +2866,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10"
     ],
@@ -2793,7 +2894,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12"
     ],
@@ -2820,7 +2922,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on Construction and Development",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
       "ST03"
@@ -2848,7 +2951,8 @@
     "gender": "F",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST18",
@@ -2879,7 +2983,8 @@
     "gender": "F",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13"
     ],
@@ -2906,7 +3011,8 @@
     "gender": "F",
     "party": "Five Point Independents",
     "party_acronym": "FPI",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST01"
@@ -2934,7 +3040,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
       "ST21"
@@ -2962,7 +3069,8 @@
     "gender": "M",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
       "ST18",
@@ -2992,7 +3100,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
     "stages": [
       "ST16",
       "ST02",
@@ -3021,7 +3130,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13"
     ],
@@ -3048,7 +3158,8 @@
     "gender": "M",
     "party": "Five Point Independents",
     "party_acronym": "FPI",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
       "ST03"
@@ -3076,7 +3187,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17"
     ],
@@ -3103,7 +3215,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17",
       "ST21"
@@ -3131,7 +3244,8 @@
     "gender": "M",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST04"
@@ -3159,7 +3273,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14"
     ],
@@ -3186,7 +3301,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on the National Assembly",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
       "ST03"
@@ -3214,7 +3330,8 @@
     "gender": "M",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
       "ST18",
@@ -3243,7 +3360,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on the Environment",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
     "stages": [
       "ST10"
     ],
@@ -3270,7 +3388,8 @@
     "gender": "M",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17"
     ],
@@ -3297,7 +3416,8 @@
     "gender": "F",
     "party": "Frontier Party",
     "party_acronym": "FP",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13",
       "ST04"
@@ -3325,7 +3445,8 @@
     "gender": "F",
     "party": "Butsutou",
     "party_acronym": "BU",
-    "affiliation": "Committee on Foreign Affairs",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14"
     ],
@@ -3352,7 +3473,8 @@
     "gender": "F",
     "party": "Yezo Heritage Party",
     "party_acronym": "YHP",
-    "affiliation": "Committee on Government Administration",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
     "stages": [
       "ST17"
     ],
@@ -3379,7 +3501,8 @@
     "gender": "M",
     "party": "Country Initiative",
     "party_acronym": "CI",
-    "affiliation": "Committee on Finance",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
     "stages": [
       "ST16",
       "ST01"
@@ -3407,7 +3530,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Agriculture",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
     "stages": [
       "ST13"
     ],
@@ -3434,7 +3558,8 @@
     "gender": "F",
     "party": "Keizaijiyuutou",
     "party_acronym": "KJT",
-    "affiliation": "Committee on Ethics and Prosecution",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09"
     ],

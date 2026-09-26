@@ -462,11 +462,23 @@ SHEETS = {
         "columns": [
             ("Opp ID", "opp_id", "id"),
             ("Name", "name", "str"),
+            # "N/A" for almost everyone — a formal post, e.g. "Minister of
+            # Finance; Chair of the Committee on Finance" or "Prime
+            # Minister; Leader of the Yezo Heritage Party", "; "-joined
+            # when someone holds more than one at once (2026-09-26 pull).
             ("Title", "title", "str"),
             ("Gender", "gender", "str"),
             ("Party", "party", "str"),
             ("Party Acronym", "party_acronym", "str"),
+            # A booster_id (2026-09-26 pull — restructured from free-text
+            # committee names, which moved to the new Role column below).
+            # Checked against boosters.json below the table.
             ("Affiliation", "affiliation", "str"),
+            # Free text: a committee name for most MPs, or a plain role like
+            # "Journalist", "Constituent", "Student" for the non-MP opponents
+            # a Non-combat stage draws (Town Hall, Media Ambush, Lobbyist
+            # Meeting). Was folded into Affiliation before 2026-09-26.
+            ("Role", "role", "str"),
             # "; "-separated STxx list — an opponent can appear in several
             # stages. A committee stage's roster is every opponent whose
             # Stage list names that STxx (Cameron, 2026-09-22); there is no
@@ -1331,6 +1343,16 @@ def validate(data, report):
         for field in ("suit_1", "suit_2", "suit_3"):
             if opp[field] and opp[field] not in suits:
                 report.error("opponents", f"{oid} has {field} '{opp[field]}', which is not a suit")
+        # Affiliation is a booster_id since the 2026-09-26 pull. Caught one
+        # real mistake this way already: 12 Yezo Heritage Party MPs pointed
+        # at BO19-BO30, IDs nothing else in the Boosters tab uses — a
+        # party-member row should point at BO17 (Member of Parliament) like
+        # every other MP, the same as Cameron confirmed for that batch.
+        if opp["affiliation"] and opp["affiliation"] not in booster_ids:
+            report.error(
+                "opponents",
+                f"{oid} has Affiliation '{opp['affiliation']}', which is not in the Boosters tab",
+            )
         for stage_id in opp["stages"] or []:
             if stage_id not in stage_ids:
                 report.error(

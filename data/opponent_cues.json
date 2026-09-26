@@ -1,1 +1,200 @@
-[]
+[
+  {
+    "cue_id": "OC01",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "You aren't convincing me, yet.",
+    "cue_2": "I need to see results. That's it.",
+    "cue_3": "How will you prove yourself?",
+    "cue_4": "Stand up or stand aside.",
+    "cue_5": "Who are you speaking to. Not me."
+  },
+  {
+    "cue_id": "OC02",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "Set the record straight because my doubt is not resolved.",
+    "cue_2": "You sound like a ladder climber.",
+    "cue_3": "Who are you here for?",
+    "cue_4": "Tell me the truth, not rhetoric.",
+    "cue_5": "Strip away the noise."
+  },
+  {
+    "cue_id": "OC03",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "We judge you by your record.",
+    "cue_2": "Your reputation is what matters.",
+    "cue_3": "It's not on me to prove your words.",
+    "cue_4": "Look at the work, not the words.",
+    "cue_5": "I let my results do the talking."
+  },
+  {
+    "cue_id": "OC04",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC05",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC06",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC07",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC08",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC09",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC10",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC11",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC12",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC13",
+    "suit": "Divisive",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC14",
+    "suit": "Divisive",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC15",
+    "suit": "Divisive",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC16",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC17",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  },
+  {
+    "cue_id": "OC18",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": null,
+    "cue_2": null,
+    "cue_3": null,
+    "cue_4": null,
+    "cue_5": null
+  }
+]

@@ -144,7 +144,12 @@ static func standing_needed(modifier: Dictionary, settings: Dictionary) -> int:
 static func backing_booster(modifier: Dictionary, boosters: Array) -> String:
 	var mod_id := str(modifier.get("mod_id", ""))
 	for booster: Dictionary in boosters:
-		if (booster.get("linked_modifiers", []) as Array).has(mod_id):
+		# A booster with no Linked modifiers at all (BO17/BO18, 2026-09-26)
+		# exports as JSON null, not [] — the <null> trap again
+		# (BarModel.for_stage()'s own comment).
+		var linked_raw: Variant = booster.get("linked_modifiers")
+		var linked: Array = linked_raw if linked_raw is Array else []
+		if linked.has(mod_id):
 			return str(booster.get("booster_id", ""))
 	return ""
 
