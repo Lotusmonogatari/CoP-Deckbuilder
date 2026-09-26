@@ -174,6 +174,7 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 | Party support < 25 | **Built** (2026-09-25), redesigned from "insert the Steering Committee stage (ST08)": ST08 is already a Combat stage hand-placed in 7 real levels, so repurposing it would have changed what they do. Inserts a **new** Non-combat stage instead, ST22 "Party Steering Committee Check-In" — Office Hours' own visitor-event machinery, reused wholesale, with one placeholder visitor (VI04) and question (VQ04). The original entry-cost idea (disabling a Kōenkai/Bankisha modifier) is not built — "Bankisha" doesn't map to any of the 16 current organisations. |
 | Office hours (ST07) | Non-combat. Five time slots. Visitor event cards come from `visitors.json`. Each card offers 2 choices, and each choice has outcome deltas to Jiban, Kaban, party support, or funds. |
 | Party favorability | **Built** (2026-09-26). National Assembly Floor Voting (ST23) is the first stage to move more than the player's own party's standing at once — see §7.7. |
+| One-time levels | **Built** (2026-09-26). `levels.json`'s own "One-Time (Yes/No)" column (blank/No = the old, only behavior): once completed — win or loss — the level disappears from the Office's own level list entirely, not shown-locked like a cooldown. A deliberate exception to `OfficeScreen._level_row()`'s own stated rule that a locked/cooling-down level stays visible — Cameron's explicit call, for a level whose payout (a Floor Vote's favorability swing, say) shouldn't be a replayable grind. `Ledger.level_is_hidden()`. |
 | XP checkpoint | Shown between modules. Spend XP to unlock cards at their tier cost from `balance.json`. Upgrade cost is 30 XP **[DEFAULT]**. |
 | Save | **Built.** One slot, `user://savegame.json`, written after every stage, whenever the Office opens or something is bought or changed there, and when the app is backgrounded outside a stage. A stage in progress is never saved: reopening mid-stage restarts that stage. No save on launch opens the New Game screen. |
 
@@ -219,7 +220,11 @@ options are authoritative; the table below describes the current settings:
 - **Floor Vote content.** No level has a row in the workbook's Floor Vote
   Bills / Floor Vote Party Positions tabs yet — the mechanism (§7.7) is
   built and tested against fabricated data, but every real bill's text, vote
-  splits, dispositions, and cue lines are still Cameron's to write.
+  splits, dispositions, and cue lines are still Cameron's to write. Whether
+  each Floor Vote level should also be marked "One-Time" (§8) — so its
+  favorability payout isn't a replayable grind — is a per-level call for
+  Cameron to make when he writes the levels.json row, not a default this
+  file decides for him.
 - **The Theme → organisation mapping.** The workbook's Question Themes tab
   maps its themes to organizations, with the reasoning for
   each in a Why column. It is a **draft Claude wrote for Cameron to correct**,

@@ -663,6 +663,14 @@ SHEETS = {
             ("Win ΔBO14", "win_delta_bo14", "range"),
             ("Win ΔBO15", "win_delta_bo15", "range"),
             ("Win ΔBO16", "win_delta_bo16", "range"),
+            # Blank/No (the default) behaves exactly as before: a completed
+            # level is still shown, cooldown and all. "Yes" is the new
+            # exception — a level marked this way disappears from the
+            # Office's own level list, win or loss, the moment it's
+            # completed once (Ledger.level_is_hidden()) — a genuine bill's
+            # first vote should be a one-time thing, not a replayable grind
+            # for the same favorability payout.
+            ("One-Time (Yes/No)", "one_time", "str"),
         ],
     },
     # 3 roles (Policy Research Assistant, Media Spokesperson, District

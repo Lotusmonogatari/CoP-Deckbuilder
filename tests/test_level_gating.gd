@@ -136,3 +136,39 @@ func test_unlocking_without_enough_xp_is_refused_and_spends_nothing() -> void:
 	assert_ne(refusal, "")
 	assert_false(GameState.levels_unlocked.has("LV30"))
 	assert_eq(GameState.xp, 0)
+
+
+# ---------------------------------------------------------------------------
+# Ledger.level_is_hidden — a "One-Time (Yes/No)" level, once completed
+# ---------------------------------------------------------------------------
+
+func test_a_one_time_level_never_completed_is_not_hidden() -> void:
+	var level := {"level_id": "LV_TEST", "one_time": "Yes"}
+	assert_false(Ledger.level_is_hidden(level, {}))
+
+
+func test_a_one_time_level_already_completed_is_hidden() -> void:
+	var level := {"level_id": "LV_TEST", "one_time": "Yes"}
+	assert_true(Ledger.level_is_hidden(level, {"LV_TEST": 3}))
+
+
+func test_a_one_time_level_hides_on_a_loss_too() -> void:
+	# completed_at (GameState.level_last_completed_at) is written regardless
+	# of win or loss — level_is_hidden() has no separate outcome to check.
+	var level := {"level_id": "LV_TEST", "one_time": "Yes"}
+	assert_true(Ledger.level_is_hidden(level, {"LV_TEST": 1}))
+
+
+func test_a_level_not_marked_one_time_is_never_hidden() -> void:
+	var level := {"level_id": "LV_TEST"}
+	assert_false(Ledger.level_is_hidden(level, {"LV_TEST": 5}))
+
+
+func test_the_column_is_case_insensitive() -> void:
+	var level := {"level_id": "LV_TEST", "one_time": "yes"}
+	assert_true(Ledger.level_is_hidden(level, {"LV_TEST": 1}))
+
+
+func test_a_different_levels_completion_does_not_hide_this_one() -> void:
+	var level := {"level_id": "LV_TEST", "one_time": "Yes"}
+	assert_false(Ledger.level_is_hidden(level, {"LV_OTHER": 1}))

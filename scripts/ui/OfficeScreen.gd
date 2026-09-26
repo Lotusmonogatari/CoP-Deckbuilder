@@ -983,6 +983,14 @@ func _show_levels() -> void:
 
 	var by_tier := {}
 	for level: Dictionary in DataDB.levels:
+		# A "One-Time (Yes/No)" level (levels.json's own "one_time" column)
+		# that has already been completed — win or loss — is left out of the
+		# list entirely, not shown-but-disabled like a locked or cooling-
+		# down one: Cameron's own request was that it disappear outright.
+		# Independent of "level_gating_enabled" below, which only gates
+		# cost/cooldown, not this.
+		if Ledger.level_is_hidden(level, GameState.level_last_completed_at):
+			continue
 		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):
 			by_tier[tier] = []

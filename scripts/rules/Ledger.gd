@@ -436,6 +436,21 @@ static func level_cooldown_remaining(level: Dictionary, completed_count: int,
 	return maxi(cooldown - since, 0)
 
 
+## True once a "One-Time (Yes/No)" level (levels.json's own "one_time"
+## column) has been completed — win or loss, the same "any finish counts"
+## reading level_cooldown_remaining()'s own last_completed_at already uses.
+## Blank/No is the default and never hides anything, cooldown or not; a
+## level never marked "Yes" is never hidden regardless of completed_at.
+##
+## A hidden level isn't refused like a locked one (level_unlock_refusal()) —
+## the caller building the level list skips it outright, so it is neither
+## selectable nor shown at all, per its own request.
+static func level_is_hidden(level: Dictionary, completed_at: Dictionary) -> bool:
+	if str(level.get("one_time", "")).strip_edges().to_lower() != "yes":
+		return false
+	return completed_at.has(str(level.get("level_id", "")))
+
+
 # ---------------------------------------------------------------------------
 # The deck
 # ---------------------------------------------------------------------------
