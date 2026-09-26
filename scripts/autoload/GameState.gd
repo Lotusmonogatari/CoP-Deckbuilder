@@ -108,6 +108,22 @@ var segment_favorability: Dictionary = {}
 ## What the last staff hire/upgrade did to those, e.g. { "SG03": 2 }.
 var last_segment_change: Dictionary = {}
 
+## Where the player stands with each of the six real-world parties, by
+## party name (parties.json's own "name" — the same string opponents.json/
+## player.json already carry in their "party" column). National Assembly
+## Floor Voting (ST23) is the first stage to move more than one at once.
+##
+## The player's OWN party is a special case: rather than a second number to
+## keep in sync, party_favorability() reads that party's live entry
+## straight out of `meta["Party support"]` — the existing sanban variable
+## IS that party's favorability, per Cameron's "the existing party favor
+## will feed into the player character's party". Only the other five
+## parties actually live in this dictionary.
+var party_standing: Dictionary = {}
+
+## What the last Floor Vote did to those, e.g. { "Keizaijiyuutou": -3 }.
+var last_party_change: Dictionary = {}
+
 ## Who is hired into each of the three Staff roles, and at what tier:
 ## { "Policy Research Assistant": { "staff_id": "SF04", "tier": 1 }, ... }.
 ## A role with no entry is vacant, either because nobody has ever been
@@ -215,6 +231,7 @@ func _ready() -> void:
 	reset_meta()
 	reset_booster_standing()
 	reset_segment_favorability()
+	reset_party_standing()
 
 
 ## A fresh run as `player_id`: every number back to its start. False, and
@@ -229,6 +246,7 @@ func start_new_run(player_id: String) -> bool:
 	reset_meta()
 	reset_booster_standing()
 	reset_segment_favorability()
+	reset_party_standing()
 	awaiting_new_game = false
 	return true
 
@@ -245,7 +263,7 @@ const _SAVED_FIELDS := [
 	"owned_cards", "deck", "owned_modifiers",
 	"inventory", "shop_bought_this_level",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
-	"booster_standing", "segment_favorability", "staff_hired", "staff_fired",
+	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at",
 	"staff_recruitment_tier", "funds_cap_bonus",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active",
@@ -547,6 +565,21 @@ func reset_booster_standing() -> void:
 	var start := int(DataDB.booster_standing.get("start", 50))
 	for booster: Dictionary in DataDB.boosters:
 		booster_standing[str(booster.get("booster_id"))] = start
+
+
+## The five parties the player isn't in, back to where party_standing.json
+## starts them. The player's own party is never in here — see
+## party_favorability()'s own comment.
+func reset_party_standing() -> void:
+	party_standing = {}
+	last_party_change = {}
+
+	var start := int(DataDB.party_standing.get("start", 50))
+	var own_party := str(DataDB.player.get("party", ""))
+	for party: Dictionary in DataDB.parties:
+		var name := str(party.get("name", ""))
+		if not name.is_empty() and name != own_party:
+			party_standing[name] = start
 
 
 ## Every segment back to its own "Initial Favorability %" from the workbook.
@@ -1351,6 +1384,47 @@ func _apply_booster_delta(booster_id: String, delta: int) -> void:
 	booster_standing[booster_id] = after
 	if after != before:
 		last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
+
+
+## Where the player stands with `party_name`. The player's own party reads
+## straight off `meta["Party support"]` — see party_standing's own doc
+## comment for why that is the one deliberate exception.
+func party_favorability(party_name: String) -> int:
+	if party_name == str(DataDB.player.get("party", "")):
+		return int(meta.get("Party support", 0))
+	return int(party_standing.get(party_name, 50))
+
+
+## Every OTHER party's favorability change goes through here: clamped to
+## party_standing.json's range, added to what the last vote did. The
+## player's own party is routed through _move_meta() instead (the ordinary
+## "Party support" path every other stage already uses), never through
+## here — see party_favorability().
+func _apply_party_delta(party_name: String, delta: int) -> void:
+	if delta == 0 or party_name == str(DataDB.player.get("party", "")):
+		return
+	var low := int(DataDB.party_standing.get("min", 0))
+	var high := int(DataDB.party_standing.get("max", 100))
+	var before := int(party_standing.get(party_name, 50))
+	var after := clampi(before + delta, low, high)
+	party_standing[party_name] = after
+	if after != before:
+		last_party_change[party_name] = int(last_party_change.get(party_name, 0)) + (after - before)
+
+
+## Applies what a Floor Vote (ST23) did to every party's favorability —
+## { party_name: delta, ... }, straight from FloorVoteEngine.choose()'s own
+## "favorability_deltas". The player's own party's share lands on "Party
+## support" the same way any other stage's win_delta_party_support does;
+## everything else lands on party_standing.
+func apply_floor_vote_favorability(deltas: Dictionary) -> void:
+	var own_party := str(DataDB.player.get("party", ""))
+	for party_name: String in deltas:
+		var delta := int(deltas[party_name])
+		if party_name == own_party:
+			_move_meta("Party support", delta)
+		else:
+			_apply_party_delta(party_name, delta)
 
 
 ## Every segment favorability change goes through here, clamped 0-100

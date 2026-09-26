@@ -1993,5 +1993,47 @@
     "english": "{who} — {org}",
     "placeholders": "who, org",
     "notes": null
+  },
+  {
+    "key": "floor_vote.vote_yes",
+    "where": "National Assembly Floor Voting — Yes choice button",
+    "english": "Vote Yes",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "floor_vote.vote_no",
+    "where": "National Assembly Floor Voting — No choice button",
+    "english": "Vote No",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "floor_vote.vote_abstain",
+    "where": "National Assembly Floor Voting — Abstain choice button",
+    "english": "Abstain",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "floor_vote.title",
+    "where": "National Assembly Floor Voting — outcome panel heading",
+    "english": "The vote is in.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "floor_vote.passed",
+    "where": "National Assembly Floor Voting — outcome body, bill passed",
+    "english": "It passes — {yes} for, {no} against, {abstain} abstaining.",
+    "placeholders": "yes, no, abstain",
+    "notes": null
+  },
+  {
+    "key": "floor_vote.failed",
+    "where": "National Assembly Floor Voting — outcome body, bill failed",
+    "english": "It fails — {yes} for, {no} against, {abstain} abstaining.",
+    "placeholders": "yes, no, abstain",
+    "notes": null
   }
 ]

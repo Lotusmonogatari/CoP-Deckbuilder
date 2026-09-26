@@ -1,0 +1,385 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/FloorVoteScreen.gd" id="1_w08va"]
+[ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_a76vx"]
+[ext_resource type="Script" path="res://scripts/ui/PartyVoteBar.gd" id="3_qsn2u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wueeo"]
+bg_color = Color(0.07, 0.08, 0.11, 0.85)
+
+[node name="FloorVoteScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_w08va")
+
+[node name="Background" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 0.6
+script = ExtResource("2_a76vx")
+
+[node name="BackgroundScrim" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 0.6
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.07, 0.55)
+
+[node name="BackgroundPanel" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.07, 1)
+
+[node name="Safe" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 50
+
+[node name="Column" type="VBoxContainer" parent="Safe"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Header" type="HBoxContainer" parent="Safe/Column"]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="Safe/Column/Header"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StageName" type="Label" parent="Safe/Column/Header/Title"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "National Assembly Floor Voting"
+
+[node name="StageNameJP" type="Label" parent="Safe/Column/Header/Title"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"JapaneseAccent"
+text = "本会議採決"
+
+[node name="PartyRow" type="HBoxContainer" parent="Safe/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Card0" type="VBoxContainer" parent="Safe/Column/PartyRow"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card0"]
+custom_minimum_size = Vector2(100, 130)
+layout_mode = 2
+script = ExtResource("2_a76vx")
+
+[node name="Swatch" type="ColorRect" parent="Safe/Column/PartyRow/Card0"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Safe/Column/PartyRow/Card0"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card0"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Card1" type="VBoxContainer" parent="Safe/Column/PartyRow"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card1"]
+custom_minimum_size = Vector2(100, 130)
+layout_mode = 2
+script = ExtResource("2_a76vx")
+
+[node name="Swatch" type="ColorRect" parent="Safe/Column/PartyRow/Card1"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Safe/Column/PartyRow/Card1"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card1"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Card2" type="VBoxContainer" parent="Safe/Column/PartyRow"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card2"]
+custom_minimum_size = Vector2(100, 130)
+layout_mode = 2
+script = ExtResource("2_a76vx")
+
+[node name="Swatch" type="ColorRect" parent="Safe/Column/PartyRow/Card2"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Safe/Column/PartyRow/Card2"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Card3" type="VBoxContainer" parent="Safe/Column/PartyRow"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card3"]
+custom_minimum_size = Vector2(100, 130)
+layout_mode = 2
+script = ExtResource("2_a76vx")
+
+[node name="Swatch" type="ColorRect" parent="Safe/Column/PartyRow/Card3"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Safe/Column/PartyRow/Card3"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Card4" type="VBoxContainer" parent="Safe/Column/PartyRow"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card4"]
+custom_minimum_size = Vector2(100, 130)
+layout_mode = 2
+script = ExtResource("2_a76vx")
+
+[node name="Swatch" type="ColorRect" parent="Safe/Column/PartyRow/Card4"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Safe/Column/PartyRow/Card4"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Card5" type="VBoxContainer" parent="Safe/Column/PartyRow"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card5"]
+custom_minimum_size = Vector2(100, 130)
+layout_mode = 2
+script = ExtResource("2_a76vx")
+
+[node name="Swatch" type="ColorRect" parent="Safe/Column/PartyRow/Card5"]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Safe/Column/PartyRow/Card5"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card5"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ScrollArea" type="Control" parent="Safe/Column"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollArt" type="Control" parent="Safe/Column/ScrollArea"]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_a76vx")
+
+[node name="TextMargin" type="MarginContainer" parent="Safe/Column/ScrollArea"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="BillText" type="Label" parent="Safe/Column/ScrollArea/TextMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "The bill's own description goes here."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Choices" type="HBoxContainer" parent="Safe/Column"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VoteYes" type="Button" parent="Safe/Column/Choices"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vote Yes"
+
+[node name="VoteNo" type="Button" parent="Safe/Column/Choices"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vote No"
+
+[node name="VoteAbstain" type="Button" parent="Safe/Column/Choices"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Abstain"
+
+[node name="OutcomePanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wueeo")
+
+[node name="Margin" type="MarginContainer" parent="OutcomePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 120
+
+[node name="Scroll" type="ScrollContainer" parent="OutcomePanel/Margin"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Centre" type="CenterContainer" parent="OutcomePanel/Margin/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Column" type="VBoxContainer" parent="OutcomePanel/Margin/Scroll/Centre"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="OutcomeTitle" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+
+[node name="OutcomeBody" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="BarYesRow" type="VBoxContainer" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BarYesLabel" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column/BarYesRow"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "Yes"
+
+[node name="BarYes" type="Control" parent="OutcomePanel/Margin/Scroll/Centre/Column/BarYesRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+script = ExtResource("3_qsn2u")
+
+[node name="BarNoRow" type="VBoxContainer" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BarNoLabel" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column/BarNoRow"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "No"
+
+[node name="BarNo" type="Control" parent="OutcomePanel/Margin/Scroll/Centre/Column/BarNoRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+script = ExtResource("3_qsn2u")
+
+[node name="BarAbstainRow" type="VBoxContainer" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BarAbstainLabel" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column/BarAbstainRow"]
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "Abstain"
+
+[node name="BarAbstain" type="Control" parent="OutcomePanel/Margin/Scroll/Centre/Column/BarAbstainRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+script = ExtResource("3_qsn2u")
+
+[node name="OutcomeClose" type="Button" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
+
+[node name="Notice" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 220.0
+offset_right = 400.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.85)
+theme_override_constants/outline_size = 8
+horizontal_alignment = 1
+autowrap_mode = 3

@@ -72,9 +72,9 @@ func problems() -> PackedStringArray:
 		#
 		# Missing "mode" (every hand-written playtest fixture, and the two
 		# tests just above this one) still gets the check — only a stage that
-		# explicitly declares itself Non-combat is exempt, not merely "not
-		# declared Combat".
-		if str(stage.get("mode", "")) != "Non-combat" \
+		# explicitly declares itself Non-combat or Vote is exempt, not merely
+		# "not declared Combat".
+		if str(stage.get("mode", "")) != "Non-combat" and str(stage.get("mode", "")) != "Vote" \
 				and stage.get("opponents", []).is_empty() and not _asks_questions(stage):
 			found.append("stage %d has neither opponents nor questions" % seq)
 
@@ -85,6 +85,13 @@ func problems() -> PackedStringArray:
 		# than a quiet empty screen.
 		if str(stage.get("mode", "")) == "Non-combat" and stage.get("visitors", []).is_empty():
 			found.append("stage %d has no eligible visitors" % seq)
+
+		# A Vote stage's own equivalent (ST23, National Assembly Floor
+		# Voting): its bill comes from floor_votes.json by level_id, not a
+		# drawn pool, so an empty one means the workbook's Floor Vote Bills
+		# tab has no row for this level.
+		if str(stage.get("mode", "")) == "Vote" and stage.get("floor_vote", {}).is_empty():
+			found.append("stage %d has no floor vote bill" % seq)
 	return found
 
 

@@ -36,8 +36,8 @@ const DATA_PATH := "res://data/"
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
-	"level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
-	"modifiers", "opponent_cues", "opponents",
+	"floor_votes", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
+	"modifiers", "opponent_cues", "opponents", "parties", "party_standing",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
@@ -126,6 +126,19 @@ var player: Dictionary = {}
 ## Every main character the player can choose, in data/player.json's order.
 var protagonists: Array = []
 
+## The six real-world parties (National Assembly Floor Voting, ST23): party
+## name, official colour, and — once Cameron casts one — a Leader Opp ID
+## (an Opponents-tab row) for that party's portrait and cue on the vote
+## screen. See DataDB.get_party().
+var parties: Array = []
+
+## One entry per level that has a Floor Vote stage, by level_id — the
+## bill's own name and scroll text, its per-disposition favorability
+## deltas, and a "positions" list (one row per party: its baked-in
+## Yes/No/Abstain split, disposition, and cue line). See
+## tools/export_data.py's fold_floor_votes() and FloorVoteEngine.gd.
+var floor_votes: Dictionary = {}
+
 ## Where art lives and what it is called (data/art.json). ArtLoader reads it.
 var art: Dictionary = {}
 
@@ -159,6 +172,10 @@ var questions: Dictionary = {}
 ## is bounded by, and what pleasing one is worth. Hand-written.
 var booster_standing: Dictionary = {}
 
+## Where the five parties the player isn't in start and are bounded —
+## data/party_standing.json, hand-written like booster_standing.json.
+var party_standing: Dictionary = {}
+
 ## The IDs of cards that came from playtest_cards.json rather than the
 ## workbook. They sit in `cards` like any other, and this is only here so
 ## that a count against a workbook number knows how many are not the
@@ -191,6 +208,8 @@ var _sanban_by_name: Dictionary = {}
 var _levels_by_id: Dictionary = {}
 var _staff_by_id: Dictionary = {}
 var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
+var _parties_by_name: Dictionary = {}   ## party's own "name" -> its row
+var _parties_by_id: Dictionary = {}     ## "PT01" etc -> its row
 
 ## Problems found at startup. Errors mean something is genuinely broken;
 ## warnings mean a known gap that the game can still run around.
@@ -241,6 +260,8 @@ func load_all() -> void:
 			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": _load_protagonists(content)
 			"office_notices": office_notices = content if content is Array else []
+			"parties": parties = content if content is Array else []
+			"floor_votes": floor_votes = content if content is Dictionary else {}
 
 			"strings": strings = _strings_by_key(content)
 			"card_cues": card_cues = _cues_by_card(content)
@@ -250,6 +271,7 @@ func load_all() -> void:
 				sounds = _map_under(content, file_name, "sounds")
 				speech = _map_under(content, file_name, "speech")
 			"booster_standing": booster_standing = content
+			"party_standing": party_standing = content if content is Dictionary else {}
 			"shop": shop = content
 			"visitors": visitors = content
 			"visitor_questions": visitor_questions = content
@@ -551,6 +573,8 @@ func _build_lookups() -> void:
 	_sanban_by_name = _index(sanban, "name_en")
 	_levels_by_id = _index(levels, "level_id")
 	_staff_by_id = _index(staff, "staff_id")
+	_parties_by_name = _index(parties, "name")
+	_parties_by_id = _index(parties, "party_id")
 
 	_affinity.clear()
 	for row: Dictionary in affinity:
@@ -647,6 +671,27 @@ func get_opponents_for_stage(stage_id: String) -> Array:
 ## A level row from levels.json, by its LV-number ID.
 func get_level(level_id: String) -> Dictionary:
 	return _lookup(_levels_by_id, level_id, "level")
+
+
+## A party row from parties.json, by its own free-text "Party Name" — the
+## same string opponents.json/player.json already carry in their own
+## "party" column, so a caller never has to know PT01-06 exist.
+func get_party(party_name: String) -> Dictionary:
+	return _lookup(_parties_by_name, party_name, "party")
+
+
+## A party row from parties.json, by its PT-number ID rather than its name —
+## what a Floor Vote's own "Party ID" positions carry.
+func get_party_by_id(party_id: String) -> Dictionary:
+	return _lookup(_parties_by_id, party_id, "party")
+
+
+## This level's Floor Vote bill (ST23), or {} when it has none — most levels
+## don't. { "level_id", "bill_name", "bill_description",
+## "favorability_delta_supportive/opposed/neutral", "positions": [...] }.
+func get_floor_vote(level_id: String) -> Dictionary:
+	var bill: Variant = floor_votes.get(level_id, {})
+	return bill if bill is Dictionary else {}
 
 
 func get_staff(staff_id: String) -> Dictionary:
@@ -907,6 +952,21 @@ func _validate() -> void:
 			if not mod_ids.has(mod_id):
 				errors.append("Booster %s links '%s', which is not a modifier" % [booster.get("booster_id"), mod_id])
 
+	var party_ids := _values(parties, "party_id")
+	for party: Dictionary in parties:
+		var leader: Variant = party.get("leader_opp_id")
+		if leader != null and not opp_ids.has(leader):
+			errors.append("Party %s names leader '%s', which is not an opponent" % [party.get("party_id"), leader])
+
+	for level_id: String in floor_votes.keys():
+		if not _levels_by_id.has(level_id):
+			errors.append("floor_votes.json names level '%s', which is not in levels.json" % level_id)
+			continue
+		for position: Dictionary in (get_floor_vote(level_id).get("positions", []) as Array):
+			var party_id: String = str(position.get("party_id", ""))
+			if not party_ids.has(party_id):
+				errors.append("%s's Floor Vote names party '%s', which is not in parties.json" % [level_id, party_id])
+
 	# 2026-09-22 workbook: element_1/element_2 were renamed suit_1/suit_2, and
 	# a third, suit_3, was added. The intent pattern used to be one JSON blob
 	# column with a hand-written fallback for when it was missing; now it is
@@ -963,6 +1023,13 @@ func _validate() -> void:
 						("%s's stage '%s' (slot %d) has no eligible visitor in visitors.json, "
 						+ "so it cannot open until level_visitor_overrides.json pins one "
 						+ "or the workbook adds one.") % [lid, stage_id, slot])
+			elif str(get_stage(str(stage_id)).get("mode", "")) == "Vote":
+				# National Assembly Floor Voting (ST23): draws a bill from
+				# floor_votes.json by this level's own ID, not an opponent.
+				if get_floor_vote(lid).is_empty():
+					warnings.append(
+						("%s's stage '%s' (slot %d) has no Floor Vote bill in the "
+						+ "workbook's Floor Vote Bills tab, so it cannot open.") % [lid, stage_id, slot])
 			elif get_opponents_for_stage(str(stage_id)).is_empty():
 				warnings.append(
 					("%s's stage '%s' (slot %d) has no eligible opponent in opponents.json, "

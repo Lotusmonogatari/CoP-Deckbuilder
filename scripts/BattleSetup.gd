@@ -102,7 +102,27 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		return {}
 	stage = stage.duplicate(true)
 
-	if str(stage.get("mode", "")) == "Non-combat":
+	if str(stage.get("mode", "")) == "Vote":
+		# National Assembly Floor Voting (ST23): not a battle and not a
+		# visitor room — a single Yes/No/Abstain choice against one bill,
+		# generic and reusable exactly like a combat stage, except what's
+		# specific to THIS level is a bill (Floor Vote Bills/Party Positions,
+		# floor_votes.json) rather than an opponent. FloorVoteEngine has no
+		# DataDB of its own, so party_id -> party name is resolved here, the
+		# same separation BattleEngine/CardResolver already keep.
+		stage["opponents"] = []
+		stage["visitors"] = []
+		var bill := DataDB.get_floor_vote(level_id).duplicate(true)
+		var positions: Array = (bill.get("positions", []) as Array).duplicate(true)
+		for position: Dictionary in positions:
+			var party := DataDB.get_party_by_id(str(position.get("party_id", "")))
+			position["party_name"] = str(party.get("name", ""))
+			position["party_color"] = [party.get("r", 128), party.get("g", 128), party.get("b", 128)]
+		bill["positions"] = positions
+		stage["floor_vote"] = bill
+		stage["questions_count"] = 0
+		return stage
+	elif str(stage.get("mode", "")) == "Non-combat":
 		# Office Hours (and the Steering Committee check-in, ST22): not a
 		# battle, so no opponent at all — a drawn pool of visitors instead,
 		# each with its own drawn question already attached, resolved once

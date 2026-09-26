@@ -1,0 +1,21 @@
+{
+  "_README": [
+    "Where the OTHER FIVE parties stand once National Assembly Floor Voting",
+    "(ST23) starts moving more than one party's favorability at a time.",
+    "",
+    "WRITTEN BY HAND, like booster_standing.json and rules.json.",
+    "export_data.py never overwrites it.",
+    "",
+    "The player's OWN party is NOT in here - it already has a number,",
+    "sanban.json's 'Party support', and GameState.party_favorability() reads",
+    "that directly rather than keeping a second copy in sync. This file only",
+    "seeds the five parties the player isn't in, the same way",
+    "booster_standing.json seeds every organisation's own starting number.",
+    "",
+    "EVERY NUMBER IS A PLACEHOLDER awaiting Cameron."
+  ],
+
+  "start": 50,
+  "min": 0,
+  "max": 100
+}

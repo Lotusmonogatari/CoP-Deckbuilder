@@ -1,0 +1,50 @@
+[
+  {
+    "party_id": "PT01",
+    "name": "Butsutou",
+    "r": 255,
+    "g": 140,
+    "b": 0,
+    "leader_opp_id": null
+  },
+  {
+    "party_id": "PT02",
+    "name": "Yezo Heritage Party",
+    "r": 0,
+    "g": 255,
+    "b": 255,
+    "leader_opp_id": null
+  },
+  {
+    "party_id": "PT03",
+    "name": "Frontier Party",
+    "r": 0,
+    "g": 128,
+    "b": 0,
+    "leader_opp_id": null
+  },
+  {
+    "party_id": "PT04",
+    "name": "Five Point Independents",
+    "r": 128,
+    "g": 0,
+    "b": 255,
+    "leader_opp_id": null
+  },
+  {
+    "party_id": "PT05",
+    "name": "Keizaijiyuutou",
+    "r": 255,
+    "g": 0,
+    "b": 0,
+    "leader_opp_id": null
+  },
+  {
+    "party_id": "PT06",
+    "name": "Country Initiative",
+    "r": 150,
+    "g": 75,
+    "b": 0,
+    "leader_opp_id": null
+  }
+]

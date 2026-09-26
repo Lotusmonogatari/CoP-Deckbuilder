@@ -504,6 +504,63 @@ SHEETS = {
             ("Linked modifiers", "linked_modifiers", "list"),
         ],
     },
+    # National Assembly Floor Voting (ST23, 2026-09-26): the six real-world
+    # parties, their official colours, and (once Cameron fills it in) which
+    # Opponents-tab row is each one's leader for that stage's portrait and
+    # cue. Party Name must match the free-text "Party" column on Opponents/
+    # Player exactly — checked below.
+    "Parties": {
+        "out": "parties.json",
+        "key": "party_id",
+        "id_pattern": r"^PT\d+$",
+        "columns": [
+            ("Party ID", "party_id", "id"),
+            ("Party Name", "name", "str"),
+            ("R", "r", "int"),
+            ("G", "g", "int"),
+            ("B", "b", "int"),
+            # Blank until Cameron casts one — never guessed at (CLAUDE.md
+            # §4: never invent canon characters). A blank leader is a
+            # generic placeholder on screen, the same bargain every other
+            # missing-art/missing-cast slot in this project gets.
+            ("Leader Opp ID", "leader_opp_id", "str"),
+        ],
+    },
+    # One row per level that has a Floor Vote stage — the bill's own name,
+    # its scroll text, and the favorability swing each disposition earns
+    # once the vote resolves. Most levels have none; export_data.py never
+    # requires ST23 to appear anywhere just because a bill row exists (and
+    # vice versa) — see the cross-check below.
+    "Floor Vote Bills": {
+        "out": "floor_vote_bills_raw.json",
+        "key": "level_id",
+        "id_pattern": r"^LV\d+$",
+        "columns": [
+            ("Level ID", "level_id", "id"),
+            ("Bill Name (EN)", "bill_name", "str"),
+            ("Bill Description (EN)", "bill_description", "str"),
+            ("Favorability Delta (Supportive)", "favorability_delta_supportive", "int"),
+            ("Favorability Delta (Opposed)", "favorability_delta_opposed", "int"),
+            ("Favorability Delta (Neutral)", "favorability_delta_neutral", "int"),
+        ],
+    },
+    # Six rows per bill above (one per party) — folded into that bill's own
+    # "positions" list by fold_floor_votes() below, the same
+    # bill-plus-positions shape Question Themes folds into each question.
+    "Floor Vote Party Positions": {
+        "out": "floor_vote_positions_raw.json",
+        # No single-column unique key — one row per (Level ID, Party ID)
+        # pair, folded into its bill's own "positions" list below.
+        "columns": [
+            ("Level ID", "level_id", "str"),
+            ("Party ID", "party_id", "str"),
+            ("Votes Yes", "votes_yes", "int"),
+            ("Votes No", "votes_no", "int"),
+            ("Votes Abstain", "votes_abstain", "int"),
+            ("Disposition", "disposition", "str"),
+            ("Cue Text", "cue_text", "str"),
+        ],
+    },
     "Opponents": {
         "out": "opponents.json",
         "key": "opp_id",
@@ -1196,6 +1253,8 @@ def validate(data, report):
     opp_ids = ids_from(data["opponents"], "opp_id")
     level_ids = ids_from(data["levels"], "level_id")
     staff_ids = ids_from(data["staff"], "staff_id")
+    party_ids = ids_from(data.get("parties", []), "party_id")
+    party_names = {r["name"] for r in data.get("parties", []) if r.get("name")}
     # The Balance tab's XP-tier sub-table is gone from this workbook pull, so
     # this is always empty for now, and the card-tier check below is skipped.
     tier_names = set(data["balance"].get("xp_tiers", {}).keys())
@@ -1206,7 +1265,7 @@ def validate(data, report):
         ("cards", "card_id"), ("stages", "stage_id"), ("segments", "segment_id"),
         ("modifiers", "mod_id"), ("boosters", "booster_id"), ("opponents", "opp_id"),
         ("suits", "element"), ("levels", "level_id"), ("staff", "staff_id"),
-        ("shop", "item_id"),
+        ("shop", "item_id"), ("parties", "party_id"),
     ]:
         seen = set()
         for record in data[name]:
@@ -1394,6 +1453,74 @@ def validate(data, report):
                 )
         if not any(cue.get(f"cue_{i}") for i in range(1, 6)):
             report.warn("opponent_cues", f"{cue_id} has no cue lines written")
+
+    # --- parties ---------------------------------------------------------------
+    for party in data.get("parties", []):
+        pid = party["party_id"]
+        for channel in ("r", "g", "b"):
+            value = party.get(channel)
+            if value is not None and not (0 <= value <= 255):
+                report.error("parties", f"{pid} has {channel.upper()} {value}, outside 0-255")
+        leader = party.get("leader_opp_id")
+        if leader and leader not in opp_ids:
+            report.error(
+                "parties",
+                f"{pid} names leader '{leader}', which is not in the Opponents tab",
+            )
+        if not leader:
+            report.warn("parties", f"{pid} has no Leader Opp ID yet, so its screen shows a placeholder")
+
+    # --- floor votes (ST23, National Assembly Floor Voting) -------------------
+    vote_stage_ids = {s["stage_id"] for s in data["stages"] if s.get("mode") == "Vote"}
+    dispositions = {"Supportive", "Opposed", "Neutral"}
+    for level_id, bill in data.get("floor_votes", {}).items():
+        if level_id not in level_ids:
+            report.error(
+                "Floor Vote Bills", f"names level '{level_id}', which is not in the Levels tab",
+            )
+            continue
+        seen_parties = set()
+        for position in bill["positions"]:
+            party_id = position.get("party_id")
+            if party_id not in party_ids:
+                report.error(
+                    "Floor Vote Party Positions",
+                    f"{level_id} names party '{party_id}', which is not in the Parties tab",
+                )
+                continue
+            seen_parties.add(party_id)
+            if position.get("disposition") not in dispositions:
+                report.error(
+                    "Floor Vote Party Positions",
+                    f"{level_id}/{party_id} has disposition '{position.get('disposition')}', "
+                    "which must be Supportive, Opposed, or Neutral",
+                )
+            for vote_field in ("votes_yes", "votes_no", "votes_abstain"):
+                value = position.get(vote_field)
+                if value is not None and value < 0:
+                    report.error(
+                        "Floor Vote Party Positions",
+                        f"{level_id}/{party_id} has a negative {vote_field}",
+                    )
+        for missing in party_ids - seen_parties:
+            report.warn(
+                "Floor Vote Party Positions",
+                f"{level_id} has no row for party '{missing}' — that party sits out this vote",
+            )
+        level = next((lv for lv in data["levels"] if lv["level_id"] == level_id), {})
+        level_stages = {level.get(f"stage_{n}") for n in range(1, 11)}
+        if not level_stages & vote_stage_ids:
+            report.warn(
+                "Floor Vote Bills",
+                f"{level_id} has a bill, but its own stage list has no Floor Vote (Vote-mode) stage",
+            )
+    for level in data["levels"]:
+        lid = level["level_id"]
+        level_stages = {level.get(f"stage_{n}") for n in range(1, 11)}
+        if (level_stages & vote_stage_ids) and lid not in data.get("floor_votes", {}):
+            report.error(
+                "levels", f"{lid} places a Floor Vote stage but has no row in Floor Vote Bills",
+            )
 
     # --- visitors ------------------------------------------------------------
     for visitor in data.get("visitors", []):
@@ -1681,6 +1808,40 @@ def fold_player(data, report):
     if not protagonists:
         report.error("Player", "no protagonists found")
     data["player"] = {"protagonists": protagonists}
+
+
+def fold_floor_votes(data, report):
+    """Folds Floor Vote Bills + Floor Vote Party Positions into
+    data/floor_votes.json, keyed by level_id — {"LV07": {bill fields...,
+    "positions": [{party fields...}, ...]}}. Same bill-plus-rows shape
+    fold_questions() gives each question its "asked_by", but the join key
+    here is level_id rather than a computed stage type, since a Floor Vote
+    is ST23 (National Assembly Floor Voting) played generically wherever a
+    level places it — the bill itself, not the stage, is what's specific to
+    that level (CLAUDE.md §7.5's committee stages are the same idea: a
+    generic stage, a level-specific roster).
+    """
+    bills = data.pop("floor_vote_bills_raw", [])
+    positions = data.pop("floor_vote_positions_raw", [])
+
+    by_level = {}
+    for bill in bills:
+        level_id = bill["level_id"]
+        entry = dict(bill)
+        entry["positions"] = []
+        by_level[level_id] = entry
+
+    for position in positions:
+        level_id = position.get("level_id")
+        if level_id not in by_level:
+            report.error(
+                "Floor Vote Party Positions",
+                f"names level '{level_id}', which has no row in Floor Vote Bills",
+            )
+            continue
+        by_level[level_id]["positions"].append(position)
+
+    data["floor_votes"] = by_level
 
 
 # Which stage type each question tab belongs to. The tabs are named for the
@@ -2010,6 +2171,7 @@ def main():
     apply_staff_names(data, report)
     fold_player(data, report)
     fold_questions(data, report)
+    fold_floor_votes(data, report)
     validate(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)

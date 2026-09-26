@@ -88,6 +88,8 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit. `asked_by` is an opp_id, resolved dynamically from whichever opponents.json rows list that room's stage_id in their own `stages` — never a hardcoded reporter list (`export_data.py`'s `fold_questions()`) |
 | `player.json` | player_id | The four choosable protagonists (PC01–PC04), all cast with real names and parties as of the 2026-09-26 databook. New fields beyond name/party/blurb are display-only for now (Cameron's call) |
 | `office_notices.json` | notice_id | One line of Office-screen flavor text per slot, conditioned on staff hired or a meta-variable threshold — see §13-adjacent `OfficeNotices.gd` |
+| `parties.json` | party_id | The six real parties: name, official RGB colour, Leader Opp ID (blank until Cameron casts one) — §7.7 |
+| `floor_votes.json` | level_id | National Assembly Floor Voting (ST23) bills, one per level that has one: bill text, per-disposition favorability deltas, and a `positions` list (one per party) — §7.7 |
 | `art.json` | kind | Where each kind of picture lives, the expression list and fallbacks |
 | `rules.json`, `stage_types.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |
 
@@ -152,6 +154,14 @@ Items marked **[DEFAULT]** are your implementation choice. Put each one behind a
 ### 7.6 Opponent behavior (MVP)
 Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and block ranges are exported with the opponent data. When a pattern is missing, the fallback comes from `data/rules.json`.
 
+### 7.7 National Assembly Floor Voting (ST23, built 2026-09-26)
+- Not a battle: a single **Vote Yes / Vote No / Abstain** choice against one bill. Mode `"Vote"` (`data/stages.json`), routed by `StageRouting.gd` to its own `FloorVoteScreen.tscn`, the third screen family alongside BattleScreen (Combat) and VisitorScreen (Non-combat).
+- Generic and reusable like any other stage: ST23 itself carries no bill data. A level that places it pulls its own bill from `data/floor_votes.json`, keyed by **level_id** — the workbook's **Floor Vote Bills** tab (one row per level: bill name, scroll description, and a favorability delta per disposition) joined with **Floor Vote Party Positions** (one row per level per party: its baked-in Yes/No/Abstain split, its disposition — Supportive/Opposed/Neutral — and its leader's cue line for this bill). `tools/export_data.py`'s `fold_floor_votes()` does the join, the same shape `fold_questions()` gives each question its `asked_by`.
+- **The six real parties** live in a new **Parties** tab / `data/parties.json`: name, official RGB colour, and a Leader Opp ID (an Opponents-tab row) for that party's portrait and cue — blank until Cameron casts one, same bargain as any other missing-art/missing-cast slot. Party Name is the same free-text string `opponents.json`/`player.json` already carry as `party`, so nothing new has to be renamed.
+- **The player's own seat is assumed to be wherever their party's own majority already sits** (Yes, No, or Abstain, whichever bucket is biggest — Cameron's call, 2026-09-26, over an explicit authored field). Voting anything else moves exactly one seat out of that assumed bucket into whichever the player actually picked. `FloorVoteEngine.majority_bucket()`/`choose()`.
+- **Party favorability** (new mechanic): every party's own standing moves after the vote, unconditionally on its own disposition — a bill's three deltas (Favorability Delta: Supportive/Opposed/Neutral) apply to every party that held that stance, regardless of whether the bill passed. The player's own party's share lands on the existing `Party support` sanban variable directly (no second number to keep in sync); the other five live in `GameState.party_standing`, seeded from `data/party_standing.json` the same way `booster_standing.json` seeds organisation standing. `GameState.party_favorability()`/`apply_floor_vote_favorability()`.
+- Cannot be lost, the same as Office Hours — a decision, not a contest. Worth whatever the stage's own `win_delta_*` fields say.
+
 ## 8. Meta systems
 
 | System | Rule |
@@ -163,6 +173,7 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 | Party support < 50 | **Built** (2026-09-25), same mechanism, M10 (Cold Shoulder) — though M10's own effect (UNLOCK_DISCOUNT) has no consumer anywhere yet, a pre-existing gap this wiring didn't open. |
 | Party support < 25 | **Built** (2026-09-25), redesigned from "insert the Steering Committee stage (ST08)": ST08 is already a Combat stage hand-placed in 7 real levels, so repurposing it would have changed what they do. Inserts a **new** Non-combat stage instead, ST22 "Party Steering Committee Check-In" — Office Hours' own visitor-event machinery, reused wholesale, with one placeholder visitor (VI04) and question (VQ04). The original entry-cost idea (disabling a Kōenkai/Bankisha modifier) is not built — "Bankisha" doesn't map to any of the 16 current organisations. |
 | Office hours (ST07) | Non-combat. Five time slots. Visitor event cards come from `visitors.json`. Each card offers 2 choices, and each choice has outcome deltas to Jiban, Kaban, party support, or funds. |
+| Party favorability | **Built** (2026-09-26). National Assembly Floor Voting (ST23) is the first stage to move more than the player's own party's standing at once — see §7.7. |
 | XP checkpoint | Shown between modules. Spend XP to unlock cards at their tier cost from `balance.json`. Upgrade cost is 30 XP **[DEFAULT]**. |
 | Save | **Built.** One slot, `user://savegame.json`, written after every stage, whenever the Office opens or something is bought or changed there, and when the app is backgrounded outside a stage. A stage in progress is never saved: reopening mid-stage restarts that stage. No save on launch opens the New Game screen. |
 
@@ -201,6 +212,14 @@ options are authoritative; the table below describes the current settings:
   not a decision made on his behalf.
 - **The `weak_answer_tone_cost` number.** The current value is 1 in
   `stage_types.json`; the file labels it as a placeholder pending playtesting.
+- **Who leads each party.** `data/parties.json`'s Leader Opp ID is blank for
+  all six — an existing Opponents-tab MP per party is Cameron's to name, not
+  a casting decision made on his behalf (§7.7). Blank shows a generic
+  placeholder leader on the Floor Vote screen in the meantime.
+- **Floor Vote content.** No level has a row in the workbook's Floor Vote
+  Bills / Floor Vote Party Positions tabs yet — the mechanism (§7.7) is
+  built and tested against fabricated data, but every real bill's text, vote
+  splits, dispositions, and cue lines are still Cameron's to write.
 - **The Theme → organisation mapping.** The workbook's Question Themes tab
   maps its themes to organizations, with the reasoning for
   each in a Why column. It is a **draft Claude wrote for Cameron to correct**,

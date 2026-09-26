@@ -11,10 +11,15 @@ extends RefCounted
 
 const BATTLE_SCENE := "res://scenes/battle/BattleScreen.tscn"
 const VISITOR_SCENE := "res://scenes/office_hours/VisitorScreen.tscn"
+const FLOOR_VOTE_SCENE := "res://scenes/office_hours/FloorVoteScreen.tscn"
 const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 
 
 ## The screen this stage plays on — VisitorScreen for Office Hours (mode
-## "Non-combat"), BattleScreen for everything else.
+## "Non-combat"), FloorVoteScreen for National Assembly Floor Voting (mode
+## "Vote"), BattleScreen for everything else.
 static func scene_for(stage: Dictionary) -> String:
-	return VISITOR_SCENE if str(stage.get("mode", "")) == "Non-combat" else BATTLE_SCENE
+	match str(stage.get("mode", "")):
+		"Non-combat": return VISITOR_SCENE
+		"Vote": return FLOOR_VOTE_SCENE
+		_: return BATTLE_SCENE
