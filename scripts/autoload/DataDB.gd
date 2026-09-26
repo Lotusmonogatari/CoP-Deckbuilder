@@ -132,11 +132,13 @@ var protagonists: Array = []
 ## screen. See DataDB.get_party().
 var parties: Array = []
 
-## One entry per level that has a Floor Vote stage, by level_id — the
-## bill's own name and scroll text, its per-disposition favorability
-## deltas, and a "positions" list (one row per party: its baked-in
-## Yes/No/Abstain split, disposition, and cue line). See
-## tools/export_data.py's fold_floor_votes() and FloorVoteEngine.gd.
+## One entry per Floor Vote bill, by bill_id (BIxx — its own namespace,
+## separate from level_id: 2026-09-26, Cameron) — the bill's own name and
+## scroll text, its per-disposition favorability deltas, which level it
+## belongs to ("level_id"), and a "positions" list (one row per party: its
+## baked-in Yes/No/Abstain split, disposition, and cue line). Callers ask
+## for a level's bill by level_id, not bill_id — see get_floor_vote() and
+## tools/export_data.py's fold_floor_votes().
 var floor_votes: Dictionary = {}
 
 ## Where art lives and what it is called (data/art.json). ArtLoader reads it.
@@ -210,6 +212,7 @@ var _staff_by_id: Dictionary = {}
 var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
 var _parties_by_name: Dictionary = {}   ## party's own "name" -> its row
 var _parties_by_id: Dictionary = {}     ## "PT01" etc -> its row
+var _floor_vote_by_level: Dictionary = {}   ## level_id -> its own bill's row in floor_votes
 
 ## Problems found at startup. Errors mean something is genuinely broken;
 ## warnings mean a known gap that the game can still run around.
@@ -576,6 +579,12 @@ func _build_lookups() -> void:
 	_parties_by_name = _index(parties, "name")
 	_parties_by_id = _index(parties, "party_id")
 
+	_floor_vote_by_level.clear()
+	for bill: Dictionary in floor_votes.values():
+		var level_id: Variant = bill.get("level_id")
+		if level_id != null:
+			_floor_vote_by_level[level_id] = bill
+
 	_affinity.clear()
 	for row: Dictionary in affinity:
 		_affinity[row.get("element", "")] = row.get("multipliers", {})
@@ -687,11 +696,18 @@ func get_party_by_id(party_id: String) -> Dictionary:
 
 
 ## This level's Floor Vote bill (ST23), or {} when it has none — most levels
-## don't. { "level_id", "bill_name", "bill_description",
+## don't. { "bill_id", "level_id", "bill_name", "bill_description",
 ## "favorability_delta_supportive/opposed/neutral", "positions": [...] }.
+## Looked up by level_id, not bill_id — see get_bill() for the other
+## direction, and floor_votes' own doc comment for why the two differ.
 func get_floor_vote(level_id: String) -> Dictionary:
-	var bill: Variant = floor_votes.get(level_id, {})
+	var bill: Variant = _floor_vote_by_level.get(level_id, {})
 	return bill if bill is Dictionary else {}
+
+
+## A bill by its own ID (BIxx), rather than by which level plays it.
+func get_bill(bill_id: String) -> Dictionary:
+	return _lookup(floor_votes, bill_id, "Floor Vote bill")
 
 
 func get_staff(staff_id: String) -> Dictionary:
@@ -958,14 +974,16 @@ func _validate() -> void:
 		if leader != null and not opp_ids.has(leader):
 			errors.append("Party %s names leader '%s', which is not an opponent" % [party.get("party_id"), leader])
 
-	for level_id: String in floor_votes.keys():
+	for bill_id: String in floor_votes.keys():
+		var bill: Dictionary = floor_votes[bill_id]
+		var level_id: String = str(bill.get("level_id", ""))
 		if not _levels_by_id.has(level_id):
-			errors.append("floor_votes.json names level '%s', which is not in levels.json" % level_id)
+			errors.append("floor_votes.json: bill %s names level '%s', which is not in levels.json" % [bill_id, level_id])
 			continue
-		for position: Dictionary in (get_floor_vote(level_id).get("positions", []) as Array):
+		for position: Dictionary in (bill.get("positions", []) as Array):
 			var party_id: String = str(position.get("party_id", ""))
 			if not party_ids.has(party_id):
-				errors.append("%s's Floor Vote names party '%s', which is not in parties.json" % [level_id, party_id])
+				errors.append("%s's Floor Vote names party '%s', which is not in parties.json" % [bill_id, party_id])
 
 	# 2026-09-22 workbook: element_1/element_2 were renamed suit_1/suit_2, and
 	# a third, suit_3, was added. The intent pattern used to be one JSON blob

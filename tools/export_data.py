@@ -532,17 +532,25 @@ SHEETS = {
             ("Seats", "seats", "int"),
         ],
     },
-    # One row per level that has a Floor Vote stage — the bill's own name,
-    # its scroll text, and the favorability swing each disposition earns
-    # once the vote resolves. Most levels have none; export_data.py never
+    # One row per bill for National Assembly Floor Voting (ST23) — the
+    # bill's own name, its scroll text, and the favorability swing each
+    # disposition earns once the vote resolves. Bill ID (BIxx) is its own
+    # namespace, separate from Level ID (2026-09-26, Cameron — reusing LVxx
+    # as the bill's own key conflated "the bill" with "the level", and nothing
+    # stops a level from someday reusing a bill or a bill outliving the level
+    # it was written for). Level ID here is the ordinary reverse link a level
+    # follows to find its own bill — see fold_floor_votes() and
+    # DataDB.get_floor_vote(). Most levels have none; export_data.py never
     # requires ST23 to appear anywhere just because a bill row exists (and
-    # vice versa) — see the cross-check below.
+    # vice versa), nor a bill to exist just because a level has an ST23 slot
+    # — see the cross-check below.
     "Floor Vote Bills": {
         "out": "floor_vote_bills_raw.json",
-        "key": "level_id",
-        "id_pattern": r"^LV\d+$",
+        "key": "bill_id",
+        "id_pattern": r"^BI\d+$",
         "columns": [
-            ("Level ID", "level_id", "id"),
+            ("Bill ID", "bill_id", "id"),
+            ("Level ID", "level_id", "str"),
             ("Bill Name (EN)", "bill_name", "str"),
             ("Bill Description (EN)", "bill_description", "str"),
             ("Favorability Delta (Supportive)", "favorability_delta_supportive", "int"),
@@ -555,10 +563,10 @@ SHEETS = {
     # bill-plus-positions shape Question Themes folds into each question.
     "Floor Vote Party Positions": {
         "out": "floor_vote_positions_raw.json",
-        # No single-column unique key — one row per (Level ID, Party ID)
+        # No single-column unique key — one row per (Bill ID, Party ID)
         # pair, folded into its bill's own "positions" list below.
         "columns": [
-            ("Level ID", "level_id", "str"),
+            ("Bill ID", "bill_id", "str"),
             ("Party ID", "party_id", "str"),
             ("Votes Yes", "votes_yes", "int"),
             ("Votes No", "votes_no", "int"),
@@ -1495,10 +1503,14 @@ def validate(data, report):
     # --- floor votes (ST23, National Assembly Floor Voting) -------------------
     vote_stage_ids = {s["stage_id"] for s in data["stages"] if s.get("mode") == "Vote"}
     dispositions = {"Supportive", "Opposed", "Neutral"}
-    for level_id, bill in data.get("floor_votes", {}).items():
-        if level_id not in level_ids:
+    level_ids_with_bills = set()
+    for bill_id, bill in data.get("floor_votes", {}).items():
+        level_id = bill.get("level_id")
+        if level_id is not None:
+            level_ids_with_bills.add(level_id)
+        if level_id is None or level_id not in level_ids:
             report.error(
-                "Floor Vote Bills", f"names level '{level_id}', which is not in the Levels tab",
+                "Floor Vote Bills", f"{bill_id} names level '{level_id}', which is not in the Levels tab",
             )
             continue
         seen_parties = set()
@@ -1507,14 +1519,14 @@ def validate(data, report):
             if party_id not in party_ids:
                 report.error(
                     "Floor Vote Party Positions",
-                    f"{level_id} names party '{party_id}', which is not in the Parties tab",
+                    f"{bill_id} names party '{party_id}', which is not in the Parties tab",
                 )
                 continue
             seen_parties.add(party_id)
             if position.get("disposition") not in dispositions:
                 report.error(
                     "Floor Vote Party Positions",
-                    f"{level_id}/{party_id} has disposition '{position.get('disposition')}', "
+                    f"{bill_id}/{party_id} has disposition '{position.get('disposition')}', "
                     "which must be Supportive, Opposed, or Neutral",
                 )
             for vote_field in ("votes_yes", "votes_no", "votes_abstain"):
@@ -1522,24 +1534,25 @@ def validate(data, report):
                 if value is not None and value < 0:
                     report.error(
                         "Floor Vote Party Positions",
-                        f"{level_id}/{party_id} has a negative {vote_field}",
+                        f"{bill_id}/{party_id} has a negative {vote_field}",
                     )
         for missing in party_ids - seen_parties:
             report.warn(
                 "Floor Vote Party Positions",
-                f"{level_id} has no row for party '{missing}' — that party sits out this vote",
+                f"{bill_id} has no row for party '{missing}' — that party sits out this vote",
             )
         level = next((lv for lv in data["levels"] if lv["level_id"] == level_id), {})
         level_stages = {level.get(f"stage_{n}") for n in range(1, 11)}
         if not level_stages & vote_stage_ids:
             report.warn(
                 "Floor Vote Bills",
-                f"{level_id} has a bill, but its own stage list has no Floor Vote (Vote-mode) stage",
+                f"{bill_id} is for level '{level_id}', but that level's own stage list has "
+                "no Floor Vote (Vote-mode) stage",
             )
     for level in data["levels"]:
         lid = level["level_id"]
         level_stages = {level.get(f"stage_{n}") for n in range(1, 11)}
-        if (level_stages & vote_stage_ids) and lid not in data.get("floor_votes", {}):
+        if (level_stages & vote_stage_ids) and lid not in level_ids_with_bills:
             report.error(
                 "levels", f"{lid} places a Floor Vote stage but has no row in Floor Vote Bills",
             )
@@ -1834,36 +1847,48 @@ def fold_player(data, report):
 
 def fold_floor_votes(data, report):
     """Folds Floor Vote Bills + Floor Vote Party Positions into
-    data/floor_votes.json, keyed by level_id — {"LV07": {bill fields...,
-    "positions": [{party fields...}, ...]}}. Same bill-plus-rows shape
-    fold_questions() gives each question its "asked_by", but the join key
-    here is level_id rather than a computed stage type, since a Floor Vote
-    is ST23 (National Assembly Floor Voting) played generically wherever a
-    level places it — the bill itself, not the stage, is what's specific to
-    that level (CLAUDE.md §7.5's committee stages are the same idea: a
-    generic stage, a level-specific roster).
+    data/floor_votes.json, keyed by bill_id (BIxx) — {"BI01": {bill
+    fields..., "level_id": "LV07", "positions": [{party fields...}, ...]}}.
+    Same bill-plus-rows shape fold_questions() gives each question its
+    "asked_by". Bill ID is its own namespace, separate from Level ID
+    (2026-09-26, Cameron) — each bill still names which level it belongs to
+    (its own "level_id" field), and DataDB.get_floor_vote(level_id) is the
+    one place that reverse lookup happens, so nothing downstream (BattleSetup,
+    FloorVoteEngine) had to change for the rename.
     """
     bills = data.pop("floor_vote_bills_raw", [])
     positions = data.pop("floor_vote_positions_raw", [])
 
-    by_level = {}
+    by_bill = {}
+    seen_level_ids = {}
     for bill in bills:
-        level_id = bill["level_id"]
+        bill_id = bill["bill_id"]
+        if bill_id in by_bill:
+            report.error("Floor Vote Bills", f"bill_id '{bill_id}' appears more than once")
+        level_id = bill.get("level_id")
+        if level_id in seen_level_ids:
+            report.error(
+                "Floor Vote Bills",
+                f"{bill_id} and {seen_level_ids[level_id]} both name level "
+                f"'{level_id}' — a level plays at most one bill",
+            )
+        elif level_id is not None:
+            seen_level_ids[level_id] = bill_id
         entry = dict(bill)
         entry["positions"] = []
-        by_level[level_id] = entry
+        by_bill[bill_id] = entry
 
     for position in positions:
-        level_id = position.get("level_id")
-        if level_id not in by_level:
+        bill_id = position.get("bill_id")
+        if bill_id not in by_bill:
             report.error(
                 "Floor Vote Party Positions",
-                f"names level '{level_id}', which has no row in Floor Vote Bills",
+                f"names bill '{bill_id}', which has no row in Floor Vote Bills",
             )
             continue
-        by_level[level_id]["positions"].append(position)
+        by_bill[bill_id]["positions"].append(position)
 
-    data["floor_votes"] = by_level
+    data["floor_votes"] = by_bill
 
 
 # Which stage type each question tab belongs to. The tabs are named for the

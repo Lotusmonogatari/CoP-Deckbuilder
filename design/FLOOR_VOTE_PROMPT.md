@@ -11,7 +11,9 @@ content prompt in this project (`design/CONTENT_PROMPT.md`).
 ## What you (Cameron) provide
 
 Per bill:
-- Which **level** it belongs to (an LVxx that either already has an ST23
+- A **Bill ID** (BIxx — its own namespace, separate from Level ID: 2026-09-26,
+  reusing LVxx as the bill's own key conflated "the bill" with "the level")
+  and which **level** it belongs to (an LVxx that either already has an ST23
   slot, or will get one)
 - A short **bill name** and a plain-English **description** (this becomes
   the scroll's own text)
@@ -28,15 +30,19 @@ actual rows.
 
 | Tab | Key | Columns |
 |---|---|---|
-| **Floor Vote Bills** | Level ID | Bill Name (EN), Bill Description (EN), Favorability Delta (Supportive), Favorability Delta (Opposed), Favorability Delta (Neutral) |
-| **Floor Vote Party Positions** | Level ID + Party ID | Votes Yes, Votes No, Votes Abstain, Disposition, Cue Text |
+| **Floor Vote Bills** | Bill ID | Level ID (which level plays it), Bill Name (EN), Bill Description (EN), Favorability Delta (Supportive), Favorability Delta (Opposed), Favorability Delta (Neutral) |
+| **Floor Vote Party Positions** | Bill ID + Party ID | Votes Yes, Votes No, Votes Abstain, Disposition, Cue Text |
 
-One Bills row per level; six Party Positions rows per bill (Butsutou, Yezo
-Heritage Party, Frontier Party, Five Point Independents, Keizaijiyuutou,
-Country Initiative — `data/parties.json`'s PT01-06). A level needs an ST23
-slot in its own `stage_1..stage_10` AND a Bills row to actually play — either
+One Bills row per bill; six Party Positions rows per bill, keyed by that
+same Bill ID (Butsutou, Yezo Heritage Party, Frontier Party, Five Point
+Independents, Keizaijiyuutou, Country Initiative — `data/parties.json`'s
+PT01-06). A level plays at most one bill (two Bills rows naming the same
+Level ID is an export error) — a level needs an ST23 slot in its own
+`stage_1..stage_10` AND a Bills row naming it to actually play — either
 alone does nothing (the exporter errors on a Vote-mode slot with no bill,
-and warns on a bill with nowhere to be voted on).
+and warns on a bill with nowhere to be voted on). `DataDB.get_floor_vote
+(level_id)` is how the game finds a level's own bill at runtime;
+`DataDB.get_bill(bill_id)` looks one up directly.
 
 ---
 
@@ -112,7 +118,8 @@ line reused everywhere. Still:
 ## The batch block
 
 ```
-Bill: <Level ID> — <bill name>, <one-line description of what it does>
+Bill: <Bill ID, e.g. BI01> for <Level ID> — <bill name>, <one-line
+  description of what it does>
 Overall salience: <High | Ordinary | Low-stakes>
 
 Party positions (position, salience):
@@ -134,8 +141,8 @@ other content change.
 ## Worked example
 
 ```
-Bill: LV10 — Hometown Markets Protection Act, tariffs on imported goods
-  competing with local producers
+Bill: BI01 for LV10 — Hometown Markets Protection Act, tariffs on imported
+  goods competing with local producers
 Overall salience: High-stakes
 
 Party positions:
@@ -147,13 +154,13 @@ Party positions:
   Country Initiative (11 seats):       Support, Low
 ```
 
-**Floor Vote Bills** (LV10):
+**Floor Vote Bills**:
 
-| Bill Name | Bill Description | Fav. Δ Supportive | Fav. Δ Opposed | Fav. Δ Neutral |
-|---|---|---|---|---|
-| Hometown Markets Protection Act | Tariffs on imported goods competing with local producers. | +5 | −5 | 0 |
+| Bill ID | Level ID | Bill Name | Bill Description | Fav. Δ Supportive | Fav. Δ Opposed | Fav. Δ Neutral |
+|---|---|---|---|---|---|---|
+| BI01 | LV10 | Hometown Markets Protection Act | Tariffs on imported goods competing with local producers. | +5 | −5 | 0 |
 
-**Floor Vote Party Positions** (LV10):
+**Floor Vote Party Positions** (BI01):
 
 | Party | Yes | No | Abstain | Disposition | Cue Text |
 |---|---|---|---|---|---|
