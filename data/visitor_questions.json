@@ -22,15 +22,15 @@
       "VI02"
     ],
     "question_text": "When will we fly?",
-    "choice_a": "More funding for schools",
-    "choice_b": "Lower local taxes",
-    "choice_c": "Nothing, everything is fine",
-    "choice_d": "A new stadium",
+    "choice_a": "Soon — I'm working on it personally.",
+    "choice_b": "That's not really up to me.",
+    "choice_c": "Never, if I have anything to say about it.",
+    "choice_d": "Ask my staff, not me.",
     "correct_choice": "A",
-    "response_right": "Exactly what I've been saying!",
-    "response_wrong": "Hm, I'm not sure that's right.",
-    "reaction_right": "Nods approvingly.",
-    "reaction_wrong": "Frowns, unconvinced."
+    "response_right": "I like the sound of that!",
+    "response_wrong": "That's not the answer I wanted.",
+    "reaction_right": "Grins and gives a thumbs up.",
+    "reaction_wrong": "Sighs and looks away."
   },
   {
     "question_id": "VQ03",
@@ -39,15 +39,15 @@
       "VI03"
     ],
     "question_text": "Buy my steam shovel?",
-    "choice_a": "More funding for schools",
-    "choice_b": "Lower local taxes",
-    "choice_c": "Nothing, everything is fine",
-    "choice_d": "A new stadium",
+    "choice_a": "Let's talk details after the visit.",
+    "choice_b": "Not today, but thank you.",
+    "choice_c": "Absolutely, sign me up right now.",
+    "choice_d": "Why would I need a steam shovel?",
     "correct_choice": "A",
-    "response_right": "Exactly what I've been saying!",
-    "response_wrong": "Hm, I'm not sure that's right.",
-    "reaction_right": "Nods approvingly.",
-    "reaction_wrong": "Frowns, unconvinced."
+    "response_right": "Wonderful! I'll have my people call yours.",
+    "response_wrong": "...Fine. I'll find another buyer.",
+    "reaction_right": "Shakes hands enthusiastically.",
+    "reaction_wrong": "Crosses arms, unimpressed."
   },
   {
     "question_id": "VQ04",
