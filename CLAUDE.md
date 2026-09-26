@@ -88,7 +88,7 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit. `asked_by` is an opp_id, resolved dynamically from whichever opponents.json rows list that room's stage_id in their own `stages` — never a hardcoded reporter list (`export_data.py`'s `fold_questions()`) |
 | `player.json` | player_id | The four choosable protagonists (PC01–PC04), all cast with real names and parties as of the 2026-09-26 databook. New fields beyond name/party/blurb are display-only for now (Cameron's call) |
 | `office_notices.json` | notice_id | One line of Office-screen flavor text per slot, conditioned on staff hired or a meta-variable threshold — see §13-adjacent `OfficeNotices.gd` |
-| `parties.json` | party_id | The six real parties: name, official RGB colour, Leader Opp ID (blank until Cameron casts one) — §7.7 |
+| `parties.json` | party_id | The six real parties: name, official RGB colour, seat count (the real Sep-18 session, summing to 101), Leader Opp ID (blank until Cameron casts one) — §7.7 |
 | `floor_votes.json` | level_id | National Assembly Floor Voting (ST23) bills, one per level that has one: bill text, per-disposition favorability deltas, and a `positions` list (one per party) — §7.7 |
 | `art.json` | kind | Where each kind of picture lives, the expression list and fallbacks |
 | `rules.json`, `stage_types.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |

@@ -524,6 +524,12 @@ SHEETS = {
             # generic placeholder on screen, the same bargain every other
             # missing-art/missing-cast slot in this project gets.
             ("Leader Opp ID", "leader_opp_id", "str"),
+            # The real Sep-18 session of parliament (2026-09-26, Cameron —
+            # an earlier May-18 snapshot he sent was a prior, superseded
+            # session). Fixed per party across every bill, not re-rolled per
+            # vote — see design/FLOOR_VOTE_PROMPT.md's own open question,
+            # now answered. Sums to CLAUDE.md §4's 101 seats.
+            ("Seats", "seats", "int"),
         ],
     },
     # One row per level that has a Floor Vote stage — the bill's own name,
@@ -1469,6 +1475,14 @@ def validate(data, report):
             )
         if not leader:
             report.warn("parties", f"{pid} has no Leader Opp ID yet, so its screen shows a placeholder")
+        if party.get("seats") is not None and party["seats"] < 0:
+            report.error("parties", f"{pid} has {party['seats']} seats, which is negative")
+
+    total_seats = sum(p.get("seats") or 0 for p in data.get("parties", []))
+    if total_seats and total_seats != 101:
+        report.warn(
+            "parties", f"seats add up to {total_seats}, not the 101-seat house CLAUDE.md §4 fixes",
+        )
 
     # --- floor votes (ST23, National Assembly Floor Voting) -------------------
     vote_stage_ids = {s["stage_id"] for s in data["stages"] if s.get("mode") == "Vote"}

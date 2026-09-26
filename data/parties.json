@@ -5,7 +5,8 @@
     "r": 255,
     "g": 140,
     "b": 0,
-    "leader_opp_id": null
+    "leader_opp_id": null,
+    "seats": 19
   },
   {
     "party_id": "PT02",
@@ -13,7 +14,8 @@
     "r": 0,
     "g": 255,
     "b": 255,
-    "leader_opp_id": null
+    "leader_opp_id": null,
+    "seats": 14
   },
   {
     "party_id": "PT03",
@@ -21,7 +23,8 @@
     "r": 0,
     "g": 128,
     "b": 0,
-    "leader_opp_id": null
+    "leader_opp_id": null,
+    "seats": 27
   },
   {
     "party_id": "PT04",
@@ -29,7 +32,8 @@
     "r": 128,
     "g": 0,
     "b": 255,
-    "leader_opp_id": null
+    "leader_opp_id": null,
+    "seats": 5
   },
   {
     "party_id": "PT05",
@@ -37,7 +41,8 @@
     "r": 255,
     "g": 0,
     "b": 0,
-    "leader_opp_id": null
+    "leader_opp_id": null,
+    "seats": 25
   },
   {
     "party_id": "PT06",
@@ -45,6 +50,7 @@
     "r": 150,
     "g": 75,
     "b": 0,
-    "leader_opp_id": null
+    "leader_opp_id": null,
+    "seats": 11
   }
 ]

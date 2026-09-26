@@ -40,25 +40,25 @@ and warns on a bill with nowhere to be voted on).
 
 ---
 
-## ⚠ One open question this prompt can't resolve on its own
+## Seat counts (resolved 2026-09-26)
 
-**Nothing in the current data says how many seats each party holds.**
-`data/parties.json` deliberately has no seat count (dropped during the
-original build so as not to invent a canon number). CLAUDE.md §4 fixes the
-**total** at 101 seats, 51 to win — but the six-way split is Cameron's canon
-fact, not something to guess at.
+`data/parties.json` now carries each party's real seat count, from the
+Sep-18 session of parliament (Cameron — an earlier May-18 snapshot he sent
+first was a prior, superseded session):
 
-Two ways to proceed, your call:
-1. **Give a seat count per party once**, and every bill's Votes Yes + Votes
-   No + Votes Abstain for that party adds up to that same fixed number every
-   time (the realistic reading — a party's own seat count doesn't change
-   bill to bill, only how its members split).
-2. **Let each bill's per-party total vary freely** (absences, free votes) —
-   in which case there's no fixed number to check against, and each bill's
-   numbers stand alone.
+| Party | Seats |
+|---|---|
+| Butsutou | 19 |
+| Yezo Heritage Party | 14 |
+| Frontier Party | 27 |
+| Five Point Independents | 5 |
+| Keizaijiyuutou | 25 |
+| Country Initiative | 11 |
+| **Total** | **101** |
 
-Everything below assumes **(1)**, since it's what "unicameral, 101 seats"
-implies, but flags it rather than silently deciding it.
+Fixed per party across every bill, not re-rolled per vote — a bill's Votes
+Yes + Votes No + Votes Abstain for a given party always add up to that
+party's own row above.
 
 ---
 
@@ -116,17 +116,12 @@ Bill: <Level ID> — <bill name>, <one-line description of what it does>
 Overall salience: <High | Ordinary | Low-stakes>
 
 Party positions (position, salience):
-  Butsutou:                 <Support/Oppose/Neutral, High/Medium/Low>
-  Yezo Heritage Party:       <...>
-  Frontier Party:            <...>
-  Five Point Independents:   <...>
-  Keizaijiyuutou:            <...>
-  Country Initiative:        <...>
-
-Party seat counts (only needed once, then reused for every bill):
-  Butsutou: <n>   Yezo Heritage Party: <n>   Frontier Party: <n>
-  Five Point Independents: <n>   Keizaijiyuutou: <n>   Country Initiative: <n>
-  (must add to 101)
+  Butsutou (19 seats):                 <Support/Oppose/Neutral, High/Medium/Low>
+  Yezo Heritage Party (14 seats):      <...>
+  Frontier Party (27 seats):           <...>
+  Five Point Independents (5 seats):   <...>
+  Keizaijiyuutou (25 seats):           <...>
+  Country Initiative (11 seats):       <...>
 ```
 
 Hand me (or another LLM) this block filled in, and the output is one Floor
@@ -144,16 +139,12 @@ Bill: LV10 — Hometown Markets Protection Act, tariffs on imported goods
 Overall salience: High-stakes
 
 Party positions:
-  Butsutou:                 Support, Medium
-  Yezo Heritage Party:      Oppose, High
-  Frontier Party:           Support, High
-  Five Point Independents:  Neutral, Low
-  Keizaijiyuutou:           Oppose, Medium
-  Country Initiative:       Support, Low
-
-Party seats: Butsutou 15, Yezo Heritage Party 20, Frontier Party 22,
-Five Point Independents 8, Keizaijiyuutou 24, Country Initiative 12
-(= 101)
+  Butsutou (19 seats):                 Support, Medium
+  Yezo Heritage Party (14 seats):      Oppose, High
+  Frontier Party (27 seats):           Support, High
+  Five Point Independents (5 seats):   Neutral, Low
+  Keizaijiyuutou (25 seats):           Oppose, Medium
+  Country Initiative (11 seats):       Support, Low
 ```
 
 **Floor Vote Bills** (LV10):
@@ -166,9 +157,9 @@ Five Point Independents 8, Keizaijiyuutou 24, Country Initiative 12
 
 | Party | Yes | No | Abstain | Disposition | Cue Text |
 |---|---|---|---|---|---|
-| Butsutou | 10 | 5 | 0 | Supportive | "Our producers deserve this." |
-| Yezo Heritage Party | 2 | 18 | 0 | Opposed | "This punishes every shopper in Yezo." |
-| Frontier Party | 20 | 2 | 0 | Supportive | "We need every vote!" |
-| Five Point Independents | 1 | 1 | 6 | Neutral | "We're not convinced either way." |
-| Keizaijiyuutou | 5 | 19 | 0 | Opposed | "Markets should decide this, not us." |
-| Country Initiative | 8 | 4 | 0 | Supportive | "Long overdue for our districts." |
+| Butsutou | 15 | 4 | 0 | Supportive | "Our producers deserve this." |
+| Yezo Heritage Party | 1 | 13 | 0 | Opposed | "This punishes every shopper in Yezo." |
+| Frontier Party | 25 | 2 | 0 | Supportive | "We need every vote!" |
+| Five Point Independents | 1 | 1 | 3 | Neutral | "We're not convinced either way." |
+| Keizaijiyuutou | 6 | 19 | 0 | Opposed | "Markets should decide this, not us." |
+| Country Initiative | 7 | 4 | 0 | Supportive | "Long overdue for our districts." |
