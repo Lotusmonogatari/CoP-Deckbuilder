@@ -546,6 +546,33 @@ they differ, shows a new line (`rhetoric.draw_in_progress`) saying a
 session is already open — the draw itself is unchanged, only the player
 now knows why.
 
+**Party names, coloured everywhere by their own official RGB**
+(2026-09-28). `FloorVoteScreen.gd` already coloured each party's own name
+by its `data/parties.json` row (`r`/`g`/`b`, 0-255 each — three separate
+keys, not a packed array); three other places showed a party name as
+plain text. New `PartyDisplay.gd` (pure, `scripts/rules/`,
+`color_for(party: Dictionary) -> Color`, a neutral grey for an unmatched
+row so a name never goes invisible) is the one place the RGB→Color
+conversion lives now, reused by:
+- The New Game protagonist picker (`OfficeScreen._protagonist_row()`) —
+  each candidate's own party line.
+- The Office header — used to be one `"{name} · {party}"` string on a
+  single Label, which cannot colour only part of itself; split into
+  `_title` (the name) and a new `_title_party` Label (`"· {party}"`,
+  built in code the same way `_notices_label` is) so only the party
+  portion carries the colour.
+- The battle screen's own Details panel — "You: {name}, {party}" and
+  "Opponent: {name}, {party}" used to be two lines inside one big joined
+  `_details_text` Label; the party is now two small labels
+  (`_you_party_label`/`_opponent_party_label`) appended after it instead,
+  each shown only when that side actually has a party (not every
+  opponent does).
+`FloorVoteScreen.gd`'s own `_party_color()` is untouched — it already
+reads the identical RGB from a pre-built `"party_color"` array
+(`BattleSetup.gd`'s own Floor Vote position dicts), a different shape
+than `PartyDisplay.color_for()`'s `{r,g,b}` row, and was already correct,
+so there was nothing to fix there.
+
 
 ## 12. Working agreement
 

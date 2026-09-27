@@ -10,6 +10,12 @@ extends Control
 ## does not acknowledge what just happened feels like a bug.
 
 @onready var _title: Label = %Title
+
+## "· {party}", coloured with the party's own RGB (PartyDisplay.gd) —
+## split out of what used to be one "{name} · {party}" string on _title
+## itself so only the party portion can carry the colour. Built in code
+## and inserted right after _title, the same reason _notices_label is.
+var _title_party: Label
 @onready var _subtitle: Label = %Subtitle
 @onready var _report: Label = %Report
 @onready var _start_button: Button = %StartButton
@@ -125,6 +131,13 @@ func _ready() -> void:
 	column.add_child(_notices_label)
 	column.move_child(_notices_label, _resources.get_index() + 1)
 
+	_title_party = Label.new()
+	_title_party.name = "TitleParty"
+	_title_party.theme_type_variation = &"TitleLabel"
+	var heading := _title.get_parent()
+	heading.add_child(_title_party)
+	heading.move_child(_title_party, _title.get_index() + 1)
+
 	# The Office's own bed. Silent until there is a file named against
 	# music_office in sounds.json; this is here so that adding one is the
 	# whole job, with nothing to wire up afterwards.
@@ -160,10 +173,15 @@ func _build() -> void:
 
 	if name_en.is_empty():
 		_title.text = Text.say("office.title")
+		_title_party.hide()
 	elif party.is_empty():
 		_title.text = "%s's Office" % name_en
+		_title_party.hide()
 	else:
-		_title.text = "%s · %s" % [name_en, party]
+		_title.text = name_en
+		_title_party.text = "· %s" % party
+		_title_party.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+		_title_party.show()
 	_subtitle.text = "陳情"
 
 	if _portrait is PlaceholderArt:
@@ -483,7 +501,11 @@ func _protagonist_row(protagonist: Dictionary) -> Control:
 	if not name_jp.is_empty():
 		box.add_child(UiKit.line(name_jp, "JapaneseAccent"))
 	var party := str(protagonist.get("party", ""))
-	box.add_child(UiKit.line(party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel"))
+	var party_label := UiKit.line(
+		party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel")
+	if not party.is_empty():
+		party_label.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+	box.add_child(party_label)
 	var blurb := str(protagonist.get("blurb", ""))
 	if not blurb.is_empty():
 		box.add_child(UiKit.line(blurb, "SmallLabel"))

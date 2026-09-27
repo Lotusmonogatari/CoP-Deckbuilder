@@ -80,6 +80,15 @@ var _card_back: CardBackView = null
 @onready var _details_button: Button = %DetailsButton
 @onready var _details_panel: PanelContainer = %DetailsPanel
 @onready var _details_text: Label = %DetailsText
+
+## "{Party}" for the player and the current opponent, each coloured with
+## that party's own RGB (PartyDisplay.gd) — split out of the "You: {name},
+## {party}" / "Opponent: {name}, {party}" lines that used to be part of
+## _details_text's one big joined string, since a plain Label cannot colour
+## part of its own text. Built in code, inserted right after _details_text
+## in the same Column, so they still read as part of the same block.
+var _you_party_label: Label
+var _opponent_party_label: Label
 @onready var _card_zoom: PanelContainer = %CardZoom
 
 ## The inventory, opened from its button in the header.
@@ -120,6 +129,16 @@ func _ready() -> void:
 	%ZoomClose.pressed.connect(func() -> void: _card_zoom.hide())
 	%ZoomPlay.pressed.connect(_play_selected)
 	%OutcomeClose.pressed.connect(_on_outcome_closed)
+
+	_you_party_label = Label.new()
+	_you_party_label.name = "YouParty"
+	_opponent_party_label = Label.new()
+	_opponent_party_label.name = "OpponentParty"
+	var details_column := _details_text.get_parent()
+	details_column.add_child(_you_party_label)
+	details_column.move_child(_you_party_label, _details_text.get_index() + 1)
+	details_column.add_child(_opponent_party_label)
+	details_column.move_child(_opponent_party_label, _you_party_label.get_index() + 1)
 
 	_details_panel.hide()
 	_card_zoom.hide()
@@ -434,12 +453,14 @@ func _refresh_details(state: BattleState) -> void:
 
 	var player := DataDB.player
 	if not str(player.get("name_en", "")).is_empty():
-		lines.append("You: %s, %s" % [player.get("name_en", ""), player.get("party", "")])
+		lines.append("You: %s" % player.get("name_en", ""))
+	_show_party_line(_you_party_label, str(player.get("party", "")))
 
 	# No line at all where there is nobody, rather than "Opponent: ,".
 	var opponent := engine.current_opponent()
 	if not opponent.is_empty():
-		lines.append("Opponent: %s, %s" % [opponent.get("name", ""), opponent.get("party", "")])
+		lines.append("Opponent: %s" % opponent.get("name", ""))
+	_show_party_line(_opponent_party_label, str(opponent.get("party", "")))
 
 	if engine.questions_remaining() > 0 or not engine.pleased_boosters().is_empty():
 		lines.append("")
@@ -492,6 +513,18 @@ func _refresh_details(state: BattleState) -> void:
 		lines.append(rule)
 
 	_details_text.text = "\n".join(lines)
+
+
+## Fills a "You"/"Opponent" party label, or hides it when there is no
+## party to show — a protagonist or opponent with none, per data (some
+## opponents are not party members at all).
+func _show_party_line(label: Label, party: String) -> void:
+	if party.is_empty():
+		label.hide()
+		return
+	label.text = party
+	label.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
+	label.show()
 
 
 # ---------------------------------------------------------------------------
