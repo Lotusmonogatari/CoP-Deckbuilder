@@ -809,7 +809,7 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 		var won := MetaRules.apply_win_deltas(meta, reward_stage, DataDB.sanban)
 		meta = won["meta"]
 		_record_meta_change(won["applied"])
-		last_xp_gained = int(stage.get("win_delta_xp", 0))
+		last_xp_gained = MetaRules.stage_delta(stage, "win_delta_xp")
 		_move_xp(last_xp_gained)
 
 	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)

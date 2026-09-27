@@ -302,3 +302,17 @@ func test_a_stage_with_zero_deltas_moves_nothing() -> void:
 
 	assert_eq(result["applied"], {}, "nothing set, nothing claimed")
 	assert_eq(result["meta"], meta)
+
+
+func test_a_blank_delta_reads_as_zero_not_a_crash() -> void:
+	# A blank workbook cell exports as JSON null. National Assembly Floor
+	# Voting (ST23) has no deltas at all, and int(null) used to abort the
+	# briefing for every Floor Vote level (LV31-60) — seen as a freeze.
+	var floor_vote := {"stage_id": "ST23", "win_delta_jiban": null, "win_delta_xp": null,
+		"win_delta_reputation": null, "win_delta_yen": null, "win_delta_party_support": null}
+	assert_eq(MetaRules.stage_delta(floor_vote, "win_delta_xp"), 0)
+	assert_eq(MetaRules.stage_delta({}, "win_delta_xp"), 0, "a missing key too")
+	assert_eq(MetaRules.stage_delta({"win_delta_xp": 30.0}, "win_delta_xp"), 30)
+	assert_eq(MetaRules.apply_win_deltas({"Reputation": 50}, floor_vote, DataDB.sanban)["applied"], {})
+	assert_eq(LevelRunner.win_rewards(floor_vote), {})
+	assert_true(LevelRunner.rewards_are_unset(floor_vote))

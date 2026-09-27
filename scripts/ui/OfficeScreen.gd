@@ -1104,7 +1104,7 @@ func _show_briefing() -> void:
 					"name": name,
 					"amount": "%+d" % int(LevelRunner.win_rewards(stage)[name]),
 				})))
-			var xp := int(stage.get("win_delta_xp", 0))
+			var xp := MetaRules.stage_delta(stage, "win_delta_xp")
 			if xp > 0:
 				rows.append(UiKit.line(Text.say("outcome.xp", {"count": xp})))
 			for line: String in LevelRunner.variable_rewards(stage, Text.phrase()):

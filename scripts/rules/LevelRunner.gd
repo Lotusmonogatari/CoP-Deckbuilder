@@ -431,7 +431,7 @@ static func restored(saved: Dictionary) -> LevelRunner:
 static func win_rewards(stage: Dictionary) -> Dictionary:
 	var rewards := {}
 	for key: String in WIN_DELTA_KEYS.keys():
-		var delta := int(stage.get(key, 0))
+		var delta := MetaRules.stage_delta(stage, key)
 		if delta != 0:
 			rewards[WIN_DELTA_KEYS[key]] = delta
 	return rewards
@@ -457,7 +457,7 @@ static func rewards_are_unset(stage: Dictionary) -> bool:
 	if not win_rewards(stage).is_empty():
 		return false
 	# 2026-09-22: xp_reward was renamed win_delta_xp.
-	if int(stage.get("win_delta_xp", 0)) != 0:
+	if MetaRules.stage_delta(stage, "win_delta_xp") != 0:
 		return false
 	return not stage.has("tone_effects")
 

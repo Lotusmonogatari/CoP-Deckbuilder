@@ -35,6 +35,19 @@ extends RefCounted
 ## it has no memory of what happened last time it was asked.
 
 
+## One of a stage's reward/penalty numbers (win_delta_*, loss_delta_*), as a
+## whole number — 0 when the cell is blank. A blank workbook cell exports as
+## JSON null, not 0, and int(null) is a script error: every stage that pays
+## nothing flat (National Assembly Floor Voting, ST23, has no deltas at all)
+## used to abort the briefing and the payout mid-way, which on a phone
+## looked like the game freezing.
+static func stage_delta(stage: Dictionary, key: String) -> int:
+	var value: Variant = stage.get(key)
+	if value is int or value is float:
+		return int(value)
+	return 0
+
+
 ## Keeps a meta-variable inside the range sanban.json gives it.
 static func clamp_meta(value: int, variable: Dictionary) -> int:
 	var low := int(variable.get("min", 0))
@@ -56,10 +69,10 @@ static func apply_win_deltas(meta: Dictionary, stage: Dictionary,
 	# 2026-09-22 workbook: win_delta_kanban/win_delta_kaban were renamed to
 	# win_delta_reputation/win_delta_yen in stages.json.
 	var deltas := {
-		"Constituency support": int(stage.get("win_delta_jiban", 0)),
-		"Reputation": int(stage.get("win_delta_reputation", 0)),
-		"Funds": int(stage.get("win_delta_yen", 0)),
-		"Party support": int(stage.get("win_delta_party_support", 0)),
+		"Constituency support": stage_delta(stage, "win_delta_jiban"),
+		"Reputation": stage_delta(stage, "win_delta_reputation"),
+		"Funds": stage_delta(stage, "win_delta_yen"),
+		"Party support": stage_delta(stage, "win_delta_party_support"),
 	}
 
 	for name: String in deltas.keys():
