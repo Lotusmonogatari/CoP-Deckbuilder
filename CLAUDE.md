@@ -694,3 +694,37 @@ the engine, the refresh, the status row and navigation, and four presenters
 own the speaker row, the hand, the passing messages and the outcome panel.
 The hand keeps its card views between refreshes rather than rebuilding them,
 so a card that is played is a node that can still be animated.
+
+### The 2026-09-27/28 player-perspective UI review
+
+Every mechanic proven correct is not the same as every screen reading
+clearly to someone seeing it for the first time — so this pass took one
+screenshot per screen *shape* (not per stage, same reasoning as
+`design/PLAYTEST_CHECKLIST.md`), at the real 1080×2340 resolution, and
+cross-checked each one against the real code and data behind it rather
+than trusting a first impression. `design/UI_PLAYER_REVIEW.md` is the
+result — findings tagged Confusing/Inaccurate/Lacking, design-touching
+items (ST06's bar label, a Supplies item's name, the flat 50 booster
+standings) left as open questions for Cameron rather than decided here.
+Nothing found was fixed in this pass, per the review's own plan.
+
+One suspected engine bug was chased down and ruled out along the way: a
+screenshot of a committee sequence's second bout appeared to show gaffes
+carrying over from the bout just won, seemingly contradicting §7.5's own
+claim that `_reset_for_new_bout()` clears them. It didn't — the
+screenshot driver's own greedy-play helper only checked its stop
+condition between turns, so it kept playing cards into the freshly reset
+bout before the loop noticed the fight had moved on. Fixed the driver,
+not the engine; the corrected shot shows a clean `gaffe=0/5` on turn 1 of
+the new bout, exactly as documented. Worth recording because it's the
+same "is this real or is this the harness" question this session's
+stress-testing work keeps running into, and this time the answer was
+"the harness."
+
+Also fixed in passing, found the same way this session finds most
+`<null>`-class bugs — by actually looking at a real screenshot: a battle
+Details panel could show the literal text `<null>` for a side with no
+party, the same bug class already guarded for opponent titles.
+`PartyDisplay.party_name()` (`scripts/rules/PartyDisplay.gd`) is now the
+one place every party-display call site reads the field from, rather
+than stringifying it directly.
