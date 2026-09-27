@@ -2112,5 +2112,12 @@
     "english": "{number}/{total}",
     "placeholders": "number, total",
     "notes": "Which card of the draw this is. The total is rules.json card_training_looks."
+  },
+  {
+    "key": "rhetoric.draw_in_progress",
+    "where": "Office — Rhetoric Training, refusal",
+    "english": "You already have a session in progress — finish that one first.",
+    "placeholders": null,
+    "notes": "Shown when 'See a card' is tapped on a different session while a draw is already open; only one draw can be in progress at a time."
   }
 ]

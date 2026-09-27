@@ -393,6 +393,15 @@ func _on_see_card(item_id: String) -> void:
 	if not offer.get("ok", false):
 		_report.text = str(offer.get("message", ""))
 		return
+	# Only one draw can be in progress at a time (GameState.offer_random_
+	# card()'s own doc comment; test_seeing_a_card_again_mid_draw_returns_
+	# the_same_card_not_a_reroll() proves it, "even a different session").
+	# Tapping a different row's "See a card" while one is already open
+	# quietly reopens THAT draw rather than starting a new one — the price
+	# shown is always honest, but nothing said why a different row's price
+	# just appeared, until now.
+	if str(offer.get("item_id", "")) != item_id:
+		_report.text = Text.say("rhetoric.draw_in_progress")
 	# On top of the training list, which stays open underneath.
 	_show_card_offer()
 

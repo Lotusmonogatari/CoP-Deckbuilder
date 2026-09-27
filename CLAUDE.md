@@ -528,6 +528,24 @@ touching `BattleEngine`/`GameState`/`Ledger`, not on every commit).
 - `tools/stress.sh` runs all of the above plus the two existing fuzzers in
   one command, mirroring `tools/verify.sh`'s own shape and reporting.
 
+**Rhetoric Training: only one draw at a time, now said out loud**
+(2026-09-28). Cameron asked whether the XP route (SH15-17) and the Yen
+route (SH27-29) could conflict or double up a card. They can't duplicate a
+card — both draw from the exact same "unowned cards of this tier" pool
+(`GameState._unowned_cards_at_tier()`), so a card learned through either
+route is in `owned_cards` and out of every future draw regardless of
+currency. But `GameState.card_draw` is a single field, so only one
+Rhetoric Training draw can be open at a time — tapping "See a card" on a
+different row while one is already in progress silently reopens THAT
+draw (already true, already tested:
+`test_seeing_a_card_again_mid_draw_returns_the_same_card_not_a_reroll`,
+"even a different session"), with no explanation for why a different
+row's price just appeared. `OfficeScreen._on_see_card()` now compares the
+returned draw's own `item_id` against the row actually tapped and, when
+they differ, shows a new line (`rhetoric.draw_in_progress`) saying a
+session is already open — the draw itself is unchanged, only the player
+now knows why.
+
 
 ## 12. Working agreement
 
