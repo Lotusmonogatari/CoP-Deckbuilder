@@ -2067,7 +2067,7 @@
   {
     "key": "rhetoric.blurb",
     "where": "Office — Rhetoric Training",
-    "english": "Book a session with a speaking coach. Each session shows you one card you could learn: learn it for the price, or pass and keep what you have.",
+    "english": "Book a session with a speaking coach. You are shown up to three cards, one at a time: pass on the first two if you like, but you leave having learned one of them.",
     "placeholders": null,
     "notes": null
   },
@@ -2105,5 +2105,12 @@
     "english": "Pass",
     "placeholders": null,
     "notes": "Closes without paying."
+  },
+  {
+    "key": "rhetoric.counter",
+    "where": "Office — Rhetoric Training, card pop-up",
+    "english": "{number}/{total}",
+    "placeholders": "number, total",
+    "notes": "Which card of the draw this is. The total is rules.json card_training_looks."
   }
 ]

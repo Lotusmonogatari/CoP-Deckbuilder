@@ -40,7 +40,9 @@ func before_each() -> void:
 		"levels_unlocked": GameState.levels_unlocked.duplicate(),
 		"staff_recruitment_tier": GameState.staff_recruitment_tier,
 		"funds_cap_bonus": GameState.funds_cap_bonus,
+		"card_draw": GameState.card_draw.duplicate(true),
 	}
+	GameState.card_draw = {}
 	GameState.inventory = {}
 	GameState.shop_bought_this_level = {}
 	GameState.pending_stage_bonuses = {}
@@ -52,6 +54,7 @@ func before_each() -> void:
 
 
 func after_each() -> void:
+	GameState.card_draw = _saved["card_draw"]
 	GameState.inventory = _saved["inventory"]
 	GameState.shop_bought_this_level = _saved["bought"]
 	GameState.pending_stage_bonuses = _saved["pending_stage"]
@@ -253,15 +256,15 @@ func test_a_level_item_used_mid_stage_also_covers_the_rest_of_the_level() -> voi
 # ---------------------------------------------------------------------------
 # Rhetoric Training (SH15-17 XP, SH27-29 Yen) — see the card, then pay
 # ---------------------------------------------------------------------------
-# Cameron, 2026-09-27: a session shows one random unowned card of its tier
-# FIRST (offer_random_card, nothing paid), and only learning it pays
-# (learn_offered_card). Passing costs nothing.
+# Cameron, 2026-09-27: a draw shows one random unowned card of its tier
+# FIRST (nothing paid). It can be passed twice (1/3, 2/3); the third must be
+# learned. Learning is the only thing that ends a draw.
 
 func _learn(item_id: String) -> Dictionary:
 	var offer := GameState.offer_random_card(item_id)
 	if not offer["ok"]:
 		return offer
-	return GameState.learn_offered_card(item_id, str(offer["card_id"]))
+	return GameState.learn_offered_card()
 
 
 func test_seeing_a_card_costs_nothing_and_changes_nothing() -> void:
@@ -271,20 +274,52 @@ func test_seeing_a_card_costs_nothing_and_changes_nothing() -> void:
 
 	assert_true(offer["ok"])
 	assert_eq(int(DataDB.get_card(str(offer["card_id"])).get("tier")), 2)
-	assert_eq(int(GameState.meta["Funds"]), funds, "passing on it has cost nothing")
+	assert_eq(int(offer["look"]), 1)
+	assert_eq(int(offer["looks"]), 3, "rules.json card_training_looks")
+	assert_eq(int(GameState.meta["Funds"]), funds, "seeing it has cost nothing")
 	assert_eq(GameState.owned_cards.size(), 0, "and it is not yours until you learn it")
 
 
-func test_learning_the_offered_card_pays_and_grants_exactly_that_card() -> void:
+func test_learning_the_offered_card_pays_grants_that_card_and_ends_the_draw() -> void:
 	GameState.owned_cards = []
 	var funds := int(GameState.meta["Funds"])
 	var offer := GameState.offer_random_card("SH28")
-	var result := GameState.learn_offered_card("SH28", str(offer["card_id"]))
+	var result := GameState.learn_offered_card()
 
 	assert_true(result["ok"])
 	assert_eq(GameState.owned_cards, [str(offer["card_id"])], "the card shown, not another draw")
 	assert_eq(int(GameState.meta["Funds"]), funds - int(DataDB.get_shop_item("SH28")["cost_yen"]))
 	assert_string_contains(result["message"], str(DataDB.get_card(str(offer["card_id"])).get("name_en")))
+	assert_true(GameState.card_draw.is_empty(), "learning starts a fresh draw next time")
+
+
+func test_a_draw_can_be_passed_twice_and_the_third_card_must_be_learned() -> void:
+	GameState.owned_cards = []
+	var first := GameState.offer_random_card("SH27")
+	assert_true(GameState.can_pass_offered_card())
+	var second := GameState.pass_offered_card()
+	assert_eq(int(second["look"]), 2)
+	assert_ne(str(second["card_id"]), str(first["card_id"]), "a pass shows a different card")
+	var third := GameState.pass_offered_card()
+	assert_eq(int(third["look"]), 3)
+	assert_false(GameState.can_pass_offered_card(), "3/3 cannot be passed")
+	assert_false(GameState.pass_offered_card()["ok"])
+	assert_eq(str(GameState.card_draw["card_id"]), str(third["card_id"]), "and is still on offer")
+	assert_eq(GameState.owned_cards.size(), 0, "passing never pays or grants anything")
+
+
+func test_seeing_a_card_again_mid_draw_returns_the_same_card_not_a_reroll() -> void:
+	GameState.owned_cards = []
+	GameState.offer_random_card("SH27")
+	var passed := GameState.pass_offered_card()
+	var again := GameState.offer_random_card("SH28")   # even a different session
+	assert_eq(str(again["card_id"]), str(passed["card_id"]))
+	assert_eq(int(again["look"]), 2)
+
+
+func test_a_draw_in_progress_survives_a_save_and_load() -> void:
+	assert_true(GameState._SAVED_FIELDS.has("card_draw"),
+		"so quitting the app with a card on screen does not reroll it")
 
 
 func test_a_training_session_never_offers_an_owned_card() -> void:
@@ -301,16 +336,7 @@ func test_a_training_session_never_offers_an_owned_card() -> void:
 	var offer := GameState.offer_random_card("SH27")   # Tier 1
 	assert_true(offer["ok"])
 	assert_eq(str(offer["card_id"]), tier_1_ids[0])
-
-
-func test_an_already_owned_card_cannot_be_learned_again() -> void:
-	GameState.owned_cards = []
-	var offer := GameState.offer_random_card("SH27")
-	GameState.owned_cards.append(str(offer["card_id"]))
-	var funds := int(GameState.meta["Funds"])
-	var result := GameState.learn_offered_card("SH27", str(offer["card_id"]))
-	assert_false(result["ok"])
-	assert_eq(int(GameState.meta["Funds"]), funds, "a refusal never spends anything")
+	assert_false(GameState.can_pass_offered_card(), "nothing else of that tier to swap it for")
 
 
 func test_owning_every_card_of_a_tier_refuses_the_session() -> void:
@@ -322,6 +348,7 @@ func test_owning_every_card_of_a_tier_refuses_the_session() -> void:
 	assert_false(GameState.offer_random_card("SH29")["ok"])   # Tier 3
 	assert_false(GameState.card_training_refusal("SH29").is_empty(), "the Office greys the button")
 	assert_eq(int(GameState.meta["Funds"]), funds, "a refusal never spends anything")
+	assert_true(GameState.card_draw.is_empty(), "and no draw was started")
 
 
 func test_an_xp_session_costs_xp_not_yen() -> void:

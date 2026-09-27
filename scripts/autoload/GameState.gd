@@ -71,6 +71,12 @@ var inventory: Dictionary = {}
 ## concludes, win or loss.
 var shop_bought_this_level: Dictionary = {}
 
+## A Rhetoric Training draw in progress: { item_id, card_id, look, seen }.
+## Empty when none is. Saved, so quitting the app with a card on screen
+## brings the same card back rather than a fresh draw — see
+## offer_random_card().
+var card_draw: Dictionary = {}
+
 ## Stage effects waiting for the next stage — an item with Duration "Stage"
 ## used in the Office. { "ENERGY": 1, ... }; handed to that stage's setup and
 ## then cleared (take_item_bonuses_for_stage()).
@@ -261,7 +267,7 @@ func start_new_run(player_id: String) -> bool:
 const _SAVED_FIELDS := [
 	"protagonist_id", "last_level_outcome", "meta", "xp",
 	"owned_cards", "deck", "owned_modifiers",
-	"inventory", "shop_bought_this_level",
+	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at",
@@ -381,6 +387,7 @@ func reset_collection() -> void:
 	owned_modifiers = []
 	inventory = {}
 	shop_bought_this_level = {}
+	card_draw = {}
 	pending_stage_bonuses = {}
 	pending_level_bonuses = {}
 	level_bonuses = {}
@@ -1132,45 +1139,102 @@ func buy_shop_item(item_id: String) -> String:
 
 ## Rhetoric Training (Cameron, 2026-09-27) — where new cards come from.
 ## SH15-17 (XP) and SH27-29 (Yen), each naming a "card_tier" in shop.json.
-## Two steps, so the player sees the card BEFORE paying for it:
+## A draw shows the player a card BEFORE they pay for it:
 ##
-##   offer_random_card()  draws one random card of that tier the player does
-##                        not own yet. Nothing is paid; nothing changes.
-##   learn_offered_card() pays the item's price and adds exactly that card.
+##   offer_random_card()  starts a draw: one random card of that tier the
+##                        player does not own yet, look 1. Nothing is paid.
+##                        A draw already in progress is returned as it is.
+##   pass_offered_card()  swaps it for another card of the same tier, look
+##                        2, then 3 — rules.json's card_training_looks (3).
+##   learn_offered_card() pays the item's price, adds exactly the card on
+##                        screen, and ends the draw.
 ##
-## Passing on an offer costs nothing, and seeing a card again draws afresh
-## — Cameron's call, knowing it lets a player keep passing until a card
-## they want comes up.
+## The last look cannot be passed and a draw cannot be walked away from
+## (Cameron, 2026-09-27: "must learn it") — seeing a card commits the
+## player to learning one of up to three. The draw is saved, so closing
+## the app does not reroll it; learning a card is what starts a fresh one.
 ##
-## Both return { "ok": bool, "message": String }; an offer that is ok also
-## carries { "card_id" } — the card's own art asset ID (cards/art/
-## {CARD_ID}.png), so the pop-up shows the real card.
+## Each returns { "ok": bool, "message": String }; an ok offer or pass also
+## carries { "card_id", "look", "looks" } for the pop-up's "#/3" counter.
 func offer_random_card(item_id: String) -> Dictionary:
+	if not card_draw.is_empty():
+		return _draw_result()
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := _card_training_refusal(item)
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
 	var choices := _unowned_cards_at_tier(int(item.get("card_tier", 0)))
-	return {"ok": true, "card_id": choices[randi() % choices.size()], "message": ""}
+	var card_id: String = choices[randi() % choices.size()]
+	card_draw = {"item_id": item_id, "card_id": card_id, "look": 1, "seen": [card_id]}
+	return _draw_result()
 
 
-func learn_offered_card(item_id: String, card_id: String) -> Dictionary:
+func pass_offered_card() -> Dictionary:
+	if card_draw.is_empty():
+		return {"ok": false, "message": ""}
+	if not can_pass_offered_card():
+		return {"ok": false, "message": ""}
+	var tier := int(DataDB.get_shop_item(str(card_draw["item_id"])).get("card_tier", 0))
+	var seen: Array = card_draw.get("seen", [])
+	# Something not shown yet in this draw where possible; with fewer unowned
+	# cards left than looks, anything but the card on screen now.
+	var fresh := _unowned_cards_at_tier(tier).filter(func(id: String) -> bool: return not seen.has(id))
+	if fresh.is_empty():
+		fresh = _unowned_cards_at_tier(tier).filter(
+			func(id: String) -> bool: return id != str(card_draw["card_id"]))
+	var card_id: String = fresh[randi() % fresh.size()]
+	card_draw["card_id"] = card_id
+	card_draw["look"] = int(card_draw["look"]) + 1
+	seen.append(card_id)
+	card_draw["seen"] = seen
+	return _draw_result()
+
+
+## True while the card on screen is not the draw's last look, and there is
+## some other card of that tier to swap it for.
+func can_pass_offered_card() -> bool:
+	if card_draw.is_empty() or int(card_draw["look"]) >= card_training_looks():
+		return false
+	var tier := int(DataDB.get_shop_item(str(card_draw["item_id"])).get("card_tier", 0))
+	return _unowned_cards_at_tier(tier).size() > 1
+
+
+## How many cards one draw may show — rules.json's card_training_looks.
+func card_training_looks() -> int:
+	return maxi(int(DataDB.get_rule("card_training_looks", 3)), 1)
+
+
+func learn_offered_card() -> Dictionary:
+	if card_draw.is_empty():
+		return {"ok": false, "message": ""}
+	var item_id := str(card_draw["item_id"])
+	var card_id := str(card_draw["card_id"])
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := _card_training_refusal(item)
+	if refusal.is_empty() and not _unowned_cards_at_tier(int(item.get("card_tier", 0))).has(card_id):
+		refusal = Text.say("shop.no_cards_left_at_tier", {"tier": int(item.get("card_tier", 0))})
 	if not refusal.is_empty():
+		# Nothing the player did on this screen can cause this (the price was
+		# checked when the draw began), so a draw that can no longer be paid
+		# for is let go rather than left stuck on screen.
+		card_draw = {}
 		return {"ok": false, "message": refusal}
-	if not _unowned_cards_at_tier(int(item.get("card_tier", 0))).has(card_id):
-		return {"ok": false, "message": Text.say("shop.no_cards_left_at_tier",
-			{"tier": int(item.get("card_tier", 0))})}
 
 	var price := Items.costs(item)
 	_move_xp(-int(price["XP"]))
 	_move_meta("Funds", -int(price["Funds"]))
 	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
 	owned_cards.append(card_id)
+	card_draw = {}
 	var card_name := str(DataDB.get_card(card_id).get("name_en", card_id))
 	return {"ok": true, "card_id": card_id,
 		"message": Text.say("shop.card_unlocked", {"name": card_name})}
+
+
+func _draw_result() -> Dictionary:
+	return {"ok": true, "message": "", "item_id": str(card_draw["item_id"]),
+		"card_id": str(card_draw["card_id"]), "look": int(card_draw["look"]),
+		"looks": card_training_looks()}
 
 
 ## Why a training session cannot be had right now, or "": the item's own

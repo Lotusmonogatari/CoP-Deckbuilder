@@ -175,5 +175,21 @@
       "5": "Cameron, 2026-09-27: every consumable without its own cap stops at five. Stops a player stacking twenty Coffees into one stage.",
       "10": "Loose. Enough to carry a stage well past its designed energy."
     }
+  },
+  "card_training_looks": {
+    "value": 3,
+    "options": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "question": "In Rhetoric Training, how many cards can one draw show before the player has to learn the one in front of them?",
+    "means": {
+      "1": "No passing: the first card shown is the one you learn.",
+      "2": "One pass.",
+      "3": "Cameron, 2026-09-27: the first card and two passes (the pop-up counts 1/3, 2/3, 3/3); the third must be learned.",
+      "5": "Four passes. Close to picking whichever card you like."
+    }
   }
 }

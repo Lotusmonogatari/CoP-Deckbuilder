@@ -327,9 +327,9 @@ func _buy(supplies: Overlay, item_id: String) -> bool:
 
 ## Rhetoric Training end to end, with real clicks (Cameron, 2026-09-27):
 ## Office Management -> Rhetoric Training -> "See a card" opens the offer
-## with the card's front and back BEFORE anything is paid. The first offer
-## is passed on (nothing spent, nothing owned); then every one of the six
-## sessions is seen and learned, each adding exactly the card shown.
+## with the card's front and back BEFORE anything is paid. One draw is
+## passed twice and its third card learned; then each other session is
+## seen and learned, each adding exactly the card shown.
 func _walk_rhetoric_training(office: Node) -> bool:
 	await _click(office.get_node("%ManagementButton"))
 	var management := office.get_node("%ManagementPanel") as Overlay
@@ -339,26 +339,48 @@ func _walk_rhetoric_training(office: Node) -> bool:
 		_failures.append("the Rhetoric Training button did not open Rhetoric Training")
 		return false
 
-	# Pass once: nothing may change.
+	# One full draw: 1/3, Pass, 2/3, Pass, 3/3 — no Pass and no way out on
+	# the last look — then Learn it (Cameron, 2026-09-27).
 	var xp_before := GameState.xp
+	var owned_at_start := GameState.owned_cards.size()
 	if not await _see_card(office, training, "SH15"):
 		return false
-	var passed_on := _offered_card(office)
 	var offer := office.get_node("CardRevealPanel") as Overlay
-	await _click(offer.find_child("Back", true, false) as Button)
-	if offer.visible:
-		_failures.append("Pass did not close the card offer")
+	for look in [1, 2, 3]:
+		var counter := offer.find_child("LookCounter", true, false) as Label
+		if counter == null or counter.text != "%d/3" % look:
+			_failures.append("look %d: the counter reads '%s', not '%d/3'"
+				% [look, counter.text if counter else "(missing)", look])
+			return false
+		var pass_button := offer.find_child("Pass", true, false) as Button
+		var back := offer.find_child("Back", true, false) as Button
+		if back != null and back.visible:
+			_failures.append("look %d: the card offer can be backed out of" % look)
+			return false
+		if look < 3:
+			if pass_button == null:
+				_failures.append("look %d: there is no Pass button" % look)
+				return false
+			var before := _offered_card(office)
+			await _click(pass_button)
+			if not offer.visible or _offered_card(office) == before:
+				_failures.append("look %d: Pass did not show a different card" % look)
+				return false
+		elif pass_button != null:
+			_failures.append("3/3 still has a Pass button — the last look must be learned")
+			return false
+	if GameState.xp != xp_before or GameState.owned_cards.size() != owned_at_start:
+		_failures.append("passing twice spent XP or granted a card")
 		return false
-	if GameState.xp != xp_before or GameState.owned_cards.has(passed_on):
-		_failures.append("passing on %s still spent XP or granted the card" % passed_on)
+	var third := _offered_card(office)
+	await _click(offer.find_child("Confirm", true, false) as Button)
+	if not GameState.owned_cards.has(third) or GameState.xp >= xp_before:
+		_failures.append("learning the 3/3 card (%s) did not pay for it and add it" % third)
 		return false
-	if not training.visible:
-		_failures.append("after Pass the Rhetoric Training list is not showing any more")
-		return false
-	print("  saw %s in Rhetoric Training and passed: nothing spent, nothing granted" % passed_on)
+	print("  SH15: 1/3 -> Pass -> 2/3 -> Pass -> 3/3 (no Pass, no Back) -> learned %s" % third)
 
 	# Learn one of each session.
-	for item_id: String in ["SH15", "SH16", "SH17", "SH27", "SH28", "SH29"]:
+	for item_id: String in ["SH16", "SH17", "SH27", "SH28", "SH29"]:
 		var owned_before := GameState.owned_cards.size()
 		var funds_before := int(GameState.meta.get("Funds", 0))
 		var xp_start := GameState.xp

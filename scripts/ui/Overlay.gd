@@ -32,6 +32,11 @@ signal confirmed
 ## False for a panel the player must acknowledge rather than wave away.
 @export var dismissable := true
 
+## Whether the Back button shows. Off for a panel whose only ways forward are
+## its own buttons — Rhetoric Training's card offer, which must end in
+## Learn it (or Pass, while passes remain), never in simply backing out.
+@export var show_back := true
+
 ## The screen behind has to be covered, not tinted: this sits over a portrait
 ## and a heading, and a half-transparent panel makes both unreadable.
 ##
@@ -137,6 +142,7 @@ func open(heading: String, rows: Array[Control], confirm_text: String = "",
 	_confirm.visible = not confirm_text.is_empty()
 	_body.add_child(_confirm)
 	_body.add_child(_back)
+	_back.visible = show_back
 
 	show()
 

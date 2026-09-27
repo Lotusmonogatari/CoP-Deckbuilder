@@ -70,9 +70,17 @@ func _try_buy_random_card() -> void:
 		var shown := str(result.get("card_id", ""))
 		if GameState.owned_cards != owned_before:
 			_fail("%s: merely seeing a card changed owned_cards" % item_id)
-		result = GameState.learn_offered_card(item_id, shown)
+		# Pass a random number of times (never past the last look), then learn.
+		for _pass in randi() % 3:
+			if GameState.can_pass_offered_card():
+				shown = str(GameState.pass_offered_card().get("card_id", shown))
+		if GameState.owned_cards != owned_before:
+			_fail("%s: passing changed owned_cards" % item_id)
+		result = GameState.learn_offered_card()
 		if result.get("ok", false) and not GameState.owned_cards.has(shown):
 			_fail("%s: learned a card other than the one shown (%s)" % [item_id, shown])
+		if not GameState.card_draw.is_empty():
+			_fail("%s: the draw did not end after learning" % item_id)
 
 	if result.get("ok", false):
 		var added: Array[String] = []

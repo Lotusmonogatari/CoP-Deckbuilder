@@ -101,6 +101,10 @@ func _ready() -> void:
 	add_child(_trigger_alert_panel)
 	_card_reveal_panel = Overlay.new()
 	_card_reveal_panel.name = "CardRevealPanel"
+	# Learn it (or Pass, while passes remain) are the only ways on: a draw
+	# must end in a learned card (Cameron, 2026-09-27).
+	_card_reveal_panel.dismissable = false
+	_card_reveal_panel.show_back = false
 	add_child(_card_reveal_panel)
 	_card_reveal_panel.confirmed.connect(_on_learn_confirmed)
 
@@ -124,6 +128,11 @@ func _ready() -> void:
 		_show_new_game(true)
 	else:
 		SaveManager.autosave()
+		# A Rhetoric Training draw left on screen when the app closed comes
+		# straight back, same card, same count — quitting is not a reroll.
+		if not GameState.card_draw.is_empty():
+			_show_rhetoric_training()
+			_show_card_offer()
 
 
 func _build() -> void:
@@ -365,28 +374,22 @@ func _training_row(item: Dictionary) -> Control:
 	return box
 
 
-## The card the open offer is for, so Learn (the pop-up's confirm, which
-## carries no argument) knows what it is paying for.
-var _offer_item_id := ""
-var _offer_card_id := ""
-
-
 func _on_see_card(item_id: String) -> void:
 	var offer := GameState.offer_random_card(item_id)
 	if not offer.get("ok", false):
 		_report.text = str(offer.get("message", ""))
 		return
-	_offer_item_id = item_id
-	_offer_card_id = str(offer.get("card_id", ""))
-	# On top of the training list, which stays open underneath: Pass just
-	# closes the offer and the player is back choosing a session.
+	# On top of the training list, which stays open underneath.
 	_show_card_offer()
 
 
+func _on_pass_card() -> void:
+	if GameState.pass_offered_card().get("ok", false):
+		_show_card_offer()
+
+
 func _on_learn_confirmed() -> void:
-	var result := GameState.learn_offered_card(_offer_item_id, _offer_card_id)
-	_offer_item_id = ""
-	_offer_card_id = ""
+	var result := GameState.learn_offered_card()
 	if result.get("ok", false):
 		_report.text = str(result.get("message", ""))
 		_after_spending("", _show_rhetoric_training)
@@ -650,7 +653,8 @@ func _report_purchase_result(result: Dictionary) -> void:
 ## it and nothing is spent. Both views read straight off the card's own ID,
 ## so real art and real text show the moment they exist.
 func _show_card_offer() -> void:
-	var card := DataDB.get_card(_offer_card_id)
+	var draw := GameState.card_draw
+	var card := DataDB.get_card(str(draw.get("card_id", "")))
 	if card.is_empty():
 		return
 
@@ -673,10 +677,25 @@ func _show_card_offer() -> void:
 	var back_frame := CenterContainer.new()
 	back_frame.add_child(back)
 
-	var rows: Array[Control] = [front_frame, back_frame]
+	# "2/3": which look of the draw this is (rules.json card_training_looks).
+	var counter := UiKit.line(Text.say("rhetoric.counter", {
+		"number": int(draw.get("look", 1)), "total": GameState.card_training_looks()}), "HeaderLabel")
+	counter.name = "LookCounter"
+	counter.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+	var rows: Array[Control] = [counter, front_frame, back_frame]
+	# Pass only while it is not the draw's last look. It sits above Learn it,
+	# which the panel always places last.
+	if GameState.can_pass_offered_card():
+		var pass_button := Button.new()
+		pass_button.name = "Pass"
+		pass_button.text = Text.say("rhetoric.pass")
+		pass_button.custom_minimum_size = Vector2(0, 110)
+		pass_button.pressed.connect(_on_pass_card)
+		rows.append(pass_button)
 	_card_reveal_panel.open(Text.say("rhetoric.offer_title"), rows,
-		Text.say("rhetoric.learn", {"price": _price_text(DataDB.get_shop_item(_offer_item_id))}),
-		Text.say("rhetoric.pass"))
+		Text.say("rhetoric.learn", {"price": _price_text(
+			DataDB.get_shop_item(str(draw.get("item_id", ""))))}))
 
 
 ## The deck: which of the cards you own are going in.
