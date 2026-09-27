@@ -5,8 +5,20 @@ extends GutTest
 
 
 func test_a_real_title_is_shown_as_is() -> void:
+	var opponent := {"title": "Prime Minister", "role": "Committee of the Cabinet"}
+	assert_eq(OpponentDisplay.title_for(opponent), "Prime Minister")
+
+
+func test_only_the_first_of_several_titles_is_shown() -> void:
 	var opponent := {"title": "Prime Minister; Leader of the Yezo Heritage Party", "role": "Committee of the Cabinet"}
-	assert_eq(OpponentDisplay.title_for(opponent), "Prime Minister; Leader of the Yezo Heritage Party")
+	assert_eq(OpponentDisplay.title_for(opponent), "Prime Minister")
+
+
+func test_a_null_title_falls_back_to_the_role_not_the_text_null() -> void:
+	# A blank workbook cell exports as JSON null — ~110 real opponents.
+	var opponent := {"title": null, "role": "Committee on War"}
+	assert_eq(OpponentDisplay.title_for(opponent), "Committee on War")
+	assert_eq(OpponentDisplay.title_for({"title": null, "role": null}), "")
 
 
 func test_no_real_title_falls_back_to_the_role() -> void:

@@ -19,11 +19,26 @@ const NO_TITLE_VALUES := ["", "N/A", "N/A;"]
 
 ## The title shown next to a name: the real Title column where there is
 ## one, else the Role column, else "" (nothing to show).
+##
+## Only the FIRST title of several (Cameron, 2026-09-27): a cell like
+## "Minister of Agriculture; Chair of the Committee on Agriculture" shows as
+## "Minister of Agriculture" — the whole list ran the name line off the side
+## of a phone screen.
+##
+## A blank cell exports as JSON null, and str(null) is the literal text
+## "<null>" — which used to be shown as the title of the ~110 opponents with
+## no Title at all ("Yuriko Mayeda, <null>").
 static func title_for(opponent: Dictionary) -> String:
-	var title := str(opponent.get("title", "")).strip_edges()
+	var title := _first_part(opponent.get("title"))
 	if not NO_TITLE_VALUES.has(title):
 		return title
-	return str(opponent.get("role", "")).strip_edges()
+	return _first_part(opponent.get("role"))
+
+
+static func _first_part(value: Variant) -> String:
+	if value == null:
+		return ""
+	return str(value).split(";")[0].strip_edges()
 
 
 ## The organisation an opponent's Affiliation booster_id names, or "" when
