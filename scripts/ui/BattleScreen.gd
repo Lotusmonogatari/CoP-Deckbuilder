@@ -644,15 +644,24 @@ func _on_end_turn() -> void:
 		else:
 			_messages.say(passed_text)
 
-	# What the opponent did. The engine has always returned this and no
-	# screen has ever read it, so the whole of their turn happened in
-	# silence: guard built, seats taken, a panel member leaned on.
 	var opponent_result: Dictionary = result.get("opponent", {})
-	var said := BattleNarration.opponent_move(
-		opponent_result, _stage, engine.state, speaker)
-	if not said.is_empty():
-		lines.append(said)
 	_player_portrait.react_to_opponent(opponent_result)
+
+	# What they SAY, from the workbook's Opponent Cues tab.
+	var move_cue := OpponentCues.for_move(
+		acting_opponent, str(opponent_result.get("verb", "")),
+		str(_stage.get("stage_id", "")), engine.state.turn)
+	var has_cue := not str(move_cue["text"]).is_empty()
+
+	# What the opponent did, narrated ("Them: 3 support won over.") — ONLY
+	# when they have no written line for it. Showing both put the same move
+	# on screen twice, once clean and once as "Them: ..." (Cameron,
+	# 2026-09-27); the written cue is the one that stays.
+	if not has_cue:
+		var said := BattleNarration.opponent_move(
+			opponent_result, _stage, engine.state, speaker)
+		if not said.is_empty():
+			lines.append(said)
 
 	# A debater finished by the clock or by their own attack, rather than by
 	# a card — the same news, from the other end of the turn.
@@ -660,12 +669,6 @@ func _on_end_turn() -> void:
 	if not bout.is_empty():
 		lines.append(BattleNarration.player_move(
 			{"bout_won": bout}, _stage, engine.state, speaker))
-
-	# What they SAY, from the workbook's Opponent Cues tab.
-	var move_cue := OpponentCues.for_move(
-		acting_opponent, str(opponent_result.get("verb", "")),
-		str(_stage.get("stage_id", "")), engine.state.turn)
-	var has_cue := not str(move_cue["text"]).is_empty()
 
 	if asks_questions:
 		# The CueBanner here is ONLY ever the question or the opponent's own
@@ -678,9 +681,9 @@ func _on_end_turn() -> void:
 			Audio.say(str(acting_opponent.get("opp_id", "")), str(move_cue["line_id"]))
 		_show_room_notice("\n".join(lines))
 	else:
-		# Unchanged: a line becomes the banner's big type, with what it did
-		# demoted underneath it; nothing written yet falls back to narration
-		# alone, same as it always has.
+		# A written line becomes the banner's big type, with only other news
+		# (a debater finished) underneath it — never a narration of the same
+		# move; nothing written yet falls back to the narration alone.
 		if has_cue:
 			_banner.say(CueBanner.OPPONENT, speaker, str(move_cue["text"]), "\n".join(lines))
 			Audio.say(str(acting_opponent.get("opp_id", "")), str(move_cue["line_id"]))
