@@ -79,6 +79,9 @@ func _ready() -> void:
 	_continue_button.pressed.connect(_on_continue)
 	_outcome_close.pressed.connect(_on_outcome_closed)
 
+	var outcome_scroll := _outcome_panel.get_node_or_null("Margin/Scroll") as ScrollContainer
+	if outcome_scroll != null:
+		DragScroll.attach(outcome_scroll)
 	_outcome_panel.hide()
 
 	start_visiting()

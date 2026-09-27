@@ -61,6 +61,9 @@ func _ready() -> void:
 	_vote_abstain.pressed.connect(_on_vote.bind("Abstain"))
 	_outcome_close.pressed.connect(_on_outcome_closed)
 
+	var outcome_scroll := _outcome_panel.get_node_or_null("Margin/Scroll") as ScrollContainer
+	if outcome_scroll != null:
+		DragScroll.attach(outcome_scroll)
 	_outcome_panel.hide()
 	start_voting()
 

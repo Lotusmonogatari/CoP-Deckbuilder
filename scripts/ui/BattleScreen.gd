@@ -123,7 +123,7 @@ func _ready() -> void:
 
 	_details_panel.hide()
 	_card_zoom.hide()
-	for panel: Control in [_details_panel, _card_zoom]:
+	for panel: Control in [_details_panel, _card_zoom, %OutcomePanel]:
 		var scroll := panel.get_node_or_null("Margin/Scroll") as ScrollContainer
 		if scroll != null:
 			DragScroll.attach(scroll)

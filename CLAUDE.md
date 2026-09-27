@@ -447,6 +447,17 @@ click test can catch that class by construction, which is what
 plus every meta/shop/save system, each line a concrete action and what
 "wrong" looks like.
 
+### The 2026-09-28 mobile playtest fixes
+
+A real-phone playthrough turned up three more problems.
+
+| # | Problem | Fix |
+|---|---|---|
+| 1 | The flinch reaction on a character's face (yours or the opponent's) was too quick to register on a phone | `FLINCH_SECONDS` doubled, 0.9 → 1.8, in both `OpponentPresenter.gd` and `PlayerPortraitPresenter.gd` |
+| 2 | A press conference's drawn question showed no speaker name, and with no name the CueBanner's own coloured name tag stayed hidden — the question read as coming from nobody in particular | `OpponentPresenter.display_name()` deliberately returns `""` in a press conference (no opponent whose support can be taken) — correct for the opponent row's own name label, but `BattleScreen._announce_question()` was reusing it for the banner's speaker name too. Added `OpponentPresenter.question_speaker_name()`, which resolves the real asking journalist the same way `_show_journalist()` already does, and pointed `_announce_question()` at it instead |
+| 3 | Scrollbars felt inconsistently fast — some lists used the touch-drag-and-glide feel (`DragScroll`), others fell back to Godot's own default scroll speed | Three scroll views had never been wired to `DragScroll`: the battle screen's own Outcome panel, and the Outcome panel on both `FloorVoteScreen` and `VisitorScreen`. Every scrollable list now goes through the same `DragScroll.attach()` |
+
+
 ## 12. Working agreement
 
 - **Explain like a colleague, not a manual.** Keep it short and plain English, and say what changed and why.
