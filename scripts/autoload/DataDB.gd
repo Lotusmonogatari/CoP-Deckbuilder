@@ -306,6 +306,8 @@ func load_all() -> void:
 		if not (opponent.get("stages") is Array):
 			opponent["stages"] = []
 
+	_apply_default_consumable_cap()
+
 	_fill_name_tokens()
 	_build_lookups()
 	_validate()
@@ -901,6 +903,24 @@ func get_tier_cost(tier: String) -> int:
 
 
 ## One of the open-design switches from rules.json.
+## Every Supplies consumable — an item usable in the Office or in a stage —
+## whose own Stack Cap cell is blank gets rules.json's
+## default_consumable_stack_cap instead (Cameron, 2026-09-27: 5). Without it
+## nothing stopped a player stacking twenty Coffees into one stage. Filled
+## in here, once, so every rule that reads Items.stack_cap() — buying,
+## holding, visitor rewards — sees the same cap without being told about it.
+## An item with its own cap in the workbook keeps it.
+func _apply_default_consumable_cap() -> void:
+	var default_cap := int(rules.get("default_consumable_stack_cap", 0))
+	if default_cap <= 0:
+		return
+	for item: Dictionary in shop:
+		if Items.stack_cap(item) > 0:
+			continue
+		if Items.usable_in(item, Items.OFFICE) or Items.usable_in(item, Items.STAGE):
+			item["stack_cap"] = default_cap
+
+
 func get_rule(flag: String, fallback: Variant = null) -> Variant:
 	if rules.has(flag):
 		return rules[flag]

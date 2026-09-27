@@ -413,3 +413,25 @@ func test_buying_a_funds_cap_increase_raises_the_effective_cap() -> void:
 	GameState._move_meta("Funds", base_max + 2000000)
 	assert_eq(int(GameState.meta["Funds"]), base_max + 100000,
 		"the ceiling itself moved by the purchased amount")
+
+
+# ---------------------------------------------------------------------------
+# Default cap on consumables (Cameron, 2026-09-27)
+# ---------------------------------------------------------------------------
+
+func test_a_consumable_with_no_cap_of_its_own_stops_at_the_default() -> void:
+	var coffee := DataDB.get_shop_item("SH04")
+	assert_eq(Items.stack_cap(coffee), int(DataDB.get_rule("default_consumable_stack_cap")),
+		"Coffee's own Stack Cap cell is blank")
+	assert_eq(Items.buy_refusal(coffee, 5, 0, 0, 999999, Text.phrase()), Text.say("shop.stack_full"),
+		"holding five, a sixth is refused")
+
+
+func test_an_item_with_its_own_cap_keeps_it() -> void:
+	assert_eq(Items.stack_cap(DataDB.get_shop_item("SH20")), 2, "Extra Draw's own cap, not the default")
+
+
+func test_items_that_are_not_consumables_are_not_capped() -> void:
+	for item_id: String in ["SH09", "SH27", "SH13"]:
+		assert_eq(Items.stack_cap(DataDB.get_shop_item(item_id)), 0,
+			"%s is never held in the inventory, so it has no stack to cap" % item_id)

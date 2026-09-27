@@ -161,5 +161,19 @@
       "8": "Loose. A player who guards for two turns can walk through almost anything on the third.",
       "99": "No cap in practice. Turtling becomes a strategy, which is why this is not the default."
     }
+  },
+  "default_consumable_stack_cap": {
+    "value": 5,
+    "options": [
+      3,
+      5,
+      10
+    ],
+    "question": "How many of one Supplies consumable (Coffee, Tea, a Booster Dinner...) can you hold when its own Stack Cap cell in the Shop tab is blank?",
+    "means": {
+      "3": "Tight. Consumables are a small edge, not something to stockpile.",
+      "5": "Cameron, 2026-09-27: every consumable without its own cap stops at five. Stops a player stacking twenty Coffees into one stage.",
+      "10": "Loose. Enough to carry a stage well past its designed energy."
+    }
   }
 }
