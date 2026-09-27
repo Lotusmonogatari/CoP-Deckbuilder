@@ -71,7 +71,10 @@ var _card_back: CardBackView = null
 @onready var _turn_label: Label = %TurnLabel
 @onready var _room_notice: Label = %RoomNotice
 @onready var _support_bar: SupportBar = %SupportBar
-@onready var _energy_row: HBoxContainer = %EnergyRow
+## A flow container (2026-09-27), not a plain row: with a few energy
+## buffs stacked the pips wrap onto a second line instead of pushing the
+## Inventory/Details buttons off the side of the phone.
+@onready var _energy_row: HFlowContainer = %EnergyRow
 @onready var _gaffe_label: Label = %GaffeLabel
 @onready var _end_turn_button: Button = %EndTurnButton
 @onready var _details_button: Button = %DetailsButton
@@ -207,6 +210,7 @@ func start_battle() -> void:
 	# English first, with the Japanese beside it as a small muted accent.
 	_stage_name.text = str(_stage.get("name_en", "Battle"))
 	_stage_name_jp.text = str(_stage.get("name_jp", ""))
+	_fit_stage_name.call_deferred()
 	_support_bar.unit = str(_stage.get("bar_unit", "Support"))
 
 	# A fresh stage announces its own opening gaffe count rather than
@@ -319,6 +323,25 @@ func _show_room_notice(text: String) -> void:
 
 ## Energy as pips rather than a number: three small marks are quicker to
 ## count than "3 / 3" is to read.
+## A stage name that fits on one line stays on one line, with its Japanese
+## accent right beside it. Only a name too long for the header (a committee:
+## "Committee on Construction and Development") wraps — and wrapping means
+## taking the header's whole free width, which would push the accent away
+## to the far side, so it is switched on only when it is needed. Without
+## any wrapping a long name used to widen the whole screen past the phone,
+## taking the turn count and the opponent's portrait off the right edge.
+func _fit_stage_name() -> void:
+	var header := _stage_name.get_parent().get_parent() as Control
+	var font := _stage_name.get_theme_font("font")
+	var font_size := _stage_name.get_theme_font_size("font_size")
+	var needed := font.get_string_size(_stage_name.text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+	var room := header.size.x - _turn_label.get_combined_minimum_size().x \
+		- _stage_name_jp.get_combined_minimum_size().x - 48.0
+	var wrap := needed > room
+	_stage_name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART if wrap else TextServer.AUTOWRAP_OFF
+	_stage_name.size_flags_horizontal = Control.SIZE_EXPAND_FILL if wrap else Control.SIZE_FILL
+
+
 func _refresh_energy(state: BattleState) -> void:
 	# One pip per point available, which is a turn's worth normally and the
 	# whole pool in a caucus. Reading energy_per_turn here would draw three

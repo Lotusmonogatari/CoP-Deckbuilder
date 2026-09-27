@@ -62,13 +62,16 @@ layout_mode = 2
 
 [node name="Title" type="HBoxContainer" parent="Safe/Column/Header"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
 [node name="StageName" type="Label" parent="Safe/Column/Header/Title"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"HeaderLabel"
 text = "Floor Debate"
+autowrap_mode = 3
 
 [node name="StageNameJP" type="Label" parent="Safe/Column/Header/Title"]
 unique_name_in_owner = true
@@ -79,7 +82,6 @@ vertical_alignment = 2
 
 [node name="Spacer" type="Control" parent="Safe/Column/Header"]
 layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="TurnLabel" type="Label" parent="Safe/Column/Header"]
@@ -132,6 +134,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Opponent"
+autowrap_mode = 3
 
 [node name="IntentLabel" type="Label" parent="Safe/Column/OpponentRow/Details"]
 unique_name_in_owner = true
@@ -144,12 +147,14 @@ visible = false
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
 text = "Then: Waiting"
+autowrap_mode = 3
 
 [node name="OpponentGuardLabel" type="Label" parent="Safe/Column/OpponentRow/Details"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "They guard 0"
+autowrap_mode = 3
 
 [node name="SupportBar" type="Control" parent="Safe/Column"]
 unique_name_in_owner = true
@@ -172,15 +177,16 @@ theme_type_variation = &"SmallLabel"
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="EnergyRow" type="HBoxContainer" parent="Safe/Column/StatusRow"]
+[node name="EnergyRow" type="HFlowContainer" parent="Safe/Column/StatusRow"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_constants/separation = 10
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 8
 
 [node name="Spacer" type="Control" parent="Safe/Column/StatusRow"]
 layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="GuardLabel" type="Label" parent="Safe/Column/StatusRow"]
