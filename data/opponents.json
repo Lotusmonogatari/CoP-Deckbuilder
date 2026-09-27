@@ -9,7 +9,8 @@
     "affiliation": "BO08",
     "role": "Journalist",
     "stages": [
-      "ST19"
+      "ST19",
+      "ST04"
     ],
     "suit_1": "Divisive",
     "suit_2": "Duplicitous",
@@ -39,7 +40,6 @@
     "stages": [
       "ST11",
       "ST02",
-      "ST04",
       "ST06"
     ],
     "suit_1": "Appeal",
@@ -313,7 +313,6 @@
       "ST10",
       "ST18",
       "ST02",
-      "ST04",
       "ST06"
     ],
     "suit_1": "Appeal",
@@ -487,8 +486,7 @@
     "affiliation": "BO18",
     "role": "Committee on Finance",
     "stages": [
-      "ST16",
-      "ST04"
+      "ST16"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -912,7 +910,8 @@
     "affiliation": "BO08",
     "role": "Journalist",
     "stages": [
-      "ST19"
+      "ST19",
+      "ST04"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Divisive",
@@ -940,7 +939,8 @@
     "affiliation": "BO08",
     "role": "Journalist",
     "stages": [
-      "ST19"
+      "ST19",
+      "ST04"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Appeal",
@@ -968,7 +968,8 @@
     "affiliation": "BO08",
     "role": "Journalist",
     "stages": [
-      "ST19"
+      "ST19",
+      "ST04"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -996,7 +997,8 @@
     "affiliation": "BO08",
     "role": "Journalist",
     "stages": [
-      "ST19"
+      "ST19",
+      "ST04"
     ],
     "suit_1": "Divisive",
     "suit_2": "Data Driven",
@@ -1024,7 +1026,8 @@
     "affiliation": "BO08",
     "role": "Journalist",
     "stages": [
-      "ST19"
+      "ST19",
+      "ST04"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Emotional",
@@ -1052,7 +1055,8 @@
     "affiliation": "BO08",
     "role": "Journalist",
     "stages": [
-      "ST19"
+      "ST19",
+      "ST04"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -1080,7 +1084,8 @@
     "affiliation": "BO08",
     "role": "Journalist",
     "stages": [
-      "ST19"
+      "ST19",
+      "ST04"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -1841,8 +1846,7 @@
     "affiliation": "BO17",
     "role": "Committee on Finance",
     "stages": [
-      "ST16",
-      "ST04"
+      "ST16"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -2035,8 +2039,7 @@
     "affiliation": "BO17",
     "role": "Committee on Finance",
     "stages": [
-      "ST16",
-      "ST04"
+      "ST16"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -2379,8 +2382,7 @@
     "affiliation": "BO17",
     "role": "Committee on War",
     "stages": [
-      "ST11",
-      "ST04"
+      "ST11"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -2664,8 +2666,7 @@
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
     "stages": [
-      "ST09",
-      "ST04"
+      "ST09"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -2750,8 +2751,7 @@
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
     "stages": [
-      "ST09",
-      "ST04"
+      "ST09"
     ],
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
@@ -2865,8 +2865,7 @@
     "affiliation": "BO17",
     "role": "Committee on War",
     "stages": [
-      "ST11",
-      "ST04"
+      "ST11"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -2894,8 +2893,7 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13",
-      "ST04"
+      "ST13"
     ],
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
@@ -3179,8 +3177,7 @@
     "affiliation": "BO17",
     "role": "Committee on the National Assembly",
     "stages": [
-      "ST12",
-      "ST04"
+      "ST12"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -3321,8 +3318,7 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13",
-      "ST04"
+      "ST13"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
