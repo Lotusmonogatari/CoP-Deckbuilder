@@ -509,7 +509,11 @@ func test_answering_every_question_ends_the_press_conference() -> void:
 		engine.end_turn()
 
 	assert_true(engine.state.is_over(), "the conference finished")
-	assert_eq(engine.state.outcome, "win", "it is not a stage you lose on points")
+	# Judged on the tone it closed on (2026-09-27): a win at or above the
+	# stage's own threshold, a loss below it — never a plain "time ran out".
+	var reached := engine.state.bar.player >= engine.state.bar.threshold
+	assert_eq(engine.state.outcome, "win" if reached else "loss",
+		"the outcome follows the tone against the threshold")
 	assert_eq(engine.questions_remaining(), 0, "because every question was answered")
 
 
@@ -761,3 +765,22 @@ func test_standing_cannot_run_past_its_ceiling() -> void:
 
 	GameState.end_level()
 	GameState.reset_booster_standing()
+
+
+func test_the_real_press_conference_asks_one_question_per_turn() -> void:
+	# The whole pool (20) used to be dealt against a 5-turn clock: "Question
+	# 6 of 20" on screen, then a loss on time with questions still waiting.
+	var stage := DataDB.get_stage("ST04")
+	var config := BattleSetup.for_level_stage(_level_with("ST04"), "ST04")
+	var engine := BattleEngine.new()
+	assert_true(engine.setup(config))
+	assert_eq(engine.questions_remaining(), int(stage["turn_limit"]),
+		"as many questions as the conference has turns")
+
+
+func _level_with(stage_id: String) -> String:
+	for level: Dictionary in DataDB.levels:
+		for n in range(1, 11):
+			if str(level.get("stage_%d" % n)) == stage_id:
+				return str(level["level_id"])
+	return ""

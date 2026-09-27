@@ -919,7 +919,23 @@ func test_running_out_of_questions_ends_the_conference() -> void:
 
 	engine.play_card("GAIN3")
 	assert_true(engine.state.is_over(), "and now none")
-	assert_string_contains(engine.state.outcome_reason, "outcome.reason.concludes")
+	# 45 plus two small answers is short of the fixture's 55.
+	assert_eq(engine.state.outcome, "loss", "judged on the tone it closed on")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.conference_short")
+
+
+func test_a_conference_that_closes_at_its_threshold_is_a_win() -> void:
+	var engine := _start(_press({"stage": TestFixtures.stage({
+		"stage_id": "PT_S2", "draw_mode": "none", "opening_hand": 6,
+		"bar_max": 100, "win_threshold": 55, "player_start": 60, "opp_start": 45,
+		"gaffe_limit": 4,
+		"questions": [{"id": "Q1", "text": "Only question.", "prefers_suit": "Earnest"}],
+	})}))
+	engine.state.hand.assign(["GAIN3"])
+	engine.play_card("GAIN3")
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.conference_reached")
 
 
 func test_running_out_of_cards_ends_the_conference_too() -> void:
@@ -1299,9 +1315,9 @@ func test_the_closing_line_says_the_conference_concluded() -> void:
 	engine.play_card("GAIN3")
 
 	assert_true(engine.state.is_over())
-	# Named from the stage: a study session and a lobbyist meeting also run
-	# on questions and neither of them is a press conference.
-	assert_string_contains(engine.state.outcome_reason, "outcome.reason.concludes")
+	# Named from the stage and judged against its threshold (45 + two small
+	# answers, short of 55).
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.conference_short")
 
 
 func test_the_closing_line_counts_what_went_unanswered() -> void:

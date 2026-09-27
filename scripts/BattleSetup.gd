@@ -93,7 +93,7 @@ static func _is_bill_id(value: String) -> bool:
 
 ## Enriches a bare stages.json row into a battle/visitor-ready stage dict —
 ## opponents, or a drawn visitor pool, plus
-## questions_count — exactly what expand_level()'s own per-slot loop needs,
+## question_pool_size — exactly what expand_level()'s own per-slot loop needs,
 ## factored out here so a stage dealt with the level from the start and one
 ## forced in later by a crisis trigger (GameState.gd, LevelRunner.
 ## insert_stage()) are built identically. Leaves `seq` for the caller: only
@@ -133,7 +133,7 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 			position["party_color"] = [party.get("r", 128), party.get("g", 128), party.get("b", 128)]
 		bill["positions"] = positions
 		stage["floor_vote"] = bill
-		stage["questions_count"] = 0
+		stage["question_pool_size"] = 0
 		return stage
 	elif str(stage.get("mode", "")) == "Non-combat":
 		# Office Hours (and the Steering Committee check-in, ST22): not a
@@ -162,12 +162,16 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 	# writes its questions out longhand (that "questions" key is a
 	# hand-written playtest fixture's shape); it names its pool in
 	# "question_pool" instead and the questions are drawn from
-	# DataDB.questions at battle setup. Resolving the count here, the same
-	# place "opponents" is resolved, is what lets LevelRunner's existing
-	# "questions_count" check see a real stage's pool at all — without it,
-	# ST04/19/20/21 all looked like they had no questions, which happened
-	# to be harmless only because they also always have opponents.
-	stage["questions_count"] = DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
+	# DataDB.questions at battle setup. Resolving the pool's size here, the
+	# same place "opponents" is resolved, is what lets LevelRunner see a
+	# real stage's pool at all.
+	#
+	# Its own name, NOT "questions_count" (2026-09-27): the engine reads
+	# questions_count as how many questions the room ASKS. Writing the whole
+	# pool's size (20) there made the press conference deal 20 questions
+	# against its 5-turn clock — "Question 6 of 20" on screen, then a loss
+	# on time with the questions nowhere near done.
+	stage["question_pool_size"] = DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
 
 	return stage
 

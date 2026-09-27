@@ -162,14 +162,14 @@ func test_st21s_threshold_is_checked_even_though_it_has_questions() -> void:
 
 
 # ---------------------------------------------------------------------------
-# expand_level() resolves question_pool into questions_count —
+# expand_level() resolves question_pool into question_pool_size —
 # BattleSetup.expand_level() / LevelRunner.problems()
 #
 # Playtest report (2026-09-25): several levels said "no questions or
 # opponents found". Root cause: expand_level() has always resolved a
 # stage's real "opponents" from its opponent pool, but never resolved its
 # "question_pool" name into anything LevelRunner.problems() could see —
-# that check only ever looked at "questions"/"questions_count", a shape
+# that check only ever looked at "questions"/"question_pool_size", a shape
 # only hand-written playtest fixtures use. It happened to be harmless for
 # ST04/19/20/21 today only because they also always have opponents.
 # ---------------------------------------------------------------------------
@@ -187,7 +187,7 @@ func test_expand_level_resolves_a_real_stages_question_pool_into_a_count() -> vo
 			press = stage
 			break
 	assert_false(press.is_empty(), "sanity: LV04 has an ST04 stage")
-	assert_eq(int(press.get("questions_count", 0)), DataDB.questions.get("press_conference", []).size(),
+	assert_eq(int(press.get("question_pool_size", 0)), DataDB.questions.get("press_conference", []).size(),
 		"the real press_conference pool's size, not 0")
 
 
@@ -210,11 +210,11 @@ func test_expand_level_resolves_st05_town_halls_own_question_pool_too() -> void:
 			town_hall = stage
 			break
 	assert_false(town_hall.is_empty(), "sanity: LV01 has an ST05 stage")
-	assert_eq(int(town_hall.get("questions_count", 0)), DataDB.questions.get("town_hall", []).size(),
+	assert_eq(int(town_hall.get("question_pool_size", 0)), DataDB.questions.get("town_hall", []).size(),
 		"the real town_hall pool's size, not 0")
 
 
-func test_expand_level_leaves_questions_count_at_zero_for_a_stage_with_no_pool() -> void:
+func test_expand_level_leaves_question_pool_size_at_zero_for_a_stage_with_no_pool() -> void:
 	# LV04's first and third stages, ST03 (Caucus) and ST10, are neither
 	# BattleSetup.QUESTION_POOL_BY_STAGE entries nor hand-written "questions"
 	# stages — unlike its own second stage, ST04, checked by the sibling
@@ -227,7 +227,7 @@ func test_expand_level_leaves_questions_count_at_zero_for_a_stage_with_no_pool()
 	for stage: Dictionary in expanded.get("stages", []):
 		if stage.get("stage_id") in ["ST03", "ST10"]:
 			checked += 1
-			assert_eq(int(stage.get("questions_count", -1)), 0,
+			assert_eq(int(stage.get("question_pool_size", -1)), 0,
 				"%s has no question_pool, so its count should be 0, not left unset"
 					% stage.get("stage_id"))
 	assert_eq(checked, 2, "sanity: both ST03 and ST10 were found and checked")

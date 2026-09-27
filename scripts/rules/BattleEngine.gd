@@ -711,7 +711,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 	# is genuinely tone-only (no threshold to race toward) ends this way.
 	if is_press_conference():
 		if questions_remaining() <= 0:
-			_finish("win", _conference_closing())
+			_close_conference()
 			return
 		# An empty hand is the end of it. The discard pile is not counted:
 		# in a conference that never draws, a card once played is gone for
@@ -720,7 +720,7 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 		if state.draw_mode != "none":
 			can_still_answer = can_still_answer or not state.deck.is_empty()
 		if not can_still_answer:
-			_finish("win", _conference_closing(true))
+			_close_conference(true)
 			return
 
 	# Three stages have no threshold to cross.
@@ -787,6 +787,13 @@ func _check_turn_limit() -> void:
 	if limit <= 0 or state.turn < limit:
 		return
 
+	# A press conference's clock and its questions are dealt to match (one
+	# question a turn), so the clock running out IS the conference closing —
+	# judged on the tone reached, never a plain "time ran out" loss.
+	if is_press_conference():
+		_close_conference()
+		return
+
 	# Surviving to the end IS the win in a TV debate, whatever the general
 	# turn-limit switch says.
 	if state.bar != null and state.bar.model == BarModel.Model.SURVIVAL:
@@ -835,20 +842,42 @@ func _check_turn_limit() -> void:
 # The press conference
 # ---------------------------------------------------------------------------
 
-## How a press conference ends.
+## Ends a press conference, judged against its win threshold.
 ##
-## Never won or lost — it closes, and what it produced is the tone and the
-## organisations pleased. The count of unanswered questions is recorded
-## rather than judged: what it should cost beyond the tone is Cameron's, and
-## this is the line those endings will hang off.
-func _conference_closing(ran_out_of_cards: bool = false) -> String:
+## It runs every question it was dealt (one a turn, so "Question 5 of 5" is
+## the last turn), then the tone it closed on decides it: at or above the
+## stage's win_threshold is a win, below is a loss (Cameron, 2026-09-27).
+## Which one only decides whether the win or the loss columns pay out —
+## ST04's own Loss Ends Level is "No", so the level carries on either way.
+## A conference with no threshold set can only close as a win, as before.
+func _close_conference(ran_out_of_cards: bool = false) -> void:
+	var threshold := state.bar.threshold if state.bar != null else 0
+	var reached := threshold <= 0 or state.bar.player >= threshold
+	_finish("win" if reached else "loss", _conference_closing(ran_out_of_cards, reached))
+
+
+## What the outcome panel says about how a press conference closed.
+##
+## The count of unanswered questions is recorded rather than judged: what it
+## should cost beyond the tone is Cameron's, and this is the line those
+## endings will hang off.
+func _conference_closing(ran_out_of_cards: bool = false, reached: bool = true) -> String:
 	# Named from the stage, because a policy study session and a lobbyist
 	# meeting both run on questions and neither of them is a press
 	# conference. It said so anyway until a playtest read it.
 	var what := str(_stage.get("name_en", "")).strip_edges()
-	var lines: Array[String] = [
-		_words.say("outcome.reason.concludes", {"stage": what}) if not what.is_empty()
-		else _words.say("outcome.reason.concludes_unnamed")]
+	var threshold := state.bar.threshold if state.bar != null else 0
+	var lines: Array[String] = []
+	if threshold > 0 and not what.is_empty():
+		lines.append(_words.say(
+			"outcome.reason.conference_reached" if reached else "outcome.reason.conference_short", {
+				"stage": what,
+				"count": state.bar.player,
+				"unit": str(_stage.get("bar_unit", "press tone")).to_lower(),
+				"threshold": threshold}))
+	else:
+		lines.append(_words.say("outcome.reason.concludes", {"stage": what}) if not what.is_empty()
+			else _words.say("outcome.reason.concludes_unnamed"))
 
 	if ran_out_of_cards:
 		lines.append(_words.say("outcome.reason.nothing_left"))

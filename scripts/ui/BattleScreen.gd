@@ -251,9 +251,11 @@ func _refresh() -> void:
 
 	if state.bar != null:
 		# A scored stage has no threshold, so the bar must not draw a line or
-		# claim a number is needed to win. Neither has a press conference:
-		# it runs until the reporters are finished, whatever the tone.
-		var has_threshold := state.win_mode != "score" and not engine.is_press_conference()
+		# claim a number is needed to win. A press conference does have one
+		# (2026-09-27): it still runs every question, but the tone it closes
+		# on is judged against it, so the player is told the target up front.
+		var has_threshold := state.win_mode != "score" and (not engine.is_press_conference()
+			or state.bar.threshold > 0)
 		# Reaching the threshold ends the STAGE only when nobody else is
 		# waiting to rise. On the floor it ends one debater of five.
 		var wins_stage := not engine.has_more_opponents()
@@ -286,7 +288,7 @@ func _refresh() -> void:
 ## and which room gets %RoomNotice at all (_show_room_notice()).
 func _stage_asks_questions() -> bool:
 	return engine != null and not engine.is_press_conference() \
-		and int(_stage.get("questions_count", 0)) > 0
+		and int(_stage.get("question_pool_size", 0)) > 0
 
 
 ## The drawn question, as the CueBanner's own default content — what is on

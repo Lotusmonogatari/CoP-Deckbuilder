@@ -263,11 +263,11 @@ func test_a_press_conference_needs_questions_rather_than_opponents() -> void:
 func test_a_real_stages_question_pool_counts_as_pushing_back() -> void:
 	# A real workbook stage (ST04/19/20/21) never writes "questions" out
 	# longhand — BattleSetup.expand_level() resolves its question_pool name
-	# into a "questions_count" instead, the same place it resolves
+	# into a "question_pool_size" instead, the same place it resolves
 	# "opponents". This is that resolved shape, not the hand-written
 	# fixture's "questions" list above.
 	var runner := _runner({"stages": [
-		{"seq": 1, "opponents": [], "questions_count": 20},
+		{"seq": 1, "opponents": [], "question_pool_size": 20},
 	]})
 	assert_true(runner.is_valid(), "%s" % [runner.problems()])
 

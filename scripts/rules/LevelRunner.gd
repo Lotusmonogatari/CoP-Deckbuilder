@@ -98,12 +98,12 @@ func problems() -> PackedStringArray:
 ## Whether this room puts questions to the player.
 ##
 ## Two ways of saying so: a stage may write its questions out longhand, or
-## name a number and draw that many from the pool for its type. Asked in one
-## place so neither shape is forgotten.
+## draw from the pool for its type (BattleSetup records that pool's size as
+## question_pool_size). Asked in one place so neither shape is forgotten.
 static func _asks_questions(stage: Dictionary) -> bool:
 	if not stage.get("questions", []).is_empty():
 		return true
-	return int(stage.get("questions_count", 0)) > 0
+	return int(stage.get("question_pool_size", 0)) > 0
 
 
 func is_valid() -> bool:
