@@ -19,8 +19,9 @@ const GAINING := ArtLoader.GAINING
 const DAMAGED := ArtLoader.DAMAGED
 const VICTORY := ArtLoader.VICTORY
 
-## How long a reaction shows before settling back to neutral.
-const FLINCH_SECONDS := 0.9
+## How long a reaction shows before settling back to neutral. Doubled
+## 2026-09-28 (Cameron, mobile playtest: too quick to register on a phone).
+const FLINCH_SECONDS := 1.8
 
 var _portrait: Control
 var _stage_id := ""

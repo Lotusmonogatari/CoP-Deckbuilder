@@ -29,7 +29,9 @@ const DAMAGED := ArtLoader.DAMAGED
 const DEFEATED := ArtLoader.DEFEATED
 
 ## How long an opponent shows the damaged face after a card lands on them.
-const FLINCH_SECONDS := 0.9
+## Doubled 2026-09-28 (Cameron, mobile playtest: too quick to register on a
+## phone).
+const FLINCH_SECONDS := 1.8
 
 ## How far an opponent's support has to fall, as a share of where they
 ## started, before they look hurt rather than composed.
