@@ -9,7 +9,8 @@
       "M10",
       "M11",
       "M16"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO02",
@@ -21,7 +22,8 @@
       "M08",
       "M12",
       "M17"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO03",
@@ -31,7 +33,8 @@
     "tier": "Constituency",
     "linked_modifiers": [
       "M18"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO04",
@@ -42,7 +45,8 @@
     "linked_modifiers": [
       "M13",
       "M19"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO05",
@@ -52,7 +56,8 @@
     "tier": "National",
     "linked_modifiers": [
       "M20"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO06",
@@ -62,7 +67,8 @@
     "tier": "Constituency",
     "linked_modifiers": [
       "M21"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO07",
@@ -72,7 +78,8 @@
     "tier": "Constituency",
     "linked_modifiers": [
       "M22"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO08",
@@ -83,7 +90,8 @@
     "linked_modifiers": [
       "M07",
       "M23"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO09",
@@ -94,7 +102,8 @@
     "linked_modifiers": [
       "M06",
       "M24"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO10",
@@ -106,7 +115,8 @@
       "M05",
       "M15",
       "M25"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO11",
@@ -116,7 +126,8 @@
     "tier": "Constituency",
     "linked_modifiers": [
       "M26"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO12",
@@ -126,7 +137,8 @@
     "tier": "Constituency",
     "linked_modifiers": [
       "M27"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO13",
@@ -136,7 +148,8 @@
     "tier": "National",
     "linked_modifiers": [
       "M28"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO14",
@@ -146,7 +159,8 @@
     "tier": "Constituency",
     "linked_modifiers": [
       "M29"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO15",
@@ -156,7 +170,8 @@
     "tier": "National",
     "linked_modifiers": [
       "M30"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO16",
@@ -166,7 +181,8 @@
     "tier": "National",
     "linked_modifiers": [
       "M31"
-    ]
+    ],
+    "starting_standing": null
   },
   {
     "booster_id": "BO17",
@@ -174,7 +190,8 @@
     "name_jp": "国会議員",
     "romaji": "Kokkai Giin",
     "tier": "National",
-    "linked_modifiers": null
+    "linked_modifiers": null,
+    "starting_standing": null
   },
   {
     "booster_id": "BO18",
@@ -182,6 +199,7 @@
     "name_jp": "選挙区の有権者",
     "romaji": "Senkyoku no Yūkensha",
     "tier": "Constituency",
-    "linked_modifiers": null
+    "linked_modifiers": null,
+    "starting_standing": null
   }
 ]

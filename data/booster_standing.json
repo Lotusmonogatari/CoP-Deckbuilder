@@ -28,21 +28,20 @@
     "2026-09-28: 'start' used to be the only lever, so every organisation",
     "opened at the same flat number - a player could not tell one group's",
     "backing from another's on the Backing screen before doing anything at",
-    "all. 'start_by_booster' (booster_id -> starting standing) overrides it",
-    "per organisation, the same override shape 'required_standing_by_",
-    "modifier' already uses; a booster_id missing from the table still",
-    "opens at the flat 'start'. EMPTY, AWAITING CAMERON - filling it in is",
-    "a political-characterization call (how warm each real organisation is",
-    "to a brand-new legislator), not an engineering one, so it is left for",
-    "him to write rather than guessed."
+    "all. Each organisation can now start somewhere else instead: the",
+    "workbook's Boosters tab has its own 'Starting Standing' column",
+    "(boosters.json's own 'starting_standing', per booster_id), read by",
+    "GameState.reset_booster_standing() before it falls back to the flat",
+    "'start' below for any booster that column leaves blank. Filling it in",
+    "is a political-characterization call (how warm each real organisation",
+    "is to a brand-new legislator) - Cameron's, in the workbook, not a",
+    "second number to keep in sync here."
   ],
 
   "start": 50,
   "min": 0,
   "max": 100,
   "per_please": 5,
-
-  "start_by_booster": {},
 
   "required_standing": 60,
   "required_standing_by_modifier": {}

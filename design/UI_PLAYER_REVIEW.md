@@ -56,7 +56,7 @@ finding:
 | 08 | Office Hours (ST07) | No findings — layout matches spec, visitor/question/choices/footer all render correctly, the counter fits (see 09 above for the contrast). | — |
 | 12 | Supplies | **Not a bug.** `"ね3" Coffee` is an intentional in-universe brand name (Cameron confirmed) — no change needed. | — |
 | 13 | Staff | No findings — tier gating, prices, and "Not open to recruitment yet." all read clearly. | — |
-| 14 | The Organisations (Backing) | **Mechanism built, values still open.** Every booster used to read the same flat 50 with no way to differ at all — `GameState.reset_booster_standing()` only ever read one global `start`. It now also reads a new `start_by_booster` table in `data/booster_standing.json` (booster_id → starting standing, the same per-item override shape `required_standing_by_modifier` already uses), falling back to the flat default for any booster the table doesn't name. The table itself is still empty: how warm each real organisation is to a brand-new legislator is Cameron's own political-characterization call, not an engineering one, so it's left for him to fill in rather than guessed. | Lacking (mechanism done; values are Cameron's) |
+| 14 | The Organisations (Backing) | **Mechanism built, values still open.** Every booster used to read the same flat 50 with no way to differ at all — `GameState.reset_booster_standing()` only ever read one global `start`. The workbook's Boosters tab now has its own **Starting Standing** column (`boosters.json`'s own `starting_standing`, per booster_id), read before the flat default for any booster it's left blank. Fill it in the same way as any other Boosters-tab column, re-export, done — no JSON to hand-edit. The column is still blank for all 16: how warm each real organisation is to a brand-new legislator is Cameron's own political-characterization call, not an engineering one, so it's left for him to write. | Lacking (mechanism done; values are Cameron's) |
 | 15 | Deck | Not meaningfully reviewable this pass — see the note under "What's deliberately left out" above. Worth a real re-shot with real owned cards before trusting any finding here. | — (excluded) |
 | 01 | New Game / protagonist picker | Each protagonist's stat block (Constituency support / Reputation / Funds / Party support / XP) is a flat list of labels at one text size and weight, mixed in directly below the difficulty blurb with no visual separation — a player has to read five lines of near-identical-looking text to find, say, just the Funds number. Not wrong, just dense. Worth a quick pass (bolding the numbers, or a light table/grid) if this screen gets attention later — low priority, first-launch-only screen. | Lacking (minor, cosmetic) |
 | 02/03 | Office (fresh state / crisis alert) | Party colouring on the header ("Kenshin Sako · Frontier Party") reads correctly, and the low-reputation notices show correctly. The crisis-alert popup itself is accurate content-wise ("Constituency support fell to 12 — a Town Hall has been added to your schedule.") but sits in an otherwise fully empty dark screen with no dimmed Office visible behind it and a lot of unused vertical space above and below the message — not wrong, just visually sparse compared to how full the header/notice screen looks. | Lacking (minor, cosmetic) |
@@ -68,9 +68,10 @@ All three open items from this review are now resolved or in your hands:
    workbook and re-exported.
 2. **`"ね3" Coffee`** — confirmed intentional, no change made.
 3. **The flat 50 booster standings** — the mechanism to vary them now
-   exists (`start_by_booster` in `data/booster_standing.json`); the actual
-   numbers per organisation are still yours to write whenever you're
-   ready — see that row above for exactly where.
+   exists as an ordinary workbook column, the Boosters tab's own **Starting
+   Standing** (blank = the flat default); the actual numbers per
+   organisation are still yours to write whenever you're ready, the same
+   way you'd fill in any other Boosters-tab cell.
 
 Everything else (the Details panel's text bleed-through and misplaced
 party labels, the Steering Committee header clipping, the Level Intro

@@ -540,6 +540,12 @@ SHEETS = {
             ("Romaji", "romaji", "str"),
             ("Tier", "tier", "str"),
             ("Linked modifiers", "linked_modifiers", "list"),
+            # How warm this organisation is to a brand-new legislator, 0-100
+            # (data/booster_standing.json's own "min"/"max"). Blank (2026-09-28,
+            # Cameron's to write) falls back to booster_standing.json's flat
+            # "start" — GameState.reset_booster_standing() reads this column
+            # first, per booster, before the flat default.
+            ("Starting Standing", "starting_standing", "int"),
         ],
     },
     # National Assembly Floor Voting (ST23, 2026-09-26): the six real-world

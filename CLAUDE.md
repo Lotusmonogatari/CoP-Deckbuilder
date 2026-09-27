@@ -78,7 +78,7 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `stages.json` | stage_id | mode, bar_unit, bar_max, win_threshold, turn_limit, energy_per_turn, hand_size, gaffe_limit, player_start, opp_start, segment mix %, win deltas, xp_reward, signature_rule |
 | `segments.json` | segment_id | Press, Loyalists, Constituents, Donors, Bureaucrats |
 | `modifiers.json` | mod_id | category, trigger_segment, trigger_min_pct, effect, magnitude, kaban_cost, available_to, source_booster |
-| `boosters.json` | booster_id | Organizations; tier (Party / Constituency / National); linked modifiers |
+| `boosters.json` | booster_id | Organizations; tier (Party / Constituency / National); linked modifiers; `starting_standing` (blank = the flat default in `booster_standing.json`) — §8 |
 | `opponents.json` | opp_id | Opponent data and intent patterns. Affiliation is a booster_id (their org); Role is their real-world job (MP, journalist, staffer...); Title, when a row has one, overrides Role for display — see `OpponentDisplay.gd` |
 | `opponent_cues.json` | cue_id | Spoken lines per opponent for battle, keyed by `opponent_ids` |
 | `levels.json` | level_id | Workbook-derived level data and ordered stage references |
@@ -711,14 +711,17 @@ directly in the workbook's Stages tab and re-exported — only ST06's own
 cell changed; ST04 and ST19 still correctly read "Press tone"); `"ね3"
 Coffee` is confirmed as an intentional in-universe brand name, not a
 data artifact; and the flat-50 booster standings now have a real
-mechanism to vary — `GameState.reset_booster_standing()` reads a new
-`start_by_booster` table in `data/booster_standing.json` (booster_id →
-starting standing, the same per-item override shape
-`required_standing_by_modifier` already used), falling back to the flat
-default for any booster the table doesn't name. The table itself is
-still empty — how warm each real organisation is to a brand-new
-legislator is Cameron's own political-characterization call, left for
-him to write rather than guessed at.
+mechanism to vary. First pass put the override in a hand-maintained
+`start_by_booster` table inside `data/booster_standing.json`; Cameron
+asked whether the starting value already lived on a workbook sheet he
+could just edit, so it moved there instead — the Boosters tab now has
+its own **Starting Standing** column (`boosters.json`'s own
+`starting_standing`), which `GameState.reset_booster_standing()` reads
+per booster before falling back to `booster_standing.json`'s flat
+`start` for any row the column leaves blank. The column itself is still
+blank for all 16 organisations — how warm each real organisation is to a
+brand-new legislator is Cameron's own political-characterization call,
+left for him to write in the workbook rather than guessed at.
 
 Everything else — three real layout bugs with no design call attached —
 was fixed directly in a follow-up pass: the battle Details panel's text
