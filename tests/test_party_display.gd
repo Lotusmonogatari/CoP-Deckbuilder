@@ -18,6 +18,19 @@ func test_color_for_an_unknown_party_is_a_visible_neutral_not_invisible() -> voi
 	assert_lt(color.r, 1.0)
 
 
+func test_party_name_reads_a_real_party_string() -> void:
+	assert_eq(PartyDisplay.party_name({"party": "Frontier Party"}), "Frontier Party")
+
+
+func test_party_name_is_blank_not_the_literal_null_text() -> void:
+	# A blank workbook cell exports as JSON null; str(null) is the literal
+	# text "<null>" rather than nothing (opponents.json: most opponents
+	# have no party at all) — the same bug class OpponentDisplay.title_for()
+	# already guards title text against.
+	assert_eq(PartyDisplay.party_name({"party": null}), "")
+	assert_eq(PartyDisplay.party_name({}), "")
+
+
 func test_color_for_every_real_party_row_is_distinct_from_unknown() -> void:
 	for party: Dictionary in DataDB.parties:
 		var color := PartyDisplay.color_for(party)

@@ -454,13 +454,13 @@ func _refresh_details(state: BattleState) -> void:
 	var player := DataDB.player
 	if not str(player.get("name_en", "")).is_empty():
 		lines.append("You: %s" % player.get("name_en", ""))
-	_show_party_line(_you_party_label, str(player.get("party", "")))
+	_show_party_line(_you_party_label, PartyDisplay.party_name(player))
 
 	# No line at all where there is nobody, rather than "Opponent: ,".
 	var opponent := engine.current_opponent()
 	if not opponent.is_empty():
 		lines.append("Opponent: %s" % opponent.get("name", ""))
-	_show_party_line(_opponent_party_label, str(opponent.get("party", "")))
+	_show_party_line(_opponent_party_label, PartyDisplay.party_name(opponent))
 
 	if engine.questions_remaining() > 0 or not engine.pleased_boosters().is_empty():
 		lines.append("")

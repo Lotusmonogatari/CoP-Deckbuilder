@@ -28,3 +28,14 @@ static func color_for(party: Dictionary) -> Color:
 		int(party.get("r", 153)) / 255.0,
 		int(party.get("g", 153)) / 255.0,
 		int(party.get("b", 153)) / 255.0)
+
+
+## A protagonist/opponent row's own "party" field as a string, or "" for a
+## blank cell. Most opponents have no party at all, and a blank workbook
+## cell exports as JSON null — str(null) is the literal text "<null>",
+## the same bug class OpponentDisplay.title_for() already guards title
+## text against, so every party-name display site reads through this
+## rather than stringifying the raw value itself.
+static func party_name(row: Dictionary) -> String:
+	var party: Variant = row.get("party")
+	return "" if party == null else str(party)

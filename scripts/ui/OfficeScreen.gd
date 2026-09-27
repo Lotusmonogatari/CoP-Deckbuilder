@@ -169,7 +169,7 @@ func _build() -> void:
 	# but a named desk reads better than an anonymous one.
 	var player := DataDB.player
 	var name_en := str(player.get("name_en", ""))
-	var party := str(player.get("party", ""))
+	var party := PartyDisplay.party_name(player)
 
 	if name_en.is_empty():
 		_title.text = Text.say("office.title")
@@ -500,7 +500,7 @@ func _protagonist_row(protagonist: Dictionary) -> Control:
 	var name_jp := str(protagonist.get("name_jp", ""))
 	if not name_jp.is_empty():
 		box.add_child(UiKit.line(name_jp, "JapaneseAccent"))
-	var party := str(protagonist.get("party", ""))
+	var party := PartyDisplay.party_name(protagonist)
 	var party_label := UiKit.line(
 		party if not party.is_empty() else Text.say("new_game.no_party"), "SmallLabel")
 	if not party.is_empty():
