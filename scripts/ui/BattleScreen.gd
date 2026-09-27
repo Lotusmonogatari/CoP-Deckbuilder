@@ -304,7 +304,7 @@ func _announce_question() -> void:
 	var question := engine.current_question()
 	if question.is_empty():
 		return
-	_banner.say(CueBanner.OPPONENT, OpponentPresenter.display_name(engine),
+	_banner.say(CueBanner.OPPONENT, OpponentPresenter.question_speaker_name(engine),
 		Text.say("battle.question_prompt", {"question": str(question.get("text", ""))}))
 
 

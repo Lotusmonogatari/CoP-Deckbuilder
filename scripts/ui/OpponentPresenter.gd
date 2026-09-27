@@ -120,6 +120,21 @@ static func display_name(engine: BattleEngine) -> String:
 	return str(engine.current_opponent().get("name", ""))
 
 
+## Who to put on the CueBanner's own name tag for the drawn question
+## (BattleScreen._announce_question()) — the journalist asking it in a press
+## conference (the same "asked_by" row _show_journalist() puts in the
+## opponent's place), the ordinary opponent everywhere else. display_name()
+## itself returns "" for a press conference on purpose (there is no opponent
+## whose support can be taken) — that blank speaker name is what left the
+## question's own banner both unnamed and, with no name, no visible red tag
+## to mark whose voice it was (2026-09-28 playtest).
+static func question_speaker_name(engine: BattleEngine) -> String:
+	if not engine.is_press_conference():
+		return display_name(engine)
+	var asker := DataDB.get_opponent(str(engine.current_question().get("asked_by", "")))
+	return _named_with_title(asker) if not asker.is_empty() else ""
+
+
 func _show_opponent(engine: BattleEngine) -> void:
 	var opponent := engine.current_opponent()
 
@@ -175,8 +190,9 @@ func _show_journalist(question: Dictionary) -> void:
 
 ## "{name}, {title}" — the real Title where there is one, the Role
 ## otherwise, nothing extra when neither resolves to anything (see
-## OpponentDisplay.title_for()).
-func _named_with_title(opponent: Dictionary) -> String:
+## OpponentDisplay.title_for()). Static: touches no instance state, so
+## question_speaker_name() below can call it without a presenter of its own.
+static func _named_with_title(opponent: Dictionary) -> String:
 	var name := str(opponent.get("name", "Visitor A"))
 	var title := OpponentDisplay.title_for(opponent)
 	return name if title.is_empty() else Text.say("battle.name_and_title",
