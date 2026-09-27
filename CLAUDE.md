@@ -21,7 +21,7 @@ You are the sole programmer on a solo-developer mobile game. The designer (Camer
 | Resolution | Base 1080 × 2340 (9:19.5). Stretch mode `canvas_items`, aspect `expand`. Respect device safe areas. |
 | Data-driven | **All content comes from `/data/*.json`.** Never hardcode card values, stage rules, names, or numbers in scripts. |
 | Art | 2D PNGs only (ComiPo! renders + Midjourney + manual edits), loaded by ID from `/assets/`. No 3D, no rigging. Missing art must fall back to an auto-generated placeholder. |
-| Text | English is primary everywhere. Japanese appears only as a small, muted accent **next to** English, never alone. Bundle **Noto Sans JP** (SIL OFL) as the theme font. |
+| Text | English is primary everywhere. Japanese appears only as a small, muted accent **next to** English, never alone. Fonts (Cameron, 2026-09-27): cards use **Antaka Brush Display** (`CardView.CARD_FONT`); everything else uses **Antaka Brush Text** (GUST Font License) as the theme font, with **Noto Sans JP** (SIL OFL) as its fallback — Antaka Text is Latin-only (no Japanese, no ō, −, ×, • or →), so those characters come from Noto. Antaka Text has one weight and a small-caps design; size alone carries hierarchy. `tools/build_theme.gd` builds it. |
 | Code style | Heavily commented, small files, descriptive names. Pure game rules live separately from UI code. |
 | Source control | Git from day one. Commit at the end of each milestone with a plain-English message. |
 
@@ -212,6 +212,7 @@ options are authoritative; the table below describes the current settings:
 | `discard_hand_end_of_turn` | `true` |
 | `pass_energy_penalty` | `1` |
 | `guard_cap` | `5` |
+| `card_training_looks` | `3` — cards one Rhetoric Training draw may show; the last must be learned (Cameron, 2026-09-27) |
 | `default_consumable_stack_cap` | `5` — the Stack Cap any Supplies consumable (usable in the Office or a stage) gets when its own Shop-tab cell is blank; filled in once at load by `DataDB._apply_default_consumable_cap()` (Cameron, 2026-09-27) |
 | `default_intent_pattern` | attack 1–6 / gain 1–6 / block 0–2 |
 
@@ -390,6 +391,7 @@ is its own commit.
 | 7 | No limit on consumables (20+ Coffees, 20+ energy pips) | `default_consumable_stack_cap` (§9) |
 | 8 | Press conference questions asked by MPs | Workbook data fix, Cameron's choice over a code rule: ST04 added to the 8 journalists' Stage cells (OP110-117) and removed from the 12 MPs that listed it — so the dynamic-by-stage-ID rule still decides, and would need redoing if an older copy of the workbook is uploaded over it |
 | 9 | Opponent lines appeared twice, once as "Them: …" | The narrated version of the opponent's move shows only when they have no written cue for it |
+| 5b | (follow-up) Unlimited passing in Rhetoric Training | A draw shows up to `card_training_looks` (rules.json, 3) cards with a "1/3" counter; Pass shows the next, the last has no Pass and the pop-up can't be closed, so a draw always ends in a learned card. The draw is saved (`GameState.card_draw`), so quitting mid-draw brings the same card back. Learning is what starts a fresh draw (`GameState.pass_offered_card()`, `can_pass_offered_card()`) |
 
 Ten new Text-tab rows came with 3, 5 and 6 (`reward.if_lost`,
 `outcome.reason.conference_short/reached`, `office.rhetoric_training`,
