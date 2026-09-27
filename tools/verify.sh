@@ -105,6 +105,20 @@ if command -v xvfb-run >/dev/null 2>&1; then
     echo ">> FAILED: a Supplies or Rhetoric Training purchase failed with real clicks."
     failures=$((failures + 1))
   fi
+
+  # And National Assembly Floor Voting (ST23) — 2026-09-28, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/floor_vote_test.tscn; then
+    echo ">> FAILED: the Floor Vote screen did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
+  # And the Level Intro screen — 2026-09-28, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/level_intro_test.tscn; then
+    echo ">> FAILED: the Level Intro screen did not work with real clicks."
+    failures=$((failures + 1))
+  fi
 else
   echo ">> SKIPPED: xvfb-run is not installed, so buttons were not clicked."
   echo "   On Debian or Ubuntu: sudo apt-get install xvfb"
