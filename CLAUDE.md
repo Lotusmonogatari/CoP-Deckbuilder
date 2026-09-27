@@ -706,6 +706,19 @@ than trusting a first impression. `design/UI_PLAYER_REVIEW.md` is the
 result — findings tagged Confusing/Inaccurate/Lacking, design-touching
 items (ST06's bar label, a Supplies item's name, the flat 50 booster
 standings) left as open questions for Cameron rather than decided here.
+All three are now answered: ST06's `bar_unit` is "Viewer Tone" (edited
+directly in the workbook's Stages tab and re-exported — only ST06's own
+cell changed; ST04 and ST19 still correctly read "Press tone"); `"ね3"
+Coffee` is confirmed as an intentional in-universe brand name, not a
+data artifact; and the flat-50 booster standings now have a real
+mechanism to vary — `GameState.reset_booster_standing()` reads a new
+`start_by_booster` table in `data/booster_standing.json` (booster_id →
+starting standing, the same per-item override shape
+`required_standing_by_modifier` already used), falling back to the flat
+default for any booster the table doesn't name. The table itself is
+still empty — how warm each real organisation is to a brand-new
+legislator is Cameron's own political-characterization call, left for
+him to write rather than guessed at.
 
 Everything else — three real layout bugs with no design call attached —
 was fixed directly in a follow-up pass: the battle Details panel's text

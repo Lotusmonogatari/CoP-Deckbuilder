@@ -42,7 +42,7 @@ finding:
 
 | # | Screen | Finding | Lens |
 |---|---|---|---|
-| 06/07 | Press Conference (ST04) vs. TV Debate (ST06) | Both single-bar Combat stages show the caption **"Press tone NN of 100"** under the win bar. For ST04 that's correct — it *is* a press conference. For ST06, a televised debate, "press tone" is the wrong concept (there's no press in the room). Traced to `data/stages.json`: ST06's own `bar_unit` field is literally `"Press tone"`, the same text as ST04's — a workbook value that reads like it was copied from ST04 and never changed for the TV Debate room. **Question for Cameron**: what should ST06's own bar unit be called (e.g. "Viewer support")? This is a one-cell data fix once you decide, not a code change. | Inaccurate |
+| 06/07 | Press Conference (ST04) vs. TV Debate (ST06) | **Fixed.** ST06's own `bar_unit` cell in the workbook read `"Press tone"`, copied from ST04 and never changed for the TV Debate room. Cameron's call: **"Viewer Tone."** Edited directly in `design/CoP_Starter_Card_Stage_Data.xlsx`'s Stages tab (only ST06's own cell — ST04 and ST19 still correctly read "Press tone") and re-exported; `data/stages.json` now shows `ST06: "Viewer Tone"`. | Inaccurate |
 | 17 | Battle screen, Details panel | **Fixed.** Two things, both from code written this session: (1) The panel's backdrop was translucent enough that the battle header behind it bled through and overlapped the panel's own text — now uses the same fully-opaque style `CardZoom` already used. (2) The party-colour labels used to be appended at the very end of the whole details block, far from the "You: …" / "Opponent: …" lines they described — each is now its own row (name + coloured party) sitting right where the old text-only line was. | Confusing |
 | 16 | Battle screen, card zoom | Minor: the missing-art placeholder for card art is a semi-transparent kanji watermark centred over the card, and it sits across the middle of the effect text rather than in the art slot only — legible but visually busier than it needs to be while art is missing. Not fixing until real card art exists changes the picture anyway. | Confusing (minor) |
 | 04–07, 18–19 | Every Combat screen | Consistent and correct: header wraps long names, the bar shows a clear threshold caption and a three-way breakdown (You / Undecided / Opponent), the status row's gaffe pips match `gaffe_limit`, win/loss overlays state the real reason (`outcome.reason.*`). No findings. | — |
@@ -54,26 +54,26 @@ finding:
 | 09 | Party Steering Committee Check-In (ST22) | **Fixed.** The header row clipped: the English title was long enough ("Party Steering Committee Check-In") that the Japanese accent plus the "N of N" visitor counter ran past the right edge and got cut off. `VisitorScreen.gd` now has its own `_fit_stage_name()`, the same wrap-long-titles fix `BattleScreen` got in the 2026-09-27 playtest pass, which it had never inherited — plus a scene-structure fix (`Title`'s `size_flags_horizontal` wasn't set to expand, so the wrapped label had no room to wrap into and collapsed to one letter per line on the first attempt; `VisitorScreen.tscn`'s header now mirrors `BattleScreen.tscn`'s structure exactly). | Confusing |
 | 10 | Level Intro screen | **Fixed.** The CueBanner (the staff member's spoken line) is positioned across the vertical middle of the screen by design ("Ace Attorney style," §13); this screen's own layout used two expanding spacers to vertically *centre* its portrait, which put it directly in the banner's fixed band. `LevelIntroScreen.tscn`'s top spacer no longer expands, so the portrait now sits at the top of the screen, clear of the banner. | Confusing |
 | 08 | Office Hours (ST07) | No findings — layout matches spec, visitor/question/choices/footer all render correctly, the counter fits (see 09 above for the contrast). | — |
-| 12 | Supplies | Two Rhetoric-adjacent Office Management items carry romanized-looking names in quotes: `"ね3" Coffee` and `"ミレニ姫" Tea`. The second reads as a plausible product name; the first, `"ね3"`, looks less like an intentional name and more like a fragment (a stray "3" next to a single kana) — worth Cameron confirming this is the name he intended rather than an export artifact. | Inaccurate (tentative — data, not code) |
+| 12 | Supplies | **Not a bug.** `"ね3" Coffee` is an intentional in-universe brand name (Cameron confirmed) — no change needed. | — |
 | 13 | Staff | No findings — tier gating, prices, and "Not open to recruitment yet." all read clearly. | — |
-| 14 | The Organisations (Backing) | Every one of the 16 boosters shows exactly the same standing, "— 50", with no variation at all. This isn't a bug — `booster_standing.json` genuinely seeds them flat — but it's worth flagging as a real player-facing flatness: a screen whose whole point is showing where you stand with different groups currently tells every group the same story. Already an open item from this session's own design notes (varying the flat 50s); repeating it here because this is where a player actually sees it. | Lacking (design question, already on Cameron's list) |
+| 14 | The Organisations (Backing) | **Mechanism built, values still open.** Every booster used to read the same flat 50 with no way to differ at all — `GameState.reset_booster_standing()` only ever read one global `start`. It now also reads a new `start_by_booster` table in `data/booster_standing.json` (booster_id → starting standing, the same per-item override shape `required_standing_by_modifier` already uses), falling back to the flat default for any booster the table doesn't name. The table itself is still empty: how warm each real organisation is to a brand-new legislator is Cameron's own political-characterization call, not an engineering one, so it's left for him to fill in rather than guessed. | Lacking (mechanism done; values are Cameron's) |
 | 15 | Deck | Not meaningfully reviewable this pass — see the note under "What's deliberately left out" above. Worth a real re-shot with real owned cards before trusting any finding here. | — (excluded) |
 | 01 | New Game / protagonist picker | Each protagonist's stat block (Constituency support / Reputation / Funds / Party support / XP) is a flat list of labels at one text size and weight, mixed in directly below the difficulty blurb with no visual separation — a player has to read five lines of near-identical-looking text to find, say, just the Funds number. Not wrong, just dense. Worth a quick pass (bolding the numbers, or a light table/grid) if this screen gets attention later — low priority, first-launch-only screen. | Lacking (minor, cosmetic) |
 | 02/03 | Office (fresh state / crisis alert) | Party colouring on the header ("Kenshin Sako · Frontier Party") reads correctly, and the low-reputation notices show correctly. The crisis-alert popup itself is accurate content-wise ("Constituency support fell to 12 — a Town Hall has been added to your schedule.") but sits in an otherwise fully empty dark screen with no dimmed Office visible behind it and a lot of unused vertical space above and below the message — not wrong, just visually sparse compared to how full the header/notice screen looks. | Lacking (minor, cosmetic) |
 
 ## Summary for Cameron
 
-Three items are genuinely yours to decide, not something I should just
-change:
-1. **ST06's `bar_unit`** — currently "Press tone," copied from the press
-   conference. What should a TV debate's bar be called?
-2. **`"ね3" Coffee`** in Supplies — intended name, or an export artifact?
-3. **The flat 50 booster standings** — already on your list from this
-   session; this review is one more confirmation a player actually sees it
-   on the Backing screen as-is.
+All three open items from this review are now resolved or in your hands:
+1. **ST06's `bar_unit`** — changed to "Viewer Tone" (your call), in the
+   workbook and re-exported.
+2. **`"ね3" Coffee`** — confirmed intentional, no change made.
+3. **The flat 50 booster standings** — the mechanism to vary them now
+   exists (`start_by_booster` in `data/booster_standing.json`); the actual
+   numbers per organisation are still yours to write whenever you're
+   ready — see that row above for exactly where.
 
-Everything else above (the Details panel's text bleed-through and
-misplaced party labels, the Steering Committee header clipping, the Level
-Intro banner covering the portrait) had no design call attached, so those
-three are now fixed directly — see each row above for what changed.
-`tools/verify.sh` is green after the fix.
+Everything else (the Details panel's text bleed-through and misplaced
+party labels, the Steering Committee header clipping, the Level Intro
+banner covering the portrait) had no design call attached and is fixed
+directly — see each row above for what changed. `tools/verify.sh` is
+green.

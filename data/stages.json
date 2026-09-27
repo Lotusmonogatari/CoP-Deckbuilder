@@ -255,7 +255,7 @@
     "name_jp": "討論番組",
     "romaji": "Tōron Bangumi",
     "mode": "Combat",
-    "bar_unit": "Press tone",
+    "bar_unit": "Viewer Tone",
     "bar_value_kind": "Numerical",
     "bar_max": 100,
     "win_threshold": 65,

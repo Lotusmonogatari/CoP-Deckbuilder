@@ -564,14 +564,22 @@ func set_deck(chosen: Array[String]) -> String:
 	return ""
 
 
-## Every organisation back to where booster_standing.json starts them.
+## Every organisation back to where booster_standing.json starts them —
+## its own "start_by_booster" entry for that booster_id, or the flat
+## "start" for any booster the table doesn't name (2026-09-28, Cameron:
+## the flat 50 for every organisation read the same on the Backing screen
+## whatever the group, so standing now differs per booster the same way
+## "required_standing_by_modifier" already lets a single modifier ask more
+## than the flat default).
 func reset_booster_standing() -> void:
 	booster_standing = {}
 	last_booster_change = {}
 
 	var start := int(DataDB.booster_standing.get("start", 50))
+	var by_booster: Dictionary = DataDB.booster_standing.get("start_by_booster", {})
 	for booster: Dictionary in DataDB.boosters:
-		booster_standing[str(booster.get("booster_id"))] = start
+		var booster_id := str(booster.get("booster_id"))
+		booster_standing[booster_id] = int(by_booster.get(booster_id, start))
 
 
 ## The five parties the player isn't in, back to where party_standing.json
