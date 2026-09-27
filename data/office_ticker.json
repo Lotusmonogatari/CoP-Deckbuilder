@@ -1,0 +1,50 @@
+[
+  {
+    "ticker_id": "TK01",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "The Coliseum of Parliament newsroom never sleeps."
+  },
+  {
+    "ticker_id": "TK02",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Committee season is underway across Yezo."
+  },
+  {
+    "ticker_id": "TK03",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Reporters gather outside the National Assembly ahead of today's session."
+  },
+  {
+    "ticker_id": "TK04",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "<",
+    "condition_value": 30.0,
+    "text_en": "Yezo News: coverage of the Office has been thin lately."
+  },
+  {
+    "ticker_id": "TK05",
+    "condition_type": "meta",
+    "condition_target": "Party support",
+    "condition_op": ">",
+    "condition_value": 75.0,
+    "text_en": "Party insiders praise the Office's steady backing."
+  },
+  {
+    "ticker_id": "TK06",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Constituents are asking what the Office plans next."
+  }
+]

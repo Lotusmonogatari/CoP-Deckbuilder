@@ -191,5 +191,33 @@
       "3": "Cameron, 2026-09-27: the first card and two passes (the pop-up counts 1/3, 2/3, 3/3); the third must be learned.",
       "5": "Four passes. Close to picking whichever card you like."
     }
+  },
+  "ticker_speed_px_per_sec": {
+    "value": 50,
+    "options": [
+      50,
+      80,
+      120
+    ],
+    "question": "How fast does the Office screen's news ticker scroll, in pixels per second?",
+    "means": {
+      "50": "Cameron, 2026-09-28: calm — every word is easy to read without rushing.",
+      "80": "Brisker — reads like a real news ticker.",
+      "120": "Fast — a glance, not a read."
+    }
+  },
+  "ticker_pull_interval_seconds": {
+    "value": 12,
+    "options": [
+      8,
+      12,
+      20
+    ],
+    "question": "How often does the ticker swap in a freshly-picked line?",
+    "means": {
+      "8": "Lines change quickly — more variety, less time to finish reading a longer one.",
+      "12": "Cameron, 2026-09-28: enough time to read a line before the next one comes in.",
+      "20": "Lines linger — fewer swaps, more time on each one."
+    }
   }
 }

@@ -38,7 +38,7 @@ const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"floor_votes", "level_intros", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing",
-	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices",
+	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
 	"segments", "stages", "suits",
@@ -60,6 +60,12 @@ var affinity: Array = []
 ## each row shows when its one condition (a staff role hired/not-hired, or a
 ## meta variable against a threshold) is true. See OfficeNotices.gd.
 var office_notices: Array = []
+
+## The Office screen's own scrolling news strip (2026-09-28): every row
+## whose condition currently holds is eligible to show, one at a time — no
+## one-per-slot picking like office_notices, a ticker can cycle through as
+## many true lines as there are. See OfficeTicker.gd.
+var office_ticker: Array = []
 
 ## A hired staff member's own line about a specific level, shown on the
 ## Level Intro screen between the Office and that level's first stage
@@ -271,6 +277,7 @@ func load_all() -> void:
 			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": _load_protagonists(content)
 			"office_notices": office_notices = content if content is Array else []
+			"office_ticker": office_ticker = content if content is Array else []
 			"level_intros": level_intros = content if content is Array else []
 			"parties": parties = content if content is Array else []
 			"floor_votes": floor_votes = content if content is Dictionary else {}

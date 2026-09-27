@@ -168,6 +168,26 @@ SHEETS = {
             ("text_en", "text_en", "str"),
         ],
     },
+    # The Office screen's news ticker (2026-09-28): a scrolling strip of
+    # lines at the bottom of the Office. Same condition schema as Office
+    # Notices (staff hired / a meta threshold), or "always" for an
+    # unconditional line — but unlike Office Notices there is no "slot": a
+    # ticker can show as many eligible lines as there are, one after
+    # another, rather than picking one winner. See OfficeTicker.gd.
+    "Office Ticker": {
+        "out": "office_ticker.json",
+        "key": "ticker_id",
+        "id_pattern": r"^TK\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("ticker_id", "ticker_id", "id"),
+            ("condition_type", "condition_type", "str"),
+            ("condition_target", "condition_target", "str"),
+            ("condition_op", "condition_op", "str"),
+            ("condition_value", "condition_value", "num"),
+            ("text_en", "text_en", "str"),
+        ],
+    },
     # A hired staff member's own line about the level the player is about to
     # walk into, shown on the new Level Intro screen between the Office and
     # the level's first stage (2026-09-27). Entirely optional: most

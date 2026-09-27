@@ -77,6 +77,13 @@ var _firing_role := ""
 ## GameState.pending_trigger_alerts is the news; this is just how it's read.
 var _trigger_alert_panel: Overlay
 
+## The scrolling news strip at the bottom of the screen — data/office_ticker.json
+## via OfficeTicker.gd, driven every frame from _process(). See
+## TickerPresenter.gd.
+var _ticker: TickerPresenter
+@onready var _ticker_strip: Control = %Ticker
+@onready var _ticker_label: Label = %TickerLabel
+
 
 func _ready() -> void:
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
@@ -108,6 +115,8 @@ func _ready() -> void:
 	add_child(_card_reveal_panel)
 	_card_reveal_panel.confirmed.connect(_on_learn_confirmed)
 
+	_ticker = TickerPresenter.new(_ticker_strip, _ticker_label)
+
 	_notices_label = Label.new()
 	_notices_label.name = "NoticesLabel"
 	_notices_label.theme_type_variation = &"SmallLabel"
@@ -133,6 +142,11 @@ func _ready() -> void:
 		if not GameState.card_draw.is_empty():
 			_show_rhetoric_training()
 			_show_card_offer()
+
+
+func _process(delta: float) -> void:
+	if _ticker != null:
+		_ticker.advance(delta)
 
 
 func _build() -> void:

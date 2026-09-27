@@ -19,7 +19,7 @@ static func resolve(notices: Array, staff_hired: Dictionary, meta: Dictionary,
 		var slot := str(row.get("slot", ""))
 		if chosen_by_slot.has(slot):
 			continue
-		if not _condition_met(row, staff_hired, meta):
+		if not condition_met(row, staff_hired, meta):
 			continue
 		chosen_by_slot[slot] = _fill_staff_token(
 			str(row.get("text_en", "")), row, staff_hired, staff_directory)
@@ -31,7 +31,12 @@ static func resolve(notices: Array, staff_hired: Dictionary, meta: Dictionary,
 	return lines
 
 
-static func _condition_met(row: Dictionary, staff_hired: Dictionary, meta: Dictionary) -> bool:
+## Whether one row's own condition holds right now — "staff_role"
+## (hired/not_hired against a role), "meta" (a meta variable against a
+## threshold), or "always". Public: OfficeTicker.gd reads the exact same
+## condition schema for its own rows, so it calls this rather than
+## duplicating the match.
+static func condition_met(row: Dictionary, staff_hired: Dictionary, meta: Dictionary) -> bool:
 	match str(row.get("condition_type", "")):
 		"staff_role":
 			return _staff_condition_met(row, staff_hired)

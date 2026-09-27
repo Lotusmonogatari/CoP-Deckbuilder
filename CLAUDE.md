@@ -88,6 +88,7 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit. `asked_by` is an opp_id, resolved dynamically from whichever opponents.json rows list that room's stage_id in their own `stages` — never a hardcoded reporter list (`export_data.py`'s `fold_questions()`) |
 | `player.json` | player_id | The four choosable protagonists (PC01–PC04), all cast with real names and parties as of the 2026-09-26 databook. New fields beyond name/party/blurb are display-only for now (Cameron's call) |
 | `office_notices.json` | notice_id | One line of Office-screen flavor text per slot, conditioned on staff hired or a meta-variable threshold — see §13-adjacent `OfficeNotices.gd` |
+| `office_ticker.json` | ticker_id | Lines for the Office screen's scrolling news strip, same condition schema as office_notices.json (or `always`), but every eligible line cycles rather than one winner per slot — see the 2026-09-28 mobile playtest fixes, `OfficeTicker.gd` |
 | `parties.json` | party_id | The six real parties: name, official RGB colour, seat count (the real Sep-18 session, summing to 101), Leader Opp ID (blank until Cameron casts one) — §7.7 |
 | `floor_votes.json` | bill_id (BIxx) | National Assembly Floor Voting (ST23) bills: bill text, per-disposition favorability deltas, and a `positions` list (one per party). No level link on the bill itself — see §7.7 |
 | `level_intros.json` | level_id + role | A hired staff member's own line about a specific level, shown on the Level Intro screen between the Office and that level's first stage. Flat rows, entirely optional per (level, role) pair — see §7.8 |
@@ -456,6 +457,30 @@ A real-phone playthrough turned up three more problems.
 | 1 | The flinch reaction on a character's face (yours or the opponent's) was too quick to register on a phone | `FLINCH_SECONDS` doubled, 0.9 → 1.8, in both `OpponentPresenter.gd` and `PlayerPortraitPresenter.gd` |
 | 2 | A press conference's drawn question showed no speaker name, and with no name the CueBanner's own coloured name tag stayed hidden — the question read as coming from nobody in particular | `OpponentPresenter.display_name()` deliberately returns `""` in a press conference (no opponent whose support can be taken) — correct for the opponent row's own name label, but `BattleScreen._announce_question()` was reusing it for the banner's speaker name too. Added `OpponentPresenter.question_speaker_name()`, which resolves the real asking journalist the same way `_show_journalist()` already does, and pointed `_announce_question()` at it instead |
 | 3 | Scrollbars felt inconsistently fast — some lists used the touch-drag-and-glide feel (`DragScroll`), others fell back to Godot's own default scroll speed | Three scroll views had never been wired to `DragScroll`: the battle screen's own Outcome panel, and the Outcome panel on both `FloorVoteScreen` and `VisitorScreen`. Every scrollable list now goes through the same `DragScroll.attach()` |
+
+**The Office news ticker** (new, 2026-09-28, Cameron): a scrolling strip
+along the bottom of the Office screen, the same idea as Office Notices but
+for lines that cycle rather than sit still. A new **Office Ticker**
+workbook tab (rows: `ticker_id`, `condition_type`/`condition_target`/
+`condition_op`/`condition_value` — the exact same condition schema Office
+Notices already uses, or `always` for an unconditional line — and
+`text_en`) exports to `data/office_ticker.json` the same way Office
+Notices does. `OfficeTicker.gd` (pure, `scripts/rules/`) decides which
+line is eligible right now and picks the next one at random, never
+repeating the line just shown unless it is the only one eligible —
+`OfficeNotices.condition_met()` was made public so both files read the
+same condition logic rather than duplicating it. Unlike Office Notices
+there is no "slot": a ticker can show every line that is currently true,
+one after another, instead of picking one winner per subject.
+`TickerPresenter.gd` (`scripts/ui/`) owns the actual scrolling and timing,
+driven every frame from `OfficeScreen._process()`. Two independent levers,
+both in `rules.json`, both Cameron's to retune: `ticker_speed_px_per_sec`
+(how fast the current line travels, 50 by default) and
+`ticker_pull_interval_seconds` (how often a freshly-picked line replaces
+whatever is showing, regardless of where it has scrolled to — 12 by
+default). Six seed lines (TK01-06) ship in the workbook so the ticker has
+something to show out of the box; the rest of the tab is Cameron's to
+write.
 
 
 ## 12. Working agreement
