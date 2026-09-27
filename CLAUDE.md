@@ -706,7 +706,23 @@ than trusting a first impression. `design/UI_PLAYER_REVIEW.md` is the
 result — findings tagged Confusing/Inaccurate/Lacking, design-touching
 items (ST06's bar label, a Supplies item's name, the flat 50 booster
 standings) left as open questions for Cameron rather than decided here.
-Nothing found was fixed in this pass, per the review's own plan.
+
+Everything else — three real layout bugs with no design call attached —
+was fixed directly in a follow-up pass: the battle Details panel's text
+bleed-through (its backdrop now uses the same fully-opaque style
+`CardZoom` already did) and its party-colour labels moved from the very
+end of the block to sit right next to the "You:"/"Opponent:" lines they
+describe; the Party Steering Committee Check-In header no longer clips
+its Japanese accent and visitor counter off the right edge
+(`VisitorScreen.gd` now has its own `_fit_stage_name()`, the same
+wrap-long-titles fix `BattleScreen` got in the 2026-09-27 playtest pass,
+plus a scene fix — `VisitorScreen.tscn`'s header `Title` container needed
+`size_flags_horizontal` set to expand, the same as `BattleScreen.tscn`'s,
+or the wrapped label had nowhere to wrap into and collapsed to one letter
+per line); and the Level Intro screen's CueBanner no longer covers the
+speaking staffer's own portrait (the screen used to centre its portrait
+vertically with two expanding spacers, landing it in the banner's fixed
+band — the top spacer no longer expands, so the portrait sits above it).
 
 One suspected engine bug was chased down and ruled out along the way: a
 screenshot of a committee sequence's second bout appeared to show gaffes

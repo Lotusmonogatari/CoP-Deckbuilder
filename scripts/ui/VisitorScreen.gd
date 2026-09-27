@@ -109,6 +109,7 @@ func start_visiting() -> void:
 	_stage_name.text = str(_stage.get("name_en", "Office Hours"))
 	_stage_name_jp.text = str(_stage.get("name_jp", ""))
 	_background.art_id = str(_stage.get("stage_id", ""))
+	_fit_stage_name.call_deferred()
 
 	engine = OfficeHoursEngine.new()
 	if not engine.setup({"visitors": _stage.get("visitors", [])}):
@@ -125,6 +126,24 @@ func start_visiting() -> void:
 	GameState.mid_stage = GameState.is_in_level()
 	Audio.play_music("music_office")
 	_show_visitor()
+
+
+## A stage name that fits on one line stays on one line, with its Japanese
+## accent right beside it; only a name too long for the header wraps, the
+## same rule and reasoning as BattleScreen._fit_stage_name() (2026-09-27
+## playtest fix #1) — this screen's own header never got the same fix, so
+## a long title (e.g. "Party Steering Committee Check-In") pushed the
+## visitor counter off the right edge of the screen (2026-09-28 UI review).
+func _fit_stage_name() -> void:
+	var header := _stage_name.get_parent().get_parent() as Control
+	var font := _stage_name.get_theme_font("font")
+	var font_size := _stage_name.get_theme_font_size("font_size")
+	var needed := font.get_string_size(_stage_name.text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+	var room := header.size.x - _visitor_caption.get_combined_minimum_size().x \
+		- _stage_name_jp.get_combined_minimum_size().x - 48.0
+	var wrap := needed > room
+	_stage_name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART if wrap else TextServer.AUTOWRAP_OFF
+	_stage_name.size_flags_horizontal = Control.SIZE_EXPAND_FILL if wrap else Control.SIZE_FILL
 
 
 func _show_visitor() -> void:

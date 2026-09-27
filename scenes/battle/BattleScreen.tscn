@@ -235,7 +235,7 @@ unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ydj6j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jdnx5")
 
 [node name="Margin" type="MarginContainer" parent="DetailsPanel"]
 layout_mode = 2

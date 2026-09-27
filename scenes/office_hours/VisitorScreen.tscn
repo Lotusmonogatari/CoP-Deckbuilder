@@ -58,11 +58,13 @@ layout_mode = 2
 
 [node name="Title" type="HBoxContainer" parent="Safe/Column/Header"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
 [node name="StageName" type="Label" parent="Safe/Column/Header/Title"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"HeaderLabel"
 text = "Office Hours"
 
@@ -74,7 +76,6 @@ text = "陳情"
 
 [node name="Spacer" type="Control" parent="Safe/Column/Header"]
 layout_mode = 2
-size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="VisitorCaption" type="Label" parent="Safe/Column/Header"]

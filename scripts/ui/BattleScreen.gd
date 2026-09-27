@@ -81,14 +81,23 @@ var _card_back: CardBackView = null
 @onready var _details_panel: PanelContainer = %DetailsPanel
 @onready var _details_text: Label = %DetailsText
 
-## "{Party}" for the player and the current opponent, each coloured with
-## that party's own RGB (PartyDisplay.gd) — split out of the "You: {name},
-## {party}" / "Opponent: {name}, {party}" lines that used to be part of
-## _details_text's one big joined string, since a plain Label cannot colour
-## part of its own text. Built in code, inserted right after _details_text
-## in the same Column, so they still read as part of the same block.
+## "You: {name}" / "Opponent: {name}" each with their own party name right
+## after, coloured with that party's own RGB (PartyDisplay.gd) — a plain
+## Label cannot colour part of its own text, so each is an HBoxContainer of
+## a plain name Label and a coloured party Label, sitting right where the
+## "You:"/"Opponent:" lines used to sit inside _details_text's one big
+## joined string. _details_text now only holds the room rules and deck/
+## stage line that come before them; _details_text_after holds everything
+## that comes after (2026-09-28 UI review: the party labels used to be
+## appended at the very end of the whole block, nowhere near the name lines
+## they described).
+var _you_row: HBoxContainer
+var _you_name_label: Label
 var _you_party_label: Label
+var _opponent_row: HBoxContainer
+var _opponent_name_label: Label
 var _opponent_party_label: Label
+var _details_text_after: Label
 @onready var _card_zoom: PanelContainer = %CardZoom
 
 ## The inventory, opened from its button in the header.
@@ -130,15 +139,37 @@ func _ready() -> void:
 	%ZoomPlay.pressed.connect(_play_selected)
 	%OutcomeClose.pressed.connect(_on_outcome_closed)
 
+	var details_column := _details_text.get_parent()
+
+	_you_row = HBoxContainer.new()
+	_you_row.name = "YouRow"
+	_you_name_label = Label.new()
+	_you_name_label.theme_type_variation = &"SmallLabel"
 	_you_party_label = Label.new()
 	_you_party_label.name = "YouParty"
+	_you_row.add_child(_you_name_label)
+	_you_row.add_child(_you_party_label)
+
+	_opponent_row = HBoxContainer.new()
+	_opponent_row.name = "OpponentRow"
+	_opponent_name_label = Label.new()
+	_opponent_name_label.theme_type_variation = &"SmallLabel"
 	_opponent_party_label = Label.new()
 	_opponent_party_label.name = "OpponentParty"
-	var details_column := _details_text.get_parent()
-	details_column.add_child(_you_party_label)
-	details_column.move_child(_you_party_label, _details_text.get_index() + 1)
-	details_column.add_child(_opponent_party_label)
-	details_column.move_child(_opponent_party_label, _you_party_label.get_index() + 1)
+	_opponent_row.add_child(_opponent_name_label)
+	_opponent_row.add_child(_opponent_party_label)
+
+	_details_text_after = Label.new()
+	_details_text_after.name = "DetailsTextAfter"
+	_details_text_after.theme_type_variation = &"SmallLabel"
+	_details_text_after.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+
+	details_column.add_child(_you_row)
+	details_column.move_child(_you_row, _details_text.get_index() + 1)
+	details_column.add_child(_opponent_row)
+	details_column.move_child(_opponent_row, _you_row.get_index() + 1)
+	details_column.add_child(_details_text_after)
+	details_column.move_child(_details_text_after, _opponent_row.get_index() + 1)
 
 	_details_panel.hide()
 	_card_zoom.hide()
@@ -451,42 +482,54 @@ func _refresh_details(state: BattleState) -> void:
 		"Stage: %s (%s)" % [_stage.get("name_en", ""), _stage.get("stage_id", "")],
 	])
 
+	_details_text.text = "\n".join(lines)
+
+	# The player's and the current opponent's own name, each with their party
+	# right beside it rather than several lines further down (2026-09-28 UI
+	# review) — an HBoxContainer per side so only the party half is coloured.
 	var player := DataDB.player
-	if not str(player.get("name_en", "")).is_empty():
-		lines.append("You: %s" % player.get("name_en", ""))
+	if str(player.get("name_en", "")).is_empty():
+		_you_row.hide()
+	else:
+		_you_row.show()
+		_you_name_label.text = "You: %s" % player.get("name_en", "")
 	_show_party_line(_you_party_label, PartyDisplay.party_name(player))
 
-	# No line at all where there is nobody, rather than "Opponent: ,".
+	# No row at all where there is nobody, rather than "Opponent: ,".
 	var opponent := engine.current_opponent()
-	if not opponent.is_empty():
-		lines.append("Opponent: %s" % opponent.get("name", ""))
+	if opponent.is_empty():
+		_opponent_row.hide()
+	else:
+		_opponent_row.show()
+		_opponent_name_label.text = "Opponent: %s" % opponent.get("name", "")
 	_show_party_line(_opponent_party_label, PartyDisplay.party_name(opponent))
 
+	var after: Array[String] = []
 	if engine.questions_remaining() > 0 or not engine.pleased_boosters().is_empty():
-		lines.append("")
+		after.append("")
 		var question_now := engine.current_question()
 		if not question_now.is_empty():
-			lines.append("This question invites a %s answer."
+			after.append("This question invites a %s answer."
 				% question_now.get("prefers_suit", "any"))
 		var pleased := engine.pleased_boosters()
 		if pleased.is_empty():
-			lines.append("Nobody pleased yet.")
+			after.append("Nobody pleased yet.")
 		else:
 			# Organisations by name, not by the ID the data files use: the
 			# player has no way of knowing what BO08 is.
 			var named: Array[String] = []
 			for booster_id: String in pleased:
 				named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-			lines.append("Pleased so far: %s." % ", ".join(named))
+			after.append("Pleased so far: %s." % ", ".join(named))
 
-	lines.append("")
-	lines.append_array(_room_lines(state))
+	after.append("")
+	after.append_array(_room_lines(state))
 
 	# How many there are to get through. How they follow one another is a row
 	# in the table above, so only the count belongs here.
 	if state.opponent_count > 1:
-		lines.append("")
-		lines.append(Text.say("battle.one_at_a_time", {
+		after.append("")
+		after.append(Text.say("battle.one_at_a_time", {
 			"count": state.opponent_count,
 			"number": state.opponent_index + 1,
 		}))
@@ -494,13 +537,13 @@ func _refresh_details(state: BattleState) -> void:
 	# Asked, not sniffed. This used to test whether the sentence began with
 	# "Nothing", so rewording that line would have silently hidden the block.
 	if GameState.is_in_level() and GameState.level_runner.anything_carried():
-		lines.append("")
-		lines.append(GameState.level_runner.describe_carried_buffs(
+		after.append("")
+		after.append(GameState.level_runner.describe_carried_buffs(
 			BattleSetup.booster_names(), Text.phrase()))
 
 	if engine.used_default_intent_pattern:
-		lines.append("")
-		lines.append(Text.say("battle.default_pattern"))
+		after.append("")
+		after.append(Text.say("battle.default_pattern"))
 
 	# 2026-09-22 workbook: stages.json no longer carries "signature_rule" at
 	# all, so this is always empty now and the block below never shows. Left
@@ -509,10 +552,10 @@ func _refresh_details(state: BattleState) -> void:
 	# different name.
 	var rule := str(_stage.get("signature_rule", ""))
 	if not rule.is_empty():
-		lines.append("")
-		lines.append(rule)
+		after.append("")
+		after.append(rule)
 
-	_details_text.text = "\n".join(lines)
+	_details_text_after.text = "\n".join(after)
 
 
 ## Fills a "You"/"Opponent" party label, or hides it when there is no
@@ -522,7 +565,7 @@ func _show_party_line(label: Label, party: String) -> void:
 	if party.is_empty():
 		label.hide()
 		return
-	label.text = party
+	label.text = " · %s" % party
 	label.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
 	label.show()
 
