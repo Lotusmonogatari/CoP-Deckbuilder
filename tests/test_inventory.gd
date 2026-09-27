@@ -11,10 +11,11 @@ extends GutTest
 ##   SH20 Extra Draw                  Level, "DRAW +1", cap 2, limit 2/level
 ##   SH09 Blue Profile                No for both places, no Grants
 ##   SH25 Host National Booster Dinner  Now, Player Choice, "TIER:National +2"
-##   SH27/28/29 Purchase Random Tier 1/2/3 Card  effect on purchase, not
+##   SH27/28/29 Purchase Random Tier 1/2/3 Card  Rhetoric Training (Yen):
+##                                    see the card, then learn it — never
 ##                                    held/Used at all — see card_tier
 ##   SH13/14   Unlock Tier 1/2 Level  same shape, see level_tier
-##   SH15/16/17 Unlock Random Tier 1/2/3 Card  reuses buy_random_card(), the
+##   SH15/16/17 Unlock Random Tier 1/2/3 Card  Rhetoric Training (XP), the
 ##                                    same card_tier column SH27-29 use, XP
 ##                                    instead of Yen
 ##   SH18      Unlock New Staff Recruitment Tier  same shape, see
@@ -250,60 +251,90 @@ func test_a_level_item_used_mid_stage_also_covers_the_rest_of_the_level() -> voi
 
 
 # ---------------------------------------------------------------------------
-# Purchase Random Tier N Card (SH27/28/29) — effect on purchase, no inventory
+# Rhetoric Training (SH15-17 XP, SH27-29 Yen) — see the card, then pay
 # ---------------------------------------------------------------------------
-# The real bug this guards: these three had Use In Office/Stage both blank
-# ("No") and no Grants, so a bought one only ever sat in the inventory
-# refusing "This can't be used here." Their own Description already said
-# "takes effect immediately" — buy_random_card() is that effect, standing
-# apart from every other Supplies item, which is bought first and Used later.
+# Cameron, 2026-09-27: a session shows one random unowned card of its tier
+# FIRST (offer_random_card, nothing paid), and only learning it pays
+# (learn_offered_card). Passing costs nothing.
 
-func test_buying_a_random_card_grants_one_of_the_right_tier_immediately() -> void:
+func _learn(item_id: String) -> Dictionary:
+	var offer := GameState.offer_random_card(item_id)
+	if not offer["ok"]:
+		return offer
+	return GameState.learn_offered_card(item_id, str(offer["card_id"]))
+
+
+func test_seeing_a_card_costs_nothing_and_changes_nothing() -> void:
 	GameState.owned_cards = []
 	var funds := int(GameState.meta["Funds"])
-	var result := GameState.buy_random_card("SH28")   # Tier 2
+	var offer := GameState.offer_random_card("SH28")   # Tier 2, Yen
+
+	assert_true(offer["ok"])
+	assert_eq(int(DataDB.get_card(str(offer["card_id"])).get("tier")), 2)
+	assert_eq(int(GameState.meta["Funds"]), funds, "passing on it has cost nothing")
+	assert_eq(GameState.owned_cards.size(), 0, "and it is not yours until you learn it")
+
+
+func test_learning_the_offered_card_pays_and_grants_exactly_that_card() -> void:
+	GameState.owned_cards = []
+	var funds := int(GameState.meta["Funds"])
+	var offer := GameState.offer_random_card("SH28")
+	var result := GameState.learn_offered_card("SH28", str(offer["card_id"]))
 
 	assert_true(result["ok"])
-	assert_eq(GameState.owned_cards.size(), 1)
-	var card := DataDB.get_card(GameState.owned_cards[0])
-	assert_eq(int(card.get("tier")), 2)
+	assert_eq(GameState.owned_cards, [str(offer["card_id"])], "the card shown, not another draw")
 	assert_eq(int(GameState.meta["Funds"]), funds - int(DataDB.get_shop_item("SH28")["cost_yen"]))
-	assert_string_contains(result["message"], str(card.get("name_en")))
-	# The card's own art asset ID (its card_id — CLAUDE.md §5) comes back too,
-	# so a caller can show the actual card drawn, not just name it in text
-	# (OfficeScreen._show_card_reveal(), 2026-09-25).
-	assert_eq(str(result["card_id"]), GameState.owned_cards[0])
+	assert_string_contains(result["message"], str(DataDB.get_card(str(offer["card_id"])).get("name_en")))
 
 
-func test_a_random_card_purchase_never_repeats_an_owned_card() -> void:
+func test_a_training_session_never_offers_an_owned_card() -> void:
 	GameState.owned_cards = []
 	var tier_1_ids: Array[String] = []
 	for card: Dictionary in DataDB.cards:
 		if int(card.get("tier", -1)) == 1:
 			tier_1_ids.append(str(card["card_id"]))
-	# Own every Tier 1 card but one, so the purchase has exactly one
-	# possible outcome and repeating it would be immediately visible.
+	# Own every Tier 1 card but one, so the offer has exactly one possible
+	# outcome and repeating an owned card would be immediately visible.
 	for card_id: String in tier_1_ids.slice(1):
 		GameState.owned_cards.append(card_id)
 
-	var result := GameState.buy_random_card("SH27")   # Tier 1
-
-	assert_true(result["ok"])
-	assert_true(GameState.owned_cards.has(tier_1_ids[0]),
-		"the one card left unowned is the only one this purchase could grant")
-	assert_eq(GameState.owned_cards.size(), tier_1_ids.size())
+	var offer := GameState.offer_random_card("SH27")   # Tier 1
+	assert_true(offer["ok"])
+	assert_eq(str(offer["card_id"]), tier_1_ids[0])
 
 
-func test_owning_every_card_of_a_tier_refuses_the_purchase() -> void:
+func test_an_already_owned_card_cannot_be_learned_again() -> void:
+	GameState.owned_cards = []
+	var offer := GameState.offer_random_card("SH27")
+	GameState.owned_cards.append(str(offer["card_id"]))
+	var funds := int(GameState.meta["Funds"])
+	var result := GameState.learn_offered_card("SH27", str(offer["card_id"]))
+	assert_false(result["ok"])
+	assert_eq(int(GameState.meta["Funds"]), funds, "a refusal never spends anything")
+
+
+func test_owning_every_card_of_a_tier_refuses_the_session() -> void:
 	for card: Dictionary in DataDB.cards:
 		if int(card.get("tier", -1)) == 3 and not GameState.owned_cards.has(card["card_id"]):
 			GameState.owned_cards.append(str(card["card_id"]))
 	var funds := int(GameState.meta["Funds"])
 
-	var result := GameState.buy_random_card("SH29")   # Tier 3
-
-	assert_false(result["ok"])
+	assert_false(GameState.offer_random_card("SH29")["ok"])   # Tier 3
+	assert_false(GameState.card_training_refusal("SH29").is_empty(), "the Office greys the button")
 	assert_eq(int(GameState.meta["Funds"]), funds, "a refusal never spends anything")
+
+
+func test_an_xp_session_costs_xp_not_yen() -> void:
+	GameState.owned_cards = []
+	var xp := GameState.xp
+	var funds := int(GameState.meta["Funds"])
+
+	var result := _learn("SH16")   # Tier 2, XP
+
+	assert_true(result["ok"])
+	assert_eq(int(DataDB.get_card(GameState.owned_cards[0]).get("tier")), 2)
+	assert_lt(GameState.xp, xp, "SH16 costs XP, not Yen")
+	assert_eq(int(GameState.meta["Funds"]), funds, "SH16 does not touch Funds")
 
 
 # ---------------------------------------------------------------------------
@@ -332,27 +363,6 @@ func test_every_level_of_a_tier_already_open_refuses_the_purchase() -> void:
 	var result := GameState.buy_random_level("SH13")   # Tier 1
 
 	assert_false(result["ok"])
-
-
-# ---------------------------------------------------------------------------
-# Unlock Random Tier N Card (SH15/16/17) — same buy_random_card() effect as
-# SH27/28/29, just XP-costed instead of Yen. No new code: their own Card
-# Tier column is all that was missing.
-# ---------------------------------------------------------------------------
-
-func test_buying_a_random_card_unlock_costs_xp_not_yen() -> void:
-	GameState.owned_cards = []
-	var xp := GameState.xp
-	var funds := int(GameState.meta["Funds"])
-
-	var result := GameState.buy_random_card("SH16")   # Tier 2
-
-	assert_true(result["ok"])
-	assert_eq(GameState.owned_cards.size(), 1)
-	var card := DataDB.get_card(GameState.owned_cards[0])
-	assert_eq(int(card.get("tier")), 2)
-	assert_lt(GameState.xp, xp, "SH16 costs XP, not Yen")
-	assert_eq(int(GameState.meta["Funds"]), funds, "SH16 does not touch Funds")
 
 
 # ---------------------------------------------------------------------------

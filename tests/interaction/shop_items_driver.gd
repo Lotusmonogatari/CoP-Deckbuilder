@@ -1,7 +1,7 @@
 class_name ShopItemsDriver
 extends Node
-## Walks the SH13-19 Supplies purchases, plus SH27-29 (the Yen-costed twin
-## of SH15-17), with real clicks (CLAUDE.md M5, 2026-09-25 and 2026-09-25's
+## Walks the SH13/14/18/19 Supplies purchases and Rhetoric Training's six
+## card sessions (SH15-17, SH27-29), with real clicks (CLAUDE.md M5, 2026-09-25 and 2026-09-25's
 ## card reveal popup): each one takes effect the moment it is bought rather
 ## than sitting in the inventory to be Used, and this proves that end to
 ## end — the actual Buy button, the actual report line, the card reveal
@@ -83,73 +83,19 @@ func _walk() -> void:
 		_failures.append("SH14: expected 2 unlocked levels, got %d" % GameState.levels_unlocked.size())
 		return
 
-	# --- SH15/16/17: Unlock Random Tier N Card --------------------------------
-	# Each one now pops a reveal of the actual card on top of Supplies
-	# (Cameron, 2026-09-25) — dismissed here the way a player would tap
-	# past it, or every later click in this walk would land on the reveal
-	# instead of whatever it is meant to hit.
-	if not await _buy(supplies, "SH15"):
-		return
-	if not await _check_and_dismiss_card_reveal(office):
-		return
-	if GameState.owned_cards.size() != 1:
-		_failures.append("SH15: expected 1 owned card, got %d" % GameState.owned_cards.size())
-		return
-	if not await _buy(supplies, "SH16"):
-		return
-	if not await _check_and_dismiss_card_reveal(office):
-		return
-	if GameState.owned_cards.size() != 2:
-		_failures.append("SH16: expected 2 owned cards, got %d" % GameState.owned_cards.size())
-		return
-	if not await _buy(supplies, "SH17"):
-		return
-	if not await _check_and_dismiss_card_reveal(office):
-		return
-	if GameState.owned_cards.size() != 3:
-		_failures.append("SH17: expected 3 owned cards, got %d" % GameState.owned_cards.size())
-		return
-
-	# --- SH27/28/29: Purchase Random Tier N Card ------------------------------
-	# The Yen-costed twin of SH15-17 — same buy_random_card() effect, same
-	# reveal, just paid for differently. Proven here rather than assumed from
-	# SH15-17 passing, since the whole point of a real-click playtest is not
-	# to take "it's the same function" on faith.
-	var funds_before_sh27 := int(GameState.meta.get("Funds", 0))
-	if not await _buy(supplies, "SH27"):
-		return
-	if not await _check_and_dismiss_card_reveal(office):
-		return
-	if GameState.owned_cards.size() != 4:
-		_failures.append("SH27: expected 4 owned cards, got %d" % GameState.owned_cards.size())
-		return
-	if int(GameState.meta.get("Funds", 0)) >= funds_before_sh27:
-		_failures.append("SH27: bought a card but Funds did not go down (%d -> %d)"
-			% [funds_before_sh27, int(GameState.meta.get("Funds", 0))])
-		return
-	if not await _buy(supplies, "SH28"):
-		return
-	if not await _check_and_dismiss_card_reveal(office):
-		return
-	if GameState.owned_cards.size() != 5:
-		_failures.append("SH28: expected 5 owned cards, got %d" % GameState.owned_cards.size())
-		return
-	if not await _buy(supplies, "SH29"):
-		return
-	if not await _check_and_dismiss_card_reveal(office):
-		return
-	if GameState.owned_cards.size() != 6:
-		_failures.append("SH29: expected 6 owned cards, got %d" % GameState.owned_cards.size())
-		return
-	print("  bought one of each SH27-29 (Yen-costed); each showed the same reveal as SH15-17")
+	# --- SH15-17 / SH27-29 are not in Supplies any more ----------------------
+	# They moved to Rhetoric Training (Cameron, 2026-09-27) — walked below.
+	for item_id: String in ["SH15", "SH16", "SH17", "SH27", "SH28", "SH29"]:
+		if supplies.find_child("Supply_" + item_id, true, false) != null:
+			_failures.append("Supplies still lists %s, which belongs in Rhetoric Training" % item_id)
+			return
 
 	# --- A screenshot of the Supplies list with all seven rows visible -------
 	# Real bug class this catches: a row whose label overflows, a missing
 	# icon that isn't the placeholder, or a Buy button that renders with no
 	# real size (the same class of bug _walk_choice_picker() in
 	# inventory_driver.gd found for the Player Choice picker).
-	await _screenshot_supplies_rows(supplies,
-		["SH13", "SH14", "SH15", "SH16", "SH17", "SH18", "SH19"])
+	await _screenshot_supplies_rows(supplies, ["SH13", "SH14", "SH18", "SH19"])
 
 	# --- SH18: Unlock New Staff Recruitment Tier ------------------------------
 	if not await _buy(supplies, "SH18"):
@@ -165,9 +111,13 @@ func _walk() -> void:
 		_failures.append("SH19: expected funds_cap_bonus 100000, got %d" % GameState.funds_cap_bonus)
 		return
 
-	print("  bought one of each SH13-19; each took effect on the spot")
+	print("  bought SH13, SH14, SH18 and SH19; each took effect on the spot")
 	supplies.close()
 	await _wait(0.2)
+
+	# --- Rhetoric Training: see the card, then Pass or Learn it --------------
+	if not await _walk_rhetoric_training(office):
+		return
 
 	# --- After the SH18 purchase: the same candidate is now hireable ----------
 	if not await _check_staff_gate(office, true):
@@ -375,60 +325,102 @@ func _buy(supplies: Overlay, item_id: String) -> bool:
 	return true
 
 
-## Checks the card reveal popup a successful SH15/16/17 (or SH27-29) buy
-## opens on top of Supplies — a real CardView (front) AND a real
-## CardBackView (rear) are both showing, for the newly-owned card — then
-## dismisses it with its Confirm button, the way a player taps past a reveal.
-func _check_and_dismiss_card_reveal(office: Node) -> bool:
-	var panel := office.get_node_or_null("CardRevealPanel") as Overlay
-	if panel == null or not panel.visible:
-		_failures.append("buying a random card did not open the card reveal popup")
+## Rhetoric Training end to end, with real clicks (Cameron, 2026-09-27):
+## Office Management -> Rhetoric Training -> "See a card" opens the offer
+## with the card's front and back BEFORE anything is paid. The first offer
+## is passed on (nothing spent, nothing owned); then every one of the six
+## sessions is seen and learned, each adding exactly the card shown.
+func _walk_rhetoric_training(office: Node) -> bool:
+	await _click(office.get_node("%ManagementButton"))
+	var management := office.get_node("%ManagementPanel") as Overlay
+	await _click(_button_with_text(management, Text.say("office.rhetoric_training")))
+	var training := office.get_node("%CardsPanel") as Overlay
+	if not training.visible:
+		_failures.append("the Rhetoric Training button did not open Rhetoric Training")
 		return false
 
-	var view: CardView = null
-	var back: CardBackView = null
-	for node in panel.find_children("*", "", true, false):
-		if node is CardView:
-			view = node as CardView
-		elif node is CardBackView:
-			back = node as CardBackView
-	if view == null:
-		_failures.append("the card reveal popup has no CardView (front) in it")
+	# Pass once: nothing may change.
+	var xp_before := GameState.xp
+	if not await _see_card(office, training, "SH15"):
 		return false
-	if back == null:
-		_failures.append("the card reveal popup has no CardBackView (rear) in it")
+	var passed_on := _offered_card(office)
+	var offer := office.get_node("CardRevealPanel") as Overlay
+	await _click(offer.find_child("Back", true, false) as Button)
+	if offer.visible:
+		_failures.append("Pass did not close the card offer")
 		return false
-	if view.card_id.is_empty():
-		_failures.append("the card reveal popup's CardView was never filled in")
+	if GameState.xp != xp_before or GameState.owned_cards.has(passed_on):
+		_failures.append("passing on %s still spent XP or granted the card" % passed_on)
 		return false
-	if not GameState.owned_cards.has(view.card_id):
-		_failures.append("the card reveal popup shows %s, which was not actually granted"
-			% view.card_id)
+	if not training.visible:
+		_failures.append("after Pass the Rhetoric Training list is not showing any more")
 		return false
-	# CardBackView.show_card() takes no card_id of its own to check the way
-	# CardView does — it is proven by size instead: the real bug class here
-	# (CLAUDE.md's own note on BattleScreen's zoom) is the back rendered at
-	# zero width because only its height was ever set.
-	if back.size.x <= 0.0:
-		_failures.append("the card reveal popup's CardBackView has no width — see BattleScreen's own note on setting BOTH size numbers")
-		return false
+	print("  saw %s in Rhetoric Training and passed: nothing spent, nothing granted" % passed_on)
 
-	DirAccess.make_dir_recursive_absolute("user://shots")
-	await get_tree().process_frame
-	await RenderingServer.frame_post_draw
-	get_viewport().get_texture().get_image().save_png("user://shots/shop_items_card_reveal.png")
-
-	var confirm := panel.find_child("Confirm", true, false) as Button
-	if confirm == null or not confirm.visible:
-		_failures.append("the card reveal popup has no Confirm button")
-		return false
-	await _click(confirm)
-	if panel.visible:
-		_failures.append("pressing Confirm did not close the card reveal popup")
-		return false
-
-	print("  the card reveal popup showed %s and dismissed cleanly" % view.card_id)
+	# Learn one of each session.
+	for item_id: String in ["SH15", "SH16", "SH17", "SH27", "SH28", "SH29"]:
+		var owned_before := GameState.owned_cards.size()
+		var funds_before := int(GameState.meta.get("Funds", 0))
+		var xp_start := GameState.xp
+		if not await _see_card(office, training, item_id):
+			return false
+		var shown := _offered_card(office)
+		if GameState.owned_cards.has(shown):
+			_failures.append("%s offered %s, which is already owned" % [item_id, shown])
+			return false
+		await _click(offer.find_child("Confirm", true, false) as Button)
+		if GameState.owned_cards.size() != owned_before + 1 or not GameState.owned_cards.has(shown):
+			_failures.append("%s: learning did not add exactly the card shown (%s)" % [item_id, shown])
+			return false
+		if GameState.xp >= xp_start and int(GameState.meta.get("Funds", 0)) >= funds_before:
+			_failures.append("%s: learned %s but nothing was paid" % [item_id, shown])
+			return false
+		print("  %s: saw %s, learned it, paid for it" % [item_id, shown])
+	training.close()
+	await _wait(0.2)
 	return true
+
+
+## Presses a session's "See a card" and checks the offer pop-up shows a real
+## front (CardView) and back (CardBackView) — the back with a real width
+## (the bug class CLAUDE.md notes for BattleScreen's zoom) — and a Learn
+## button.
+func _see_card(office: Node, training: Overlay, item_id: String) -> bool:
+	var row := training.find_child("Training_" + item_id, true, false)
+	if row == null:
+		_failures.append("Rhetoric Training does not list %s" % item_id)
+		return false
+	var button := row.find_child("SeeCard", true, false) as Button
+	if button == null or button.disabled:
+		_failures.append("%s's See a card button is missing or disabled" % item_id)
+		return false
+	await _click(button)
+	var offer := office.get_node_or_null("CardRevealPanel") as Overlay
+	if offer == null or not offer.visible:
+		_failures.append("%s: See a card did not open the card offer" % item_id)
+		return false
+	var back: CardBackView = null
+	for node in offer.find_children("*", "", true, false):
+		if node is CardBackView:
+			back = node as CardBackView
+	if _offered_card(office).is_empty() or back == null or back.size.x <= 0.0:
+		_failures.append("%s: the card offer is missing its front or back view" % item_id)
+		return false
+	var confirm := offer.find_child("Confirm", true, false) as Button
+	if confirm == null or not confirm.visible:
+		_failures.append("%s: the card offer has no Learn button" % item_id)
+		return false
+	DirAccess.make_dir_recursive_absolute("user://shots")
+	await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png("user://shots/shop_items_card_offer.png")
+	return true
+
+
+func _offered_card(office: Node) -> String:
+	for node in (office.get_node("CardRevealPanel") as Overlay).find_children("*", "", true, false):
+		if node is CardView:
+			return (node as CardView).card_id
+	return ""
 
 
 func _button_with_text(root: Node, text: String) -> Control:

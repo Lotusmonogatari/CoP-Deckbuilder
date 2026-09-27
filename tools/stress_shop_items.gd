@@ -64,7 +64,15 @@ func _try_buy_random_card() -> void:
 	var xp_before := GameState.xp
 	var funds_before := int(GameState.meta.get("Funds", 0))
 
-	var result := GameState.buy_random_card(item_id)
+	# Rhetoric Training's two steps: see the card, then learn it.
+	var result := GameState.offer_random_card(item_id)
+	if result.get("ok", false):
+		var shown := str(result.get("card_id", ""))
+		if GameState.owned_cards != owned_before:
+			_fail("%s: merely seeing a card changed owned_cards" % item_id)
+		result = GameState.learn_offered_card(item_id, shown)
+		if result.get("ok", false) and not GameState.owned_cards.has(shown):
+			_fail("%s: learned a card other than the one shown (%s)" % [item_id, shown])
 
 	if result.get("ok", false):
 		var added: Array[String] = []
@@ -86,7 +94,7 @@ func _try_buy_random_card() -> void:
 		if GameState.xp != xp_before or int(GameState.meta.get("Funds", 0)) != funds_before:
 			_fail("%s: a refused buy still spent something" % item_id)
 	if str(result.get("message", "")).is_empty():
-		_fail("%s: buy_random_card() returned no message either way" % item_id)
+		_fail("%s: Rhetoric Training returned no message either way" % item_id)
 
 
 func _try_buy_random_level() -> void:

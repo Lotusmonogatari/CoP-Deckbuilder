@@ -51,11 +51,11 @@ var _draft_deck: Array[String] = []
 var _inventory_panel: InventoryPanel
 var _supplies_panel: Overlay
 
-## The reveal shown after a random-card purchase (SH15-17, SH27-29) actually
-## grants one — Cameron, 2026-09-25: showing the card itself, not just
-## naming it in a sentence, is what makes drawing a random one feel like a
-## pull rather than a database write. Built in code, the same reason
-## _supplies_panel is.
+## Rhetoric Training's card offer (SH15-17, SH27-29) — Cameron, 2026-09-25:
+## showing the card itself, not just naming it in a sentence, is what makes
+## drawing a random one feel like a pull rather than a database write; and
+## 2026-09-27, it is shown BEFORE paying, with Learn it / Pass. Built in
+## code, the same reason _supplies_panel is.
 var _card_reveal_panel: Overlay
 
 ## New Game: the warning before a run is thrown away, and the choice of
@@ -102,6 +102,7 @@ func _ready() -> void:
 	_card_reveal_panel = Overlay.new()
 	_card_reveal_panel.name = "CardRevealPanel"
 	add_child(_card_reveal_panel)
+	_card_reveal_panel.confirmed.connect(_on_learn_confirmed)
 
 	_notices_label = Label.new()
 	_notices_label.name = "NoticesLabel"
@@ -248,7 +249,7 @@ func _show_management() -> void:
 		Text.say("office.deck_ready") if refusal.is_empty() else refusal, "SmallLabel"))
 
 	for row: Array in [
-		[Text.say("office.new_cards"), _show_cards],
+		[Text.say("office.rhetoric_training"), _show_rhetoric_training],
 		[Text.say("office.your_deck"), _show_deck],
 		[Text.say("office.backing"), _show_backing],
 		[Text.say("office.staff"), _show_staff],
@@ -332,65 +333,65 @@ func _organisation_row(booster: Dictionary) -> Control:
 # comes from the Ledger, so a screen can never offer what the rules would
 # refuse, and the refusal the player reads is the rules' own words.
 
-## New cards, bought with XP.
-##
-## Cards are listed by tier with the cheapest first, and the ones already
-## yours are shown too: a shop that hides what you own makes it hard to
-## remember why you cannot buy something.
-func _show_cards() -> void:
+## Rhetoric Training (Cameron, 2026-09-27): where new cards come from. One
+## row per training session in shop.json — any item naming a "card_tier"
+## (SH15-17 for XP, SH27-29 for Yen). "See a card" draws one random card of
+## that tier the player doesn't own yet and shows it; nothing is paid until
+## the player chooses to learn it (GameState.offer_random_card() /
+## learn_offered_card()). Replaced the old "New cards" list, which let any
+## card be bought outright for its XP price with no draw at all.
+func _show_rhetoric_training() -> void:
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("office.cards_blurb")))
+	rows.append(UiKit.line(Text.say("rhetoric.blurb")))
 	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
-
-	# cards.json's real "tier" values are the string digits "0"/"1"/"2"/"3"
-	# since the 2026-09-21 tier rename (Ledger.OPENING_TIER == "0"), not the
-	# literal words "Tier 1"/"Tier 2" this used to compare against — that
-	# comparison never matched anything, so the shop always listed zero cards.
-	# Tiers are read off the real cards rather than hardcoded, so a new tier
-	# added to the workbook shows up here without a code change.
-	var tiers: Array[String] = []
-	for card: Dictionary in DataDB.cards:
-		var tier := str(card.get("tier", ""))
-		if tier != Ledger.OPENING_TIER and not tiers.has(tier):
-			tiers.append(tier)
-	tiers.sort()
-
-	for tier: String in tiers:
-		var in_tier := DataDB.get_cards_by_tier(tier)
-		if in_tier.is_empty():
-			continue
-		rows.append(UiKit.heading("Tier %s" % tier))
-		for card: Dictionary in in_tier:
-			rows.append(_card_row(card))
-
-	var owned_extra := GameState.owned_cards.size() - DataDB.get_cards_by_tier(Ledger.OPENING_TIER).size()
-	if owned_extra > 0:
-		rows.append(UiKit.line(""))
-		rows.append(UiKit.line(Text.say("office.cards_unlocked",
-			{"count": owned_extra}), "SmallLabel"))
-
-	_cards_panel.open(Text.say("office.new_cards"), rows)
+	rows.append(UiKit.line(Text.say("office.funds",
+		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
+	for item: Dictionary in DataDB.shop:
+		if item.get("card_tier") != null:
+			rows.append(_training_row(item))
+	_cards_panel.open(Text.say("office.rhetoric_training"), rows)
 
 
-func _card_row(card: Dictionary) -> Control:
-	var card_id := str(card.get("card_id", ""))
+func _training_row(item: Dictionary) -> Control:
+	var item_id := str(item.get("item_id", ""))
 	var box := UiKit.tight_column()
-
-	box.add_child(UiKit.line(Text.say("office.card_title", {
-		"name": card.get("name_en", card_id),
-		"name_jp": card.get("name_jp", ""),
-		"cost": Ledger.card_cost(card)})))
-	box.add_child(UiKit.line(Text.say("office.card_line", {
-		"suit": card.get("suit", ""),
-		"effect": card.get("effect_text", "")}), "SmallLabel"))
-
-	var refusal := Ledger.card_refusal(card, GameState.owned_cards, GameState.xp, Text.phrase())
-	box.add_child(UiKit.action_button(Text.say("office.unlock"), refusal, _on_buy_card.bind(card_id)))
+	box.name = "Training_" + item_id
+	box.add_child(UiKit.line(Text.say("rhetoric.session",
+		{"tier": int(item.get("card_tier", 0)), "price": _price_text(item)})))
+	var button := UiKit.action_button(Text.say("rhetoric.see_card"),
+		GameState.card_training_refusal(item_id), _on_see_card.bind(item_id))
+	button.name = "SeeCard"
+	box.add_child(button)
 	return box
 
 
-func _on_buy_card(card_id: String) -> void:
-	_after_spending(GameState.buy_card(card_id), _show_cards)
+## The card the open offer is for, so Learn (the pop-up's confirm, which
+## carries no argument) knows what it is paying for.
+var _offer_item_id := ""
+var _offer_card_id := ""
+
+
+func _on_see_card(item_id: String) -> void:
+	var offer := GameState.offer_random_card(item_id)
+	if not offer.get("ok", false):
+		_report.text = str(offer.get("message", ""))
+		return
+	_offer_item_id = item_id
+	_offer_card_id = str(offer.get("card_id", ""))
+	# On top of the training list, which stays open underneath: Pass just
+	# closes the offer and the player is back choosing a session.
+	_show_card_offer()
+
+
+func _on_learn_confirmed() -> void:
+	var result := GameState.learn_offered_card(_offer_item_id, _offer_card_id)
+	_offer_item_id = ""
+	_offer_card_id = ""
+	if result.get("ok", false):
+		_report.text = str(result.get("message", ""))
+		_after_spending("", _show_rhetoric_training)
+	else:
+		_after_spending(str(result.get("message", "")), _show_rhetoric_training)
 
 
 ## Every purchase ends the same way: the refusal on the front page if it was
@@ -548,7 +549,9 @@ func _show_supplies() -> void:
 	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 	for item: Dictionary in DataDB.shop:
-		rows.append(_supply_row(item))
+		# Card sessions live in Rhetoric Training, not here.
+		if item.get("card_tier") == null:
+			rows.append(_supply_row(item))
 	_supplies_panel.open(Text.say("shop.supplies"), rows)
 
 
@@ -601,8 +604,8 @@ func _price_text(item: Dictionary) -> String:
 	return Text.say("shop.item_free") if parts.is_empty() else " + ".join(parts)
 
 
-## Four Supplies items (card_tier/level_tier/unlocks_recruitment_tier/
-## funds_cap_increase, each SH27-29/SH13-14/SH18/SH19) take effect the
+## Three kinds of Supplies item (level_tier/unlocks_recruitment_tier/
+## funds_cap_increase, SH13-14/SH18/SH19) take effect the
 ## moment they are bought instead of going into the inventory to be Used
 ## later like every other item here — Cameron, 2026-09-26: they never had
 ## anywhere to apply their effect (Use In Office/Stage both blank), and
@@ -611,15 +614,6 @@ func _price_text(item: Dictionary) -> String:
 ## other branch in this screen.
 func _on_buy_item(item_id: String) -> void:
 	var item := DataDB.get_shop_item(item_id)
-	if item.get("card_tier") != null:
-		var result := GameState.buy_random_card(item_id)
-		if result.get("ok", false):
-			_report.text = str(result.get("message", ""))
-			_after_spending("", _show_supplies)
-			_show_card_reveal(str(result.get("card_id", "")))
-		else:
-			_report_purchase_result(result)
-		return
 	if item.get("level_tier") != null:
 		_report_purchase_result(GameState.buy_random_level(item_id))
 		return
@@ -647,23 +641,22 @@ func _report_purchase_result(result: Dictionary) -> void:
 		_after_spending(message, _show_supplies)
 
 
-## A random-card purchase's own reveal (SH15-17, SH27-29): the card itself,
-## front then back, on top of the Supplies list _on_buy_item() already
-## reopened underneath it — Cameron, 2026-09-25: the same two views a tap on
+## A Rhetoric Training offer: the card itself, front then back, with Learn
+## it (its price) and Pass — Cameron, 2026-09-25: the same two views a tap on
 ## a card in a battle shows (CardView for the front, CardBackView for the
 ## full printed text), stacked vertically here rather than a tap swapping
-## one for the other, since a reveal has nothing else competing for the
-## screen. Both read straight off the card's own ID, so real art and real
-## text show the moment they exist, the same bargain every other view here
-## makes with undrawn art.
-func _show_card_reveal(card_id: String) -> void:
-	var card := DataDB.get_card(card_id)
+## one for the other, since the pop-up has nothing else competing for the
+## screen. 2026-09-27: shown BEFORE paying rather than after — Pass closes
+## it and nothing is spent. Both views read straight off the card's own ID,
+## so real art and real text show the moment they exist.
+func _show_card_offer() -> void:
+	var card := DataDB.get_card(_offer_card_id)
 	if card.is_empty():
 		return
 
 	var front := CardView.new()
 	front.show_card(card)
-	front.disabled = true   # a reveal, not a hand — tapping it does nothing
+	front.disabled = true   # a preview, not a hand — tapping it does nothing
 	var front_frame := CenterContainer.new()
 	front_frame.add_child(front)
 
@@ -680,13 +673,10 @@ func _show_card_reveal(card_id: String) -> void:
 	var back_frame := CenterContainer.new()
 	back_frame.add_child(back)
 
-	var rows: Array[Control] = [
-		front_frame,
-		back_frame,
-		UiKit.line(Text.say("shop.card_unlocked", {"name": card.get("name_en", card_id)})),
-	]
-	_card_reveal_panel.open(Text.say("shop.card_reveal_title"), rows,
-		Text.say("shop.card_reveal_confirm"))
+	var rows: Array[Control] = [front_frame, back_frame]
+	_card_reveal_panel.open(Text.say("rhetoric.offer_title"), rows,
+		Text.say("rhetoric.learn", {"price": _price_text(DataDB.get_shop_item(_offer_item_id))}),
+		Text.say("rhetoric.pass"))
 
 
 ## The deck: which of the cards you own are going in.
@@ -1054,7 +1044,7 @@ func _level_row(level: Dictionary) -> Control:
 
 
 ## Spends XP to unlock a level, then rebuilds the panel so the price and what
-## is left are current — the same shape as _on_buy_card().
+## is left are current — the same shape as every other purchase here.
 func _on_unlock_level(level_id: String) -> void:
 	_after_spending(GameState.unlock_level(level_id), _show_levels)
 

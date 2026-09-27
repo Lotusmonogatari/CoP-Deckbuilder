@@ -1130,48 +1130,79 @@ func buy_shop_item(item_id: String) -> String:
 	return ""
 
 
-## SH27/28/29 ("Purchase Random Tier N Card"): its own Description says
-## "takes effect immediately", and it always did — it just had nowhere to
-## do it, since Use In Office/Stage were both blank ("No") and Grants was
-## empty, so a bought one only ever sat in the inventory refusing "This
-## can't be used here." (Cameron, 2026-09-26). This is that immediate
-## effect: pay the same way any shop item does, then grant ownership of one
-## random card of shop.json's own "card_tier" that the player does not
-## already own — no inventory step at all, unlike every other item here.
+## Rhetoric Training (Cameron, 2026-09-27) — where new cards come from.
+## SH15-17 (XP) and SH27-29 (Yen), each naming a "card_tier" in shop.json.
+## Two steps, so the player sees the card BEFORE paying for it:
 ##
-## Returns { "ok": bool, "message": String }: a refusal (not ok), or, on a
-## success, also { "card_id": String } — the card's own art asset ID
-## (CLAUDE.md §5: cards/art/{CARD_ID}.png), so a caller can show the actual
-## card that was drawn rather than just naming it in a sentence.
-func buy_random_card(item_id: String) -> Dictionary:
+##   offer_random_card()  draws one random card of that tier the player does
+##                        not own yet. Nothing is paid; nothing changes.
+##   learn_offered_card() pays the item's price and adds exactly that card.
+##
+## Passing on an offer costs nothing, and seeing a card again draws afresh
+## — Cameron's call, knowing it lets a player keep passing until a card
+## they want comes up.
+##
+## Both return { "ok": bool, "message": String }; an offer that is ok also
+## carries { "card_id" } — the card's own art asset ID (cards/art/
+## {CARD_ID}.png), so the pop-up shows the real card.
+func offer_random_card(item_id: String) -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
-	var refusal := Items.buy_refusal(item, item_count(item_id),
-		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
+	var refusal := _card_training_refusal(item)
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
+	var choices := _unowned_cards_at_tier(int(item.get("card_tier", 0)))
+	return {"ok": true, "card_id": choices[randi() % choices.size()], "message": ""}
 
-	var tier := int(item.get("card_tier", 0))
-	var choices: Array[String] = []
-	for card: Dictionary in DataDB.cards:
-		if int(card.get("tier", -1)) == tier and not owned_cards.has(str(card.get("card_id", ""))):
-			choices.append(str(card.get("card_id", "")))
-	if choices.is_empty():
-		return {"ok": false, "message": Text.say("shop.no_cards_left_at_tier", {"tier": tier})}
+
+func learn_offered_card(item_id: String, card_id: String) -> Dictionary:
+	var item := DataDB.get_shop_item(item_id)
+	var refusal := _card_training_refusal(item)
+	if not refusal.is_empty():
+		return {"ok": false, "message": refusal}
+	if not _unowned_cards_at_tier(int(item.get("card_tier", 0))).has(card_id):
+		return {"ok": false, "message": Text.say("shop.no_cards_left_at_tier",
+			{"tier": int(item.get("card_tier", 0))})}
 
 	var price := Items.costs(item)
 	_move_xp(-int(price["XP"]))
 	_move_meta("Funds", -int(price["Funds"]))
 	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
-
-	var card_id: String = choices[randi() % choices.size()]
 	owned_cards.append(card_id)
 	var card_name := str(DataDB.get_card(card_id).get("name_en", card_id))
 	return {"ok": true, "card_id": card_id,
 		"message": Text.say("shop.card_unlocked", {"name": card_name})}
 
 
+## Why a training session cannot be had right now, or "": the item's own
+## price and stock (Items.buy_refusal), then whether any card of its tier
+## is left to learn. Shared by the Office's row (to grey its button) and
+## both steps above.
+func card_training_refusal(item_id: String) -> String:
+	return _card_training_refusal(DataDB.get_shop_item(item_id))
+
+
+func _card_training_refusal(item: Dictionary) -> String:
+	var item_id := str(item.get("item_id", ""))
+	var refusal := Items.buy_refusal(item, item_count(item_id),
+		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+	var tier := int(item.get("card_tier", 0))
+	if _unowned_cards_at_tier(tier).is_empty():
+		return Text.say("shop.no_cards_left_at_tier", {"tier": tier})
+	return ""
+
+
+func _unowned_cards_at_tier(tier: int) -> Array[String]:
+	var choices: Array[String] = []
+	for card: Dictionary in DataDB.cards:
+		if int(card.get("tier", -1)) == tier and not owned_cards.has(str(card.get("card_id", ""))):
+			choices.append(str(card.get("card_id", "")))
+	return choices
+
+
 ## SH13/14 ("Unlock Tier N Level"): the same on-purchase shape as
-## buy_random_card() above, and for the same reason — pays, then
+## the old one-step random-card purchase, and for the same reason — pays, then
 ## immediately unlocks one random not-yet-unlocked level of shop.json's
 ## own "level_tier". Ledger.is_level_unlocked() (not a bare levels_unlocked
 ## check) is what decides "not-yet-unlocked", so a level that is already
