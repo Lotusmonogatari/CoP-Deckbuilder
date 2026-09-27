@@ -13,7 +13,15 @@ extends SceneTree
 ## subtly wrong (resource IDs, font variation tags). Letting Godot save it
 ## guarantees a file Godot can read back.
 
-const FONT_PATH := "res://assets/fonts/NotoSansJP[wght].ttf"
+## Every piece of text that is not on a card (cards use AntakaBrushDisplay,
+## CardView.CARD_FONT) — Cameron, 2026-09-27.
+const FONT_PATH := "res://assets/fonts/AntakaBrushText-Regular.ttf"
+
+## Antaka Brush Text is Latin only (122 characters): no Japanese at all, and
+## no ō, −, ×, • or →. Anything it lacks is drawn from Noto Sans JP instead,
+## so the Japanese accents (CLAUDE.md §3) and "Kōenkai" / "−4 to −6" still
+## render — Noto is the fallback, not the face.
+const FALLBACK_PATH := "res://assets/fonts/NotoSansJP[wght].ttf"
 const OUTPUT_PATH := "res://theme/cop_theme.tres"
 
 ## Sizes are in pixels at the base resolution of 1080 x 2340. Godot scales
@@ -42,22 +50,27 @@ const SCROLL_GRABBER_HOT := Color(0.95, 0.85, 0.45, 0.9)
 
 func _init() -> void:
 	var base_font := load(FONT_PATH)
-	if base_font == null:
-		push_error("Could not load the font at %s. Has Godot imported it yet?" % FONT_PATH)
+	var fallback_font := load(FALLBACK_PATH)
+	if base_font == null or fallback_font == null:
+		push_error("Could not load %s or %s. Has Godot imported them yet?" % [FONT_PATH, FALLBACK_PATH])
 		quit(1)
 		return
 
 	var theme := Theme.new()
 
-	# Noto Sans JP is a variable font, so one file covers every weight.
-	# FontVariation picks a weight out of it.
+	# Noto Sans JP is a variable font, so one file covers every weight;
+	# FontVariation picks one out of it. Only ever a fallback now.
+	var japanese := FontVariation.new()
+	japanese.base_font = fallback_font
+	japanese.variation_opentype = {_tag("wght"): 400}
+
+	# Antaka Brush Text has a single weight (Regular), and that is the face
+	# asked for everywhere, so what used to be "bold" (buttons, headers, the
+	# cue banner) is the same face — size alone carries the hierarchy now.
 	var regular := FontVariation.new()
 	regular.base_font = base_font
-	regular.variation_opentype = {_tag("wght"): 400}
-
-	var bold := FontVariation.new()
-	bold.base_font = base_font
-	bold.variation_opentype = {_tag("wght"): 700}
+	regular.fallbacks = [japanese]
+	var bold := regular
 
 	theme.default_font = regular
 	theme.default_font_size = SIZE_BODY
