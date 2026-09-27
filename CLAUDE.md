@@ -90,6 +90,7 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `office_notices.json` | notice_id | One line of Office-screen flavor text per slot, conditioned on staff hired or a meta-variable threshold — see §13-adjacent `OfficeNotices.gd` |
 | `parties.json` | party_id | The six real parties: name, official RGB colour, seat count (the real Sep-18 session, summing to 101), Leader Opp ID (blank until Cameron casts one) — §7.7 |
 | `floor_votes.json` | bill_id (BIxx) | National Assembly Floor Voting (ST23) bills: bill text, per-disposition favorability deltas, and a `positions` list (one per party). No level link on the bill itself — see §7.7 |
+| `level_intros.json` | level_id + role | A hired staff member's own line about a specific level, shown on the Level Intro screen between the Office and that level's first stage. Flat rows, entirely optional per (level, role) pair — see §7.8 |
 | `art.json` | kind | Where each kind of picture lives, the expression list and fallbacks |
 | `rules.json`, `stage_types.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |
 
@@ -161,6 +162,13 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 - **The player's own seat is assumed to be wherever their party's own majority already sits** (Yes, No, or Abstain, whichever bucket is biggest — Cameron's call, 2026-09-26, over an explicit authored field). Voting anything else moves exactly one seat out of that assumed bucket into whichever the player actually picked. `FloorVoteEngine.majority_bucket()`/`choose()`.
 - **Party favorability** (new mechanic): every party's own standing moves after the vote, unconditionally on its own disposition — a bill's three deltas (Favorability Delta: Supportive/Opposed/Neutral) apply to every party that held that stance, regardless of whether the bill passed. The player's own party's share lands on the existing `Party support` sanban variable directly (no second number to keep in sync); the other five live in `GameState.party_standing`, seeded from `data/party_standing.json` the same way `booster_standing.json` seeds organisation standing. `GameState.party_favorability()`/`apply_floor_vote_favorability()`.
 - Cannot be lost, the same as Office Hours — a decision, not a contest. Worth whatever the stage's own `win_delta_*` fields say.
+
+### 7.8 Level Intro screen (built 2026-09-27)
+- A short beat between the Office and a level's first stage: any hired staff member with a written line about that level says it over the Office background before the level begins. `scenes/office_hours/LevelIntroScreen.tscn` / `scripts/ui/LevelIntroScreen.gd`, built by `tools/build_level_intro_scene.gd` the same way `VisitorScreen.tscn` is.
+- Entirely data-driven and blank-tolerant: `data/level_intros.json` is flat rows of `(level_id, role, cue_text)`, from the workbook's new **Level Intro Cues** tab — most (level, role) combinations will have no row at all, and that role simply stays silent for that level. `LevelIntroCues.resolve()` (`scripts/rules/LevelIntroCues.gd`, pure/UI-free per §12, mirrors `OfficeNotices.gd`) returns one entry per role that is BOTH hired AND has a written line for this level, in `staff.json`'s own row order.
+- **Skipped entirely when there's nothing to say**: `OfficeScreen._on_start()` resolves the cues before changing scene — a non-empty result routes to `StageRouting.LEVEL_INTRO_SCENE` instead of straight to the first stage; an empty one goes straight to the first stage exactly as before this feature existed, so no level regresses until Cameron actually writes a row for it. Resuming a level already in progress never shows this screen — it is a start-of-level beat only.
+- **Every qualifying role speaks, one after another** (not just the first, unlike Office Notices) — a level briefing can genuinely have more than one person weigh in. Lines queue on the same `CueBanner` every other spoken line uses, from the player's own (blue) side — staff are the player's own team, not an opponent. The portrait swaps to match whoever is currently speaking.
+- Content prompt: `design/LEVEL_INTRO_PROMPT.md`. The tab exists in the workbook today with no rows — Cameron's to write.
 
 ## 8. Meta systems
 

@@ -36,7 +36,7 @@ const DATA_PATH := "res://data/"
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
-	"floor_votes", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
+	"floor_votes", "level_intros", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
@@ -60,6 +60,13 @@ var affinity: Array = []
 ## each row shows when its one condition (a staff role hired/not-hired, or a
 ## meta variable against a threshold) is true. See OfficeNotices.gd.
 var office_notices: Array = []
+
+## A hired staff member's own line about a specific level, shown on the
+## Level Intro screen between the Office and that level's first stage
+## (2026-09-27). Flat rows — { level_id, role, cue_text } — same shape as
+## office_notices, entirely optional per (level, role): most combinations
+## have no row at all. See LevelIntroCues.gd.
+var level_intros: Array = []
 
 ## data/shop.json's SHxx rows — one-time Office actions (see the file's own
 ## comments), not previously loaded by anything. Added 2026-09-25 so a
@@ -264,6 +271,7 @@ func load_all() -> void:
 			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": _load_protagonists(content)
 			"office_notices": office_notices = content if content is Array else []
+			"level_intros": level_intros = content if content is Array else []
 			"parties": parties = content if content is Array else []
 			"floor_votes": floor_votes = content if content is Dictionary else {}
 

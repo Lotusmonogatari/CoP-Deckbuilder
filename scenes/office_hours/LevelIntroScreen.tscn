@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/LevelIntroScreen.gd" id="1_8wk5d"]
+[ext_resource type="Script" path="res://scripts/ui/PlaceholderArt.gd" id="2_peovp"]
+
+[node name="LevelIntroScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_8wk5d")
+
+[node name="Background" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_peovp")
+
+[node name="BackgroundScrim" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.07, 0.55)
+
+[node name="Safe" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 50
+
+[node name="Column" type="VBoxContainer" parent="Safe"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TopSpacer" type="Control" parent="Safe/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Portrait" type="Control" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 380)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("2_peovp")
+
+[node name="StaffName" type="Label" parent="Safe/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Staff"
+horizontal_alignment = 1
+
+[node name="VSpacer" type="Control" parent="Safe/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ContinueButton" type="Button" parent="Safe/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+text = "Let's go"

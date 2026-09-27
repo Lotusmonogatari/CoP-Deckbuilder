@@ -168,6 +168,24 @@ SHEETS = {
             ("text_en", "text_en", "str"),
         ],
     },
+    # A hired staff member's own line about the level the player is about to
+    # walk into, shown on the new Level Intro screen between the Office and
+    # the level's first stage (2026-09-27). Entirely optional: most
+    # level/role combinations will have no row at all, and that role simply
+    # stays silent for that level — see LevelIntroCues.gd. Not folded: kept
+    # as flat rows, the same shape Office Notices already uses, and read
+    # directly by DataDB.level_intros.
+    "Level Intro Cues": {
+        "out": "level_intros.json",
+        "key": "level_id",
+        "id_pattern": r"^LV\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Level ID", "level_id", "id"),
+            ("Role", "role", "str"),
+            ("Cue Text", "cue_text", "str"),
+        ],
+    },
     # Every line the game says to the player. Cameron's to reword; the code
     # asks for a Key and never holds a sentence of its own. A key the code
     # asks for and this tab does not have is an ERROR, checked below, so a
@@ -1602,6 +1620,30 @@ def validate(data, report):
                         f"{sfid} {tier_key} rewards '{target}', which is neither a BOxx "
                         "booster nor an SGxx segment",
                     )
+
+    # --- level_intros ----------------------------------------------------------
+    # A hired staff member's own line about a level, shown on the Level Intro
+    # screen. Entirely optional per (level, role) — most combinations will
+    # have no row, and that role just stays silent for that level. Only the
+    # rows that do exist are checked here.
+    staff_roles = {member["role"] for member in data["staff"] if member.get("role")}
+    seen_level_roles = set()
+    for cue in data.get("level_intros", []):
+        lid = cue["level_id"]
+        role = cue["role"]
+        if lid not in level_ids:
+            report.error("Level Intro Cues", f"{lid} is not in the Levels tab")
+        if role not in staff_roles:
+            report.error(
+                "Level Intro Cues",
+                f"'{role}' (for {lid}) is not a role in the Staff tab",
+            )
+        if (lid, role) in seen_level_roles:
+            report.warn(
+                "Level Intro Cues",
+                f"{lid} has more than one row for '{role}' — the first one wins",
+            )
+        seen_level_roles.add((lid, role))
 
     # --- shop ------------------------------------------------------------------
     for item in data["shop"]:

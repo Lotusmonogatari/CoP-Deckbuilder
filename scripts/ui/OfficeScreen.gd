@@ -1172,4 +1172,14 @@ func _on_start() -> void:
 	# The runner is handed over rather than rebuilt, so the level keeps its
 	# place and its carried buffs as the battle screen moves through it.
 	GameState.begin_level(runner)
-	get_tree().change_scene_to_file(StageRouting.scene_for(runner.current_stage()))
+
+	# A hired staff member with a written line for this level gets one beat
+	# to say it before the level begins (2026-09-27) — skipped entirely when
+	# nobody has anything to say, so a level with no intro content plays
+	# exactly as it always has.
+	var cues := LevelIntroCues.resolve(DataDB.level_intros, runner.level.get("level_id", ""),
+		GameState.staff_hired, DataDB.staff)
+	if cues.is_empty():
+		get_tree().change_scene_to_file(StageRouting.scene_for(runner.current_stage()))
+	else:
+		get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
