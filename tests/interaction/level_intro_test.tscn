@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/interaction/level_intro_test.gd" id="1_levelintrotest"]
+
+[node name="LevelIntroTest" type="Node"]
+script = ExtResource("1_levelintrotest")

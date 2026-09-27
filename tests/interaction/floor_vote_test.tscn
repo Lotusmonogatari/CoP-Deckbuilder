@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/interaction/floor_vote_test.gd" id="1_floorvotetest"]
+
+[node name="FloorVoteTest" type="Node"]
+script = ExtResource("1_floorvotetest")

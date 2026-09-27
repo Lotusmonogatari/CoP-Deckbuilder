@@ -398,6 +398,55 @@ Ten new Text-tab rows came with 3, 5 and 6 (`reward.if_lost`,
 `rhetoric.*`); `office.new_cards`, `office.cards_blurb`, `office.unlock` and
 friends are now unused by the game.
 
+### The 2026-09-28 systematic evaluation pass
+
+Asked to design a plan to evaluate every mechanic, not just whatever a
+recent playthrough happened to touch. Rather than build new machinery,
+this read what already exists (798 GUT tests, 6 real-click interaction
+tests, `tools/playtest_optimal.gd`'s full automated playthrough,
+`tools/verify.sh`'s CI gate) and found two structural gaps that were real,
+not guessed:
+
+- **`tests/interaction/office_hours_test.tscn` and `shop_items_test.tscn`
+  existed and passed, but `tools/verify.sh` never called them** — a
+  real-click regression in Office Hours or the shop/Rhetoric Training
+  flow could ship without the gate catching it. Both are now wired into
+  step 4.
+- **`playtest_optimal.gd` had no branch for Vote-mode stages** —
+  `_play_level()` only ever split Non-combat vs. everything else into
+  `_play_battle_stage()`, which builds a `BattleEngine` config and has no
+  idea what a bill is. Every one of the 30 real Floor Vote levels
+  (LV31-60) hit this; the full-game playtest was blind to a third of the
+  level catalog. `_play_vote_stage()` now drives `FloorVoteEngine`
+  directly, voting with the player's own party's assumed majority (the
+  same no-reallocation case `FloorVoteScreen.gd`'s own real flow falls
+  into) — confirmed against real bills, including the same LV31 totals
+  (45/48/8) the 2026-09-27 pull verified by hand.
+
+Two new interaction tests close the remaining hole — neither
+`FloorVoteScreen.tscn` nor `LevelIntroScreen.tscn`, the two newest screen
+families, had ever been opened by a real click before this:
+`tests/interaction/floor_vote_driver.gd` (votes on LV31's real bill,
+confirms the outcome shows its real 45/48/8 totals and that favorability
+moved) and `level_intro_driver.gd` (proves both halves in one run on real
+Tier-0 levels: LV01 with nothing written skips straight to its first
+stage, LV02 with one fake in-memory cue shows the real hired staffer's
+portrait/name/line and routes on correctly). Both now run in `verify.sh`
+alongside the other six.
+
+`design/MECHANIC_COVERAGE.md` is the resulting matrix — every stage type,
+meta trigger, and shop mechanic against what actually checks it (GUT /
+click / playtest), built by reading the real test files rather than from
+memory, with the honest "—"s left in. It also names the fifth category
+the matrix structurally can't show: six of the 2026-09-27 session's nine
+bugs were a correct rule with a GUT test AND a correct screen that had
+been click-tested — they only broke with real content at real scale (a
+20-question pool, a two-clause title, a phone-width screen). No unit or
+click test can catch that class by construction, which is what
+`design/PLAYTEST_CHECKLIST.md` is for: a manual pass, one per stage type
+plus every meta/shop/save system, each line a concrete action and what
+"wrong" looks like.
+
 ## 12. Working agreement
 
 - **Explain like a colleague, not a manual.** Keep it short and plain English, and say what changed and why.

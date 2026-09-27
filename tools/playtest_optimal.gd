@@ -217,10 +217,10 @@ func _play_level(level_id: String) -> void:
 		if _stages_played > MAX_STAGES:
 			break
 		var stage: Dictionary = GameState.level_runner.current_stage()
-		if str(stage.get("mode", "")) == "Non-combat":
-			_play_visitor_stage(stage)
-		else:
-			_play_battle_stage(stage)
+		match str(stage.get("mode", "")):
+			"Non-combat": _play_visitor_stage(stage)
+			"Vote": _play_vote_stage(stage)
+			_: _play_battle_stage(stage)
 
 	if guard >= 20:
 		_bug("%s did not finish within 20 stage iterations — possible infinite stage insertion" % level_id)
@@ -308,6 +308,45 @@ func _play_visitor_stage(stage: Dictionary) -> void:
 
 ## Used only when setup() itself failed — GameState still needs to be told
 ## the stage is over or the level would hang GameState.is_in_level() forever.
+## National Assembly Floor Voting (ST23, §7.7): no cards, one choice. Before
+## 2026-09-28 this driver had no branch for "Vote" mode at all — every one
+## of the 30 real Floor Vote levels (LV31-60) fell into _play_battle_stage()
+## instead, which builds a BattleEngine config that has no idea what a bill
+## or a FloorVoteEngine is. "Optimal" play here is the free, no-risk choice:
+## vote with the player's own party's already-assumed majority bucket
+## (FloorVoteEngine.majority_bucket(), the same "no reallocation happens"
+## case FloorVoteScreen.gd itself falls into when nothing about the vote
+## surprises anyone) — same as the real screen's own call shape.
+func _play_vote_stage(stage: Dictionary) -> void:
+	var stage_id := str(stage.get("stage_id", ""))
+	var engine := FloorVoteEngine.new()
+	var player_party := str(DataDB.player.get("party", ""))
+	if not engine.setup({"bill": stage.get("floor_vote", {}), "player_party": player_party}):
+		_bug("%s: FloorVoteEngine.setup() failed: %s" % [stage_id, engine.setup_problems])
+		_force_end_stage(LevelRunner.LOST)
+		return
+
+	var own_position := {}
+	for position: Dictionary in engine.positions():
+		if str(position.get("party_name", "")) == player_party:
+			own_position = position
+	var choice := (FloorVoteEngine.majority_bucket(own_position) if not own_position.is_empty()
+		else "Abstain")
+	var result := engine.choose(choice)
+	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}))
+
+	_log("  %s: voted %s on '%s' (%s) — Yes %d / No %d / Abstain %d" % [
+		stage_id, choice, engine.bill().get("bill_name", "?"),
+		"passed" if result.get("passed", false) else "failed",
+		result["totals"]["Yes"], result["totals"]["No"], result["totals"]["Abstain"]])
+
+	# Cannot be lost (§7.7) — always scored WON, same as VisitorScreen.gd.
+	_wins += 1
+	var level_over := GameState.finish_stage(LevelRunner.WON)
+	if level_over:
+		GameState.end_level()
+
+
 func _force_end_stage(outcome: String) -> void:
 	var level_over := GameState.finish_stage(outcome)
 	if level_over:
