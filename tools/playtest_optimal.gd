@@ -9,14 +9,42 @@ extends Node
 ##
 ##     godot --headless --path . tools/playtest_optimal.tscn
 ##
+## Two environment variables retune what gets played, for tools/stress.sh:
+##
+##   PLAYTEST_PROTAGONIST   which protagonist to run as (default "PC02").
+##   PLAYTEST_RANDOM_MOVES  "1" swaps the greedy best-card heuristic for
+##       _play_random_cards() — a shuffled, adversarial hand instead of a
+##       smart one. THIS MODE IS EXPECTED TO LOSE CONSTANTLY; a low win
+##       rate is not a bug. Its only job is to explore card-play orders and
+##       timings the greedy heuristic never would (discarding whole hands,
+##       far more deck-empty/reshuffle cycles, far more press-conference
+##       declines) while the same invariant checks below still watch for a
+##       genuine rules-engine problem.
+##
 ## Prints a running log and a final BUGS/DISCREPANCIES section: anything
 ## observed that contradicts what the code or CLAUDE.md itself claims
-## should happen. Not part of tools/verify.sh — a debugging pass, not a
-## repeatable regression test.
+## should happen — including, as of 2026-09-28, a set of invariant checks
+## (_check_invariants()) run after every play_card()/end_turn() inside a
+## battle: deck+hand+discard conservation, guard/gaffe/energy bounds, and
+## bar bounds (BarModel.totals_balance()). A failing battle is fully
+## reproducible: every bug message inside one names the stage's own random
+## seed, and BattleEngine.setup()'s "seed" config key is the one thing in
+## the whole engine that determines every in-battle random roll (shuffle,
+## question pool, intent rolls, the bar's stubborn-vote-cost roll — see
+## test_the_same_seed_deals_the_same_hand()/test_the_same_seed_plays_the_
+## same_way_twice() in the GUT suite). Not part of tools/verify.sh — a
+## debugging pass, not a repeatable regression test.
 
 const MAX_LEVEL_ATTEMPTS := 80
 const MAX_STAGES := 600
 const FUNDS_BUFFER := 5000   # never spend Funds below this on staff/backing
+
+## Per-turn chance of a deliberate pass in random-move mode, and per-card
+## chance of stopping early even though another affordable card exists —
+## between them, a random-mode turn plays anywhere from nothing to a full
+## hand, which a greedy turn never would.
+const RANDOM_PASS_CHANCE := 0.15
+const RANDOM_STOP_EARLY_CHANCE := 0.2
 
 var _bugs: Array[String] = []
 var _level_attempts := 0
@@ -24,14 +52,30 @@ var _stages_played := 0
 var _wins := 0
 var _losses := 0
 
+var _random_moves := false
+var _protagonist := "PC02"
+
+## Reset at the top of every _play_battle_stage() call: the deck+hand+
+## discard total right after setup(), which must never change for the rest
+## of that stage (a committee's per-bout reset recombines all three piles
+## rather than dropping anything, so the same total holds across a whole
+## multi-opponent stage too).
+var _expected_card_total := -1
+
 
 func _ready() -> void:
 	_run.call_deferred()
 
 
 func _run() -> void:
-	_log("=== PLAYTEST START (Easy / PC02) ===")
-	GameState.start_new_run("PC02")
+	_random_moves = OS.get_environment("PLAYTEST_RANDOM_MOVES") == "1"
+	var protagonist_override := OS.get_environment("PLAYTEST_PROTAGONIST")
+	if not protagonist_override.is_empty():
+		_protagonist = protagonist_override
+
+	_log("=== PLAYTEST START (%s / %s) ===" % [
+		"random-move stress" if _random_moves else "Easy greedy", _protagonist])
+	GameState.start_new_run(_protagonist)
 	_log("Starting meta: %s   XP: %d" % [GameState.meta, GameState.xp])
 
 	# Deal a legal starting deck rather than trust whatever reset_collection()
@@ -236,26 +280,40 @@ func _play_battle_stage(stage: Dictionary) -> void:
 		return
 	config["item_bonuses"] = GameState.take_item_bonuses_for_stage()
 
+	# Explicit rather than left to BattleEngine's own randi() fallback, so a
+	# bug found below can be named and replayed exactly: this same stage,
+	# this same config, with "seed" set to seed_value.
+	var seed_value := randi()
+	config["seed"] = seed_value
+	var repro := "%s seed=%d" % [stage_id, seed_value]
+
 	var engine := BattleEngine.new()
 	if not engine.setup(config):
-		_bug("%s: BattleEngine.setup() failed: %s" % [stage_id, engine.setup_problems])
+		_bug("%s: BattleEngine.setup() failed: %s" % [repro, engine.setup_problems])
 		_force_end_stage(LevelRunner.LOST)
 		return
+
+	_expected_card_total = engine.state.deck.size() + engine.state.hand.size() + engine.state.discard.size()
+	_check_invariants(engine, repro, "setup()")
 
 	var turns := 0
 	while not engine.state.is_over() and turns < 60:
 		turns += 1
-		_play_best_cards(engine)
+		if _random_moves:
+			_play_random_cards(engine, repro)
+		else:
+			_play_best_cards(engine, repro)
 		if engine.state.is_over():
 			break
 		var end_result := engine.end_turn()
 		if not end_result.get("ok", false):
-			_bug("%s: end_turn() refused mid-battle: %s" % [stage_id, end_result.get("reason")])
+			_bug("%s: end_turn() refused mid-battle: %s" % [repro, end_result.get("reason")])
 			break
+		_check_invariants(engine, repro, "end_turn()")
 
 	if turns >= 60 and not engine.state.is_over():
 		_bug("%s: battle did not conclude within 60 turns (stuck at turn_limit=%s, gaffe=%d/%d)"
-			% [stage_id, stage.get("turn_limit"), engine.state.gaffe, engine.state.gaffe_limit])
+			% [repro, stage.get("turn_limit"), engine.state.gaffe, engine.state.gaffe_limit])
 
 	var state := engine.state
 	var gaffe_caused_loss := state.outcome == "loss" and state.gaffe >= state.gaffe_limit
@@ -264,7 +322,7 @@ func _play_battle_stage(stage: Dictionary) -> void:
 	elif state.outcome == "loss":
 		_losses += 1
 	else:
-		_bug("%s: battle ended with outcome '%s', neither win nor loss" % [stage_id, state.outcome])
+		_bug("%s: battle ended with outcome '%s', neither win nor loss" % [repro, state.outcome])
 
 	_log("  %s: %s (score=%d gaffe=%d/%d turn=%d/%s)" % [
 		stage_id, state.outcome, state.player_score(), state.gaffe, state.gaffe_limit,
@@ -357,7 +415,7 @@ func _force_end_stage(outcome: String) -> void:
 ## (self_plus + opp_minus + guard*0.5 + draw*0.3) first, skipping anything
 ## that would push the gaffe meter to its limit — "use gaffes, don't hit
 ## the limit."
-func _play_best_cards(engine: BattleEngine) -> void:
+func _play_best_cards(engine: BattleEngine, repro: String) -> void:
 	var played_this_turn := 0
 	while played_this_turn < 20:
 		if engine.state.is_over():
@@ -387,10 +445,100 @@ func _play_best_cards(engine: BattleEngine) -> void:
 
 		var result := engine.play_card(best_id)
 		if not result.get("ok", false):
-			_bug("play_card('%s') was pre-checked as affordable/safe but refused: %s"
-				% [best_id, result.get("reason")])
+			_bug("%s: play_card('%s') was pre-checked as affordable/safe but refused: %s"
+				% [repro, best_id, result.get("reason")])
 			return
+		_check_invariants(engine, repro, "play_card('%s')" % best_id)
 		played_this_turn += 1
+
+
+## The adversarial counterpart to _play_best_cards(), used when
+## PLAYTEST_RANDOM_MOVES=1: a shuffled hand played in shuffled order, with a
+## real chance of a deliberate pass and a real chance of stopping early with
+## playable cards still in hand. No scoring, no gaffe avoidance — the point
+## is to explore play orders and timings a competent hand never would, not
+## to win. Still respects cost (an unaffordable card is never attempted,
+## same as a real player who can only drag a playable card up) since the
+## goal is stress, not exercising BattleEngine's own refusal path (that is
+## GUT's job, e.g. test_battle_engine.gd's cost-refusal tests).
+func _play_random_cards(engine: BattleEngine, repro: String) -> void:
+	if randf() < RANDOM_PASS_CHANCE:
+		return   # a deliberate pass, exercising the pass-penalty path (§7.2)
+
+	var played_this_turn := 0
+	while played_this_turn < 20:
+		if engine.state.is_over():
+			return
+		var state := engine.state
+		var affordable: Array[String] = []
+		for card_id: String in state.hand:
+			var card := DataDB.get_card(card_id)
+			if not card.is_empty() and engine.card_cost(card) <= state.energy:
+				affordable.append(card_id)
+		if affordable.is_empty():
+			return
+
+		affordable.shuffle()
+		var card_id: String = affordable[0]
+		var result := engine.play_card(card_id)
+		if not result.get("ok", false):
+			_bug("%s: play_card('%s') was pre-checked as affordable but refused: %s"
+				% [repro, card_id, result.get("reason")])
+			return
+		_check_invariants(engine, repro, "play_card('%s') (random mode)" % card_id)
+		played_this_turn += 1
+
+		if randf() < RANDOM_STOP_EARLY_CHANCE:
+			return   # stop this turn even though another card could be played
+
+
+# ---------------------------------------------------------------------------
+# Invariants
+# ---------------------------------------------------------------------------
+
+## Checked after every state-mutating call inside a battle (setup(),
+## play_card(), end_turn()). Nothing inside BattleEngine itself asserts
+## these — it is all soft-refusal via _refused()/setup_problems (see its own
+## file) — so a violation caught here is a genuine rules-engine bug, not a
+## play-quality issue. `repro` names the stage and the exact seed
+## (_play_battle_stage()'s own "stage_id seed=N" string) needed to replay it.
+func _check_invariants(engine: BattleEngine, repro: String, moment: String) -> void:
+	var state := engine.state
+
+	var total := state.deck.size() + state.hand.size() + state.discard.size()
+	if total != _expected_card_total:
+		_bug("%s: card conservation broken after %s — deck+hand+discard=%d, expected %d"
+			% [repro, moment, total, _expected_card_total])
+
+	if state.energy < 0 or state.energy > state.energy_max:
+		_bug("%s: energy %d out of bounds [0, %d] after %s"
+			% [repro, state.energy, state.energy_max, moment])
+	if state.block < 0 or state.block > state.guard_cap:
+		_bug("%s: guard %d out of bounds [0, %d] after %s"
+			% [repro, state.block, state.guard_cap, moment])
+	if state.opponent_block < 0 or state.opponent_block > state.guard_cap:
+		_bug("%s: opponent guard %d out of bounds [0, %d] after %s"
+			% [repro, state.opponent_block, state.guard_cap, moment])
+	if state.gaffe < 0:
+		_bug("%s: gaffe %d is negative after %s" % [repro, state.gaffe, moment])
+	if state.gaffe >= state.gaffe_limit and state.outcome != "loss":
+		_bug("%s: gaffe %d/%d reached the limit but outcome is '%s', not 'loss', after %s"
+			% [repro, state.gaffe, state.gaffe_limit, state.outcome, moment])
+	if state.turn < 1:
+		_bug("%s: turn counter %d is less than 1 after %s" % [repro, state.turn, moment])
+
+	if state.bar != null:
+		var bar := state.bar
+		if bar.player < 0 or bar.player > bar.maximum:
+			_bug("%s: bar.player %d out of bounds [0, %d] after %s"
+				% [repro, bar.player, bar.maximum, moment])
+		if bar.model == BarModel.Model.SHARED_POOL:
+			if bar.opponent < 0 or bar.undecided < 0:
+				_bug("%s: bar.opponent=%d bar.undecided=%d — one is negative after %s"
+					% [repro, bar.opponent, bar.undecided, moment])
+			if not bar.totals_balance():
+				_bug("%s: bar totals do not balance after %s — player=%d opponent=%d undecided=%d max=%d"
+					% [repro, moment, bar.player, bar.opponent, bar.undecided, bar.maximum])
 
 
 # ---------------------------------------------------------------------------

@@ -482,6 +482,46 @@ default). Six seed lines (TK01-06) ship in the workbook so the ticker has
 something to show out of the box; the rest of the tab is Cameron's to
 write.
 
+### A thorough code stress test (2026-09-28)
+
+Everything above proves a mechanic *works*. `tools/stress.sh` (new) asks
+whether it keeps working under punishment — not part of `tools/verify.sh`
+or CI, the same bargain `stress_shop_items.gd`/`stress_crisis_triggers.gd`
+already strike (minutes, not seconds; run before a release or after
+touching `BattleEngine`/`GameState`/`Ledger`, not on every commit).
+
+- **Invariant checks inside `tools/playtest_optimal.gd`'s own battle loop**
+  (`_check_invariants()`): deck+hand+discard conservation, guard/gaffe/
+  energy bounds, and bar bounds (`BarModel.totals_balance()`), checked
+  after every `play_card()`/`end_turn()` against every real stage in the
+  game — nothing in `BattleEngine` itself asserts these; it is all soft-
+  refusal via `_refused()`. A violation names its own exact reproducer: a
+  stage ID and a `BattleEngine` seed (now always explicit —
+  `config["seed"]` — rather than left to `setup()`'s own `randi()`
+  fallback), since that one seed decides every random roll in a battle.
+- **An adversarial mode, same tool**: `PLAYTEST_RANDOM_MOVES=1` swaps the
+  greedy best-card heuristic for a shuffled hand played in shuffled order,
+  with a real chance of a deliberate pass — explores play orders and
+  timings the greedy heuristic never would (discarding whole hands, far
+  more deck-empty/reshuffle cycles, far more press-conference declines).
+  Losing constantly is expected here, not a bug — only an invariant
+  violation, a crash, or a stuck stage is. `PLAYTEST_PROTAGONIST` (falls
+  back to the existing hardcoded `PC02`) lets a run sweep all four.
+- **`tests/interaction/mash_test.gd`/`mash_driver.gd`** (new): real
+  rapid-fire clicks — End Turn spammed, the same card dragged up twice in
+  a row, Details opened/closed ten times fast, Vote Yes and a Supplies
+  purchase each double-clicked — checking "exactly one effect, no stuck
+  UI" rather than re-proving a screen works at all (`click_test.gd`'s own
+  job). Confirmed while building it: this codebase's click handlers are
+  end-to-end synchronous (check, mutate, refresh, no `await` in between),
+  so a same-frame double-submit race structurally can't happen most
+  places — these are regression guards more than bug hunts, except for
+  the End Turn case, which does cross a real `await` boundary
+  (`OpponentPresenter.flinch()`/`PlayerPortraitPresenter`'s own reaction
+  animations), and is the one most likely to matter.
+- `tools/stress.sh` runs all of the above plus the two existing fuzzers in
+  one command, mirroring `tools/verify.sh`'s own shape and reporting.
+
 
 ## 12. Working agreement
 
