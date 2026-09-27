@@ -316,3 +316,15 @@ func test_a_blank_delta_reads_as_zero_not_a_crash() -> void:
 	assert_eq(MetaRules.apply_win_deltas({"Reputation": 50}, floor_vote, DataDB.sanban)["applied"], {})
 	assert_eq(LevelRunner.win_rewards(floor_vote), {})
 	assert_true(LevelRunner.rewards_are_unset(floor_vote))
+
+
+func test_losing_a_stage_applies_its_own_loss_penalties() -> void:
+	# ST03 Party Caucus's real loss row: Party support -2, Reputation -1.
+	var caucus := {"loss_delta_party_support": -2, "loss_delta_reputation": -1,
+		"loss_delta_jiban": null, "loss_delta_yen": null, "loss_delta_xp": 1,
+		"win_delta_party_support": 2}
+	var result := MetaRules.apply_loss_deltas({"Party support": 50, "Reputation": 50}, caucus, DataDB.sanban)
+	assert_eq(result["applied"], {"Party support": -2, "Reputation": -1})
+	assert_eq(int(result["meta"]["Party support"]), 48, "not the +2 a win would pay")
+	assert_eq(LevelRunner.loss_penalties(caucus), {"Party support": -2, "Reputation": -1})
+	assert_eq(LevelRunner.loss_penalties({"stage_id": "ST23"}), {}, "a stage with no loss columns costs nothing")

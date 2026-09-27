@@ -63,17 +63,35 @@ static func clamp_meta(value: int, variable: Dictionary) -> int:
 ## promising a rise that the maximum swallowed.
 static func apply_win_deltas(meta: Dictionary, stage: Dictionary,
 		sanban_rows: Array) -> Dictionary:
+	return _apply_deltas(meta, deltas_for(stage, "win"), sanban_rows)
+
+
+## Applies a stage's loss penalties (its loss_delta_* columns), the same way.
+## Signed exactly as the workbook writes them: most are negative, but a few
+## stages hand back a little Funds even for a loss, and that lands too.
+static func apply_loss_deltas(meta: Dictionary, stage: Dictionary,
+		sanban_rows: Array) -> Dictionary:
+	return _apply_deltas(meta, deltas_for(stage, "loss"), sanban_rows)
+
+
+## The four meta-variable deltas a stage names for one outcome ("win" or
+## "loss"), by display name. XP is not a meta-variable and is read on its
+## own (stage_delta(stage, "win_delta_xp") / "loss_delta_xp").
+##
+## 2026-09-22 workbook: win_delta_kanban/win_delta_kaban were renamed to
+## win_delta_reputation/win_delta_yen in stages.json; loss_delta_* matches.
+static func deltas_for(stage: Dictionary, outcome: String) -> Dictionary:
+	return {
+		"Constituency support": stage_delta(stage, outcome + "_delta_jiban"),
+		"Reputation": stage_delta(stage, outcome + "_delta_reputation"),
+		"Funds": stage_delta(stage, outcome + "_delta_yen"),
+		"Party support": stage_delta(stage, outcome + "_delta_party_support"),
+	}
+
+
+static func _apply_deltas(meta: Dictionary, deltas: Dictionary, sanban_rows: Array) -> Dictionary:
 	var updated := meta.duplicate()
 	var applied := {}
-
-	# 2026-09-22 workbook: win_delta_kanban/win_delta_kaban were renamed to
-	# win_delta_reputation/win_delta_yen in stages.json.
-	var deltas := {
-		"Constituency support": stage_delta(stage, "win_delta_jiban"),
-		"Reputation": stage_delta(stage, "win_delta_reputation"),
-		"Funds": stage_delta(stage, "win_delta_yen"),
-		"Party support": stage_delta(stage, "win_delta_party_support"),
-	}
 
 	for name: String in deltas.keys():
 		var delta: int = deltas[name]

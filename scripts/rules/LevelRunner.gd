@@ -429,23 +429,23 @@ static func restored(saved: Dictionary) -> LevelRunner:
 ## not touch is not news. An empty result means the stage pays nothing flat,
 ## which the screens say in words rather than showing four zeroes.
 static func win_rewards(stage: Dictionary) -> Dictionary:
-	var rewards := {}
-	for key: String in WIN_DELTA_KEYS.keys():
-		var delta := MetaRules.stage_delta(stage, key)
-		if delta != 0:
-			rewards[WIN_DELTA_KEYS[key]] = delta
-	return rewards
+	return _nonzero(MetaRules.deltas_for(stage, "win"))
 
 
-## The workbook's column names, and what the player calls them. Renamed
-## 2026-09-22: win_delta_kanban/win_delta_kaban became win_delta_reputation/
-## win_delta_yen in stages.json.
-const WIN_DELTA_KEYS := {
-	"win_delta_jiban": "Constituency support",
-	"win_delta_reputation": "Reputation",
-	"win_delta_yen": "Funds",
-	"win_delta_party_support": "Party support",
-}
+## What losing this stage does to the meta-variables, as {name: delta} — the
+## same shape as win_rewards(), from the loss_delta_* columns. Before
+## 2026-09-27 nothing read these at all: every stage's penalties sat in the
+## data and a loss simply cost nothing.
+static func loss_penalties(stage: Dictionary) -> Dictionary:
+	return _nonzero(MetaRules.deltas_for(stage, "loss"))
+
+
+static func _nonzero(deltas: Dictionary) -> Dictionary:
+	var kept := {}
+	for name: String in deltas.keys():
+		if int(deltas[name]) != 0:
+			kept[name] = int(deltas[name])
+	return kept
 
 
 ## True where a stage's rewards have not been decided yet.

@@ -793,23 +793,26 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	if stage.is_empty():
 		return
 
-	# Losing a stage earns nothing. A score the player reached on the way to
-	# losing still is not a result.
-	# 2026-09-22 workbook: xp_reward was renamed win_delta_xp, alongside the
-	# other stage win_delta_* columns MetaRules.apply_win_deltas already reads.
-	if outcome == LevelRunner.WON:
-		var reward_stage := stage
+	# A win pays the stage's win_delta_* columns; a loss charges its
+	# loss_delta_* columns (2026-09-27 — before this a loss cost nothing,
+	# though every stage's penalties were already in the workbook).
+	# 2026-09-22 workbook: xp_reward was renamed win_delta_xp.
+	if outcome == LevelRunner.WON or outcome == LevelRunner.LOST:
+		var side := "win" if outcome == LevelRunner.WON else "loss"
+		var paid_stage := stage
 		# Funding Freeze (M32) — party support at or below the Balance tab's
 		# own threshold. Zeroed at the source rather than undone afterward,
-		# so this is the one and only place Funds income can be frozen; XP
-		# and every other win delta are untouched.
-		if "M32" in MetaRules.party_support_modifiers(int(meta.get("Party support", 0)), DataDB.balance):
-			reward_stage = stage.duplicate(true)
-			reward_stage["win_delta_yen"] = 0
-		var won := MetaRules.apply_win_deltas(meta, reward_stage, DataDB.sanban)
-		meta = won["meta"]
-		_record_meta_change(won["applied"])
-		last_xp_gained = MetaRules.stage_delta(stage, "win_delta_xp")
+		# so this is the one and only place Funds income can be frozen. Only
+		# INCOME freezes: a Funds penalty for losing still lands.
+		if "M32" in MetaRules.party_support_modifiers(int(meta.get("Party support", 0)), DataDB.balance) \
+				and MetaRules.stage_delta(stage, side + "_delta_yen") > 0:
+			paid_stage = stage.duplicate(true)
+			paid_stage[side + "_delta_yen"] = 0
+		var moved := (MetaRules.apply_win_deltas(meta, paid_stage, DataDB.sanban) if side == "win"
+			else MetaRules.apply_loss_deltas(meta, paid_stage, DataDB.sanban))
+		meta = moved["meta"]
+		_record_meta_change(moved["applied"])
+		last_xp_gained = MetaRules.stage_delta(stage, side + "_delta_xp")
 		_move_xp(last_xp_gained)
 
 	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)

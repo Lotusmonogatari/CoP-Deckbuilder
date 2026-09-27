@@ -1110,18 +1110,33 @@ func _show_briefing() -> void:
 			for line: String in LevelRunner.variable_rewards(stage, Text.phrase()):
 				rows.append(UiKit.line(line, "SmallLabel"))
 
+		# What losing it costs, from the stage's own loss_delta_* columns, so
+		# the player knows what they are risking before they go in.
+		var if_lost := _loss_line(stage)
+		if not if_lost.is_empty():
+			rows.append(UiKit.line(if_lost, "SmallLabel"))
+
 	if not anything_set:
 		rows.append(UiKit.line(""))
 		rows.append(UiKit.line(Text.say("reward.nothing_set")))
 
-	# Losing is the same everywhere for now, and saying so is worth a line:
-	# the player should know what they are risking, which is the afternoon.
-	rows.append(UiKit.line(""))
-	rows.append(UiKit.line("Lose a stage and you earn nothing from it. "
-		+ "Nothing else is taken off you.", "SmallLabel"))
-
 	_briefing_panel.open(str(_chosen_level.get("level_id", "Before you go in")),
 		rows, "Go in")
+
+
+## "If you lose: Party support -2, Reputation -1, 1 XP" — or "" for a stage
+## whose loss columns are all blank.
+func _loss_line(stage: Dictionary) -> String:
+	var parts: Array[String] = []
+	var penalties := LevelRunner.loss_penalties(stage)
+	for name: String in penalties.keys():
+		parts.append(Text.say("reward.delta", {"name": name, "amount": "%+d" % int(penalties[name])}))
+	var xp := MetaRules.stage_delta(stage, "loss_delta_xp")
+	if xp > 0:
+		parts.append(Text.say("outcome.xp", {"count": xp}))
+	if parts.is_empty():
+		return ""
+	return Text.say("reward.if_lost", {"changes": ", ".join(parts)})
 
 
 ## True unless the Stages tab's "Reveal In Briefing" column is explicitly

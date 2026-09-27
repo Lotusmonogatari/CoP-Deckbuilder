@@ -104,10 +104,20 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 	var state := engine.state
 	var lines: Array[String] = [state.outcome_reason]
 
-	if state.outcome == "loss" or not GameState.is_in_level():
+	if not GameState.is_in_level():
 		return "\n".join(lines)
 
 	var score := state.player_score()
+
+	# A loss says what it cost, from the stage's own loss_delta_* columns —
+	# the same numbers GameState charges when this panel closes (2026-09-27:
+	# before this a loss said nothing, and charged nothing either).
+	if state.outcome == "loss":
+		var cost := _what_it_was_worth(stage, score, "loss")
+		if not cost.is_empty():
+			lines.append("")
+			lines.append(", ".join(cost) + ".")
+		return "\n".join(lines)
 
 	# Only where a later stage actually draws on this one. Every stage has a
 	# score; most of them are worth nothing to anybody, and saying otherwise
@@ -150,11 +160,13 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 ## this panel is closed — so the numbers are asked for rather than observed.
 ## Both halves, in the order they are applied, and totalled so a variable
 ## moved twice reports once.
-func _what_it_was_worth(stage: Dictionary, score: int) -> Array[String]:
+func _what_it_was_worth(stage: Dictionary, score: int, side: String = "win") -> Array[String]:
 	var moved := {}
+	var flat := (MetaRules.apply_win_deltas(GameState.meta, stage, DataDB.sanban) if side == "win"
+		else MetaRules.apply_loss_deltas(GameState.meta, stage, DataDB.sanban))
 
 	for half: Dictionary in [
-		MetaRules.apply_win_deltas(GameState.meta, stage, DataDB.sanban)["applied"],
+		flat["applied"],
 		MetaRules.apply_score_effects(GameState.meta, stage, score, DataDB.sanban)["applied"],
 	]:
 		for name: String in half.keys():
@@ -166,7 +178,7 @@ func _what_it_was_worth(stage: Dictionary, score: int) -> Array[String]:
 			changes.append(Text.say("reward.delta",
 				{"name": name, "amount": "%+d" % int(moved[name])}))
 
-	var xp := MetaRules.stage_delta(stage, "win_delta_xp")
+	var xp := MetaRules.stage_delta(stage, side + "_delta_xp")
 	if xp > 0:
 		changes.append(Text.say("outcome.xp", {"count": xp}))
 	return changes

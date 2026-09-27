@@ -2035,5 +2035,75 @@
     "english": "It fails — {yes} for, {no} against, {abstain} abstaining.",
     "placeholders": "yes, no, abstain",
     "notes": null
+  },
+  {
+    "key": "reward.if_lost",
+    "where": "Office — level briefing, per stage",
+    "english": "If you lose: {changes}",
+    "placeholders": "changes",
+    "notes": "The stage's own loss penalties, from its Loss Δ columns."
+  },
+  {
+    "key": "outcome.reason.conference_short",
+    "where": "Battle — outcome panel",
+    "english": "{stage} closed on {count} {unit}, short of the {threshold} it needed.",
+    "placeholders": "stage, count, unit, threshold",
+    "notes": "Press conference: all questions answered, below its Win Threshold."
+  },
+  {
+    "key": "outcome.reason.conference_reached",
+    "where": "Battle — outcome panel",
+    "english": "{stage} closed on {count} {unit}, past the {threshold} it needed.",
+    "placeholders": "stage, count, unit, threshold",
+    "notes": "Press conference: all questions answered, at or above its Win Threshold."
+  },
+  {
+    "key": "office.rhetoric_training",
+    "where": "Office — management menu",
+    "english": "Rhetoric Training",
+    "placeholders": null,
+    "notes": "Where new cards come from."
+  },
+  {
+    "key": "rhetoric.blurb",
+    "where": "Office — Rhetoric Training",
+    "english": "Book a session with a speaking coach. Each session shows you one card you could learn: learn it for the price, or pass and keep what you have.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "rhetoric.session",
+    "where": "Office — Rhetoric Training, one row",
+    "english": "Tier {tier} session  —  {price}",
+    "placeholders": "tier, price",
+    "notes": null
+  },
+  {
+    "key": "rhetoric.see_card",
+    "where": "Office — Rhetoric Training, button",
+    "english": "See a card",
+    "placeholders": null,
+    "notes": "Shows a random card of that tier. Nothing is paid yet."
+  },
+  {
+    "key": "rhetoric.offer_title",
+    "where": "Office — Rhetoric Training, card pop-up",
+    "english": "Your coach suggests",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "rhetoric.learn",
+    "where": "Office — Rhetoric Training, card pop-up",
+    "english": "Learn it ({price})",
+    "placeholders": "price",
+    "notes": "Pays and adds the card to your collection."
+  },
+  {
+    "key": "rhetoric.pass",
+    "where": "Office — Rhetoric Training, card pop-up",
+    "english": "Pass",
+    "placeholders": null,
+    "notes": "Closes without paying."
   }
 ]

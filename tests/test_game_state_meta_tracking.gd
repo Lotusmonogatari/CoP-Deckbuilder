@@ -291,3 +291,20 @@ func test_funding_freeze_reports_leaving_once_party_support_recovers() -> void:
 	GameState.finish_stage(LevelRunner.WON)
 
 	assert_false(GameState.funding_frozen_active)
+
+
+# ---------------------------------------------------------------------------
+# Loss penalties (2026-09-27: before this a loss cost nothing at all)
+# ---------------------------------------------------------------------------
+
+func test_a_lost_stage_charges_its_loss_columns_and_pays_its_loss_xp() -> void:
+	_begin_two_stage_level(50, 50)
+	GameState.level_runner.stages[0]["loss_delta_party_support"] = -2
+	GameState.level_runner.stages[0]["loss_delta_xp"] = 5
+	GameState.level_runner.stages[0]["win_delta_party_support"] = 9
+	var xp_before := GameState.xp
+	GameState.finish_stage(LevelRunner.LOST)
+	assert_eq(int(GameState.meta["Party support"]), 48, "the loss column, not the win column")
+	assert_eq(GameState.xp - xp_before, 5)
+	assert_eq(GameState.last_xp_gained, 5)
+	GameState.xp = xp_before
