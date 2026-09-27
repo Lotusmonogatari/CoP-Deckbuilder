@@ -11,38 +11,39 @@ content prompt in this project (`design/CONTENT_PROMPT.md`).
 ## What you (Cameron) provide
 
 Per bill:
-- A **Bill ID** (BIxx — its own namespace, separate from Level ID: 2026-09-26,
-  reusing LVxx as the bill's own key conflated "the bill" with "the level")
-  and which **level** it belongs to (an LVxx that either already has an ST23
-  slot, or will get one)
+- A **Bill ID** (BIxx — the next free one; 30 exist today, BI01-30)
 - A short **bill name** and a plain-English **description** (this becomes
   the scroll's own text)
 - Per party: a **position** (Support / Oppose / Neutral — or a scale, e.g.
   −2..+2) and a **salience** (how much that party cares — High/Medium/Low,
   or a number)
+- Which **level** plays it, and where in that level's own room order the
+  vote falls — this is NOT a column on either Floor Vote tab (see below)
 
-That's the raw input. Everything below is how it becomes the two tabs'
-actual rows.
+That's the raw input. Everything below is how it becomes the workbook rows.
 
 ---
 
-## Quick reference: the two tabs
+## Quick reference: the two tabs, and how a level finds its bill
 
 | Tab | Key | Columns |
 |---|---|---|
-| **Floor Vote Bills** | Bill ID | Level ID (which level plays it), Bill Name (EN), Bill Description (EN), Favorability Delta (Supportive), Favorability Delta (Opposed), Favorability Delta (Neutral) |
+| **Floor Vote Bills** | Bill ID | Bill Name (EN), Bill Description (EN), Favorability Delta (Supportive), Favorability Delta (Opposed), Favorability Delta (Neutral) |
 | **Floor Vote Party Positions** | Bill ID + Party ID | Votes Yes, Votes No, Votes Abstain, Disposition, Cue Text |
 
-One Bills row per bill; six Party Positions rows per bill, keyed by that
-same Bill ID (Butsutou, Yezo Heritage Party, Frontier Party, Five Point
-Independents, Keizaijiyuutou, Country Initiative — `data/parties.json`'s
-PT01-06). A level plays at most one bill (two Bills rows naming the same
-Level ID is an export error) — a level needs an ST23 slot in its own
-`stage_1..stage_10` AND a Bills row naming it to actually play — either
-alone does nothing (the exporter errors on a Vote-mode slot with no bill,
-and warns on a bill with nowhere to be voted on). `DataDB.get_floor_vote
-(level_id)` is how the game finds a level's own bill at runtime;
-`DataDB.get_bill(bill_id)` looks one up directly.
+Neither tab names a level. **The level names the bill instead**: put the
+Bill ID directly in one of that level's own "Stage ID for Part N" cells on
+the **Levels** tab, exactly where you'd otherwise put an "STxx" — e.g. a
+level whose Part 5 reads `BI01` plays National Assembly Floor Voting there,
+on that specific bill (2026-09-27, Cameron's own convention — see
+CLAUDE.md §7.7). One Bills row per bill; six Party Positions rows per bill,
+keyed by that same Bill ID (Butsutou, Yezo Heritage Party, Frontier Party,
+Five Point Independents, Keizaijiyuutou, Country Initiative —
+`data/parties.json`'s PT01-06). A bill named by two different levels, or a
+level naming two different bills, is an export error — `DataDB.
+get_floor_vote(level_id)` is how the game finds a level's own bill at
+runtime (it scans that level's own stage slots); `DataDB.get_bill(bill_id)`
+looks one up directly by its own ID.
 
 ---
 
@@ -118,8 +119,9 @@ line reused everywhere. Still:
 ## The batch block
 
 ```
-Bill: <Bill ID, e.g. BI01> for <Level ID> — <bill name>, <one-line
-  description of what it does>
+Bill: <Bill ID, e.g. BI31> — <bill name>, <one-line description of what it
+  does>
+Level: <Level ID this plays in, and which Part number>
 Overall salience: <High | Ordinary | Low-stakes>
 
 Party positions (position, salience):
@@ -132,17 +134,18 @@ Party positions (position, salience):
 ```
 
 Hand me (or another LLM) this block filled in, and the output is one Floor
-Vote Bills row plus six Floor Vote Party Positions rows, ready to paste into
-the workbook — run `python3 tools/export_data.py` afterward, same as any
-other content change.
+Vote Bills row, six Floor Vote Party Positions rows, and which cell on the
+Levels tab to put the Bill ID in — ready to paste into the workbook. Run
+`python3 tools/export_data.py` afterward, same as any other content change.
 
 ---
 
 ## Worked example
 
 ```
-Bill: BI01 for LV10 — Hometown Markets Protection Act, tariffs on imported
-  goods competing with local producers
+Bill: BI31 — Hometown Markets Protection Act, tariffs on imported goods
+  competing with local producers
+Level: LV61, Part 5
 Overall salience: High-stakes
 
 Party positions:
@@ -156,11 +159,13 @@ Party positions:
 
 **Floor Vote Bills**:
 
-| Bill ID | Level ID | Bill Name | Bill Description | Fav. Δ Supportive | Fav. Δ Opposed | Fav. Δ Neutral |
-|---|---|---|---|---|---|---|
-| BI01 | LV10 | Hometown Markets Protection Act | Tariffs on imported goods competing with local producers. | +5 | −5 | 0 |
+| Bill ID | Bill Name | Bill Description | Fav. Δ Supportive | Fav. Δ Opposed | Fav. Δ Neutral |
+|---|---|---|---|---|---|
+| BI31 | Hometown Markets Protection Act | Tariffs on imported goods competing with local producers. | +5 | −5 | 0 |
 
-**Floor Vote Party Positions** (BI01):
+**Levels tab**: LV61's own "Stage ID for Part 5" cell = `BI31`.
+
+**Floor Vote Party Positions** (BI31):
 
 | Party | Yes | No | Abstain | Disposition | Cue Text |
 |---|---|---|---|---|---|

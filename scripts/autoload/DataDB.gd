@@ -134,11 +134,13 @@ var parties: Array = []
 
 ## One entry per Floor Vote bill, by bill_id (BIxx — its own namespace,
 ## separate from level_id: 2026-09-26, Cameron) — the bill's own name and
-## scroll text, its per-disposition favorability deltas, which level it
-## belongs to ("level_id"), and a "positions" list (one row per party: its
-## baked-in Yes/No/Abstain split, disposition, and cue line). Callers ask
-## for a level's bill by level_id, not bill_id — see get_floor_vote() and
-## tools/export_data.py's fold_floor_votes().
+## scroll text, its per-disposition favorability deltas, and a "positions"
+## list (one row per party: its baked-in Yes/No/Abstain split, disposition,
+## and cue line). No level_id here: a level names its own bill directly in
+## its stage sequence (a "BIxx" value, 2026-09-27 pull), so get_floor_vote()
+## finds a level's bill by scanning that level's own row, not the other way
+## around — see its own doc comment and tools/export_data.py's
+## fold_floor_votes().
 var floor_votes: Dictionary = {}
 
 ## Where art lives and what it is called (data/art.json). ArtLoader reads it.
@@ -212,7 +214,6 @@ var _staff_by_id: Dictionary = {}
 var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
 var _parties_by_name: Dictionary = {}   ## party's own "name" -> its row
 var _parties_by_id: Dictionary = {}     ## "PT01" etc -> its row
-var _floor_vote_by_level: Dictionary = {}   ## level_id -> its own bill's row in floor_votes
 
 ## Problems found at startup. Errors mean something is genuinely broken;
 ## warnings mean a known gap that the game can still run around.
@@ -579,12 +580,6 @@ func _build_lookups() -> void:
 	_parties_by_name = _index(parties, "name")
 	_parties_by_id = _index(parties, "party_id")
 
-	_floor_vote_by_level.clear()
-	for bill: Dictionary in floor_votes.values():
-		var level_id: Variant = bill.get("level_id")
-		if level_id != null:
-			_floor_vote_by_level[level_id] = bill
-
 	_affinity.clear()
 	for row: Dictionary in affinity:
 		_affinity[row.get("element", "")] = row.get("multipliers", {})
@@ -699,10 +694,21 @@ func get_party_by_id(party_id: String) -> Dictionary:
 ## don't. { "bill_id", "level_id", "bill_name", "bill_description",
 ## "favorability_delta_supportive/opposed/neutral", "positions": [...] }.
 ## Looked up by level_id, not bill_id — see get_bill() for the other
-## direction, and floor_votes' own doc comment for why the two differ.
+## direction. A level names its own bill directly in its own stage sequence
+## (a "BIxx" value where another slot would hold an "STxx" — the workbook's
+## Levels tab, 2026-09-27 pull), so this scans that level's own row rather
+## than following a link stored on the bill; floor_votes carries no
+## level_id at all any more.
 func get_floor_vote(level_id: String) -> Dictionary:
-	var bill: Variant = _floor_vote_by_level.get(level_id, {})
-	return bill if bill is Dictionary else {}
+	var level := get_level(level_id)
+	for slot in range(1, 11):
+		var raw: Variant = level.get("stage_%d" % slot)
+		if raw == null:
+			continue
+		var value := str(raw).strip_edges()
+		if floor_votes.has(value):
+			return floor_votes[value]
+	return {}
 
 
 ## A bill by its own ID (BIxx), rather than by which level plays it.
@@ -976,10 +982,6 @@ func _validate() -> void:
 
 	for bill_id: String in floor_votes.keys():
 		var bill: Dictionary = floor_votes[bill_id]
-		var level_id: String = str(bill.get("level_id", ""))
-		if not _levels_by_id.has(level_id):
-			errors.append("floor_votes.json: bill %s names level '%s', which is not in levels.json" % [bill_id, level_id])
-			continue
 		for position: Dictionary in (bill.get("positions", []) as Array):
 			var party_id: String = str(position.get("party_id", ""))
 			if not party_ids.has(party_id):
@@ -1024,37 +1026,45 @@ func _validate() -> void:
 	for level: Dictionary in levels:
 		var lid := str(level.get("level_id", "?"))
 		var named_any := false
+		var bills_named: Array = []
 		for slot in range(1, 11):
 			var stage_id: Variant = level.get("stage_%d" % slot)
 			if stage_id == null or str(stage_id).is_empty():
 				continue
 			named_any = true
-			if not stage_ids.has(str(stage_id)):
+			var slot_value := str(stage_id)
+
+			# A "BIxx" value (2026-09-27 pull) is a bill, not a Stage ID — it
+			# always means National Assembly Floor Voting (ST23), played with
+			# that specific bill. Checked against floor_votes.json instead of
+			# the Stages tab.
+			if slot_value.begins_with("BI") and slot_value.substr(2).is_valid_int():
+				bills_named.append(slot_value)
+				if not floor_votes.has(slot_value):
+					errors.append("%s names bill '%s' at slot %d, which is not in floor_votes.json" % [lid, slot_value, slot])
+				continue
+
+			if not stage_ids.has(slot_value):
 				errors.append("%s names stage '%s' at slot %d, which does not exist" % [lid, stage_id, slot])
 				continue
-			if str(get_stage(str(stage_id)).get("mode", "")) == "Non-combat":
+			if str(get_stage(slot_value).get("mode", "")) == "Non-combat":
 				# Office Hours: draws visitors, not opponents — checking
 				# opponents.json here always warned, even once VI01 existed,
 				# because nothing about this stage was ever going to have one.
-				if get_visitors_for_stage(str(stage_id)).is_empty():
+				if get_visitors_for_stage(slot_value).is_empty():
 					warnings.append(
 						("%s's stage '%s' (slot %d) has no eligible visitor in visitors.json, "
 						+ "so it cannot open until level_visitor_overrides.json pins one "
 						+ "or the workbook adds one.") % [lid, stage_id, slot])
-			elif str(get_stage(str(stage_id)).get("mode", "")) == "Vote":
-				# National Assembly Floor Voting (ST23): draws a bill from
-				# floor_votes.json by this level's own ID, not an opponent.
-				if get_floor_vote(lid).is_empty():
-					warnings.append(
-						("%s's stage '%s' (slot %d) has no Floor Vote bill in the "
-						+ "workbook's Floor Vote Bills tab, so it cannot open.") % [lid, stage_id, slot])
-			elif get_opponents_for_stage(str(stage_id)).is_empty():
+			elif get_opponents_for_stage(slot_value).is_empty():
 				warnings.append(
 					("%s's stage '%s' (slot %d) has no eligible opponent in opponents.json, "
 					+ "so it cannot be fought until level_opponent_overrides.json pins one "
 					+ "or the workbook adds one.") % [lid, stage_id, slot])
 		if not named_any:
 			errors.append("%s names no stages at all" % lid)
+		if bills_named.size() > 1:
+			errors.append("%s names more than one bill (%s) — a level plays at most one" % [lid, ", ".join(bills_named)])
 
 	for override_row: Dictionary in level_opponent_overrides:
 		var lid := str(override_row.get("level_id", ""))

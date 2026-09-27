@@ -1,1 +1,1922 @@
-{}
+{
+  "BI01": {
+    "bill_id": "BI01",
+    "bill_name": "Ainu Heritage and Language Act",
+    "bill_description": "Grants Ainu co-official status in willing municipalities, funds language schools, and opens a claims process for ancestral land.",
+    "favorability_delta_supportive": 1,
+    "favorability_delta_opposed": -1,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI01",
+        "party_id": "PT01",
+        "votes_yes": 7,
+        "votes_no": 4,
+        "votes_abstain": 8,
+        "disposition": "Neutral",
+        "cue_text": "Heritage matters, but this needs more thought."
+      },
+      {
+        "bill_id": "BI01",
+        "party_id": "PT02",
+        "votes_yes": 13,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our ancestors' tongue returns to its own land."
+      },
+      {
+        "bill_id": "BI01",
+        "party_id": "PT03",
+        "votes_yes": 10,
+        "votes_no": 17,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Rural towns cannot fund another mandate."
+      },
+      {
+        "bill_id": "BI01",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Our districts never asked for this."
+      },
+      {
+        "bill_id": "BI01",
+        "party_id": "PT05",
+        "votes_yes": 9,
+        "votes_no": 16,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Good intentions, poorly drafted law."
+      },
+      {
+        "bill_id": "BI01",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "One Yezo, one people, one law."
+      }
+    ]
+  },
+  "BI02": {
+    "bill_id": "BI02",
+    "bill_name": "Agricultural Price Stabilization Act",
+    "bill_description": "Guarantees direct payments to rice and dairy farmers whenever market prices fall below a national floor.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI02",
+        "party_id": "PT01",
+        "votes_yes": 18,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Those who feed us deserve stability."
+      },
+      {
+        "bill_id": "BI02",
+        "party_id": "PT02",
+        "votes_yes": 13,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "The land sustains us; we sustain it."
+      },
+      {
+        "bill_id": "BI02",
+        "party_id": "PT03",
+        "votes_yes": 25,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Finally, the farmer comes first!"
+      },
+      {
+        "bill_id": "BI02",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "We'll see what our growers say."
+      },
+      {
+        "bill_id": "BI02",
+        "party_id": "PT05",
+        "votes_yes": 9,
+        "votes_no": 16,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Price floors only postpone the reckoning."
+      },
+      {
+        "bill_id": "BI02",
+        "party_id": "PT06",
+        "votes_yes": 9,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Rural Yezo built this nation."
+      }
+    ]
+  },
+  "BI03": {
+    "bill_id": "BI03",
+    "bill_name": "Special Economic Zones Act",
+    "bill_description": "Creates deregulated investment zones around Sapporo, Tomakomai, and Hakodate with streamlined permits and labor rules.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI03",
+        "party_id": "PT01",
+        "votes_yes": 4,
+        "votes_no": 15,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Loosening rules invites exploitation."
+      },
+      {
+        "bill_id": "BI03",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Sapporo profits, the countryside pays."
+      },
+      {
+        "bill_id": "BI03",
+        "party_id": "PT03",
+        "votes_yes": 11,
+        "votes_no": 7,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Show us what the farm towns get."
+      },
+      {
+        "bill_id": "BI03",
+        "party_id": "PT04",
+        "votes_yes": 1,
+        "votes_no": 2,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Undecided until our towns see details."
+      },
+      {
+        "bill_id": "BI03",
+        "party_id": "PT05",
+        "votes_yes": 23,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Open the doors and let Yezo compete!"
+      },
+      {
+        "bill_id": "BI03",
+        "party_id": "PT06",
+        "votes_yes": 9,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Build factories, build jobs, build now."
+      }
+    ]
+  },
+  "BI04": {
+    "bill_id": "BI04",
+    "bill_name": "Hokkaido Shinkansen Acceleration Act",
+    "bill_description": "Moves up the Sapporo extension timeline and funds freight upgrades between Aomori and Hakodate.",
+    "favorability_delta_supportive": 1,
+    "favorability_delta_opposed": -1,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI04",
+        "party_id": "PT01",
+        "votes_yes": 12,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Rail over roads is the gentler path."
+      },
+      {
+        "bill_id": "BI04",
+        "party_id": "PT02",
+        "votes_yes": 11,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Connect the north without leaving it behind."
+      },
+      {
+        "bill_id": "BI04",
+        "party_id": "PT03",
+        "votes_yes": 25,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Every station stop is a lifeline."
+      },
+      {
+        "bill_id": "BI04",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Hakodate has waited long enough."
+      },
+      {
+        "bill_id": "BI04",
+        "party_id": "PT05",
+        "votes_yes": 20,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Infrastructure that actually pays for itself."
+      },
+      {
+        "bill_id": "BI04",
+        "party_id": "PT06",
+        "votes_yes": 10,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Steel, concrete, and Yezo pride!"
+      }
+    ]
+  },
+  "BI05": {
+    "bill_id": "BI05",
+    "bill_name": "Chishima Coastal Defense Modernization Act",
+    "bill_description": "Funds new patrol vessels and radar stations across the Chishima islands in response to Russian exercises offshore.",
+    "favorability_delta_supportive": 1,
+    "favorability_delta_opposed": -1,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI05",
+        "party_id": "PT01",
+        "votes_yes": 7,
+        "votes_no": 11,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "Weapons invite the very danger they fear."
+      },
+      {
+        "bill_id": "BI05",
+        "party_id": "PT02",
+        "votes_yes": 7,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Chishima needs harbors, not warships."
+      },
+      {
+        "bill_id": "BI05",
+        "party_id": "PT03",
+        "votes_yes": 17,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our fishermen deserve protection at sea."
+      },
+      {
+        "bill_id": "BI05",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Reasonable, if the islands get the contracts."
+      },
+      {
+        "bill_id": "BI05",
+        "party_id": "PT05",
+        "votes_yes": 10,
+        "votes_no": 6,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Security matters; so does the budget."
+      },
+      {
+        "bill_id": "BI05",
+        "party_id": "PT06",
+        "votes_yes": 7,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Moscow must see we will not bend."
+      }
+    ]
+  },
+  "BI06": {
+    "bill_id": "BI06",
+    "bill_name": "Specified Skilled Worker Visa Act",
+    "bill_description": "Creates five-year work visas for foreign workers in agriculture, fisheries, construction, and tourism.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI06",
+        "party_id": "PT01",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 8,
+        "disposition": "Neutral",
+        "cue_text": "Welcome them, but protect them first."
+      },
+      {
+        "bill_id": "BI06",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Train our own youth before importing workers."
+      },
+      {
+        "bill_id": "BI06",
+        "party_id": "PT03",
+        "votes_yes": 25,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our harvests rot without more hands."
+      },
+      {
+        "bill_id": "BI06",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our hotels and boats need workers."
+      },
+      {
+        "bill_id": "BI06",
+        "party_id": "PT05",
+        "votes_yes": 23,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A shrinking nation cannot close its doors."
+      },
+      {
+        "bill_id": "BI06",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Yezo jobs belong to Yezo workers!"
+      }
+    ]
+  },
+  "BI07": {
+    "bill_id": "BI07",
+    "bill_name": "Grid Resilience and Renewable Energy Act",
+    "bill_description": "After the Iburi earthquake blackout, funds grid interconnection and local wind and geothermal generation.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI07",
+        "party_id": "PT01",
+        "votes_yes": 18,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Never again should Yezo go dark."
+      },
+      {
+        "bill_id": "BI07",
+        "party_id": "PT02",
+        "votes_yes": 11,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Clean power, built by local hands."
+      },
+      {
+        "bill_id": "BI07",
+        "party_id": "PT03",
+        "votes_yes": 25,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Farms can't milk cows by candlelight."
+      },
+      {
+        "bill_id": "BI07",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Resilience first; our towns went dark."
+      },
+      {
+        "bill_id": "BI07",
+        "party_id": "PT05",
+        "votes_yes": 9,
+        "votes_no": 16,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Let utilities compete, not ministries plan."
+      },
+      {
+        "bill_id": "BI07",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Another blank check dressed as green policy."
+      }
+    ]
+  },
+  "BI08": {
+    "bill_id": "BI08",
+    "bill_name": "Consumption Tax Rate Act",
+    "bill_description": "Raises the consumption tax from 8% to 10%, with all new revenue earmarked for pensions and elder care.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI08",
+        "party_id": "PT01",
+        "votes_yes": 12,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Caring for elders is a shared duty."
+      },
+      {
+        "bill_id": "BI08",
+        "party_id": "PT02",
+        "votes_yes": 11,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our aging villages need this care."
+      },
+      {
+        "bill_id": "BI08",
+        "party_id": "PT03",
+        "votes_yes": 25,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Painful, but our pensioners come first."
+      },
+      {
+        "bill_id": "BI08",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Fine, if elder care reaches every town."
+      },
+      {
+        "bill_id": "BI08",
+        "party_id": "PT05",
+        "votes_yes": 10,
+        "votes_no": 6,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Reform spending first, then talk taxes."
+      },
+      {
+        "bill_id": "BI08",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Hands off the shopkeeper's register!"
+      }
+    ]
+  },
+  "BI09": {
+    "bill_id": "BI09",
+    "bill_name": "Prefectural Fiscal Devolution Act",
+    "bill_description": "Transfers revenue-raising and budget authority to the Hokkaido, Aomori, and Chishima prefectural assemblies.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI09",
+        "party_id": "PT01",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 8,
+        "disposition": "Neutral",
+        "cue_text": "Local power, yes, but who guards fairness?"
+      },
+      {
+        "bill_id": "BI09",
+        "party_id": "PT02",
+        "votes_yes": 13,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Decisions belong where people actually live."
+      },
+      {
+        "bill_id": "BI09",
+        "party_id": "PT03",
+        "votes_yes": 25,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Sapporo bureaucrats don't know our valleys."
+      },
+      {
+        "bill_id": "BI09",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our towns, our money, our choices."
+      },
+      {
+        "bill_id": "BI09",
+        "party_id": "PT05",
+        "votes_yes": 5,
+        "votes_no": 20,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Three budgets means three times the waste."
+      },
+      {
+        "bill_id": "BI09",
+        "party_id": "PT06",
+        "votes_yes": 3,
+        "votes_no": 4,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "We'll wait to see who really gains."
+      }
+    ]
+  },
+  "BI10": {
+    "bill_id": "BI10",
+    "bill_name": "Candidate Gender Parity Act",
+    "bill_description": "Requires parties to make efforts to field equal numbers of men and women as candidates.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI10",
+        "party_id": "PT01",
+        "votes_yes": 15,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Wisdom has never belonged to one gender."
+      },
+      {
+        "bill_id": "BI10",
+        "party_id": "PT02",
+        "votes_yes": 3,
+        "votes_no": 5,
+        "votes_abstain": 6,
+        "disposition": "Neutral",
+        "cue_text": "Our communities decide that for themseBIes."
+      },
+      {
+        "bill_id": "BI10",
+        "party_id": "PT03",
+        "votes_yes": 17,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Farm women have always carried half."
+      },
+      {
+        "bill_id": "BI10",
+        "party_id": "PT04",
+        "votes_yes": 3,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Fair enough, as long as it's voluntary."
+      },
+      {
+        "bill_id": "BI10",
+        "party_id": "PT05",
+        "votes_yes": 16,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Talent wasted is growth wasted."
+      },
+      {
+        "bill_id": "BI10",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Parties choose candidates, not quotas."
+      }
+    ]
+  },
+  "BI11": {
+    "bill_id": "BI11",
+    "bill_name": "Tsugaru Strait Joint Commission Act",
+    "bill_description": "Establishes a standing Yezo–Japan commission on strait shipping, shared fisheries, and ferry customs.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI11",
+        "party_id": "PT01",
+        "votes_yes": 12,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Good neighbors share their waters."
+      },
+      {
+        "bill_id": "BI11",
+        "party_id": "PT02",
+        "votes_yes": 3,
+        "votes_no": 11,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Tokyo's hand reaches north again."
+      },
+      {
+        "bill_id": "BI11",
+        "party_id": "PT03",
+        "votes_yes": 11,
+        "votes_no": 7,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Fine for Aomori; unclear for us."
+      },
+      {
+        "bill_id": "BI11",
+        "party_id": "PT04",
+        "votes_yes": 3,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Ferries and fish, sensible enough."
+      },
+      {
+        "bill_id": "BI11",
+        "party_id": "PT05",
+        "votes_yes": 5,
+        "votes_no": 20,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Cooperation, yes; creeping reunification, no."
+      },
+      {
+        "bill_id": "BI11",
+        "party_id": "PT06",
+        "votes_yes": 7,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Closer to Japan, stronger together."
+      }
+    ]
+  },
+  "BI12": {
+    "bill_id": "BI12",
+    "bill_name": "Judicial Appointments Commission Act",
+    "bill_description": "Moves Supreme Court nominations from the Cabinet to an independent appointments commission.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI12",
+        "party_id": "PT01",
+        "votes_yes": 7,
+        "votes_no": 4,
+        "votes_abstain": 8,
+        "disposition": "Neutral",
+        "cue_text": "Independence, yes, but accountable to whom?"
+      },
+      {
+        "bill_id": "BI12",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Unelected judges have rarely protected us."
+      },
+      {
+        "bill_id": "BI12",
+        "party_id": "PT03",
+        "votes_yes": 17,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Courts shouldn't answer to the Cabinet."
+      },
+      {
+        "bill_id": "BI12",
+        "party_id": "PT04",
+        "votes_yes": 5,
+        "votes_no": 0,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "No party should own the courts."
+      },
+      {
+        "bill_id": "BI12",
+        "party_id": "PT05",
+        "votes_yes": 20,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Rule of law is Yezo's best asset."
+      },
+      {
+        "bill_id": "BI12",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Judges should answer to the people."
+      }
+    ]
+  },
+  "BI13": {
+    "bill_id": "BI13",
+    "bill_name": "Temple and Shrine Heritage Act",
+    "bill_description": "Provides tax relief and restoration grants for historic temples and shrines.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI13",
+        "party_id": "PT01",
+        "votes_yes": 18,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "These halls hold Yezo's soul."
+      },
+      {
+        "bill_id": "BI13",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Sacred places deserve protection, all of them."
+      },
+      {
+        "bill_id": "BI13",
+        "party_id": "PT03",
+        "votes_yes": 17,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Village temples anchor village life."
+      },
+      {
+        "bill_id": "BI13",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Our temples are fine as they are."
+      },
+      {
+        "bill_id": "BI13",
+        "party_id": "PT05",
+        "votes_yes": 10,
+        "votes_no": 6,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Heritage is worthy; tax breaks are debatable."
+      },
+      {
+        "bill_id": "BI13",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 3,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "Tradition, yes; subsidies, we'll see."
+      }
+    ]
+  },
+  "BI14": {
+    "bill_id": "BI14",
+    "bill_name": "Constituency Development Grants Act",
+    "bill_description": "Gives each Assembly member an annual grant to direct toward projects in their own district.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI14",
+        "party_id": "PT01",
+        "votes_yes": 12,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Small grants reach where ministries don't."
+      },
+      {
+        "bill_id": "BI14",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Money finally reaching the villages."
+      },
+      {
+        "bill_id": "BI14",
+        "party_id": "PT03",
+        "votes_yes": 22,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Every district deserves its fair share."
+      },
+      {
+        "bill_id": "BI14",
+        "party_id": "PT04",
+        "votes_yes": 5,
+        "votes_no": 0,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "This is exactly why we're here!"
+      },
+      {
+        "bill_id": "BI14",
+        "party_id": "PT05",
+        "votes_yes": 16,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Awkward, but our districts will thank us."
+      },
+      {
+        "bill_id": "BI14",
+        "party_id": "PT06",
+        "votes_yes": 7,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Better we spend it than Sapporo does."
+      }
+    ]
+  },
+  "BI15": {
+    "bill_id": "BI15",
+    "bill_name": "Digital Economy Promotion Act",
+    "bill_description": "Offers tax incentives for data centers and cold-climate tech firms, and creates a national digital agency.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI15",
+        "party_id": "PT01",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 8,
+        "disposition": "Neutral",
+        "cue_text": "Progress, perhaps, but at whose cost?"
+      },
+      {
+        "bill_id": "BI15",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Servers don't need our land; farms do."
+      },
+      {
+        "bill_id": "BI15",
+        "party_id": "PT03",
+        "votes_yes": 11,
+        "votes_no": 7,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Will any of this reach the valleys?"
+      },
+      {
+        "bill_id": "BI15",
+        "party_id": "PT04",
+        "votes_yes": 1,
+        "votes_no": 2,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Our districts see little in this."
+      },
+      {
+        "bill_id": "BI15",
+        "party_id": "PT05",
+        "votes_yes": 23,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Yezo's future runs on cold air and code."
+      },
+      {
+        "bill_id": "BI15",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Real jobs are in factories, not server farms."
+      }
+    ]
+  },
+  "BI16": {
+    "bill_id": "BI16",
+    "bill_name": "Organized Crime Conspiracy Act",
+    "bill_description": "Criminalizes the planning of serious organized crimes and expands police wiretap authority.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI16",
+        "party_id": "PT01",
+        "votes_yes": 7,
+        "votes_no": 12,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Punishing thoughts is not justice."
+      },
+      {
+        "bill_id": "BI16",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our coasts need protection from smuggling rings."
+      },
+      {
+        "bill_id": "BI16",
+        "party_id": "PT03",
+        "votes_yes": 2,
+        "votes_no": 25,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "This chills every kitchen-table conversation."
+      },
+      {
+        "bill_id": "BI16",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Our constituents fear surveillance, not gangs."
+      },
+      {
+        "bill_id": "BI16",
+        "party_id": "PT05",
+        "votes_yes": 5,
+        "votes_no": 20,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Liberty doesn't survive vague criminal laws."
+      },
+      {
+        "bill_id": "BI16",
+        "party_id": "PT06",
+        "votes_yes": 10,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Criminals should fear Yezo, not the reverse."
+      }
+    ]
+  },
+  "BI17": {
+    "bill_id": "BI17",
+    "bill_name": "Partnership Registration Act",
+    "bill_description": "Creates a national registry granting same-sex couples partnership rights, extending Sapporo's local system nationwide.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI17",
+        "party_id": "PT01",
+        "votes_yes": 15,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Compassion recognizes every loving household."
+      },
+      {
+        "bill_id": "BI17",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 3,
+        "votes_abstain": 6,
+        "disposition": "Neutral",
+        "cue_text": "Families are for communities to define."
+      },
+      {
+        "bill_id": "BI17",
+        "party_id": "PT03",
+        "votes_yes": 22,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Neighbors are neighbors, whoever they love."
+      },
+      {
+        "bill_id": "BI17",
+        "party_id": "PT04",
+        "votes_yes": 3,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Sapporo did this already; it works."
+      },
+      {
+        "bill_id": "BI17",
+        "party_id": "PT05",
+        "votes_yes": 16,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "The state should treat every citizen equally."
+      },
+      {
+        "bill_id": "BI17",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Family means what it has always meant."
+      }
+    ]
+  },
+  "BI18": {
+    "bill_id": "BI18",
+    "bill_name": "National Emergency Powers Act",
+    "bill_description": "After the Iburi earthquake, lets the Prime Minister declare a 30-day national emergency and govern by decree.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI18",
+        "party_id": "PT01",
+        "votes_yes": 7,
+        "votes_no": 12,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Crisis is no excuse to silence the Assembly."
+      },
+      {
+        "bill_id": "BI18",
+        "party_id": "PT02",
+        "votes_yes": 3,
+        "votes_no": 11,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Emergencies are always declared from Sapporo."
+      },
+      {
+        "bill_id": "BI18",
+        "party_id": "PT03",
+        "votes_yes": 10,
+        "votes_no": 17,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Our towns handled the quake without decrees."
+      },
+      {
+        "bill_id": "BI18",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "No one person should hold that power."
+      },
+      {
+        "bill_id": "BI18",
+        "party_id": "PT05",
+        "votes_yes": 23,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "When the lights go out, someone must decide."
+      },
+      {
+        "bill_id": "BI18",
+        "party_id": "PT06",
+        "votes_yes": 10,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A strong nation needs a strong hand."
+      }
+    ]
+  },
+  "BI19": {
+    "bill_id": "BI19",
+    "bill_name": "Yezo–US Security Consultation Agreement",
+    "bill_description": "Commits Yezo to annual defense consultations and joint exercises with the United States, without permanent bases.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI19",
+        "party_id": "PT01",
+        "votes_yes": 7,
+        "votes_no": 12,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Alliances drag small nations into large wars."
+      },
+      {
+        "bill_id": "BI19",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Foreign troops on our land? Never again."
+      },
+      {
+        "bill_id": "BI19",
+        "party_id": "PT03",
+        "votes_yes": 7,
+        "votes_no": 11,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Show us what it means for farmers."
+      },
+      {
+        "bill_id": "BI19",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Washington can wait for our districts' answer."
+      },
+      {
+        "bill_id": "BI19",
+        "party_id": "PT05",
+        "votes_yes": 20,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our freedom depends on reliable friends."
+      },
+      {
+        "bill_id": "BI19",
+        "party_id": "PT06",
+        "votes_yes": 3,
+        "votes_no": 4,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "Yezo defends itself; we'll hear the terms."
+      }
+    ]
+  },
+  "BI20": {
+    "bill_id": "BI20",
+    "bill_name": "Yezo–EU Economic Partnership Agreement",
+    "bill_description": "Cuts tariffs with the European Union on dairy, wine, machinery, and autos.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI20",
+        "party_id": "PT01",
+        "votes_yes": 12,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Europe shares our values on climate."
+      },
+      {
+        "bill_id": "BI20",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Cheap European cheese buries our dairies."
+      },
+      {
+        "bill_id": "BI20",
+        "party_id": "PT03",
+        "votes_yes": 11,
+        "votes_no": 7,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Our dairy farmers need answers first."
+      },
+      {
+        "bill_id": "BI20",
+        "party_id": "PT04",
+        "votes_yes": 1,
+        "votes_no": 2,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Our districts see little in Brussels."
+      },
+      {
+        "bill_id": "BI20",
+        "party_id": "PT05",
+        "votes_yes": 23,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A continent of customers is waiting!"
+      },
+      {
+        "bill_id": "BI20",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Brussels writes rules; Yezo pays."
+      }
+    ]
+  },
+  "BI21": {
+    "bill_id": "BI21",
+    "bill_name": "Strategic Land and Port Screening Act",
+    "bill_description": "Requires government review of foreign purchases of land near ports, water sources, and defense sites.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI21",
+        "party_id": "PT01",
+        "votes_yes": 15,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our watersheds are not for sale."
+      },
+      {
+        "bill_id": "BI21",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Ancestral land must stay in local hands."
+      },
+      {
+        "bill_id": "BI21",
+        "party_id": "PT03",
+        "votes_yes": 22,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Protect the farmland before it's gone."
+      },
+      {
+        "bill_id": "BI21",
+        "party_id": "PT04",
+        "votes_yes": 3,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Our towns deserve a say on buyers."
+      },
+      {
+        "bill_id": "BI21",
+        "party_id": "PT05",
+        "votes_yes": 2,
+        "votes_no": 23,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Scaring investors away helps no one."
+      },
+      {
+        "bill_id": "BI21",
+        "party_id": "PT06",
+        "votes_yes": 10,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Yezo soil belongs to Yezo!"
+      }
+    ]
+  },
+  "BI22": {
+    "bill_id": "BI22",
+    "bill_name": "Inbound Tourism Visa Waiver Act",
+    "bill_description": "Grants visa-free entry to tourists from Korea, Taiwan, and Southeast Asia.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI22",
+        "party_id": "PT01",
+        "votes_yes": 15,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Friendship across Asia begins with open doors."
+      },
+      {
+        "bill_id": "BI22",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Tourists crowd our lands; profits flow elsewhere."
+      },
+      {
+        "bill_id": "BI22",
+        "party_id": "PT03",
+        "votes_yes": 22,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Visitors fill farm stays and hot springs."
+      },
+      {
+        "bill_id": "BI22",
+        "party_id": "PT04",
+        "votes_yes": 3,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Niseko and Hakodate will thank us."
+      },
+      {
+        "bill_id": "BI22",
+        "party_id": "PT05",
+        "votes_yes": 6,
+        "votes_no": 10,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Fine idea; the details need work."
+      },
+      {
+        "bill_id": "BI22",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Secure the borders before opening them."
+      }
+    ]
+  },
+  "BI23": {
+    "bill_id": "BI23",
+    "bill_name": "Chishima Joint Economic Activity Act",
+    "bill_description": "Opens joint fishing and tourism zones with Russia on the disputed southern Chishima islands.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI23",
+        "party_id": "PT01",
+        "votes_yes": 4,
+        "votes_no": 15,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Moscow's hand is never offered freely."
+      },
+      {
+        "bill_id": "BI23",
+        "party_id": "PT02",
+        "votes_yes": 13,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Island families finally reconnect across the water."
+      },
+      {
+        "bill_id": "BI23",
+        "party_id": "PT03",
+        "votes_yes": 11,
+        "votes_no": 7,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Fishing rights first, then we'll talk."
+      },
+      {
+        "bill_id": "BI23",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Chishima towns desperately need this trade."
+      },
+      {
+        "bill_id": "BI23",
+        "party_id": "PT05",
+        "votes_yes": 5,
+        "votes_no": 20,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Investing under Russian law is reckless."
+      },
+      {
+        "bill_id": "BI23",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Not one inch of Chishima for Moscow."
+      }
+    ]
+  },
+  "BI24": {
+    "bill_id": "BI24",
+    "bill_name": "Tomari Nuclear Restart Act",
+    "bill_description": "Authorizes the restart of the Tomari nuclear plant, shut since 2011, to prevent another blackout.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI24",
+        "party_id": "PT01",
+        "votes_yes": 1,
+        "votes_no": 18,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "The earth shook; do not tempt it."
+      },
+      {
+        "bill_id": "BI24",
+        "party_id": "PT02",
+        "votes_yes": 1,
+        "votes_no": 13,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Our fishing grounds cannot risk a meltdown."
+      },
+      {
+        "bill_id": "BI24",
+        "party_id": "PT03",
+        "votes_yes": 7,
+        "votes_no": 11,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Reliable power matters, but so do fields."
+      },
+      {
+        "bill_id": "BI24",
+        "party_id": "PT04",
+        "votes_yes": 1,
+        "votes_no": 2,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Our towns are divided on Tomari."
+      },
+      {
+        "bill_id": "BI24",
+        "party_id": "PT05",
+        "votes_yes": 20,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Industry cannot run on hope."
+      },
+      {
+        "bill_id": "BI24",
+        "party_id": "PT06",
+        "votes_yes": 10,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Power the factories, power the nation!"
+      }
+    ]
+  },
+  "BI25": {
+    "bill_id": "BI25",
+    "bill_name": "Integrated Resort Act",
+    "bill_description": "Licenses a single integrated casino resort, with Tomakomai the leading candidate site.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI25",
+        "party_id": "PT01",
+        "votes_yes": 0,
+        "votes_no": 19,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Gambling addiction is a buffet on which suffering feeds."
+      },
+      {
+        "bill_id": "BI25",
+        "party_id": "PT02",
+        "votes_yes": 8,
+        "votes_no": 8,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "The Tomakomai proposal might work."
+      },
+      {
+        "bill_id": "BI25",
+        "party_id": "PT03",
+        "votes_yes": 7,
+        "votes_no": 11,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Tomakomai may gain but the Inaka won't."
+      },
+      {
+        "bill_id": "BI25",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 0,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Jobs and tourists; Tomakomai needs both."
+      },
+      {
+        "bill_id": "BI25",
+        "party_id": "PT05",
+        "votes_yes": 25,
+        "votes_no": 0,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A world-class resort puts Yezo on the map."
+      },
+      {
+        "bill_id": "BI25",
+        "party_id": "PT06",
+        "votes_yes": 8,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "We can take foreign cash and keep it here."
+      }
+    ]
+  },
+  "BI26": {
+    "bill_id": "BI26",
+    "bill_name": "Civil Service Merit Act",
+    "bill_description": "Requires competitive exams for all public-sector hiring and bans member referrals for government posts.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI26",
+        "party_id": "PT01",
+        "votes_yes": 7,
+        "votes_no": 12,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Exams can't measure a caring heart."
+      },
+      {
+        "bill_id": "BI26",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Tests favor Sapporo graduates, not our youth."
+      },
+      {
+        "bill_id": "BI26",
+        "party_id": "PT03",
+        "votes_yes": 5,
+        "votes_no": 22,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Local knowledge outranks any exam score."
+      },
+      {
+        "bill_id": "BI26",
+        "party_id": "PT04",
+        "votes_yes": 0,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "This strips our towns of their voice!"
+      },
+      {
+        "bill_id": "BI26",
+        "party_id": "PT05",
+        "votes_yes": 2,
+        "votes_no": 23,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Right goal, clumsy and costly method."
+      },
+      {
+        "bill_id": "BI26",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "More bureaucrats grading bureaucrats. No."
+      }
+    ]
+  },
+  "BI27": {
+    "bill_id": "BI27",
+    "bill_name": "Regional Minimum Wage Act",
+    "bill_description": "Raises the minimum wage and sets a single rate across Hokkaido, Aomori, and Chishima.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI27",
+        "party_id": "PT01",
+        "votes_yes": 15,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A day's work deserves a dignified wage."
+      },
+      {
+        "bill_id": "BI27",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Aomori workers deserve Sapporo's wages."
+      },
+      {
+        "bill_id": "BI27",
+        "party_id": "PT03",
+        "votes_yes": 7,
+        "votes_no": 11,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Good for workers, hard on small farms."
+      },
+      {
+        "bill_id": "BI27",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Our shopkeepers and workers disagree."
+      },
+      {
+        "bill_id": "BI27",
+        "party_id": "PT05",
+        "votes_yes": 2,
+        "votes_no": 23,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Price workers out, and jobs disappear."
+      },
+      {
+        "bill_id": "BI27",
+        "party_id": "PT06",
+        "votes_yes": 2,
+        "votes_no": 9,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Small businesses will close their doors."
+      }
+    ]
+  },
+  "BI28": {
+    "bill_id": "BI28",
+    "bill_name": "Independent Election Commission Act",
+    "bill_description": "Creates a nonpartisan commission to draw districts and enforce campaign finance rules.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI28",
+        "party_id": "PT01",
+        "votes_yes": 7,
+        "votes_no": 4,
+        "votes_abstain": 8,
+        "disposition": "Neutral",
+        "cue_text": "Fair elections, yes; another agency, perhaps."
+      },
+      {
+        "bill_id": "BI28",
+        "party_id": "PT02",
+        "votes_yes": 3,
+        "votes_no": 5,
+        "votes_abstain": 6,
+        "disposition": "Neutral",
+        "cue_text": "Who draws the lines matters to us."
+      },
+      {
+        "bill_id": "BI28",
+        "party_id": "PT03",
+        "votes_yes": 17,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Citizens should choose us, not maps."
+      },
+      {
+        "bill_id": "BI28",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Our districts work fine as drawn."
+      },
+      {
+        "bill_id": "BI28",
+        "party_id": "PT05",
+        "votes_yes": 10,
+        "votes_no": 6,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Worthy aim; show us the budget."
+      },
+      {
+        "bill_id": "BI28",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Unelected referees for elected leaders? No."
+      }
+    ]
+  },
+  "BI29": {
+    "bill_id": "BI29",
+    "bill_name": "Moral Education Curriculum Act",
+    "bill_description": "Makes graded ethics classes compulsory in schools, covering filial duty, civic virtue, and national heritage.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI29",
+        "party_id": "PT01",
+        "votes_yes": 18,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Children must learn kindness and reverence."
+      },
+      {
+        "bill_id": "BI29",
+        "party_id": "PT02",
+        "votes_yes": 13,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Let our elders' teachings reach classrooms."
+      },
+      {
+        "bill_id": "BI29",
+        "party_id": "PT03",
+        "votes_yes": 17,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A common foundation to unite us all could work."
+      },
+      {
+        "bill_id": "BI29",
+        "party_id": "PT04",
+        "votes_yes": 1,
+        "votes_no": 2,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Leave curriculum to our local boards."
+      },
+      {
+        "bill_id": "BI29",
+        "party_id": "PT05",
+        "votes_yes": 4,
+        "votes_no": 16,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "This Prime Minister dictating ethics? Vote no."
+      },
+      {
+        "bill_id": "BI29",
+        "party_id": "PT06",
+        "votes_yes": 10,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Pride and discipline, taught from childhood."
+      }
+    ]
+  },
+  "BI30": {
+    "bill_id": "BI30",
+    "bill_name": "Foreign Resident Local Suffrage Act",
+    "bill_description": "Lets long-term permanent residents vote in municipal elections.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "positions": [
+      {
+        "bill_id": "BI30",
+        "party_id": "PT01",
+        "votes_yes": 12,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Neighbors who pay in should have a voice."
+      },
+      {
+        "bill_id": "BI30",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 3,
+        "votes_abstain": 6,
+        "disposition": "Neutral",
+        "cue_text": "Our villages must weigh this carefully."
+      },
+      {
+        "bill_id": "BI30",
+        "party_id": "PT03",
+        "votes_yes": 7,
+        "votes_no": 11,
+        "votes_abstain": 9,
+        "disposition": "Opposed",
+        "cue_text": "The Inaka needs to prioritize long-rooted residents."
+      },
+      {
+        "bill_id": "BI30",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Neutral",
+        "cue_text": "Every resident of our towns deserves a voice."
+      },
+      {
+        "bill_id": "BI30",
+        "party_id": "PT05",
+        "votes_yes": 0,
+        "votes_no": 16,
+        "votes_abstain": 9,
+        "disposition": "Opposed",
+        "cue_text": "Residency alone is not fully investing one's future here."
+      },
+      {
+        "bill_id": "BI30",
+        "party_id": "PT06",
+        "votes_yes": 0,
+        "votes_no": 11,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Only citizens decide Yezo's future!"
+      }
+    ]
+  }
+}

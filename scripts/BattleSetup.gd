@@ -84,6 +84,13 @@ static func expand_level(level: Dictionary) -> Dictionary:
 	return expanded
 
 
+## True for a "BIxx" value — a bill, not a Stage ID. A level's own stage
+## sequence can hold either kind of thing in any slot (2026-09-27 pull);
+## this is the one place both this file and DataDB.gd tell them apart.
+static func _is_bill_id(value: String) -> bool:
+	return value.begins_with("BI") and value.length() > 2 and value.substr(2).is_valid_int()
+
+
 ## Enriches a bare stages.json row into a battle/visitor-ready stage dict —
 ## opponents, or a drawn visitor pool, plus
 ## questions_count — exactly what expand_level()'s own per-slot loop needs,
@@ -96,7 +103,13 @@ static func expand_level(level: Dictionary) -> Dictionary:
 ## the same failure expand_level() always tolerated for a bad levels.json
 ## row.
 static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) -> Dictionary:
-	var stage := DataDB.get_stage(stage_id)
+	# A "BIxx" value (2026-09-27 pull) is a bill, not a Stage ID — a level
+	# names its own Floor Vote by naming the bill directly, the same slot
+	# series every other room uses. It always means ST23; the bill itself is
+	# looked up by level_id below, in the "Vote" branch.
+	var real_stage_id := "ST23" if _is_bill_id(stage_id) else stage_id
+
+	var stage := DataDB.get_stage(real_stage_id)
 	if stage.is_empty():
 		push_warning("BattleSetup: %s names stage '%s', which does not exist." % [level_id, stage_id])
 		return {}

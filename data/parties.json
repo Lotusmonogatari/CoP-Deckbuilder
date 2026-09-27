@@ -5,7 +5,7 @@
     "r": 255,
     "g": 140,
     "b": 0,
-    "leader_opp_id": null,
+    "leader_opp_id": "OP91",
     "seats": 19
   },
   {
@@ -14,7 +14,7 @@
     "r": 0,
     "g": 255,
     "b": 255,
-    "leader_opp_id": null,
+    "leader_opp_id": "OP10",
     "seats": 14
   },
   {
@@ -23,7 +23,7 @@
     "r": 0,
     "g": 128,
     "b": 0,
-    "leader_opp_id": null,
+    "leader_opp_id": "OP27",
     "seats": 27
   },
   {
@@ -32,7 +32,7 @@
     "r": 128,
     "g": 0,
     "b": 255,
-    "leader_opp_id": null,
+    "leader_opp_id": "OP80",
     "seats": 5
   },
   {
@@ -41,7 +41,7 @@
     "r": 255,
     "g": 0,
     "b": 0,
-    "leader_opp_id": null,
+    "leader_opp_id": "OP83",
     "seats": 25
   },
   {
@@ -50,7 +50,7 @@
     "r": 150,
     "g": 75,
     "b": 0,
-    "leader_opp_id": null,
+    "leader_opp_id": "OP67",
     "seats": 11
   }
 ]

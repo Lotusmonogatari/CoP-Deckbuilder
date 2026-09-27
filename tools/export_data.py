@@ -536,21 +536,21 @@ SHEETS = {
     # bill's own name, its scroll text, and the favorability swing each
     # disposition earns once the vote resolves. Bill ID (BIxx) is its own
     # namespace, separate from Level ID (2026-09-26, Cameron — reusing LVxx
-    # as the bill's own key conflated "the bill" with "the level", and nothing
-    # stops a level from someday reusing a bill or a bill outliving the level
-    # it was written for). Level ID here is the ordinary reverse link a level
-    # follows to find its own bill — see fold_floor_votes() and
-    # DataDB.get_floor_vote(). Most levels have none; export_data.py never
-    # requires ST23 to appear anywhere just because a bill row exists (and
-    # vice versa), nor a bill to exist just because a level has an ST23 slot
-    # — see the cross-check below.
+    # as the bill's own key conflated "the bill" with "the level").
+    #
+    # A level names its own bill directly in one of its "Stage ID for Part N"
+    # cells — a BIxx value there stands in for playing ST23 with that bill,
+    # the same slot series every other room uses (2026-09-27 pull: Cameron's
+    # own levels put "BI01" where another row would put "ST05"). There is no
+    # Level ID column here any more; the link runs level -> bill, not bill ->
+    # level, resolved by BattleSetup.build_stage_for_slot() and cross-checked
+    # below rather than in DataDB (see get_floor_vote()'s own comment).
     "Floor Vote Bills": {
         "out": "floor_vote_bills_raw.json",
         "key": "bill_id",
         "id_pattern": r"^BI\d+$",
         "columns": [
             ("Bill ID", "bill_id", "id"),
-            ("Level ID", "level_id", "str"),
             ("Bill Name (EN)", "bill_name", "str"),
             ("Bill Description (EN)", "bill_description", "str"),
             ("Favorability Delta (Supportive)", "favorability_delta_supportive", "int"),
@@ -888,6 +888,7 @@ NOT_EXPORTED = {
     "Tone Guide": "writing guidance for the cues, for Cameron not the game",
     "CardStage": "a derived view — the engine recomputes this from cards + affinity",
     "Assets": "art production tracker, not game data",
+    "Vote Tally & Swing": "a derived check — the engine computes the same totals from Floor Vote Party Positions at runtime",
 }
 
 
@@ -1276,6 +1277,7 @@ def validate(data, report):
     level_ids = ids_from(data["levels"], "level_id")
     staff_ids = ids_from(data["staff"], "staff_id")
     party_ids = ids_from(data.get("parties", []), "party_id")
+    bill_ids = set(data.get("floor_votes", {}).keys())
     party_names = {r["name"] for r in data.get("parties", []) if r.get("name")}
     # The Balance tab's XP-tier sub-table is gone from this workbook pull, so
     # this is always empty for now, and the card-tier check below is skipped.
@@ -1501,18 +1503,12 @@ def validate(data, report):
         )
 
     # --- floor votes (ST23, National Assembly Floor Voting) -------------------
-    vote_stage_ids = {s["stage_id"] for s in data["stages"] if s.get("mode") == "Vote"}
+    # A level names its own bill straight in its stage sequence — a "BIxx"
+    # value in a "Stage ID for Part N" cell, same as any other slot would
+    # hold an "STxx" — so which bill a level plays is cross-checked down in
+    # the "levels" section below, where those slots are already read.
     dispositions = {"Supportive", "Opposed", "Neutral"}
-    level_ids_with_bills = set()
     for bill_id, bill in data.get("floor_votes", {}).items():
-        level_id = bill.get("level_id")
-        if level_id is not None:
-            level_ids_with_bills.add(level_id)
-        if level_id is None or level_id not in level_ids:
-            report.error(
-                "Floor Vote Bills", f"{bill_id} names level '{level_id}', which is not in the Levels tab",
-            )
-            continue
         seen_parties = set()
         for position in bill["positions"]:
             party_id = position.get("party_id")
@@ -1541,21 +1537,6 @@ def validate(data, report):
                 "Floor Vote Party Positions",
                 f"{bill_id} has no row for party '{missing}' — that party sits out this vote",
             )
-        level = next((lv for lv in data["levels"] if lv["level_id"] == level_id), {})
-        level_stages = {level.get(f"stage_{n}") for n in range(1, 11)}
-        if not level_stages & vote_stage_ids:
-            report.warn(
-                "Floor Vote Bills",
-                f"{bill_id} is for level '{level_id}', but that level's own stage list has "
-                "no Floor Vote (Vote-mode) stage",
-            )
-    for level in data["levels"]:
-        lid = level["level_id"]
-        level_stages = {level.get(f"stage_{n}") for n in range(1, 11)}
-        if (level_stages & vote_stage_ids) and lid not in level_ids_with_bills:
-            report.error(
-                "levels", f"{lid} places a Floor Vote stage but has no row in Floor Vote Bills",
-            )
 
     # --- visitors ------------------------------------------------------------
     for visitor in data.get("visitors", []):
@@ -1568,18 +1549,38 @@ def validate(data, report):
 
     # --- levels --------------------------------------------------------------
     booster_delta_keys = [f"win_delta_bo{n:02d}" for n in range(1, 17)]
+    bills_used_by = {}   # bill_id -> the level(s) that name it, for the duplicate check below
     for level in data["levels"]:
         lid = level["level_id"]
         stage_slots = [level[f"stage_{n}"] for n in range(1, 11) if level.get(f"stage_{n}")]
         if not stage_slots:
             report.error("levels", f"{lid} names no stages at all")
         for slot in stage_slots:
-            if slot not in stage_ids:
+            # A "BIxx" slot plays National Assembly Floor Voting (ST23) with
+            # that specific bill — the same slot series every other room
+            # uses, just naming a bill instead of a Stage ID (2026-09-27
+            # pull). Checked against Floor Vote Bills, not the Stages tab.
+            if re.match(r"^BI\d+$", slot):
+                if slot not in bill_ids:
+                    report.error("levels", f"{lid} names bill '{slot}', which is not in the Floor Vote Bills tab")
+                else:
+                    bills_used_by.setdefault(slot, []).append(lid)
+            elif slot not in stage_ids:
                 report.error("levels", f"{lid} uses stage '{slot}', which does not exist")
         for key in booster_delta_keys:
             bo_id = "BO" + key[-2:]
             if level.get(key) is not None and bo_id not in booster_ids:
                 report.error("levels", f"{lid} has a '{key}' column, but {bo_id} is not in the Boosters tab")
+
+    for bill_id, levels_naming_it in bills_used_by.items():
+        if len(levels_naming_it) > 1:
+            report.error(
+                "levels",
+                f"{bill_id} is named by more than one level ({', '.join(levels_naming_it)}) "
+                "— a bill can only be played once",
+            )
+    for bill_id in bill_ids - bills_used_by.keys():
+        report.warn("Floor Vote Bills", f"{bill_id} is not named by any level's own stage list")
 
     # --- staff ---------------------------------------------------------------
     for member in data["staff"]:
@@ -1848,32 +1849,23 @@ def fold_player(data, report):
 def fold_floor_votes(data, report):
     """Folds Floor Vote Bills + Floor Vote Party Positions into
     data/floor_votes.json, keyed by bill_id (BIxx) — {"BI01": {bill
-    fields..., "level_id": "LV07", "positions": [{party fields...}, ...]}}.
-    Same bill-plus-rows shape fold_questions() gives each question its
-    "asked_by". Bill ID is its own namespace, separate from Level ID
-    (2026-09-26, Cameron) — each bill still names which level it belongs to
-    (its own "level_id" field), and DataDB.get_floor_vote(level_id) is the
-    one place that reverse lookup happens, so nothing downstream (BattleSetup,
-    FloorVoteEngine) had to change for the rename.
+    fields..., "positions": [{party fields...}, ...]}}. Same bill-plus-rows
+    shape fold_questions() gives each question its "asked_by".
+
+    No level_id here: a level names its own bill directly in its stage
+    sequence (a "BIxx" value where another slot would hold an "STxx"), so
+    the level -> bill link is read off levels.json by BattleSetup, not off
+    this file — see this file's own SHEETS entry comment and validate()'s
+    "floor vote slots" section below.
     """
     bills = data.pop("floor_vote_bills_raw", [])
     positions = data.pop("floor_vote_positions_raw", [])
 
     by_bill = {}
-    seen_level_ids = {}
     for bill in bills:
         bill_id = bill["bill_id"]
         if bill_id in by_bill:
             report.error("Floor Vote Bills", f"bill_id '{bill_id}' appears more than once")
-        level_id = bill.get("level_id")
-        if level_id in seen_level_ids:
-            report.error(
-                "Floor Vote Bills",
-                f"{bill_id} and {seen_level_ids[level_id]} both name level "
-                f"'{level_id}' — a level plays at most one bill",
-            )
-        elif level_id is not None:
-            seen_level_ids[level_id] = bill_id
         entry = dict(bill)
         entry["positions"] = []
         by_bill[bill_id] = entry

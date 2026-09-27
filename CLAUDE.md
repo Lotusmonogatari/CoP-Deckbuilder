@@ -89,7 +89,7 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `player.json` | player_id | The four choosable protagonists (PC01–PC04), all cast with real names and parties as of the 2026-09-26 databook. New fields beyond name/party/blurb are display-only for now (Cameron's call) |
 | `office_notices.json` | notice_id | One line of Office-screen flavor text per slot, conditioned on staff hired or a meta-variable threshold — see §13-adjacent `OfficeNotices.gd` |
 | `parties.json` | party_id | The six real parties: name, official RGB colour, seat count (the real Sep-18 session, summing to 101), Leader Opp ID (blank until Cameron casts one) — §7.7 |
-| `floor_votes.json` | bill_id (BIxx) | National Assembly Floor Voting (ST23) bills: bill text, which level plays it (`level_id`), per-disposition favorability deltas, and a `positions` list (one per party) — §7.7 |
+| `floor_votes.json` | bill_id (BIxx) | National Assembly Floor Voting (ST23) bills: bill text, per-disposition favorability deltas, and a `positions` list (one per party). No level link on the bill itself — see §7.7 |
 | `art.json` | kind | Where each kind of picture lives, the expression list and fallbacks |
 | `rules.json`, `stage_types.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |
 
@@ -156,7 +156,7 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 
 ### 7.7 National Assembly Floor Voting (ST23, built 2026-09-26)
 - Not a battle: a single **Vote Yes / Vote No / Abstain** choice against one bill. Mode `"Vote"` (`data/stages.json`), routed by `StageRouting.gd` to its own `FloorVoteScreen.tscn`, the third screen family alongside BattleScreen (Combat) and VisitorScreen (Non-combat).
-- Generic and reusable like any other stage: ST23 itself carries no bill data. A level that places it pulls its own bill from `data/floor_votes.json` by `DataDB.get_floor_vote(level_id)` — the workbook's **Floor Vote Bills** tab (one row per bill, its own **Bill ID**, BIxx — a separate namespace from Level ID, 2026-09-26, so "the bill" and "the level" are never the same identifier — plus which level plays it, bill name, scroll description, and a favorability delta per disposition) joined with **Floor Vote Party Positions** (one row per bill per party, keyed by that same Bill ID: its baked-in Yes/No/Abstain split, its disposition — Supportive/Opposed/Neutral — and its leader's cue line for this bill). `tools/export_data.py`'s `fold_floor_votes()` does the join, keyed by bill_id, the same shape `fold_questions()` gives each question its `asked_by`. A level plays at most one bill — two Bills rows naming the same Level ID is an export error.
+- Generic and reusable like any other stage: ST23 itself carries no bill data, and there is no separate "which level has a Floor Vote" flag either. **A level names its own bill directly in its own stage sequence** — a `"BIxx"` value in one of its `stage_1..stage_10` cells, the exact same slot series every other room fills with an `"STxx"` (2026-09-27 pull: Cameron's own levels put `"BI01"` where another row would put `"ST05"`). `BattleSetup.build_stage_for_slot()` recognizes the shape (`_is_bill_id()`) and treats it as ST23 played with that bill; `DataDB.get_floor_vote(level_id)` does the same lookup by scanning the level's own row for a slot that matches a real `floor_votes.json` key. The workbook's **Floor Vote Bills** tab (one row per bill, its own **Bill ID**, BIxx — a separate namespace from Level ID, 2026-09-26, so "the bill" and "the level" are never the same identifier — bill name, scroll description, a favorability delta per disposition) joins with **Floor Vote Party Positions** (one row per bill per party, keyed by that same Bill ID: its baked-in Yes/No/Abstain split, its disposition — Supportive/Opposed/Neutral — and its leader's cue line for this bill) purely by Bill ID — neither tab mentions a level at all. `tools/export_data.py`'s `fold_floor_votes()` does that join; a level naming more than one bill, or a bill named by more than one level, is an export error. The workbook's own **Vote Tally & Swing** tab is Cameron's hand-check of the same math the engine computes at runtime — not exported, confirmed to agree with `FloorVoteEngine`'s own totals on real data.
 - **The six real parties** live in a new **Parties** tab / `data/parties.json`: name, official RGB colour, and a Leader Opp ID (an Opponents-tab row) for that party's portrait and cue — blank until Cameron casts one, same bargain as any other missing-art/missing-cast slot. Party Name is the same free-text string `opponents.json`/`player.json` already carry as `party`, so nothing new has to be renamed.
 - **The player's own seat is assumed to be wherever their party's own majority already sits** (Yes, No, or Abstain, whichever bucket is biggest — Cameron's call, 2026-09-26, over an explicit authored field). Voting anything else moves exactly one seat out of that assumed bucket into whichever the player actually picked. `FloorVoteEngine.majority_bucket()`/`choose()`.
 - **Party favorability** (new mechanic): every party's own standing moves after the vote, unconditionally on its own disposition — a bill's three deltas (Favorability Delta: Supportive/Opposed/Neutral) apply to every party that held that stance, regardless of whether the bill passed. The player's own party's share lands on the existing `Party support` sanban variable directly (no second number to keep in sync); the other five live in `GameState.party_standing`, seeded from `data/party_standing.json` the same way `booster_standing.json` seeds organisation standing. `GameState.party_favorability()`/`apply_floor_vote_favorability()`.
@@ -213,18 +213,6 @@ options are authoritative; the table below describes the current settings:
   not a decision made on his behalf.
 - **The `weak_answer_tone_cost` number.** The current value is 1 in
   `stage_types.json`; the file labels it as a placeholder pending playtesting.
-- **Who leads each party.** `data/parties.json`'s Leader Opp ID is blank for
-  all six — an existing Opponents-tab MP per party is Cameron's to name, not
-  a casting decision made on his behalf (§7.7). Blank shows a generic
-  placeholder leader on the Floor Vote screen in the meantime.
-- **Floor Vote content.** No level has a row in the workbook's Floor Vote
-  Bills / Floor Vote Party Positions tabs yet — the mechanism (§7.7) is
-  built and tested against fabricated data, but every real bill's text, vote
-  splits, dispositions, and cue lines are still Cameron's to write. Whether
-  each Floor Vote level should also be marked "One-Time" (§8) — so its
-  favorability payout isn't a replayable grind — is a per-level call for
-  Cameron to make when he writes the levels.json row, not a default this
-  file decides for him.
 - **The Theme → organisation mapping.** The workbook's Question Themes tab
   maps its themes to organizations, with the reasoning for
   each in a Why column. It is a **draft Claude wrote for Cameron to correct**,
@@ -352,6 +340,29 @@ session, and there was never a caucus-rival *mechanic* in code to remove
 (no script referenced one) — the phrase only lived in `data/player.json`'s
 old placeholder blurb and in this file's own §9, both now corrected to
 match the real cast above.
+
+### The 2026-09-27 databook pull: real Floor Vote content
+
+30 real bills (BI01-30), 30 new levels built around them (LV31-60, each
+with its own `"BIxx"` slot per §7.7), all six party leaders cast (`Leader
+Opp ID` on the Parties tab), and every one of those 30 levels marked
+`"One-Time (Yes/No)"` = Yes (§8) — Cameron used the mechanism exactly as
+built, on his own, no prompting needed. This closed out every "Cameron's
+to write" item §9 used to list for Floor Voting.
+
+One real structural change came with it: the Floor Vote Bills tab **lost
+its Level ID column** — the level-to-bill link now runs the other way,
+a level names its own bill directly in its stage sequence (see §7.7's
+now-current description). `tools/export_data.py`, `DataDB.gd`, and
+`BattleSetup.gd` were updated to match (the previous pull's Level-ID-on-
+the-bill design lived for about a day). Re-verified against real data,
+not fabricated fixtures this time: LV31 (Ainu Heritage and Language Act,
+BI01) played through the real `FloorVoteScreen` end to end, and its
+resolved totals (45 Yes / 48 No / 8 Abstain) matched the workbook's own
+**Vote Tally & Swing** tab exactly — independent confirmation that
+`FloorVoteEngine`'s math and Cameron's own hand-check agree. That tab
+itself is not exported (`NOT_EXPORTED`): it's a derived check, the same
+status as Tone Guide and Assets.
 
 ## 12. Working agreement
 

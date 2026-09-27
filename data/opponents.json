@@ -1,5 +1,368 @@
 [
   {
+    "opp_id": "OP110",
+    "name": "Kenta Aoshima",
+    "title": "Chief Political Correspondent",
+    "gender": "M",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO08",
+    "role": "Journalist",
+    "stages": [
+      "ST19"
+    ],
+    "suit_1": "Divisive",
+    "suit_2": "Duplicitous",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 7
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP67",
+    "name": "Okabe Hideriai",
+    "title": "Leader of the Country Initiative",
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11",
+      "ST02",
+      "ST04",
+      "ST06"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Earnest",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP80",
+    "name": "Soma Umehori",
+    "title": "Leader of the Five Point Independents",
+    "gender": "F",
+    "party": "Five Point Independents",
+    "party_acronym": "FPI",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Duplicitous",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 3,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP83",
+    "name": "Teinei Macmillan",
+    "title": "Leader of the Keizaijiyuutou",
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16",
+      "ST02",
+      "ST06"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP29",
+    "name": "Imekanu Resu",
+    "title": "Minister of Agriculture; Chair of the Committee on Agriculture",
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13",
+      "ST18",
+      "ST06"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP36",
+    "name": "Kakuei Sato",
+    "title": "Minister of Construction and Development; Chair of the Committee on Construction and Development",
+    "gender": "M",
+    "party": "Five Point Independents",
+    "party_acronym": "FPI",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
+    "stages": [
+      "ST15",
+      "ST18",
+      "ST08"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Duplicitous",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP91",
+    "name": "Utemaru Naizen",
+    "title": "Minister of Ethics and Prosecution; Chair of the Committee on Ethics and Prosecution; Leader of the Butsutou",
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09",
+      "ST18",
+      "ST06"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 5,
+      "max": 8
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP47",
+    "name": "Kitahime Haibi",
+    "title": "Minister of Finance; Chair of the Committee on Finance",
+    "gender": "F",
+    "party": "Five Point Independents",
+    "party_acronym": "FPI",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16",
+      "ST18",
+      "ST06"
+    ],
+    "suit_1": "Data Driven",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 3,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP82",
+    "name": "Tama Tsujikonou",
+    "title": "Minister of Foreign Affairs; Chair of the Committee on Foreign Affairs",
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14",
+      "ST18",
+      "ST01",
+      "ST08"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Divisive",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP78",
+    "name": "Siatuy Sanota",
+    "title": "Minister of Government Administration; Chair of the Committee on Government Administration",
+    "gender": "F",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST18",
+      "ST02",
+      "ST06",
+      "ST08"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Divisive",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP33",
+    "name": "Juba Kasumu",
+    "title": "Minister of the Environment; Chair of the Committee on the Environment",
+    "gender": "F",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10",
+      "ST18",
+      "ST02",
+      "ST04",
+      "ST06"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Data Driven",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP57",
+    "name": "Masanori Shizugata",
+    "title": "Minister of War; Chair of the Committee on War",
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11",
+      "ST18",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 7
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
     "opp_id": "OP01",
     "name": "Ayala Taiyounokage",
     "title": null,
@@ -260,36 +623,6 @@
     }
   },
   {
-    "opp_id": "OP10",
-    "name": "Aki Rono",
-    "title": "Prime Minister; Leader of the Yezo Heritage Party",
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee of the Cabinet",
-    "stages": [
-      "ST18",
-      "ST01",
-      "ST08"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 6
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
-    }
-  },
-  {
     "opp_id": "OP100",
     "name": "Yuki Kasukasa",
     "title": null,
@@ -343,34 +676,6 @@
       "max": 4
     },
     "intent_block_range": null
-  },
-  {
-    "opp_id": "OP102",
-    "name": "Emi Katsuragawa",
-    "title": "President, District Kōenkai Association",
-    "gender": "F",
-    "party": null,
-    "party_acronym": null,
-    "affiliation": "BO03",
-    "role": "Kōenkai Member",
-    "stages": [
-      "ST05"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 7
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
   },
   {
     "opp_id": "OP103",
@@ -595,34 +900,6 @@
     "intent_block_range": {
       "min": 2,
       "max": 4
-    }
-  },
-  {
-    "opp_id": "OP110",
-    "name": "Kenta Aoshima",
-    "title": "Chief Political Correspondent",
-    "gender": "M",
-    "party": null,
-    "party_acronym": null,
-    "affiliation": "BO08",
-    "role": "Journalist",
-    "stages": [
-      "ST19"
-    ],
-    "suit_1": "Divisive",
-    "suit_2": "Duplicitous",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 4,
-      "max": 7
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
     }
   },
   {
@@ -1468,36 +1745,6 @@
     }
   },
   {
-    "opp_id": "OP27",
-    "name": "Ichizaki Namu",
-    "title": "President of the National Assembly; Chair of the Committee on the National Assembly; Speaker of the National Assembly; Leader of the Frontier Party",
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12",
-      "ST18",
-      "ST06"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 7
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 8
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 3
-    }
-  },
-  {
     "opp_id": "OP28",
     "name": "Iida Eri",
     "title": null,
@@ -1524,36 +1771,6 @@
     "intent_block_range": {
       "min": 1,
       "max": 3
-    }
-  },
-  {
-    "opp_id": "OP29",
-    "name": "Imekanu Resu",
-    "title": "Minister of Agriculture; Chair of the Committee on Agriculture",
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13",
-      "ST18",
-      "ST06"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
     }
   },
   {
@@ -1644,38 +1861,6 @@
     }
   },
   {
-    "opp_id": "OP33",
-    "name": "Juba Kasumu",
-    "title": "Minister of the Environment; Chair of the Committee on the Environment",
-    "gender": "F",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10",
-      "ST18",
-      "ST02",
-      "ST04",
-      "ST06"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Data Driven",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 5
-    }
-  },
-  {
     "opp_id": "OP34",
     "name": "Jung Tae-jun",
     "title": null,
@@ -1727,36 +1912,6 @@
     "intent_block_range": {
       "min": 1,
       "max": 3
-    }
-  },
-  {
-    "opp_id": "OP36",
-    "name": "Kakuei Sato",
-    "title": "Minister of Construction and Development; Chair of the Committee on Construction and Development",
-    "gender": "M",
-    "party": "Five Point Independents",
-    "party_acronym": "FPI",
-    "affiliation": "BO17",
-    "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15",
-      "ST18",
-      "ST08"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Duplicitous",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
     }
   },
   {
@@ -2044,36 +2199,6 @@
     }
   },
   {
-    "opp_id": "OP47",
-    "name": "Kitahime Haibi",
-    "title": "Minister of Finance; Chair of the Committee on Finance",
-    "gender": "F",
-    "party": "Five Point Independents",
-    "party_acronym": "FPI",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16",
-      "ST18",
-      "ST06"
-    ],
-    "suit_1": "Data Driven",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 3,
-      "max": 5
-    }
-  },
-  {
     "opp_id": "OP48",
     "name": "Kiyabu Waritai",
     "title": null,
@@ -2324,36 +2449,6 @@
     "intent_gain_range": {
       "min": 2,
       "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP57",
-    "name": "Masanori Shizugata",
-    "title": "Minister of War; Chair of the Committee on War",
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11",
-      "ST18",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 7
     },
     "intent_block_range": {
       "min": 2,
@@ -2615,37 +2710,6 @@
     "intent_block_range": {
       "min": 1,
       "max": 3
-    }
-  },
-  {
-    "opp_id": "OP67",
-    "name": "Okabe Hideriai",
-    "title": "Leader of the Country Initiative",
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11",
-      "ST02",
-      "ST04",
-      "ST06"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Earnest",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 4
     }
   },
   {
@@ -2935,38 +2999,6 @@
     }
   },
   {
-    "opp_id": "OP78",
-    "name": "Siatuy Sanota",
-    "title": "Minister of Government Administration; Chair of the Committee on Government Administration",
-    "gender": "F",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST18",
-      "ST02",
-      "ST06",
-      "ST08"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Divisive",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
     "opp_id": "OP79",
     "name": "Sikanna Sapanipa",
     "title": null,
@@ -2992,35 +3024,6 @@
     "intent_block_range": {
       "min": 0,
       "max": 1
-    }
-  },
-  {
-    "opp_id": "OP80",
-    "name": "Soma Umehori",
-    "title": "Leader of the Five Point Independents",
-    "gender": "F",
-    "party": "Five Point Independents",
-    "party_acronym": "FPI",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Duplicitous",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 3,
-      "max": 5
     }
   },
   {
@@ -3050,67 +3053,6 @@
     "intent_block_range": {
       "min": 1,
       "max": 3
-    }
-  },
-  {
-    "opp_id": "OP82",
-    "name": "Tama Tsujikonou",
-    "title": "Minister of Foreign Affairs; Chair of the Committee on Foreign Affairs",
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14",
-      "ST18",
-      "ST01",
-      "ST08"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Divisive",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP83",
-    "name": "Teinei Macmillan",
-    "title": "Leader of the Keizaijiyuutou",
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16",
-      "ST02",
-      "ST06"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
     }
   },
   {
@@ -3311,36 +3253,6 @@
     "intent_block_range": {
       "min": 0,
       "max": 1
-    }
-  },
-  {
-    "opp_id": "OP91",
-    "name": "Utemaru Naizen",
-    "title": "Minister of Ethics and Prosecution; Chair of the Committee on Ethics and Prosecution; Leader of the Butsutou",
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09",
-      "ST18",
-      "ST06"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 5,
-      "max": 8
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 4
     }
   },
   {
@@ -3567,6 +3479,94 @@
     "intent_block_range": {
       "min": 2,
       "max": 4
+    }
+  },
+  {
+    "opp_id": "OP27",
+    "name": "Ichizaki Namu",
+    "title": "President of the National Assembly; Chair of the Committee on the National Assembly; Speaker of the National Assembly; Leader of the Frontier Party",
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12",
+      "ST18",
+      "ST06"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 7
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 8
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP102",
+    "name": "Emi Katsuragawa",
+    "title": "President, District Kōenkai Association",
+    "gender": "F",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO03",
+    "role": "Kōenkai Member",
+    "stages": [
+      "ST05"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 7
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP10",
+    "name": "Aki Rono",
+    "title": "Prime Minister; Leader of the Yezo Heritage Party",
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee of the Cabinet",
+    "stages": [
+      "ST18",
+      "ST01",
+      "ST08"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 6
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
     }
   }
 ]
