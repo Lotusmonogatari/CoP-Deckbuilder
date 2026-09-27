@@ -476,11 +476,17 @@ one after another, instead of picking one winner per subject.
 driven every frame from `OfficeScreen._process()`. Two independent levers,
 both in `rules.json`, both Cameron's to retune: `ticker_speed_px_per_sec`
 (how fast the current line travels, 50 by default) and
-`ticker_pull_interval_seconds` (how often a freshly-picked line replaces
-whatever is showing, regardless of where it has scrolled to — 12 by
-default). Six seed lines (TK01-06) ship in the workbook so the ticker has
-something to show out of the box; the rest of the tab is Cameron's to
-write.
+`ticker_pull_interval_seconds` (how long to pause, with nothing showing,
+after one line has fully scrolled off before the next one enters — 12 by
+default). A line always travels the full width and disappears only once
+every letter of it has scrolled past the strip's own left edge — it
+originally swapped to a freshly-picked line on the interval alone,
+wherever the current one had scrolled to, which cut a line off mid-screen
+and popped it out of existence with letters still showing (2026-09-28
+mobile playtest; `ticker_pull_interval_seconds` now measures the gap AFTER
+a full exit, not a forced swap). Six seed lines (TK01-06) ship in the
+workbook so the ticker has something to show out of the box; the rest of
+the tab is Cameron's to write.
 
 ### A thorough code stress test (2026-09-28)
 
