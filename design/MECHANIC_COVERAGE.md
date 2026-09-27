@@ -35,7 +35,7 @@ honest gap, not a rounding error.
 | Combat, survival (ST06 TV debate) | `test_bar_model.gd` | — | Yes, if reached | |
 | Non-combat, Office Hours visitor room (ST07) | `test_office_hours_engine.gd`, `test_visitor_selection.gd` | `office_hours_test.tscn` (now run by `verify.sh` — see Part A) | Yes | |
 | Non-combat, Party Steering Committee check-in (ST22) | Same OfficeHoursEngine coverage as ST07 | — | Only if Party support < 25 fires during a run | |
-| Vote, National Assembly Floor Voting (ST23) | `test_floor_vote_engine.gd` | — | **Yes, as of 2026-09-28** (Part A2) | No interaction test opens `FloorVoteScreen.tscn` — see Part B1 below |
+| Vote, National Assembly Floor Voting (ST23) | `test_floor_vote_engine.gd` | `floor_vote_test.tscn` | Yes | |
 
 ## Meta systems (§8)
 
@@ -50,7 +50,7 @@ honest gap, not a rounding error.
 | One-time levels (`Ledger.level_is_hidden()`) | `test_level_gating.gd` | — | Not exercised (playtest never re-visits a completed level) | |
 | XP/level gating (`xp_to_unlock`, `level_gating_enabled`) | `test_level_gating.gd`, `test_ledger.gd` | `new_game_test.tscn` touches the gate indirectly | Yes | |
 | Save / load, every field in `_SAVED_FIELDS` | `test_save_load.gd` | `inventory_test.tscn` does one round trip mid-run | — | |
-| Level Intro screen | `test_level_intro_cues.gd` | **None** — see Part B2 | Not driven (playtest calls `BattleEngine` directly, never routes through `OfficeScreen._on_start()`'s scene change) | |
+| Level Intro screen | `test_level_intro_cues.gd` | `level_intro_test.tscn` | Not driven (playtest calls `BattleEngine` directly, never routes through `OfficeScreen._on_start()`'s scene change) | |
 
 ## Shop / Office Management
 
@@ -89,9 +89,15 @@ in the fixture (worth doing where cheap — `test_real_battle.gd` already
 does this for some), or (b) a human looking at the real screen with the
 real workbook. That's `design/PLAYTEST_CHECKLIST.md`'s whole job.
 
-## What Part B closes
+## Still open after this round (2026-09-28)
 
-Two "—"s above get closed by this same round of work:
-`tests/interaction/floor_vote_driver.gd` (Part B1) and
-`tests/interaction/level_intro_driver.gd` (Part B2) — see CLAUDE.md and
-the commit history for 2026-09-28.
+- No interaction test opens a committee specifically (ST01/09-18) — the
+  Combat/single row's own `loop_test.tscn` plays "whichever level it
+  picks first," which may or may not be a committee.
+- `playtest_optimal.gd` still drives new-card purchases through the old
+  `buy_card()`/`Ledger.card_refusal()` path, not Rhetoric Training's
+  draw/pass/learn flow — real, but lower-stakes than the two closed above
+  since Rhetoric Training already has both GUT and click coverage.
+- Party support crossing 0/25/50/75 during a run isn't forced by anything
+  in `verify.sh` — `tools/stress_crisis_triggers.gd` exists for this and
+  is a manual/CI-optional run, same as `playtest_optimal.gd` itself.
