@@ -823,16 +823,27 @@ on its own surface rather than painted onto the art.
 (`Color(0.06, 0.05, 0.04, 0.6)`, rounded 18px corners, ~20/14px content
 margins) backs two new `PanelContainer`s — `HeadingBackdrop` around the
 title row, and `TextBackdrop` (wrapping a new `TextColumn` VBoxContainer)
-around the Report/Resources block. Both shrink to fit their own text
-rather than spanning the full width, the same "a layer under the text,"
-not a bar across the screen, `CardBackView`'s veil reads as. Confirmed by
-a real screenshot before and after, not just a scene-file read. Office
-Notices — built in code, inserted at runtime right after `%Resources` via
-`_resources.get_parent()` — needed no code change at all: that lookup now
-resolves to the new `TextColumn` instead of the old bare `Column`, so the
-notices lines land inside the same backdrop automatically. The Ticker
-strip already had its own dedicated `TickerBackground` (0.85 alpha) and
-was left alone.
+around the Report/Resources block. Office Notices — built in code,
+inserted at runtime right after `%Resources` via `_resources.get_parent()`
+— needed no code change at all: that lookup now resolves to the new
+`TextColumn` instead of the old bare `Column`, so the notices lines land
+inside the same backdrop automatically. The Ticker strip already had its
+own dedicated `TickerBackground` (0.85 alpha) and was left alone.
+
+**Widened to near-full screen width** (2026-09-28, same day, Cameron's
+follow-up): both boxes first shipped shrink-to-fit, hugging just their own
+text — too narrow once seen on a real screenshot. Now each sits inside its
+own `MarginContainer` (`HeadingBackdropMargin`/`TextBackdropMargin`) with
+a 21.6px margin each side — 2% of the 1080px base width, Cameron's own
+number — and the `PanelContainer` inside fills that margin's full
+remaining width. That 2% is measured from `Safe`'s own already-inset
+content area, not the true device edge: `Safe` (`MarginContainer`, 40px
+each side) exists specifically for device safe areas (notches, rounded
+corners, §3's own hard constraint), and these two boxes are the only
+content on this screen that isn't already governed by it in some other
+way, so shrinking that margin itself, or letting a box bleed past it, was
+not this fix's call to make on its own. Confirmed by a real screenshot
+before and after each change, not just a scene-file read.
 
 - **Explain like a colleague, not a manual.** Keep it short and plain English, and say what changed and why.
 - **Ask before** you add a dependency, change a data schema, rename an ID, or resolve anything marked open or canon.
