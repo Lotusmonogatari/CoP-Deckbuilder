@@ -740,14 +740,16 @@ today, and `OFFICE_UPGRADED.png` is the cosmetic background piece CP01
 "Neon Ambition" (§8) already pointed at, a modern glass office — so
 buying and equipping CP01's Office Background slot now genuinely changes
 what's on screen, not just in the data. `PC01_RED_neutral.png` is the
-first real cosmetic outfit piece too (CP01's own `outfit_variant`, "RED"),
-though it arrived as a flat RGB image rather than a transparent cutout
-the way PC01's four other expressions are (`alpha` fully 0 at every
-corner, opaque at the centre) — every other character/battle screen still
-reads correctly since `character()` falls through to it fine, but it will
-show a plain background behind the figure rather than a true cutout until
-either a transparent version replaces it or the other three RED
-expressions are drawn to match.
+first real cosmetic outfit piece too (CP01's own `outfit_variant`, "RED")
+— it arrived as a flat RGB drawing rather than a transparent cutout the
+way PC01's four other expressions are, so its background was stripped
+afterward to match (`rembg`'s U2Net matting model, alpha feathered at the
+edge the same soft way the original art's own edges are) — confirmed
+corner-transparent/centre-opaque like every other portrait. The other
+three RED expressions (attacking/guarding/gaining) aren't drawn yet —
+`character()` falls through to the plain (non-RED) file for those, the
+same "missing art never blocks anything" bargain every other axis here
+keeps, so CP01's outfit is only visible when PC01 is at rest.
 
 **Stage outfits.** Entirely optional: a character can have a one-off look
 for a single room —
