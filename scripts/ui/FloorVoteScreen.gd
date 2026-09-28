@@ -50,11 +50,19 @@ var _voted := false
 
 var _messages: MessagePresenter = null
 
+## The influence-swing cutscene (2026-09-28, §7.7): built exactly like
+## LevelIntroScreen's own CueBanner — this screen never used one before.
+var _banner: CueBanner = null
+
 
 func _ready() -> void:
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.show_label = false
 	_messages = MessagePresenter.new(_notice, get_tree())
+
+	_banner = CueBanner.new()
+	_banner.name = "CueBanner"
+	add_child(_banner)
 
 	_vote_yes.pressed.connect(_on_vote.bind("Yes"))
 	_vote_no.pressed.connect(_on_vote.bind("No"))
@@ -95,6 +103,12 @@ func start_voting() -> void:
 	if not engine.setup({
 		"bill": _stage.get("floor_vote", {}),
 		"player_party": str(DataDB.player.get("party", "")),
+		"meta": GameState.meta,
+		"booster_standing": GameState.booster_standing,
+		"triggers": DataDB.vote_influence_triggers,
+		"default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
+		"resistance_by_party": _resistance_by_party(),
+		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
 	}):
 		_ready_to_play = false
 		_vote_yes.disabled = true
@@ -113,6 +127,20 @@ func start_voting() -> void:
 	_vote_no.text = Text.say("floor_vote.vote_no")
 	_vote_abstain.text = Text.say("floor_vote.vote_abstain")
 	_show_parties(engine.positions())
+
+
+## Every real party's own "Vote Resistance" (parties.json's own
+## vote_resistance), by party_name rather than party_id — the shape
+## FloorVoteEngine wants, matching how its own positions are keyed. A party
+## that leaves the column blank is simply absent here; the engine falls
+## back to the flat default itself.
+func _resistance_by_party() -> Dictionary:
+	var resistance: Dictionary = {}
+	for party: Dictionary in DataDB.parties:
+		var value: Variant = party.get("vote_resistance")
+		if value != null:
+			resistance[str(party.get("name", ""))] = int(value)
+	return resistance
 
 
 ## One card per party, in the bill's own position order: a portrait faced
@@ -167,6 +195,17 @@ func _on_vote(choice: String) -> void:
 
 	var result := engine.choose(choice)
 	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}))
+
+	if bool(result.get("outcome_flipped_by_influence", false)):
+		var direction := (VoteInfluenceCues.FLIPPED_TO_PASS if bool(result.get("passed", false))
+			else VoteInfluenceCues.FLIPPED_TO_FAIL)
+		var line := VoteInfluenceCues.resolve(
+			DataDB.vote_influence_cues, str(engine.bill().get("bill_id", "")), direction)
+		_banner.say(CueBanner.PLAYER, "", line)
+		GameState.apply_floor_vote_influence_bonus(
+			int(engine.bill().get("influence_bonus_reputation", 0)),
+			int(engine.bill().get("influence_bonus_party_support", 0)))
+
 	_show_outcome(result)
 
 
@@ -203,6 +242,7 @@ func _segments_for(positions: Array, vote_field: String) -> Array[Dictionary]:
 
 func _on_outcome_closed() -> void:
 	_messages.clear()
+	_banner.clear()
 
 	if not GameState.is_in_level():
 		get_tree().quit()

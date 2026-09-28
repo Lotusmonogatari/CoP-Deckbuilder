@@ -1533,6 +1533,16 @@ func apply_floor_vote_favorability(deltas: Dictionary) -> void:
 			_apply_party_delta(party_name, delta)
 
 
+## The Floor Vote influence swing's own bonus (2026-09-28, §7.7): a bill's
+## optional "Influence Bonus (Reputation)"/"Influence Bonus (Party support)"
+## columns, applied only when the swing actually flipped that bill's own
+## pass/fail outcome. Both blank read as 0, same as every other delta column
+## — a no-op call is fine and expected for the common case of no bonus set.
+func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta: int) -> void:
+	_move_meta("Reputation", reputation_delta)
+	_move_meta("Party support", party_support_delta)
+
+
 ## Every segment favorability change goes through here, clamped 0-100
 ## (segments.json carries no range of its own).
 func _apply_segment_delta(segment_id: String, delta: int) -> void:

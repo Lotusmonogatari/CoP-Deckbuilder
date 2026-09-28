@@ -574,6 +574,13 @@ SHEETS = {
             # vote — see design/FLOOR_VOTE_PROMPT.md's own open question,
             # now answered. Sums to CLAUDE.md §4's 101 seats.
             ("Seats", "seats", "int"),
+            # The Floor Vote influence swing's own per-party override
+            # (2026-09-28, §7.7): % of this party's own seats immune to the
+            # swing. Blank falls back to balance.json's own flat
+            # "vote_swing_resistance_default". Filling this in is Cameron's
+            # own political-characterization call, the same bargain
+            # Boosters' Starting Standing column already keeps.
+            ("Vote Resistance", "vote_resistance", "int"),
         ],
     },
     # One row per bill for National Assembly Floor Voting (ST23) — the
@@ -600,6 +607,12 @@ SHEETS = {
             ("Favorability Delta (Supportive)", "favorability_delta_supportive", "int"),
             ("Favorability Delta (Opposed)", "favorability_delta_opposed", "int"),
             ("Favorability Delta (Neutral)", "favorability_delta_neutral", "int"),
+            # A bonus on top of the ordinary favorability deltas above,
+            # applied only when the Floor Vote influence swing actually
+            # flips this bill's own pass/fail outcome (2026-09-28, §7.7).
+            # Blank means no bonus — most bills will have none.
+            ("Influence Bonus (Reputation)", "influence_bonus_reputation", "int"),
+            ("Influence Bonus (Party support)", "influence_bonus_party_support", "int"),
         ],
     },
     # Six rows per bill above (one per party) — folded into that bill's own
@@ -616,6 +629,36 @@ SHEETS = {
             ("Votes No", "votes_no", "int"),
             ("Votes Abstain", "votes_abstain", "int"),
             ("Disposition", "disposition", "str"),
+            ("Cue Text", "cue_text", "str"),
+        ],
+    },
+    # The Floor Vote influence swing's own gate (2026-09-28, §7.7): which
+    # meta values or booster standings count as "trigger variables", each
+    # switched on or off and given its own threshold — every ENABLED row
+    # must clear its own bar, a hard AND-gate. Cameron adds/removes rows or
+    # flips Enabled to change which variables count without touching code —
+    # see VoteInfluence.gd. optional_sheet: True the same way Office
+    # Ticker/Level Intro Cues are, since it's new enough that an older
+    # workbook re-upload wouldn't have it yet.
+    "Vote Influence Triggers": {
+        "out": "vote_influence_triggers.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Variable", "variable", "str"),
+            ("Enabled", "enabled", "str"),
+            ("Threshold", "threshold", "int"),
+        ],
+    },
+    # The optional cutscene line shown when the influence swing above
+    # actually flips a bill's own pass/fail outcome — one row per (Bill ID,
+    # Outcome Direction) pair, entirely optional the same way Level Intro
+    # Cues is. See VoteInfluenceCues.gd.
+    "Vote Influence Cues": {
+        "out": "vote_influence_cues.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Bill ID", "bill_id", "str"),
+            ("Outcome Direction", "outcome_direction", "str"),
             ("Cue Text", "cue_text", "str"),
         ],
     },
@@ -1670,6 +1713,50 @@ def validate(data, report):
                 f"{lid} has more than one row for '{role}' — the first one wins",
             )
         seen_level_roles.add((lid, role))
+
+    # --- vote_influence_triggers -------------------------------------------
+    # The Floor Vote influence swing's own gate (§7.7): each row names either
+    # a meta value (STANDING_NAMES' own four) or a real booster_id. A typo
+    # here would silently make that row's own check always fail (0 < any
+    # threshold), so it's caught as a readable error instead.
+    for row in data.get("vote_influence_triggers", []):
+        variable = row["variable"]
+        if variable not in STANDING_NAMES and variable not in booster_ids:
+            report.error(
+                "Vote Influence Triggers",
+                f"'{variable}' is neither a meta value ({', '.join(STANDING_NAMES)}) "
+                "nor a booster_id in the Boosters tab",
+            )
+        if row["enabled"] not in (None, "Yes", "No"):
+            report.error(
+                "Vote Influence Triggers",
+                f"'{variable}' has Enabled = '{row['enabled']}' — expected Yes, No, or blank",
+            )
+
+    # --- vote_influence_cues -------------------------------------------------
+    # The optional cutscene line for a bill the influence swing flipped —
+    # entirely optional per (Bill ID, Outcome Direction) pair, the same
+    # "nothing written yet" bargain Level Intro Cues keeps.
+    # Kept in sync by hand with VoteInfluenceCues.gd's own two constants.
+    valid_directions = {"Flipped to Pass", "Flipped to Fail"}
+    seen_bill_directions = set()
+    for cue in data.get("vote_influence_cues", []):
+        bid = cue["bill_id"]
+        direction = cue["outcome_direction"]
+        if bid not in bill_ids:
+            report.error("Vote Influence Cues", f"{bid} is not in the Floor Vote Bills tab")
+        if direction not in valid_directions:
+            report.error(
+                "Vote Influence Cues",
+                f"{bid} has Outcome Direction '{direction}' — expected "
+                "'Flipped to Pass' or 'Flipped to Fail'",
+            )
+        if (bid, direction) in seen_bill_directions:
+            report.warn(
+                "Vote Influence Cues",
+                f"{bid} has more than one row for '{direction}' — the first one wins",
+            )
+        seen_bill_directions.add((bid, direction))
 
     # --- shop ------------------------------------------------------------------
     for item in data["shop"]:

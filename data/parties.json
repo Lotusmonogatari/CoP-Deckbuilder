@@ -6,7 +6,8 @@
     "g": 140,
     "b": 0,
     "leader_opp_id": "OP91",
-    "seats": 19
+    "seats": 19,
+    "vote_resistance": null
   },
   {
     "party_id": "PT02",
@@ -15,7 +16,8 @@
     "g": 255,
     "b": 255,
     "leader_opp_id": "OP10",
-    "seats": 14
+    "seats": 14,
+    "vote_resistance": null
   },
   {
     "party_id": "PT03",
@@ -24,7 +26,8 @@
     "g": 128,
     "b": 0,
     "leader_opp_id": "OP27",
-    "seats": 27
+    "seats": 27,
+    "vote_resistance": null
   },
   {
     "party_id": "PT04",
@@ -33,7 +36,8 @@
     "g": 0,
     "b": 255,
     "leader_opp_id": "OP80",
-    "seats": 5
+    "seats": 5,
+    "vote_resistance": null
   },
   {
     "party_id": "PT05",
@@ -42,7 +46,8 @@
     "g": 0,
     "b": 0,
     "leader_opp_id": "OP83",
-    "seats": 25
+    "seats": 25,
+    "vote_resistance": null
   },
   {
     "party_id": "PT06",
@@ -51,6 +56,7 @@
     "g": 75,
     "b": 0,
     "leader_opp_id": "OP67",
-    "seats": 11
+    "seats": 11,
+    "vote_resistance": null
   }
 ]

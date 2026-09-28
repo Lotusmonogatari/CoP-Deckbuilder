@@ -41,7 +41,7 @@ const REQUIRED_FILES := [
 	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
-	"segments", "stages", "suits",
+	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -73,6 +73,15 @@ var office_ticker: Array = []
 ## office_notices, entirely optional per (level, role): most combinations
 ## have no row at all. See LevelIntroCues.gd.
 var level_intros: Array = []
+
+## The Floor Vote influence swing's own gate (2026-09-28, §7.7): which meta
+## values or booster standings count as trigger variables, each switched on
+## or off and given its own threshold. See VoteInfluence.gd.
+var vote_influence_triggers: Array = []
+
+## The optional cutscene line for a bill the influence swing above flipped —
+## one row per (bill_id, outcome_direction) pair. See VoteInfluenceCues.gd.
+var vote_influence_cues: Array = []
 
 ## data/shop.json's SHxx rows — one-time Office actions (see the file's own
 ## comments), not previously loaded by anything. Added 2026-09-25 so a
@@ -279,6 +288,8 @@ func load_all() -> void:
 			"office_notices": office_notices = content if content is Array else []
 			"office_ticker": office_ticker = content if content is Array else []
 			"level_intros": level_intros = content if content is Array else []
+			"vote_influence_triggers": vote_influence_triggers = content if content is Array else []
+			"vote_influence_cues": vote_influence_cues = content if content is Array else []
 			"parties": parties = content if content is Array else []
 			"floor_votes": floor_votes = content if content is Dictionary else {}
 

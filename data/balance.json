@@ -14,6 +14,8 @@
   "party_support_debuff": 50,
   "gaffes_lifetime_penalty_threshold": 50,
   "gaffes_lifetime_penalty_jiban_delta": -15,
+  "vote_influence_default_threshold": 85,
+  "vote_swing_resistance_default": 70,
   "xp_tiers": {},
   "committee_size_bands": {}
 }

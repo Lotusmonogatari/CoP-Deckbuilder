@@ -18,11 +18,28 @@ extends RefCounted
 ## answer has to win and this project's convention is to make [DEFAULT]
 ## choices like this explicit rather than silently random.
 ##
+## Influence swing (2026-09-28): a strong enough player (whichever meta
+## values and booster standings Cameron lists as "trigger variables" in the
+## workbook's Vote Influence Triggers tab, ALL of them at or above their own
+## threshold — a hard gate, not a weighted score) can additionally swing
+## OTHER parties' seats toward the player's own pick, not just the player's
+## own single seat. Reuses majority_bucket() for every party, not just the
+## player's: any party whose own assumed majority isn't already the picked
+## bucket has some of its seats (capped by that party's own "resistance",
+## data/parties.json's own vote_resistance) moved over, deterministically —
+## no roll, since the point is a hard-but-reliable payoff once the gate is
+## cleared. See VoteInfluence.gd for the gate check itself.
+##
 ## USE
 ##     var engine := FloorVoteEngine.new()
-##     engine.setup({"bill": bill, "player_party": "Frontier Party"})
+##     engine.setup({"bill": bill, "player_party": "Frontier Party",
+##         "meta": GameState.meta, "booster_standing": GameState.booster_standing,
+##         "triggers": DataDB.vote_influence_triggers,
+##         "default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
+##         "resistance_by_party": {...}, "default_resistance": 70})
 ##     var result := engine.choose("Yes")
 ##     ... show result.totals, result.positions, apply result.favorability_deltas ...
+##     ... result.outcome_flipped_by_influence decides whether a cutscene fires ...
 
 const BUCKETS := ["Yes", "No", "Abstain"]
 
@@ -34,15 +51,42 @@ var _positions: Array = []
 var _player_party: String = ""
 var _resolved := false
 
+var _meta: Dictionary = {}
+var _booster_standing: Dictionary = {}
+var _triggers: Array = []
+var _default_threshold := 85
+var _resistance_by_party: Dictionary = {}
+var _default_resistance := 70
+
+## Set once, the first time choose() resolves — cached rather than
+## recomputed on a repeat call, since by then _positions already reflects
+## the swing and re-deriving "what would have happened without it" from the
+## post-swing state would be wrong (choose() promises the same answer every
+## time it's called, per its own doc comment below).
+var _influence_gate_passed := false
+var _outcome_flipped_by_influence := false
+
 
 ## config = { "bill": DataDB.get_floor_vote(level_id)'s own shape,
-## "player_party": the current protagonist's own party name }.
+## "player_party": the current protagonist's own party name,
+## "meta"/"booster_standing"/"triggers"/"default_threshold"/
+## "resistance_by_party"/"default_resistance": the influence-swing inputs,
+## all optional — omitting them just means the gate never passes, the same
+## "nothing configured yet, nothing happens" bargain as the rest of the
+## feature }.
 func setup(config: Dictionary) -> bool:
 	setup_problems = []
 	_bill = config.get("bill", {}) as Dictionary
 	_positions = (_bill.get("positions", []) as Array).duplicate(true)
 	_player_party = str(config.get("player_party", ""))
 	_resolved = false
+
+	_meta = config.get("meta", {}) as Dictionary
+	_booster_standing = config.get("booster_standing", {}) as Dictionary
+	_triggers = config.get("triggers", []) as Array
+	_default_threshold = int(config.get("default_threshold", 85))
+	_resistance_by_party = config.get("resistance_by_party", {}) as Dictionary
+	_default_resistance = int(config.get("default_resistance", 70))
 
 	if _bill.is_empty():
 		setup_problems.append("no bill to vote on")
@@ -96,12 +140,17 @@ static func majority_bucket(position: Dictionary) -> String:
 
 ## Resolves the vote: `choice` is "Yes", "No", or "Abstain" (case-insensitive).
 ## Returns:
-##   { "positions": Array (this bill's positions, the player's own party's
-##       bucket totals adjusted if they voted against its assumed majority),
+##   { "positions": Array (this bill's positions, seats moved if the player
+##       voted against their own party's assumed majority and/or the
+##       influence swing fired),
 ##     "totals": { "Yes": n, "No": n, "Abstain": n },
 ##     "passed": bool (Yes strictly outnumbers No — an Abstain counts toward
 ##       the house but not toward either side),
-##     "favorability_deltas": { party_name: delta, ... } }
+##     "favorability_deltas": { party_name: delta, ... },
+##     "influence_gate_passed": bool,
+##     "outcome_flipped_by_influence": bool (the bill's own pass/fail
+##       differs from what it would have been without the swing — only
+##       ever true when the gate passed, since nothing moves otherwise) }
 ## Safe to call more than once — only the first call actually resolves
 ## anything; later calls return the same result again.
 func choose(choice: String) -> Dictionary:
@@ -109,6 +158,16 @@ func choose(choice: String) -> Dictionary:
 	if not _resolved:
 		if not _player_party.is_empty():
 			_reallocate_player_vote(picked)
+		var baseline_totals := _totals()
+		var baseline_passed: bool = int(baseline_totals["Yes"]) > int(baseline_totals["No"])
+
+		_influence_gate_passed = VoteInfluence.gate_passed(
+			_triggers, _meta, _booster_standing, _default_threshold)
+		if _influence_gate_passed:
+			_apply_influence_swing(picked)
+
+		var final_totals := _totals()
+		_outcome_flipped_by_influence = (final_totals["Yes"] > final_totals["No"]) != baseline_passed
 		_resolved = true
 
 	var totals := _totals()
@@ -117,6 +176,8 @@ func choose(choice: String) -> Dictionary:
 		"totals": totals,
 		"passed": totals["Yes"] > totals["No"],
 		"favorability_deltas": _favorability_deltas(),
+		"influence_gate_passed": _influence_gate_passed,
+		"outcome_flipped_by_influence": _outcome_flipped_by_influence,
 	}
 
 
@@ -140,6 +201,37 @@ func _reallocate_player_vote(picked: String) -> void:
 	moved[from_key] = maxi(int(moved.get(from_key, 0)) - 1, 0)
 	moved[to_key] = int(moved.get(to_key, 0)) + 1
 	_positions[index] = moved
+
+
+## The influence swing: every party (the player's own included, evaluated
+## fresh after its own single-seat move above) whose own assumed majority
+## isn't already `picked` gives up some of its seats, deterministically —
+## no roll. How many is capped by that party's own "resistance" (data/
+## parties.json's own vote_resistance, or the flat default): resistance is
+## the % of a party's seats that are swing-proof, so a 70% resistance party
+## only ever gives up 30% of its seats, at most, and only from whichever
+## bucket its own majority already sat in.
+func _apply_influence_swing(picked: String) -> void:
+	for index in _positions.size():
+		var position: Dictionary = _positions[index]
+		var assumed := majority_bucket(position)
+		if assumed == picked:
+			continue
+
+		var party_name := str(position.get("party_name", ""))
+		var total_seats := (int(position.get("votes_yes", 0))
+			+ int(position.get("votes_no", 0)) + int(position.get("votes_abstain", 0)))
+		var resistance := int(_resistance_by_party.get(party_name, _default_resistance))
+		var swingable := floori(total_seats * (1.0 - resistance / 100.0))
+
+		var from_key := "votes_%s" % assumed.to_lower()
+		var to_key := "votes_%s" % picked.to_lower()
+		var moved := mini(swingable, int(position.get(from_key, 0)))
+		if moved <= 0:
+			continue
+		position[from_key] = int(position[from_key]) - moved
+		position[to_key] = int(position.get(to_key, 0)) + moved
+		_positions[index] = position
 
 
 func _totals() -> Dictionary:

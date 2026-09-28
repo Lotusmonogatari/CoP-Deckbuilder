@@ -138,3 +138,194 @@ func test_favorability_deltas_apply_regardless_of_which_way_the_vote_goes() -> v
 	# Keizaijiyuutou is Opposed on this bill regardless of the final tally —
 	# its own delta doesn't depend on whether the bill passed.
 	assert_eq(int(deltas["Keizaijiyuutou"]), -2)
+
+
+# ---------------------------------------------------------------------------
+# Influence swing (2026-09-28)
+# ---------------------------------------------------------------------------
+
+func _passing_triggers() -> Array:
+	return [{"variable": "Reputation", "enabled": "Yes", "threshold": 85}]
+
+
+func test_with_no_triggers_configured_the_gate_never_passes_and_nothing_swings() -> void:
+	var engine := FloorVoteEngine.new()
+	engine.setup({"bill": _bill(), "player_party": "Frontier Party", "meta": {"Reputation": 100}})
+	var result := engine.choose("No")
+	assert_false(result["influence_gate_passed"])
+	# Same totals as the plain reallocation test above: only 1 seat moved.
+	assert_eq(int(result["totals"]["No"]), 12)
+
+
+func test_below_threshold_the_gate_fails_even_with_triggers_configured() -> void:
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 84}, "triggers": _passing_triggers(),
+	})
+	var result := engine.choose("No")
+	assert_false(result["influence_gate_passed"])
+
+
+func test_every_enabled_trigger_must_clear_its_own_threshold() -> void:
+	var triggers := [
+		{"variable": "Reputation", "enabled": "Yes", "threshold": 85},
+		{"variable": "Party support", "enabled": "Yes", "threshold": 85},
+	]
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90, "Party support": 84},  # one short
+		"triggers": triggers,
+	})
+	var result := engine.choose("No")
+	assert_false(result["influence_gate_passed"])
+
+
+func test_gate_passes_when_every_enabled_trigger_clears_its_threshold() -> void:
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 85}, "triggers": _passing_triggers(),
+	})
+	var result := engine.choose("No")
+	assert_true(result["influence_gate_passed"])
+
+
+func test_a_disabled_row_is_not_counted_toward_the_gate() -> void:
+	var triggers := [{"variable": "Reputation", "enabled": "No", "threshold": 85}]
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 0}, "triggers": triggers,
+	})
+	# A disabled row can't hold the gate closed, but with nothing else
+	# enabled either, "any_enabled" is false and the gate still doesn't pass.
+	var result := engine.choose("No")
+	assert_false(result["influence_gate_passed"])
+
+
+func test_a_booster_standing_can_be_a_trigger_variable_too() -> void:
+	var triggers := [{"variable": "BO02", "enabled": "Yes", "threshold": 85}]
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"booster_standing": {"BO02": 90}, "triggers": triggers,
+	})
+	var result := engine.choose("No")
+	assert_true(result["influence_gate_passed"])
+
+
+func test_the_swing_moves_seats_out_of_a_non_aligned_partys_assumed_bucket() -> void:
+	# Keizaijiyuutou's assumed majority is No (9 of 10); the player votes
+	# Yes. With the gate open and 0 resistance, every one of Keizaijiyuutou's
+	# No seats is swingable.
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": _passing_triggers(),
+		"default_resistance": 0,
+	})
+	var result := engine.choose("Yes")
+	var keizai: Dictionary = result["positions"][1]
+	assert_eq(int(keizai["votes_no"]), 0)
+	assert_eq(int(keizai["votes_yes"]), 10)
+
+
+func test_resistance_caps_how_many_seats_can_swing() -> void:
+	# Keizaijiyuutou has 10 seats total; 70% resistance leaves 3 swingable
+	# (floor(10 * 0.30) = 3).
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": _passing_triggers(),
+		"default_resistance": 70,
+	})
+	var result := engine.choose("Yes")
+	var keizai: Dictionary = result["positions"][1]
+	assert_eq(int(keizai["votes_no"]), 6)   # 9, minus 3 swung
+	assert_eq(int(keizai["votes_yes"]), 4)  # 1, plus 3 swung
+
+
+func test_a_partys_own_resistance_overrides_the_flat_default() -> void:
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": _passing_triggers(),
+		"default_resistance": 0,
+		"resistance_by_party": {"Keizaijiyuutou": 100},   # fully swing-proof
+	})
+	var result := engine.choose("Yes")
+	var keizai: Dictionary = result["positions"][1]
+	assert_eq(int(keizai["votes_no"]), 9)   # unchanged
+
+
+func test_a_party_already_aligned_with_the_pick_is_never_touched_by_the_swing() -> void:
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": _passing_triggers(),
+		"default_resistance": 0,
+	})
+	var result := engine.choose("Yes")
+	# Frontier's assumed majority is already Yes — the player's own pick — so
+	# neither the 1-seat reallocation nor the swing touches it at all.
+	var frontier: Dictionary = result["positions"][0]
+	assert_eq(int(frontier["votes_yes"]), 8)
+	assert_eq(int(frontier["votes_no"]), 2)
+
+
+func test_outcome_flipped_by_influence_is_false_when_the_swing_doesnt_change_pass_fail() -> void:
+	# Both parties are already Yes-majority here, so the gate opening
+	# doesn't move anything — the bill was passing before the swing and
+	# still is after it.
+	var bill := _bill({"positions": [
+		{"party_id": "PT01", "party_name": "Frontier Party",
+			"votes_yes": 8, "votes_no": 2, "votes_abstain": 0, "disposition": "Supportive"},
+		{"party_id": "PT02", "party_name": "Keizaijiyuutou",
+			"votes_yes": 6, "votes_no": 4, "votes_abstain": 0, "disposition": "Neutral"},
+	]})
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": bill, "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": _passing_triggers(),
+	})
+	var result := engine.choose("Yes")
+	assert_true(result["passed"])
+	assert_false(result["outcome_flipped_by_influence"])
+
+
+func test_outcome_flipped_by_influence_is_true_when_the_swing_turns_a_loss_into_a_win() -> void:
+	# Without any swing this fails (9 Yes vs 11 No, per the shared fixture).
+	# With the gate open and 0 resistance, Keizaijiyuutou's whole 9 No seats
+	# swing to Yes, turning it into a landslide win.
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": _passing_triggers(),
+		"default_resistance": 0,
+	})
+	var result := engine.choose("Yes")
+	assert_true(result["passed"])
+	assert_true(result["outcome_flipped_by_influence"])
+
+
+func test_outcome_flipped_by_influence_stays_false_when_the_gate_never_passes() -> void:
+	var engine := FloorVoteEngine.new()
+	engine.setup({"bill": _bill(), "player_party": "Frontier Party"})
+	var result := engine.choose("Yes")
+	assert_false(result["influence_gate_passed"])
+	assert_false(result["outcome_flipped_by_influence"])
+
+
+func test_choosing_twice_reports_the_same_influence_flags_both_times() -> void:
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": _passing_triggers(),
+		"default_resistance": 0,
+	})
+	var first := engine.choose("Yes")
+	var second := engine.choose("No")   # ignored — already resolved
+	assert_eq(first["outcome_flipped_by_influence"], second["outcome_flipped_by_influence"])
+	assert_eq(first["influence_gate_passed"], second["influence_gate_passed"])

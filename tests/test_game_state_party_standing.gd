@@ -65,3 +65,17 @@ func test_several_parties_move_in_one_call() -> void:
 	assert_eq(int(GameState.meta["Party support"]), 53)
 	assert_eq(GameState.party_favorability("Keizaijiyuutou"), 48)
 	assert_eq(GameState.party_favorability("Country Initiative"), 51)
+
+
+func test_influence_bonus_moves_both_reputation_and_party_support() -> void:
+	var reputation_before := int(GameState.meta.get("Reputation", 0))
+	GameState.apply_floor_vote_influence_bonus(4, 2)
+	assert_eq(int(GameState.meta["Reputation"]), reputation_before + 4)
+	assert_eq(int(GameState.meta["Party support"]), 52)
+
+
+func test_influence_bonus_of_zero_is_a_no_op() -> void:
+	var reputation_before := int(GameState.meta.get("Reputation", 0))
+	GameState.apply_floor_vote_influence_bonus(0, 0)
+	assert_eq(int(GameState.meta["Reputation"]), reputation_before)
+	assert_eq(int(GameState.meta["Party support"]), 50)
