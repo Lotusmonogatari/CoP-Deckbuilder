@@ -105,4 +105,4 @@ tied to that one card being played, not to a generic moment.
 |---|---|
 | Opponent Cues | OC04–OC18 (15 of 18 rows — every suit but Earnest) have no lines yet |
 | Visitor Questions | VQ01 and VQ02 share identical choice/response text — needs its own content |
-| Town Hall Questions | None — 20 written and complete; the *room* just doesn't ask them yet (a code gap, not a writing one) |
+| Town Hall Questions | None — 20 written and complete; the room has asked them since 2026-09-25 |

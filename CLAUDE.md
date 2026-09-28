@@ -67,7 +67,8 @@ The design workbook (`design/CoP_Starter_Card_Stage_Data.xlsx`) is exported by
 outputs are objects or nested structures rather than arrays, and some runtime
 files are maintained by hand. Follow the exporter and the `_README` fields in
 the current data files when changing the data contract. The checked-in snapshot
-contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
+contains 60 levels, 23 canon stages, 18 boosters, 32 modifiers, 54 cards,
+125 opponents, 6 real parties, 30 Floor Vote bills, and 2 cosmetic packages.
 
 | File | Key | Purpose |
 |---|---|---|
