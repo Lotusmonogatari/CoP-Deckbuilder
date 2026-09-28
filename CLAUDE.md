@@ -807,7 +807,32 @@ dedup system):
   pleased one, and the loss's own cost line (Constituency support etc.)
   is untouched alongside it.
 
-## 12. Working agreement
+### A text veil behind the Office's floating text (2026-09-28)
+
+The Office's header ("Kenshin Sako · Frontier Party") and its flavour-text
+block (the last-level report, "XP · Funds", Office Notices) both sat
+directly on the bookshelf background and the protagonist's own art with
+only the screen's single uniform `BackgroundScrim` (0.55 alpha) behind
+everything — legible, but low-contrast against a busy, lit background,
+and the text visually crowded the character rather than reading as its
+own layer. Cameron's ask: the same idea `CardBackView.gd`'s own veil
+already uses behind a card's printed text, so the text reads as sitting
+on its own surface rather than painted onto the art.
+
+`scenes/office_hours/OfficeScreen.tscn`: a new shared `StyleBoxFlat`
+(`Color(0.06, 0.05, 0.04, 0.6)`, rounded 18px corners, ~20/14px content
+margins) backs two new `PanelContainer`s — `HeadingBackdrop` around the
+title row, and `TextBackdrop` (wrapping a new `TextColumn` VBoxContainer)
+around the Report/Resources block. Both shrink to fit their own text
+rather than spanning the full width, the same "a layer under the text,"
+not a bar across the screen, `CardBackView`'s veil reads as. Confirmed by
+a real screenshot before and after, not just a scene-file read. Office
+Notices — built in code, inserted at runtime right after `%Resources` via
+`_resources.get_parent()` — needed no code change at all: that lookup now
+resolves to the new `TextColumn` instead of the old bare `Column`, so the
+notices lines land inside the same backdrop automatically. The Ticker
+strip already had its own dedicated `TickerBackground` (0.85 alpha) and
+was left alone.
 
 - **Explain like a colleague, not a manual.** Keep it short and plain English, and say what changed and why.
 - **Ask before** you add a dependency, change a data schema, rename an ID, or resolve anything marked open or canon.
