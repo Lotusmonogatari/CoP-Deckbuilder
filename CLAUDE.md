@@ -845,6 +845,8 @@ way, so shrinking that margin itself, or letting a box bleed past it, was
 not this fix's call to make on its own. Confirmed by a real screenshot
 before and after each change, not just a scene-file read.
 
+## 12. Working agreement
+
 - **Explain like a colleague, not a manual.** Keep it short and plain English, and say what changed and why.
 - **Ask before** you add a dependency, change a data schema, rename an ID, or resolve anything marked open or canon.
 - **Never hardcode content** to get something working faster. If data is missing, use a placeholder and flag it.
@@ -853,6 +855,42 @@ before and after each change, not just a scene-file read.
 - **Small commits**, each with a message a non-programmer can read.
 - If a task will take more than about 150 lines of new code, outline the plan first and wait for approval.
 - When you are unsure, **say so** and offer 2–3 options with your recommendation.
+
+### Three Office wording/structure changes (2026-09-28, Cameron)
+
+- **"The organisations" → "Important Stakeholders"** — `OrganisationsButton`'s
+  own hardcoded `.tscn` text and the `office.organisations` Text-tab row both
+  updated; nothing else reads that wording.
+- **Shop moved out of Office Management and into the Inventory screen,
+  which is now called "Marketplace"** — `_show_supplies()` is gone;
+  `_show_marketplace()` shows the held-items grid (`InventoryPanel.
+  inventory_rows()`, split out for this) followed by the Supplies listing,
+  in one panel. `InventoryPanel` (shared with the battle screen) gained a
+  `reopen: Callable` so using an item from the Office's Marketplace comes
+  back to the whole merged view rather than narrowing to the plain grid —
+  the battle screen's own `InventoryPanel` instance never sets it, so its
+  behavior is unchanged. A new `office.marketplace` Text row was added
+  rather than reusing `inventory.button`/`inventory.title`, which the
+  battle screen's own mid-stage Inventory button also reads — renaming
+  those would have relabeled that button too.
+- **"Cosmetic Packages" → "Appearance and Music"** — `office.cosmetics`
+  Text-tab row updated.
+
+All three interaction-test drivers that hardcoded the old Office
+Management → Supplies path (`mash_driver.gd`, `shop_items_driver.gd`,
+`inventory_driver.gd`) were updated to the new one-click Marketplace path.
+Full GUT suite and `tools/verify.sh` confirmed green afterward.
+
+**A lesson worth keeping for later workbook edits**: `openpyxl` is safe
+for *reading* `design/CoP_Starter_Card_Stage_Data.xlsx`, but a direct
+`load_workbook()` → edit → `save()` round-trip silently corrupted the
+Sanban tab's start/min/max values this session — caught only by
+`export_data.py`'s own validation (3 errors), not by a before/after diff
+that also used openpyxl to read both sides. Any future workbook edit
+should use the raw-XML zip-surgery technique already established earlier
+in this file's own history (edit the XML fragment directly, re-zip, then
+confirm with a clean `export_data.py` run — never trust an openpyxl-based
+diff alone).
 
 ## 13. The seams that are built but carry nothing
 

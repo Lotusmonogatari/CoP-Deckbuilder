@@ -325,16 +325,12 @@ func _check_double_buy() -> void:
 		_failures.append("double-buy: could not reach the Office screen")
 		return
 
-	await _click(office.get_node("%ManagementButton"))
-	var management := office.get_node("%ManagementPanel") as Overlay
-	var supplies_door := _button_with_text(management, Text.say("shop.supplies"))
-	if supplies_door == null:
-		_failures.append("double-buy: Office Management has no Supplies button")
-		return
-	await _click(supplies_door)
-	var supplies := office.get_node("SuppliesPanel") as Overlay
+	# Supplies moved into the Marketplace (2026-09-28) — one click, not
+	# Office Management -> Supplies any more.
+	await _click(office.find_child("InventoryButton", true, false) as Control)
+	var supplies := office.get_node("InventoryPanel") as Overlay
 	if not supplies.visible:
-		_failures.append("double-buy: the Supplies button did not open the Supplies shop")
+		_failures.append("double-buy: the Marketplace button did not open")
 		return
 
 	var row := supplies.find_child("Supply_SH19", true, false)

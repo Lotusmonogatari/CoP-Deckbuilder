@@ -31,7 +31,7 @@ var _chosen_level: Dictionary = {}
 ## The Office's own dynamic flavor line(s) — data/office_notices.json,
 ## resolved fresh every _build() against the current staff and meta
 ## (OfficeNotices.gd). Built in code and inserted right after %Resources,
-## the same reason _supplies_panel is: no scene-file edit needed for one
+## the same reason _inventory_panel is: no scene-file edit needed for one
 ## more label in an existing column.
 var _notices_label: Label
 @onready var _management_button: Button = %ManagementButton
@@ -51,15 +51,15 @@ var _draft_deck: Array[String] = []
 ## here rather than by whatever opens the screen.
 @onready var _background: PlaceholderArt = %Background
 
-## The inventory and the Supplies shop (design/proposals/inventory.md).
-## Built in code rather than placed in the scene, the same way the battle
-## screen builds its card zoom: they are this script's to own.
+## The Marketplace: the inventory grid and the Supplies shop together
+## (design/proposals/inventory.md, folded together 2026-09-28). Built in
+## code rather than placed in the scene, the same way the battle screen
+## builds its card zoom: it is this script's to own.
 var _inventory_panel: InventoryPanel
-var _supplies_panel: Overlay
 
 ## "Your Record" (2026-09-28): lifetime stats — bills the influence swing
 ## has flipped, how many times each level has been cleared, and clears per
-## tier. Built in code, the same reason _supplies_panel is.
+## tier. Built in code, the same reason _inventory_panel is.
 var _record_panel: Overlay
 
 ## Cosmetic packages (2026-09-28): purely decorative outfit/background/music
@@ -71,7 +71,7 @@ var _cosmetics_panel: Overlay
 ## showing the card itself, not just naming it in a sentence, is what makes
 ## drawing a random one feel like a pull rather than a database write; and
 ## 2026-09-27, it is shown BEFORE paying, with Learn it / Pass. Built in
-## code, the same reason _supplies_panel is.
+## code, the same reason _inventory_panel is.
 var _card_reveal_panel: Overlay
 
 ## New Game: the warning before a run is thrown away, and the choice of
@@ -306,7 +306,6 @@ func _show_management() -> void:
 		[Text.say("office.your_deck"), _show_deck],
 		[Text.say("office.backing"), _show_backing],
 		[Text.say("office.staff"), _show_staff],
-		[Text.say("shop.supplies"), _show_supplies],
 		[Text.say("office.new_game"), _confirm_new_game],
 	]:
 		var button := Button.new()
@@ -573,8 +572,11 @@ func _on_first_run_closed() -> void:
 		_build()
 
 
-## The Inventory button beside Office Management, and the two panels it and
-## the Supplies shop open. Added last so they draw over everything else.
+## The Marketplace button beside Office Management, and the one panel it
+## opens — the held-items grid and the Supplies shop together (2026-09-28,
+## Cameron: Supplies moved out of Office Management into this same screen,
+## and the button itself renamed from "Inventory"). Added last so it draws
+## over everything else, the same reason every code-built panel here is.
 func _build_inventory() -> void:
 	_inventory_panel = InventoryPanel.new()
 	_inventory_panel.name = "InventoryPanel"
@@ -582,18 +584,18 @@ func _build_inventory() -> void:
 	_inventory_panel.on_used = func(_result: Dictionary) -> void:
 		_refresh_resources()
 		SaveManager.autosave()
+	# Using an item from the Marketplace must reopen the WHOLE Marketplace
+	# (grid + Supplies), not narrow back to InventoryPanel's own plain grid
+	# view — see reopen's own doc comment.
+	_inventory_panel.reopen = _show_marketplace
 	add_child(_inventory_panel)
-
-	_supplies_panel = Overlay.new()
-	_supplies_panel.name = "SuppliesPanel"
-	add_child(_supplies_panel)
 
 	var button := Button.new()
 	button.name = "InventoryButton"
-	button.text = Text.say("inventory.button")
+	button.text = Text.say("office.marketplace")
 	button.custom_minimum_size = _management_button.custom_minimum_size
 	button.size_flags_horizontal = _management_button.size_flags_horizontal
-	button.pressed.connect(_inventory_panel.show_inventory)
+	button.pressed.connect(_show_marketplace)
 	var parent := _management_button.get_parent()
 	parent.add_child(button)
 	parent.move_child(button, _management_button.get_index() + 1)
@@ -816,11 +818,17 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 	_show_cosmetics()
 
 
-## Supplies: the Shop tab's items, bought into the inventory. Each row is the
-## item's icon, name and price, what it does, and Buy — or, once its Purchase
-## Limit for this level is reached, a greyed-out "Out of Stock".
-func _show_supplies() -> void:
-	var rows: Array[Control] = []
+## The Marketplace (2026-09-28, Cameron: Supplies moved out of Office
+## Management, folded in here, beside what you already own): the held-items
+## grid first (InventoryPanel.inventory_rows(), the same rows show_
+## inventory() would open alone), then the Supplies shop below it — each
+## row the item's icon, name and price, what it does, and Buy, or, once its
+## Purchase Limit for this level is reached, a greyed-out "Out of Stock".
+## One screen, one panel (_inventory_panel itself), so tapping a held item
+## still drills into its own detail view exactly as it always has.
+func _show_marketplace() -> void:
+	var rows := _inventory_panel.inventory_rows()
+	rows.append(UiKit.heading(Text.say("shop.supplies")))
 	rows.append(UiKit.line(Text.say("shop.supplies_blurb")))
 	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
 	rows.append(UiKit.line(Text.say("office.funds",
@@ -829,7 +837,7 @@ func _show_supplies() -> void:
 		# Card sessions live in Rhetoric Training, not here.
 		if item.get("card_tier") == null:
 			rows.append(_supply_row(item))
-	_supplies_panel.open(Text.say("shop.supplies"), rows)
+	_inventory_panel.open(Text.say("office.marketplace"), rows)
 
 
 func _supply_row(item: Dictionary) -> Control:
@@ -905,7 +913,7 @@ func _on_buy_item(item_id: String) -> void:
 	if refusal.is_empty():
 		_report.text = Text.say("shop.item_bought",
 			{"name": DataDB.get_shop_item(item_id).get("name", item_id)})
-	_after_spending(refusal, _show_supplies)
+	_after_spending(refusal, _show_marketplace)
 
 
 ## Shared by every "takes effect on purchase" branch above: { "ok", "message" }.
@@ -913,9 +921,9 @@ func _report_purchase_result(result: Dictionary) -> void:
 	var message := str(result.get("message", ""))
 	if result.get("ok", false):
 		_report.text = message
-		_after_spending("", _show_supplies)
+		_after_spending("", _show_marketplace)
 	else:
-		_after_spending(message, _show_supplies)
+		_after_spending(message, _show_marketplace)
 
 
 ## A Rhetoric Training offer: the card itself, front then back, with Learn

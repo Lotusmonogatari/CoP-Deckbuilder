@@ -2,9 +2,9 @@ class_name InventoryDriver
 extends Node
 ## Walks the inventory with real clicks (design/proposals/inventory.md):
 ##
-##   Office → Office Management → Supplies → buy two Coffees
-##   Office → Inventory → Coffee → Use     (queued for the next stage)
-##   Office → Inventory → Host National Booster Dinner → Use → pick a booster
+##   Office → Marketplace → buy two Coffees (Supplies moved in here, 2026-09-28)
+##   Office → Marketplace → Coffee → Use    (queued for the next stage)
+##   Office → Marketplace → Host National Booster Dinner → Use → pick a booster
 ##                                                     (lands on that one only)
 ##   Start a level → the first stage starts with +1 energy per turn
 ##   Battle → Inventory → Coffee → Use     (lands now, +1 energy)
@@ -51,30 +51,23 @@ func _run() -> void:
 func _walk() -> void:
 	var office := get_tree().current_scene
 
-	# --- Supplies: buy two Coffees -------------------------------------------
-	await _click(office.get_node("%ManagementButton"))
-	var management := office.get_node("%ManagementPanel") as Overlay
-	var supplies_door := _button_with_text(management, Text.say("shop.supplies"))
-	if supplies_door == null:
-		_failures.append("Office Management has no Supplies button")
-		return
-	await _click(supplies_door)
-
-	var supplies := office.get_node("SuppliesPanel") as Overlay
+	# --- Marketplace: buy two Coffees (Supplies moved in here, 2026-09-28) ---
+	await _click(office.find_child("InventoryButton", true, false) as Control)
+	var supplies := office.get_node("InventoryPanel") as InventoryPanel
 	if not supplies.visible:
-		_failures.append("the Supplies button did not open the Supplies shop")
+		_failures.append("the Marketplace button did not open")
 		return
 	for _i in 2:
 		var buy := supplies.find_child("Supply_" + COFFEE, true, false)
 		if buy == null:
-			_failures.append("the Supplies shop does not list Coffee")
+			_failures.append("the Marketplace does not list Coffee for sale")
 			return
 		var buy_button := buy.find_child("Buy", true, false) as Button
 		await _click(buy_button)
 	if GameState.item_count(COFFEE) != 2:
 		_failures.append("two Buy presses left %d Coffees, not 2" % GameState.item_count(COFFEE))
 		return
-	print("  bought two Coffees in Supplies")
+	print("  bought two Coffees in the Marketplace")
 
 	# A long list is dragged, not hunted through: a drag that starts on a Buy
 	# button scrolls the shop and buys nothing.
@@ -89,12 +82,12 @@ func _walk() -> void:
 	await _drag(start, start + Vector2(0, 700))
 	await _wait(0.5)
 	if scroll.scroll_vertical <= 0:
-		_failures.append("dragging the Supplies list did not scroll it")
+		_failures.append("dragging the Marketplace list did not scroll it")
 		return
 	if GameState.item_count(COFFEE) != 2 or int(GameState.meta.get("Funds", 0)) != funds_before:
-		_failures.append("dragging the Supplies list also bought something")
+		_failures.append("dragging the Marketplace list also bought something")
 		return
-	print("  dragging the Supplies list scrolls it and buys nothing")
+	print("  dragging the Marketplace list scrolls it and buys nothing")
 	supplies.close()
 	await _wait(0.2)
 

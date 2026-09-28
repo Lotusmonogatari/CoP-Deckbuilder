@@ -58,17 +58,11 @@ func _walk() -> void:
 	if not await _check_staff_gate(office, false):
 		return
 
-	# --- Open Supplies --------------------------------------------------------
-	await _click(office.get_node("%ManagementButton"))
-	var management := office.get_node("%ManagementPanel") as Overlay
-	var supplies_door := _button_with_text(management, Text.say("shop.supplies"))
-	if supplies_door == null:
-		_failures.append("Office Management has no Supplies button")
-		return
-	await _click(supplies_door)
-	var supplies := office.get_node("SuppliesPanel") as Overlay
+	# --- Open the Marketplace (Supplies moved in here, 2026-09-28) -----------
+	await _click(office.find_child("InventoryButton", true, false) as Control)
+	var supplies := office.get_node("InventoryPanel") as Overlay
 	if not supplies.visible:
-		_failures.append("the Supplies button did not open the Supplies shop")
+		_failures.append("the Marketplace button did not open")
 		return
 
 	# --- SH13/14: Unlock Tier 1/2 Level ---------------------------------------

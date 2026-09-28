@@ -611,7 +611,7 @@
   {
     "key": "office.organisations",
     "where": "Office — buttons",
-    "english": "The organisations",
+    "english": "Important Stakeholders",
     "placeholders": null,
     "notes": null
   },
@@ -2179,7 +2179,7 @@
   {
     "key": "office.cosmetics",
     "where": "Office — Cosmetics button + panel title",
-    "english": "Cosmetic Packages",
+    "english": "Appearance and Music",
     "placeholders": null,
     "notes": null
   },
@@ -2264,6 +2264,13 @@
     "key": "office.record_sanban_heading",
     "where": "Office — Your Record panel, heading above the current Sanban values",
     "english": "Where you stand",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.marketplace",
+    "where": "Office — Marketplace button + panel title (2026-09-28: inventory + Supplies shop together)",
+    "english": "Marketplace",
     "placeholders": null,
     "notes": null
   }

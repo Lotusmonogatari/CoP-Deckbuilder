@@ -24,6 +24,12 @@ var engine: BattleEngine = null
 ## behind can redraw what changed.
 var on_used: Callable = Callable()
 
+## What using an item returns to — show_inventory() (the grid alone) unless
+## a caller sets this, so the Office's Marketplace (grid + Supplies shop,
+## 2026-09-28) reopens as a whole rather than narrowing back to just the
+## grid the moment something is used.
+var reopen: Callable = Callable()
+
 ## The item whose pop-up is open, or "" while the grid is showing. The one
 ## confirm button means Use, and this says what it would use.
 var _showing_item := ""
@@ -37,8 +43,11 @@ func _ready() -> void:
 	confirmed.connect(_on_use_pressed)
 
 
-## The grid of everything held.
-func show_inventory() -> void:
+## The grid of everything held, as rows ready to open — split out from
+## show_inventory() so a caller (the Office's Marketplace, which shows this
+## alongside the Supplies shop, 2026-09-28) can combine it with rows of its
+## own rather than only ever being able to open it alone.
+func inventory_rows() -> Array[Control]:
 	_showing_item = ""
 	var rows: Array[Control] = []
 	if not _notice.is_empty():
@@ -58,7 +67,12 @@ func show_inventory() -> void:
 			grid.add_child(_item_button(item_id))
 		rows.append(grid)
 
-	open(Text.say("inventory.title"), rows)
+	return rows
+
+
+## The grid of everything held.
+func show_inventory() -> void:
+	open(Text.say("inventory.title"), inventory_rows())
 
 
 ## One item's pop-up: what it is, how many, and Use or Close.
@@ -181,7 +195,10 @@ func _use(item_id: String, chosen_target: String) -> void:
 	_notice = str(result.get("message", ""))
 	if on_used.is_valid():
 		on_used.call(result)
-	show_inventory()
+	if reopen.is_valid():
+		reopen.call()
+	else:
+		show_inventory()
 
 
 func _held_items() -> Array[String]:
