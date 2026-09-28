@@ -149,8 +149,8 @@ func test_an_equipped_background_only_ever_applies_to_office() -> void:
 	assert_eq(ArtLoader._background_variant("OFFICE"), "UPGRADED")
 	assert_eq(ArtLoader._background_variant("ST02"), "",
 		"a plain stage is never touched by the Office's own variant")
-	# No OFFICE_UPGRADED.png is drawn, so background() still falls all the
-	# way through to a placeholder — missing art never blocks anything.
+	# Real art or not, background() never comes back empty — either the
+	# drawn OFFICE_UPGRADED.png/OFFICE.png, or a placeholder if neither is.
 	assert_not_null(ArtLoader.background("OFFICE"))
 	assert_not_null(ArtLoader.background("ST02"))
 
@@ -159,8 +159,11 @@ func test_a_music_only_package_never_touches_the_outfit_or_background_slots() ->
 	GameState.active_cosmetics = {CosmeticPieces.MUSIC: "CP02"}   # music-only package
 	var protagonist_id := str(DataDB.player.get("player_id", ""))
 	var with_music_only := ArtLoader.character_path(protagonist_id, "attacking")
+	var office_with_music_only := ArtLoader.background_path("OFFICE")
 	GameState.active_cosmetics = {}
 	var with_nothing_equipped := ArtLoader.character_path(protagonist_id, "attacking")
+	var office_with_nothing_equipped := ArtLoader.background_path("OFFICE")
 	assert_eq(with_music_only, with_nothing_equipped,
 		"CP02 has no outfit_variant, so the plain (no-variant) chain is untouched")
-	assert_eq(ArtLoader.background_path("OFFICE"), "")
+	assert_eq(office_with_music_only, office_with_nothing_equipped,
+		"CP02 has no background_variant, so the Office background is untouched")

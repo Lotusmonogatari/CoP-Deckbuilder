@@ -733,7 +733,21 @@ lands, victory on a win. It works with no art either, the same bargain.
 own picture behind everything (`data/art.json`'s `background` folder —
 `{STAGE_ID}.png`, or `OFFICE.png` for the Office), with a dark scrim over it
 so text stays readable whatever the art turns out to look like. Blank shows
-as an ID-coloured placeholder, same as any other missing art.
+as an ID-coloured placeholder, same as any other missing art. **The Office
+got its first two real drawings** (2026-09-28, Cameron): `OFFICE.png` (a
+wood-panelled study) is now the base look everywhere the Office shows
+today, and `OFFICE_UPGRADED.png` is the cosmetic background piece CP01
+"Neon Ambition" (§8) already pointed at, a modern glass office — so
+buying and equipping CP01's Office Background slot now genuinely changes
+what's on screen, not just in the data. `PC01_RED_neutral.png` is the
+first real cosmetic outfit piece too (CP01's own `outfit_variant`, "RED"),
+though it arrived as a flat RGB image rather than a transparent cutout
+the way PC01's four other expressions are (`alpha` fully 0 at every
+corner, opaque at the centre) — every other character/battle screen still
+reads correctly since `character()` falls through to it fine, but it will
+show a plain background behind the figure rather than a true cutout until
+either a transparent version replaces it or the other three RED
+expressions are drawn to match.
 
 **Stage outfits.** Entirely optional: a character can have a one-off look
 for a single room —
