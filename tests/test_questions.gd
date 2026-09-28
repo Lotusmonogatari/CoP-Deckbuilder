@@ -119,6 +119,67 @@ func test_a_weak_answer_costs_no_tone_at_all() -> void:
 
 
 # ---------------------------------------------------------------------------
+# A weak answer also annoys the organisation a strong one would have
+# pleased (2026-09-28, Cameron: "link weak answers to a penalty"). This is
+# BattleEngine's own half of the mechanic — which boosters end the stage
+# annoyed; GameState._apply_question_boosters() is what turns that into an
+# actual standing change and enforces the ±5 cap, tested separately in
+# test_real_battle.gd's "Standing with the organisations" section.
+# ---------------------------------------------------------------------------
+
+func test_a_weak_answer_displeases_the_asking_organisation() -> void:
+	var engine := _conference({"questions": [_question()]})
+	engine.play_card("WEAK")
+
+	assert_has(engine.state.displeased_boosters, "BO08",
+		"a weak-graded answer annoys whoever asked")
+	assert_eq(engine.state.pleased_boosters.size(), 0,
+		"annoying an organisation is not the same as pleasing a different one")
+
+
+func test_a_strong_answer_never_displeases_anybody() -> void:
+	var engine := _conference({"questions": [_question()]})
+	engine.play_card("STRONG")
+
+	assert_eq(engine.state.displeased_boosters.size(), 0)
+
+
+func test_a_medium_answer_neither_pleases_nor_displeases() -> void:
+	var engine := _conference({"questions": [_question()]})
+	engine.play_card("BLAND")
+
+	assert_eq(engine.state.pleased_boosters.size(), 0)
+	assert_eq(engine.state.displeased_boosters.size(), 0)
+
+
+func test_displeasing_the_same_organisation_twice_in_one_stage_counts_once() -> void:
+	# The same dedup rule pleased_boosters already uses: two weak answers
+	# about the same organisation, on two different questions, count as one
+	# annoyed organisation, not two. Two distinct card IDs, played on two
+	# separate turns (questions_per_turn defaults to 1), so each answers its
+	# own question rather than one card answering both.
+	var stage := TestFixtures.stage({
+		"win_mode": "score", "questions_per_turn": 1, "player_start": 50,
+		"questions": [_question({"id": "Q01"}), _question({"id": "Q02"})],
+	})
+	var config := TestFixtures.battle_config({"stage": stage})
+	config["cards"] = {
+		"WEAK_A": TestFixtures.card({"card_id": "WEAK_A", "suit": "Appeal", "cost": 1, "self_plus": 10}),
+		"WEAK_B": TestFixtures.card({"card_id": "WEAK_B", "suit": "Appeal", "cost": 1, "self_plus": 10}),
+	}
+	config["deck"] = ["WEAK_A", "WEAK_B"]
+
+	var engine := BattleEngine.new()
+	engine.setup(config)
+
+	engine.play_card("WEAK_A")
+	engine.end_turn()
+	engine.play_card("WEAK_B")
+
+	assert_eq(engine.displeased_boosters(), ["BO08"] as Array[String])
+
+
+# ---------------------------------------------------------------------------
 # The question multiplier composes with stage affinity, and only applies
 # when there's actually a question on the floor (2026-09-28, Cameron).
 # ---------------------------------------------------------------------------

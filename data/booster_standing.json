@@ -35,13 +35,21 @@
     "'start' below for any booster that column leaves blank. Filling it in",
     "is a political-characterization call (how warm each real organisation",
     "is to a brand-new legislator) - Cameron's, in the workbook, not a",
-    "second number to keep in sync here."
+    "second number to keep in sync here.",
+    "",
+    "2026-09-28, Cameron: a WEAK-graded answer now annoys the same organisation a",
+    "strong one would have pleased, by 'per_displease'. 'question_swing_cap' is a",
+    "hard ceiling (both directions) on how far ONE stage's question-answering can",
+    "move any single organisation's standing, net of every please/displease it saw",
+    "that stage - GameState._apply_question_boosters()."
   ],
 
   "start": 30,
   "min": 0,
   "max": 100,
   "per_please": 5,
+  "per_displease": 1,
+  "question_swing_cap": 5,
 
   "required_standing": 60,
   "required_standing_by_modifier": {}

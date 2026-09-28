@@ -2252,5 +2252,12 @@
     "english": "This question works against you here.",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "outcome.displeased",
+    "where": "End of stage — what it was worth",
+    "english": "Annoyed: {names}.",
+    "placeholders": "names",
+    "notes": "Which organisations a weak answer annoyed."
   }
 ]

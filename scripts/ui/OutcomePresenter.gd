@@ -141,6 +141,19 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 		lines.append("")
 		lines.append(Text.say("outcome.pleased", {"names": ", ".join(pleased_names)}))
 
+	# 2026-09-28, Cameron: a weak answer annoys the same organisation a
+	# strong one would have pleased — worth the same disclosure here, since
+	# the connection between an answer and a standing is lost by the time
+	# the player reaches the Office.
+	var displeased := engine.displeased_boosters()
+	if not displeased.is_empty():
+		var names := BattleSetup.booster_names()
+		var displeased_names: Array[String] = []
+		for booster_id: String in displeased:
+			displeased_names.append(str(names.get(booster_id, booster_id)))
+		lines.append("")
+		lines.append(Text.say("outcome.displeased", {"names": ", ".join(displeased_names)}))
+
 	var changes := _what_it_was_worth(stage, score)
 	if not changes.is_empty():
 		lines.append("")

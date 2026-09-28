@@ -120,6 +120,12 @@ var weak_answers := 0
 ## carry out of the stage and into the floor debate.
 var pleased_boosters: Array[String] = []
 
+## The organisations annoyed by a weak-graded answer to their own question
+## (2026-09-28, Cameron: "link weak answers to a penalty"). Unlike
+## pleased_boosters, this never carries a buff into a later stage — it only
+## feeds the standing penalty GameState applies once the stage ends.
+var displeased_boosters: Array[String] = []
+
 # --- Several opponents in one stage ----------------------------------------
 ## Which opponent is being argued with, counting from zero, and how many
 ## there are in total. Both are 0 and 1 in an ordinary one-opponent stage.

@@ -700,8 +700,15 @@ func is_in_level() -> bool:
 ## fixture with an empty wording table, which is exactly the bug a first
 ## version of this parameter had (caught in review, 2026-09-25, before it
 ## shipped anywhere real).
+##
+## `displeased_boosters` (2026-09-28, Cameron) is kept separate from
+## `boosters` on purpose: `boosters` (the pleased list) also carries a buff
+## into a later stage of the level (LevelRunner.carried_buffs()) — a weak
+## answer must never grant that, so it is never mixed into that list, only
+## used for the standing penalty below.
 func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
-		gaffe_caused_loss: bool = false, gaffes: int = 0) -> bool:
+		gaffe_caused_loss: bool = false, gaffes: int = 0,
+		displeased_boosters: Array = []) -> bool:
 	mid_stage = false
 	if level_runner == null:
 		return true
@@ -713,7 +720,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.
 	_apply_stage_rewards(stage, outcome, score)
-	_please_organisations(boosters)
+	_apply_question_boosters(boosters, displeased_boosters)
 
 	level_runner.finish_stage(outcome, score, boosters)
 
@@ -1065,20 +1072,43 @@ func _record_meta_change(applied: Dictionary) -> void:
 			EventBus.meta_changed.emit(name, int(meta.get(name, 0)), int(applied[name]))
 
 
-## Raises the player's standing with everyone pleased in a stage.
+## Moves the player's standing with everyone a stage's question answers
+## touched — pleased organisations up, annoyed ones down (2026-09-28,
+## Cameron: a weak answer costs the organisation it would have pleased
+## `per_displease`, currently 1).
 ##
-## Standing is what survives the level; the pleased list is what the floor
-## debate draws on inside it. The two are separate on purpose: pleasing the
-## same organisation twice in one level counts once for the floor debate, and
-## once for the standing too, because the pleased list is deduplicated before
-## it ever gets here.
-func _please_organisations(boosters: Array) -> void:
-	if boosters.is_empty():
+## Standing is what survives the level; the pleased list is also what the
+## floor debate draws on inside it (LevelRunner.carried_buffs()) — the
+## displeased list is never used for that, only for the penalty here.
+##
+## Net, not additive: an organisation both pleased and annoyed in the same
+## stage (two different questions) settles to one number, clamped to
+## `question_swing_cap` either way — the hard ceiling on how far a single
+## stage's question-answering can move any one organisation, whatever the
+## please/displease amounts happen to be tuned to.
+func _apply_question_boosters(pleased: Array, displeased: Array) -> void:
+	if pleased.is_empty() and displeased.is_empty():
 		return
 
-	var step := int(DataDB.booster_standing.get("per_please", 5))
-	for booster_id: String in boosters:
-		_apply_booster_delta(booster_id, step)
+	var please_step := int(DataDB.booster_standing.get("per_please", 5))
+	var displease_step := int(DataDB.booster_standing.get("per_displease", 1))
+	var cap := int(DataDB.booster_standing.get("question_swing_cap", 5))
+
+	var touched: Array[String] = []
+	for booster_id: String in pleased:
+		if not touched.has(booster_id):
+			touched.append(booster_id)
+	for booster_id: String in displeased:
+		if not touched.has(booster_id):
+			touched.append(booster_id)
+
+	for booster_id: String in touched:
+		var net := 0
+		if pleased.has(booster_id):
+			net += please_step
+		if displeased.has(booster_id):
+			net -= displease_step
+		_apply_booster_delta(booster_id, clampi(net, -cap, cap))
 
 
 ## Office Hours (design/proposals/office_hours.md): applies one visitor's

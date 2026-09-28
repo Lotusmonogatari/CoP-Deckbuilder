@@ -243,6 +243,7 @@
   "outcome.closed_unnamed": "It closed",
   "outcome.conference_over": "Conference over",
   "outcome.defeated": "Defeated",
+  "outcome.displeased": "Annoyed: {names}.",
   "outcome.next_stage": "On to the next stage",
   "outcome.no_decision": "No decision",
   "outcome.no_rewards": "This stage has no rewards set yet.",

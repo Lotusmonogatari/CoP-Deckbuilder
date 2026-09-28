@@ -522,6 +522,16 @@ func _refresh_details(state: BattleState) -> void:
 				named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
 			after.append("Pleased so far: %s." % ", ".join(named))
 
+		# 2026-09-28, Cameron: a weak answer annoys the same organisation a
+		# strong one would have pleased — shown only once there is something
+		# to show, the same "no news is no line" rule pleased_boosters uses.
+		var displeased := engine.displeased_boosters()
+		if not displeased.is_empty():
+			var annoyed_named: Array[String] = []
+			for booster_id: String in displeased:
+				annoyed_named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
+			after.append("Annoyed so far: %s." % ", ".join(annoyed_named))
+
 	after.append("")
 	after.append_array(_room_lines(state))
 
@@ -876,7 +886,7 @@ func _on_outcome_closed() -> void:
 	var gaffe_caused_loss := state.outcome == "loss" and state.gaffe >= state.gaffe_limit
 	var level_over := GameState.finish_stage(
 		state.outcome, state.player_score(), engine.pleased_boosters(),
-		gaffe_caused_loss, state.gaffe)
+		gaffe_caused_loss, state.gaffe, engine.displeased_boosters())
 
 	if level_over:
 		GameState.end_level()

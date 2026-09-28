@@ -726,6 +726,52 @@ through this file's own open-items list:
   `narration.not_convinced` "No one was convinced" line, are both fully
   gone, not layered under this one.
 
+### A weak answer's own booster penalty, and a per-stage cap (2026-09-28, Cameron)
+
+Two follow-ups once Cameron saw the theoretical-maximum math for how far
+one stage's question-answering could move a booster's standing (§8's own
+pleasing mechanic, until now a please-only, uncapped-by-anything-but-
+dedup system):
+
+- **A weak-graded answer now annoys the same organisation a strong one
+  would have pleased**, by `per_displease` (`booster_standing.json`,
+  1 — a tenth of `per_please`'s 5, Cameron's literal number). Mirrors
+  pleasing exactly: `BattleState.displeased_boosters` (new field,
+  deduplicated the same way `pleased_boosters` already is) is populated
+  in `BattleEngine._answer_question()`'s `"W"` branch, off the same
+  question's `pleases_boosters` list (there's no separate "annoys" column
+  in the data — the org a weak answer annoys is the one a strong one
+  would have pleased). `BattleEngine.displeased_boosters()` exposes it,
+  the same shape as `pleased_boosters()`.
+- **The two lists are kept deliberately separate, never merged**: only
+  the pleased list carries a buff into a later stage of the same level
+  (`LevelRunner.carried_buffs()`) — a weak answer must never grant that,
+  so `displeased_boosters` is threaded everywhere as its own value,
+  never mixed into `boosters`. `GameState.finish_stage()` gained a 6th,
+  end-of-signature parameter, `displeased_boosters: Array = []`, so
+  every existing positional call site (there are dozens, across the GUT
+  suite) keeps working unchanged. `BattleScreen._on_outcome_closed()`
+  is the one real call site, passing `engine.displeased_boosters()`.
+- **A hard per-stage cap, both directions**: `GameState._apply_question_
+  boosters()` (renamed from `_please_organisations()`, since it now
+  handles both) computes one NET change per organisation touched —
+  pleased once this stage: `+per_please`; displeased once:
+  `-per_displease`; both (two different questions about the same
+  organisation, one answered well and one badly): the two amounts settle
+  together — then clamps that net to `booster_standing.json`'s new
+  `question_swing_cap` (5) before applying it. With today's numbers
+  (5 and 1) the cap never actually binds — pleasing alone already sits
+  exactly at it — but it is a real, tested ceiling for whenever those two
+  numbers get retuned, not just documentation.
+- **Shown to the player**, the same "no news is no line" rule the pleased
+  list already used: the battle Details panel gets a new "Annoyed so
+  far: …" line beside "Pleased so far: …", and the end-of-stage Outcome
+  panel gets a new `outcome.displeased` Text-tab row ("Annoyed: {names}.")
+  beside `outcome.pleased` — the connection between a bad answer and a
+  standing hit is otherwise lost by the time the player reaches the
+  Office, the same reasoning `outcome.pleased`'s own comment already
+  gives.
+
 ## 12. Working agreement
 
 - **Explain like a colleague, not a manual.** Keep it short and plain English, and say what changed and why.

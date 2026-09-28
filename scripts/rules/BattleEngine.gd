@@ -1023,6 +1023,11 @@ func pleased_boosters() -> Array[String]:
 	return state.pleased_boosters
 
 
+## The organisations a weak-graded answer has annoyed so far this stage.
+func displeased_boosters() -> Array[String]:
+	return state.displeased_boosters
+
+
 ## "Question 2 of 5", for the header.
 func question_caption() -> String:
 	if _questions.is_empty():
@@ -1036,8 +1041,9 @@ func question_caption() -> String:
 ##
 ## Every card answers. Answering in the suit the question invites also
 ## pleases the organisation behind it — a data-driven answer to a question
-## about costs satisfies the people who asked it. The grade's own effect on
-## the card's numbers happens earlier, in play_card()'s context, via
+## about costs satisfies the people who asked it. Answering weak annoys that
+## same organisation instead (2026-09-28, Cameron). The grade's own effect
+## on the card's numbers happens earlier, in play_card()'s context, via
 ## question_multiplier_for() — this function only handles the booster and
 ## the standing weak-answer counter.
 ##
@@ -1062,9 +1068,13 @@ func _answer_question(card: Dictionary) -> Dictionary:
 					state.pleased_boosters.append(booster)
 		"W":
 			# 2026-09-28, Cameron: a weak answer no longer costs tone at
-			# all — it simply penalizes the card's own effect this round
-			# (question_multiplier_for()). state.weak_answers still counts
-			# every weak answer given, as a standing lifetime tally.
+			# all — it penalizes the card's own effect this round
+			# (question_multiplier_for()) AND annoys the same organisation
+			# a strong answer would have pleased. state.weak_answers still
+			# counts every weak answer given, as a standing lifetime tally.
+			for booster: String in (question.get("pleases_boosters", []) as Array):
+				if not state.displeased_boosters.has(booster):
+					state.displeased_boosters.append(booster)
 			state.weak_answers += 1
 
 	state.question_index += 1

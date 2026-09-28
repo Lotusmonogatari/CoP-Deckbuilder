@@ -767,6 +767,78 @@ func test_standing_cannot_run_past_its_ceiling() -> void:
 	GameState.reset_booster_standing()
 
 
+func test_a_weak_answer_lowers_your_standing_with_the_organisation() -> void:
+	# 2026-09-28, Cameron: "link weak answers to a penalty" — the mirror of
+	# test_pleasing_an_organisation_raises_your_standing_with_it above.
+	GameState.reset_booster_standing()
+	var before := int(GameState.booster_standing["BO08"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, [], false, 0, ["BO08"])
+
+	var step := int(DataDB.booster_standing["per_displease"])
+	assert_eq(int(GameState.booster_standing["BO08"]), before - step)
+	assert_eq(int(GameState.last_booster_change["BO08"]), -step, "and it says so")
+	assert_eq(int(GameState.booster_standing["BO03"]), before,
+		"nobody else was annoyed")
+
+	GameState.end_level()
+
+
+func test_pleasing_and_displeasing_the_same_organisation_in_one_stage_nets_out() -> void:
+	# Two different questions about the same organisation in one stage, one
+	# answered well and one answered badly: the two amounts settle to a
+	# single net change rather than applying twice.
+	GameState.reset_booster_standing()
+	var before := int(GameState.booster_standing["BO08"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"], false, 0, ["BO08"])
+
+	var net := int(DataDB.booster_standing["per_please"]) - int(DataDB.booster_standing["per_displease"])
+	assert_eq(int(GameState.booster_standing["BO08"]), before + net)
+
+	GameState.end_level()
+
+
+func test_a_weak_answer_never_grants_the_floor_debate_buff_pleasing_does() -> void:
+	# displeased_boosters is kept separate from the pleased list on purpose:
+	# only the pleased list carries into LevelRunner.carried_buffs() — a
+	# weak answer must never grant that buff.
+	var runner := LevelRunner.new(DataDB.playtest_level)
+	GameState.begin_level(runner)
+	GameState.finish_stage("win", 50, [], false, 0, ["BO08"])
+
+	var carried: Array = runner.carried_buffs()["boosters"]
+	assert_false(carried.has("BO08"), "a weak answer is not a buff")
+
+	GameState.end_level()
+	GameState.reset_booster_standing()
+
+
+func test_the_net_change_from_one_stages_questions_is_capped() -> void:
+	# A future retune of per_please/per_displease must never be able to move
+	# a single organisation more than question_swing_cap in one stage,
+	# whatever the individual amounts are tuned to.
+	var data_before := DataDB.booster_standing.duplicate(true)
+	DataDB.booster_standing = data_before.duplicate(true)
+	DataDB.booster_standing["per_please"] = 20
+	DataDB.booster_standing["question_swing_cap"] = 5
+
+	GameState.reset_booster_standing()
+	var before := int(GameState.booster_standing["BO08"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"])
+
+	assert_eq(int(GameState.booster_standing["BO08"]), before + 5,
+		"capped at question_swing_cap even though per_please alone would give +20")
+
+	GameState.end_level()
+	DataDB.booster_standing = data_before.duplicate(true)
+	GameState.reset_booster_standing()
+
+
 func test_the_real_press_conference_asks_one_question_per_turn() -> void:
 	# The whole pool (20) used to be dealt against a 5-turn clock: "Question
 	# 6 of 20" on screen, then a loss on time with questions still waiting.
