@@ -193,30 +193,34 @@
     }
   },
   "ticker_speed_px_per_sec": {
-    "value": 50,
+    "value": 70,
     "options": [
       50,
+      70,
       80,
       120
     ],
     "question": "How fast does the Office screen's news ticker scroll, in pixels per second?",
     "means": {
-      "50": "Cameron, 2026-09-28: calm — every word is easy to read without rushing.",
+      "50": "Calm — every word is easy to read without rushing.",
+      "70": "Cameron, 2026-09-28: between calm and a real ticker's brisk pace.",
       "80": "Brisker — reads like a real news ticker.",
       "120": "Fast — a glance, not a read."
     }
   },
   "ticker_pull_interval_seconds": {
-    "value": 12,
+    "value": 10,
     "options": [
       8,
+      10,
       12,
       20
     ],
     "question": "How often does the ticker swap in a freshly-picked line?",
     "means": {
       "8": "Lines change quickly — more variety, less time to finish reading a longer one.",
-      "12": "Cameron, 2026-09-28: enough time to read a line before the next one comes in.",
+      "10": "Cameron, 2026-09-28: a touch brisker than the original 12s default.",
+      "12": "Enough time to read a line before the next one comes in.",
       "20": "Lines linger — fewer swaps, more time on each one."
     }
   }

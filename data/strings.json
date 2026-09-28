@@ -2231,5 +2231,12 @@
     "english": "Equipped",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "narration.not_convinced",
+    "where": "Battle narration — a weak answer that missed its own effectiveness roll",
+    "english": "No one was convinced",
+    "placeholders": null,
+    "notes": null
   }
 ]

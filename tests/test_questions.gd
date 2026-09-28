@@ -16,7 +16,11 @@ const GRADED := {
 
 
 ## A room that asks questions: one a turn, and a bar to cool.
-func _conference(overrides: Dictionary = {}) -> BattleEngine:
+##
+## `config_overrides` merges into the top-level battle config rather than
+## the stage — weak_answer_effectiveness lives there (2026-09-28), since
+## it's one number across every question-asking room, not a per-stage one.
+func _conference(overrides: Dictionary = {}, config_overrides: Dictionary = {}) -> BattleEngine:
 	var stage := TestFixtures.stage({
 		"win_mode": "score",
 		"questions_per_turn": 1,
@@ -27,6 +31,7 @@ func _conference(overrides: Dictionary = {}) -> BattleEngine:
 	stage.merge(overrides, true)
 
 	var config := TestFixtures.battle_config({"stage": stage})
+	config.merge(config_overrides, true)
 	config["cards"] = {
 		"STRONG": TestFixtures.card({"card_id": "STRONG", "suit": "Earnest", "cost": 1}),
 		"BLAND": TestFixtures.card({"card_id": "BLAND", "suit": "Emotional", "cost": 1}),
@@ -111,6 +116,60 @@ func test_the_cost_is_the_stages_to_set() -> void:
 	engine.play_card("WEAK")
 	assert_eq(engine.state.bar.player, before,
 		"a stage that sets the cost to zero takes nothing")
+
+
+# ---------------------------------------------------------------------------
+# Weak answer effectiveness (2026-09-28, Cameron): a weak answer only costs
+# tone weak_answer_effectiveness of the time; the rest of the time nothing
+# happens at all, not even a milder penalty — "No one was convinced."
+# ---------------------------------------------------------------------------
+
+func test_a_config_with_no_effectiveness_set_is_always_effective() -> void:
+	# The default (1.0) preserves every OLDER test/fixture's exact,
+	# deterministic behaviour — nothing here has to know this mechanic
+	# exists to keep passing.
+	var engine := _conference({"questions": [_question()]})
+	var before := engine.state.bar.player
+
+	var result := engine.play_card("WEAK")
+
+	assert_eq(engine.state.bar.player, before - 2, "the cost still lands every time")
+	assert_true(bool(result["question_answer"]["convinced"]))
+
+
+func test_zero_effectiveness_never_costs_tone() -> void:
+	var engine := _conference({"questions": [_question()]}, {"weak_answer_effectiveness": 0.0})
+	var before := engine.state.bar.player
+
+	var result := engine.play_card("WEAK")
+
+	assert_eq(engine.state.bar.player, before, "nobody was convinced, so nothing is taken")
+	assert_eq(engine.state.weak_answers, 1, "it still counts as a weak answer")
+	assert_false(bool(result["question_answer"]["convinced"]))
+	assert_eq(str(result["question_answer"]["grade"]), "W")
+
+
+func test_a_strong_or_medium_answer_never_rolls_at_all() -> void:
+	# convinced only ever means something for a WEAK answer — an S or M
+	# grade doesn't have a roll to miss.
+	var engine := _conference({"questions": [_question()]}, {"weak_answer_effectiveness": 0.0})
+	var result := engine.play_card("STRONG")
+	assert_true(bool(result["question_answer"]["convinced"]),
+		"a strong answer is never 'unconvincing' — the roll only applies to weak ones")
+
+
+func test_the_effectiveness_is_the_battles_to_set_not_the_stages() -> void:
+	# Same stage row (weak_answer_tone_cost 2), two different battles: the
+	# number comes from the top-level config (real games: balance.json's
+	# weak_answer_effectiveness), never from the stage itself.
+	var always := _conference({"questions": [_question()]}, {"weak_answer_effectiveness": 1.0})
+	var never := _conference({"questions": [_question()]}, {"weak_answer_effectiveness": 0.0})
+
+	always.play_card("WEAK")
+	never.play_card("WEAK")
+
+	assert_lt(always.state.bar.player, never.state.bar.player,
+		"the same weak answer costs tone in one battle and not the other")
 
 
 func test_a_question_that_names_one_suit_still_works() -> void:

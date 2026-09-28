@@ -27,7 +27,7 @@
     "b": 0,
     "leader_opp_id": "OP27",
     "seats": 27,
-    "vote_resistance": null
+    "vote_resistance": 75
   },
   {
     "party_id": "PT04",
@@ -37,7 +37,7 @@
     "b": 255,
     "leader_opp_id": "OP80",
     "seats": 5,
-    "vote_resistance": null
+    "vote_resistance": 99
   },
   {
     "party_id": "PT05",
@@ -57,6 +57,6 @@
     "b": 0,
     "leader_opp_id": "OP67",
     "seats": 11,
-    "vote_resistance": null
+    "vote_resistance": 90
   }
 ]

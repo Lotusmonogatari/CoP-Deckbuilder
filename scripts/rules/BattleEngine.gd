@@ -64,6 +64,16 @@ var _sequence_mode := "single"
 ## The reporters' questions, in a press conference. Empty everywhere else.
 var _questions: Array = []
 
+## How often a WEAK answer costs tone at all (2026-09-28, Cameron: "weak
+## answers across all stages are effective by 0.75" — 75% of the time it
+## costs the stage's own weak_answer_tone_cost, same as always; the other
+## 25% nothing happens at all — "No one was convinced" — not even the
+## usual weak-answer cost). Defaults to 1.0 (always effective, today's
+## exact behaviour) so a config that never heard of this stays
+## deterministic; BattleSetup.gd passes the real balance.json number for
+## an actual game.
+var _weak_answer_effectiveness := 1.0
+
 ## Anything that stopped setup from working, in plain words.
 var setup_problems := PackedStringArray()
 
@@ -125,6 +135,7 @@ func setup(config: Dictionary) -> bool:
 	_questions = _stage.get("questions", [])
 	if _questions.is_empty():
 		_questions = _draw_questions(config.get("question_pool", []))
+	_weak_answer_effectiveness = float(config.get("weak_answer_effectiveness", 1.0))
 
 	# A press conference deals a bigger opening hand and then nothing more,
 	# so "opening_hand" wins over the ordinary hand size where both exist.
@@ -337,8 +348,9 @@ func play_card(card_id: String) -> Dictionary:
 	if flags.get("reveal_next_intent", false):
 		state.next_intent_revealed = true
 
+	var question_answer := {}
 	if not _questions.is_empty() and state.questions_answered_this_turn < _questions_per_turn():
-		_answer_question(card)
+		question_answer = _answer_question(card)
 		state.questions_answered_this_turn += 1
 
 	# Who was in front of us before the outcome was checked. If a card
@@ -357,6 +369,8 @@ func play_card(card_id: String) -> Dictionary:
 		"applied": applied,
 		"energy_left": state.energy,
 	}
+	if not question_answer.is_empty():
+		result["question_answer"] = question_answer
 	if state.opponent_index != was_facing:
 		result["bout_won"] = {
 			"finished": str(beaten.get("name", "")),
@@ -1008,12 +1022,19 @@ func question_caption() -> String:
 ## Every card answers. Answering in the suit the question invites also
 ## pleases the organisation behind it — a data-driven answer to a question
 ## about costs satisfies the people who asked it.
-func _answer_question(card: Dictionary) -> void:
+##
+## Returns { "grade": "S"/"M"/"W", "convinced": bool } so the caller can
+## narrate a weak answer that missed entirely — "convinced" is always true
+## except on the 25%-by-default roll below.
+func _answer_question(card: Dictionary) -> Dictionary:
 	var question := current_question()
 	if question.is_empty():
-		return
+		return {}
 
-	match _grade_of(card, question):
+	var grade := _grade_of(card, question)
+	var convinced := true
+
+	match grade:
 		"S":
 			# A strong answer pleases whoever asked, as it always has — and
 			# a theme can now name more than one organisation at once
@@ -1025,12 +1046,20 @@ func _answer_question(card: Dictionary) -> void:
 			# A weak answer is worse than a bland one: the room cools, the
 			# same way declining does but by a smaller amount. The number is
 			# the stage's, beside the decline cost it sits next to.
-			var cost := int(_stage.get("weak_answer_tone_cost", 0))
-			if cost > 0 and state.bar != null:
-				state.bar.player_loses(cost)
+			#
+			# 2026-09-28, Cameron: this only lands _weak_answer_effectiveness
+			# of the time (75% default). The rest of the time nothing
+			# happens at all — not even the usual cost — "No one was
+			# convinced" rather than a milder version of the same penalty.
+			convinced = _rng.randf() < _weak_answer_effectiveness
+			if convinced:
+				var cost := int(_stage.get("weak_answer_tone_cost", 0))
+				if cost > 0 and state.bar != null:
+					state.bar.player_loses(cost)
 			state.weak_answers += 1
 
 	state.question_index += 1
+	return {"grade": grade, "convinced": convinced}
 
 
 ## How well this card's suit answers this question: "S", "M" or "W".

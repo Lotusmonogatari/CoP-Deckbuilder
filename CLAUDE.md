@@ -300,8 +300,6 @@ options are authoritative; the table below describes the current settings:
   maps its themes to organizations, with the reasoning for
   each in a Why column. It is a **draft Claude wrote for Cameron to correct**,
   not a decision made on his behalf. Only existing booster IDs are used.
-- **Whether the town hall asks questions.** Twenty are written for it; the
-  stage type does not ask any today.
 
 ## 10. UI specification
 
@@ -674,6 +672,47 @@ flipped bills by their real `bill_name`, each cleared level by its own
 `description` and clear count, and clears per tier — all through new
 Text-tab rows, per the "no sentence lives in a script" rule.
 
+### Balance tuning and a weak-answer effectiveness roll (2026-09-28, Cameron)
+
+Five small, direct numbers, plus one new mechanic, from a single pass
+through this file's own open-items list:
+
+- **Floor Vote influence swing** (§7.7): `vote_swing_resistance_default`
+  raised 70 → 85 (Balance tab), with three parties now overriding it on
+  their own row (Parties tab's own Vote Resistance column, blank = the
+  flat default): Frontier Party 75, Five Point Independents 99, Country
+  Initiative 90. The other three parties (Butsutou, Yezo Heritage Party,
+  Keizaijiyuutou) stay on the flat default.
+- **Booster starting standing** (§13's own note on the flat `start`
+  fallback): 50 → 30, `data/booster_standing.json`.
+- **The Office ticker** (§8): `ticker_speed_px_per_sec` 50 → 70,
+  `ticker_pull_interval_seconds` 12 → 10 (`data/rules.json`), each with
+  its own dated rationale line alongside the original options, the same
+  documented-choice shape every other `rules.json` lever already uses.
+- **Whether the Town Hall asks questions** (§9's own list used to carry
+  this as unresolved): it already does, and has since 2026-09-25
+  (`BattleSetup.QUESTION_POOL_BY_STAGE`'s own `"ST05": "town_hall"` entry,
+  proven against real level data by `tests/test_real_battle.gd`'s
+  `test_st05_town_hall_actually_answers_its_drawn_question_too`) — the
+  §9 bullet was stale, not a real gap, and is now removed.
+- **A weak answer's own effectiveness** (new mechanic): "weak answers
+  across all stages are effective by 0.75" — a weak (W-graded) answer to
+  a drawn question now only costs the stage's own `weak_answer_tone_cost`
+  75% of the time (`balance.json`'s new `weak_answer_effectiveness`, one
+  number across every question-asking room rather than a per-stage-type
+  one); the other 25% of the time nothing happens at all, not even a
+  milder penalty — "No one was convinced," a new narration line
+  (`narration.not_convinced`) shown only on that miss.
+  `BattleEngine._answer_question()` now returns `{"grade", "convinced"}`,
+  carried in `play_card()`'s own result under `"question_answer"` and read
+  by `BattleNarration.player_move()`. Defaults to `1.0` (always
+  effective — today's exact behaviour) when a config never sets it, so
+  every older fixture/test stays deterministic without having to know
+  this mechanic exists; `BattleSetup.gd` is the one place that reads the
+  real `balance.json` number for an actual game. The flat
+  `weak_answer_tone_cost` number itself (§9, still 1, still a
+  placeholder) is untouched — this is a new layer on top of it, not a
+  replacement.
 
 ## 12. Working agreement
 

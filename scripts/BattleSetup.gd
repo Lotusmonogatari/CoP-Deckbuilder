@@ -521,6 +521,11 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		# "question_pool" column (a proposed stages.json addition) wins;
 		# QUESTION_POOL_BY_STAGE is the fallback for a canon row with neither.
 		"question_pool": DataDB.questions.get(_question_pool_name(stage, stage_id), []),
+		# How often a weak answer actually costs tone (§9/§8, 2026-09-28,
+		# Cameron: 0.75) — the same number across every question-asking
+		# stage, rather than one per stage type. Defaults to 1.0 (always
+		# effective) if the Balance tab ever leaves it blank.
+		"weak_answer_effectiveness": float(DataDB.balance.get("weak_answer_effectiveness", 1.0)),
 		"deck": player_deck(),
 		# A good caucus earlier in the level starts this stage ahead, and so
 		# does an organisation whose backing you have bought (STAGE_START_BONUS).

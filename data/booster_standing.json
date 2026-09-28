@@ -38,7 +38,7 @@
     "second number to keep in sync here."
   ],
 
-  "start": 50,
+  "start": 30,
   "min": 0,
   "max": 100,
   "per_please": 5,

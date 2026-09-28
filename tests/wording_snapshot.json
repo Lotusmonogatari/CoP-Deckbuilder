@@ -121,6 +121,7 @@
   "narration.gain_none": "{who} pressed the case and won nobody over.",
   "narration.guard_built": "developed {count} guard",
   "narration.guard_stopped": "{who} guard stopped {count}",
+  "narration.not_convinced": "No one was convinced",
   "narration.nothing_through": "nothing got through",
   "narration.nothing_to_take": "the attack found nothing to take",
   "narration.raised": "{unit} raised by {count}",
