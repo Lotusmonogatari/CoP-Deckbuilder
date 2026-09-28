@@ -57,6 +57,11 @@ var _draft_deck: Array[String] = []
 var _inventory_panel: InventoryPanel
 var _supplies_panel: Overlay
 
+## "Your Record" (2026-09-28): lifetime stats — bills the influence swing
+## has flipped, how many times each level has been cleared, and clears per
+## tier. Built in code, the same reason _supplies_panel is.
+var _record_panel: Overlay
+
 ## Rhetoric Training's card offer (SH15-17, SH27-29) — Cameron, 2026-09-25:
 ## showing the card itself, not just naming it in a sentence, is what makes
 ## drawing a random one feel like a pull rather than a database write; and
@@ -102,6 +107,7 @@ func _ready() -> void:
 	_organisations_button.pressed.connect(_show_organisations)
 	_management_button.pressed.connect(_show_management)
 	_build_inventory()
+	_build_record()
 	_new_game_panel = Overlay.new()
 	_new_game_panel.name = "NewGamePanel"
 	add_child(_new_game_panel)
@@ -585,6 +591,66 @@ func _build_inventory() -> void:
 	var parent := _management_button.get_parent()
 	parent.add_child(button)
 	parent.move_child(button, _management_button.get_index() + 1)
+
+
+## "Your Record" button, beside Organisations — same code-built pattern as
+## Inventory beside Management, no scene-file edit.
+func _build_record() -> void:
+	_record_panel = Overlay.new()
+	_record_panel.name = "RecordPanel"
+	add_child(_record_panel)
+
+	var button := Button.new()
+	button.name = "RecordButton"
+	button.text = Text.say("office.your_record")
+	button.custom_minimum_size = _organisations_button.custom_minimum_size
+	button.size_flags_horizontal = _organisations_button.size_flags_horizontal
+	button.pressed.connect(_show_record)
+	var parent := _organisations_button.get_parent()
+	parent.add_child(button)
+	parent.move_child(button, _organisations_button.get_index() + 1)
+
+
+## Lifetime stats: which bills the influence swing has flipped, how many
+## times each level has been cleared, and clears per tier (derived from the
+## level tally at display time rather than kept as a third counter).
+func _show_record() -> void:
+	var rows: Array[Control] = []
+
+	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))
+	if GameState.bills_flipped_by_influence.is_empty():
+		rows.append(UiKit.line(Text.say("office.record_bills_empty")))
+	else:
+		for bill_id: String in GameState.bills_flipped_by_influence:
+			var bill_name := str(DataDB.floor_votes.get(bill_id, {}).get("bill_name", bill_id))
+			rows.append(UiKit.line(bill_name))
+
+	rows.append(UiKit.heading(Text.say("office.record_levels_heading")))
+	var any_cleared := false
+	for level: Dictionary in DataDB.levels:
+		var level_id := str(level.get("level_id", ""))
+		var count := int(GameState.levels_cleared.get(level_id, 0))
+		if count > 0:
+			any_cleared = true
+			rows.append(UiKit.line(Text.say("office.record_level_line",
+				{"level": level.get("description", level_id), "count": count})))
+	if not any_cleared:
+		rows.append(UiKit.line(Text.say("office.record_levels_empty")))
+
+	rows.append(UiKit.heading(Text.say("office.record_tiers_heading")))
+	var tiers: Array = []
+	for level: Dictionary in DataDB.levels:
+		if not tiers.has(level.get("tier")):
+			tiers.append(level.get("tier"))
+	tiers.sort()
+	for tier: Variant in tiers:
+		var total := 0
+		for level: Dictionary in DataDB.levels:
+			if level.get("tier") == tier:
+				total += int(GameState.levels_cleared.get(str(level.get("level_id", "")), 0))
+		rows.append(UiKit.line(Text.say("office.record_tier_line", {"tier": int(tier), "count": total})))
+
+	_record_panel.open(Text.say("office.your_record"), rows)
 
 
 ## Supplies: the Shop tab's items, bought into the inventory. Each row is the

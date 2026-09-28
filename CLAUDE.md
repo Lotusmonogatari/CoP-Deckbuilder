@@ -576,6 +576,36 @@ reads the identical RGB from a pre-built `"party_color"` array
 than `PartyDisplay.color_for()`'s `{r,g,b}` row, and was already correct,
 so there was nothing to fix there.
 
+### "Your Record" — lifetime stats (2026-09-28)
+
+Cameron asked how a Floor Vote's influence-swing flip (§7.7) gets tracked
+— it didn't; the flag lived only for the instant of that one vote. Three
+new lifetime counters, bundled into one new Office screen page:
+
+- **`GameState.bills_flipped_by_influence`**: every `bill_id` the
+  influence swing has flipped, in the order it happened.
+  `GameState.record_bill_flip(bill_id)` (dedup-guarded, though a bill can
+  only be voted once since every real Floor Vote level is One-Time)
+  is called from `FloorVoteScreen._on_vote()`'s existing flip block.
+- **`GameState.levels_cleared`**: `{level_id: win_count}`, bumped once
+  inside `finish_stage()`'s existing `if last_level_outcome ==
+  LevelRunner.WON:` block — a win only, never a loss, and it can bump
+  past 1 on a replayed level.
+- **Tier clears are derived, not a third counter**: the Office page sums
+  `levels_cleared` by each level's own `tier` at display time rather than
+  keeping a parallel tally that could drift out of sync — cheap over the
+  ≤60 real levels, and correct by construction.
+
+Both fields are in `_SAVED_FIELDS` (reset with everything else lifetime
+on a new run — `bills_flipped_by_influence` in `reset_crisis_triggers()`,
+`levels_cleared` in `reset_levels()`). New **"Your Record"** button beside
+Organisations, built in code exactly like Inventory beside Management
+(`OfficeScreen._build_record()`) — no `.tscn` edit, since `tools/build_
+office_scene.gd` is unsafe to rerun (§13). `_show_record()` lists the
+flipped bills by their real `bill_name`, each cleared level by its own
+`description` and clear count, and clears per tier — all through new
+Text-tab rows, per the "no sentence lives in a script" rule.
+
 
 ## 12. Working agreement
 

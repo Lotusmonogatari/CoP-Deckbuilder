@@ -16,12 +16,14 @@ extends GutTest
 var _meta_before: Dictionary = {}
 var _runner_before: LevelRunner = null
 var _mid_stage_before := false
+var _levels_cleared_before: Dictionary = {}
 
 
 func before_each() -> void:
 	_meta_before = GameState.meta.duplicate(true)
 	_runner_before = GameState.level_runner
 	_mid_stage_before = GameState.mid_stage
+	_levels_cleared_before = GameState.levels_cleared.duplicate(true)
 	GameState.reset_crisis_triggers()
 
 
@@ -29,6 +31,7 @@ func after_each() -> void:
 	GameState.meta = _meta_before.duplicate(true)
 	GameState.level_runner = _runner_before
 	GameState.mid_stage = _mid_stage_before
+	GameState.levels_cleared = _levels_cleared_before.duplicate(true)
 	GameState.reset_crisis_triggers()
 
 
@@ -74,6 +77,53 @@ func test_the_same_stage_id_played_again_later_adds_to_its_own_bucket() -> void:
 	_begin_two_stage_level(50, 50)
 	GameState.finish_stage(LevelRunner.WON)   # ST02 again, a different level
 	assert_eq(GameState.stage_type_results.get("ST02", {}).get("wins"), 2)
+
+
+# ---------------------------------------------------------------------------
+# levels_cleared ("Your Record", 2026-09-28)
+# ---------------------------------------------------------------------------
+
+func test_winning_every_stage_counts_as_one_clear_for_the_level() -> void:
+	_begin_two_stage_level(50, 50)
+	GameState.finish_stage(LevelRunner.WON)   # first stage, level not over yet
+	GameState.finish_stage(LevelRunner.WON)   # second stage, level ends WON
+	assert_eq(int(GameState.levels_cleared.get("TEST", 0)), 1)
+
+
+func test_losing_the_level_is_not_counted_as_a_clear() -> void:
+	_begin_two_stage_level(50, 50)
+	GameState.finish_stage(LevelRunner.LOST)   # ends the level, on a loss
+	assert_eq(int(GameState.levels_cleared.get("TEST", 0)), 0)
+
+
+func test_clearing_the_same_level_twice_adds_to_its_own_count() -> void:
+	_begin_two_stage_level(50, 50)
+	GameState.finish_stage(LevelRunner.WON)
+	GameState.finish_stage(LevelRunner.WON)
+	_begin_two_stage_level(50, 50)
+	GameState.finish_stage(LevelRunner.WON)
+	GameState.finish_stage(LevelRunner.WON)
+	assert_eq(int(GameState.levels_cleared.get("TEST", 0)), 2)
+
+
+# ---------------------------------------------------------------------------
+# bills_flipped_by_influence ("Your Record", 2026-09-28)
+# ---------------------------------------------------------------------------
+
+func test_recording_a_flip_appends_the_bill_id() -> void:
+	GameState.record_bill_flip("BI01")
+	assert_true(GameState.bills_flipped_by_influence.has("BI01"))
+
+
+func test_recording_the_same_bill_twice_does_not_duplicate_it() -> void:
+	GameState.record_bill_flip("BI01")
+	GameState.record_bill_flip("BI01")
+	assert_eq(GameState.bills_flipped_by_influence.count("BI01"), 1)
+
+
+func test_a_blank_bill_id_is_ignored() -> void:
+	GameState.record_bill_flip("")
+	assert_true(GameState.bills_flipped_by_influence.is_empty())
 
 
 # ---------------------------------------------------------------------------

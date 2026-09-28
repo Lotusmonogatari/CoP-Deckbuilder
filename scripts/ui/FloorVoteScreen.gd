@@ -197,14 +197,15 @@ func _on_vote(choice: String) -> void:
 	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}))
 
 	if bool(result.get("outcome_flipped_by_influence", false)):
+		var bill_id := str(engine.bill().get("bill_id", ""))
 		var direction := (VoteInfluenceCues.FLIPPED_TO_PASS if bool(result.get("passed", false))
 			else VoteInfluenceCues.FLIPPED_TO_FAIL)
-		var line := VoteInfluenceCues.resolve(
-			DataDB.vote_influence_cues, str(engine.bill().get("bill_id", "")), direction)
+		var line := VoteInfluenceCues.resolve(DataDB.vote_influence_cues, bill_id, direction)
 		_banner.say(CueBanner.PLAYER, "", line)
 		GameState.apply_floor_vote_influence_bonus(
 			int(engine.bill().get("influence_bonus_reputation", 0)),
 			int(engine.bill().get("influence_bonus_party_support", 0)))
+		GameState.record_bill_flip(bill_id)
 
 	_show_outcome(result)
 

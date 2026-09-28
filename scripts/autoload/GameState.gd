@@ -164,6 +164,13 @@ var levels_completed_count: int = 0
 ## on cooldown, no matter what its cooldown number says.
 var level_last_completed_at: Dictionary = {}
 
+## { level_id -> how many times that level has been WON }, unlike levels_
+## completed_count above — this only counts a win, not any finish, and it's
+## per level rather than one running total. "Your Record"'s own level-by-
+## level tally; a level's own tier total is derived from this at display
+## time (OfficeScreen._show_record()) rather than kept as a second counter.
+var levels_cleared: Dictionary = {}
+
 ## How many of Staff's highest_tier steps are open to hire from, 0 at a
 ## fresh run (SF01/SF08/SF15, the three highest_tier-0 candidates, are the
 ## only ones hireable). SH18 ("Unlock New Staff Recruitment Tier") raises
@@ -231,6 +238,10 @@ var stages_lost_to_gaffes := 0
 ## this never resets — it is a single event, not a zone.
 var gaffe_penalty_applied := false
 
+## Every bill_id the Floor Vote influence swing has flipped (§7.7), in the
+## order they happened — "Your Record"'s own list. See record_bill_flip().
+var bills_flipped_by_influence: Array[String] = []
+
 
 func _ready() -> void:
 	protagonist_id = str(DataDB.player.get("player_id", ""))
@@ -270,11 +281,11 @@ const _SAVED_FIELDS := [
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
-	"levels_unlocked", "levels_completed_count", "level_last_completed_at",
+	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared",
 	"staff_recruitment_tier", "funds_cap_bonus",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
-	"gaffe_penalty_applied",
+	"gaffe_penalty_applied", "bills_flipped_by_influence",
 ]
 
 
@@ -335,6 +346,7 @@ func reset_crisis_triggers() -> void:
 	lifetime_gaffes = 0
 	stages_lost_to_gaffes = 0
 	gaffe_penalty_applied = false
+	bills_flipped_by_influence = []
 
 
 ## Every Staff role back to vacant, every firing forgotten, and recruitment
@@ -350,6 +362,7 @@ func reset_levels() -> void:
 	levels_unlocked = []
 	levels_completed_count = 0
 	level_last_completed_at = {}
+	levels_cleared = {}
 
 
 ## Back to the Starter twelve, owned and in the deck.
@@ -694,6 +707,8 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		if last_level_outcome == LevelRunner.WON:
 			_pay_level_rewards()
 			_apply_level_bonus_win(level_runner.level)
+			if not level_id.is_empty():
+				levels_cleared[level_id] = int(levels_cleared.get(level_id, 0)) + 1
 		SaveManager.autosave()
 		return true
 	SaveManager.autosave()
@@ -1541,6 +1556,17 @@ func apply_floor_vote_favorability(deltas: Dictionary) -> void:
 func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta: int) -> void:
 	_move_meta("Reputation", reputation_delta)
 	_move_meta("Party support", party_support_delta)
+
+
+## Every bill_id the influence swing has flipped (§7.7), in the order they
+## happened. A bill can only be voted once — every real Floor Vote level is
+## One-Time (§8) — so this never needs deduplicating in practice, but
+## guarded anyway, the same caution FloorVoteEngine._reallocate_player_
+## vote() already takes for its own single-seat move.
+func record_bill_flip(bill_id: String) -> void:
+	if bill_id.is_empty() or bills_flipped_by_influence.has(bill_id):
+		return
+	bills_flipped_by_influence.append(bill_id)
 
 
 ## Every segment favorability change goes through here, clamped 0-100

@@ -2119,5 +2119,61 @@
     "english": "You already have a session in progress — finish that one first.",
     "placeholders": null,
     "notes": "Shown when 'See a card' is tapped on a different session while a draw is already open; only one draw can be in progress at a time."
+  },
+  {
+    "key": "office.your_record",
+    "where": "Office — main screen, button + panel title",
+    "english": "Your Record",
+    "placeholders": null,
+    "notes": "The Office's new stats page: bills flipped by the Floor Vote influence swing, and level/tier clear counts."
+  },
+  {
+    "key": "office.record_bills_heading",
+    "where": "Office — Your Record",
+    "english": "Bills you've flipped",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.record_bills_empty",
+    "where": "Office — Your Record",
+    "english": "None yet — a strong enough influence swing can flip a close vote.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.record_levels_heading",
+    "where": "Office — Your Record",
+    "english": "Levels cleared",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.record_level_line",
+    "where": "Office — Your Record, one row per cleared level",
+    "english": "{level} — cleared {count}×",
+    "placeholders": "level, count",
+    "notes": null
+  },
+  {
+    "key": "office.record_levels_empty",
+    "where": "Office — Your Record",
+    "english": "No levels cleared yet.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.record_tiers_heading",
+    "where": "Office — Your Record",
+    "english": "Tiers cleared",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.record_tier_line",
+    "where": "Office — Your Record, one row per tier",
+    "english": "Tier {tier}: {count} clears",
+    "placeholders": "tier, count",
+    "notes": null
   }
 ]

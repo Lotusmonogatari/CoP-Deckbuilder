@@ -39,6 +39,8 @@ func _a_run_in_progress() -> void:
 	GameState.lifetime_gaffes = 27
 	GameState.stages_lost_to_gaffes = 2
 	GameState.gaffe_penalty_applied = true
+	GameState.levels_cleared = {"LV01": 2}
+	GameState.bills_flipped_by_influence.assign(["BI01"])
 
 
 func test_a_run_comes_back_exactly_as_it_was_saved() -> void:
