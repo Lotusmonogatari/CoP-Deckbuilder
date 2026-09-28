@@ -16,7 +16,8 @@
   "gaffes_lifetime_penalty_jiban_delta": -15,
   "vote_influence_default_threshold": 85,
   "vote_swing_resistance_default": 85,
-  "weak_answer_effectiveness": 0.75,
+  "question_strong_multiplier": 1.3,
+  "question_weak_multiplier": 0.7,
   "xp_tiers": {},
   "committee_size_bands": {}
 }

@@ -171,40 +171,6 @@ func test_no_move_produces_no_sentence() -> void:
 
 
 # ---------------------------------------------------------------------------
-# A weak answer that missed its own effectiveness roll (2026-09-28)
-# ---------------------------------------------------------------------------
-
-func test_a_weak_answer_that_missed_says_so() -> void:
-	var result := {
-		"effect": {"self_plus": 0},
-		"applied": {"gained": 0},
-		"question_answer": {"grade": "W", "convinced": false},
-	}
-	var line := BattleNarration.player_move(result, SEATS, _state(_room()), "")
-	assert_eq(line, "No one was convinced.")
-
-
-func test_a_weak_answer_that_landed_says_nothing_extra() -> void:
-	var result := {
-		"effect": {"self_plus": 0},
-		"applied": {"gained": 0},
-		"question_answer": {"grade": "W", "convinced": true},
-	}
-	var line := BattleNarration.player_move(result, SEATS, _state(_room()), "")
-	assert_eq(line, "", "a weak answer that DID cost tone is silent, the same as today")
-
-
-func test_a_strong_answer_never_says_not_convinced() -> void:
-	var result := {
-		"effect": {"self_plus": 0},
-		"applied": {"gained": 0},
-		"question_answer": {"grade": "S", "convinced": true},
-	}
-	var line := BattleNarration.player_move(result, SEATS, _state(_room()), "")
-	assert_eq(line, "", "the line is only ever for a weak answer's own missed roll")
-
-
-# ---------------------------------------------------------------------------
 # Units
 # ---------------------------------------------------------------------------
 

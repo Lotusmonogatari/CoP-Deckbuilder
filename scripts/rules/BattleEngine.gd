@@ -64,15 +64,16 @@ var _sequence_mode := "single"
 ## The reporters' questions, in a press conference. Empty everywhere else.
 var _questions: Array = []
 
-## How often a WEAK answer costs tone at all (2026-09-28, Cameron: "weak
-## answers across all stages are effective by 0.75" — 75% of the time it
-## costs the stage's own weak_answer_tone_cost, same as always; the other
-## 25% nothing happens at all — "No one was convinced" — not even the
-## usual weak-answer cost). Defaults to 1.0 (always effective, today's
-## exact behaviour) so a config that never heard of this stays
-## deterministic; BattleSetup.gd passes the real balance.json number for
-## an actual game.
-var _weak_answer_effectiveness := 1.0
+## How a question's own S/M/W grade of a card's suit scales that card's
+## self_plus/opp_minus this round (2026-09-28, Cameron): a Strong answer is
+## boosted, a Weak one is penalized, on top of the stage's own affinity —
+## and, on Strong, still pleases the asking booster exactly as before, this
+## is purely additional. Both default to 1.0 (no change, today's exact
+## behaviour outside a question-asking room) so a config that never heard
+## of this stays deterministic; BattleSetup.gd passes the real balance.json
+## numbers for an actual game.
+var _question_strong_multiplier := 1.0
+var _question_weak_multiplier := 1.0
 
 ## Anything that stopped setup from working, in plain words.
 var setup_problems := PackedStringArray()
@@ -135,7 +136,8 @@ func setup(config: Dictionary) -> bool:
 	_questions = _stage.get("questions", [])
 	if _questions.is_empty():
 		_questions = _draw_questions(config.get("question_pool", []))
-	_weak_answer_effectiveness = float(config.get("weak_answer_effectiveness", 1.0))
+	_question_strong_multiplier = float(config.get("question_strong_multiplier", 1.0))
+	_question_weak_multiplier = float(config.get("question_weak_multiplier", 1.0))
 
 	# A press conference deals a bigger opening hand and then nothing more,
 	# so "opening_hand" wins over the ordinary hand size where both exist.
@@ -316,7 +318,7 @@ func play_card(card_id: String) -> Dictionary:
 		return _refused("not enough time left this turn")
 
 	var context := {
-		"affinity": affinity_for(card),
+		"affinity": affinity_for(card) * question_multiplier_for(card),
 		"segment_share": CardResolver.segment_share(card, _stage),
 		"kanban": int(_meta.get("Reputation", 50)),
 		"opponent_gaffe": state.opponent_gaffe,
@@ -936,7 +938,7 @@ func _standing_context() -> Dictionary:
 ## guard card in a room where nobody attacks you.
 func preview(card: Dictionary) -> Dictionary:
 	var effect := CardResolver.resolve(card, {
-		"affinity": affinity_for(card),
+		"affinity": affinity_for(card) * question_multiplier_for(card),
 		"segment_share": CardResolver.segment_share(card, _stage),
 		"kanban": int(_meta.get("Reputation", 50)),
 		"opponent_gaffe": state.opponent_gaffe,
@@ -999,6 +1001,19 @@ func current_question() -> Dictionary:
 	return _questions[state.question_index]
 
 
+## How the currently drawn question treats this card's suit, as a second
+## multiplier composed alongside stage affinity — 1.0 outside a
+## question-asking room, or on a Medium grade.
+func question_multiplier_for(card: Dictionary) -> float:
+	var question := current_question()
+	if question.is_empty():
+		return 1.0
+	match _grade_of(card, question):
+		"S": return _question_strong_multiplier
+		"W": return _question_weak_multiplier
+	return 1.0
+
+
 func questions_remaining() -> int:
 	return maxi(_questions.size() - state.question_index, 0)
 
@@ -1021,45 +1036,39 @@ func question_caption() -> String:
 ##
 ## Every card answers. Answering in the suit the question invites also
 ## pleases the organisation behind it — a data-driven answer to a question
-## about costs satisfies the people who asked it.
+## about costs satisfies the people who asked it. The grade's own effect on
+## the card's numbers happens earlier, in play_card()'s context, via
+## question_multiplier_for() — this function only handles the booster and
+## the standing weak-answer counter.
 ##
-## Returns { "grade": "S"/"M"/"W", "convinced": bool } so the caller can
-## narrate a weak answer that missed entirely — "convinced" is always true
-## except on the 25%-by-default roll below.
+## Returns { "grade": "S"/"M"/"W" }.
 func _answer_question(card: Dictionary) -> Dictionary:
 	var question := current_question()
 	if question.is_empty():
 		return {}
 
 	var grade := _grade_of(card, question)
-	var convinced := true
 
 	match grade:
 		"S":
 			# A strong answer pleases whoever asked, as it always has — and
 			# a theme can now name more than one organisation at once
 			# ("BO01; BO02"), so it can please several with a single answer.
+			# 2026-09-28, Cameron: on top of this, still, the card's own
+			# numbers are also boosted this round — see
+			# question_multiplier_for().
 			for booster: String in (question.get("pleases_boosters", []) as Array):
 				if not state.pleased_boosters.has(booster):
 					state.pleased_boosters.append(booster)
 		"W":
-			# A weak answer is worse than a bland one: the room cools, the
-			# same way declining does but by a smaller amount. The number is
-			# the stage's, beside the decline cost it sits next to.
-			#
-			# 2026-09-28, Cameron: this only lands _weak_answer_effectiveness
-			# of the time (75% default). The rest of the time nothing
-			# happens at all — not even the usual cost — "No one was
-			# convinced" rather than a milder version of the same penalty.
-			convinced = _rng.randf() < _weak_answer_effectiveness
-			if convinced:
-				var cost := int(_stage.get("weak_answer_tone_cost", 0))
-				if cost > 0 and state.bar != null:
-					state.bar.player_loses(cost)
+			# 2026-09-28, Cameron: a weak answer no longer costs tone at
+			# all — it simply penalizes the card's own effect this round
+			# (question_multiplier_for()). state.weak_answers still counts
+			# every weak answer given, as a standing lifetime tally.
 			state.weak_answers += 1
 
 	state.question_index += 1
-	return {"grade": grade, "convinced": convinced}
+	return {"grade": grade}
 
 
 ## How well this card's suit answers this question: "S", "M" or "W".

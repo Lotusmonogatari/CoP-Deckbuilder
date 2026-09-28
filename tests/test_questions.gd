@@ -6,8 +6,11 @@ extends GutTest
 ## from the pool for its kind rather than naming its own, so a new question
 ## is one row in the spreadsheet.
 ##
-## His rule, settled 2026-09-21: a STRONG answer pleases whoever asked, a
-## MEDIUM one does nothing, and a WEAK one costs press tone.
+## His rule, redesigned 2026-09-28: a STRONG answer boosts the card's own
+## self_plus/opp_minus this round (and still pleases whoever asked, exactly
+## as before), a MEDIUM one leaves it alone, and a WEAK one penalizes it
+## this round. No tone cost at all any more — the old flat
+## weak_answer_tone_cost and last turn's probability layer are both gone.
 
 const GRADED := {
 	"Earnest": "S", "Emotional": "M", "Appeal": "W",
@@ -15,17 +18,19 @@ const GRADED := {
 }
 
 
-## A room that asks questions: one a turn, and a bar to cool.
+## A room that asks questions: one a turn, and a bar to move.
 ##
 ## `config_overrides` merges into the top-level battle config rather than
-## the stage — weak_answer_effectiveness lives there (2026-09-28), since
-## it's one number across every question-asking room, not a per-stage one.
+## the stage — question_strong_multiplier/question_weak_multiplier live
+## there (2026-09-28), since they're two numbers across every
+## question-asking room, not per-stage ones. The three cards carry a real
+## self_plus so a test can actually see the multiplier's effect — the old
+## fixtures here all had self_plus: 0, which could never show one.
 func _conference(overrides: Dictionary = {}, config_overrides: Dictionary = {}) -> BattleEngine:
 	var stage := TestFixtures.stage({
 		"win_mode": "score",
 		"questions_per_turn": 1,
 		"decline_tone_cost": 3,
-		"weak_answer_tone_cost": 2,
 		"player_start": 50,
 	})
 	stage.merge(overrides, true)
@@ -33,9 +38,9 @@ func _conference(overrides: Dictionary = {}, config_overrides: Dictionary = {}) 
 	var config := TestFixtures.battle_config({"stage": stage})
 	config.merge(config_overrides, true)
 	config["cards"] = {
-		"STRONG": TestFixtures.card({"card_id": "STRONG", "suit": "Earnest", "cost": 1}),
-		"BLAND": TestFixtures.card({"card_id": "BLAND", "suit": "Emotional", "cost": 1}),
-		"WEAK": TestFixtures.card({"card_id": "WEAK", "suit": "Appeal", "cost": 1}),
+		"STRONG": TestFixtures.card({"card_id": "STRONG", "suit": "Earnest", "cost": 1, "self_plus": 10}),
+		"BLAND": TestFixtures.card({"card_id": "BLAND", "suit": "Emotional", "cost": 1, "self_plus": 10}),
+		"WEAK": TestFixtures.card({"card_id": "WEAK", "suit": "Appeal", "cost": 1, "self_plus": 10}),
 	}
 	config["deck"] = ["STRONG", "BLAND", "WEAK", "STRONG", "BLAND", "WEAK"]
 
@@ -60,116 +65,104 @@ func _question(overrides: Dictionary = {}) -> Dictionary:
 # Strong, medium, weak
 # ---------------------------------------------------------------------------
 
-func test_a_strong_answer_pleases_the_organisation() -> void:
-	var engine := _conference({"questions": [_question()]})
+func test_a_strong_answer_boosts_the_cards_own_effect_and_pleases_the_organisation() -> void:
+	var engine := _conference({"questions": [_question()]}, {"question_strong_multiplier": 1.3})
 	var before := engine.state.bar.player
+	var affinity_only := engine.affinity_for(TestFixtures.card({"suit": "Earnest"}))
 
 	engine.play_card("STRONG")
 
 	assert_has(engine.state.pleased_boosters, "BO08",
-		"answering in a suit the question grades S pleases whoever asked")
-	assert_eq(engine.state.bar.player, before,
-		"and costs nothing: a strong answer is not also a penalty")
+		"answering in a suit the question grades S still pleases whoever asked")
+	assert_eq(engine.state.bar.player, before + CardResolver.round_half_up(10.0 * affinity_only * 1.3),
+		"a strong answer's own self_plus is boosted 1.3x on top of stage affinity")
 
 
-func test_a_medium_answer_does_nothing_either_way() -> void:
-	var engine := _conference({"questions": [_question()]})
+func test_a_medium_answer_is_unchanged_by_the_question() -> void:
+	var engine := _conference({"questions": [_question()]}, {"question_strong_multiplier": 1.3, "question_weak_multiplier": 0.7})
 	var before := engine.state.bar.player
+	var affinity_only := engine.affinity_for(TestFixtures.card({"suit": "Emotional"}))
 
 	engine.play_card("BLAND")
 
 	assert_eq(engine.state.pleased_boosters.size(), 0, "nobody is pleased")
-	assert_eq(engine.state.bar.player, before, "and nothing is lost")
+	assert_eq(engine.state.bar.player, before + CardResolver.round_half_up(10.0 * affinity_only),
+		"a medium grade applies stage affinity only, no question multiplier")
 	assert_eq(engine.state.weak_answers, 0)
 
 
-func test_a_weak_answer_costs_press_tone() -> void:
-	var engine := _conference({"questions": [_question()]})
+func test_a_weak_answer_penalizes_the_cards_own_effect_and_pleases_nobody() -> void:
+	var engine := _conference({"questions": [_question()]}, {"question_weak_multiplier": 0.7})
 	var before := engine.state.bar.player
+	var affinity_only := engine.affinity_for(TestFixtures.card({"suit": "Appeal"}))
 
 	engine.play_card("WEAK")
 
 	assert_eq(engine.state.pleased_boosters.size(), 0, "nobody is pleased")
-	assert_eq(engine.state.bar.player, before - 2,
-		"the room cools by the stage's weak_answer_tone_cost")
-	assert_eq(engine.state.weak_answers, 1, "and it is counted")
+	assert_eq(engine.state.bar.player, before + CardResolver.round_half_up(10.0 * affinity_only * 0.7),
+		"a weak answer's own self_plus is penalized 0.7x on top of stage affinity")
+	assert_eq(engine.state.weak_answers, 1, "and it is still counted")
 
 
-func test_a_weak_answer_stings_less_than_saying_nothing() -> void:
-	# The shape of the rule rather than the numbers: ducking a question must
-	# stay worse than answering it badly, or there is no reason to answer.
-	var weak := _conference({"questions": [_question()]})
-	weak.play_card("WEAK")
-
-	var silent := _conference({"questions": [_question()]})
-	silent.end_turn()
-
-	assert_gt(weak.state.bar.player, silent.state.bar.player,
-		"a bad answer should cost less than no answer")
-
-
-func test_the_cost_is_the_stages_to_set() -> void:
-	var engine := _conference({
-		"questions": [_question()], "weak_answer_tone_cost": 0,
-	})
+func test_a_weak_answer_costs_no_tone_at_all() -> void:
+	# The old flat weak_answer_tone_cost and last turn's probability layer
+	# are both fully gone — a weak answer only ever touches the card's own
+	# effect now, never a separate tone cost.
+	var engine := _conference({"questions": [_question()], "weak_answer_tone_cost": 5},
+		{"question_weak_multiplier": 0.7})
 	var before := engine.state.bar.player
+
 	engine.play_card("WEAK")
-	assert_eq(engine.state.bar.player, before,
-		"a stage that sets the cost to zero takes nothing")
+
+	assert_gt(engine.state.bar.player, before - 5,
+		"a stage's own weak_answer_tone_cost is never read any more")
 
 
 # ---------------------------------------------------------------------------
-# Weak answer effectiveness (2026-09-28, Cameron): a weak answer only costs
-# tone weak_answer_effectiveness of the time; the rest of the time nothing
-# happens at all, not even a milder penalty — "No one was convinced."
+# The question multiplier composes with stage affinity, and only applies
+# when there's actually a question on the floor (2026-09-28, Cameron).
 # ---------------------------------------------------------------------------
 
-func test_a_config_with_no_effectiveness_set_is_always_effective() -> void:
-	# The default (1.0) preserves every OLDER test/fixture's exact,
-	# deterministic behaviour — nothing here has to know this mechanic
-	# exists to keep passing.
-	var engine := _conference({"questions": [_question()]})
+func test_the_multiplier_composes_with_a_real_stage_affinity() -> void:
+	# Data Driven is 1.3x at ST01 in the fixture affinity table — a
+	# non-neutral number, so this proves the two multipliers stack rather
+	# than one silently overriding the other.
+	var stage := TestFixtures.stage({
+		"stage_id": "ST01", "win_mode": "score", "questions_per_turn": 1, "player_start": 50,
+		"questions": [_question({"grades": {
+			"Earnest": "M", "Emotional": "M", "Appeal": "M",
+			"Data Driven": "S", "Divisive": "M", "Duplicitous": "M",
+		}})],
+	})
+	var config := TestFixtures.battle_config({"stage": stage})
+	config["question_strong_multiplier"] = 1.3
+	config["cards"] = {
+		"CARD": TestFixtures.card({"card_id": "CARD", "suit": "Data Driven", "cost": 1, "self_plus": 10}),
+	}
+	config["deck"] = ["CARD"]
+
+	var engine := BattleEngine.new()
+	engine.setup(config)
 	var before := engine.state.bar.player
 
-	var result := engine.play_card("WEAK")
+	engine.play_card("CARD")
 
-	assert_eq(engine.state.bar.player, before - 2, "the cost still lands every time")
-	assert_true(bool(result["question_answer"]["convinced"]))
-
-
-func test_zero_effectiveness_never_costs_tone() -> void:
-	var engine := _conference({"questions": [_question()]}, {"weak_answer_effectiveness": 0.0})
-	var before := engine.state.bar.player
-
-	var result := engine.play_card("WEAK")
-
-	assert_eq(engine.state.bar.player, before, "nobody was convinced, so nothing is taken")
-	assert_eq(engine.state.weak_answers, 1, "it still counts as a weak answer")
-	assert_false(bool(result["question_answer"]["convinced"]))
-	assert_eq(str(result["question_answer"]["grade"]), "W")
+	assert_eq(engine.state.bar.player, before + CardResolver.round_half_up(10.0 * 1.3 * 1.3),
+		"stage affinity (1.3x) and the question's own strong grade (1.3x) both apply")
 
 
-func test_a_strong_or_medium_answer_never_rolls_at_all() -> void:
-	# convinced only ever means something for a WEAK answer — an S or M
-	# grade doesn't have a roll to miss.
-	var engine := _conference({"questions": [_question()]}, {"weak_answer_effectiveness": 0.0})
-	var result := engine.play_card("STRONG")
-	assert_true(bool(result["question_answer"]["convinced"]),
-		"a strong answer is never 'unconvincing' — the roll only applies to weak ones")
+func test_no_current_question_means_no_multiplier() -> void:
+	# Ordinary Shared_pool rooms (no question pool at all) must play exactly
+	# as they did before this mechanic existed.
+	var config := TestFixtures.battle_config()
+	config["question_strong_multiplier"] = 1.3
+	config["question_weak_multiplier"] = 0.7
 
+	var engine := BattleEngine.new()
+	engine.setup(config)
 
-func test_the_effectiveness_is_the_battles_to_set_not_the_stages() -> void:
-	# Same stage row (weak_answer_tone_cost 2), two different battles: the
-	# number comes from the top-level config (real games: balance.json's
-	# weak_answer_effectiveness), never from the stage itself.
-	var always := _conference({"questions": [_question()]}, {"weak_answer_effectiveness": 1.0})
-	var never := _conference({"questions": [_question()]}, {"weak_answer_effectiveness": 0.0})
-
-	always.play_card("WEAK")
-	never.play_card("WEAK")
-
-	assert_lt(always.state.bar.player, never.state.bar.player,
-		"the same weak answer costs tone in one battle and not the other")
+	assert_eq(engine.question_multiplier_for(TestFixtures.card({"suit": "Earnest"})), 1.0,
+		"no question on the floor means no question multiplier at all")
 
 
 func test_a_question_that_names_one_suit_still_works() -> void:
@@ -179,12 +172,13 @@ func test_a_question_that_names_one_suit_still_works() -> void:
 	var engine := _conference({"questions": [{
 		"id": "OLD", "text": "Your stance?",
 		"prefers_suit": "Earnest", "pleases_boosters": ["BO03"],
-	}]})
+	}]}, {"question_weak_multiplier": 0.7})
 	var before := engine.state.bar.player
+	var affinity_only := engine.affinity_for(TestFixtures.card({"suit": "Appeal"}))
 
 	engine.play_card("WEAK")
-	assert_eq(engine.state.bar.player, before,
-		"an ungraded question has no weak answers, so nothing is taken")
+	assert_eq(engine.state.bar.player, before + CardResolver.round_half_up(10.0 * affinity_only),
+		"an ungraded suit reads as medium, so no question multiplier applies")
 	assert_eq(engine.state.pleased_boosters.size(), 0)
 
 

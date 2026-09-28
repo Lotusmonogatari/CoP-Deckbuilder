@@ -97,13 +97,6 @@ static func player_move(result: Dictionary, stage: Dictionary,
 	if gaffe > 0:
 		parts.append(Text.say("narration.gaffe", {"count": gaffe}))
 
-	# A weak answer that missed its own roll entirely (2026-09-28, Cameron):
-	# not even the usual weak-answer cost landed, so it's worth a line of
-	# its own rather than reading as a card that simply did nothing.
-	var question_answer: Dictionary = result.get("question_answer", {})
-	if str(question_answer.get("grade", "")) == "W" and not bool(question_answer.get("convinced", true)):
-		parts.append(Text.say("narration.not_convinced"))
-
 	return _sentence(parts)
 
 

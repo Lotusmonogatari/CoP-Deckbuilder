@@ -2233,9 +2233,23 @@
     "notes": null
   },
   {
-    "key": "narration.not_convinced",
-    "where": "Battle narration — a weak answer that missed its own effectiveness roll",
-    "english": "No one was convinced",
+    "key": "card.question_strong",
+    "where": "Card zoom — the drawn question's own effect on this card (2026-09-28)",
+    "english": "This question plays right into your hands.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "card.question_medium",
+    "where": "Card zoom — the drawn question's own effect on this card (2026-09-28)",
+    "english": "This question doesn't care how you answer it.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "card.question_weak",
+    "where": "Card zoom — the drawn question's own effect on this card (2026-09-28)",
+    "english": "This question works against you here.",
     "placeholders": null,
     "notes": null
   }

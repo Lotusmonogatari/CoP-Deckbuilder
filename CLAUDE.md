@@ -672,7 +672,7 @@ flipped bills by their real `bill_name`, each cleared level by its own
 `description` and clear count, and clears per tier — all through new
 Text-tab rows, per the "no sentence lives in a script" rule.
 
-### Balance tuning and a weak-answer effectiveness roll (2026-09-28, Cameron)
+### Balance tuning and a question-effectiveness multiplier (2026-09-28, Cameron)
 
 Five small, direct numbers, plus one new mechanic, from a single pass
 through this file's own open-items list:
@@ -695,24 +695,36 @@ through this file's own open-items list:
   proven against real level data by `tests/test_real_battle.gd`'s
   `test_st05_town_hall_actually_answers_its_drawn_question_too`) — the
   §9 bullet was stale, not a real gap, and is now removed.
-- **A weak answer's own effectiveness** (new mechanic): "weak answers
-  across all stages are effective by 0.75" — a weak (W-graded) answer to
-  a drawn question now only costs the stage's own `weak_answer_tone_cost`
-  75% of the time (`balance.json`'s new `weak_answer_effectiveness`, one
-  number across every question-asking room rather than a per-stage-type
-  one); the other 25% of the time nothing happens at all, not even a
-  milder penalty — "No one was convinced," a new narration line
-  (`narration.not_convinced`) shown only on that miss.
-  `BattleEngine._answer_question()` now returns `{"grade", "convinced"}`,
-  carried in `play_card()`'s own result under `"question_answer"` and read
-  by `BattleNarration.player_move()`. Defaults to `1.0` (always
-  effective — today's exact behaviour) when a config never sets it, so
-  every older fixture/test stays deterministic without having to know
-  this mechanic exists; `BattleSetup.gd` is the one place that reads the
-  real `balance.json` number for an actual game. The flat
-  `weak_answer_tone_cost` number itself (§9, still 1, still a
-  placeholder) is untouched — this is a new layer on top of it, not a
-  replacement.
+- **A question's own effectiveness on the card that answers it** (new
+  mechanic, redesigned once on the same day — see below): a Strong-graded
+  answer now boosts that card's own `self_plus`/`opp_minus` **1.3x** this
+  round, on top of the stage's own affinity, and still pleases the asking
+  organisation exactly as before (settled 2026-09-21, untouched); a Weak
+  one penalizes it **0.7x**; Medium is unchanged. `balance.json`'s new
+  `question_strong_multiplier`/`question_weak_multiplier` (one pair of
+  numbers across every question-asking room, not per-stage), both
+  mirroring `affinity.json`'s own 0.7–1.3 range at Cameron's direct
+  instruction. `BattleEngine.question_multiplier_for(card)` composes into
+  the same `context["affinity"]` float `CardResolver.resolve()` already
+  multiplies by — both `play_card()`'s real resolution and `preview()`'s
+  card-zoom read from the same place, so what the zoom promises is what
+  play_card() actually does. Shown to the player **before** they play the
+  card: a second card-zoom line (`describe_question_for()`,
+  `CardBackView.show_card()`'s new `question` parameter) right below the
+  existing stage-affinity line, using the same "plain English, not a raw
+  multiplier" convention. Both default to `1.0` (no change — today's
+  exact behaviour outside a question-asking room) when a config never
+  sets them, so every older fixture/test stays deterministic without
+  knowing this mechanic exists; `BattleSetup.gd` is the one place that
+  reads the real `balance.json` numbers for an actual game. No tone cost
+  at all any more on a weak answer — not the old flat
+  `weak_answer_tone_cost` (§9, still 1, still exported, now simply
+  unread — the same "unused, not removed" precedent `office.new_cards`
+  already set), and not an earlier same-day build of this feature (a
+  75%-chance-to-cost-tone roll) that Cameron redesigned within the hour
+  once he saw it described back to him: that version, and its
+  `narration.not_convinced` "No one was convinced" line, are both fully
+  gone, not layered under this one.
 
 ## 12. Working agreement
 

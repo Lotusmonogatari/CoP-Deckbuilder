@@ -525,7 +525,8 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		# Cameron: 0.75) — the same number across every question-asking
 		# stage, rather than one per stage type. Defaults to 1.0 (always
 		# effective) if the Balance tab ever leaves it blank.
-		"weak_answer_effectiveness": float(DataDB.balance.get("weak_answer_effectiveness", 1.0)),
+		"question_strong_multiplier": float(DataDB.balance.get("question_strong_multiplier", 1.0)),
+		"question_weak_multiplier": float(DataDB.balance.get("question_weak_multiplier", 1.0)),
 		"deck": player_deck(),
 		# A good caucus earlier in the level starts this stage ahead, and so
 		# does an organisation whose backing you have bought (STAGE_START_BONUS).

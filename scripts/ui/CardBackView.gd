@@ -128,8 +128,11 @@ func _notification(what: int) -> void:
 	_relayout()
 
 
-## Everything the front had no room for.
-func show_card(card: Dictionary, here: String, room: String) -> void:
+## Everything the front had no room for. `question` is a second, separate
+## line for the drawn question's own S/M/W effect on this card — empty
+## outside a question-asking room, which costs nothing to pass (see
+## `_write()`'s own no-op on an empty string).
+func show_card(card: Dictionary, here: String, room: String, question: String = "") -> void:
 	_build()
 
 	var suit := str(card.get("suit", ""))
@@ -156,6 +159,9 @@ func show_card(card: Dictionary, here: String, room: String) -> void:
 
 	if not room.is_empty():
 		_write(room, BODY_SCALE, FAINT_INK)
+
+	if not question.is_empty():
+		_write(question, BODY_SCALE, FAINT_INK)
 
 	_relayout()
 

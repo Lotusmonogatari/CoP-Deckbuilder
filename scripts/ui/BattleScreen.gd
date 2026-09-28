@@ -590,6 +590,16 @@ static func describe_room_for(affinity: float) -> String:
 	return "Landing as written here."
 
 
+## How the currently drawn question treats this card, in words — a second,
+## separate line from the stage's own affinity above (2026-09-28, Cameron).
+static func describe_question_for(multiplier: float) -> String:
+	if multiplier > 1.0:
+		return Text.say("card.question_strong")
+	if multiplier < 1.0:
+		return Text.say("card.question_weak")
+	return Text.say("card.question_medium")
+
+
 ## Tapping a card opens the zoom view. Nothing is played until the player
 ## confirms there, so a mis-tap never costs a turn.
 func _on_card_chosen(card_id: String) -> void:
@@ -614,8 +624,10 @@ func _on_card_chosen(card_id: String) -> void:
 		%ZoomColumn.add_child(_card_back)
 		%ZoomColumn.move_child(_card_back, 0)
 
+	var question_line := (describe_question_for(engine.question_multiplier_for(card))
+		if not engine.current_question().is_empty() else "")
 	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card),
-		describe_room_for(engine.affinity_for(card)))
+		describe_room_for(engine.affinity_for(card)), question_line)
 
 	%ZoomPlay.disabled = engine.card_cost(card) > engine.state.energy
 	_card_zoom.show()
