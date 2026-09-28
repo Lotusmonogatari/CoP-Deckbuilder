@@ -799,6 +799,14 @@ func _cosmetics_equip_button(label: String, is_active: bool, slot: String, packa
 func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 	GameState.equip_cosmetic(slot, package_id)
 	SaveManager.autosave()
+	# PlaceholderArt only re-reads its art on its OWN property setters, and
+	# nothing else here ever re-sets _background's — without this, equipping
+	# a new Office Background left the old picture showing behind the
+	# Cosmetics panel until the player left and came back (2026-09-28,
+	# caught by a throwaway driver, not by eye: the data path was already
+	# correct, only the live node never got told to look again).
+	if slot == CosmeticPieces.BACKGROUND:
+		_background.art_id = _background.art_id
 	_show_cosmetics()
 
 

@@ -836,7 +836,19 @@ wood-panelled study) is now the base look everywhere the Office shows
 today, and `OFFICE_UPGRADED.png` is the cosmetic background piece CP01
 "Neon Ambition" (§8) already pointed at, a modern glass office — so
 buying and equipping CP01's Office Background slot now genuinely changes
-what's on screen, not just in the data. `PC01_RED_neutral.png` is the
+what's on screen, not just in the data. This was confirmed rather than
+assumed (2026-09-28): a throwaway driver caught that the equip button
+only updated `GameState.active_cosmetics`, not the live Office picture
+behind the Cosmetics panel — `PlaceholderArt` only re-reads its art on
+its own property setters, and nothing else re-set `_background`'s, so
+the new look only ever showed up on the NEXT time Office loaded, not the
+moment you equipped it. `OfficeScreen._on_equip_cosmetic()` now re-sets
+`_background.art_id` (a self-assignment; that setter's own `_refresh()`
+runs regardless) whenever the slot equipped is Background, so the change
+is visible at once. `cosmetics_driver.gd`'s interaction test now checks
+the live node's own resolved texture after a real click, not just the
+data, so a regression here fails a real click test again. `PC01_RED_
+neutral.png` is the
 first real cosmetic outfit piece too (CP01's own `outfit_variant`, "RED")
 — it arrived as a flat RGB drawing rather than a transparent cutout the
 way PC01's four other expressions are, so its background was stripped

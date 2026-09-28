@@ -105,6 +105,33 @@ func _walk() -> void:
 		return
 	print("  equipped CP01's outfit with a real click")
 
+	# --- Equipping the Background piece updates the LIVE Office picture ------
+	# right away, with no scene reload needed (2026-09-28: PlaceholderArt only
+	# refreshes on its own property setters, so a naive equip that only
+	# touched GameState left the old OFFICE.png showing behind this very
+	# panel until the player left and came back — caught by a throwaway
+	# driver, fixed in _on_equip_cosmetic()).
+	panel = office.get_node("CosmeticsPanel") as Overlay
+	var background_row := panel.find_child("CosmeticSlot_background", true, false)
+	if background_row == null:
+		_failures.append("no Background equip row appeared for CP01")
+		return
+	var background_choice := _button_with_text(background_row, "Neon Ambition")
+	if background_choice == null:
+		_failures.append("the Background row has no button for CP01")
+		return
+	var background_art := office.find_child("Background", true, false) as PlaceholderArt
+	if background_art == null:
+		_failures.append("could not find the Office's own Background node")
+		return
+	await _click(background_choice)
+	var background_texture: Texture2D = background_art._texture_rect.texture
+	if background_texture == null or not background_texture.resource_path.ends_with("OFFICE_UPGRADED.png"):
+		_failures.append("equipping CP01's Background did not update the live Office picture (got %s)"
+			% [background_texture.resource_path if background_texture else "null"])
+		return
+	print("  equipped CP01's background and the live Office picture updated at once")
+
 	# --- Un-equip it: Default, clicked for real -------------------------------
 	panel = office.get_node("CosmeticsPanel") as Overlay
 	outfit_row = panel.find_child("CosmeticSlot_outfit", true, false)
