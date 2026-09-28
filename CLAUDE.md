@@ -772,6 +772,41 @@ dedup system):
   Office, the same reasoning `outcome.pleased`'s own comment already
   gives.
 
+### Your Record's Sanban values, a real Media Ambush surprise, and a real Outcome-panel bug (2026-09-28, Cameron)
+
+- **"Your Record" now opens on the four Sanban values** (Constituency
+  support, Reputation, Funds, Party support) — `OfficeScreen._show_record()`,
+  a new heading ahead of the bills/levels/tiers sections it already had,
+  reading straight off `GameState.meta` (live, not the run's starting
+  numbers the New Game screen shows) via the same `DataDB.sanban` loop and
+  `new_game.stat_line` wording New Game's own `_starting_stat_lines()`
+  already uses. New `office.record_sanban_heading` Text row ("Where you
+  stand").
+- **Media Ambush (ST19) is now a real surprise, not a half one.**
+  `stages.json`'s `reveal_in_briefing: "No"` already hid a stage's name and
+  opponent in the level briefing, but its win/loss numbers still showed —
+  a deliberate earlier choice so the player could weigh the risk. Cameron's
+  call this time: remove the stage from the briefing entirely instead —
+  no heading, no placeholder, no rewards, no "if you lose" line. Confirmed
+  live against LV02 (the real level pairing a Lobbyist Meeting with a
+  Media Ambush): the briefing now shows exactly its one other stage and
+  nothing else. `office.briefing.surprise_stage`'s old placeholder text is
+  now unread, same "unused, not removed" precedent as `office.new_cards`.
+- **A real bug, found chasing down what turned out to be a vague report**
+  ("the negative outcome values are not displaying"): `OutcomePresenter.
+  _body_for()`'s loss branch returned early, before the code that prints
+  which organisations the player's answers pleased or annoyed — that block
+  only ever ran on the WIN path. The standing change itself was always
+  applied correctly (`GameState.finish_stage()` doesn't care about
+  outcome for that); only the one place that explains WHY a booster's
+  number just moved stayed silent, and only on the stage that lost. Fixed
+  by moving the pleased/displeased lines ahead of the win/loss branch, so
+  both show regardless of outcome. `tests/test_outcome_presenter.gd` (new)
+  proves it two ways — confirmed failing before the fix, passing after:
+  a lost stage's displeased organisation reaches the panel, so does a
+  pleased one, and the loss's own cost line (Constituency support etc.)
+  is untouched alongside it.
+
 ## 12. Working agreement
 
 - **Explain like a colleague, not a manual.** Keep it short and plain English, and say what changed and why.

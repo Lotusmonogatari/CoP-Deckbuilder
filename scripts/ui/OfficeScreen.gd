@@ -623,6 +623,12 @@ func _build_record() -> void:
 func _show_record() -> void:
 	var rows: Array[Control] = []
 
+	rows.append(UiKit.heading(Text.say("office.record_sanban_heading")))
+	for variable: Dictionary in DataDB.sanban:
+		var name := str(variable.get("name_en", ""))
+		rows.append(UiKit.line(Text.say("new_game.stat_line",
+			{"name": name, "value": GameState.meta.get(name, 0)})))
+
 	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))
 	if GameState.bills_flipped_by_influence.is_empty():
 		rows.append(UiKit.line(Text.say("office.record_bills_empty")))
@@ -1358,18 +1364,19 @@ func _show_briefing() -> void:
 	var anything_set := false
 
 	for stage: Dictionary in stages:
-		if _reveal_in_briefing(stage):
-			rows.append(UiKit.heading(str(stage.get("name_en", "A stage"))))
-			var who := _opponents_line(stage)
-			if not who.is_empty():
-				rows.append(UiKit.line(who, "SmallLabel"))
-		else:
-			# A stage marked "No" (Media Ambush, an ambush by name) does not
-			# get to say what it is or who is waiting — that is the surprise.
-			# Its rewards still show below, same as any other stage, so the
-			# player can weigh what they are risking without being told what
-			# is coming for it.
-			rows.append(UiKit.heading(Text.say("office.briefing.surprise_stage")))
+		if not _reveal_in_briefing(stage):
+			# A stage marked "No" (Media Ambush, an ambush by name) is left
+			# out of the briefing entirely — 2026-09-28, Cameron: no heading,
+			# no rewards, no "if you lose" line, nothing that gives away it
+			# is even there. An earlier pass still showed its win/loss
+			# numbers so the player could weigh the risk; this replaces that
+			# with a real, total surprise instead.
+			continue
+
+		rows.append(UiKit.heading(str(stage.get("name_en", "A stage"))))
+		var who := _opponents_line(stage)
+		if not who.is_empty():
+			rows.append(UiKit.line(who, "SmallLabel"))
 
 		if LevelRunner.rewards_are_unset(stage):
 			rows.append(UiKit.line(

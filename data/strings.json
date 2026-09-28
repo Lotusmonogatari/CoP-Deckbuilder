@@ -2259,5 +2259,12 @@
     "english": "Annoyed: {names}.",
     "placeholders": "names",
     "notes": "Which organisations a weak answer annoyed."
+  },
+  {
+    "key": "office.record_sanban_heading",
+    "where": "Office — Your Record panel, heading above the current Sanban values",
+    "english": "Where you stand",
+    "placeholders": null,
+    "notes": null
   }
 ]

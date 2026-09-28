@@ -199,6 +199,7 @@
   "office.record_level_line": "{level} — cleared {count}×",
   "office.record_levels_empty": "No levels cleared yet.",
   "office.record_levels_heading": "Levels cleared",
+  "office.record_sanban_heading": "Where you stand",
   "office.record_tier_line": "Tier {tier}: {count} clears",
   "office.record_tiers_heading": "Tiers cleared",
   "office.recruitment_tier_locked": "Not open to recruitment yet.",
