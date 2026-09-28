@@ -58,6 +58,11 @@ static var _placeholder_cache: Dictionary = {}
 ## staff member, visitor or reporter. `stage_id`, when given, is tried first
 ## for a stage-specific outfit — entirely optional; nothing has to be drawn
 ## for it, and the plain portrait is used everywhere it isn't.
+##
+## A cosmetic outfit piece (2026-09-28) is tried before that: only when
+## `character_id` is the CURRENT PROTAGONIST'S OWN ID and an outfit package
+## is equipped (GameState.active_cosmetics), so no other character can ever
+## pick one up by accident. See character_path()/_outfit_variant().
 static func character(character_id: String, expression: String = NEUTRAL,
 		stage_id: String = "") -> Texture2D:
 	return _load(character_path(character_id, expression, stage_id), character_id)
@@ -68,9 +73,25 @@ static func card(card_id: String) -> Texture2D:
 	return _load(card_path(card_id), card_id)
 
 
-## A stage background, by stage ID (or OFFICE).
+## A stage background, by stage ID (or OFFICE). A cosmetic background piece
+## (2026-09-28) is tried first, only for OFFICE and only when one is
+## equipped — see _background_variant(). Other stages are untouched; this
+## build only covers the Office (CLAUDE.md's cosmetics plan).
 static func background(stage_id: String) -> Texture2D:
-	return _load(_first_existing([folder("background") + stage_id + ".png"]), stage_id)
+	return _load(background_path(stage_id), stage_id)
+
+
+## The file background() actually resolves to, or "" for none — split out
+## the same reason character_path() is, so PlaceholderArt's "is this a
+## placeholder?" check sees the same cosmetic-aware answer background()
+## itself uses, rather than only ever checking the plain file.
+static func background_path(stage_id: String) -> String:
+	var candidates: Array[String] = []
+	var variant := _background_variant(stage_id)
+	if not variant.is_empty():
+		candidates.append(folder("background") + "%s_%s.png" % [stage_id, variant])
+	candidates.append(folder("background") + stage_id + ".png")
+	return _first_existing(candidates)
 
 
 ## An icon — an organisation, a suit, a meta-variable.
@@ -103,16 +124,26 @@ static func item_icon(icon_name: String) -> Texture2D:
 ## file of that same expression — a drawn stage outfit beats falling back to
 ## a plain drawing of a worse-matching expression, but a plain drawing of
 ## the RIGHT expression still beats a stage outfit of the wrong one.
+##
+## A cosmetic outfit piece (2026-09-28), resolved automatically via
+## _outfit_variant(), is tried before EVERYTHING else for each expression —
+## a bought-and-equipped outfit beats even a stage outfit of the base look —
+## but still falls all the way through to the plain file if the variant art
+## isn't drawn, the same "missing art never blocks anything" bargain every
+## other axis here already keeps. Resolved once, here, so every caller
+## (PlaceholderArt's "is this a placeholder?" check included) sees the same
+## answer without having to know cosmetics exist.
 static func character_path(character_id: String, expression: String = NEUTRAL,
 		stage_id: String = "") -> String:
-	return _first_existing(character_path_candidates(character_id, expression, stage_id))
+	return _first_existing(character_path_candidates(
+		character_id, expression, stage_id, _outfit_variant(character_id)))
 
 
 ## The ordered list character_path() searches, most-specific first — split
 ## out so the ORDER is something a test can check without any file needing
 ## to exist on disk.
 static func character_path_candidates(character_id: String, expression: String = NEUTRAL,
-		stage_id: String = "") -> Array[String]:
+		stage_id: String = "", variant: String = "") -> Array[String]:
 	var candidates: Array[String] = []
 	var folders: Array[String] = [character_folder(character_id)]
 	var legacy := str(_art().get("legacy_folders", {}).get("character", ""))
@@ -120,10 +151,48 @@ static func character_path_candidates(character_id: String, expression: String =
 		folders.append(legacy)
 	for face: String in expression_chain(expression):
 		for where: String in folders:
+			if not variant.is_empty():
+				if not stage_id.is_empty():
+					candidates.append(where + "%s_%s_%s_%s.png" % [character_id, variant, stage_id, face])
+				candidates.append(where + "%s_%s_%s.png" % [character_id, variant, face])
 			if not stage_id.is_empty():
 				candidates.append(where + "%s_%s_%s.png" % [character_id, stage_id, face])
 			candidates.append(where + "%s_%s.png" % [character_id, face])
 	return candidates
+
+
+# ---------------------------------------------------------------------------
+# Cosmetics (2026-09-28)
+# ---------------------------------------------------------------------------
+# Both helpers read GameState directly — ArtLoader already reads DataDB the
+# same way (_art()), and this keeps every existing call site (PlaceholderArt,
+# PlayerPortraitPresenter, OfficeScreen's background) working unchanged: the
+# cosmetic lookup happens here, once, rather than at every place art is drawn.
+
+## The equipped outfit's filename token, or "" — only ever non-empty for the
+## CURRENT PROTAGONIST'S OWN ID, so an opponent, staff member or visitor can
+## never accidentally wear a cosmetic meant for the player.
+static func _outfit_variant(character_id: String) -> String:
+	if character_id.is_empty() or character_id != str(DataDB.player.get("player_id", "")):
+		return ""
+	return _piece_field(CosmeticPieces.OUTFIT, "outfit_variant")
+
+
+## The equipped background's filename token, or "" — only ever non-empty
+## for the Office (this build's own scope; see background()'s own comment).
+static func _background_variant(stage_id: String) -> String:
+	if stage_id != "OFFICE":
+		return ""
+	return _piece_field(CosmeticPieces.BACKGROUND, "background_variant")
+
+
+static func _piece_field(slot: String, key: String) -> String:
+	var package_id := str(GameState.active_cosmetics.get(slot, ""))
+	if package_id.is_empty():
+		return ""
+	# CosmeticPieces.field() reads the blank cell safely: a JSON null must
+	# never become the literal text "<null>".
+	return CosmeticPieces.field(DataDB.get_cosmetic_package(package_id), key)
 
 
 static func card_path(card_id: String) -> String:

@@ -120,6 +120,30 @@
    "bus": "music",
    "when": "asked for by name",
    "loop": true
+  },
+  "music_office_pop": {
+   "file": "",
+   "bus": "music",
+   "when": "cosmetic package CP01's own Office track (Audio._cosmetic_music_override())",
+   "loop": true
+  },
+  "music_battle_pop": {
+   "file": "",
+   "bus": "music",
+   "when": "cosmetic package CP01's own battle track (Audio._cosmetic_music_override())",
+   "loop": true
+  },
+  "music_office_shamisen": {
+   "file": "",
+   "bus": "music",
+   "when": "cosmetic package CP02's own Office track (Audio._cosmetic_music_override())",
+   "loop": true
+  },
+  "music_battle_shamisen": {
+   "file": "",
+   "bus": "music",
+   "when": "cosmetic package CP02's own battle track (Audio._cosmetic_music_override())",
+   "loop": true
   }
  },
  "speech": {

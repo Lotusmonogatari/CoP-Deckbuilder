@@ -41,6 +41,8 @@ func _a_run_in_progress() -> void:
 	GameState.gaffe_penalty_applied = true
 	GameState.levels_cleared = {"LV01": 2}
 	GameState.bills_flipped_by_influence.assign(["BI01"])
+	GameState.owned_cosmetic_packages.assign(["CP01"])
+	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CP01"}
 
 
 func test_a_run_comes_back_exactly_as_it_was_saved() -> void:

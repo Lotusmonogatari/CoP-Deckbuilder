@@ -92,3 +92,75 @@ func test_the_art_and_label_are_always_the_back_two_children() -> void:
 	assert_eq(art.get_child_count(), 3)
 	assert_eq(art.get_child(2).name, "AlreadyThere",
 		"a child present before _build() runs stays in front of the art")
+
+
+# ---------------------------------------------------------------------------
+# Cosmetic packages (2026-09-28) — a bought-and-equipped outfit/background
+# variant, resolved automatically from GameState.active_cosmetics, never
+# passed explicitly by a call site. See CosmeticPieces.gd.
+# ---------------------------------------------------------------------------
+
+var _active_cosmetics_before: Dictionary = {}
+
+
+func before_each() -> void:
+	_active_cosmetics_before = GameState.active_cosmetics.duplicate(true)
+
+
+func after_each() -> void:
+	GameState.active_cosmetics = _active_cosmetics_before
+
+
+func test_an_explicit_variant_is_tried_before_stage_and_plain_candidates() -> void:
+	var candidates := ArtLoader.character_path_candidates("OP03", "attacking", "ST04", "RED")
+	var folder := ArtLoader.folder("opponent")
+	var variant_stage := candidates.find(folder + "OP03_RED_ST04_attacking.png")
+	var variant_plain := candidates.find(folder + "OP03_RED_attacking.png")
+	var stage_only := candidates.find(folder + "OP03_ST04_attacking.png")
+	assert_gte(variant_stage, 0)
+	assert_gte(variant_plain, 0)
+	assert_lt(variant_stage, variant_plain, "the variant's own stage outfit comes first")
+	assert_lt(variant_plain, stage_only, "any variant candidate beats a plain stage outfit")
+
+
+func test_no_variant_means_no_variant_candidates_at_all() -> void:
+	for candidate: String in ArtLoader.character_path_candidates("OP03", "attacking"):
+		assert_false(candidate.contains("_RED_"), candidate)
+
+
+func test_an_equipped_outfit_only_ever_applies_to_the_current_protagonists_own_id() -> void:
+	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CP01"}   # outfit_variant RED
+	var protagonist_id := str(DataDB.player.get("player_id", ""))
+	assert_eq(ArtLoader._outfit_variant(protagonist_id), "RED",
+		"the protagonist's own portrait picks up the equipped outfit")
+	assert_eq(ArtLoader._outfit_variant("OP03"), "",
+		"an opponent never picks up the player's own cosmetic")
+	assert_eq(ArtLoader._outfit_variant(""), "")
+
+
+func test_no_outfit_equipped_means_the_plain_chain_unchanged() -> void:
+	GameState.active_cosmetics = {}
+	var protagonist_id := str(DataDB.player.get("player_id", ""))
+	assert_false(ArtLoader.character_path(protagonist_id, "attacking").contains("_RED_"))
+
+
+func test_an_equipped_background_only_ever_applies_to_office() -> void:
+	GameState.active_cosmetics = {CosmeticPieces.BACKGROUND: "CP01"}   # background_variant UPGRADED
+	assert_eq(ArtLoader._background_variant("OFFICE"), "UPGRADED")
+	assert_eq(ArtLoader._background_variant("ST02"), "",
+		"a plain stage is never touched by the Office's own variant")
+	# No OFFICE_UPGRADED.png is drawn, so background() still falls all the
+	# way through to a placeholder — missing art never blocks anything.
+	assert_not_null(ArtLoader.background("OFFICE"))
+	assert_not_null(ArtLoader.background("ST02"))
+
+
+func test_a_music_only_package_never_touches_the_outfit_or_background_slots() -> void:
+	GameState.active_cosmetics = {CosmeticPieces.MUSIC: "CP02"}   # music-only package
+	var protagonist_id := str(DataDB.player.get("player_id", ""))
+	var with_music_only := ArtLoader.character_path(protagonist_id, "attacking")
+	GameState.active_cosmetics = {}
+	var with_nothing_equipped := ArtLoader.character_path(protagonist_id, "attacking")
+	assert_eq(with_music_only, with_nothing_equipped,
+		"CP02 has no outfit_variant, so the plain (no-variant) chain is untouched")
+	assert_eq(ArtLoader.background_path("OFFICE"), "")

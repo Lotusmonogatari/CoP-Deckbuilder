@@ -136,7 +136,7 @@ func _found_path() -> String:
 	match kind:
 		Kind.CHARACTER: return ArtLoader.character_path(art_id, expression, stage_id)
 		Kind.CARD: return ArtLoader.card_path(art_id)
-		Kind.BACKGROUND: return ArtLoader.folder("background") + art_id + ".png"
+		Kind.BACKGROUND: return ArtLoader.background_path(art_id)
 		_: return ArtLoader.folder("icon") + art_id + ".png"
 
 

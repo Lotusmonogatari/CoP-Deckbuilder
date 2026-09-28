@@ -2175,5 +2175,61 @@
     "english": "Tier {tier}: {count} clears",
     "placeholders": "tier, count",
     "notes": null
+  },
+  {
+    "key": "office.cosmetics",
+    "where": "Office — Cosmetics button + panel title",
+    "english": "Cosmetic Packages",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.cosmetics_blurb",
+    "where": "Office — Cosmetics panel intro",
+    "english": "Purely decorative — an outfit, an office look, and music, all yours to mix and match.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.cosmetics_owned_heading",
+    "where": "Office — Cosmetics panel, owned section",
+    "english": "Equip",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.cosmetics_slot_outfit",
+    "where": "Office — Cosmetics panel, slot heading",
+    "english": "Outfit",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.cosmetics_slot_background",
+    "where": "Office — Cosmetics panel, slot heading",
+    "english": "Office Background",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.cosmetics_slot_music",
+    "where": "Office — Cosmetics panel, slot heading",
+    "english": "Music",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.cosmetics_default",
+    "where": "Office — Cosmetics panel, equip option (the base game look)",
+    "english": "Default",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.cosmetics_active",
+    "where": "Office — Cosmetics panel, equip button when this is already active",
+    "english": "Equipped",
+    "placeholders": null,
+    "notes": null
   }
 ]

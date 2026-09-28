@@ -662,6 +662,34 @@ SHEETS = {
             ("Cue Text", "cue_text", "str"),
         ],
     },
+    # Cosmetic packages (2026-09-28): purely decorative bundles the player
+    # buys with Funds/XP. A package can carry any subset of its four piece
+    # columns blank — an outfit-only, background-only, or music-only pack
+    # is the same row shape as a full bundle. Outfit/Background Variant are
+    # filename suffix tokens ArtLoader threads in as a new candidate axis
+    # (CosmeticPieces.gd, ArtLoader.gd); the two Music Sound columns name
+    # sounds.json keys Audio.play_music() substitutes in — see Audio.gd.
+    # optional_sheet: True, the same bargain every recently-added tab gets,
+    # since an older re-uploaded workbook wouldn't have it yet.
+    "Cosmetic Packages": {
+        "out": "cosmetic_packages.json",
+        "key": "package_id",
+        "id_pattern": r"^CP\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Package ID", "package_id", "id"),
+            ("Name (EN)", "name_en", "str"),
+            ("Name (JP)", "name_jp", "str"),
+            ("Description", "description", "str"),
+            ("Icon", "icon", "str"),
+            ("Cost (XP)", "cost_xp", "int"),
+            ("Cost (Yen)", "cost_yen", "int"),
+            ("Outfit Variant", "outfit_variant", "str"),
+            ("Background Variant", "background_variant", "str"),
+            ("Music: Office Sound", "music_office_sound", "str"),
+            ("Music: Battle Sound", "music_battle_sound", "str"),
+        ],
+    },
     "Opponents": {
         "out": "opponents.json",
         "key": "opp_id",

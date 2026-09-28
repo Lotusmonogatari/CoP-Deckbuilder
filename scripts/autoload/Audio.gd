@@ -72,8 +72,30 @@ func play(sound_name: String) -> void:
 ## A name with no file behind it leaves whatever is playing alone rather than
 ## stopping it — call stop_music() for that. Silence and "carry on" are the
 ## same thing while there are no sound files, and will not be later.
+##
+## A cosmetic music package (2026-09-28), when equipped, can substitute its
+## own sounds.json key for "music_office"/"music_battle" — see
+## _cosmetic_music_override(). Every call site (OfficeScreen, BattleScreen,
+## ...) still asks for the same plain name it always has; the swap happens
+## here, once, so no screen needs to know cosmetics exist.
 func play_music(sound_name: String) -> void:
-	play(sound_name)
+	var override := _cosmetic_music_override(sound_name)
+	play(override if not override.is_empty() else sound_name)
+
+
+## The equipped music package's own track for this moment, or "" — "" means
+## "play sound_name as asked", which covers no package equipped, a package
+## that has no piece for this particular moment (an outfit-only pack, say),
+## and any sound_name this system doesn't know how to override.
+func _cosmetic_music_override(sound_name: String) -> String:
+	var package_id := str(GameState.active_cosmetics.get(CosmeticPieces.MUSIC, ""))
+	if package_id.is_empty():
+		return ""
+	var package := DataDB.get_cosmetic_package(package_id)
+	match sound_name:
+		"music_office": return CosmeticPieces.field(package, "music_office_sound")
+		"music_battle": return CosmeticPieces.field(package, "music_battle_sound")
+	return ""
 
 
 func stop_music() -> void:

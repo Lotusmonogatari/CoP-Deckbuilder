@@ -42,6 +42,7 @@ const REQUIRED_FILES := [
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
 	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues",
+	"cosmetic_packages",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -82,6 +83,12 @@ var vote_influence_triggers: Array = []
 ## The optional cutscene line for a bill the influence swing above flipped —
 ## one row per (bill_id, outcome_direction) pair. See VoteInfluenceCues.gd.
 var vote_influence_cues: Array = []
+
+## Purely decorative packages the player can buy (2026-09-28): an outfit,
+## an Office background, and/or a music theme. Any subset of a package's
+## four piece columns may be blank. See CosmeticPieces.gd, ArtLoader.gd's
+## variant axis, and Audio.gd's music override.
+var cosmetic_packages: Array = []
 
 ## data/shop.json's SHxx rows — one-time Office actions (see the file's own
 ## comments), not previously loaded by anything. Added 2026-09-25 so a
@@ -213,6 +220,7 @@ var playtest_card_ids: Array[String] = []
 var _cards_by_id: Dictionary = {}
 var _stages_by_id: Dictionary = {}
 var _opponents_by_id: Dictionary = {}
+var _cosmetic_packages_by_id: Dictionary = {}
 var _segments_by_id: Dictionary = {}
 var _modifiers_by_id: Dictionary = {}
 var _boosters_by_id: Dictionary = {}
@@ -290,6 +298,7 @@ func load_all() -> void:
 			"level_intros": level_intros = content if content is Array else []
 			"vote_influence_triggers": vote_influence_triggers = content if content is Array else []
 			"vote_influence_cues": vote_influence_cues = content if content is Array else []
+			"cosmetic_packages": cosmetic_packages = content if content is Array else []
 			"parties": parties = content if content is Array else []
 			"floor_votes": floor_votes = content if content is Dictionary else {}
 
@@ -555,6 +564,7 @@ func _flatten_rules(raw: Variant) -> Dictionary:
 
 func _build_lookups() -> void:
 	_cards_by_id = _index(cards, "card_id")
+	_cosmetic_packages_by_id = _index(cosmetic_packages, "package_id")
 	_stages_by_id = _index(stages, "stage_id")
 	_opponents_by_id = _index(opponents, "opp_id")
 	_segments_by_id = _index(segments, "segment_id")
@@ -631,6 +641,10 @@ func _index(records: Array, key: String) -> Dictionary:
 
 func get_card(card_id: String) -> Dictionary:
 	return _lookup(_cards_by_id, card_id, "card")
+
+
+func get_cosmetic_package(package_id: String) -> Dictionary:
+	return _lookup(_cosmetic_packages_by_id, package_id, "cosmetic package")
 
 
 func get_stage(stage_id: String) -> Dictionary:

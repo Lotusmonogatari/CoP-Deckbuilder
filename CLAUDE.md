@@ -94,6 +94,7 @@ contains 30 levels, 21 canon stages, 16 boosters, 31 modifiers, and 54 cards.
 | `level_intros.json` | level_id + role | A hired staff member's own line about a specific level, shown on the Level Intro screen between the Office and that level's first stage. Flat rows, entirely optional per (level, role) pair — see §7.8 |
 | `vote_influence_triggers.json` | flat rows | The Floor Vote influence swing's own gate: which meta values or booster standings count, switched on/off, each with its own threshold — see §7.7 |
 | `vote_influence_cues.json` | bill_id + outcome_direction | The optional cutscene line for a bill the influence swing above flips — see §7.7 |
+| `cosmetic_packages.json` | package_id (CPxx) | Purely decorative packages (outfit/Office background/music) the player can buy — see §8 |
 | `art.json` | kind | Where each kind of picture lives, the expression list and fallbacks |
 | `rules.json`, `stage_types.json`, `playtest_level.json` | varies | Hand-maintained runtime and playtest configuration |
 
@@ -201,6 +202,73 @@ call site was checked first and confirmed dead (no real workbook data ever
 populated a topic choice, and nothing outside these functions read the
 result). A press stage's starting support is now just `player_start` plus
 reputation (Kanban) effects, per §7.1.
+
+**Cosmetic packages** (built 2026-09-28, Cameron): purely decorative —
+an outfit, an Office background, and/or music, no gameplay effect. A new
+**Cosmetic Packages** workbook tab / `data/cosmetic_packages.json`, one
+row per package (`CPxx`), flat and blank-tolerant: any subset of its four
+piece columns (Outfit Variant, Background Variant, Music: Office Sound,
+Music: Battle Sound) may be blank, so an outfit-only, background-only, or
+music-only package is the same row shape as a full bundle. A **package is
+the purchase unit** (its own `GameState.buy_cosmetic_package()`, Funds/XP
+via the same `cost_xp`/`cost_yen` columns Supplies items use, refused via
+the new `scripts/rules/CosmeticPieces.gd` — an "already yours" check then
+the same afford check every other one-time unlock makes); the **slot**
+(Outfit / Office Background / Music) is the **equip** unit —
+`GameState.active_cosmetics` picks one owned package per slot
+independently via `equip_cosmetic()`, so a player can mix a red suit from
+one package with the Office background from another and the music from a
+third. Two seed packages ship (Cameron's to retune or replace): CP01
+"Neon Ambition" (a red outfit, an upgraded Office, and a synth-pop
+theme), CP02 "Quiet Chamber" (a gentle-shamisen music theme only).
+
+No new art-loading mechanism was built for this — it reuses the exact
+"stage outfit" shape §5/§13 already describe, with one more axis:
+`ArtLoader.character_path_candidates()` now also takes an optional
+`variant`, tried before everything else
+(`{ID}_{variant}_{STAGE_ID}_{expression}.png`, then
+`{ID}_{variant}_{expression}.png`), falling all the way through to the
+plain file — missing cosmetic art never blocks anything, the same bargain
+every other axis here keeps. `character_path()`/`background()` resolve
+the equipped variant automatically (`ArtLoader._outfit_variant()`/
+`_background_variant()`, reading `GameState.active_cosmetics` directly),
+so no call site anywhere in the game had to change: the Office's own
+background, the battle screen's presenters, and `PlaceholderArt`'s own
+"is this a placeholder?" check all pick up cosmetics for free.
+`_outfit_variant()` only ever returns non-blank for the **current
+protagonist's own ID** (`DataDB.player.get("player_id")`), so an
+opponent, staff member, or visitor can never accidentally wear the
+player's own cosmetic; `_background_variant()` only ever applies to
+`"OFFICE"` — extending cosmetic backgrounds to the 23 stage backgrounds
+is a deliberate, small follow-up, not built here, since Cameron's own
+example was specifically "an upgraded office."
+
+Music works the same way, one layer up: `Audio.play_music(sound_name)`
+checks the equipped Music package for its own `music_office_sound`/
+`music_battle_sound` override (a `sounds.json` key, not a filename
+directly — four new silent seed rows, `music_office_pop`/
+`music_battle_pop`/`music_office_shamisen`/`music_battle_shamisen`, ship
+the same "empty file, wire it up later" way every other cue does) before
+falling through to play `sound_name` as asked. Every screen still calls
+`Audio.play_music("music_office")` exactly as before; the substitution
+happens once, inside `Audio.gd`, the same "no call site has to know
+cosmetics exist" shape `ArtLoader` uses.
+
+A blank JSON cell on an optional column is `null`, not `""` — caught
+before it became this project's next `<null>`-class bug (§13's Party/
+Title fields already needed the same guard): `CosmeticPieces.field()` is
+the one place every optional cosmetic column is read from now, returning
+`""` for a genuinely blank cell rather than the literal text `str(null)`
+would otherwise give.
+
+A new **"Cosmetics"** button beside "Your Record", built in code exactly
+like it (`OfficeScreen._build_cosmetics()` — no `.tscn` edit, §13).
+`_show_cosmetics()` lists every not-yet-owned package to buy, then, once
+at least one is owned, an "Equip" section with one row of buttons per
+slot that has anything owned for it — Default plus every owned package
+with a piece for that slot, the currently active one shown disabled with
+its own name and "— Equipped" rather than losing its name to a generic
+greyed-out reason.
 
 ## 9. Open design decisions: implement as switches, do not decide
 

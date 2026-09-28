@@ -62,6 +62,11 @@ var _supplies_panel: Overlay
 ## tier. Built in code, the same reason _supplies_panel is.
 var _record_panel: Overlay
 
+## Cosmetic packages (2026-09-28): purely decorative outfit/background/music
+## bundles, bought here and equipped per slot. Built in code, the same
+## reason _record_panel is.
+var _cosmetics_panel: Overlay
+
 ## Rhetoric Training's card offer (SH15-17, SH27-29) — Cameron, 2026-09-25:
 ## showing the card itself, not just naming it in a sentence, is what makes
 ## drawing a random one feel like a pull rather than a database write; and
@@ -108,6 +113,7 @@ func _ready() -> void:
 	_management_button.pressed.connect(_show_management)
 	_build_inventory()
 	_build_record()
+	_build_cosmetics()
 	_new_game_panel = Overlay.new()
 	_new_game_panel.name = "NewGamePanel"
 	add_child(_new_game_panel)
@@ -651,6 +657,149 @@ func _show_record() -> void:
 		rows.append(UiKit.line(Text.say("office.record_tier_line", {"tier": int(tier), "count": total})))
 
 	_record_panel.open(Text.say("office.your_record"), rows)
+
+
+## Cosmetic packages, beside "Your Record" — same code-built pattern, no
+## scene-file edit. Inserted after RecordButton so the row reads
+## Organisations, Your Record, Cosmetics, left to right.
+func _build_cosmetics() -> void:
+	_cosmetics_panel = Overlay.new()
+	_cosmetics_panel.name = "CosmeticsPanel"
+	add_child(_cosmetics_panel)
+
+	var button := Button.new()
+	button.name = "CosmeticsButton"
+	button.text = Text.say("office.cosmetics")
+	button.custom_minimum_size = _organisations_button.custom_minimum_size
+	button.size_flags_horizontal = _organisations_button.size_flags_horizontal
+	button.pressed.connect(_show_cosmetics)
+	var parent := _organisations_button.get_parent()
+	var record_button := parent.get_node("RecordButton")
+	parent.add_child(button)
+	parent.move_child(button, record_button.get_index() + 1)
+
+
+## Purely decorative — an outfit, an Office background, and music. A
+## package (data/cosmetic_packages.json) is the PURCHASE unit; each of its
+## three slots (Outfit / Office Background / Music) is equipped
+## independently from anything owned, per CosmeticPieces.gd.
+func _show_cosmetics() -> void:
+	var rows: Array[Control] = []
+	rows.append(UiKit.line(Text.say("office.cosmetics_blurb")))
+
+	for package: Dictionary in DataDB.cosmetic_packages:
+		if not GameState.owned_cosmetic_packages.has(str(package.get("package_id", ""))):
+			rows.append(_cosmetic_package_row(package))
+
+	if not GameState.owned_cosmetic_packages.is_empty():
+		rows.append(UiKit.heading(Text.say("office.cosmetics_owned_heading")))
+		for slot: String in CosmeticPieces.SLOTS:
+			if not _owns_any_piece_for(slot):
+				continue
+			rows.append(UiKit.line(_cosmetics_slot_label(slot), "SmallLabel"))
+			rows.append(_cosmetics_slot_row(slot))
+
+	_cosmetics_panel.open(Text.say("office.cosmetics"), rows)
+
+
+func _cosmetic_package_row(package: Dictionary) -> Control:
+	var package_id := str(package.get("package_id", ""))
+	var row := HBoxContainer.new()
+	row.name = "Cosmetic_" + package_id
+	row.add_theme_constant_override("separation", 16)
+
+	var icon := TextureRect.new()
+	icon.texture = ArtLoader.item_icon(CosmeticPieces.field(package, "icon"))
+	icon.custom_minimum_size = Vector2(120, 120)
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	row.add_child(icon)
+
+	var box := UiKit.tight_column()
+	row.add_child(box)
+
+	var name := CosmeticPieces.field(package, "name_en")
+	if name.is_empty():
+		name = package_id
+	var title := UiKit.line(Text.say("shop.item_title", {"name": name, "price": _price_text(package)}))
+	title.custom_minimum_size = Vector2(620, 0)
+	box.add_child(title)
+	var description := UiKit.line(CosmeticPieces.field(package, "description"), "SmallLabel")
+	description.custom_minimum_size = Vector2(620, 0)
+	box.add_child(description)
+
+	var refusal := CosmeticPieces.buy_refusal(package, GameState.owned_cosmetic_packages,
+		GameState.xp, int(GameState.meta.get("Funds", 0)), Text.phrase())
+	box.add_child(UiKit.action_button(Text.say("shop.buy"), refusal, _on_buy_cosmetic_package.bind(package_id)))
+
+	return row
+
+
+func _on_buy_cosmetic_package(package_id: String) -> void:
+	var refusal := GameState.buy_cosmetic_package(package_id)
+	if refusal.is_empty():
+		SaveManager.autosave()
+		_refresh_resources()
+	_show_cosmetics()
+
+
+## True when at least one owned package has a piece for this slot — a slot
+## with nothing owned for it yet stays off the Equip list entirely.
+func _owns_any_piece_for(slot: String) -> bool:
+	for package_id: String in GameState.owned_cosmetic_packages:
+		if CosmeticPieces.has_piece(DataDB.get_cosmetic_package(package_id), slot):
+			return true
+	return false
+
+
+func _cosmetics_slot_label(slot: String) -> String:
+	match slot:
+		CosmeticPieces.OUTFIT: return Text.say("office.cosmetics_slot_outfit")
+		CosmeticPieces.BACKGROUND: return Text.say("office.cosmetics_slot_background")
+		CosmeticPieces.MUSIC: return Text.say("office.cosmetics_slot_music")
+	return slot
+
+
+## One row of buttons for a slot: Default, then every owned package with a
+## piece for it, in the order they were bought. The active one shows its
+## own name with "— Equipped" and is disabled rather than losing its name
+## to a generic refusal string (UiKit.action_button's usual "greyed-out
+## reason" shape would otherwise replace "Neon Ambition" with "Equipped").
+func _cosmetics_slot_row(slot: String) -> Control:
+	var row := HBoxContainer.new()
+	row.name = "CosmeticSlot_" + slot
+	row.add_theme_constant_override("separation", 12)
+
+	var active := str(GameState.active_cosmetics.get(slot, ""))
+	row.add_child(_cosmetics_equip_button(
+		Text.say("office.cosmetics_default"), active.is_empty(), slot, ""))
+
+	for package_id: String in GameState.owned_cosmetic_packages:
+		var package := DataDB.get_cosmetic_package(package_id)
+		if not CosmeticPieces.has_piece(package, slot):
+			continue
+		var name := CosmeticPieces.field(package, "name_en")
+		if name.is_empty():
+			name = package_id
+		row.add_child(_cosmetics_equip_button(name, active == package_id, slot, package_id))
+
+	return row
+
+
+func _cosmetics_equip_button(label: String, is_active: bool, slot: String, package_id: String) -> Button:
+	if is_active:
+		var active_button := Button.new()
+		active_button.custom_minimum_size = Vector2(0, 90)
+		active_button.text = "%s — %s" % [label, Text.say("office.cosmetics_active")]
+		active_button.disabled = true
+		return active_button
+	return UiKit.action_button(label, "", _on_equip_cosmetic.bind(slot, package_id))
+
+
+func _on_equip_cosmetic(slot: String, package_id: String) -> void:
+	GameState.equip_cosmetic(slot, package_id)
+	SaveManager.autosave()
+	_show_cosmetics()
 
 
 ## Supplies: the Shop tab's items, bought into the inventory. Each row is the

@@ -60,6 +60,16 @@ var owned_cards: Array[String] = []
 var deck: Array[String] = []
 var owned_modifiers: Array[String] = []
 
+## Cosmetic packages (2026-09-28): purely decorative, bought with Funds/XP.
+## `owned_cosmetic_packages` is what's been bought; `active_cosmetics` is
+## what's currently equipped, independently per slot —
+## { CosmeticPieces.OUTFIT/BACKGROUND/MUSIC : package_id }. A slot missing
+## from the dictionary, or set to "", means Default (the base game look).
+## See CosmeticPieces.gd, ArtLoader.gd's variant axis, Audio.gd's music
+## override.
+var owned_cosmetic_packages: Array[String] = []
+var active_cosmetics: Dictionary = {}
+
 ## The inventory: shop items (SHxx) held and how many of each, e.g.
 ## { "SH04": 2 }. Filled by buying in the Office's Supplies shop and by an
 ## Office Hours visitor's reward; emptied one at a time by the Use button in
@@ -278,6 +288,7 @@ func start_new_run(player_id: String) -> bool:
 const _SAVED_FIELDS := [
 	"protagonist_id", "last_level_outcome", "meta", "xp",
 	"owned_cards", "deck", "owned_modifiers",
+	"owned_cosmetic_packages", "active_cosmetics",
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
@@ -371,6 +382,8 @@ func reset_levels() -> void:
 ## every Starter card, and the deck screen is where the player changes it.
 func reset_collection() -> void:
 	owned_cards = []
+	owned_cosmetic_packages = []
+	active_cosmetics = {}
 
 	# PLAYTEST SETTING, rules.json's own "open_card_collection" (moved off a
 	# hardcoded source constant 2026-09-22, so this is a switch like every
@@ -424,6 +437,33 @@ func buy_card(card_id: String) -> String:
 	_move_xp(-Ledger.card_cost(card))
 	owned_cards.append(card_id)
 	return ""
+
+
+## Spends Funds and/or XP on a cosmetic package — purely decorative, no
+## gameplay effect. Buying does not equip it: see equip_cosmetic().
+func buy_cosmetic_package(package_id: String) -> String:
+	var package := DataDB.get_cosmetic_package(package_id)
+	var refusal := CosmeticPieces.buy_refusal(
+		package, owned_cosmetic_packages, xp, int(meta.get("Funds", 0)), Text.phrase())
+	if not refusal.is_empty():
+		return refusal
+
+	var price := CosmeticPieces.cost(package)
+	_move_xp(-int(price["XP"]))
+	_move_meta("Funds", -int(price["Funds"]))
+	owned_cosmetic_packages.append(package_id)
+	return ""
+
+
+## Sets which owned package (or "" for Default) is active for one cosmetic
+## slot. Each slot is independent — equipping an outfit does not touch the
+## background or music slots. No refusal path: the UI only ever offers a
+## slot's owned, piece-bearing packages plus Default.
+func equip_cosmetic(slot: String, package_id: String) -> void:
+	if package_id.is_empty():
+		active_cosmetics.erase(slot)
+	else:
+		active_cosmetics[slot] = package_id
 
 
 ## Spends XP to unlock a level (rules.json's "level_gating_enabled" only —
