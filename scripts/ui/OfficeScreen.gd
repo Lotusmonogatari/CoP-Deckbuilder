@@ -819,17 +819,23 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 
 
 ## The Marketplace (2026-09-28, Cameron: Supplies moved out of Office
-## Management, folded in here, beside what you already own): the held-items
-## grid first (InventoryPanel.inventory_rows(), the same rows show_
-## inventory() would open alone), then the Supplies shop below it — each
-## row the item's icon, name and price, what it does, and Buy, or, once its
-## Purchase Limit for this level is reached, a greyed-out "Out of Stock".
-## One screen, one panel (_inventory_panel itself), so tapping a held item
-## still drills into its own detail view exactly as it always has.
+## Management, folded in here, beside what you already own). Reordered
+## 2026-09-29, Cameron, after seeing it on screen: the panel now opens on
+## "Supplies" (its blurb, then what you currently hold — InventoryPanel.
+## inventory_rows(), the same rows show_inventory() would open alone, whose
+## own "appear here" wording is about Supplies purchases landing in your
+## inventory, not about the Marketplace heading below it), THEN a
+## "Marketplace" heading introduces your XP/Funds and the buyable Supplies
+## rows — each row the item's icon, name and price, what it does, and Buy,
+## or, once its Purchase Limit for this level is reached, a greyed-out
+## "Out of Stock". One screen, one panel (_inventory_panel itself), so
+## tapping a held item still drills into its own detail view exactly as it
+## always has.
 func _show_marketplace() -> void:
-	var rows := _inventory_panel.inventory_rows()
-	rows.append(UiKit.heading(Text.say("shop.supplies")))
+	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("shop.supplies_blurb")))
+	rows.append_array(_inventory_panel.inventory_rows())
+	rows.append(UiKit.heading(Text.say("office.marketplace")))
 	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
 	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
@@ -837,7 +843,7 @@ func _show_marketplace() -> void:
 		# Card sessions live in Rhetoric Training, not here.
 		if item.get("card_tier") == null:
 			rows.append(_supply_row(item))
-	_inventory_panel.open(Text.say("office.marketplace"), rows)
+	_inventory_panel.open(Text.say("shop.supplies"), rows)
 
 
 func _supply_row(item: Dictionary) -> Control:

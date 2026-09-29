@@ -882,6 +882,26 @@ Management → Supplies path (`mash_driver.gd`, `shop_items_driver.gd`,
 `inventory_driver.gd`) were updated to the new one-click Marketplace path.
 Full GUT suite and `tools/verify.sh` confirmed green afterward.
 
+**The Marketplace panel reordered** (2026-09-29, Cameron, from a real
+screenshot): the panel used to open on its own "Marketplace" title with
+the held-items grid (or "Nothing here yet…") sitting directly under it,
+then a "Supplies" heading further down for the blurb, XP/Funds, and the
+buyable rows. Cameron's read: the "Nothing here yet. Supplies you buy or
+are given will appear here." line is really about Supplies, not about the
+Marketplace heading it sat under — and he wanted "Supplies" to be what
+opens the panel, with "Marketplace" as a second heading further down,
+right above XP/Funds. `OfficeScreen._show_marketplace()` now opens on
+`Text.say("shop.supplies")` (the panel's own title) with the blurb and
+`InventoryPanel.inventory_rows()` first, then a `UiKit.heading("office.
+marketplace")` row directly above the XP/Funds lines and the buyable
+Supplies rows. No Text-tab or schema change — both keys already existed,
+only which one is the panel title and where the other one sits as a row
+changed. Confirmed with a real screenshot (`xvfb-run … "$GODOT" --path .`
+— no `--headless`, since that swaps in the dummy renderer and
+`get_viewport().get_texture()` comes back null) before deleting the
+throwaway driver, the same convention as every other UI-only change this
+session.
+
 **A lesson worth keeping for later workbook edits**: `openpyxl` is safe
 for *reading* `design/CoP_Starter_Card_Stage_Data.xlsx`, but a direct
 `load_workbook()` → edit → `save()` round-trip silently corrupted the
