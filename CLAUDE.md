@@ -902,6 +902,23 @@ changed. Confirmed with a real screenshot (`xvfb-run … "$GODOT" --path .`
 throwaway driver, the same convention as every other UI-only change this
 session.
 
+**A random Grants outcome now says which organisation it landed on**
+(2026-09-29, Cameron): using a Commission item (SH01-03, Grants a random
+booster from a tier) used to just say "{name} used." — the same generic
+line every item gets, whether its effect was random or not. Which
+organisation actually got the standing bump was only ever inferable
+later, from Important Stakeholders' own "(+1)" line next to whichever one
+moved. `GameState._apply_reward_entries()` now returns every entry it
+actually applied (`{"kind","id","delta"}`, a BOOSTER_TIER pick recorded
+as the concrete BOOSTER it resolved to), and `use_item_in_office()`/
+`use_item_in_stage()` turn that into a "{name} used — {org} {+/-N}."
+message (`_describe_grant_outcomes()`) whenever a booster or segment was
+touched — a plain modifier or shop-item grant is left alone, since its
+own name already says exactly what it is, nothing rolled. Three new Text
+rows (`item.used_with_outcome`, `item.queued_with_outcome`,
+`item.queued_level_with_outcome`), same wording shape as the existing
+`item.used`/`item.queued`/`item.queued_level` rows they sit beside.
+
 **A lesson worth keeping for later workbook edits**: `openpyxl` is safe
 for *reading* `design/CoP_Starter_Card_Stage_Data.xlsx`, but a direct
 `load_workbook()` → edit → `save()` round-trip silently corrupted the

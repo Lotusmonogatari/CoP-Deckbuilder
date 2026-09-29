@@ -1140,7 +1140,18 @@ func apply_visitor_reward_entries(entries: Array) -> void:
 ## — so there is nothing to recurse into and no way for two items to loop on
 ## each other. A stage effect (ENERGY, GUARD, ...) named here, outside an
 ## item being used, waits for the next stage.
-func _apply_reward_entries(entries: Array, chosen_target: String = "", extra_delta: int = 0) -> void:
+##
+## Returns every entry actually applied — {"kind","id","delta"} — so a
+## caller whose grant was a random pick (a Commission item's "TIER:Party",
+## say) can tell the player which organisation it actually landed on
+## (2026-09-29, Cameron: a random outcome has to show up on screen, not
+## only be inferable later from Important Stakeholders' own "(+1)" line).
+## A BOOSTER_TIER pick is recorded as a plain BOOSTER, since by the time it
+## is applied it IS one. STAGE_EFFECT is left out — it never names an
+## organisation, and the caller reads it from split["stage"] separately.
+func _apply_reward_entries(entries: Array, chosen_target: String = "",
+		extra_delta: int = 0) -> Array[Dictionary]:
+	var applied: Array[Dictionary] = []
 	for raw: Variant in entries:
 		if not (raw is Dictionary):
 			continue
@@ -1150,27 +1161,55 @@ func _apply_reward_entries(entries: Array, chosen_target: String = "", extra_del
 		var target_id: String = resolved.get("id", "")
 		match kind:
 			RewardTargets.BOOSTER:
-				_apply_booster_delta(target_id, _resolve_delta(resolved.get("delta")) + extra_delta)
+				var delta := _resolve_delta(resolved.get("delta")) + extra_delta
+				_apply_booster_delta(target_id, delta)
+				applied.append({"kind": kind, "id": target_id, "delta": delta})
 			RewardTargets.BOOSTER_TIER:
 				# Only reached when nothing was chosen — a chosen target
 				# already replaced this with a plain BOOSTER above.
 				var pool: Array = (resolved.get("record", {}) as Dictionary).get("boosters", [])
 				if not pool.is_empty():
 					var picked: Dictionary = pool[randi() % pool.size()]
-					_apply_booster_delta(str(picked.get("booster_id", "")),
-						_resolve_delta(resolved.get("delta")) + extra_delta)
+					var picked_id := str(picked.get("booster_id", ""))
+					var delta := _resolve_delta(resolved.get("delta")) + extra_delta
+					_apply_booster_delta(picked_id, delta)
+					applied.append({"kind": RewardTargets.BOOSTER, "id": picked_id, "delta": delta})
 			RewardTargets.MODIFIER:
 				if not owned_modifiers.has(target_id):
 					owned_modifiers.append(target_id)
+				applied.append({"kind": kind, "id": target_id, "delta": 0})
 			RewardTargets.SEGMENT:
-				_apply_segment_delta(target_id, _resolve_delta(resolved.get("delta")) + extra_delta)
+				var delta := _resolve_delta(resolved.get("delta")) + extra_delta
+				_apply_segment_delta(target_id, delta)
+				applied.append({"kind": kind, "id": target_id, "delta": delta})
 			RewardTargets.SHOP_ITEM:
 				# A delta, when given, is how many; a bare "SH04" is one.
-				add_item(target_id, maxi(_resolve_delta(resolved.get("delta")), 1))
+				var count := maxi(_resolve_delta(resolved.get("delta")), 1)
+				add_item(target_id, count)
+				applied.append({"kind": kind, "id": target_id, "delta": count})
 			RewardTargets.STAGE_EFFECT:
 				_add_bonus(pending_stage_bonuses, target_id, _stage_effect_amount(resolved.get("delta")))
 			_:
 				push_warning("GameState: reward/penalty target '%s' did not resolve to anything." % target_id)
+	return applied
+
+
+## A grant's outcome in plain English — "Chamber of Commerce +1" — for
+## whichever entries named an organisation or a segment. Only those two
+## kinds are ever picked at random (a modifier or a shop item's own name
+## already says exactly what was granted), so this is deliberately narrow:
+## it answers "which one did the roll land on," not "what did I get."
+func _describe_grant_outcomes(applied: Array) -> String:
+	var parts: Array[String] = []
+	for entry: Dictionary in applied:
+		var id: String = str(entry.get("id", ""))
+		var delta := int(entry.get("delta", 0))
+		match str(entry.get("kind", "")):
+			RewardTargets.BOOSTER:
+				parts.append("%s %+d" % [DataDB.get_booster(id).get("name_en", id), delta])
+			RewardTargets.SEGMENT:
+				parts.append("%s %+d" % [DataDB.get_segment(id).get("name_en", id), delta])
+	return ", ".join(parts)
 
 
 ## A pool-shaped entry ("BO01|BO02 +1" or "TIER:Party +1"), decided:
@@ -1459,15 +1498,22 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 
 	_take_item(item_id)
 	var split := Items.split_grants(item)
-	_apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
+	var applied := _apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
 	var name := str(item.get("name", item_id))
+	var outcome := _describe_grant_outcomes(applied)
 	if (split["stage"] as Array).is_empty():
-		return {"ok": true, "message": Text.say("item.used", {"name": name})}
+		return {"ok": true, "message": (Text.say("item.used_with_outcome",
+			{"name": name, "outcome": outcome}) if not outcome.is_empty()
+			else Text.say("item.used", {"name": name}))}
 
 	var level := Items.duration(item) == Items.DURATION_LEVEL
 	var target := pending_level_bonuses if level else pending_stage_bonuses
 	for effect: Dictionary in _resolve_stage_effects(split["stage"]):
 		_add_bonus(target, str(effect["token"]), int(effect["amount"]))
+	if not outcome.is_empty():
+		return {"ok": true, "message": Text.say(
+			"item.queued_level_with_outcome" if level else "item.queued_with_outcome",
+			{"name": name, "outcome": outcome})}
 	return {"ok": true, "message": Text.say(
 		"item.queued_level" if level else "item.queued", {"name": name})}
 
@@ -1495,11 +1541,15 @@ func use_item_in_stage(item_id: String, engine: BattleEngine, chosen_target: Str
 		return {"ok": false, "message": str(result.get("reason", ""))}
 
 	_take_item(item_id)
-	_apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
+	var applied := _apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
 	if Items.duration(item) == Items.DURATION_LEVEL:
 		for effect: Dictionary in effects:
 			_add_bonus(level_bonuses, str(effect["token"]), int(effect["amount"]))
-	return {"ok": true, "message": Text.say("item.used", {"name": str(item.get("name", item_id))})}
+	var name := str(item.get("name", item_id))
+	var outcome := _describe_grant_outcomes(applied)
+	if not outcome.is_empty():
+		return {"ok": true, "message": Text.say("item.used_with_outcome", {"name": name, "outcome": outcome})}
+	return {"ok": true, "message": Text.say("item.used", {"name": name})}
 
 
 ## Everything item-driven the next stage starts with: the level's running

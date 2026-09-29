@@ -2273,5 +2273,26 @@
     "english": "Marketplace",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "item.used_with_outcome",
+    "where": "Message after using an item whose grant landed on a random organisation or segment (Commission items, SH01-03)",
+    "english": "{name} used — {outcome}.",
+    "placeholders": "name, outcome",
+    "notes": null
+  },
+  {
+    "key": "item.queued_with_outcome",
+    "where": "Message after using a Stage item in the Office whose grant also landed on a random organisation or segment",
+    "english": "{name} is ready for your next stage — {outcome}.",
+    "placeholders": "name, outcome",
+    "notes": null
+  },
+  {
+    "key": "item.queued_level_with_outcome",
+    "where": "Message after using a Level item in the Office whose grant also landed on a random organisation or segment",
+    "english": "{name} will last through your next level — {outcome}.",
+    "placeholders": "name, outcome",
+    "notes": null
   }
 ]

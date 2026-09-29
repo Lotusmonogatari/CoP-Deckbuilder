@@ -119,6 +119,19 @@ func test_a_tier_pool_only_ever_moves_a_booster_of_that_tier() -> void:
 		assert_eq(int(GameState.booster_standing["BO03"]), 50)
 
 
+func test_a_random_grants_outcome_names_which_organisation_it_landed_on() -> void:
+	# 2026-09-29, Cameron: a Commission item's random pick has to say which
+	# organisation it actually favoured, not just move a number silently.
+	GameState.inventory["SH01"] = 1
+	var result := GameState.use_item_in_office("SH01")
+	var bo01_name := str(DataDB.get_booster("BO01").get("name_en", "BO01"))
+	var bo02_name := str(DataDB.get_booster("BO02").get("name_en", "BO02"))
+	var message := str(result["message"])
+	assert_true(message.contains(bo01_name) or message.contains(bo02_name),
+		"the message should name whichever Party organisation was picked")
+	assert_true(message.contains("+1"), "the message should carry the delta too")
+
+
 func test_hiring_the_named_staff_at_tier_2_layers_the_bonus_on_top() -> void:
 	# SH01's Bonus 2 Role/Min Tier/Amount: Policy Research Assistant, Tier 2,
 	# +1 — added to the base "TIER:Party +1", reaching +2, whichever Party
