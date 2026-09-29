@@ -247,6 +247,7 @@
   "outcome.closed": "{stage} concluded.",
   "outcome.closed_unnamed": "It closed",
   "outcome.conference_over": "Conference over",
+  "outcome.crushed": "Argued out of the room: {names}.",
   "outcome.defeated": "Defeated",
   "outcome.displeased": "Annoyed: {names}.",
   "outcome.next_stage": "On to the next stage",

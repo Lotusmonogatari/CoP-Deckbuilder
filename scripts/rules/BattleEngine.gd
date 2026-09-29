@@ -775,10 +775,23 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 		_finish("win", _victory_reason())
 		return
 
-	# On the floor, arguing a debater's seats down to nothing ends them
-	# too. Running out of opponents wins it even short of the threshold,
-	# because there is nobody left to argue against.
-	if _sequence_mode == "continuous" and state.bar.opponent <= 0:
+	# Arguing an opponent's own support down to nothing ends them too, even
+	# short of the threshold — there is nobody left across the table to be
+	# won further over. Checked for every room with a real threshold to
+	# race toward (has_threshold, above), not just sequence_mode
+	# "continuous" as this used to read: that mode was built for the floor
+	# debate but no real stage ever actually uses it (stages.json's own
+	# sequence_mode column is "single" or "reset" everywhere), so the rule
+	# was a dead seam until 2026-09-29 (Cameron) generalized it. The
+	# threshold check above runs first, so a turn that both crosses the
+	# threshold AND empties the opponent is still an ordinary win, never
+	# this one. has_more_opponents()/_advance_to_next_opponent() already
+	# generalize correctly across every sequence_mode: a single-opponent
+	# room has no "more", so this becomes an outright win the same as any
+	# other one-opponent room; a committee's own bouts advance the same
+	# way a threshold win already does.
+	if has_threshold and state.bar.opponent <= 0:
+		_register_crushed_opponent()
 		if has_more_opponents():
 			_advance_to_next_opponent()
 			return
@@ -1028,6 +1041,13 @@ func displeased_boosters() -> Array[String]:
 	return state.displeased_boosters
 
 
+## The organisations whose own member was argued down to zero support this
+## stage (§7.2's instant-win rule, 2026-09-29). GameState applies a flat
+## standing penalty to each.
+func crushed_opponent_boosters() -> Array[String]:
+	return state.crushed_opponent_boosters
+
+
 ## "Question 2 of 5", for the header.
 func question_caption() -> String:
 	if _questions.is_empty():
@@ -1109,6 +1129,18 @@ func current_opponent() -> Dictionary:
 
 func has_more_opponents() -> bool:
 	return state.opponent_index + 1 < _opponents.size()
+
+
+## Records whoever's own support was just argued down to zero, by their
+## organisation (Affiliation, opponents.json) — deduplicated, since a
+## committee sequence could crush more than one member of the same
+## organisation. An opponent with no Affiliation named costs nobody.
+func _register_crushed_opponent() -> void:
+	var booster_id := str(current_opponent().get("affiliation", ""))
+	if booster_id.is_empty():
+		return
+	if not state.crushed_opponent_boosters.has(booster_id):
+		state.crushed_opponent_boosters.append(booster_id)
 
 
 ## "Opponent 2 of 5", for the header. Empty when there is only one.

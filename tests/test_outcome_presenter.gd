@@ -92,6 +92,24 @@ func test_a_lost_stages_pleased_organisation_also_reaches_the_panel() -> void:
 		"a pleased organisation should still reach the panel even when the stage was lost overall")
 
 
+func test_a_crushed_opponents_organisation_reaches_the_panel() -> void:
+	# 2026-09-29, Cameron: an opponent argued down to zero costs their own
+	# organisation — shown the same way pleased/displeased already are, so
+	# the connection to a real standing hit isn't lost by the time the
+	# player reaches the Office.
+	var stage := TestFixtures.stage()
+	var config := TestFixtures.battle_config({"stage": stage})
+	var engine := BattleEngine.new()
+	engine.setup(config)
+	engine.state.crushed_opponent_boosters = ["BO01"]
+	engine.state.outcome = "win"
+
+	var body := _presenter.call("_body_for", engine, stage) as String
+
+	assert_string_contains(body, "Party Headquarters",
+		"a crushed opponent's organisation should reach the panel")
+
+
 func test_the_losses_own_cost_still_shows_alongside_the_organisation_line() -> void:
 	var stage := _lost_stage_with_a_displeased_booster()
 	var config := TestFixtures.battle_config({"stage": stage})

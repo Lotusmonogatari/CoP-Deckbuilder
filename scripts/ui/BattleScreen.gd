@@ -886,7 +886,8 @@ func _on_outcome_closed() -> void:
 	var gaffe_caused_loss := state.outcome == "loss" and state.gaffe >= state.gaffe_limit
 	var level_over := GameState.finish_stage(
 		state.outcome, state.player_score(), engine.pleased_boosters(),
-		gaffe_caused_loss, state.gaffe, engine.displeased_boosters())
+		gaffe_caused_loss, state.gaffe, engine.displeased_boosters(),
+		engine.crushed_opponent_boosters())
 
 	if level_over:
 		GameState.end_level()

@@ -790,6 +790,92 @@ func test_beating_the_last_opponent_without_a_majority_still_wins() -> void:
 
 
 # ---------------------------------------------------------------------------
+# Instant win: an opponent argued down to zero, in the rooms real levels
+# actually use (2026-09-29) — the "continuous" fixture above already proved
+# the mechanism; these prove it now fires for "single" (every ordinary
+# Combat room) and "reset" (a committee bout) too, since no real stage in
+# stages.json ever sets sequence_mode to "continuous".
+# ---------------------------------------------------------------------------
+
+func test_a_single_opponent_argued_to_zero_wins_outright() -> void:
+	var opp := TestFixtures.opponent()
+	opp["affiliation"] = "BO08"
+	var engine := _start({"opponent": opp})
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win")
+	assert_eq(engine.crushed_opponent_boosters(), ["BO08"])
+
+
+func test_reaching_the_threshold_and_zeroing_the_opponent_together_is_an_ordinary_win() -> void:
+	# The priority rule: a turn that does both at once is a threshold win,
+	# never the instant-win branch, so nobody's standing takes a hit for a
+	# perfectly ordinary victory.
+	var opp := TestFixtures.opponent()
+	opp["affiliation"] = "BO08"
+	var engine := _start({"opponent": opp})
+	engine.state.bar.player_gains(11)               # 40 -> 51, the threshold
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)   # and empty
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.threshold")
+	assert_eq(engine.crushed_opponent_boosters(), [], "no instant-win penalty on an ordinary win")
+
+
+func test_crushing_a_committee_member_brings_on_the_next_one() -> void:
+	var engine := _start(_three_in_a_row({
+		"opponents": [
+			{"opp_id": "A", "name": "First", "affiliation": "BO01", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "Second", "affiliation": "BO02", "intent_pattern": [["block", 1]]},
+		],
+	}))
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine._check_outcome()
+
+	assert_false(engine.state.is_over(), "the bout ended, not the stage")
+	assert_eq(engine.current_opponent()["name"], "Second")
+	assert_eq(engine.crushed_opponent_boosters(), ["BO01"])
+
+
+func test_crushing_more_than_one_member_of_the_same_organisation_only_costs_it_once() -> void:
+	var engine := _start(_three_in_a_row({
+		"opponents": [
+			{"opp_id": "A", "name": "First", "affiliation": "BO01", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "Second", "affiliation": "BO01", "intent_pattern": [["block", 1]]},
+		],
+	}))
+	for _bout in 2:
+		engine.state.bar.opponent_loses(engine.state.bar.opponent)
+		engine._check_outcome()
+
+	assert_eq(engine.crushed_opponent_boosters(), ["BO01"], "deduplicated, not doubled")
+
+
+func test_an_opponent_with_no_affiliation_costs_nobody() -> void:
+	var engine := _start()   # TestFixtures.opponent() names no affiliation
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.crushed_opponent_boosters(), [])
+
+
+func test_a_room_with_no_threshold_is_not_won_by_emptying_the_opponent() -> void:
+	# A scored caucus (win_mode "score") has nothing to race toward, so
+	# has_threshold is false — emptying the opponent there must not end it.
+	var engine := _start(_caucus())
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine._check_outcome()
+
+	assert_false(engine.state.is_over())
+	assert_eq(engine.crushed_opponent_boosters(), [])
+
+
+# ---------------------------------------------------------------------------
 # The press conference: a fixed hand, and one card per question
 # ---------------------------------------------------------------------------
 # Not a battle with turns so much as an interview. Six cards at the start and

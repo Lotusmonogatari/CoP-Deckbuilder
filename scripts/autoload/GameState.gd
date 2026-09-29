@@ -706,9 +706,15 @@ func is_in_level() -> bool:
 ## into a later stage of the level (LevelRunner.carried_buffs()) — a weak
 ## answer must never grant that, so it is never mixed into that list, only
 ## used for the standing penalty below.
+##
+## `crushed_boosters` (2026-09-29, Cameron) is the organisations behind any
+## opponent argued all the way down to zero support (BattleEngine.
+## crushed_opponent_boosters()) — a separate, flat penalty from the
+## please/displease netting above, since it is never about a question's
+## own grade.
 func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		gaffe_caused_loss: bool = false, gaffes: int = 0,
-		displeased_boosters: Array = []) -> bool:
+		displeased_boosters: Array = [], crushed_boosters: Array = []) -> bool:
 	mid_stage = false
 	if level_runner == null:
 		return true
@@ -721,6 +727,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	# runner moves on and current_stage() becomes the next one.
 	_apply_stage_rewards(stage, outcome, score)
 	_apply_question_boosters(boosters, displeased_boosters)
+	_apply_instant_win_penalties(crushed_boosters)
 
 	level_runner.finish_stage(outcome, score, boosters)
 
@@ -1109,6 +1116,21 @@ func _apply_question_boosters(pleased: Array, displeased: Array) -> void:
 		if displeased.has(booster_id):
 			net -= displease_step
 		_apply_booster_delta(booster_id, clampi(net, -cap, cap))
+
+
+## An opponent argued all the way down to zero support (§7.2's instant-win
+## rule, BattleEngine.crushed_opponent_boosters()) costs their own
+## organisation standing — a flat, one-time hit per organisation touched
+## this stage, regardless of how many of their own people went down the
+## same way. Separate from _apply_question_boosters() above: this is never
+## about a question's own grade, so it is never netted or capped alongside
+## please/displease.
+func _apply_instant_win_penalties(crushed_boosters: Array) -> void:
+	if crushed_boosters.is_empty():
+		return
+	var penalty := int(DataDB.booster_standing.get("instant_win_penalty", 2))
+	for booster_id: String in crushed_boosters:
+		_apply_booster_delta(booster_id, -penalty)
 
 
 ## Office Hours (design/proposals/office_hours.md): applies one visitor's

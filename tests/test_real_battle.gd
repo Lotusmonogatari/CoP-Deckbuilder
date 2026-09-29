@@ -839,6 +839,30 @@ func test_the_net_change_from_one_stages_questions_is_capped() -> void:
 	GameState.reset_booster_standing()
 
 
+func test_an_instant_win_costs_the_crushed_opponents_organisation() -> void:
+	# 2026-09-29, Cameron: arguing an opponent down to zero support costs
+	# their own organisation a flat, separate penalty — the mirror of
+	# test_pleasing_an_organisation_raises_your_standing_with_it above, but
+	# through finish_stage()'s own 7th parameter rather than the please/
+	# displease list.
+	GameState.reset_booster_standing()
+	var before := int(GameState.booster_standing["BO08"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, [], false, 0, [], ["BO08"])
+
+	var penalty := int(DataDB.booster_standing["instant_win_penalty"])
+	assert_eq(int(GameState.booster_standing["BO08"]), before - penalty)
+	assert_eq(int(GameState.last_booster_change["BO08"]), -penalty, "and it says so")
+	assert_eq(int(GameState.booster_standing["BO03"]), before,
+		"nobody else's organisation was crushed")
+
+	GameState.end_level()
+	GameState.reset_booster_standing()
+
+
+
+
 func test_the_real_press_conference_asks_one_question_per_turn() -> void:
 	# The whole pool (20) used to be dealt against a 5-turn clock: "Question
 	# 6 of 20" on screen, then a loss on time with questions still waiting.

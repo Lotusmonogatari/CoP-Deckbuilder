@@ -919,6 +919,51 @@ rows (`item.used_with_outcome`, `item.queued_with_outcome`,
 `item.queued_level_with_outcome`), same wording shape as the existing
 `item.used`/`item.queued`/`item.queued_level` rows they sit beside.
 
+**A combat stage can now be won instantly by arguing the opponent down to
+nothing** (2026-09-29, Cameron). CLAUDE.md's own §7.2 already described
+"arguing a debater's seats down to nothing" as a way to end them short of
+the threshold, but that branch (`BattleEngine._check_outcome()`) only
+ever fired for `sequence_mode: "continuous"` — a shape built for the
+floor debate but never actually used by any of the 23 real stages
+(`stages.json`'s own `sequence_mode` column is `single` or `reset`
+everywhere), so the rule was a dead seam, not something a real battle
+could ever trigger. Generalized to fire whenever the room has a real
+threshold to race toward at all (`has_threshold`, already computed just
+above it — every Shared_pool Combat stage, i.e. not a press conference
+and not the TV debate's survival bar) rather than only in the one
+sequence_mode nothing uses: `state.bar.opponent <= 0` now ends a
+single-opponent room outright, and ends the current bout of a committee
+sequence the same way a threshold win already does
+(`has_more_opponents()`/`_advance_to_next_opponent()`, both untouched).
+The existing threshold-win check runs first in `_check_outcome()`, so a
+turn that both crosses the threshold AND empties the opponent is still
+an ordinary win, never this one — confirmed by a GUT test doing exactly
+that.
+
+Whichever opponent was argued out this way costs their own organisation
+standing: `BattleState.crushed_opponent_boosters` (deduplicated per
+stage, the same shape `displeased_boosters` already uses), read off the
+opponent's own `affiliation` field (`opponents.json`) in the new
+`BattleEngine._register_crushed_opponent()`, applied as a flat
+`-instant_win_penalty` (2, hand-maintained in `booster_standing.json`
+beside `per_please`/`per_displease` — that file is never exported, so no
+workbook edit needed for the number itself) via the new `GameState.
+_apply_instant_win_penalties()`, called from `finish_stage()`'s new 7th,
+end-of-signature `crushed_boosters` parameter — the same positional-
+default pattern `displeased_boosters` used, so every existing call site
+keeps working (`BattleScreen._on_outcome_closed()` is the one real
+caller, passing `engine.crushed_opponent_boosters()`). This is a
+separate, simpler penalty from the please/displease netting a question's
+own grade already applies — never capped or netted alongside it, since
+it isn't about a question at all. Shown on the Outcome panel as a new
+`outcome.crushed` line ("Argued out of the room: {names}.") beside
+`outcome.pleased`/`outcome.displeased`, same reasoning as always: a
+standing hit nobody's told about may as well not have happened.
+Confirmed against a real level/stage/opponent (LV08's ST02, a real
+opponent affiliated with BO17): opponent's support driven to zero ends
+the stage in a win with the real "argued out of the chamber" text, and
+BO17's standing drops from 30 to 28.
+
 **A lesson worth keeping for later workbook edits**: `openpyxl` is safe
 for *reading* `design/CoP_Starter_Card_Stage_Data.xlsx`, but a direct
 `load_workbook()` → edit → `save()` round-trip silently corrupted the

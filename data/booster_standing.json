@@ -41,7 +41,17 @@
     "strong one would have pleased, by 'per_displease'. 'question_swing_cap' is a",
     "hard ceiling (both directions) on how far ONE stage's question-answering can",
     "move any single organisation's standing, net of every please/displease it saw",
-    "that stage - GameState._apply_question_boosters()."
+    "that stage - GameState._apply_question_boosters().",
+    "",
+    "2026-09-29, Cameron: arguing an opponent's own support all the way down to",
+    "zero ends the fight for them outright, even short of the win threshold - a",
+    "combat instant win (BattleEngine._check_outcome(), 'has_threshold and",
+    "state.bar.opponent <= 0'). Whichever organisation that opponent was",
+    "affiliated with (opponents.json's own Affiliation column) takes a flat hit,",
+    "'instant_win_penalty', applied once per organisation touched this stage",
+    "(GameState._apply_instant_win_penalties()) - a separate, simpler mechanic",
+    "from the please/displease netting above, since it is never about a",
+    "question's own grade."
   ],
 
   "start": 30,
@@ -50,6 +60,7 @@
   "per_please": 5,
   "per_displease": 1,
   "question_swing_cap": 5,
+  "instant_win_penalty": 2,
 
   "required_standing": 60,
   "required_standing_by_modifier": {}

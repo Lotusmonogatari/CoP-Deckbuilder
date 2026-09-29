@@ -126,6 +126,13 @@ var pleased_boosters: Array[String] = []
 ## feeds the standing penalty GameState applies once the stage ends.
 var displeased_boosters: Array[String] = []
 
+## The organisations whose own member was argued all the way down to zero
+## support this stage — an instant win short of the threshold (2026-09-29,
+## Cameron). Deduplicated the same way displeased_boosters is (a committee
+## sequence could crush more than one of the same organisation's members);
+## GameState applies a flat standing penalty to each once the stage ends.
+var crushed_opponent_boosters: Array[String] = []
+
 # --- Several opponents in one stage ----------------------------------------
 ## Which opponent is being argued with, counting from zero, and how many
 ## there are in total. Both are 0 and 1 in an ordinary one-opponent stage.

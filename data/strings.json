@@ -2294,5 +2294,12 @@
     "english": "{name} will last through your next level — {outcome}.",
     "placeholders": "name, outcome",
     "notes": null
+  },
+  {
+    "key": "outcome.crushed",
+    "where": "End of stage — what it was worth",
+    "english": "Argued out of the room: {names}.",
+    "placeholders": "names",
+    "notes": "Which organisations had a member argued down to zero support this stage."
   }
 ]

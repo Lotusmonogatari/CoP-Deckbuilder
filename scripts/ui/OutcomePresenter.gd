@@ -137,6 +137,18 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 		lines.append("")
 		lines.append(Text.say("outcome.displeased", {"names": ", ".join(displeased_names)}))
 
+	# Whichever organisation had a member argued all the way down to zero
+	# (§7.2's instant-win rule, 2026-09-29) — the standing hit is otherwise
+	# invisible until the player happens to check Important Stakeholders.
+	var crushed := engine.crushed_opponent_boosters()
+	if not crushed.is_empty():
+		var names := BattleSetup.booster_names()
+		var crushed_names: Array[String] = []
+		for booster_id: String in crushed:
+			crushed_names.append(str(names.get(booster_id, booster_id)))
+		lines.append("")
+		lines.append(Text.say("outcome.crushed", {"names": ", ".join(crushed_names)}))
+
 	# A loss says what it cost, from the stage's own loss_delta_* columns —
 	# the same numbers GameState charges when this panel closes (2026-09-27:
 	# before this a loss said nothing, and charged nothing either).
