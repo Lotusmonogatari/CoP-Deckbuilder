@@ -1022,7 +1022,88 @@ that also used openpyxl to read both sides. Any future workbook edit
 should use the raw-XML zip-surgery technique already established earlier
 in this file's own history (edit the XML fragment directly, re-zip, then
 confirm with a clean `export_data.py` run — never trust an openpyxl-based
-diff alone).
+diff alone). Confirmed again this session on comment-only edits (see
+below): a plain `load_workbook()` → add-comments → `save()` round trip
+still wiped every formula-cell cache on the Stages tab (`win_pct`,
+`segment_check`, `favored_suit` all read back `null`) even though no
+value was touched — caught the same way, by a clean `export_data.py`
+diff immediately after, and reverted before it ever reached a commit.
+
+### Defunct shop items removed; three player-facing raw-ID leaks fixed; Sanban deltas shown; workbook columns get their permutations (2026-09-30, Cameron)
+
+Four small, independent asks in one pass.
+
+- **Two defunct shop entries removed.** SH13/SH14 ("Unlock Tier 1/2
+  Level") and CP01/CP02 ("Neon Ambition"/"Quiet Chamber") deleted
+  outright from the Shop and Cosmetic Packages tabs — both rows'
+  worth of feature, unpurchased content that had nothing behind it
+  worth keeping in front of a player. Neither mechanism was torn out:
+  `buy_random_level()`, the whole Cosmetics/Appearance-and-Music page,
+  `CosmeticPieces.gd`, `ArtLoader`'s variant axis and `Audio`'s music
+  override all stay exactly as built, the same "empty is a valid state"
+  bargain every other optional table in this project already keeps —
+  nothing stops Cameron from writing new rows into either tab later.
+  Eight test/tool files that hardcoded these six specific IDs
+  (`test_cosmetics_game_state.gd`, `test_cosmetic_pieces.gd`,
+  `test_art_scheme.gd`, `test_save_load.gd`, `test_inventory.gd`,
+  `shop_items_driver.gd`, `cosmetics_driver.gd`,
+  `stress_shop_items.gd`) were updated to inject synthetic fixture rows
+  straight into `DataDB` for their own duration instead — the same
+  "fake row" technique `floor_vote_driver.gd`/`level_intro_driver.gd`
+  already used for a table with nothing real in it.
+- **Two real raw-ID leaks fixed.** The level briefing panel
+  (`OfficeScreen._on_level_chosen()`) was titling itself with the raw
+  `level_id` ("LV31") instead of the level's own `description` — its
+  stated fallback text ("Before you go in") could never actually fire,
+  since every real level has a `level_id`. The battle screen's own
+  Details panel (`BattleScreen._refresh_details()`) printed
+  `"Stage: Floor debate (ST02)"`, the raw `stage_id` included
+  unconditionally; now just the name. A full audit of every other
+  `.open()`/`.text =` call across `scripts/ui/` turned up nothing else
+  unconditional — the remaining `get("name_en", some_id)`-style
+  fallbacks only ever surface an ID on data that's missing entirely,
+  which is the existing, intentional placeholder bargain, not a leak.
+- **Sanban's own page ("Your Record") now shows a `(+N)`/`(-N)` next to
+  each of the four meta-variables**, the same treatment Important
+  Stakeholders already gives a booster's own recent change
+  (`GameState.last_booster_change`). The underlying field,
+  `last_meta_change`, already existed and was already being written on
+  every stage reward — it had simply never been read anywhere. Two
+  small fixes were needed to make it tell the truth: it used to reset
+  itself at the top of `_apply_stage_rewards()`, per-stage, which would
+  have wiped a Floor Vote's own favorability/influence-bonus swing
+  before the Office ever got to show it (those land on Sanban via
+  `apply_floor_vote_favorability()`/`apply_floor_vote_influence_bonus()`
+  earlier in the same flow, before `finish_stage()` runs) — the reset
+  was removed so it now scopes to the whole level, the same as
+  `last_booster_change` already does. And three call sites that were
+  genuine stage/vote *outcomes* — the Floor Vote's own favorability and
+  influence bonus, and the lifetime-gaffe Constituency-support penalty
+  — were routed through `_apply_meta_reward()` instead of the plain
+  `_move_meta()` they'd used before, since only the reward-shaped path
+  records into `last_meta_change`; `_move_meta()` itself is untouched
+  and still deliberately silent for the Office's own spending (buying,
+  hiring, firing), per its own existing doc comment — a purchase was
+  never meant to look like a reward.
+- **19 header-cell comments added to the workbook**, one per column
+  whose values come from a closed set of text options rather than free
+  prose: Stages' Mode/Bar Model/Energy Mode/Sequence Mode/Reveal In
+  Briefing/Loss Ends Level/Reputation Affects Start, Cards' Type/Tier,
+  Modifiers' Effect Type, Boosters' Tier, Floor Vote Party Positions'
+  Disposition, Opponent Cues' Verb, Vote Influence Triggers' Enabled,
+  Vote Influence Cues' Outcome Direction, and Office Notices'/Office
+  Ticker's shared condition_type/condition_op pair — each comment
+  spelling out the real permutations read straight from the code that
+  consumes that column (`BarModel.gd`, `BattleEngine.gd`,
+  `OfficeNotices.gd`, `export_data.py`'s own validation, and the real
+  distinct values already in the exported data), not guessed at. Built
+  by hand as raw comment/VML-drawing XML parts (`xl/commentsN.xml`,
+  `xl/drawings/vmlDrawingN.vml`, one new worksheet `_rels` file per
+  sheet, a `<legacyDrawing>` element added to each sheet, two new
+  `[Content_Types].xml` entries) rather than through openpyxl, for
+  exactly the reason the lesson above already gives — confirmed by
+  reading the comments back with openpyxl (safe) and, more importantly,
+  by a clean `export_data.py` diff showing zero data changes.
 
 ## 13. The seams that are built but carry nothing
 

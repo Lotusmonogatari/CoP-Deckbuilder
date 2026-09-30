@@ -102,13 +102,28 @@ func test_the_art_and_label_are_always_the_back_two_children() -> void:
 
 var _active_cosmetics_before: Dictionary = {}
 
+# The workbook's own CP01/CP02 seed rows were removed 2026-09-30 (nothing
+# to sell yet); these two fixtures stand in for them for this file's own
+# duration, injected straight into DataDB the same way
+# floor_vote_driver.gd/level_intro_driver.gd fake a row for a table that
+# has nothing real in it.
+const _FIXTURE_OUTFIT_BG := {"package_id": "CPTEST1", "outfit_variant": "RED",
+	"background_variant": "UPGRADED"}
+const _FIXTURE_MUSIC_ONLY := {"package_id": "CPTEST2", "music_office_sound": "music_office_test"}
+
 
 func before_each() -> void:
 	_active_cosmetics_before = GameState.active_cosmetics.duplicate(true)
+	DataDB.cosmetic_packages.append(_FIXTURE_OUTFIT_BG)
+	DataDB.cosmetic_packages.append(_FIXTURE_MUSIC_ONLY)
+	DataDB._cosmetic_packages_by_id = DataDB._index(DataDB.cosmetic_packages, "package_id")
 
 
 func after_each() -> void:
 	GameState.active_cosmetics = _active_cosmetics_before
+	DataDB.cosmetic_packages = DataDB.cosmetic_packages.filter(
+		func(p: Dictionary) -> bool: return str(p.get("package_id", "")).begins_with("CPTEST") == false)
+	DataDB._cosmetic_packages_by_id = DataDB._index(DataDB.cosmetic_packages, "package_id")
 
 
 func test_an_explicit_variant_is_tried_before_stage_and_plain_candidates() -> void:
@@ -129,7 +144,7 @@ func test_no_variant_means_no_variant_candidates_at_all() -> void:
 
 
 func test_an_equipped_outfit_only_ever_applies_to_the_current_protagonists_own_id() -> void:
-	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CP01"}   # outfit_variant RED
+	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CPTEST1"}   # outfit_variant RED
 	var protagonist_id := str(DataDB.player.get("player_id", ""))
 	assert_eq(ArtLoader._outfit_variant(protagonist_id), "RED",
 		"the protagonist's own portrait picks up the equipped outfit")
@@ -145,7 +160,7 @@ func test_no_outfit_equipped_means_the_plain_chain_unchanged() -> void:
 
 
 func test_an_equipped_background_only_ever_applies_to_office() -> void:
-	GameState.active_cosmetics = {CosmeticPieces.BACKGROUND: "CP01"}   # background_variant UPGRADED
+	GameState.active_cosmetics = {CosmeticPieces.BACKGROUND: "CPTEST1"}   # background_variant UPGRADED
 	assert_eq(ArtLoader._background_variant("OFFICE"), "UPGRADED")
 	assert_eq(ArtLoader._background_variant("ST02"), "",
 		"a plain stage is never touched by the Office's own variant")
@@ -156,7 +171,7 @@ func test_an_equipped_background_only_ever_applies_to_office() -> void:
 
 
 func test_a_music_only_package_never_touches_the_outfit_or_background_slots() -> void:
-	GameState.active_cosmetics = {CosmeticPieces.MUSIC: "CP02"}   # music-only package
+	GameState.active_cosmetics = {CosmeticPieces.MUSIC: "CPTEST2"}   # music-only package
 	var protagonist_id := str(DataDB.player.get("player_id", ""))
 	var with_music_only := ArtLoader.character_path(protagonist_id, "attacking")
 	var office_with_music_only := ArtLoader.background_path("OFFICE")
@@ -164,6 +179,6 @@ func test_a_music_only_package_never_touches_the_outfit_or_background_slots() ->
 	var with_nothing_equipped := ArtLoader.character_path(protagonist_id, "attacking")
 	var office_with_nothing_equipped := ArtLoader.background_path("OFFICE")
 	assert_eq(with_music_only, with_nothing_equipped,
-		"CP02 has no outfit_variant, so the plain (no-variant) chain is untouched")
+		"CPTEST2 has no outfit_variant, so the plain (no-variant) chain is untouched")
 	assert_eq(office_with_music_only, office_with_nothing_equipped,
-		"CP02 has no background_variant, so the Office background is untouched")
+		"CPTEST2 has no background_variant, so the Office background is untouched")

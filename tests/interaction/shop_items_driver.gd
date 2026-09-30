@@ -1,6 +1,6 @@
 class_name ShopItemsDriver
 extends Node
-## Walks the SH13/14/18/19 Supplies purchases and Rhetoric Training's six
+## Walks the SH18/19 Supplies purchases and Rhetoric Training's six
 ## card sessions (SH15-17, SH27-29), with real clicks (CLAUDE.md M5, 2026-09-25 and 2026-09-25's
 ## card reveal popup): each one takes effect the moment it is bought rather
 ## than sitting in the inventory to be Used, and this proves that end to
@@ -65,18 +65,6 @@ func _walk() -> void:
 		_failures.append("the Marketplace button did not open")
 		return
 
-	# --- SH13/14: Unlock Tier 1/2 Level ---------------------------------------
-	if not await _buy(supplies, "SH13"):
-		return
-	if GameState.levels_unlocked.size() != 1:
-		_failures.append("SH13: expected 1 unlocked level, got %d" % GameState.levels_unlocked.size())
-		return
-	if not await _buy(supplies, "SH14"):
-		return
-	if GameState.levels_unlocked.size() != 2:
-		_failures.append("SH14: expected 2 unlocked levels, got %d" % GameState.levels_unlocked.size())
-		return
-
 	# --- SH15-17 / SH27-29 are not in Supplies any more ----------------------
 	# They moved to Rhetoric Training (Cameron, 2026-09-27) — walked below.
 	for item_id: String in ["SH15", "SH16", "SH17", "SH27", "SH28", "SH29"]:
@@ -89,7 +77,7 @@ func _walk() -> void:
 	# icon that isn't the placeholder, or a Buy button that renders with no
 	# real size (the same class of bug _walk_choice_picker() in
 	# inventory_driver.gd found for the Player Choice picker).
-	await _screenshot_supplies_rows(supplies, ["SH13", "SH14", "SH18", "SH19"])
+	await _screenshot_supplies_rows(supplies, ["SH18", "SH19"])
 
 	# --- SH18: Unlock New Staff Recruitment Tier ------------------------------
 	if not await _buy(supplies, "SH18"):
@@ -105,7 +93,7 @@ func _walk() -> void:
 		_failures.append("SH19: expected funds_cap_bonus 100000, got %d" % GameState.funds_cap_bonus)
 		return
 
-	print("  bought SH13, SH14, SH18 and SH19; each took effect on the spot")
+	print("  bought SH18 and SH19; each took effect on the spot")
 	supplies.close()
 	await _wait(0.2)
 
@@ -117,7 +105,7 @@ func _walk() -> void:
 	if not await _check_staff_gate(office, true):
 		return
 
-	# --- The Levels panel already shows one of the SH13-bought levels as
+	# --- The Levels panel already shows a seeded unlocked level as
 	#     playable, not asking to be unlocked again -----------------------------
 	if not await _check_levels_panel_reflects_unlock(office):
 		return
@@ -200,9 +188,20 @@ func _button_containing(root: Node, _staff_id: String, candidate: Dictionary) ->
 	return null
 
 
+## No Supplies purchase unlocks a level any more (SH13/14 removed from the
+## Shop tab, 2026-09-30 — level_gating_enabled's own unlock_cost_xp is 0 on
+## every real level today anyway, so nothing was actually gated). This
+## seeds levels_unlocked directly, the same value a purchase used to leave
+## behind, to keep proving the Levels panel itself reflects it correctly.
 func _check_levels_panel_reflects_unlock(office: Node) -> bool:
 	if GameState.levels_unlocked.is_empty():
-		_failures.append("nothing was actually unlocked to check the Levels panel against")
+		for level: Dictionary in DataDB.levels:
+			var level_id := str(level.get("level_id", ""))
+			if not GameState.levels_unlocked.has(level_id):
+				GameState.levels_unlocked.append(level_id)
+				break
+	if GameState.levels_unlocked.is_empty():
+		_failures.append("the fixture needs at least one real level to seed levels_unlocked with")
 		return false
 	var level := DataDB.get_level(GameState.levels_unlocked[0])
 	var description := str(level.get("description", ""))
@@ -221,15 +220,15 @@ func _check_levels_panel_reflects_unlock(office: Node) -> bool:
 					var button := child as Button
 					if button.disabled or button.text != Text.say("office.look_it_over"):
 						_failures.append(
-							"the level SH13/14 unlocked ('%s') still shows '%s' in the Levels panel, not Look It Over"
+							"the seeded unlocked level ('%s') still shows '%s' in the Levels panel, not Look It Over"
 							% [description, button.text])
 						return false
-					print("  the Levels panel already treats the SH13-unlocked level as playable")
+					print("  the Levels panel already treats the seeded unlocked level as playable")
 					levels.close()
 					await _wait(0.2)
 					return true
 
-	_failures.append("the Levels panel does not list the level SH13/14 unlocked ('%s')" % description)
+	_failures.append("the Levels panel does not list the seeded unlocked level ('%s')" % description)
 	return false
 
 

@@ -1,9 +1,15 @@
 class_name CosmeticsDriver
 extends Node
 ## Walks the Cosmetics page with real clicks (§8, 2026-09-28): buying a
-## package, then equipping and un-equipping it per slot, against the real
-## seed packages (CP01 "Neon Ambition" — outfit + background + music; CP02
-## "Quiet Chamber" — music only).
+## package, then equipping and un-equipping it per slot.
+##
+## The workbook's own CP01/CP02 seed rows were removed 2026-09-30 (nothing
+## to sell yet — the whole system stays blank-tolerant); this injects one
+## synthetic package straight into DataDB for the run, the same "fake row"
+## technique floor_vote_driver.gd/level_intro_driver.gd use for a table
+## with nothing real in it. Its background_variant still points at the
+## real OFFICE_UPGRADED.png CP01 used to, so the live-art-swap check below
+## keeps proving something real.
 ##
 ## Proves what the GUT tests (tests/test_cosmetic_pieces.gd,
 ## tests/test_cosmetics_game_state.gd) call GameState.buy_cosmetic_package()/
@@ -17,6 +23,15 @@ extends Node
 
 const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 
+const TEST_PACKAGE_ID := "CPTEST1"
+const TEST_PACKAGE_NAME := "Test Package"
+const TEST_PACKAGE := {
+	"package_id": TEST_PACKAGE_ID, "name_en": TEST_PACKAGE_NAME,
+	"cost_xp": 0, "cost_yen": 500,
+	"outfit_variant": "TESTA", "background_variant": "UPGRADED",
+	"music_office_sound": "music_office_test", "music_battle_sound": "music_battle_test",
+}
+
 var _failures: PackedStringArray = []
 
 
@@ -29,12 +44,18 @@ func _run() -> void:
 	GameState.meta["Funds"] = 100000
 	GameState.owned_cosmetic_packages = []
 	GameState.active_cosmetics = {}
+	DataDB.cosmetic_packages.append(TEST_PACKAGE)
+	DataDB._cosmetic_packages_by_id = DataDB._index(DataDB.cosmetic_packages, "package_id")
 
 	get_tree().change_scene_to_file(OFFICE_SCENE)
 	await get_tree().process_frame
 	await _wait(0.6)
 
 	await _walk()
+
+	DataDB.cosmetic_packages = DataDB.cosmetic_packages.filter(
+		func(p: Dictionary) -> bool: return str(p.get("package_id", "")) != TEST_PACKAGE_ID)
+	DataDB._cosmetic_packages_by_id = DataDB._index(DataDB.cosmetic_packages, "package_id")
 
 	print("")
 	if _failures.is_empty():
@@ -58,52 +79,52 @@ func _walk() -> void:
 		_failures.append("the Cosmetics button did not open the Cosmetics page")
 		return
 
-	# --- CP01 is offered for sale, not yet in the Equip section -------------
-	var cp01_row := panel.find_child("Cosmetic_CP01", true, false)
-	if cp01_row == null:
-		_failures.append("CP01 is not listed for sale before it's owned")
+	# --- the test package is offered for sale, not yet in the Equip section -------------
+	var package_row := panel.find_child("Cosmetic_" + TEST_PACKAGE_ID, true, false)
+	if package_row == null:
+		_failures.append("the test package is not listed for sale before it's owned")
 		return
 	if panel.find_child("CosmeticSlot_outfit", true, false) != null:
 		_failures.append("an Equip section shows before anything is owned")
 		return
-	print("  CP01 listed for sale; no Equip section until something is owned")
+	print("  the test package listed for sale; no Equip section until something is owned")
 
-	# --- Buy CP01 with a real click on its own Buy button --------------------
-	var buy := _button_with_text(cp01_row, Text.say("shop.buy"))
+	# --- Buy the test package with a real click on its own Buy button --------------------
+	var buy := _button_with_text(package_row, Text.say("shop.buy"))
 	if buy == null:
-		_failures.append("CP01's row has no Buy button")
+		_failures.append("the test package's row has no Buy button")
 		return
 	var funds_before := int(GameState.meta.get("Funds", 0))
 	await _click(buy)
-	if not GameState.owned_cosmetic_packages.has("CP01"):
-		_failures.append("pressing Buy did not add CP01 to owned_cosmetic_packages")
+	if not GameState.owned_cosmetic_packages.has(TEST_PACKAGE_ID):
+		_failures.append("pressing Buy did not add the test package to owned_cosmetic_packages")
 		return
 	if int(GameState.meta.get("Funds", 0)) >= funds_before:
 		_failures.append("pressing Buy did not deduct Funds")
 		return
-	print("  bought CP01 with a real click on its own Buy button")
+	print("  bought the test package with a real click on its own Buy button")
 
-	# --- The panel now shows Equip, CP01 no longer for sale -------------------
+	# --- The panel now shows Equip, the test package no longer for sale -------------------
 	panel = office.get_node("CosmeticsPanel") as Overlay
-	if panel.find_child("Cosmetic_CP01", true, false) != null:
-		_failures.append("CP01 is still listed for sale after being bought")
+	if panel.find_child("Cosmetic_" + TEST_PACKAGE_ID, true, false) != null:
+		_failures.append("the test package is still listed for sale after being bought")
 		return
 	var outfit_row := panel.find_child("CosmeticSlot_outfit", true, false)
 	if outfit_row == null:
-		_failures.append("no Outfit equip row appeared once CP01 (which has an outfit piece) is owned")
+		_failures.append("no Outfit equip row appeared once the test package (which has an outfit piece) is owned")
 		return
-	print("  CP01 dropped off the shop list and the Equip section appeared")
+	print("  the test package dropped off the shop list and the Equip section appeared")
 
-	# --- Equip CP01's outfit with a real click on its own name ---------------
-	var outfit_choice := _button_with_text(outfit_row, "Neon Ambition")
+	# --- Equip the test package's outfit with a real click on its own name ---------------
+	var outfit_choice := _button_with_text(outfit_row, TEST_PACKAGE_NAME)
 	if outfit_choice == null:
-		_failures.append("the Outfit row has no button for CP01 (Neon Ambition)")
+		_failures.append("the Outfit row has no button for the test package (TEST_PACKAGE_NAME)")
 		return
 	await _click(outfit_choice)
-	if str(GameState.active_cosmetics.get(CosmeticPieces.OUTFIT, "")) != "CP01":
-		_failures.append("clicking CP01's own name in the Outfit row did not equip it")
+	if str(GameState.active_cosmetics.get(CosmeticPieces.OUTFIT, "")) != TEST_PACKAGE_ID:
+		_failures.append("clicking the test package's own name in the Outfit row did not equip it")
 		return
-	print("  equipped CP01's outfit with a real click")
+	print("  equipped the test package's outfit with a real click")
 
 	# --- Equipping the Background piece updates the LIVE Office picture ------
 	# right away, with no scene reload needed (2026-09-28: PlaceholderArt only
@@ -114,11 +135,11 @@ func _walk() -> void:
 	panel = office.get_node("CosmeticsPanel") as Overlay
 	var background_row := panel.find_child("CosmeticSlot_background", true, false)
 	if background_row == null:
-		_failures.append("no Background equip row appeared for CP01")
+		_failures.append("no Background equip row appeared for the test package")
 		return
-	var background_choice := _button_with_text(background_row, "Neon Ambition")
+	var background_choice := _button_with_text(background_row, TEST_PACKAGE_NAME)
 	if background_choice == null:
-		_failures.append("the Background row has no button for CP01")
+		_failures.append("the Background row has no button for the test package")
 		return
 	var background_art := office.find_child("Background", true, false) as PlaceholderArt
 	if background_art == null:
@@ -127,10 +148,10 @@ func _walk() -> void:
 	await _click(background_choice)
 	var background_texture: Texture2D = background_art._texture_rect.texture
 	if background_texture == null or not background_texture.resource_path.ends_with("OFFICE_UPGRADED.png"):
-		_failures.append("equipping CP01's Background did not update the live Office picture (got %s)"
+		_failures.append("equipping the test package's Background did not update the live Office picture (got %s)"
 			% [background_texture.resource_path if background_texture else "null"])
 		return
-	print("  equipped CP01's background and the live Office picture updated at once")
+	print("  equipped the test package's background and the live Office picture updated at once")
 
 	# --- Un-equip it: Default, clicked for real -------------------------------
 	panel = office.get_node("CosmeticsPanel") as Overlay
@@ -145,21 +166,21 @@ func _walk() -> void:
 		return
 	print("  clicking Default un-equips the outfit again")
 
-	# --- The Music slot offers CP01 too (it has a music piece as well) -------
+	# --- The Music slot offers the test package too (it has a music piece as well) -------
 	panel = office.get_node("CosmeticsPanel") as Overlay
 	var music_row := panel.find_child("CosmeticSlot_music", true, false)
 	if music_row == null:
-		_failures.append("no Music equip row appeared for CP01")
+		_failures.append("no Music equip row appeared for the test package")
 		return
-	var music_choice := _button_with_text(music_row, "Neon Ambition")
+	var music_choice := _button_with_text(music_row, TEST_PACKAGE_NAME)
 	if music_choice == null:
-		_failures.append("the Music row has no button for CP01")
+		_failures.append("the Music row has no button for the test package")
 		return
 	await _click(music_choice)
-	if str(GameState.active_cosmetics.get(CosmeticPieces.MUSIC, "")) != "CP01":
-		_failures.append("clicking CP01's own name in the Music row did not equip it")
+	if str(GameState.active_cosmetics.get(CosmeticPieces.MUSIC, "")) != TEST_PACKAGE_ID:
+		_failures.append("clicking the test package's own name in the Music row did not equip it")
 		return
-	print("  equipped CP01's music independently of the outfit slot (already un-equipped)")
+	print("  equipped the test package's music independently of the outfit slot (already un-equipped)")
 
 	panel.close()
 	await _wait(0.2)

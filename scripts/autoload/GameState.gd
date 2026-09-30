@@ -802,7 +802,7 @@ func _record_lifetime_gaffes(gaffes: int, outcome: String, gaffe_caused_loss: bo
 
 	gaffe_penalty_applied = true
 	var delta := int(DataDB.balance.get("gaffes_lifetime_penalty_jiban_delta", -15))
-	_move_meta("Constituency support", delta)
+	_apply_meta_reward("Constituency support", delta)
 	pending_trigger_alerts.append({"kind": "gaffe_penalty", "edge": "entered",
 		"count": lifetime_gaffes, "amount": absi(delta)})
 
@@ -872,7 +872,10 @@ func _check_steering_committee(level_id: String) -> void:
 ## The playtest stages carry zeroes for the win deltas until Cameron fills
 ## them in; the wiring is here so the moment he does, they land.
 func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> void:
-	last_meta_change = {}
+	# NOT reset here (2026-09-30): last_meta_change is scoped to the whole
+	# level, the same as last_booster_change — resetting it per stage would
+	# wipe out a Floor Vote's own favorability/influence-bonus moves, which
+	# land on Sanban before finish_stage() (and this function) ever runs.
 	last_xp_gained = 0
 	if stage.is_empty():
 		return
@@ -1685,7 +1688,7 @@ func apply_floor_vote_favorability(deltas: Dictionary) -> void:
 	for party_name: String in deltas:
 		var delta := int(deltas[party_name])
 		if party_name == own_party:
-			_move_meta("Party support", delta)
+			_apply_meta_reward("Party support", delta)
 		else:
 			_apply_party_delta(party_name, delta)
 
@@ -1696,8 +1699,8 @@ func apply_floor_vote_favorability(deltas: Dictionary) -> void:
 ## pass/fail outcome. Both blank read as 0, same as every other delta column
 ## — a no-op call is fine and expected for the common case of no bonus set.
 func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta: int) -> void:
-	_move_meta("Reputation", reputation_delta)
-	_move_meta("Party support", party_support_delta)
+	_apply_meta_reward("Reputation", reputation_delta)
+	_apply_meta_reward("Party support", party_support_delta)
 
 
 ## Every bill_id the influence swing has flipped (§7.7), in the order they

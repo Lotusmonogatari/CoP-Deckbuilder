@@ -25,6 +25,12 @@ func _ready() -> void:
 func _run() -> void:
 	randomize()
 	_reset_state()
+	# SH13/14 (Unlock Tier N Level) were removed from the Shop tab
+	# 2026-09-30 (defunct — nothing to sell). buy_random_level() itself is
+	# still real code, so these two fixtures stand in for the removed rows.
+	DataDB.shop.append({"item_id": "SHTEST_LV1", "cost_xp": 40, "cost_yen": 0, "level_tier": 1})
+	DataDB.shop.append({"item_id": "SHTEST_LV2", "cost_xp": 40, "cost_yen": 0, "level_tier": 2})
+	DataDB._shop_by_id = DataDB._index(DataDB.shop, "item_id")
 
 	for i in range(ITERATIONS):
 		_iterations_run = i + 1
@@ -38,6 +44,10 @@ func _run() -> void:
 			6: _occasionally_reset_a_field()
 		if not _failures.is_empty():
 			break
+
+	DataDB.shop = DataDB.shop.filter(
+		func(i: Dictionary) -> bool: return str(i.get("item_id", "")).begins_with("SHTEST_") == false)
+	DataDB._shop_by_id = DataDB._index(DataDB.shop, "item_id")
 
 	_report()
 
@@ -106,7 +116,7 @@ func _try_buy_random_card() -> void:
 
 
 func _try_buy_random_level() -> void:
-	var item_id: String = ["SH13", "SH14"][randi() % 2]
+	var item_id: String = ["SHTEST_LV1", "SHTEST_LV2"][randi() % 2]
 	var item := DataDB.get_shop_item(item_id)
 	var tier := int(item.get("level_tier", 0))
 	var unlocked_before := GameState.levels_unlocked.duplicate()

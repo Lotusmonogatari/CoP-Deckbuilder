@@ -628,8 +628,14 @@ func _show_record() -> void:
 	rows.append(UiKit.heading(Text.say("office.record_sanban_heading")))
 	for variable: Dictionary in DataDB.sanban:
 		var name := str(variable.get("name_en", ""))
-		rows.append(UiKit.line(Text.say("new_game.stat_line",
-			{"name": name, "value": GameState.meta.get(name, 0)})))
+		var line := Text.say("new_game.stat_line",
+			{"name": name, "value": GameState.meta.get(name, 0)})
+		# What moved this level, the same "(+N)" treatment Important
+		# Stakeholders already gives a booster's own recent change.
+		var change := int(GameState.last_meta_change.get(name, 0))
+		if change != 0:
+			line += "  (%+d)" % change
+		rows.append(UiKit.line(line))
 
 	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))
 	if GameState.bills_flipped_by_influence.is_empty():
@@ -1418,7 +1424,9 @@ func _show_briefing() -> void:
 		rows.append(UiKit.line(""))
 		rows.append(UiKit.line(Text.say("reward.nothing_set")))
 
-	_briefing_panel.open(str(_chosen_level.get("level_id", "Before you go in")),
+	var briefing_title := str(_chosen_level.get("description", "")).strip_edges()
+	_briefing_panel.open(
+		briefing_title if not briefing_title.is_empty() else "Before you go in",
 		rows, "Go in")
 
 
