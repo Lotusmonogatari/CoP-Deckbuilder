@@ -82,7 +82,7 @@ func _walk() -> void:
 		return
 	print("  bill text: %s" % str(bill_text.text).left(60))
 
-	var party_row: HBoxContainer = screen.get_node("%PartyRow")
+	var party_row: Control = screen.get_node("%PartyRow")
 	var shown_parties := 0
 	for card: Control in party_row.get_children():
 		if card.visible:

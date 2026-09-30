@@ -32,7 +32,7 @@ var _voted := false
 
 @onready var _stage_name: Label = %StageName
 @onready var _stage_name_jp: Label = %StageNameJP
-@onready var _party_row: HBoxContainer = %PartyRow
+@onready var _party_row: Control = %PartyRow
 @onready var _bill_text: Label = %BillText
 @onready var _vote_yes: Button = %VoteYes
 @onready var _vote_no: Button = %VoteNo
@@ -143,15 +143,51 @@ func _resistance_by_party() -> Dictionary:
 	return resistance
 
 
-## One card per party, in the bill's own position order: a portrait faced
-## for their disposition, their name in their own colour, and their own cue
-## line underneath — all six shown at once, since every party's stance is
-## already decided before the player ever votes.
+## PartyRow's own effective width — 1080's own base resolution (§3) minus
+## Safe's 40px margin on each side. A constant rather than PartyRow.size.x:
+## _show_parties() runs from _ready(), before this Control's own sort pass
+## is guaranteed to have run, so its size could still read as whatever the
+## .tscn shipped (0) rather than what the VBoxContainer above it actually
+## gives it once laid out.
+const _ROW_WIDTH := 1000.0
+const _CARD_WIDTH := 150.0
+## How far the arc's peak rises above its own two ends (2026-09-30, Cameron:
+## a semicircle, not a cramped single row) — a dome, the two end parties
+## lowest and the two middle ones highest, the shape a hemicycle's own back
+## benches are usually diagrammed in.
+const _ARC_HEIGHT := 110.0
+
+
+## One card per party, positioned along a semicircular arc rather than a
+## single row (2026-09-30, Cameron: six full portrait-plus-cue blocks in one
+## HBoxContainer row compressed and overlapped on a 1080px-wide screen) —
+## left to right in the bill's own position order, the same order Cameron
+## asked for (Butsutou, Yezo Heritage Party, Frontier Party, Five Point
+## Independents, Keizaijiyuutou, Country Initiative), since that is simply
+## the order floor_votes.json's own Floor Vote Party Positions rows are in
+## for every real bill. A portrait faced for their disposition, their name
+## in their own colour, and their own cue line underneath.
 func _show_parties(positions: Array) -> void:
 	var cards := _party_row.get_children()
+	var last := maxi(cards.size() - 1, 1)
 	for index in cards.size():
 		var card: Control = cards[index]
 		card.visible = index < positions.size()
+		# Positioned whether visible or not — cheap, and means a bill with
+		# fewer than six real positions (never happens today, but the loop
+		# already guards for it) still lays out evenly rather than leaving
+		# a gap where a hidden card's own slot would have been.
+		# Evenly spaced left to right by x, not by angle: spacing every card
+		# an equal angle apart around a true circle bunches the two end
+		# cards against their neighbours (cosine is flattest near 0°/180°),
+		# which is what overlapped Butsutou/Yezo Heritage Party and
+		# Keizaijiyuutou/Country Initiative the first time this was tried —
+		# caught on a real screenshot, not guessed at. Evenly spaced x with
+		# a sine-curve height keeps the dome look with guaranteed gaps.
+		var t := float(index) / float(last)
+		var x := t * (_ROW_WIDTH - _CARD_WIDTH)
+		var y := _ARC_HEIGHT * (1.0 - sin(PI * t))
+		card.position = Vector2(x, y)
 		if index >= positions.size():
 			continue
 

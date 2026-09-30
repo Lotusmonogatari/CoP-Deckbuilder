@@ -666,6 +666,16 @@ func _play_selected() -> void:
 	var useless := bool(engine.preview(DataDB.get_card(card_id))
 		.get("does_nothing", false))
 
+	# Read BEFORE the card is played, the same reason _on_end_turn() below
+	# reads its own acting_opponent first: a card that finishes the current
+	# opponent (a threshold win, or the instant win from arguing them down
+	# to zero) advances the engine to whoever rises next before play_card()
+	# even returns, and the sentence below is about who the card was
+	# actually played against — not whoever the room has already moved on
+	# to (2026-09-30, Cameron: a committee's "final blow" line named the
+	# NEW opponent as who the seats were "argued away from").
+	var acting_opponent_name := OpponentPresenter.display_name(engine)
+
 	var result := engine.play_card(card_id)
 	if not result.get("ok", false):
 		_messages.say(str(result.get("reason", Text.say("battle.card_refused"))))
@@ -693,7 +703,7 @@ func _play_selected() -> void:
 	var cue := CardCues.for_card(
 		card_id, str(_stage.get("stage_id", "")), engine.state.turn)
 	var did := BattleNarration.player_move(
-		result, _stage, engine.state, OpponentPresenter.display_name(engine))
+		result, _stage, engine.state, acting_opponent_name)
 	var me := str(DataDB.player.get("name_en", ""))
 	if not str(cue["text"]).is_empty():
 		_banner.say(CueBanner.PLAYER, me, str(cue["text"]), did)

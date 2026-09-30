@@ -68,18 +68,19 @@ layout_mode = 2
 theme_type_variation = &"JapaneseAccent"
 text = "本会議採決"
 
-[node name="PartyRow" type="HBoxContainer" parent="Safe/Column"]
+[node name="PartyRow" type="Control" parent="Safe/Column"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
+clip_contents = false
 
 [node name="Card0" type="VBoxContainer" parent="Safe/Column/PartyRow"]
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
 theme_override_constants/separation = 4
 
 [node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card0"]
-custom_minimum_size = Vector2(100, 130)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 script = ExtResource("2_a76vx")
 
@@ -94,18 +95,19 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card0"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Card1" type="VBoxContainer" parent="Safe/Column/PartyRow"]
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
 theme_override_constants/separation = 4
 
 [node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card1"]
-custom_minimum_size = Vector2(100, 130)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 script = ExtResource("2_a76vx")
 
@@ -120,18 +122,19 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card1"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Card2" type="VBoxContainer" parent="Safe/Column/PartyRow"]
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
 theme_override_constants/separation = 4
 
 [node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card2"]
-custom_minimum_size = Vector2(100, 130)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 script = ExtResource("2_a76vx")
 
@@ -146,18 +149,19 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card2"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Card3" type="VBoxContainer" parent="Safe/Column/PartyRow"]
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
 theme_override_constants/separation = 4
 
 [node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card3"]
-custom_minimum_size = Vector2(100, 130)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 script = ExtResource("2_a76vx")
 
@@ -172,18 +176,19 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card3"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Card4" type="VBoxContainer" parent="Safe/Column/PartyRow"]
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
 theme_override_constants/separation = 4
 
 [node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card4"]
-custom_minimum_size = Vector2(100, 130)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 script = ExtResource("2_a76vx")
 
@@ -198,18 +203,19 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card4"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
 horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Card5" type="VBoxContainer" parent="Safe/Column/PartyRow"]
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
 theme_override_constants/separation = 4
 
 [node name="Portrait" type="Control" parent="Safe/Column/PartyRow/Card5"]
-custom_minimum_size = Vector2(100, 130)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 script = ExtResource("2_a76vx")
 
@@ -224,7 +230,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Cue" type="Label" parent="Safe/Column/PartyRow/Card5"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
 horizontal_alignment = 1

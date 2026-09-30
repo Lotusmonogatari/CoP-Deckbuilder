@@ -964,6 +964,55 @@ opponent affiliated with BO17): opponent's support driven to zero ends
 the stage in a win with the real "argued out of the chamber" text, and
 BO17's standing drops from 30 to 28.
 
+**The Floor Vote party row laid out as a semicircle instead of one
+compressed line** (2026-09-30, Cameron, from a real screenshot): six
+full portrait-plus-cue cards in a single `HBoxContainer` overlapped and
+compressed on a 1080px-wide screen — nothing to scroll to, just too
+narrow to hold six 100px-wide blocks of wrapped sentence text side by
+side. `PartyRow` is now a plain `Control` (position managed in code,
+not by an HBoxContainer's own layout pass) and `FloorVoteScreen.
+_show_parties()` positions each of the six fixed card nodes along an
+arc — left to right in the bill's own position order (Butsutou, Yezo
+Heritage Party, Frontier Party, Five Point Independents, Keizaijiyuutou,
+Country Initiative, since that is simply the order `floor_votes.json`'s
+own Floor Vote Party Positions rows are in for every real bill), a dome
+shape with the two middle parties highest and the two end ones lowest —
+the way a hemicycle's own back benches are usually diagrammed. **Spacing
+is even in x, not in angle**: the first version spaced the six cards at
+equal angles around a true semicircle, which — since cosine bunches near
+0°/180° — crowded the two end cards hard against their neighbours
+(caught on a real screenshot, not guessed at); recomputed to evenly
+spaced x positions with a sine-curve height instead, which keeps the
+same dome look with a guaranteed gap between every card. Portraits and
+cue text both widened 100→150px alongside the fix, since a 150px-wide
+sentence wraps to noticeably fewer lines than a 100px one.
+`tests/interaction/floor_vote_driver.gd`'s own `PartyRow` type
+annotation updated to match (`Control`, not `HBoxContainer`);
+`floor_vote_test.tscn` confirmed still green afterward.
+
+**A committee's "final blow" line named the wrong opponent**
+(2026-09-30, Cameron, from a real screenshot): finishing off a
+committee member mid-sequence showed something like "Atsuko Takeo is
+finished — Yuki Kasukasa rises, ... argued away from Yuki Kasukasa" —
+crediting the seats to whoever had just RISEN, not whoever was actually
+argued down. `BattleScreen._play_selected()` read
+`OpponentPresenter.display_name(engine)` AFTER `engine.play_card()`
+returned — but a card that finishes the current opponent (a threshold
+win, or the new instant-win mechanic above) already advances the engine
+to the next one inside `play_card()` itself, so by the time the name was
+read it was already the new opponent's. `_on_end_turn()` right below it
+already reads its own `acting_opponent`/`speaker` BEFORE `_refresh()`,
+with a comment explaining exactly why — the same care had just never
+been applied to the player's own card-play narration path. Fixed by
+capturing `acting_opponent_name` right after `preview()` (still the true
+opponent) and before `play_card()`, then using that captured value
+instead of a fresh read. Confirmed against a real committee (LV09/ST01):
+forcing a lethal card against the first of three opponents, the
+narration built from the name read after `play_card()` said "argued
+away from Aoi Oba" (who had just risen); built from the name captured
+before, it correctly said "argued away from Ayala Taiyounokage" (who
+was actually beaten) — the exact bug, reproduced and confirmed fixed.
+
 **A lesson worth keeping for later workbook edits**: `openpyxl` is safe
 for *reading* `design/CoP_Starter_Card_Stage_Data.xlsx`, but a direct
 `load_workbook()` → edit → `save()` round-trip silently corrupted the
