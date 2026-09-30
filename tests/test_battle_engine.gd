@@ -1340,6 +1340,33 @@ func test_a_new_committee_bout_clears_both_banks() -> void:
 	assert_eq(engine.state.opponent_block, 0)
 
 
+func test_a_level_buffs_guard_bonus_carries_into_every_new_bout() -> void:
+	# Bug, 2026-09-30 (Cameron: "the bonus applies only to the first stage
+	# used in"): an Extra Guard (Level Buff) item's own starting guard was
+	# only ever granted once, at setup() — a committee's own bout reset
+	# (sequence_mode: "reset") wiped it back to 0 for every opponent after
+	# the first, even though the item's own promise ("will last through
+	# your next level") covers the whole stage, the same way its extra
+	# energy and hand size already do.
+	var engine := _start({
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S1", "sequence_mode": "reset", "win_threshold": 45,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "A", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "B", "intent_pattern": [["block", 1]]},
+		],
+		"item_bonuses": {"GUARD": 1},
+	})
+	assert_eq(engine.state.block, 1, "the item's guard bonus starts the first bout banked")
+
+	engine.state.bar.player = 45
+	engine._check_outcome()
+
+	assert_eq(engine.state.opponent_index, 1, "the next one stepped up")
+	assert_eq(engine.state.block, 1, "the same item bonus re-grants for the new opponent")
+
+
 func test_the_guard_cap_comes_from_the_rules_file() -> void:
 	var engine := _start({"rules": TestFixtures.rules({"guard_cap": 2})})
 	_force_into_hand(engine, "GUARD5")

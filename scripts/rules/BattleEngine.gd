@@ -61,6 +61,19 @@ var _rng := RandomNumberGenerator.new()
 var _opponents: Array = []
 var _sequence_mode := "single"
 
+## An "Extra Guard" item's own guard bonus for THIS stage — from its
+## setup-time config (a Level-duration item already running) and/or used
+## mid-battle (`_apply_item_bonus`, `now: true`) — kept so
+## _reset_for_new_bout() can re-grant it for every opponent in a
+## committee's sequence, not just the first. Guard is a stacking bank
+## (CLAUDE.md §7.2), so an item bonus has to start every fresh bout with
+## it banked, the same way it already starts with the item's extra
+## energy and hand size (both live in a state field _reset_for_new_bout()
+## never zeroes; block is the one field it does zero, unconditionally,
+## for every new opponent — bug found 2026-09-30, Cameron: "the bonus
+## applies only to the first stage used in").
+var _item_guard_bonus := 0
+
 ## The reporters' questions, in a press conference. Empty everywhere else.
 var _questions: Array = []
 
@@ -1190,7 +1203,12 @@ func _advance_to_next_opponent() -> void:
 ## Everything a new bout starts fresh with.
 func _reset_for_new_bout() -> void:
 	state.gaffe = 0
-	state.block = 0
+	# Not a flat 0: an Extra Guard item's own bonus (§7.2's bank, above)
+	# has to start every fresh opponent banked, the same way an Extra
+	# Energy or Extra Draw item's own bonus already carries into every
+	# bout via state.energy_per_turn/hand_size, neither of which this
+	# function resets.
+	state.block = clampi(_item_guard_bonus, 0, state.guard_cap)
 	state.opponent_block = 0
 	state.next_card_bonus = 0
 	state.next_card_discount = 0
@@ -1331,6 +1349,11 @@ func _apply_item_bonus(token: String, amount: int, now: bool) -> void:
 				state.energy_max = maxi(state.energy_max, state.energy)
 		"GUARD":
 			state.block = clampi(state.block + amount, 0, state.guard_cap)
+			# Remembered so _reset_for_new_bout() can re-grant it, whether this
+			# came from a Level-duration item's own setup-time bonus or a
+			# Stage-duration one used mid-battle — either way, "this stage"
+			# covers every opponent a committee's sequence_mode: "reset" fights.
+			_item_guard_bonus += amount
 		"DRAW":
 			state.hand_size = maxi(state.hand_size + amount, 0)
 			if now and amount > 0:

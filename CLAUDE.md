@@ -1105,6 +1105,44 @@ Four small, independent asks in one pass.
   reading the comments back with openpyxl (safe) and, more importantly,
   by a clean `export_data.py` diff showing zero data changes.
 
+### A Level Buff's own Extra Guard bonus vanished after the first opponent in a committee (2026-09-30, Cameron)
+
+Reported as "shop items that provide a bonus across a full level are not
+working — the bonus applies only to the first stage used in." Confirmed
+with a throwaway headless repro (deleted before commit, this session's
+own convention) before touching any code: an item bought before a level
+begins correctly reaches every real stage of that level — `GameState.
+level_bonuses` isn't cleared between stages, and `take_item_bonuses_for_
+stage()` hands it to a fresh `BattleEngine.setup()` each time, confirmed
+against two real multi-stage levels for both a "bought in the Office" and
+a "used mid-stage" purchase. The real bug was one level narrower than
+"stage": inside a SINGLE committee stage (`sequence_mode: "reset"`,
+§7.5), `BattleEngine._reset_for_new_bout()` unconditionally set
+`state.block = 0` for every opponent after the first, with nothing to
+re-grant an Extra Guard (Level Buff) item's own starting bonus. Energy
+and hand-size bonuses never had this problem — they live in
+`state.energy_per_turn`/`state.hand_size`, fields `_reset_for_new_bout()`
+never touches — but guard is spent, not merely a baseline, so its bonus
+had nowhere to survive a bout reset. To a player, a committee's full
+support/gaffe/hand/deck reset between opponents already reads as "a new
+fight," which is exactly why this shipped as "only the first stage."
+
+Fixed by remembering the amount, not just applying it once: a new
+`BattleEngine._item_guard_bonus` instance var accumulates every GUARD
+application (`_apply_item_bonus`'s own "GUARD" case, whether from
+config's `item_bonuses` at `setup()` or a Stage-duration item used
+mid-battle — either way it's this stage's bonus, and a committee's
+several opponents are all one stage), and `_reset_for_new_bout()` now
+sets `state.block = clampi(_item_guard_bonus, 0, state.guard_cap)`
+instead of a flat `0`. `tests/test_battle_engine.gd`'s new
+`test_a_level_buffs_guard_bonus_carries_into_every_new_bout()` sits
+right beside the existing `test_a_new_committee_bout_clears_both_banks()`
+it's a variant of — the old test (no item bonus in its config) still
+correctly asserts a plain `0`, since `_item_guard_bonus` defaults to
+that; the new one uses the same fixture with `"item_bonuses": {"GUARD": 1}`
+and asserts `1` survives the reset. `tools/verify.sh` confirmed green
+afterward.
+
 ## 13. The seams that are built but carry nothing
 
 These systems have working structure while some content remains incomplete.
