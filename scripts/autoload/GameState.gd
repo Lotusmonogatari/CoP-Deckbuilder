@@ -895,14 +895,14 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 				and MetaRules.stage_delta(stage, side + "_delta_yen") > 0:
 			paid_stage = stage.duplicate(true)
 			paid_stage[side + "_delta_yen"] = 0
-		var moved := (MetaRules.apply_win_deltas(meta, paid_stage, DataDB.sanban) if side == "win"
-			else MetaRules.apply_loss_deltas(meta, paid_stage, DataDB.sanban))
+		var moved := (MetaRules.apply_win_deltas(meta, paid_stage, sanban_rows_with_bonuses()) if side == "win"
+			else MetaRules.apply_loss_deltas(meta, paid_stage, sanban_rows_with_bonuses()))
 		meta = moved["meta"]
 		_record_meta_change(moved["applied"])
 		last_xp_gained = MetaRules.stage_delta(stage, side + "_delta_xp")
 		_move_xp(last_xp_gained)
 
-	var scored := MetaRules.apply_score_effects(meta, stage, score, DataDB.sanban)
+	var scored := MetaRules.apply_score_effects(meta, stage, score, sanban_rows_with_bonuses())
 	meta = scored["meta"]
 	_record_meta_change(scored["applied"])
 
@@ -1031,6 +1031,23 @@ func _sanban_row(name: String) -> Dictionary:
 				return with_bonus
 			return row
 	return {"min": 0, "max": 999, "start": 0}
+
+
+## DataDB.sanban, with Funds' own "max" raised by funds_cap_bonus (SH19,
+## "Increase Office Funds Cap") — the same adjustment _sanban_row() already
+## makes for a single lookup, but MetaRules.apply_win_deltas()/
+## apply_loss_deltas()/apply_score_effects() each take the whole array, not
+## one row at a time, so DataDB.sanban was being passed to them raw. A stage
+## reward's own Funds delta was clamping against the workbook's flat max
+## even after the player paid to raise it — bug found 2026-09-30, Cameron:
+## "the yen/funds cap is not working."
+func sanban_rows_with_bonuses() -> Array:
+	if funds_cap_bonus == 0:
+		return DataDB.sanban
+	var rows: Array = []
+	for row: Dictionary in DataDB.sanban:
+		rows.append(_sanban_row(str(row.get("name_en", ""))))
+	return rows
 
 
 ## Earns or spends XP, and says so.

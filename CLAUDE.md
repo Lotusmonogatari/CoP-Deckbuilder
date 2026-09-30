@@ -1143,6 +1143,46 @@ that; the new one uses the same fixture with `"item_bonuses": {"GUARD": 1}`
 and asserts `1` survives the reset. `tools/verify.sh` confirmed green
 afterward.
 
+### SH19's own Funds cap increase was silently ignored by stage rewards (2026-09-30, Cameron)
+
+Reported as "the yen/funds cap is not working — Funds accumulate beyond
+the cap." Traced every place Funds is written before touching anything:
+`GameState._move_meta()`/`_apply_meta_reward()` (Office spending, the
+Floor Vote's own favorability/influence bonus, the lifetime-gaffe
+penalty) all clamp correctly against `_sanban_row("Funds")`, which
+already raises the ceiling by `funds_cap_bonus` (SH19, "Increase Office
+Funds Cap," repeatable). A stage's own `win_delta_yen`/`loss_delta_yen`
+and its score-effects path — `GameState._apply_stage_rewards()`, the one
+place that actually pays out after a battle — went through `MetaRules.
+apply_win_deltas()`/`apply_loss_deltas()`/`apply_score_effects()` with
+`DataDB.sanban` passed in **raw**, un-adjusted for any purchased bonus.
+The clamp itself was never missing (a real headless repro confirmed
+Funds never exceeded either max, whichever one a given path happened to
+check) — the bug is that stage rewards were capping against the flat
+*workbook* number even after the player paid Yen or XP to raise it,
+silently discarding the difference: buy SH19, win a stage, and the extra
+headroom you paid for never landed. Read literally ("beyond the cap")
+this is the mirror image — Funds falling short of the cap the player
+actually has — but it's the one real inconsistency anywhere in the Funds
+cap system, and "the cap isn't working" is an accurate description of a
+stage-reward path quietly enforcing the wrong one.
+
+Fixed with one new method, `GameState.sanban_rows_with_bonuses()` —
+`DataDB.sanban`, with Funds' own row replaced by `_sanban_row("Funds")`'s
+already-correct bonus-adjusted version, a no-op array copy when
+`funds_cap_bonus` is 0 so nothing changes for a run that never bought
+SH19. `_apply_stage_rewards()`'s three `MetaRules` calls now read from
+it instead of `DataDB.sanban` directly. `OutcomePresenter._what_it_was_
+worth()` had the identical bug, one layer up — it recomputes the same
+deltas purely to show "+N Funds" on the outcome panel, and was reading
+`DataDB.sanban` raw too, which would have kept promising the old amount
+right after this fix corrected what actually lands — now reads
+`GameState.sanban_rows_with_bonuses()` as well, so the panel and the
+real payout always agree. New `tests/test_game_state_meta_tracking.gd`
+coverage: a stage win near the flat max still clamps there with no
+bonus bought; the same win with `funds_cap_bonus` set lands the full
+delta past the old flat max instead of being clamped short.
+
 ## 13. The seams that are built but carry nothing
 
 These systems have working structure while some content remains incomplete.
