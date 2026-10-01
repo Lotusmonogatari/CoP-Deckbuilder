@@ -1183,6 +1183,44 @@ coverage: a stage win near the flat max still clamps there with no
 bonus bought; the same win with `funds_cap_bonus` set lands the full
 delta past the old flat max instead of being clamped short.
 
+### A combat stage can now be lost instantly too — the player's own support argued down to nothing (2026-10-01, Cameron)
+
+The mirror image of 2026-09-29's instant win (§12, "A combat stage can
+now be won instantly by arguing the opponent down to nothing"): where
+that rule fires when `state.bar.opponent <= 0`, `BattleEngine._check_
+outcome()` now checks `state.bar.player <= 0` right after it, under the
+same `has_threshold` gate (every Shared_pool Combat stage — not a press
+conference, not the TV debate's survival bar, not a scored stage), and
+ends the stage outright in a loss (`outcome.reason.player_argued_out`,
+a new Text-tab row). Two design calls, made rather than left for Cameron
+to discover by accident, both because the opponent's own side of this
+rule already settled them the same way:
+
+- **It ends the whole stage, not just the current bout.** A committee's
+  own instant-win advances to the NEXT opponent when the one in front of
+  you is emptied out, because there's a fresh opponent waiting;
+  symmetrically there is no fresh *player* waiting once the one at the
+  table has been argued down, so `state.bar.player <= 0` is an outright
+  loss even mid-sequence, never a bout reset.
+- **A turn that empties both sides at once is a win, not a loss.** The
+  existing opponent-emptied-out check already runs earlier in
+  `_check_outcome()` than this new one, so the same priority the
+  threshold-win check already enjoys over the opponent's own instant-win
+  extends one step further: cross the threshold → win; empty the
+  opponent → win; only then, empty your own side → loss. A single card
+  that happens to drain both at once still reads as an ordinary win, the
+  same reasoning CLAUDE.md already gives for threshold-vs-opponent-empty.
+
+No stage in `stages.json` starts at `player_start: 0` for a Combat room
+(only two Non-combat rows do, which never reach `BattleEngine` at all),
+and `_check_outcome()` is only ever called after a card resolves or a
+turn ends, never at `setup()` — so this cannot fire before the player
+has had a turn. `tests/test_battle_engine.gd` gained three tests
+alongside the existing opponent-side ones: a single-opponent room and a
+mid-committee-sequence room both end outright in a loss when the
+player's own support is driven to 0, and a turn that empties both sides
+at once is confirmed still a win.
+
 ## 13. The seams that are built but carry nothing
 
 These systems have working structure while some content remains incomplete.

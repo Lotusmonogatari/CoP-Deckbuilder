@@ -810,6 +810,15 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			return
 		_finish("win", _words.say("outcome.reason.all_argued_out"))
 		return
+	# The mirror image of the rule above: the player's own support argued
+	# down to nothing ends the whole stage in a loss outright, not just the
+	# current bout — unlike an opponent reaching 0, there's no "next
+	# opponent" for the player to recover with (2026-10-01, Cameron).
+	# Checked after the player's own threshold win and the opponent's own
+	# empty-out above, so a turn that also wins outright is still a win.
+	if has_threshold and state.bar.player <= 0:
+		_finish("loss", _words.say("outcome.reason.player_argued_out"))
+		return
 	if bool(_rules.get("opponent_can_win_by_threshold", false)) and state.bar.opponent_has_won():
 		_finish("loss", _words.say("outcome.reason.opponent_first"))
 		return

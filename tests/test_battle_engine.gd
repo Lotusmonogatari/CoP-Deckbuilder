@@ -809,6 +809,51 @@ func test_a_single_opponent_argued_to_zero_wins_outright() -> void:
 	assert_eq(engine.crushed_opponent_boosters(), ["BO08"])
 
 
+func test_the_players_own_support_argued_to_zero_loses_outright() -> void:
+	# The mirror image, 2026-10-01 (Cameron): being argued down to nothing
+	# ends the whole stage in a loss, not just the current bout — there's
+	# no "next opponent" for the player to recover with the way a
+	# committee gives an opponent's own replacement.
+	var engine := _start()
+	engine.state.bar.player_loses(engine.state.bar.player)
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "loss")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.player_argued_out")
+
+
+func test_the_players_own_support_hitting_zero_mid_committee_still_ends_the_whole_stage() -> void:
+	var engine := _start(_three_in_a_row({
+		"opponents": [
+			{"opp_id": "A", "name": "First", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "Second", "intent_pattern": [["block", 1]]},
+		],
+	}))
+	engine.state.bar.player_loses(engine.state.bar.player)
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over(), "no next opponent for the player to recover against")
+	assert_eq(engine.state.outcome, "loss")
+
+
+func test_emptying_both_sides_at_once_is_a_win_not_a_loss() -> void:
+	# A real priority call, not an edge case nobody chose: when a single
+	# turn drains the opponent to 0 AND the player's own support to 0 at
+	# once, the opponent's own empty-out (an ordinary win) is checked
+	# first in _check_outcome(), so it wins outright rather than the new
+	# player-argued-out loss ever getting a look.
+	var opp := TestFixtures.opponent()
+	opp["affiliation"] = "BO08"
+	var engine := _start({"opponent": opp})
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine.state.bar.player_loses(engine.state.bar.player)
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win")
+
+
 func test_reaching_the_threshold_and_zeroing_the_opponent_together_is_an_ordinary_win() -> void:
 	# The priority rule: a turn that does both at once is a threshold win,
 	# never the instant-win branch, so nobody's standing takes a hit for a
