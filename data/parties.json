@@ -7,7 +7,7 @@
     "b": 0,
     "leader_opp_id": "OP91",
     "seats": 19,
-    "vote_resistance": null
+    "vote_resistance": 87
   },
   {
     "party_id": "PT02",
@@ -17,7 +17,7 @@
     "b": 255,
     "leader_opp_id": "OP10",
     "seats": 14,
-    "vote_resistance": null
+    "vote_resistance": 82
   },
   {
     "party_id": "PT03",
@@ -27,7 +27,7 @@
     "b": 0,
     "leader_opp_id": "OP27",
     "seats": 27,
-    "vote_resistance": 75
+    "vote_resistance": 71
   },
   {
     "party_id": "PT04",
@@ -47,7 +47,7 @@
     "b": 0,
     "leader_opp_id": "OP83",
     "seats": 25,
-    "vote_resistance": null
+    "vote_resistance": 68
   },
   {
     "party_id": "PT06",

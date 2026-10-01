@@ -41,8 +41,10 @@ func _a_run_in_progress() -> void:
 	GameState.gaffe_penalty_applied = true
 	GameState.levels_cleared = {"LV01": 2}
 	GameState.bills_flipped_by_influence.assign(["BI01"])
-	GameState.owned_cosmetic_packages.assign(["CP01"])
-	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CP01"}
+	# An arbitrary package ID — this is a pure serialization round-trip, not
+	# a check against real DataDB content, so it need not exist as real data.
+	GameState.owned_cosmetic_packages.assign(["CPTEST1"])
+	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CPTEST1"}
 
 
 func test_a_run_comes_back_exactly_as_it_was_saved() -> void:

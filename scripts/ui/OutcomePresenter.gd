@@ -190,12 +190,19 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 ## moved twice reports once.
 func _what_it_was_worth(stage: Dictionary, score: int, side: String = "win") -> Array[String]:
 	var moved := {}
-	var flat := (MetaRules.apply_win_deltas(GameState.meta, stage, DataDB.sanban) if side == "win"
-		else MetaRules.apply_loss_deltas(GameState.meta, stage, DataDB.sanban))
+	# Funds' own bonus-adjusted max (GameState.sanban_rows_with_bonuses(), not
+	# DataDB.sanban raw) — this panel recomputes the same deltas GameState is
+	# about to apply for real, purely to show them; reading DataDB.sanban
+	# straight would clamp Funds against the flat workbook max and show a
+	# smaller "+N Funds" than what actually lands once the player has paid
+	# to raise the cap (SH19) — bug found 2026-09-30, Cameron.
+	var sanban_rows := GameState.sanban_rows_with_bonuses()
+	var flat := (MetaRules.apply_win_deltas(GameState.meta, stage, sanban_rows) if side == "win"
+		else MetaRules.apply_loss_deltas(GameState.meta, stage, sanban_rows))
 
 	for half: Dictionary in [
 		flat["applied"],
-		MetaRules.apply_score_effects(GameState.meta, stage, score, DataDB.sanban)["applied"],
+		MetaRules.apply_score_effects(GameState.meta, stage, score, sanban_rows)["applied"],
 	]:
 		for name: String in half.keys():
 			moved[name] = int(moved.get(name, 0)) + int(half[name])

@@ -809,6 +809,51 @@ func test_a_single_opponent_argued_to_zero_wins_outright() -> void:
 	assert_eq(engine.crushed_opponent_boosters(), ["BO08"])
 
 
+func test_the_players_own_support_argued_to_zero_loses_outright() -> void:
+	# The mirror image, 2026-10-01 (Cameron): being argued down to nothing
+	# ends the whole stage in a loss, not just the current bout — there's
+	# no "next opponent" for the player to recover with the way a
+	# committee gives an opponent's own replacement.
+	var engine := _start()
+	engine.state.bar.player_loses(engine.state.bar.player)
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "loss")
+	assert_string_contains(engine.state.outcome_reason, "outcome.reason.player_argued_out")
+
+
+func test_the_players_own_support_hitting_zero_mid_committee_still_ends_the_whole_stage() -> void:
+	var engine := _start(_three_in_a_row({
+		"opponents": [
+			{"opp_id": "A", "name": "First", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "Second", "intent_pattern": [["block", 1]]},
+		],
+	}))
+	engine.state.bar.player_loses(engine.state.bar.player)
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over(), "no next opponent for the player to recover against")
+	assert_eq(engine.state.outcome, "loss")
+
+
+func test_emptying_both_sides_at_once_is_a_win_not_a_loss() -> void:
+	# A real priority call, not an edge case nobody chose: when a single
+	# turn drains the opponent to 0 AND the player's own support to 0 at
+	# once, the opponent's own empty-out (an ordinary win) is checked
+	# first in _check_outcome(), so it wins outright rather than the new
+	# player-argued-out loss ever getting a look.
+	var opp := TestFixtures.opponent()
+	opp["affiliation"] = "BO08"
+	var engine := _start({"opponent": opp})
+	engine.state.bar.opponent_loses(engine.state.bar.opponent)
+	engine.state.bar.player_loses(engine.state.bar.player)
+	engine._check_outcome()
+
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "win")
+
+
 func test_reaching_the_threshold_and_zeroing_the_opponent_together_is_an_ordinary_win() -> void:
 	# The priority rule: a turn that does both at once is a threshold win,
 	# never the instant-win branch, so nobody's standing takes a hit for a
@@ -1338,6 +1383,33 @@ func test_a_new_committee_bout_clears_both_banks() -> void:
 	assert_eq(engine.state.opponent_index, 1, "the next one stepped up")
 	assert_eq(engine.state.block, 0)
 	assert_eq(engine.state.opponent_block, 0)
+
+
+func test_a_level_buffs_guard_bonus_carries_into_every_new_bout() -> void:
+	# Bug, 2026-09-30 (Cameron: "the bonus applies only to the first stage
+	# used in"): an Extra Guard (Level Buff) item's own starting guard was
+	# only ever granted once, at setup() — a committee's own bout reset
+	# (sequence_mode: "reset") wiped it back to 0 for every opponent after
+	# the first, even though the item's own promise ("will last through
+	# your next level") covers the whole stage, the same way its extra
+	# energy and hand size already do.
+	var engine := _start({
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S1", "sequence_mode": "reset", "win_threshold": 45,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "A", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "B", "intent_pattern": [["block", 1]]},
+		],
+		"item_bonuses": {"GUARD": 1},
+	})
+	assert_eq(engine.state.block, 1, "the item's guard bonus starts the first bout banked")
+
+	engine.state.bar.player = 45
+	engine._check_outcome()
+
+	assert_eq(engine.state.opponent_index, 1, "the next one stepped up")
+	assert_eq(engine.state.block, 1, "the same item bonus re-grants for the new opponent")
 
 
 func test_the_guard_cap_comes_from_the_rules_file() -> void:

@@ -17,6 +17,7 @@ var _meta_before: Dictionary = {}
 var _runner_before: LevelRunner = null
 var _mid_stage_before := false
 var _levels_cleared_before: Dictionary = {}
+var _funds_cap_bonus_before := 0
 
 
 func before_each() -> void:
@@ -24,6 +25,7 @@ func before_each() -> void:
 	_runner_before = GameState.level_runner
 	_mid_stage_before = GameState.mid_stage
 	_levels_cleared_before = GameState.levels_cleared.duplicate(true)
+	_funds_cap_bonus_before = GameState.funds_cap_bonus
 	GameState.reset_crisis_triggers()
 
 
@@ -32,6 +34,7 @@ func after_each() -> void:
 	GameState.level_runner = _runner_before
 	GameState.mid_stage = _mid_stage_before
 	GameState.levels_cleared = _levels_cleared_before.duplicate(true)
+	GameState.funds_cap_bonus = _funds_cap_bonus_before
 	GameState.reset_crisis_triggers()
 
 
@@ -358,3 +361,36 @@ func test_a_lost_stage_charges_its_loss_columns_and_pays_its_loss_xp() -> void:
 	assert_eq(GameState.xp - xp_before, 5)
 	assert_eq(GameState.last_xp_gained, 5)
 	GameState.xp = xp_before
+
+
+# ---------------------------------------------------------------------------
+# funds_cap_bonus (SH19, "Increase Office Funds Cap")
+# ---------------------------------------------------------------------------
+# Bug, 2026-09-30 (Cameron: "the yen/funds cap is not working"): a stage's
+# own win_delta_yen was clamped against sanban.json's flat Funds max
+# (DataDB.sanban, unadjusted) instead of the higher max a purchased
+# funds_cap_bonus actually promises — GameState.sanban_rows_with_bonuses()
+# is the fix, read by _apply_stage_rewards() and (for display)
+# OutcomePresenter._what_it_was_worth().
+
+func test_a_win_respects_a_purchased_funds_cap_increase() -> void:
+	_begin_two_stage_level(50, 50)
+	var base_max := int(GameState._sanban_row("Funds").get("max", 0))
+	GameState.funds_cap_bonus = 0
+	GameState.meta["Funds"] = base_max - 100
+	GameState.level_runner.stages[0]["win_delta_yen"] = 50000
+
+	# With no purchased bonus, the flat workbook max still applies.
+	GameState.finish_stage(LevelRunner.WON, 0)
+	assert_eq(int(GameState.meta["Funds"]), base_max, "no bonus: capped at the flat max")
+
+	_begin_two_stage_level(50, 50)
+	GameState.funds_cap_bonus = 500000
+	GameState.meta["Funds"] = base_max - 100
+	GameState.level_runner.stages[0]["win_delta_yen"] = 50000
+
+	GameState.finish_stage(LevelRunner.WON, 0)
+	assert_eq(int(GameState.meta["Funds"]), base_max - 100 + 50000,
+		"a purchased funds_cap_bonus raises the ceiling a stage win can reach")
+	assert_lt(int(GameState.meta["Funds"]), base_max + GameState.funds_cap_bonus,
+		"sanity: this particular win doesn't reach the raised cap either")

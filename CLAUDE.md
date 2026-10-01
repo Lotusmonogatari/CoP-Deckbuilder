@@ -1022,7 +1022,204 @@ that also used openpyxl to read both sides. Any future workbook edit
 should use the raw-XML zip-surgery technique already established earlier
 in this file's own history (edit the XML fragment directly, re-zip, then
 confirm with a clean `export_data.py` run — never trust an openpyxl-based
-diff alone).
+diff alone). Confirmed again this session on comment-only edits (see
+below): a plain `load_workbook()` → add-comments → `save()` round trip
+still wiped every formula-cell cache on the Stages tab (`win_pct`,
+`segment_check`, `favored_suit` all read back `null`) even though no
+value was touched — caught the same way, by a clean `export_data.py`
+diff immediately after, and reverted before it ever reached a commit.
+
+### Defunct shop items removed; three player-facing raw-ID leaks fixed; Sanban deltas shown; workbook columns get their permutations (2026-09-30, Cameron)
+
+Four small, independent asks in one pass.
+
+- **Two defunct shop entries removed.** SH13/SH14 ("Unlock Tier 1/2
+  Level") and CP01/CP02 ("Neon Ambition"/"Quiet Chamber") deleted
+  outright from the Shop and Cosmetic Packages tabs — both rows'
+  worth of feature, unpurchased content that had nothing behind it
+  worth keeping in front of a player. Neither mechanism was torn out:
+  `buy_random_level()`, the whole Cosmetics/Appearance-and-Music page,
+  `CosmeticPieces.gd`, `ArtLoader`'s variant axis and `Audio`'s music
+  override all stay exactly as built, the same "empty is a valid state"
+  bargain every other optional table in this project already keeps —
+  nothing stops Cameron from writing new rows into either tab later.
+  Eight test/tool files that hardcoded these six specific IDs
+  (`test_cosmetics_game_state.gd`, `test_cosmetic_pieces.gd`,
+  `test_art_scheme.gd`, `test_save_load.gd`, `test_inventory.gd`,
+  `shop_items_driver.gd`, `cosmetics_driver.gd`,
+  `stress_shop_items.gd`) were updated to inject synthetic fixture rows
+  straight into `DataDB` for their own duration instead — the same
+  "fake row" technique `floor_vote_driver.gd`/`level_intro_driver.gd`
+  already used for a table with nothing real in it.
+- **Two real raw-ID leaks fixed.** The level briefing panel
+  (`OfficeScreen._on_level_chosen()`) was titling itself with the raw
+  `level_id` ("LV31") instead of the level's own `description` — its
+  stated fallback text ("Before you go in") could never actually fire,
+  since every real level has a `level_id`. The battle screen's own
+  Details panel (`BattleScreen._refresh_details()`) printed
+  `"Stage: Floor debate (ST02)"`, the raw `stage_id` included
+  unconditionally; now just the name. A full audit of every other
+  `.open()`/`.text =` call across `scripts/ui/` turned up nothing else
+  unconditional — the remaining `get("name_en", some_id)`-style
+  fallbacks only ever surface an ID on data that's missing entirely,
+  which is the existing, intentional placeholder bargain, not a leak.
+- **Sanban's own page ("Your Record") now shows a `(+N)`/`(-N)` next to
+  each of the four meta-variables**, the same treatment Important
+  Stakeholders already gives a booster's own recent change
+  (`GameState.last_booster_change`). The underlying field,
+  `last_meta_change`, already existed and was already being written on
+  every stage reward — it had simply never been read anywhere. Two
+  small fixes were needed to make it tell the truth: it used to reset
+  itself at the top of `_apply_stage_rewards()`, per-stage, which would
+  have wiped a Floor Vote's own favorability/influence-bonus swing
+  before the Office ever got to show it (those land on Sanban via
+  `apply_floor_vote_favorability()`/`apply_floor_vote_influence_bonus()`
+  earlier in the same flow, before `finish_stage()` runs) — the reset
+  was removed so it now scopes to the whole level, the same as
+  `last_booster_change` already does. And three call sites that were
+  genuine stage/vote *outcomes* — the Floor Vote's own favorability and
+  influence bonus, and the lifetime-gaffe Constituency-support penalty
+  — were routed through `_apply_meta_reward()` instead of the plain
+  `_move_meta()` they'd used before, since only the reward-shaped path
+  records into `last_meta_change`; `_move_meta()` itself is untouched
+  and still deliberately silent for the Office's own spending (buying,
+  hiring, firing), per its own existing doc comment — a purchase was
+  never meant to look like a reward.
+- **19 header-cell comments added to the workbook**, one per column
+  whose values come from a closed set of text options rather than free
+  prose: Stages' Mode/Bar Model/Energy Mode/Sequence Mode/Reveal In
+  Briefing/Loss Ends Level/Reputation Affects Start, Cards' Type/Tier,
+  Modifiers' Effect Type, Boosters' Tier, Floor Vote Party Positions'
+  Disposition, Opponent Cues' Verb, Vote Influence Triggers' Enabled,
+  Vote Influence Cues' Outcome Direction, and Office Notices'/Office
+  Ticker's shared condition_type/condition_op pair — each comment
+  spelling out the real permutations read straight from the code that
+  consumes that column (`BarModel.gd`, `BattleEngine.gd`,
+  `OfficeNotices.gd`, `export_data.py`'s own validation, and the real
+  distinct values already in the exported data), not guessed at. Built
+  by hand as raw comment/VML-drawing XML parts (`xl/commentsN.xml`,
+  `xl/drawings/vmlDrawingN.vml`, one new worksheet `_rels` file per
+  sheet, a `<legacyDrawing>` element added to each sheet, two new
+  `[Content_Types].xml` entries) rather than through openpyxl, for
+  exactly the reason the lesson above already gives — confirmed by
+  reading the comments back with openpyxl (safe) and, more importantly,
+  by a clean `export_data.py` diff showing zero data changes.
+
+### A Level Buff's own Extra Guard bonus vanished after the first opponent in a committee (2026-09-30, Cameron)
+
+Reported as "shop items that provide a bonus across a full level are not
+working — the bonus applies only to the first stage used in." Confirmed
+with a throwaway headless repro (deleted before commit, this session's
+own convention) before touching any code: an item bought before a level
+begins correctly reaches every real stage of that level — `GameState.
+level_bonuses` isn't cleared between stages, and `take_item_bonuses_for_
+stage()` hands it to a fresh `BattleEngine.setup()` each time, confirmed
+against two real multi-stage levels for both a "bought in the Office" and
+a "used mid-stage" purchase. The real bug was one level narrower than
+"stage": inside a SINGLE committee stage (`sequence_mode: "reset"`,
+§7.5), `BattleEngine._reset_for_new_bout()` unconditionally set
+`state.block = 0` for every opponent after the first, with nothing to
+re-grant an Extra Guard (Level Buff) item's own starting bonus. Energy
+and hand-size bonuses never had this problem — they live in
+`state.energy_per_turn`/`state.hand_size`, fields `_reset_for_new_bout()`
+never touches — but guard is spent, not merely a baseline, so its bonus
+had nowhere to survive a bout reset. To a player, a committee's full
+support/gaffe/hand/deck reset between opponents already reads as "a new
+fight," which is exactly why this shipped as "only the first stage."
+
+Fixed by remembering the amount, not just applying it once: a new
+`BattleEngine._item_guard_bonus` instance var accumulates every GUARD
+application (`_apply_item_bonus`'s own "GUARD" case, whether from
+config's `item_bonuses` at `setup()` or a Stage-duration item used
+mid-battle — either way it's this stage's bonus, and a committee's
+several opponents are all one stage), and `_reset_for_new_bout()` now
+sets `state.block = clampi(_item_guard_bonus, 0, state.guard_cap)`
+instead of a flat `0`. `tests/test_battle_engine.gd`'s new
+`test_a_level_buffs_guard_bonus_carries_into_every_new_bout()` sits
+right beside the existing `test_a_new_committee_bout_clears_both_banks()`
+it's a variant of — the old test (no item bonus in its config) still
+correctly asserts a plain `0`, since `_item_guard_bonus` defaults to
+that; the new one uses the same fixture with `"item_bonuses": {"GUARD": 1}`
+and asserts `1` survives the reset. `tools/verify.sh` confirmed green
+afterward.
+
+### SH19's own Funds cap increase was silently ignored by stage rewards (2026-09-30, Cameron)
+
+Reported as "the yen/funds cap is not working — Funds accumulate beyond
+the cap." Traced every place Funds is written before touching anything:
+`GameState._move_meta()`/`_apply_meta_reward()` (Office spending, the
+Floor Vote's own favorability/influence bonus, the lifetime-gaffe
+penalty) all clamp correctly against `_sanban_row("Funds")`, which
+already raises the ceiling by `funds_cap_bonus` (SH19, "Increase Office
+Funds Cap," repeatable). A stage's own `win_delta_yen`/`loss_delta_yen`
+and its score-effects path — `GameState._apply_stage_rewards()`, the one
+place that actually pays out after a battle — went through `MetaRules.
+apply_win_deltas()`/`apply_loss_deltas()`/`apply_score_effects()` with
+`DataDB.sanban` passed in **raw**, un-adjusted for any purchased bonus.
+The clamp itself was never missing (a real headless repro confirmed
+Funds never exceeded either max, whichever one a given path happened to
+check) — the bug is that stage rewards were capping against the flat
+*workbook* number even after the player paid Yen or XP to raise it,
+silently discarding the difference: buy SH19, win a stage, and the extra
+headroom you paid for never landed. Read literally ("beyond the cap")
+this is the mirror image — Funds falling short of the cap the player
+actually has — but it's the one real inconsistency anywhere in the Funds
+cap system, and "the cap isn't working" is an accurate description of a
+stage-reward path quietly enforcing the wrong one.
+
+Fixed with one new method, `GameState.sanban_rows_with_bonuses()` —
+`DataDB.sanban`, with Funds' own row replaced by `_sanban_row("Funds")`'s
+already-correct bonus-adjusted version, a no-op array copy when
+`funds_cap_bonus` is 0 so nothing changes for a run that never bought
+SH19. `_apply_stage_rewards()`'s three `MetaRules` calls now read from
+it instead of `DataDB.sanban` directly. `OutcomePresenter._what_it_was_
+worth()` had the identical bug, one layer up — it recomputes the same
+deltas purely to show "+N Funds" on the outcome panel, and was reading
+`DataDB.sanban` raw too, which would have kept promising the old amount
+right after this fix corrected what actually lands — now reads
+`GameState.sanban_rows_with_bonuses()` as well, so the panel and the
+real payout always agree. New `tests/test_game_state_meta_tracking.gd`
+coverage: a stage win near the flat max still clamps there with no
+bonus bought; the same win with `funds_cap_bonus` set lands the full
+delta past the old flat max instead of being clamped short.
+
+### A combat stage can now be lost instantly too — the player's own support argued down to nothing (2026-10-01, Cameron)
+
+The mirror image of 2026-09-29's instant win (§12, "A combat stage can
+now be won instantly by arguing the opponent down to nothing"): where
+that rule fires when `state.bar.opponent <= 0`, `BattleEngine._check_
+outcome()` now checks `state.bar.player <= 0` right after it, under the
+same `has_threshold` gate (every Shared_pool Combat stage — not a press
+conference, not the TV debate's survival bar, not a scored stage), and
+ends the stage outright in a loss (`outcome.reason.player_argued_out`,
+a new Text-tab row). Two design calls, made rather than left for Cameron
+to discover by accident, both because the opponent's own side of this
+rule already settled them the same way:
+
+- **It ends the whole stage, not just the current bout.** A committee's
+  own instant-win advances to the NEXT opponent when the one in front of
+  you is emptied out, because there's a fresh opponent waiting;
+  symmetrically there is no fresh *player* waiting once the one at the
+  table has been argued down, so `state.bar.player <= 0` is an outright
+  loss even mid-sequence, never a bout reset.
+- **A turn that empties both sides at once is a win, not a loss.** The
+  existing opponent-emptied-out check already runs earlier in
+  `_check_outcome()` than this new one, so the same priority the
+  threshold-win check already enjoys over the opponent's own instant-win
+  extends one step further: cross the threshold → win; empty the
+  opponent → win; only then, empty your own side → loss. A single card
+  that happens to drain both at once still reads as an ordinary win, the
+  same reasoning CLAUDE.md already gives for threshold-vs-opponent-empty.
+
+No stage in `stages.json` starts at `player_start: 0` for a Combat room
+(only two Non-combat rows do, which never reach `BattleEngine` at all),
+and `_check_outcome()` is only ever called after a card resolves or a
+turn ends, never at `setup()` — so this cannot fire before the player
+has had a turn. `tests/test_battle_engine.gd` gained three tests
+alongside the existing opponent-side ones: a single-opponent room and a
+mid-committee-sequence room both end outright in a loss when the
+player's own support is driven to 0, and a turn that empties both sides
+at once is confirmed still a win.
 
 ## 13. The seams that are built but carry nothing
 

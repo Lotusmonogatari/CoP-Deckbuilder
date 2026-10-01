@@ -270,6 +270,7 @@
   "outcome.reason.nothing_left": "The questions ran on, but there was nothing left to say.",
   "outcome.reason.opponent_first": "The opponent reached the threshold first.",
   "outcome.reason.percent_of_room": "{count}% of the room",
+  "outcome.reason.player_argued_out": "You were argued out of the room.",
   "outcome.reason.survived": "Survived the whole debate above the line.",
   "outcome.reason.threshold": "The support threshold was reached.",
   "outcome.reason.time_ahead": "Time ran out with the player ahead.",

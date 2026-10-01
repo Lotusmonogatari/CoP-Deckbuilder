@@ -14,7 +14,6 @@ extends GutTest
 ##   SH27/28/29 Purchase Random Tier 1/2/3 Card  Rhetoric Training (Yen):
 ##                                    see the card, then learn it — never
 ##                                    held/Used at all — see card_tier
-##   SH13/14   Unlock Tier 1/2 Level  same shape, see level_tier
 ##   SH15/16/17 Unlock Random Tier 1/2/3 Card  Rhetoric Training (XP), the
 ##                                    same card_tier column SH27-29 use, XP
 ##                                    instead of Yen
@@ -51,9 +50,21 @@ func before_each() -> void:
 	GameState.xp = 10000
 	GameState.meta["Funds"] = 900000
 	GameState.staff_hired = {}
+	# SH13/14 (Unlock Tier N Level) were removed from the Shop tab 2026-09-30
+	# (defunct — nothing to sell). buy_random_level() itself is still real
+	# code (kept, same "unused, not removed" precedent as office.new_cards),
+	# so these two fixtures stand in for the removed rows to keep testing it.
+	DataDB.shop.append({"item_id": "SHTEST_LV1", "name": "Test Unlock Tier 1 Level",
+		"cost_xp": 40, "cost_yen": 0, "level_tier": 1})
+	DataDB.shop.append({"item_id": "SHTEST_LV2", "name": "Test Unlock Tier 2 Level",
+		"cost_xp": 40, "cost_yen": 0, "level_tier": 2})
+	DataDB._shop_by_id = DataDB._index(DataDB.shop, "item_id")
 
 
 func after_each() -> void:
+	DataDB.shop = DataDB.shop.filter(
+		func(i: Dictionary) -> bool: return str(i.get("item_id", "")).begins_with("SHTEST_") == false)
+	DataDB._shop_by_id = DataDB._index(DataDB.shop, "item_id")
 	GameState.card_draw = _saved["card_draw"]
 	GameState.inventory = _saved["inventory"]
 	GameState.shop_bought_this_level = _saved["bought"]
@@ -378,20 +389,22 @@ func test_an_xp_session_costs_xp_not_yen() -> void:
 
 
 # ---------------------------------------------------------------------------
-# Unlock Tier N Level (SH13/14) — same on-purchase shape as random cards
+# Unlock Tier N Level (buy_random_level()) — same on-purchase shape as
+# random cards. No shop.json row calls this any more (SH13/14 removed,
+# see before_each's own note), so these use the injected fixtures.
 # ---------------------------------------------------------------------------
 
 func test_buying_a_random_level_unlock_opens_one_of_the_right_tier() -> void:
 	GameState.levels_unlocked = []
 	var xp := GameState.xp
 
-	var result := GameState.buy_random_level("SH14")   # Tier 2
+	var result := GameState.buy_random_level("SHTEST_LV2")   # Tier 2
 
 	assert_true(result["ok"])
 	assert_eq(GameState.levels_unlocked.size(), 1)
 	var level := DataDB.get_level(GameState.levels_unlocked[0])
 	assert_eq(int(level.get("tier")), 2)
-	assert_lt(GameState.xp, xp, "SH14 costs XP, not Yen")
+	assert_lt(GameState.xp, xp, "this fixture costs XP, not Yen")
 
 
 func test_every_level_of_a_tier_already_open_refuses_the_purchase() -> void:
@@ -400,7 +413,7 @@ func test_every_level_of_a_tier_already_open_refuses_the_purchase() -> void:
 		if int(level.get("tier", -1)) == 1 and not GameState.levels_unlocked.has(level_id):
 			GameState.levels_unlocked.append(level_id)
 
-	var result := GameState.buy_random_level("SH13")   # Tier 1
+	var result := GameState.buy_random_level("SHTEST_LV1")   # Tier 1
 
 	assert_false(result["ok"])
 
@@ -482,6 +495,6 @@ func test_an_item_with_its_own_cap_keeps_it() -> void:
 
 
 func test_items_that_are_not_consumables_are_not_capped() -> void:
-	for item_id: String in ["SH09", "SH27", "SH13"]:
+	for item_id: String in ["SH09", "SH27", "SHTEST_LV1"]:
 		assert_eq(Items.stack_cap(DataDB.get_shop_item(item_id)), 0,
 			"%s is never held in the inventory, so it has no stack to cap" % item_id)

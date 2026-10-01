@@ -479,7 +479,7 @@ func _refresh_details(state: BattleState) -> void:
 	lines.append_array([
 		"Deck %d · Hand %d · Discard %d" % [
 			state.deck.size(), state.hand.size(), state.discard.size()],
-		"Stage: %s (%s)" % [_stage.get("name_en", ""), _stage.get("stage_id", "")],
+		"Stage: %s" % str(_stage.get("name_en", "")),
 	])
 
 	_details_text.text = "\n".join(lines)
