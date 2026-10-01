@@ -36,7 +36,8 @@ const DATA_PATH := "res://data/"
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
-	"floor_votes", "level_intros", "level_opponent_overrides", "level_visitor_overrides", "levels", "lists",
+	"floor_votes", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
+	"level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
@@ -74,6 +75,12 @@ var office_ticker: Array = []
 ## office_notices, entirely optional per (level, role): most combinations
 ## have no row at all. See LevelIntroCues.gd.
 var level_intros: Array = []
+
+## The player protagonist's own internal thought about a level, shown on the
+## Level Intro screen right after the staff finish speaking — one optional
+## row per level_id (2026-10-01), only ever shown on a level that names a
+## Floor Vote bill. See LevelIntroCues.player_thought().
+var level_intro_thoughts: Array = []
 
 ## The Floor Vote influence swing's own gate (2026-09-28, §7.7): which meta
 ## values or booster standings count as trigger variables, each switched on
@@ -296,6 +303,7 @@ func load_all() -> void:
 			"office_notices": office_notices = content if content is Array else []
 			"office_ticker": office_ticker = content if content is Array else []
 			"level_intros": level_intros = content if content is Array else []
+			"level_intro_thoughts": level_intro_thoughts = content if content is Array else []
 			"vote_influence_triggers": vote_influence_triggers = content if content is Array else []
 			"vote_influence_cues": vote_influence_cues = content if content is Array else []
 			"cosmetic_packages": cosmetic_packages = content if content is Array else []

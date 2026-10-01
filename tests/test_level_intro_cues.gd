@@ -71,3 +71,22 @@ func test_multiple_qualifying_roles_all_speak_in_staff_directory_order() -> void
 func test_nothing_qualifying_is_an_empty_list_not_a_blank_entry() -> void:
 	var result := LevelIntroCues.resolve([], "LV31", {}, STAFF_DIRECTORY)
 	assert_eq(result, [])
+
+
+# ---------------------------------------------------------------------------
+# player_thought() — the player's own internal thought about a level
+# (2026-10-01), shown on a bill level after the staff finish speaking.
+# ---------------------------------------------------------------------------
+
+func test_a_levels_own_written_thought_is_returned() -> void:
+	var thoughts := [{"level_id": "LV31", "thought_text": "This bill matters to my own district."}]
+	assert_eq(LevelIntroCues.player_thought(thoughts, "LV31"), "This bill matters to my own district.")
+
+
+func test_a_different_levels_thought_never_leaks_in() -> void:
+	var thoughts := [{"level_id": "LV32", "thought_text": "Not this level's thought."}]
+	assert_eq(LevelIntroCues.player_thought(thoughts, "LV31"), "")
+
+
+func test_no_written_thought_is_an_empty_string() -> void:
+	assert_eq(LevelIntroCues.player_thought([], "LV31"), "")

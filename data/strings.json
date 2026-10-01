@@ -2308,5 +2308,19 @@
     "english": "You were argued out of the room.",
     "placeholders": null,
     "notes": "Combat stage, 2026-10-01: the player’s own support driven to 0 ends the stage in a loss, the mirror of outcome.reason.all_argued_out for the opponent."
+  },
+  {
+    "key": "level_intro.lean_support",
+    "where": "Level Intro screen — bill lean choice",
+    "english": "Lean Support",
+    "placeholders": null,
+    "notes": "2026-10-01: one of the two Level Intro lean buttons on a bill level."
+  },
+  {
+    "key": "level_intro.lean_oppose",
+    "where": "Level Intro screen — bill lean choice",
+    "english": "Lean Oppose",
+    "placeholders": null,
+    "notes": "2026-10-01: the other Level Intro lean button on a bill level."
   }
 ]

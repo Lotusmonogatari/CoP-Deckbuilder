@@ -30,6 +30,7 @@ func _init() -> void:
 	_add_background()
 	var column := _build_frame()
 	_add_portrait_row(column)
+	_add_lean_row(column)
 	_adopt(_vspacer(), column)
 	_add_footer(column)
 
@@ -86,6 +87,39 @@ func _add_portrait_row(parent: Control) -> void:
 	name_label.theme_type_variation = "HeaderLabel"
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_adopt(name_label, parent, true)
+
+
+## The bill-lean choice (2026-10-01): two cards, each a leader portrait
+## above a button — "Lean Support"/"Lean Oppose". Hidden until
+## LevelIntroScreen._show_lean_choice() reveals it on a bill level.
+func _add_lean_row(parent: Control) -> void:
+	var lean_row := HBoxContainer.new()
+	lean_row.name = "LeanRow"
+	lean_row.alignment = BoxContainer.ALIGNMENT_CENTER
+	lean_row.add_theme_constant_override("separation", 40)
+	_adopt(lean_row, parent, true)
+
+	_add_lean_card(lean_row, "Support")
+	_add_lean_card(lean_row, "Oppose")
+
+
+func _add_lean_card(parent: Control, which: String) -> void:
+	var card := VBoxContainer.new()
+	card.name = which + "Card"
+	card.add_theme_constant_override("separation", 10)
+	_adopt(card, parent)
+
+	var portrait := Control.new()
+	portrait.name = which + "Portrait"
+	portrait.set_script(load(PLACEHOLDER_SCRIPT))
+	portrait.custom_minimum_size = Vector2(160, 220)
+	_adopt(portrait, card, true)
+
+	var button := Button.new()
+	button.name = which + "Button"
+	button.text = which
+	button.custom_minimum_size = Vector2(220, 90)
+	_adopt(button, card, true)
 
 
 func _add_footer(parent: Control) -> void:

@@ -113,6 +113,8 @@
   "item.use": "Use",
   "item.used": "{name} used.",
   "item.used_with_outcome": "{name} used — {outcome}.",
+  "level_intro.lean_oppose": "Lean Oppose",
+  "level_intro.lean_support": "Lean Support",
   "modifier.player_start_support": "Start {count} ahead.",
   "modifier.reputation_per_stage_win": "+{count} funds for every stage won.",
   "modifier.starting_gaffe": "Start with {count} less on the gaffe meter.",

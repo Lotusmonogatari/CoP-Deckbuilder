@@ -206,6 +206,23 @@ SHEETS = {
             ("Cue Text", "cue_text", "str"),
         ],
     },
+    # The player protagonist's own internal thought about a level, shown on
+    # the Level Intro screen right after the staff finish speaking — one row
+    # per level, entirely optional (2026-10-01). Only ever shown on a level
+    # that names a Floor Vote bill; see LevelIntroCues.player_thought() and
+    # LevelIntroScreen.gd. Kept as its own tab rather than another row on
+    # Level Intro Cues because that tab's key is (level_id, role) — a
+    # thought isn't any one staff member's role, it's the level's own.
+    "Level Intro Thoughts": {
+        "out": "level_intro_thoughts.json",
+        "key": "level_id",
+        "id_pattern": r"^LV\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Level ID", "level_id", "id"),
+            ("Thought Text", "thought_text", "str"),
+        ],
+    },
     # Every line the game says to the player. Cameron's to reword; the code
     # asks for a Key and never holds a sentence of its own. A key the code
     # asks for and this tab does not have is an ERROR, checked below, so a
@@ -1741,6 +1758,22 @@ def validate(data, report):
                 f"{lid} has more than one row for '{role}' — the first one wins",
             )
         seen_level_roles.add((lid, role))
+
+    # --- level_intro_thoughts ----------------------------------------------
+    # The player's own internal thought about a level — one optional row
+    # per level_id, shown only on bill levels (LevelIntroScreen.gd decides
+    # that, not this check).
+    seen_thought_levels = set()
+    for thought in data.get("level_intro_thoughts", []):
+        lid = thought["level_id"]
+        if lid not in level_ids:
+            report.error("Level Intro Thoughts", f"{lid} is not in the Levels tab")
+        if lid in seen_thought_levels:
+            report.warn(
+                "Level Intro Thoughts",
+                f"{lid} has more than one row — the first one wins",
+            )
+        seen_thought_levels.add(lid)
 
     # --- vote_influence_triggers -------------------------------------------
     # The Floor Vote influence swing's own gate (§7.7): each row names either

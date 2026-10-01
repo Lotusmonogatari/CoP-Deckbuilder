@@ -54,3 +54,15 @@ static func resolve(cues: Array, level_id: String, staff_hired: Dictionary,
 			"text": cue_by_role[role],
 		})
 	return result
+
+
+## The player's own internal thought about this level, from
+## data/level_intro_thoughts.json — entirely optional, one row per level_id.
+## "" when nothing is written. Kept as its own lookup (not folded into
+## resolve()'s staff loop above) because a thought is the level's own, not
+## any one staff member's role.
+static func player_thought(thoughts: Array, level_id: String) -> String:
+	for row: Dictionary in thoughts:
+		if str(row.get("level_id", "")) == level_id:
+			return str(row.get("thought_text", ""))
+	return ""

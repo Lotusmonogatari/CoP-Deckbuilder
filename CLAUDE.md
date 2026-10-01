@@ -1221,6 +1221,71 @@ mid-committee-sequence room both end outright in a loss when the
 player's own support is driven to 0, and a turn that empties both sides
 at once is confirmed still a win.
 
+### The Level Intro screen gets a bill-lean choice (2026-10-01, Cameron)
+
+Cameron's ask: on a bill level's Level Intro screen, after the staff
+finish speaking, show the player protagonist's own internal thought about
+the level, then let them pick "Lean Support" or "Lean Oppose" on the
+bill's topic — two boxes, each with the player's own party leader's
+headshot. The choice moves Party support ± depending on whether it agrees
+or disagrees with the party's own stance on the bill.
+
+- **Scope**: only a level that names a Floor Vote bill
+  (`DataDB.get_floor_vote(level_id)` non-empty) gets this step — this is
+  the level's own bill, read off whichever of its `stage_1..stage_10`
+  slots names a `BIxx`, exactly §7.7's existing lookup. `OfficeScreen.
+  _on_start()` now routes to the Level Intro screen on EITHER a written
+  staff cue OR a bill, where before it was staff cues alone — a bill
+  level with no staff cues at all still gets this screen now, since the
+  lean choice is its whole point. `LevelIntroScreen.gd`'s own sequencing
+  gates `%ContinueButton` (`disabled = true`) the moment a bill is
+  present, so the choice can never be skipped by clicking through fast —
+  the one place this screen needed real gating, since before this it had
+  none at all (`_on_continue()` was always clickable).
+- **Three new pieces of workbook data**, all per the user's own
+  instruction that every number and line of text stay editable in the
+  workbook, not hand-rolled in a script or a hidden JSON table:
+  - A new **Level Intro Thoughts** tab (`data/level_intro_thoughts.json`,
+    optional, blank-tolerant, one row per level_id) for the player's own
+    thought line — kept as its own tab rather than another row on Level
+    Intro Cues, since that tab's key is (level_id, role) and a thought
+    isn't any one staff member's role, it's the level's own.
+  - A new Balance lever, **"Lean: Party Support Delta"**
+    (`balance.json`'s `lean_party_support_delta`, 2 — first-draft,
+    Cameron's to retune) — the ± magnitude applied either way.
+  - Two new Text rows, `level_intro.lean_support`/`level_intro.
+    lean_oppose` ("Lean Support"/"Lean Oppose"), the two button labels.
+- **"The party's position" is the bill's own Disposition** (Floor Vote
+  Party Positions' existing Supportive/Opposed/Neutral column for the
+  player's own party), not a vote-tally bucket — it's the field already
+  designed to answer exactly this question. A Neutral disposition never
+  rewards or penalizes either lean, since there's no stance to agree or
+  disagree with. New pure rule, `scripts/rules/BillLean.gd`
+  (`party_support_delta(own_position, lean, magnitude)`), and
+  `LevelIntroCues.player_thought(thoughts, level_id)` for the thought
+  lookup — both pure/UI-free per §12, both covered by new GUT tests
+  (`tests/test_bill_lean.gd`, `tests/test_level_intro_cues.gd`'s new
+  cases). The delta lands via the same `GameState.apply_floor_vote_
+  favorability({own_party: delta})` a real Floor Vote's own favorability
+  already uses — no new apply path.
+- **UI**: two new cards on the Level Intro screen, each a leader portrait
+  (`parties.json`'s `leader_opp_id`, the player's own party — both boxes
+  show the same single leader, since there's only one) above a button,
+  built via `tools/build_level_intro_scene.gd`'s new `_add_lean_row()`/
+  `_add_lean_card()` (that tool is confirmed safe to rerun, unlike
+  `build_battle_scene.gd` — see §13's own note). Hidden until every
+  staff/thought line has shown, the same `lines_shown` polling
+  `_process()` already used for swapping the speaking portrait.
+- Confirmed end to end with a throwaway driver (deleted before commit,
+  this session's own convention) against a real level (LV31, the Ainu
+  Heritage and Language Act / BI01) and a real protagonist (PC02,
+  Frontier Party — Opposed on BI01): Continue stayed disabled until a
+  lean was picked, the leader portrait resolved to Frontier Party's own
+  leader (OP27) on both boxes, picking "Lean Oppose" (aligned with the
+  party's own Opposed stance) moved Party support by the full +2, and
+  "Let's go" correctly landed on the level's own real first stage
+  afterward.
+
 ## 13. The seams that are built but carry nothing
 
 These systems have working structure while some content remains incomplete.

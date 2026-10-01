@@ -1497,10 +1497,14 @@ func _on_start() -> void:
 	# A hired staff member with a written line for this level gets one beat
 	# to say it before the level begins (2026-09-27) — skipped entirely when
 	# nobody has anything to say, so a level with no intro content plays
-	# exactly as it always has.
-	var cues := LevelIntroCues.resolve(DataDB.level_intros, runner.level.get("level_id", ""),
+	# exactly as it always has. A level that names a Floor Vote bill always
+	# gets this beat too (2026-10-01), even with nothing staff has to say,
+	# since that's also where the bill-lean choice lives.
+	var level_id := str(runner.level.get("level_id", ""))
+	var cues := LevelIntroCues.resolve(DataDB.level_intros, level_id,
 		GameState.staff_hired, DataDB.staff)
-	if cues.is_empty():
+	var has_bill := not DataDB.get_floor_vote(level_id).is_empty()
+	if cues.is_empty() and not has_bill:
 		get_tree().change_scene_to_file(StageRouting.scene_for(runner.current_stage()))
 	else:
 		get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
