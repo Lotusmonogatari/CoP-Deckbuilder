@@ -422,7 +422,7 @@ func _refresh_energy(state: BattleState) -> void:
 ## Colouring it earlier would cry wolf and make the real warning meaningless.
 func _refresh_gaffe(state: BattleState) -> void:
 	var critical := engine.gaffe_is_critical()
-	_gaffe_label.text = "Gaffes %d / %d" % [state.gaffe, state.gaffe_limit]
+	_gaffe_label.text = Text.say("battle.gaffes_status", {"current": state.gaffe, "limit": state.gaffe_limit})
 	# SmallLabel either way — same size as Guard beside it — so turning
 	# critical only changes the colour and weight, never the size.
 	_gaffe_label.theme_type_variation = "GaffeWarning" if critical else "SmallLabel"
@@ -457,13 +457,10 @@ func _room_lines(state: BattleState) -> Array[String]:
 			if share > 0.0:
 				parts.append("%d%% %s" % [roundi(share * 100.0), segment.get("name_en", "")])
 		if not parts.is_empty():
-			lines.append("In the room: %s." % ", ".join(parts))
+			lines.append(Text.say("battle.room_mix", {"mix": ", ".join(parts)}))
 
 	if state.bar != null and state.bar.model == BarModel.Model.SHARED_POOL:
-		lines.append("Winning over somebody undecided takes one point. "
-			+ "Somebody already against you takes one, two or three — "
-			+ "you find out which as you go, and points you cannot spend "
-			+ "are lost.")
+		lines.append(Text.say("battle.shared_pool_rules"))
 
 	return lines
 
@@ -492,7 +489,7 @@ func _refresh_details(state: BattleState) -> void:
 		_you_row.hide()
 	else:
 		_you_row.show()
-		_you_name_label.text = "You: %s" % player.get("name_en", "")
+		_you_name_label.text = Text.say("battle.you_name", {"name": player.get("name_en", "")})
 	_show_party_line(_you_party_label, PartyDisplay.party_name(player))
 
 	# No row at all where there is nobody, rather than "Opponent: ,".
@@ -501,7 +498,7 @@ func _refresh_details(state: BattleState) -> void:
 		_opponent_row.hide()
 	else:
 		_opponent_row.show()
-		_opponent_name_label.text = "Opponent: %s" % opponent.get("name", "")
+		_opponent_name_label.text = Text.say("battle.opponent_name", {"name": opponent.get("name", "")})
 	_show_party_line(_opponent_party_label, PartyDisplay.party_name(opponent))
 
 	var after: Array[String] = []
@@ -509,18 +506,18 @@ func _refresh_details(state: BattleState) -> void:
 		after.append("")
 		var question_now := engine.current_question()
 		if not question_now.is_empty():
-			after.append("This question invites a %s answer."
-				% question_now.get("prefers_suit", "any"))
+			after.append(Text.say("battle.question_invites",
+				{"suit": question_now.get("prefers_suit", "any")}))
 		var pleased := engine.pleased_boosters()
 		if pleased.is_empty():
-			after.append("Nobody pleased yet.")
+			after.append(Text.say("battle.nobody_pleased"))
 		else:
 			# Organisations by name, not by the ID the data files use: the
 			# player has no way of knowing what BO08 is.
 			var named: Array[String] = []
 			for booster_id: String in pleased:
 				named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-			after.append("Pleased so far: %s." % ", ".join(named))
+			after.append(Text.say("battle.pleased_so_far", {"names": ", ".join(named)}))
 
 		# 2026-09-28, Cameron: a weak answer annoys the same organisation a
 		# strong one would have pleased — shown only once there is something
@@ -530,7 +527,7 @@ func _refresh_details(state: BattleState) -> void:
 			var annoyed_named: Array[String] = []
 			for booster_id: String in displeased:
 				annoyed_named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-			after.append("Annoyed so far: %s." % ", ".join(annoyed_named))
+			after.append(Text.say("battle.annoyed_so_far", {"names": ", ".join(annoyed_named)}))
 
 	after.append("")
 	after.append_array(_room_lines(state))
@@ -590,14 +587,14 @@ func _show_party_line(label: Label, party: String) -> void:
 ## know is whether the room is with them, and roughly how much.
 static func describe_room_for(affinity: float) -> String:
 	if affinity >= 1.51:
-		return "Being greatly enhanced by supporters."
+		return Text.say("card.room_greatly_enhanced")
 	if affinity > 1.0:
-		return "Being enhanced by supporters."
+		return Text.say("card.room_enhanced")
 	if affinity < 0.5:
-		return "Being greatly suppressed by opponents."
+		return Text.say("card.room_greatly_suppressed")
 	if affinity < 1.0:
-		return "Being suppressed by detractors."
-	return "Landing as written here."
+		return Text.say("card.room_suppressed")
+	return Text.say("card.room_neutral")
 
 
 ## How the currently drawn question treats this card, in words — a second,

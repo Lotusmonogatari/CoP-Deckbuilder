@@ -105,7 +105,7 @@ func _build() -> void:
 
 	_back = Button.new()
 	_back.name = "Back"
-	_back.text = "Back"
+	_back.text = Text.say("ui.back")
 	_back.custom_minimum_size = Vector2(0, 110)
 	_back.pressed.connect(close)
 
@@ -127,7 +127,7 @@ func open(heading: String, rows: Array[Control], confirm_text: String = "",
 		back_text: String = "") -> void:
 	_build()
 	_title.text = heading
-	_back.text = back_text if not back_text.is_empty() else "Back"
+	_back.text = back_text if not back_text.is_empty() else Text.say("ui.back")
 
 	for child in _body.get_children():
 		if child != _title:

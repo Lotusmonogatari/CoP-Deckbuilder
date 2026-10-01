@@ -2329,5 +2329,180 @@
     "english": "Continue",
     "placeholders": null,
     "notes": "2026-10-01: the Stage Transition screen's own footer button, between two stages of a level."
+  },
+  {
+    "key": "card.room_greatly_enhanced",
+    "where": "Card zoom — stage affinity line",
+    "english": "Being greatly enhanced by supporters.",
+    "placeholders": null,
+    "notes": "2026-10-01 audit: was BattleScreen.describe_room_for()'s own hardcoded text."
+  },
+  {
+    "key": "card.room_enhanced",
+    "where": "Card zoom — stage affinity line",
+    "english": "Being enhanced by supporters.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "card.room_neutral",
+    "where": "Card zoom — stage affinity line",
+    "english": "Landing as written here.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "card.room_suppressed",
+    "where": "Card zoom — stage affinity line",
+    "english": "Being suppressed by detractors.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "card.room_greatly_suppressed",
+    "where": "Card zoom — stage affinity line",
+    "english": "Being greatly suppressed by opponents.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "battle.gaffes_status",
+    "where": "Battle screen — status row",
+    "english": "Gaffes {current} / {limit}",
+    "placeholders": "current, limit",
+    "notes": "2026-10-01 audit: was hardcoded in BattleScreen.gd."
+  },
+  {
+    "key": "battle.you_name",
+    "where": "Battle screen — details panel",
+    "english": "You: {name}",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "battle.opponent_name",
+    "where": "Battle screen — details panel",
+    "english": "Opponent: {name}",
+    "placeholders": "name",
+    "notes": null
+  },
+  {
+    "key": "battle.room_mix",
+    "where": "Battle screen — details panel",
+    "english": "In the room: {mix}.",
+    "placeholders": "mix",
+    "notes": null
+  },
+  {
+    "key": "battle.shared_pool_rules",
+    "where": "Battle screen — details panel",
+    "english": "Winning over somebody undecided takes one point. Somebody already against you takes one, two or three — you find out which as you go, and points you cannot spend are lost.",
+    "placeholders": null,
+    "notes": "Shown only for a shared-pool bar."
+  },
+  {
+    "key": "battle.question_invites",
+    "where": "Battle screen — details panel",
+    "english": "This question invites a {suit} answer.",
+    "placeholders": "suit",
+    "notes": null
+  },
+  {
+    "key": "battle.nobody_pleased",
+    "where": "Battle screen — details panel",
+    "english": "Nobody pleased yet.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "battle.pleased_so_far",
+    "where": "Battle screen — details panel",
+    "english": "Pleased so far: {names}.",
+    "placeholders": "names",
+    "notes": null
+  },
+  {
+    "key": "battle.annoyed_so_far",
+    "where": "Battle screen — details panel",
+    "english": "Annoyed so far: {names}.",
+    "placeholders": "names",
+    "notes": null
+  },
+  {
+    "key": "ui.back",
+    "where": "Every overlay panel — default footer button",
+    "english": "Back",
+    "placeholders": null,
+    "notes": "2026-10-01 audit: the default Back label every Overlay.gd panel in the game uses."
+  },
+  {
+    "key": "level_intro.continue",
+    "where": "Level Intro screen — footer button",
+    "english": "Let's go",
+    "placeholders": null,
+    "notes": "2026-10-01 audit: was hardcoded in LevelIntroScreen.gd; its own sibling, stage_transition.continue, already did this."
+  },
+  {
+    "key": "office.title_named",
+    "where": "Office screen — header",
+    "english": "{name}'s Office",
+    "placeholders": "name",
+    "notes": "Shown only when the protagonist has a name but (for some reason) no party."
+  },
+  {
+    "key": "office.subtitle_jp",
+    "where": "Office screen — header, the small accent under the title",
+    "english": "陳情",
+    "placeholders": null,
+    "notes": "2026-10-01 audit: was hardcoded in OfficeScreen.gd. 陳情 (petitions/requests) — Cameron's to reword."
+  },
+  {
+    "key": "office.levels_blurb",
+    "where": "Office screen — Levels list",
+    "english": "Each level is a run of stages. Pick one and you will see what it holds before you commit.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "reward.stage_not_set",
+    "where": "Office screen — level briefing, per stage",
+    "english": "What winning this is worth has not been set yet.",
+    "placeholders": null,
+    "notes": "Distinct from reward.nothing_set, which is for a whole level with nothing set at all."
+  },
+  {
+    "key": "office.briefing_fallback_title",
+    "where": "Office screen — level briefing",
+    "english": "Before you go in",
+    "placeholders": null,
+    "notes": "A fallback only — every real level has its own description, so this cannot currently show."
+  },
+  {
+    "key": "office.go_in",
+    "where": "Office screen — level briefing button",
+    "english": "Go in",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.levels_title",
+    "where": "Office screen — Levels panel",
+    "english": "Levels",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.tier_heading",
+    "where": "Office screen — Levels panel",
+    "english": "Tier {tier}",
+    "placeholders": "tier",
+    "notes": null
+  },
+  {
+    "key": "office.level_cannot_start",
+    "where": "Office screen — level briefing",
+    "english": "This level cannot start:\n• {problems}",
+    "placeholders": "problems",
+    "notes": null
   }
 ]

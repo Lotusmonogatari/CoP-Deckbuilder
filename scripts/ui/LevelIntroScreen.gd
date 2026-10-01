@@ -61,7 +61,7 @@ func _ready() -> void:
 	_banner.name = "CueBanner"
 	add_child(_banner)
 
-	_continue_button.text = "Let's go"
+	_continue_button.text = Text.say("level_intro.continue")
 	_continue_button.pressed.connect(_on_continue)
 
 	_lean_row.visible = false

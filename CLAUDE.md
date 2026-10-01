@@ -1296,6 +1296,89 @@ or disagrees with the party's own stance on the bill.
   "Let's go" correctly landed on the level's own real first stage
   afterward.
 
+### A text audit: 25 more sentences moved out of scripts and into the workbook (2026-10-01, Cameron)
+
+Asked to review every `.gd` file for text that should have been a Text-tab
+row and move what qualified. A systematic grep across `scripts/ui/` and
+`scripts/rules/` for quoted English sentences, filtered by hand, found a
+real, bounded set — several of them sitting right next to an already-
+converted sibling line, which is what made them easy to confirm as gaps
+rather than a deliberate exception:
+
+- **`BattleScreen.gd`'s `describe_room_for()`** (the card-zoom's stage-
+  affinity line: "Being greatly enhanced by supporters.", etc.) — its own
+  sibling, `describe_question_for()` right below it, already read its
+  three lines from `card.question_strong/medium/weak`; this one never
+  had been. Five new keys, `card.room_greatly_enhanced/enhanced/neutral/
+  suppressed/greatly_suppressed`.
+- **The battle Details panel**, mostly converted already (`battle.
+  one_at_a_time` was already `Text.say()`-driven) but with real gaps
+  beside it: the always-visible "Gaffes {current} / {limit}" status-row
+  label (`battle.gaffes_status`), the "You: {name}"/"Opponent: {name}"
+  lines (`battle.you_name`/`battle.opponent_name`), "In the room:
+  {mix}." (`battle.room_mix`), the shared-pool rules paragraph
+  (`battle.shared_pool_rules`), "This question invites a {suit} answer."
+  (`battle.question_invites`), and the pleased/annoyed lines
+  (`battle.nobody_pleased`/`battle.pleased_so_far`/`battle.
+  annoyed_so_far`).
+- **`Overlay.gd`'s own default "Back" button label** — the widest reach
+  of anything found, since every panel in the game that uses `Overlay`
+  gets it. New `ui.back`, read in both of `Overlay.gd`'s two call sites
+  (`_build()`'s own default, and `open()`'s fallback when no `back_text`
+  is given).
+- **`LevelIntroScreen.gd`'s own "Let's go"** — inconsistent with its own
+  newer sibling, `StageTransitionScreen.gd`, whose equivalent button
+  already read `stage_transition.continue`. New `level_intro.continue`.
+- **The Office header** — `"{name}'s Office"` (shown only when the
+  protagonist has a name but no party; `office.title_named`) and the
+  header's own small Japanese accent, `"陳情"`, which was typed directly
+  into the script rather than read from the Text tab like every other
+  Japanese accent in the game (`office.subtitle_jp`).
+- **The Levels list and briefing panel**, again partially converted
+  already (`reward.delta`, `reward.nothing_set` sit right beside these):
+  the list's own blurb (`office.levels_blurb`), "Tier {tier}" headings
+  (`office.tier_heading`), the panel's own title (`office.levels_title`),
+  a per-stage "What winning this is worth has not been set yet."
+  (`reward.stage_not_set` — distinct from the existing `reward.
+  nothing_set`, which is for a whole level with nothing set at all), the
+  briefing's fallback title (`office.briefing_fallback_title` — a
+  fallback only; every real level has its own `description`, so this
+  cannot currently show) and its "Go in" button (`office.go_in`).
+- **The level-start refusal message**, "This level cannot start:\n•
+  {problems}" (`office.level_cannot_start`), at both of its two call
+  sites (`OfficeScreen.gd`'s `_on_start()` and its resume-mid-level
+  path).
+- **One title reused rather than duplicated**: the Backing panel's own
+  `_backing_panel.open(...)` call was passing the literal string
+  "Backing" as its title, when `office.backing` ("Backing") already
+  existed — it is the Office button that opens this same panel, just
+  never reused for the panel's own title. No new key needed there.
+
+**What was NOT moved, and why** — three categories deliberately left as
+code, not oversights: the rules-layer's own diagnostic strings
+(`LevelRunner.problems()`, `BattleEngine`'s `setup_problems`/
+`_refused()`, `IntentRunner`, `FloorVoteEngine`, `OfficeHoursEngine` —
+workbook-authoring-mistake messages like "a stage has no seq number",
+not narrative content; moving them into the workbook that is broken to
+explain the breakage would be circular); `BootCheck.gd`'s own labels
+("Game data", "Floor debate") — a developer/QA diagnostic screen (§11's
+M0), not player-facing gameplay; and internal lookup constants
+(`Ledger.STAFF_ROLES`, `ModifierEffects`'s Jiban→"Constituency support"
+map, `FloorVoteEngine.BUCKETS`) that have to match real data elsewhere
+and are not duplicated sentences at all.
+
+25 new Text-tab rows (344-368), same raw-XML workbook technique used all
+session. Confirmed with a throwaway driver (deleted before commit): a
+real screenshot of the Office (the "陳情" accent rendering correctly next
+to the English title), the Levels panel (blurb, "Tier 0" heading, no
+raw keys or unfilled placeholders), and a real battle's Details panel
+("You: Haru Yashi · Frontier Party", "Opponent: Yuriko Mayeda · Frontier
+Party", the room-mix and shared-pool-rules lines) — all reading real
+wording, not keys or `{placeholders}`. Full GUT suite (922 tests) and
+`tools/verify.sh` (including `click_test.gd`, which clicks "Back" on
+real overlay panels, and `loop_test.gd`, which plays a real battle
+through `BattleScreen`) both confirmed green afterward.
+
 ## 13. The seams that are built but carry nothing
 
 These systems have working structure while some content remains incomplete.

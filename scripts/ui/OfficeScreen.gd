@@ -187,14 +187,14 @@ func _build() -> void:
 		_title.text = Text.say("office.title")
 		_title_party.hide()
 	elif party.is_empty():
-		_title.text = "%s's Office" % name_en
+		_title.text = Text.say("office.title_named", {"name": name_en})
 		_title_party.hide()
 	else:
 		_title.text = name_en
 		_title_party.text = "· %s" % party
 		_title_party.add_theme_color_override("font_color", PartyDisplay.color_for(DataDB.get_party(party)))
 		_title_party.show()
-	_subtitle.text = "陳情"
+	_subtitle.text = Text.say("office.subtitle_jp")
 
 	if _portrait is PlaceholderArt:
 		var art := _portrait as PlaceholderArt
@@ -1093,7 +1093,7 @@ func _show_backing() -> void:
 	for modifier: Dictionary in for_sale:
 		rows.append(_modifier_row(modifier, names, stage_names))
 
-	_backing_panel.open("Backing", rows)
+	_backing_panel.open(Text.say("office.backing"), rows)
 
 
 func _modifier_row(modifier: Dictionary, names: Dictionary, stage_names: Dictionary) -> Control:
@@ -1281,8 +1281,7 @@ func _on_fire_staff_confirmed() -> void:
 ## section, and GameState.levels_unlocked/levels_completed_count).
 func _show_levels() -> void:
 	var rows: Array[Control] = []
-	rows.append(UiKit.line("Each level is a run of stages. Pick one and "
-		+ "you will see what it holds before you commit."))
+	rows.append(UiKit.line(Text.say("office.levels_blurb")))
 
 	var by_tier := {}
 	for level: Dictionary in DataDB.levels:
@@ -1302,11 +1301,11 @@ func _show_levels() -> void:
 	var tiers: Array = by_tier.keys()
 	tiers.sort()
 	for tier: int in tiers:
-		rows.append(UiKit.heading("Tier %d" % tier))
+		rows.append(UiKit.heading(Text.say("office.tier_heading", {"tier": tier})))
 		for level: Dictionary in by_tier[tier]:
 			rows.append(_level_row(level))
 
-	_levels_panel.open("Levels", rows)
+	_levels_panel.open(Text.say("office.levels_title"), rows)
 
 
 func _level_row(level: Dictionary) -> Control:
@@ -1376,7 +1375,7 @@ func _show_briefing() -> void:
 	var expanded := BattleSetup.expand_level(_chosen_level)
 	var runner := LevelRunner.new(expanded)
 	if not runner.is_valid():
-		_report.text = "This level cannot start:\n• %s" % "\n• ".join(Array(runner.problems()))
+		_report.text = Text.say("office.level_cannot_start", {"problems": "\n• ".join(Array(runner.problems()))})
 		return
 
 	var rows: Array[Control] = []
@@ -1399,8 +1398,7 @@ func _show_briefing() -> void:
 			rows.append(UiKit.line(who, "SmallLabel"))
 
 		if LevelRunner.rewards_are_unset(stage):
-			rows.append(UiKit.line(
-				"What winning this is worth has not been set yet.", "SmallLabel"))
+			rows.append(UiKit.line(Text.say("reward.stage_not_set"), "SmallLabel"))
 		else:
 			anything_set = true
 			for name: String in LevelRunner.win_rewards(stage).keys():
@@ -1426,8 +1424,8 @@ func _show_briefing() -> void:
 
 	var briefing_title := str(_chosen_level.get("description", "")).strip_edges()
 	_briefing_panel.open(
-		briefing_title if not briefing_title.is_empty() else "Before you go in",
-		rows, "Go in")
+		briefing_title if not briefing_title.is_empty() else Text.say("office.briefing_fallback_title"),
+		rows, Text.say("office.go_in"))
 
 
 ## "If you lose: Party support -2, Reputation -1, 1 XP" — or "" for a stage
@@ -1487,7 +1485,7 @@ func _on_start() -> void:
 	var expanded := BattleSetup.expand_level(_chosen_level)
 	var runner := LevelRunner.new(expanded)
 	if not runner.is_valid():
-		_report.text = "This level cannot start:\n• %s" % "\n• ".join(Array(runner.problems()))
+		_report.text = Text.say("office.level_cannot_start", {"problems": "\n• ".join(Array(runner.problems()))})
 		return
 
 	# The runner is handed over rather than rebuilt, so the level keeps its
