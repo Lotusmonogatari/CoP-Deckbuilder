@@ -2307,6 +2307,6 @@
     "where": "End of stage — why",
     "english": "You were argued out of the room.",
     "placeholders": null,
-    "notes": "Combat stage, 2026-10-01: the player's own support driven to 0 ends the stage in a loss, the mirror of outcome.reason.all_argued_out for the opponent."
+    "notes": "Combat stage, 2026-10-01: the player’s own support driven to 0 ends the stage in a loss, the mirror of outcome.reason.all_argued_out for the opponent."
   }
 ]
