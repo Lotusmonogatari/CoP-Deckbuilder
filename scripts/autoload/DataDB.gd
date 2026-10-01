@@ -43,7 +43,7 @@ const REQUIRED_FILES := [
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "stage_types", "strings",
 	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues",
-	"cosmetic_packages",
+	"cosmetic_packages", "transition_cast", "transition_backgrounds", "transition_dialogue",
 ]
 
 # --- Raw loaded content ----------------------------------------------------
@@ -81,6 +81,15 @@ var level_intros: Array = []
 ## row per level_id (2026-10-01), only ever shown on a level that names a
 ## Floor Vote bill. See LevelIntroCues.player_thought().
 var level_intro_thoughts: Array = []
+
+## The Stage Transition screen's three pools (2026-10-01, §7.9): which
+## characters, backgrounds, and dialogue lines are eligible for a given
+## stage's between-stages beat. Each is a flat, optional, blank-tolerant
+## table; a row's own `stage_id` left blank makes it usable for ANY
+## stage's transition. See PoolPicker.gd and StageTransition.gd.
+var transition_cast: Array = []
+var transition_backgrounds: Array = []
+var transition_dialogue: Array = []
 
 ## The Floor Vote influence swing's own gate (2026-09-28, §7.7): which meta
 ## values or booster standings count as trigger variables, each switched on
@@ -304,6 +313,9 @@ func load_all() -> void:
 			"office_ticker": office_ticker = content if content is Array else []
 			"level_intros": level_intros = content if content is Array else []
 			"level_intro_thoughts": level_intro_thoughts = content if content is Array else []
+			"transition_cast": transition_cast = content if content is Array else []
+			"transition_backgrounds": transition_backgrounds = content if content is Array else []
+			"transition_dialogue": transition_dialogue = content if content is Array else []
 			"vote_influence_triggers": vote_influence_triggers = content if content is Array else []
 			"vote_influence_cues": vote_influence_cues = content if content is Array else []
 			"cosmetic_packages": cosmetic_packages = content if content is Array else []

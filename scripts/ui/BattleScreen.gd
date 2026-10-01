@@ -903,12 +903,8 @@ func _on_outcome_closed() -> void:
 		GameState.end_level()
 		get_tree().change_scene_to_file(OFFICE_SCENE)
 	else:
-		# Same scene, next stage — unless it's an Office Hours stage, which
-		# plays on VisitorScreen instead. Reloading (rather than a plain
-		# change_scene back to this same path) keeps the setup in one place
-		# for the common case, where the next stage is another battle.
-		var next_scene := StageRouting.scene_for(GameState.level_runner.current_stage())
-		if next_scene == StageRouting.BATTLE_SCENE:
-			get_tree().reload_current_scene()
-		else:
-			get_tree().change_scene_to_file(next_scene)
+		# Same scene, next stage — unless it's an Office Hours stage (plays
+		# on VisitorScreen instead) or the upcoming stage wants a Stage
+		# Transition first. StageRouting.go_to_next_stage() is the one place
+		# that decides between all three.
+		StageRouting.go_to_next_stage(get_tree(), StageRouting.BATTLE_SCENE)

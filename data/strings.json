@@ -2322,5 +2322,12 @@
     "english": "Lean Oppose",
     "placeholders": null,
     "notes": "2026-10-01: the other Level Intro lean button on a bill level."
+  },
+  {
+    "key": "stage_transition.continue",
+    "where": "Stage Transition screen — footer button",
+    "english": "Continue",
+    "placeholders": null,
+    "notes": "2026-10-01: the Stage Transition screen's own footer button, between two stages of a level."
   }
 ]

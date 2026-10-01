@@ -298,8 +298,4 @@ func _on_outcome_closed() -> void:
 		GameState.end_level()
 		get_tree().change_scene_to_file(OFFICE_SCENE)
 	else:
-		var next_scene := StageRouting.scene_for(GameState.level_runner.current_stage())
-		if next_scene == StageRouting.FLOOR_VOTE_SCENE:
-			get_tree().reload_current_scene()
-		else:
-			get_tree().change_scene_to_file(next_scene)
+		StageRouting.go_to_next_stage(get_tree(), StageRouting.FLOOR_VOTE_SCENE)

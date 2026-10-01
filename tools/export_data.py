@@ -223,6 +223,52 @@ SHEETS = {
             ("Thought Text", "thought_text", "str"),
         ],
     },
+    # The Stage Transition screen's own three pools (2026-10-01, §7.9): a
+    # short beat between two stages of the same level, where one or more
+    # characters drawn from Transition Cast speak (via Transition Dialogue)
+    # in front of a Transition Backgrounds pick. All three are flat,
+    # optional, blank-tolerant pools — a `Stage ID` cell left blank makes
+    # that row usable for ANY stage's transition, the same wildcard
+    # PoolPicker.gd reads for all three tables. See StageTransition.gd.
+    "Transition Cast": {
+        "out": "transition_cast.json",
+        "key": "transition_cast_id",
+        "id_pattern": r"^TC\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Transition Cast ID", "transition_cast_id", "id"),
+            ("Stage ID", "stage_id", "str"),
+            # An OPxx or SFxx — which it is, is told apart by prefix, the
+            # same way _is_bill_id() tells a BIxx from an STxx.
+            ("Character ID", "character_id", "str"),
+        ],
+    },
+    "Transition Backgrounds": {
+        "out": "transition_backgrounds.json",
+        "key": "transition_background_id",
+        "id_pattern": r"^TB\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Transition Background ID", "transition_background_id", "id"),
+            ("Stage ID", "stage_id", "str"),
+            ("Background ID", "background_id", "str"),
+        ],
+    },
+    "Transition Dialogue": {
+        "out": "transition_dialogue.json",
+        "key": "transition_dialogue_id",
+        "id_pattern": r"^TD\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Transition Dialogue ID", "transition_dialogue_id", "id"),
+            # Required (never blank) — a line belongs to whichever character
+            # was picked, never a generic nobody.
+            ("Character ID", "character_id", "str"),
+            ("Stage ID", "stage_id", "str"),
+            ("Character Line (EN)", "character_line_en", "str"),
+            ("Player Reply (EN)", "player_reply_en", "str"),
+        ],
+    },
     # Every line the game says to the player. Cameron's to reword; the code
     # asks for a Key and never holds a sentence of its own. A key the code
     # asks for and this tab does not have is an ERROR, checked below, so a
@@ -419,6 +465,7 @@ SHEETS = {
             "Bar Model", "Energy Mode", "Energy Pool", "Sequence Mode",
             "Opponent Count", "Question Pool", "Reputation Affects Start",
             "Reveal In Briefing", "Loss Ends Level",
+            "Show Transition", "Transition Speaker Count",
         ],
         "columns": [
             ("Stage ID", "stage_id", "id"),
@@ -478,6 +525,13 @@ SHEETS = {
             # still apply its loss deltas, but the level goes on to the
             # next stage rather than sending the player back to the Office.
             ("Loss Ends Level", "loss_ends_level", "str"),
+            # Blank means "No" — the Stage Transition screen (2026-10-01,
+            # §7.9) is opt-in per stage, so no existing stage shows it until
+            # Cameron switches it on.
+            ("Show Transition", "show_transition", "str"),
+            # Blank means 1. How many distinct characters StageTransition.gd
+            # samples from Transition Cast for this stage's transition.
+            ("Transition Speaker Count", "transition_speaker_count", "int"),
         ],
     },
     "Cards": {
@@ -1774,6 +1828,60 @@ def validate(data, report):
                 f"{lid} has more than one row — the first one wins",
             )
         seen_thought_levels.add(lid)
+
+    # --- transition_cast / transition_backgrounds / transition_dialogue ----
+    # The Stage Transition screen's three pools (§7.9). A blank Stage ID is
+    # a deliberate wildcard (PoolPicker.gd), not an omission, so it is never
+    # flagged here.
+    def _character_kind(character_id):
+        if character_id.startswith("OP"):
+            return "opponent"
+        if character_id.startswith("SF"):
+            return "staff"
+        return None
+
+    for row in data.get("transition_cast", []):
+        tcid = row["transition_cast_id"]
+        stage_id = row.get("stage_id")
+        if stage_id and stage_id not in stage_ids:
+            report.error("Transition Cast", f"{tcid} names stage '{stage_id}', which is not in the Stages tab")
+        character_id = row.get("character_id") or ""
+        kind = _character_kind(character_id)
+        if kind == "opponent" and character_id not in opp_ids:
+            report.error("Transition Cast", f"{tcid} names opponent '{character_id}', which is not in the Opponents tab")
+        elif kind == "staff" and character_id not in staff_ids:
+            report.error("Transition Cast", f"{tcid} names staff '{character_id}', which is not in the Staff tab")
+        elif kind is None:
+            report.error(
+                "Transition Cast",
+                f"{tcid} has Character ID '{character_id}' — expected an OPxx opponent or an SFxx staff ID",
+            )
+
+    for row in data.get("transition_backgrounds", []):
+        tbid = row["transition_background_id"]
+        stage_id = row.get("stage_id")
+        if stage_id and stage_id not in stage_ids:
+            report.error(
+                "Transition Backgrounds", f"{tbid} names stage '{stage_id}', which is not in the Stages tab")
+        if not row.get("background_id"):
+            report.error("Transition Backgrounds", f"{tbid} has no Background ID")
+
+    for row in data.get("transition_dialogue", []):
+        tdid = row["transition_dialogue_id"]
+        stage_id = row.get("stage_id")
+        if stage_id and stage_id not in stage_ids:
+            report.error("Transition Dialogue", f"{tdid} names stage '{stage_id}', which is not in the Stages tab")
+        character_id = row.get("character_id") or ""
+        kind = _character_kind(character_id)
+        if kind == "opponent" and character_id not in opp_ids:
+            report.error("Transition Dialogue", f"{tdid} names opponent '{character_id}', which is not in the Opponents tab")
+        elif kind == "staff" and character_id not in staff_ids:
+            report.error("Transition Dialogue", f"{tdid} names staff '{character_id}', which is not in the Staff tab")
+        elif kind is None:
+            report.error(
+                "Transition Dialogue",
+                f"{tdid} has Character ID '{character_id}' — expected an OPxx opponent or an SFxx staff ID",
+            )
 
     # --- vote_influence_triggers -------------------------------------------
     # The Floor Vote influence swing's own gate (§7.7): each row names either

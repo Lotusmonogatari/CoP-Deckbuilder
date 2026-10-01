@@ -330,5 +330,6 @@
   "shop.supplies": "Supplies",
   "shop.supplies_blurb": "Supplies go into your inventory. Open the inventory from the Office or during a stage to use them.",
   "shop.too_many": "{count} too many.",
-  "shop.xp_short": "{count} XP short."
+  "shop.xp_short": "{count} XP short.",
+  "stage_transition.continue": "Continue"
 }
