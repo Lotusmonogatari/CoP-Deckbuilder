@@ -2,6 +2,7 @@
   {
     "variable": "Reputation",
     "enabled": "No",
-    "threshold": 85
+    "threshold": 85,
+    "applies_to_parties": null
   }
 ]

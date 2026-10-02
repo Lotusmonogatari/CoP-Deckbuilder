@@ -30,6 +30,14 @@ extends RefCounted
 ## no roll, since the point is a hard-but-reliable payoff once the gate is
 ## cleared. See VoteInfluence.gd for the gate check itself.
 ##
+## Per-party scope (2026-10-02): the gate is checked separately for EACH
+## party being considered, not once for the whole vote — a trigger row can
+## name specific parties it applies to (VoteInfluence.gd's own
+## `applies_to_parties`), so the player might be able to swing one party but
+## not another even in the same vote. A row with no scope at all still
+## counts everywhere, so this changes nothing for a trigger set written
+## before the scoping column existed.
+##
 ## USE
 ##     var engine := FloorVoteEngine.new()
 ##     engine.setup({"bill": bill, "player_party": "Frontier Party",
@@ -63,6 +71,11 @@ var _default_resistance := 70
 ## the swing and re-deriving "what would have happened without it" from the
 ## post-swing state would be wrong (choose() promises the same answer every
 ## time it's called, per its own doc comment below).
+##
+## True when the gate passed for AT LEAST ONE party being considered for the
+## swing (per-party scope, 2026-10-02) — a single flag covering the whole
+## vote, for a caller (the cutscene, the UI) that only needs to know
+## "did anything swing," not which party.
 var _influence_gate_passed := false
 var _outcome_flipped_by_influence := false
 
@@ -161,10 +174,7 @@ func choose(choice: String) -> Dictionary:
 		var baseline_totals := _totals()
 		var baseline_passed: bool = int(baseline_totals["Yes"]) > int(baseline_totals["No"])
 
-		_influence_gate_passed = VoteInfluence.gate_passed(
-			_triggers, _meta, _booster_standing, _default_threshold)
-		if _influence_gate_passed:
-			_apply_influence_swing(picked)
+		_influence_gate_passed = _apply_influence_swing(picked)
 
 		var final_totals := _totals()
 		_outcome_flipped_by_influence = (final_totals["Yes"] > final_totals["No"]) != baseline_passed
@@ -211,12 +221,27 @@ func _reallocate_player_vote(picked: String) -> void:
 ## the % of a party's seats that are swing-proof, so a 70% resistance party
 ## only ever gives up 30% of its seats, at most, and only from whichever
 ## bucket its own majority already sat in.
-func _apply_influence_swing(picked: String) -> void:
+##
+## The gate itself (2026-10-02) is checked PER PARTY, passing that party's
+## own party_id to VoteInfluence.gate_passed() — a trigger row scoped to
+## specific parties only ever counts toward those parties' own checks, so
+## the same vote can swing one party and not another. Returns true if the
+## gate passed for at least one party (whether or not that party actually
+## had any seats to give — the flag is "could this have swung someone,"
+## not "did seats move").
+func _apply_influence_swing(picked: String) -> bool:
+	var any_gate_passed := false
 	for index in _positions.size():
 		var position: Dictionary = _positions[index]
 		var assumed := majority_bucket(position)
 		if assumed == picked:
 			continue
+
+		var party_id := str(position.get("party_id", ""))
+		if not VoteInfluence.gate_passed(
+				_triggers, _meta, _booster_standing, _default_threshold, party_id):
+			continue
+		any_gate_passed = true
 
 		var party_name := str(position.get("party_name", ""))
 		var total_seats := (int(position.get("votes_yes", 0))
@@ -232,6 +257,7 @@ func _apply_influence_swing(picked: String) -> void:
 		position[from_key] = int(position[from_key]) - moved
 		position[to_key] = int(position.get(to_key, 0)) + moved
 		_positions[index] = position
+	return any_gate_passed
 
 
 func _totals() -> Dictionary:

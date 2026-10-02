@@ -711,13 +711,23 @@ SHEETS = {
     # see VoteInfluence.gd. optional_sheet: True the same way Office
     # Ticker/Level Intro Cues are, since it's new enough that an older
     # workbook re-upload wouldn't have it yet.
+    #
+    # "Applies To Parties" (2026-10-02) scopes a row to one or more parties
+    # instead of the whole chamber — blank still means every party, so a
+    # pre-existing unscoped row's behavior never changes. It's in "optional"
+    # (not just the sheet) because Cameron is adding this specific column to
+    # the tab himself on his own timeline; until it lands, every row reads
+    # as blank/unscoped, which is this feature's own "nothing written yet"
+    # default — see VoteInfluence.gate_passed()'s own party_id parameter.
     "Vote Influence Triggers": {
         "out": "vote_influence_triggers.json",
         "optional_sheet": True,
+        "optional": ["Applies To Parties"],
         "columns": [
             ("Variable", "variable", "str"),
             ("Enabled", "enabled", "str"),
             ("Threshold", "threshold", "int"),
+            ("Applies To Parties", "applies_to_parties", "list"),
         ],
     },
     # The optional cutscene line shown when the influence swing above
@@ -1901,6 +1911,13 @@ def validate(data, report):
                 "Vote Influence Triggers",
                 f"'{variable}' has Enabled = '{row['enabled']}' — expected Yes, No, or blank",
             )
+        for scoped_party in row.get("applies_to_parties") or []:
+            if scoped_party not in party_ids:
+                report.error(
+                    "Vote Influence Triggers",
+                    f"'{variable}' names party '{scoped_party}' in Applies To Parties, "
+                    "which is not a party_id in the Parties tab",
+                )
 
     # --- vote_influence_cues -------------------------------------------------
     # The optional cutscene line for a bill the influence swing flipped —

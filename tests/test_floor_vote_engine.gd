@@ -329,3 +329,52 @@ func test_choosing_twice_reports_the_same_influence_flags_both_times() -> void:
 	var second := engine.choose("No")   # ignored — already resolved
 	assert_eq(first["outcome_flipped_by_influence"], second["outcome_flipped_by_influence"])
 	assert_eq(first["influence_gate_passed"], second["influence_gate_passed"])
+
+
+func test_a_scoped_trigger_only_swings_the_party_it_names() -> void:
+	# Named by the scoped trigger below, by party_id (PT02 is Keizaijiyuutou
+	# in the shared fixture) — Country Initiative (PT03) is never named.
+	var triggers := [{
+		"variable": "Reputation", "enabled": "Yes", "threshold": 85,
+		"applies_to_parties": ["PT02"],
+	}]
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": triggers,
+		"default_resistance": 0,
+	})
+	var result := engine.choose("Yes")
+
+	# Keizaijiyuutou's assumed majority (No) isn't the picked bucket (Yes),
+	# and the trigger names it directly, so its whole 9 No seats swing.
+	var keizaijiyuutou: Dictionary = result["positions"][1]
+	assert_eq(int(keizaijiyuutou["votes_yes"]), 10)
+	assert_eq(int(keizaijiyuutou["votes_no"]), 0)
+
+	# Country Initiative's assumed majority (Abstain) also isn't Yes, but
+	# the trigger never names it — so even with the gate open elsewhere,
+	# its 5 Abstain seats stay exactly where they were.
+	var country_initiative: Dictionary = result["positions"][2]
+	assert_eq(int(country_initiative["votes_abstain"]), 5)
+	assert_eq(int(country_initiative["votes_yes"]), 0)
+
+	assert_true(result["influence_gate_passed"])
+
+
+func test_a_scoped_trigger_that_names_no_eligible_party_never_swings_anyone() -> void:
+	var triggers := [{
+		"variable": "Reputation", "enabled": "Yes", "threshold": 85,
+		"applies_to_parties": ["PT99"],   # not a real party in this bill
+	}]
+	var engine := FloorVoteEngine.new()
+	engine.setup({
+		"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": triggers,
+		"default_resistance": 0,
+	})
+	var result := engine.choose("Yes")
+	assert_false(result["influence_gate_passed"])
+	# Same as the no-triggers-configured case: no swing happened at all.
+	assert_eq(int(result["totals"]["Yes"]), 9)
+	assert_eq(int(result["totals"]["No"]), 11)
