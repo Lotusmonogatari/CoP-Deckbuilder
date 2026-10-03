@@ -727,7 +727,7 @@ SHEETS = {
             ("Variable", "variable", "str"),
             ("Enabled", "enabled", "str"),
             ("Threshold", "threshold", "int"),
-            ("Applies To Parties", "applies_to_parties", "list"),
+            ("Applies To Parties", "applies_to_parties", "id_list"),
         ],
     },
     # The optional cutscene line shown when the influence swing above

@@ -34,8 +34,8 @@
     "energy_pool": null,
     "sequence_mode": "reset",
     "opponent_count": {
-      "min": 3,
-      "max": 3
+      "min": 2,
+      "max": 2
     },
     "question_pool": null,
     "reputation_affects_start": "No",
@@ -394,8 +394,8 @@
     "loss_delta_xp": 5,
     "loss_delta_party_support": -5,
     "bar_model": "Shared_pool",
-    "energy_mode": "per_turn",
-    "energy_pool": null,
+    "energy_mode": "pool",
+    "energy_pool": 8,
     "sequence_mode": "single",
     "opponent_count": {
       "min": 1,
@@ -914,8 +914,8 @@
     "loss_delta_xp": 20,
     "loss_delta_party_support": -10,
     "bar_model": "Shared_pool",
-    "energy_mode": "per_turn",
-    "energy_pool": null,
+    "energy_mode": "pool",
+    "energy_pool": 7,
     "sequence_mode": "reset",
     "opponent_count": {
       "min": 3,
@@ -946,7 +946,7 @@
     "bar_max": 50,
     "win_threshold": 30,
     "win_pct": 0.6,
-    "turn_limit": 5,
+    "turn_limit": 3,
     "energy_per_turn": 3,
     "hand_size": 3,
     "gaffe_limit": 2,
@@ -966,8 +966,8 @@
     "loss_delta_xp": 5,
     "loss_delta_party_support": -5,
     "bar_model": "Shared_pool",
-    "energy_mode": "per_turn",
-    "energy_pool": null,
+    "energy_mode": "pool",
+    "energy_pool": 6,
     "sequence_mode": "single",
     "opponent_count": {
       "min": 1,
@@ -1018,8 +1018,8 @@
     "loss_delta_xp": 0,
     "loss_delta_party_support": -1,
     "bar_model": "Shared_pool",
-    "energy_mode": "per_turn",
-    "energy_pool": null,
+    "energy_mode": "pool",
+    "energy_pool": 12,
     "sequence_mode": "single",
     "opponent_count": {
       "min": 1,

@@ -1,8 +1,133 @@
 [
   {
     "variable": "Reputation",
-    "enabled": "No",
+    "enabled": "Yes",
     "threshold": 85,
     "applies_to_parties": null
+  },
+  {
+    "variable": "BO02",
+    "enabled": "Yes",
+    "threshold": 75,
+    "applies_to_parties": null
+  },
+  {
+    "variable": "BO03",
+    "enabled": "Yes",
+    "threshold": 70,
+    "applies_to_parties": null
+  },
+  {
+    "variable": "Funds",
+    "enabled": "Yes",
+    "threshold": 500000,
+    "applies_to_parties": [
+      "PT04",
+      "PT05"
+    ]
+  },
+  {
+    "variable": "Constituency support",
+    "enabled": "Yes",
+    "threshold": 60,
+    "applies_to_parties": [
+      "PT01",
+      "PT02",
+      "PT03"
+    ]
+  },
+  {
+    "variable": "BO04",
+    "enabled": "Yes",
+    "threshold": 70,
+    "applies_to_parties": [
+      "PT04"
+    ]
+  },
+  {
+    "variable": "BO05",
+    "enabled": "Yes",
+    "threshold": 70,
+    "applies_to_parties": [
+      "PT05"
+    ]
+  },
+  {
+    "variable": "BO07",
+    "enabled": "Yes",
+    "threshold": 70,
+    "applies_to_parties": [
+      "PT02"
+    ]
+  },
+  {
+    "variable": "BO08",
+    "enabled": "Yes",
+    "threshold": 65,
+    "applies_to_parties": [
+      "PT04",
+      "PT05"
+    ]
+  },
+  {
+    "variable": "BO09",
+    "enabled": "Yes",
+    "threshold": 70,
+    "applies_to_parties": [
+      "PT01"
+    ]
+  },
+  {
+    "variable": "BO10",
+    "enabled": "Yes",
+    "threshold": 65,
+    "applies_to_parties": [
+      "PT06",
+      "PT03"
+    ]
+  },
+  {
+    "variable": "BO11",
+    "enabled": "Yes",
+    "threshold": 70,
+    "applies_to_parties": [
+      "PT01"
+    ]
+  },
+  {
+    "variable": "BO12",
+    "enabled": "Yes",
+    "threshold": 70,
+    "applies_to_parties": [
+      "PT01"
+    ]
+  },
+  {
+    "variable": "BO13",
+    "enabled": "Yes",
+    "threshold": 65,
+    "applies_to_parties": [
+      "PT03",
+      "PT02",
+      "PT06"
+    ]
+  },
+  {
+    "variable": "BO15",
+    "enabled": "Yes",
+    "threshold": 65,
+    "applies_to_parties": [
+      "PT06",
+      "PT02"
+    ]
+  },
+  {
+    "variable": "BO16",
+    "enabled": "Yes",
+    "threshold": 65,
+    "applies_to_parties": [
+      "PT02",
+      "PT03"
+    ]
   }
 ]

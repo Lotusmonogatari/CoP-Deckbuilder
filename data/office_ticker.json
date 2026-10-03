@@ -5,7 +5,7 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "The Sapporo Digital Networks newsroom never sleeps."
+    "text_en": "“The National Assembly returns, but is Prime Minister Rono losing steam?” - Sapporo Digital Networks ☼"
   },
   {
     "ticker_id": "TK02",
@@ -13,7 +13,7 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Committee season is underway across Yezo."
+    "text_en": "Yumi Satou-san will interview new Assembly Members this evening on Sapporo Broadcasting Center. ☼"
   },
   {
     "ticker_id": "TK03",
@@ -21,7 +21,7 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Reporters gather outside the National Assembly ahead of today's session."
+    "text_en": "“Reporters following the National Assembly are eager for breaking news, but the walls of parliament are not budging.” - Sapporo Digital Networks ☼"
   },
   {
     "ticker_id": "TK04",
@@ -29,22 +29,166 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "Yezo News: coverage of the Office has been thin lately."
+    "text_en": "“I hear voters are souring on their new Assembly Member.” - Otaru Radio 今日  ☼"
   },
   {
     "ticker_id": "TK05",
     "condition_type": "meta",
-    "condition_target": "Party support",
-    "condition_op": ">",
-    "condition_value": 75.0,
-    "text_en": "Party insiders praise the Office's steady backing."
+    "condition_target": "Reputation",
+    "condition_op": "<",
+    "condition_value": 45.0,
+    "text_en": "“Parliament insiders say that their new colleague needs to plan rather than rush through their work.” - Sapporo Digital Networks ☼"
   },
   {
     "ticker_id": "TK06",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "<",
+    "condition_value": 40.0,
+    "text_en": "“Can a reputation improve? Yes. However, it frequently requires a Member of Parliament to step back and consider the cards they can play, figuratively speaking.” - Yezo Political Insider ☼"
+  },
+  {
+    "ticker_id": "TK07",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "<",
+    "condition_value": 25.0,
+    "text_en": "“A sinking reputation will be troublesome for that new Member of Parliament...” - Yezo Political Insider ☼"
+  },
+  {
+    "ticker_id": "TK08",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "<",
+    "condition_value": 30.0,
+    "text_en": "“People like winners. Neighborhood groups, associations, and others won’t reward an Assembly Member with a low reputation.” - Sapporo Digital Networks ☼"
+  },
+  {
+    "ticker_id": "TK09",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "=",
+    "condition_value": 50.0,
+    "text_en": "“A middling reputation is not bad.” - Sapporo Digital Networks ☼"
+  },
+  {
+    "ticker_id": "TK10",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "=",
+    "condition_value": 50.0,
+    "text_en": "“I would rather be one of those no-name Members of Parliament than the Prime Minister right now.” - Otaru Radio 今日  ☼"
+  },
+  {
+    "ticker_id": "TK11",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "=",
+    "condition_value": 50.0,
+    "text_en": "“Among the top five Assembly Members? Minister Haibi, certainly. Because of the idol fame.” - Yezo Political Insider ☼"
+  },
+  {
+    "ticker_id": "TK12",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "<",
+    "condition_value": 55.0,
+    "text_en": "Sapporo Broadcasting Center's commentators are raising awkward questions about your performance."
+  },
+  {
+    "ticker_id": "TK13",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": ">",
+    "condition_value": 45.0,
+    "text_en": "“That one Member of Parliament had a handful of decent speeches and a recognizable presence in committee.” - Yezo Political Insider ☼"
+  },
+  {
+    "ticker_id": "TK14",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": ">",
+    "condition_value": 45.0,
+    "text_en": "“Minister Resu is not as popular inside the building as outside.” - Yezo Political Insider ☼"
+  },
+  {
+    "ticker_id": "TK15",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": ">",
+    "condition_value": 55.0,
+    "text_en": "“Supposedly, five or six Members of Parliament are punching above their weight in committees.” - Sapporo Digital Networks ☼"
+  },
+  {
+    "ticker_id": "TK16",
     "condition_type": "always",
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Constituents are asking what the Office plans next."
+    "text_en": "“財務大臣拝眉氏が昨日またサイン会をさせられました.” - Otaru Radio 今日  ☼"
+  },
+  {
+    "ticker_id": "TK17",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "“政党は弱くなって続けるので後援会での講演会が予定を交換しています.” - Yezo Political Insider ☼"
+  },
+  {
+    "ticker_id": "TK18",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "“政治家のチームは大事な規定.” - 青森の青空109.9! ☼"
+  },
+  {
+    "ticker_id": "TK19",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "“The newest university graduates to earn a chance working for the government tell us about needing to find fax machines to file their applications.” - Aomori’s Morning Mori ☼"
+  },
+  {
+    "ticker_id": "TK20",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": "<=",
+    "condition_value": 20000.0,
+    "text_en": "“Rumor has it a certain Member of Parliament is broke.” - Aomori’s Morning Mori ☼"
+  },
+  {
+    "ticker_id": "TK21",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": "<=",
+    "condition_value": 30000.0,
+    "text_en": "The evening broadcast will gather a panel of former chiefs of staff to discuss why a political office's budget cannot plummet to zero. - Sapporo Digital Networks ☼"
+  },
+  {
+    "ticker_id": "TK22",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": "<=",
+    "condition_value": 35000.0,
+    "text_en": "Yumi Satou-san will interview Butsutou Party Leader Utemaru Naizen again this week for an ongoing discussion about ethics in political office spending - Sapporo Broadcasting Center. ☼"
+  },
+  {
+    "ticker_id": "TK23",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": ">=",
+    "condition_value": 500000.0,
+    "text_en": "Minister of Ethics and Prosecution Naizen speaks out against political offices that accumulate wealth without intending to fund local projects and wellbeing programs.” - Otaru Radio 今日  ☼"
+  },
+  {
+    "ticker_id": "TK24",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": ">=",
+    "condition_value": 700000.0,
+    "text_en": "“Minister of Ethics and Prosecution Naizen speaks out against political offices that hoard wealth without an intent to fund local projects and wellbeing programs; calls them “... thieves from future generations.“” - Otaru Radio 今日  ☼"
   }
 ]
