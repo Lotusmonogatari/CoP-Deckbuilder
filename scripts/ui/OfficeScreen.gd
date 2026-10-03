@@ -619,9 +619,9 @@ func _build_record() -> void:
 	parent.move_child(button, _organisations_button.get_index() + 1)
 
 
-## Lifetime stats: which bills the influence swing has flipped, how many
-## times each level has been cleared, and clears per tier (derived from the
-## level tally at display time rather than kept as a third counter).
+## Lifetime stats: which bills the influence swing has flipped, clears per
+## tier (derived from the level tally at display time rather than kept as a
+## third counter), and how many times each level has been cleared.
 func _show_record() -> void:
 	var rows: Array[Control] = []
 
@@ -645,18 +645,6 @@ func _show_record() -> void:
 			var bill_name := str(DataDB.floor_votes.get(bill_id, {}).get("bill_name", bill_id))
 			rows.append(UiKit.line(bill_name))
 
-	rows.append(UiKit.heading(Text.say("office.record_levels_heading")))
-	var any_cleared := false
-	for level: Dictionary in DataDB.levels:
-		var level_id := str(level.get("level_id", ""))
-		var count := int(GameState.levels_cleared.get(level_id, 0))
-		if count > 0:
-			any_cleared = true
-			rows.append(UiKit.line(Text.say("office.record_level_line",
-				{"level": level.get("description", level_id), "count": count})))
-	if not any_cleared:
-		rows.append(UiKit.line(Text.say("office.record_levels_empty")))
-
 	rows.append(UiKit.heading(Text.say("office.record_tiers_heading")))
 	var tiers: Array = []
 	for level: Dictionary in DataDB.levels:
@@ -669,6 +657,18 @@ func _show_record() -> void:
 			if level.get("tier") == tier:
 				total += int(GameState.levels_cleared.get(str(level.get("level_id", "")), 0))
 		rows.append(UiKit.line(Text.say("office.record_tier_line", {"tier": int(tier), "count": total})))
+
+	rows.append(UiKit.heading(Text.say("office.record_levels_heading")))
+	var any_cleared := false
+	for level: Dictionary in DataDB.levels:
+		var level_id := str(level.get("level_id", ""))
+		var count := int(GameState.levels_cleared.get(level_id, 0))
+		if count > 0:
+			any_cleared = true
+			rows.append(UiKit.line(Text.say("office.record_level_line",
+				{"level": level.get("description", level_id), "count": count})))
+	if not any_cleared:
+		rows.append(UiKit.line(Text.say("office.record_levels_empty")))
 
 	_record_panel.open(Text.say("office.your_record"), rows)
 
