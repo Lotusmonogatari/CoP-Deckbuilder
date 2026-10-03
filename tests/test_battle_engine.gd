@@ -1567,6 +1567,20 @@ func test_a_card_that_only_gaffes_is_not_called_useless() -> void:
 		"doing something bad is still doing something")
 
 
+func test_a_pure_special_effect_card_is_not_called_useless() -> void:
+	# C11 "Work the Room First" prints all five plain numbers as 0 by
+	# design — its whole effect is buff_next_card_this_turn, a flag in
+	# SpecialEffects.gd's own "flags" side channel, which does_nothing used
+	# to never look at. That made the card read as useless in every room,
+	# not just the committee stage a playtest found it in (2026-10-03).
+	var engine := _start()
+	var effect := engine.preview(TestFixtures.card({
+		"card_id": "BUFF", "special": "buff_next_card_this_turn", "special_value": 2,
+	}))
+	assert_true(bool(effect["flags"]["special_triggered"]), "the special did fire")
+	assert_false(bool(effect["does_nothing"]), "a fired special is not nothing")
+
+
 # ---------------------------------------------------------------------------
 # Telling the screen what changed underneath the player
 # ---------------------------------------------------------------------------

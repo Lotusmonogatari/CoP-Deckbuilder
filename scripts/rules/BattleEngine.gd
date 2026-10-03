@@ -995,12 +995,21 @@ func preview(card: Dictionary) -> Dictionary:
 	# reading "Gaffe +1. Nothing this card does counts in this room." — a
 	# sentence that contradicts itself. Doing something bad is still doing
 	# something, and the player should be told which.
+	#
+	# A fired special effect counts too. A card like C11 "Work the Room
+	# First" prints all five plain numbers as 0 by design — its whole effect
+	# is SpecialEffects.gd's own "flags" side channel (next_card_bonus,
+	# reveal_next_intent, a discount, ...), which this check used to ignore
+	# entirely. That made a buff-only card read as useless in EVERY room,
+	# not just the one a playtest happened to find it in — the five-number
+	# check was blind to anything that isn't one of those five numbers.
 	effect["does_nothing"] = (
 		int(effect.get("self_plus", 0)) == 0
 		and int(effect.get("draw", 0)) == 0
 		and int(effect.get("gaffe", 0)) == 0
 		and (int(effect.get("opp_minus", 0)) == 0 or not reduce_counts)
-		and (int(effect.get("guard", 0)) == 0 or not guard_counts))
+		and (int(effect.get("guard", 0)) == 0 or not guard_counts)
+		and not bool(effect.get("flags", {}).get("special_triggered", false)))
 
 	# Every card answers the question in front of you, whatever else it does
 	# — so a card whose numbers are all inert here still spends a question.

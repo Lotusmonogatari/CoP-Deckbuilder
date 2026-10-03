@@ -1397,6 +1397,34 @@ wording, not keys or `{placeholders}`. Full GUT suite (922 tests) and
 real overlay panels, and `loop_test.gd`, which plays a real battle
 through `BattleScreen`) both confirmed green afterward.
 
+### A pure-special-effect card read as useless in every room (2026-10-03, Cameron)
+
+Reported from a real playtest: "Work the Room First" (C11, `special:
+buff_next_card_this_turn`) showed greyed out in hand in the Agriculture
+committee, its own card-zoom saying it does nothing in this room. Not
+specific to that stage — `BattleEngine.preview()`'s own `does_nothing`
+check (used by both the hand's dimming and the card-zoom's own text) only
+ever looked at a card's five plain resolved numbers (`self_plus`, `draw`,
+`gaffe`, `opp_minus`, `guard`). C11 prints all five as 0 by design: its
+whole effect lives in `SpecialEffects.gd`'s own `flags` side channel
+(`next_card_bonus`), which the check never inspected at all — so the card
+read as useless everywhere, not just the room a playtest happened to
+catch it in. Fixed by also requiring `flags.special_triggered` to be
+false before calling a card inert — the same `SpecialEffects.apply()`
+flag every special effect already sets when it actually fires, whether or
+not it touches one of the five plain numbers. New GUT test,
+`test_a_pure_special_effect_card_is_not_called_useless()`, sits beside
+the existing "does nothing" suite in `test_battle_engine.gd`.
+
+While verifying this, `tools/verify.sh`'s `loop_test.tscn` turned out to
+fail on a WIN — confirmed unrelated to this fix (reproduces identically
+on the commit before it): the level `loop_driver.gd` plays first picked
+up a second stage (`ST07`, Office Hours) from a recent workbook upload,
+and the driver's own `EXPECTED_STAGES := 1` constant and Combat-only
+click logic are now stale against it. Not a game bug — winning correctly
+advances into the Office Hours stage; the driver just doesn't know how to
+play a Non-combat screen. Left as a known gap, not fixed in this pass.
+
 ## 13. The seams that are built but carry nothing
 
 These systems have working structure while some content remains incomplete.
