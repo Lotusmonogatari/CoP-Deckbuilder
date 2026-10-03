@@ -569,6 +569,23 @@ a full exit, not a forced swap). Six seed lines (TK01-06) ship in the
 workbook so the ticker has something to show out of the box; the rest of
 the tab is Cameron's to write.
 
+**A "{player}" token for `text_en`** (2026-10-03): any ticker row — `always`,
+`meta`, or `staff_role` alike — can include the literal text `{player}` and
+it is filled in with the current protagonist's own name before the line is
+shown, e.g. `"{player}'s latest floor speech is already being clipped for
+tonight's broadcast."` becomes "Haru Yashi's latest floor speech is
+already...". `OfficeTicker.fill_tokens()` does the substitution inside
+`eligible_lines()` (so `next_line()` picks up the filled version
+automatically); `TickerPresenter._pull_next()` is the one real call site
+and passes `DataDB.player.get("name_en", "")` in — `OfficeTicker.gd` stays
+pure, never reading DataDB itself. Unlike Office Notices' own `{staff}`
+token (only safe on a staff_role row, since that's the only row with a
+lookup to resolve it), `{player}` is safe everywhere, since the player's
+name is fixed for the whole run. A blank name (no run started) leaves the
+token untouched rather than blanking it, so a half-wired caller never ships
+a broken-looking line. No workbook rows use it yet — Cameron's to write as
+he continues filling out the Office Ticker tab.
+
 ### A thorough code stress test (2026-09-28)
 
 Everything above proves a mechanic *works*. `tools/stress.sh` (new) asks

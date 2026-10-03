@@ -71,7 +71,8 @@ func advance(delta: float) -> void:
 ## A freshly-picked line, starting just off the strip's own right edge.
 func _pull_next() -> void:
 	var line := _ticker.next_line(
-		DataDB.office_ticker, GameState.staff_hired, GameState.meta, _rng)
+		DataDB.office_ticker, GameState.staff_hired, GameState.meta, _rng,
+		str(DataDB.player.get("name_en", "")))
 	if line.is_empty():
 		# Nothing eligible right now — keep waiting rather than show blank.
 		_showing = false

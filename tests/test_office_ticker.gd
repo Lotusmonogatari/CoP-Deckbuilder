@@ -78,3 +78,42 @@ func test_next_line_can_repeat_when_it_is_the_only_one_eligible() -> void:
 	var rng := _rng(3)
 	for i in 5:
 		assert_eq(ticker.next_line(rows, {}, {}, rng), "only line")
+
+
+# ---------------------------------------------------------------------------
+# The "{player}" token (2026-10-03)
+# ---------------------------------------------------------------------------
+
+func test_fill_tokens_replaces_player_with_the_given_name() -> void:
+	assert_eq(OfficeTicker.fill_tokens("{player} is in the headlines.", "Haru Yashi"),
+		"Haru Yashi is in the headlines.")
+
+
+func test_fill_tokens_leaves_the_token_alone_when_no_name_is_given() -> void:
+	# A blank name means no run has started yet, or a caller that doesn't
+	# care about the token — leaving it untouched rather than blanking it
+	# out means a half-wired caller never ships a broken-looking line.
+	assert_eq(OfficeTicker.fill_tokens("{player} is in the headlines.", ""),
+		"{player} is in the headlines.")
+
+
+func test_fill_tokens_does_nothing_to_a_line_with_no_token() -> void:
+	assert_eq(OfficeTicker.fill_tokens("Committee season is underway.", "Haru Yashi"),
+		"Committee season is underway.")
+
+
+func test_eligible_lines_fills_the_token_before_returning_a_line() -> void:
+	var rows := [
+		{"ticker_id": "TK07", "condition_type": "always", "text_en": "{player}'s office is busy today."},
+	]
+	var lines := OfficeTicker.eligible_lines(rows, {}, {}, "Haru Yashi")
+	assert_eq(lines, ["Haru Yashi's office is busy today."])
+
+
+func test_next_line_also_fills_the_token() -> void:
+	var rows := [
+		{"ticker_id": "TK07", "condition_type": "always", "text_en": "{player}'s office is busy today."},
+	]
+	var ticker := OfficeTicker.new()
+	assert_eq(ticker.next_line(rows, {}, {}, _rng(1), "Haru Yashi"),
+		"Haru Yashi's office is busy today.")
