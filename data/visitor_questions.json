@@ -4,25 +4,761 @@
     "visitor_ids": [
       "VI01"
     ],
+    "question_text": "The streetlight on our corner has been out since spring. Can you help?",
+    "choice_a": "I'll call the ward office myself today.",
+    "choice_b": "Have you tried calling the city?",
+    "choice_c": "It's probably just the bulb.",
+    "choice_d": "Honestly, the dark keeps the street quiet.",
+    "correct_choice": "A",
+    "response_right": "Finally, someone who writes it down!",
+    "response_wrong": "That's what the last person said.",
+    "reaction_right": "Jots it in a small notebook.",
+    "reaction_wrong": "Taps the clipboard impatiently."
+  },
+  {
+    "question_id": "VQ02",
+    "visitor_ids": [
+      "VI01",
+      "VI18"
+    ],
+    "question_text": "Who is going to shovel the sidewalks for the elderly this winter?",
+    "choice_a": "Everyone shovels their own, that's the rule.",
+    "choice_b": "Let's set up a volunteer group with city support.",
+    "choice_c": "They can stay inside until spring.",
+    "choice_d": "That's not really an Assembly matter.",
+    "correct_choice": "B",
+    "response_right": "Now that is a neighborly idea.",
+    "response_wrong": "In my day we looked after each other.",
+    "reaction_right": "Nods slowly and smiles.",
+    "reaction_wrong": "Pulls her scarf tighter and frowns."
+  },
+  {
+    "question_id": "VQ03",
+    "visitor_ids": [
+      "VI01",
+      "VI07"
+    ],
+    "question_text": "Can we get a crosswalk and a crossing guard near the elementary school?",
+    "choice_a": "Traffic studies take time.",
+    "choice_b": "Parents should walk the kids themselves.",
+    "choice_c": "I'll push for both, starting this month.",
+    "choice_d": "Kids are quick, they'll manage.",
+    "correct_choice": "C",
+    "response_right": "Thank you. That's all we're asking.",
+    "response_wrong": "Please don't joke about this.",
+    "reaction_right": "Lets out a long breath of relief.",
+    "reaction_wrong": "Stares at you, appalled."
+  },
+  {
+    "question_id": "VQ04",
+    "visitor_ids": [
+      "VI02"
+    ],
+    "question_text": "Russian patrol boats keep shadowing our boats. Will you stand with the fleet?",
+    "choice_a": "I'm sure it's nothing.",
+    "choice_b": "Stay out of those waters, then.",
+    "choice_c": "That's a matter for the diplomats.",
+    "choice_d": "Your safety at sea comes first, and I'll say so publicly.",
+    "correct_choice": "D",
+    "response_right": "The sea remembers who showed up.",
+    "response_wrong": "Easy to say that from dry land.",
+    "reaction_right": "Grips your hand with a weathered palm.",
+    "reaction_wrong": "Spits out a laugh without humor."
+  },
+  {
+    "question_id": "VQ05",
+    "visitor_ids": [
+      "VI02",
+      "VI19"
+    ],
+    "question_text": "Fuel prices are eating us alive. Can you do something?",
+    "choice_a": "I'll ask for fuel relief for fishing and ferry crews.",
+    "choice_b": "Prices go up and down, that's life.",
+    "choice_c": "Have you thought about smaller boats?",
+    "choice_d": "I'll look into it, eventually.",
+    "correct_choice": "A",
+    "response_right": "That would keep a few of us afloat.",
+    "response_wrong": "We've heard \"eventually\" before.",
+    "reaction_right": "Gives a gruff thumbs up.",
+    "reaction_wrong": "Folds his arms like a net closing."
+  },
+  {
+    "question_id": "VQ06",
+    "visitor_ids": [
+      "VI02",
+      "VI12"
+    ],
+    "question_text": "Our harbor is silting up. Will you carry the dredging request to the capital?",
+    "choice_a": "Dredging is expensive.",
+    "choice_b": "I'll carry it there and keep asking.",
+    "choice_c": "Maybe the boats could get smaller.",
+    "choice_d": "Put it in writing and wait your turn.",
+    "correct_choice": "B",
+    "response_right": "A harbor is worth more than its paperwork.",
+    "response_wrong": "Boats will wait but the tide won't.",
+    "reaction_right": "Taps the table twice in approval.",
+    "reaction_wrong": "Looks out the window, unconvinced."
+  },
+  {
+    "question_id": "VQ07",
+    "visitor_ids": [
+      "VI03"
+    ],
+    "question_text": "Off the record, do you agree with party leadership on everything?",
+    "choice_a": "Off the record doesn't exist.",
+    "choice_b": "Of course I do. Every word.",
+    "choice_c": "I agree where I do, and I'll say so when I don't.",
+    "choice_d": "No comment, and that's a comment.",
+    "correct_choice": "C",
+    "response_right": "That's a rare quote. Thank you.",
+    "response_wrong": "That's a headline, and not a flattering one.",
+    "reaction_right": "Scribbles something and smiles.",
+    "reaction_wrong": "Looks up from the notepad, eyebrow raised."
+  },
+  {
+    "question_id": "VQ08",
+    "visitor_ids": [
+      "VI03",
+      "VI16"
+    ],
+    "question_text": "Can I quote you on that?",
+    "choice_a": "Yes, as long as you print all of it.",
+    "choice_b": "Only if I get to approve the quote.",
+    "choice_c": "Please don't.",
+    "choice_d": "I never said anything.",
+    "correct_choice": "A",
+    "response_right": "Fair deal. Honest quotes make good copy.",
+    "response_wrong": "I'll write what I heard.",
+    "reaction_right": "Clicks pen and nods.",
+    "reaction_wrong": "Lowers the recorder with a sigh."
+  },
+  {
+    "question_id": "VQ09",
+    "visitor_ids": [
+      "VI03"
+    ],
+    "question_text": "What have you actually accomplished so far?",
+    "choice_a": "More than my critics think.",
+    "choice_b": "Ask my staff, they keep the list.",
+    "choice_c": "It's a long list, I assure you.",
+    "choice_d": "Less than I'd like. Here's my list and what's next.",
+    "correct_choice": "D",
+    "response_right": "Rare to hear honesty. I'll check the list.",
+    "response_wrong": "That's a lot of words with no content.",
+    "reaction_right": "Raises eyebrows, impressed.",
+    "reaction_wrong": "Flips to a blank page."
+  },
+  {
+    "question_id": "VQ10",
+    "visitor_ids": [
+      "VI04"
+    ],
+    "question_text": "Will you support a living wage for working people?",
+    "choice_a": "Business owners would never allow it.",
+    "choice_b": "Workers deserve a living wage, and I'll hear every plan for it.",
+    "choice_c": "Wages find their own level.",
+    "choice_d": "I'll think about it after the budget.",
+    "correct_choice": "B",
+    "response_right": "Good. Say it again where the bosses can hear.",
+    "response_wrong": "Words are cheap. We pay rent with wages.",
+    "reaction_right": "Gives a short, firm nod.",
+    "reaction_wrong": "Pulls a union pin straight, glaring."
+  },
+  {
+    "question_id": "VQ11",
+    "visitor_ids": [
+      "VI04",
+      "VI13"
+    ],
+    "question_text": "Workers and owners don't talk. Would you join a roundtable?",
+    "choice_a": "Yes. Let's put them at one table.",
+    "choice_b": "Only if the press stays away.",
+    "choice_c": "They've never agreed before.",
+    "choice_d": "I'm too busy for that.",
+    "correct_choice": "A",
+    "response_right": "Finally, a table with enough chairs.",
+    "response_wrong": "Then nothing changes, does it?",
+    "reaction_right": "Smiles and straightens up.",
+    "reaction_wrong": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ12",
+    "visitor_ids": [
+      "VI04"
+    ],
+    "question_text": "Will you walk the picket line with us?",
+    "choice_a": "I can't be seen taking sides.",
+    "choice_b": "Send me a flyer.",
+    "choice_c": "I'll come, listen, and bring coffee.",
+    "choice_d": "Pickets are bad for business.",
+    "correct_choice": "C",
+    "response_right": "Coffee is a good start.",
+    "response_wrong": "We'll remember who stayed home.",
+    "reaction_right": "Laughs and slaps your shoulder.",
+    "reaction_wrong": "Mutters something under his breath."
+  },
+  {
+    "question_id": "VQ13",
+    "visitor_ids": [
+      "VI05"
+    ],
+    "question_text": "Milk prices keep falling. What will you do?",
+    "choice_a": "Farmers have to adapt to markets.",
+    "choice_b": "You could always sell the cows.",
+    "choice_c": "Maybe try making cheese?",
+    "choice_d": "Farmers shouldn't carry market swings alone. I'll fight for support.",
+    "correct_choice": "D",
+    "response_right": "You'd make a good dairy farmer.",
+    "response_wrong": "Tell that to the cows.",
+    "reaction_right": "Pats your arm, almost a hug.",
+    "reaction_wrong": "Snorts and looks at her boots."
+  },
+  {
+    "question_id": "VQ14",
+    "visitor_ids": [
+      "VI05",
+      "VI12"
+    ],
+    "question_text": "Will you protect rural bus routes? Some villages have one a day.",
+    "choice_a": "Routes that lose money should close.",
+    "choice_b": "Rural routes are lifelines. I'll defend them.",
+    "choice_c": "People can drive.",
+    "choice_d": "It's a prefectural issue.",
+    "correct_choice": "B",
+    "response_right": "Without the bus, there's no village.",
+    "response_wrong": "You clearly haven't waited at that stop.",
+    "reaction_right": "Smiles broadly and bows.",
+    "reaction_wrong": "Shakes her head sadly."
+  },
+  {
+    "question_id": "VQ15",
+    "visitor_ids": [
+      "VI05"
+    ],
+    "question_text": "Would you try my cheese on camera?",
+    "choice_a": "I'd be honored. Give me the sharpest one.",
+    "choice_b": "I'm lactose sensitive, sorry.",
+    "choice_c": "Only if my staff taste it first.",
+    "choice_d": "Will the cameras show me chewing?",
+    "correct_choice": "A",
+    "response_right": "Ha! You'll cry, but I'll put it on posters.",
+    "response_wrong": "Hm. Cheese is serious business.",
+    "reaction_right": "Cuts a thick wedge, grinning.",
+    "reaction_wrong": "Wraps the cheese back up slowly."
+  },
+  {
+    "question_id": "VQ16",
+    "visitor_ids": [
+      "VI06"
+    ],
+    "question_text": "Why should students trust politicians?",
+    "choice_a": "Because I said so.",
+    "choice_b": "They shouldn't, they should vote.",
+    "choice_c": "They shouldn't blindly. Hold me to account.",
+    "choice_d": "Students aren't voters yet. Trust is premature.",
+    "correct_choice": "C",
+    "response_right": "Okay. That's more honest than I expected.",
+    "response_wrong": "Great. Another adult who talks down to us.",
+    "reaction_right": "Eyes widen, then a small nod.",
+    "reaction_wrong": "Rolls his eyes and checks his phone."
+  },
+  {
+    "question_id": "VQ17",
+    "visitor_ids": [
+      "VI06",
+      "VI20"
+    ],
+    "question_text": "Would you come to campus for an open debate?",
+    "choice_a": "I'm very busy this term.",
+    "choice_b": "I'll come and take the hard questions.",
+    "choice_c": "Sure, if the questions are pre-screened.",
+    "choice_d": "Send me the questions first.",
+    "correct_choice": "B",
+    "response_right": "We'll save you a seat. A front one.",
+    "response_wrong": "We'll ask the hard ones anyway.",
+    "reaction_right": "Writes the date on his hand.",
+    "reaction_wrong": "Closes the folder with a snap."
+  },
+  {
+    "question_id": "VQ18",
+    "visitor_ids": [
+      "VI06"
+    ],
+    "question_text": "Will you hire student interns in your office?",
+    "choice_a": "Interns only do photocopying.",
+    "choice_b": "Maybe, if they work for free.",
+    "choice_c": "We'll see.",
+    "choice_d": "Yes, paid positions.",
+    "correct_choice": "D",
+    "response_right": "That's rare. I'll send you three names.",
+    "response_wrong": "Everyone says \"exposure.\"",
+    "reaction_right": "Gives an enthusiastic double thumbs up.",
+    "reaction_wrong": "Sighs and slumps."
+  },
+  {
+    "question_id": "VQ19",
+    "visitor_ids": [
+      "VI07"
+    ],
+    "question_text": "What are you doing about childcare waitlists?",
+    "choice_a": "Waitlists are too long. I'll push for more spaces.",
+    "choice_b": "Families should plan ahead.",
+    "choice_c": "Grandparents can help.",
+    "choice_d": "Waitlists show how popular daycare is.",
+    "correct_choice": "A",
+    "response_right": "You can't imagine what that means to us.",
+    "response_wrong": "Not everyone has grandparents nearby.",
+    "reaction_right": "Presses a hand to her heart.",
+    "reaction_wrong": "Closes her eyes and shakes her head."
+  },
+  {
+    "question_id": "VQ20",
+    "visitor_ids": [
+      "VI07",
+      "VI18"
+    ],
+    "question_text": "Would you back a community center that serves both families and seniors?",
+    "choice_a": "It sounds noisy.",
+    "choice_b": "Seniors and kids don't mix.",
+    "choice_c": "Yes. Kids and grandparents belong together.",
+    "choice_d": "It would be too expensive.",
+    "correct_choice": "C",
+    "response_right": "Oh, I can already picture it.",
+    "response_wrong": "My kids need more than that.",
+    "reaction_right": "Smiles wistfully.",
+    "reaction_wrong": "Looks disappointed."
+  },
+  {
+    "question_id": "VQ21",
+    "visitor_ids": [
+      "VI18"
+    ],
+    "question_text": "You look thin. Are you eating properly?",
+    "choice_a": "I'm fine, Obaachan.",
+    "choice_b": "Not enough. Will you teach me your recipe?",
+    "choice_c": "I live on coffee.",
+    "choice_d": "I don't have time for that.",
+    "correct_choice": "B",
+    "response_right": "Come on Sunday. I'll make too much.",
+    "response_wrong": "Hmph. Young people these days.",
+    "reaction_right": "Pinches your cheek fondly.",
+    "reaction_wrong": "Tuts and shakes a finger."
+  },
+  {
+    "question_id": "VQ22",
+    "visitor_ids": [
+      "VI08"
+    ],
+    "question_text": "Would you display local craftwork in your office?",
+    "choice_a": "It wouldn't match the furniture.",
+    "choice_b": "Maybe a small piece.",
+    "choice_c": "I don't have room.",
+    "choice_d": "Gladly. I want to show off Yezo's best.",
+    "correct_choice": "D",
+    "response_right": "A wise choice. Come see the workshop.",
+    "response_wrong": "Mass-produced is fine, I suppose.",
+    "reaction_right": "Runs a thumb over the grain proudly.",
+    "reaction_wrong": "Puts down the chisel, disappointed."
+  },
+  {
+    "question_id": "VQ23",
+    "visitor_ids": [
+      "VI08",
+      "VI10"
+    ],
+    "question_text": "Will you defend funding for traditional crafts and heritage sites?",
+    "choice_a": "Yes. They're what make Yezo, Yezo.",
+    "choice_b": "Modern projects are more urgent.",
+    "choice_c": "It depends on the budget.",
+    "choice_d": "Tradition is expensive.",
+    "correct_choice": "A",
+    "response_right": "Good. The roof leaks and so does the budget.",
+    "response_wrong": "Fashion fades but tradition... you'll see.",
+    "reaction_right": "Bows deeply.",
+    "reaction_wrong": "Lets out a long, quiet breath."
+  },
+  {
+    "question_id": "VQ24",
+    "visitor_ids": [
+      "VI08"
+    ],
+    "question_text": "Young people won't apprentice with us. What can be done?",
+    "choice_a": "Maybe automation can help.",
+    "choice_b": "It's not a government problem.",
+    "choice_c": "Make apprenticeships respectable, with stipends.",
+    "choice_d": "Teach them on video.",
+    "correct_choice": "C",
+    "response_right": "A craft needs hands, and hands need food.",
+    "response_wrong": "You can't teach grain by video.",
+    "reaction_right": "Nods, rubbing a calloused thumb.",
+    "reaction_wrong": "Goes quiet and picks up a plane."
+  },
+  {
+    "question_id": "VQ25",
+    "visitor_ids": [
+      "VI09"
+    ],
+    "question_text": "When do we get more train cars on the morning line?",
+    "choice_a": "Packed trains are a sign of success.",
+    "choice_b": "Take the bus.",
+    "choice_c": "Leave earlier.",
+    "choice_d": "I'll press for more cars at rush hour.",
+    "correct_choice": "D",
+    "response_right": "You've clearly never stood on the 7:40.",
+    "response_wrong": "I'll tell the other forty people in my car.",
+    "reaction_right": "Straightens her tie, relieved.",
+    "reaction_wrong": "Sighs into her coffee."
+  },
+  {
+    "question_id": "VQ26",
+    "visitor_ids": [
+      "VI09",
+      "VI17"
+    ],
+    "question_text": "Will you push for a faster rail link to the airport?",
+    "choice_a": "Yes. Everyone benefits from a faster connection.",
+    "choice_b": "It's too expensive.",
+    "choice_c": "The road is fine.",
+    "choice_d": "I'll leave it to the railway.",
+    "correct_choice": "A",
+    "response_right": "Thank you. My time is worth something.",
+    "response_wrong": "That's the same answer as five years ago.",
+    "reaction_right": "Looks up from her phone, hopeful.",
+    "reaction_wrong": "Returns to her phone."
+  },
+  {
+    "question_id": "VQ27",
+    "visitor_ids": [
+      "VI09"
+    ],
+    "question_text": "Would you ride the 7:40 with me one morning?",
+    "choice_a": "I'm not a morning person.",
+    "choice_b": "I could send a deputy.",
+    "choice_c": "I'd be glad to. Where should we meet?",
+    "choice_d": "I travel by car.",
+    "correct_choice": "C",
+    "response_right": "You'll learn more in 40 minutes than in a hearing.",
+    "response_wrong": "It figures.",
+    "reaction_right": "Smiles for the first time today.",
+    "reaction_wrong": "Mutters about \"car people.\""
+  },
+  {
+    "question_id": "VQ28",
+    "visitor_ids": [
+      "VI01",
+      "VI10"
+    ],
+    "question_text": "Our festival needs a road closure permit. Can you smooth it over?",
+    "choice_a": "I can't interfere with traffic rules.",
+    "choice_b": "I'll make a call. The festival matters.",
+    "choice_c": "Festivals cause a lot of litter.",
+    "choice_d": "Maybe move it to a parking lot?",
+    "correct_choice": "B",
+    "response_right": "The kami will remember your kindness.",
+    "response_wrong": "Even the gods notice red tape.",
+    "reaction_right": "Claps hands twice in thanks.",
+    "reaction_wrong": "Gazes at the sky, resigned."
+  },
+  {
+    "question_id": "VQ29",
+    "visitor_ids": [
+      "VI10"
+    ],
+    "question_text": "Will you join us for the New Year's first shrine visit?",
+    "choice_a": "I'm not religious.",
+    "choice_b": "I'll be out of town.",
+    "choice_c": "Is it a long line?",
+    "choice_d": "I'd be honored. Early morning, I suppose?",
+    "correct_choice": "D",
+    "response_right": "It's cold, but warm company helps.",
+    "response_wrong": "Perhaps another year.",
+    "reaction_right": "Folds his hands and bows.",
+    "reaction_wrong": "Smiles politely but stiffly."
+  },
+  {
+    "question_id": "VQ30",
+    "visitor_ids": [
+      "VI11",
+      "VI13"
+    ],
+    "question_text": "Permits take months. Can government work faster?",
+    "choice_a": "Permits should take days, not months.",
+    "choice_b": "The process exists for a reason.",
+    "choice_c": "Hire more clerks.",
+    "choice_d": "Your business plan is the problem.",
+    "correct_choice": "A",
+    "response_right": "That alone would change everything.",
+    "response_wrong": "You've never filled out the forms.",
+    "reaction_right": "Pulls out a business card.",
+    "reaction_wrong": "Looks at his watch."
+  },
+  {
+    "question_id": "VQ31",
+    "visitor_ids": [
+      "VI11",
+      "VI20"
+    ],
+    "question_text": "Would you back funding for university spin-off companies?",
+    "choice_a": "Universities should stick to teaching.",
+    "choice_b": "Only if it makes money quickly.",
+    "choice_c": "Yes. Ideas should leave the lab.",
+    "choice_d": "Too risky for public money.",
+    "correct_choice": "C",
+    "response_right": "Great. We have too many ideas stuck in drawers.",
+    "response_wrong": "Then those ideas go to Tokyo.",
+    "reaction_right": "Eyes light up.",
+    "reaction_wrong": "Slumps back in the chair."
+  },
+  {
+    "question_id": "VQ32",
+    "visitor_ids": [
+      "VI11"
+    ],
+    "question_text": "Winter is a branding problem. Can we sell the cold?",
+    "choice_a": "Nobody wants to be cold.",
+    "choice_b": "Cold is an asset. Let's sell it.",
+    "choice_c": "Maybe on ice cream.",
+    "choice_d": "Warmer places will always win.",
+    "correct_choice": "B",
+    "response_right": "Cold data centers, cold beer, cold cash. Yes.",
+    "response_wrong": "Okay. Let me know when you thaw.",
+    "reaction_right": "Starts typing notes on his phone.",
+    "reaction_wrong": "Pockets the phone."
+  },
+  {
+    "question_id": "VQ33",
+    "visitor_ids": [
+      "VI12"
+    ],
+    "question_text": "Will you back more say for local towns over local money?",
+    "choice_a": "Tokyo knows best.",
+    "choice_b": "We have a system.",
+    "choice_c": "I'm not a tax expert.",
+    "choice_d": "Towns that know their needs deserve a say.",
+    "correct_choice": "D",
+    "response_right": "Spoken like someone who has visited a village.",
+    "response_wrong": "Easy for the capital to say.",
+    "reaction_right": "Smiles and pours the tea.",
+    "reaction_wrong": "Puts down the teapot."
+  },
+  {
+    "question_id": "VQ34",
+    "visitor_ids": [
+      "VI13"
+    ],
+    "question_text": "Our shopping arcade is half empty. What would you do?",
+    "choice_a": "Fill it with events and lower the rents.",
+    "choice_b": "Let it adapt or close.",
+    "choice_c": "Convert it to parking.",
+    "choice_d": "Malls are the future.",
+    "correct_choice": "A",
+    "response_right": "A busy arcade is a happy arcade.",
+    "response_wrong": "We'll try to survive without you.",
+    "reaction_right": "Wipes flour from her hands, smiling.",
+    "reaction_wrong": "Starts stacking boxes."
+  },
+  {
+    "question_id": "VQ35",
+    "visitor_ids": [
+      "VI14"
+    ],
+    "question_text": "Can the party count on your vote this session?",
+    "choice_a": "I vote my own way.",
+    "choice_b": "Only if the polls are favorable.",
+    "choice_c": "On what we agree on, yes, and I'll tell you early where not.",
+    "choice_d": "I haven't read the bills yet.",
+    "correct_choice": "C",
+    "response_right": "That's how a partnership works.",
+    "response_wrong": "I'll tell leadership you were noncommittal.",
+    "reaction_right": "Makes a note in his planner.",
+    "reaction_wrong": "Capped pen clicks twice."
+  },
+  {
+    "question_id": "VQ36",
+    "visitor_ids": [
+      "VI14",
+      "VI15"
+    ],
+    "question_text": "Can we count on you at the party rally?",
+    "choice_a": "I have other plans.",
+    "choice_b": "Yes. I'll bring supporters.",
+    "choice_c": "I'll make a short appearance.",
+    "choice_d": "Rallies are noisy.",
+    "correct_choice": "B",
+    "response_right": "We like members who bring friends.",
+    "response_wrong": "We'll look for someone else.",
+    "reaction_right": "Slaps the table, pleased.",
+    "reaction_wrong": "Frowns and checks a list."
+  },
+  {
+    "question_id": "VQ37",
+    "visitor_ids": [
+      "VI14"
+    ],
+    "question_text": "Will you help at the party donor dinner?",
+    "choice_a": "I don't do fundraising.",
+    "choice_b": "I'll be busy.",
+    "choice_c": "Send an invitation.",
+    "choice_d": "I'll attend and be gracious to everyone.",
+    "correct_choice": "D",
+    "response_right": "Good. Donors are like cats. They like attention.",
+    "response_wrong": "Leadership will remember that.",
+    "reaction_right": "Smiles thinly, ticking a box.",
+    "reaction_wrong": "Draws a line through your name."
+  },
+  {
+    "question_id": "VQ38",
+    "visitor_ids": [
+      "VI15"
+    ],
+    "question_text": "Whose side are you on, the faction's or the party's?",
+    "choice_a": "I'm a team player, and your faction is a big part of the team.",
+    "choice_b": "I make up my own mind.",
+    "choice_c": "Whoever is winning.",
+    "choice_d": "I haven't decided.",
+    "correct_choice": "A",
+    "response_right": "Good answer. The faction remembers friends.",
+    "response_wrong": "The faction remembers everything else too.",
+    "reaction_right": "Leans back, satisfied.",
+    "reaction_wrong": "Steeples his fingers coldly."
+  },
+  {
+    "question_id": "VQ39",
+    "visitor_ids": [
+      "VI15"
+    ],
+    "question_text": "A word of advice: pick a mentor early. Who will it be?",
+    "choice_a": "I don't need one.",
+    "choice_b": "I'll pick whoever has the best office.",
+    "choice_c": "Please advise. Whom should I listen to?",
+    "choice_d": "I'll ask the voters.",
+    "correct_choice": "C",
+    "response_right": "Wise young one. Come to dinner.",
+    "response_wrong": "Pride is expensive.",
+    "reaction_right": "Pours you a drink.",
+    "reaction_wrong": "Pours only for himself."
+  },
+  {
+    "question_id": "VQ40",
+    "visitor_ids": [
+      "VI16"
+    ],
+    "question_text": "Will you appear on my show?",
+    "choice_a": "I'm not very photogenic.",
+    "choice_b": "Of course. What should I wear?",
+    "choice_c": "Only if I get the questions.",
+    "choice_d": "Television is beneath me.",
+    "correct_choice": "B",
+    "response_right": "Darling, you'll be fabulous.",
+    "response_wrong": "How very serious of you.",
+    "reaction_right": "Claps her hands.",
+    "reaction_wrong": "Examines her nails."
+  },
+  {
+    "question_id": "VQ41",
+    "visitor_ids": [
+      "VI16",
+      "VI17"
+    ],
+    "question_text": "Will you help promote Yezo tourism abroad?",
+    "choice_a": "Gladly. Yezo deserves a bigger audience.",
+    "choice_b": "Tourists are already crowding us.",
+    "choice_c": "Tell them to visit Honshu.",
+    "choice_d": "Let the tourism board handle it.",
+    "correct_choice": "A",
+    "response_right": "Yezo will be on every screen.",
+    "response_wrong": "Then who will sell the snow?",
+    "reaction_right": "Strikes a pose, delighted.",
+    "reaction_wrong": "Looks away, bored."
+  },
+  {
+    "question_id": "VQ42",
+    "visitor_ids": [
+      "VI17"
+    ],
+    "question_text": "Seasonal staff are hard to find. Any ideas?",
+    "choice_a": "Pay them more.",
+    "choice_b": "Hire locals only.",
+    "choice_c": "Streamline seasonal worker rules and housing.",
+    "choice_d": "Close in off-peak months.",
+    "correct_choice": "C",
+    "response_right": "That would keep our lifts running.",
+    "response_wrong": "We can't ski on promises.",
+    "reaction_right": "Nods, jotting notes.",
+    "reaction_wrong": "Looks out at an empty slope."
+  },
+  {
+    "question_id": "VQ43",
+    "visitor_ids": [
+      "VI02",
+      "VI19"
+    ],
+    "question_text": "The customs line on the strait is slow. Will you push for faster ferry clearance?",
+    "choice_a": "Customs has its reasons.",
+    "choice_b": "Take it up with the ferry company.",
+    "choice_c": "I'll find the right office.",
+    "choice_d": "I'll push for faster clearance, no excuses.",
+    "correct_choice": "D",
+    "response_right": "Time on the dock is money lost.",
+    "response_wrong": "We've sat in that line too long.",
+    "reaction_right": "Slaps the railing in approval.",
+    "reaction_wrong": "Stares at the horizon."
+  },
+  {
+    "question_id": "VQ44",
+    "visitor_ids": [
+      "VI19"
+    ],
+    "question_text": "Would you cross with me on the night ferry to see the delays yourself?",
+    "choice_a": "I'll read the report.",
+    "choice_b": "Do you have a cabin?",
+    "choice_c": "I get seasick.",
+    "choice_d": "Absolutely. I'll bring a thermos.",
+    "correct_choice": "D",
+    "response_right": "Bring a thick coat. The strait doesn't care who you are.",
+    "response_wrong": "Reports don't get cold.",
+    "reaction_right": "Salutes with two fingers.",
+    "reaction_wrong": "Turns back to the wheel."
+  },
+  {
+    "question_id": "VQ45",
+    "visitor_ids": [
+      "VI20"
+    ],
+    "question_text": "Policy should follow evidence. Will you read my report?",
+    "choice_a": "I'll read it carefully.",
+    "choice_b": "I don't have time for long documents.",
+    "choice_c": "Just give me the summary.",
+    "choice_d": "I prefer my own judgment.",
+    "correct_choice": "A",
+    "response_right": "Page twelve is the important one.",
+    "response_wrong": "That's rather the problem.",
+    "reaction_right": "Adjusts her glasses, pleased.",
+    "reaction_wrong": "Sighs and closes her briefcase."
+  },
+  {
+    "question_id": "VQ46",
+    "visitor_ids": [
+      "VI21"
+    ],
     "question_text": "What does the district need most right now?",
     "choice_a": "More funding for schools",
     "choice_b": "Lower local taxes",
     "choice_c": "Nothing, everything is fine",
     "choice_d": "A new stadium",
-    "correct_choice": "A",
+    "correct_choice": "D",
     "response_right": "Exactly what I've been saying!",
     "response_wrong": "Hm, I'm not sure that's right.",
     "reaction_right": "Nods approvingly.",
     "reaction_wrong": "Frowns, unconvinced."
   },
   {
-    "question_id": "VQ02",
+    "question_id": "VQ47",
     "visitor_ids": [
-      "VI01",
-      "VI02"
+      "VI22"
     ],
-    "question_text": "When will we fly?",
-    "choice_a": "Soon — I'm working on it personally.",
+    "question_text": "When will we get to fly from Yezo to Mongolia directly?",
+    "choice_a": "Soon! I'm working on it personally.",
     "choice_b": "That's not really up to me.",
     "choice_c": "Never, if I have anything to say about it.",
     "choice_d": "Ask my staff, not me.",
@@ -33,12 +769,11 @@
     "reaction_wrong": "Sighs and looks away."
   },
   {
-    "question_id": "VQ03",
+    "question_id": "VQ48",
     "visitor_ids": [
-      "VI01",
-      "VI03"
+      "VI23"
     ],
-    "question_text": "Buy my steam shovel?",
+    "question_text": "Will you buy my new invention? It's a steam shovel. Great for our community!",
     "choice_a": "Let's talk details after the visit.",
     "choice_b": "Not today, but thank you.",
     "choice_c": "Absolutely, sign me up right now.",
@@ -50,9 +785,9 @@
     "reaction_wrong": "Crosses arms, unimpressed."
   },
   {
-    "question_id": "VQ04",
+    "question_id": "VQ49",
     "visitor_ids": [
-      "VI04"
+      "VI24"
     ],
     "question_text": "Where do you stand on the party's current platform?",
     "choice_a": "Fully behind it",
@@ -64,5 +799,725 @@
     "response_wrong": "...I see.",
     "reaction_right": "Nods, satisfied.",
     "reaction_wrong": "Frowns, taking note."
+  },
+  {
+    "question_id": "VQ50",
+    "visitor_ids": [
+      "VI25"
+    ],
+    "question_text": "The Secretary-General has a minute for you. What do you want him to know?",
+    "choice_a": "That I'm a reliable vote.",
+    "choice_b": "That I need a bigger office.",
+    "choice_c": "That I'm ready to be useful, whatever is needed.",
+    "choice_d": "Nothing. I'll wait to be asked.",
+    "correct_choice": "C",
+    "response_right": "Good. Useful people get remembered.",
+    "response_wrong": "He's heard that one before.",
+    "reaction_right": "Glances at his watch, then nods.",
+    "reaction_wrong": "Quietly closes his folder."
+  },
+  {
+    "question_id": "VQ51",
+    "visitor_ids": [
+      "VI25"
+    ],
+    "question_text": "Headquarters sends talking points every week. Do you read them?",
+    "choice_a": "Every word, and I'll tell you what doesn't land at home.",
+    "choice_b": "I skim them.",
+    "choice_c": "I prefer my own words.",
+    "choice_d": "My staff reads them.",
+    "correct_choice": "A",
+    "response_right": "That feedback is worth more than you know.",
+    "response_wrong": "We noticed.",
+    "reaction_right": "Makes a note on his tablet.",
+    "reaction_wrong": "Raises an eyebrow."
+  },
+  {
+    "question_id": "VQ52",
+    "visitor_ids": [
+      "VI25"
+    ],
+    "question_text": "A reporter reaches you before headquarters does. What do you do?",
+    "choice_a": "Answer everything.",
+    "choice_b": "Say nothing at all.",
+    "choice_c": "Say you'll call back, then call headquarters.",
+    "choice_d": "Hang up.",
+    "correct_choice": "C",
+    "response_right": "Thirty seconds of coordination saves a week of cleanup.",
+    "response_wrong": "That's how small stories become big ones.",
+    "reaction_right": "Allows himself a small smile.",
+    "reaction_wrong": "Pinches the bridge of his nose."
+  },
+  {
+    "question_id": "VQ53",
+    "visitor_ids": [
+      "VI26"
+    ],
+    "question_text": "Young members feel invisible in this party. Why should they stay?",
+    "choice_a": "Because change is made from the inside.",
+    "choice_b": "They should be patient.",
+    "choice_c": "Visibility is overrated.",
+    "choice_d": "I never said they should.",
+    "correct_choice": "A",
+    "response_right": "Then help us make it true.",
+    "response_wrong": "We've heard \"be patient\" our whole lives.",
+    "reaction_right": "Sits up straighter.",
+    "reaction_wrong": "Looks down at her shoes."
+  },
+  {
+    "question_id": "VQ54",
+    "visitor_ids": [
+      "VI26"
+    ],
+    "question_text": "Would you mentor one of our younger members?",
+    "choice_a": "I'm too busy.",
+    "choice_b": "Only if they're well connected.",
+    "choice_c": "Headquarters should handle that.",
+    "choice_d": "Send them my way. I'll learn as much as I teach.",
+    "correct_choice": "D",
+    "response_right": "They'll be thrilled. So will I.",
+    "response_wrong": "Mentors who rush don't help anyone.",
+    "reaction_right": "Grins and writes down your number.",
+    "reaction_wrong": "Folds her arms."
+  },
+  {
+    "question_id": "VQ55",
+    "visitor_ids": [
+      "VI26"
+    ],
+    "question_text": "The elders speak and we're expected to nod. How do you handle that?",
+    "choice_a": "Nod. It's tradition.",
+    "choice_b": "Listen respectfully, then speak up.",
+    "choice_c": "Ignore the elders.",
+    "choice_d": "Wait until they retire.",
+    "correct_choice": "B",
+    "response_right": "That's the balance I am trying to find.",
+    "response_wrong": "That's exactly what frustrates us.",
+    "reaction_right": "Nods slowly, thinking.",
+    "reaction_wrong": "Sighs and looks away."
+  },
+  {
+    "question_id": "VQ56",
+    "visitor_ids": [
+      "VI27"
+    ],
+    "question_text": "Every candidate thinks they're a natural on camera. Are you?",
+    "choice_a": "Absolutely.",
+    "choice_b": "No. Coach me and I'll practice.",
+    "choice_c": "I never use cameras.",
+    "choice_d": "That's what staff are for.",
+    "correct_choice": "B",
+    "response_right": "Self-awareness. You're ahead of half the party.",
+    "response_wrong": "I've heard that before, right before a disaster.",
+    "reaction_right": "Smiles and flips open her notebook.",
+    "reaction_wrong": "Winces slightly."
+  },
+  {
+    "question_id": "VQ57",
+    "visitor_ids": [
+      "VI27"
+    ],
+    "question_text": "We have a bad news cycle coming. How do you want to handle it?",
+    "choice_a": "Wait and hope it passes.",
+    "choice_b": "Blame the media.",
+    "choice_c": "Change the subject.",
+    "choice_d": "Get ahead of it and tell the truth.",
+    "correct_choice": "D",
+    "response_right": "Now we can work with that.",
+    "response_wrong": "Silence only makes headlines longer.",
+    "reaction_right": "Taps her pen approvingly.",
+    "reaction_wrong": "Rubs her temples."
+  },
+  {
+    "question_id": "VQ58",
+    "visitor_ids": [
+      "VI27"
+    ],
+    "question_text": "Campaigns run on volunteers. How will you keep yours?",
+    "choice_a": "Free pizza.",
+    "choice_b": "I don't need volunteers.",
+    "choice_c": "Thank them by name and show up where they work.",
+    "choice_d": "Promise them jobs.",
+    "correct_choice": "C",
+    "response_right": "People remember who remembered them.",
+    "response_wrong": "Pizza only lasts one night.",
+    "reaction_right": "Laughs and nods.",
+    "reaction_wrong": "Shakes her head."
+  },
+  {
+    "question_id": "VQ59",
+    "visitor_ids": [
+      "VI28"
+    ],
+    "question_text": "Party dues are late again. Is yours paid up?",
+    "choice_a": "Paid in full and on time.",
+    "choice_b": "Check with my secretary.",
+    "choice_c": "Dues feel optional.",
+    "choice_d": "I'll pay after I'm re-elected.",
+    "correct_choice": "A",
+    "response_right": "You'd be surprised how rare that is.",
+    "response_wrong": "The ledger doesn't lie.",
+    "reaction_right": "Ticks a box with relief.",
+    "reaction_wrong": "Circles your name in red."
+  },
+  {
+    "question_id": "VQ60",
+    "visitor_ids": [
+      "VI28"
+    ],
+    "question_text": "A generous donor wants a private word. How do you respond?",
+    "choice_a": "Only if no one is watching.",
+    "choice_b": "No way. Never.",
+    "choice_c": "Let them wait.",
+    "choice_d": "Gladly, as long as everything is above board.",
+    "correct_choice": "D",
+    "response_right": "Open books keep everyone out of trouble.",
+    "response_wrong": "That's how headlines start.",
+    "reaction_right": "Adjusts his glasses, satisfied.",
+    "reaction_wrong": "Closes the ledger with a thud."
+  },
+  {
+    "question_id": "VQ61",
+    "visitor_ids": [
+      "VI28"
+    ],
+    "question_text": "We're short this quarter. Where should the party cut?",
+    "choice_a": "Cut the staff.",
+    "choice_b": "Cut your salary first.",
+    "choice_c": "Cut the speeches.",
+    "choice_d": "Share the sacrifice, starting with my own office.",
+    "correct_choice": "D",
+    "response_right": "That's a leader's answer.",
+    "response_wrong": "Easy to say, hard to do.",
+    "reaction_right": "Looks up, pleasantly surprised.",
+    "reaction_wrong": "Sighs and rubs his eyes."
+  },
+  {
+    "question_id": "VQ62",
+    "visitor_ids": [
+      "VI29"
+    ],
+    "question_text": "I count votes for a living. Where do you stand?",
+    "choice_a": "I'll tell you the day of.",
+    "choice_b": "With the party, and I'll warn you early if I can't be.",
+    "choice_c": "Wherever my conscience takes me.",
+    "choice_d": "With whoever asks nicely.",
+    "correct_choice": "B",
+    "response_right": "Early warnings are worth gold.",
+    "response_wrong": "Surprises are my least favorite thing.",
+    "reaction_right": "Marks a check on her list.",
+    "reaction_wrong": "Frowns and flips a page."
+  },
+  {
+    "question_id": "VQ63",
+    "visitor_ids": [
+      "VI29"
+    ],
+    "question_text": "You'll miss a vote for a family event. What do you do?",
+    "choice_a": "Skip it. Nobody will notice.",
+    "choice_b": "Tell me early so we can arrange a pair.",
+    "choice_c": "Text me at midnight.",
+    "choice_d": "Family comes first. End of discussion.",
+    "correct_choice": "B",
+    "response_right": "Thank you. That's all I ask.",
+    "response_wrong": "I notice everything.",
+    "reaction_right": "Smiles with relief.",
+    "reaction_wrong": "Taps her pen on the desk."
+  },
+  {
+    "question_id": "VQ64",
+    "visitor_ids": [
+      "VI29"
+    ],
+    "question_text": "Someone in your group wants to break ranks. What do you do?",
+    "choice_a": "Report them.",
+    "choice_b": "Ignore it.",
+    "choice_c": "Join them.",
+    "choice_d": "Talk with them first and try to understand.",
+    "correct_choice": "D",
+    "response_right": "Understanding goes further than threats.",
+    "response_wrong": "We'll see how that turns out.",
+    "reaction_right": "Gives a small, approving nod.",
+    "reaction_wrong": "Looks unimpressed."
+  },
+  {
+    "question_id": "VQ65",
+    "visitor_ids": [
+      "VI30"
+    ],
+    "question_text": "The polls say you're unpopular in your district. Your reaction?",
+    "choice_a": "Polls are wrong.",
+    "choice_b": "Tell me what I'm missing and I'll go listen.",
+    "choice_c": "Fire the pollster.",
+    "choice_d": "Wait for the next poll.",
+    "correct_choice": "B",
+    "response_right": "That's what the numbers are for.",
+    "response_wrong": "You can't argue with a sample.",
+    "reaction_right": "Leans in with interest.",
+    "reaction_wrong": "Closes her laptop."
+  },
+  {
+    "question_id": "VQ66",
+    "visitor_ids": [
+      "VI30"
+    ],
+    "question_text": "Would you rather be popular or respected?",
+    "choice_a": "Popular.",
+    "choice_b": "Neither, just elected.",
+    "choice_c": "Respected. Popularity follows or it doesn't.",
+    "choice_d": "Both, obviously.",
+    "correct_choice": "C",
+    "response_right": "Funny, the data agrees.",
+    "response_wrong": "Everyone says both.",
+    "reaction_right": "Smiles knowingly.",
+    "reaction_wrong": "Shrugs and looks at her chart."
+  },
+  {
+    "question_id": "VQ67",
+    "visitor_ids": [
+      "VI30"
+    ],
+    "question_text": "A focus group hated your speech. What now?",
+    "choice_a": "They were the wrong group.",
+    "choice_b": "Say it again, louder.",
+    "choice_c": "Cut the speech.",
+    "choice_d": "Rewrite it, with their notes in hand.",
+    "correct_choice": "D",
+    "response_right": "Good. That's what they're for.",
+    "response_wrong": "Louder rarely helps.",
+    "reaction_right": "Nods and scrolls her notes.",
+    "reaction_wrong": "Sighs quietly."
+  },
+  {
+    "question_id": "VQ68",
+    "visitor_ids": [
+      "VI31"
+    ],
+    "question_text": "We're recruiting for the next election. Anyone you'd recommend?",
+    "choice_a": "Nobody I know is interested.",
+    "choice_b": "My cousin, he needs a job.",
+    "choice_c": "Let me ask around and send names, no strings.",
+    "choice_d": "Run the ones who ask.",
+    "correct_choice": "C",
+    "response_right": "Good candidates don't usually volunteer.",
+    "response_wrong": "We need better than that.",
+    "reaction_right": "Writes something down quickly.",
+    "reaction_wrong": "Lowers his pen."
+  },
+  {
+    "question_id": "VQ69",
+    "visitor_ids": [
+      "VI31"
+    ],
+    "question_text": "Why would a good person ever want this job?",
+    "choice_a": "They wouldn't.",
+    "choice_b": "For the money.",
+    "choice_c": "For the glamour.",
+    "choice_d": "Because someone has to do it well.",
+    "correct_choice": "D",
+    "response_right": "That's the pitch I try to make.",
+    "response_wrong": "Then no wonder we struggle to recruit.",
+    "reaction_right": "Smiles tiredly.",
+    "reaction_wrong": "Shakes his head."
+  },
+  {
+    "question_id": "VQ70",
+    "visitor_ids": [
+      "VI31"
+    ],
+    "question_text": "A promising newcomer is nervous about running. What do you tell them?",
+    "choice_a": "It's hard and it's worth it. I'll help.",
+    "choice_b": "Don't.",
+    "choice_c": "Everyone gets nervous.",
+    "choice_d": "Ask headquarters.",
+    "correct_choice": "A",
+    "response_right": "They need to hear exactly that.",
+    "response_wrong": "That would lose them in a heartbeat.",
+    "reaction_right": "Gives a warm thumbs up.",
+    "reaction_wrong": "Winces."
+  },
+  {
+    "question_id": "VQ71",
+    "visitor_ids": [
+      "VI32"
+    ],
+    "question_text": "I've seen a dozen leaders come and go. What lasts?",
+    "choice_a": "Polls.",
+    "choice_b": "Money.",
+    "choice_c": "Slogans.",
+    "choice_d": "Trust, built one favor at a time.",
+    "correct_choice": "D",
+    "response_right": "Few ever learn that in time.",
+    "response_wrong": "They said that, too.",
+    "reaction_right": "Pats your hand.",
+    "reaction_wrong": "Looks out the window."
+  },
+  {
+    "question_id": "VQ72",
+    "visitor_ids": [
+      "VI32"
+    ],
+    "question_text": "How should a member treat the opposition?",
+    "choice_a": "Firmly, but never as enemies.",
+    "choice_b": "As enemies.",
+    "choice_c": "Ignore them.",
+    "choice_d": "Befriend them completely.",
+    "correct_choice": "A",
+    "response_right": "Today's opponent may be tomorrow's partner.",
+    "response_wrong": "We've seen what that attitude costs.",
+    "reaction_right": "Smiles with approval.",
+    "reaction_wrong": "Frowns gently."
+  },
+  {
+    "question_id": "VQ73",
+    "visitor_ids": [
+      "VI32"
+    ],
+    "question_text": "I'd like your view on the party's future. Be honest.",
+    "choice_a": "It's bright, nothing to fix.",
+    "choice_b": "It's in trouble.",
+    "choice_c": "No comment.",
+    "choice_d": "It needs to listen more, and I'd like to help.",
+    "correct_choice": "D",
+    "response_right": "Honesty and willingness. A rare pair.",
+    "response_wrong": "Neither flattery nor despair is useful.",
+    "reaction_right": "Nods thoughtfully.",
+    "reaction_wrong": "Takes a slow sip of tea."
+  },
+  {
+    "question_id": "VQ74",
+    "visitor_ids": [
+      "VI33"
+    ],
+    "question_text": "In this faction, loyalty is a debt that never closes. Do you understand?",
+    "choice_a": "Debts can be repaid.",
+    "choice_b": "I understand, and I'll remember who stood by me.",
+    "choice_c": "I owe nobody anything.",
+    "choice_d": "Loyalty is for fools.",
+    "correct_choice": "B",
+    "response_right": "Then you have the makings of one of us.",
+    "response_wrong": "The faction has a long memory.",
+    "reaction_right": "Lowers his head in approval.",
+    "reaction_wrong": "Looks at you in silence."
+  },
+  {
+    "question_id": "VQ75",
+    "visitor_ids": [
+      "VI33"
+    ],
+    "question_text": "Our elders told stories of this land long before parties existed. Do you listen?",
+    "choice_a": "Stories don't win votes.",
+    "choice_b": "Only when they're brief.",
+    "choice_c": "I make the time. Old stories carry old lessons.",
+    "choice_d": "That's history.",
+    "correct_choice": "C",
+    "response_right": "Then you are wiser than you look.",
+    "response_wrong": "Forgetting is the beginning of losing.",
+    "reaction_right": "Smiles and pours the tea.",
+    "reaction_wrong": "Sets the cup down slowly."
+  },
+  {
+    "question_id": "VQ76",
+    "visitor_ids": [
+      "VI33"
+    ],
+    "question_text": "A younger member is rising too fast. How do we handle it?",
+    "choice_a": "Find ways to work with them.",
+    "choice_b": "Block them.",
+    "choice_c": "Ignore them.",
+    "choice_d": "Praise them publicly and undermine them quietly.",
+    "correct_choice": "A",
+    "response_right": "A tree grows better with company.",
+    "response_wrong": "Cutting things down rarely grows anything.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Sighs and shakes his head."
+  },
+  {
+    "question_id": "VQ77",
+    "visitor_ids": [
+      "VI34"
+    ],
+    "question_text": "The faction supports its members. What will you give back?",
+    "choice_a": "My vote.",
+    "choice_b": "My loyalty, and my time at your events.",
+    "choice_c": "Nothing. It's a gift.",
+    "choice_d": "Whatever's convenient.",
+    "correct_choice": "B",
+    "response_right": "That's a fair trade, and an honest one.",
+    "response_wrong": "That's not how this works.",
+    "reaction_right": "Raises his glass.",
+    "reaction_wrong": "Sets it down untouched."
+  },
+  {
+    "question_id": "VQ78",
+    "visitor_ids": [
+      "VI34"
+    ],
+    "question_text": "A donor wants a photo with you. Do you mind?",
+    "choice_a": "Only if they pay.",
+    "choice_b": "I'm camera-shy.",
+    "choice_c": "Happily, and I'll thank them properly.",
+    "choice_d": "Not with strangers.",
+    "correct_choice": "C",
+    "response_right": "Ten seconds of grace, ten years of goodwill.",
+    "response_wrong": "Donors remember a cold shoulder.",
+    "reaction_right": "Claps you on the back.",
+    "reaction_wrong": "Checks his phone."
+  },
+  {
+    "question_id": "VQ79",
+    "visitor_ids": [
+      "VI34"
+    ],
+    "question_text": "Our fundraising dinner needs a speaker. Can we count on you?",
+    "choice_a": "Book me. I'll keep it short and good.",
+    "choice_b": "I'm no speaker.",
+    "choice_c": "Ask someone else.",
+    "choice_d": "Only if there's a fee.",
+    "correct_choice": "A",
+    "response_right": "Short and good is all we ask.",
+    "response_wrong": "The room fills when the speaker shows.",
+    "reaction_right": "Grins and writes you in.",
+    "reaction_wrong": "Crosses your name off."
+  },
+  {
+    "question_id": "VQ80",
+    "visitor_ids": [
+      "VI35"
+    ],
+    "question_text": "The faction needs seats, not speeches. What's your plan to win yours?",
+    "choice_a": "Hope.",
+    "choice_b": "Knock on every door in my district.",
+    "choice_c": "Rely on the party name.",
+    "choice_d": "Wait for the other side to fail.",
+    "correct_choice": "B",
+    "response_right": "Doors win elections. Always have.",
+    "response_wrong": "Hope isn't a strategy.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Taps her map in frustration."
+  },
+  {
+    "question_id": "VQ81",
+    "visitor_ids": [
+      "VI35"
+    ],
+    "question_text": "When two factions clash, where do you stand?",
+    "choice_a": "Neutral, always.",
+    "choice_b": "With the strongest.",
+    "choice_c": "With the faction that brought me, but I'll keep bridges open.",
+    "choice_d": "With whoever pays.",
+    "correct_choice": "C",
+    "response_right": "Loyal and open. That's rare.",
+    "response_wrong": "That won't get you far in either camp.",
+    "reaction_right": "Nods, impressed.",
+    "reaction_wrong": "Folds her map shut."
+  },
+  {
+    "question_id": "VQ82",
+    "visitor_ids": [
+      "VI35"
+    ],
+    "question_text": "I have a plan, but it needs someone willing to take a risk. Are you?",
+    "choice_a": "Not unless it's safe.",
+    "choice_b": "Explain the risk first, and then I'll decide.",
+    "choice_c": "Sure, any risk.",
+    "choice_d": "Ask someone else.",
+    "correct_choice": "B",
+    "response_right": "Smart. Reckless people end up in the news.",
+    "response_wrong": "Fearless and careless are not the same.",
+    "reaction_right": "Slides the folder across the table.",
+    "reaction_wrong": "Pulls the folder back."
+  },
+  {
+    "question_id": "VQ83",
+    "visitor_ids": [
+      "VI36"
+    ],
+    "question_text": "I've been in this chamber thirty years. What can I teach you?",
+    "choice_a": "Nothing. Times have changed.",
+    "choice_b": "Everything about shortcuts.",
+    "choice_c": "How to stay humble and still win.",
+    "choice_d": "Where the best lunch spots are.",
+    "correct_choice": "C",
+    "response_right": "Then sit. We have a lot to cover.",
+    "response_wrong": "Times change. People don't.",
+    "reaction_right": "Chuckles warmly.",
+    "reaction_wrong": "Raises one bushy eyebrow."
+  },
+  {
+    "question_id": "VQ84",
+    "visitor_ids": [
+      "VI36"
+    ],
+    "question_text": "Back in my day we settled things over a drink. Will you join me?",
+    "choice_a": "I only drink with friends.",
+    "choice_b": "I have a meeting.",
+    "choice_c": "Alcohol and politics don't mix.",
+    "choice_d": "I'd be glad to. First round's mine.",
+    "correct_choice": "D",
+    "response_right": "Now you're talking like a colleague.",
+    "response_wrong": "Suit yourself.",
+    "reaction_right": "Slaps the bar happily.",
+    "reaction_wrong": "Turns back to his glass."
+  },
+  {
+    "question_id": "VQ85",
+    "visitor_ids": [
+      "VI36"
+    ],
+    "question_text": "Young members rarely call me. Why should I help you?",
+    "choice_a": "Because it's your duty.",
+    "choice_b": "Because I'm important.",
+    "choice_c": "Because I'll listen, and I won't only call when I need something.",
+    "choice_d": "Because I'll mention you in my memoir.",
+    "correct_choice": "C",
+    "response_right": "That's more than most offer.",
+    "response_wrong": "Duty doesn't pick up the phone.",
+    "reaction_right": "Smiles and tucks your card away.",
+    "reaction_wrong": "Sighs and shakes his head."
+  },
+  {
+    "question_id": "VQ86",
+    "visitor_ids": [
+      "VI37"
+    ],
+    "question_text": "My faction would like a word. Are you open to talking?",
+    "choice_a": "Never.",
+    "choice_b": "Always open, though no promises.",
+    "choice_c": "Only if I get something.",
+    "choice_d": "Only in secret.",
+    "correct_choice": "B",
+    "response_right": "Fair enough. Talking costs nothing.",
+    "response_wrong": "Then we've wasted each other's time.",
+    "reaction_right": "Smiles politely and sits.",
+    "reaction_wrong": "Stands to leave."
+  },
+  {
+    "question_id": "VQ87",
+    "visitor_ids": [
+      "VI37"
+    ],
+    "question_text": "You'll hear offers from every side. How will you decide?",
+    "choice_a": "Highest bidder.",
+    "choice_b": "Coin toss.",
+    "choice_c": "Whoever flatters me most.",
+    "choice_d": "By the principles I came in with.",
+    "correct_choice": "D",
+    "response_right": "Principles are the one thing we can't buy.",
+    "response_wrong": "Then you're easy to read.",
+    "reaction_right": "Raises an eyebrow, impressed.",
+    "reaction_wrong": "Smirks and checks her watch."
+  },
+  {
+    "question_id": "VQ88",
+    "visitor_ids": [
+      "VI37"
+    ],
+    "question_text": "Would you ever change factions?",
+    "choice_a": "Only if my values changed, and I'd tell everyone first.",
+    "choice_b": "Whenever it's convenient.",
+    "choice_c": "Never, no matter what.",
+    "choice_d": "Ask me after the election.",
+    "correct_choice": "A",
+    "response_right": "Honest about the line. I respect that.",
+    "response_wrong": "No one believes \"never.\" Or \"convenient.\"",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Closes her notebook."
+  },
+  {
+    "question_id": "VQ89",
+    "visitor_ids": [
+      "VI38"
+    ],
+    "question_text": "I held a ministry once. The first lesson: nobody tells you the truth. How will you find it?",
+    "choice_a": "Trust my staff completely.",
+    "choice_b": "Read the newspapers.",
+    "choice_c": "Ask more than one person, then ask again.",
+    "choice_d": "Trust my gut.",
+    "correct_choice": "C",
+    "response_right": "Spoken like someone who has been lied to before.",
+    "response_wrong": "Truth takes more than one source.",
+    "reaction_right": "Tips his cup toward you.",
+    "reaction_wrong": "Looks over his glasses."
+  },
+  {
+    "question_id": "VQ90",
+    "visitor_ids": [
+      "VI38"
+    ],
+    "question_text": "A scandal hit my staff. How would you handle it?",
+    "choice_a": "Deny everything.",
+    "choice_b": "Own it fast, fix it, and say what changed.",
+    "choice_c": "Blame the intern.",
+    "choice_d": "Wait for it to pass.",
+    "correct_choice": "B",
+    "response_right": "Fast and honest is the only formula that works.",
+    "response_wrong": "Waiting is how small stories grow.",
+    "reaction_right": "Leans back with a satisfied nod.",
+    "reaction_wrong": "Sighs from experience."
+  },
+  {
+    "question_id": "VQ91",
+    "visitor_ids": [
+      "VI38"
+    ],
+    "question_text": "What do you want to be remembered for?",
+    "choice_a": "Being re-elected.",
+    "choice_b": "Being rich.",
+    "choice_c": "Being quiet.",
+    "choice_d": "Leaving things better than I found them.",
+    "correct_choice": "D",
+    "response_right": "That's a good start. It takes a lifetime.",
+    "response_wrong": "That won't fill many pages.",
+    "reaction_right": "Smiles softly.",
+    "reaction_wrong": "Stares into his tea."
+  },
+  {
+    "question_id": "VQ92",
+    "visitor_ids": [
+      "VI39"
+    ],
+    "question_text": "I make leaders. What do I get for making you?",
+    "choice_a": "A lifelong friend, and an honest one.",
+    "choice_b": "Nothing.",
+    "choice_c": "Your pick of my staff.",
+    "choice_d": "A statue.",
+    "correct_choice": "A",
+    "response_right": "Friends are the rarest currency here.",
+    "response_wrong": "Flattery is cheap. I deal in loyalty.",
+    "reaction_right": "Chuckles and pours a drink.",
+    "reaction_wrong": "Gazes at you silently."
+  },
+  {
+    "question_id": "VQ93",
+    "visitor_ids": [
+      "VI39"
+    ],
+    "question_text": "Two candidates for leadership, both friends. Who do you back?",
+    "choice_a": "Whoever wins.",
+    "choice_b": "Neither, and I'll say so openly.",
+    "choice_c": "Whoever's behind in the polls.",
+    "choice_d": "Whoever buys lunch.",
+    "correct_choice": "B",
+    "response_right": "Honest neutrality. I can respect that.",
+    "response_wrong": "Everyone says \"whoever wins.\"",
+    "reaction_right": "Raises his glass slightly.",
+    "reaction_wrong": "Sets it down."
+  },
+  {
+    "question_id": "VQ94",
+    "visitor_ids": [
+      "VI39"
+    ],
+    "question_text": "Power is a hot stove. How do you avoid being burned?",
+    "choice_a": "Wear gloves.",
+    "choice_b": "Stay away from power.",
+    "choice_c": "Keep my hands open and my word honest.",
+    "choice_d": "Let someone else touch it.",
+    "correct_choice": "C",
+    "response_right": "Without burnt hands you may go far.",
+    "response_wrong": "Gloves don't keep a reputation.",
+    "reaction_right": "Smiles slowly.",
+    "reaction_wrong": "Looks away with a shrug."
   }
 ]

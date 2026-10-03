@@ -29,7 +29,7 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "“I hear voters are souring on their new Assembly Member.” - Otaru Radio 今日  ☼"
+    "text_en": "“I hear voters are souring on their new Assembly Member.” - Otaru Radio 今日 ☼"
   },
   {
     "ticker_id": "TK05",
@@ -77,7 +77,7 @@
     "condition_target": "Reputation",
     "condition_op": "=",
     "condition_value": 50.0,
-    "text_en": "“I would rather be one of those no-name Members of Parliament than the Prime Minister right now.” - Otaru Radio 今日  ☼"
+    "text_en": "“I would rather be one of those no-name Members of Parliament than the Prime Minister right now.” - Otaru Radio 今日 ☼"
   },
   {
     "ticker_id": "TK11",
@@ -173,7 +173,7 @@
     "condition_target": "Funds",
     "condition_op": "<=",
     "condition_value": 35000.0,
-    "text_en": "Yumi Satou-san will interview Butsutou Party Leader Utemaru Naizen again this week for an ongoing discussion about ethics in political office spending - Sapporo Broadcasting Center. ☼"
+    "text_en": "Yumi Satou-san will interview Butsutou Party Leader Utemaru Naizen again this week for an ongoing discussion about ethics in political office spending. - Sapporo Broadcasting Center ☼"
   },
   {
     "ticker_id": "TK23",
@@ -181,7 +181,7 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 500000.0,
-    "text_en": "Minister of Ethics and Prosecution Naizen speaks out against political offices that accumulate wealth without intending to fund local projects and wellbeing programs.” - Otaru Radio 今日  ☼"
+    "text_en": "Minister of Ethics and Prosecution Naizen speaks out against bloated office funds. - Otaru Radio 今日 ☼"
   },
   {
     "ticker_id": "TK24",
@@ -189,6 +189,158 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 700000.0,
-    "text_en": "“Minister of Ethics and Prosecution Naizen speaks out against political offices that hoard wealth without an intent to fund local projects and wellbeing programs; calls them “... thieves from future generations.“” - Otaru Radio 今日  ☼"
+    "text_en": "Minister of Ethics and Prosecution Naizen speaks out against political offices that accumulate wealth without intending to fund local projects and wellbeing programs. “Stealing from future generations,” alleged the minister. - Otaru Radio 今日 ☼"
+  },
+  {
+    "ticker_id": "TK25",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": ">=",
+    "condition_value": 20000.0,
+    "text_en": "Yezo Political Insider reporters are cataloging Members of Parliament's office funds and what these funds are buying. ☼"
+  },
+  {
+    "ticker_id": "TK26",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": ">=",
+    "condition_value": 30000.0,
+    "text_en": "This evening, our broadcasters will further discuss calls from constituents about legislators withholding office funds. - Sapporo Digital Networks ☼"
+  },
+  {
+    "ticker_id": "TK27",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": ">=",
+    "condition_value": 75000.0,
+    "text_en": "Sources say Party Leader Hideriai is criticizing legislators who focus on raising funds rather than raising Yezo’s cultural heritage. - Sapporo Digital Networks ☼"
+  },
+  {
+    "ticker_id": "TK28",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": ">=",
+    "condition_value": 500000.0,
+    "text_en": "“Why do we have legislators hoarding funds?” - Aomori’s Morning Mori ☼"
+  },
+  {
+    "ticker_id": "TK29",
+    "condition_type": "meta",
+    "condition_target": "Funds",
+    "condition_op": ">=",
+    "condition_value": 700000.0,
+    "text_en": "“政治家が私たちのお金を盗んでいませんか.” - 青森の青空109.9! ☼"
+  },
+  {
+    "ticker_id": "TK30",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Sources say ministers sparsely attended this week’s cabinet session. - Sapporo Digital Networks ☼"
+  },
+  {
+    "ticker_id": "TK31",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "{player}'s latest speech is spreading across social media. - Aomori’s Morning Mori ☼"
+  },
+  {
+    "ticker_id": "TK32",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": "<",
+    "condition_value": 40.0,
+    "text_en": "\"We need to see more meaningful rhetoric from {player}.\" - Aomori’s Morning Mori ☼"
+  },
+  {
+    "ticker_id": "TK33",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": ">=",
+    "condition_value": 65.0,
+    "text_en": "\"Sources indicate growing respect for {player} within the National Assembly.\" - Yezo Political Insider ☼"
+  },
+  {
+    "ticker_id": "TK34",
+    "condition_type": "meta",
+    "condition_target": "Party support",
+    "condition_op": "<=",
+    "condition_value": 45.0,
+    "text_en": "Otaru Radio 今日 is reporting that {player}’s party leaders are continuing to sour on earlier expectations. ☼"
+  },
+  {
+    "ticker_id": "TK35",
+    "condition_type": "meta",
+    "condition_target": "Party support",
+    "condition_op": "<=",
+    "condition_value": 30.0,
+    "text_en": "Yumi Satou-san will interview {player}’s party members regarding recent performance and what it means for the party’s reputation. - Sapporo Broadcasting Center ☼"
+  },
+  {
+    "ticker_id": "TK36",
+    "condition_type": "meta",
+    "condition_target": "Party support",
+    "condition_op": ">",
+    "condition_value": 75.0,
+    "text_en": "“{player} is establishing their presence in the higher-tier of influential Assembly Members.” - Yezo Political Insider ☼"
+  },
+  {
+    "ticker_id": "TK37",
+    "condition_type": "meta",
+    "condition_target": "Party support",
+    "condition_op": ">",
+    "condition_value": 60.0,
+    "text_en": "Yumi Satou-san will broadcast from the National Assembly with a panel of insiders about the rising profile of {player}. - Sapporo Broadcasting Center ☼"
+  },
+  {
+    "ticker_id": "TK38",
+    "condition_type": "staff_role",
+    "condition_target": "Press Secretary",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "Tomorrow morning, our breakfast show will hear from {player}’s press secretary about recent speeches and meetings. - Aomori’s Morning Mori ☼"
+  },
+  {
+    "ticker_id": "TK39",
+    "condition_type": "staff_role",
+    "condition_target": "Press Secretary",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "“Our requests to hear from {player} remain unanswered. Is there anyone working in that office?” - Otaru Radio 今日 ☼"
+  },
+  {
+    "ticker_id": "TK40",
+    "condition_type": "staff_role",
+    "condition_target": "Press Secretary",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "“A politician who refuses to hire staff and meet with the press is dodging transparency and truth!” - Sapporo Digital Networks ☼"
+  },
+  {
+    "ticker_id": "TK41",
+    "condition_type": "meta",
+    "condition_target": "Constituency support",
+    "condition_op": "<=",
+    "condition_value": 30.0,
+    "text_en": "Constituents of {player} call in to ask, “Who did we vote for?” - Otaru Radio 今日 ☼"
+  },
+  {
+    "ticker_id": "TK42",
+    "condition_type": "meta",
+    "condition_target": "Constituency support",
+    "condition_op": ">=",
+    "condition_value": 60.0,
+    "text_en": "{player}の後援会は「庶民の成功のための勝利」と言っていました - 青森の青空109.9! ☼"
+  },
+  {
+    "ticker_id": "TK43",
+    "condition_type": "meta",
+    "condition_target": "Constituency support",
+    "condition_op": ">=",
+    "condition_value": 90.0,
+    "text_en": "Yezo Political Insider is reporting that {player} has secured a formidable base of support among district voters. ☼"
   }
 ]

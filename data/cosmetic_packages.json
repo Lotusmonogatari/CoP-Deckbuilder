@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "package_id": "CP01",
+    "name_en": "Workplace Casual",
+    "name_jp": "クール・ビズ",
+    "description": "A business casual feel.",
+    "icon": "{Workplace_Casual}",
+    "cost_xp": 100,
+    "cost_yen": 5000,
+    "outfit_variant": "RED",
+    "background_variant": null,
+    "music_office_sound": null,
+    "music_battle_sound": null
+  },
+  {
+    "package_id": "CP02",
+    "name_en": "Modern Workplace",
+    "name_jp": "現代の職場",
+    "description": "An updated office.",
+    "icon": "{Workplace_Modern}",
+    "cost_xp": 50,
+    "cost_yen": 10000,
+    "outfit_variant": null,
+    "background_variant": "UPGRADED",
+    "music_office_sound": null,
+    "music_battle_sound": null
+  }
+]

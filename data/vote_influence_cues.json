@@ -1,1 +1,152 @@
-[]
+[
+  {
+    "bill_id": "BI01",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "You pushed against the grain on Ainu rights. Prime Minister Rono voiced appreciation."
+  },
+  {
+    "bill_id": "BI02",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Other Members of Parliament came around to the unintended consequences, even if their constituents will be angry."
+  },
+  {
+    "bill_id": "BI03",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "This was too much change without sufficient policy study or stakeholder consultation."
+  },
+  {
+    "bill_id": "BI04",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "The status quo works. Moreover, Yezo needs to invest funding elsewhere."
+  },
+  {
+    "bill_id": "BI05",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Other Assembly Members started to think that Russia was simply posturing, and that there was no threat emerging."
+  },
+  {
+    "bill_id": "BI06",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members worried about wages and integration. They wanted a robust study over language training capacity, too."
+  },
+  {
+    "bill_id": "BI07",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "The price tag for new interconnection lines and procurement concerns stalled the momentum for this bill."
+  },
+  {
+    "bill_id": "BI08",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members of Parliament got cold feet after constituent backlash and resolute speeches about taxing households squeezed by rising grocery bills."
+  },
+  {
+    "bill_id": "BI09",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members feared a patchwork of fiscal rules and decided taxing power should remain within their scope."
+  },
+  {
+    "bill_id": "BI10",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Party leaders resisted any rule on candidate selection. Enough members agreed that this belongs to the parties."
+  },
+  {
+    "bill_id": "BI11",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "You made the case that coherence with Japan is a strategic necessity. Members agreed that a dedicated forum with Japan is worth having."
+  },
+  {
+    "bill_id": "BI12",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members were unwilling to give up the Cabinet's say over who sits on the bench."
+  },
+  {
+    "bill_id": "BI13",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members questioned using public money on religious institutions, and the bill lost its momentum."
+  },
+  {
+    "bill_id": "BI14",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members decided that handing themselves district money looked bad, and the optics won out."
+  },
+  {
+    "bill_id": "BI15",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your pitch about cold-climate servers and new jobs landed. Members decided Yezo should not miss the boat."
+  },
+  {
+    "bill_id": "BI16",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members were persuaded that police needed the tools. Civil liberties concerns were set aside for now."
+  },
+  {
+    "bill_id": "BI17",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members from conservative districts held firm. A national registry was a step too far for them."
+  },
+  {
+    "bill_id": "BI18",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "The memory of the earthquake faded against the fear of rule by decree, and members pulled back."
+  },
+  {
+    "bill_id": "BI19",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "You convinced members that consulting Washington is not the same as hosting bases. The agreement moved forward."
+  },
+  {
+    "bill_id": "BI20",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Dairy and wine producers made their case. Members would not trade away farm protections."
+  },
+  {
+    "bill_id": "BI21",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members worried that screening would scare off investors and chose not to take the risk."
+  },
+  {
+    "bill_id": "BI22",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members feared security gaps and crowded tourist towns, and decided to keep the current rules."
+  },
+  {
+    "bill_id": "BI23",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your argument that shared fish and visitors could thaw the dispute won over wary members."
+  },
+  {
+    "bill_id": "BI24",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "With the blackout still fresh, members decided that keeping the lights on outweighed their nuclear fears."
+  },
+  {
+    "bill_id": "BI25",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members grew uneasy about gambling's social costs and decided Tomakomai could do without a casino."
+  },
+  {
+    "bill_id": "BI26",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members who once leaned on referrals chose to stand on the side of merit. The reform got the votes it needed."
+  },
+  {
+    "bill_id": "BI27",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members decided a single wage floor was worth the burden on small employers."
+  },
+  {
+    "bill_id": "BI28",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members accepted that giving up control of district lines was the price of public trust."
+  },
+  {
+    "bill_id": "BI29",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members balked at the state teaching values to schoolchildren, and the curriculum stalled."
+  },
+  {
+    "bill_id": "BI30",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members came around to the view that long-term neighbors deserve a voice in local government."
+  }
+]

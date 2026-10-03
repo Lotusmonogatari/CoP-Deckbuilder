@@ -1,6 +1,586 @@
 [
   {
     "visitor_id": "VI01",
+    "name_en": "Hanako Okuda",
+    "name_jp": "奥田花子",
+    "romaji": "Hanako Okuda",
+    "title": "Neighborhood Association Chair",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO06",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO03",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI02",
+    "name_en": "Gen Tsukamoto",
+    "name_jp": "塚本玄",
+    "romaji": "Gen Tsukamoto",
+    "title": "Fisherman",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO07",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI03",
+    "name_en": "Saki Mori",
+    "name_jp": "森さき",
+    "romaji": "Saki Mori",
+    "title": "Reporter",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO08",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO08",
+        "delta": -1
+      },
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI04",
+    "name_en": "Ryo Kawabata",
+    "name_jp": "川端亮",
+    "romaji": "Ryo Kawabata",
+    "title": "Union Representative",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO09",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI05",
+    "name_en": "Fumiko Sugawara",
+    "name_jp": "菅原ふみ子",
+    "romaji": "Fumiko Sugawara",
+    "title": "Dairy Farmer",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI06",
+    "name_en": "Kaito Nishimura",
+    "name_jp": "西村海斗",
+    "romaji": "Kaito Nishimura",
+    "title": "Student Council President",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO11",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI07",
+    "name_en": "Yuri Hasegawa",
+    "name_jp": "長谷川ゆり",
+    "romaji": "Yuri Hasegawa",
+    "title": "Parent",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI08",
+    "name_en": "Daigo Ishikari",
+    "name_jp": "石狩大吾",
+    "romaji": "Daigo Ishikari",
+    "title": "Woodcarver",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO13",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO13",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI09",
+    "name_en": "Emi Takasugi",
+    "name_jp": "高杉えみ",
+    "romaji": "Emi Takasugi",
+    "title": "Commuter",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO14",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO14",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI10",
+    "name_en": "Hiroshi Wada",
+    "name_jp": "和田宏",
+    "romaji": "Hiroshi Wada",
+    "title": "Shrine Priest",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO15",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI11",
+    "name_en": "Leo Aoyama",
+    "name_jp": "青山レオ",
+    "romaji": "Reo Aoyama",
+    "title": "Startup Founder",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO16",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI12",
+    "name_en": "Kiyoshi Murata",
+    "name_jp": "村田清",
+    "romaji": "Kiyoshi Murata",
+    "title": "Town Mayor",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO04",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO04",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI13",
+    "name_en": "Tomoko Ide",
+    "name_jp": "井出智子",
+    "romaji": "Tomoko Ide",
+    "title": "Shop Owner",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO05",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI14",
+    "name_en": "Shuhei Sakurai",
+    "name_jp": "桜井周平",
+    "romaji": "Shuhei Sakurai",
+    "title": "Local Party Activist",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO03",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI15",
+    "name_en": "Shinji Ogawa",
+    "name_jp": "小川真司",
+    "romaji": "Shinji Ogawa",
+    "title": "Faction Boss",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI16",
+    "name_en": "Yuki Kirishima",
+    "name_jp": "霧島ユキ",
+    "romaji": "Yuki Kirishima",
+    "title": "Celebrity",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO08",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO08",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI17",
+    "name_en": "Haruto Ebina",
+    "name_jp": "蝦名春人",
+    "romaji": "Haruto Ebina",
+    "title": "Ski Resort Owner",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO05",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO14",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI18",
+    "name_en": "Granny Chiyo",
+    "name_jp": "千代ばあちゃん",
+    "romaji": "Chiyo Baachan",
+    "title": "Constituent",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO03",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI19",
+    "name_en": "Sora Kudo",
+    "name_jp": "工藤そら",
+    "romaji": "Sora Kudo",
+    "title": "Ferry Captain",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO14",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO14",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI20",
+    "name_en": "Akemi Ito",
+    "name_jp": "伊藤明美",
+    "romaji": "Akemi Ito",
+    "title": "University Professor",
+    "stages": [
+      "ST07"
+    ],
+    "reward": [
+      {
+        "target": "BO11",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI21",
     "name_en": "Dog Man",
     "name_jp": "犬男",
     "romaji": "Inuotoko",
@@ -29,7 +609,7 @@
     ]
   },
   {
-    "visitor_id": "VI02",
+    "visitor_id": "VI22",
     "name_en": "Brad Chunchun",
     "name_jp": "ブラド ちゅんちゅん",
     "romaji": "Brado Chunchun",
@@ -58,7 +638,7 @@
     ]
   },
   {
-    "visitor_id": "VI03",
+    "visitor_id": "VI23",
     "name_en": "Aso Takeda",
     "name_jp": "武田あそ",
     "romaji": "Aso Takeda",
@@ -87,7 +667,7 @@
     ]
   },
   {
-    "visitor_id": "VI04",
+    "visitor_id": "VI24",
     "name_en": "Party Member A",
     "name_jp": "党員A",
     "romaji": "Tōin A",
@@ -111,6 +691,421 @@
     "penalty": [
       {
         "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI25",
+    "name_en": "Masato Fujimoto",
+    "name_jp": "藤本正人",
+    "romaji": "Masato Fujimoto",
+    "title": "Assistant Chief of Staff to the Secretary-General",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI26",
+    "name_en": "Rera Kayano",
+    "name_jp": "茅野レラ",
+    "romaji": "Rera Kayano",
+    "title": "Party Youth Wing Leader",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI27",
+    "name_en": "Caroline Whitfield",
+    "name_jp": "キャロライン・ホイットフィールド",
+    "romaji": "Kyarorain Whitfield",
+    "title": "Campaign Consultant",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI28",
+    "name_en": "Kenji Arai-Mitchell",
+    "name_jp": "荒井健二・ミッチェル",
+    "romaji": "Kenji Arai-Mitchell",
+    "title": "Party Treasurer",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI29",
+    "name_en": "Tomoe Sakamoto",
+    "name_jp": "坂本朋恵",
+    "romaji": "Tomoe Sakamoto",
+    "title": "Assistant Party Whip",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI30",
+    "name_en": "Pirika Nolan",
+    "name_jp": "ピリカ・ノーラン",
+    "romaji": "Pirika Nolan",
+    "title": "Party Pollster",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI31",
+    "name_en": "Daniel Ikeda-Brooks",
+    "name_jp": "ダニエル・池田ブルックス",
+    "romaji": "Daniel Ikeda-Brooks",
+    "title": "Candidate Recruiter",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI32",
+    "name_en": "Yoshiko Tanabe",
+    "name_jp": "田辺良子",
+    "romaji": "Yoshiko Tanabe",
+    "title": "Party Elder Stateswoman",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO01",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI33",
+    "name_en": "Shiro Kannari",
+    "name_jp": "金成四郎",
+    "romaji": "Shiro Kannari",
+    "title": "Faction Elder",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI34",
+    "name_en": "Gordon Hale-Takeda",
+    "name_jp": "ゴードン・竹田ヘイル",
+    "romaji": "Gordon Hale-Takeda",
+    "title": "Faction Fundraiser",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI35",
+    "name_en": "Haruka Chiri",
+    "name_jp": "知里ハルカ",
+    "romaji": "Haruka Chiri",
+    "title": "Faction Strategist",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI36",
+    "name_en": "Walter Kimura",
+    "name_jp": "ウォルター・木村",
+    "romaji": "Walter Kimura",
+    "title": "Veteran Faction Member",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI37",
+    "name_en": "Yukiko Rowan-Sato",
+    "name_jp": "ユキコ・ローワン佐藤",
+    "romaji": "Yukiko Rowan-Sato",
+    "title": "Rival Faction Advisor",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO02",
+        "delta": -1
+      },
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI38",
+    "name_en": "Tetsuo Aoki",
+    "name_jp": "青木哲夫",
+    "romaji": "Tetsuo Aoki",
+    "title": "Former Ministerial Aide",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI39",
+    "name_en": "Ray Kaizawa-Mercer",
+    "name_jp": "レイ・貝沢マーサー",
+    "romaji": "Rei Kaizawa-Mercer",
+    "title": "Party Faction Negotiator",
+    "stages": [
+      "ST22"
+    ],
+    "reward": [
+      {
+        "target": "BO02",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO02",
         "delta": -1
       }
     ]

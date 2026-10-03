@@ -9,7 +9,7 @@ extends GutTest
 ##                                    reaches Tier 2 (Party tier is BO01/BO02)
 ##   SH04 Coffee                      Stage, "ENERGY +1"
 ##   SH20 Extra Draw                  Level, "DRAW +1", cap 2, limit 2/level
-##   SH09 Blue Profile                No for both places, no Grants
+##   SHTEST_NOUSE (fixture, see before_each())  No for both places, no Grants
 ##   SH25 Host National Booster Dinner  Now, Player Choice, "TIER:National +2"
 ##   SH27/28/29 Purchase Random Tier 1/2/3 Card  Rhetoric Training (Yen):
 ##                                    see the card, then learn it — never
@@ -58,6 +58,12 @@ func before_each() -> void:
 		"cost_xp": 40, "cost_yen": 0, "level_tier": 1})
 	DataDB.shop.append({"item_id": "SHTEST_LV2", "name": "Test Unlock Tier 2 Level",
 		"cost_xp": 40, "cost_yen": 0, "level_tier": 2})
+	# SH09 (Blue Profile Package, the old cosmetic-via-Supplies idea) was
+	# removed from the Shop tab once cosmetics got their own tab (Cosmetic
+	# Packages, CPxx) — defunct the same way SH13/14 were. This fixture
+	# stands in for its shape: Use In Office/Use In Stage both No, no Grants.
+	DataDB.shop.append({"item_id": "SHTEST_NOUSE", "name": "Test No-Use Item",
+		"cost_xp": 0, "cost_yen": 10000, "use_in_office": "No", "use_in_stage": "No"})
 	DataDB._shop_by_id = DataDB._index(DataDB.shop, "item_id")
 
 
@@ -234,10 +240,10 @@ func test_a_level_item_used_in_the_office_lasts_every_stage_of_the_next_level() 
 
 
 func test_an_item_marked_no_for_the_office_is_refused_and_kept() -> void:
-	GameState.inventory["SH09"] = 1
-	var result := GameState.use_item_in_office("SH09")
+	GameState.inventory["SHTEST_NOUSE"] = 1
+	var result := GameState.use_item_in_office("SHTEST_NOUSE")
 	assert_false(result["ok"])
-	assert_eq(GameState.item_count("SH09"), 1)
+	assert_eq(GameState.item_count("SHTEST_NOUSE"), 1)
 
 
 # ---------------------------------------------------------------------------
@@ -495,6 +501,6 @@ func test_an_item_with_its_own_cap_keeps_it() -> void:
 
 
 func test_items_that_are_not_consumables_are_not_capped() -> void:
-	for item_id: String in ["SH09", "SH27", "SHTEST_LV1"]:
+	for item_id: String in ["SHTEST_NOUSE", "SH27", "SHTEST_LV1"]:
 		assert_eq(Items.stack_cap(DataDB.get_shop_item(item_id)), 0,
 			"%s is never held in the inventory, so it has no stack to cap" % item_id)

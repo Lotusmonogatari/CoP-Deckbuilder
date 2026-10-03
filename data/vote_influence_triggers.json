@@ -2,7 +2,7 @@
   {
     "variable": "Reputation",
     "enabled": "Yes",
-    "threshold": 85,
+    "threshold": 60,
     "applies_to_parties": null
   },
   {
