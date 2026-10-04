@@ -2504,5 +2504,12 @@
     "english": "This level cannot start:\n• {problems}",
     "placeholders": "problems",
     "notes": null
+  },
+  {
+    "key": "shop.funds_cap_maxed",
+    "where": "Shop — refusals",
+    "english": "The Funds cap is already at its maximum.",
+    "placeholders": null,
+    "notes": null
   }
 ]

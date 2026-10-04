@@ -34,11 +34,14 @@ func _note(name: String, value: int, delta: int) -> void:
 	_seen.append({"name": name, "value": value, "delta": delta})
 
 
+## The EFFECTIVE Funds row — GameState._sanban_row(), not the raw
+## DataDB.sanban row. Since the 2026-10-04 Funds cap redesign, the two are
+## different by default: DataDB.sanban's own "max" (1,000,000) is the hard
+## ceiling no amount of purchases can cross, but a fresh run's real,
+## currently-enforced cap is rules.json's lower funds_starting_cap
+## (100,000) — the number _move_meta() actually clamps against.
 func _funds_row() -> Dictionary:
-	for row: Dictionary in DataDB.sanban:
-		if row.get("name_en") == "Funds":
-			return row
-	return {}
+	return GameState._sanban_row("Funds")
 
 
 # ---------------------------------------------------------------------------

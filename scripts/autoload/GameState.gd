@@ -188,10 +188,19 @@ var levels_cleared: Dictionary = {}
 ## candidate.
 var staff_recruitment_tier: int = 0
 
-## Added to sanban.json's own Funds "max" every time Funds is clamped (see
-## _sanban_row()) — SH19 ("Increase Office Funds Cap") raises this by its
-## own funds_cap_increase, repeatable, with no limit. The base max in the
-## data is never touched; this is purely additive on top of it.
+## Added to rules.json's own "funds_starting_cap" every time Funds is
+## clamped (see _sanban_row()) — SH19 ("Increase Office Funds Cap") raises
+## this by its own funds_cap_increase (100,000) each time it's bought.
+##
+## Redesigned 2026-10-04 (Cameron, from a playtest report that the cap
+## "is not applied by default"): the EFFECTIVE cap used to just be
+## sanban.json's own Funds "max" (1,000,000) with this bonus added on top
+## — meaning a fresh run already sat at the full 1,000,000 ceiling before
+## buying anything, and every SH19 purchase after that pushed the cap
+## PAST 1,000,000 with nothing to stop it. Now funds_starting_cap
+## (100,000) is the real starting point, this bonus ratchets it up from
+## there, and the sanban "max" is read as the one hard ceiling neither
+## number is ever allowed to cross — see _sanban_row()'s own mini() call.
 var funds_cap_bonus: int = 0
 
 
@@ -1004,7 +1013,7 @@ func _apply_meta_reward(name: String, amount: int) -> void:
 	if amount == 0:
 		return
 	var before := int(meta.get(name, 0))
-	var after := MetaRules.clamp_meta(before + amount, _sanban_row(name))
+	var after := MetaRules.clamp_meta(before, amount, _sanban_row(name))
 	meta[name] = after
 	_record_meta_change({name: after - before})
 
@@ -1025,25 +1034,39 @@ func _roll_range(range_value: Variant) -> int:
 func _sanban_row(name: String) -> Dictionary:
 	for row: Dictionary in DataDB.sanban:
 		if row.get("name_en") == name:
-			if name == "Funds" and funds_cap_bonus != 0:
-				var with_bonus := row.duplicate()
-				with_bonus["max"] = int(row.get("max", 0)) + funds_cap_bonus
-				return with_bonus
+			if name == "Funds":
+				var with_cap := row.duplicate()
+				var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
+				var hard_max := int(row.get("max", 0))
+				# The hard ceiling (sanban.json's own Funds "max") is the one
+				# number nothing — not the starting cap, not any number of
+				# SH19 purchases — is ever allowed to push past.
+				with_cap["max"] = mini(starting_cap + funds_cap_bonus, hard_max)
+				return with_cap
 			return row
 	return {"min": 0, "max": 999, "start": 0}
 
 
-## DataDB.sanban, with Funds' own "max" raised by funds_cap_bonus (SH19,
-## "Increase Office Funds Cap") — the same adjustment _sanban_row() already
-## makes for a single lookup, but MetaRules.apply_win_deltas()/
+## The Funds row's own real ceiling: sanban.json's "max" cell, untouched by
+## funds_starting_cap or funds_cap_bonus. Used wherever something needs to
+## know the absolute number rather than the player's own current cap — e.g.
+## buy_funds_cap()'s own "nothing left to buy" refusal.
+func _funds_hard_max() -> int:
+	return int(DataDB.get_sanban("Funds").get("max", 0))
+
+
+## DataDB.sanban, with Funds' own "max" replaced by _sanban_row()'s own
+## already-correct current-cap version — the same adjustment _sanban_row()
+## already makes for a single lookup, but MetaRules.apply_win_deltas()/
 ## apply_loss_deltas()/apply_score_effects() each take the whole array, not
 ## one row at a time, so DataDB.sanban was being passed to them raw. A stage
 ## reward's own Funds delta was clamping against the workbook's flat max
 ## even after the player paid to raise it — bug found 2026-09-30, Cameron:
-## "the yen/funds cap is not working."
+## "the yen/funds cap is not working." Always overridden for Funds now
+## (2026-10-04), not just when funds_cap_bonus != 0 — the DEFAULT cap
+## (funds_starting_cap) is lower than the raw sanban max too, not only the
+## bonus-adjusted one.
 func sanban_rows_with_bonuses() -> Array:
-	if funds_cap_bonus == 0:
-		return DataDB.sanban
 	var rows: Array = []
 	for row: Dictionary in DataDB.sanban:
 		rows.append(_sanban_row(str(row.get("name_en", ""))))
@@ -1075,7 +1098,7 @@ func _move_meta(name: String, delta: int) -> void:
 		return
 
 	var before := int(meta.get(name, 0))
-	var after := MetaRules.clamp_meta(before + delta, _sanban_row(name))
+	var after := MetaRules.clamp_meta(before, delta, _sanban_row(name))
 	if after == before:
 		return
 
@@ -1500,14 +1523,21 @@ func buy_staff_recruitment_tier(item_id: String) -> Dictionary:
 
 
 ## SH19 ("Increase Office Funds Cap"): pays, then permanently raises how
-## high Funds can go by the item's own "funds_cap_increase" — repeatable,
-## no limit. See _sanban_row(), where funds_cap_bonus is actually applied.
+## high Funds can go by the item's own "funds_cap_increase" — repeatable
+## until the player's own current cap (rules.json's funds_starting_cap
+## plus every funds_cap_bonus bought so far) reaches the hard ceiling
+## (sanban.json's own Funds "max", 1,000,000). See _sanban_row(), where
+## funds_cap_bonus is actually applied.
 func buy_funds_cap(item_id: String) -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.buy_refusal(item, item_count(item_id),
 		int(shop_bought_this_level.get(item_id, 0)), xp, int(meta.get("Funds", 0)), Text.phrase())
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
+
+	var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
+	if starting_cap + funds_cap_bonus >= _funds_hard_max():
+		return {"ok": false, "message": Text.say("shop.funds_cap_maxed")}
 
 	var price := Items.costs(item)
 	_move_xp(-int(price["XP"]))

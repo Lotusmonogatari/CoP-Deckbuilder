@@ -468,20 +468,58 @@ func _funds_row() -> Dictionary:
 	return {}
 
 
+## Redesigned 2026-10-04 (Cameron, from a playtest report: "the income...
+## caps are not applied by default"). Before this, the EFFECTIVE cap with
+## nothing purchased was already sanban.json's own flat max (1,000,000) —
+## a fresh run sat at the full hard ceiling from the start, and every SH19
+## purchase after that pushed the ceiling PAST 1,000,000 with nothing to
+## stop it. Now rules.json's funds_starting_cap (100,000) is where a run
+## actually starts, each SH19 purchase ratchets it up by its own
+## funds_cap_increase, and the real sanban max is the one number no amount
+## of purchases can ever cross — see GameState._sanban_row().
 func test_buying_a_funds_cap_increase_raises_the_effective_cap() -> void:
 	GameState.funds_cap_bonus = 0
-	var base_max := int(_funds_row().get("max", 0))
-	var result := GameState.buy_funds_cap("SH19")
+	var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
+	var hard_max := int(_funds_row().get("max", 0))
 
+	# Nothing purchased yet: the effective cap is the starting cap, not the
+	# hard ceiling — the bug itself.
+	GameState.meta["Funds"] = 0
+	GameState._move_meta("Funds", starting_cap + 2000000)
+	assert_eq(int(GameState.meta["Funds"]), starting_cap,
+		"with nothing purchased, Funds stops at the starting cap")
+
+	var result := GameState.buy_funds_cap("SH19")
 	assert_true(result["ok"])
 	assert_eq(GameState.funds_cap_bonus, 100000)
 
-	# The raised cap is real, not just the counter: Funds can now go past
-	# the base sanban.json max.
+	# The raised cap is real: Funds can now go further, but still well
+	# under the hard ceiling.
 	GameState.meta["Funds"] = 0
-	GameState._move_meta("Funds", base_max + 2000000)
-	assert_eq(int(GameState.meta["Funds"]), base_max + 100000,
+	GameState._move_meta("Funds", starting_cap + 2000000)
+	assert_eq(int(GameState.meta["Funds"]), starting_cap + 100000,
 		"the ceiling itself moved by the purchased amount")
+	assert_lt(int(GameState.meta["Funds"]), hard_max,
+		"sanity: nowhere near the hard ceiling yet")
+
+
+func test_the_effective_cap_never_exceeds_the_hard_ceiling() -> void:
+	var hard_max := int(_funds_row().get("max", 0))
+	GameState.funds_cap_bonus = hard_max * 10   # absurdly large, on purpose
+	assert_eq(int(GameState._sanban_row("Funds").get("max", 0)), hard_max,
+		"no amount of purchased bonus pushes the effective cap past the real ceiling")
+
+
+func test_buying_a_funds_cap_increase_is_refused_once_the_ceiling_is_reached() -> void:
+	var starting_cap := int(DataDB.rules.get("funds_starting_cap", 100000))
+	var hard_max := int(_funds_row().get("max", 0))
+	GameState.funds_cap_bonus = hard_max - starting_cap   # already at the ceiling
+	GameState.xp = 10000
+
+	var result := GameState.buy_funds_cap("SH19")
+	assert_false(result["ok"])
+	assert_eq(result["message"], Text.say("shop.funds_cap_maxed"))
+	assert_eq(GameState.funds_cap_bonus, hard_max - starting_cap, "refused — nothing changed")
 
 
 # ---------------------------------------------------------------------------

@@ -35,9 +35,30 @@ const SANBAN := [
 
 func test_a_meta_variable_stays_inside_its_range() -> void:
 	var jiban := SANBAN[0]
-	assert_eq(MetaRules.clamp_meta(150, jiban), 100, "capped at the maximum")
-	assert_eq(MetaRules.clamp_meta(-10, jiban), 0, "floored at the minimum")
-	assert_eq(MetaRules.clamp_meta(60, jiban), 60, "left alone in between")
+	assert_eq(MetaRules.clamp_meta(0, 150, jiban), 100, "capped at the maximum")
+	assert_eq(MetaRules.clamp_meta(0, -10, jiban), 0, "floored at the minimum")
+	assert_eq(MetaRules.clamp_meta(0, 60, jiban), 60, "left alone in between")
+
+
+## Redesigned 2026-10-04 alongside the Funds cap fix: the clamp must never
+## reduce a balance that was already above the current max — only a GAIN is
+## blocked once you're over it; a SPEND (a negative delta) always lands in
+## full, and resumes being limited by the real max the moment it's back
+## under it.
+func test_clamp_meta_never_confiscates_a_balance_already_over_the_max() -> void:
+	var jiban := SANBAN[0]   # max 100
+
+	# Already over the cap (150, somehow) — a pure spend still lands in full.
+	assert_eq(MetaRules.clamp_meta(150, -20, jiban), 130,
+		"a spend from an over-cap balance is not snapped down to the cap first")
+
+	# Still over the cap — a gain is blocked entirely, not partially let through.
+	assert_eq(MetaRules.clamp_meta(150, 20, jiban), 150,
+		"no further gain lands while already over the cap")
+
+	# Spent back under the cap — a later gain is limited by the real max again.
+	assert_eq(MetaRules.clamp_meta(90, 20, jiban), 100,
+		"once back under the cap, a gain is limited by it again")
 
 
 func test_winning_a_stage_applies_its_rewards() -> void:

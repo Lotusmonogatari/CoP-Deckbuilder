@@ -223,5 +223,19 @@
       "12": "Enough time to read a line before the next one comes in.",
       "20": "Lines linger — fewer swaps, more time on each one."
     }
+  },
+  "funds_starting_cap": {
+    "value": 100000,
+    "options": [
+      50000,
+      100000,
+      200000
+    ],
+    "question": "Before buying any Funds cap increase (SH19), how high can Funds actually go? sanban.json's own Funds max (1,000,000) is the absolute ceiling no amount of SH19 can ever push past — this is where a fresh run starts underneath it.",
+    "means": {
+      "50000": "Starts right at the Funds row's own starting value (50,000) — zero headroom until the first SH19 purchase.",
+      "100000": "Cameron, 2026-10-04: one clean 100,000-yen tier above the 50,000 starting Funds. SH19's own 100,000-per-purchase increase then ratchets the cap up in nine more steps to the 1,000,000 ceiling.",
+      "200000": "Generous early room — two tiers before the player has to think about the cap at all."
+    }
   }
 }

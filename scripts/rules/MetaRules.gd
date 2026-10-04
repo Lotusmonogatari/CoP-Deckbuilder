@@ -48,11 +48,22 @@ static func stage_delta(stage: Dictionary, key: String) -> int:
 	return 0
 
 
-## Keeps a meta-variable inside the range sanban.json gives it.
-static func clamp_meta(value: int, variable: Dictionary) -> int:
+## Keeps a meta-variable inside the range sanban.json gives it, without
+## letting the clamp itself confiscate anything the player already holds.
+##
+## A plain clampi(before + delta, min, max) looked right until Funds got a
+## cap lower than its own hard ceiling (funds_starting_cap, 2026-10-04): a
+## balance already sitting above the current cap — an old save, a stage
+## reward resolved before a cap purchase landed — would get silently reset
+## DOWN to it on the very next write, even a pure SPEND (delta < 0). The
+## ceiling is only ever meant to block further GAIN once you're over it; it
+## must never take back what you already have, and a spend has to land in
+## full regardless of how far over the cap the balance sits.
+static func clamp_meta(before: int, delta: int, variable: Dictionary) -> int:
 	var low := int(variable.get("min", 0))
 	var high := int(variable.get("max", 100))
-	return clampi(value, low, high)
+	var effective_high := maxi(high, before)
+	return clampi(before + delta, low, effective_high)
 
 
 ## Applies a stage's win rewards to the player's standing.
@@ -99,7 +110,7 @@ static func _apply_deltas(meta: Dictionary, deltas: Dictionary, sanban_rows: Arr
 			continue
 		var variable := _find_variable(sanban_rows, name)
 		var before := int(updated.get(name, variable.get("start", 0)))
-		var after := clamp_meta(before + delta, variable)
+		var after := clamp_meta(before, delta, variable)
 		updated[name] = after
 		applied[name] = after - before
 
@@ -141,7 +152,7 @@ static func apply_score_effects(meta: Dictionary, stage: Dictionary, score: int,
 
 		var variable := _find_variable(sanban_rows, name)
 		var before := int(updated.get(name, variable.get("start", 0)))
-		var after := clamp_meta(before + delta, variable)
+		var after := clamp_meta(before, delta, variable)
 		updated[name] = after
 		applied[name] = after - before
 

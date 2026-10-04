@@ -330,6 +330,7 @@
   "shop.card_reveal_title": "New Card!",
   "shop.card_unlocked": "{name} unlocked and added to your collection.",
   "shop.funds_cap_increased": "Funds cap raised by {count}.",
+  "shop.funds_cap_maxed": "The Funds cap is already at its maximum.",
   "shop.funds_short": "{count} short.",
   "shop.in_twice": "{card} is in twice.",
   "shop.item_bought": "{name} added to your inventory.",

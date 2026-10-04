@@ -1425,6 +1425,72 @@ click logic are now stale against it. Not a game bug — winning correctly
 advances into the Office Hours stage; the driver just doesn't know how to
 play a Non-combat screen. Left as a known gap, not fixed in this pass.
 
+### The Funds cap was already at its hard ceiling by default (2026-10-04, Cameron)
+
+Reported from a playtest: "the income and XP point caps are not applied by
+default." Diagnosed as two unrelated things, confirmed by actually reading
+every write path rather than guessing:
+
+- **XP has no cap anywhere, by design** — `GameState._move_xp()` is a
+  plain `xp += delta`, and XP is deliberately not one of the four Sanban
+  variables (Constituency support, Reputation, Funds, Party support) that
+  carry a min/max. Cameron confirmed: correct as is, no cap wanted.
+- **Funds' cap was real but wrong**: `GameState.funds_cap_bonus` (SH19,
+  "Increase Office Funds Cap") was added straight onto sanban.json's own
+  Funds "max" (1,000,000) — so a FRESH run, with nothing purchased, was
+  already sitting at the full 1,000,000 ceiling, and every SH19 purchase
+  after that pushed the cap PAST 1,000,000 with nothing to stop it. Both
+  halves of "not applied by default" were literally true: the default cap
+  was the hard ceiling itself, not a lower starting point, and the hard
+  ceiling itself was never actually enforced as a ceiling.
+
+Cameron's fix, confirmed directly: **100,000 is the real starting cap**
+(a new `rules.json` lever, `funds_starting_cap`, the same self-documenting
+`{value, options, question, means}` shape every other open-decision lever
+here uses), each SH19 purchase ratchets it up by its own 100,000
+`funds_cap_increase` exactly as before, and **1,000,000 is now a true hard
+ceiling** no amount of purchases can ever cross —
+`GameState._sanban_row("Funds")` computes the effective cap as
+`mini(funds_starting_cap + funds_cap_bonus, hard_max)`, and
+`buy_funds_cap()` refuses a purchase outright (`shop.funds_cap_maxed`,
+new Text-tab row) once that sum already equals the ceiling, rather than
+letting the player spend XP on a purchase that does nothing.
+
+**A second, real bug surfaced while fixing the first one**: lowering the
+default cap meant a balance already sitting above the new (lower) cap —
+a test fixture, or in principle an existing save — would get silently
+reset DOWN to the new cap on its very next write, even a pure SPEND. The
+underlying `MetaRules.clamp_meta()` clamped the RESULT of every write
+into `[min, max]` regardless of which direction the delta moved, so an
+over-cap balance couldn't be spent down cleanly; the write itself
+snapped it back to the cap first. Redesigned: `clamp_meta()` now takes
+`before` and `delta` separately (not a pre-summed value) and computes
+`effective_high := maxi(high, before)` — once a balance is already over
+the cap, a further GAIN is blocked entirely (not partially let through,
+not silently discarded past the cap), but a SPEND always lands in full,
+and a later gain is limited by the real cap again the moment the balance
+is back under it. All four real call sites (`GameState._apply_meta_
+reward()`/`_move_meta()`, `MetaRules._apply_deltas()`/
+`apply_score_effects()`) updated to the new signature.
+
+Caught two more stale test fixtures the same way the SH09/EXPECTED_STAGES
+gaps were caught — a test hardcoding the OLD flat-1,000,000-ceiling
+assumption instead of reading the real effective cap:
+`test_game_state_spending.gd`'s own `_funds_row()` now reads
+`GameState._sanban_row("Funds")` (the effective cap) instead of
+`DataDB.sanban`'s raw row (the hard ceiling) — the two are different
+numbers by default now, where they used to be the same number.
+`test_inventory.gd`'s `test_buying_a_funds_cap_increase_raises_the_
+effective_cap` rewritten around the real starting-cap/ratchet/ceiling
+shape, plus two new tests: the effective cap never exceeds the hard
+ceiling no matter how large `funds_cap_bonus` gets, and a purchase at
+the ceiling is refused. `test_meta_rules.gd` gained
+`test_clamp_meta_never_confiscates_a_balance_already_over_the_max()`,
+proving the spend/gain asymmetry directly. Full GUT suite (938 tests)
+and `tools/verify.sh` confirmed green afterward (`loop_test.tscn`'s own
+pre-existing, already-documented WIN-path gap above is the one
+unrelated, known failure).
+
 ## 13. The seams that are built but carry nothing
 
 These systems have working structure while some content remains incomplete.
