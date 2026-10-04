@@ -1923,3 +1923,72 @@ deferring to whichever panel is actually frontmost. Confirmed via the
 same real-click test: a full draw now correctly learns the card shown,
 pays for it, and the other two sessions (SH10, SH11) learn cleanly too.
 
+### Resume or Abandon a level in progress (2026-10-04, Cameron)
+
+Reopening the app mid-level used to silently resume it — the Start
+button's own label just said "Resume level," and clicking it jumped
+straight back into the saved stage with no other way out; the Levels
+panel was unreachable until that level actually concluded. Cameron's
+ask: a real choice, shown when the app reopens into a level still in
+progress — **Resume the Level** (exactly the old behaviour) or
+**Abandon the Level** (throws the attempt away and sends the player to
+an ordinary Office screen, with the level staying exactly as available
+as it was before — not shown-locked like a cooldown, not hidden like a
+finished One-Time level).
+
+**Where this can even fire**: confirmed by reading every path back to
+the Office screen (`BattleScreen._on_outcome_closed()`) — normal play
+never routes back to the Office mid-level at all; every intermediate
+stage of a multi-stage level goes straight to the next one via
+`StageRouting`, and the Office is only reached once `GameState.
+finish_stage()` says the whole level is over. The ONE exception is
+exactly the scenario asked about: the app was closed and reopened with
+`GameState.is_in_level()` still true from the last save. So the new
+choice is gated on that same flag, inside `OfficeScreen._build()`
+(`_show_resume_choice_if_in_level()`, called right after the existing
+`_show_trigger_alerts_if_any()` so, on the rare run where both apply,
+this one ends up the frontmost panel) — it can never pop up mid-level
+during ordinary play by construction, not just by convention.
+
+**`GameState.abandon_level()`** (new): clears `level_runner`,
+`level_bonuses`, and `shop_bought_this_level` — the same per-level state
+a normal conclusion already resets — without touching
+`level_last_completed_at`, `levels_completed_count`, or `levels_cleared`,
+so `Ledger.level_is_hidden()`/`level_cooldown_remaining()` read the level
+exactly as if it had never been started. Whatever the player already
+banked from EARLIER stages of this same attempt (if it was stage 3 of 5,
+say) stays banked — those rewards were already applied and saved when
+each of those stages concluded; only the stage still ahead of them is
+thrown away, and picking the level again starts it over from stage one.
+
+**UI**: a new Overlay built in code exactly like `_trigger_alert_panel`
+(`_resume_choice_panel`, `dismissable = false`, `show_back = false` —
+the same "only the forced buttons get you out" shape `_card_reveal_
+panel` already uses, since accidentally dismissing this one must never
+silently pick either option) with two plain button rows, "Resume level"
+(reusing the Start button's own existing `office.resume_level` string)
+and the new `office.abandon_level`. Resume does exactly what the old
+Start-button branch did — `StageRouting.scene_for(GameState.level_
+runner.current_stage())` — and Abandon calls the new GameState method,
+autosaves, and rebuilds the Office screen in place. The Start button's
+own pre-existing "Resume level"/"Choose a level" label logic, and
+`_on_start_pressed()`'s own is_in_level() fast path, are both left
+exactly as they were: harmless now that this panel's full-screen opaque
+backdrop (`Overlay.BACKDROP`, already fully opaque) covers the Start
+button entirely until the player answers, but still correct as a
+fallback.
+
+Confirmed end to end with a throwaway driver (deleted before commit,
+using the same "thin outer scene hands off to a driver parented at the
+tree root" trick `loop_driver.gd` already established, since the driver
+has to survive the very scene change it triggers): began a real level
+(LV08), ended its first stage without ever calling `end_level()` —
+exactly what a quit-and-relaunch mid-level leaves behind — then loaded
+the real Office screen twice. Once, clicking the real Abandon button:
+`is_in_level()` flipped to false, the panel closed, and `Ledger.level_
+is_hidden()` confirmed the level was never marked complete or hidden.
+Once more, clicking the real Resume button: the scene changed straight
+to `BattleScreen`, landing on the exact stage (`ST04`) the level had
+reached. Full GUT suite (935/938, the same 3 pre-existing unrelated
+failures) and `tools/verify.sh` (all 8 real-click interaction tests
+green) confirmed no regressions.

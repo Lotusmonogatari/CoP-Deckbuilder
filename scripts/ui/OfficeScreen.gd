@@ -67,12 +67,17 @@ var _record_panel: Overlay
 ## reason _record_panel is.
 var _cosmetics_panel: Overlay
 
-## Rhetoric Training's card offer (SH15-17, SH27-29) — Cameron, 2026-09-25:
-## showing the card itself, not just naming it in a sentence, is what makes
-## drawing a random one feel like a pull rather than a database write; and
-## 2026-09-27, it is shown BEFORE paying, with Learn it / Pass. Built in
-## code, the same reason _inventory_panel is.
+## Rhetoric Training's card offer (SH09-11, the XP-cost card unlock tiers)
+## — Cameron, 2026-09-25: showing the card itself, not just naming it in a
+## sentence, is what makes drawing a random one feel like a pull rather
+## than a database write; and 2026-09-27, it is shown BEFORE paying, with
+## Learn it / Pass. Built in code, the same reason _inventory_panel is.
 var _card_reveal_panel: Overlay
+
+## The forced choice when the app is reopened with a level still in
+## progress — Resume the Level or Abandon the Level (Cameron, 2026-10-04).
+## Built in code, the same way _trigger_alert_panel is.
+var _resume_choice_panel: Overlay
 
 ## New Game: the warning before a run is thrown away, and the choice of
 ## protagonist. Built in code, like the inventory.
@@ -132,6 +137,14 @@ func _ready() -> void:
 	_card_reveal_panel.show_back = false
 	add_child(_card_reveal_panel)
 	_card_reveal_panel.confirmed.connect(_on_learn_confirmed)
+	_resume_choice_panel = Overlay.new()
+	_resume_choice_panel.name = "ResumeChoicePanel"
+	# Resume or Abandon are the only ways on — a real decision, not chrome
+	# to wave away (Cameron, 2026-10-04): tapping outside it, or Back, must
+	# never silently pick either one for the player.
+	_resume_choice_panel.dismissable = false
+	_resume_choice_panel.show_back = false
+	add_child(_resume_choice_panel)
 
 	_ticker = TickerPresenter.new(_ticker_strip, _ticker_label)
 
@@ -209,6 +222,7 @@ func _build() -> void:
 	_report.text = _last_level_report()
 	_refresh_resources()
 	_show_trigger_alerts_if_any()
+	_show_resume_choice_if_in_level()
 
 
 ## A crisis trigger firing or resolving since the last time the player was
@@ -228,6 +242,53 @@ func _show_trigger_alerts_if_any() -> void:
 	GameState.pending_trigger_alerts = []
 
 	_trigger_alert_panel.open(Text.say("office.trigger_alert_title"), rows)
+
+
+## The app was closed and reopened while a level was still in progress —
+## the only way the Office is ever reached with GameState.is_in_level()
+## still true, since normal play never returns here until a level actually
+## concludes (every intermediate stage of a multi-stage level routes
+## straight to the next one, never back through here). A forced choice,
+## not the old silent auto-resume (Cameron, 2026-10-04): Resume picks up
+## exactly where the saved stage left off, the same scene change the Start
+## button's own "Resume the level" label already led to; Abandon throws
+## the attempt away (GameState.abandon_level()) without recording a win or
+## a loss, and the level goes right back to being just another choice in
+## the Levels panel. Called after _show_trigger_alerts_if_any() so, on the
+## rare run where both apply, this one ends up the frontmost panel — the
+## more urgent of the two decisions.
+func _show_resume_choice_if_in_level() -> void:
+	if not GameState.is_in_level():
+		return
+
+	var rows: Array[Control] = []
+	rows.append(UiKit.line(Text.say("office.resume_choice_body")))
+
+	var resume_button := Button.new()
+	resume_button.custom_minimum_size = Vector2(0, 110)
+	resume_button.text = Text.say("office.resume_level")
+	resume_button.pressed.connect(_on_resume_level_chosen)
+	rows.append(resume_button)
+
+	var abandon_button := Button.new()
+	abandon_button.custom_minimum_size = Vector2(0, 110)
+	abandon_button.text = Text.say("office.abandon_level")
+	abandon_button.pressed.connect(_on_abandon_level_chosen)
+	rows.append(abandon_button)
+
+	_resume_choice_panel.open(Text.say("office.resume_choice_title"), rows)
+
+
+func _on_resume_level_chosen() -> void:
+	_resume_choice_panel.close()
+	get_tree().change_scene_to_file(StageRouting.scene_for(GameState.level_runner.current_stage()))
+
+
+func _on_abandon_level_chosen() -> void:
+	GameState.abandon_level()
+	_resume_choice_panel.close()
+	SaveManager.autosave()
+	_build()
 
 
 ## The one line the front page keeps about money.

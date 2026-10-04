@@ -1793,6 +1793,29 @@ func end_level() -> void:
 	level_bonuses = {}
 
 
+## Throws away a level in progress without recording a win, a loss, or a
+## completion of any kind — the level goes right back to being just another
+## choice in the Levels panel, not shown-locked like a cooldown and not
+## hidden like a finished One-Time level, since neither
+## level_last_completed_at nor levels_completed_count are touched here.
+##
+## Whatever the player already banked from stages they actually finished
+## earlier in this same attempt stays banked — finish_stage() already
+## applied those rewards and saved the game at the time. Only the stage
+## still ahead of them, and this attempt's own per-level purchase limits,
+## are thrown away; picking the level again starts it over from stage one.
+##
+## The only real caller is the Office's own "a level was in progress"
+## choice (OfficeScreen._show_resume_choice_if_in_level()), reached only
+## when the app was closed and reopened mid-level — normal play never
+## returns to the Office until a level actually concludes, so this can
+## never fire mid-stage by accident.
+func abandon_level() -> void:
+	level_runner = null
+	level_bonuses = {}
+	shop_bought_this_level = {}
+
+
 func _conclude_level_items() -> void:
 	shop_bought_this_level = {}
 	level_bonuses = {}
