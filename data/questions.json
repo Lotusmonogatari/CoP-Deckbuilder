@@ -12,6 +12,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP110"
     },
     {
@@ -26,6 +29,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP111"
     },
     {
@@ -40,6 +46,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP112"
     },
     {
@@ -54,6 +63,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP113"
     },
     {
@@ -68,6 +80,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP114"
     },
     {
@@ -82,6 +97,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP115"
     },
     {
@@ -96,6 +114,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP116"
     },
     {
@@ -110,6 +131,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP117"
     },
     {
@@ -124,6 +148,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP110"
     },
     {
@@ -138,6 +165,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP111"
     },
     {
@@ -152,6 +182,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP112"
     },
     {
@@ -166,6 +199,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP113"
     },
     {
@@ -180,6 +216,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO02"
+      ],
       "asked_by": "OP114"
     },
     {
@@ -194,6 +233,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP115"
     },
     {
@@ -208,6 +250,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP116"
     },
     {
@@ -222,6 +267,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP117"
     },
     {
@@ -236,6 +284,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP110"
     },
     {
@@ -250,6 +301,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP111"
     },
     {
@@ -264,6 +318,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP112"
     },
     {
@@ -278,6 +335,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP113"
     }
   ],
@@ -294,6 +354,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -308,6 +371,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -322,6 +388,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -336,6 +405,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -350,6 +422,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -364,6 +439,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO02"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -378,6 +456,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -392,6 +473,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -406,6 +490,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO07"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -420,6 +507,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -434,6 +524,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -448,6 +541,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -462,6 +558,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -476,6 +575,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -490,6 +592,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -504,6 +609,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -518,6 +626,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -532,6 +643,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -546,6 +660,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -560,6 +677,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -574,6 +694,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -588,6 +711,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -602,6 +728,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO07"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -616,6 +745,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO15"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -630,6 +762,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -644,6 +779,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -658,6 +796,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO07"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -672,6 +813,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO15"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -686,6 +830,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO07"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -700,6 +847,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -714,6 +864,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO12"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -728,6 +881,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -742,6 +898,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -756,6 +915,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -770,6 +932,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -784,6 +949,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -798,6 +966,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -812,6 +983,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -826,6 +1000,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -840,6 +1017,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -854,6 +1034,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO16"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -868,6 +1051,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -882,6 +1068,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -896,6 +1085,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -910,6 +1102,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -924,6 +1119,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -938,6 +1136,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -952,6 +1153,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO15"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -966,6 +1170,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO15"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -980,6 +1187,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO12"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -994,6 +1204,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -1008,6 +1221,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO12"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -1022,6 +1238,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO12"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -1036,6 +1255,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO16"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -1050,6 +1272,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO16"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -1064,6 +1289,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -1078,6 +1306,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -1092,6 +1323,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -1106,6 +1340,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -1120,6 +1357,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO12"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -1134,6 +1374,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO15"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -1148,6 +1391,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -1162,6 +1408,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -1176,6 +1425,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -1190,6 +1442,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP102"
     },
     {
@@ -1204,6 +1459,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP103"
     },
     {
@@ -1218,6 +1476,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP104"
     },
     {
@@ -1232,6 +1493,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP105"
     },
     {
@@ -1246,6 +1510,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP106"
     },
     {
@@ -1260,6 +1527,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP107"
     },
     {
@@ -1274,6 +1544,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP108"
     },
     {
@@ -1288,6 +1561,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP109"
     },
     {
@@ -1302,6 +1578,9 @@
         "Divisive": "W",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP102"
     }
   ],
@@ -1318,6 +1597,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO10"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -1332,6 +1614,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP119"
     },
     {
@@ -1346,6 +1631,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP120"
     },
     {
@@ -1360,6 +1648,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO07"
+      ],
       "asked_by": "OP121"
     },
     {
@@ -1374,6 +1665,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP122"
     },
     {
@@ -1388,6 +1682,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP123"
     },
     {
@@ -1402,6 +1699,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP124"
     },
     {
@@ -1416,6 +1716,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO10"
+      ],
       "asked_by": "OP125"
     },
     {
@@ -1430,6 +1733,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO02"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -1444,6 +1750,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP119"
     },
     {
@@ -1458,6 +1767,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP120"
     },
     {
@@ -1472,6 +1784,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP121"
     },
     {
@@ -1486,6 +1801,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO10"
+      ],
       "asked_by": "OP122"
     },
     {
@@ -1500,6 +1818,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP123"
     },
     {
@@ -1514,6 +1835,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO10"
+      ],
       "asked_by": "OP124"
     },
     {
@@ -1528,6 +1852,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO02"
+      ],
       "asked_by": "OP125"
     },
     {
@@ -1542,6 +1869,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO02"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -1556,6 +1886,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP119"
     },
     {
@@ -1570,6 +1903,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP120"
     },
     {
@@ -1584,6 +1920,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO02"
+      ],
       "asked_by": "OP121"
     },
     {
@@ -1598,6 +1937,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP122"
     },
     {
@@ -1612,6 +1954,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP123"
     },
     {
@@ -1626,6 +1971,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP124"
     },
     {
@@ -1640,6 +1988,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP125"
     },
     {
@@ -1654,6 +2005,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -1668,6 +2022,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP119"
     },
     {
@@ -1682,6 +2039,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP120"
     },
     {
@@ -1696,6 +2056,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP121"
     },
     {
@@ -1710,6 +2073,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP122"
     },
     {
@@ -1724,6 +2090,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP123"
     },
     {
@@ -1738,6 +2107,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP124"
     },
     {
@@ -1752,6 +2124,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP125"
     },
     {
@@ -1766,6 +2141,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -1780,6 +2158,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO17"
+      ],
       "asked_by": "OP119"
     },
     {
@@ -1794,6 +2175,9 @@
         "Divisive": "W",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP120"
     },
     {
@@ -1808,6 +2192,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO15"
+      ],
       "asked_by": "OP121"
     },
     {
@@ -1822,6 +2209,9 @@
         "Divisive": "W",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO12"
+      ],
       "asked_by": "OP122"
     },
     {
@@ -1836,6 +2226,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP123"
     },
     {
@@ -1850,6 +2243,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP124"
     },
     {
@@ -1864,6 +2260,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO12"
+      ],
       "asked_by": "OP125"
     },
     {
@@ -1878,6 +2277,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO16"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -1892,6 +2294,9 @@
         "Divisive": "W",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP119"
     },
     {
@@ -1906,6 +2311,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP120"
     },
     {
@@ -1920,6 +2328,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP121"
     },
     {
@@ -1934,6 +2345,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO01"
+      ],
       "asked_by": "OP122"
     },
     {
@@ -1948,6 +2362,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP123"
     },
     {
@@ -1962,6 +2379,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO12"
+      ],
       "asked_by": "OP124"
     },
     {
@@ -1976,6 +2396,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO15"
+      ],
       "asked_by": "OP125"
     },
     {
@@ -1990,6 +2413,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -2004,6 +2430,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP119"
     },
     {
@@ -2018,6 +2447,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP120"
     },
     {
@@ -2032,6 +2464,9 @@
         "Divisive": "S",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP121"
     },
     {
@@ -2046,6 +2481,9 @@
         "Divisive": "W",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP122"
     },
     {
@@ -2060,6 +2498,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO14"
+      ],
       "asked_by": "OP123"
     },
     {
@@ -2074,6 +2515,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP124"
     },
     {
@@ -2088,6 +2532,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP125"
     },
     {
@@ -2102,6 +2549,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO16"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -2116,6 +2566,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP119"
     },
     {
@@ -2130,6 +2583,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP120"
     },
     {
@@ -2144,6 +2600,9 @@
         "Divisive": "M",
         "Duplicitous": "W"
       },
+      "pleases_boosters": [
+        "BO18"
+      ],
       "asked_by": "OP121"
     }
   ],
@@ -2160,6 +2619,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP100"
     },
     {
@@ -2174,6 +2636,9 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP11"
     },
     {
@@ -2188,6 +2653,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP12"
     },
     {
@@ -2202,6 +2670,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP16"
     },
     {
@@ -2216,6 +2687,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP18"
     },
     {
@@ -2230,6 +2704,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP42"
     },
     {
@@ -2244,6 +2721,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP46"
     },
     {
@@ -2258,6 +2738,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP59"
     },
     {
@@ -2272,6 +2755,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO09"
+      ],
       "asked_by": "OP62"
     },
     {
@@ -2286,6 +2772,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO06"
+      ],
       "asked_by": "OP71"
     },
     {
@@ -2300,6 +2789,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP81"
     },
     {
@@ -2314,6 +2806,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP87"
     },
     {
@@ -2328,6 +2823,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP100"
     },
     {
@@ -2342,6 +2840,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP11"
     },
     {
@@ -2356,6 +2857,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP12"
     },
     {
@@ -2370,6 +2874,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP16"
     },
     {
@@ -2384,6 +2891,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP18"
     },
     {
@@ -2398,6 +2908,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP42"
     },
     {
@@ -2412,6 +2925,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO04"
+      ],
       "asked_by": "OP46"
     },
     {
@@ -2426,6 +2942,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO10"
+      ],
       "asked_by": "OP59"
     }
   ],
@@ -2442,6 +2961,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP110"
     },
     {
@@ -2456,6 +2978,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP111"
     },
     {
@@ -2470,6 +2995,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP112"
     },
     {
@@ -2484,6 +3012,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP113"
     },
     {
@@ -2498,6 +3029,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP114"
     },
     {
@@ -2512,6 +3046,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP115"
     },
     {
@@ -2526,6 +3063,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP116"
     },
     {
@@ -2540,6 +3080,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO02"
+      ],
       "asked_by": "OP117"
     },
     {
@@ -2554,6 +3097,9 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP110"
     },
     {
@@ -2568,6 +3114,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP111"
     },
     {
@@ -2582,6 +3131,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP112"
     },
     {
@@ -2596,6 +3148,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO05"
+      ],
       "asked_by": "OP113"
     },
     {
@@ -2610,6 +3165,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP114"
     },
     {
@@ -2624,6 +3182,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO02"
+      ],
       "asked_by": "OP115"
     },
     {
@@ -2638,6 +3199,9 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP116"
     },
     {
@@ -2652,6 +3216,9 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP117"
     },
     {
@@ -2666,6 +3233,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP110"
     },
     {
@@ -2680,6 +3250,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP111"
     },
     {
@@ -2694,6 +3267,9 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
+      "pleases_boosters": [
+        "BO03"
+      ],
       "asked_by": "OP112"
     },
     {
@@ -2708,6 +3284,9 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
+      "pleases_boosters": [
+        "BO08"
+      ],
       "asked_by": "OP113"
     }
   ]

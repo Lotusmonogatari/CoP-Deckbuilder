@@ -1736,3 +1736,107 @@ independent changes on his end, not bugs in anything built this session.
   were fixed (`SH19`→`SH13`) since they're squarely part of the feature
   just built; the rest of the renumbering fallout — a larger, multi-file
   job — was left for a follow-up pass rather than absorbed silently.
+  `tools/verify.sh`'s own `shop_items_test`/`inventory_test` interaction
+  drivers hit the same stale-ID wall (`SH15`/`SH18`/`SH19`/`SH25`/`SH26`
+  all moved) — confirmed as the same pre-existing gap, not a new
+  regression, before landing the two fixes below.
+
+### The Question Themes tab is back, updated for the current question set (2026-10-04, Cameron)
+
+The tab noted missing above is restored — Cameron asked for it back,
+rebuilt against the CURRENT question content rather than the old one.
+The old tab only ever covered 72 themes (the original Press/Town Hall
+question set); the real `data/questions.json` today carries 146 distinct
+theme strings across all five question-asking rooms (press conference,
+Town Hall, Lobbyist Meeting, Policy Study, Media Ambush — the last three
+are new since the old tab existed). The 72 old mappings were pulled
+straight from an untouched pre-deletion commit and reused unchanged; the
+other ~74 are a fresh draft against the now-18-strong booster roster
+(six of which — Students United, Family Network, Yezo Artisans Guild,
+Commuter Committee, Our Traditional Society, Innovation Society,
+Members of Parliament, Constituency Voters — didn't exist when the old
+tab was written), same "Claude's draft, Cameron corrects" bargain the
+tab's own Why column has always carried. Two exact-case-sensitive
+duplicates in the current question data (`Base Burden`/`Base burden`,
+`Emergency Powers`/`Emergency powers`, `Family Law`/`Family law`, etc.)
+each got their own row rather than being silently merged, since the
+fold join in `export_data.py` matches theme strings exactly and a single
+row would have left one capitalization unmapped.
+
+Built with a new, larger-scale version of the same raw-XML zip-surgery
+technique this project has used all along — this time adding a whole
+new worksheet (146 data rows + a header, `xl/worksheets/sheet42.xml`,
+one new `<sheet>`/`<Relationship>`/`<Override>` entry each in
+`workbook.xml`/`workbook.xml.rels`/`[Content_Types].xml`) rather than
+editing an existing one. Every cell uses `inlineStr`
+(`t="inlineStr"><is><t>...</t></is>`) instead of a `sharedStrings.xml`
+reference — the established "never touch sharedStrings.xml" discipline,
+extended from a single appended row to an entire new sheet. Verified the
+same way every other workbook edit here is: every other sheet's own
+`iter_rows(values_only=True)` compared old-vs-new and found byte-for-byte
+identical before the swap, then a clean `export_data.py` run. The
+`"optional_sheet": True` flag added when the tab went missing stays in
+place — it costs nothing now that the tab exists again, and means a
+future accidental deletion degrades gracefully instead of blocking every
+other change in the same upload, same as it did this time.
+
+The 18-item "names no organisation to please" GUT failure class
+(`test_every_question_has_somebody_to_please_and_somebody_asking`, one
+assertion per real question) is gone — confirmed before/after (18
+failures → 0 from this class specifically; the unrelated Shop-renumbering
+fallout noted above is untouched by this fix).
+
+### Town Hall only ever fought the first of its four constituents (2026-10-04, Cameron)
+
+Reported from a real playtest screenshot: beating the first Town Hall
+attendee ("Taken care of — the support threshold was reached") closed
+the whole stage and offered "On to the next stage," even though the
+stage is set up for 4 opponents ("1 of 4" in the caption). Confirmed by
+reading `stages.json`'s real ST05 row: `opponent_count` was correctly
+`{min:4, max:4}`, but `Sequence Mode` was `single` — the one setting
+that tells `BattleEngine._check_outcome()` whether a threshold win
+should advance to the next opponent or end the stage outright
+(`scripts/rules/BattleEngine.gd`'s `if _sequence_mode != "single" and
+has_more_opponents(): _advance_to_next_opponent()`). With
+`sequence_mode` left at its default, the other three opponents were
+being built into the battle config and shown in the UI's own "X of N"
+caption, then simply never fought.
+
+**Not fixed as a committee-style "reset."** The engine already has a
+third sequence mode, `"stream"`, purpose-built for exactly this shape —
+its own source comment reads "a town hall: the clock and your record
+carry across the queue, but each new face is a fresh three energy,"
+and a GUT test (`test_a_town_hall_keeps_the_clock_but_refreshes_the_
+energy`) already proves it against a stage literally named `TOWNHALL`.
+`"reset"` (what committees use) would also wipe gaffes, the turn
+counter, and the whole deck/hand/discard pile between every constituent
+— a much harsher reset than CLAUDE.md's own §7.3 ever described for
+Town Hall, and not what the stage's own `stage_types.json` draft (a
+pre-canon config file, confirmed dead for every real level today since
+`BattleSetup.resolve_type()` only fires on a `"type"` field no real
+level sets) already specified for it. `"stream"` was simply never
+wired from that old draft config into the real canon `stages.json` row
+— a one-cell fix (`Sequence Mode`: `single` → `stream`), same raw-XML
+technique as above, confirmed by comparing every other sheet's rows
+before/after and finding only that one cell changed.
+
+Confirmed end to end with a throwaway driver (deleted before commit):
+building LV01's real ST05 and forcing a threshold win against the first
+of its four opponents (Emi Katsuragawa) now advances to the second
+(Daichi Moribe) rather than ending the stage — gaffes and the turn
+counter carried over unchanged, energy refreshed to a full 3. Full GUT
+suite and `tools/verify.sh` confirmed no new failures (the Shop-
+renumbering fallout above is the only pre-existing gap either run
+still shows).
+
+**A related question, flagged but not changed**: ST02 (Floor Debate) and
+ST03 (Party Caucus) carry the same `opponent_count > 1` /
+`sequence_mode: single` combination Town Hall just had — `opponent_count`
+is built and shown in the "X of N" caption for both, but with
+`sequence_mode` still `single`, only the first opponent is ever actually
+fought. Town Hall's own fix was reported directly and has a purpose-built
+mode (`stream`) already proven for exactly its shape; Floor Debate and
+Caucus are canonically described as one continuous debate/caucus rather
+than a queue of separate people (CLAUDE.md §7.3), so changing either is
+a real design call, not a mechanical oversight to fix the same way —
+left for Cameron to confirm before touching.
