@@ -1,6 +1,7 @@
 extends Node
-## Fuzzes the seven purchase-time Supplies effects built for SH13-19 (and,
-## for comparison, the pre-existing SH27-29 they were modeled on): random
+## Fuzzes the seven purchase-time Supplies effects (SH09-13: random card
+## unlock x3, staff recruitment tier, Funds cap; plus, for comparison, the
+## Yen-cost card-tier fixtures the XP route was modeled on): random
 ## XP/Funds/ownership states, hundreds of purchases each, checking
 ## invariants after every single call rather than a few hand-picked
 ## scenarios — the same shape as tools/stress_crisis_triggers.gd.
@@ -25,11 +26,17 @@ func _ready() -> void:
 func _run() -> void:
 	randomize()
 	_reset_state()
-	# SH13/14 (Unlock Tier N Level) were removed from the Shop tab
-	# 2026-09-30 (defunct — nothing to sell). buy_random_level() itself is
-	# still real code, so these two fixtures stand in for the removed rows.
+	# "Unlock Tier N Level" (buy_random_level()) was removed from the Shop
+	# tab 2026-09-30 (defunct — nothing to sell); the real code is still
+	# live, so these two fixtures stand in for the removed rows.
 	DataDB.shop.append({"item_id": "SHTEST_LV1", "cost_xp": 40, "cost_yen": 0, "level_tier": 1})
 	DataDB.shop.append({"item_id": "SHTEST_LV2", "cost_xp": 40, "cost_yen": 0, "level_tier": 2})
+	# "Purchase Random Tier 1/2/3 Card" (the Yen-cost Rhetoric Training
+	# route) was removed from the Shop tab 2026-10-04 — only the XP route
+	# (SH09/10/11) survives in real data. Same fixture bargain as above.
+	DataDB.shop.append({"item_id": "SHTEST_CARD1", "cost_xp": 0, "cost_yen": 10000, "card_tier": 1})
+	DataDB.shop.append({"item_id": "SHTEST_CARD2", "cost_xp": 0, "cost_yen": 20000, "card_tier": 2})
+	DataDB.shop.append({"item_id": "SHTEST_CARD3", "cost_xp": 0, "cost_yen": 40000, "card_tier": 3})
 	DataDB._shop_by_id = DataDB._index(DataDB.shop, "item_id")
 
 	for i in range(ITERATIONS):
@@ -67,7 +74,8 @@ func _reset_state() -> void:
 # ---------------------------------------------------------------------------
 
 func _try_buy_random_card() -> void:
-	var item_id: String = ["SH15", "SH16", "SH17", "SH27", "SH28", "SH29"][randi() % 6]
+	var item_id: String = ["SH09", "SH10", "SH11",
+		"SHTEST_CARD1", "SHTEST_CARD2", "SHTEST_CARD3"][randi() % 6]
 	var item := DataDB.get_shop_item(item_id)
 	var tier := int(item.get("card_tier", 0))
 	var owned_before := GameState.owned_cards.duplicate()
@@ -152,64 +160,63 @@ func _try_recruitment_tier() -> void:
 	for candidate: Dictionary in DataDB.staff:
 		highest = maxi(highest, int(candidate.get("highest_tier", 0)))
 
-	var result := GameState.buy_staff_recruitment_tier("SH18")
+	var result := GameState.buy_staff_recruitment_tier("SH12")
 
 	if result.get("ok", false):
 		if GameState.staff_recruitment_tier != tier_before + 1:
-			_fail("SH18: a successful buy moved the tier from %d to %d, not +1"
+			_fail("SH12: a successful buy moved the tier from %d to %d, not +1"
 				% [tier_before, GameState.staff_recruitment_tier])
 		if GameState.staff_recruitment_tier > highest:
-			_fail("SH18: recruitment tier (%d) went past the highest tier any real candidate has (%d)"
+			_fail("SH12: recruitment tier (%d) went past the highest tier any real candidate has (%d)"
 				% [GameState.staff_recruitment_tier, highest])
 		if GameState.xp >= xp_before:
-			_fail("SH18: a successful buy did not spend XP")
+			_fail("SH12: a successful buy did not spend XP")
 	else:
 		if GameState.staff_recruitment_tier != tier_before:
-			_fail("SH18: a refused buy still changed the tier")
+			_fail("SH12: a refused buy still changed the tier")
 		if GameState.xp != xp_before:
-			_fail("SH18: a refused buy still spent XP")
+			_fail("SH12: a refused buy still spent XP")
 		# A refusal is legitimate either because the tier is already maxed or
 		# because XP/Funds fell short (Items.buy_refusal checks price first) —
 		# only a refusal that is NEITHER of those is actually suspicious.
-		var item := DataDB.get_shop_item("SH18")
+		var item := DataDB.get_shop_item("SH12")
 		var price_short := xp_before < int(item.get("cost_xp", 0))
 		if tier_before < highest and not price_short:
-			_fail("SH18: refused at tier %d (xp=%d, cost=%d), below the real highest tier %d, and XP was enough"
+			_fail("SH12: refused at tier %d (xp=%d, cost=%d), below the real highest tier %d, and XP was enough"
 				% [tier_before, xp_before, int(item.get("cost_xp", 0)), highest])
 
 
 func _try_funds_cap() -> void:
 	var bonus_before := GameState.funds_cap_bonus
 	var xp_before := GameState.xp
-	var item := DataDB.get_shop_item("SH19")
+	var item := DataDB.get_shop_item("SH13")
 	var increase := int(item.get("funds_cap_increase", 0))
 
-	var result := GameState.buy_funds_cap("SH19")
+	var result := GameState.buy_funds_cap("SH13")
 
 	if result.get("ok", false):
 		if GameState.funds_cap_bonus != bonus_before + increase:
-			_fail("SH19: bonus moved from %d to %d, not +%d"
+			_fail("SH13: bonus moved from %d to %d, not +%d"
 				% [bonus_before, GameState.funds_cap_bonus, increase])
 		if GameState.xp >= xp_before:
-			_fail("SH19: a successful buy did not spend XP")
-		# The bonus must actually be repeatable and unbounded from this side —
-		# SH19's whole point is "no limit" (CLAUDE.md §5, funds_cap_bonus).
+			_fail("SH13: a successful buy did not spend XP")
 		if GameState.funds_cap_bonus < 0:
-			_fail("SH19: funds_cap_bonus went negative")
+			_fail("SH13: funds_cap_bonus went negative")
 	else:
 		if GameState.funds_cap_bonus != bonus_before:
-			_fail("SH19: a refused buy still changed the bonus")
+			_fail("SH13: a refused buy still changed the bonus")
 		if GameState.xp != xp_before:
-			_fail("SH19: a refused buy still spent XP")
+			_fail("SH13: a refused buy still spent XP")
 
 	# The raised cap has to actually clamp Funds where it says it will —
-	# proven directly against _sanban_row()'s own math via a real _move_meta.
-	var row := _funds_row()
-	var expected_cap := int(row.get("max", 0)) + GameState.funds_cap_bonus
+	# proven directly against the real effective cap (2026-10-04 redesign:
+	# min(funds_starting_cap + funds_cap_bonus, the sanban hard ceiling),
+	# not the raw sanban max alone) via a real _move_meta.
+	var expected_cap := int(GameState._sanban_row("Funds").get("max", 0))
 	GameState.meta["Funds"] = 0
 	GameState._move_meta("Funds", expected_cap + 999999)
 	if int(GameState.meta["Funds"]) != expected_cap:
-		_fail("Funds cap: clamped to %d, expected base+bonus = %d"
+		_fail("Funds cap: clamped to %d, expected the effective cap = %d"
 			% [int(GameState.meta["Funds"]), expected_cap])
 
 
@@ -250,13 +257,6 @@ func _occasionally_reset_a_field() -> void:
 		1: GameState.levels_unlocked = []
 		2: GameState.staff_recruitment_tier = 0
 		3: GameState.funds_cap_bonus = 0
-
-
-func _funds_row() -> Dictionary:
-	for row: Dictionary in DataDB.sanban:
-		if row.get("name_en") == "Funds":
-			return row
-	return {}
 
 
 func _fail(message: String) -> void:

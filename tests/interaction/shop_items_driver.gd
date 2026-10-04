@@ -1,7 +1,9 @@
 class_name ShopItemsDriver
 extends Node
-## Walks the SH18/19 Supplies purchases and Rhetoric Training's six
-## card sessions (SH15-17, SH27-29), with real clicks (CLAUDE.md M5, 2026-09-25 and 2026-09-25's
+## Walks the SH12/13 Supplies purchases and Rhetoric Training's three real
+## card sessions (SH09-11, the XP route — the Yen route this used to also
+## walk, SH27-29, was removed from the Shop tab 2026-10-04), with real
+## clicks (CLAUDE.md M5, 2026-09-25 and 2026-09-25's
 ## card reveal popup): each one takes effect the moment it is bought rather
 ## than sitting in the inventory to be Used, and this proves that end to
 ## end — the actual Buy button, the actual report line, the card reveal
@@ -54,7 +56,7 @@ func _run() -> void:
 func _walk() -> void:
 	var office := get_tree().current_scene
 
-	# --- Before any SH18 purchase: a Tier 1+ candidate cannot be hired -------
+	# --- Before any SH12 purchase: a Tier 1+ candidate cannot be hired -------
 	if not await _check_staff_gate(office, false):
 		return
 
@@ -65,35 +67,35 @@ func _walk() -> void:
 		_failures.append("the Marketplace button did not open")
 		return
 
-	# --- SH15-17 / SH27-29 are not in Supplies any more ----------------------
+	# --- SH09-11 (the random-card sessions) are not in Supplies any more ----
 	# They moved to Rhetoric Training (Cameron, 2026-09-27) — walked below.
-	for item_id: String in ["SH15", "SH16", "SH17", "SH27", "SH28", "SH29"]:
+	for item_id: String in ["SH09", "SH10", "SH11"]:
 		if supplies.find_child("Supply_" + item_id, true, false) != null:
 			_failures.append("Supplies still lists %s, which belongs in Rhetoric Training" % item_id)
 			return
 
-	# --- A screenshot of the Supplies list with all seven rows visible -------
+	# --- A screenshot of the Supplies list with both rows visible ------------
 	# Real bug class this catches: a row whose label overflows, a missing
 	# icon that isn't the placeholder, or a Buy button that renders with no
 	# real size (the same class of bug _walk_choice_picker() in
 	# inventory_driver.gd found for the Player Choice picker).
-	await _screenshot_supplies_rows(supplies, ["SH18", "SH19"])
+	await _screenshot_supplies_rows(supplies, ["SH12", "SH13"])
 
-	# --- SH18: Unlock New Staff Recruitment Tier ------------------------------
-	if not await _buy(supplies, "SH18"):
+	# --- SH12: Unlock New Staff Recruitment Tier ------------------------------
+	if not await _buy(supplies, "SH12"):
 		return
 	if GameState.staff_recruitment_tier != 1:
-		_failures.append("SH18: expected recruitment tier 1, got %d" % GameState.staff_recruitment_tier)
+		_failures.append("SH12: expected recruitment tier 1, got %d" % GameState.staff_recruitment_tier)
 		return
 
-	# --- SH19: Increase Office Funds Cap --------------------------------------
-	if not await _buy(supplies, "SH19"):
+	# --- SH13: Increase Office Funds Cap --------------------------------------
+	if not await _buy(supplies, "SH13"):
 		return
 	if GameState.funds_cap_bonus != 100000:
-		_failures.append("SH19: expected funds_cap_bonus 100000, got %d" % GameState.funds_cap_bonus)
+		_failures.append("SH13: expected funds_cap_bonus 100000, got %d" % GameState.funds_cap_bonus)
 		return
 
-	print("  bought SH18 and SH19; each took effect on the spot")
+	print("  bought SH12 and SH13; each took effect on the spot")
 	supplies.close()
 	await _wait(0.2)
 
@@ -101,7 +103,7 @@ func _walk() -> void:
 	if not await _walk_rhetoric_training(office):
 		return
 
-	# --- After the SH18 purchase: the same candidate is now hireable ----------
+	# --- After the SH12 purchase: the same candidate is now hireable ----------
 	if not await _check_staff_gate(office, true):
 		return
 
@@ -115,7 +117,7 @@ func _walk() -> void:
 	_check_save_round_trip()
 
 
-## SH18's whole point, seen from the Staff screen rather than GameState:
+## SH12's whole point, seen from the Staff screen rather than GameState:
 ## before any purchase, a Tier 1+ candidate's Hire button is disabled with
 ## the "not open yet" refusal AS its own button text (UiKit.action_button);
 ## after one purchase, the same candidate's button is enabled and reads
@@ -154,7 +156,7 @@ func _check_staff_gate(office: Node, expect_open: bool) -> bool:
 				"%s's Hire button is still disabled ('%s') after unlocking its recruitment tier"
 				% [staff_id, hire_button.text])
 			return false
-		print("  after SH18, a Tier 1 candidate's Hire button is enabled")
+		print("  after SH12, a Tier 1 candidate's Hire button is enabled")
 	else:
 		if not hire_button.disabled:
 			_failures.append(
@@ -165,7 +167,7 @@ func _check_staff_gate(office: Node, expect_open: bool) -> bool:
 				"%s's disabled button says '%s', not the recruitment-tier refusal"
 				% [staff_id, hire_button.text])
 			return false
-		print("  before any SH18 purchase, a Tier 1 candidate cannot be hired")
+		print("  before any SH12 purchase, a Tier 1 candidate cannot be hired")
 
 	staff.close()
 	await _wait(0.2)
@@ -188,7 +190,7 @@ func _button_containing(root: Node, _staff_id: String, candidate: Dictionary) ->
 	return null
 
 
-## No Supplies purchase unlocks a level any more (SH13/14 removed from the
+## No Supplies purchase unlocks a level any more ("Unlock Tier N Level" removed from the
 ## Shop tab, 2026-09-30 — level_gating_enabled's own unlock_cost_xp is 0 on
 ## every real level today anyway, so nothing was actually gated). This
 ## seeds levels_unlocked directly, the same value a purchase used to leave
@@ -336,7 +338,7 @@ func _walk_rhetoric_training(office: Node) -> bool:
 	# the last look — then Learn it (Cameron, 2026-09-27).
 	var xp_before := GameState.xp
 	var owned_at_start := GameState.owned_cards.size()
-	if not await _see_card(office, training, "SH15"):
+	if not await _see_card(office, training, "SH09"):
 		return false
 	var offer := office.get_node("CardRevealPanel") as Overlay
 	for look in [1, 2, 3]:
@@ -370,10 +372,10 @@ func _walk_rhetoric_training(office: Node) -> bool:
 	if not GameState.owned_cards.has(third) or GameState.xp >= xp_before:
 		_failures.append("learning the 3/3 card (%s) did not pay for it and add it" % third)
 		return false
-	print("  SH15: 1/3 -> Pass -> 2/3 -> Pass -> 3/3 (no Pass, no Back) -> learned %s" % third)
+	print("  SH09: 1/3 -> Pass -> 2/3 -> Pass -> 3/3 (no Pass, no Back) -> learned %s" % third)
 
 	# Learn one of each session.
-	for item_id: String in ["SH16", "SH17", "SH27", "SH28", "SH29"]:
+	for item_id: String in ["SH10", "SH11"]:
 		var owned_before := GameState.owned_cards.size()
 		var funds_before := int(GameState.meta.get("Funds", 0))
 		var xp_start := GameState.xp

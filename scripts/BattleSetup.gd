@@ -727,11 +727,12 @@ static func affinity_table() -> Dictionary:
 ## The player's opening standing: sanban.json's own starting values, with
 ## whichever protagonist is currently chosen (DataDB.player) allowed to
 ## override any of them via their own optional "starting_meta" (data/
-## player.json) — blank or missing there, true of all four protagonists
-## today, means "use the sanban.json default", exactly what this always
-## returned before protagonists could differ at all. The mechanism exists so
-## a real per-character difference — Cameron's call, not this code's — has
-## somewhere to go once one is written; nothing plays differently until then.
+## player.json) — blank or missing there means "use the sanban.json
+## default", exactly what this always returned before protagonists could
+## differ at all. All four protagonists now carry real, distinct numbers
+## (2026-10-04 databook pull) — PC01 opens strongest (Constituency support
+## 35, Funds 100,000) down to PC04 weakest (5, 10,000) — so a New Game pick
+## genuinely changes the opening run now, not just in principle.
 static func starting_meta() -> Dictionary:
 	return starting_meta_for(DataDB.player)
 
@@ -753,7 +754,7 @@ static func starting_meta_for(protagonist: Dictionary) -> Dictionary:
 
 ## The player's opening XP: 0 unless the chosen protagonist names their own
 ## "starting_xp" (data/player.json) — same override/default split as
-## starting_meta(), and the same "nothing differs today" state.
+## starting_meta(). Real today: PC01 opens with 60, down to PC03/PC04's 0.
 static func starting_xp() -> int:
 	return starting_xp_for(DataDB.player)
 

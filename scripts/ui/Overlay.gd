@@ -171,6 +171,26 @@ func _input(event: InputEvent) -> void:
 	if not visible or not dismissable:
 		return
 
+	# An Overlay can open on top of another one that stays open underneath it
+	# (Rhetoric Training's own card-offer popup, opened "on top of the
+	# training list, which stays open underneath" — _on_see_card()'s own
+	# comment). Without this check, the UNDERLYING panel's own _input() still
+	# fires for a tap aimed at the one on top: Godot delivers _input() to
+	# every node that overrides it, in sibling order, regardless of which one
+	# is actually drawn on top, so a tap the top panel's own Confirm button
+	# would have happily accepted could land outside the covered panel's own
+	# (smaller, unrelated) content_rect() and silently close IT instead —
+	# `get_viewport().set_input_as_handled()` then stops the event before the
+	# top panel, or its Button, ever sees it. Found 2026-10-04: a real click
+	# on Rhetoric Training's "Learn it" button did exactly this and silently
+	# closed the training list behind it, with nothing paid or granted.
+	var parent := get_parent()
+	if parent != null:
+		for i in range(get_index() + 1, parent.get_child_count()):
+			var sibling := parent.get_child(i)
+			if sibling is Overlay and (sibling as Overlay).visible:
+				return
+
 	if event.is_action_pressed("ui_cancel"):
 		close()
 		get_viewport().set_input_as_handled()

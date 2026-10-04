@@ -1580,15 +1580,17 @@ the screen, Ace Attorney style: the player's card cue from the left (blue
 name tag) with what the card did underneath, the opponent's turn from the
 right (red). Lines queue; tapping the band skips; it never blocks the hand.
 
-**Starting numbers, per protagonist.** The New Game screen now lists each
+**Starting numbers, per protagonist.** The New Game screen lists each
 protagonist's opening Constituency support/Reputation/Funds/Party
 support/XP (`OfficeScreen._starting_stat_lines()`), read through
 `BattleSetup.starting_meta_for()`/`starting_xp_for()`. All four
-protagonists' own `starting_meta`/`starting_xp` (`data/player.json`) are
-empty/0 today, so every row still shows sanban.json's one shared set of
-numbers — the seam exists so a real per-character difference, Cameron's
-call, has somewhere to go, the same bargain `ArtLoader` strikes with art
-that has not been drawn.
+protagonists now carry real, distinct `starting_meta`/`starting_xp`
+(`data/player.json`, the 2026-10-04 databook pull — confirmed live, not
+just wired: a fresh run with each protagonist starts at genuinely
+different numbers, from PC01's strongest opening (Constituency support 35,
+Reputation 25, Funds 100,000, Party support 40, XP 60 — "Easy") down to
+PC04's weakest (5, 0, 10,000, 0, 0 — "Very Hard"), matching each
+protagonist's own `blurb`).
 
 **Touch.** Every scrolling list drags with a finger (`DragScroll`); a drag
 that starts on a button scrolls and does not press it. A card pulled up out
@@ -1862,3 +1864,62 @@ gaffes and the turn counter carried over unchanged exactly as
 pre-existing Shop-renumbering failures as before) and `tools/verify.sh`
 (the same 3 pre-existing interaction-test failures, same cause)
 confirmed no new regressions from either fix.
+
+### Cleared the Shop-renumbering test fallout; a real UI bug found while doing it (2026-10-04, Cameron)
+
+Asked what was outstanding; the biggest real item was the ~18 GUT tests
+and 2 interaction tests (`inventory_test`, `shop_items_test`) left stale
+by Cameron's Shop-tab renumbering (§13's own earlier note). Walked every
+file that hardcoded an old SHxx ID (`test_inventory.gd`,
+`test_visitor_reward_application.gd`, `tools/stress_shop_items.gd`,
+`tests/interaction/{shop_items,inventory,mash}_driver.gd`) and pointed
+each at the item the ID now actually names — `SH20`→`SH14` (Extra Draw),
+`SH25`→`SH19` (Host National Booster Dinner), `SH26`→`SH20` (Host
+District Walking Tour), `SH18`→`SH12` (recruitment tier), `SH19`→`SH13`
+(Funds cap, picking up a couple of refs the last session's own fix
+missed), `SH16`→`SH10` (a Tier 2 XP card session SH16 no longer is).
+The three Yen-cost "Purchase Random Tier N Card" items (once SH27-29)
+are gone from the data entirely now, not renumbered — Cameron removed
+them outright — so the GUT-level tests that specifically exercise the
+Yen route (as opposed to the generic draw/pass/learn mechanism, which
+any card-tier item proves equally well) got synthetic `SHTEST_CARD1/2/3`
+fixture rows injected into `DataDB` for their own duration, the same
+"fake row" technique already established for SH13/14's own 2026-09-30
+removal; `stress_shop_items.gd`'s own `_try_funds_cap()` also had its
+expected-cap math corrected to the real 2026-10-04 formula
+(`min(funds_starting_cap + funds_cap_bonus, hard_max)`), which it had
+never been updated for. `tools/verify.sh` went from 3 failing checks to
+0; the full GUT suite's own Shop-ID-caused failures all cleared (the 3
+remaining failures — stale question-pool-size assumptions against the
+2026-10-04 content expansion, and one card's flavor text over its own
+nine-word limit — are a separate, unrelated gap, left for its own pass).
+
+**A real, previously-hidden UI bug surfaced by this fix**: `shop_items_
+test`'s real-click walk through Rhetoric Training's full draw (1/3 →
+Pass → 2/3 → Pass → 3/3 → Learn it) could never reach the Confirm click
+before, since the old hardcoded "SH15" session no longer existed in the
+real Office panel — the test always failed earlier with "Rhetoric
+Training does not list SH15." With the ID fixed, a REAL new failure
+appeared: clicking "Learn it" at 3/3 did nothing — no card granted, no
+XP spent, the draw just silently vanished. Traced (debug prints added
+to `Overlay.gd`/`OfficeScreen.gd`, removed again once found) to
+`Overlay._input()`'s own "tap outside the content closes the panel"
+logic: `_on_see_card()` opens the card-offer popup (`CardRevealPanel`)
+ON TOP of the Rhetoric Training list (`CardsPanel`), which **stays open
+underneath it** (the function's own existing comment says so) — but
+Godot delivers `_input()` to every node that overrides it, in sibling
+order, regardless of which one is actually drawn on top. A tap on the
+TOP panel's own Confirm button still reached the BOTTOM panel's
+`_input()` first; since that button's position can sit below the
+bottom panel's own (shorter, unrelated) content rect, the bottom panel
+read it as a tap outside ITSELF and silently closed, consuming the
+event before the top panel — or its Button — ever saw it. Not a
+Rhetoric-Training-specific bug: anywhere one Overlay opens on top of
+another that stays open underneath, the same silent swallow could
+happen. Fixed generally, in `Overlay.gd` itself: `_input()` now bails
+out immediately if any LATER sibling `Overlay` (i.e. drawn on top of
+it, since later-added siblings render in front) is also visible,
+deferring to whichever panel is actually frontmost. Confirmed via the
+same real-click test: a full draw now correctly learns the card shown,
+pays for it, and the other two sessions (SH10, SH11) learn cleanly too.
+

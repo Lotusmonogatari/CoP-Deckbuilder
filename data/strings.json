@@ -2511,5 +2511,26 @@
     "english": "The Funds cap is already at its maximum.",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "office.resume_choice_title",
+    "where": "Office, a level was still in progress when the app reopened",
+    "english": "A level was in progress",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.resume_choice_body",
+    "where": "Office, the resume/abandon choice",
+    "english": "Pick up where you left off, or set this level aside and start fresh from the Office.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.abandon_level",
+    "where": "Office, the resume/abandon choice",
+    "english": "Abandon level",
+    "placeholders": null,
+    "notes": "Sets the level aside without recording a win or a loss. It stays available to play again later."
   }
 ]

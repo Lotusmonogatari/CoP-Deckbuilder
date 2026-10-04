@@ -16,7 +16,7 @@ extends Node
 
 const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 const COFFEE := "SH04"
-const DINNER := "SH25"   # Player Choice, "TIER:National +2"
+const DINNER := "SH19"   # Player Choice, "TIER:National +2"
 
 var _failures: PackedStringArray = []
 
@@ -227,11 +227,12 @@ func _walk_choice_picker(office: Node) -> bool:
 	return true
 
 
-## SH26 (Constituency tier) has more boosters than SH25's National tier —
-## the real report this guards was a District Walking Tour picker that
-## opened to an entirely blank panel because every one of its choices had
-## collapsed to a sliver, not just the first. Checks every button, not one.
-const WALKING_TOUR := "SH26"
+## SH20 (Constituency tier) has several boosters to pick from, same as
+## SH19's National tier — the real report this guards was a District
+## Walking Tour picker that opened to an entirely blank panel because every
+## one of its choices had collapsed to a sliver, not just the first. Checks
+## every button, not one.
+const WALKING_TOUR := "SH20"
 
 func _walk_choice_picker_stays_visible_with_more_choices(office: Node) -> bool:
 	GameState.inventory[WALKING_TOUR] = 1

@@ -175,10 +175,10 @@ func test_a_shop_item_reward_does_not_apply_its_grants() -> void:
 
 
 func test_a_shop_item_reward_respects_the_stack_cap() -> void:
-	# SH20 (Extra Draw) has a Stack Cap of 2 in the real workbook.
-	GameState.inventory["SH20"] = 1
-	GameState.apply_visitor_reward_entries([{"target": "SH20", "delta": 5}])
-	assert_eq(GameState.item_count("SH20"), 2, "a gift beyond the cap is lost, not banked")
+	# SH14 (Extra Draw) has a Stack Cap of 2 in the real workbook.
+	GameState.inventory["SH14"] = 1
+	GameState.apply_visitor_reward_entries([{"target": "SH14", "delta": 5}])
+	assert_eq(GameState.item_count("SH14"), 2, "a gift beyond the cap is lost, not banked")
 
 
 func test_a_stage_effect_reward_waits_for_the_next_stage() -> void:

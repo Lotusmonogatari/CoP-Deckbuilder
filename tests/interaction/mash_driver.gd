@@ -306,7 +306,7 @@ func _check_double_vote() -> void:
 # 5. A Supplies purchase, clicked twice
 # ---------------------------------------------------------------------------
 
-## SH19 (Increase Office Funds Cap) is deliberately repeatable (CLAUDE.md
+## SH13 (Increase Office Funds Cap) is deliberately repeatable (CLAUDE.md
 ## M5), so this is not "does a second purchase get refused" — that is
 ## stress_shop_items.gd's job, at the GameState.buy_*() layer, 400
 ## iterations of it. This confirms the real Buy button deducts Funds by
@@ -333,13 +333,13 @@ func _check_double_buy() -> void:
 		_failures.append("double-buy: the Marketplace button did not open")
 		return
 
-	var row := supplies.find_child("Supply_SH19", true, false)
+	var row := supplies.find_child("Supply_SH13", true, false)
 	var button := row.find_child("Buy", true, false) as Button if row != null else null
 	if button == null:
-		_failures.append("double-buy: SH19 has no Buy button in Supplies")
+		_failures.append("double-buy: SH13 has no Buy button in Supplies")
 		return
 
-	# SH19 sits well down a long scrollable list — has to be scrolled into
+	# SH13 sits well down a long scrollable list — has to be scrolled into
 	# view first, same as a deliberate _click() already does, or the two
 	# rapid clicks below land on whatever happens to be on screen instead.
 	var scroll_parent := button.get_parent()
@@ -350,7 +350,7 @@ func _check_double_buy() -> void:
 		await get_tree().process_frame
 		await get_tree().process_frame
 
-	var item := DataDB.get_shop_item("SH19")
+	var item := DataDB.get_shop_item("SH13")
 	var cost := int(item.get("cost_xp", 0))
 	var xp_before := GameState.xp
 
@@ -381,12 +381,12 @@ func _check_double_buy() -> void:
 	# the item's own cost (a partial/duplicate deduction from the same
 	# logical click), or nothing at all (the button silently ate both).
 	if spent <= 0:
-		_failures.append("double-buy: two real clicks on SH19 spent no XP at all")
+		_failures.append("double-buy: two real clicks on SH13 spent no XP at all")
 	elif cost > 0 and spent % cost != 0:
-		_failures.append("double-buy: spent %d XP on SH19 (cost %d) — not a whole multiple, a click was double-charged"
+		_failures.append("double-buy: spent %d XP on SH13 (cost %d) — not a whole multiple, a click was double-charged"
 			% [spent, cost])
 	else:
-		print("  double-buy: SH19 spent %d XP across two real clicks (cost %d each) — no fractional/double charge"
+		print("  double-buy: SH13 spent %d XP across two real clicks (cost %d each) — no fractional/double charge"
 			% [spent, cost])
 
 
