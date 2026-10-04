@@ -84,7 +84,7 @@
     "bar_model": "Shared_pool",
     "energy_mode": "per_turn",
     "energy_pool": null,
-    "sequence_mode": "single",
+    "sequence_mode": "continuous",
     "opponent_count": {
       "min": 2,
       "max": 2
@@ -136,7 +136,7 @@
     "bar_model": "Shared_pool",
     "energy_mode": "per_turn",
     "energy_pool": null,
-    "sequence_mode": "single",
+    "sequence_mode": "continuous",
     "opponent_count": {
       "min": 2,
       "max": 2

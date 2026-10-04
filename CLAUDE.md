@@ -1829,14 +1829,36 @@ suite and `tools/verify.sh` confirmed no new failures (the Shop-
 renumbering fallout above is the only pre-existing gap either run
 still shows).
 
-**A related question, flagged but not changed**: ST02 (Floor Debate) and
-ST03 (Party Caucus) carry the same `opponent_count > 1` /
-`sequence_mode: single` combination Town Hall just had — `opponent_count`
-is built and shown in the "X of N" caption for both, but with
-`sequence_mode` still `single`, only the first opponent is ever actually
-fought. Town Hall's own fix was reported directly and has a purpose-built
-mode (`stream`) already proven for exactly its shape; Floor Debate and
-Caucus are canonically described as one continuous debate/caucus rather
-than a queue of separate people (CLAUDE.md §7.3), so changing either is
-a real design call, not a mechanical oversight to fix the same way —
-left for Cameron to confirm before touching.
+**Floor Debate and Party Caucus had the same bug — now fixed too
+(2026-10-04, Cameron: "if a stage is set to have multiple opponents it
+needs to cycle through them").** ST02 (Floor Debate) and ST03 (Party
+Caucus) carried the identical `opponent_count: 2` /
+`sequence_mode: single` mismatch Town Hall just had — both only ever
+fought the first of their two opponents. Neither uses `"reset"` (that
+would wipe gaffes/hand/deck/clock between the two, which is a committee
+shape, not a continuous one-room debate) or `"stream"` (that explicitly
+tops energy back up to full for each new face, which is Town Hall's own
+shape, not a floor debate's). Both got the engine's **third** sequence
+mode instead, `"continuous"` — defined by Cameron directly: a stage is
+continuous when its energy is a pool that carries across opponents
+without resetting. The engine already had this mode fully built and
+GUT-tested (`scripts/rules/BattleEngine.gd`'s own doc comment: "the
+floor debate: one room, one clock, and the next opponent inherits
+whatever the last one left behind"; `tests/test_battle_engine.gd`'s
+`_five_on_the_floor()` fixture and its own note that "no real stage in
+stages.json ever sets sequence_mode to 'continuous'" — true until this
+fix) — it had simply never been wired to the two real canon rows that
+need it, the same gap Town Hall's `stream` mode had. One cell each
+(`Sequence Mode`: `single` → `continuous`), same raw-XML technique,
+confirmed by comparing every other sheet's rows before/after and finding
+only those two cells changed.
+
+Confirmed end to end with a throwaway driver (deleted before commit)
+against two real levels: LV08's ST02 (Ayala Taiyounokage → Ani Aman) and
+LV04's ST03 (Yuriko Mayeda → Isoroku Adams) — both advance to their
+second opponent on a threshold win instead of ending the stage, with
+gaffes and the turn counter carried over unchanged exactly as
+`"continuous"` promises. Full GUT suite (921/938, the same 17
+pre-existing Shop-renumbering failures as before) and `tools/verify.sh`
+(the same 3 pre-existing interaction-test failures, same cause)
+confirmed no new regressions from either fix.
