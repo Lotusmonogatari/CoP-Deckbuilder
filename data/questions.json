@@ -12,9 +12,6 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP110"
     },
     {
@@ -29,9 +26,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO01"
-      ],
       "asked_by": "OP111"
     },
     {
@@ -46,9 +40,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP112"
     },
     {
@@ -63,9 +54,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO01"
-      ],
       "asked_by": "OP113"
     },
     {
@@ -80,9 +68,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP114"
     },
     {
@@ -97,9 +82,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO01"
-      ],
       "asked_by": "OP115"
     },
     {
@@ -114,9 +96,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP116"
     },
     {
@@ -131,9 +110,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP117"
     },
     {
@@ -148,9 +124,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO01"
-      ],
       "asked_by": "OP110"
     },
     {
@@ -165,9 +138,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP111"
     },
     {
@@ -182,9 +152,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP112"
     },
     {
@@ -199,9 +166,6 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP113"
     },
     {
@@ -216,9 +180,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO02"
-      ],
       "asked_by": "OP114"
     },
     {
@@ -233,9 +194,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP115"
     },
     {
@@ -250,9 +208,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP116"
     },
     {
@@ -267,9 +222,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP117"
     },
     {
@@ -284,9 +236,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP110"
     },
     {
@@ -301,9 +250,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP111"
     },
     {
@@ -318,9 +264,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO01"
-      ],
       "asked_by": "OP112"
     },
     {
@@ -335,9 +278,6 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP113"
     }
   ],
@@ -349,14 +289,11 @@
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
-        "Appeal": "S",
+        "Appeal": "W",
         "Data Driven": "M",
-        "Divisive": "M",
+        "Divisive": "W",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP102"
     },
     {
@@ -364,16 +301,13 @@
       "text": "Why should working people believe you?",
       "theme": "Trust",
       "grades": {
-        "Earnest": "S",
+        "Earnest": "W",
         "Emotional": "M",
-        "Appeal": "M",
-        "Data Driven": "M",
-        "Divisive": "S",
-        "Duplicitous": "S"
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP103"
     },
     {
@@ -381,16 +315,13 @@
       "text": "Who are you really listening to?",
       "theme": "Loyalty",
       "grades": {
-        "Earnest": "S",
-        "Emotional": "M",
-        "Appeal": "S",
-        "Data Driven": "M",
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO01"
-      ],
       "asked_by": "OP104"
     },
     {
@@ -398,16 +329,13 @@
       "text": "What will this cost people like me?",
       "theme": "Cost",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "M",
-        "Appeal": "M",
-        "Data Driven": "S",
-        "Divisive": "M",
-        "Duplicitous": "S"
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP105"
     },
     {
@@ -415,16 +343,13 @@
       "text": "Does our town matter to you at all?",
       "theme": "Neglect",
       "grades": {
-        "Earnest": "S",
+        "Earnest": "M",
         "Emotional": "S",
-        "Appeal": "S",
-        "Data Driven": "W",
+        "Appeal": "W",
+        "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "W"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP106"
     },
     {
@@ -432,33 +357,27 @@
       "text": "Are you going to fight for us?",
       "theme": "Resolve",
       "grades": {
-        "Earnest": "M",
-        "Emotional": "S",
-        "Appeal": "S",
-        "Data Driven": "W",
-        "Divisive": "S",
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO02"
-      ],
       "asked_by": "OP107"
     },
     {
       "id": "T07",
-      "text": "Can you explain this bill in plain words?",
+      "text": "Can you explain the bills you are working on?",
       "theme": "Clarity",
       "grades": {
         "Earnest": "S",
-        "Emotional": "M",
+        "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
         "Divisive": "W",
-        "Duplicitous": "S"
+        "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP108"
     },
     {
@@ -466,50 +385,41 @@
       "text": "Why does it feel like nobody hears us?",
       "theme": "Neglect",
       "grades": {
-        "Earnest": "S",
+        "Earnest": "M",
         "Emotional": "S",
-        "Appeal": "S",
+        "Appeal": "W",
         "Data Driven": "W",
-        "Divisive": "S",
-        "Duplicitous": "M"
+        "Divisive": "M",
+        "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP109"
     },
     {
       "id": "T09",
-      "text": "Will this bill protect jobs in our area?",
+      "text": "Will you protect jobs in our area?",
       "theme": "Livelihood",
       "grades": {
-        "Earnest": "M",
-        "Emotional": "S",
+        "Earnest": "W",
+        "Emotional": "M",
         "Appeal": "S",
         "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "W"
       },
-      "pleases_boosters": [
-        "BO07"
-      ],
       "asked_by": "OP102"
     },
     {
       "id": "T10",
-      "text": "Is this bill for us, or for big business?",
+      "text": "Are you working for us or for conglomerates?",
       "theme": "Motive",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "W"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP103"
     },
     {
@@ -517,33 +427,27 @@
       "text": "What happens to people who can't keep up?",
       "theme": "Vulnerable",
       "grades": {
-        "Earnest": "S",
+        "Earnest": "M",
         "Emotional": "S",
-        "Appeal": "S",
-        "Data Driven": "W",
-        "Divisive": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP104"
     },
     {
       "id": "T12",
-      "text": "Why should I vote for you?",
+      "text": "Why should we support you?",
       "theme": "Trust",
       "grades": {
-        "Earnest": "S",
-        "Emotional": "S",
+        "Earnest": "W",
+        "Emotional": "W",
         "Appeal": "S",
         "Data Driven": "M",
         "Divisive": "M",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP105"
     },
     {
@@ -552,15 +456,12 @@
       "theme": "Openness",
       "grades": {
         "Earnest": "S",
-        "Emotional": "M",
-        "Appeal": "S",
-        "Data Driven": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "M",
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP106"
     },
     {
@@ -568,16 +469,13 @@
       "text": "Are you on our side or theirs?",
       "theme": "Loyalty",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "W",
         "Emotional": "S",
         "Appeal": "S",
         "Data Driven": "W",
-        "Divisive": "S",
-        "Duplicitous": "S"
+        "Divisive": "M",
+        "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO01"
-      ],
       "asked_by": "OP107"
     },
     {
@@ -585,16 +483,13 @@
       "text": "What do you say to families struggling to get by?",
       "theme": "Hardship",
       "grades": {
-        "Earnest": "S",
-        "Emotional": "S",
-        "Appeal": "S",
-        "Data Driven": "M",
-        "Divisive": "M",
-        "Duplicitous": "M"
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP108"
     },
     {
@@ -603,15 +498,12 @@
       "theme": "Trust",
       "grades": {
         "Earnest": "S",
-        "Emotional": "M",
-        "Appeal": "M",
-        "Data Driven": "S",
-        "Divisive": "S",
-        "Duplicitous": "S"
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP109"
     },
     {
@@ -619,16 +511,13 @@
       "text": "Who is behind this bill?",
       "theme": "Influence",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "W",
         "Emotional": "M",
-        "Appeal": "M",
+        "Appeal": "S",
         "Data Driven": "S",
-        "Divisive": "S",
-        "Duplicitous": "S"
+        "Divisive": "M",
+        "Duplicitous": "W"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP102"
     },
     {
@@ -637,15 +526,12 @@
       "theme": "Participation",
       "grades": {
         "Earnest": "M",
-        "Emotional": "S",
-        "Appeal": "S",
+        "Emotional": "W",
+        "Appeal": "M",
         "Data Driven": "W",
-        "Divisive": "M",
-        "Duplicitous": "M"
+        "Divisive": "S",
+        "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP103"
     },
     {
@@ -655,14 +541,11 @@
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
-        "Appeal": "M",
-        "Data Driven": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
         "Divisive": "W",
-        "Duplicitous": "S"
+        "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO01"
-      ],
       "asked_by": "OP104"
     },
     {
@@ -670,17 +553,756 @@
       "text": "Why should young people care about this?",
       "theme": "Stakes",
       "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T21",
+      "text": "Are you telling your colleagues about our local issues?",
+      "theme": "Representation",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T22",
+      "text": "How do you uplift our voices within the National Assembly?",
+      "theme": "Representation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T23",
+      "text": "Are you giving lobbyists and journalists more attention than us?",
+      "theme": "Access",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T24",
+      "text": "What are you doing to protect our traditional culture?",
+      "theme": "Identity",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T25",
+      "text": "Do you even know who we are anymore, after we elected you?",
+      "theme": "Disconnect",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T26",
+      "text": "How are you addressing the need to curtail tourist behavior?",
+      "theme": "Community strain",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T27",
+      "text": "When will Parliament restore long-term working visas for the service industry?",
+      "theme": "Livelihood",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T28",
+      "text": "What are you doing about cultural and linguistic assimilation?",
+      "theme": "Identity",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T29",
+      "text": "Are you pursuing any legislation about broadband and connectivity?",
+      "theme": "Access",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T30",
+      "text": "Do you support Prime Minister Rono?",
+      "theme": "Loyalty",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T31",
+      "text": "Can you do more to fund senior care centers?",
+      "theme": "Care",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T32",
+      "text": "There are aliens watching us from the trees. We need you to send in the military and restore our nation!",
+      "theme": "Fear",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T33",
+      "text": "Children are making noise in my neighborhood park. Can you push a bill to prohibit the annoying use of my local parks?",
+      "theme": "Shared space",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T34",
+      "text": "Why are groceries, fuel, and rent rising faster than our pay?",
+      "theme": "Cost of living",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T35",
+      "text": "Will you give households tax relief that actually reaches the checkout?",
+      "theme": "Tax relief",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T36",
+      "text": "Would you cut the tax on food, and where would the money come from?",
+      "theme": "Food tax",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T37",
+      "text": "If the food tax is suspended, what gets cut or paid for another way?",
+      "theme": "Funding",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T38",
+      "text": "How much more debt can Yezo take before our children carry the bill?",
+      "theme": "Public debt",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T39",
+      "text": "When do short-term boosts become a long-term burden?",
+      "theme": "Fiscal discipline",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T40",
+      "text": "Why should families pay more for defense before basic costs are under control?",
+      "theme": "Defense spending",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T41",
+      "text": "What safeguards will govern armed drones and artificial intelligence?",
+      "theme": "Defense technology",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T42",
+      "text": "Are we changing our security plans because Yezo needs it or because allies are asking?",
+      "theme": "Security strategy",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T43",
+      "text": "How would a crisis across the strait affect people in Yezo?",
+      "theme": "Regional security",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T44",
+      "text": "What would changing the constitution mean for the limits on military power?",
+      "theme": "Constitution",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T45",
+      "text": "Who decides when emergency powers are used, and what stops them from being abused?",
+      "theme": "Emergency powers",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T46",
+      "text": "Are you keeping Yezo out of nuclear weapons, or moving us closer to them?",
+      "theme": "Nuclear posture",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T47",
+      "text": "What protection do we get in return for changing our nuclear principles?",
+      "theme": "Nuclear deterrence",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T48",
+      "text": "How will you fill labor gaps without leaving newcomers on their own?",
+      "theme": "Immigration",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T49",
+      "text": "What rules will protect residents and workers when more people come from abroad?",
+      "theme": "Integration",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T50",
+      "text": "What will make it possible for people who want children to afford them?",
+      "theme": "Family support",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T51",
+      "text": "How will smaller communities keep workers when young people have to leave?",
+      "theme": "Workforce",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T52",
+      "text": "Can pensions, health care, and long-term care all be funded without making older people choose?",
+      "theme": "Aging",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T53",
+      "text": "Who pays when care needs grow faster than the people available to provide it?",
+      "theme": "Care funding",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T54",
+      "text": "Will power bills go down if reactors restart, and who carries the risk if something goes wrong?",
+      "theme": "Energy",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T55",
+      "text": "How will you keep renewable power affordable without weakening safety or waste rules?",
+      "theme": "Energy transition",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T56",
+      "text": "What happens to local jobs if Yezo cannot get the chips and materials it needs?",
+      "theme": "Economic security",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T57",
+      "text": "How will you secure essential supplies without simply moving dependence somewhere else?",
+      "theme": "Supply chains",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T58",
+      "text": "Why should we trust party money rules if insiders keep finding ways around them?",
+      "theme": "Political funds",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T59",
+      "text": "Will the public see who is funding political campaigns and what they expect in return?",
+      "theme": "Transparency",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T60",
+      "text": "Why should the law tell married people what name their family must use?",
+      "theme": "Family law",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T61",
+      "text": "What will you do when people are treated unfairly because of their gender or who they love?",
+      "theme": "Equal rights",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T62",
+      "text": "Why should communities near bases carry risks that the rest of Yezo does not?",
+      "theme": "Base burden",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T63",
+      "text": "Who gets the final say when security projects change a community's land or coastline?",
+      "theme": "Local autonomy",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T64",
+      "text": "What are you doing about visitors driving up rents and crowding out local people in Hokkaido?",
+      "theme": "Overtourism",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T65",
+      "text": "Will you back limits on short-term rentals when neighborhoods are losing homes?",
+      "theme": "Housing and tourism",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T66",
+      "text": "How will rural communities keep a clinic, a school, and a bus route when population falls?",
+      "theme": "Rural services",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T67",
+      "text": "What can Aomori count on when the last shop or rail link is at risk?",
+      "theme": "Rural decline",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T68",
+      "text": "Are evacuation plans built for the people who cannot leave quickly?",
+      "theme": "Disaster readiness",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T69",
+      "text": "Who is accountable when aging roads, bridges, or flood defenses fail?",
+      "theme": "Infrastructure",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T70",
+      "text": "Will you stop a large solar project if it threatens wetlands in Hokkaido?",
+      "theme": "Conservation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T71",
+      "text": "How will local people have a real say before major energy projects are approved?",
+      "theme": "Consent",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T72",
+      "text": "What will keep redevelopment from pricing long-time residents out of their neighborhood?",
+      "theme": "Housing",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T73",
+      "text": "Will you fix empty homes before backing another expensive redevelopment project?",
+      "theme": "Vacant homes",
+      "grades": {
         "Earnest": "S",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "M",
-        "Divisive": "S",
-        "Duplicitous": "M"
+        "Divisive": "W",
+        "Duplicitous": "W"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
-      "asked_by": "OP105"
+      "asked_by": "OP102"
     }
   ],
   "lobbyist_meeting": [
@@ -696,9 +1318,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO10"
-      ],
       "asked_by": "OP118"
     },
     {
@@ -713,9 +1332,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP119"
     },
     {
@@ -730,9 +1346,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP120"
     },
     {
@@ -747,9 +1360,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO07"
-      ],
       "asked_by": "OP121"
     },
     {
@@ -764,9 +1374,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP122"
     },
     {
@@ -781,9 +1388,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP123"
     },
     {
@@ -798,9 +1402,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP124"
     },
     {
@@ -815,9 +1416,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO10"
-      ],
       "asked_by": "OP125"
     },
     {
@@ -832,9 +1430,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO02"
-      ],
       "asked_by": "OP118"
     },
     {
@@ -849,9 +1444,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP119"
     },
     {
@@ -866,9 +1458,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP120"
     },
     {
@@ -883,9 +1472,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP121"
     },
     {
@@ -900,9 +1486,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO10"
-      ],
       "asked_by": "OP122"
     },
     {
@@ -917,9 +1500,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP123"
     },
     {
@@ -934,9 +1514,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO10"
-      ],
       "asked_by": "OP124"
     },
     {
@@ -951,9 +1528,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO02"
-      ],
       "asked_by": "OP125"
     },
     {
@@ -968,9 +1542,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO02"
-      ],
       "asked_by": "OP118"
     },
     {
@@ -985,9 +1556,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP119"
     },
     {
@@ -1002,9 +1570,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP120"
     },
     {
@@ -1019,9 +1584,566 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO02"
-      ],
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L21",
+      "text": "Families in our district are skipping meals to pay rent. What will you do?",
+      "theme": "Hardship",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L22",
+      "text": "The weak yen has erased a decade of wage gains. What's your plan?",
+      "theme": "Wages",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L23",
+      "text": "Will you back suspending the consumption tax on food?",
+      "theme": "Tax Relief",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L24",
+      "text": "If the food tax is cut, who pays for it?",
+      "theme": "Funding",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L25",
+      "text": "Would you support more stimulus even if the debt keeps growing?",
+      "theme": "Stimulus",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L26",
+      "text": "Bond markets are nervous. Will you hold the line on the budget?",
+      "theme": "Discipline",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L27",
+      "text": "Will you vote to increase overseas spending?",
+      "theme": "Defense Budget",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L28",
+      "text": "Do you support counterstrike missiles, drones, and AI-enabled weapons?",
+      "theme": "Capabilities",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L29",
+      "text": "Should Yezo revise its security strategy if our allies ask us to?",
+      "theme": "Alliance",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L30",
+      "text": "Will you support revising export laws limiting our munitions industry?",
+      "theme": "Arms Trade",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L31",
+      "text": "Will you vote to revise Ainu quota rules for non-profit boards?",
+      "theme": "Constitution",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L32",
+      "text": "Should the Self-Defense Forces and emergency powers be written into the constitution?",
+      "theme": "Emergency Powers",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L33",
+      "text": "Will you revisit the Three Non-Nuclear Principles?",
+      "theme": "Principles",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L34",
+      "text": "Would you accept closer nuclear deterrence arrangements with our allies?",
+      "theme": "Deterrence",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L35",
+      "text": "Our industry can't find workers. Will you open the door wider?",
+      "theme": "Labor",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L36",
+      "text": "Should there be a cap on foreign residents?",
+      "theme": "Immigration",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L37",
+      "text": "Will you fund childcare so young couples can afford children?",
+      "theme": "Childcare",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L38",
+      "text": "Who fills the jobs if the workforce keeps shrinking?",
+      "theme": "Workforce",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L39",
+      "text": "Will you protect pensions without raising premiums?",
+      "theme": "Pensions",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L40",
+      "text": "How will long-term care be paid for as Yezo ages? More business taxes?",
+      "theme": "Elder Care",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L41",
+      "text": "Will you support restarting idled nuclear reactors?",
+      "theme": "Nuclear Energy",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L42",
+      "text": "Power bills are crushing our members. Will you back faster renewables or raise natural gas import quotas?",
+      "theme": "Power Prices",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L43",
+      "text": "Will you subsidize domestic semiconductor production?",
+      "theme": "Subsidy",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L44",
+      "text": "Can we reduce our dependence on imported rare earths?",
+      "theme": "Supply Chains",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L45",
+      "text": "Will you support banning corporate donations to parties?",
+      "theme": "Funding Reform",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L46",
+      "text": "Would you publish every donation you've received?",
+      "theme": "Transparency",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L47",
+      "text": "Will you let married couples keep separate surnames?",
+      "theme": "Family Law",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L48",
+      "text": "Should the imperial succession be opened to women?",
+      "theme": "Succession",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L49",
+      "text": "Chishima has carried the base burden for generations. Will you stand with it?",
+      "theme": "Base Burden",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L50",
+      "text": "Will you back relocating the Chishima air base over local objections?",
+      "theme": "Relocation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L51",
+      "text": "Hokkaido is overrun with visitors. Will you support a higher tourist tax?",
+      "theme": "Tourism Tax",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L52",
+      "text": "Should short-term rentals be capped in our resort towns?",
+      "theme": "Short-Term Rentals",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L53",
+      "text": "Aomori's hospitals and schools are closing. Will you keep them open?",
+      "theme": "Rural Services",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L54",
+      "text": "Can rural bus and rail links survive without subsidies?",
+      "theme": "Transit",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L55",
+      "text": "Will you fund flood mitigation installation programs for coastal factories and warehouses?",
+      "theme": "Preparedness",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L56",
+      "text": "Who pays to rebuild after the next quake?",
+      "theme": "Reconstruction",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L57",
+      "text": "Will you back a mega-solar project beside the Kushiro Wetlands?",
+      "theme": "Solar Siting",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L58",
+      "text": "Should local communities hold a veto over solar projects?",
+      "theme": "Local Consent",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L59",
+      "text": "Will you speed approvals for redevelopment around major stations?",
+      "theme": "Redevelopment",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L60",
+      "text": "Rents are climbing while homes sit empty. What will you do?",
+      "theme": "Housing",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
       "asked_by": "OP121"
     }
   ],
@@ -1038,9 +2160,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO04"
-      ],
       "asked_by": "OP100"
     },
     {
@@ -1055,9 +2174,6 @@
         "Divisive": "W",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP11"
     },
     {
@@ -1072,9 +2188,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP12"
     },
     {
@@ -1089,9 +2202,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP16"
     },
     {
@@ -1106,9 +2216,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP18"
     },
     {
@@ -1123,9 +2230,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP42"
     },
     {
@@ -1140,9 +2244,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP46"
     },
     {
@@ -1157,9 +2258,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP59"
     },
     {
@@ -1174,9 +2272,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO09"
-      ],
       "asked_by": "OP62"
     },
     {
@@ -1191,9 +2286,6 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO06"
-      ],
       "asked_by": "OP71"
     },
     {
@@ -1208,9 +2300,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO04"
-      ],
       "asked_by": "OP81"
     },
     {
@@ -1225,9 +2314,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO04"
-      ],
       "asked_by": "OP87"
     },
     {
@@ -1242,9 +2328,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP100"
     },
     {
@@ -1259,9 +2342,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO04"
-      ],
       "asked_by": "OP11"
     },
     {
@@ -1276,9 +2356,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP12"
     },
     {
@@ -1293,9 +2370,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP16"
     },
     {
@@ -1310,9 +2384,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP18"
     },
     {
@@ -1327,9 +2398,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO04"
-      ],
       "asked_by": "OP42"
     },
     {
@@ -1344,9 +2412,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO04"
-      ],
       "asked_by": "OP46"
     },
     {
@@ -1361,9 +2426,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO10"
-      ],
       "asked_by": "OP59"
     }
   ],
@@ -1380,9 +2442,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP110"
     },
     {
@@ -1397,9 +2456,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP111"
     },
     {
@@ -1414,9 +2470,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP112"
     },
     {
@@ -1431,9 +2484,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP113"
     },
     {
@@ -1448,9 +2498,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP114"
     },
     {
@@ -1465,9 +2512,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP115"
     },
     {
@@ -1482,9 +2526,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP116"
     },
     {
@@ -1499,9 +2540,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO02"
-      ],
       "asked_by": "OP117"
     },
     {
@@ -1516,9 +2554,6 @@
         "Divisive": "M",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP110"
     },
     {
@@ -1533,9 +2568,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP111"
     },
     {
@@ -1550,9 +2582,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP112"
     },
     {
@@ -1567,9 +2596,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO05"
-      ],
       "asked_by": "OP113"
     },
     {
@@ -1584,9 +2610,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP114"
     },
     {
@@ -1601,9 +2624,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO02"
-      ],
       "asked_by": "OP115"
     },
     {
@@ -1618,9 +2638,6 @@
         "Divisive": "S",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP116"
     },
     {
@@ -1635,9 +2652,6 @@
         "Divisive": "W",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP117"
     },
     {
@@ -1652,9 +2666,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP110"
     },
     {
@@ -1669,9 +2680,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP111"
     },
     {
@@ -1686,9 +2694,6 @@
         "Divisive": "M",
         "Duplicitous": "M"
       },
-      "pleases_boosters": [
-        "BO03"
-      ],
       "asked_by": "OP112"
     },
     {
@@ -1703,9 +2708,6 @@
         "Divisive": "S",
         "Duplicitous": "S"
       },
-      "pleases_boosters": [
-        "BO08"
-      ],
       "asked_by": "OP113"
     }
   ]

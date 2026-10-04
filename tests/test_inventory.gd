@@ -489,7 +489,7 @@ func test_buying_a_funds_cap_increase_raises_the_effective_cap() -> void:
 	assert_eq(int(GameState.meta["Funds"]), starting_cap,
 		"with nothing purchased, Funds stops at the starting cap")
 
-	var result := GameState.buy_funds_cap("SH19")
+	var result := GameState.buy_funds_cap("SH13")
 	assert_true(result["ok"])
 	assert_eq(GameState.funds_cap_bonus, 100000)
 
@@ -516,7 +516,7 @@ func test_buying_a_funds_cap_increase_is_refused_once_the_ceiling_is_reached() -
 	GameState.funds_cap_bonus = hard_max - starting_cap   # already at the ceiling
 	GameState.xp = 10000
 
-	var result := GameState.buy_funds_cap("SH19")
+	var result := GameState.buy_funds_cap("SH13")
 	assert_false(result["ok"])
 	assert_eq(result["message"], Text.say("shop.funds_cap_maxed"))
 	assert_eq(GameState.funds_cap_bonus, hard_max - starting_cap, "refused — nothing changed")

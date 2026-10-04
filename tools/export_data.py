@@ -414,8 +414,18 @@ SHEETS = {
     # proposed the mapping and Cameron corrects it in the workbook. The Why
     # column is the reasoning, so a wrong row is obvious without reading the
     # questions. Only booster IDs that exist may be used — checked below.
+    #
+    # optional_sheet: True (2026-10-04) — the tab went missing from a real
+    # workbook upload (whether deliberately, pending a rewrite, or by
+    # accident is Cameron's to say, not guessed at here); a totally absent
+    # tab was a hard export error before this, blocking every other change
+    # in the same upload. The game already degrades gracefully per-theme
+    # when a row is missing ("a strong answer will please nobody" for that
+    # theme, not a crash), so a wholly-absent tab is the same bargain, one
+    # level up: no theme pleases any organisation until rows exist again.
     "Question Themes": {
         "out": "question_themes.json",
+        "optional_sheet": True,
         "key": "theme",
         "columns": [
             ("Theme", "theme", "id"),

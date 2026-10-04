@@ -1,681 +1,5 @@
 [
   {
-    "opp_id": "OP110",
-    "name": "Kenta Aoshima",
-    "title": "Chief Political Correspondent",
-    "gender": "M",
-    "party": null,
-    "party_acronym": null,
-    "affiliation": "BO08",
-    "role": "Journalist",
-    "stages": [
-      "ST19",
-      "ST04"
-    ],
-    "suit_1": "Divisive",
-    "suit_2": "Duplicitous",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 4,
-      "max": 7
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP67",
-    "name": "Okabe Hideriai",
-    "title": "Leader of the Country Initiative",
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11",
-      "ST02",
-      "ST06"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Earnest",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP80",
-    "name": "Soma Umehori",
-    "title": "Leader of the Five Point Independents",
-    "gender": "F",
-    "party": "Five Point Independents",
-    "party_acronym": "FPI",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Duplicitous",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 3,
-      "max": 5
-    }
-  },
-  {
-    "opp_id": "OP83",
-    "name": "Teinei Macmillan",
-    "title": "Leader of the Keizaijiyuutou",
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16",
-      "ST02",
-      "ST06"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP29",
-    "name": "Imekanu Resu",
-    "title": "Minister of Agriculture; Chair of the Committee on Agriculture",
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13",
-      "ST18",
-      "ST06"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP36",
-    "name": "Kakuei Sato",
-    "title": "Minister of Construction and Development; Chair of the Committee on Construction and Development",
-    "gender": "M",
-    "party": "Five Point Independents",
-    "party_acronym": "FPI",
-    "affiliation": "BO17",
-    "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15",
-      "ST18",
-      "ST08"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Duplicitous",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP91",
-    "name": "Utemaru Naizen",
-    "title": "Minister of Ethics and Prosecution; Chair of the Committee on Ethics and Prosecution; Leader of the Butsutou",
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09",
-      "ST18",
-      "ST06"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 5,
-      "max": 8
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP47",
-    "name": "Kitahime Haibi",
-    "title": "Minister of Finance; Chair of the Committee on Finance",
-    "gender": "F",
-    "party": "Five Point Independents",
-    "party_acronym": "FPI",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16",
-      "ST18",
-      "ST06"
-    ],
-    "suit_1": "Data Driven",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 3,
-      "max": 5
-    }
-  },
-  {
-    "opp_id": "OP82",
-    "name": "Tama Tsujikonou",
-    "title": "Minister of Foreign Affairs; Chair of the Committee on Foreign Affairs",
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14",
-      "ST18",
-      "ST01",
-      "ST08"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Divisive",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP78",
-    "name": "Siatuy Sanota",
-    "title": "Minister of Government Administration; Chair of the Committee on Government Administration",
-    "gender": "F",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST18",
-      "ST02",
-      "ST06",
-      "ST08"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Divisive",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP33",
-    "name": "Juba Kasumu",
-    "title": "Minister of the Environment; Chair of the Committee on the Environment",
-    "gender": "F",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10",
-      "ST18",
-      "ST02",
-      "ST06"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Data Driven",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 5
-    }
-  },
-  {
-    "opp_id": "OP57",
-    "name": "Masanori Shizugata",
-    "title": "Minister of War; Chair of the Committee on War",
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11",
-      "ST18",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 7
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP01",
-    "name": "Ayala Taiyounokage",
-    "title": null,
-    "gender": "F",
-    "party": "Five Point Independents",
-    "party_acronym": "FPI",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10",
-      "ST01",
-      "ST02",
-      "ST06"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 3,
-      "max": 5
-    }
-  },
-  {
-    "opp_id": "OP02",
-    "name": "Amaya Matsumae",
-    "title": null,
-    "gender": "F",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST08"
-    ],
-    "suit_1": "Duplicitous",
-    "suit_2": "Emotional",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 4,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 0,
-      "max": 1
-    },
-    "intent_block_range": {
-      "min": 3,
-      "max": 5
-    }
-  },
-  {
-    "opp_id": "OP03",
-    "name": "Ani Aman",
-    "title": null,
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Earnest",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 6
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP04",
-    "name": "Aoi Oba",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Appeal",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 5,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_block_range": null
-  },
-  {
-    "opp_id": "OP05",
-    "name": "Aptoas Ahun",
-    "title": null,
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO18",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 4,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP06",
-    "name": "Arata Ran",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP07",
-    "name": "Arisu Fukunaga",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Data Driven",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP08",
-    "name": "Atsuko Takeo",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP09",
-    "name": "Atsushi Fujioka",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Data Driven",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP100",
-    "name": "Yuki Kasukasa",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP101",
-    "name": "Yuriko Mayeda",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15",
-      "ST03"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Divisive",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 4,
-      "max": 6
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": null
-  },
-  {
     "opp_id": "OP103",
     "name": "Daichi Moribe",
     "title": null,
@@ -872,6 +196,1209 @@
     }
   },
   {
+    "opp_id": "OP102",
+    "name": "Emi Katsuragawa",
+    "title": "President, District Kōenkai Association",
+    "gender": "F",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO03",
+    "role": "Kōenkai Member",
+    "stages": [
+      "ST05"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 7
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP14",
+    "name": "Donald Shibata",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Earnest",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP34",
+    "name": "Tae-jun Jung",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP60",
+    "name": "Migimura Okamuradonzai",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP65",
+    "name": "Nonaka Tomiko",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP69",
+    "name": "Pirkaike Tsuki",
+    "title": null,
+    "gender": "F",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Duplicitous",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP99",
+    "name": "Yoshimura Hideko",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP45",
+    "name": "Kinkokoro Matsumae",
+    "title": null,
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP50",
+    "name": "Kokuni Yatsumachi",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP09",
+    "name": "Atsushi Fujioka",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Data Driven",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP85",
+    "name": "Tobira Hideyoshi",
+    "title": null,
+    "gender": "M",
+    "party": "Five Point Independents",
+    "party_acronym": "FPI",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09",
+      "ST03"
+    ],
+    "suit_1": "Duplicitous",
+    "suit_2": "Divisive",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP91",
+    "name": "Utemaru Naizen",
+    "title": "Minister of Ethics and Prosecution; Chair of the Committee on Ethics and Prosecution; Leader of the Butsutou",
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09",
+      "ST18",
+      "ST06"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 5,
+      "max": 8
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP81",
+    "name": "Taiyou Nigate",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Ethics and Prosecution",
+    "stages": [
+      "ST09",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP17",
+    "name": "Furukawa Hideki",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP23",
+    "name": "Harumi Asato",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Duplicitous",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP24",
+    "name": "Hideaki Terada",
+    "title": null,
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP37",
+    "name": "Kang Guang",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Duplicitous",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP64",
+    "name": "Noah Kain",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP75",
+    "name": "Seta Anramasu",
+    "title": null,
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP92",
+    "name": "Walter Peard",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Duplicitous",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP01",
+    "name": "Ayala Taiyounokage",
+    "title": null,
+    "gender": "F",
+    "party": "Five Point Independents",
+    "party_acronym": "FPI",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10",
+      "ST01",
+      "ST02",
+      "ST06"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 3,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP51",
+    "name": "Kotake Kasumu",
+    "title": null,
+    "gender": "F",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP30",
+    "name": "Isoroku Adams",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10",
+      "ST03"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Divisive",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP33",
+    "name": "Juba Kasumu",
+    "title": "Minister of the Environment; Chair of the Committee on the Environment",
+    "gender": "F",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10",
+      "ST18",
+      "ST02",
+      "ST06"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Data Driven",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP42",
+    "name": "Keu Shibatani",
+    "title": null,
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 1
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 3,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP71",
+    "name": "Ran Sachiko",
+    "title": null,
+    "gender": "F",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on the Environment",
+    "stages": [
+      "ST10",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP54",
+    "name": "Luo Guang",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Data Driven",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP63",
+    "name": "Namgung Ryung",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP73",
+    "name": "Lee-min Seong",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Earnest",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP21",
+    "name": "Hee-seop Han",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Duplicitous",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP67",
+    "name": "Okabe Hideriai",
+    "title": "Leader of the Country Initiative",
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11",
+      "ST02",
+      "ST06"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Earnest",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP52",
+    "name": "Koyki Kurasno",
+    "title": null,
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11",
+      "ST03"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Divisive",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP66",
+    "name": "Nonaka Yoshie",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11",
+      "ST03"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Divisive",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP57",
+    "name": "Masanori Shizugata",
+    "title": "Minister of War; Chair of the Committee on War",
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on War",
+    "stages": [
+      "ST11",
+      "ST18",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 7
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP48",
+    "name": "Kiyabu Waritai",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Earnest",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP76",
+    "name": "Shiba Momoe",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP88",
+    "name": "Tsukuhito Keri",
+    "title": null,
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP04",
+    "name": "Aoi Oba",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Appeal",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 5,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_block_range": null
+  },
+  {
+    "opp_id": "OP31",
+    "name": "Iwao Nagamine",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12",
+      "ST03"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP58",
+    "name": "Masato Maruyama",
+    "title": null,
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12",
+      "ST03"
+    ],
+    "suit_1": "Duplicitous",
+    "suit_2": "Divisive",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP90",
+    "name": "Tsutomu Hirano",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12",
+      "ST03"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP27",
+    "name": "Ichizaki Namu",
+    "title": "President of the National Assembly; Chair of the Committee on the National Assembly; Speaker of the National Assembly; Leader of the Frontier Party",
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12",
+      "ST18",
+      "ST06"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 7
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 8
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
     "opp_id": "OP11",
     "name": "Barclay Brigham",
     "title": null,
@@ -898,6 +1425,1613 @@
     "intent_block_range": {
       "min": 2,
       "max": 4
+    }
+  },
+  {
+    "opp_id": "OP12",
+    "name": "Chi Zoku",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on the National Assembly",
+    "stages": [
+      "ST12",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP25",
+    "name": "Hikari Suimoto",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Appeal",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 1
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP70",
+    "name": "Poiya Kanu",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP74",
+    "name": "Seong Yun-hee",
+    "title": null,
+    "gender": "F",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Duplicitous",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP79",
+    "name": "Sikanna Sapanipa",
+    "title": null,
+    "gender": "F",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP84",
+    "name": "Tian Zhao Bo",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Duplicitous",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP94",
+    "name": "Xiaobo Jiang",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Earnest",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP98",
+    "name": "Yoshida Cho",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP06",
+    "name": "Arata Ran",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP43",
+    "name": "Kimiko Chinen",
+    "title": null,
+    "gender": "F",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP29",
+    "name": "Imekanu Resu",
+    "title": "Minister of Agriculture; Chair of the Committee on Agriculture",
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13",
+      "ST18",
+      "ST06"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP46",
+    "name": "Kisar Masayoshi",
+    "title": null,
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Agriculture",
+    "stages": [
+      "ST13",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP20",
+    "name": "Gorou Kon",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP44",
+    "name": "Kina Kewtum",
+    "title": null,
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Data Driven",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP55",
+    "name": "Lyosha Morozov",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP61",
+    "name": "Miho Shingumi",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP89",
+    "name": "Tsuneo Yoneda",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Appeal",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 1
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP95",
+    "name": "Xiong Xiaodan",
+    "title": null,
+    "gender": "F",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP38",
+    "name": "Katsumiko Yamamura",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Appeal",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP72",
+    "name": "Sadao Nishikawa",
+    "title": null,
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP56",
+    "name": "Mao Saeki",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14",
+      "ST08"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP82",
+    "name": "Tama Tsujikonou",
+    "title": "Minister of Foreign Affairs; Chair of the Committee on Foreign Affairs",
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14",
+      "ST18",
+      "ST01",
+      "ST08"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Divisive",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP18",
+    "name": "Gavin Ronaldson",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP59",
+    "name": "Masayoshi Sera",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Foreign Affairs",
+    "stages": [
+      "ST14",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP19",
+    "name": "Goko Morino",
+    "title": null,
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
+    "stages": [
+      "ST15"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Data Driven",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP68",
+    "name": "Okita Shiori",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
+    "stages": [
+      "ST15"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP13",
+    "name": "Cyril Slater",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
+    "stages": [
+      "ST15",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Divisive",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP101",
+    "name": "Yuriko Mayeda",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
+    "stages": [
+      "ST15",
+      "ST03"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": null
+  },
+  {
+    "opp_id": "OP77",
+    "name": "Shizutake Matsumae",
+    "title": null,
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
+    "stages": [
+      "ST15",
+      "ST03"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Divisive",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP36",
+    "name": "Kakuei Sato",
+    "title": "Minister of Construction and Development; Chair of the Committee on Construction and Development",
+    "gender": "M",
+    "party": "Five Point Independents",
+    "party_acronym": "FPI",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
+    "stages": [
+      "ST15",
+      "ST18",
+      "ST08"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Duplicitous",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 6
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP62",
+    "name": "Minami Okirasnunipa",
+    "title": null,
+    "gender": "F",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Construction and Development",
+    "stages": [
+      "ST15",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP05",
+    "name": "Aptoas Ahun",
+    "title": null,
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO18",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 4,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP32",
+    "name": "Jiayi Gong",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Earnest",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP39",
+    "name": "Kaya Ukor",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Earnest",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP41",
+    "name": "Kenta Hamasaki",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Data Driven",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP97",
+    "name": "Yoshi Toda",
+    "title": null,
+    "gender": "M",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Appeal",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP03",
+    "name": "Ani Aman",
+    "title": null,
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Earnest",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 6
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP07",
+    "name": "Arisu Fukunaga",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Data Driven",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP83",
+    "name": "Teinei Macmillan",
+    "title": "Leader of the Keizaijiyuutou",
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16",
+      "ST02",
+      "ST06"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP47",
+    "name": "Kitahime Haibi",
+    "title": "Minister of Finance; Chair of the Committee on Finance",
+    "gender": "F",
+    "party": "Five Point Independents",
+    "party_acronym": "FPI",
+    "affiliation": "BO17",
+    "role": "Committee on Finance",
+    "stages": [
+      "ST16",
+      "ST18",
+      "ST06"
+    ],
+    "suit_1": "Data Driven",
+    "suit_2": "Appeal",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 3,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP49",
+    "name": "Kiyomi Gima",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP53",
+    "name": "Leonard Ridgway",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP86",
+    "name": "Tomihisa Shimao",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Duplicitous",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP93",
+    "name": "Xiang Huang",
+    "title": null,
+    "gender": "M",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP96",
+    "name": "Yakuwakka Yayarini",
+    "title": null,
+    "gender": "F",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Divisive",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP80",
+    "name": "Soma Umehori",
+    "title": "Leader of the Five Point Independents",
+    "gender": "F",
+    "party": "Five Point Independents",
+    "party_acronym": "FPI",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Duplicitous",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 3,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP08",
+    "name": "Atsuko Takeo",
+    "title": null,
+    "gender": "M",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST01"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 2
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 2,
+      "max": 4
+    }
+  },
+  {
+    "opp_id": "OP28",
+    "name": "Iida Eri",
+    "title": null,
+    "gender": "F",
+    "party": "Keizaijiyuutou",
+    "party_acronym": "KJT",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST02"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Emotional",
+    "suit_3": "Data Driven",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP02",
+    "name": "Amaya Matsumae",
+    "title": null,
+    "gender": "F",
+    "party": "Country Initiative",
+    "party_acronym": "CI",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST08"
+    ],
+    "suit_1": "Duplicitous",
+    "suit_2": "Emotional",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 4
+    },
+    "intent_gain_range": {
+      "min": 0,
+      "max": 1
+    },
+    "intent_block_range": {
+      "min": 3,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP26",
+    "name": "Hyun-jae Hyeong",
+    "title": null,
+    "gender": "F",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST08"
+    ],
+    "suit_1": "Emotional",
+    "suit_2": "Duplicitous",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "opp_id": "OP78",
+    "name": "Siatuy Sanota",
+    "title": "Minister of Government Administration; Chair of the Committee on Government Administration",
+    "gender": "F",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST18",
+      "ST02",
+      "ST06",
+      "ST08"
+    ],
+    "suit_1": "Appeal",
+    "suit_2": "Divisive",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_gain_range": {
+      "min": 2,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP100",
+    "name": "Yuki Kasukasa",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP16",
+    "name": "Eiji Fujioka",
+    "title": null,
+    "gender": "F",
+    "party": "Frontier Party",
+    "party_acronym": "FP",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Duplicitous",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 3
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "opp_id": "OP87",
+    "name": "Tomio Katayama",
+    "title": null,
+    "gender": "M",
+    "party": "Butsutou",
+    "party_acronym": "BU",
+    "affiliation": "BO17",
+    "role": "Committee on Government Administration",
+    "stages": [
+      "ST17",
+      "ST21"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Data Driven",
+    "suit_3": "Earnest",
+    "intent_attack_range": {
+      "min": 0,
+      "max": 1
+    },
+    "intent_gain_range": {
+      "min": 3,
+      "max": 5
+    },
+    "intent_block_range": {
+      "min": 3,
+      "max": 5
+    }
+  },
+  {
+    "opp_id": "OP10",
+    "name": "Aki Rono",
+    "title": "Prime Minister; Leader of the Yezo Heritage Party",
+    "gender": "M",
+    "party": "Yezo Heritage Party",
+    "party_acronym": "YHP",
+    "affiliation": "BO17",
+    "role": "Committee of the Cabinet",
+    "stages": [
+      "ST18",
+      "ST01",
+      "ST08"
+    ],
+    "suit_1": "Earnest",
+    "suit_2": "Emotional",
+    "suit_3": "Divisive",
+    "intent_attack_range": {
+      "min": 1,
+      "max": 6
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 6
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "opp_id": "OP110",
+    "name": "Kenta Aoshima",
+    "title": "Chief Political Correspondent",
+    "gender": "M",
+    "party": null,
+    "party_acronym": null,
+    "affiliation": "BO08",
+    "role": "Journalist",
+    "stages": [
+      "ST19",
+      "ST04"
+    ],
+    "suit_1": "Divisive",
+    "suit_2": "Duplicitous",
+    "suit_3": "Emotional",
+    "intent_attack_range": {
+      "min": 4,
+      "max": 7
+    },
+    "intent_gain_range": {
+      "min": 1,
+      "max": 4
+    },
+    "intent_block_range": {
+      "min": 0,
+      "max": 1
     }
   },
   {
@@ -1160,35 +3294,6 @@
     }
   },
   {
-    "opp_id": "OP12",
-    "name": "Chi Zoku",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
     "opp_id": "OP120",
     "name": "Genzou Amamiya",
     "title": null,
@@ -1357,63 +3462,6 @@
     }
   },
   {
-    "opp_id": "OP13",
-    "name": "Cyril Slater",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Divisive",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP14",
-    "name": "Donald Shibata",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Earnest",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
     "opp_id": "OP15",
     "name": "Edward Grinner",
     "title": null,
@@ -1429,177 +3477,6 @@
     "intent_attack_range": {
       "min": 2,
       "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP16",
-    "name": "Eiji Fujioka",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP17",
-    "name": "Furukawa Hideki",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP18",
-    "name": "Gavin Ronaldson",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP19",
-    "name": "Goko Morino",
-    "title": null,
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Data Driven",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP20",
-    "name": "Gorou Kon",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP21",
-    "name": "Hee-seop Han",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Duplicitous",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
     },
     "intent_gain_range": {
       "min": 2,
@@ -1637,262 +3514,6 @@
     }
   },
   {
-    "opp_id": "OP23",
-    "name": "Harumi Asato",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Duplicitous",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP24",
-    "name": "Hideaki Terada",
-    "title": null,
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP25",
-    "name": "Hikari Suimoto",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Appeal",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 1
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP26",
-    "name": "Hyun-jae Hyeong",
-    "title": null,
-    "gender": "F",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST08"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Duplicitous",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP28",
-    "name": "Iida Eri",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP30",
-    "name": "Isoroku Adams",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10",
-      "ST03"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Divisive",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP31",
-    "name": "Iwao Nagamine",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12",
-      "ST03"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Divisive",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP32",
-    "name": "Jiayi Gong",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Earnest",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP34",
-    "name": "Tae-jun Jung",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
     "opp_id": "OP35",
     "name": "Jurou Nishihara",
     "title": null,
@@ -1919,91 +3540,6 @@
     }
   },
   {
-    "opp_id": "OP37",
-    "name": "Kang Guang",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Duplicitous",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP38",
-    "name": "Katsumiko Yamamura",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Appeal",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP39",
-    "name": "Kaya Ukor",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Earnest",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
     "opp_id": "OP40",
     "name": "Kenshin Sako",
     "title": null,
@@ -2027,1542 +3563,6 @@
     "intent_block_range": {
       "min": 1,
       "max": 3
-    }
-  },
-  {
-    "opp_id": "OP41",
-    "name": "Kenta Hamasaki",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Data Driven",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP42",
-    "name": "Keu Shibatani",
-    "title": null,
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 1
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 3,
-      "max": 5
-    }
-  },
-  {
-    "opp_id": "OP43",
-    "name": "Kimiko Chinen",
-    "title": null,
-    "gender": "F",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP44",
-    "name": "Kina Kewtum",
-    "title": null,
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Data Driven",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP45",
-    "name": "Kinkokoro Matsumae",
-    "title": null,
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP46",
-    "name": "Kisar Masayoshi",
-    "title": null,
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP48",
-    "name": "Kiyabu Waritai",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Earnest",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP49",
-    "name": "Kiyomi Gima",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Divisive",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP50",
-    "name": "Kokuni Yatsumachi",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP51",
-    "name": "Kotake Kasumu",
-    "title": null,
-    "gender": "F",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10",
-      "ST02"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP52",
-    "name": "Koyki Kurasno",
-    "title": null,
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11",
-      "ST03"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Divisive",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP53",
-    "name": "Leonard Ridgway",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP54",
-    "name": "Luo Guang",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Data Driven",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP55",
-    "name": "Lyosha Morozov",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP56",
-    "name": "Mao Saeki",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14",
-      "ST08"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP58",
-    "name": "Masato Maruyama",
-    "title": null,
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12",
-      "ST03"
-    ],
-    "suit_1": "Duplicitous",
-    "suit_2": "Divisive",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP59",
-    "name": "Masayoshi Sera",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP60",
-    "name": "Migimura Okamuradonzai",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Divisive",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP61",
-    "name": "Miho Shingumi",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP62",
-    "name": "Minami Okirasnunipa",
-    "title": null,
-    "gender": "F",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP63",
-    "name": "Namgung Ryung",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP64",
-    "name": "Noah Kain",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP65",
-    "name": "Nonaka Tomiko",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP66",
-    "name": "Nonaka Yoshie",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11",
-      "ST03"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Divisive",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP68",
-    "name": "Okita Shiori",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP69",
-    "name": "Pirkaike Tsuki",
-    "title": null,
-    "gender": "F",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Duplicitous",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP70",
-    "name": "Poiya Kanu",
-    "title": null,
-    "gender": "M",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP71",
-    "name": "Ran Sachiko",
-    "title": null,
-    "gender": "F",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP72",
-    "name": "Sadao Nishikawa",
-    "title": null,
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP73",
-    "name": "Lee-min Seong",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on War",
-    "stages": [
-      "ST11"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Earnest",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP74",
-    "name": "Seong Yun-hee",
-    "title": null,
-    "gender": "F",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Duplicitous",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP75",
-    "name": "Seta Anramasu",
-    "title": null,
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP76",
-    "name": "Shiba Momoe",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP77",
-    "name": "Shizutake Matsumae",
-    "title": null,
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on Construction and Development",
-    "stages": [
-      "ST15",
-      "ST03"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Divisive",
-    "suit_3": "Duplicitous",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP79",
-    "name": "Sikanna Sapanipa",
-    "title": null,
-    "gender": "F",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Divisive",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP81",
-    "name": "Taiyou Nigate",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP84",
-    "name": "Tian Zhao Bo",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Duplicitous",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP85",
-    "name": "Tobira Hideyoshi",
-    "title": null,
-    "gender": "M",
-    "party": "Five Point Independents",
-    "party_acronym": "FPI",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09",
-      "ST03"
-    ],
-    "suit_1": "Duplicitous",
-    "suit_2": "Divisive",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP86",
-    "name": "Tomihisa Shimao",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Duplicitous",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP87",
-    "name": "Tomio Katayama",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17",
-      "ST21"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 1
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 3,
-      "max": 5
-    }
-  },
-  {
-    "opp_id": "OP88",
-    "name": "Tsukuhito Keri",
-    "title": null,
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP89",
-    "name": "Tsuneo Yoneda",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Appeal",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 1
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP90",
-    "name": "Tsutomu Hirano",
-    "title": null,
-    "gender": "M",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12",
-      "ST03"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Divisive",
-    "suit_3": "Earnest",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP92",
-    "name": "Walter Peard",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on the Environment",
-    "stages": [
-      "ST10"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Duplicitous",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
-    }
-  },
-  {
-    "opp_id": "OP93",
-    "name": "Xiang Huang",
-    "title": null,
-    "gender": "M",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP94",
-    "name": "Xiaobo Jiang",
-    "title": null,
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Earnest",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP95",
-    "name": "Xiong Xiaodan",
-    "title": null,
-    "gender": "F",
-    "party": "Butsutou",
-    "party_acronym": "BU",
-    "affiliation": "BO17",
-    "role": "Committee on Foreign Affairs",
-    "stages": [
-      "ST14"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP96",
-    "name": "Yakuwakka Yayarini",
-    "title": null,
-    "gender": "F",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee on Government Administration",
-    "stages": [
-      "ST17"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Divisive",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 1
-    }
-  },
-  {
-    "opp_id": "OP97",
-    "name": "Yoshi Toda",
-    "title": null,
-    "gender": "M",
-    "party": "Country Initiative",
-    "party_acronym": "CI",
-    "affiliation": "BO17",
-    "role": "Committee on Finance",
-    "stages": [
-      "ST16",
-      "ST01"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP98",
-    "name": "Yoshida Cho",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Agriculture",
-    "stages": [
-      "ST13"
-    ],
-    "suit_1": "Appeal",
-    "suit_2": "Emotional",
-    "suit_3": "Data Driven",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 2,
-      "max": 4
-    },
-    "intent_block_range": {
-      "min": 1,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP99",
-    "name": "Yoshimura Hideko",
-    "title": null,
-    "gender": "F",
-    "party": "Keizaijiyuutou",
-    "party_acronym": "KJT",
-    "affiliation": "BO17",
-    "role": "Committee on Ethics and Prosecution",
-    "stages": [
-      "ST09"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Data Driven",
-    "suit_3": "Appeal",
-    "intent_attack_range": {
-      "min": 0,
-      "max": 2
-    },
-    "intent_gain_range": {
-      "min": 3,
-      "max": 5
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP27",
-    "name": "Ichizaki Namu",
-    "title": "President of the National Assembly; Chair of the Committee on the National Assembly; Speaker of the National Assembly; Leader of the Frontier Party",
-    "gender": "F",
-    "party": "Frontier Party",
-    "party_acronym": "FP",
-    "affiliation": "BO17",
-    "role": "Committee on the National Assembly",
-    "stages": [
-      "ST12",
-      "ST18",
-      "ST06"
-    ],
-    "suit_1": "Emotional",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 3,
-      "max": 7
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 8
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 3
-    }
-  },
-  {
-    "opp_id": "OP102",
-    "name": "Emi Katsuragawa",
-    "title": "President, District Kōenkai Association",
-    "gender": "F",
-    "party": null,
-    "party_acronym": null,
-    "affiliation": "BO03",
-    "role": "Kōenkai Member",
-    "stages": [
-      "ST05"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Appeal",
-    "suit_3": "Emotional",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 3
-    },
-    "intent_gain_range": {
-      "min": 4,
-      "max": 7
-    },
-    "intent_block_range": {
-      "min": 2,
-      "max": 4
-    }
-  },
-  {
-    "opp_id": "OP10",
-    "name": "Aki Rono",
-    "title": "Prime Minister; Leader of the Yezo Heritage Party",
-    "gender": "M",
-    "party": "Yezo Heritage Party",
-    "party_acronym": "YHP",
-    "affiliation": "BO17",
-    "role": "Committee of the Cabinet",
-    "stages": [
-      "ST18",
-      "ST01",
-      "ST08"
-    ],
-    "suit_1": "Earnest",
-    "suit_2": "Emotional",
-    "suit_3": "Divisive",
-    "intent_attack_range": {
-      "min": 1,
-      "max": 6
-    },
-    "intent_gain_range": {
-      "min": 1,
-      "max": 6
-    },
-    "intent_block_range": {
-      "min": 0,
-      "max": 2
     }
   }
 ]

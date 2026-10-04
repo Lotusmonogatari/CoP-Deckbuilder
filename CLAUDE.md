@@ -1694,3 +1694,45 @@ party, the same bug class already guarded for opponent titles.
 `PartyDisplay.party_name()` (`scripts/rules/PartyDisplay.gd`) is now the
 one place every party-display call site reads the field from, rather
 than stringifying it directly.
+
+### A new workbook upload dropped the Question Themes tab, and renumbered the whole Shop tab (2026-10-04)
+
+While landing the Funds-cap fix above, pulling in Cameron's latest
+workbook/asset upload (merged into this branch) surfaced two real,
+independent changes on his end, not bugs in anything built this session.
+
+- **The "Question Themes" tab is gone from the workbook.** It used to
+  fold into each question's own `pleases_boosters` field
+  (`export_data.py`'s `fold_questions()`) — never a real standalone
+  output file (the exporter pops the raw table after folding it in), so
+  nothing downstream depended on the file itself. But its total absence
+  was a hard export error before this fix: an entire tab missing is
+  different from a tab with blank rows, and the exporter didn't
+  distinguish them. Fixed by adding `"optional_sheet": True` to that
+  `SHEETS` entry, the same degrade-gracefully bargain a totally blank
+  tab already got — re-export is clean again. **The real consequence**:
+  with the tab empty, every question in the game now resolves with no
+  organisation to please, which the existing GUT coverage correctly
+  flags (`test_every_question_has_somebody_to_please_and_somebody_asking`
+  fails for all ~140 real questions) — a strong answer anywhere in the
+  game currently pleases nobody. This is real content loss, not a test
+  bug, and it's Cameron's to say whether the tab's removal was
+  deliberate (a rewrite in progress) or an accident.
+- **The Shop tab was fully renumbered**, compacting the gaps left by the
+  two defunct SH13/SH14 rows removed 2026-09-30: `SH15/16/17→SH09/10/11`
+  (the three random-card-unlock tiers), `SH18→SH12` (staff recruitment
+  tier), `SH19→SH13` (Increase Office Funds Cap — the item this
+  session's own Funds-cap fix calls by ID), `SH20→SH14` (Extra Draw),
+  and four new Level Buff items (`SH15-18`: Extra Energy/Guard/Gaffe Cap/
+  Turn) plus `SH25→SH19` (Host National Booster Dinner) and a new
+  `SH20` (Host District Walking Tour). **The real game is unaffected** —
+  every production call site dispatches by the item's own data field
+  (e.g. `item.get("funds_cap_increase") != null`), never a hardcoded ID,
+  confirmed by grepping `scripts/` outside `tests/`. Only the test suite,
+  which intentionally hardcodes specific IDs to exercise specific
+  mechanics, went stale: ~18 GUT tests across `test_inventory.gd` and a
+  few others now reference pre-renumbering IDs (`SH25` for the National
+  Booster Dinner item, etc.). This session's own two new Funds-cap tests
+  were fixed (`SH19`→`SH13`) since they're squarely part of the feature
+  just built; the rest of the renumbering fallout — a larger, multi-file
+  job — was left for a follow-up pass rather than absorbed silently.
