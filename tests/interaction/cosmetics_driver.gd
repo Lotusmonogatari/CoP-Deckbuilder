@@ -28,7 +28,7 @@ const TEST_PACKAGE_NAME := "Test Package"
 const TEST_PACKAGE := {
 	"package_id": TEST_PACKAGE_ID, "name_en": TEST_PACKAGE_NAME,
 	"cost_xp": 0, "cost_yen": 500,
-	"outfit_variant": "TESTA", "background_variant": "UPGRADED",
+	"outfit_variant": "RED", "background_variant": "UPGRADED",
 	"music_office_sound": "music_office_test", "music_battle_sound": "music_battle_test",
 }
 
@@ -125,6 +125,18 @@ func _walk() -> void:
 		_failures.append("clicking the test package's own name in the Outfit row did not equip it")
 		return
 	print("  equipped the test package's outfit with a real click")
+
+	# The Office's own portrait must switch to the outfit at once too, not
+	# only after the next level starts (2026-10-05, Cameron). "RED" is the one
+	# real outfit piece drawn so far (PC01), so this only asserts for PC01.
+	var portrait_art := office.find_child("Portrait", true, false) as PlaceholderArt
+	if portrait_art != null and portrait_art.art_id == "PC01":
+		var portrait_texture: Texture2D = portrait_art._texture_rect.texture
+		if portrait_texture == null or not portrait_texture.resource_path.ends_with("PC01_RED_neutral.png"):
+			_failures.append("equipping an outfit did not update the live Office portrait (got %s)"
+				% [portrait_texture.resource_path if portrait_texture else "null"])
+			return
+		print("  the live Office portrait changed to the equipped outfit at once")
 
 	# --- Equipping the Background piece updates the LIVE Office picture ------
 	# right away, with no scene reload needed (2026-09-28: PlaceholderArt only

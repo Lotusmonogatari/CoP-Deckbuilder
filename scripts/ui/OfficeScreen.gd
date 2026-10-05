@@ -882,6 +882,12 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 	# correct, only the live node never got told to look again).
 	if slot == CosmeticPieces.BACKGROUND:
 		_background.art_id = _background.art_id
+	# Same for the protagonist's own picture: an outfit only shows up once the
+	# portrait is told to look again (2026-10-05, Cameron: "Workplace Casual"
+	# only appeared after starting a level).
+	if slot == CosmeticPieces.OUTFIT and _portrait is PlaceholderArt:
+		var art := _portrait as PlaceholderArt
+		art.art_id = art.art_id
 	_show_cosmetics()
 
 
