@@ -220,6 +220,10 @@ func test_a_battle_can_be_won() -> void:
 	var config := BattleSetup.for_level_stage(FLOOR_DEBATE_LEVEL, FLOOR_DEBATE_STAGE)
 	var stage: Dictionary = (config["stage"] as Dictionary).duplicate(true)
 	stage["player_start"] = 50      # one seat short of a majority
+	# The test plays every affordable card with no care for gaffes, and a new
+	# run's opening deck is random now (2026-10-05), so a gaffe-heavy roll
+	# could fill the meter first. This test is about the win path, not gaffes.
+	stage["gaffe_limit"] = 999
 	config["stage"] = stage
 
 	var state := _play_out(config)
@@ -711,13 +715,18 @@ func test_every_organisation_starts_level_with_the_player() -> void:
 	assert_eq(GameState.booster_standing.size(), DataDB.boosters.size(),
 		"all ten of them")
 	for booster: Dictionary in DataDB.boosters:
-		assert_eq(int(GameState.booster_standing[booster["booster_id"]]),
-			int(DataDB.booster_standing["start"]))
+		# Each organisation's own Starting Standing (Boosters tab) when it has
+		# one, otherwise the flat default.
+		var own = booster.get("starting_standing")
+		var expected := int(DataDB.booster_standing["start"]) if own == null else int(own)
+		assert_eq(int(GameState.booster_standing[booster["booster_id"]]), expected,
+			"%s starts at its own standing" % booster["booster_id"])
 
 
 func test_pleasing_an_organisation_raises_your_standing_with_it() -> void:
 	GameState.reset_booster_standing()
 	var before := int(GameState.booster_standing["BO08"])
+	var bystander_before := int(GameState.booster_standing["BO03"])
 
 	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
 	GameState.finish_stage("win", 50, ["BO08"])
@@ -725,7 +734,7 @@ func test_pleasing_an_organisation_raises_your_standing_with_it() -> void:
 	var step := int(DataDB.booster_standing["per_please"])
 	assert_eq(int(GameState.booster_standing["BO08"]), before + step)
 	assert_eq(int(GameState.last_booster_change["BO08"]), step, "and it says so")
-	assert_eq(int(GameState.booster_standing["BO03"]), before,
+	assert_eq(int(GameState.booster_standing["BO03"]), bystander_before,
 		"nobody else was pleased")
 
 	GameState.end_level()
@@ -772,6 +781,7 @@ func test_a_weak_answer_lowers_your_standing_with_the_organisation() -> void:
 	# test_pleasing_an_organisation_raises_your_standing_with_it above.
 	GameState.reset_booster_standing()
 	var before := int(GameState.booster_standing["BO08"])
+	var bystander_before := int(GameState.booster_standing["BO03"])
 
 	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
 	GameState.finish_stage("win", 50, [], false, 0, ["BO08"])
@@ -779,7 +789,7 @@ func test_a_weak_answer_lowers_your_standing_with_the_organisation() -> void:
 	var step := int(DataDB.booster_standing["per_displease"])
 	assert_eq(int(GameState.booster_standing["BO08"]), before - step)
 	assert_eq(int(GameState.last_booster_change["BO08"]), -step, "and it says so")
-	assert_eq(int(GameState.booster_standing["BO03"]), before,
+	assert_eq(int(GameState.booster_standing["BO03"]), bystander_before,
 		"nobody else was annoyed")
 
 	GameState.end_level()
@@ -791,6 +801,7 @@ func test_pleasing_and_displeasing_the_same_organisation_in_one_stage_nets_out()
 	# single net change rather than applying twice.
 	GameState.reset_booster_standing()
 	var before := int(GameState.booster_standing["BO08"])
+	var bystander_before := int(GameState.booster_standing["BO03"])
 
 	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
 	GameState.finish_stage("win", 50, ["BO08"], false, 0, ["BO08"])
@@ -827,6 +838,7 @@ func test_the_net_change_from_one_stages_questions_is_capped() -> void:
 
 	GameState.reset_booster_standing()
 	var before := int(GameState.booster_standing["BO08"])
+	var bystander_before := int(GameState.booster_standing["BO03"])
 
 	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
 	GameState.finish_stage("win", 50, ["BO08"])
@@ -847,6 +859,7 @@ func test_an_instant_win_costs_the_crushed_opponents_organisation() -> void:
 	# displease list.
 	GameState.reset_booster_standing()
 	var before := int(GameState.booster_standing["BO08"])
+	var bystander_before := int(GameState.booster_standing["BO03"])
 
 	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
 	GameState.finish_stage("win", 50, [], false, 0, [], ["BO08"])
@@ -854,7 +867,7 @@ func test_an_instant_win_costs_the_crushed_opponents_organisation() -> void:
 	var penalty := int(DataDB.booster_standing["instant_win_penalty"])
 	assert_eq(int(GameState.booster_standing["BO08"]), before - penalty)
 	assert_eq(int(GameState.last_booster_change["BO08"]), -penalty, "and it says so")
-	assert_eq(int(GameState.booster_standing["BO03"]), before,
+	assert_eq(int(GameState.booster_standing["BO03"]), bystander_before,
 		"nobody else's organisation was crushed")
 
 	GameState.end_level()

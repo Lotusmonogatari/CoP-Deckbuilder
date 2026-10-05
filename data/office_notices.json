@@ -19,20 +19,164 @@
   },
   {
     "notice_id": "ON03",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is reviewing committee minutes and reports."
+  },
+  {
+    "notice_id": "ON04",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Policy Research Assistant",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "No one is reviewing new policy reports."
+  },
+  {
+    "notice_id": "ON05",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "hired",
+    "condition_value": null,
+    "text_en": "{staff} is answering questions from reporters."
+  },
+  {
+    "notice_id": "ON06",
+    "slot": "staff_greeting",
+    "condition_type": "staff_role",
+    "condition_target": "Media Spokesperson",
+    "condition_op": "not_hired",
+    "condition_value": null,
+    "text_en": "Calls from the press are going unanswered."
+  },
+  {
+    "notice_id": "ON07",
     "slot": "press",
     "condition_type": "meta",
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "Yezo News has not covered your work recently."
+    "text_en": "Few visitors are seeking out your office."
   },
   {
-    "notice_id": "ON04",
+    "notice_id": "ON08",
     "slot": "press",
     "condition_type": "meta",
     "condition_target": "Reputation",
     "condition_op": ">=",
+    "condition_value": 60.0,
+    "text_en": "The office is using a waitlist for visitors."
+  },
+  {
+    "notice_id": "ON09",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG01",
+    "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "Yezo News profiled you last week."
+    "text_en": "A volunteer student journalist recently visited the office."
+  },
+  {
+    "notice_id": "ON10",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG01",
+    "condition_op": ">=",
+    "condition_value": 60.0,
+    "text_en": "Veteran journalists are visiting the office for a profile piece."
+  },
+  {
+    "notice_id": "ON11",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG02",
+    "condition_op": "<",
+    "condition_value": 25.0,
+    "text_en": "No party colleagues have visited to chat."
+  },
+  {
+    "notice_id": "ON12",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG02",
+    "condition_op": ">=",
+    "condition_value": 60.0,
+    "text_en": "Party members who want to take you to lunch can now use a scheduling system."
+  },
+  {
+    "notice_id": "ON13",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG03",
+    "condition_op": "<",
+    "condition_value": 10.0,
+    "text_en": "Security removed a constituent for shouting obscenities."
+  },
+  {
+    "notice_id": "ON14",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG03",
+    "condition_op": "<",
+    "condition_value": 25.0,
+    "text_en": "A constituent, allegedly, intended to graffiti on your office door."
+  },
+  {
+    "notice_id": "ON15",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG03",
+    "condition_op": ">=",
+    "condition_value": 60.0,
+    "text_en": "An elderly constituent visited and left a gift basket for the office."
+  },
+  {
+    "notice_id": "ON16",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG03",
+    "condition_op": ">=",
+    "condition_value": 80.0,
+    "text_en": "A family from your district visited to take a picture with you."
+  },
+  {
+    "notice_id": "ON17",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG04",
+    "condition_op": "<",
+    "condition_value": 30.0,
+    "text_en": "A former campaign donor left a note demanding the refund of 200,000円."
+  },
+  {
+    "notice_id": "ON18",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG04",
+    "condition_op": ">=",
+    "condition_value": 70.0,
+    "text_en": "A benefactor stopped by the office to deliver a 100,000円 check for use during the next election campaign."
+  },
+  {
+    "notice_id": "ON19",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG05",
+    "condition_op": "<",
+    "condition_value": 20.0,
+    "text_en": "A committee intern brought you a stack of outdated committee reports."
+  },
+  {
+    "notice_id": "ON20",
+    "slot": "press",
+    "condition_type": "meta",
+    "condition_target": "SG05",
+    "condition_op": ">=",
+    "condition_value": 80.0,
+    "text_en": "Cabinet Legislation Bureau Chief Rika Ashikaga personally delivered the latest bill analysis reports."
   }
 ]

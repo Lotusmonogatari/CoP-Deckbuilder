@@ -253,7 +253,7 @@
   },
   {
     "item_id": "SH08",
-    "name": "Meditation Session",
+    "name": "Personalized Dear Colleague Letter",
     "description": "One-use item. Grants +1 guard for the first stage of the next level played.",
     "cost_xp": 0,
     "cost_yen": 10000,
@@ -382,7 +382,7 @@
   },
   {
     "item_id": "SH12",
-    "name": "Unlock New Staff Recruitment Tier",
+    "name": "Staff Training Consultancy Session",
     "description": "Unlocks the next tier of staff recruitment, allowing higher-tier staff hires.",
     "cost_xp": 500,
     "cost_yen": 0,
@@ -413,7 +413,7 @@
   },
   {
     "item_id": "SH13",
-    "name": "Increase Office Funds Cap",
+    "name": "Office Fund Bank Limit Petition",
     "description": "Increases the Office Funds cap by 100,000円. Repeatable.",
     "cost_xp": 100,
     "cost_yen": 0,
@@ -444,7 +444,7 @@
   },
   {
     "item_id": "SH14",
-    "name": "Extra Draw (Level Buff)",
+    "name": "Commission a Speech Trainer",
     "description": "One-use buff applied for the entire duration of the next level played: +1 card drawn.",
     "cost_xp": 50,
     "cost_yen": 0,
@@ -480,7 +480,7 @@
   },
   {
     "item_id": "SH15",
-    "name": "Extra Energy (Level Buff)",
+    "name": "Kaiju Sized “ね3” Coffee",
     "description": "One-use buff applied for the entire duration of the next level played: +1 energy.",
     "cost_xp": 60,
     "cost_yen": 0,
@@ -516,7 +516,7 @@
   },
   {
     "item_id": "SH16",
-    "name": "Extra Guard (Level Buff)",
+    "name": "Automated Dear Colleague Letters",
     "description": "One-use buff applied for the entire duration of the next level played: +1 guard.",
     "cost_xp": 70,
     "cost_yen": 0,
@@ -552,7 +552,7 @@
   },
   {
     "item_id": "SH17",
-    "name": "Extra Gaffe Counter Cap (Level Buff)",
+    "name": "Kaiju Sized “ミレニ姫” Tea",
     "description": "One-use buff applied for the entire duration of the next level played: +1 gaffe (失言) counter cap.",
     "cost_xp": 80,
     "cost_yen": 0,
@@ -588,7 +588,7 @@
   },
   {
     "item_id": "SH18",
-    "name": "Extra Turn (Level Buff)",
+    "name": "AI Powered Clock",
     "description": "One-use buff applied for the entire duration of the next level played: +1 turn on the stage clock.",
     "cost_xp": 100,
     "cost_yen": 0,
@@ -624,7 +624,7 @@
   },
   {
     "item_id": "SH19",
-    "name": "Host National Booster Dinner",
+    "name": "Host a Dinner for a National Booster",
     "description": "Host a dinner for a player-selected National-tier booster group.",
     "cost_xp": 20,
     "cost_yen": 20000,
@@ -660,7 +660,7 @@
   },
   {
     "item_id": "SH20",
-    "name": "Host District Walking Tour",
+    "name": "Host a District Walking Tour for a Constituency Booster",
     "description": "Host a walking tour for a player-selected Constituency-tier booster group.",
     "cost_xp": 10,
     "cost_yen": 10000,

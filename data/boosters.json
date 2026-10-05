@@ -10,7 +10,7 @@
       "M11",
       "M16"
     ],
-    "starting_standing": null
+    "starting_standing": 30
   },
   {
     "booster_id": "BO02",
@@ -23,7 +23,7 @@
       "M12",
       "M17"
     ],
-    "starting_standing": null
+    "starting_standing": 35
   },
   {
     "booster_id": "BO03",
@@ -34,7 +34,7 @@
     "linked_modifiers": [
       "M18"
     ],
-    "starting_standing": null
+    "starting_standing": 45
   },
   {
     "booster_id": "BO04",
@@ -46,7 +46,7 @@
       "M13",
       "M19"
     ],
-    "starting_standing": null
+    "starting_standing": 20
   },
   {
     "booster_id": "BO05",
@@ -57,7 +57,7 @@
     "linked_modifiers": [
       "M20"
     ],
-    "starting_standing": null
+    "starting_standing": 20
   },
   {
     "booster_id": "BO06",
@@ -68,7 +68,7 @@
     "linked_modifiers": [
       "M21"
     ],
-    "starting_standing": null
+    "starting_standing": 35
   },
   {
     "booster_id": "BO07",
@@ -79,7 +79,7 @@
     "linked_modifiers": [
       "M22"
     ],
-    "starting_standing": null
+    "starting_standing": 15
   },
   {
     "booster_id": "BO08",
@@ -91,7 +91,7 @@
       "M07",
       "M23"
     ],
-    "starting_standing": null
+    "starting_standing": 10
   },
   {
     "booster_id": "BO09",
@@ -103,7 +103,7 @@
       "M06",
       "M24"
     ],
-    "starting_standing": null
+    "starting_standing": 15
   },
   {
     "booster_id": "BO10",
@@ -116,7 +116,7 @@
       "M15",
       "M25"
     ],
-    "starting_standing": null
+    "starting_standing": 15
   },
   {
     "booster_id": "BO11",
@@ -127,7 +127,7 @@
     "linked_modifiers": [
       "M26"
     ],
-    "starting_standing": null
+    "starting_standing": 10
   },
   {
     "booster_id": "BO12",
@@ -138,7 +138,7 @@
     "linked_modifiers": [
       "M27"
     ],
-    "starting_standing": null
+    "starting_standing": 20
   },
   {
     "booster_id": "BO13",
@@ -149,7 +149,7 @@
     "linked_modifiers": [
       "M28"
     ],
-    "starting_standing": null
+    "starting_standing": 20
   },
   {
     "booster_id": "BO14",
@@ -160,7 +160,7 @@
     "linked_modifiers": [
       "M29"
     ],
-    "starting_standing": null
+    "starting_standing": 20
   },
   {
     "booster_id": "BO15",
@@ -171,7 +171,7 @@
     "linked_modifiers": [
       "M30"
     ],
-    "starting_standing": null
+    "starting_standing": 15
   },
   {
     "booster_id": "BO16",
@@ -182,7 +182,7 @@
     "linked_modifiers": [
       "M31"
     ],
-    "starting_standing": null
+    "starting_standing": 15
   },
   {
     "booster_id": "BO17",
@@ -191,7 +191,7 @@
     "romaji": "Kokkai Giin",
     "tier": "National",
     "linked_modifiers": null,
-    "starting_standing": null
+    "starting_standing": 20
   },
   {
     "booster_id": "BO18",
@@ -200,6 +200,6 @@
     "romaji": "Senkyoku no Yūkensha",
     "tier": "Constituency",
     "linked_modifiers": null,
-    "starting_standing": null
+    "starting_standing": 35
   }
 ]
