@@ -1992,3 +1992,10 @@ to `BattleScreen`, landing on the exact stage (`ST04`) the level had
 reached. Full GUT suite (935/938, the same 3 pre-existing unrelated
 failures) and `tools/verify.sh` (all 8 real-click interaction tests
 green) confirmed no regressions.
+
+### A random 15-card opening deck (2026-10-05, Cameron)
+
+A new run's deck is no longer the six Tier 0 cards plus a lowest-ID fill. `Ledger.opening_deck()` now rolls **15 cards** (`starter_deck_size`, 12 → 15) inside a recipe held on the Balance tab: **suits** balanced to within one card (15 over six suits is 3/3/3/2/2/2, the three double suits chosen at random), **tiers** 4 × Tier 0, 4 × Tier 1, 6 × Tier 2, plus one *flex* slot that is Tier 3 with a 25% chance and Tier 2 otherwise, and **never more than one Tier 3**. Five new levers, all Cameron's to retune: `starter_deck_tier_0_cards` / `_1_` / `_2_cards` (4/4/6), `starter_deck_tier_3_chance` (25, a percent) and `starter_deck_max_tier_3_cards` (1). Any slot left over after the three tier counts is a flex slot, so changing the deck size alone grows the flex pool.
+
+The recipe is why it is not a plain random draw: Tier 2 is 29 of the 54 cards, so an unconstrained draw would hand out nearly all Tier 2. The tiers are shuffled across the suit slots (retrying while some suit has no card left of the tier it was dealt, up to 200 times), then each slot gets a random card of its suit and tier. If the card set can't satisfy the recipe, or the levers are absent (an older workbook, test fixtures), it falls back to the old deterministic fill (`_filled_deck()`) rather than a short deck. The roll happens once per new run (`GameState.reset_collection()`) and is saved with the deck and collection, so it never changes on reload; all four protagonists share the same roll logic. `Ledger.opening_deck(cards, balance, rng_seed)` takes an optional seed so tests are repeatable. Covered by new tests in `tests/test_game_state_starter_deck.gd` (300 seeds against the real cards: size, uniqueness, suit counts, tier counts, Tier 3 cap, variety, fallback). Workbook edit by raw XML on the Balance sheet, as always; `export_data.py` clean.
+

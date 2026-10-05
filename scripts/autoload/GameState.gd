@@ -385,7 +385,7 @@ func reset_levels() -> void:
 	levels_cleared = {}
 
 
-## Back to the Starter twelve, owned and in the deck.
+## Back to the opening collection and a freshly rolled opening deck.
 ##
 ## A new run needs no decisions before the first battle: the opening deck is
 ## every Starter card, and the deck screen is where the player changes it.

@@ -30,3 +30,68 @@ func test_the_opening_deck_is_a_legal_deck() -> void:
 	GameState.start_new_run("PC02")
 	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance, Text.phrase())
 	assert_eq(refusal, "", "a fresh run's own starting deck should never be refused")
+
+
+# ---------------------------------------------------------------------------
+# The randomized opening deck (2026-10-05): 15 cards, suits balanced to within
+# one, tiers following the Balance-tab recipe, never more than one Tier 3.
+# These run against the REAL card set and balance, over many seeds.
+# ---------------------------------------------------------------------------
+
+func _tier_of(card_id: String) -> String:
+	return str(DataDB.get_card(card_id).get("tier", ""))
+
+
+func test_the_random_opening_deck_follows_the_recipe_over_many_seeds() -> void:
+	var seen_tier_3 := 0
+	var seen_different := {}
+	for seed_value in 300:
+		var deck := Ledger.opening_deck(DataDB.cards, DataDB.balance, seed_value)
+		assert_eq(deck.size(), 15, "seed %d: a full deck" % seed_value)
+
+		var unique := {}
+		var suit_counts := {}
+		var tier_counts := {"0": 0, "1": 0, "2": 0, "3": 0}
+		for card_id: String in deck:
+			unique[card_id] = true
+			var suit := str(DataDB.get_card(card_id).get("suit", ""))
+			suit_counts[suit] = int(suit_counts.get(suit, 0)) + 1
+			tier_counts[_tier_of(card_id)] += 1
+		assert_eq(unique.size(), 15, "seed %d: no card twice" % seed_value)
+
+		assert_eq(suit_counts.size(), 6, "seed %d: every suit present" % seed_value)
+		for suit: String in suit_counts:
+			assert_between(int(suit_counts[suit]), 2, 3, "seed %d: %s count" % [seed_value, suit])
+
+		assert_eq(tier_counts["0"], 4, "seed %d: Tier 0 count" % seed_value)
+		assert_eq(tier_counts["1"], 4, "seed %d: Tier 1 count" % seed_value)
+		assert_lte(tier_counts["3"], 1, "seed %d: at most one Tier 3" % seed_value)
+		assert_eq(tier_counts["2"] + tier_counts["3"], 7, "seed %d: the rest is Tier 2/3" % seed_value)
+
+		seen_tier_3 += tier_counts["3"]
+		seen_different[",".join(deck)] = true
+
+	assert_gt(seen_different.size(), 100, "the deck really is random across seeds")
+	assert_gt(seen_tier_3, 0, "a Tier 3 card does turn up sometimes (25% chance)")
+	assert_lt(seen_tier_3, 300, "and not every time")
+
+
+func test_the_same_seed_gives_the_same_opening_deck() -> void:
+	assert_eq(Ledger.opening_deck(DataDB.cards, DataDB.balance, 42),
+		Ledger.opening_deck(DataDB.cards, DataDB.balance, 42))
+
+
+func test_a_zero_percent_tier_3_chance_never_deals_a_tier_3() -> void:
+	var balance := DataDB.balance.duplicate()
+	balance["starter_deck_tier_3_chance"] = 0
+	for seed_value in 100:
+		for card_id: String in Ledger.opening_deck(DataDB.cards, balance, seed_value):
+			assert_ne(_tier_of(card_id), "3")
+
+
+func test_an_impossible_recipe_falls_back_to_the_old_deck() -> void:
+	# Eight Tier 0 cards cannot exist (one per suit), so the recipe gives up
+	# and the deterministic deck is used instead of a short or broken one.
+	var balance := DataDB.balance.duplicate()
+	balance["starter_deck_tier_0_cards"] = 8
+	assert_eq(Ledger.opening_deck(DataDB.cards, balance, 1).size(), 15)

@@ -457,6 +457,124 @@ static func level_is_hidden(level: Dictionary, completed_at: Dictionary) -> bool
 
 ## The deck a new run starts with.
 ##
+## When the Balance tab carries an opening-deck recipe (starter_deck_tier_N_cards
+## and friends), the deck is RANDOM inside that recipe: see _recipe_deck().
+## Without one — an older workbook, or a test fixture — it is the deterministic
+## fill described under _filled_deck(). `rng_seed` makes a random deck
+## repeatable (tests); leave it at -1 for a fresh roll.
+static func opening_deck(cards: Array, balance: Dictionary, rng_seed: int = -1) -> Array[String]:
+	if balance.has("starter_deck_tier_0_cards"):
+		var rolled := _recipe_deck(cards, balance, rng_seed)
+		if not rolled.is_empty():
+			return rolled
+	return _filled_deck(cards, balance)
+
+
+## The randomized opening deck (2026-10-05, Cameron: 15 cards, balanced by
+## suit and tier, at most one Tier 3).
+##
+## SUITS: every suit gets deck_size / suits cards, and the remainder (15 over
+## six suits leaves three) goes to randomly chosen suits as one extra each, so
+## no suit is ever more than one card ahead of another.
+## TIERS: the recipe lever counts (Tier 0/1/2). Slots left over are "flex"
+## slots: each is Tier 3 with starter_deck_tier_3_chance percent, otherwise
+## Tier 2, never more than starter_deck_max_tier_3_cards Tier 3 in all.
+## The tiers are shuffled across the suit slots, retrying while some suit has
+## no card left of the tier it was dealt; then each slot gets a random card.
+## Returns [] if the card set cannot satisfy the recipe, so the caller falls
+## back to the old deterministic deck rather than a short one.
+static func _recipe_deck(cards: Array, balance: Dictionary, rng_seed: int) -> Array[String]:
+	var wanted := deck_size(balance)
+	var rng := RandomNumberGenerator.new()
+	if rng_seed >= 0:
+		rng.seed = rng_seed
+	else:
+		rng.randomize()
+
+	# Cards available per suit and tier.
+	var pool := {}
+	var suits: Array[String] = []
+	for card: Dictionary in cards:
+		var suit := str(card.get("suit", ""))
+		if suit.is_empty():
+			continue
+		if not suits.has(suit):
+			suits.append(suit)
+		var key := "%s|%s" % [suit, str(card.get("tier", ""))]
+		if not pool.has(key):
+			pool[key] = []
+		pool[key].append(str(card.get("card_id", "")))
+	if suits.is_empty():
+		return []
+
+	var counts := {
+		"0": maxi(int(balance.get("starter_deck_tier_0_cards", 0)), 0),
+		"1": maxi(int(balance.get("starter_deck_tier_1_cards", 0)), 0),
+		"2": maxi(int(balance.get("starter_deck_tier_2_cards", 0)), 0),
+		"3": 0,
+	}
+	var flex := wanted - int(counts["0"]) - int(counts["1"]) - int(counts["2"])
+	if flex < 0:
+		return []
+	var chance := float(balance.get("starter_deck_tier_3_chance", 0)) / 100.0
+	var max_tier_3 := maxi(int(balance.get("starter_deck_max_tier_3_cards", 1)), 0)
+	for _slot in flex:
+		if int(counts["3"]) < max_tier_3 and rng.randf() < chance:
+			counts["3"] += 1
+		else:
+			counts["2"] += 1
+
+	# One suit per slot: an even share each, the remainder to random suits.
+	var suit_slots: Array[String] = []
+	for suit: String in suits:
+		for _i in floori(float(wanted) / suits.size()):
+			suit_slots.append(suit)
+	var extra_suits := suits.duplicate()
+	_shuffle(extra_suits, rng)
+	for i in wanted % suits.size():
+		suit_slots.append(extra_suits[i])
+
+	var tier_slots: Array[String] = []
+	for tier: String in ["0", "1", "2", "3"]:
+		for _i in int(counts[tier]):
+			tier_slots.append(tier)
+
+	for _attempt in 200:
+		_shuffle(tier_slots, rng)
+		var wanted_per_key := {}
+		for i in wanted:
+			var key := "%s|%s" % [suit_slots[i], tier_slots[i]]
+			wanted_per_key[key] = int(wanted_per_key.get(key, 0)) + 1
+		var fits := true
+		for key: String in wanted_per_key:
+			if not pool.has(key) or (pool[key] as Array).size() < int(wanted_per_key[key]):
+				fits = false
+				break
+		if not fits:
+			continue
+
+		var deck: Array[String] = []
+		for key: String in wanted_per_key:
+			var choices: Array = (pool[key] as Array).duplicate()
+			_shuffle(choices, rng)
+			for i in int(wanted_per_key[key]):
+				deck.append(str(choices[i]))
+		return deck
+	return []
+
+
+## Fisher-Yates on the given RNG, so a seeded deck is repeatable.
+## (Array.shuffle() uses the global generator and ignores the seed.)
+static func _shuffle(items: Array, rng: RandomNumberGenerator) -> void:
+	for i in range(items.size() - 1, 0, -1):
+		var j := rng.randi_range(0, i)
+		var held = items[i]
+		items[i] = items[j]
+		items[j] = held
+
+
+## The deterministic opening deck.
+##
 ## Every opening-tier card first — those are yours from the beginning and
 ## there is one per suit. The 2026-09-21 slate has six of them against a
 ## deck of twelve, so the rest is filled a suit at a time from the next
@@ -466,7 +584,7 @@ static func level_is_hidden(level: Dictionary, completed_at: Dictionary) -> bool
 ## represented so a first battle is playable, and the deck screen exists
 ## precisely so the player changes it. Nothing downstream depends on which
 ## cards these are.
-static func opening_deck(cards: Array, balance: Dictionary) -> Array[String]:
+static func _filled_deck(cards: Array, balance: Dictionary) -> Array[String]:
 	var wanted := deck_size(balance)
 	var deck: Array[String] = []
 
