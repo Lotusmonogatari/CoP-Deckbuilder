@@ -1,7 +1,7 @@
 class_name LoopDriver
 extends Node
-## Walks the whole playtest loop with real clicks: the Office, all four
-## stages, and back to the Office.
+## Walks the whole playtest loop with real clicks: the Office, every
+## stage of the first level, and back to the Office.
 ##
 ## WHY THIS IS NOT THE SCENE ITSELF
 ## The game changes scenes as it moves from the Office into a stage, and
@@ -24,15 +24,13 @@ const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 ## to 15.
 const TURN_CEILING := 70
 
-## How many stages the level should have.
-## The first Tier 0 level's stage count. The driver plays whichever level it
-## picks first, so this follows levels.json rather than leading it.
-##
-## 2026-09-22 workbook: the level list is now the real 30-row Levels tab
-## (LV01-30) instead of the old six-level hand-written draft, and LV01 — the
-## first Tier 0 level in file order, and so the first one this driver ever
-## clicks — is a single-stage Town Hall.
-const EXPECTED_STAGES := 1
+## The most stages the first level could hold. The driver plays whichever
+## level it picks first, and whether it plays every stage depends on how the
+## fights go: a lost combat stage ends the level early (stages.json's
+## loss_ends_level), so the count is a ceiling, never an exact number.
+## LV01 is Town Hall (ST05) then Office Hours (ST07); a little headroom
+## keeps this from breaking when the workbook adds a stage.
+const MAX_STAGES := 6
 
 var _failures: PackedStringArray = []
 
@@ -112,11 +110,20 @@ func _walk_the_loop() -> void:
 		return
 	print("  the briefing opened the first stage")
 
+	# Play every stage the level hands over, whichever kind of screen it is:
+	# a fight (BattleScreen) or a visitor room (VisitorScreen). The level is
+	# over when the Office comes back.
 	var played := 0
-	while get_tree().current_scene.name == "BattleScreen" and played < EXPECTED_STAGES + 2:
-		var stage_name := await _play_current_stage()
-		if stage_name.is_empty():
-			return
+	while played < MAX_STAGES:
+		var scene_name := str(get_tree().current_scene.name)
+		if scene_name == "BattleScreen":
+			if (await _play_current_stage()).is_empty():
+				return
+		elif scene_name == "VisitorScreen":
+			if not await _play_visitor_stage():
+				return
+		else:
+			break
 		played += 1
 		await get_tree().create_timer(0.5).timeout
 
@@ -124,18 +131,41 @@ func _walk_the_loop() -> void:
 		_failures.append("the loop did not return to the Office after %d stage(s)" % played)
 		return
 
-	print("  returned to the Office after %d of %d stages" % [played, EXPECTED_STAGES])
+	if played < 1:
+		_failures.append("the level returned to the Office without playing a stage")
+		return
+	print("  returned to the Office after %d stage(s)" % played)
 
-	# All four, now that all four can be won. This was deliberately loose
-	# while the caucus had no scoring rule and the committee's six turns made
-	# it unwinnable; both are fixed, so the loop is held to the whole level.
-	#
-	# If this starts failing after a balance change, that is the test doing
-	# its job: some stage has become unwinnable by a player who spends what
-	# they have and does not talk themselves into a gaffe.
-	if played < EXPECTED_STAGES:
-		_failures.append("the level stopped after %d of %d stages"
-			% [played, EXPECTED_STAGES])
+
+## Answers every visitor in the Office Hours room on screen (always choice A)
+## and presses Continue, until the room moves on. Returns false, noting a
+## failure, if anything did not appear where it should.
+func _play_visitor_stage() -> bool:
+	print("  playing a visitor room")
+	var visited := 0
+	while get_tree().current_scene.name == "VisitorScreen" and visited < 12:
+		var screen := get_tree().current_scene
+		await _click(screen.get_node("%ChoiceA"))
+		await get_tree().create_timer(0.2).timeout
+
+		var continue_button: Button = screen.get_node("%ContinueButton")
+		if continue_button.disabled:
+			_failures.append("answering a visitor did not unlock Continue")
+			return false
+		await _click(continue_button)
+		await get_tree().create_timer(0.3).timeout
+
+		var outcome := screen.get_node_or_null("%OutcomePanel") as Control
+		if outcome != null and outcome.visible:
+			await _click(screen.get_node("%OutcomeClose"))
+			await get_tree().create_timer(0.6).timeout
+		visited += 1
+
+	if get_tree().current_scene.name == "VisitorScreen":
+		_failures.append("the visitor room never finished after %d visitors" % visited)
+		return false
+	print("  answered %d visitor(s)" % visited)
+	return true
 
 
 ## Plays the stage on screen to a finish and presses on. Returns its name,

@@ -1423,7 +1423,7 @@ up a second stage (`ST07`, Office Hours) from a recent workbook upload,
 and the driver's own `EXPECTED_STAGES := 1` constant and Combat-only
 click logic are now stale against it. Not a game bug — winning correctly
 advances into the Office Hours stage; the driver just doesn't know how to
-play a Non-combat screen. Left as a known gap, not fixed in this pass.
+play a Non-combat screen. Left as a known gap, not fixed in this pass. **Fixed 2026-10-05:** `loop_driver.gd` now plays whichever screen each stage hands over (BattleScreen or VisitorScreen) until the Office returns, and `EXPECTED_STAGES` became a `MAX_STAGES` ceiling, since a lost combat stage ends a level early. Checked on both the loss path and a forced-win path through Office Hours.
 
 ### The Funds cap was already at its hard ceiling by default (2026-10-04, Cameron)
 
