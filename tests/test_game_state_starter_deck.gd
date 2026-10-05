@@ -95,3 +95,44 @@ func test_an_impossible_recipe_falls_back_to_the_old_deck() -> void:
 	var balance := DataDB.balance.duplicate()
 	balance["starter_deck_tier_0_cards"] = 8
 	assert_eq(Ledger.opening_deck(DataDB.cards, balance, 1).size(), 15)
+
+
+# ---------------------------------------------------------------------------
+# Gaffe cards (cards that ADD to the gaffe meter) are capped at a percentage of
+# the opening deck (2026-10-05, Cameron: 50%, so at most 7 of 15).
+# ---------------------------------------------------------------------------
+
+func _gaffe_cards_in(deck: Array) -> int:
+	var count := 0
+	for card_id: String in deck:
+		if int(DataDB.get_card(card_id).get("gaffe", 0) if DataDB.get_card(card_id).get("gaffe") != null else 0) > 0:
+			count += 1
+	return count
+
+
+func test_no_opening_deck_is_more_than_half_gaffe_cards() -> void:
+	for seed_value in 500:
+		var deck := Ledger.opening_deck(DataDB.cards, DataDB.balance, seed_value)
+		assert_eq(deck.size(), 15, "seed %d: still a full deck" % seed_value)
+		assert_lte(_gaffe_cards_in(deck), 7, "seed %d: at most 7 of 15 are gaffe cards" % seed_value)
+
+
+func test_the_gaffe_cap_really_does_something() -> void:
+	# Without it, plenty of rolls exceed 7 (Divisive and Duplicitous are gaffe
+	# cards almost without exception), so the cap above is not passing by luck.
+	var uncapped := DataDB.balance.duplicate()
+	uncapped["starter_deck_max_gaffe_cards"] = 100
+	var over := 0
+	for seed_value in 500:
+		if _gaffe_cards_in(Ledger.opening_deck(DataDB.cards, uncapped, seed_value)) > 7:
+			over += 1
+	assert_gt(over, 0, "some uncapped rolls exceed 7 gaffe cards")
+
+
+func test_a_tighter_gaffe_cap_is_obeyed() -> void:
+	var tight := DataDB.balance.duplicate()
+	tight["starter_deck_max_gaffe_cards"] = 40   # 40% of 15 = 6
+	for seed_value in 100:
+		var deck := Ledger.opening_deck(DataDB.cards, tight, seed_value)
+		assert_eq(deck.size(), 15)
+		assert_lte(_gaffe_cards_in(deck), 6)

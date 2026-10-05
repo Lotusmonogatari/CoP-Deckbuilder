@@ -24,6 +24,7 @@
   "starter_deck_tier_2_cards": 6,
   "starter_deck_tier_3_chance": 25,
   "starter_deck_max_tier_3_cards": 1,
+  "starter_deck_max_gaffe_cards": 50,
   "xp_tiers": {},
   "committee_size_bands": {}
 }

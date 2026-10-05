@@ -476,6 +476,8 @@ static func opening_deck(cards: Array, balance: Dictionary, rng_seed: int = -1) 
 ## SUITS: every suit gets deck_size / suits cards, and the remainder (15 over
 ## six suits leaves three) goes to randomly chosen suits as one extra each, so
 ## no suit is ever more than one card ahead of another.
+## GAFFE: at most starter_deck_max_gaffe_cards percent of the deck adds to the
+## gaffe meter; a roll over that is re-dealt.
 ## TIERS: the recipe lever counts (Tier 0/1/2). Slots left over are "flex"
 ## slots: each is Tier 3 with starter_deck_tier_3_chance percent, otherwise
 ## Tier 2, never more than starter_deck_max_tier_3_cards Tier 3 in all.
@@ -534,6 +536,19 @@ static func _recipe_deck(cards: Array, balance: Dictionary, rng_seed: int) -> Ar
 	for i in wanted % suits.size():
 		suit_slots.append(extra_suits[i])
 
+	# A "gaffe card" is one that ADDS to the gaffe meter (gaffe above 0; the few
+	# that remove gaffes are not). No more than starter_deck_max_gaffe_cards
+	# of the deck may be gaffe cards (2026-10-05, Cameron: 50%). Absent lever =
+	# no cap, so older workbooks and fixtures behave as before.
+	var gaffe_ids := {}
+	for card: Dictionary in cards:
+		var gaffe = card.get("gaffe")   # blank cell = null = no gaffe
+		if gaffe != null and int(gaffe) > 0:
+			gaffe_ids[str(card.get("card_id", ""))] = true
+	var max_gaffe := wanted
+	if balance.has("starter_deck_max_gaffe_cards"):
+		max_gaffe = floori(float(wanted) * float(balance["starter_deck_max_gaffe_cards"]) / 100.0)
+
 	var tier_slots: Array[String] = []
 	for tier: String in ["0", "1", "2", "3"]:
 		for _i in int(counts[tier]):
@@ -559,6 +574,14 @@ static func _recipe_deck(cards: Array, balance: Dictionary, rng_seed: int) -> Ar
 			_shuffle(choices, rng)
 			for i in int(wanted_per_key[key]):
 				deck.append(str(choices[i]))
+
+		# Too many gaffe cards in this roll: throw it away and deal again.
+		var gaffe_count := 0
+		for card_id: String in deck:
+			if gaffe_ids.has(card_id):
+				gaffe_count += 1
+		if gaffe_count > max_gaffe:
+			continue
 		return deck
 	return []
 
