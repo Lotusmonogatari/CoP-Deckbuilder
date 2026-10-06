@@ -1724,7 +1724,7 @@
   {
     "key": "new_game.title",
     "where": "New Game screen heading",
-    "english": "Choose your legislator",
+    "english": "Choose your champion",
     "placeholders": null,
     "notes": "Shown on first launch, and after New game."
   },
@@ -1787,7 +1787,7 @@
   {
     "key": "battle.question_prompt",
     "where": "Battle — a room whose cards answer a drawn question but is not shaped like a press conference (e.g. Town Hall)",
-    "english": "They ask: {question}",
+    "english": "{question}",
     "placeholders": "question",
     "notes": null
   },
