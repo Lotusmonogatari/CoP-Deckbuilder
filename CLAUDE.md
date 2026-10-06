@@ -2019,3 +2019,9 @@ The Office's row had grown to seven buttons. It is now Choose a level, Office Ma
 
 New real-click test `tests/interaction/office_menus_test.tscn` (the row has the two menu buttons and none of the four loose ones; each menu holds the right buttons; each panel opens above its menu and Back returns to the menu), added to `tools/verify.sh`. `cosmetics_driver.gd` and `how_to_play_driver.gd` now go through the Administration menu first.
 
+### Cosmetic icon cells fixed; the art checklist tool works again (2026-10-06, Cameron)
+
+The Cosmetic Packages tab's `Icon` cells read `{Workplace_Casual}` and `{Workplace_Modern}` with literal curly braces (the game would have looked for a file with braces in its name); they now read `Workplace_Casual` and `Workplace_Modern`, matching the drawn `assets/icons/Workplace_Casual.png` and `Workplace_Modern.png`. Workbook edit by raw XML (the two cells became inline strings; nothing else in the file changed).
+
+`tools/art_checklist.py` had been crashing since 2026-09-26 because it still read `data/journalists.json` (deleted when journalists became ordinary opponents), so `design/ART_CHECKLIST.md` was out of date. The Reporters group is removed, and three icon sections are listed alongside Organisation icons: **Shop item icons** and **Cosmetic package icons** (each row's own `Icon` cell, falling back to its ID when blank, the same rule `InventoryPanel.icon_name()` uses; duplicates listed once). Re-run it with `python3 tools/art_checklist.py`; it only reads data and the disk. All 40 icons (18 organisations, 20 shop items, 2 cosmetic packages) are drawn as of this run.
+

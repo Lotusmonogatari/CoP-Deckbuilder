@@ -6,49 +6,134 @@ in `data/art.json`.
 
 | Kind | Drawn |
 |---|---|
-| Protagonists | 0 / 28 |
-| Opponents | 0 / 625 |
+| Protagonists | 11 / 28 |
+| Opponents | 3 / 625 |
 | Staff | 0 / 105 |
-| Visitors | 0 / 5 |
-| Reporters | 0 / 25 |
+| Visitors | 0 / 195 |
 | Card art | 0 / 54 |
-| Backgrounds | 0 / 22 |
-| Organisation icons | 0 / 16 |
+| Backgrounds | 24 / 24 |
+| Organisation icons | 18 / 18 |
+| Shop item icons | 20 / 20 |
+| Cosmetic package icons | 2 / 2 |
 
 ## Protagonists — `assets/characters/protagonists/`
 
 | ID | Name | neutral | attacking | guarding | gaining | damaged | defeated | victory |
 |---|---|---|---|---|---|---|---|---|
-| PC01 | Hiro | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| PC02 | Protagonist B | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| PC03 | Protagonist C | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| PC04 | Protagonist D | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| PC01 | Kenshin Sako | ✓ | ✓ | ✓ | ✓ | ☐ | ☐ | ✓ |
+| PC02 | Haru Yashi | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| PC03 | Edward Grinner | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| PC04 | Jyurou Nishihara | ✓ | ✓ | ✓ | ✓ | ✓ | ☐ | ✓ |
 
 ## Opponents — `assets/characters/opponents/`
 
 | ID | Name | neutral | attacking | guarding | gaining | damaged |
 |---|---|---|---|---|---|---|
-| OP01 | Ayala Taiyounokage | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP02 | Amaya Matsumae | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP03 | Ani Aman | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP04 | Aoi Oba | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP05 | Aptoas Ahun | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP06 | Arata Ran | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP07 | Arisu Fukunaga | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP08 | Atsuko Takeo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP09 | Atsushi Fujioka | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP10 | Aki Rono | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP100 | Yuki Kasukasa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP101 | Yuriko Mayeda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP102 | Emi Katsuragawa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP103 | Daichi Moribe | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP104 | Haruna Sekiguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP104 | Haruna Sekiguchi | ✓ | ☐ | ☐ | ☐ | ☐ |
 | OP105 | Ryusei Tobata | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP106 | Kanae Isurugi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP107 | Motoharu Zenke | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP108 | Sachiko Endou | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP109 | Renji Kobata | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP102 | Emi Katsuragawa | ✓ | ☐ | ☐ | ☐ | ☐ |
+| OP14 | Donald Shibata | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP34 | Tae-jun Jung | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP60 | Migimura Okamuradonzai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP65 | Nonaka Tomiko | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP69 | Pirkaike Tsuki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP99 | Yoshimura Hideko | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP45 | Kinkokoro Matsumae | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP50 | Kokuni Yatsumachi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP09 | Atsushi Fujioka | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP85 | Tobira Hideyoshi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP91 | Utemaru Naizen | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP81 | Taiyou Nigate | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP17 | Furukawa Hideki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP23 | Harumi Asato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP24 | Hideaki Terada | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP37 | Kang Guang | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP64 | Noah Kain | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP75 | Seta Anramasu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP92 | Walter Peard | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP01 | Ayala Taiyounokage | ✓ | ☐ | ☐ | ☐ | ☐ |
+| OP51 | Kotake Kasumu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP30 | Isoroku Adams | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP33 | Juba Kasumu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP42 | Keu Shibatani | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP71 | Ran Sachiko | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP54 | Luo Guang | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP63 | Namgung Ryung | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP73 | Lee-min Seong | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP21 | Hee-seop Han | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP67 | Okabe Hideriai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP52 | Koyki Kurasno | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP66 | Nonaka Yoshie | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP57 | Masanori Shizugata | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP48 | Kiyabu Waritai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP76 | Shiba Momoe | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP88 | Tsukuhito Keri | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP04 | Aoi Oba | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP31 | Iwao Nagamine | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP58 | Masato Maruyama | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP90 | Tsutomu Hirano | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP27 | Ichizaki Namu | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP11 | Barclay Brigham | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP12 | Chi Zoku | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP25 | Hikari Suimoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP70 | Poiya Kanu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP74 | Seong Yun-hee | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP79 | Sikanna Sapanipa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP84 | Tian Zhao Bo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP94 | Xiaobo Jiang | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP98 | Yoshida Cho | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP06 | Arata Ran | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP43 | Kimiko Chinen | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP29 | Imekanu Resu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP46 | Kisar Masayoshi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP20 | Gorou Kon | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP44 | Kina Kewtum | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP55 | Lyosha Morozov | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP61 | Miho Shingumi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP89 | Tsuneo Yoneda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP95 | Xiong Xiaodan | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP38 | Katsumiko Yamamura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP72 | Sadao Nishikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP56 | Mao Saeki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP82 | Tama Tsujikonou | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP18 | Gavin Ronaldson | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP59 | Masayoshi Sera | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP19 | Goko Morino | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP68 | Okita Shiori | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP13 | Cyril Slater | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP101 | Yuriko Mayeda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP77 | Shizutake Matsumae | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP36 | Kakuei Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP62 | Minami Okirasnunipa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP05 | Aptoas Ahun | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP32 | Jiayi Gong | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP39 | Kaya Ukor | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP41 | Kenta Hamasaki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP97 | Yoshi Toda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP03 | Ani Aman | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP07 | Arisu Fukunaga | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP83 | Teinei Macmillan | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP47 | Kitahime Haibi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP49 | Kiyomi Gima | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP53 | Leonard Ridgway | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP86 | Tomihisa Shimao | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP93 | Xiang Huang | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP96 | Yakuwakka Yayarini | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP80 | Soma Umehori | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP08 | Atsuko Takeo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP28 | Iida Eri | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP02 | Amaya Matsumae | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP26 | Hyun-jae Hyeong | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP78 | Siatuy Sanota | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP100 | Yuki Kasukasa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP16 | Eiji Fujioka | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP87 | Tomio Katayama | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP10 | Aki Rono | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP110 | Kenta Aoshima | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP111 | Reiko Habutae | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP112 | Julian Beckett | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -59,246 +144,226 @@ in `data/art.json`.
 | OP117 | Nanase Orikuchi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP118 | Fumihiko Takashiro | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP119 | Chiyo Hatakenaka | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP12 | Chi Zoku | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP120 | Genzou Amamiya | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP121 | Umiko Sagawatari | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP122 | Norio Machimura | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP123 | Yuzuki Handa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP124 | Kotarou Shishikura | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP125 | Reona Tatebayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP13 | Cyril Slater | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP14 | Donald Shibata | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP15 | Edward Grinner | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP16 | Eiji Fujioka | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP17 | Furukawa Hideki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP18 | Gavin Ronaldson | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP19 | Goko Morino | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP20 | Gorou Kon | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP21 | Han Hee-seop | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP22 | Haru Yashi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP23 | Harumi Asato | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP24 | Hideaki Terada | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP25 | Hikari Suimoto | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP26 | Hyeong Hyun-jae | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP27 | Ichizaki Namu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP28 | Iida Eri | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP29 | Imekanu Resu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP30 | Isoroku Adams | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP31 | Iwao Nagamine | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP32 | Jiayi Gong | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP33 | Juba Kasumu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP34 | Jung Tae-jun | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP35 | Jurou Nishihara | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP36 | Kakuei Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP37 | Kang Guang | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP38 | Katsumiko Yamamura | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP39 | Kaya Ukor | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP35 | Jyurou Nishihara | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP40 | Kenshin Sako | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP41 | Kenta Hamasaki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP42 | Keu Shibatani | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP43 | Kimiko Chinen | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP44 | Kina Kewtum | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP45 | Kinkokoro Matsumae | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP46 | Kisar Masayoshi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP47 | Kitahime Haibi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP48 | Kiyabu Waritai | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP49 | Kiyomi Gima | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP50 | Kokuni Yatsumachi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP51 | Kotake Kasumu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP52 | Koyki Kurasno | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP53 | Leonard Ridgway | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP54 | Luo Guang | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP55 | Lyosha Morozov | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP56 | Mao Saeki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP57 | Masanori Shizugata | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP58 | Masato Maruyama | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP59 | Masayoshi Sera | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP60 | Migimura Okamuradonzai | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP61 | Miho Shingumi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP62 | Minami Okirasnunipa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP63 | Namgung Ryung | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP64 | Noah Kain | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP65 | Nonaka Tomiko | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP66 | Nonaka Yoshie | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP67 | Okabe Hideriai | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP68 | Okita Shiori | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP69 | Pirkaike Tsuki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP70 | Poiya Kanu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP71 | Ran Sachiko | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP72 | Sadao Nishikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP73 | Seong Lee-min | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP74 | Seong Yun-hee | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP75 | Seta Anramasu | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP76 | Shiba Momoe | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP77 | Shizutake Matsumae | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP78 | Siatuy Sanota | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP79 | Sikanna Sapanipa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP80 | Soma Umehori | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP81 | Taiyou Nigate | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP82 | Tama Tsujikonou | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP83 | Teinei Macmillan | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP84 | Tian Zhao Bo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP85 | Tobira Hideyoshi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP86 | Tomihisa Shimao | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP87 | Tomio Katayama | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP88 | Tsukuhito Keri | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP89 | Tsuneo Yoneda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP90 | Tsutomu Hirano | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP91 | Utemaru Naizen | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP92 | Walter Peard | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP93 | Xiang Huang | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP94 | Xiaobo Jiang | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP95 | Xiong Xiaodan | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP96 | Yakuwakka Yayarini | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP97 | Yoshi Toda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP98 | Yoshida Cho | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP99 | Yoshimura Hideko | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Staff — `assets/characters/staff/`
 
 | ID | Name | neutral | attacking | guarding | gaining | damaged |
 |---|---|---|---|---|---|---|
-| SF01 | Renn Adachi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF02 | Mireille Kanzaki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF03 | Toma Segawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF04 | Priya Yamashiro | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF05 | Kessler Onodera | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF06 | Fumino Estrada | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF07 | Ijeoma Tachibana | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF08 | Kellan Morikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF09 | Suzu Ferreira | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF10 | Damaris Kagawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF11 | Otis Nagata | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF12 | Alaia Shindo | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF13 | Rurik Amemiya | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF14 | Chiaki Voss | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF15 | Ines Kuroda | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF16 | Solomon Ebisawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF17 | Marisol Tachikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF18 | Wren Hoshino | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF19 | Katsuo Delgado | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF20 | Yui Brennan | ☐ | ☐ | ☐ | ☐ | ☐ |
-| SF21 | Amaru Sekiguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF01 | Hana Takahashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF02 | Yui Kobayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF03 | Sheen Donalds | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF04 | Marcus O'Connor | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF05 | Stephen Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF06 | Hiromi Tanaka | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF07 | Ako Ban | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF08 | Aoi Suzuki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF09 | Suzu Kobayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF10 | Himari Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF11 | Alejandro Uzeko | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF12 | Santiago Portillo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF13 | Kenta Izuke | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF14 | Honoka Richardson | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF15 | Miharu Daitani | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF16 | Hiroki Shitamachi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF17 | Grant Stark | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF18 | Leo Vargar | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF19 | Lisa Namamura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF20 | Haruka Kamikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| SF21 | Yuka Inamu | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Visitors — `assets/characters/visitors/`
 
 | ID | Name | neutral | attacking | guarding | gaining | damaged |
 |---|---|---|---|---|---|---|
-| VI01 | Sample Constituent | ☐ | ☐ | ☐ | ☐ | ☐ |
-
-## Reporters — `assets/characters/journalists/`
-
-| ID | Name | neutral | attacking | guarding | gaining | damaged |
-|---|---|---|---|---|---|---|
-| JR_A | Reporter A | ☐ | ☐ | ☐ | ☐ | ☐ |
-| JR_B | Reporter B | ☐ | ☐ | ☐ | ☐ | ☐ |
-| JR_C | Reporter C | ☐ | ☐ | ☐ | ☐ | ☐ |
-| JR_D | Reporter D | ☐ | ☐ | ☐ | ☐ | ☐ |
-| JR_E | Reporter E | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI01 | Hanako Okuda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI02 | Gen Tsukamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI03 | Saki Mori | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI04 | Ryo Kawabata | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI05 | Fumiko Sugawara | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI06 | Kaito Nishimura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI07 | Yuri Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI08 | Daigo Ishikari | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI09 | Emi Takasugi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI10 | Hiroshi Wada | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI11 | Leo Aoyama | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI12 | Kiyoshi Murata | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI13 | Tomoko Ide | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI14 | Shuhei Sakurai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI15 | Shinji Ogawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI16 | Yuki Kirishima | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI17 | Haruto Ebina | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI18 | Granny Chiyo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI19 | Sora Kudo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI20 | Akemi Ito | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI21 | Dog Man | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI22 | Brad Chunchun | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI23 | Aso Takeda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI24 | Party Member A | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI25 | Masato Fujimoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI26 | Rera Kayano | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI27 | Caroline Whitfield | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI28 | Kenji Arai-Mitchell | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI29 | Tomoe Sakamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI30 | Pirika Nolan | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI31 | Daniel Ikeda-Brooks | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI32 | Yoshiko Tanabe | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI33 | Shiro Kannari | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI34 | Gordon Hale-Takeda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI35 | Haruka Chiri | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI36 | Walter Kimura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI37 | Yukiko Rowan-Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI38 | Tetsuo Aoki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI39 | Ray Kaizawa-Mercer | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Card art — `assets/cards/art/`
 
 | File | For | Drawn |
 |---|---|---|
-| C26.png | Own the Mistake | ☐ |
-| C07.png | Rousing Applause | ☐ |
-| C30.png | Rally the Faithful | ☐ |
-| C11.png | Work the Room First | ☐ |
-| C36.png | Offer a Private Word | ☐ |
-| C38.png | Call In a Favor | ☐ |
-| C14.png | Document Request | ☐ |
-| C43.png | Check Their Facts | ☐ |
-| C17.png | Labeling | ☐ |
 | C01.png | Record of Service | ☐ |
 | C02.png | Sincere Answer | ☐ |
 | C03.png | Formal Apology | ☐ |
-| C25.png | Point to the Promise Kept | ☐ |
-| C27.png | Appeal Across the Aisle | ☐ |
-| C28.png | Read the Letters Aloud | ☐ |
+| C04.png | Return to First Principles | ☐ |
 | C05.png | Impassioned Speech | ☐ |
 | C06.png | Tearful Appeal | ☐ |
-| C31.png | Righteous Anger | ☐ |
-| C32.png | Raise Your Voice | ☐ |
-| C33.png | Refuse to Yield | ☐ |
-| C34.png | Bring the Room to Its Feet | ☐ |
+| C07.png | Rousing Applause | ☐ |
+| C08.png | Speech from the Soul | ☐ |
 | C09.png | Call for Unity | ☐ |
 | C10.png | Voice of the Hometown | ☐ |
+| C11.png | Work the Room First | ☐ |
 | C12.png | Ask Who's With You | ☐ |
-| C35.png | Invoke Party Discipline | ☐ |
 | C13.png | Present the Stats | ☐ |
+| C14.png | Document Request | ☐ |
 | C15.png | Pursue the Contradiction | ☐ |
-| C40.png | Question the Funding | ☐ |
-| C41.png | Set the Record Straight | ☐ |
-| C42.png | Press for a Straight Answer | ☐ |
+| C16.png | Table the White Paper | ☐ |
+| C17.png | Labeling | ☐ |
 | C18.png | Drawing Battle Lines | ☐ |
 | C19.png | Agitation | ☐ |
 | C20.png | Loyalty Test | ☐ |
-| C45.png | Name and Shame | ☐ |
-| C46.png | Force the Choice | ☐ |
-| C47.png | Question Their Loyalty | ☐ |
-| C48.png | Media Appeal | ☐ |
 | C21.png | Iridescent Answer | ☐ |
 | C22.png | "I Have No Recollection" | ☐ |
 | C23.png | Shifting the Issue | ☐ |
 | C24.png | Offer a Quiet Assurance | ☐ |
+| C25.png | Point to the Promise Kept | ☐ |
+| C26.png | Own the Mistake | ☐ |
+| C27.png | Appeal Across the Aisle | ☐ |
+| C28.png | Read the Letters Aloud | ☐ |
+| C29.png | Appeal to Conscience | ☐ |
+| C30.png | Rally the Faithful | ☐ |
+| C31.png | Righteous Anger | ☐ |
+| C32.png | Raise Your Voice | ☐ |
+| C33.png | Refuse to Yield | ☐ |
+| C34.png | Bring the Room to Its Feet | ☐ |
+| C35.png | Invoke Party Discipline | ☐ |
+| C36.png | Offer a Private Word | ☐ |
+| C37.png | Call for Common Cause | ☐ |
+| C38.png | Call In a Favor | ☐ |
+| C39.png | We Have the Votes | ☐ |
+| C40.png | Question the Funding | ☐ |
+| C41.png | Set the Record Straight | ☐ |
+| C42.png | Press for a Straight Answer | ☐ |
+| C43.png | Check Their Facts | ☐ |
+| C44.png | Demand an Outside Review | ☐ |
+| C45.png | Name and Shame | ☐ |
+| C46.png | Force the Choice | ☐ |
+| C47.png | Question Their Loyalty | ☐ |
+| C48.png | Media Appeal | ☐ |
+| C49.png | Declare Them Unfit | ☐ |
 | C50.png | Take It Under Advisement | ☐ |
 | C51.png | Feed the Press a Line | ☐ |
 | C52.png | Drown Them in Detail | ☐ |
 | C53.png | Tell the Room What It Wants | ☐ |
 | C54.png | Off the Record | ☐ |
-| C04.png | Return to First Principles | ☐ |
-| C29.png | Appeal to Conscience | ☐ |
-| C08.png | Speech from the Soul | ☐ |
-| C37.png | Call for Common Cause | ☐ |
-| C39.png | We Have the Votes | ☐ |
-| C16.png | Table the White Paper | ☐ |
-| C44.png | Demand an Outside Review | ☐ |
-| C49.png | Declare Them Unfit | ☐ |
 
 ## Backgrounds — `assets/backgrounds/`
 
 | File | For | Drawn |
 |---|---|---|
-| OFFICE.png | The Office | ☐ |
-| ST01.png | Special Committee | ☐ |
-| ST02.png | Floor Debate | ☐ |
-| ST03.png | Party Caucus | ☐ |
-| ST04.png | Press Conference | ☐ |
-| ST05.png | Town Hall | ☐ |
-| ST06.png | TV Debate | ☐ |
-| ST07.png | Office Hours | ☐ |
-| ST08.png | Party Steering Committee | ☐ |
-| ST09.png | Committee on Ethics and Prosecution | ☐ |
-| ST10.png | Committee on the Environment | ☐ |
-| ST11.png | Committee on War | ☐ |
-| ST12.png | Committee on the National Assembly | ☐ |
-| ST13.png | Committee on Agriculture | ☐ |
-| ST14.png | Committee on Foreign Affairs | ☐ |
-| ST15.png | Committee on Construction and Development | ☐ |
-| ST16.png | Committee on Finance | ☐ |
-| ST17.png | Committee on Government Administration | ☐ |
-| ST18.png | Committee of the Cabinet | ☐ |
-| ST19.png | Media Ambush | ☐ |
-| ST20.png | Lobbyist Meeting | ☐ |
-| ST21.png | Policy Study Session | ☐ |
+| OFFICE.png | The Office | ✓ |
+| ST01.png | Special Committee | ✓ |
+| ST02.png | Floor Debate | ✓ |
+| ST03.png | Party Caucus | ✓ |
+| ST04.png | Press Conference | ✓ |
+| ST05.png | Town Hall | ✓ |
+| ST06.png | TV Debate | ✓ |
+| ST07.png | Office Hours | ✓ |
+| ST08.png | Party Steering Committee | ✓ |
+| ST09.png | Committee on Ethics and Prosecution | ✓ |
+| ST10.png | Committee on the Environment | ✓ |
+| ST11.png | Committee on War | ✓ |
+| ST12.png | Committee on the National Assembly | ✓ |
+| ST13.png | Committee on Agriculture | ✓ |
+| ST14.png | Committee on Foreign Affairs | ✓ |
+| ST15.png | Committee on Construction and Development | ✓ |
+| ST16.png | Committee on Finance | ✓ |
+| ST17.png | Committee on Government Administration | ✓ |
+| ST18.png | Committee of the Cabinet | ✓ |
+| ST19.png | Media Ambush | ✓ |
+| ST20.png | Lobbyist Meeting | ✓ |
+| ST21.png | Policy Study Session | ✓ |
+| ST22.png | Party Steering Committee Check-In | ✓ |
+| ST23.png | National Assembly Floor Voting | ✓ |
 
 ## Organisation icons — `assets/icons/`
 
 | File | For | Drawn |
 |---|---|---|
-| BO01.png | Party Headquarters | ☐ |
-| BO02.png | Party Faction | ☐ |
-| BO03.png | Local Kōenkai | ☐ |
-| BO04.png | Mayors' Network | ☐ |
-| BO05.png | Chamber of Commerce | ☐ |
-| BO06.png | Neighborhood Associations | ☐ |
-| BO07.png | Fisheries Cooperative | ☐ |
-| BO08.png | National Media | ☐ |
-| BO09.png | Labor Federation | ☐ |
-| BO10.png | Agricultural Cooperatives | ☐ |
-| BO11.png | Students | ☐ |
-| BO12.png | Families | ☐ |
-| BO13.png | Artisans | ☐ |
-| BO14.png | Commuters | ☐ |
-| BO15.png | Traditionalists | ☐ |
-| BO16.png | Modernists | ☐ |
+| BO01.png | Party Headquarters | ✓ |
+| BO02.png | Party Faction | ✓ |
+| BO03.png | Local Kōenkai | ✓ |
+| BO04.png | Mayors' Network | ✓ |
+| BO05.png | Chamber of Commerce | ✓ |
+| BO06.png | Neighborhood Associations | ✓ |
+| BO07.png | Fisheries Cooperative | ✓ |
+| BO08.png | National Media | ✓ |
+| BO09.png | Labor Federation | ✓ |
+| BO10.png | Agricultural Cooperatives | ✓ |
+| BO11.png | Students United | ✓ |
+| BO12.png | Family Network | ✓ |
+| BO13.png | Yezo Artisans Guild | ✓ |
+| BO14.png | Commuter Committee | ✓ |
+| BO15.png | Our Traditional Society | ✓ |
+| BO16.png | Innovation Society | ✓ |
+| BO17.png | Members of Parliament | ✓ |
+| BO18.png | Constituency Voters | ✓ |
+
+## Shop item icons — `assets/icons/`
+
+| File | For | Drawn |
+|---|---|---|
+| policy_research.png | Commission Policy Research | ✓ |
+| press_engagement.png | Commission Press Engagement | ✓ |
+| district_engagement.png | Commission District Engagement | ✓ |
+| coffee.png | “ね3” Coffee | ✓ |
+| tea.png | “ミレニ姫” Tea | ✓ |
+| paperwork_automation.png | Paperwork Automation | ✓ |
+| wristwatch.png | Wristwatch | ✓ |
+| meditation.png | Personalized Dear Colleague Letter | ✓ |
+| unlock_card_t1.png | Unlock Random Tier 1 Card | ✓ |
+| unlock_card_t2.png | Unlock Random Tier 2 Card | ✓ |
+| unlock_card_t3.png | Unlock Random Tier 3 Card | ✓ |
+| staff_tier.png | Staff Training Consultancy Session | ✓ |
+| funds_cap.png | Office Fund Bank Limit Petition | ✓ |
+| buff_draw.png | Commission a Speech Trainer | ✓ |
+| buff_energy.png | Kaiju Sized “ね3” Coffee | ✓ |
+| buff_guard.png | Automated Dear Colleague Letters | ✓ |
+| buff_gaffe_cap.png | Kaiju Sized “ミレニ姫” Tea | ✓ |
+| buff_turn.png | AI Powered Clock | ✓ |
+| booster_dinner.png | Host a Dinner for a National Booster | ✓ |
+| walking_tour.png | Host a District Walking Tour for a Constituency Booster | ✓ |
+
+## Cosmetic package icons — `assets/icons/`
+
+| File | For | Drawn |
+|---|---|---|
+| Workplace_Casual.png | Workplace Casual | ✓ |
+| Workplace_Modern.png | Modern Workplace | ✓ |

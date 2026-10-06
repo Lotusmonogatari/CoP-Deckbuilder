@@ -5,7 +5,7 @@
 
 Reads data/art.json for where each kind of picture lives, and the data files
 for who and what needs one: the four protagonists, every opponent, staff
-member, visitor and reporter, every card, every stage. Each file is listed
+member and visitor, every card, every stage. Each file is listed
 with a tick when it has been drawn and a blank box when it has not, grouped
 so the most-seen art comes first.
 
@@ -61,8 +61,6 @@ def main():
          [(s["staff_id"], s.get("name", "")) for s in load("staff")], False),
         ("Visitors", "visitor",
          [(v["visitor_id"], v.get("name", v.get("name_en", ""))) for v in load("visitors")], False),
-        ("Reporters", "journalist",
-         [(j["journalist_id"], j.get("name", "")) for j in load("journalists")["journalists"]], False),
     ]
 
     lines = [
@@ -106,6 +104,22 @@ def main():
     flat("Backgrounds", "background",
          [("OFFICE", "The Office")] + [(s["stage_id"], s.get("name_en", "")) for s in load("stages")])
     flat("Organisation icons", "icon", [(b["booster_id"], b.get("name_en", "")) for b in load("boosters")])
+
+    # Shop items and cosmetic packages name their own icon file in an Icon
+    # column (a blank cell falls back to the item's ID, the same rule the game
+    # uses: InventoryPanel.icon_name()). Duplicates are listed once.
+    def icon_rows(rows, id_key, name_key):
+        seen, out = set(), []
+        for row in rows:
+            icon = str(row.get("icon") or "").strip() or str(row.get(id_key, ""))
+            if icon and icon not in seen:
+                seen.add(icon)
+                out.append((icon, str(row.get(name_key) or row.get(id_key, ""))))
+        return out
+
+    flat("Shop item icons", "icon", icon_rows(load("shop"), "item_id", "name"))
+    flat("Cosmetic package icons", "icon",
+         icon_rows(load("cosmetic_packages"), "package_id", "name_en"))
 
     lines += ["| Kind | Drawn |", "|---|---|"] + summary + [""] + body
     OUTPUT.write_text("\n".join(lines), encoding="utf-8")
