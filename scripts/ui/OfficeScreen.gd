@@ -19,7 +19,7 @@ var _title_party: Label
 @onready var _subtitle: Label = %Subtitle
 @onready var _report: Label = %Report
 @onready var _start_button: Button = %StartButton
-@onready var _organisations_button: Button = %OrganisationsButton
+@onready var _reputation_button: Button = %ReputationButton
 @onready var _organisations_panel: Overlay = %OrganisationsPanel
 @onready var _briefing_panel: Overlay = %BriefingPanel
 @onready var _levels_panel: Overlay = %LevelsPanel
@@ -70,6 +70,10 @@ var _cosmetics_panel: Overlay
 ## The How to Play guide (HowToPlayPanel.gd), opened from the row of buttons.
 var _how_to_play_panel: Overlay
 
+## The two intermediary menus (_build_menus()).
+var _reputation_menu: Overlay
+var _administration_menu: Overlay
+
 ## Rhetoric Training's card offer (SH09-11, the XP-cost card unlock tiers)
 ## — Cameron, 2026-09-25: showing the card itself, not just naming it in a
 ## sentence, is what makes drawing a random one feel like a pull rather
@@ -117,9 +121,10 @@ func _ready() -> void:
 	_start_button.pressed.connect(_on_start_pressed)
 	_briefing_panel.confirmed.connect(_on_start)
 	_deck_panel.confirmed.connect(_on_deck_confirmed)
-	_organisations_button.pressed.connect(_show_organisations)
+	_reputation_button.pressed.connect(_show_reputation_menu)
 	_management_button.pressed.connect(_show_management)
 	_build_inventory()
+	_build_menus()
 	_build_record()
 	_build_cosmetics()
 	_build_how_to_play()
@@ -666,22 +671,12 @@ func _build_inventory() -> void:
 	parent.move_child(button, _management_button.get_index() + 1)
 
 
-## "Your Record" button, beside Organisations — same code-built pattern as
-## Inventory beside Management, no scene-file edit.
+## The "Your Record" panel. Its button lives in the Reputation and Results
+## menu now (_show_reputation_menu), no longer in the Office's own row.
 func _build_record() -> void:
 	_record_panel = Overlay.new()
 	_record_panel.name = "RecordPanel"
 	add_child(_record_panel)
-
-	var button := Button.new()
-	button.name = "RecordButton"
-	button.text = Text.say("office.your_record")
-	button.custom_minimum_size = _organisations_button.custom_minimum_size
-	button.size_flags_horizontal = _organisations_button.size_flags_horizontal
-	button.pressed.connect(_show_record)
-	var parent := _organisations_button.get_parent()
-	parent.add_child(button)
-	parent.move_child(button, _organisations_button.get_index() + 1)
 
 
 ## Lifetime stats: which bills the influence swing has flipped, clears per
@@ -738,41 +733,79 @@ func _show_record() -> void:
 	_record_panel.open(Text.say("office.your_record"), rows)
 
 
-## Cosmetic packages, beside "Your Record" — same code-built pattern, no
-## scene-file edit. Inserted after RecordButton so the row reads
-## Organisations, Your Record, Cosmetics, left to right.
-## How to Play, at the end of the same row (2026-10-06). The guide itself is
-## HowToPlayPanel.gd, shared with the title screen.
+## The How to Play panel (HowToPlayPanel.gd, shared with the title screen).
+## Its button lives in the Administration menu (_show_administration_menu).
 func _build_how_to_play() -> void:
 	_how_to_play_panel = HowToPlayPanel.attach(self)
 
-	var button := Button.new()
-	button.name = "HowToPlayButton"
-	button.text = Text.say("office.how_to_play")
-	button.custom_minimum_size = _organisations_button.custom_minimum_size
-	button.size_flags_horizontal = _organisations_button.size_flags_horizontal
-	button.pressed.connect(HowToPlayPanel.open.bind(_how_to_play_panel))
-	var parent := _organisations_button.get_parent()
-	var cosmetics_button := parent.get_node("CosmeticsButton")
-	parent.add_child(button)
-	parent.move_child(button, cosmetics_button.get_index() + 1)
 
-
+## The Appearance and Music panel. Its button lives in the Administration
+## menu too.
 func _build_cosmetics() -> void:
 	_cosmetics_panel = Overlay.new()
 	_cosmetics_panel.name = "CosmeticsPanel"
 	add_child(_cosmetics_panel)
 
+
+## Two intermediary menus (2026-10-06, Cameron) so the Office's button row
+## stays short: "Reputation and Results" holds Important Stakeholders and
+## Your Record; "Administration" holds Appearance and Music and How to Play.
+## Each menu is an ordinary Overlay whose rows are buttons that open the
+## panel they always opened. The menu stays open underneath, so Back from
+## the panel lands on the menu again. Built in code, no scene edit, except
+## that ReputationButton is the scene's old OrganisationsButton, renamed.
+func _build_menus() -> void:
+	_reputation_menu = Overlay.new()
+	_reputation_menu.name = "ReputationMenuPanel"
+	add_child(_reputation_menu)
+
+	_administration_menu = Overlay.new()
+	_administration_menu.name = "AdministrationMenuPanel"
+	add_child(_administration_menu)
+
 	var button := Button.new()
-	button.name = "CosmeticsButton"
-	button.text = Text.say("office.cosmetics")
-	button.custom_minimum_size = _organisations_button.custom_minimum_size
-	button.size_flags_horizontal = _organisations_button.size_flags_horizontal
-	button.pressed.connect(_show_cosmetics)
-	var parent := _organisations_button.get_parent()
-	var record_button := parent.get_node("RecordButton")
+	button.name = "AdministrationButton"
+	button.text = Text.say("office.administration")
+	button.custom_minimum_size = _reputation_button.custom_minimum_size
+	button.size_flags_horizontal = _reputation_button.size_flags_horizontal
+	button.pressed.connect(_show_administration_menu)
+	var parent := _reputation_button.get_parent()
 	parent.add_child(button)
-	parent.move_child(button, record_button.get_index() + 1)
+	parent.move_child(button, _reputation_button.get_index() + 1)
+
+
+func _show_reputation_menu() -> void:
+	var rows: Array[Control] = [
+		_menu_button("OrganisationsButton", "office.organisations", _show_organisations,
+			_organisations_panel),
+		_menu_button("RecordButton", "office.your_record", _show_record, _record_panel),
+	]
+	_reputation_menu.open(Text.say("office.reputation_and_results"), rows)
+
+
+func _show_administration_menu() -> void:
+	var rows: Array[Control] = [
+		_menu_button("CosmeticsButton", "office.cosmetics", _show_cosmetics, _cosmetics_panel),
+		_menu_button("HowToPlayButton", "office.how_to_play",
+			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
+	]
+	_administration_menu.open(Text.say("office.administration"), rows)
+
+
+## One row of a menu: a button that runs `opener` (which opens `panel`) and
+## then brings `panel` to the front. Panels are drawn in the order they were
+## added, and the menus were added after some of them, so without this the
+## menu would sit on top of the very panel it just opened.
+func _menu_button(button_name: String, text_key: String, opener: Callable,
+		panel: Overlay) -> Button:
+	var button := UiKit.action_button(Text.say(text_key), "", func() -> void:
+		opener.call()
+		move_child(panel, get_child_count() - 1), 100.0)
+	button.name = button_name
+	# As wide as the text column of every other panel, so a menu's buttons
+	# are not shrunk to their own labels.
+	button.custom_minimum_size.x = UiKit.LINE_WIDTH
+	return button
 
 
 ## Purely decorative — an outfit, an Office background, and music. A

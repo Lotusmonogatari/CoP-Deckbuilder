@@ -72,6 +72,9 @@ func _walk() -> void:
 	var office := get_tree().current_scene
 
 	# --- Open the Cosmetics page ---------------------------------------------
+	# Appearance and Music now lives in the Administration menu (2026-10-06).
+	await _click(office.find_child("AdministrationButton", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
 	var cosmetics_button := office.find_child("CosmeticsButton", true, false) as Control
 	await _click(cosmetics_button)
 	var panel := office.get_node("CosmeticsPanel") as Overlay

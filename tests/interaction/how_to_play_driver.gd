@@ -91,6 +91,9 @@ func _from_the_office() -> void:
 	await get_tree().create_timer(0.6).timeout
 
 	var office := get_tree().current_scene
+	# How to Play now lives in the Administration menu (2026-10-06).
+	await _click(office.find_child("AdministrationButton", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
 	var button := office.find_child("HowToPlayButton", true, false) as Button
 	if button == null:
 		_failures.append("the Office has no How to Play button")

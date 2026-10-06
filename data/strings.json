@@ -2574,5 +2574,19 @@
     "english": "Stop the demo",
     "placeholders": null,
     "notes": "The button that stops a playing video."
+  },
+  {
+    "key": "office.reputation_and_results",
+    "where": "Office — menu button",
+    "english": "Reputation and Results",
+    "placeholders": null,
+    "notes": "The Office button that opens a menu holding Important Stakeholders and Your Record. Also that menu's heading."
+  },
+  {
+    "key": "office.administration",
+    "where": "Office — menu button",
+    "english": "Administration",
+    "placeholders": null,
+    "notes": "The Office button that opens a menu holding Appearance and Music and How to Play. Also that menu's heading."
   }
 ]
