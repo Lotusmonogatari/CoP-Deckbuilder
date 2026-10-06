@@ -223,6 +223,33 @@ SHEETS = {
             ("Thought Text", "thought_text", "str"),
         ],
     },
+    # The How to Play guide (2026-10-06): the list of mechanics and
+    # win/lose conditions a new player reads, opened from a button on the
+    # title screen and on the Office. One row per entry; Order sorts within
+    # the whole guide and Group is only the heading entries sit under (a
+    # group appears where its first entry does). Screenshot and Video are
+    # file names (no extension) under assets/howto/ — .png and .ogv, the one
+    # video format Godot plays on every platform; both optional. Body and
+    # Caption may use live {tokens} (see HowToPlay.gd), filled from the
+    # current data so a retuned number never leaves the guide wrong.
+    # optional_sheet: True, like every recently added tab.
+    "How To Play": {
+        "out": "how_to_play.json",
+        "key": "entry_id",
+        "id_pattern": r"^HT\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Entry ID", "entry_id", "id"),
+            ("Order", "order", "num"),
+            ("Group", "group", "str"),
+            ("Heading (EN)", "heading_en", "str"),
+            ("Heading (JP)", "heading_jp", "str"),
+            ("Body (EN)", "body_en", "str"),
+            ("Screenshot", "screenshot", "str"),
+            ("Caption", "caption", "str"),
+            ("Video", "video", "str"),
+        ],
+    },
     # The Stage Transition screen's own three pools (2026-10-01, §7.9): a
     # short beat between two stages of the same level, where one or more
     # characters drawn from Transition Cast speak (via Transition Dialogue)

@@ -36,7 +36,7 @@ const DATA_PATH := "res://data/"
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
-	"floor_votes", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
+	"floor_votes", "how_to_play", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels", "lists",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
@@ -81,6 +81,10 @@ var level_intros: Array = []
 ## row per level_id (2026-10-01), only ever shown on a level that names a
 ## Floor Vote bill. See LevelIntroCues.player_thought().
 var level_intro_thoughts: Array = []
+
+## The How to Play guide's entries (workbook tab "How To Play"), in workbook
+## order. HowToPlay.gd sorts and groups them.
+var how_to_play: Array = []
 
 ## The Stage Transition screen's three pools (2026-10-01, §7.9): which
 ## characters, backgrounds, and dialogue lines are eligible for a given
@@ -313,6 +317,7 @@ func load_all() -> void:
 			"office_ticker": office_ticker = content if content is Array else []
 			"level_intros": level_intros = content if content is Array else []
 			"level_intro_thoughts": level_intro_thoughts = content if content is Array else []
+			"how_to_play": how_to_play = content if content is Array else []
 			"transition_cast": transition_cast = content if content is Array else []
 			"transition_backgrounds": transition_backgrounds = content if content is Array else []
 			"transition_dialogue": transition_dialogue = content if content is Array else []

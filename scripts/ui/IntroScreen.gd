@@ -26,6 +26,9 @@ const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 ## next autosave fires, same as one already open in the Office.
 var _overwrite_warning: Overlay
 
+## The How to Play guide (HowToPlayPanel.gd), opened from its own button.
+var _how_to_play_panel: Overlay
+
 
 func _ready() -> void:
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
@@ -38,6 +41,17 @@ func _ready() -> void:
 
 	_new_game_button.text = Text.say("intro.new_game")
 	_new_game_button.pressed.connect(_on_new_game_pressed)
+
+	# How to Play, beneath the two doors in. Built in code beside them rather
+	# than edited into IntroScreen.tscn (2026-10-06), the same way the
+	# Office's newer buttons are.
+	_how_to_play_panel = HowToPlayPanel.attach(self)
+	var how_to_play_button := Button.new()
+	how_to_play_button.name = "HowToPlayButton"
+	how_to_play_button.text = Text.say("intro.how_to_play")
+	how_to_play_button.custom_minimum_size = _new_game_button.custom_minimum_size
+	how_to_play_button.pressed.connect(HowToPlayPanel.open.bind(_how_to_play_panel))
+	_new_game_button.get_parent().add_child(how_to_play_button)
 
 	_overwrite_warning = Overlay.new()
 	_overwrite_warning.name = "OverwriteWarning"

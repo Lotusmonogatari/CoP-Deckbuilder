@@ -1,0 +1,200 @@
+[
+  {
+    "entry_id": "HT01",
+    "order": 10.0,
+    "group": "The Goal",
+    "heading_en": "You are a legislator",
+    "heading_jp": null,
+    "body_en": "Fight rhetorical battles in Yezo's parliament using a hand of argument cards. Battles chain into levels, and your standing carries from one to the next.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT02",
+    "order": 20.0,
+    "group": "The Goal",
+    "heading_en": "How a turn works",
+    "heading_jp": null,
+    "body_en": "See what your opponent plans, spend your energy to play cards, then end your turn. The opponent acts, and you draw a new hand.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT03",
+    "order": 30.0,
+    "group": "Winning and Losing",
+    "heading_en": "Winning a debate",
+    "heading_jp": null,
+    "body_en": "Push your support up to the win mark before time runs out. The Floor Debate needs {majority} of {seats} seats. Argue your opponent's support down to nothing and you win at once.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT04",
+    "order": 40.0,
+    "group": "Winning and Losing",
+    "heading_en": "Losing a debate",
+    "heading_jp": null,
+    "body_en": "You lose if your gaffe meter fills, if time runs out, or if your own support falls to nothing. Losing costs you standing, and usually ends the level.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT05",
+    "order": 50.0,
+    "group": "Winning and Losing",
+    "heading_en": "Press conferences",
+    "heading_jp": null,
+    "body_en": "There is no race. You answer a set of questions, and your tone is judged after the last one. Skipping a question costs you tone.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT06",
+    "order": 60.0,
+    "group": "Winning and Losing",
+    "heading_en": "TV debates",
+    "heading_jp": null,
+    "body_en": "Stay at or above the win mark at the end of every turn.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT07",
+    "order": 70.0,
+    "group": "Winning and Losing",
+    "heading_en": "Several opponents",
+    "heading_jp": null,
+    "body_en": "Committees, Town Halls, Caucuses and Floor Debates make you beat several opponents in a row. A committee resets everything between opponents. The others keep your clock running.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT08",
+    "order": 80.0,
+    "group": "Cards",
+    "heading_en": "Energy and cost",
+    "heading_jp": null,
+    "body_en": "Every card costs energy. Unspent energy does not carry over. Ending a turn without playing a card costs you {pass_penalty} energy next turn.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT09",
+    "order": 90.0,
+    "group": "Cards",
+    "heading_en": "Suits and rooms",
+    "heading_jp": null,
+    "body_en": "There are six suits of rhetoric. Each room favours some suits and suppresses others. Tap a card to see how this room treats it.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT10",
+    "order": 100.0,
+    "group": "Cards",
+    "heading_en": "Gaffes",
+    "heading_jp": null,
+    "body_en": "Some cards add to your gaffe meter. Fill it and the debate is lost. The limit changes from room to room, from {gaffe_min} to {gaffe_max}, and is shown on the battle screen.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT11",
+    "order": 110.0,
+    "group": "Cards",
+    "heading_en": "Guard",
+    "heading_jp": null,
+    "body_en": "Guard soaks up attacks, stacks up to {guard_cap}, and carries between turns.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT12",
+    "order": 120.0,
+    "group": "Cards",
+    "heading_en": "Answering questions",
+    "heading_jp": null,
+    "body_en": "In rooms that ask questions, the invited suit earns a bonus and pleases the organisation asking. A weak answer weakens your card and annoys them.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT13",
+    "order": 130.0,
+    "group": "Between Battles",
+    "heading_en": "Your four standings",
+    "heading_jp": null,
+    "body_en": "Constituency support, Reputation, Funds and Party support. Stages move them. If Constituency support gets very low, a Town Hall is forced on you. If Party support hits zero, your Funds stop coming in.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT14",
+    "order": 140.0,
+    "group": "Between Battles",
+    "heading_en": "Important Stakeholders",
+    "heading_jp": null,
+    "body_en": "Organisations remember how you treated them. Pleasing one helps you later.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT15",
+    "order": 150.0,
+    "group": "Between Battles",
+    "heading_en": "XP and cards",
+    "heading_jp": null,
+    "body_en": "XP buys Rhetoric Training sessions, where you draw a card and decide whether to learn it. Build your deck on the deck screen.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT16",
+    "order": 160.0,
+    "group": "Between Battles",
+    "heading_en": "Marketplace and staff",
+    "heading_jp": null,
+    "body_en": "Spend Funds and XP on supplies and hires that help you in a stage or across a whole level.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT17",
+    "order": 170.0,
+    "group": "Between Battles",
+    "heading_en": "Office Hours and Floor Votes",
+    "heading_jp": null,
+    "body_en": "Office Hours are conversations with visitors. A Floor Vote is a single Yes, No or Abstain decision that changes how parties see you.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT18",
+    "order": 180.0,
+    "group": "Saving",
+    "heading_en": "Resume or abandon",
+    "heading_jp": null,
+    "body_en": "The game saves after each stage. Reopen it mid-level and you can resume or abandon the level. A stage in progress starts over.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  }
+]

@@ -126,6 +126,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     echo ">> FAILED: a cosmetic package could not be bought or equipped with real clicks."
     failures=$((failures + 1))
   fi
+
+  # And the How to Play guide, from the title screen and from the Office — 2026-10-06, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/how_to_play_test.tscn; then
+    echo ">> FAILED: the How to Play guide did not open with real clicks."
+    failures=$((failures + 1))
+  fi
 else
   echo ">> SKIPPED: xvfb-run is not installed, so buttons were not clicked."
   echo "   On Debian or Ubuntu: sudo apt-get install xvfb"

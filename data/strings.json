@@ -2532,5 +2532,47 @@
     "english": "Abandon level",
     "placeholders": null,
     "notes": "Sets the level aside without recording a win or a loss. It stays available to play again later."
+  },
+  {
+    "key": "intro.how_to_play",
+    "where": "Title screen — button",
+    "english": "How to Play",
+    "placeholders": null,
+    "notes": "The button on the title screen that opens the How to Play guide."
+  },
+  {
+    "key": "office.how_to_play",
+    "where": "Office — button",
+    "english": "How to Play",
+    "placeholders": null,
+    "notes": "The button on the Office screen that opens the How to Play guide."
+  },
+  {
+    "key": "how_to_play.title",
+    "where": "How to Play — panel title",
+    "english": "How to Play",
+    "placeholders": null,
+    "notes": "The heading at the top of the guide."
+  },
+  {
+    "key": "how_to_play.empty",
+    "where": "How to Play — nothing written yet",
+    "english": "The guide has not been written yet.",
+    "placeholders": null,
+    "notes": "Shown when the How To Play tab has no rows."
+  },
+  {
+    "key": "how_to_play.watch",
+    "where": "How to Play — video button",
+    "english": "Watch the demo",
+    "placeholders": null,
+    "notes": "The button under an entry that has a Video."
+  },
+  {
+    "key": "how_to_play.stop",
+    "where": "How to Play — video button",
+    "english": "Stop the demo",
+    "placeholders": null,
+    "notes": "The button that stops a playing video."
   }
 ]

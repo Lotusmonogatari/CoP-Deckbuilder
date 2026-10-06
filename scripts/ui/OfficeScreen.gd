@@ -67,6 +67,9 @@ var _record_panel: Overlay
 ## reason _record_panel is.
 var _cosmetics_panel: Overlay
 
+## The How to Play guide (HowToPlayPanel.gd), opened from the row of buttons.
+var _how_to_play_panel: Overlay
+
 ## Rhetoric Training's card offer (SH09-11, the XP-cost card unlock tiers)
 ## — Cameron, 2026-09-25: showing the card itself, not just naming it in a
 ## sentence, is what makes drawing a random one feel like a pull rather
@@ -119,6 +122,7 @@ func _ready() -> void:
 	_build_inventory()
 	_build_record()
 	_build_cosmetics()
+	_build_how_to_play()
 	_new_game_panel = Overlay.new()
 	_new_game_panel.name = "NewGamePanel"
 	add_child(_new_game_panel)
@@ -737,6 +741,23 @@ func _show_record() -> void:
 ## Cosmetic packages, beside "Your Record" — same code-built pattern, no
 ## scene-file edit. Inserted after RecordButton so the row reads
 ## Organisations, Your Record, Cosmetics, left to right.
+## How to Play, at the end of the same row (2026-10-06). The guide itself is
+## HowToPlayPanel.gd, shared with the title screen.
+func _build_how_to_play() -> void:
+	_how_to_play_panel = HowToPlayPanel.attach(self)
+
+	var button := Button.new()
+	button.name = "HowToPlayButton"
+	button.text = Text.say("office.how_to_play")
+	button.custom_minimum_size = _organisations_button.custom_minimum_size
+	button.size_flags_horizontal = _organisations_button.size_flags_horizontal
+	button.pressed.connect(HowToPlayPanel.open.bind(_how_to_play_panel))
+	var parent := _organisations_button.get_parent()
+	var cosmetics_button := parent.get_node("CosmeticsButton")
+	parent.add_child(button)
+	parent.move_child(button, cosmetics_button.get_index() + 1)
+
+
 func _build_cosmetics() -> void:
 	_cosmetics_panel = Overlay.new()
 	_cosmetics_panel.name = "CosmeticsPanel"
