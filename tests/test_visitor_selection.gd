@@ -133,10 +133,19 @@ func test_expand_level_attaches_visitors_with_a_drawn_question_for_a_non_combat_
 
 	assert_eq(stage.get("opponents"), [])
 	var drawn: Array = stage.get("visitors", [])
-	assert_eq(drawn.size(), 1)
-	assert_eq(drawn[0].get("visitor_id"), "VI01")
-	assert_false((drawn[0].get("question", {}) as Dictionary).is_empty(),
-		"the drawn visitor should already carry its own drawn question")
+	# How many visitors a room draws is the workbook's own number (ST07's
+	# opponent_count), so this follows it rather than hardcoding one.
+	var wanted := 1
+	for row: Dictionary in DataDB.stages:
+		if str(row.get("stage_id", "")) == "ST07":
+			wanted = int((row.get("opponent_count", {}) as Dictionary).get("min", 1))
+	assert_eq(drawn.size(), wanted)
+	var seen: Array = []
+	for visitor: Dictionary in drawn:
+		assert_false(seen.has(visitor.get("visitor_id")), "a visitor is drawn only once")
+		seen.append(visitor.get("visitor_id"))
+		assert_false((visitor.get("question", {}) as Dictionary).is_empty(),
+			"each drawn visitor should already carry its own drawn question")
 
 
 func test_expand_level_gives_a_combat_stage_an_empty_visitors_list() -> void:

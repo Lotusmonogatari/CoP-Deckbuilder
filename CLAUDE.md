@@ -2025,3 +2025,7 @@ The Cosmetic Packages tab's `Icon` cells read `{Workplace_Casual}` and `{Workpla
 
 `tools/art_checklist.py` had been crashing since 2026-09-26 because it still read `data/journalists.json` (deleted when journalists became ordinary opponents), so `design/ART_CHECKLIST.md` was out of date. The Reporters group is removed, and three icon sections are listed alongside Organisation icons: **Shop item icons** and **Cosmetic package icons** (each row's own `Icon` cell, falling back to its ID when blank, the same rule `InventoryPanel.icon_name()` uses; duplicates listed once). Re-run it with `python3 tools/art_checklist.py`; it only reads data and the disk. All 40 icons (18 organisations, 20 shop items, 2 cosmetic packages) are drawn as of this run.
 
+
+### Three stale tests now follow the workbook (2026-10-07, Cameron)
+
+`test_questions.gd` no longer expects exactly 20 questions per room (only that a pool is not empty), no longer enforces a nine-word limit on card cues (Cameron's call: length is the designer's), and `test_visitor_selection.gd` reads how many visitors ST07 draws from the Stages tab's own `opponent_count` instead of assuming 1. Growing a pool in the workbook can no longer fail a test. Full GUT suite: 956/956.
