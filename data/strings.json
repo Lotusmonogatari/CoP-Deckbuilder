@@ -2665,5 +2665,19 @@
     "english": "This person has no higher tiers.",
     "placeholders": null,
     "notes": "Shown under the tier list when there is nothing to upgrade to."
+  },
+  {
+    "key": "outcome.booster_hint",
+    "where": "Outcome panel, above the organisation icons",
+    "english": "Tap an organisation to see how its standing moved.",
+    "placeholders": null,
+    "notes": "One line above the row of organisation icons shown when a stage touched any."
+  },
+  {
+    "key": "outcome.booster_change",
+    "where": "Outcome panel, after tapping an organisation icon",
+    "english": "{name}: {change}",
+    "placeholders": "change, name",
+    "notes": "The net standing change for that organisation this stage; {change} already carries its + or - sign."
   }
 ]

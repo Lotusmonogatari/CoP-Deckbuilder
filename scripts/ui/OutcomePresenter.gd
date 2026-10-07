@@ -18,15 +18,20 @@ var _title: Label
 var _headline: Label
 var _body: Label
 var _button: Button
+## Where the organisation icons go (optional; without it the names are
+## written into the body instead).
+var _boosters_box: VBoxContainer
+var _booster_popup: Label
 
 
 func _init(panel: PanelContainer, title: Label, headline: Label,
-		body: Label, button: Button) -> void:
+		body: Label, button: Button, boosters_box: VBoxContainer = null) -> void:
 	_panel = panel
 	_title = title
 	_headline = headline
 	_body = body
 	_button = button
+	_boosters_box = boosters_box
 
 
 func is_showing() -> bool:
@@ -63,6 +68,7 @@ func show_outcome(engine: BattleEngine, stage: Dictionary) -> void:
 		_headline.hide()
 
 	_body.text = _body_for(engine, stage)
+	_build_booster_icons(engine)
 	_panel.show()
 
 	# Say what happens next, so the button is not a leap in the dark.
@@ -119,35 +125,19 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 	# reach this panel or it may as well not have happened). The connection
 	# between an answer and a standing is lost by the time the player
 	# reaches the Office either way.
-	var pleased := engine.pleased_boosters()
-	if not pleased.is_empty():
+	if _boosters_box == null:
 		var names := BattleSetup.booster_names()
-		var pleased_names: Array[String] = []
-		for booster_id: String in pleased:
-			pleased_names.append(str(names.get(booster_id, booster_id)))
-		lines.append("")
-		lines.append(Text.say("outcome.pleased", {"names": ", ".join(pleased_names)}))
-
-	var displeased := engine.displeased_boosters()
-	if not displeased.is_empty():
-		var names := BattleSetup.booster_names()
-		var displeased_names: Array[String] = []
-		for booster_id: String in displeased:
-			displeased_names.append(str(names.get(booster_id, booster_id)))
-		lines.append("")
-		lines.append(Text.say("outcome.displeased", {"names": ", ".join(displeased_names)}))
-
-	# Whichever organisation had a member argued all the way down to zero
-	# (§7.2's instant-win rule, 2026-09-29) — the standing hit is otherwise
-	# invisible until the player happens to check Important Stakeholders.
-	var crushed := engine.crushed_opponent_boosters()
-	if not crushed.is_empty():
-		var names := BattleSetup.booster_names()
-		var crushed_names: Array[String] = []
-		for booster_id: String in crushed:
-			crushed_names.append(str(names.get(booster_id, booster_id)))
-		lines.append("")
-		lines.append(Text.say("outcome.crushed", {"names": ", ".join(crushed_names)}))
+		for entry: Array in [
+			["outcome.pleased", engine.pleased_boosters()],
+			["outcome.displeased", engine.displeased_boosters()],
+			["outcome.crushed", engine.crushed_opponent_boosters()],
+		]:
+			var who: Array[String] = []
+			for booster_id: String in entry[1]:
+				who.append(str(names.get(booster_id, booster_id)))
+			if not who.is_empty():
+				lines.append("")
+				lines.append(Text.say(str(entry[0]), {"names": ", ".join(who)}))
 
 	# A loss says what it cost, from the stage's own loss_delta_* columns —
 	# the same numbers GameState charges when this panel closes (2026-09-27:
@@ -258,3 +248,66 @@ static func next_step_label(state: BattleState) -> String:
 		return Text.say("outcome.back_to_office")
 	return (Text.say("outcome.back_to_office") if is_last_stage_of_level()
 		else Text.say("outcome.next_stage"))
+
+
+## Net standing change per organisation this stage, in the order they were
+## touched: [{booster_id, name, net}]. Same numbers GameState applies on close.
+static func booster_changes(engine: BattleEngine) -> Array[Dictionary]:
+	var names := BattleSetup.booster_names()
+	var out: Array[Dictionary] = []
+	for entry: Dictionary in BoosterChange.compute(
+			engine.pleased_boosters(), engine.displeased_boosters(),
+			engine.crushed_opponent_boosters(), DataDB.booster_standing):
+		var booster_id := str(entry["booster_id"])
+		out.append({"booster_id": booster_id,
+			"name": str(names.get(booster_id, booster_id)), "net": int(entry["net"])})
+	return out
+
+
+## One icon per organisation the stage touched. Tapping an icon shows its name
+## and the net change; tapping it again hides that. An organisation can be both
+## pleased and annoyed, which is why the number is the aggregate.
+func _build_booster_icons(engine: BattleEngine) -> void:
+	if _boosters_box == null:
+		return
+	for child in _boosters_box.get_children():
+		child.queue_free()
+	_boosters_box.hide()
+	_booster_popup = null
+	if not GameState.is_in_level():
+		return
+	var changes := booster_changes(engine)
+	if changes.is_empty():
+		return
+	var hint := Label.new()
+	hint.text = Text.say("outcome.booster_hint")
+	hint.theme_type_variation = &"SmallLabel"
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_boosters_box.add_child(hint)
+	var row := HFlowContainer.new()
+	row.add_theme_constant_override("h_separation", 12)
+	_boosters_box.add_child(row)
+	var popup := Label.new()
+	popup.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	popup.hide()
+	_boosters_box.add_child(popup)
+	_booster_popup = popup
+	for change: Dictionary in changes:
+		var button := Button.new()
+		button.name = "BoosterIcon_%s" % change["booster_id"]
+		button.icon = ArtLoader.icon(str(change["booster_id"]))
+		button.expand_icon = true
+		button.custom_minimum_size = Vector2(120, 120)
+		button.pressed.connect(_on_booster_icon.bind(button, change))
+		row.add_child(button)
+	_boosters_box.show()
+
+
+func _on_booster_icon(button: Button, change: Dictionary) -> void:
+	var text := Text.say("outcome.booster_change",
+		{"name": change["name"], "change": "%+d" % int(change["net"])})
+	if _booster_popup.visible and _booster_popup.text == text:
+		_booster_popup.hide()
+	else:
+		_booster_popup.text = text
+		_booster_popup.show()

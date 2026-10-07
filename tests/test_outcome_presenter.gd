@@ -127,3 +127,40 @@ func test_the_losses_own_cost_still_shows_alongside_the_organisation_line() -> v
 
 	assert_string_contains(body, "Party Headquarters", "the organisation line is still there")
 	assert_string_contains(body, "Constituency support", "and the loss's own cost line is untouched by the fix")
+
+
+## The icon row's numbers: one net change per organisation, pleased and
+## annoyed settling together, a crush on top.
+func test_booster_change_nets_pleased_annoyed_and_crushed() -> void:
+	var standing := {"per_please": 5, "per_displease": 1,
+		"question_swing_cap": 5, "instant_win_penalty": 2}
+	var got := BoosterChange.compute(["BO01", "BO02"], ["BO02", "BO03"], ["BO03"], standing)
+	assert_eq(got.size(), 3)
+	assert_eq(got[0], {"booster_id": "BO01", "net": 5})
+	assert_eq(got[1], {"booster_id": "BO02", "net": 4})
+	assert_eq(got[2], {"booster_id": "BO03", "net": -3})
+
+
+## With an icon container the panel shows one tappable icon per organisation,
+## and a tap names it with its net change.
+func test_icons_show_and_a_tap_names_the_organisation_with_its_net_change() -> void:
+	var stage := TestFixtures.stage()
+	var engine := BattleEngine.new()
+	engine.setup(TestFixtures.battle_config({"stage": stage}))
+	engine.state.crushed_opponent_boosters = ["BO01"]
+	engine.state.outcome = "win"
+
+	var box := VBoxContainer.new()
+	add_child_autofree(box)
+	var presenter := OutcomePresenter.new(_panel, _title, _headline, _body, _button, box)
+	presenter.call("_build_booster_icons", engine)
+	assert_true(box.visible)
+	var icon := box.find_child("BoosterIcon_BO01", true, false) as Button
+	assert_not_null(icon)
+	icon.pressed.emit()
+	var popup := box.get_child(box.get_child_count() - 1) as Label
+	assert_true(popup.visible)
+	assert_string_contains(popup.text, "Party Headquarters")
+	assert_string_contains(popup.text, "-2")
+	var body := presenter.call("_body_for", engine, stage) as String
+	assert_false(body.contains("Argued out"), "names move from the body to the icons")

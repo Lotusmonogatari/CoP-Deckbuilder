@@ -436,6 +436,7 @@ func _organisation_row(booster: Dictionary) -> Control:
 
 	var box := UiKit.tight_column()
 	box.add_child(UiKit.line(line))
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	# 2026-09-22 workbook: boosters.json no longer has a "boosts" summary
 	# column — what an organisation does is the modifiers it links, so that
@@ -451,7 +452,23 @@ func _organisation_row(booster: Dictionary) -> Control:
 			names.append(str(modifier.get("name_en", mod_id)))
 	if not names.is_empty():
 		box.add_child(UiKit.line(", ".join(names), "SmallLabel"))
-	return box
+	return _with_booster_icon(booster_id, box)
+
+
+## A small organisation image to the left of whatever describes it.
+func _with_booster_icon(booster_id: String, content: Control) -> Control:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 14)
+	var icon := TextureRect.new()
+	icon.texture = ArtLoader.icon(booster_id)
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.custom_minimum_size = Vector2(84, 84)
+	icon.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	row.add_child(icon)
+	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(content)
+	return row
 
 
 # ---------------------------------------------------------------------------
@@ -1259,7 +1276,7 @@ func _modifier_row(modifier: Dictionary, names: Dictionary, stage_names: Diction
 		DataDB.booster_standing, DataDB.boosters, Text.phrase())
 	box.add_child(UiKit.action_button(Text.say("office.take_backing"), refusal,
 		_on_buy_modifier.bind(mod_id)))
-	return box
+	return _with_booster_icon(booster, box) if not booster.is_empty() else box
 
 
 ## "10 Funds" or, where a modifier charges more than one currency,

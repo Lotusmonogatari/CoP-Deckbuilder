@@ -130,7 +130,8 @@ func _ready() -> void:
 	_hand.card_flung.connect(_on_card_flung)
 	_messages = MessagePresenter.new(%Notice, get_tree())
 	_outcome = OutcomePresenter.new(
-		%OutcomePanel, %OutcomeTitle, %OutcomeHeadline, %OutcomeReason, %OutcomeClose)
+		%OutcomePanel, %OutcomeTitle, %OutcomeHeadline, %OutcomeReason, %OutcomeClose,
+		%OutcomeBoosters)
 
 	_end_turn_button.pressed.connect(_on_end_turn)
 	_details_button.pressed.connect(_toggle_details)

@@ -364,6 +364,11 @@ unique_name_in_owner = true
 layout_mode = 2
 autowrap_mode = 3
 
+[node name="OutcomeBoosters" type="VBoxContainer" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
 [node name="OutcomeClose" type="Button" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
 unique_name_in_owner = true
 layout_mode = 2

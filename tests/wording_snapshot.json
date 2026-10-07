@@ -278,6 +278,8 @@
   "outcome.ahead": "You start {count} ahead at the floor debate.",
   "outcome.back_to_office": "Back to the Office",
   "outcome.behind": "You start {count} behind at the floor debate.",
+  "outcome.booster_change": "{name}: {change}",
+  "outcome.booster_hint": "Tap an organisation to see how its standing moved.",
   "outcome.carried": "Taken care of",
   "outcome.close": "Close",
   "outcome.closed": "{stage} concluded.",
