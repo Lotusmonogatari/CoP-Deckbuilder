@@ -382,7 +382,6 @@ func _show_management() -> void:
 	for row: Array in [
 		[Text.say("office.rhetoric_training"), _show_rhetoric_training],
 		[Text.say("office.your_deck"), _show_deck],
-		[Text.say("office.backing"), _show_backing],
 		[Text.say("office.staff"), _show_staff],
 		[Text.say("office.new_game"), _confirm_new_game],
 	]:
@@ -786,6 +785,7 @@ func _show_reputation_menu() -> void:
 	var rows: Array[Control] = [
 		_menu_button("OrganisationsButton", "office.organisations", _show_organisations,
 			_organisations_panel),
+		_menu_button("BackingButton", "office.backing", _show_backing, _backing_panel),
 		_menu_button("RecordButton", "office.your_record", _show_record, _record_panel),
 	]
 	_reputation_menu.open(Text.say("office.reputation_and_results"), rows)

@@ -1,7 +1,7 @@
 class_name OfficeMenusDriver
 extends Node
 ## The Office's two intermediary menus, with real clicks (2026-10-06):
-## "Reputation and Results" holds Important Stakeholders and Your Record;
+## "Reputation and Results" holds Important Stakeholders, Boosters and Your Record;
 ## "Administration" holds Appearance and Music and How to Play. The Office's
 ## own button row no longer shows those four directly, each button opens the
 ## panel it always did ON TOP of its menu, and Back returns to the menu.
@@ -47,7 +47,7 @@ func _walk() -> void:
 		if office.find_child(name, true, false) == null:
 			_failures.append("the Office has no %s" % name)
 			return
-	for name in ["OrganisationsButton", "RecordButton", "CosmeticsButton", "HowToPlayButton"]:
+	for name in ["OrganisationsButton", "BackingButton", "RecordButton", "CosmeticsButton", "HowToPlayButton"]:
 		if office.find_child(name, true, false) != null:
 			_failures.append("%s is still loose in the Office instead of inside a menu" % name)
 	var reputation := office.find_child("ReputationButton", true, false) as Button
@@ -59,7 +59,8 @@ func _walk() -> void:
 	print("  the Office row has Reputation and Results and Administration")
 
 	await _menu(office, "ReputationButton", "ReputationMenuPanel",
-		[["OrganisationsButton", "OrganisationsPanel"], ["RecordButton", "RecordPanel"]])
+		[["OrganisationsButton", "OrganisationsPanel"], ["BackingButton", "BackingPanel"],
+		["RecordButton", "RecordPanel"]])
 	await _menu(office, "AdministrationButton", "AdministrationMenuPanel",
 		[["CosmeticsButton", "CosmeticsPanel"], ["HowToPlayButton", "HowToPlayPanel"]])
 
