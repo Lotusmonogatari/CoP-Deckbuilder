@@ -2029,3 +2029,12 @@ The Cosmetic Packages tab's `Icon` cells read `{Workplace_Casual}` and `{Workpla
 ### Three stale tests now follow the workbook (2026-10-07, Cameron)
 
 `test_questions.gd` no longer expects exactly 20 questions per room (only that a pool is not empty), no longer enforces a nine-word limit on card cues (Cameron's call: length is the designer's), and `test_visitor_selection.gd` reads how many visitors ST07 draws from the Stages tab's own `opponent_count` instead of assuming 1. Growing a pool in the workbook can no longer fail a test. Full GUT suite: 956/956.
+
+### The playtest bot got smarter, and its deck bug is fixed (2026-10-07, Cameron)
+
+`tools/playtest_optimal.gd` (tooling only, no game change):
+- **Deck bug fixed.** It used to roll a second opening deck and hand it to `set_deck()` before owning those cards ("C03 is not yours"), logging a false bug in every run. It now re-submits the deck `start_new_run()` actually dealt, and logs that deck.
+- **Smarter play.** Each move scores every affordable combination of cards in hand by what they truly do in this room (`engine.preview()`: affinity, question grade, whether opponent support or guard count at all), treats gaffes as a budget to spend rather than dodge, values guard against the attack actually coming, values arguing a small opponent to zero, and orders buffs/draws first. It replays after every card because a draw changes the hand.
+- **Real deck building.** It ranks owned cards by strength per energy and rebuilds the strongest legal deck each visit (before, it only topped up a short deck, so it never improved the opening roll).
+- Result: the bot now clears all 60 levels on good opening rolls (e.g. PC01 and PC03 runs: Town Hall 19/28 and 29/31 won). It still stalls on some rolls: of four PC02 runs, two cleared 47 of 60 levels and two never won Town Hall. The stalled decks have markedly lower total `self_plus` (26 vs 34-38 for the clearing ones). That is a signal about how much the random opening deck varies in power, not a claim that the level can't be won by a person.
+- Run the four protagonists one after another, not in parallel: parallel runs share one `user://` folder and contaminate each other.

@@ -78,13 +78,16 @@ func _run() -> void:
 	GameState.start_new_run(_protagonist)
 	_log("Starting meta: %s   XP: %d" % [GameState.meta, GameState.xp])
 
-	# Deal a legal starting deck rather than trust whatever reset_collection()
-	# left in place, so set_deck() failures later are never blamed on a
-	# starting condition this driver didn't control.
-	var starter := Ledger.opening_deck(DataDB.cards, DataDB.balance)
-	var deck_refusal := GameState.set_deck(starter)
+	# start_new_run() has already rolled the random opening deck AND made the
+	# player own it (GameState.reset_collection()). Handing a second, freshly
+	# rolled deck to set_deck() here used to fail with "C03 is not yours" —
+	# those cards were never owned. Re-submitting the deck the run actually
+	# has proves the same thing (the game accepts its own opening deck)
+	# without inventing a starting condition the real game never produces.
+	_log("Opening deck: %s" % [GameState.deck])
+	var deck_refusal := GameState.set_deck(GameState.deck.duplicate())
 	if not deck_refusal.is_empty():
-		_bug("Ledger.opening_deck()'s own deck was refused by GameState.set_deck(): '%s'" % deck_refusal)
+		_bug("The opening deck the game dealt was refused by GameState.set_deck(): '%s'" % deck_refusal)
 
 	while _level_attempts < MAX_LEVEL_ATTEMPTS and _stages_played < MAX_STAGES:
 		_run_office_visit()
@@ -132,37 +135,51 @@ func _unlock_affordable_cards() -> void:
 					card.get("card_id"), card.get("name_en"), card.get("xp_to_unlock", 0)])
 
 
+## Builds the best deck the collection allows, the way a player would: rank
+## every owned card by what it does for its cost, then take cards from the
+## top for as long as the deck stays legal (size, suit and tier limits live
+## in Ledger.deck_is_legal()). It used to only top up a short deck, so a full
+## random opening deck was never improved and every run lived or died on its
+## opening roll.
 func _rebuild_deck() -> void:
 	var deck_size := Ledger.deck_size(DataDB.balance)
-	var candidate: Array[String] = GameState.deck.duplicate()
-	var changed := false
-
-	# Highest self_plus first among owned-but-unused cards — a simple
-	# "biggest single swing" preference, not a real deckbuilding AI.
-	var unused: Array = []
+	var ranked: Array = []
 	for card_id: String in GameState.owned_cards:
-		if not candidate.has(card_id):
-			unused.append(DataDB.get_card(card_id))
-	unused.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-		return int(a.get("self_plus", 0)) > int(b.get("self_plus", 0)))
+		var card := DataDB.get_card(card_id)
+		if not card.is_empty():
+			ranked.append(card)
+	ranked.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return _card_strength(a) > _card_strength(b))
 
-	for card: Dictionary in unused:
+	var candidate: Array[String] = []
+	for card: Dictionary in ranked:
 		if candidate.size() >= deck_size:
 			break
-		var card_id := str(card.get("card_id", ""))
 		var trial := candidate.duplicate()
-		trial.append(card_id)
+		trial.append(str(card.get("card_id", "")))
 		if Ledger.deck_is_legal(trial, GameState.owned_cards, DataDB.balance):
 			candidate = trial
-			changed = true
 
-	if changed:
+	if candidate.size() == deck_size and candidate != GameState.deck:
 		var refusal := GameState.set_deck(candidate)
 		if not refusal.is_empty():
 			_bug("Ledger.deck_is_legal() approved a deck that GameState.set_deck() then refused: '%s'"
 				% refusal)
 		else:
-			_log("  deck now %d cards (added from owned collection)" % candidate.size())
+			_log("  deck rebuilt to the strongest %d owned cards" % candidate.size())
+
+
+## What a card is worth on paper, per point of energy spent. Used only to
+## rank cards for deck building; in battle _best_first_card() judges the
+## real numbers for the room.
+func _card_strength(card: Dictionary) -> float:
+	var cost := maxf(float(card.get("cost", 1)), 1.0)
+	var gaffe := float(card.get("gaffe", 0))
+	var raw := (float(card.get("self_plus", 0)) + float(card.get("opp_minus", 0))
+		+ 0.5 * float(card.get("guard", 0)) + DRAW_VALUE * float(card.get("draw", 0)))
+	raw -= GAFFE_PRICE * maxf(gaffe, 0.0) * 0.6
+	raw += 0.5 * GAFFE_PRICE * maxf(-gaffe, 0.0)
+	return raw / cost
 
 
 func _unlock_next_level_if_affordable() -> void:
@@ -415,34 +432,30 @@ func _force_end_stage(outcome: String) -> void:
 ## (self_plus + opp_minus + guard*0.5 + draw*0.3) first, skipping anything
 ## that would push the gaffe meter to its limit — "use gaffes, don't hit
 ## the limit."
+## The competent player. Each time it is about to play, it looks at every
+## combination of the cards in hand it can afford, scores each combination
+## by what the cards would ACTUALLY do in this room (engine.preview(): stage
+## affinity, the question's grade, whether opponent support or guard count
+## here at all), and plays the first card of the best combination. It then
+## looks again, because a card that draws changes the hand. Compared with the
+## old "highest printed number first" rule, it spends all its energy well,
+## weighs guard against the attack actually coming, treats a gaffe as a cost
+## that is worth more the less of the gaffe meter is left, and uses gaffe-
+## clearing cards when the meter is high.
+const GAFFE_PRICE := 0.8      ## support points one gaffe point is worth to avoid (a gaffe is a budget to spend, not a thing to dodge)
+const DRAW_VALUE := 2.0       ## support points one drawn card is worth
+const OPPONENT_SMALL := 30    ## an opponent at or under this many supporters can be argued out
+const OPPONENT_SMALL_WEIGHT := 1.6
+const SPECIAL_VALUE := 3.0    ## a special effect that does nothing else (a buff, a peek)
+
 func _play_best_cards(engine: BattleEngine, repro: String) -> void:
 	var played_this_turn := 0
 	while played_this_turn < 20:
 		if engine.state.is_over():
 			return
-		var state := engine.state
-		var best_id := ""
-		var best_score := -INF
-		for card_id: String in state.hand:
-			var card := DataDB.get_card(card_id)
-			if card.is_empty():
-				continue
-			var cost := engine.card_cost(card)
-			if cost > state.energy:
-				continue
-			var gaffe := int(card.get("gaffe", 0))
-			if gaffe > 0 and state.gaffe + gaffe >= state.gaffe_limit:
-				continue   # would reach or exceed the limit — never play it
-			var score := (float(card.get("self_plus", 0)) + float(card.get("opp_minus", 0))
-				+ float(card.get("guard", 0)) * 0.5 + float(card.get("draw", 0)) * 0.3
-				- float(maxi(gaffe, 0)) * 0.2)
-			if score > best_score:
-				best_score = score
-				best_id = card_id
-
+		var best_id := _best_first_card(engine)
 		if best_id.is_empty():
 			return
-
 		var result := engine.play_card(best_id)
 		if not result.get("ok", false):
 			_bug("%s: play_card('%s') was pre-checked as affordable/safe but refused: %s"
@@ -450,6 +463,91 @@ func _play_best_cards(engine: BattleEngine, repro: String) -> void:
 			return
 		_check_invariants(engine, repro, "play_card('%s')" % best_id)
 		played_this_turn += 1
+
+
+## The first card of the best affordable, gaffe-safe combination in hand,
+## or "" when nothing worth playing remains.
+func _best_first_card(engine: BattleEngine) -> String:
+	var state := engine.state
+	var hand: Array = state.hand
+	var count := mini(hand.size(), 8)   # 2^8 combinations at most
+	var costs: Array[int] = []
+	var values: Array[float] = []
+	var gaffes: Array[int] = []
+	var order_keys: Array[float] = []
+	var intent := engine.current_intent()
+	var incoming := float(intent.get("value", 0)) if str(intent.get("verb", "")) == "attack" else 0.0
+	var gaffe_room := maxi(state.gaffe_limit - state.gaffe, 1)
+	# The fewer gaffes left before the stage is lost, the dearer one is.
+	var price := GAFFE_PRICE * (1.0 + 3.0 / float(gaffe_room))
+
+	for i in count:
+		var card := DataDB.get_card(str(hand[i]))
+		if card.is_empty():
+			costs.append(99)
+			values.append(-INF)
+			gaffes.append(0)
+			order_keys.append(0.0)
+			continue
+		var fx := engine.preview(card)
+		var value := float(fx.get("self_plus", 0))
+		if fx.get("opp_minus_counts", true):
+			# Arguing the opponent down to nothing wins outright (CLAUDE.md,
+			# 2026-09-29), and it is the cheap way to win a room whose
+			# opponent starts small — so a card that takes support from a
+			# small opponent is worth more than the same points gained.
+			var opp_weight := 1.0
+			if state.bar != null and state.bar.opponent <= OPPONENT_SMALL:
+				opp_weight = OPPONENT_SMALL_WEIGHT
+			value += opp_weight * float(fx.get("opp_minus", 0))
+		if fx.get("guard_counts", true):
+			var guard := float(fx.get("guard", 0))
+			var useful := minf(guard, maxf(incoming - float(state.block), 0.0))
+			value += useful + 0.3 * (guard - useful)
+		value += DRAW_VALUE * float(fx.get("draw", 0))
+		var gaffe := int(fx.get("gaffe", 0))
+		if gaffe > 0:
+			value -= price * float(gaffe)
+		elif gaffe < 0:
+			value += price * float(mini(-gaffe, state.gaffe))   # only worth what there is to clear
+		if bool(fx.get("flags", {}).get("special_triggered", false)):
+			value += SPECIAL_VALUE
+		costs.append(engine.card_cost(card))
+		values.append(value)
+		gaffes.append(gaffe)
+		# Within a combination: buffs and draws first, then gaffe-clearing,
+		# then everything else, so energy and gaffe room are never wasted.
+		var key := float(gaffe)
+		if bool(fx.get("flags", {}).get("special_triggered", false)) or int(fx.get("draw", 0)) > 0:
+			key -= 100.0
+		order_keys.append(key)
+
+	var best_value := 0.0
+	var best_first := -1
+	for mask in range(1, 1 << count):
+		var cost := 0
+		var total := 0.0
+		var members: Array[int] = []
+		for i in count:
+			if mask & (1 << i):
+				cost += costs[i]
+				total += values[i]
+				members.append(i)
+		if cost > state.energy or total <= best_value:
+			continue
+		members.sort_custom(func(a: int, b: int) -> bool: return order_keys[a] < order_keys[b])
+		var running := state.gaffe
+		var safe := true
+		for i in members:
+			running = maxi(running + gaffes[i], 0)
+			if running >= state.gaffe_limit:
+				safe = false
+				break
+		if not safe:
+			continue
+		best_value = total
+		best_first = members[0]
+	return "" if best_first < 0 else str(hand[best_first])
 
 
 ## The adversarial counterpart to _play_best_cards(), used when
