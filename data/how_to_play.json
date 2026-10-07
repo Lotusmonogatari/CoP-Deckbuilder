@@ -196,5 +196,27 @@
     "screenshot": null,
     "caption": null,
     "video": null
+  },
+  {
+    "entry_id": "HT19",
+    "order": 121.0,
+    "group": "Cards",
+    "heading_en": "Card numbers change as you play",
+    "heading_jp": null,
+    "body_en": "The numbers on a card are not fixed. Each time you play a card, every card left in your hand is worked out again for the situation you are now in, so what a card shows is what it will do right now. A card that leaves a boost for your next card raises that next card's gain, this turn only. A card that lowers your next card's cost makes it cheaper, this turn only. Some cards give extra only while your gaffe meter is clean, and others only while you are behind in support, so playing a card that adds a gaffe, or one that pulls you level, can take that extra away from another card. It comes back when the condition does. Cards aimed at one audience give extra only when enough of the room is that audience, and the mix of a room does not change during a stage.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT20",
+    "order": 122.0,
+    "group": "Cards",
+    "heading_en": "Why a card is bigger or smaller",
+    "heading_jp": null,
+    "body_en": "Two things scale a card's gain and how hard it hits your opponent. The room: each room favours some suits, so a card gets a larger boost in a room that suits its suit and is held back in a room that does not. The question: in rooms that ask questions, a card in the invited suit gets a moderate boost, a middling answer is left as it is, and a poor answer is reduced. Guard, drawing and gaffes are never scaled this way. Tap a card to read, in plain words, how the current room and question are affecting it. A greyed-out card does nothing in this room right now.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
   }
 ]
