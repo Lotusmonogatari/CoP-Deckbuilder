@@ -31,10 +31,42 @@ func test_eligible_visitors_is_empty_for_a_stage_no_visitor_names() -> void:
 	assert_eq(BattleSetup.eligible_visitors("ST04"), [])
 
 
-func test_visitors_for_with_count_one_picks_the_lowest_eligible_id() -> void:
+func test_visitors_for_with_count_one_picks_an_eligible_visitor() -> void:
 	var chosen := BattleSetup._visitors_for("LVTEST", "ST07", 1, 1)
 	assert_eq(chosen.size(), 1)
-	assert_eq(chosen[0].get("visitor_id"), "VI01")
+	var ids: Array = []
+	for v: Dictionary in BattleSetup.eligible_visitors("ST07"):
+		ids.append(v.get("visitor_id"))
+	assert_has(ids, chosen[0].get("visitor_id"))
+
+
+## Visitors are drawn at random, like opponents (Cameron, 2026-10-07). The
+## real data has too few visitors to show it, so this adds fake ones to a
+## made-up stage for its own duration.
+func test_visitors_are_a_random_draw_without_repeats() -> void:
+	var before := DataDB.visitors.duplicate(true)
+	for i in 6:
+		DataDB.visitors.append({"visitor_id": "VI_RAND_%d" % i, "stages": ["STRAND"]})
+	DataDB._build_lookups()
+
+	var seen_single := {}
+	var lineups := {}
+	for _i in 200:
+		seen_single[str(BattleSetup._visitors_for("LVRAND", "STRAND", 1, 1)[0].get("visitor_id"))] = true
+		var drawn: Array = []
+		for v: Dictionary in BattleSetup._visitors_for("LVRAND", "STRAND", 1, 3):
+			drawn.append(str(v.get("visitor_id")))
+		var unique := {}
+		for id: String in drawn:
+			unique[id] = true
+		assert_eq(drawn.size(), 3)
+		assert_eq(unique.size(), 3, "nobody twice in one stage")
+		lineups[str(drawn)] = true
+	assert_gt(seen_single.size(), 1, "a single draw is not always the same visitor")
+	assert_gt(lineups.size(), 1, "a line-up is not always the same")
+
+	DataDB.visitors = before
+	DataDB._build_lookups()
 
 
 func test_visitors_for_a_stage_with_no_eligible_pool_is_empty() -> void:

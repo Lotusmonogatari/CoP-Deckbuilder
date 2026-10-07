@@ -326,8 +326,8 @@ static func _resolve_pin(level_id: String, stage_id: String, slot: int) -> Dicti
 # Office Hours (design/proposals/office_hours.md) — visitor selection.
 #
 # Every function below is the direct twin of the opponent one just above it:
-# same dynamic-by-default rule (every eligible visitor, lowest visitor_id
-# first, a pin in level_visitor_overrides.json can name one specifically),
+# same dynamic-by-default rule (every eligible visitor, drawn at random; a
+# pin in level_visitor_overrides.json can name one specifically),
 # same fallback behaviour on an unresolvable pin. Kept as separate functions
 # rather than generalising both into one, because "eligible for a stage" and
 # "who is in the room" mean different things for a person you argue with and
@@ -386,12 +386,15 @@ static func _visitors_for(level_id: String, stage_id: String, slot: int, count: 
 	if count <= 1:
 		if not pinned.is_empty():
 			return [pinned]
-		return [eligible[0]] if not eligible.is_empty() else []
+		return [eligible[randi() % eligible.size()]] if not eligible.is_empty() else []
 
 	var chosen: Array = []
 	if not pinned.is_empty():
 		chosen.append(pinned)
 
+	# A random draw from the pool, never the same visitor twice (Cameron,
+	# 2026-10-07: every stage's people are drawn at random, like opponents).
+	eligible.shuffle()
 	for candidate: Dictionary in eligible:
 		if chosen.size() >= count:
 			break
