@@ -78,6 +78,11 @@ func _run() -> void:
 	GameState.start_new_run(_protagonist)
 	_log("Starting meta: %s   XP: %d" % [GameState.meta, GameState.xp])
 
+	var trial := OS.get_environment("PLAYTEST_STAGE_TRIAL")
+	if not trial.is_empty():
+		_run_stage_trials(trial)
+		return
+
 	# start_new_run() has already rolled the random opening deck AND made the
 	# player own it (GameState.reset_collection()). Handing a second, freshly
 	# rolled deck to set_deck() here used to fail with "C03 is not yours" —
@@ -106,6 +111,66 @@ func _run() -> void:
 # ---------------------------------------------------------------------------
 # Office: unlock cards, unlock the next level, hire cheap staff
 # ---------------------------------------------------------------------------
+
+## One stage, many times, by a well-equipped player: a win-rate measurement,
+## not a playthrough. PLAYTEST_STAGE_TRIAL="ST18:60" (stage:trials) or
+## "ST18:60:65" (a third number overrides the stage's win threshold in
+## memory only, to ask "what mark gives an even fight?"; a fourth overrides
+## its energy, pool or per-turn, the same way). The player owns
+## every card, plays the strongest legal deck, and has taken the backing and
+## items the bot would have by mid-game, so the result is how the room plays
+## for someone who has reached it, not for a fresh start.
+func _run_stage_trials(spec: String) -> void:
+	var parts := spec.split(":")
+	var stage_id := parts[0]
+	var trials := int(parts[1]) if parts.size() > 1 else 40
+	if parts.size() > 2:
+		for row: Dictionary in DataDB.stages:
+			if str(row.get("stage_id", "")) == stage_id:
+				row["win_threshold"] = int(parts[2])
+				_log("Win threshold overridden to %d (memory only)" % int(parts[2]))
+				if parts.size() > 3:
+					row["energy_pool"] = int(parts[3])
+					row["energy_per_turn"] = int(parts[3])
+					_log("Energy overridden to %d (memory only)" % int(parts[3]))
+
+	for card: Dictionary in DataDB.cards:
+		var id := str(card.get("card_id", ""))
+		if not GameState.owned_cards.has(id):
+			GameState.owned_cards.append(id)
+	GameState.xp = 2000
+	GameState.meta["Funds"] = 100000
+	GameState.meta["Constituency support"] = 80
+	GameState.meta["Reputation"] = 80
+	for booster_id: String in GameState.booster_standing.keys():
+		GameState.booster_standing[booster_id] = 80
+	_rebuild_deck()
+	_buy_backing()
+	_buy_backing()
+	_buy_items()
+	_log("Trial %s x%d — deck %s, backing %d, items held %s" % [
+		stage_id, trials, GameState.deck, GameState.owned_modifiers.size(), GameState.inventory])
+
+	var won := 0
+	var turns_used: Array[int] = []
+	var scores: Array[int] = []
+	for i in trials:
+		GameState.meta["Funds"] = 100000
+		GameState.meta["Constituency support"] = 80
+		GameState.meta["Reputation"] = 80
+		_buy_items()
+		var expanded := BattleSetup.expand_level({"level_id": "LVTRIAL", "stage_1": stage_id})
+		var runner := LevelRunner.new(expanded)
+		GameState.begin_level(runner)
+		_level_items_used.clear()
+		var before := _wins
+		_play_battle_stage(runner.current_stage())
+		if _wins > before:
+			won += 1
+	_log("")
+	_log("=== TRIAL RESULT %s: %d / %d won (%d%%) ===" % [stage_id, won, trials, int(100.0 * won / maxi(trials, 1))])
+	_report()
+
 
 func _run_office_visit() -> void:
 	_unlock_affordable_cards()
