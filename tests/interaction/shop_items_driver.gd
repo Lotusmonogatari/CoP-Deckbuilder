@@ -145,9 +145,16 @@ func _check_staff_gate(office: Node, expect_open: bool) -> bool:
 		return false
 
 	var staff_id := str(tier_1_candidate.get("staff_id", ""))
-	var hire_button := _button_containing(staff, staff_id, tier_1_candidate)
+	# Hiring lives on the candidate's profile now: open it from the list.
+	var open_profile := staff.find_child("Profile_" + staff_id, true, false) as Button
+	if open_profile == null:
+		_failures.append("the Staff screen has no profile button for %s" % staff_id)
+		return false
+	await _click(open_profile)
+	var profile := office.get_node("StaffProfilePanel") as Overlay
+	var hire_button := profile.find_child("ProfileHireButton", true, false) as Button
 	if hire_button == null:
-		_failures.append("the Staff screen has no button near %s" % staff_id)
+		_failures.append("%s's profile has no Hire button" % staff_id)
 		return false
 
 	if expect_open:
@@ -169,6 +176,7 @@ func _check_staff_gate(office: Node, expect_open: bool) -> bool:
 			return false
 		print("  before any SH12 purchase, a Tier 1 candidate cannot be hired")
 
+	profile.close()
 	staff.close()
 	await _wait(0.2)
 	return true
@@ -178,18 +186,6 @@ func _check_staff_gate(office: Node, expect_open: bool) -> bool:
 ## button — found by walking up from a label containing the candidate's own
 ## name (StaffPanel does not tag rows with the staff_id the way Supplies
 ## rows are named "Supply_SHxx").
-func _button_containing(root: Node, _staff_id: String, candidate: Dictionary) -> Button:
-	var name_text := str(Text.say("office.staff_candidate", {
-		"name": candidate.get("name", ""), "cost": int(candidate.get("hiring_cost_yen", 0))}))
-	for label in root.find_children("", "Label", true, false):
-		if (label as Label).text == name_text:
-			var box := label.get_parent()
-			for child in box.get_children():
-				if child is Button:
-					return child as Button
-	return null
-
-
 ## No Supplies purchase unlocks a level any more ("Unlock Tier N Level" removed from the
 ## Shop tab, 2026-09-30 — level_gating_enabled's own unlock_cost_xp is 0 on
 ## every real level today anyway, so nothing was actually gated). This

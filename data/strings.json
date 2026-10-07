@@ -2588,5 +2588,82 @@
     "english": "Administration",
     "placeholders": null,
     "notes": "The Office button that opens a menu holding Appearance and Music and How to Play. Also that menu's heading."
+  },
+  {
+    "key": "staff.profile_cost",
+    "where": "Office · Staff Profile, under the name",
+    "english": "Hiring cost: {cost} Yen",
+    "placeholders": "cost",
+    "notes": "The price to hire this person."
+  },
+  {
+    "key": "staff.tiers_heading",
+    "where": "Office · Staff Profile, heading above the tier list",
+    "english": "Bonuses by tier",
+    "placeholders": null,
+    "notes": "Heading above the list of tiers."
+  },
+  {
+    "key": "staff.tier_label",
+    "where": "Office · Staff Profile, a tier already passed or not on offer",
+    "english": "Tier {tier}",
+    "placeholders": "tier",
+    "notes": "A tier's own heading when nothing else needs saying."
+  },
+  {
+    "key": "staff.tier_on_hire",
+    "where": "Office · Staff Profile, the tier a candidate arrives at",
+    "english": "Tier {tier} · given when hired",
+    "placeholders": "tier",
+    "notes": "The tier the bonus below is paid at the moment you hire them."
+  },
+  {
+    "key": "staff.tier_current",
+    "where": "Office · Staff Profile, the tier a hired person is at",
+    "english": "Tier {tier} · current",
+    "placeholders": "tier",
+    "notes": "Marks the tier a hired person has reached."
+  },
+  {
+    "key": "staff.tier_upgrade",
+    "where": "Office · Staff Profile, a tier still to be bought",
+    "english": "Tier {tier} · upgrade cost {cost} Yen",
+    "placeholders": "tier, cost",
+    "notes": "What it costs to upgrade into this tier; the bonus below is paid when you do."
+  },
+  {
+    "key": "staff.tier_upgrade_unpriced",
+    "where": "Office · Staff Profile, a tier with no price entered",
+    "english": "Tier {tier} · upgrade cost not set",
+    "placeholders": "tier",
+    "notes": "Shown when the workbook has no upgrade price for this step."
+  },
+  {
+    "key": "staff.reward_booster",
+    "where": "Office · Staff Profile, a bonus line for an organisation",
+    "english": "{delta} standing with {name}",
+    "placeholders": "delta, name",
+    "notes": "One bonus: how much an organisation's standing moves. {delta} reads +2 or -2."
+  },
+  {
+    "key": "staff.reward_segment",
+    "where": "Office · Staff Profile, a bonus line for an audience group",
+    "english": "{delta} sentiment among {name}",
+    "placeholders": "delta, name",
+    "notes": "One bonus: how much an audience group's sentiment moves. {delta} reads +2 or -2."
+  },
+  {
+    "key": "staff.reward_none",
+    "where": "Office · Staff Profile, a tier that gives nothing",
+    "english": "No bonus at this tier.",
+    "placeholders": null,
+    "notes": "Shown for a tier with no bonus written."
+  },
+  {
+    "key": "staff.no_upgrades",
+    "where": "Office · Staff Profile, for someone with only one tier",
+    "english": "This person has no higher tiers.",
+    "placeholders": null,
+    "notes": "Shown under the tier list when there is nothing to upgrade to."
   }
 ]

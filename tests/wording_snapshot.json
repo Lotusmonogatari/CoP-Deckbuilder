@@ -367,6 +367,17 @@
   "shop.supplies_blurb": "Supplies go into your inventory. Open the inventory from the Office or during a stage to use them.",
   "shop.too_many": "{count} too many.",
   "shop.xp_short": "{count} XP short.",
+  "staff.no_upgrades": "This person has no higher tiers.",
+  "staff.profile_cost": "Hiring cost: {cost} Yen",
+  "staff.reward_booster": "{delta} standing with {name}",
+  "staff.reward_none": "No bonus at this tier.",
+  "staff.reward_segment": "{delta} sentiment among {name}",
+  "staff.tier_current": "Tier {tier} · current",
+  "staff.tier_label": "Tier {tier}",
+  "staff.tier_on_hire": "Tier {tier} · given when hired",
+  "staff.tier_upgrade": "Tier {tier} · upgrade cost {cost} Yen",
+  "staff.tier_upgrade_unpriced": "Tier {tier} · upgrade cost not set",
+  "staff.tiers_heading": "Bonuses by tier",
   "stage_transition.continue": "Continue",
   "ui.back": "Back"
 }

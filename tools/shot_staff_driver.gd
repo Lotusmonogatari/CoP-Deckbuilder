@@ -30,7 +30,7 @@ func _run() -> void:
 	await get_tree().create_timer(0.5).timeout
 	await _shot("40-recruitment-vacant")
 
-	office.call("_on_hire_staff", "SF02")
+	office.call("_on_profile_hire", "SF02")
 	await get_tree().create_timer(0.3).timeout
 	await _shot("41-recruitment-hired-with-fire-button")
 
@@ -46,7 +46,7 @@ func _run() -> void:
 	await get_tree().create_timer(0.3).timeout
 	await _shot("43-recruitment-fired-greyed-out")
 
-	office.call("_on_hire_staff", "SF03")
+	office.call("_on_profile_hire", "SF03")
 	await get_tree().create_timer(0.3).timeout
 	await _shot("44-recruitment-refilled")
 

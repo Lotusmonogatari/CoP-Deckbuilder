@@ -95,6 +95,10 @@ var _new_game_panel: Overlay
 ## staff_firing_cost()) — see design/proposals/staff_firing.md.
 var _fire_staff_panel: Overlay
 
+## One candidate's tier-by-tier profile, opened from the Staff list. Built in
+## code like _fire_staff_panel (no .tscn edit, §13).
+var _staff_profile_panel: Overlay
+
 ## Which role's Fire button opened _fire_staff_panel, so the confirm handler
 ## (which the panel's `confirmed` signal carries no argument for) knows who.
 var _firing_role := ""
@@ -131,6 +135,10 @@ func _ready() -> void:
 	_new_game_panel = Overlay.new()
 	_new_game_panel.name = "NewGamePanel"
 	add_child(_new_game_panel)
+	# Built before the fire confirmation so that one draws on top of it.
+	_staff_profile_panel = Overlay.new()
+	_staff_profile_panel.name = "StaffProfilePanel"
+	add_child(_staff_profile_panel)
 	_fire_staff_panel = Overlay.new()
 	_fire_staff_panel.name = "FireStaffPanel"
 	add_child(_fire_staff_panel)
@@ -1298,69 +1306,145 @@ func _show_staff() -> void:
 	_staff_panel.open(Text.say("office.staff"), rows)
 
 
-## One candidate for a vacant role, with a Hire button — or, for someone
-## fired earlier this run, their name greyed out with no button at all.
+## One candidate for a vacant role: a button that opens their profile (what
+## each tier gives and costs, and the Hire button). Someone fired earlier this
+## run shows greyed out with no button at all.
 func _staff_candidate_row(candidate: Dictionary) -> Control:
 	var staff_id := str(candidate.get("staff_id", ""))
 	var fired := bool(GameState.staff_fired.get(staff_id, false))
 	var box := UiKit.tight_column()
-
-	box.add_child(UiKit.line(Text.say("office.staff_candidate", {
+	var summary := Text.say("office.staff_candidate", {
 		"name": candidate.get("name", staff_id),
 		"cost": int(candidate.get("hiring_cost_yen", 0)),
-	})))
+	})
 
 	if fired:
+		box.add_child(UiKit.line(summary))
 		box.add_child(UiKit.line(Text.say("office.staff_fired"), "SmallLabel"))
 		box.modulate = Color(1, 1, 1, 0.5)
 	else:
-		var funds := int(GameState.meta.get("Funds", 0))
-		var refusal := Ledger.staff_hire_refusal(candidate,
-			GameState.staff_hired.get(str(candidate.get("role", "")), {}), false, funds,
-			GameState.staff_recruitment_tier, Text.phrase())
-		box.add_child(UiKit.action_button(Text.say("office.hire"), refusal, _on_hire_staff.bind(staff_id)))
+		box.add_child(_profile_button(summary, staff_id))
 	return box
 
 
-## The one candidate hired into a role: an Upgrade button where a next tier
-## exists, and a Fire button that opens the severance warning.
-func _staff_hired_row(role: String, hired: Dictionary) -> Control:
+## The one candidate hired into a role: a button that opens their profile,
+## where Upgrade and Fire now live beside the tiers they act on.
+func _staff_hired_row(_role: String, hired: Dictionary) -> Control:
 	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
-	var tier := int(hired.get("tier", 0))
 	var box := UiKit.tight_column()
-
-	box.add_child(UiKit.line(Text.say("office.staff_hired", {
+	box.add_child(_profile_button(Text.say("office.staff_hired", {
 		"name": candidate.get("name", hired.get("staff_id", "")),
-		"tier": tier,
+		"tier": int(hired.get("tier", 0)),
 		"highest": int(candidate.get("highest_tier", 0)),
-	})))
+	}), str(hired.get("staff_id", ""))))
+	return box
+
+
+func _profile_button(text: String, staff_id: String) -> Button:
+	var button := Button.new()
+	button.name = "Profile_" + staff_id
+	button.text = text
+	button.custom_minimum_size = Vector2(0, 90)
+	button.pressed.connect(_show_staff_profile.bind(staff_id))
+	return button
+
+
+## The Staff Profile: who this is, what each tier gives, what each step up
+## costs, and the one action that applies (Hire for a candidate, Upgrade and
+## Fire for the person already in the role). Nothing here decides anything —
+## the tier rows come from StaffProfile, the refusals from Ledger.
+func _show_staff_profile(staff_id: String) -> void:
+	var candidate := DataDB.get_staff(staff_id)
+	if candidate.is_empty():
+		return
+	var role := str(candidate.get("role", ""))
+	var hired: Dictionary = GameState.staff_hired.get(role, {})
+	var is_hired := str(hired.get("staff_id", "")) == staff_id
+	var current_tier := int(hired.get("tier", 0)) if is_hired else -1
+	var rows: Array[Control] = []
+
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", 20)
+	var portrait := PlaceholderArt.new()
+	portrait.custom_minimum_size = Vector2(200, 260)
+	portrait.kind = PlaceholderArt.Kind.CHARACTER
+	portrait.art_id = staff_id
+	head.add_child(portrait)
+	var who := UiKit.tight_column()
+	who.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	who.add_child(UiKit.line(role, "SmallLabel"))
+	who.add_child(UiKit.line(Text.say("staff.profile_cost",
+		{"cost": int(candidate.get("hiring_cost_yen", 0))})))
+	head.add_child(who)
+	rows.append(head)
+
+	rows.append(UiKit.heading(Text.say("staff.tiers_heading")))
+	for entry: Dictionary in StaffProfile.tiers(candidate, DataDB.boosters, DataDB.segments, Text.phrase()):
+		var box := UiKit.tight_column()
+		box.name = "Tier_%d" % int(entry["tier"])
+		box.add_child(UiKit.line(_tier_label(entry, current_tier), "HeaderLabel"))
+		for line: String in entry["lines"]:
+			box.add_child(UiKit.line(line))
+		rows.append(box)
+	if int(candidate.get("highest_tier", 0)) <= int(candidate.get("starting_tier", 0)):
+		rows.append(UiKit.line(Text.say("staff.no_upgrades"), "SmallLabel"))
 
 	var funds := int(GameState.meta.get("Funds", 0))
-	var refusal := Ledger.staff_upgrade_refusal(candidate, tier, funds, Text.phrase())
-	var cost: Variant = Ledger.staff_upgrade_cost(candidate, tier)
-	if cost == null:
-		box.add_child(UiKit.action_button("", Text.say("office.staff_at_max"), Callable()))
+	if is_hired:
+		var cost: Variant = Ledger.staff_upgrade_cost(candidate, current_tier)
+		if cost == null:
+			rows.append(UiKit.action_button("", Text.say("office.staff_at_max"), Callable()))
+		else:
+			var upgrade := UiKit.action_button(Text.say("office.upgrade", {"cost": int(cost)}),
+				Ledger.staff_upgrade_refusal(candidate, current_tier, funds, Text.phrase()),
+				_on_profile_upgrade.bind(role))
+			upgrade.name = "ProfileUpgradeButton"
+			rows.append(upgrade)
+		var fire := UiKit.action_button(Text.say("office.fire_staff"),
+			Ledger.staff_fire_refusal(candidate, funds, Text.phrase()),
+			_confirm_fire_staff.bind(role, candidate))
+		fire.name = "ProfileFireButton"
+		rows.append(fire)
 	else:
-		box.add_child(UiKit.action_button(Text.say("office.upgrade", {"cost": int(cost)}),
-			refusal, _on_upgrade_staff.bind(role)))
+		var hire := UiKit.action_button(Text.say("office.hire"),
+			Ledger.staff_hire_refusal(candidate, hired,
+				bool(GameState.staff_fired.get(staff_id, false)), funds,
+				GameState.staff_recruitment_tier, Text.phrase()),
+			_on_profile_hire.bind(staff_id))
+		hire.name = "ProfileHireButton"
+		rows.append(hire)
 
-	var fire_refusal := Ledger.staff_fire_refusal(candidate, funds, Text.phrase())
-	box.add_child(UiKit.action_button(Text.say("office.fire_staff"), fire_refusal,
-		_confirm_fire_staff.bind(role, candidate)))
-	return box
+	_staff_profile_panel.open(str(candidate.get("name", staff_id)), rows)
 
 
-func _on_hire_staff(staff_id: String) -> void:
+## "Tier 1 · upgrade cost 30000 Yen", "Tier 0 · given when hired", and so on.
+func _tier_label(entry: Dictionary, current_tier: int) -> String:
+	var tier := int(entry["tier"])
+	if tier == current_tier:
+		return Text.say("staff.tier_current", {"tier": tier})
+	if bool(entry["on_hire"]) and current_tier < 0:
+		return Text.say("staff.tier_on_hire", {"tier": tier})
+	if not bool(entry["on_hire"]) and tier > current_tier:
+		if entry["cost"] == null:
+			return Text.say("staff.tier_upgrade_unpriced", {"tier": tier})
+		return Text.say("staff.tier_upgrade", {"tier": tier, "cost": int(entry["cost"])})
+	return Text.say("staff.tier_label", {"tier": tier})
+
+
+func _on_profile_hire(staff_id: String) -> void:
+	_staff_profile_panel.close()
 	_after_spending(GameState.hire_staff(staff_id), _show_staff)
 
 
-func _on_upgrade_staff(role: String) -> void:
+func _on_profile_upgrade(role: String) -> void:
+	_staff_profile_panel.close()
 	_after_spending(GameState.upgrade_staff(role), _show_staff)
 
 
 ## Firing is permanent and costs a severance, so it asks first — same
 ## confirm-overlay pattern as _confirm_new_game().
 func _confirm_fire_staff(role: String, candidate: Dictionary) -> void:
+	_staff_profile_panel.close()
 	_firing_role = role
 	_fire_staff_panel.open(Text.say("office.fire_staff"),
 		[UiKit.line(Text.say("office.fire_staff_warning", {
