@@ -112,6 +112,8 @@ func _run_office_visit() -> void:
 	_rebuild_deck()
 	_unlock_next_level_if_affordable()
 	_hire_cheap_staff()
+	_buy_backing()
+	_buy_items()
 
 
 func _unlock_affordable_cards() -> void:
@@ -219,6 +221,140 @@ func _hire_cheap_staff() -> void:
 
 
 # ---------------------------------------------------------------------------
+# Backing (modifiers) and items — what a player does with the Office's
+# other two doors, so the full-run results include their effect
+# ---------------------------------------------------------------------------
+
+## A meta value is never spent below these: Constituency support at or under
+## 15 queues a Town Hall, and a player does not buy backing into a crisis.
+const BACKING_FLOOR_CONSTITUENCY := 40
+const BACKING_FLOOR_REPUTATION := 30
+const BACKING_BUYS_PER_VISIT := 2
+## XP kept back from items so cards and levels still get bought first.
+const ITEM_XP_RESERVE := 120
+
+var _backing_bought := 0
+var _items_bought := 0
+var _items_used := 0
+var _level_items_used: Array[String] = []
+var _stage_frequency: Dictionary = {}
+
+
+## How often each stage ID appears across every level — the worth of a
+## backing that helps one kind of room depends on how many rooms of that kind
+## there are.
+func _frequency_of_stage(stage_id: String) -> int:
+	if _stage_frequency.is_empty():
+		for level: Dictionary in DataDB.levels:
+			for slot in range(1, 11):
+				var id := str(level.get("stage_%d" % slot, ""))
+				if not id.is_empty():
+					_stage_frequency[id] = int(_stage_frequency.get(id, 0)) + 1
+	return int(_stage_frequency.get(stage_id, 0))
+
+
+## A rough worth for a modifier, used only to decide which to buy first.
+func _backing_worth(modifier: Dictionary) -> float:
+	var value := float(modifier.get("effect_value", 0))
+	var target := str(modifier.get("effect_target", ""))
+	match str(modifier.get("effect_type", "")):
+		"STAGE_START_BONUS":
+			return value * float(_frequency_of_stage(target))
+		"HAND_SIZE_BONUS", "GAFFE_LIMIT_BONUS":
+			return 8.0 * float(_frequency_of_stage(target))
+		"RESOURCE_BONUS_ON_WIN":
+			return 2.0
+	return 0.5
+
+
+## Buys the most useful backing the player can afford and is allowed (the
+## organisation's standing has to be high enough — Ledger.modifier_refusal()
+## decides that, so which organisations the bot "chooses" is simply which
+## ones are warm enough). Never spends below the floors above.
+func _buy_backing() -> void:
+	var for_sale: Array = []
+	for modifier: Dictionary in DataDB.modifiers:
+		for_sale.append(modifier)
+	for_sale.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return _backing_worth(a) > _backing_worth(b))
+
+	var bought := 0
+	for modifier: Dictionary in for_sale:
+		if bought >= BACKING_BUYS_PER_VISIT:
+			return
+		var mod_id := str(modifier.get("mod_id", ""))
+		var costs := Ledger.modifier_costs(modifier)
+		if int(GameState.meta.get("Funds", 0)) - int(costs["Funds"]) < FUNDS_BUFFER:
+			continue
+		if int(GameState.meta.get("Constituency support", 0)) - int(costs["Constituency support"]) < BACKING_FLOOR_CONSTITUENCY:
+			continue
+		if int(GameState.meta.get("Reputation", 0)) - int(costs["Reputation"]) < BACKING_FLOOR_REPUTATION:
+			continue
+		if GameState.owned_modifiers.has(mod_id):
+			continue
+		var refusal := GameState.buy_modifier(mod_id)
+		if refusal.is_empty():
+			bought += 1
+			_backing_bought += 1
+			_log("  took backing %s (%s)" % [mod_id, modifier.get("name_en")])
+
+
+## Buys battle items (the ones that boost a stage or a whole level) with
+## whatever XP and Funds are left once cards, levels and staff are paid for.
+## Items that grant standing or a meta value, or that ask the player to pick
+## a target, are left alone — those are the player's judgement calls.
+func _buy_items() -> void:
+	var words := Text.phrase()
+	for item: Dictionary in DataDB.shop:
+		if not _is_battle_item(item):
+			continue
+		var item_id := str(item.get("item_id", ""))
+		var price := Items.costs(item)
+		while true:
+			if GameState.xp - int(price["XP"]) < ITEM_XP_RESERVE and int(price["XP"]) > 0:
+				break
+			if int(GameState.meta.get("Funds", 0)) - int(price["Funds"]) < FUNDS_BUFFER and int(price["Funds"]) > 0:
+				break
+			var refusal := Items.buy_refusal(item, GameState.item_count(item_id),
+				int(GameState.shop_bought_this_level.get(item_id, 0)),
+				GameState.xp, int(GameState.meta.get("Funds", 0)), words)
+			if not refusal.is_empty():
+				break
+			var failed := GameState.buy_shop_item(item_id)
+			if not failed.is_empty():
+				_bug("Items.buy_refusal() allowed %s but GameState.buy_shop_item() refused: '%s'" % [item_id, failed])
+				break
+			_items_bought += 1
+			_log("  bought item %s (%s)" % [item_id, item.get("name")])
+
+
+## True for an item that does something to a battle and nothing else.
+func _is_battle_item(item: Dictionary) -> bool:
+	if not Items.usable_in(item, Items.STAGE) or Items.is_player_choice(item):
+		return false
+	var split := Items.split_grants(item)
+	return (split["meta"] as Array).is_empty() and not (split["stage"] as Array).is_empty()
+
+
+## Uses every battle item the player holds at the start of a stage. A level
+## item is used once per level (it keeps running for the rest of it).
+func _use_held_items(engine: BattleEngine, repro: String) -> void:
+	for item_id: String in GameState.inventory.keys():
+		var item := DataDB.get_shop_item(item_id)
+		if not _is_battle_item(item) or GameState.item_count(item_id) <= 0:
+			continue
+		var is_level := Items.duration(item) == Items.DURATION_LEVEL
+		if is_level and _level_items_used.has(item_id):
+			continue
+		var result := GameState.use_item_in_stage(item_id, engine)
+		if result.get("ok", false):
+			_items_used += 1
+			if is_level:
+				_level_items_used.append(item_id)
+			_check_invariants(engine, repro, "use_item('%s')" % item_id)
+
+
+# ---------------------------------------------------------------------------
 # Choosing which level to play
 # ---------------------------------------------------------------------------
 
@@ -270,6 +406,7 @@ func _play_level(level_id: String) -> void:
 
 	_log("--- Level %s (%s), %d stage(s) ---" % [level_id, level.get("name_en", ""), runner.stage_count()])
 	GameState.begin_level(runner)
+	_level_items_used.clear()
 
 	var guard := 0
 	while GameState.is_in_level() and guard < 20:
@@ -312,6 +449,8 @@ func _play_battle_stage(stage: Dictionary) -> void:
 
 	_expected_card_total = engine.state.deck.size() + engine.state.hand.size() + engine.state.discard.size()
 	_check_invariants(engine, repro, "setup()")
+	if not _random_moves:
+		_use_held_items(engine, repro)
 
 	var turns := 0
 	while not engine.state.is_over() and turns < 60:
@@ -663,6 +802,8 @@ func _report() -> void:
 	_log("Final meta: %s   XP: %d" % [GameState.meta, GameState.xp])
 	_log("Owned cards: %d / %d   Deck size: %d" % [
 		GameState.owned_cards.size(), DataDB.cards.size(), GameState.deck.size()])
+	_log("Backing taken: %d (owned %d)   Items bought: %d   Items used: %d" % [
+		_backing_bought, GameState.owned_modifiers.size(), _items_bought, _items_used])
 	_log("Staff hired: %d / %d roles" % [GameState.staff_hired.size(), Ledger.STAFF_ROLES.size()])
 	_log("Lifetime gaffes: %d   Stages lost to gaffes: %d   Gaffe penalty applied: %s"
 		% [GameState.lifetime_gaffes, GameState.stages_lost_to_gaffes, GameState.gaffe_penalty_applied])
