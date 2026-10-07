@@ -147,7 +147,11 @@ func _run_stage_trials(spec: String) -> void:
 	_rebuild_deck()
 	_buy_backing()
 	_buy_backing()
-	_buy_items()
+	# PLAYTEST_TRIAL_ITEMS=0 fights with backing only: full stacks of every
+	# item are far stronger than a typical player's kit.
+	var with_items := OS.get_environment("PLAYTEST_TRIAL_ITEMS") != "0"
+	if with_items:
+		_buy_items()
 	_log("Trial %s x%d — deck %s, backing %d, items held %s" % [
 		stage_id, trials, GameState.deck, GameState.owned_modifiers.size(), GameState.inventory])
 
@@ -158,7 +162,8 @@ func _run_stage_trials(spec: String) -> void:
 		GameState.meta["Funds"] = 100000
 		GameState.meta["Constituency support"] = 80
 		GameState.meta["Reputation"] = 80
-		_buy_items()
+		if with_items:
+			_buy_items()
 		var expanded := BattleSetup.expand_level({"level_id": "LVTRIAL", "stage_1": stage_id})
 		var runner := LevelRunner.new(expanded)
 		GameState.begin_level(runner)
