@@ -245,8 +245,8 @@ func test_a_battle_can_be_lost_on_gaffes() -> void:
 
 
 func test_the_opponent_actually_does_something() -> void:
-	# The opponent this level's floor debate dynamically picks (the lowest
-	# opp_id eligible for ST02 — see BattleSetup._opponent_for()) carries
+	# The opponent this level's floor debate dynamically picks (a random one
+	# of those eligible for ST02 — see BattleSetup._opponent_for()) carries
 	# their own intent_*_range columns, which DataDB.get_opponent() turns
 	# into a real pattern. If that stopped working, this is where it would
 	# show up: the opponent would quietly fall back to the shared default

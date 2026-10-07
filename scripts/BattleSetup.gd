@@ -228,9 +228,9 @@ static func _override_for(level_id: String, slot: int) -> Variant:
 ## [DEFAULT] Cameron settled this 2026-09-22: read it DYNAMICALLY off the
 ## Opponents tab's own "stages" list rather than storing a chosen opponent per
 ## level, so adding or editing an opponent's eligible stages is the whole job
-## — no level data to touch. Where more than one opponent is eligible, the
-## lowest opp_id is the tie-breaker: arbitrary, but stable, so a level opens
-## the same way until it is pinned.
+## — no level data to touch. Where more than one opponent is eligible, one is
+## drawn at random each time the level is set up (Cameron, 2026-10-07; it was
+## the lowest opp_id, arbitrary but stable, until then). A pin still wins.
 ##
 ## data/level_opponent_overrides.json can PIN a specific opponent to a
 ## specific level+stage slot; a pin always wins when it names someone who
@@ -242,7 +242,7 @@ static func _opponent_for(level_id: String, stage_id: String, slot: int) -> Dict
 	var pinned := _resolve_pin(level_id, stage_id, slot)
 	if not pinned.is_empty():
 		return pinned
-	return eligible[0] if not eligible.is_empty() else {}
+	return eligible[randi() % eligible.size()] if not eligible.is_empty() else {}
 
 
 ## How many opponents a non-committee stage fights, from its own
@@ -286,6 +286,10 @@ static func _opponents_for(level_id: String, stage_id: String, slot: int, count:
 	if not pinned.is_empty():
 		chosen.append(pinned)
 
+	# A random draw from the pool, never the same person twice (Cameron,
+	# 2026-10-07: it used to take the lowest opp_ids, so a stage always
+	# fought the same people). Like every other roll here it is unseeded.
+	eligible.shuffle()
 	for candidate: Dictionary in eligible:
 		if chosen.size() >= count:
 			break
