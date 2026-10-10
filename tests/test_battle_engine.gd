@@ -1983,3 +1983,25 @@ func test_the_tv_debate_in_the_data_is_one_bar() -> void:
 		BarModel.for_stage(tv), 100, 0, 40, 40, func() -> int: return 0)
 	assert_eq(bar.undecided, 0, "no undecided pile on a single bar")
 	assert_eq(bar.opponent, 0, "and nobody opposite holding a headcount")
+
+
+## 2026-10-10 playtest: the real Press Conference (ST04) refills its hand each
+## turn, yet it ended at "Question 4 of 6 ... nothing left to say" the moment
+## the last card in hand was played with the deck empty — the check ignored
+## the discard pile, which refills the hand at the next turn.
+func test_a_refilling_press_conference_is_not_over_while_the_discard_can_refill_the_hand() -> void:
+	var stage := _press()["stage"] as Dictionary
+	stage["draw_mode"] = "refill"
+	stage["questions"] = [
+		{"id": "Q1", "text": "1", "prefers_suit": "Earnest", "pleases_boosters": []},
+		{"id": "Q2", "text": "2", "prefers_suit": "Earnest", "pleases_boosters": []},
+		{"id": "Q3", "text": "3", "prefers_suit": "Earnest", "pleases_boosters": []},
+	]
+	var engine := _start(_press({"stage": stage}))
+	engine.state.hand.assign(["GAIN3"])
+	engine.state.deck.clear()
+	engine.state.discard.assign(["GAIN3", "GAIN3", "ATTACK3"])
+
+	engine.play_card("GAIN3")
+
+	assert_false(engine.state.is_over(), "the discard pile will refill the hand next turn")

@@ -742,12 +742,15 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 		if questions_remaining() <= 0:
 			_close_conference()
 			return
-		# An empty hand is the end of it. The discard pile is not counted:
-		# in a conference that never draws, a card once played is gone for
-		# good, so cards sitting in the discard are not answers you still have.
+		# An empty hand is the end of it. In a conference that never draws, a
+		# card once played is gone for good, so the discard is not counted.
+		# In one that refills each turn (the real ST04), the discard is
+		# reshuffled into the deck when the next hand is drawn, so it counts
+		# (2026-10-10: it ended at question 4 of 6 with a full discard pile).
 		var can_still_answer := not state.hand.is_empty()
 		if state.draw_mode != "none":
-			can_still_answer = can_still_answer or not state.deck.is_empty()
+			can_still_answer = (can_still_answer or not state.deck.is_empty()
+				or not state.discard.is_empty())
 		if not can_still_answer:
 			_close_conference(true)
 			return
