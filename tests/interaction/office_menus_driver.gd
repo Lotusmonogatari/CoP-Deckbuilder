@@ -47,7 +47,7 @@ func _walk() -> void:
 		if office.find_child(name, true, false) == null:
 			_failures.append("the Office has no %s" % name)
 			return
-	for name in ["OrganisationsButton", "BackingButton", "RecordButton", "CosmeticsButton", "HowToPlayButton"]:
+	for name in ["OrganisationsButton", "BackingButton", "PartiesButton", "RecordButton", "CosmeticsButton", "HowToPlayButton"]:
 		if office.find_child(name, true, false) != null:
 			_failures.append("%s is still loose in the Office instead of inside a menu" % name)
 	var reputation := office.find_child("ReputationButton", true, false) as Button
@@ -60,7 +60,7 @@ func _walk() -> void:
 
 	await _menu(office, "ReputationButton", "ReputationMenuPanel",
 		[["OrganisationsButton", "OrganisationsPanel"], ["BackingButton", "BackingPanel"],
-		["RecordButton", "RecordPanel"]])
+		["PartiesButton", "PartiesPanel"], ["RecordButton", "RecordPanel"]])
 	await _menu(office, "AdministrationButton", "AdministrationMenuPanel",
 		[["CosmeticsButton", "CosmeticsPanel"], ["HowToPlayButton", "HowToPlayPanel"]])
 

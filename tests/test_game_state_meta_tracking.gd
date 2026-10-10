@@ -20,7 +20,15 @@ var _levels_cleared_before: Dictionary = {}
 var _funds_cap_bonus_before := 0
 
 
+## These tests drive the Party support TRIGGERS directly with the stored
+## number, so they run with no stakeholder rows (the blend then equals the
+## stored number). The blend itself is tested in test_party_opinion.gd.
+var _stakeholders_before: Array = []
+
+
 func before_each() -> void:
+	_stakeholders_before = DataDB.party_stakeholders
+	DataDB.party_stakeholders = []
 	_meta_before = GameState.meta.duplicate(true)
 	_runner_before = GameState.level_runner
 	_mid_stage_before = GameState.mid_stage
@@ -30,6 +38,7 @@ func before_each() -> void:
 
 
 func after_each() -> void:
+	DataDB.party_stakeholders = _stakeholders_before
 	GameState.meta = _meta_before.duplicate(true)
 	GameState.level_runner = _runner_before
 	GameState.mid_stage = _mid_stage_before

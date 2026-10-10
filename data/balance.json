@@ -25,6 +25,12 @@
   "starter_deck_tier_3_chance": 25,
   "starter_deck_max_tier_3_cards": 1,
   "starter_deck_max_gaffe_cards": 50,
+  "party_opinion_direct_weight": 50,
+  "party_opinion_stakeholder_weight": 50,
+  "party_opinion_hostile_below": 20,
+  "party_opinion_cold_below": 40,
+  "party_opinion_neutral_below": 60,
+  "party_opinion_warm_below": 80,
   "xp_tiers": {},
   "committee_size_bands": {}
 }

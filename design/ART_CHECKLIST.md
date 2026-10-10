@@ -12,7 +12,7 @@ in `data/art.json`.
 | Visitors | 0 / 195 |
 | Card art | 0 / 54 |
 | Backgrounds | 24 / 24 |
-| Organisation icons | 18 / 18 |
+| Organisation icons | 18 / 30 |
 | Shop item icons | 20 / 20 |
 | Cosmetic package icons | 2 / 2 |
 
@@ -335,6 +335,18 @@ in `data/art.json`.
 | BO16.png | Innovation Society | ✓ |
 | BO17.png | Members of Parliament | ✓ |
 | BO18.png | Constituency Voters | ✓ |
+| BO19.png | Buddhist Temples Association | ☐ |
+| BO20.png | Shrine Association | ☐ |
+| BO21.png | Care and Welfare Council | ☐ |
+| BO22.png | Veterans' Association | ☐ |
+| BO23.png | Taxpayers' Alliance | ☐ |
+| BO24.png | Financial Industry Association | ☐ |
+| BO25.png | Small Business Owners' Association | ☐ |
+| BO26.png | Consumer Advocacy Network | ☐ |
+| BO27.png | Urban Neighbourhood Alliance | ☐ |
+| BO28.png | Ainu Community Council | ☐ |
+| BO29.png | Ainu Language and Culture Foundation | ☐ |
+| BO30.png | Rural Revitalization Council | ☐ |
 
 ## Shop item icons — `assets/icons/`
 

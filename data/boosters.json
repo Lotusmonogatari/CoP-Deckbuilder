@@ -201,5 +201,113 @@
     "tier": "Constituency",
     "linked_modifiers": null,
     "starting_standing": 35
+  },
+  {
+    "booster_id": "BO19",
+    "name_en": "Buddhist Temples Association",
+    "name_jp": "仏教寺院連合",
+    "romaji": "Bukkyō Jiin Rengō",
+    "tier": "National",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO20",
+    "name_en": "Shrine Association",
+    "name_jp": "神社会",
+    "romaji": "Jinja-kai",
+    "tier": "National",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO21",
+    "name_en": "Care and Welfare Council",
+    "name_jp": "福祉協議会",
+    "romaji": "Fukushi Kyōgikai",
+    "tier": "National",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO22",
+    "name_en": "Veterans' Association",
+    "name_jp": "退役軍人会",
+    "romaji": "Taieki Gunjin-kai",
+    "tier": "National",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO23",
+    "name_en": "Taxpayers' Alliance",
+    "name_jp": "納税者連盟",
+    "romaji": "Nōzeisha Renmei",
+    "tier": "National",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO24",
+    "name_en": "Financial Industry Association",
+    "name_jp": "金融業協会",
+    "romaji": "Kin'yūgyō Kyōkai",
+    "tier": "National",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO25",
+    "name_en": "Small Business Owners' Association",
+    "name_jp": "中小企業主会",
+    "romaji": "Chūshō Kigyōnushi-kai",
+    "tier": "Constituency",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO26",
+    "name_en": "Consumer Advocacy Network",
+    "name_jp": "消費者ネットワーク",
+    "romaji": "Shōhisha Nettowāku",
+    "tier": "Constituency",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO27",
+    "name_en": "Urban Neighbourhood Alliance",
+    "name_jp": "都市部町内連合",
+    "romaji": "Toshibu Chōnai Rengō",
+    "tier": "Constituency",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO28",
+    "name_en": "Ainu Community Council",
+    "name_jp": "アイヌ協議会",
+    "romaji": "Ainu Kyōgikai",
+    "tier": "Constituency",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO29",
+    "name_en": "Ainu Language and Culture Foundation",
+    "name_jp": "アイヌ語文化財団",
+    "romaji": "Ainugo Bunka Zaidan",
+    "tier": "National",
+    "linked_modifiers": null,
+    "starting_standing": null
+  },
+  {
+    "booster_id": "BO30",
+    "name_en": "Rural Revitalization Council",
+    "name_jp": "地域振興会議",
+    "romaji": "Chiiki Shinkō Kaigi",
+    "tier": "Constituency",
+    "linked_modifiers": null,
+    "starting_standing": null
   }
 ]

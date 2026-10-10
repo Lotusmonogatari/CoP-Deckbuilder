@@ -2749,5 +2749,89 @@
     "english": "your hand and deck",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "office.parties",
+    "where": "Reputation and Results menu button and panel title",
+    "english": "Parties",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.blurb",
+    "where": "Parties page, top",
+    "english": "How each party sees you: its mood about your votes and rewards, blended with how its stakeholder organisations feel about you.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.own_tag",
+    "where": "Parties page, after your own party's name",
+    "english": "(your party)",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.line",
+    "where": "Parties page, one line per party",
+    "english": "{score} · {band}",
+    "placeholders": "score, band",
+    "notes": null
+  },
+  {
+    "key": "party_opinion.detail",
+    "where": "Parties page, small line per party",
+    "english": "Votes and rewards {direct} · Stakeholders {stakeholder}",
+    "placeholders": "direct, stakeholder",
+    "notes": "Stakeholders shows a dash where no organisation is tied to the party."
+  },
+  {
+    "key": "party_opinion.helping",
+    "where": "Parties page, small line",
+    "english": "Helping: {names}.",
+    "placeholders": "names",
+    "notes": null
+  },
+  {
+    "key": "party_opinion.hurting",
+    "where": "Parties page, small line",
+    "english": "Hurting: {names}.",
+    "placeholders": "names",
+    "notes": null
+  },
+  {
+    "key": "party_opinion.band_hostile",
+    "where": "Parties page, opinion word",
+    "english": "Hostile",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.band_cold",
+    "where": "Parties page, opinion word",
+    "english": "Cold",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.band_neutral",
+    "where": "Parties page, opinion word",
+    "english": "Neutral",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.band_warm",
+    "where": "Parties page, opinion word",
+    "english": "Warm",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.band_allied",
+    "where": "Parties page, opinion word",
+    "english": "Allied",
+    "placeholders": null,
+    "notes": null
   }
 ]

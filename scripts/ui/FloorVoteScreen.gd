@@ -103,7 +103,7 @@ func start_voting() -> void:
 	if not engine.setup({
 		"bill": _stage.get("floor_vote", {}),
 		"player_party": str(DataDB.player.get("party", "")),
-		"meta": GameState.meta,
+		"meta": GameState.effective_meta(),
 		"booster_standing": GameState.booster_standing,
 		"triggers": DataDB.vote_influence_triggers,
 		"default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),

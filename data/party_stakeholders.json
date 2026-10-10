@@ -1,0 +1,386 @@
+[
+  {
+    "party_id": "OWN",
+    "booster_id": "BO01",
+    "weight": 5.0,
+    "note": "Your own party headquarters"
+  },
+  {
+    "party_id": "OWN",
+    "booster_id": "BO02",
+    "weight": 4.0,
+    "note": "Your own party faction"
+  },
+  {
+    "party_id": "OWN",
+    "booster_id": "BO17",
+    "weight": 2.0,
+    "note": "Colleagues in parliament"
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO12",
+    "weight": 5.0,
+    "note": "Families"
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO19",
+    "weight": 5.0,
+    "note": "Buddhist policy base"
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO21",
+    "weight": 5.0,
+    "note": "Social care"
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO06",
+    "weight": 3.0,
+    "note": "Quality of life, local"
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO20",
+    "weight": 2.0,
+    "note": "Light Shinto traditionalism"
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO15",
+    "weight": 2.0,
+    "note": "Light traditionalism"
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO10",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO11",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO05",
+    "weight": -1.0,
+    "note": "Less market-driven"
+  },
+  {
+    "party_id": "PT01",
+    "booster_id": "BO24",
+    "weight": -1.0,
+    "note": "Less market-driven"
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO28",
+    "weight": 5.0,
+    "note": "Ainu community"
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO29",
+    "weight": 5.0,
+    "note": "Ainu language and culture"
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO07",
+    "weight": 3.0,
+    "note": "Fishing rights"
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO13",
+    "weight": 2.0,
+    "note": "Traditional crafts"
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO10",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO11",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT02",
+    "booster_id": "BO12",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO10",
+    "weight": 5.0,
+    "note": "Rural priority: farming co-ops"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO07",
+    "weight": 4.0,
+    "note": "Fishing communities"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO30",
+    "weight": 4.0,
+    "note": "Rural revitalisation"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO06",
+    "weight": 3.0,
+    "note": "Neighbourhood base"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO04",
+    "weight": 3.0,
+    "note": "Local government"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO03",
+    "weight": 3.0,
+    "note": "Local supporters"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO18",
+    "weight": 2.0,
+    "note": "Constituency voters"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO14",
+    "weight": 1.0,
+    "note": "City side of the blend"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO09",
+    "weight": 1.0,
+    "note": "City side of the blend"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO05",
+    "weight": -2.0,
+    "note": "Lower on free-market politics"
+  },
+  {
+    "party_id": "PT03",
+    "booster_id": "BO24",
+    "weight": -1.0,
+    "note": "Lower on free-market politics"
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO08",
+    "weight": 5.0,
+    "note": "Media aligned"
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO26",
+    "weight": 4.0,
+    "note": "Special-interest groups"
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO27",
+    "weight": 4.0,
+    "note": "City focus"
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO18",
+    "weight": 4.0,
+    "note": "Constituency dependent"
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO14",
+    "weight": 3.0,
+    "note": null
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO11",
+    "weight": 3.0,
+    "note": null
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO13",
+    "weight": 3.0,
+    "note": null
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO03",
+    "weight": 2.0,
+    "note": null
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO16",
+    "weight": 2.0,
+    "note": null
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO09",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT04",
+    "booster_id": "BO05",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO05",
+    "weight": 5.0,
+    "note": "Biggest booster"
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO24",
+    "weight": 4.0,
+    "note": null
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO23",
+    "weight": 4.0,
+    "note": null
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO16",
+    "weight": 4.0,
+    "note": null
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO25",
+    "weight": 3.0,
+    "note": null
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO27",
+    "weight": 3.0,
+    "note": "City interests"
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO08",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO13",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO09",
+    "weight": -3.0,
+    "note": "Labour opposes free-market politics"
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO10",
+    "weight": -2.0,
+    "note": "Protectionism"
+  },
+  {
+    "party_id": "PT05",
+    "booster_id": "BO30",
+    "weight": -1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO15",
+    "weight": 5.0,
+    "note": "Social conservatism"
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO22",
+    "weight": 5.0,
+    "note": "National conservatism"
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO20",
+    "weight": 4.0,
+    "note": "Shrine tradition"
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO12",
+    "weight": 3.0,
+    "note": "Family values"
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO03",
+    "weight": 2.0,
+    "note": null
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO10",
+    "weight": 2.0,
+    "note": null
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO05",
+    "weight": 1.0,
+    "note": null
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO11",
+    "weight": -2.0,
+    "note": "Students lean the other way"
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO09",
+    "weight": -2.0,
+    "note": "Labour lean the other way"
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO08",
+    "weight": -1.0,
+    "note": "Media scepticism"
+  },
+  {
+    "party_id": "PT06",
+    "booster_id": "BO16",
+    "weight": -1.0,
+    "note": null
+  }
+]

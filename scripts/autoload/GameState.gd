@@ -819,7 +819,7 @@ func _record_lifetime_gaffes(gaffes: int, outcome: String, gaffe_caused_loss: bo
 ## Funding freeze inserts nothing, so both edges always fire — there is no
 ## "nowhere to put it" case the way there is for a forced-in stage.
 func _check_funding_freeze() -> void:
-	var frozen := MetaRules.funding_frozen(int(meta.get("Party support", 0)), DataDB.balance)
+	var frozen := MetaRules.funding_frozen(party_support_effective(), DataDB.balance)
 	if frozen and not funding_frozen_active:
 		funding_frozen_active = true
 		pending_trigger_alerts.append({"kind": "funding_freeze", "edge": "entered"})
@@ -852,7 +852,7 @@ func _check_town_hall(level_id: String) -> void:
 ## check-in (ST22, Non-combat, VI04 — see design's Part D) forced in when
 ## party support falls below its own threshold.
 func _check_steering_committee(level_id: String) -> void:
-	var party_support := int(meta.get("Party support", 0))
+	var party_support := party_support_effective()
 	var triggered := MetaRules.steering_committee_triggered(party_support, DataDB.balance)
 	if triggered and not steering_committee_active:
 		if level_runner == null or level_runner.is_finished():
@@ -900,7 +900,7 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 		# own threshold. Zeroed at the source rather than undone afterward,
 		# so this is the one and only place Funds income can be frozen. Only
 		# INCOME freezes: a Funds penalty for losing still lands.
-		if "M32" in MetaRules.party_support_modifiers(int(meta.get("Party support", 0)), DataDB.balance) \
+		if "M32" in MetaRules.party_support_modifiers(party_support_effective(), DataDB.balance) \
 				and MetaRules.stage_delta(stage, side + "_delta_yen") > 0:
 			paid_stage = stage.duplicate(true)
 			paid_stage[side + "_delta_yen"] = 0
@@ -926,7 +926,7 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 ## reward-paying function should ever hand out.
 func _effectively_owned_modifiers() -> Array:
 	var mod_ids: Array[String] = owned_modifiers.duplicate()
-	for mod_id: String in MetaRules.party_support_modifiers(int(meta.get("Party support", 0)), DataDB.balance):
+	for mod_id: String in MetaRules.party_support_modifiers(party_support_effective(), DataDB.balance):
 		if mod_id != "M32" and not mod_ids.has(mod_id):
 			mod_ids.append(mod_id)
 
@@ -1706,6 +1706,63 @@ func party_favorability(party_name: String) -> int:
 	if party_name == str(DataDB.player.get("party", "")):
 		return int(meta.get("Party support", 0))
 	return int(party_standing.get(party_name, 50))
+
+
+## ---------------------------------------------------------------------------
+## Party opinion (2026-10-10, Cameron): how each party sees the player. See
+## PartyOpinion.gd for the maths. DIRECT is party_favorability() (the Party
+## support meta for the player's own party, party_standing for the rest);
+## STAKEHOLDER is the weighted standing of the organisations the workbook's
+## Party Standing tab ties to that party.
+## ---------------------------------------------------------------------------
+
+## The player's own party as a party_id ("" when there is none).
+func own_party_id() -> String:
+	var own := DataDB.get_party(str(DataDB.player.get("party", "")))
+	return str(own.get("party_id", ""))
+
+
+## Everything the Parties page and the rules need about one party:
+## {party_id, name, direct, stakeholder (-1 = none), opinion, band,
+## contributions}.
+func party_opinion_detail(party_id: String) -> Dictionary:
+	var party := {}
+	for row: Dictionary in DataDB.parties:
+		if str(row.get("party_id", "")) == party_id:
+			party = row
+	var party_name := str(party.get("name", ""))
+	var rows := PartyOpinion.rows_for(DataDB.party_stakeholders, party_id, own_party_id())
+	var held := PartyOpinion.stakeholder(rows, booster_standing,
+		int(DataDB.booster_standing.get("start", 30)))
+	var direct := party_favorability(party_name)
+	var score := PartyOpinion.opinion(direct, int(held["score"]), DataDB.balance)
+	return {"party_id": party_id, "name": party_name, "direct": direct,
+		"stakeholder": int(held["score"]), "opinion": score,
+		"band": PartyOpinion.band(score, DataDB.balance),
+		"contributions": held["contributions"]}
+
+
+func party_opinion(party_id: String) -> int:
+	return int(party_opinion_detail(party_id)["opinion"])
+
+
+## What every "Party support" rule reads for the player's own party (Option A,
+## Cameron 2026-10-10): the blended opinion, so organisations matter. Stage
+## rewards, votes and leans still add to the stored meta number. With no
+## player party, or no data for it, this is simply the stored number.
+func party_support_effective() -> int:
+	var own := own_party_id()
+	if own.is_empty():
+		return int(meta.get("Party support", 0))
+	return party_opinion(own)
+
+
+## `meta` with Party support replaced by the effective (blended) number, for
+## rules that read the whole dictionary (the Floor Vote influence gate).
+func effective_meta() -> Dictionary:
+	var copy := meta.duplicate()
+	copy["Party support"] = party_support_effective()
+	return copy
 
 
 ## Every OTHER party's favorability change goes through here: clamped to

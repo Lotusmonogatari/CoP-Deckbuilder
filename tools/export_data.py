@@ -462,6 +462,25 @@ SHEETS = {
             ("Why (Claude's reasoning - correct freely)", "why", "str"),
         ],
     },
+    # Which organisations a party's opinion of the player rests on, and how
+    # much (2026-10-10, Cameron). One row per (party, organisation) pair.
+    # Weight is any number: positive means the organisation's good standing
+    # makes the party like you more, NEGATIVE means a rival (its good standing
+    # makes the party like you less). Party ID is a PTxx, or OWN for "whichever
+    # party the player belongs to" (the party-tier organisations). Blank
+    # weights count as zero; a party with no rows simply has no stakeholder
+    # part. Any new organisation or party is just new rows.
+    "Party Standing": {
+        "out": "party_stakeholders.json",
+        "optional_sheet": True,
+        "key": "booster_id",
+        "columns": [
+            ("Party ID", "party_id", "str"),
+            ("Booster ID", "booster_id", "id"),
+            ("Weight", "weight", "num"),
+            ("Note", "note", "str"),
+        ],
+    },
     "Text": {
         "out": "strings.json",
         "key": "key",
@@ -2294,6 +2313,22 @@ def fold_questions(data, report):
                 report.error("Question Themes",
                              f"'{theme}' names organisation '{booster}', "
                              f"which is not in the Boosters tab")
+
+    # Party Standing rows (2026-10-10): both IDs must exist, and a pair listed
+    # twice would be counted twice, so say so.
+    party_ids_ps = {r["party_id"] for r in data.get("parties", []) if r.get("party_id")}
+    seen_pairs = set()
+    for row in data.get("party_stakeholders", []):
+        pid, bid = row.get("party_id"), row.get("booster_id")
+        if pid != "OWN" and pid not in party_ids_ps:
+            report.error("Party Standing", f"'{pid}' is neither a party_id nor OWN (for {bid})")
+        if bid not in booster_ids:
+            report.error("Party Standing", f"'{bid}' (for {pid}) is not in the Boosters tab")
+        if row.get("weight") is None:
+            report.warn("Party Standing", f"{pid}/{bid} has no weight, so it counts as 0")
+        if (pid, bid) in seen_pairs:
+            report.warn("Party Standing", f"{pid}/{bid} is listed twice; both weights add up")
+        seen_pairs.add((pid, bid))
 
     # Who asks (2026-09-26, Cameron: "the databook is the governing data" —
     # call an opponent up by their own Stage ID, never a hand-maintained

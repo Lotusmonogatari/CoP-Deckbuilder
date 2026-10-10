@@ -61,6 +61,7 @@ var _inventory_panel: InventoryPanel
 ## has flipped, how many times each level has been cleared, and clears per
 ## tier. Built in code, the same reason _inventory_panel is.
 var _record_panel: Overlay
+var _parties_panel: Overlay
 
 ## Cosmetic packages (2026-09-28): purely decorative outfit/background/music
 ## bundles, bought here and equipped per slot. Built in code, the same
@@ -701,6 +702,66 @@ func _build_record() -> void:
 	_record_panel = Overlay.new()
 	_record_panel.name = "RecordPanel"
 	add_child(_record_panel)
+	_parties_panel = Overlay.new()
+	_parties_panel.name = "PartiesPanel"
+	add_child(_parties_panel)
+
+
+## How each of the six parties sees the player (PartyOpinion.gd): the party's
+## mood from votes and rewards blended with how its stakeholder organisations
+## feel. Your own party is tagged; every party is in its own official colour.
+func _show_parties() -> void:
+	var rows: Array[Control] = [UiKit.line(Text.say("party_opinion.blurb"), "SmallLabel")]
+	var own := GameState.own_party_id()
+	var names := BattleSetup.booster_names()
+	for party: Dictionary in DataDB.parties:
+		var party_id := str(party.get("party_id", ""))
+		var detail := GameState.party_opinion_detail(party_id)
+		var box := UiKit.tight_column()
+		var title := str(party.get("name", party_id))
+		if party_id == own:
+			title += " " + Text.say("party_opinion.own_tag")
+		var heading := UiKit.heading(title)
+		heading.add_theme_color_override("font_color", PartyDisplay.color_for(party))
+		box.add_child(heading)
+		box.add_child(UiKit.line(Text.say("party_opinion.line", {
+			"score": detail["opinion"],
+			"band": _band_word(str(detail["band"])),
+		})))
+		var held := int(detail["stakeholder"])
+		box.add_child(UiKit.line(Text.say("party_opinion.detail", {
+			"direct": detail["direct"],
+			"stakeholder": "—" if held == PartyOpinion.NO_SCORE else str(held),
+		}), "SmallLabel"))
+		var helping: Array[String] = []
+		var hurting: Array[String] = []
+		var ordered: Array = detail["contributions"].duplicate()
+		ordered.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+			return absf(float(a["effect"])) > absf(float(b["effect"])))
+		for entry: Dictionary in ordered:
+			var label := str(names.get(str(entry["booster_id"]), entry["booster_id"]))
+			if float(entry["effect"]) >= 0.5 and helping.size() < 3:
+				helping.append(label)
+			elif float(entry["effect"]) <= -0.5 and hurting.size() < 3:
+				hurting.append(label)
+		if not helping.is_empty():
+			box.add_child(UiKit.line(Text.say("party_opinion.helping",
+				{"names": ", ".join(helping)}), "SmallLabel"))
+		if not hurting.is_empty():
+			box.add_child(UiKit.line(Text.say("party_opinion.hurting",
+				{"names": ", ".join(hurting)}), "SmallLabel"))
+		rows.append(box)
+	_parties_panel.open(Text.say("office.parties"), rows)
+
+
+## The word for an opinion band; each is its own Text row so it can be reworded.
+func _band_word(band: String) -> String:
+	match band:
+		"hostile": return Text.say("party_opinion.band_hostile")
+		"cold": return Text.say("party_opinion.band_cold")
+		"warm": return Text.say("party_opinion.band_warm")
+		"allied": return Text.say("party_opinion.band_allied")
+	return Text.say("party_opinion.band_neutral")
 
 
 ## Lifetime stats: which bills the influence swing has flipped, clears per
@@ -803,6 +864,7 @@ func _show_reputation_menu() -> void:
 		_menu_button("OrganisationsButton", "office.organisations", _show_organisations,
 			_organisations_panel),
 		_menu_button("BackingButton", "office.backing", _show_backing, _backing_panel),
+		_menu_button("PartiesButton", "office.parties", _show_parties, _parties_panel),
 		_menu_button("RecordButton", "office.your_record", _show_record, _record_panel),
 	]
 	_reputation_menu.open(Text.say("office.reputation_and_results"), rows)
