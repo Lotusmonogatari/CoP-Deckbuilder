@@ -302,6 +302,7 @@
   "outcome.next_stage": "On to the next stage",
   "outcome.no_decision": "No decision",
   "outcome.no_rewards": "This stage has no rewards set yet.",
+  "outcome.opposed": "Set back by your answers: {names}.",
   "outcome.pleased": "Pleased: {names}.",
   "outcome.reason.all_argued_down": "All {count} were argued down.",
   "outcome.reason.all_argued_out": "Every opponent has been argued out of the chamber.",

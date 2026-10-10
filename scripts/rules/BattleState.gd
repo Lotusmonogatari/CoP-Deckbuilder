@@ -126,6 +126,13 @@ var pleased_boosters: Array[String] = []
 ## feeds the standing penalty GameState applies once the stage ends.
 var displeased_boosters: Array[String] = []
 
+## The organisations a STRONG answer works against (2026-10-10, Cameron): a
+## theme can name organisations that lose standing when the player answers it
+## well, e.g. a strong answer on Ainu preferential rights pleases the Ainu
+## groups and sets back the groups opposed. Feeds only the standing penalty
+## GameState applies at the end of the stage, never a carried buff.
+var opposed_boosters: Array[String] = []
+
 ## The organisations whose own member was argued all the way down to zero
 ## support this stage — an instant win short of the threshold (2026-09-29,
 ## Cameron). Deduplicated the same way displeased_boosters is (a committee

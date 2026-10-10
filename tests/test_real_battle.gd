@@ -812,6 +812,19 @@ func test_pleasing_and_displeasing_the_same_organisation_in_one_stage_nets_out()
 	GameState.end_level()
 
 
+func test_an_opposed_organisation_loses_per_opposed_standing() -> void:
+	GameState.reset_booster_standing()
+	var before := int(GameState.booster_standing["BO03"])
+
+	GameState.begin_level(LevelRunner.new(DataDB.playtest_level))
+	GameState.finish_stage("win", 50, ["BO08"], false, 0, [], [], ["BO03"])
+
+	assert_eq(int(GameState.booster_standing["BO03"]),
+		before - int(DataDB.booster_standing["per_opposed"]))
+
+	GameState.end_level()
+
+
 func test_a_weak_answer_never_grants_the_floor_debate_buff_pleasing_does() -> void:
 	# displeased_boosters is kept separate from the pleased list on purpose:
 	# only the pleased list carries into LevelRunner.carried_buffs() — a

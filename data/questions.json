@@ -339,6 +339,86 @@
         "BO03"
       ],
       "asked_by": "OP113"
+    },
+    {
+      "id": "Q21",
+      "text": "Critics call preferential rights for the Ainu unfair to everyone else. Respond.",
+      "theme": "Ainu fairness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO27",
+        "BO05"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "Q22",
+      "text": "Why should the Ainu get protections that others do not?",
+      "theme": "Ainu fairness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO27",
+        "BO05"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "Q23",
+      "text": "Fishers say distant offices set rules that ignore the sea. Are they right?",
+      "theme": "Fishing quotas",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "Q24",
+      "text": "Packed trains and late buses. Why has Parliament not acted?",
+      "theme": "Rail timetables",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP117"
     }
   ],
   "town_hall": [
@@ -1582,6 +1662,223 @@
         "BO18"
       ],
       "asked_by": "OP102"
+    },
+    {
+      "id": "T74",
+      "text": "Should Ainu communities get first claim on public programs meant for them?",
+      "theme": "Ainu preferential rights",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO27",
+        "BO05"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T75",
+      "text": "Why should one community have reserved seats on local boards?",
+      "theme": "Ainu reserved seats",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T76",
+      "text": "Is it fair for Ainu fishers to have special harvest rights?",
+      "theme": "Ainu harvest rights",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO27",
+        "BO05"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T77",
+      "text": "Will land that was taken ever be handed back to Ainu communities?",
+      "theme": "Ainu land return",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T78",
+      "text": "Does protecting the Ainu language mean less money for everyone else?",
+      "theme": "Ainu language funding",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO27",
+        "BO23"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T79",
+      "text": "Quotas keep shrinking. How do small boats survive?",
+      "theme": "Fishing quotas",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T80",
+      "text": "Who pays to keep our harbours in working order?",
+      "theme": "Harbour upkeep",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T81",
+      "text": "Prices at the market fall while fuel costs rise. What will you do?",
+      "theme": "Catch prices",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T82",
+      "text": "My commute costs more every year. What will you do?",
+      "theme": "Commuter fares",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T83",
+      "text": "Last trains stop too early for shift workers. Can that change?",
+      "theme": "Rail timetables",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T84",
+      "text": "Station stairs are impossible with a pram or a wheelchair. Who fixes that?",
+      "theme": "Station access",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP105"
     }
   ],
   "lobbyist_meeting": [
@@ -2604,6 +2901,86 @@
         "BO18"
       ],
       "asked_by": "OP121"
+    },
+    {
+      "id": "L61",
+      "text": "Will you back a law that makes Ainu rights preferential, not just equal?",
+      "theme": "Ainu preferential cost",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO26",
+        "BO24"
+      ],
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L62",
+      "text": "Our members worry preferential rights will come out of their budgets. Will they?",
+      "theme": "Ainu preferential cost",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO26",
+        "BO24"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L64",
+      "text": "Our members need clear quota rules. Can you deliver them?",
+      "theme": "Fishing quotas",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L65",
+      "text": "Commuter groups want fares that stay predictable. Will you back that?",
+      "theme": "Commuter fares",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP125"
     }
   ],
   "policy_study": [
@@ -2946,6 +3323,63 @@
         "BO10"
       ],
       "asked_by": "OP59"
+    },
+    {
+      "id": "B21",
+      "text": "What would a preferential rights framework for the Ainu actually cost?",
+      "theme": "Ainu preferential cost",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO26",
+        "BO24"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "B22",
+      "text": "Should imported seafood face tougher labelling rules?",
+      "theme": "Seafood labelling",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "B23",
+      "text": "Should congestion charges pay for better buses?",
+      "theme": "Road congestion",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP81"
     }
   ],
   "media_ambush": [
@@ -3288,6 +3722,46 @@
         "BO08"
       ],
       "asked_by": "OP113"
+    },
+    {
+      "id": "A21",
+      "text": "Are you putting one community ahead of the rest of Yezo?",
+      "theme": "Ainu fairness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO27",
+        "BO05"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "A22",
+      "text": "Commuters are stuck on platforms every morning. Who is to blame?",
+      "theme": "Rail timetables",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP115"
     }
   ]
 }

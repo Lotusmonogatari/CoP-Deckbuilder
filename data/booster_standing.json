@@ -51,7 +51,12 @@
     "'instant_win_penalty', applied once per organisation touched this stage",
     "(GameState._apply_instant_win_penalties()) - a separate, simpler mechanic",
     "from the please/displease netting above, since it is never about a",
-    "question's own grade."
+    "question's own grade.",
+    "",
+    "2026-10-10, Cameron: a Question Themes row can also name organisations a",
+    "STRONG answer sets back (the optional Annoys column -> a question's",
+    "displeases_boosters). They lose 'per_opposed' each, netted with any please",
+    "or displease the same stage and held by 'question_swing_cap'."
   ],
 
   "start": 30,
@@ -59,6 +64,7 @@
   "max": 100,
   "per_please": 5,
   "per_displease": 1,
+  "per_opposed": 3,
   "question_swing_cap": 5,
   "instant_win_penalty": 2,
 

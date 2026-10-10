@@ -130,6 +130,7 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 		for entry: Array in [
 			["outcome.pleased", engine.pleased_boosters()],
 			["outcome.displeased", engine.displeased_boosters()],
+			["outcome.opposed", engine.opposed_boosters()],
 			["outcome.crushed", engine.crushed_opponent_boosters()],
 		]:
 			var who: Array[String] = []
@@ -257,7 +258,8 @@ static func booster_changes(engine: BattleEngine) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	for entry: Dictionary in BoosterChange.compute(
 			engine.pleased_boosters(), engine.displeased_boosters(),
-			engine.crushed_opponent_boosters(), DataDB.booster_standing):
+			engine.crushed_opponent_boosters(), DataDB.booster_standing,
+			engine.opposed_boosters()):
 		var booster_id := str(entry["booster_id"])
 		out.append({"booster_id": booster_id,
 			"name": str(names.get(booster_id, booster_id)), "net": int(entry["net"])})

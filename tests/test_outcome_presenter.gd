@@ -141,6 +141,15 @@ func test_booster_change_nets_pleased_annoyed_and_crushed() -> void:
 	assert_eq(got[2], {"booster_id": "BO03", "net": -3})
 
 
+## A strong answer's opposed organisations lose per_opposed, netted with the rest.
+func test_booster_change_includes_opposed_organisations() -> void:
+	var standing := {"per_please": 5, "per_displease": 1, "per_opposed": 3,
+		"question_swing_cap": 5, "instant_win_penalty": 2}
+	var got := BoosterChange.compute(["BO28"], [], [], standing, ["BO15", "BO28"])
+	assert_eq(got[0], {"booster_id": "BO28", "net": 2})
+	assert_eq(got[1], {"booster_id": "BO15", "net": -3})
+
+
 ## With an icon container the panel shows one tappable icon per organisation,
 ## and a tap names it with its net change.
 func test_icons_show_and_a_tap_names_the_organisation_with_its_net_change() -> void:

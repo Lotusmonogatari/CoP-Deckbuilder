@@ -12,14 +12,15 @@ extends RefCounted
 ## Returns [{booster_id, net}] in the order organisations were first touched:
 ## pleased, then annoyed, then crushed. `standing` is booster_standing.json.
 static func compute(pleased: Array, displeased: Array, crushed: Array,
-		standing: Dictionary) -> Array[Dictionary]:
+		standing: Dictionary, opposed: Array = []) -> Array[Dictionary]:
 	var please_step := int(standing.get("per_please", 5))
 	var displease_step := int(standing.get("per_displease", 1))
+	var oppose_step := int(standing.get("per_opposed", 3))
 	var cap := int(standing.get("question_swing_cap", 5))
 	var penalty := int(standing.get("instant_win_penalty", 2))
 
 	var order: Array[String] = []
-	for group: Array in [pleased, displeased, crushed]:
+	for group: Array in [pleased, displeased, opposed, crushed]:
 		for booster_id: String in group:
 			if not order.has(booster_id):
 				order.append(booster_id)
@@ -31,6 +32,8 @@ static func compute(pleased: Array, displeased: Array, crushed: Array,
 			net += please_step
 		if displeased.has(booster_id):
 			net -= displease_step
+		if opposed.has(booster_id):
+			net -= oppose_step
 		net = clampi(net, -cap, cap)
 		if crushed.has(booster_id):
 			net -= penalty

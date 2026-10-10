@@ -2833,5 +2833,12 @@
     "english": "Allied",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "outcome.opposed",
+    "where": "Outcome panel, plain-text fallback",
+    "english": "Set back by your answers: {names}.",
+    "placeholders": "names",
+    "notes": null
   }
 ]

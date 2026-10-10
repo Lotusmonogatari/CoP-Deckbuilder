@@ -453,6 +453,7 @@ SHEETS = {
     "Question Themes": {
         "out": "question_themes.json",
         "optional_sheet": True,
+        "optional": ["Annoys"],
         "key": "theme",
         "columns": [
             ("Theme", "theme", "id"),
@@ -460,6 +461,10 @@ SHEETS = {
             # please more than one organisation at once.
             ("Organisation", "pleases_boosters", "id_list"),
             ("Why (Claude's reasoning - correct freely)", "why", "str"),
+            # Optional (2026-10-10, Cameron): organisations a STRONG answer on
+            # this theme sets back, e.g. the groups opposed to what the
+            # pleased groups want. Blank for most themes.
+            ("Annoys", "displeases_boosters", "id_list"),
         ],
     },
     # Which organisations a party's opinion of the player rests on, and how
@@ -2306,7 +2311,15 @@ def fold_questions(data, report):
 
     by_theme = {row["theme"]: (row.get("pleases_boosters") or [])
                 for row in data.get("question_themes", [])}
+    opposed_by_theme = {row["theme"]: (row.get("displeases_boosters") or [])
+                        for row in data.get("question_themes", [])}
     booster_ids = {row["booster_id"] for row in data.get("boosters", [])}
+    for theme, boosters in sorted(opposed_by_theme.items()):
+        for booster in boosters:
+            if booster not in booster_ids:
+                report.error("Question Themes",
+                             f"'{theme}' annoys organisation '{booster}', "
+                             f"which is not in the Boosters tab")
     for theme, boosters in sorted(by_theme.items()):
         for booster in boosters:
             if booster not in booster_ids:
@@ -2393,6 +2406,8 @@ def fold_questions(data, report):
                                 f"'{theme}', which no row in Question Themes "
                                 f"maps to an organisation — a strong answer "
                                 f"will please nobody")
+                if opposed_by_theme.get(theme):
+                    question["displeases_boosters"] = opposed_by_theme[theme]
                 if reporters:
                     question["asked_by"] = reporters[len(pool) % len(reporters)]
                 pool.append(question)

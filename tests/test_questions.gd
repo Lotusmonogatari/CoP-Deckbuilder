@@ -152,6 +152,23 @@ func test_a_medium_answer_neither_pleases_nor_displeases() -> void:
 	assert_eq(engine.state.displeased_boosters.size(), 0)
 
 
+func test_a_strong_answer_sets_back_the_organisations_a_theme_opposes() -> void:
+	# 2026-10-10: a question's optional displeases_boosters are set back by a
+	# STRONG answer, kept apart from the weak-answer annoyed list.
+	var engine := _conference({"questions": [_question({"displeases_boosters": ["BO15", "BO05"]})]})
+	engine.play_card("STRONG")
+
+	assert_eq(engine.opposed_boosters(), ["BO15", "BO05"] as Array[String])
+	assert_eq(engine.state.displeased_boosters.size(), 0, "not the weak-answer list")
+
+
+func test_a_weak_answer_does_not_set_back_the_opposed_organisations() -> void:
+	var engine := _conference({"questions": [_question({"displeases_boosters": ["BO15"]})]})
+	engine.play_card("WEAK")
+
+	assert_eq(engine.opposed_boosters().size(), 0)
+
+
 func test_displeasing_the_same_organisation_twice_in_one_stage_counts_once() -> void:
 	# The same dedup rule pleased_boosters already uses: two weak answers
 	# about the same organisation, on two different questions, count as one

@@ -1090,6 +1090,12 @@ func displeased_boosters() -> Array[String]:
 	return state.displeased_boosters
 
 
+## The organisations a strong answer has set back so far this stage
+## (a question's optional `displeases_boosters`).
+func opposed_boosters() -> Array[String]:
+	return state.opposed_boosters
+
+
 ## The organisations whose own member was argued down to zero support this
 ## stage (§7.2's instant-win rule, 2026-09-29). GameState applies a flat
 ## standing penalty to each.
@@ -1135,6 +1141,12 @@ func _answer_question(card: Dictionary) -> Dictionary:
 			for booster: String in (question.get("pleases_boosters", []) as Array):
 				if not state.pleased_boosters.has(booster):
 					state.pleased_boosters.append(booster)
+			# 2026-10-10, Cameron: some themes also work AGAINST other
+			# organisations when answered well (the Question Themes tab's
+			# optional "Annoys" column).
+			for booster: String in (question.get("displeases_boosters", []) as Array):
+				if not state.opposed_boosters.has(booster):
+					state.opposed_boosters.append(booster)
 		"W":
 			# 2026-09-28, Cameron: a weak answer no longer costs tone at
 			# all — it penalizes the card's own effect this round
