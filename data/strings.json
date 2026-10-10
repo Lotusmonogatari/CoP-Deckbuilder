@@ -2679,5 +2679,75 @@
     "english": "{name}: {change}",
     "placeholders": "change, name",
     "notes": "The net standing change for that organisation this stage; {change} already carries its + or - sign."
+  },
+  {
+    "key": "briefing.loss_ends_level",
+    "where": "Office · level briefing, per stage",
+    "english": "Losing this stage ends the level.",
+    "placeholders": null,
+    "notes": "Shown for a stage whose loss sends you back to the Office."
+  },
+  {
+    "key": "briefing.loss_continues",
+    "where": "Office · level briefing, per stage",
+    "english": "Losing this stage costs you, but the level carries on.",
+    "placeholders": null,
+    "notes": "Shown for a stage whose loss does not end the level."
+  },
+  {
+    "key": "briefing.between_resets",
+    "where": "Office · level briefing and battle Details",
+    "english": "Between opponents these start again: {things}.",
+    "placeholders": "things",
+    "notes": "Stages with several opponents. {things} is a list of the resource names below."
+  },
+  {
+    "key": "briefing.between_carries",
+    "where": "Office · level briefing and battle Details",
+    "english": "These carry over: {things}.",
+    "placeholders": "things",
+    "notes": "Stages with several opponents; omitted when nothing carries over."
+  },
+  {
+    "key": "briefing.res_support",
+    "where": "Resource name in the between-opponents lines",
+    "english": "support",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "briefing.res_energy",
+    "where": "Resource name in the between-opponents lines",
+    "english": "energy",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "briefing.res_gaffes",
+    "where": "Resource name in the between-opponents lines",
+    "english": "gaffes",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "briefing.res_turns",
+    "where": "Resource name in the between-opponents lines",
+    "english": "the turn count",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "briefing.res_guard",
+    "where": "Resource name in the between-opponents lines",
+    "english": "guard",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "briefing.res_hand",
+    "where": "Resource name in the between-opponents lines",
+    "english": "your hand and deck",
+    "placeholders": null,
+    "notes": null
   }
 ]

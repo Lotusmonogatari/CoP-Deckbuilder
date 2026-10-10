@@ -541,6 +541,8 @@ func _refresh_details(state: BattleState) -> void:
 			"count": state.opponent_count,
 			"number": state.opponent_index + 1,
 		}))
+		for between: String in CarryOverLines.for_stage(_stage):
+			after.append(between)
 
 	# Asked, not sniffed. This used to test whether the sentence began with
 	# "Nothing", so rewording that line would have silently hidden the block.
@@ -906,3 +908,4 @@ func _on_outcome_closed() -> void:
 		# Transition first. StageRouting.go_to_next_stage() is the one place
 		# that decides between all three.
 		StageRouting.go_to_next_stage(get_tree(), StageRouting.BATTLE_SCENE)
+

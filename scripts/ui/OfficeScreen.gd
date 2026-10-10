@@ -1618,6 +1618,11 @@ func _show_briefing() -> void:
 		var who := _opponents_line(stage)
 		if not who.is_empty():
 			rows.append(UiKit.line(who, "SmallLabel"))
+		if str(stage.get("mode", "")) == "Combat":
+			rows.append(UiKit.line(Text.say("briefing.loss_ends_level"
+				if LevelRunner.loss_ends_level(stage) else "briefing.loss_continues"), "SmallLabel"))
+		for between: String in CarryOverLines.for_stage(stage):
+			rows.append(UiKit.line(between, "SmallLabel"))
 
 		if LevelRunner.rewards_are_unset(stage):
 			rows.append(UiKit.line(Text.say("reward.stage_not_set"), "SmallLabel"))

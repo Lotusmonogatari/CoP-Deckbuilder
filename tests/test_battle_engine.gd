@@ -554,6 +554,29 @@ func test_a_scored_stage_does_not_end_early_on_support() -> void:
 	assert_false(engine.state.is_over(), "there is no threshold to cross")
 
 
+func test_a_scored_stage_ends_in_a_win_when_the_bar_is_filled() -> void:
+	# 2026-10-10: the top of the bar still ends a scored room.
+	var engine := _start(_caucus())
+	engine.state.bar.player_gains(100)
+	engine.end_turn()
+	assert_eq(engine.state.outcome, "win")
+
+
+func test_a_scored_stage_is_lost_when_the_players_support_is_emptied() -> void:
+	var engine := _start(_caucus())
+	engine.state.bar.player_loses(100)
+	engine.end_turn()
+	assert_eq(engine.state.outcome, "loss")
+
+
+func test_a_threshold_stage_is_won_on_reaching_the_maximum() -> void:
+	# Filling the pool passes the threshold on the way, so it is an ordinary win.
+	var engine := _start()
+	engine.state.bar.player_gains(engine.state.bar.maximum)
+	engine._check_outcome()
+	assert_eq(engine.state.outcome, "win")
+
+
 func test_a_scored_stage_completes_at_the_turn_limit() -> void:
 	var engine := _start(_caucus())
 	for _index in 3:

@@ -822,6 +822,21 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 	if has_threshold and state.bar.player <= 0:
 		_finish("loss", _words.say("outcome.reason.player_argued_out"))
 		return
+	# A scored room has no threshold, but the two ends of its bar still count
+	# (2026-10-10, Cameron): filling it to the maximum ends this opponent as a
+	# win (the whole stage if they are the last), and emptying it ends the
+	# stage as a loss. No real stage is scored today; the draft types are.
+	if (state.win_mode == "score" and state.bar != null
+			and state.bar.model != BarModel.Model.SINGLE):
+		if state.bar.player >= state.bar.maximum:
+			if has_more_opponents():
+				_advance_to_next_opponent()
+				return
+			_finish("win", _victory_reason())
+			return
+		if state.bar.player <= 0:
+			_finish("loss", _words.say("outcome.reason.player_argued_out"))
+			return
 	if bool(_rules.get("opponent_can_win_by_threshold", false)) and state.bar.opponent_has_won():
 		_finish("loss", _words.say("outcome.reason.opponent_first"))
 		return
