@@ -29,10 +29,7 @@ func test_every_real_multi_opponent_stage_says_something() -> void:
 	for stage: Dictionary in DataDB.stages:
 		if str(stage.get("mode")) != "Combat":
 			continue
-		# ST19 and ST21 list several opponents but are "single" in the Stages
-		# tab, so only the first is ever fought: a workbook question for
-		# Cameron (2026-10-10), not something this rule should paper over.
-		if str(stage.get("sequence_mode")) == "single":
-			continue
+		# A stage listing several opponents must cycle through them (2026-10-10:
+		# ST19 and ST21 were "single" and only ever fought the first).
 		if StageCarryOver.opponent_total(stage) > 1:
 			assert_false(StageCarryOver.between_opponents(stage).is_empty(), str(stage.get("stage_id")))
