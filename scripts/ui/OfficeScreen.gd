@@ -773,11 +773,17 @@ func _show_record() -> void:
 	rows.append(UiKit.heading(Text.say("office.record_sanban_heading")))
 	for variable: Dictionary in DataDB.sanban:
 		var name := str(variable.get("name_en", ""))
-		var line := Text.say("new_game.stat_line",
-			{"name": name, "value": GameState.meta.get(name, 0)})
+		# Party support is shown as the LIVE number the rules read (the blend of
+		# votes and stakeholders, GameState.party_support_effective()), not the
+		# stored half of it, so this page agrees with the Parties page.
+		var is_party := name == "Party support"
+		var shown: Variant = (GameState.party_support_effective()
+			if is_party else GameState.meta.get(name, 0))
+		var line := Text.say("new_game.stat_line", {"name": name, "value": shown})
 		# What moved this level, the same "(+N)" treatment Important
 		# Stakeholders already gives a booster's own recent change.
-		var change := int(GameState.last_meta_change.get(name, 0))
+		var change := (GameState.party_support_change_this_level()
+			if is_party else int(GameState.last_meta_change.get(name, 0)))
 		if change != 0:
 			line += "  (%+d)" % change
 		rows.append(UiKit.line(line))

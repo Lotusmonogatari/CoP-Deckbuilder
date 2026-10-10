@@ -108,3 +108,31 @@ func test_raising_a_tied_organisation_raises_the_opinion() -> void:
 	var high := GameState.party_opinion(party_id)
 	assert_gt(high, low)
 	GameState.booster_standing = standing_before
+
+
+func test_the_live_change_counts_both_votes_and_organisations() -> void:
+	var meta_before := GameState.meta.duplicate(true)
+	var change_before := GameState.last_meta_change.duplicate(true)
+	var boost_before := GameState.last_booster_change.duplicate(true)
+	var standing_before := GameState.booster_standing.duplicate(true)
+	if GameState.own_party_id().is_empty():
+		pending("no player party loaded in this fixture")
+		return
+	GameState.last_meta_change = {}
+	GameState.last_booster_change = {}
+	assert_eq(GameState.party_support_change_this_level(), 0, "nothing moved")
+	# A vote raised the stored number by 20 this level; blended 50/50 that is +10.
+	GameState.meta["Party support"] = int(GameState.meta["Party support"]) + 20
+	GameState.last_meta_change = {"Party support": 20}
+	assert_eq(GameState.party_support_change_this_level(), 10)
+	# And an organisation tied to the party rising also counts.
+	GameState.last_meta_change = {}
+	var rows := PartyOpinion.rows_for(DataDB.party_stakeholders, GameState.own_party_id(), GameState.own_party_id())
+	var tied := str(rows[0]["booster_id"])
+	GameState.booster_standing[tied] = int(GameState.booster_standing[tied]) + 20
+	GameState.last_booster_change = {tied: 20}
+	assert_ne(GameState.party_support_change_this_level(), 0)
+	GameState.meta = meta_before
+	GameState.last_meta_change = change_before
+	GameState.last_booster_change = boost_before
+	GameState.booster_standing = standing_before

@@ -1757,6 +1757,26 @@ func party_support_effective() -> int:
 	return party_opinion(own)
 
 
+## How far the live Party support number (party_support_effective()) moved
+## this level, counting both halves: what votes/rewards did to the stored
+## number AND what the level did to the organisations tied to the party.
+## Works backwards from the current state: the direct number minus its change,
+## each organisation's standing minus its own change, then the same blend.
+func party_support_change_this_level() -> int:
+	var own := own_party_id()
+	if own.is_empty():
+		return int(last_meta_change.get("Party support", 0))
+	var before_standing := booster_standing.duplicate()
+	for booster_id: String in last_booster_change.keys():
+		before_standing[booster_id] = int(before_standing.get(booster_id, 0)) \
+			- int(last_booster_change[booster_id])
+	var rows := PartyOpinion.rows_for(DataDB.party_stakeholders, own, own)
+	var held := PartyOpinion.stakeholder(rows, before_standing,
+		int(DataDB.booster_standing.get("start", 30)))
+	var direct_before := int(meta.get("Party support", 0)) - int(last_meta_change.get("Party support", 0))
+	return party_support_effective() - PartyOpinion.opinion(direct_before, int(held["score"]), DataDB.balance)
+
+
 ## `meta` with Party support replaced by the effective (blended) number, for
 ## rules that read the whole dictionary (the Floor Vote influence gate).
 func effective_meta() -> Dictionary:
