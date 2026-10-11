@@ -130,9 +130,8 @@ func test_a_modifier_with_any_nonzero_cost_is_for_sale() -> void:
 
 
 func test_a_modifier_backed_by_nobody_needs_no_standing() -> void:
-	# M09 and M10 name a meta-variable rather than an organisation, so there
-	# is nobody to have standing with — no booster's linked_modifiers names
-	# them.
+	# M09 names a meta-variable rather than an organisation, so there is
+	# nobody to have standing with — no booster's linked_modifiers names it.
 	var m := _modifier({"mod_id": "M09"})
 	assert_eq(Ledger.backing_booster(m, BOOSTERS), "")
 	assert_eq(Ledger.modifier_refusal(m, [], RICH_META, {}, SETTINGS, BOOSTERS, _words()), "")

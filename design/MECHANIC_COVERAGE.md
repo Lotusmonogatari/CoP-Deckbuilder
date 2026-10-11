@@ -44,7 +44,7 @@ honest gap, not a rounding error.
 | Win/loss stage rewards (`win_delta_*`/`loss_delta_*`, incl. null-safe reads) | `test_meta_rules.gd`, `test_game_state_meta_tracking.gd`, `test_level_runner.gd` | — | Yes, every stage | |
 | Jiban ≤ 15 → Town Hall insertion | `test_meta_rules.gd`, `test_game_state_meta_tracking.gd` | — | Only if Jiban falls that low in a run | |
 | Party support = 0 → Funding Freeze | `test_meta_rules.gd`, `test_game_state_meta_tracking.gd` | — | Rare in optimal play | `tools/stress_crisis_triggers.gd` exists for forcing this |
-| Party support > 75 / < 50 → M09/M10 | `test_meta_rules.gd`, `test_ledger.gd` | — | Only if standing crosses those lines | |
+| Party support > 75 → M09 (M10 removed 2026-10-11) | `test_meta_rules.gd`, `test_ledger.gd` | — | Only if standing crosses that line | |
 | Party support < 25 → ST22 insertion | `test_meta_rules.gd`, `test_game_state_meta_tracking.gd` | — | Rare in optimal play | |
 | Party favorability (Floor Vote) | `test_floor_vote_engine.gd`, `test_game_state_party_standing.gd` | — | Yes (Part A2) | |
 | One-time levels (`Ledger.level_is_hidden()`) | `test_level_gating.gd` | — | Not exercised (playtest never re-visits a completed level) | |

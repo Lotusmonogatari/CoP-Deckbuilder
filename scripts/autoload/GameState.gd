@@ -917,9 +917,9 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	_record_meta_change(scored["applied"])
 
 
-## owned_modifiers, plus whichever of M09 (Party Backing)/M10 (Cold
-## Shoulder) party_support_modifiers() currently grants for free — CLAUDE.md
-## §8: "> 75 gives M09, < 50 gives M10", never added to owned_modifiers
+## owned_modifiers, plus M09 (Party Backing) when party_support_modifiers()
+## currently grants it for free — CLAUDE.md §8: "> 75 gives M09", never
+## added to owned_modifiers
 ## itself, so losing the standing later correctly turns the free grant back
 ## off and buying one yourself is never made pointless by already having it
 ## free. M32 (Funding Freeze) is deliberately excluded here: it is a
@@ -947,11 +947,7 @@ func _effectively_owned_modifiers() -> Array:
 ## Unlike the battle-start effects, this does not care who was in the
 ## room: a business circle pays for the result, not the audience.
 func _pay_level_rewards() -> void:
-	# M10's own effect (UNLOCK_DISCOUNT) has no consumer anywhere in the
-	# project yet — a pre-existing gap, not one this wiring pass opened —
-	# so granting M10 free changes nothing observable today. M09's
-	# RESOURCE_BONUS_ON_WIN is the one of the two this function actually
-	# pays out.
+	# M09's RESOURCE_BONUS_ON_WIN is what this function pays out.
 	var owned := _effectively_owned_modifiers()
 	if owned.is_empty():
 		return

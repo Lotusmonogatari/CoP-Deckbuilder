@@ -12,7 +12,6 @@ extends GutTest
 
 const BALANCE := {
 	"party_support_allied_buff": 75,
-	"party_support_debuff": 50,
 	"party_support_steering_committee": 25,
 	"party_support_funding_freeze": 0,
 	"jiban_town_hall_trigger": 15,
@@ -109,8 +108,9 @@ func test_a_strong_party_standing_switches_on_party_backing() -> void:
 	assert_eq(MetaRules.party_support_modifiers(80, BALANCE), ["M09"])
 
 
-func test_a_weak_party_standing_switches_on_the_cold_shoulder() -> void:
-	assert_eq(MetaRules.party_support_modifiers(40, BALANCE), ["M10"])
+func test_a_weak_party_standing_grants_nothing_now_cold_shoulder_is_gone() -> void:
+	# 2026-10-11, Cameron: M10 Cold Shoulder (granted below 50) was removed.
+	assert_eq(MetaRules.party_support_modifiers(40, BALANCE), [])
 
 
 func test_neither_applies_in_the_middle() -> void:
@@ -118,18 +118,13 @@ func test_neither_applies_in_the_middle() -> void:
 
 
 func test_the_thresholds_are_exclusive() -> void:
-	# The workbook says "> 75" and "< 50", so sitting exactly on either
-	# number does nothing.
+	# The workbook says "> 75", so sitting exactly on it does nothing.
 	assert_eq(MetaRules.party_support_modifiers(75, BALANCE), [], "exactly 75 is not above 75")
-	assert_eq(MetaRules.party_support_modifiers(50, BALANCE), [], "exactly 50 is not below 50")
 
 
-func test_zero_party_support_freezes_funding_instead_of_the_cold_shoulder() -> void:
-	# M32 wins over M10 at the very bottom of the debuff band — the two
-	# conditions overlap (0 is also < 50) and only one modifier can be
-	# active, so the more severe one takes it.
+func test_zero_party_support_freezes_funding() -> void:
 	assert_eq(MetaRules.party_support_modifiers(0, BALANCE), ["M32"])
-	assert_eq(MetaRules.party_support_modifiers(1, BALANCE), ["M10"], "1 is above the freeze, still below the debuff")
+	assert_eq(MetaRules.party_support_modifiers(1, BALANCE), [], "1 is above the freeze")
 
 
 func test_the_steering_committee_is_forced_when_the_party_turns() -> void:
@@ -205,7 +200,7 @@ func test_an_opponent_only_modifier_does_not_fire_for_the_player() -> void:
 
 
 func test_a_modifier_with_no_audience_condition_is_left_to_the_caller() -> void:
-	# M09 and M10 are driven by party support, not by who is in the room.
+	# M09 is driven by party support, not by who is in the room.
 	var modifiers := [{
 		"mod_id": "M09", "trigger_segment_ids": ["SG02"],
 		"trigger_min_pct": null, "available_to": "Both",

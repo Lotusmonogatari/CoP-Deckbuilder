@@ -24,8 +24,9 @@ extends RefCounted
 ##   funding_frozen               party support at 0 stops Funds income
 ##                                 (redesigned from Jiban, Cameron's call,
 ##                                 2026-09-25 — see M32 "Funding Freeze")
-##   party_support_modifiers      > 75 grants M09 free, < 50 grants M10
-##                                 free, <= 0 grants M32 (funding freeze)
+##   party_support_modifiers      > 75 grants M09 free, <= 0 grants M32
+##                                 (funding freeze). The old < 50 grant of
+##                                 M10 Cold Shoulder was removed 2026-10-11.
 ##
 ## Each of the first three fires once on the way INTO its threshold and
 ## stays quiet — even while the condition keeps holding — until the player
@@ -162,22 +163,19 @@ static func apply_score_effects(meta: Dictionary, stage: Dictionary, score: int,
 ## Which modifiers are switched on by the player's standing with their party.
 ##
 ## Above the allied threshold, the party is behind you (M09 Party Backing).
-## Below the debuff threshold, it is not (M10 Cold Shoulder). At the very
-## bottom — party support has hit zero — funding itself is frozen (M32,
-## "Funding Freeze"), which wins over the debuff band it also sits inside.
-## All three are live, continuously-re-evaluated conditions, never owned:
-## they hold only while the number is where it needs to be.
+## At the very bottom — party support has hit zero — funding itself is
+## frozen (M32, "Funding Freeze"). Both are live, continuously re-evaluated
+## conditions, never owned: they hold only while the number is where it
+## needs to be. (M10 Cold Shoulder, once granted below 50, was removed
+## 2026-10-11, Cameron: its discount was never applied to anything.)
 static func party_support_modifiers(party_support: int, balance: Dictionary) -> Array:
 	var freeze := int(balance.get("party_support_funding_freeze", 0))
 	var allied := int(balance.get("party_support_allied_buff", 75))
-	var debuff := int(balance.get("party_support_debuff", 50))
 
 	if party_support <= freeze:
 		return ["M32"]
 	if party_support > allied:
 		return ["M09"]
-	if party_support < debuff:
-		return ["M10"]
 	return []
 
 

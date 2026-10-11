@@ -189,27 +189,6 @@
     "trigger_booster_ids": []
   },
   {
-    "mod_id": "M10",
-    "name_en": "Cold Shoulder",
-    "name_jp": "党内の冷遇",
-    "romaji": "Tōnai no Reigū",
-    "trigger_segment_or_booster": [
-      "BO01"
-    ],
-    "trigger_min_pct": 5.0,
-    "effect": "Level unlock XP cost reduced 10% (independent fundraising when HQ withholds support).",
-    "reputation_cost": 0,
-    "jiban_cost": 0,
-    "funds_cost": 10000,
-    "effect_type": "UNLOCK_DISCOUNT",
-    "effect_target": "XPCost",
-    "effect_value": 0.1,
-    "trigger_segment_ids": [],
-    "trigger_booster_ids": [
-      "BO01"
-    ]
-  },
-  {
     "mod_id": "M11",
     "name_en": "Official Endorsement",
     "name_jp": "党公認",

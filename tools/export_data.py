@@ -1415,24 +1415,14 @@ def read_table(sheet, config, sheet_name, report):
     return records
 
 
-def _as_int_pair(first, second):
-    """Returns (int, int) if both cells are whole numbers, otherwise None."""
-    try:
-        if is_null(first) or is_null(second):
-            return None
-        return int(round(float(str(first).strip()))), int(round(float(str(second).strip())))
-    except ValueError:
-        return None
-
-
 def read_balance(sheet, report):
     """
-    The Balance tab is a list of levers, not a table, and it has two small
-    sub-tables embedded in it. This turns it into one object:
+    The Balance tab is a list of levers, not a table, and may hold an XP tier
+    sub-table. This turns it into one object:
 
-        { "w_self": 1, ..., "xp_tiers": {...}, "committee_size_bands": {...} }
+        { "starter_deck_size": 15, ..., "xp_tiers": {...} }
     """
-    levers, xp_tiers, size_bands = {}, {}, {}
+    levers, xp_tiers = {}, {}
     section = None
 
     for row_number, row in enumerate(sheet.iter_rows(values_only=True), start=1):
@@ -1445,12 +1435,9 @@ def read_balance(sheet, report):
 
         value = row[1] if len(row) > 1 else None
 
-        # Section headers announce the two sub-tables.
+        # A section header announces the XP tier sub-table.
         if label.upper() == "XP TIER TABLE":
             section = "xp"
-            continue
-        if label.upper().startswith("COMMITTEE SIZE BY DIFFICULTY"):
-            section = "bands"
             continue
 
         where = f"Balance row {row_number}, '{label}'"
@@ -1458,16 +1445,6 @@ def read_balance(sheet, report):
         if section == "xp" and re.match(r"^(Starter|Tier \d+)$", label):
             xp_tiers[label] = coerce(value, "int", where, report)
             continue
-
-        if section == "bands" and len(row) > 2:
-            # A band row is "Easy | 3 | 5" — a label and two whole numbers.
-            # The lever that follows the sub-table has a sentence in the third
-            # column, so checking both cells are numbers is what tells the two
-            # apart. Tested quietly: a non-match just falls through to a lever.
-            band = _as_int_pair(row[1], row[2])
-            if band is not None:
-                size_bands[label] = {"min": band[0], "max": band[1]}
-                continue
 
         # Anything else is an ordinary lever. Leaving the section marker set
         # would swallow later levers, so clear it once we're past a sub-table.
@@ -1481,7 +1458,6 @@ def read_balance(sheet, report):
         levers[slugify(label)] = number
 
     levers["xp_tiers"] = xp_tiers
-    levers["committee_size_bands"] = size_bands
     return levers
 
 

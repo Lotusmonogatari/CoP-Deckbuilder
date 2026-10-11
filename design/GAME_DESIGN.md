@@ -313,9 +313,7 @@ that one fight fresh rather than resuming it half-played.
 For a complete, honest picture: the Floor Vote influence swing (above)
 is real, tested code sitting behind a gate with nothing switched on yet —
 every real Floor Vote plays the plain single-seat version until Cameron
-turns on at least one trigger row. M10 (Cold Shoulder), one of the two
-Party-support modifiers, is live but its own effect (a discount on
-unlocks) has nothing in the game that spends it yet. Cosmetic
+turns on at least one trigger row. Cosmetic
 backgrounds only cover the Office today, on purpose — extending them to
 every stage's own background is a small, deliberate follow-up, not a
 gap. Which real-world post titles Yezo's parties use, and the theme →
