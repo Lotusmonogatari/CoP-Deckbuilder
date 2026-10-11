@@ -19,14 +19,26 @@ extends Control
 ## it, which costs a little wrapping code and buys exact registration: the
 ## title can be twice the size of the body and nothing under it moves.
 
+## Paths, loaded on first use (see CardView.FRAME_BY_SUIT).
 const FRAME_BACK_BY_SUIT: Dictionary = {
-	"Earnest": preload("res://assets/cards/back_sumo.png"),
-	"Emotional": preload("res://assets/cards/back_sakura.png"),
-	"Appeal": preload("res://assets/cards/back_ukiyoe.png"),
-	"Data Driven": preload("res://assets/cards/frame_back_shoji.png"),
-	"Divisive": preload("res://assets/cards/back_castle.png"),
-	"Duplicitous": preload("res://assets/cards/back_ninja.png"),
+	"Earnest": "res://assets/cards/back_sumo.png",
+	"Emotional": "res://assets/cards/back_sakura.png",
+	"Appeal": "res://assets/cards/back_ukiyoe.png",
+	"Data Driven": "res://assets/cards/frame_back_shoji.png",
+	"Divisive": "res://assets/cards/back_castle.png",
+	"Duplicitous": "res://assets/cards/back_ninja.png",
 }
+
+
+## The back frame for a suit, loaded the first time it is needed, then held.
+static var _backs: Dictionary = {}
+static func back_for(suit: String) -> Texture2D:
+	var path: String = FRAME_BACK_BY_SUIT.get(suit, FRAME_BACK_BY_SUIT["Data Driven"])
+	if not _backs.has(path):
+		_backs[path] = load(path)
+	return _backs[path]
+
+
 const CARD_FONT: FontFile = preload("res://assets/fonts/AntakaBrushDisplay-Regular.ttf")
 const ASPECT := 1429.0 / 2000.0
 
@@ -73,7 +85,7 @@ func _build() -> void:
 		return
 
 	_frame = TextureRect.new()
-	_frame.texture = FRAME_BACK_BY_SUIT["Data Driven"]
+	_frame.texture = back_for("Data Driven")
 	_frame.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_frame.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_frame.stretch_mode = TextureRect.STRETCH_SCALE
@@ -136,8 +148,7 @@ func show_card(card: Dictionary, here: String, room: String, question: String = 
 	_build()
 
 	var suit := str(card.get("suit", ""))
-	_frame.texture = FRAME_BACK_BY_SUIT.get(
-		suit, FRAME_BACK_BY_SUIT["Data Driven"])
+	_frame.texture = back_for(suit)
 
 	_lines = []
 	_write(str(card.get("name_en", "")), TITLE_SCALE, INK)

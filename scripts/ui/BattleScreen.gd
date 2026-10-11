@@ -317,7 +317,10 @@ func _refresh() -> void:
 	_refresh_energy(state)
 	_refresh_gaffe(state)
 	_hand.show_state(engine)
-	_refresh_details(state)
+	# The Details panel is only rebuilt while it is open (2026-10-11,
+	# performance pass): it is hidden almost all the time. Opening it fills it.
+	if _details_panel.visible:
+		_refresh_details(state)
 
 	_end_turn_button.disabled = state.is_over()
 
@@ -805,6 +808,8 @@ func _on_end_turn() -> void:
 
 
 func _toggle_details() -> void:
+	if not _details_panel.visible and engine != null:
+		_refresh_details(engine.state)
 	_details_panel.visible = not _details_panel.visible
 
 

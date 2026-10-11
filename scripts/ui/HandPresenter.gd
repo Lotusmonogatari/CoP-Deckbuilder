@@ -41,11 +41,14 @@ func _init(row: HBoxContainer) -> void:
 func show_state(engine: BattleEngine) -> void:
 	var state := engine.state
 
-	# Take every view off the row without freeing it, then put back the ones
-	# this hand still wants. Anything left over at the end is genuinely gone.
+	# Every view this hand had is a candidate for reuse. The ones it still
+	# wants stay ON the row; only new cards are added and gone ones removed,
+	# then the row is put in hand order. (2026-10-11, performance pass: this
+	# used to take every card off the row and put it back on each redraw,
+	# which by itself was about 12 ms of a 15 ms redraw — re-entering the tree
+	# is the expensive part, not filling the card in.)
 	var spare := _views.duplicate(true)
-	for child in _row.get_children():
-		_row.remove_child(child)
+	var ordered: Array[CardView] = []
 
 	_views = {}
 	for card_id: String in state.hand:
@@ -62,7 +65,9 @@ func show_state(engine: BattleEngine) -> void:
 		# On screen first, then filled in. A CardView builds its labels when
 		# it enters the tree, and filling it before that means building them
 		# twice over — which is how a hand of nameless cards happened once.
-		_row.add_child(view)
+		if view.get_parent() != _row:
+			_row.add_child(view)
+		ordered.append(view)
 
 		# Written every refresh, on a reused view as well as a new one.
 		# Keeping a view is about keeping the NODE alive so that a card can be
@@ -91,7 +96,14 @@ func show_state(engine: BattleEngine) -> void:
 	# Whatever this hand did not want.
 	for leftover: Array in spare.values():
 		for view: CardView in leftover:
+			if view.get_parent() == _row:
+				_row.remove_child(view)
 			view.queue_free()
+
+	# In hand order, moving only the views that are out of place.
+	for index in ordered.size():
+		if ordered[index].get_index() != index:
+			_row.move_child(ordered[index], index)
 
 
 ## The view showing this card, if it is on screen. What an animation reaches

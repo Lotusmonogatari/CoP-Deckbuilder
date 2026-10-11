@@ -45,15 +45,29 @@ const CARD_FONT: FontFile = preload("res://assets/fonts/AntakaBrushDisplay-Regul
 ## only the backup for the ones that don't have any yet.
 const PLACEHOLDER_CARD_ART: Texture2D = preload("res://assets/cards/card_temporary_image.png")
 
-## Canonical suit-to-front-template mapping from data/suits.json.
+## Canonical suit-to-front-template mapping from data/suits.json. Paths, not
+## preloads (2026-10-11): preloading put all six full-size frames in memory
+## the moment any card script was first seen, though a screen usually shows
+## two or three suits. frame_for() loads a frame the first time a card of
+## that suit is drawn; Godot keeps it cached from then on.
 const FRAME_BY_SUIT := {
-	"Earnest": preload("res://assets/cards/front_sumo.png"),
-	"Emotional": preload("res://assets/cards/front_sakura.png"),
-	"Appeal": preload("res://assets/cards/front_ukiyoe.png"),
-	"Data Driven": preload("res://assets/cards/frame_front_shoji.png"),
-	"Divisive": preload("res://assets/cards/front_castle.png"),
-	"Duplicitous": preload("res://assets/cards/front_ninja.png"),
+	"Earnest": "res://assets/cards/front_sumo.png",
+	"Emotional": "res://assets/cards/front_sakura.png",
+	"Appeal": "res://assets/cards/front_ukiyoe.png",
+	"Data Driven": "res://assets/cards/frame_front_shoji.png",
+	"Divisive": "res://assets/cards/front_castle.png",
+	"Duplicitous": "res://assets/cards/front_ninja.png",
 }
+
+## The front frame for a suit, loaded the first time it is needed and then
+## held, so a suit that leaves the hand is not reloaded when it comes back.
+static var _frames: Dictionary = {}
+static func frame_for(suit: String) -> Texture2D:
+	var path: String = FRAME_BY_SUIT.get(suit, FRAME_BY_SUIT["Data Driven"])
+	if not _frames.has(path):
+		_frames[path] = load(path)
+	return _frames[path]
+
 
 ## The frame's own proportions, so the card is never stretched.
 const ASPECT := 1429.0 / 2000.0
@@ -251,7 +265,7 @@ func show_card(card_row: Dictionary) -> void:
 	_name_label.text = str(card_row.get("name_en", "Unnamed"))
 	_art_label.text = str(card_row.get("name_jp", ""))
 	_effect_label.text = str(card_row.get("effect_text", ""))
-	_frame.texture = FRAME_BY_SUIT.get(str(card_row.get("suit", "")), FRAME_BY_SUIT["Data Driven"])
+	_frame.texture = frame_for(str(card_row.get("suit", "")))
 	# By card ID (data/art.json's `card` folder) when it has been drawn;
 	# PLACEHOLDER_CARD_ART otherwise, the one shared stand-in every undrawn
 	# card uses (see its own comment above).
