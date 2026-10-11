@@ -55,11 +55,11 @@ func _walk() -> void:
 	print("  choosing a protagonist starts the run as them")
 
 	GameState.xp = 77
-	await _click(office.get_node("%ManagementButton"))
-	var management := office.get_node("%ManagementPanel") as Overlay
-	var new_game := _button_with_text(management, Text.say("office.new_game"))
+	await _click(office.find_child("AdministrationButton", true, false) as Control)
+	var administration := office.get_node("AdministrationMenuPanel") as Overlay
+	var new_game := _button_with_text(administration, Text.say("office.new_game"))
 	if new_game == null:
-		_failures.append("Office Management has no New game button")
+		_failures.append("the Administration menu has no New game button")
 		return
 	await _click(new_game)
 	var confirm := panel.find_child("Confirm", true, false) as Button

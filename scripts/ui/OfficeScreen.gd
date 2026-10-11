@@ -384,7 +384,6 @@ func _show_management() -> void:
 		[Text.say("office.rhetoric_training"), _show_rhetoric_training],
 		[Text.say("office.your_deck"), _show_deck],
 		[Text.say("office.staff"), _show_staff],
-		[Text.say("office.new_game"), _confirm_new_game],
 	]:
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(0, 100)
@@ -881,6 +880,12 @@ func _show_administration_menu() -> void:
 		_menu_button("CosmeticsButton", "office.cosmetics", _show_cosmetics, _cosmetics_panel),
 		_menu_button("HowToPlayButton", "office.how_to_play",
 			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
+		# Starting over lives here, not in Office Management (Cameron,
+		# 2026-10-11). The menu closes first so it is not left open under the
+		# warning and the New Game screens.
+		_menu_button("NewGameMenuButton", "office.new_game", func() -> void:
+			_administration_menu.close()
+			_confirm_new_game(), _new_game_panel),
 	]
 	_administration_menu.open(Text.say("office.administration"), rows)
 
