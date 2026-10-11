@@ -42,11 +42,21 @@ static func open(panel: Overlay) -> void:
 	panel.open(Text.say("how_to_play.title"), rows())
 
 
+## The guide's live tokens from the real game data (one place, so the panel,
+## the tests and the click driver always agree).
+static func data_tokens() -> Dictionary:
+	var suit_names: Array = []
+	for row in DataDB.suits:
+		suit_names.append(str((row as Dictionary).get("element", "")))
+	return HowToPlay.live_tokens(DataDB.stages, DataDB.rules, DataDB.questions,
+		suit_names, BattleSetup.booster_names())
+
+
 ## The guide's content as rows for Overlay.open(). With nothing written yet,
 ## a single line saying so.
 static func rows() -> Array[Control]:
 	var out: Array[Control] = []
-	var tokens := HowToPlay.live_tokens(DataDB.stages, DataDB.rules)
+	var tokens := data_tokens()
 	var groups := HowToPlay.grouped(DataDB.how_to_play)
 
 	if groups.is_empty():

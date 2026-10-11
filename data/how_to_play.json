@@ -218,5 +218,16 @@
     "screenshot": null,
     "caption": null,
     "video": null
+  },
+  {
+    "entry_id": "HT21",
+    "order": 123.0,
+    "group": "Cards",
+    "heading_en": "Who is pleased by which suit",
+    "heading_jp": null,
+    "body_en": "Each question in a room is tied to the organisations it concerns. Answer in a suit the question handles well (tap a card to see) and those organisations are pleased; answer badly and they are annoyed. Some questions also set other organisations back when answered well. No organisation has a fixed favourite suit, but across many questions some suits please some organisations more often. A rough guide:\n{pleasing_table}\nThis is a tendency, not a rule: the card zoom shows how the question in front of you rates each card.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
   }
 ]

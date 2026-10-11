@@ -76,7 +76,7 @@ func test_a_number_that_cannot_be_found_is_left_out_not_guessed() -> void:
 
 
 func test_every_token_in_the_real_guide_resolves_against_the_real_data() -> void:
-	var tokens := HowToPlay.live_tokens(DataDB.stages, DataDB.rules)
+	var tokens := HowToPlayPanel.data_tokens()
 	for name: String in HowToPlay.TOKEN_NAMES:
 		assert_true(tokens.has(name), "the live token {%s} has a value" % name)
 	for entry: Dictionary in HowToPlay.ordered(DataDB.how_to_play):

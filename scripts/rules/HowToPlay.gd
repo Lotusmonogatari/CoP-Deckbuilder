@@ -21,7 +21,10 @@ extends RefCounted
 ##   {pass_penalty}  rules.json: energy lost next turn for passing
 ##   {gaffe_min}     lowest gaffe limit of any Combat room
 ##   {gaffe_max}     highest gaffe limit of any Combat room
-const TOKEN_NAMES := ["majority", "seats", "guard_cap", "pass_penalty", "gaffe_min", "gaffe_max"]
+##   {pleasing_table} one line per suit: the organisations it tends to please
+##                   (BoosterSuitTendency, read from the questions)
+const TOKEN_NAMES := ["majority", "seats", "guard_cap", "pass_penalty", "gaffe_min", "gaffe_max",
+		"pleasing_table"]
 
 ## The room the {majority} and {seats} tokens describe.
 const FLOOR_DEBATE_ID := "ST02"
@@ -78,7 +81,8 @@ static func fill_tokens(text: String, tokens: Dictionary) -> String:
 ## The {tokens} the guide can quote, read from the stage rows and the rules.
 ## A number that cannot be found is simply left out (so its token stays
 ## visible in the text) rather than guessed.
-static func live_tokens(stages: Array, rules: Dictionary) -> Dictionary:
+static func live_tokens(stages: Array, rules: Dictionary, questions: Dictionary = {},
+		suits: Array = [], booster_names: Dictionary = {}) -> Dictionary:
 	var tokens := {}
 
 	var gaffe_limits: Array[int] = []
@@ -96,6 +100,12 @@ static func live_tokens(stages: Array, rules: Dictionary) -> Dictionary:
 	if not gaffe_limits.is_empty():
 		tokens["gaffe_min"] = gaffe_limits.min()
 		tokens["gaffe_max"] = gaffe_limits.max()
+
+	# {pleasing_table}: which organisations each suit tends to please, read
+	# from the questions themselves (BoosterSuitTendency).
+	var table := BoosterSuitTendency.lines(questions, suits, booster_names)
+	if not table.is_empty():
+		tokens["pleasing_table"] = "\n".join(table)
 
 	tokens_from_rule(tokens, "guard_cap", rules, "guard_cap")
 	tokens_from_rule(tokens, "pass_penalty", rules, "pass_energy_penalty")

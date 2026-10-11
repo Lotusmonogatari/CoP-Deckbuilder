@@ -138,7 +138,7 @@ func _check_guide(panel: Overlay, where: String) -> void:
 		_failures.append("the %s guide has no 'Losing a debate' entry" % where)
 
 	# Live tokens are filled: the real Floor Debate majority is quoted.
-	var tokens := HowToPlay.live_tokens(DataDB.stages, DataDB.rules)
+	var tokens := HowToPlayPanel.data_tokens()
 	if not everything.contains("needs %s of %s seats" % [tokens["majority"], tokens["seats"]]):
 		_failures.append("the %s guide did not fill in the Floor Debate's seat numbers" % where)
 	for label_text in texts:
