@@ -3,7 +3,7 @@ extends GutTest
 ##
 ## 2026-09-22 workbook: modifiers.json carries its own effect_type /
 ## effect_target / effect_value columns now, so there is no more hand-written
-## bridge file to test the fallback of. These tests exercise the five
+## bridge file to test the fallback of. These tests exercise the four
 ## effect_types ModifierEffects.gd now dispatches on directly.
 
 
@@ -23,11 +23,10 @@ func _mod(mod_id: String, effect_type: String, target: String, value: float,
 # Which types are known
 # ---------------------------------------------------------------------------
 
-func test_all_five_documented_types_are_implemented() -> void:
+func test_all_documented_types_are_implemented() -> void:
 	for pair: Array in [
 		["RESOURCE_BONUS_ON_WIN", "XP"], ["STAGE_START_BONUS", "ST02"],
 		["HAND_SIZE_BONUS", "ST04"], ["GAFFE_LIMIT_BONUS", "ST01"],
-		["UNLOCK_DISCOUNT", "XPCost"],
 	]:
 		var modifier := _mod("M01", pair[0], pair[1], 1.0)
 		assert_true(ModifierEffects.is_implemented(modifier), pair[0])
@@ -109,20 +108,6 @@ func test_a_non_resource_modifier_pays_nothing() -> void:
 	var owned := [_mod("M01", "STAGE_START_BONUS", "ST02", 9.0)]
 	assert_eq(ModifierEffects.level_win_resource_bonus(owned, "XP"), 0,
 		"start support is not an income")
-
-
-# ---------------------------------------------------------------------------
-# Unlock discounts
-# ---------------------------------------------------------------------------
-
-func test_unlock_discount_reads_the_matching_target() -> void:
-	var owned := [_mod("M01", "UNLOCK_DISCOUNT", "XPCost", 0.1)]
-	assert_almost_eq(ModifierEffects.unlock_discount(owned, "XPCost"), 0.1, 0.0001)
-
-
-func test_unlock_discount_ignores_the_other_cost_kind() -> void:
-	var owned := [_mod("M01", "UNLOCK_DISCOUNT", "Tier1Cost", 0.1)]
-	assert_eq(ModifierEffects.unlock_discount(owned, "XPCost"), 0.0)
 
 
 # ---------------------------------------------------------------------------

@@ -19,7 +19,6 @@
     "tier": "Party",
     "linked_modifiers": [
       "M08",
-      "M12",
       "M17"
     ],
     "starting_standing": 35

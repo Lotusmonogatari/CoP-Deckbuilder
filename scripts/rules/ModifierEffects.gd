@@ -22,10 +22,12 @@ extends RefCounted
 ##                          of that stage.
 ##   GAFFE_LIMIT_BONUS      target an STxx, value +N to the gaffe limit for
 ##                          that stage.
-##   UNLOCK_DISCOUNT        target XPCost or Tier1Cost, value a fraction
-##                          (0.1 = 10%) off that unlock cost.
 ##
-## All five are genuinely wired now — the old file only ever implemented two
+## (UNLOCK_DISCOUNT, a fifth type, was removed 2026-10-11 with the only two
+## modifiers that used it, M10 Cold Shoulder and M12 Faction Patronage: no
+## price ever applied it.)
+##
+## All four are genuinely wired now — the old file only ever implemented two
 ## of eleven hand-written keys and called the rest "not active yet". Where a
 ## modifier is not owned, or its trigger condition (MetaRules.active_modifiers)
 ## is not met in this stage's room, it simply contributes nothing; that is a
@@ -35,7 +37,7 @@ extends RefCounted
 ##
 ##   FUNDS_INCOME_FREEZE    no target/value. M32 (Funding Freeze) is the one
 ##                          row that uses it — purely descriptive; unlike
-##                          the five above it is never owned or purchased
+##                          the four above it is never owned or purchased
 ##                          (M32 prices at 0 everywhere, so Ledger.
 ##                          is_for_sale() always refuses it). The freeze
 ##                          itself is enforced directly in
@@ -50,12 +52,11 @@ const RESOURCE_BONUS_ON_WIN := "RESOURCE_BONUS_ON_WIN"
 const STAGE_START_BONUS := "STAGE_START_BONUS"
 const HAND_SIZE_BONUS := "HAND_SIZE_BONUS"
 const GAFFE_LIMIT_BONUS := "GAFFE_LIMIT_BONUS"
-const UNLOCK_DISCOUNT := "UNLOCK_DISCOUNT"
 const FUNDS_INCOME_FREEZE := "FUNDS_INCOME_FREEZE"
 
 const KNOWN_TYPES := [
 	RESOURCE_BONUS_ON_WIN, STAGE_START_BONUS, HAND_SIZE_BONUS,
-	GAFFE_LIMIT_BONUS, UNLOCK_DISCOUNT, FUNDS_INCOME_FREEZE,
+	GAFFE_LIMIT_BONUS, FUNDS_INCOME_FREEZE,
 ]
 
 ## Which sanban.json meta-variable a RESOURCE_BONUS_ON_WIN target name means.
@@ -84,7 +85,7 @@ static func target_of(modifier: Dictionary) -> String:
 
 
 ## True where the modifier's effect_type is one this file knows how to run.
-## Every modifier in the 2026-09-22 workbook has one of the five, so this is
+## Every modifier in the 2026-09-22 workbook has one of the four, so this is
 ## really "is the Effect Type column filled in", but it is asked the same way
 ## a missing/blank value would be.
 static func is_implemented(modifier: Dictionary) -> bool:
@@ -169,15 +170,3 @@ static func level_win_resource_bonus(owned: Array, resource: String) -> int:
 	return total
 
 
-## The fraction knocked off an unlock cost by the owned UNLOCK_DISCOUNT
-## modifiers, e.g. 0.1 for 10% off. `cost_kind` is "XPCost" or "Tier1Cost" —
-## the two target names the workbook's Levels-unlock costs use. Discounts
-## from more than one modifier add together rather than compounding, which is
-## the simpler reading and the one worth changing first if Cameron wants
-## something else.
-static func unlock_discount(owned: Array, cost_kind: String) -> float:
-	var discount := 0.0
-	for modifier: Dictionary in owned:
-		if type_of(modifier) == UNLOCK_DISCOUNT and target_of(modifier) == cost_kind:
-			discount += value_of(modifier)
-	return discount

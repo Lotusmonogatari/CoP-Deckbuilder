@@ -210,27 +210,6 @@
     ]
   },
   {
-    "mod_id": "M12",
-    "name_en": "Faction Patronage",
-    "name_jp": "派閥の庇護",
-    "romaji": "Habatsu no Higo",
-    "trigger_segment_or_booster": [
-      "BO02"
-    ],
-    "trigger_min_pct": 20.0,
-    "effect": "Tier 1 level unlock XP cost reduced 15%.",
-    "reputation_cost": 0,
-    "jiban_cost": 15,
-    "funds_cost": 0,
-    "effect_type": "UNLOCK_DISCOUNT",
-    "effect_target": "Tier1Cost",
-    "effect_value": 0.15,
-    "trigger_segment_ids": [],
-    "trigger_booster_ids": [
-      "BO02"
-    ]
-  },
-  {
     "mod_id": "M13",
     "name_en": "Mayors' Endorsement",
     "name_jp": "首長の推薦",
