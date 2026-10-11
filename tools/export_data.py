@@ -2286,7 +2286,7 @@ def fold_floor_votes(data, report):
 
 
 # Which stage type each question tab belongs to. The tabs are named for the
-# room; stage_types.json names the type. One place holds the join.
+# room; each pool is named for its kind of room. One place holds the join.
 QUESTION_TABS = {
     "q_press": "press_conference",
     "q_town_hall": "town_hall",

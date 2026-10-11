@@ -306,8 +306,6 @@ options are authoritative; the table below describes the current settings:
   for display when a row has one (`OpponentDisplay.title_for()`); which
   real-world post titles Yezo's parties actually use is Cameron's to define,
   not a decision made on his behalf.
-- **The `weak_answer_tone_cost` number.** The current value is 1 in
-  `stage_types.json`; the file labels it as a placeholder pending playtesting.
 - **The Theme → organisation mapping.** The workbook's Question Themes tab
   maps its themes to organizations, with the reasoning for
   each in a Why column. It is a **draft Claude wrote for Cameron to correct**,
@@ -2120,3 +2118,28 @@ Asked how clear the booster/suit mechanic is. Finding: **no organisation has a f
 ### New Game moved to the Administration menu (2026-10-11, Cameron)
 
 The "New Game" button left Office Management and now sits in the **Administration** menu (`OfficeScreen._show_administration_menu()`, button `NewGameMenuButton`), under Appearance and Music and How to Play. It still asks first (the same warning/confirm panel, `_confirm_new_game()`); the menu closes before the warning opens so it is not left underneath. Same Text row (`office.new_game`). `new_game_driver.gd` now goes through Administration; `office_menus_driver.gd` is unchanged, since its generic "Back returns to the menu" check does not suit a button that closes its menu.
+
+### Performance pass and cleanup (2026-10-11, Cameron)
+
+**A benchmark first.** `tools/bench.sh <label>` runs `tools/benchmark.tscn` twice (headless, and on a virtual display so texture memory is real) and saves `design/bench/<label>.json`; `tools/bench.sh --compare A B` prints a before/after table. It measures data load, each screen's first ("cold") and later ("warm") load, battle redraw after a card and after a turn (on a real LV08/ST02 battle with a fixed seed), each Office panel's open time, and memory. Not in `verify.sh`: timings on the shared build machine wander 20-70% between identical runs, so `--compare` only flags a timing more than 30% worse (memory 5%). Memory is the reliable number. `design/bench/baseline.json` is the before; `after_phase1.json` the after.
+
+| Measurement (display mode) | Before | After |
+|---|---|---|
+| Texture memory after every screen | 207 MB | 55 MB |
+| First Office load | ~1.8 s | ~0.5 s |
+| First battle screen load | ~0.54 s | ~0.40 s |
+| Hand redraw (profiled alone) | ~10 ms | ~1 ms |
+
+**What changed:**
+- **Card frames** (12 PNGs, 1500x2100, about 12 MB each in memory) import with `process/size_limit=1300`: a card is never drawn larger than about 900x1260 (the zoom). The PNGs themselves are untouched. Backgrounds and portraits keep full size, since they can be drawn larger than any cap.
+- **Card frames load on demand.** `CardView.frame_for(suit)` / `CardBackView.back_for(suit)` load a frame the first time a card of that suit is drawn and keep it, instead of preloading all twelve when the card scripts are first seen.
+- **The hand stays on screen between redraws.** `HandPresenter.show_state()` used to take every card off the row and put it back each redraw; re-entering the tree was about 12 ms of a 15 ms redraw. It now adds new cards, removes gone ones and reorders with `move_child()`.
+- **The battle Details panel is only rebuilt while open** (`_toggle_details()` fills it on open). It turned out cheap (0.4 ms), but there was no reason to rebuild a hidden panel.
+
+**Cleanup (all confirmed unused by grep before removal):** `DataDB.get_affinity`/`get_tier_cost` (and the affinity cache), `Ledger.modifier_cost`, `HandPresenter.reveal`, `DragScroll.is_dragging`, `Audio.is_muted`, the never-connected `DataDB.data_ready` signal, two unused constants, an unused local; **16 Text-tab rows nothing asks for** (old New Cards shop, committee voting, card reveal; removed from the workbook by raw XML); `tools/build_office_scene.gd` and `tools/build_battle_scene.gd` (unsafe and drifted scene builders), the 18 `tools/shot_*` throwaway screenshot scripts (one already broken), the empty `assets/characters/journalists/` folder; **`data/stage_types.json`**, `BattleSetup.resolve_type()` and the `"type"` branch of the question-pool lookup (no real level ever set a `"type"`, so this was dead for every real stage), which also retires the unread `weak_answer_tone_cost` placeholder; and `lists.json` is no longer loaded at runtime (nothing read it; the exporter still writes and uses it).
+
+**Left in place on purpose:** `data/playtest_cards.json` (empty, but its README keeps it as a proven hook for a future card); `GameState.buy_card()`/`Ledger.card_refusal()` (the playtest bot still buys through them); tests-only helpers that work as test probes (`BarModel.totals_balance`, `Ledger.deck_is_legal`, `BattleSetup.fill_tokens`).
+
+**Open for Cameron:**
+- **The Cold Shoulder discount.** M10's discount (`ModifierEffects.unlock_discount()`) was built but is never applied to any price. Wire it in or drop it?
+- **Unread Balance levers.** Seven levers are never read by the game: `w_self`, `w_opp`, `w_draw`, `w_gaffe`, `primary_suit_share`, `secondary_suit_share` and `committee_size_bands` (a leftover from the removed committee vote). Remove them from the workbook, or keep them for later?

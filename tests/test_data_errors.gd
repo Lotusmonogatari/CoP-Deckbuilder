@@ -42,12 +42,12 @@ func test_a_missing_map_names_the_file_it_is_missing_from() -> void:
 
 
 func test_a_file_of_the_wrong_shape_names_itself() -> void:
-	DataDB._map_under([], "stage_types", "types")
+	DataDB._map_under([], "office_ticker", "ticker")
 
 	# Anchored at the start, because every message opens with the filename —
-	# and because "stage_types.json" contains "types.json" as a substring, so
+	# and because "office_ticker.json" contains "ticker.json" as a substring, so
 	# a looser check here would pass whether or not the bug was fixed.
-	assert_true(_last_error().begins_with("stage_types.json"),
+	assert_true(_last_error().begins_with("office_ticker.json"),
 		"the message should open by naming the real file, not 'types.json': %s"
 			% _last_error())
 

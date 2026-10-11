@@ -109,7 +109,7 @@ static func create(model_kind: Model, maximum_value: int, threshold_value: int,
 ## has seen: the TV debate spent three versions as a room full of undecided
 ## people while its bar was labelled "Press tone", because it was recognised
 ## by the literal ID "ST06" and the six levels generate IDs of their own
-## (TV_DEBATE_2 and the like). Declaring `bar_model` in stage_types.json is
+## (TV_DEBATE_2 and the like). Declaring `bar_model` on the stage row is
 ## how a stage stops depending on being recognised.
 static func for_stage(stage: Dictionary) -> Model:
 	# THE <null> TRAP, explained once here — every other place in

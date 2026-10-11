@@ -422,9 +422,8 @@ static func _question_for_visitor(visitor_id: String) -> Dictionary:
 ## Which stage IDs draw from which of data/questions.json's five pools.
 ##
 ## [DEFAULT], 2026-09-22: nothing in the new stages.json says which STxx asks
-## from which pool — the old link ran through stage_types.json's
-## affinity_stage_id, which is the hand-written PLAYTEST vocabulary and does
-## not line up with the real committee stages this migration adds (it points
+## from which pool — the old link ran through a hand-written
+## playtest file (stage_types.json, removed 2026-10-11) that did not line up with the real committee stages this migration adds (it points
 ## policy_study at ST01 and lobbyist_meeting at ST07, which are not their
 ## real workbook counterparts). Mapped directly here instead, by the plainest
 ## reading of each pool's name against the 21 canon stages. ST06 TV Debate is
@@ -453,15 +452,11 @@ const REPUTATION_START_STAGE_IDS := ["ST04", "ST06"]
 
 
 ## Which of data/questions.json's five pools a stage draws from: its own
-## "type" (the hand-written playtest vocabulary) if set, else its own
 ## "question_pool" column (a proposed stages.json addition) if set, else
 ## QUESTION_POOL_BY_STAGE's fallback for a canon row with neither. Each
 ## field is read past the <null> trap (BarModel.for_stage()'s own comment)
 ## separately, empty treated as absent same as there.
 static func _question_pool_name(stage: Dictionary, stage_id: String) -> String:
-	var type_value: Variant = stage.get("type")
-	if type_value != null and not str(type_value).is_empty():
-		return str(type_value)
 	var pool_value: Variant = stage.get("question_pool")
 	if pool_value != null and not str(pool_value).is_empty():
 		return str(pool_value).to_lower()
@@ -493,8 +488,6 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		meta: Dictionary = {}) -> Dictionary:
 	if stage.is_empty():
 		return {}
-
-	stage = resolve_type(stage)
 
 	if meta.is_empty():
 		meta = starting_meta()
@@ -567,37 +560,6 @@ static func backing_bonus(stage: Dictionary) -> Dictionary:
 	if active.is_empty():
 		return empty
 	return ModifierEffects.battle_start_bonus(active, str(stage.get("stage_id", "")))
-
-
-## Expands a level's stage row into a full stage.
-##
-## A row in levels.json names a TYPE and overrides only what it wants to
-## differ. Everything else comes from stage_types.json, so "the default
-## committee is 60 votes" is one number in one place rather than one per
-## level that happens to contain a committee.
-##
-## A stage with no type is returned untouched: the old hand-written
-## playtest level still works, and so does a module row from the workbook.
-static func resolve_type(stage: Dictionary) -> Dictionary:
-	var type_id := str(stage.get("type", ""))
-	if type_id.is_empty():
-		return stage
-
-	var template: Dictionary = DataDB.stage_types.get(type_id, {})
-	if template.is_empty():
-		push_warning("BattleSetup: no stage type called '%s'." % type_id)
-		return stage
-
-	var resolved := template.duplicate(true)
-	resolved.merge(stage, true)   # the level's own values win
-
-	# A stage needs an ID: the type plus its place in the level, so two
-	# study sessions in one level are still told apart in a report.
-	if not resolved.has("stage_id"):
-		resolved["stage_id"] = "%s_%d" % [type_id.to_upper(), int(stage.get("seq", 0))]
-
-	resolved["name_en"] = fill_tokens(str(resolved.get("name_en", "")))
-	return resolved
 
 
 ## Fills the tokens a stage name may carry.

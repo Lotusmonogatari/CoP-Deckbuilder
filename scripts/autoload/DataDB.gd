@@ -34,11 +34,11 @@ const DATA_PATH := "res://data/"
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"floor_votes", "how_to_play", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
-	"level_visitor_overrides", "levels", "lists",
+	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders",
 	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
-	"sounds", "staff", "stage_types", "strings",
+	"sounds", "staff", "strings",
 	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues",
 	"cosmetic_packages", "transition_cast", "transition_backgrounds", "transition_dialogue",
 ]
@@ -154,17 +154,11 @@ var level_visitor_overrides: Array = []
 
 # Objects rather than lists.
 var balance: Dictionary = {}
-var lists: Dictionary = {}
 var rules: Dictionary = {}
 
 ## The playtest level. Hand-written like rules.json rather than generated
 ## from the workbook, because its shape is still being tried out.
 var playtest_level: Dictionary = {}
-
-## The nine kinds of stage the OLD hand-written playtest levels were built
-## from. Hand-written; see the file's own README. (`levels` — the real
-## per-level data — is declared above, alongside level_opponent_overrides.)
-var stage_types: Dictionary = {}
 
 ## Who the player is: the protagonist in play, one row of `protagonists`.
 ## Hand-written placeholders until the cast is decided (data/player.json).
@@ -298,7 +292,6 @@ func load_all() -> void:
 			"art": art = content if content is Dictionary else {}
 			"staff": staff = content
 			"balance": balance = content
-			"lists": lists = content
 			"rules": rules = _flatten_rules(content)
 			"playtest_level": playtest_level = content
 			# 2026-09-22: the workbook's Levels tab exports straight to
@@ -310,7 +303,6 @@ func load_all() -> void:
 				level_opponent_overrides = _list_under(content, file_name, "overrides")
 			"level_visitor_overrides":
 				level_visitor_overrides = _list_under(content, file_name, "overrides")
-			"stage_types": stage_types = _map_under(content, file_name, "types")
 			"player": _load_protagonists(content)
 			"office_notices": office_notices = content if content is Array else []
 			"office_ticker": office_ticker = content if content is Array else []

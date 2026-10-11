@@ -1997,10 +1997,12 @@ func test_a_stage_that_says_nothing_is_still_guessed_at() -> void:
 
 
 func test_the_tv_debate_in_the_data_is_one_bar() -> void:
-	var tv: Dictionary = DataDB.stage_types.get("tv_debate", {})
-	assert_false(tv.is_empty(), "there is a tv_debate stage type")
-	assert_eq(BarModel.for_stage(tv), BarModel.Model.SINGLE,
-		"a TV debate is press tone, not a room of people")
+	# The real TV Debate row (ST06): a survival bar, which is a single bar
+	# of viewer tone, not a room of people.
+	var tv := DataDB.get_stage("ST06")
+	assert_false(tv.is_empty(), "there is a TV debate stage")
+	assert_eq(BarModel.for_stage(tv), BarModel.Model.SURVIVAL,
+		"a TV debate is viewer tone, not a room of people")
 
 	var bar := BarModel.create(
 		BarModel.for_stage(tv), 100, 0, 40, 40, func() -> int: return 0)

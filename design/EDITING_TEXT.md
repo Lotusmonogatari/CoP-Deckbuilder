@@ -146,7 +146,7 @@ multiplier, not a tone cost):**
 |---|---|
 | **S** | Boosts that card's own numbers 1.3× this round, and pleases the organisation behind the question. Standing carries between levels. |
 | **M** | Nothing either way. |
-| **W** | Cuts that card's own numbers to 0.7× this round, and annoys the same organisation a Strong answer would have pleased. No tone cost — `weak_answer_tone_cost` in `data/stage_types.json` is unread. |
+| **W** | Cuts that card's own numbers to 0.7× this round, and annoys the same organisation a Strong answer would have pleased. No tone cost. |
 
 A grade that is not S, M or W is an **error** and the export names the
 question.

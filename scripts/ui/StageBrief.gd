@@ -13,9 +13,8 @@ extends RefCounted
 ## finite to the player: they spent it, saw it not come back, and had no way
 ## to learn that ending the turn is what refills it.
 ##
-## Built from the RESOLVED stage — the one BattleSetup.resolve_type has
-## already merged out of stage_types.json — so every number here is the
-## number the battle is actually running on.
+## Built from the stage the battle was set up with, so every number here is
+## the number the battle is actually running on.
 ##
 ## Static and given everything it needs, so the details panel and the
 ## briefing screen can print the same sentences rather than drifting apart.
