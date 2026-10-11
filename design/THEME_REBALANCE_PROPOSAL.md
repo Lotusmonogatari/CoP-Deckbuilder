@@ -1,6 +1,6 @@
 # Proposed Question Themes rebalance (draft, 2026-10-10)
 
-**Status: a proposal for Cameron to correct. Nothing in the workbook has been changed.** It would replace the Organisation column of the Question Themes tab. A strong answer on a theme pleases every organisation listed (the first is the primary); the per-stage swing cap per organisation is unchanged.
+**Status: APPLIED to the workbook on 2026-10-11 (105 of the 146 older themes changed; still a draft for Cameron to correct).** The tables below show the before/after at the time of the proposal; the 15 themes added later (Ainu, fisheries, commuter) are not in them. It replaced the Organisation column of the Question Themes tab. A strong answer on a theme pleases every organisation listed (the first is the primary); the per-stage swing cap per organisation is unchanged.
 
 ## Why
 
