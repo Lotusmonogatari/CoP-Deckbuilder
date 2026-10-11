@@ -5,8 +5,8 @@ extends SceneTree
 ## Run it with:
 ##     .tools/godot --headless --path . --script tools/build_intro_scene.gd
 ##
-## Generated for the same reason every other scene builder in tools/ is —
-## see build_battle_scene.gd's own header comment. This one is the game's
+## Generated in code like every other scene builder in tools/ (a .tscn
+## Godot itself writes is guaranteed readable). This one is the game's
 ## title screen: full-bleed background, the game's name, and two buttons.
 
 const OUTPUT_PATH := "res://scenes/menus/IntroScreen.tscn"

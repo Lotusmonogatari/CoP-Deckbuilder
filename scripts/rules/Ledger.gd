@@ -106,13 +106,6 @@ static func modifier_costs(modifier: Dictionary) -> Dictionary:
 	}
 
 
-## The Funds part of the price alone, for the shop lines that show one number
-## next to a modifier's name. Where Reputation or Constituency support is also
-## charged, `modifier_costs()` is what actually gates the purchase.
-static func modifier_cost(modifier: Dictionary) -> int:
-	return int(modifier.get("funds_cost", 0))
-
-
 static func is_for_sale(modifier: Dictionary) -> bool:
 	for cost: int in modifier_costs(modifier).values():
 		if cost > 0:

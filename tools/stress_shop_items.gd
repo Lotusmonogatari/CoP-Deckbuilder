@@ -6,7 +6,7 @@ extends Node
 ## invariants after every single call rather than a few hand-picked
 ## scenarios — the same shape as tools/stress_crisis_triggers.gd.
 ##
-##     godot --headless --path . tools/stress_shot_items.tscn
+##     godot --headless --path . tools/stress_shop_items.tscn
 ##     (actual scene name: tools/stress_shop_items.tscn)
 ##
 ## Not part of tools/verify.sh — a debugging pass, not a fixed regression

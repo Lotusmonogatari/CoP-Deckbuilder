@@ -137,11 +137,6 @@ func set_muted(bus: String, muted: bool) -> void:
 		AudioServer.set_bus_mute(index, muted)
 
 
-func is_muted(bus: String) -> bool:
-	var index := AudioServer.get_bus_index(bus)
-	return index >= 0 and AudioServer.is_bus_mute(index)
-
-
 # ---------------------------------------------------------------------------
 # Listening
 # ---------------------------------------------------------------------------

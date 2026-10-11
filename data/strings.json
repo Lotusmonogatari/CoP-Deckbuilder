@@ -693,13 +693,6 @@
     "notes": null
   },
   {
-    "key": "office.new_cards",
-    "where": "Office — cards",
-    "english": "New cards",
-    "placeholders": null,
-    "notes": "Panel title and button."
-  },
-  {
     "key": "office.your_deck",
     "where": "Office — deck",
     "english": "Your deck",
@@ -712,41 +705,6 @@
     "english": "Boosters",
     "placeholders": null,
     "notes": "Button into the backing shop."
-  },
-  {
-    "key": "office.cards_blurb",
-    "where": "Office — cards",
-    "english": "Cards you unlock join your collection. What you actually take into a debate is chosen on the deck screen.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "office.cards_unlocked.one",
-    "where": "Office — cards",
-    "english": "{count} card unlocked so far.",
-    "placeholders": "count",
-    "notes": null
-  },
-  {
-    "key": "office.cards_unlocked.other",
-    "where": "Office — cards",
-    "english": "{count} cards unlocked so far.",
-    "placeholders": "count",
-    "notes": null
-  },
-  {
-    "key": "office.unlock",
-    "where": "Office — cards",
-    "english": "Unlock",
-    "placeholders": null,
-    "notes": "The button on a card you can afford."
-  },
-  {
-    "key": "office.card_line",
-    "where": "Office — cards",
-    "english": "{suit} · {effect}",
-    "placeholders": "suit, effect",
-    "notes": null
   },
   {
     "key": "office.deck_chosen",
@@ -801,13 +759,6 @@
     "key": "office.take_backing",
     "where": "Office — backing",
     "english": "Take their backing",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "office.no_effect_yet",
-    "where": "Office — backing",
-    "english": "No effect yet — your record always opens clean, so there is nothing here to take off.",
     "placeholders": null,
     "notes": null
   },
@@ -896,20 +847,6 @@
     "notes": null
   },
   {
-    "key": "office.card_title",
-    "where": "Office — cards",
-    "english": "{name} {name_jp}  —  {cost} XP",
-    "placeholders": "name, name_jp, cost",
-    "notes": null
-  },
-  {
-    "key": "office.where_you_stand",
-    "where": "Office",
-    "english": "Where you stand",
-    "placeholders": null,
-    "notes": "Heading above your four standings. Browser build only so far; the Godot Office shows them without a heading."
-  },
-  {
     "key": "outcome.reason.walked_away",
     "where": "End of stage — why",
     "english": "You walked away from the question. That is the story now.",
@@ -920,20 +857,6 @@
     "key": "outcome.reason.gaffe_limit",
     "where": "End of stage — why",
     "english": "The gaffe meter filled.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "outcome.reason.committee_for",
-    "where": "End of stage — why",
-    "english": "A majority of the committee locked in favour.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "outcome.reason.committee_against",
-    "where": "End of stage — why",
-    "english": "Too many members locked against — a majority is no longer possible.",
     "placeholders": null,
     "notes": null
   },
@@ -1197,20 +1120,6 @@
     "notes": null
   },
   {
-    "key": "modifier.player_start_support",
-    "where": "Office · backing shop",
-    "english": "Start {count} ahead.",
-    "placeholders": "count",
-    "notes": null
-  },
-  {
-    "key": "modifier.starting_gaffe",
-    "where": "Office · backing shop",
-    "english": "Start with {count} less on the gaffe meter.",
-    "placeholders": "count",
-    "notes": null
-  },
-  {
     "key": "modifier.reputation_per_stage_win",
     "where": "Office · backing shop",
     "english": "+{count} funds for every stage won.",
@@ -1419,13 +1328,6 @@
     "english": "At their highest tier.",
     "placeholders": null,
     "notes": null
-  },
-  {
-    "key": "office.briefing.surprise_stage",
-    "where": "Office — briefing",
-    "english": "Something is coming — you will not know what until you are in the room.",
-    "placeholders": null,
-    "notes": "Shown in place of a stage's name and opponent when its Reveal In Briefing column is No, so a stage meant as a surprise (an ambush) is not spoiled before the player goes in."
   },
   {
     "key": "office.level_cooldown",
@@ -1964,20 +1866,6 @@
     "where": "Office report after buying a Funds cap increase",
     "english": "Funds cap raised by {count}.",
     "placeholders": "count",
-    "notes": null
-  },
-  {
-    "key": "shop.card_reveal_title",
-    "where": "Office — heading shown when an SH15-17/27-29 purchase reveals the card",
-    "english": "New Card!",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "shop.card_reveal_confirm",
-    "where": "Office — button that dismisses the card reveal pop-up",
-    "english": "Nice.",
-    "placeholders": null,
     "notes": null
   },
   {

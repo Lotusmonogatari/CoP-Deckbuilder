@@ -101,15 +101,6 @@ func view_for(card_id: String) -> CardView:
 	return held[0] if not held.is_empty() else null
 
 
-## Scrolls a card into view. The hand is wider than the screen — only about
-## three of five cards are visible — so anything that wants to point at a
-## card has to be able to bring it into sight first.
-func reveal(card_id: String) -> void:
-	var view := view_for(card_id)
-	if view != null and _scroll != null:
-		_scroll.ensure_control_visible(view)
-
-
 ## Takes a reusable view for this card out of the spare pile, or null.
 func _take(spare: Dictionary, card_id: String) -> CardView:
 	var held: Array = spare.get(card_id, [])

@@ -13,9 +13,6 @@ extends Node
 ## catches problems at Cameron's desk, and this catches a data file that was
 ## hand-edited or half-copied afterwards.
 
-## Emitted once every file has loaded and been checked.
-signal data_ready(had_errors: bool)
-
 const DATA_PATH := "res://data/"
 
 ## Every file that must be present for the game to start.
@@ -264,7 +261,6 @@ var _opponent_cues_by_opponent_verb: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
 var _levels_by_id: Dictionary = {}
 var _staff_by_id: Dictionary = {}
-var _affinity: Dictionary = {}   ## element -> { stage_id -> multiplier }
 var _parties_by_name: Dictionary = {}   ## party's own "name" -> its row
 var _parties_by_id: Dictionary = {}     ## "PT01" etc -> its row
 
@@ -370,7 +366,6 @@ func load_all() -> void:
 	_loaded = true
 
 	print_report()
-	data_ready.emit(not errors.is_empty())
 
 
 func is_loaded() -> bool:
@@ -646,10 +641,6 @@ func _build_lookups() -> void:
 	_staff_by_id = _index(staff, "staff_id")
 	_parties_by_name = _index(parties, "name")
 	_parties_by_id = _index(parties, "party_id")
-
-	_affinity.clear()
-	for row: Dictionary in affinity:
-		_affinity[row.get("element", "")] = row.get("multipliers", {})
 
 
 func _index(records: Array, key: String) -> Dictionary:
@@ -937,30 +928,12 @@ func _lookup(table: Dictionary, key: String, kind: String) -> Dictionary:
 	return {}
 
 
-## The suit power multiplier for a suit in a stage. Defaults to 1.0 (no
-## effect) when the pairing isn't listed, which is the case for Office Hours.
-func get_affinity(element: String, stage_id: String) -> float:
-	var row: Variant = _affinity.get(element)
-	if row is Dictionary and (row as Dictionary).has(stage_id):
-		return float(row[stage_id])
-	return 1.0
-
-
 ## A global tuning number from the Balance tab, e.g. "guard_cap".
 func get_balance(lever: String, fallback: float = 0.0) -> float:
 	if balance.has(lever):
 		return float(balance[lever])
 	push_warning("DataDB: no balance lever called '%s'." % lever)
 	return fallback
-
-
-## XP needed to unlock a card of a given tier ("0", "1", "2", "3").
-func get_tier_cost(tier: String) -> int:
-	var tiers: Variant = balance.get("xp_tiers", {})
-	if tiers is Dictionary and (tiers as Dictionary).has(tier):
-		return int(tiers[tier])
-	push_warning("DataDB: no XP tier called '%s'." % tier)
-	return 0
 
 
 ## One of the open-design switches from rules.json.

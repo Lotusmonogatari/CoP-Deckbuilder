@@ -42,8 +42,7 @@ const BAND_CENTRE := 0.42
 const SLIDE_OUT := 0.14
 
 ## Kept clear of the true screen edges, the same margin the rest of the
-## battle screen's own Safe area uses (tools/build_battle_scene.gd's
-## SIDE_MARGIN) — Cameron, 2026-09-24: the band used to run edge to edge,
+## battle screen's own Safe area uses (BattleScreen.tscn's Safe margin) — Cameron, 2026-09-24: the band used to run edge to edge,
 ## which on a real phone runs it under the camera cutout and the rounded
 ## corners everything else is kept clear of.
 const SIDE_MARGIN := 40.0

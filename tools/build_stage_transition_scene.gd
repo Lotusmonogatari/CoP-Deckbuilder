@@ -7,7 +7,7 @@ extends SceneTree
 ##
 ## Same unconditional wipe-and-rebuild shape as tools/build_level_intro_
 ## scene.gd/tools/build_visitor_scene.gd — confirmed safe to rerun (see
-## CLAUDE.md §13's note on the drifted build_battle_scene.gd by contrast).
+## CLAUDE.md §13).
 ## Re-running this overwrites any editor-made changes.
 
 const OUTPUT_PATH := "res://scenes/office_hours/StageTransitionScreen.tscn"

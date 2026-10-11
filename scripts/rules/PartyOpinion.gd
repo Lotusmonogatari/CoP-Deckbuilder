@@ -21,7 +21,6 @@ extends RefCounted
 
 const OWN := "OWN"
 const NO_SCORE := -1
-const BANDS := ["hostile", "cold", "neutral", "warm", "allied"]
 
 
 ## The rows that apply to `party_id`: its own PTxx rows, plus the OWN rows if

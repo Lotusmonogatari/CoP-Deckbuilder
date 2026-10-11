@@ -52,7 +52,6 @@ extends Control
 const NAME_LIMIT := 18
 
 const HEIGHT := 56.0
-const CORNER := 8.0
 
 # Muted, and distinguishable without relying on colour alone: the player's
 # share is always leftmost and the threshold line is a hard edge.

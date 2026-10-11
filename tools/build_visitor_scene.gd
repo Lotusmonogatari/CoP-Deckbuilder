@@ -5,8 +5,7 @@ extends SceneTree
 ## Run it with:
 ##     .tools/godot --headless --path . --script tools/build_visitor_scene.gd
 ##
-## Generated for the same reason tools/build_battle_scene.gd is (see its own
-## header comment): a .tscn Godot itself writes is guaranteed readable, and
+## Generated in code because a .tscn Godot itself writes is guaranteed readable, and
 ## the result opens and edits normally. Re-running this overwrites any
 ## editor-made changes.
 
@@ -195,7 +194,7 @@ func _add_notice() -> void:
 
 
 # ---------------------------------------------------------------------------
-# Helpers — identical to tools/build_battle_scene.gd's own
+# Helpers — the same ones every scene builder in tools/ uses
 # ---------------------------------------------------------------------------
 
 func _adopt(node: Node, parent: Node, unique: bool = false) -> void:

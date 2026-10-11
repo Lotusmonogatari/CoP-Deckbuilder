@@ -695,8 +695,6 @@ static func card_table() -> Dictionary:
 	return table
 
 
-## What each organisation is called, keyed by ID. The rules engine deals in
-## IDs; anything shown to the player needs the name.
 ## Every organisation's ID, so the Ledger can tell a real backer from a
 ## modifier that names a meta-variable in the same column.
 static func booster_ids() -> Array:
@@ -706,6 +704,8 @@ static func booster_ids() -> Array:
 	return ids
 
 
+## What each organisation is called, keyed by ID. The rules engine deals in
+## IDs; anything shown to the player needs the name.
 static func booster_names() -> Dictionary:
 	var names := {}
 	for booster: Dictionary in DataDB.boosters:

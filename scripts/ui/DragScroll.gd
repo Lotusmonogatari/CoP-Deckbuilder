@@ -59,12 +59,6 @@ static func attach(scroll: ScrollContainer, vertical: bool = true) -> DragScroll
 	return helper
 
 
-## True from the moment a press became a drag until it is let go. Anything
-## else that reacts to presses (a panel's tap-outside-to-close) checks it.
-func is_dragging() -> bool:
-	return _dragging
-
-
 func _input(event: InputEvent) -> void:
 	if _scroll == null or not _scroll.is_visible_in_tree():
 		_tracking = false
