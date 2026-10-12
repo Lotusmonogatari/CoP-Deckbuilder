@@ -85,7 +85,7 @@ The 20 battle (Combat) rooms today (the workbook has 23 stages in all: these 20,
 
 ### 2.2 Suits and the room (Affinity tab)
 
-Every Combat stage needs a column in **Affinity**: a multiplier per suit on the card's support gained and opponent support taken (guard, draw and gaffes are never scaled). **House style:** each room favours two suits (1.5 and 1.3), punishes two (0.5 and 0.7) and leaves two at 1.0. Pick them from what the room rewards in real politics:
+Every Combat stage needs a column in **Affinity**: a multiplier per suit on the card's support gained and opponent support taken (guard, draw and gaffes are never scaled). **House style:** each room favours two suits (1.5 and 1.3), punishes two (0.5 and 0.7) and leaves two at 1.0. Pick them from what the room rewards in real politics. The table gives **examples only** (the Affinity tab is the full grid; copy a similar room's column and adjust):
 
 | Suit | Rewarded where… | Punished where… |
 |---|---|---|
@@ -126,7 +126,7 @@ Standing also feeds **party opinion**: the Party Standing tab weights organisati
 
 ### 2.5 Opponents and how they speak
 
-An opponent row: **Affiliation** (a BOxx), **Party** (a Parties name or N/A), **Role/Title**, **Stage** (every STxx they can be drawn for), **Suit 1–3**, and attack/gain/block ranges (`min-max`, or one number for a fixed amount; `0` means never; a stronger opponent has higher ranges). Opponents for a stage are drawn at random from everyone listing it.
+An opponent row: **Affiliation** (a BOxx), **Party** (a Parties name or N/A), **Role/Title**, **Stage** (every STxx they can be drawn for), **Suit 1–3**, and attack/gain/block ranges (`min-max`, or one number for a fixed amount; `0` means never; a stronger opponent has higher ranges). Opponents for a stage are drawn at random from everyone listing it. A suit may repeat across Suit 1–3 (19 opponents do); that is deliberate and simply weights the suit.
 
 **What they say on their turn** (Opponent Cues). The game picks a suit (Suit 1 55%, Suit 2 30%, Suit 3 10%, any other 5%) and the verb of their move (`attack`, `gain`, `block`), then looks up, most specific first:
 1. a row naming this opponent and this stage;
@@ -282,7 +282,7 @@ Rules:
 4. For anything touching organisations, bills or votes: `xvfb-run .tools/godot --path . tools/rubric_playtest.tscn` should still score full marks.
 5. A new room: run the bot's stage trial (§3) and note the win rate for Cameron.
 6. Mark every new row as a draft where the tab has a Why or Note column.
-7. Check names agree across tabs (Assets against Opponents/Visitors/Player) and that cue lines pass the Tone Guide's five rules (a quick read for time words such as now, again, still, already, always, never).
+7. Check names agree across tabs (Assets against Opponents, Visitors, Player and **Shop**: an item-icon row must use the Shop tab's Item ID, name and Icon cell, so rebuild those rows when the Shop tab is renumbered) and that cue lines pass the Tone Guide's five rules (a quick read for time words such as now, again, still, already, always, never).
 8. Re-read the README tab: if you changed a count (stages, levels, organisations, themes), update its tab guide. It is Cameron's overview, so keep it true.
 
 ## 9. When the workbook is not enough (ask first)

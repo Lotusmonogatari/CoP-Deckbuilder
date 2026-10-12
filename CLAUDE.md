@@ -2236,3 +2236,9 @@ Cameron approved the recommendation table. **Applied** (raw-XML workbook edit; `
 ### The expansion guide revised (2026-10-12, Cameron)
 
 `design/WORKBOOK_EXPANSION_GUIDE.md` refreshed: current counts in the header, a sixth key point and an Assets row in §7 (every new person needs Opponents/Visitors, Assets and matching names), a clearer line on no-W questions, and two new hand-over checks (names agree across tabs, Tone Guide read-through; keep the README tab's counts true). No rules or data changed.
+
+### A second review of the guide and workbook (2026-10-12, Cameron)
+
+Fixed: Opponent Cues OC20 (two garbled lines), Player Cue PL01 cue 2 (no longer leans on invented history), five player-facing typos (LV10 "Advancing" and its Sanban note, Level Intro Thoughts for LV10, LV13 and LV47), the stale cached word counts on Flavor Text C51 (now 8/7/7/7/8, max 8), and the **Assets item-icon rows**, which still described the old 29-item Shop (SH09 "Blue Profile Package" and so on): they are rebuilt from the 20 current Shop rows (ID, name and Icon cell), all marked Drawn since every icon file exists. The guide now labels its suit table as examples, notes that repeated suits are deliberate, and extends the name check to the Shop tab.
+
+**One claim not accepted:** the review said BI25 now *fails* by default so its "Flipped to Fail" cue cannot fire. The game passes a bill when Yes outnumbers No (`FloorVoteEngine`, `passed: totals.Yes > totals.No`), and BI25's tally is 48 Yes / 43 No, so it **passes** by default and a Fail flip is the right cue. The "Fails" in the Vote Tally & Swing tab is that hand-check tab's own Yes >= 50 rule, which differs from the game; my earlier note that "BI25 now fails" was wrong about the game and is corrected here. Whether the hand-check tab should use the game's rule is Cameron's call.

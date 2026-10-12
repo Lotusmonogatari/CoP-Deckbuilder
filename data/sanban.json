@@ -7,7 +7,7 @@
     "min": 0,
     "max": 100,
     "low_threshold": 20,
-    "low_consequence": "LV10 cannot active.",
+    "low_consequence": "LV10 cannot be activated.",
     "high_threshold": 80,
     "high_consequence": null
   },
