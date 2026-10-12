@@ -36,7 +36,7 @@ const REQUIRED_FILES := [
 	"floor_votes", "how_to_play", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders",
-	"player", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
+	"player", "player_cues", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "strings",
 	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues",
@@ -210,6 +210,11 @@ var card_cues: Dictionary = {}
 ## what actually gets looked up.
 var opponent_cues: Array = []
 
+## What the PLAYER says, by suit and what the card did, from the workbook's
+## Player Cues tab (2026-10-12) — raw rows; see _player_cue_lines below for
+## the lookup. Checked before a card's own Flavor Text lines (CardCues.gd).
+var player_cues: Array = []
+
 ## The questions each kind of room can ask, by stage type, from the five
 ## question tabs. A stage draws from the pool for its type rather than
 ## naming its own, so a new question is one row in the workbook.
@@ -252,6 +257,17 @@ var _questions_by_visitor: Dictionary = {}
 ## and never blended with the general pool (OpponentCues.gd).
 var _opponent_cues_by_suit_verb: Dictionary = {}
 var _opponent_cues_by_opponent_verb: Dictionary = {}
+## The same two, for rows that name a Stage ID (2026-10-12): keys carry the
+## stage as well, "{stage}|{suit}|{verb}" and "{opp_id}|{stage}|{verb}".
+## Checked before the any-stage tables above (OpponentCues.gd).
+var _opponent_cues_by_stage_suit_verb: Dictionary = {}
+var _opponent_cues_by_opponent_stage_verb: Dictionary = {}
+## Player Cues (2026-10-12): "{stage}|{suit}|{verb}" and "{suit}|{verb}" ->
+## Array of {"text", "line_id"}. An empty verb means any verb, and an empty
+## stage means any stage.
+var _player_cue_lines: Dictionary = {}
+## Stage Questions (2026-10-12): stage_id -> the questions that name it.
+var _questions_by_stage: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
 var _levels_by_id: Dictionary = {}
 var _staff_by_id: Dictionary = {}
@@ -322,6 +338,7 @@ func load_all() -> void:
 			"strings": strings = _strings_by_key(content)
 			"card_cues": card_cues = _cues_by_card(content)
 			"opponent_cues": opponent_cues = content if content is Array else []
+			"player_cues": player_cues = content if content is Array else []
 			"questions": questions = content
 			"sounds":
 				sounds = _map_under(content, file_name, "sounds")
@@ -601,6 +618,8 @@ func _build_lookups() -> void:
 
 	_opponent_cues_by_suit_verb.clear()
 	_opponent_cues_by_opponent_verb.clear()
+	_opponent_cues_by_stage_suit_verb.clear()
+	_opponent_cues_by_opponent_stage_verb.clear()
 	for row: Dictionary in opponent_cues:
 		var suit := str(row.get("suit", ""))
 		var verb := str(row.get("verb", ""))
@@ -614,19 +633,37 @@ func _build_lookups() -> void:
 		# on the first real Opponent Cues data the game ever loaded.
 		var opp_ids_raw: Variant = row.get("opponent_ids")
 		var opp_ids: Array = opp_ids_raw if opp_ids_raw is Array else []
+		# Optional Stage ID (2026-10-12), past the same <null> trap.
+		var stages_raw: Variant = row.get("stage_ids")
+		var stages: Array = stages_raw if stages_raw is Array else []
 		if opp_ids.is_empty():
 			# The general pool: every opponent with this suit draws from it
-			# for this verb.
-			var key := "%s|%s" % [suit, verb]
-			_opponent_cues_by_suit_verb[key] = (
-				_opponent_cues_by_suit_verb.get(key, []) as Array) + lines
+			# for this verb — in every stage, or only the stages named.
+			if stages.is_empty():
+				var key := "%s|%s" % [suit, verb]
+				_opponent_cues_by_suit_verb[key] = (
+					_opponent_cues_by_suit_verb.get(key, []) as Array) + lines
+			else:
+				for stage_id: String in stages:
+					var stage_key := "%s|%s|%s" % [stage_id, suit, verb]
+					_opponent_cues_by_stage_suit_verb[stage_key] = (
+						_opponent_cues_by_stage_suit_verb.get(stage_key, []) as Array) + lines
 		else:
 			# A bespoke row: registered under EACH named opponent, never
 			# folded into the general pool.
 			for opp_id: String in opp_ids:
-				var opp_key := "%s|%s" % [opp_id, verb]
-				_opponent_cues_by_opponent_verb[opp_key] = (
-					_opponent_cues_by_opponent_verb.get(opp_key, []) as Array) + lines
+				if stages.is_empty():
+					var opp_key := "%s|%s" % [opp_id, verb]
+					_opponent_cues_by_opponent_verb[opp_key] = (
+						_opponent_cues_by_opponent_verb.get(opp_key, []) as Array) + lines
+				else:
+					for stage_id: String in stages:
+						var opp_stage_key := "%s|%s|%s" % [opp_id, stage_id, verb]
+						_opponent_cues_by_opponent_stage_verb[opp_stage_key] = (
+							_opponent_cues_by_opponent_stage_verb.get(opp_stage_key, []) as Array) + lines
+
+	_index_player_cues()
+	_index_stage_questions()
 
 	_sanban_by_name = _index(sanban, "name_en")
 	_levels_by_id = _index(levels, "level_id")
@@ -889,22 +926,107 @@ func get_questions_for_visitor(visitor_id: String) -> Array:
 ## What a specific opponent might say on this verb, if the Opponent Cues tab
 ## has a bespoke row naming them — checked first by OpponentCues.gd, and
 ## never blended with the general per-suit pool below.
-func get_bespoke_opponent_cue_lines(opponent_id: String, verb: String) -> Array[String]:
-	var key := "%s|%s" % [opponent_id, verb]
-	var found: Array = _opponent_cues_by_opponent_verb.get(key, [])
+##
+## With a stage_id, a row naming that stage wins over the any-stage rows.
+func get_bespoke_opponent_cue_lines(opponent_id: String, verb: String,
+		stage_id: String = "") -> Array[String]:
+	var found: Array = []
+	if not stage_id.is_empty():
+		found = _opponent_cues_by_opponent_stage_verb.get(
+			"%s|%s|%s" % [opponent_id, stage_id, verb], [])
+	if found.is_empty():
+		found = _opponent_cues_by_opponent_verb.get("%s|%s" % [opponent_id, verb], [])
 	var lines: Array[String] = []
 	lines.assign(found)
 	return lines
 
 
 ## The general pool every opponent with this suit draws from for this verb,
-## when no bespoke row names them.
-func get_general_opponent_cue_lines(suit: String, verb: String) -> Array[String]:
-	var key := "%s|%s" % [suit, verb]
-	var found: Array = _opponent_cues_by_suit_verb.get(key, [])
+## when no bespoke row names them. With a stage_id, a row naming that stage
+## wins over the any-stage rows.
+func get_general_opponent_cue_lines(suit: String, verb: String,
+		stage_id: String = "") -> Array[String]:
+	var found: Array = []
+	if not stage_id.is_empty():
+		found = _opponent_cues_by_stage_suit_verb.get(
+			"%s|%s|%s" % [stage_id, suit, verb], [])
+	if found.is_empty():
+		found = _opponent_cues_by_suit_verb.get("%s|%s" % [suit, verb], [])
 	var lines: Array[String] = []
 	lines.assign(found)
 	return lines
+
+
+## What the player might say for a card of this suit that did this (attack,
+## gain or block), from the Player Cues tab. Most specific first: this stage
+## and verb, this stage and any verb, any stage and this verb, any stage and
+## any verb. Each line is {"text", "line_id"}; empty when nothing is written,
+## and CardCues.gd then falls back to the card's own Flavor Text lines.
+func get_player_cue_lines(suit: String, verb: String, stage_id: String = "") -> Array:
+	var keys: Array[String] = []
+	if not stage_id.is_empty():
+		if not verb.is_empty():
+			keys.append("%s|%s|%s" % [stage_id, suit, verb])
+		keys.append("%s|%s|" % [stage_id, suit])
+	if not verb.is_empty():
+		keys.append("%s|%s" % [suit, verb])
+	keys.append("%s|" % suit)
+	for key in keys:
+		var found: Array = _player_cue_lines.get(key, [])
+		if not found.is_empty():
+			return found.duplicate()
+	return []
+
+
+## The Stage Questions tab's questions that name this stage, asked before the
+## room's own pool (BattleSetup). Empty for a stage with none written.
+func get_stage_questions(stage_id: String) -> Array:
+	return (_questions_by_stage.get(stage_id, []) as Array).duplicate()
+
+
+func _index_player_cues() -> void:
+	_player_cue_lines.clear()
+	for row: Variant in player_cues:
+		if not (row is Dictionary):
+			continue
+		var cue_id := str(row.get("cue_id", ""))
+		var suit := str(row.get("suit", ""))
+		var verb_raw: Variant = row.get("verb")
+		var verb := "" if verb_raw == null else str(verb_raw).strip_edges()
+		var stages_raw: Variant = row.get("stage_ids")
+		var stages: Array = stages_raw if stages_raw is Array else []
+		var lines: Array = []
+		for index in range(1, 6):
+			# A blank cell is JSON null, not "" (the <null> trap again).
+			var raw: Variant = row.get("cue_%d" % index)
+			var line := "" if raw == null else str(raw).strip_edges()
+			if not line.is_empty():
+				lines.append({"text": line, "line_id": "%s_%d" % [cue_id, index]})
+		if lines.is_empty():
+			continue
+		var keys: Array[String] = []
+		if stages.is_empty():
+			keys.append("%s|%s" % [suit, verb])
+		else:
+			for stage_id: String in stages:
+				keys.append("%s|%s|%s" % [stage_id, suit, verb])
+		for key in keys:
+			_player_cue_lines[key] = (_player_cue_lines.get(key, []) as Array) + lines
+
+
+func _index_stage_questions() -> void:
+	_questions_by_stage.clear()
+	if not (questions is Dictionary):
+		return
+	for question: Variant in (questions.get("stage", []) as Array):
+		if not (question is Dictionary):
+			continue
+		var stages_raw: Variant = question.get("stage_ids")
+		var stages: Array = stages_raw if stages_raw is Array else []
+		for stage_id: String in stages:
+			if not _questions_by_stage.has(stage_id):
+				_questions_by_stage[stage_id] = []
+			(_questions_by_stage[stage_id] as Array).append(question)
 
 
 ## Meta-variables are looked up by their English name: "Constituency support",

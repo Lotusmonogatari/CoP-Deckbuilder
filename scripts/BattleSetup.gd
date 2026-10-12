@@ -171,7 +171,8 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 	# pool's size (20) there made the press conference deal 20 questions
 	# against its 5-turn clock — "Question 6 of 20" on screen, then a loss
 	# on time with the questions nowhere near done.
-	stage["question_pool_size"] = DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
+	stage["question_pool_size"] = (DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
+		+ DataDB.get_stage_questions(stage_id).size())
 
 	return stage
 
@@ -521,6 +522,10 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		# "question_pool" column (a proposed stages.json addition) wins;
 		# QUESTION_POOL_BY_STAGE is the fallback for a canon row with neither.
 		"question_pool": DataDB.questions.get(_question_pool_name(stage, stage_id), []),
+		# Questions written for this stage itself (Stage Questions tab,
+		# 2026-10-12): dealt before the room's own pool, and the only
+		# questions a stage with no room pool (a committee) asks.
+		"question_pool_first": DataDB.get_stage_questions(stage_id),
 		# How often a weak answer actually costs tone (§9/§8, 2026-09-28,
 		# Cameron: 0.75) — the same number across every question-asking
 		# stage, rather than one per stage type. Defaults to 1.0 (always

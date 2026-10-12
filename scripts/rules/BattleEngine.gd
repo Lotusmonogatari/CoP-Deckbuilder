@@ -148,7 +148,8 @@ func setup(config: Dictionary) -> bool:
 	state.draw_mode = str(_stage.get("draw_mode", "refill"))
 	_questions = _stage.get("questions", [])
 	if _questions.is_empty():
-		_questions = _draw_questions(config.get("question_pool", []))
+		_questions = _draw_questions(config.get("question_pool", []),
+			config.get("question_pool_first", []))
 	_question_strong_multiplier = float(config.get("question_strong_multiplier", 1.0))
 	_question_weak_multiplier = float(config.get("question_weak_multiplier", 1.0))
 
@@ -578,8 +579,12 @@ func end_turn() -> Dictionary:
 ## same questions, and without repeats — being asked the same thing twice in
 ## one sitting reads as a bug whatever the dice say. A pool smaller than the
 ## stage needs is used whole rather than padded.
-func _draw_questions(pool: Array) -> Array:
-	if pool.is_empty():
+##
+## `first` (2026-10-12) is the questions written for this stage itself
+## (Stage Questions tab): they are dealt before any from the room's pool, and
+## the dealt set is then shuffled so they don't always come first in play.
+func _draw_questions(pool: Array, first: Array = []) -> Array:
+	if pool.is_empty() and first.is_empty():
 		return []
 
 	# How many this room asks. A stage that says so outright wins: these
@@ -589,16 +594,29 @@ func _draw_questions(pool: Array) -> Array:
 	var wanted := int(_stage.get("questions_count", 0))
 	if wanted <= 0:
 		wanted = maxi(_questions_per_turn(), 1) * maxi(int(_stage.get("turn_limit", 0)), 1)
-	var bag := pool.duplicate()
+	var own := _shuffled(first)
+	var rest: Array = []
+	for question: Variant in pool:
+		if not own.has(question):
+			rest.append(question)
+	var bag := own + _shuffled(rest)
+	var dealt := bag.slice(0, mini(wanted, bag.size()))
+	# Only worth a second shuffle when both kinds were dealt; a plain room
+	# pool keeps exactly the order (and so the seeded result) it always had.
+	if not own.is_empty() and dealt.size() > own.size():
+		dealt = _shuffled(dealt)
+	return dealt
 
-	# Fisher-Yates on the battle's generator, the same shuffle the deck gets.
+
+## Fisher-Yates on the battle's generator, the same shuffle the deck gets.
+func _shuffled(items: Array) -> Array:
+	var bag := items.duplicate()
 	for index in range(bag.size() - 1, 0, -1):
 		var swap := _rng.randi_range(0, index)
 		var held: Variant = bag[index]
 		bag[index] = bag[swap]
 		bag[swap] = held
-
-	return bag.slice(0, mini(wanted, bag.size()))
+	return bag
 
 
 

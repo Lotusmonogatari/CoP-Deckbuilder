@@ -387,3 +387,56 @@ func test_every_card_has_something_to_say() -> void:
 		var cues: Array = DataDB.card_cues.get(card_id, [])
 		assert_eq(cues.size(), 5, "%s should have five cues" % card_id)
 		# No word limit: how long a cue runs is the designer's call.
+
+
+# ---------------------------------------------------------------------------
+# Stage Questions (2026-10-12): written for one stage, dealt before its pool
+# ---------------------------------------------------------------------------
+
+func _drawn_with_own(pool: Array, own: Array, count: int, seed_value: int) -> Array[String]:
+	var stage := TestFixtures.stage({
+		"win_mode": "score", "questions_per_turn": 1, "questions_count": count,
+	})
+	var config := TestFixtures.battle_config({"stage": stage})
+	config["question_pool"] = pool
+	config["question_pool_first"] = own
+	config["seed"] = seed_value
+	var engine := BattleEngine.new()
+	engine.setup(config)
+	return _asked(engine)
+
+
+func test_a_stages_own_questions_are_always_dealt_before_the_pool() -> void:
+	var own := [_question({"id": "OWN1"}), _question({"id": "OWN2"})]
+	for seed_value in [1, 2, 3, 4, 5]:
+		var asked := _drawn_with_own(_pool(20), own, 4, seed_value)
+		assert_eq(asked.size(), 4)
+		assert_true(asked.has("OWN1") and asked.has("OWN2"),
+			"both of the stage's own questions are asked (seed %d)" % seed_value)
+
+
+func test_a_stage_with_only_its_own_questions_asks_them() -> void:
+	var own := [_question({"id": "OWN1"}), _question({"id": "OWN2"}), _question({"id": "OWN3"})]
+	var asked := _drawn_with_own([], own, 2, 9)
+	assert_eq(asked.size(), 2)
+	for id in asked:
+		assert_true(id.begins_with("OWN"))
+
+
+func test_no_own_questions_leaves_the_seeded_draw_unchanged() -> void:
+	assert_eq(_drawn_with_own(_pool(20), [], 5, 77), _drawn(_pool(20), 5, 77),
+		"an empty Stage Questions list must not change any existing room's draw")
+
+
+func test_stage_questions_are_found_by_every_stage_they_name() -> void:
+	var saved: Variant = DataDB.questions.get("stage", [])
+	DataDB.questions["stage"] = [
+		{"id": "S01", "stage_ids": ["ST16", "ST13"], "text": "a", "grades": {}},
+		{"id": "S02", "stage_ids": null, "text": "b", "grades": {}},
+	]
+	DataDB._build_lookups()
+	assert_eq(DataDB.get_stage_questions("ST16").size(), 1)
+	assert_eq(DataDB.get_stage_questions("ST13").size(), 1)
+	assert_eq(DataDB.get_stage_questions("ST09").size(), 0)
+	DataDB.questions["stage"] = saved
+	DataDB._build_lookups()

@@ -46,14 +46,17 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 	if opp_id.is_empty() or verb.is_empty():
 		return {"text": "", "line_id": ""}
 
-	var lines: Array[String] = DataDB.get_bespoke_opponent_cue_lines(opp_id, verb)
+	# Stage-specific rows first, inside each lookup (2026-10-12): this
+	# opponent in this stage, this opponent anywhere, then the suit's pool
+	# in this stage, then the suit's pool anywhere.
+	var lines: Array[String] = DataDB.get_bespoke_opponent_cue_lines(opp_id, verb, stage_id)
 	if lines.is_empty():
 		if suit_roll < 0.0:
 			suit_roll = randf()
 		if other_suit_roll < 0.0:
 			other_suit_roll = randf()
 		var suit := _suit_for_move(opponent, suit_roll, other_suit_roll)
-		lines = DataDB.get_general_opponent_cue_lines(suit, verb)
+		lines = DataDB.get_general_opponent_cue_lines(suit, verb, stage_id)
 	if lines.is_empty():
 		return {"text": "", "line_id": ""}
 

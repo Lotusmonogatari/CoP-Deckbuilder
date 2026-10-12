@@ -31,6 +31,8 @@ It rewrites `data/*.json` and prints a report. Read the last line:
 | A card's name | **Cards** | Name (EN), Name (JP) |
 | What a card's rules text says | **Cards** | Effect text |
 | What a card says out loud when played | **Flavor Text** | Cue 1 – Cue 5 |
+| What the player says, by suit (checked before Flavor Text) | **Player Cues** | Cue 1 – Cue 5 |
+| A question one particular stage asks (e.g. a committee) | **Stage Questions** | Question |
 | A question a reporter or lobbyist asks | **Press Questions** and its four siblings | Question |
 | Which organisation a question's theme belongs to | **Question Themes** | Organisation |
 | How well each suit answers a question | the five question tabs | Earnest … Duplicitous |
@@ -124,6 +126,26 @@ If a line is ever recorded, its filename goes in `data/sounds.json` under
 `speech → PROTAGONIST → C01_1` (card, then which cue). The game already asks
 for it at the right moment.
 
+### 3a · By suit instead of by card — the **Player Cues** tab (2026-10-12)
+
+The game checks this tab **first**, and only uses a card's own Flavor Text
+lines when nothing here fits. It ships empty, so nothing changes until you
+write rows.
+
+| Column | What it is |
+|---|---|
+| **Cue ID** | `PL01`, `PL02`… Unique. |
+| **Suit** | The suit of the card played, exactly as in the Suits tab. |
+| **Verb** | What the card did: `attack` (argued support away from the opponent), `gain` (won support), `block` (only banked guard). Blank = any. |
+| **Stage ID** | Blank = every stage. `ST16` or `ST16; ST13` = only there. |
+| **Cue 1 – Cue 5** | The lines. |
+
+Most specific wins: this stage and verb, then this stage any verb, then any
+stage this verb, then any stage any verb, then the card's own lines.
+
+**Opponent Cues** also has a new optional **Stage ID** column the same way:
+a row naming a stage is used there before the any-stage rows.
+
 ---
 
 ## 4 · Questions — the five question tabs
@@ -156,6 +178,15 @@ question worksheet. Adding rows changes the available question pool; it does
 not by itself change how many questions a room asks. Check the current stage
 configuration and code before changing that behavior; this workbook does not
 define a general `questions_count` field.
+
+### 4a · Questions for one stage — the **Stage Questions** tab (2026-10-12)
+
+Same columns as the five room tabs, plus **Stage ID** (`ST16`, or
+`ST16; ST13`). A stage asks its own questions first and then fills up from
+its room's tab. A stage with no room tab (every committee, ST01 and
+ST09–ST18) asks **only** these, so writing rows for a committee is what makes
+it start asking questions. The Theme still decides who is pleased (§5), and
+whoever sits on the first stage named is the one asking. Ships empty.
 
 ---
 

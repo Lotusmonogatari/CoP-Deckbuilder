@@ -8,7 +8,8 @@
     "cue_2": "I need to see results. That's it.",
     "cue_3": "How will you prove yourself?",
     "cue_4": "Stand up or stand aside.",
-    "cue_5": "Who are you speaking to. Not me."
+    "cue_5": "Who are you speaking to. Not me.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC02",
@@ -19,7 +20,8 @@
     "cue_2": "You sound like a ladder climber.",
     "cue_3": "Who are you here for?",
     "cue_4": "Tell me the truth, not rhetoric.",
-    "cue_5": "Strip away the noise."
+    "cue_5": "Strip away the noise.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC03",
@@ -30,7 +32,8 @@
     "cue_2": "Your reputation is what matters.",
     "cue_3": "It's not on me to prove your words.",
     "cue_4": "Look at the work, not the words.",
-    "cue_5": "I let my results do the talking."
+    "cue_5": "I let my results do the talking.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC04",
@@ -41,7 +44,8 @@
     "cue_2": "Tell me you feel this, truly!",
     "cue_3": "This is not abstract to us!",
     "cue_4": "Who fights for us in this room?",
-    "cue_5": "Say it like you mean it!"
+    "cue_5": "Say it like you mean it!",
+    "stage_ids": null
   },
   {
     "cue_id": "OC05",
@@ -52,7 +56,8 @@
     "cue_2": "You understand what is at stake!",
     "cue_3": "My heart says you are right!",
     "cue_4": "That is exactly what we needed!",
-    "cue_5": "Finally, someone who feels this too!"
+    "cue_5": "Finally, someone who feels this too!",
+    "stage_ids": null
   },
   {
     "cue_id": "OC06",
@@ -63,7 +68,8 @@
     "cue_2": "You won't talk me out of caring!",
     "cue_3": "This matters too much to abandon!",
     "cue_4": "I stand with the people, period!",
-    "cue_5": "No argument will cool my resolve!"
+    "cue_5": "No argument will cool my resolve!",
+    "stage_ids": null
   },
   {
     "cue_id": "OC07",
@@ -74,7 +80,8 @@
     "cue_2": "We need you standing with the room.",
     "cue_3": "Solidarity means showing up, not just talking.",
     "cue_4": "Where do you stand with your own?",
-    "cue_5": "We rise together, or not at all."
+    "cue_5": "We rise together, or not at all.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC08",
@@ -85,7 +92,8 @@
     "cue_2": "You understand what we owe each other.",
     "cue_3": "Welcome, truly, to the same side.",
     "cue_4": "This is how we look after our own.",
-    "cue_5": "Together we can make this work."
+    "cue_5": "Together we can make this work.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC09",
@@ -96,7 +104,8 @@
     "cue_2": "This room already stands together.",
     "cue_3": "You won't split us that easily.",
     "cue_4": "Our unity is stronger than your argument.",
-    "cue_5": "We look out for each other, period."
+    "cue_5": "We look out for each other, period.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC10",
@@ -107,7 +116,8 @@
     "cue_2": "Which figures support that claim, exactly?",
     "cue_3": "Give me a document, not an opinion.",
     "cue_4": "Is that verified, or merely asserted?",
-    "cue_5": "Where is the evidence for this?"
+    "cue_5": "Where is the evidence for this?",
+    "stage_ids": null
   },
   {
     "cue_id": "OC11",
@@ -118,7 +128,8 @@
     "cue_2": "Those figures check out, as stated.",
     "cue_3": "That is a verifiable, defensible claim.",
     "cue_4": "The evidence lines up with your point.",
-    "cue_5": "Correct, by every measure available."
+    "cue_5": "Correct, by every measure available.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC12",
@@ -129,7 +140,8 @@
     "cue_2": "An anecdote is not a statistic.",
     "cue_3": "Show your work before I concede anything.",
     "cue_4": "One example proves nothing on its own.",
-    "cue_5": "I deal in figures, not impressions."
+    "cue_5": "I deal in figures, not impressions.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC13",
@@ -140,7 +152,8 @@
     "cue_2": "Whose interest does this actually serve?",
     "cue_3": "You can't stand with both sides.",
     "cue_4": "Say plainly who you answer to.",
-    "cue_5": "This room knows exactly whose side you're on."
+    "cue_5": "This room knows exactly whose side you're on.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC14",
@@ -151,7 +164,8 @@
     "cue_2": "That is a straight answer on sides.",
     "cue_3": "You drew the line, and drew it well.",
     "cue_4": "Good, so we know who stands where.",
-    "cue_5": "That is exactly the divide we needed named."
+    "cue_5": "That is exactly the divide we needed named.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC15",
@@ -162,7 +176,8 @@
     "cue_2": "There is no line for me to cross.",
     "cue_3": "Labels don't decide where I stand.",
     "cue_4": "You don't get to sort me that way.",
-    "cue_5": "My position isn't yours to assign."
+    "cue_5": "My position isn't yours to assign.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC16",
@@ -173,7 +188,8 @@
     "cue_2": "Certain arrangements may have been considered.",
     "cue_3": "It's possible something like that occurred.",
     "cue_4": "Details like that tend to get fuzzy.",
-    "cue_5": "One hears things. One doesn't confirm them."
+    "cue_5": "One hears things. One doesn't confirm them.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC17",
@@ -184,7 +200,8 @@
     "cue_2": "That could certainly be arranged.",
     "cue_3": "Something might be worked out, quietly.",
     "cue_4": "Consider it noted, generally speaking.",
-    "cue_5": "It's not the worst idea we've heard."
+    "cue_5": "It's not the worst idea we've heard.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC18",
@@ -195,7 +212,8 @@
     "cue_2": "Records like that go missing sometimes.",
     "cue_3": "It may or may not be accurate.",
     "cue_4": "One wouldn't want to overstate that.",
-    "cue_5": "We'll get back to you eventually."
+    "cue_5": "We'll get back to you eventually.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC19",
@@ -206,7 +224,8 @@
     "cue_2": "You should be ashamed of yourself!",
     "cue_3": "Tell that to the mothers here!",
     "cue_4": "This is about real lives, not points!",
-    "cue_5": "People deserve better than you!"
+    "cue_5": "People deserve better than you!",
+    "stage_ids": null
   },
   {
     "cue_id": "OC20",
@@ -217,7 +236,8 @@
     "cue_2": "Rally with me on this!",
     "cue_3": "My heart belongs to this community!",
     "cue_4": "Who here wants something better? I do!",
-    "cue_5": "This is personal. Hard choices should be!"
+    "cue_5": "This is personal. Hard choices should be!",
+    "stage_ids": null
   },
   {
     "cue_id": "OC21",
@@ -228,7 +248,8 @@
     "cue_2": "I will not back down from this!",
     "cue_3": "Nothing you say can break me!",
     "cue_4": "My people stand behind me!",
-    "cue_5": "Hit me as hard as you like!"
+    "cue_5": "Hit me as hard as you like!",
+    "stage_ids": null
   },
   {
     "cue_id": "OC22",
@@ -239,7 +260,8 @@
     "cue_2": "Let's be honest with each other, shall we?",
     "cue_3": "We both know where this ends.",
     "cue_4": "The room can see where you stand.",
-    "cue_5": "I say this as a friend: step back."
+    "cue_5": "I say this as a friend: step back.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC23",
@@ -250,7 +272,8 @@
     "cue_2": "We're all here, joined together.",
     "cue_3": "We see when support is genuine.",
     "cue_4": "Stand with us, and we'll stand with you.",
-    "cue_5": "This room agrees, and so do I."
+    "cue_5": "This room agrees, and so do I.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC24",
@@ -261,7 +284,8 @@
     "cue_2": "We're on the same side here.",
     "cue_3": "My friends won't let that stand.",
     "cue_4": "Cooler heads, everyone. We're all colleagues.",
-    "cue_5": "Surely we can find common ground."
+    "cue_5": "Surely we can find common ground.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC25",
@@ -272,7 +296,8 @@
     "cue_2": "Yes or no: can you prove it?",
     "cue_3": "Can you cite a single source?",
     "cue_4": "The figures don't support you.",
-    "cue_5": "What does your plan actually cost?"
+    "cue_5": "What does your plan actually cost?",
+    "stage_ids": null
   },
   {
     "cue_id": "OC26",
@@ -283,7 +308,8 @@
     "cue_2": "Read the report. The numbers speak.",
     "cue_3": "Every figure here checks out.",
     "cue_4": "Facts first. Then decide.",
-    "cue_5": "Ask anyone to check my math."
+    "cue_5": "Ask anyone to check my math.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC27",
@@ -294,7 +320,8 @@
     "cue_2": "Your premise doesn't survive the data.",
     "cue_3": "What evidence do you have? None?",
     "cue_4": "The numbers hold up under scrutiny.",
-    "cue_5": "Is that an argument or a feeling?"
+    "cue_5": "Is that an argument or a feeling?",
+    "stage_ids": null
   },
   {
     "cue_id": "OC28",
@@ -305,7 +332,8 @@
     "cue_2": "People like you are the problem.",
     "cue_3": "You don't speak for anyone here.",
     "cue_4": "Real voters see right through you.",
-    "cue_5": "You're either with them or with us."
+    "cue_5": "You're either with them or with us.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC29",
@@ -316,7 +344,8 @@
     "cue_2": "Our people versus theirs. Choose.",
     "cue_3": "Anyone with sense stands over here.",
     "cue_4": "They won't fight for you. I will.",
-    "cue_5": "This is our fight, not theirs."
+    "cue_5": "This is our fight, not theirs.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC30",
@@ -327,7 +356,8 @@
     "cue_2": "Attack me, and you attack them.",
     "cue_3": "Your crowd doesn't scare mine.",
     "cue_4": "I don't answer to your faction.",
-    "cue_5": "Go ahead. Show them who you serve."
+    "cue_5": "Go ahead. Show them who you serve.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC31",
@@ -338,7 +368,8 @@
     "cue_2": "I'd hate for certain things to come out...",
     "cue_3": "Some might question your judgment...",
     "cue_4": "People are saying things... not me, of course.",
-    "cue_5": "Interesting choice... for someone in your position."
+    "cue_5": "Interesting choice... for someone in your position.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC32",
@@ -349,7 +380,8 @@
     "cue_2": "Something can surely be arranged...",
     "cue_3": "My door is open... for the right people.",
     "cue_4": "Consider it a gesture of goodwill...",
-    "cue_5": "Everyone benefits... in a manner of speaking."
+    "cue_5": "Everyone benefits... in a manner of speaking.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC33",
@@ -360,7 +392,8 @@
     "cue_2": "I have no recollection of that.",
     "cue_3": "That will be looked into, certainly...",
     "cue_4": "It's being reviewed at the appropriate level.",
-    "cue_5": "Let's not get into specifics..."
+    "cue_5": "Let's not get into specifics...",
+    "stage_ids": null
   },
   {
     "cue_id": "OC34",
@@ -371,7 +404,8 @@
     "cue_2": "Cut the spin. Give me facts.",
     "cue_3": "Own it, or don't say it.",
     "cue_4": "That's not an answer. Try again.",
-    "cue_5": "Results, not promises. Show me."
+    "cue_5": "Results, not promises. Show me.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC35",
@@ -382,7 +416,8 @@
     "cue_2": "You own your record. I respect that.",
     "cue_3": "Straight answer. That's rare, and welcome.",
     "cue_4": "No spin needed. That worked.",
-    "cue_5": "That's someone I can trust."
+    "cue_5": "That's someone I can trust.",
+    "stage_ids": null
   },
   {
     "cue_id": "OC36",
@@ -393,6 +428,7 @@
     "cue_2": "I don't dodge, and I won't start.",
     "cue_3": "Say what you like. Facts don't move.",
     "cue_4": "I answer for my own work only.",
-    "cue_5": "Nothing to hide. Look as long as you want."
+    "cue_5": "Nothing to hide. Look as long as you want.",
+    "stage_ids": null
   }
 ]

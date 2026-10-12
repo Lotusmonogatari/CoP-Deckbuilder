@@ -328,6 +328,7 @@ SHEETS = {
         "key": "cue_id",
         "id_pattern": r"^OC\d+$",
         "optional_sheet": True,
+        "optional": ["Stage ID"],
         "columns": [
             ("Cue ID", "cue_id", "id"),
             ("Suit", "suit", "str"),
@@ -340,6 +341,54 @@ SHEETS = {
             ("Cue 3", "cue_3", "str"),
             ("Cue 4", "cue_4", "str"),
             ("Cue 5", "cue_5", "str"),
+            # Optional (2026-10-12): blank = any stage; "ST16" or "ST16; ST13"
+            # = said only in those rooms, and checked before the any-stage
+            # lines (OpponentCues.gd).
+            ("Stage ID", "stage_ids", "id_list"),
+        ],
+    },
+    # Player Cues (2026-10-12): what the PLAYER says, by the suit of the card
+    # played and what it did (attack / gain / block, blank = any), optionally
+    # only in some stages. Checked before a card's own Flavor Text lines, which
+    # stay as the fallback (CardCues.gd). Ships empty: Cameron's to write.
+    "Player Cues": {
+        "out": "player_cues.json",
+        "key": "cue_id",
+        "id_pattern": r"^PL\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Cue ID", "cue_id", "id"),
+            ("Suit", "suit", "str"),
+            ("Verb", "verb", "str"),
+            ("Stage ID", "stage_ids", "id_list"),
+            ("Cue 1", "cue_1", "str"),
+            ("Cue 2", "cue_2", "str"),
+            ("Cue 3", "cue_3", "str"),
+            ("Cue 4", "cue_4", "str"),
+            ("Cue 5", "cue_5", "str"),
+        ],
+    },
+    # Stage Questions (2026-10-12): questions that belong to particular
+    # stages (a committee asking about its own subject, say), graded like the
+    # five room tabs. A stage asks these first and then its room's own pool;
+    # a stage with no room pool (a committee) asks only these, so writing rows
+    # for a committee is what makes it ask questions. Ships empty.
+    "Stage Questions": {
+        "out": "q_stage.json",
+        "key": "q_id",
+        "id_pattern": r"^[A-Z]\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Q ID", "q_id", "id"),
+            ("Stage ID", "stage_ids", "id_list"),
+            ("Question", "text", "str"),
+            ("Theme", "theme", "str"),
+            ("Earnest", "earnest", "str"),
+            ("Emotional", "emotional", "str"),
+            ("Appeal", "appeal", "str"),
+            ("Data Driven", "data_driven", "str"),
+            ("Divisive", "divisive", "str"),
+            ("Duplicitous", "duplicitous", "str"),
         ],
     },
     # Press Questions: 20 questions for the press conference stage type, each graded
@@ -1710,6 +1759,27 @@ def validate(data, report):
                 )
         if not any(cue.get(f"cue_{i}") for i in range(1, 6)):
             report.warn("opponent_cues", f"{cue_id} has no cue lines written")
+        for sid in cue.get("stage_ids") or []:
+            if sid not in stage_ids:
+                report.error("opponent_cues",
+                             f"{cue_id} names stage '{sid}', which is not in the Stages tab")
+
+    # --- player cues (2026-10-12) -------------------------------------------
+    # Verb blank = the line fits whatever the card did.
+    for cue in data.get("player_cues", []):
+        cue_id = cue["cue_id"]
+        if cue["suit"] not in suits:
+            report.error("player_cues",
+                         f"{cue_id} has suit '{cue['suit']}', which is not in the Suits tab")
+        if cue.get("verb") and cue["verb"] not in valid_verbs:
+            report.error("player_cues",
+                         f"{cue_id} has verb '{cue['verb']}', which must be attack, gain, block or blank")
+        for sid in cue.get("stage_ids") or []:
+            if sid not in stage_ids:
+                report.error("player_cues",
+                             f"{cue_id} names stage '{sid}', which is not in the Stages tab")
+        if not any(cue.get(f"cue_{i}") for i in range(1, 6)):
+            report.warn("player_cues", f"{cue_id} has no cue lines written")
 
     # --- parties ---------------------------------------------------------------
     for party in data.get("parties", []):
@@ -2269,6 +2339,8 @@ QUESTION_TABS = {
     "q_lobbyist": "lobbyist_meeting",
     "q_study_session": "policy_study",
     "q_media_ambush": "media_ambush",
+    # Not a room's pool: each question names its own stage(s) in stage_ids.
+    "q_stage": "stage",
 }
 
 SUIT_COLUMNS = ["earnest", "emotional", "appeal", "data_driven",
@@ -2349,6 +2421,12 @@ def fold_questions(data, report):
         )
         reporters_by_pool[stage_type] = askers
 
+    stage_ids_known = {row["stage_id"] for row in data.get("stages", [])}
+
+    def askers_for_stage(stage_id):
+        return sorted(row["opp_id"] for row in data.get("opponents", [])
+                      if stage_id in (row.get("stages") or []))
+
     pools = {}
     for source, stage_type in QUESTION_TABS.items():
         reporters = reporters_by_pool.get(stage_type, [])
@@ -2384,7 +2462,23 @@ def fold_questions(data, report):
                                 f"will please nobody")
                 if opposed_by_theme.get(theme):
                     question["displeases_boosters"] = opposed_by_theme[theme]
-                if reporters:
+                if stage_type == "stage":
+                    # A stage question asks in its own stage(s), and is asked
+                    # by someone who sits in the first of them.
+                    stages_named = row.get("stage_ids") or []
+                    if not stages_named:
+                        report.error("Stage Questions",
+                                     f"question {row['q_id']} names no Stage ID")
+                    for sid in stages_named:
+                        if sid not in stage_ids_known:
+                            report.error("Stage Questions",
+                                         f"question {row['q_id']} names stage "
+                                         f"'{sid}', which is not in the Stages tab")
+                    question["stage_ids"] = stages_named
+                    askers = askers_for_stage(stages_named[0]) if stages_named else []
+                    if askers:
+                        question["asked_by"] = askers[len(pool) % len(askers)]
+                elif reporters:
                     question["asked_by"] = reporters[len(pool) % len(reporters)]
                 pool.append(question)
         pools[stage_type] = pool

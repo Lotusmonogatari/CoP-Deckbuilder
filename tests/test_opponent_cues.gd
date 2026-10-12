@@ -184,3 +184,37 @@ func test_for_move_actually_uses_the_weighted_suit_not_just_suit_1() -> void:
 	# 0.6 lands in the suit_2 band, which is Emotional for this opponent.
 	var cue := OpponentCues.for_move(opponent, "attack", "ST02", 1, 0.6)
 	assert_eq(cue["text"], "Emotional attack line.")
+
+
+# ---------------------------------------------------------------------------
+# Stage-specific rows (2026-10-12)
+# ---------------------------------------------------------------------------
+
+func test_a_stage_row_wins_in_its_own_stage_and_nowhere_else() -> void:
+	DataDB.opponent_cues = [
+		{"cue_id": "OC01", "suit": "Earnest", "verb": "attack", "opponent_ids": null,
+			"stage_ids": null, "cue_1": "Anywhere line."},
+		{"cue_id": "OC02", "suit": "Earnest", "verb": "attack", "opponent_ids": null,
+			"stage_ids": ["ST16"], "cue_1": "Finance committee line."},
+	]
+	DataDB._build_lookups()
+	var opponent := {"opp_id": "OP_ANY", "suit_1": "Earnest"}
+	assert_eq(OpponentCues.for_move(opponent, "attack", "ST16", 1, 0.0)["text"],
+		"Finance committee line.")
+	assert_eq(OpponentCues.for_move(opponent, "attack", "ST02", 1, 0.0)["text"],
+		"Anywhere line.")
+
+
+func test_a_bespoke_stage_row_beats_the_bespoke_anywhere_row() -> void:
+	DataDB.opponent_cues = [
+		{"cue_id": "OC01", "suit": "Earnest", "verb": "gain", "opponent_ids": ["OP07"],
+			"stage_ids": null, "cue_1": "OP07 anywhere."},
+		{"cue_id": "OC02", "suit": "Earnest", "verb": "gain", "opponent_ids": ["OP07"],
+			"stage_ids": ["ST04"], "cue_1": "OP07 at the press conference."},
+	]
+	DataDB._build_lookups()
+	var opponent := {"opp_id": "OP07", "suit_1": "Earnest"}
+	assert_eq(OpponentCues.for_move(opponent, "gain", "ST04", 1, 0.0)["text"],
+		"OP07 at the press conference.")
+	assert_eq(OpponentCues.for_move(opponent, "gain", "ST05", 1, 0.0)["text"],
+		"OP07 anywhere.")

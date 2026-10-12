@@ -27,7 +27,22 @@ static func speaker() -> String:
 ##
 ## Comes back empty where the card has no cues written, which is what the
 ## screen checks before it says anything.
-static func for_card(card_id: String, stage_id: String, turn: int) -> Dictionary:
+##
+## FIRST the Player Cues tab (2026-10-12): lines written for the card's suit
+## and for what it just did (`applied`, BattleEngine.play_card()'s own
+## record), most specific first — this stage, then any stage
+## (DataDB.get_player_cue_lines()). Only when nothing is written there does
+## the card fall back to its own five Flavor Text lines, so nothing goes
+## quiet while the new tab is being filled in.
+static func for_card(card_id: String, stage_id: String, turn: int,
+		applied: Dictionary = {}) -> Dictionary:
+	var suit := str(DataDB.get_card(card_id).get("suit", ""))
+	if not suit.is_empty():
+		var by_suit: Array = DataDB.get_player_cue_lines(suit, verb_for(applied), stage_id)
+		if not by_suit.is_empty():
+			var picked: Dictionary = by_suit[_index_for(card_id, stage_id, turn) % by_suit.size()]
+			return {"text": str(picked.get("text", "")), "line_id": str(picked.get("line_id", ""))}
+
 	var lines: Array = DataDB.card_cues.get(card_id, [])
 	if lines.is_empty():
 		return {"text": "", "line_id": ""}
@@ -38,6 +53,22 @@ static func for_card(card_id: String, stage_id: String, turn: int) -> Dictionary
 		# The same numbering the workbook uses: Cue 1 is _1, not _0.
 		"line_id": "%s_%d" % [card_id, which + 1],
 	}
+
+
+## What a played card did, in the Player Cues tab's own words — the same
+## attack / gain / block the Opponent Cues tab uses, read in the same order
+## the player's portrait reacts (PlayerPortraitPresenter.face_for_card()):
+## arguing the room away beats winning it over beats banking guard. "" when
+## the card did none of the three (a draw, a special), which matches only
+## a row whose Verb is blank.
+static func verb_for(applied: Dictionary) -> String:
+	if int(applied.get("opponent_lost", 0)) > 0:
+		return "attack"
+	if int(applied.get("gained", 0)) > 0:
+		return "gain"
+	if int(applied.get("guard", 0)) > 0:
+		return "block"
+	return ""
 
 
 ## Which of the five, as a number that is stable for a given moment.

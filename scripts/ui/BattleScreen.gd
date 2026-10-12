@@ -704,7 +704,7 @@ func _play_selected() -> void:
 	# workbook; a card with none written yet puts what it did on the band
 	# instead, so every card still lands with a line.
 	var cue := CardCues.for_card(
-		card_id, str(_stage.get("stage_id", "")), engine.state.turn)
+		card_id, str(_stage.get("stage_id", "")), engine.state.turn, applied)
 	var did := BattleNarration.player_move(
 		result, _stage, engine.state, acting_opponent_name)
 	var me := str(DataDB.player.get("name_en", ""))
