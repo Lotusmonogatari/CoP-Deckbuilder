@@ -148,5 +148,10 @@
     "bill_id": "BI30",
     "outcome_direction": "Flipped to Pass",
     "cue_text": "Members came around to the view that long-term neighbors deserve a voice in local government."
+  },
+  {
+    "bill_id": "BI25",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members weighed jobs and tourism against their doubts, and decided Tomakomai should have its resort."
   }
 ]

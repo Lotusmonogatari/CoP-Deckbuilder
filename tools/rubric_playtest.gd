@@ -705,8 +705,8 @@ func _c4_full_strength_flips() -> void:
 				_max_out_player()
 				var base := _vote(bill, choice, {}, {})
 				var strong := _vote(bill, choice, GameState.effective_meta(), GameState.booster_standing)
-				var base_passed: bool = base["totals"]["Yes"] > base["totals"]["No"]
-				var strong_passed: bool = strong["totals"]["Yes"] > strong["totals"]["No"]
+				var base_passed: bool = FloorVoteEngine.bill_passes(base["totals"])
+				var strong_passed: bool = FloorVoteEngine.bill_passes(strong["totals"])
 				var flagged := bool(strong["outcome_flipped_by_influence"])
 				if flagged != (base_passed != strong_passed):
 					bad.append("%s %s %s flag %s but %s -> %s" % [player_id, bill["bill_id"], choice, flagged, base_passed, strong_passed])

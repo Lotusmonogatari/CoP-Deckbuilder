@@ -96,7 +96,7 @@ func test_choosing_twice_only_resolves_once() -> void:
 	assert_eq(int(frontier["votes_no"]), 3)
 
 
-func test_passed_is_true_when_yes_outnumbers_no() -> void:
+func test_passed_is_true_when_yes_reaches_a_majority() -> void:
 	# A different split from the shared fixture on purpose: _bill()'s own
 	# Keizaijiyuutou opposes so heavily (1 yes to 9 no) that Yes can never
 	# win there, which is exactly right for proving a FAILED vote below but
@@ -113,11 +113,33 @@ func test_passed_is_true_when_yes_outnumbers_no() -> void:
 	assert_true(result["passed"])
 
 
-func test_passed_is_false_when_no_outnumbers_yes() -> void:
+func test_passed_is_false_when_yes_falls_short() -> void:
 	var engine := FloorVoteEngine.new()
 	engine.setup({"bill": _bill(), "player_party": "Frontier Party"})
 	var result := engine.choose("No")
 	assert_false(result["passed"])
+
+
+func _house(yes: int, no: int, abstain: int) -> Dictionary:
+	return {"Yes": yes, "No": no, "Abstain": abstain}
+
+
+func test_a_bill_needs_a_majority_of_the_whole_house_not_just_more_yes_than_no() -> void:
+	# 101 seats: 51 Yes passes, 50 does not, even when No is far behind.
+	assert_eq(FloorVoteEngine.yes_needed(_house(51, 30, 20)), 51)
+	assert_true(FloorVoteEngine.bill_passes(_house(51, 30, 20)))
+	assert_false(FloorVoteEngine.bill_passes(_house(50, 30, 21)))
+
+
+func test_heavy_abstention_makes_a_lead_over_no_not_enough() -> void:
+	# BI25's shape: 48 Yes against 43 No with 10 abstaining used to pass.
+	assert_false(FloorVoteEngine.bill_passes(_house(48, 43, 10)))
+
+
+func test_the_bar_follows_the_house_size() -> void:
+	# Even house of 20 needs 11; a house of 21 also needs 11.
+	assert_eq(FloorVoteEngine.yes_needed(_house(10, 5, 5)), 11)
+	assert_eq(FloorVoteEngine.yes_needed(_house(10, 6, 5)), 11)
 
 
 func test_favorability_deltas_key_by_party_name_and_disposition() -> void:

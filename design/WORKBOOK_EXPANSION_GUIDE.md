@@ -138,7 +138,7 @@ An opponent row: **Affiliation** (a BOxx), **Party** (a Parties name or N/A), **
 
 ### 2.6 Bills, votes and laws
 
-A level names its bill (`BIxx`) in a stage slot. Floor Vote Party Positions give each party's Yes/No/Abstain split (must add to that party's seats; the exporter warns) and Disposition. The player's seat sits with their party's majority unless they vote otherwise. A strong player can swing other parties (resistance per party). Every vote is recorded in the statute book. **Law Effects** rows (per bill, per outcome) apply once or at the end of every later level. House rule (checked by the playtest rubric, D8): **every organisation is pleased by at least one bill outcome and annoyed by at least one.**
+A level names its bill (`BIxx`) in a stage slot. Floor Vote Party Positions give each party's Yes/No/Abstain split (must add to that party's seats; the exporter warns) and Disposition. The player's seat sits with their party's majority unless they vote otherwise. A strong player can swing other parties (resistance per party). **A bill passes only when Yes reaches a majority of the whole house (51 of 101); abstentions count against it.** So a bill whose splits give Yes under 51 fails by default, and its Vote Influence Cue must be a "Flipped to Pass" line (and a bill that passes by default needs "Flipped to Fail"). Every vote is recorded in the statute book. **Law Effects** rows (per bill, per outcome) apply once or at the end of every later level. House rule (checked by the playtest rubric, D8): **every organisation is pleased by at least one bill outcome and annoyed by at least one.**
 
 ---
 

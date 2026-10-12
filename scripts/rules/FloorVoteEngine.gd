@@ -165,14 +165,28 @@ static func majority_bucket(position: Dictionary) -> String:
 	return best
 
 
+## Yes votes a bill needs: a majority of the whole house (everyone in the
+## chamber, abstainers included). 101 seats gives 51, Yezo's floor majority
+## (CLAUDE.md section 4); derived from the seats so it never goes stale.
+static func yes_needed(totals: Dictionary) -> int:
+	var house := int(totals.get("Yes", 0)) + int(totals.get("No", 0)) + int(totals.get("Abstain", 0))
+	return house / 2 + 1
+
+
+## True when Yes reaches a majority of the whole house.
+static func bill_passes(totals: Dictionary) -> bool:
+	return int(totals.get("Yes", 0)) >= yes_needed(totals)
+
+
 ## Resolves the vote: `choice` is "Yes", "No", or "Abstain" (case-insensitive).
 ## Returns:
 ##   { "positions": Array (this bill's positions, seats moved if the player
 ##       voted against their own party's assumed majority and/or the
 ##       influence swing fired),
 ##     "totals": { "Yes": n, "No": n, "Abstain": n },
-##     "passed": bool (Yes strictly outnumbers No — an Abstain counts toward
-##       the house but not toward either side),
+##     "passed": bool (Yes reaches a majority of the whole house — 51 of 101;
+##       see bill_passes(). Abstentions count toward the house, so they make
+##       the bar higher, never lower),
 ##     "favorability_deltas": { party_name: delta, ... },
 ##     "influence_gate_passed": bool,
 ##     "outcome_flipped_by_influence": bool (the bill's own pass/fail
@@ -186,19 +200,19 @@ func choose(choice: String) -> Dictionary:
 		if not _player_party.is_empty():
 			_reallocate_player_vote(picked)
 		var baseline_totals := _totals()
-		var baseline_passed: bool = int(baseline_totals["Yes"]) > int(baseline_totals["No"])
+		var baseline_passed: bool = bill_passes(baseline_totals)
 
 		_influence_gate_passed = _apply_influence_swing(picked)
 
 		var final_totals := _totals()
-		_outcome_flipped_by_influence = (final_totals["Yes"] > final_totals["No"]) != baseline_passed
+		_outcome_flipped_by_influence = bill_passes(final_totals) != baseline_passed
 		_resolved = true
 
 	var totals := _totals()
 	return {
 		"positions": _positions,
 		"totals": totals,
-		"passed": totals["Yes"] > totals["No"],
+		"passed": bill_passes(totals),
 		"favorability_deltas": _favorability_deltas(),
 		"influence_gate_passed": _influence_gate_passed,
 		"outcome_flipped_by_influence": _outcome_flipped_by_influence,
