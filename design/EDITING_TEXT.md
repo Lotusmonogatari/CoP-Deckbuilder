@@ -2,7 +2,9 @@
 
 Every word the game says comes out of `design/CoP_Starter_Card_Stage_Data.xlsx`.
 Nothing is typed into the code. This says which tab holds what, and what to
-run afterwards.
+run afterwards. For adding whole new stages, questions and cues (how the
+systems connect and how to phrase lines by scope), see
+`design/WORKBOOK_EXPANSION_GUIDE.md`.
 
 ---
 
