@@ -298,7 +298,7 @@
   {
     "ticker_id": "TK38",
     "condition_type": "staff_role",
-    "condition_target": "Press Secretary",
+    "condition_target": "Media Spokesperson",
     "condition_op": "hired",
     "condition_value": null,
     "text_en": "Tomorrow morning, our breakfast show will hear from {player}’s press secretary about recent speeches and meetings. - Aomori’s Morning Mori ☼"
@@ -306,7 +306,7 @@
   {
     "ticker_id": "TK39",
     "condition_type": "staff_role",
-    "condition_target": "Press Secretary",
+    "condition_target": "Media Spokesperson",
     "condition_op": "not_hired",
     "condition_value": null,
     "text_en": "“Our requests to hear from {player} remain unanswered. Is there anyone working in that office?” - Otaru Radio 今日 ☼"
@@ -314,7 +314,7 @@
   {
     "ticker_id": "TK40",
     "condition_type": "staff_role",
-    "condition_target": "Press Secretary",
+    "condition_target": "Media Spokesperson",
     "condition_op": "not_hired",
     "condition_value": null,
     "text_en": "“A politician who refuses to hire staff and meet with the press is dodging transparency and truth!” - Sapporo Digital Networks ☼"
