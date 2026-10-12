@@ -2,19 +2,20 @@
 
 For an assistant (human or AI) adding content to `design/CoP_Starter_Card_Stage_Data.xlsx`: new stages, questions tied to them, spoken cues, opponents, bills and their effects. It explains how the pieces connect, what each number does to play, and how to phrase writing so it fits where it can appear.
 
-Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT.md` (a batch-drafting prompt), the **Tone Guide** tab, and the header notes on every column (hover a header cell in Excel). Written 2026-10-12 against the code as it stands.
+Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT.md` (a batch-drafting prompt), the **Tone Guide** tab, and the header notes on every column (hover a header cell in Excel). Written 2026-10-12 and revised the same day against the code and workbook as they stand (23 stages, 60 levels, 30 organisations, 125 opponents, 39 visitors, 30 bills, 201 question themes).
 
 ---
 
 ## Executive summary
 
-| If you remember five things | |
+| If you remember six things | |
 |---|---|
 | **1. Everything is a draft for Cameron.** | Write it, mark it ("Draft YYYY-MM-DD" in a Why/Note cell where there is one), never decide canon: no new named characters, parties, committees or political positions he has not written. |
 | **2. Rooms are rows, not code.** | A new stage is a Stages row + an Affinity column + opponents who list it + (optionally) its own questions and cues. No programming, unless you need a new *kind* of room (see §9). |
 | **3. A question does three jobs.** | Its suit grades scale the card that answers it (×1.3 Strong, ×0.7 Weak), its Theme decides which organisations are pleased or set back, and those standings feed backing, party opinion and the Floor Vote influence gate. |
 | **4. Scope decides wording.** | The wider a line can appear, the more generic it must be. Any-stage lines obey all five Tone Guide rules; stage-scoped lines may name the room's business; lines scoped to one opponent may carry that person's party or organisation voice. |
 | **5. Who asks a question is picked from the room.** | The asker is someone the room seats. Use the **Asked By Party** column to limit a question to one or more parties (or `OWN`, the player's own) before you write it in a party voice (§6). |
+| **6. A new person needs three rows.** | Opponents (or Visitors) for the game, an **Assets** row per expression for the art team, and the name spelt identically in both (§7). |
 
 After any edit: `python3 tools/export_data.py` (must end "No errors"), then `tools/verify.sh`. Edit the workbook in Excel, or by raw XML (never an openpyxl save; it corrupts cached formulas).
 
@@ -103,7 +104,7 @@ Every Combat stage needs a column in **Affinity**: a multiplier per suit on the 
 | **M** Medium | unchanged | nothing |
 | **W** Weak | ×0.7 this round | the *pleased* organisations are annoyed **−1** |
 
-The question multiplier stacks with the room's affinity. Per organisation, one stage's net change is capped at ±5. Grades are per suit. **The room tabs' own footers set the rule: at least 2 S and at most 2 W per question, no time references, no assumed past events, and no specific policy area** (a room question has to fit any audience). A W on at least one suit is good practice, because it makes the choice of suit matter, but the footers do not require it. **Stage Questions are exempt from "no specific policy area"**: being specific to a room's business is their point, and they should still keep 2 or more S and 2 or fewer W. Every existing question now has at least 2 S (regraded 2026-10-12). About 37 have no W, mostly in the Press, Ambush and Lobbyist tabs: that is legal, so leave them, but a new question should normally include one. A question whose Theme no row maps pleases nobody (an export warning).
+The question multiplier stacks with the room's affinity. Per organisation, one stage's net change is capped at ±5. Grades are per suit. **The room tabs' own footers set the rule: at least 2 S and at most 2 W per question, no time references, no assumed past events, and no specific policy area** (a room question has to fit any audience). A W on at least one suit is good practice, because it makes the choice of suit matter, but the footers do not require it (legal either way). **Stage Questions are exempt from "no specific policy area"**: being specific to a room's business is their point, and they should still keep 2 or more S and 2 or fewer W. Every existing question has at least 2 S. About 37 have no W, mostly in the Press, Ambush and Lobbyist tabs: leave them, but give a new question one. Do not regrade existing rows without Cameron. A question whose Theme no row maps pleases nobody (an export warning).
 
 **Grading by suit.** Ask "which register actually answers this?":
 - Earnest wins when the question asks for accountability or a plain commitment.
@@ -268,6 +269,7 @@ Rules:
 | **Transition Dialogue** | a two-line exchange, character then player | Stage-scoped or any-stage; the character must be in Transition Cast |
 | **Vote Influence Cues** | the line when the player's influence flips a bill | Per bill and direction (passed/failed); may name the bill |
 | **Law Effects** | what a passed or failed bill does | Beneficiaries +2/+3, those it hurts −2; failed rows mirror smaller. Keep D8 (every organisation pleased once and annoyed once) |
+| **Assets** | one row per file the art team must draw: Asset ID, Category, Name, Expression, File Name, Folder, Size, Drawn (Yes/No) | Add rows whenever you add an opponent, visitor, staff member or protagonist: three expressions for a visitor (neutral, gaining, damaged), six for an opponent (neutral, attacking, guarding, gaining, damaged, defeated). **Name must match the Opponents/Visitors/Player tab exactly** (given name first); set Drawn to No |
 | **Office Notices / Ticker** | Office flavour lines under conditions (staff, meta, `always`, or `law` passed/failed) | `{player}` fills the protagonist's name in the ticker |
 
 ---
@@ -280,6 +282,8 @@ Rules:
 4. For anything touching organisations, bills or votes: `xvfb-run .tools/godot --path . tools/rubric_playtest.tscn` should still score full marks.
 5. A new room: run the bot's stage trial (§3) and note the win rate for Cameron.
 6. Mark every new row as a draft where the tab has a Why or Note column.
+7. Check names agree across tabs (Assets against Opponents/Visitors/Player) and that cue lines pass the Tone Guide's five rules (a quick read for time words such as now, again, still, already, always, never).
+8. Re-read the README tab: if you changed a count (stages, levels, organisations, themes), update its tab guide. It is Cameron's overview, so keep it true.
 
 ## 9. When the workbook is not enough (ask first)
 
