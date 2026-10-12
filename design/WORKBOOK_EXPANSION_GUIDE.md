@@ -14,7 +14,7 @@ Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT
 | **2. Rooms are rows, not code.** | A new stage is a Stages row + an Affinity column + opponents who list it + (optionally) its own questions and cues. No programming, unless you need a new *kind* of room (see §9). |
 | **3. A question does three jobs.** | Its suit grades scale the card that answers it (×1.3 Strong, ×0.7 Weak), its Theme decides which organisations are pleased or set back, and those standings feed backing, party opinion and the Floor Vote influence gate. |
 | **4. Scope decides wording.** | The wider a line can appear, the more generic it must be. Any-stage lines obey all five Tone Guide rules; stage-scoped lines may name the room's business; lines scoped to one opponent may carry that person's party or organisation voice. |
-| **5. Who asks a question is assigned, not written.** | The asker is picked from everyone eligible for the stage, in rotation. A question must not name the asker's party unless every eligible asker shares it (§6). |
+| **5. Who asks a question is picked from the room.** | The asker is someone the room seats. Use the **Asked By Party** column to limit a question to one or more parties (or `OWN`, the player's own) before you write it in a party voice (§6). |
 
 After any edit: `python3 tools/export_data.py` (must end "No errors"), then `tools/verify.sh`. Edit the workbook in Excel, or by raw XML (never an openpyxl save; it corrupts cached formulas).
 
@@ -151,6 +151,7 @@ Example brief: "a Budget Committee hearing", "a Prefectural Assembly visit", "a 
 | 2 | **Affinity** | Add a column for the new STxx: two up (1.5/1.3), two down (0.5/0.7), two at 1.0 | Yes for Combat (export error otherwise) |
 | 3 | **Opponents** | Add the STxx to the Stage cell of everyone who belongs in that room, or add new opponents (placeholder names only unless Cameron supplies them) | Yes, at least Opponent Count of them |
 | 4 | **Question Pool** column | Point at an existing room tab if it should ask those questions, or leave blank | Optional |
+| 4b | **Own Party Only** | Yes for a room of the player's own party only | Optional |
 | 5 | **Stage Questions** | Rows with this STxx: the room's own questions, asked first | Optional, but this is what makes a room unique |
 | 6 | **Question Themes** | A row for every new Theme, Organisation (and optional Annoys) filled, Why "Draft…" | Yes for every theme you use |
 | 7 | **Opponent Cues / Player Cues** | Stage-scoped rows (Stage ID = the STxx) | Optional |
@@ -230,24 +231,33 @@ An organisation (Affiliation) speaks its own interest: a Fisheries Cooperative m
 
 ---
 
-## 6. Who asks: the one trap
+## 6. Who asks, and limiting it by party
 
-A question's asker is not written in the workbook. The exporter assigns it in rotation from **everyone whose Stage cell lists the question's stage** (for Stage Questions, the first stage named; for a room tab, the stage that uses that pool). So:
+A question's asker is picked from **the people the room seats**: everyone whose Opponents-tab Stage cell lists that stage (for Stage Questions, the stages the row names; for a room tab, the room using that pool). The exporter assigns one in rotation, and the game swaps in someone else if that person is not in the room this time.
 
-- Write questions in a voice **any eligible asker** could use.
-- A party-specific or organisation-specific question is safe only where **every eligible asker shares that party or organisation**. Today:
+**Asked By Party** (optional column on all six question tabs, 2026-10-12) limits who may ask:
 
-| Stage | Eligible askers |
+| Cell | Who may ask |
 |---|---|
-| ST04 Press, ST19 Ambush | 8 journalists, all National Media (BO08): media voice is safe |
-| ST05 Town Hall | constituents of several organisations (BO18, BO11, BO06, BO12): civic voice, no party |
-| ST20 Lobbyist | one lobbyist each from several organisations: interest voice, but not a named one |
-| Committees, ST02, ST03, ST08, ST21 | MPs of several parties: no party voice |
+| blank | anyone the room seats |
+| `PT05` | only Keizaijiyuutou members the room seats |
+| `PT03; PT06` | Frontier Party or Country Initiative members |
+| `OWN` | members of the **player's own** party (settled in the game, since it depends on the protagonist) |
 
-- **To make a room party-specific**, restrict who lists it (its Stage cell), or ask Cameron to approve a small code change: an optional **Asked By** column on question rows (not built).
-- **Open question for Cameron:** the Party Caucus (ST03) is named after the player's own party (`{party}` caucus), but draws MPs from **all six** parties. Writing caucus content as "your own party" therefore does not match who appears. Either restrict ST03's eligible opponents by party (a code change) or keep caucus lines party-neutral.
+Rules:
+- If nobody of the named parties sits in the room, the question is **not asked there** (it never goes into the wrong mouth). For a named PTxx, the export reports this as an error so you notice; for `OWN` it can only be known in play.
+- Once a question is party-limited you may write it **in that party's voice** (§5), the same freedom as an opponent-scoped cue.
+- Who the room seats is decided on the Opponents tab (Stage cell) and, for the caucus, by **Own Party Only** (below).
 
----
+| Stage | Who the room seats today |
+|---|---|
+| ST04 Press, ST19 Ambush | 8 journalists, all National Media (BO08) |
+| ST05 Town Hall | constituents of several organisations (BO18, BO11, BO06, BO12); no party |
+| ST20 Lobbyist | lobbyists from several organisations; no party |
+| ST03 Party Caucus | **only the player's own party** (Own Party Only = Yes) |
+| Committees, ST02, ST08, ST21 | MPs of several parties: use Asked By Party for any party voice |
+
+**Own Party Only** (Stages tab, Yes/No, blank = No): the room seats only MPs of the player's own party. It is set on the Party Caucus (ST03). For it to work, each protagonist's party needs at least as many MPs listing the room as its Opponent Count: today Frontier Party has 2 (OP101, OP17), Keizaijiyuutou 2, Country Initiative 2. If a party has nobody there, the room falls back to everyone (with a warning in the log). A caucus question written for "your party" should carry `OWN` in Asked By Party.
 
 ## 7. Other content types, briefly
 
@@ -276,6 +286,4 @@ A question's asker is not written in the workbook. The exporter assigns it in ro
 These need code, so propose them to Cameron rather than working around them:
 - a new **kind** of room (a new Mode or Bar Model);
 - a new **room question tab** (a sixth pool beside the five); Stage Questions usually does the job instead;
-- an **Asked By** column for questions (§6);
-- party-filtered opponents for a stage (the caucus question in §6);
 - any new column a script must read.

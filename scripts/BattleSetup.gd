@@ -212,7 +212,33 @@ static func eligible_opponents(stage_id: String) -> Array:
 		found.append(candidate)
 	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return str(a.get("opp_id", "")) < str(b.get("opp_id", "")))
-	return found
+	return _own_party_filter(stage_id, found)
+
+
+## A room marked "Own Party Only" on the Stages tab (the party caucus,
+## Cameron 2026-10-12) seats only MPs of the player's own party. If the
+## workbook seats nobody from that party there, the room falls back to
+## everyone eligible, with a warning, rather than having nobody to fight.
+static func _own_party_filter(stage_id: String, found: Array) -> Array:
+	if str(DataDB.get_stage(stage_id).get("own_party_only", "")).strip_edges() != "Yes":
+		return found
+	var party := str(DataDB.player.get("party", "")).strip_edges()
+	var own: Array = found.filter(func(o: Dictionary) -> bool:
+		return str(o.get("party", "")).strip_edges() == party)
+	if own.is_empty():
+		push_warning("BattleSetup: %s is Own Party Only, but nobody from %s lists it; seating everyone eligible." % [stage_id, party])
+		return found
+	return own
+
+
+## The room's questions with an asker who is actually in the room and of a
+## party the question allows (QuestionAskers, 2026-10-12).
+static func questions_for_room(questions: Array, stage_id: String) -> Array:
+	var party_names := {}
+	for party: Dictionary in DataDB.parties:
+		party_names[str(party.get("party_id", ""))] = str(party.get("name", ""))
+	return QuestionAskers.resolve(questions, eligible_opponents(stage_id),
+		str(DataDB.player.get("party", "")).strip_edges(), party_names)
 
 
 ## The hand-written pin for one level+slot from
@@ -316,7 +342,9 @@ static func _resolve_pin(level_id: String, stage_id: String, slot: int) -> Dicti
 	if pinned.is_empty():
 		push_warning("BattleSetup: %s slot %d pins unknown opponent '%s'." % [level_id, slot, opp_id])
 		return {}
-	if not (pinned.get("stages", []) as Array).has(stage_id):
+	var seated := eligible_opponents(stage_id).any(func(o: Dictionary) -> bool:
+		return str(o.get("opp_id", "")) == opp_id)
+	if not (pinned.get("stages", []) as Array).has(stage_id) or not seated:
 		push_warning(("BattleSetup: %s slot %d pins %s, who is not eligible for %s. "
 			+ "Falling back to the dynamic pick.") % [level_id, slot, opp_id, stage_id])
 		return {}
@@ -521,11 +549,11 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		# written its own questions out longhand. A stage's own type or
 		# "question_pool" column (a proposed stages.json addition) wins;
 		# QUESTION_POOL_BY_STAGE is the fallback for a canon row with neither.
-		"question_pool": DataDB.questions.get(_question_pool_name(stage, stage_id), []),
+		"question_pool": questions_for_room(DataDB.questions.get(_question_pool_name(stage, stage_id), []), stage_id),
 		# Questions written for this stage itself (Stage Questions tab,
 		# 2026-10-12): dealt before the room's own pool, and the only
 		# questions a stage with no room pool (a committee) asks.
-		"question_pool_first": DataDB.get_stage_questions(stage_id),
+		"question_pool_first": questions_for_room(DataDB.get_stage_questions(stage_id), stage_id),
 		# How often a weak answer actually costs tone (§9/§8, 2026-09-28,
 		# Cameron: 0.75) — the same number across every question-asking
 		# stage, rather than one per stage type. Defaults to 1.0 (always

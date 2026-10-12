@@ -401,6 +401,7 @@ SHEETS = {
     "Stage Questions": {
         "out": "q_stage.json",
         "key": "q_id",
+        "optional": ["Asked By Party"],
         "id_pattern": r"^[A-Z]\d+$",
         "optional_sheet": True,
         "columns": [
@@ -414,6 +415,9 @@ SHEETS = {
             ("Data Driven", "data_driven", "str"),
             ("Divisive", "divisive", "str"),
             ("Duplicitous", "duplicitous", "str"),
+            # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
+            # party. Only someone from one of these parties may ask it.
+            ("Asked By Party", "asked_by_parties", "id_list"),
         ],
     },
     # Press Questions: 20 questions for the press conference stage type, each graded
@@ -422,6 +426,7 @@ SHEETS = {
     "Press Questions": {
         "out": "q_press.json",
         "key": "q_id",
+        "optional": ["Asked By Party"],
         "id_pattern": r"^[A-Z]\d+$",
         "columns": [
             ("Q ID", "q_id", "id"),
@@ -433,6 +438,9 @@ SHEETS = {
             ("Data Driven", "data_driven", "str"),
             ("Divisive", "divisive", "str"),
             ("Duplicitous", "duplicitous", "str"),
+            # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
+            # party. Only someone from one of these parties may ask it.
+            ("Asked By Party", "asked_by_parties", "id_list"),
         ],
     },
     # Town Hall Questions: 20 questions for the town hall stage type, each graded
@@ -441,6 +449,7 @@ SHEETS = {
     "Town Hall Questions": {
         "out": "q_town_hall.json",
         "key": "q_id",
+        "optional": ["Asked By Party"],
         "id_pattern": r"^[A-Z]\d+$",
         "columns": [
             ("Q ID", "q_id", "id"),
@@ -452,6 +461,9 @@ SHEETS = {
             ("Data Driven", "data_driven", "str"),
             ("Divisive", "divisive", "str"),
             ("Duplicitous", "duplicitous", "str"),
+            # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
+            # party. Only someone from one of these parties may ask it.
+            ("Asked By Party", "asked_by_parties", "id_list"),
         ],
     },
     # Lobbyist Questions: 20 questions for the lobbyist meeting stage type, each graded
@@ -460,6 +472,7 @@ SHEETS = {
     "Lobbyist Questions": {
         "out": "q_lobbyist.json",
         "key": "q_id",
+        "optional": ["Asked By Party"],
         "id_pattern": r"^[A-Z]\d+$",
         "columns": [
             ("Q ID", "q_id", "id"),
@@ -471,6 +484,9 @@ SHEETS = {
             ("Data Driven", "data_driven", "str"),
             ("Divisive", "divisive", "str"),
             ("Duplicitous", "duplicitous", "str"),
+            # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
+            # party. Only someone from one of these parties may ask it.
+            ("Asked By Party", "asked_by_parties", "id_list"),
         ],
     },
     # Study Session Questions: 20 questions for the policy study stage type, each graded
@@ -479,6 +495,7 @@ SHEETS = {
     "Study Session Questions": {
         "out": "q_study_session.json",
         "key": "q_id",
+        "optional": ["Asked By Party"],
         "id_pattern": r"^[A-Z]\d+$",
         "columns": [
             ("Q ID", "q_id", "id"),
@@ -490,6 +507,9 @@ SHEETS = {
             ("Data Driven", "data_driven", "str"),
             ("Divisive", "divisive", "str"),
             ("Duplicitous", "duplicitous", "str"),
+            # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
+            # party. Only someone from one of these parties may ask it.
+            ("Asked By Party", "asked_by_parties", "id_list"),
         ],
     },
     # Media Ambush Questions: 20 questions for the media ambush stage type, each graded
@@ -498,6 +518,7 @@ SHEETS = {
     "Media Ambush Questions": {
         "out": "q_media_ambush.json",
         "key": "q_id",
+        "optional": ["Asked By Party"],
         "id_pattern": r"^[A-Z]\d+$",
         "columns": [
             ("Q ID", "q_id", "id"),
@@ -509,6 +530,9 @@ SHEETS = {
             ("Data Driven", "data_driven", "str"),
             ("Divisive", "divisive", "str"),
             ("Duplicitous", "duplicitous", "str"),
+            # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
+            # party. Only someone from one of these parties may ask it.
+            ("Asked By Party", "asked_by_parties", "id_list"),
         ],
     },
     # Which organisation cares about each question theme. A DRAFT: Claude
@@ -600,7 +624,7 @@ SHEETS = {
             "Bar Model", "Energy Mode", "Energy Pool", "Sequence Mode",
             "Opponent Count", "Question Pool", "Reputation Affects Start",
             "Reveal In Briefing", "Loss Ends Level",
-            "Show Transition", "Transition Speaker Count",
+            "Show Transition", "Transition Speaker Count", "Own Party Only",
         ],
         "columns": [
             ("Stage ID", "stage_id", "id"),
@@ -667,6 +691,9 @@ SHEETS = {
             # Blank means 1. How many distinct characters StageTransition.gd
             # samples from Transition Cast for this stage's transition.
             ("Transition Speaker Count", "transition_speaker_count", "int"),
+            # 2026-10-12 (Cameron): Yes = only MPs of the player's own party
+            # are drawn for this room (the party caucus). Blank = No.
+            ("Own Party Only", "own_party_only", "str"),
         ],
     },
     "Cards": {
@@ -1661,6 +1688,10 @@ def validate(data, report):
                 f"{sid} audience shares add up to {total:.0%}, not 100%",
             )
 
+        own_party = str(stage.get("own_party_only") or "").strip()
+        if own_party and own_party not in ("Yes", "No"):
+            report.error("stages", f"{sid} Own Party Only is '{own_party}': write Yes, No or leave it blank")
+
         if stage["mode"] == "Combat":
             for field in ("turn_limit", "energy_per_turn", "hand_size", "gaffe_limit"):
                 if stage[field] is None:
@@ -2489,6 +2520,11 @@ def fold_questions(data, report):
         return sorted(row["opp_id"] for row in data.get("opponents", [])
                       if stage_id in (row.get("stages") or []))
 
+    party_name_by_id = {str(p.get("party_id")): str(p.get("name", ""))
+                        for p in data.get("parties", []) if isinstance(p, dict)}
+    party_by_opp = {row["opp_id"]: str(row.get("party") or "")
+                    for row in data.get("opponents", [])}
+
     pools = {}
     for source, stage_type in QUESTION_TABS.items():
         reporters = reporters_by_pool.get(stage_type, [])
@@ -2538,10 +2574,29 @@ def fold_questions(data, report):
                                          f"'{sid}', which is not in the Stages tab")
                     question["stage_ids"] = stages_named
                     askers = askers_for_stage(stages_named[0]) if stages_named else []
-                    if askers:
-                        question["asked_by"] = askers[len(pool) % len(askers)]
-                elif reporters:
-                    question["asked_by"] = reporters[len(pool) % len(reporters)]
+                else:
+                    askers = reporters
+                # Asked By Party (2026-10-12): only someone from one of these
+                # parties may ask. OWN (the player's own party) can only be
+                # settled in the game, so it leaves the choice to BattleSetup.
+                parties = [p.strip() for p in (row.get("asked_by_parties") or []) if p.strip()]
+                if parties:
+                    question["asked_by_parties"] = parties
+                    for party_id in parties:
+                        if party_id != "OWN" and party_id not in party_name_by_id:
+                            report.error(source, f"question {row['q_id']} Asked By Party names "
+                                         f"'{party_id}', which is not a party_id (or OWN)")
+                    named = {party_name_by_id.get(p) for p in parties if p != "OWN"}
+                    matching = [a for a in askers if party_by_opp.get(a) in named]
+                    if matching:
+                        askers = matching
+                    elif "OWN" not in parties:
+                        report.error(source, f"question {row['q_id']} may only be asked by "
+                                     f"{', '.join(parties)}, but nobody from that party sits "
+                                     f"in the room it is asked in")
+                        askers = []
+                if askers:
+                    question["asked_by"] = askers[len(pool) % len(askers)]
                 pool.append(question)
         pools[stage_type] = pool
         report.note(f"{stage_type}: {len(pool)} questions in the pool")

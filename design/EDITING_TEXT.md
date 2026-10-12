@@ -162,6 +162,7 @@ a row naming a stage is used there before the any-stage rows.
 | **Theme** | One word. This is what decides **which organisation** cares — see §5. |
 | **Earnest … Duplicitous** | `S`, `M` or `W` for each suit. |
 | Strong suits, Words, Sample answers | Your own checks. The game ignores them. |
+| **Asked By Party** | Optional: `PT05`, `PT03; PT06`, or `OWN` (the player's own party). Only someone of those parties who is in the room asks it; if nobody is, it is not asked there. Blank = anyone in the room. |
 
 **What the grades do (2026-09-28: redesigned as an effectiveness
 multiplier, not a tone cost):**
