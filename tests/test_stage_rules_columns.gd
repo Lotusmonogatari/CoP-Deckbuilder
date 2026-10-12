@@ -227,7 +227,11 @@ func test_expand_level_leaves_question_pool_size_at_zero_for_a_stage_with_no_poo
 	for stage: Dictionary in expanded.get("stages", []):
 		if stage.get("stage_id") in ["ST03", "ST10"]:
 			checked += 1
-			assert_eq(int(stage.get("question_pool_size", -1)), 0,
-				"%s has no question_pool, so its count should be 0, not left unset"
+			# No room pool, so the count is just its own Stage Questions
+			# (2026-10-12): 0 for the caucus, ST10's committee questions for
+			# ST10 — never left unset.
+			var own := DataDB.get_stage_questions(str(stage.get("stage_id"))).size()
+			assert_eq(int(stage.get("question_pool_size", -1)), own,
+				"%s has no question_pool, so its count is only its own Stage Questions"
 					% stage.get("stage_id"))
 	assert_eq(checked, 2, "sanity: both ST03 and ST10 were found and checked")

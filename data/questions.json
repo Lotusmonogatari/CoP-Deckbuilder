@@ -4936,5 +4936,698 @@
       "asked_by": "OP112"
     }
   ],
-  "stage": []
+  "stage": [
+    {
+      "id": "S01",
+      "text": "When the next disaster strikes, who is in charge on day one?",
+      "theme": "Disaster readiness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST01"
+      ],
+      "asked_by": "OP01"
+    },
+    {
+      "id": "S02",
+      "text": "Reconstruction money keeps arriving late. Whose fault is that?",
+      "theme": "Reconstruction",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST01"
+      ],
+      "asked_by": "OP04"
+    },
+    {
+      "id": "S03",
+      "text": "Should this committee be given powers it was never meant to have?",
+      "theme": "Emergency powers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST01"
+      ],
+      "asked_by": "OP08"
+    },
+    {
+      "id": "S04",
+      "text": "A member took gifts and kept quiet. What should follow?",
+      "theme": "Ethics rules",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST09"
+      ],
+      "asked_by": "OP45"
+    },
+    {
+      "id": "S05",
+      "text": "Should prosecutors be free to investigate sitting members?",
+      "theme": "Accountability",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST09"
+      ],
+      "asked_by": "OP50"
+    },
+    {
+      "id": "S06",
+      "text": "How do we know your own funding is clean?",
+      "theme": "Transparency",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST09"
+      ],
+      "asked_by": "OP60"
+    },
+    {
+      "id": "S07",
+      "text": "Who pays when a factory poisons a river?",
+      "theme": "Conservation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO06",
+        "BO20",
+        "BO29"
+      ],
+      "stage_ids": [
+        "ST10"
+      ],
+      "asked_by": "OP37"
+    },
+    {
+      "id": "S08",
+      "text": "Is the energy transition moving too fast for rural towns?",
+      "theme": "Energy transition",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST10"
+      ],
+      "asked_by": "OP42"
+    },
+    {
+      "id": "S09",
+      "text": "Fishers say the coast is dying. What does the data show?",
+      "theme": "Marine pollution",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST10"
+      ],
+      "asked_by": "OP51"
+    },
+    {
+      "id": "S10",
+      "text": "Can we afford the defence budget this committee is asked to approve?",
+      "theme": "Defense spending",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST11"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S11",
+      "text": "Bases bring jobs and noise. Which matters more to you?",
+      "theme": "Base burden",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST11"
+      ],
+      "asked_by": "OP54"
+    },
+    {
+      "id": "S12",
+      "text": "Does deterrence keep the peace or invite a fight?",
+      "theme": "Deterrence",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST11"
+      ],
+      "asked_by": "OP57"
+    },
+    {
+      "id": "S13",
+      "text": "Why should members set their own pay?",
+      "theme": "Member pay",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST12"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "S14",
+      "text": "Is this committee's workload an excuse to skip hearings?",
+      "theme": "Committee workload",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST12"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S15",
+      "text": "Should the rules of debate favour the majority?",
+      "theme": "Parliamentary procedure",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST12"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S16",
+      "text": "Rice farmers are leaving the land. What will keep them?",
+      "theme": "Rice policy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST13"
+      ],
+      "asked_by": "OP46"
+    },
+    {
+      "id": "S17",
+      "text": "Should the state insure every harvest?",
+      "theme": "Crop insurance",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST13"
+      ],
+      "asked_by": "OP70"
+    },
+    {
+      "id": "S18",
+      "text": "Who inherits a farm nobody wants?",
+      "theme": "Farm succession",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST13"
+      ],
+      "asked_by": "OP74"
+    },
+    {
+      "id": "S19",
+      "text": "Does our alliance serve Yezo or someone else?",
+      "theme": "Alliance",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST14"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "S20",
+      "text": "How exposed are our supply chains to a single neighbour?",
+      "theme": "Supply chains",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST14"
+      ],
+      "asked_by": "OP61"
+    },
+    {
+      "id": "S21",
+      "text": "Should the region trust our security plans?",
+      "theme": "Regional security",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST14"
+      ],
+      "asked_by": "OP72"
+    },
+    {
+      "id": "S22",
+      "text": "Roads to nowhere, or roads to survival?",
+      "theme": "Infrastructure",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO14",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST15"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S23",
+      "text": "Who decides which neighbourhood gets redeveloped first?",
+      "theme": "Redevelopment",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST15"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S24",
+      "text": "Are we building for disasters or for ribbon cuttings?",
+      "theme": "Disaster readiness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST15"
+      ],
+      "asked_by": "OP19"
+    },
+    {
+      "id": "S25",
+      "text": "How much more debt can Yezo carry?",
+      "theme": "Public debt",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST16"
+      ],
+      "asked_by": "OP47"
+    },
+    {
+      "id": "S26",
+      "text": "Tax relief sounds kind. Who pays for it?",
+      "theme": "Tax relief",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO18",
+        "BO23",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST16"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S27",
+      "text": "Should the budget balance even in a downturn?",
+      "theme": "Fiscal discipline",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST16"
+      ],
+      "asked_by": "OP97"
+    },
+    {
+      "id": "S28",
+      "text": "Why do citizens still queue for paper forms?",
+      "theme": "Digital government",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST17"
+      ],
+      "asked_by": "OP96"
+    },
+    {
+      "id": "S29",
+      "text": "Should towns run more of their own affairs?",
+      "theme": "Local autonomy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST17"
+      ],
+      "asked_by": "OP02"
+    },
+    {
+      "id": "S30",
+      "text": "Who checks that ministries do what they promise?",
+      "theme": "Oversight",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST17"
+      ],
+      "asked_by": "OP08"
+    },
+    {
+      "id": "S31",
+      "text": "Should the Cabinet act first and ask the Assembly later?",
+      "theme": "Emergency powers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST18"
+      ],
+      "asked_by": "OP10"
+    },
+    {
+      "id": "S32",
+      "text": "Does the Constitution allow what the Cabinet proposes?",
+      "theme": "Constitution",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO20"
+      ],
+      "stage_ids": [
+        "ST18"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S33",
+      "text": "Ministries pull in different directions. Who coordinates them?",
+      "theme": "Coordination",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST18"
+      ],
+      "asked_by": "OP29"
+    }
+  ]
 }
