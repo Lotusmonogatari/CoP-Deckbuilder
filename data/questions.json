@@ -426,6 +426,185 @@
         "BO14"
       ],
       "asked_by": "OP117"
+    },
+    {
+      "id": "Q25",
+      "text": "Young people leave Yezo for jobs elsewhere. What is your answer?",
+      "theme": "Graduate jobs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO16"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "Q26",
+      "text": "Is public land being used to favour religious groups?",
+      "theme": "Shrine land",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "asked_by": "OP111"
+    },
+    {
+      "id": "Q27",
+      "text": "Fake Yezo crafts are flooding the market. Why is nothing done?",
+      "theme": "Craft certification",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO26"
+      ],
+      "asked_by": "OP112"
+    },
+    {
+      "id": "Q28",
+      "text": "Do you owe more to your faction or to your voters?",
+      "theme": "Faction loyalty",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO02",
+        "BO01"
+      ],
+      "asked_by": "OP113"
+    },
+    {
+      "id": "Q29",
+      "text": "How are committee seats shared out, and who decides?",
+      "theme": "Committee seats",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02",
+        "BO17"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "Q30",
+      "text": "What does your party really stand for?",
+      "theme": "Party platform",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO02"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "Q31",
+      "text": "Parents say you are not protecting children online. Respond.",
+      "theme": "Child safety",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "Q32",
+      "text": "Families are being forced to spend their savings. Why?",
+      "theme": "Household savings",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO24",
+        "BO12"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "Q33",
+      "text": "Are you helping developers push families out of the city?",
+      "theme": "Gentrification",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO18"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "Q34",
+      "text": "Is the answer more roads or fewer cars?",
+      "theme": "Road congestion",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP111"
     }
   ],
   "town_hall": [
@@ -1988,6 +2167,329 @@
         "BO14"
       ],
       "asked_by": "OP105"
+    },
+    {
+      "id": "T85",
+      "text": "Why should my taxes pay for research that may never work?",
+      "theme": "Research funding",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T86",
+      "text": "Great ideas come out of our university and then leave town. Why?",
+      "theme": "Tech transfer",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T87",
+      "text": "Graduates cannot find work here. Why should they stay in Yezo?",
+      "theme": "Graduate jobs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO16"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T88",
+      "text": "Our festival may be cancelled for lack of funds. Will you help?",
+      "theme": "Festival funding",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO15",
+        "BO13"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T89",
+      "text": "Developers want the land around our shrine. Will you stop them?",
+      "theme": "Shrine land",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T90",
+      "text": "Farm festivals are dying out. Why does that matter to you?",
+      "theme": "Seasonal rites",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO10"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T91",
+      "text": "Why does the flag cause so much argument now?",
+      "theme": "National symbols",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO17"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T92",
+      "text": "My family has made this craft for six generations. Will it survive?",
+      "theme": "Traditional crafts",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO15"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T93",
+      "text": "My kids are on screens all day. Is that the government's job?",
+      "theme": "Screen time",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO16"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T94",
+      "text": "Support for my disabled son was cut. How do you justify that?",
+      "theme": "Disability support",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO12"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T95",
+      "text": "Savings earn nothing. How do ordinary people get ahead?",
+      "theme": "Household savings",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO24",
+        "BO12"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T96",
+      "text": "They are building towers next to my house. Who decided that?",
+      "theme": "Zoning",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T97",
+      "text": "Fuel prices are killing our boats. Will you help?",
+      "theme": "Fuel subsidy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO10"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T98",
+      "text": "Plastic keeps washing up on our shore. Who cleans it?",
+      "theme": "Marine pollution",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T99",
+      "text": "I wrote to your office and heard nothing. Why?",
+      "theme": "Constituent service",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO18",
+        "BO03"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T100",
+      "text": "Our station has no lift. How long do we wait?",
+      "theme": "Station access",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T101",
+      "text": "The road into town is jammed every morning. What is the fix?",
+      "theme": "Road congestion",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T102",
+      "text": "Buses and trains do not connect. Who is planning this?",
+      "theme": "Transit",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO27"
+      ],
+      "asked_by": "OP107"
     }
   ],
   "lobbyist_meeting": [
@@ -3148,6 +3650,223 @@
         "BO14"
       ],
       "asked_by": "OP125"
+    },
+    {
+      "id": "L66",
+      "text": "Our labs are losing researchers abroad. What will you do to keep them?",
+      "theme": "Research funding",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11"
+      ],
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L67",
+      "text": "Our platform moves money faster than banks can. Will you let it?",
+      "theme": "Fintech rules",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L68",
+      "text": "Students need affordable housing near campus. Will you build it?",
+      "theme": "Campus housing",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L69",
+      "text": "Festival costs rise every year. Will public money cover any of it?",
+      "theme": "Festival funding",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO15",
+        "BO13"
+      ],
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L70",
+      "text": "Our traditions are fading. Will you protect them?",
+      "theme": "Local customs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO03"
+      ],
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L71",
+      "text": "Our harvest rites need space and support. Can you give it?",
+      "theme": "Seasonal rites",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO10"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L72",
+      "text": "Cheap imports are undercutting real craftwork. What will you do?",
+      "theme": "Traditional crafts",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO15"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L73",
+      "text": "Export paperwork is crushing small workshops. Can you simplify it?",
+      "theme": "Craft exports",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO05"
+      ],
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L74",
+      "text": "Our materials are shipped away before we can buy them. Fix that?",
+      "theme": "Raw materials",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO10"
+      ],
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L75",
+      "text": "Premiums are soaring. Will you regulate them?",
+      "theme": "Insurance reform",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO24",
+        "BO21"
+      ],
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L76",
+      "text": "Fishers and farmers both need fuel relief. Can you deliver?",
+      "theme": "Fuel subsidy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO10"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L77",
+      "text": "Station accessibility upgrades are years behind. Can you speed them up?",
+      "theme": "Station access",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP121"
     }
   ],
   "policy_study": [
@@ -3561,6 +4280,131 @@
         "BO14"
       ],
       "asked_by": "OP81"
+    },
+    {
+      "id": "B24",
+      "text": "How do we get university discoveries into real companies faster?",
+      "theme": "Tech transfer",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "B25",
+      "text": "Should new payment apps face the same rules as banks?",
+      "theme": "Fintech rules",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "asked_by": "OP100"
+    },
+    {
+      "id": "B26",
+      "text": "Which parts of the platform survive contact with the budget?",
+      "theme": "Party platform",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO02"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "B27",
+      "text": "What do accessibility upgrades actually cost per person helped?",
+      "theme": "Disability support",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO12"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "B28",
+      "text": "What would looser zoning do to rents and traffic?",
+      "theme": "Zoning",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "asked_by": "OP16"
+    },
+    {
+      "id": "B29",
+      "text": "How many jobs would a modernised port create or cost?",
+      "theme": "Port jobs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO09"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "B30",
+      "text": "What would more frequent trains cost, and who would use them?",
+      "theme": "Rail timetables",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "asked_by": "OP42"
     }
   ],
   "media_ambush": [
@@ -3949,6 +4793,96 @@
         "BO14"
       ],
       "asked_by": "OP115"
+    },
+    {
+      "id": "A23",
+      "text": "Your party's app collected phone data. Why?",
+      "theme": "Data privacy",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO26"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "A24",
+      "text": "You skipped the national ceremony. Are you disrespecting Yezo?",
+      "theme": "National symbols",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO17"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "A25",
+      "text": "Your faction ordered the vote. Do you ever think for yourself?",
+      "theme": "Faction loyalty",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO02",
+        "BO01"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "A26",
+      "text": "Your faction got the committee chairs again. Is that fair?",
+      "theme": "Committee seats",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO02",
+        "BO17"
+      ],
+      "asked_by": "OP111"
+    },
+    {
+      "id": "A27",
+      "text": "Members are overloaded and skip hearings. Why?",
+      "theme": "Committee workload",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO02"
+      ],
+      "asked_by": "OP112"
     }
   ]
 }
