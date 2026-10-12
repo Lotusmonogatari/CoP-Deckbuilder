@@ -231,6 +231,8 @@ func _on_vote(choice: String) -> void:
 
 	var result := engine.choose(choice)
 	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}))
+	# Into the statute book, applying the bill's own "once" Law Effects.
+	GameState.record_floor_vote(engine.bill(), result, choice)
 
 	if bool(result.get("outcome_flipped_by_influence", false)):
 		var bill_id := str(engine.bill().get("bill_id", ""))

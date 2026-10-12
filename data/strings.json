@@ -2728,5 +2728,54 @@
     "english": "Set back by your answers: {names}.",
     "placeholders": "names",
     "notes": null
+  },
+  {
+    "key": "office.record_statute_heading",
+    "where": "Your Record — heading",
+    "english": "Statute book",
+    "placeholders": null,
+    "notes": "Heading over every bill that has come to a Floor Vote."
+  },
+  {
+    "key": "office.record_statute_empty",
+    "where": "Your Record — no votes yet",
+    "english": "No bill has come to a vote yet.",
+    "placeholders": null,
+    "notes": "Shown under the statute book heading before any Floor Vote."
+  },
+  {
+    "key": "office.record_law_passed",
+    "where": "Your Record — a passed bill",
+    "english": "{name}: passed, {yes} to {no} with {abstain} abstaining. You voted {vote}.",
+    "placeholders": "name, yes, no, abstain, vote",
+    "notes": "One line per bill that passed."
+  },
+  {
+    "key": "office.record_law_failed",
+    "where": "Your Record — a failed bill",
+    "english": "{name}: failed, {yes} to {no} with {abstain} abstaining. You voted {vote}.",
+    "placeholders": "name, yes, no, abstain, vote",
+    "notes": "One line per bill that failed."
+  },
+  {
+    "key": "office.record_vote_yes",
+    "where": "Your Record — how you voted",
+    "english": "Yes",
+    "placeholders": null,
+    "notes": "Fills {vote} above."
+  },
+  {
+    "key": "office.record_vote_no",
+    "where": "Your Record — how you voted",
+    "english": "No",
+    "placeholders": null,
+    "notes": "Fills {vote} above."
+  },
+  {
+    "key": "office.record_vote_abstain",
+    "where": "Your Record — how you voted",
+    "english": "to abstain",
+    "placeholders": null,
+    "notes": "Fills {vote} above (\"You voted to abstain\")."
   }
 ]

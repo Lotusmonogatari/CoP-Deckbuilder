@@ -12,14 +12,14 @@ extends RefCounted
 
 ## The resolved lines, in the order their slots were first seen.
 static func resolve(notices: Array, staff_hired: Dictionary, meta: Dictionary,
-		staff_directory: Array) -> Array[String]:
+		staff_directory: Array, laws: Dictionary = {}) -> Array[String]:
 	var chosen_by_slot: Dictionary = {}
 	var slot_order: Array[String] = []
 	for row: Dictionary in notices:
 		var slot := str(row.get("slot", ""))
 		if chosen_by_slot.has(slot):
 			continue
-		if not condition_met(row, staff_hired, meta):
+		if not condition_met(row, staff_hired, meta, laws):
 			continue
 		chosen_by_slot[slot] = _fill_staff_token(
 			str(row.get("text_en", "")), row, staff_hired, staff_directory)
@@ -33,15 +33,21 @@ static func resolve(notices: Array, staff_hired: Dictionary, meta: Dictionary,
 
 ## Whether one row's own condition holds right now — "staff_role"
 ## (hired/not_hired against a role), "meta" (a meta variable against a
-## threshold), or "always". Public: OfficeTicker.gd reads the exact same
-## condition schema for its own rows, so it calls this rather than
-## duplicating the match.
-static func condition_met(row: Dictionary, staff_hired: Dictionary, meta: Dictionary) -> bool:
+## threshold), "law" (2026-10-12: a bill in the statute book, condition_op
+## "passed" or "failed", condition_target its BIxx), or "always". Public:
+## OfficeTicker.gd reads the exact same condition schema for its own rows,
+## so it calls this rather than duplicating the match. `laws` is
+## bill_id -> "passed"/"failed" (GameState.law_statuses()).
+static func condition_met(row: Dictionary, staff_hired: Dictionary, meta: Dictionary,
+		laws: Dictionary = {}) -> bool:
 	match str(row.get("condition_type", "")):
 		"staff_role":
 			return _staff_condition_met(row, staff_hired)
 		"meta":
 			return _meta_condition_met(row, meta)
+		"law":
+			var status := str(laws.get(str(row.get("condition_target", "")), ""))
+			return not status.is_empty() and status == str(row.get("condition_op", "")).strip_edges().to_lower()
 		"always":
 			return true
 		_:

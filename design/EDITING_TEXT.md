@@ -214,6 +214,29 @@ used playtest level has a separate hand-maintained configuration in
 
 ---
 
+## 6a · What a law does — the **Law Effects** tab (2026-10-12)
+
+Every bill voted on goes into the **statute book** (shown in Your Record),
+passed or failed. This tab says what that outcome does. One row per effect;
+a bill can have several rows. Ships empty, so nothing happens until you
+write rows.
+
+| Column | What it is |
+|---|---|
+| **Law ID** | `LW01`, `LW02`… Unique. |
+| **Bill ID** | The bill, `BI01`–`BI30`. |
+| **Outcome** | `Passed` or `Failed`: the row applies only when the vote went that way. |
+| **Timing** | Blank or `Once` = once, at the vote. `Each level` = after every later level, win or loss (not the level that held the vote). |
+| **Effects** | Same list as a Shop item's Grants: `BO05 +3; SG02 -2; M09; SH04` (organisations, segments, a modifier, an item). |
+| **Constituency support / Reputation / Funds / Party support / XP** | Plain numbers, `+` or `-`. Blank = no change. |
+| **Note** | Your own reminder. The game ignores it. |
+
+**Office Notices and the Office Ticker** can react to a law too: set
+`condition_type` to `law`, `condition_target` to the bill (`BI01`), and
+`condition_op` to `passed` or `failed`.
+
+---
+
 ## 7 · The four names that are **not** just wording
 
 **Constituency support**, **Reputation**, **Funds** and **Party support**

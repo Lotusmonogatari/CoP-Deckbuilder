@@ -330,7 +330,8 @@ func _refresh_resources() -> void:
 ## when nothing qualifies, rather than an empty line holding its place.
 func _refresh_notices() -> void:
 	var lines := OfficeNotices.resolve(
-		DataDB.office_notices, GameState.staff_hired, GameState.meta, DataDB.staff)
+		DataDB.office_notices, GameState.staff_hired, GameState.meta, DataDB.staff,
+		GameState.law_statuses())
 	_notices_label.visible = not lines.is_empty()
 	_notices_label.text = "\n".join(lines)
 
@@ -793,6 +794,20 @@ func _show_record() -> void:
 			var bill_name := str(DataDB.floor_votes.get(bill_id, {}).get("bill_name", bill_id))
 			rows.append(UiKit.line(bill_name))
 
+	# The statute book (2026-10-12): every bill voted on, passed or failed.
+	rows.append(UiKit.heading(Text.say("office.record_statute_heading")))
+	if GameState.statute_book.is_empty():
+		rows.append(UiKit.line(Text.say("office.record_statute_empty")))
+	else:
+		for law: Dictionary in GameState.statute_book:
+			var law_id := str(law.get("bill_id", ""))
+			rows.append(UiKit.line(Text.say(
+				"office.record_law_passed" if bool(law.get("passed", false)) else "office.record_law_failed", {
+					"name": DataDB.floor_votes.get(law_id, {}).get("bill_name", law_id),
+					"yes": law.get("yes", 0), "no": law.get("no", 0), "abstain": law.get("abstain", 0),
+					"vote": _vote_word(str(law.get("player_vote", ""))),
+				})))
+
 	rows.append(UiKit.heading(Text.say("office.record_tiers_heading")))
 	var tiers: Array = []
 	for level: Dictionary in DataDB.levels:
@@ -819,6 +834,18 @@ func _show_record() -> void:
 		rows.append(UiKit.line(Text.say("office.record_levels_empty")))
 
 	_record_panel.open(Text.say("office.your_record"), rows)
+
+
+## How the player voted, in Your Record's own words. Spelled out key by key
+## so the exporter's "does anything ask for this key" check can see each one.
+func _vote_word(vote: String) -> String:
+	match vote:
+		"Yes":
+			return Text.say("office.record_vote_yes")
+		"No":
+			return Text.say("office.record_vote_no")
+		_:
+			return Text.say("office.record_vote_abstain")
 
 
 ## The How to Play panel (HowToPlayPanel.gd, shared with the title screen).

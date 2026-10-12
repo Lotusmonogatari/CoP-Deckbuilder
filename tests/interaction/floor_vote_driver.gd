@@ -124,6 +124,14 @@ func _walk() -> void:
 	print("  party favorability updated (Yezo Heritage Party was %d, now %d)"
 		% [standing_before, int(GameState.party_standing.get("Yezo Heritage Party", -1))])
 
+	# The statute book (2026-10-12): the real click wrote this bill into it,
+	# with the same totals the outcome panel shows.
+	var statuses := GameState.law_statuses()
+	if statuses.get("BI01", "") != "failed":
+		_failures.append("the vote was not written into the statute book as failed (got %s)" % statuses)
+		return
+	print("  statute book records BI01 as %s" % statuses["BI01"])
+
 	var close_button: Button = screen.get_node("%OutcomeClose")
 	# ST23 can never be lost (CLAUDE.md §7.7) — the button must never offer
 	# a "lost" framing, whatever LV31's own position in its level is.

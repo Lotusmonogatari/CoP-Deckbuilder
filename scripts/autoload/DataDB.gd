@@ -33,7 +33,7 @@ const DATA_PATH := "res://data/"
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
-	"floor_votes", "how_to_play", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
+	"floor_votes", "how_to_play", "law_effects", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders",
 	"player", "player_cues", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
@@ -215,6 +215,10 @@ var opponent_cues: Array = []
 ## the lookup. Checked before a card's own Flavor Text lines (CardCues.gd).
 var player_cues: Array = []
 
+## Law Effects (2026-10-12): what a passed or failed bill does, once at the
+## vote or after every later level. See StatuteBook.gd.
+var law_effects: Array = []
+
 ## The questions each kind of room can ask, by stage type, from the five
 ## question tabs. A stage draws from the pool for its type rather than
 ## naming its own, so a new question is one row in the workbook.
@@ -339,6 +343,7 @@ func load_all() -> void:
 			"card_cues": card_cues = _cues_by_card(content)
 			"opponent_cues": opponent_cues = content if content is Array else []
 			"player_cues": player_cues = content if content is Array else []
+			"law_effects": law_effects = content if content is Array else []
 			"questions": questions = content
 			"sounds":
 				sounds = _map_under(content, file_name, "sounds")

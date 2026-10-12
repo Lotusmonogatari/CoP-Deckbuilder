@@ -261,6 +261,11 @@ var gaffe_penalty_applied := false
 ## order they happened — "Your Record"'s own list. See record_bill_flip().
 var bills_flipped_by_influence: Array[String] = []
 
+## The statute book (2026-10-12): one entry per bill that came to a Floor
+## Vote, passed or failed, in the order they were voted. See StatuteBook.gd
+## for an entry's shape and record_floor_vote() for where it is written.
+var statute_book: Array = []
+
 
 func _ready() -> void:
 	protagonist_id = str(DataDB.player.get("player_id", ""))
@@ -305,7 +310,7 @@ const _SAVED_FIELDS := [
 	"staff_recruitment_tier", "funds_cap_bonus",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
-	"gaffe_penalty_applied", "bills_flipped_by_influence",
+	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book",
 ]
 
 
@@ -367,6 +372,7 @@ func reset_crisis_triggers() -> void:
 	stages_lost_to_gaffes = 0
 	gaffe_penalty_applied = false
 	bills_flipped_by_influence = []
+	statute_book = []
 
 
 ## Every Staff role back to vacant, every firing forgotten, and recruitment
@@ -767,6 +773,11 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		# The level has concluded, success or failure: each Supplies item's
 		# Purchase Limit starts counting again, and level buffs run out.
 		_conclude_level_items()
+
+		# Laws with an "each level" effect pay out at the end of every level
+		# after the one that passed them, win or loss (Law Effects tab).
+		_apply_law_effect_rows(StatuteBook.ongoing_effects(
+			statute_book, DataDB.law_effects, levels_completed_count))
 
 		if last_level_outcome == LevelRunner.WON:
 			_pay_level_rewards()
@@ -1840,6 +1851,42 @@ func record_bill_flip(bill_id: String) -> void:
 	if bill_id.is_empty() or bills_flipped_by_influence.has(bill_id):
 		return
 	bills_flipped_by_influence.append(bill_id)
+
+
+## Writes one Floor Vote into the statute book and applies that bill's
+## "once" Law Effects for how it went (passed or failed). A bill already in
+## the book is ignored, so a replayed screen can never apply it twice.
+## Called from FloorVoteScreen._on_vote() (and the playtest bot).
+func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String) -> void:
+	var bill_id := str(bill.get("bill_id", ""))
+	if bill_id.is_empty() or StatuteBook.has_bill(statute_book, bill_id):
+		return
+	var level_id := ""
+	if level_runner != null:
+		level_id = str(level_runner.level.get("level_id", ""))
+	var law := StatuteBook.entry(bill, result, choice, level_id, levels_completed_count)
+	statute_book.append(law)
+	_apply_law_effect_rows(StatuteBook.effects_for(
+		DataDB.law_effects, bill_id, bool(law["passed"]), StatuteBook.ONCE))
+
+
+## bill_id -> "passed"/"failed", for Office Notices and the Ticker.
+func law_statuses() -> Dictionary:
+	return StatuteBook.status_map(statute_book)
+
+
+## Applies Law Effects rows: their Effects cell through the same reward path
+## shop items and visitors use (boosters, segments, modifiers, items), and
+## their meta and XP columns as rewards, so Your Record shows the change.
+func _apply_law_effect_rows(rows: Array) -> void:
+	for row: Dictionary in rows:
+		var effects: Variant = row.get("effects")
+		if effects is Array:
+			_apply_reward_entries(effects)
+		var deltas := StatuteBook.meta_deltas(row)
+		for name: String in deltas:
+			_apply_meta_reward(name, int(deltas[name]))
+		_move_xp(StatuteBook.xp_delta(row))
 
 
 ## Every segment favorability change goes through here, clamped 0-100

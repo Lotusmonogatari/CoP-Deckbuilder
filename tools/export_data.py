@@ -347,6 +347,31 @@ SHEETS = {
             ("Stage ID", "stage_ids", "id_list"),
         ],
     },
+    # Law Effects (2026-10-12): what a bill does once it has been voted on,
+    # one row per effect. Outcome says whether the row applies when the bill
+    # passed or when it failed; Timing says whether it applies once, at the
+    # vote, or after every later level (blank = Once). Effects takes the
+    # same "BO05 +3; SG02 -2; M09; SH04" list as Shop Grants; the meta and
+    # XP columns are plain numbers. See StatuteBook.gd. Ships empty.
+    "Law Effects": {
+        "out": "law_effects.json",
+        "key": "law_id",
+        "id_pattern": r"^LW\d+$",
+        "optional_sheet": True,
+        "columns": [
+            ("Law ID", "law_id", "id"),
+            ("Bill ID", "bill_id", "str"),
+            ("Outcome", "outcome", "str"),
+            ("Timing", "timing", "str"),
+            ("Effects", "effects", "target_delta_list"),
+            ("Constituency support", "constituency_support", "num"),
+            ("Reputation", "reputation", "num"),
+            ("Funds", "funds", "num"),
+            ("Party support", "party_support", "num"),
+            ("XP", "xp", "num"),
+            ("Note", "note", "str"),
+        ],
+    },
     # Player Cues (2026-10-12): what the PLAYER says, by the suit of the card
     # played and what it did (attack / gain / block, blank = any), optionally
     # only in some stages. Checked before a card's own Flavor Text lines, which
@@ -1763,6 +1788,27 @@ def validate(data, report):
             if sid not in stage_ids:
                 report.error("opponent_cues",
                              f"{cue_id} names stage '{sid}', which is not in the Stages tab")
+
+    # --- law effects (2026-10-12) -------------------------------------------
+    bill_ids_known = {b.get("bill_id") for b in data.get("floor_vote_bills", [])} | set(
+        (data.get("floor_votes") or {}).keys() if isinstance(data.get("floor_votes"), dict) else [])
+    for law in data.get("law_effects", []):
+        lid = law["law_id"]
+        if bill_ids_known and law.get("bill_id") not in bill_ids_known:
+            report.error("Law Effects", f"{lid} names bill '{law.get('bill_id')}', which is not in Floor Vote Bills")
+        if str(law.get("outcome") or "").strip().lower() not in ("passed", "failed"):
+            report.error("Law Effects", f"{lid} has Outcome '{law.get('outcome')}' — it must be Passed or Failed")
+        if str(law.get("timing") or "once").strip().lower() not in ("once", "each level"):
+            report.error("Law Effects", f"{lid} has Timing '{law.get('timing')}' — it must be Once, Each level, or blank")
+    for table in ("office_notices", "office_ticker"):
+        for row in data.get(table, []):
+            if row.get("condition_type") == "law":
+                if bill_ids_known and row.get("condition_target") not in bill_ids_known:
+                    report.error(table, f"{row.get('notice_id') or row.get('ticker_id')} names bill "
+                                 f"'{row.get('condition_target')}', which is not in Floor Vote Bills")
+                if str(row.get("condition_op") or "").strip().lower() not in ("passed", "failed"):
+                    report.error(table, f"{row.get('notice_id') or row.get('ticker_id')}: a law "
+                                 "condition's condition_op must be passed or failed")
 
     # --- player cues (2026-10-12) -------------------------------------------
     # Verb blank = the line fits whatever the card did.

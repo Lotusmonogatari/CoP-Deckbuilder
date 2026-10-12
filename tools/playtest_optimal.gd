@@ -618,6 +618,7 @@ func _play_vote_stage(stage: Dictionary) -> void:
 		else "Abstain")
 	var result := engine.choose(choice)
 	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}))
+	GameState.record_floor_vote(engine.bill(), result, choice)
 
 	_log("  %s: voted %s on '%s' (%s) — Yes %d / No %d / Abstain %d" % [
 		stage_id, choice, engine.bill().get("bill_name", "?"),

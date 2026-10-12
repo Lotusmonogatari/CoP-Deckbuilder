@@ -44,10 +44,10 @@ static func fill_tokens(text: String, player_name: String) -> String:
 ## Every row whose condition currently holds, in workbook order, with any
 ## token already filled in.
 static func eligible_lines(rows: Array, staff_hired: Dictionary, meta: Dictionary,
-		player_name: String = "") -> Array[String]:
+		player_name: String = "", laws: Dictionary = {}) -> Array[String]:
 	var lines: Array[String] = []
 	for row: Dictionary in rows:
-		if OfficeNotices.condition_met(row, staff_hired, meta):
+		if OfficeNotices.condition_met(row, staff_hired, meta, laws):
 			lines.append(fill_tokens(str(row.get("text_en", "")), player_name))
 	return lines
 
@@ -56,8 +56,8 @@ static func eligible_lines(rows: Array, staff_hired: Dictionary, meta: Dictionar
 ## one eligible. Empty when nothing is eligible. `rng` is injected so this
 ## stays deterministic under test rather than reading for real randomness.
 func next_line(rows: Array, staff_hired: Dictionary, meta: Dictionary,
-		rng: RandomNumberGenerator, player_name: String = "") -> String:
-	var lines := eligible_lines(rows, staff_hired, meta, player_name)
+		rng: RandomNumberGenerator, player_name: String = "", laws: Dictionary = {}) -> String:
+	var lines := eligible_lines(rows, staff_hired, meta, player_name, laws)
 	if lines.is_empty():
 		return ""
 
