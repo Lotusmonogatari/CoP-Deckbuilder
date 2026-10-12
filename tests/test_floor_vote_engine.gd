@@ -378,3 +378,24 @@ func test_a_scoped_trigger_that_names_no_eligible_party_never_swings_anyone() ->
 	# Same as the no-triggers-configured case: no swing happened at all.
 	assert_eq(int(result["totals"]["Yes"]), 9)
 	assert_eq(int(result["totals"]["No"]), 11)
+
+
+# ---------------------------------------------------------------------------
+# The optional influence bonus (a blank workbook cell is null, not 0)
+# ---------------------------------------------------------------------------
+
+func test_a_blank_influence_bonus_reads_as_zero_not_a_crash() -> void:
+	# The real bills carry the keys with null values; int(null) used to abort
+	# the Floor Vote screen the moment the player's influence flipped a bill.
+	var real_bill := DataDB.get_bill("BI01")
+	assert_true(real_bill.has("influence_bonus_reputation"), "the real bill carries the key")
+	var bonus := FloorVoteEngine.influence_bonus(real_bill)
+	assert_eq(bonus["reputation"], 0)
+	assert_eq(bonus["party_support"], 0)
+
+
+func test_a_filled_influence_bonus_is_read_as_written() -> void:
+	var bonus := FloorVoteEngine.influence_bonus({
+		"influence_bonus_reputation": 3.0, "influence_bonus_party_support": null})
+	assert_eq(bonus["reputation"], 3)
+	assert_eq(bonus["party_support"], 0)

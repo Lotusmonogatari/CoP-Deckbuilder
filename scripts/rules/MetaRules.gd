@@ -219,8 +219,13 @@ static func press_start_adjustment(kanban: int, sanban_rows: Array) -> int:
 ## its trigger share of the room. A modifier with no trigger share — the ones
 ## driven by party support rather than by who's watching — is left to the
 ## caller, since its condition lives elsewhere.
+##
+## A modifier tied to an ORGANISATION (a BOxx in its trigger cell) switches on
+## when that organisation's standing with the player is at or above its
+## `trigger_min_pct` (Cameron, 2026-10-12). `standings` is booster_id ->
+## standing; leave it empty and an organisation trigger can never be met.
 static func active_modifiers(modifier_rows: Array, stage: Dictionary,
-		available_to: String = "Player") -> Array:
+		available_to: String = "Player", standings: Dictionary = {}) -> Array:
 	var active: Array = []
 	var mix: Dictionary = stage.get("segment_mix", {})
 
@@ -241,10 +246,25 @@ static func active_modifiers(modifier_rows: Array, stage: Dictionary,
 			if float(mix.get(segment_id, 0.0)) >= float(minimum):
 				triggered = true
 				break
+		if not triggered and booster_trigger_met(modifier, standings):
+			triggered = true
 		if triggered:
 			active.append(modifier)
 
 	return active
+
+
+## Whether any organisation named in the modifier's trigger cell has a
+## standing at or above the modifier's trigger number. False for a modifier
+## that names no organisation.
+static func booster_trigger_met(modifier: Dictionary, standings: Dictionary) -> bool:
+	var minimum: Variant = modifier.get("trigger_min_pct")
+	if minimum == null:
+		return false
+	for booster_id: String in modifier.get("trigger_booster_ids", []):
+		if float(standings.get(booster_id, 0)) >= float(minimum):
+			return true
+	return false
 
 
 static func _find_variable(sanban_rows: Array, name: String) -> Dictionary:

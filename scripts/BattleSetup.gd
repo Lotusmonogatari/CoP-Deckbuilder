@@ -561,7 +561,7 @@ static func backing_bonus(stage: Dictionary) -> Dictionary:
 	if owned.is_empty():
 		return empty
 
-	var active := MetaRules.active_modifiers(owned, with_audience(stage), "Player")
+	var active := MetaRules.active_modifiers(owned, with_audience(stage), "Player", GameState.booster_standing)
 	if active.is_empty():
 		return empty
 	return ModifierEffects.battle_start_bonus(active, str(stage.get("stage_id", "")))

@@ -240,9 +240,8 @@ func _on_vote(choice: String) -> void:
 			else VoteInfluenceCues.FLIPPED_TO_FAIL)
 		var line := VoteInfluenceCues.resolve(DataDB.vote_influence_cues, bill_id, direction)
 		_banner.say(CueBanner.PLAYER, "", line)
-		GameState.apply_floor_vote_influence_bonus(
-			int(engine.bill().get("influence_bonus_reputation", 0)),
-			int(engine.bill().get("influence_bonus_party_support", 0)))
+		var bonus := FloorVoteEngine.influence_bonus(engine.bill())
+		GameState.apply_floor_vote_influence_bonus(bonus["reputation"], bonus["party_support"])
 		GameState.record_bill_flip(bill_id)
 
 	_show_outcome(result)

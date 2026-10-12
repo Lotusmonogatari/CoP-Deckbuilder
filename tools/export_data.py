@@ -2374,6 +2374,22 @@ def fold_floor_votes(data, report):
             continue
         by_bill[bill_id]["positions"].append(position)
 
+    # A bill's seat splits must add up to each party's real seat count (and so
+    # to the 101-seat chamber, CLAUDE.md section 4). A warning, not an error:
+    # the vote still runs, it just runs in a chamber of the wrong size.
+    seats = {str(p.get("party_id")): p.get("seats") for p in data.get("parties", [])
+             if isinstance(p, dict)}
+    for bill_id, bill in by_bill.items():
+        for position in bill["positions"]:
+            party_id = str(position.get("party_id"))
+            split = sum(int(position.get(k) or 0)
+                        for k in ("votes_yes", "votes_no", "votes_abstain"))
+            if seats.get(party_id) is not None and split != int(seats[party_id]):
+                report.warn(
+                    "Floor Vote Party Positions",
+                    f"{bill_id} {party_id}: Yes+No+Abstain is {split} but the party "
+                    f"holds {int(seats[party_id])} seats")
+
     data["floor_votes"] = by_bill
 
 

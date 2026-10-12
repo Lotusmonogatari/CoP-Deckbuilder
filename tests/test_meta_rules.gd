@@ -190,6 +190,20 @@ func test_a_modifier_stays_quiet_when_its_audience_is_too_small() -> void:
 	assert_eq(MetaRules.active_modifiers(modifiers, TestFixtures.stage()).size(), 0)
 
 
+func test_an_organisation_modifier_fires_at_or_above_its_standing_number() -> void:
+	var modifiers := [{
+		"mod_id": "M07", "trigger_segment_ids": [], "trigger_booster_ids": ["BO08"],
+		"trigger_min_pct": 15.0, "available_to": "Both",
+	}]
+	var stage := TestFixtures.stage()
+	assert_eq(MetaRules.active_modifiers(modifiers, stage, "Player", {"BO08": 14}).size(), 0)
+	assert_eq(MetaRules.active_modifiers(modifiers, stage, "Player", {"BO08": 15}).size(), 1)
+	assert_eq(MetaRules.active_modifiers(modifiers, stage, "Player", {"BO08": 60}).size(), 1)
+	# Another organisation's standing does not count, and no standings = never.
+	assert_eq(MetaRules.active_modifiers(modifiers, stage, "Player", {"BO09": 90}).size(), 0)
+	assert_eq(MetaRules.active_modifiers(modifiers, stage).size(), 0)
+
+
 func test_an_opponent_only_modifier_does_not_fire_for_the_player() -> void:
 	var modifiers := [{
 		"mod_id": "M07", "trigger_segment_ids": ["SG01"],

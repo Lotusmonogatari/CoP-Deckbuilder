@@ -960,6 +960,11 @@ func _effectively_owned_modifiers() -> Array:
 func _pay_level_rewards() -> void:
 	# M09's RESOURCE_BONUS_ON_WIN is what this function pays out.
 	var owned := _effectively_owned_modifiers()
+	# An organisation-triggered backing only pays while that organisation's
+	# standing is at or above its number (Cameron, 2026-10-12).
+	owned = owned.filter(func(m: Dictionary) -> bool:
+		return m.get("trigger_booster_ids", []).is_empty() \
+			or MetaRules.booster_trigger_met(m, booster_standing))
 	if owned.is_empty():
 		return
 

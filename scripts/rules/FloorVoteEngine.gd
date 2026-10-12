@@ -137,6 +137,20 @@ func _position_for(party_name: String) -> Dictionary:
 	return {}
 
 
+## The optional bonus a bill pays when the player's influence flips it:
+## { "reputation": n, "party_support": n }. A blank workbook cell is JSON null
+## (the key is present, the value is not), and int(null) is a script error that
+## used to abort the vote screen the moment a flip happened (found by the
+## 2026-10-12 rubric playtest), so blank reads as 0 here.
+static func influence_bonus(bill: Dictionary) -> Dictionary:
+	var reputation: Variant = bill.get("influence_bonus_reputation")
+	var party_support: Variant = bill.get("influence_bonus_party_support")
+	return {
+		"reputation": 0 if reputation == null else int(reputation),
+		"party_support": 0 if party_support == null else int(party_support),
+	}
+
+
 ## Which bucket already holds the majority of `position`'s own votes — the
 ## bucket the player's own seat is assumed to sit in before they vote.
 ## Ties break Yes > No > Abstain (this file's own header comment).
