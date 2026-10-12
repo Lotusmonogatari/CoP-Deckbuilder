@@ -8,7 +8,7 @@ extends Control
 ## the way Ace Attorney throws an "Objection!" at you. The opponent's turn
 ## answers the same way from the other side.
 ##
-##     banner.say(CueBanner.PLAYER, "Hiro", "The numbers do not lie.", "+4 seats")
+##     banner.say(CueBanner.PLAYER, "Kenshin Sako", "The numbers do not lie.", "+4 seats")
 ##
 ## RULES IT KEEPS
 ##   - Lines queue. One never cuts short the one before it (the same promise
