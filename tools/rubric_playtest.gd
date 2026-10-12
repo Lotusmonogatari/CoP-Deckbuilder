@@ -910,6 +910,7 @@ func _section_d_outcomes() -> void:
 	_d5_save_reload()
 	_d6_new_game_clears()
 	_d7_law_conditions()
+	_d8_every_organisation_has_a_stake()
 
 
 func _rows_for(bill_id: String, passed: bool, timing: String) -> Array:
@@ -1133,3 +1134,27 @@ func _d7_law_conditions() -> void:
 	_note("D7b", "Real notice / ticker rows that use the 'law' condition",
 		"%d in the workbook today" % (DataDB.office_notices.filter(func(r: Dictionary) -> bool: return str(r.get("condition_type")) == "law").size()
 			+ DataDB.office_ticker.filter(func(r: Dictionary) -> bool: return str(r.get("condition_type")) == "law").size()))
+
+
+## Every organisation is pleased by at least one bill outcome and annoyed by
+## at least one, so none is a bystander to the whole statute book.
+func _d8_every_organisation_has_a_stake() -> void:
+	var pleased := {}
+	var annoyed := {}
+	for row: Dictionary in DataDB.law_effects:
+		var effects: Variant = row.get("effects")
+		for entry in (effects if effects is Array else []):
+			var target := str(entry.get("target", ""))
+			if not target.begins_with("BO") or entry.get("delta") == null:
+				continue
+			(pleased if int(entry["delta"]) > 0 else annoyed)[target] = true
+	var missing: Array[String] = []
+	for booster: Dictionary in DataDB.boosters:
+		var id := str(booster.get("booster_id", ""))
+		if not pleased.has(id):
+			missing.append("%s never pleased" % id)
+		if not annoyed.has(id):
+			missing.append("%s never annoyed" % id)
+	_check("D8", MAJOR, missing.is_empty(),
+		"Every organisation is pleased by at least one bill outcome and annoyed by at least one",
+		"%d organisations%s" % [DataDB.boosters.size(), ("" if missing.is_empty() else "; " + ", ".join(missing))])

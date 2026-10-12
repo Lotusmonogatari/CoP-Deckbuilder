@@ -38,6 +38,7 @@ Question: starting from a new game, do **backing and organisation standing** rea
 | D5 | 2 | Save, reload, carry on: the book and the running payouts are exactly as if you never quit |
 | D6 | 2 | A new game wipes the statute book and the flip record |
 | D7 | 1 | Office notices and the ticker switch on only after the named bill has passed |
+| D8 | 2 | Every organisation is pleased by at least one bill outcome and annoyed by at least one |
 
 Not scored (recorded as NOTEs): how long the requirements take to earn (C7b), whether a flip cutscene line is written for the bill (C6b), and how many notice/ticker rows use the law condition (D7b).
 
@@ -69,3 +70,7 @@ Not scored (recorded as NOTEs): how long the requirements take to earn (C7b), wh
 - **Not covered:** the bot's choice of cards in a real battle (B6 used a simple greedy hand), and whether the numbers *feel* balanced to a person.
 
 Re-run any time: `xvfb-run .tools/godot --path . tools/rubric_playtest.tscn` (about 90 seconds; under `--headless` the click line C6 is skipped). It exits 1 while any line fails, so it stays a check, not part of `verify.sh`.
+
+### Update, same day: 66 / 66 (100%)
+
+BI25's data error is fixed (Cameron's rule: take surplus seats from Abstain first, Yes second, No third, so PT02 went 8-8-0 to 6-8-0 and PT06 8-5-0 to 6-5-0), so C1b now passes. New line D8 (every organisation pleased by one bill outcome and annoyed by another) found one gap, Neighborhood Associations (BO06), now covered by BI14 and BI25 (below).

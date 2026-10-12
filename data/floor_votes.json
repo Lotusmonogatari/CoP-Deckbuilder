@@ -1605,7 +1605,7 @@
       {
         "bill_id": "BI25",
         "party_id": "PT02",
-        "votes_yes": 8,
+        "votes_yes": 6,
         "votes_no": 8,
         "votes_abstain": 0,
         "disposition": "Opposed",
@@ -1641,7 +1641,7 @@
       {
         "bill_id": "BI25",
         "party_id": "PT06",
-        "votes_yes": 8,
+        "votes_yes": 6,
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",

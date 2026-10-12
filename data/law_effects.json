@@ -793,6 +793,10 @@
       {
         "target": "BO08",
         "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": 2
       }
     ],
     "constituency_support": 2.0,
@@ -800,7 +804,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Members and districts gain; taxpayers and press call it pork."
+    "note": "Draft 2026-10-12: Members and districts gain; taxpayers and press call it pork. BO06 added: neighbourhood projects get funded."
   },
   {
     "law_id": "LW29",
@@ -840,6 +844,10 @@
       {
         "target": "BO08",
         "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -1
       }
     ],
     "constituency_support": null,
@@ -847,7 +855,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: supporters disappointed, opponents relieved."
+    "note": "Draft 2026-10-12: supporters disappointed, opponents relieved. BO06 added: the grants it hoped for are lost."
   },
   {
     "law_id": "LW31",
@@ -1503,6 +1511,10 @@
       {
         "target": "BO19",
         "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
       }
     ],
     "constituency_support": null,
@@ -1510,7 +1522,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Business and mayors gain; families and temples object."
+    "note": "Draft 2026-10-12: Business and mayors gain; families and temples object. BO06 added: a casino resort is a neighbourhood worry."
   },
   {
     "law_id": "LW53",
@@ -1537,6 +1549,10 @@
       {
         "target": "BO19",
         "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": 1
       }
     ],
     "constituency_support": null,
@@ -1544,7 +1560,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: supporters disappointed, opponents relieved."
+    "note": "Draft 2026-10-12: supporters disappointed, opponents relieved. BO06 added: the neighbourhood is spared a casino."
   },
   {
     "law_id": "LW54",
