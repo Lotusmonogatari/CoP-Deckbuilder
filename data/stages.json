@@ -910,7 +910,7 @@
     "bar_value_kind": "Percentage",
     "bar_max": 100,
     "win_threshold": 60,
-    "win_pct": 1.0,
+    "win_pct": 0.6,
     "turn_limit": 10,
     "energy_per_turn": 26,
     "hand_size": 6,

@@ -62,15 +62,15 @@ The loop that matters for content: **questions move organisations; organisations
 | **Bar Model** | How winning is measured | `Shared_pool` (both sides draw from one pool, Undecided in the middle; most rooms), `Single` (one tone bar judged after the last question; press conference), `Survival` (stay at or above the line every turn; TV debate) |
 | **Energy Mode / Energy Pool** | Energy per turn, or one budget for the whole stage | `per_turn` (default), `pool` (ST08, ST18, ST19, ST20) |
 | **Sequence Mode** | Several opponents, one after another | `single` (one opponent), `reset` (committee: everything restarts per opponent), `stream` (Town Hall: clock and gaffes carry, energy refills), `continuous` (floor debate: everything carries) |
-| **Opponent Count** | How many are drawn | a number or `2-4`. More than 1 needs a Sequence Mode other than `single` (a test enforces this) |
-| **Question Pool** | Which room tab it asks from | `press_conference`, `town_hall`, `media_ambush`, `lobbyist_meeting`, `policy_study`, or blank (asks only its own Stage Questions, if any) |
+| **Opponent Count** | How many are drawn | a number or `2-4`. For Combat stages, more than 1 needs a Sequence Mode other than `single` (a test enforces this). On Non-combat rooms (ST07, ST22) it counts visitors, not opponents |
+| **Question Pool** | Which room tab it asks from | `press_conference`, `town_hall`, `media_ambush`, `lobbyist_meeting`, `policy_study`, or blank. Blank means the built-in default for that stage (ST04, ST05, ST19, ST20, ST21 each have one, so ST05's blank cell still asks the Town Hall questions); a blank on any other stage asks only its own Stage Questions, if any |
 | **% Press … % Other** | Who is watching | fractions summing to 1. Trigger audience modifiers and cards aimed at a segment |
 | **Win/Loss Δ** | What the stage pays or costs | signed numbers; blank = 0 |
 | **Loss Ends Level** | Does a loss end the level | blank = Yes |
 | **Reveal In Briefing** | Is the stage shown before the level | `No` = a surprise (Media Ambush) |
 | **Show Transition** | A between-stages scene | uses the Transition Cast/Backgrounds/Dialogue tabs |
 
-The 22 battle rooms today:
+The 20 battle (Combat) rooms today (the workbook has 23 stages in all: these 20, the two Non-combat rooms ST07 and ST22, and the Floor Vote ST23):
 
 | Family | Stages | Shape |
 |---|---|---|
@@ -88,8 +88,8 @@ Every Combat stage needs a column in **Affinity**: a multiplier per suit on the 
 
 | Suit | Rewarded where… | Punished where… |
 |---|---|---|
-| Earnest | accountability matters: committees on ethics, environment, administration; Town Hall | spectacle and slipperiness pay: TV, ambush, lobbying |
-| Emotional | stakes are human: floor, press, Town Hall, agriculture, war | procedure and money: finance, foreign affairs, administration |
+| Earnest | accountability matters: committees on the environment, administration and Assembly rules; Town Hall; Policy Study | spectacle and slipperiness pay: TV, ambush, lobbying, finance, construction |
+| Emotional | stakes are human: ethics, agriculture, ambush, floor, press, Town Hall, TV, war | procedure and money: finance, foreign affairs, administration, lobbying, Policy Study, caucus |
 | Appeal | unity and favours: caucus, floor, press, lobbying, Cabinet | adversarial scrutiny: ethics, construction |
 | Data Driven | the file decides: finance, administration, Assembly rules, Cabinet | crowds and cameras: TV, press, caucus |
 | Divisive | loyalty is the currency: caucus, steering, war, agriculture | consensus rooms: Town Hall, Assembly rules, Cabinet |
@@ -103,7 +103,7 @@ Every Combat stage needs a column in **Affinity**: a multiplier per suit on the 
 | **M** Medium | unchanged | nothing |
 | **W** Weak | ×0.7 this round | the *pleased* organisations are annoyed **−1** |
 
-The question multiplier stacks with the room's affinity. Per organisation, one stage's net change is capped at ±5. Grades are per suit; give every question **at least one S and at least one W**, and usually two of each, so the choice matters. A question whose Theme no row maps pleases nobody (an export warning).
+The question multiplier stacks with the room's affinity. Per organisation, one stage's net change is capped at ±5. Grades are per suit. **The room tabs' own footers set the rule: at least 2 S and at most 2 W per question, no time references, no assumed past events, and no specific policy area** (a room question has to fit any audience). Also give every question at least one W so the choice matters. **Stage Questions are exempt from "no specific policy area"**: being specific to a room's business is their point, and they should still keep 2 or more S and 2 or fewer W. Some existing rows fall short of this (about 12 questions have fewer than 2 S; about 37 have no W, mostly in the Press, Ambush and Lobbyist tabs): do not copy them, and do not regrade them without Cameron. A question whose Theme no row maps pleases nobody (an export warning).
 
 **Grading by suit.** Ask "which register actually answers this?":
 - Earnest wins when the question asks for accountability or a plain commitment.
@@ -125,7 +125,7 @@ Standing also feeds **party opinion**: the Party Standing tab weights organisati
 
 ### 2.5 Opponents and how they speak
 
-An opponent row: **Affiliation** (a BOxx), **Party** (a Parties name or N/A), **Role/Title**, **Stage** (every STxx they can be drawn for), **Suit 1–3**, and attack/gain/block ranges (`min-max`; a stronger opponent has higher ranges). Opponents for a stage are drawn at random from everyone listing it.
+An opponent row: **Affiliation** (a BOxx), **Party** (a Parties name or N/A), **Role/Title**, **Stage** (every STxx they can be drawn for), **Suit 1–3**, and attack/gain/block ranges (`min-max`, or one number for a fixed amount; `0` means never; a stronger opponent has higher ranges). Opponents for a stage are drawn at random from everyone listing it.
 
 **What they say on their turn** (Opponent Cues). The game picks a suit (Suit 1 55%, Suit 2 30%, Suit 3 10%, any other 5%) and the verb of their move (`attack`, `gain`, `block`), then looks up, most specific first:
 1. a row naming this opponent and this stage;
@@ -166,7 +166,7 @@ Example brief: "a Budget Committee hearing", "a Prefectural Assembly visit", "a 
 ## 4. Recipe: questions for a stage
 
 1. **Decide what the room is about**: its business, not its mood. A finance committee asks about costs, audits and taxes; a rally asks about loyalty and the fight.
-2. **Pick Themes from organisations who care**: check Question Themes for an existing theme first (re-use keeps the mapping consistent); add a new theme only for a genuinely new subject. A theme may please 1–5 organisations (`BO05; BO23`) and set back others (Annoys) when a strong answer on it is a political cost to someone.
+2. **Pick Themes from organisations who care**: check Question Themes for an existing theme first (re-use keeps the mapping consistent). **Type the Theme exactly as the Question Themes row spells it, capital letters included**: the join is case-sensitive (six themes exist as separate rows differing only in case, for that reason); add a new theme only for a genuinely new subject. A theme may please 1–5 organisations (`BO05; BO23`) and set back others (Annoys) when a strong answer on it is a political cost to someone.
 3. **Write the question** to its scope (§5).
 4. **Grade six suits** (§2.3), reading the room's affinity: grade the room's favoured suits Strong on some questions and Weak on others, or the room becomes trivially "always play Data Driven".
 5. **Keep pools balanced**: a committee asks one question a turn and draws from its own rows first, so three to six per committee is enough. Spread themes so one room does not please a single organisation every turn.
@@ -252,7 +252,7 @@ Rules:
 | Stage | Who the room seats today |
 |---|---|
 | ST04 Press, ST19 Ambush | 8 journalists, all National Media (BO08) |
-| ST05 Town Hall | constituents of several organisations (BO18, BO11, BO06, BO12); no party |
+| ST05 Town Hall | constituents of several organisations (BO18, BO11, BO06, BO12 and BO03); no party |
 | ST20 Lobbyist | lobbyists from several organisations; no party |
 | ST03 Party Caucus | **only the player's own party** (Own Party Only = Yes) |
 | Committees, ST02, ST08, ST21 | MPs of several parties: use Asked By Party for any party voice |

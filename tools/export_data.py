@@ -1831,6 +1831,18 @@ def validate(data, report):
             report.error("Law Effects", f"{lid} has Outcome '{law.get('outcome')}' — it must be Passed or Failed")
         if str(law.get("timing") or "once").strip().lower() not in ("once", "each level"):
             report.error("Law Effects", f"{lid} has Timing '{law.get('timing')}' — it must be Once, Each level, or blank")
+    # A staff_role condition must name a role the Staff tab really has
+    # (2026-10-12). A misspelt role is never hired, so a "hired" line never
+    # shows and a "not_hired" line shows always. A warning rather than an
+    # error so one bad line cannot stop the whole export.
+    known_roles = {member.get("role") for member in data.get("staff", []) if member.get("role")}
+    for table in ("office_notices", "office_ticker"):
+        for row in data.get(table, []):
+            if (row.get("condition_type") == "staff_role" and known_roles
+                    and row.get("condition_target") not in known_roles):
+                report.warn(table, f"{row.get('notice_id') or row.get('ticker_id')} names the staff role "
+                            f"'{row.get('condition_target')}', which is not in the Staff tab "
+                            f"({', '.join(sorted(known_roles))}), so it can never be hired")
     for table in ("office_notices", "office_ticker"):
         for row in data.get(table, []):
             if row.get("condition_type") == "law":
