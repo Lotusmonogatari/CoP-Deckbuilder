@@ -2490,6 +2490,40 @@
         "BO27"
       ],
       "asked_by": "OP107"
+    },
+    {
+      "id": "T103",
+      "text": "Why should older voters get to decide the future that we will have to live in?",
+      "theme": "Generational divide",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T104",
+      "text": "Should people who do not honour our customs have any say in how we keep them?",
+      "theme": "Customs and belonging",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15"
+      ],
+      "asked_by": "OP109"
     }
   ],
   "lobbyist_meeting": [
@@ -3867,6 +3901,23 @@
         "BO14"
       ],
       "asked_by": "OP121"
+    },
+    {
+      "id": "L78",
+      "text": "Anyone who breaks with the faction is on the other side now. Are you with us or not?",
+      "theme": "Faction discipline",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "asked_by": "OP122"
     }
   ],
   "policy_study": [
