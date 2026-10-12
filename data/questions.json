@@ -594,7 +594,7 @@
       "text": "Is the answer more roads or fewer cars?",
       "theme": "Road congestion",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -3062,7 +3062,7 @@
     {
       "id": "L31",
       "text": "Will you vote to revise Ainu quota rules for non-profit boards?",
-      "theme": "Constitution",
+      "theme": "Ainu reserved seats",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -3072,8 +3072,13 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO17",
-        "BO20"
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO26",
+        "BO23"
       ],
       "asked_by": "OP124"
     },
@@ -3854,7 +3859,7 @@
       "text": "Premiums are soaring. Will you regulate them?",
       "theme": "Insurance reform",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -4280,7 +4285,7 @@
       "text": "What would a preferential rights framework for the Ainu actually cost?",
       "theme": "Ainu preferential cost",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -4303,7 +4308,7 @@
       "text": "Should imported seafood face tougher labelling rules?",
       "theme": "Seafood labelling",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -4322,7 +4327,7 @@
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
-        "Appeal": "M",
+        "Appeal": "S",
         "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
@@ -4355,7 +4360,7 @@
       "text": "Should new payment apps face the same rules as banks?",
       "theme": "Fintech rules",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -4445,7 +4450,7 @@
       "text": "What would more frequent trains cost, and who would use them?",
       "theme": "Rail timetables",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -4850,7 +4855,7 @@
       "text": "Your party's app collected phone data. Why?",
       "theme": "Data privacy",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "M",
         "Appeal": "W",
         "Data Driven": "M",
@@ -5131,7 +5136,7 @@
       "text": "Can we afford the defence budget this committee is asked to approve?",
       "theme": "Defense spending",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -5218,7 +5223,7 @@
         "Earnest": "S",
         "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "W",
         "Duplicitous": "W"
       },
@@ -5339,7 +5344,7 @@
       "text": "How exposed are our supply chains to a single neighbour?",
       "theme": "Supply chains",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -5446,7 +5451,7 @@
       "text": "How much more debt can Yezo carry?",
       "theme": "Public debt",
       "grades": {
-        "Earnest": "M",
+        "Earnest": "S",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
