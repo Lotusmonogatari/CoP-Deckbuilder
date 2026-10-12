@@ -414,7 +414,7 @@
     "loss_ends_level": null,
     "show_transition": null,
     "transition_speaker_count": null,
-    "own_party_only": null,
+    "own_party_only": "Yes",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.7,

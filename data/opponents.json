@@ -834,7 +834,8 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST03"
+      "ST03",
+      "ST08"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",

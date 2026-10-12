@@ -68,6 +68,18 @@ func test_the_caucus_seats_only_the_players_own_party() -> void:
 	GameState.start_new_run("PC02")
 
 
+func test_the_steering_committee_seats_only_the_players_own_party() -> void:
+	assert_eq(str(DataDB.get_stage("ST08").get("own_party_only", "")), "Yes", "real ST08 is Own Party Only")
+	for player_id: String in ["PC01", "PC02", "PC03", "PC04"]:
+		GameState.start_new_run(player_id)
+		var party := str(DataDB.player.get("party", ""))
+		var seated := BattleSetup.eligible_opponents("ST08")
+		assert_gte(seated.size(), 1, "%s has a Steering Committee member" % party)
+		for opponent: Dictionary in seated:
+			assert_eq(str(opponent.get("party", "")), party, "%s sits on %s's Steering Committee" % [opponent.get("opp_id"), party])
+	GameState.start_new_run("PC02")
+
+
 func test_real_questions_only_ever_name_someone_in_the_room() -> void:
 	GameState.start_new_run("PC03")
 	for stage_id: String in ["ST04", "ST05", "ST16", "ST20"]:
