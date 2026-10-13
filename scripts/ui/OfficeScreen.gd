@@ -762,7 +762,7 @@ func _show_party_detail(party_id: String) -> void:
 
 	var rows: Array[Control] = [UiKit.line(Text.say("party_opinion.popup_blurb"), "SmallLabel")]
 	for group in ["allies", "rivals"]:
-		var is_ally := group == "allies"
+		var is_ally: bool = group == "allies"
 		var heading := UiKit.heading(Text.say(
 			"party_opinion.allies_heading" if is_ally else "party_opinion.rivals_heading"))
 		if is_ally:
