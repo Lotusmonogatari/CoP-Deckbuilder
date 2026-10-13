@@ -233,7 +233,8 @@
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
     "stages": [
-      "ST09"
+      "ST09",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Earnest",
@@ -261,7 +262,8 @@
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
     "stages": [
-      "ST09"
+      "ST09",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -289,7 +291,8 @@
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
     "stages": [
-      "ST09"
+      "ST09",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -317,7 +320,8 @@
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
     "stages": [
-      "ST09"
+      "ST09",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -345,7 +349,8 @@
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
     "stages": [
-      "ST09"
+      "ST09",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
@@ -373,7 +378,8 @@
     "affiliation": "BO17",
     "role": "Committee on Ethics and Prosecution",
     "stages": [
-      "ST09"
+      "ST09",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -460,7 +466,8 @@
     "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -489,7 +496,8 @@
     "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Divisive",
@@ -548,7 +556,8 @@
     "role": "Committee on Ethics and Prosecution",
     "stages": [
       "ST09",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -577,7 +586,8 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -605,7 +615,8 @@
     "affiliation": "BO17",
     "role": "Committee on the Environment",
     "stages": [
-      "ST10"
+      "ST10",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -633,7 +644,8 @@
     "affiliation": "BO17",
     "role": "Committee on the Environment",
     "stages": [
-      "ST10"
+      "ST10",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -661,7 +673,8 @@
     "affiliation": "BO17",
     "role": "Committee on the Environment",
     "stages": [
-      "ST10"
+      "ST10",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -689,7 +702,8 @@
     "affiliation": "BO17",
     "role": "Committee on the Environment",
     "stages": [
-      "ST10"
+      "ST10",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -717,7 +731,8 @@
     "affiliation": "BO17",
     "role": "Committee on the Environment",
     "stages": [
-      "ST10"
+      "ST10",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -745,7 +760,8 @@
     "affiliation": "BO17",
     "role": "Committee on the Environment",
     "stages": [
-      "ST10"
+      "ST10",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -805,7 +821,8 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -835,7 +852,8 @@
     "stages": [
       "ST10",
       "ST03",
-      "ST08"
+      "ST08",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -895,7 +913,8 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -924,7 +943,8 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -952,7 +972,8 @@
     "affiliation": "BO17",
     "role": "Committee on War",
     "stages": [
-      "ST11"
+      "ST11",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -980,7 +1001,8 @@
     "affiliation": "BO17",
     "role": "Committee on War",
     "stages": [
-      "ST11"
+      "ST11",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -1008,7 +1030,8 @@
     "affiliation": "BO17",
     "role": "Committee on War",
     "stages": [
-      "ST11"
+      "ST11",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -1037,7 +1060,8 @@
     "role": "Committee on War",
     "stages": [
       "ST11",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
@@ -1067,7 +1091,8 @@
     "stages": [
       "ST11",
       "ST02",
-      "ST06"
+      "ST06",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -1096,7 +1121,8 @@
     "role": "Committee on War",
     "stages": [
       "ST11",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -1125,7 +1151,8 @@
     "role": "Committee on War",
     "stages": [
       "ST11",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -1154,8 +1181,7 @@
     "role": "Committee on War",
     "stages": [
       "ST11",
-      "ST18",
-      "ST01"
+      "ST18"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -1183,7 +1209,8 @@
     "affiliation": "BO17",
     "role": "Committee on the National Assembly",
     "stages": [
-      "ST12"
+      "ST12",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Earnest",
@@ -1211,7 +1238,8 @@
     "affiliation": "BO17",
     "role": "Committee on the National Assembly",
     "stages": [
-      "ST12"
+      "ST12",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -1239,7 +1267,8 @@
     "affiliation": "BO17",
     "role": "Committee on the National Assembly",
     "stages": [
-      "ST12"
+      "ST12",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1294,7 +1323,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -1323,7 +1353,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Divisive",
@@ -1352,7 +1383,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -1382,7 +1414,8 @@
     "stages": [
       "ST12",
       "ST18",
-      "ST06"
+      "ST06",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1411,7 +1444,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -1440,7 +1474,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1468,7 +1503,8 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13"
+      "ST13",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1496,7 +1532,8 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13"
+      "ST13",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1524,7 +1561,8 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13"
+      "ST13",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
@@ -1552,7 +1590,8 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13"
+      "ST13",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -1580,7 +1619,8 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13"
+      "ST13",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -1608,7 +1648,8 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13"
+      "ST13",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -1636,7 +1677,8 @@
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
     "stages": [
-      "ST13"
+      "ST13",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1665,7 +1707,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1694,7 +1737,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1753,7 +1797,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -1781,7 +1826,8 @@
     "affiliation": "BO17",
     "role": "Committee on Foreign Affairs",
     "stages": [
-      "ST14"
+      "ST14",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1809,7 +1855,8 @@
     "affiliation": "BO17",
     "role": "Committee on Foreign Affairs",
     "stages": [
-      "ST14"
+      "ST14",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
@@ -1837,7 +1884,8 @@
     "affiliation": "BO17",
     "role": "Committee on Foreign Affairs",
     "stages": [
-      "ST14"
+      "ST14",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
@@ -1865,7 +1913,8 @@
     "affiliation": "BO17",
     "role": "Committee on Foreign Affairs",
     "stages": [
-      "ST14"
+      "ST14",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -1893,7 +1942,8 @@
     "affiliation": "BO17",
     "role": "Committee on Foreign Affairs",
     "stages": [
-      "ST14"
+      "ST14",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1921,7 +1971,8 @@
     "affiliation": "BO17",
     "role": "Committee on Foreign Affairs",
     "stages": [
-      "ST14"
+      "ST14",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2008,7 +2059,8 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST08"
+      "ST08",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2038,7 +2090,6 @@
     "stages": [
       "ST14",
       "ST18",
-      "ST01",
       "ST08"
     ],
     "suit_1": "Earnest",
@@ -2068,7 +2119,8 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2097,7 +2149,8 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2125,7 +2178,8 @@
     "affiliation": "BO17",
     "role": "Committee on Construction and Development",
     "stages": [
-      "ST15"
+      "ST15",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
@@ -2153,7 +2207,8 @@
     "affiliation": "BO17",
     "role": "Committee on Construction and Development",
     "stages": [
-      "ST15"
+      "ST15",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -2182,7 +2237,8 @@
     "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -2211,7 +2267,8 @@
     "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -2237,7 +2294,8 @@
     "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
-      "ST03"
+      "ST03",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -2296,7 +2354,8 @@
     "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -2324,7 +2383,8 @@
     "affiliation": "BO17",
     "role": "Committee on Finance",
     "stages": [
-      "ST16"
+      "ST16",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -2352,7 +2412,8 @@
     "affiliation": "BO17",
     "role": "Committee on Finance",
     "stages": [
-      "ST16"
+      "ST16",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -2380,7 +2441,8 @@
     "affiliation": "BO17",
     "role": "Committee on Finance",
     "stages": [
-      "ST16"
+      "ST16",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Earnest",
@@ -2408,7 +2470,8 @@
     "affiliation": "BO17",
     "role": "Committee on Finance",
     "stages": [
-      "ST16"
+      "ST16",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -2466,7 +2529,8 @@
     "role": "Committee on Finance",
     "stages": [
       "ST16",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -2495,7 +2559,8 @@
     "role": "Committee on Finance",
     "stages": [
       "ST16",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -2525,7 +2590,8 @@
     "stages": [
       "ST16",
       "ST02",
-      "ST06"
+      "ST06",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -2583,7 +2649,8 @@
     "affiliation": "BO17",
     "role": "Committee on Government Administration",
     "stages": [
-      "ST17"
+      "ST17",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -2611,7 +2678,8 @@
     "affiliation": "BO17",
     "role": "Committee on Government Administration",
     "stages": [
-      "ST17"
+      "ST17",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
@@ -2639,7 +2707,8 @@
     "affiliation": "BO17",
     "role": "Committee on Government Administration",
     "stages": [
-      "ST17"
+      "ST17",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -2667,7 +2736,8 @@
     "affiliation": "BO17",
     "role": "Committee on Government Administration",
     "stages": [
-      "ST17"
+      "ST17",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2695,7 +2765,8 @@
     "affiliation": "BO17",
     "role": "Committee on Government Administration",
     "stages": [
-      "ST17"
+      "ST17",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -2782,7 +2853,8 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST02"
+      "ST02",
+      "ST01"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -2811,7 +2883,8 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST08"
+      "ST08",
+      "ST01"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Emotional",
@@ -2840,7 +2913,8 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST08"
+      "ST08",
+      "ST01"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -2901,7 +2975,8 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -2930,7 +3005,8 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -2959,7 +3035,8 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST21"
+      "ST21",
+      "ST01"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2988,7 +3065,6 @@
     "role": "Committee of the Cabinet",
     "stages": [
       "ST18",
-      "ST01",
       "ST08"
     ],
     "suit_1": "Earnest",
