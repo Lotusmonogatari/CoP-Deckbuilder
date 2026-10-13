@@ -9,7 +9,9 @@
     "affiliation": "BO06",
     "role": "Neighborhood Association Member",
     "stages": [
-      "ST05"
+      "ST05",
+      "ST24",
+      "ST29"
     ],
     "suit_1": "Earnest",
     "suit_2": "Divisive",
@@ -37,7 +39,9 @@
     "affiliation": "BO12",
     "role": "Family Network Member",
     "stages": [
-      "ST05"
+      "ST05",
+      "ST24",
+      "ST29"
     ],
     "suit_1": "Emotional",
     "suit_2": "Earnest",
@@ -65,7 +69,9 @@
     "affiliation": "BO11",
     "role": "Student",
     "stages": [
-      "ST05"
+      "ST05",
+      "ST24",
+      "ST29"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -93,7 +99,9 @@
     "affiliation": "BO18",
     "role": "Constituent",
     "stages": [
-      "ST05"
+      "ST05",
+      "ST24",
+      "ST29"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Divisive",
@@ -121,7 +129,9 @@
     "affiliation": "BO18",
     "role": "Constituent",
     "stages": [
-      "ST05"
+      "ST05",
+      "ST24",
+      "ST29"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -149,7 +159,9 @@
     "affiliation": "BO18",
     "role": "Constituent",
     "stages": [
-      "ST05"
+      "ST05",
+      "ST24",
+      "ST29"
     ],
     "suit_1": "Divisive",
     "suit_2": "Emotional",
@@ -177,7 +189,9 @@
     "affiliation": "BO11",
     "role": "Student",
     "stages": [
-      "ST05"
+      "ST05",
+      "ST24",
+      "ST29"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -205,7 +219,9 @@
     "affiliation": "BO03",
     "role": "Kōenkai Member",
     "stages": [
-      "ST05"
+      "ST05",
+      "ST24",
+      "ST29"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1504,7 +1520,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1533,7 +1550,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1562,7 +1580,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
@@ -1591,7 +1610,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -1620,7 +1640,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -1649,7 +1670,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -1678,7 +1700,8 @@
     "role": "Committee on Agriculture",
     "stages": [
       "ST13",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1708,7 +1731,8 @@
     "stages": [
       "ST13",
       "ST02",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1738,7 +1762,8 @@
     "stages": [
       "ST13",
       "ST02",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1768,7 +1793,8 @@
     "stages": [
       "ST13",
       "ST18",
-      "ST06"
+      "ST06",
+      "ST31"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1798,7 +1824,8 @@
     "stages": [
       "ST13",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST31"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -2179,7 +2206,9 @@
     "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
-      "ST01"
+      "ST01",
+      "ST25",
+      "ST27"
     ],
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
@@ -2208,7 +2237,9 @@
     "role": "Committee on Construction and Development",
     "stages": [
       "ST15",
-      "ST01"
+      "ST01",
+      "ST25",
+      "ST27"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -2238,7 +2269,9 @@
     "stages": [
       "ST15",
       "ST02",
-      "ST01"
+      "ST01",
+      "ST25",
+      "ST27"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -2268,7 +2301,9 @@
     "stages": [
       "ST15",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST25",
+      "ST27"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -2295,7 +2330,9 @@
     "stages": [
       "ST15",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST25",
+      "ST27"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -2325,7 +2362,9 @@
     "stages": [
       "ST15",
       "ST18",
-      "ST08"
+      "ST08",
+      "ST25",
+      "ST27"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -2355,7 +2394,9 @@
     "stages": [
       "ST15",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST25",
+      "ST27"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -3094,7 +3135,9 @@
     "role": "Journalist",
     "stages": [
       "ST19",
-      "ST04"
+      "ST04",
+      "ST26",
+      "ST30"
     ],
     "suit_1": "Divisive",
     "suit_2": "Duplicitous",
@@ -3123,7 +3166,9 @@
     "role": "Journalist",
     "stages": [
       "ST19",
-      "ST04"
+      "ST04",
+      "ST26",
+      "ST30"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Divisive",
@@ -3152,7 +3197,9 @@
     "role": "Journalist",
     "stages": [
       "ST19",
-      "ST04"
+      "ST04",
+      "ST26",
+      "ST30"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Appeal",
@@ -3181,7 +3228,9 @@
     "role": "Journalist",
     "stages": [
       "ST19",
-      "ST04"
+      "ST04",
+      "ST26",
+      "ST30"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -3210,7 +3259,9 @@
     "role": "Journalist",
     "stages": [
       "ST19",
-      "ST04"
+      "ST04",
+      "ST26",
+      "ST30"
     ],
     "suit_1": "Divisive",
     "suit_2": "Data Driven",
@@ -3239,7 +3290,9 @@
     "role": "Journalist",
     "stages": [
       "ST19",
-      "ST04"
+      "ST04",
+      "ST26",
+      "ST30"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Emotional",
@@ -3268,7 +3321,9 @@
     "role": "Journalist",
     "stages": [
       "ST19",
-      "ST04"
+      "ST04",
+      "ST26",
+      "ST30"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -3297,7 +3352,9 @@
     "role": "Journalist",
     "stages": [
       "ST19",
-      "ST04"
+      "ST04",
+      "ST26",
+      "ST30"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -3325,7 +3382,8 @@
     "affiliation": "BO05",
     "role": "Chamber of Commerce Lobbyist",
     "stages": [
-      "ST20"
+      "ST20",
+      "ST28"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -3381,7 +3439,8 @@
     "affiliation": "BO10",
     "role": "Agricultural Cooperative Member",
     "stages": [
-      "ST20"
+      "ST20",
+      "ST28"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -3409,7 +3468,8 @@
     "affiliation": "BO07",
     "role": "Fisheries Cooperative Member",
     "stages": [
-      "ST20"
+      "ST20",
+      "ST28"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -3437,7 +3497,8 @@
     "affiliation": "BO04",
     "role": "Mayors' Network Representative",
     "stages": [
-      "ST20"
+      "ST20",
+      "ST28"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",

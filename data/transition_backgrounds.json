@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "transition_background_id": "TB01",
+    "stage_id": null,
+    "background_id": "OFFICE"
+  },
+  {
+    "transition_background_id": "TB02",
+    "stage_id": "ST24",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB03",
+    "stage_id": "ST25",
+    "background_id": "ST21"
+  },
+  {
+    "transition_background_id": "TB04",
+    "stage_id": "ST26",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB05",
+    "stage_id": "ST27",
+    "background_id": "ST15"
+  },
+  {
+    "transition_background_id": "TB06",
+    "stage_id": "ST28",
+    "background_id": "ST20"
+  },
+  {
+    "transition_background_id": "TB07",
+    "stage_id": "ST29",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB08",
+    "stage_id": "ST30",
+    "background_id": "ST19"
+  },
+  {
+    "transition_background_id": "TB09",
+    "stage_id": "ST31",
+    "background_id": "ST13"
+  }
+]

@@ -1,1 +1,240 @@
-[]
+[
+  {
+    "transition_dialogue_id": "TD01",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "I have the briefing notes ready. Read the first page on your way in.",
+    "player_reply_en": "I will read it on the way."
+  },
+  {
+    "transition_dialogue_id": "TD02",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder is thin on this one. Trust your instincts in there.",
+    "player_reply_en": "I usually do."
+  },
+  {
+    "transition_dialogue_id": "TD03",
+    "character_id": "SF02",
+    "stage_id": null,
+    "character_line_en": "I double-checked the facts. They should hold up under pressure.",
+    "player_reply_en": "Good. That is all I need."
+  },
+  {
+    "transition_dialogue_id": "TD04",
+    "character_id": "SF02",
+    "stage_id": null,
+    "character_line_en": "Whatever happens next, the numbers are on your side.",
+    "player_reply_en": "Let us hope they listen."
+  },
+  {
+    "transition_dialogue_id": "TD05",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Reporters are gathering outside. Keep your answers short and clear.",
+    "player_reply_en": "Short and clear. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD06",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "I have cleared your schedule. Focus on the room ahead.",
+    "player_reply_en": "Thank you. I will."
+  },
+  {
+    "transition_dialogue_id": "TD07",
+    "character_id": "SF09",
+    "stage_id": null,
+    "character_line_en": "Every word may be quoted. Choose them with care.",
+    "player_reply_en": "I will."
+  },
+  {
+    "transition_dialogue_id": "TD08",
+    "character_id": "SF09",
+    "stage_id": null,
+    "character_line_en": "The cameras are ready, but you do not need them.",
+    "player_reply_en": "Then I will ignore them."
+  },
+  {
+    "transition_dialogue_id": "TD09",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "Folks back home are watching how this goes. No pressure.",
+    "player_reply_en": "None at all, then."
+  },
+  {
+    "transition_dialogue_id": "TD10",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "I brought word from the district. People are counting on you.",
+    "player_reply_en": "I will not let them down."
+  },
+  {
+    "transition_dialogue_id": "TD11",
+    "character_id": "SF16",
+    "stage_id": null,
+    "character_line_en": "The district office sent tea. It is a long session ahead.",
+    "player_reply_en": "Tea first. Then the fight."
+  },
+  {
+    "transition_dialogue_id": "TD12",
+    "character_id": "SF16",
+    "stage_id": null,
+    "character_line_en": "People in the district asked me to wish you luck.",
+    "player_reply_en": "Please thank them for me."
+  },
+  {
+    "transition_dialogue_id": "TD13",
+    "character_id": "SF15",
+    "stage_id": "ST03",
+    "character_line_en": "This is your own party's room. They will notice every word.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD14",
+    "character_id": "SF16",
+    "stage_id": "ST03",
+    "character_line_en": "Caucus members like a firm hand and a friendly tone.",
+    "player_reply_en": "Firm and friendly. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD15",
+    "character_id": "SF08",
+    "stage_id": "ST04",
+    "character_line_en": "Pick three simple points. Say them and do not wander.",
+    "player_reply_en": "Three points. Then stop."
+  },
+  {
+    "transition_dialogue_id": "TD16",
+    "character_id": "SF09",
+    "stage_id": "ST04",
+    "character_line_en": "Journalists smell hesitation. Answer plainly and keep your composure.",
+    "player_reply_en": "Plain and calm. Ready."
+  },
+  {
+    "transition_dialogue_id": "TD17",
+    "character_id": "SF01",
+    "stage_id": "ST02",
+    "character_line_en": "Count the seats as you rise. Every one matters.",
+    "player_reply_en": "I know the numbers."
+  },
+  {
+    "transition_dialogue_id": "TD18",
+    "character_id": "SF02",
+    "stage_id": "ST02",
+    "character_line_en": "The chamber is full. Make the first minute count.",
+    "player_reply_en": "The first minute counts most."
+  },
+  {
+    "transition_dialogue_id": "TD19",
+    "character_id": "SF15",
+    "stage_id": "ST24",
+    "character_line_en": "Commuters have filled the hall. Fares are on everyone's mind.",
+    "player_reply_en": "Then fares are what we discuss."
+  },
+  {
+    "transition_dialogue_id": "TD20",
+    "character_id": "SF16",
+    "stage_id": "ST24",
+    "character_line_en": "They want to hear about their own fares. Keep it human.",
+    "player_reply_en": "Human first, numbers second."
+  },
+  {
+    "transition_dialogue_id": "TD21",
+    "character_id": "SF01",
+    "stage_id": "ST25",
+    "character_line_en": "The timetable data is in your folder. Every line is marked.",
+    "player_reply_en": "Good. Marked lines help."
+  },
+  {
+    "transition_dialogue_id": "TD22",
+    "character_id": "SF02",
+    "stage_id": "ST25",
+    "character_line_en": "This room rewards patience and precise answers.",
+    "player_reply_en": "Precise it is."
+  },
+  {
+    "transition_dialogue_id": "TD23",
+    "character_id": "SF08",
+    "stage_id": "ST26",
+    "character_line_en": "The fare rise is the only question they care about.",
+    "player_reply_en": "Then I will answer it."
+  },
+  {
+    "transition_dialogue_id": "TD24",
+    "character_id": "SF09",
+    "stage_id": "ST26",
+    "character_line_en": "Say what you will protect, not just what you oppose.",
+    "player_reply_en": "Protect first. Oppose second."
+  },
+  {
+    "transition_dialogue_id": "TD25",
+    "character_id": "SF01",
+    "stage_id": "ST27",
+    "character_line_en": "Safety records are public. Expect the members to quote them.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD26",
+    "character_id": "SF02",
+    "stage_id": "ST27",
+    "character_line_en": "Be exact about inspections and costs. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD27",
+    "character_id": "SF15",
+    "stage_id": "ST28",
+    "character_line_en": "The fisheries representative is blunt but fair. Meet that with plain talk.",
+    "player_reply_en": "Plain talk, then."
+  },
+  {
+    "transition_dialogue_id": "TD28",
+    "character_id": "SF16",
+    "stage_id": "ST28",
+    "character_line_en": "Quotas decide whether boats stay in business. Listen first.",
+    "player_reply_en": "Listening is my strength."
+  },
+  {
+    "transition_dialogue_id": "TD29",
+    "character_id": "SF15",
+    "stage_id": "ST29",
+    "character_line_en": "The harbour crowd is proud and tired. Show them respect.",
+    "player_reply_en": "Respect comes first."
+  },
+  {
+    "transition_dialogue_id": "TD30",
+    "character_id": "SF16",
+    "stage_id": "ST29",
+    "character_line_en": "It smells of salt and diesel in there. Do not mind it.",
+    "player_reply_en": "I like the harbour."
+  },
+  {
+    "transition_dialogue_id": "TD31",
+    "character_id": "SF08",
+    "stage_id": "ST30",
+    "character_line_en": "Cameras are waiting at the dock. Stay calm and brief.",
+    "player_reply_en": "Calm and brief."
+  },
+  {
+    "transition_dialogue_id": "TD32",
+    "character_id": "SF09",
+    "stage_id": "ST30",
+    "character_line_en": "They will ask about labels. Know where the catch comes from.",
+    "player_reply_en": "I will say what I know."
+  },
+  {
+    "transition_dialogue_id": "TD33",
+    "character_id": "SF01",
+    "stage_id": "ST31",
+    "character_line_en": "The catch limits are in tab three. Read them first.",
+    "player_reply_en": "Tab three. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD34",
+    "character_id": "SF02",
+    "stage_id": "ST31",
+    "character_line_en": "Small boats against big fleets. Expect that fight in there.",
+    "player_reply_en": "I expect it."
+  }
+]

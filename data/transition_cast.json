@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "transition_cast_id": "TC01",
+    "stage_id": null,
+    "character_id": "SF01"
+  },
+  {
+    "transition_cast_id": "TC02",
+    "stage_id": null,
+    "character_id": "SF02"
+  },
+  {
+    "transition_cast_id": "TC03",
+    "stage_id": null,
+    "character_id": "SF08"
+  },
+  {
+    "transition_cast_id": "TC04",
+    "stage_id": null,
+    "character_id": "SF09"
+  },
+  {
+    "transition_cast_id": "TC05",
+    "stage_id": null,
+    "character_id": "SF15"
+  },
+  {
+    "transition_cast_id": "TC06",
+    "stage_id": null,
+    "character_id": "SF16"
+  }
+]

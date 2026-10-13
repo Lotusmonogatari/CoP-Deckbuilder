@@ -430,5 +430,413 @@
     "cue_4": "I answer for my own work only.",
     "cue_5": "Nothing to hide. Look as long as you want.",
     "stage_ids": null
+  },
+  {
+    "cue_id": "OC37",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "Your fare projection ignores operating costs.",
+    "cue_2": "Where is the source for that figure?",
+    "cue_3": "Ridership says otherwise.",
+    "cue_4": "Show the audit or drop the claim.",
+    "cue_5": "The timetable numbers do not reconcile.",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC38",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "Cost per passenger. Answer or admit it.",
+    "cue_2": "What is the on-time rate, exactly?",
+    "cue_3": "Which lines would you close?",
+    "cue_4": "Your safety figures are incomplete.",
+    "cue_5": "Yes or no: will fares rise?",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC39",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "The evidence favours my reading.",
+    "cue_2": "Check the ridership table. I am right.",
+    "cue_3": "These figures support the fare review.",
+    "cue_4": "The audit is on my side.",
+    "cue_5": "Delay rates prove the point.",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC40",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "Compare the numbers. They agree with me.",
+    "cue_2": "Operating costs are in the appendix.",
+    "cue_3": "The data is clear on this.",
+    "cue_4": "Every table I cite is public.",
+    "cue_5": "The safety record backs my plan.",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC41",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "The sample size is adequate.",
+    "cue_2": "Those averages are misleading.",
+    "cue_3": "My figures were verified.",
+    "cue_4": "The operator's data is audited.",
+    "cue_5": "Cite your source first.",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC42",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "Context matters for these numbers.",
+    "cue_2": "That chart omits the costs.",
+    "cue_3": "Correct the baseline, then ask.",
+    "cue_4": "My methodology is sound.",
+    "cue_5": "The ratio is more complicated.",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC43",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "Ordinary riders pay for your policy!",
+    "cue_2": "Look the commuters in the eye!",
+    "cue_3": "Seniors are stranded on those platforms!",
+    "cue_4": "Do you feel nothing for riders?",
+    "cue_5": "Families are the ones who suffer!",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC44",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "Your fares hurt the people I serve!",
+    "cue_2": "Tell the night shift it is fine!",
+    "cue_3": "This is a heartless proposal!",
+    "cue_4": "Think of the children on those platforms!",
+    "cue_5": "People deserve better than this!",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC45",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "Finally, someone fights for riders!",
+    "cue_2": "That is what commuters need!",
+    "cue_3": "My heart is with the riders!",
+    "cue_4": "Yes! This is worth fighting for!",
+    "cue_5": "Safe platforms for every family!",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC46",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "You understand what riders face!",
+    "cue_2": "That gives commuters hope!",
+    "cue_3": "Thank you for hearing them!",
+    "cue_4": "That is a decent thing to say!",
+    "cue_5": "Finally we speak about people!",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC47",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "Do not dismiss their fear!",
+    "cue_2": "My concern for riders is genuine!",
+    "cue_3": "Do not belittle ordinary commuters!",
+    "cue_4": "I speak for people who cannot!",
+    "cue_5": "Their struggle is not a talking point!",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC48",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "Spare us the cold arithmetic!",
+    "cue_2": "Riders are not statistics!",
+    "cue_3": "I will not be lectured about feelings!",
+    "cue_4": "Compassion has a place here!",
+    "cue_5": "My conscience is clear!",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ]
+  },
+  {
+    "cue_id": "OC49",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "I need to see honest quotas.",
+    "cue_2": "Show me the catch records.",
+    "cue_3": "Own up to the harbour's problems.",
+    "cue_4": "Where is the plain answer?",
+    "cue_5": "I want accountability, not excuses.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC50",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "Your label policy does not hold.",
+    "cue_2": "Say plainly what you will fix.",
+    "cue_3": "The small boats deserve a straight answer.",
+    "cue_4": "Quota rules must mean something.",
+    "cue_5": "Stand behind your plan or withdraw it.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC51",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "That is a straight answer. Thank you.",
+    "cue_2": "I respect plain speaking about quotas.",
+    "cue_3": "That is honest. I can work with it.",
+    "cue_4": "You own the problem. Good.",
+    "cue_5": "That plan has my attention.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC52",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "A clear commitment is what I wanted.",
+    "cue_2": "I believe you mean it.",
+    "cue_3": "That is how a fair quota sounds.",
+    "cue_4": "Honest labels, honest fishers. Agreed.",
+    "cue_5": "Fine. You have my ear.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC53",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "My catch records are open.",
+    "cue_2": "I report every landing honestly.",
+    "cue_3": "The rules are public and I follow them.",
+    "cue_4": "I hide nothing about my fleet.",
+    "cue_5": "Judge the harbour by its work.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC54",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "Our books are in order.",
+    "cue_2": "Inspect the boats yourself.",
+    "cue_3": "I answer for my own fleet.",
+    "cue_4": "Fair quotas protect us both.",
+    "cue_5": "Let the records speak.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC55",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "Friends of the harbour would not do this.",
+    "cue_2": "We are neighbours. Act like it.",
+    "cue_3": "Surely you can see our side.",
+    "cue_4": "Our towns deserve better from you.",
+    "cue_5": "A fair quota is a favour to all.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC56",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": null,
+    "cue_1": "Do not turn your back on us.",
+    "cue_2": "We hope you will stand with us.",
+    "cue_3": "Fisher families stand together here.",
+    "cue_4": "Be one of us in this.",
+    "cue_5": "Help us as good neighbours do.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC57",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "Thank you, friend. The harbour agrees.",
+    "cue_2": "That is the spirit we need.",
+    "cue_3": "We stand together on this.",
+    "cue_4": "Our towns will welcome that.",
+    "cue_5": "We share the same boat.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC58",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": null,
+    "cue_1": "We all benefit from that.",
+    "cue_2": "Together we can make this work.",
+    "cue_3": "That is generous, and we welcome it.",
+    "cue_4": "You speak for the whole harbour.",
+    "cue_5": "I knew we shared common ground.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC59",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "Let us not fall out over fish.",
+    "cue_2": "We are better as friends.",
+    "cue_3": "There is no need for sharp words.",
+    "cue_4": "Our differences are small.",
+    "cue_5": "Let us all keep the peace.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
+  },
+  {
+    "cue_id": "OC60",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": null,
+    "cue_1": "I count you as a friend.",
+    "cue_2": "Fisher families need us united.",
+    "cue_3": "Keep it friendly, and I will too.",
+    "cue_4": "Calm talk serves the harbour best.",
+    "cue_5": "No one gains from a quarrel.",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ]
   }
 ]

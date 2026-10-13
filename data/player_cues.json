@@ -14,7 +14,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "That is not what the record shows.",
     "cue_2": "Let us be honest about the record.",
@@ -37,7 +39,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "I will tell this committee the truth.",
     "cue_2": "Here is exactly what I will do.",
@@ -60,7 +64,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "I stand by my position.",
     "cue_2": "My position is clear and it is firm.",
@@ -83,7 +89,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "Tell that to the families affected.",
     "cue_2": "How do you sleep at night?",
@@ -106,7 +114,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "This is about the people we serve.",
     "cue_2": "I hear their stories in my district.",
@@ -129,7 +139,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "I carry this burden too.",
     "cue_2": "My heart is with them, not with politics.",
@@ -152,7 +164,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "Members on both sides see the flaw.",
     "cue_2": "Even your colleagues are not convinced.",
@@ -175,7 +189,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "We can agree on this much.",
     "cue_2": "Let us find the common ground together.",
@@ -198,7 +214,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "I am willing to work with every member.",
     "cue_2": "My door is open to you.",
@@ -221,7 +239,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "The figures in your own report disagree.",
     "cue_2": "Your costs look understated.",
@@ -244,7 +264,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "The numbers make the case for me.",
     "cue_2": "Here is the evidence, line by line.",
@@ -267,7 +289,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "My figures are checked and sound.",
     "cue_2": "The method is set out in the appendix.",
@@ -290,7 +314,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "Your side created this mess.",
     "cue_2": "This is what your side does.",
@@ -313,7 +339,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "Our people will not be ignored.",
     "cue_2": "This is a line we will not cross.",
@@ -336,7 +364,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "I answer to my voters, not to you.",
     "cue_2": "Your side has no standing to judge.",
@@ -359,7 +389,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "Interesting. Is that your private view?",
     "cue_2": "Others may see this differently.",
@@ -382,7 +414,9 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "Of course, I support this.",
     "cue_2": "Let us say this was the plan.",
@@ -405,12 +439,2540 @@
       "ST15",
       "ST16",
       "ST17",
-      "ST18"
+      "ST18",
+      "ST27",
+      "ST31"
     ],
     "cue_1": "I do not recall the details.",
     "cue_2": "That is a matter of interpretation.",
     "cue_3": "Words can be read many ways.",
     "cue_4": "I will have to check my records.",
     "cue_5": "I would not put it quite that way."
+  },
+  {
+    "cue_id": "PL19",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Which fares rise, and by how much?",
+    "cue_2": "Show me the ridership figures.",
+    "cue_3": "Name the line that earns its subsidy.",
+    "cue_4": "Cost per passenger. Give me the number.",
+    "cue_5": "Your timetable data does not add up."
+  },
+  {
+    "cue_id": "PL20",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Is the operator in profit or loss?",
+    "cue_2": "Where is the safety audit?",
+    "cue_3": "The delay statistics tell a different story.",
+    "cue_4": "Fares or service. You cannot cut both.",
+    "cue_5": "Publish the numbers or withdraw the claim."
+  },
+  {
+    "cue_id": "PL21",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "The figures support a fare freeze.",
+    "cue_2": "Ridership data points one way.",
+    "cue_3": "Run the numbers. They hold up.",
+    "cue_4": "Every line on this chart is sourced.",
+    "cue_5": "The audit confirms the safety case."
+  },
+  {
+    "cue_id": "PL22",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Compare cost per rider across all lines.",
+    "cue_2": "Delays fall when timetables follow demand.",
+    "cue_3": "The evidence is in the appendix.",
+    "cue_4": "A fare cap costs less than empty trains.",
+    "cue_5": "Check the figures. I will wait."
+  },
+  {
+    "cue_id": "PL23",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Those figures are audited and public.",
+    "cue_2": "The data does not support that claim.",
+    "cue_3": "Read the source before you object.",
+    "cue_4": "Cite the table. I will answer.",
+    "cue_5": "Averages hide the variation by line."
+  },
+  {
+    "cue_id": "PL24",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "The methodology is on the record.",
+    "cue_2": "Correlation is not cause on this chart.",
+    "cue_3": "Ask the operator for the raw data.",
+    "cue_4": "Your sample is too small to matter.",
+    "cue_5": "Check the denominator first."
+  },
+  {
+    "cue_id": "PL25",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Think of the night-shift nurse waiting!",
+    "cue_2": "Families are counting every yen!",
+    "cue_3": "Seniors cannot climb those stairs!",
+    "cue_4": "Students skip meals to afford fares!",
+    "cue_5": "Tell the commuters to their faces!"
+  },
+  {
+    "cue_id": "PL26",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Real people ride these trains!",
+    "cue_2": "A ticket is a week of groceries!",
+    "cue_3": "Who speaks for the people on the platform?",
+    "cue_4": "Explain this to a tired parent!",
+    "cue_5": "Remember who pays at the turnstile!"
+  },
+  {
+    "cue_id": "PL27",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "I ride these lines with you!",
+    "cue_2": "Every commuter deserves a safe platform!",
+    "cue_3": "Together we keep the trains running!",
+    "cue_4": "This fight is for every rider!",
+    "cue_5": "I will not let fares crush families!"
+  },
+  {
+    "cue_id": "PL28",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Our towns need their trains!",
+    "cue_2": "No one should dread the ticket machine!",
+    "cue_3": "This is about dignity on the commute!",
+    "cue_4": "Hear the riders. They are right!",
+    "cue_5": "Let us fix this together!"
+  },
+  {
+    "cue_id": "PL29",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Do not use their struggle as a weapon!",
+    "cue_2": "I care about riders more than you know!",
+    "cue_3": "Leave families out of your argument!",
+    "cue_4": "My heart is with the commuters!",
+    "cue_5": "Do not twist their stories!"
+  },
+  {
+    "cue_id": "PL30",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST24",
+      "ST25",
+      "ST26",
+      "ST27"
+    ],
+    "cue_1": "Compassion is not weakness!",
+    "cue_2": "Riders deserve respect, not slogans!",
+    "cue_3": "Their fears are real. Mine too!",
+    "cue_4": "Do not wave their pain around!",
+    "cue_5": "I stand with them, whatever you say!"
+  },
+  {
+    "cue_id": "PL31",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "Name the boat that fishes illegally.",
+    "cue_2": "I have read the quota report.",
+    "cue_3": "The catch figures do not support you.",
+    "cue_4": "Plainly, the quota system is failing.",
+    "cue_5": "Stand behind your label or remove it."
+  },
+  {
+    "cue_id": "PL32",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "I want honest catch reports.",
+    "cue_2": "Small boats deserve a fair share.",
+    "cue_3": "I will not accept hidden quotas.",
+    "cue_4": "Own the problem. Then fix it.",
+    "cue_5": "Your plan leaves the harbours behind."
+  },
+  {
+    "cue_id": "PL33",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "I will fix the harbour wall.",
+    "cue_2": "Here is my plan for the quotas.",
+    "cue_3": "Judge me by the catch limits.",
+    "cue_4": "I will check every label myself.",
+    "cue_5": "Plainly: family boats come first."
+  },
+  {
+    "cue_id": "PL34",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "I will protect honest fishers.",
+    "cue_2": "My position on quotas is simple.",
+    "cue_3": "I will answer to the harbour.",
+    "cue_4": "No label should mislead a shopper.",
+    "cue_5": "I will keep this fair."
+  },
+  {
+    "cue_id": "PL35",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "My answer on quotas is plain.",
+    "cue_2": "I have nothing to hide on catch limits.",
+    "cue_3": "The record on catch limits is public.",
+    "cue_4": "I take responsibility for this plan.",
+    "cue_5": "Check the quota rules yourself."
+  },
+  {
+    "cue_id": "PL36",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "I own what the plan costs.",
+    "cue_2": "Fair quotas are the whole point.",
+    "cue_3": "I will not dodge on labelling.",
+    "cue_4": "The report says otherwise.",
+    "cue_5": "Honest labels protect honest fishers."
+  },
+  {
+    "cue_id": "PL37",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "Harbour towns stand together. Whose side are you on?",
+    "cue_2": "We all eat the catch. Be fair.",
+    "cue_3": "Friends of the harbour know better.",
+    "cue_4": "Surely we want fair labels together.",
+    "cue_5": "Good neighbours do not hide quotas."
+  },
+  {
+    "cue_id": "PL38",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "We share these waters. Share the quota.",
+    "cue_2": "Our fishing towns deserve better from you.",
+    "cue_3": "Be a friend to the harbour.",
+    "cue_4": "Together we can do better than this.",
+    "cue_5": "A good turn deserves a fair quota."
+  },
+  {
+    "cue_id": "PL39",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "We will keep our harbours alive.",
+    "cue_2": "Together we protect the family boats.",
+    "cue_3": "Our fishing towns are one family.",
+    "cue_4": "We all gain from honest labels.",
+    "cue_5": "Let us steady the harbour together."
+  },
+  {
+    "cue_id": "PL40",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "Friends, the sea feeds us all.",
+    "cue_2": "We are stronger fishing as one.",
+    "cue_3": "Stand with the harbour and with me.",
+    "cue_4": "Our shared catch deserves our shared care.",
+    "cue_5": "I know we agree on the sea."
+  },
+  {
+    "cue_id": "PL41",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "We can settle this like neighbours.",
+    "cue_2": "Let us not divide the harbour.",
+    "cue_3": "We are all on the same boat.",
+    "cue_4": "Our towns need calm, not quarrels.",
+    "cue_5": "We agree on more than we say."
+  },
+  {
+    "cue_id": "PL42",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST28",
+      "ST29",
+      "ST30",
+      "ST31"
+    ],
+    "cue_1": "Good neighbours find the middle ground.",
+    "cue_2": "Do not turn friends against friends.",
+    "cue_3": "Let us keep the harbour united.",
+    "cue_4": "We share the same tide.",
+    "cue_5": "There is room for everyone's boat."
+  },
+  {
+    "cue_id": "PL43",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I read your submission. It falls short.",
+    "cue_2": "Honest answers are owed to this committee.",
+    "cue_3": "Which commitment will you actually keep?",
+    "cue_4": "Own the failures in your own plan.",
+    "cue_5": "Members deserve more than assurances."
+  },
+  {
+    "cue_id": "PL44",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I will return with whatever you require.",
+    "cue_2": "I take this committee's concerns seriously.",
+    "cue_3": "I will put my commitments in writing.",
+    "cue_4": "Hold me accountable to this committee.",
+    "cue_5": "I answer for every word."
+  },
+  {
+    "cue_id": "PL45",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I stand behind the work as submitted.",
+    "cue_2": "The record is open for inspection.",
+    "cue_3": "I admit the gaps and will close them.",
+    "cue_4": "My answers are the same in any room.",
+    "cue_5": "I accept the committee's scrutiny."
+  },
+  {
+    "cue_id": "PL46",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "People depend on this committee getting it right!",
+    "cue_2": "Do not treat families as statistics!",
+    "cue_3": "Members, hear the people outside!",
+    "cue_4": "Real lives ride on these words!",
+    "cue_5": "This is not an abstract exercise!"
+  },
+  {
+    "cue_id": "PL47",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I care deeply about the people affected!",
+    "cue_2": "I speak for those with no seat here!",
+    "cue_3": "Members, our decision touches real homes!",
+    "cue_4": "I will not forget who is waiting!",
+    "cue_5": "This work matters to me personally!"
+  },
+  {
+    "cue_id": "PL48",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I take offence at that insinuation!",
+    "cue_2": "Do not question my concern for people!",
+    "cue_3": "I feel this responsibility keenly!",
+    "cue_4": "Do not make this personal!",
+    "cue_5": "My commitment is genuine!"
+  },
+  {
+    "cue_id": "PL49",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Members, we are on the same side.",
+    "cue_2": "A cooperative committee gets better results.",
+    "cue_3": "Surely we can find a middle path.",
+    "cue_4": "Friends across the aisle, please reconsider.",
+    "cue_5": "Colleagues, we owe each other a hearing."
+  },
+  {
+    "cue_id": "PL50",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Members, I welcome your help on this.",
+    "cue_2": "Together we can improve the proposal.",
+    "cue_3": "I value the committee's collective wisdom.",
+    "cue_4": "Cooperation is how good law is made.",
+    "cue_5": "Let us shape this as colleagues."
+  },
+  {
+    "cue_id": "PL51",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Colleagues, let us keep this constructive.",
+    "cue_2": "We all want a workable result.",
+    "cue_3": "There is goodwill in this room.",
+    "cue_4": "Let us not harden positions.",
+    "cue_5": "I trust we can agree on more."
+  },
+  {
+    "cue_id": "PL52",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "What is the source of that estimate?",
+    "cue_2": "Give the committee the underlying data.",
+    "cue_3": "How was the sample chosen?",
+    "cue_4": "Is the cost figure net or gross?",
+    "cue_5": "Which assumption carries the most weight?"
+  },
+  {
+    "cue_id": "PL53",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "The committee has the data in front of it.",
+    "cue_2": "Each figure is sourced and documented.",
+    "cue_3": "Independent analysis supports this view.",
+    "cue_4": "The appendix shows the full calculation.",
+    "cue_5": "The numbers hold under every scenario."
+  },
+  {
+    "cue_id": "PL54",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "The figures are net of all transfers.",
+    "cue_2": "My sources are listed in the annex.",
+    "cue_3": "The analysis was independently checked.",
+    "cue_4": "That reading ignores the footnote.",
+    "cue_5": "The sample meets the standard."
+  },
+  {
+    "cue_id": "PL55",
+    "suit": "Divisive",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Members must decide whose interests they serve.",
+    "cue_2": "This is a choice between two camps.",
+    "cue_3": "The opposition benches know what they want.",
+    "cue_4": "Do not hide behind procedure.",
+    "cue_5": "Some members protect friends, not the public."
+  },
+  {
+    "cue_id": "PL56",
+    "suit": "Divisive",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "The public sees which members stand with them.",
+    "cue_2": "Let the committee divide on this.",
+    "cue_3": "I welcome a clear vote.",
+    "cue_4": "Supporters of reform are on one side.",
+    "cue_5": "The choice for members is plain."
+  },
+  {
+    "cue_id": "PL57",
+    "suit": "Divisive",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Do not paint members into corners.",
+    "cue_2": "Labels will not settle this matter.",
+    "cue_3": "Questioning motives is not an argument.",
+    "cue_4": "I reject the idea of two camps.",
+    "cue_5": "Debate the policy, not the person."
+  },
+  {
+    "cue_id": "PL58",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Certain members may have a conflict, one hears...",
+    "cue_2": "It is hard to say who benefits...",
+    "cue_3": "A closed-door arrangement is suspected...",
+    "cue_4": "The paperwork seems oddly incomplete...",
+    "cue_5": "Perhaps the minister knows more..."
+  },
+  {
+    "cue_id": "PL59",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "The committee's view will be considered carefully...",
+    "cue_2": "Amendments may be possible, in principle...",
+    "cue_3": "We are receptive to reasonable ideas...",
+    "cue_4": "A compromise could emerge, perhaps...",
+    "cue_5": "I would not rule that out..."
+  },
+  {
+    "cue_id": "PL60",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "That detail escapes me, regrettably...",
+    "cue_2": "The department would have that information...",
+    "cue_3": "I am advised that is not settled...",
+    "cue_4": "Records are being reviewed, I understand...",
+    "cue_5": "It would be premature to say..."
+  },
+  {
+    "cue_id": "PL61",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Answer the question put to you, please.",
+    "cue_2": "Your submission has gaps. Name them.",
+    "cue_3": "I need a straight account of costs.",
+    "cue_4": "Do not retreat into generalities.",
+    "cue_5": "Be specific about what you will do."
+  },
+  {
+    "cue_id": "PL62",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I will be specific and I will be brief.",
+    "cue_2": "Here is what I commit to.",
+    "cue_3": "I will report back on every point.",
+    "cue_4": "I welcome the hard questions.",
+    "cue_5": "You have my full cooperation."
+  },
+  {
+    "cue_id": "PL63",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "That is an accurate summary of my position.",
+    "cue_2": "I have provided everything requested.",
+    "cue_3": "I will clarify any point on request.",
+    "cue_4": "I disclosed the risks in my submission.",
+    "cue_5": "I will not overstate my case."
+  },
+  {
+    "cue_id": "PL64",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Behind every figure is a family!",
+    "cue_2": "This committee cannot look away!",
+    "cue_3": "Think about who bears the cost!",
+    "cue_4": "People are depending on a clear answer!",
+    "cue_5": "Do not bury this in procedure!"
+  },
+  {
+    "cue_id": "PL65",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Members, this matters to real people!",
+    "cue_2": "I speak for the people affected!",
+    "cue_3": "This is why I do this work!",
+    "cue_4": "Hear their voices in this room!",
+    "cue_5": "I will fight for a fair outcome!"
+  },
+  {
+    "cue_id": "PL66",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "That is an unfair characterisation!",
+    "cue_2": "I will not be painted as indifferent!",
+    "cue_3": "My concern for people is plain!",
+    "cue_4": "Do not question my sincerity!",
+    "cue_5": "I deserve a fair hearing!"
+  },
+  {
+    "cue_id": "PL67",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Colleagues, can we agree on the basics?",
+    "cue_2": "Let us not make this adversarial.",
+    "cue_3": "Surely members share this concern.",
+    "cue_4": "I would appeal to your better judgment.",
+    "cue_5": "A little cooperation would go far."
+  },
+  {
+    "cue_id": "PL68",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Members, thank you for your patience.",
+    "cue_2": "Let us build on common ground.",
+    "cue_3": "I am grateful for the committee's help.",
+    "cue_4": "Together we reach a better result.",
+    "cue_5": "I welcome constructive amendments."
+  },
+  {
+    "cue_id": "PL69",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I hope members will hear me out.",
+    "cue_2": "We can work through this together.",
+    "cue_3": "Let us give each other the benefit of doubt.",
+    "cue_4": "A fair compromise serves everyone.",
+    "cue_5": "I respect every view in this room."
+  },
+  {
+    "cue_id": "PL70",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Provide the table that supports that claim.",
+    "cue_2": "Is that figure adjusted for inflation?",
+    "cue_3": "What is the baseline for that comparison?",
+    "cue_4": "Cite the exact page, please.",
+    "cue_5": "Which dataset are you relying on?"
+  },
+  {
+    "cue_id": "PL71",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "The baseline is stated on page one.",
+    "cue_2": "The figures are adjusted and audited.",
+    "cue_3": "Comparisons use a consistent method.",
+    "cue_4": "The dataset is open to members.",
+    "cue_5": "I can cite chapter and verse."
+  },
+  {
+    "cue_id": "PL72",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Those numbers need their context.",
+    "cue_2": "A single figure cannot settle this.",
+    "cue_3": "The audit trail is complete.",
+    "cue_4": "Ask for the working papers.",
+    "cue_5": "My calculation is reproducible."
+  },
+  {
+    "cue_id": "PL73",
+    "suit": "Divisive",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Members must choose between two paths.",
+    "cue_2": "There is no neutral ground on this.",
+    "cue_3": "Whose interests does this really serve?",
+    "cue_4": "Do not shelter behind vague wording.",
+    "cue_5": "The committee should name its allies."
+  },
+  {
+    "cue_id": "PL74",
+    "suit": "Divisive",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "The dividing line is plain to see.",
+    "cue_2": "Members know where they stand.",
+    "cue_3": "I welcome a recorded vote.",
+    "cue_4": "Reform has supporters and obstructors.",
+    "cue_5": "Let each member show their position."
+  },
+  {
+    "cue_id": "PL75",
+    "suit": "Divisive",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "Do not reduce this to us and them.",
+    "cue_2": "That framing helps no one.",
+    "cue_3": "I resist the label you have chosen.",
+    "cue_4": "Policy deserves better than tribal talk.",
+    "cue_5": "Judge the merits, not the sides."
+  },
+  {
+    "cue_id": "PL76",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "It seems certain papers are missing...",
+    "cue_2": "Some members appear unusually quiet...",
+    "cue_3": "Who drafted this section, one wonders...",
+    "cue_4": "A convenient omission, perhaps...",
+    "cue_5": "The timeline seems conveniently vague..."
+  },
+  {
+    "cue_id": "PL77",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I am sure the committee will find a way...",
+    "cue_2": "A suitable amendment may be arranged...",
+    "cue_3": "Concerns can be addressed, I trust...",
+    "cue_4": "We will revisit the details, of course...",
+    "cue_5": "Flexibility is certainly possible..."
+  },
+  {
+    "cue_id": "PL78",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "stage_ids": [
+      "ST01",
+      "ST09",
+      "ST10",
+      "ST11",
+      "ST12",
+      "ST13",
+      "ST14",
+      "ST15",
+      "ST16",
+      "ST17",
+      "ST18",
+      "ST27",
+      "ST31"
+    ],
+    "cue_1": "I would need notice to answer that...",
+    "cue_2": "The relevant officials could say more...",
+    "cue_3": "That is outside my brief, I believe...",
+    "cue_4": "I will have my staff look into it...",
+    "cue_5": "Details are for the implementation stage..."
+  },
+  {
+    "cue_id": "PL79",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Viewers deserve a straight answer from you.",
+    "cue_2": "I would rather be honest than polished.",
+    "cue_3": "Say plainly what you believe.",
+    "cue_4": "Your plan needs to survive scrutiny.",
+    "cue_5": "Defend your record in front of everyone."
+  },
+  {
+    "cue_id": "PL80",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "I will tell viewers the plain truth.",
+    "cue_2": "Judge me on what I deliver.",
+    "cue_3": "I speak the same on camera or off.",
+    "cue_4": "Here is exactly where I stand.",
+    "cue_5": "I will answer every challenge."
+  },
+  {
+    "cue_id": "PL81",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "My record is public for viewers to see.",
+    "cue_2": "I stand by what I have said.",
+    "cue_3": "I have no hidden position.",
+    "cue_4": "Check my words against my actions.",
+    "cue_5": "I own my choices."
+  },
+  {
+    "cue_id": "PL82",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Viewers at home are watching you dodge!",
+    "cue_2": "Families deserve better than slogans!",
+    "cue_3": "Say that to the people watching!",
+    "cue_4": "Real people are listening right here!",
+    "cue_5": "Do not hide behind talking points!"
+  },
+  {
+    "cue_id": "PL83",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "I speak for everyone watching at home!",
+    "cue_2": "Viewers, I am fighting for you!",
+    "cue_3": "Your struggles are why I am here!",
+    "cue_4": "I feel what you feel!",
+    "cue_5": "Hold on, we will get through this!"
+  },
+  {
+    "cue_id": "PL84",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Do not use cameras to wound people!",
+    "cue_2": "I will not be mocked for caring!",
+    "cue_3": "Viewers can see I mean it!",
+    "cue_4": "My concern is genuine, not theatre!",
+    "cue_5": "Do not twist their pain!"
+  },
+  {
+    "cue_id": "PL85",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Viewers, ask yourselves who really listens.",
+    "cue_2": "We all deserve a calmer debate.",
+    "cue_3": "Be a friend to the voters.",
+    "cue_4": "Neighbours across the country are watching.",
+    "cue_5": "Surely we can speak with respect."
+  },
+  {
+    "cue_id": "PL86",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Viewers, we are in this together.",
+    "cue_2": "Let us speak as one country.",
+    "cue_3": "I am glad to share this stage.",
+    "cue_4": "Together we can fix this.",
+    "cue_5": "Welcome, everyone. Let us talk plainly."
+  },
+  {
+    "cue_id": "PL87",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Let us keep this civil for viewers.",
+    "cue_2": "We can disagree and respect each other.",
+    "cue_3": "The country wants calm, not shouting.",
+    "cue_4": "Friends, let us lower the temperature.",
+    "cue_5": "There is common ground here."
+  },
+  {
+    "cue_id": "PL88",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "What is the source for that figure?",
+    "cue_2": "Give viewers the number, not a slogan.",
+    "cue_3": "Is that claim true? Yes or no.",
+    "cue_4": "Where do those statistics come from?",
+    "cue_5": "Show the evidence on screen."
+  },
+  {
+    "cue_id": "PL89",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "The figures are public. Viewers can check.",
+    "cue_2": "Every claim here is sourced.",
+    "cue_3": "The statistics support my case.",
+    "cue_4": "Independent data says the same.",
+    "cue_5": "Look at the chart behind me."
+  },
+  {
+    "cue_id": "PL90",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "That statistic is taken out of context.",
+    "cue_2": "Read the full survey.",
+    "cue_3": "Check the footnote on that number.",
+    "cue_4": "Averages mislead on this question.",
+    "cue_5": "My figures are independently verified."
+  },
+  {
+    "cue_id": "PL91",
+    "suit": "Divisive",
+    "verb": "attack",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Viewers, whose side is this person on?",
+    "cue_2": "Pick a side in front of the country.",
+    "cue_3": "You speak for insiders, not voters.",
+    "cue_4": "There is a clear choice here.",
+    "cue_5": "Be honest about who you protect."
+  },
+  {
+    "cue_id": "PL92",
+    "suit": "Divisive",
+    "verb": "gain",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Viewers can see the divide for themselves.",
+    "cue_2": "The country must choose a direction.",
+    "cue_3": "I stand with ordinary voters.",
+    "cue_4": "My opponents defend the powerful.",
+    "cue_5": "Choose the side of the people."
+  },
+  {
+    "cue_id": "PL93",
+    "suit": "Divisive",
+    "verb": "block",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Slogans do not answer the question.",
+    "cue_2": "You cannot label your way out of this.",
+    "cue_3": "Viewers see the name-calling for what it is.",
+    "cue_4": "Debate the policy, not my loyalty.",
+    "cue_5": "Division is your tactic, not mine."
+  },
+  {
+    "cue_id": "PL94",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Viewers may wonder what is being hidden...",
+    "cue_2": "Perhaps you would care to clarify...",
+    "cue_3": "Some interesting details seem to be missing...",
+    "cue_4": "One might ask who is behind this...",
+    "cue_5": "That answer left a lot unsaid..."
+  },
+  {
+    "cue_id": "PL95",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "Viewers can rest assured, I think...",
+    "cue_2": "We will certainly look into that...",
+    "cue_3": "There may be room for agreement...",
+    "cue_4": "I am confident things will work out...",
+    "cue_5": "Positions can evolve, as needed..."
+  },
+  {
+    "cue_id": "PL96",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "stage_ids": [
+      "ST06"
+    ],
+    "cue_1": "I will have to get back to you...",
+    "cue_2": "That is not quite what I meant...",
+    "cue_3": "The facts are emerging, I understand...",
+    "cue_4": "I would not characterise it that way...",
+    "cue_5": "Others may know more about that..."
+  },
+  {
+    "cue_id": "PL97",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Tell these people exactly what you will do.",
+    "cue_2": "Plain answers, please. Folks here deserve them.",
+    "cue_3": "Your promises need a price tag.",
+    "cue_4": "I judge plans by what they deliver.",
+    "cue_5": "Say it straight so everyone can hear."
+  },
+  {
+    "cue_id": "PL98",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "This hall deserves more than slogans.",
+    "cue_2": "Own your record or change it.",
+    "cue_3": "Do not ask us to just trust you.",
+    "cue_4": "Show your work to your neighbours.",
+    "cue_5": "Words are cheap. Show me results."
+  },
+  {
+    "cue_id": "PL99",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "I will answer every question put to me.",
+    "cue_2": "My word is only as good as my results.",
+    "cue_3": "I will deliver what I promise here.",
+    "cue_4": "Hold me to what I say.",
+    "cue_5": "I am here to listen and to act."
+  },
+  {
+    "cue_id": "PL100",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "I take responsibility for getting this done.",
+    "cue_2": "I will be straight with you.",
+    "cue_3": "You will see my work, not just words.",
+    "cue_4": "I own this plan, flaws and all.",
+    "cue_5": "Ask me anything. I will answer plainly."
+  },
+  {
+    "cue_id": "PL101",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "My record is open for anyone to read.",
+    "cue_2": "I stand by what I have done.",
+    "cue_3": "I will not dodge, and I will not spin.",
+    "cue_4": "Fair question. Here is my honest answer.",
+    "cue_5": "I admit what went wrong and what I fixed."
+  },
+  {
+    "cue_id": "PL102",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Judge me on the work itself.",
+    "cue_2": "I have nothing to hide from you.",
+    "cue_3": "I accept responsibility for my choices.",
+    "cue_4": "Plain facts: this is what I did.",
+    "cue_5": "My answer does not change by audience."
+  },
+  {
+    "cue_id": "PL103",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Look these families in the eye!",
+    "cue_2": "Real people pay for your choices!",
+    "cue_3": "My neighbours are hurting, and you shrug!",
+    "cue_4": "Do you hear what they are saying?",
+    "cue_5": "People in this hall cannot wait!"
+  },
+  {
+    "cue_id": "PL104",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Think of the children who depend on this!",
+    "cue_2": "Our town deserves better than this!",
+    "cue_3": "You are playing with our livelihoods!",
+    "cue_4": "Say that to the mothers in this hall!",
+    "cue_5": "Feel what we feel!"
+  },
+  {
+    "cue_id": "PL105",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "I hear you, and I am with you!",
+    "cue_2": "Your stories keep me fighting!",
+    "cue_3": "This is about our families!",
+    "cue_4": "We will not leave anyone behind!",
+    "cue_5": "Thank you for trusting me with this!"
+  },
+  {
+    "cue_id": "PL106",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "I will carry your voice into the chamber!",
+    "cue_2": "Our town matters to me!",
+    "cue_3": "Every one of you counts!",
+    "cue_4": "I fight for the people in this hall!",
+    "cue_5": "Together we are louder than doubt!"
+  },
+  {
+    "cue_id": "PL107",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Do not turn my care into a weapon!",
+    "cue_2": "I feel this as deeply as you!",
+    "cue_3": "Do not dismiss these families!",
+    "cue_4": "My heart is in this town!",
+    "cue_5": "Respect the people who came here!"
+  },
+  {
+    "cue_id": "PL108",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Compassion is not a weakness!",
+    "cue_2": "I will not be shouted down!",
+    "cue_3": "These worries are real, and so is my effort!",
+    "cue_4": "Do not mock honest concern!",
+    "cue_5": "I stand with this hall!"
+  },
+  {
+    "cue_id": "PL109",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Friends, surely we can do better than this.",
+    "cue_2": "We all want the same thing here.",
+    "cue_3": "Neighbours would not treat us this way.",
+    "cue_4": "Stand with your community, not against it.",
+    "cue_5": "A good neighbour listens first."
+  },
+  {
+    "cue_id": "PL110",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "We are all in this town together.",
+    "cue_2": "Help us, and we will help you.",
+    "cue_3": "Do right by the people beside you.",
+    "cue_4": "Our community deserves a friend.",
+    "cue_5": "Be one of us, not above us."
+  },
+  {
+    "cue_id": "PL111",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "We are stronger when we stand together.",
+    "cue_2": "Friends, let us build this as one town.",
+    "cue_3": "Together we will find a way.",
+    "cue_4": "I am proud to stand with you.",
+    "cue_5": "Our town, our future, together."
+  },
+  {
+    "cue_id": "PL112",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Neighbours helping neighbours. That is the plan.",
+    "cue_2": "We all win when the town wins.",
+    "cue_3": "Count on me as a friend.",
+    "cue_4": "Let us work this out together.",
+    "cue_5": "Everyone has a place in this plan."
+  },
+  {
+    "cue_id": "PL113",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Let us not divide this good town.",
+    "cue_2": "We are friends first and rivals second.",
+    "cue_3": "We can disagree and stay neighbours.",
+    "cue_4": "Keep the peace, and we all gain.",
+    "cue_5": "There is room for everyone here."
+  },
+  {
+    "cue_id": "PL114",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Let us hear each other out.",
+    "cue_2": "We share more than we dispute.",
+    "cue_3": "Friendly words go a long way.",
+    "cue_4": "We are on the same side.",
+    "cue_5": "A kind word costs us nothing."
+  },
+  {
+    "cue_id": "PL115",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "How many households does this actually reach?",
+    "cue_2": "Where is the figure behind that claim?",
+    "cue_3": "What is the cost per resident?",
+    "cue_4": "Name the source for that number.",
+    "cue_5": "Which budget line pays for this?"
+  },
+  {
+    "cue_id": "PL116",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Does the data support this, yes or no?",
+    "cue_2": "How was that estimate calculated?",
+    "cue_3": "What is the margin of error?",
+    "cue_4": "Show the table. I will read it.",
+    "cue_5": "Which of these figures is verified?"
+  },
+  {
+    "cue_id": "PL117",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "The numbers support this plan.",
+    "cue_2": "Here are the figures, line by line.",
+    "cue_3": "Every estimate is documented.",
+    "cue_4": "Check the sources. They hold up.",
+    "cue_5": "The data points in one direction."
+  },
+  {
+    "cue_id": "PL118",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "The cost per resident is modest.",
+    "cue_2": "Independent figures agree with mine.",
+    "cue_3": "The trend line favours this plan.",
+    "cue_4": "I can show the calculation.",
+    "cue_5": "The evidence is on the table."
+  },
+  {
+    "cue_id": "PL119",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Those figures use the wrong baseline.",
+    "cue_2": "Read the full table, not one line.",
+    "cue_3": "Averages hide the real spread.",
+    "cue_4": "That source is out of date.",
+    "cue_5": "Compare like with like."
+  },
+  {
+    "cue_id": "PL120",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "The assumptions are stated openly.",
+    "cue_2": "My method is on the record.",
+    "cue_3": "Ask for the raw data.",
+    "cue_4": "The sample is large enough.",
+    "cue_5": "Correct the units, then ask."
+  },
+  {
+    "cue_id": "PL121",
+    "suit": "Divisive",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Whose side are you on, theirs or ours?",
+    "cue_2": "You stand with them, not with us.",
+    "cue_3": "Pick a side. This town is watching.",
+    "cue_4": "Friends of the powerful are no friends here.",
+    "cue_5": "Are you with the people or the insiders?"
+  },
+  {
+    "cue_id": "PL122",
+    "suit": "Divisive",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Some of you serve yourselves first.",
+    "cue_2": "There are two kinds of leaders here.",
+    "cue_3": "You are either for us or against us.",
+    "cue_4": "Outsiders do not speak for this town.",
+    "cue_5": "Choose your people."
+  },
+  {
+    "cue_id": "PL123",
+    "suit": "Divisive",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "This town knows its real friends.",
+    "cue_2": "The line is clear, and I am with you.",
+    "cue_3": "We stand apart from the insiders.",
+    "cue_4": "Real neighbours stick together.",
+    "cue_5": "I choose this town over the powerful."
+  },
+  {
+    "cue_id": "PL124",
+    "suit": "Divisive",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Us and them: I am one of us.",
+    "cue_2": "No more favours for the connected.",
+    "cue_3": "Whoever stands with this town stands with me.",
+    "cue_4": "The people come first, the elite second.",
+    "cue_5": "I draw the line with you."
+  },
+  {
+    "cue_id": "PL125",
+    "suit": "Divisive",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Labels do not change the facts.",
+    "cue_2": "Name-calling is all you have.",
+    "cue_3": "Loyalty is not a slur.",
+    "cue_4": "Find an argument, not an insult.",
+    "cue_5": "Spare us the camps and the slogans."
+  },
+  {
+    "cue_id": "PL126",
+    "suit": "Divisive",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "I know which side my critics are on.",
+    "cue_2": "Your labels say more about you.",
+    "cue_3": "Draw lines elsewhere, not here.",
+    "cue_4": "You question my loyalty? Examine yours.",
+    "cue_5": "Insiders love to accuse outsiders."
+  },
+  {
+    "cue_id": "PL127",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Some say a deal may exist...",
+    "cue_2": "One wonders who benefits here...",
+    "cue_3": "Mistakes may have been made...",
+    "cue_4": "It is often said you know more...",
+    "cue_5": "Funny, how that detail is missing..."
+  },
+  {
+    "cue_id": "PL128",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "People are asking questions, quietly...",
+    "cue_2": "I would not want to speculate, but...",
+    "cue_3": "The record may need a second look...",
+    "cue_4": "Perhaps this was overlooked on purpose...",
+    "cue_5": "Interesting what gets left unsaid..."
+  },
+  {
+    "cue_id": "PL129",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "We will consider that very positively...",
+    "cue_2": "A solution may well be found...",
+    "cue_3": "Everything will be looked at carefully...",
+    "cue_4": "Concerns have been noted, warmly...",
+    "cue_5": "I am sure it will work out..."
+  },
+  {
+    "cue_id": "PL130",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Something can probably be arranged...",
+    "cue_2": "That is under active consideration...",
+    "cue_3": "We are open to many possibilities...",
+    "cue_4": "Your point has been well taken...",
+    "cue_5": "It is being looked into, certainly..."
+  },
+  {
+    "cue_id": "PL131",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "I do not recall the details...",
+    "cue_2": "That would be a matter for others...",
+    "cue_3": "Mistakes are made by many people...",
+    "cue_4": "I could not say with certainty...",
+    "cue_5": "The question is premature, perhaps..."
+  },
+  {
+    "cue_id": "PL132",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "stage_ids": [
+      "ST05",
+      "ST24",
+      "ST29"
+    ],
+    "cue_1": "Nothing was decided, as far as I know...",
+    "cue_2": "Records can be read in many ways...",
+    "cue_3": "I would need to check with others...",
+    "cue_4": "Let us not rush to conclusions...",
+    "cue_5": "That is not my area, really..."
+  },
+  {
+    "cue_id": "PL133",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Colleagues deserve plain talk from you.",
+    "cue_2": "I have read the party platform. Have you?",
+    "cue_3": "Our members expect honest results.",
+    "cue_4": "Explain your plan to this room.",
+    "cue_5": "Own your numbers in front of us."
+  },
+  {
+    "cue_id": "PL134",
+    "suit": "Earnest",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Speak plainly about what you want.",
+    "cue_2": "I want commitments, not comfort.",
+    "cue_3": "Loyalty means delivering, not posturing.",
+    "cue_4": "Put your name to the plan.",
+    "cue_5": "Show the party you can deliver."
+  },
+  {
+    "cue_id": "PL135",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "I will earn this room's trust through work.",
+    "cue_2": "I will deliver for the party.",
+    "cue_3": "You will see results from me.",
+    "cue_4": "I put the team ahead of myself.",
+    "cue_5": "My commitment to the party is plain."
+  },
+  {
+    "cue_id": "PL136",
+    "suit": "Earnest",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "I will do my share and more.",
+    "cue_2": "Hold me to my word.",
+    "cue_3": "I serve this party honestly.",
+    "cue_4": "I will take the hard assignments.",
+    "cue_5": "Count my votes, not my speeches."
+  },
+  {
+    "cue_id": "PL137",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "My loyalty is not in question.",
+    "cue_2": "The record speaks for itself.",
+    "cue_3": "I have kept faith with the party.",
+    "cue_4": "I owe this room an honest account.",
+    "cue_5": "Ask me directly. I will answer."
+  },
+  {
+    "cue_id": "PL138",
+    "suit": "Earnest",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "I stand by my votes.",
+    "cue_2": "I accept the party's judgment of my work.",
+    "cue_3": "My work is open to review.",
+    "cue_4": "I have been plain with everyone.",
+    "cue_5": "I do not hide behind the whip."
+  },
+  {
+    "cue_id": "PL139",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "This party was built for people, not careers!",
+    "cue_2": "Think of the voters who believe in us!",
+    "cue_3": "Colleagues, hear the people back home!",
+    "cue_4": "Do you feel nothing for our base?",
+    "cue_5": "Our supporters deserve better than this!"
+  },
+  {
+    "cue_id": "PL140",
+    "suit": "Emotional",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "You are breaking faith with our voters!",
+    "cue_2": "Our members gave everything for this cause!",
+    "cue_3": "Remember why we joined this party!",
+    "cue_4": "We owe our people more!",
+    "cue_5": "This is not what our voters want!"
+  },
+  {
+    "cue_id": "PL141",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "I love this party and its people!",
+    "cue_2": "We fight for those who trust us!",
+    "cue_3": "Our cause is bigger than any of us!",
+    "cue_4": "Together we carry their hopes!",
+    "cue_5": "I feel the weight of their trust!"
+  },
+  {
+    "cue_id": "PL142",
+    "suit": "Emotional",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "This party is my family!",
+    "cue_2": "I will not let our people down!",
+    "cue_3": "Our members deserve a champion!",
+    "cue_4": "I am proud to fight beside you!",
+    "cue_5": "Their faith in us drives me!"
+  },
+  {
+    "cue_id": "PL143",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Do not question my love for this party!",
+    "cue_2": "I bleed for this cause!",
+    "cue_3": "My dedication is not for sale!",
+    "cue_4": "Spare me the lectures on loyalty!",
+    "cue_5": "I care more than you know!"
+  },
+  {
+    "cue_id": "PL144",
+    "suit": "Emotional",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "My heart is with this party!",
+    "cue_2": "Do not wound those who serve!",
+    "cue_3": "I am hurt by that accusation!",
+    "cue_4": "Respect the people who built this!",
+    "cue_5": "I give this party everything!"
+  },
+  {
+    "cue_id": "PL145",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Colleagues, we need each other. Act like it.",
+    "cue_2": "The party is a family. Behave as one.",
+    "cue_3": "Surely we can share the burden.",
+    "cue_4": "Friends help friends in this room.",
+    "cue_5": "Stand with your team, please."
+  },
+  {
+    "cue_id": "PL146",
+    "suit": "Appeal",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "We rise together or not at all.",
+    "cue_2": "I expected solidarity from you.",
+    "cue_3": "A favour is owed to this team.",
+    "cue_4": "Do not leave your colleagues exposed.",
+    "cue_5": "Unity is the party's strength."
+  },
+  {
+    "cue_id": "PL147",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "We are stronger as one party.",
+    "cue_2": "Colleagues, let us pull together.",
+    "cue_3": "I will back you, and you back me.",
+    "cue_4": "Team first, and the rest follows.",
+    "cue_5": "Together we will carry this through."
+  },
+  {
+    "cue_id": "PL148",
+    "suit": "Appeal",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Our party is at its best united.",
+    "cue_2": "I am glad to stand with you.",
+    "cue_3": "Friends, we have a good plan.",
+    "cue_4": "Let us share the credit and the work.",
+    "cue_5": "Good colleagues make good laws."
+  },
+  {
+    "cue_id": "PL149",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Let us keep this among friends.",
+    "cue_2": "We can resolve this as colleagues.",
+    "cue_3": "No need to air our differences.",
+    "cue_4": "Unity matters more than winning an argument.",
+    "cue_5": "Let us find common ground."
+  },
+  {
+    "cue_id": "PL150",
+    "suit": "Appeal",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "I value every voice in this room.",
+    "cue_2": "We are one party, after all.",
+    "cue_3": "Cooler heads help the whole team.",
+    "cue_4": "Let us not wound each other.",
+    "cue_5": "A united room serves everyone."
+  },
+  {
+    "cue_id": "PL151",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "How many seats does this plan win us?",
+    "cue_2": "What does the polling actually show?",
+    "cue_3": "Which members are counted as supporters?",
+    "cue_4": "Show the whip count. Name names.",
+    "cue_5": "What is the budget impact for the party?"
+  },
+  {
+    "cue_id": "PL152",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Where is the analysis behind this?",
+    "cue_2": "Is that vote total confirmed?",
+    "cue_3": "How does this compare with the platform?",
+    "cue_4": "Give the figures, not the feelings.",
+    "cue_5": "What are the odds this passes?"
+  },
+  {
+    "cue_id": "PL153",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "The whip count favours this approach.",
+    "cue_2": "The polling backs the plan.",
+    "cue_3": "The numbers are with us.",
+    "cue_4": "Here is the vote tally, member by member.",
+    "cue_5": "The analysis is attached for all to read."
+  },
+  {
+    "cue_id": "PL154",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "The projection holds across scenarios.",
+    "cue_2": "Support is higher than critics claim.",
+    "cue_3": "The data shows steady backing.",
+    "cue_4": "Seat estimates are conservative.",
+    "cue_5": "Check the tally. It adds up."
+  },
+  {
+    "cue_id": "PL155",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "That count includes undecided members.",
+    "cue_2": "The poll sample is too small.",
+    "cue_3": "Margins of error matter here.",
+    "cue_4": "Those totals ignore absentees.",
+    "cue_5": "Read the footnotes on that table."
+  },
+  {
+    "cue_id": "PL156",
+    "suit": "Data Driven",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "My tally is on the record.",
+    "cue_2": "The model has been stress-tested.",
+    "cue_3": "Different assumptions give different counts.",
+    "cue_4": "Compare the full data, not a slice.",
+    "cue_5": "The projection stands."
+  },
+  {
+    "cue_id": "PL157",
+    "suit": "Divisive",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Are you with the leadership or against it?",
+    "cue_2": "Whose side are you really on?",
+    "cue_3": "Loyal members do not behave this way.",
+    "cue_4": "Pick a faction and stand by it.",
+    "cue_5": "Some here serve themselves, not the party."
+  },
+  {
+    "cue_id": "PL158",
+    "suit": "Divisive",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Rebels weaken us all.",
+    "cue_2": "You are either with us or a risk.",
+    "cue_3": "The party knows who its friends are.",
+    "cue_4": "Careerists and loyalists are not the same.",
+    "cue_5": "Choose: the party or yourself."
+  },
+  {
+    "cue_id": "PL159",
+    "suit": "Divisive",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "The loyal members are with me.",
+    "cue_2": "The party is clear on who leads.",
+    "cue_3": "Rebels have no place at this table.",
+    "cue_4": "Real members stand with leadership.",
+    "cue_5": "We know our true friends."
+  },
+  {
+    "cue_id": "PL160",
+    "suit": "Divisive",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "The line between us and them is clear.",
+    "cue_2": "I stand with the party, not the critics.",
+    "cue_3": "Loyalty will be recognised.",
+    "cue_4": "The party is united against doubters.",
+    "cue_5": "Those who stay on side will be rewarded."
+  },
+  {
+    "cue_id": "PL161",
+    "suit": "Divisive",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Labels do not make you right.",
+    "cue_2": "Calling me disloyal proves nothing.",
+    "cue_3": "I know whose interests you serve.",
+    "cue_4": "Faction games help only our rivals.",
+    "cue_5": "Find a better argument than loyalty."
+  },
+  {
+    "cue_id": "PL162",
+    "suit": "Divisive",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Do not split this party for show.",
+    "cue_2": "Your accusations say more about you.",
+    "cue_3": "I will not be sorted into a camp.",
+    "cue_4": "Question the policy, not the member.",
+    "cue_5": "Rivals love this kind of quarrel."
+  },
+  {
+    "cue_id": "PL163",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "Some members may have other plans...",
+    "cue_2": "It would be unfortunate if details leaked...",
+    "cue_3": "A certain arrangement has been mentioned...",
+    "cue_4": "One hears the leadership is not pleased...",
+    "cue_5": "Quiet conversations are taking place..."
+  },
+  {
+    "cue_id": "PL164",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "People are talking, of course...",
+    "cue_2": "I would not wish to name names...",
+    "cue_3": "Loyalty can be flexible, I hear...",
+    "cue_4": "Rumours say a deal is close...",
+    "cue_5": "It might be wise to reconsider..."
+  },
+  {
+    "cue_id": "PL165",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "I am sure we can accommodate everyone...",
+    "cue_2": "Positions can be adjusted, if needed...",
+    "cue_3": "Everyone will be looked after, naturally...",
+    "cue_4": "Arrangements are being explored...",
+    "cue_5": "Your concerns will be kept in mind..."
+  },
+  {
+    "cue_id": "PL166",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "The leadership is sympathetic, I believe...",
+    "cue_2": "Perhaps a place can be found...",
+    "cue_3": "Nothing is off the table, really...",
+    "cue_4": "We may find a happy outcome...",
+    "cue_5": "A way forward is emerging, softly..."
+  },
+  {
+    "cue_id": "PL167",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "I do not recall promising anything...",
+    "cue_2": "My position has been misunderstood...",
+    "cue_3": "I was not in that conversation...",
+    "cue_4": "These things are rarely so simple...",
+    "cue_5": "That is a leadership matter, surely..."
+  },
+  {
+    "cue_id": "PL168",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "stage_ids": [
+      "ST03"
+    ],
+    "cue_1": "No one has asked me to decide...",
+    "cue_2": "I will consult others and then answer...",
+    "cue_3": "Minutes can be read many ways...",
+    "cue_4": "I could not confirm that, I fear...",
+    "cue_5": "Let us not put that in writing..."
   }
 ]

@@ -3235,5 +3235,125 @@
     "win_delta_bo15": null,
     "win_delta_bo16": null,
     "one_time": "Yes"
+  },
+  {
+    "level_id": "LV61",
+    "description": "Rail Fares and Timetables",
+    "cooldown": 8,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST07",
+    "stage_2": "ST24",
+    "stage_3": "ST25",
+    "stage_4": "ST26",
+    "stage_5": "ST27",
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 2
+    },
+    "bonus_win_range_yen": {
+      "min": 6000,
+      "max": 20000
+    },
+    "bonus_win_range_reputation": {
+      "min": 1,
+      "max": 3
+    },
+    "bonus_win_range_xp": {
+      "min": 25,
+      "max": 40
+    },
+    "bonus_win_range_party_support": {
+      "min": 2,
+      "max": 6
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": {
+      "min": 1,
+      "max": 2
+    },
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "one_time": "No"
+  },
+  {
+    "level_id": "LV62",
+    "description": "Fishing Quotas and Harbours",
+    "cooldown": 8,
+    "tier": 1,
+    "unlock_cost_vacant": 150,
+    "unlock_cost_tier_0": 100,
+    "unlock_cost_tier_1": 50,
+    "unlock_cost_tier_2": 10,
+    "stage_1": "ST07",
+    "stage_2": "ST28",
+    "stage_3": "ST29",
+    "stage_4": "ST30",
+    "stage_5": "ST31",
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": {
+      "min": 0,
+      "max": 2
+    },
+    "bonus_win_range_yen": {
+      "min": 6000,
+      "max": 20000
+    },
+    "bonus_win_range_reputation": {
+      "min": 1,
+      "max": 3
+    },
+    "bonus_win_range_xp": {
+      "min": 25,
+      "max": 40
+    },
+    "bonus_win_range_party_support": {
+      "min": 2,
+      "max": 6
+    },
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": {
+      "min": 1,
+      "max": 2
+    },
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "one_time": "No"
   }
 ]
