@@ -42,3 +42,7 @@ For the assistant that drafted it. Read with `design/WORKBOOK_EXPANSION_GUIDE.md
 1. The corrected workbook with one change log.
 2. The audit table from guide §8.
 3. Bot win rates for every new room and for ST02, ST03, ST06 and ST08.
+
+## Next batch: fill the gaps (Cameron, 2026-10-13)
+
+The next batch should fill content gaps and build out questions and cues for general rooms and for topic-specific rooms (a committee or floor stage built around one bill). See guide section 2.8 for the gap table, quotas and both recipes. In short: general rooms first (ST03, ST04, ST02, committees, ST06, ST08), each room touched gets Stage Questions sized to its turn limit (rooms without a pool) or at most a third of it (rooms with a pool), 10-line cue cells for every suit and verb covered, and, for topic rooms, their own STxx row, questions, cues and level slot. No mechanics change.

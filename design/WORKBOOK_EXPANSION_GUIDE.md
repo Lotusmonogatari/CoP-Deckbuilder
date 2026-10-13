@@ -2,7 +2,7 @@
 
 For an assistant (human or AI) adding content to `design/CoP_Starter_Card_Stage_Data.xlsx`: new stages, questions tied to them, spoken cues, opponents, bills and their effects. It explains how the pieces connect, what each number does to play, and how to phrase writing so it fits where it can appear.
 
-Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT.md` (a batch-drafting prompt), the **Tone Guide** tab, and the header notes on every column (hover a header cell in Excel). Written 2026-10-12, revised the same day and again on 2026-10-13 after a review of a 21-room draft (see §2.7, §3 and §10). **Ground rule (Cameron, 2026-10-13): an expansion adds content, never mechanics.** Every room, existing or new, may draw on the base (generic) content and on stage-specific content where it applies; new rooms are built like an existing room of their kind against the code and workbook as they stand (23 stages, 60 levels, 30 organisations, 125 opponents, 39 visitors, 30 bills, 201 question themes).
+Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT.md` (a batch-drafting prompt), the **Tone Guide** tab, and the header notes on every column (hover a header cell in Excel). Written 2026-10-12, revised the same day and again on 2026-10-13 after a review of a 21-room draft (see §2.7, §2.8, §3 and §10). **Ground rule (Cameron, 2026-10-13): an expansion adds content, never mechanics.** Every room, existing or new, may draw on the base (generic) content and on stage-specific content where it applies; new rooms are built like an existing room of their kind against the code and workbook as they stand (23 stages, 60 levels, 30 organisations, 125 opponents, 39 visitors, 30 bills, 201 question themes).
 
 ---
 
@@ -160,6 +160,49 @@ A level names its bill (`BIxx`) in a stage slot. Floor Vote Party Positions give
 | **A bill passes on Yes of 51 or more** (half the house, rounded up) | Abstentions count against it. | Compute each draft bill's default outcome and make its Vote Influence Cue the opposite direction (Pass cue for a bill that fails by default). |
 | **Tab formulas** | Stages' Favored suit and Segment check are formulas that read the Affinity tab up to column V. | Paste formulas, not values, and extend the Affinity range to cover new columns. |
 
+
+### 2.8 Filling content gaps: general rooms and topic-specific rooms (Cameron, 2026-10-13)
+
+**Purpose of an expansion batch:** fill the gaps below and build out more questions and cues, for (a) the general rooms every level passes through and (b) topic-specific rooms (a committee or floor stage built around one bill's subject). No mechanics change. The engine keys questions and cues by **stage ID**, never by level or bill, so a topic-specific room needs **its own STxx row**; a topic is never attached to a generic room. The 30 existing bill levels (LV31-60) all run through generic rooms today.
+
+**Gaps measured in the master workbook (2026-10-13)**
+
+| Gap | Today | Why it matters |
+|---|---|---|
+| Committee Stage Questions | 3 per committee (S01-S33) against 10 turns | Each committee asks 3 distinct questions then runs out of fresh ones (the bag holds `questions_per_turn x turn_limit`). |
+| Rooms that ask no questions | ST02 Floor Debate (28 levels), ST03 Caucus (41), ST06 TV Debate (14), ST08 Steering (7) | The most-visited rooms have the thinnest content and no Strong/Weak or organisation pleasing. Turning questions on changes difficulty: bot-trial first (§2.7). |
+| Question pools against turns | Press 34 (ST04, 32 levels), Town Hall 104, Lobbyist 77, Policy Study 30, Media Ambush 27 | Adequate in size; thin on topical variety for bills and on Divisive/Duplicitous Weak-graded answers. |
+| Stage-scoped Player Cues | Committees only (PL03-PL18) | Every other room plays the card's own Flavor Text, so rooms sound alike. |
+| Stage-scoped Opponent Cues | Universal OC01-OC36 (10 lines per suit and verb) plus bespoke rows | No room has its own voice except through opponent-scoped rows. |
+| Transitions | Show Transition off on all 23 stages; the three pools are empty | No in-level beat between rooms. |
+| **Topic-specific rooms** | **None for the 30 bills** | A health bill's committee asks the same ethics or finance questions as any other. |
+
+**Quotas for a batch (minimums, per room touched)**
+
+| Content | Floor | Target |
+|---|---|---|
+| Stage Questions, room with no pool (committees, topic rooms, ST02/03/06/08 if enabled) | 3 | `turn_limit` (so a stage never runs dry); one question per turn |
+| Stage Questions, room with a pool (ST04, 05, 19, 20, 21) | 0 | at most a third of `turn_limit`, topical to the bill |
+| Question grading | within about 15 points of the master spread (Strong / Weak: Earnest 54/14, Emotional 38/27, Appeal 29/20, Data Driven 42/19, Divisive 35/38, Duplicitous 35/24) | at least 2 Strong per question; every theme maps to organisations that exist |
+| Player Cues, per room | 2 rows (10 lines) for each suit and verb you cover, all three verbs | all six suits x attack/gain/block = 18 rows x 2 = 36 rows |
+| Opponent Cues, per room | 2 rows (10 lines) per suit and verb you cover | cover attack, gain and block for the suits the room favours |
+| Transition, room reached often | 3 variants, line 18 words or fewer, reply 8 or fewer | only on rooms that are never a level's first slot |
+
+**Priority order** (reach per room): ST03 (41 levels), ST04 (32), ST02 (28), the committees, ST06, ST08. Fill the general rooms first, then add topic rooms.
+
+**Recipe: a topic-specific committee or hearing (for one bill)**
+
+1. Pick a bill from BI01-BI30 (or a new one) and the level that holds it. Read its text, its Party Positions and its Law Effects rows so the room's subject agrees with them.
+2. Add a Stages row from the **committee family** (guide 3.0), named for the topic ("Hearing on the Ainu Heritage Act"). Its Affinity column favours the suits that suit the subject (two up, two down, two neutral).
+3. List the new STxx in the Stage cell of the opponents who sit on it (existing people only unless Cameron approved new ones), 2-4 opponents.
+4. Write Stage Questions (floor 3, target `turn_limit`) on the bill's subject, graded to the spread above, each with a Theme that pleases organisations the bill affects (reuse Question Themes rows; add new ones with a Why cell starting "Draft").
+5. Write Player Cues and Opponent Cues for the new Stage ID (quotas above), using the subject's vocabulary; Tone Guide rules apply to everything, and party or organisation voice only in opponent-scoped rows.
+6. Replace the bill level's generic committee slot with the new STxx (a Levels edit, numbers as numbers, current values re-read from the master).
+7. Bot-trial the new room with `PLAYTEST_STAGE_TRIAL="STxx:N"` and report the win rate.
+
+**Recipe: a topic-specific floor stage** is the same, from the **Floor Debate / Caucus family** (ST02/ST03 rows: Seats or Support bar, `continuous`, 2 opponents). Because those families ask no questions today, a topic floor room's Stage Questions switch on the multiplier; keep it to 3 and bot-trial it against ST02 before and after.
+
+**Do not:** attach a topic to a generic stage ID, invent parties or canon, write numbers into cue lines, or write a question that names the asker's party unless Asked By Party limits it.
 
 ---
 
