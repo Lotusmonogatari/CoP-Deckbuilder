@@ -218,3 +218,11 @@ func test_a_bespoke_stage_row_beats_the_bespoke_anywhere_row() -> void:
 		"OP07 at the press conference.")
 	assert_eq(OpponentCues.for_move(opponent, "gain", "ST05", 1, 0.0)["text"],
 		"OP07 anywhere.")
+
+
+func test_a_cue_row_with_blank_cells_never_yields_null_text() -> void:
+	var lines := DataDB._cue_lines({"cue_1": "One.", "cue_2": "Two.", "cue_3": "Three.",
+		"cue_4": null, "cue_5": null})
+	assert_eq(lines.size(), 3)
+	for line in lines:
+		assert_ne(line, "<null>")
