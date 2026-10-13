@@ -68,9 +68,9 @@ theme_override_constants/margin_right = 21.6
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_textveil")
 
-[node name="Heading" type="HBoxContainer" parent="Safe/Column/HeadingBackdropMargin/HeadingBackdrop"]
+[node name="Heading" type="HFlowContainer" parent="Safe/Column/HeadingBackdropMargin/HeadingBackdrop"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/h_separation = 12
 
 [node name="Title" type="Label" parent="Safe/Column/HeadingBackdropMargin/HeadingBackdrop/Heading"]
 unique_name_in_owner = true

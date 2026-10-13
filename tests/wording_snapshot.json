@@ -261,6 +261,7 @@
   "office.staff_hired": "{name} · Tier {tier} of {highest}",
   "office.subtitle_jp": "陳情",
   "office.take_backing": "Take their backing",
+  "office.text_size": "Text size: {size}",
   "office.tier_heading": "Tier {tier}",
   "office.title": "The Office",
   "office.title_named": "{name}'s Office",
@@ -406,5 +407,8 @@
   "staff.tier_upgrade_unpriced": "Tier {tier} · upgrade cost not set",
   "staff.tiers_heading": "Bonuses by tier",
   "stage_transition.continue": "Continue",
+  "text_size.large": "Large",
+  "text_size.normal": "Normal",
+  "text_size.small": "Small",
   "ui.back": "Back"
 }

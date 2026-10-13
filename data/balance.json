@@ -28,5 +28,7 @@
   "party_salience_reference": 50,
   "party_salience_min_factor": 0.5,
   "party_salience_max_factor": 2,
+  "text_scale_small": 90,
+  "text_scale_large": 120,
   "xp_tiers": {}
 }
