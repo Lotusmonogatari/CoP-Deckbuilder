@@ -103,12 +103,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VisitorName" type="Label" parent="Safe/Column/VisitorRow/Details"]
+autowrap_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Visitor"
 
 [node name="VisitorTitle" type="Label" parent="Safe/Column/VisitorRow/Details"]
+autowrap_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"SmallLabel"
@@ -193,6 +195,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="OutcomeTitle" type="Label" parent="OutcomePanel/Margin/Scroll/Centre/Column"]
+autowrap_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleLabel"

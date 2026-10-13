@@ -26,7 +26,34 @@ static func heading(text: String) -> Label:
 	var label := Label.new()
 	label.text = text
 	label.theme_type_variation = "HeaderLabel"
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.custom_minimum_size = Vector2(LINE_WIDTH, 0)
 	return label
+
+
+## Makes every label and button under `root` wrap its text instead of
+## running off the edge of the screen (2026-10-14). A label inside a row
+## (HBoxContainer) is told to take the row's spare width so it wraps there
+## rather than collapsing; one in a column already has the column's width.
+## Safe to call on rows built by any screen; text that already fits is not
+## changed in any way.
+static func wrap_all(root: Node) -> void:
+	for node in root.find_children("*", "Control", true, false):
+		if node is Label:
+			var label := node as Label
+			if label.autowrap_mode == TextServer.AUTOWRAP_OFF:
+				label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			if label.get_parent() is HBoxContainer:
+				label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		elif node is Button:
+			var button := node as Button
+			if button.autowrap_mode == TextServer.AUTOWRAP_OFF:
+				button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	# The row itself, when it is a bare label or button.
+	if root is Label and (root as Label).autowrap_mode == TextServer.AUTOWRAP_OFF:
+		(root as Label).autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	elif root is Button and (root as Button).autowrap_mode == TextServer.AUTOWRAP_OFF:
+		(root as Button).autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
 
 ## A button that says `ok_text` and calls `on_press` — or, when `refusal` is

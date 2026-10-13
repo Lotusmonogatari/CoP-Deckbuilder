@@ -46,6 +46,9 @@ signal confirmed
 const BACKDROP := Color(0.07, 0.08, 0.11, 1.0)
 
 var _body: VBoxContainer
+## Width of the content column: the 1080 base width less 40 px margins.
+const COLUMN_WIDTH := 1000.0
+
 var _title: Label
 var _back: Button
 var _confirm: Button
@@ -86,6 +89,8 @@ func _build() -> void:
 	scroll.name = "Scroll"
 	margin.add_child(scroll)
 	DragScroll.attach(scroll)
+	# Text wraps; nothing in a panel should ever need a sideways scroll.
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 
 	var centre := CenterContainer.new()
 	centre.name = "Centre"
@@ -96,11 +101,16 @@ func _build() -> void:
 	_body = VBoxContainer.new()
 	_body.name = "Column"
 	_body.add_theme_constant_override("separation", 18)
+	# A definite width, so wrapped text has something to wrap against. The
+	# screen is never narrower than the 1080 base width, minus the 40 px
+	# margins either side.
+	_body.custom_minimum_size = Vector2(COLUMN_WIDTH, 0)
 	centre.add_child(_body)
 
 	_title = Label.new()
 	_title.name = "Heading"
 	_title.theme_type_variation = "HeaderLabel"
+	_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_body.add_child(_title)
 
 	_back = Button.new()
@@ -137,6 +147,7 @@ func open(heading: String, rows: Array[Control], confirm_text: String = "",
 
 	for row: Control in rows:
 		_body.add_child(row)
+		UiKit.wrap_all(row)
 
 	_confirm.text = confirm_text
 	_confirm.visible = not confirm_text.is_empty()
