@@ -28,3 +28,9 @@ func test_a_designed_margin_is_only_raised_never_added_to() -> void:
 	assert_eq(SafeArea.margin_for(70, 0.0), 70)
 	assert_eq(SafeArea.margin_for(70, 40.0), 70)
 	assert_eq(SafeArea.margin_for(70, 110.4), 111)
+
+
+func test_wide_screens_get_side_margins_and_phones_do_not() -> void:
+	assert_eq(SafeArea.side_extra(1080.0, 1080.0), 0)
+	assert_eq(SafeArea.side_extra(1000.0, 1080.0), 0)
+	assert_eq(SafeArea.side_extra(1600.0, 1080.0), 260)

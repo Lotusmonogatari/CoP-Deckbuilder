@@ -28,3 +28,10 @@ static func insets(safe: Rect2, window_size: Vector2, viewport_size: Vector2) ->
 ## already leave room for a typical status bar.
 static func margin_for(designed: int, inset: float) -> int:
 	return maxi(designed, ceili(inset))
+
+
+## Plan step 4 (wide screens): extra margin each side that keeps content in a
+## centred column no wider than `max_width` base pixels. A phone is exactly
+## the design width, so this is 0; a tablet's extra width becomes margin.
+static func side_extra(viewport_width: float, max_width: float) -> int:
+	return maxi(0, floori((viewport_width - max_width) / 2.0))

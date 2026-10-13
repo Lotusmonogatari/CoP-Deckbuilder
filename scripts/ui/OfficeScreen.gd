@@ -62,6 +62,7 @@ var _inventory_panel: InventoryPanel
 ## tier. Built in code, the same reason _inventory_panel is.
 var _record_panel: Overlay
 var _parties_panel: Overlay
+var _party_detail_panel: Overlay
 
 ## Cosmetic packages (2026-09-28): purely decorative outfit/background/music
 ## bundles, bought here and equipped per slot. Built in code, the same
@@ -703,6 +704,10 @@ func _build_record() -> void:
 	_parties_panel = Overlay.new()
 	_parties_panel.name = "PartiesPanel"
 	add_child(_parties_panel)
+	# Opened from a party's button; added after the list so it draws above it.
+	_party_detail_panel = Overlay.new()
+	_party_detail_panel.name = "PartyDetailPanel"
+	add_child(_party_detail_panel)
 
 
 ## How each of the six parties sees the player (PartyOpinion.gd): the party's
@@ -731,25 +736,80 @@ func _show_parties() -> void:
 			"direct": detail["direct"],
 			"stakeholder": "—" if held == PartyOpinion.NO_SCORE else str(held),
 		}), "SmallLabel"))
-		var helping: Array[String] = []
-		var hurting: Array[String] = []
-		var ordered: Array = detail["contributions"].duplicate()
-		ordered.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-			return absf(float(a["effect"])) > absf(float(b["effect"])))
-		for entry: Dictionary in ordered:
-			var label := str(names.get(str(entry["booster_id"]), entry["booster_id"]))
-			if float(entry["effect"]) >= 0.5 and helping.size() < 3:
-				helping.append(label)
-			elif float(entry["effect"]) <= -0.5 and hurting.size() < 3:
-				hurting.append(label)
-		if not helping.is_empty():
-			box.add_child(UiKit.line(Text.say("party_opinion.helping",
-				{"names": ", ".join(helping)}), "SmallLabel"))
-		if not hurting.is_empty():
-			box.add_child(UiKit.line(Text.say("party_opinion.hurting",
-				{"names": ", ".join(hurting)}), "SmallLabel"))
+		var view := Button.new()
+		view.name = "AlliesButton_" + party_id
+		view.text = Text.say("party_opinion.view_button")
+		view.custom_minimum_size = Vector2(0, 90)
+		view.pressed.connect(_show_party_detail.bind(party_id))
+		box.add_child(view)
 		rows.append(box)
 	_parties_panel.open(Text.say("office.parties"), rows)
+
+
+## The popup behind a party's "See allies and rivals" button: the
+## organisations the party counts as friends and as opponents, each with a
+## standing bar and a tag for what it is doing to the party's view of you now.
+## An ally's bar is the party's own colour; a rival's is white.
+func _show_party_detail(party_id: String) -> void:
+	var party := {}
+	for row: Dictionary in DataDB.parties:
+		if str(row.get("party_id", "")) == party_id:
+			party = row
+	var colour := PartyDisplay.color_for(party)
+	var detail := GameState.party_opinion_detail(party_id)
+	var groups := PartyAllies.groups(detail["contributions"])
+	var names := BattleSetup.booster_names()
+
+	var rows: Array[Control] = [UiKit.line(Text.say("party_opinion.popup_blurb"), "SmallLabel")]
+	for group in ["allies", "rivals"]:
+		var is_ally: bool = group == "allies"
+		var heading := UiKit.heading(Text.say(
+			"party_opinion.allies_heading" if is_ally else "party_opinion.rivals_heading"))
+		if is_ally:
+			heading.add_theme_color_override("font_color", colour)
+		rows.append(heading)
+		rows.append(UiKit.line(Text.say(
+			"party_opinion.allies_blurb" if is_ally else "party_opinion.rivals_blurb"), "SmallLabel"))
+		if (groups[group] as Array).is_empty():
+			rows.append(UiKit.line(Text.say("party_opinion.none")))
+		for entry: Dictionary in groups[group]:
+			rows.append(_ally_row(entry, names, colour if group == "allies" else Color.WHITE))
+	_party_detail_panel.open(str(party.get("name", party_id)), rows)
+	# Panels draw in the order they were added, and the Parties page was just
+	# moved to the front by its menu: put the popup above it.
+	move_child(_party_detail_panel, get_child_count() - 1)
+	_party_detail_panel.get_node("Margin/Scroll/Centre/Column/Heading").add_theme_color_override(
+		"font_color", colour)
+
+
+## One organisation in the popup: its name and standing, the favorability tag,
+## and a 0-100 bar filled in `fill`.
+func _ally_row(entry: Dictionary, names: Dictionary, fill: Color) -> Control:
+	var box := UiKit.tight_column()
+	box.add_child(UiKit.line(Text.say("party_opinion.standing_line", {
+		"name": str(names.get(str(entry["booster_id"]), entry["booster_id"])),
+		"standing": int(entry["standing"]),
+	})))
+	var bar := ProgressBar.new()
+	bar.min_value = 0
+	bar.max_value = 100
+	bar.value = int(entry["standing"])
+	bar.show_percentage = false
+	bar.custom_minimum_size = Vector2(0, 22)
+	var fill_box := StyleBoxFlat.new()
+	fill_box.bg_color = fill
+	bar.add_theme_stylebox_override("fill", fill_box)
+	var back_box := StyleBoxFlat.new()
+	back_box.bg_color = Color(1, 1, 1, 0.12)
+	bar.add_theme_stylebox_override("background", back_box)
+	box.add_child(bar)
+	var tag_text := Text.say("party_opinion.tag_neutral")
+	match str(entry["tag"]):
+		PartyAllies.IMPROVING: tag_text = Text.say("party_opinion.tag_improving")
+		PartyAllies.REDUCING: tag_text = Text.say("party_opinion.tag_reducing")
+	var tag := UiKit.line(tag_text, "SmallLabel")
+	box.add_child(tag)
+	return box
 
 
 ## The word for an opinion band; each is its own Text row so it can be reworded.

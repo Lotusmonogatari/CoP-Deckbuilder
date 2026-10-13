@@ -2777,5 +2777,82 @@
     "english": "to abstain",
     "placeholders": null,
     "notes": "Fills {vote} above (\"You voted to abstain\")."
+  },
+  {
+    "key": "party_opinion.view_button",
+    "where": "Parties page, button under each party",
+    "english": "See allies and rivals",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.popup_blurb",
+    "where": "Parties popup, top",
+    "english": "Organisations this party counts as friends or opponents. An ally's standing with you counts for the party; a rival's standing counts against it.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.allies_heading",
+    "where": "Parties popup, group heading",
+    "english": "Allies",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.allies_blurb",
+    "where": "Parties popup, under Allies",
+    "english": "Friends of this party. The higher their standing with you, the better.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.rivals_heading",
+    "where": "Parties popup, group heading",
+    "english": "Rivals",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.rivals_blurb",
+    "where": "Parties popup, under Rivals",
+    "english": "Opponents of this party. The lower their standing with you, the better.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.none",
+    "where": "Parties popup, empty group",
+    "english": "None.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.tag_improving",
+    "where": "Parties popup, tag on an organisation",
+    "english": "Improving Favorability",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.tag_neutral",
+    "where": "Parties popup, tag on an organisation",
+    "english": "Neutral",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.tag_reducing",
+    "where": "Parties popup, tag on an organisation",
+    "english": "Reducing Favorability",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "party_opinion.standing_line",
+    "where": "Parties popup, one line per organisation",
+    "english": "{name} · standing {standing}",
+    "placeholders": "name, standing",
+    "notes": null
   }
 ]
