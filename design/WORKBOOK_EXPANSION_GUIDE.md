@@ -2,7 +2,7 @@
 
 For an assistant (human or AI) adding content to `design/CoP_Starter_Card_Stage_Data.xlsx`: new stages, questions tied to them, spoken cues, opponents, bills and their effects. It explains how the pieces connect, what each number does to play, and how to phrase writing so it fits where it can appear.
 
-Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT.md` (a batch-drafting prompt), the **Tone Guide** tab, and the header notes on every column (hover a header cell in Excel). Written 2026-10-12 and revised the same day against the code and workbook as they stand (23 stages, 60 levels, 30 organisations, 125 opponents, 39 visitors, 30 bills, 201 question themes).
+Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT.md` (a batch-drafting prompt), the **Tone Guide** tab, and the header notes on every column (hover a header cell in Excel). Written 2026-10-12, revised the same day and again on 2026-10-13 after a review of a 21-room draft (see §2.7 and §10) against the code and workbook as they stand (23 stages, 60 levels, 30 organisations, 125 opponents, 39 visitors, 30 bills, 201 question themes).
 
 ---
 
@@ -15,6 +15,8 @@ Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT
 | **3. A question does three jobs.** | Its suit grades scale the card that answers it (×1.3 Strong, ×0.7 Weak), its Theme decides which organisations are pleased or set back, and those standings feed backing, party opinion and the Floor Vote influence gate. |
 | **4. Scope decides wording.** | The wider a line can appear, the more generic it must be. Any-stage lines obey all five Tone Guide rules; stage-scoped lines may name the room's business; lines scoped to one opponent may carry that person's party or organisation voice. |
 | **5. Who asks a question is picked from the room.** | The asker is someone the room seats. Use the **Asked By Party** column to limit a question to one or more parties (or `OWN`, the player's own) before you write it in a party voice (§6). |
+| **7. Count what the player actually meets.** | Content is read by the engine in tiers and pools (§2.7). Judge a cue by how many lines one *card moment* can draw, a question set by what it does to the room's pool and difficulty, a transition by how long it stays on screen. A total across a whole room is not the measure. |
+| **8. Rebase before you edit, and test before you hand over.** | Edits to existing rows must be written against today's master, with numbers stored as numbers. Run the §8 audit and a bot trial on every new room before handing a draft over. |
 | **6. A new person needs three rows.** | Opponents (or Visitors) for the game, an **Assets** row per expression for the art team, and the name spelt identically in both (§7). |
 
 After any edit: `python3 tools/export_data.py` (must end "No errors"), then `tools/verify.sh`. Edit the workbook in Excel, or by raw XML (never an openpyxl save; it corrupts cached formulas).
@@ -69,13 +71,13 @@ The loop that matters for content: **questions move organisations; organisations
 | **Win/Loss Δ** | What the stage pays or costs | signed numbers; blank = 0 |
 | **Loss Ends Level** | Does a loss end the level | blank = Yes |
 | **Reveal In Briefing** | Is the stage shown before the level | `No` = a surprise (Media Ambush) |
-| **Show Transition** | A between-stages scene | uses the Transition Cast/Backgrounds/Dialogue tabs |
+| **Show Transition** | A scene before this stage when it is **not the first stage of its level** | uses the Transition Cast/Backgrounds/Dialogue tabs. Set it only on new or unique rooms unless Cameron asks (§2.7) |
 
 The 20 battle (Combat) rooms today (the workbook has 23 stages in all: these 20, the two Non-combat rooms ST07 and ST22, and the Floor Vote ST23):
 
 | Family | Stages | Shape |
 |---|---|---|
-| Committees | ST01, ST09–ST18 | Shared pool, `reset`, 2–4 members, ask only Stage Questions |
+| Committees | ST01, ST09–ST18 | Shared pool, `reset`, 2–4 members, ask only Stage Questions (one bag for the whole stage, §2.7) |
 | Floor debate | ST02 | 101 seats, win at 51, `continuous` |
 | Party caucus / steering | ST03, ST08 | Shared pool; ST08 is a pool-energy single fight |
 | Press | ST04, ST19 | ST04 single tone bar; ST19 surprise ambush, `continuous`, pool energy, gaffe limit 2 |
@@ -106,6 +108,8 @@ Every Combat stage needs a column in **Affinity**: a multiplier per suit on the 
 
 The question multiplier stacks with the room's affinity. Per organisation, one stage's net change is capped at ±5. Grades are per suit. **The room tabs' own footers set the rule: at least 2 S and at most 2 W per question, no time references, no assumed past events, and no specific policy area** (a room question has to fit any audience). A W on at least one suit is good practice, because it makes the choice of suit matter, but the footers do not require it (legal either way). **Stage Questions are exempt from "no specific policy area"**: being specific to a room's business is their point, and they should still keep 2 or more S and 2 or fewer W. Every existing question has at least 2 S. About 37 have no W, mostly in the Press, Ambush and Lobbyist tabs: leave them, but give a new question one. Do not regrade existing rows without Cameron. A question whose Theme no row maps pleases nobody (an export warning).
 
+**Spread targets (from the 272 room-tab questions).** Share of questions graded Strong / Weak per suit: Earnest 54 / 14, Emotional 38 / 27, Appeal 29 / 20, Data Driven 42 / 19, Divisive 35 / 38, Duplicitous 35 / 24. A batch should stay within about 15 points of each figure. Hard limits: no suit Weak on 0% of a batch, no suit Strong on more than 60%, and every suit Strong on at least 20%. A batch where one suit is nearly always Strong makes that suit the only sensible answer for every protagonist (the 2026-10-13 draft had Earnest Strong on 90% and Duplicitous on 5%). Compute the table for every batch and put it in the hand-over notes.
+
 **Grading by suit.** Ask "which register actually answers this?":
 - Earnest wins when the question asks for accountability or a plain commitment.
 - Emotional wins on people and harm; Appeal on unity, belonging and favours.
@@ -134,11 +138,27 @@ An opponent row: **Affiliation** (a BOxx), **Party** (a Parties name or N/A), **
 3. a general row (no opponent) for that suit and verb, this stage;
 4. a general row for that suit and verb, any stage.
 
+**Pooling and shadowing (verified in the code).** Rows that resolve to the same lookup key are **pooled** (their lines join one list). A more specific tier **replaces** all less specific ones: it does not add to them. So a stage-scoped Player Cue row with a verb hides the card's own Flavor Text and every any-stage row for that suit and verb. An Opponent Cue row that names an opponent ignores its Suit column and applies to every suit; with no Stage ID it follows that character into every room, so leave Stage ID blank only for party leaders.
+
 **What the player says** (Player Cues, then the card's own Flavor Text): this stage and verb, this stage any verb, any stage this verb, any stage any verb, then the card's five lines. The verb is what the card did: `attack` (took the opponent's support), `gain` (won support), `block` (only banked guard).
 
 ### 2.6 Bills, votes and laws
 
 A level names its bill (`BIxx`) in a stage slot. Floor Vote Party Positions give each party's Yes/No/Abstain split (must add to that party's seats; the exporter warns) and Disposition. The player's seat sits with their party's majority unless they vote otherwise. A strong player can swing other parties (resistance per party). **A bill passes only when Yes reaches a majority of the whole house (51 of 101); abstentions count against it.** So a bill whose splits give Yes under 51 fails by default, and its Vote Influence Cue must be a "Flipped to Pass" line (and a bill that passes by default needs "Flipped to Fail"). Every vote is recorded in the statute book. **Law Effects** rows (per bill, per outcome) apply once or at the end of every later level. House rule (checked by the playtest rubric, D8): **every organisation is pleased by at least one bill outcome and annoyed by at least one.**
+
+### 2.7 Engine behaviours that decide how content plays
+
+Each row is something the 2026-10-13 review found a draft getting wrong because it was not stated here.
+
+| Behaviour | What happens | Rule for drafts |
+|---|---|---|
+| **Questions per stage** | A stage asks `questions_per_turn × turn_limit` questions **in total**, drawn once into one bag. A `reset` room (committee) does not refill the bag for each opponent. | A room with **no** pool: write turn_limit to 1.5 × turn_limit Stage Questions. A room **with** a Question Pool (ST04, ST05, ST19, ST20, ST21): Stage Questions are dealt first, so write at most one third of turn_limit, or none. Six Stage Questions on a six-turn press conference remove the whole 34-question press pool. |
+| **Switching questions on** | The first Stage Question on a room that asked none turns on the Strong/Weak multiplier and organisation pleasing there. That changes its difficulty (ST18 went from 40% to 100% bot wins). | Never add questions to an existing room (ST02, ST03, ST06, ST08 ask none today) without Cameron's yes and a bot trial before and after. New rooms are free. |
+| **Player Cues shadow Flavor Text** | Each suit and verb reads one pool, from the most specific tier that has any line. Card Flavor Text (45 lines per suit) is used only when no tier has one. A stage-scoped row for a suit and verb therefore replaces it in that room. | Write stage-scoped Player Cues only for committees and for new or unique rooms. Do not add rows to existing base rooms. Measure variety as lines per (suit, verb) cell, not lines per room. Give a cell you shadow at least two rows (10 lines). |
+| **Opponent Cue tiers** | Order: this opponent in this stage, this opponent anywhere, the suit's pool for this stage, the suit's pool anywhere. A stage pool replaces the any-stage pool. | A new room needs, for every suit and verb, either 10 stage-scoped lines or none (then the 10 universal lines play). A stage-scoped seat with 5 lines is thinner than the universal default. |
+| **Transitions** | Plays before a stage that is **not first in its level**, shows exactly one exchange, and the banner auto-advances after at most 4 seconds (about 110 characters). A speaker is a specific named staff member whether or not the player hired them. | Character line 18 words or fewer (110 characters), reply 8 or fewer. Write at least 3 variants per stage; ST03 alone fires 45 times across the levels. Describe the feel in-universe, never numbers. Do not set Show Transition on existing stages unless asked. Check each new room is not only ever a first slot. |
+| **A bill passes on Yes of 51 or more** (half the house, rounded up) | Abstentions count against it. | Compute each draft bill's default outcome and make its Vote Influence Cue the opposite direction (Pass cue for a bill that fails by default). |
+| **Tab formulas** | Stages' Favored suit and Segment check are formulas that read the Affinity tab up to column V. | Paste formulas, not values, and extend the Affinity range to cover new columns. |
 
 ---
 
@@ -148,16 +168,16 @@ Example brief: "a Budget Committee hearing", "a Prefectural Assembly visit", "a 
 
 | # | Tab | Do | Required? |
 |---|---|---|---|
-| 1 | **Stages** | New row, next STxx. Set Mode, Bar Model, energy, Sequence Mode/Opponent Count, threshold, turns, gaffe limit, audience %, win/loss deltas. Copy the closest existing room and change from there | Yes |
+| 1 | **Stages** | New row, next STxx. Set Mode, Bar Model, energy, Sequence Mode/Opponent Count, threshold, turns, gaffe limit, audience %, win/loss deltas. Copy the closest existing room and change from there. Vary the economy by the room's difficulty: do not give every room the same hand, energy, gaffe limit and starting numbers | Yes |
 | 2 | **Affinity** | Add a column for the new STxx: two up (1.5/1.3), two down (0.5/0.7), two at 1.0 | Yes for Combat (export error otherwise) |
 | 3 | **Opponents** | Add the STxx to the Stage cell of everyone who belongs in that room, or add new opponents (placeholder names only unless Cameron supplies them) | Yes, at least Opponent Count of them |
 | 4 | **Question Pool** column | Point at an existing room tab if it should ask those questions, or leave blank | Optional |
 | 4b | **Own Party Only** | Yes for a room of the player's own party only | Optional |
-| 5 | **Stage Questions** | Rows with this STxx: the room's own questions, asked first | Optional, but this is what makes a room unique |
+| 5 | **Stage Questions** | Rows with this STxx: the room's own questions, asked first. Count by the §2.7 rule | Optional, but this is what makes a room unique. Not for rooms that already have a Question Pool |
 | 6 | **Question Themes** | A row for every new Theme, Organisation (and optional Annoys) filled, Why "Draft…" | Yes for every theme you use |
 | 7 | **Opponent Cues / Player Cues** | Stage-scoped rows (Stage ID = the STxx) | Optional |
-| 8 | **Levels** | Put the STxx in a level's stage slot (or make a new level) | Yes, or nobody plays it |
-| 9 | **Transition Cast/Dialogue** + Show Transition | Optional between-stage scene | Optional |
+| 8 | **Levels** | Put the STxx in a level's stage slot (or make a new level). Every new room must appear in at least one level. Tier, cooldown and XP costs are numbers, not text | Yes, or nobody plays it |
+| 9 | **Transition Cast/Dialogue** + Show Transition | Optional scene before the room when it is not a level's first stage. Follow the §2.7 length and variant rules | Optional |
 | 10 | Art | `assets/backgrounds/{STxx}.png` | Optional (a labelled placeholder shows) |
 
 **Balance check.** A room is fair when a decent deck can win it about half to most of the time. Run the bot on it: `PLAYTEST_PROTAGONIST=PC02 PLAYTEST_STAGE_TRIAL="ST24:40" .tools/godot --headless --path . tools/playtest_optimal.tscn`. Note that questions make a room easier (Strong answers ×1.3): ST18 went from 40% to 100% bot wins once it asked questions.
@@ -171,7 +191,8 @@ Example brief: "a Budget Committee hearing", "a Prefectural Assembly visit", "a 
 3. **Write the question** to its scope (§5).
 4. **Grade six suits** (§2.3), reading the room's affinity: grade the room's favoured suits Strong on some questions and Weak on others, or the room becomes trivially "always play Data Driven".
 5. **Keep pools balanced**: a committee asks one question a turn and draws from its own rows first, so three to six per committee is enough. Spread themes so one room does not please a single organisation every turn.
-6. **Check coverage**: every organisation should have at least 15 questions across the game (the current floor), and the How to Play suit table (HT21) reflects which suits please whom, recomputed from your grades automatically.
+6. **Check the spread**: run the §2.3 table over the batch (Strong and Weak share per suit). Fix a lopsided batch before continuing.
+7. **Check coverage**: every organisation should have at least 15 questions across the game (the current floor), and the How to Play suit table (HT21) reflects which suits please whom, recomputed from your grades automatically.
 
 ---
 
@@ -217,6 +238,8 @@ Stage-scoped lines may break rule 2 for their own room only; nothing should brea
 | Country Initiative (PT06) | tradition, veterans, shrines, families | order, custom, the nation |
 
 An organisation (Affiliation) speaks its own interest: a Fisheries Cooperative member about quotas and harbours, a journalist (BO08) about answers and accountability, a lobbyist about access and favours.
+
+**Transition style.** One staff voice, one short briefing (18 words or fewer), then the player's short reply. Convey the room's feel (a short clock, a hostile crowd, a forgiving panel) in plain words. Never quote energy, turns, gaffe limits, thresholds or percentages. Do not claim facts about an organisation or a party in a briefing that is stage-scoped to a base room.
 
 **Examples**
 
@@ -264,7 +287,7 @@ Rules:
 
 | Tab | Unit | Notes |
 |---|---|---|
-| **Visitors / Visitor Questions** (ST07, ST22) | a person, and a 4-choice question with one right answer | Reward/Penalty use the Grants format (`BO05 +1; SG02 -1`). Right/wrong replies are spoken; reactions are short stage directions |
+| **Visitors / Visitor Questions** (ST07, ST22) | a person, and a 4-choice question with one right answer. Spread the right answer across A to D, and do not make it the longest choice (it was in 33 of 35 drafted) | Reward/Penalty use the Grants format (`BO05 +1; SG02 -1`). Right/wrong replies are spoken; reactions are short stage directions |
 | **Level Intro Cues / Thoughts** | a staff member's line about a level; the player's own thought on a bill level | Specific to the level, so may name the bill's subject |
 | **Transition Dialogue** | a two-line exchange, character then player | Stage-scoped or any-stage; the character must be in Transition Cast |
 | **Vote Influence Cues** | the line when the player's influence flips a bill | Per bill and direction (passed/failed); may name the bill |
@@ -282,6 +305,11 @@ Rules:
 4. For anything touching organisations, bills or votes: `xvfb-run .tools/godot --path . tools/rubric_playtest.tscn` should still score full marks.
 5. A new room: run the bot's stage trial (§3) and note the win rate for Cameron.
 6. Mark every new row as a draft where the tab has a Why or Note column.
+7. **Rebase.** For every row under Edits to Existing Rows, re-read the Current value from today's master and confirm it matches. A draft written against an older master can silently undo a later fix (the 2026-10-13 draft would have removed OP30's ST08 seat).
+8. **Types.** Every number is a number cell (tier, cooldown, XP costs, thresholds). Text-typed numbers are a defect.
+9. **Audit table.** Hand over: ID ranges and collisions; seat totals per bill; default outcome against cue direction; Strong and Weak share per suit; questions per room against turn_limit; Player and Opponent Cue lines per (suit, verb) cell; transition word counts and how often each fires across the levels; rooms with no level; every new room's seated-opponent count against its Opponent Count.
+10. **Bot trial.** Run `PLAYTEST_STAGE_TRIAL` on every new room and on every existing room whose questions or cues changed, and report the win rates.
+11. **Canon calls.** List every new place, institution, or real-world analogue in a Decisions tab for Cameron.
 7. Check names agree across tabs (Assets against Opponents, Visitors, Player and **Shop**: an item-icon row must use the Shop tab's Item ID, name and Icon cell, so rebuild those rows when the Shop tab is renumbered) and that cue lines pass the Tone Guide's five rules (a quick read for time words such as now, again, still, already, always, never).
 8. Re-read the README tab: if you changed a count (stages, levels, organisations, themes), update its tab guide. It is Cameron's overview, so keep it true.
 
@@ -291,3 +319,23 @@ These need code, so propose them to Cameron rather than working around them:
 - a new **kind** of room (a new Mode or Bar Model);
 - a new **room question tab** (a sixth pool beside the five); Stage Questions usually does the job instead;
 - any new column a script must read.
+
+## 10. Pitfalls seen in review (2026-10-13)
+
+A 21-room, 6-bill draft was audited against the live workbook and code. What it got right: matching headers, no ID collisions, exact seat totals, correct bill outcomes against the 51-of-101 rule, valid references, clean cue length and tone. What it got wrong is now rules above; this table is the quick map.
+
+| Problem in the draft | Rule that now prevents it |
+|---|---|
+| An edit's "Current" value was stale, so it would remove ST08 from OP30 | §8 item 7 |
+| Four levels had tier, cooldown and XP costs as text | §3 step 8, §8 item 8 |
+| 6 Stage Questions on a 6-turn press conference, hiding its 34-question pool | §2.7 questions per stage |
+| Questions switched on for ST02, ST03, ST06 and ST08 without a decision | §2.7 switching questions on |
+| Earnest Strong on 90% of questions, Duplicitous on 5% | §2.3 spread targets |
+| Player Cue rows on every existing room, replacing card Flavor Text | §2.7 shadowing |
+| Transition lines of 43 words on a 4-second banner, one fixed line per stage | §2.7 transitions |
+| Show Transition set on all 20 existing rooms: 302 firings, ST03 alone 45 | §2.7 transitions |
+| Booster Rally (ST37) used by no level | §3 step 8 |
+| Every new room had the same hand, energy and gaffe numbers | §3 step 1 |
+| Favored suit pasted as values, with formulas stopping at Affinity column V | §2.7 tab formulas |
+| The correct visitor answer was the longest choice 94% of the time | §7 |
+
