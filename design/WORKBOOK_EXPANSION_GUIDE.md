@@ -163,12 +163,64 @@ A level names its bill (`BIxx`) in a stage slot. Floor Vote Party Positions give
 
 ### 2.8 Filling content gaps: general rooms and topic-specific rooms (Cameron, 2026-10-13)
 
-**Purpose of an expansion batch:** fill the gaps below and build out more questions and cues, for (a) the general rooms every level passes through and (b) topic-specific rooms (a committee or floor stage built around one bill's subject). No mechanics change. The engine keys questions and cues by **stage ID**, never by level or bill, so a topic-specific room needs **its own STxx row**; a topic is never attached to a generic room. The 30 existing bill levels (LV31-60) all run through generic rooms today.
+**Purpose of an expansion batch:** fill the gaps below and build out more questions, cues and transitions, for (a) the general rooms every level passes through and (b) **topic-specific rooms of any kind**. No mechanics change. A topic room is a new Stages row built from the nearest family (§3.0) and written around one subject. The engine keys questions, cues and transitions by **stage ID**, never by level or bill, so a topic needs **its own STxx row**; never attach a topic to a generic stage ID.
+
+**Topic rooms are not limited to committees.** A level about one subject can chain several room kinds, each its own new stage on that subject. Example, a level on train policy: a Town Hall on Commuter Fares, a Policy Study Session on Rail Timetables, a Committee Hearing on Rail Safety, a Press Conference on Raising Train Fares, a Lobbyist Meeting with the rail union, then the Floor Vote.
+
+| Room kind | Build from | Question source for a topic room | Notes |
+|---|---|---|---|
+| Committee / hearing / work session | committee row (ST09-17) | Stage Questions only (Question Pool blank) | 3 to turn_limit questions |
+| Town Hall | ST05 | Stage Questions, plus optionally the `town_hall` pool | Pool blank = topic-pure |
+| Policy Study Session | ST21 | Stage Questions, plus optionally the `policy_study` pool | Smaller bar (50) |
+| Press Conference | ST04 | Stage Questions (turn_limit of them) with Question Pool blank for a topic-pure conference, or a few Stage Questions plus the `press_conference` pool | A press conference asks exactly turn_limit questions. Set Bar Model (single), Energy Mode and Reputation Affects Start from ST04's row, since the engine reads those columns |
+| Lobbyist Meeting / Media Ambush | ST20 / ST19 | Stage Questions, plus optionally the matching pool | Energy is a stage-long pool; keep ST19/ST20's pool numbers in family |
+| Floor Debate / Caucus / Steering | ST02 / ST03 / ST08 | Stage Questions | These ask none today: bot-trial before and after |
+
+Where a built-in behaviour is keyed to a literal stage ID rather than a column (the engine has a few fallbacks for ST04 and ST06), the new row must set the matching column; if a behaviour still does not carry over in a bot trial, report it in the hand-over rather than asking for code.
+
+**Sizing rule for topic rooms.** The "at most a third" limit in §2.7 protects a *generic* pool from being crowded out. A topic room wants the opposite: write Stage Questions up to `turn_limit` and leave Question Pool blank (topic-pure), or keep a pool and write about a third as topic Stage Questions (topic-flavoured).
 
 **Gaps measured in the master workbook (2026-10-13)**
 
-| Gap | Today | Why it matters |
+| Gap | Today |
+|---|---|
+| **Transitions (biggest gap)** | Show Transition is off on all 23 stages and the Transition Cast, Backgrounds and Dialogue pools are empty, so no level has an in-level beat between rooms. |
+| Committee Stage Questions | 3 per committee against 10 turns, so each runs out of fresh questions. |
+| Rooms that ask no questions | Floor Debate (28 levels), Caucus (41), TV Debate (14), Steering Committee (7). |
+| Room-specific Player Cues | Committees only; every other room plays the card's own Flavor Text. |
+| Room-specific Opponent Cues | None; rooms use the universal pool. |
+| Question pools | Press 34, Town Hall 104, Lobbyist 77, Policy Study 30, Media Ambush 27: adequate in size, thin on topics. |
+| Topic rooms | None for the 30 bills; all 30 bill levels run through generic rooms. |
+
+**Quotas for a batch (minimums per room touched)**
+
+| Content | Floor | Target |
 |---|---|---|
+| Stage Questions, room with no pool | 3 | one per turn (turn_limit) |
+| Stage Questions, generic room that keeps its pool | 0 | at most a third of turn_limit |
+| Stage Questions, topic room | 3 | turn_limit with Question Pool blank |
+| Question grading | within about 15 points of the master spread (Strong / Weak: Earnest 54/14, Emotional 38/27, Appeal 29/20, Data Driven 42/19, Divisive 35/38, Duplicitous 35/24) | at least 2 Strong each; every theme maps to existing organisations |
+| Player Cues, per room | 2 rows (10 lines) per suit and verb covered; cover attack, gain, block | all six suits x three verbs = 36 rows |
+| Opponent Cues, per room | 2 rows (10 lines) per suit and verb covered | the suits the room favours |
+| **Transitions** | Show Transition = Yes on every room that is not only ever a first slot, with at least 3 dialogue variants per room kind (wildcard rows with blank Stage ID) | plus topic-specific variants for each topic room; a cast of 6+ existing characters; a background per room family |
+
+**Transition rules (fill the gap):** a transition plays before a non-first stage, shows one exchange, and the banner holds a line at most 4 seconds. Character line 18 words or fewer, reply 8 or fewer, no numbers. Cast only existing OPxx/SFxx characters; every cast member needs at least one dialogue row. Wildcard (blank Stage ID) rows serve all rooms; add stage-scoped rows for topic rooms so the beat names the subject ("the fare vote is next"). Set Transition Speaker Count 1 or 2. A room only ever in first slots never shows one: put the topic room later in the level.
+
+**Priority order:** (1) transitions (wildcard pool, then per room kind); (2) the most-visited general rooms: ST03 (41 levels), ST04 (32), ST02 (28), the committees, ST06, ST08; (3) topic levels.
+
+**Recipe: a topic-specific room (any kind)**
+
+1. Pick the subject (a bill's topic, or a new one) and read the bill text, Party Positions and Law Effects so the room agrees with them.
+2. Add a Stages row from the matching family (table above), named for the topic ("Press Conference on Raising Train Fares"). Affinity column: two suits up, two down, two neutral, chosen to suit the subject.
+3. List the new STxx in the Stage cell of the opponents who appear in it (existing people only; journalists for press rooms), then check the Question Pool and Bar Model columns as the table says.
+4. Write the Stage Questions (sizing above), graded to the spread, each with a Theme that pleases organisations the subject affects (reuse Question Themes rows; new ones need a Why cell starting "Draft").
+5. Write Player Cues and Opponent Cues for the Stage ID (quotas above) in the subject's vocabulary. Tone Guide applies; party or organisation voice only in opponent-scoped rows.
+6. Add a Levels row (or edit one, re-reading current values) that chains the topic rooms in a sensible order, with a transition variant for the beats between them.
+7. Bot-trial each new room with `PLAYTEST_STAGE_TRIAL="STxx:N"` and report the win rate.
+
+**Do not:** attach a topic to a generic stage ID, invent parties or canon, put numbers in cue or transition lines, or name the asker's party in a question unless Asked By Party limits it.
+
+---|---|---|
 | Committee Stage Questions | 3 per committee (S01-S33) against 10 turns | Each committee asks 3 distinct questions then runs out of fresh ones (the bag holds `questions_per_turn x turn_limit`). |
 | Rooms that ask no questions | ST02 Floor Debate (28 levels), ST03 Caucus (41), ST06 TV Debate (14), ST08 Steering (7) | The most-visited rooms have the thinnest content and no Strong/Weak or organisation pleasing. Turning questions on changes difficulty: bot-trial first (§2.7). |
 | Question pools against turns | Press 34 (ST04, 32 levels), Town Hall 104, Lobbyist 77, Policy Study 30, Media Ambush 27 | Adequate in size; thin on topical variety for bills and on Divisive/Duplicitous Weak-graded answers. |

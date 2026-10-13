@@ -2262,3 +2262,7 @@ Cameron's reply to the draft review: the new geography and people (Aomori, Hokka
 ### Expansion focus: content gaps and topic-specific rooms (2026-10-13, Cameron)
 
 The expansion is to fill content gaps and build out questions and cues for general rooms and for topic-specific rooms (a committee or floor stage for one bill). `design/WORKBOOK_EXPANSION_GUIDE.md` §2.8 holds the measured gaps (committees ask 3 questions in 10 turns; ST02/03/06/08 ask none; no bill has its own room; transitions off everywhere), per-room quotas, a priority order and recipes for a topic committee or floor stage. A topic needs its own STxx row because the engine keys questions and cues by stage ID. `design/EXPANSION_DRAFT_FEEDBACK_2026-10-13.md` points to it. No game or data change.
+
+### Expansion focus widened: transitions are a gap; topic rooms of any kind (2026-10-13, Cameron)
+
+Transitions (all off, pools empty) are named a gap to fill, and topic-specific rooms are not limited to committees: a town hall, policy study, committee hearing or press conference can each be a new stage written around one subject (for example "Press Conference on Raising Train Fares" in a train-policy level). Guide §2.8 now has a room-kind table (what to build each from, where its questions come from, which columns to set), a topic-room sizing rule (Stage Questions up to turn_limit with Question Pool blank for a topic-pure room), transition quotas and rules, and a priority order. The feedback memo points to it. No game or data change.
