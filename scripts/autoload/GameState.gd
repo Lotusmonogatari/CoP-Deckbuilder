@@ -221,6 +221,12 @@ var funds_cap_bonus: int = 0
 ## moment Jiban rises back above its threshold.
 var town_hall_active := false
 
+## How many times each person (an OPxx opponent or a VIxx visitor) has been
+## seated against the player this run -- PeopleDraw leans the next draw toward
+## whoever has been met least, so the same face can return but rarely back to
+## back (Cameron, 2026-10-13). Saved; cleared on a new run.
+var faced_people: Dictionary = {}
+
 ## Same shape, for the Party Steering Committee check-in (ST22).
 var steering_committee_active := false
 
@@ -288,6 +294,7 @@ func start_new_run(player_id: String) -> bool:
 	reset_booster_standing()
 	reset_segment_favorability()
 	reset_party_standing()
+	faced_people = {}
 	awaiting_new_game = false
 	return true
 
@@ -310,7 +317,7 @@ const _SAVED_FIELDS := [
 	"staff_recruitment_tier", "funds_cap_bonus",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
-	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book",
+	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 ]
 
 
@@ -693,6 +700,24 @@ func begin_level(runner: LevelRunner) -> void:
 	level_bonuses = pending_level_bonuses.duplicate()
 	pending_level_bonuses = {}
 
+	for stage: Variant in runner.stages:
+		record_faced(stage)
+
+
+## Counts everyone seated in `stage` (opponents and visitors) as met once
+## more, so PeopleDraw leans away from them next time.
+func record_faced(stage: Variant) -> void:
+	if not (stage is Dictionary):
+		return
+	for person: Variant in ((stage as Dictionary).get("opponents", []) as Array):
+		var id := str((person as Dictionary).get("opp_id", ""))
+		if not id.is_empty():
+			faced_people[id] = int(faced_people.get(id, 0)) + 1
+	for person: Variant in ((stage as Dictionary).get("visitors", []) as Array):
+		var id := str((person as Dictionary).get("visitor_id", ""))
+		if not id.is_empty():
+			faced_people[id] = int(faced_people.get(id, 0)) + 1
+
 
 ## True while a level is in progress.
 func is_in_level() -> bool:
@@ -852,7 +877,9 @@ func _check_town_hall(level_id: String) -> void:
 	if triggered and not town_hall_active:
 		if level_runner == null or level_runner.is_finished():
 			return
-		level_runner.insert_stage(BattleSetup.build_inserted_stage(level_id, "ST05"), level_runner.index)
+		var inserted := BattleSetup.build_inserted_stage(level_id, "ST05")
+		level_runner.insert_stage(inserted, level_runner.index)
+		record_faced(inserted)
 		town_hall_active = true
 		pending_trigger_alerts.append({"kind": "town_hall", "edge": "entered", "count": jiban})
 	elif not triggered and town_hall_active:
@@ -869,7 +896,9 @@ func _check_steering_committee(level_id: String) -> void:
 	if triggered and not steering_committee_active:
 		if level_runner == null or level_runner.is_finished():
 			return
-		level_runner.insert_stage(BattleSetup.build_inserted_stage(level_id, "ST22"), level_runner.index)
+		var inserted := BattleSetup.build_inserted_stage(level_id, "ST22")
+		level_runner.insert_stage(inserted, level_runner.index)
+		record_faced(inserted)
 		steering_committee_active = true
 		pending_trigger_alerts.append({"kind": "steering_committee", "edge": "entered", "count": party_support})
 	elif not triggered and steering_committee_active:

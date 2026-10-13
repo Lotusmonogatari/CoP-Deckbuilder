@@ -1791,6 +1791,22 @@ def validate(data, report):
         if not opp["stages"]:
             report.warn("opponents", f"{oid} has no Stage listed, so they never appear in a level")
 
+    # A committee seats only the members assigned to it (Cameron, 2026-10-13):
+    # a stage named "Committee on ..." may list only MPs whose Role is that
+    # committee (an error). The Special Committee and the Cabinet committee
+    # are not named for a Role, so they are reported, not failed, until
+    # Cameron says who sits on them.
+    for st in data["stages"]:
+        st_id, st_name = st["stage_id"], str(st.get("name_en") or "")
+        if not (st_name.startswith("Committee") or st_name == "Special Committee"):
+            continue
+        outsiders = [o for o in data["opponents"] if st_id in (o["stages"] or []) and o.get("role") != st_name]
+        if st_name.startswith("Committee on"):
+            for opp in outsiders:
+                report.error("opponents", f"{opp['opp_id']} ({opp.get('role')}) is listed for {st_id} {st_name}, but a committee seats only its own members")
+        elif outsiders:
+            report.warn("opponents", f"{st_id} {st_name} seats {len(outsiders)} members assigned to other committees ({', '.join(o['opp_id'] for o in outsiders[:6])}...); a committee should seat its own members only")
+
     # --- opponent cues -------------------------------------------------------
     # lean_down was removed as a game mechanic (2026-09-24, IntentRunner.gd)
     # — a Verb outside these three is either a typo or a stale reference to it.

@@ -73,7 +73,7 @@ Short on **people** (needs 3x the people it seats), all because canon limits who
 | ST27 Rail Safety hearing | 160 | ST15 159 | In family |
 | ST28 Lobbyist | 126 | ST20 143 | In family, slightly harder |
 | ST29 Town Hall (harbour) | 137 | ST05 155 | In family |
-| ST30 Media Ambush | 0 | ST19 0 | Matches the family, see below |
+| ST30 Media Ambush | 0 | ST19 0 | Matches the family; losses are allowed, see below |
 | ST31 Fishery hearing | 160 | ST13 160 | In family |
 
 Existing committees now ask 10 questions instead of 3 and stay at 159-160 of 160 (ST01, ST09, ST11, ST16); ST18, tuned to 45-50%, is 111 of 160 (one protagonist's deck wins 1 of 40, so it varies by deck).
@@ -92,7 +92,7 @@ Existing committees now ask 10 questions instead of 3 and stay at 159-160 of 160
 
 | Question | Why it matters |
 |---|---|
-| **Media Ambush wins 0 of 160** for the bot, on ST19 and on the new ST30. | The new room follows the family exactly, so it inherits this. Is the ambush meant to be nearly unwinnable? |
+| **Media Ambush (ST19, ST30)** | Losing is allowed (it does not end the level), so 0 of 160 for the bot is acceptable. But you said a late kit can pass it, and the bot with every card and item wins none at a threshold of 20 or more, about 12% at 15 and most fights at 13 or below, so a late kit cannot pass it as tuned. Lower the threshold to roughly 14 if a late kit should succeed. |
 | **Eight new characters** to bring nine rooms to 3x on people. | Names and parties are yours. |
 | **Names, including the Japanese ones**, are my drafts. | Check the Japanese especially. |
 | **ST29's threshold** (58 against ST05's 60) | Match it at 60, or keep the gentler harbour room. |
@@ -100,3 +100,11 @@ Existing committees now ask 10 questions instead of 3 and stay at 159-160 of 160
 ## Not covered
 
 No test plays the new levels through the whole Office-to-level flow with real clicks. No art exists for the 8 new backgrounds (labelled placeholders show). Cues were checked by rule and by reading, not played.
+
+## Updates (2026-10-13, later)
+
+| Direction | Result |
+|---|---|
+| Committees seat only their own members | Checked: ST09-ST17 and the new hearings (ST27 Construction, ST31 Agriculture) already comply. The export now **fails** if a "Committee on ..." room lists another committee's member. **ST01 (Special Committee) and ST18 (Cabinet) seat members of other committees** (12 and 9 people) and are warnings until you say who sits on them. |
+| Same opponent may return, but lean unique | Built: `PeopleDraw` draws the least-met people first, within a stage nobody repeats; the counts are kept per run and saved (`GameState.faced_people`), and apply to visitors too. Six new tests. |
+| Media Ambush losses are fine | Noted; see the table above for what a late kit can do today. |

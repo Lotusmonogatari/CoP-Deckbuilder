@@ -269,7 +269,15 @@ static func _opponent_for(level_id: String, stage_id: String, slot: int) -> Dict
 	var pinned := _resolve_pin(level_id, stage_id, slot)
 	if not pinned.is_empty():
 		return pinned
-	return eligible[randi() % eligible.size()] if not eligible.is_empty() else {}
+	var drawn := PeopleDraw.pick(eligible, "opp_id", GameState.faced_people, 1, [], _rng())
+	return drawn[0] if not drawn.is_empty() else {}
+
+
+## One randomized generator for the people draws (unseeded, like every roll here).
+static func _rng() -> RandomNumberGenerator:
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	return rng
 
 
 ## How many opponents a non-committee stage fights, from its own
@@ -313,16 +321,13 @@ static func _opponents_for(level_id: String, stage_id: String, slot: int, count:
 	if not pinned.is_empty():
 		chosen.append(pinned)
 
-	# A random draw from the pool, never the same person twice (Cameron,
-	# 2026-10-07: it used to take the lowest opp_ids, so a stage always
-	# fought the same people). Like every other roll here it is unseeded.
-	eligible.shuffle()
-	for candidate: Dictionary in eligible:
-		if chosen.size() >= count:
-			break
-		if not pinned.is_empty() and str(candidate.get("opp_id", "")) == str(pinned.get("opp_id", "")):
-			continue
-		chosen.append(candidate)
+	# A random draw that leans toward people the player has met least this
+	# run (PeopleDraw, Cameron 2026-10-13): the same person can come back, but
+	# nobody is seated twice in one stage. Like every other roll here it is
+	# unseeded.
+	var excluded: Array = [str(pinned.get("opp_id", ""))] if not pinned.is_empty() else []
+	chosen.append_array(PeopleDraw.pick(eligible, "opp_id", GameState.faced_people,
+		count - chosen.size(), excluded, _rng()))
 
 	return chosen
 
@@ -415,21 +420,16 @@ static func _visitors_for(level_id: String, stage_id: String, slot: int, count: 
 	if count <= 1:
 		if not pinned.is_empty():
 			return [pinned]
-		return [eligible[randi() % eligible.size()]] if not eligible.is_empty() else []
+		return PeopleDraw.pick(eligible, "visitor_id", GameState.faced_people, 1, [], _rng())
 
 	var chosen: Array = []
 	if not pinned.is_empty():
 		chosen.append(pinned)
 
-	# A random draw from the pool, never the same visitor twice (Cameron,
-	# 2026-10-07: every stage's people are drawn at random, like opponents).
-	eligible.shuffle()
-	for candidate: Dictionary in eligible:
-		if chosen.size() >= count:
-			break
-		if not pinned.is_empty() and str(candidate.get("visitor_id", "")) == str(pinned.get("visitor_id", "")):
-			continue
-		chosen.append(candidate)
+	# Same lean-toward-the-unmet draw as opponents (PeopleDraw).
+	var excluded: Array = [str(pinned.get("visitor_id", ""))] if not pinned.is_empty() else []
+	chosen.append_array(PeopleDraw.pick(eligible, "visitor_id", GameState.faced_people,
+		count - chosen.size(), excluded, _rng()))
 
 	return chosen
 
