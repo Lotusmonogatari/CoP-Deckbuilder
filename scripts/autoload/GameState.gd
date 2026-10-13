@@ -1913,12 +1913,14 @@ func _apply_party_tier_lean(bill_id: String, passed: bool) -> void:
 	var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
 	var own := own_party_id()
 	var disposition := ""
+	var scale := 1.0
 	for position: Dictionary in bill.get("positions", []):
 		if str(position.get("party_id", "")) == own:
 			disposition = str(position.get("disposition", ""))
+			scale = BattleSetup.salience_factor(position)
 	var delta := StatuteBook.party_tier_delta(disposition, passed,
-		int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)),
-		int(DataDB.balance.get("law_lean_party_tier_fail_delta", 0)))
+		PartySalience.scaled(int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)), scale),
+		PartySalience.scaled(int(DataDB.balance.get("law_lean_party_tier_fail_delta", 0)), scale))
 	if delta == 0:
 		return
 	for booster: Dictionary in DataDB.boosters:

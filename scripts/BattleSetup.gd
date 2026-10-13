@@ -131,6 +131,7 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 			var party := DataDB.get_party_by_id(str(position.get("party_id", "")))
 			position["party_name"] = str(party.get("name", ""))
 			position["party_color"] = [party.get("r", 128), party.get("g", 128), party.get("b", 128)]
+			position["favorability_factor"] = salience_factor(position)
 		bill["positions"] = positions
 		stage["floor_vote"] = bill
 		stage["question_pool_size"] = 0
@@ -406,6 +407,16 @@ static func _resolve_visitor_pin(level_id: String, stage_id: String, slot: int) 
 			+ "Falling back to the dynamic pick.") % [level_id, slot, visitor_id, stage_id])
 		return {}
 	return pinned
+
+
+## How strongly a party reacts to a bill, from its Salience cell on the
+## Party Positions tab (PartySalience.factor) and the three Balance levers.
+## 1.0 when the cell is blank, so unscored bills behave as before.
+static func salience_factor(position: Dictionary) -> float:
+	return PartySalience.factor(position.get("salience"),
+		float(DataDB.balance.get("party_salience_reference", 0)),
+		float(DataDB.balance.get("party_salience_min_factor", 1.0)),
+		float(DataDB.balance.get("party_salience_max_factor", 1.0)))
 
 
 ## `count` visitors for a Non-combat stage, drawn from its eligible pool —

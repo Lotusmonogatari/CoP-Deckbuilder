@@ -11,7 +11,7 @@ in `data/art.json`.
 | Staff | 0 / 105 |
 | Visitors | 0 / 195 |
 | Card art | 0 / 54 |
-| Backgrounds | 24 / 24 |
+| Backgrounds | 24 / 101 |
 | Organisation icons | 18 / 30 |
 | Shop item icons | 20 / 20 |
 | Cosmetic package icons | 2 / 2 |
@@ -312,6 +312,83 @@ in `data/art.json`.
 | ST21.png | Policy Study Session | ✓ |
 | ST22.png | Party Steering Committee Check-In | ✓ |
 | ST23.png | National Assembly Floor Voting | ✓ |
+| ST24.png | Town Hall on Commuter Fares | ☐ |
+| ST25.png | Policy Study on Rail Timetables | ☐ |
+| ST26.png | Press Conference on Raising Train Fares | ☐ |
+| ST27.png | Hearing on Rail Safety | ☐ |
+| ST28.png | Lobbyist Meeting on Fishing Quotas | ☐ |
+| ST29.png | Town Hall at the Harbour | ☐ |
+| ST30.png | Media Ambush on Seafood Labelling | ☐ |
+| ST31.png | Hearing on Fishery Quotas | ☐ |
+| ST32.png | Press Conference on Wilderness Protection | ☐ |
+| ST33.png | Hearing on Wilderness Protection | ☐ |
+| ST34.png | Town Hall on Wilderness Protection | ☐ |
+| ST35.png | Party Caucus on Wilderness Protection | ☐ |
+| ST36.png | Town Hall on Rural Hospitals | ☐ |
+| ST37.png | Hearing on Rural Hospitals | ☐ |
+| ST38.png | Policy Study on Rural Hospitals | ☐ |
+| ST39.png | Party Caucus on Rural Hospitals | ☐ |
+| ST40.png | Policy Study on Digital Identity Cards | ☐ |
+| ST41.png | TV Debate on Digital Identity Cards | ☐ |
+| ST42.png | Party Caucus on Digital Identity Cards | ☐ |
+| ST43.png | Press Conference on Broadcaster Independence | ☐ |
+| ST44.png | TV Debate on Broadcaster Independence | ☐ |
+| ST45.png | Party Caucus on Broadcaster Independence | ☐ |
+| ST46.png | Press Conference on Donation Transparency | ☐ |
+| ST47.png | Hearing on Donation Transparency | ☐ |
+| ST48.png | Lobbyist Meeting on Donation Transparency | ☐ |
+| ST49.png | Party Caucus on Donation Transparency | ☐ |
+| ST50.png | Policy Study on Corporate Tax Cuts | ☐ |
+| ST51.png | Hearing on Corporate Tax Cuts | ☐ |
+| ST52.png | Party Caucus on Corporate Tax Cuts | ☐ |
+| ST53.png | Town Hall on the Carbon Levy | ☐ |
+| ST54.png | Hearing on the Carbon Levy | ☐ |
+| ST55.png | Press Conference on the Carbon Levy | ☐ |
+| ST56.png | Party Caucus on the Carbon Levy | ☐ |
+| ST57.png | Hearing on Fishing Quota Reform | ☐ |
+| ST58.png | Town Hall on Fishing Quota Reform | ☐ |
+| ST59.png | Party Caucus on Fishing Quota Reform | ☐ |
+| ST60.png | Hearing on Shipbuilding Support | ☐ |
+| ST61.png | Town Hall on Shipbuilding Support | ☐ |
+| ST62.png | Party Caucus on Shipbuilding Support | ☐ |
+| ST63.png | Hearing on the Constitutional Review | ☐ |
+| ST64.png | Press Conference on the Constitutional Review | ☐ |
+| ST65.png | Party Caucus on the Constitutional Review | ☐ |
+| ST66.png | Hearing on Border Cooperation | ☐ |
+| ST67.png | Lobbyist Meeting on Border Cooperation | ☐ |
+| ST68.png | Party Caucus on Border Cooperation | ☐ |
+| ST69.png | Hearing on Chishima Development | ☐ |
+| ST70.png | Press Conference on Chishima Development | ☐ |
+| ST71.png | Lobbyist Meeting on Chishima Development | ☐ |
+| ST72.png | Party Caucus on Chishima Development | ☐ |
+| ST73.png | TV Debate on China Trade | ☐ |
+| ST74.png | Hearing on China Trade | ☐ |
+| ST75.png | Party Caucus on China Trade | ☐ |
+| ST76.png | Town Hall on Farm Succession | ☐ |
+| ST77.png | Hearing on Farm Succession | ☐ |
+| ST78.png | Party Caucus on Farm Succession | ☐ |
+| ST79.png | Policy Study on University Research Funding | ☐ |
+| ST80.png | Hearing on University Research Funding | ☐ |
+| ST81.png | Party Caucus on University Research Funding | ☐ |
+| ST82.png | Town Hall on Workplace Equality | ☐ |
+| ST83.png | Press Conference on Workplace Equality | ☐ |
+| ST84.png | TV Debate on Workplace Equality | ☐ |
+| ST85.png | Party Caucus on Workplace Equality | ☐ |
+| ST86.png | Town Hall on Parental Leave | ☐ |
+| ST87.png | Policy Study on Parental Leave | ☐ |
+| ST88.png | Lobbyist Meeting on Parental Leave | ☐ |
+| ST89.png | Party Caucus on Parental Leave | ☐ |
+| ST90.png | Hearing on Surveillance Cameras | ☐ |
+| ST91.png | TV Debate on Surveillance Cameras | ☐ |
+| ST92.png | Press Conference on Surveillance Cameras | ☐ |
+| ST93.png | Party Caucus on Surveillance Cameras | ☐ |
+| ST94.png | Town Hall on Town Mergers | ☐ |
+| ST95.png | Hearing on Town Mergers | ☐ |
+| ST96.png | Policy Study on Town Mergers | ☐ |
+| ST97.png | Party Caucus on Town Mergers | ☐ |
+| ST98.png | TV Debate on Party Leadership Ballots | ☐ |
+| ST99.png | Press Conference on Party Leadership Ballots | ☐ |
+| ST100.png | Party Caucus on Party Leadership Ballots | ☐ |
 
 ## Organisation icons — `assets/icons/`
 

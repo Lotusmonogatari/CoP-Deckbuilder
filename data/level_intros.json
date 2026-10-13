@@ -1,1 +1,1232 @@
-[]
+[
+  {
+    "level_id": "LV01",
+    "role": "Policy Research Assistant",
+    "cue_text": "People bring small problems. Listen for the pattern in them."
+  },
+  {
+    "level_id": "LV01",
+    "role": "Media Spokesperson",
+    "cue_text": "Warm faces and short answers will carry you today."
+  },
+  {
+    "level_id": "LV01",
+    "role": "District Representative",
+    "cue_text": "Constituents remember who actually showed up."
+  },
+  {
+    "level_id": "LV02",
+    "role": "Policy Research Assistant",
+    "cue_text": "Lobbyists know the numbers. Know them better."
+  },
+  {
+    "level_id": "LV02",
+    "role": "Media Spokesperson",
+    "cue_text": "Expect a busy day. Stay calm whatever comes."
+  },
+  {
+    "level_id": "LV02",
+    "role": "District Representative",
+    "cue_text": "Home does not love lobbyists. Choose your words."
+  },
+  {
+    "level_id": "LV03",
+    "role": "Policy Research Assistant",
+    "cue_text": "Bring the studies. This one rewards preparation."
+  },
+  {
+    "level_id": "LV03",
+    "role": "Media Spokesperson",
+    "cue_text": "Quiet room today. Small slips still travel."
+  },
+  {
+    "level_id": "LV03",
+    "role": "District Representative",
+    "cue_text": "Experts and neighbours will want different things."
+  },
+  {
+    "level_id": "LV04",
+    "role": "Policy Research Assistant",
+    "cue_text": "Environment files are dense. Skim the summary twice."
+  },
+  {
+    "level_id": "LV04",
+    "role": "Media Spokesperson",
+    "cue_text": "Green topics get attention. Say something clear."
+  },
+  {
+    "level_id": "LV04",
+    "role": "District Representative",
+    "cue_text": "Locals care about the land. Say so."
+  },
+  {
+    "level_id": "LV05",
+    "role": "Policy Research Assistant",
+    "cue_text": "Stick to three facts and repeat them."
+  },
+  {
+    "level_id": "LV05",
+    "role": "Media Spokesperson",
+    "cue_text": "Cameras everywhere today. Smile and stay brief."
+  },
+  {
+    "level_id": "LV05",
+    "role": "District Representative",
+    "cue_text": "The district will see every clip. Stay yourself."
+  },
+  {
+    "level_id": "LV06",
+    "role": "Policy Research Assistant",
+    "cue_text": "Farm support is about margins. Know the margins."
+  },
+  {
+    "level_id": "LV06",
+    "role": "Media Spokesperson",
+    "cue_text": "Farmers read the papers. Be plain with them."
+  },
+  {
+    "level_id": "LV06",
+    "role": "District Representative",
+    "cue_text": "The fields are watching you, not your party."
+  },
+  {
+    "level_id": "LV07",
+    "role": "Policy Research Assistant",
+    "cue_text": "Roads and rails are about who waits longest."
+  },
+  {
+    "level_id": "LV07",
+    "role": "Media Spokesperson",
+    "cue_text": "Good news travels slowly. Be patient and clear."
+  },
+  {
+    "level_id": "LV07",
+    "role": "District Representative",
+    "cue_text": "Home wants proof that roads get built."
+  },
+  {
+    "level_id": "LV08",
+    "role": "Policy Research Assistant",
+    "cue_text": "The floor rewards a clean opening. Open strong."
+  },
+  {
+    "level_id": "LV08",
+    "role": "Media Spokesperson",
+    "cue_text": "Everyone watches the floor. Keep your composure."
+  },
+  {
+    "level_id": "LV08",
+    "role": "District Representative",
+    "cue_text": "Your district follows the floor closely."
+  },
+  {
+    "level_id": "LV09",
+    "role": "Policy Research Assistant",
+    "cue_text": "Committee days run long. Pace yourself."
+  },
+  {
+    "level_id": "LV09",
+    "role": "Media Spokesperson",
+    "cue_text": "Quiet rooms still have notebooks. Mind your tone."
+  },
+  {
+    "level_id": "LV09",
+    "role": "District Representative",
+    "cue_text": "Committee work is invisible at home. Do it well anyway."
+  },
+  {
+    "level_id": "LV10",
+    "role": "Policy Research Assistant",
+    "cue_text": "Hometown markets live on thin margins. Know them."
+  },
+  {
+    "level_id": "LV10",
+    "role": "Media Spokesperson",
+    "cue_text": "Local shops make good stories. Tell one."
+  },
+  {
+    "level_id": "LV10",
+    "role": "District Representative",
+    "cue_text": "Shopkeepers back home are counting on this."
+  },
+  {
+    "level_id": "LV11",
+    "role": "Policy Research Assistant",
+    "cue_text": "Students ask sharp questions. Have real answers."
+  },
+  {
+    "level_id": "LV11",
+    "role": "Media Spokesperson",
+    "cue_text": "Young voters share everything. Be sincere."
+  },
+  {
+    "level_id": "LV11",
+    "role": "District Representative",
+    "cue_text": "Their parents are listening too."
+  },
+  {
+    "level_id": "LV12",
+    "role": "Policy Research Assistant",
+    "cue_text": "Families want the same few things. Name them."
+  },
+  {
+    "level_id": "LV12",
+    "role": "Media Spokesperson",
+    "cue_text": "A kind word beats a clever one today."
+  },
+  {
+    "level_id": "LV12",
+    "role": "District Representative",
+    "cue_text": "Home is full of families. Remember them."
+  },
+  {
+    "level_id": "LV13",
+    "role": "Policy Research Assistant",
+    "cue_text": "Craft guilds care about tradition and money."
+  },
+  {
+    "level_id": "LV13",
+    "role": "Media Spokesperson",
+    "cue_text": "Artisans make good pictures. Use them sparingly."
+  },
+  {
+    "level_id": "LV13",
+    "role": "District Representative",
+    "cue_text": "The workshops back home need a friend."
+  },
+  {
+    "level_id": "LV14",
+    "role": "Policy Research Assistant",
+    "cue_text": "Commuters care about time and cost. Know both."
+  },
+  {
+    "level_id": "LV14",
+    "role": "Media Spokesperson",
+    "cue_text": "Delays make news. Be ready to answer for them."
+  },
+  {
+    "level_id": "LV14",
+    "role": "District Representative",
+    "cue_text": "Home spends hours on those trains."
+  },
+  {
+    "level_id": "LV15",
+    "role": "Policy Research Assistant",
+    "cue_text": "The old guard likes respect and precedent."
+  },
+  {
+    "level_id": "LV15",
+    "role": "Media Spokesperson",
+    "cue_text": "Tradition sells well. Do not mock it."
+  },
+  {
+    "level_id": "LV15",
+    "role": "District Representative",
+    "cue_text": "Older voters at home notice tone first."
+  },
+  {
+    "level_id": "LV16",
+    "role": "Policy Research Assistant",
+    "cue_text": "Reformers want specifics. Bring a plan."
+  },
+  {
+    "level_id": "LV16",
+    "role": "Media Spokesperson",
+    "cue_text": "A fresh face gets curious coverage. Use it."
+  },
+  {
+    "level_id": "LV16",
+    "role": "District Representative",
+    "cue_text": "Home is split on reform. Choose with care."
+  },
+  {
+    "level_id": "LV17",
+    "role": "Policy Research Assistant",
+    "cue_text": "Coalitions run on small promises kept."
+  },
+  {
+    "level_id": "LV17",
+    "role": "Media Spokesperson",
+    "cue_text": "Alliances make headlines. Keep the story simple."
+  },
+  {
+    "level_id": "LV17",
+    "role": "District Representative",
+    "cue_text": "People back home want working friendships."
+  },
+  {
+    "level_id": "LV18",
+    "role": "Policy Research Assistant",
+    "cue_text": "Main Street and the trains share a problem: cost."
+  },
+  {
+    "level_id": "LV18",
+    "role": "Media Spokesperson",
+    "cue_text": "Shop owners and riders read different papers."
+  },
+  {
+    "level_id": "LV18",
+    "role": "District Representative",
+    "cue_text": "Both groups vote at home."
+  },
+  {
+    "level_id": "LV19",
+    "role": "Policy Research Assistant",
+    "cue_text": "Old and new camps disagree on pace, not goals."
+  },
+  {
+    "level_id": "LV19",
+    "role": "Media Spokesperson",
+    "cue_text": "The mood is delicate. Say less than you could."
+  },
+  {
+    "level_id": "LV19",
+    "role": "District Representative",
+    "cue_text": "Home is watching both camps."
+  },
+  {
+    "level_id": "LV20",
+    "role": "Policy Research Assistant",
+    "cue_text": "Labor and youth want security. Offer a path."
+  },
+  {
+    "level_id": "LV20",
+    "role": "Media Spokesperson",
+    "cue_text": "Labor and students make loud, good crowds."
+  },
+  {
+    "level_id": "LV20",
+    "role": "District Representative",
+    "cue_text": "Both groups call your district home."
+  },
+  {
+    "level_id": "LV21",
+    "role": "Policy Research Assistant",
+    "cue_text": "Family budgets are the whole story here."
+  },
+  {
+    "level_id": "LV21",
+    "role": "Media Spokesperson",
+    "cue_text": "Warm, steady, honest. That plays well today."
+  },
+  {
+    "level_id": "LV21",
+    "role": "District Representative",
+    "cue_text": "Neighbours know who helped their families."
+  },
+  {
+    "level_id": "LV22",
+    "role": "Policy Research Assistant",
+    "cue_text": "Small firms live on cash flow. Respect that."
+  },
+  {
+    "level_id": "LV22",
+    "role": "Media Spokesperson",
+    "cue_text": "Small business stories are everyone's stories."
+  },
+  {
+    "level_id": "LV22",
+    "role": "District Representative",
+    "cue_text": "Local owners are your neighbours."
+  },
+  {
+    "level_id": "LV23",
+    "role": "Policy Research Assistant",
+    "cue_text": "Metro projects hide costs in the footnotes."
+  },
+  {
+    "level_id": "LV23",
+    "role": "Media Spokesperson",
+    "cue_text": "Big projects draw sharp questions. Prepare."
+  },
+  {
+    "level_id": "LV23",
+    "role": "District Representative",
+    "cue_text": "Home pays for the city's plans too."
+  },
+  {
+    "level_id": "LV24",
+    "role": "Policy Research Assistant",
+    "cue_text": "The old order has its logic. Learn it."
+  },
+  {
+    "level_id": "LV24",
+    "role": "Media Spokesperson",
+    "cue_text": "Defending tradition is easy. Defending it well is not."
+  },
+  {
+    "level_id": "LV24",
+    "role": "District Representative",
+    "cue_text": "Elders at home care about this."
+  },
+  {
+    "level_id": "LV25",
+    "role": "Policy Research Assistant",
+    "cue_text": "Reform waves reward clear, simple lines."
+  },
+  {
+    "level_id": "LV25",
+    "role": "Media Spokesperson",
+    "cue_text": "Momentum is a story. Do not break it."
+  },
+  {
+    "level_id": "LV25",
+    "role": "District Representative",
+    "cue_text": "Home likes a bold plan with a plain price."
+  },
+  {
+    "level_id": "LV26",
+    "role": "Policy Research Assistant",
+    "cue_text": "Coalition basics: listen first, offer second."
+  },
+  {
+    "level_id": "LV26",
+    "role": "Media Spokesperson",
+    "cue_text": "Clear and friendly. That is the brief."
+  },
+  {
+    "level_id": "LV26",
+    "role": "District Representative",
+    "cue_text": "Home wants allies, not enemies."
+  },
+  {
+    "level_id": "LV27",
+    "role": "Policy Research Assistant",
+    "cue_text": "Rural youth need work and a reason to stay."
+  },
+  {
+    "level_id": "LV27",
+    "role": "Media Spokesperson",
+    "cue_text": "Young rural voices make strong stories."
+  },
+  {
+    "level_id": "LV27",
+    "role": "District Representative",
+    "cue_text": "Back home, young people are watching."
+  },
+  {
+    "level_id": "LV28",
+    "role": "Policy Research Assistant",
+    "cue_text": "Local support networks run on trust. Guard it."
+  },
+  {
+    "level_id": "LV28",
+    "role": "Media Spokesperson",
+    "cue_text": "Family ties make good headlines. Handle gently."
+  },
+  {
+    "level_id": "LV28",
+    "role": "District Representative",
+    "cue_text": "Your supporters are family friends. Remember it."
+  },
+  {
+    "level_id": "LV29",
+    "role": "Policy Research Assistant",
+    "cue_text": "Main Street needs plain numbers, not slogans."
+  },
+  {
+    "level_id": "LV29",
+    "role": "Media Spokesperson",
+    "cue_text": "Local roads are local news. Keep it practical."
+  },
+  {
+    "level_id": "LV29",
+    "role": "District Representative",
+    "cue_text": "Home measures you by what gets built."
+  },
+  {
+    "level_id": "LV30",
+    "role": "Policy Research Assistant",
+    "cue_text": "A grand bargain has many moving parts. Track them."
+  },
+  {
+    "level_id": "LV30",
+    "role": "Media Spokesperson",
+    "cue_text": "Everyone is watching the big deal. Stay measured."
+  },
+  {
+    "level_id": "LV30",
+    "role": "District Representative",
+    "cue_text": "Home wants the bargain to be worth it."
+  },
+  {
+    "level_id": "LV31",
+    "role": "Policy Research Assistant",
+    "cue_text": "The Ainu language bill is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV31",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on the Ainu language bill short and steady."
+  },
+  {
+    "level_id": "LV31",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching the Ainu language bill closely."
+  },
+  {
+    "level_id": "LV32",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of farm price support cold before you go in."
+  },
+  {
+    "level_id": "LV32",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about farm price support will be quoted."
+  },
+  {
+    "level_id": "LV32",
+    "role": "District Representative",
+    "cue_text": "Remember who farm price support touches back home."
+  },
+  {
+    "level_id": "LV33",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read the economic zones differently."
+  },
+  {
+    "level_id": "LV33",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about the economic zones this week."
+  },
+  {
+    "level_id": "LV33",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on the economic zones."
+  },
+  {
+    "level_id": "LV34",
+    "role": "Policy Research Assistant",
+    "cue_text": "The Shinkansen bill looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV34",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the Shinkansen bill."
+  },
+  {
+    "level_id": "LV34",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the Shinkansen bill."
+  },
+  {
+    "level_id": "LV35",
+    "role": "Policy Research Assistant",
+    "cue_text": "Coastal defense is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV35",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on coastal defense short and steady."
+  },
+  {
+    "level_id": "LV35",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching coastal defense closely."
+  },
+  {
+    "level_id": "LV36",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of the skilled worker visas cold before you go in."
+  },
+  {
+    "level_id": "LV36",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about the skilled worker visas will be quoted."
+  },
+  {
+    "level_id": "LV36",
+    "role": "District Representative",
+    "cue_text": "Remember who the skilled worker visas touches back home."
+  },
+  {
+    "level_id": "LV37",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read the grid bill differently."
+  },
+  {
+    "level_id": "LV37",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about the grid bill this week."
+  },
+  {
+    "level_id": "LV37",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on the grid bill."
+  },
+  {
+    "level_id": "LV38",
+    "role": "Policy Research Assistant",
+    "cue_text": "The consumption tax looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV38",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the consumption tax."
+  },
+  {
+    "level_id": "LV38",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the consumption tax."
+  },
+  {
+    "level_id": "LV39",
+    "role": "Policy Research Assistant",
+    "cue_text": "Fiscal devolution is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV39",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on fiscal devolution short and steady."
+  },
+  {
+    "level_id": "LV39",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching fiscal devolution closely."
+  },
+  {
+    "level_id": "LV40",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of candidate gender parity cold before you go in."
+  },
+  {
+    "level_id": "LV40",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about candidate gender parity will be quoted."
+  },
+  {
+    "level_id": "LV40",
+    "role": "District Representative",
+    "cue_text": "Remember who candidate gender parity touches back home."
+  },
+  {
+    "level_id": "LV41",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read the Tsugaru commission differently."
+  },
+  {
+    "level_id": "LV41",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about the Tsugaru commission this week."
+  },
+  {
+    "level_id": "LV41",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on the Tsugaru commission."
+  },
+  {
+    "level_id": "LV42",
+    "role": "Policy Research Assistant",
+    "cue_text": "Judicial appointments looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV42",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle judicial appointments."
+  },
+  {
+    "level_id": "LV42",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on judicial appointments."
+  },
+  {
+    "level_id": "LV43",
+    "role": "Policy Research Assistant",
+    "cue_text": "Temple and shrine heritage is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV43",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on temple and shrine heritage short and steady."
+  },
+  {
+    "level_id": "LV43",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching temple and shrine heritage closely."
+  },
+  {
+    "level_id": "LV44",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of development grants cold before you go in."
+  },
+  {
+    "level_id": "LV44",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about development grants will be quoted."
+  },
+  {
+    "level_id": "LV44",
+    "role": "District Representative",
+    "cue_text": "Remember who development grants touches back home."
+  },
+  {
+    "level_id": "LV45",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read the digital economy bill differently."
+  },
+  {
+    "level_id": "LV45",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about the digital economy bill this week."
+  },
+  {
+    "level_id": "LV45",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on the digital economy bill."
+  },
+  {
+    "level_id": "LV46",
+    "role": "Policy Research Assistant",
+    "cue_text": "The organized crime bill looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV46",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the organized crime bill."
+  },
+  {
+    "level_id": "LV46",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the organized crime bill."
+  },
+  {
+    "level_id": "LV47",
+    "role": "Policy Research Assistant",
+    "cue_text": "Partnership registration is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV47",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on partnership registration short and steady."
+  },
+  {
+    "level_id": "LV47",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching partnership registration closely."
+  },
+  {
+    "level_id": "LV48",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of emergency powers cold before you go in."
+  },
+  {
+    "level_id": "LV48",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about emergency powers will be quoted."
+  },
+  {
+    "level_id": "LV48",
+    "role": "District Representative",
+    "cue_text": "Remember who emergency powers touches back home."
+  },
+  {
+    "level_id": "LV49",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read the security agreement differently."
+  },
+  {
+    "level_id": "LV49",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about the security agreement this week."
+  },
+  {
+    "level_id": "LV49",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on the security agreement."
+  },
+  {
+    "level_id": "LV50",
+    "role": "Policy Research Assistant",
+    "cue_text": "The EU partnership looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV50",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the EU partnership."
+  },
+  {
+    "level_id": "LV50",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the EU partnership."
+  },
+  {
+    "level_id": "LV51",
+    "role": "Policy Research Assistant",
+    "cue_text": "Port and land screening is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV51",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on port and land screening short and steady."
+  },
+  {
+    "level_id": "LV51",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching port and land screening closely."
+  },
+  {
+    "level_id": "LV52",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of the tourist visa waiver cold before you go in."
+  },
+  {
+    "level_id": "LV52",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about the tourist visa waiver will be quoted."
+  },
+  {
+    "level_id": "LV52",
+    "role": "District Representative",
+    "cue_text": "Remember who the tourist visa waiver touches back home."
+  },
+  {
+    "level_id": "LV53",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read joint activity on Chishima differently."
+  },
+  {
+    "level_id": "LV53",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about joint activity on Chishima this week."
+  },
+  {
+    "level_id": "LV53",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on joint activity on Chishima."
+  },
+  {
+    "level_id": "LV54",
+    "role": "Policy Research Assistant",
+    "cue_text": "The Tomari restart looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV54",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the Tomari restart."
+  },
+  {
+    "level_id": "LV54",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the Tomari restart."
+  },
+  {
+    "level_id": "LV55",
+    "role": "Policy Research Assistant",
+    "cue_text": "The resort bill is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV55",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on the resort bill short and steady."
+  },
+  {
+    "level_id": "LV55",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching the resort bill closely."
+  },
+  {
+    "level_id": "LV56",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of civil service merit rules cold before you go in."
+  },
+  {
+    "level_id": "LV56",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about civil service merit rules will be quoted."
+  },
+  {
+    "level_id": "LV56",
+    "role": "District Representative",
+    "cue_text": "Remember who civil service merit rules touches back home."
+  },
+  {
+    "level_id": "LV57",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read regional minimum wage differently."
+  },
+  {
+    "level_id": "LV57",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about regional minimum wage this week."
+  },
+  {
+    "level_id": "LV57",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on regional minimum wage."
+  },
+  {
+    "level_id": "LV58",
+    "role": "Policy Research Assistant",
+    "cue_text": "The election commission looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV58",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the election commission."
+  },
+  {
+    "level_id": "LV58",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the election commission."
+  },
+  {
+    "level_id": "LV59",
+    "role": "Policy Research Assistant",
+    "cue_text": "Moral education is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV59",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on moral education short and steady."
+  },
+  {
+    "level_id": "LV59",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching moral education closely."
+  },
+  {
+    "level_id": "LV60",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of foreign resident voting cold before you go in."
+  },
+  {
+    "level_id": "LV60",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about foreign resident voting will be quoted."
+  },
+  {
+    "level_id": "LV60",
+    "role": "District Representative",
+    "cue_text": "Remember who foreign resident voting touches back home."
+  },
+  {
+    "level_id": "LV61",
+    "role": "Policy Research Assistant",
+    "cue_text": "Rail fares and timetables hide a lot of money."
+  },
+  {
+    "level_id": "LV61",
+    "role": "Media Spokesperson",
+    "cue_text": "Commuters are loud and fair. Meet them evenly."
+  },
+  {
+    "level_id": "LV61",
+    "role": "District Representative",
+    "cue_text": "Home rides those trains every day."
+  },
+  {
+    "level_id": "LV62",
+    "role": "Policy Research Assistant",
+    "cue_text": "Quotas are about science and survival."
+  },
+  {
+    "level_id": "LV62",
+    "role": "Media Spokesperson",
+    "cue_text": "Harbour stories are honest and proud. Respect them."
+  },
+  {
+    "level_id": "LV62",
+    "role": "District Representative",
+    "cue_text": "Home eats what these boats catch."
+  },
+  {
+    "level_id": "LV63",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read the wilderness differently."
+  },
+  {
+    "level_id": "LV63",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about the wilderness this week."
+  },
+  {
+    "level_id": "LV63",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on the wilderness."
+  },
+  {
+    "level_id": "LV64",
+    "role": "Policy Research Assistant",
+    "cue_text": "Rural hospitals looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV64",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle rural hospitals."
+  },
+  {
+    "level_id": "LV64",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on rural hospitals."
+  },
+  {
+    "level_id": "LV65",
+    "role": "Policy Research Assistant",
+    "cue_text": "The identity card is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV65",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on the identity card short and steady."
+  },
+  {
+    "level_id": "LV65",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching the identity card closely."
+  },
+  {
+    "level_id": "LV66",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of the broadcaster cold before you go in."
+  },
+  {
+    "level_id": "LV66",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about the broadcaster will be quoted."
+  },
+  {
+    "level_id": "LV66",
+    "role": "District Representative",
+    "cue_text": "Remember who the broadcaster touches back home."
+  },
+  {
+    "level_id": "LV67",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read political donations differently."
+  },
+  {
+    "level_id": "LV67",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about political donations this week."
+  },
+  {
+    "level_id": "LV67",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on political donations."
+  },
+  {
+    "level_id": "LV68",
+    "role": "Policy Research Assistant",
+    "cue_text": "The tax cut looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV68",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the tax cut."
+  },
+  {
+    "level_id": "LV68",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the tax cut."
+  },
+  {
+    "level_id": "LV69",
+    "role": "Policy Research Assistant",
+    "cue_text": "The carbon levy is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV69",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on the carbon levy short and steady."
+  },
+  {
+    "level_id": "LV69",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching the carbon levy closely."
+  },
+  {
+    "level_id": "LV70",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of tradeable quotas cold before you go in."
+  },
+  {
+    "level_id": "LV70",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about tradeable quotas will be quoted."
+  },
+  {
+    "level_id": "LV70",
+    "role": "District Representative",
+    "cue_text": "Remember who tradeable quotas touches back home."
+  },
+  {
+    "level_id": "LV71",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read the shipyards differently."
+  },
+  {
+    "level_id": "LV71",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about the shipyards this week."
+  },
+  {
+    "level_id": "LV71",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on the shipyards."
+  },
+  {
+    "level_id": "LV72",
+    "role": "Policy Research Assistant",
+    "cue_text": "The review looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV72",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the review."
+  },
+  {
+    "level_id": "LV72",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the review."
+  },
+  {
+    "level_id": "LV73",
+    "role": "Policy Research Assistant",
+    "cue_text": "Border sharing is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV73",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on border sharing short and steady."
+  },
+  {
+    "level_id": "LV73",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching border sharing closely."
+  },
+  {
+    "level_id": "LV74",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of the islands cold before you go in."
+  },
+  {
+    "level_id": "LV74",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about the islands will be quoted."
+  },
+  {
+    "level_id": "LV74",
+    "role": "District Representative",
+    "cue_text": "Remember who the islands touches back home."
+  },
+  {
+    "level_id": "LV75",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read open trade differently."
+  },
+  {
+    "level_id": "LV75",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about open trade this week."
+  },
+  {
+    "level_id": "LV75",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on open trade."
+  },
+  {
+    "level_id": "LV76",
+    "role": "Policy Research Assistant",
+    "cue_text": "Family farms looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV76",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle family farms."
+  },
+  {
+    "level_id": "LV76",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on family farms."
+  },
+  {
+    "level_id": "LV77",
+    "role": "Policy Research Assistant",
+    "cue_text": "Research funding is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV77",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on research funding short and steady."
+  },
+  {
+    "level_id": "LV77",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching research funding closely."
+  },
+  {
+    "level_id": "LV78",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of equal treatment cold before you go in."
+  },
+  {
+    "level_id": "LV78",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about equal treatment will be quoted."
+  },
+  {
+    "level_id": "LV78",
+    "role": "District Representative",
+    "cue_text": "Remember who equal treatment touches back home."
+  },
+  {
+    "level_id": "LV79",
+    "role": "Policy Research Assistant",
+    "cue_text": "Expect every party to read parental leave differently."
+  },
+  {
+    "level_id": "LV79",
+    "role": "Media Spokesperson",
+    "cue_text": "The cameras care about parental leave this week."
+  },
+  {
+    "level_id": "LV79",
+    "role": "District Representative",
+    "cue_text": "Back home, people have strong views on parental leave."
+  },
+  {
+    "level_id": "LV80",
+    "role": "Policy Research Assistant",
+    "cue_text": "The cameras looks simple on paper and is not."
+  },
+  {
+    "level_id": "LV80",
+    "role": "Media Spokesperson",
+    "cue_text": "Reporters will be watching how you handle the cameras."
+  },
+  {
+    "level_id": "LV80",
+    "role": "District Representative",
+    "cue_text": "The district will judge you on the cameras."
+  },
+  {
+    "level_id": "LV81",
+    "role": "Policy Research Assistant",
+    "cue_text": "Town mergers is a question of cost and fairness."
+  },
+  {
+    "level_id": "LV81",
+    "role": "Media Spokesperson",
+    "cue_text": "Keep your message on town mergers short and steady."
+  },
+  {
+    "level_id": "LV81",
+    "role": "District Representative",
+    "cue_text": "Folks at home are watching town mergers closely."
+  },
+  {
+    "level_id": "LV82",
+    "role": "Policy Research Assistant",
+    "cue_text": "Know the details of open ballots cold before you go in."
+  },
+  {
+    "level_id": "LV82",
+    "role": "Media Spokesperson",
+    "cue_text": "Whatever you say about open ballots will be quoted."
+  },
+  {
+    "level_id": "LV82",
+    "role": "District Representative",
+    "cue_text": "Remember who open ballots touches back home."
+  }
+]

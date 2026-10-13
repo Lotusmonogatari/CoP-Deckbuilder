@@ -127,13 +127,15 @@ func test_party_headquarters_and_faction_answer_to_the_players_party() -> void:
 	# BI01: Frontier Party (PC02's party) is Opposed; Yezo Heritage Party is Supportive.
 	var frontier := GameState.own_party_id()
 	var dispo := ""
+	var scale := 1.0
 	for position: Dictionary in DataDB.floor_votes["BI01"]["positions"]:
 		if str(position["party_id"]) == frontier:
 			dispo = str(position["disposition"])
+			scale = BattleSetup.salience_factor(position)
 	var before := int(GameState.booster_standing.get("BO01", 50))
 	GameState.record_floor_vote(DataDB.get_bill("BI01"), {"passed": true, "totals": {"Yes": 60, "No": 30, "Abstain": 11}}, "Yes")
 	var moved := int(GameState.booster_standing.get("BO01", 50)) - before
-	var expected := StatuteBook.party_tier_delta(dispo, true, int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)), 1)
+	var expected := StatuteBook.party_tier_delta(dispo, true, PartySalience.scaled(int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)), scale), 1)
 	assert_ne(expected, 0, "the real bill has a stance for this party")
 	assert_eq(moved, expected, "Party Headquarters moved with the party's lean")
 	assert_eq(int(GameState.booster_standing.get("BO02", 50)) - int(DataDB.get_booster("BO02").get("starting_standing", 30) if DataDB.get_booster("BO02").get("starting_standing") != null else 30), expected, "Party Faction moves with it")

@@ -1519,5 +1519,645 @@
     "response_wrong": "Gloves don't keep a reputation.",
     "reaction_right": "Smiles slowly.",
     "reaction_wrong": "Looks away with a shrug."
+  },
+  {
+    "question_id": "VQ95",
+    "visitor_ids": [
+      "VI40"
+    ],
+    "question_text": "A logging truck rolled through the nesting grounds again. Who can stop it?",
+    "choice_a": "I'll ask the prefecture for a seasonal road closure.",
+    "choice_b": "Trucks have to go somewhere.",
+    "choice_c": "Write it up and send it to me.",
+    "choice_d": "The birds will find another forest.",
+    "correct_choice": "A",
+    "response_right": "A closed road. That would save a whole season.",
+    "response_wrong": "Everyone says the birds will move.",
+    "reaction_right": "Marks the map with a green pin.",
+    "reaction_wrong": "Closes the notebook."
+  },
+  {
+    "question_id": "VQ96",
+    "visitor_ids": [
+      "VI40"
+    ],
+    "question_text": "We have four rangers for a mountain range. Can protection really work?",
+    "choice_a": "Volunteers can fill in.",
+    "choice_b": "Let's cost a proper ranger roster together.",
+    "choice_c": "Cameras will do the job.",
+    "choice_d": "Protection is mostly a slogan.",
+    "correct_choice": "B",
+    "response_right": "Finally, someone counting heads.",
+    "response_wrong": "Slogans do not carry radios.",
+    "reaction_right": "Nods and unfolds a rota.",
+    "reaction_wrong": "Sighs at the sky."
+  },
+  {
+    "question_id": "VQ97",
+    "visitor_ids": [
+      "VI41"
+    ],
+    "question_text": "I drive ninety minutes to reach the nearest surgeon. Would a network change that?",
+    "choice_a": "Villages are just hard to serve.",
+    "choice_b": "It would put surgery within an hour. Let me show you the plan.",
+    "choice_c": "People should move to town.",
+    "choice_d": "A phone call can fix most things.",
+    "correct_choice": "B",
+    "response_right": "An hour would save lives. I will hold you to it.",
+    "response_wrong": "Ninety minutes is a death sentence for some.",
+    "reaction_right": "Straightens his bag.",
+    "reaction_wrong": "Looks out the window."
+  },
+  {
+    "question_id": "VQ98",
+    "visitor_ids": [
+      "VI41"
+    ],
+    "question_text": "Young doctors will not stay without housing and pay. What will you offer?",
+    "choice_a": "They should serve out of duty.",
+    "choice_b": "The market will sort it out.",
+    "choice_c": "Housing, pay and a path home to the city.",
+    "choice_d": "We could import doctors.",
+    "correct_choice": "C",
+    "response_right": "That might keep one or two of them.",
+    "response_wrong": "Duty does not pay rent.",
+    "reaction_right": "Takes notes on a prescription pad.",
+    "reaction_wrong": "Pockets the pen."
+  },
+  {
+    "question_id": "VQ99",
+    "visitor_ids": [
+      "VI42"
+    ],
+    "question_text": "A single identity card is a single target. How will you keep it safe?",
+    "choice_a": "We will trust the vendor.",
+    "choice_b": "It will probably be fine.",
+    "choice_c": "Independent audits and a public breach report.",
+    "choice_d": "Hackers will not bother with Yezo.",
+    "correct_choice": "C",
+    "response_right": "Public audits are the minimum. Good.",
+    "response_wrong": "That is what every vendor says.",
+    "reaction_right": "Opens her laptop and starts a list.",
+    "reaction_wrong": "Closes the lid."
+  },
+  {
+    "question_id": "VQ100",
+    "visitor_ids": [
+      "VI42"
+    ],
+    "question_text": "Who is allowed to read my record, and can I see who did?",
+    "choice_a": "Officials need access to do their jobs.",
+    "choice_b": "Privacy is outdated.",
+    "choice_c": "Only the police ever look.",
+    "choice_d": "You can view every access, and misuse is a crime.",
+    "correct_choice": "D",
+    "response_right": "An access log. That is real accountability.",
+    "response_wrong": "I cannot audit a promise.",
+    "reaction_right": "Exhales slowly.",
+    "reaction_wrong": "Shakes her head."
+  },
+  {
+    "question_id": "VQ101",
+    "visitor_ids": [
+      "VI43"
+    ],
+    "question_text": "Ministers phone the newsroom before bulletins. How do we stop that?",
+    "choice_a": "Ministers have a right to be heard.",
+    "choice_b": "Just ignore the calls.",
+    "choice_c": "Be grateful for the budget.",
+    "choice_d": "Put the board beyond ministerial reach by law.",
+    "correct_choice": "D",
+    "response_right": "A law makes it stick. Thank you.",
+    "response_wrong": "Ignoring calls has not worked yet.",
+    "reaction_right": "Straightens her script.",
+    "reaction_wrong": "Puts down her pen."
+  },
+  {
+    "question_id": "VQ102",
+    "visitor_ids": [
+      "VI43"
+    ],
+    "question_text": "Our regional desk keeps shrinking. Will independence come with money?",
+    "choice_a": "A guaranteed budget line, protected from raids.",
+    "choice_b": "Regional news is a luxury.",
+    "choice_c": "Ratings should decide.",
+    "choice_d": "We will look at it one day.",
+    "correct_choice": "A",
+    "response_right": "A guarantee. We can plan on that.",
+    "response_wrong": "Ratings never covered a village.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Looks at the clock."
+  },
+  {
+    "question_id": "VQ103",
+    "visitor_ids": [
+      "VI44"
+    ],
+    "question_text": "My donors are retirees who fear being named. How do I protect them?",
+    "choice_a": "Name large donors, shield small ones.",
+    "choice_b": "Tell them to stay home.",
+    "choice_c": "Everyone should be named.",
+    "choice_d": "Nobody gives for the right reasons anyway.",
+    "correct_choice": "A",
+    "response_right": "A threshold that protects small givers. Sensible.",
+    "response_wrong": "Naming everyone ends small giving.",
+    "reaction_right": "Taps the ledger.",
+    "reaction_wrong": "Shuts the ledger."
+  },
+  {
+    "question_id": "VQ104",
+    "visitor_ids": [
+      "VI44"
+    ],
+    "question_text": "The filing forms are forty pages. Who will help us comply?",
+    "choice_a": "Hire an accountant.",
+    "choice_b": "A simple online form with free help.",
+    "choice_c": "Paperwork builds character.",
+    "choice_d": "Skip what you cannot fill.",
+    "correct_choice": "B",
+    "response_right": "Simple forms. That I can live with.",
+    "response_wrong": "Forty pages is its own penalty.",
+    "reaction_right": "Stacks his forms neatly.",
+    "reaction_wrong": "Sighs loudly."
+  },
+  {
+    "question_id": "VQ105",
+    "visitor_ids": [
+      "VI45"
+    ],
+    "question_text": "If you cut my tax, will I hire or just bank the savings?",
+    "choice_a": "Companies always do the right thing.",
+    "choice_b": "Tie the cut to hiring and local investment.",
+    "choice_c": "Banking it is fine.",
+    "choice_d": "Cuts do not need strings.",
+    "correct_choice": "B",
+    "response_right": "Strings I can work with.",
+    "response_wrong": "Free money is rarely spent well.",
+    "reaction_right": "Rolls up his sleeves.",
+    "reaction_wrong": "Folds his arms."
+  },
+  {
+    "question_id": "VQ106",
+    "visitor_ids": [
+      "VI45"
+    ],
+    "question_text": "My workers pay more tax than my firm. Is that fair?",
+    "choice_a": "Workers should be grateful for jobs.",
+    "choice_b": "Taxes are not about fair.",
+    "choice_c": "Let's look at both sides of the ledger together.",
+    "choice_d": "Complain to the finance ministry.",
+    "correct_choice": "C",
+    "response_right": "Both sides of the ledger. That is rare.",
+    "response_wrong": "Fairness is the whole point.",
+    "reaction_right": "Adjusts his glasses.",
+    "reaction_wrong": "Turns away."
+  },
+  {
+    "question_id": "VQ107",
+    "visitor_ids": [
+      "VI46"
+    ],
+    "question_text": "Heating my greenhouses burns a lot of fuel. Will the levy bury me?",
+    "choice_a": "Everyone has to pay.",
+    "choice_b": "Switch off the heating.",
+    "choice_c": "Rebates for growers while the cleaner heat catches up.",
+    "choice_d": "Pass the cost to customers.",
+    "correct_choice": "C",
+    "response_right": "A rebate and a plan. I can work with that.",
+    "response_wrong": "Switching off kills the crop.",
+    "reaction_right": "Puts down a tray of seedlings.",
+    "reaction_wrong": "Brushes soil from her hands."
+  },
+  {
+    "question_id": "VQ108",
+    "visitor_ids": [
+      "VI46"
+    ],
+    "question_text": "Will this really clean the air, or just fill a budget line?",
+    "choice_a": "It will fill the budget.",
+    "choice_b": "Nobody can say.",
+    "choice_c": "The air is fine already.",
+    "choice_d": "Most of the money returns to households and clean energy.",
+    "correct_choice": "D",
+    "response_right": "Returned to households. I like that.",
+    "response_wrong": "Nobody can say is no answer.",
+    "reaction_right": "Looks at the sky.",
+    "reaction_wrong": "Frowns at the soil."
+  },
+  {
+    "question_id": "VQ109",
+    "visitor_ids": [
+      "VI47"
+    ],
+    "question_text": "If quotas can be traded, will big fleets swallow my boat?",
+    "choice_a": "The market decides.",
+    "choice_b": "Sell and take the money.",
+    "choice_c": "Quotas will not matter soon.",
+    "choice_d": "Cap how much any one fleet may hold.",
+    "correct_choice": "D",
+    "response_right": "A cap. That keeps family boats afloat.",
+    "response_wrong": "The market has no memory.",
+    "reaction_right": "Tugs his cap.",
+    "reaction_wrong": "Spits on the pier."
+  },
+  {
+    "question_id": "VQ110",
+    "visitor_ids": [
+      "VI47"
+    ],
+    "question_text": "They want cameras on my deck. Who owns that footage?",
+    "choice_a": "The footage stays yours unless there is a court order.",
+    "choice_b": "Anything on a boat is public.",
+    "choice_c": "Fishers have nothing to hide.",
+    "choice_d": "Cameras fix everything.",
+    "correct_choice": "A",
+    "response_right": "Yours unless a court says so. Fair.",
+    "response_wrong": "I would not trust it.",
+    "reaction_right": "Relaxes a little.",
+    "reaction_wrong": "Coils a rope hard."
+  },
+  {
+    "question_id": "VQ111",
+    "visitor_ids": [
+      "VI48"
+    ],
+    "question_text": "The yard has orders for two years. What happens after that?",
+    "choice_a": "Guaranteed orders and training for civilian work too.",
+    "choice_b": "We will see.",
+    "choice_c": "Shipbuilding is a dying trade.",
+    "choice_d": "Weld faster.",
+    "correct_choice": "A",
+    "response_right": "Orders and training. That is a future.",
+    "response_wrong": "We will see is not a future.",
+    "reaction_right": "Lifts his mask.",
+    "reaction_wrong": "Pulls his mask down."
+  },
+  {
+    "question_id": "VQ112",
+    "visitor_ids": [
+      "VI48"
+    ],
+    "question_text": "Welding for warships weighs on some of us. What do you say?",
+    "choice_a": "It is just a job.",
+    "choice_b": "Defense work keeps the coast safe and the yard open.",
+    "choice_c": "War is good business.",
+    "choice_d": "Think of the pay.",
+    "correct_choice": "B",
+    "response_right": "Keeping the coast safe. I can say that proudly.",
+    "response_wrong": "It is not just a job to us.",
+    "reaction_right": "Wipes his hands.",
+    "reaction_wrong": "Stares at the dock."
+  },
+  {
+    "question_id": "VQ113",
+    "visitor_ids": [
+      "VI49"
+    ],
+    "question_text": "Who should sit on a review commission, and who should not?",
+    "choice_a": "Whoever the government picks.",
+    "choice_b": "A mix of scholars, citizens and members, chosen openly.",
+    "choice_c": "Only lawyers.",
+    "choice_d": "It does not matter.",
+    "correct_choice": "B",
+    "response_right": "Open selection. That is the heart of it.",
+    "response_wrong": "It matters more than anything.",
+    "reaction_right": "Clasps his hands.",
+    "reaction_wrong": "Shakes his head slowly."
+  },
+  {
+    "question_id": "VQ114",
+    "visitor_ids": [
+      "VI49"
+    ],
+    "question_text": "What would you refuse to change, whatever the commission says?",
+    "choice_a": "Nothing is off the table.",
+    "choice_b": "Whatever the party says.",
+    "choice_c": "Rights that protect minorities from majorities.",
+    "choice_d": "I have not thought about it.",
+    "correct_choice": "C",
+    "response_right": "That is a worthy line to hold.",
+    "response_wrong": "A constitution needs a floor.",
+    "reaction_right": "Leans forward with interest.",
+    "reaction_wrong": "Leans back."
+  },
+  {
+    "question_id": "VQ115",
+    "visitor_ids": [
+      "VI50"
+    ],
+    "question_text": "Our queue at the port runs three hours. Will joint checks help?",
+    "choice_a": "Skip the inspections.",
+    "choice_b": "Queues are fine.",
+    "choice_c": "Shared screening can halve it without dropping inspections.",
+    "choice_d": "Hire more officers.",
+    "correct_choice": "C",
+    "response_right": "Halving it without cutting checks. That works.",
+    "response_wrong": "Skipping inspections is a smuggler's wish.",
+    "reaction_right": "Straightens her badge.",
+    "reaction_wrong": "Rubs her eyes."
+  },
+  {
+    "question_id": "VQ116",
+    "visitor_ids": [
+      "VI50"
+    ],
+    "question_text": "What does Japan see of the data we share?",
+    "choice_a": "Everything, for efficiency.",
+    "choice_b": "I am not sure.",
+    "choice_c": "Nothing leaves the building.",
+    "choice_d": "Only cargo data, with strict limits on people records.",
+    "correct_choice": "D",
+    "response_right": "Cargo only. That is clear.",
+    "response_wrong": "Everything is too much.",
+    "reaction_right": "Closes the file.",
+    "reaction_wrong": "Lowers her voice."
+  },
+  {
+    "question_id": "VQ117",
+    "visitor_ids": [
+      "VI51"
+    ],
+    "question_text": "My family has fished these waters for six generations. What do we get?",
+    "choice_a": "The islands belong to the state.",
+    "choice_b": "Fishing is over anyway.",
+    "choice_c": "Progress needs sacrifice.",
+    "choice_d": "A voice in the venture and a share of what is taken.",
+    "correct_choice": "D",
+    "response_right": "A voice and a share. That has to be written down.",
+    "response_wrong": "The islands belong to those who live there.",
+    "reaction_right": "Rests on his cane.",
+    "reaction_wrong": "Stares across the water."
+  },
+  {
+    "question_id": "VQ118",
+    "visitor_ids": [
+      "VI51"
+    ],
+    "question_text": "If trouble starts, who will protect us out here?",
+    "choice_a": "A joint patrol plan, agreed in public.",
+    "choice_b": "The navy will manage.",
+    "choice_c": "Do not worry about it.",
+    "choice_d": "Move to the mainland.",
+    "correct_choice": "A",
+    "response_right": "In public and in writing. Good.",
+    "response_wrong": "Do not worry is not a plan.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Looks toward the horizon."
+  },
+  {
+    "question_id": "VQ119",
+    "visitor_ids": [
+      "VI52"
+    ],
+    "question_text": "Can you promise a stable tariff schedule for my exports?",
+    "choice_a": "A published schedule with notice before any change.",
+    "choice_b": "Rules change with the weather.",
+    "choice_c": "Stability is overrated.",
+    "choice_d": "Take it up with the ministry.",
+    "correct_choice": "A",
+    "response_right": "Published and with notice. I can plan on that.",
+    "response_wrong": "I cannot sign contracts on a coin toss.",
+    "reaction_right": "Checks his planner.",
+    "reaction_wrong": "Taps his phone."
+  },
+  {
+    "question_id": "VQ120",
+    "visitor_ids": [
+      "VI52"
+    ],
+    "question_text": "If prices fall, farmers will be hurt. Who looks after them?",
+    "choice_a": "The market is cruel.",
+    "choice_b": "Transition support for farms facing cheaper imports.",
+    "choice_c": "They should switch crops.",
+    "choice_d": "That is their problem.",
+    "correct_choice": "B",
+    "response_right": "Support is a fair price for open markets.",
+    "response_wrong": "Switch crops is easier said than done.",
+    "reaction_right": "Pauses to think.",
+    "reaction_wrong": "Looks uncomfortable."
+  },
+  {
+    "question_id": "VQ121",
+    "visitor_ids": [
+      "VI53"
+    ],
+    "question_text": "I want to take over my father's farm, but the land costs too much. Help?",
+    "choice_a": "Take a bank loan.",
+    "choice_b": "A succession grant and a lower inheritance burden.",
+    "choice_c": "Farming does not pay.",
+    "choice_d": "Sell the land.",
+    "correct_choice": "B",
+    "response_right": "A grant would let me stay. Thank you.",
+    "response_wrong": "A loan is how farms vanish.",
+    "reaction_right": "Straightens her boots.",
+    "reaction_wrong": "Looks at the fields."
+  },
+  {
+    "question_id": "VQ122",
+    "visitor_ids": [
+      "VI53"
+    ],
+    "question_text": "Who teaches me when my father retires?",
+    "choice_a": "Learn from videos.",
+    "choice_b": "Figure it out yourself.",
+    "choice_c": "A mentoring scheme with retired farmers.",
+    "choice_d": "Hire consultants.",
+    "correct_choice": "C",
+    "response_right": "A mentor. That is exactly what I need.",
+    "response_wrong": "Videos do not know our soil.",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Kicks at the dirt."
+  },
+  {
+    "question_id": "VQ123",
+    "visitor_ids": [
+      "VI54"
+    ],
+    "question_text": "Our grants run on one-year cycles. Can research really plan like that?",
+    "choice_a": "One year is plenty.",
+    "choice_b": "Projects should pay for themselves.",
+    "choice_c": "Multi-year grants with an independent review.",
+    "choice_d": "Science is a hobby.",
+    "correct_choice": "C",
+    "response_right": "Multi-year. That changes what we can attempt.",
+    "response_wrong": "One year is a flash in the pan.",
+    "reaction_right": "Clips a badge to her coat.",
+    "reaction_wrong": "Sighs at her papers."
+  },
+  {
+    "question_id": "VQ124",
+    "visitor_ids": [
+      "VI54"
+    ],
+    "question_text": "Will graduates stay in Yezo if the labs are here?",
+    "choice_a": "Let them go abroad.",
+    "choice_b": "They always leave.",
+    "choice_c": "Talent is not our problem.",
+    "choice_d": "Local labs, local firms and housing in the same plan.",
+    "correct_choice": "D",
+    "response_right": "Labs and firms together. That might hold them.",
+    "response_wrong": "They leave because we let them.",
+    "reaction_right": "Smiles faintly.",
+    "reaction_wrong": "Looks at the floor."
+  },
+  {
+    "question_id": "VQ125",
+    "visitor_ids": [
+      "VI55"
+    ],
+    "question_text": "Women on my line are paid less for the same work. What will you do?",
+    "choice_a": "Ask the owners to be nice.",
+    "choice_b": "It is just how things are.",
+    "choice_c": "Women should ask for more.",
+    "choice_d": "Require pay audits with real penalties.",
+    "correct_choice": "D",
+    "response_right": "Audits with penalties. About time.",
+    "response_wrong": "Being nice has not worked.",
+    "reaction_right": "Pulls out a folded payslip.",
+    "reaction_wrong": "Puts the payslip away."
+  },
+  {
+    "question_id": "VQ126",
+    "visitor_ids": [
+      "VI55"
+    ],
+    "question_text": "Small workshops fear lawsuits. Can you protect them?",
+    "choice_a": "Clear rules, help with compliance and a grace period.",
+    "choice_b": "Let them close.",
+    "choice_c": "The big firms will absorb them.",
+    "choice_d": "Small shops should not exist.",
+    "correct_choice": "A",
+    "response_right": "Rules and help. That is fair to everyone.",
+    "response_wrong": "Closing shops helps nobody.",
+    "reaction_right": "Relaxes her shoulders.",
+    "reaction_wrong": "Crosses her arms."
+  },
+  {
+    "question_id": "VQ127",
+    "visitor_ids": [
+      "VI56"
+    ],
+    "question_text": "My boss says taking leave will hurt my career. Will the law protect me?",
+    "choice_a": "Leave without penalty, and firms that retaliate face fines.",
+    "choice_b": "Take leave quietly.",
+    "choice_c": "Families should manage.",
+    "choice_d": "Work comes first.",
+    "correct_choice": "A",
+    "response_right": "Fines for retaliation. That gives me courage.",
+    "response_wrong": "Quietly is how it always goes wrong.",
+    "reaction_right": "Rocks a stroller.",
+    "reaction_wrong": "Hugs the baby close."
+  },
+  {
+    "question_id": "VQ128",
+    "visitor_ids": [
+      "VI56"
+    ],
+    "question_text": "The nursery near us has a two-year waiting list. What can you do?",
+    "choice_a": "Wait your turn.",
+    "choice_b": "New places funded in the towns that need them most.",
+    "choice_c": "Hire a nanny.",
+    "choice_d": "Childcare is private business.",
+    "correct_choice": "B",
+    "response_right": "New places where they are needed. Thank you.",
+    "response_wrong": "I cannot wait two years.",
+    "reaction_right": "Smiles tiredly.",
+    "reaction_wrong": "Stares at the stroller."
+  },
+  {
+    "question_id": "VQ129",
+    "visitor_ids": [
+      "VI57"
+    ],
+    "question_text": "We have had thefts on the platform. Are cameras the answer?",
+    "choice_a": "Cameras everywhere.",
+    "choice_b": "Cameras where crime happens, with strict limits on storage.",
+    "choice_c": "Hire more guards.",
+    "choice_d": "Crime is overstated.",
+    "correct_choice": "B",
+    "response_right": "Targeted cameras with limits. That I can explain to passengers.",
+    "response_wrong": "Cameras everywhere frightens people.",
+    "reaction_right": "Adjusts his cap.",
+    "reaction_wrong": "Looks down the platform."
+  },
+  {
+    "question_id": "VQ130",
+    "visitor_ids": [
+      "VI57"
+    ],
+    "question_text": "Passengers worry about being tracked. What do I tell them?",
+    "choice_a": "They have nothing to hide.",
+    "choice_b": "Mind your own business.",
+    "choice_c": "Footage is deleted on schedule and audited by outsiders.",
+    "choice_d": "It is for their safety.",
+    "correct_choice": "C",
+    "response_right": "Deleted and audited. I can say that.",
+    "response_wrong": "Nothing to hide is not an answer.",
+    "reaction_right": "Nods once.",
+    "reaction_wrong": "Checks his watch."
+  },
+  {
+    "question_id": "VQ131",
+    "visitor_ids": [
+      "VI58"
+    ],
+    "question_text": "If our village merges, who answers the phone at the office?",
+    "choice_a": "The call centre in the big town.",
+    "choice_b": "Press one for service.",
+    "choice_c": "A local service desk stays open in every merged village.",
+    "choice_d": "Nobody calls anyway.",
+    "correct_choice": "C",
+    "response_right": "A local desk. That is how people will trust it.",
+    "response_wrong": "Press one never helped an old woman.",
+    "reaction_right": "Folds her hands.",
+    "reaction_wrong": "Sighs quietly."
+  },
+  {
+    "question_id": "VQ132",
+    "visitor_ids": [
+      "VI58"
+    ],
+    "question_text": "Our festival is run by the town office. Will it survive a merger?",
+    "choice_a": "Festivals cost too much.",
+    "choice_b": "Combine all the festivals.",
+    "choice_c": "Culture is optional.",
+    "choice_d": "Protect local festivals and their budgets in the merger terms.",
+    "correct_choice": "D",
+    "response_right": "In the terms. Then it is safe.",
+    "response_wrong": "Combining them would erase ours.",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Looks away."
+  },
+  {
+    "question_id": "VQ133",
+    "visitor_ids": [
+      "VI59"
+    ],
+    "question_text": "Our branch has forty members. Will our vote ever matter?",
+    "choice_a": "Leave it to the headquarters.",
+    "choice_b": "Only big branches matter.",
+    "choice_c": "Voting is overrated.",
+    "choice_d": "A one-member one-vote ballot gives small branches a real voice.",
+    "correct_choice": "D",
+    "response_right": "One member, one vote. That is the idea.",
+    "response_wrong": "Headquarters never asked us before.",
+    "reaction_right": "Straightens a stack of ballots.",
+    "reaction_wrong": "Sets the ballots down."
+  },
+  {
+    "question_id": "VQ134",
+    "visitor_ids": [
+      "VI59"
+    ],
+    "question_text": "How do you stop rival parties from flooding our ballot?",
+    "choice_a": "Membership checks and a waiting period before joining.",
+    "choice_b": "Trust everyone.",
+    "choice_c": "Do nothing.",
+    "choice_d": "Ban all new members.",
+    "correct_choice": "A",
+    "response_right": "Checks and a waiting period. Reasonable.",
+    "response_wrong": "Trusting everyone invites trouble.",
+    "reaction_right": "Ticks a box.",
+    "reaction_wrong": "Raises an eyebrow."
   }
 ]

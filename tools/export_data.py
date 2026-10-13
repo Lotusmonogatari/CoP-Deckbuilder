@@ -863,6 +863,9 @@ SHEETS = {
             ("Votes Abstain", "votes_abstain", "int"),
             ("Disposition", "disposition", "str"),
             ("Cue Text", "cue_text", "str"),
+            # Optional (2026-10-14): how much the bill matters to this party,
+            # from party issue salience. Blank = no scaling.
+            ("Salience", "salience", "int"),
         ],
     },
     # The Floor Vote influence swing's own gate (2026-09-28, §7.7): which
