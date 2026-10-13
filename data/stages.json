@@ -564,8 +564,8 @@
     "energy_pool": null,
     "sequence_mode": "reset",
     "opponent_count": {
-      "min": 3,
-      "max": 3
+      "min": 2,
+      "max": 2
     },
     "question_pool": null,
     "reputation_affects_start": "No",
@@ -776,8 +776,8 @@
     "energy_pool": null,
     "sequence_mode": "reset",
     "opponent_count": {
-      "min": 3,
-      "max": 3
+      "min": 2,
+      "max": 2
     },
     "question_pool": null,
     "reputation_affects_start": "No",
@@ -829,8 +829,8 @@
     "energy_pool": null,
     "sequence_mode": "reset",
     "opponent_count": {
-      "min": 4,
-      "max": 4
+      "min": 3,
+      "max": 3
     },
     "question_pool": null,
     "reputation_affects_start": "No",
@@ -988,8 +988,8 @@
     "energy_pool": 15,
     "sequence_mode": "continuous",
     "opponent_count": {
-      "min": 3,
-      "max": 3
+      "min": 2,
+      "max": 2
     },
     "question_pool": "media_ambush",
     "reputation_affects_start": "No",
@@ -1562,8 +1562,8 @@
     "energy_pool": 15,
     "sequence_mode": "continuous",
     "opponent_count": {
-      "min": 3,
-      "max": 3
+      "min": 2,
+      "max": 2
     },
     "question_pool": "media_ambush",
     "reputation_affects_start": "No",
