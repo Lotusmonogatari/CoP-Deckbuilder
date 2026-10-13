@@ -1,6 +1,6 @@
 # Plan: making screens fit typical phones (draft 2026-10-14)
 
-**Status:** plan only; step 0 (text wrapping in panels) is built, the rest is waiting for Cameron's go-ahead.
+**Status:** steps 0 and 1 built (wrapping; safe-area margins via `Layout.gd` + `SafeArea.gd`). Steps 2-6 wait for Cameron's go-ahead.
 
 ## Where we are
 

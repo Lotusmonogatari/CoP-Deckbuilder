@@ -29,6 +29,8 @@ SaveManager="*res://scripts/autoload/SaveManager.gd"
 ; Audio listens to EventBus, so it loads after it. It reads sounds.json from
 ; DataDB, so it loads after that too.
 Audio="*res://scripts/autoload/Audio.gd"
+; Layout raises screen margins to the device safe area (notch, home bar).
+Layout="*res://scripts/autoload/Layout.gd"
 
 [audio]
 
