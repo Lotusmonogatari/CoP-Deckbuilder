@@ -253,5 +253,20 @@
     "bill_id": "BI50",
     "outcome_direction": "Flipped to Pass",
     "cue_text": "Enough members backed open ballots that parties must now let their members choose their leaders."
+  },
+  {
+    "bill_id": "BI39",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members backed the shipyards after all, and the defense industry bill squeaked through."
+  },
+  {
+    "bill_id": "BI40",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members agreed on a slate of commissioners, and the constitutional review went ahead."
+  },
+  {
+    "bill_id": "BI41",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members balked at sharing border data with Japan, and the customs bill was withdrawn."
   }
 ]

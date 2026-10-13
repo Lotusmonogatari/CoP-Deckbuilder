@@ -1902,6 +1902,28 @@ func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String) -> 
 	statute_book.append(law)
 	_apply_law_effect_rows(StatuteBook.effects_for(
 		DataDB.law_effects, bill_id, bool(law["passed"]), StatuteBook.ONCE))
+	_apply_party_tier_lean(bill_id, bool(law["passed"]))
+
+
+## Party-tier organisations (Party Headquarters, Party Faction) answer to
+## where the player's own party stood on the bill, not to a fixed row, so
+## each protagonist's party sees a bill differently. Sizes come from the
+## Balance tab (law_lean_party_tier_pass_delta / law_lean_party_tier_fail_delta).
+func _apply_party_tier_lean(bill_id: String, passed: bool) -> void:
+	var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
+	var own := own_party_id()
+	var disposition := ""
+	for position: Dictionary in bill.get("positions", []):
+		if str(position.get("party_id", "")) == own:
+			disposition = str(position.get("disposition", ""))
+	var delta := StatuteBook.party_tier_delta(disposition, passed,
+		int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)),
+		int(DataDB.balance.get("law_lean_party_tier_fail_delta", 0)))
+	if delta == 0:
+		return
+	for booster: Dictionary in DataDB.boosters:
+		if str(booster.get("tier", "")) == "Party":
+			_apply_booster_delta(str(booster.get("booster_id", "")), delta)
 
 
 ## bill_id -> "passed"/"failed", for Office Notices and the Ticker.

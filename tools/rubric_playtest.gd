@@ -949,6 +949,18 @@ func _d1_once_effects() -> void:
 			var meta_before := GameState.meta.duplicate()
 			var xp_before := GameState.xp
 			var want := _expected_effect(_rows_for(bill_id, passed, StatuteBook.ONCE))
+			# Party-tier organisations follow the player's party lean (2026-10-13).
+			var own_dispo := ""
+			for position: Dictionary in bill.get("positions", []):
+				if str(position.get("party_id", "")) == GameState.own_party_id():
+					own_dispo = str(position.get("disposition", ""))
+			var lean := StatuteBook.party_tier_delta(own_dispo, passed,
+				int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)),
+				int(DataDB.balance.get("law_lean_party_tier_fail_delta", 0)))
+			for booster: Dictionary in DataDB.boosters:
+				if str(booster.get("tier", "")) == "Party":
+					var bid := str(booster["booster_id"])
+					want["boosters"][bid] = int(want["boosters"].get(bid, 0)) + lean
 			GameState.record_floor_vote(bill, {"totals": {"Yes": 60 if passed else 30, "No": 30 if passed else 60, "Abstain": 11},
 				"passed": passed}, "Yes")
 			cases += 1
@@ -1151,6 +1163,8 @@ func _d8_every_organisation_has_a_stake() -> void:
 	var missing: Array[String] = []
 	for booster: Dictionary in DataDB.boosters:
 		var id := str(booster.get("booster_id", ""))
+		if str(booster.get("tier", "")) == "Party":
+			continue   # party-tier organisations follow the player's party lean, not fixed rows
 		if not pleased.has(id):
 			missing.append("%s never pleased" % id)
 		if not annoyed.has(id):

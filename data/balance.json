@@ -23,5 +23,7 @@
   "party_opinion_cold_below": 40,
   "party_opinion_neutral_below": 60,
   "party_opinion_warm_below": 80,
+  "law_lean_party_tier_pass_delta": 3,
+  "law_lean_party_tier_fail_delta": 1,
   "xp_tiers": {}
 }

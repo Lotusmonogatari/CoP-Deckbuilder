@@ -110,3 +110,30 @@ func test_a_law_condition_checks_the_statute_book() -> void:
 	var ticker := OfficeTicker.eligible_lines([row.merged({"text_en": "It passed."})], {}, {}, "",
 		{"BI01": "passed"})
 	assert_eq(ticker, ["It passed."] as Array[String])
+
+
+# --- party-tier lean (2026-10-13) ---------------------------------------------
+
+func test_party_tier_follows_the_players_party_lean() -> void:
+	assert_eq(StatuteBook.party_tier_delta("Supportive", true, 3, 1), 3, "a backed bill passing pleases")
+	assert_eq(StatuteBook.party_tier_delta("Opposed", true, 3, 1), -3, "an opposed bill passing annoys")
+	assert_eq(StatuteBook.party_tier_delta("Opposed", false, 3, 1), 1, "an opposed bill failing pleases, smaller")
+	assert_eq(StatuteBook.party_tier_delta("Supportive", false, 3, 1), -1, "a backed bill failing annoys, smaller")
+	assert_eq(StatuteBook.party_tier_delta("Neutral", true, 3, 1), 0, "a neutral party moves nothing")
+	assert_eq(StatuteBook.party_tier_delta("", true, 3, 1), 0, "no stance moves nothing")
+
+
+func test_party_headquarters_and_faction_answer_to_the_players_party() -> void:
+	# BI01: Frontier Party (PC02's party) is Opposed; Yezo Heritage Party is Supportive.
+	var frontier := GameState.own_party_id()
+	var dispo := ""
+	for position: Dictionary in DataDB.floor_votes["BI01"]["positions"]:
+		if str(position["party_id"]) == frontier:
+			dispo = str(position["disposition"])
+	var before := int(GameState.booster_standing.get("BO01", 50))
+	GameState.record_floor_vote(DataDB.get_bill("BI01"), {"passed": true, "totals": {"Yes": 60, "No": 30, "Abstain": 11}}, "Yes")
+	var moved := int(GameState.booster_standing.get("BO01", 50)) - before
+	var expected := StatuteBook.party_tier_delta(dispo, true, int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)), 1)
+	assert_ne(expected, 0, "the real bill has a stance for this party")
+	assert_eq(moved, expected, "Party Headquarters moved with the party's lean")
+	assert_eq(int(GameState.booster_standing.get("BO02", 50)) - int(DataDB.get_booster("BO02").get("starting_standing", 30) if DataDB.get_booster("BO02").get("starting_standing") != null else 30), expected, "Party Faction moves with it")

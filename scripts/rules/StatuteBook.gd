@@ -114,6 +114,25 @@ static func xp_delta(row: Dictionary) -> int:
 	return 0 if raw == null else int(raw)
 
 
+## How a party-tier organisation (Party Headquarters, Party Faction: the
+## Boosters tab's tier "Party") reacts to a law, from where the PLAYER'S OWN
+## party stood on the bill (2026-10-13, Cameron): it follows the party's lean,
+## so the same bill pleases one protagonist's headquarters and annoys
+## another's. `disposition` is the bill's Party Positions disposition for the
+## player's party (Supportive / Opposed / Neutral). A Neutral party has no
+## stance, so nothing moves. Passing a bill the party backs (or failing one
+## it opposed) pleases; the reverse annoys. A failed bill moves it by the
+## smaller `fail_delta`, the same 3-to-1 shape Law Effects rows use.
+static func party_tier_delta(disposition: String, passed: bool,
+		pass_delta: int, fail_delta: int) -> int:
+	var word := _word(disposition)
+	if word != "supportive" and word != "opposed":
+		return 0
+	var backed := word == "supportive"
+	var size := pass_delta if passed else fail_delta
+	return size if backed == passed else -size
+
+
 ## A cell read past the <null> trap, lower-cased and trimmed.
 static func _word(value: Variant) -> String:
 	return "" if value == null else str(value).strip_edges().to_lower()

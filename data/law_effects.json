@@ -14,11 +14,11 @@
         "delta": 2
       },
       {
-        "target": "BO15",
+        "target": "BO05",
         "delta": -2
       },
       {
-        "target": "BO23",
+        "target": "BO15",
         "delta": -2
       }
     ],
@@ -27,7 +27,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Ainu groups gain; traditionalists and taxpayers object."
+    "note": "Draft 2026-10-12: Ainu groups gain; traditionalists and taxpayers object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW02",
@@ -44,11 +44,11 @@
         "delta": -1
       },
       {
-        "target": "BO15",
+        "target": "BO05",
         "delta": 1
       },
       {
-        "target": "BO23",
+        "target": "BO15",
         "delta": 1
       }
     ],
@@ -87,7 +87,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Farmers gain; taxpayers and consumers pay."
+    "note": "Draft 2026-10-12: Farmers gain; taxpayers and consumers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW04",
@@ -130,15 +130,19 @@
         "delta": 3
       },
       {
-        "target": "BO24",
-        "delta": 2
-      },
-      {
         "target": "BO16",
         "delta": 2
       },
       {
+        "target": "BO24",
+        "delta": 2
+      },
+      {
         "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO13",
         "delta": -2
       },
       {
@@ -151,7 +155,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Business gains; labour and city neighbourhoods lose protections."
+    "note": "Draft 2026-10-12: Business gains; labour and city neighbourhoods lose protections. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW06",
@@ -164,15 +168,19 @@
         "delta": -1
       },
       {
-        "target": "BO24",
-        "delta": -1
-      },
-      {
         "target": "BO16",
         "delta": -1
       },
       {
+        "target": "BO24",
+        "delta": -1
+      },
+      {
         "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO13",
         "delta": 1
       },
       {
@@ -215,7 +223,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Commuters, mayors and business gain; taxpayers pay."
+    "note": "Draft 2026-10-12: Commuters, mayors and business gain; taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW08",
@@ -262,6 +270,10 @@
         "delta": 2
       },
       {
+        "target": "BO15",
+        "delta": 2
+      },
+      {
         "target": "BO23",
         "delta": -2
       }
@@ -271,7 +283,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Veterans and fishing towns gain; taxpayers pay."
+    "note": "Draft 2026-10-12: Veterans and fishing towns gain; taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW10",
@@ -285,6 +297,10 @@
       },
       {
         "target": "BO07",
+        "delta": -1
+      },
+      {
+        "target": "BO15",
         "delta": -1
       },
       {
@@ -314,15 +330,11 @@
         "delta": 2
       },
       {
-        "target": "BO05",
-        "delta": 2
-      },
-      {
-        "target": "BO15",
+        "target": "BO09",
         "delta": -2
       },
       {
-        "target": "BO09",
+        "target": "BO15",
         "delta": -2
       }
     ],
@@ -331,7 +343,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Employers gain workers; traditionalists and unions object."
+    "note": "Draft 2026-10-12: Employers gain workers; traditionalists and unions object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW12",
@@ -348,15 +360,11 @@
         "delta": -1
       },
       {
-        "target": "BO05",
-        "delta": -1
-      },
-      {
-        "target": "BO15",
+        "target": "BO09",
         "delta": 1
       },
       {
-        "target": "BO09",
+        "target": "BO15",
         "delta": 1
       }
     ],
@@ -378,12 +386,16 @@
         "delta": 3
       },
       {
+        "target": "BO04",
+        "delta": 2
+      },
+      {
         "target": "BO30",
         "delta": 2
       },
       {
-        "target": "BO04",
-        "delta": 2
+        "target": "BO05",
+        "delta": -2
       },
       {
         "target": "BO23",
@@ -395,7 +407,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Innovators, rural towns and mayors gain; taxpayers pay."
+    "note": "Draft 2026-10-12: Innovators, rural towns and mayors gain; taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW14",
@@ -421,12 +433,16 @@
         "delta": -1
       },
       {
+        "target": "BO04",
+        "delta": -1
+      },
+      {
         "target": "BO30",
         "delta": -1
       },
       {
-        "target": "BO04",
-        "delta": -1
+        "target": "BO05",
+        "delta": 1
       },
       {
         "target": "BO23",
@@ -451,7 +467,15 @@
         "delta": 3
       },
       {
-        "target": "BO26",
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
         "delta": -2
       },
       {
@@ -459,7 +483,7 @@
         "delta": -2
       },
       {
-        "target": "BO23",
+        "target": "BO26",
         "delta": -2
       }
     ],
@@ -468,7 +492,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Care sector gains; consumers, small business and taxpayers pay."
+    "note": "Draft 2026-10-12: Care sector gains; consumers, small business and taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW17",
@@ -481,7 +505,15 @@
         "delta": -1
       },
       {
-        "target": "BO26",
+        "target": "BO14",
+        "delta": 1
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
         "delta": 1
       },
       {
@@ -489,7 +521,7 @@
         "delta": 1
       },
       {
-        "target": "BO23",
+        "target": "BO26",
         "delta": 1
       }
     ],
@@ -515,8 +547,8 @@
         "delta": 2
       },
       {
-        "target": "BO01",
-        "delta": -2
+        "target": "BO23",
+        "delta": 2
       }
     ],
     "constituency_support": null,
@@ -524,7 +556,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Local government gains; party HQ loses central control."
+    "note": "Draft 2026-10-12: Local government gains; party HQ loses central control. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW19",
@@ -541,8 +573,8 @@
         "delta": -1
       },
       {
-        "target": "BO01",
-        "delta": 1
+        "target": "BO23",
+        "delta": -1
       }
     ],
     "constituency_support": null,
@@ -561,14 +593,6 @@
       {
         "target": "BO12",
         "delta": 3
-      },
-      {
-        "target": "BO11",
-        "delta": 2
-      },
-      {
-        "target": "BO02",
-        "delta": -2
       }
     ],
     "constituency_support": null,
@@ -576,7 +600,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Families and students welcome it; factions lose seat patronage."
+    "note": "Draft 2026-10-12: Families and students welcome it; factions lose seat patronage. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW21",
@@ -587,14 +611,6 @@
       {
         "target": "BO12",
         "delta": -1
-      },
-      {
-        "target": "BO11",
-        "delta": -1
-      },
-      {
-        "target": "BO02",
-        "delta": 1
       }
     ],
     "constituency_support": null,
@@ -617,10 +633,6 @@
       {
         "target": "BO14",
         "delta": 2
-      },
-      {
-        "target": "BO15",
-        "delta": -2
       }
     ],
     "constituency_support": null,
@@ -628,7 +640,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Fishers and commuters gain; traditionalists wary of Japan."
+    "note": "Draft 2026-10-12: Fishers and commuters gain; traditionalists wary of Japan. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW23",
@@ -643,10 +655,6 @@
       {
         "target": "BO14",
         "delta": -1
-      },
-      {
-        "target": "BO15",
-        "delta": 1
       }
     ],
     "constituency_support": null,
@@ -669,10 +677,6 @@
       {
         "target": "BO26",
         "delta": 2
-      },
-      {
-        "target": "BO01",
-        "delta": -2
       }
     ],
     "constituency_support": null,
@@ -680,7 +684,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Media and consumer watchdogs gain; the party loses appointments."
+    "note": "Draft 2026-10-12: Media and consumer watchdogs gain; the party loses appointments. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW25",
@@ -695,10 +699,6 @@
       {
         "target": "BO26",
         "delta": -1
-      },
-      {
-        "target": "BO01",
-        "delta": 1
       }
     ],
     "constituency_support": null,
@@ -719,16 +719,12 @@
         "delta": 3
       },
       {
-        "target": "BO20",
-        "delta": 2
-      },
-      {
         "target": "BO15",
         "delta": 2
       },
       {
-        "target": "BO23",
-        "delta": -2
+        "target": "BO20",
+        "delta": 2
       }
     ],
     "constituency_support": null,
@@ -736,7 +732,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Temples, shrines and traditionalists gain; taxpayers pay."
+    "note": "Draft 2026-10-12: Temples, shrines and traditionalists gain; taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW27",
@@ -749,16 +745,12 @@
         "delta": -1
       },
       {
-        "target": "BO20",
-        "delta": -1
-      },
-      {
         "target": "BO15",
         "delta": -1
       },
       {
-        "target": "BO23",
-        "delta": 1
+        "target": "BO20",
+        "delta": -1
       }
     ],
     "constituency_support": null,
@@ -783,20 +775,20 @@
         "delta": 2
       },
       {
-        "target": "BO18",
+        "target": "BO06",
         "delta": 2
       },
       {
-        "target": "BO23",
-        "delta": -2
+        "target": "BO18",
+        "delta": 2
       },
       {
         "target": "BO08",
         "delta": -2
       },
       {
-        "target": "BO06",
-        "delta": 2
+        "target": "BO23",
+        "delta": -2
       }
     ],
     "constituency_support": 2.0,
@@ -804,7 +796,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Members and districts gain; taxpayers and press call it pork. BO06 added: neighbourhood projects get funded."
+    "note": "Draft 2026-10-12: Members and districts gain; taxpayers and press call it pork. BO06 added: neighbourhood projects get funded. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW29",
@@ -834,20 +826,20 @@
         "delta": -1
       },
       {
-        "target": "BO18",
+        "target": "BO06",
         "delta": -1
       },
       {
-        "target": "BO23",
-        "delta": 1
+        "target": "BO18",
+        "delta": -1
       },
       {
         "target": "BO08",
         "delta": 1
       },
       {
-        "target": "BO06",
-        "delta": -1
+        "target": "BO23",
+        "delta": 1
       }
     ],
     "constituency_support": null,
@@ -868,11 +860,11 @@
         "delta": 3
       },
       {
-        "target": "BO11",
+        "target": "BO05",
         "delta": 2
       },
       {
-        "target": "BO05",
+        "target": "BO11",
         "delta": 2
       },
       {
@@ -885,7 +877,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Tech, students and business gain; artisans feel left behind."
+    "note": "Draft 2026-10-12: Tech, students and business gain; artisans feel left behind. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW32",
@@ -898,11 +890,11 @@
         "delta": -1
       },
       {
-        "target": "BO11",
+        "target": "BO05",
         "delta": -1
       },
       {
-        "target": "BO05",
+        "target": "BO11",
         "delta": -1
       },
       {
@@ -936,6 +928,10 @@
         "delta": -2
       },
       {
+        "target": "BO24",
+        "delta": -2
+      },
+      {
         "target": "BO26",
         "delta": -2
       }
@@ -945,7 +941,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Security-minded groups gain; press and civil liberties groups object."
+    "note": "Draft 2026-10-12: Security-minded groups gain; press and civil liberties groups object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW34",
@@ -963,6 +959,10 @@
       },
       {
         "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
         "delta": 1
       },
       {
@@ -992,6 +992,10 @@
         "delta": 2
       },
       {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
         "target": "BO15",
         "delta": -2
       },
@@ -1005,7 +1009,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Students and city voters gain; traditionalists and shrines object."
+    "note": "Draft 2026-10-12: Students and city voters gain; traditionalists and shrines object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW36",
@@ -1020,6 +1024,10 @@
       {
         "target": "BO27",
         "delta": -1
+      },
+      {
+        "target": "BO12",
+        "delta": 1
       },
       {
         "target": "BO15",
@@ -1044,23 +1052,35 @@
     "timing": "Once",
     "effects": [
       {
-        "target": "BO01",
+        "target": "BO22",
         "delta": 3
       },
       {
-        "target": "BO22",
+        "target": "BO15",
         "delta": 2
+      },
+      {
+        "target": "BO04",
+        "delta": -2
       },
       {
         "target": "BO08",
         "delta": -2
       },
       {
-        "target": "BO26",
+        "target": "BO11",
         "delta": -2
       },
       {
-        "target": "BO04",
+        "target": "BO16",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
         "delta": -2
       }
     ],
@@ -1069,7 +1089,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Party HQ and veterans gain; press, watchdogs and mayors lose."
+    "note": "Draft 2026-10-12: Party HQ and veterans gain; press, watchdogs and mayors lose. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW38",
@@ -1078,23 +1098,35 @@
     "timing": "Once",
     "effects": [
       {
-        "target": "BO01",
+        "target": "BO22",
         "delta": -1
       },
       {
-        "target": "BO22",
+        "target": "BO15",
         "delta": -1
+      },
+      {
+        "target": "BO04",
+        "delta": 1
       },
       {
         "target": "BO08",
         "delta": 1
       },
       {
-        "target": "BO26",
+        "target": "BO11",
         "delta": 1
       },
       {
-        "target": "BO04",
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
         "delta": 1
       }
     ],
@@ -1116,10 +1148,6 @@
         "delta": 3
       },
       {
-        "target": "BO01",
-        "delta": 2
-      },
-      {
         "target": "BO09",
         "delta": -2
       }
@@ -1129,7 +1157,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Veterans and party HQ gain; unions object."
+    "note": "Draft 2026-10-12: Veterans and party HQ gain; unions object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW40",
@@ -1139,10 +1167,6 @@
     "effects": [
       {
         "target": "BO22",
-        "delta": -1
-      },
-      {
-        "target": "BO01",
         "delta": -1
       },
       {
@@ -1168,11 +1192,11 @@
         "delta": 3
       },
       {
-        "target": "BO24",
+        "target": "BO13",
         "delta": 2
       },
       {
-        "target": "BO13",
+        "target": "BO24",
         "delta": 2
       },
       {
@@ -1189,7 +1213,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Exporters gain; farmers face EU dairy and wine."
+    "note": "Draft 2026-10-12: Exporters gain; farmers face EU dairy and wine. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW42",
@@ -1202,11 +1226,11 @@
         "delta": -1
       },
       {
-        "target": "BO24",
+        "target": "BO13",
         "delta": -1
       },
       {
-        "target": "BO13",
+        "target": "BO24",
         "delta": -1
       },
       {
@@ -1236,12 +1260,16 @@
         "delta": 3
       },
       {
+        "target": "BO07",
+        "delta": 2
+      },
+      {
         "target": "BO15",
         "delta": 2
       },
       {
-        "target": "BO07",
-        "delta": 2
+        "target": "BO16",
+        "delta": -2
       },
       {
         "target": "BO24",
@@ -1253,7 +1281,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Security and coastal groups gain; finance loses deals."
+    "note": "Draft 2026-10-12: Security and coastal groups gain; finance loses deals. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW44",
@@ -1266,12 +1294,16 @@
         "delta": -1
       },
       {
+        "target": "BO07",
+        "delta": -1
+      },
+      {
         "target": "BO15",
         "delta": -1
       },
       {
-        "target": "BO07",
-        "delta": -1
+        "target": "BO16",
+        "delta": 1
       },
       {
         "target": "BO24",
@@ -1296,10 +1328,6 @@
         "delta": 3
       },
       {
-        "target": "BO05",
-        "delta": 2
-      },
-      {
         "target": "BO13",
         "delta": 2
       },
@@ -1313,7 +1341,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Tourism businesses gain; traditionalists wary."
+    "note": "Draft 2026-10-12: Tourism businesses gain; traditionalists wary. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW46",
@@ -1323,10 +1351,6 @@
     "effects": [
       {
         "target": "BO25",
-        "delta": -1
-      },
-      {
-        "target": "BO05",
         "delta": -1
       },
       {
@@ -1360,11 +1384,11 @@
         "delta": 2
       },
       {
-        "target": "BO22",
+        "target": "BO15",
         "delta": -2
       },
       {
-        "target": "BO15",
+        "target": "BO22",
         "delta": -2
       }
     ],
@@ -1373,7 +1397,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Fishers and small business gain; veterans and traditionalists object."
+    "note": "Draft 2026-10-12: Fishers and small business gain; veterans and traditionalists object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW48",
@@ -1390,11 +1414,11 @@
         "delta": -1
       },
       {
-        "target": "BO22",
+        "target": "BO15",
         "delta": 1
       },
       {
-        "target": "BO15",
+        "target": "BO22",
         "delta": 1
       }
     ],
@@ -1416,15 +1440,15 @@
         "delta": 3
       },
       {
-        "target": "BO16",
-        "delta": 2
-      },
-      {
         "target": "BO24",
         "delta": 2
       },
       {
         "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO11",
         "delta": -2
       },
       {
@@ -1437,7 +1461,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Industry gains; fishers and consumer groups fear the risk."
+    "note": "Draft 2026-10-12: Industry gains; fishers and consumer groups fear the risk. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW50",
@@ -1463,15 +1487,15 @@
         "delta": -1
       },
       {
-        "target": "BO16",
-        "delta": -1
-      },
-      {
         "target": "BO24",
         "delta": -1
       },
       {
         "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
         "delta": 1
       },
       {
@@ -1501,8 +1525,16 @@
         "delta": 2
       },
       {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
         "target": "BO25",
         "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
       },
       {
         "target": "BO12",
@@ -1513,7 +1545,7 @@
         "delta": -2
       },
       {
-        "target": "BO06",
+        "target": "BO20",
         "delta": -2
       }
     ],
@@ -1522,7 +1554,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Business and mayors gain; families and temples object. BO06 added: a casino resort is a neighbourhood worry."
+    "note": "Draft 2026-10-12: Business and mayors gain; families and temples object. BO06 added: a casino resort is a neighbourhood worry. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW53",
@@ -1539,8 +1571,16 @@
         "delta": -1
       },
       {
+        "target": "BO23",
+        "delta": -1
+      },
+      {
         "target": "BO25",
         "delta": -1
+      },
+      {
+        "target": "BO06",
+        "delta": 1
       },
       {
         "target": "BO12",
@@ -1551,7 +1591,7 @@
         "delta": 1
       },
       {
-        "target": "BO06",
+        "target": "BO20",
         "delta": 1
       }
     ],
@@ -1577,11 +1617,15 @@
         "delta": 2
       },
       {
-        "target": "BO17",
-        "delta": -2
+        "target": "BO23",
+        "delta": 2
       },
       {
         "target": "BO03",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
         "delta": -2
       }
     ],
@@ -1590,7 +1634,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Watchdogs gain; members and koenkai lose referrals."
+    "note": "Draft 2026-10-12: Watchdogs gain; members and koenkai lose referrals. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW55",
@@ -1607,11 +1651,15 @@
         "delta": -1
       },
       {
-        "target": "BO17",
-        "delta": 1
+        "target": "BO23",
+        "delta": -1
       },
       {
         "target": "BO03",
+        "delta": 1
+      },
+      {
+        "target": "BO17",
         "delta": 1
       }
     ],
@@ -1637,11 +1685,15 @@
         "delta": 2
       },
       {
-        "target": "BO25",
+        "target": "BO05",
         "delta": -2
       },
       {
-        "target": "BO05",
+        "target": "BO16",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -1650,7 +1702,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Workers and students gain; employers pay."
+    "note": "Draft 2026-10-12: Workers and students gain; employers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW57",
@@ -1667,11 +1719,15 @@
         "delta": -1
       },
       {
-        "target": "BO25",
+        "target": "BO05",
         "delta": 1
       },
       {
-        "target": "BO05",
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
         "delta": 1
       }
     ],
@@ -1699,10 +1755,6 @@
       {
         "target": "BO17",
         "delta": -2
-      },
-      {
-        "target": "BO01",
-        "delta": -2
       }
     ],
     "constituency_support": null,
@@ -1710,7 +1762,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Watchdogs gain; members and party HQ lose control of districts."
+    "note": "Draft 2026-10-12: Watchdogs gain; members and party HQ lose control of districts. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW59",
@@ -1728,10 +1780,6 @@
       },
       {
         "target": "BO17",
-        "delta": 1
-      },
-      {
-        "target": "BO01",
         "delta": 1
       }
     ],
@@ -1753,11 +1801,11 @@
         "delta": 3
       },
       {
-        "target": "BO20",
+        "target": "BO19",
         "delta": 2
       },
       {
-        "target": "BO19",
+        "target": "BO20",
         "delta": 2
       },
       {
@@ -1774,7 +1822,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: Traditionalists gain; students and city voters object."
+    "note": "Draft 2026-10-12: Traditionalists gain; students and city voters object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW61",
@@ -1787,11 +1835,11 @@
         "delta": -1
       },
       {
-        "target": "BO20",
+        "target": "BO19",
         "delta": -1
       },
       {
-        "target": "BO19",
+        "target": "BO20",
         "delta": -1
       },
       {
@@ -1838,7 +1886,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-12: City voters gain; traditionalists and veterans object."
+    "note": "Draft 2026-10-12: City voters gain; traditionalists and veterans object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW63",
@@ -1885,10 +1933,6 @@
         "delta": 2
       },
       {
-        "target": "BO11",
-        "delta": 2
-      },
-      {
         "target": "BO05",
         "delta": -2
       },
@@ -1902,7 +1946,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Ainu groups, shrines and students gain; business and rural towns object."
+    "note": "Draft 2026-10-13: Ainu groups, shrines and students gain; business and rural towns object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW65",
@@ -1916,10 +1960,6 @@
       },
       {
         "target": "BO20",
-        "delta": -1
-      },
-      {
-        "target": "BO11",
         "delta": -1
       },
       {
@@ -1949,11 +1989,11 @@
         "delta": 3
       },
       {
-        "target": "BO21",
+        "target": "BO04",
         "delta": 2
       },
       {
-        "target": "BO04",
+        "target": "BO21",
         "delta": 2
       },
       {
@@ -1966,7 +2006,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Rural towns, care and mayors gain; taxpayers pay."
+    "note": "Draft 2026-10-13: Rural towns, care and mayors gain; taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW67",
@@ -1979,11 +2019,11 @@
         "delta": -1
       },
       {
-        "target": "BO21",
+        "target": "BO04",
         "delta": -1
       },
       {
-        "target": "BO04",
+        "target": "BO21",
         "delta": -1
       },
       {
@@ -2026,7 +2066,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Tech and finance gain; press and consumer groups worry about privacy."
+    "note": "Draft 2026-10-13: Tech and finance gain; press and consumer groups worry about privacy. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW69",
@@ -2067,14 +2107,6 @@
       {
         "target": "BO08",
         "delta": 3
-      },
-      {
-        "target": "BO11",
-        "delta": 2
-      },
-      {
-        "target": "BO01",
-        "delta": -2
       }
     ],
     "constituency_support": null,
@@ -2082,7 +2114,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Press and students gain; party HQ loses influence over the broadcaster."
+    "note": "Draft 2026-10-13: Press and students gain; party HQ loses influence over the broadcaster. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW71",
@@ -2093,14 +2125,6 @@
       {
         "target": "BO08",
         "delta": -1
-      },
-      {
-        "target": "BO11",
-        "delta": -1
-      },
-      {
-        "target": "BO01",
-        "delta": 1
       }
     ],
     "constituency_support": null,
@@ -2129,11 +2153,7 @@
         "delta": 2
       },
       {
-        "target": "BO01",
-        "delta": -2
-      },
-      {
-        "target": "BO02",
+        "target": "BO05",
         "delta": -2
       },
       {
@@ -2146,7 +2166,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Watchdogs gain; parties and members lose fundraising freedom."
+    "note": "Draft 2026-10-13: Watchdogs gain; parties and members lose fundraising freedom. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW73",
@@ -2167,11 +2187,7 @@
         "delta": -1
       },
       {
-        "target": "BO01",
-        "delta": 1
-      },
-      {
-        "target": "BO02",
+        "target": "BO05",
         "delta": 1
       },
       {
@@ -2197,6 +2213,10 @@
         "delta": 3
       },
       {
+        "target": "BO23",
+        "delta": 3
+      },
+      {
         "target": "BO24",
         "delta": 2
       },
@@ -2205,11 +2225,15 @@
         "delta": 2
       },
       {
-        "target": "BO21",
+        "target": "BO04",
         "delta": -2
       },
       {
-        "target": "BO04",
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
         "delta": -2
       }
     ],
@@ -2218,7 +2242,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Business gains; care and local budgets lose."
+    "note": "Draft 2026-10-13: Business gains; care and local budgets lose. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW75",
@@ -2231,6 +2255,10 @@
         "delta": -1
       },
       {
+        "target": "BO23",
+        "delta": -1
+      },
+      {
         "target": "BO24",
         "delta": -1
       },
@@ -2239,11 +2267,15 @@
         "delta": -1
       },
       {
-        "target": "BO21",
+        "target": "BO04",
         "delta": 1
       },
       {
-        "target": "BO04",
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
         "delta": 1
       }
     ],
@@ -2277,11 +2309,23 @@
         "delta": -2
       },
       {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
         "target": "BO10",
         "delta": -2
       },
       {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
         "target": "BO23",
+        "delta": -2
+      },
+      {
+        "target": "BO24",
         "delta": -2
       }
     ],
@@ -2290,7 +2334,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Innovators, students and cities gain; business, farmers and taxpayers pay."
+    "note": "Draft 2026-10-13: Innovators, students and cities gain; business, farmers and taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW77",
@@ -2315,11 +2359,23 @@
         "delta": 1
       },
       {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
         "target": "BO10",
         "delta": 1
       },
       {
+        "target": "BO14",
+        "delta": 1
+      },
+      {
         "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
         "delta": 1
       }
     ],
@@ -2354,7 +2410,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Fishers and consumers gain; small operators face new costs."
+    "note": "Draft 2026-10-13: Fishers and consumers gain; small operators face new costs. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW79",
@@ -2401,6 +2457,18 @@
         "delta": 2
       },
       {
+        "target": "BO15",
+        "delta": 2
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
         "target": "BO23",
         "delta": -2
       },
@@ -2414,7 +2482,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Veterans, industry and labour gain; taxpayers and consumers pay."
+    "note": "Draft 2026-10-13: Veterans, industry and labour gain; taxpayers and consumers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW81",
@@ -2433,6 +2501,18 @@
       {
         "target": "BO09",
         "delta": -1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": 1
       },
       {
         "target": "BO23",
@@ -2459,14 +2539,6 @@
       {
         "target": "BO17",
         "delta": 3
-      },
-      {
-        "target": "BO11",
-        "delta": 2
-      },
-      {
-        "target": "BO15",
-        "delta": -2
       }
     ],
     "constituency_support": null,
@@ -2474,7 +2546,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Members and students gain; traditionalists wary of change."
+    "note": "Draft 2026-10-13: Members and students gain; traditionalists wary of change. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW83",
@@ -2485,14 +2557,6 @@
       {
         "target": "BO17",
         "delta": -1
-      },
-      {
-        "target": "BO11",
-        "delta": -1
-      },
-      {
-        "target": "BO15",
-        "delta": 1
       }
     ],
     "constituency_support": null,
@@ -2509,12 +2573,8 @@
     "timing": "Once",
     "effects": [
       {
-        "target": "BO05",
-        "delta": 3
-      },
-      {
         "target": "BO25",
-        "delta": 2
+        "delta": 3
       },
       {
         "target": "BO15",
@@ -2530,7 +2590,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Business gains; traditionalists and Ainu groups wary of border sharing."
+    "note": "Draft 2026-10-13: Business gains; traditionalists and Ainu groups wary of border sharing. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW85",
@@ -2538,10 +2598,6 @@
     "outcome": "Failed",
     "timing": "Once",
     "effects": [
-      {
-        "target": "BO05",
-        "delta": -1
-      },
       {
         "target": "BO25",
         "delta": -1
@@ -2569,19 +2625,23 @@
     "timing": "Once",
     "effects": [
       {
-        "target": "BO05",
-        "delta": 3
-      },
-      {
         "target": "BO16",
-        "delta": 2
+        "delta": 3
       },
       {
         "target": "BO07",
         "delta": -2
       },
       {
+        "target": "BO22",
+        "delta": -2
+      },
+      {
         "target": "BO28",
+        "delta": -2
+      },
+      {
+        "target": "BO29",
         "delta": -2
       }
     ],
@@ -2590,7 +2650,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Industry gains; fishers and Ainu groups object to island development."
+    "note": "Draft 2026-10-13: Industry gains; fishers and Ainu groups object to island development. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW87",
@@ -2598,10 +2658,6 @@
     "outcome": "Failed",
     "timing": "Once",
     "effects": [
-      {
-        "target": "BO05",
-        "delta": -1
-      },
       {
         "target": "BO16",
         "delta": -1
@@ -2611,7 +2667,15 @@
         "delta": 1
       },
       {
+        "target": "BO22",
+        "delta": 1
+      },
+      {
         "target": "BO28",
+        "delta": 1
+      },
+      {
+        "target": "BO29",
         "delta": 1
       }
     ],
@@ -2641,11 +2705,15 @@
         "delta": 2
       },
       {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
         "target": "BO10",
         "delta": -2
       },
       {
-        "target": "BO09",
+        "target": "BO13",
         "delta": -2
       },
       {
@@ -2658,7 +2726,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Business and consumers gain; farmers, labour and veterans object."
+    "note": "Draft 2026-10-13: Business and consumers gain; farmers, labour and veterans object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW89",
@@ -2679,11 +2747,15 @@
         "delta": -1
       },
       {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
         "target": "BO10",
         "delta": 1
       },
       {
-        "target": "BO09",
+        "target": "BO13",
         "delta": 1
       },
       {
@@ -2709,11 +2781,11 @@
         "delta": 3
       },
       {
-        "target": "BO30",
+        "target": "BO15",
         "delta": 2
       },
       {
-        "target": "BO12",
+        "target": "BO30",
         "delta": 2
       },
       {
@@ -2726,7 +2798,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Farmers, rural towns and families gain; taxpayers pay."
+    "note": "Draft 2026-10-13: Farmers, rural towns and families gain; taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW91",
@@ -2739,11 +2811,11 @@
         "delta": -1
       },
       {
-        "target": "BO30",
+        "target": "BO15",
         "delta": -1
       },
       {
-        "target": "BO12",
+        "target": "BO30",
         "delta": -1
       },
       {
@@ -2769,16 +2841,8 @@
         "delta": 3
       },
       {
-        "target": "BO16",
-        "delta": 2
-      },
-      {
         "target": "BO12",
         "delta": 2
-      },
-      {
-        "target": "BO23",
-        "delta": -2
       }
     ],
     "constituency_support": null,
@@ -2786,7 +2850,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Students, innovators and families gain; taxpayers pay."
+    "note": "Draft 2026-10-13: Students, innovators and families gain; taxpayers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW93",
@@ -2799,16 +2863,8 @@
         "delta": -1
       },
       {
-        "target": "BO16",
-        "delta": -1
-      },
-      {
         "target": "BO12",
         "delta": -1
-      },
-      {
-        "target": "BO23",
-        "delta": 1
       }
     ],
     "constituency_support": null,
@@ -2837,7 +2893,7 @@
         "delta": 2
       },
       {
-        "target": "BO12",
+        "target": "BO29",
         "delta": 2
       },
       {
@@ -2854,7 +2910,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Labour, students, Ainu groups and families gain; employers object."
+    "note": "Draft 2026-10-13: Labour, students, Ainu groups and families gain; employers object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW95",
@@ -2875,7 +2931,7 @@
         "delta": -1
       },
       {
-        "target": "BO12",
+        "target": "BO29",
         "delta": -1
       },
       {
@@ -2913,11 +2969,15 @@
         "delta": 2
       },
       {
-        "target": "BO25",
+        "target": "BO05",
         "delta": -2
       },
       {
-        "target": "BO05",
+        "target": "BO16",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
         "delta": -2
       }
     ],
@@ -2926,7 +2986,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Families, labour and care gain; employers pay."
+    "note": "Draft 2026-10-13: Families, labour and care gain; employers pay. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW97",
@@ -2947,11 +3007,15 @@
         "delta": -1
       },
       {
-        "target": "BO25",
+        "target": "BO05",
         "delta": 1
       },
       {
-        "target": "BO05",
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
         "delta": 1
       }
     ],
@@ -2973,11 +3037,11 @@
         "delta": 3
       },
       {
-        "target": "BO27",
+        "target": "BO16",
         "delta": 2
       },
       {
-        "target": "BO16",
+        "target": "BO27",
         "delta": 2
       },
       {
@@ -2985,11 +3049,11 @@
         "delta": -2
       },
       {
-        "target": "BO26",
+        "target": "BO11",
         "delta": -2
       },
       {
-        "target": "BO11",
+        "target": "BO26",
         "delta": -2
       }
     ],
@@ -2998,7 +3062,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Veterans, cities and tech gain; press, consumers and students object."
+    "note": "Draft 2026-10-13: Veterans, cities and tech gain; press, consumers and students object. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW99",
@@ -3011,11 +3075,11 @@
         "delta": -1
       },
       {
-        "target": "BO27",
+        "target": "BO16",
         "delta": -1
       },
       {
-        "target": "BO16",
+        "target": "BO27",
         "delta": -1
       },
       {
@@ -3023,11 +3087,11 @@
         "delta": 1
       },
       {
-        "target": "BO26",
+        "target": "BO11",
         "delta": 1
       },
       {
-        "target": "BO11",
+        "target": "BO26",
         "delta": 1
       }
     ],
@@ -3053,15 +3117,15 @@
         "delta": 2
       },
       {
-        "target": "BO16",
-        "delta": 2
-      },
-      {
         "target": "BO04",
         "delta": -2
       },
       {
         "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
         "delta": -2
       },
       {
@@ -3074,7 +3138,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Taxpayers and business gain; mayors, neighbourhoods and rural towns lose."
+    "note": "Draft 2026-10-13: Taxpayers and business gain; mayors, neighbourhoods and rural towns lose. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW101",
@@ -3091,15 +3155,15 @@
         "delta": -1
       },
       {
-        "target": "BO16",
-        "delta": -1
-      },
-      {
         "target": "BO04",
         "delta": 1
       },
       {
         "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO18",
         "delta": 1
       },
       {
@@ -3133,11 +3197,7 @@
         "delta": 2
       },
       {
-        "target": "BO01",
-        "delta": -2
-      },
-      {
-        "target": "BO02",
+        "target": "BO17",
         "delta": -2
       }
     ],
@@ -3146,7 +3206,7 @@
     "funds": null,
     "party_support": null,
     "xp": null,
-    "note": "Draft 2026-10-13: Students, press and voters gain; party HQ and factions lose control."
+    "note": "Draft 2026-10-13: Students, press and voters gain; party HQ and factions lose control. Rebalanced 2026-10-13 (draft): party-tier organisations now follow the player's party lean (Balance tab)."
   },
   {
     "law_id": "LW103",
@@ -3167,11 +3227,7 @@
         "delta": -1
       },
       {
-        "target": "BO01",
-        "delta": 1
-      },
-      {
-        "target": "BO02",
+        "target": "BO17",
         "delta": 1
       }
     ],

@@ -2103,11 +2103,11 @@
       {
         "bill_id": "BI32",
         "party_id": "PT06",
-        "votes_yes": 1,
-        "votes_no": 10,
+        "votes_yes": 8,
+        "votes_no": 3,
         "votes_abstain": 0,
-        "disposition": "Opposed",
-        "cue_text": "We cannot borrow our way to health."
+        "disposition": "Supportive",
+        "cue_text": "Care for every region. We will back it."
       }
     ]
   },
@@ -2124,11 +2124,11 @@
       {
         "bill_id": "BI33",
         "party_id": "PT01",
-        "votes_yes": 6,
-        "votes_no": 6,
-        "votes_abstain": 7,
-        "disposition": "Neutral",
-        "cue_text": "Convenience is welcome. Surveillance is not."
+        "votes_yes": 5,
+        "votes_no": 14,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "A card that tracks every person? No."
       },
       {
         "bill_id": "BI33",
@@ -2142,11 +2142,11 @@
       {
         "bill_id": "BI33",
         "party_id": "PT03",
-        "votes_yes": 10,
-        "votes_no": 7,
-        "votes_abstain": 10,
-        "disposition": "Neutral",
-        "cue_text": "Will it work in a village without signal?"
+        "votes_yes": 8,
+        "votes_no": 19,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "No signal, no card. Villages lose out."
       },
       {
         "bill_id": "BI33",
@@ -2160,11 +2160,11 @@
       {
         "bill_id": "BI33",
         "party_id": "PT05",
-        "votes_yes": 1,
-        "votes_no": 24,
+        "votes_yes": 18,
+        "votes_no": 7,
         "votes_abstain": 0,
-        "disposition": "Opposed",
-        "cue_text": "A central database is a central risk."
+        "disposition": "Supportive",
+        "cue_text": "One secure card makes commerce faster."
       },
       {
         "bill_id": "BI33",
@@ -2208,20 +2208,20 @@
       {
         "bill_id": "BI34",
         "party_id": "PT03",
-        "votes_yes": 19,
-        "votes_no": 7,
-        "votes_abstain": 1,
-        "disposition": "Supportive",
-        "cue_text": "Let the broadcaster speak for the countryside too."
+        "votes_yes": 9,
+        "votes_no": 8,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Fair broadcast, but fund the countryside first."
       },
       {
         "bill_id": "BI34",
         "party_id": "PT04",
-        "votes_yes": 2,
+        "votes_yes": 4,
         "votes_no": 1,
-        "votes_abstain": 2,
-        "disposition": "Neutral",
-        "cue_text": "Independent is fine if it stays accountable."
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A free broadcaster serves our voters."
       },
       {
         "bill_id": "BI34",
@@ -2235,11 +2235,11 @@
       {
         "bill_id": "BI34",
         "party_id": "PT06",
-        "votes_yes": 3,
-        "votes_no": 8,
+        "votes_yes": 8,
+        "votes_no": 3,
         "votes_abstain": 0,
-        "disposition": "Opposed",
-        "cue_text": "A public voice must serve the public good."
+        "disposition": "Supportive",
+        "cue_text": "Decency in the public broadcast. We agree."
       }
     ]
   },
@@ -2322,11 +2322,11 @@
       {
         "bill_id": "BI36",
         "party_id": "PT01",
-        "votes_yes": 2,
-        "votes_no": 10,
-        "votes_abstain": 7,
-        "disposition": "Neutral",
-        "cue_text": "Cutting taxes needs a plan for the cost."
+        "votes_yes": 5,
+        "votes_no": 14,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Tax cuts for firms, nothing for the poor."
       },
       {
         "bill_id": "BI36",
@@ -2340,20 +2340,20 @@
       {
         "bill_id": "BI36",
         "party_id": "PT03",
-        "votes_yes": 13,
-        "votes_no": 4,
-        "votes_abstain": 10,
-        "disposition": "Neutral",
-        "cue_text": "Show us the jobs before the cut."
+        "votes_yes": 8,
+        "votes_no": 19,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Cuts for big firms leave towns behind."
       },
       {
         "bill_id": "BI36",
         "party_id": "PT04",
-        "votes_yes": 2,
-        "votes_no": 1,
-        "votes_abstain": 2,
-        "disposition": "Neutral",
-        "cue_text": "Fine for big firms, but small shops first."
+        "votes_yes": 1,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Corporate cuts do nothing for our districts."
       },
       {
         "bill_id": "BI36",
@@ -2406,20 +2406,20 @@
       {
         "bill_id": "BI37",
         "party_id": "PT03",
-        "votes_yes": 4,
-        "votes_no": 13,
-        "votes_abstain": 10,
-        "disposition": "Neutral",
-        "cue_text": "Farmers need relief before a new levy."
+        "votes_yes": 8,
+        "votes_no": 19,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Farmers cannot carry a new levy."
       },
       {
         "bill_id": "BI37",
         "party_id": "PT04",
-        "votes_yes": 2,
-        "votes_no": 1,
-        "votes_abstain": 2,
-        "disposition": "Neutral",
-        "cue_text": "Rebates are nice. Who really pays?"
+        "votes_yes": 1,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "A new levy lands on our voters."
       },
       {
         "bill_id": "BI37",
@@ -2454,11 +2454,11 @@
       {
         "bill_id": "BI38",
         "party_id": "PT01",
-        "votes_yes": 12,
-        "votes_no": 5,
-        "votes_abstain": 2,
-        "disposition": "Supportive",
-        "cue_text": "Fair limits protect both fishers and the sea."
+        "votes_yes": 6,
+        "votes_no": 6,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Fishers and the sea both deserve care."
       },
       {
         "bill_id": "BI38",
@@ -2538,20 +2538,20 @@
       {
         "bill_id": "BI39",
         "party_id": "PT03",
-        "votes_yes": 17,
-        "votes_no": 8,
-        "votes_abstain": 2,
-        "disposition": "Supportive",
-        "cue_text": "Work for our harbour towns. We agree."
+        "votes_yes": 8,
+        "votes_no": 19,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Warship money should reach rural clinics first."
       },
       {
         "bill_id": "BI39",
         "party_id": "PT04",
-        "votes_yes": 2,
-        "votes_no": 1,
-        "votes_abstain": 2,
-        "disposition": "Neutral",
-        "cue_text": "Which yards get the orders? We want to see."
+        "votes_yes": 1,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Shipyards will not help our districts."
       },
       {
         "bill_id": "BI39",
@@ -2604,11 +2604,11 @@
       {
         "bill_id": "BI40",
         "party_id": "PT03",
-        "votes_yes": 20,
-        "votes_no": 7,
-        "votes_abstain": 0,
-        "disposition": "Supportive",
-        "cue_text": "Let the commission listen to every region."
+        "votes_yes": 9,
+        "votes_no": 8,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Study it, but keep the regions heard."
       },
       {
         "bill_id": "BI40",
@@ -2679,20 +2679,20 @@
       {
         "bill_id": "BI41",
         "party_id": "PT04",
-        "votes_yes": 2,
-        "votes_no": 1,
-        "votes_abstain": 2,
-        "disposition": "Neutral",
-        "cue_text": "Show us the data-sharing limits."
+        "votes_yes": 1,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Our districts see no gain from this."
       },
       {
         "bill_id": "BI41",
         "party_id": "PT05",
-        "votes_yes": 8,
-        "votes_no": 8,
-        "votes_abstain": 9,
-        "disposition": "Neutral",
-        "cue_text": "Faster customs help trade, if it is safe."
+        "votes_yes": 18,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Faster customs mean faster trade."
       },
       {
         "bill_id": "BI41",
@@ -2785,10 +2785,10 @@
         "bill_id": "BI43",
         "party_id": "PT01",
         "votes_yes": 5,
-        "votes_no": 7,
-        "votes_abstain": 7,
-        "disposition": "Neutral",
-        "cue_text": "Trade is peace, but keep safeguards in place."
+        "votes_no": 14,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Trade must not trample the vulnerable."
       },
       {
         "bill_id": "BI43",
@@ -2802,20 +2802,20 @@
       {
         "bill_id": "BI43",
         "party_id": "PT03",
-        "votes_yes": 6,
-        "votes_no": 11,
-        "votes_abstain": 10,
-        "disposition": "Neutral",
-        "cue_text": "Farmers fear cheap imports. Protect them."
+        "votes_yes": 8,
+        "votes_no": 19,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Cheap imports will hollow out our farms."
       },
       {
         "bill_id": "BI43",
         "party_id": "PT04",
-        "votes_yes": 2,
-        "votes_no": 1,
-        "votes_abstain": 2,
-        "disposition": "Neutral",
-        "cue_text": "Cheaper goods, but whose jobs?"
+        "votes_yes": 1,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Our voters did not ask for this."
       },
       {
         "bill_id": "BI43",
@@ -2886,11 +2886,11 @@
       {
         "bill_id": "BI44",
         "party_id": "PT05",
-        "votes_yes": 7,
-        "votes_no": 17,
-        "votes_abstain": 1,
-        "disposition": "Opposed",
-        "cue_text": "Subsidies keep farms stuck in the past."
+        "votes_yes": 8,
+        "votes_no": 8,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Support farms, but watch the bill."
       },
       {
         "bill_id": "BI44",
@@ -2916,11 +2916,11 @@
       {
         "bill_id": "BI45",
         "party_id": "PT01",
-        "votes_yes": 12,
+        "votes_yes": 6,
         "votes_no": 6,
-        "votes_abstain": 1,
-        "disposition": "Supportive",
-        "cue_text": "Knowledge is how a small nation grows."
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Research is good; care for the needy first."
       },
       {
         "bill_id": "BI45",
@@ -2961,11 +2961,11 @@
       {
         "bill_id": "BI45",
         "party_id": "PT06",
-        "votes_yes": 0,
-        "votes_no": 11,
+        "votes_yes": 8,
+        "votes_no": 3,
         "votes_abstain": 0,
-        "disposition": "Opposed",
-        "cue_text": "Spend on schools before laboratories."
+        "disposition": "Supportive",
+        "cue_text": "A learned nation is a strong nation."
       }
     ]
   },
@@ -3084,20 +3084,20 @@
       {
         "bill_id": "BI47",
         "party_id": "PT05",
-        "votes_yes": 6,
-        "votes_no": 19,
-        "votes_abstain": 0,
-        "disposition": "Opposed",
-        "cue_text": "Mandated leave raises costs for employers."
+        "votes_yes": 8,
+        "votes_no": 8,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Families need help, but costs matter."
       },
       {
         "bill_id": "BI47",
         "party_id": "PT06",
-        "votes_yes": 0,
-        "votes_no": 11,
+        "votes_yes": 8,
+        "votes_no": 3,
         "votes_abstain": 0,
-        "disposition": "Opposed",
-        "cue_text": "The family, not the state, raises children."
+        "disposition": "Supportive",
+        "cue_text": "Strong families make a strong nation."
       }
     ]
   },
@@ -3115,10 +3115,10 @@
         "bill_id": "BI48",
         "party_id": "PT01",
         "votes_yes": 5,
-        "votes_no": 7,
-        "votes_abstain": 7,
-        "disposition": "Neutral",
-        "cue_text": "Safety matters, but cameras can watch too much."
+        "votes_no": 14,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Cameras watching everyone betray basic dignity."
       },
       {
         "bill_id": "BI48",
@@ -3150,11 +3150,11 @@
       {
         "bill_id": "BI48",
         "party_id": "PT05",
-        "votes_yes": 4,
-        "votes_no": 21,
+        "votes_yes": 18,
+        "votes_no": 7,
         "votes_abstain": 0,
-        "disposition": "Opposed",
-        "cue_text": "The state should not track every face."
+        "disposition": "Supportive",
+        "cue_text": "Safer streets are good for business."
       },
       {
         "bill_id": "BI48",
