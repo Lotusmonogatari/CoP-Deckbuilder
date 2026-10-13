@@ -43,5 +43,350 @@
     "transition_background_id": "TB09",
     "stage_id": "ST31",
     "background_id": "ST13"
+  },
+  {
+    "transition_background_id": "TB10",
+    "stage_id": "ST32",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB11",
+    "stage_id": "ST33",
+    "background_id": "ST10"
+  },
+  {
+    "transition_background_id": "TB12",
+    "stage_id": "ST34",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB13",
+    "stage_id": "ST35",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB14",
+    "stage_id": "ST36",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB15",
+    "stage_id": "ST37",
+    "background_id": "ST17"
+  },
+  {
+    "transition_background_id": "TB16",
+    "stage_id": "ST38",
+    "background_id": "ST21"
+  },
+  {
+    "transition_background_id": "TB17",
+    "stage_id": "ST39",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB18",
+    "stage_id": "ST40",
+    "background_id": "ST21"
+  },
+  {
+    "transition_background_id": "TB19",
+    "stage_id": "ST41",
+    "background_id": "ST06"
+  },
+  {
+    "transition_background_id": "TB20",
+    "stage_id": "ST42",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB21",
+    "stage_id": "ST43",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB22",
+    "stage_id": "ST44",
+    "background_id": "ST06"
+  },
+  {
+    "transition_background_id": "TB23",
+    "stage_id": "ST45",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB24",
+    "stage_id": "ST46",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB25",
+    "stage_id": "ST47",
+    "background_id": "ST17"
+  },
+  {
+    "transition_background_id": "TB26",
+    "stage_id": "ST48",
+    "background_id": "ST20"
+  },
+  {
+    "transition_background_id": "TB27",
+    "stage_id": "ST49",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB28",
+    "stage_id": "ST50",
+    "background_id": "ST21"
+  },
+  {
+    "transition_background_id": "TB29",
+    "stage_id": "ST51",
+    "background_id": "ST16"
+  },
+  {
+    "transition_background_id": "TB30",
+    "stage_id": "ST52",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB31",
+    "stage_id": "ST53",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB32",
+    "stage_id": "ST54",
+    "background_id": "ST10"
+  },
+  {
+    "transition_background_id": "TB33",
+    "stage_id": "ST55",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB34",
+    "stage_id": "ST56",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB35",
+    "stage_id": "ST57",
+    "background_id": "ST13"
+  },
+  {
+    "transition_background_id": "TB36",
+    "stage_id": "ST58",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB37",
+    "stage_id": "ST59",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB38",
+    "stage_id": "ST60",
+    "background_id": "ST11"
+  },
+  {
+    "transition_background_id": "TB39",
+    "stage_id": "ST61",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB40",
+    "stage_id": "ST62",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB41",
+    "stage_id": "ST63",
+    "background_id": "ST12"
+  },
+  {
+    "transition_background_id": "TB42",
+    "stage_id": "ST64",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB43",
+    "stage_id": "ST65",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB44",
+    "stage_id": "ST66",
+    "background_id": "ST14"
+  },
+  {
+    "transition_background_id": "TB45",
+    "stage_id": "ST67",
+    "background_id": "ST20"
+  },
+  {
+    "transition_background_id": "TB46",
+    "stage_id": "ST68",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB47",
+    "stage_id": "ST69",
+    "background_id": "ST14"
+  },
+  {
+    "transition_background_id": "TB48",
+    "stage_id": "ST70",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB49",
+    "stage_id": "ST71",
+    "background_id": "ST20"
+  },
+  {
+    "transition_background_id": "TB50",
+    "stage_id": "ST72",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB51",
+    "stage_id": "ST73",
+    "background_id": "ST06"
+  },
+  {
+    "transition_background_id": "TB52",
+    "stage_id": "ST74",
+    "background_id": "ST14"
+  },
+  {
+    "transition_background_id": "TB53",
+    "stage_id": "ST75",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB54",
+    "stage_id": "ST76",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB55",
+    "stage_id": "ST77",
+    "background_id": "ST13"
+  },
+  {
+    "transition_background_id": "TB56",
+    "stage_id": "ST78",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB57",
+    "stage_id": "ST79",
+    "background_id": "ST21"
+  },
+  {
+    "transition_background_id": "TB58",
+    "stage_id": "ST80",
+    "background_id": "ST17"
+  },
+  {
+    "transition_background_id": "TB59",
+    "stage_id": "ST81",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB60",
+    "stage_id": "ST82",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB61",
+    "stage_id": "ST83",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB62",
+    "stage_id": "ST84",
+    "background_id": "ST06"
+  },
+  {
+    "transition_background_id": "TB63",
+    "stage_id": "ST85",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB64",
+    "stage_id": "ST86",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB65",
+    "stage_id": "ST87",
+    "background_id": "ST21"
+  },
+  {
+    "transition_background_id": "TB66",
+    "stage_id": "ST88",
+    "background_id": "ST20"
+  },
+  {
+    "transition_background_id": "TB67",
+    "stage_id": "ST89",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB68",
+    "stage_id": "ST90",
+    "background_id": "ST17"
+  },
+  {
+    "transition_background_id": "TB69",
+    "stage_id": "ST91",
+    "background_id": "ST06"
+  },
+  {
+    "transition_background_id": "TB70",
+    "stage_id": "ST92",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB71",
+    "stage_id": "ST93",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB72",
+    "stage_id": "ST94",
+    "background_id": "ST05"
+  },
+  {
+    "transition_background_id": "TB73",
+    "stage_id": "ST95",
+    "background_id": "ST17"
+  },
+  {
+    "transition_background_id": "TB74",
+    "stage_id": "ST96",
+    "background_id": "ST21"
+  },
+  {
+    "transition_background_id": "TB75",
+    "stage_id": "ST97",
+    "background_id": "ST03"
+  },
+  {
+    "transition_background_id": "TB76",
+    "stage_id": "ST98",
+    "background_id": "ST06"
+  },
+  {
+    "transition_background_id": "TB77",
+    "stage_id": "ST99",
+    "background_id": "ST04"
+  },
+  {
+    "transition_background_id": "TB78",
+    "stage_id": "ST100",
+    "background_id": "ST03"
   }
 ]

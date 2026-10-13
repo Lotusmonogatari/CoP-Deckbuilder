@@ -236,5 +236,1454 @@
     "stage_id": "ST31",
     "character_line_en": "Small boats against big fleets. Expect that fight in there.",
     "player_reply_en": "I expect it."
+  },
+  {
+    "transition_dialogue_id": "TD35",
+    "character_id": "SF08",
+    "stage_id": "ST32",
+    "character_line_en": "Reporters will ask about the wilderness straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD36",
+    "character_id": "SF09",
+    "stage_id": "ST32",
+    "character_line_en": "Say plainly where you stand on the wilderness.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD37",
+    "character_id": "SF02",
+    "stage_id": "ST32",
+    "character_line_en": "Keep one clear number on the wilderness in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD38",
+    "character_id": "SF01",
+    "stage_id": "ST33",
+    "character_line_en": "Members will quote the record on the wilderness.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD39",
+    "character_id": "SF02",
+    "stage_id": "ST33",
+    "character_line_en": "Be exact about the wilderness. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD40",
+    "character_id": "SF15",
+    "stage_id": "ST33",
+    "character_line_en": "People back home follow this hearing on the wilderness.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD41",
+    "character_id": "SF15",
+    "stage_id": "ST34",
+    "character_line_en": "The hall is full of people worried about the wilderness.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD42",
+    "character_id": "SF16",
+    "stage_id": "ST34",
+    "character_line_en": "Keep it human when they ask about the wilderness.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD43",
+    "character_id": "SF01",
+    "stage_id": "ST34",
+    "character_line_en": "I marked the questions to expect on the wilderness.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD44",
+    "character_id": "SF15",
+    "stage_id": "ST35",
+    "character_line_en": "Your own party is watching you on the wilderness.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD45",
+    "character_id": "SF16",
+    "stage_id": "ST35",
+    "character_line_en": "Caucus members will test you on the wilderness.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD46",
+    "character_id": "SF01",
+    "stage_id": "ST35",
+    "character_line_en": "Know where your party stands on the wilderness.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD47",
+    "character_id": "SF15",
+    "stage_id": "ST36",
+    "character_line_en": "The hall is full of people worried about rural hospitals.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD48",
+    "character_id": "SF16",
+    "stage_id": "ST36",
+    "character_line_en": "Keep it human when they ask about rural hospitals.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD49",
+    "character_id": "SF01",
+    "stage_id": "ST36",
+    "character_line_en": "I marked the questions to expect on rural hospitals.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD50",
+    "character_id": "SF01",
+    "stage_id": "ST37",
+    "character_line_en": "Members will quote the record on rural hospitals.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD51",
+    "character_id": "SF02",
+    "stage_id": "ST37",
+    "character_line_en": "Be exact about rural hospitals. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD52",
+    "character_id": "SF15",
+    "stage_id": "ST37",
+    "character_line_en": "People back home follow this hearing on rural hospitals.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD53",
+    "character_id": "SF01",
+    "stage_id": "ST38",
+    "character_line_en": "The briefing on rural hospitals is in your folder.",
+    "player_reply_en": "I will read it."
+  },
+  {
+    "transition_dialogue_id": "TD54",
+    "character_id": "SF02",
+    "stage_id": "ST38",
+    "character_line_en": "Every figure on rural hospitals is checked and sourced.",
+    "player_reply_en": "Good. I will lean on them."
+  },
+  {
+    "transition_dialogue_id": "TD55",
+    "character_id": "SF16",
+    "stage_id": "ST38",
+    "character_line_en": "Take your time with rural hospitals. Nobody is rushing you.",
+    "player_reply_en": "Patience helps."
+  },
+  {
+    "transition_dialogue_id": "TD56",
+    "character_id": "SF15",
+    "stage_id": "ST39",
+    "character_line_en": "Your own party is watching you on rural hospitals.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD57",
+    "character_id": "SF16",
+    "stage_id": "ST39",
+    "character_line_en": "Caucus members will test you on rural hospitals.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD58",
+    "character_id": "SF01",
+    "stage_id": "ST39",
+    "character_line_en": "Know where your party stands on rural hospitals.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD59",
+    "character_id": "SF01",
+    "stage_id": "ST40",
+    "character_line_en": "The briefing on the identity card is in your folder.",
+    "player_reply_en": "I will read it."
+  },
+  {
+    "transition_dialogue_id": "TD60",
+    "character_id": "SF02",
+    "stage_id": "ST40",
+    "character_line_en": "Every figure on the identity card is checked and sourced.",
+    "player_reply_en": "Good. I will lean on them."
+  },
+  {
+    "transition_dialogue_id": "TD61",
+    "character_id": "SF16",
+    "stage_id": "ST40",
+    "character_line_en": "Take your time with the identity card. Nobody is rushing you.",
+    "player_reply_en": "Patience helps."
+  },
+  {
+    "transition_dialogue_id": "TD62",
+    "character_id": "SF08",
+    "stage_id": "ST41",
+    "character_line_en": "The studio lights are hot. Keep calm on the identity card.",
+    "player_reply_en": "Calm it is."
+  },
+  {
+    "transition_dialogue_id": "TD63",
+    "character_id": "SF09",
+    "stage_id": "ST41",
+    "character_line_en": "The viewers care about the identity card. Speak to them.",
+    "player_reply_en": "Directly to them."
+  },
+  {
+    "transition_dialogue_id": "TD64",
+    "character_id": "SF02",
+    "stage_id": "ST41",
+    "character_line_en": "Keep your facts on the identity card short and sharp.",
+    "player_reply_en": "Short and sharp."
+  },
+  {
+    "transition_dialogue_id": "TD65",
+    "character_id": "SF15",
+    "stage_id": "ST42",
+    "character_line_en": "Your own party is watching you on the identity card.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD66",
+    "character_id": "SF16",
+    "stage_id": "ST42",
+    "character_line_en": "Caucus members will test you on the identity card.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD67",
+    "character_id": "SF01",
+    "stage_id": "ST42",
+    "character_line_en": "Know where your party stands on the identity card.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD68",
+    "character_id": "SF08",
+    "stage_id": "ST43",
+    "character_line_en": "Reporters will ask about the broadcaster straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD69",
+    "character_id": "SF09",
+    "stage_id": "ST43",
+    "character_line_en": "Say plainly where you stand on the broadcaster.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD70",
+    "character_id": "SF02",
+    "stage_id": "ST43",
+    "character_line_en": "Keep one clear number on the broadcaster in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD71",
+    "character_id": "SF08",
+    "stage_id": "ST44",
+    "character_line_en": "The studio lights are hot. Keep calm on the broadcaster.",
+    "player_reply_en": "Calm it is."
+  },
+  {
+    "transition_dialogue_id": "TD72",
+    "character_id": "SF09",
+    "stage_id": "ST44",
+    "character_line_en": "The viewers care about the broadcaster. Speak to them.",
+    "player_reply_en": "Directly to them."
+  },
+  {
+    "transition_dialogue_id": "TD73",
+    "character_id": "SF02",
+    "stage_id": "ST44",
+    "character_line_en": "Keep your facts on the broadcaster short and sharp.",
+    "player_reply_en": "Short and sharp."
+  },
+  {
+    "transition_dialogue_id": "TD74",
+    "character_id": "SF15",
+    "stage_id": "ST45",
+    "character_line_en": "Your own party is watching you on the broadcaster.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD75",
+    "character_id": "SF16",
+    "stage_id": "ST45",
+    "character_line_en": "Caucus members will test you on the broadcaster.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD76",
+    "character_id": "SF01",
+    "stage_id": "ST45",
+    "character_line_en": "Know where your party stands on the broadcaster.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD77",
+    "character_id": "SF08",
+    "stage_id": "ST46",
+    "character_line_en": "Reporters will ask about political donations straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD78",
+    "character_id": "SF09",
+    "stage_id": "ST46",
+    "character_line_en": "Say plainly where you stand on political donations.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD79",
+    "character_id": "SF02",
+    "stage_id": "ST46",
+    "character_line_en": "Keep one clear number on political donations in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD80",
+    "character_id": "SF01",
+    "stage_id": "ST47",
+    "character_line_en": "Members will quote the record on political donations.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD81",
+    "character_id": "SF02",
+    "stage_id": "ST47",
+    "character_line_en": "Be exact about political donations. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD82",
+    "character_id": "SF15",
+    "stage_id": "ST47",
+    "character_line_en": "People back home follow this hearing on political donations.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD83",
+    "character_id": "SF15",
+    "stage_id": "ST48",
+    "character_line_en": "The lobbyist cares about political donations. Hear them out.",
+    "player_reply_en": "I will listen."
+  },
+  {
+    "transition_dialogue_id": "TD84",
+    "character_id": "SF09",
+    "stage_id": "ST48",
+    "character_line_en": "Anything you promise on political donations may be repeated.",
+    "player_reply_en": "Then I promise little."
+  },
+  {
+    "transition_dialogue_id": "TD85",
+    "character_id": "SF01",
+    "stage_id": "ST48",
+    "character_line_en": "I listed what each side wants on political donations.",
+    "player_reply_en": "Useful. Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD86",
+    "character_id": "SF15",
+    "stage_id": "ST49",
+    "character_line_en": "Your own party is watching you on political donations.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD87",
+    "character_id": "SF16",
+    "stage_id": "ST49",
+    "character_line_en": "Caucus members will test you on political donations.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD88",
+    "character_id": "SF01",
+    "stage_id": "ST49",
+    "character_line_en": "Know where your party stands on political donations.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD89",
+    "character_id": "SF01",
+    "stage_id": "ST50",
+    "character_line_en": "The briefing on the tax cut is in your folder.",
+    "player_reply_en": "I will read it."
+  },
+  {
+    "transition_dialogue_id": "TD90",
+    "character_id": "SF02",
+    "stage_id": "ST50",
+    "character_line_en": "Every figure on the tax cut is checked and sourced.",
+    "player_reply_en": "Good. I will lean on them."
+  },
+  {
+    "transition_dialogue_id": "TD91",
+    "character_id": "SF16",
+    "stage_id": "ST50",
+    "character_line_en": "Take your time with the tax cut. Nobody is rushing you.",
+    "player_reply_en": "Patience helps."
+  },
+  {
+    "transition_dialogue_id": "TD92",
+    "character_id": "SF01",
+    "stage_id": "ST51",
+    "character_line_en": "Members will quote the record on the tax cut.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD93",
+    "character_id": "SF02",
+    "stage_id": "ST51",
+    "character_line_en": "Be exact about the tax cut. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD94",
+    "character_id": "SF15",
+    "stage_id": "ST51",
+    "character_line_en": "People back home follow this hearing on the tax cut.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD95",
+    "character_id": "SF15",
+    "stage_id": "ST52",
+    "character_line_en": "Your own party is watching you on the tax cut.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD96",
+    "character_id": "SF16",
+    "stage_id": "ST52",
+    "character_line_en": "Caucus members will test you on the tax cut.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD97",
+    "character_id": "SF01",
+    "stage_id": "ST52",
+    "character_line_en": "Know where your party stands on the tax cut.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD98",
+    "character_id": "SF15",
+    "stage_id": "ST53",
+    "character_line_en": "The hall is full of people worried about the carbon levy.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD99",
+    "character_id": "SF16",
+    "stage_id": "ST53",
+    "character_line_en": "Keep it human when they ask about the carbon levy.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD100",
+    "character_id": "SF01",
+    "stage_id": "ST53",
+    "character_line_en": "I marked the questions to expect on the carbon levy.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD101",
+    "character_id": "SF01",
+    "stage_id": "ST54",
+    "character_line_en": "Members will quote the record on the carbon levy.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD102",
+    "character_id": "SF02",
+    "stage_id": "ST54",
+    "character_line_en": "Be exact about the carbon levy. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD103",
+    "character_id": "SF15",
+    "stage_id": "ST54",
+    "character_line_en": "People back home follow this hearing on the carbon levy.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD104",
+    "character_id": "SF08",
+    "stage_id": "ST55",
+    "character_line_en": "Reporters will ask about the carbon levy straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD105",
+    "character_id": "SF09",
+    "stage_id": "ST55",
+    "character_line_en": "Say plainly where you stand on the carbon levy.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD106",
+    "character_id": "SF02",
+    "stage_id": "ST55",
+    "character_line_en": "Keep one clear number on the carbon levy in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD107",
+    "character_id": "SF15",
+    "stage_id": "ST56",
+    "character_line_en": "Your own party is watching you on the carbon levy.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD108",
+    "character_id": "SF16",
+    "stage_id": "ST56",
+    "character_line_en": "Caucus members will test you on the carbon levy.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD109",
+    "character_id": "SF01",
+    "stage_id": "ST56",
+    "character_line_en": "Know where your party stands on the carbon levy.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD110",
+    "character_id": "SF01",
+    "stage_id": "ST57",
+    "character_line_en": "Members will quote the record on tradeable quotas.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD111",
+    "character_id": "SF02",
+    "stage_id": "ST57",
+    "character_line_en": "Be exact about tradeable quotas. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD112",
+    "character_id": "SF15",
+    "stage_id": "ST57",
+    "character_line_en": "People back home follow this hearing on tradeable quotas.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD113",
+    "character_id": "SF15",
+    "stage_id": "ST58",
+    "character_line_en": "The hall is full of people worried about tradeable quotas.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD114",
+    "character_id": "SF16",
+    "stage_id": "ST58",
+    "character_line_en": "Keep it human when they ask about tradeable quotas.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD115",
+    "character_id": "SF01",
+    "stage_id": "ST58",
+    "character_line_en": "I marked the questions to expect on tradeable quotas.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD116",
+    "character_id": "SF15",
+    "stage_id": "ST59",
+    "character_line_en": "Your own party is watching you on tradeable quotas.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD117",
+    "character_id": "SF16",
+    "stage_id": "ST59",
+    "character_line_en": "Caucus members will test you on tradeable quotas.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD118",
+    "character_id": "SF01",
+    "stage_id": "ST59",
+    "character_line_en": "Know where your party stands on tradeable quotas.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD119",
+    "character_id": "SF01",
+    "stage_id": "ST60",
+    "character_line_en": "Members will quote the record on the shipyards.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD120",
+    "character_id": "SF02",
+    "stage_id": "ST60",
+    "character_line_en": "Be exact about the shipyards. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD121",
+    "character_id": "SF15",
+    "stage_id": "ST60",
+    "character_line_en": "People back home follow this hearing on the shipyards.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD122",
+    "character_id": "SF15",
+    "stage_id": "ST61",
+    "character_line_en": "The hall is full of people worried about the shipyards.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD123",
+    "character_id": "SF16",
+    "stage_id": "ST61",
+    "character_line_en": "Keep it human when they ask about the shipyards.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD124",
+    "character_id": "SF01",
+    "stage_id": "ST61",
+    "character_line_en": "I marked the questions to expect on the shipyards.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD125",
+    "character_id": "SF15",
+    "stage_id": "ST62",
+    "character_line_en": "Your own party is watching you on the shipyards.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD126",
+    "character_id": "SF16",
+    "stage_id": "ST62",
+    "character_line_en": "Caucus members will test you on the shipyards.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD127",
+    "character_id": "SF01",
+    "stage_id": "ST62",
+    "character_line_en": "Know where your party stands on the shipyards.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD128",
+    "character_id": "SF01",
+    "stage_id": "ST63",
+    "character_line_en": "Members will quote the record on the review.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD129",
+    "character_id": "SF02",
+    "stage_id": "ST63",
+    "character_line_en": "Be exact about the review. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD130",
+    "character_id": "SF15",
+    "stage_id": "ST63",
+    "character_line_en": "People back home follow this hearing on the review.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD131",
+    "character_id": "SF08",
+    "stage_id": "ST64",
+    "character_line_en": "Reporters will ask about the review straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD132",
+    "character_id": "SF09",
+    "stage_id": "ST64",
+    "character_line_en": "Say plainly where you stand on the review.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD133",
+    "character_id": "SF02",
+    "stage_id": "ST64",
+    "character_line_en": "Keep one clear number on the review in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD134",
+    "character_id": "SF15",
+    "stage_id": "ST65",
+    "character_line_en": "Your own party is watching you on the review.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD135",
+    "character_id": "SF16",
+    "stage_id": "ST65",
+    "character_line_en": "Caucus members will test you on the review.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD136",
+    "character_id": "SF01",
+    "stage_id": "ST65",
+    "character_line_en": "Know where your party stands on the review.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD137",
+    "character_id": "SF01",
+    "stage_id": "ST66",
+    "character_line_en": "Members will quote the record on border sharing.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD138",
+    "character_id": "SF02",
+    "stage_id": "ST66",
+    "character_line_en": "Be exact about border sharing. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD139",
+    "character_id": "SF15",
+    "stage_id": "ST66",
+    "character_line_en": "People back home follow this hearing on border sharing.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD140",
+    "character_id": "SF15",
+    "stage_id": "ST67",
+    "character_line_en": "The lobbyist cares about border sharing. Hear them out.",
+    "player_reply_en": "I will listen."
+  },
+  {
+    "transition_dialogue_id": "TD141",
+    "character_id": "SF09",
+    "stage_id": "ST67",
+    "character_line_en": "Anything you promise on border sharing may be repeated.",
+    "player_reply_en": "Then I promise little."
+  },
+  {
+    "transition_dialogue_id": "TD142",
+    "character_id": "SF01",
+    "stage_id": "ST67",
+    "character_line_en": "I listed what each side wants on border sharing.",
+    "player_reply_en": "Useful. Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD143",
+    "character_id": "SF15",
+    "stage_id": "ST68",
+    "character_line_en": "Your own party is watching you on border sharing.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD144",
+    "character_id": "SF16",
+    "stage_id": "ST68",
+    "character_line_en": "Caucus members will test you on border sharing.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD145",
+    "character_id": "SF01",
+    "stage_id": "ST68",
+    "character_line_en": "Know where your party stands on border sharing.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD146",
+    "character_id": "SF01",
+    "stage_id": "ST69",
+    "character_line_en": "Members will quote the record on the islands.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD147",
+    "character_id": "SF02",
+    "stage_id": "ST69",
+    "character_line_en": "Be exact about the islands. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD148",
+    "character_id": "SF15",
+    "stage_id": "ST69",
+    "character_line_en": "People back home follow this hearing on the islands.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD149",
+    "character_id": "SF08",
+    "stage_id": "ST70",
+    "character_line_en": "Reporters will ask about the islands straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD150",
+    "character_id": "SF09",
+    "stage_id": "ST70",
+    "character_line_en": "Say plainly where you stand on the islands.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD151",
+    "character_id": "SF02",
+    "stage_id": "ST70",
+    "character_line_en": "Keep one clear number on the islands in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD152",
+    "character_id": "SF15",
+    "stage_id": "ST71",
+    "character_line_en": "The lobbyist cares about the islands. Hear them out.",
+    "player_reply_en": "I will listen."
+  },
+  {
+    "transition_dialogue_id": "TD153",
+    "character_id": "SF09",
+    "stage_id": "ST71",
+    "character_line_en": "Anything you promise on the islands may be repeated.",
+    "player_reply_en": "Then I promise little."
+  },
+  {
+    "transition_dialogue_id": "TD154",
+    "character_id": "SF01",
+    "stage_id": "ST71",
+    "character_line_en": "I listed what each side wants on the islands.",
+    "player_reply_en": "Useful. Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD155",
+    "character_id": "SF15",
+    "stage_id": "ST72",
+    "character_line_en": "Your own party is watching you on the islands.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD156",
+    "character_id": "SF16",
+    "stage_id": "ST72",
+    "character_line_en": "Caucus members will test you on the islands.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD157",
+    "character_id": "SF01",
+    "stage_id": "ST72",
+    "character_line_en": "Know where your party stands on the islands.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD158",
+    "character_id": "SF08",
+    "stage_id": "ST73",
+    "character_line_en": "The studio lights are hot. Keep calm on open trade.",
+    "player_reply_en": "Calm it is."
+  },
+  {
+    "transition_dialogue_id": "TD159",
+    "character_id": "SF09",
+    "stage_id": "ST73",
+    "character_line_en": "The viewers care about open trade. Speak to them.",
+    "player_reply_en": "Directly to them."
+  },
+  {
+    "transition_dialogue_id": "TD160",
+    "character_id": "SF02",
+    "stage_id": "ST73",
+    "character_line_en": "Keep your facts on open trade short and sharp.",
+    "player_reply_en": "Short and sharp."
+  },
+  {
+    "transition_dialogue_id": "TD161",
+    "character_id": "SF01",
+    "stage_id": "ST74",
+    "character_line_en": "Members will quote the record on open trade.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD162",
+    "character_id": "SF02",
+    "stage_id": "ST74",
+    "character_line_en": "Be exact about open trade. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD163",
+    "character_id": "SF15",
+    "stage_id": "ST74",
+    "character_line_en": "People back home follow this hearing on open trade.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD164",
+    "character_id": "SF15",
+    "stage_id": "ST75",
+    "character_line_en": "Your own party is watching you on open trade.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD165",
+    "character_id": "SF16",
+    "stage_id": "ST75",
+    "character_line_en": "Caucus members will test you on open trade.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD166",
+    "character_id": "SF01",
+    "stage_id": "ST75",
+    "character_line_en": "Know where your party stands on open trade.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD167",
+    "character_id": "SF15",
+    "stage_id": "ST76",
+    "character_line_en": "The hall is full of people worried about family farms.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD168",
+    "character_id": "SF16",
+    "stage_id": "ST76",
+    "character_line_en": "Keep it human when they ask about family farms.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD169",
+    "character_id": "SF01",
+    "stage_id": "ST76",
+    "character_line_en": "I marked the questions to expect on family farms.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD170",
+    "character_id": "SF01",
+    "stage_id": "ST77",
+    "character_line_en": "Members will quote the record on family farms.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD171",
+    "character_id": "SF02",
+    "stage_id": "ST77",
+    "character_line_en": "Be exact about family farms. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD172",
+    "character_id": "SF15",
+    "stage_id": "ST77",
+    "character_line_en": "People back home follow this hearing on family farms.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD173",
+    "character_id": "SF15",
+    "stage_id": "ST78",
+    "character_line_en": "Your own party is watching you on family farms.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD174",
+    "character_id": "SF16",
+    "stage_id": "ST78",
+    "character_line_en": "Caucus members will test you on family farms.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD175",
+    "character_id": "SF01",
+    "stage_id": "ST78",
+    "character_line_en": "Know where your party stands on family farms.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD176",
+    "character_id": "SF01",
+    "stage_id": "ST79",
+    "character_line_en": "The briefing on research funding is in your folder.",
+    "player_reply_en": "I will read it."
+  },
+  {
+    "transition_dialogue_id": "TD177",
+    "character_id": "SF02",
+    "stage_id": "ST79",
+    "character_line_en": "Every figure on research funding is checked and sourced.",
+    "player_reply_en": "Good. I will lean on them."
+  },
+  {
+    "transition_dialogue_id": "TD178",
+    "character_id": "SF16",
+    "stage_id": "ST79",
+    "character_line_en": "Take your time with research funding. Nobody is rushing you.",
+    "player_reply_en": "Patience helps."
+  },
+  {
+    "transition_dialogue_id": "TD179",
+    "character_id": "SF01",
+    "stage_id": "ST80",
+    "character_line_en": "Members will quote the record on research funding.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD180",
+    "character_id": "SF02",
+    "stage_id": "ST80",
+    "character_line_en": "Be exact about research funding. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD181",
+    "character_id": "SF15",
+    "stage_id": "ST80",
+    "character_line_en": "People back home follow this hearing on research funding.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD182",
+    "character_id": "SF15",
+    "stage_id": "ST81",
+    "character_line_en": "Your own party is watching you on research funding.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD183",
+    "character_id": "SF16",
+    "stage_id": "ST81",
+    "character_line_en": "Caucus members will test you on research funding.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD184",
+    "character_id": "SF01",
+    "stage_id": "ST81",
+    "character_line_en": "Know where your party stands on research funding.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD185",
+    "character_id": "SF15",
+    "stage_id": "ST82",
+    "character_line_en": "The hall is full of people worried about equal treatment.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD186",
+    "character_id": "SF16",
+    "stage_id": "ST82",
+    "character_line_en": "Keep it human when they ask about equal treatment.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD187",
+    "character_id": "SF01",
+    "stage_id": "ST82",
+    "character_line_en": "I marked the questions to expect on equal treatment.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD188",
+    "character_id": "SF08",
+    "stage_id": "ST83",
+    "character_line_en": "Reporters will ask about equal treatment straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD189",
+    "character_id": "SF09",
+    "stage_id": "ST83",
+    "character_line_en": "Say plainly where you stand on equal treatment.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD190",
+    "character_id": "SF02",
+    "stage_id": "ST83",
+    "character_line_en": "Keep one clear number on equal treatment in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD191",
+    "character_id": "SF08",
+    "stage_id": "ST84",
+    "character_line_en": "The studio lights are hot. Keep calm on equal treatment.",
+    "player_reply_en": "Calm it is."
+  },
+  {
+    "transition_dialogue_id": "TD192",
+    "character_id": "SF09",
+    "stage_id": "ST84",
+    "character_line_en": "The viewers care about equal treatment. Speak to them.",
+    "player_reply_en": "Directly to them."
+  },
+  {
+    "transition_dialogue_id": "TD193",
+    "character_id": "SF02",
+    "stage_id": "ST84",
+    "character_line_en": "Keep your facts on equal treatment short and sharp.",
+    "player_reply_en": "Short and sharp."
+  },
+  {
+    "transition_dialogue_id": "TD194",
+    "character_id": "SF15",
+    "stage_id": "ST85",
+    "character_line_en": "Your own party is watching you on equal treatment.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD195",
+    "character_id": "SF16",
+    "stage_id": "ST85",
+    "character_line_en": "Caucus members will test you on equal treatment.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD196",
+    "character_id": "SF01",
+    "stage_id": "ST85",
+    "character_line_en": "Know where your party stands on equal treatment.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD197",
+    "character_id": "SF15",
+    "stage_id": "ST86",
+    "character_line_en": "The hall is full of people worried about parental leave.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD198",
+    "character_id": "SF16",
+    "stage_id": "ST86",
+    "character_line_en": "Keep it human when they ask about parental leave.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD199",
+    "character_id": "SF01",
+    "stage_id": "ST86",
+    "character_line_en": "I marked the questions to expect on parental leave.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD200",
+    "character_id": "SF01",
+    "stage_id": "ST87",
+    "character_line_en": "The briefing on parental leave is in your folder.",
+    "player_reply_en": "I will read it."
+  },
+  {
+    "transition_dialogue_id": "TD201",
+    "character_id": "SF02",
+    "stage_id": "ST87",
+    "character_line_en": "Every figure on parental leave is checked and sourced.",
+    "player_reply_en": "Good. I will lean on them."
+  },
+  {
+    "transition_dialogue_id": "TD202",
+    "character_id": "SF16",
+    "stage_id": "ST87",
+    "character_line_en": "Take your time with parental leave. Nobody is rushing you.",
+    "player_reply_en": "Patience helps."
+  },
+  {
+    "transition_dialogue_id": "TD203",
+    "character_id": "SF15",
+    "stage_id": "ST88",
+    "character_line_en": "The lobbyist cares about parental leave. Hear them out.",
+    "player_reply_en": "I will listen."
+  },
+  {
+    "transition_dialogue_id": "TD204",
+    "character_id": "SF09",
+    "stage_id": "ST88",
+    "character_line_en": "Anything you promise on parental leave may be repeated.",
+    "player_reply_en": "Then I promise little."
+  },
+  {
+    "transition_dialogue_id": "TD205",
+    "character_id": "SF01",
+    "stage_id": "ST88",
+    "character_line_en": "I listed what each side wants on parental leave.",
+    "player_reply_en": "Useful. Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD206",
+    "character_id": "SF15",
+    "stage_id": "ST89",
+    "character_line_en": "Your own party is watching you on parental leave.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD207",
+    "character_id": "SF16",
+    "stage_id": "ST89",
+    "character_line_en": "Caucus members will test you on parental leave.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD208",
+    "character_id": "SF01",
+    "stage_id": "ST89",
+    "character_line_en": "Know where your party stands on parental leave.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD209",
+    "character_id": "SF01",
+    "stage_id": "ST90",
+    "character_line_en": "Members will quote the record on the cameras.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD210",
+    "character_id": "SF02",
+    "stage_id": "ST90",
+    "character_line_en": "Be exact about the cameras. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD211",
+    "character_id": "SF15",
+    "stage_id": "ST90",
+    "character_line_en": "People back home follow this hearing on the cameras.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD212",
+    "character_id": "SF08",
+    "stage_id": "ST91",
+    "character_line_en": "The studio lights are hot. Keep calm on the cameras.",
+    "player_reply_en": "Calm it is."
+  },
+  {
+    "transition_dialogue_id": "TD213",
+    "character_id": "SF09",
+    "stage_id": "ST91",
+    "character_line_en": "The viewers care about the cameras. Speak to them.",
+    "player_reply_en": "Directly to them."
+  },
+  {
+    "transition_dialogue_id": "TD214",
+    "character_id": "SF02",
+    "stage_id": "ST91",
+    "character_line_en": "Keep your facts on the cameras short and sharp.",
+    "player_reply_en": "Short and sharp."
+  },
+  {
+    "transition_dialogue_id": "TD215",
+    "character_id": "SF08",
+    "stage_id": "ST92",
+    "character_line_en": "Reporters will ask about the cameras straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD216",
+    "character_id": "SF09",
+    "stage_id": "ST92",
+    "character_line_en": "Say plainly where you stand on the cameras.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD217",
+    "character_id": "SF02",
+    "stage_id": "ST92",
+    "character_line_en": "Keep one clear number on the cameras in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD218",
+    "character_id": "SF15",
+    "stage_id": "ST93",
+    "character_line_en": "Your own party is watching you on the cameras.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD219",
+    "character_id": "SF16",
+    "stage_id": "ST93",
+    "character_line_en": "Caucus members will test you on the cameras.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD220",
+    "character_id": "SF01",
+    "stage_id": "ST93",
+    "character_line_en": "Know where your party stands on the cameras.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD221",
+    "character_id": "SF15",
+    "stage_id": "ST94",
+    "character_line_en": "The hall is full of people worried about town mergers.",
+    "player_reply_en": "Then I will listen first."
+  },
+  {
+    "transition_dialogue_id": "TD222",
+    "character_id": "SF16",
+    "stage_id": "ST94",
+    "character_line_en": "Keep it human when they ask about town mergers.",
+    "player_reply_en": "Human first."
+  },
+  {
+    "transition_dialogue_id": "TD223",
+    "character_id": "SF01",
+    "stage_id": "ST94",
+    "character_line_en": "I marked the questions to expect on town mergers.",
+    "player_reply_en": "Thank you."
+  },
+  {
+    "transition_dialogue_id": "TD224",
+    "character_id": "SF01",
+    "stage_id": "ST95",
+    "character_line_en": "Members will quote the record on town mergers.",
+    "player_reply_en": "Then I will quote back."
+  },
+  {
+    "transition_dialogue_id": "TD225",
+    "character_id": "SF02",
+    "stage_id": "ST95",
+    "character_line_en": "Be exact about town mergers. They will check.",
+    "player_reply_en": "Exact. Noted."
+  },
+  {
+    "transition_dialogue_id": "TD226",
+    "character_id": "SF15",
+    "stage_id": "ST95",
+    "character_line_en": "People back home follow this hearing on town mergers.",
+    "player_reply_en": "Then I will be careful."
+  },
+  {
+    "transition_dialogue_id": "TD227",
+    "character_id": "SF01",
+    "stage_id": "ST96",
+    "character_line_en": "The briefing on town mergers is in your folder.",
+    "player_reply_en": "I will read it."
+  },
+  {
+    "transition_dialogue_id": "TD228",
+    "character_id": "SF02",
+    "stage_id": "ST96",
+    "character_line_en": "Every figure on town mergers is checked and sourced.",
+    "player_reply_en": "Good. I will lean on them."
+  },
+  {
+    "transition_dialogue_id": "TD229",
+    "character_id": "SF16",
+    "stage_id": "ST96",
+    "character_line_en": "Take your time with town mergers. Nobody is rushing you.",
+    "player_reply_en": "Patience helps."
+  },
+  {
+    "transition_dialogue_id": "TD230",
+    "character_id": "SF15",
+    "stage_id": "ST97",
+    "character_line_en": "Your own party is watching you on town mergers.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD231",
+    "character_id": "SF16",
+    "stage_id": "ST97",
+    "character_line_en": "Caucus members will test you on town mergers.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD232",
+    "character_id": "SF01",
+    "stage_id": "ST97",
+    "character_line_en": "Know where your party stands on town mergers.",
+    "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD233",
+    "character_id": "SF08",
+    "stage_id": "ST98",
+    "character_line_en": "The studio lights are hot. Keep calm on open ballots.",
+    "player_reply_en": "Calm it is."
+  },
+  {
+    "transition_dialogue_id": "TD234",
+    "character_id": "SF09",
+    "stage_id": "ST98",
+    "character_line_en": "The viewers care about open ballots. Speak to them.",
+    "player_reply_en": "Directly to them."
+  },
+  {
+    "transition_dialogue_id": "TD235",
+    "character_id": "SF02",
+    "stage_id": "ST98",
+    "character_line_en": "Keep your facts on open ballots short and sharp.",
+    "player_reply_en": "Short and sharp."
+  },
+  {
+    "transition_dialogue_id": "TD236",
+    "character_id": "SF08",
+    "stage_id": "ST99",
+    "character_line_en": "Reporters will ask about open ballots straight away.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD237",
+    "character_id": "SF09",
+    "stage_id": "ST99",
+    "character_line_en": "Say plainly where you stand on open ballots.",
+    "player_reply_en": "Plainly. Understood."
+  },
+  {
+    "transition_dialogue_id": "TD238",
+    "character_id": "SF02",
+    "stage_id": "ST99",
+    "character_line_en": "Keep one clear number on open ballots in mind.",
+    "player_reply_en": "One number. Got it."
+  },
+  {
+    "transition_dialogue_id": "TD239",
+    "character_id": "SF15",
+    "stage_id": "ST100",
+    "character_line_en": "Your own party is watching you on open ballots.",
+    "player_reply_en": "Then I will choose well."
+  },
+  {
+    "transition_dialogue_id": "TD240",
+    "character_id": "SF16",
+    "stage_id": "ST100",
+    "character_line_en": "Caucus members will test you on open ballots.",
+    "player_reply_en": "I am ready."
+  },
+  {
+    "transition_dialogue_id": "TD241",
+    "character_id": "SF01",
+    "stage_id": "ST100",
+    "character_line_en": "Know where your party stands on open ballots.",
+    "player_reply_en": "I will check."
   }
 ]

@@ -11,7 +11,16 @@
     "stages": [
       "ST05",
       "ST24",
-      "ST29"
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Earnest",
     "suit_2": "Divisive",
@@ -41,7 +50,16 @@
     "stages": [
       "ST05",
       "ST24",
-      "ST29"
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Emotional",
     "suit_2": "Earnest",
@@ -71,7 +89,16 @@
     "stages": [
       "ST05",
       "ST24",
-      "ST29"
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -101,7 +128,16 @@
     "stages": [
       "ST05",
       "ST24",
-      "ST29"
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Divisive",
@@ -131,7 +167,16 @@
     "stages": [
       "ST05",
       "ST24",
-      "ST29"
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -161,7 +206,16 @@
     "stages": [
       "ST05",
       "ST24",
-      "ST29"
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Divisive",
     "suit_2": "Emotional",
@@ -191,7 +245,16 @@
     "stages": [
       "ST05",
       "ST24",
-      "ST29"
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -221,7 +284,16 @@
     "stages": [
       "ST05",
       "ST24",
-      "ST29"
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -513,7 +585,27 @@
     "stages": [
       "ST09",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Divisive",
@@ -543,7 +635,13 @@
     "stages": [
       "ST09",
       "ST18",
-      "ST06"
+      "ST06",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -573,7 +671,13 @@
     "stages": [
       "ST09",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -603,7 +707,29 @@
     "stages": [
       "ST10",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -632,7 +758,9 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -661,7 +789,9 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -690,7 +820,9 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -719,7 +851,9 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -748,7 +882,9 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -777,7 +913,9 @@
     "role": "Committee on the Environment",
     "stages": [
       "ST10",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -808,7 +946,15 @@
       "ST10",
       "ST01",
       "ST02",
-      "ST06"
+      "ST06",
+      "ST33",
+      "ST54",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -838,7 +984,9 @@
     "stages": [
       "ST10",
       "ST02",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -869,7 +1017,29 @@
       "ST10",
       "ST03",
       "ST08",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -900,7 +1070,15 @@
       "ST10",
       "ST18",
       "ST02",
-      "ST06"
+      "ST06",
+      "ST33",
+      "ST54",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -930,7 +1108,15 @@
     "stages": [
       "ST10",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -960,7 +1146,15 @@
     "stages": [
       "ST10",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST33",
+      "ST54",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -989,7 +1183,8 @@
     "role": "Committee on War",
     "stages": [
       "ST11",
-      "ST01"
+      "ST01",
+      "ST60"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -1018,7 +1213,8 @@
     "role": "Committee on War",
     "stages": [
       "ST11",
-      "ST01"
+      "ST01",
+      "ST60"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -1047,7 +1243,8 @@
     "role": "Committee on War",
     "stages": [
       "ST11",
-      "ST01"
+      "ST01",
+      "ST60"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -1077,7 +1274,8 @@
     "stages": [
       "ST11",
       "ST02",
-      "ST01"
+      "ST01",
+      "ST60"
     ],
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
@@ -1108,7 +1306,14 @@
       "ST11",
       "ST02",
       "ST06",
-      "ST01"
+      "ST01",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98",
+      "ST60"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -1138,7 +1343,28 @@
     "stages": [
       "ST11",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100",
+      "ST60"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -1168,7 +1394,28 @@
     "stages": [
       "ST11",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100",
+      "ST60"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -1197,7 +1444,8 @@
     "role": "Committee on War",
     "stages": [
       "ST11",
-      "ST18"
+      "ST18",
+      "ST60"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -1226,7 +1474,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST01"
+      "ST01",
+      "ST63"
     ],
     "suit_1": "Emotional",
     "suit_2": "Earnest",
@@ -1255,7 +1504,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST01"
+      "ST01",
+      "ST63"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -1284,7 +1534,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST01"
+      "ST01",
+      "ST63"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1313,7 +1564,8 @@
     "role": "Committee on the National Assembly",
     "stages": [
       "ST12",
-      "ST01"
+      "ST01",
+      "ST63"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1340,7 +1592,28 @@
     "stages": [
       "ST12",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100",
+      "ST63"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -1370,7 +1643,28 @@
     "stages": [
       "ST12",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100",
+      "ST63"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Divisive",
@@ -1400,7 +1694,28 @@
     "stages": [
       "ST12",
       "ST03",
-      "ST01"
+      "ST01",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100",
+      "ST63"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -1431,7 +1746,14 @@
       "ST12",
       "ST18",
       "ST06",
-      "ST01"
+      "ST01",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98",
+      "ST63"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1461,7 +1783,14 @@
     "stages": [
       "ST12",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96",
+      "ST63"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -1491,7 +1820,14 @@
     "stages": [
       "ST12",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96",
+      "ST63"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1521,7 +1857,9 @@
     "stages": [
       "ST13",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1551,7 +1889,9 @@
     "stages": [
       "ST13",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1581,7 +1921,9 @@
     "stages": [
       "ST13",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Appeal",
     "suit_2": "Duplicitous",
@@ -1611,7 +1953,9 @@
     "stages": [
       "ST13",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -1641,7 +1985,9 @@
     "stages": [
       "ST13",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -1671,7 +2017,9 @@
     "stages": [
       "ST13",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -1701,7 +2049,9 @@
     "stages": [
       "ST13",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1732,7 +2082,9 @@
       "ST13",
       "ST02",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1763,7 +2115,9 @@
       "ST13",
       "ST02",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -1794,7 +2148,15 @@
       "ST13",
       "ST18",
       "ST06",
-      "ST31"
+      "ST31",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1825,7 +2187,15 @@
       "ST13",
       "ST21",
       "ST01",
-      "ST31"
+      "ST31",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96",
+      "ST57",
+      "ST77"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -1854,7 +2224,10 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -1883,7 +2256,10 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
@@ -1912,7 +2288,10 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
@@ -1941,7 +2320,10 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -1970,7 +2352,10 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -1999,7 +2384,10 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2028,7 +2416,10 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -2057,7 +2448,10 @@
     "role": "Committee on Foreign Affairs",
     "stages": [
       "ST14",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -2087,7 +2481,10 @@
     "stages": [
       "ST14",
       "ST08",
-      "ST01"
+      "ST01",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2117,7 +2514,10 @@
     "stages": [
       "ST14",
       "ST18",
-      "ST08"
+      "ST08",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Divisive",
@@ -2147,7 +2547,16 @@
     "stages": [
       "ST14",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2177,7 +2586,16 @@
     "stages": [
       "ST14",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96",
+      "ST66",
+      "ST69",
+      "ST74"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2303,7 +2721,27 @@
       "ST03",
       "ST01",
       "ST25",
-      "ST27"
+      "ST27",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -2332,7 +2770,27 @@
       "ST03",
       "ST01",
       "ST25",
-      "ST27"
+      "ST27",
+      "ST35",
+      "ST39",
+      "ST42",
+      "ST45",
+      "ST49",
+      "ST52",
+      "ST56",
+      "ST59",
+      "ST62",
+      "ST65",
+      "ST68",
+      "ST72",
+      "ST75",
+      "ST78",
+      "ST81",
+      "ST85",
+      "ST89",
+      "ST93",
+      "ST97",
+      "ST100"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -2396,7 +2854,13 @@
       "ST21",
       "ST01",
       "ST25",
-      "ST27"
+      "ST27",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -2425,7 +2889,8 @@
     "role": "Committee on Finance",
     "stages": [
       "ST16",
-      "ST01"
+      "ST01",
+      "ST51"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -2454,7 +2919,8 @@
     "role": "Committee on Finance",
     "stages": [
       "ST16",
-      "ST01"
+      "ST01",
+      "ST51"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -2483,7 +2949,8 @@
     "role": "Committee on Finance",
     "stages": [
       "ST16",
-      "ST01"
+      "ST01",
+      "ST51"
     ],
     "suit_1": "Emotional",
     "suit_2": "Earnest",
@@ -2512,7 +2979,8 @@
     "role": "Committee on Finance",
     "stages": [
       "ST16",
-      "ST01"
+      "ST01",
+      "ST51"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -2541,7 +3009,8 @@
     "role": "Committee on Finance",
     "stages": [
       "ST16",
-      "ST01"
+      "ST01",
+      "ST51"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -2571,7 +3040,8 @@
     "stages": [
       "ST16",
       "ST02",
-      "ST01"
+      "ST01",
+      "ST51"
     ],
     "suit_1": "Appeal",
     "suit_2": "Earnest",
@@ -2601,7 +3071,8 @@
     "stages": [
       "ST16",
       "ST02",
-      "ST01"
+      "ST01",
+      "ST51"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -2632,7 +3103,14 @@
       "ST16",
       "ST02",
       "ST06",
-      "ST01"
+      "ST01",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98",
+      "ST51"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -2662,7 +3140,14 @@
     "stages": [
       "ST16",
       "ST18",
-      "ST06"
+      "ST06",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98",
+      "ST51"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -2691,7 +3176,12 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -2720,7 +3210,12 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Emotional",
     "suit_2": "Data Driven",
@@ -2749,7 +3244,12 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -2778,7 +3278,12 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2807,7 +3312,12 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -2836,7 +3346,12 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Earnest",
     "suit_2": "Duplicitous",
@@ -2865,7 +3380,12 @@
     "role": "Committee on Government Administration",
     "stages": [
       "ST17",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -2895,7 +3415,12 @@
     "stages": [
       "ST17",
       "ST02",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
@@ -2925,7 +3450,12 @@
     "stages": [
       "ST17",
       "ST08",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Emotional",
@@ -2955,7 +3485,12 @@
     "stages": [
       "ST17",
       "ST08",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -2987,7 +3522,18 @@
       "ST18",
       "ST02",
       "ST06",
-      "ST08"
+      "ST08",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95",
+      "ST41",
+      "ST44",
+      "ST73",
+      "ST84",
+      "ST91",
+      "ST98"
     ],
     "suit_1": "Appeal",
     "suit_2": "Divisive",
@@ -3017,7 +3563,18 @@
     "stages": [
       "ST17",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -3047,7 +3604,18 @@
     "stages": [
       "ST17",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -3077,7 +3645,18 @@
     "stages": [
       "ST17",
       "ST21",
-      "ST01"
+      "ST01",
+      "ST37",
+      "ST47",
+      "ST80",
+      "ST90",
+      "ST95",
+      "ST38",
+      "ST40",
+      "ST50",
+      "ST79",
+      "ST87",
+      "ST96"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -3137,7 +3716,16 @@
       "ST19",
       "ST04",
       "ST26",
-      "ST30"
+      "ST30",
+      "ST32",
+      "ST43",
+      "ST46",
+      "ST55",
+      "ST64",
+      "ST70",
+      "ST83",
+      "ST92",
+      "ST99"
     ],
     "suit_1": "Divisive",
     "suit_2": "Duplicitous",
@@ -3168,7 +3756,16 @@
       "ST19",
       "ST04",
       "ST26",
-      "ST30"
+      "ST30",
+      "ST32",
+      "ST43",
+      "ST46",
+      "ST55",
+      "ST64",
+      "ST70",
+      "ST83",
+      "ST92",
+      "ST99"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Divisive",
@@ -3199,7 +3796,16 @@
       "ST19",
       "ST04",
       "ST26",
-      "ST30"
+      "ST30",
+      "ST32",
+      "ST43",
+      "ST46",
+      "ST55",
+      "ST64",
+      "ST70",
+      "ST83",
+      "ST92",
+      "ST99"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Appeal",
@@ -3230,7 +3836,16 @@
       "ST19",
       "ST04",
       "ST26",
-      "ST30"
+      "ST30",
+      "ST32",
+      "ST43",
+      "ST46",
+      "ST55",
+      "ST64",
+      "ST70",
+      "ST83",
+      "ST92",
+      "ST99"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -3261,7 +3876,16 @@
       "ST19",
       "ST04",
       "ST26",
-      "ST30"
+      "ST30",
+      "ST32",
+      "ST43",
+      "ST46",
+      "ST55",
+      "ST64",
+      "ST70",
+      "ST83",
+      "ST92",
+      "ST99"
     ],
     "suit_1": "Divisive",
     "suit_2": "Data Driven",
@@ -3292,7 +3916,16 @@
       "ST19",
       "ST04",
       "ST26",
-      "ST30"
+      "ST30",
+      "ST32",
+      "ST43",
+      "ST46",
+      "ST55",
+      "ST64",
+      "ST70",
+      "ST83",
+      "ST92",
+      "ST99"
     ],
     "suit_1": "Duplicitous",
     "suit_2": "Emotional",
@@ -3323,7 +3956,16 @@
       "ST19",
       "ST04",
       "ST26",
-      "ST30"
+      "ST30",
+      "ST32",
+      "ST43",
+      "ST46",
+      "ST55",
+      "ST64",
+      "ST70",
+      "ST83",
+      "ST92",
+      "ST99"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -3354,7 +3996,16 @@
       "ST19",
       "ST04",
       "ST26",
-      "ST30"
+      "ST30",
+      "ST32",
+      "ST43",
+      "ST46",
+      "ST55",
+      "ST64",
+      "ST70",
+      "ST83",
+      "ST92",
+      "ST99"
     ],
     "suit_1": "Emotional",
     "suit_2": "Duplicitous",
@@ -3383,7 +4034,11 @@
     "role": "Chamber of Commerce Lobbyist",
     "stages": [
       "ST20",
-      "ST28"
+      "ST28",
+      "ST48",
+      "ST67",
+      "ST71",
+      "ST88"
     ],
     "suit_1": "Data Driven",
     "suit_2": "Appeal",
@@ -3411,7 +4066,11 @@
     "affiliation": "BO09",
     "role": "Labor Federation Member",
     "stages": [
-      "ST20"
+      "ST20",
+      "ST48",
+      "ST67",
+      "ST71",
+      "ST88"
     ],
     "suit_1": "Emotional",
     "suit_2": "Divisive",
@@ -3440,7 +4099,23 @@
     "role": "Agricultural Cooperative Member",
     "stages": [
       "ST20",
-      "ST28"
+      "ST28",
+      "ST48",
+      "ST67",
+      "ST71",
+      "ST88",
+      "ST05",
+      "ST24",
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Earnest",
     "suit_2": "Data Driven",
@@ -3469,7 +4144,11 @@
     "role": "Fisheries Cooperative Member",
     "stages": [
       "ST20",
-      "ST28"
+      "ST28",
+      "ST48",
+      "ST67",
+      "ST71",
+      "ST88"
     ],
     "suit_1": "Earnest",
     "suit_2": "Appeal",
@@ -3498,7 +4177,11 @@
     "role": "Mayors' Network Representative",
     "stages": [
       "ST20",
-      "ST28"
+      "ST28",
+      "ST48",
+      "ST67",
+      "ST71",
+      "ST88"
     ],
     "suit_1": "Appeal",
     "suit_2": "Data Driven",
@@ -3526,7 +4209,23 @@
     "affiliation": "BO06",
     "role": "Neighborhood Association Member",
     "stages": [
-      "ST20"
+      "ST20",
+      "ST48",
+      "ST67",
+      "ST71",
+      "ST88",
+      "ST05",
+      "ST24",
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Earnest",
     "suit_2": "Emotional",
@@ -3554,7 +4253,23 @@
     "affiliation": "BO11",
     "role": "Student",
     "stages": [
-      "ST20"
+      "ST20",
+      "ST48",
+      "ST67",
+      "ST71",
+      "ST88",
+      "ST05",
+      "ST24",
+      "ST29",
+      "ST34",
+      "ST36",
+      "ST53",
+      "ST58",
+      "ST61",
+      "ST76",
+      "ST82",
+      "ST86",
+      "ST94"
     ],
     "suit_1": "Emotional",
     "suit_2": "Appeal",
@@ -3582,7 +4297,11 @@
     "affiliation": "BO15",
     "role": "Our Traditional Society Member",
     "stages": [
-      "ST20"
+      "ST20",
+      "ST48",
+      "ST67",
+      "ST71",
+      "ST88"
     ],
     "suit_1": "Earnest",
     "suit_2": "Divisive",

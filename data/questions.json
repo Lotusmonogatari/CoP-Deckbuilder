@@ -773,7 +773,7 @@
         "BO13",
         "BO30"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP120"
     },
     {
       "id": "T10",
@@ -790,7 +790,7 @@
       "pleases_boosters": [
         "BO08"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP123"
     },
     {
       "id": "T11",
@@ -809,7 +809,7 @@
         "BO21",
         "BO19"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP124"
     },
     {
       "id": "T12",
@@ -828,7 +828,7 @@
         "BO28",
         "BO19"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP102"
     },
     {
       "id": "T13",
@@ -845,7 +845,7 @@
       "pleases_boosters": [
         "BO08"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP103"
     },
     {
       "id": "T14",
@@ -863,7 +863,7 @@
         "BO01",
         "BO22"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP104"
     },
     {
       "id": "T15",
@@ -882,7 +882,7 @@
         "BO21",
         "BO19"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP105"
     },
     {
       "id": "T16",
@@ -901,7 +901,7 @@
         "BO28",
         "BO19"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP106"
     },
     {
       "id": "T17",
@@ -918,7 +918,7 @@
       "pleases_boosters": [
         "BO08"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP107"
     },
     {
       "id": "T18",
@@ -938,7 +938,7 @@
         "BO28",
         "BO29"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP108"
     },
     {
       "id": "T19",
@@ -956,7 +956,7 @@
         "BO01",
         "BO22"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP109"
     },
     {
       "id": "T20",
@@ -973,7 +973,7 @@
       "pleases_boosters": [
         "BO06"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP120"
     },
     {
       "id": "T21",
@@ -992,7 +992,7 @@
         "BO28",
         "BO29"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP123"
     },
     {
       "id": "T22",
@@ -1011,7 +1011,7 @@
         "BO28",
         "BO29"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP124"
     },
     {
       "id": "T23",
@@ -1030,7 +1030,7 @@
         "BO28",
         "BO30"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP102"
     },
     {
       "id": "T24",
@@ -1050,7 +1050,7 @@
         "BO15",
         "BO20"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP103"
     },
     {
       "id": "T25",
@@ -1068,7 +1068,7 @@
         "BO03",
         "BO28"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP104"
     },
     {
       "id": "T26",
@@ -1088,7 +1088,7 @@
         "BO19",
         "BO12"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP105"
     },
     {
       "id": "T27",
@@ -1108,7 +1108,7 @@
         "BO13",
         "BO30"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP106"
     },
     {
       "id": "T28",
@@ -1128,7 +1128,7 @@
         "BO15",
         "BO20"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP107"
     },
     {
       "id": "T29",
@@ -1147,7 +1147,7 @@
         "BO28",
         "BO30"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP108"
     },
     {
       "id": "T30",
@@ -1165,7 +1165,7 @@
         "BO01",
         "BO22"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP109"
     },
     {
       "id": "T31",
@@ -1183,7 +1183,7 @@
         "BO21",
         "BO12"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP120"
     },
     {
       "id": "T32",
@@ -1200,7 +1200,7 @@
       "pleases_boosters": [
         "BO08"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP123"
     },
     {
       "id": "T33",
@@ -1219,7 +1219,7 @@
         "BO27",
         "BO20"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP124"
     },
     {
       "id": "T34",
@@ -1238,7 +1238,7 @@
         "BO26",
         "BO11"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP102"
     },
     {
       "id": "T35",
@@ -1257,7 +1257,7 @@
         "BO23",
         "BO25"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP103"
     },
     {
       "id": "T36",
@@ -1276,7 +1276,7 @@
         "BO26",
         "BO10"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP104"
     },
     {
       "id": "T37",
@@ -1294,7 +1294,7 @@
         "BO24",
         "BO18"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP105"
     },
     {
       "id": "T38",
@@ -1312,7 +1312,7 @@
         "BO23",
         "BO24"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP106"
     },
     {
       "id": "T39",
@@ -1330,7 +1330,7 @@
         "BO23",
         "BO05"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP107"
     },
     {
       "id": "T40",
@@ -1348,7 +1348,7 @@
         "BO22",
         "BO23"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP108"
     },
     {
       "id": "T41",
@@ -1366,7 +1366,7 @@
         "BO16",
         "BO22"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP109"
     },
     {
       "id": "T42",
@@ -1384,7 +1384,7 @@
         "BO17",
         "BO22"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP120"
     },
     {
       "id": "T43",
@@ -1402,7 +1402,7 @@
         "BO17",
         "BO22"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP123"
     },
     {
       "id": "T44",
@@ -1420,7 +1420,7 @@
         "BO17",
         "BO20"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP124"
     },
     {
       "id": "T45",
@@ -1437,7 +1437,7 @@
       "pleases_boosters": [
         "BO17"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP102"
     },
     {
       "id": "T46",
@@ -1455,7 +1455,7 @@
         "BO17",
         "BO22"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP103"
     },
     {
       "id": "T47",
@@ -1473,7 +1473,7 @@
         "BO17",
         "BO22"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP104"
     },
     {
       "id": "T48",
@@ -1490,7 +1490,7 @@
       "pleases_boosters": [
         "BO15"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP105"
     },
     {
       "id": "T49",
@@ -1508,7 +1508,7 @@
         "BO15",
         "BO29"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP106"
     },
     {
       "id": "T50",
@@ -1527,7 +1527,7 @@
         "BO19",
         "BO21"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP107"
     },
     {
       "id": "T51",
@@ -1545,7 +1545,7 @@
         "BO09",
         "BO25"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP108"
     },
     {
       "id": "T52",
@@ -1564,7 +1564,7 @@
         "BO12",
         "BO19"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP109"
     },
     {
       "id": "T53",
@@ -1582,7 +1582,7 @@
         "BO21",
         "BO12"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP120"
     },
     {
       "id": "T54",
@@ -1600,7 +1600,7 @@
         "BO16",
         "BO26"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP123"
     },
     {
       "id": "T55",
@@ -1618,7 +1618,7 @@
         "BO16",
         "BO11"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP124"
     },
     {
       "id": "T56",
@@ -1636,7 +1636,7 @@
         "BO05",
         "BO24"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP102"
     },
     {
       "id": "T57",
@@ -1655,7 +1655,7 @@
         "BO25",
         "BO13"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP103"
     },
     {
       "id": "T58",
@@ -1673,7 +1673,7 @@
         "BO01",
         "BO23"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP104"
     },
     {
       "id": "T59",
@@ -1691,7 +1691,7 @@
         "BO08",
         "BO23"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP105"
     },
     {
       "id": "T60",
@@ -1709,7 +1709,7 @@
         "BO12",
         "BO19"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP106"
     },
     {
       "id": "T61",
@@ -1727,7 +1727,7 @@
         "BO11",
         "BO28"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP107"
     },
     {
       "id": "T62",
@@ -1745,7 +1745,7 @@
         "BO04",
         "BO22"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP108"
     },
     {
       "id": "T63",
@@ -1763,7 +1763,7 @@
         "BO04",
         "BO30"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP109"
     },
     {
       "id": "T64",
@@ -1783,7 +1783,7 @@
         "BO20",
         "BO13"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP120"
     },
     {
       "id": "T65",
@@ -1801,7 +1801,7 @@
         "BO27",
         "BO18"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP123"
     },
     {
       "id": "T66",
@@ -1820,7 +1820,7 @@
         "BO04",
         "BO10"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP124"
     },
     {
       "id": "T67",
@@ -1838,7 +1838,7 @@
         "BO30",
         "BO04"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP102"
     },
     {
       "id": "T68",
@@ -1856,7 +1856,7 @@
         "BO04",
         "BO30"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP103"
     },
     {
       "id": "T69",
@@ -1875,7 +1875,7 @@
         "BO14",
         "BO30"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP104"
     },
     {
       "id": "T70",
@@ -1894,7 +1894,7 @@
         "BO20",
         "BO29"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP105"
     },
     {
       "id": "T71",
@@ -1912,7 +1912,7 @@
         "BO06",
         "BO28"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP106"
     },
     {
       "id": "T72",
@@ -1931,7 +1931,7 @@
         "BO18",
         "BO11"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP107"
     },
     {
       "id": "T73",
@@ -1949,7 +1949,7 @@
         "BO27",
         "BO18"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP108"
     },
     {
       "id": "T74",
@@ -1972,7 +1972,7 @@
         "BO27",
         "BO05"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP109"
     },
     {
       "id": "T75",
@@ -1995,7 +1995,7 @@
         "BO26",
         "BO23"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP120"
     },
     {
       "id": "T76",
@@ -2018,7 +2018,7 @@
         "BO27",
         "BO05"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP123"
     },
     {
       "id": "T77",
@@ -2041,7 +2041,7 @@
         "BO26",
         "BO23"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP124"
     },
     {
       "id": "T78",
@@ -2064,7 +2064,7 @@
         "BO27",
         "BO23"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP102"
     },
     {
       "id": "T79",
@@ -2081,7 +2081,7 @@
       "pleases_boosters": [
         "BO07"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP103"
     },
     {
       "id": "T80",
@@ -2098,7 +2098,7 @@
       "pleases_boosters": [
         "BO07"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP104"
     },
     {
       "id": "T81",
@@ -2115,7 +2115,7 @@
       "pleases_boosters": [
         "BO07"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP105"
     },
     {
       "id": "T82",
@@ -2132,7 +2132,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP106"
     },
     {
       "id": "T83",
@@ -2149,7 +2149,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP107"
     },
     {
       "id": "T84",
@@ -2166,7 +2166,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP108"
     },
     {
       "id": "T85",
@@ -2184,7 +2184,7 @@
         "BO16",
         "BO11"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP109"
     },
     {
       "id": "T86",
@@ -2202,7 +2202,7 @@
         "BO16",
         "BO11"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP120"
     },
     {
       "id": "T87",
@@ -2220,7 +2220,7 @@
         "BO11",
         "BO16"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP123"
     },
     {
       "id": "T88",
@@ -2239,7 +2239,7 @@
         "BO15",
         "BO13"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP124"
     },
     {
       "id": "T89",
@@ -2401,7 +2401,7 @@
         "BO07",
         "BO10"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP120"
     },
     {
       "id": "T98",
@@ -2419,7 +2419,7 @@
         "BO07",
         "BO26"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP123"
     },
     {
       "id": "T99",
@@ -2437,7 +2437,7 @@
         "BO18",
         "BO03"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP124"
     },
     {
       "id": "T100",
@@ -2454,7 +2454,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP102"
     },
     {
       "id": "T101",
@@ -2471,7 +2471,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP103"
     },
     {
       "id": "T102",
@@ -2489,7 +2489,7 @@
         "BO14",
         "BO27"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP104"
     },
     {
       "id": "T103",
@@ -2506,7 +2506,7 @@
       "pleases_boosters": [
         "BO11"
       ],
-      "asked_by": "OP108"
+      "asked_by": "OP105"
     },
     {
       "id": "T104",
@@ -2523,7 +2523,7 @@
       "pleases_boosters": [
         "BO15"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP106"
     }
   ],
   "lobbyist_meeting": [
@@ -2561,7 +2561,7 @@
         "BO26",
         "BO05"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L03",
@@ -2578,7 +2578,7 @@
       "pleases_boosters": [
         "BO09"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L04",
@@ -2597,7 +2597,7 @@
         "BO28",
         "BO30"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L05",
@@ -2614,7 +2614,7 @@
       "pleases_boosters": [
         "BO08"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L06",
@@ -2633,7 +2633,7 @@
         "BO25",
         "BO13"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L07",
@@ -2651,7 +2651,7 @@
         "BO06",
         "BO21"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L08",
@@ -2669,7 +2669,7 @@
         "BO10",
         "BO24"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L09",
@@ -2704,7 +2704,7 @@
         "BO25",
         "BO05"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L11",
@@ -2721,7 +2721,7 @@
       "pleases_boosters": [
         "BO05"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L12",
@@ -2738,7 +2738,7 @@
       "pleases_boosters": [
         "BO09"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L13",
@@ -2756,7 +2756,7 @@
         "BO10",
         "BO30"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L14",
@@ -2773,7 +2773,7 @@
       "pleases_boosters": [
         "BO08"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L15",
@@ -2791,7 +2791,7 @@
         "BO10",
         "BO30"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L16",
@@ -2808,7 +2808,7 @@
       "pleases_boosters": [
         "BO02"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L17",
@@ -2842,7 +2842,7 @@
       "pleases_boosters": [
         "BO06"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L19",
@@ -2859,7 +2859,7 @@
       "pleases_boosters": [
         "BO08"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L20",
@@ -2876,7 +2876,7 @@
       "pleases_boosters": [
         "BO02"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L21",
@@ -2895,7 +2895,7 @@
         "BO21",
         "BO19"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L22",
@@ -2914,7 +2914,7 @@
         "BO25",
         "BO11"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L23",
@@ -2933,7 +2933,7 @@
         "BO23",
         "BO25"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L24",
@@ -2951,7 +2951,7 @@
         "BO24",
         "BO18"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L25",
@@ -2986,7 +2986,7 @@
       "pleases_boosters": [
         "BO01"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L27",
@@ -3004,7 +3004,7 @@
         "BO22",
         "BO23"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L28",
@@ -3022,7 +3022,7 @@
         "BO22",
         "BO05"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L29",
@@ -3039,7 +3039,7 @@
       "pleases_boosters": [
         "BO17"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L30",
@@ -3057,7 +3057,7 @@
         "BO05",
         "BO22"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L31",
@@ -3080,7 +3080,7 @@
         "BO26",
         "BO23"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L32",
@@ -3097,7 +3097,7 @@
       "pleases_boosters": [
         "BO17"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L33",
@@ -3133,7 +3133,7 @@
         "BO17",
         "BO22"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L35",
@@ -3150,7 +3150,7 @@
       "pleases_boosters": [
         "BO09"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L36",
@@ -3167,7 +3167,7 @@
       "pleases_boosters": [
         "BO15"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L37",
@@ -3185,7 +3185,7 @@
         "BO12",
         "BO21"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L38",
@@ -3203,7 +3203,7 @@
         "BO09",
         "BO25"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L39",
@@ -3222,7 +3222,7 @@
         "BO21",
         "BO24"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L40",
@@ -3241,7 +3241,7 @@
         "BO12",
         "BO19"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L41",
@@ -3276,7 +3276,7 @@
         "BO26",
         "BO05"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L43",
@@ -3294,7 +3294,7 @@
         "BO10",
         "BO05"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L44",
@@ -3313,7 +3313,7 @@
         "BO25",
         "BO13"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L45",
@@ -3331,7 +3331,7 @@
         "BO01",
         "BO23"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L46",
@@ -3349,7 +3349,7 @@
         "BO08",
         "BO23"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L47",
@@ -3367,7 +3367,7 @@
         "BO12",
         "BO19"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L48",
@@ -3388,7 +3388,7 @@
         "BO20",
         "BO29"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L49",
@@ -3424,7 +3424,7 @@
         "BO04",
         "BO30"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L51",
@@ -3443,7 +3443,7 @@
         "BO25",
         "BO13"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L52",
@@ -3462,7 +3462,7 @@
         "BO18",
         "BO25"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L53",
@@ -3481,7 +3481,7 @@
         "BO04",
         "BO10"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L54",
@@ -3499,7 +3499,7 @@
         "BO14",
         "BO27"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L55",
@@ -3517,7 +3517,7 @@
         "BO04",
         "BO22"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L56",
@@ -3535,7 +3535,7 @@
         "BO04",
         "BO30"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L57",
@@ -3571,7 +3571,7 @@
         "BO06",
         "BO28"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L59",
@@ -3589,7 +3589,7 @@
         "BO27",
         "BO04"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L60",
@@ -3608,7 +3608,7 @@
         "BO18",
         "BO11"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L61",
@@ -3631,7 +3631,7 @@
         "BO26",
         "BO24"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L62",
@@ -3654,7 +3654,7 @@
         "BO26",
         "BO24"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L64",
@@ -3671,7 +3671,7 @@
       "pleases_boosters": [
         "BO07"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L65",
@@ -3688,7 +3688,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L66",
@@ -3724,7 +3724,7 @@
         "BO16",
         "BO24"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L68",
@@ -3742,7 +3742,7 @@
         "BO11",
         "BO27"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L69",
@@ -3761,7 +3761,7 @@
         "BO15",
         "BO13"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L70",
@@ -3780,7 +3780,7 @@
         "BO20",
         "BO03"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     },
     {
       "id": "L71",
@@ -3798,7 +3798,7 @@
         "BO20",
         "BO10"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP123"
     },
     {
       "id": "L72",
@@ -3816,7 +3816,7 @@
         "BO13",
         "BO15"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP124"
     },
     {
       "id": "L73",
@@ -3834,7 +3834,7 @@
         "BO13",
         "BO05"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP125"
     },
     {
       "id": "L74",
@@ -3870,7 +3870,7 @@
         "BO24",
         "BO21"
       ],
-      "asked_by": "OP120"
+      "asked_by": "OP119"
     },
     {
       "id": "L76",
@@ -3888,7 +3888,7 @@
         "BO07",
         "BO10"
       ],
-      "asked_by": "OP121"
+      "asked_by": "OP120"
     },
     {
       "id": "L77",
@@ -3905,7 +3905,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP122"
+      "asked_by": "OP121"
     },
     {
       "id": "L78",
@@ -3922,7 +3922,7 @@
       "pleases_boosters": [
         "BO02"
       ],
-      "asked_by": "OP118"
+      "asked_by": "OP122"
     }
   ],
   "policy_study": [
@@ -3942,7 +3942,7 @@
         "BO04",
         "BO25"
       ],
-      "asked_by": "OP101"
+      "asked_by": "OP100"
     },
     {
       "id": "B02",
@@ -3959,7 +3959,7 @@
       "pleases_boosters": [
         "BO09"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP11"
     },
     {
       "id": "B03",
@@ -3977,7 +3977,7 @@
         "BO09",
         "BO26"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP12"
     },
     {
       "id": "B04",
@@ -3995,7 +3995,7 @@
         "BO26",
         "BO23"
       ],
-      "asked_by": "OP36"
+      "asked_by": "OP16"
     },
     {
       "id": "B05",
@@ -4013,7 +4013,7 @@
         "BO09",
         "BO26"
       ],
-      "asked_by": "OP62"
+      "asked_by": "OP18"
     },
     {
       "id": "B06",
@@ -4030,7 +4030,7 @@
       "pleases_boosters": [
         "BO09"
       ],
-      "asked_by": "OP68"
+      "asked_by": "OP42"
     },
     {
       "id": "B07",
@@ -4048,7 +4048,7 @@
         "BO09",
         "BO24"
       ],
-      "asked_by": "OP77"
+      "asked_by": "OP46"
     },
     {
       "id": "B08",
@@ -4065,7 +4065,7 @@
       "pleases_boosters": [
         "BO09"
       ],
-      "asked_by": "OP101"
+      "asked_by": "OP59"
     },
     {
       "id": "B09",
@@ -4082,7 +4082,7 @@
       "pleases_boosters": [
         "BO09"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP62"
     },
     {
       "id": "B10",
@@ -4099,7 +4099,7 @@
       "pleases_boosters": [
         "BO06"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP71"
     },
     {
       "id": "B11",
@@ -4117,7 +4117,7 @@
         "BO04",
         "BO06"
       ],
-      "asked_by": "OP36"
+      "asked_by": "OP81"
     },
     {
       "id": "B12",
@@ -4136,7 +4136,7 @@
         "BO30",
         "BO28"
       ],
-      "asked_by": "OP62"
+      "asked_by": "OP87"
     },
     {
       "id": "B13",
@@ -4154,7 +4154,7 @@
         "BO08",
         "BO26"
       ],
-      "asked_by": "OP68"
+      "asked_by": "OP100"
     },
     {
       "id": "B14",
@@ -4171,7 +4171,7 @@
       "pleases_boosters": [
         "BO04"
       ],
-      "asked_by": "OP77"
+      "asked_by": "OP11"
     },
     {
       "id": "B15",
@@ -4189,7 +4189,7 @@
         "BO08",
         "BO23"
       ],
-      "asked_by": "OP101"
+      "asked_by": "OP12"
     },
     {
       "id": "B16",
@@ -4207,7 +4207,7 @@
         "BO25",
         "BO05"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP16"
     },
     {
       "id": "B17",
@@ -4225,7 +4225,7 @@
         "BO25",
         "BO05"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP18"
     },
     {
       "id": "B18",
@@ -4242,7 +4242,7 @@
       "pleases_boosters": [
         "BO04"
       ],
-      "asked_by": "OP36"
+      "asked_by": "OP42"
     },
     {
       "id": "B19",
@@ -4260,7 +4260,7 @@
         "BO04",
         "BO25"
       ],
-      "asked_by": "OP62"
+      "asked_by": "OP46"
     },
     {
       "id": "B20",
@@ -4278,7 +4278,7 @@
         "BO10",
         "BO30"
       ],
-      "asked_by": "OP68"
+      "asked_by": "OP59"
     },
     {
       "id": "B21",
@@ -4301,7 +4301,7 @@
         "BO26",
         "BO24"
       ],
-      "asked_by": "OP77"
+      "asked_by": "OP62"
     },
     {
       "id": "B22",
@@ -4318,7 +4318,7 @@
       "pleases_boosters": [
         "BO07"
       ],
-      "asked_by": "OP101"
+      "asked_by": "OP71"
     },
     {
       "id": "B23",
@@ -4335,7 +4335,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP81"
     },
     {
       "id": "B24",
@@ -4353,7 +4353,7 @@
         "BO16",
         "BO11"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP87"
     },
     {
       "id": "B25",
@@ -4371,7 +4371,7 @@
         "BO16",
         "BO24"
       ],
-      "asked_by": "OP36"
+      "asked_by": "OP100"
     },
     {
       "id": "B26",
@@ -4389,7 +4389,7 @@
         "BO01",
         "BO02"
       ],
-      "asked_by": "OP62"
+      "asked_by": "OP11"
     },
     {
       "id": "B27",
@@ -4407,7 +4407,7 @@
         "BO21",
         "BO12"
       ],
-      "asked_by": "OP68"
+      "asked_by": "OP12"
     },
     {
       "id": "B28",
@@ -4425,7 +4425,7 @@
         "BO27",
         "BO11"
       ],
-      "asked_by": "OP77"
+      "asked_by": "OP16"
     },
     {
       "id": "B29",
@@ -4443,7 +4443,7 @@
         "BO07",
         "BO09"
       ],
-      "asked_by": "OP101"
+      "asked_by": "OP18"
     },
     {
       "id": "B30",
@@ -4460,7 +4460,7 @@
       "pleases_boosters": [
         "BO14"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP42"
     }
   ],
   "media_ambush": [
@@ -5190,7 +5190,9 @@
         "BO29"
       ],
       "stage_ids": [
-        "ST10"
+        "ST10",
+        "ST33",
+        "ST54"
       ],
       "asked_by": "OP37"
     },
@@ -5211,7 +5213,9 @@
         "BO11"
       ],
       "stage_ids": [
-        "ST10"
+        "ST10",
+        "ST33",
+        "ST54"
       ],
       "asked_by": "OP42"
     },
@@ -5232,7 +5236,9 @@
         "BO26"
       ],
       "stage_ids": [
-        "ST10"
+        "ST10",
+        "ST33",
+        "ST54"
       ],
       "asked_by": "OP51"
     },
@@ -5253,7 +5259,8 @@
         "BO23"
       ],
       "stage_ids": [
-        "ST11"
+        "ST11",
+        "ST60"
       ],
       "asked_by": "OP52"
     },
@@ -5274,7 +5281,8 @@
         "BO22"
       ],
       "stage_ids": [
-        "ST11"
+        "ST11",
+        "ST60"
       ],
       "asked_by": "OP54"
     },
@@ -5295,7 +5303,8 @@
         "BO22"
       ],
       "stage_ids": [
-        "ST11"
+        "ST11",
+        "ST60"
       ],
       "asked_by": "OP57"
     },
@@ -5316,7 +5325,8 @@
         "BO23"
       ],
       "stage_ids": [
-        "ST12"
+        "ST12",
+        "ST63"
       ],
       "asked_by": "OP12"
     },
@@ -5337,7 +5347,8 @@
         "BO02"
       ],
       "stage_ids": [
-        "ST12"
+        "ST12",
+        "ST63"
       ],
       "asked_by": "OP27"
     },
@@ -5357,7 +5368,8 @@
         "BO17"
       ],
       "stage_ids": [
-        "ST12"
+        "ST12",
+        "ST63"
       ],
       "asked_by": "OP31"
     },
@@ -5378,7 +5390,9 @@
         "BO26"
       ],
       "stage_ids": [
-        "ST13"
+        "ST13",
+        "ST57",
+        "ST77"
       ],
       "asked_by": "OP46"
     },
@@ -5399,7 +5413,9 @@
         "BO24"
       ],
       "stage_ids": [
-        "ST13"
+        "ST13",
+        "ST57",
+        "ST77"
       ],
       "asked_by": "OP70"
     },
@@ -5420,7 +5436,9 @@
         "BO30"
       ],
       "stage_ids": [
-        "ST13"
+        "ST13",
+        "ST57",
+        "ST77"
       ],
       "asked_by": "OP74"
     },
@@ -5440,7 +5458,10 @@
         "BO17"
       ],
       "stage_ids": [
-        "ST14"
+        "ST14",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP59"
     },
@@ -5462,7 +5483,10 @@
         "BO13"
       ],
       "stage_ids": [
-        "ST14"
+        "ST14",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP61"
     },
@@ -5483,7 +5507,10 @@
         "BO22"
       ],
       "stage_ids": [
-        "ST14"
+        "ST14",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP72"
     },
@@ -5568,7 +5595,8 @@
         "BO24"
       ],
       "stage_ids": [
-        "ST16"
+        "ST16",
+        "ST51"
       ],
       "asked_by": "OP47"
     },
@@ -5590,7 +5618,8 @@
         "BO25"
       ],
       "stage_ids": [
-        "ST16"
+        "ST16",
+        "ST51"
       ],
       "asked_by": "OP83"
     },
@@ -5611,7 +5640,8 @@
         "BO05"
       ],
       "stage_ids": [
-        "ST16"
+        "ST16",
+        "ST51"
       ],
       "asked_by": "OP97"
     },
@@ -5632,7 +5662,12 @@
         "BO26"
       ],
       "stage_ids": [
-        "ST17"
+        "ST17",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95"
       ],
       "asked_by": "OP96"
     },
@@ -5653,7 +5688,12 @@
         "BO30"
       ],
       "stage_ids": [
-        "ST17"
+        "ST17",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95"
       ],
       "asked_by": "OP02"
     },
@@ -5674,7 +5714,12 @@
         "BO26"
       ],
       "stage_ids": [
-        "ST17"
+        "ST17",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95"
       ],
       "asked_by": "OP08"
     },
@@ -5757,7 +5802,7 @@
       "stage_ids": [
         "ST24"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP102"
     },
     {
       "id": "S35",
@@ -5777,7 +5822,7 @@
       "stage_ids": [
         "ST24"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP103"
     },
     {
       "id": "S36",
@@ -5797,7 +5842,7 @@
       "stage_ids": [
         "ST24"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP104"
     },
     {
       "id": "S37",
@@ -5818,7 +5863,7 @@
       "stage_ids": [
         "ST24"
       ],
-      "asked_by": "OP106"
+      "asked_by": "OP105"
     },
     {
       "id": "S38",
@@ -5838,7 +5883,7 @@
       "stage_ids": [
         "ST24"
       ],
-      "asked_by": "OP107"
+      "asked_by": "OP106"
     },
     {
       "id": "S39",
@@ -6213,7 +6258,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP109"
+      "asked_by": "OP102"
     },
     {
       "id": "S57",
@@ -6235,7 +6280,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP102"
+      "asked_by": "OP103"
     },
     {
       "id": "S58",
@@ -6255,7 +6300,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP103"
+      "asked_by": "OP104"
     },
     {
       "id": "S59",
@@ -6276,7 +6321,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP104"
+      "asked_by": "OP105"
     },
     {
       "id": "S60",
@@ -6298,7 +6343,7 @@
       "stage_ids": [
         "ST29"
       ],
-      "asked_by": "OP105"
+      "asked_by": "OP106"
     },
     {
       "id": "S61",
@@ -6515,7 +6560,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP79"
     },
@@ -6547,7 +6607,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP80"
     },
@@ -6580,7 +6655,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP81"
     },
@@ -6613,7 +6703,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP83"
     },
@@ -6646,7 +6751,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP84"
     },
@@ -6679,7 +6799,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP85"
     },
@@ -6712,7 +6847,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP86"
     },
@@ -6744,7 +6894,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP87"
     },
@@ -6777,7 +6942,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP88"
     },
@@ -6810,7 +6990,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP89"
     },
@@ -6842,7 +7037,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP90"
     },
@@ -6875,7 +7085,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP92"
     },
@@ -6908,7 +7133,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP93"
     },
@@ -6940,7 +7180,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP94"
     },
@@ -6973,7 +7228,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP95"
     },
@@ -7005,7 +7275,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP96"
     },
@@ -7037,7 +7322,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP97"
     },
@@ -7069,7 +7369,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP98"
     },
@@ -7101,7 +7416,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP99"
     },
@@ -7133,7 +7463,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP01"
     },
@@ -7167,7 +7512,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP02"
     },
@@ -7199,7 +7559,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP03"
     },
@@ -7231,7 +7606,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP04"
     },
@@ -7264,7 +7654,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP05"
     },
@@ -7297,7 +7702,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP06"
     },
@@ -7329,7 +7749,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP07"
     },
@@ -7361,7 +7796,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP08"
     },
@@ -7393,7 +7843,22 @@
         "ST17",
         "ST18",
         "ST27",
-        "ST31"
+        "ST31",
+        "ST33",
+        "ST54",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST51",
+        "ST57",
+        "ST77",
+        "ST60",
+        "ST63",
+        "ST66",
+        "ST69",
+        "ST74"
       ],
       "asked_by": "OP09"
     },
@@ -7646,6 +8111,2569 @@
         "ST26"
       ],
       "asked_by": "OP114"
+    },
+    {
+      "id": "S110",
+      "text": "What will protecting the wilderness save for our children?",
+      "theme": "Wilderness protection",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "stage_ids": [
+        "ST32",
+        "ST33",
+        "ST34"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S111",
+      "text": "Which animals are in danger if this bill fails?",
+      "theme": "Wilderness protection",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "stage_ids": [
+        "ST32",
+        "ST33",
+        "ST34"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "S112",
+      "text": "Loggers will lose work. What do you say to them?",
+      "theme": "Logging jobs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST32",
+        "ST33",
+        "ST34"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "S113",
+      "text": "Who pays for the new ranger stations?",
+      "theme": "Logging jobs",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST33",
+        "ST34"
+      ],
+      "asked_by": "OP51"
+    },
+    {
+      "id": "S114",
+      "text": "Who decides where the protected boundaries are drawn?",
+      "theme": "Public access to nature",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST33",
+        "ST34"
+      ],
+      "asked_by": "OP64"
+    },
+    {
+      "id": "S115",
+      "text": "Will hikers and local guides keep their access?",
+      "theme": "Public access to nature",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST33",
+        "ST34"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "S116",
+      "text": "My village is ninety minutes from an emergency room. Will this change that?",
+      "theme": "Rural health care",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST36",
+        "ST37"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "S117",
+      "text": "Will doctors really move to the countryside?",
+      "theme": "Rural health care",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST36",
+        "ST37",
+        "ST38"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "S118",
+      "text": "How much will the hospital network cost each year?",
+      "theme": "Hospital funding",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST36",
+        "ST37",
+        "ST38"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S119",
+      "text": "Could small clinics close after the first few years?",
+      "theme": "Hospital funding",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST36",
+        "ST37",
+        "ST38"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S120",
+      "text": "Why should cities pay for hospitals they will never use?",
+      "theme": "City and country fairness",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST36",
+        "ST37",
+        "ST38"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S121",
+      "text": "Who staffs a clinic in a town of two hundred?",
+      "theme": "City and country fairness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST36",
+        "ST37",
+        "ST38"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S122",
+      "text": "Can one card really replace my tax, health and benefit papers?",
+      "theme": "Digital convenience",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST40"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "S123",
+      "text": "What happens to my records if the system is hacked?",
+      "theme": "Data security",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST40"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "S124",
+      "text": "Who will see my data, and who can sell it?",
+      "theme": "Data security",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST40"
+      ],
+      "asked_by": "OP16"
+    },
+    {
+      "id": "S125",
+      "text": "Is the card compulsory for the elderly?",
+      "theme": "Personal privacy",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST40"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "S126",
+      "text": "Why should I trust the state with everything in one place?",
+      "theme": "Personal privacy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST40"
+      ],
+      "asked_by": "OP42"
+    },
+    {
+      "id": "S127",
+      "text": "How is independence not just a blank cheque?",
+      "theme": "Broadcaster funding",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST43"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "S128",
+      "text": "Who watches the watchers on the new board?",
+      "theme": "Regional coverage",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST43"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "S129",
+      "text": "Will rural viewers see more of their own region?",
+      "theme": "Regional coverage",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST43"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "S130",
+      "text": "Why should anyone hide who pays for a campaign?",
+      "theme": "Campaign finance",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST46",
+        "ST47",
+        "ST48"
+      ],
+      "asked_by": "OP111"
+    },
+    {
+      "id": "S131",
+      "text": "Will published donor lists end back-room deals?",
+      "theme": "Campaign finance",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST47",
+        "ST48"
+      ],
+      "asked_by": "OP26"
+    },
+    {
+      "id": "S132",
+      "text": "Small donors fear harassment if named. Will you protect them?",
+      "theme": "Donor privacy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST47"
+      ],
+      "asked_by": "OP28"
+    },
+    {
+      "id": "S133",
+      "text": "Does a donation cap silence honest supporters?",
+      "theme": "Donor privacy",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST47"
+      ],
+      "asked_by": "OP49"
+    },
+    {
+      "id": "S134",
+      "text": "Who audits the new reports, and who audits the auditor?",
+      "theme": "Member fundraising",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST46",
+        "ST47",
+        "ST48"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S135",
+      "text": "Why punish members for money their voters give freely?",
+      "theme": "Member fundraising",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST46",
+        "ST47",
+        "ST48"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "S136",
+      "text": "Will lower taxes really bring factories to Yezo?",
+      "theme": "Business investment",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST50",
+        "ST51"
+      ],
+      "asked_by": "OP16"
+    },
+    {
+      "id": "S137",
+      "text": "How many jobs does each yen of tax relief buy?",
+      "theme": "Business investment",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST50",
+        "ST51"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "S138",
+      "text": "Who makes up the lost revenue when taxes fall?",
+      "theme": "Public revenue",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO11",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST50",
+        "ST51"
+      ],
+      "asked_by": "OP42"
+    },
+    {
+      "id": "S139",
+      "text": "Do big firms get a gift while small shops wait?",
+      "theme": "Public revenue",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO11",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST50",
+        "ST51"
+      ],
+      "asked_by": "OP46"
+    },
+    {
+      "id": "S140",
+      "text": "Why cut taxes when schools are short of money?",
+      "theme": "Small shop fairness",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST51"
+      ],
+      "asked_by": "OP39"
+    },
+    {
+      "id": "S141",
+      "text": "What stops firms from pocketing the cut and leaving anyway?",
+      "theme": "Small shop fairness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST50",
+        "ST51"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "S142",
+      "text": "Will cleaner air be worth a higher heating bill this winter?",
+      "theme": "Clean air",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST53",
+        "ST54",
+        "ST55"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S143",
+      "text": "How much of the levy comes back to households?",
+      "theme": "Clean air",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST53",
+        "ST54",
+        "ST55"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S144",
+      "text": "Farmers and fishers burn fuel for a living. Who protects them?",
+      "theme": "Household energy costs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO07"
+      ],
+      "stage_ids": [
+        "ST53",
+        "ST54",
+        "ST55"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "S145",
+      "text": "Why tax a family before the factories change?",
+      "theme": "Household energy costs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO07"
+      ],
+      "stage_ids": [
+        "ST53",
+        "ST54"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "S146",
+      "text": "Is this a climate measure or a tax grab?",
+      "theme": "Fuel for farms and boats",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST53",
+        "ST54"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "S147",
+      "text": "Will other countries do the same, or are we alone?",
+      "theme": "Fuel for farms and boats",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST53",
+        "ST54"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S148",
+      "text": "Will tradeable quotas let big fleets buy out family boats?",
+      "theme": "Quota trading",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST57",
+        "ST58"
+      ],
+      "asked_by": "OP46"
+    },
+    {
+      "id": "S149",
+      "text": "How will onboard reporting catch cheats at sea?",
+      "theme": "Quota trading",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST57",
+        "ST58"
+      ],
+      "asked_by": "OP70"
+    },
+    {
+      "id": "S150",
+      "text": "Who owns a quota if my father's boat is sold?",
+      "theme": "Catch monitoring",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST57",
+        "ST58"
+      ],
+      "asked_by": "OP74"
+    },
+    {
+      "id": "S151",
+      "text": "Do the new limits follow science or politics?",
+      "theme": "Catch monitoring",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST57",
+        "ST58"
+      ],
+      "asked_by": "OP79"
+    },
+    {
+      "id": "S152",
+      "text": "Why must small harbours pay for monitoring equipment?",
+      "theme": "Family boats",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST57",
+        "ST58"
+      ],
+      "asked_by": "OP84"
+    },
+    {
+      "id": "S153",
+      "text": "What happens to quota when a fisher retires?",
+      "theme": "Family boats",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST57",
+        "ST58"
+      ],
+      "asked_by": "OP94"
+    },
+    {
+      "id": "S154",
+      "text": "How many yard jobs does a guaranteed order really protect?",
+      "theme": "Shipyard jobs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST60",
+        "ST61"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S155",
+      "text": "Will our own ships keep the coast safe?",
+      "theme": "Shipyard jobs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST60",
+        "ST61"
+      ],
+      "asked_by": "OP54"
+    },
+    {
+      "id": "S156",
+      "text": "Why guarantee profits to defense firms with public money?",
+      "theme": "Shipbuilding subsidies",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO21",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST60",
+        "ST61"
+      ],
+      "asked_by": "OP57"
+    },
+    {
+      "id": "S157",
+      "text": "Could the same money build clinics instead?",
+      "theme": "Shipbuilding subsidies",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO21",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST60",
+        "ST61"
+      ],
+      "asked_by": "OP63"
+    },
+    {
+      "id": "S158",
+      "text": "Will the yards depend on exports to stay busy?",
+      "theme": "Contract oversight",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST60",
+        "ST61"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S159",
+      "text": "Who inspects the contracts for waste?",
+      "theme": "Contract oversight",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST60",
+        "ST61"
+      ],
+      "asked_by": "OP67"
+    },
+    {
+      "id": "S160",
+      "text": "Why reopen the constitution when it has served us well?",
+      "theme": "Constitutional reform",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST63"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S161",
+      "text": "Who will sit on the commission, and who picks them?",
+      "theme": "Constitutional reform",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST63"
+      ],
+      "asked_by": "OP04"
+    },
+    {
+      "id": "S162",
+      "text": "Could the review be used to weaken my rights?",
+      "theme": "Commission membership",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST63"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "S163",
+      "text": "How long will the commission study before it reports?",
+      "theme": "Commission membership",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST63",
+        "ST64"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "S164",
+      "text": "Will ordinary citizens have any say in the findings?",
+      "theme": "Citizen rights",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST63",
+        "ST64"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S165",
+      "text": "What would you refuse to change, whatever the commission says?",
+      "theme": "Citizen rights",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST63",
+        "ST64"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S166",
+      "text": "Will merged customs checks really shorten the queue at the port?",
+      "theme": "Customs efficiency",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST66",
+        "ST67"
+      ],
+      "asked_by": "OP82"
+    },
+    {
+      "id": "S167",
+      "text": "How much trade do we lose to delays every year?",
+      "theme": "Customs efficiency",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST66",
+        "ST67"
+      ],
+      "asked_by": "OP89"
+    },
+    {
+      "id": "S168",
+      "text": "What data would Japan receive about our citizens?",
+      "theme": "Data sharing",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO28"
+      ],
+      "stage_ids": [
+        "ST66"
+      ],
+      "asked_by": "OP95"
+    },
+    {
+      "id": "S169",
+      "text": "Who answers if the data is misused abroad?",
+      "theme": "Data sharing",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO28"
+      ],
+      "stage_ids": [
+        "ST66"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "S170",
+      "text": "Does sharing a border mean sharing our sovereignty?",
+      "theme": "National sovereignty",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST66",
+        "ST67"
+      ],
+      "asked_by": "OP20"
+    },
+    {
+      "id": "S171",
+      "text": "Why trust a neighbour's officers at our docks?",
+      "theme": "National sovereignty",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST66",
+        "ST67"
+      ],
+      "asked_by": "OP38"
+    },
+    {
+      "id": "S172",
+      "text": "What will the Chishima venture bring home to Yezo?",
+      "theme": "Island resources",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST69",
+        "ST70",
+        "ST71"
+      ],
+      "asked_by": "OP44"
+    },
+    {
+      "id": "S173",
+      "text": "Who is our partner, and what do they get?",
+      "theme": "Island resources",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST69",
+        "ST70",
+        "ST71"
+      ],
+      "asked_by": "OP55"
+    },
+    {
+      "id": "S174",
+      "text": "Fishers say the islands are their waters. What about them?",
+      "theme": "Fishing waters",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST69",
+        "ST71"
+      ],
+      "asked_by": "OP56"
+    },
+    {
+      "id": "S175",
+      "text": "Will island residents share the profits?",
+      "theme": "Fishing waters",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST69"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "S176",
+      "text": "Who guards the islands if tensions rise?",
+      "theme": "Island security",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO07"
+      ],
+      "stage_ids": [
+        "ST69"
+      ],
+      "asked_by": "OP61"
+    },
+    {
+      "id": "S177",
+      "text": "Could this deal anger a bigger neighbour?",
+      "theme": "Island security",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO07"
+      ],
+      "stage_ids": [
+        "ST69",
+        "ST70",
+        "ST71"
+      ],
+      "asked_by": "OP72"
+    },
+    {
+      "id": "S178",
+      "text": "Will cheaper goods help ordinary families or hurt local makers?",
+      "theme": "Export gains",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST74"
+      ],
+      "asked_by": "OP82"
+    },
+    {
+      "id": "S179",
+      "text": "How many exporters gain when the tariffs fall?",
+      "theme": "Export gains",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST74"
+      ],
+      "asked_by": "OP89"
+    },
+    {
+      "id": "S180",
+      "text": "Can a farm compete with imports at half the price?",
+      "theme": "Local makers",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST74"
+      ],
+      "asked_by": "OP95"
+    },
+    {
+      "id": "S181",
+      "text": "What stops us depending on one trading partner?",
+      "theme": "Local makers",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST74"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "S182",
+      "text": "Do we ignore human rights for cheaper goods?",
+      "theme": "Trade dependence",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST74"
+      ],
+      "asked_by": "OP20"
+    },
+    {
+      "id": "S183",
+      "text": "Who protects workers if a factory closes?",
+      "theme": "Trade dependence",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST74"
+      ],
+      "asked_by": "OP38"
+    },
+    {
+      "id": "S184",
+      "text": "Will a grant keep my son on the family farm?",
+      "theme": "Young farmers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST76",
+        "ST77"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S185",
+      "text": "How many young people want to farm if the money is there?",
+      "theme": "Young farmers",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST76",
+        "ST77"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S186",
+      "text": "Why subsidize farms that cannot pay for themselves?",
+      "theme": "Farm subsidies",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST76",
+        "ST77"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S187",
+      "text": "Does an inheritance tax cut only help the wealthy landowner?",
+      "theme": "Farm subsidies",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST76",
+        "ST77"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S188",
+      "text": "What happens to farms with no heir?",
+      "theme": "Small farm fairness",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST76",
+        "ST77"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "S189",
+      "text": "Will the grant favour big farms over small ones?",
+      "theme": "Small farm fairness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST76",
+        "ST77"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "S190",
+      "text": "What will doubling research grants discover that we need?",
+      "theme": "Research and innovation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST79",
+        "ST80"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "S191",
+      "text": "Will graduates stay in Yezo if the labs are here?",
+      "theme": "Research and innovation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST80"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S192",
+      "text": "Who audits a university that controls its own budget?",
+      "theme": "University spending",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST79",
+        "ST80"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "S193",
+      "text": "Why spend on laboratories while schools lack teachers?",
+      "theme": "University spending",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST79",
+        "ST80"
+      ],
+      "asked_by": "OP100"
+    },
+    {
+      "id": "S194",
+      "text": "Will rural students ever benefit from this?",
+      "theme": "Rural students",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST79",
+        "ST80"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "S195",
+      "text": "Could autonomy let universities ignore national needs?",
+      "theme": "Rural students",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST79",
+        "ST80"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "S196",
+      "text": "Will the penalties really stop a manager who discriminates?",
+      "theme": "Fair treatment at work",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28"
+      ],
+      "stage_ids": [
+        "ST82"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S197",
+      "text": "How many workers face unequal pay today?",
+      "theme": "Fair treatment at work",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28"
+      ],
+      "stage_ids": [
+        "ST82"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S198",
+      "text": "Small shops fear lawsuits. Who protects them?",
+      "theme": "Small employer burden",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST82"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S199",
+      "text": "Will the rules make bosses hire fewer people?",
+      "theme": "Small employer burden",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST82",
+        "ST83"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "S200",
+      "text": "Who decides what counts as discrimination?",
+      "theme": "Defining discrimination",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST82",
+        "ST83"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "S201",
+      "text": "Why legislate what a good boss would do anyway?",
+      "theme": "Defining discrimination",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST82",
+        "ST83"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "S202",
+      "text": "Will both parents really take leave without losing their jobs?",
+      "theme": "Parent and child care",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST86",
+        "ST87",
+        "ST88"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S203",
+      "text": "Where will the new childcare places be built?",
+      "theme": "Parent and child care",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST86",
+        "ST87",
+        "ST88"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "S204",
+      "text": "Who pays for the leave: employers or taxpayers?",
+      "theme": "Employer costs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST86",
+        "ST87"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "S205",
+      "text": "Will small firms survive having two staff away?",
+      "theme": "Employer costs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST86"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "S206",
+      "text": "Does the state raise children now?",
+      "theme": "Childcare fairness",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST86",
+        "ST87",
+        "ST88"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S207",
+      "text": "Why should people without children pay for this?",
+      "theme": "Childcare fairness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST86",
+        "ST87",
+        "ST88"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S208",
+      "text": "Will cameras at the station actually stop crime?",
+      "theme": "Public safety",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST90",
+        "ST92"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "S209",
+      "text": "How long is my face stored by the police?",
+      "theme": "Public safety",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST90",
+        "ST92"
+      ],
+      "asked_by": "OP93"
+    },
+    {
+      "id": "S210",
+      "text": "Who watches the people who watch the cameras?",
+      "theme": "Surveillance limits",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST90"
+      ],
+      "asked_by": "OP96"
+    },
+    {
+      "id": "S211",
+      "text": "Does everyday safety justify tracking everyone?",
+      "theme": "Surveillance limits",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST90"
+      ],
+      "asked_by": "OP02"
+    },
+    {
+      "id": "S212",
+      "text": "Could the footage be used against protesters?",
+      "theme": "Protest and privacy",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST90"
+      ],
+      "asked_by": "OP08"
+    },
+    {
+      "id": "S213",
+      "text": "Why should innocent people be tracked for the sake of suspects?",
+      "theme": "Protest and privacy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST90",
+        "ST92"
+      ],
+      "asked_by": "OP100"
+    },
+    {
+      "id": "S214",
+      "text": "How much does merging two villages really save?",
+      "theme": "Merger savings",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST94",
+        "ST95",
+        "ST96"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "S215",
+      "text": "Will a merged town office still answer my phone call?",
+      "theme": "Merger savings",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST94",
+        "ST95",
+        "ST96"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "S216",
+      "text": "Will my village's name and festival disappear?",
+      "theme": "Local identity",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO06"
+      ],
+      "stage_ids": [
+        "ST94",
+        "ST95",
+        "ST96"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "S217",
+      "text": "What happens to the town hall staff?",
+      "theme": "Local identity",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO06"
+      ],
+      "stage_ids": [
+        "ST94",
+        "ST95",
+        "ST96"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S218",
+      "text": "Who speaks for a small village inside a big town?",
+      "theme": "Village representation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST94",
+        "ST95",
+        "ST96"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S219",
+      "text": "Why force towns to merge when they can share services?",
+      "theme": "Village representation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST94",
+        "ST95"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S220",
+      "text": "Would open ballots end back-room deals?",
+      "theme": "Internal democracy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST99"
+      ],
+      "asked_by": "OP113"
+    },
+    {
+      "id": "S221",
+      "text": "Will a membership vote reward popularity over ability?",
+      "theme": "Party stability",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST99"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S222",
+      "text": "Do small parties even have enough members to vote?",
+      "theme": "Party stability",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST99"
+      ],
+      "asked_by": "OP115"
     }
   ]
 }
