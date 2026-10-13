@@ -196,7 +196,7 @@ Where a built-in behaviour is keyed to a literal stage ID rather than a column (
 
 | Content | Floor | Target |
 |---|---|---|
-| Stage Questions, room with no pool | 3 | one per turn (turn_limit); at least half the turn limit |
+| Stage Questions, room with no pool | 3 x turn_limit available (section 2.9) | share a general set across rooms, then add the room's own |
 | Stage Questions, generic room that keeps its pool | 0 | at most a third of turn_limit |
 | Stage Questions, topic room | 3 | turn_limit with Question Pool blank |
 | Question grading | within about 15 points of the master spread (Strong / Weak: Earnest 54/14, Emotional 38/27, Appeal 29/20, Data Driven 42/19, Divisive 35/38, Duplicitous 35/24) | at least 2 Strong each; every theme maps to existing organisations |
@@ -257,6 +257,24 @@ Where a built-in behaviour is keyed to a literal stage ID rather than a column (
 **Recipe: a topic-specific floor stage** is the same, from the **Floor Debate / Caucus family** (ST02/ST03 rows: Seats or Support bar, `continuous`, 2 opponents). Because those families ask no questions today, a topic floor room's Stage Questions switch on the multiplier; keep it to 3 and bot-trial it against ST02 before and after.
 
 **Do not:** attach a topic to a generic stage ID, invent parties or canon, write numbers into cue lines, or write a question that names the asker's party unless Asked By Party limits it.
+
+### 2.9 The three-times rule (Cameron, 2026-10-13)
+
+**Every room should hold at least three times as much content as an average run is likely to meet, counting general content and the room's own together.** A room that asks 10 questions needs 30 to draw from. `python3 tools/content_depth.py` checks it for every combat room (add `--md` for a table, `--fail-under 3` to make it an exit code); `tools/measure_plays.sh` refreshes the cards-played and turns-ended figures it uses (a well-equipped bot, so a generous measure).
+
+| Content | A run meets | The room needs |
+|---|---|---|
+| Questions | its turn limit (one a turn) | at least 3 x the turn limit to draw from: its Question Pool plus every Stage Question naming it |
+| People | its Opponent Count | at least 3 x that many people listing the room in their Stage cell |
+| Player cues | cards played, spread over 18 (suit, verb) cells | each cell at least 3 x (cards played / 18) lines; a cell with no room-written row says the played card's own 5 lines instead, which needs 3 x (cards played / 15) |
+| Opponent cues | turns ended, spread over 9 cells | each cell at least 3 x (turns / 9) lines |
+| Transitions | one beat per entry | at least 3 exchanges that can play there |
+
+How to meet it with content only:
+- **One general question can serve many rooms.** A Stage Questions row's Stage ID cell takes a list, so a set of subject-neutral committee questions (the batch has 28) is written once and names every committee. Each committee then adds its own on top. Topic-neutral wording only in the shared set.
+- **Stage Questions are dealt first.** If a room has fewer Stage Questions than it asks, all of them are asked every run (the rest come from the pool). If it has more, a random subset is asked. A topic-pure room (no pool) therefore needs at least 3 x its turn limit of its own, or a share of a general set.
+- **Cue rows with the same Stage ID, Suit and Verb pool.** A family row (every Town Hall, say) and a topic row for one Town Hall add together. Write the family set once and list every room of that family in its Stage ID cell.
+- **People are canon.** The only way to raise a room's people count with content is to list it in more existing people's Stage cells, which is wrong when their job names another room. Where a room is short, say how many new characters it needs rather than inventing them.
 
 ---
 

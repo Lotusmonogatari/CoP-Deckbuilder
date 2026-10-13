@@ -50,6 +50,10 @@ var _bugs: Array[String] = []
 var _level_attempts := 0
 var _stages_played := 0
 var _wins := 0
+# Cards played and turns ended, summed over every fight (reported per fight by
+# the stage trial; tools/content_depth.py uses them to size content).
+var _cards_played := 0
+var _turns_ended := 0
 var _losses := 0
 
 var _random_moves := false
@@ -174,6 +178,8 @@ func _run_stage_trials(spec: String) -> void:
 			won += 1
 	_log("")
 	_log("=== TRIAL RESULT %s: %d / %d won (%d%%) ===" % [stage_id, won, trials, int(100.0 * won / maxi(trials, 1))])
+	_log("TRIAL PLAYS %s: %.1f cards and %.1f turns per fight" % [stage_id,
+		float(_cards_played) / maxi(trials, 1), float(_turns_ended) / maxi(trials, 1)])
 	_report()
 
 
@@ -536,6 +542,7 @@ func _play_battle_stage(stage: Dictionary) -> void:
 			_bug("%s: end_turn() refused mid-battle: %s" % [repro, end_result.get("reason")])
 			break
 		_check_invariants(engine, repro, "end_turn()")
+		_turns_ended += 1
 
 	if turns >= 60 and not engine.state.is_over():
 		_bug("%s: battle did not conclude within 60 turns (stuck at turn_limit=%s, gaffe=%d/%d)"
@@ -673,6 +680,7 @@ func _play_best_cards(engine: BattleEngine, repro: String) -> void:
 			return
 		_check_invariants(engine, repro, "play_card('%s')" % best_id)
 		played_this_turn += 1
+		_cards_played += 1
 
 
 ## The first card of the best affordable, gaffe-safe combination in hand,

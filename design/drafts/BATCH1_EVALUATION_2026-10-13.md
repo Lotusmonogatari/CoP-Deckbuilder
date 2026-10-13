@@ -1,91 +1,102 @@
 # Batch 1 draft: what was written, and how well it fits the scheme
 
-Draft workbook: `design/drafts/CoP_Batch1_Draft_2026-10-13.xlsx` (a full copy of the master with the batch applied; the master workbook is unchanged). Everything in it is a draft for Cameron to rewrite. Written 2026-10-13 against guide section 2.8.
+Draft workbook: `design/drafts/CoP_Batch1_Draft_2026-10-13.xlsx` (a full copy of the master with the batch applied; the master workbook is unchanged). Everything in it is a draft for Cameron to rewrite. Revised 2026-10-13 to meet the three-times rule (guide section 2.9).
 
 ## Executive summary
 
 | | |
 |---|---|
-| **What it is** | The transition pools (the biggest gap), plus two topic levels of four new rooms each: **Rail Fares and Timetables** and **Fishing Quotas and Harbours**. |
-| **Does it fit the scheme?** | **Yes, with four adjustments.** The data exports clean, every game test passes, the new rooms play like their families, and the new text meets the Tone Guide checks. Writing it exposed one real code bug, one scheme gap and two guidance changes (below). |
-| **Real bug found and fixed** | A blank Stage ID in any transition table (the "any room" wildcard) was read as the text "<null>", so no transition could ever appear. Fixed in `PoolPicker.gd` with a test, and a new real-click test now walks the transition screen. |
-| **Needs your call** | Bot win rate on both Media Ambush rooms is 0% (the existing one too); LV61 overlaps the existing LV14; Japanese stage names are my drafts. |
+| **What it is** | The transition pools, two topic levels of four new rooms each (**Rail Fares and Timetables**, **Fishing Quotas and Harbours**), and the depth every room needs to hold three times what a run meets. |
+| **Does it fit the scheme?** | **Yes.** The data exports clean, all 1,035 game tests and `tools/verify.sh` pass, the new rooms play like their families, and the new text meets the Tone Guide checks. |
+| **Three-times rule** | With the batch, every combat room clears 3x on questions, player cues, opponent cues and transitions. The one measure still short is **people**: 9 rooms need 8 new characters between them (listed below), which is yours to cast. |
+| **Real bug found and fixed** | A blank Stage ID in a transition table (the "any room" wildcard) was read as "<null>", so no transition could ever appear. Fixed in `PoolPicker.gd` with tests, and a new click test now walks the transition screen. |
+| **LV61 and LV14** | Not an overlap: each room carries its own content on top of the general content. Removed from the open questions. |
 
 ## What was drafted
 
-| Part | Count | Notes |
-|---|---|---|
-| New rooms | 8 | ST24-ST31, each built from an existing family (table below) |
-| New levels | 2 | LV61 Rail Fares and Timetables, LV62 Fishing Quotas and Harbours: Office Hours first, then four topic rooms |
-| Stage Questions | 36 (S34-S69) | 11 new Question Themes rows; every theme pleases existing organisations |
-| Player Cues | 24 rows (120 lines) | Scoped to each level's four rooms; two suits per level, attack/gain/block, 10 lines per cell |
-| Opponent Cues (room-scoped, general) | 24 rows (120 lines) | Same shape |
-| Transitions | 6 cast, 9 backgrounds, 34 exchanges | 12 any-room, 6 for the busiest existing rooms (Floor Debate, Caucus, Press Conference), 16 for the new rooms |
-| Show Transition | on for 20 existing combat rooms and the 8 new ones | Office Hours, Steering Check-in and Floor Vote stay off |
-| Seating | 26 existing opponent rows gained a new room ID | No new people |
-| Art tracker | 8 Assets rows | New room backgrounds, marked not drawn |
+| Part | Count |
+|---|---|
+| New rooms | 8 (ST24-ST31), built from existing families |
+| New levels | 2 (LV61, LV62): Office Hours, then four topic rooms |
+| Stage Questions | 76 (S34-S109): 36 topic questions, 28 general committee questions shared by all 13 committee-style rooms, 12 more press questions for ST26 |
+| General Media Ambush questions | 6 (A28-A33) |
+| Question Themes | 11 new rows |
+| Player Cues | 150 rows (750 lines): topic sets for each level; a Town Hall family set (ST05, ST24, ST29); a Caucus set (ST03); a TV Debate set (ST06); two more rows per committee cell |
+| Opponent Cues | 24 rows (room-scoped, general) |
+| Transitions | 6 cast, 9 backgrounds, 34 exchanges; Show Transition on for 20 existing combat rooms and the 8 new ones |
+| Seating | existing people listed on the new rooms (no new people) |
+| Art tracker | 8 Assets rows (new room backgrounds, not drawn) |
 
-| Room | Built from | Questions | Topic-pure? |
+## The three-times rule: before and after
+
+`python3 tools/content_depth.py` measures it (figures: asked per run against what the room can draw). Master first, with the batch second.
+
+| Room | Questions | Player cues | People |
 |---|---|---|---|
-| ST24 Town Hall on Commuter Fares | Town Hall | 5 stage + 104 pool | No (pool kept) |
-| ST25 Policy Study on Rail Timetables | Policy Study | 3 stage + 30 pool | No |
-| ST26 Press Conference on Raising Train Fares | Press Conference | 6 stage, pool blank | Yes (asks exactly its 6) |
-| ST27 Hearing on Rail Safety | Committee | 6 stage | Yes |
-| ST28 Lobbyist Meeting on Fishing Quotas | Lobbyist Meeting | 2 stage + 77 pool | No |
-| ST29 Town Hall at the Harbour | Town Hall | 5 stage + 104 pool | No |
-| ST30 Media Ambush on Seafood Labelling | Media Ambush | 3 stage + 27 pool | No |
-| ST31 Hearing on Fishery Quotas | Committee | 6 stage | Yes |
+| Committees (ST01, ST09-ST18) | 10 asked / 3 can draw (0.3x) -> 31 (3.1x) | long committees (ST09, 11, 12, 14-17) at 1.2-2.5x -> all 3.4x or more | unchanged |
+| ST03 Party Caucus | asks none | 2.4x -> 8.0x | 5.0x |
+| ST05 Town Hall | 6.1x | 1.8x -> 3.0x | 2.7x (short) |
+| ST06 TV Debate | asks none | 2.6x -> 3.1x | 9.0x |
+| ST19 Media Ambush | 2.5x -> 3.0x | 6.5x | 2.7x (short) |
+| ST24-ST31 (new) | 3.0x to 11.3x | 4.2x to 12.9x | 2.3x to 8.0x |
 
-## Fit against the scheme (guide section 8 checks)
+Short on **people** (needs 3x the people it seats), all because canon limits who may sit there:
+
+| Rooms | New characters needed |
+|---|---|
+| ST05, ST24, ST29 (Town Halls) | 1 more constituent |
+| ST19, ST30 (Media Ambush) | 1 more journalist |
+| ST11 Committee on War | 1 more member |
+| ST15 and ST27 (Construction and Development) | 2 more members |
+| ST16 Finance | 3 more members |
+
+## Fit against the scheme
 
 | Check | Result |
 |---|---|
 | Export ends "No errors" | Pass (only the four older OP15/22/35/40 warnings) |
-| Full game test suite and `tools/verify.sh` | Pass: GUT 1035 / 1035, and all verify.sh checks (including the new transition click test) |
-| Each level validates and expands | Pass; every room seats its opponents and stage questions |
-| Affinity: two up, two down, two neutral | Pass for all 8 (checked in code) |
-| Numbers inside the family's range | Pass; thresholds 55-60 and 58 for Town Hall/Press, energy and gaffe limits copied or varied within range |
-| Question grading near the room-tab spread | Pass. Strong / Weak: Earnest 47/16 (target 54/14), Emotional 36/27 (38/27), Appeal 25/19 (29/20), Data 44/19 (42/19), Divisive 36/38 (35/38), Duplicitous 38/30 (35/24). Every question has at least 2 Strong |
-| Cue cells hold at least 10 lines, all three verbs | Pass |
-| Cue lines: 9 words or fewer, no time words, no digits, no reply-dependence | Pass (word and time-word check run in code; reply-dependence read by hand) |
-| Transition lines: 18 words or fewer, reply 8 or fewer, short enough for the banner | Pass; longest line is 74 characters, against about 110 that fit in 4 seconds |
-| Numbers stored as numbers; current values re-read from the master | Pass; level rows copy LV14's value types, edits are appends only |
-| Bot win rates against family baseline (40 fights x 4 protagonists) | See below |
+| Game tests and `tools/verify.sh` | Pass: GUT 1035 / 1035, all verify.sh checks including the new transition click test |
+| Each level validates and expands | Pass |
+| Affinity two up, two down, two neutral | Pass for all 8 |
+| Numbers inside the family's range | Pass |
+| Question grading near the room-tab spread (Strong / Weak) | Pass: the 40 new general and press questions are Earnest 50/15, Emotional 35/27, Appeal 35/22, Data Driven 42/20, Divisive 40/27, Duplicitous 35/35; the 36 topic questions are within about 15 points. Every question has at least 2 Strong |
+| Cue lines: 9 words or fewer, no time words, no digits, not a reply | Pass (checked in code, then read by hand) |
+| Transition lines: 18 words or fewer, reply 8 or fewer | Pass; longest line 74 characters |
 
 ### Bot win rates (160 fights per room, a well-equipped player)
 
-| New room | Wins | Family baseline | Reading |
+| Room | Wins | Family baseline | Reading |
 |---|---|---|---|
-| ST24 Town Hall (fares) | 147 / 160 | ST05 138 / 160 | In family |
-| ST25 Policy Study | 160 / 160 | ST21 160 / 160 | In family |
-| ST26 Press Conference | 154 / 160 | ST04 160 / 160 | In family |
-| ST27 Rail Safety hearing | 160 / 160 | ST15 160 / 160 | In family (committees are easy for the bot) |
-| ST28 Lobbyist | 127 / 160 | ST20 142 / 160 | In family, slightly harder |
-| ST29 Town Hall (harbour) | 160 / 160 | ST05 138 / 160 | Easier than ST05 (threshold 58 vs 60 and the topic questions); raise the threshold to 60 to match |
-| ST30 Media Ambush | 0 / 160 | ST19 0 / 160 | In family, but see "Needs your call" |
-| ST31 Fishery hearing | 160 / 160 | ST13 160 / 160 | In family |
+| ST24 Town Hall (fares) | 141 | ST05 155 | In family |
+| ST25 Policy Study | 159 | ST21 160 | In family |
+| ST26 Press Conference | 155 | ST04 160 | In family |
+| ST27 Rail Safety hearing | 160 | ST15 159 | In family |
+| ST28 Lobbyist | 126 | ST20 143 | In family, slightly harder |
+| ST29 Town Hall (harbour) | 137 | ST05 155 | In family |
+| ST30 Media Ambush | 0 | ST19 0 | Matches the family, see below |
+| ST31 Fishery hearing | 160 | ST13 160 | In family |
 
-Also run for reference: Floor Debate ST02 160 / 160 and Caucus ST03 132 / 160, neither changed.
+Existing committees now ask 10 questions instead of 3 and stay at 159-160 of 160 (ST01, ST09, ST11, ST16); ST18, tuned to 45-50%, is 111 of 160 (one protagonist's deck wins 1 of 40, so it varies by deck).
 
-## What writing it showed (changes to the scheme)
+## What writing it showed
 
 | # | Finding | Action |
 |---|---|---|
-| 1 | **Bug.** `PoolPicker.eligible()` read a blank Stage ID (JSON null) as "<null>", so wildcard rows in Transition Cast, Backgrounds and Dialogue never matched and every transition resolved to nothing. The pools had been empty, so nobody saw it. | Fixed (`scripts/rules/PoolPicker.gd`), GUT test added, and a new real-click test (`tests/interaction/stage_transition_test.tscn`, added to `verify.sh`) fails without the fix. |
-| 2 | **Topic lines are rare.** A room's cast is the any-room cast plus any room-scoped cast, and each character picks among their own lines, so a topic-scoped line is heard only about 1 transition in 8 (measured 22-42 of 300 per room). | Guide: for each topic room write at least one room-scoped line for every cast member (6 per room), or keep any-room lines to one per character. Not done in this batch so the effect could be measured. |
-| 3 | **Switching transitions on changes test flows.** The Office Hours click test expected the next stage straight after the last visitor; with a transition now in between it failed. | Test updated to tap Continue. Guide: after switching Show Transition on, re-run `verify.sh`. |
-| 4 | Stage Questions for the committee-style rooms: 6 questions for 10 turns. | Allowed (existing committees have 3). Guide: floor 3, aim for at least half the turn limit. |
+| 1 | **Bug.** `PoolPicker.eligible()` read a blank Stage ID as "<null>", so wildcard transition rows never matched. | Fixed, with a GUT test and `tests/interaction/stage_transition_test.tscn` (fails without the fix). |
+| 2 | Room-scoped transition lines are heard about 1 transition in 8. | Guide: write a room-scoped line for every cast member. |
+| 3 | Switching transitions on changes test flows. | Office Hours click test updated; guide says to re-run `verify.sh`. |
+| 4 | **Stage Questions are always asked first.** A room with fewer Stage Questions than it asks repeats them every run; with more, a random subset plays. | Guide section 2.9: share a general set across rooms and make topic-pure rooms hold 3x their own. |
+| 5 | The bot plays 50-80 cards in the longer committees, which is generous for a person. | The rule measures against the bot, so it is safe for people. |
 
 ## Needs your call
 
 | Question | Why it matters |
 |---|---|
-| **Media Ambush wins 0 of 160** for the bot, on both the existing ST19 and the new ST30 (11 turns, 2 gaffes allowed, 3 opponents). | The new room follows the family exactly, so it inherits this. Whether the ambush is meant to be near-unwinnable is yours to say. |
-| **LV61 overlaps LV14 "Fixing the Daily Commute".** | I kept both; rename or drop one if you want a single commute level. |
-| **Stage and level names, including the Japanese names**, are my drafts. | Check the Japanese especially. |
-| **ST29's threshold** (58) makes it easier than ST05. | Set to 60 to match, or keep it as the gentler harbour room. |
-| **Ambush and hearing question counts** | The two hearings and the press conference are topic-pure (they ask only their own questions); the other five also draw on the generic pools. |
+| **Media Ambush wins 0 of 160** for the bot, on ST19 and on the new ST30. | The new room follows the family exactly, so it inherits this. Is the ambush meant to be nearly unwinnable? |
+| **Eight new characters** to bring nine rooms to 3x on people. | Names and parties are yours. |
+| **Names, including the Japanese ones**, are my drafts. | Check the Japanese especially. |
+| **ST29's threshold** (58 against ST05's 60) | Match it at 60, or keep the gentler harbour room. |
 
 ## Not covered
 
-No test plays the new levels through the whole Office-to-level flow with real clicks (the bot trials fight each room; the transition test walks the transition screen). No art exists for the 8 new backgrounds (labelled placeholders show). Cues were checked by rule and by reading, not played.
+No test plays the new levels through the whole Office-to-level flow with real clicks. No art exists for the 8 new backgrounds (labelled placeholders show). Cues were checked by rule and by reading, not played.
