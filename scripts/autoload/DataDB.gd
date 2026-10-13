@@ -560,7 +560,10 @@ func _cues_by_card(rows: Variant) -> Dictionary:
 func _cue_lines(row: Dictionary) -> Array[String]:
 	var lines: Array[String] = []
 	for index in range(1, 6):
-		var line := str(row.get("cue_%d" % index, "")).strip_edges()
+		# A blank cell is JSON null, and str(null) is "<null>" — skip it
+		# explicitly so a row with fewer than five lines never speaks "<null>".
+		var raw: Variant = row.get("cue_%d" % index)
+		var line := "" if raw == null else str(raw).strip_edges()
 		if not line.is_empty():
 			lines.append(line)
 	return lines
