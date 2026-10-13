@@ -1,6 +1,6 @@
 # Plan: making screens fit typical phones (draft 2026-10-14)
 
-**Status:** steps 0-4 built (2026-10-14). Steps 5 (text size setting) and 6 (real devices) are open.
+**Status:** steps 0-5 built (2026-10-14). Only step 6 (a real-device pass) is open.
 
 ## Where we are
 
@@ -30,7 +30,7 @@
 | 2 | **Aspect test matrix (BUILT: `tests/interaction/aspect_matrix_test.tscn`, in `verify.sh`)** | A throwaway driver renders each screen type at 1080x1920, 1080x2160, 1080x2340, 1080x2520 and 1600x2000 (tablet) and saves screenshots, plus an automated check that no control extends past the viewport and no scrollbar is horizontal. Becomes a click test in `verify.sh` | Medium |
 | 3 | **Short-screen mode (BUILT: the battle art box now shrinks to 320 px minimum, so the End Turn button stays on a 1080x1920 screen)** | At 9:16 and shorter, the battle screen drops to a compact layout: smaller art box (it is the one elastic block), hand cards a notch smaller. Rule of thumb: art box takes whatever height is left after the fixed rows, with a floor | Medium (battle screen is the hard one) |
 | 4 | **Wide-screen cap (BUILT in `Layout.gd`: screens wider than 1080 get side margins, so a tablet shows a centred column)** | Above about 1.0 width:height, keep the 1080-wide column centred, with the stage background filling the sides. No screen stretches its content to tablet width | Small |
-| 5 | **Text scale** | A single `ui_scale` in Settings (Small / Normal / Large) applied to the theme font sizes, so players with large-text needs are served without re-laying out every scene | Medium |
+| 5 | **Text scale (BUILT: Administration menu button cycles Small / Normal / Large; sizes are Balance levers `text_scale_small` 90 and `text_scale_large` 120; saved in `user://settings.json`, separate from the save)** | A single `ui_scale` in Settings (Small / Normal / Large) applied to the theme font sizes, so players with large-text needs are served without re-laying out every scene | Medium |
 | 6 | **Real-device pass** | Android first (Pixel and a small phone), then iOS. Checklist in `design/PLAYTEST_CHECKLIST.md` gains a "layout" line per screen | Needs devices |
 
 ## Rules to keep from now on

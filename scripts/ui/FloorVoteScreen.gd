@@ -97,6 +97,7 @@ func start_voting() -> void:
 
 	_stage_name.text = str(_stage.get("name_en", "National Assembly Floor Voting"))
 	_stage_name_jp.text = str(_stage.get("name_jp", ""))
+	_fit_stage_name.call_deferred()
 	_background.art_id = str(_stage.get("stage_id", ""))
 
 	engine = FloorVoteEngine.new()
@@ -300,3 +301,17 @@ func _on_outcome_closed() -> void:
 		get_tree().change_scene_to_file(OFFICE_SCENE)
 	else:
 		StageRouting.go_to_next_stage(get_tree(), StageRouting.FLOOR_VOTE_SCENE)
+
+
+## A stage name that fits stays on one line beside its Japanese accent; one
+## too long for the header (large text, a narrow phone) wraps instead of
+## pushing the accent off the screen. Same rule as VisitorScreen's.
+func _fit_stage_name() -> void:
+	var header := _stage_name.get_parent().get_parent() as Control
+	var font := _stage_name.get_theme_font("font")
+	var font_size := _stage_name.get_theme_font_size("font_size")
+	var needed := font.get_string_size(_stage_name.text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+	var room := header.size.x - _stage_name_jp.get_combined_minimum_size().x - 48.0
+	var wrap := needed > room
+	_stage_name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART if wrap else TextServer.AUTOWRAP_OFF
+	_stage_name.size_flags_horizontal = Control.SIZE_EXPAND_FILL if wrap else Control.SIZE_FILL

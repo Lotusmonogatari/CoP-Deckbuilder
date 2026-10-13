@@ -965,6 +965,7 @@ func _show_administration_menu() -> void:
 		_menu_button("CosmeticsButton", "office.cosmetics", _show_cosmetics, _cosmetics_panel),
 		_menu_button("HowToPlayButton", "office.how_to_play",
 			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
+		_text_size_button(),
 		# Starting over lives here, not in Office Management (Cameron,
 		# 2026-10-11). The menu closes first so it is not left open under the
 		# warning and the New Game screens.
@@ -973,6 +974,25 @@ func _show_administration_menu() -> void:
 			_confirm_new_game(), _new_game_panel),
 	]
 	_administration_menu.open(Text.say("office.administration"), rows)
+
+
+## "Text size: Normal" -- one tap cycles Small, Normal, Large and applies it
+## at once; the menu is rebuilt so the screen shows the new size.
+func _text_size_button() -> Button:
+	var button := UiKit.action_button(_text_size_label(), "", func() -> void:
+		Layout.cycle_text_size()
+		_show_administration_menu(), 100.0)
+	button.name = "TextSizeButton"
+	button.custom_minimum_size.x = UiKit.LINE_WIDTH
+	return button
+
+
+func _text_size_label() -> String:
+	var word := Text.say("text_size.normal")
+	match Layout.text_size_setting:
+		TextScale.SMALL: word = Text.say("text_size.small")
+		TextScale.LARGE: word = Text.say("text_size.large")
+	return Text.say("office.text_size", {"size": word})
 
 
 ## One row of a menu: a button that runs `opener` (which opens `panel`) and

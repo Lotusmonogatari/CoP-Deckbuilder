@@ -2854,5 +2854,33 @@
     "english": "{name} · standing {standing}",
     "placeholders": "name, standing",
     "notes": null
+  },
+  {
+    "key": "office.text_size",
+    "where": "Administration menu, text size button",
+    "english": "Text size: {size}",
+    "placeholders": "size",
+    "notes": null
+  },
+  {
+    "key": "text_size.small",
+    "where": "Text size button, the word",
+    "english": "Small",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "text_size.normal",
+    "where": "Text size button, the word",
+    "english": "Normal",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "text_size.large",
+    "where": "Text size button, the word",
+    "english": "Large",
+    "placeholders": null,
+    "notes": null
   }
 ]

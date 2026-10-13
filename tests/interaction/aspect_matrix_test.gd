@@ -36,6 +36,14 @@ func _run() -> void:
 	for screen_name: String in SCREENS:
 		for size: Vector2i in SIZES:
 			await _check(screen_name, SCREENS[screen_name], size, shots)
+	# Large text must fit too: the two most demanding shapes.
+	Layout.text_size_setting = TextScale.LARGE
+	Layout.apply_text_scale()
+	for screen_name: String in SCREENS:
+		for size: Vector2i in [Vector2i(1080, 1920), Vector2i(1080, 2340)]:
+			await _check(screen_name + "(large text)", SCREENS[screen_name], size, shots)
+	Layout.text_size_setting = TextScale.NORMAL
+	Layout.apply_text_scale()
 	print("")
 	if _failures.is_empty():
 		print("ASPECT MATRIX TEST: PASS (%d screens x %d sizes)" % [SCREENS.size(), SIZES.size()])
@@ -49,7 +57,7 @@ func _run() -> void:
 
 func _prepare(screen_name: String) -> void:
 	GameState.start_new_run("PC01")
-	match screen_name:
+	match screen_name.trim_suffix("(large text)"):
 		"Battle":
 			GameState.begin_level(LevelRunner.new(BattleSetup.expand_level(DataDB.get_level("LV08"))))
 		"FloorVote":

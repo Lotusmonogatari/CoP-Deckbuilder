@@ -13,10 +13,21 @@ const SIDES := ["left", "top", "right", "bottom"]
 ## keeps a centred column and shows the room's background down the sides.
 const MAX_COLUMN := 1080.0
 
+## The player's own settings, kept apart from the save so starting a new game
+## never resets them.
+const SETTINGS_PATH := "user://settings.json"
+
+var text_size_setting := TextScale.NORMAL
+## The theme's own font sizes as authored, so scaling is never compounded.
+var _original_sizes := {}   # "Type/name" -> int
+var _original_default := 0
+
 var insets := {"left": 0.0, "top": 0.0, "right": 0.0, "bottom": 0.0}
 
 
 func _ready() -> void:
+	_load_settings()
+	apply_text_scale()
 	refresh()
 	get_tree().node_added.connect(_on_node_added)
 	get_tree().root.size_changed.connect(_on_resized)
@@ -58,3 +69,47 @@ func _apply(margin: MarginContainer) -> void:
 		var designed := int(margin.get_meta(meta)) + (wide if sideways else 0)
 		margin.add_theme_constant_override(
 			key, SafeArea.margin_for(designed, float(insets[side])))
+
+
+## Cycles Small -> Normal -> Large, applies it and remembers it.
+func cycle_text_size() -> String:
+	text_size_setting = TextScale.next(text_size_setting)
+	apply_text_scale()
+	_save_settings()
+	return text_size_setting
+
+
+## Multiplies every font size in the project theme by the chosen factor, from
+## the authored sizes (so Small then Large is not Small-of-Large).
+func apply_text_scale() -> void:
+	var theme := ThemeDB.get_project_theme()
+	if theme == null:
+		return
+	if _original_sizes.is_empty():
+		_original_default = theme.default_font_size
+		for type_name: String in theme.get_font_size_type_list():
+			for item: String in theme.get_font_size_list(type_name):
+				_original_sizes["%s/%s" % [type_name, item]] = theme.get_font_size(item, type_name)
+	var factor := TextScale.factor(text_size_setting, DataDB.balance)
+	if _original_default > 0:
+		theme.default_font_size = TextScale.scaled(_original_default, factor)
+	for key: String in _original_sizes:
+		var parts := key.split("/")
+		theme.set_font_size(parts[1], parts[0], TextScale.scaled(int(_original_sizes[key]), factor))
+
+
+func _load_settings() -> void:
+	if not FileAccess.file_exists(SETTINGS_PATH):
+		return
+	var file := FileAccess.open(SETTINGS_PATH, FileAccess.READ)
+	if file == null:
+		return
+	var parsed: Variant = JSON.parse_string(file.get_as_text())
+	if parsed is Dictionary and str(parsed.get("text_size", "")) in TextScale.ORDER:
+		text_size_setting = str(parsed["text_size"])
+
+
+func _save_settings() -> void:
+	var file := FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
+	if file != null:
+		file.store_string(JSON.stringify({"text_size": text_size_setting}))

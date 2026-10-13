@@ -64,6 +64,7 @@ func _walk() -> void:
 	await _menu(office, "AdministrationButton", "AdministrationMenuPanel",
 		[["CosmeticsButton", "CosmeticsPanel"], ["HowToPlayButton", "HowToPlayPanel"]])
 	await _check_allies_popup(office)
+	await _check_text_size(office)
 
 
 ## Opens a menu, checks it holds the right buttons, then opens each in turn:
@@ -178,4 +179,28 @@ func _check_allies_popup(office: Node) -> void:
 	print("  allies popup: %d bars, %d in the party colour" % [bars.size(), ally_colours])
 	await _click_back(popup)
 	await _click_back(parties)
+	await _click_back(menu)
+
+
+## The Administration menu's text-size button: one tap cycles Small, Normal,
+## Large, the label follows, and the theme's real font size changes.
+func _check_text_size(office: Node) -> void:
+	await _click(office.find_child("AdministrationButton", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
+	var menu := office.get_node("AdministrationMenuPanel") as Overlay
+	var normal_size := ThemeDB.get_project_theme().default_font_size
+	var seen: Array[int] = []
+	for tap in 3:
+		var button := menu.find_child("TextSizeButton", true, false) as Control
+		if button == null:
+			_failures.append("the Administration menu has no TextSizeButton")
+			return
+		await _click(button)
+		await get_tree().create_timer(0.3).timeout
+		seen.append(ThemeDB.get_project_theme().default_font_size)
+	# normal -> large -> small -> normal
+	if seen[0] <= normal_size or seen[1] >= normal_size or seen[2] != normal_size:
+		_failures.append("text size did not go Large, Small, Normal (sizes %s from %d)" % [str(seen), normal_size])
+	else:
+		print("  text size button: Large %d, Small %d, back to %d" % [seen[0], seen[1], seen[2]])
 	await _click_back(menu)
