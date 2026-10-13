@@ -63,6 +63,7 @@ func _walk() -> void:
 		["PartiesButton", "PartiesPanel"], ["RecordButton", "RecordPanel"]])
 	await _menu(office, "AdministrationButton", "AdministrationMenuPanel",
 		[["CosmeticsButton", "CosmeticsPanel"], ["HowToPlayButton", "HowToPlayPanel"]])
+	await _check_allies_popup(office)
 
 
 ## Opens a menu, checks it holds the right buttons, then opens each in turn:
@@ -132,3 +133,49 @@ func _click(control: Control) -> void:
 		Input.parse_input_event(event)
 		await get_tree().process_frame
 	await get_tree().create_timer(0.15).timeout
+
+
+## The Parties page's "See allies and rivals" popup: opens on top, shows bars
+## and favorability tags, allies in the party's colour and rivals in white.
+func _check_allies_popup(office: Node) -> void:
+	await _click(office.find_child("ReputationButton", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
+	var menu := office.get_node("ReputationMenuPanel") as Overlay
+	await _click(menu.find_child("PartiesButton", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
+	var parties := office.get_node("PartiesPanel") as Overlay
+	var party: Dictionary = DataDB.parties[0]
+	var button := parties.find_child("AlliesButton_" + str(party["party_id"]), true, false) as Control
+	if button == null:
+		_failures.append("the Parties page has no allies button")
+		return
+	(parties.find_child("Scroll", true, false) as ScrollContainer).ensure_control_visible(button)
+	await _click(button)
+	await get_tree().create_timer(0.3).timeout
+	var popup := office.get_node("PartyDetailPanel") as Overlay
+	if not popup.visible or popup.get_index() < parties.get_index():
+		_failures.append("the allies popup did not open on top of the Parties page")
+		return
+	var tags := [Text.say("party_opinion.tag_improving"), Text.say("party_opinion.tag_neutral"),
+		Text.say("party_opinion.tag_reducing")]
+	var tag_count := 0
+	for label: Label in popup.find_children("*", "Label", true, false):
+		if label.text in tags:
+			tag_count += 1
+	var bars := popup.find_children("*", "ProgressBar", true, false)
+	if bars.is_empty() or tag_count != bars.size():
+		_failures.append("the popup has %d bars and %d tags (should match, and not be zero)" % [bars.size(), tag_count])
+	var want := PartyDisplay.color_for(party)
+	var ally_colours := 0
+	for bar: ProgressBar in bars:
+		var fill := (bar.get_theme_stylebox("fill") as StyleBoxFlat).bg_color
+		if fill == want:
+			ally_colours += 1
+		elif fill != Color.WHITE:
+			_failures.append("a bar is neither the party colour nor white")
+	if ally_colours == 0:
+		_failures.append("no ally bar is in the party's colour")
+	print("  allies popup: %d bars, %d in the party colour" % [bars.size(), ally_colours])
+	await _click_back(popup)
+	await _click_back(parties)
+	await _click_back(menu)

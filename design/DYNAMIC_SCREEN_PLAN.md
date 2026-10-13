@@ -1,6 +1,6 @@
 # Plan: making screens fit typical phones (draft 2026-10-14)
 
-**Status:** steps 0 and 1 built (wrapping; safe-area margins via `Layout.gd` + `SafeArea.gd`). Steps 2-6 wait for Cameron's go-ahead.
+**Status:** steps 0-4 built (2026-10-14). Steps 5 (text size setting) and 6 (real devices) are open.
 
 ## Where we are
 
@@ -27,9 +27,9 @@
 |---|---|---|---|
 | 0 | **Wrap everything** (built 2026-10-14) | `UiKit.wrap_all()` makes every label and button in a panel wrap; headings wrap; panels never scroll sideways; the column has a fixed 1000 px width to wrap against; the runtime-text labels in scenes wrap. Test: `test_overlay_wrap.gd` | Done |
 | 1 | **Safe-area margins** | Read `DisplayServer.get_display_safe_area()` once at start (an autoload, `Layout.gd`), convert to base-resolution pixels, and have every screen's outer margin use `max(40, safe inset)`. One place to change, no per-screen numbers | Small |
-| 2 | **Aspect test matrix** | A throwaway driver renders each screen type at 1080x1920, 1080x2160, 1080x2340, 1080x2520 and 1600x2000 (tablet) and saves screenshots, plus an automated check that no control extends past the viewport and no scrollbar is horizontal. Becomes a click test in `verify.sh` | Medium |
-| 3 | **Short-screen mode** | At 9:16 and shorter, the battle screen drops to a compact layout: smaller art box (it is the one elastic block), hand cards a notch smaller. Rule of thumb: art box takes whatever height is left after the fixed rows, with a floor | Medium (battle screen is the hard one) |
-| 4 | **Wide-screen cap** | Above about 1.0 width:height, keep the 1080-wide column centred, with the stage background filling the sides. No screen stretches its content to tablet width | Small |
+| 2 | **Aspect test matrix (BUILT: `tests/interaction/aspect_matrix_test.tscn`, in `verify.sh`)** | A throwaway driver renders each screen type at 1080x1920, 1080x2160, 1080x2340, 1080x2520 and 1600x2000 (tablet) and saves screenshots, plus an automated check that no control extends past the viewport and no scrollbar is horizontal. Becomes a click test in `verify.sh` | Medium |
+| 3 | **Short-screen mode (BUILT: the battle art box now shrinks to 320 px minimum, so the End Turn button stays on a 1080x1920 screen)** | At 9:16 and shorter, the battle screen drops to a compact layout: smaller art box (it is the one elastic block), hand cards a notch smaller. Rule of thumb: art box takes whatever height is left after the fixed rows, with a floor | Medium (battle screen is the hard one) |
+| 4 | **Wide-screen cap (BUILT in `Layout.gd`: screens wider than 1080 get side margins, so a tablet shows a centred column)** | Above about 1.0 width:height, keep the 1080-wide column centred, with the stage background filling the sides. No screen stretches its content to tablet width | Small |
 | 5 | **Text scale** | A single `ui_scale` in Settings (Small / Normal / Large) applied to the theme font sizes, so players with large-text needs are served without re-laying out every scene | Medium |
 | 6 | **Real-device pass** | Android first (Pixel and a small phone), then iOS. Checklist in `design/PLAYTEST_CHECKLIST.md` gains a "layout" line per screen | Needs devices |
 

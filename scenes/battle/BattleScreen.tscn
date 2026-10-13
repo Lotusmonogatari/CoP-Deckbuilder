@@ -104,7 +104,7 @@ size_flags_stretch_ratio = 3.0
 theme_override_constants/separation = 16
 
 [node name="ArtBox" type="Control" parent="Safe/Column/OpponentRow"]
-custom_minimum_size = Vector2(0, 620)
+custom_minimum_size = Vector2(0, 320)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -168,7 +168,6 @@ layout_mode = 0
 text = "51 seats to win"
 
 [node name="Readout" type="Label" parent="Safe/Column/SupportBar"]
-autowrap_mode = 3
 layout_mode = 0
 offset_top = 108.0
 offset_bottom = 108.0
