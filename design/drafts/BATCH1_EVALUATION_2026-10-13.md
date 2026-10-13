@@ -92,7 +92,7 @@ Existing committees now ask 10 questions instead of 3 and stay at 159-160 of 160
 
 | Question | Why it matters |
 |---|---|
-| **Media Ambush (ST19, ST30)** | Losing is allowed (it does not end the level), so 0 of 160 for the bot is acceptable. But you said a late kit can pass it, and the bot with every card and item wins none at a threshold of 20 or more, about 12% at 15 and most fights at 13 or below, so a late kit cannot pass it as tuned. Lower the threshold to roughly 14 if a late kit should succeed. |
+| **Media Ambush (ST19, ST30)** | Settled: losses are fine and its numbers are not adjusted. The new ST30 copies ST19. |
 | **Eight new characters** to bring nine rooms to 3x on people. | Names and parties are yours. |
 | **Names, including the Japanese ones**, are my drafts. | Check the Japanese especially. |
 | **ST29's threshold** (58 against ST05's 60) | Match it at 60, or keep the gentler harbour room. |
@@ -105,6 +105,6 @@ No test plays the new levels through the whole Office-to-level flow with real cl
 
 | Direction | Result |
 |---|---|
-| Committees seat only their own members | Checked: ST09-ST17 and the new hearings (ST27 Construction, ST31 Agriculture) already comply. The export now **fails** if a "Committee on ..." room lists another committee's member. **ST01 (Special Committee) and ST18 (Cabinet) seat members of other committees** (12 and 9 people) and are warnings until you say who sits on them. |
+| Committees seat only their own members | Checked: ST09-ST17 and the new hearings (ST27 Construction, ST31 Agriculture) already comply. The export now **fails** if a "Committee on ..." room lists another committee's member. ST01 now seats any non-minister MP (88 people) and ST18 ministers and chairs (10), as you decided; the export checks both. |
 | Same opponent may return, but lean unique | Built: `PeopleDraw` draws the least-met people first, within a stage nobody repeats; the counts are kept per run and saved (`GameState.faced_people`), and apply to visitors too. Six new tests. |
 | Media Ambush losses are fine | Noted; see the table above for what a late kit can do today. |
