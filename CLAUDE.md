@@ -2332,3 +2332,8 @@ Cameron: "Adopt all and merge." The original committees on War (ST11) and Constr
 - **Level Intro Cues for all 82 levels** (Policy Research Assistant, Media Spokesperson, District Representative; 246 rows): hand-written for LV01-30/61/62, templated on the bill's topic for the rest.
 - **Opponent-specific cues for all 125 opponents** (OC61-OC435): each opponent's first suit x attack/gain/block, three lines drawn from a voice bank for their role (committee, journalist, constituent, organisation member). Drafts; many people in one role share bank lines in rotation.
 - No bill repeal for now (Cameron).
+
+### Unhired staff no longer speak in transitions; blank cue cells no longer say "<null>" (2026-10-14, Cameron)
+
+- **Transitions:** an SFxx character in Transition Cast speaks only if that person is currently hired (`StageTransition.pick_speakers()` takes the hired staff IDs; `StageTransitionScreen` passes `GameState.staff_hired`). Opponents are unaffected. Consequence: the wildcard cast today is six staff, so a room whose transition has no opponent-scoped cast shows no transition until the matching staff is hired (the screen skips straight on). Writing opponent-scoped Transition Cast rows is how to give such rooms a transition regardless of hiring. The click test hires the cast staff in memory.
+- **`<null>` line:** `DataDB._cue_lines()` treated a blank Cue cell as the text "<null>", so any cue row with fewer than five lines (all the new opponent-specific rows) could speak it. Blank cells are now skipped.

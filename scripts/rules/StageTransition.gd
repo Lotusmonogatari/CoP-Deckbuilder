@@ -49,8 +49,14 @@ static func character_kind(character_id: String) -> String:
 ## rather than appearing silent. Sampled without replacement from the
 ## eligible cast pool, so the same transition never repeats a speaker.
 static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: String,
-		count: int, rng: RandomNumberGenerator) -> Array[Dictionary]:
+		count: int, rng: RandomNumberGenerator, hired_staff_ids: Variant = null) -> Array[Dictionary]:
 	var remaining := PoolPicker.eligible(cast_rows, "stage_id", stage_id)
+	# Staff are the player's own team: an SFxx cast member only speaks once
+	# hired. `hired_staff_ids` null means "no filter" (older callers, tests).
+	if hired_staff_ids is Array:
+		remaining = remaining.filter(func(row: Dictionary) -> bool:
+			var cid := str(row.get("character_id", ""))
+			return character_kind(cid) != "staff" or cid in hired_staff_ids)
 	var dialogue_here := PoolPicker.eligible(dialogue_rows, "stage_id", stage_id)
 	var speakers: Array[Dictionary] = []
 
@@ -76,12 +82,12 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 ## [...], "background_id": "..."}` — or `{}` when the stage doesn't show
 ## one, or shows one but nobody eligible has anything written.
 static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
-		dialogue_rows: Array, rng: RandomNumberGenerator) -> Dictionary:
+		dialogue_rows: Array, rng: RandomNumberGenerator, hired_staff_ids: Variant = null) -> Dictionary:
 	if not should_show(stage):
 		return {}
 
 	var stage_id := str(stage.get("stage_id", ""))
-	var speakers := pick_speakers(cast_rows, dialogue_rows, stage_id, speaker_count(stage), rng)
+	var speakers := pick_speakers(cast_rows, dialogue_rows, stage_id, speaker_count(stage), rng, hired_staff_ids)
 	if speakers.is_empty():
 		return {}
 

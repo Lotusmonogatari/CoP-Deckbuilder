@@ -53,8 +53,11 @@ func _ready() -> void:
 	_speaker_name.visible = false
 
 	var rng := RandomNumberGenerator.new()
+	var hired_ids: Array = []
+	for role: String in GameState.staff_hired:
+		hired_ids.append(str(GameState.staff_hired[role].get("staff_id", "")))
 	var result := StageTransition.resolve(
-		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng)
+		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng, hired_ids)
 
 	if result.is_empty():
 		_on_continue()
