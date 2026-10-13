@@ -762,11 +762,14 @@ func _show_party_detail(party_id: String) -> void:
 
 	var rows: Array[Control] = [UiKit.line(Text.say("party_opinion.popup_blurb"), "SmallLabel")]
 	for group in ["allies", "rivals"]:
-		var heading := UiKit.heading(Text.say("party_opinion.%s_heading" % group))
-		if group == "allies":
+		var is_ally := group == "allies"
+		var heading := UiKit.heading(Text.say(
+			"party_opinion.allies_heading" if is_ally else "party_opinion.rivals_heading"))
+		if is_ally:
 			heading.add_theme_color_override("font_color", colour)
 		rows.append(heading)
-		rows.append(UiKit.line(Text.say("party_opinion.%s_blurb" % group), "SmallLabel"))
+		rows.append(UiKit.line(Text.say(
+			"party_opinion.allies_blurb" if is_ally else "party_opinion.rivals_blurb"), "SmallLabel"))
 		if (groups[group] as Array).is_empty():
 			rows.append(UiKit.line(Text.say("party_opinion.none")))
 		for entry: Dictionary in groups[group]:
@@ -800,7 +803,11 @@ func _ally_row(entry: Dictionary, names: Dictionary, fill: Color) -> Control:
 	back_box.bg_color = Color(1, 1, 1, 0.12)
 	bar.add_theme_stylebox_override("background", back_box)
 	box.add_child(bar)
-	var tag := UiKit.line(Text.say("party_opinion.tag_" + str(entry["tag"])), "SmallLabel")
+	var tag_text := Text.say("party_opinion.tag_neutral")
+	match str(entry["tag"]):
+		PartyAllies.IMPROVING: tag_text = Text.say("party_opinion.tag_improving")
+		PartyAllies.REDUCING: tag_text = Text.say("party_opinion.tag_reducing")
+	var tag := UiKit.line(tag_text, "SmallLabel")
 	box.add_child(tag)
 	return box
 

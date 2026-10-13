@@ -31,4 +31,4 @@ func test_a_long_heading_label_and_button_never_widen_the_panel() -> void:
 	var column: Control = overlay.find_child("Column", true, false)
 	assert_lte(column.size.x, 1000.5, "the column stays inside the screen")
 	for text_node: Control in [label, button, in_row]:
-		assert_lte(text_node.get_global_rect().end.x, 1080.0, "text stays on screen")
+		assert_lte(text_node.get_global_rect().end.x, get_viewport().get_visible_rect().size.x, "text stays on screen")
