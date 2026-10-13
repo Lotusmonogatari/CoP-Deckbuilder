@@ -954,9 +954,13 @@ func _d1_once_effects() -> void:
 			for position: Dictionary in bill.get("positions", []):
 				if str(position.get("party_id", "")) == GameState.own_party_id():
 					own_dispo = str(position.get("disposition", ""))
+			var lean_scale := 1.0
+			for position: Dictionary in bill.get("positions", []):
+				if str(position.get("party_id", "")) == GameState.own_party_id():
+					lean_scale = BattleSetup.salience_factor(position)
 			var lean := StatuteBook.party_tier_delta(own_dispo, passed,
-				int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)),
-				int(DataDB.balance.get("law_lean_party_tier_fail_delta", 0)))
+				PartySalience.scaled(int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)), lean_scale),
+				PartySalience.scaled(int(DataDB.balance.get("law_lean_party_tier_fail_delta", 0)), lean_scale))
 			for booster: Dictionary in DataDB.boosters:
 				if str(booster.get("tier", "")) == "Party":
 					var bid := str(booster["booster_id"])

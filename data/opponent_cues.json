@@ -838,5 +838,5255 @@
       "ST30",
       "ST31"
     ]
+  },
+  {
+    "cue_id": "OC61",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP103"
+    ],
+    "cue_1": "Our block is not your test case.",
+    "cue_2": "Ask the neighbours and plan together.",
+    "cue_3": "Local people were left out.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC62",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP103"
+    ],
+    "cue_1": "Good for the block. Good for all.",
+    "cue_2": "That respects how we get along.",
+    "cue_3": "Neighbours will thank you for that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC63",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP103"
+    ],
+    "cue_1": "Not without the association's vote.",
+    "cue_2": "We guard our street's character.",
+    "cue_3": "Bring it to our meeting.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC64",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP104"
+    ],
+    "cue_1": "Families are not a talking point.",
+    "cue_2": "Who looks after the children?",
+    "cue_3": "Our kitchen tables disagree with you.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC65",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP104"
+    ],
+    "cue_1": "That helps families breathe easier.",
+    "cue_2": "Yes. Households need exactly that.",
+    "cue_3": "A kinder answer than most.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC66",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP104"
+    ],
+    "cue_1": "I will not risk my family on that.",
+    "cue_2": "Show me the support for parents.",
+    "cue_3": "Not without childcare in the plan.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC67",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP105"
+    ],
+    "cue_1": "My generation is paying for this.",
+    "cue_2": "Who asked us? Nobody.",
+    "cue_3": "Words are cheap. Tuition is not.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC68",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP105"
+    ],
+    "cue_1": "Someone who listens. Good.",
+    "cue_2": "That gives us something to build on.",
+    "cue_3": "Maybe the future has a seat after all.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC69",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP105"
+    ],
+    "cue_1": "Show us the plan, not a poster.",
+    "cue_2": "We are watching closely.",
+    "cue_3": "Not without student voices at the table.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC70",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP106"
+    ],
+    "cue_1": "I have heard this line.",
+    "cue_2": "What have you done for my street?",
+    "cue_3": "Speeches do not fix potholes.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC71",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP106"
+    ],
+    "cue_1": "That sounds like someone who listens.",
+    "cue_2": "My neighbours will like that.",
+    "cue_3": "Good. Plain talk helps.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC72",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": [
+      "OP106"
+    ],
+    "cue_1": "I will wait and see.",
+    "cue_2": "Tell me what changes at home.",
+    "cue_3": "Prove it where we live.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC73",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP107"
+    ],
+    "cue_1": "What have you done for my street?",
+    "cue_2": "Speeches do not fix potholes.",
+    "cue_3": "Come see how we live.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC74",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP107"
+    ],
+    "cue_1": "My neighbours will like that.",
+    "cue_2": "Good. Plain talk helps.",
+    "cue_3": "That is useful to us.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC75",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP107"
+    ],
+    "cue_1": "Tell me what changes at home.",
+    "cue_2": "Prove it where we live.",
+    "cue_3": "Talk is easy. Results are not.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC76",
+    "suit": "Divisive",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP108"
+    ],
+    "cue_1": "Speeches do not fix potholes.",
+    "cue_2": "Come see how we live.",
+    "cue_3": "I have heard this line.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC77",
+    "suit": "Divisive",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP108"
+    ],
+    "cue_1": "Good. Plain talk helps.",
+    "cue_2": "That is useful to us.",
+    "cue_3": "That sounds like someone who listens.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC78",
+    "suit": "Divisive",
+    "verb": "block",
+    "opponent_ids": [
+      "OP108"
+    ],
+    "cue_1": "Prove it where we live.",
+    "cue_2": "Talk is easy. Results are not.",
+    "cue_3": "I will wait and see.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC79",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP109"
+    ],
+    "cue_1": "Who asked us? Nobody.",
+    "cue_2": "Words are cheap. Tuition is not.",
+    "cue_3": "We will remember how you vote.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC80",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP109"
+    ],
+    "cue_1": "That gives us something to build on.",
+    "cue_2": "Maybe the future has a seat after all.",
+    "cue_3": "I can believe in that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC81",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": [
+      "OP109"
+    ],
+    "cue_1": "We are watching closely.",
+    "cue_2": "Not without student voices at the table.",
+    "cue_3": "I need more than promises.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC82",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP102"
+    ],
+    "cue_1": "We stood by you. Remember that.",
+    "cue_2": "Loyalty is earned, not assumed.",
+    "cue_3": "Supporters deserve a real reply.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC83",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP102"
+    ],
+    "cue_1": "That is why we back you.",
+    "cue_2": "The support group is pleased.",
+    "cue_3": "Good. We will say so.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC84",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP102"
+    ],
+    "cue_1": "Hold your ground. We are here.",
+    "cue_2": "Do not give in so easily.",
+    "cue_3": "We will not shift without cause.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC85",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP14"
+    ],
+    "cue_1": "Who benefits? Say it plainly.",
+    "cue_2": "Rules apply to you as well.",
+    "cue_3": "That sounds like a favour, not policy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC86",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP14"
+    ],
+    "cue_1": "Honest answers matter to this committee.",
+    "cue_2": "That is the standard I expect.",
+    "cue_3": "Integrity makes a case stronger.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC87",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP14"
+    ],
+    "cue_1": "I need the record on that point.",
+    "cue_2": "Careful. Every word is noted.",
+    "cue_3": "Evidence first, opinions second.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC88",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP34"
+    ],
+    "cue_1": "Rules apply to you as well.",
+    "cue_2": "That sounds like a favour, not policy.",
+    "cue_3": "Clean hands, or no vote from me.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC89",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP34"
+    ],
+    "cue_1": "That is the standard I expect.",
+    "cue_2": "Integrity makes a case stronger.",
+    "cue_3": "Straight talk. I can work with it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC90",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP34"
+    ],
+    "cue_1": "Careful. Every word is noted.",
+    "cue_2": "Evidence first, opinions second.",
+    "cue_3": "Prove it, and I will listen.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC91",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP60"
+    ],
+    "cue_1": "That sounds like a favour, not policy.",
+    "cue_2": "Clean hands, or no vote from me.",
+    "cue_3": "Who benefits? Say it plainly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC92",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP60"
+    ],
+    "cue_1": "Integrity makes a case stronger.",
+    "cue_2": "Straight talk. I can work with it.",
+    "cue_3": "Honest answers matter to this committee.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC93",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP60"
+    ],
+    "cue_1": "Evidence first, opinions second.",
+    "cue_2": "Prove it, and I will listen.",
+    "cue_3": "I need the record on that point.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC94",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP65"
+    ],
+    "cue_1": "Clean hands, or no vote from me.",
+    "cue_2": "Who benefits? Say it plainly.",
+    "cue_3": "Rules apply to you as well.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC95",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP65"
+    ],
+    "cue_1": "Straight talk. I can work with it.",
+    "cue_2": "Honest answers matter to this committee.",
+    "cue_3": "That is the standard I expect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC96",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP65"
+    ],
+    "cue_1": "Prove it, and I will listen.",
+    "cue_2": "I need the record on that point.",
+    "cue_3": "Careful. Every word is noted.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC97",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP69"
+    ],
+    "cue_1": "Who benefits? Say it plainly.",
+    "cue_2": "Rules apply to you as well.",
+    "cue_3": "That sounds like a favour, not policy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC98",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP69"
+    ],
+    "cue_1": "Honest answers matter to this committee.",
+    "cue_2": "That is the standard I expect.",
+    "cue_3": "Integrity makes a case stronger.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC99",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP69"
+    ],
+    "cue_1": "I need the record on that point.",
+    "cue_2": "Careful. Every word is noted.",
+    "cue_3": "Evidence first, opinions second.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC100",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP99"
+    ],
+    "cue_1": "Rules apply to you as well.",
+    "cue_2": "That sounds like a favour, not policy.",
+    "cue_3": "Clean hands, or no vote from me.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC101",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP99"
+    ],
+    "cue_1": "That is the standard I expect.",
+    "cue_2": "Integrity makes a case stronger.",
+    "cue_3": "Straight talk. I can work with it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC102",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP99"
+    ],
+    "cue_1": "Careful. Every word is noted.",
+    "cue_2": "Evidence first, opinions second.",
+    "cue_3": "Prove it, and I will listen.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC103",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP45"
+    ],
+    "cue_1": "That sounds like a favour, not policy.",
+    "cue_2": "Clean hands, or no vote from me.",
+    "cue_3": "Who benefits? Say it plainly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC104",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP45"
+    ],
+    "cue_1": "Integrity makes a case stronger.",
+    "cue_2": "Straight talk. I can work with it.",
+    "cue_3": "Honest answers matter to this committee.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC105",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP45"
+    ],
+    "cue_1": "Evidence first, opinions second.",
+    "cue_2": "Prove it, and I will listen.",
+    "cue_3": "I need the record on that point.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC106",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP50"
+    ],
+    "cue_1": "Clean hands, or no vote from me.",
+    "cue_2": "Who benefits? Say it plainly.",
+    "cue_3": "Rules apply to you as well.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC107",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP50"
+    ],
+    "cue_1": "Straight talk. I can work with it.",
+    "cue_2": "Honest answers matter to this committee.",
+    "cue_3": "That is the standard I expect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC108",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP50"
+    ],
+    "cue_1": "Prove it, and I will listen.",
+    "cue_2": "I need the record on that point.",
+    "cue_3": "Careful. Every word is noted.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC109",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP09"
+    ],
+    "cue_1": "Who benefits? Say it plainly.",
+    "cue_2": "Rules apply to you as well.",
+    "cue_3": "That sounds like a favour, not policy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC110",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP09"
+    ],
+    "cue_1": "Honest answers matter to this committee.",
+    "cue_2": "That is the standard I expect.",
+    "cue_3": "Integrity makes a case stronger.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC111",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP09"
+    ],
+    "cue_1": "I need the record on that point.",
+    "cue_2": "Careful. Every word is noted.",
+    "cue_3": "Evidence first, opinions second.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC112",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP85"
+    ],
+    "cue_1": "Rules apply to you as well.",
+    "cue_2": "That sounds like a favour, not policy.",
+    "cue_3": "Clean hands, or no vote from me.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC113",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP85"
+    ],
+    "cue_1": "That is the standard I expect.",
+    "cue_2": "Integrity makes a case stronger.",
+    "cue_3": "Straight talk. I can work with it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC114",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "opponent_ids": [
+      "OP85"
+    ],
+    "cue_1": "Careful. Every word is noted.",
+    "cue_2": "Evidence first, opinions second.",
+    "cue_3": "Prove it, and I will listen.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC115",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP91"
+    ],
+    "cue_1": "That sounds like a favour, not policy.",
+    "cue_2": "Clean hands, or no vote from me.",
+    "cue_3": "Who benefits? Say it plainly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC116",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP91"
+    ],
+    "cue_1": "Integrity makes a case stronger.",
+    "cue_2": "Straight talk. I can work with it.",
+    "cue_3": "Honest answers matter to this committee.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC117",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP91"
+    ],
+    "cue_1": "Evidence first, opinions second.",
+    "cue_2": "Prove it, and I will listen.",
+    "cue_3": "I need the record on that point.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC118",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP81"
+    ],
+    "cue_1": "Clean hands, or no vote from me.",
+    "cue_2": "Who benefits? Say it plainly.",
+    "cue_3": "Rules apply to you as well.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC119",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP81"
+    ],
+    "cue_1": "Straight talk. I can work with it.",
+    "cue_2": "Honest answers matter to this committee.",
+    "cue_3": "That is the standard I expect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC120",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP81"
+    ],
+    "cue_1": "Prove it, and I will listen.",
+    "cue_2": "I need the record on that point.",
+    "cue_3": "Careful. Every word is noted.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC121",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP17"
+    ],
+    "cue_1": "The land cannot wait for your compromise.",
+    "cue_2": "Where is the impact study?",
+    "cue_3": "Nature does not negotiate. You do.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC122",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP17"
+    ],
+    "cue_1": "The watershed thanks you for that.",
+    "cue_2": "Good. Our forests need allies.",
+    "cue_3": "Sound ground for a lasting policy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC123",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP17"
+    ],
+    "cue_1": "I will not trade away clean water.",
+    "cue_2": "Show me the monitoring plan.",
+    "cue_3": "Protection comes first. Talk second.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC124",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP23"
+    ],
+    "cue_1": "Where is the impact study?",
+    "cue_2": "Nature does not negotiate. You do.",
+    "cue_3": "Cheap here means costly downstream.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC125",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP23"
+    ],
+    "cue_1": "Good. Our forests need allies.",
+    "cue_2": "Sound ground for a lasting policy.",
+    "cue_3": "That protects more than a single season.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC126",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP23"
+    ],
+    "cue_1": "Show me the monitoring plan.",
+    "cue_2": "Protection comes first. Talk second.",
+    "cue_3": "Not at the expense of the coast.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC127",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP24"
+    ],
+    "cue_1": "Nature does not negotiate. You do.",
+    "cue_2": "Cheap here means costly downstream.",
+    "cue_3": "The land cannot wait for your compromise.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC128",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP24"
+    ],
+    "cue_1": "Sound ground for a lasting policy.",
+    "cue_2": "That protects more than a single season.",
+    "cue_3": "The watershed thanks you for that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC129",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP24"
+    ],
+    "cue_1": "Protection comes first. Talk second.",
+    "cue_2": "Not at the expense of the coast.",
+    "cue_3": "I will not trade away clean water.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC130",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP37"
+    ],
+    "cue_1": "Cheap here means costly downstream.",
+    "cue_2": "The land cannot wait for your compromise.",
+    "cue_3": "Where is the impact study?",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC131",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP37"
+    ],
+    "cue_1": "That protects more than a single season.",
+    "cue_2": "The watershed thanks you for that.",
+    "cue_3": "Good. Our forests need allies.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC132",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP37"
+    ],
+    "cue_1": "Not at the expense of the coast.",
+    "cue_2": "I will not trade away clean water.",
+    "cue_3": "Show me the monitoring plan.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC133",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP64"
+    ],
+    "cue_1": "The land cannot wait for your compromise.",
+    "cue_2": "Where is the impact study?",
+    "cue_3": "Nature does not negotiate. You do.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC134",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP64"
+    ],
+    "cue_1": "The watershed thanks you for that.",
+    "cue_2": "Good. Our forests need allies.",
+    "cue_3": "Sound ground for a lasting policy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC135",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP64"
+    ],
+    "cue_1": "I will not trade away clean water.",
+    "cue_2": "Show me the monitoring plan.",
+    "cue_3": "Protection comes first. Talk second.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC136",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP75"
+    ],
+    "cue_1": "Where is the impact study?",
+    "cue_2": "Nature does not negotiate. You do.",
+    "cue_3": "Cheap here means costly downstream.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC137",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP75"
+    ],
+    "cue_1": "Good. Our forests need allies.",
+    "cue_2": "Sound ground for a lasting policy.",
+    "cue_3": "That protects more than a single season.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC138",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP75"
+    ],
+    "cue_1": "Show me the monitoring plan.",
+    "cue_2": "Protection comes first. Talk second.",
+    "cue_3": "Not at the expense of the coast.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC139",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP92"
+    ],
+    "cue_1": "Nature does not negotiate. You do.",
+    "cue_2": "Cheap here means costly downstream.",
+    "cue_3": "The land cannot wait for your compromise.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC140",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP92"
+    ],
+    "cue_1": "Sound ground for a lasting policy.",
+    "cue_2": "That protects more than a single season.",
+    "cue_3": "The watershed thanks you for that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC141",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP92"
+    ],
+    "cue_1": "Protection comes first. Talk second.",
+    "cue_2": "Not at the expense of the coast.",
+    "cue_3": "I will not trade away clean water.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC142",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP01"
+    ],
+    "cue_1": "Cheap here means costly downstream.",
+    "cue_2": "The land cannot wait for your compromise.",
+    "cue_3": "Where is the impact study?",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC143",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP01"
+    ],
+    "cue_1": "That protects more than a single season.",
+    "cue_2": "The watershed thanks you for that.",
+    "cue_3": "Good. Our forests need allies.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC144",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP01"
+    ],
+    "cue_1": "Not at the expense of the coast.",
+    "cue_2": "I will not trade away clean water.",
+    "cue_3": "Show me the monitoring plan.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC145",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP51"
+    ],
+    "cue_1": "The land cannot wait for your compromise.",
+    "cue_2": "Where is the impact study?",
+    "cue_3": "Nature does not negotiate. You do.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC146",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP51"
+    ],
+    "cue_1": "The watershed thanks you for that.",
+    "cue_2": "Good. Our forests need allies.",
+    "cue_3": "Sound ground for a lasting policy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC147",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP51"
+    ],
+    "cue_1": "I will not trade away clean water.",
+    "cue_2": "Show me the monitoring plan.",
+    "cue_3": "Protection comes first. Talk second.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC148",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP30"
+    ],
+    "cue_1": "Where is the impact study?",
+    "cue_2": "Nature does not negotiate. You do.",
+    "cue_3": "Cheap here means costly downstream.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC149",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP30"
+    ],
+    "cue_1": "Good. Our forests need allies.",
+    "cue_2": "Sound ground for a lasting policy.",
+    "cue_3": "That protects more than a single season.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC150",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP30"
+    ],
+    "cue_1": "Show me the monitoring plan.",
+    "cue_2": "Protection comes first. Talk second.",
+    "cue_3": "Not at the expense of the coast.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC151",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP33"
+    ],
+    "cue_1": "Nature does not negotiate. You do.",
+    "cue_2": "Cheap here means costly downstream.",
+    "cue_3": "The land cannot wait for your compromise.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC152",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP33"
+    ],
+    "cue_1": "Sound ground for a lasting policy.",
+    "cue_2": "That protects more than a single season.",
+    "cue_3": "The watershed thanks you for that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC153",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP33"
+    ],
+    "cue_1": "Protection comes first. Talk second.",
+    "cue_2": "Not at the expense of the coast.",
+    "cue_3": "I will not trade away clean water.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC154",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP42"
+    ],
+    "cue_1": "Cheap here means costly downstream.",
+    "cue_2": "The land cannot wait for your compromise.",
+    "cue_3": "Where is the impact study?",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC155",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP42"
+    ],
+    "cue_1": "That protects more than a single season.",
+    "cue_2": "The watershed thanks you for that.",
+    "cue_3": "Good. Our forests need allies.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC156",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP42"
+    ],
+    "cue_1": "Not at the expense of the coast.",
+    "cue_2": "I will not trade away clean water.",
+    "cue_3": "Show me the monitoring plan.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC157",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP71"
+    ],
+    "cue_1": "The land cannot wait for your compromise.",
+    "cue_2": "Where is the impact study?",
+    "cue_3": "Nature does not negotiate. You do.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC158",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP71"
+    ],
+    "cue_1": "The watershed thanks you for that.",
+    "cue_2": "Good. Our forests need allies.",
+    "cue_3": "Sound ground for a lasting policy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC159",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP71"
+    ],
+    "cue_1": "I will not trade away clean water.",
+    "cue_2": "Show me the monitoring plan.",
+    "cue_3": "Protection comes first. Talk second.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC160",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP54"
+    ],
+    "cue_1": "Readiness is not a talking point.",
+    "cue_2": "Our defences are not a debate prize.",
+    "cue_3": "Strategy needs more than slogans.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC161",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP54"
+    ],
+    "cue_1": "Steady resolve. That reassures me.",
+    "cue_2": "Duty well stated. Noted.",
+    "cue_3": "That serves those in uniform.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC162",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP54"
+    ],
+    "cue_1": "I will not weaken the guard.",
+    "cue_2": "Hold position and finish the briefing.",
+    "cue_3": "No cuts to readiness. None.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC163",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP63"
+    ],
+    "cue_1": "Our defences are not a debate prize.",
+    "cue_2": "Strategy needs more than slogans.",
+    "cue_3": "Name the threat you are answering.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC164",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP63"
+    ],
+    "cue_1": "Duty well stated. Noted.",
+    "cue_2": "That serves those in uniform.",
+    "cue_3": "A firm line, fairly drawn.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC165",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP63"
+    ],
+    "cue_1": "Hold position and finish the briefing.",
+    "cue_2": "No cuts to readiness. None.",
+    "cue_3": "Security is not up for trade.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC166",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP73"
+    ],
+    "cue_1": "Strategy needs more than slogans.",
+    "cue_2": "Name the threat you are answering.",
+    "cue_3": "Readiness is not a talking point.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC167",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP73"
+    ],
+    "cue_1": "That serves those in uniform.",
+    "cue_2": "A firm line, fairly drawn.",
+    "cue_3": "Steady resolve. That reassures me.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC168",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP73"
+    ],
+    "cue_1": "No cuts to readiness. None.",
+    "cue_2": "Security is not up for trade.",
+    "cue_3": "I will not weaken the guard.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC169",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP21"
+    ],
+    "cue_1": "Name the threat you are answering.",
+    "cue_2": "Readiness is not a talking point.",
+    "cue_3": "Our defences are not a debate prize.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC170",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP21"
+    ],
+    "cue_1": "A firm line, fairly drawn.",
+    "cue_2": "Steady resolve. That reassures me.",
+    "cue_3": "Duty well stated. Noted.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC171",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP21"
+    ],
+    "cue_1": "Security is not up for trade.",
+    "cue_2": "I will not weaken the guard.",
+    "cue_3": "Hold position and finish the briefing.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC172",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP67"
+    ],
+    "cue_1": "Readiness is not a talking point.",
+    "cue_2": "Our defences are not a debate prize.",
+    "cue_3": "Strategy needs more than slogans.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC173",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP67"
+    ],
+    "cue_1": "Steady resolve. That reassures me.",
+    "cue_2": "Duty well stated. Noted.",
+    "cue_3": "That serves those in uniform.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC174",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP67"
+    ],
+    "cue_1": "I will not weaken the guard.",
+    "cue_2": "Hold position and finish the briefing.",
+    "cue_3": "No cuts to readiness. None.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC175",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP52"
+    ],
+    "cue_1": "Our defences are not a debate prize.",
+    "cue_2": "Strategy needs more than slogans.",
+    "cue_3": "Name the threat you are answering.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC176",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP52"
+    ],
+    "cue_1": "Duty well stated. Noted.",
+    "cue_2": "That serves those in uniform.",
+    "cue_3": "A firm line, fairly drawn.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC177",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP52"
+    ],
+    "cue_1": "Hold position and finish the briefing.",
+    "cue_2": "No cuts to readiness. None.",
+    "cue_3": "Security is not up for trade.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC178",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP66"
+    ],
+    "cue_1": "Strategy needs more than slogans.",
+    "cue_2": "Name the threat you are answering.",
+    "cue_3": "Readiness is not a talking point.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC179",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP66"
+    ],
+    "cue_1": "That serves those in uniform.",
+    "cue_2": "A firm line, fairly drawn.",
+    "cue_3": "Steady resolve. That reassures me.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC180",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP66"
+    ],
+    "cue_1": "No cuts to readiness. None.",
+    "cue_2": "Security is not up for trade.",
+    "cue_3": "I will not weaken the guard.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC181",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP57"
+    ],
+    "cue_1": "Name the threat you are answering.",
+    "cue_2": "Readiness is not a talking point.",
+    "cue_3": "Our defences are not a debate prize.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC182",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP57"
+    ],
+    "cue_1": "A firm line, fairly drawn.",
+    "cue_2": "Steady resolve. That reassures me.",
+    "cue_3": "Duty well stated. Noted.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC183",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP57"
+    ],
+    "cue_1": "Security is not up for trade.",
+    "cue_2": "I will not weaken the guard.",
+    "cue_3": "Hold position and finish the briefing.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC184",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP48"
+    ],
+    "cue_1": "The chamber deserves better than this.",
+    "cue_2": "That breaks with how we legislate.",
+    "cue_3": "Floor rules exist for a reason.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC185",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP48"
+    ],
+    "cue_1": "Respect for the chamber. Welcome.",
+    "cue_2": "That is how a bill earns votes.",
+    "cue_3": "Order and fairness together. Good.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC186",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP48"
+    ],
+    "cue_1": "The floor schedule will not bend.",
+    "cue_2": "Amend it properly and we vote.",
+    "cue_3": "I hold the line on procedure.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC187",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP76"
+    ],
+    "cue_1": "That breaks with how we legislate.",
+    "cue_2": "Floor rules exist for a reason.",
+    "cue_3": "Count the seats, not the applause.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC188",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP76"
+    ],
+    "cue_1": "That is how a bill earns votes.",
+    "cue_2": "Order and fairness together. Good.",
+    "cue_3": "Members will remember that courtesy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC189",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP76"
+    ],
+    "cue_1": "Amend it properly and we vote.",
+    "cue_2": "I hold the line on procedure.",
+    "cue_3": "Not by a shortcut through the chamber.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC190",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP88"
+    ],
+    "cue_1": "Floor rules exist for a reason.",
+    "cue_2": "Count the seats, not the applause.",
+    "cue_3": "The chamber deserves better than this.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC191",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP88"
+    ],
+    "cue_1": "Order and fairness together. Good.",
+    "cue_2": "Members will remember that courtesy.",
+    "cue_3": "Respect for the chamber. Welcome.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC192",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP88"
+    ],
+    "cue_1": "I hold the line on procedure.",
+    "cue_2": "Not by a shortcut through the chamber.",
+    "cue_3": "The floor schedule will not bend.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC193",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP04"
+    ],
+    "cue_1": "Count the seats, not the applause.",
+    "cue_2": "The chamber deserves better than this.",
+    "cue_3": "That breaks with how we legislate.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC194",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP04"
+    ],
+    "cue_1": "Members will remember that courtesy.",
+    "cue_2": "Respect for the chamber. Welcome.",
+    "cue_3": "That is how a bill earns votes.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC195",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP04"
+    ],
+    "cue_1": "Not by a shortcut through the chamber.",
+    "cue_2": "The floor schedule will not bend.",
+    "cue_3": "Amend it properly and we vote.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC196",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP31"
+    ],
+    "cue_1": "The chamber deserves better than this.",
+    "cue_2": "That breaks with how we legislate.",
+    "cue_3": "Floor rules exist for a reason.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC197",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP31"
+    ],
+    "cue_1": "Respect for the chamber. Welcome.",
+    "cue_2": "That is how a bill earns votes.",
+    "cue_3": "Order and fairness together. Good.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC198",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP31"
+    ],
+    "cue_1": "The floor schedule will not bend.",
+    "cue_2": "Amend it properly and we vote.",
+    "cue_3": "I hold the line on procedure.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC199",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP58"
+    ],
+    "cue_1": "That breaks with how we legislate.",
+    "cue_2": "Floor rules exist for a reason.",
+    "cue_3": "Count the seats, not the applause.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC200",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP58"
+    ],
+    "cue_1": "That is how a bill earns votes.",
+    "cue_2": "Order and fairness together. Good.",
+    "cue_3": "Members will remember that courtesy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC201",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "opponent_ids": [
+      "OP58"
+    ],
+    "cue_1": "Amend it properly and we vote.",
+    "cue_2": "I hold the line on procedure.",
+    "cue_3": "Not by a shortcut through the chamber.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC202",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP90"
+    ],
+    "cue_1": "Floor rules exist for a reason.",
+    "cue_2": "Count the seats, not the applause.",
+    "cue_3": "The chamber deserves better than this.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC203",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP90"
+    ],
+    "cue_1": "Order and fairness together. Good.",
+    "cue_2": "Members will remember that courtesy.",
+    "cue_3": "Respect for the chamber. Welcome.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC204",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP90"
+    ],
+    "cue_1": "I hold the line on procedure.",
+    "cue_2": "Not by a shortcut through the chamber.",
+    "cue_3": "The floor schedule will not bend.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC205",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP27"
+    ],
+    "cue_1": "Count the seats, not the applause.",
+    "cue_2": "The chamber deserves better than this.",
+    "cue_3": "That breaks with how we legislate.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC206",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP27"
+    ],
+    "cue_1": "Members will remember that courtesy.",
+    "cue_2": "Respect for the chamber. Welcome.",
+    "cue_3": "That is how a bill earns votes.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC207",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP27"
+    ],
+    "cue_1": "Not by a shortcut through the chamber.",
+    "cue_2": "The floor schedule will not bend.",
+    "cue_3": "Amend it properly and we vote.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC208",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP11"
+    ],
+    "cue_1": "The chamber deserves better than this.",
+    "cue_2": "That breaks with how we legislate.",
+    "cue_3": "Floor rules exist for a reason.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC209",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP11"
+    ],
+    "cue_1": "Respect for the chamber. Welcome.",
+    "cue_2": "That is how a bill earns votes.",
+    "cue_3": "Order and fairness together. Good.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC210",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP11"
+    ],
+    "cue_1": "The floor schedule will not bend.",
+    "cue_2": "Amend it properly and we vote.",
+    "cue_3": "I hold the line on procedure.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC211",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP12"
+    ],
+    "cue_1": "That breaks with how we legislate.",
+    "cue_2": "Floor rules exist for a reason.",
+    "cue_3": "Count the seats, not the applause.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC212",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP12"
+    ],
+    "cue_1": "That is how a bill earns votes.",
+    "cue_2": "Order and fairness together. Good.",
+    "cue_3": "Members will remember that courtesy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC213",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP12"
+    ],
+    "cue_1": "Amend it properly and we vote.",
+    "cue_2": "I hold the line on procedure.",
+    "cue_3": "Not by a shortcut through the chamber.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC214",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP25"
+    ],
+    "cue_1": "Farmers cannot eat your promises.",
+    "cue_2": "Rice prices are no joke.",
+    "cue_3": "Visit a farm and decide fairly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC215",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP25"
+    ],
+    "cue_1": "Honest work deserves honest support.",
+    "cue_2": "The countryside hears that and nods.",
+    "cue_3": "Good. Our growers need it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC216",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP25"
+    ],
+    "cue_1": "Not while the co-ops are left out.",
+    "cue_2": "Show the numbers to the farmers.",
+    "cue_3": "I have watched this plan fail elsewhere.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC217",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP70"
+    ],
+    "cue_1": "Rice prices are no joke.",
+    "cue_2": "Visit a farm and decide fairly.",
+    "cue_3": "The fields feel every cut you make.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC218",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP70"
+    ],
+    "cue_1": "The countryside hears that and nods.",
+    "cue_2": "Good. Our growers need it.",
+    "cue_3": "That helps the next harvest.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC219",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP70"
+    ],
+    "cue_1": "Show the numbers to the farmers.",
+    "cue_2": "I have watched this plan fail elsewhere.",
+    "cue_3": "The land will not forgive carelessness.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC220",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP74"
+    ],
+    "cue_1": "Visit a farm and decide fairly.",
+    "cue_2": "The fields feel every cut you make.",
+    "cue_3": "Farmers cannot eat your promises.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC221",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP74"
+    ],
+    "cue_1": "Good. Our growers need it.",
+    "cue_2": "That helps the next harvest.",
+    "cue_3": "Honest work deserves honest support.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC222",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP74"
+    ],
+    "cue_1": "I have watched this plan fail elsewhere.",
+    "cue_2": "The land will not forgive carelessness.",
+    "cue_3": "Not while the co-ops are left out.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC223",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP79"
+    ],
+    "cue_1": "The fields feel every cut you make.",
+    "cue_2": "Farmers cannot eat your promises.",
+    "cue_3": "Rice prices are no joke.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC224",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP79"
+    ],
+    "cue_1": "That helps the next harvest.",
+    "cue_2": "Honest work deserves honest support.",
+    "cue_3": "The countryside hears that and nods.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC225",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP79"
+    ],
+    "cue_1": "The land will not forgive carelessness.",
+    "cue_2": "Not while the co-ops are left out.",
+    "cue_3": "Show the numbers to the farmers.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC226",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP84"
+    ],
+    "cue_1": "Farmers cannot eat your promises.",
+    "cue_2": "Rice prices are no joke.",
+    "cue_3": "Visit a farm and decide fairly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC227",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP84"
+    ],
+    "cue_1": "Honest work deserves honest support.",
+    "cue_2": "The countryside hears that and nods.",
+    "cue_3": "Good. Our growers need it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC228",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP84"
+    ],
+    "cue_1": "Not while the co-ops are left out.",
+    "cue_2": "Show the numbers to the farmers.",
+    "cue_3": "I have watched this plan fail elsewhere.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC229",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP94"
+    ],
+    "cue_1": "Rice prices are no joke.",
+    "cue_2": "Visit a farm and decide fairly.",
+    "cue_3": "The fields feel every cut you make.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC230",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP94"
+    ],
+    "cue_1": "The countryside hears that and nods.",
+    "cue_2": "Good. Our growers need it.",
+    "cue_3": "That helps the next harvest.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC231",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP94"
+    ],
+    "cue_1": "Show the numbers to the farmers.",
+    "cue_2": "I have watched this plan fail elsewhere.",
+    "cue_3": "The land will not forgive carelessness.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC232",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP98"
+    ],
+    "cue_1": "Visit a farm and decide fairly.",
+    "cue_2": "The fields feel every cut you make.",
+    "cue_3": "Farmers cannot eat your promises.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC233",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP98"
+    ],
+    "cue_1": "Good. Our growers need it.",
+    "cue_2": "That helps the next harvest.",
+    "cue_3": "Honest work deserves honest support.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC234",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP98"
+    ],
+    "cue_1": "I have watched this plan fail elsewhere.",
+    "cue_2": "The land will not forgive carelessness.",
+    "cue_3": "Not while the co-ops are left out.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC235",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP06"
+    ],
+    "cue_1": "The fields feel every cut you make.",
+    "cue_2": "Farmers cannot eat your promises.",
+    "cue_3": "Rice prices are no joke.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC236",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP06"
+    ],
+    "cue_1": "That helps the next harvest.",
+    "cue_2": "Honest work deserves honest support.",
+    "cue_3": "The countryside hears that and nods.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC237",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP06"
+    ],
+    "cue_1": "The land will not forgive carelessness.",
+    "cue_2": "Not while the co-ops are left out.",
+    "cue_3": "Show the numbers to the farmers.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC238",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP43"
+    ],
+    "cue_1": "Farmers cannot eat your promises.",
+    "cue_2": "Rice prices are no joke.",
+    "cue_3": "Visit a farm and decide fairly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC239",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP43"
+    ],
+    "cue_1": "Honest work deserves honest support.",
+    "cue_2": "The countryside hears that and nods.",
+    "cue_3": "Good. Our growers need it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC240",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP43"
+    ],
+    "cue_1": "Not while the co-ops are left out.",
+    "cue_2": "Show the numbers to the farmers.",
+    "cue_3": "I have watched this plan fail elsewhere.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC241",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP29"
+    ],
+    "cue_1": "Rice prices are no joke.",
+    "cue_2": "Visit a farm and decide fairly.",
+    "cue_3": "The fields feel every cut you make.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC242",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP29"
+    ],
+    "cue_1": "The countryside hears that and nods.",
+    "cue_2": "Good. Our growers need it.",
+    "cue_3": "That helps the next harvest.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC243",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP29"
+    ],
+    "cue_1": "Show the numbers to the farmers.",
+    "cue_2": "I have watched this plan fail elsewhere.",
+    "cue_3": "The land will not forgive carelessness.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC244",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP46"
+    ],
+    "cue_1": "Visit a farm and decide fairly.",
+    "cue_2": "The fields feel every cut you make.",
+    "cue_3": "Farmers cannot eat your promises.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC245",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP46"
+    ],
+    "cue_1": "Good. Our growers need it.",
+    "cue_2": "That helps the next harvest.",
+    "cue_3": "Honest work deserves honest support.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC246",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP46"
+    ],
+    "cue_1": "I have watched this plan fail elsewhere.",
+    "cue_2": "The land will not forgive carelessness.",
+    "cue_3": "Not while the co-ops are left out.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC247",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP20"
+    ],
+    "cue_1": "Our neighbours are reading every word.",
+    "cue_2": "This weakens us abroad. Explain.",
+    "cue_3": "Diplomacy is not a slogan.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC248",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP20"
+    ],
+    "cue_1": "Steady words build trust abroad.",
+    "cue_2": "That is how partners are kept.",
+    "cue_3": "A calm line serves Yezo well.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC249",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP20"
+    ],
+    "cue_1": "I will not hand rivals an opening.",
+    "cue_2": "Let the envoys weigh in first.",
+    "cue_3": "Careful. The wrong phrase echoes abroad.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC250",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP44"
+    ],
+    "cue_1": "This weakens us abroad. Explain.",
+    "cue_2": "Diplomacy is not a slogan.",
+    "cue_3": "Allies expect more than speeches.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC251",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP44"
+    ],
+    "cue_1": "That is how partners are kept.",
+    "cue_2": "A calm line serves Yezo well.",
+    "cue_3": "Good. Our standing needs this.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC252",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP44"
+    ],
+    "cue_1": "Let the envoys weigh in first.",
+    "cue_2": "Careful. The wrong phrase echoes abroad.",
+    "cue_3": "No commitments without allied consent.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC253",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP55"
+    ],
+    "cue_1": "Diplomacy is not a slogan.",
+    "cue_2": "Allies expect more than speeches.",
+    "cue_3": "Our neighbours are reading every word.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC254",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP55"
+    ],
+    "cue_1": "A calm line serves Yezo well.",
+    "cue_2": "Good. Our standing needs this.",
+    "cue_3": "Steady words build trust abroad.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC255",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP55"
+    ],
+    "cue_1": "Careful. The wrong phrase echoes abroad.",
+    "cue_2": "No commitments without allied consent.",
+    "cue_3": "I will not hand rivals an opening.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC256",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP61"
+    ],
+    "cue_1": "Allies expect more than speeches.",
+    "cue_2": "Our neighbours are reading every word.",
+    "cue_3": "This weakens us abroad. Explain.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC257",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP61"
+    ],
+    "cue_1": "Good. Our standing needs this.",
+    "cue_2": "Steady words build trust abroad.",
+    "cue_3": "That is how partners are kept.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC258",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP61"
+    ],
+    "cue_1": "No commitments without allied consent.",
+    "cue_2": "I will not hand rivals an opening.",
+    "cue_3": "Let the envoys weigh in first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC259",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP89"
+    ],
+    "cue_1": "Our neighbours are reading every word.",
+    "cue_2": "This weakens us abroad. Explain.",
+    "cue_3": "Diplomacy is not a slogan.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC260",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP89"
+    ],
+    "cue_1": "Steady words build trust abroad.",
+    "cue_2": "That is how partners are kept.",
+    "cue_3": "A calm line serves Yezo well.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC261",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP89"
+    ],
+    "cue_1": "I will not hand rivals an opening.",
+    "cue_2": "Let the envoys weigh in first.",
+    "cue_3": "Careful. The wrong phrase echoes abroad.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC262",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP95"
+    ],
+    "cue_1": "This weakens us abroad. Explain.",
+    "cue_2": "Diplomacy is not a slogan.",
+    "cue_3": "Allies expect more than speeches.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC263",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP95"
+    ],
+    "cue_1": "That is how partners are kept.",
+    "cue_2": "A calm line serves Yezo well.",
+    "cue_3": "Good. Our standing needs this.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC264",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP95"
+    ],
+    "cue_1": "Let the envoys weigh in first.",
+    "cue_2": "Careful. The wrong phrase echoes abroad.",
+    "cue_3": "No commitments without allied consent.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC265",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP38"
+    ],
+    "cue_1": "Diplomacy is not a slogan.",
+    "cue_2": "Allies expect more than speeches.",
+    "cue_3": "Our neighbours are reading every word.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC266",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP38"
+    ],
+    "cue_1": "A calm line serves Yezo well.",
+    "cue_2": "Good. Our standing needs this.",
+    "cue_3": "Steady words build trust abroad.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC267",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP38"
+    ],
+    "cue_1": "Careful. The wrong phrase echoes abroad.",
+    "cue_2": "No commitments without allied consent.",
+    "cue_3": "I will not hand rivals an opening.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC268",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP72"
+    ],
+    "cue_1": "Allies expect more than speeches.",
+    "cue_2": "Our neighbours are reading every word.",
+    "cue_3": "This weakens us abroad. Explain.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC269",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP72"
+    ],
+    "cue_1": "Good. Our standing needs this.",
+    "cue_2": "Steady words build trust abroad.",
+    "cue_3": "That is how partners are kept.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC270",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP72"
+    ],
+    "cue_1": "No commitments without allied consent.",
+    "cue_2": "I will not hand rivals an opening.",
+    "cue_3": "Let the envoys weigh in first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC271",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP56"
+    ],
+    "cue_1": "Our neighbours are reading every word.",
+    "cue_2": "This weakens us abroad. Explain.",
+    "cue_3": "Diplomacy is not a slogan.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC272",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP56"
+    ],
+    "cue_1": "Steady words build trust abroad.",
+    "cue_2": "That is how partners are kept.",
+    "cue_3": "A calm line serves Yezo well.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC273",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP56"
+    ],
+    "cue_1": "I will not hand rivals an opening.",
+    "cue_2": "Let the envoys weigh in first.",
+    "cue_3": "Careful. The wrong phrase echoes abroad.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC274",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP82"
+    ],
+    "cue_1": "This weakens us abroad. Explain.",
+    "cue_2": "Diplomacy is not a slogan.",
+    "cue_3": "Allies expect more than speeches.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC275",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP82"
+    ],
+    "cue_1": "That is how partners are kept.",
+    "cue_2": "A calm line serves Yezo well.",
+    "cue_3": "Good. Our standing needs this.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC276",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP82"
+    ],
+    "cue_1": "Let the envoys weigh in first.",
+    "cue_2": "Careful. The wrong phrase echoes abroad.",
+    "cue_3": "No commitments without allied consent.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC277",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP18"
+    ],
+    "cue_1": "Diplomacy is not a slogan.",
+    "cue_2": "Allies expect more than speeches.",
+    "cue_3": "Our neighbours are reading every word.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC278",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP18"
+    ],
+    "cue_1": "A calm line serves Yezo well.",
+    "cue_2": "Good. Our standing needs this.",
+    "cue_3": "Steady words build trust abroad.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC279",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP18"
+    ],
+    "cue_1": "Careful. The wrong phrase echoes abroad.",
+    "cue_2": "No commitments without allied consent.",
+    "cue_3": "I will not hand rivals an opening.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC280",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP59"
+    ],
+    "cue_1": "Allies expect more than speeches.",
+    "cue_2": "Our neighbours are reading every word.",
+    "cue_3": "This weakens us abroad. Explain.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC281",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP59"
+    ],
+    "cue_1": "Good. Our standing needs this.",
+    "cue_2": "Steady words build trust abroad.",
+    "cue_3": "That is how partners are kept.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC282",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP59"
+    ],
+    "cue_1": "No commitments without allied consent.",
+    "cue_2": "I will not hand rivals an opening.",
+    "cue_3": "Let the envoys weigh in first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC283",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP19"
+    ],
+    "cue_1": "Roads do not build themselves.",
+    "cue_2": "Where is the budget for the work?",
+    "cue_3": "Delays cost towns their future.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC284",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP19"
+    ],
+    "cue_1": "Good. Projects that last.",
+    "cue_2": "That builds something real.",
+    "cue_3": "Towns will see the difference.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC285",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP19"
+    ],
+    "cue_1": "Not without a complete survey.",
+    "cue_2": "I need the contractor figures.",
+    "cue_3": "Safety codes are not optional.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC286",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP68"
+    ],
+    "cue_1": "Where is the budget for the work?",
+    "cue_2": "Delays cost towns their future.",
+    "cue_3": "Your plan has no foundation.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC287",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP68"
+    ],
+    "cue_1": "That builds something real.",
+    "cue_2": "Towns will see the difference.",
+    "cue_3": "Solid planning. I approve.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC288",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP68"
+    ],
+    "cue_1": "I need the contractor figures.",
+    "cue_2": "Safety codes are not optional.",
+    "cue_3": "Show me the schedule first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC289",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP13"
+    ],
+    "cue_1": "Delays cost towns their future.",
+    "cue_2": "Your plan has no foundation.",
+    "cue_3": "Roads do not build themselves.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC290",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP13"
+    ],
+    "cue_1": "Towns will see the difference.",
+    "cue_2": "Solid planning. I approve.",
+    "cue_3": "Good. Projects that last.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC291",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP13"
+    ],
+    "cue_1": "Safety codes are not optional.",
+    "cue_2": "Show me the schedule first.",
+    "cue_3": "Not without a complete survey.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC292",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP101"
+    ],
+    "cue_1": "Your plan has no foundation.",
+    "cue_2": "Roads do not build themselves.",
+    "cue_3": "Where is the budget for the work?",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC293",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP101"
+    ],
+    "cue_1": "Solid planning. I approve.",
+    "cue_2": "Good. Projects that last.",
+    "cue_3": "That builds something real.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC294",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP101"
+    ],
+    "cue_1": "Show me the schedule first.",
+    "cue_2": "Not without a complete survey.",
+    "cue_3": "I need the contractor figures.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC295",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP77"
+    ],
+    "cue_1": "Roads do not build themselves.",
+    "cue_2": "Where is the budget for the work?",
+    "cue_3": "Delays cost towns their future.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC296",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP77"
+    ],
+    "cue_1": "Good. Projects that last.",
+    "cue_2": "That builds something real.",
+    "cue_3": "Towns will see the difference.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC297",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP77"
+    ],
+    "cue_1": "Not without a complete survey.",
+    "cue_2": "I need the contractor figures.",
+    "cue_3": "Safety codes are not optional.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC298",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP36"
+    ],
+    "cue_1": "Where is the budget for the work?",
+    "cue_2": "Delays cost towns their future.",
+    "cue_3": "Your plan has no foundation.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC299",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP36"
+    ],
+    "cue_1": "That builds something real.",
+    "cue_2": "Towns will see the difference.",
+    "cue_3": "Solid planning. I approve.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC300",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP36"
+    ],
+    "cue_1": "I need the contractor figures.",
+    "cue_2": "Safety codes are not optional.",
+    "cue_3": "Show me the schedule first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC301",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP62"
+    ],
+    "cue_1": "Delays cost towns their future.",
+    "cue_2": "Your plan has no foundation.",
+    "cue_3": "Roads do not build themselves.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC302",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP62"
+    ],
+    "cue_1": "Towns will see the difference.",
+    "cue_2": "Solid planning. I approve.",
+    "cue_3": "Good. Projects that last.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC303",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP62"
+    ],
+    "cue_1": "Safety codes are not optional.",
+    "cue_2": "Show me the schedule first.",
+    "cue_3": "Not without a complete survey.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC304",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP05"
+    ],
+    "cue_1": "The ledger does not add up.",
+    "cue_2": "Who pays? Give me a number.",
+    "cue_3": "Spending without sources is fantasy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC305",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP05"
+    ],
+    "cue_1": "Sound figures. That I respect.",
+    "cue_2": "The books agree with you there.",
+    "cue_3": "A balanced case. Well done.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC306",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP05"
+    ],
+    "cue_1": "Hold the spending; cost it properly.",
+    "cue_2": "I want the audit first.",
+    "cue_3": "Show me the revenue line.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC307",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP32"
+    ],
+    "cue_1": "Who pays? Give me a number.",
+    "cue_2": "Spending without sources is fantasy.",
+    "cue_3": "Your cost estimate is a guess.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC308",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP32"
+    ],
+    "cue_1": "The books agree with you there.",
+    "cue_2": "A balanced case. Well done.",
+    "cue_3": "That is fiscal sense.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC309",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP32"
+    ],
+    "cue_1": "I want the audit first.",
+    "cue_2": "Show me the revenue line.",
+    "cue_3": "No blank cheques from this seat.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC310",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP39"
+    ],
+    "cue_1": "Spending without sources is fantasy.",
+    "cue_2": "Your cost estimate is a guess.",
+    "cue_3": "The ledger does not add up.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC311",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP39"
+    ],
+    "cue_1": "A balanced case. Well done.",
+    "cue_2": "That is fiscal sense.",
+    "cue_3": "Sound figures. That I respect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC312",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP39"
+    ],
+    "cue_1": "Show me the revenue line.",
+    "cue_2": "No blank cheques from this seat.",
+    "cue_3": "Hold the spending; cost it properly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC313",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP41"
+    ],
+    "cue_1": "Your cost estimate is a guess.",
+    "cue_2": "The ledger does not add up.",
+    "cue_3": "Who pays? Give me a number.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC314",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP41"
+    ],
+    "cue_1": "That is fiscal sense.",
+    "cue_2": "Sound figures. That I respect.",
+    "cue_3": "The books agree with you there.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC315",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP41"
+    ],
+    "cue_1": "No blank cheques from this seat.",
+    "cue_2": "Hold the spending; cost it properly.",
+    "cue_3": "I want the audit first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC316",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP97"
+    ],
+    "cue_1": "The ledger does not add up.",
+    "cue_2": "Who pays? Give me a number.",
+    "cue_3": "Spending without sources is fantasy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC317",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP97"
+    ],
+    "cue_1": "Sound figures. That I respect.",
+    "cue_2": "The books agree with you there.",
+    "cue_3": "A balanced case. Well done.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC318",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP97"
+    ],
+    "cue_1": "Hold the spending; cost it properly.",
+    "cue_2": "I want the audit first.",
+    "cue_3": "Show me the revenue line.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC319",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP03"
+    ],
+    "cue_1": "Who pays? Give me a number.",
+    "cue_2": "Spending without sources is fantasy.",
+    "cue_3": "Your cost estimate is a guess.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC320",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP03"
+    ],
+    "cue_1": "The books agree with you there.",
+    "cue_2": "A balanced case. Well done.",
+    "cue_3": "That is fiscal sense.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC321",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP03"
+    ],
+    "cue_1": "I want the audit first.",
+    "cue_2": "Show me the revenue line.",
+    "cue_3": "No blank cheques from this seat.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC322",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP07"
+    ],
+    "cue_1": "Spending without sources is fantasy.",
+    "cue_2": "Your cost estimate is a guess.",
+    "cue_3": "The ledger does not add up.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC323",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP07"
+    ],
+    "cue_1": "A balanced case. Well done.",
+    "cue_2": "That is fiscal sense.",
+    "cue_3": "Sound figures. That I respect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC324",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP07"
+    ],
+    "cue_1": "Show me the revenue line.",
+    "cue_2": "No blank cheques from this seat.",
+    "cue_3": "Hold the spending; cost it properly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC325",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP83"
+    ],
+    "cue_1": "Your cost estimate is a guess.",
+    "cue_2": "The ledger does not add up.",
+    "cue_3": "Who pays? Give me a number.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC326",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP83"
+    ],
+    "cue_1": "That is fiscal sense.",
+    "cue_2": "Sound figures. That I respect.",
+    "cue_3": "The books agree with you there.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC327",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP83"
+    ],
+    "cue_1": "No blank cheques from this seat.",
+    "cue_2": "Hold the spending; cost it properly.",
+    "cue_3": "I want the audit first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC328",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP47"
+    ],
+    "cue_1": "The ledger does not add up.",
+    "cue_2": "Who pays? Give me a number.",
+    "cue_3": "Spending without sources is fantasy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC329",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP47"
+    ],
+    "cue_1": "Sound figures. That I respect.",
+    "cue_2": "The books agree with you there.",
+    "cue_3": "A balanced case. Well done.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC330",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": [
+      "OP47"
+    ],
+    "cue_1": "Hold the spending; cost it properly.",
+    "cue_2": "I want the audit first.",
+    "cue_3": "Show me the revenue line.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC331",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP49"
+    ],
+    "cue_1": "Your plan adds paperwork, not service.",
+    "cue_2": "Which office will run this? Name it.",
+    "cue_3": "Efficiency is the test. You fail it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC332",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP49"
+    ],
+    "cue_1": "Clear rules help everyone here.",
+    "cue_2": "Good. Orderly offices serve the public.",
+    "cue_3": "That is administration done properly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC333",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP49"
+    ],
+    "cue_1": "Procedure protects us both. Keep to it.",
+    "cue_2": "I will wait for the full report.",
+    "cue_3": "Proper channels exist for a reason.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC334",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP53"
+    ],
+    "cue_1": "Which office will run this? Name it.",
+    "cue_2": "Efficiency is the test. You fail it.",
+    "cue_3": "Show me the staffing plan first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC335",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP53"
+    ],
+    "cue_1": "Good. Orderly offices serve the public.",
+    "cue_2": "That is administration done properly.",
+    "cue_3": "Fair process earns my respect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC336",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP53"
+    ],
+    "cue_1": "I will wait for the full report.",
+    "cue_2": "Proper channels exist for a reason.",
+    "cue_3": "Not without a written standard.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC337",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP86"
+    ],
+    "cue_1": "Efficiency is the test. You fail it.",
+    "cue_2": "Show me the staffing plan first.",
+    "cue_3": "Your plan adds paperwork, not service.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC338",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP86"
+    ],
+    "cue_1": "That is administration done properly.",
+    "cue_2": "Fair process earns my respect.",
+    "cue_3": "Clear rules help everyone here.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC339",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP86"
+    ],
+    "cue_1": "Proper channels exist for a reason.",
+    "cue_2": "Not without a written standard.",
+    "cue_3": "Procedure protects us both. Keep to it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC340",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP93"
+    ],
+    "cue_1": "Show me the staffing plan first.",
+    "cue_2": "Your plan adds paperwork, not service.",
+    "cue_3": "Which office will run this? Name it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC341",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP93"
+    ],
+    "cue_1": "Fair process earns my respect.",
+    "cue_2": "Clear rules help everyone here.",
+    "cue_3": "Good. Orderly offices serve the public.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC342",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP93"
+    ],
+    "cue_1": "Not without a written standard.",
+    "cue_2": "Procedure protects us both. Keep to it.",
+    "cue_3": "I will wait for the full report.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC343",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP96"
+    ],
+    "cue_1": "Your plan adds paperwork, not service.",
+    "cue_2": "Which office will run this? Name it.",
+    "cue_3": "Efficiency is the test. You fail it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC344",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP96"
+    ],
+    "cue_1": "Clear rules help everyone here.",
+    "cue_2": "Good. Orderly offices serve the public.",
+    "cue_3": "That is administration done properly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC345",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP96"
+    ],
+    "cue_1": "Procedure protects us both. Keep to it.",
+    "cue_2": "I will wait for the full report.",
+    "cue_3": "Proper channels exist for a reason.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC346",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP80"
+    ],
+    "cue_1": "Which office will run this? Name it.",
+    "cue_2": "Efficiency is the test. You fail it.",
+    "cue_3": "Show me the staffing plan first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC347",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP80"
+    ],
+    "cue_1": "Good. Orderly offices serve the public.",
+    "cue_2": "That is administration done properly.",
+    "cue_3": "Fair process earns my respect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC348",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP80"
+    ],
+    "cue_1": "I will wait for the full report.",
+    "cue_2": "Proper channels exist for a reason.",
+    "cue_3": "Not without a written standard.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC349",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP08"
+    ],
+    "cue_1": "Efficiency is the test. You fail it.",
+    "cue_2": "Show me the staffing plan first.",
+    "cue_3": "Your plan adds paperwork, not service.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC350",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP08"
+    ],
+    "cue_1": "That is administration done properly.",
+    "cue_2": "Fair process earns my respect.",
+    "cue_3": "Clear rules help everyone here.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC351",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP08"
+    ],
+    "cue_1": "Proper channels exist for a reason.",
+    "cue_2": "Not without a written standard.",
+    "cue_3": "Procedure protects us both. Keep to it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC352",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP28"
+    ],
+    "cue_1": "Show me the staffing plan first.",
+    "cue_2": "Your plan adds paperwork, not service.",
+    "cue_3": "Which office will run this? Name it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC353",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP28"
+    ],
+    "cue_1": "Fair process earns my respect.",
+    "cue_2": "Clear rules help everyone here.",
+    "cue_3": "Good. Orderly offices serve the public.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC354",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP28"
+    ],
+    "cue_1": "Not without a written standard.",
+    "cue_2": "Procedure protects us both. Keep to it.",
+    "cue_3": "I will wait for the full report.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC355",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP02"
+    ],
+    "cue_1": "Your plan adds paperwork, not service.",
+    "cue_2": "Which office will run this? Name it.",
+    "cue_3": "Efficiency is the test. You fail it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC356",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP02"
+    ],
+    "cue_1": "Clear rules help everyone here.",
+    "cue_2": "Good. Orderly offices serve the public.",
+    "cue_3": "That is administration done properly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC357",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "opponent_ids": [
+      "OP02"
+    ],
+    "cue_1": "Procedure protects us both. Keep to it.",
+    "cue_2": "I will wait for the full report.",
+    "cue_3": "Proper channels exist for a reason.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC358",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP26"
+    ],
+    "cue_1": "Which office will run this? Name it.",
+    "cue_2": "Efficiency is the test. You fail it.",
+    "cue_3": "Show me the staffing plan first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC359",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP26"
+    ],
+    "cue_1": "Good. Orderly offices serve the public.",
+    "cue_2": "That is administration done properly.",
+    "cue_3": "Fair process earns my respect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC360",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP26"
+    ],
+    "cue_1": "I will wait for the full report.",
+    "cue_2": "Proper channels exist for a reason.",
+    "cue_3": "Not without a written standard.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC361",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP78"
+    ],
+    "cue_1": "Efficiency is the test. You fail it.",
+    "cue_2": "Show me the staffing plan first.",
+    "cue_3": "Your plan adds paperwork, not service.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC362",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP78"
+    ],
+    "cue_1": "That is administration done properly.",
+    "cue_2": "Fair process earns my respect.",
+    "cue_3": "Clear rules help everyone here.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC363",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP78"
+    ],
+    "cue_1": "Proper channels exist for a reason.",
+    "cue_2": "Not without a written standard.",
+    "cue_3": "Procedure protects us both. Keep to it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC364",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP100"
+    ],
+    "cue_1": "Show me the staffing plan first.",
+    "cue_2": "Your plan adds paperwork, not service.",
+    "cue_3": "Which office will run this? Name it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC365",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP100"
+    ],
+    "cue_1": "Fair process earns my respect.",
+    "cue_2": "Clear rules help everyone here.",
+    "cue_3": "Good. Orderly offices serve the public.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC366",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP100"
+    ],
+    "cue_1": "Not without a written standard.",
+    "cue_2": "Procedure protects us both. Keep to it.",
+    "cue_3": "I will wait for the full report.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC367",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP16"
+    ],
+    "cue_1": "Your plan adds paperwork, not service.",
+    "cue_2": "Which office will run this? Name it.",
+    "cue_3": "Efficiency is the test. You fail it.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC368",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP16"
+    ],
+    "cue_1": "Clear rules help everyone here.",
+    "cue_2": "Good. Orderly offices serve the public.",
+    "cue_3": "That is administration done properly.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC369",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP16"
+    ],
+    "cue_1": "Procedure protects us both. Keep to it.",
+    "cue_2": "I will wait for the full report.",
+    "cue_3": "Proper channels exist for a reason.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC370",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP87"
+    ],
+    "cue_1": "Which office will run this? Name it.",
+    "cue_2": "Efficiency is the test. You fail it.",
+    "cue_3": "Show me the staffing plan first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC371",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP87"
+    ],
+    "cue_1": "Good. Orderly offices serve the public.",
+    "cue_2": "That is administration done properly.",
+    "cue_3": "Fair process earns my respect.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC372",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP87"
+    ],
+    "cue_1": "I will wait for the full report.",
+    "cue_2": "Proper channels exist for a reason.",
+    "cue_3": "Not without a written standard.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC373",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP10"
+    ],
+    "cue_1": "The government will not be pressured.",
+    "cue_2": "Cabinet speaks with one voice here.",
+    "cue_3": "Mind the limits of your office.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC374",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP10"
+    ],
+    "cue_1": "A responsible view. Noted.",
+    "cue_2": "The cabinet can work with that.",
+    "cue_3": "Measured and fair. Good.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC375",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP10"
+    ],
+    "cue_1": "That decision is not yours.",
+    "cue_2": "Cabinet will answer in due course.",
+    "cue_3": "No commitments from this room.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC376",
+    "suit": "Divisive",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP110"
+    ],
+    "cue_1": "That answer dodges the question.",
+    "cue_2": "Our readers expect a straight reply.",
+    "cue_3": "Care to explain that to the public?",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC377",
+    "suit": "Divisive",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP110"
+    ],
+    "cue_1": "That is a headline.",
+    "cue_2": "Clear and quotable. Thank you.",
+    "cue_3": "The public will like that answer.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC378",
+    "suit": "Divisive",
+    "verb": "block",
+    "opponent_ids": [
+      "OP110"
+    ],
+    "cue_1": "No comment is also a comment.",
+    "cue_2": "I will follow up on that.",
+    "cue_3": "Off the record, you hedged.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC379",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP111"
+    ],
+    "cue_1": "Our readers expect a straight reply.",
+    "cue_2": "Care to explain that to the public?",
+    "cue_3": "I will quote you on that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC380",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP111"
+    ],
+    "cue_1": "Clear and quotable. Thank you.",
+    "cue_2": "The public will like that answer.",
+    "cue_3": "That reads well in print.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC381",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": [
+      "OP111"
+    ],
+    "cue_1": "I will follow up on that.",
+    "cue_2": "Off the record, you hedged.",
+    "cue_3": "We will see what the facts say.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC382",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP112"
+    ],
+    "cue_1": "Care to explain that to the public?",
+    "cue_2": "I will quote you on that.",
+    "cue_3": "That answer dodges the question.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC383",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP112"
+    ],
+    "cue_1": "The public will like that answer.",
+    "cue_2": "That reads well in print.",
+    "cue_3": "That is a headline.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC384",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "opponent_ids": [
+      "OP112"
+    ],
+    "cue_1": "Off the record, you hedged.",
+    "cue_2": "We will see what the facts say.",
+    "cue_3": "No comment is also a comment.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC385",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP113"
+    ],
+    "cue_1": "I will quote you on that.",
+    "cue_2": "That answer dodges the question.",
+    "cue_3": "Our readers expect a straight reply.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC386",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP113"
+    ],
+    "cue_1": "That reads well in print.",
+    "cue_2": "That is a headline.",
+    "cue_3": "Clear and quotable. Thank you.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC387",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP113"
+    ],
+    "cue_1": "We will see what the facts say.",
+    "cue_2": "No comment is also a comment.",
+    "cue_3": "I will follow up on that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC388",
+    "suit": "Divisive",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP114"
+    ],
+    "cue_1": "That answer dodges the question.",
+    "cue_2": "Our readers expect a straight reply.",
+    "cue_3": "Care to explain that to the public?",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC389",
+    "suit": "Divisive",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP114"
+    ],
+    "cue_1": "That is a headline.",
+    "cue_2": "Clear and quotable. Thank you.",
+    "cue_3": "The public will like that answer.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC390",
+    "suit": "Divisive",
+    "verb": "block",
+    "opponent_ids": [
+      "OP114"
+    ],
+    "cue_1": "No comment is also a comment.",
+    "cue_2": "I will follow up on that.",
+    "cue_3": "Off the record, you hedged.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC391",
+    "suit": "Duplicitous",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP115"
+    ],
+    "cue_1": "Our readers expect a straight reply.",
+    "cue_2": "Care to explain that to the public?",
+    "cue_3": "I will quote you on that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC392",
+    "suit": "Duplicitous",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP115"
+    ],
+    "cue_1": "Clear and quotable. Thank you.",
+    "cue_2": "The public will like that answer.",
+    "cue_3": "That reads well in print.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC393",
+    "suit": "Duplicitous",
+    "verb": "block",
+    "opponent_ids": [
+      "OP115"
+    ],
+    "cue_1": "I will follow up on that.",
+    "cue_2": "Off the record, you hedged.",
+    "cue_3": "We will see what the facts say.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC394",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP116"
+    ],
+    "cue_1": "Care to explain that to the public?",
+    "cue_2": "I will quote you on that.",
+    "cue_3": "That answer dodges the question.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC395",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP116"
+    ],
+    "cue_1": "The public will like that answer.",
+    "cue_2": "That reads well in print.",
+    "cue_3": "That is a headline.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC396",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": [
+      "OP116"
+    ],
+    "cue_1": "Off the record, you hedged.",
+    "cue_2": "We will see what the facts say.",
+    "cue_3": "No comment is also a comment.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC397",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP117"
+    ],
+    "cue_1": "I will quote you on that.",
+    "cue_2": "That answer dodges the question.",
+    "cue_3": "Our readers expect a straight reply.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC398",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP117"
+    ],
+    "cue_1": "That reads well in print.",
+    "cue_2": "That is a headline.",
+    "cue_3": "Clear and quotable. Thank you.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC399",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP117"
+    ],
+    "cue_1": "We will see what the facts say.",
+    "cue_2": "No comment is also a comment.",
+    "cue_3": "I will follow up on that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC400",
+    "suit": "Data Driven",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP118"
+    ],
+    "cue_1": "Business bears this cost, not you.",
+    "cue_2": "Jobs depend on getting this right.",
+    "cue_3": "Red tape strangles small firms.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC401",
+    "suit": "Data Driven",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP118"
+    ],
+    "cue_1": "Commerce can plan ahead on that.",
+    "cue_2": "Predictable rules help every firm.",
+    "cue_3": "That invites investment.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC402",
+    "suit": "Data Driven",
+    "verb": "block",
+    "opponent_ids": [
+      "OP118"
+    ],
+    "cue_1": "We cannot absorb another burden.",
+    "cue_2": "Hold the tax; consult us.",
+    "cue_3": "Show the impact on employers.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC403",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP119"
+    ],
+    "cue_1": "Workers are not a line in your budget.",
+    "cue_2": "Fair pay is not negotiable.",
+    "cue_3": "Ask the shop floor, not the boardroom.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC404",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP119"
+    ],
+    "cue_1": "Workers will stand behind that.",
+    "cue_2": "A fair deal. We can say yes.",
+    "cue_3": "Good for those who do the work.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC405",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP119"
+    ],
+    "cue_1": "No deal without proper wages.",
+    "cue_2": "We hold the line for our members.",
+    "cue_3": "Put safety in writing first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC406",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP120"
+    ],
+    "cue_1": "The co-op has carried this district.",
+    "cue_2": "Weather and prices come first.",
+    "cue_3": "Fields need help, not lectures.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC407",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP120"
+    ],
+    "cue_1": "Good for the co-op. Good for all.",
+    "cue_2": "Growers will drink to that.",
+    "cue_3": "A fair price makes good neighbours.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC408",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP120"
+    ],
+    "cue_1": "The co-op will not accept that.",
+    "cue_2": "We need a price guarantee.",
+    "cue_3": "Not without the growers heard.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC409",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP121"
+    ],
+    "cue_1": "The sea has no patience for delay.",
+    "cue_2": "Quotas hit our boats first.",
+    "cue_3": "Harbour families bear this cost.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC410",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP121"
+    ],
+    "cue_1": "The harbour welcomes that.",
+    "cue_2": "Fair catch, fair price. Good.",
+    "cue_3": "Boats will sail easier on that.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC411",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP121"
+    ],
+    "cue_1": "Not without the catch figures.",
+    "cue_2": "We need honest quotas first.",
+    "cue_3": "Keep the harbour working.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC412",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP122"
+    ],
+    "cue_1": "Towns get the bill, not the credit.",
+    "cue_2": "Local budgets cannot stretch further.",
+    "cue_3": "Mayors were not asked.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC413",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP122"
+    ],
+    "cue_1": "Towns need partners like this.",
+    "cue_2": "That helps real municipal budgets.",
+    "cue_3": "Good. Local leaders will cooperate.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC414",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP122"
+    ],
+    "cue_1": "Transfer the funds with the duties.",
+    "cue_2": "Towns hold firm on this.",
+    "cue_3": "We want it in writing.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC415",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP123"
+    ],
+    "cue_1": "Ask the neighbours and plan together.",
+    "cue_2": "Local people were left out.",
+    "cue_3": "Meetings count. You skipped ours.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC416",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP123"
+    ],
+    "cue_1": "That respects how we get along.",
+    "cue_2": "Neighbours will thank you for that.",
+    "cue_3": "Community first. Well said.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC417",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP123"
+    ],
+    "cue_1": "We guard our street's character.",
+    "cue_2": "Bring it to our meeting.",
+    "cue_3": "Slow down and consult us.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC418",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP124"
+    ],
+    "cue_1": "Words are cheap. Tuition is not.",
+    "cue_2": "We will remember how you vote.",
+    "cue_3": "My generation is paying for this.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC419",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP124"
+    ],
+    "cue_1": "Maybe the future has a seat after all.",
+    "cue_2": "I can believe in that.",
+    "cue_3": "Someone who listens. Good.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC420",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP124"
+    ],
+    "cue_1": "Not without student voices at the table.",
+    "cue_2": "I need more than promises.",
+    "cue_3": "Show us the plan, not a poster.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC421",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP125"
+    ],
+    "cue_1": "Customs are not obstacles.",
+    "cue_2": "Our ways stand beyond this debate.",
+    "cue_3": "Respect what the community keeps.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC422",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP125"
+    ],
+    "cue_1": "Tradition honoured. Well done.",
+    "cue_2": "That respects the old ways.",
+    "cue_3": "Good. Heritage deserves care.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC423",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP125"
+    ],
+    "cue_1": "We keep our customs. Full stop.",
+    "cue_2": "Not at the cost of heritage.",
+    "cue_3": "Elders must be consulted first.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC424",
+    "suit": "Emotional",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP15"
+    ],
+    "cue_1": "Your plan has no foundation.",
+    "cue_2": "Roads do not build themselves.",
+    "cue_3": "Where is the budget for the work?",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC425",
+    "suit": "Emotional",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP15"
+    ],
+    "cue_1": "Solid planning. I approve.",
+    "cue_2": "Good. Projects that last.",
+    "cue_3": "That builds something real.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC426",
+    "suit": "Emotional",
+    "verb": "block",
+    "opponent_ids": [
+      "OP15"
+    ],
+    "cue_1": "Show me the schedule first.",
+    "cue_2": "Not without a complete survey.",
+    "cue_3": "I need the contractor figures.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC427",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP22"
+    ],
+    "cue_1": "Our neighbours are reading every word.",
+    "cue_2": "This weakens us abroad. Explain.",
+    "cue_3": "Diplomacy is not a slogan.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC428",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP22"
+    ],
+    "cue_1": "Steady words build trust abroad.",
+    "cue_2": "That is how partners are kept.",
+    "cue_3": "A calm line serves Yezo well.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC429",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP22"
+    ],
+    "cue_1": "I will not hand rivals an opening.",
+    "cue_2": "Let the envoys weigh in first.",
+    "cue_3": "Careful. The wrong phrase echoes abroad.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC430",
+    "suit": "Appeal",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP35"
+    ],
+    "cue_1": "Floor rules exist for a reason.",
+    "cue_2": "Count the seats, not the applause.",
+    "cue_3": "The chamber deserves better than this.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC431",
+    "suit": "Appeal",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP35"
+    ],
+    "cue_1": "Order and fairness together. Good.",
+    "cue_2": "Members will remember that courtesy.",
+    "cue_3": "Respect for the chamber. Welcome.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC432",
+    "suit": "Appeal",
+    "verb": "block",
+    "opponent_ids": [
+      "OP35"
+    ],
+    "cue_1": "I hold the line on procedure.",
+    "cue_2": "Not by a shortcut through the chamber.",
+    "cue_3": "The floor schedule will not bend.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC433",
+    "suit": "Earnest",
+    "verb": "attack",
+    "opponent_ids": [
+      "OP40"
+    ],
+    "cue_1": "Who benefits? Say it plainly.",
+    "cue_2": "Rules apply to you as well.",
+    "cue_3": "That sounds like a favour, not policy.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC434",
+    "suit": "Earnest",
+    "verb": "gain",
+    "opponent_ids": [
+      "OP40"
+    ],
+    "cue_1": "Honest answers matter to this committee.",
+    "cue_2": "That is the standard I expect.",
+    "cue_3": "Integrity makes a case stronger.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
+  },
+  {
+    "cue_id": "OC435",
+    "suit": "Earnest",
+    "verb": "block",
+    "opponent_ids": [
+      "OP40"
+    ],
+    "cue_1": "I need the record on that point.",
+    "cue_2": "Careful. Every word is noted.",
+    "cue_3": "Evidence first, opinions second.",
+    "cue_4": null,
+    "cue_5": null,
+    "stage_ids": null
   }
 ]

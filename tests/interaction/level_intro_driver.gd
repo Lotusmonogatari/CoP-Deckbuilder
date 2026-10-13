@@ -90,6 +90,9 @@ func _check_skips_when_nothing_written() -> bool:
 		_failures.append("the game did not start in the Office")
 		return false
 
+	# The workbook now writes cues for every level, so blank them in memory
+	# to stand in for "nothing written".
+	DataDB.level_intros = []
 	if not await _go_in_on(office, SKIP_LEVEL_ID):
 		return false
 

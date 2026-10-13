@@ -31,7 +31,109 @@
     "A pin fills one of the drawn slots; if the stage's Opponent Count calls",
     "for more than one visitor, the rest are still the dynamic pick.",
     "",
-    "Nothing is in here yet. Every level currently uses the dynamic pick."
+    "Nothing is in here yet. Every level currently uses the dynamic pick.",
+    "2026-10-14: LV63-LV82 each pin their own bill-specific visitor (VI40-VI59) to slot 1."
   ],
-  "overrides": []
+  "overrides": [
+    {
+      "level_id": "LV63",
+      "slot": 1,
+      "visitor_id": "VI40"
+    },
+    {
+      "level_id": "LV64",
+      "slot": 1,
+      "visitor_id": "VI41"
+    },
+    {
+      "level_id": "LV65",
+      "slot": 1,
+      "visitor_id": "VI42"
+    },
+    {
+      "level_id": "LV66",
+      "slot": 1,
+      "visitor_id": "VI43"
+    },
+    {
+      "level_id": "LV67",
+      "slot": 1,
+      "visitor_id": "VI44"
+    },
+    {
+      "level_id": "LV68",
+      "slot": 1,
+      "visitor_id": "VI45"
+    },
+    {
+      "level_id": "LV69",
+      "slot": 1,
+      "visitor_id": "VI46"
+    },
+    {
+      "level_id": "LV70",
+      "slot": 1,
+      "visitor_id": "VI47"
+    },
+    {
+      "level_id": "LV71",
+      "slot": 1,
+      "visitor_id": "VI48"
+    },
+    {
+      "level_id": "LV72",
+      "slot": 1,
+      "visitor_id": "VI49"
+    },
+    {
+      "level_id": "LV73",
+      "slot": 1,
+      "visitor_id": "VI50"
+    },
+    {
+      "level_id": "LV74",
+      "slot": 1,
+      "visitor_id": "VI51"
+    },
+    {
+      "level_id": "LV75",
+      "slot": 1,
+      "visitor_id": "VI52"
+    },
+    {
+      "level_id": "LV76",
+      "slot": 1,
+      "visitor_id": "VI53"
+    },
+    {
+      "level_id": "LV77",
+      "slot": 1,
+      "visitor_id": "VI54"
+    },
+    {
+      "level_id": "LV78",
+      "slot": 1,
+      "visitor_id": "VI55"
+    },
+    {
+      "level_id": "LV79",
+      "slot": 1,
+      "visitor_id": "VI56"
+    },
+    {
+      "level_id": "LV80",
+      "slot": 1,
+      "visitor_id": "VI57"
+    },
+    {
+      "level_id": "LV81",
+      "slot": 1,
+      "visitor_id": "VI58"
+    },
+    {
+      "level_id": "LV82",
+      "slot": 1,
+      "visitor_id": "VI59"
+    }
+  ]
 }

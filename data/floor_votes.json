@@ -16,7 +16,8 @@
         "votes_no": 4,
         "votes_abstain": 8,
         "disposition": "Neutral",
-        "cue_text": "Heritage matters, but this needs more thought."
+        "cue_text": "Heritage matters, but this needs more thought.",
+        "salience": 36
       },
       {
         "bill_id": "BI01",
@@ -25,7 +26,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our ancestors' tongue returns to its own land."
+        "cue_text": "Our ancestors' tongue returns to its own land.",
+        "salience": 246
       },
       {
         "bill_id": "BI01",
@@ -34,7 +36,8 @@
         "votes_no": 17,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Rural towns cannot fund another mandate."
+        "cue_text": "Rural towns cannot fund another mandate.",
+        "salience": 15
       },
       {
         "bill_id": "BI01",
@@ -43,7 +46,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Our districts never asked for this."
+        "cue_text": "Our districts never asked for this.",
+        "salience": 10
       },
       {
         "bill_id": "BI01",
@@ -52,7 +56,8 @@
         "votes_no": 16,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Good intentions, poorly drafted law."
+        "cue_text": "Good intentions, poorly drafted law.",
+        "salience": 0
       },
       {
         "bill_id": "BI01",
@@ -61,7 +66,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "One Yezo, one people, one law."
+        "cue_text": "One Yezo, one people, one law.",
+        "salience": 45
       }
     ]
   },
@@ -82,7 +88,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Those who feed us deserve stability."
+        "cue_text": "Those who feed us deserve stability.",
+        "salience": 121
       },
       {
         "bill_id": "BI02",
@@ -91,7 +98,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "The land sustains us; we sustain it."
+        "cue_text": "The land sustains us; we sustain it.",
+        "salience": 197
       },
       {
         "bill_id": "BI02",
@@ -100,7 +108,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Finally, the farmer comes first!"
+        "cue_text": "Finally, the farmer comes first!",
+        "salience": 388
       },
       {
         "bill_id": "BI02",
@@ -109,7 +118,8 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "We'll see what our growers say."
+        "cue_text": "We'll see what our growers say.",
+        "salience": 52
       },
       {
         "bill_id": "BI02",
@@ -118,7 +128,8 @@
         "votes_no": 16,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Price floors only postpone the reckoning."
+        "cue_text": "Price floors only postpone the reckoning.",
+        "salience": 109
       },
       {
         "bill_id": "BI02",
@@ -127,7 +138,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Rural Yezo built this nation."
+        "cue_text": "Rural Yezo built this nation.",
+        "salience": 40
       }
     ]
   },
@@ -148,7 +160,8 @@
         "votes_no": 15,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Loosening rules invites exploitation."
+        "cue_text": "Loosening rules invites exploitation.",
+        "salience": 40
       },
       {
         "bill_id": "BI03",
@@ -157,7 +170,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Sapporo profits, the countryside pays."
+        "cue_text": "Sapporo profits, the countryside pays.",
+        "salience": 20
       },
       {
         "bill_id": "BI03",
@@ -166,7 +180,8 @@
         "votes_no": 7,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Show us what the farm towns get."
+        "cue_text": "Show us what the farm towns get.",
+        "salience": 4
       },
       {
         "bill_id": "BI03",
@@ -175,7 +190,8 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Undecided until our towns see details."
+        "cue_text": "Undecided until our towns see details.",
+        "salience": 26
       },
       {
         "bill_id": "BI03",
@@ -184,7 +200,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Open the doors and let Yezo compete!"
+        "cue_text": "Open the doors and let Yezo compete!",
+        "salience": 310
       },
       {
         "bill_id": "BI03",
@@ -193,7 +210,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Build factories, build jobs, build now."
+        "cue_text": "Build factories, build jobs, build now.",
+        "salience": 92
       }
     ]
   },
@@ -214,7 +232,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Rail over roads is the gentler path."
+        "cue_text": "Rail over roads is the gentler path.",
+        "salience": 11
       },
       {
         "bill_id": "BI04",
@@ -223,7 +242,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Connect the north without leaving it behind."
+        "cue_text": "Connect the north without leaving it behind.",
+        "salience": 122
       },
       {
         "bill_id": "BI04",
@@ -232,7 +252,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Every station stop is a lifeline."
+        "cue_text": "Every station stop is a lifeline.",
+        "salience": 164
       },
       {
         "bill_id": "BI04",
@@ -241,7 +262,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Hakodate has waited long enough."
+        "cue_text": "Hakodate has waited long enough.",
+        "salience": 56
       },
       {
         "bill_id": "BI04",
@@ -250,7 +272,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Infrastructure that actually pays for itself."
+        "cue_text": "Infrastructure that actually pays for itself.",
+        "salience": 3
       },
       {
         "bill_id": "BI04",
@@ -259,7 +282,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Steel, concrete, and Yezo pride!"
+        "cue_text": "Steel, concrete, and Yezo pride!",
+        "salience": 6
       }
     ]
   },
@@ -280,7 +304,8 @@
         "votes_no": 11,
         "votes_abstain": 1,
         "disposition": "Opposed",
-        "cue_text": "Weapons invite the very danger they fear."
+        "cue_text": "Weapons invite the very danger they fear.",
+        "salience": 26
       },
       {
         "bill_id": "BI05",
@@ -289,7 +314,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Chishima needs harbors, not warships."
+        "cue_text": "Chishima needs harbors, not warships.",
+        "salience": 23
       },
       {
         "bill_id": "BI05",
@@ -298,7 +324,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our fishermen deserve protection at sea."
+        "cue_text": "Our fishermen deserve protection at sea.",
+        "salience": 70
       },
       {
         "bill_id": "BI05",
@@ -307,7 +334,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Reasonable, if the islands get the contracts."
+        "cue_text": "Reasonable, if the islands get the contracts.",
+        "salience": 48
       },
       {
         "bill_id": "BI05",
@@ -316,7 +344,8 @@
         "votes_no": 6,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Security matters; so does the budget."
+        "cue_text": "Security matters; so does the budget.",
+        "salience": 4
       },
       {
         "bill_id": "BI05",
@@ -325,7 +354,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Moscow must see we will not bend."
+        "cue_text": "Moscow must see we will not bend.",
+        "salience": 61
       }
     ]
   },
@@ -346,7 +376,8 @@
         "votes_no": 7,
         "votes_abstain": 8,
         "disposition": "Neutral",
-        "cue_text": "Welcome them, but protect them first."
+        "cue_text": "Welcome them, but protect them first.",
+        "salience": 22
       },
       {
         "bill_id": "BI06",
@@ -355,7 +386,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Train our own youth before importing workers."
+        "cue_text": "Train our own youth before importing workers.",
+        "salience": 5
       },
       {
         "bill_id": "BI06",
@@ -364,7 +396,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our harvests rot without more hands."
+        "cue_text": "Our harvests rot without more hands.",
+        "salience": 34
       },
       {
         "bill_id": "BI06",
@@ -373,7 +406,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our hotels and boats need workers."
+        "cue_text": "Our hotels and boats need workers.",
+        "salience": 37
       },
       {
         "bill_id": "BI06",
@@ -382,7 +416,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A shrinking nation cannot close its doors."
+        "cue_text": "A shrinking nation cannot close its doors.",
+        "salience": 80
       },
       {
         "bill_id": "BI06",
@@ -391,7 +426,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Yezo jobs belong to Yezo workers!"
+        "cue_text": "Yezo jobs belong to Yezo workers!",
+        "salience": 138
       }
     ]
   },
@@ -412,7 +448,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Never again should Yezo go dark."
+        "cue_text": "Never again should Yezo go dark.",
+        "salience": 104
       },
       {
         "bill_id": "BI07",
@@ -421,7 +458,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Clean power, built by local hands."
+        "cue_text": "Clean power, built by local hands.",
+        "salience": 78
       },
       {
         "bill_id": "BI07",
@@ -430,7 +468,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Farms can't milk cows by candlelight."
+        "cue_text": "Farms can't milk cows by candlelight.",
+        "salience": 48
       },
       {
         "bill_id": "BI07",
@@ -439,7 +478,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Resilience first; our towns went dark."
+        "cue_text": "Resilience first; our towns went dark.",
+        "salience": 19
       },
       {
         "bill_id": "BI07",
@@ -448,7 +488,8 @@
         "votes_no": 16,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Let utilities compete, not ministries plan."
+        "cue_text": "Let utilities compete, not ministries plan.",
+        "salience": 13
       },
       {
         "bill_id": "BI07",
@@ -457,7 +498,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Another blank check dressed as green policy."
+        "cue_text": "Another blank check dressed as green policy.",
+        "salience": 67
       }
     ]
   },
@@ -478,7 +520,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Caring for elders is a shared duty."
+        "cue_text": "Caring for elders is a shared duty.",
+        "salience": 20
       },
       {
         "bill_id": "BI08",
@@ -487,7 +530,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our aging villages need this care."
+        "cue_text": "Our aging villages need this care.",
+        "salience": 32
       },
       {
         "bill_id": "BI08",
@@ -496,7 +540,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Painful, but our pensioners come first."
+        "cue_text": "Painful, but our pensioners come first.",
+        "salience": 14
       },
       {
         "bill_id": "BI08",
@@ -505,7 +550,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Fine, if elder care reaches every town."
+        "cue_text": "Fine, if elder care reaches every town.",
+        "salience": 19
       },
       {
         "bill_id": "BI08",
@@ -514,7 +560,8 @@
         "votes_no": 6,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Reform spending first, then talk taxes."
+        "cue_text": "Reform spending first, then talk taxes.",
+        "salience": 8
       },
       {
         "bill_id": "BI08",
@@ -523,7 +570,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Hands off the shopkeeper's register!"
+        "cue_text": "Hands off the shopkeeper's register!",
+        "salience": 142
       }
     ]
   },
@@ -544,7 +592,8 @@
         "votes_no": 7,
         "votes_abstain": 8,
         "disposition": "Neutral",
-        "cue_text": "Local power, yes, but who guards fairness?"
+        "cue_text": "Local power, yes, but who guards fairness?",
+        "salience": 43
       },
       {
         "bill_id": "BI09",
@@ -553,7 +602,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Decisions belong where people actually live."
+        "cue_text": "Decisions belong where people actually live.",
+        "salience": 93
       },
       {
         "bill_id": "BI09",
@@ -562,7 +612,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Sapporo bureaucrats don't know our valleys."
+        "cue_text": "Sapporo bureaucrats don't know our valleys.",
+        "salience": 74
       },
       {
         "bill_id": "BI09",
@@ -571,7 +622,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our towns, our money, our choices."
+        "cue_text": "Our towns, our money, our choices.",
+        "salience": 86
       },
       {
         "bill_id": "BI09",
@@ -580,7 +632,8 @@
         "votes_no": 20,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Three budgets means three times the waste."
+        "cue_text": "Three budgets means three times the waste.",
+        "salience": 67
       },
       {
         "bill_id": "BI09",
@@ -589,7 +642,8 @@
         "votes_no": 4,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "We'll wait to see who really gains."
+        "cue_text": "We'll wait to see who really gains.",
+        "salience": 48
       }
     ]
   },
@@ -610,7 +664,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Wisdom has never belonged to one gender."
+        "cue_text": "Wisdom has never belonged to one gender.",
+        "salience": 94
       },
       {
         "bill_id": "BI10",
@@ -619,7 +674,8 @@
         "votes_no": 5,
         "votes_abstain": 6,
         "disposition": "Neutral",
-        "cue_text": "Our communities decide that for themselves."
+        "cue_text": "Our communities decide that for themselves.",
+        "salience": 7
       },
       {
         "bill_id": "BI10",
@@ -628,7 +684,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Farm women have always carried half."
+        "cue_text": "Farm women have always carried half.",
+        "salience": 82
       },
       {
         "bill_id": "BI10",
@@ -637,7 +694,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Fair enough, as long as it's voluntary."
+        "cue_text": "Fair enough, as long as it's voluntary.",
+        "salience": 35
       },
       {
         "bill_id": "BI10",
@@ -646,7 +704,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Talent wasted is growth wasted."
+        "cue_text": "Talent wasted is growth wasted.",
+        "salience": 90
       },
       {
         "bill_id": "BI10",
@@ -655,7 +714,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Parties choose candidates, not quotas."
+        "cue_text": "Parties choose candidates, not quotas.",
+        "salience": 38
       }
     ]
   },
@@ -676,7 +736,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Good neighbors share their waters."
+        "cue_text": "Good neighbors share their waters.",
+        "salience": 37
       },
       {
         "bill_id": "BI11",
@@ -685,7 +746,8 @@
         "votes_no": 11,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Tokyo's hand reaches north again."
+        "cue_text": "Tokyo's hand reaches north again.",
+        "salience": 34
       },
       {
         "bill_id": "BI11",
@@ -694,7 +756,8 @@
         "votes_no": 7,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Fine for Aomori; unclear for us."
+        "cue_text": "Fine for Aomori; unclear for us.",
+        "salience": 32
       },
       {
         "bill_id": "BI11",
@@ -703,7 +766,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Ferries and fish, sensible enough."
+        "cue_text": "Ferries and fish, sensible enough.",
+        "salience": 42
       },
       {
         "bill_id": "BI11",
@@ -712,7 +776,8 @@
         "votes_no": 20,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Cooperation, yes; creeping reunification, no."
+        "cue_text": "Cooperation, yes; creeping reunification, no.",
+        "salience": 13
       },
       {
         "bill_id": "BI11",
@@ -721,7 +786,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Closer to Japan, stronger together."
+        "cue_text": "Closer to Japan, stronger together.",
+        "salience": 31
       }
     ]
   },
@@ -742,7 +808,8 @@
         "votes_no": 4,
         "votes_abstain": 8,
         "disposition": "Neutral",
-        "cue_text": "Independence, yes, but accountable to whom?"
+        "cue_text": "Independence, yes, but accountable to whom?",
+        "salience": 20
       },
       {
         "bill_id": "BI12",
@@ -751,7 +818,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Unelected judges have rarely protected us."
+        "cue_text": "Unelected judges have rarely protected us.",
+        "salience": 41
       },
       {
         "bill_id": "BI12",
@@ -760,7 +828,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Courts shouldn't answer to the Cabinet."
+        "cue_text": "Courts shouldn't answer to the Cabinet.",
+        "salience": 17
       },
       {
         "bill_id": "BI12",
@@ -769,7 +838,8 @@
         "votes_no": 0,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "No party should own the courts."
+        "cue_text": "No party should own the courts.",
+        "salience": 24
       },
       {
         "bill_id": "BI12",
@@ -778,7 +848,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Rule of law is Yezo's best asset."
+        "cue_text": "Rule of law is Yezo's best asset.",
+        "salience": 48
       },
       {
         "bill_id": "BI12",
@@ -787,7 +858,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Judges should answer to the people."
+        "cue_text": "Judges should answer to the people.",
+        "salience": 14
       }
     ]
   },
@@ -808,7 +880,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "These halls hold Yezo's soul."
+        "cue_text": "These halls hold Yezo's soul.",
+        "salience": 117
       },
       {
         "bill_id": "BI13",
@@ -817,7 +890,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Sacred places deserve protection, all of them."
+        "cue_text": "Sacred places deserve protection, all of them.",
+        "salience": 46
       },
       {
         "bill_id": "BI13",
@@ -826,7 +900,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Village temples anchor village life."
+        "cue_text": "Village temples anchor village life.",
+        "salience": 54
       },
       {
         "bill_id": "BI13",
@@ -835,7 +910,8 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our temples are fine as they are."
+        "cue_text": "Our temples are fine as they are.",
+        "salience": 17
       },
       {
         "bill_id": "BI13",
@@ -844,7 +920,8 @@
         "votes_no": 6,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Heritage is worthy; tax breaks are debatable."
+        "cue_text": "Heritage is worthy; tax breaks are debatable.",
+        "salience": 11
       },
       {
         "bill_id": "BI13",
@@ -853,7 +930,8 @@
         "votes_no": 3,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "Tradition, yes; subsidies, we'll see."
+        "cue_text": "Tradition, yes; subsidies, we'll see.",
+        "salience": 8
       }
     ]
   },
@@ -874,7 +952,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Small grants reach where ministries don't."
+        "cue_text": "Small grants reach where ministries don't.",
+        "salience": 44
       },
       {
         "bill_id": "BI14",
@@ -883,7 +962,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Money finally reaching the villages."
+        "cue_text": "Money finally reaching the villages.",
+        "salience": 112
       },
       {
         "bill_id": "BI14",
@@ -892,7 +972,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Every district deserves its fair share."
+        "cue_text": "Every district deserves its fair share.",
+        "salience": 172
       },
       {
         "bill_id": "BI14",
@@ -901,7 +982,8 @@
         "votes_no": 0,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "This is exactly why we're here!"
+        "cue_text": "This is exactly why we're here!",
+        "salience": 266
       },
       {
         "bill_id": "BI14",
@@ -910,7 +992,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Awkward, but our districts will thank us."
+        "cue_text": "Awkward, but our districts will thank us.",
+        "salience": 9
       },
       {
         "bill_id": "BI14",
@@ -919,7 +1002,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Better we spend it than Sapporo does."
+        "cue_text": "Better we spend it than Sapporo does.",
+        "salience": 78
       }
     ]
   },
@@ -940,7 +1024,8 @@
         "votes_no": 7,
         "votes_abstain": 8,
         "disposition": "Neutral",
-        "cue_text": "Progress, perhaps, but at whose cost?"
+        "cue_text": "Progress, perhaps, but at whose cost?",
+        "salience": 3
       },
       {
         "bill_id": "BI15",
@@ -949,7 +1034,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Servers don't need our land; farms do."
+        "cue_text": "Servers don't need our land; farms do.",
+        "salience": 18
       },
       {
         "bill_id": "BI15",
@@ -958,7 +1044,8 @@
         "votes_no": 7,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Will any of this reach the valleys?"
+        "cue_text": "Will any of this reach the valleys?",
+        "salience": 17
       },
       {
         "bill_id": "BI15",
@@ -967,7 +1054,8 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our districts see little in this."
+        "cue_text": "Our districts see little in this.",
+        "salience": 33
       },
       {
         "bill_id": "BI15",
@@ -976,7 +1064,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Yezo's future runs on cold air and code."
+        "cue_text": "Yezo's future runs on cold air and code.",
+        "salience": 135
       },
       {
         "bill_id": "BI15",
@@ -985,7 +1074,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Real jobs are in factories, not server farms."
+        "cue_text": "Real jobs are in factories, not server farms.",
+        "salience": 33
       }
     ]
   },
@@ -1006,7 +1096,8 @@
         "votes_no": 12,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Punishing thoughts is not justice."
+        "cue_text": "Punishing thoughts is not justice.",
+        "salience": 10
       },
       {
         "bill_id": "BI16",
@@ -1015,7 +1106,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our coasts need protection from smuggling rings."
+        "cue_text": "Our coasts need protection from smuggling rings.",
+        "salience": 10
       },
       {
         "bill_id": "BI16",
@@ -1024,7 +1116,8 @@
         "votes_no": 25,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "This chills every kitchen-table conversation."
+        "cue_text": "This chills every kitchen-table conversation.",
+        "salience": 0
       },
       {
         "bill_id": "BI16",
@@ -1033,7 +1126,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Our constituents fear surveillance, not gangs."
+        "cue_text": "Our constituents fear surveillance, not gangs.",
+        "salience": 8
       },
       {
         "bill_id": "BI16",
@@ -1042,7 +1136,8 @@
         "votes_no": 20,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Liberty doesn't survive vague criminal laws."
+        "cue_text": "Liberty doesn't survive vague criminal laws.",
+        "salience": 143
       },
       {
         "bill_id": "BI16",
@@ -1051,7 +1146,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Criminals should fear Yezo, not the reverse."
+        "cue_text": "Criminals should fear Yezo, not the reverse.",
+        "salience": 6
       }
     ]
   },
@@ -1072,7 +1168,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Compassion recognizes every loving household."
+        "cue_text": "Compassion recognizes every loving household.",
+        "salience": 37
       },
       {
         "bill_id": "BI17",
@@ -1081,7 +1178,8 @@
         "votes_no": 3,
         "votes_abstain": 6,
         "disposition": "Neutral",
-        "cue_text": "Families are for communities to define."
+        "cue_text": "Families are for communities to define.",
+        "salience": 9
       },
       {
         "bill_id": "BI17",
@@ -1090,7 +1188,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Neighbors are neighbors, whoever they love."
+        "cue_text": "Neighbors are neighbors, whoever they love.",
+        "salience": 112
       },
       {
         "bill_id": "BI17",
@@ -1099,7 +1198,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Sapporo did this already; it works."
+        "cue_text": "Sapporo did this already; it works.",
+        "salience": 42
       },
       {
         "bill_id": "BI17",
@@ -1108,7 +1208,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "The state should treat every citizen equally."
+        "cue_text": "The state should treat every citizen equally.",
+        "salience": 37
       },
       {
         "bill_id": "BI17",
@@ -1117,7 +1218,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Family means what it has always meant."
+        "cue_text": "Family means what it has always meant.",
+        "salience": 80
       }
     ]
   },
@@ -1138,7 +1240,8 @@
         "votes_no": 12,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Crisis is no excuse to silence the Assembly."
+        "cue_text": "Crisis is no excuse to silence the Assembly.",
+        "salience": 31
       },
       {
         "bill_id": "BI18",
@@ -1147,7 +1250,8 @@
         "votes_no": 11,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Emergencies are always declared from Sapporo."
+        "cue_text": "Emergencies are always declared from Sapporo.",
+        "salience": 1
       },
       {
         "bill_id": "BI18",
@@ -1156,7 +1260,8 @@
         "votes_no": 17,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Our towns handled the quake without decrees."
+        "cue_text": "Our towns handled the quake without decrees.",
+        "salience": 53
       },
       {
         "bill_id": "BI18",
@@ -1165,7 +1270,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "No one person should hold that power."
+        "cue_text": "No one person should hold that power.",
+        "salience": 8
       },
       {
         "bill_id": "BI18",
@@ -1174,7 +1280,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "When the lights go out, someone must decide."
+        "cue_text": "When the lights go out, someone must decide.",
+        "salience": 89
       },
       {
         "bill_id": "BI18",
@@ -1183,7 +1290,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A strong nation needs a strong hand."
+        "cue_text": "A strong nation needs a strong hand.",
+        "salience": 12
       }
     ]
   },
@@ -1204,7 +1312,8 @@
         "votes_no": 12,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Alliances drag small nations into large wars."
+        "cue_text": "Alliances drag small nations into large wars.",
+        "salience": 11
       },
       {
         "bill_id": "BI19",
@@ -1213,7 +1322,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Foreign troops on our land? Never again."
+        "cue_text": "Foreign troops on our land? Never again.",
+        "salience": 25
       },
       {
         "bill_id": "BI19",
@@ -1222,7 +1332,8 @@
         "votes_no": 11,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Show us what it means for farmers."
+        "cue_text": "Show us what it means for farmers.",
+        "salience": 8
       },
       {
         "bill_id": "BI19",
@@ -1231,7 +1342,8 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Washington can wait for our districts' answer."
+        "cue_text": "Washington can wait for our districts' answer.",
+        "salience": 5
       },
       {
         "bill_id": "BI19",
@@ -1240,7 +1352,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our freedom depends on reliable friends."
+        "cue_text": "Our freedom depends on reliable friends.",
+        "salience": 44
       },
       {
         "bill_id": "BI19",
@@ -1249,7 +1362,8 @@
         "votes_no": 4,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "Yezo defends itself; we'll hear the terms."
+        "cue_text": "Yezo defends itself; we'll hear the terms.",
+        "salience": 20
       }
     ]
   },
@@ -1270,7 +1384,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Europe shares our values on climate."
+        "cue_text": "Europe shares our values on climate.",
+        "salience": 14
       },
       {
         "bill_id": "BI20",
@@ -1279,7 +1394,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Cheap European cheese buries our dairies."
+        "cue_text": "Cheap European cheese buries our dairies.",
+        "salience": 23
       },
       {
         "bill_id": "BI20",
@@ -1288,7 +1404,8 @@
         "votes_no": 7,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Our dairy farmers need answers first."
+        "cue_text": "Our dairy farmers need answers first.",
+        "salience": 16
       },
       {
         "bill_id": "BI20",
@@ -1297,7 +1414,8 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our districts see little in Brussels."
+        "cue_text": "Our districts see little in Brussels.",
+        "salience": 19
       },
       {
         "bill_id": "BI20",
@@ -1306,7 +1424,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A continent of customers is waiting!"
+        "cue_text": "A continent of customers is waiting!",
+        "salience": 158
       },
       {
         "bill_id": "BI20",
@@ -1315,7 +1434,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Brussels writes rules; Yezo pays."
+        "cue_text": "Brussels writes rules; Yezo pays.",
+        "salience": 25
       }
     ]
   },
@@ -1336,7 +1456,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our watersheds are not for sale."
+        "cue_text": "Our watersheds are not for sale.",
+        "salience": 1
       },
       {
         "bill_id": "BI21",
@@ -1345,7 +1466,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Ancestral land must stay in local hands."
+        "cue_text": "Ancestral land must stay in local hands.",
+        "salience": 5
       },
       {
         "bill_id": "BI21",
@@ -1354,7 +1476,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Protect the farmland before it's gone."
+        "cue_text": "Protect the farmland before it's gone.",
+        "salience": 6
       },
       {
         "bill_id": "BI21",
@@ -1363,7 +1486,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Our towns deserve a say on buyers."
+        "cue_text": "Our towns deserve a say on buyers.",
+        "salience": 0
       },
       {
         "bill_id": "BI21",
@@ -1372,7 +1496,8 @@
         "votes_no": 23,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Scaring investors away helps no one."
+        "cue_text": "Scaring investors away helps no one.",
+        "salience": 216
       },
       {
         "bill_id": "BI21",
@@ -1381,7 +1506,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Yezo soil belongs to Yezo!"
+        "cue_text": "Yezo soil belongs to Yezo!",
+        "salience": 10
       }
     ]
   },
@@ -1402,7 +1528,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Friendship across Asia begins with open doors."
+        "cue_text": "Friendship across Asia begins with open doors.",
+        "salience": 21
       },
       {
         "bill_id": "BI22",
@@ -1411,7 +1538,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Tourists crowd our lands; profits flow elsewhere."
+        "cue_text": "Tourists crowd our lands; profits flow elsewhere.",
+        "salience": 28
       },
       {
         "bill_id": "BI22",
@@ -1420,7 +1548,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Visitors fill farm stays and hot springs."
+        "cue_text": "Visitors fill farm stays and hot springs.",
+        "salience": 29
       },
       {
         "bill_id": "BI22",
@@ -1429,7 +1558,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Niseko and Hakodate will thank us."
+        "cue_text": "Niseko and Hakodate will thank us.",
+        "salience": 23
       },
       {
         "bill_id": "BI22",
@@ -1438,7 +1568,8 @@
         "votes_no": 10,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Fine idea; the details need work."
+        "cue_text": "Fine idea; the details need work.",
+        "salience": 108
       },
       {
         "bill_id": "BI22",
@@ -1447,7 +1578,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Secure the borders before opening them."
+        "cue_text": "Secure the borders before opening them.",
+        "salience": 55
       }
     ]
   },
@@ -1468,7 +1600,8 @@
         "votes_no": 15,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Moscow's hand is never offered freely."
+        "cue_text": "Moscow's hand is never offered freely.",
+        "salience": 10
       },
       {
         "bill_id": "BI23",
@@ -1477,7 +1610,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Island families finally reconnect across the water."
+        "cue_text": "Island families finally reconnect across the water.",
+        "salience": 17
       },
       {
         "bill_id": "BI23",
@@ -1486,7 +1620,8 @@
         "votes_no": 7,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Fishing rights first, then we'll talk."
+        "cue_text": "Fishing rights first, then we'll talk.",
+        "salience": 18
       },
       {
         "bill_id": "BI23",
@@ -1495,7 +1630,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Chishima towns desperately need this trade."
+        "cue_text": "Chishima towns desperately need this trade.",
+        "salience": 11
       },
       {
         "bill_id": "BI23",
@@ -1504,7 +1640,8 @@
         "votes_no": 20,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Investing under Russian law is reckless."
+        "cue_text": "Investing under Russian law is reckless.",
+        "salience": 37
       },
       {
         "bill_id": "BI23",
@@ -1513,7 +1650,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Not one inch of Chishima for Moscow."
+        "cue_text": "Not one inch of Chishima for Moscow.",
+        "salience": 26
       }
     ]
   },
@@ -1534,7 +1672,8 @@
         "votes_no": 18,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "The earth shook; do not tempt it."
+        "cue_text": "The earth shook; do not tempt it.",
+        "salience": 90
       },
       {
         "bill_id": "BI24",
@@ -1543,7 +1682,8 @@
         "votes_no": 13,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Our fishing grounds cannot risk a meltdown."
+        "cue_text": "Our fishing grounds cannot risk a meltdown.",
+        "salience": 40
       },
       {
         "bill_id": "BI24",
@@ -1552,7 +1692,8 @@
         "votes_no": 11,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Reliable power matters, but so do fields."
+        "cue_text": "Reliable power matters, but so do fields.",
+        "salience": 4
       },
       {
         "bill_id": "BI24",
@@ -1561,7 +1702,8 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our towns are divided on Tomari."
+        "cue_text": "Our towns are divided on Tomari.",
+        "salience": 12
       },
       {
         "bill_id": "BI24",
@@ -1570,7 +1712,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Industry cannot run on hope."
+        "cue_text": "Industry cannot run on hope.",
+        "salience": 32
       },
       {
         "bill_id": "BI24",
@@ -1579,7 +1722,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Power the factories, power the nation!"
+        "cue_text": "Power the factories, power the nation!",
+        "salience": 107
       }
     ]
   },
@@ -1600,7 +1744,8 @@
         "votes_no": 19,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Gambling addiction is a buffet on which suffering feeds."
+        "cue_text": "Gambling addiction is a buffet on which suffering feeds.",
+        "salience": 36
       },
       {
         "bill_id": "BI25",
@@ -1609,7 +1754,8 @@
         "votes_no": 8,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "The Tomakomai proposal might work."
+        "cue_text": "The Tomakomai proposal might work.",
+        "salience": 24
       },
       {
         "bill_id": "BI25",
@@ -1618,7 +1764,8 @@
         "votes_no": 11,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Tomakomai may gain but the Inaka won't."
+        "cue_text": "Tomakomai may gain but the Inaka won't.",
+        "salience": 17
       },
       {
         "bill_id": "BI25",
@@ -1627,7 +1774,8 @@
         "votes_no": 0,
         "votes_abstain": 1,
         "disposition": "Supportive",
-        "cue_text": "Jobs and tourists; Tomakomai needs both."
+        "cue_text": "Jobs and tourists; Tomakomai needs both.",
+        "salience": 48
       },
       {
         "bill_id": "BI25",
@@ -1636,7 +1784,8 @@
         "votes_no": 0,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A world-class resort puts Yezo on the map."
+        "cue_text": "A world-class resort puts Yezo on the map.",
+        "salience": 135
       },
       {
         "bill_id": "BI25",
@@ -1645,7 +1794,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "We can take foreign cash and keep it here."
+        "cue_text": "We can take foreign cash and keep it here.",
+        "salience": 15
       }
     ]
   },
@@ -1666,7 +1816,8 @@
         "votes_no": 12,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Exams can't measure a caring heart."
+        "cue_text": "Exams can't measure a caring heart.",
+        "salience": 31
       },
       {
         "bill_id": "BI26",
@@ -1675,7 +1826,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Tests favor Sapporo graduates, not our youth."
+        "cue_text": "Tests favor Sapporo graduates, not our youth.",
+        "salience": 36
       },
       {
         "bill_id": "BI26",
@@ -1684,7 +1836,8 @@
         "votes_no": 22,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Local knowledge outranks any exam score."
+        "cue_text": "Local knowledge outranks any exam score.",
+        "salience": 3
       },
       {
         "bill_id": "BI26",
@@ -1693,7 +1846,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "This strips our towns of their voice!"
+        "cue_text": "This strips our towns of their voice!",
+        "salience": 159
       },
       {
         "bill_id": "BI26",
@@ -1702,7 +1856,8 @@
         "votes_no": 23,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Right goal, clumsy and costly method."
+        "cue_text": "Right goal, clumsy and costly method.",
+        "salience": 33
       },
       {
         "bill_id": "BI26",
@@ -1711,7 +1866,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "More bureaucrats grading bureaucrats. No."
+        "cue_text": "More bureaucrats grading bureaucrats. No.",
+        "salience": 51
       }
     ]
   },
@@ -1732,7 +1888,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A day's work deserves a dignified wage."
+        "cue_text": "A day's work deserves a dignified wage.",
+        "salience": 42
       },
       {
         "bill_id": "BI27",
@@ -1741,7 +1898,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Aomori workers deserve Sapporo's wages."
+        "cue_text": "Aomori workers deserve Sapporo's wages.",
+        "salience": 57
       },
       {
         "bill_id": "BI27",
@@ -1750,7 +1908,8 @@
         "votes_no": 11,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Good for workers, hard on small farms."
+        "cue_text": "Good for workers, hard on small farms.",
+        "salience": 79
       },
       {
         "bill_id": "BI27",
@@ -1759,7 +1918,8 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our shopkeepers and workers disagree."
+        "cue_text": "Our shopkeepers and workers disagree.",
+        "salience": 85
       },
       {
         "bill_id": "BI27",
@@ -1768,7 +1928,8 @@
         "votes_no": 23,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Price workers out, and jobs disappear."
+        "cue_text": "Price workers out, and jobs disappear.",
+        "salience": 188
       },
       {
         "bill_id": "BI27",
@@ -1777,7 +1938,8 @@
         "votes_no": 9,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Small businesses will close their doors."
+        "cue_text": "Small businesses will close their doors.",
+        "salience": 62
       }
     ]
   },
@@ -1798,7 +1960,8 @@
         "votes_no": 4,
         "votes_abstain": 8,
         "disposition": "Neutral",
-        "cue_text": "Fair elections, yes; another agency, perhaps."
+        "cue_text": "Fair elections, yes; another agency, perhaps.",
+        "salience": 16
       },
       {
         "bill_id": "BI28",
@@ -1807,7 +1970,8 @@
         "votes_no": 5,
         "votes_abstain": 6,
         "disposition": "Neutral",
-        "cue_text": "Who draws the lines matters to us."
+        "cue_text": "Who draws the lines matters to us.",
+        "salience": 17
       },
       {
         "bill_id": "BI28",
@@ -1816,7 +1980,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Citizens should choose us, not maps."
+        "cue_text": "Citizens should choose us, not maps.",
+        "salience": 27
       },
       {
         "bill_id": "BI28",
@@ -1825,7 +1990,8 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our districts work fine as drawn."
+        "cue_text": "Our districts work fine as drawn.",
+        "salience": 7
       },
       {
         "bill_id": "BI28",
@@ -1834,7 +2000,8 @@
         "votes_no": 6,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Worthy aim; show us the budget."
+        "cue_text": "Worthy aim; show us the budget.",
+        "salience": 61
       },
       {
         "bill_id": "BI28",
@@ -1843,7 +2010,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Unelected referees for elected leaders? No."
+        "cue_text": "Unelected referees for elected leaders? No.",
+        "salience": 53
       }
     ]
   },
@@ -1864,7 +2032,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Children must learn kindness and reverence."
+        "cue_text": "Children must learn kindness and reverence.",
+        "salience": 68
       },
       {
         "bill_id": "BI29",
@@ -1873,7 +2042,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Let our elders' teachings reach classrooms."
+        "cue_text": "Let our elders' teachings reach classrooms.",
+        "salience": 28
       },
       {
         "bill_id": "BI29",
@@ -1882,7 +2052,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A common foundation to unite us all could work."
+        "cue_text": "A common foundation to unite us all could work.",
+        "salience": 24
       },
       {
         "bill_id": "BI29",
@@ -1891,7 +2062,8 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Leave curriculum to our local boards."
+        "cue_text": "Leave curriculum to our local boards.",
+        "salience": 18
       },
       {
         "bill_id": "BI29",
@@ -1900,7 +2072,8 @@
         "votes_no": 16,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "This Prime Minister dictating ethics? Vote no."
+        "cue_text": "This Prime Minister dictating ethics? Vote no.",
+        "salience": 13
       },
       {
         "bill_id": "BI29",
@@ -1909,7 +2082,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Pride and discipline, taught from childhood."
+        "cue_text": "Pride and discipline, taught from childhood.",
+        "salience": 83
       }
     ]
   },
@@ -1930,7 +2104,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Neighbors who pay in should have a voice."
+        "cue_text": "Neighbors who pay in should have a voice.",
+        "salience": 36
       },
       {
         "bill_id": "BI30",
@@ -1939,7 +2114,8 @@
         "votes_no": 3,
         "votes_abstain": 6,
         "disposition": "Neutral",
-        "cue_text": "Our villages must weigh this carefully."
+        "cue_text": "Our villages must weigh this carefully.",
+        "salience": 39
       },
       {
         "bill_id": "BI30",
@@ -1948,7 +2124,8 @@
         "votes_no": 11,
         "votes_abstain": 9,
         "disposition": "Opposed",
-        "cue_text": "The Inaka needs to prioritize long-rooted residents."
+        "cue_text": "The Inaka needs to prioritize long-rooted residents.",
+        "salience": 64
       },
       {
         "bill_id": "BI30",
@@ -1957,7 +2134,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Neutral",
-        "cue_text": "Every resident of our towns deserves a voice."
+        "cue_text": "Every resident of our towns deserves a voice.",
+        "salience": 18
       },
       {
         "bill_id": "BI30",
@@ -1966,7 +2144,8 @@
         "votes_no": 16,
         "votes_abstain": 9,
         "disposition": "Opposed",
-        "cue_text": "Residency alone is not fully investing one's future here."
+        "cue_text": "Residency alone is not fully investing one's future here.",
+        "salience": 32
       },
       {
         "bill_id": "BI30",
@@ -1975,7 +2154,8 @@
         "votes_no": 11,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Only citizens decide Yezo's future!"
+        "cue_text": "Only citizens decide Yezo's future!",
+        "salience": 132
       }
     ]
   },
@@ -1996,7 +2176,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "The forests deserve peace, and so do we."
+        "cue_text": "The forests deserve peace, and so do we.",
+        "salience": 163
       },
       {
         "bill_id": "BI31",
@@ -2005,7 +2186,8 @@
         "votes_no": 2,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Protect the land, but ask the people first."
+        "cue_text": "Protect the land, but ask the people first.",
+        "salience": 26
       },
       {
         "bill_id": "BI31",
@@ -2014,7 +2196,8 @@
         "votes_no": 20,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Farmers and loggers pay for this wilderness."
+        "cue_text": "Farmers and loggers pay for this wilderness.",
+        "salience": 52
       },
       {
         "bill_id": "BI31",
@@ -2023,7 +2206,8 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Show us who gains before we commit."
+        "cue_text": "Show us who gains before we commit.",
+        "salience": 22
       },
       {
         "bill_id": "BI31",
@@ -2032,7 +2216,8 @@
         "votes_no": 24,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Locking up land locks out jobs."
+        "cue_text": "Locking up land locks out jobs.",
+        "salience": 147
       },
       {
         "bill_id": "BI31",
@@ -2041,7 +2226,8 @@
         "votes_no": 10,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "A nation cannot live in a nature reserve."
+        "cue_text": "A nation cannot live in a nature reserve.",
+        "salience": 110
       }
     ]
   },
@@ -2062,7 +2248,8 @@
         "votes_no": 7,
         "votes_abstain": 7,
         "disposition": "Neutral",
-        "cue_text": "Good care, unclear funding. We will watch closely."
+        "cue_text": "Good care, unclear funding. We will watch closely.",
+        "salience": 6
       },
       {
         "bill_id": "BI32",
@@ -2071,7 +2258,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Every village deserves a doctor within reach."
+        "cue_text": "Every village deserves a doctor within reach.",
+        "salience": 197
       },
       {
         "bill_id": "BI32",
@@ -2080,7 +2268,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Finally, a hospital where the farmer lives!"
+        "cue_text": "Finally, a hospital where the farmer lives!",
+        "salience": 319
       },
       {
         "bill_id": "BI32",
@@ -2089,7 +2278,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A clinic in every district. Count us in."
+        "cue_text": "A clinic in every district. Count us in.",
+        "salience": 80
       },
       {
         "bill_id": "BI32",
@@ -2098,7 +2288,8 @@
         "votes_no": 13,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Clinics yes, waste no. Show the savings."
+        "cue_text": "Clinics yes, waste no. Show the savings.",
+        "salience": 27
       },
       {
         "bill_id": "BI32",
@@ -2107,7 +2298,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Care for every region. We will back it."
+        "cue_text": "Care for every region. We will back it.",
+        "salience": 96
       }
     ]
   },
@@ -2128,7 +2320,8 @@
         "votes_no": 14,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "A card that tracks every person? No."
+        "cue_text": "A card that tracks every person? No.",
+        "salience": 2
       },
       {
         "bill_id": "BI33",
@@ -2137,7 +2330,8 @@
         "votes_no": 4,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Our people want privacy before convenience."
+        "cue_text": "Our people want privacy before convenience.",
+        "salience": 3
       },
       {
         "bill_id": "BI33",
@@ -2146,7 +2340,8 @@
         "votes_no": 19,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "No signal, no card. Villages lose out."
+        "cue_text": "No signal, no card. Villages lose out.",
+        "salience": 8
       },
       {
         "bill_id": "BI33",
@@ -2155,7 +2350,8 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "One card, one more thing to lose."
+        "cue_text": "One card, one more thing to lose.",
+        "salience": 9
       },
       {
         "bill_id": "BI33",
@@ -2164,7 +2360,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "One secure card makes commerce faster."
+        "cue_text": "One secure card makes commerce faster.",
+        "salience": 162
       },
       {
         "bill_id": "BI33",
@@ -2173,7 +2370,8 @@
         "votes_no": 6,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "Order is good, but who holds the data?"
+        "cue_text": "Order is good, but who holds the data?",
+        "salience": 27
       }
     ]
   },
@@ -2194,7 +2392,8 @@
         "votes_no": 2,
         "votes_abstain": 7,
         "disposition": "Neutral",
-        "cue_text": "A free press matters; the details need care."
+        "cue_text": "A free press matters; the details need care.",
+        "salience": 27
       },
       {
         "bill_id": "BI34",
@@ -2203,7 +2402,8 @@
         "votes_no": 3,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Our stories need a broadcaster that listens."
+        "cue_text": "Our stories need a broadcaster that listens.",
+        "salience": 18
       },
       {
         "bill_id": "BI34",
@@ -2212,7 +2412,8 @@
         "votes_no": 8,
         "votes_abstain": 10,
         "disposition": "Neutral",
-        "cue_text": "Fair broadcast, but fund the countryside first."
+        "cue_text": "Fair broadcast, but fund the countryside first.",
+        "salience": 46
       },
       {
         "bill_id": "BI34",
@@ -2221,7 +2422,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A free broadcaster serves our voters."
+        "cue_text": "A free broadcaster serves our voters.",
+        "salience": 4
       },
       {
         "bill_id": "BI34",
@@ -2230,7 +2432,8 @@
         "votes_no": 11,
         "votes_abstain": 10,
         "disposition": "Neutral",
-        "cue_text": "Fund it, but make it earn its audience."
+        "cue_text": "Fund it, but make it earn its audience.",
+        "salience": 18
       },
       {
         "bill_id": "BI34",
@@ -2239,7 +2442,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Decency in the public broadcast. We agree."
+        "cue_text": "Decency in the public broadcast. We agree.",
+        "salience": 46
       }
     ]
   },
@@ -2260,7 +2464,8 @@
         "votes_no": 9,
         "votes_abstain": 7,
         "disposition": "Neutral",
-        "cue_text": "Sunlight helps, but small groups need time."
+        "cue_text": "Sunlight helps, but small groups need time.",
+        "salience": 19
       },
       {
         "bill_id": "BI35",
@@ -2269,7 +2474,8 @@
         "votes_no": 5,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Open books, but protect small donors."
+        "cue_text": "Open books, but protect small donors.",
+        "salience": 7
       },
       {
         "bill_id": "BI35",
@@ -2278,7 +2484,8 @@
         "votes_no": 18,
         "votes_abstain": 1,
         "disposition": "Opposed",
-        "cue_text": "Local fundraising is not a scandal."
+        "cue_text": "Local fundraising is not a scandal.",
+        "salience": 43
       },
       {
         "bill_id": "BI35",
@@ -2287,7 +2494,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Disclosure will chill honest support for us."
+        "cue_text": "Disclosure will chill honest support for us.",
+        "salience": 180
       },
       {
         "bill_id": "BI35",
@@ -2296,7 +2504,8 @@
         "votes_no": 17,
         "votes_abstain": 1,
         "disposition": "Opposed",
-        "cue_text": "Caps on giving are caps on speech."
+        "cue_text": "Caps on giving are caps on speech.",
+        "salience": 44
       },
       {
         "bill_id": "BI35",
@@ -2305,7 +2514,8 @@
         "votes_no": 7,
         "votes_abstain": 1,
         "disposition": "Opposed",
-        "cue_text": "Let members answer to voters, not auditors."
+        "cue_text": "Let members answer to voters, not auditors.",
+        "salience": 41
       }
     ]
   },
@@ -2326,7 +2536,8 @@
         "votes_no": 14,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Tax cuts for firms, nothing for the poor."
+        "cue_text": "Tax cuts for firms, nothing for the poor.",
+        "salience": 29
       },
       {
         "bill_id": "BI36",
@@ -2335,7 +2546,8 @@
         "votes_no": 9,
         "votes_abstain": 1,
         "disposition": "Opposed",
-        "cue_text": "Corporations gain; our towns pay the difference."
+        "cue_text": "Corporations gain; our towns pay the difference.",
+        "salience": 37
       },
       {
         "bill_id": "BI36",
@@ -2344,7 +2556,8 @@
         "votes_no": 19,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Cuts for big firms leave towns behind."
+        "cue_text": "Cuts for big firms leave towns behind.",
+        "salience": 25
       },
       {
         "bill_id": "BI36",
@@ -2353,7 +2566,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Corporate cuts do nothing for our districts."
+        "cue_text": "Corporate cuts do nothing for our districts.",
+        "salience": 19
       },
       {
         "bill_id": "BI36",
@@ -2362,7 +2576,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Lower taxes bring investment. Pass it."
+        "cue_text": "Lower taxes bring investment. Pass it.",
+        "salience": 121
       },
       {
         "bill_id": "BI36",
@@ -2371,7 +2586,8 @@
         "votes_no": 0,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Strong firms build a strong nation."
+        "cue_text": "Strong firms build a strong nation.",
+        "salience": 164
       }
     ]
   },
@@ -2392,7 +2608,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Make polluters pay and protect the north."
+        "cue_text": "Make polluters pay and protect the north.",
+        "salience": 160
       },
       {
         "bill_id": "BI37",
@@ -2401,7 +2618,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "The land cannot wait for cheaper excuses."
+        "cue_text": "The land cannot wait for cheaper excuses.",
+        "salience": 63
       },
       {
         "bill_id": "BI37",
@@ -2410,7 +2628,8 @@
         "votes_no": 19,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Farmers cannot carry a new levy."
+        "cue_text": "Farmers cannot carry a new levy.",
+        "salience": 24
       },
       {
         "bill_id": "BI37",
@@ -2419,7 +2638,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "A new levy lands on our voters."
+        "cue_text": "A new levy lands on our voters.",
+        "salience": 22
       },
       {
         "bill_id": "BI37",
@@ -2428,7 +2648,8 @@
         "votes_no": 24,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "A new tax by any other name."
+        "cue_text": "A new tax by any other name.",
+        "salience": 178
       },
       {
         "bill_id": "BI37",
@@ -2437,7 +2658,8 @@
         "votes_no": 11,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Our industry cannot carry another burden."
+        "cue_text": "Our industry cannot carry another burden.",
+        "salience": 180
       }
     ]
   },
@@ -2458,7 +2680,8 @@
         "votes_no": 6,
         "votes_abstain": 7,
         "disposition": "Neutral",
-        "cue_text": "Fishers and the sea both deserve care."
+        "cue_text": "Fishers and the sea both deserve care.",
+        "salience": 33
       },
       {
         "bill_id": "BI38",
@@ -2467,7 +2690,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "The sea fed us. Manage it wisely."
+        "cue_text": "The sea fed us. Manage it wisely.",
+        "salience": 119
       },
       {
         "bill_id": "BI38",
@@ -2476,7 +2700,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Fishing families need rules they can trust."
+        "cue_text": "Fishing families need rules they can trust.",
+        "salience": 153
       },
       {
         "bill_id": "BI38",
@@ -2485,7 +2710,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Clear quotas, fair shares. We back it."
+        "cue_text": "Clear quotas, fair shares. We back it.",
+        "salience": 50
       },
       {
         "bill_id": "BI38",
@@ -2494,7 +2720,8 @@
         "votes_no": 24,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "More rules on every boat is no reform."
+        "cue_text": "More rules on every boat is no reform.",
+        "salience": 164
       },
       {
         "bill_id": "BI38",
@@ -2503,7 +2730,8 @@
         "votes_no": 3,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "Quotas matter, but not at the cost of tradition."
+        "cue_text": "Quotas matter, but not at the cost of tradition.",
+        "salience": 1
       }
     ]
   },
@@ -2524,7 +2752,8 @@
         "votes_no": 12,
         "votes_abstain": 2,
         "disposition": "Opposed",
-        "cue_text": "Warships will not feed the hungry."
+        "cue_text": "Warships will not feed the hungry.",
+        "salience": 35
       },
       {
         "bill_id": "BI39",
@@ -2533,7 +2762,8 @@
         "votes_no": 3,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Jobs on the coast, but at what cost?"
+        "cue_text": "Jobs on the coast, but at what cost?",
+        "salience": 10
       },
       {
         "bill_id": "BI39",
@@ -2542,7 +2772,8 @@
         "votes_no": 19,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Warship money should reach rural clinics first."
+        "cue_text": "Warship money should reach rural clinics first.",
+        "salience": 31
       },
       {
         "bill_id": "BI39",
@@ -2551,7 +2782,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Shipyards will not help our districts."
+        "cue_text": "Shipyards will not help our districts.",
+        "salience": 21
       },
       {
         "bill_id": "BI39",
@@ -2560,7 +2792,8 @@
         "votes_no": 7,
         "votes_abstain": 1,
         "disposition": "Supportive",
-        "cue_text": "Industry and defense grow the economy."
+        "cue_text": "Industry and defense grow the economy.",
+        "salience": 43
       },
       {
         "bill_id": "BI39",
@@ -2569,7 +2802,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A nation needs ships to defend itself."
+        "cue_text": "A nation needs ships to defend itself.",
+        "salience": 50
       }
     ]
   },
@@ -2590,7 +2824,8 @@
         "votes_no": 6,
         "votes_abstain": 7,
         "disposition": "Neutral",
-        "cue_text": "Study the rules, but protect rights first."
+        "cue_text": "Study the rules, but protect rights first.",
+        "salience": 1
       },
       {
         "bill_id": "BI40",
@@ -2599,7 +2834,8 @@
         "votes_no": 6,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Any change must include our voices."
+        "cue_text": "Any change must include our voices.",
+        "salience": 18
       },
       {
         "bill_id": "BI40",
@@ -2608,7 +2844,8 @@
         "votes_no": 8,
         "votes_abstain": 10,
         "disposition": "Neutral",
-        "cue_text": "Study it, but keep the regions heard."
+        "cue_text": "Study it, but keep the regions heard.",
+        "salience": 57
       },
       {
         "bill_id": "BI40",
@@ -2617,7 +2854,8 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "A commission is only as good as its members."
+        "cue_text": "A commission is only as good as its members.",
+        "salience": 7
       },
       {
         "bill_id": "BI40",
@@ -2626,7 +2864,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Orderly reform beats ad hoc fixes."
+        "cue_text": "Orderly reform beats ad hoc fixes.",
+        "salience": 86
       },
       {
         "bill_id": "BI40",
@@ -2635,7 +2874,8 @@
         "votes_no": 3,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "Tradition must guide any amendment."
+        "cue_text": "Tradition must guide any amendment.",
+        "salience": 11
       }
     ]
   },
@@ -2656,7 +2896,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Fewer border delays help ordinary travelers."
+        "cue_text": "Fewer border delays help ordinary travelers.",
+        "salience": 54
       },
       {
         "bill_id": "BI41",
@@ -2665,7 +2906,8 @@
         "votes_no": 11,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "We should not hand our borders away."
+        "cue_text": "We should not hand our borders away.",
+        "salience": 76
       },
       {
         "bill_id": "BI41",
@@ -2674,7 +2916,8 @@
         "votes_no": 5,
         "votes_abstain": 10,
         "disposition": "Neutral",
-        "cue_text": "Good for trade; wary of the details."
+        "cue_text": "Good for trade; wary of the details.",
+        "salience": 16
       },
       {
         "bill_id": "BI41",
@@ -2683,7 +2926,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Our districts see no gain from this."
+        "cue_text": "Our districts see no gain from this.",
+        "salience": 12
       },
       {
         "bill_id": "BI41",
@@ -2692,7 +2936,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Faster customs mean faster trade."
+        "cue_text": "Faster customs mean faster trade.",
+        "salience": 1
       },
       {
         "bill_id": "BI41",
@@ -2701,7 +2946,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Close ties with Japan serve us well."
+        "cue_text": "Close ties with Japan serve us well.",
+        "salience": 43
       }
     ]
   },
@@ -2722,7 +2968,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Shared prosperity beats rivalry on the islands."
+        "cue_text": "Shared prosperity beats rivalry on the islands.",
+        "salience": 57
       },
       {
         "bill_id": "BI42",
@@ -2731,7 +2978,8 @@
         "votes_no": 5,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Develop the islands only with local consent."
+        "cue_text": "Develop the islands only with local consent.",
+        "salience": 3
       },
       {
         "bill_id": "BI42",
@@ -2740,7 +2988,8 @@
         "votes_no": 8,
         "votes_abstain": 10,
         "disposition": "Neutral",
-        "cue_text": "Jobs matter, but so do fishing rights."
+        "cue_text": "Jobs matter, but so do fishing rights.",
+        "salience": 2
       },
       {
         "bill_id": "BI42",
@@ -2749,7 +2998,8 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Another deal, another set of winners."
+        "cue_text": "Another deal, another set of winners.",
+        "salience": 4
       },
       {
         "bill_id": "BI42",
@@ -2758,7 +3008,8 @@
         "votes_no": 6,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Open resources create growth. We say yes."
+        "cue_text": "Open resources create growth. We say yes.",
+        "salience": 56
       },
       {
         "bill_id": "BI42",
@@ -2767,7 +3018,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Chishima's wealth should serve Yezo first."
+        "cue_text": "Chishima's wealth should serve Yezo first.",
+        "salience": 43
       }
     ]
   },
@@ -2788,7 +3040,8 @@
         "votes_no": 14,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Trade must not trample the vulnerable."
+        "cue_text": "Trade must not trample the vulnerable.",
+        "salience": 5
       },
       {
         "bill_id": "BI43",
@@ -2797,7 +3050,8 @@
         "votes_no": 7,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Prices matter, but so does our independence."
+        "cue_text": "Prices matter, but so does our independence.",
+        "salience": 26
       },
       {
         "bill_id": "BI43",
@@ -2806,7 +3060,8 @@
         "votes_no": 19,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Cheap imports will hollow out our farms."
+        "cue_text": "Cheap imports will hollow out our farms.",
+        "salience": 14
       },
       {
         "bill_id": "BI43",
@@ -2815,7 +3070,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Our voters did not ask for this."
+        "cue_text": "Our voters did not ask for this.",
+        "salience": 19
       },
       {
         "bill_id": "BI43",
@@ -2824,7 +3080,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Free trade makes everyone richer."
+        "cue_text": "Free trade makes everyone richer.",
+        "salience": 77
       },
       {
         "bill_id": "BI43",
@@ -2833,7 +3090,8 @@
         "votes_no": 8,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "We should not depend on a rival power."
+        "cue_text": "We should not depend on a rival power.",
+        "salience": 63
       }
     ]
   },
@@ -2854,7 +3112,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Keep the farms alive for the next generation."
+        "cue_text": "Keep the farms alive for the next generation.",
+        "salience": 96
       },
       {
         "bill_id": "BI44",
@@ -2863,7 +3122,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "The land passes to those who love it."
+        "cue_text": "The land passes to those who love it.",
+        "salience": 195
       },
       {
         "bill_id": "BI44",
@@ -2872,7 +3132,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Finally, a future for young farmers!"
+        "cue_text": "Finally, a future for young farmers!",
+        "salience": 381
       },
       {
         "bill_id": "BI44",
@@ -2881,7 +3142,8 @@
         "votes_no": 2,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Back the farm families. It is simple."
+        "cue_text": "Back the farm families. It is simple.",
+        "salience": 33
       },
       {
         "bill_id": "BI44",
@@ -2890,7 +3152,8 @@
         "votes_no": 8,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Support farms, but watch the bill."
+        "cue_text": "Support farms, but watch the bill.",
+        "salience": 41
       },
       {
         "bill_id": "BI44",
@@ -2899,7 +3162,8 @@
         "votes_no": 6,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "Farms are tradition, but money is tight."
+        "cue_text": "Farms are tradition, but money is tight.",
+        "salience": 26
       }
     ]
   },
@@ -2920,7 +3184,8 @@
         "votes_no": 6,
         "votes_abstain": 7,
         "disposition": "Neutral",
-        "cue_text": "Research is good; care for the needy first."
+        "cue_text": "Research is good; care for the needy first.",
+        "salience": 36
       },
       {
         "bill_id": "BI45",
@@ -2929,7 +3194,8 @@
         "votes_no": 4,
         "votes_abstain": 1,
         "disposition": "Supportive",
-        "cue_text": "Our young people deserve research at home."
+        "cue_text": "Our young people deserve research at home.",
+        "salience": 34
       },
       {
         "bill_id": "BI45",
@@ -2938,7 +3204,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Fund research, and rural minds will use it."
+        "cue_text": "Fund research, and rural minds will use it.",
+        "salience": 85
       },
       {
         "bill_id": "BI45",
@@ -2947,7 +3214,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Universities that serve their regions. Yes."
+        "cue_text": "Universities that serve their regions. Yes.",
+        "salience": 44
       },
       {
         "bill_id": "BI45",
@@ -2956,7 +3224,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Research feeds the next industries."
+        "cue_text": "Research feeds the next industries.",
+        "salience": 92
       },
       {
         "bill_id": "BI45",
@@ -2965,7 +3234,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "A learned nation is a strong nation."
+        "cue_text": "A learned nation is a strong nation.",
+        "salience": 119
       }
     ]
   },
@@ -2986,7 +3256,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Fair treatment at work is a basic right."
+        "cue_text": "Fair treatment at work is a basic right.",
+        "salience": 140
       },
       {
         "bill_id": "BI46",
@@ -2995,7 +3266,8 @@
         "votes_no": 4,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "No one is turned away for who they are."
+        "cue_text": "No one is turned away for who they are.",
+        "salience": 50
       },
       {
         "bill_id": "BI46",
@@ -3004,7 +3276,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Equal pay and equal respect. Pass it."
+        "cue_text": "Equal pay and equal respect. Pass it.",
+        "salience": 117
       },
       {
         "bill_id": "BI46",
@@ -3013,7 +3286,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Fair rules for every worker. We agree."
+        "cue_text": "Fair rules for every worker. We agree.",
+        "salience": 59
       },
       {
         "bill_id": "BI46",
@@ -3022,7 +3296,8 @@
         "votes_no": 20,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "More regulation means fewer hires."
+        "cue_text": "More regulation means fewer hires.",
+        "salience": 74
       },
       {
         "bill_id": "BI46",
@@ -3031,7 +3306,8 @@
         "votes_no": 8,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Employers, not the state, should decide."
+        "cue_text": "Employers, not the state, should decide.",
+        "salience": 43
       }
     ]
   },
@@ -3052,7 +3328,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Families need time together. Make it law."
+        "cue_text": "Families need time together. Make it law.",
+        "salience": 77
       },
       {
         "bill_id": "BI47",
@@ -3061,7 +3338,8 @@
         "votes_no": 4,
         "votes_abstain": 1,
         "disposition": "Supportive",
-        "cue_text": "Children and parents both deserve support."
+        "cue_text": "Children and parents both deserve support.",
+        "salience": 43
       },
       {
         "bill_id": "BI47",
@@ -3070,7 +3348,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Rural families need childcare close to home."
+        "cue_text": "Rural families need childcare close to home.",
+        "salience": 126
       },
       {
         "bill_id": "BI47",
@@ -3079,7 +3358,8 @@
         "votes_no": 1,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Practical help for working parents. Yes."
+        "cue_text": "Practical help for working parents. Yes.",
+        "salience": 63
       },
       {
         "bill_id": "BI47",
@@ -3088,7 +3368,8 @@
         "votes_no": 8,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Families need help, but costs matter."
+        "cue_text": "Families need help, but costs matter.",
+        "salience": 57
       },
       {
         "bill_id": "BI47",
@@ -3097,7 +3378,8 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Strong families make a strong nation."
+        "cue_text": "Strong families make a strong nation.",
+        "salience": 126
       }
     ]
   },
@@ -3118,7 +3400,8 @@
         "votes_no": 14,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Cameras watching everyone betray basic dignity."
+        "cue_text": "Cameras watching everyone betray basic dignity.",
+        "salience": 10
       },
       {
         "bill_id": "BI48",
@@ -3127,7 +3410,8 @@
         "votes_no": 4,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Watching everyone makes no one safer."
+        "cue_text": "Watching everyone makes no one safer.",
+        "salience": 8
       },
       {
         "bill_id": "BI48",
@@ -3136,7 +3420,8 @@
         "votes_no": 10,
         "votes_abstain": 10,
         "disposition": "Neutral",
-        "cue_text": "Our towns have little crime to watch."
+        "cue_text": "Our towns have little crime to watch.",
+        "salience": 6
       },
       {
         "bill_id": "BI48",
@@ -3145,7 +3430,8 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Cameras are fine if the rules are clear."
+        "cue_text": "Cameras are fine if the rules are clear.",
+        "salience": 18
       },
       {
         "bill_id": "BI48",
@@ -3154,7 +3440,8 @@
         "votes_no": 7,
         "votes_abstain": 0,
         "disposition": "Supportive",
-        "cue_text": "Safer streets are good for business."
+        "cue_text": "Safer streets are good for business.",
+        "salience": 84
       },
       {
         "bill_id": "BI48",
@@ -3163,7 +3450,8 @@
         "votes_no": 3,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "Order matters, but oversight must be strict."
+        "cue_text": "Order matters, but oversight must be strict.",
+        "salience": 4
       }
     ]
   },
@@ -3184,7 +3472,8 @@
         "votes_no": 6,
         "votes_abstain": 7,
         "disposition": "Neutral",
-        "cue_text": "Efficiency is fine; communities must have a say."
+        "cue_text": "Efficiency is fine; communities must have a say.",
+        "salience": 2
       },
       {
         "bill_id": "BI49",
@@ -3193,7 +3482,8 @@
         "votes_no": 13,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Merged towns forget their own people."
+        "cue_text": "Merged towns forget their own people.",
+        "salience": 123
       },
       {
         "bill_id": "BI49",
@@ -3202,7 +3492,8 @@
         "votes_no": 23,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Our villages will vanish into larger towns."
+        "cue_text": "Our villages will vanish into larger towns.",
+        "salience": 86
       },
       {
         "bill_id": "BI49",
@@ -3211,7 +3502,8 @@
         "votes_no": 5,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Local voices should not be merged away."
+        "cue_text": "Local voices should not be merged away.",
+        "salience": 130
       },
       {
         "bill_id": "BI49",
@@ -3220,7 +3512,8 @@
         "votes_no": 7,
         "votes_abstain": 9,
         "disposition": "Neutral",
-        "cue_text": "Savings are real, but so are local ties."
+        "cue_text": "Savings are real, but so are local ties.",
+        "salience": 5
       },
       {
         "bill_id": "BI49",
@@ -3229,7 +3522,8 @@
         "votes_no": 1,
         "votes_abstain": 4,
         "disposition": "Neutral",
-        "cue_text": "Keep local ties, trim the waste."
+        "cue_text": "Keep local ties, trim the waste.",
+        "salience": 26
       }
     ]
   },
@@ -3250,7 +3544,8 @@
         "votes_no": 3,
         "votes_abstain": 7,
         "disposition": "Neutral",
-        "cue_text": "Open ballots are good, if done fairly."
+        "cue_text": "Open ballots are good, if done fairly.",
+        "salience": 20
       },
       {
         "bill_id": "BI50",
@@ -3259,7 +3554,8 @@
         "votes_no": 4,
         "votes_abstain": 1,
         "disposition": "Supportive",
-        "cue_text": "Let the members choose their leader."
+        "cue_text": "Let the members choose their leader.",
+        "salience": 34
       },
       {
         "bill_id": "BI50",
@@ -3268,7 +3564,8 @@
         "votes_no": 9,
         "votes_abstain": 10,
         "disposition": "Neutral",
-        "cue_text": "Our party already listens to its members."
+        "cue_text": "Our party already listens to its members.",
+        "salience": 4
       },
       {
         "bill_id": "BI50",
@@ -3277,7 +3574,8 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "A small party needs a steady hand."
+        "cue_text": "A small party needs a steady hand.",
+        "salience": 0
       },
       {
         "bill_id": "BI50",
@@ -3286,7 +3584,8 @@
         "votes_no": 24,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Parties should run themselves."
+        "cue_text": "Parties should run themselves.",
+        "salience": 118
       },
       {
         "bill_id": "BI50",
@@ -3295,7 +3594,8 @@
         "votes_no": 8,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "Leadership is earned, not voted by the crowd."
+        "cue_text": "Leadership is earned, not voted by the crowd.",
+        "salience": 60
       }
     ]
   }

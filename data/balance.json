@@ -25,5 +25,8 @@
   "party_opinion_warm_below": 80,
   "law_lean_party_tier_pass_delta": 3,
   "law_lean_party_tier_fail_delta": 1,
+  "party_salience_reference": 50,
+  "party_salience_min_factor": 0.5,
+  "party_salience_max_factor": 2,
   "xp_tiers": {}
 }

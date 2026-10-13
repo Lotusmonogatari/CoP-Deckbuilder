@@ -311,5 +311,8 @@ func _favorability_deltas() -> Dictionary:
 		var party_name := str(position.get("party_name", ""))
 		var disposition := str(position.get("disposition", ""))
 		if by_disposition.has(disposition) and not party_name.is_empty():
-			deltas[party_name] = by_disposition[disposition]
+			# A party moves more on a bill that sits on its own priorities
+			# (PartySalience); BattleSetup stamps the factor on the position.
+			deltas[party_name] = PartySalience.scaled(by_disposition[disposition],
+				float(position.get("favorability_factor", 1.0)))
 	return deltas
