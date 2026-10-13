@@ -23,7 +23,13 @@ extends RefCounted
 static func eligible(rows: Array, scope_field: String, scope_key: String) -> Array[Dictionary]:
 	var found: Array[Dictionary] = []
 	for row: Dictionary in rows:
-		var row_key := str(row.get(scope_field, ""))
+		# A blank workbook cell is JSON null, and str(null) is the literal text
+		# "<null>", not "" (the project's recurring <null> trap) -- so a blank
+		# Stage ID read as a stage called "<null>" and no wildcard row was ever
+		# eligible. Found 2026-10-13 when the first wildcard transition rows
+		# were written; the pools had been empty until then.
+		var raw: Variant = row.get(scope_field)
+		var row_key := "" if raw == null else str(raw).strip_edges()
 		if row_key.is_empty() or row_key == scope_key:
 			found.append(row)
 	return found

@@ -67,6 +67,13 @@ func _walk() -> void:
 		return
 	print("  answered %d visitor(s)" % visited)
 
+	# The next stage may open with a Stage Transition beat first (a stage whose
+	# Show Transition is Yes); the player taps Continue and lands on the battle.
+	if get_tree().current_scene.name == "StageTransitionScreen":
+		await get_tree().create_timer(0.7).timeout
+		(get_tree().current_scene.get_node("%ContinueButton") as Button).pressed.emit()
+		await get_tree().create_timer(0.6).timeout
+		print("  a transition played before the next stage")
 	if get_tree().current_scene.name != "BattleScreen":
 		_failures.append("finishing Office Hours did not move on to the next stage")
 		return

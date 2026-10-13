@@ -56,3 +56,12 @@ func test_pick_can_repeat_when_it_is_the_only_one_eligible() -> void:
 	var last := {"id": "A", "stage_id": "ST02"}
 	for i in 5:
 		assert_eq(PoolPicker.pick(rows, "stage_id", "ST02", rng, last), last)
+
+
+func test_a_null_scope_field_from_a_blank_workbook_cell_is_a_wildcard() -> void:
+	# Exported blank cells are JSON null, not "": str(null) is "<null>", which
+	# made every wildcard row ineligible (2026-10-13).
+	var rows: Array = [{"stage_id": null, "id": "any"}, {"stage_id": "ST05", "id": "five"}]
+	var found := PoolPicker.eligible(rows, "stage_id", "ST09")
+	assert_eq(found.size(), 1)
+	assert_eq(str(found[0].get("id")), "any")

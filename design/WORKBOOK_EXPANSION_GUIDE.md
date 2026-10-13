@@ -196,13 +196,15 @@ Where a built-in behaviour is keyed to a literal stage ID rather than a column (
 
 | Content | Floor | Target |
 |---|---|---|
-| Stage Questions, room with no pool | 3 | one per turn (turn_limit) |
+| Stage Questions, room with no pool | 3 | one per turn (turn_limit); at least half the turn limit |
 | Stage Questions, generic room that keeps its pool | 0 | at most a third of turn_limit |
 | Stage Questions, topic room | 3 | turn_limit with Question Pool blank |
 | Question grading | within about 15 points of the master spread (Strong / Weak: Earnest 54/14, Emotional 38/27, Appeal 29/20, Data Driven 42/19, Divisive 35/38, Duplicitous 35/24) | at least 2 Strong each; every theme maps to existing organisations |
 | Player Cues, per room | 2 rows (10 lines) per suit and verb covered; cover attack, gain, block | all six suits x three verbs = 36 rows |
 | Opponent Cues, per room | 2 rows (10 lines) per suit and verb covered | the suits the room favours |
 | **Transitions** | Show Transition = Yes on every room that is not only ever a first slot, with at least 3 dialogue variants per room kind (wildcard rows with blank Stage ID) | plus topic-specific variants for each topic room; a cast of 6+ existing characters; a background per room family |
+
+**Measured in batch 1 (2026-10-13, `design/drafts/BATCH1_EVALUATION_2026-10-13.md`):** a room's speaker is picked from the any-room cast plus any room-scoped cast, then the line from that character's own rows, so a room-scoped line is heard only about 1 transition in 8 if just two characters have one. For a topic room, write at least one room-scoped line for **every** cast member (6 per room with a cast of 6), and keep any-room lines to one or two per character. After switching Show Transition on for existing rooms, re-run `tools/verify.sh`: the Office Hours click test had to be taught to tap Continue. A blank Stage ID is a real wildcard (a code bug that read it as "<null>" was fixed the same day).
 
 **Transition rules (fill the gap):** a transition plays before a non-first stage, shows one exchange, and the banner holds a line at most 4 seconds. Character line 18 words or fewer, reply 8 or fewer, no numbers. Cast only existing OPxx/SFxx characters; every cast member needs at least one dialogue row. Wildcard (blank Stage ID) rows serve all rooms; add stage-scoped rows for topic rooms so the beat names the subject ("the fare vote is next"). Set Transition Speaker Count 1 or 2. A room only ever in first slots never shows one: put the topic room later in the level.
 

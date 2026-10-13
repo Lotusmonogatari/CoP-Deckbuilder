@@ -120,6 +120,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     failures=$((failures + 1))
   fi
 
+  # And the Stage Transition screen against real data -- 2026-10-13, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/stage_transition_test.tscn; then
+    echo ">> FAILED: the Stage Transition screen did not work with real data and clicks."
+    failures=$((failures + 1))
+  fi
+
   # And Cosmetic Packages: buy one, equip and un-equip it per slot — 2026-09-28, new.
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
         "$GODOT" --path . tests/interaction/cosmetics_test.tscn; then
