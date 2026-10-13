@@ -70,6 +70,13 @@ func _targets() -> Array[Dictionary]:
 
 func _check(target: Dictionary) -> void:
 	GameState.start_new_run("PC01")
+	# Staff only speak once hired, so hire one of each role in memory.
+	var cast_ids: Array = DataDB.transition_cast.map(
+		func(row: Dictionary) -> String: return str(row.get("character_id", "")))
+	for candidate in DataDB.staff:
+		if str(candidate.get("staff_id", "")) in cast_ids:
+			GameState.staff_hired[str(candidate.get("role", ""))] = {
+				"staff_id": str(candidate.get("staff_id", "")), "tier": 0}
 	var runner := LevelRunner.new(BattleSetup.expand_level(DataDB.get_level(str(target["level_id"]))))
 	GameState.begin_level(runner)
 	runner.index = int(target["index"])

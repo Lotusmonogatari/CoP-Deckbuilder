@@ -121,3 +121,24 @@ func test_a_wildcard_stage_id_row_is_eligible_for_any_stage() -> void:
 	var result := StageTransition.resolve(stage, cast, backgrounds, dialogue, _rng(1))
 	assert_eq(result["speakers"][0]["character_id"], "SF08")
 	assert_eq(result["background_id"], "OFFICE")
+
+
+func test_unhired_staff_never_speak_but_hired_staff_and_opponents_can() -> void:
+	var cast := [
+		{"stage_id": null, "character_id": "SF01"},
+		{"stage_id": null, "character_id": "SF02"},
+		{"stage_id": null, "character_id": "OP03"},
+	]
+	var dialogue: Array = []
+	for id in ["SF01", "SF02", "OP03"]:
+		dialogue.append({"stage_id": null, "character_id": id,
+			"character_line_en": "Hello.", "player_reply_en": "Hi."})
+	for seed_value in range(1, 30):
+		var speakers := StageTransition.pick_speakers(cast, dialogue, "ST19", 3, _rng(seed_value), ["SF02"])
+		var ids: Array = speakers.map(func(s: Dictionary) -> String: return s["character_id"])
+		assert_false("SF01" in ids)
+		assert_true("SF02" in ids)
+		assert_true("OP03" in ids)
+	# No staff hired: only the opponent can speak.
+	var none := StageTransition.pick_speakers(cast, dialogue, "ST19", 3, _rng(1), [])
+	assert_eq(none.size(), 1)
