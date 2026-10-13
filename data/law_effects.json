@@ -1869,5 +1869,1317 @@
     "party_support": null,
     "xp": null,
     "note": "Draft 2026-10-12: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW64",
+    "bill_id": "BI31",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO28",
+        "delta": 3
+      },
+      {
+        "target": "BO20",
+        "delta": 2
+      },
+      {
+        "target": "BO11",
+        "delta": 2
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Ainu groups, shrines and students gain; business and rural towns object."
+  },
+  {
+    "law_id": "LW65",
+    "bill_id": "BI31",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO28",
+        "delta": -1
+      },
+      {
+        "target": "BO20",
+        "delta": -1
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW66",
+    "bill_id": "BI32",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 2
+      },
+      {
+        "target": "BO04",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Rural towns, care and mayors gain; taxpayers pay."
+  },
+  {
+    "law_id": "LW67",
+    "bill_id": "BI32",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO30",
+        "delta": -1
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      },
+      {
+        "target": "BO04",
+        "delta": -1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW68",
+    "bill_id": "BI33",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO24",
+        "delta": 2
+      },
+      {
+        "target": "BO08",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Tech and finance gain; press and consumer groups worry about privacy."
+  },
+  {
+    "law_id": "LW69",
+    "bill_id": "BI33",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO16",
+        "delta": -1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW70",
+    "bill_id": "BI34",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO08",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 2
+      },
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Press and students gain; party HQ loses influence over the broadcaster."
+  },
+  {
+    "law_id": "LW71",
+    "bill_id": "BI34",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO08",
+        "delta": -1
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW72",
+    "bill_id": "BI35",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO26",
+        "delta": 3
+      },
+      {
+        "target": "BO08",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO01",
+        "delta": -2
+      },
+      {
+        "target": "BO02",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Watchdogs gain; parties and members lose fundraising freedom."
+  },
+  {
+    "law_id": "LW73",
+    "bill_id": "BI35",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO26",
+        "delta": -1
+      },
+      {
+        "target": "BO08",
+        "delta": -1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW74",
+    "bill_id": "BI36",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO24",
+        "delta": 2
+      },
+      {
+        "target": "BO25",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO04",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Business gains; care and local budgets lose."
+  },
+  {
+    "law_id": "LW75",
+    "bill_id": "BI36",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW76",
+    "bill_id": "BI37",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 2
+      },
+      {
+        "target": "BO27",
+        "delta": 2
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Innovators, students and cities gain; business, farmers and taxpayers pay."
+  },
+  {
+    "law_id": "LW77",
+    "bill_id": "BI37",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO16",
+        "delta": -1
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW78",
+    "bill_id": "BI38",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO26",
+        "delta": 2
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Fishers and consumers gain; small operators face new costs."
+  },
+  {
+    "law_id": "LW79",
+    "bill_id": "BI38",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO07",
+        "delta": -1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW80",
+    "bill_id": "BI39",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO22",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Veterans, industry and labour gain; taxpayers and consumers pay."
+  },
+  {
+    "law_id": "LW81",
+    "bill_id": "BI39",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO22",
+        "delta": -1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW82",
+    "bill_id": "BI40",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO17",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Members and students gain; traditionalists wary of change."
+  },
+  {
+    "law_id": "LW83",
+    "bill_id": "BI40",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO17",
+        "delta": -1
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW84",
+    "bill_id": "BI41",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO28",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Business gains; traditionalists and Ainu groups wary of border sharing."
+  },
+  {
+    "law_id": "LW85",
+    "bill_id": "BI41",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO28",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW86",
+    "bill_id": "BI42",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO28",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Industry gains; fishers and Ainu groups object to island development."
+  },
+  {
+    "law_id": "LW87",
+    "bill_id": "BI42",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO28",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW88",
+    "bill_id": "BI43",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 2
+      },
+      {
+        "target": "BO26",
+        "delta": 2
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO22",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Business and consumers gain; farmers, labour and veterans object."
+  },
+  {
+    "law_id": "LW89",
+    "bill_id": "BI43",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO22",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW90",
+    "bill_id": "BI44",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Farmers, rural towns and families gain; taxpayers pay."
+  },
+  {
+    "law_id": "LW91",
+    "bill_id": "BI44",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO10",
+        "delta": -1
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW92",
+    "bill_id": "BI45",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Students, innovators and families gain; taxpayers pay."
+  },
+  {
+    "law_id": "LW93",
+    "bill_id": "BI45",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO11",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW94",
+    "bill_id": "BI46",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 2
+      },
+      {
+        "target": "BO28",
+        "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": 2
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Labour, students, Ainu groups and families gain; employers object."
+  },
+  {
+    "law_id": "LW95",
+    "bill_id": "BI46",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO09",
+        "delta": -1
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      },
+      {
+        "target": "BO28",
+        "delta": -1
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW96",
+    "bill_id": "BI47",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 2
+      },
+      {
+        "target": "BO21",
+        "delta": 2
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Families, labour and care gain; employers pay."
+  },
+  {
+    "law_id": "LW97",
+    "bill_id": "BI47",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO12",
+        "delta": -1
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW98",
+    "bill_id": "BI48",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO22",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO08",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Veterans, cities and tech gain; press, consumers and students object."
+  },
+  {
+    "law_id": "LW99",
+    "bill_id": "BI48",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO22",
+        "delta": -1
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW100",
+    "bill_id": "BI49",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO23",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO04",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Taxpayers and business gain; mayors, neighbourhoods and rural towns lose."
+  },
+  {
+    "law_id": "LW101",
+    "bill_id": "BI49",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO23",
+        "delta": -1
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
+  },
+  {
+    "law_id": "LW102",
+    "bill_id": "BI50",
+    "outcome": "Passed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO08",
+        "delta": 2
+      },
+      {
+        "target": "BO18",
+        "delta": 2
+      },
+      {
+        "target": "BO01",
+        "delta": -2
+      },
+      {
+        "target": "BO02",
+        "delta": -2
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: Students, press and voters gain; party HQ and factions lose control."
+  },
+  {
+    "law_id": "LW103",
+    "bill_id": "BI50",
+    "outcome": "Failed",
+    "timing": "Once",
+    "effects": [
+      {
+        "target": "BO11",
+        "delta": -1
+      },
+      {
+        "target": "BO08",
+        "delta": -1
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      }
+    ],
+    "constituency_support": null,
+    "reputation": null,
+    "funds": null,
+    "party_support": null,
+    "xp": null,
+    "note": "Draft 2026-10-13: supporters disappointed, opponents relieved."
   }
 ]

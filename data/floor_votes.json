@@ -1978,5 +1978,1325 @@
         "cue_text": "Only citizens decide Yezo's future!"
       }
     ]
+  },
+  "BI31": {
+    "bill_id": "BI31",
+    "bill_name": "Wilderness and Wildlife Protection Act",
+    "bill_description": "Sets aside protected wilderness across Hokkaido, limits logging and development inside it, and funds ranger stations.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI31",
+        "party_id": "PT01",
+        "votes_yes": 18,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "The forests deserve peace, and so do we."
+      },
+      {
+        "bill_id": "BI31",
+        "party_id": "PT02",
+        "votes_yes": 7,
+        "votes_no": 2,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Protect the land, but ask the people first."
+      },
+      {
+        "bill_id": "BI31",
+        "party_id": "PT03",
+        "votes_yes": 7,
+        "votes_no": 20,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Farmers and loggers pay for this wilderness."
+      },
+      {
+        "bill_id": "BI31",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Show us who gains before we commit."
+      },
+      {
+        "bill_id": "BI31",
+        "party_id": "PT05",
+        "votes_yes": 1,
+        "votes_no": 24,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Locking up land locks out jobs."
+      },
+      {
+        "bill_id": "BI31",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "A nation cannot live in a nature reserve."
+      }
+    ]
+  },
+  "BI32": {
+    "bill_id": "BI32",
+    "bill_name": "Rural Hospital Network Act",
+    "bill_description": "Funds a chain of small regional hospitals and travelling clinics so no town is far from emergency care.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI32",
+        "party_id": "PT01",
+        "votes_yes": 5,
+        "votes_no": 7,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Good care, unclear funding. We will watch closely."
+      },
+      {
+        "bill_id": "BI32",
+        "party_id": "PT02",
+        "votes_yes": 13,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Every village deserves a doctor within reach."
+      },
+      {
+        "bill_id": "BI32",
+        "party_id": "PT03",
+        "votes_yes": 26,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Finally, a hospital where the farmer lives!"
+      },
+      {
+        "bill_id": "BI32",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A clinic in every district. Count us in."
+      },
+      {
+        "bill_id": "BI32",
+        "party_id": "PT05",
+        "votes_yes": 3,
+        "votes_no": 13,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Clinics yes, waste no. Show the savings."
+      },
+      {
+        "bill_id": "BI32",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 10,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "We cannot borrow our way to health."
+      }
+    ]
+  },
+  "BI33": {
+    "bill_id": "BI33",
+    "bill_name": "Digital Identity Card Act",
+    "bill_description": "Issues every resident a single digital identity card linking tax, health and benefit records.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI33",
+        "party_id": "PT01",
+        "votes_yes": 6,
+        "votes_no": 6,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Convenience is welcome. Surveillance is not."
+      },
+      {
+        "bill_id": "BI33",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 4,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Our people want privacy before convenience."
+      },
+      {
+        "bill_id": "BI33",
+        "party_id": "PT03",
+        "votes_yes": 10,
+        "votes_no": 7,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Will it work in a village without signal?"
+      },
+      {
+        "bill_id": "BI33",
+        "party_id": "PT04",
+        "votes_yes": 1,
+        "votes_no": 2,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "One card, one more thing to lose."
+      },
+      {
+        "bill_id": "BI33",
+        "party_id": "PT05",
+        "votes_yes": 1,
+        "votes_no": 24,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "A central database is a central risk."
+      },
+      {
+        "bill_id": "BI33",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 6,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "Order is good, but who holds the data?"
+      }
+    ]
+  },
+  "BI34": {
+    "bill_id": "BI34",
+    "bill_name": "Public Broadcasting Independence Act",
+    "bill_description": "Protects the public broadcaster's budget and board from ministerial direction.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI34",
+        "party_id": "PT01",
+        "votes_yes": 10,
+        "votes_no": 2,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "A free press matters; the details need care."
+      },
+      {
+        "bill_id": "BI34",
+        "party_id": "PT02",
+        "votes_yes": 6,
+        "votes_no": 3,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Our stories need a broadcaster that listens."
+      },
+      {
+        "bill_id": "BI34",
+        "party_id": "PT03",
+        "votes_yes": 19,
+        "votes_no": 7,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Let the broadcaster speak for the countryside too."
+      },
+      {
+        "bill_id": "BI34",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Independent is fine if it stays accountable."
+      },
+      {
+        "bill_id": "BI34",
+        "party_id": "PT05",
+        "votes_yes": 4,
+        "votes_no": 11,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Fund it, but make it earn its audience."
+      },
+      {
+        "bill_id": "BI34",
+        "party_id": "PT06",
+        "votes_yes": 3,
+        "votes_no": 8,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "A public voice must serve the public good."
+      }
+    ]
+  },
+  "BI35": {
+    "bill_id": "BI35",
+    "bill_name": "Political Donation Transparency Act",
+    "bill_description": "Requires party and member fundraising to be published in full and caps donations from a single source.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI35",
+        "party_id": "PT01",
+        "votes_yes": 3,
+        "votes_no": 9,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Sunlight helps, but small groups need time."
+      },
+      {
+        "bill_id": "BI35",
+        "party_id": "PT02",
+        "votes_yes": 4,
+        "votes_no": 5,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Open books, but protect small donors."
+      },
+      {
+        "bill_id": "BI35",
+        "party_id": "PT03",
+        "votes_yes": 8,
+        "votes_no": 18,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "Local fundraising is not a scandal."
+      },
+      {
+        "bill_id": "BI35",
+        "party_id": "PT04",
+        "votes_yes": 0,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Disclosure will chill honest support for us."
+      },
+      {
+        "bill_id": "BI35",
+        "party_id": "PT05",
+        "votes_yes": 7,
+        "votes_no": 17,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "Caps on giving are caps on speech."
+      },
+      {
+        "bill_id": "BI35",
+        "party_id": "PT06",
+        "votes_yes": 3,
+        "votes_no": 7,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "Let members answer to voters, not auditors."
+      }
+    ]
+  },
+  "BI36": {
+    "bill_id": "BI36",
+    "bill_name": "Corporate Tax Reduction Act",
+    "bill_description": "Lowers the corporate tax rate to attract firms and investment, with a smaller cut for small businesses.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI36",
+        "party_id": "PT01",
+        "votes_yes": 2,
+        "votes_no": 10,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Cutting taxes needs a plan for the cost."
+      },
+      {
+        "bill_id": "BI36",
+        "party_id": "PT02",
+        "votes_yes": 4,
+        "votes_no": 9,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "Corporations gain; our towns pay the difference."
+      },
+      {
+        "bill_id": "BI36",
+        "party_id": "PT03",
+        "votes_yes": 13,
+        "votes_no": 4,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Show us the jobs before the cut."
+      },
+      {
+        "bill_id": "BI36",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Fine for big firms, but small shops first."
+      },
+      {
+        "bill_id": "BI36",
+        "party_id": "PT05",
+        "votes_yes": 24,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Lower taxes bring investment. Pass it."
+      },
+      {
+        "bill_id": "BI36",
+        "party_id": "PT06",
+        "votes_yes": 11,
+        "votes_no": 0,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Strong firms build a strong nation."
+      }
+    ]
+  },
+  "BI37": {
+    "bill_id": "BI37",
+    "bill_name": "Carbon Levy Act",
+    "bill_description": "Puts a rising price on carbon emissions and returns part of the revenue to households.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI37",
+        "party_id": "PT01",
+        "votes_yes": 18,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Make polluters pay and protect the north."
+      },
+      {
+        "bill_id": "BI37",
+        "party_id": "PT02",
+        "votes_yes": 11,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "The land cannot wait for cheaper excuses."
+      },
+      {
+        "bill_id": "BI37",
+        "party_id": "PT03",
+        "votes_yes": 4,
+        "votes_no": 13,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Farmers need relief before a new levy."
+      },
+      {
+        "bill_id": "BI37",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Rebates are nice. Who really pays?"
+      },
+      {
+        "bill_id": "BI37",
+        "party_id": "PT05",
+        "votes_yes": 1,
+        "votes_no": 24,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "A new tax by any other name."
+      },
+      {
+        "bill_id": "BI37",
+        "party_id": "PT06",
+        "votes_yes": 0,
+        "votes_no": 11,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Our industry cannot carry another burden."
+      }
+    ]
+  },
+  "BI38": {
+    "bill_id": "BI38",
+    "bill_name": "Fisheries Quota Modernization Act",
+    "bill_description": "Replaces the old catch limits with tradeable quotas, monitored by onboard reporting.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI38",
+        "party_id": "PT01",
+        "votes_yes": 12,
+        "votes_no": 5,
+        "votes_abstain": 2,
+        "disposition": "Supportive",
+        "cue_text": "Fair limits protect both fishers and the sea."
+      },
+      {
+        "bill_id": "BI38",
+        "party_id": "PT02",
+        "votes_yes": 13,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "The sea fed us. Manage it wisely."
+      },
+      {
+        "bill_id": "BI38",
+        "party_id": "PT03",
+        "votes_yes": 26,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Fishing families need rules they can trust."
+      },
+      {
+        "bill_id": "BI38",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Clear quotas, fair shares. We back it."
+      },
+      {
+        "bill_id": "BI38",
+        "party_id": "PT05",
+        "votes_yes": 1,
+        "votes_no": 24,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "More rules on every boat is no reform."
+      },
+      {
+        "bill_id": "BI38",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 3,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "Quotas matter, but not at the cost of tradition."
+      }
+    ]
+  },
+  "BI39": {
+    "bill_id": "BI39",
+    "bill_name": "Shipbuilding and Defense Industry Act",
+    "bill_description": "Subsidizes domestic shipyards and defense manufacturers and guarantees them long-term orders.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI39",
+        "party_id": "PT01",
+        "votes_yes": 5,
+        "votes_no": 12,
+        "votes_abstain": 2,
+        "disposition": "Opposed",
+        "cue_text": "Warships will not feed the hungry."
+      },
+      {
+        "bill_id": "BI39",
+        "party_id": "PT02",
+        "votes_yes": 6,
+        "votes_no": 3,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Jobs on the coast, but at what cost?"
+      },
+      {
+        "bill_id": "BI39",
+        "party_id": "PT03",
+        "votes_yes": 17,
+        "votes_no": 8,
+        "votes_abstain": 2,
+        "disposition": "Supportive",
+        "cue_text": "Work for our harbour towns. We agree."
+      },
+      {
+        "bill_id": "BI39",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Which yards get the orders? We want to see."
+      },
+      {
+        "bill_id": "BI39",
+        "party_id": "PT05",
+        "votes_yes": 17,
+        "votes_no": 7,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Industry and defense grow the economy."
+      },
+      {
+        "bill_id": "BI39",
+        "party_id": "PT06",
+        "votes_yes": 8,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "A nation needs ships to defend itself."
+      }
+    ]
+  },
+  "BI40": {
+    "bill_id": "BI40",
+    "bill_name": "Constitutional Review Commission Act",
+    "bill_description": "Creates a standing commission to study amendments and report to the National Assembly.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI40",
+        "party_id": "PT01",
+        "votes_yes": 6,
+        "votes_no": 6,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Study the rules, but protect rights first."
+      },
+      {
+        "bill_id": "BI40",
+        "party_id": "PT02",
+        "votes_yes": 3,
+        "votes_no": 6,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Any change must include our voices."
+      },
+      {
+        "bill_id": "BI40",
+        "party_id": "PT03",
+        "votes_yes": 20,
+        "votes_no": 7,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Let the commission listen to every region."
+      },
+      {
+        "bill_id": "BI40",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "A commission is only as good as its members."
+      },
+      {
+        "bill_id": "BI40",
+        "party_id": "PT05",
+        "votes_yes": 21,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Orderly reform beats ad hoc fixes."
+      },
+      {
+        "bill_id": "BI40",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 3,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "Tradition must guide any amendment."
+      }
+    ]
+  },
+  "BI41": {
+    "bill_id": "BI41",
+    "bill_name": "Japan Customs and Border Cooperation Act",
+    "bill_description": "Merges customs checks and shares border data with Japan to speed trade and travel.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI41",
+        "party_id": "PT01",
+        "votes_yes": 14,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Fewer border delays help ordinary travelers."
+      },
+      {
+        "bill_id": "BI41",
+        "party_id": "PT02",
+        "votes_yes": 3,
+        "votes_no": 11,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "We should not hand our borders away."
+      },
+      {
+        "bill_id": "BI41",
+        "party_id": "PT03",
+        "votes_yes": 12,
+        "votes_no": 5,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Good for trade; wary of the details."
+      },
+      {
+        "bill_id": "BI41",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Show us the data-sharing limits."
+      },
+      {
+        "bill_id": "BI41",
+        "party_id": "PT05",
+        "votes_yes": 8,
+        "votes_no": 8,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Faster customs help trade, if it is safe."
+      },
+      {
+        "bill_id": "BI41",
+        "party_id": "PT06",
+        "votes_yes": 8,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Close ties with Japan serve us well."
+      }
+    ]
+  },
+  "BI42": {
+    "bill_id": "BI42",
+    "bill_name": "Chishima Resource Development Agreement Act",
+    "bill_description": "Approves a joint mining and fishing venture with a partner in non-China Asia on the Chishima islands.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI42",
+        "party_id": "PT01",
+        "votes_yes": 14,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Shared prosperity beats rivalry on the islands."
+      },
+      {
+        "bill_id": "BI42",
+        "party_id": "PT02",
+        "votes_yes": 4,
+        "votes_no": 5,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Develop the islands only with local consent."
+      },
+      {
+        "bill_id": "BI42",
+        "party_id": "PT03",
+        "votes_yes": 9,
+        "votes_no": 8,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Jobs matter, but so do fishing rights."
+      },
+      {
+        "bill_id": "BI42",
+        "party_id": "PT04",
+        "votes_yes": 1,
+        "votes_no": 2,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Another deal, another set of winners."
+      },
+      {
+        "bill_id": "BI42",
+        "party_id": "PT05",
+        "votes_yes": 19,
+        "votes_no": 6,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Open resources create growth. We say yes."
+      },
+      {
+        "bill_id": "BI42",
+        "party_id": "PT06",
+        "votes_yes": 8,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Chishima's wealth should serve Yezo first."
+      }
+    ]
+  },
+  "BI43": {
+    "bill_id": "BI43",
+    "bill_name": "Yezo–China Trade Normalization Act",
+    "bill_description": "Lifts remaining tariffs and licensing hurdles on trade with China.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI43",
+        "party_id": "PT01",
+        "votes_yes": 5,
+        "votes_no": 7,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Trade is peace, but keep safeguards in place."
+      },
+      {
+        "bill_id": "BI43",
+        "party_id": "PT02",
+        "votes_yes": 2,
+        "votes_no": 7,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Prices matter, but so does our independence."
+      },
+      {
+        "bill_id": "BI43",
+        "party_id": "PT03",
+        "votes_yes": 6,
+        "votes_no": 11,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Farmers fear cheap imports. Protect them."
+      },
+      {
+        "bill_id": "BI43",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Cheaper goods, but whose jobs?"
+      },
+      {
+        "bill_id": "BI43",
+        "party_id": "PT05",
+        "votes_yes": 20,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Free trade makes everyone richer."
+      },
+      {
+        "bill_id": "BI43",
+        "party_id": "PT06",
+        "votes_yes": 3,
+        "votes_no": 8,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "We should not depend on a rival power."
+      }
+    ]
+  },
+  "BI44": {
+    "bill_id": "BI44",
+    "bill_name": "Farm Succession Support Act",
+    "bill_description": "Pays grants and cuts inheritance costs for young people who take over family farms.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI44",
+        "party_id": "PT01",
+        "votes_yes": 17,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Keep the farms alive for the next generation."
+      },
+      {
+        "bill_id": "BI44",
+        "party_id": "PT02",
+        "votes_yes": 13,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "The land passes to those who love it."
+      },
+      {
+        "bill_id": "BI44",
+        "party_id": "PT03",
+        "votes_yes": 26,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Finally, a future for young farmers!"
+      },
+      {
+        "bill_id": "BI44",
+        "party_id": "PT04",
+        "votes_yes": 3,
+        "votes_no": 2,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Back the farm families. It is simple."
+      },
+      {
+        "bill_id": "BI44",
+        "party_id": "PT05",
+        "votes_yes": 7,
+        "votes_no": 17,
+        "votes_abstain": 1,
+        "disposition": "Opposed",
+        "cue_text": "Subsidies keep farms stuck in the past."
+      },
+      {
+        "bill_id": "BI44",
+        "party_id": "PT06",
+        "votes_yes": 1,
+        "votes_no": 6,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "Farms are tradition, but money is tight."
+      }
+    ]
+  },
+  "BI45": {
+    "bill_id": "BI45",
+    "bill_name": "University Autonomy and Research Funding Act",
+    "bill_description": "Gives universities control of their budgets and doubles public research grants.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI45",
+        "party_id": "PT01",
+        "votes_yes": 12,
+        "votes_no": 6,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Knowledge is how a small nation grows."
+      },
+      {
+        "bill_id": "BI45",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 4,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Our young people deserve research at home."
+      },
+      {
+        "bill_id": "BI45",
+        "party_id": "PT03",
+        "votes_yes": 23,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Fund research, and rural minds will use it."
+      },
+      {
+        "bill_id": "BI45",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Universities that serve their regions. Yes."
+      },
+      {
+        "bill_id": "BI45",
+        "party_id": "PT05",
+        "votes_yes": 22,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Research feeds the next industries."
+      },
+      {
+        "bill_id": "BI45",
+        "party_id": "PT06",
+        "votes_yes": 0,
+        "votes_no": 11,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Spend on schools before laboratories."
+      }
+    ]
+  },
+  "BI46": {
+    "bill_id": "BI46",
+    "bill_name": "Workplace Equality Act",
+    "bill_description": "Bans workplace discrimination on gender, ethnicity and disability, with penalties for repeat offenders.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI46",
+        "party_id": "PT01",
+        "votes_yes": 18,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Fair treatment at work is a basic right."
+      },
+      {
+        "bill_id": "BI46",
+        "party_id": "PT02",
+        "votes_yes": 10,
+        "votes_no": 4,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "No one is turned away for who they are."
+      },
+      {
+        "bill_id": "BI46",
+        "party_id": "PT03",
+        "votes_yes": 26,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Equal pay and equal respect. Pass it."
+      },
+      {
+        "bill_id": "BI46",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Fair rules for every worker. We agree."
+      },
+      {
+        "bill_id": "BI46",
+        "party_id": "PT05",
+        "votes_yes": 5,
+        "votes_no": 20,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "More regulation means fewer hires."
+      },
+      {
+        "bill_id": "BI46",
+        "party_id": "PT06",
+        "votes_yes": 3,
+        "votes_no": 8,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Employers, not the state, should decide."
+      }
+    ]
+  },
+  "BI47": {
+    "bill_id": "BI47",
+    "bill_name": "Parental Leave and Childcare Act",
+    "bill_description": "Gives both parents paid leave and expands subsidized childcare.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI47",
+        "party_id": "PT01",
+        "votes_yes": 16,
+        "votes_no": 3,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Families need time together. Make it law."
+      },
+      {
+        "bill_id": "BI47",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 4,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Children and parents both deserve support."
+      },
+      {
+        "bill_id": "BI47",
+        "party_id": "PT03",
+        "votes_yes": 26,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Rural families need childcare close to home."
+      },
+      {
+        "bill_id": "BI47",
+        "party_id": "PT04",
+        "votes_yes": 4,
+        "votes_no": 1,
+        "votes_abstain": 0,
+        "disposition": "Supportive",
+        "cue_text": "Practical help for working parents. Yes."
+      },
+      {
+        "bill_id": "BI47",
+        "party_id": "PT05",
+        "votes_yes": 6,
+        "votes_no": 19,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Mandated leave raises costs for employers."
+      },
+      {
+        "bill_id": "BI47",
+        "party_id": "PT06",
+        "votes_yes": 0,
+        "votes_no": 11,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "The family, not the state, raises children."
+      }
+    ]
+  },
+  "BI48": {
+    "bill_id": "BI48",
+    "bill_name": "Public Safety Surveillance Act",
+    "bill_description": "Allows facial-recognition cameras in transport hubs and city centres, with police access to footage.",
+    "favorability_delta_supportive": 5,
+    "favorability_delta_opposed": -5,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI48",
+        "party_id": "PT01",
+        "votes_yes": 5,
+        "votes_no": 7,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Safety matters, but cameras can watch too much."
+      },
+      {
+        "bill_id": "BI48",
+        "party_id": "PT02",
+        "votes_yes": 5,
+        "votes_no": 4,
+        "votes_abstain": 5,
+        "disposition": "Neutral",
+        "cue_text": "Watching everyone makes no one safer."
+      },
+      {
+        "bill_id": "BI48",
+        "party_id": "PT03",
+        "votes_yes": 7,
+        "votes_no": 10,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Our towns have little crime to watch."
+      },
+      {
+        "bill_id": "BI48",
+        "party_id": "PT04",
+        "votes_yes": 1,
+        "votes_no": 2,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "Cameras are fine if the rules are clear."
+      },
+      {
+        "bill_id": "BI48",
+        "party_id": "PT05",
+        "votes_yes": 4,
+        "votes_no": 21,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "The state should not track every face."
+      },
+      {
+        "bill_id": "BI48",
+        "party_id": "PT06",
+        "votes_yes": 4,
+        "votes_no": 3,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "Order matters, but oversight must be strict."
+      }
+    ]
+  },
+  "BI49": {
+    "bill_id": "BI49",
+    "bill_name": "Local Government Mergers Act",
+    "bill_description": "Merges small municipalities to cut administrative costs and share services.",
+    "favorability_delta_supportive": 3,
+    "favorability_delta_opposed": -2,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI49",
+        "party_id": "PT01",
+        "votes_yes": 6,
+        "votes_no": 6,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Efficiency is fine; communities must have a say."
+      },
+      {
+        "bill_id": "BI49",
+        "party_id": "PT02",
+        "votes_yes": 1,
+        "votes_no": 13,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Merged towns forget their own people."
+      },
+      {
+        "bill_id": "BI49",
+        "party_id": "PT03",
+        "votes_yes": 4,
+        "votes_no": 23,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Our villages will vanish into larger towns."
+      },
+      {
+        "bill_id": "BI49",
+        "party_id": "PT04",
+        "votes_yes": 0,
+        "votes_no": 5,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Local voices should not be merged away."
+      },
+      {
+        "bill_id": "BI49",
+        "party_id": "PT05",
+        "votes_yes": 9,
+        "votes_no": 7,
+        "votes_abstain": 9,
+        "disposition": "Neutral",
+        "cue_text": "Savings are real, but so are local ties."
+      },
+      {
+        "bill_id": "BI49",
+        "party_id": "PT06",
+        "votes_yes": 6,
+        "votes_no": 1,
+        "votes_abstain": 4,
+        "disposition": "Neutral",
+        "cue_text": "Keep local ties, trim the waste."
+      }
+    ]
+  },
+  "BI50": {
+    "bill_id": "BI50",
+    "bill_name": "Party Leadership Selection Act",
+    "bill_description": "Requires parties to choose their leaders by open ballot of members.",
+    "favorability_delta_supportive": 1,
+    "favorability_delta_opposed": -1,
+    "favorability_delta_neutral": 0,
+    "influence_bonus_reputation": null,
+    "influence_bonus_party_support": null,
+    "positions": [
+      {
+        "bill_id": "BI50",
+        "party_id": "PT01",
+        "votes_yes": 9,
+        "votes_no": 3,
+        "votes_abstain": 7,
+        "disposition": "Neutral",
+        "cue_text": "Open ballots are good, if done fairly."
+      },
+      {
+        "bill_id": "BI50",
+        "party_id": "PT02",
+        "votes_yes": 9,
+        "votes_no": 4,
+        "votes_abstain": 1,
+        "disposition": "Supportive",
+        "cue_text": "Let the members choose their leader."
+      },
+      {
+        "bill_id": "BI50",
+        "party_id": "PT03",
+        "votes_yes": 8,
+        "votes_no": 9,
+        "votes_abstain": 10,
+        "disposition": "Neutral",
+        "cue_text": "Our party already listens to its members."
+      },
+      {
+        "bill_id": "BI50",
+        "party_id": "PT04",
+        "votes_yes": 2,
+        "votes_no": 1,
+        "votes_abstain": 2,
+        "disposition": "Neutral",
+        "cue_text": "A small party needs a steady hand."
+      },
+      {
+        "bill_id": "BI50",
+        "party_id": "PT05",
+        "votes_yes": 1,
+        "votes_no": 24,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Parties should run themselves."
+      },
+      {
+        "bill_id": "BI50",
+        "party_id": "PT06",
+        "votes_yes": 3,
+        "votes_no": 8,
+        "votes_abstain": 0,
+        "disposition": "Opposed",
+        "cue_text": "Leadership is earned, not voted by the crowd."
+      }
+    ]
   }
 }

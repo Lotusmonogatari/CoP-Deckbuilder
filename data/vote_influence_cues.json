@@ -153,5 +153,105 @@
     "bill_id": "BI25",
     "outcome_direction": "Flipped to Pass",
     "cue_text": "Members weighed jobs and tourism against their doubts, and decided Tomakomai should have its resort."
+  },
+  {
+    "bill_id": "BI31",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members set aside the loggers' warnings and the wilderness was protected. Speaker Ichizaki closed the vote quietly."
+  },
+  {
+    "bill_id": "BI32",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Enough members balked at the bill for the hospitals that the network was shelved for now."
+  },
+  {
+    "bill_id": "BI33",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your arguments about convenience carried the day, and the identity card passed with a thin majority."
+  },
+  {
+    "bill_id": "BI34",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members ignored the ministers' objections and shielded the public broadcaster from direction."
+  },
+  {
+    "bill_id": "BI35",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Rank-and-file members, wary of the voters, backed full disclosure over their own party whips."
+  },
+  {
+    "bill_id": "BI36",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Doubts about the cost to local budgets sank the corporate tax cut at the last count."
+  },
+  {
+    "bill_id": "BI37",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "A narrow majority accepted the carbon levy. Prime Minister Rono called it a hard but necessary vote."
+  },
+  {
+    "bill_id": "BI38",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Fishing towns lobbied hard, and members would not trade away the old catch limits."
+  },
+  {
+    "bill_id": "BI39",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members balked at the shipyard subsidies, and the defense industry bill fell short."
+  },
+  {
+    "bill_id": "BI40",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members could not agree on who should sit on the commission, and the review was dropped."
+  },
+  {
+    "bill_id": "BI41",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Border officials welcomed the vote as members agreed to share customs data with Japan."
+  },
+  {
+    "bill_id": "BI42",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Islanders and fishers carried the argument, and the Chishima venture was turned down."
+  },
+  {
+    "bill_id": "BI43",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members chose open trade over caution, and the tariffs came down by a few votes."
+  },
+  {
+    "bill_id": "BI44",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "With budgets tight, members refused another round of farm support."
+  },
+  {
+    "bill_id": "BI45",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members put schools ahead of laboratories, and the research funding bill failed."
+  },
+  {
+    "bill_id": "BI46",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Employers' fears of new penalties won enough members to stop the Workplace Equality Act."
+  },
+  {
+    "bill_id": "BI47",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Members worried about the cost to employers and let the parental leave bill die."
+  },
+  {
+    "bill_id": "BI48",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Security concerns carried the chamber, and the cameras were approved over the objections of civil libertarians."
+  },
+  {
+    "bill_id": "BI49",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Members voted to merge the smallest towns, to the dismay of local leaders."
+  },
+  {
+    "bill_id": "BI50",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Enough members backed open ballots that parties must now let their members choose their leaders."
   }
 ]
