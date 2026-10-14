@@ -201,3 +201,31 @@ func test_no_description_from_real_data_shows_the_old_placeholder_word() -> void
 		var text := ModifierEffects.describe(modifier, Text.phrase())
 		assert_false(text.contains("Magnitude"),
 			"%s still shows the word Magnitude: '%s'" % [modifier.get("mod_id"), text])
+
+
+## Every organisation-triggered backing is listed under exactly the organisation
+## it names, and every real backing is one the game can actually run.
+func test_every_booster_backing_is_linked_from_its_own_organisation() -> void:
+	for modifier: Dictionary in DataDB.modifiers:
+		var triggers: Variant = modifier.get("trigger_booster_ids")
+		if not (triggers is Array) or (triggers as Array).is_empty():
+			continue
+		var owner := Ledger.backing_booster(modifier, DataDB.boosters)
+		assert_eq(owner, str((triggers as Array)[0]),
+			"%s should be linked from the organisation that triggers it" % modifier.get("mod_id"))
+
+
+func test_every_real_backing_is_implemented() -> void:
+	for modifier: Dictionary in DataDB.modifiers:
+		assert_true(ModifierEffects.is_implemented(modifier),
+			"%s has an effect type the game cannot run" % modifier.get("mod_id"))
+
+
+func test_the_twelve_newest_organisations_each_have_a_backing() -> void:
+	for n in range(19, 31):
+		var booster_id := "BO%02d" % n
+		var found := false
+		for modifier: Dictionary in DataDB.modifiers:
+			if Ledger.backing_booster(modifier, DataDB.boosters) == booster_id:
+				found = true
+		assert_true(found, "%s has no backing to buy" % booster_id)

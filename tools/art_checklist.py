@@ -105,6 +105,9 @@ def main():
          [("OFFICE", "The Office")] + [(s["stage_id"], s.get("name_en", "")) for s in load("stages")])
     flat("Organisation icons", "icon", [(b["booster_id"], b.get("name_en", "")) for b in load("boosters")])
 
+    flat("Audience icons (Boosters panel)", "icon",
+         [(s["segment_id"], s.get("name_en", "")) for s in load("segments")])
+
     # Shop items and cosmetic packages name their own icon file in an Icon
     # column (a blank cell falls back to the item's ID, the same rule the game
     # uses: InventoryPanel.icon_name()). Duplicates are listed once.
