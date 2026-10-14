@@ -257,10 +257,14 @@ func _arm_intents(config: Dictionary = {}) -> void:
 
 	# The opponent rolls its ranges off the battle's own generator, so a
 	# seeded battle plays out the same way twice — the same arrangement the
-	# bar uses for what a stubborn vote costs.
+	# bar uses for what a stubborn vote costs. The generator is captured by
+	# itself, not through `self`: a lambda that reached `_rng` through the
+	# engine made the engine and its runner hold each other, so no battle
+	# was ever freed (stress test, 2026-10-14).
+	var rng := _rng
 	_intents = IntentRunner.new(
 		pattern,
-		func(low: int, high: int) -> int: return _rng.randi_range(low, high))
+		func(low: int, high: int) -> int: return rng.randi_range(low, high))
 	if not _intents.is_valid():
 		for problem: String in _intents.problems():
 			setup_problems.append("%s: %s" % [_opponent.get("name", "the opponent"), problem])
@@ -279,6 +283,7 @@ func _setup_board(config: Dictionary) -> void:
 ## One place rather than two, because a continuous stage rebuilds it every
 ## time a new debater rises and the two must not drift apart.
 func _build_bar(player_start: int, opponent_start: int) -> BarModel:
+	var rng := _rng   # captured alone, not via self (see _arm_intents)
 	var bar := BarModel.create(
 		BarModel.for_stage(_stage),
 		int(_stage.get("bar_max", 100)),
@@ -287,7 +292,7 @@ func _build_bar(player_start: int, opponent_start: int) -> BarModel:
 		opponent_start,
 		# The bar rolls what a stubborn vote costs off the battle's own
 		# generator, so a seeded battle plays out the same way twice.
-		func() -> int: return _rng.randi_range(0, 99),
+		func() -> int: return rng.randi_range(0, 99),
 	)
 
 	# In a caucus only the player's own total is scored, so there is nothing

@@ -6,7 +6,7 @@
 #
 #   tools/stress.sh
 #
-# It does five things:
+# It does six things:
 #   1. tools/playtest_optimal.gd once, played well (greedy) — the whole
 #      real game, real data, now checked for rules-engine invariants
 #      (card conservation, guard/gaffe/energy/bar bounds) after every
@@ -20,6 +20,12 @@
 #   5. tests/interaction/mash_test.gd — real rapid-fire clicks (End Turn
 #      spam, double-tapped cards, double-submitted purchases/votes) rather
 #      than the one-click-at-a-time proof tools/verify.sh already does.
+#
+#   6. tools/stress_late_game.gd — a long game's worth of everything at once
+#      (all backing, full item stacks, every bill, meta at its ceiling and
+#      floor, crisis triggers all on, huge stacked item bonuses): rules
+#      checked in every room, every bill voted, the Office and battle
+#      screens timed, and a leak check across repeated screen loads.
 #
 # Any bug found by 1 or 2 names its own exact reproducer — a stage ID and
 # a BattleEngine seed — since BattleEngine.setup()'s "seed" config key is
@@ -51,13 +57,13 @@ step() {
   echo "--------------------------------------------------------------"
 }
 
-step "1/5  Full playthrough, played well, invariants checked"
+step "1/6  Full playthrough, played well, invariants checked"
 if ! "$GODOT" --headless --path . tools/playtest_optimal.tscn; then
   echo ">> FAILED: the greedy playthrough hit a bug or an invariant violation."
   failures=$((failures + 1))
 fi
 
-step "2/5  Full playthrough, played adversarially at random, one run per protagonist"
+step "2/6  Full playthrough, played adversarially at random, one run per protagonist"
 for pc in PC01 PC02 PC03 PC04; do
   echo
   echo "  -- $pc --"
@@ -68,19 +74,19 @@ for pc in PC01 PC02 PC03 PC04; do
   fi
 done
 
-step "3/5  Fuzzing the shop/Rhetoric Training purchase effects"
+step "3/6  Fuzzing the shop/Rhetoric Training purchase effects"
 if ! "$GODOT" --headless --path . tools/stress_shop_items.tscn; then
   echo ">> FAILED: tools/stress_shop_items.gd found a problem."
   failures=$((failures + 1))
 fi
 
-step "4/5  Fuzzing the four crisis triggers"
+step "4/6  Fuzzing the four crisis triggers"
 if ! "$GODOT" --headless --path . tools/stress_crisis_triggers.tscn; then
   echo ">> FAILED: tools/stress_crisis_triggers.gd found a problem."
   failures=$((failures + 1))
 fi
 
-step "5/5  Mashing buttons: rapid-fire real clicks, not one at a time"
+step "5/6  Mashing buttons: rapid-fire real clicks, not one at a time"
 if command -v xvfb-run >/dev/null 2>&1; then
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
         "$GODOT" --path . tests/interaction/mash_test.tscn; then
@@ -90,6 +96,16 @@ if command -v xvfb-run >/dev/null 2>&1; then
 else
   echo ">> SKIPPED: xvfb-run is not installed, so buttons were not mashed."
   echo "   On Debian or Ubuntu: sudo apt-get install xvfb"
+fi
+
+step "6/6  Late game: every backing, full stacks, every bill, extreme meta"
+if command -v xvfb-run >/dev/null 2>&1; then
+  if ! xvfb-run -a "$GODOT" --path . tools/stress_late_game.tscn; then
+    echo ">> FAILED: the late-game state broke a rule, a range, or a screen."
+    failures=$((failures + 1))
+  fi
+else
+  echo ">> SKIPPED: xvfb-run is not installed."
 fi
 
 echo
