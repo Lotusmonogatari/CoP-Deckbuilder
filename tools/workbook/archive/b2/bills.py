@@ -1,0 +1,23 @@
+# id, name, description, tags, tier(1 minor,3 mid,5 major)
+BILLS=[
+('BI31','Wilderness and Wildlife Protection Act','Sets aside protected wilderness across Hokkaido, limits logging and development inside it, and funds ranger stations.',{'Environmentalism':1,'Industrialism':-0.5,'Rural Focus':-0.3,'Regulation':0.5},3),
+('BI32','Rural Hospital Network Act','Funds a chain of small regional hospitals and travelling clinics so no town is far from emergency care.',{'Federal Spending':1,'Rural Focus':1,'Localism':0.3},5),
+('BI33','Digital Identity Card Act','Issues every resident a single digital identity card linking tax, health and benefit records.',{'Civil Liberties':-1,'Technocratic':0.7,'Regulation':0.3},5),
+('BI34','Public Broadcasting Independence Act','Protects the public broadcaster\'s budget and board from ministerial direction.',{'Democratic Norms':1,'Civil Liberties':0.5,'Leadership Interest':-0.5},3),
+('BI35','Political Donation Transparency Act','Requires party and member fundraising to be published in full and caps donations from a single source.',{'Clientelism':-1,'Democratic Norms':0.5,'Leadership Interest':-0.3},5),
+('BI36','Corporate Tax Reduction Act','Lowers the corporate tax rate to attract firms and investment, with a smaller cut for small businesses.',{'Taxation':-1,'Economic Liberalization':0.7,'Federal Spending':-0.3},5),
+('BI37','Carbon Levy Act','Puts a rising price on carbon emissions and returns part of the revenue to households.',{'Environmentalism':1,'Taxation':0.7,'Regulation':0.5,'Industrialism':-0.5},5),
+('BI38','Fisheries Quota Modernization Act','Replaces the old catch limits with tradeable quotas, monitored by onboard reporting.',{'Rural Focus':0.7,'Regulation':0.5,'Localism':0.3,'Environmentalism':0.3},3),
+('BI39','Shipbuilding and Defense Industry Act','Subsidizes domestic shipyards and defense manufacturers and guarantees them long-term orders.',{'Militarism':1,'Industrialism':0.8,'Federal Spending':0.5},5),
+('BI40','Constitutional Review Commission Act','Creates a standing commission to study amendments and report to the National Assembly.',{'Democratic Norms':0.7,'Judicial Independence':0.3,'Leadership Interest':0.3},3),
+('BI41','Japan Customs and Border Cooperation Act','Merges customs checks and shares border data with Japan to speed trade and travel.',{'Japan Alignment':1,'Unification with Japan Desire':0.5,'Globalism':0.5},3),
+('BI42','Chishima Resource Development Agreement Act','Approves a joint mining and fishing venture with a partner in non-China Asia on the Chishima islands.',{'Non-China Asia Alignment':1,'Industrialism':0.5,'Globalism':0.5},3),
+('BI43','Yezo–China Trade Normalization Act','Lifts remaining tariffs and licensing hurdles on trade with China.',{'China Alignment':1,'Economic Liberalization':0.6,'Globalism':0.6,'USA Alignment':-0.3},5),
+('BI44','Farm Succession Support Act','Pays grants and cuts inheritance costs for young people who take over family farms.',{'Agrarianism':1,'Rural Focus':0.6,'Federal Spending':0.5,'Post-Industrialism':-0.2},3),
+('BI45','University Autonomy and Research Funding Act','Gives universities control of their budgets and doubles public research grants.',{'Post-Industrialism':0.8,'Technocratic':0.5,'Federal Spending':0.6,'Liberal Rights':0.3},3),
+('BI46','Workplace Equality Act','Bans workplace discrimination on gender, ethnicity and disability, with penalties for repeat offenders.',{'Minority Rights':1,'Gender Equality':0.8,'Ethnic Pluralism':0.5,'Regulation':0.5},5),
+('BI47','Parental Leave and Childcare Act','Gives both parents paid leave and expands subsidized childcare.',{'Gender Equality':0.7,'Federal Spending':0.7,'Regulation':0.4,'Traditional Values':-0.3},5),
+('BI48','Public Safety Surveillance Act','Allows facial-recognition cameras in transport hubs and city centres, with police access to footage.',{'Civil Liberties':-1,'Militarism':0.2,'Technocratic':0.4,'Traditional Values':0.2},5),
+('BI49','Local Government Mergers Act','Merges small municipalities to cut administrative costs and share services.',{'Localism':-1,'Technocratic':0.7,'Federal Spending':-0.3},3),
+('BI50','Party Leadership Selection Act','Requires parties to choose their leaders by open ballot of members.',{'Democratic Norms':0.6,'Leadership Interest':-0.8},1),
+]

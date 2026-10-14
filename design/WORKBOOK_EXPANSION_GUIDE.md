@@ -471,3 +471,6 @@ A 21-room, 6-bill draft was audited against the live workbook and code. What it 
 | Favored suit pasted as values, with formulas stopping at Affinity column V | §2.7 tab formulas |
 | The correct visitor answer was the longest choice 94% of the time | §7 |
 
+---
+
+**Editing tool.** To change the workbook programmatically use `tools/workbook/wbx.py` (raw-XML, never openpyxl save); see `tools/workbook/README.md`. The scripts that generated each earlier content batch are archived under `tools/workbook/archive/` as worked examples.
