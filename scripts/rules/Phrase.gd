@@ -84,12 +84,35 @@ func _template_for(key: String, values: Dictionary) -> String:
 func _fill(template: String, values: Dictionary, key: String) -> String:
 	var filled := template
 	for name: String in values.keys():
-		filled = filled.replace("{%s}" % name, str(values[name]))
+		filled = filled.replace("{%s}" % name, _shown(name, values[name]))
 
 	if filled.contains("{"):
 		_warn_once("%s:unfilled" % key,
 			"Phrase: '%s' still has a placeholder with no value: %s" % [key, filled])
 	return filled
+
+
+## Money-sized numbers read with thousands separators ("1,000,000 Yen"). Only
+## the placeholders that carry an amount are touched, and only whole numbers
+## of four digits or more, so a seat count or a year is never altered.
+const AMOUNT_NAMES := ["count", "cost", "price"]
+
+
+static func with_separators(amount: int) -> String:
+	var digits := str(absi(amount))
+	var out := ""
+	for i in digits.length():
+		if i > 0 and (digits.length() - i) % 3 == 0:
+			out += ","
+		out += digits[i]
+	return ("-" if amount < 0 else "") + out
+
+
+static func _shown(name: String, value: Variant) -> String:
+	if name in AMOUNT_NAMES and (value is int or (value is float and value == floorf(value))):
+		if absi(int(value)) >= 1000:
+			return with_separators(int(value))
+	return str(value)
 
 
 func _warn_once(id: String, message: String) -> void:

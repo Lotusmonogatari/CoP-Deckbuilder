@@ -112,7 +112,7 @@ func _check_tiers(profile: Overlay, candidate: Dictionary, current_tier: int) ->
 			if not text.contains(line):
 				_failures.append("tier %d is missing its bonus '%s'" % [int(entry["tier"]), line])
 		if entry["cost"] != null and int(entry["tier"]) > current_tier \
-				and not text.contains(str(int(entry["cost"]))):
+				and not text.contains(Phrase.with_separators(int(entry["cost"]))):
 			_failures.append("tier %d does not show its upgrade cost" % int(entry["tier"]))
 	if current_tier >= 0 and not _all_text(profile.find_child("Tier_%d" % current_tier, true, false)) \
 			.contains(Text.say("staff.tier_current", {"tier": current_tier})):
