@@ -60,7 +60,9 @@ func inventory_rows() -> Array[Control]:
 	else:
 		var grid := GridContainer.new()
 		grid.name = "Items"
-		grid.columns = 3
+		# Two across at Large text: a long word (COMMISSION) does not fit a
+		# three-across tile there, and tiles need to be taller for wrapped names.
+		grid.columns = 2 if Layout.text_size_setting == TextScale.LARGE else 3
 		grid.add_theme_constant_override("h_separation", 16)
 		grid.add_theme_constant_override("v_separation", 16)
 		for item_id: String in held:
@@ -216,9 +218,12 @@ func _item_button(item_id: String) -> Button:
 	button.name = "Item_" + item_id
 	button.icon = ArtLoader.item_icon(icon_name(item))
 	button.expand_icon = true
+	# Without a cap the icon grows to the tile's whole width and squeezes the
+	# name out of the tile at Large text.
+	button.add_theme_constant_override("icon_max_width", 200)
 	button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-	button.custom_minimum_size = Vector2(300, 300)
+	button.custom_minimum_size = Vector2(300, 440 if Layout.text_size_setting == TextScale.LARGE else 300)
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.text = Text.say("inventory.entry", {
