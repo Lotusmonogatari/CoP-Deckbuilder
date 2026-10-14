@@ -31,8 +31,8 @@
     "transition_dialogue_id": "TD05",
     "character_id": "SF08",
     "stage_id": null,
-    "character_line_en": "Reporters are gathering outside. Keep your answers short and clear.",
-    "player_reply_en": "Short and clear. Understood."
+    "character_line_en": "Your next hour is clear. Nothing else needs you.",
+    "player_reply_en": "Good. One thing at a time."
   },
   {
     "transition_dialogue_id": "TD06",
@@ -52,8 +52,8 @@
     "transition_dialogue_id": "TD08",
     "character_id": "SF09",
     "stage_id": null,
-    "character_line_en": "The cameras are ready, but you do not need them.",
-    "player_reply_en": "Then I will ignore them."
+    "character_line_en": "Nothing else is waiting on you. Only the room ahead.",
+    "player_reply_en": "Then I can give it everything."
   },
   {
     "transition_dialogue_id": "TD09",
@@ -1685,5 +1685,75 @@
     "stage_id": "ST100",
     "character_line_en": "Know where your party stands on open ballots.",
     "player_reply_en": "I will check."
+  },
+  {
+    "transition_dialogue_id": "TD242",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Steady now. One room at a time.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD243",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I know why I am here.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD244",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Breathe. Speak plainly. Listen well.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD245",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Every voice in there deserves an answer.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD246",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I stay honest, the rest will follow.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD247",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Whatever they ask, I have prepared.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD248",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "This is the work I chose.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD249",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Keep it simple. Keep it true.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD250",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Nerves are only energy. Use them.",
+    "player_reply_en": null
+  },
+  {
+    "transition_dialogue_id": "TD251",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "People are counting on this room.",
+    "player_reply_en": null
   }
 ]

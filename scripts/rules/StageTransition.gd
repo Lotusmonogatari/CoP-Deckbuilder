@@ -88,11 +88,26 @@ static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
 
 	var stage_id := str(stage.get("stage_id", ""))
 	var speakers := pick_speakers(cast_rows, dialogue_rows, stage_id, speaker_count(stage), rng, hired_staff_ids)
+	var thought := ""
 	if speakers.is_empty():
-		return {}
+		# Nobody is available to speak (no staff hired, no opponent cast):
+		# the player alone has a private thought, if one is written.
+		thought = player_thought(dialogue_rows, stage_id, rng)
+		if thought.is_empty():
+			return {}
 
 	var background := PoolPicker.pick(background_rows, "stage_id", stage_id, rng)
 	return {
+		"thought": thought,
 		"speakers": speakers,
 		"background_id": str(background.get("background_id", "")),
 	}
+
+
+## One internal-thought line for the player (Character ID "PLAYER" rows in
+## Transition Dialogue), scoped by Stage ID like any other row. "" if none.
+static func player_thought(dialogue_rows: Array, stage_id: String, rng: RandomNumberGenerator) -> String:
+	var mine := dialogue_rows.filter(func(row: Dictionary) -> bool:
+		return str(row.get("character_id", "")) == "PLAYER")
+	var row := PoolPicker.pick(mine, "stage_id", stage_id, rng)
+	return str(row.get("character_line_en", ""))
