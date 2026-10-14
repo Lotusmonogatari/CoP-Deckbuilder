@@ -2030,3 +2030,41 @@ func test_a_refilling_press_conference_is_not_over_while_the_discard_can_refill_
 	engine.play_card("GAIN3")
 
 	assert_false(engine.state.is_over(), "the discard pile will refill the hand next turn")
+
+
+func test_a_bout_won_at_the_end_of_a_turn_starts_the_next_on_turn_one() -> void:
+	# Review 2026-10-14: end_turn() added 1 to the turn after the committee
+	# reset had already set it to 1, so the next opponent began on turn 2
+	# (and a pass docked their energy).
+	var engine := _start({
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S1", "sequence_mode": "reset", "win_threshold": 45,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "A", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "B", "intent_pattern": [["block", 1]]},
+		],
+	})
+	engine.state.bar.player = 45
+	engine.end_turn()
+	assert_eq(engine.state.opponent_index, 1, "the next one stepped up")
+	assert_eq(engine.state.turn, 1, "a fresh bout starts on turn 1")
+	assert_eq(engine.state.energy, engine.state.energy_per_turn)
+
+
+func test_later_committee_members_keep_the_configs_default_intent_pattern() -> void:
+	var engine := _start({
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S1", "sequence_mode": "reset", "win_threshold": 45,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "A"},
+			{"opp_id": "B", "name": "B"},
+		],
+		"intent_pattern": [["block", 4]],
+	})
+	engine.state.bar.player = 45
+	engine._check_outcome()
+	var intent := engine.current_intent()
+	assert_eq(str(intent.get("kind", intent.get("verb", ""))), "block")
+	assert_eq(int(intent.get("value", intent.get("amount", 0))), 4)

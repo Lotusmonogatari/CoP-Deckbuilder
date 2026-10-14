@@ -19,6 +19,7 @@ extends RefCounted
 ## How the level as a whole ended.
 const ONGOING := "ongoing"
 const WON := "win"
+const RETRY := "retry"
 const LOST := "loss"
 
 var level: Dictionary = {}
@@ -169,6 +170,11 @@ func finish_stage(stage_outcome: String, score: int = 0, boosters: Array = []) -
 
 	if stage_outcome == LOST and loss_ends_level(stage):
 		_outcome = LOST
+		return
+
+	# A stage the clock ended without a decision (rules.json's tie_retry) is
+	# played again from the start, not counted as cleared.
+	if stage_outcome == RETRY:
 		return
 
 	index += 1

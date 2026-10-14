@@ -345,6 +345,14 @@ func load_save(saved: Dictionary) -> void:
 		var value: Variant = saved[field]
 		if current is Array and value is Array:
 			(current as Array).assign(value)   # keeps Array[String] typed
+		elif current is Dictionary and value is Dictionary and field in _KEYED_BY_CURRENT_DATA:
+			# A save from an older build lacks the newest entries (a new meta
+			# variable, a new organisation), and one from a renamed workbook
+			# has entries that no longer exist: start from the fresh run's
+			# entries and take only the saved values for those.
+			for key: Variant in (value as Dictionary):
+				if (current as Dictionary).has(key):
+					(current as Dictionary)[key] = (value as Dictionary)[key]
 		elif typeof(current) == typeof(value):
 			set(field, value)
 
@@ -352,6 +360,71 @@ func load_save(saved: Dictionary) -> void:
 	level_runner = LevelRunner.restored(runner) if runner is Dictionary else null
 	if level_runner != null and level_runner.is_finished():
 		level_runner = null
+	drop_stale_ids()
+
+
+## Fields whose keys are fixed by the current workbook (see load_save()).
+const _KEYED_BY_CURRENT_DATA := ["meta", "booster_standing", "party_standing"]
+
+
+## Forgets anything a loaded run names that the current data no longer has:
+## a card, modifier, level, staff member, shop item or cosmetic package that
+## was renumbered or removed in a workbook update. Without this a stale ID
+## reached the screens as a blank name. Returns how many entries were dropped
+## (also reported once as a warning), so tests can check it.
+func drop_stale_ids() -> int:
+	var dropped := 0
+	dropped += _keep_known(owned_cards, DataDB.get_card)
+	dropped += _keep_known(deck, DataDB.get_card)
+	dropped += _keep_known(owned_modifiers, DataDB.get_modifier)
+	dropped += _keep_known(owned_cosmetic_packages, DataDB.get_cosmetic_package)
+	dropped += _keep_known(levels_unlocked, DataDB.get_level)
+	for item_id: String in inventory.keys():
+		if DataDB.get_shop_item(item_id).is_empty():
+			inventory.erase(item_id)
+			dropped += 1
+	for role: String in staff_hired.keys():
+		var hired: Variant = staff_hired[role]
+		if not (hired is Dictionary) or DataDB.get_staff(str((hired as Dictionary).get("staff_id", ""))).is_empty():
+			staff_hired.erase(role)
+			dropped += 1
+	for slot: String in active_cosmetics.keys():
+		if str(active_cosmetics[slot]) not in owned_cosmetic_packages:
+			active_cosmetics.erase(slot)
+			dropped += 1
+	for level_id: String in level_last_completed_at.keys():
+		if DataDB.get_level(level_id).is_empty():
+			level_last_completed_at.erase(level_id)
+	for level_id: String in levels_cleared.keys():
+		if DataDB.get_level(level_id).is_empty():
+			levels_cleared.erase(level_id)
+	if not card_draw.is_empty() and (DataDB.get_card(str(card_draw.get("card_id", ""))).is_empty() \
+			or DataDB.get_shop_item(str(card_draw.get("item_id", ""))).is_empty()):
+		card_draw = {}
+		dropped += 1
+	# A deck emptied by the above is rebuilt from what the player still owns.
+	if deck.is_empty() and not owned_cards.is_empty():
+		var size := int(DataDB.get_balance("starter_deck_size", 15))
+		for card_id: String in owned_cards:
+			if deck.size() >= size:
+				break
+			deck.append(card_id)
+	if dropped > 0:
+		push_warning("GameState: dropped %d saved entries the current data no longer has." % dropped)
+	return dropped
+
+
+## Removes from `ids` every entry `lookup` finds nothing for; returns how
+## many were removed.
+func _keep_known(ids: Array[String], lookup: Callable) -> int:
+	var kept: Array[String] = []
+	for id: String in ids:
+		if not (lookup.call(id) as Dictionary).is_empty():
+			kept.append(id)
+	var removed := ids.size() - kept.size()
+	if removed > 0:
+		ids.assign(kept)
+	return removed
 
 
 ## Back to the starting standing in sanban.json.

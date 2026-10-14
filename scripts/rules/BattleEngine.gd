@@ -72,6 +72,7 @@ var _sequence_mode := "single"
 ## never zeroes; block is the one field it does zero, unconditionally,
 ## for every new opponent — bug found 2026-09-30, Cameron: "the bonus
 ## applies only to the first stage used in").
+var _config_intent_pattern: Variant = null
 var _item_guard_bonus := 0
 
 ## The reporters' questions, in a press conference. Empty everywhere else.
@@ -233,6 +234,7 @@ func _setup_opponent(config: Dictionary) -> void:
 	state.opponent_count = _opponents.size()
 	_opponent = _opponents[0]
 
+	_config_intent_pattern = config.get("intent_pattern")
 	_arm_intents(config)
 
 
@@ -245,7 +247,9 @@ func _setup_opponent(config: Dictionary) -> void:
 func _arm_intents(config: Dictionary = {}) -> void:
 	var pattern: Variant = _opponent.get("intent_pattern")
 	if pattern == null:
-		pattern = config.get("intent_pattern")
+		# The config's own pattern is kept from setup() so a later committee
+		# member with none of their own gets it too, not the generic default.
+		pattern = config.get("intent_pattern", _config_intent_pattern)
 	if pattern == null:
 		pattern = _rules.get("default_intent_pattern")
 		if pattern != null:
@@ -545,7 +549,11 @@ func end_turn() -> Dictionary:
 			"remaining": state.opponent_count - state.opponent_index,
 		}
 
-	if not state.is_over():
+	# A committee bout won at the end of a turn has already been reset to
+	# turn 1 with a full energy and a fresh hand: counting on from there
+	# would start the next opponent on turn 2 (and a pass would dock them).
+	var fresh_bout := state.opponent_index != was_facing and _sequence_mode == "reset"
+	if not state.is_over() and not fresh_bout:
 		state.turn += 1
 		# A pool stage is never topped up: what is left is what is left, and
 		# running out means the turns you have left are empty ones.

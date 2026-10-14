@@ -2882,5 +2882,47 @@
     "english": "Large",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "stage.cannot_start_title",
+    "where": "Stage — cannot start",
+    "english": "This stage cannot start",
+    "placeholders": null,
+    "notes": "Shown over a stage screen that could not be built."
+  },
+  {
+    "key": "stage.cannot_start_leave",
+    "where": "Stage — cannot start",
+    "english": "Back to the Office",
+    "placeholders": null,
+    "notes": "The button that leaves such a stage."
+  },
+  {
+    "key": "save.problem_title",
+    "where": "Title — saved game",
+    "english": "Saved game",
+    "placeholders": null,
+    "notes": "Heading of the notice when Continue cannot load the save."
+  },
+  {
+    "key": "save.unreadable_body",
+    "where": "Title — saved game",
+    "english": "Your saved game could not be read. You can start a new game, or go back and leave the file as it is.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "save.newer_body",
+    "where": "Title — saved game",
+    "english": "This saved game was made by a newer version of the game. Update the game to continue it. A new game started now will not be saved.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "save.start_new",
+    "where": "Title — saved game",
+    "english": "Start a new game",
+    "placeholders": null,
+    "notes": null
   }
 ]

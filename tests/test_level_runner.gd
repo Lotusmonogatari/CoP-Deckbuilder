@@ -486,3 +486,10 @@ func test_inserting_after_a_carries_buffs_from_chain_leaves_it_alone() -> void:
 	var third := runner.stage_by_seq(4)   # "Third", shifted from 3 to 4
 	assert_eq(third["name_en"], "Third")
 	assert_eq(third["carries_buffs_from"], [1, 2], "unaffected — neither source moved")
+
+
+func test_a_retry_replays_the_stage_instead_of_clearing_it() -> void:
+	var runner := _runner()
+	runner.finish_stage(LevelRunner.RETRY)
+	assert_eq(runner.current_stage()["name_en"], "First", "still on the first stage")
+	assert_false(runner.is_finished())
