@@ -724,7 +724,7 @@ func reset_booster_standing() -> void:
 	booster_standing = {}
 	last_booster_change = {}
 
-	var start := int(DataDB.booster_standing.get("start", 50))
+	var start := int(DataDB.booster_standing.get("start", 30))
 	for booster: Dictionary in DataDB.boosters:
 		var own_start: Variant = booster.get("starting_standing")
 		booster_standing[str(booster.get("booster_id"))] = start if own_start == null else int(own_start)
