@@ -218,7 +218,8 @@ func _item_button(item_id: String) -> Button:
 	button.expand_icon = true
 	button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-	button.custom_minimum_size = Vector2(240, 280)
+	button.custom_minimum_size = Vector2(300, 300)
+	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.text = Text.say("inventory.entry", {
 		"name": item.get("name", item_id), "count": GameState.item_count(item_id)})
