@@ -13,7 +13,7 @@ in `data/art.json`.
 | Card art | 0 / 54 |
 | Backgrounds | 24 / 121 |
 | Organisation icons | 30 / 30 |
-| Audience icons (Boosters panel) | 0 / 5 |
+| Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 20 / 20 |
 | Cosmetic package icons | 2 / 2 |
 
@@ -470,11 +470,11 @@ in `data/art.json`.
 
 | File | For | Drawn |
 |---|---|---|
-| SG01.png | Press | ☐ |
-| SG02.png | Party Members | ☐ |
-| SG03.png | Constituents | ☐ |
-| SG04.png | Donors | ☐ |
-| SG05.png | Bureaucrats | ☐ |
+| SG01.png | Press | ✓ |
+| SG02.png | Party Members | ✓ |
+| SG03.png | Constituents | ✓ |
+| SG04.png | Donors | ✓ |
+| SG05.png | Bureaucrats | ✓ |
 
 ## Shop item icons — `assets/icons/`
 
