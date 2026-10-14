@@ -118,6 +118,12 @@ func _build() -> void:
 	_back.text = Text.say("ui.back")
 	_back.custom_minimum_size = Vector2(0, 110)
 	_back.pressed.connect(close)
+	# Parented straight away. A panel that is built and never opened (most of
+	# the Office's, most visits) used to leave these two buttons floating
+	# outside the tree, and nothing ever freed them: about 6 objects and
+	# 0.4 MB of text-layout memory per Office load (stress test, 2026-10-14).
+	# open() takes them out and puts them back at the bottom of the column.
+	_body.add_child(_back)
 
 	# Hidden unless a caller asks for it. It sits ABOVE Back so the action
 	# the player most likely wants is the one under their thumb.
@@ -126,6 +132,7 @@ func _build() -> void:
 	_confirm.custom_minimum_size = Vector2(0, 110)
 	_confirm.hide()
 	_confirm.pressed.connect(_on_confirmed)
+	_body.add_child(_confirm)
 
 
 ## Opens it with a heading and a list of nodes to show between the heading

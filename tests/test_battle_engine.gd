@@ -2068,3 +2068,17 @@ func test_later_committee_members_keep_the_configs_default_intent_pattern() -> v
 	var intent := engine.current_intent()
 	assert_eq(str(intent.get("kind", intent.get("verb", ""))), "block")
 	assert_eq(int(intent.get("value", intent.get("amount", 0))), 4)
+
+
+func test_a_battle_engine_is_freed_when_nothing_holds_it() -> void:
+	# Stress test 2026-10-14: the engine's random-roll lambdas reached the
+	# generator through `self`, so the engine and its intent runner / bar
+	# held each other and no battle was ever freed (about 40 KB each).
+	var engine := _start({
+		"stage": TestFixtures.stage({"stage_id": "PT_S1", "sequence_mode": "reset", "win_threshold": 45}),
+		"opponents": [{"opp_id": "A", "name": "A", "intent_pattern": [["block", 1]]}],
+	})
+	engine.end_turn()
+	var ref := weakref(engine)
+	engine = null
+	assert_null(ref.get_ref(), "the engine was released")

@@ -59,6 +59,16 @@ var _busy := false
 ## knows to stop.
 var _generation := 0
 
+## One timer drives the hold and the slide-out (below). It replaces two
+## `await`s: a node freed while one of those was pending left its suspended
+## coroutine behind, with everything the frame held (a Tween, the battle's
+## random generator and more, about 40 KB per battle screen; found by the
+## late-game stress test, 2026-10-14). A Timer child dies with the node.
+var _step_timer: Timer
+var _step_generation := 0
+var _step_from := 0.0
+var _step_sliding_out := false
+
 var _band: PanelContainer
 var _band_box: StyleBoxFlat
 var _tag: PanelContainer
@@ -75,6 +85,10 @@ func _ready() -> void:
 	z_index = 50
 	_build()
 	_band.hide()
+	_step_timer = Timer.new()
+	_step_timer.one_shot = true
+	add_child(_step_timer)
+	_step_timer.timeout.connect(_on_step_timeout)
 
 
 ## Says `line` as `speaker`, after anything already queued. `detail` is the
@@ -92,6 +106,8 @@ func clear() -> void:
 	_queue.clear()
 	_generation += 1
 	_busy = false
+	if _step_timer != null:
+		_step_timer.stop()
 	if _band != null:
 		_band.hide()
 
@@ -136,14 +152,21 @@ func _show_next() -> void:
 	_impact()
 
 	var text_length := str(entry["line"]).length() + str(entry["detail"]).length()
-	await _wait(clampf(HOLD_MIN + HOLD_PER_CHAR * text_length, HOLD_MIN, HOLD_MAX))
-	if mine != _generation:
-		return
+	_step_generation = mine
+	_step_from = from
+	_step_sliding_out = false
+	_step_timer.start(maxf(clampf(HOLD_MIN + HOLD_PER_CHAR * text_length, HOLD_MIN, HOLD_MAX) * speed, 0.001))
 
-	var out := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	out.tween_property(_band, "position:x", -from, SLIDE_OUT * speed)
-	await _wait(SLIDE_OUT)
-	if mine != _generation:
+
+## The hold is over (slide the band out), or the slide-out is (next line).
+func _on_step_timeout() -> void:
+	if _step_generation != _generation:
+		return
+	if not _step_sliding_out:
+		var out := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+		out.tween_property(_band, "position:x", -_step_from, SLIDE_OUT * speed)
+		_step_sliding_out = true
+		_step_timer.start(maxf(SLIDE_OUT * speed, 0.001))
 		return
 	_band.hide()
 	lines_shown += 1
@@ -200,10 +223,6 @@ func _impact() -> void:
 	var shake := create_tween()
 	for offset: float in [14.0, -10.0, 6.0, 0.0]:
 		shake.tween_property(self, "position:y", offset, 0.035 * speed)
-
-
-func _wait(seconds: float) -> void:
-	await get_tree().create_timer(maxf(seconds * speed, 0.0)).timeout
 
 
 func _on_band_input(event: InputEvent) -> void:
