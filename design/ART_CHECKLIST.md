@@ -9,9 +9,9 @@ in `data/art.json`.
 | Protagonists | 11 / 28 |
 | Opponents | 3 / 625 |
 | Staff | 0 / 105 |
-| Visitors | 0 / 195 |
+| Visitors | 0 / 295 |
 | Card art | 0 / 54 |
-| Backgrounds | 24 / 101 |
+| Backgrounds | 24 / 121 |
 | Organisation icons | 18 / 30 |
 | Shop item icons | 20 / 20 |
 | Cosmetic package icons | 2 / 2 |
@@ -224,6 +224,26 @@ in `data/art.json`.
 | VI37 | Yukiko Rowan-Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI38 | Tetsuo Aoki | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI39 | Ray Kaizawa-Mercer | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI40 | Sachi Morikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI41 | Tomoya Harada | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI42 | Nao Kuramoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI43 | Eri Shiratori | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI44 | Katsu Mizuhara | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI45 | Ryo Tachibana | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI46 | Mika Hoshino | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI47 | Daigo Nakaura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI48 | Hideo Funakoshi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI49 | Itsuki Sawamura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI50 | Yuna Kitahara | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI51 | Moto Shibata | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI52 | Kenji Aizawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI53 | Haruka Nomura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI54 | Satomi Ibuki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI55 | Aya Tsukishima | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI56 | Kota Hirayama | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI57 | Mitsuru Aoyagi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI58 | Fumiko Daidoji | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI59 | Jun Ogasawara | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Card art — `assets/cards/art/`
 
@@ -389,6 +409,26 @@ in `data/art.json`.
 | ST98.png | TV Debate on Party Leadership Ballots | ☐ |
 | ST99.png | Press Conference on Party Leadership Ballots | ☐ |
 | ST100.png | Party Caucus on Party Leadership Ballots | ☐ |
+| ST101.png | Office Hours: Wilderness Protection | ☐ |
+| ST102.png | Office Hours: Rural Hospitals | ☐ |
+| ST103.png | Office Hours: Digital Identity Cards | ☐ |
+| ST104.png | Office Hours: Broadcaster Independence | ☐ |
+| ST105.png | Office Hours: Donation Transparency | ☐ |
+| ST106.png | Office Hours: Corporate Tax Cuts | ☐ |
+| ST107.png | Office Hours: the Carbon Levy | ☐ |
+| ST108.png | Office Hours: Fishing Quota Reform | ☐ |
+| ST109.png | Office Hours: Shipbuilding Support | ☐ |
+| ST110.png | Office Hours: the Constitutional Review | ☐ |
+| ST111.png | Office Hours: Border Cooperation | ☐ |
+| ST112.png | Office Hours: Chishima Development | ☐ |
+| ST113.png | Office Hours: China Trade | ☐ |
+| ST114.png | Office Hours: Farm Succession | ☐ |
+| ST115.png | Office Hours: University Research Funding | ☐ |
+| ST116.png | Office Hours: Workplace Equality | ☐ |
+| ST117.png | Office Hours: Parental Leave | ☐ |
+| ST118.png | Office Hours: Surveillance Cameras | ☐ |
+| ST119.png | Office Hours: Town Mergers | ☐ |
+| ST120.png | Office Hours: Party Leadership Ballots | ☐ |
 
 ## Organisation icons — `assets/icons/`
 
