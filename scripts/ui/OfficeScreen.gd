@@ -1454,7 +1454,21 @@ func _modifier_row(modifier: Dictionary, names: Dictionary, stage_names: Diction
 		DataDB.booster_standing, DataDB.boosters, Text.phrase())
 	box.add_child(UiKit.action_button(Text.say("office.take_backing"), refusal,
 		_on_buy_modifier.bind(mod_id)))
-	return _with_booster_icon(booster, box) if not booster.is_empty() else box
+	if not booster.is_empty():
+		return _with_booster_icon(booster, box)
+	# A backing tied to an audience group rather than an organisation (Local
+	# Support, Shotengai, the press ones, Party Backing) shows that group's
+	# own icon (assets/icons/SG01.png ...), a labelled placeholder until drawn.
+	var audience := _audience_of(modifier)
+	return _with_booster_icon(audience, box) if not audience.is_empty() else box
+
+
+## The first audience group (SGxx) a modifier is triggered by, or "".
+func _audience_of(modifier: Dictionary) -> String:
+	var ids: Variant = modifier.get("trigger_segment_ids")
+	if ids is Array and not (ids as Array).is_empty():
+		return str((ids as Array)[0])
+	return ""
 
 
 ## "10 Funds" or, where a modifier charges more than one currency,

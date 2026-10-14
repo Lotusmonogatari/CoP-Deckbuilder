@@ -22,10 +22,17 @@ FAR = 60             # colour distance counted as "far"
 
 
 def wanted_ids():
-    """Organisations with no icon yet, from the data."""
+    """Organisations and audience groups with no icon yet, from the data."""
     data = json.loads((ROOT / "data" / "boosters.json").read_text())
     rows = data if isinstance(data, list) else list(data.values())
-    return [r["booster_id"] for r in rows if not (ICONS / f"{r['booster_id']}.png").exists()]
+    ids = [r["booster_id"] for r in rows if not (ICONS / f"{r['booster_id']}.png").exists()]
+    # Audience groups (SG01...) show on the Boosters panel with their own icons.
+    seg_path = ROOT / "data" / "segments.json"
+    if seg_path.exists():
+        segs = json.loads(seg_path.read_text())
+        segs = segs if isinstance(segs, list) else list(segs.values())
+        ids += [r["segment_id"] for r in segs if not (ICONS / f"{r['segment_id']}.png").exists()]
+    return ids
 
 
 def dist(a, b):

@@ -206,7 +206,9 @@
     "name_jp": "仏教寺院連合",
     "romaji": "Bukkyō Jiin Rengō",
     "tier": "National",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M33"
+    ],
     "starting_standing": null
   },
   {
@@ -215,7 +217,9 @@
     "name_jp": "神社会",
     "romaji": "Jinja-kai",
     "tier": "National",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M34"
+    ],
     "starting_standing": null
   },
   {
@@ -224,7 +228,9 @@
     "name_jp": "福祉協議会",
     "romaji": "Fukushi Kyōgikai",
     "tier": "National",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M35"
+    ],
     "starting_standing": null
   },
   {
@@ -233,7 +239,9 @@
     "name_jp": "退役軍人会",
     "romaji": "Taieki Gunjin-kai",
     "tier": "National",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M36"
+    ],
     "starting_standing": null
   },
   {
@@ -242,7 +250,9 @@
     "name_jp": "納税者連盟",
     "romaji": "Nōzeisha Renmei",
     "tier": "National",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M37"
+    ],
     "starting_standing": null
   },
   {
@@ -251,7 +261,9 @@
     "name_jp": "金融業協会",
     "romaji": "Kin'yūgyō Kyōkai",
     "tier": "National",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M38"
+    ],
     "starting_standing": null
   },
   {
@@ -260,7 +272,9 @@
     "name_jp": "中小企業主会",
     "romaji": "Chūshō Kigyōnushi-kai",
     "tier": "Constituency",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M39"
+    ],
     "starting_standing": null
   },
   {
@@ -269,7 +283,9 @@
     "name_jp": "消費者ネットワーク",
     "romaji": "Shōhisha Nettowāku",
     "tier": "Constituency",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M40"
+    ],
     "starting_standing": null
   },
   {
@@ -278,7 +294,9 @@
     "name_jp": "都市部町内連合",
     "romaji": "Toshibu Chōnai Rengō",
     "tier": "Constituency",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M41"
+    ],
     "starting_standing": null
   },
   {
@@ -287,7 +305,9 @@
     "name_jp": "アイヌ協議会",
     "romaji": "Ainu Kyōgikai",
     "tier": "Constituency",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M42"
+    ],
     "starting_standing": null
   },
   {
@@ -296,7 +316,9 @@
     "name_jp": "アイヌ語文化財団",
     "romaji": "Ainugo Bunka Zaidan",
     "tier": "National",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M43"
+    ],
     "starting_standing": null
   },
   {
@@ -305,7 +327,9 @@
     "name_jp": "地域振興会議",
     "romaji": "Chiiki Shinkō Kaigi",
     "tier": "Constituency",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M44"
+    ],
     "starting_standing": null
   }
 ]

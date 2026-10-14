@@ -1,0 +1,63 @@
+# Prompt for the five audience icons (SG01 to SG05)
+
+These show beside the audience-triggered backings in the Boosters panel (Local Support, Shotengai, the two press ones and Party Backing). Attach `design/reference/org_icon_style_sheet.png` and three or four finished icons from `assets/icons/` (for example `BO05.png`, `BO08.png`, `BO16.png`). Hand the returned folder to the programmer; `python3 tools/merge_icons.py <folder>` checks and merges it. Until they exist the panel shows a labelled coloured square.
+
+---
+
+```
+You are drawing flat vector icons for a mobile card game called Coliseum of Parliament
+(a parliamentary card battler set in a fictional nation, Yezo). I attached a style sheet
+of the finished icons and a few single examples. Your icons must look like they were drawn
+by the same hand: same shapes, same palette, same shading.
+
+1. STYLE (match the attached examples exactly)
+- Flat vector look. Solid colour shapes only: no gradients, no textures, no black outlines,
+  no photographic detail. Clean edges, slightly rounded corners.
+- Two-tone shading: each shape has a base colour plus ONE darker shade along its lower or
+  right edge (a thick bevel). One lavender highlight on a few edges. At most three tones
+  per object.
+- Cream (#FFF4DC) trim: plinths, rims, frames and paper are cream.
+- Exactly ONE small white four-point sparkle star near the upper left of the main object.
+- ONE dominant colour per icon, plus cream and one accent.
+- No text, no letters, no numbers, no background, no circle or frame, no drop shadow.
+- One clear subject (or one tight group) that reads at 64 px, centred, filling about 85%
+  of the canvas. A small secondary detail (a cloud, a tree, a tiny figure) is fine.
+
+2. PALETTE (use only these)
+Cream #FFF4DC | Teal #36A99C, shade #1B5F73 | Orange-red #E8643F, shade #8E2F4A |
+Gold #F2B544, shade #B8691F | Lavender highlight #A9B6E6 | Sky blue #5B9BE0 (glass, water) |
+Leaf green #7DB650, shade #2F6B45 (plants only) | White #FFFFFF (sparkle, tiny marks).
+
+3. ICONS NEEDED (replace this list; give each its dominant colour so neighbours differ)
+| File name | Subject | What it stands for | Dominant colour |
+|---|---|---|---|
+| SG01.png | a reporter's notebook with a pen and a small press-pass tag on a lanyard | Press: reporters, editors, camera crews | gold |
+| SG02.png | a round party rosette badge with two ribbon tails | Party Members: members and whips | orange-red |
+| SG03.png | three simple citizen figures (heads and shoulders) standing together | Constituents: voters of the district and the public | teal |
+| SG04.png | a sealed envelope with a gold wax seal and one coin beside it | Donors: backers, business associations, Kōenkai members | orange-red |
+| SG05.png | a stack of documents with an official stamp pressed on the top page (no readable text) | Bureaucrats: ministry officials and committee staff | teal |
+
+4. FILE REQUIREMENTS (checked by a script; a file that fails is rejected)
+- PNG, exactly 256 x 256 pixels, RGBA, transparent background (all four corners fully
+  transparent). Straight alpha, smooth antialiased edges, no halo of a background colour.
+- Artwork inside a 16 px margin on every side (nothing touches the edge).
+- File names exactly as in the table, nothing else in the folder except NOTES.txt.
+- If you can only produce SVG or large images: draw on a 256 x 256 viewBox and rasterise
+  at exactly 256 x 256; or remove any background, crop to the artwork, fit inside
+  224 x 224 and centre on a 256 x 256 transparent canvas. Never stretch.
+
+5. SENSITIVE SUBJECTS
+Where an icon represents a real community or faith (none of these five are, but keep the rule), use only
+simple, respectful decoration drawn from real motifs (spirals, scrolls, patterns). No
+caricature, no costume cliches, no faces, no text.
+
+6. BEFORE YOU FINISH, CHECK
+- [ ] Looked at the style sheet and the single examples.
+- [ ] Each icon is one readable subject at 64 px thumbnail size.
+- [ ] Only palette colours; one dominant colour; one sparkle; no text or background.
+- [ ] Corners transparent; 16 px margin; 256 x 256 RGBA.
+- [ ] Added NOTES.txt: one line per icon naming what you drew, and anything you could not
+      draw as planned.
+
+Return the folder of PNGs plus NOTES.txt.
+```

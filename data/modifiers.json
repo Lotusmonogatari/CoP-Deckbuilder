@@ -607,5 +607,257 @@
     "trigger_booster_ids": [
       "BO16"
     ]
+  },
+  {
+    "mod_id": "M33",
+    "name_en": "Temple Community Support",
+    "name_jp": "寺院コミュニティの支援",
+    "romaji": "Jiin Komyuniti no Shien",
+    "trigger_segment_or_booster": [
+      "BO19"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+1 card drawn at the start of ST05 Town Hall.",
+    "reputation_cost": 0,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "HAND_SIZE_BONUS",
+    "effect_target": "ST05",
+    "effect_value": 1.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO19"
+    ]
+  },
+  {
+    "mod_id": "M34",
+    "name_en": "Shrine Festival Backing",
+    "name_jp": "神社祭礼委員会の支援",
+    "romaji": "Jinja Sairei Iinkai no Shien",
+    "trigger_segment_or_booster": [
+      "BO20"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+2 Jiban after successful completion of a level.",
+    "reputation_cost": 5,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "Jiban",
+    "effect_value": 2.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO20"
+    ]
+  },
+  {
+    "mod_id": "M35",
+    "name_en": "Care Council Testimony",
+    "name_jp": "福祉協議会の証言",
+    "romaji": "Fukushi Kyōgikai no Shōgen",
+    "trigger_segment_or_booster": [
+      "BO21"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "ST21 Policy Study Session starts with +10 Support.",
+    "reputation_cost": 5,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "STAGE_START_BONUS",
+    "effect_target": "ST21",
+    "effect_value": 10.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO21"
+    ]
+  },
+  {
+    "mod_id": "M36",
+    "name_en": "Veterans' Endorsement",
+    "name_jp": "退役軍人会の推薦",
+    "romaji": "Taiekigunjinkai no Suisen",
+    "trigger_segment_or_booster": [
+      "BO22"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "ST11 Committee on War starts with +10 Favourability.",
+    "reputation_cost": 10,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "STAGE_START_BONUS",
+    "effect_target": "ST11",
+    "effect_value": 10.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO22"
+    ]
+  },
+  {
+    "mod_id": "M37",
+    "name_en": "Taxpayers' Scrutiny Backing",
+    "name_jp": "納税者連盟の支持",
+    "romaji": "Nōzeisha Renmei no Shiji",
+    "trigger_segment_or_booster": [
+      "BO23"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "ST09 Committee on Ethics and Prosecution starts with +10 Favourability.",
+    "reputation_cost": 5,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "STAGE_START_BONUS",
+    "effect_target": "ST09",
+    "effect_value": 10.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO23"
+    ]
+  },
+  {
+    "mod_id": "M38",
+    "name_en": "Financial Industry Backing",
+    "name_jp": "金融業協会の支援",
+    "romaji": "Kin'yūgyō Kyōkai no Shien",
+    "trigger_segment_or_booster": [
+      "BO24"
+    ],
+    "trigger_min_pct": 30.0,
+    "effect": "+3,000 Funds (Yen) after successful completion of a level.",
+    "reputation_cost": 10,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "Yen",
+    "effect_value": 3000.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO24"
+    ]
+  },
+  {
+    "mod_id": "M39",
+    "name_en": "Small Business Backing",
+    "name_jp": "中小企業主会の支援",
+    "romaji": "Chūshō Kigyōnushikai no Shien",
+    "trigger_segment_or_booster": [
+      "BO25"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+1 card drawn at the start of ST20 Lobbyist Meeting.",
+    "reputation_cost": 0,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "HAND_SIZE_BONUS",
+    "effect_target": "ST20",
+    "effect_value": 1.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO25"
+    ]
+  },
+  {
+    "mod_id": "M40",
+    "name_en": "Consumer Watchdog Backing",
+    "name_jp": "消費者ネットワークの支援",
+    "romaji": "Shōhisha Nettowāku no Shien",
+    "trigger_segment_or_booster": [
+      "BO26"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "ST05 Town Hall gaffe (失言) limit +1.",
+    "reputation_cost": 10,
+    "jiban_cost": 0,
+    "funds_cost": 10000,
+    "effect_type": "GAFFE_LIMIT_BONUS",
+    "effect_target": "ST05",
+    "effect_value": 1.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO26"
+    ]
+  },
+  {
+    "mod_id": "M41",
+    "name_en": "Urban Alliance Backing",
+    "name_jp": "都市部町内連合の支援",
+    "romaji": "Toshibu Chōnai Rengō no Shien",
+    "trigger_segment_or_booster": [
+      "BO27"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "ST17 Committee on Government Administration starts with +10 Favourability.",
+    "reputation_cost": 5,
+    "jiban_cost": 10,
+    "funds_cost": 0,
+    "effect_type": "STAGE_START_BONUS",
+    "effect_target": "ST17",
+    "effect_value": 10.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO27"
+    ]
+  },
+  {
+    "mod_id": "M42",
+    "name_en": "Ainu Council Backing",
+    "name_jp": "アイヌ協議会の支援",
+    "romaji": "Ainu Kyōgikai no Shien",
+    "trigger_segment_or_booster": [
+      "BO28"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "ST12 Committee on the National Assembly starts with +10 Favourability.",
+    "reputation_cost": 10,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "STAGE_START_BONUS",
+    "effect_target": "ST12",
+    "effect_value": 10.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO28"
+    ]
+  },
+  {
+    "mod_id": "M43",
+    "name_en": "Language Foundation Backing",
+    "name_jp": "アイヌ語文化財団の支援",
+    "romaji": "Ainugo Bunka Zaidan no Shien",
+    "trigger_segment_or_booster": [
+      "BO29"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+10 XP after successful completion of a level.",
+    "reputation_cost": 5,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "XP",
+    "effect_value": 10.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO29"
+    ]
+  },
+  {
+    "mod_id": "M44",
+    "name_en": "Rural Revitalization Backing",
+    "name_jp": "地域振興会議の支援",
+    "romaji": "Chiiki Shinkō Kaigi no Shien",
+    "trigger_segment_or_booster": [
+      "BO30"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+1 card drawn at the start of ST13 Committee on Agriculture.",
+    "reputation_cost": 0,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "HAND_SIZE_BONUS",
+    "effect_target": "ST13",
+    "effect_value": 1.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO30"
+    ]
   }
 ]
