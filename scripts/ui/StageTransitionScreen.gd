@@ -73,6 +73,11 @@ func _ready() -> void:
 	_banner.name = "CueBanner"
 	add_child(_banner)
 
+	# No one to speak: the player's own passing thought, blue side, no speaker.
+	if _speakers.is_empty():
+		_banner.say(CueBanner.PLAYER, str(DataDB.player.get("name_en", "")), str(result.get("thought", "")))
+		return
+
 	# One layout pass first, so SpeakerPortrait's own anchor-computed rest
 	# position is known before anything tries to slide relative to it.
 	await get_tree().process_frame

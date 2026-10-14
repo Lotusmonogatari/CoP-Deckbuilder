@@ -995,7 +995,7 @@
     "reputation_affects_start": "No",
     "reveal_in_briefing": "No",
     "loss_ends_level": "No",
-    "show_transition": "Yes",
+    "show_transition": "No",
     "transition_speaker_count": null,
     "own_party_only": null,
     "segment_mix": {
@@ -1569,7 +1569,7 @@
     "reputation_affects_start": "No",
     "reveal_in_briefing": "No",
     "loss_ends_level": "No",
-    "show_transition": "Yes",
+    "show_transition": "No",
     "transition_speaker_count": null,
     "own_party_only": null,
     "segment_mix": {

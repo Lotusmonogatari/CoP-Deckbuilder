@@ -142,3 +142,63 @@ func test_unhired_staff_never_speak_but_hired_staff_and_opponents_can() -> void:
 	# No staff hired: only the opponent can speak.
 	var none := StageTransition.pick_speakers(cast, dialogue, "ST19", 3, _rng(1), [])
 	assert_eq(none.size(), 1)
+
+
+func test_with_nobody_to_speak_the_player_has_a_thought() -> void:
+	var cast := [{"stage_id": null, "character_id": "SF01"}]
+	var dialogue := [
+		{"stage_id": null, "character_id": "SF01", "character_line_en": "Hi.", "player_reply_en": "Hello."},
+		{"stage_id": null, "character_id": "PLAYER", "character_line_en": "Steady now.", "player_reply_en": null},
+	]
+	var stage := {"stage_id": "ST20", "show_transition": "Yes"}
+	var result := StageTransition.resolve(stage, cast, [], dialogue, _rng(1), [])
+	assert_eq(result["speakers"].size(), 0)
+	assert_eq(result["thought"], "Steady now.")
+	# With the staff hired, they speak instead and there is no thought.
+	var hired := StageTransition.resolve(stage, cast, [], dialogue, _rng(1), ["SF01"])
+	assert_eq(hired["speakers"].size(), 1)
+	assert_eq(hired["thought"], "")
+
+
+func test_no_thought_rows_means_no_transition() -> void:
+	var stage := {"stage_id": "ST20", "show_transition": "Yes"}
+	assert_true(StageTransition.resolve(stage, [], [], [], _rng(1), []).is_empty())
+
+
+func test_no_media_ambush_stage_shows_a_transition() -> void:
+	for stage: Dictionary in DataDB.stages:
+		if "Media Ambush" in str(stage.get("name_en", "")):
+			assert_false(StageTransition.should_show(stage), str(stage.get("stage_id")))
+
+
+## Audit: a line anyone can pull (blank Stage ID) must not talk about a
+## press, camera or studio room, and a topic line must only be scoped to
+## a room of the matching kind.
+func test_generic_transition_lines_fit_every_room() -> void:
+	var banned := ["camera", "reporter", "journalist", "press", "studio", "headline", "broadcast"]
+	for row: Dictionary in DataDB.transition_dialogue:
+		var raw: Variant = row.get("stage_id")
+		if raw != null and str(raw).strip_edges() != "":
+			continue
+		var text := (str(row.get("character_line_en", "")) + " " + str(row.get("player_reply_en", ""))).to_lower()
+		for word: String in banned:
+			var hit := RegEx.create_from_string("\\b" + word + "(s|es)?\\b").search(text) != null
+			assert_false(hit, "%s mentions '%s' but fits every room" % [row.get("transition_dialogue_id"), word])
+
+
+func test_press_and_camera_lines_only_in_press_style_rooms() -> void:
+	var ok_kinds := ["Press", "TV Debate", "Media Ambush"]
+	for row: Dictionary in DataDB.transition_dialogue:
+		var text := (str(row.get("character_line_en", "")) + " " + str(row.get("player_reply_en", ""))).to_lower()
+		var raw: Variant = row.get("stage_id")
+		if raw == null or str(raw) == "":
+			continue
+		var is_press_line := "reporter" in text or "studio" in text or "viewers" in text
+		if not is_press_line:
+			continue
+		var name := str(DataDB.get_stage(str(raw)).get("name_en", ""))
+		var fits := false
+		for kind: String in ok_kinds:
+			if name.begins_with(kind):
+				fits = true
+		assert_true(fits, "%s (%s) is a press/studio line in %s" % [row.get("transition_dialogue_id"), text, name])

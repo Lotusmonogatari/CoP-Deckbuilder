@@ -2112,10 +2112,12 @@ def validate(data, report):
             report.error("Transition Dialogue", f"{tdid} names opponent '{character_id}', which is not in the Opponents tab")
         elif kind == "staff" and character_id not in staff_ids:
             report.error("Transition Dialogue", f"{tdid} names staff '{character_id}', which is not in the Staff tab")
-        elif kind is None:
+        elif kind is None and character_id != "PLAYER":
+            # PLAYER = the protagonist's own internal thought, shown when no
+            # staff or opponent is available to speak (2026-10-14).
             report.error(
                 "Transition Dialogue",
-                f"{tdid} has Character ID '{character_id}' — expected an OPxx opponent or an SFxx staff ID",
+                f"{tdid} has Character ID '{character_id}' — expected an OPxx opponent, an SFxx staff ID or PLAYER",
             )
 
     # --- vote_influence_triggers -------------------------------------------
