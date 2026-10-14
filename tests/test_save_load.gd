@@ -13,6 +13,7 @@ func before_each() -> void:
 
 
 func after_each() -> void:
+	DataDB._cosmetic_packages_by_id.erase("CPTEST1")
 	SaveManager.delete_save(PATH)
 	GameState.load_save(_saved_run)
 	GameState.awaiting_new_game = false
@@ -41,8 +42,10 @@ func _a_run_in_progress() -> void:
 	GameState.gaffe_penalty_applied = true
 	GameState.levels_cleared = {"LV01": 2}
 	GameState.bills_flipped_by_influence.assign(["BI01"])
-	# An arbitrary package ID — this is a pure serialization round-trip, not
-	# a check against real DataDB content, so it need not exist as real data.
+	# A synthetic package: loading now forgets IDs the data does not have
+	# (2026-10-14), so the round-trip needs one DataDB knows. Removed again
+	# in after_each().
+	DataDB._cosmetic_packages_by_id["CPTEST1"] = {"package_id": "CPTEST1"}
 	GameState.owned_cosmetic_packages.assign(["CPTEST1"])
 	GameState.active_cosmetics = {CosmeticPieces.OUTFIT: "CPTEST1"}
 
@@ -144,3 +147,51 @@ func test_autosave_waits_while_a_stage_is_being_fought() -> void:
 	SaveManager.autosave()
 	assert_eq(SaveManager.has_save(), real_exists, "no save written mid-stage")
 	SaveManager.enabled = was
+
+
+# --- 2026-10-14 review: bad and out-of-date saves ---
+
+func test_a_save_naming_things_that_no_longer_exist_loses_only_those() -> void:
+	GameState.start_new_run(str(DataDB.player.get("player_id", "")))
+	var saved := GameState.to_save()
+	saved["owned_cards"] = saved["owned_cards"] + ["C_GONE"]
+	saved["deck"] = saved["deck"] + ["C_GONE"]
+	saved["inventory"] = {"SH_GONE": 2}
+	saved["levels_unlocked"] = ["LV_GONE"]
+	GameState.load_save(saved)
+	assert_false("C_GONE" in GameState.owned_cards)
+	assert_false("C_GONE" in GameState.deck)
+	assert_false(GameState.inventory.has("SH_GONE"))
+	assert_false("LV_GONE" in GameState.levels_unlocked)
+	assert_false(GameState.deck.is_empty(), "the real cards are kept")
+
+
+func test_a_save_missing_a_newer_meta_variable_keeps_the_fresh_value() -> void:
+	GameState.start_new_run(str(DataDB.player.get("player_id", "")))
+	var saved := GameState.to_save()
+	var meta: Dictionary = saved["meta"].duplicate()
+	meta.erase("Party support")
+	saved["meta"] = meta
+	GameState.load_save(saved)
+	assert_true(GameState.meta.has("Party support"))
+
+
+func test_an_unreadable_save_is_reported_and_its_backup_is_used() -> void:
+	var path := "user://test_save_problem.json"
+	SaveManager.delete_save(path)
+	GameState.start_new_run(str(DataDB.player.get("player_id", "")))
+	assert_true(SaveManager.save_game(path))
+	assert_true(SaveManager.save_game(path), "second write makes a backup")
+	var bak := FileAccess.file_exists(path + ".bak")
+	assert_true(bak, "the previous good save is kept")
+	# Corrupt the main file: the backup stands in.
+	var f := FileAccess.open(path, FileAccess.WRITE)
+	f.store_string("{ not json")
+	f.close()
+	assert_false(SaveManager.read_save(path).is_empty())
+	assert_eq(SaveManager.last_problem, "")
+	# With no backup either, the problem is named.
+	DirAccess.remove_absolute(path + ".bak")
+	assert_true(SaveManager.read_save(path).is_empty())
+	assert_eq(SaveManager.last_problem, "unreadable")
+	SaveManager.delete_save(path)

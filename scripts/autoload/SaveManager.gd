@@ -48,6 +48,12 @@ func autosave() -> void:
 		save_game()
 
 
+## Why the last read gave nothing: "" (nothing wrong), "unreadable" (the
+## file and its backup could not be parsed) or "newer" (a later build wrote
+## it). The title screen words this for the player (2026-10-14).
+var last_problem := ""
+
+
 ## Writes the run to `path`. True when it was written.
 func save_game(path: String = SAVE_PATH) -> bool:
 	var payload := {
@@ -62,8 +68,17 @@ func save_game(path: String = SAVE_PATH) -> bool:
 	if file == null:
 		push_warning("SaveManager: could not write %s (%s)." % [temp_path, FileAccess.get_open_error()])
 		return false
-	file.store_string(JSON.stringify(payload))
+	var wrote := file.store_string(JSON.stringify(payload))
 	file.close()
+	# A full disk can leave a short file; never swap one in over a good save.
+	if not wrote or not _parses(temp_path):
+		push_warning("SaveManager: %s was not written completely; keeping the last save." % temp_path)
+		DirAccess.remove_absolute(temp_path)
+		return false
+	# The last good save is kept as a backup, so one bad write or a corrupted
+	# file is never the end of a run.
+	if _parses(path):
+		DirAccess.copy_absolute(path, path + ".bak")
 	var error := DirAccess.rename_absolute(temp_path, path)
 	if error != OK:
 		push_warning("SaveManager: could not replace %s (%s)." % [path, error])
@@ -81,23 +96,45 @@ func load_game(path: String = SAVE_PATH) -> bool:
 	return true
 
 
-## The run stored at `path`, or empty when there is none worth loading.
+## The run stored at `path`, or empty when there is none worth loading. If
+## the file itself cannot be read, its backup is tried before giving up.
 func read_save(path: String = SAVE_PATH) -> Dictionary:
+	last_problem = ""
 	if not FileAccess.file_exists(path):
 		return {}
-	var json := JSON.new()
-	var parsed: Variant = json.data if json.parse(FileAccess.get_file_as_string(path)) == OK else null
+	var parsed: Variant = _parse(path)
+	if not (parsed is Dictionary) and FileAccess.file_exists(path + ".bak"):
+		push_warning("SaveManager: %s could not be read; using its backup." % path)
+		parsed = _parse(path + ".bak")
 	if not (parsed is Dictionary):
 		push_warning("SaveManager: %s is not a save file; starting fresh." % path)
+		last_problem = "unreadable"
 		return {}
 	var version := int((parsed as Dictionary).get("version", 0))
 	if version > VERSION:
 		# A newer build wrote this. Do not load it, and do not overwrite it.
 		push_warning("SaveManager: %s is from a newer version (%d); leaving it alone." % [path, version])
 		enabled = false
+		last_problem = "newer"
 		return {}
 	var run: Variant = JSON.to_native((parsed as Dictionary).get("run"))
-	return run if run is Dictionary else {}
+	if not (run is Dictionary) or (run as Dictionary).is_empty():
+		last_problem = "unreadable"
+		return {}
+	return run
+
+
+func _parse(path: String) -> Variant:
+	var json := JSON.new()
+	return json.data if json.parse(FileAccess.get_file_as_string(path)) == OK else null
+
+
+## True when `path` holds a JSON object with a run in it.
+func _parses(path: String) -> bool:
+	if not FileAccess.file_exists(path):
+		return false
+	var parsed: Variant = _parse(path)
+	return parsed is Dictionary and (parsed as Dictionary).get("run") is Dictionary
 
 
 func has_save(path: String = SAVE_PATH) -> bool:
@@ -105,8 +142,9 @@ func has_save(path: String = SAVE_PATH) -> bool:
 
 
 func delete_save(path: String = SAVE_PATH) -> void:
-	if FileAccess.file_exists(path):
-		DirAccess.remove_absolute(path)
+	for file_path: String in [path, path + ".bak", path + ".tmp"]:
+		if FileAccess.file_exists(file_path):
+			DirAccess.remove_absolute(file_path)
 
 
 func _notification(what: int) -> void:

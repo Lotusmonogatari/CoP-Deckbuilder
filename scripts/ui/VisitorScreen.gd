@@ -104,6 +104,7 @@ func start_visiting() -> void:
 	if _stage.is_empty():
 		_ready_to_play = false
 		_messages.say(Text.say("battle.no_stage"))
+		StageStartFailure.show_on(self, Text.say("battle.no_stage"))
 		return
 
 	_stage_name.text = str(_stage.get("name_en", "Office Hours"))
@@ -118,8 +119,10 @@ func start_visiting() -> void:
 		_choice_b.disabled = true
 		_choice_c.disabled = true
 		_choice_d.disabled = true
-		_messages.say(Text.say("office_hours.cannot_start",
-			{"problems": "\n• ".join(Array(engine.setup_problems))}))
+		var why := Text.say("office_hours.cannot_start",
+			{"problems": "\n• ".join(Array(engine.setup_problems))})
+		_messages.say(why)
+		StageStartFailure.show_on(self, why)
 		return
 
 	_ready_to_play = true

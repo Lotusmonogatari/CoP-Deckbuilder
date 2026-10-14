@@ -233,7 +233,9 @@ func start_battle() -> void:
 		config = BattleSetup.for_level_stage(level_id, stage_id)
 
 	if config.is_empty():
+		_ready_to_play = false
 		_messages.say(Text.say("battle.no_stage"))
+		StageStartFailure.show_on(self, Text.say("battle.no_stage"))
 		return
 
 	_stage = config.get("stage", {})
@@ -249,8 +251,10 @@ func start_battle() -> void:
 		# half-built battle that accepts input crashes instead of failing.
 		_ready_to_play = false
 		_end_turn_button.disabled = true
-		_messages.say(Text.say("battle.cannot_start",
-			{"problems": "\n• ".join(Array(engine.setup_problems))}))
+		var why := Text.say("battle.cannot_start",
+			{"problems": "\n• ".join(Array(engine.setup_problems))})
+		_messages.say(why)
+		StageStartFailure.show_on(self, why)
 		return
 
 	_ready_to_play = true

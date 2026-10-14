@@ -42,6 +42,10 @@ if ! python3 tools/export_data.py; then
   failures=$((failures + 1))
 fi
 
+# A new class_name script is only known to the project once Godot has
+# scanned it; without this a fresh class fails to resolve (2026-10-14).
+"$GODOT" --headless --path . --import >/dev/null 2>&1 || true
+
 step "2/4  Booting the game"
 # The boot check scene is named explicitly rather than relying on whichever
 # scene happens to be the main one. The main scene is the battle now, and

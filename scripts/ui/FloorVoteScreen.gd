@@ -93,6 +93,7 @@ func start_voting() -> void:
 	if _stage.is_empty():
 		_ready_to_play = false
 		_messages.say(Text.say("battle.no_stage"))
+		StageStartFailure.show_on(self, Text.say("battle.no_stage"))
 		return
 
 	_stage_name.text = str(_stage.get("name_en", "National Assembly Floor Voting"))
@@ -115,7 +116,10 @@ func start_voting() -> void:
 		_vote_yes.disabled = true
 		_vote_no.disabled = true
 		_vote_abstain.disabled = true
-		_messages.say(", ".join(Array(engine.setup_problems)))
+		var why := Text.say("battle.cannot_start",
+			{"problems": "\n• ".join(Array(engine.setup_problems))})
+		_messages.say(why)
+		StageStartFailure.show_on(self, why)
 		return
 
 	_ready_to_play = true

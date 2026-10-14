@@ -28,6 +28,7 @@ var _overwrite_warning: Overlay
 
 ## The How to Play guide (HowToPlayPanel.gd), opened from its own button.
 var _how_to_play_panel: Overlay
+var _save_problem: Overlay
 
 
 func _ready() -> void:
@@ -58,6 +59,13 @@ func _ready() -> void:
 	add_child(_overwrite_warning)
 	_overwrite_warning.confirmed.connect(_start_new_game)
 
+	# Shown when Continue cannot read the save (2026-10-14): before this the
+	# game silently began a new run, and the next autosave overwrote the file.
+	_save_problem = Overlay.new()
+	_save_problem.name = "SaveProblem"
+	add_child(_save_problem)
+	_save_problem.confirmed.connect(_start_new_game)
+
 	%Title.text = Text.say("intro.title")
 
 	Audio.play_music("music_title")
@@ -65,10 +73,16 @@ func _ready() -> void:
 
 func _on_continue_pressed() -> void:
 	if not SaveManager.load_game():
-		# The save vanished or failed to read between this screen opening
-		# and the tap — rare, but the same fallback SaveManager's own boot
-		# check used to fall back to: a fresh run rather than a dead end.
-		GameState.awaiting_new_game = true
+		# The save vanished or could not be read. Say so and let the player
+		# choose, rather than quietly starting a new run over the top.
+		var newer: bool = SaveManager.last_problem == "newer"
+		if SaveManager.last_problem.is_empty():
+			_start_new_game()
+			return
+		_save_problem.open(Text.say("save.problem_title"),
+			[UiKit.line(Text.say("save.newer_body") if newer else Text.say("save.unreadable_body"))],
+			Text.say("save.start_new"))
+		return
 	get_tree().change_scene_to_file(OFFICE_SCENE)
 
 
