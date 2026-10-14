@@ -188,7 +188,9 @@
     "name_jp": "国会議員",
     "romaji": "Kokkai Giin",
     "tier": "National",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M45"
+    ],
     "starting_standing": 20
   },
   {
@@ -197,7 +199,9 @@
     "name_jp": "選挙区の有権者",
     "romaji": "Senkyoku no Yūkensha",
     "tier": "Constituency",
-    "linked_modifiers": null,
+    "linked_modifiers": [
+      "M46"
+    ],
     "starting_standing": 35
   },
   {
