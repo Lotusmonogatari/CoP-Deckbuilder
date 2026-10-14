@@ -32,6 +32,7 @@ Paste this (or point the assistant at it) at the start of a new chat. The fuller
 | Screens | `scripts/ui/` and `scenes/` |
 | Game state, data, saves, layout, audio | autoloads in `scripts/autoload/` (GameState, DataDB, SaveManager, Layout, Audio, Text) |
 | Art by ID | `assets/` (scheme in `data/art.json`; checklist `design/ART_CHECKLIST.md`) |
+| Workbook editing tool and the batch-builder archive | `tools/workbook/` |
 | Tests | `tests/` (GUT) and `tests/interaction/` (real clicks) |
 | The full brief and change log | `CLAUDE.md` (long; search it by topic instead of reading it all) |
 
@@ -54,7 +55,7 @@ Screenshots need a real display (the xvfb line), not `--headless`. Use a throwaw
 
 ## 5. Things that bite (learned the hard way)
 
-1. **Never save the workbook with openpyxl.** It silently corrupts cached values. Edit the XML directly (a helper existed at `/tmp/claude-0/b1/wbx.py`; it may be gone, so rebuild it: set inline-string cells, never touch `sharedStrings.xml`), re-zip, then confirm a clean export and that only the intended sheets changed. openpyxl is safe for reading.
+1. **Never save the workbook with openpyxl.** It silently corrupts cached values. Use the raw-XML helper `tools/workbook/wbx.py` (see `tools/workbook/README.md`; `python3 tools/workbook/selftest.py` checks it), then confirm a clean export and that only the intended sheets changed. openpyxl is safe for reading.
 2. A blank workbook cell exports as JSON `null`. Guard `str(null)` ("<null>") and `int(null)`.
 3. A new `class_name` script is not seen by tests until `godot --headless --import` runs.
 4. Leaks: a Node must not `await` a timer (use a `Timer` child); a lambda stored in a long-lived object must not capture `self`.
