@@ -342,5 +342,805 @@
     "condition_op": ">=",
     "condition_value": 90.0,
     "text_en": "Yezo Political Insider is reporting that {player} has secured a formidable base of support among district voters. ☼"
+  },
+  {
+    "ticker_id": "TK44",
+    "condition_type": "law",
+    "condition_target": "BI01",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Ainu Heritage and Language Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK45",
+    "condition_type": "law",
+    "condition_target": "BI01",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Ainu Heritage and Language Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK46",
+    "condition_type": "law",
+    "condition_target": "BI02",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Agricultural Price Stabilization Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK47",
+    "condition_type": "law",
+    "condition_target": "BI02",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Agricultural Price Stabilization Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK48",
+    "condition_type": "law",
+    "condition_target": "BI03",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Special Economic Zones Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK49",
+    "condition_type": "law",
+    "condition_target": "BI03",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Special Economic Zones Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK50",
+    "condition_type": "law",
+    "condition_target": "BI04",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Hokkaido Shinkansen Acceleration Act. ☼"
+  },
+  {
+    "ticker_id": "TK51",
+    "condition_type": "law",
+    "condition_target": "BI04",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Hokkaido Shinkansen Acceleration Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK52",
+    "condition_type": "law",
+    "condition_target": "BI05",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Chishima Coastal Defense Modernization Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK53",
+    "condition_type": "law",
+    "condition_target": "BI05",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Chishima Coastal Defense Modernization Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK54",
+    "condition_type": "law",
+    "condition_target": "BI06",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Specified Skilled Worker Visa Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK55",
+    "condition_type": "law",
+    "condition_target": "BI06",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Specified Skilled Worker Visa Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK56",
+    "condition_type": "law",
+    "condition_target": "BI07",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Grid Resilience and Renewable Energy Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK57",
+    "condition_type": "law",
+    "condition_target": "BI07",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Grid Resilience and Renewable Energy Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK58",
+    "condition_type": "law",
+    "condition_target": "BI08",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Consumption Tax Rate Act. ☼"
+  },
+  {
+    "ticker_id": "TK59",
+    "condition_type": "law",
+    "condition_target": "BI08",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Consumption Tax Rate Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK60",
+    "condition_type": "law",
+    "condition_target": "BI09",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Prefectural Fiscal Devolution Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK61",
+    "condition_type": "law",
+    "condition_target": "BI09",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Prefectural Fiscal Devolution Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK62",
+    "condition_type": "law",
+    "condition_target": "BI10",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Candidate Gender Parity Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK63",
+    "condition_type": "law",
+    "condition_target": "BI10",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Candidate Gender Parity Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK64",
+    "condition_type": "law",
+    "condition_target": "BI11",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Tsugaru Strait Joint Commission Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK65",
+    "condition_type": "law",
+    "condition_target": "BI11",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Tsugaru Strait Joint Commission Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK66",
+    "condition_type": "law",
+    "condition_target": "BI12",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Judicial Appointments Commission Act. ☼"
+  },
+  {
+    "ticker_id": "TK67",
+    "condition_type": "law",
+    "condition_target": "BI12",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Judicial Appointments Commission Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK68",
+    "condition_type": "law",
+    "condition_target": "BI13",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Temple and Shrine Heritage Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK69",
+    "condition_type": "law",
+    "condition_target": "BI13",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Temple and Shrine Heritage Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK70",
+    "condition_type": "law",
+    "condition_target": "BI14",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Constituency Development Grants Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK71",
+    "condition_type": "law",
+    "condition_target": "BI14",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Constituency Development Grants Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK72",
+    "condition_type": "law",
+    "condition_target": "BI15",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Digital Economy Promotion Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK73",
+    "condition_type": "law",
+    "condition_target": "BI15",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Digital Economy Promotion Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK74",
+    "condition_type": "law",
+    "condition_target": "BI16",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Organized Crime Conspiracy Act. ☼"
+  },
+  {
+    "ticker_id": "TK75",
+    "condition_type": "law",
+    "condition_target": "BI16",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Organized Crime Conspiracy Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK76",
+    "condition_type": "law",
+    "condition_target": "BI17",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Partnership Registration Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK77",
+    "condition_type": "law",
+    "condition_target": "BI17",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Partnership Registration Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK78",
+    "condition_type": "law",
+    "condition_target": "BI18",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The National Emergency Powers Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK79",
+    "condition_type": "law",
+    "condition_target": "BI18",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the National Emergency Powers Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK80",
+    "condition_type": "law",
+    "condition_target": "BI19",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Yezo–US Security Consultation Agreement is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK81",
+    "condition_type": "law",
+    "condition_target": "BI19",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Yezo–US Security Consultation Agreement, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK82",
+    "condition_type": "law",
+    "condition_target": "BI20",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Yezo–EU Economic Partnership Agreement. ☼"
+  },
+  {
+    "ticker_id": "TK83",
+    "condition_type": "law",
+    "condition_target": "BI20",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Yezo–EU Economic Partnership Agreement leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK84",
+    "condition_type": "law",
+    "condition_target": "BI21",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Strategic Land and Port Screening Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK85",
+    "condition_type": "law",
+    "condition_target": "BI21",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Strategic Land and Port Screening Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK86",
+    "condition_type": "law",
+    "condition_target": "BI22",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Inbound Tourism Visa Waiver Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK87",
+    "condition_type": "law",
+    "condition_target": "BI22",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Inbound Tourism Visa Waiver Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK88",
+    "condition_type": "law",
+    "condition_target": "BI23",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Chishima Joint Economic Activity Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK89",
+    "condition_type": "law",
+    "condition_target": "BI23",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Chishima Joint Economic Activity Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK90",
+    "condition_type": "law",
+    "condition_target": "BI24",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Tomari Nuclear Restart Act. ☼"
+  },
+  {
+    "ticker_id": "TK91",
+    "condition_type": "law",
+    "condition_target": "BI24",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Tomari Nuclear Restart Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK92",
+    "condition_type": "law",
+    "condition_target": "BI25",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Integrated Resort Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK93",
+    "condition_type": "law",
+    "condition_target": "BI25",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Integrated Resort Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK94",
+    "condition_type": "law",
+    "condition_target": "BI26",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Civil Service Merit Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK95",
+    "condition_type": "law",
+    "condition_target": "BI26",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Civil Service Merit Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK96",
+    "condition_type": "law",
+    "condition_target": "BI27",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Regional Minimum Wage Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK97",
+    "condition_type": "law",
+    "condition_target": "BI27",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Regional Minimum Wage Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK98",
+    "condition_type": "law",
+    "condition_target": "BI28",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Independent Election Commission Act. ☼"
+  },
+  {
+    "ticker_id": "TK99",
+    "condition_type": "law",
+    "condition_target": "BI28",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Independent Election Commission Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK100",
+    "condition_type": "law",
+    "condition_target": "BI29",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Moral Education Curriculum Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK101",
+    "condition_type": "law",
+    "condition_target": "BI29",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Moral Education Curriculum Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK102",
+    "condition_type": "law",
+    "condition_target": "BI30",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Foreign Resident Local Suffrage Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK103",
+    "condition_type": "law",
+    "condition_target": "BI30",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Foreign Resident Local Suffrage Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK104",
+    "condition_type": "law",
+    "condition_target": "BI31",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Wilderness and Wildlife Protection Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK105",
+    "condition_type": "law",
+    "condition_target": "BI31",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Wilderness and Wildlife Protection Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK106",
+    "condition_type": "law",
+    "condition_target": "BI32",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Rural Hospital Network Act. ☼"
+  },
+  {
+    "ticker_id": "TK107",
+    "condition_type": "law",
+    "condition_target": "BI32",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Rural Hospital Network Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK108",
+    "condition_type": "law",
+    "condition_target": "BI33",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Digital Identity Card Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK109",
+    "condition_type": "law",
+    "condition_target": "BI33",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Digital Identity Card Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK110",
+    "condition_type": "law",
+    "condition_target": "BI34",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Public Broadcasting Independence Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK111",
+    "condition_type": "law",
+    "condition_target": "BI34",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Public Broadcasting Independence Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK112",
+    "condition_type": "law",
+    "condition_target": "BI35",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Political Donation Transparency Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK113",
+    "condition_type": "law",
+    "condition_target": "BI35",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Political Donation Transparency Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK114",
+    "condition_type": "law",
+    "condition_target": "BI36",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Corporate Tax Reduction Act. ☼"
+  },
+  {
+    "ticker_id": "TK115",
+    "condition_type": "law",
+    "condition_target": "BI36",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Corporate Tax Reduction Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK116",
+    "condition_type": "law",
+    "condition_target": "BI37",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Carbon Levy Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK117",
+    "condition_type": "law",
+    "condition_target": "BI37",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Carbon Levy Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK118",
+    "condition_type": "law",
+    "condition_target": "BI38",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Fisheries Quota Modernization Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK119",
+    "condition_type": "law",
+    "condition_target": "BI38",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Fisheries Quota Modernization Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK120",
+    "condition_type": "law",
+    "condition_target": "BI39",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Shipbuilding and Defense Industry Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK121",
+    "condition_type": "law",
+    "condition_target": "BI39",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Shipbuilding and Defense Industry Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK122",
+    "condition_type": "law",
+    "condition_target": "BI40",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Constitutional Review Commission Act. ☼"
+  },
+  {
+    "ticker_id": "TK123",
+    "condition_type": "law",
+    "condition_target": "BI40",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Constitutional Review Commission Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK124",
+    "condition_type": "law",
+    "condition_target": "BI41",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Japan Customs and Border Cooperation Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK125",
+    "condition_type": "law",
+    "condition_target": "BI41",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Japan Customs and Border Cooperation Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK126",
+    "condition_type": "law",
+    "condition_target": "BI42",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Chishima Resource Development Agreement Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK127",
+    "condition_type": "law",
+    "condition_target": "BI42",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Chishima Resource Development Agreement Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK128",
+    "condition_type": "law",
+    "condition_target": "BI43",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Yezo–China Trade Normalization Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK129",
+    "condition_type": "law",
+    "condition_target": "BI43",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Yezo–China Trade Normalization Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK130",
+    "condition_type": "law",
+    "condition_target": "BI44",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Farm Succession Support Act. ☼"
+  },
+  {
+    "ticker_id": "TK131",
+    "condition_type": "law",
+    "condition_target": "BI44",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Farm Succession Support Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK132",
+    "condition_type": "law",
+    "condition_target": "BI45",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the University Autonomy and Research Funding Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK133",
+    "condition_type": "law",
+    "condition_target": "BI45",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The University Autonomy and Research Funding Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK134",
+    "condition_type": "law",
+    "condition_target": "BI46",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Workplace Equality Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK135",
+    "condition_type": "law",
+    "condition_target": "BI46",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Workplace Equality Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK136",
+    "condition_type": "law",
+    "condition_target": "BI47",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Yezo News reports that the Parental Leave and Childcare Act is law, with {player} on the record. ☼"
+  },
+  {
+    "ticker_id": "TK137",
+    "condition_type": "law",
+    "condition_target": "BI47",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "After the failed Parental Leave and Childcare Act, {player} is asked what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK138",
+    "condition_type": "law",
+    "condition_target": "BI48",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Offices across Yezo are reading the fine print of the new Public Safety Surveillance Act. ☼"
+  },
+  {
+    "ticker_id": "TK139",
+    "condition_type": "law",
+    "condition_target": "BI48",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The defeat of the Public Safety Surveillance Act leaves a gap that someone will try to fill. ☼"
+  },
+  {
+    "ticker_id": "TK140",
+    "condition_type": "law",
+    "condition_target": "BI49",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "Parliament has enacted the Local Government Mergers Act. Commentators are weighing what comes next. ☼"
+  },
+  {
+    "ticker_id": "TK141",
+    "condition_type": "law",
+    "condition_target": "BI49",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "The Local Government Mergers Act failed on the floor. Its backers say they will regroup. ☼"
+  },
+  {
+    "ticker_id": "TK142",
+    "condition_type": "law",
+    "condition_target": "BI50",
+    "condition_op": "passed",
+    "condition_value": null,
+    "text_en": "The Party Leadership Selection Act is now law in Yezo, and its critics are regrouping. ☼"
+  },
+  {
+    "ticker_id": "TK143",
+    "condition_type": "law",
+    "condition_target": "BI50",
+    "condition_op": "failed",
+    "condition_value": null,
+    "text_en": "Yezo News reports the Party Leadership Selection Act has been voted down. ☼"
   }
 ]

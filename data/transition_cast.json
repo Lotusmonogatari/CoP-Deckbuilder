@@ -28,5 +28,415 @@
     "transition_cast_id": "TC06",
     "stage_id": null,
     "character_id": "SF16"
+  },
+  {
+    "transition_cast_id": "TC07",
+    "stage_id": "ST01",
+    "character_id": "OP52"
+  },
+  {
+    "transition_cast_id": "TC08",
+    "stage_id": "ST01",
+    "character_id": "OP13"
+  },
+  {
+    "transition_cast_id": "TC09",
+    "stage_id": "ST02",
+    "character_id": "OP06"
+  },
+  {
+    "transition_cast_id": "TC10",
+    "stage_id": "ST02",
+    "character_id": "OP21"
+  },
+  {
+    "transition_cast_id": "TC11",
+    "stage_id": "ST04",
+    "character_id": "OP114"
+  },
+  {
+    "transition_cast_id": "TC12",
+    "stage_id": "ST04",
+    "character_id": "OP116"
+  },
+  {
+    "transition_cast_id": "TC13",
+    "stage_id": "ST05",
+    "character_id": "OP107"
+  },
+  {
+    "transition_cast_id": "TC14",
+    "stage_id": "ST05",
+    "character_id": "OP123"
+  },
+  {
+    "transition_cast_id": "TC15",
+    "stage_id": "ST06",
+    "character_id": "OP91"
+  },
+  {
+    "transition_cast_id": "TC16",
+    "stage_id": "ST06",
+    "character_id": "OP33"
+  },
+  {
+    "transition_cast_id": "TC17",
+    "stage_id": "ST09",
+    "character_id": "OP34"
+  },
+  {
+    "transition_cast_id": "TC18",
+    "stage_id": "ST10",
+    "character_id": "OP01"
+  },
+  {
+    "transition_cast_id": "TC19",
+    "stage_id": "ST11",
+    "character_id": "OP67"
+  },
+  {
+    "transition_cast_id": "TC20",
+    "stage_id": "ST12",
+    "character_id": "OP04"
+  },
+  {
+    "transition_cast_id": "TC21",
+    "stage_id": "ST13",
+    "character_id": "OP29"
+  },
+  {
+    "transition_cast_id": "TC22",
+    "stage_id": "ST14",
+    "character_id": "OP95"
+  },
+  {
+    "transition_cast_id": "TC23",
+    "stage_id": "ST15",
+    "character_id": "OP19"
+  },
+  {
+    "transition_cast_id": "TC24",
+    "stage_id": "ST16",
+    "character_id": "OP07"
+  },
+  {
+    "transition_cast_id": "TC25",
+    "stage_id": "ST17",
+    "character_id": "OP87"
+  },
+  {
+    "transition_cast_id": "TC26",
+    "stage_id": "ST18",
+    "character_id": "OP91"
+  },
+  {
+    "transition_cast_id": "TC27",
+    "stage_id": "ST18",
+    "character_id": "OP82"
+  },
+  {
+    "transition_cast_id": "TC28",
+    "stage_id": "ST20",
+    "character_id": "OP119"
+  },
+  {
+    "transition_cast_id": "TC29",
+    "stage_id": "ST20",
+    "character_id": "OP120"
+  },
+  {
+    "transition_cast_id": "TC30",
+    "stage_id": "ST21",
+    "character_id": "OP42"
+  },
+  {
+    "transition_cast_id": "TC31",
+    "stage_id": "ST21",
+    "character_id": "OP12"
+  },
+  {
+    "transition_cast_id": "TC32",
+    "stage_id": "ST24",
+    "character_id": "OP104"
+  },
+  {
+    "transition_cast_id": "TC33",
+    "stage_id": "ST25",
+    "character_id": "OP13"
+  },
+  {
+    "transition_cast_id": "TC34",
+    "stage_id": "ST26",
+    "character_id": "OP114"
+  },
+  {
+    "transition_cast_id": "TC35",
+    "stage_id": "ST27",
+    "character_id": "OP101"
+  },
+  {
+    "transition_cast_id": "TC36",
+    "stage_id": "ST28",
+    "character_id": "OP120"
+  },
+  {
+    "transition_cast_id": "TC37",
+    "stage_id": "ST29",
+    "character_id": "OP108"
+  },
+  {
+    "transition_cast_id": "TC38",
+    "stage_id": "ST29",
+    "character_id": "OP106"
+  },
+  {
+    "transition_cast_id": "TC39",
+    "stage_id": "ST31",
+    "character_id": "OP70"
+  },
+  {
+    "transition_cast_id": "TC40",
+    "stage_id": "ST32",
+    "character_id": "OP114"
+  },
+  {
+    "transition_cast_id": "TC41",
+    "stage_id": "ST33",
+    "character_id": "OP37"
+  },
+  {
+    "transition_cast_id": "TC42",
+    "stage_id": "ST34",
+    "character_id": "OP102"
+  },
+  {
+    "transition_cast_id": "TC43",
+    "stage_id": "ST36",
+    "character_id": "OP123"
+  },
+  {
+    "transition_cast_id": "TC44",
+    "stage_id": "ST37",
+    "character_id": "OP26"
+  },
+  {
+    "transition_cast_id": "TC45",
+    "stage_id": "ST38",
+    "character_id": "OP16"
+  },
+  {
+    "transition_cast_id": "TC46",
+    "stage_id": "ST40",
+    "character_id": "OP12"
+  },
+  {
+    "transition_cast_id": "TC47",
+    "stage_id": "ST41",
+    "character_id": "OP33"
+  },
+  {
+    "transition_cast_id": "TC48",
+    "stage_id": "ST43",
+    "character_id": "OP113"
+  },
+  {
+    "transition_cast_id": "TC49",
+    "stage_id": "ST44",
+    "character_id": "OP27"
+  },
+  {
+    "transition_cast_id": "TC50",
+    "stage_id": "ST46",
+    "character_id": "OP113"
+  },
+  {
+    "transition_cast_id": "TC51",
+    "stage_id": "ST47",
+    "character_id": "OP28"
+  },
+  {
+    "transition_cast_id": "TC52",
+    "stage_id": "ST48",
+    "character_id": "OP121"
+  },
+  {
+    "transition_cast_id": "TC53",
+    "stage_id": "ST50",
+    "character_id": "OP59"
+  },
+  {
+    "transition_cast_id": "TC54",
+    "stage_id": "ST51",
+    "character_id": "OP05"
+  },
+  {
+    "transition_cast_id": "TC55",
+    "stage_id": "ST53",
+    "character_id": "OP105"
+  },
+  {
+    "transition_cast_id": "TC56",
+    "stage_id": "ST54",
+    "character_id": "OP92"
+  },
+  {
+    "transition_cast_id": "TC57",
+    "stage_id": "ST55",
+    "character_id": "OP113"
+  },
+  {
+    "transition_cast_id": "TC58",
+    "stage_id": "ST57",
+    "character_id": "OP70"
+  },
+  {
+    "transition_cast_id": "TC59",
+    "stage_id": "ST58",
+    "character_id": "OP106"
+  },
+  {
+    "transition_cast_id": "TC60",
+    "stage_id": "ST60",
+    "character_id": "OP66"
+  },
+  {
+    "transition_cast_id": "TC61",
+    "stage_id": "ST61",
+    "character_id": "OP123"
+  },
+  {
+    "transition_cast_id": "TC62",
+    "stage_id": "ST63",
+    "character_id": "OP12"
+  },
+  {
+    "transition_cast_id": "TC63",
+    "stage_id": "ST64",
+    "character_id": "OP112"
+  },
+  {
+    "transition_cast_id": "TC64",
+    "stage_id": "ST66",
+    "character_id": "OP61"
+  },
+  {
+    "transition_cast_id": "TC65",
+    "stage_id": "ST67",
+    "character_id": "OP120"
+  },
+  {
+    "transition_cast_id": "TC66",
+    "stage_id": "ST69",
+    "character_id": "OP72"
+  },
+  {
+    "transition_cast_id": "TC67",
+    "stage_id": "ST70",
+    "character_id": "OP114"
+  },
+  {
+    "transition_cast_id": "TC68",
+    "stage_id": "ST71",
+    "character_id": "OP120"
+  },
+  {
+    "transition_cast_id": "TC69",
+    "stage_id": "ST73",
+    "character_id": "OP47"
+  },
+  {
+    "transition_cast_id": "TC70",
+    "stage_id": "ST74",
+    "character_id": "OP61"
+  },
+  {
+    "transition_cast_id": "TC71",
+    "stage_id": "ST76",
+    "character_id": "OP124"
+  },
+  {
+    "transition_cast_id": "TC72",
+    "stage_id": "ST77",
+    "character_id": "OP94"
+  },
+  {
+    "transition_cast_id": "TC73",
+    "stage_id": "ST79",
+    "character_id": "OP16"
+  },
+  {
+    "transition_cast_id": "TC74",
+    "stage_id": "ST80",
+    "character_id": "OP08"
+  },
+  {
+    "transition_cast_id": "TC75",
+    "stage_id": "ST82",
+    "character_id": "OP107"
+  },
+  {
+    "transition_cast_id": "TC76",
+    "stage_id": "ST83",
+    "character_id": "OP117"
+  },
+  {
+    "transition_cast_id": "TC77",
+    "stage_id": "ST84",
+    "character_id": "OP67"
+  },
+  {
+    "transition_cast_id": "TC78",
+    "stage_id": "ST86",
+    "character_id": "OP102"
+  },
+  {
+    "transition_cast_id": "TC79",
+    "stage_id": "ST87",
+    "character_id": "OP46"
+  },
+  {
+    "transition_cast_id": "TC80",
+    "stage_id": "ST88",
+    "character_id": "OP125"
+  },
+  {
+    "transition_cast_id": "TC81",
+    "stage_id": "ST90",
+    "character_id": "OP80"
+  },
+  {
+    "transition_cast_id": "TC82",
+    "stage_id": "ST91",
+    "character_id": "OP78"
+  },
+  {
+    "transition_cast_id": "TC83",
+    "stage_id": "ST92",
+    "character_id": "OP110"
+  },
+  {
+    "transition_cast_id": "TC84",
+    "stage_id": "ST94",
+    "character_id": "OP105"
+  },
+  {
+    "transition_cast_id": "TC85",
+    "stage_id": "ST95",
+    "character_id": "OP86"
+  },
+  {
+    "transition_cast_id": "TC86",
+    "stage_id": "ST96",
+    "character_id": "OP16"
+  },
+  {
+    "transition_cast_id": "TC87",
+    "stage_id": "ST98",
+    "character_id": "OP91"
+  },
+  {
+    "transition_cast_id": "TC88",
+    "stage_id": "ST99",
+    "character_id": "OP116"
   }
 ]

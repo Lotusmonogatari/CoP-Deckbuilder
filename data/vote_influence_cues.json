@@ -268,5 +268,235 @@
     "bill_id": "BI41",
     "outcome_direction": "Flipped to Fail",
     "cue_text": "Members balked at sharing border data with Japan, and the customs bill was withdrawn."
+  },
+  {
+    "bill_id": "BI01",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Ainu Heritage and Language Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI02",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Agricultural Price Stabilization Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI03",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Special Economic Zones Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI04",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Hokkaido Shinkansen Acceleration Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI05",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Chishima Coastal Defense Modernization Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI06",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Specified Skilled Worker Visa Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI07",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Grid Resilience and Renewable Energy Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI08",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Consumption Tax Rate Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI09",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Prefectural Fiscal Devolution Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI10",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Candidate Gender Parity Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI11",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Tsugaru Strait Joint Commission Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI12",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Judicial Appointments Commission Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI13",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Temple and Shrine Heritage Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI14",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Constituency Development Grants Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI15",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Digital Economy Promotion Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI16",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Organized Crime Conspiracy Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI17",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Partnership Registration Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI18",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the National Emergency Powers Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI19",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Yezo–US Security Consultation Agreement. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI20",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Yezo–EU Economic Partnership Agreement. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI21",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Strategic Land and Port Screening Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI22",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Inbound Tourism Visa Waiver Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI23",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Chishima Joint Economic Activity Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI24",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Tomari Nuclear Restart Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI26",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Civil Service Merit Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI27",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Regional Minimum Wage Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI28",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Independent Election Commission Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI29",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Moral Education Curriculum Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI30",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Foreign Resident Local Suffrage Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI31",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Wilderness and Wildlife Protection Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI32",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Rural Hospital Network Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI33",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Digital Identity Card Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI34",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Public Broadcasting Independence Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI35",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Political Donation Transparency Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI36",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Corporate Tax Reduction Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI37",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Carbon Levy Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI38",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Fisheries Quota Modernization Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI42",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Chishima Resource Development Agreement Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI43",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Yezo–China Trade Normalization Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI44",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Farm Succession Support Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI45",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the University Autonomy and Research Funding Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI46",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Workplace Equality Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI47",
+    "outcome_direction": "Flipped to Pass",
+    "cue_text": "Your influence carried the Parental Leave and Childcare Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI48",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Public Safety Surveillance Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI49",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Local Government Mergers Act. Colleagues noted who made the difference."
+  },
+  {
+    "bill_id": "BI50",
+    "outcome_direction": "Flipped to Fail",
+    "cue_text": "Your influence sank the Party Leadership Selection Act. Colleagues noted who made the difference."
   }
 ]

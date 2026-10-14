@@ -10674,6 +10674,3665 @@
         "ST99"
       ],
       "asked_by": "OP115"
+    },
+    {
+      "id": "S223",
+      "text": "Why should this chamber trust your count of the votes?",
+      "theme": "Votes",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S224",
+      "text": "Which of your colleagues will you not be able to persuade?",
+      "theme": "Persuasion",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S225",
+      "text": "What does your side give up to reach a majority?",
+      "theme": "Compromise",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP01"
+    },
+    {
+      "id": "S226",
+      "text": "Name one thing the other side has right.",
+      "theme": "Honesty",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP03"
+    },
+    {
+      "id": "S227",
+      "text": "Is this debate about the country or about the next party meeting?",
+      "theme": "Motive",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP06"
+    },
+    {
+      "id": "S228",
+      "text": "What do you say to members who feel left out of this?",
+      "theme": "Representation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03",
+        "BO28",
+        "BO29"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP07"
+    },
+    {
+      "id": "S229",
+      "text": "If this fails on the floor, what then?",
+      "theme": "Resolve",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP09"
+    },
+    {
+      "id": "S230",
+      "text": "How do you answer the charge that you are only here for the cameras?",
+      "theme": "Credibility",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S231",
+      "text": "Where is the money coming from?",
+      "theme": "Funding",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO24",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP21"
+    },
+    {
+      "id": "S232",
+      "text": "Who in this chamber benefits most from your proposal?",
+      "theme": "Beneficiaries",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO06",
+        "BO21"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP28"
+    },
+    {
+      "id": "S233",
+      "text": "Can you defend that position without raising your voice?",
+      "theme": "Principles",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP33"
+    },
+    {
+      "id": "S234",
+      "text": "What would change your mind?",
+      "theme": "Conviction",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO03",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP43"
+    },
+    {
+      "id": "S235",
+      "text": "Why should smaller parties accept this?",
+      "theme": "Representation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03",
+        "BO28",
+        "BO29"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP51"
+    },
+    {
+      "id": "S236",
+      "text": "Is that a promise or a negotiating position?",
+      "theme": "Commitment",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP67"
+    },
+    {
+      "id": "S237",
+      "text": "Which voters are you really speaking for today?",
+      "theme": "Constituents",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S238",
+      "text": "How will you explain this vote back home?",
+      "theme": "Constituent service",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO18",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S239",
+      "text": "Is the cost of this worth the benefit?",
+      "theme": "Cost",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP01"
+    },
+    {
+      "id": "S240",
+      "text": "What happens to the people this leaves behind?",
+      "theme": "Vulnerable",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO06",
+        "BO21",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP03"
+    },
+    {
+      "id": "S241",
+      "text": "Do you have the numbers, or only the speech?",
+      "theme": "Metrics",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP06"
+    },
+    {
+      "id": "S242",
+      "text": "Why is the other side's plan worse?",
+      "theme": "Criticism",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP07"
+    },
+    {
+      "id": "S243",
+      "text": "Will you accept amendments, or is this take it or leave it?",
+      "theme": "Flexibility",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP09"
+    },
+    {
+      "id": "S244",
+      "text": "What do you tell a member who is undecided?",
+      "theme": "Persuasion",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S245",
+      "text": "Who drafted this, and whom did they consult?",
+      "theme": "Consultation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO06"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP21"
+    },
+    {
+      "id": "S246",
+      "text": "How does this look to the member on the back bench?",
+      "theme": "Participation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03",
+        "BO11",
+        "BO28",
+        "BO29"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP28"
+    },
+    {
+      "id": "S247",
+      "text": "Is there anything in this you would be embarrassed to defend?",
+      "theme": "Hypocrisy",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP33"
+    },
+    {
+      "id": "S248",
+      "text": "How long can your coalition hold together?",
+      "theme": "Unity",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP43"
+    },
+    {
+      "id": "S249",
+      "text": "What is the strongest argument against your own position?",
+      "theme": "Evidence",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP51"
+    },
+    {
+      "id": "S250",
+      "text": "Why now, and not at the next session?",
+      "theme": "Priority",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP67"
+    },
+    {
+      "id": "S251",
+      "text": "If you win this vote, what will you do with it?",
+      "theme": "Purpose",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S252",
+      "text": "Say it plainly: what is the one thing this chamber should remember?",
+      "theme": "Clarity",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO06",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST02"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S253",
+      "text": "Will you vote with the party even when you disagree?",
+      "theme": "Faction discipline",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S254",
+      "text": "Who in this room have you spoken with about this?",
+      "theme": "Consultation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO06"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S255",
+      "text": "Why should the caucus follow you on this?",
+      "theme": "Loyalty",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S256",
+      "text": "What does the party gain from your position?",
+      "theme": "Party platform",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S257",
+      "text": "Are you speaking for the party or for yourself?",
+      "theme": "Loyalty",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S258",
+      "text": "How do you answer members who say you have gone soft?",
+      "theme": "Resolve",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S259",
+      "text": "Will this cost us seats at the next election?",
+      "theme": "Votes",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S260",
+      "text": "Is the leadership listening to the backbench?",
+      "theme": "Internal democracy",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S261",
+      "text": "What would you give up to keep the caucus together?",
+      "theme": "Unity",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S262",
+      "text": "How do we explain this to our donors?",
+      "theme": "Political funds",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S263",
+      "text": "Who speaks for the members who disagree?",
+      "theme": "Representation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03",
+        "BO28",
+        "BO29"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S264",
+      "text": "Can you defend this in public as well as you do in here?",
+      "theme": "Credibility",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S265",
+      "text": "What is the party's line, in your own words?",
+      "theme": "Party platform",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S266",
+      "text": "Why are we losing the argument on this?",
+      "theme": "Persuasion",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S267",
+      "text": "Does the caucus get a say, or only a notice?",
+      "theme": "Participation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03",
+        "BO11",
+        "BO28",
+        "BO29"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S268",
+      "text": "What happens to members who break ranks?",
+      "theme": "Discipline",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S269",
+      "text": "Do you have the numbers to carry this room?",
+      "theme": "Metrics",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S270",
+      "text": "Is this about principle or about position?",
+      "theme": "Principles",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S271",
+      "text": "Which committee seat are you really after?",
+      "theme": "Committee seats",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO02",
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S272",
+      "text": "How do you keep faith with the voters and the party at once?",
+      "theme": "Constituents",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S273",
+      "text": "What should the caucus say if the press asks about this?",
+      "theme": "Clarity",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO06",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S274",
+      "text": "Who has your back if this goes wrong?",
+      "theme": "Cooperation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S275",
+      "text": "Why trust your judgment over the whole caucus?",
+      "theme": "Competence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S276",
+      "text": "What can the party offer members who lose out?",
+      "theme": "Assistance",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO06",
+        "BO21"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S277",
+      "text": "Is a compromise a defeat or a win?",
+      "theme": "Compromise",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S278",
+      "text": "How do we stay united without silencing anyone?",
+      "theme": "Openness",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S279",
+      "text": "What is the strongest case against our own position?",
+      "theme": "Evidence",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S280",
+      "text": "Who in leadership signed off on this?",
+      "theme": "Accountability",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S281",
+      "text": "Will you stand with the party if the polls turn against it?",
+      "theme": "Resolve",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S282",
+      "text": "What do you want the caucus to remember about you?",
+      "theme": "Signal",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S283",
+      "text": "In ten seconds, why should anyone vote for you?",
+      "theme": "Signal",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP33"
+    },
+    {
+      "id": "S284",
+      "text": "Viewers at home want one clear answer. What is it?",
+      "theme": "Clarity",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO06",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP47"
+    },
+    {
+      "id": "S285",
+      "text": "Is your opponent lying, or just mistaken?",
+      "theme": "Honesty",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP67"
+    },
+    {
+      "id": "S286",
+      "text": "What would you say to a family watching this who disagrees with you?",
+      "theme": "Family support",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO19",
+        "BO21"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S287",
+      "text": "Your last answer had no numbers. Give us one.",
+      "theme": "Metrics",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S288",
+      "text": "Why should the public believe a politician on this?",
+      "theme": "Trust",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03",
+        "BO28",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP91"
+    },
+    {
+      "id": "S289",
+      "text": "Can you name one thing you would do differently from your own party?",
+      "theme": "Faction loyalty",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO02",
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP01"
+    },
+    {
+      "id": "S290",
+      "text": "What does this cost an ordinary household?",
+      "theme": "Cost of living",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO18",
+        "BO26",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S291",
+      "text": "Is this a debate or a performance?",
+      "theme": "Motive",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP29"
+    },
+    {
+      "id": "S292",
+      "text": "Who pays if you are wrong?",
+      "theme": "Risk",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP33"
+    },
+    {
+      "id": "S293",
+      "text": "What is your weakest point, and how do you answer it?",
+      "theme": "Criticism",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP47"
+    },
+    {
+      "id": "S294",
+      "text": "Do you agree with your opponent on anything?",
+      "theme": "Cooperation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP67"
+    },
+    {
+      "id": "S295",
+      "text": "What will you do on the first day?",
+      "theme": "Priority",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S296",
+      "text": "Is it fair to say you have changed your position?",
+      "theme": "Conviction",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO03",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S297",
+      "text": "Give the audience a reason to stay with you.",
+      "theme": "Persuasion",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST06",
+        "ST41",
+        "ST44",
+        "ST73",
+        "ST84",
+        "ST91",
+        "ST98"
+      ],
+      "asked_by": "OP91"
+    },
+    {
+      "id": "S298",
+      "text": "Why should the party fund your district?",
+      "theme": "Funding",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO24",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP10"
+    },
+    {
+      "id": "S299",
+      "text": "What do you contribute to this party that nobody else does?",
+      "theme": "Competence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP26"
+    },
+    {
+      "id": "S300",
+      "text": "Are you a reliable vote or a free agent?",
+      "theme": "Faction loyalty",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO02",
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S301",
+      "text": "How will you answer for the last bill you opposed?",
+      "theme": "Accountability",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP36"
+    },
+    {
+      "id": "S302",
+      "text": "What does the steering committee get in return for its trust?",
+      "theme": "Commitment",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP56"
+    },
+    {
+      "id": "S303",
+      "text": "Where do you stand on leadership?",
+      "theme": "Position",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S304",
+      "text": "Can the party count on you in a close vote?",
+      "theme": "Votes",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP82"
+    },
+    {
+      "id": "S305",
+      "text": "What do the members back home expect from you?",
+      "theme": "Constituents",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP02"
+    },
+    {
+      "id": "S306",
+      "text": "Is there a scandal we should hear about from you first?",
+      "theme": "Scandal",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP10"
+    },
+    {
+      "id": "S307",
+      "text": "What would you change about how this party runs?",
+      "theme": "Internal democracy",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP26"
+    },
+    {
+      "id": "S308",
+      "text": "Who are your allies in this room?",
+      "theme": "Alliance",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S309",
+      "text": "Have you earned a seat on a major committee?",
+      "theme": "Committee seats",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO02",
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP36"
+    },
+    {
+      "id": "S310",
+      "text": "How do you handle a colleague who undermines you?",
+      "theme": "Discipline",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP56"
+    },
+    {
+      "id": "S311",
+      "text": "What is your plan to raise party support in your district?",
+      "theme": "Support",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S312",
+      "text": "Convince us you are an asset, not a liability.",
+      "theme": "Credibility",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST08"
+      ],
+      "asked_by": "OP82"
+    },
+    {
+      "id": "S313",
+      "text": "Where does our party stand on Wilderness Protection, and will you hold that line?",
+      "theme": "Wilderness protection",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "stage_ids": [
+        "ST35"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S314",
+      "text": "Will you break with colleagues over Wilderness Protection if it comes to a vote?",
+      "theme": "Wilderness protection",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "stage_ids": [
+        "ST35"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S315",
+      "text": "Where does our party stand on Rural Hospitals, and will you hold that line?",
+      "theme": "Rural health care",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST39"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S316",
+      "text": "Will you break with colleagues over Rural Hospitals if it comes to a vote?",
+      "theme": "Rural health care",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST39"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S317",
+      "text": "Where does our party stand on Digital Identity Cards, and will you hold that line?",
+      "theme": "Digital convenience",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST42"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S318",
+      "text": "Will you break with colleagues over Digital Identity Cards if it comes to a vote?",
+      "theme": "Digital convenience",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST42"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S319",
+      "text": "Where does our party stand on Broadcaster Independence, and will you hold that line?",
+      "theme": "Broadcaster funding",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST45"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S320",
+      "text": "Will you break with colleagues over Broadcaster Independence if it comes to a vote?",
+      "theme": "Broadcaster funding",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST45"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S321",
+      "text": "Where does our party stand on Donation Transparency, and will you hold that line?",
+      "theme": "Campaign finance",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST49"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S322",
+      "text": "Will you break with colleagues over Donation Transparency if it comes to a vote?",
+      "theme": "Campaign finance",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST49"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S323",
+      "text": "Where does our party stand on Corporate Tax Cuts, and will you hold that line?",
+      "theme": "Business investment",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST52"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S324",
+      "text": "Will you break with colleagues over Corporate Tax Cuts if it comes to a vote?",
+      "theme": "Business investment",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST52"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S325",
+      "text": "Where does our party stand on the Carbon Levy, and will you hold that line?",
+      "theme": "Clean air",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST56"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S326",
+      "text": "Will you break with colleagues over the Carbon Levy if it comes to a vote?",
+      "theme": "Clean air",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST56"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S327",
+      "text": "Where does our party stand on Fishing Quota Reform, and will you hold that line?",
+      "theme": "Quota trading",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST59"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S328",
+      "text": "Will you break with colleagues over Fishing Quota Reform if it comes to a vote?",
+      "theme": "Quota trading",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST59"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S329",
+      "text": "Where does our party stand on Shipbuilding Support, and will you hold that line?",
+      "theme": "Shipyard jobs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST62"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S330",
+      "text": "Will you break with colleagues over Shipbuilding Support if it comes to a vote?",
+      "theme": "Shipyard jobs",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST62"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S331",
+      "text": "Where does our party stand on the Constitutional Review, and will you hold that line?",
+      "theme": "Constitutional reform",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST65"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S332",
+      "text": "Will you break with colleagues over the Constitutional Review if it comes to a vote?",
+      "theme": "Constitutional reform",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST65"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S333",
+      "text": "Where does our party stand on Border Cooperation, and will you hold that line?",
+      "theme": "Customs efficiency",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST68"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S334",
+      "text": "Will you break with colleagues over Border Cooperation if it comes to a vote?",
+      "theme": "Customs efficiency",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST68"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S335",
+      "text": "Where does our party stand on Chishima Development, and will you hold that line?",
+      "theme": "Island resources",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST72"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S336",
+      "text": "Will you break with colleagues over Chishima Development if it comes to a vote?",
+      "theme": "Island resources",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST72"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S337",
+      "text": "Where does our party stand on China Trade, and will you hold that line?",
+      "theme": "Export gains",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST75"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S338",
+      "text": "Will you break with colleagues over China Trade if it comes to a vote?",
+      "theme": "Export gains",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST75"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S339",
+      "text": "Where does our party stand on Farm Succession, and will you hold that line?",
+      "theme": "Young farmers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST78"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S340",
+      "text": "Will you break with colleagues over Farm Succession if it comes to a vote?",
+      "theme": "Young farmers",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST78"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S341",
+      "text": "Where does our party stand on University Research Funding, and will you hold that line?",
+      "theme": "Research and innovation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST81"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S342",
+      "text": "Will you break with colleagues over University Research Funding if it comes to a vote?",
+      "theme": "Research and innovation",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST81"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S343",
+      "text": "Where does our party stand on Workplace Equality, and will you hold that line?",
+      "theme": "Fair treatment at work",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28"
+      ],
+      "stage_ids": [
+        "ST85"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S344",
+      "text": "Will you break with colleagues over Workplace Equality if it comes to a vote?",
+      "theme": "Fair treatment at work",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28"
+      ],
+      "stage_ids": [
+        "ST85"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S345",
+      "text": "Where does our party stand on Parental Leave, and will you hold that line?",
+      "theme": "Parent and child care",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST89"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S346",
+      "text": "Will you break with colleagues over Parental Leave if it comes to a vote?",
+      "theme": "Parent and child care",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST89"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S347",
+      "text": "Where does our party stand on Surveillance Cameras, and will you hold that line?",
+      "theme": "Public safety",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST93"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S348",
+      "text": "Will you break with colleagues over Surveillance Cameras if it comes to a vote?",
+      "theme": "Public safety",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST93"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S349",
+      "text": "Where does our party stand on Town Mergers, and will you hold that line?",
+      "theme": "Merger savings",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST97"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S350",
+      "text": "Will you break with colleagues over Town Mergers if it comes to a vote?",
+      "theme": "Merger savings",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST97"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S351",
+      "text": "Where does our party stand on Party Leadership Ballots, and will you hold that line?",
+      "theme": "Internal democracy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST100"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S352",
+      "text": "Will you break with colleagues over Party Leadership Ballots if it comes to a vote?",
+      "theme": "Internal democracy",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST100"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S353",
+      "text": "In one sentence, what is your position on Digital Identity Cards?",
+      "theme": "Digital convenience",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST41"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S354",
+      "text": "Why should viewers trust you on Digital Identity Cards?",
+      "theme": "Digital convenience",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST41"
+      ],
+      "asked_by": "OP29"
+    },
+    {
+      "id": "S355",
+      "text": "In one sentence, what is your position on Broadcaster Independence?",
+      "theme": "Broadcaster funding",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST44"
+      ],
+      "asked_by": "OP33"
+    },
+    {
+      "id": "S356",
+      "text": "Why should viewers trust you on Broadcaster Independence?",
+      "theme": "Broadcaster funding",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST44"
+      ],
+      "asked_by": "OP47"
+    },
+    {
+      "id": "S357",
+      "text": "In one sentence, what is your position on China Trade?",
+      "theme": "Export gains",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST73"
+      ],
+      "asked_by": "OP67"
+    },
+    {
+      "id": "S358",
+      "text": "Why should viewers trust you on China Trade?",
+      "theme": "Export gains",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST73"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S359",
+      "text": "In one sentence, what is your position on Workplace Equality?",
+      "theme": "Fair treatment at work",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28"
+      ],
+      "stage_ids": [
+        "ST84"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S360",
+      "text": "Why should viewers trust you on Workplace Equality?",
+      "theme": "Fair treatment at work",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28"
+      ],
+      "stage_ids": [
+        "ST84"
+      ],
+      "asked_by": "OP91"
+    },
+    {
+      "id": "S361",
+      "text": "In one sentence, what is your position on Surveillance Cameras?",
+      "theme": "Public safety",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST91"
+      ],
+      "asked_by": "OP01"
+    },
+    {
+      "id": "S362",
+      "text": "Why should viewers trust you on Surveillance Cameras?",
+      "theme": "Public safety",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST91"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S363",
+      "text": "In one sentence, what is your position on Party Leadership Ballots?",
+      "theme": "Internal democracy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST98"
+      ],
+      "asked_by": "OP29"
+    },
+    {
+      "id": "S364",
+      "text": "Why should viewers trust you on Party Leadership Ballots?",
+      "theme": "Internal democracy",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST98"
+      ],
+      "asked_by": "OP33"
     }
   ]
 }
