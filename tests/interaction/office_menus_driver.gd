@@ -65,6 +65,7 @@ func _walk() -> void:
 		[["CosmeticsButton", "CosmeticsPanel"], ["HowToPlayButton", "HowToPlayPanel"]])
 	await _check_allies_popup(office)
 	await _check_text_size(office)
+	_check_backing_prices(office)
 
 
 ## Opens a menu, checks it holds the right buttons, then opens each in turn:
@@ -204,3 +205,33 @@ func _check_text_size(office: Node) -> void:
 	else:
 		print("  text size button: Large %d, Small %d, back to %d" % [seen[0], seen[1], seen[2]])
 	await _click_back(menu)
+
+
+## Prices of four digits or more read with a comma ("25,000 Funds"), never as a
+## bare run of digits, and no backing shows the typed-in word "free".
+func _check_backing_prices(office: Node) -> void:
+	office._show_backing()
+	var panel := office.get_node("BackingPanel") as Overlay
+	var bare := RegEx.new()
+	bare.compile("(?<![0-9,])[0-9]{4,}(?![0-9,])")
+	var seen_comma := false
+	var stack: Array[Node] = [panel]
+	while not stack.is_empty():
+		var node: Node = stack.pop_back()
+		stack.append_array(node.get_children())
+		var text := ""
+		if node is Label:
+			text = (node as Label).text
+		elif node is Button:
+			text = (node as Button).text
+		if text.is_empty():
+			continue
+		if bare.search(text) != null:
+			_failures.append("a backing line has an unseparated number: '%s'" % text)
+		if text.contains(",") and text.contains("Funds"):
+			seen_comma = true
+	if not seen_comma:
+		_failures.append("no backing price shows a comma (expected e.g. 25,000 Funds)")
+	else:
+		print("  backing prices are written with thousands separators")
+	panel.hide()

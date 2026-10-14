@@ -1466,8 +1466,8 @@ func _cost_line(modifier: Dictionary) -> String:
 	for name: String in costs.keys():
 		var cost: int = costs[name]
 		if cost > 0:
-			parts.append("%d %s" % [cost, name])
-	return ", ".join(parts) if not parts.is_empty() else "free"
+			parts.append("%s %s" % [Phrase.with_separators(cost), name])
+	return ", ".join(parts) if not parts.is_empty() else Text.say("shop.item_free")
 
 
 func _on_buy_modifier(mod_id: String) -> void:
