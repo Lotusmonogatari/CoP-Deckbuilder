@@ -859,5 +859,47 @@
     "trigger_booster_ids": [
       "BO30"
     ]
+  },
+  {
+    "mod_id": "M45",
+    "name_en": "Parliamentary Colleagues' Support",
+    "name_jp": "同僚議員の支持",
+    "romaji": "Dōryō Giin no Shiji",
+    "trigger_segment_or_booster": [
+      "BO17"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "+1 card drawn at the start of ST02 Floor Debate.",
+    "reputation_cost": 10,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "HAND_SIZE_BONUS",
+    "effect_target": "ST02",
+    "effect_value": 1.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO17"
+    ]
+  },
+  {
+    "mod_id": "M46",
+    "name_en": "Voters' Mandate",
+    "name_jp": "有権者の負託",
+    "romaji": "Yūkensha no Futaku",
+    "trigger_segment_or_booster": [
+      "BO18"
+    ],
+    "trigger_min_pct": 25.0,
+    "effect": "+3 Jiban after successful completion of a level.",
+    "reputation_cost": 10,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "Jiban",
+    "effect_value": 3.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO18"
+    ]
   }
 ]

@@ -221,8 +221,8 @@ func test_every_real_backing_is_implemented() -> void:
 			"%s has an effect type the game cannot run" % modifier.get("mod_id"))
 
 
-func test_the_twelve_newest_organisations_each_have_a_backing() -> void:
-	for n in range(19, 31):
+func test_every_organisation_has_a_backing() -> void:
+	for n in range(17, 31):
 		var booster_id := "BO%02d" % n
 		var found := false
 		for modifier: Dictionary in DataDB.modifiers:
