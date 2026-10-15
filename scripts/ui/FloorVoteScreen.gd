@@ -384,33 +384,10 @@ func _show_result_summary(result: Dictionary, totals: Dictionary, passed: bool) 
 	var yes := int(totals.get("Yes", 0))
 	var house := yes + int(totals.get("No", 0)) + int(totals.get("Abstain", 0))
 
-	var tiles := HBoxContainer.new()
-	tiles.name = "SummaryTiles"
-	tiles.add_theme_constant_override("separation", 16)
-	for tile: Array in [
-			[Text.say("floor_vote.tile_aye"), yes, true],
-			[Text.say("floor_vote.tile_nay"), int(totals.get("No", 0)), false],
-			[Text.say("floor_vote.tile_abstain"), int(totals.get("Abstain", 0)), false]]:
-		var box := VBoxContainer.new()
-		box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var number := Label.new()
-		number.text = str(tile[1])
-		number.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		number.add_theme_font_size_override("font_size", 72)
-		if tile[2]:
-			number.add_theme_color_override("font_color",
-				VoteMeter.PASS_COLOUR if passed else VoteMeter.FAIL_COLOUR)
-		box.add_child(number)
-		var caption := Label.new()
-		caption.text = str(tile[0])
-		caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		caption.theme_type_variation = &"SmallLabel"
-		box.add_child(caption)
-		tiles.add_child(box)
-
 	var meter := VoteMeter.new()
 	meter.name = "SummaryMeter"
-	meter.show_totals(yes, int(totals.get("No", 0)), int(totals.get("Abstain", 0)), needed, passed)
+	meter.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	meter.show_totals(yes, int(totals.get("No", 0)), int(totals.get("Abstain", 0)), needed)
 
 	var requirement_text := VoteWords.requirement_label(str(result.get("requirement", FloorVoteEngine.MAJORITY)))
 	var reason := Label.new()
@@ -421,8 +398,14 @@ func _show_result_summary(result: Dictionary, totals: Dictionary, passed: bool) 
 		Text.say("floor_vote.result_cleared", {"n": yes - needed}) if passed
 		else Text.say("floor_vote.result_short", {"n": needed - yes}))
 
+	# The per-party bars are named in the same Aye / Nay words.
+	for pair: Array in [["BarYesLabel", "floor_vote.bar_aye"], ["BarNoLabel", "floor_vote.bar_nay"],
+			["BarAbstainLabel", "floor_vote.bar_abstain"]]:
+		var label := find_child(str(pair[0]), true, false) as Label
+		if label != null:
+			label.text = Text.say(str(pair[1]))
 	var index := _outcome_body.get_index() + 1
-	for node: Node in [tiles, meter, reason]:
+	for node: Node in [meter, reason]:
 		column.add_child(node)
 		column.move_child(node, index)
 		index += 1
