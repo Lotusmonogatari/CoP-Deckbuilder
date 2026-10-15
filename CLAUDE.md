@@ -2480,3 +2480,7 @@ New Shop item **SH21 Training Session Coupon** (150 XP, draft price) and a new o
 - **Aye / Nay everywhere a vote is shown:** "Vote Aye" / "Vote Nay" buttons, "46 Aye, 47 Nay, 8 abstaining", "Aye votes needed", the preview lines, Your Record's law lines and "You voted Aye", and the three party bars, now headed **Aye Votes / Nay Votes / Abstain Votes** (`floor_vote.bar_*`, set in code from the Text tab). Internal keys stay Yes/No/Abstain.
 - **Law pop-up:** "When it was voted" now reads **"Reactions to Your Vote"** (`record.law_now`).
 - **Administration menu:** the backup summary line (and the "no backup yet" line) between the buttons is removed; the buttons remain and the summary still shows in the restore, overwrite and undo warnings.
+
+### Administration menu spacing and Save Game / Load Game labels (2026-10-15, Cameron)
+
+The backup buttons used to sit inside one zero-gap column, so Save and Load touched. `OfficeScreen._backup_buttons()` now returns them as separate rows of the menu itself, so every gap matches the other buttons (checked in a real screenshot). Labels: "Back Up Now" is now **Save Game** and "Restore the Backup" is now **Load Game** (`office.backup_now`, `office.backup_restore`). The Reputation and Results menu already used plain rows, so its spacing was already even. Not checked: the Load Game button's own spacing in a screenshot (the throwaway shot had no backup written, so it was hidden).

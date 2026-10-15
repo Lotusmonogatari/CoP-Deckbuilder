@@ -1067,38 +1067,40 @@ func _show_administration_menu() -> void:
 		_menu_button("HowToPlayButton", "office.how_to_play",
 			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
 		_text_size_button(),
-		_backup_row(),
-		# Starting over lives here, not in Office Management (Cameron,
-		# 2026-10-11). The menu closes first so it is not left open under the
-		# warning and the New Game screens.
-		_menu_button("NewGameMenuButton", "office.new_game", func() -> void:
-			_administration_menu.close()
-			_confirm_new_game(), _new_game_panel),
 	]
+	# The save buttons sit directly in the menu's row list, so the gap between
+	# them is the same as between every other menu button.
+	rows.append_array(_backup_buttons())
+	# Starting over lives here, not in Office Management (Cameron,
+	# 2026-10-11). The menu closes first so it is not left open under the
+	# warning and the New Game screens.
+	rows.append(_menu_button("NewGameMenuButton", "office.new_game", func() -> void:
+		_administration_menu.close()
+		_confirm_new_game(), _new_game_panel))
 	_administration_menu.open(Text.say("office.administration"), rows)
 
 
 ## One manual backup slot (2026-10-15): "Back up now" writes it; "Restore"
 ## (after a warning) replaces the run with it. Shown with when it was made.
-func _backup_row() -> Control:
-	var box := UiKit.tight_column()
+func _backup_buttons() -> Array[Control]:
+	var box: Array[Control] = []
 	var now := UiKit.action_button(Text.say("office.backup_now"), "", _on_backup_now, 100.0)
 	now.name = "BackupNowButton"
 	now.custom_minimum_size.x = UiKit.LINE_WIDTH
-	box.add_child(now)
+	box.append(now)
 	if SaveManager.has_backup():
 		var restore := UiKit.action_button(Text.say("office.backup_restore"), "",
 			_confirm_backup_action.bind("restore"), 100.0)
 		restore.name = "BackupRestoreButton"
 		restore.custom_minimum_size.x = UiKit.LINE_WIDTH
-		box.add_child(restore)
+		box.append(restore)
 		# No floating summary line here: the summary shows in the restore warning.
 	if SaveManager.has_undo():
 		var undo := UiKit.action_button(Text.say("office.backup_undo"), "",
 			_confirm_backup_action.bind("undo"), 100.0)
 		undo.name = "BackupUndoButton"
 		undo.custom_minimum_size.x = UiKit.LINE_WIDTH
-		box.add_child(undo)
+		box.append(undo)
 	return box
 
 
