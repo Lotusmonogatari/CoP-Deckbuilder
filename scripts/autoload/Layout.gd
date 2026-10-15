@@ -30,8 +30,11 @@ var _original_default := 0
 const OUTLINE_WIDTH := 5
 const CANCEL_VARIATION := "CancelButton"
 const BUTTON_STATES := ["normal", "hover", "pressed", "disabled", "hover_pressed"]
-## Node names of buttons that go back or close rather than go forward.
-const CANCEL_NAMES := ["Back", "DetailsClose", "ZoomClose", "LeaveButton"]
+## Node names of buttons that get the white outline: the ones that go back or
+## close rather than forward, plus the battle screen's own End Turn,
+## Inventory and Details (Cameron, 2026-10-15).
+const CANCEL_NAMES := ["Back", "DetailsClose", "ZoomClose", "LeaveButton",
+	"EndTurnButton", "InventoryButton", "DetailsButton"]
 ## What an outline is before a run has a protagonist (the title screen).
 const NO_PARTY_OUTLINE := Color(1, 1, 1, 0.55)
 

@@ -4,7 +4,8 @@ extends GutTest
 
 
 func test_back_and_close_buttons_count_as_cancel() -> void:
-	for button_name in ["Back", "DetailsClose", "ZoomClose", "LeaveButton"]:
+	for button_name in ["Back", "DetailsClose", "ZoomClose", "LeaveButton",
+			"EndTurnButton", "InventoryButton", "DetailsButton"]:
 		var b := Button.new()
 		b.name = button_name
 		assert_true(Layout.is_cancel_button(b), button_name)
