@@ -204,6 +204,8 @@ func _show_influence_and_preview() -> void:
 ## A trigger variable as the player knows it: a booster's name, or the meta
 ## variable's own name.
 func _variable_name(variable: String) -> String:
+	if not variable.begins_with("BO"):
+		return variable   # a meta variable such as Reputation names itself
 	var booster := DataDB.get_booster(variable)
 	return str(booster.get("name_en", variable)) if not booster.is_empty() else variable
 
@@ -330,6 +332,11 @@ func _on_vote(choice: String) -> void:
 
 
 func _show_outcome(result: Dictionary) -> void:
+	# The influence note and the choice preview are moot once the vote is cast,
+	# and would show through the result panel.
+	var info := find_child("InfoScroll", true, false) as Control
+	if info != null:
+		info.hide()
 	var totals: Dictionary = result.get("totals", {})
 	var passed := bool(result.get("passed", false))
 

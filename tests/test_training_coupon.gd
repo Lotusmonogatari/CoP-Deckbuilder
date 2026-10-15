@@ -18,6 +18,7 @@ func test_using_it_starts_a_free_draw_and_learning_costs_nothing() -> void:
 	if GameState._unowned_cards_at_tier(tier).is_empty():
 		pending("no unowned card at the coupon's tier")
 		return
+	GameState.inventory = {}
 	GameState.add_item("SH21")
 	var xp_before := GameState.xp
 	var funds_before := int(GameState.meta["Funds"])
@@ -38,7 +39,14 @@ func test_it_is_refused_and_kept_when_no_card_is_left_at_its_tier() -> void:
 	var tier := int(DataDB.get_shop_item("SH21")["free_card_tier"])
 	for id in GameState._unowned_cards_at_tier(tier):
 		GameState.owned_cards.append(id)
+	GameState.inventory = {}
 	GameState.add_item("SH21")
 	var result := GameState.use_item_in_office("SH21")
 	assert_false(result["ok"])
 	assert_eq(GameState.item_count("SH21"), 1)
+
+
+func test_a_new_run_starts_with_the_balance_lever_s_coupons() -> void:
+	var want := int(DataDB.balance.get("starting_training_session_coupons", 0))
+	assert_gt(want, 0)
+	assert_eq(GameState.item_count("SH21"), want)
