@@ -37,6 +37,12 @@ var meta: Dictionary = {}
 ## { "Reputation": 3 }. Cleared when the next stage starts. The battle screen
 ## reads it to tell the player what just happened to them.
 var last_meta_change: Dictionary = {}
+## Why each variable in last_meta_change moved: { name: [short cause, ...] },
+## in the order they happened (Your Record shows them, 2026-10-15).
+var last_meta_cause: Dictionary = {}
+## The cause the next recorded change is filed under; set around a block of
+## rewards, cleared after.
+var _cause := ""
 
 ## Experience earned so far, and by the stage just finished.
 ##
@@ -431,6 +437,7 @@ func _keep_known(ids: Array[String], lookup: Callable) -> int:
 func reset_meta() -> void:
 	meta = BattleSetup.starting_meta()
 	last_meta_change = {}
+	last_meta_cause = {}
 	xp = BattleSetup.starting_xp()
 	last_xp_gained = 0
 	funds_cap_bonus = 0
@@ -606,7 +613,7 @@ func buy_modifier(mod_id: String) -> String:
 func hire_staff(staff_id: String) -> String:
 	var candidate := DataDB.get_staff(staff_id)
 	if candidate.is_empty():
-		return "Unknown staff candidate."
+		return Text.say("staff.unknown_candidate")
 
 	var role := str(candidate.get("role", ""))
 	var funds := int(meta.get("Funds", 0))
@@ -631,11 +638,11 @@ func hire_staff(staff_id: String) -> String:
 func upgrade_staff(role: String) -> String:
 	var hired: Dictionary = staff_hired.get(role, {})
 	if hired.is_empty():
-		return "Nobody is hired for this role yet."
+		return Text.say("staff.nobody_hired")
 
 	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
 	if candidate.is_empty():
-		return "Unknown staff candidate."
+		return Text.say("staff.unknown_candidate")
 
 	var tier := int(hired.get("tier", 0))
 	var funds := int(meta.get("Funds", 0))
@@ -664,12 +671,12 @@ func upgrade_staff(role: String) -> String:
 func fire_staff(role: String) -> String:
 	var hired: Dictionary = staff_hired.get(role, {})
 	if hired.is_empty():
-		return "Nobody is hired for this role yet."
+		return Text.say("staff.nobody_hired")
 
 	var staff_id := str(hired.get("staff_id", ""))
 	var candidate := DataDB.get_staff(staff_id)
 	if candidate.is_empty():
-		return "Unknown staff candidate."
+		return Text.say("staff.unknown_candidate")
 
 	var funds := int(meta.get("Funds", 0))
 	var refusal := Ledger.staff_fire_refusal(candidate, funds, Text.phrase())
@@ -766,6 +773,7 @@ func begin_level(runner: LevelRunner) -> void:
 	mid_stage = false
 	last_level_outcome = ""
 	last_meta_change = {}
+	last_meta_cause = {}
 	last_xp_gained = 0
 	last_booster_change = {}
 
@@ -878,13 +886,15 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 			statute_book, DataDB.law_effects, levels_completed_count))
 
 		if last_level_outcome == LevelRunner.WON:
+			_cause = Text.say("record.cause_level_win")
 			_pay_level_rewards()
 			_apply_level_bonus_win(level_runner.level)
+			_cause = ""
 			if not level_id.is_empty():
 				levels_cleared[level_id] = int(levels_cleared.get(level_id, 0)) + 1
-		SaveManager.autosave()
+		SaveManager.autosave(true)
 		return true
-	SaveManager.autosave()
+	SaveManager.autosave(true)
 	return false
 
 
@@ -921,7 +931,9 @@ func _record_lifetime_gaffes(gaffes: int, outcome: String, gaffe_caused_loss: bo
 
 	gaffe_penalty_applied = true
 	var delta := int(DataDB.balance.get("gaffes_lifetime_penalty_jiban_delta", -15))
+	_cause = Text.say("record.cause_gaffes")
 	_apply_meta_reward("Constituency support", delta)
+	_cause = ""
 	pending_trigger_alerts.append({"kind": "gaffe_penalty", "edge": "entered",
 		"count": lifetime_gaffes, "amount": absi(delta)})
 
@@ -1009,6 +1021,8 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	# 2026-09-22 workbook: xp_reward was renamed win_delta_xp.
 	if outcome == LevelRunner.WON or outcome == LevelRunner.LOST:
 		var side := "win" if outcome == LevelRunner.WON else "loss"
+		_cause = Text.say("record.cause_stage_win" if side == "win" else "record.cause_stage_loss",
+			{"stage": str(stage.get("name_en", ""))})
 		var paid_stage := stage
 		# Funding Freeze (M32) — party support at or below the Balance tab's
 		# own threshold. Zeroed at the source rather than undone afterward,
@@ -1028,6 +1042,7 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	var scored := MetaRules.apply_score_effects(meta, stage, score, sanban_rows_with_bonuses())
 	meta = scored["meta"]
 	_record_meta_change(scored["applied"])
+	_cause = ""
 
 
 ## owned_modifiers, plus M09 (Party Backing) when party_support_modifiers()
@@ -1229,6 +1244,11 @@ func _move_meta(name: String, delta: int) -> void:
 func _record_meta_change(applied: Dictionary) -> void:
 	for name: String in applied.keys():
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
+		if int(applied[name]) != 0 and not _cause.is_empty():
+			var causes: Array = last_meta_cause.get(name, [])
+			if not causes.has(_cause):
+				causes.append(_cause)
+			last_meta_cause[name] = causes
 		# Announced as well as recorded. The recording is for the result
 		# screen, which asks afterwards; the announcement is for anything that
 		# wants to react as it happens — a sound, or the Office lighting up a
@@ -1482,7 +1502,7 @@ func offer_random_card(item_id: String) -> Dictionary:
 	var refusal := _card_training_refusal(item)
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
-	var choices := _unowned_cards_at_tier(int(item.get("card_tier", 0)))
+	var choices := _unowned_cards_at_tier(_draw_tier(item))
 	var card_id: String = choices[randi() % choices.size()]
 	card_draw = {"item_id": item_id, "card_id": card_id, "look": 1, "seen": [card_id]}
 	return _draw_result()
@@ -1493,7 +1513,7 @@ func pass_offered_card() -> Dictionary:
 		return {"ok": false, "message": ""}
 	if not can_pass_offered_card():
 		return {"ok": false, "message": ""}
-	var tier := int(DataDB.get_shop_item(str(card_draw["item_id"])).get("card_tier", 0))
+	var tier := _draw_tier(DataDB.get_shop_item(str(card_draw["item_id"])))
 	var seen: Array = card_draw.get("seen", [])
 	# Something not shown yet in this draw where possible; with fewer unowned
 	# cards left than looks, anything but the card on screen now.
@@ -1514,7 +1534,7 @@ func pass_offered_card() -> Dictionary:
 func can_pass_offered_card() -> bool:
 	if card_draw.is_empty() or int(card_draw["look"]) >= card_training_looks():
 		return false
-	var tier := int(DataDB.get_shop_item(str(card_draw["item_id"])).get("card_tier", 0))
+	var tier := _draw_tier(DataDB.get_shop_item(str(card_draw["item_id"])))
 	return _unowned_cards_at_tier(tier).size() > 1
 
 
@@ -1529,9 +1549,10 @@ func learn_offered_card() -> Dictionary:
 	var item_id := str(card_draw["item_id"])
 	var card_id := str(card_draw["card_id"])
 	var item := DataDB.get_shop_item(item_id)
-	var refusal := _card_training_refusal(item)
-	if refusal.is_empty() and not _unowned_cards_at_tier(int(item.get("card_tier", 0))).has(card_id):
-		refusal = Text.say("shop.no_cards_left_at_tier", {"tier": int(item.get("card_tier", 0))})
+	var free := _is_free_draw(item)
+	var refusal := "" if free else _card_training_refusal(item)
+	if refusal.is_empty() and not _unowned_cards_at_tier(_draw_tier(item)).has(card_id):
+		refusal = Text.say("shop.no_cards_left_at_tier", {"tier": _draw_tier(item)})
 	if not refusal.is_empty():
 		# Nothing the player did on this screen can cause this (the price was
 		# checked when the draw began), so a draw that can no longer be paid
@@ -1539,10 +1560,11 @@ func learn_offered_card() -> Dictionary:
 		card_draw = {}
 		return {"ok": false, "message": refusal}
 
-	var price := Items.costs(item)
-	_move_xp(-int(price["XP"]))
-	_move_meta("Funds", -int(price["Funds"]))
-	shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
+	if not free:
+		var price := Items.costs(item)
+		_move_xp(-int(price["XP"]))
+		_move_meta("Funds", -int(price["Funds"]))
+		shop_bought_this_level[item_id] = int(shop_bought_this_level.get(item_id, 0)) + 1
 	owned_cards.append(card_id)
 	card_draw = {}
 	var card_name := str(DataDB.get_card(card_id).get("name_en", card_id))
@@ -1574,6 +1596,19 @@ func _card_training_refusal(item: Dictionary) -> String:
 	if _unowned_cards_at_tier(tier).is_empty():
 		return Text.say("shop.no_cards_left_at_tier", {"tier": tier})
 	return ""
+
+
+## The card tier an item draws from: a coupon's Free Card Tier, else a
+## training session's Card Tier.
+func _draw_tier(item: Dictionary) -> int:
+	var free: Variant = item.get("free_card_tier")
+	return int(free) if free != null else int(item.get("card_tier", 0))
+
+
+## True for a Training Session Coupon: its draw costs nothing (the coupon was
+## the payment).
+func _is_free_draw(item: Dictionary) -> bool:
+	return item.get("free_card_tier") != null
 
 
 func _unowned_cards_at_tier(tier: int) -> Array[String]:
@@ -1690,10 +1725,24 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 	if Items.is_player_choice(item) and chosen_target.is_empty():
 		return {"ok": false, "needs_choice": true}
 
+	var name := str(item.get("name", item_id))
+	if _is_free_draw(item):
+		# A Training Session Coupon: a free Rhetoric Training draw. Refused
+		# (coupon kept) while another draw is open or no card of the tier is left.
+		if not card_draw.is_empty():
+			return {"ok": false, "message": Text.say("rhetoric.draw_in_progress")}
+		var choices := _unowned_cards_at_tier(_draw_tier(item))
+		if choices.is_empty():
+			return {"ok": false, "message": Text.say("shop.no_cards_left_at_tier", {"tier": _draw_tier(item)})}
+		_take_item(item_id)
+		var card_id: String = choices[randi() % choices.size()]
+		card_draw = {"item_id": item_id, "card_id": card_id, "look": 1, "seen": [card_id]}
+		return {"ok": true, "opens_draw": true,
+			"message": Text.say("rhetoric.coupon_used", {"name": name})}
+
 	_take_item(item_id)
 	var split := Items.split_grants(item)
 	var applied := _apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
-	var name := str(item.get("name", item_id))
 	var outcome := _describe_grant_outcomes(applied)
 	if (split["stage"] as Array).is_empty():
 		return {"ok": true, "message": (Text.say("item.used_with_outcome",
@@ -1929,7 +1978,8 @@ func _apply_party_delta(party_name: String, delta: int) -> void:
 ## "favorability_deltas". The player's own party's share lands on "Party
 ## support" the same way any other stage's win_delta_party_support does;
 ## everything else lands on party_standing.
-func apply_floor_vote_favorability(deltas: Dictionary) -> void:
+func apply_floor_vote_favorability(deltas: Dictionary, cause: String = "") -> void:
+	_cause = cause
 	var own_party := str(DataDB.player.get("party", ""))
 	for party_name: String in deltas:
 		var delta := int(deltas[party_name])
@@ -1937,6 +1987,7 @@ func apply_floor_vote_favorability(deltas: Dictionary) -> void:
 			_apply_meta_reward("Party support", delta)
 		else:
 			_apply_party_delta(party_name, delta)
+	_cause = ""
 
 
 ## The Floor Vote influence swing's own bonus (2026-09-28, §7.7): a bill's
@@ -1944,9 +1995,12 @@ func apply_floor_vote_favorability(deltas: Dictionary) -> void:
 ## columns, applied only when the swing actually flipped that bill's own
 ## pass/fail outcome. Both blank read as 0, same as every other delta column
 ## — a no-op call is fine and expected for the common case of no bonus set.
-func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta: int) -> void:
+func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta: int,
+		cause: String = "") -> void:
+	_cause = cause
 	_apply_meta_reward("Reputation", reputation_delta)
 	_apply_meta_reward("Party support", party_support_delta)
+	_cause = ""
 
 
 ## Every bill_id the influence swing has flipped (§7.7), in the order they
@@ -2015,8 +2069,12 @@ func _apply_law_effect_rows(rows: Array) -> void:
 		if effects is Array:
 			_apply_reward_entries(effects)
 		var deltas := StatuteBook.meta_deltas(row)
+		var bill_id := str(row.get("bill_id", ""))
+		_cause = Text.say("record.cause_law", {"bill": str(
+			DataDB.floor_votes.get(bill_id, {}).get("bill_name", bill_id))})
 		for name: String in deltas:
 			_apply_meta_reward(name, int(deltas[name]))
+		_cause = ""
 		_move_xp(StatuteBook.xp_delta(row))
 
 

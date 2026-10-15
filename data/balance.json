@@ -30,5 +30,6 @@
   "party_salience_max_factor": 2,
   "text_scale_small": 90,
   "text_scale_large": 120,
+  "transition_player_thought_chance": 30,
   "xp_tiers": {}
 }

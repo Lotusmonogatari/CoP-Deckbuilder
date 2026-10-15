@@ -70,7 +70,7 @@ text = "本会議採決"
 
 [node name="PartyRow" type="Control" parent="Safe/Column"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 620)
 layout_mode = 2
 clip_contents = false
 

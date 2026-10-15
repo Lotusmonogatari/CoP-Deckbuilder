@@ -82,7 +82,8 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 ## [...], "background_id": "..."}` — or `{}` when the stage doesn't show
 ## one, or shows one but nobody eligible has anything written.
 static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
-		dialogue_rows: Array, rng: RandomNumberGenerator, hired_staff_ids: Variant = null) -> Dictionary:
+		dialogue_rows: Array, rng: RandomNumberGenerator, hired_staff_ids: Variant = null,
+		thought_chance: int = 0) -> Dictionary:
 	if not should_show(stage):
 		return {}
 
@@ -95,6 +96,10 @@ static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
 		thought = player_thought(dialogue_rows, stage_id, rng)
 		if thought.is_empty():
 			return {}
+	elif thought_chance > 0 and rng.randi_range(1, 100) <= thought_chance:
+		# Speakers are available, but the player sometimes opens with a
+		# private thought first (2026-10-15).
+		thought = player_thought(dialogue_rows, stage_id, rng)
 
 	var background := PoolPicker.pick(background_rows, "stage_id", stage_id, rng)
 	return {

@@ -44,6 +44,35 @@ var _party_styles: Array[StyleBoxFlat] = []
 var insets := {"left": 0.0, "top": 0.0, "right": 0.0, "bottom": 0.0}
 
 
+var _toast: Label
+var _toast_tween: Tween
+
+
+## A small line that fades in at the top of the screen and out again, over
+## whatever screen is showing ("Saved").
+func flash(text: String) -> void:
+	if _toast == null:
+		var layer := CanvasLayer.new()
+		layer.layer = 100
+		add_child(layer)
+		_toast = Label.new()
+		_toast.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_toast.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+		_toast.grow_horizontal = Control.GROW_DIRECTION_BOTH
+		_toast.position.y = 60.0 + insets["top"]
+		_toast.add_theme_font_size_override("font_size", 40)
+		_toast.add_theme_color_override("font_outline_color", Color.BLACK)
+		_toast.add_theme_constant_override("outline_size", 10)
+		layer.add_child(_toast)
+	_toast.text = text
+	_toast.modulate.a = 1.0
+	if _toast_tween != null:
+		_toast_tween.kill()
+	_toast_tween = create_tween()
+	_toast_tween.tween_interval(0.8)
+	_toast_tween.tween_property(_toast, "modulate:a", 0.0, 0.6)
+
+
 func _ready() -> void:
 	_load_settings()
 	apply_text_scale()
@@ -187,6 +216,8 @@ func _recolour_outlines() -> void:
 
 ## True for a button that backs out of a screen (white outline).
 static func is_cancel_button(button: Button) -> bool:
+	if bool(button.get_meta("party_outline", false)):
+		return false   # a button that shares a cancel name but is not one (the Office's Marketplace)
 	return str(button.name) in CANCEL_NAMES or bool(button.get_meta("cancel", false))
 
 

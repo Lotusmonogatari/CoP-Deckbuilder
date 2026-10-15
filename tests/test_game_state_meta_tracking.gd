@@ -403,3 +403,15 @@ func test_a_win_respects_a_purchased_funds_cap_increase() -> void:
 		"a purchased funds_cap_bonus raises the ceiling a stage win can reach")
 	assert_lt(int(GameState.meta["Funds"]), base_max + GameState.funds_cap_bonus,
 		"sanity: this particular win doesn't reach the raised cap either")
+
+
+# Your Record's one-line cause (2026-10-15).
+func test_a_vote_files_its_change_under_a_cause() -> void:
+	GameState.start_new_run("PC01")
+	GameState.last_meta_cause = {}
+	GameState.apply_floor_vote_favorability({str(DataDB.player.get("party", "")): 3},
+		"the vote on X")
+	assert_eq(GameState.last_meta_cause.get("Party support"), ["the vote on X"])
+	GameState.apply_floor_vote_favorability({str(DataDB.player.get("party", "")): 2},
+		"the vote on X")
+	assert_eq(GameState.last_meta_cause.get("Party support").size(), 1, "same cause once")

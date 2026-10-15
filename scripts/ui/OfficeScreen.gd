@@ -535,12 +535,16 @@ func _on_pass_card() -> void:
 
 
 func _on_learn_confirmed() -> void:
+	# A coupon's draw came from the Marketplace, so go back there.
+	var coupon := DataDB.get_shop_item(str(GameState.card_draw.get("item_id", "")))
+	var reopen: Callable = (_show_marketplace if coupon.get("free_card_tier") != null
+		else _show_rhetoric_training)
 	var result := GameState.learn_offered_card()
 	if result.get("ok", false):
 		_report.text = str(result.get("message", ""))
-		_after_spending("", _show_rhetoric_training)
+		_after_spending("", reopen)
 	else:
-		_after_spending(str(result.get("message", "")), _show_rhetoric_training)
+		_after_spending(str(result.get("message", "")), reopen)
 
 
 ## Every purchase ends the same way: the refusal on the front page if it was
@@ -675,9 +679,12 @@ func _build_inventory() -> void:
 	_inventory_panel = InventoryPanel.new()
 	_inventory_panel.name = "InventoryPanel"
 	_inventory_panel.context = Items.OFFICE
-	_inventory_panel.on_used = func(_result: Dictionary) -> void:
+	_inventory_panel.on_used = func(result: Dictionary) -> void:
 		_refresh_resources()
 		SaveManager.autosave()
+		# A Training Session Coupon starts a free draw: show the card now.
+		if bool(result.get("opens_draw", false)):
+			_show_card_offer.call_deferred()
 	# Using an item from the Marketplace must reopen the WHOLE Marketplace
 	# (grid + Supplies), not narrow back to InventoryPanel's own plain grid
 	# view — see reopen's own doc comment.
@@ -686,6 +693,9 @@ func _build_inventory() -> void:
 
 	var button := Button.new()
 	button.name = "InventoryButton"
+	# The battle screen's Inventory button is white; this one is the Office's
+	# Marketplace and takes the party colour (Layout.is_cancel_button()).
+	button.set_meta("party_outline", true)
 	button.text = Text.say("office.marketplace")
 	button.custom_minimum_size = _management_button.custom_minimum_size
 	button.size_flags_horizontal = _management_button.size_flags_horizontal
@@ -844,6 +854,9 @@ func _show_record() -> void:
 			if is_party else int(GameState.last_meta_change.get(name, 0)))
 		if change != 0:
 			line += "  (%+d)" % change
+			var causes: Array = GameState.last_meta_cause.get(name, [])
+			if not causes.is_empty():
+				line += "  " + Text.say("record.because", {"causes": ", ".join(causes)})
 		rows.append(UiKit.line(line))
 
 	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))
@@ -966,6 +979,7 @@ func _show_administration_menu() -> void:
 		_menu_button("HowToPlayButton", "office.how_to_play",
 			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
 		_text_size_button(),
+		_backup_row(),
 		# Starting over lives here, not in Office Management (Cameron,
 		# 2026-10-11). The menu closes first so it is not left open under the
 		# warning and the New Game screens.
@@ -974,6 +988,43 @@ func _show_administration_menu() -> void:
 			_confirm_new_game(), _new_game_panel),
 	]
 	_administration_menu.open(Text.say("office.administration"), rows)
+
+
+## One manual backup slot (2026-10-15): "Back up now" writes it; "Restore"
+## (after a warning) replaces the run with it. Shown with when it was made.
+func _backup_row() -> Control:
+	var box := UiKit.tight_column()
+	var now := UiKit.action_button(Text.say("office.backup_now"), "", func() -> void:
+		var ok := SaveManager.backup_now()
+		Layout.flash(Text.say("office.backup_made" if ok else "office.backup_failed"))
+		_show_administration_menu(), 100.0)
+	now.name = "BackupNowButton"
+	now.custom_minimum_size.x = UiKit.LINE_WIDTH
+	box.add_child(now)
+	if SaveManager.has_backup():
+		var restore := UiKit.action_button(Text.say("office.backup_restore"), "",
+			_confirm_restore_backup, 100.0)
+		restore.name = "BackupRestoreButton"
+		restore.custom_minimum_size.x = UiKit.LINE_WIDTH
+		box.add_child(restore)
+		box.add_child(UiKit.line(Text.say("office.backup_when", {"when": SaveManager.backup_time()})))
+	else:
+		box.add_child(UiKit.line(Text.say("office.backup_none")))
+	return box
+
+
+func _confirm_restore_backup() -> void:
+	_new_game_panel.open(Text.say("office.backup_restore"),
+		[UiKit.line(Text.say("office.backup_restore_warning", {"when": SaveManager.backup_time()}))],
+		Text.say("office.backup_restore_confirm"))
+	if not _new_game_panel.confirmed.is_connected(_on_restore_confirmed):
+		_new_game_panel.confirmed.connect(_on_restore_confirmed)
+
+
+func _on_restore_confirmed() -> void:
+	_new_game_panel.confirmed.disconnect(_on_restore_confirmed)
+	if SaveManager.restore_backup():
+		get_tree().reload_current_scene.call_deferred()
 
 
 ## "Text size: Normal" -- one tap cycles Small, Normal, Large and applies it
@@ -1434,9 +1485,11 @@ func _modifier_row(modifier: Dictionary, names: Dictionary, stage_names: Diction
 	if not booster.is_empty():
 		var have := int(GameState.booster_standing.get(booster, 0))
 		var needed := Ledger.standing_needed(modifier, DataDB.booster_standing)
-		var standing := ("%s  ·  standing %d" % [names.get(booster, booster), have]
+		var standing := (Text.say("backing.standing", {
+				"name": names.get(booster, booster), "have": have})
 			if have >= needed
-			else "%s  ·  standing %d, needs %d" % [names.get(booster, booster), have, needed])
+			else Text.say("backing.standing_needs", {
+				"name": names.get(booster, booster), "have": have, "needed": needed}))
 		box.add_child(UiKit.line(standing, "SmallLabel"))
 
 	# What it does, in the workbook's own words (or, for the one case with a
@@ -1806,7 +1859,7 @@ func _show_briefing() -> void:
 			# with a real, total surprise instead.
 			continue
 
-		rows.append(UiKit.heading(str(stage.get("name_en", "A stage"))))
+		rows.append(UiKit.heading(str(stage.get("name_en", Text.say("briefing.stage_fallback")))))
 		var who := _opponents_line(stage)
 		if not who.is_empty():
 			rows.append(UiKit.line(who, "SmallLabel"))
@@ -1884,11 +1937,12 @@ func _opponents_line(stage: Dictionary) -> String:
 			names.append(name)
 
 	if names.is_empty():
-		return "The reporters ask the questions here." if not stage.get(
+		return Text.say("briefing.reporters_ask") if not stage.get(
 			"questions", []).is_empty() else ""
 	if names.size() == 1:
-		return "Against %s" % names[0]
-	return "Against %s and %s" % [", ".join(names.slice(0, -1)), names[-1]]
+		return Text.say("briefing.against_one", {"name": names[0]})
+	return Text.say("briefing.against_many", {
+		"names": ", ".join(names.slice(0, -1)), "last": names[-1]})
 
 
 ## Start: choose a level — or, when a saved run stopped between the stages

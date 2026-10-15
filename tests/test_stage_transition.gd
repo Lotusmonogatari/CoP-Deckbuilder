@@ -202,3 +202,17 @@ func test_press_and_camera_lines_only_in_press_style_rooms() -> void:
 			if name.begins_with(kind):
 				fits = true
 		assert_true(fits, "%s (%s) is a press/studio line in %s" % [row.get("transition_dialogue_id"), text, name])
+
+
+func test_a_thought_can_open_a_transition_that_has_speakers() -> void:
+	var stage := {"stage_id": "ST02", "show_transition": "Yes"}
+	var cast := [{"stage_id": "ST02", "character_id": "OP03"}]
+	var dialogue := [
+		{"stage_id": "ST02", "character_id": "OP03", "character_line_en": "Hi.", "player_reply_en": "Hello."},
+		{"stage_id": null, "character_id": "PLAYER", "character_line_en": "Steady now.", "player_reply_en": null},
+	]
+	var always := StageTransition.resolve(stage, cast, [], dialogue, _rng(1), null, 100)
+	assert_eq(always["thought"], "Steady now.")
+	assert_eq(always["speakers"].size(), 1)
+	var never := StageTransition.resolve(stage, cast, [], dialogue, _rng(1), null, 0)
+	assert_eq(never["thought"], "")

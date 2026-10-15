@@ -193,7 +193,7 @@ func _show_journalist(question: Dictionary) -> void:
 ## OpponentDisplay.title_for()). Static: touches no instance state, so
 ## question_speaker_name() below can call it without a presenter of its own.
 static func _named_with_title(opponent: Dictionary) -> String:
-	var name := str(opponent.get("name", "Visitor A"))
+	var name := str(opponent.get("name", Text.say("opponent.fallback_name")))
 	var title := OpponentDisplay.title_for(opponent)
 	return name if title.is_empty() else Text.say("battle.name_and_title",
 		{"name": name, "title": title})

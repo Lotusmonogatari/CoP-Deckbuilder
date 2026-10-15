@@ -63,3 +63,32 @@ static func gate_passed(triggers: Array, meta: Dictionary,
 			return false
 
 	return any_enabled
+
+
+## Where the player stands against the gate, for the Floor Vote screen
+## (2026-10-15): { "ready": the gate passes for at least one of `party_ids`
+## (or, with none given, for the whole chamber), "missing": [ { variable,
+## value, threshold } ] one entry per enabled row that is not yet cleared
+## (for any party in scope), deduplicated by variable }.
+static func status(triggers: Array, meta: Dictionary, booster_standing: Dictionary,
+		default_threshold: int, party_ids: Array = []) -> Dictionary:
+	var scopes: Array = party_ids if not party_ids.is_empty() else [""]
+	var ready := false
+	var missing: Array = []
+	var seen := {}
+	for party_id: String in scopes:
+		if gate_passed(triggers, meta, booster_standing, default_threshold, party_id):
+			ready = true
+	if ready:
+		return {"ready": true, "missing": []}
+	for row: Dictionary in triggers:
+		if str(row.get("enabled", "")) != "Yes":
+			continue
+		var variable := str(row.get("variable", ""))
+		var cell: Variant = row.get("threshold")
+		var threshold := default_threshold if cell == null else int(cell)
+		var value := int(meta[variable]) if meta.has(variable) else int(booster_standing.get(variable, 0))
+		if value < threshold and not seen.has(variable):
+			seen[variable] = true
+			missing.append({"variable": variable, "value": value, "threshold": threshold})
+	return {"ready": false, "missing": missing}

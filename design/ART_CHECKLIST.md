@@ -14,7 +14,7 @@ in `data/art.json`.
 | Backgrounds | 24 / 121 |
 | Organisation icons | 30 / 30 |
 | Audience icons (Boosters panel) | 5 / 5 |
-| Shop item icons | 20 / 20 |
+| Shop item icons | 20 / 21 |
 | Cosmetic package icons | 2 / 2 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -500,6 +500,7 @@ in `data/art.json`.
 | buff_turn.png | AI Powered Clock | ✓ |
 | booster_dinner.png | Host a Dinner for a National Booster | ✓ |
 | walking_tour.png | Host a District Walking Tour for a Constituency Booster | ✓ |
+| training_coupon.png | Training Session Coupon | ☐ |
 
 ## Cosmetic package icons — `assets/icons/`
 

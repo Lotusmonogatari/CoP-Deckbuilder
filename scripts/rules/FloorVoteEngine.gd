@@ -58,6 +58,7 @@ var _bill: Dictionary = {}
 var _positions: Array = []
 var _player_party: String = ""
 var _resolved := false
+var _config: Dictionary = {}
 
 var _meta: Dictionary = {}
 var _booster_standing: Dictionary = {}
@@ -88,6 +89,7 @@ var _outcome_flipped_by_influence := false
 ## "nothing configured yet, nothing happens" bargain as the rest of the
 ## feature }.
 func setup(config: Dictionary) -> bool:
+	_config = config
 	setup_problems = []
 	_bill = config.get("bill", {}) as Dictionary
 	_positions = (_bill.get("positions", []) as Array).duplicate(true)
@@ -217,6 +219,29 @@ func choose(choice: String) -> Dictionary:
 		"influence_gate_passed": _influence_gate_passed,
 		"outcome_flipped_by_influence": _outcome_flipped_by_influence,
 	}
+
+
+## What voting `choice` would give, without voting: a throwaway engine is
+## built from the same config and asked, so this engine is left untouched.
+## { totals, passed, flipped_by_influence } (2026-10-15).
+func preview(choice: String) -> Dictionary:
+	var trial := FloorVoteEngine.new()
+	if not trial.setup(_config):
+		return {}
+	var result := trial.choose(choice)
+	return {
+		"totals": result.get("totals", {}),
+		"passed": result.get("passed", false),
+		"flipped_by_influence": result.get("outcome_flipped_by_influence", false),
+	}
+
+
+## Where the player stands against the influence gate (see VoteInfluence.status()).
+func influence_status() -> Dictionary:
+	var ids: Array = []
+	for position: Dictionary in _positions:
+		ids.append(str(position.get("party_id", "")))
+	return VoteInfluence.status(_triggers, _meta, _booster_standing, _default_threshold, ids)
 
 
 func _normalise(choice: String) -> String:

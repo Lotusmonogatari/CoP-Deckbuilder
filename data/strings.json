@@ -2924,5 +2924,278 @@
     "english": "Start a new game",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "battle.deck_hand_discard",
+    "where": "Battle — Details panel",
+    "english": "Deck {deck} · Hand {hand} · Discard {discard}",
+    "placeholders": "deck, hand, discard",
+    "notes": "2026-10-15 text pass (review U5): was typed in BattleScreen.gd."
+  },
+  {
+    "key": "backing.standing",
+    "where": "Boosters panel — an organisation's standing",
+    "english": "{name}  ·  standing {have}",
+    "placeholders": "name, have",
+    "notes": "2026-10-15 text pass: was typed in OfficeScreen.gd."
+  },
+  {
+    "key": "backing.standing_needs",
+    "where": "Boosters panel — standing still too low",
+    "english": "{name}  ·  standing {have}, needs {needed}",
+    "placeholders": "name, have, needed",
+    "notes": "2026-10-15 text pass: was typed in OfficeScreen.gd."
+  },
+  {
+    "key": "briefing.against_one",
+    "where": "Level briefing — who a stage is against (one person)",
+    "english": "Against {name}",
+    "placeholders": "name",
+    "notes": "2026-10-15 text pass."
+  },
+  {
+    "key": "briefing.against_many",
+    "where": "Level briefing — who a stage is against (several)",
+    "english": "Against {names} and {last}",
+    "placeholders": "names, last",
+    "notes": "2026-10-15 text pass. {names} is the first ones, comma separated."
+  },
+  {
+    "key": "briefing.reporters_ask",
+    "where": "Level briefing — a room where reporters ask the questions",
+    "english": "The reporters ask the questions here.",
+    "placeholders": null,
+    "notes": "2026-10-15 text pass."
+  },
+  {
+    "key": "briefing.stage_fallback",
+    "where": "Level briefing — a stage with no name",
+    "english": "A stage",
+    "placeholders": null,
+    "notes": "Fallback only; every real stage has a name."
+  },
+  {
+    "key": "visitor.fallback_name",
+    "where": "Office Hours — a visitor with no name",
+    "english": "Visitor",
+    "placeholders": null,
+    "notes": "Fallback only."
+  },
+  {
+    "key": "opponent.fallback_name",
+    "where": "Battle — an opponent with no name",
+    "english": "Visitor A",
+    "placeholders": null,
+    "notes": "Neutral placeholder from CLAUDE.md section 4; fallback only."
+  },
+  {
+    "key": "staff.unknown_candidate",
+    "where": "Staff — refusal",
+    "english": "Unknown staff candidate.",
+    "placeholders": null,
+    "notes": "2026-10-15 text pass: was typed in GameState.gd."
+  },
+  {
+    "key": "staff.nobody_hired",
+    "where": "Staff — refusal",
+    "english": "Nobody is hired for this role yet.",
+    "placeholders": null,
+    "notes": "2026-10-15 text pass: was typed in GameState.gd."
+  },
+  {
+    "key": "save.saved",
+    "where": "Save",
+    "english": "Saved",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash. Flash after each stage."
+  },
+  {
+    "key": "office.backup_now",
+    "where": "Office — Administration",
+    "english": "Back up now",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash. Writes the one manual backup slot."
+  },
+  {
+    "key": "office.backup_restore",
+    "where": "Office — Administration",
+    "english": "Restore the backup",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_made",
+    "where": "Office — Administration",
+    "english": "Backed up.",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_failed",
+    "where": "Office — Administration",
+    "english": "The backup could not be written.",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_none",
+    "where": "Office — Administration",
+    "english": "No backup has been made yet.",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_when",
+    "where": "Office — Administration",
+    "english": "Backup made {when}",
+    "placeholders": "when",
+    "notes": "2026-10-15 manual backup slot / save flash. Shown under the buttons."
+  },
+  {
+    "key": "office.backup_restore_warning",
+    "where": "Office — Administration",
+    "english": "This replaces your current run with the backup made {when}. Anything done since is lost.",
+    "placeholders": "when",
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_restore_confirm",
+    "where": "Office — Administration",
+    "english": "Restore it",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "floor_vote.influence_ready",
+    "where": "Floor Vote",
+    "english": "Your influence is strong enough to sway other parties.",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.influence_not_ready",
+    "where": "Floor Vote",
+    "english": "Your influence is not yet strong enough to sway other parties. Still needed: {needs}.",
+    "placeholders": "needs",
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.influence_need",
+    "where": "Floor Vote",
+    "english": "{name} {have} of {needed}",
+    "placeholders": "name, have, needed",
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_heading",
+    "where": "Floor Vote",
+    "english": "If the vote went each way:",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_line",
+    "where": "Floor Vote",
+    "english": "{choice}: {yes} Yes, {no} No, {abstain} Abstain. {result}",
+    "placeholders": "choice, yes, no, abstain, result",
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_passes",
+    "where": "Floor Vote",
+    "english": "It passes.",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_fails",
+    "where": "Floor Vote",
+    "english": "It fails.",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_flips",
+    "where": "Floor Vote",
+    "english": "Your influence turns the result.",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.influence_more",
+    "where": "Floor Vote",
+    "english": "and {more} more",
+    "placeholders": "more",
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "record.cause_stage_win",
+    "where": "Your Record",
+    "english": "won {stage}",
+    "placeholders": "stage",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_stage_loss",
+    "where": "Your Record",
+    "english": "lost {stage}",
+    "placeholders": "stage",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_level_win",
+    "where": "Your Record",
+    "english": "level win bonuses",
+    "placeholders": null,
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_vote",
+    "where": "Your Record",
+    "english": "the vote on {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_influence",
+    "where": "Your Record",
+    "english": "your influence on {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_lean",
+    "where": "Your Record",
+    "english": "your lean on {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_law",
+    "where": "Your Record",
+    "english": "the law: {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_gaffes",
+    "where": "Your Record",
+    "english": "too many gaffes this run",
+    "placeholders": null,
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.because",
+    "where": "Your Record",
+    "english": "because of {causes}",
+    "placeholders": "causes",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "rhetoric.coupon_used",
+    "where": "Rhetoric Training",
+    "english": "{name} redeemed. Here is your free draw.",
+    "placeholders": "name",
+    "notes": "2026-10-15 Training Session Coupon."
   }
 ]

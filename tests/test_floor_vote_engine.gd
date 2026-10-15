@@ -421,3 +421,31 @@ func test_a_filled_influence_bonus_is_read_as_written() -> void:
 		"influence_bonus_reputation": 3.0, "influence_bonus_party_support": null})
 	assert_eq(bonus["reputation"], 3)
 	assert_eq(bonus["party_support"], 0)
+
+
+# --- Preview and influence readiness (2026-10-15) -----------------------
+
+func test_preview_matches_choose_and_leaves_the_engine_unresolved() -> void:
+	var engine := FloorVoteEngine.new()
+	engine.setup({"bill": _bill(), "player_party": "Frontier Party"})
+	var preview := engine.preview("No")
+	assert_false(engine.is_finished())
+	var real := FloorVoteEngine.new()
+	real.setup({"bill": _bill(), "player_party": "Frontier Party"})
+	var result := real.choose("No")
+	assert_eq(preview["totals"], result["totals"])
+	assert_eq(preview["passed"], result["passed"])
+
+
+func test_influence_status_lists_what_is_missing() -> void:
+	var triggers := [{"variable": "Reputation", "enabled": "Yes", "threshold": 85}]
+	var engine := FloorVoteEngine.new()
+	engine.setup({"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 60}, "triggers": triggers})
+	var status := engine.influence_status()
+	assert_false(status["ready"])
+	assert_eq(status["missing"][0]["variable"], "Reputation")
+	assert_eq(status["missing"][0]["value"], 60)
+	engine.setup({"bill": _bill(), "player_party": "Frontier Party",
+		"meta": {"Reputation": 90}, "triggers": triggers})
+	assert_true(engine.influence_status()["ready"])

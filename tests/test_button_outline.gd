@@ -34,3 +34,11 @@ func test_a_back_button_added_to_the_tree_takes_the_white_variation() -> void:
 	b.name = "Back"
 	add_child_autofree(b)
 	assert_eq(b.theme_type_variation, Layout.CANCEL_VARIATION)
+
+
+func test_the_offices_marketplace_button_keeps_the_party_colour() -> void:
+	var b := Button.new()
+	b.name = "InventoryButton"
+	b.set_meta("party_outline", true)
+	assert_false(Layout.is_cancel_button(b))
+	b.free()

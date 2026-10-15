@@ -35,7 +35,7 @@ func show_visitor(visitor: Dictionary) -> void:
 	_portrait.kind = PlaceholderArt.Kind.CHARACTER
 	_portrait.art_id = visitor_id
 	_portrait.expression = NEUTRAL
-	_name_label.text = str(visitor.get("name_en", "Visitor"))
+	_name_label.text = str(visitor.get("name_en", Text.say("visitor.fallback_name")))
 	var title := str(visitor.get("title", ""))
 	_title_label.text = title
 	_title_label.visible = not title.is_empty()

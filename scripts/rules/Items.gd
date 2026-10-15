@@ -103,6 +103,9 @@ static func split_grants(item: Dictionary) -> Dictionary:
 ## True when using it would do something. An item whose Grants cell is still
 ## blank is refused rather than silently used up.
 static func has_effect(item: Dictionary) -> bool:
+	# A Training Session Coupon's effect is a free card draw, not a grant.
+	if item.get("free_card_tier") != null:
+		return true
 	var split := split_grants(item)
 	return not ((split["meta"] as Array).is_empty() and (split["stage"] as Array).is_empty())
 
