@@ -57,7 +57,8 @@ func _ready() -> void:
 	for role: String in GameState.staff_hired:
 		hired_ids.append(str(GameState.staff_hired[role].get("staff_id", "")))
 	var result := StageTransition.resolve(
-		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng, hired_ids)
+		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng, hired_ids,
+		int(DataDB.balance.get("transition_player_thought_chance", 0)))
 
 	if result.is_empty():
 		_on_continue()
@@ -84,6 +85,12 @@ func _ready() -> void:
 	_speaker_rest_x = _speaker_portrait.position.x
 
 	_show_speaker(0)
+	# A private thought first, when this transition drew one.
+	var thought := str(result.get("thought", ""))
+	_lead_lines = 0
+	if not thought.is_empty():
+		_banner.say(CueBanner.PLAYER, str(DataDB.player.get("name_en", "")), thought)
+		_lead_lines = 1
 	for speaker: Dictionary in _speakers:
 		var name := _display_name(str(speaker["character_id"]))
 		var side := _banner_side(str(speaker["character_id"]))
@@ -97,15 +104,19 @@ func _process(_delta: float) -> void:
 	if _banner.lines_shown <= _lines_accounted_for:
 		return
 	_lines_accounted_for = _banner.lines_shown
-	var total_lines := _speakers.size() * 2
-	if _lines_accounted_for >= total_lines:
+	var spoken := _lines_accounted_for - _lead_lines
+	if spoken < 0:
 		return
-	var next_index: int = _lines_accounted_for / 2
+	var total_lines := _speakers.size() * 2
+	if spoken >= total_lines:
+		return
+	var next_index: int = spoken / 2
 	if next_index != _current_speaker_index:
 		_show_speaker(next_index)
 
 
 var _slide_tween: Tween
+var _lead_lines := 0
 
 
 func _show_speaker(index: int) -> void:
