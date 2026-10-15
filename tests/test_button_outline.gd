@@ -22,9 +22,10 @@ func test_an_ordinary_button_is_not_cancel() -> void:
 func test_the_theme_outlines_buttons_five_pixels_and_cancel_in_white() -> void:
 	var theme := ThemeDB.get_project_theme()
 	var normal := theme.get_stylebox("normal", "Button") as StyleBoxFlat
-	assert_eq(normal.border_width_left, 5)
+	assert_eq(normal.border_width_left, Layout.OUTLINE_WIDTH)
+	assert_eq(Layout.OUTLINE_WIDTH, 2)
 	var cancel := theme.get_stylebox("normal", Layout.CANCEL_VARIATION) as StyleBoxFlat
-	assert_eq(cancel.border_width_top, 5)
+	assert_eq(cancel.border_width_top, Layout.OUTLINE_WIDTH)
 	assert_eq(cancel.border_color, Color.WHITE)
 
 

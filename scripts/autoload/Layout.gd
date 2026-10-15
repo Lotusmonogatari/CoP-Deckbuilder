@@ -27,7 +27,7 @@ var _original_default := 0
 ## one. Built into the project theme at run time, because the colour depends
 ## on which protagonist is playing; changing the colour later just edits the
 ## same style boxes, so buttons already on screen follow it.
-const OUTLINE_WIDTH := 5
+const OUTLINE_WIDTH := 2
 const CANCEL_VARIATION := "CancelButton"
 const BUTTON_STATES := ["normal", "hover", "pressed", "disabled", "hover_pressed"]
 ## Node names of buttons that get the white outline: the ones that go back or
