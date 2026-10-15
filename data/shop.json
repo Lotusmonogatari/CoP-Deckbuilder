@@ -33,7 +33,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH02",
@@ -69,7 +70,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH03",
@@ -105,7 +107,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH04",
@@ -141,7 +144,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH05",
@@ -177,7 +181,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH06",
@@ -213,7 +218,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH07",
@@ -249,7 +255,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH08",
@@ -285,7 +292,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH09",
@@ -316,7 +324,8 @@
     "card_tier": 1,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH10",
@@ -347,7 +356,8 @@
     "card_tier": 2,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH11",
@@ -378,7 +388,8 @@
     "card_tier": 3,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH12",
@@ -409,7 +420,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": "Yes",
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH13",
@@ -440,7 +452,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": 100000
+    "funds_cap_increase": 100000,
+    "free_card_tier": null
   },
   {
     "item_id": "SH14",
@@ -476,7 +489,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH15",
@@ -512,7 +526,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH16",
@@ -548,7 +563,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH17",
@@ -584,7 +600,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH18",
@@ -620,7 +637,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH19",
@@ -656,7 +674,8 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
   },
   {
     "item_id": "SH20",
@@ -692,6 +711,39 @@
     "card_tier": null,
     "level_tier": null,
     "unlocks_recruitment_tier": null,
-    "funds_cap_increase": null
+    "funds_cap_increase": null,
+    "free_card_tier": null
+  },
+  {
+    "item_id": "SH21",
+    "name": "Training Session Coupon",
+    "description": "Redeem in the Office for one free Rhetoric Training draw: see up to three cards of its tier and learn one at no cost. Helps smooth a weak opening deck.",
+    "cost_xp": 150,
+    "cost_yen": 0,
+    "bonus_condition_1": null,
+    "bonus_condition_2": null,
+    "grants": null,
+    "icon": "training_coupon",
+    "use_in_office": "Yes",
+    "use_in_stage": "No",
+    "duration": null,
+    "uses_per_turn": null,
+    "stack_cap": null,
+    "purchase_limit": null,
+    "player_choice": null,
+    "bonus_1_role": null,
+    "bonus_1_min_tier": null,
+    "bonus_1_amount": null,
+    "bonus_2_role": null,
+    "bonus_2_min_tier": null,
+    "bonus_2_amount": null,
+    "bonus_3_role": null,
+    "bonus_3_min_tier": null,
+    "bonus_3_amount": null,
+    "card_tier": null,
+    "level_tier": null,
+    "unlocks_recruitment_tier": null,
+    "funds_cap_increase": null,
+    "free_card_tier": 1
   }
 ]

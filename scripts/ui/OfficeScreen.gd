@@ -535,12 +535,16 @@ func _on_pass_card() -> void:
 
 
 func _on_learn_confirmed() -> void:
+	# A coupon's draw came from the Marketplace, so go back there.
+	var coupon := DataDB.get_shop_item(str(GameState.card_draw.get("item_id", "")))
+	var reopen: Callable = (_show_marketplace if coupon.get("free_card_tier") != null
+		else _show_rhetoric_training)
 	var result := GameState.learn_offered_card()
 	if result.get("ok", false):
 		_report.text = str(result.get("message", ""))
-		_after_spending("", _show_rhetoric_training)
+		_after_spending("", reopen)
 	else:
-		_after_spending(str(result.get("message", "")), _show_rhetoric_training)
+		_after_spending(str(result.get("message", "")), reopen)
 
 
 ## Every purchase ends the same way: the refusal on the front page if it was
@@ -675,9 +679,12 @@ func _build_inventory() -> void:
 	_inventory_panel = InventoryPanel.new()
 	_inventory_panel.name = "InventoryPanel"
 	_inventory_panel.context = Items.OFFICE
-	_inventory_panel.on_used = func(_result: Dictionary) -> void:
+	_inventory_panel.on_used = func(result: Dictionary) -> void:
 		_refresh_resources()
 		SaveManager.autosave()
+		# A Training Session Coupon starts a free draw: show the card now.
+		if bool(result.get("opens_draw", false)):
+			_show_card_offer.call_deferred()
 	# Using an item from the Marketplace must reopen the WHOLE Marketplace
 	# (grid + Supplies), not narrow back to InventoryPanel's own plain grid
 	# view — see reopen's own doc comment.

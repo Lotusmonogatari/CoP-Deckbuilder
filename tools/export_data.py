@@ -1162,6 +1162,10 @@ SHEETS = {
             ("Level Tier", "level_tier", "int"),
             ("Unlocks Recruitment Tier", "unlocks_recruitment_tier", "str"),
             ("Funds Cap Increase", "funds_cap_increase", "int"),
+            # 2026-10-15, Cameron: a Training Session Coupon. Using the item in
+            # the Office starts a free Rhetoric Training draw at this tier
+            # (no price, same looks and Pass rules). Blank on every other row.
+            ("Free Card Tier", "free_card_tier", "int"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's

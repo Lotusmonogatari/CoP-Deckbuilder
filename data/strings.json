@@ -3190,5 +3190,12 @@
     "english": "because of {causes}",
     "placeholders": "causes",
     "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "rhetoric.coupon_used",
+    "where": "Rhetoric Training",
+    "english": "{name} redeemed. Here is your free draw.",
+    "placeholders": "name",
+    "notes": "2026-10-15 Training Session Coupon."
   }
 ]
