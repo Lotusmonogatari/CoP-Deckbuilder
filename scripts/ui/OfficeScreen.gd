@@ -969,6 +969,7 @@ func _show_administration_menu() -> void:
 		_menu_button("HowToPlayButton", "office.how_to_play",
 			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
 		_text_size_button(),
+		_backup_row(),
 		# Starting over lives here, not in Office Management (Cameron,
 		# 2026-10-11). The menu closes first so it is not left open under the
 		# warning and the New Game screens.
@@ -977,6 +978,43 @@ func _show_administration_menu() -> void:
 			_confirm_new_game(), _new_game_panel),
 	]
 	_administration_menu.open(Text.say("office.administration"), rows)
+
+
+## One manual backup slot (2026-10-15): "Back up now" writes it; "Restore"
+## (after a warning) replaces the run with it. Shown with when it was made.
+func _backup_row() -> Control:
+	var box := UiKit.tight_column()
+	var now := UiKit.action_button(Text.say("office.backup_now"), "", func() -> void:
+		var ok := SaveManager.backup_now()
+		Layout.flash(Text.say("office.backup_made" if ok else "office.backup_failed"))
+		_show_administration_menu(), 100.0)
+	now.name = "BackupNowButton"
+	now.custom_minimum_size.x = UiKit.LINE_WIDTH
+	box.add_child(now)
+	if SaveManager.has_backup():
+		var restore := UiKit.action_button(Text.say("office.backup_restore"), "",
+			_confirm_restore_backup, 100.0)
+		restore.name = "BackupRestoreButton"
+		restore.custom_minimum_size.x = UiKit.LINE_WIDTH
+		box.add_child(restore)
+		box.add_child(UiKit.line(Text.say("office.backup_when", {"when": SaveManager.backup_time()})))
+	else:
+		box.add_child(UiKit.line(Text.say("office.backup_none")))
+	return box
+
+
+func _confirm_restore_backup() -> void:
+	_new_game_panel.open(Text.say("office.backup_restore"),
+		[UiKit.line(Text.say("office.backup_restore_warning", {"when": SaveManager.backup_time()}))],
+		Text.say("office.backup_restore_confirm"))
+	if not _new_game_panel.confirmed.is_connected(_on_restore_confirmed):
+		_new_game_panel.confirmed.connect(_on_restore_confirmed)
+
+
+func _on_restore_confirmed() -> void:
+	_new_game_panel.confirmed.disconnect(_on_restore_confirmed)
+	if SaveManager.restore_backup():
+		get_tree().reload_current_scene.call_deferred()
 
 
 ## "Text size: Normal" -- one tap cycles Small, Normal, Large and applies it

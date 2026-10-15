@@ -882,9 +882,9 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 			_apply_level_bonus_win(level_runner.level)
 			if not level_id.is_empty():
 				levels_cleared[level_id] = int(levels_cleared.get(level_id, 0)) + 1
-		SaveManager.autosave()
+		SaveManager.autosave(true)
 		return true
-	SaveManager.autosave()
+	SaveManager.autosave(true)
 	return false
 
 

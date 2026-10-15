@@ -195,3 +195,23 @@ func test_an_unreadable_save_is_reported_and_its_backup_is_used() -> void:
 	assert_true(SaveManager.read_save(path).is_empty())
 	assert_eq(SaveManager.last_problem, "unreadable")
 	SaveManager.delete_save(path)
+
+
+# The manual backup slot is its own file: writing it never touches the main
+# save, and restoring it brings the run back (2026-10-15).
+func test_the_manual_backup_is_a_separate_slot_that_restores() -> void:
+	var was_enabled := SaveManager.enabled
+	SaveManager.enabled = true
+	SaveManager.delete_save(SaveManager.MANUAL_PATH)
+	GameState.start_new_run("PC01")
+	GameState.xp = 77
+	assert_false(SaveManager.has_backup())
+	assert_true(SaveManager.backup_now())
+	assert_true(SaveManager.has_backup())
+	assert_ne(SaveManager.backup_time(), "")
+	GameState.xp = 5
+	assert_true(SaveManager.restore_backup())
+	assert_eq(GameState.xp, 77)
+	SaveManager.delete_save(SaveManager.MANUAL_PATH)
+	SaveManager.delete_save()
+	SaveManager.enabled = was_enabled

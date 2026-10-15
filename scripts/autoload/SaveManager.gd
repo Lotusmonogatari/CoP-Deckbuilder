@@ -28,6 +28,9 @@ extends Node
 
 const SAVE_PATH := "user://savegame.json"
 const VERSION := 1
+## The one manual backup slot (2026-10-15): written only when the player asks,
+## never by autosave, so it survives whatever happens to the main save.
+const MANUAL_PATH := "user://savegame.manual.json"
 
 ## False in the test runs and click tests, so they neither read the
 ## player's real save nor write over it.
@@ -43,9 +46,39 @@ func _ready() -> void:
 
 
 ## Saves unless a stage is being fought. What every caller should use.
-func autosave() -> void:
+## `announce` flashes "Saved" on screen once the write succeeds (used after a
+## finished stage).
+func autosave(announce: bool = false) -> void:
 	if enabled and not GameState.mid_stage and not GameState.awaiting_new_game:
-		save_game()
+		if save_game() and announce:
+			Layout.flash(Text.say("save.saved"))
+
+
+## Writes the manual backup slot. True when written.
+func backup_now() -> bool:
+	return enabled and not GameState.awaiting_new_game and save_game(MANUAL_PATH)
+
+
+func has_backup() -> bool:
+	return has_save(MANUAL_PATH)
+
+
+## When the backup was made, as the save file recorded it ("" if none).
+func backup_time() -> String:
+	if not has_backup():
+		return ""
+	var parsed: Variant = _parse(MANUAL_PATH)
+	if parsed is Dictionary:
+		return str((parsed as Dictionary).get("saved_at", "")).replace("T", " ")
+	return ""
+
+
+## Loads the backup into the run and makes it the main save. True on success.
+func restore_backup() -> bool:
+	if not load_game(MANUAL_PATH):
+		return false
+	save_game()
+	return true
 
 
 ## Why the last read gave nothing: "" (nothing wrong), "unreadable" (the

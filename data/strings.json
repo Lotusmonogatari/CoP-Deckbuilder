@@ -3001,5 +3001,68 @@
     "english": "Nobody is hired for this role yet.",
     "placeholders": null,
     "notes": "2026-10-15 text pass: was typed in GameState.gd."
+  },
+  {
+    "key": "save.saved",
+    "where": "Save",
+    "english": "Saved",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash. Flash after each stage."
+  },
+  {
+    "key": "office.backup_now",
+    "where": "Office — Administration",
+    "english": "Back up now",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash. Writes the one manual backup slot."
+  },
+  {
+    "key": "office.backup_restore",
+    "where": "Office — Administration",
+    "english": "Restore the backup",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_made",
+    "where": "Office — Administration",
+    "english": "Backed up.",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_failed",
+    "where": "Office — Administration",
+    "english": "The backup could not be written.",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_none",
+    "where": "Office — Administration",
+    "english": "No backup has been made yet.",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_when",
+    "where": "Office — Administration",
+    "english": "Backup made {when}",
+    "placeholders": "when",
+    "notes": "2026-10-15 manual backup slot / save flash. Shown under the buttons."
+  },
+  {
+    "key": "office.backup_restore_warning",
+    "where": "Office — Administration",
+    "english": "This replaces your current run with the backup made {when}. Anything done since is lost.",
+    "placeholders": "when",
+    "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "office.backup_restore_confirm",
+    "where": "Office — Administration",
+    "english": "Restore it",
+    "placeholders": null,
+    "notes": "2026-10-15 manual backup slot / save flash."
   }
 ]
