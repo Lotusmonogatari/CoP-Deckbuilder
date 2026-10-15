@@ -37,6 +37,12 @@ var meta: Dictionary = {}
 ## { "Reputation": 3 }. Cleared when the next stage starts. The battle screen
 ## reads it to tell the player what just happened to them.
 var last_meta_change: Dictionary = {}
+## Why each variable in last_meta_change moved: { name: [short cause, ...] },
+## in the order they happened (Your Record shows them, 2026-10-15).
+var last_meta_cause: Dictionary = {}
+## The cause the next recorded change is filed under; set around a block of
+## rewards, cleared after.
+var _cause := ""
 
 ## Experience earned so far, and by the stage just finished.
 ##
@@ -431,6 +437,7 @@ func _keep_known(ids: Array[String], lookup: Callable) -> int:
 func reset_meta() -> void:
 	meta = BattleSetup.starting_meta()
 	last_meta_change = {}
+	last_meta_cause = {}
 	xp = BattleSetup.starting_xp()
 	last_xp_gained = 0
 	funds_cap_bonus = 0
@@ -766,6 +773,7 @@ func begin_level(runner: LevelRunner) -> void:
 	mid_stage = false
 	last_level_outcome = ""
 	last_meta_change = {}
+	last_meta_cause = {}
 	last_xp_gained = 0
 	last_booster_change = {}
 
@@ -878,8 +886,10 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 			statute_book, DataDB.law_effects, levels_completed_count))
 
 		if last_level_outcome == LevelRunner.WON:
+			_cause = Text.say("record.cause_level_win")
 			_pay_level_rewards()
 			_apply_level_bonus_win(level_runner.level)
+			_cause = ""
 			if not level_id.is_empty():
 				levels_cleared[level_id] = int(levels_cleared.get(level_id, 0)) + 1
 		SaveManager.autosave(true)
@@ -921,7 +931,9 @@ func _record_lifetime_gaffes(gaffes: int, outcome: String, gaffe_caused_loss: bo
 
 	gaffe_penalty_applied = true
 	var delta := int(DataDB.balance.get("gaffes_lifetime_penalty_jiban_delta", -15))
+	_cause = Text.say("record.cause_gaffes")
 	_apply_meta_reward("Constituency support", delta)
+	_cause = ""
 	pending_trigger_alerts.append({"kind": "gaffe_penalty", "edge": "entered",
 		"count": lifetime_gaffes, "amount": absi(delta)})
 
@@ -1009,6 +1021,8 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	# 2026-09-22 workbook: xp_reward was renamed win_delta_xp.
 	if outcome == LevelRunner.WON or outcome == LevelRunner.LOST:
 		var side := "win" if outcome == LevelRunner.WON else "loss"
+		_cause = Text.say("record.cause_stage_win" if side == "win" else "record.cause_stage_loss",
+			{"stage": str(stage.get("name_en", ""))})
 		var paid_stage := stage
 		# Funding Freeze (M32) — party support at or below the Balance tab's
 		# own threshold. Zeroed at the source rather than undone afterward,
@@ -1028,6 +1042,7 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 	var scored := MetaRules.apply_score_effects(meta, stage, score, sanban_rows_with_bonuses())
 	meta = scored["meta"]
 	_record_meta_change(scored["applied"])
+	_cause = ""
 
 
 ## owned_modifiers, plus M09 (Party Backing) when party_support_modifiers()
@@ -1229,6 +1244,11 @@ func _move_meta(name: String, delta: int) -> void:
 func _record_meta_change(applied: Dictionary) -> void:
 	for name: String in applied.keys():
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
+		if int(applied[name]) != 0 and not _cause.is_empty():
+			var causes: Array = last_meta_cause.get(name, [])
+			if not causes.has(_cause):
+				causes.append(_cause)
+			last_meta_cause[name] = causes
 		# Announced as well as recorded. The recording is for the result
 		# screen, which asks afterwards; the announcement is for anything that
 		# wants to react as it happens — a sound, or the Office lighting up a
@@ -1929,7 +1949,8 @@ func _apply_party_delta(party_name: String, delta: int) -> void:
 ## "favorability_deltas". The player's own party's share lands on "Party
 ## support" the same way any other stage's win_delta_party_support does;
 ## everything else lands on party_standing.
-func apply_floor_vote_favorability(deltas: Dictionary) -> void:
+func apply_floor_vote_favorability(deltas: Dictionary, cause: String = "") -> void:
+	_cause = cause
 	var own_party := str(DataDB.player.get("party", ""))
 	for party_name: String in deltas:
 		var delta := int(deltas[party_name])
@@ -1937,6 +1958,7 @@ func apply_floor_vote_favorability(deltas: Dictionary) -> void:
 			_apply_meta_reward("Party support", delta)
 		else:
 			_apply_party_delta(party_name, delta)
+	_cause = ""
 
 
 ## The Floor Vote influence swing's own bonus (2026-09-28, §7.7): a bill's
@@ -1944,9 +1966,12 @@ func apply_floor_vote_favorability(deltas: Dictionary) -> void:
 ## columns, applied only when the swing actually flipped that bill's own
 ## pass/fail outcome. Both blank read as 0, same as every other delta column
 ## — a no-op call is fine and expected for the common case of no bonus set.
-func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta: int) -> void:
+func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta: int,
+		cause: String = "") -> void:
+	_cause = cause
 	_apply_meta_reward("Reputation", reputation_delta)
 	_apply_meta_reward("Party support", party_support_delta)
+	_cause = ""
 
 
 ## Every bill_id the influence swing has flipped (§7.7), in the order they
@@ -2015,8 +2040,12 @@ func _apply_law_effect_rows(rows: Array) -> void:
 		if effects is Array:
 			_apply_reward_entries(effects)
 		var deltas := StatuteBook.meta_deltas(row)
+		var bill_id := str(row.get("bill_id", ""))
+		_cause = Text.say("record.cause_law", {"bill": str(
+			DataDB.floor_votes.get(bill_id, {}).get("bill_name", bill_id))})
 		for name: String in deltas:
 			_apply_meta_reward(name, int(deltas[name]))
+		_cause = ""
 		_move_xp(StatuteBook.xp_delta(row))
 
 

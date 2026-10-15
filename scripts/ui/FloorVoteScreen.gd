@@ -309,7 +309,9 @@ func _on_vote(choice: String) -> void:
 	_vote_abstain.disabled = true
 
 	var result := engine.choose(choice)
-	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}))
+	var bill_name := str(engine.bill().get("bill_name", ""))
+	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}),
+		Text.say("record.cause_vote", {"bill": bill_name}))
 	# Into the statute book, applying the bill's own "once" Law Effects.
 	GameState.record_floor_vote(engine.bill(), result, choice)
 
@@ -320,7 +322,8 @@ func _on_vote(choice: String) -> void:
 		var line := VoteInfluenceCues.resolve(DataDB.vote_influence_cues, bill_id, direction)
 		_banner.say(CueBanner.PLAYER, "", line)
 		var bonus := FloorVoteEngine.influence_bonus(engine.bill())
-		GameState.apply_floor_vote_influence_bonus(bonus["reputation"], bonus["party_support"])
+		GameState.apply_floor_vote_influence_bonus(bonus["reputation"], bonus["party_support"],
+			Text.say("record.cause_influence", {"bill": bill_name}))
 		GameState.record_bill_flip(bill_id)
 
 	_show_outcome(result)

@@ -847,6 +847,9 @@ func _show_record() -> void:
 			if is_party else int(GameState.last_meta_change.get(name, 0)))
 		if change != 0:
 			line += "  (%+d)" % change
+			var causes: Array = GameState.last_meta_cause.get(name, [])
+			if not causes.is_empty():
+				line += "  " + Text.say("record.because", {"causes": ", ".join(causes)})
 		rows.append(UiKit.line(line))
 
 	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))

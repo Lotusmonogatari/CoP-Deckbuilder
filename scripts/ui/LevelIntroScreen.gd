@@ -159,7 +159,8 @@ func _on_lean_chosen(lean: String) -> void:
 	var magnitude := int(DataDB.balance.get("lean_party_support_delta", 0))
 	var delta := BillLean.party_support_delta(own_position, lean, magnitude)
 	if delta != 0:
-		GameState.apply_floor_vote_favorability({own_party_name: delta})
+		GameState.apply_floor_vote_favorability({own_party_name: delta},
+			Text.say("record.cause_lean", {"bill": str(_bill.get("bill_name", ""))}))
 
 	_lean_row.visible = false
 	_continue_button.disabled = false

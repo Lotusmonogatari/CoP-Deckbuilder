@@ -3127,5 +3127,68 @@
     "english": "and {more} more",
     "placeholders": "more",
     "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "record.cause_stage_win",
+    "where": "Your Record",
+    "english": "won {stage}",
+    "placeholders": "stage",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_stage_loss",
+    "where": "Your Record",
+    "english": "lost {stage}",
+    "placeholders": "stage",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_level_win",
+    "where": "Your Record",
+    "english": "level win bonuses",
+    "placeholders": null,
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_vote",
+    "where": "Your Record",
+    "english": "the vote on {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_influence",
+    "where": "Your Record",
+    "english": "your influence on {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_lean",
+    "where": "Your Record",
+    "english": "your lean on {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_law",
+    "where": "Your Record",
+    "english": "the law: {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.cause_gaffes",
+    "where": "Your Record",
+    "english": "too many gaffes this run",
+    "placeholders": null,
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
+  },
+  {
+    "key": "record.because",
+    "where": "Your Record",
+    "english": "because of {causes}",
+    "placeholders": "causes",
+    "notes": "2026-10-15 one-line cause beside each Your Record change."
   }
 ]
