@@ -606,7 +606,7 @@ func buy_modifier(mod_id: String) -> String:
 func hire_staff(staff_id: String) -> String:
 	var candidate := DataDB.get_staff(staff_id)
 	if candidate.is_empty():
-		return "Unknown staff candidate."
+		return Text.say("staff.unknown_candidate")
 
 	var role := str(candidate.get("role", ""))
 	var funds := int(meta.get("Funds", 0))
@@ -631,11 +631,11 @@ func hire_staff(staff_id: String) -> String:
 func upgrade_staff(role: String) -> String:
 	var hired: Dictionary = staff_hired.get(role, {})
 	if hired.is_empty():
-		return "Nobody is hired for this role yet."
+		return Text.say("staff.nobody_hired")
 
 	var candidate := DataDB.get_staff(str(hired.get("staff_id", "")))
 	if candidate.is_empty():
-		return "Unknown staff candidate."
+		return Text.say("staff.unknown_candidate")
 
 	var tier := int(hired.get("tier", 0))
 	var funds := int(meta.get("Funds", 0))
@@ -664,12 +664,12 @@ func upgrade_staff(role: String) -> String:
 func fire_staff(role: String) -> String:
 	var hired: Dictionary = staff_hired.get(role, {})
 	if hired.is_empty():
-		return "Nobody is hired for this role yet."
+		return Text.say("staff.nobody_hired")
 
 	var staff_id := str(hired.get("staff_id", ""))
 	var candidate := DataDB.get_staff(staff_id)
 	if candidate.is_empty():
-		return "Unknown staff candidate."
+		return Text.say("staff.unknown_candidate")
 
 	var funds := int(meta.get("Funds", 0))
 	var refusal := Ledger.staff_fire_refusal(candidate, funds, Text.phrase())

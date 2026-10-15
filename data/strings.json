@@ -2924,5 +2924,82 @@
     "english": "Start a new game",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "battle.deck_hand_discard",
+    "where": "Battle — Details panel",
+    "english": "Deck {deck} · Hand {hand} · Discard {discard}",
+    "placeholders": "deck, hand, discard",
+    "notes": "2026-10-15 text pass (review U5): was typed in BattleScreen.gd."
+  },
+  {
+    "key": "backing.standing",
+    "where": "Boosters panel — an organisation's standing",
+    "english": "{name}  ·  standing {have}",
+    "placeholders": "name, have",
+    "notes": "2026-10-15 text pass: was typed in OfficeScreen.gd."
+  },
+  {
+    "key": "backing.standing_needs",
+    "where": "Boosters panel — standing still too low",
+    "english": "{name}  ·  standing {have}, needs {needed}",
+    "placeholders": "name, have, needed",
+    "notes": "2026-10-15 text pass: was typed in OfficeScreen.gd."
+  },
+  {
+    "key": "briefing.against_one",
+    "where": "Level briefing — who a stage is against (one person)",
+    "english": "Against {name}",
+    "placeholders": "name",
+    "notes": "2026-10-15 text pass."
+  },
+  {
+    "key": "briefing.against_many",
+    "where": "Level briefing — who a stage is against (several)",
+    "english": "Against {names} and {last}",
+    "placeholders": "names, last",
+    "notes": "2026-10-15 text pass. {names} is the first ones, comma separated."
+  },
+  {
+    "key": "briefing.reporters_ask",
+    "where": "Level briefing — a room where reporters ask the questions",
+    "english": "The reporters ask the questions here.",
+    "placeholders": null,
+    "notes": "2026-10-15 text pass."
+  },
+  {
+    "key": "briefing.stage_fallback",
+    "where": "Level briefing — a stage with no name",
+    "english": "A stage",
+    "placeholders": null,
+    "notes": "Fallback only; every real stage has a name."
+  },
+  {
+    "key": "visitor.fallback_name",
+    "where": "Office Hours — a visitor with no name",
+    "english": "Visitor",
+    "placeholders": null,
+    "notes": "Fallback only."
+  },
+  {
+    "key": "opponent.fallback_name",
+    "where": "Battle — an opponent with no name",
+    "english": "Visitor A",
+    "placeholders": null,
+    "notes": "Neutral placeholder from CLAUDE.md section 4; fallback only."
+  },
+  {
+    "key": "staff.unknown_candidate",
+    "where": "Staff — refusal",
+    "english": "Unknown staff candidate.",
+    "placeholders": null,
+    "notes": "2026-10-15 text pass: was typed in GameState.gd."
+  },
+  {
+    "key": "staff.nobody_hired",
+    "where": "Staff — refusal",
+    "english": "Nobody is hired for this role yet.",
+    "placeholders": null,
+    "notes": "2026-10-15 text pass: was typed in GameState.gd."
   }
 ]

@@ -2430,3 +2430,7 @@ Every button has a 2 px outline (5 px until 2026-10-15, then reduced at Cameron'
 **Battle controls white too (2026-10-15, Cameron):** End Turn, Inventory and Details (`EndTurnButton`, `InventoryButton`, `DetailsButton`) also take the white outline; they are in `Layout.CANCEL_NAMES`.
 
 **Marketplace button (2026-10-15, Cameron):** the Office's Marketplace button shares the node name `InventoryButton` with the battle screen's Inventory button, so it had picked up the white outline by mistake. It now carries the meta `party_outline`, which `Layout.is_cancel_button()` honours over the name, so it takes the party colour; the battle Inventory button stays white.
+
+### A text pass: 11 more sentences moved into the Text tab (2026-10-15, Cameron)
+
+Review item U5. Typed-in player-visible strings now read from the Text tab: the battle Details "Deck · Hand · Discard" line (`battle.deck_hand_discard`), the Boosters standing lines (`backing.standing`, `backing.standing_needs`), the briefing's "Against ..." and reporters lines (`briefing.against_one/many`, `briefing.reporters_ask`, `briefing.stage_fallback`), fallback names (`visitor.fallback_name`, `opponent.fallback_name`) and two staff messages (`staff.unknown_candidate`, `staff.nobody_hired`). Left as code on purpose: unused `BarModel.caption()`, the rules layer's `LevelRunner` fallback, language-neutral "name — N" formats and diagnostics. Only the Text sheet changed; wording snapshot accepted; GUT and `verify.sh` green.

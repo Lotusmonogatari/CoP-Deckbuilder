@@ -1437,9 +1437,11 @@ func _modifier_row(modifier: Dictionary, names: Dictionary, stage_names: Diction
 	if not booster.is_empty():
 		var have := int(GameState.booster_standing.get(booster, 0))
 		var needed := Ledger.standing_needed(modifier, DataDB.booster_standing)
-		var standing := ("%s  ·  standing %d" % [names.get(booster, booster), have]
+		var standing := (Text.say("backing.standing", {
+				"name": names.get(booster, booster), "have": have})
 			if have >= needed
-			else "%s  ·  standing %d, needs %d" % [names.get(booster, booster), have, needed])
+			else Text.say("backing.standing_needs", {
+				"name": names.get(booster, booster), "have": have, "needed": needed}))
 		box.add_child(UiKit.line(standing, "SmallLabel"))
 
 	# What it does, in the workbook's own words (or, for the one case with a
@@ -1809,7 +1811,7 @@ func _show_briefing() -> void:
 			# with a real, total surprise instead.
 			continue
 
-		rows.append(UiKit.heading(str(stage.get("name_en", "A stage"))))
+		rows.append(UiKit.heading(str(stage.get("name_en", Text.say("briefing.stage_fallback")))))
 		var who := _opponents_line(stage)
 		if not who.is_empty():
 			rows.append(UiKit.line(who, "SmallLabel"))
@@ -1887,11 +1889,12 @@ func _opponents_line(stage: Dictionary) -> String:
 			names.append(name)
 
 	if names.is_empty():
-		return "The reporters ask the questions here." if not stage.get(
+		return Text.say("briefing.reporters_ask") if not stage.get(
 			"questions", []).is_empty() else ""
 	if names.size() == 1:
-		return "Against %s" % names[0]
-	return "Against %s and %s" % [", ".join(names.slice(0, -1)), names[-1]]
+		return Text.say("briefing.against_one", {"name": names[0]})
+	return Text.say("briefing.against_many", {
+		"names": ", ".join(names.slice(0, -1)), "last": names[-1]})
 
 
 ## Start: choose a level — or, when a saved run stopped between the stages

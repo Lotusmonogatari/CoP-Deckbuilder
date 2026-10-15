@@ -482,8 +482,8 @@ func _refresh_details(state: BattleState) -> void:
 
 	lines.append("")
 	lines.append_array([
-		"Deck %d · Hand %d · Discard %d" % [
-			state.deck.size(), state.hand.size(), state.discard.size()],
+		Text.say("battle.deck_hand_discard", {
+			"deck": state.deck.size(), "hand": state.hand.size(), "discard": state.discard.size()}),
 		"Stage: %s" % str(_stage.get("name_en", "")),
 	])
 
