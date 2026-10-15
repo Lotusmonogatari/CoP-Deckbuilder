@@ -132,6 +132,80 @@ func start_voting() -> void:
 	_vote_no.text = Text.say("floor_vote.vote_no")
 	_vote_abstain.text = Text.say("floor_vote.vote_abstain")
 	_show_parties(engine.positions())
+	_show_influence_and_preview()
+
+
+## Under the bill: whether the player's influence can sway other parties yet
+## (and what is still missing), then what each choice would give (2026-10-15).
+## The labels are built in code beside BillText.
+func _show_influence_and_preview() -> void:
+	var holder := _bill_text.get_parent()
+	if holder.name == "InfoColumn":
+		holder = holder.get_parent().get_parent()
+	var column := holder.find_child("InfoColumn", true, false) as VBoxContainer
+	if column == null:
+		# The text can run longer than the strip it sits in, so it scrolls.
+		var scroll := ScrollContainer.new()
+		scroll.name = "InfoScroll"
+		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		holder.add_child(scroll)
+		DragScroll.attach(scroll)
+		column = VBoxContainer.new()
+		column.name = "InfoColumn"
+		column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		column.add_theme_constant_override("separation", 16)
+		scroll.add_child(column)
+		_bill_text.reparent(column, false)
+	for child in column.get_children():
+		if child != _bill_text:
+			child.queue_free()
+
+	var status := engine.influence_status()
+	var influence := Label.new()
+	influence.name = "InfluenceStatus"
+	influence.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	if bool(status.get("ready", false)):
+		influence.text = Text.say("floor_vote.influence_ready")
+	else:
+		var needs: Array[String] = []
+		var gaps: Array = status.get("missing", [])
+		for gap: Dictionary in gaps.slice(0, 3):
+			needs.append(Text.say("floor_vote.influence_need", {
+				"name": _variable_name(str(gap.get("variable", ""))),
+				"have": Phrase.with_separators(int(gap.get("value", 0))),
+				"needed": Phrase.with_separators(int(gap.get("threshold", 0)))}))
+		if gaps.size() > 3:
+			needs.append(Text.say("floor_vote.influence_more", {"more": gaps.size() - 3}))
+		influence.text = Text.say("floor_vote.influence_not_ready", {"needs": ", ".join(needs)})
+	column.add_child(influence)
+
+	var preview := Label.new()
+	preview.name = "VotePreview"
+	preview.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var lines: Array[String] = [Text.say("floor_vote.preview_heading")]
+	var labels := {"Yes": _vote_yes.text, "No": _vote_no.text, "Abstain": _vote_abstain.text}
+	for choice: String in labels:
+		var trial := engine.preview(choice)
+		if trial.is_empty():
+			continue
+		var totals: Dictionary = trial.get("totals", {})
+		var result := Text.say("floor_vote.preview_passes" if bool(trial.get("passed", false))
+			else "floor_vote.preview_fails")
+		if bool(trial.get("flipped_by_influence", false)):
+			result += " " + Text.say("floor_vote.preview_flips")
+		lines.append(Text.say("floor_vote.preview_line", {
+			"choice": labels[choice],
+			"yes": totals.get("Yes", 0), "no": totals.get("No", 0),
+			"abstain": totals.get("Abstain", 0), "result": result}))
+	preview.text = "\n".join(lines)
+	column.add_child(preview)
+
+
+## A trigger variable as the player knows it: a booster's name, or the meta
+## variable's own name.
+func _variable_name(variable: String) -> String:
+	var booster := DataDB.get_booster(variable)
+	return str(booster.get("name_en", variable)) if not booster.is_empty() else variable
 
 
 ## Every real party's own "Vote Resistance" (parties.json's own

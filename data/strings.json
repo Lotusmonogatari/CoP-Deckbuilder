@@ -3064,5 +3064,68 @@
     "english": "Restore it",
     "placeholders": null,
     "notes": "2026-10-15 manual backup slot / save flash."
+  },
+  {
+    "key": "floor_vote.influence_ready",
+    "where": "Floor Vote",
+    "english": "Your influence is strong enough to sway other parties.",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.influence_not_ready",
+    "where": "Floor Vote",
+    "english": "Your influence is not yet strong enough to sway other parties. Still needed: {needs}.",
+    "placeholders": "needs",
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.influence_need",
+    "where": "Floor Vote",
+    "english": "{name} {have} of {needed}",
+    "placeholders": "name, have, needed",
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_heading",
+    "where": "Floor Vote",
+    "english": "If the vote went each way:",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_line",
+    "where": "Floor Vote",
+    "english": "{choice}: {yes} Yes, {no} No, {abstain} Abstain. {result}",
+    "placeholders": "choice, yes, no, abstain, result",
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_passes",
+    "where": "Floor Vote",
+    "english": "It passes.",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_fails",
+    "where": "Floor Vote",
+    "english": "It fails.",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.preview_flips",
+    "where": "Floor Vote",
+    "english": "Your influence turns the result.",
+    "placeholders": null,
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
+  },
+  {
+    "key": "floor_vote.influence_more",
+    "where": "Floor Vote",
+    "english": "and {more} more",
+    "placeholders": "more",
+    "notes": "2026-10-15 Floor Vote preview and influence readiness."
   }
 ]
