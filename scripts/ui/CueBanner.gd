@@ -103,6 +103,7 @@ func say(side: int, speaker: String, line: String, detail: String = "") -> void:
 
 ## Drops everything waiting and takes the band away now.
 func clear() -> void:
+	_stop_motion()
 	_queue.clear()
 	_generation += 1
 	_busy = false
@@ -110,6 +111,12 @@ func clear() -> void:
 		_step_timer.stop()
 	if _band != null:
 		_band.hide()
+
+
+var _slide_tween: Tween
+var _out_tween: Tween
+var _flash_tween: Tween
+var _shake_tween: Tween
 
 
 func is_showing() -> bool:
@@ -126,9 +133,19 @@ func skip() -> void:
 	if not _busy:
 		return
 	_generation += 1
+	_stop_motion()
 	_band.hide()
 	lines_shown += 1
 	_show_next()
+
+
+## Kills the slide and the jolt still running, so a skipped line cannot
+## leave the next one mis-positioned (review U7, 2026-10-14).
+func _stop_motion() -> void:
+	for t: Tween in [_slide_tween, _out_tween, _flash_tween, _shake_tween]:
+		if t != null and t.is_valid():
+			t.kill()
+	position.y = 0.0
 
 
 func _show_next() -> void:
@@ -147,8 +164,8 @@ func _show_next() -> void:
 	var from := -width if entry["side"] == PLAYER else width
 	_band.position.x = from
 	_band.show()
-	var slide := create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	slide.tween_property(_band, "position:x", SIDE_MARGIN, SLIDE_IN * speed)
+	_slide_tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_slide_tween.tween_property(_band, "position:x", SIDE_MARGIN, SLIDE_IN * speed)
 	_impact()
 
 	var text_length := str(entry["line"]).length() + str(entry["detail"]).length()
@@ -163,8 +180,8 @@ func _on_step_timeout() -> void:
 	if _step_generation != _generation:
 		return
 	if not _step_sliding_out:
-		var out := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-		out.tween_property(_band, "position:x", -_step_from, SLIDE_OUT * speed)
+		_out_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+		_out_tween.tween_property(_band, "position:x", -_step_from, SLIDE_OUT * speed)
 		_step_sliding_out = true
 		_step_timer.start(maxf(SLIDE_OUT * speed, 0.001))
 		return
@@ -215,14 +232,14 @@ func _fit_height() -> void:
 ## The flash and the jolt that make a line land rather than appear.
 func _impact() -> void:
 	_flash.color = Color(1, 1, 1, 0.35)
-	var flash := create_tween()
-	flash.tween_property(_flash, "color:a", 0.0, 0.25 * speed)
+	_flash_tween = create_tween()
+	_flash_tween.tween_property(_flash, "color:a", 0.0, 0.25 * speed)
 
 	# The whole layer jolts, not the band, so the band's own place (which
 	# _fit_height() may still be settling) is never overwritten.
-	var shake := create_tween()
+	_shake_tween = create_tween()
 	for offset: float in [14.0, -10.0, 6.0, 0.0]:
-		shake.tween_property(self, "position:y", offset, 0.035 * speed)
+		_shake_tween.tween_property(self, "position:y", offset, 0.035 * speed)
 
 
 func _on_band_input(event: InputEvent) -> void:

@@ -105,6 +105,9 @@ func _process(_delta: float) -> void:
 		_show_speaker(next_index)
 
 
+var _slide_tween: Tween
+
+
 func _show_speaker(index: int) -> void:
 	_current_speaker_index = index
 	var speaker: Dictionary = _speakers[index]
@@ -116,8 +119,10 @@ func _show_speaker(index: int) -> void:
 	_speaker_name.visible = true
 
 	_speaker_portrait.position.x = _speaker_rest_x + SLIDE_OFFSET
-	var slide := create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	slide.tween_property(_speaker_portrait, "position:x", _speaker_rest_x, SLIDE_SECONDS)
+	if _slide_tween != null and _slide_tween.is_valid():
+		_slide_tween.kill()
+	_slide_tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_slide_tween.tween_property(_speaker_portrait, "position:x", _speaker_rest_x, SLIDE_SECONDS)
 
 
 ## An opponent speaks from the red/right side (the room's own voice);
