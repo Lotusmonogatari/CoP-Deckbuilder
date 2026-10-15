@@ -1885,14 +1885,14 @@
   {
     "key": "floor_vote.vote_yes",
     "where": "National Assembly Floor Voting — Yes choice button",
-    "english": "Vote Yes",
+    "english": "Vote Aye",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "floor_vote.vote_no",
     "where": "National Assembly Floor Voting — No choice button",
-    "english": "Vote No",
+    "english": "Vote Nay",
     "placeholders": null,
     "notes": null
   },
@@ -1913,14 +1913,14 @@
   {
     "key": "floor_vote.passed",
     "where": "National Assembly Floor Voting — outcome body, bill passed",
-    "english": "It passes — {yes} for, {no} against, {abstain} abstaining.",
+    "english": "It passes — {yes} Aye, {no} Nay, {abstain} abstaining.",
     "placeholders": "yes, no, abstain",
     "notes": null
   },
   {
     "key": "floor_vote.failed",
     "where": "National Assembly Floor Voting — outcome body, bill failed",
-    "english": "It fails — {yes} for, {no} against, {abstain} abstaining.",
+    "english": "It fails — {yes} Aye, {no} Nay, {abstain} abstaining.",
     "placeholders": "yes, no, abstain",
     "notes": null
   },
@@ -2746,28 +2746,28 @@
   {
     "key": "office.record_law_passed",
     "where": "Your Record — a passed bill",
-    "english": "{name}: passed, {yes} to {no} with {abstain} abstaining. You voted {vote}.",
+    "english": "{name}: passed, {yes} Aye to {no} Nay with {abstain} abstaining. You voted {vote}.",
     "placeholders": "name, yes, no, abstain, vote",
     "notes": "One line per bill that passed."
   },
   {
     "key": "office.record_law_failed",
     "where": "Your Record — a failed bill",
-    "english": "{name}: failed, {yes} to {no} with {abstain} abstaining. You voted {vote}.",
+    "english": "{name}: failed, {yes} Aye to {no} Nay with {abstain} abstaining. You voted {vote}.",
     "placeholders": "name, yes, no, abstain, vote",
     "notes": "One line per bill that failed."
   },
   {
     "key": "office.record_vote_yes",
     "where": "Your Record — how you voted",
-    "english": "Yes",
+    "english": "Aye",
     "placeholders": null,
     "notes": "Fills {vote} above."
   },
   {
     "key": "office.record_vote_no",
     "where": "Your Record — how you voted",
-    "english": "No",
+    "english": "Nay",
     "placeholders": null,
     "notes": "Fills {vote} above."
   },
@@ -3096,7 +3096,7 @@
   {
     "key": "floor_vote.preview_line",
     "where": "Floor Vote",
-    "english": "{choice}: {yes} Yes, {no} No, {abstain} Abstain. {result}",
+    "english": "{choice}: {yes} Aye, {no} Nay, {abstain} Abstain. {result}",
     "placeholders": "choice, yes, no, abstain, result",
     "notes": "2026-10-15 Floor Vote preview and influence readiness."
   },
@@ -3236,7 +3236,7 @@
   {
     "key": "floor_vote.req_line",
     "where": "Floor Vote",
-    "english": "{requirement}: {needed} of {house} Yes votes needed.",
+    "english": "{requirement}: {needed} of {house} Aye votes needed.",
     "placeholders": "requirement, needed, house",
     "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
   },
@@ -3292,7 +3292,7 @@
   {
     "key": "record.law_now",
     "where": "Your Record",
-    "english": "When it was voted:",
+    "english": "Reactions to Your Vote",
     "placeholders": null,
     "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
   },
@@ -3393,5 +3393,26 @@
     "english": "Now",
     "placeholders": null,
     "notes": "2026-10-15 label for the current run in the restore warning."
+  },
+  {
+    "key": "floor_vote.bar_aye",
+    "where": "Floor Vote",
+    "english": "Aye Votes",
+    "placeholders": null,
+    "notes": "2026-10-15 vote nomenclature: Aye / Nay."
+  },
+  {
+    "key": "floor_vote.bar_nay",
+    "where": "Floor Vote",
+    "english": "Nay Votes",
+    "placeholders": null,
+    "notes": "2026-10-15 vote nomenclature: Aye / Nay."
+  },
+  {
+    "key": "floor_vote.bar_abstain",
+    "where": "Floor Vote",
+    "english": "Abstain Votes",
+    "placeholders": null,
+    "notes": "2026-10-15 vote nomenclature: Aye / Nay."
   }
 ]

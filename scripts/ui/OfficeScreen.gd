@@ -1092,9 +1092,7 @@ func _backup_row() -> Control:
 		restore.name = "BackupRestoreButton"
 		restore.custom_minimum_size.x = UiKit.LINE_WIDTH
 		box.add_child(restore)
-		box.add_child(UiKit.line(_summary_label(SaveManager.summary_of(SaveManager.MANUAL_PATH))))
-	else:
-		box.add_child(UiKit.line(Text.say("office.backup_none")))
+		# No floating summary line here: the summary shows in the restore warning.
 	if SaveManager.has_undo():
 		var undo := UiKit.action_button(Text.say("office.backup_undo"), "",
 			_confirm_backup_action.bind("undo"), 100.0)
