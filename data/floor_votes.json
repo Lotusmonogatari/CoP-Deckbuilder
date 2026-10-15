@@ -8,6 +8,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI01",
@@ -80,6 +81,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI02",
@@ -152,6 +154,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI03",
@@ -224,6 +227,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI04",
@@ -296,6 +300,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI05",
@@ -368,6 +373,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI06",
@@ -440,6 +446,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI07",
@@ -512,6 +519,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI08",
@@ -584,6 +592,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI09",
@@ -656,6 +665,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI10",
@@ -728,6 +738,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI11",
@@ -800,6 +811,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI12",
@@ -872,6 +884,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI13",
@@ -944,6 +957,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI14",
@@ -1016,6 +1030,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI15",
@@ -1088,6 +1103,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI16",
@@ -1160,6 +1176,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI17",
@@ -1232,6 +1249,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI18",
@@ -1304,6 +1322,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI19",
@@ -1376,6 +1395,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI20",
@@ -1448,6 +1468,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI21",
@@ -1520,6 +1541,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI22",
@@ -1592,6 +1614,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI23",
@@ -1664,6 +1687,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI24",
@@ -1736,6 +1760,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI25",
@@ -1808,6 +1833,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI26",
@@ -1880,6 +1906,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI27",
@@ -1952,6 +1979,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI28",
@@ -2024,6 +2052,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI29",
@@ -2096,6 +2125,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI30",
@@ -2168,6 +2198,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI31",
@@ -2240,6 +2271,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI32",
@@ -2312,6 +2344,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI33",
@@ -2384,6 +2417,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI34",
@@ -2456,6 +2490,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI35",
@@ -2528,6 +2563,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI36",
@@ -2600,6 +2636,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI37",
@@ -2672,6 +2709,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI38",
@@ -2744,6 +2782,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI39",
@@ -2816,6 +2855,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI40",
@@ -2888,6 +2928,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI41",
@@ -2960,6 +3001,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI42",
@@ -3032,6 +3074,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI43",
@@ -3104,6 +3147,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI44",
@@ -3176,6 +3220,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI45",
@@ -3248,6 +3293,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI46",
@@ -3320,6 +3366,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI47",
@@ -3392,6 +3439,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI48",
@@ -3464,6 +3512,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI49",
@@ -3536,6 +3585,7 @@
     "favorability_delta_neutral": 0,
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
+    "vote_requirement": null,
     "positions": [
       {
         "bill_id": "BI50",

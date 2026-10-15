@@ -61,6 +61,7 @@ var _inventory_panel: InventoryPanel
 ## has flipped, how many times each level has been cleared, and clears per
 ## tier. Built in code, the same reason _inventory_panel is.
 var _record_panel: Overlay
+var _law_panel: Overlay
 var _parties_panel: Overlay
 var _party_detail_panel: Overlay
 
@@ -91,6 +92,7 @@ var _resume_choice_panel: Overlay
 ## New Game: the warning before a run is thrown away, and the choice of
 ## protagonist. Built in code, like the inventory.
 var _new_game_panel: Overlay
+var _backup_action := ""
 
 ## The warning before firing a hired Staff member — built in code, the same
 ## way, since firing is permanent and costs a severance (Ledger.
@@ -711,6 +713,10 @@ func _build_record() -> void:
 	_record_panel = Overlay.new()
 	_record_panel.name = "RecordPanel"
 	add_child(_record_panel)
+	# One law's details, opened from the statute book on top of Your Record.
+	_law_panel = Overlay.new()
+	_law_panel.name = "LawPanel"
+	add_child(_law_panel)
 	_parties_panel = Overlay.new()
 	_parties_panel.name = "PartiesPanel"
 	add_child(_parties_panel)
@@ -872,14 +878,17 @@ func _show_record() -> void:
 	if GameState.statute_book.is_empty():
 		rows.append(UiKit.line(Text.say("office.record_statute_empty")))
 	else:
+		rows.append(UiKit.line(Text.say("record.law_tap_hint"), "SmallLabel"))
 		for law: Dictionary in GameState.statute_book:
 			var law_id := str(law.get("bill_id", ""))
-			rows.append(UiKit.line(Text.say(
+			var button := UiKit.action_button(Text.say(
 				"office.record_law_passed" if bool(law.get("passed", false)) else "office.record_law_failed", {
 					"name": DataDB.floor_votes.get(law_id, {}).get("bill_name", law_id),
 					"yes": law.get("yes", 0), "no": law.get("no", 0), "abstain": law.get("abstain", 0),
 					"vote": _vote_word(str(law.get("player_vote", ""))),
-				})))
+				}), "", _show_law.bind(law), 100.0)
+			button.name = "Law_" + law_id
+			rows.append(button)
 
 	rows.append(UiKit.heading(Text.say("office.record_tiers_heading")))
 	var tiers: Array = []
@@ -907,6 +916,85 @@ func _show_record() -> void:
 		rows.append(UiKit.line(Text.say("office.record_levels_empty")))
 
 	_record_panel.open(Text.say("office.your_record"), rows)
+
+
+## One law in the statute book as a pop-up (2026-10-15): PASSED or FAILED,
+## what it needed (Majority or Supermajority Vote to Pass), the Aye / Nay /
+## Abstain count, how the player voted, whether their influence turned it,
+## and what it did when voted and at the end of every later level.
+func _show_law(law: Dictionary) -> void:
+	var bill_id := str(law.get("bill_id", ""))
+	var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
+	var passed := bool(law.get("passed", false))
+	var rows: Array[Control] = []
+
+	var marker := UiKit.heading(Text.say(
+		"record.law_marker_passed" if passed else "record.law_marker_failed"))
+	marker.add_theme_color_override("font_color",
+		VoteMeter.PASS_COLOUR if passed else VoteMeter.FAIL_COLOUR)
+	rows.append(marker)
+
+	var requirement := str(law.get("requirement", FloorVoteEngine.requirement_of(bill)))
+	var totals := {"Yes": int(law.get("yes", 0)), "No": int(law.get("no", 0)),
+		"Abstain": int(law.get("abstain", 0))}
+	var needed := int(law.get("yes_needed", 0))
+	if needed <= 0:   # a law recorded before the requirement was saved
+		needed = FloorVoteEngine.yes_needed(totals, requirement,
+			int(DataDB.balance.get("supermajority_percent", 67)))
+	var house: int = totals["Yes"] + totals["No"] + totals["Abstain"]
+	rows.append(UiKit.line(Text.say("floor_vote.req_line", {
+		"requirement": VoteWords.requirement_label(requirement),
+		"needed": needed, "house": house})))
+	rows.append(UiKit.line(Text.say("record.law_tally", {
+		"yes": totals["Yes"], "no": totals["No"], "abstain": totals["Abstain"]})))
+	rows.append(UiKit.line(Text.say("record.law_voted",
+		{"vote": _vote_word(str(law.get("player_vote", "")))})))
+	if bool(law.get("flipped_by_influence", false)):
+		rows.append(UiKit.line(Text.say("record.law_flipped")))
+
+	for timing: Array in [[StatuteBook.ONCE, "record.law_now"], [StatuteBook.EACH_LEVEL, "record.law_each"]]:
+		var lines := _law_effect_lines(bill_id, passed, str(timing[0]))
+		if lines.is_empty():
+			continue
+		rows.append(UiKit.heading(Text.say(str(timing[1]))))
+		for line: String in lines:
+			rows.append(UiKit.line(line))
+	if _law_effect_lines(bill_id, passed, StatuteBook.ONCE).is_empty() \
+			and _law_effect_lines(bill_id, passed, StatuteBook.EACH_LEVEL).is_empty():
+		rows.append(UiKit.line(Text.say("record.law_no_effects")))
+
+	_law_panel.open(str(bill.get("bill_name", bill_id)), rows)
+	move_child(_law_panel, get_child_count() - 1)   # above Your Record
+
+
+## The fixed effects a law's Law Effects rows carry for this outcome and
+## timing, as "Reputation +2" style lines (organisations, audiences, meta, XP).
+## Party Headquarters and Party Faction follow the player's own party, so they
+## are not listed here.
+func _law_effect_lines(bill_id: String, passed: bool, timing: String) -> Array[String]:
+	var lines: Array[String] = []
+	for row: Dictionary in StatuteBook.effects_for(DataDB.law_effects, bill_id, passed, timing):
+		var entries: Variant = row.get("effects")
+		if entries is Array:
+			for entry: Dictionary in entries:
+				var target := str(entry.get("target", ""))
+				var named := str(DataDB.get_booster(target).get("name_en", "")) if target.begins_with("BO") \
+					else str(DataDB.get_segment(target).get("name_en", target))
+				if named.is_empty():
+					named = target
+				lines.append(_effect_line(named, int(entry.get("delta", 0))))
+		var deltas := StatuteBook.meta_deltas(row)
+		for name: String in deltas:
+			lines.append(_effect_line(name, int(deltas[name])))
+		var xp := StatuteBook.xp_delta(row)
+		if xp != 0:
+			lines.append(_effect_line("XP", xp))
+	return lines
+
+
+func _effect_line(name: String, delta: int) -> String:
+	var shown := ("+" if delta > 0 else "-") + Phrase.with_separators(absi(delta))
+	return Text.say("record.effect_line", {"name": name, "delta": shown})
 
 
 ## How the player voted, in Your Record's own words. Spelled out key by key
@@ -994,37 +1082,100 @@ func _show_administration_menu() -> void:
 ## (after a warning) replaces the run with it. Shown with when it was made.
 func _backup_row() -> Control:
 	var box := UiKit.tight_column()
-	var now := UiKit.action_button(Text.say("office.backup_now"), "", func() -> void:
-		var ok := SaveManager.backup_now()
-		Layout.flash(Text.say("office.backup_made" if ok else "office.backup_failed"))
-		_show_administration_menu(), 100.0)
+	var now := UiKit.action_button(Text.say("office.backup_now"), "", _on_backup_now, 100.0)
 	now.name = "BackupNowButton"
 	now.custom_minimum_size.x = UiKit.LINE_WIDTH
 	box.add_child(now)
 	if SaveManager.has_backup():
 		var restore := UiKit.action_button(Text.say("office.backup_restore"), "",
-			_confirm_restore_backup, 100.0)
+			_confirm_backup_action.bind("restore"), 100.0)
 		restore.name = "BackupRestoreButton"
 		restore.custom_minimum_size.x = UiKit.LINE_WIDTH
 		box.add_child(restore)
-		box.add_child(UiKit.line(Text.say("office.backup_when", {"when": SaveManager.backup_time()})))
+		box.add_child(UiKit.line(_summary_label(SaveManager.summary_of(SaveManager.MANUAL_PATH))))
 	else:
 		box.add_child(UiKit.line(Text.say("office.backup_none")))
+	if SaveManager.has_undo():
+		var undo := UiKit.action_button(Text.say("office.backup_undo"), "",
+			_confirm_backup_action.bind("undo"), 100.0)
+		undo.name = "BackupUndoButton"
+		undo.custom_minimum_size.x = UiKit.LINE_WIDTH
+		box.add_child(undo)
 	return box
 
 
-func _confirm_restore_backup() -> void:
-	_new_game_panel.open(Text.say("office.backup_restore"),
-		[UiKit.line(Text.say("office.backup_restore_warning", {"when": SaveManager.backup_time()}))],
-		Text.say("office.backup_restore_confirm"))
-	if not _new_game_panel.confirmed.is_connected(_on_restore_confirmed):
-		_new_game_panel.confirmed.connect(_on_restore_confirmed)
+## "15 Oct 14:32 · Last level cleared: ... · Inventory: 3 items · XP: 340 · Funds: 80,000".
+func _summary_label(summary: Dictionary) -> String:
+	if summary.is_empty():
+		return Text.say("office.backup_none")
+	var level_id := str(summary.get("level_id", ""))
+	var level := (str(DataDB.get_level(level_id).get("description", level_id))
+		if not level_id.is_empty() else Text.say("office.backup_no_level"))
+	return Text.say("office.backup_label", {
+		"when": str(summary.get("when", "")) if not str(summary.get("when", "")).is_empty()
+			else Text.say("office.backup_current_when"),
+		"level": level,
+		"items": Text.say("office.backup_items", {"count": int(summary.get("items", 0))}),
+		"xp": int(summary.get("xp", 0)),
+		"funds": Phrase.with_separators(int(summary.get("funds", 0)))})
 
 
-func _on_restore_confirmed() -> void:
-	_new_game_panel.confirmed.disconnect(_on_restore_confirmed)
-	if SaveManager.restore_backup():
-		get_tree().reload_current_scene.call_deferred()
+## The run being played right now, summarised the same way.
+func _current_summary() -> Dictionary:
+	var summary := SaveSummary.of(GameState.to_save())
+	summary["when"] = ""
+	return summary
+
+
+func _on_backup_now() -> void:
+	if SaveManager.has_backup():
+		_confirm_backup_action("overwrite")   # a backup exists: ask before replacing it
+		return
+	_do_backup()
+
+
+func _do_backup() -> void:
+	var ok := SaveManager.backup_now()
+	Layout.flash(Text.say("office.backup_made" if ok else "office.backup_failed"))
+	_show_administration_menu()
+
+
+## "restore", "undo" and "overwrite" each ask first, showing what would be
+## lost; the answer comes back through _on_backup_confirmed().
+func _confirm_backup_action(kind: String) -> void:
+	_backup_action = kind
+	var backup := SaveManager.summary_of(SaveManager.MANUAL_PATH)
+	match kind:
+		"restore":
+			_new_game_panel.open(Text.say("office.backup_restore"),
+				[UiKit.line(Text.say("office.backup_compare", {
+					"backup": _summary_label(backup),
+					"current": _summary_label(_current_summary())}))],
+				Text.say("office.backup_restore_confirm"))
+		"undo":
+			_new_game_panel.open(Text.say("office.backup_undo"),
+				[UiKit.line(Text.say("office.backup_undo_warning", {
+					"saved": _summary_label(SaveManager.summary_of(SaveManager.UNDO_PATH))}))],
+				Text.say("office.backup_undo_confirm"))
+		_:
+			_new_game_panel.open(Text.say("office.backup_now"),
+				[UiKit.line(Text.say("office.backup_overwrite", {"backup": _summary_label(backup)}))],
+				Text.say("office.backup_overwrite_confirm"))
+	if not _new_game_panel.confirmed.is_connected(_on_backup_confirmed):
+		_new_game_panel.confirmed.connect(_on_backup_confirmed)
+
+
+func _on_backup_confirmed() -> void:
+	_new_game_panel.confirmed.disconnect(_on_backup_confirmed)
+	match _backup_action:
+		"restore":
+			if SaveManager.restore_backup():
+				get_tree().reload_current_scene.call_deferred()
+		"undo":
+			if SaveManager.restore_undo():
+				get_tree().reload_current_scene.call_deferred()
+		_:
+			_do_backup()
 
 
 ## "Text size: Normal" -- one tap cycles Small, Normal, Large and applies it

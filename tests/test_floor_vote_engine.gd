@@ -449,3 +449,29 @@ func test_influence_status_lists_what_is_missing() -> void:
 	engine.setup({"bill": _bill(), "player_party": "Frontier Party",
 		"meta": {"Reputation": 90}, "triggers": triggers})
 	assert_true(engine.influence_status()["ready"])
+
+
+# --- Majority / Supermajority requirement (2026-10-15) --------------------
+
+func test_a_supermajority_bill_needs_the_balance_percent_of_the_house() -> void:
+	var totals := _house(60, 31, 10)   # 101 seats
+	assert_eq(FloorVoteEngine.yes_needed(totals, FloorVoteEngine.SUPERMAJORITY, 67), 68)
+	assert_false(FloorVoteEngine.bill_passes(totals, FloorVoteEngine.SUPERMAJORITY, 67))
+	assert_true(FloorVoteEngine.bill_passes(totals))   # an ordinary majority still passes
+
+
+func test_a_blank_or_unknown_requirement_is_a_majority() -> void:
+	assert_eq(FloorVoteEngine.requirement_of({}), FloorVoteEngine.MAJORITY)
+	assert_eq(FloorVoteEngine.requirement_of({"vote_requirement": null}), FloorVoteEngine.MAJORITY)
+	assert_eq(FloorVoteEngine.requirement_of({"vote_requirement": "supermajority"}),
+		FloorVoteEngine.SUPERMAJORITY)
+
+
+func test_the_engine_uses_the_bills_own_requirement() -> void:
+	var bill := _bill({"vote_requirement": "Supermajority"})
+	var engine := FloorVoteEngine.new()
+	engine.setup({"bill": bill, "player_party": "Frontier Party", "supermajority_percent": 67})
+	var result := engine.choose("Yes")
+	assert_eq(result["requirement"], FloorVoteEngine.SUPERMAJORITY)
+	var house: int = result["totals"]["Yes"] + result["totals"]["No"] + result["totals"]["Abstain"]
+	assert_eq(result["yes_needed"], ceili(house * 0.67))

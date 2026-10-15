@@ -32,5 +32,6 @@
   "text_scale_large": 120,
   "transition_player_thought_chance": 30,
   "starting_training_session_coupons": 1,
+  "supermajority_percent_of_house": 67,
   "xp_tiers": {}
 }

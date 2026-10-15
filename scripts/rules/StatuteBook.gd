@@ -39,6 +39,8 @@ static func entry(bill: Dictionary, result: Dictionary, choice: String,
 		"abstain": int(totals.get("Abstain", 0)),
 		"player_vote": choice.strip_edges().capitalize(),
 		"flipped_by_influence": bool(result.get("outcome_flipped_by_influence", false)),
+		"requirement": str(result.get("requirement", "Majority")),
+		"yes_needed": int(result.get("yes_needed", 0)),
 		"level_id": level_id,
 		"enacted_at": enacted_at,
 	}
