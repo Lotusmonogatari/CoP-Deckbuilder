@@ -686,6 +686,9 @@ func _build_inventory() -> void:
 
 	var button := Button.new()
 	button.name = "InventoryButton"
+	# The battle screen's Inventory button is white; this one is the Office's
+	# Marketplace and takes the party colour (Layout.is_cancel_button()).
+	button.set_meta("party_outline", true)
 	button.text = Text.say("office.marketplace")
 	button.custom_minimum_size = _management_button.custom_minimum_size
 	button.size_flags_horizontal = _management_button.size_flags_horizontal

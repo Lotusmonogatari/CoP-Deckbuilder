@@ -187,6 +187,8 @@ func _recolour_outlines() -> void:
 
 ## True for a button that backs out of a screen (white outline).
 static func is_cancel_button(button: Button) -> bool:
+	if bool(button.get_meta("party_outline", false)):
+		return false   # a button that shares a cancel name but is not one (the Office's Marketplace)
 	return str(button.name) in CANCEL_NAMES or bool(button.get_meta("cancel", false))
 
 
