@@ -57,6 +57,9 @@ var setup_problems: Array[String] = []
 var _bill: Dictionary = {}
 var _positions: Array = []
 var _player_party: String = ""
+const MAJORITY := "Majority"
+const SUPERMAJORITY := "Supermajority"
+
 var _resolved := false
 var _config: Dictionary = {}
 
@@ -117,6 +120,24 @@ func bill() -> Dictionary:
 	return _bill
 
 
+## This vote's requirement ("Majority" or "Supermajority") and the Yes votes it
+## takes to pass.
+func requirement() -> String:
+	return requirement_of(_bill)
+
+
+func supermajority_percent() -> int:
+	return int(_config.get("supermajority_percent", 67))
+
+
+func yes_needed_now(totals: Dictionary = {}) -> int:
+	return yes_needed(totals if not totals.is_empty() else _totals(), requirement(), supermajority_percent())
+
+
+func passes(totals: Dictionary) -> bool:
+	return bill_passes(totals, requirement(), supermajority_percent())
+
+
 ## The as-baked positions, before any player choice is applied.
 func positions() -> Array:
 	return _positions
@@ -170,14 +191,32 @@ static func majority_bucket(position: Dictionary) -> String:
 ## Yes votes a bill needs: a majority of the whole house (everyone in the
 ## chamber, abstainers included). 101 seats gives 51, Yezo's floor majority
 ## (CLAUDE.md section 4); derived from the seats so it never goes stale.
-static func yes_needed(totals: Dictionary) -> int:
+##
+## `requirement` is the bill's own Vote Requirement: "Majority" (the default,
+## and what a blank cell means) or "Supermajority", which needs `percent` of
+## the whole house (Balance: supermajority_percent), rounded up (2026-10-15).
+static func yes_needed(totals: Dictionary, requirement: String = MAJORITY,
+		percent: int = 67) -> int:
 	var house := int(totals.get("Yes", 0)) + int(totals.get("No", 0)) + int(totals.get("Abstain", 0))
+	if requirement == SUPERMAJORITY:
+		return ceili(house * percent / 100.0)
 	return house / 2 + 1
 
 
-## True when Yes reaches a majority of the whole house.
-static func bill_passes(totals: Dictionary) -> bool:
-	return int(totals.get("Yes", 0)) >= yes_needed(totals)
+## True when Yes reaches what the bill needs (a majority of the whole house
+## unless the bill is flagged Supermajority).
+static func bill_passes(totals: Dictionary, requirement: String = MAJORITY,
+		percent: int = 67) -> bool:
+	return int(totals.get("Yes", 0)) >= yes_needed(totals, requirement, percent)
+
+
+## A bill's own requirement from its Vote Requirement cell: blank or anything
+## but "Supermajority" is an ordinary majority.
+static func requirement_of(bill: Dictionary) -> String:
+	var cell: Variant = bill.get("vote_requirement")
+	if cell != null and str(cell).strip_edges().to_lower() == "supermajority":
+		return SUPERMAJORITY
+	return MAJORITY
 
 
 ## Resolves the vote: `choice` is "Yes", "No", or "Abstain" (case-insensitive).
@@ -202,19 +241,21 @@ func choose(choice: String) -> Dictionary:
 		if not _player_party.is_empty():
 			_reallocate_player_vote(picked)
 		var baseline_totals := _totals()
-		var baseline_passed: bool = bill_passes(baseline_totals)
+		var baseline_passed: bool = passes(baseline_totals)
 
 		_influence_gate_passed = _apply_influence_swing(picked)
 
 		var final_totals := _totals()
-		_outcome_flipped_by_influence = bill_passes(final_totals) != baseline_passed
+		_outcome_flipped_by_influence = passes(final_totals) != baseline_passed
 		_resolved = true
 
 	var totals := _totals()
 	return {
 		"positions": _positions,
 		"totals": totals,
-		"passed": bill_passes(totals),
+		"passed": passes(totals),
+		"requirement": requirement(),
+		"yes_needed": yes_needed_now(totals),
 		"favorability_deltas": _favorability_deltas(),
 		"influence_gate_passed": _influence_gate_passed,
 		"outcome_flipped_by_influence": _outcome_flipped_by_influence,
@@ -232,6 +273,7 @@ func preview(choice: String) -> Dictionary:
 	return {
 		"totals": result.get("totals", {}),
 		"passed": result.get("passed", false),
+		"yes_needed": result.get("yes_needed", 0),
 		"flipped_by_influence": result.get("outcome_flipped_by_influence", false),
 	}
 

@@ -3197,5 +3197,201 @@
     "english": "{name} redeemed. Here is your free draw.",
     "placeholders": "name",
     "notes": "2026-10-15 Training Session Coupon."
+  },
+  {
+    "key": "floor_vote.tile_aye",
+    "where": "Floor Vote",
+    "english": "Aye",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "floor_vote.tile_nay",
+    "where": "Floor Vote",
+    "english": "Nay",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "floor_vote.tile_abstain",
+    "where": "Floor Vote",
+    "english": "Abstain",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "floor_vote.req_majority",
+    "where": "Floor Vote",
+    "english": "Majority Vote to Pass",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "floor_vote.req_supermajority",
+    "where": "Floor Vote",
+    "english": "Supermajority Vote to Pass",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "floor_vote.req_line",
+    "where": "Floor Vote",
+    "english": "{requirement}: {needed} of {house} Yes votes needed.",
+    "placeholders": "requirement, needed, house",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "floor_vote.result_cleared",
+    "where": "Floor Vote",
+    "english": "Cleared by {n}.",
+    "placeholders": "n",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "floor_vote.result_short",
+    "where": "Floor Vote",
+    "english": "Short by {n}. Abstentions count against a bill.",
+    "placeholders": "n",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_marker_passed",
+    "where": "Your Record",
+    "english": "PASSED",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_marker_failed",
+    "where": "Your Record",
+    "english": "FAILED",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_tally",
+    "where": "Your Record",
+    "english": "Aye {yes} · Nay {no} · Abstain {abstain}",
+    "placeholders": "yes, no, abstain",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_voted",
+    "where": "Your Record",
+    "english": "You voted {vote}.",
+    "placeholders": "vote",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_flipped",
+    "where": "Your Record",
+    "english": "Your influence turned this result.",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_now",
+    "where": "Your Record",
+    "english": "When it was voted:",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_each",
+    "where": "Your Record",
+    "english": "At the end of every later level:",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_no_effects",
+    "where": "Your Record",
+    "english": "No effects are set for this outcome.",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.effect_line",
+    "where": "Your Record",
+    "english": "{name} {delta}",
+    "placeholders": "name, delta",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "record.law_tap_hint",
+    "where": "Your Record",
+    "english": "Tap a law for details.",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_label",
+    "where": "Office — Administration",
+    "english": "{when} · Last level cleared: {level} · Inventory: {items} · XP: {xp} · Funds: {funds}",
+    "placeholders": "when, level, items, xp, funds",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_no_level",
+    "where": "Office — Administration",
+    "english": "none yet",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_items",
+    "where": "Office — Administration",
+    "english": "{count}",
+    "placeholders": "count",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_compare",
+    "where": "Office — Administration",
+    "english": "Backup: {backup}\nCurrent run: {current}\nRestoring replaces your current run. A safety copy of it is kept so you can undo once.",
+    "placeholders": "backup, current",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_overwrite",
+    "where": "Office — Administration",
+    "english": "Replace the backup ({backup}) with your current run?",
+    "placeholders": "backup",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_overwrite_confirm",
+    "where": "Office — Administration",
+    "english": "Replace it",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_undo",
+    "where": "Office — Administration",
+    "english": "Undo the last restore",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_undo_warning",
+    "where": "Office — Administration",
+    "english": "This returns you to the run you had just before the restore: {saved}.",
+    "placeholders": "saved",
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_undo_confirm",
+    "where": "Office — Administration",
+    "english": "Undo it",
+    "placeholders": null,
+    "notes": "2026-10-15 2026-10-15 vote result tiles, law popup, backup label."
+  },
+  {
+    "key": "office.backup_current_when",
+    "where": "Office — Administration",
+    "english": "Now",
+    "placeholders": null,
+    "notes": "2026-10-15 label for the current run in the restore warning."
   }
 ]

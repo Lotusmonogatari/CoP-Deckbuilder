@@ -31,6 +31,9 @@ const VERSION := 1
 ## The one manual backup slot (2026-10-15): written only when the player asks,
 ## never by autosave, so it survives whatever happens to the main save.
 const MANUAL_PATH := "user://savegame.manual.json"
+## The run as it was just before the last restore, so one mistaken restore can
+## be undone (2026-10-15).
+const UNDO_PATH := "user://savegame.undo.json"
 
 ## False in the test runs and click tests, so they neither read the
 ## player's real save nor write over it.
@@ -74,11 +77,46 @@ func backup_time() -> String:
 
 
 ## Loads the backup into the run and makes it the main save. True on success.
+## The run being replaced is first written to UNDO_PATH.
 func restore_backup() -> bool:
-	if not load_game(MANUAL_PATH):
+	return _restore_from(MANUAL_PATH)
+
+
+func has_undo() -> bool:
+	return has_save(UNDO_PATH)
+
+
+## Puts back the run that was replaced by the last restore. The undo copy is
+## spent: a second undo would only swap the two runs back.
+func restore_undo() -> bool:
+	if not _restore_from(UNDO_PATH, false):
+		return false
+	delete_save(UNDO_PATH)
+	return true
+
+
+func _restore_from(path: String, keep_undo: bool = true) -> bool:
+	if read_save(path).is_empty():
+		return false
+	if keep_undo and not save_game(UNDO_PATH):
+		return false   # never replace a run we could not keep a copy of
+	if not load_game(path):
 		return false
 	save_game()
 	return true
+
+
+## The run stored at `path` (the main save, the backup or the undo copy) as a
+## SaveSummary plus its timestamp, or {} when there is none.
+func summary_of(path: String) -> Dictionary:
+	var run := read_save(path)
+	if run.is_empty():
+		return {}
+	var summary := SaveSummary.of(run)
+	var parsed: Variant = _parse(path)
+	summary["when"] = str((parsed as Dictionary).get("saved_at", "")).replace("T", " ") \
+		if parsed is Dictionary else ""
+	return summary
 
 
 ## Why the last read gave nothing: "" (nothing wrong), "unreadable" (the

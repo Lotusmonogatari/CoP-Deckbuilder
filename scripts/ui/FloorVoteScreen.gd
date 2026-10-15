@@ -111,6 +111,7 @@ func start_voting() -> void:
 		"default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
 		"resistance_by_party": _resistance_by_party(),
 		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
+		"supermajority_percent": int(DataDB.balance.get("supermajority_percent", 67)),
 	}):
 		_ready_to_play = false
 		_vote_yes.disabled = true
@@ -159,6 +160,18 @@ func _show_influence_and_preview() -> void:
 	for child in column.get_children():
 		if child != _bill_text:
 			child.queue_free()
+
+	var rule := Label.new()
+	rule.name = "VoteRequirement"
+	rule.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var house := 0
+	for position: Dictionary in engine.positions():
+		house += int(position.get("votes_yes", 0)) + int(position.get("votes_no", 0)) \
+			+ int(position.get("votes_abstain", 0))
+	rule.text = Text.say("floor_vote.req_line", {
+		"requirement": VoteWords.requirement_label(engine.requirement()),
+		"needed": engine.yes_needed_now(), "house": house})
+	column.add_child(rule)
 
 	var status := engine.influence_status()
 	var influence := Label.new()
@@ -345,6 +358,7 @@ func _show_outcome(result: Dictionary) -> void:
 		"yes": totals.get("Yes", 0), "no": totals.get("No", 0), "abstain": totals.get("Abstain", 0),
 	})
 
+	_show_result_summary(result, totals, passed)
 	_bar_yes.show_segments(_segments_for(result.get("positions", []), "votes_yes"))
 	_bar_no.show_segments(_segments_for(result.get("positions", []), "votes_no"))
 	_bar_abstain.show_segments(_segments_for(result.get("positions", []), "votes_abstain"))
@@ -354,6 +368,64 @@ func _show_outcome(result: Dictionary) -> void:
 			else Text.say("outcome.next_stage")))
 
 	_outcome_panel.show()
+
+
+## Aye / Nay / Abstain tiles, a whole-house meter with the pass mark, and one
+## line saying what the bill needed and by how much it cleared or missed it.
+## Built in code beside OutcomeBody and rebuilt on every call (2026-10-15).
+func _show_result_summary(result: Dictionary, totals: Dictionary, passed: bool) -> void:
+	var column := _outcome_body.get_parent()
+	for old in column.get_children():
+		if str(old.name).begins_with("Summary"):
+			column.remove_child(old)
+			old.queue_free()
+
+	var needed := int(result.get("yes_needed", 0))
+	var yes := int(totals.get("Yes", 0))
+	var house := yes + int(totals.get("No", 0)) + int(totals.get("Abstain", 0))
+
+	var tiles := HBoxContainer.new()
+	tiles.name = "SummaryTiles"
+	tiles.add_theme_constant_override("separation", 16)
+	for tile: Array in [
+			[Text.say("floor_vote.tile_aye"), yes, true],
+			[Text.say("floor_vote.tile_nay"), int(totals.get("No", 0)), false],
+			[Text.say("floor_vote.tile_abstain"), int(totals.get("Abstain", 0)), false]]:
+		var box := VBoxContainer.new()
+		box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var number := Label.new()
+		number.text = str(tile[1])
+		number.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		number.add_theme_font_size_override("font_size", 72)
+		if tile[2]:
+			number.add_theme_color_override("font_color",
+				VoteMeter.PASS_COLOUR if passed else VoteMeter.FAIL_COLOUR)
+		box.add_child(number)
+		var caption := Label.new()
+		caption.text = str(tile[0])
+		caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		caption.theme_type_variation = &"SmallLabel"
+		box.add_child(caption)
+		tiles.add_child(box)
+
+	var meter := VoteMeter.new()
+	meter.name = "SummaryMeter"
+	meter.show_totals(yes, int(totals.get("No", 0)), int(totals.get("Abstain", 0)), needed, passed)
+
+	var requirement_text := VoteWords.requirement_label(str(result.get("requirement", FloorVoteEngine.MAJORITY)))
+	var reason := Label.new()
+	reason.name = "SummaryReason"
+	reason.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	reason.text = Text.say("floor_vote.req_line", {
+		"requirement": requirement_text, "needed": needed, "house": house}) + " " + (
+		Text.say("floor_vote.result_cleared", {"n": yes - needed}) if passed
+		else Text.say("floor_vote.result_short", {"n": needed - yes}))
+
+	var index := _outcome_body.get_index() + 1
+	for node: Node in [tiles, meter, reason]:
+		column.add_child(node)
+		column.move_child(node, index)
+		index += 1
 
 
 func _segments_for(positions: Array, vote_field: String) -> Array[Dictionary]:

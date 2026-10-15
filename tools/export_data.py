@@ -846,6 +846,10 @@ SHEETS = {
             # Blank means no bonus — most bills will have none.
             ("Influence Bonus (Reputation)", "influence_bonus_reputation", "int"),
             ("Influence Bonus (Party support)", "influence_bonus_party_support", "int"),
+            # Optional (2026-10-15): Majority (blank = Majority) or Supermajority.
+            # A Supermajority bill needs Balance's supermajority_percent of the
+            # whole house to pass.
+            ("Vote Requirement", "vote_requirement", "str"),
         ],
     },
     # Six rows per bill above (one per party) — folded into that bill's own
@@ -1864,6 +1868,10 @@ def validate(data, report):
             report.error("Law Effects", f"{lid} has Outcome '{law.get('outcome')}' — it must be Passed or Failed")
         if str(law.get("timing") or "once").strip().lower() not in ("once", "each level"):
             report.error("Law Effects", f"{lid} has Timing '{law.get('timing')}' — it must be Once, Each level, or blank")
+    for bid, bill in (data.get("floor_votes") or {}).items() if isinstance(data.get("floor_votes"), dict) else []:
+        req = str(bill.get("vote_requirement") or "").strip().lower()
+        if req not in ("", "majority", "supermajority"):
+            report.error("Floor Vote Bills", f"{bid} has Vote Requirement '{bill.get('vote_requirement')}' — it must be Majority, Supermajority, or blank")
     # A staff_role condition must name a role the Staff tab really has
     # (2026-10-12). A misspelt role is never hired, so a "hired" line never
     # shows and a "not_hired" line shows always. A warning rather than an
