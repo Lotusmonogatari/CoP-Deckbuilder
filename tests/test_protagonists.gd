@@ -44,7 +44,10 @@ func test_a_new_run_starts_every_number_again() -> void:
 	# rather than hardcoded, so a future tuning pass can't make this test
 	# lie about what "starts every number again" actually means.
 	assert_eq(GameState.xp, int(DataDB.get_protagonist("PC01").get("starting_xp", 0)))
-	assert_true(GameState.inventory.is_empty())
+	# Only what a new run is given: the starting Training Session Coupons.
+	assert_eq(GameState.item_count("SH04"), 0)
+	assert_eq(GameState.item_count("SH21"),
+		int(DataDB.balance.get("starting_training_session_coupons", 0)))
 	assert_false(GameState.awaiting_new_game)
 
 

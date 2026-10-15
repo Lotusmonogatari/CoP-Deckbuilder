@@ -514,6 +514,10 @@ func reset_collection() -> void:
 				owned_cards.append(card_id)
 	owned_modifiers = []
 	inventory = {}
+	# A new run starts with some free Rhetoric Training draws (Balance lever).
+	var coupons := int(DataDB.balance.get("starting_training_session_coupons", 0))
+	if coupons > 0 and not DataDB.get_shop_item("SH21").is_empty():
+		inventory["SH21"] = coupons
 	shop_bought_this_level = {}
 	card_draw = {}
 	pending_stage_bonuses = {}

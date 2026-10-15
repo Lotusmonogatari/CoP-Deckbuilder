@@ -642,7 +642,7 @@ func _starting_stat_lines(protagonist: Dictionary) -> Array[String]:
 	var meta := BattleSetup.starting_meta_for(protagonist)
 	for variable: Dictionary in DataDB.sanban:
 		var name := str(variable.get("name_en", ""))
-		lines.append(Text.say("new_game.stat_line", {"name": name, "value": meta.get(name, 0)}))
+		lines.append(Text.say("new_game.stat_line", {"name": name, "value": Phrase.with_separators(int(meta.get(name, 0)))}))
 	lines.append(Text.say("new_game.stat_line",
 		{"name": "XP", "value": BattleSetup.starting_xp_for(protagonist)}))
 	return lines
@@ -847,7 +847,7 @@ func _show_record() -> void:
 		var is_party := name == "Party support"
 		var shown: Variant = (GameState.party_support_effective()
 			if is_party else GameState.meta.get(name, 0))
-		var line := Text.say("new_game.stat_line", {"name": name, "value": shown})
+		var line := Text.say("new_game.stat_line", {"name": name, "value": Phrase.with_separators(int(shown))})
 		# What moved this level, the same "(+N)" treatment Important
 		# Stakeholders already gives a booster's own recent change.
 		var change := (GameState.party_support_change_this_level()

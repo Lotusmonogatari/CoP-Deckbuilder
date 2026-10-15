@@ -31,5 +31,6 @@
   "text_scale_small": 90,
   "text_scale_large": 120,
   "transition_player_thought_chance": 30,
+  "starting_training_session_coupons": 1,
   "xp_tiers": {}
 }
