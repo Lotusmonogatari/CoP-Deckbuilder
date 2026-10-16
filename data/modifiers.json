@@ -29,7 +29,7 @@
       "SG04"
     ],
     "trigger_min_pct": 0.65,
-    "effect": "+1,500 Funds (Yen) after successful completion of a level.",
+    "effect": "Funds +1,500円 after successful completion of a level.",
     "reputation_cost": 10,
     "jiban_cost": 0,
     "funds_cost": 0,
@@ -71,7 +71,7 @@
       "SG01"
     ],
     "trigger_min_pct": 0.5,
-    "effect": "ST06 TV Debate starts with +10 Press tone.",
+    "effect": "ST06 TV Debate starts with +10 Viewer Interest.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 15000,
@@ -92,7 +92,7 @@
       "BO10"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "+1,000 Funds (Yen) after successful completion of a level.",
+    "effect": "Funds +1,000円 after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
@@ -197,7 +197,7 @@
       "BO01"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "+2 Jiban after successful completion of a level.",
+    "effect": "+2 Constituency support after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
@@ -260,7 +260,7 @@
       "BO10"
     ],
     "trigger_min_pct": 25.0,
-    "effect": "+2,000 Funds (Yen) after successful completion of a level.",
+    "effect": "Funds +2,000円 after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
@@ -323,7 +323,7 @@
       "BO03"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "+2 Jiban after successful completion of a level.",
+    "effect": "+2 Constituency support after successful completion of a level.",
     "reputation_cost": 0,
     "jiban_cost": 0,
     "funds_cost": 5000,
@@ -365,7 +365,7 @@
       "BO05"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "+2,500 Funds (Yen) after successful completion of a level.",
+    "effect": "Funds +2,500円 after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
@@ -533,7 +533,7 @@
       "BO13"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "+1,500 Funds (Yen) after successful completion of a level.",
+    "effect": "Funds +1,500円 after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
@@ -638,7 +638,7 @@
       "BO20"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "+2 Jiban after successful completion of a level.",
+    "effect": "+2 Constituency support after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
@@ -722,7 +722,7 @@
       "BO24"
     ],
     "trigger_min_pct": 30.0,
-    "effect": "+3,000 Funds (Yen) after successful completion of a level.",
+    "effect": "Funds +3,000円 after successful completion of a level.",
     "reputation_cost": 10,
     "jiban_cost": 0,
     "funds_cost": 0,
@@ -890,7 +890,7 @@
       "BO18"
     ],
     "trigger_min_pct": 25.0,
-    "effect": "+3 Jiban after successful completion of a level.",
+    "effect": "+3 Constituency support after successful completion of a level.",
     "reputation_cost": 10,
     "jiban_cost": 0,
     "funds_cost": 0,

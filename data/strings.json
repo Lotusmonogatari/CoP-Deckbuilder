@@ -667,14 +667,14 @@
   {
     "key": "office.funds",
     "where": "Office — management",
-    "english": "Funds {count}",
+    "english": "Funds {count}円",
     "placeholders": "count",
     "notes": null
   },
   {
     "key": "office.funds_buys",
     "where": "Office — management",
-    "english": "From donors and backers. Buys the organisations' backing.",
+    "english": "Earned by winning stages. Buys the organisations' backing and staff.",
     "placeholders": null,
     "notes": null
   },
@@ -814,7 +814,7 @@
   {
     "key": "shop.funds_short",
     "where": "Shop — refusals",
-    "english": "{count} short.",
+    "english": "{count}円 short.",
     "placeholders": "count",
     "notes": "Funds, not XP — the sentence sits under a Funds heading."
   },
@@ -1122,7 +1122,7 @@
   {
     "key": "modifier.reputation_per_stage_win",
     "where": "Office · backing shop",
-    "english": "+{count} funds for every stage won.",
+    "english": "Funds +{count}円 for every stage won.",
     "placeholders": "count",
     "notes": null
   },
@@ -1297,7 +1297,7 @@
   {
     "key": "office.staff_candidate",
     "where": "Office  ·  Recruitment shop, a vacant role's candidates",
-    "english": "{name} · {cost} Yen",
+    "english": "{name} · {cost}円",
     "placeholders": "name, cost",
     "notes": null
   },
@@ -1318,7 +1318,7 @@
   {
     "key": "office.upgrade",
     "where": "Office · Recruitment shop, upgrade button",
-    "english": "Upgrade · {cost} Yen",
+    "english": "Upgrade · {cost}円",
     "placeholders": "cost",
     "notes": null
   },
@@ -1535,7 +1535,7 @@
   {
     "key": "shop.item_price_yen",
     "where": "Supplies panel, price part",
-    "english": "{count} Yen",
+    "english": "{count}円",
     "placeholders": "count",
     "notes": null
   },
@@ -1738,7 +1738,7 @@
   {
     "key": "office.fire_staff_warning",
     "where": "Office · Recruitment shop, the warning before firing someone",
-    "english": "Firing {name} costs {cost} Yen in severance. They will never work for you again.",
+    "english": "Firing {name} costs {cost}円 in severance. They will never work for you again.",
     "placeholders": "name, cost",
     "notes": null
   },
@@ -1864,7 +1864,7 @@
   {
     "key": "shop.funds_cap_increased",
     "where": "Office report after buying a Funds cap increase",
-    "english": "Funds cap raised by {count}.",
+    "english": "Funds cap raised by {count}円.",
     "placeholders": "count",
     "notes": null
   },
@@ -2480,7 +2480,7 @@
   {
     "key": "staff.profile_cost",
     "where": "Office · Staff Profile, under the name",
-    "english": "Hiring cost: {cost} Yen",
+    "english": "Hiring cost: {cost}円",
     "placeholders": "cost",
     "notes": "The price to hire this person."
   },
@@ -2515,7 +2515,7 @@
   {
     "key": "staff.tier_upgrade",
     "where": "Office · Staff Profile, a tier still to be bought",
-    "english": "Tier {tier} · upgrade cost {cost} Yen",
+    "english": "Tier {tier} · upgrade cost {cost}円",
     "placeholders": "tier, cost",
     "notes": "What it costs to upgrade into this tier; the bonus below is paid when you do."
   },
@@ -3428,5 +3428,12 @@
     "english": "Stay at {count} {unit} or above at the end of every turn. After each turn the line rises by {min} to {max}.",
     "placeholders": "count, unit, min, max",
     "notes": "TV debate with a rising threshold (2026-10-16)."
+  },
+  {
+    "key": "shop.meta_short",
+    "where": "Shop — refusals",
+    "english": "{count} short.",
+    "placeholders": "count",
+    "notes": "A shortfall in a meta-variable that is not Funds (Reputation, Constituency support). Funds uses shop.funds_short, which writes the 円 mark."
   }
 ]

@@ -108,6 +108,21 @@ static func with_separators(amount: int) -> String:
 	return ("-" if amount < 0 else "") + out
 
 
+## A meta-variable's amount as the player reads it. Funds is money, so it is
+## written with the 円 mark on the number ("+1,500円", "100,000円"); every other
+## variable is a plain number with its separators. `signed` puts a + or - in
+## front (the minus is always shown). Funds is a lookup key as well as a
+## display word (CLAUDE.md section 6), hence the exact-name test.
+static func meta_amount(variable: String, amount: int, signed: bool = false) -> String:
+	var number := with_separators(absi(amount))
+	var sign := ""
+	if amount < 0:
+		sign = "-"
+	elif signed and amount > 0:
+		sign = "+"
+	return sign + number + ("円" if variable == "Funds" else "")
+
+
 static func _shown(name: String, value: Variant) -> String:
 	if name in AMOUNT_NAMES and (value is int or (value is float and value == floorf(value))):
 		if absi(int(value)) >= 1000:
