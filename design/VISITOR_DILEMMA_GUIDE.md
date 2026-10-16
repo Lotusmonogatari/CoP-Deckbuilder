@@ -20,4 +20,4 @@ Since 2026-10-16 a visitor question has no "right" answer. Each of the four choi
 
 Standing changes from visitors are flat: they are not scaled by the standing bands that scale a question answer in battle.
 
-Status: batch 1 (the 39 questions VI01-VI15 ask) is written. The other 95 questions still use the fallback until their effects are drafted.
+Status: all 134 questions are written (batch 1, the 39 asked by VI01-VI15, on 2026-10-16; the other 95 the same day). All are drafts for Cameron to correct. `tests/test_office_hours_engine.gd` enforces the budget above on every real question, so a new or edited question that breaks it fails the test suite.

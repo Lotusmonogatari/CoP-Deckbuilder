@@ -239,3 +239,26 @@ func test_every_real_dilemma_question_gives_all_four_choices_effects() -> void:
 				"%s choice %s has no effects" % [question["question_id"], letter])
 			assert_false(str(question.get("response_%s" % letter, "")).strip_edges().is_empty(),
 				"%s choice %s has no response" % [question["question_id"], letter])
+
+
+func test_every_real_dilemma_stays_inside_the_content_budget() -> void:
+	for question: Dictionary in DataDB.visitor_questions:
+		var strong := false
+		var big_nets := 0
+		for letter in ["a", "b", "c", "d"]:
+			var effects: Array = question.get("effects_%s" % letter, [])
+			var total := 0.0
+			var net := OfficeHoursEngine.net_delta(effects)
+			var has_cost := false
+			for entry: Dictionary in effects:
+				var delta: Variant = entry.get("delta")
+				var amount := absf(float(delta)) if not (delta is Dictionary) else absf(float(delta.get("max", 0)))
+				total += amount
+				has_cost = has_cost or float(delta) < 0.0
+				strong = strong or float(delta) >= 3.0
+			assert_between(total, 2.0, 7.0, "%s %s size" % [question["question_id"], letter])
+			assert_true(net <= 1.0 or has_cost, "%s %s gains without a cost" % [question["question_id"], letter])
+			if net >= 2.0:
+				big_nets += 1
+		assert_true(strong, "%s has no strongly pleasing choice" % question["question_id"])
+		assert_lte(big_nets, 2, "%s has too many good choices" % question["question_id"])
