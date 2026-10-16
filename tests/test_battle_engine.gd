@@ -2176,3 +2176,20 @@ func test_a_battle_engine_is_freed_when_nothing_holds_it() -> void:
 	var ref := weakref(engine)
 	engine = null
 	assert_null(ref.get_ref(), "the engine was released")
+
+
+func test_an_extra_energy_item_widens_the_pips_now_and_next_turn() -> void:
+	var stage := DataDB.get_stage("ST02").duplicate(true)
+	stage["opponents"] = [DataDB.get_opponents_for_stage("ST02")[0]]
+	var engine := BattleEngine.new()
+	engine.setup(BattleSetup.for_playtest_stage(stage))
+	var base: int = engine.state.energy_per_turn
+	engine.state.energy = 1   # two spent
+	assert_true(engine.use_item("TEST_ENERGY", [{"token": "ENERGY", "amount": 1}], 1)["ok"])
+	assert_eq(engine.state.energy, 2)
+	assert_eq(engine.state.energy_max, base + 1, "the row is one pip wider at once")
+	engine.state.energy = 0   # spent the rest, so ending the turn is not a pass
+	engine.state.cards_played_this_turn = 1
+	engine.end_turn()
+	assert_eq(engine.state.energy, base + 1, "the next turn refills to the raised allowance")
+	assert_eq(engine.state.energy_max, base + 1, "and the row stays that wide")

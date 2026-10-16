@@ -572,6 +572,10 @@ func end_turn() -> Dictionary:
 			if passed:
 				allowance -= _pass_cost()
 			state.energy = maxi(allowance, 0)
+			# The pips (BattleScreen._refresh_energy) are drawn from energy_max,
+			# so an Extra Energy item has to raise it too, or the new energy
+			# fills a row still three wide (2026-10-17 playtest).
+			state.energy_max = maxi(state.energy_per_turn, state.energy)
 		# In a press conference what you were dealt is what you have. A card
 		# that says "draw" still works; the turn itself gives you nothing.
 		if state.draw_mode != "none":
@@ -1482,6 +1486,10 @@ func _apply_item_bonus(token: String, amount: int, now: bool) -> void:
 			if now:
 				state.energy = maxi(state.energy + amount, 0)
 				state.energy_max = maxi(state.energy_max, state.energy)
+				# A per-turn stage's row is energy_per_turn wide, so the pip
+				# row grows the moment the item is used, not a turn later.
+				if state.energy_mode != "pool":
+					state.energy_max = maxi(state.energy_max, state.energy_per_turn)
 		"GUARD":
 			state.block = clampi(state.block + amount, 0, state.guard_cap)
 			# Remembered so _reset_for_new_bout() can re-grant it, whether this
