@@ -218,7 +218,7 @@
       "BO04"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "ST15 Committee on Construction and Development starts with +10 Favourability.",
+    "effect": "ST15 Committee on Construction and Development starts with +10 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
@@ -344,7 +344,7 @@
       "BO04"
     ],
     "trigger_min_pct": 25.0,
-    "effect": "ST17 Committee on Government Administration starts with +10 Favourability.",
+    "effect": "ST17 Committee on Government Administration starts with +10 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 10,
     "funds_cost": 0,
@@ -407,7 +407,7 @@
       "BO07"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "ST13 Committee on Agriculture starts with +10 Favourability.",
+    "effect": "ST13 Committee on Agriculture starts with +10 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
@@ -470,7 +470,7 @@
       "BO10"
     ],
     "trigger_min_pct": 30.0,
-    "effect": "ST10 Committee on the Environment starts with +10 Favourability.",
+    "effect": "ST10 Committee on the Environment starts with +10 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
@@ -596,7 +596,7 @@
       "BO16"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "ST16 Committee on Finance starts with +10 Favourability.",
+    "effect": "ST16 Committee on Finance starts with +10 Favorability.",
     "reputation_cost": 10,
     "jiban_cost": 5,
     "funds_cost": 0,
@@ -680,7 +680,7 @@
       "BO22"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "ST11 Committee on War starts with +10 Favourability.",
+    "effect": "ST11 Committee on War starts with +10 Favorability.",
     "reputation_cost": 10,
     "jiban_cost": 5,
     "funds_cost": 0,
@@ -701,7 +701,7 @@
       "BO23"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "ST09 Committee on Ethics and Prosecution starts with +10 Favourability.",
+    "effect": "ST09 Committee on Ethics and Prosecution starts with +10 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
@@ -785,7 +785,7 @@
       "BO27"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "ST17 Committee on Government Administration starts with +10 Favourability.",
+    "effect": "ST17 Committee on Government Administration starts with +10 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 10,
     "funds_cost": 0,
@@ -806,7 +806,7 @@
       "BO28"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "ST12 Committee on the National Assembly starts with +10 Favourability.",
+    "effect": "ST12 Committee on the National Assembly starts with +10 Favorability.",
     "reputation_cost": 10,
     "jiban_cost": 5,
     "funds_cost": 0,

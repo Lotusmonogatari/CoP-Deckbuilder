@@ -60,7 +60,7 @@
     "where": "End of stage — what it was worth",
     "english": "Pleased: {names}.",
     "placeholders": "names",
-    "notes": "Which organisations your answers pleased."
+    "notes": "Which organizations your answers pleased."
   },
   {
     "key": "outcome.no_rewards",
@@ -121,7 +121,7 @@
   {
     "key": "battle.cannot_start",
     "where": "Battle — notices",
-    "english": "This battle could not start:\n• {problems}",
+    "english": "This stage could not start:\n• {problems}",
     "placeholders": "problems",
     "notes": "{problems} is a bulleted list the game fills in."
   },
@@ -674,7 +674,7 @@
   {
     "key": "office.funds_buys",
     "where": "Office — management",
-    "english": "Earned by winning stages. Buys the organisations' backing and staff.",
+    "english": "Earned by winning stages. Buys the organizations' backing and staff.",
     "placeholders": null,
     "notes": null
   },
@@ -736,15 +736,15 @@
   },
   {
     "key": "office.orgs_blurb",
-    "where": "Office — organisations",
-    "english": "Answering a reporter in the suit their question invites pleases the organisation behind it, and that standing is carried between levels.",
+    "where": "Office — organizations",
+    "english": "Answering a reporter in the suit their question invites pleases the organization behind it, and that standing is carried between levels.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "office.backing_blurb",
     "where": "Office — backing",
-    "english": "An organisation backs you once your standing with it is high enough. Answering a reporter in the suit their question invites is what raises it.",
+    "english": "An organization backs you once your standing with it is high enough. Answering a reporter in the suit their question invites is what raises it.",
     "placeholders": null,
     "notes": null
   },
@@ -767,7 +767,7 @@
     "where": "Office — backing",
     "english": "Not active yet — this effect is still to be built.",
     "placeholders": null,
-    "notes": "Six of the fifteen organisations' effects need machinery that is not built."
+    "notes": "Six of the fifteen organizations' effects need machinery that is not built."
   },
   {
     "key": "shop.card_no_id",
@@ -877,14 +877,14 @@
   {
     "key": "outcome.reason.fell_below",
     "where": "End of stage — why",
-    "english": "Support fell below the line during the debate.",
+    "english": "Support fell below the threshold during the debate.",
     "placeholders": null,
     "notes": "A TV debate, where you must stay above the line every turn."
   },
   {
     "key": "outcome.reason.survived",
     "where": "End of stage — why",
-    "english": "Survived the whole debate above the line.",
+    "english": "Survived the whole debate above the threshold.",
     "placeholders": null,
     "notes": null
   },
@@ -1101,7 +1101,7 @@
   {
     "key": "reward.standing",
     "where": "Office · level briefing",
-    "english": "Standing with whichever organisations your answers please",
+    "english": "Standing with whichever organizations your answers please",
     "placeholders": null,
     "notes": null
   },
@@ -1311,7 +1311,7 @@
   {
     "key": "office.staff_hired",
     "where": "Office  ·  Recruitment shop, a filled role",
-    "english": "{name} · Tier {tier} of {highest}",
+    "english": "{name} · Rank {tier} of {highest}",
     "placeholders": "name, tier, highest",
     "notes": null
   },
@@ -1325,7 +1325,7 @@
   {
     "key": "office.staff_at_max",
     "where": "Office · Recruitment shop, upgrade button when none is left",
-    "english": "At their highest tier.",
+    "english": "At their highest rank.",
     "placeholders": null,
     "notes": null
   },
@@ -1850,14 +1850,14 @@
   {
     "key": "shop.recruitment_tier_maxed",
     "where": "Shop — refusals",
-    "english": "Every recruitment tier is already open.",
+    "english": "Every recruitment rank is already open.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "shop.recruitment_tier_unlocked",
     "where": "Office report after buying a staff recruitment tier",
-    "english": "A new staff recruitment tier is open.",
+    "english": "A new staff recruitment rank is open.",
     "placeholders": null,
     "notes": null
   },
@@ -1877,7 +1877,7 @@
   },
   {
     "key": "battle.speaker_and_org",
-    "where": "Battle heading over a question asker, with their organisation",
+    "where": "Battle heading over a question asker, with their organization",
     "english": "{who} — {org}",
     "placeholders": "who, org",
     "notes": null
@@ -2146,7 +2146,7 @@
     "where": "End of stage — what it was worth",
     "english": "Annoyed: {names}.",
     "placeholders": "names",
-    "notes": "Which organisations a weak answer annoyed."
+    "notes": "Which organizations a weak answer annoyed."
   },
   {
     "key": "office.record_sanban_heading",
@@ -2164,21 +2164,21 @@
   },
   {
     "key": "item.used_with_outcome",
-    "where": "Message after using an item whose grant landed on a random organisation or segment (Commission items, SH01-03)",
+    "where": "Message after using an item whose grant landed on a random organization or segment (Commission items, SH01-03)",
     "english": "{name} used — {outcome}.",
     "placeholders": "name, outcome",
     "notes": null
   },
   {
     "key": "item.queued_with_outcome",
-    "where": "Message after using a Stage item in the Office whose grant also landed on a random organisation or segment",
+    "where": "Message after using a Stage item in the Office whose grant also landed on a random organization or segment",
     "english": "{name} is ready for your next stage — {outcome}.",
     "placeholders": "name, outcome",
     "notes": null
   },
   {
     "key": "item.queued_level_with_outcome",
-    "where": "Message after using a Level item in the Office whose grant also landed on a random organisation or segment",
+    "where": "Message after using a Level item in the Office whose grant also landed on a random organization or segment",
     "english": "{name} will last through your next level — {outcome}.",
     "placeholders": "name, outcome",
     "notes": null
@@ -2188,7 +2188,7 @@
     "where": "End of stage — what it was worth",
     "english": "Argued out of the room: {names}.",
     "placeholders": "names",
-    "notes": "Which organisations had a member argued down to zero support this stage."
+    "notes": "Which organizations had a member argued down to zero support this stage."
   },
   {
     "key": "outcome.reason.player_argued_out",
@@ -2221,14 +2221,14 @@
   {
     "key": "card.room_greatly_enhanced",
     "where": "Card zoom — stage affinity line",
-    "english": "Being greatly enhanced by supporters.",
+    "english": "This room greatly favors this suit.",
     "placeholders": null,
     "notes": "2026-10-01 audit: was BattleScreen.describe_room_for()'s own hardcoded text."
   },
   {
     "key": "card.room_enhanced",
     "where": "Card zoom — stage affinity line",
-    "english": "Being enhanced by supporters.",
+    "english": "This room favors this suit.",
     "placeholders": null,
     "notes": null
   },
@@ -2242,14 +2242,14 @@
   {
     "key": "card.room_suppressed",
     "where": "Card zoom — stage affinity line",
-    "english": "Being suppressed by detractors.",
+    "english": "This room resists this suit.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "card.room_greatly_suppressed",
     "where": "Card zoom — stage affinity line",
-    "english": "Being greatly suppressed by opponents.",
+    "english": "This room strongly resists this suit.",
     "placeholders": null,
     "notes": null
   },
@@ -2487,86 +2487,86 @@
   {
     "key": "staff.tiers_heading",
     "where": "Office · Staff Profile, heading above the tier list",
-    "english": "Bonuses by tier",
+    "english": "Bonuses by rank",
     "placeholders": null,
     "notes": "Heading above the list of tiers."
   },
   {
     "key": "staff.tier_label",
     "where": "Office · Staff Profile, a tier already passed or not on offer",
-    "english": "Tier {tier}",
+    "english": "Rank {tier}",
     "placeholders": "tier",
     "notes": "A tier's own heading when nothing else needs saying."
   },
   {
     "key": "staff.tier_on_hire",
     "where": "Office · Staff Profile, the tier a candidate arrives at",
-    "english": "Tier {tier} · given when hired",
+    "english": "Rank {tier} · given when hired",
     "placeholders": "tier",
     "notes": "The tier the bonus below is paid at the moment you hire them."
   },
   {
     "key": "staff.tier_current",
     "where": "Office · Staff Profile, the tier a hired person is at",
-    "english": "Tier {tier} · current",
+    "english": "Rank {tier} · current",
     "placeholders": "tier",
     "notes": "Marks the tier a hired person has reached."
   },
   {
     "key": "staff.tier_upgrade",
     "where": "Office · Staff Profile, a tier still to be bought",
-    "english": "Tier {tier} · upgrade cost {cost}円",
+    "english": "Rank {tier} · upgrade cost {cost}円",
     "placeholders": "tier, cost",
     "notes": "What it costs to upgrade into this tier; the bonus below is paid when you do."
   },
   {
     "key": "staff.tier_upgrade_unpriced",
     "where": "Office · Staff Profile, a tier with no price entered",
-    "english": "Tier {tier} · upgrade cost not set",
+    "english": "Rank {tier} · upgrade cost not set",
     "placeholders": "tier",
     "notes": "Shown when the workbook has no upgrade price for this step."
   },
   {
     "key": "staff.reward_booster",
-    "where": "Office · Staff Profile, a bonus line for an organisation",
+    "where": "Office · Staff Profile, a bonus line for an organization",
     "english": "{delta} standing with {name}",
     "placeholders": "delta, name",
-    "notes": "One bonus: how much an organisation's standing moves. {delta} reads +2 or -2."
+    "notes": "One bonus: how much an organization's standing moves. {delta} reads +2 or -2."
   },
   {
     "key": "staff.reward_segment",
     "where": "Office · Staff Profile, a bonus line for an audience group",
-    "english": "{delta} sentiment among {name}",
+    "english": "{delta} approval among {name}",
     "placeholders": "delta, name",
     "notes": "One bonus: how much an audience group's sentiment moves. {delta} reads +2 or -2."
   },
   {
     "key": "staff.reward_none",
     "where": "Office · Staff Profile, a tier that gives nothing",
-    "english": "No bonus at this tier.",
+    "english": "No bonus at this rank.",
     "placeholders": null,
     "notes": "Shown for a tier with no bonus written."
   },
   {
     "key": "staff.no_upgrades",
     "where": "Office · Staff Profile, for someone with only one tier",
-    "english": "This person has no higher tiers.",
+    "english": "This person has no higher ranks.",
     "placeholders": null,
     "notes": "Shown under the tier list when there is nothing to upgrade to."
   },
   {
     "key": "outcome.booster_hint",
-    "where": "Outcome panel, above the organisation icons",
-    "english": "Tap an organisation to see how its standing moved.",
+    "where": "Outcome panel, above the organization icons",
+    "english": "Tap an organization to see how its standing moved.",
     "placeholders": null,
-    "notes": "One line above the row of organisation icons shown when a stage touched any."
+    "notes": "One line above the row of organization icons shown when a stage touched any."
   },
   {
     "key": "outcome.booster_change",
-    "where": "Outcome panel, after tapping an organisation icon",
+    "where": "Outcome panel, after tapping an organization icon",
     "english": "{name}: {change}",
     "placeholders": "change, name",
-    "notes": "The net standing change for that organisation this stage; {change} already carries its + or - sign."
+    "notes": "The net standing change for that organization this stage; {change} already carries its + or - sign."
   },
   {
     "key": "briefing.loss_ends_level",
@@ -2648,7 +2648,7 @@
   {
     "key": "party_opinion.blurb",
     "where": "Parties page, top",
-    "english": "How each party sees you: its mood about your votes and rewards, blended with how its stakeholder organisations feel about you.",
+    "english": "How each party sees you: its mood about your votes and rewards, blended with how its stakeholder organizations feel about you.",
     "placeholders": null,
     "notes": null
   },
@@ -2671,7 +2671,7 @@
     "where": "Parties page, small line per party",
     "english": "Votes and rewards {direct} · Stakeholders {stakeholder}",
     "placeholders": "direct, stakeholder",
-    "notes": "Stakeholders shows a dash where no organisation is tied to the party."
+    "notes": "Stakeholders shows a dash where no organization is tied to the party."
   },
   {
     "key": "party_opinion.helping",
@@ -2788,7 +2788,7 @@
   {
     "key": "party_opinion.popup_blurb",
     "where": "Parties popup, top",
-    "english": "Organisations this party counts as friends or opponents. An ally's standing with you counts for the party; a rival's standing counts against it.",
+    "english": "Organizations this party counts as friends or opponents. An ally's standing with you counts for the party; a rival's standing counts against it.",
     "placeholders": null,
     "notes": null
   },
@@ -2829,28 +2829,28 @@
   },
   {
     "key": "party_opinion.tag_improving",
-    "where": "Parties popup, tag on an organisation",
+    "where": "Parties popup, tag on an organization",
     "english": "Improving Favorability",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "party_opinion.tag_neutral",
-    "where": "Parties popup, tag on an organisation",
+    "where": "Parties popup, tag on an organization",
     "english": "Neutral",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "party_opinion.tag_reducing",
-    "where": "Parties popup, tag on an organisation",
+    "where": "Parties popup, tag on an organization",
     "english": "Reducing Favorability",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "party_opinion.standing_line",
-    "where": "Parties popup, one line per organisation",
+    "where": "Parties popup, one line per organization",
     "english": "{name} · standing {standing}",
     "placeholders": "name, standing",
     "notes": null
@@ -2934,7 +2934,7 @@
   },
   {
     "key": "backing.standing",
-    "where": "Boosters panel — an organisation's standing",
+    "where": "Boosters panel — an organization's standing",
     "english": "{name}  ·  standing {have}",
     "placeholders": "name, have",
     "notes": "2026-10-15 text pass: was typed in OfficeScreen.gd."
@@ -3418,14 +3418,14 @@
   {
     "key": "battle.threshold_rises",
     "where": "Battle — notices",
-    "english": "The line rises by {rise}, to {threshold}.",
+    "english": "The threshold rises by {rise}, to {threshold}.",
     "placeholders": "rise, threshold",
     "notes": "TV debate whose Threshold Rise columns are set: said after each survived turn (2026-10-16)."
   },
   {
     "key": "brief.winning.survival_rising",
     "where": "Details — how this room works",
-    "english": "Stay at {count} {unit} or above at the end of every turn. After each turn the line rises by {min} to {max}.",
+    "english": "Stay at {count} {unit} or above at the end of every turn. After each turn the threshold rises by {min} to {max}.",
     "placeholders": "count, unit, min, max",
     "notes": "TV debate with a rising threshold (2026-10-16)."
   },
@@ -3435,5 +3435,26 @@
     "english": "{count} short.",
     "placeholders": "count",
     "notes": "A shortfall in a meta-variable that is not Funds (Reputation, Constituency support). Funds uses shop.funds_short, which writes the 円 mark."
+  },
+  {
+    "key": "office.scope_party",
+    "where": "Office · Important Stakeholders, heading over the Party-scope organizations",
+    "english": "Party Bodies",
+    "placeholders": null,
+    "notes": "2026-10-16: was the raw data value \"Party\"."
+  },
+  {
+    "key": "office.scope_constituency",
+    "where": "Office · Important Stakeholders, heading over the Constituency-scope organizations",
+    "english": "Constituency",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.scope_national",
+    "where": "Office · Important Stakeholders, heading over the National-scope organizations",
+    "english": "National",
+    "placeholders": null,
+    "notes": null
   }
 ]

@@ -2500,3 +2500,15 @@ From `design/TERMINOLOGY_REVIEW_2026-10-16.md` (H3, the "support" overload, is r
 - **The audience group Donors (SG04) is now "Boosters"** (Segments tab, the three cards that read it, C24's text and note). The Stages tab column `% Donors` became `% Boosters` (`pct_boosters`; the exporter derives that column name from the segment's name, so renaming the segment alone broke every stage's audience total). Not changed: the segment's Japanese name (支援者), the Boosters panel's own name, visitor dialogue that says "Donors", design docs, and the `ArtLoader`/icon ID SG04.
 - **TV Debate backing** (M04) now says "+10 Viewer Interest", the room's own bar word. **Four backing effect cells that said "Jiban"** now say "Constituency support".
 - GUT 1115 and `verify.sh` green; `test_ledger.gd` shortfall expectations now carry 円.
+
+### Terminology pass 2: American spelling, Threshold, Staff Rank, Party Bodies (2026-10-16, Cameron)
+
+From the round-2 audit; his decisions applied (bar unit names, "Support", "Press" and the Boosters overload were left alone on purpose; the Boosters wording waits for a more detailed round).
+- **American spelling everywhere** (359 workbook cells, the header notes, and the Question Themes header, now "Organization", with `export_data.py` following): favor, neighbor, defense, honor, labor, harbor, organization, apologize, labeling and the like, including the stage bar unit "Favorability" and the backing text. Theme keys in Stage/Question tabs changed together, so the exact-match join still holds.
+- **Threshold** replaces "the line" and "win mark" in outcome reasons, the rising-threshold notice, the Details brief and How to Play (HT03, HT06).
+- **Card zoom** room lines now describe what really drives them, the stage's suit affinity: "This room (greatly) favors / resists this suit." (the old "supporters / detractors" implied an audience).
+- **Staff Rank** replaces "Tier" for staff (hire, upgrade, profile, recruitment, SH12, and the "is Rank N" conditions on the Commission items). Card tier, level tier and the Tier columns stay.
+- **Organization scope headings**: Important Stakeholders shows **Party Bodies**, Constituency and National (new Text rows `office.scope_*`); the data value "Party" is unchanged because the rules read it. Shop Commission and dinner text says "Party Bodies booster group" / "National booster group".
+- **Staff approval bonuses** read "approval among {audience}" (organizations keep "standing with").
+- **Funds (Yen)** removed from the SH09-SH11 conditions. **"Battle"** retired from How to Play and the stage-start message ("Between Levels" group). The unused Office XP caption was removed from Office Management (`office.xp_buys` row now unused). The card name "Drawing Battle Lines" stays (a card name).
+- Not changed: developer comments in hand-maintained JSON, column headers such as "Tier", "Funds (Yen)", "Music: Battle Sound".

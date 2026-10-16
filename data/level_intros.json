@@ -42,7 +42,7 @@
   {
     "level_id": "LV03",
     "role": "District Representative",
-    "cue_text": "Experts and neighbours will want different things."
+    "cue_text": "Experts and neighbors will want different things."
   },
   {
     "level_id": "LV04",
@@ -312,7 +312,7 @@
   {
     "level_id": "LV21",
     "role": "District Representative",
-    "cue_text": "Neighbours know who helped their families."
+    "cue_text": "Neighbors know who helped their families."
   },
   {
     "level_id": "LV22",
@@ -327,7 +327,7 @@
   {
     "level_id": "LV22",
     "role": "District Representative",
-    "cue_text": "Local owners are your neighbours."
+    "cue_text": "Local owners are your neighbors."
   },
   {
     "level_id": "LV23",
@@ -922,7 +922,7 @@
   {
     "level_id": "LV62",
     "role": "Media Spokesperson",
-    "cue_text": "Harbour stories are honest and proud. Respect them."
+    "cue_text": "Harbor stories are honest and proud. Respect them."
   },
   {
     "level_id": "LV62",

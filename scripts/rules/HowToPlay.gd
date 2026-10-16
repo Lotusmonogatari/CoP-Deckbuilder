@@ -15,7 +15,7 @@ extends RefCounted
 ## written, on purpose: a typo in the workbook shows up on screen where the
 ## designer will see it, rather than silently vanishing.
 ##
-##   {majority}      Floor Debate (ST02) win mark
+##   {majority}      Floor Debate (ST02) threshold
 ##   {seats}         Floor Debate (ST02) seats in the chamber
 ##   {guard_cap}     rules.json: most Guard either side can hold
 ##   {pass_penalty}  rules.json: energy lost next turn for passing

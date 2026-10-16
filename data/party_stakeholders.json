@@ -135,13 +135,13 @@
     "party_id": "PT03",
     "booster_id": "BO30",
     "weight": 4.0,
-    "note": "Rural revitalisation"
+    "note": "Rural revitalization"
   },
   {
     "party_id": "PT03",
     "booster_id": "BO06",
     "weight": 3.0,
-    "note": "Neighbourhood base"
+    "note": "Neighborhood base"
   },
   {
     "party_id": "PT03",
@@ -303,7 +303,7 @@
     "party_id": "PT05",
     "booster_id": "BO09",
     "weight": -3.0,
-    "note": "Labour opposes free-market politics"
+    "note": "Labor opposes free-market politics"
   },
   {
     "party_id": "PT05",
@@ -369,7 +369,7 @@
     "party_id": "PT06",
     "booster_id": "BO09",
     "weight": -2.0,
-    "note": "Labour lean the other way"
+    "note": "Labor lean the other way"
   },
   {
     "party_id": "PT06",

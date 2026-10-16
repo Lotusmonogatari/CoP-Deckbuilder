@@ -470,7 +470,7 @@
     "suit": "Data Driven",
     "verb": "gain",
     "opponent_ids": null,
-    "cue_1": "The evidence favours my reading.",
+    "cue_1": "The evidence favors my reading.",
     "cue_2": "Check the ridership table. I am right.",
     "cue_3": "These figures support the fare review.",
     "cue_4": "The audit is on my side.",
@@ -642,7 +642,7 @@
     "opponent_ids": null,
     "cue_1": "I need to see honest quotas.",
     "cue_2": "Show me the catch records.",
-    "cue_3": "Own up to the harbour's problems.",
+    "cue_3": "Own up to the harbor's problems.",
     "cue_4": "Where is the plain answer?",
     "cue_5": "I want accountability, not excuses.",
     "stage_ids": [
@@ -712,7 +712,7 @@
     "cue_2": "I report every landing honestly.",
     "cue_3": "The rules are public and I follow them.",
     "cue_4": "I hide nothing about my fleet.",
-    "cue_5": "Judge the harbour by its work.",
+    "cue_5": "Judge the harbor by its work.",
     "stage_ids": [
       "ST28",
       "ST29",
@@ -742,11 +742,11 @@
     "suit": "Appeal",
     "verb": "attack",
     "opponent_ids": null,
-    "cue_1": "Friends of the harbour would not do this.",
-    "cue_2": "We are neighbours. Act like it.",
+    "cue_1": "Friends of the harbor would not do this.",
+    "cue_2": "We are neighbors. Act like it.",
     "cue_3": "Surely you can see our side.",
     "cue_4": "Our towns deserve better from you.",
-    "cue_5": "A fair quota is a favour to all.",
+    "cue_5": "A fair quota is a favor to all.",
     "stage_ids": [
       "ST28",
       "ST29",
@@ -763,7 +763,7 @@
     "cue_2": "We hope you will stand with us.",
     "cue_3": "Fisher families stand together here.",
     "cue_4": "Be one of us in this.",
-    "cue_5": "Help us as good neighbours do.",
+    "cue_5": "Help us as good neighbors do.",
     "stage_ids": [
       "ST28",
       "ST29",
@@ -776,7 +776,7 @@
     "suit": "Appeal",
     "verb": "gain",
     "opponent_ids": null,
-    "cue_1": "Thank you, friend. The harbour agrees.",
+    "cue_1": "Thank you, friend. The harbor agrees.",
     "cue_2": "That is the spirit we need.",
     "cue_3": "We stand together on this.",
     "cue_4": "Our towns will welcome that.",
@@ -796,7 +796,7 @@
     "cue_1": "We all benefit from that.",
     "cue_2": "Together we can make this work.",
     "cue_3": "That is generous, and we welcome it.",
-    "cue_4": "You speak for the whole harbour.",
+    "cue_4": "You speak for the whole harbor.",
     "cue_5": "I knew we shared common ground.",
     "stage_ids": [
       "ST28",
@@ -830,7 +830,7 @@
     "cue_1": "I count you as a friend.",
     "cue_2": "Fisher families need us united.",
     "cue_3": "Keep it friendly, and I will too.",
-    "cue_4": "Calm talk serves the harbour best.",
+    "cue_4": "Calm talk serves the harbor best.",
     "cue_5": "No one gains from a quarrel.",
     "stage_ids": [
       "ST28",
@@ -847,7 +847,7 @@
       "OP103"
     ],
     "cue_1": "Our block is not your test case.",
-    "cue_2": "Ask the neighbours and plan together.",
+    "cue_2": "Ask the neighbors and plan together.",
     "cue_3": "Local people were left out.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
@@ -862,7 +862,7 @@
     ],
     "cue_1": "Good for the block. Good for all.",
     "cue_2": "That respects how we get along.",
-    "cue_3": "Neighbours will thank you for that.",
+    "cue_3": "Neighbors will thank you for that.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
     "stage_ids": null
@@ -920,7 +920,7 @@
     "cue_2": "Show me the support for parents.",
     "cue_3": "Not without childcare in the plan.",
     "cue_4": "Careful. Real lives are involved.",
-    "cue_5": "I will not apologise for caring.",
+    "cue_5": "I will not apologize for caring.",
     "stage_ids": null
   },
   {
@@ -987,7 +987,7 @@
       "OP106"
     ],
     "cue_1": "That sounds like someone who listens.",
-    "cue_2": "My neighbours will like that.",
+    "cue_2": "My neighbors will like that.",
     "cue_3": "Good. Plain talk helps.",
     "cue_4": "Every claim here is documented.",
     "cue_5": "The evidence is on my side.",
@@ -1028,7 +1028,7 @@
     "opponent_ids": [
       "OP107"
     ],
-    "cue_1": "My neighbours will like that.",
+    "cue_1": "My neighbors will like that.",
     "cue_2": "Good. Plain talk helps.",
     "cue_3": "That is useful to us.",
     "cue_4": "Honesty has worked for me so far.",
@@ -1184,7 +1184,7 @@
     ],
     "cue_1": "Who benefits? Say it plainly.",
     "cue_2": "Rules apply to you as well.",
-    "cue_3": "That sounds like a favour, not policy.",
+    "cue_3": "That sounds like a favor, not policy.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
     "stage_ids": null
@@ -1213,7 +1213,7 @@
     "cue_1": "I need the record on that point.",
     "cue_2": "Careful. Every word is noted.",
     "cue_3": "Evidence first, opinions second.",
-    "cue_4": "I will not apologise for caring.",
+    "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
     "stage_ids": null
   },
@@ -1225,7 +1225,7 @@
       "OP34"
     ],
     "cue_1": "Rules apply to you as well.",
-    "cue_2": "That sounds like a favour, not policy.",
+    "cue_2": "That sounds like a favor, not policy.",
     "cue_3": "Clean hands, or no vote from me.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
@@ -1266,7 +1266,7 @@
     "opponent_ids": [
       "OP60"
     ],
-    "cue_1": "That sounds like a favour, not policy.",
+    "cue_1": "That sounds like a favor, not policy.",
     "cue_2": "Clean hands, or no vote from me.",
     "cue_3": "Who benefits? Say it plainly.",
     "cue_4": "Where is your heart in this?",
@@ -1352,7 +1352,7 @@
     ],
     "cue_1": "Who benefits? Say it plainly.",
     "cue_2": "Rules apply to you as well.",
-    "cue_3": "That sounds like a favour, not policy.",
+    "cue_3": "That sounds like a favor, not policy.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
     "stage_ids": null
@@ -1393,7 +1393,7 @@
       "OP99"
     ],
     "cue_1": "Rules apply to you as well.",
-    "cue_2": "That sounds like a favour, not policy.",
+    "cue_2": "That sounds like a favor, not policy.",
     "cue_3": "Clean hands, or no vote from me.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
@@ -1434,7 +1434,7 @@
     "opponent_ids": [
       "OP45"
     ],
-    "cue_1": "That sounds like a favour, not policy.",
+    "cue_1": "That sounds like a favor, not policy.",
     "cue_2": "Clean hands, or no vote from me.",
     "cue_3": "Who benefits? Say it plainly.",
     "cue_4": "Plain truth, please.",
@@ -1520,7 +1520,7 @@
     ],
     "cue_1": "Who benefits? Say it plainly.",
     "cue_2": "Rules apply to you as well.",
-    "cue_3": "That sounds like a favour, not policy.",
+    "cue_3": "That sounds like a favor, not policy.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
     "stage_ids": null
@@ -1561,7 +1561,7 @@
       "OP85"
     ],
     "cue_1": "Rules apply to you as well.",
-    "cue_2": "That sounds like a favour, not policy.",
+    "cue_2": "That sounds like a favor, not policy.",
     "cue_3": "Clean hands, or no vote from me.",
     "cue_4": "Funny. That is not what you said in private.",
     "cue_5": "Convenient memory you have.",
@@ -1602,7 +1602,7 @@
     "opponent_ids": [
       "OP91"
     ],
-    "cue_1": "That sounds like a favour, not policy.",
+    "cue_1": "That sounds like a favor, not policy.",
     "cue_2": "Clean hands, or no vote from me.",
     "cue_3": "Who benefits? Say it plainly.",
     "cue_4": "Where is your heart in this?",
@@ -1760,7 +1760,7 @@
     "cue_2": "Protection comes first. Talk second.",
     "cue_3": "Not at the expense of the coast.",
     "cue_4": "Careful. Real lives are involved.",
-    "cue_5": "I will not apologise for caring.",
+    "cue_5": "I will not apologize for caring.",
     "stage_ids": null
   },
   {
@@ -2233,7 +2233,7 @@
       "OP54"
     ],
     "cue_1": "Readiness is not a talking point.",
-    "cue_2": "Our defences are not a debate prize.",
+    "cue_2": "Our defenses are not a debate prize.",
     "cue_3": "Strategy needs more than slogans.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
@@ -2274,7 +2274,7 @@
     "opponent_ids": [
       "OP63"
     ],
-    "cue_1": "Our defences are not a debate prize.",
+    "cue_1": "Our defenses are not a debate prize.",
     "cue_2": "Strategy needs more than slogans.",
     "cue_3": "Name the threat you are answering.",
     "cue_4": "Plain truth, please.",
@@ -2360,7 +2360,7 @@
     ],
     "cue_1": "Name the threat you are answering.",
     "cue_2": "Readiness is not a talking point.",
-    "cue_3": "Our defences are not a debate prize.",
+    "cue_3": "Our defenses are not a debate prize.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
     "stage_ids": null
@@ -2401,7 +2401,7 @@
       "OP67"
     ],
     "cue_1": "Readiness is not a talking point.",
-    "cue_2": "Our defences are not a debate prize.",
+    "cue_2": "Our defenses are not a debate prize.",
     "cue_3": "Strategy needs more than slogans.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
@@ -2442,7 +2442,7 @@
     "opponent_ids": [
       "OP52"
     ],
-    "cue_1": "Our defences are not a debate prize.",
+    "cue_1": "Our defenses are not a debate prize.",
     "cue_2": "Strategy needs more than slogans.",
     "cue_3": "Name the threat you are answering.",
     "cue_4": "Your friends are quiet, are they not?",
@@ -2528,7 +2528,7 @@
     ],
     "cue_1": "Name the threat you are answering.",
     "cue_2": "Readiness is not a talking point.",
-    "cue_3": "Our defences are not a debate prize.",
+    "cue_3": "Our defenses are not a debate prize.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
     "stage_ids": null
@@ -2600,7 +2600,7 @@
     "cue_2": "Amend it properly and we vote.",
     "cue_3": "I hold the line on procedure.",
     "cue_4": "Careful. Real lives are involved.",
-    "cue_5": "I will not apologise for caring.",
+    "cue_5": "I will not apologize for caring.",
     "stage_ids": null
   },
   {
@@ -2768,7 +2768,7 @@
     "cue_2": "Amend it properly and we vote.",
     "cue_3": "I hold the line on procedure.",
     "cue_4": "Careful. Real lives are involved.",
-    "cue_5": "I will not apologise for caring.",
+    "cue_5": "I will not apologize for caring.",
     "stage_ids": null
   },
   {
@@ -2893,7 +2893,7 @@
     "cue_1": "Not by a shortcut through the chamber.",
     "cue_2": "The floor schedule will not bend.",
     "cue_3": "Amend it properly and we vote.",
-    "cue_4": "I will not apologise for caring.",
+    "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
     "stage_ids": null
   },
@@ -3061,7 +3061,7 @@
     "cue_1": "Show the numbers to the farmers.",
     "cue_2": "I have watched this plan fail elsewhere.",
     "cue_3": "The land will not forgive carelessness.",
-    "cue_4": "I will not apologise for caring.",
+    "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
     "stage_ids": null
   },
@@ -3397,7 +3397,7 @@
     "cue_1": "Show the numbers to the farmers.",
     "cue_2": "I have watched this plan fail elsewhere.",
     "cue_3": "The land will not forgive carelessness.",
-    "cue_4": "I will not apologise for caring.",
+    "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
     "stage_ids": null
   },
@@ -3450,7 +3450,7 @@
     "opponent_ids": [
       "OP20"
     ],
-    "cue_1": "Our neighbours are reading every word.",
+    "cue_1": "Our neighbors are reading every word.",
     "cue_2": "This weakens us abroad. Explain.",
     "cue_3": "Diplomacy is not a slogan.",
     "cue_4": "Where is your heart in this?",
@@ -3536,7 +3536,7 @@
     ],
     "cue_1": "Diplomacy is not a slogan.",
     "cue_2": "Allies expect more than speeches.",
-    "cue_3": "Our neighbours are reading every word.",
+    "cue_3": "Our neighbors are reading every word.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
     "stage_ids": null
@@ -3565,7 +3565,7 @@
     "cue_1": "Careful. The wrong phrase echoes abroad.",
     "cue_2": "No commitments without allied consent.",
     "cue_3": "I will not hand rivals an opening.",
-    "cue_4": "I will not apologise for caring.",
+    "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
     "stage_ids": null
   },
@@ -3577,7 +3577,7 @@
       "OP61"
     ],
     "cue_1": "Allies expect more than speeches.",
-    "cue_2": "Our neighbours are reading every word.",
+    "cue_2": "Our neighbors are reading every word.",
     "cue_3": "This weakens us abroad. Explain.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
@@ -3618,7 +3618,7 @@
     "opponent_ids": [
       "OP89"
     ],
-    "cue_1": "Our neighbours are reading every word.",
+    "cue_1": "Our neighbors are reading every word.",
     "cue_2": "This weakens us abroad. Explain.",
     "cue_3": "Diplomacy is not a slogan.",
     "cue_4": "Plain truth, please.",
@@ -3704,7 +3704,7 @@
     ],
     "cue_1": "Diplomacy is not a slogan.",
     "cue_2": "Allies expect more than speeches.",
-    "cue_3": "Our neighbours are reading every word.",
+    "cue_3": "Our neighbors are reading every word.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
     "stage_ids": null
@@ -3745,7 +3745,7 @@
       "OP72"
     ],
     "cue_1": "Allies expect more than speeches.",
-    "cue_2": "Our neighbours are reading every word.",
+    "cue_2": "Our neighbors are reading every word.",
     "cue_3": "This weakens us abroad. Explain.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
@@ -3786,7 +3786,7 @@
     "opponent_ids": [
       "OP56"
     ],
-    "cue_1": "Our neighbours are reading every word.",
+    "cue_1": "Our neighbors are reading every word.",
     "cue_2": "This weakens us abroad. Explain.",
     "cue_3": "Diplomacy is not a slogan.",
     "cue_4": "Plain truth, please.",
@@ -3872,7 +3872,7 @@
     ],
     "cue_1": "Diplomacy is not a slogan.",
     "cue_2": "Allies expect more than speeches.",
-    "cue_3": "Our neighbours are reading every word.",
+    "cue_3": "Our neighbors are reading every word.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
     "stage_ids": null
@@ -3913,7 +3913,7 @@
       "OP59"
     ],
     "cue_1": "Allies expect more than speeches.",
-    "cue_2": "Our neighbours are reading every word.",
+    "cue_2": "Our neighbors are reading every word.",
     "cue_3": "This weakens us abroad. Explain.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
@@ -4112,7 +4112,7 @@
     "cue_2": "Not without a complete survey.",
     "cue_3": "I need the contractor figures.",
     "cue_4": "Careful. Real lives are involved.",
-    "cue_5": "I will not apologise for caring.",
+    "cue_5": "I will not apologize for caring.",
     "stage_ids": null
   },
   {
@@ -4320,7 +4320,7 @@
     ],
     "cue_1": "I want the audit first.",
     "cue_2": "Show me the revenue line.",
-    "cue_3": "No blank cheques from this seat.",
+    "cue_3": "No blank checks from this seat.",
     "cue_4": "Say that to their faces.",
     "cue_5": "I speak for more than myself.",
     "stage_ids": null
@@ -4361,7 +4361,7 @@
       "OP39"
     ],
     "cue_1": "Show me the revenue line.",
-    "cue_2": "No blank cheques from this seat.",
+    "cue_2": "No blank checks from this seat.",
     "cue_3": "Hold the spending; cost it properly.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
@@ -4402,7 +4402,7 @@
     "opponent_ids": [
       "OP41"
     ],
-    "cue_1": "No blank cheques from this seat.",
+    "cue_1": "No blank checks from this seat.",
     "cue_2": "Hold the spending; cost it properly.",
     "cue_3": "I want the audit first.",
     "cue_4": "You are in the minority here.",
@@ -4488,7 +4488,7 @@
     ],
     "cue_1": "I want the audit first.",
     "cue_2": "Show me the revenue line.",
-    "cue_3": "No blank cheques from this seat.",
+    "cue_3": "No blank checks from this seat.",
     "cue_4": "Say that to their faces.",
     "cue_5": "I speak for more than myself.",
     "stage_ids": null
@@ -4529,7 +4529,7 @@
       "OP07"
     ],
     "cue_1": "Show me the revenue line.",
-    "cue_2": "No blank cheques from this seat.",
+    "cue_2": "No blank checks from this seat.",
     "cue_3": "Hold the spending; cost it properly.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
@@ -4570,7 +4570,7 @@
     "opponent_ids": [
       "OP83"
     ],
-    "cue_1": "No blank cheques from this seat.",
+    "cue_1": "No blank checks from this seat.",
     "cue_2": "Hold the spending; cost it properly.",
     "cue_3": "I want the audit first.",
     "cue_4": "You are in the minority here.",
@@ -4741,7 +4741,7 @@
     "cue_1": "Proper channels exist for a reason.",
     "cue_2": "Not without a written standard.",
     "cue_3": "Procedure protects us both. Keep to it.",
-    "cue_4": "I will not apologise for caring.",
+    "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
     "stage_ids": null
   },
@@ -5413,7 +5413,7 @@
     "cue_1": "We will see what the facts say.",
     "cue_2": "No comment is also a comment.",
     "cue_3": "I will follow up on that.",
-    "cue_4": "I will not apologise for caring.",
+    "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
     "stage_ids": null
   },
@@ -5581,7 +5581,7 @@
     "cue_1": "We will see what the facts say.",
     "cue_2": "No comment is also a comment.",
     "cue_3": "I will follow up on that.",
-    "cue_4": "I will not apologise for caring.",
+    "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
     "stage_ids": null
   },
@@ -5692,7 +5692,7 @@
     ],
     "cue_1": "Good for the co-op. Good for all.",
     "cue_2": "Growers will drink to that.",
-    "cue_3": "A fair price makes good neighbours.",
+    "cue_3": "A fair price makes good neighbors.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
     "stage_ids": null
@@ -5720,7 +5720,7 @@
     ],
     "cue_1": "The sea has no patience for delay.",
     "cue_2": "Quotas hit our boats first.",
-    "cue_3": "Harbour families bear this cost.",
+    "cue_3": "Harbor families bear this cost.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
     "stage_ids": null
@@ -5732,7 +5732,7 @@
     "opponent_ids": [
       "OP121"
     ],
-    "cue_1": "The harbour welcomes that.",
+    "cue_1": "The harbor welcomes that.",
     "cue_2": "Fair catch, fair price. Good.",
     "cue_3": "Boats will sail easier on that.",
     "cue_4": "Honesty has worked for me so far.",
@@ -5748,7 +5748,7 @@
     ],
     "cue_1": "Not without the catch figures.",
     "cue_2": "We need honest quotas first.",
-    "cue_3": "Keep the harbour working.",
+    "cue_3": "Keep the harbor working.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
     "stage_ids": null
@@ -5802,7 +5802,7 @@
     "opponent_ids": [
       "OP123"
     ],
-    "cue_1": "Ask the neighbours and plan together.",
+    "cue_1": "Ask the neighbors and plan together.",
     "cue_2": "Local people were left out.",
     "cue_3": "Meetings count. You skipped ours.",
     "cue_4": "Plain truth, please.",
@@ -5817,7 +5817,7 @@
       "OP123"
     ],
     "cue_1": "That respects how we get along.",
-    "cue_2": "Neighbours will thank you for that.",
+    "cue_2": "Neighbors will thank you for that.",
     "cue_3": "Community first. Well said.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
@@ -5900,7 +5900,7 @@
     "opponent_ids": [
       "OP125"
     ],
-    "cue_1": "Tradition honoured. Well done.",
+    "cue_1": "Tradition honored. Well done.",
     "cue_2": "That respects the old ways.",
     "cue_3": "Good. Heritage deserves care.",
     "cue_4": "Honesty has worked for me so far.",
@@ -5960,7 +5960,7 @@
     "cue_2": "Not without a complete survey.",
     "cue_3": "I need the contractor figures.",
     "cue_4": "Careful. Real lives are involved.",
-    "cue_5": "I will not apologise for caring.",
+    "cue_5": "I will not apologize for caring.",
     "stage_ids": null
   },
   {
@@ -5970,7 +5970,7 @@
     "opponent_ids": [
       "OP22"
     ],
-    "cue_1": "Our neighbours are reading every word.",
+    "cue_1": "Our neighbors are reading every word.",
     "cue_2": "This weakens us abroad. Explain.",
     "cue_3": "Diplomacy is not a slogan.",
     "cue_4": "Plain truth, please.",
@@ -6056,7 +6056,7 @@
     ],
     "cue_1": "Who benefits? Say it plainly.",
     "cue_2": "Rules apply to you as well.",
-    "cue_3": "That sounds like a favour, not policy.",
+    "cue_3": "That sounds like a favor, not policy.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
     "stage_ids": null
