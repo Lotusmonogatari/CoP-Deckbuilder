@@ -759,6 +759,12 @@ func _on_end_turn() -> void:
 		else:
 			_messages.say(passed_text)
 
+	# The TV debate's line rose: say so and by how much.
+	var rise := int(result.get("threshold_rise", 0))
+	if rise > 0 and not engine.state.is_over():
+		lines.append(Text.say("battle.threshold_rises",
+			{"rise": rise, "threshold": int(result.get("threshold", 0))}))
+
 	var opponent_result: Dictionary = result.get("opponent", {})
 	_player_portrait.react_to_opponent(opponent_result)
 

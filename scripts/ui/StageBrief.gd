@@ -123,6 +123,14 @@ static func _winning(stage: Dictionary) -> String:
 	if threshold <= 0:
 		return Text.say("brief.winning.hold")
 
+	# A TV debate whose line rises each turn says by how much.
+	if (str(stage.get("bar_model", "")) == "Survival"
+			and stage.get("threshold_rise_min") != null
+			and stage.get("threshold_rise_max") != null
+			and int(stage.get("threshold_rise_max")) > 0):
+		return Text.say("brief.winning.survival_rising", {"count": threshold, "unit": unit,
+			"min": int(stage.get("threshold_rise_min")), "max": int(stage.get("threshold_rise_max"))})
+
 	match str(stage.get("sequence_mode", "single")):
 		"reset":
 			return Text.say("brief.winning.reset", {"count": threshold, "unit": unit})

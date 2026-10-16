@@ -3414,5 +3414,19 @@
     "english": "Abstain Votes",
     "placeholders": null,
     "notes": "2026-10-15 vote nomenclature: Aye / Nay."
+  },
+  {
+    "key": "battle.threshold_rises",
+    "where": "Battle — notices",
+    "english": "The line rises by {rise}, to {threshold}.",
+    "placeholders": "rise, threshold",
+    "notes": "TV debate whose Threshold Rise columns are set: said after each survived turn (2026-10-16)."
+  },
+  {
+    "key": "brief.winning.survival_rising",
+    "where": "Details — how this room works",
+    "english": "Stay at {count} {unit} or above at the end of every turn. After each turn the line rises by {min} to {max}.",
+    "placeholders": "count, unit, min, max",
+    "notes": "TV debate with a rising threshold (2026-10-16)."
   }
 ]
