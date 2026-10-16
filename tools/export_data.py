@@ -694,6 +694,14 @@ SHEETS = {
             # 2026-10-12 (Cameron): Yes = only MPs of the player's own party
             # are drawn for this room (the party caucus). Blank = No.
             ("Own Party Only", "own_party_only", "str"),
+            # 2026-10-16 (Cameron): the TV debate's line rises. Each turn the
+            # threshold goes up by a random whole number from Min to Max
+            # (inclusive); Cap is the highest it may ever reach (blank =
+            # Bar max). Blank Min and Max = the line never moves (the old
+            # rule). Survival bar only.
+            ("Threshold Rise Min", "threshold_rise_min", "int"),
+            ("Threshold Rise Max", "threshold_rise_max", "int"),
+            ("Threshold Cap", "threshold_cap", "int"),
         ],
     },
     "Cards": {
@@ -1702,6 +1710,22 @@ def validate(data, report):
         own_party = str(stage.get("own_party_only") or "").strip()
         if own_party and own_party not in ("Yes", "No"):
             report.error("stages", f"{sid} Own Party Only is '{own_party}': write Yes, No or leave it blank")
+
+        rise_lo = stage.get("threshold_rise_min")
+        rise_hi = stage.get("threshold_rise_max")
+        rise_cap = stage.get("threshold_cap")
+        if rise_lo is not None or rise_hi is not None or rise_cap is not None:
+            if rise_lo is None or rise_hi is None:
+                report.error("stages", f"{sid} sets part of the threshold rise: fill in both Threshold Rise Min and Max (or neither)")
+            elif rise_lo < 0 or rise_hi < rise_lo:
+                report.error("stages", f"{sid} Threshold Rise is {rise_lo} to {rise_hi}: Min must be 0 or more and Max at least Min")
+            if stage.get("bar_model") != "Survival":
+                report.warn("stages", f"{sid} has a threshold rise but is not a Survival (TV debate) stage, so it is ignored")
+            top = stage.get("bar_max")
+            if rise_cap is not None and stage.get("win_threshold") is not None and rise_cap < stage["win_threshold"]:
+                report.error("stages", f"{sid} Threshold Cap {rise_cap} is below its Win threshold {stage['win_threshold']}")
+            if rise_cap is not None and top is not None and rise_cap > top:
+                report.error("stages", f"{sid} Threshold Cap {rise_cap} is above its Bar max {top}")
 
         if stage["mode"] == "Combat":
             for field in ("turn_limit", "energy_per_turn", "hand_size", "gaffe_limit"):

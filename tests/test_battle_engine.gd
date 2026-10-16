@@ -482,6 +482,78 @@ func test_surviving_to_the_end_wins_the_tv_debate() -> void:
 	assert_string_contains(engine.state.outcome_reason, "outcome.reason.survived")
 
 
+# A TV debate whose line rises each turn (Threshold Rise Min/Max/Cap, 2026-10-16).
+func _rising_tv(low, high, cap = null, turns: int = 5) -> BattleEngine:
+	var stage := TestFixtures.stage({
+		"stage_id": "ST06", "bar_max": 100, "win_threshold": 50, "turn_limit": turns,
+		"player_start": 100, "opp_start": 0,
+		"threshold_rise_min": low, "threshold_rise_max": high, "threshold_cap": cap,
+	})
+	return _start({"stage": stage, "opponent": TestFixtures.opponent([["block", 1]])})
+
+
+func test_a_rising_tv_debate_line_moves_by_a_roll_inside_its_range() -> void:
+	var engine := _rising_tv(2, 4)
+	var result := engine.end_turn()
+	assert_between(int(result["threshold_rise"]), 2, 4)
+	assert_eq(engine.state.bar.threshold, 50 + int(result["threshold_rise"]))
+	assert_eq(int(result["threshold"]), engine.state.bar.threshold)
+
+
+func test_the_rising_line_accumulates_turn_after_turn() -> void:
+	var engine := _rising_tv(3, 3)
+	engine.end_turn()
+	engine.end_turn()
+	assert_eq(engine.state.bar.threshold, 56)
+
+
+func test_the_rising_line_never_passes_its_cap() -> void:
+	var engine := _rising_tv(5, 5, 57)
+	engine.end_turn()
+	engine.end_turn()
+	var last := engine.end_turn()
+	assert_eq(engine.state.bar.threshold, 57)
+	assert_eq(int(last["threshold_rise"]), 0, "nothing left to rise once the cap is reached")
+
+
+func test_a_blank_rise_leaves_the_line_alone() -> void:
+	var engine := _rising_tv(null, null)
+	var result := engine.end_turn()
+	assert_eq(int(result["threshold_rise"]), 0)
+	assert_eq(engine.state.bar.threshold, 50)
+
+
+func test_the_line_does_not_rise_after_the_last_turn() -> void:
+	var engine := _rising_tv(3, 3, null, 2)
+	engine.end_turn()
+	var last := engine.end_turn()
+	assert_true(engine.state.is_over())
+	assert_eq(int(last["threshold_rise"]), 0)
+	assert_eq(engine.state.bar.threshold, 53)
+
+
+func test_a_player_who_falls_behind_the_risen_line_loses() -> void:
+	var engine := _start({"stage": TestFixtures.stage({
+		"stage_id": "ST06", "bar_max": 100, "win_threshold": 50, "turn_limit": 5,
+		"player_start": 52, "opp_start": 0,
+		"threshold_rise_min": 4, "threshold_rise_max": 4}),
+		"opponent": TestFixtures.opponent([["block", 1]])})
+	engine.end_turn()   # 52 is above 50, survives; the line becomes 54
+	assert_false(engine.state.is_over())
+	engine.end_turn()   # 52 is now below 54
+	assert_true(engine.state.is_over())
+	assert_eq(engine.state.outcome, "loss")
+
+
+func test_a_rise_set_on_an_ordinary_room_is_ignored() -> void:
+	var stage := TestFixtures.stage({"stage_id": "PT_S1", "bar_max": 100,
+		"win_threshold": 90, "turn_limit": 5, "player_start": 10, "opp_start": 10,
+		"threshold_rise_min": 3, "threshold_rise_max": 3})
+	var engine := _start({"stage": stage, "opponent": TestFixtures.opponent([["block", 1]])})
+	engine.end_turn()
+	assert_eq(engine.state.bar.threshold, 90)
+
+
 # ---------------------------------------------------------------------------
 # The caucus: one pool of energy, and a score rather than a win
 # ---------------------------------------------------------------------------

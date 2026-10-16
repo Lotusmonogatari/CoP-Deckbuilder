@@ -546,6 +546,11 @@ func end_turn() -> Dictionary:
 	var was_facing := state.opponent_index
 	var beaten := current_opponent()
 	_check_outcome(true)
+	# The TV debate's line may rise once a turn has been survived, so the
+	# player sees next turn's number before spending any energy.
+	var threshold_rise := 0
+	if not state.is_over():
+		threshold_rise = _raise_threshold()
 	var bout_won := {}
 	if state.opponent_index != was_facing:
 		bout_won = {
@@ -580,7 +585,33 @@ func end_turn() -> Dictionary:
 		"bout_won": bout_won,
 		"turn": state.turn,
 		"outcome": state.outcome,
+		"threshold_rise": threshold_rise,
+		"threshold": state.bar.threshold if state.bar != null else 0,
 	}
+
+
+## Raises a survival stage's line by a whole number from its Threshold Rise
+## Min to Max (Stages tab, inclusive, rolled off the battle's own seeded
+## generator), never past its Threshold Cap (blank = Bar max). Blank Min and
+## Max, or any other kind of bar, leave the line alone. Returns how far it
+## actually moved, which is less than the roll when the cap got in the way.
+func _raise_threshold() -> int:
+	if state.bar == null or state.bar.model != BarModel.Model.SURVIVAL:
+		return 0
+	var low = _stage.get("threshold_rise_min")
+	var high = _stage.get("threshold_rise_max")
+	if low == null or high == null:
+		return 0
+	var lo := maxi(int(low), 0)
+	var hi := maxi(int(high), lo)
+	var roll := _rng.randi_range(lo, hi)
+	var cap_value = _stage.get("threshold_cap")
+	var cap := state.bar.maximum if cap_value == null else mini(int(cap_value), state.bar.maximum)
+	var raised := clampi(state.bar.threshold + roll, state.bar.threshold, maxi(cap, state.bar.threshold))
+	var moved := raised - state.bar.threshold
+	state.bar.threshold = raised
+	return moved
+
 
 ## Deals this stage's questions out of its type's pool.
 ##
