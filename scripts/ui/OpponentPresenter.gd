@@ -84,8 +84,10 @@ func show_state(engine: BattleEngine, stage: String = "") -> void:
 	var state := engine.state
 
 	if engine.is_press_conference():
-		_intent_label.text = str(engine.current_question().get(
-			"text", Text.say("battle.last_question")))
+		# The question itself is spoken on the CueBanner under the asker's
+		# name (BattleScreen._announce_question()), not printed here
+		# (2026-10-16, Cameron: no name-plate text; questions are cues).
+		_intent_label.text = ""
 		_show_journalist(engine.current_question())
 		_show_upcoming_intent({})
 	else:

@@ -801,7 +801,14 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 	# instead of its actual win_threshold. Only a stage whose own bar_model
 	# is genuinely tone-only (no threshold to race toward) ends this way.
 	if is_press_conference():
-		if questions_remaining() <= 0:
+		# The last question is answered by the first card of its turn, but the
+		# turn itself is still the player's: the rest of the hand and energy
+		# can keep raising the tone until they end it (2026-10-16, Cameron: it
+		# closed on the first card of turn 6 of 6 with energy left). The close
+		# therefore waits for the end of the turn, unless nothing is left to
+		# play, in which case there is nothing to wait for.
+		var no_questions_left := questions_remaining() <= 0
+		if no_questions_left and end_of_turn:
 			_close_conference()
 			return
 		# An empty hand is the end of it. In a conference that never draws, a
@@ -814,7 +821,9 @@ func _check_outcome(end_of_turn: bool = false) -> void:
 			can_still_answer = (can_still_answer or not state.deck.is_empty()
 				or not state.discard.is_empty())
 		if not can_still_answer:
-			_close_conference(true)
+			# Everything was answered and nothing is left to say: an ordinary
+			# close, not "ran out of cards" with questions unanswered.
+			_close_conference(not no_questions_left)
 			return
 
 	# Three stages have no threshold to cross.
