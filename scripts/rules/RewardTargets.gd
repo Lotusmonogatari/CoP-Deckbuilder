@@ -32,6 +32,10 @@ const UNKNOWN := ""
 ## which only ever means those exact IDs.
 const TIER_PREFIX := "TIER:"
 
+## "TIER:All" — every organisation, whatever its tier. Used by the snub items
+## (a player-chosen negative grant), where any organisation is fair game.
+const TIER_ALL := "All"
+
 ## The closed list of stage-effect words a Grants/Reward cell may name
 ## (design/proposals/inventory.md §2.2). Each is a number added to one part
 ## of a stage: energy per turn, starting guard, hand size, the turn limit,

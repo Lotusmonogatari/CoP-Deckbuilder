@@ -845,6 +845,10 @@ func get_booster(booster_id: String) -> Dictionary:
 ## for the player-choice picker (Items.is_player_choice()), which offers
 ## every one of them.
 func boosters_for_tier(tier: String) -> Array:
+	# "All" is every organisation whatever its tier — the pool the snub items
+	# (Attacking Op-Ed, Leak a Memo) let the player aim at.
+	if tier == RewardTargets.TIER_ALL:
+		return boosters.duplicate()
 	return boosters.filter(func(b: Dictionary) -> bool: return str(b.get("tier", "")) == tier)
 
 
@@ -1330,8 +1334,18 @@ func _validate() -> void:
 		for q_vid: String in q_vids:
 			if not visitor_ids.has(q_vid):
 				errors.append("Visitor Question %s names visitor '%s', which does not exist" % [qid, q_vid])
+		# A choice is complete when it has its own Effects (a dilemma) or, as
+		# before, the question names a Correct Choice to fall back on.
 		var correct := str(question.get("correct_choice", "")).strip_edges().to_upper()
-		if not ["A", "B", "C", "D"].has(correct):
+		var has_any_effects := false
+		for letter in ["A", "B", "C", "D"]:
+			var own: Variant = question.get("effects_%s" % letter.to_lower())
+			if own is Array and not (own as Array).is_empty():
+				has_any_effects = true
+				for entry: Variant in own:
+					if entry is Dictionary:
+						_validate_reward_target(qid, "Effects %s" % letter, entry)
+		if not has_any_effects and not ["A", "B", "C", "D"].has(correct):
 			errors.append("Visitor Question %s's Correct Choice is '%s', not A/B/C/D"
 				% [qid, question.get("correct_choice")])
 		for letter in ["A", "B", "C", "D"]:
@@ -1417,8 +1431,8 @@ func _validate_reward_target(owner_id: String, column: String, entry: Dictionary
 			return   # one of a closed list; recognising it is the whole check
 		RewardTargets.BOOSTER_TIER:
 			var tier_name := target_id.substr(RewardTargets.TIER_PREFIX.length())
-			if not ["Party", "Constituency", "National"].has(tier_name):
-				errors.append("%s's %s names tier '%s', which is not Party, Constituency or National"
+			if not ["Party", "Constituency", "National", RewardTargets.TIER_ALL].has(tier_name):
+				errors.append("%s's %s names tier '%s', which is not Party, Constituency, National or All"
 					% [owner_id, column, tier_name])
 			return
 		_:

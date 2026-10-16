@@ -1336,8 +1336,8 @@ func _apply_instant_win_penalties(crushed_boosters: Array) -> void:
 ## range delta, both happen here, once, at the moment the reward is actually
 ## applied — not shown to the player as a range and not rolled earlier at
 ## setup (open point 5 in the proposal).
-func apply_visitor_reward_entries(entries: Array) -> void:
-	_apply_reward_entries(entries)
+func apply_visitor_reward_entries(entries: Array) -> String:
+	return _describe_grant_outcomes(_apply_reward_entries(entries))
 
 
 ## The one place a target_delta_list entry becomes a real effect — a

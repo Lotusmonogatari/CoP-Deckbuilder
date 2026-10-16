@@ -33,7 +33,7 @@ var setup_problems: Array[String] = []
 var _visitors: Array = []
 var _index := 0
 
-## Per-visitor results, appended by answer(): { "visitor_id", "correct" }.
+## Per-visitor results, appended by answer(): { "visitor_id", "correct", "effects" }.
 ## What outcome() summarises.
 var _results: Array = []
 
@@ -84,11 +84,20 @@ func visitor_index() -> int:
 ## Answers the current visitor's question with one of "A"/"B"/"C"/"D"
 ## (case-insensitive). Returns:
 ##   { "correct": bool, "response_text": String, "reaction": String,
-##     "reward": Array, "penalty": Array }
-## "reward" is the visitor's own Reward list on a correct answer, "penalty"
-## its Penalty list on a wrong one — the other is always []. Both are the
-## RAW target_delta_list entries from visitors.json, unresolved (see this
-## file's own header comment for why).
+##     "effects": Array, "reward": Array, "penalty": Array }
+##
+## "Dilemma" questions (2026-10-16) carry an Effects list, a Response and a
+## Reaction for EACH choice, so no choice is "right": every one is a trade.
+## A choice without its own Effects falls back to how this room worked
+## before — the visitor's Reward if the question's Correct Choice was
+## picked, its Penalty otherwise — and without its own Response/Reaction to
+## the old Right/Wrong lines, so a half-written question still plays.
+##
+## "effects" is the RAW target_delta_list that applies (unresolved — see this
+## file's header for why); "correct" is true when the choice is not a net
+## setback (the legacy right answer, or a dilemma choice whose numbers do not
+## sum below zero). "reward"/"penalty" repeat "effects" under the old name
+## (the other is always []) for older callers.
 ##
 ## Does not advance to the next visitor — call advance() once the result has
 ## been shown, the same two-step shape BattleEngine's card-then-end_turn()
@@ -99,19 +108,54 @@ func answer(choice: String) -> Dictionary:
 
 	var visitor := current_visitor()
 	var question := current_question()
-	var correct := str(question.get("correct_choice", "")).strip_edges().to_upper()
 	var picked := str(choice).strip_edges().to_upper()
-	var is_correct := not correct.is_empty() and picked == correct
+	var key := picked.to_lower()
 
-	_results.append({"visitor_id": str(visitor.get("visitor_id", "")), "correct": is_correct})
+	var own: Variant = question.get("effects_%s" % key)
+	var has_own := own is Array and not (own as Array).is_empty()
+	var good: bool
+	var effects: Array
+	if has_own:
+		effects = own as Array
+		good = net_delta(effects) >= 0
+	else:
+		var correct := str(question.get("correct_choice", "")).strip_edges().to_upper()
+		good = not correct.is_empty() and picked == correct
+		effects = (visitor.get("reward", []) as Array) if good else (visitor.get("penalty", []) as Array)
+
+	var response := str(question.get("response_%s" % key, "")).strip_edges()
+	if response.is_empty():
+		response = str(question.get("response_right" if good else "response_wrong", ""))
+	var reaction := str(question.get("reaction_%s" % key, "")).strip_edges()
+	if reaction.is_empty():
+		reaction = str(question.get("reaction_right" if good else "reaction_wrong", ""))
+
+	_results.append({"visitor_id": str(visitor.get("visitor_id", "")),
+		"correct": good, "effects": effects})
 
 	return {
-		"correct": is_correct,
-		"response_text": str(question.get("response_right" if is_correct else "response_wrong", "")),
-		"reaction": str(question.get("reaction_right" if is_correct else "reaction_wrong", "")),
-		"reward": (visitor.get("reward", []) as Array) if is_correct else [],
-		"penalty": (visitor.get("penalty", []) as Array) if not is_correct else [],
+		"correct": good,
+		"response_text": response,
+		"reaction": reaction,
+		"effects": effects,
+		"reward": effects if good else [],
+		"penalty": effects if not good else [],
 	}
+
+
+## The sum of a target_delta_list's numbers (a {min,max} range counts as its
+## middle) — whether a choice is a net gain or a net setback.
+static func net_delta(effects: Array) -> float:
+	var total := 0.0
+	for entry: Variant in effects:
+		if not (entry is Dictionary):
+			continue
+		var delta: Variant = (entry as Dictionary).get("delta")
+		if delta is Dictionary:
+			total += (float((delta as Dictionary).get("min", 0)) + float((delta as Dictionary).get("max", 0))) / 2.0
+		elif delta != null:
+			total += float(delta)
+	return total
 
 
 ## Moves to the next visitor. Safe to call once finished — does nothing.
@@ -129,17 +173,19 @@ func outcome() -> Dictionary:
 	var correct_count := 0
 	var rewards: Array = []
 	var penalties: Array = []
-	for index in _results.size():
-		var result: Dictionary = _results[index]
-		var visitor: Dictionary = _visitors[index]
+	var effects: Array = []
+	for result: Dictionary in _results:
+		var these: Array = result.get("effects", [])
+		effects.append_array(these)
 		if result.get("correct", false):
 			correct_count += 1
-			rewards.append_array(visitor.get("reward", []) as Array)
+			rewards.append_array(these)
 		else:
-			penalties.append_array(visitor.get("penalty", []) as Array)
+			penalties.append_array(these)
 	return {
 		"visited": _results.size(),
 		"correct": correct_count,
+		"effects": effects,
 		"rewards": rewards,
 		"penalties": penalties,
 	}
