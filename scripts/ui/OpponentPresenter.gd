@@ -134,7 +134,9 @@ static func question_speaker_name(engine: BattleEngine) -> String:
 	if not engine.is_press_conference():
 		return display_name(engine)
 	var asker := DataDB.get_opponent(str(engine.current_question().get("asked_by", "")))
-	return _named_with_title(asker) if not asker.is_empty() else ""
+	# Name only: the banner's tag does not need a title or affiliation
+	# (2026-10-16, Cameron).
+	return str(asker.get("name", "")) if not asker.is_empty() else ""
 
 
 func _show_opponent(engine: BattleEngine) -> void:
