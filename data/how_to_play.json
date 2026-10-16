@@ -5,7 +5,7 @@
     "group": "The Goal",
     "heading_en": "You are a legislator",
     "heading_jp": null,
-    "body_en": "Fight rhetorical battles in Yezo's parliament using a hand of argument cards. Battles chain into levels, and your standing carries from one to the next.",
+    "body_en": "Play rhetorical stages in Yezo's parliament using a hand of argument cards. Stages chain into levels, and your standing carries from one to the next.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -27,7 +27,7 @@
     "group": "Winning and Losing",
     "heading_en": "Winning a debate",
     "heading_jp": null,
-    "body_en": "Push your support up to the win mark before time runs out. The Floor Debate needs {majority} of {seats} seats. Argue your opponent's support down to nothing and you win at once.",
+    "body_en": "Push your support up to the threshold before time runs out. The Floor Debate needs {majority} of {seats} seats. Argue your opponent's support down to nothing and you win at once.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -60,7 +60,7 @@
     "group": "Winning and Losing",
     "heading_en": "TV debates",
     "heading_jp": null,
-    "body_en": "Stay at or above the win mark at the end of every turn. In some TV debates the mark rises a little after each turn; the battle screen tells you the new number before you play.",
+    "body_en": "Stay at or above the win mark at the end of every turn. In some TV debates the mark rises a little after each turn; the stage screen tells you the new number before you play.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -93,7 +93,7 @@
     "group": "Cards",
     "heading_en": "Suits and rooms",
     "heading_jp": null,
-    "body_en": "There are six suits of rhetoric. Each room favours some suits and suppresses others. Tap a card to see how this room treats it.",
+    "body_en": "There are six suits of rhetoric. Each room favors some suits and suppresses others. Tap a card to see how this room treats it.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -104,7 +104,7 @@
     "group": "Cards",
     "heading_en": "Gaffes",
     "heading_jp": null,
-    "body_en": "Some cards add to your gaffe meter. Fill it and the debate is lost. The limit changes from room to room, from {gaffe_min} to {gaffe_max}, and is shown on the battle screen.",
+    "body_en": "Some cards add to your gaffe meter. Fill it and the debate is lost. The limit changes from room to room, from {gaffe_min} to {gaffe_max}, and is shown on the stage screen.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -126,7 +126,7 @@
     "group": "Cards",
     "heading_en": "Answering questions",
     "heading_jp": null,
-    "body_en": "In rooms that ask questions, the invited suit earns a bonus and pleases the organisation asking. A weak answer weakens your card and annoys them.",
+    "body_en": "In rooms that ask questions, the invited suit earns a bonus and pleases the organization asking. A weak answer weakens your card and annoys them.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -134,7 +134,7 @@
   {
     "entry_id": "HT13",
     "order": 130.0,
-    "group": "Between Battles",
+    "group": "Between Levels",
     "heading_en": "Your four standings",
     "heading_jp": null,
     "body_en": "Constituency support, Reputation, Funds and Party support. Stages move them. If Constituency support gets very low, a Town Hall is forced on you. If Party support hits zero, your Funds stop coming in.",
@@ -145,10 +145,10 @@
   {
     "entry_id": "HT14",
     "order": 140.0,
-    "group": "Between Battles",
+    "group": "Between Levels",
     "heading_en": "Important Stakeholders",
     "heading_jp": null,
-    "body_en": "Organisations remember how you treated them. Pleasing one helps you later.",
+    "body_en": "Organizations remember how you treated them. Pleasing one helps you later.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -156,7 +156,7 @@
   {
     "entry_id": "HT15",
     "order": 150.0,
-    "group": "Between Battles",
+    "group": "Between Levels",
     "heading_en": "XP and cards",
     "heading_jp": null,
     "body_en": "XP buys Rhetoric Training sessions, where you draw a card and decide whether to learn it. Build your deck on the deck screen.",
@@ -167,7 +167,7 @@
   {
     "entry_id": "HT16",
     "order": 160.0,
-    "group": "Between Battles",
+    "group": "Between Levels",
     "heading_en": "Marketplace and staff",
     "heading_jp": null,
     "body_en": "Spend Funds and XP on supplies and hires that help you in a stage or across a whole level.",
@@ -178,7 +178,7 @@
   {
     "entry_id": "HT17",
     "order": 170.0,
-    "group": "Between Battles",
+    "group": "Between Levels",
     "heading_en": "Office Hours and Floor Votes",
     "heading_jp": null,
     "body_en": "Office Hours are conversations with visitors. A Floor Vote is a single Yes, No or Abstain decision that changes how parties see you.",
@@ -214,7 +214,7 @@
     "group": "Cards",
     "heading_en": "Why a card is bigger or smaller",
     "heading_jp": null,
-    "body_en": "Two things scale a card's gain and how hard it hits your opponent. The room: each room favours some suits, so a card gets a larger boost in a room that suits its suit and is held back in a room that does not. The question: in rooms that ask questions, a card in the invited suit gets a moderate boost, a middling answer is left as it is, and a poor answer is reduced. Guard, drawing and gaffes are never scaled this way. Tap a card to read, in plain words, how the current room and question are affecting it. A greyed-out card does nothing in this room right now.",
+    "body_en": "Two things scale a card's gain and how hard it hits your opponent. The room: each room favors some suits, so a card gets a larger boost in a room that suits its suit and is held back in a room that does not. The question: in rooms that ask questions, a card in the invited suit gets a moderate boost, a middling answer is left as it is, and a poor answer is reduced. Guard, drawing and gaffes are never scaled this way. Tap a card to read, in plain words, how the current room and question are affecting it. A greyed-out card does nothing in this room right now.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -225,7 +225,7 @@
     "group": "Cards",
     "heading_en": "Who is pleased by which suit",
     "heading_jp": null,
-    "body_en": "Each question in a room is tied to the organisations it concerns. Answer in a suit the question handles well (tap a card to see) and those organisations are pleased; answer badly and they are annoyed. Some questions also set other organisations back when answered well. No organisation has a fixed favourite suit, but across many questions some suits please some organisations more often. A rough guide:\n{pleasing_table}\nThis is a tendency, not a rule: the card zoom shows how the question in front of you rates each card.",
+    "body_en": "Each question in a room is tied to the organizations it concerns. Answer in a suit the question handles well (tap a card to see) and those organizations are pleased; answer badly and they are annoyed. Some questions also set other organizations back when answered well. No organization has a fixed favorite suit, but across many questions some suits please some organizations more often. A rough guide:\n{pleasing_table}\nThis is a tendency, not a rule: the card zoom shows how the question in front of you rates each card.",
     "screenshot": null,
     "caption": null,
     "video": null

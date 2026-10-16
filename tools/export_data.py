@@ -557,7 +557,7 @@ SHEETS = {
             ("Theme", "theme", "id"),
             # "BO01" or "BO01; BO02" — a strong answer on this theme can
             # please more than one organisation at once.
-            ("Organisation", "pleases_boosters", "id_list"),
+            ("Organization", "pleases_boosters", "id_list"),
             ("Why (Claude's reasoning - correct freely)", "why", "str"),
             # Optional (2026-10-10, Cameron): organisations a STRONG answer on
             # this theme sets back, e.g. the groups opposed to what the

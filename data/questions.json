@@ -447,7 +447,7 @@
     },
     {
       "id": "Q26",
-      "text": "Is public land being used to favour religious groups?",
+      "text": "Is public land being used to favor religious groups?",
       "theme": "Shrine land",
       "grades": {
         "Earnest": "S",
@@ -2085,8 +2085,8 @@
     },
     {
       "id": "T80",
-      "text": "Who pays to keep our harbours in working order?",
-      "theme": "Harbour upkeep",
+      "text": "Who pays to keep our harbors in working order?",
+      "theme": "Harbor upkeep",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -2224,7 +2224,7 @@
     },
     {
       "id": "T88",
-      "text": "Our festival may be cancelled for lack of funds. Will you help?",
+      "text": "Our festival may be canceled for lack of funds. Will you help?",
       "theme": "Festival funding",
       "grades": {
         "Earnest": "S",
@@ -2510,7 +2510,7 @@
     },
     {
       "id": "T104",
-      "text": "Should people who do not honour our customs have any say in how we keep them?",
+      "text": "Should people who do not honor our customs have any say in how we keep them?",
       "theme": "Customs and belonging",
       "grades": {
         "Earnest": "S",
@@ -4305,8 +4305,8 @@
     },
     {
       "id": "B22",
-      "text": "Should imported seafood face tougher labelling rules?",
-      "theme": "Seafood labelling",
+      "text": "Should imported seafood face tougher labeling rules?",
+      "theme": "Seafood labeling",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -4429,7 +4429,7 @@
     },
     {
       "id": "B29",
-      "text": "How many jobs would a modernised port create or cost?",
+      "text": "How many jobs would a modernized port create or cost?",
       "theme": "Port jobs",
       "grades": {
         "Earnest": "M",
@@ -5244,7 +5244,7 @@
     },
     {
       "id": "S10",
-      "text": "Can we afford the defence budget this committee is asked to approve?",
+      "text": "Can we afford the defense budget this committee is asked to approve?",
       "theme": "Defense spending",
       "grades": {
         "Earnest": "S",
@@ -5354,7 +5354,7 @@
     },
     {
       "id": "S15",
-      "text": "Should the rules of debate favour the majority?",
+      "text": "Should the rules of debate favor the majority?",
       "theme": "Parliamentary procedure",
       "grades": {
         "Earnest": "S",
@@ -5467,7 +5467,7 @@
     },
     {
       "id": "S20",
-      "text": "How exposed are our supply chains to a single neighbour?",
+      "text": "How exposed are our supply chains to a single neighbor?",
       "theme": "Supply chains",
       "grades": {
         "Earnest": "S",
@@ -5538,7 +5538,7 @@
     },
     {
       "id": "S23",
-      "text": "Who decides which neighbourhood gets redeveloped first?",
+      "text": "Who decides which neighborhood gets redeveloped first?",
       "theme": "Redevelopment",
       "grades": {
         "Earnest": "S",
@@ -6138,7 +6138,7 @@
     },
     {
       "id": "S51",
-      "text": "Ageing track on rural lines worries residents. What is the plan?",
+      "text": "Aging track on rural lines worries residents. What is the plan?",
       "theme": "Rural rail service",
       "grades": {
         "Earnest": "S",
@@ -6222,8 +6222,8 @@
     },
     {
       "id": "S55",
-      "text": "Imported fish undercuts our catch. Will you act on labelling?",
-      "theme": "Seafood labelling",
+      "text": "Imported fish undercuts our catch. Will you act on labeling?",
+      "theme": "Seafood labeling",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -6242,8 +6242,8 @@
     },
     {
       "id": "S56",
-      "text": "The harbour wall is cracked. Who will pay to fix it?",
-      "theme": "Harbour upkeep",
+      "text": "The harbor wall is cracked. Who will pay to fix it?",
+      "theme": "Harbor upkeep",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -6348,7 +6348,7 @@
     {
       "id": "S61",
       "text": "Is the seafood on the shelf really caught in Yezo?",
-      "theme": "Seafood labelling",
+      "theme": "Seafood labeling",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -8505,7 +8505,7 @@
     },
     {
       "id": "S127",
-      "text": "How is independence not just a blank cheque?",
+      "text": "How is independence not just a blank check?",
       "theme": "Broadcaster funding",
       "grades": {
         "Earnest": "W",
@@ -9076,7 +9076,7 @@
     },
     {
       "id": "S152",
-      "text": "Why must small harbours pay for monitoring equipment?",
+      "text": "Why must small harbors pay for monitoring equipment?",
       "theme": "Family boats",
       "grades": {
         "Earnest": "W",
@@ -9497,7 +9497,7 @@
     },
     {
       "id": "S171",
-      "text": "Why trust a neighbour's officers at our docks?",
+      "text": "Why trust a neighbor's officers at our docks?",
       "theme": "National sovereignty",
       "grades": {
         "Earnest": "W",
@@ -9631,7 +9631,7 @@
     },
     {
       "id": "S177",
-      "text": "Could this deal anger a bigger neighbour?",
+      "text": "Could this deal anger a bigger neighbor?",
       "theme": "Island security",
       "grades": {
         "Earnest": "M",
@@ -9903,7 +9903,7 @@
     },
     {
       "id": "S189",
-      "text": "Will the grant favour big farms over small ones?",
+      "text": "Will the grant favor big farms over small ones?",
       "theme": "Small farm fairness",
       "grades": {
         "Earnest": "S",

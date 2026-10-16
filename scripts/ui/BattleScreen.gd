@@ -357,7 +357,8 @@ func _stage_asks_questions() -> bool:
 ## (%RoomNotice) carries what actually HAPPENED instead — see
 ## _show_room_notice(). Does nothing outside a question-asking room.
 func _announce_question() -> void:
-	if not _stage_asks_questions():
+	# A press conference asks its questions the same way (2026-10-16).
+	if not (_stage_asks_questions() or (engine != null and engine.is_press_conference())):
 		return
 	var question := engine.current_question()
 	if question.is_empty():

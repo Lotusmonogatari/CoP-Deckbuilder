@@ -1566,6 +1566,7 @@ func test_the_closing_line_says_the_conference_concluded() -> void:
 	engine.play_card("GAIN3")
 	engine.end_turn()
 	engine.play_card("GAIN3")
+	engine.end_turn()                    # the conference closes with the last turn
 
 	assert_true(engine.state.is_over())
 	# Named from the stage and judged against its threshold (45 + two small
@@ -1578,6 +1579,7 @@ func test_the_closing_line_counts_what_went_unanswered() -> void:
 	engine.end_turn()                    # one declined
 	engine.state.hand.assign(["GAIN3", "GAIN3"])
 	engine.play_card("GAIN3")            # the last one answered
+	engine.end_turn()                    # closes with the turn
 
 	assert_true(engine.state.is_over())
 	assert_string_contains(engine.state.outcome_reason, "outcome.reason.unanswered")
@@ -1741,6 +1743,26 @@ func test_the_last_question_answered_leaves_nothing_to_answer() -> void:
 
 	var effect := engine.preview(TestFixtures.card({"card_id": "D1", "draw": 1}))
 	assert_false(bool(effect["answers_question"]))
+
+
+func test_a_conference_waits_for_the_end_of_the_last_turn() -> void:
+	# 2026-10-16: it closed on the first card of the final turn, throwing away
+	# the rest of the hand and energy.
+	var engine := _start(_press())
+	while engine.questions_remaining() > 1:
+		engine.state.question_index += 1
+	engine.state.hand = ["GAIN3", "GAIN3", "GAIN3"]
+	engine.state.energy = 6
+
+	engine.play_card("GAIN3")
+	assert_eq(engine.questions_remaining(), 0, "the last question is answered")
+	assert_false(engine.state.is_over(), "but the turn is still the player's")
+
+	engine.play_card("GAIN3")
+	assert_false(engine.state.is_over())
+
+	engine.end_turn()
+	assert_true(engine.state.is_over(), "ending the turn closes the conference")
 
 
 func test_a_card_records_who_it_won_over() -> void:

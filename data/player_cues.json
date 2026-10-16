@@ -237,7 +237,7 @@
     "cue_2": "My heart is with them, not with politics.",
     "cue_3": "My care for them is real.",
     "cue_4": "I feel the weight of this vote.",
-    "cue_5": "I will not apologise for compassion."
+    "cue_5": "I will not apologize for compassion."
   },
   {
     "cue_id": "PL07",
@@ -636,7 +636,7 @@
     "cue_1": "Interesting. Is that your private view?",
     "cue_2": "Others may see this differently.",
     "cue_3": "Perhaps the committee should see your notes.",
-    "cue_4": "There are rumours about this deal.",
+    "cue_4": "There are rumors about this deal.",
     "cue_5": "Funny how positions can move."
   },
   {
@@ -941,7 +941,7 @@
     "cue_2": "Small boats deserve a fair share.",
     "cue_3": "I will not accept hidden quotas.",
     "cue_4": "Own the problem. Then fix it.",
-    "cue_5": "Your plan leaves the harbours behind."
+    "cue_5": "Your plan leaves the harbors behind."
   },
   {
     "cue_id": "PL33",
@@ -953,7 +953,7 @@
       "ST30",
       "ST31"
     ],
-    "cue_1": "I will fix the harbour wall.",
+    "cue_1": "I will fix the harbor wall.",
     "cue_2": "Here is my plan for the quotas.",
     "cue_3": "Judge me by the catch limits.",
     "cue_4": "I will check every label myself.",
@@ -971,7 +971,7 @@
     ],
     "cue_1": "I will protect honest fishers.",
     "cue_2": "My position on quotas is simple.",
-    "cue_3": "I will answer to the harbour.",
+    "cue_3": "I will answer to the harbor.",
     "cue_4": "No label should mislead a shopper.",
     "cue_5": "I will keep this fair."
   },
@@ -1003,7 +1003,7 @@
     ],
     "cue_1": "I own what the plan costs.",
     "cue_2": "Fair quotas are the whole point.",
-    "cue_3": "I will not dodge on labelling.",
+    "cue_3": "I will not dodge on labeling.",
     "cue_4": "The report says otherwise.",
     "cue_5": "Honest labels protect honest fishers."
   },
@@ -1017,11 +1017,11 @@
       "ST30",
       "ST31"
     ],
-    "cue_1": "Harbour towns stand together. Whose side are you on?",
+    "cue_1": "Harbor towns stand together. Whose side are you on?",
     "cue_2": "We all eat the catch. Be fair.",
-    "cue_3": "Friends of the harbour know better.",
+    "cue_3": "Friends of the harbor know better.",
     "cue_4": "Surely we want fair labels together.",
-    "cue_5": "Good neighbours do not hide quotas."
+    "cue_5": "Good neighbors do not hide quotas."
   },
   {
     "cue_id": "PL38",
@@ -1035,7 +1035,7 @@
     ],
     "cue_1": "We share these waters. Share the quota.",
     "cue_2": "Our fishing towns deserve better from you.",
-    "cue_3": "Be a friend to the harbour.",
+    "cue_3": "Be a friend to the harbor.",
     "cue_4": "Together we can do better than this.",
     "cue_5": "A good turn deserves a fair quota."
   },
@@ -1049,11 +1049,11 @@
       "ST30",
       "ST31"
     ],
-    "cue_1": "We will keep our harbours alive.",
+    "cue_1": "We will keep our harbors alive.",
     "cue_2": "Together we protect the family boats.",
     "cue_3": "Our fishing towns are one family.",
     "cue_4": "We all gain from honest labels.",
-    "cue_5": "Let us steady the harbour together."
+    "cue_5": "Let us steady the harbor together."
   },
   {
     "cue_id": "PL40",
@@ -1067,7 +1067,7 @@
     ],
     "cue_1": "Friends, the sea feeds us all.",
     "cue_2": "We are stronger fishing as one.",
-    "cue_3": "Stand with the harbour and with me.",
+    "cue_3": "Stand with the harbor and with me.",
     "cue_4": "Our shared catch deserves our shared care.",
     "cue_5": "I know we agree on the sea."
   },
@@ -1081,8 +1081,8 @@
       "ST30",
       "ST31"
     ],
-    "cue_1": "We can settle this like neighbours.",
-    "cue_2": "Let us not divide the harbour.",
+    "cue_1": "We can settle this like neighbors.",
+    "cue_2": "Let us not divide the harbor.",
     "cue_3": "We are all on the same boat.",
     "cue_4": "Our towns need calm, not quarrels.",
     "cue_5": "We agree on more than we say."
@@ -1097,9 +1097,9 @@
       "ST30",
       "ST31"
     ],
-    "cue_1": "Good neighbours find the middle ground.",
+    "cue_1": "Good neighbors find the middle ground.",
     "cue_2": "Do not turn friends against friends.",
-    "cue_3": "Let us keep the harbour united.",
+    "cue_3": "Let us keep the harbor united.",
     "cue_4": "We share the same tide.",
     "cue_5": "There is room for everyone's boat."
   },
@@ -2057,7 +2057,7 @@
       "ST69",
       "ST74"
     ],
-    "cue_1": "That is an unfair characterisation!",
+    "cue_1": "That is an unfair characterization!",
     "cue_2": "I will not be painted as indifferent!",
     "cue_3": "My concern for people is plain!",
     "cue_4": "Do not question my sincerity!",
@@ -2654,7 +2654,7 @@
     "cue_1": "Do not use cameras to wound people!",
     "cue_2": "I will not be mocked for caring!",
     "cue_3": "Viewers can see I mean it!",
-    "cue_4": "My concern is genuine, not theatre!",
+    "cue_4": "My concern is genuine, not theater!",
     "cue_5": "Do not twist their pain!"
   },
   {
@@ -2673,7 +2673,7 @@
     "cue_1": "Viewers, ask yourselves who really listens.",
     "cue_2": "We all deserve a calmer debate.",
     "cue_3": "Be a friend to the voters.",
-    "cue_4": "Neighbours across the country are watching.",
+    "cue_4": "Neighbors across the country are watching.",
     "cue_5": "Surely we can speak with respect."
   },
   {
@@ -2882,7 +2882,7 @@
     "cue_1": "I will have to get back to you...",
     "cue_2": "That is not quite what I meant...",
     "cue_3": "The facts are emerging, I understand...",
-    "cue_4": "I would not characterise it that way...",
+    "cue_4": "I would not characterize it that way...",
     "cue_5": "Others may know more about that..."
   },
   {
@@ -2930,7 +2930,7 @@
     "cue_1": "This hall deserves more than slogans.",
     "cue_2": "Own your record or change it.",
     "cue_3": "Do not ask us to just trust you.",
-    "cue_4": "Show your work to your neighbours.",
+    "cue_4": "Show your work to your neighbors.",
     "cue_5": "Words are cheap. Show me results."
   },
   {
@@ -3049,7 +3049,7 @@
     ],
     "cue_1": "Look these families in the eye!",
     "cue_2": "Real people pay for your choices!",
-    "cue_3": "My neighbours are hurting, and you shrug!",
+    "cue_3": "My neighbors are hurting, and you shrug!",
     "cue_4": "Do you hear what they are saying?",
     "cue_5": "People in this hall cannot wait!"
   },
@@ -3193,9 +3193,9 @@
     ],
     "cue_1": "Friends, surely we can do better than this.",
     "cue_2": "We all want the same thing here.",
-    "cue_3": "Neighbours would not treat us this way.",
+    "cue_3": "Neighbors would not treat us this way.",
     "cue_4": "Stand with your community, not against it.",
-    "cue_5": "A good neighbour listens first."
+    "cue_5": "A good neighbor listens first."
   },
   {
     "cue_id": "PL110",
@@ -3263,7 +3263,7 @@
       "ST86",
       "ST94"
     ],
-    "cue_1": "Neighbours helping neighbours. That is the plan.",
+    "cue_1": "Neighbors helping neighbors. That is the plan.",
     "cue_2": "We all win when the town wins.",
     "cue_3": "Count on me as a friend.",
     "cue_4": "Let us work this out together.",
@@ -3289,7 +3289,7 @@
     ],
     "cue_1": "Let us not divide this good town.",
     "cue_2": "We are friends first and rivals second.",
-    "cue_3": "We can disagree and stay neighbours.",
+    "cue_3": "We can disagree and stay neighbors.",
     "cue_4": "Keep the peace, and we all gain.",
     "cue_5": "There is room for everyone here."
   },
@@ -3409,7 +3409,7 @@
     ],
     "cue_1": "The cost per resident is modest.",
     "cue_2": "Independent figures agree with mine.",
-    "cue_3": "The trend line favours this plan.",
+    "cue_3": "The trend line favors this plan.",
     "cue_4": "I can show the calculation.",
     "cue_5": "The evidence is on the table."
   },
@@ -3530,7 +3530,7 @@
     "cue_1": "This town knows its real friends.",
     "cue_2": "The line is clear, and I am with you.",
     "cue_3": "We stand apart from the insiders.",
-    "cue_4": "Real neighbours stick together.",
+    "cue_4": "Real neighbors stick together.",
     "cue_5": "I choose this town over the powerful."
   },
   {
@@ -3552,7 +3552,7 @@
       "ST94"
     ],
     "cue_1": "Us and them: I am one of us.",
-    "cue_2": "No more favours for the connected.",
+    "cue_2": "No more favors for the connected.",
     "cue_3": "Whoever stands with this town stands with me.",
     "cue_4": "The people come first, the elite second.",
     "cue_5": "I draw the line with you."
@@ -4207,7 +4207,7 @@
     ],
     "cue_1": "We rise together or not at all.",
     "cue_2": "I expected solidarity from you.",
-    "cue_3": "A favour is owed to this team.",
+    "cue_3": "A favor is owed to this team.",
     "cue_4": "Do not leave your colleagues exposed.",
     "cue_5": "Unity is the party's strength."
   },
@@ -4436,7 +4436,7 @@
       "ST97",
       "ST100"
     ],
-    "cue_1": "The whip count favours this approach.",
+    "cue_1": "The whip count favors this approach.",
     "cue_2": "The polling backs the plan.",
     "cue_3": "The numbers are with us.",
     "cue_4": "Here is the vote tally, member by member.",
@@ -4669,7 +4669,7 @@
     ],
     "cue_1": "The line between us and them is clear.",
     "cue_2": "I stand with the party, not the critics.",
-    "cue_3": "Loyalty will be recognised.",
+    "cue_3": "Loyalty will be recognized.",
     "cue_4": "The party is united against doubters.",
     "cue_5": "Those who stay on side will be rewarded."
   },
@@ -4802,7 +4802,7 @@
     "cue_1": "People are talking, of course...",
     "cue_2": "I would not wish to name names...",
     "cue_3": "Loyalty can be flexible, I hear...",
-    "cue_4": "Rumours say a deal is close...",
+    "cue_4": "Rumors say a deal is close...",
     "cue_5": "It might be wise to reconsider..."
   },
   {
@@ -5063,7 +5063,7 @@
     "cue_2": "Ordinary people want action on the wilderness.",
     "cue_3": "Voters keep raising the wilderness.",
     "cue_4": "Ask around. People care about the wilderness.",
-    "cue_5": "The public mood favours the wilderness."
+    "cue_5": "The public mood favors the wilderness."
   },
   {
     "cue_id": "PL177",
@@ -5350,7 +5350,7 @@
     "cue_1": "Ordinary people want action on rural hospitals.",
     "cue_2": "Voters keep raising rural hospitals.",
     "cue_3": "Ask around. People care about rural hospitals.",
-    "cue_4": "The public mood favours rural hospitals.",
+    "cue_4": "The public mood favors rural hospitals.",
     "cue_5": "Most people I meet back rural hospitals."
   },
   {
@@ -5629,7 +5629,7 @@
     ],
     "cue_1": "Voters keep raising the identity card.",
     "cue_2": "Ask around. People care about the identity card.",
-    "cue_3": "The public mood favours the identity card.",
+    "cue_3": "The public mood favors the identity card.",
     "cue_4": "Most people I meet back the identity card.",
     "cue_5": "Ordinary people want action on the identity card."
   },
@@ -5898,7 +5898,7 @@
       "ST45"
     ],
     "cue_1": "Ask around. People care about the broadcaster.",
-    "cue_2": "The public mood favours the broadcaster.",
+    "cue_2": "The public mood favors the broadcaster.",
     "cue_3": "Most people I meet back the broadcaster.",
     "cue_4": "Ordinary people want action on the broadcaster.",
     "cue_5": "Voters keep raising the broadcaster."
@@ -6175,7 +6175,7 @@
       "ST48",
       "ST49"
     ],
-    "cue_1": "The public mood favours political donations.",
+    "cue_1": "The public mood favors political donations.",
     "cue_2": "Most people I meet back political donations.",
     "cue_3": "Ordinary people want action on political donations.",
     "cue_4": "Voters keep raising political donations.",
@@ -6459,7 +6459,7 @@
     "cue_2": "Ordinary people want action on the tax cut.",
     "cue_3": "Voters keep raising the tax cut.",
     "cue_4": "Ask around. People care about the tax cut.",
-    "cue_5": "The public mood favours the tax cut."
+    "cue_5": "The public mood favors the tax cut."
   },
   {
     "cue_id": "PL267",
@@ -6736,7 +6736,7 @@
     "cue_1": "Ordinary people want action on the carbon levy.",
     "cue_2": "Voters keep raising the carbon levy.",
     "cue_3": "Ask around. People care about the carbon levy.",
-    "cue_4": "The public mood favours the carbon levy.",
+    "cue_4": "The public mood favors the carbon levy.",
     "cue_5": "Most people I meet back the carbon levy."
   },
   {
@@ -7015,7 +7015,7 @@
     ],
     "cue_1": "Voters keep raising tradeable quotas.",
     "cue_2": "Ask around. People care about tradeable quotas.",
-    "cue_3": "The public mood favours tradeable quotas.",
+    "cue_3": "The public mood favors tradeable quotas.",
     "cue_4": "Most people I meet back tradeable quotas.",
     "cue_5": "Ordinary people want action on tradeable quotas."
   },
@@ -7284,7 +7284,7 @@
       "ST62"
     ],
     "cue_1": "Ask around. People care about the shipyards.",
-    "cue_2": "The public mood favours the shipyards.",
+    "cue_2": "The public mood favors the shipyards.",
     "cue_3": "Most people I meet back the shipyards.",
     "cue_4": "Ordinary people want action on the shipyards.",
     "cue_5": "Voters keep raising the shipyards."
@@ -7553,7 +7553,7 @@
       "ST64",
       "ST65"
     ],
-    "cue_1": "The public mood favours the review.",
+    "cue_1": "The public mood favors the review.",
     "cue_2": "Most people I meet back the review.",
     "cue_3": "Ordinary people want action on the review.",
     "cue_4": "Voters keep raising the review.",
@@ -7827,7 +7827,7 @@
     "cue_2": "Ordinary people want action on border sharing.",
     "cue_3": "Voters keep raising border sharing.",
     "cue_4": "Ask around. People care about border sharing.",
-    "cue_5": "The public mood favours border sharing."
+    "cue_5": "The public mood favors border sharing."
   },
   {
     "cue_id": "PL357",
@@ -8104,7 +8104,7 @@
     "cue_1": "Ordinary people want action on the islands.",
     "cue_2": "Voters keep raising the islands.",
     "cue_3": "Ask around. People care about the islands.",
-    "cue_4": "The public mood favours the islands.",
+    "cue_4": "The public mood favors the islands.",
     "cue_5": "Most people I meet back the islands."
   },
   {
@@ -8383,7 +8383,7 @@
     ],
     "cue_1": "Voters keep raising open trade.",
     "cue_2": "Ask around. People care about open trade.",
-    "cue_3": "The public mood favours open trade.",
+    "cue_3": "The public mood favors open trade.",
     "cue_4": "Most people I meet back open trade.",
     "cue_5": "Ordinary people want action on open trade."
   },
@@ -8652,7 +8652,7 @@
       "ST78"
     ],
     "cue_1": "Ask around. People care about family farms.",
-    "cue_2": "The public mood favours family farms.",
+    "cue_2": "The public mood favors family farms.",
     "cue_3": "Most people I meet back family farms.",
     "cue_4": "Ordinary people want action on family farms.",
     "cue_5": "Voters keep raising family farms."
@@ -8921,7 +8921,7 @@
       "ST80",
       "ST81"
     ],
-    "cue_1": "The public mood favours research funding.",
+    "cue_1": "The public mood favors research funding.",
     "cue_2": "Most people I meet back research funding.",
     "cue_3": "Ordinary people want action on research funding.",
     "cue_4": "Voters keep raising research funding.",
@@ -9203,7 +9203,7 @@
     "cue_2": "Ordinary people want action on equal treatment.",
     "cue_3": "Voters keep raising equal treatment.",
     "cue_4": "Ask around. People care about equal treatment.",
-    "cue_5": "The public mood favours equal treatment."
+    "cue_5": "The public mood favors equal treatment."
   },
   {
     "cue_id": "PL447",
@@ -9490,7 +9490,7 @@
     "cue_1": "Ordinary people want action on parental leave.",
     "cue_2": "Voters keep raising parental leave.",
     "cue_3": "Ask around. People care about parental leave.",
-    "cue_4": "The public mood favours parental leave.",
+    "cue_4": "The public mood favors parental leave.",
     "cue_5": "Most people I meet back parental leave."
   },
   {
@@ -9777,7 +9777,7 @@
     ],
     "cue_1": "Voters keep raising the cameras.",
     "cue_2": "Ask around. People care about the cameras.",
-    "cue_3": "The public mood favours the cameras.",
+    "cue_3": "The public mood favors the cameras.",
     "cue_4": "Most people I meet back the cameras.",
     "cue_5": "Ordinary people want action on the cameras."
   },
@@ -10064,7 +10064,7 @@
       "ST97"
     ],
     "cue_1": "Ask around. People care about town mergers.",
-    "cue_2": "The public mood favours town mergers.",
+    "cue_2": "The public mood favors town mergers.",
     "cue_3": "Most people I meet back town mergers.",
     "cue_4": "Ordinary people want action on town mergers.",
     "cue_5": "Voters keep raising town mergers."
@@ -10343,7 +10343,7 @@
       "ST99",
       "ST100"
     ],
-    "cue_1": "The public mood favours open ballots.",
+    "cue_1": "The public mood favors open ballots.",
     "cue_2": "Most people I meet back open ballots.",
     "cue_3": "Ordinary people want action on open ballots.",
     "cue_4": "Voters keep raising open ballots.",

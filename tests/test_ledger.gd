@@ -277,7 +277,7 @@ func test_the_first_upgrade_step_is_the_hiring_tier() -> void:
 func test_a_candidate_at_their_highest_tier_has_no_further_step() -> void:
 	assert_eq(Ledger.staff_upgrade_cost(_candidate(), 2), null)
 	assert_eq(Ledger.staff_upgrade_refusal(_candidate(), 2, 999999, _words()),
-		"At their highest tier.")
+		"At their highest rank.")
 
 
 func test_a_candidate_who_starts_above_tier_zero_has_no_0_to_1_step() -> void:

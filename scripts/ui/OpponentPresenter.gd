@@ -84,8 +84,10 @@ func show_state(engine: BattleEngine, stage: String = "") -> void:
 	var state := engine.state
 
 	if engine.is_press_conference():
-		_intent_label.text = str(engine.current_question().get(
-			"text", Text.say("battle.last_question")))
+		# The question itself is spoken on the CueBanner under the asker's
+		# name (BattleScreen._announce_question()), not printed here
+		# (2026-10-16, Cameron: no name-plate text; questions are cues).
+		_intent_label.text = ""
 		_show_journalist(engine.current_question())
 		_show_upcoming_intent({})
 	else:
@@ -132,7 +134,9 @@ static func question_speaker_name(engine: BattleEngine) -> String:
 	if not engine.is_press_conference():
 		return display_name(engine)
 	var asker := DataDB.get_opponent(str(engine.current_question().get("asked_by", "")))
-	return _named_with_title(asker) if not asker.is_empty() else ""
+	# Name only: the banner's tag does not need a title or affiliation
+	# (2026-10-16, Cameron).
+	return str(asker.get("name", "")) if not asker.is_empty() else ""
 
 
 func _show_opponent(engine: BattleEngine) -> void:

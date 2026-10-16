@@ -2,11 +2,11 @@
   {
     "item_id": "SH01",
     "name": "Commission Policy Research",
-    "description": "Spend Office Funds to increase one randomly-selected Party-tier booster group's relationship. Available once per Office screen; resets after completion of a level (success or failure).",
+    "description": "Spend Office Funds to increase one randomly-selected Party Bodies booster group's relationship. Available once per Office screen; resets after completion of a level (success or failure).",
     "cost_xp": 0,
     "cost_yen": 200000,
-    "bonus_condition_1": "Policy Research Assistant is Tier 1: +1 to the selected Party booster group.",
-    "bonus_condition_2": "Policy Research Assistant is Tier 2: +2 to the selected Party booster group.",
+    "bonus_condition_1": "Policy Research Assistant is Rank 1: +1 to the selected Party Bodies booster group.",
+    "bonus_condition_2": "Policy Research Assistant is Rank 2: +2 to the selected Party Bodies booster group.",
     "grants": [
       {
         "target": "TIER:Party",
@@ -39,11 +39,11 @@
   {
     "item_id": "SH02",
     "name": "Commission Press Engagement",
-    "description": "Spend Office Funds to increase one randomly-selected National-tier booster group's relationship. Available once per Office screen; resets after completion of a level (success or failure).",
+    "description": "Spend Office Funds to increase one randomly-selected National booster group's relationship. Available once per Office screen; resets after completion of a level (success or failure).",
     "cost_xp": 0,
     "cost_yen": 200000,
-    "bonus_condition_1": "Media Spokesperson is Tier 1: +2 to the selected National booster group.",
-    "bonus_condition_2": "Media Spokesperson is Tier 2: +4 to the selected National booster group.",
+    "bonus_condition_1": "Media Spokesperson is Rank 1: +2 to the selected National booster group.",
+    "bonus_condition_2": "Media Spokesperson is Rank 2: +4 to the selected National booster group.",
     "grants": [
       {
         "target": "TIER:National",
@@ -76,11 +76,11 @@
   {
     "item_id": "SH03",
     "name": "Commission District Engagement",
-    "description": "Spend Office Funds to increase one randomly-selected Constituency-tier booster group's relationship. Available once per Office screen; resets after completion of a level.",
+    "description": "Spend Office Funds to increase one randomly-selected Constituency booster group's relationship. Available once per Office screen; resets after completion of a level.",
     "cost_xp": 0,
     "cost_yen": 200000,
-    "bonus_condition_1": "District Representative is Tier 1: +2 to the selected Constituency booster group.",
-    "bonus_condition_2": "District Representative is Tier 2: +4 to the selected Constituency booster group.",
+    "bonus_condition_1": "District Representative is Rank 1: +2 to the selected Constituency booster group.",
+    "bonus_condition_2": "District Representative is Rank 2: +4 to the selected Constituency booster group.",
     "grants": [
       {
         "target": "TIER:Constituency",
@@ -301,7 +301,7 @@
     "description": "Unlocks one new Tier 1 card at random, making it available for the deck.",
     "cost_xp": 250,
     "cost_yen": 0,
-    "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
+    "bonus_condition_1": "Unlocked card must still be purchased with Funds before entering the deck.",
     "bonus_condition_2": null,
     "grants": null,
     "icon": "unlock_card_t1",
@@ -333,7 +333,7 @@
     "description": "Unlocks one new Tier 2 card at random, making it available for the deck.",
     "cost_xp": 500,
     "cost_yen": 0,
-    "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
+    "bonus_condition_1": "Unlocked card must still be purchased with Funds before entering the deck.",
     "bonus_condition_2": null,
     "grants": null,
     "icon": "unlock_card_t2",
@@ -365,7 +365,7 @@
     "description": "Unlocks one new Tier 3 card at random, making it available for the deck.",
     "cost_xp": 1000,
     "cost_yen": 0,
-    "bonus_condition_1": "Unlocked card must still be purchased with Funds (Yen) before entering the deck.",
+    "bonus_condition_1": "Unlocked card must still be purchased with Funds before entering the deck.",
     "bonus_condition_2": null,
     "grants": null,
     "icon": "unlock_card_t3",
@@ -394,7 +394,7 @@
   {
     "item_id": "SH12",
     "name": "Staff Training Consultancy Session",
-    "description": "Unlocks the next tier of staff recruitment, allowing higher-tier staff hires.",
+    "description": "Unlocks the next rank of staff recruitment, allowing higher-rank staff hires.",
     "cost_xp": 500,
     "cost_yen": 0,
     "bonus_condition_1": null,
@@ -643,7 +643,7 @@
   {
     "item_id": "SH19",
     "name": "Host a Dinner for a National Booster",
-    "description": "Host a dinner for a player-selected National-tier booster group.",
+    "description": "Host a dinner for a player-selected National booster group.",
     "cost_xp": 20,
     "cost_yen": 20000,
     "bonus_condition_1": "+2 relationship for the selected group.",
@@ -680,7 +680,7 @@
   {
     "item_id": "SH20",
     "name": "Host a District Walking Tour for a Constituency Booster",
-    "description": "Host a walking tour for a player-selected Constituency-tier booster group.",
+    "description": "Host a walking tour for a player-selected Constituency booster group.",
     "cost_xp": 10,
     "cost_yen": 10000,
     "bonus_condition_1": "+1 relationship for the selected group.",

@@ -370,8 +370,6 @@ func _show_management() -> void:
 	var size := Ledger.deck_size(DataDB.balance)
 
 	rows.append(UiKit.heading(Text.say("office.xp", {"count": GameState.xp})))
-	rows.append(UiKit.line(
-		Text.say("office.xp_buys"), "SmallLabel"))
 	rows.append(UiKit.heading(Text.say("office.funds", {"count": funds})))
 	rows.append(UiKit.line(
 		Text.say("office.funds_buys"), "SmallLabel"))
@@ -414,11 +412,24 @@ func _show_organisations() -> void:
 		if in_tier.is_empty():
 			continue
 
-		rows.append(UiKit.heading(tier))
+		rows.append(UiKit.heading(_scope_heading(tier)))
 		for booster: Dictionary in in_tier:
 			rows.append(_organisation_row(booster))
 
 	_organisations_panel.open(Text.say("office.organisations"), rows)
+
+
+## The heading over each scope of organization. The data value stays "Party"
+## (the rules read it); the player sees "Party Bodies" (2026-10-16, Cameron).
+func _scope_heading(tier: String) -> String:
+	match tier:
+		"Party":
+			return Text.say("office.scope_party")
+		"Constituency":
+			return Text.say("office.scope_constituency")
+		"National":
+			return Text.say("office.scope_national")
+	return tier
 
 
 func _organisation_row(booster: Dictionary) -> Control:

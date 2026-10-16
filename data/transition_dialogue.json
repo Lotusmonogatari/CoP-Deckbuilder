@@ -199,7 +199,7 @@
     "transition_dialogue_id": "TD29",
     "character_id": "SF15",
     "stage_id": "ST29",
-    "character_line_en": "The harbour crowd is proud and tired. Show them respect.",
+    "character_line_en": "The harbor crowd is proud and tired. Show them respect.",
     "player_reply_en": "Respect comes first."
   },
   {
@@ -207,7 +207,7 @@
     "character_id": "SF16",
     "stage_id": "ST29",
     "character_line_en": "It smells of salt and diesel in there. Do not mind it.",
-    "player_reply_en": "I like the harbour."
+    "player_reply_en": "I like the harbor."
   },
   {
     "transition_dialogue_id": "TD31",
@@ -2278,7 +2278,7 @@
     "transition_dialogue_id": "TD326",
     "character_id": "SF15",
     "stage_id": "ST24",
-    "character_line_en": "Neighbours have brought their stories about Commuter Fares.",
+    "character_line_en": "Neighbors have brought their stories about Commuter Fares.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -2390,7 +2390,7 @@
     "transition_dialogue_id": "TD342",
     "character_id": "SF15",
     "stage_id": "ST34",
-    "character_line_en": "Neighbours have brought their stories about Wilderness Protection.",
+    "character_line_en": "Neighbors have brought their stories about Wilderness Protection.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -2418,7 +2418,7 @@
     "transition_dialogue_id": "TD346",
     "character_id": "SF15",
     "stage_id": "ST36",
-    "character_line_en": "Neighbours have brought their stories about Rural Hospitals.",
+    "character_line_en": "Neighbors have brought their stories about Rural Hospitals.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -2656,7 +2656,7 @@
     "transition_dialogue_id": "TD380",
     "character_id": "SF15",
     "stage_id": "ST53",
-    "character_line_en": "Neighbours have brought their stories about the Carbon Levy.",
+    "character_line_en": "Neighbors have brought their stories about the Carbon Levy.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -2726,7 +2726,7 @@
     "transition_dialogue_id": "TD390",
     "character_id": "SF15",
     "stage_id": "ST58",
-    "character_line_en": "Neighbours have brought their stories about Fishing Quota Reform.",
+    "character_line_en": "Neighbors have brought their stories about Fishing Quota Reform.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -2768,7 +2768,7 @@
     "transition_dialogue_id": "TD396",
     "character_id": "SF15",
     "stage_id": "ST61",
-    "character_line_en": "Neighbours have brought their stories about Shipbuilding Support.",
+    "character_line_en": "Neighbors have brought their stories about Shipbuilding Support.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -2978,7 +2978,7 @@
     "transition_dialogue_id": "TD426",
     "character_id": "SF15",
     "stage_id": "ST76",
-    "character_line_en": "Neighbours have brought their stories about Farm Succession.",
+    "character_line_en": "Neighbors have brought their stories about Farm Succession.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -3062,7 +3062,7 @@
     "transition_dialogue_id": "TD438",
     "character_id": "SF15",
     "stage_id": "ST82",
-    "character_line_en": "Neighbours have brought their stories about Workplace Equality.",
+    "character_line_en": "Neighbors have brought their stories about Workplace Equality.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -3118,7 +3118,7 @@
     "transition_dialogue_id": "TD446",
     "character_id": "SF15",
     "stage_id": "ST86",
-    "character_line_en": "Neighbours have brought their stories about Parental Leave.",
+    "character_line_en": "Neighbors have brought their stories about Parental Leave.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -3230,7 +3230,7 @@
     "transition_dialogue_id": "TD462",
     "character_id": "SF15",
     "stage_id": "ST94",
-    "character_line_en": "Neighbours have brought their stories about Town Mergers.",
+    "character_line_en": "Neighbors have brought their stories about Town Mergers.",
     "player_reply_en": "Then I will hear every one."
   },
   {
@@ -3342,7 +3342,7 @@
     "transition_dialogue_id": "TD478",
     "character_id": "OP06",
     "stage_id": "ST02",
-    "character_line_en": "Let us see who the seats truly favour.",
+    "character_line_en": "Let us see who the seats truly favor.",
     "player_reply_en": "Let us."
   },
   {
@@ -3503,7 +3503,7 @@
     "transition_dialogue_id": "TD501",
     "character_id": "OP104",
     "stage_id": "ST24",
-    "character_line_en": "I came to speak for my neighbours.",
+    "character_line_en": "I came to speak for my neighbors.",
     "player_reply_en": "Then I will listen to them."
   },
   {
@@ -3580,7 +3580,7 @@
     "transition_dialogue_id": "TD512",
     "character_id": "OP123",
     "stage_id": "ST36",
-    "character_line_en": "I came to speak for my neighbours.",
+    "character_line_en": "I came to speak for my neighbors.",
     "player_reply_en": "Then I will listen to them."
   },
   {
@@ -3664,7 +3664,7 @@
     "transition_dialogue_id": "TD524",
     "character_id": "OP105",
     "stage_id": "ST53",
-    "character_line_en": "I came to speak for my neighbours.",
+    "character_line_en": "I came to speak for my neighbors.",
     "player_reply_en": "Then I will listen to them."
   },
   {
@@ -3776,7 +3776,7 @@
     "transition_dialogue_id": "TD540",
     "character_id": "OP124",
     "stage_id": "ST76",
-    "character_line_en": "I came to speak for my neighbours.",
+    "character_line_en": "I came to speak for my neighbors.",
     "player_reply_en": "Then I will listen to them."
   },
   {

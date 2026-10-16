@@ -2265,7 +2265,7 @@
   "BI32": {
     "bill_id": "BI32",
     "bill_name": "Rural Hospital Network Act",
-    "bill_description": "Funds a chain of small regional hospitals and travelling clinics so no town is far from emergency care.",
+    "bill_description": "Funds a chain of small regional hospitals and traveling clinics so no town is far from emergency care.",
     "favorability_delta_supportive": 5,
     "favorability_delta_opposed": -5,
     "favorability_delta_neutral": 0,
