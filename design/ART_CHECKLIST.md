@@ -14,7 +14,7 @@ in `data/art.json`.
 | Backgrounds | 24 / 121 |
 | Organisation icons | 30 / 30 |
 | Audience icons (Boosters panel) | 5 / 5 |
-| Shop item icons | 20 / 21 |
+| Shop item icons | 21 / 21 |
 | Cosmetic package icons | 2 / 2 |
 
 ## Protagonists — `assets/characters/protagonists/`
@@ -338,8 +338,8 @@ in `data/art.json`.
 | ST26.png | Press Conference on Raising Train Fares | ☐ |
 | ST27.png | Hearing on Rail Safety | ☐ |
 | ST28.png | Lobbyist Meeting on Fishing Quotas | ☐ |
-| ST29.png | Town Hall at the Harbour | ☐ |
-| ST30.png | Media Ambush on Seafood Labelling | ☐ |
+| ST29.png | Town Hall at the Harbor | ☐ |
+| ST30.png | Media Ambush on Seafood Labeling | ☐ |
 | ST31.png | Hearing on Fishery Quotas | ☐ |
 | ST32.png | Press Conference on Wilderness Protection | ☐ |
 | ST33.png | Hearing on Wilderness Protection | ☐ |
@@ -461,7 +461,7 @@ in `data/art.json`.
 | BO24.png | Financial Industry Association | ✓ |
 | BO25.png | Small Business Owners' Association | ✓ |
 | BO26.png | Consumer Advocacy Network | ✓ |
-| BO27.png | Urban Neighbourhood Alliance | ✓ |
+| BO27.png | Urban Neighborhood Alliance | ✓ |
 | BO28.png | Ainu Community Council | ✓ |
 | BO29.png | Ainu Language and Culture Foundation | ✓ |
 | BO30.png | Rural Revitalization Council | ✓ |
@@ -473,7 +473,7 @@ in `data/art.json`.
 | SG01.png | Press | ✓ |
 | SG02.png | Party Members | ✓ |
 | SG03.png | Constituents | ✓ |
-| SG04.png | Donors | ✓ |
+| SG04.png | Boosters | ✓ |
 | SG05.png | Bureaucrats | ✓ |
 
 ## Shop item icons — `assets/icons/`
@@ -500,7 +500,7 @@ in `data/art.json`.
 | buff_turn.png | AI Powered Clock | ✓ |
 | booster_dinner.png | Host a Dinner for a National Booster | ✓ |
 | walking_tour.png | Host a District Walking Tour for a Constituency Booster | ✓ |
-| training_coupon.png | Training Session Coupon | ☐ |
+| BO01.png | Public Rebuke | ✓ |
 
 ## Cosmetic package icons — `assets/icons/`
 

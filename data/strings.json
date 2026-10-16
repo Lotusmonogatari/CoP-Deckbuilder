@@ -1682,8 +1682,8 @@
   {
     "key": "office_hours.summary",
     "where": "Office Hours — outcome body",
-    "english": "{correct} of {visited} won over.",
-    "placeholders": "correct, visited",
+    "english": "{visited} visitors seen.",
+    "placeholders": "visited",
     "notes": null
   },
   {
@@ -3476,6 +3476,13 @@
     "where": "Battle · Details panel, organizations a strong answer sets back",
     "english": "A strong answer sets back: {names}.",
     "placeholders": "names",
+    "notes": null
+  },
+  {
+    "key": "office_hours.effects",
+    "where": "Office Hours — what a visitor choice did to standing",
+    "english": "Standing: {changes}.",
+    "placeholders": "changes",
     "notes": null
   }
 ]

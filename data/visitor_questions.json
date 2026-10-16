@@ -13,7 +13,55 @@
     "response_right": "Finally, someone who writes it down!",
     "response_wrong": "That's what the last person said.",
     "reaction_right": "Jots it in a small notebook.",
-    "reaction_wrong": "Taps the clipboard impatiently."
+    "reaction_wrong": "Taps the clipboard impatiently.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO04",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO04",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -4
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "response_a": "Thank you. Just tell me the day it is fixed.",
+    "response_b": "We did. Twice. They sent us back to you.",
+    "response_c": "It is the wiring, not the bulb.",
+    "response_d": "The dark is not quiet. It is dangerous.",
+    "reaction_a": "Writes your promise in a small notebook.",
+    "reaction_b": "Folds both arms.",
+    "reaction_c": "Shakes head slowly.",
+    "reaction_d": "Stares at you, then at the door."
   },
   {
     "question_id": "VQ02",
@@ -30,7 +78,51 @@
     "response_right": "Now that is a neighborly idea.",
     "response_wrong": "In my day we looked after each other.",
     "reaction_right": "Nods slowly and smiles.",
-    "reaction_wrong": "Pulls her scarf tighter and frowns."
+    "reaction_wrong": "Pulls her scarf tighter and frowns.",
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": -4
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "response_a": "Some of our neighbors cannot lift a shovel.",
+    "response_b": "A group would help. Put the city's name on it.",
+    "response_c": "That is cruel, and you know it.",
+    "response_d": "Then whose matter is it?",
+    "reaction_a": "Lowers eyes.",
+    "reaction_b": "Nods and starts a list.",
+    "reaction_c": "Draws a sharp breath.",
+    "reaction_d": "Gathers the papers."
   },
   {
     "question_id": "VQ03",
@@ -47,7 +139,51 @@
     "response_right": "Thank you. That's all we're asking.",
     "response_wrong": "Please don't joke about this.",
     "reaction_right": "Lets out a long breath of relief.",
-    "reaction_wrong": "Stares at you, appalled."
+    "reaction_wrong": "Stares at you, appalled.",
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -4
+      }
+    ],
+    "response_a": "Studies take time. Children cross every morning.",
+    "response_b": "Some of them have no parent free to walk.",
+    "response_c": "This month. I will hold you to that.",
+    "response_d": "They are quick, and cars are quicker.",
+    "reaction_a": "Taps a foot.",
+    "reaction_b": "Looks hurt.",
+    "reaction_c": "Smiles for the first time.",
+    "reaction_d": "Turns away."
   },
   {
     "question_id": "VQ04",
@@ -63,7 +199,59 @@
     "response_right": "The sea remembers who showed up.",
     "response_wrong": "Easy to say that from dry land.",
     "reaction_right": "Grips your hand with a weathered palm.",
-    "reaction_wrong": "Spits out a laugh without humor."
+    "reaction_wrong": "Spits out a laugh without humor.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": -4
+      },
+      {
+        "target": "BO22",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO22",
+        "delta": 1
+      },
+      {
+        "target": "BO08",
+        "delta": -1
+      }
+    ],
+    "response_a": "Nothing? They followed us for three days.",
+    "response_b": "Those waters are our living. We will not leave.",
+    "response_c": "Diplomats take years. The boats go out tomorrow.",
+    "response_d": "Say it loudly. The fleet needs to hear it.",
+    "reaction_a": "Stares at the horizon.",
+    "reaction_b": "Jaw tightens.",
+    "reaction_c": "Looks unconvinced.",
+    "reaction_d": "Straightens up."
   },
   {
     "question_id": "VQ05",
@@ -80,7 +268,51 @@
     "response_right": "That would keep a few of us afloat.",
     "response_wrong": "We've heard \"eventually\" before.",
     "reaction_right": "Gives a gruff thumbs up.",
-    "reaction_wrong": "Folds his arms like a net closing."
+    "reaction_wrong": "Folds his arms like a net closing.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ],
+    "response_a": "Relief would keep half the fleet afloat.",
+    "response_b": "Ups and downs do not feed a family.",
+    "response_c": "A smaller boat catches a smaller living.",
+    "response_d": "Eventually the boats will be in port for good.",
+    "reaction_a": "Exhales.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Mutters.",
+    "reaction_d": "Shakes head."
   },
   {
     "question_id": "VQ06",
@@ -97,7 +329,55 @@
     "response_right": "A harbor is worth more than its paperwork.",
     "response_wrong": "Boats will wait but the tide won't.",
     "reaction_right": "Taps the table twice in approval.",
-    "reaction_wrong": "Looks out the window, unconvinced."
+    "reaction_wrong": "Looks out the window, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO04",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ],
+    "response_a": "Expensive, yes. So is a harbor nobody can enter.",
+    "response_b": "The mud will not wait for a good year.",
+    "response_c": "Smaller boats do not fix a silted channel.",
+    "response_d": "Written, filed, forgotten. That is how it goes.",
+    "reaction_a": "Rubs the back of the neck.",
+    "reaction_b": "Gives a short bow.",
+    "reaction_c": "Looks away.",
+    "reaction_d": "Stares at the floor."
   },
   {
     "question_id": "VQ07",
@@ -113,7 +393,55 @@
     "response_right": "That's a rare quote. Thank you.",
     "response_wrong": "That's a headline, and not a flattering one.",
     "reaction_right": "Scribbles something and smiles.",
-    "reaction_wrong": "Looks up from the notepad, eyebrow raised."
+    "reaction_wrong": "Looks up from the notepad, eyebrow raised.",
+    "effects_a": [
+      {
+        "target": "BO08",
+        "delta": -3
+      },
+      {
+        "target": "BO01",
+        "delta": 2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO01",
+        "delta": 3
+      },
+      {
+        "target": "BO08",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO08",
+        "delta": 3
+      },
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ],
+    "response_a": "Convenient. You must be very loyal.",
+    "response_b": "Every word? That will make a dull story.",
+    "response_c": "Now that is a quote. Thank you.",
+    "response_d": "A comment of its own kind, I suppose.",
+    "reaction_a": "Writes nothing down.",
+    "reaction_b": "Puts the pen away.",
+    "reaction_c": "Starts writing quickly.",
+    "reaction_d": "Raises an eyebrow."
   },
   {
     "question_id": "VQ08",
@@ -130,7 +458,47 @@
     "response_right": "Fair deal. Honest quotes make good copy.",
     "response_wrong": "I'll write what I heard.",
     "reaction_right": "Clicks pen and nods.",
-    "reaction_wrong": "Lowers the recorder with a sigh."
+    "reaction_wrong": "Lowers the recorder with a sigh.",
+    "effects_a": [
+      {
+        "target": "BO08",
+        "delta": 3
+      },
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO08",
+        "delta": -2
+      },
+      {
+        "target": "BO01",
+        "delta": 2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO08",
+        "delta": -3
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO08",
+        "delta": -4
+      }
+    ],
+    "response_a": "Then I will print all of it.",
+    "response_b": "That is not how it works, and you know it.",
+    "response_c": "Then I cannot help you. Or you me.",
+    "response_d": "The recording says otherwise.",
+    "reaction_a": "Flips to a clean page.",
+    "reaction_b": "Smirks.",
+    "reaction_c": "Closes the notebook.",
+    "reaction_d": "Holds up a phone."
   },
   {
     "question_id": "VQ09",
@@ -146,7 +514,59 @@
     "response_right": "Rare to hear honesty. I'll check the list.",
     "response_wrong": "That's a lot of words with no content.",
     "reaction_right": "Raises eyebrows, impressed.",
-    "reaction_wrong": "Flips to a blank page."
+    "reaction_wrong": "Flips to a blank page.",
+    "effects_a": [
+      {
+        "target": "BO08",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO08",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO08",
+        "delta": -1
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO08",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "response_a": "More than your critics think? Name one.",
+    "response_b": "Your staff keep it. You should know it.",
+    "response_c": "Long is not the same as good.",
+    "response_d": "Honest. That makes a better article.",
+    "reaction_a": "Waits, pen ready.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Raises an eyebrow.",
+    "reaction_d": "Nods and writes."
   },
   {
     "question_id": "VQ10",
@@ -162,7 +582,55 @@
     "response_right": "Good. Say it again where the bosses can hear.",
     "response_wrong": "Words are cheap. We pay rent with wages.",
     "reaction_right": "Gives a short, firm nod.",
-    "reaction_wrong": "Pulls a union pin straight, glaring."
+    "reaction_wrong": "Pulls a union pin straight, glaring.",
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO09",
+        "delta": -3
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "response_a": "Spoken like an owner. We are tired of that.",
+    "response_b": "Hear every plan. That is all we ask.",
+    "response_c": "Level for whom?",
+    "response_d": "After the budget. Everything waits for the budget.",
+    "reaction_a": "Shakes head.",
+    "reaction_b": "Relaxes slightly.",
+    "reaction_c": "Narrows eyes.",
+    "reaction_d": "Sighs."
   },
   {
     "question_id": "VQ11",
@@ -179,7 +647,59 @@
     "response_right": "Finally, a table with enough chairs.",
     "response_wrong": "Then nothing changes, does it?",
     "reaction_right": "Smiles and straightens up.",
-    "reaction_wrong": "Shrugs and looks away."
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 2
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO08",
+        "delta": -2
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "response_a": "One table is a start. Who pays for the chairs?",
+    "response_b": "Hidden talks are how the last mess began.",
+    "response_c": "They disagree because no one has asked them together.",
+    "response_d": "Then stay busy. We will manage.",
+    "reaction_a": "Almost smiles.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Looks dubious.",
+    "reaction_d": "Turns to leave."
   },
   {
     "question_id": "VQ12",
@@ -195,7 +715,55 @@
     "response_right": "Coffee is a good start.",
     "response_wrong": "We'll remember who stayed home.",
     "reaction_right": "Laughs and slaps your shoulder.",
-    "reaction_wrong": "Mutters something under his breath."
+    "reaction_wrong": "Mutters something under his breath.",
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": -3
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": -4
+      }
+    ],
+    "response_a": "Neutral is a way of taking a side.",
+    "response_b": "We do not need flyers. We need people.",
+    "response_c": "Bring the coffee. Hot, please.",
+    "response_d": "Our pickets keep the doors open for you too.",
+    "reaction_a": "Shakes head.",
+    "reaction_b": "Crumples the flyer.",
+    "reaction_c": "Laughs for the first time.",
+    "reaction_d": "Glares."
   },
   {
     "question_id": "VQ13",
@@ -211,7 +779,55 @@
     "response_right": "You'd make a good dairy farmer.",
     "response_wrong": "Tell that to the cows.",
     "reaction_right": "Pats your arm, almost a hug.",
-    "reaction_wrong": "Snorts and looks at her boots."
+    "reaction_wrong": "Snorts and looks at her boots.",
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": -4
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Adapt to what? Prices set in Tokyo?",
+    "response_b": "That is not funny. That is my family.",
+    "response_c": "Cheese costs money to learn. We have little.",
+    "response_d": "Thank you. We cannot do this alone.",
+    "reaction_a": "Stares.",
+    "reaction_b": "Stands up.",
+    "reaction_c": "Wipes hands on apron.",
+    "reaction_d": "Nods slowly."
   },
   {
     "question_id": "VQ14",
@@ -228,7 +844,63 @@
     "response_right": "Without the bus, there's no village.",
     "response_wrong": "You clearly haven't waited at that stop.",
     "reaction_right": "Smiles broadly and bows.",
-    "reaction_wrong": "Shakes her head sadly."
+    "reaction_wrong": "Shakes her head sadly.",
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO04",
+        "delta": 2
+      }
+    ],
+    "response_a": "Closed routes mean closed villages.",
+    "response_b": "One bus a day is the last thread.",
+    "response_c": "Half our elderly do not drive.",
+    "response_d": "Then the prefecture should hear from you too.",
+    "reaction_a": "Frowns.",
+    "reaction_b": "Lets out a breath.",
+    "reaction_c": "Shakes head.",
+    "reaction_d": "Folds arms."
   },
   {
     "question_id": "VQ15",
@@ -244,7 +916,55 @@
     "response_right": "Ha! You'll cry, but I'll put it on posters.",
     "response_wrong": "Hm. Cheese is serious business.",
     "reaction_right": "Cuts a thick wedge, grinning.",
-    "reaction_wrong": "Wraps the cheese back up slowly."
+    "reaction_wrong": "Wraps the cheese back up slowly.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO08",
+        "delta": -1
+      }
+    ],
+    "response_a": "Ha! You will cry. It is that good.",
+    "response_b": "Of course. My apologies, I will take it back.",
+    "response_c": "Fair. Staff first. That is how kings did it.",
+    "response_d": "The camera will show what it shows.",
+    "reaction_a": "Delighted, hands you a knife.",
+    "reaction_b": "Wraps the cheese up.",
+    "reaction_c": "Smiles stiffly.",
+    "reaction_d": "Lowers the cheese."
   },
   {
     "question_id": "VQ16",
@@ -260,7 +980,55 @@
     "response_right": "Okay. That's more honest than I expected.",
     "response_wrong": "Great. Another adult who talks down to us.",
     "reaction_right": "Eyes widen, then a small nod.",
-    "reaction_wrong": "Rolls his eyes and checks his phone."
+    "reaction_wrong": "Rolls his eyes and checks his phone.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": -4
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "response_a": "Because you said so. That is exactly the problem.",
+    "response_b": "Vote, but not blindly. Fair.",
+    "response_c": "Hold you to account. We will.",
+    "response_d": "Not voters, but we will be.",
+    "reaction_a": "Crosses arms.",
+    "reaction_b": "Nods once.",
+    "reaction_c": "Writes it on a card.",
+    "reaction_d": "Looks stung."
   },
   {
     "question_id": "VQ17",
@@ -277,7 +1045,59 @@
     "response_right": "We'll save you a seat. A front one.",
     "response_wrong": "We'll ask the hard ones anyway.",
     "reaction_right": "Writes the date on his hand.",
-    "reaction_wrong": "Closes the folder with a snap."
+    "reaction_wrong": "Closes the folder with a snap.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "response_a": "Busy. That is what they all say.",
+    "response_b": "The hard questions. We will bring plenty.",
+    "response_c": "Pre-screened is not a debate.",
+    "response_d": "Send them first and you will get polite answers.",
+    "reaction_a": "Shakes head.",
+    "reaction_b": "Grins.",
+    "reaction_c": "Looks disappointed.",
+    "reaction_d": "Smiles wryly."
   },
   {
     "question_id": "VQ18",
@@ -293,7 +1113,59 @@
     "response_right": "That's rare. I'll send you three names.",
     "response_wrong": "Everyone says \"exposure.\"",
     "reaction_right": "Gives an enthusiastic double thumbs up.",
-    "reaction_wrong": "Sighs and slumps."
+    "reaction_wrong": "Sighs and slumps.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO23",
+        "delta": 2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -1
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "response_a": "Photocopying. Is that all we are worth?",
+    "response_b": "Free work has a name, and it is not experience.",
+    "response_c": "We will see. That is not a yes.",
+    "response_d": "Paid. Good. That will change things.",
+    "reaction_a": "Stiffens.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Breaks into a smile."
   },
   {
     "question_id": "VQ19",
@@ -309,7 +1181,51 @@
     "response_right": "You can't imagine what that means to us.",
     "response_wrong": "Not everyone has grandparents nearby.",
     "reaction_right": "Presses a hand to her heart.",
-    "reaction_wrong": "Closes her eyes and shakes her head."
+    "reaction_wrong": "Closes her eyes and shakes her head.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -4
+      }
+    ],
+    "response_a": "More spaces. Yes. Please.",
+    "response_b": "Plan ahead? The waitlist is two years.",
+    "response_c": "Grandparents live far away. Many are ill.",
+    "response_d": "Popular. I suppose empty cribs are popular too.",
+    "reaction_a": "Shoulders drop in relief.",
+    "reaction_b": "Laughs bitterly.",
+    "reaction_c": "Shakes head.",
+    "reaction_d": "Glares."
   },
   {
     "question_id": "VQ20",
@@ -326,7 +1242,59 @@
     "response_right": "Oh, I can already picture it.",
     "response_wrong": "My kids need more than that.",
     "reaction_right": "Smiles wistfully.",
-    "reaction_wrong": "Looks disappointed."
+    "reaction_wrong": "Looks disappointed.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "Noise is life. A quiet center is a closed one.",
+    "response_b": "They mix at home. They can mix here.",
+    "response_c": "Under one roof. Yes. That is the idea.",
+    "response_d": "Expensive compared to what? A new prison?",
+    "reaction_a": "Frowns.",
+    "reaction_b": "Shakes head.",
+    "reaction_c": "Nods eagerly.",
+    "reaction_d": "Looks dismayed."
   },
   {
     "question_id": "VQ21",
@@ -342,7 +1310,19 @@
     "response_right": "Come on Sunday. I'll make too much.",
     "response_wrong": "Hmph. Young people these days.",
     "reaction_right": "Pinches your cheek fondly.",
-    "reaction_wrong": "Tuts and shakes a finger."
+    "reaction_wrong": "Tuts and shakes a finger.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ22",
@@ -358,7 +1338,59 @@
     "response_right": "A wise choice. Come see the workshop.",
     "response_wrong": "Mass-produced is fine, I suppose.",
     "reaction_right": "Runs a thumb over the grain proudly.",
-    "reaction_wrong": "Puts down the chisel, disappointed."
+    "reaction_wrong": "Puts down the chisel, disappointed.",
+    "effects_a": [
+      {
+        "target": "BO13",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO13",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO13",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO13",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "response_a": "Match the furniture? It is not furniture.",
+    "response_b": "A small piece is a start. Thank you.",
+    "response_c": "Make room. There is a shelf somewhere.",
+    "response_d": "I will carve you something worth showing.",
+    "reaction_a": "Sets the piece down.",
+    "reaction_b": "Hands it over gently.",
+    "reaction_c": "Looks put out.",
+    "reaction_d": "Bows deeply."
   },
   {
     "question_id": "VQ23",
@@ -375,7 +1407,71 @@
     "response_right": "Good. The roof leaks and so does the budget.",
     "response_wrong": "Fashion fades but tradition... you'll see.",
     "reaction_right": "Bows deeply.",
-    "reaction_wrong": "Lets out a long, quiet breath."
+    "reaction_wrong": "Lets out a long, quiet breath.",
+    "effects_a": [
+      {
+        "target": "BO13",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO13",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      },
+      {
+        "target": "BO13",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO13",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "response_a": "Yezo, Yezo. Yes. Say it louder.",
+    "response_b": "Urgent for whom? We are the ones asking.",
+    "response_c": "Budgets can be argued. Heritage cannot be rebuilt.",
+    "response_d": "Expensive to keep. Priceless to lose.",
+    "reaction_a": "Stands taller.",
+    "reaction_b": "Mouth tightens.",
+    "reaction_c": "Looks uncertain.",
+    "reaction_d": "Stares in disbelief."
   },
   {
     "question_id": "VQ24",
@@ -391,7 +1487,59 @@
     "response_right": "A craft needs hands, and hands need food.",
     "response_wrong": "You can't teach grain by video.",
     "reaction_right": "Nods, rubbing a calloused thumb.",
-    "reaction_wrong": "Goes quiet and picks up a plane."
+    "reaction_wrong": "Goes quiet and picks up a plane.",
+    "effects_a": [
+      {
+        "target": "BO16",
+        "delta": 2
+      },
+      {
+        "target": "BO13",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO13",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO13",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "response_a": "Automation cannot carve a face.",
+    "response_b": "If not the government, then who?",
+    "response_c": "Stipends. Respect. Yes. That would draw them.",
+    "response_d": "Video cannot hold the grain of wood.",
+    "reaction_a": "Frowns.",
+    "reaction_b": "Shakes head.",
+    "reaction_c": "Nods thoughtfully.",
+    "reaction_d": "Gives a weary half smile."
   },
   {
     "question_id": "VQ25",
@@ -407,7 +1555,59 @@
     "response_right": "You've clearly never stood on the 7:40.",
     "response_wrong": "I'll tell the other forty people in my car.",
     "reaction_right": "Straightens her tie, relieved.",
-    "reaction_wrong": "Sighs into her coffee."
+    "reaction_wrong": "Sighs into her coffee.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": -4
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "response_a": "Success is a seat. We have none.",
+    "response_b": "Buses stop in the same traffic.",
+    "response_c": "Earlier and earlier. Soon I will not sleep.",
+    "response_d": "More cars. Rush hour. Thank you.",
+    "reaction_a": "Glares.",
+    "reaction_b": "Shakes head.",
+    "reaction_c": "Sighs.",
+    "reaction_d": "Looks hopeful."
   },
   {
     "question_id": "VQ26",
@@ -424,7 +1624,59 @@
     "response_right": "Thank you. My time is worth something.",
     "response_wrong": "That's the same answer as five years ago.",
     "reaction_right": "Looks up from her phone, hopeful.",
-    "reaction_wrong": "Returns to her phone."
+    "reaction_wrong": "Returns to her phone.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -1
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "response_a": "Everyone benefits. I will sign anything.",
+    "response_b": "Too expensive. Is it? For whom?",
+    "response_c": "The road is a parking lot at eight.",
+    "response_d": "The railway does what it likes. That is the trouble.",
+    "reaction_a": "Brightens.",
+    "reaction_b": "Looks dubious.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Shakes head."
   },
   {
     "question_id": "VQ27",
@@ -440,7 +1692,59 @@
     "response_right": "You'll learn more in 40 minutes than in a hearing.",
     "response_wrong": "It figures.",
     "reaction_right": "Smiles for the first time today.",
-    "reaction_wrong": "Mutters about \"car people.\""
+    "reaction_wrong": "Mutters about \"car people.\"",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "response_a": "Nobody is a morning person at 7:40.",
+    "response_b": "A deputy would not feel the crush.",
+    "response_c": "Platform two. Bring a coat.",
+    "response_d": "By car. Of course.",
+    "reaction_a": "Shrugs.",
+    "reaction_b": "Frowns slightly.",
+    "reaction_c": "Smiles, relieved.",
+    "reaction_d": "Mutters under breath."
   },
   {
     "question_id": "VQ28",
@@ -457,7 +1761,51 @@
     "response_right": "The kami will remember your kindness.",
     "response_wrong": "Even the gods notice red tape.",
     "reaction_right": "Claps hands twice in thanks.",
-    "reaction_wrong": "Gazes at the sky, resigned."
+    "reaction_wrong": "Gazes at the sky, resigned.",
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO27",
+        "delta": 2
+      },
+      {
+        "target": "BO06",
+        "delta": -3
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      }
+    ],
+    "response_a": "Rules are rules, but it is one afternoon.",
+    "response_b": "Thank you. The whole street will be there.",
+    "response_c": "Litter is swept in an hour. A festival is remembered.",
+    "response_d": "A parking lot has no lanterns. It would not be the same.",
+    "reaction_a": "Sighs.",
+    "reaction_b": "Beams.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Shakes head."
   },
   {
     "question_id": "VQ29",
@@ -473,7 +1821,59 @@
     "response_right": "It's cold, but warm company helps.",
     "response_wrong": "Perhaps another year.",
     "reaction_right": "Folds his hands and bows.",
-    "reaction_wrong": "Smiles politely but stiffly."
+    "reaction_wrong": "Smiles politely but stiffly.",
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": -1
+      },
+      {
+        "target": "BO14",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "response_a": "Not religious is fine. Not respectful is not.",
+    "response_b": "Out of town. The first visit is not for later.",
+    "response_c": "A long line. A good sign, really.",
+    "response_d": "Early morning. Dress warm. I will save a place.",
+    "reaction_a": "Looks away.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Smiles tightly.",
+    "reaction_d": "Bows."
   },
   {
     "question_id": "VQ30",
@@ -490,7 +1890,59 @@
     "response_right": "That alone would change everything.",
     "response_wrong": "You've never filled out the forms.",
     "reaction_right": "Pulls out a business card.",
-    "reaction_wrong": "Looks at his watch."
+    "reaction_wrong": "Looks at his watch.",
+    "effects_a": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO16",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO16",
+        "delta": -4
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "response_a": "Days, not months. Exactly.",
+    "response_b": "The reason is a stamp I do not understand.",
+    "response_c": "More clerks. More forms. More months.",
+    "response_d": "Plan is fine. The wait is the problem.",
+    "reaction_a": "Slaps the table in agreement.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Shakes head.",
+    "reaction_d": "Stiffens."
   },
   {
     "question_id": "VQ31",
@@ -507,7 +1959,59 @@
     "response_right": "Great. We have too many ideas stuck in drawers.",
     "response_wrong": "Then those ideas go to Tokyo.",
     "reaction_right": "Eyes light up.",
-    "reaction_wrong": "Slumps back in the chair."
+    "reaction_wrong": "Slumps back in the chair.",
+    "effects_a": [
+      {
+        "target": "BO13",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO13",
+        "delta": -1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO16",
+        "delta": -3
+      }
+    ],
+    "response_a": "Teaching alone built none of our firms.",
+    "response_b": "Quickly is not how ideas work.",
+    "response_c": "Ideas leave the lab. Finally someone says it.",
+    "response_d": "Risk is the only way anything starts.",
+    "reaction_a": "Shakes head.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Nods hard.",
+    "reaction_d": "Looks let down."
   },
   {
     "question_id": "VQ32",
@@ -523,7 +2027,59 @@
     "response_right": "Cold data centers, cold beer, cold cash. Yes.",
     "response_wrong": "Okay. Let me know when you thaw.",
     "reaction_right": "Starts typing notes on his phone.",
-    "reaction_wrong": "Pockets the phone."
+    "reaction_wrong": "Pockets the phone.",
+    "effects_a": [
+      {
+        "target": "BO16",
+        "delta": -3
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 3
+      },
+      {
+        "target": "BO14",
+        "delta": 1
+      },
+      {
+        "target": "BO13",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO16",
+        "delta": -1
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO16",
+        "delta": -3
+      },
+      {
+        "target": "BO14",
+        "delta": -1
+      }
+    ],
+    "response_a": "Nobody wants cold? We have snow tourists.",
+    "response_b": "Sell the cold. Yes. I have a slogan.",
+    "response_c": "Ice cream. Sure. That is a joke, right?",
+    "response_d": "Warm places win only if we stay cold in our thinking.",
+    "reaction_a": "Taps the table.",
+    "reaction_b": "Grins.",
+    "reaction_c": "Laughs uneasily.",
+    "reaction_d": "Waves a hand."
   },
   {
     "question_id": "VQ33",
@@ -539,7 +2095,59 @@
     "response_right": "Spoken like someone who has visited a village.",
     "response_wrong": "Easy for the capital to say.",
     "reaction_right": "Smiles and pours the tea.",
-    "reaction_wrong": "Puts down the teapot."
+    "reaction_wrong": "Puts down the teapot.",
+    "effects_a": [
+      {
+        "target": "BO04",
+        "delta": -3
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO04",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO04",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO04",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "response_a": "Tokyo knows best. Tell that to our potholes.",
+    "response_b": "We have a system. It is the problem.",
+    "response_c": "Not a tax expert. Few are. Learn.",
+    "response_d": "Towns that know their needs. Yes. Thank you.",
+    "reaction_a": "Narrows eyes.",
+    "reaction_b": "Shakes head.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Bows."
   },
   {
     "question_id": "VQ34",
@@ -555,7 +2163,59 @@
     "response_right": "A busy arcade is a happy arcade.",
     "response_wrong": "We'll try to survive without you.",
     "reaction_right": "Wipes flour from her hands, smiling.",
-    "reaction_wrong": "Starts stacking boxes."
+    "reaction_wrong": "Starts stacking boxes.",
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO13",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": -3
+      },
+      {
+        "target": "BO14",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO24",
+        "delta": 1
+      }
+    ],
+    "response_a": "Events and lower rents. Both. Now.",
+    "response_b": "Adapt or close. That is easy to say from an office.",
+    "response_c": "Parking. Yes. I will lose everything.",
+    "response_d": "Malls are not the future. Malls are the past with air conditioning.",
+    "reaction_a": "Brightens.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Looks stunned.",
+    "reaction_d": "Shakes head."
   },
   {
     "question_id": "VQ35",
@@ -571,7 +2231,55 @@
     "response_right": "That's how a partnership works.",
     "response_wrong": "I'll tell leadership you were noncommittal.",
     "reaction_right": "Makes a note in his planner.",
-    "reaction_wrong": "Capped pen clicks twice."
+    "reaction_wrong": "Capped pen clicks twice.",
+    "effects_a": [
+      {
+        "target": "BO01",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO01",
+        "delta": -3
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO01",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO01",
+        "delta": -3
+      }
+    ],
+    "response_a": "Your own way is not a party.",
+    "response_b": "Polls are not principles.",
+    "response_c": "On what we agree on. Honest. We can work with that.",
+    "response_d": "Read them. People are depending on it.",
+    "reaction_a": "Writes something down.",
+    "reaction_b": "Looks stern.",
+    "reaction_c": "Smiles.",
+    "reaction_d": "Looks disappointed."
   },
   {
     "question_id": "VQ36",
@@ -588,7 +2296,59 @@
     "response_right": "We like members who bring friends.",
     "response_wrong": "We'll look for someone else.",
     "reaction_right": "Slaps the table, pleased.",
-    "reaction_wrong": "Frowns and checks a list."
+    "reaction_wrong": "Frowns and checks a list.",
+    "effects_a": [
+      {
+        "target": "BO01",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO01",
+        "delta": 3
+      },
+      {
+        "target": "BO02",
+        "delta": 1
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO01",
+        "delta": 1
+      },
+      {
+        "target": "BO02",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO01",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "response_a": "Other plans. The rally needs bodies.",
+    "response_b": "Supporters. Yes. Bring plenty.",
+    "response_c": "A short appearance is better than none.",
+    "response_d": "Noisy? That is how we are heard.",
+    "reaction_a": "Shrugs.",
+    "reaction_b": "Grins.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Frowns."
   },
   {
     "question_id": "VQ37",
@@ -604,7 +2364,59 @@
     "response_right": "Good. Donors are like cats. They like attention.",
     "response_wrong": "Leadership will remember that.",
     "reaction_right": "Smiles thinly, ticking a box.",
-    "reaction_wrong": "Draws a line through your name."
+    "reaction_wrong": "Draws a line through your name.",
+    "effects_a": [
+      {
+        "target": "BO01",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO01",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO01",
+        "delta": -1
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO01",
+        "delta": 3
+      },
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "Everyone fundraises. The party depends on it.",
+    "response_b": "Busy. Everyone is busy.",
+    "response_c": "An invitation. Check your calendar first.",
+    "response_d": "Gracious to everyone. That is the job.",
+    "reaction_a": "Looks disapproving.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Waves a hand.",
+    "reaction_d": "Smiles."
   },
   {
     "question_id": "VQ38",
@@ -620,7 +2432,55 @@
     "response_right": "Good answer. The faction remembers friends.",
     "response_wrong": "The faction remembers everything else too.",
     "reaction_right": "Leans back, satisfied.",
-    "reaction_wrong": "Steeples his fingers coldly."
+    "reaction_wrong": "Steeples his fingers coldly.",
+    "effects_a": [
+      {
+        "target": "BO02",
+        "delta": 3
+      },
+      {
+        "target": "BO01",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO02",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO02",
+        "delta": -2
+      },
+      {
+        "target": "BO01",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO02",
+        "delta": -1
+      },
+      {
+        "target": "BO01",
+        "delta": -1
+      }
+    ],
+    "response_a": "A team player. We like that. Remember who said so.",
+    "response_b": "Your own mind. The faction does not forget.",
+    "response_c": "Whoever is winning. Honest, at least.",
+    "response_d": "Undecided is not a position.",
+    "reaction_a": "Winks.",
+    "reaction_b": "Looks cold.",
+    "reaction_c": "Gives a thin smile.",
+    "reaction_d": "Shrugs."
   },
   {
     "question_id": "VQ39",
@@ -636,7 +2496,55 @@
     "response_right": "Wise young one. Come to dinner.",
     "response_wrong": "Pride is expensive.",
     "reaction_right": "Pours you a drink.",
-    "reaction_wrong": "Pours only for himself."
+    "reaction_wrong": "Pours only for himself.",
+    "effects_a": [
+      {
+        "target": "BO02",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO02",
+        "delta": -2
+      },
+      {
+        "target": "BO17",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO02",
+        "delta": 3
+      },
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO02",
+        "delta": -1
+      },
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "response_a": "Nobody needs one. Until they do.",
+    "response_b": "Best office. How honest. How shallow.",
+    "response_c": "Whom should you listen to? I will make a list.",
+    "response_d": "Voters make poor mentors but good judges.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Laughs coldly.",
+    "reaction_c": "Pats your arm.",
+    "reaction_d": "Smiles stiffly."
   },
   {
     "question_id": "VQ40",
@@ -652,7 +2560,19 @@
     "response_right": "Darling, you'll be fabulous.",
     "response_wrong": "How very serious of you.",
     "reaction_right": "Claps her hands.",
-    "reaction_wrong": "Examines her nails."
+    "reaction_wrong": "Examines her nails.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ41",
@@ -669,7 +2589,19 @@
     "response_right": "Yezo will be on every screen.",
     "response_wrong": "Then who will sell the snow?",
     "reaction_right": "Strikes a pose, delighted.",
-    "reaction_wrong": "Looks away, bored."
+    "reaction_wrong": "Looks away, bored.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ42",
@@ -685,7 +2617,19 @@
     "response_right": "That would keep our lifts running.",
     "response_wrong": "We can't ski on promises.",
     "reaction_right": "Nods, jotting notes.",
-    "reaction_wrong": "Looks out at an empty slope."
+    "reaction_wrong": "Looks out at an empty slope.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ43",
@@ -702,7 +2646,55 @@
     "response_right": "Time on the dock is money lost.",
     "response_wrong": "We've sat in that line too long.",
     "reaction_right": "Slaps the railing in approval.",
-    "reaction_wrong": "Stares at the horizon."
+    "reaction_wrong": "Stares at the horizon.",
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO22",
+        "delta": -1
+      }
+    ],
+    "response_a": "Customs has its reasons, and they cost us hours.",
+    "response_b": "The ferry company has been no help.",
+    "response_c": "Find it soon. The line grows daily.",
+    "response_d": "Good. The crews have waited too long.",
+    "reaction_a": "Shrugs unhappily.",
+    "reaction_b": "Rolls eyes.",
+    "reaction_c": "Nods warily.",
+    "reaction_d": "Smiles and shakes your hand."
   },
   {
     "question_id": "VQ44",
@@ -718,7 +2710,19 @@
     "response_right": "Bring a thick coat. The strait doesn't care who you are.",
     "response_wrong": "Reports don't get cold.",
     "reaction_right": "Salutes with two fingers.",
-    "reaction_wrong": "Turns back to the wheel."
+    "reaction_wrong": "Turns back to the wheel.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ45",
@@ -734,7 +2738,19 @@
     "response_right": "Page twelve is the important one.",
     "response_wrong": "That's rather the problem.",
     "reaction_right": "Adjusts her glasses, pleased.",
-    "reaction_wrong": "Sighs and closes her briefcase."
+    "reaction_wrong": "Sighs and closes her briefcase.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ46",
@@ -750,7 +2766,19 @@
     "response_right": "Exactly what I've been saying!",
     "response_wrong": "Hm, I'm not sure that's right.",
     "reaction_right": "Nods approvingly.",
-    "reaction_wrong": "Frowns, unconvinced."
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ47",
@@ -766,7 +2794,19 @@
     "response_right": "I like the sound of that!",
     "response_wrong": "That's not the answer I wanted.",
     "reaction_right": "Grins and gives a thumbs up.",
-    "reaction_wrong": "Sighs and looks away."
+    "reaction_wrong": "Sighs and looks away.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ48",
@@ -782,7 +2822,19 @@
     "response_right": "Wonderful! I'll have my people call yours.",
     "response_wrong": "...Fine. I'll find another buyer.",
     "reaction_right": "Shakes hands enthusiastically.",
-    "reaction_wrong": "Crosses arms, unimpressed."
+    "reaction_wrong": "Crosses arms, unimpressed.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ49",
@@ -798,7 +2850,19 @@
     "response_right": "Good. That's what we like to hear.",
     "response_wrong": "...I see.",
     "reaction_right": "Nods, satisfied.",
-    "reaction_wrong": "Frowns, taking note."
+    "reaction_wrong": "Frowns, taking note.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ50",
@@ -814,7 +2878,19 @@
     "response_right": "Good. Useful people get remembered.",
     "response_wrong": "He's heard that one before.",
     "reaction_right": "Glances at his watch, then nods.",
-    "reaction_wrong": "Quietly closes his folder."
+    "reaction_wrong": "Quietly closes his folder.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ51",
@@ -830,7 +2906,19 @@
     "response_right": "That feedback is worth more than you know.",
     "response_wrong": "We noticed.",
     "reaction_right": "Makes a note on his tablet.",
-    "reaction_wrong": "Raises an eyebrow."
+    "reaction_wrong": "Raises an eyebrow.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ52",
@@ -846,7 +2934,19 @@
     "response_right": "Thirty seconds of coordination saves a week of cleanup.",
     "response_wrong": "That's how small stories become big ones.",
     "reaction_right": "Allows himself a small smile.",
-    "reaction_wrong": "Pinches the bridge of his nose."
+    "reaction_wrong": "Pinches the bridge of his nose.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ53",
@@ -862,7 +2962,19 @@
     "response_right": "Then help us make it true.",
     "response_wrong": "We've heard \"be patient\" our whole lives.",
     "reaction_right": "Sits up straighter.",
-    "reaction_wrong": "Looks down at her shoes."
+    "reaction_wrong": "Looks down at her shoes.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ54",
@@ -878,7 +2990,19 @@
     "response_right": "They'll be thrilled. So will I.",
     "response_wrong": "Mentors who rush don't help anyone.",
     "reaction_right": "Grins and writes down your number.",
-    "reaction_wrong": "Folds her arms."
+    "reaction_wrong": "Folds her arms.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ55",
@@ -894,7 +3018,19 @@
     "response_right": "That's the balance I am trying to find.",
     "response_wrong": "That's exactly what frustrates us.",
     "reaction_right": "Nods slowly, thinking.",
-    "reaction_wrong": "Sighs and looks away."
+    "reaction_wrong": "Sighs and looks away.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ56",
@@ -910,7 +3046,19 @@
     "response_right": "Self-awareness. You're ahead of half the party.",
     "response_wrong": "I've heard that before, right before a disaster.",
     "reaction_right": "Smiles and flips open her notebook.",
-    "reaction_wrong": "Winces slightly."
+    "reaction_wrong": "Winces slightly.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ57",
@@ -926,7 +3074,19 @@
     "response_right": "Now we can work with that.",
     "response_wrong": "Silence only makes headlines longer.",
     "reaction_right": "Taps her pen approvingly.",
-    "reaction_wrong": "Rubs her temples."
+    "reaction_wrong": "Rubs her temples.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ58",
@@ -942,7 +3102,19 @@
     "response_right": "People remember who remembered them.",
     "response_wrong": "Pizza only lasts one night.",
     "reaction_right": "Laughs and nods.",
-    "reaction_wrong": "Shakes her head."
+    "reaction_wrong": "Shakes her head.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ59",
@@ -958,7 +3130,19 @@
     "response_right": "You'd be surprised how rare that is.",
     "response_wrong": "The ledger doesn't lie.",
     "reaction_right": "Ticks a box with relief.",
-    "reaction_wrong": "Circles your name in red."
+    "reaction_wrong": "Circles your name in red.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ60",
@@ -974,7 +3158,19 @@
     "response_right": "Open books keep everyone out of trouble.",
     "response_wrong": "That's how headlines start.",
     "reaction_right": "Adjusts his glasses, satisfied.",
-    "reaction_wrong": "Closes the ledger with a thud."
+    "reaction_wrong": "Closes the ledger with a thud.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ61",
@@ -990,7 +3186,19 @@
     "response_right": "That's a leader's answer.",
     "response_wrong": "Easy to say, hard to do.",
     "reaction_right": "Looks up, pleasantly surprised.",
-    "reaction_wrong": "Sighs and rubs his eyes."
+    "reaction_wrong": "Sighs and rubs his eyes.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ62",
@@ -1006,7 +3214,19 @@
     "response_right": "Early warnings are worth gold.",
     "response_wrong": "Surprises are my least favorite thing.",
     "reaction_right": "Marks a check on her list.",
-    "reaction_wrong": "Frowns and flips a page."
+    "reaction_wrong": "Frowns and flips a page.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ63",
@@ -1022,7 +3242,19 @@
     "response_right": "Thank you. That's all I ask.",
     "response_wrong": "I notice everything.",
     "reaction_right": "Smiles with relief.",
-    "reaction_wrong": "Taps her pen on the desk."
+    "reaction_wrong": "Taps her pen on the desk.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ64",
@@ -1038,7 +3270,19 @@
     "response_right": "Understanding goes further than threats.",
     "response_wrong": "We'll see how that turns out.",
     "reaction_right": "Gives a small, approving nod.",
-    "reaction_wrong": "Looks unimpressed."
+    "reaction_wrong": "Looks unimpressed.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ65",
@@ -1054,7 +3298,19 @@
     "response_right": "That's what the numbers are for.",
     "response_wrong": "You can't argue with a sample.",
     "reaction_right": "Leans in with interest.",
-    "reaction_wrong": "Closes her laptop."
+    "reaction_wrong": "Closes her laptop.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ66",
@@ -1070,7 +3326,19 @@
     "response_right": "Funny, the data agrees.",
     "response_wrong": "Everyone says both.",
     "reaction_right": "Smiles knowingly.",
-    "reaction_wrong": "Shrugs and looks at her chart."
+    "reaction_wrong": "Shrugs and looks at her chart.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ67",
@@ -1086,7 +3354,19 @@
     "response_right": "Good. That's what they're for.",
     "response_wrong": "Louder rarely helps.",
     "reaction_right": "Nods and scrolls her notes.",
-    "reaction_wrong": "Sighs quietly."
+    "reaction_wrong": "Sighs quietly.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ68",
@@ -1102,7 +3382,19 @@
     "response_right": "Good candidates don't usually volunteer.",
     "response_wrong": "We need better than that.",
     "reaction_right": "Writes something down quickly.",
-    "reaction_wrong": "Lowers his pen."
+    "reaction_wrong": "Lowers his pen.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ69",
@@ -1118,7 +3410,19 @@
     "response_right": "That's the pitch I try to make.",
     "response_wrong": "Then no wonder we struggle to recruit.",
     "reaction_right": "Smiles tiredly.",
-    "reaction_wrong": "Shakes his head."
+    "reaction_wrong": "Shakes his head.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ70",
@@ -1134,7 +3438,19 @@
     "response_right": "They need to hear exactly that.",
     "response_wrong": "That would lose them in a heartbeat.",
     "reaction_right": "Gives a warm thumbs up.",
-    "reaction_wrong": "Winces."
+    "reaction_wrong": "Winces.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ71",
@@ -1150,7 +3466,19 @@
     "response_right": "Few ever learn that in time.",
     "response_wrong": "They said that, too.",
     "reaction_right": "Pats your hand.",
-    "reaction_wrong": "Looks out the window."
+    "reaction_wrong": "Looks out the window.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ72",
@@ -1166,7 +3494,19 @@
     "response_right": "Today's opponent may be tomorrow's partner.",
     "response_wrong": "We've seen what that attitude costs.",
     "reaction_right": "Smiles with approval.",
-    "reaction_wrong": "Frowns gently."
+    "reaction_wrong": "Frowns gently.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ73",
@@ -1182,7 +3522,19 @@
     "response_right": "Honesty and willingness. A rare pair.",
     "response_wrong": "Neither flattery nor despair is useful.",
     "reaction_right": "Nods thoughtfully.",
-    "reaction_wrong": "Takes a slow sip of tea."
+    "reaction_wrong": "Takes a slow sip of tea.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ74",
@@ -1198,7 +3550,19 @@
     "response_right": "Then you have the makings of one of us.",
     "response_wrong": "The faction has a long memory.",
     "reaction_right": "Lowers his head in approval.",
-    "reaction_wrong": "Looks at you in silence."
+    "reaction_wrong": "Looks at you in silence.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ75",
@@ -1214,7 +3578,19 @@
     "response_right": "Then you are wiser than you look.",
     "response_wrong": "Forgetting is the beginning of losing.",
     "reaction_right": "Smiles and pours the tea.",
-    "reaction_wrong": "Sets the cup down slowly."
+    "reaction_wrong": "Sets the cup down slowly.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ76",
@@ -1230,7 +3606,19 @@
     "response_right": "A tree grows better with company.",
     "response_wrong": "Cutting things down rarely grows anything.",
     "reaction_right": "Nods slowly.",
-    "reaction_wrong": "Sighs and shakes his head."
+    "reaction_wrong": "Sighs and shakes his head.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ77",
@@ -1246,7 +3634,19 @@
     "response_right": "That's a fair trade, and an honest one.",
     "response_wrong": "That's not how this works.",
     "reaction_right": "Raises his glass.",
-    "reaction_wrong": "Sets it down untouched."
+    "reaction_wrong": "Sets it down untouched.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ78",
@@ -1262,7 +3662,19 @@
     "response_right": "Ten seconds of grace, ten years of goodwill.",
     "response_wrong": "Donors remember a cold shoulder.",
     "reaction_right": "Claps you on the back.",
-    "reaction_wrong": "Checks his phone."
+    "reaction_wrong": "Checks his phone.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ79",
@@ -1278,7 +3690,19 @@
     "response_right": "Short and good is all we ask.",
     "response_wrong": "The room fills when the speaker shows.",
     "reaction_right": "Grins and writes you in.",
-    "reaction_wrong": "Crosses your name off."
+    "reaction_wrong": "Crosses your name off.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ80",
@@ -1294,7 +3718,19 @@
     "response_right": "Doors win elections. Always have.",
     "response_wrong": "Hope isn't a strategy.",
     "reaction_right": "Smiles for the first time.",
-    "reaction_wrong": "Taps her map in frustration."
+    "reaction_wrong": "Taps her map in frustration.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ81",
@@ -1310,7 +3746,19 @@
     "response_right": "Loyal and open. That's rare.",
     "response_wrong": "That won't get you far in either camp.",
     "reaction_right": "Nods, impressed.",
-    "reaction_wrong": "Folds her map shut."
+    "reaction_wrong": "Folds her map shut.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ82",
@@ -1326,7 +3774,19 @@
     "response_right": "Smart. Reckless people end up in the news.",
     "response_wrong": "Fearless and careless are not the same.",
     "reaction_right": "Slides the folder across the table.",
-    "reaction_wrong": "Pulls the folder back."
+    "reaction_wrong": "Pulls the folder back.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ83",
@@ -1342,7 +3802,19 @@
     "response_right": "Then sit. We have a lot to cover.",
     "response_wrong": "Times change. People don't.",
     "reaction_right": "Chuckles warmly.",
-    "reaction_wrong": "Raises one bushy eyebrow."
+    "reaction_wrong": "Raises one bushy eyebrow.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ84",
@@ -1358,7 +3830,19 @@
     "response_right": "Now you're talking like a colleague.",
     "response_wrong": "Suit yourself.",
     "reaction_right": "Slaps the bar happily.",
-    "reaction_wrong": "Turns back to his glass."
+    "reaction_wrong": "Turns back to his glass.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ85",
@@ -1374,7 +3858,19 @@
     "response_right": "That's more than most offer.",
     "response_wrong": "Duty doesn't pick up the phone.",
     "reaction_right": "Smiles and tucks your card away.",
-    "reaction_wrong": "Sighs and shakes his head."
+    "reaction_wrong": "Sighs and shakes his head.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ86",
@@ -1390,7 +3886,19 @@
     "response_right": "Fair enough. Talking costs nothing.",
     "response_wrong": "Then we've wasted each other's time.",
     "reaction_right": "Smiles politely and sits.",
-    "reaction_wrong": "Stands to leave."
+    "reaction_wrong": "Stands to leave.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ87",
@@ -1406,7 +3914,19 @@
     "response_right": "Principles are the one thing we can't buy.",
     "response_wrong": "Then you're easy to read.",
     "reaction_right": "Raises an eyebrow, impressed.",
-    "reaction_wrong": "Smirks and checks her watch."
+    "reaction_wrong": "Smirks and checks her watch.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ88",
@@ -1422,7 +3942,19 @@
     "response_right": "Honest about the line. I respect that.",
     "response_wrong": "No one believes \"never.\" Or \"convenient.\"",
     "reaction_right": "Nods slowly.",
-    "reaction_wrong": "Closes her notebook."
+    "reaction_wrong": "Closes her notebook.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ89",
@@ -1438,7 +3970,19 @@
     "response_right": "Spoken like someone who has been lied to before.",
     "response_wrong": "Truth takes more than one source.",
     "reaction_right": "Tips his cup toward you.",
-    "reaction_wrong": "Looks over his glasses."
+    "reaction_wrong": "Looks over his glasses.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ90",
@@ -1454,7 +3998,19 @@
     "response_right": "Fast and honest is the only formula that works.",
     "response_wrong": "Waiting is how small stories grow.",
     "reaction_right": "Leans back with a satisfied nod.",
-    "reaction_wrong": "Sighs from experience."
+    "reaction_wrong": "Sighs from experience.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ91",
@@ -1470,7 +4026,19 @@
     "response_right": "That's a good start. It takes a lifetime.",
     "response_wrong": "That won't fill many pages.",
     "reaction_right": "Smiles softly.",
-    "reaction_wrong": "Stares into his tea."
+    "reaction_wrong": "Stares into his tea.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ92",
@@ -1486,7 +4054,19 @@
     "response_right": "Friends are the rarest currency here.",
     "response_wrong": "Flattery is cheap. I deal in loyalty.",
     "reaction_right": "Chuckles and pours a drink.",
-    "reaction_wrong": "Gazes at you silently."
+    "reaction_wrong": "Gazes at you silently.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ93",
@@ -1502,7 +4082,19 @@
     "response_right": "Honest neutrality. I can respect that.",
     "response_wrong": "Everyone says \"whoever wins.\"",
     "reaction_right": "Raises his glass slightly.",
-    "reaction_wrong": "Sets it down."
+    "reaction_wrong": "Sets it down.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ94",
@@ -1518,7 +4110,19 @@
     "response_right": "Without burnt hands you may go far.",
     "response_wrong": "Gloves don't keep a reputation.",
     "reaction_right": "Smiles slowly.",
-    "reaction_wrong": "Looks away with a shrug."
+    "reaction_wrong": "Looks away with a shrug.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ95",
@@ -1534,7 +4138,19 @@
     "response_right": "A closed road. That would save a whole season.",
     "response_wrong": "Everyone says the birds will move.",
     "reaction_right": "Marks the map with a green pin.",
-    "reaction_wrong": "Closes the notebook."
+    "reaction_wrong": "Closes the notebook.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ96",
@@ -1550,7 +4166,19 @@
     "response_right": "Finally, someone counting heads.",
     "response_wrong": "Slogans do not carry radios.",
     "reaction_right": "Nods and unfolds a rota.",
-    "reaction_wrong": "Sighs at the sky."
+    "reaction_wrong": "Sighs at the sky.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ97",
@@ -1566,7 +4194,19 @@
     "response_right": "An hour would save lives. I will hold you to it.",
     "response_wrong": "Ninety minutes is a death sentence for some.",
     "reaction_right": "Straightens his bag.",
-    "reaction_wrong": "Looks out the window."
+    "reaction_wrong": "Looks out the window.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ98",
@@ -1582,7 +4222,19 @@
     "response_right": "That might keep one or two of them.",
     "response_wrong": "Duty does not pay rent.",
     "reaction_right": "Takes notes on a prescription pad.",
-    "reaction_wrong": "Pockets the pen."
+    "reaction_wrong": "Pockets the pen.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ99",
@@ -1598,7 +4250,19 @@
     "response_right": "Public audits are the minimum. Good.",
     "response_wrong": "That is what every vendor says.",
     "reaction_right": "Opens her laptop and starts a list.",
-    "reaction_wrong": "Closes the lid."
+    "reaction_wrong": "Closes the lid.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ100",
@@ -1614,7 +4278,19 @@
     "response_right": "An access log. That is real accountability.",
     "response_wrong": "I cannot audit a promise.",
     "reaction_right": "Exhales slowly.",
-    "reaction_wrong": "Shakes her head."
+    "reaction_wrong": "Shakes her head.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ101",
@@ -1630,7 +4306,19 @@
     "response_right": "A law makes it stick. Thank you.",
     "response_wrong": "Ignoring calls has not worked yet.",
     "reaction_right": "Straightens her script.",
-    "reaction_wrong": "Puts down her pen."
+    "reaction_wrong": "Puts down her pen.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ102",
@@ -1646,7 +4334,19 @@
     "response_right": "A guarantee. We can plan on that.",
     "response_wrong": "Ratings never covered a village.",
     "reaction_right": "Smiles for the first time.",
-    "reaction_wrong": "Looks at the clock."
+    "reaction_wrong": "Looks at the clock.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ103",
@@ -1662,7 +4362,19 @@
     "response_right": "A threshold that protects small givers. Sensible.",
     "response_wrong": "Naming everyone ends small giving.",
     "reaction_right": "Taps the ledger.",
-    "reaction_wrong": "Shuts the ledger."
+    "reaction_wrong": "Shuts the ledger.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ104",
@@ -1678,7 +4390,19 @@
     "response_right": "Simple forms. That I can live with.",
     "response_wrong": "Forty pages is its own penalty.",
     "reaction_right": "Stacks his forms neatly.",
-    "reaction_wrong": "Sighs loudly."
+    "reaction_wrong": "Sighs loudly.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ105",
@@ -1694,7 +4418,19 @@
     "response_right": "Strings I can work with.",
     "response_wrong": "Free money is rarely spent well.",
     "reaction_right": "Rolls up his sleeves.",
-    "reaction_wrong": "Folds his arms."
+    "reaction_wrong": "Folds his arms.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ106",
@@ -1710,7 +4446,19 @@
     "response_right": "Both sides of the ledger. That is rare.",
     "response_wrong": "Fairness is the whole point.",
     "reaction_right": "Adjusts his glasses.",
-    "reaction_wrong": "Turns away."
+    "reaction_wrong": "Turns away.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ107",
@@ -1726,7 +4474,19 @@
     "response_right": "A rebate and a plan. I can work with that.",
     "response_wrong": "Switching off kills the crop.",
     "reaction_right": "Puts down a tray of seedlings.",
-    "reaction_wrong": "Brushes soil from her hands."
+    "reaction_wrong": "Brushes soil from her hands.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ108",
@@ -1742,7 +4502,19 @@
     "response_right": "Returned to households. I like that.",
     "response_wrong": "Nobody can say is no answer.",
     "reaction_right": "Looks at the sky.",
-    "reaction_wrong": "Frowns at the soil."
+    "reaction_wrong": "Frowns at the soil.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ109",
@@ -1758,7 +4530,19 @@
     "response_right": "A cap. That keeps family boats afloat.",
     "response_wrong": "The market has no memory.",
     "reaction_right": "Tugs his cap.",
-    "reaction_wrong": "Spits on the pier."
+    "reaction_wrong": "Spits on the pier.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ110",
@@ -1774,7 +4558,19 @@
     "response_right": "Yours unless a court says so. Fair.",
     "response_wrong": "I would not trust it.",
     "reaction_right": "Relaxes a little.",
-    "reaction_wrong": "Coils a rope hard."
+    "reaction_wrong": "Coils a rope hard.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ111",
@@ -1790,7 +4586,19 @@
     "response_right": "Orders and training. That is a future.",
     "response_wrong": "We will see is not a future.",
     "reaction_right": "Lifts his mask.",
-    "reaction_wrong": "Pulls his mask down."
+    "reaction_wrong": "Pulls his mask down.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ112",
@@ -1806,7 +4614,19 @@
     "response_right": "Keeping the coast safe. I can say that proudly.",
     "response_wrong": "It is not just a job to us.",
     "reaction_right": "Wipes his hands.",
-    "reaction_wrong": "Stares at the dock."
+    "reaction_wrong": "Stares at the dock.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ113",
@@ -1822,7 +4642,19 @@
     "response_right": "Open selection. That is the heart of it.",
     "response_wrong": "It matters more than anything.",
     "reaction_right": "Clasps his hands.",
-    "reaction_wrong": "Shakes his head slowly."
+    "reaction_wrong": "Shakes his head slowly.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ114",
@@ -1838,7 +4670,19 @@
     "response_right": "That is a worthy line to hold.",
     "response_wrong": "A constitution needs a floor.",
     "reaction_right": "Leans forward with interest.",
-    "reaction_wrong": "Leans back."
+    "reaction_wrong": "Leans back.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ115",
@@ -1854,7 +4698,19 @@
     "response_right": "Halving it without cutting checks. That works.",
     "response_wrong": "Skipping inspections is a smuggler's wish.",
     "reaction_right": "Straightens her badge.",
-    "reaction_wrong": "Rubs her eyes."
+    "reaction_wrong": "Rubs her eyes.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ116",
@@ -1870,7 +4726,19 @@
     "response_right": "Cargo only. That is clear.",
     "response_wrong": "Everything is too much.",
     "reaction_right": "Closes the file.",
-    "reaction_wrong": "Lowers her voice."
+    "reaction_wrong": "Lowers her voice.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ117",
@@ -1886,7 +4754,19 @@
     "response_right": "A voice and a share. That has to be written down.",
     "response_wrong": "The islands belong to those who live there.",
     "reaction_right": "Rests on his cane.",
-    "reaction_wrong": "Stares across the water."
+    "reaction_wrong": "Stares across the water.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ118",
@@ -1902,7 +4782,19 @@
     "response_right": "In public and in writing. Good.",
     "response_wrong": "Do not worry is not a plan.",
     "reaction_right": "Nods slowly.",
-    "reaction_wrong": "Looks toward the horizon."
+    "reaction_wrong": "Looks toward the horizon.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ119",
@@ -1918,7 +4810,19 @@
     "response_right": "Published and with notice. I can plan on that.",
     "response_wrong": "I cannot sign contracts on a coin toss.",
     "reaction_right": "Checks his planner.",
-    "reaction_wrong": "Taps his phone."
+    "reaction_wrong": "Taps his phone.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ120",
@@ -1934,7 +4838,19 @@
     "response_right": "Support is a fair price for open markets.",
     "response_wrong": "Switch crops is easier said than done.",
     "reaction_right": "Pauses to think.",
-    "reaction_wrong": "Looks uncomfortable."
+    "reaction_wrong": "Looks uncomfortable.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ121",
@@ -1950,7 +4866,19 @@
     "response_right": "A grant would let me stay. Thank you.",
     "response_wrong": "A loan is how farms vanish.",
     "reaction_right": "Straightens her boots.",
-    "reaction_wrong": "Looks at the fields."
+    "reaction_wrong": "Looks at the fields.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ122",
@@ -1966,7 +4894,19 @@
     "response_right": "A mentor. That is exactly what I need.",
     "response_wrong": "Videos do not know our soil.",
     "reaction_right": "Brightens.",
-    "reaction_wrong": "Kicks at the dirt."
+    "reaction_wrong": "Kicks at the dirt.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ123",
@@ -1982,7 +4922,19 @@
     "response_right": "Multi-year. That changes what we can attempt.",
     "response_wrong": "One year is a flash in the pan.",
     "reaction_right": "Clips a badge to her coat.",
-    "reaction_wrong": "Sighs at her papers."
+    "reaction_wrong": "Sighs at her papers.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ124",
@@ -1998,7 +4950,19 @@
     "response_right": "Labs and firms together. That might hold them.",
     "response_wrong": "They leave because we let them.",
     "reaction_right": "Smiles faintly.",
-    "reaction_wrong": "Looks at the floor."
+    "reaction_wrong": "Looks at the floor.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ125",
@@ -2014,7 +4978,19 @@
     "response_right": "Audits with penalties. About time.",
     "response_wrong": "Being nice has not worked.",
     "reaction_right": "Pulls out a folded payslip.",
-    "reaction_wrong": "Puts the payslip away."
+    "reaction_wrong": "Puts the payslip away.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ126",
@@ -2030,7 +5006,19 @@
     "response_right": "Rules and help. That is fair to everyone.",
     "response_wrong": "Closing shops helps nobody.",
     "reaction_right": "Relaxes her shoulders.",
-    "reaction_wrong": "Crosses her arms."
+    "reaction_wrong": "Crosses her arms.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ127",
@@ -2046,7 +5034,19 @@
     "response_right": "Fines for retaliation. That gives me courage.",
     "response_wrong": "Quietly is how it always goes wrong.",
     "reaction_right": "Rocks a stroller.",
-    "reaction_wrong": "Hugs the baby close."
+    "reaction_wrong": "Hugs the baby close.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ128",
@@ -2062,7 +5062,19 @@
     "response_right": "New places where they are needed. Thank you.",
     "response_wrong": "I cannot wait two years.",
     "reaction_right": "Smiles tiredly.",
-    "reaction_wrong": "Stares at the stroller."
+    "reaction_wrong": "Stares at the stroller.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ129",
@@ -2078,7 +5090,19 @@
     "response_right": "Targeted cameras with limits. That I can explain to passengers.",
     "response_wrong": "Cameras everywhere frightens people.",
     "reaction_right": "Adjusts his cap.",
-    "reaction_wrong": "Looks down the platform."
+    "reaction_wrong": "Looks down the platform.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ130",
@@ -2094,7 +5118,19 @@
     "response_right": "Deleted and audited. I can say that.",
     "response_wrong": "Nothing to hide is not an answer.",
     "reaction_right": "Nods once.",
-    "reaction_wrong": "Checks his watch."
+    "reaction_wrong": "Checks his watch.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ131",
@@ -2110,7 +5146,19 @@
     "response_right": "A local desk. That is how people will trust it.",
     "response_wrong": "Press one never helped an old woman.",
     "reaction_right": "Folds her hands.",
-    "reaction_wrong": "Sighs quietly."
+    "reaction_wrong": "Sighs quietly.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ132",
@@ -2126,7 +5174,19 @@
     "response_right": "In the terms. Then it is safe.",
     "response_wrong": "Combining them would erase ours.",
     "reaction_right": "Brightens.",
-    "reaction_wrong": "Looks away."
+    "reaction_wrong": "Looks away.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ133",
@@ -2142,7 +5202,19 @@
     "response_right": "One member, one vote. That is the idea.",
     "response_wrong": "Headquarters never asked us before.",
     "reaction_right": "Straightens a stack of ballots.",
-    "reaction_wrong": "Sets the ballots down."
+    "reaction_wrong": "Sets the ballots down.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   },
   {
     "question_id": "VQ134",
@@ -2158,6 +5230,18 @@
     "response_right": "Checks and a waiting period. Reasonable.",
     "response_wrong": "Trusting everyone invites trouble.",
     "reaction_right": "Ticks a box.",
-    "reaction_wrong": "Raises an eyebrow."
+    "reaction_wrong": "Raises an eyebrow.",
+    "effects_a": null,
+    "effects_b": null,
+    "effects_c": null,
+    "effects_d": null,
+    "response_a": null,
+    "response_b": null,
+    "response_c": null,
+    "response_d": null,
+    "reaction_a": null,
+    "reaction_b": null,
+    "reaction_c": null,
+    "reaction_d": null
   }
 ]

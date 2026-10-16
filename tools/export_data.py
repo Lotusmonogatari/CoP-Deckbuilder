@@ -1235,7 +1235,31 @@ SHEETS = {
             ("Response - Wrong", "response_wrong", "str"),
             ("Reaction - Right", "reaction_right", "str"),
             ("Reaction - Wrong", "reaction_wrong", "str"),
+            # Dilemma questions (2026-10-16): each choice carries its OWN
+            # effects (a target_delta_list: organizations, Sanban variables,
+            # items), spoken response and stage-direction reaction, so no
+            # choice is "right". All twelve are optional; a choice with a
+            # blank Effects cell falls back to the visitor's Reward/Penalty
+            # by Correct Choice, and a blank Response/Reaction to the
+            # Right/Wrong lines above.
+            ("Effects A", "effects_a", "target_delta_list"),
+            ("Effects B", "effects_b", "target_delta_list"),
+            ("Effects C", "effects_c", "target_delta_list"),
+            ("Effects D", "effects_d", "target_delta_list"),
+            ("Response A", "response_a", "str"),
+            ("Response B", "response_b", "str"),
+            ("Response C", "response_c", "str"),
+            ("Response D", "response_d", "str"),
+            ("Reaction A", "reaction_a", "str"),
+            ("Reaction B", "reaction_b", "str"),
+            ("Reaction C", "reaction_c", "str"),
+            ("Reaction D", "reaction_d", "str"),
         ],
+        "optional": ["Correct Choice", "Response - Right", "Response - Wrong",
+                     "Reaction - Right", "Reaction - Wrong",
+                     "Effects A", "Effects B", "Effects C", "Effects D",
+                     "Response A", "Response B", "Response C", "Response D",
+                     "Reaction A", "Reaction B", "Reaction C", "Reaction D"],
     },
     # "Fed by" and the Critical tier are gone from this tab — the 4 Sanban
     # variables now carry only one consequence threshold on each side.

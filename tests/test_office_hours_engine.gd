@@ -170,3 +170,72 @@ func test_outcome_mid_run_only_covers_visitors_actually_answered() -> void:
 	var outcome := engine.outcome()
 	assert_eq(outcome["visited"], 1)
 	assert_eq(outcome["correct"], 1)
+
+
+# ---------------------------------------------------------------------------
+# Dilemma questions (2026-10-16): every choice carries its own effects
+# ---------------------------------------------------------------------------
+
+func _dilemma_visitor() -> Dictionary:
+	var visitor := _visitor("VI01", "A", [{"target": "BO01", "delta": 9}], [{"target": "BO01", "delta": -9}])
+	var question: Dictionary = visitor["question"]
+	question["effects_a"] = [{"target": "BO06", "delta": 3}, {"target": "BO04", "delta": -1}]
+	question["effects_b"] = [{"target": "BO04", "delta": 2}, {"target": "BO06", "delta": -2}]
+	question["effects_c"] = [{"target": "BO23", "delta": -3}]
+	question["response_b"] = "Their own reply."
+	question["reaction_b"] = "Their own reaction."
+	return visitor
+
+
+func test_a_dilemma_choice_applies_its_own_effects_not_the_visitors() -> void:
+	var engine := OfficeHoursEngine.new()
+	engine.setup({"visitors": [_dilemma_visitor()]})
+	var result := engine.answer("B")
+	assert_eq(result["effects"], [{"target": "BO04", "delta": 2}, {"target": "BO06", "delta": -2}])
+	assert_eq(result["response_text"], "Their own reply.")
+	assert_eq(result["reaction"], "Their own reaction.")
+
+
+func test_a_dilemma_choice_that_nets_below_zero_is_not_a_win() -> void:
+	var engine := OfficeHoursEngine.new()
+	engine.setup({"visitors": [_dilemma_visitor()]})
+	assert_true(engine.answer("A")["correct"], "+3 -1 is a net gain")
+	engine.advance()
+	var again := OfficeHoursEngine.new()
+	again.setup({"visitors": [_dilemma_visitor()]})
+	assert_false(again.answer("C")["correct"], "-3 is a net setback")
+
+
+func test_a_choice_without_its_own_effects_falls_back_to_the_old_reward_or_penalty() -> void:
+	var engine := OfficeHoursEngine.new()
+	engine.setup({"visitors": [_dilemma_visitor()]})
+	var result := engine.answer("D")
+	assert_eq(result["effects"], [{"target": "BO01", "delta": -9}], "D has no effects of its own: the penalty")
+
+
+func test_outcome_collects_every_choices_effects() -> void:
+	var engine := OfficeHoursEngine.new()
+	engine.setup({"visitors": [_dilemma_visitor(), _dilemma_visitor()]})
+	engine.answer("A")
+	engine.advance()
+	engine.answer("C")
+	engine.advance()
+	var outcome := engine.outcome()
+	assert_eq(outcome["effects"].size(), 3)
+	assert_eq(outcome["correct"], 1)
+
+
+func test_every_real_dilemma_question_gives_all_four_choices_effects() -> void:
+	for question: Dictionary in DataDB.visitor_questions:
+		var any_effects := false
+		for letter in ["a", "b", "c", "d"]:
+			var own: Variant = question.get("effects_%s" % letter)
+			any_effects = any_effects or (own is Array and not (own as Array).is_empty())
+		if not any_effects:
+			continue
+		for letter in ["a", "b", "c", "d"]:
+			var own: Variant = question.get("effects_%s" % letter)
+			assert_true(own is Array and not (own as Array).is_empty(),
+				"%s choice %s has no effects" % [question["question_id"], letter])
+			assert_false(str(question.get("response_%s" % letter, "")).strip_edges().is_empty(),
+				"%s choice %s has no response" % [question["question_id"], letter])

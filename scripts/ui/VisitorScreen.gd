@@ -191,7 +191,9 @@ func _on_choice(letter: String) -> void:
 	# effect lands the instant it is played rather than at end of turn.
 	var entries: Array = result.get("reward", []) if correct else result.get("penalty", [])
 	if not entries.is_empty():
-		GameState.apply_visitor_reward_entries(entries)
+		var changes := GameState.apply_visitor_reward_entries(entries)
+		if not changes.is_empty():
+			_messages.say(Text.say("office_hours.effects", {"changes": changes}))
 
 
 func _on_continue() -> void:
@@ -207,8 +209,7 @@ func _on_continue() -> void:
 func _show_outcome() -> void:
 	var outcome := engine.outcome()
 	_outcome_title.text = Text.say("office_hours.done")
-	_outcome_body.text = Text.say("office_hours.summary",
-		{"correct": outcome.get("correct", 0), "visited": outcome.get("visited", 0)})
+	_outcome_body.text = Text.say("office_hours.summary", {"visited": outcome.get("visited", 0)})
 
 	# Same three-way label OutcomePresenter's own button uses — reused
 	# directly rather than re-worked out here, since "which stage is last"
