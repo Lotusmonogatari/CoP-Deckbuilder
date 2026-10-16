@@ -133,6 +133,11 @@ var displeased_boosters: Array[String] = []
 ## GameState applies at the end of the stage, never a carried buff.
 var opposed_boosters: Array[String] = []
 
+## Every answer counted per organisation (2026-10-16, Cameron): {booster_id:
+## {pleased, displeased, opposed}}. The three lists above stay deduplicated
+## (icons, carried buffs); this is what the standing arithmetic reads.
+var booster_tally: Dictionary = {}
+
 ## The organisations whose own member was argued all the way down to zero
 ## support this stage — an instant win short of the threshold (2026-09-29,
 ## Cameron). Deduplicated the same way displeased_boosters is (a committee

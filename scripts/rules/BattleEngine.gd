@@ -1210,12 +1210,14 @@ func _answer_question(card: Dictionary) -> Dictionary:
 			# numbers are also boosted this round — see
 			# question_multiplier_for().
 			for booster: String in (question.get("pleases_boosters", []) as Array):
+				_tally_answer(booster, "pleased")
 				if not state.pleased_boosters.has(booster):
 					state.pleased_boosters.append(booster)
 			# 2026-10-10, Cameron: some themes also work AGAINST other
 			# organisations when answered well (the Question Themes tab's
 			# optional "Annoys" column).
 			for booster: String in (question.get("displeases_boosters", []) as Array):
+				_tally_answer(booster, "opposed")
 				if not state.opposed_boosters.has(booster):
 					state.opposed_boosters.append(booster)
 		"W":
@@ -1225,12 +1227,26 @@ func _answer_question(card: Dictionary) -> Dictionary:
 			# a strong answer would have pleased. state.weak_answers still
 			# counts every weak answer given, as a standing lifetime tally.
 			for booster: String in (question.get("pleases_boosters", []) as Array):
+				_tally_answer(booster, "displeased")
 				if not state.displeased_boosters.has(booster):
 					state.displeased_boosters.append(booster)
 			state.weak_answers += 1
 
 	state.question_index += 1
 	return {"grade": grade}
+
+
+## Counts one answer toward an organisation's standing change this stage.
+func _tally_answer(booster_id: String, kind: String) -> void:
+	var row: Dictionary = state.booster_tally.get(booster_id,
+		{"pleased": 0, "displeased": 0, "opposed": 0})
+	row[kind] = int(row[kind]) + 1
+	state.booster_tally[booster_id] = row
+
+
+## Every answer counted per organisation (BoosterStanding reads this).
+func booster_tally() -> Dictionary:
+	return state.booster_tally
 
 
 ## How well this card's suit answers this question: "S", "M" or "W".

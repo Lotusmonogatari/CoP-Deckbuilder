@@ -367,6 +367,29 @@ func _announce_question() -> void:
 		Text.say("battle.question_prompt", {"question": str(question.get("text", ""))}))
 
 
+## Who the drawn question is about, live in the Details panel (2026-10-16,
+## Cameron: replaces the old "this question invites an answer" line): the
+## organizations a strong answer pleases and a weak one annoys, and any a
+## strong answer sets back. Empty when the question names nobody.
+func _question_concerns_lines(question: Dictionary) -> Array[String]:
+	var lines: Array[String] = []
+	var pleased := _booster_names_for(question.get("pleases_boosters", []))
+	if not pleased.is_empty():
+		lines.append(Text.say("battle.question_concerns", {"names": pleased}))
+		lines.append(Text.say("battle.question_stakes"))
+	var opposed := _booster_names_for(question.get("displeases_boosters", []))
+	if not opposed.is_empty():
+		lines.append(Text.say("battle.question_sets_back", {"names": opposed}))
+	return lines
+
+
+func _booster_names_for(ids: Array) -> String:
+	var named: Array[String] = []
+	for booster_id: String in ids:
+		named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
+	return ", ".join(named)
+
+
 ## What just happened, in a question-asking room only: the opponent's own
 ## narration, a bout finishing, or the player's own pass/decline penalty —
 ## everything that used to compete with the question/cue for the CueBanner,
@@ -515,8 +538,7 @@ func _refresh_details(state: BattleState) -> void:
 		after.append("")
 		var question_now := engine.current_question()
 		if not question_now.is_empty():
-			after.append(Text.say("battle.question_invites",
-				{"suit": question_now.get("prefers_suit", "any")}))
+			after.append_array(_question_concerns_lines(question_now))
 		var pleased := engine.pleased_boosters()
 		if pleased.is_empty():
 			after.append(Text.say("battle.nobody_pleased"))
@@ -913,7 +935,8 @@ func _on_outcome_closed() -> void:
 	var level_over := GameState.finish_stage(
 		state.outcome, state.player_score(), engine.pleased_boosters(),
 		gaffe_caused_loss, state.gaffe, engine.displeased_boosters(),
-		engine.crushed_opponent_boosters(), engine.opposed_boosters())
+		engine.crushed_opponent_boosters(), engine.opposed_boosters(),
+		engine.booster_tally())
 
 	if level_over:
 		GameState.end_level()

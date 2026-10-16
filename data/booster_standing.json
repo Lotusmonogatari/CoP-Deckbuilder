@@ -56,17 +56,38 @@
     "2026-10-10, Cameron: a Question Themes row can also name organisations a",
     "STRONG answer sets back (the optional Annoys column -> a question's",
     "displeases_boosters). They lose 'per_opposed' each, netted with any please",
-    "or displease the same stage and held by 'question_swing_cap'."
+    "or displease the same stage and held by 'question_swing_cap'.",
+    "",
+    "2026-10-16, Cameron: standing is meant to be hard to hold. (1) EVERY answer",
+    "counts, not just the first of a stage (BattleState.booster_tally): a weak",
+    "answer now costs 'per_displease' (3) each time, and the stage's cap",
+    "'question_swing_cap' is 10 either way. (2) 'gain_bands'/'loss_bands' (ordered",
+    "{below, factor} steps, the last with no 'below') shrink gains and grow",
+    "penalties as standing rises: gains x1.0 below 40, x0.6 below 60, x0.4 above;",
+    "penalties x1.0 below 60, x1.5 above (BoosterStanding.net_for()). (3)",
+    "'neglect_decay': at the end of each level, every organisation whose standing",
+    "did not move this level drifts this many points toward its own starting",
+    "standing (0 turns it off)."
   ],
 
   "start": 30,
   "min": 0,
   "max": 100,
   "per_please": 5,
-  "per_displease": 1,
+  "per_displease": 3,
   "per_opposed": 3,
-  "question_swing_cap": 5,
+  "question_swing_cap": 10,
   "instant_win_penalty": 2,
+  "neglect_decay": 1,
+  "gain_bands": [
+    {"below": 40, "factor": 1.0},
+    {"below": 60, "factor": 0.6},
+    {"factor": 0.4}
+  ],
+  "loss_bands": [
+    {"below": 60, "factor": 1.0},
+    {"factor": 1.5}
+  ],
 
   "required_standing": 60,
   "required_standing_by_modifier": {}

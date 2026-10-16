@@ -741,6 +741,29 @@ func reset_booster_standing() -> void:
 		booster_standing[str(booster.get("booster_id"))] = start if own_start == null else int(own_start)
 
 
+## Neglect (2026-10-16, Cameron): at the end of a level, every organisation
+## whose standing did not move at all this level (last_booster_change, which
+## covers answers, visitors, items and laws alike) drifts `neglect_decay`
+## points toward its own starting standing. Standing has to be maintained.
+func _apply_neglect_decay() -> void:
+	var step := int(DataDB.booster_standing.get("neglect_decay", 0))
+	if step <= 0:
+		return
+	var default_start := int(DataDB.booster_standing.get("start", 30))
+	var touched := last_booster_change.keys()
+	var starts := {}
+	for booster: Dictionary in DataDB.boosters:
+		var own_start: Variant = booster.get("starting_standing")
+		starts[str(booster.get("booster_id"))] = default_start if own_start == null else int(own_start)
+	for booster_id: String in booster_standing.keys():
+		if touched.has(booster_id):
+			continue
+		var now := int(booster_standing[booster_id])
+		var target := BoosterStanding.decayed(now, int(starts.get(booster_id, default_start)), step)
+		if target != now:
+			_apply_booster_delta(booster_id, target - now)
+
+
 ## The five parties the player isn't in, back to where party_standing.json
 ## starts them. The player's own party is never in here — see
 ## party_favorability()'s own comment.
@@ -840,7 +863,7 @@ func is_in_level() -> bool:
 func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		gaffe_caused_loss: bool = false, gaffes: int = 0,
 		displeased_boosters: Array = [], crushed_boosters: Array = [],
-		opposed_boosters: Array = []) -> bool:
+		opposed_boosters: Array = [], booster_tally: Dictionary = {}) -> bool:
 	mid_stage = false
 	if level_runner == null:
 		return true
@@ -852,7 +875,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.
 	_apply_stage_rewards(stage, outcome, score)
-	_apply_question_boosters(boosters, displeased_boosters, opposed_boosters)
+	_apply_question_boosters(boosters, displeased_boosters, opposed_boosters, booster_tally)
 	_apply_instant_win_penalties(crushed_boosters)
 
 	level_runner.finish_stage(outcome, score, boosters)
@@ -883,6 +906,10 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		# The level has concluded, success or failure: each Supplies item's
 		# Purchase Limit starts counting again, and level buffs run out.
 		_conclude_level_items()
+
+		# Organisations nobody dealt with this level drift back toward where
+		# they started (booster_standing.json `neglect_decay`).
+		_apply_neglect_decay()
 
 		# Laws with an "each level" effect pay out at the end of every level
 		# after the one that passed them, win or loss (Law Effects tab).
@@ -1276,35 +1303,14 @@ func _record_meta_change(applied: Dictionary) -> void:
 ## stage's question-answering can move any one organisation, whatever the
 ## please/displease amounts happen to be tuned to.
 func _apply_question_boosters(pleased: Array, displeased: Array,
-		opposed: Array = []) -> void:
-	if pleased.is_empty() and displeased.is_empty() and opposed.is_empty():
+		opposed: Array = [], tally: Dictionary = {}) -> void:
+	if pleased.is_empty() and displeased.is_empty() and opposed.is_empty() and tally.is_empty():
 		return
-
-	var please_step := int(DataDB.booster_standing.get("per_please", 5))
-	var displease_step := int(DataDB.booster_standing.get("per_displease", 1))
-	var oppose_step := int(DataDB.booster_standing.get("per_opposed", 3))
-	var cap := int(DataDB.booster_standing.get("question_swing_cap", 5))
-
-	var touched: Array[String] = []
-	for booster_id: String in pleased:
-		if not touched.has(booster_id):
-			touched.append(booster_id)
-	for booster_id: String in displeased:
-		if not touched.has(booster_id):
-			touched.append(booster_id)
-	for booster_id: String in opposed:
-		if not touched.has(booster_id):
-			touched.append(booster_id)
-
-	for booster_id: String in touched:
-		var net := 0
-		if pleased.has(booster_id):
-			net += please_step
-		if displeased.has(booster_id):
-			net -= displease_step
-		if opposed.has(booster_id):
-			net -= oppose_step
-		_apply_booster_delta(booster_id, clampi(net, -cap, cap))
+	# One shared piece of arithmetic (BoosterStanding) with the outcome panel,
+	# read against where each organisation stands right now.
+	for entry: Dictionary in BoosterChange.compute(pleased, displeased, [],
+			DataDB.booster_standing, opposed, tally, booster_standing):
+		_apply_booster_delta(str(entry["booster_id"]), int(entry["net"]))
 
 
 ## An opponent argued all the way down to zero support (§7.2's instant-win
