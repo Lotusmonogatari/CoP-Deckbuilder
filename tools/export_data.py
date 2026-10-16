@@ -648,7 +648,7 @@ SHEETS = {
             ("% Press", "pct_press", "pct"),
             ("% Party Members", "pct_party_members", "pct"),
             ("% Constituents", "pct_constituents", "pct"),
-            ("% Donors", "pct_donors", "pct"),
+            ("% Boosters", "pct_boosters", "pct"),
             ("% Bureaucrats", "pct_bureaucrats", "pct"),
             ("% Other", "pct_other", "pct"),
             ("Segment check", "segment_check", "num"),

@@ -202,7 +202,7 @@ func _what_it_was_worth(stage: Dictionary, score: int, side: String = "win") -> 
 	for name: String in moved.keys():
 		if int(moved[name]) != 0:
 			changes.append(Text.say("reward.delta",
-				{"name": name, "amount": "%+d" % int(moved[name])}))
+				{"name": name, "amount": Phrase.meta_amount(name, int(moved[name]), true)}))
 
 	var xp := MetaRules.stage_delta(stage, side + "_delta_xp")
 	if xp > 0:

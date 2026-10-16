@@ -105,7 +105,7 @@ func test_standing_short_of_the_threshold_refuses() -> void:
 
 func test_funds_short_says_how_short() -> void:
 	assert_eq(Ledger.modifier_refusal(
-		_modifier(), [], {"Funds": 12}, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "8 short.")
+		_modifier(), [], {"Funds": 12}, {"BO03": 99}, SETTINGS, BOOSTERS, _words()), "8円 short.")
 
 
 func test_a_reputation_cost_is_checked_too() -> void:
@@ -241,7 +241,7 @@ func test_a_vacant_role_can_be_hired_if_affordable() -> void:
 
 
 func test_hiring_says_how_many_yen_short() -> void:
-	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 40000, 2, _words()), "10,000 short.")
+	assert_eq(Ledger.staff_hire_refusal(_candidate(), {}, false, 40000, 2, _words()), "10,000円 short.")
 
 
 func test_a_filled_role_cannot_be_hired_into_again() -> void:
@@ -292,7 +292,7 @@ func test_a_candidate_who_starts_above_tier_zero_has_no_0_to_1_step() -> void:
 
 
 func test_an_upgrade_you_cannot_afford_says_how_short_you_are() -> void:
-	assert_eq(Ledger.staff_upgrade_refusal(_candidate(), 0, 10000, _words()), "20,000 short.")
+	assert_eq(Ledger.staff_upgrade_refusal(_candidate(), 0, 10000, _words()), "20,000円 short.")
 
 
 func test_an_affordable_upgrade_is_allowed() -> void:
@@ -317,4 +317,4 @@ func test_an_affordable_firing_is_allowed() -> void:
 
 func test_firing_says_how_many_yen_short() -> void:
 	var candidate := _candidate({"firing_cost_yen": 5000})
-	assert_eq(Ledger.staff_fire_refusal(candidate, 1000, _words()), "4,000 short.")
+	assert_eq(Ledger.staff_fire_refusal(candidate, 1000, _words()), "4,000円 short.")

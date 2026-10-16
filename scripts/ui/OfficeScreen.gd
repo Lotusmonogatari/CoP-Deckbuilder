@@ -644,7 +644,7 @@ func _starting_stat_lines(protagonist: Dictionary) -> Array[String]:
 	var meta := BattleSetup.starting_meta_for(protagonist)
 	for variable: Dictionary in DataDB.sanban:
 		var name := str(variable.get("name_en", ""))
-		lines.append(Text.say("new_game.stat_line", {"name": name, "value": Phrase.with_separators(int(meta.get(name, 0)))}))
+		lines.append(Text.say("new_game.stat_line", {"name": name, "value": Phrase.meta_amount(name, int(meta.get(name, 0)))}))
 	lines.append(Text.say("new_game.stat_line",
 		{"name": "XP", "value": BattleSetup.starting_xp_for(protagonist)}))
 	return lines
@@ -853,7 +853,7 @@ func _show_record() -> void:
 		var is_party := name == "Party support"
 		var shown: Variant = (GameState.party_support_effective()
 			if is_party else GameState.meta.get(name, 0))
-		var line := Text.say("new_game.stat_line", {"name": name, "value": Phrase.with_separators(int(shown))})
+		var line := Text.say("new_game.stat_line", {"name": name, "value": Phrase.meta_amount(name, int(shown))})
 		# What moved this level, the same "(+N)" treatment Important
 		# Stakeholders already gives a booster's own recent change.
 		var change := (GameState.party_support_change_this_level()
@@ -993,7 +993,7 @@ func _law_effect_lines(bill_id: String, passed: bool, timing: String) -> Array[S
 
 
 func _effect_line(name: String, delta: int) -> String:
-	var shown := ("+" if delta > 0 else "-") + Phrase.with_separators(absi(delta))
+	var shown := Phrase.meta_amount(name, delta, true)
 	return Text.say("record.effect_line", {"name": name, "delta": shown})
 
 
@@ -1117,7 +1117,7 @@ func _summary_label(summary: Dictionary) -> String:
 		"level": level,
 		"items": Text.say("office.backup_items", {"count": int(summary.get("items", 0))}),
 		"xp": int(summary.get("xp", 0)),
-		"funds": Phrase.with_separators(int(summary.get("funds", 0)))})
+		"funds": Phrase.meta_amount("Funds", int(summary.get("funds", 0)))})
 
 
 ## The run being played right now, summarised the same way.
@@ -1684,7 +1684,8 @@ func _cost_line(modifier: Dictionary) -> String:
 	for name: String in costs.keys():
 		var cost: int = costs[name]
 		if cost > 0:
-			parts.append("%s %s" % [Phrase.with_separators(cost), name])
+			parts.append("%s %s" % [name, Phrase.meta_amount(name, cost)] if name == "Funds"
+				else "%s %s" % [Phrase.with_separators(cost), name])
 	return ", ".join(parts) if not parts.is_empty() else Text.say("shop.item_free")
 
 
@@ -2027,7 +2028,7 @@ func _show_briefing() -> void:
 			for name: String in LevelRunner.win_rewards(stage).keys():
 				rows.append(UiKit.line(Text.say("reward.delta", {
 					"name": name,
-					"amount": "%+d" % int(LevelRunner.win_rewards(stage)[name]),
+					"amount": Phrase.meta_amount(name, int(LevelRunner.win_rewards(stage)[name]), true),
 				})))
 			var xp := MetaRules.stage_delta(stage, "win_delta_xp")
 			if xp > 0:
@@ -2057,7 +2058,7 @@ func _loss_line(stage: Dictionary) -> String:
 	var parts: Array[String] = []
 	var penalties := LevelRunner.loss_penalties(stage)
 	for name: String in penalties.keys():
-		parts.append(Text.say("reward.delta", {"name": name, "amount": "%+d" % int(penalties[name])}))
+		parts.append(Text.say("reward.delta", {"name": name, "amount": Phrase.meta_amount(name, int(penalties[name]), true)}))
 	var xp := MetaRules.stage_delta(stage, "loss_delta_xp")
 	if xp > 0:
 		parts.append(Text.say("outcome.xp", {"count": xp}))

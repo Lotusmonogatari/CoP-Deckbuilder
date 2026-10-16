@@ -185,7 +185,8 @@ static func modifier_refusal(modifier: Dictionary, owned: Array, meta: Dictionar
 			continue
 		var have := int(meta.get(name, 0))
 		if have < cost:
-			return say.say("shop.funds_short", {"count": cost - have})
+			return say.say("shop.funds_short" if name == "Funds" else "shop.meta_short",
+				{"count": cost - have})
 	return ""
 
 
