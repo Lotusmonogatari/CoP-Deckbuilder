@@ -749,20 +749,20 @@
   {
     "item_id": "SH22",
     "name": "Attacking Op-Ed",
-    "description": "Run a sharp op-ed against an organization of your choice while a stage is under way. Lowers their standing with you. Usable only during a stage.",
+    "description": "Run a sharp op-ed against a National organization of your choice. Lowers their standing with you. Usable only in the Office, never during a stage.",
     "cost_xp": 10,
     "cost_yen": 10000,
-    "bonus_condition_1": "-3 standing with the chosen organization.",
+    "bonus_condition_1": "-3 standing with the chosen National organization.",
     "bonus_condition_2": null,
     "grants": [
       {
-        "target": "TIER:All",
+        "target": "TIER:National",
         "delta": -3
       }
     ],
     "icon": "press_engagement",
-    "use_in_office": "No",
-    "use_in_stage": "Yes",
+    "use_in_office": "Yes",
+    "use_in_stage": "No",
     "duration": null,
     "uses_per_turn": null,
     "stack_cap": null,
@@ -786,14 +786,14 @@
   {
     "item_id": "SH23",
     "name": "Leak a Memo",
-    "description": "Leak a damaging internal memo about an organization of your choice. Lowers their standing with you. Usable only in the Office, never during a level.",
+    "description": "Leak a damaging internal memo about a Constituency organization of your choice. Lowers their standing with you. Usable only in the Office, never during a level.",
     "cost_xp": 100,
     "cost_yen": 0,
-    "bonus_condition_1": "-4 standing with the chosen organization.",
+    "bonus_condition_1": "-4 standing with the chosen Constituency organization.",
     "bonus_condition_2": null,
     "grants": [
       {
-        "target": "TIER:All",
+        "target": "TIER:Constituency",
         "delta": -4
       }
     ],
