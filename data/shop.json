@@ -723,7 +723,7 @@
     "bonus_condition_1": null,
     "bonus_condition_2": null,
     "grants": null,
-    "icon": "training_coupon",
+    "icon": "unlock_card_t1",
     "use_in_office": "Yes",
     "use_in_stage": "No",
     "duration": null,
@@ -760,7 +760,7 @@
         "delta": -3
       }
     ],
-    "icon": "attacking_op_ed",
+    "icon": "press_engagement",
     "use_in_office": "No",
     "use_in_stage": "Yes",
     "duration": null,
@@ -797,7 +797,7 @@
         "delta": -4
       }
     ],
-    "icon": "leak_memo",
+    "icon": "paperwork_automation",
     "use_in_office": "Yes",
     "use_in_stage": "No",
     "duration": null,
@@ -834,7 +834,7 @@
         "delta": -5
       }
     ],
-    "icon": "public_rebuke",
+    "icon": "BO01",
     "use_in_office": "Yes",
     "use_in_stage": "No",
     "duration": null,
