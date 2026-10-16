@@ -2484,3 +2484,7 @@ New Shop item **SH21 Training Session Coupon** (150 XP, draft price) and a new o
 ### Administration menu spacing and Save Game / Load Game labels (2026-10-15, Cameron)
 
 The backup buttons used to sit inside one zero-gap column, so Save and Load touched. `OfficeScreen._backup_buttons()` now returns them as separate rows of the menu itself, so every gap matches the other buttons (checked in a real screenshot). Labels: "Back Up Now" is now **Save Game** and "Restore the Backup" is now **Load Game** (`office.backup_now`, `office.backup_restore`). The Reputation and Results menu already used plain rows, so its spacing was already even. Not checked: the Load Game button's own spacing in a screenshot (the throwaway shot had no backup written, so it was hidden).
+
+### TV Debate rising threshold: workbook columns added, engine waiting for approval (2026-10-16, Cameron)
+
+Stages tab columns **Threshold Rise Min**, **Threshold Rise Max** and **Threshold Cap** (`threshold_rise_min/max`, `threshold_cap`; blank = the line never moves, cap blank = Bar max) exist and export; `export_data.py` checks both-or-neither, Min 0 or more, Max at least Min, Cap between the Win threshold and Bar max, and warns on a non-Survival stage. Seeded 0 to 3 on ST06 and the six topic TV Debates (ST41, 44, 73, 84, 91, 98) as a draft. **The engine does not read them yet**, so no behaviour changed. The plan, rule and open decisions are in `design/proposals/TV_DEBATE_RISING_THRESHOLD_2026-10-16.md`. Header notes for the three columns are not written (Insert Note in Excel).
