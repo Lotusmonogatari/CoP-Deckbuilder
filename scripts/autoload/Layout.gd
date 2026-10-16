@@ -38,6 +38,11 @@ const CANCEL_NAMES := ["Back", "DetailsClose", "ZoomClose", "LeaveButton",
 ## What an outline is before a run has a protagonist (the title screen).
 const NO_PARTY_OUTLINE := Color(1, 1, 1, 0.55)
 
+## While set, every party-coloured outline uses this colour instead (the title
+## screen shows the cue-banner gold, 2026-10-16, Cameron). Set and cleared by
+## IntroScreen through set_outline_override().
+var _outline_override := Color(0, 0, 0, 0)
+var _outline_override_on := false
 var _outline_party := "<unset>"
 var _party_styles: Array[StyleBoxFlat] = []
 
@@ -207,9 +212,19 @@ func _outlined(source: StyleBoxFlat, colour: Color) -> StyleBoxFlat:
 	return box
 
 
+## Show every party-coloured outline in one fixed colour (or, with `on` false,
+## go back to the player's party colour).
+func set_outline_override(colour: Color, on: bool) -> void:
+	_outline_override = colour
+	_outline_override_on = on
+	_recolour_outlines()
+
+
 func _recolour_outlines() -> void:
 	var row := DataDB.get_party(PartyDisplay.party_name(DataDB.player))
 	var colour := PartyDisplay.color_for(row) if not row.is_empty() else NO_PARTY_OUTLINE
+	if _outline_override_on:
+		colour = _outline_override
 	for box in _party_styles:
 		box.border_color = colour
 

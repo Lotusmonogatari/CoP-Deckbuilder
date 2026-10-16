@@ -32,6 +32,9 @@ var _save_problem: Overlay
 
 
 func _ready() -> void:
+	# The title screen's button outlines are the cue-banner gold, not a party
+	# colour left over from a saved run (2026-10-16, Cameron).
+	Layout.set_outline_override(CueBanner.EDGE_COLOUR, true)
 	_background.kind = PlaceholderArt.Kind.BACKGROUND
 	_background.art_id = "TITLE"
 	_background.show_label = false
@@ -98,3 +101,7 @@ func _on_new_game_pressed() -> void:
 func _start_new_game() -> void:
 	GameState.awaiting_new_game = true
 	get_tree().change_scene_to_file(OFFICE_SCENE)
+
+
+func _exit_tree() -> void:
+	Layout.set_outline_override(Color(0, 0, 0, 0), false)
