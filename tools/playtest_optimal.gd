@@ -579,12 +579,19 @@ func _play_visitor_stage(stage: Dictionary) -> void:
 	while not engine.is_finished() and guard < 20:
 		guard += 1
 		var question: Dictionary = engine.current_question()
-		var correct := str(question.get("correct_choice", "A"))
-		var result := engine.answer(correct)   # always answer correctly — optimizing for wins
-		var entries: Array = result.get("reward") if result.get("correct", false) else result.get("penalty")
-		GameState.apply_visitor_reward_entries(entries)
-		if result.get("correct", false) != true:
-			_bug("%s: answering the documented correct_choice ('%s') was graded wrong" % [stage_id, correct])
+		# Dilemma questions have no correct choice: take the choice with the best
+		# net standing change (the legacy Correct Choice when none has effects).
+		var best := str(question.get("correct_choice", "A"))
+		var best_net := -1.0e9
+		for letter in ["A", "B", "C", "D"]:
+			var own: Variant = question.get("effects_%s" % letter.to_lower())
+			if own is Array and not (own as Array).is_empty():
+				var net := OfficeHoursEngine.net_delta(own as Array)
+				if net > best_net:
+					best_net = net
+					best = letter
+		var result := engine.answer(best)
+		GameState.apply_visitor_reward_entries(result.get("effects", []))
 		engine.advance()
 
 	if guard >= 20:
