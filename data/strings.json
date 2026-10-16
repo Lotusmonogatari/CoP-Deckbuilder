@@ -3456,5 +3456,26 @@
     "english": "National",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "battle.question_concerns",
+    "where": "Battle · Details panel, who the drawn question is about",
+    "english": "This question is about: {names}.",
+    "placeholders": "names",
+    "notes": "2026-10-16: replaces battle.question_invites (now unused)."
+  },
+  {
+    "key": "battle.question_stakes",
+    "where": "Battle · Details panel, what a strong or weak answer does to them",
+    "english": "A strong answer pleases them. A weak one annoys them.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "battle.question_sets_back",
+    "where": "Battle · Details panel, organizations a strong answer sets back",
+    "english": "A strong answer sets back: {names}.",
+    "placeholders": "names",
+    "notes": null
   }
 ]
