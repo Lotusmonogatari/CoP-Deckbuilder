@@ -326,5 +326,661 @@
   {
     "level_id": "LV62",
     "thought_text": "A harbor that cannot pay its crews is a harbor that dies."
+  },
+  {
+    "level_id": "LV01",
+    "thought_text": "Ordinary people ask the questions that matter most."
+  },
+  {
+    "level_id": "LV01",
+    "thought_text": "Listening costs nothing and teaches everything."
+  },
+  {
+    "level_id": "LV02",
+    "thought_text": "Every lobbyist is selling something. I will decide what I buy."
+  },
+  {
+    "level_id": "LV02",
+    "thought_text": "Access is not agreement, however politely it is asked for."
+  },
+  {
+    "level_id": "LV03",
+    "thought_text": "Questions first. Answers can wait until I understand."
+  },
+  {
+    "level_id": "LV03",
+    "thought_text": "Study is slow, but mistakes in law are slower to fix."
+  },
+  {
+    "level_id": "LV04",
+    "thought_text": "A smaller committee is still a real test."
+  },
+  {
+    "level_id": "LV04",
+    "thought_text": "Party leaders are watching how I handle a quiet room."
+  },
+  {
+    "level_id": "LV05",
+    "thought_text": "Every reporter here has a deadline and a headline in mind."
+  },
+  {
+    "level_id": "LV05",
+    "thought_text": "One careless sentence can undo a week of good work."
+  },
+  {
+    "level_id": "LV06",
+    "thought_text": "Helping the party on farm policy helps real farms, too."
+  },
+  {
+    "level_id": "LV06",
+    "thought_text": "Friends in the party are worth earning slowly."
+  },
+  {
+    "level_id": "LV07",
+    "thought_text": "Roads and rails are promises kept in concrete."
+  },
+  {
+    "level_id": "LV07",
+    "thought_text": "Infrastructure is a bill that arrives long after the ribbon is cut."
+  },
+  {
+    "level_id": "LV08",
+    "thought_text": "A junior member earns trust on the floor."
+  },
+  {
+    "level_id": "LV08",
+    "thought_text": "The floor rewards preparation, not volume."
+  },
+  {
+    "level_id": "LV09",
+    "thought_text": "Filling in is how members learn the whole Assembly."
+  },
+  {
+    "level_id": "LV09",
+    "thought_text": "Committees are where the real work hides."
+  },
+  {
+    "level_id": "LV10",
+    "thought_text": "Hometown shops are a town's memory."
+  },
+  {
+    "level_id": "LV10",
+    "thought_text": "Protecting a market means choosing who it protects."
+  },
+  {
+    "level_id": "LV11",
+    "thought_text": "Students ask the questions older voters stopped asking."
+  },
+  {
+    "level_id": "LV11",
+    "thought_text": "Their impatience is useful, if I answer honestly."
+  },
+  {
+    "level_id": "LV12",
+    "thought_text": "Families carry the weight of every budget decision."
+  },
+  {
+    "level_id": "LV12",
+    "thought_text": "A tour only counts if I listen more than I talk."
+  },
+  {
+    "level_id": "LV13",
+    "thought_text": "Craft is what is left when everything else is copied."
+  },
+  {
+    "level_id": "LV13",
+    "thought_text": "Artisans ask for respect before they ask for money."
+  },
+  {
+    "level_id": "LV14",
+    "thought_text": "A bad commute is a tax on every day."
+  },
+  {
+    "level_id": "LV14",
+    "thought_text": "Fix the commute and a hundred small things improve."
+  },
+  {
+    "level_id": "LV15",
+    "thought_text": "Tradition has something to teach, if I ask it politely."
+  },
+  {
+    "level_id": "LV15",
+    "thought_text": "The traditionalist wing wants to be heard before it is outvoted."
+  },
+  {
+    "level_id": "LV16",
+    "thought_text": "Reformers have energy. I should add judgment."
+  },
+  {
+    "level_id": "LV16",
+    "thought_text": "Fast change needs careful hands."
+  },
+  {
+    "level_id": "LV17",
+    "thought_text": "Coalitions are built one honest conversation at a time."
+  },
+  {
+    "level_id": "LV17",
+    "thought_text": "A new generation does not owe loyalty to old habits."
+  },
+  {
+    "level_id": "LV18",
+    "thought_text": "Shop owners and commuters need each other."
+  },
+  {
+    "level_id": "LV18",
+    "thought_text": "A coalition is found where two complaints overlap."
+  },
+  {
+    "level_id": "LV19",
+    "thought_text": "Veterans remember the reasons. Newcomers ask for them."
+  },
+  {
+    "level_id": "LV19",
+    "thought_text": "Both groups need me to translate."
+  },
+  {
+    "level_id": "LV20",
+    "thought_text": "Young people want a way in. Unions want a way to stay."
+  },
+  {
+    "level_id": "LV20",
+    "thought_text": "Overlooked groups notice who finally calls."
+  },
+  {
+    "level_id": "LV21",
+    "thought_text": "A household budget is the best policy lesson."
+  },
+  {
+    "level_id": "LV21",
+    "thought_text": "Neighbors trust each other before they trust me."
+  },
+  {
+    "level_id": "LV22",
+    "thought_text": "Small business owners know exactly what a rule costs."
+  },
+  {
+    "level_id": "LV22",
+    "thought_text": "Every shuttered shop was once someone's dream."
+  },
+  {
+    "level_id": "LV23",
+    "thought_text": "Winter breaks what summer neglected."
+  },
+  {
+    "level_id": "LV23",
+    "thought_text": "Infrastructure is cheaper to fix than to apologize for."
+  },
+  {
+    "level_id": "LV24",
+    "thought_text": "The old order did not ask the people it reshaped."
+  },
+  {
+    "level_id": "LV24",
+    "thought_text": "To guard a history, I have to understand it."
+  },
+  {
+    "level_id": "LV25",
+    "thought_text": "Reform can lift a career or sink it."
+  },
+  {
+    "level_id": "LV25",
+    "thought_text": "A wave is easier to ride when I know its direction."
+  },
+  {
+    "level_id": "LV26",
+    "thought_text": "Coalitions start with listening."
+  },
+  {
+    "level_id": "LV26",
+    "thought_text": "Everyone at the table wants proof I will not forget them."
+  },
+  {
+    "level_id": "LV27",
+    "thought_text": "Villages lose a little each time a young person leaves."
+  },
+  {
+    "level_id": "LV27",
+    "thought_text": "A rural future needs a reason to stay."
+  },
+  {
+    "level_id": "LV28",
+    "thought_text": "A kōenkai is a family with opinions."
+  },
+  {
+    "level_id": "LV28",
+    "thought_text": "Loyalty deserves better than being taken for granted."
+  },
+  {
+    "level_id": "LV29",
+    "thought_text": "Potholes and empty shops share a cause."
+  },
+  {
+    "level_id": "LV29",
+    "thought_text": "Main Street is where policy shows up on foot."
+  },
+  {
+    "level_id": "LV30",
+    "thought_text": "A bargain needs everyone to give something up."
+  },
+  {
+    "level_id": "LV30",
+    "thought_text": "Somebody has to move first. It may as well be me."
+  },
+  {
+    "level_id": "LV61",
+    "thought_text": "Every fare decision lands in a household budget."
+  },
+  {
+    "level_id": "LV61",
+    "thought_text": "Timetables decide where people can afford to live."
+  },
+  {
+    "level_id": "LV62",
+    "thought_text": "Quotas look like numbers. On the harbor they are crews."
+  },
+  {
+    "level_id": "LV62",
+    "thought_text": "A town on the water lives on what the sea allows."
+  },
+  {
+    "level_id": "LV31",
+    "thought_text": "The people who gain are Ainu families and language teachers. The people who pay are town budgets and landholders."
+  },
+  {
+    "level_id": "LV31",
+    "thought_text": "My worry is disputes over ancestral land claims. My hope is that Ainu families and language teachers come out better off."
+  },
+  {
+    "level_id": "LV32",
+    "thought_text": "The people who gain are rice and dairy farmers. The people who pay are taxpayers and grocery shoppers."
+  },
+  {
+    "level_id": "LV32",
+    "thought_text": "My worry is overproduction paid for by the treasury. My hope is that rice and dairy farmers come out better off."
+  },
+  {
+    "level_id": "LV33",
+    "thought_text": "The people who gain are new employers and the workers they hire. The people who pay are workers under looser labor rules."
+  },
+  {
+    "level_id": "LV33",
+    "thought_text": "My worry is a race to the bottom on labor protections. My hope is that new employers and the workers they hire come out better off."
+  },
+  {
+    "level_id": "LV34",
+    "thought_text": "The people who gain are commuters, freight shippers and tourist towns. The people who pay are the national budget."
+  },
+  {
+    "level_id": "LV34",
+    "thought_text": "My worry is cost overruns on tunnels and track. My hope is that commuters, freight shippers and tourist towns come out better off."
+  },
+  {
+    "level_id": "LV35",
+    "thought_text": "The people who gain are island residents and coast guard crews. The people who pay are the defense budget."
+  },
+  {
+    "level_id": "LV35",
+    "thought_text": "My worry is escalating tension with Russia. My hope is that island residents and coast guard crews come out better off."
+  },
+  {
+    "level_id": "LV36",
+    "thought_text": "The people who gain are employers short of workers. The people who pay are wage levels and local services."
+  },
+  {
+    "level_id": "LV36",
+    "thought_text": "My worry is exploitation of workers and strained housing. My hope is that employers short of workers come out better off."
+  },
+  {
+    "level_id": "LV37",
+    "thought_text": "The people who gain are rural towns and households that lost power. The people who pay are utility customers and the budget."
+  },
+  {
+    "level_id": "LV37",
+    "thought_text": "My worry is projects delayed by local objections. My hope is that rural towns and households that lost power come out better off."
+  },
+  {
+    "level_id": "LV38",
+    "thought_text": "The people who gain are pensioners and elder care. The people who pay are shoppers and small shops."
+  },
+  {
+    "level_id": "LV38",
+    "thought_text": "My worry is weaker spending in poorer households. My hope is that pensioners and elder care come out better off."
+  },
+  {
+    "level_id": "LV39",
+    "thought_text": "The people who gain are prefectural governments and local officials. The people who pay are poorer areas that depend on transfers."
+  },
+  {
+    "level_id": "LV39",
+    "thought_text": "My worry is gaps between rich and poor prefectures. My hope is that prefectural governments and local officials come out better off."
+  },
+  {
+    "level_id": "LV40",
+    "thought_text": "The people who gain are women candidates and their voters. The people who pay are party selection committees."
+  },
+  {
+    "level_id": "LV40",
+    "thought_text": "My worry is qualified candidates passed over. My hope is that women candidates and their voters come out better off."
+  },
+  {
+    "level_id": "LV41",
+    "thought_text": "The people who gain are ferry operators, fishers and border towns. The people who pay are the foreign affairs budget."
+  },
+  {
+    "level_id": "LV41",
+    "thought_text": "My worry is a commission with no power to settle anything. My hope is that ferry operators, fishers and border towns come out better off."
+  },
+  {
+    "level_id": "LV42",
+    "thought_text": "The people who gain are courts that want distance from politics. The people who pay are the Cabinet's control over nominations."
+  },
+  {
+    "level_id": "LV42",
+    "thought_text": "My worry is an unelected body choosing judges. My hope is that courts that want distance from politics come out better off."
+  },
+  {
+    "level_id": "LV43",
+    "thought_text": "The people who gain are temples, shrines and festival towns. The people who pay are the treasury and secular taxpayers."
+  },
+  {
+    "level_id": "LV43",
+    "thought_text": "My worry is favoring some faiths over others. My hope is that temples, shrines and festival towns come out better off."
+  },
+  {
+    "level_id": "LV44",
+    "thought_text": "The people who gain are districts with a member who can deliver. The people who pay are the national budget."
+  },
+  {
+    "level_id": "LV44",
+    "thought_text": "My worry is pork spending that buys votes. My hope is that districts with a member who can deliver come out better off."
+  },
+  {
+    "level_id": "LV45",
+    "thought_text": "The people who gain are tech firms and graduates. The people who pay are tax revenue and local power supply."
+  },
+  {
+    "level_id": "LV45",
+    "thought_text": "My worry is subsidies for firms that would come anyway. My hope is that tech firms and graduates come out better off."
+  },
+  {
+    "level_id": "LV46",
+    "thought_text": "The people who gain are police and crime victims. The people who pay are privacy and free speech."
+  },
+  {
+    "level_id": "LV46",
+    "thought_text": "My worry is wiretaps used against ordinary protest. My hope is that police and crime victims come out better off."
+  },
+  {
+    "level_id": "LV47",
+    "thought_text": "The people who gain are same-sex couples and their families. The people who pay are traditional family norms in some eyes."
+  },
+  {
+    "level_id": "LV47",
+    "thought_text": "My worry is a split in public opinion. My hope is that same-sex couples and their families come out better off."
+  },
+  {
+    "level_id": "LV48",
+    "thought_text": "The people who gain are emergency responders after a disaster. The people who pay are checks and balances."
+  },
+  {
+    "level_id": "LV48",
+    "thought_text": "My worry is power kept longer than the crisis lasts. My hope is that emergency responders after a disaster come out better off."
+  },
+  {
+    "level_id": "LV49",
+    "thought_text": "The people who gain are defense planners and allies. The people who pay are neutral foreign policy."
+  },
+  {
+    "level_id": "LV49",
+    "thought_text": "My worry is being drawn into a foreign conflict. My hope is that defense planners and allies come out better off."
+  },
+  {
+    "level_id": "LV50",
+    "thought_text": "The people who gain are exporters and shoppers. The people who pay are dairy and rural producers."
+  },
+  {
+    "level_id": "LV50",
+    "thought_text": "My worry is foreign dairy undercutting local farms. My hope is that exporters and shoppers come out better off."
+  },
+  {
+    "level_id": "LV51",
+    "thought_text": "The people who gain are coastal communities and security officials. The people who pay are foreign investors and sellers."
+  },
+  {
+    "level_id": "LV51",
+    "thought_text": "My worry is scaring off honest investment. My hope is that coastal communities and security officials come out better off."
+  },
+  {
+    "level_id": "LV52",
+    "thought_text": "The people who gain are hotels, shops and artisans. The people who pay are border officials and crowded sites."
+  },
+  {
+    "level_id": "LV52",
+    "thought_text": "My worry is overcrowded resorts and strained services. My hope is that hotels, shops and artisans come out better off."
+  },
+  {
+    "level_id": "LV53",
+    "thought_text": "The people who gain are fishers and island tour operators. The people who pay are our claim to the islands."
+  },
+  {
+    "level_id": "LV53",
+    "thought_text": "My worry is weakening our claim to the islands. My hope is that fishers and island tour operators come out better off."
+  },
+  {
+    "level_id": "LV54",
+    "thought_text": "The people who gain are power users and industry. The people who pay are nearby fishers and communities."
+  },
+  {
+    "level_id": "LV54",
+    "thought_text": "My worry is an accident after a quake. My hope is that power users and industry come out better off."
+  },
+  {
+    "level_id": "LV55",
+    "thought_text": "The people who gain are construction workers, hotels and the host town. The people who pay are neighbors and gambling-prone households."
+  },
+  {
+    "level_id": "LV55",
+    "thought_text": "My worry is gambling addiction and organized crime. My hope is that construction workers, hotels and the host town come out better off."
+  },
+  {
+    "level_id": "LV56",
+    "thought_text": "The people who gain are applicants without connections. The people who pay are members who place their supporters."
+  },
+  {
+    "level_id": "LV56",
+    "thought_text": "My worry is exams that miss real-world skill. My hope is that applicants without connections come out better off."
+  },
+  {
+    "level_id": "LV57",
+    "thought_text": "The people who gain are low-wage workers and students. The people who pay are small shops and farms."
+  },
+  {
+    "level_id": "LV57",
+    "thought_text": "My worry is closed shops and fewer jobs in poor towns. My hope is that low-wage workers and students come out better off."
+  },
+  {
+    "level_id": "LV58",
+    "thought_text": "The people who gain are voters in unfairly drawn districts. The people who pay are members who benefit from today's lines."
+  },
+  {
+    "level_id": "LV58",
+    "thought_text": "My worry is an unelected commission with too much say. My hope is that voters in unfairly drawn districts come out better off."
+  },
+  {
+    "level_id": "LV59",
+    "thought_text": "The people who gain are schools and families who want a shared moral base. The people who pay are students and teachers with other views."
+  },
+  {
+    "level_id": "LV59",
+    "thought_text": "My worry is the state teaching one view of virtue. My hope is that schools and families who want a shared moral base come out better off."
+  },
+  {
+    "level_id": "LV60",
+    "thought_text": "The people who gain are foreign residents and their neighbors. The people who pay are the idea that voting belongs to citizens."
+  },
+  {
+    "level_id": "LV60",
+    "thought_text": "My worry is a backlash that harms community ties. My hope is that foreign residents and their neighbors come out better off."
+  },
+  {
+    "level_id": "LV63",
+    "thought_text": "The people who gain are wildlife, Ainu land users and tourism. The people who pay are loggers and developers."
+  },
+  {
+    "level_id": "LV63",
+    "thought_text": "My worry is lost jobs in forest towns. My hope is that wildlife, Ainu land users and tourism come out better off."
+  },
+  {
+    "level_id": "LV64",
+    "thought_text": "The people who gain are rural patients. The people who pay are the health budget."
+  },
+  {
+    "level_id": "LV64",
+    "thought_text": "My worry is small hospitals with too few doctors. My hope is that rural patients come out better off."
+  },
+  {
+    "level_id": "LV65",
+    "thought_text": "The people who gain are residents who tire of paperwork. The people who pay are privacy."
+  },
+  {
+    "level_id": "LV65",
+    "thought_text": "My worry is a data breach exposing everyone's records. My hope is that residents who tire of paperwork come out better off."
+  },
+  {
+    "level_id": "LV66",
+    "thought_text": "The people who gain are viewers who want independent news. The people who pay are government control of messaging."
+  },
+  {
+    "level_id": "LV66",
+    "thought_text": "My worry is a broadcaster answerable to no one. My hope is that viewers who want independent news come out better off."
+  },
+  {
+    "level_id": "LV67",
+    "thought_text": "The people who gain are voters who want clean politics. The people who pay are parties and members who rely on big donors."
+  },
+  {
+    "level_id": "LV67",
+    "thought_text": "My worry is money moving to groups outside the rules. My hope is that voters who want clean politics come out better off."
+  },
+  {
+    "level_id": "LV68",
+    "thought_text": "The people who gain are firms and their shareholders. The people who pay are tax revenue for services."
+  },
+  {
+    "level_id": "LV68",
+    "thought_text": "My worry is cuts to services to pay for the tax cut. My hope is that firms and their shareholders come out better off."
+  },
+  {
+    "level_id": "LV69",
+    "thought_text": "The people who gain are clean-energy firms and households that get dividends. The people who pay are fuel users, farmers and fishers."
+  },
+  {
+    "level_id": "LV69",
+    "thought_text": "My worry is higher costs in cold, spread-out towns. My hope is that clean-energy firms and households that get dividends come out better off."
+  },
+  {
+    "level_id": "LV70",
+    "thought_text": "The people who gain are fishers and consumers who want healthy stocks. The people who pay are small buyers and boats that sell quotas."
+  },
+  {
+    "level_id": "LV70",
+    "thought_text": "My worry is quotas concentrated in a few large boats. My hope is that fishers and consumers who want healthy stocks come out better off."
+  },
+  {
+    "level_id": "LV71",
+    "thought_text": "The people who gain are shipyard workers and defense suppliers. The people who pay are other spending and taxpayers."
+  },
+  {
+    "level_id": "LV71",
+    "thought_text": "My worry is waste on a closed circle of contractors. My hope is that shipyard workers and defense suppliers come out better off."
+  },
+  {
+    "level_id": "LV72",
+    "thought_text": "The people who gain are members who want change studied. The people who pay are time and attention in the Assembly."
+  },
+  {
+    "level_id": "LV72",
+    "thought_text": "My worry is a commission that pushes a hidden agenda. My hope is that members who want change studied come out better off."
+  },
+  {
+    "level_id": "LV73",
+    "thought_text": "The people who gain are traders and travelers. The people who pay are privacy and some border jobs."
+  },
+  {
+    "level_id": "LV73",
+    "thought_text": "My worry is data shared without limits. My hope is that traders and travelers come out better off."
+  },
+  {
+    "level_id": "LV74",
+    "thought_text": "The people who gain are investors and some island jobs. The people who pay are fishers, the sea and island heritage."
+  },
+  {
+    "level_id": "LV74",
+    "thought_text": "My worry is damage to fisheries and sacred sites. My hope is that investors and some island jobs come out better off."
+  },
+  {
+    "level_id": "LV75",
+    "thought_text": "The people who gain are exporters and shoppers. The people who pay are workers and producers who compete with imports."
+  },
+  {
+    "level_id": "LV75",
+    "thought_text": "My worry is dependence on one big trading partner. My hope is that exporters and shoppers come out better off."
+  },
+  {
+    "level_id": "LV76",
+    "thought_text": "The people who gain are young farmers and farm towns. The people who pay are the treasury."
+  },
+  {
+    "level_id": "LV76",
+    "thought_text": "My worry is grants for farms that cannot survive. My hope is that young farmers and farm towns come out better off."
+  },
+  {
+    "level_id": "LV77",
+    "thought_text": "The people who gain are researchers and students. The people who pay are the national budget."
+  },
+  {
+    "level_id": "LV77",
+    "thought_text": "My worry is funds spent on the wrong things. My hope is that researchers and students come out better off."
+  },
+  {
+    "level_id": "LV78",
+    "thought_text": "The people who gain are women, minorities and disabled workers. The people who pay are employers who must change hiring."
+  },
+  {
+    "level_id": "LV78",
+    "thought_text": "My worry is red tape and disputes at small firms. My hope is that women, minorities and disabled workers come out better off."
+  },
+  {
+    "level_id": "LV79",
+    "thought_text": "The people who gain are working parents and children. The people who pay are employers and the budget."
+  },
+  {
+    "level_id": "LV79",
+    "thought_text": "My worry is staff shortages at small firms. My hope is that working parents and children come out better off."
+  },
+  {
+    "level_id": "LV80",
+    "thought_text": "The people who gain are police and commuters. The people who pay are privacy."
+  },
+  {
+    "level_id": "LV80",
+    "thought_text": "My worry is tracking innocent people. My hope is that police and commuters come out better off."
+  },
+  {
+    "level_id": "LV81",
+    "thought_text": "The people who gain are taxpayers and bigger towns. The people who pay are small towns' identity and local jobs."
+  },
+  {
+    "level_id": "LV81",
+    "thought_text": "My worry is far-away offices and lost local voices. My hope is that taxpayers and bigger towns come out better off."
+  },
+  {
+    "level_id": "LV82",
+    "thought_text": "The people who gain are rank-and-file members. The people who pay are party elders and the members' influence."
+  },
+  {
+    "level_id": "LV82",
+    "thought_text": "My worry is leaders chosen by loud, small factions. My hope is that rank-and-file members come out better off."
   }
 ]

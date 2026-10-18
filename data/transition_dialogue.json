@@ -11599,5 +11599,2291 @@
     "player_reply_en": "Then you will have sharp questions.",
     "bill_id": null,
     "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1290",
+    "character_id": "PLAYER",
+    "stage_id": "ST05; ST24; ST29; ST34; ST36; ST53; ST58; ST61; ST76; ST82; ST86; ST94; ST122; ST136; ST149; ST174; ST180; ST198",
+    "character_line_en": "Ordinary people ask honest questions. I should answer the same way.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1291",
+    "character_id": "PLAYER",
+    "stage_id": "ST05; ST24; ST29; ST34; ST36; ST53; ST58; ST61; ST76; ST82; ST86; ST94; ST122; ST136; ST149; ST174; ST180; ST198",
+    "character_line_en": "A town hall rewards patience.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1292",
+    "character_id": "PLAYER",
+    "stage_id": "ST05; ST24; ST29; ST34; ST36; ST53; ST58; ST61; ST76; ST82; ST86; ST94; ST122; ST136; ST149; ST174; ST180; ST198",
+    "character_line_en": "Neighbors will remember how I listen.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1293",
+    "character_id": "PLAYER",
+    "stage_id": "ST05; ST24; ST29; ST34; ST36; ST53; ST58; ST61; ST76; ST82; ST86; ST94; ST122; ST136; ST149; ST174; ST180; ST198",
+    "character_line_en": "No speeches. Just answers.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1294",
+    "character_id": "PLAYER",
+    "stage_id": "ST05; ST24; ST29; ST34; ST36; ST53; ST58; ST61; ST76; ST82; ST86; ST94; ST122; ST136; ST149; ST174; ST180; ST198",
+    "character_line_en": "Everyone in that room has waited to be heard.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1295",
+    "character_id": "PLAYER",
+    "stage_id": "ST05; ST24; ST29; ST34; ST36; ST53; ST58; ST61; ST76; ST82; ST86; ST94; ST122; ST136; ST149; ST174; ST180; ST198",
+    "character_line_en": "Plain words work best at a town hall.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1296",
+    "character_id": "PLAYER",
+    "stage_id": "ST03; ST35; ST39; ST42; ST45; ST49; ST52; ST56; ST59; ST62; ST65; ST68; ST72; ST75; ST78; ST81; ST85; ST89; ST93; ST97; ST100; ST124; ST128; ST135; ST141; ST144; ST148; ST152; ST156; ST160; ST164; ST169; ST173; ST179; ST185; ST192; ST197; ST200; ST207; ST212; ST217; ST222; ST226; ST229; ST232; ST238; ST242; ST248; ST252; ST256; ST259",
+    "character_line_en": "Colleagues who share my banner still want proof.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1297",
+    "character_id": "PLAYER",
+    "stage_id": "ST03; ST35; ST39; ST42; ST45; ST49; ST52; ST56; ST59; ST62; ST65; ST68; ST72; ST75; ST78; ST81; ST85; ST89; ST93; ST97; ST100; ST124; ST128; ST135; ST141; ST144; ST148; ST152; ST156; ST160; ST164; ST169; ST173; ST179; ST185; ST192; ST197; ST200; ST207; ST212; ST217; ST222; ST226; ST229; ST232; ST238; ST242; ST248; ST252; ST256; ST259",
+    "character_line_en": "The caucus is friendly, which is exactly why I must be careful.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1298",
+    "character_id": "PLAYER",
+    "stage_id": "ST03; ST35; ST39; ST42; ST45; ST49; ST52; ST56; ST59; ST62; ST65; ST68; ST72; ST75; ST78; ST81; ST85; ST89; ST93; ST97; ST100; ST124; ST128; ST135; ST141; ST144; ST148; ST152; ST156; ST160; ST164; ST169; ST173; ST179; ST185; ST192; ST197; ST200; ST207; ST212; ST217; ST222; ST226; ST229; ST232; ST238; ST242; ST248; ST252; ST256; ST259",
+    "character_line_en": "Loyalty is earned in rooms like this.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1299",
+    "character_id": "PLAYER",
+    "stage_id": "ST03; ST35; ST39; ST42; ST45; ST49; ST52; ST56; ST59; ST62; ST65; ST68; ST72; ST75; ST78; ST81; ST85; ST89; ST93; ST97; ST100; ST124; ST128; ST135; ST141; ST144; ST148; ST152; ST156; ST160; ST164; ST169; ST173; ST179; ST185; ST192; ST197; ST200; ST207; ST212; ST217; ST222; ST226; ST229; ST232; ST238; ST242; ST248; ST252; ST256; ST259",
+    "character_line_en": "Party members remember who spoke up.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1300",
+    "character_id": "PLAYER",
+    "stage_id": "ST03; ST35; ST39; ST42; ST45; ST49; ST52; ST56; ST59; ST62; ST65; ST68; ST72; ST75; ST78; ST81; ST85; ST89; ST93; ST97; ST100; ST124; ST128; ST135; ST141; ST144; ST148; ST152; ST156; ST160; ST164; ST169; ST173; ST179; ST185; ST192; ST197; ST200; ST207; ST212; ST217; ST222; ST226; ST229; ST232; ST238; ST242; ST248; ST252; ST256; ST259",
+    "character_line_en": "A caucus is a family with opinions.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1301",
+    "character_id": "PLAYER",
+    "stage_id": "ST03; ST35; ST39; ST42; ST45; ST49; ST52; ST56; ST59; ST62; ST65; ST68; ST72; ST75; ST78; ST81; ST85; ST89; ST93; ST97; ST100; ST124; ST128; ST135; ST141; ST144; ST148; ST152; ST156; ST160; ST164; ST169; ST173; ST179; ST185; ST192; ST197; ST200; ST207; ST212; ST217; ST222; ST226; ST229; ST232; ST238; ST242; ST248; ST252; ST256; ST259",
+    "character_line_en": "Say what I think. Then listen.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1302",
+    "character_id": "PLAYER",
+    "stage_id": "ST04; ST26; ST32; ST43; ST46; ST55; ST64; ST70; ST83; ST92; ST99; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST190; ST196; ST210; ST218; ST239; ST249; ST257",
+    "character_line_en": "Every reporter has a headline waiting.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1303",
+    "character_id": "PLAYER",
+    "stage_id": "ST04; ST26; ST32; ST43; ST46; ST55; ST64; ST70; ST83; ST92; ST99; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST190; ST196; ST210; ST218; ST239; ST249; ST257",
+    "character_line_en": "A press conference is a series of small traps.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1304",
+    "character_id": "PLAYER",
+    "stage_id": "ST04; ST26; ST32; ST43; ST46; ST55; ST64; ST70; ST83; ST92; ST99; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST190; ST196; ST210; ST218; ST239; ST249; ST257",
+    "character_line_en": "Short answers, no adjectives.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1305",
+    "character_id": "PLAYER",
+    "stage_id": "ST04; ST26; ST32; ST43; ST46; ST55; ST64; ST70; ST83; ST92; ST99; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST190; ST196; ST210; ST218; ST239; ST249; ST257",
+    "character_line_en": "The camera forgives nothing and forgets nothing.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1306",
+    "character_id": "PLAYER",
+    "stage_id": "ST04; ST26; ST32; ST43; ST46; ST55; ST64; ST70; ST83; ST92; ST99; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST190; ST196; ST210; ST218; ST239; ST249; ST257",
+    "character_line_en": "Say the true thing the simple way.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1307",
+    "character_id": "PLAYER",
+    "stage_id": "ST04; ST26; ST32; ST43; ST46; ST55; ST64; ST70; ST83; ST92; ST99; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST190; ST196; ST210; ST218; ST239; ST249; ST257",
+    "character_line_en": "Their questions are my audience's questions.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1308",
+    "character_id": "PLAYER",
+    "stage_id": "ST21; ST25; ST38; ST40; ST50; ST79; ST87; ST96; ST131; ST187; ST201; ST208; ST214; ST235",
+    "character_line_en": "A study session is for learning, not winning.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1309",
+    "character_id": "PLAYER",
+    "stage_id": "ST21; ST25; ST38; ST40; ST50; ST79; ST87; ST96; ST131; ST187; ST201; ST208; ST214; ST235",
+    "character_line_en": "Experts reward questions that show I read the report.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1310",
+    "character_id": "PLAYER",
+    "stage_id": "ST21; ST25; ST38; ST40; ST50; ST79; ST87; ST96; ST131; ST187; ST201; ST208; ST214; ST235",
+    "character_line_en": "Evidence first. Opinions after.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1311",
+    "character_id": "PLAYER",
+    "stage_id": "ST21; ST25; ST38; ST40; ST50; ST79; ST87; ST96; ST131; ST187; ST201; ST208; ST214; ST235",
+    "character_line_en": "The best answer here is an honest 'I do not know'.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1312",
+    "character_id": "PLAYER",
+    "stage_id": "ST21; ST25; ST38; ST40; ST50; ST79; ST87; ST96; ST131; ST187; ST201; ST208; ST214; ST235",
+    "character_line_en": "Numbers need people to explain them.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1313",
+    "character_id": "PLAYER",
+    "stage_id": "ST21; ST25; ST38; ST40; ST50; ST79; ST87; ST96; ST131; ST187; ST201; ST208; ST214; ST235",
+    "character_line_en": "If I understand it, I can defend it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1314",
+    "character_id": "PLAYER",
+    "stage_id": "ST06; ST41; ST44; ST73; ST84; ST91; ST98; ST205; ST224; ST245",
+    "character_line_en": "A television debate is mostly about composure.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1315",
+    "character_id": "PLAYER",
+    "stage_id": "ST06; ST41; ST44; ST73; ST84; ST91; ST98; ST205; ST224; ST245",
+    "character_line_en": "The line to hold is steady tone, not clever lines.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1316",
+    "character_id": "PLAYER",
+    "stage_id": "ST06; ST41; ST44; ST73; ST84; ST91; ST98; ST205; ST224; ST245",
+    "character_line_en": "Viewers decide in seconds.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1317",
+    "character_id": "PLAYER",
+    "stage_id": "ST06; ST41; ST44; ST73; ST84; ST91; ST98; ST205; ST224; ST245",
+    "character_line_en": "Breathe, smile if I mean it, and keep going.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1318",
+    "character_id": "PLAYER",
+    "stage_id": "ST06; ST41; ST44; ST73; ST84; ST91; ST98; ST205; ST224; ST245",
+    "character_line_en": "Viewers at home judge the effort as much as the answer.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1319",
+    "character_id": "PLAYER",
+    "stage_id": "ST06; ST41; ST44; ST73; ST84; ST91; ST98; ST205; ST224; ST245",
+    "character_line_en": "Stay above the line.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1320",
+    "character_id": "PLAYER",
+    "stage_id": "ST20; ST28; ST48; ST67; ST71; ST88; ST133; ST138; ST154; ST165; ST175; ST186; ST233",
+    "character_line_en": "Every lobbyist has an ask. I can listen without agreeing.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1321",
+    "character_id": "PLAYER",
+    "stage_id": "ST20; ST28; ST48; ST67; ST71; ST88; ST133; ST138; ST154; ST165; ST175; ST186; ST233",
+    "character_line_en": "A meeting is not a promise.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1322",
+    "character_id": "PLAYER",
+    "stage_id": "ST20; ST28; ST48; ST67; ST71; ST88; ST133; ST138; ST154; ST165; ST175; ST186; ST233",
+    "character_line_en": "Interests are not the same as the public interest.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1323",
+    "character_id": "PLAYER",
+    "stage_id": "ST20; ST28; ST48; ST67; ST71; ST88; ST133; ST138; ST154; ST165; ST175; ST186; ST233",
+    "character_line_en": "Whose voice is missing from this room?",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1324",
+    "character_id": "PLAYER",
+    "stage_id": "ST20; ST28; ST48; ST67; ST71; ST88; ST133; ST138; ST154; ST165; ST175; ST186; ST233",
+    "character_line_en": "Polite is not the same as persuaded.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1325",
+    "character_id": "PLAYER",
+    "stage_id": "ST20; ST28; ST48; ST67; ST71; ST88; ST133; ST138; ST154; ST165; ST175; ST186; ST233",
+    "character_line_en": "I owe them a hearing, not a yes.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1326",
+    "character_id": "PLAYER",
+    "stage_id": "ST02",
+    "character_line_en": "The floor is where preparation meets pressure.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1327",
+    "character_id": "PLAYER",
+    "stage_id": "ST02",
+    "character_line_en": "Every seat in the chamber counts.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1328",
+    "character_id": "PLAYER",
+    "stage_id": "ST02",
+    "character_line_en": "Debate on the floor is for the record.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1329",
+    "character_id": "PLAYER",
+    "stage_id": "ST02",
+    "character_line_en": "Hold the line, and count the votes.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1330",
+    "character_id": "PLAYER",
+    "stage_id": "ST02",
+    "character_line_en": "A good argument here can move a bench.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1331",
+    "character_id": "PLAYER",
+    "stage_id": "ST02",
+    "character_line_en": "The chamber listens for conviction.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1332",
+    "character_id": "PLAYER",
+    "stage_id": "ST08",
+    "character_line_en": "The steering committee decides who gets a future.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1333",
+    "character_id": "PLAYER",
+    "stage_id": "ST08",
+    "character_line_en": "Say what the party needs to hear, and still mean it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1334",
+    "character_id": "PLAYER",
+    "stage_id": "ST08",
+    "character_line_en": "A quiet room can change a career.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1335",
+    "character_id": "PLAYER",
+    "stage_id": "ST08",
+    "character_line_en": "The platform is a promise. I should know it by heart.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1336",
+    "character_id": "PLAYER",
+    "stage_id": "ST08",
+    "character_line_en": "Discipline is easier when I believe the line.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1337",
+    "character_id": "PLAYER",
+    "stage_id": "ST08",
+    "character_line_en": "Careful. They remember everything.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1338",
+    "character_id": "PLAYER",
+    "stage_id": "ST01; ST09; ST10; ST11; ST12; ST13; ST14; ST15; ST16; ST17; ST18; ST27; ST31; ST33; ST37; ST47; ST51; ST54; ST57; ST60; ST63; ST66; ST69; ST74; ST77; ST80; ST90; ST95; ST123; ST126; ST127; ST130; ST132; ST134; ST137; ST139; ST140; ST143; ST146; ST147; ST150; ST151; ST155; ST158; ST159; ST162; ST163; ST166; ST168; ST172; ST177; ST178; ST183; ST184; ST189; ST191; ST195; ST199; ST202; ST204; ST206; ST209; ST211; ST215; ST216; ST219; ST220; ST221; ST223; ST225; ST228; ST230; ST231; ST236; ST237; ST240; ST241; ST244; ST246; ST247; ST250; ST251; ST254; ST255; ST258",
+    "character_line_en": "A committee is where the details live.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1339",
+    "character_id": "PLAYER",
+    "stage_id": "ST01; ST09; ST10; ST11; ST12; ST13; ST14; ST15; ST16; ST17; ST18; ST27; ST31; ST33; ST37; ST47; ST51; ST54; ST57; ST60; ST63; ST66; ST69; ST74; ST77; ST80; ST90; ST95; ST123; ST126; ST127; ST130; ST132; ST134; ST137; ST139; ST140; ST143; ST146; ST147; ST150; ST151; ST155; ST158; ST159; ST162; ST163; ST166; ST168; ST172; ST177; ST178; ST183; ST184; ST189; ST191; ST195; ST199; ST202; ST204; ST206; ST209; ST211; ST215; ST216; ST219; ST220; ST221; ST223; ST225; ST228; ST230; ST231; ST236; ST237; ST240; ST241; ST244; ST246; ST247; ST250; ST251; ST254; ST255; ST258",
+    "character_line_en": "Specifics beat slogans in a hearing room.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1340",
+    "character_id": "PLAYER",
+    "stage_id": "ST01; ST09; ST10; ST11; ST12; ST13; ST14; ST15; ST16; ST17; ST18; ST27; ST31; ST33; ST37; ST47; ST51; ST54; ST57; ST60; ST63; ST66; ST69; ST74; ST77; ST80; ST90; ST95; ST123; ST126; ST127; ST130; ST132; ST134; ST137; ST139; ST140; ST143; ST146; ST147; ST150; ST151; ST155; ST158; ST159; ST162; ST163; ST166; ST168; ST172; ST177; ST178; ST183; ST184; ST189; ST191; ST195; ST199; ST202; ST204; ST206; ST209; ST211; ST215; ST216; ST219; ST220; ST221; ST223; ST225; ST228; ST230; ST231; ST236; ST237; ST240; ST241; ST244; ST246; ST247; ST250; ST251; ST254; ST255; ST258",
+    "character_line_en": "Members here know their briefs. I should know mine.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1341",
+    "character_id": "PLAYER",
+    "stage_id": "ST01; ST09; ST10; ST11; ST12; ST13; ST14; ST15; ST16; ST17; ST18; ST27; ST31; ST33; ST37; ST47; ST51; ST54; ST57; ST60; ST63; ST66; ST69; ST74; ST77; ST80; ST90; ST95; ST123; ST126; ST127; ST130; ST132; ST134; ST137; ST139; ST140; ST143; ST146; ST147; ST150; ST151; ST155; ST158; ST159; ST162; ST163; ST166; ST168; ST172; ST177; ST178; ST183; ST184; ST189; ST191; ST195; ST199; ST202; ST204; ST206; ST209; ST211; ST215; ST216; ST219; ST220; ST221; ST223; ST225; ST228; ST230; ST231; ST236; ST237; ST240; ST241; ST244; ST246; ST247; ST250; ST251; ST254; ST255; ST258",
+    "character_line_en": "Short answers. Cite the source.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1342",
+    "character_id": "PLAYER",
+    "stage_id": "ST01; ST09; ST10; ST11; ST12; ST13; ST14; ST15; ST16; ST17; ST18; ST27; ST31; ST33; ST37; ST47; ST51; ST54; ST57; ST60; ST63; ST66; ST69; ST74; ST77; ST80; ST90; ST95; ST123; ST126; ST127; ST130; ST132; ST134; ST137; ST139; ST140; ST143; ST146; ST147; ST150; ST151; ST155; ST158; ST159; ST162; ST163; ST166; ST168; ST172; ST177; ST178; ST183; ST184; ST189; ST191; ST195; ST199; ST202; ST204; ST206; ST209; ST211; ST215; ST216; ST219; ST220; ST221; ST223; ST225; ST228; ST230; ST231; ST236; ST237; ST240; ST241; ST244; ST246; ST247; ST250; ST251; ST254; ST255; ST258",
+    "character_line_en": "The record from this room will last.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1343",
+    "character_id": "PLAYER",
+    "stage_id": "ST01; ST09; ST10; ST11; ST12; ST13; ST14; ST15; ST16; ST17; ST18; ST27; ST31; ST33; ST37; ST47; ST51; ST54; ST57; ST60; ST63; ST66; ST69; ST74; ST77; ST80; ST90; ST95; ST123; ST126; ST127; ST130; ST132; ST134; ST137; ST139; ST140; ST143; ST146; ST147; ST150; ST151; ST155; ST158; ST159; ST162; ST163; ST166; ST168; ST172; ST177; ST178; ST183; ST184; ST189; ST191; ST195; ST199; ST202; ST204; ST206; ST209; ST211; ST215; ST216; ST219; ST220; ST221; ST223; ST225; ST228; ST230; ST231; ST236; ST237; ST240; ST241; ST244; ST246; ST247; ST250; ST251; ST254; ST255; ST258",
+    "character_line_en": "Patience wins committees.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD1344",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back co-official status for Ainu in willing towns, I should be ready to answer for disputes over ancestral land claims.",
+    "player_reply_en": null,
+    "bill_id": "BI01",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1345",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Ainu families and language teachers are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI01",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1346",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose co-official status for Ainu in willing towns, I owe Ainu families and language teachers a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI01",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1347",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for town budgets and landholders. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI01",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1348",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a national price floor for rice and dairy, I should be ready to answer for overproduction paid for by the treasury.",
+    "player_reply_en": null,
+    "bill_id": "BI02",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1349",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Rice and dairy farmers are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI02",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1350",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a national price floor for rice and dairy, I owe rice and dairy farmers a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI02",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1351",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for taxpayers and grocery shoppers. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI02",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1352",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back deregulated investment zones near Sapporo, Tomakomai and Hakodate, I should be ready to answer for a race to the bottom on labor protections.",
+    "player_reply_en": null,
+    "bill_id": "BI03",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1353",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "New employers and the workers they hire are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI03",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1354",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose deregulated investment zones near Sapporo, Tomakomai and Hakodate, I owe new employers and the workers they hire a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI03",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1355",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for workers under looser labor rules. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI03",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1356",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back an earlier Sapporo extension of the Shinkansen, I should be ready to answer for cost overruns on tunnels and track.",
+    "player_reply_en": null,
+    "bill_id": "BI04",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1357",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Commuters, freight shippers and tourist towns are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI04",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1358",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose an earlier Sapporo extension of the Shinkansen, I owe commuters, freight shippers and tourist towns a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI04",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1359",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the national budget. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI04",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1360",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back new patrol vessels and radar on the Chishima islands, I should be ready to answer for escalating tension with Russia.",
+    "player_reply_en": null,
+    "bill_id": "BI05",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1361",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Island residents and coast guard crews are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI05",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1362",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose new patrol vessels and radar on the Chishima islands, I owe island residents and coast guard crews a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI05",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1363",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the defense budget. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI05",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1364",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back five-year work visas in farming, fishing, construction and tourism, I should be ready to answer for exploitation of workers and strained housing.",
+    "player_reply_en": null,
+    "bill_id": "BI06",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1365",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Employers short of workers are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI06",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1366",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose five-year work visas in farming, fishing, construction and tourism, I owe employers short of workers a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI06",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1367",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for wage levels and local services. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI06",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1368",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back grid links and local wind and geothermal power, I should be ready to answer for projects delayed by local objections.",
+    "player_reply_en": null,
+    "bill_id": "BI07",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1369",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Rural towns and households that lost power are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI07",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1370",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose grid links and local wind and geothermal power, I owe rural towns and households that lost power a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI07",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1371",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for utility customers and the budget. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI07",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1372",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a consumption tax rise from 8 to 10 percent for pensions, I should be ready to answer for weaker spending in poorer households.",
+    "player_reply_en": null,
+    "bill_id": "BI08",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1373",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Pensioners and elder care are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI08",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1374",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a consumption tax rise from 8 to 10 percent for pensions, I owe pensioners and elder care a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI08",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1375",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for shoppers and small shops. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI08",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1376",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back revenue and budget powers for the three prefectural assemblies, I should be ready to answer for gaps between rich and poor prefectures.",
+    "player_reply_en": null,
+    "bill_id": "BI09",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1377",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Prefectural governments and local officials are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI09",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1378",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose revenue and budget powers for the three prefectural assemblies, I owe prefectural governments and local officials a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI09",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1379",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for poorer areas that depend on transfers. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI09",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1380",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back parties' effort to field equal numbers of women and men, I should be ready to answer for qualified candidates passed over.",
+    "player_reply_en": null,
+    "bill_id": "BI10",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1381",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Women candidates and their voters are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI10",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1382",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose parties' effort to field equal numbers of women and men, I owe women candidates and their voters a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI10",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1383",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for party selection committees. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI10",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1384",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a standing Yezo-Japan commission on the Tsugaru Strait, I should be ready to answer for a commission with no power to settle anything.",
+    "player_reply_en": null,
+    "bill_id": "BI11",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1385",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Ferry operators, fishers and border towns are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI11",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1386",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a standing Yezo-Japan commission on the Tsugaru Strait, I owe ferry operators, fishers and border towns a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI11",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1387",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the foreign affairs budget. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI11",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1388",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back an independent commission to nominate Supreme Court justices, I should be ready to answer for an unelected body choosing judges.",
+    "player_reply_en": null,
+    "bill_id": "BI12",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1389",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Courts that want distance from politics are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI12",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1390",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose an independent commission to nominate Supreme Court justices, I owe courts that want distance from politics a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI12",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1391",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the Cabinet's control over nominations. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI12",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1392",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back tax relief and restoration grants for temples and shrines, I should be ready to answer for favoring some faiths over others.",
+    "player_reply_en": null,
+    "bill_id": "BI13",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1393",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Temples, shrines and festival towns are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI13",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1394",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose tax relief and restoration grants for temples and shrines, I owe temples, shrines and festival towns a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI13",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1395",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the treasury and secular taxpayers. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI13",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1396",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back an annual district grant for every Assembly member, I should be ready to answer for pork spending that buys votes.",
+    "player_reply_en": null,
+    "bill_id": "BI14",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1397",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Districts with a member who can deliver are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI14",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1398",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose an annual district grant for every Assembly member, I owe districts with a member who can deliver a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI14",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1399",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the national budget. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI14",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1400",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back tax breaks for data centers and a national digital agency, I should be ready to answer for subsidies for firms that would come anyway.",
+    "player_reply_en": null,
+    "bill_id": "BI15",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1401",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Tech firms and graduates are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI15",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1402",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose tax breaks for data centers and a national digital agency, I owe tech firms and graduates a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI15",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1403",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for tax revenue and local power supply. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI15",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1404",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back the crime of planning serious organized crime, with wider wiretaps, I should be ready to answer for wiretaps used against ordinary protest.",
+    "player_reply_en": null,
+    "bill_id": "BI16",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1405",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Police and crime victims are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI16",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1406",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose the crime of planning serious organized crime, with wider wiretaps, I owe police and crime victims a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI16",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1407",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for privacy and free speech. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI16",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1408",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a national registry giving same-sex couples partnership rights, I should be ready to answer for a split in public opinion.",
+    "player_reply_en": null,
+    "bill_id": "BI17",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1409",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Same-sex couples and their families are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI17",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1410",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a national registry giving same-sex couples partnership rights, I owe same-sex couples and their families a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI17",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1411",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for traditional family norms in some eyes. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI17",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1412",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a 30-day national emergency that lets the Prime Minister govern by decree, I should be ready to answer for power kept longer than the crisis lasts.",
+    "player_reply_en": null,
+    "bill_id": "BI18",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1413",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Emergency responders after a disaster are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI18",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1414",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a 30-day national emergency that lets the Prime Minister govern by decree, I owe emergency responders after a disaster a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI18",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1415",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for checks and balances. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI18",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1416",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back annual defense talks and joint exercises with the United States, I should be ready to answer for being drawn into a foreign conflict.",
+    "player_reply_en": null,
+    "bill_id": "BI19",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1417",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Defense planners and allies are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI19",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1418",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose annual defense talks and joint exercises with the United States, I owe defense planners and allies a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI19",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1419",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for neutral foreign policy. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI19",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1420",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back lower tariffs with the European Union on dairy, wine, machinery and cars, I should be ready to answer for foreign dairy undercutting local farms.",
+    "player_reply_en": null,
+    "bill_id": "BI20",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1421",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Exporters and shoppers are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI20",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1422",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose lower tariffs with the European Union on dairy, wine, machinery and cars, I owe exporters and shoppers a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI20",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1423",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for dairy and rural producers. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI20",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1424",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back government review of foreign land purchases near ports, water and defense sites, I should be ready to answer for scaring off honest investment.",
+    "player_reply_en": null,
+    "bill_id": "BI21",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1425",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Coastal communities and security officials are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI21",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1426",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose government review of foreign land purchases near ports, water and defense sites, I owe coastal communities and security officials a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI21",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1427",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for foreign investors and sellers. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI21",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1428",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back visa-free entry for tourists from Korea, Taiwan and Southeast Asia, I should be ready to answer for overcrowded resorts and strained services.",
+    "player_reply_en": null,
+    "bill_id": "BI22",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1429",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Hotels, shops and artisans are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI22",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1430",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose visa-free entry for tourists from Korea, Taiwan and Southeast Asia, I owe hotels, shops and artisans a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI22",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1431",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for border officials and crowded sites. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI22",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1432",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back joint fishing and tourism zones with Russia on the southern Chishima islands, I should be ready to answer for weakening our claim to the islands.",
+    "player_reply_en": null,
+    "bill_id": "BI23",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1433",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Fishers and island tour operators are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI23",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1434",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose joint fishing and tourism zones with Russia on the southern Chishima islands, I owe fishers and island tour operators a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI23",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1435",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for our claim to the islands. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI23",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1436",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back restarting the Tomari nuclear plant, I should be ready to answer for an accident after a quake.",
+    "player_reply_en": null,
+    "bill_id": "BI24",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1437",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Power users and industry are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI24",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1438",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose restarting the Tomari nuclear plant, I owe power users and industry a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI24",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1439",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for nearby fishers and communities. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI24",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1440",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a licensed casino resort, with Tomakomai the leading site, I should be ready to answer for gambling addiction and organized crime.",
+    "player_reply_en": null,
+    "bill_id": "BI25",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1441",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Construction workers, hotels and the host town are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI25",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1442",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a licensed casino resort, with Tomakomai the leading site, I owe construction workers, hotels and the host town a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI25",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1443",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for neighbors and gambling-prone households. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI25",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1444",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back competitive exams for all public hiring and a ban on referrals, I should be ready to answer for exams that miss real-world skill.",
+    "player_reply_en": null,
+    "bill_id": "BI26",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1445",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Applicants without connections are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI26",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1446",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose competitive exams for all public hiring and a ban on referrals, I owe applicants without connections a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI26",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1447",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for members who place their supporters. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI26",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1448",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back one higher minimum wage across Hokkaido, Aomori and Chishima, I should be ready to answer for closed shops and fewer jobs in poor towns.",
+    "player_reply_en": null,
+    "bill_id": "BI27",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1449",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Low-wage workers and students are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI27",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1450",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose one higher minimum wage across Hokkaido, Aomori and Chishima, I owe low-wage workers and students a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI27",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1451",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for small shops and farms. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI27",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1452",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a nonpartisan commission to draw districts and police campaign money, I should be ready to answer for an unelected commission with too much say.",
+    "player_reply_en": null,
+    "bill_id": "BI28",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1453",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Voters in unfairly drawn districts are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI28",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1454",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a nonpartisan commission to draw districts and police campaign money, I owe voters in unfairly drawn districts a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI28",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1455",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for members who benefit from today's lines. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI28",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1456",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back compulsory graded ethics classes in schools, I should be ready to answer for the state teaching one view of virtue.",
+    "player_reply_en": null,
+    "bill_id": "BI29",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1457",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Schools and families who want a shared moral base are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI29",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1458",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose compulsory graded ethics classes in schools, I owe schools and families who want a shared moral base a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI29",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1459",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for students and teachers with other views. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI29",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1460",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back municipal voting rights for long-term foreign residents, I should be ready to answer for a backlash that harms community ties.",
+    "player_reply_en": null,
+    "bill_id": "BI30",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1461",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Foreign residents and their neighbors are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI30",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1462",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose municipal voting rights for long-term foreign residents, I owe foreign residents and their neighbors a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI30",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1463",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the idea that voting belongs to citizens. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI30",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1464",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back protected wilderness with limits on logging and development, I should be ready to answer for lost jobs in forest towns.",
+    "player_reply_en": null,
+    "bill_id": "BI31",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1465",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Wildlife, Ainu land users and tourism are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI31",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1466",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose protected wilderness with limits on logging and development, I owe wildlife, Ainu land users and tourism a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI31",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1467",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for loggers and developers. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI31",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1468",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a chain of small regional hospitals and traveling clinics, I should be ready to answer for small hospitals with too few doctors.",
+    "player_reply_en": null,
+    "bill_id": "BI32",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1469",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Rural patients are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI32",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1470",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a chain of small regional hospitals and traveling clinics, I owe rural patients a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI32",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1471",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the health budget. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI32",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1472",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a single digital identity card for tax, health and benefits, I should be ready to answer for a data breach exposing everyone's records.",
+    "player_reply_en": null,
+    "bill_id": "BI33",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1473",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Residents who tire of paperwork are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI33",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1474",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a single digital identity card for tax, health and benefits, I owe residents who tire of paperwork a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI33",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1475",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for privacy. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI33",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1476",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back protecting the public broadcaster's budget and board from ministers, I should be ready to answer for a broadcaster answerable to no one.",
+    "player_reply_en": null,
+    "bill_id": "BI34",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1477",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Viewers who want independent news are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI34",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1478",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose protecting the public broadcaster's budget and board from ministers, I owe viewers who want independent news a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI34",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1479",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for government control of messaging. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI34",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1480",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back full publication of fundraising and a cap on single-source donations, I should be ready to answer for money moving to groups outside the rules.",
+    "player_reply_en": null,
+    "bill_id": "BI35",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1481",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Voters who want clean politics are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI35",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1482",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose full publication of fundraising and a cap on single-source donations, I owe voters who want clean politics a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI35",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1483",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for parties and members who rely on big donors. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI35",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1484",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a lower corporate tax rate, with a smaller cut for small firms, I should be ready to answer for cuts to services to pay for the tax cut.",
+    "player_reply_en": null,
+    "bill_id": "BI36",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1485",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Firms and their shareholders are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI36",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1486",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a lower corporate tax rate, with a smaller cut for small firms, I owe firms and their shareholders a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI36",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1487",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for tax revenue for services. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI36",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1488",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a rising price on carbon with part of the revenue returned to households, I should be ready to answer for higher costs in cold, spread-out towns.",
+    "player_reply_en": null,
+    "bill_id": "BI37",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1489",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Clean-energy firms and households that get dividends are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI37",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1490",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a rising price on carbon with part of the revenue returned to households, I owe clean-energy firms and households that get dividends a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI37",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1491",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for fuel users, farmers and fishers. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI37",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1492",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back tradeable fishing quotas with onboard reporting, I should be ready to answer for quotas concentrated in a few large boats.",
+    "player_reply_en": null,
+    "bill_id": "BI38",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1493",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Fishers and consumers who want healthy stocks are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI38",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1494",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose tradeable fishing quotas with onboard reporting, I owe fishers and consumers who want healthy stocks a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI38",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1495",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for small buyers and boats that sell quotas. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI38",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1496",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back subsidies and long-term orders for shipyards and defense makers, I should be ready to answer for waste on a closed circle of contractors.",
+    "player_reply_en": null,
+    "bill_id": "BI39",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1497",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Shipyard workers and defense suppliers are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI39",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1498",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose subsidies and long-term orders for shipyards and defense makers, I owe shipyard workers and defense suppliers a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI39",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1499",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for other spending and taxpayers. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI39",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1500",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a standing commission to study constitutional amendments, I should be ready to answer for a commission that pushes a hidden agenda.",
+    "player_reply_en": null,
+    "bill_id": "BI40",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1501",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Members who want change studied are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI40",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1502",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a standing commission to study constitutional amendments, I owe members who want change studied a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI40",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1503",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for time and attention in the Assembly. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI40",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1504",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back merged customs checks and shared border data with Japan, I should be ready to answer for data shared without limits.",
+    "player_reply_en": null,
+    "bill_id": "BI41",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1505",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Traders and travelers are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI41",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1506",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose merged customs checks and shared border data with Japan, I owe traders and travelers a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI41",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1507",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for privacy and some border jobs. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI41",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1508",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a joint mining and fishing venture on the Chishima islands with a partner in non-China Asia, I should be ready to answer for damage to fisheries and sacred sites.",
+    "player_reply_en": null,
+    "bill_id": "BI42",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1509",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Investors and some island jobs are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI42",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1510",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a joint mining and fishing venture on the Chishima islands with a partner in non-China Asia, I owe investors and some island jobs a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI42",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1511",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for fishers, the sea and island heritage. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI42",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1512",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back lifting remaining tariffs and licensing limits on China trade, I should be ready to answer for dependence on one big trading partner.",
+    "player_reply_en": null,
+    "bill_id": "BI43",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1513",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Exporters and shoppers are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI43",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1514",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose lifting remaining tariffs and licensing limits on China trade, I owe exporters and shoppers a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI43",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1515",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for workers and producers who compete with imports. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI43",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1516",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back grants and lower inheritance costs for young farm successors, I should be ready to answer for grants for farms that cannot survive.",
+    "player_reply_en": null,
+    "bill_id": "BI44",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1517",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Young farmers and farm towns are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI44",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1518",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose grants and lower inheritance costs for young farm successors, I owe young farmers and farm towns a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI44",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1519",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the treasury. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI44",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1520",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back university control of budgets and doubled research grants, I should be ready to answer for funds spent on the wrong things.",
+    "player_reply_en": null,
+    "bill_id": "BI45",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1521",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Researchers and students are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI45",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1522",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose university control of budgets and doubled research grants, I owe researchers and students a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI45",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1523",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for the national budget. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI45",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1524",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back a ban on workplace discrimination with penalties for repeat offenders, I should be ready to answer for red tape and disputes at small firms.",
+    "player_reply_en": null,
+    "bill_id": "BI46",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1525",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Women, minorities and disabled workers are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI46",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1526",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose a ban on workplace discrimination with penalties for repeat offenders, I owe women, minorities and disabled workers a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI46",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1527",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for employers who must change hiring. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI46",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1528",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back paid leave for both parents and expanded subsidized childcare, I should be ready to answer for staff shortages at small firms.",
+    "player_reply_en": null,
+    "bill_id": "BI47",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1529",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Working parents and children are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI47",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1530",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose paid leave for both parents and expanded subsidized childcare, I owe working parents and children a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI47",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1531",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for employers and the budget. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI47",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1532",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back facial-recognition cameras in transport hubs and city centers, I should be ready to answer for tracking innocent people.",
+    "player_reply_en": null,
+    "bill_id": "BI48",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1533",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Police and commuters are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI48",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1534",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose facial-recognition cameras in transport hubs and city centers, I owe police and commuters a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI48",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1535",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for privacy. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI48",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1536",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back merging small municipalities to share services, I should be ready to answer for far-away offices and lost local voices.",
+    "player_reply_en": null,
+    "bill_id": "BI49",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1537",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Taxpayers and bigger towns are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI49",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1538",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose merging small municipalities to share services, I owe taxpayers and bigger towns a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI49",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1539",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for small towns' identity and local jobs. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI49",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1540",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I back open ballot of party members to choose party leaders, I should be ready to answer for leaders chosen by loud, small factions.",
+    "player_reply_en": null,
+    "bill_id": "BI50",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1541",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Rank-and-file members are counting on this. I should not take that lightly.",
+    "player_reply_en": null,
+    "bill_id": "BI50",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD1542",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If I oppose open ballot of party members to choose party leaders, I owe rank-and-file members a better answer.",
+    "player_reply_en": null,
+    "bill_id": "BI50",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD1543",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for party elders and the members' influence. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": "BI50",
+    "stance": "Oppose"
   }
 ]

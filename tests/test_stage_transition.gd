@@ -180,6 +180,11 @@ func test_generic_transition_lines_fit_every_room() -> void:
 		var raw: Variant = row.get("stage_id")
 		if raw != null and str(raw).strip_edges() != "":
 			continue
+		# A line about one bill (Bill ID) is about that bill's subject, which
+		# may well be cameras or the press.
+		var bill_raw: Variant = row.get("bill_id")
+		if bill_raw != null and str(bill_raw).strip_edges() != "":
+			continue
 		var text := (str(row.get("character_line_en", "")) + " " + str(row.get("player_reply_en", ""))).to_lower()
 		for word: String in banned:
 			var hit := RegEx.create_from_string("\\b" + word + "(s|es)?\\b").search(text) != null
@@ -196,12 +201,14 @@ func test_press_and_camera_lines_only_in_press_style_rooms() -> void:
 		var is_press_line := "reporter" in text or "studio" in text or "viewers" in text
 		if not is_press_line:
 			continue
-		var name := str(DataDB.get_stage(str(raw)).get("name_en", ""))
-		var fits := false
-		for kind: String in ok_kinds:
-			if name.begins_with(kind):
-				fits = true
-		assert_true(fits, "%s (%s) is a press/studio line in %s" % [row.get("transition_dialogue_id"), text, name])
+		# The Stage ID cell may list several stages ("ST04; ST26").
+		for stage_id: String in str(raw).split(";"):
+			var name := str(DataDB.get_stage(stage_id.strip_edges()).get("name_en", ""))
+			var fits := false
+			for kind: String in ok_kinds:
+				if name.begins_with(kind):
+					fits = true
+			assert_true(fits, "%s (%s) is a press/studio line in %s" % [row.get("transition_dialogue_id"), text, name])
 
 
 func test_a_thought_can_open_a_transition_that_has_speakers() -> void:
