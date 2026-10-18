@@ -2164,6 +2164,23 @@ func apply_stance_vote(choice: String) -> Dictionary:
 	if bill_stance.is_empty() or bool(bill_stance.get("voted", false)):
 		return {}
 	bill_stance["voted"] = true
+	var result := preview_stance_vote(choice)
+	var bill: Dictionary = DataDB.floor_votes.get(str(bill_stance.get("bill_id", "")), {})
+	for id: String in (result["deltas"] as Dictionary):
+		_apply_booster_delta(id, int((result["deltas"] as Dictionary)[id]))
+	var party_delta := int(result["party_delta"])
+	if party_delta != 0:
+		apply_floor_vote_favorability({str(DataDB.player.get("party", "")): party_delta},
+			Text.say("record.cause_stance_switch", {"bill": str(bill.get("bill_name", ""))}))
+	return result
+
+
+## What voting `choice` would do under the current stance, without doing it
+## (the vote screen's preview and apply_stance_vote() share this). { } with no
+## stance.
+func preview_stance_vote(choice: String) -> Dictionary:
+	if bill_stance.is_empty():
+		return {}
 	var bill_id := str(bill_stance.get("bill_id", ""))
 	var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
 	var own := own_party_id()
@@ -2173,14 +2190,17 @@ func apply_stance_vote(choice: String) -> Dictionary:
 			disposition = str(position.get("disposition", ""))
 	var result := BillStance.vote(stance_sides(), stance_lean(), choice,
 		bill_stance.get("cost", {}), disposition, stance_config())
-	for id: String in (result["deltas"] as Dictionary):
-		_apply_booster_delta(id, int((result["deltas"] as Dictionary)[id]))
-	var party_delta := int(result["party_delta"])
-	if party_delta != 0:
-		apply_floor_vote_favorability({str(DataDB.player.get("party", "")): party_delta},
-			Text.say("record.cause_stance_switch", {"bill": str(bill.get("bill_name", ""))}))
 	result["bill_id"] = bill_id
 	return result
+
+
+## What winning a Combat stage would do to the stance's stakeholders, for the
+## Outcome panel. { } with no stance.
+func stance_drift_preview() -> Dictionary:
+	var lean := stance_lean()
+	if lean.is_empty():
+		return {}
+	return BillStance.win_drift(stance_sides(), lean, int(DataDB.balance.get("stance_win_drift", 0)))
 
 
 ## bill_id -> "passed"/"failed", for Office Notices and the Ticker.

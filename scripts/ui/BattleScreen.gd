@@ -510,6 +510,13 @@ func _refresh_details(state: BattleState) -> void:
 			"deck": state.deck.size(), "hand": state.hand.size(), "discard": state.discard.size()}),
 		"Stage: %s" % str(_stage.get("name_en", "")),
 	])
+	if not _lean().is_empty():
+		var sides := GameState.stance_sides()
+		lines.append(Text.say("battle.stance_line", {
+			"bill": str(DataDB.get_bill(_bill_id()).get("bill_name", "")),
+			"lean": StanceLines.lean_name(_lean()),
+			"with": StanceLines.names_of(BillStance.my_side(sides, _lean())),
+			"against": StanceLines.names_of(BillStance.other_side(sides, _lean()))}))
 
 	_details_text.text = "\n".join(lines)
 

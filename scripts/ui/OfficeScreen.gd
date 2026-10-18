@@ -2012,6 +2012,10 @@ func _show_briefing() -> void:
 	var stages: Array = expanded.get("stages", [])
 	var anything_set := false
 
+	# A level about a bill says whose bill it is and who is for and against it.
+	for bill_line: String in StanceLines.briefing_lines(DataDB.get_floor_vote(str(_chosen_level.get("level_id", "")))):
+		rows.append(UiKit.line(bill_line, "SmallLabel"))
+
 	for stage: Dictionary in stages:
 		if not _reveal_in_briefing(stage):
 			# A stage marked "No" (Media Ambush, an ambush by name) is left

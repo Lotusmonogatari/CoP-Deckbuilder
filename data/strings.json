@@ -3491,5 +3491,131 @@
     "english": "switching your vote on {bill}",
     "placeholders": "bill",
     "notes": null
+  },
+  {
+    "key": "stance.support",
+    "where": "Stance — the lean as a word",
+    "english": "Support",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "stance.oppose",
+    "where": "Stance — the lean as a word",
+    "english": "Oppose",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "stance.nobody",
+    "where": "Stance — shown where a list of organizations is empty",
+    "english": "nobody in particular",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "level_intro.bill_proponent",
+    "where": "Level Intro — whose bill it is",
+    "english": "{bill} is {party}'s bill.",
+    "placeholders": "bill, party",
+    "notes": null
+  },
+  {
+    "key": "level_intro.party_supports",
+    "where": "Level Intro — your party backs the bill",
+    "english": "Your party, {party}, supports it.",
+    "placeholders": "party",
+    "notes": null
+  },
+  {
+    "key": "level_intro.party_opposes",
+    "where": "Level Intro — your party opposes the bill",
+    "english": "Your party, {party}, opposes it.",
+    "placeholders": "party",
+    "notes": null
+  },
+  {
+    "key": "level_intro.party_neutral",
+    "where": "Level Intro — your party has no position",
+    "english": "Your party, {party}, has taken no position on it.",
+    "placeholders": "party",
+    "notes": null
+  },
+  {
+    "key": "level_intro.stance_taken",
+    "where": "Level Intro — after the lean is chosen",
+    "english": "Your stance: {lean}. With you: {with}. Against you: {against}.",
+    "placeholders": "lean, with, against",
+    "notes": null
+  },
+  {
+    "key": "level_intro.stance_alone",
+    "where": "Level Intro — after the lean, when nobody is on either side",
+    "english": "Your stance: {lean}.",
+    "placeholders": "lean",
+    "notes": null
+  },
+  {
+    "key": "briefing.bill_line",
+    "where": "Level briefing — the bill the level is about",
+    "english": "This level is about {bill}, brought by {party}.",
+    "placeholders": "bill, party",
+    "notes": null
+  },
+  {
+    "key": "briefing.bill_sides",
+    "where": "Level briefing — who is for and against the bill",
+    "english": "For it: {for}. Against it: {against}.",
+    "placeholders": "for, against",
+    "notes": null
+  },
+  {
+    "key": "battle.stance_line",
+    "where": "Battle Details — the player's stance on the level's bill",
+    "english": "Stance on {bill}: {lean}. With you: {with}. Against you: {against}.",
+    "placeholders": "bill, lean, with, against",
+    "notes": null
+  },
+  {
+    "key": "floor_vote.stance_heading",
+    "where": "Vote screen — heading for what each vote does to the bill's stakeholders",
+    "english": "Your stance is {lean}. What each vote does to the bill's supporters and opponents:",
+    "placeholders": "lean",
+    "notes": null
+  },
+  {
+    "key": "floor_vote.stance_line",
+    "where": "Vote screen — one choice's effect on the stakeholders",
+    "english": "{choice}: {changes}{switch}",
+    "placeholders": "choice, changes, switch",
+    "notes": null
+  },
+  {
+    "key": "floor_vote.stance_switch",
+    "where": "Vote screen — marks a choice that switches the player's stance",
+    "english": "(switching your stance)",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "floor_vote.stance_none",
+    "where": "Vote screen — a choice that moves nobody",
+    "english": "no change",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "floor_vote.stance_result",
+    "where": "Vote result — what your vote did to the stakeholders",
+    "english": "Your vote moved: {changes}.",
+    "placeholders": "changes",
+    "notes": null
+  },
+  {
+    "key": "outcome.stance_drift",
+    "where": "Outcome panel — what winning this stage does to the bill's stakeholders",
+    "english": "Winning this stage moves the bill's stakeholders: {changes}.",
+    "placeholders": "changes",
+    "notes": null
   }
 ]

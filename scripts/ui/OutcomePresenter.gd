@@ -160,6 +160,12 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 		elif seats < 0:
 			lines.append(Text.say("outcome.behind", {"count": -seats}))
 
+	if str(stage.get("mode", "")) == "Combat":
+		var drift := GameState.stance_drift_preview()
+		if not drift.is_empty():
+			lines.append("")
+			lines.append(Text.say("outcome.stance_drift", {"changes": StanceLines.describe_changes(drift, 0)}))
+
 	var changes := _what_it_was_worth(stage, score)
 	if not changes.is_empty():
 		lines.append("")
