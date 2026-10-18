@@ -2606,3 +2606,9 @@ Also fixed: the 22 bill-visitor questions (VQ135-VQ156) read "the the Ainu Herit
 ### Content 6: more dilemmas for the original fifteen visitors (2026-10-18, Cameron)
 
 VI01-VI15 each gained three new dilemma questions (45 in all, VQ177-VQ221; each visitor now has 5 to 6), on new scenes rather than repeats: the neighbors' leaking hall roof, seals eating the catch, platform doors, a faction boss's rising rival, and so on. Each question follows the dilemma budget (a friend-pleaser, a rival-pleaser, a middle path, a refusal); the friend and rival organizations for each visitor are listed at the top of `tools/workbook/archive/b8/visitor_variety.py`. All drafts. The dilemma budget test in `test_office_hours_engine.gd` covers them.
+
+### Content 10: the player's style lines for six more room families (2026-10-18, Cameron)
+
+Floor Debate (ST02), Press Conference (ST04), Party Steering Committee (ST08), Media Ambush (ST19), Lobbyist Meeting (ST20) and Policy Study Session (ST21) had no player cues of their own, so the player spoke the card's generic Flavor Text there. Each now has **18 Player Cue rows** (six styles x attack, gain, block, five lines each; 108 rows, PL starting after the last existing row), shared with every bill-specific and topic copy of that room (the Stage ID cell lists the room and every stage whose Background ID is that room). Lines use each room's own setting (the floor and its benches, reporters and headlines, the party's platform and discipline, cameras and the hallway, access and interests, studies and experts) in the Tone Guide's style voices. Where a topic room already had its own cue set, the two sets merge into one pool. All drafts. Generator: `tools/workbook/archive/b8/room_family_cues.py`.
+
+**A flake fixed on the way:** `org_preview_test` sometimes clicked a card in the hand that lies beyond the right edge (the hand row scrolls, 5 cards do not fit in 1080 px) and failed; it now taps only a card that is on screen.
