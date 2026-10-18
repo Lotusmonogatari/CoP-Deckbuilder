@@ -207,6 +207,13 @@ func test_every_real_bill_has_questions_cues_and_transition_lines() -> void:
 
 func test_a_bill_levels_combat_stage_carries_its_bills_questions() -> void:
 	GameState.start_new_run("PC04")
-	var config := BattleSetup.for_level_stage("LV31", "ST05")
+	# LV31's Town Hall is now its own bill-specific copy of ST05.
+	var town_hall := ""
+	for slot in 10:
+		var stage_id := str(DataDB.get_level("LV31").get("stage_%d" % (slot + 1), ""))
+		if DataDB.stage_background_id(stage_id) == "ST05":
+			town_hall = stage_id
+	assert_ne(town_hall, "", "LV31 has a bill-specific Town Hall")
+	var config := BattleSetup.for_level_stage("LV31", town_hall)
 	assert_false((config.get("question_pool_bill", []) as Array).is_empty(),
 		"the Town Hall in the Ainu level is handed the bill's questions")

@@ -737,6 +737,10 @@ SHEETS = {
             ("Threshold Rise Min", "threshold_rise_min", "int"),
             ("Threshold Rise Max", "threshold_rise_max", "int"),
             ("Threshold Cap", "threshold_cap", "int"),
+            # 2026-10-18: the stage whose background picture this stage uses
+            # when it has none of its own (a Town Hall about one bill uses
+            # ST05's). Blank = its own ID only.
+            ("Background ID", "background_id", "str"),
         ],
     },
     "Cards": {
@@ -1922,6 +1926,9 @@ def validate(data, report):
         return "Chair of" in str(opp.get("title") or "")
     for st in data["stages"]:
         st_id, st_name = st["stage_id"], str(st.get("name_en") or "")
+        # A bill-specific copy is named "Committee on Finance: Consumption Tax":
+        # the room's kind is what comes before the colon (2026-10-18).
+        st_name = st_name.split(":")[0].strip()
         seated = [o for o in data["opponents"] if st_id in (o["stages"] or [])]
         if st_name.startswith("Committee on"):
             for opp in seated:

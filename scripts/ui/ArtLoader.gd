@@ -91,6 +91,12 @@ static func background_path(stage_id: String) -> String:
 	if not variant.is_empty():
 		candidates.append(folder("background") + "%s_%s.png" % [stage_id, variant])
 	candidates.append(folder("background") + stage_id + ".png")
+	# A stage with no picture of its own borrows its default's (Stages tab,
+	# Background ID), so a topic room never shows a placeholder where its
+	# family already has a background.
+	var borrowed := DataDB.stage_background_id(stage_id)
+	if not borrowed.is_empty() and borrowed != stage_id:
+		candidates.append(folder("background") + borrowed + ".png")
 	return _first_existing(candidates)
 
 

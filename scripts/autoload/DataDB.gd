@@ -668,6 +668,16 @@ func get_cosmetic_package(package_id: String) -> Dictionary:
 	return _lookup(_cosmetic_packages_by_id, package_id, "cosmetic package")
 
 
+## The stage whose picture `stage_id` borrows when it has none of its own
+## (Stages tab, Background ID); "" when it names none. Never warns.
+func stage_background_id(stage_id: String) -> String:
+	var row: Variant = _stages_by_id.get(stage_id)
+	if not (row is Dictionary):
+		return ""
+	var value: Variant = (row as Dictionary).get("background_id")
+	return "" if value == null else str(value).strip_edges()
+
+
 func get_stage(stage_id: String) -> Dictionary:
 	return _lookup(_stages_by_id, stage_id, "stage")
 
