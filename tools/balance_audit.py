@@ -363,7 +363,7 @@ def main():
               [(r["id"], r["name"], r["mode"], r["need"], r["energy"], f"{r['ppe']:.2f}", r["opp"], r["xp"], f"{r['reward']:.1f}") for r in srows[:14]]))
     fam_ppe = collections.defaultdict(list)
     for r in stg:
-        fam_ppe[re.sub(r"\s+(on|at|for)\s+.*$", "", r["name"])].append(r["ppe"])
+        fam_ppe[re.sub(r"(:.*$|\s+(on|at|for)\s+.*$)", "", r["name"])].append(r["ppe"])
     add("\nMean need/energy by family: " + ", ".join(f"{k} {statistics.mean(v):.2f}" for k, v in sorted(fam_ppe.items(), key=lambda kv: -statistics.mean(kv[1]))) + "\n")
     add("\n(top 14 hardest by need/energy.)\n")
 
@@ -381,7 +381,7 @@ def main():
             fw, sw_ = f[0] / max(f[1], 1), s[0] / max(s[1], 1)
             rows.append((sid, names.get(sid, ""), f"{sw_:.0%}", f"{fw:.0%}", f"{fw - sw_:+.0%}", f"{f[2] / max(f[1], 1):.0f}", f"{f[3] / max(f[1], 1):.1f}"))
             name = names.get(sid, "")
-            family = re.sub(r"\s+(on|at|for)\s+.*$", "", name)
+            family = re.sub(r"(:.*$|\s+(on|at|for)\s+.*$)", "", name)
             fam[family].append((sid, sw_, fw))
             grouped.setdefault(family, collections.defaultdict(list))
             if sw_ < T["stage_starter_low"]:
@@ -432,7 +432,7 @@ def main():
             flag("Medium", "Rewards", "Reward does not rise with difficulty across combat rooms", f"correlation {r_reward:+.2f} between need/energy and reward index")
         fam_reward = collections.defaultdict(list)
         for i, x in by_id.items():
-            fam_reward[re.sub(r"\s+(on|at|for)\s+.*$", "", x["name"])].append(x["reward"])
+            fam_reward[re.sub(r"(:.*$|\s+(on|at|for)\s+.*$)", "", x["name"])].append(x["reward"])
         add("Reward index by family (win XP/10 + Funds/5,000 + meta points): " + ", ".join(f"{k} {statistics.mean(v):.0f}" for k, v in sorted(fam_reward.items(), key=lambda kv: -statistics.mean(kv[1]))) + "\n")
         allstart = [i[1] for v in fam.values() for i in v]
         add(f"\nAll combat rooms: starter average {statistics.mean(allstart):.0%} (median {statistics.median(allstart):.0%}).\n")

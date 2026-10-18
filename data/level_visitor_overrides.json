@@ -32,7 +32,8 @@
     "for more than one visitor, the rest are still the dynamic pick.",
     "",
     "Nothing is in here yet. Every level currently uses the dynamic pick.",
-    "2026-10-14: LV63-LV82 each pin their own bill-specific visitor (VI40-VI59) to slot 1."
+    "2026-10-14: LV63-LV82 each pin their own bill-specific visitor (VI40-VI59) to slot 1.",
+    "2026-10-18: LV31-LV60 pin their own bill-specific Office Hours visitor to the Office Hours slot where they have one."
   ],
   "overrides": [
     {
@@ -134,6 +135,61 @@
       "level_id": "LV82",
       "slot": 1,
       "visitor_id": "VI59"
+    },
+    {
+      "level_id": "LV31",
+      "slot": 1,
+      "visitor_id": "VI60"
+    },
+    {
+      "level_id": "LV36",
+      "slot": 1,
+      "visitor_id": "VI61"
+    },
+    {
+      "level_id": "LV38",
+      "slot": 1,
+      "visitor_id": "VI62"
+    },
+    {
+      "level_id": "LV42",
+      "slot": 1,
+      "visitor_id": "VI63"
+    },
+    {
+      "level_id": "LV43",
+      "slot": 3,
+      "visitor_id": "VI64"
+    },
+    {
+      "level_id": "LV44",
+      "slot": 2,
+      "visitor_id": "VI65"
+    },
+    {
+      "level_id": "LV46",
+      "slot": 1,
+      "visitor_id": "VI66"
+    },
+    {
+      "level_id": "LV50",
+      "slot": 1,
+      "visitor_id": "VI67"
+    },
+    {
+      "level_id": "LV53",
+      "slot": 1,
+      "visitor_id": "VI68"
+    },
+    {
+      "level_id": "LV57",
+      "slot": 1,
+      "visitor_id": "VI69"
+    },
+    {
+      "level_id": "LV59",
+      "slot": 1,
+      "visitor_id": "VI70"
     }
   ]
 }

@@ -11,7 +11,8 @@ func _title(opponent: Dictionary) -> String:
 
 func test_a_named_committee_seats_only_its_own_members() -> void:
 	for stage: Dictionary in DataDB.stages:
-		var name := str(stage.get("name_en", ""))
+		# A bill-specific copy is "Committee on Finance: Consumption Tax".
+		var name := str(stage.get("name_en", "")).split(":")[0].strip_edges()
 		if not name.begins_with("Committee on"):
 			continue
 		for opponent: Dictionary in BattleSetup.eligible_opponents(str(stage["stage_id"])):

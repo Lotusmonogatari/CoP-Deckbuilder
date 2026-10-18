@@ -9127,5 +9127,1489 @@
     "reaction_b": "Winces.",
     "reaction_c": "Sighs.",
     "reaction_d": "Shakes head."
+  },
+  {
+    "question_id": "VQ135",
+    "visitor_ids": [
+      "VI60"
+    ],
+    "question_text": "Will you stand behind the the Ainu Heritage and Language?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Ainu Community Council will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO28",
+        "delta": 3
+      },
+      {
+        "target": "BO29",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO28",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO28",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO28",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Ainu Community Council will remember that.",
+    "response_b": "Then you are with Our Traditional Society. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ136",
+    "visitor_ids": [
+      "VI60"
+    ],
+    "question_text": "Who should pay for the the Ainu Heritage and Language?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Our Traditional Society will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO28",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO28",
+        "delta": 3
+      },
+      {
+        "target": "BO29",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO29",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO28",
+        "delta": -1
+      },
+      {
+        "target": "BO29",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Our Traditional Society will not love it.",
+    "response_b": "Taxes it is. Ainu Community Council is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ137",
+    "visitor_ids": [
+      "VI61"
+    ],
+    "question_text": "Will you stand behind the the Specified Skilled Worker Visa?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Agricultural Cooperatives will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Agricultural Cooperatives will remember that.",
+    "response_b": "Then you are with Our Traditional Society. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ138",
+    "visitor_ids": [
+      "VI61"
+    ],
+    "question_text": "Who should pay for the the Specified Skilled Worker Visa?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Our Traditional Society will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -1
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Our Traditional Society will not love it.",
+    "response_b": "Taxes it is. Agricultural Cooperatives is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ139",
+    "visitor_ids": [
+      "VI62"
+    ],
+    "question_text": "Will you stand behind the the Consumption Tax Rate?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Care and Welfare Council will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 4
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO26",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Care and Welfare Council will remember that.",
+    "response_b": "Then you are with Consumer Advocacy Network. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ140",
+    "visitor_ids": [
+      "VI62"
+    ],
+    "question_text": "Who should pay for the the Consumption Tax Rate?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Consumer Advocacy Network will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO26",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 4
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "Fair. Consumer Advocacy Network will not love it.",
+    "response_b": "Taxes it is. Care and Welfare Council is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ141",
+    "visitor_ids": [
+      "VI63"
+    ],
+    "question_text": "Will you stand behind the the Judicial Appointments Commission?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. National Media will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO08",
+        "delta": 3
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO03",
+        "delta": 3
+      },
+      {
+        "target": "BO08",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO08",
+        "delta": -2
+      },
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. National Media will remember that.",
+    "response_b": "Then you are with Local Kōenkai. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ142",
+    "visitor_ids": [
+      "VI63"
+    ],
+    "question_text": "Who should pay for the the Judicial Appointments Commission?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Local Kōenkai will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO03",
+        "delta": 3
+      },
+      {
+        "target": "BO08",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO08",
+        "delta": 3
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO08",
+        "delta": -1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Local Kōenkai will not love it.",
+    "response_b": "Taxes it is. National Media is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ143",
+    "visitor_ids": [
+      "VI64"
+    ],
+    "question_text": "Will you stand behind the the Temple and Shrine Heritage?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Buddhist Temples Association will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO19",
+        "delta": 3
+      },
+      {
+        "target": "BO20",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO03",
+        "delta": 3
+      },
+      {
+        "target": "BO19",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO19",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO19",
+        "delta": -2
+      },
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Buddhist Temples Association will remember that.",
+    "response_b": "Then you are with Local Kōenkai. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ144",
+    "visitor_ids": [
+      "VI64"
+    ],
+    "question_text": "Who should pay for the the Temple and Shrine Heritage?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Local Kōenkai will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO03",
+        "delta": 3
+      },
+      {
+        "target": "BO19",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO19",
+        "delta": 3
+      },
+      {
+        "target": "BO20",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO20",
+        "delta": 1
+      },
+      {
+        "target": "BO03",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO19",
+        "delta": -1
+      },
+      {
+        "target": "BO20",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Local Kōenkai will not love it.",
+    "response_b": "Taxes it is. Buddhist Temples Association is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ145",
+    "visitor_ids": [
+      "VI65"
+    ],
+    "question_text": "Will you stand behind the the Constituency Development Grants?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Members of Parliament will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO17",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 3
+      },
+      {
+        "target": "BO17",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO17",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO17",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Members of Parliament will remember that.",
+    "response_b": "Then you are with Taxpayers' Alliance. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ146",
+    "visitor_ids": [
+      "VI65"
+    ],
+    "question_text": "Who should pay for the the Constituency Development Grants?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Taxpayers' Alliance will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO23",
+        "delta": 3
+      },
+      {
+        "target": "BO17",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO17",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO17",
+        "delta": -1
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Taxpayers' Alliance will not love it.",
+    "response_b": "Taxes it is. Members of Parliament is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ147",
+    "visitor_ids": [
+      "VI66"
+    ],
+    "question_text": "Will you stand behind the the Organized Crime Conspiracy?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Veterans' Association will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO22",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO26",
+        "delta": 3
+      },
+      {
+        "target": "BO22",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO22",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO22",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Veterans' Association will remember that.",
+    "response_b": "Then you are with Consumer Advocacy Network. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ148",
+    "visitor_ids": [
+      "VI66"
+    ],
+    "question_text": "Who should pay for the the Organized Crime Conspiracy?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Consumer Advocacy Network will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO26",
+        "delta": 3
+      },
+      {
+        "target": "BO22",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO22",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO22",
+        "delta": -1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Consumer Advocacy Network will not love it.",
+    "response_b": "Taxes it is. Veterans' Association is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ149",
+    "visitor_ids": [
+      "VI67"
+    ],
+    "question_text": "Will you stand behind the the Yezo–EU Economic Partnership Agreement?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Chamber of Commerce will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Chamber of Commerce will remember that.",
+    "response_b": "Then you are with Rural Revitalization Council. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ150",
+    "visitor_ids": [
+      "VI67"
+    ],
+    "question_text": "Who should pay for the the Yezo–EU Economic Partnership Agreement?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Rural Revitalization Council will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": 3
+      },
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO05",
+        "delta": -1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Rural Revitalization Council will not love it.",
+    "response_b": "Taxes it is. Chamber of Commerce is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ151",
+    "visitor_ids": [
+      "VI68"
+    ],
+    "question_text": "Will you stand behind the the Chishima Joint Economic Activity?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Fisheries Cooperative will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO22",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO22",
+        "delta": 3
+      },
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO22",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO22",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Fisheries Cooperative will remember that.",
+    "response_b": "Then you are with Veterans' Association. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ152",
+    "visitor_ids": [
+      "VI68"
+    ],
+    "question_text": "Who should pay for the the Chishima Joint Economic Activity?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Veterans' Association will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO22",
+        "delta": 3
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO22",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO22",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Veterans' Association will not love it.",
+    "response_b": "Taxes it is. Fisheries Cooperative is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ153",
+    "visitor_ids": [
+      "VI69"
+    ],
+    "question_text": "Will you stand behind the the Regional Minimum Wage?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Labor Federation will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Labor Federation will remember that.",
+    "response_b": "Then you are with Small Business Owners' Association. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ154",
+    "visitor_ids": [
+      "VI69"
+    ],
+    "question_text": "Who should pay for the the Regional Minimum Wage?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Small Business Owners' Association will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -1
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Small Business Owners' Association will not love it.",
+    "response_b": "Taxes it is. Labor Federation is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ155",
+    "visitor_ids": [
+      "VI70"
+    ],
+    "question_text": "Will you stand behind the the Moral Education Curriculum?",
+    "choice_a": "Yes. It helps people like me.",
+    "choice_b": "No. It goes too far.",
+    "choice_c": "I want to hear both sides first.",
+    "choice_d": "That is a question for the party.",
+    "correct_choice": "A",
+    "response_right": "Good. Our Traditional Society will remember that.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO20",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO27",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "response_a": "Good. Our Traditional Society will remember that.",
+    "response_b": "Then you are with Urban Neighborhood Alliance. Understood.",
+    "response_c": "Fair enough. Do not take too long.",
+    "response_d": "So you will not say. Noted.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Shrugs.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ156",
+    "visitor_ids": [
+      "VI70"
+    ],
+    "question_text": "Who should pay for the the Moral Education Curriculum?",
+    "choice_a": "Whoever gains from it.",
+    "choice_b": "The whole country, through taxes.",
+    "choice_c": "Nobody. It should cost nothing.",
+    "choice_d": "I will find out and tell you.",
+    "correct_choice": "A",
+    "response_right": "Fair. Urban Neighborhood Alliance will not love it.",
+    "response_wrong": "Then we do not agree.",
+    "reaction_right": "Raises an eyebrow.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO27",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO20",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO20",
+        "delta": 1
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": -1
+      },
+      {
+        "target": "BO20",
+        "delta": -1
+      }
+    ],
+    "response_a": "Fair. Urban Neighborhood Alliance will not love it.",
+    "response_b": "Taxes it is. Our Traditional Society is relieved.",
+    "response_c": "Nothing costs nothing. But thank you.",
+    "response_d": "Please do. I will ask again.",
+    "reaction_a": "Raises an eyebrow.",
+    "reaction_b": "Smiles thinly.",
+    "reaction_c": "Laughs quietly.",
+    "reaction_d": "Sighs."
   }
 ]
