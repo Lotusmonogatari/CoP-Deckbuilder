@@ -57,12 +57,20 @@ static func resolve(cues: Array, level_id: String, staff_hired: Dictionary,
 
 
 ## The player's own internal thought about this level, from
-## data/level_intro_thoughts.json — entirely optional, one row per level_id.
+## data/level_intro_thoughts.json — entirely optional; several rows may name one level and one is picked.
 ## "" when nothing is written. Kept as its own lookup (not folded into
 ## resolve()'s staff loop above) because a thought is the level's own, not
 ## any one staff member's role.
-static func player_thought(thoughts: Array, level_id: String) -> String:
+static func player_thought(thoughts: Array, level_id: String, roll: float = -1.0) -> String:
+	# Several rows may name one level (2026-10-18); one is picked at random.
+	var found: Array[String] = []
 	for row: Dictionary in thoughts:
 		if str(row.get("level_id", "")) == level_id:
-			return str(row.get("thought_text", ""))
-	return ""
+			var text := str(row.get("thought_text", ""))
+			if not text.is_empty():
+				found.append(text)
+	if found.is_empty():
+		return ""
+	if roll < 0.0:
+		roll = randf()
+	return found[clampi(int(roll * found.size()), 0, found.size() - 1)]

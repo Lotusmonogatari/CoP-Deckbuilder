@@ -32,6 +32,13 @@ static func eligible(rows: Array, scope_field: String, scope_key: String) -> Arr
 		var row_key := "" if raw == null else str(raw).strip_edges()
 		if row_key.is_empty() or row_key == scope_key:
 			found.append(row)
+		elif row_key.contains(";"):
+			# A list of stage IDs (2026-10-18): "ST05; ST122; ST136". One row
+			# can serve a whole room family and its bill-specific copies.
+			for part: String in row_key.split(";"):
+				if part.strip_edges() == scope_key:
+					found.append(row)
+					break
 	return found
 
 

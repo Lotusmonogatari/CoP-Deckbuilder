@@ -90,3 +90,14 @@ func test_a_different_levels_thought_never_leaks_in() -> void:
 
 func test_no_written_thought_is_an_empty_string() -> void:
 	assert_eq(LevelIntroCues.player_thought([], "LV31"), "")
+
+
+func test_a_level_with_several_thoughts_gives_one_of_them() -> void:
+	var thoughts := [
+		{"level_id": "LV31", "thought_text": "First."},
+		{"level_id": "LV31", "thought_text": "Second."},
+		{"level_id": "LV32", "thought_text": "Other level."},
+	]
+	assert_eq(LevelIntroCues.player_thought(thoughts, "LV31", 0.0), "First.")
+	assert_eq(LevelIntroCues.player_thought(thoughts, "LV31", 0.99), "Second.")
+	assert_true(LevelIntroCues.player_thought(thoughts, "LV31") in ["First.", "Second."])

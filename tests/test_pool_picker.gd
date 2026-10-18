@@ -65,3 +65,15 @@ func test_a_null_scope_field_from_a_blank_workbook_cell_is_a_wildcard() -> void:
 	var found := PoolPicker.eligible(rows, "stage_id", "ST09")
 	assert_eq(found.size(), 1)
 	assert_eq(str(found[0].get("id")), "any")
+
+
+func test_a_stage_list_cell_matches_any_stage_it_names() -> void:
+	var rows := [
+		{"id": 1, "stage_id": "ST05; ST122; ST136"},
+		{"id": 2, "stage_id": "ST03"},
+		{"id": 3, "stage_id": null},
+	]
+	var ids: Array = PoolPicker.eligible(rows, "stage_id", "ST122").map(func(r: Dictionary) -> int: return r["id"])
+	assert_eq(ids, [1, 3])
+	ids = PoolPicker.eligible(rows, "stage_id", "ST03").map(func(r: Dictionary) -> int: return r["id"])
+	assert_eq(ids, [2, 3])
