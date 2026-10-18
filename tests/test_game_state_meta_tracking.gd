@@ -411,7 +411,7 @@ func test_a_vote_files_its_change_under_a_cause() -> void:
 	GameState.last_meta_cause = {}
 	GameState.apply_floor_vote_favorability({str(DataDB.player.get("party", "")): 3},
 		"the vote on X")
-	assert_eq(GameState.last_meta_cause.get("Party support"), ["the vote on X"])
+	assert_eq(GameState.last_meta_cause.get("Party support"), [{"cause": "the vote on X", "amount": 3}])
 	GameState.apply_floor_vote_favorability({str(DataDB.player.get("party", "")): 2},
 		"the vote on X")
 	assert_eq(GameState.last_meta_cause.get("Party support").size(), 1, "same cause once")

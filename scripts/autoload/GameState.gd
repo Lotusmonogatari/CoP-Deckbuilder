@@ -37,9 +37,13 @@ var meta: Dictionary = {}
 ## { "Reputation": 3 }. Cleared when the next stage starts. The battle screen
 ## reads it to tell the player what just happened to them.
 var last_meta_change: Dictionary = {}
-## Why each variable in last_meta_change moved: { name: [short cause, ...] },
-## in the order they happened (Your Record shows them, 2026-10-15).
+## Why each variable in last_meta_change moved: { name: [{cause, amount}, ...] },
+## in the order they happened, one entry per cause with its amounts summed
+## (Your Record shows them, 2026-10-15; amounts added 2026-10-18).
 var last_meta_cause: Dictionary = {}
+## The same for organizations: { booster_id: [{cause, amount}, ...] }, filed
+## beside last_booster_change (Important Stakeholders shows them).
+var last_booster_cause: Dictionary = {}
 ## The cause the next recorded change is filed under; set around a block of
 ## rewards, cleared after.
 var _cause := ""
@@ -716,7 +720,7 @@ func _apply_staff_reward(candidate: Dictionary, tier: int) -> void:
 		var target := str((reward as Dictionary).get("target", ""))
 		var delta := int((reward as Dictionary).get("delta", 0))
 		if target.begins_with("BO"):
-			_apply_booster_delta(target, delta)
+			_under_cause(Text.say("record.cause_staff"), func() -> void: _apply_booster_delta(target, delta))
 		elif target.begins_with("SG"):
 			_apply_segment_delta(target, delta)
 
@@ -742,6 +746,7 @@ func set_deck(chosen: Array[String]) -> String:
 func reset_booster_standing() -> void:
 	booster_standing = {}
 	last_booster_change = {}
+	last_booster_cause = {}
 
 	var start := int(DataDB.booster_standing.get("start", 30))
 	for booster: Dictionary in DataDB.boosters:
@@ -769,7 +774,8 @@ func _apply_neglect_decay() -> void:
 		var now := int(booster_standing[booster_id])
 		var target := BoosterStanding.decayed(now, int(starts.get(booster_id, default_start)), step)
 		if target != now:
-			_apply_booster_delta(booster_id, target - now)
+			_under_cause(Text.say("record.cause_neglect"),
+				func() -> void: _apply_booster_delta(booster_id, target - now))
 
 
 ## The five parties the player isn't in, back to where party_standing.json
@@ -812,6 +818,7 @@ func begin_level(runner: LevelRunner) -> void:
 	last_meta_cause = {}
 	last_xp_gained = 0
 	last_booster_change = {}
+	last_booster_cause = {}
 
 	# A level buff used in the Office now runs for every stage of this level.
 	level_bonuses = pending_level_bonuses.duplicate()
@@ -1176,7 +1183,9 @@ func _apply_level_bonus_win(level: Dictionary) -> void:
 	booster_ids.sort()
 	for booster_id: String in booster_ids:
 		var key := "win_delta_" + booster_id.to_lower()
-		_apply_booster_delta(booster_id, _roll_range(level.get(key)))
+		var rolled := _roll_range(level.get(key))
+		_under_cause(Text.say("record.cause_level_win"),
+			func() -> void: _apply_booster_delta(booster_id, rolled))
 
 
 ## A stage or level reward to one meta-variable: clamped, and filed under
@@ -1278,6 +1287,31 @@ func _move_meta(name: String, delta: int) -> void:
 	EventBus.meta_changed.emit(name, after, after - before)
 
 
+## Files `amount` under the current cause for `key`, summing with an earlier
+## entry for the same cause so a reason appears once with its total.
+func _note_cause(store: Dictionary, key: String, amount: int) -> void:
+	if amount == 0:
+		return
+	var cause := _cause if not _cause.is_empty() else Text.say("record.cause_other")
+	var entries: Array = store.get(key, [])
+	for entry: Dictionary in entries:
+		if entry["cause"] == cause:
+			entry["amount"] = int(entry["amount"]) + amount
+			store[key] = entries
+			return
+	entries.append({"cause": cause, "amount": amount})
+	store[key] = entries
+
+
+## Runs a block of booster changes under a named cause, then puts the
+## previous cause back.
+func _under_cause(cause: String, change: Callable) -> void:
+	var before := _cause
+	_cause = cause
+	change.call()
+	_cause = before
+
+
 ## Folds one lot of changes into what the screen will report.
 ##
 ## A stage can move the same variable twice — a flat reward for winning and
@@ -1287,10 +1321,7 @@ func _record_meta_change(applied: Dictionary) -> void:
 	for name: String in applied.keys():
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
 		if int(applied[name]) != 0 and not _cause.is_empty():
-			var causes: Array = last_meta_cause.get(name, [])
-			if not causes.has(_cause):
-				causes.append(_cause)
-			last_meta_cause[name] = causes
+			_note_cause(last_meta_cause, name, int(applied[name]))
 		# Announced as well as recorded. The recording is for the result
 		# screen, which asks afterwards; the announcement is for anything that
 		# wants to react as it happens — a sound, or the Office lighting up a
@@ -1321,7 +1352,8 @@ func _apply_question_boosters(pleased: Array, displeased: Array,
 	# read against where each organisation stands right now.
 	for entry: Dictionary in BoosterChange.compute(pleased, displeased, [],
 			DataDB.booster_standing, opposed, stance_adjust_tally(tally), booster_standing):
-		_apply_booster_delta(str(entry["booster_id"]), int(entry["net"]))
+		_under_cause(Text.say("record.cause_answers"),
+			func() -> void: _apply_booster_delta(str(entry["booster_id"]), int(entry["net"])))
 
 
 ## An opponent argued all the way down to zero support (§7.2's instant-win
@@ -1336,7 +1368,8 @@ func _apply_instant_win_penalties(crushed_boosters: Array) -> void:
 		return
 	var penalty := int(DataDB.booster_standing.get("instant_win_penalty", 2))
 	for booster_id: String in crushed_boosters:
-		_apply_booster_delta(booster_id, -penalty)
+		_under_cause(Text.say("record.cause_crush"),
+			func() -> void: _apply_booster_delta(booster_id, -penalty))
 
 
 ## Office Hours (design/proposals/office_hours.md): applies one visitor's
@@ -1348,7 +1381,11 @@ func _apply_instant_win_penalties(crushed_boosters: Array) -> void:
 ## applied — not shown to the player as a range and not rolled earlier at
 ## setup (open point 5 in the proposal).
 func apply_visitor_reward_entries(entries: Array) -> String:
-	return _describe_grant_outcomes(_apply_reward_entries(entries))
+	var before := _cause
+	_cause = Text.say("record.cause_visitor")
+	var applied := _apply_reward_entries(entries)
+	_cause = before
+	return _describe_grant_outcomes(applied)
 
 
 ## The one place a target_delta_list entry becomes a real effect — a
@@ -1763,7 +1800,10 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 
 	_take_item(item_id)
 	var split := Items.split_grants(item)
+	var cause_before := _cause
+	_cause = Text.say("record.cause_item", {"item": str(item.get("name_en", ""))})
 	var applied := _apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
+	_cause = cause_before
 	var outcome := _describe_grant_outcomes(applied)
 	if (split["stage"] as Array).is_empty():
 		return {"ok": true, "message": (Text.say("item.used_with_outcome",
@@ -1805,7 +1845,10 @@ func use_item_in_stage(item_id: String, engine: BattleEngine, chosen_target: Str
 		return {"ok": false, "message": str(result.get("reason", ""))}
 
 	_take_item(item_id)
+	var cause_before := _cause
+	_cause = Text.say("record.cause_item", {"item": str(item.get("name_en", ""))})
 	var applied := _apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
+	_cause = cause_before
 	if Items.duration(item) == Items.DURATION_LEVEL:
 		for effect: Dictionary in effects:
 			_add_bonus(level_bonuses, str(effect["token"]), int(effect["amount"]))
@@ -1889,6 +1932,7 @@ func _apply_booster_delta(booster_id: String, delta: int) -> void:
 	booster_standing[booster_id] = after
 	if after != before:
 		last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
+		_note_cause(last_booster_cause, booster_id, after - before)
 
 
 ## Where the player stands with `party_name`. The player's own party reads
@@ -2073,7 +2117,9 @@ func _apply_party_tier_lean(bill_id: String, passed: bool) -> void:
 		return
 	for booster: Dictionary in DataDB.boosters:
 		if str(booster.get("tier", "")) == "Party":
-			_apply_booster_delta(str(booster.get("booster_id", "")), delta)
+			var party_body := str(booster.get("booster_id", ""))
+			_under_cause(Text.say("record.cause_party_lean", {"bill": str(bill.get("bill_name", ""))}),
+				func() -> void: _apply_booster_delta(party_body, delta))
 
 
 # ---------------------------------------------------------------------------
@@ -2150,6 +2196,10 @@ func stance_adjust_tally(tally: Dictionary) -> Dictionary:
 		int(DataDB.balance.get("stance_other_side_please_percent", 100)))
 
 
+func _stance_bill_name() -> String:
+	return str(DataDB.floor_votes.get(str(bill_stance.get("bill_id", "")), {}).get("bill_name", ""))
+
+
 ## Winning a Combat stage in a bill level: the side against your lean loses,
 ## your own side gains. What the far side lost is remembered, because a switch
 ## at the vote can win a quarter of it back.
@@ -2161,7 +2211,8 @@ func _apply_stance_win_drift() -> void:
 	var cost: Dictionary = bill_stance.get("cost", {})
 	for id: String in drift:
 		var delta := int(drift[id])
-		_apply_booster_delta(id, delta)
+		_under_cause(Text.say("record.cause_stance_drift", {"bill": _stance_bill_name()}),
+			func() -> void: _apply_booster_delta(id, delta))
 		if delta < 0:
 			cost[id] = int(cost.get(id, 0)) - delta
 	bill_stance["cost"] = cost
@@ -2177,8 +2228,11 @@ func apply_stance_vote(choice: String) -> Dictionary:
 	bill_stance["voted"] = true
 	var result := preview_stance_vote(choice)
 	var bill: Dictionary = DataDB.floor_votes.get(str(bill_stance.get("bill_id", "")), {})
+	var vote_cause := Text.say("record.cause_stance_switch" if bool(result.get("flip", false))
+		else "record.cause_stance_vote", {"bill": str(bill.get("bill_name", ""))})
 	for id: String in (result["deltas"] as Dictionary):
-		_apply_booster_delta(id, int((result["deltas"] as Dictionary)[id]))
+		var moved := int((result["deltas"] as Dictionary)[id])
+		_under_cause(vote_cause, func() -> void: _apply_booster_delta(id, moved))
 	var party_delta := int(result["party_delta"])
 	if party_delta != 0:
 		apply_floor_vote_favorability({str(DataDB.player.get("party", "")): party_delta},

@@ -446,6 +446,9 @@ func _organisation_row(booster: Dictionary) -> Control:
 	var change := int(GameState.last_booster_change.get(booster_id, 0))
 	if change != 0:
 		line += "  (%+d)" % change
+		var because := CauseLines.because(GameState.last_booster_cause.get(booster_id, []))
+		if not because.is_empty():
+			line += "  " + because
 
 	var box := UiKit.tight_column()
 	box.add_child(UiKit.line(line))
@@ -871,9 +874,9 @@ func _show_record() -> void:
 			if is_party else int(GameState.last_meta_change.get(name, 0)))
 		if change != 0:
 			line += "  (%+d)" % change
-			var causes: Array = GameState.last_meta_cause.get(name, [])
-			if not causes.is_empty():
-				line += "  " + Text.say("record.because", {"causes": ", ".join(causes)})
+			var because := CauseLines.because(GameState.last_meta_cause.get(name, []))
+			if not because.is_empty():
+				line += "  " + because
 		rows.append(UiKit.line(line))
 
 	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))

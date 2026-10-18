@@ -138,7 +138,7 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 				who.append(str(names.get(booster_id, booster_id)))
 			if not who.is_empty():
 				lines.append("")
-				lines.append(Text.say(str(entry[0]), {"names": ", ".join(who)}))
+				lines.append(Text.say(str(entry[0]), {"names": CauseLines.join(who)}))
 
 	# A loss says what it cost, from the stage's own loss_delta_* columns —
 	# the same numbers GameState charges when this panel closes (2026-09-27:
@@ -147,7 +147,7 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 		var cost := _what_it_was_worth(stage, score, "loss")
 		if not cost.is_empty():
 			lines.append("")
-			lines.append(", ".join(cost) + ".")
+			lines.append(CauseLines.join(cost) + ".")
 		return "\n".join(lines)
 
 	# Only where a later stage actually draws on this one. Every stage has a
@@ -169,7 +169,7 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 	var changes := _what_it_was_worth(stage, score)
 	if not changes.is_empty():
 		lines.append("")
-		lines.append(", ".join(changes) + ".")
+		lines.append(CauseLines.join(changes) + ".")
 	elif state.outcome == "win" and LevelRunner.rewards_are_unset(stage):
 		# The truth, rather than silence that reads as a bug. Every playtest
 		# stage is in this state until Cameron sets its numbers.

@@ -74,6 +74,10 @@ func _check_card_zoom() -> void:
 		return
 
 	await _click(hand.get_child(0))
+	# In a question room the first tap previews the organizations; the second
+	# opens the card (2026-10-18).
+	if not zoom.visible and (hand.get_child(0) as CardView).selected:
+		await _click(hand.get_child(0))
 	if not zoom.visible:
 		_failures.append("clicking a card did not open the zoom view")
 		return
