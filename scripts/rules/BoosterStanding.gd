@@ -54,6 +54,17 @@ static func _scaled(amount: int, factor: float) -> int:
 	return maxi(roundi(amount * factor), 1)
 
 
+## Settling back toward the starting standing by `percent` of the distance
+## (at least one point), without passing it. 0 turns it off.
+static func decayed_percent(current: int, start: int, percent: float) -> int:
+	if percent <= 0.0 or current == start:
+		return current
+	var step := maxi(roundi(absf(float(current - start)) * percent / 100.0), 1)
+	if current > start:
+		return maxi(current - step, start)
+	return mini(current + step, start)
+
+
 ## The standing an organisation drifts toward when ignored for a level, one
 ## step (`neglect_decay`) closer to `start`.
 static func decayed(current: int, start: int, step: int) -> int:

@@ -3757,5 +3757,12 @@
     "english": "your influence turning {bill}",
     "placeholders": "bill",
     "notes": null
+  },
+  {
+    "key": "record.cause_decay",
+    "where": "Reason: an organization settling back toward where it started",
+    "english": "standing settling back over time",
+    "placeholders": null,
+    "notes": null
   }
 ]

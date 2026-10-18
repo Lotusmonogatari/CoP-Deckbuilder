@@ -65,6 +65,12 @@
     "{below, factor} steps, the last with no 'below') shrink gains and grow",
     "penalties as standing rises: gains x1.0 below 40, x0.6 below 60, x0.4 above;",
     "penalties x1.0 below 60, x1.5 above (BoosterStanding.net_for()). (3)",
+    "2026-10-18: 'decay_percent' is the default for the Boosters tab's own Decay",
+    "Percent column (every organisation has one): at the end of every level,",
+    "moved or not, each organisation drifts back toward where it started by that",
+    "percent of the distance (at least 1 point), so standing cannot simply climb",
+    "to the ceiling and stay there.",
+    "",
     "'neglect_decay': at the end of each level, every organisation whose standing",
     "did not move this level drifts this many points toward its own starting",
     "standing (0 turns it off)."
@@ -79,6 +85,7 @@
   "question_swing_cap": 10,
   "instant_win_penalty": 2,
   "neglect_decay": 1,
+  "decay_percent": 5,
   "gain_bands": [
     {"below": 40, "factor": 1.0},
     {"below": 60, "factor": 0.6},

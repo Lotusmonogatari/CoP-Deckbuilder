@@ -27,9 +27,10 @@ func test_the_two_bodies_exist_with_the_agreed_numbers() -> void:
 	assert_eq(committee["tier"], "Party")
 	assert_eq(int(activists["starting_standing"]), 5)
 	assert_eq(int(committee["starting_standing"]), 15)
-	assert_eq(float(activists["party_lean_multiplier"]), 2.0)
-	assert_eq(float(committee["party_lean_multiplier"]), 0.5)
-	assert_eq(float(DataDB.get_booster("BO02")["party_lean_multiplier"]), 1.5)
+	assert_eq(float(activists["party_lean_multiplier"]), 1.5)
+	assert_eq(float(committee["party_lean_multiplier"]), 0.375)
+	assert_eq(float(DataDB.get_booster("BO02")["party_lean_multiplier"]), 1.125)
+	assert_eq(float(DataDB.get_booster("BO01")["party_lean_multiplier"]), 0.75)
 
 
 func test_settle_carries_fractions() -> void:
@@ -160,3 +161,30 @@ func test_the_activist_backing_adds_five_support_in_a_real_town_hall_and_caucus_
 	GameState.booster_standing["BO31"] = 60
 	assert_eq(BattleSetup.backing_bonus(DataDB.get_stage("ST02"))["start_support"], 0, "not a Town Hall or Caucus")
 	GameState.owned_modifiers = []
+
+
+func test_decay_settles_back_by_a_percent_of_the_distance() -> void:
+	assert_eq(BoosterStanding.decayed_percent(100, 5, 8.0), 92)    # 95 x 8% = 7.6 -> 8
+	assert_eq(BoosterStanding.decayed_percent(6, 5, 8.0), 5, "at least one point, never past the start")
+	assert_eq(BoosterStanding.decayed_percent(10, 30, 5.0), 11, "an offended organization settles back up")
+	assert_eq(BoosterStanding.decayed_percent(50, 50, 5.0), 50)
+	assert_eq(BoosterStanding.decayed_percent(80, 30, 0.0), 80, "0 turns it off")
+
+
+func test_every_organization_has_its_own_decay_percent() -> void:
+	for booster: Dictionary in DataDB.boosters:
+		assert_not_null(booster.get("decay_percent"), "%s has a Decay Percent" % booster["booster_id"])
+		assert_gt(float(booster["decay_percent"]), 0.0)
+
+
+func test_ending_a_level_settles_every_organization_back() -> void:
+	GameState.start_new_run("PC02")
+	DataDB.standing_links = []
+	for id: String in GameState.booster_standing:
+		GameState.booster_standing[id] = 100
+	GameState.last_booster_change = {}
+	GameState._apply_standing_decay()
+	for booster: Dictionary in DataDB.boosters:
+		assert_lt(int(GameState.booster_standing[str(booster["booster_id"])]), 100,
+			"%s settled back" % booster["booster_id"])
+	assert_string_contains(GameState.last_booster_cause["BO31"][0]["cause"], "settling back")

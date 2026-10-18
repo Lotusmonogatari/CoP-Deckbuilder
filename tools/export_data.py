@@ -826,6 +826,10 @@ SHEETS = {
             # reacts when a bill goes for or against the player's party.
             # Blank = 1.0 (GameState._apply_party_tier_lean()).
             ("Party Lean Multiplier", "party_lean_multiplier", "num"),
+            # 2026-10-18: every organization's own settling-back rate, a
+            # percent of its distance from its starting standing per level.
+            # Blank = booster_standing.json's decay_percent.
+            ("Decay Percent", "decay_percent", "num"),
         ],
     },
     # National Assembly Floor Voting (ST23, 2026-09-26): the six real-world

@@ -10,7 +10,8 @@
       "M16"
     ],
     "starting_standing": 30,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": 0.75,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO02",
@@ -23,7 +24,8 @@
       "M17"
     ],
     "starting_standing": 35,
-    "party_lean_multiplier": 1.5
+    "party_lean_multiplier": 1.125,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO03",
@@ -35,7 +37,8 @@
       "M18"
     ],
     "starting_standing": 45,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO04",
@@ -48,7 +51,8 @@
       "M19"
     ],
     "starting_standing": 20,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO05",
@@ -60,7 +64,8 @@
       "M20"
     ],
     "starting_standing": 20,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO06",
@@ -72,7 +77,8 @@
       "M21"
     ],
     "starting_standing": 35,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO07",
@@ -84,7 +90,8 @@
       "M22"
     ],
     "starting_standing": 15,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO08",
@@ -97,7 +104,8 @@
       "M23"
     ],
     "starting_standing": 10,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO09",
@@ -110,7 +118,8 @@
       "M24"
     ],
     "starting_standing": 15,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO10",
@@ -124,7 +133,8 @@
       "M25"
     ],
     "starting_standing": 15,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO11",
@@ -136,7 +146,8 @@
       "M26"
     ],
     "starting_standing": 10,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO12",
@@ -148,7 +159,8 @@
       "M27"
     ],
     "starting_standing": 20,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO13",
@@ -160,7 +172,8 @@
       "M28"
     ],
     "starting_standing": 20,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO14",
@@ -172,7 +185,8 @@
       "M29"
     ],
     "starting_standing": 20,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO15",
@@ -184,7 +198,8 @@
       "M30"
     ],
     "starting_standing": 15,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO16",
@@ -196,7 +211,8 @@
       "M31"
     ],
     "starting_standing": 15,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO17",
@@ -208,7 +224,8 @@
       "M45"
     ],
     "starting_standing": 20,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO18",
@@ -220,7 +237,8 @@
       "M46"
     ],
     "starting_standing": 35,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO19",
@@ -232,7 +250,8 @@
       "M33"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO20",
@@ -244,7 +263,8 @@
       "M34"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO21",
@@ -256,7 +276,8 @@
       "M35"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO22",
@@ -268,7 +289,8 @@
       "M36"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO23",
@@ -280,7 +302,8 @@
       "M37"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO24",
@@ -292,7 +315,8 @@
       "M38"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO25",
@@ -304,7 +328,8 @@
       "M39"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO26",
@@ -316,7 +341,8 @@
       "M40"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO27",
@@ -328,7 +354,8 @@
       "M41"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO28",
@@ -340,7 +367,8 @@
       "M42"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO29",
@@ -352,7 +380,8 @@
       "M43"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO30",
@@ -364,7 +393,8 @@
       "M44"
     ],
     "starting_standing": null,
-    "party_lean_multiplier": null
+    "party_lean_multiplier": null,
+    "decay_percent": 5.0
   },
   {
     "booster_id": "BO31",
@@ -376,7 +406,8 @@
       "M47"
     ],
     "starting_standing": 5,
-    "party_lean_multiplier": 2.0
+    "party_lean_multiplier": 1.5,
+    "decay_percent": 8.0
   },
   {
     "booster_id": "BO32",
@@ -388,6 +419,7 @@
       "M48"
     ],
     "starting_standing": 15,
-    "party_lean_multiplier": 0.5
+    "party_lean_multiplier": 0.375,
+    "decay_percent": 8.0
   }
 ]
