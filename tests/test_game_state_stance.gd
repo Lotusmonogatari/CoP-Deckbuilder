@@ -139,3 +139,30 @@ func test_a_new_level_starts_without_a_stance() -> void:
 	GameState.set_bill_lean("BI01", "Oppose")
 	_begin_lv31()
 	assert_eq(GameState.bill_stance, {})
+
+
+func test_an_old_save_with_no_stance_loads_with_none() -> void:
+	_begin_lv31()
+	var saved := GameState.to_save()
+	saved.erase("bill_stance")
+	GameState.load_save(saved)
+	assert_eq(GameState.bill_stance, {})
+	assert_eq(GameState.stance_lean(), "")
+
+
+func test_abandoning_a_level_forgets_the_stance_and_costs_nobody_anything() -> void:
+	_begin_lv31()
+	GameState.set_bill_lean("BI01", "Oppose")
+	_win_next_stage()
+	var standing := GameState.booster_standing.duplicate()
+	GameState.abandon_level()
+	assert_eq(GameState.bill_stance, {})
+	assert_eq(GameState.booster_standing, standing, "abandoning moves no standing")
+
+
+func test_a_vote_after_abandoning_does_nothing() -> void:
+	_begin_lv31()
+	GameState.set_bill_lean("BI01", "Oppose")
+	GameState.abandon_level()
+	var result := GameState.apply_stance_vote("Yes")
+	assert_true((result.get("deltas", {}) as Dictionary).is_empty())

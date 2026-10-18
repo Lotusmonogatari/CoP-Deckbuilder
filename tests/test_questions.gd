@@ -377,6 +377,10 @@ func test_every_question_has_somebody_to_please_and_somebody_asking() -> void:
 			for booster: String in pleases:
 				assert_has(booster_ids, booster,
 					"%s names an organisation that does not exist" % question.get("id"))
+			# A question about a bill belongs to no one room, so it has no
+			# asker until BattleSetup seats it in one (QuestionAskers).
+			if not (question.get("bill_ids", []) as Array).is_empty():
+				continue
 			assert_ne(str(question.get("asked_by", "")), "",
 				"%s has nobody asking it" % question.get("id"))
 

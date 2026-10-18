@@ -87,16 +87,21 @@ func test_bill_opponent_cues_are_found_by_opponent_then_suit() -> void:
 
 
 func test_bill_questions_are_indexed_apart_from_stage_questions() -> void:
+	# The real workbook now carries bill questions for BI01 too, so count
+	# what the two fixture rows add.
+	var base_all := DataDB.get_bill_questions("BI01").size()
+	var base_st05 := BattleSetup.bill_questions_for("BI01", "ST05").size()
+	var base_st17 := BattleSetup.bill_questions_for("BI01", "ST17").size()
 	var rows: Array = DataDB.questions.get("stage", [])
 	rows.append({"id": "ZB1", "text": "About the bill?", "theme": "x", "grades": {}, "bill_ids": ["BI01"], "stage_ids": []})
 	rows.append({"id": "ZB2", "text": "In one room only", "theme": "x", "grades": {}, "bill_ids": ["BI01"], "stage_ids": ["ST05"]})
 	DataDB.questions["stage"] = rows
 	DataDB._index_stage_questions()
-	assert_eq(DataDB.get_bill_questions("BI01").size(), 2)
+	assert_eq(DataDB.get_bill_questions("BI01").size(), base_all + 2)
 	for q: Dictionary in DataDB.get_stage_questions("ST05"):
 		assert_ne(q["id"], "ZB1")
-	assert_eq(BattleSetup.bill_questions_for("BI01", "ST05").size(), 2)
-	assert_eq(BattleSetup.bill_questions_for("BI01", "ST17").size(), 1, "the ST05-only one stays in ST05")
+	assert_eq(BattleSetup.bill_questions_for("BI01", "ST05").size(), base_st05 + 2)
+	assert_eq(BattleSetup.bill_questions_for("BI01", "ST17").size(), base_st17 + 1, "the ST05-only one stays in ST05")
 	assert_eq(BattleSetup.bill_questions_for("", "ST05"), [])
 
 
@@ -177,3 +182,31 @@ func test_transition_dialogue_is_scoped_by_bill_and_stance() -> void:
 	assert_eq(picked[0]["character_line"], "ainu oppose", "the bill's line is preferred to the general one")
 	var plain := StageTransition.pick_speakers(cast, rows, "ST05", 1, rng, null, "", "")
 	assert_eq(plain[0]["character_line"], "general")
+
+
+# ---------------------------------------------------------------------------
+# The real workbook: every bill carries its own content (batch 4, 2026-10-18)
+# ---------------------------------------------------------------------------
+
+func test_every_real_bill_has_questions_cues_and_transition_lines() -> void:
+	for bill_id: String in DataDB.floor_votes.keys():
+		assert_gte(DataDB.get_bill_questions(bill_id).size(), 4, "%s has bill questions" % bill_id)
+		for suit: String in ["Earnest", "Emotional", "Appeal", "Data Driven", "Divisive", "Duplicitous"]:
+			for stance: String in ["Support", "Oppose"]:
+				assert_false(DataDB.get_bill_player_cue_lines(bill_id, suit, "attack", stance).is_empty(),
+					"%s %s %s has player cues" % [bill_id, suit, stance])
+			for verb: String in ["attack", "gain", "block"]:
+				assert_false(DataDB.get_bill_opponent_cue_lines(bill_id, "", suit, verb).is_empty(),
+					"%s %s %s has opponent cues" % [bill_id, suit, verb])
+		for stance: String in ["Support", "Oppose"]:
+			var rows := StageTransition.scope_dialogue(DataDB.transition_dialogue, bill_id, stance)
+			var bill_rows := rows.filter(func(r: Dictionary) -> bool:
+				return str(r.get("bill_id", "")) == bill_id)
+			assert_gte(bill_rows.size(), 4, "%s %s has transition lines" % [bill_id, stance])
+
+
+func test_a_bill_levels_combat_stage_carries_its_bills_questions() -> void:
+	GameState.start_new_run("PC04")
+	var config := BattleSetup.for_level_stage("LV31", "ST05")
+	assert_false((config.get("question_pool_bill", []) as Array).is_empty(),
+		"the Town Hall in the Ainu level is handed the bill's questions")

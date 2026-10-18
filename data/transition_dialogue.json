@@ -5011,5 +5011,3605 @@
     "player_reply_en": "No dodging.",
     "bill_id": null,
     "stance": null
+  },
+  {
+    "transition_dialogue_id": "TD558",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Ainu Heritage and Language Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI01",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD559",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Ainu Heritage and Language Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI01",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD560",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Ainu Heritage and Language Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI01",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD561",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Ainu Heritage and Language Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI01",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD562",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Ainu Heritage and Language Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI01",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD563",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Ainu Heritage and Language Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI01",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD564",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Ainu Heritage and Language Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI01",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD565",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Ainu Heritage and Language Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI01",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD566",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Agricultural Price Stabilization Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI02",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD567",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Agricultural Price Stabilization Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI02",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD568",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Agricultural Price Stabilization Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI02",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD569",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Agricultural Price Stabilization Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI02",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD570",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Agricultural Price Stabilization Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI02",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD571",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Agricultural Price Stabilization Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI02",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD572",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Agricultural Price Stabilization Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI02",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD573",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Agricultural Price Stabilization Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI02",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD574",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Special Economic Zones Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI03",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD575",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Special Economic Zones Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI03",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD576",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Special Economic Zones Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI03",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD577",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Special Economic Zones Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI03",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD578",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Special Economic Zones Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI03",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD579",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Special Economic Zones Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI03",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD580",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Special Economic Zones Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI03",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD581",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Special Economic Zones Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI03",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD582",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Hokkaido Shinkansen Acceleration Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI04",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD583",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Hokkaido Shinkansen Acceleration Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI04",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD584",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Hokkaido Shinkansen Acceleration Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI04",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD585",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Hokkaido Shinkansen Acceleration Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI04",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD586",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Hokkaido Shinkansen Acceleration Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI04",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD587",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Hokkaido Shinkansen Acceleration Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI04",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD588",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Hokkaido Shinkansen Acceleration Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI04",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD589",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Hokkaido Shinkansen Acceleration Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI04",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD590",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Chishima Coastal Defense Modernization Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI05",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD591",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Chishima Coastal Defense Modernization Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI05",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD592",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Chishima Coastal Defense Modernization Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI05",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD593",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Chishima Coastal Defense Modernization Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI05",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD594",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Chishima Coastal Defense Modernization Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI05",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD595",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Chishima Coastal Defense Modernization Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI05",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD596",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Chishima Coastal Defense Modernization Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI05",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD597",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Chishima Coastal Defense Modernization Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI05",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD598",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Specified Skilled Worker Visa Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI06",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD599",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Specified Skilled Worker Visa Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI06",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD600",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Specified Skilled Worker Visa Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI06",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD601",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Specified Skilled Worker Visa Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI06",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD602",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Specified Skilled Worker Visa Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI06",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD603",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Specified Skilled Worker Visa Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI06",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD604",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Specified Skilled Worker Visa Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI06",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD605",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Specified Skilled Worker Visa Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI06",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD606",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on this bill backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI07",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD607",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on this bill gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI07",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD608",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back this bill. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI07",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD609",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose this bill. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI07",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD610",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle this bill.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI07",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD611",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle this bill. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI07",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD612",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back this bill. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI07",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD613",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose this bill. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI07",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD614",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Consumption Tax Rate Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI08",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD615",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Consumption Tax Rate Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI08",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD616",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Consumption Tax Rate Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI08",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD617",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Consumption Tax Rate Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI08",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD618",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Consumption Tax Rate Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI08",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD619",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Consumption Tax Rate Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI08",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD620",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Consumption Tax Rate Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI08",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD621",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Consumption Tax Rate Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI08",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD622",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Prefectural Fiscal Devolution Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI09",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD623",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Prefectural Fiscal Devolution Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI09",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD624",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Prefectural Fiscal Devolution Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI09",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD625",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Prefectural Fiscal Devolution Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI09",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD626",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Prefectural Fiscal Devolution Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI09",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD627",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Prefectural Fiscal Devolution Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI09",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD628",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Prefectural Fiscal Devolution Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI09",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD629",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Prefectural Fiscal Devolution Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI09",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD630",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Candidate Gender Parity Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI10",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD631",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Candidate Gender Parity Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI10",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD632",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Candidate Gender Parity Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI10",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD633",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Candidate Gender Parity Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI10",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD634",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Candidate Gender Parity Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI10",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD635",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Candidate Gender Parity Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI10",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD636",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Candidate Gender Parity Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI10",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD637",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Candidate Gender Parity Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI10",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD638",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Tsugaru Strait Joint Commission Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI11",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD639",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Tsugaru Strait Joint Commission Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI11",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD640",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Tsugaru Strait Joint Commission Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI11",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD641",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Tsugaru Strait Joint Commission Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI11",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD642",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Tsugaru Strait Joint Commission Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI11",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD643",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Tsugaru Strait Joint Commission Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI11",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD644",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Tsugaru Strait Joint Commission Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI11",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD645",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Tsugaru Strait Joint Commission Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI11",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD646",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Judicial Appointments Commission Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI12",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD647",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Judicial Appointments Commission Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI12",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD648",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Judicial Appointments Commission Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI12",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD649",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Judicial Appointments Commission Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI12",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD650",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Judicial Appointments Commission Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI12",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD651",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Judicial Appointments Commission Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI12",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD652",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Judicial Appointments Commission Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI12",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD653",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Judicial Appointments Commission Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI12",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD654",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Temple and Shrine Heritage Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI13",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD655",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Temple and Shrine Heritage Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI13",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD656",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Temple and Shrine Heritage Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI13",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD657",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Temple and Shrine Heritage Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI13",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD658",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Temple and Shrine Heritage Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI13",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD659",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Temple and Shrine Heritage Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI13",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD660",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Temple and Shrine Heritage Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI13",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD661",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Temple and Shrine Heritage Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI13",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD662",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Constituency Development Grants Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI14",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD663",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Constituency Development Grants Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI14",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD664",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Constituency Development Grants Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI14",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD665",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Constituency Development Grants Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI14",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD666",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Constituency Development Grants Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI14",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD667",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Constituency Development Grants Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI14",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD668",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Constituency Development Grants Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI14",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD669",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Constituency Development Grants Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI14",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD670",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Digital Economy Promotion Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI15",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD671",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Digital Economy Promotion Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI15",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD672",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Digital Economy Promotion Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI15",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD673",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Digital Economy Promotion Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI15",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD674",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Digital Economy Promotion Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI15",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD675",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Digital Economy Promotion Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI15",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD676",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Digital Economy Promotion Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI15",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD677",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Digital Economy Promotion Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI15",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD678",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Organized Crime Conspiracy Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI16",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD679",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Organized Crime Conspiracy Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI16",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD680",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Organized Crime Conspiracy Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI16",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD681",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Organized Crime Conspiracy Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI16",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD682",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Organized Crime Conspiracy Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI16",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD683",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Organized Crime Conspiracy Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI16",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD684",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Organized Crime Conspiracy Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI16",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD685",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Organized Crime Conspiracy Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI16",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD686",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Partnership Registration Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI17",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD687",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Partnership Registration Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI17",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD688",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Partnership Registration Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI17",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD689",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Partnership Registration Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI17",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD690",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Partnership Registration Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI17",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD691",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Partnership Registration Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI17",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD692",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Partnership Registration Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI17",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD693",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Partnership Registration Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI17",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD694",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the National Emergency Powers Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI18",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD695",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the National Emergency Powers Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI18",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD696",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the National Emergency Powers Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI18",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD697",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the National Emergency Powers Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI18",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD698",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the National Emergency Powers Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI18",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD699",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the National Emergency Powers Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI18",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD700",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the National Emergency Powers Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI18",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD701",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the National Emergency Powers Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI18",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD702",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Yezo–US Security Consultation Agreement backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI19",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD703",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Yezo–US Security Consultation Agreement gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI19",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD704",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Yezo–US Security Consultation Agreement. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI19",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD705",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Yezo–US Security Consultation Agreement. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI19",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD706",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Yezo–US Security Consultation Agreement.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI19",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD707",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Yezo–US Security Consultation Agreement. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI19",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD708",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Yezo–US Security Consultation Agreement. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI19",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD709",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Yezo–US Security Consultation Agreement. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI19",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD710",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Yezo–EU Economic Partnership Agreement backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI20",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD711",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Yezo–EU Economic Partnership Agreement gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI20",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD712",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Yezo–EU Economic Partnership Agreement. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI20",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD713",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Yezo–EU Economic Partnership Agreement. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI20",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD714",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Yezo–EU Economic Partnership Agreement.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI20",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD715",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Yezo–EU Economic Partnership Agreement. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI20",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD716",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Yezo–EU Economic Partnership Agreement. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI20",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD717",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Yezo–EU Economic Partnership Agreement. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI20",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD718",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on this bill backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI21",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD719",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on this bill gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI21",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD720",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back this bill. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI21",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD721",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose this bill. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI21",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD722",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle this bill.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI21",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD723",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle this bill. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI21",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD724",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back this bill. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI21",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD725",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose this bill. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI21",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD726",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Inbound Tourism Visa Waiver Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI22",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD727",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Inbound Tourism Visa Waiver Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI22",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD728",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Inbound Tourism Visa Waiver Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI22",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD729",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Inbound Tourism Visa Waiver Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI22",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD730",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Inbound Tourism Visa Waiver Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI22",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD731",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Inbound Tourism Visa Waiver Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI22",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD732",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Inbound Tourism Visa Waiver Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI22",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD733",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Inbound Tourism Visa Waiver Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI22",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD734",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Chishima Joint Economic Activity Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI23",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD735",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Chishima Joint Economic Activity Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI23",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD736",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Chishima Joint Economic Activity Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI23",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD737",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Chishima Joint Economic Activity Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI23",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD738",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Chishima Joint Economic Activity Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI23",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD739",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Chishima Joint Economic Activity Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI23",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD740",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Chishima Joint Economic Activity Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI23",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD741",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Chishima Joint Economic Activity Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI23",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD742",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Tomari Nuclear Restart Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI24",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD743",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Tomari Nuclear Restart Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI24",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD744",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Tomari Nuclear Restart Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI24",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD745",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Tomari Nuclear Restart Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI24",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD746",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Tomari Nuclear Restart Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI24",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD747",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Tomari Nuclear Restart Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI24",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD748",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Tomari Nuclear Restart Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI24",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD749",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Tomari Nuclear Restart Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI24",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD750",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Integrated Resort Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI25",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD751",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Integrated Resort Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI25",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD752",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Integrated Resort Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI25",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD753",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Integrated Resort Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI25",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD754",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Integrated Resort Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI25",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD755",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Integrated Resort Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI25",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD756",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Integrated Resort Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI25",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD757",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Integrated Resort Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI25",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD758",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Civil Service Merit Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI26",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD759",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Civil Service Merit Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI26",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD760",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Civil Service Merit Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI26",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD761",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Civil Service Merit Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI26",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD762",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Civil Service Merit Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI26",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD763",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Civil Service Merit Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI26",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD764",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Civil Service Merit Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI26",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD765",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Civil Service Merit Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI26",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD766",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Regional Minimum Wage Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI27",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD767",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Regional Minimum Wage Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI27",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD768",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Regional Minimum Wage Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI27",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD769",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Regional Minimum Wage Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI27",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD770",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Regional Minimum Wage Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI27",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD771",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Regional Minimum Wage Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI27",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD772",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Regional Minimum Wage Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI27",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD773",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Regional Minimum Wage Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI27",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD774",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Independent Election Commission Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI28",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD775",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Independent Election Commission Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI28",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD776",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Independent Election Commission Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI28",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD777",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Independent Election Commission Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI28",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD778",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Independent Election Commission Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI28",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD779",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Independent Election Commission Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI28",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD780",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Independent Election Commission Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI28",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD781",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Independent Election Commission Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI28",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD782",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Moral Education Curriculum Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI29",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD783",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Moral Education Curriculum Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI29",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD784",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Moral Education Curriculum Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI29",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD785",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Moral Education Curriculum Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI29",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD786",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Moral Education Curriculum Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI29",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD787",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Moral Education Curriculum Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI29",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD788",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Moral Education Curriculum Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI29",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD789",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Moral Education Curriculum Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI29",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD790",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Foreign Resident Local Suffrage Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI30",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD791",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Foreign Resident Local Suffrage Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI30",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD792",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Foreign Resident Local Suffrage Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI30",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD793",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Foreign Resident Local Suffrage Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI30",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD794",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Foreign Resident Local Suffrage Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI30",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD795",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Foreign Resident Local Suffrage Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI30",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD796",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Foreign Resident Local Suffrage Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI30",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD797",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Foreign Resident Local Suffrage Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI30",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD798",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Wilderness and Wildlife Protection Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI31",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD799",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Wilderness and Wildlife Protection Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI31",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD800",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Wilderness and Wildlife Protection Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI31",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD801",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Wilderness and Wildlife Protection Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI31",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD802",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Wilderness and Wildlife Protection Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI31",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD803",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Wilderness and Wildlife Protection Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI31",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD804",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Wilderness and Wildlife Protection Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI31",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD805",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Wilderness and Wildlife Protection Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI31",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD806",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Rural Hospital Network Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI32",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD807",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Rural Hospital Network Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI32",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD808",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Rural Hospital Network Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI32",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD809",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Rural Hospital Network Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI32",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD810",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Rural Hospital Network Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI32",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD811",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Rural Hospital Network Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI32",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD812",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Rural Hospital Network Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI32",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD813",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Rural Hospital Network Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI32",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD814",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Digital Identity Card Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI33",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD815",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Digital Identity Card Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI33",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD816",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Digital Identity Card Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI33",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD817",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Digital Identity Card Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI33",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD818",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Digital Identity Card Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI33",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD819",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Digital Identity Card Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI33",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD820",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Digital Identity Card Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI33",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD821",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Digital Identity Card Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI33",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD822",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Public Broadcasting Independence Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI34",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD823",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Public Broadcasting Independence Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI34",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD824",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Public Broadcasting Independence Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI34",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD825",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Public Broadcasting Independence Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI34",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD826",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Public Broadcasting Independence Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI34",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD827",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Public Broadcasting Independence Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI34",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD828",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Public Broadcasting Independence Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI34",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD829",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Public Broadcasting Independence Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI34",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD830",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Political Donation Transparency Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI35",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD831",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Political Donation Transparency Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI35",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD832",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Political Donation Transparency Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI35",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD833",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Political Donation Transparency Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI35",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD834",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Political Donation Transparency Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI35",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD835",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Political Donation Transparency Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI35",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD836",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Political Donation Transparency Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI35",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD837",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Political Donation Transparency Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI35",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD838",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Corporate Tax Reduction Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI36",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD839",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Corporate Tax Reduction Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI36",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD840",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Corporate Tax Reduction Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI36",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD841",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Corporate Tax Reduction Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI36",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD842",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Corporate Tax Reduction Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI36",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD843",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Corporate Tax Reduction Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI36",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD844",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Corporate Tax Reduction Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI36",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD845",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Corporate Tax Reduction Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI36",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD846",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Carbon Levy Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI37",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD847",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Carbon Levy Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI37",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD848",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Carbon Levy Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI37",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD849",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Carbon Levy Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI37",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD850",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Carbon Levy Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI37",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD851",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Carbon Levy Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI37",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD852",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Carbon Levy Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI37",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD853",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Carbon Levy Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI37",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD854",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Fisheries Quota Modernization Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI38",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD855",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Fisheries Quota Modernization Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI38",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD856",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Fisheries Quota Modernization Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI38",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD857",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Fisheries Quota Modernization Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI38",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD858",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Fisheries Quota Modernization Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI38",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD859",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Fisheries Quota Modernization Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI38",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD860",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Fisheries Quota Modernization Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI38",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD861",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Fisheries Quota Modernization Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI38",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD862",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Shipbuilding and Defense Industry Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI39",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD863",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Shipbuilding and Defense Industry Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI39",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD864",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Shipbuilding and Defense Industry Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI39",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD865",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Shipbuilding and Defense Industry Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI39",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD866",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Shipbuilding and Defense Industry Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI39",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD867",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Shipbuilding and Defense Industry Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI39",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD868",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Shipbuilding and Defense Industry Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI39",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD869",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Shipbuilding and Defense Industry Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI39",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD870",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Constitutional Review Commission Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI40",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD871",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Constitutional Review Commission Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI40",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD872",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Constitutional Review Commission Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI40",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD873",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Constitutional Review Commission Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI40",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD874",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Constitutional Review Commission Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI40",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD875",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Constitutional Review Commission Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI40",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD876",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Constitutional Review Commission Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI40",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD877",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Constitutional Review Commission Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI40",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD878",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on this bill backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI41",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD879",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on this bill gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI41",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD880",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back this bill. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI41",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD881",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose this bill. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI41",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD882",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle this bill.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI41",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD883",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle this bill. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI41",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD884",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back this bill. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI41",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD885",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose this bill. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI41",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD886",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Chishima Resource Development Agreement Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI42",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD887",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Chishima Resource Development Agreement Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI42",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD888",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Chishima Resource Development Agreement Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI42",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD889",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Chishima Resource Development Agreement Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI42",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD890",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Chishima Resource Development Agreement Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI42",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD891",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Chishima Resource Development Agreement Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI42",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD892",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Chishima Resource Development Agreement Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI42",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD893",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Chishima Resource Development Agreement Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI42",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD894",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Yezo–China Trade Normalization Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI43",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD895",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Yezo–China Trade Normalization Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI43",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD896",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Yezo–China Trade Normalization Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI43",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD897",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Yezo–China Trade Normalization Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI43",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD898",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Yezo–China Trade Normalization Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI43",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD899",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Yezo–China Trade Normalization Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI43",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD900",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Yezo–China Trade Normalization Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI43",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD901",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Yezo–China Trade Normalization Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI43",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD902",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Farm Succession Support Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI44",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD903",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Farm Succession Support Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI44",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD904",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Farm Succession Support Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI44",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD905",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Farm Succession Support Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI44",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD906",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Farm Succession Support Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI44",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD907",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Farm Succession Support Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI44",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD908",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Farm Succession Support Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI44",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD909",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Farm Succession Support Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI44",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD910",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on this bill backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI45",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD911",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on this bill gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI45",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD912",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back this bill. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI45",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD913",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose this bill. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI45",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD914",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle this bill.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI45",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD915",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle this bill. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI45",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD916",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back this bill. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI45",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD917",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose this bill. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI45",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD918",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Workplace Equality Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI46",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD919",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Workplace Equality Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI46",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD920",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Workplace Equality Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI46",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD921",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Workplace Equality Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI46",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD922",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Workplace Equality Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI46",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD923",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Workplace Equality Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI46",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD924",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Workplace Equality Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI46",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD925",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Workplace Equality Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI46",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD926",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Parental Leave and Childcare Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI47",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD927",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Parental Leave and Childcare Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI47",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD928",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Parental Leave and Childcare Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI47",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD929",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Parental Leave and Childcare Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI47",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD930",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Parental Leave and Childcare Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI47",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD931",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Parental Leave and Childcare Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI47",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD932",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Parental Leave and Childcare Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI47",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD933",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Parental Leave and Childcare Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI47",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD934",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Public Safety Surveillance Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI48",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD935",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Public Safety Surveillance Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI48",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD936",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Public Safety Surveillance Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI48",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD937",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Public Safety Surveillance Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI48",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD938",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Public Safety Surveillance Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI48",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD939",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Public Safety Surveillance Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI48",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD940",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Public Safety Surveillance Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI48",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD941",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Public Safety Surveillance Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI48",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD942",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Local Government Mergers Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI49",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD943",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Local Government Mergers Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI49",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD944",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Local Government Mergers Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI49",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD945",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Local Government Mergers Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI49",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD946",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Local Government Mergers Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI49",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD947",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Local Government Mergers Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI49",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD948",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Local Government Mergers Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI49",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD949",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Local Government Mergers Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI49",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD950",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research folder on the Party Leadership Selection Act backs your lean. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI50",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD951",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on the Party Leadership Selection Act gives you real ground to oppose. Start with page two.",
+    "player_reply_en": "Page two it is.",
+    "bill_id": "BI50",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD952",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you back the Party Leadership Selection Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI50",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD953",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "You will have to explain why you oppose the Party Leadership Selection Act. Keep it short.",
+    "player_reply_en": "Short and plain.",
+    "bill_id": "BI50",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD954",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Party Leadership Selection Act.",
+    "player_reply_en": "Then I will handle it with care.",
+    "bill_id": "BI50",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD955",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are watching how you handle the Party Leadership Selection Act. Some wanted a yes.",
+    "player_reply_en": "I owe them a reason.",
+    "bill_id": "BI50",
+    "stance": "Oppose"
+  },
+  {
+    "transition_dialogue_id": "TD956",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to back the Party Leadership Selection Act. Now I have to earn it.",
+    "player_reply_en": null,
+    "bill_id": "BI50",
+    "stance": "Support"
+  },
+  {
+    "transition_dialogue_id": "TD957",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I chose to oppose the Party Leadership Selection Act. Now I have to justify it.",
+    "player_reply_en": null,
+    "bill_id": "BI50",
+    "stance": "Oppose"
   }
 ]
