@@ -10,7 +10,7 @@
     "low_consequence": "LV10 cannot be activated.",
     "high_threshold": 80,
     "high_consequence": null,
-    "decay_percent": 6.0
+    "decay_percent": 10.0
   },
   {
     "name_en": "Reputation",
