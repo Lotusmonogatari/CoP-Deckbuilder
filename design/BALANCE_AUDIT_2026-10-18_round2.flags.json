@@ -1,0 +1,368 @@
+[
+ {
+  "severity": "High",
+  "area": "Stages",
+  "message": "Media Ambush: a first-time player almost never wins in 2 of 2 rooms",
+  "evidence": "ST19 0%->0%, ST30 0%->0%"
+ },
+ {
+  "severity": "High",
+  "area": "Stages",
+  "message": "Media Ambush: a fully kitted player still loses in 2 of 2 rooms",
+  "evidence": "ST19 0%->0%, ST30 0%->0%"
+ },
+ {
+  "severity": "High",
+  "area": "Stages",
+  "message": "Party Steering Committee: a fully kitted player still loses in 1 of 1 rooms",
+  "evidence": "ST08 16%->40%"
+ },
+ {
+  "severity": "Medium",
+  "area": "Affinity",
+  "message": "Some suits are favored in far more rooms than others",
+  "evidence": "Earnest 69 favored / 16 resisted, Emotional 26 favored / 42 resisted, Appeal 67 favored / 12 resisted, Data Driven 53 favored / 36 resisted, Divisive 8 favored / 82 resisted, Duplicitous 13 favored / 48 resisted"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C02 Sincere Answer (Earnest, tier 0) is a power outlier",
+  "evidence": "5.00 value per energy vs mean 2.60 (z +2.6)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C11 Work the Room First (Appeal, tier 2) is a power outlier",
+  "evidence": "0.00 value per energy vs mean 2.60 (z -2.8)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C21 Iridescent Answer (Duplicitous, tier 2) is a power outlier",
+  "evidence": "5.00 value per energy vs mean 2.60 (z +2.6)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C42 Press for a Straight Answer (Data Driven, tier 2) is a power outlier",
+  "evidence": "4.50 value per energy vs mean 2.60 (z +2.0)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C50 Take It Under Advisement (Duplicitous, tier 2) is a power outlier",
+  "evidence": "5.00 value per energy vs mean 2.60 (z +2.6)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "Suit power is uneven: Duplicitous averages 3.25 per energy, Divisive 1.80",
+  "evidence": "Gaffe-heavy suits pay for it in the gaffe meter, so check the table's gaffe column before acting"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C14 Document Request (Data Driven) is played 5.6x the average card",
+  "evidence": "18882 plays"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C11 Work the Room First (Appeal) is played 4.4x the average card",
+  "evidence": "14659 plays"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C33 Refuse to Yield (Emotional) is played 4.3x the average card",
+  "evidence": "14342 plays"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C09 Call for Unity (Appeal) is played 3.5x the average card",
+  "evidence": "11600 plays"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C02 Sincere Answer (Earnest) is played 3.3x the average card",
+  "evidence": "11181 plays"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C38 Call In a Favor (Appeal) is played 3.3x the average card",
+  "evidence": "10975 plays"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C26 Own the Mistake (Earnest) is played 3.2x the average card",
+  "evidence": "10817 plays"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C03 Formal Apology (Earnest) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C04 Return to First Principles (Earnest) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C06 Tearful Appeal (Emotional) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C08 Speech from the Soul (Emotional) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C12 Ask Who's With You (Appeal) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C15 Pursue the Contradiction (Data Driven) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C16 Table the White Paper (Data Driven) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C18 Drawing Battle Lines (Divisive) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C29 Appeal to Conscience (Earnest) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C31 Righteous Anger (Emotional) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C37 Call for Common Cause (Appeal) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C39 We Have the Votes (Appeal) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C44 Demand an Outside Review (Data Driven) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C46 Force the Choice (Divisive) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C50 Take It Under Advisement (Duplicitous) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "C52 Drown Them in Detail (Duplicitous) was never played in four full runs",
+  "evidence": "dead card or never worth its cost"
+ },
+ {
+  "severity": "Medium",
+  "area": "Cards",
+  "message": "Card use is concentrated (Gini 0.67)",
+  "evidence": "a few cards do most of the work"
+ },
+ {
+  "severity": "Medium",
+  "area": "Meta",
+  "message": "PC01: Constituency support sits at the ceiling for most of the run",
+  "evidence": "57/80 level-ends >= 95"
+ },
+ {
+  "severity": "Medium",
+  "area": "Meta",
+  "message": "PC01: Party support sits at the ceiling for most of the run",
+  "evidence": "72/80 level-ends >= 95"
+ },
+ {
+  "severity": "Medium",
+  "area": "Meta",
+  "message": "PC02: Constituency support sits at the ceiling for most of the run",
+  "evidence": "50/80 level-ends >= 95"
+ },
+ {
+  "severity": "Medium",
+  "area": "Meta",
+  "message": "PC02: Party support sits at the ceiling for most of the run",
+  "evidence": "68/80 level-ends >= 95"
+ },
+ {
+  "severity": "Medium",
+  "area": "Meta",
+  "message": "PC03: Constituency support sits at the ceiling for most of the run",
+  "evidence": "50/80 level-ends >= 95"
+ },
+ {
+  "severity": "Medium",
+  "area": "Meta",
+  "message": "PC03: Party support sits at the ceiling for most of the run",
+  "evidence": "63/80 level-ends >= 95"
+ },
+ {
+  "severity": "Medium",
+  "area": "Meta",
+  "message": "PC04: Party support sits at the ceiling for most of the run",
+  "evidence": "67/80 level-ends >= 95"
+ },
+ {
+  "severity": "Medium",
+  "area": "Organizations",
+  "message": "10 organizations never reached the 60 standing a backing needs, in four full runs",
+  "evidence": "BO07 Fisheries Cooperative (peak 59), BO10 Agricultural Cooperatives (peak 48), BO12 Family Network (peak 51), BO13 Yezo Artisans Guild (peak 49), BO16 Innovation Society (peak 58), BO17 Members of Parliament (peak 49), BO20 Shrine Association (peak 55), BO21 Care and Welfare Council (peak 52), BO27 Urban Neighborhood Alliance (peak 48), BO31 Party Activists (peak 58)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Progression",
+  "message": "Lobbyist Meeting: the full kit barely helps in 6 of 6 rooms",
+  "evidence": "ST20 72%->78%, ST28 74%->58%, ST48 79%->88%, ST67 78%->76%, ST71 67%->66%, ST88 71%->78%"
+ },
+ {
+  "severity": "Medium",
+  "area": "Progression",
+  "message": "Media Ambush: the full kit barely helps in 2 of 2 rooms",
+  "evidence": "ST19 0%->0%, ST30 0%->0%"
+ },
+ {
+  "severity": "Medium",
+  "area": "Rewards",
+  "message": "Reward does not rise with difficulty across combat rooms",
+  "evidence": "correlation -0.03 between need/energy and reward index"
+ },
+ {
+  "severity": "Medium",
+  "area": "Rhetoric",
+  "message": "Question grading favors Earnest over Divisive",
+  "evidence": "net +250 vs -54 over 860 questions"
+ },
+ {
+  "severity": "Medium",
+  "area": "Shop",
+  "message": "PC01: the bot bought 758 items in one run",
+  "evidence": "items are cheap relative to income (consumables are free power)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Shop",
+  "message": "PC02: the bot bought 698 items in one run",
+  "evidence": "items are cheap relative to income (consumables are free power)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Shop",
+  "message": "PC03: the bot bought 708 items in one run",
+  "evidence": "items are cheap relative to income (consumables are free power)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Shop",
+  "message": "PC04: the bot bought 667 items in one run",
+  "evidence": "items are cheap relative to income (consumables are free power)"
+ },
+ {
+  "severity": "Medium",
+  "area": "Stages",
+  "message": "Committee: no challenge for a first-time player in 5 of 9 rooms",
+  "evidence": "ST09 99%->100%, ST10 100%->100%, ST12 99%->100%, ST13 100%->100%, ST17 99%->100%"
+ },
+ {
+  "severity": "Medium",
+  "area": "Stages",
+  "message": "Hearing: no challenge for a first-time player in 11 of 17 rooms",
+  "evidence": "ST27 100%->100%, ST31 100%->100%, ST33 100%->100%, ST37 100%->100%, ST54 100%->100%, ST57 100%->100% ..."
+ },
+ {
+  "severity": "Medium",
+  "area": "Stages",
+  "message": "Party Caucus: a first-time player almost never wins in 1 of 21 rooms",
+  "evidence": "ST93 13%->100%"
+ },
+ {
+  "severity": "Medium",
+  "area": "Stages",
+  "message": "Policy Study: no challenge for a first-time player in 7 of 7 rooms",
+  "evidence": "ST25 100%->100%, ST38 100%->100%, ST40 97%->100%, ST50 100%->100%, ST79 99%->100%, ST87 99%->100% ..."
+ },
+ {
+  "severity": "Medium",
+  "area": "Stages",
+  "message": "Press Conference: a first-time player almost never wins in 1 of 11 rooms",
+  "evidence": "ST46 2%->86%"
+ },
+ {
+  "severity": "Medium",
+  "area": "Stages",
+  "message": "ST19 was lost 65 of 65 times in full runs",
+  "evidence": ""
+ },
+ {
+  "severity": "Low",
+  "area": "Bills",
+  "message": "Keizaijiyuutou proposes 13 of 50 bills",
+  "evidence": ""
+ },
+ {
+  "severity": "Low",
+  "area": "Bills",
+  "message": "Five Point Independents proposes only 2 bills",
+  "evidence": ""
+ },
+ {
+  "severity": "Low",
+  "area": "Organizations",
+  "message": "4 organizations average under 30 standing across the run",
+  "evidence": "BO10 Agricultural Cooperatives (23), BO13 Yezo Artisans Guild (27), BO15 Our Traditional Society (27), BO17 Members of Parliament (29)"
+ },
+ {
+  "severity": "Low",
+  "area": "Parties",
+  "message": "Five Point Independents is lopsided across bills: 22 supportive vs 11 opposed",
+  "evidence": ""
+ },
+ {
+  "severity": "Low",
+  "area": "Stages",
+  "message": "Policy Study Session: no challenge for a first-time player in 1 of 1 rooms",
+  "evidence": "ST21 100%->100%"
+ }
+]

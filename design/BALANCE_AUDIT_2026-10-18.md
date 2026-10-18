@@ -116,3 +116,31 @@ High flags fell from 6 to 3. The three walls are gone, but the fix **overshot th
 * **Reward still does not follow difficulty** (correlation -0.10, was -0.21): the hardest rooms are now the multi-opponent ones, and their rewards were not raised.
 
 Suggested next step (not applied): keep the three lower thresholds but raise them about 3 points each (Town Hall 53, Caucus 49, Steering 43) to bring the first-time average toward 65%; apply recommendations 3, 5 and 6 together (harder trivial rooms, a meta sink or slower climb, costlier cards) so the saturation does not move earlier; and raise Town Hall and Caucus rewards, since they are now the multi-opponent rooms.
+
+## Round 2 (2026-10-18): what was applied and what it did
+
+Applied (builders `batch7` and `batch8` in `tools/workbook/archive/`, plus code): Town Hall 50 to 53, Party Caucus 46 to 49, Steering Committee 40 to 43, with higher rewards (Town Hall 70 XP and 45,000 yen, Caucus 90 XP and 20,000 yen, Steering 90 XP); Hearing and Committee thresholds x1.3 (60 to 78, and so on); Policy Study +8 (35 to 43); **meta decay** (new Sanban "Decay Percent" column: Reputation and Constituency support settle back 6% of the distance to their starting value each level); Tier 3 cards +2 on their main number (C04, C08, C16, C29, C37, C39, C44, C49, C53, with text updated); and the bot now buys cards through Rhetoric Training like a player (it used to buy them directly, which is why all 54 were owned by level 5; that was a bot artifact, the real game already paces cards by Rhetoric Training prices). Floor Debate stays at 51 (canon). Full tables: `design/BALANCE_AUDIT_2026-10-18_round2.md`.
+
+| Family | Starter original | Round 1 | Round 2 | Full kit (round 2) |
+|---|---|---|---|---|
+| Town Hall (12) | 9% | 54% | 48% | 100% |
+| Party Caucus (21) | 3% | 71% | 48% | 100% |
+| Party Steering Committee | 0% | 41% | 16% | 40% |
+| Hearing (17) | 98% | 98% | 88% | 100% |
+| Committee (9) | 92% | 97% | 75% | 98% |
+| Policy Study (7) | 97% | 99% | 99% | 100% |
+| TV Debate (7) | 86% | 96% | 65% | 100% |
+| Press Conference (11) | 44% | 61% | 39% | 98% |
+| Lobbyist Meeting (6) | 59% | 66% | 74% | 74% |
+| **All combat rooms, starter** | **52%** | **77%** | **63%** | |
+
+Result: the first-time average is now 63% (target about 65%), the walls stay gone, the full kit still helps a lot (97-100% in most families), and High flags are down to 3 (Media Ambush by design, plus Steering Committee at 40% even with the full kit). Card collection is paced across the run (19 cards at level 5, 28 at 20, 42 at 80), Reputation no longer sits at its ceiling (88 late), and the economy no longer saturates by level 20.
+
+Still lopsided (not changed):
+* **Constituency support still hits its ceiling** in three of four runs, and stored **Party support** sits at 95 or more for 63-72 of 80 level-ends (Party opinion, which the rules read, stays near 73). Option: give Constituency support a higher decay (10%) and Party support its own.
+* **Policy Study** (7 rooms, 99%) and about half of the Hearings stay trivial: threshold alone does not work on a 50-point bar; change turns or opponent count instead.
+* **Lobbyist Meeting** is flat across kits (74% to 74%): its rewards and cards do not reflect progression.
+* **Press Conference** ranges 2%-75% by room: some topic rooms are walls (check the 2% room).
+* **Steering Committee** (one room) is 16% starter and 40% full: threshold 43 is a little high; 40 was 41%.
+* **Items** are still bought 670-760 times per run.
+* The static difficulty model's fit fell to -0.57 now that thresholds differ by family; the sweeps are the better guide.

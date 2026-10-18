@@ -2209,3 +2209,277 @@ ECON level=LV60 attempt=71 xp=351 funds=100000 jiban=100 rep=95 party=100 party_
   bought item SH15 (Kaiju Sized “ね3” Coffee)
 --- Level LV61 (), 5 stage(s) ---
   ST07: visitor room complete (5 visitors)
+  ST24: win (score=56 gaffe=6/7 turn=8/17.0)
+  ST25: win (score=38 gaffe=3/11 turn=3/10.0)
+  ST26: win (score=100 gaffe=2/5 turn=6/6.0)
+WARNING: DataDB: no booster with ID 'Funds'.
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _lookup (res://scripts/autoload/DataDB.gd:1138)
+         [1] get_booster (res://scripts/autoload/DataDB.gd:803)
+         [2] _follow_links (res://scripts/autoload/GameState.gd:1363)
+         [3] _record_meta_change (res://scripts/autoload/GameState.gd:1407)
+         [4] _apply_stage_rewards (res://scripts/autoload/GameState.gd:1139)
+         [5] finish_stage (res://scripts/autoload/GameState.gd:940)
+         [6] _play_battle_stage (res://tools/playtest_optimal.gd:648)
+         [7] _play_level (res://tools/playtest_optimal.gd:579)
+         [8] _run (res://tools/playtest_optimal.gd:114)
+  ST27: win (score=78 gaffe=4/7 turn=5/10.0)
+  party bodies after LV61: BO31=28 [going unvisited this level -1] [standing settling back over time -2]  BO32=47 [changes in Funds +1] [standing settling back over time -3] | HQ=58 Faction=61 own-party opinion=72
+ECON level=LV61 attempt=72 xp=484 funds=100000 jiban=100 rep=97 party=100 party_eff=72 cards=41 backing=26 items=672 standings=BO01:58,BO02:61,BO03:54,BO04:62,BO05:62,BO06:57,BO07:45,BO08:69,BO09:60,BO10:17,BO11:38,BO12:32,BO13:36,BO14:47,BO15:49,BO16:31,BO17:20,BO18:35,BO19:44,BO20:42,BO21:30,BO22:56,BO23:35,BO24:48,BO25:56,BO26:70,BO27:40,BO28:39,BO29:30,BO30:30,BO31:28,BO32:47
+  unlocked level LV62 for 100 XP
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH06 (Paperwork Automation)
+  bought item SH14 (Commission a Speech Trainer)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+--- Level LV62 (), 5 stage(s) ---
+  ST07: visitor room complete (5 visitors)
+  ST28: win (score=27 gaffe=2/7 turn=1/7.0)
+  ST29: win (score=53 gaffe=6/7 turn=9/17.0)
+  ST30: loss (score=0 gaffe=2/3 turn=5/11.0)
+  ST31: win (score=74 gaffe=3/7 turn=3/10.0)
+  party bodies after LV62: BO31=25 [going unvisited this level -1] [standing settling back over time -2]  BO32=46 [changes in Party Headquarters +1] [changes in Constituency Voters +1] [standing settling back over time -3] | HQ=59 Faction=59 own-party opinion=72
+ECON level=LV62 attempt=73 xp=445 funds=100000 jiban=100 rep=95 party=100 party_eff=72 cards=41 backing=26 items=685 standings=BO01:59,BO02:59,BO03:52,BO04:59,BO05:63,BO06:59,BO07:51,BO08:71,BO09:57,BO10:15,BO11:36,BO12:39,BO13:41,BO14:48,BO15:46,BO16:29,BO17:20,BO18:38,BO19:42,BO20:44,BO21:30,BO22:54,BO23:32,BO24:48,BO25:54,BO26:72,BO27:42,BO28:43,BO29:34,BO30:34,BO31:25,BO32:46
+  unlocked level LV63 for 80 XP
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH06 (Paperwork Automation)
+  bought item SH14 (Commission a Speech Trainer)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+  bought item SH16 (Automated Dear Colleague Letters)
+--- Level LV63 (), 6 stage(s) ---
+  ST101: visitor room complete (5 visitors)
+  ST32: win (score=100 gaffe=2/5 turn=6/6.0)
+  ST33: win (score=70 gaffe=3/8 turn=2/10.0)
+  ST34: win (score=58 gaffe=6/7 turn=11/17.0)
+WARNING: DataDB: no booster with ID 'Funds'.
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _lookup (res://scripts/autoload/DataDB.gd:1138)
+         [1] get_booster (res://scripts/autoload/DataDB.gd:803)
+         [2] _follow_links (res://scripts/autoload/GameState.gd:1363)
+         [3] _record_meta_change (res://scripts/autoload/GameState.gd:1407)
+         [4] _apply_stage_rewards (res://scripts/autoload/GameState.gd:1139)
+         [5] finish_stage (res://scripts/autoload/GameState.gd:940)
+         [6] _play_battle_stage (res://tools/playtest_optimal.gd:648)
+         [7] _play_level (res://tools/playtest_optimal.gd:579)
+         [8] _run (res://tools/playtest_optimal.gd:114)
+  ST35: win (score=50 gaffe=4/6 turn=5/10.0)
+  ST23: voted No on 'Wilderness and Wildlife Protection Act' (failed) — Yes 36 / No 58 / Abstain 7
+  party bodies after LV63: BO31=26 [a visitor's request +1] [your party's position on Wilderness and Wildlife Protection Act +2] [standing settling back over time -2]  BO32=45 [changes in Funds +1] [your party's position on Wilderness and Wildlife Protection Act +1] [standing settling back over time -3] | HQ=55 Faction=62 own-party opinion=73
+ECON level=LV63 attempt=74 xp=520 funds=100000 jiban=100 rep=95 party=100 party_eff=73 cards=41 backing=26 items=697 standings=BO01:55,BO02:62,BO03:50,BO04:56,BO05:66,BO06:57,BO07:50,BO08:67,BO09:54,BO10:19,BO11:34,BO12:37,BO13:46,BO14:49,BO15:46,BO16:24,BO17:24,BO18:36,BO19:40,BO20:55,BO21:30,BO22:56,BO23:30,BO24:46,BO25:52,BO26:69,BO27:40,BO28:56,BO29:32,BO30:43,BO31:26,BO32:45
+  learned card C46 (Force the Choice) in Rhetoric Training
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH06 (Paperwork Automation)
+--- Level LV01 (), 2 stage(s) ---
+  ST05: win (score=53 gaffe=7/8 turn=8/17.0)
+  ST07: visitor room complete (5 visitors)
+  party bodies after LV01: BO31=23 [going unvisited this level -1] [standing settling back over time -2]  BO32=44 [changes in Constituency Voters +1] [standing settling back over time -2] | HQ=53 Faction=60 own-party opinion=72
+ECON level=LV01 attempt=75 xp=165 funds=73000 jiban=100 rep=92 party=100 party_eff=72 cards=42 backing=26 items=706 standings=BO01:53,BO02:60,BO03:48,BO04:54,BO05:67,BO06:59,BO07:47,BO08:63,BO09:55,BO10:17,BO11:35,BO12:35,BO13:48,BO14:46,BO15:43,BO16:22,BO17:21,BO18:41,BO19:38,BO20:53,BO21:30,BO22:54,BO23:33,BO24:44,BO25:54,BO26:68,BO27:38,BO28:58,BO29:36,BO30:41,BO31:23,BO32:44
+  unlocked level LV64 for 150 XP
+  bought item SH04 (“ね3” Coffee)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH06 (Paperwork Automation)
+  bought item SH06 (Paperwork Automation)
+  bought item SH06 (Paperwork Automation)
+  bought item SH06 (Paperwork Automation)
+--- Level LV64 (), 6 stage(s) ---
+  ST102: visitor room complete (5 visitors)
+  ST36: win (score=53 gaffe=6/7 turn=9/17.0)
+  ST37: win (score=81 gaffe=5/6 turn=4/10.0)
+WARNING: DataDB: no booster with ID 'Reputation'.
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _lookup (res://scripts/autoload/DataDB.gd:1138)
+         [1] get_booster (res://scripts/autoload/DataDB.gd:803)
+         [2] _follow_links (res://scripts/autoload/GameState.gd:1363)
+         [3] _record_meta_change (res://scripts/autoload/GameState.gd:1407)
+         [4] _apply_stage_rewards (res://scripts/autoload/GameState.gd:1139)
+         [5] finish_stage (res://scripts/autoload/GameState.gd:940)
+         [6] _play_battle_stage (res://tools/playtest_optimal.gd:648)
+         [7] _play_level (res://tools/playtest_optimal.gd:579)
+         [8] _run (res://tools/playtest_optimal.gd:114)
+  ST38: win (score=26 gaffe=4/11 turn=4/10.0)
+  ST39: win (score=50 gaffe=5/6 turn=7/10.0)
+  ST23: voted Yes on 'Rural Hospital Network Act' (passed) — Yes 59 / No 26 / Abstain 16
+  party bodies after LV64: BO31=30 [a visitor's request +1] [your party's position on Rural Hospital Network Act +9] [its rivalry with Candidate Selection Committee -1] [standing settling back over time -2]  BO32=44 [changes in Reputation +1] [changes in Party Headquarters +1] [its rivalry with Party Activists -1] [your party's position on Rural Hospital Network Act +2] [standing settling back over time -3] | HQ=53 Faction=68 own-party opinion=74
+ECON level=LV64 attempt=76 xp=345 funds=100000 jiban=100 rep=95 party=100 party_eff=74 cards=42 backing=26 items=712 standings=BO01:53,BO02:68,BO03:46,BO04:64,BO05:67,BO06:61,BO07:44,BO08:62,BO09:56,BO10:19,BO11:33,BO12:33,BO13:46,BO14:44,BO15:41,BO16:26,BO17:25,BO18:39,BO19:42,BO20:51,BO21:48,BO22:52,BO23:30,BO24:46,BO25:52,BO26:68,BO27:36,BO28:56,BO29:34,BO30:58,BO31:30,BO32:44
+  unlocked level LV65 for 150 XP
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH06 (Paperwork Automation)
+  bought item SH14 (Commission a Speech Trainer)
+--- Level LV65 (), 5 stage(s) ---
+  ST103: visitor room complete (5 visitors)
+  ST40: win (score=22 gaffe=1/11 turn=3/10.0)
+  ST41: win (score=100 gaffe=5/6 turn=5/5.0)
+WARNING: DataDB: no booster with ID 'Funds'.
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _lookup (res://scripts/autoload/DataDB.gd:1138)
+         [1] get_booster (res://scripts/autoload/DataDB.gd:803)
+         [2] _follow_links (res://scripts/autoload/GameState.gd:1363)
+         [3] _record_meta_change (res://scripts/autoload/GameState.gd:1407)
+         [4] _apply_stage_rewards (res://scripts/autoload/GameState.gd:1139)
+         [5] finish_stage (res://scripts/autoload/GameState.gd:940)
+         [6] _play_battle_stage (res://tools/playtest_optimal.gd:648)
+         [7] _play_level (res://tools/playtest_optimal.gd:579)
+         [8] _run (res://tools/playtest_optimal.gd:114)
+  ST42: win (score=54 gaffe=5/6 turn=6/10.0)
+  ST23: voted No on 'Digital Identity Card Act' (failed) — Yes 38 / No 52 / Abstain 11
+  party bodies after LV65: BO31=29 [a visitor's request -1] [your party's position on Digital Identity Card Act +2] [standing settling back over time -2]  BO32=44 [a visitor's request +1] [changes in Funds +1] [your party's position on Digital Identity Card Act +1] [standing settling back over time -3] | HQ=55 Faction=66 own-party opinion=73
+ECON level=LV65 attempt=77 xp=420 funds=100000 jiban=100 rep=95 party=100 party_eff=73 cards=42 backing=26 items=722 standings=BO01:55,BO02:66,BO03:45,BO04:61,BO05:66,BO06:63,BO07:42,BO08:65,BO09:53,BO10:17,BO11:35,BO12:31,BO13:43,BO14:42,BO15:38,BO16:37,BO17:23,BO18:39,BO19:40,BO20:49,BO21:46,BO22:50,BO23:30,BO24:51,BO25:50,BO26:68,BO27:34,BO28:54,BO29:32,BO30:56,BO31:29,BO32:44
+  unlocked level LV66 for 80 XP
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH06 (Paperwork Automation)
+  bought item SH06 (Paperwork Automation)
+  bought item SH06 (Paperwork Automation)
+  bought item SH14 (Commission a Speech Trainer)
+  bought item SH14 (Commission a Speech Trainer)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+--- Level LV66 (), 5 stage(s) ---
+  ST104: visitor room complete (5 visitors)
+  ST43: win (score=92 gaffe=1/5 turn=6/6.0)
+  ST44: win (score=100 gaffe=4/6 turn=5/5.0)
+WARNING: DataDB: no booster with ID 'Reputation'.
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _lookup (res://scripts/autoload/DataDB.gd:1138)
+         [1] get_booster (res://scripts/autoload/DataDB.gd:803)
+         [2] _follow_links (res://scripts/autoload/GameState.gd:1363)
+         [3] _record_meta_change (res://scripts/autoload/GameState.gd:1407)
+         [4] _apply_stage_rewards (res://scripts/autoload/GameState.gd:1139)
+         [5] finish_stage (res://scripts/autoload/GameState.gd:940)
+         [6] _play_battle_stage (res://tools/playtest_optimal.gd:648)
+         [7] _play_level (res://tools/playtest_optimal.gd:579)
+         [8] _run (res://tools/playtest_optimal.gd:114)
+  ST45: win (score=50 gaffe=3/6 turn=6/10.0)
+  ST23: voted Abstain on 'Public Broadcasting Independence Act' (failed) — Yes 41 / No 28 / Abstain 32
+  party bodies after LV66: BO31=26 [going unvisited this level -1] [standing settling back over time -2]  BO32=43 [changes in Reputation +1] [standing settling back over time -2] | HQ=53 Faction=63 own-party opinion=73
+ECON level=LV66 attempt=78 xp=400 funds=100000 jiban=100 rep=95 party=100 party_eff=73 cards=42 backing=26 items=735 standings=BO01:53,BO02:63,BO03:45,BO04:58,BO05:63,BO06:64,BO07:42,BO08:70,BO09:50,BO10:19,BO11:37,BO12:29,BO13:41,BO14:44,BO15:35,BO16:35,BO17:21,BO18:37,BO19:38,BO20:47,BO21:44,BO22:48,BO23:27,BO24:49,BO25:48,BO26:65,BO27:32,BO28:52,BO29:30,BO30:54,BO31:26,BO32:43
+  unlocked level LV67 for 150 XP
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH06 (Paperwork Automation)
+  bought item SH06 (Paperwork Automation)
+  bought item SH06 (Paperwork Automation)
+  bought item SH14 (Commission a Speech Trainer)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+--- Level LV67 (), 6 stage(s) ---
+  ST105: visitor room complete (5 visitors)
+  ST46: win (score=82 gaffe=2/5 turn=6/6.0)
+WARNING: DataDB: no booster with ID 'Reputation'.
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _lookup (res://scripts/autoload/DataDB.gd:1138)
+         [1] get_booster (res://scripts/autoload/DataDB.gd:803)
+         [2] _follow_links (res://scripts/autoload/GameState.gd:1363)
+         [3] _record_meta_change (res://scripts/autoload/GameState.gd:1407)
+         [4] _apply_stage_rewards (res://scripts/autoload/GameState.gd:1139)
+         [5] finish_stage (res://scripts/autoload/GameState.gd:940)
+         [6] _play_battle_stage (res://tools/playtest_optimal.gd:648)
+         [7] _play_level (res://tools/playtest_optimal.gd:579)
+         [8] _run (res://tools/playtest_optimal.gd:114)
+  ST47: win (score=83 gaffe=5/6 turn=7/10.0)
+WARNING: DataDB: no booster with ID 'Funds'.
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _lookup (res://scripts/autoload/DataDB.gd:1138)
+         [1] get_booster (res://scripts/autoload/DataDB.gd:803)
+         [2] _follow_links (res://scripts/autoload/GameState.gd:1363)
+         [3] _record_meta_change (res://scripts/autoload/GameState.gd:1407)
+         [4] _apply_stage_rewards (res://scripts/autoload/GameState.gd:1139)
+         [5] finish_stage (res://scripts/autoload/GameState.gd:940)
+         [6] _play_battle_stage (res://tools/playtest_optimal.gd:648)
+         [7] _play_level (res://tools/playtest_optimal.gd:579)
+         [8] _run (res://tools/playtest_optimal.gd:114)
+  ST48: win (score=27 gaffe=3/7 turn=1/7.0)
+  ST49: win (score=50 gaffe=5/6 turn=6/10.0)
+  ST23: voted No on 'Political Donation Transparency Act' (failed) — Yes 25 / No 61 / Abstain 15
+  party bodies after LV67: BO31=26 [your party's position on Political Donation Transparency Act +2] [standing settling back over time -2]  BO32=44 [changes in Reputation +1] [changes in Funds +1] [your party's position on Political Donation Transparency Act +1] [standing settling back over time -2] | HQ=53 Faction=63 own-party opinion=72
+ECON level=LV67 attempt=79 xp=480 funds=100000 jiban=100 rep=95 party=100 party_eff=72 cards=42 backing=26 items=746 standings=BO01:53,BO02:63,BO03:47,BO04:55,BO05:67,BO06:62,BO07:43,BO08:74,BO09:47,BO10:17,BO11:35,BO12:27,BO13:40,BO14:44,BO15:33,BO16:37,BO17:26,BO18:37,BO19:42,BO20:45,BO21:41,BO22:46,BO23:45,BO24:46,BO25:46,BO26:71,BO27:30,BO28:54,BO29:30,BO30:52,BO31:26,BO32:44
+  unlocked level LV68 for 150 XP
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH04 (“ね3” Coffee)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH05 (“ミレニ姫” Tea)
+  bought item SH06 (Paperwork Automation)
+  bought item SH14 (Commission a Speech Trainer)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+  bought item SH15 (Kaiju Sized “ね3” Coffee)
+--- Level LV68 (), 5 stage(s) ---
+  ST106: visitor room complete (5 visitors)
+  ST50: win (score=20 gaffe=7/11 turn=2/10.0)
+  ST51: win (score=88 gaffe=3/4 turn=8/10.0)
+WARNING: DataDB: no booster with ID 'Reputation'.
+     at: push_warning (core/variant/variant_utility.cpp:1034)
+     GDScript backtrace (most recent call first):
+         [0] _lookup (res://scripts/autoload/DataDB.gd:1138)
+         [1] get_booster (res://scripts/autoload/DataDB.gd:803)
+         [2] _follow_links (res://scripts/autoload/GameState.gd:1363)
+         [3] _record_meta_change (res://scripts/autoload/GameState.gd:1407)
+         [4] _apply_stage_rewards (res://scripts/autoload/GameState.gd:1139)
+         [5] finish_stage (res://scripts/autoload/GameState.gd:940)
+         [6] _play_battle_stage (res://tools/playtest_optimal.gd:648)
+         [7] _play_level (res://tools/playtest_optimal.gd:579)
+         [8] _run (res://tools/playtest_optimal.gd:114)
+  ST52: win (score=51 gaffe=5/6 turn=6/10.0)
+  ST23: voted No on 'Corporate Tax Reduction Act' (passed) — Yes 53 / No 47 / Abstain 1
+  party bodies after LV68: BO31=22 [your party's position on Corporate Tax Reduction Act -3] [standing settling back over time -1]  BO32=43 [changes in Reputation +1] [its rivalry with Party Activists +1] [your party's position on Corporate Tax Reduction Act -1] [standing settling back over time -2] | HQ=49 Faction=60 own-party opinion=71
+ECON level=LV68 attempt=80 xp=455 funds=100000 jiban=100 rep=95 party=100 party_eff=71 cards=42 backing=26 items=758 standings=BO01:49,BO02:60,BO03:45,BO04:51,BO05:81,BO06:60,BO07:41,BO08:75,BO09:46,BO10:15,BO11:32,BO12:25,BO13:38,BO14:47,BO15:30,BO16:35,BO17:24,BO18:35,BO19:40,BO20:43,BO21:37,BO22:44,BO23:54,BO24:53,BO25:56,BO26:68,BO27:30,BO28:52,BO29:30,BO30:50,BO31:22,BO32:43
+
+=== PLAYTEST SUMMARY ===
+Level attempts: 80   Stages played: 405   Wins: 382   Losses: 23
+Levels completed at least once: 68 / 82
+Final meta: { "Constituency support": 100, "Reputation": 95, "Funds": 100000, "Party support": 100 }   XP: 455
+Owned cards: 42 / 54   Deck size: 15
+Backing taken: 26 (owned 26)   Items bought: 758   Items used: 751
+Staff hired: 3 / 3 roles
+Lifetime gaffes: 1249   Stages lost to gaffes: 0   Gaffe penalty applied: true
+stage_type_results: { "ST05": { "wins": 29, "losses": 0 }, "ST07": { "wins": 32, "losses": 0 }, "ST20": { "wins": 23, "losses": 0 }, "ST19": { "wins": 0, "losses": 15 }, "ST21": { "wins": 18, "losses": 0 }, "ST03": { "wins": 38, "losses": 1 }, "ST04": { "wins": 31, "losses": 0 }, "ST10": { "wins": 11, "losses": 0 }, "ST06": { "wins": 14, "losses": 0 }, "ST13": { "wins": 3, "losses": 0 }, "ST02": { "wins": 21, "losses": 0 }, "ST15": { "wins": 17, "losses": 3 }, "ST01": { "wins": 6, "losses": 0 }, "ST17": { "wins": 18, "losses": 0 }, "ST14": { "wins": 12, "losses": 0 }, "ST16": { "wins": 16, "losses": 2 }, "ST18": { "wins": 6, "losses": 0 }, "ST12": { "wins": 8, "losses": 0 }, "ST08": { "wins": 4, "losses": 0 }, "ST11": { "wins": 4, "losses": 1 }, "ST23": { "wins": 34, "losses": 0 }, "ST09": { "wins": 3, "losses": 0 }, "ST24": { "wins": 1, "losses": 0 }, "ST25": { "wins": 1, "losses": 0 }, "ST26": { "wins": 1, "losses": 0 }, "ST27": { "wins": 1, "losses": 0 }, "ST28": { "wins": 1, "losses": 0 }, "ST29": { "wins": 1, "losses": 0 }, "ST30": { "wins": 0, "losses": 1 }, "ST31": { "wins": 1, "losses": 0 }, "ST101": { "wins": 1, "losses": 0 }, "ST32": { "wins": 1, "losses": 0 }, "ST33": { "wins": 1, "losses": 0 }, "ST34": { "wins": 1, "losses": 0 }, "ST35": { "wins": 1, "losses": 0 }, "ST102": { "wins": 1, "losses": 0 }, "ST36": { "wins": 1, "losses": 0 }, "ST37": { "wins": 1, "losses": 0 }, "ST38": { "wins": 1, "losses": 0 }, "ST39": { "wins": 1, "losses": 0 }, "ST103": { "wins": 1, "losses": 0 }, "ST40": { "wins": 1, "losses": 0 }, "ST41": { "wins": 1, "losses": 0 }, "ST42": { "wins": 1, "losses": 0 }, "ST104": { "wins": 1, "losses": 0 }, "ST43": { "wins": 1, "losses": 0 }, "ST44": { "wins": 1, "losses": 0 }, "ST45": { "wins": 1, "losses": 0 }, "ST105": { "wins": 1, "losses": 0 }, "ST46": { "wins": 1, "losses": 0 }, "ST47": { "wins": 1, "losses": 0 }, "ST48": { "wins": 1, "losses": 0 }, "ST49": { "wins": 1, "losses": 0 }, "ST106": { "wins": 1, "losses": 0 }, "ST50": { "wins": 1, "losses": 0 }, "ST51": { "wins": 1, "losses": 0 }, "ST52": { "wins": 1, "losses": 0 } }
+CARD_TALLY { "C10": 565, "C28": 896, "C14": 1017, "C33": 826, "C13": 873, "C25": 845, "C02": 669, "C21": 221, "C32": 353, "C38": 979, "C43": 788, "C19": 154, "C35": 759, "C23": 522, "C47": 122 }
+Party bodies: Activists [5, 51] (low, high), Committee [15, 56]; backing M47 owned: false, M48 owned: false
+
+No bugs or discrepancies observed.
