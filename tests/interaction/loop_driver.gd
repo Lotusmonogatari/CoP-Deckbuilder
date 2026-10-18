@@ -262,6 +262,11 @@ func _play_affordable_cards(screen: Node) -> void:
 		# If the zoom did not open, the card was not reachable. Say so rather
 		# than clicking a hidden Play button and pretending a turn happened.
 		var zoom: Control = screen.get_node("%CardZoom")
+		# In a question room the first tap only previews the organizations
+		# (2026-10-18); a second tap on the same card opens it.
+		if not zoom.visible and playable.selected:
+			await _click(playable)
+			await get_tree().create_timer(0.1).timeout
 		if not zoom.visible:
 			_failures.append(("a card could not be opened from the hand: it sits at %s "
 				+ "and the hand shows %s") % [
