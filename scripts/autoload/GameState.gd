@@ -240,6 +240,11 @@ var faced_people: Dictionary = {}
 ## Same shape, for the Party Steering Committee check-in (ST22).
 var steering_committee_active := false
 
+## The game clock (2026-10-18): units of time that have passed this run.
+## Finishing a stage adds that stage's Time Units (Stages tab; blank = 1).
+## Saved; cleared on a new run. Never shown to the player (TimeClock.gd).
+var time_units := 0
+
 ## Same shape, for the Funding Freeze (M32) — tracked here purely to detect
 ## the edge for the Office alert; the freeze's actual enforcement
 ## (MetaRules.party_support_modifiers()) is checked live and needs no latch.
@@ -333,7 +338,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -465,6 +470,7 @@ func reset_meta() -> void:
 func reset_crisis_triggers() -> void:
 	town_hall_active = false
 	steering_committee_active = false
+	time_units = 0
 	funding_frozen_active = false
 	pending_trigger_alerts = []
 	stage_type_results = {}
@@ -932,6 +938,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		return true
 
 	var stage := level_runner.current_stage()
+	time_units += TimeClock.units_for_stage(stage)
 	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
 	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)
 

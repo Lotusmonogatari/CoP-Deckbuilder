@@ -43,5 +43,6 @@
   "bill_question_share_percent": 50,
   "standing_links_yen_per_point": 10000,
   "opponent_cues_general_pool_chance": 25,
+  "special_level_delay": 5,
   "xp_tiers": {}
 }
