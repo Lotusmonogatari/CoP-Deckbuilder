@@ -25122,6 +25122,6230 @@
         "ST259"
       ],
       "asked_by": "OP17"
+    },
+    {
+      "id": "S583",
+      "text": "Who bears the cost of co-official status for Ainu in willing towns in this town?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST122"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S584",
+      "text": "People here ask whether Ainu families and language teachers are the only ones who gain. Are they?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST122"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "S585",
+      "text": "Which agency would run the Ainu Heritage and Language Act, and who checks its work?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST123"
+      ],
+      "asked_by": "OP86"
+    },
+    {
+      "id": "S586",
+      "text": "What in this bill stops it from leading to disputes over ancestral land claims?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST123"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "S587",
+      "text": "How will we explain co-official status for Ainu in willing towns to the voters back home?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST124"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S588",
+      "text": "Will you spend party credit on the Ainu Heritage and Language Act?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST124"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S589",
+      "text": "How much will a national price floor for rice and dairy cost, and who pays?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST125"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S590",
+      "text": "Can you promise voters that this bill will not lead to overproduction paid for by the treasury?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST125"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S591",
+      "text": "Which agency would run the Agricultural Price Stabilization Act, and who checks its work?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST126"
+      ],
+      "asked_by": "OP33"
+    },
+    {
+      "id": "S592",
+      "text": "What in this bill stops it from leading to overproduction paid for by the treasury?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST126"
+      ],
+      "asked_by": "OP37"
+    },
+    {
+      "id": "S593",
+      "text": "What is the full price of a national price floor for rice and dairy, and where does the money come from?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST127"
+      ],
+      "asked_by": "OP94"
+    },
+    {
+      "id": "S594",
+      "text": "Why not a temporary support fund for bad years instead of a national price floor for rice and dairy?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST127"
+      ],
+      "asked_by": "OP98"
+    },
+    {
+      "id": "S595",
+      "text": "What is our plan if overproduction paid for by the treasury becomes the story?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST128"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S596",
+      "text": "Members of our own party say it rewards big farms and raises prices. How do you answer them?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST128"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S597",
+      "text": "Critics say it carves out a second set of rules for the rich. Why should voters trust you on the Special Economic Zones Act?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST129"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S598",
+      "text": "Supporters say deregulated investment zones near Sapporo, Tomakomai and Hakodate does not go far enough. Do you agree?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST129"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S599",
+      "text": "What is the full price of deregulated investment zones near Sapporo, Tomakomai and Hakodate, and where does the money come from?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST130"
+      ],
+      "asked_by": "OP89"
+    },
+    {
+      "id": "S600",
+      "text": "Why not a single pilot zone with a review instead of deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST130"
+      ],
+      "asked_by": "OP95"
+    },
+    {
+      "id": "S601",
+      "text": "Who bears the cost: workers under looser labor rules?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST131"
+      ],
+      "asked_by": "OP100"
+    },
+    {
+      "id": "S602",
+      "text": "What does the best evidence say about deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST131"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "S603",
+      "text": "Why not a single pilot zone with a review instead of deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST132"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S604",
+      "text": "What is the full price of deregulated investment zones near Sapporo, Tomakomai and Hakodate, and where does the money come from?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST132"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S605",
+      "text": "My members care about new employers and the workers they hire. What will the Special Economic Zones Act do for them?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST133"
+      ],
+      "asked_by": "OP122"
+    },
+    {
+      "id": "S606",
+      "text": "Would a single pilot zone with a review protect everyone's interests better?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST133"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S607",
+      "text": "What is the full price of deregulated investment zones near Sapporo, Tomakomai and Hakodate, and where does the money come from?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST134"
+      ],
+      "asked_by": "OP32"
+    },
+    {
+      "id": "S608",
+      "text": "Why not a single pilot zone with a review instead of deregulated investment zones near Sapporo, Tomakomai and Hakodate?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST134"
+      ],
+      "asked_by": "OP39"
+    },
+    {
+      "id": "S609",
+      "text": "What is our plan if a race to the bottom on labor protections becomes the story?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST135"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S610",
+      "text": "Members of our own party say it carves out a second set of rules for the rich. How do you answer them?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST135"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S611",
+      "text": "What does an earlier Sapporo extension of the Shinkansen change for stations and timetables along the line?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST136"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "S612",
+      "text": "Some here say it spends billions to save minutes. What do you tell them?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST136"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "S613",
+      "text": "What is the full price of an earlier Sapporo extension of the Shinkansen, and where does the money come from?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST137"
+      ],
+      "asked_by": "OP03"
+    },
+    {
+      "id": "S614",
+      "text": "Why not freight upgrades first, passengers later instead of an earlier Sapporo extension of the Shinkansen?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST137"
+      ],
+      "asked_by": "OP05"
+    },
+    {
+      "id": "S615",
+      "text": "Would freight upgrades first, passengers later protect everyone's interests better?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST138"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S616",
+      "text": "My members care about commuters, freight shippers and tourist towns. What will the Hokkaido Shinkansen Acceleration Act do for them?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST138"
+      ],
+      "asked_by": "OP125"
+    },
+    {
+      "id": "S617",
+      "text": "Why not freight upgrades first, passengers later instead of an earlier Sapporo extension of the Shinkansen?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST139"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S618",
+      "text": "What is the full price of an earlier Sapporo extension of the Shinkansen, and where does the money come from?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST139"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S619",
+      "text": "Which agency would run the Hokkaido Shinkansen Acceleration Act, and who checks its work?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST140"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "S620",
+      "text": "What in this bill stops it from leading to cost overruns on tunnels and track?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST140"
+      ],
+      "asked_by": "OP61"
+    },
+    {
+      "id": "S621",
+      "text": "How will we explain an earlier Sapporo extension of the Shinkansen to the voters back home?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST141"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S622",
+      "text": "Will you spend party credit on the Hokkaido Shinkansen Acceleration Act?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST141"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S623",
+      "text": "How much will new patrol vessels and radar on the Chishima islands cost, and who pays?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST142"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "S624",
+      "text": "Can you promise voters that this bill will not lead to escalating tension with Russia?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST142"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "S625",
+      "text": "Which agency would run the Chishima Coastal Defense Modernization Act, and who checks its work?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST143"
+      ],
+      "asked_by": "OP21"
+    },
+    {
+      "id": "S626",
+      "text": "What in this bill stops it from leading to escalating tension with Russia?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST143"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S627",
+      "text": "How will we explain new patrol vessels and radar on the Chishima islands to the voters back home?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST144"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S628",
+      "text": "Will you spend party credit on the Chishima Coastal Defense Modernization Act?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST144"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S629",
+      "text": "Which agency would run the Specified Skilled Worker Visa Act, and who checks its work?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST146"
+      ],
+      "asked_by": "OP93"
+    },
+    {
+      "id": "S630",
+      "text": "What in this bill stops it from leading to exploitation of workers and strained housing?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST146"
+      ],
+      "asked_by": "OP96"
+    },
+    {
+      "id": "S631",
+      "text": "What is the full price of five-year work visas in farming, fishing, construction and tourism, and where does the money come from?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST147"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "S632",
+      "text": "Why not a smaller visa quota for seasonal work only instead of five-year work visas in farming, fishing, construction and tourism?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST147"
+      ],
+      "asked_by": "OP61"
+    },
+    {
+      "id": "S633",
+      "text": "What is our plan if exploitation of workers and strained housing becomes the story?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST148"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S634",
+      "text": "Members of our own party say it undercuts local wages. How do you answer them?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST148"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S635",
+      "text": "What does grid links and local wind and geothermal power change for turbines, power lines and blackout plans?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST149"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S636",
+      "text": "Some here say it buys power that costs more. What do you tell them?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST149"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S637",
+      "text": "What is the full price of grid links and local wind and geothermal power, and where does the money come from?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST150"
+      ],
+      "asked_by": "OP92"
+    },
+    {
+      "id": "S638",
+      "text": "Why not backup generators for hospitals first instead of grid links and local wind and geothermal power?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST150"
+      ],
+      "asked_by": "OP01"
+    },
+    {
+      "id": "S639",
+      "text": "What in this bill stops it from leading to projects delayed by local objections?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST151"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S640",
+      "text": "Which agency would run the Grid Resilience and Renewable Energy Act, and who checks its work?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST151"
+      ],
+      "asked_by": "OP19"
+    },
+    {
+      "id": "S641",
+      "text": "Will you spend party credit on the Grid Resilience and Renewable Energy Act?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST152"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S642",
+      "text": "How will we explain grid links and local wind and geothermal power to the voters back home?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST152"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S643",
+      "text": "Would a tax on the largest incomes instead protect everyone's interests better?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST154"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S644",
+      "text": "My members care about pensioners and elder care. What will the Consumption Tax Rate Act do for them?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST154"
+      ],
+      "asked_by": "OP121"
+    },
+    {
+      "id": "S645",
+      "text": "Why not a tax on the largest incomes instead instead of a consumption tax rise from 8 to 10 percent for pensions?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST155"
+      ],
+      "asked_by": "OP41"
+    },
+    {
+      "id": "S646",
+      "text": "What is the full price of a consumption tax rise from 8 to 10 percent for pensions, and where does the money come from?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST155"
+      ],
+      "asked_by": "OP47"
+    },
+    {
+      "id": "S647",
+      "text": "Members of our own party say it taxes the poor to pay for the old. How do you answer them?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST156"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S648",
+      "text": "What is our plan if weaker spending in poorer households becomes the story?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST156"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S649",
+      "text": "Supporters say revenue and budget powers for the three prefectural assemblies does not go far enough. Do you agree?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST157"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "S650",
+      "text": "Critics say it lets wealthy areas keep their wealth. Why should voters trust you on the Prefectural Fiscal Devolution Act?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST157"
+      ],
+      "asked_by": "OP111"
+    },
+    {
+      "id": "S651",
+      "text": "Why not devolving one budget line as a trial instead of revenue and budget powers for the three prefectural assemblies?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST158"
+      ],
+      "asked_by": "OP49"
+    },
+    {
+      "id": "S652",
+      "text": "What is the full price of revenue and budget powers for the three prefectural assemblies, and where does the money come from?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST158"
+      ],
+      "asked_by": "OP53"
+    },
+    {
+      "id": "S653",
+      "text": "Which agency would run the Prefectural Fiscal Devolution Act, and who checks its work?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST159"
+      ],
+      "asked_by": "OP39"
+    },
+    {
+      "id": "S654",
+      "text": "What in this bill stops it from leading to gaps between rich and poor prefectures?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST159"
+      ],
+      "asked_by": "OP41"
+    },
+    {
+      "id": "S655",
+      "text": "How will we explain revenue and budget powers for the three prefectural assemblies to the voters back home?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST160"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S656",
+      "text": "Will you spend party credit on the Prefectural Fiscal Devolution Act?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST160"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S657",
+      "text": "How much will parties' effort to field equal numbers of women and men cost, and who pays?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST161"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "S658",
+      "text": "Can you promise voters that this bill will not lead to qualified candidates passed over?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST161"
+      ],
+      "asked_by": "OP111"
+    },
+    {
+      "id": "S659",
+      "text": "Which agency would run the Candidate Gender Parity Act, and who checks its work?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST162"
+      ],
+      "asked_by": "OP02"
+    },
+    {
+      "id": "S660",
+      "text": "What in this bill stops it from leading to qualified candidates passed over?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST162"
+      ],
+      "asked_by": "OP08"
+    },
+    {
+      "id": "S661",
+      "text": "What is the full price of parties' effort to field equal numbers of women and men, and where does the money come from?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST163"
+      ],
+      "asked_by": "OP04"
+    },
+    {
+      "id": "S662",
+      "text": "Why not voluntary party targets with public reports instead of parties' effort to field equal numbers of women and men?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST163"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "S663",
+      "text": "What is our plan if qualified candidates passed over becomes the story?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST164"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S664",
+      "text": "Members of our own party say it treats candidates as numbers. How do you answer them?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST164"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S665",
+      "text": "My members care about ferry operators, fishers and border towns. What will the Tsugaru Strait Joint Commission Act do for them?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST165"
+      ],
+      "asked_by": "OP118"
+    },
+    {
+      "id": "S666",
+      "text": "Would an annual meeting instead of a standing body protect everyone's interests better?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST165"
+      ],
+      "asked_by": "OP119"
+    },
+    {
+      "id": "S667",
+      "text": "What is the full price of a standing Yezo-Japan commission on the Tsugaru Strait, and where does the money come from?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST166"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "S668",
+      "text": "Why not an annual meeting instead of a standing body instead of a standing Yezo-Japan commission on the Tsugaru Strait?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST166"
+      ],
+      "asked_by": "OP61"
+    },
+    {
+      "id": "S669",
+      "text": "Supporters say a standing Yezo-Japan commission on the Tsugaru Strait does not go far enough. Do you agree?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST167"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S670",
+      "text": "Critics say it hands control of our waters to talks. Why should voters trust you on the Tsugaru Strait Joint Commission Act?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST167"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S671",
+      "text": "Why not an annual meeting instead of a standing body instead of a standing Yezo-Japan commission on the Tsugaru Strait?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST168"
+      ],
+      "asked_by": "OP39"
+    },
+    {
+      "id": "S672",
+      "text": "What is the full price of a standing Yezo-Japan commission on the Tsugaru Strait, and where does the money come from?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST168"
+      ],
+      "asked_by": "OP41"
+    },
+    {
+      "id": "S673",
+      "text": "Members of our own party say it hands control of our waters to talks. How do you answer them?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST169"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S674",
+      "text": "What is our plan if a commission with no power to settle anything becomes the story?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "stage_ids": [
+        "ST169"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S675",
+      "text": "How much will an independent commission to nominate Supreme Court justices cost, and who pays?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST171"
+      ],
+      "asked_by": "OP112"
+    },
+    {
+      "id": "S676",
+      "text": "Can you promise voters that this bill will not lead to an unelected body choosing judges?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST171"
+      ],
+      "asked_by": "OP113"
+    },
+    {
+      "id": "S677",
+      "text": "Which agency would run the Judicial Appointments Commission Act, and who checks its work?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST172"
+      ],
+      "asked_by": "OP50"
+    },
+    {
+      "id": "S678",
+      "text": "What in this bill stops it from leading to an unelected body choosing judges?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST172"
+      ],
+      "asked_by": "OP60"
+    },
+    {
+      "id": "S679",
+      "text": "How will we explain an independent commission to nominate Supreme Court justices to the voters back home?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST173"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S680",
+      "text": "Will you spend party credit on the Judicial Appointments Commission Act?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST173"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S681",
+      "text": "Who bears the cost of tax relief and restoration grants for temples and shrines in this town?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST174"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S682",
+      "text": "People here ask whether temples, shrines and festival towns are the only ones who gain. Are they?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST174"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S683",
+      "text": "My members care about temples, shrines and festival towns. What will the Temple and Shrine Heritage Act do for them?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST175"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S684",
+      "text": "Would grants for building safety only protect everyone's interests better?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST175"
+      ],
+      "asked_by": "OP121"
+    },
+    {
+      "id": "S685",
+      "text": "What in this bill stops it from leading to favoring some faiths over others?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST177"
+      ],
+      "asked_by": "OP51"
+    },
+    {
+      "id": "S686",
+      "text": "Which agency would run the Temple and Shrine Heritage Act, and who checks its work?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST177"
+      ],
+      "asked_by": "OP64"
+    },
+    {
+      "id": "S687",
+      "text": "Why not grants for building safety only instead of tax relief and restoration grants for temples and shrines?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST178"
+      ],
+      "asked_by": "OP07"
+    },
+    {
+      "id": "S688",
+      "text": "What is the full price of tax relief and restoration grants for temples and shrines, and where does the money come from?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST178"
+      ],
+      "asked_by": "OP32"
+    },
+    {
+      "id": "S689",
+      "text": "Members of our own party say it spends public money on religion. How do you answer them?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST179"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S690",
+      "text": "What is our plan if favoring some faiths over others becomes the story?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST179"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S691",
+      "text": "Some here say it lets members spend money to win elections. What do you tell them?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST180"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S692",
+      "text": "What does an annual district grant for every Assembly member change for small projects paid for by the member's grant?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST180"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S693",
+      "text": "Critics say it lets members spend money to win elections. Why should voters trust you on the Constituency Development Grants Act?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST182"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S694",
+      "text": "Supporters say an annual district grant for every Assembly member does not go far enough. Do you agree?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST182"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S695",
+      "text": "What is the full price of an annual district grant for every Assembly member, and where does the money come from?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST183"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S696",
+      "text": "Why not grants allocated by an independent panel instead of an annual district grant for every Assembly member?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST183"
+      ],
+      "asked_by": "OP19"
+    },
+    {
+      "id": "S697",
+      "text": "What in this bill stops it from leading to pork spending that buys votes?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST184"
+      ],
+      "asked_by": "OP32"
+    },
+    {
+      "id": "S698",
+      "text": "Which agency would run the Constituency Development Grants Act, and who checks its work?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST184"
+      ],
+      "asked_by": "OP39"
+    },
+    {
+      "id": "S699",
+      "text": "Will you spend party credit on the Constituency Development Grants Act?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST185"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S700",
+      "text": "How will we explain an annual district grant for every Assembly member to the voters back home?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST185"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S701",
+      "text": "My members worry about tax revenue and local power supply. What do you say to them?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST186"
+      ],
+      "asked_by": "OP122"
+    },
+    {
+      "id": "S702",
+      "text": "How do you keep subsidies for firms that would come anyway off the table?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST186"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "S703",
+      "text": "Who bears the cost: tax revenue and local power supply?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST187"
+      ],
+      "asked_by": "OP46"
+    },
+    {
+      "id": "S704",
+      "text": "What does the best evidence say about tax breaks for data centers and a national digital agency?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST187"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "S705",
+      "text": "Do you really have the votes to pass tax breaks for data centers and a national digital agency?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST188"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "S706",
+      "text": "Is subsidies for firms that would come anyway the real story behind the Digital Economy Promotion Act?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST188"
+      ],
+      "asked_by": "OP111"
+    },
+    {
+      "id": "S707",
+      "text": "Which agency would run the Digital Economy Promotion Act, and who checks its work?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST189"
+      ],
+      "asked_by": "OP39"
+    },
+    {
+      "id": "S708",
+      "text": "What in this bill stops it from leading to subsidies for firms that would come anyway?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST189"
+      ],
+      "asked_by": "OP41"
+    },
+    {
+      "id": "S709",
+      "text": "Can you promise voters that this bill will not lead to subsidies for firms that would come anyway?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST190"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S710",
+      "text": "How much will tax breaks for data centers and a national digital agency cost, and who pays?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST190"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S711",
+      "text": "What in this bill stops it from leading to subsidies for firms that would come anyway?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST191"
+      ],
+      "asked_by": "OP36"
+    },
+    {
+      "id": "S712",
+      "text": "Which agency would run the Digital Economy Promotion Act, and who checks its work?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST191"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "S713",
+      "text": "Will you spend party credit on the Digital Economy Promotion Act?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST192"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S714",
+      "text": "How will we explain tax breaks for data centers and a national digital agency to the voters back home?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST192"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S715",
+      "text": "They say it criminalizes thoughts. Are they right?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST194"
+      ],
+      "asked_by": "OP112"
+    },
+    {
+      "id": "S716",
+      "text": "What is the one fact about the Organized Crime Conspiracy Act that you hoped no one would raise?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST194"
+      ],
+      "asked_by": "OP113"
+    },
+    {
+      "id": "S717",
+      "text": "Why not wiretaps only with a court order each time instead of the crime of planning serious organized crime, with wider wiretaps?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST195"
+      ],
+      "asked_by": "OP81"
+    },
+    {
+      "id": "S718",
+      "text": "What is the full price of the crime of planning serious organized crime, with wider wiretaps, and where does the money come from?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST195"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S719",
+      "text": "Critics say it criminalizes thoughts. Why should voters trust you on the Organized Crime Conspiracy Act?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST196"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "S720",
+      "text": "Supporters say the crime of planning serious organized crime, with wider wiretaps does not go far enough. Do you agree?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST196"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "S721",
+      "text": "How will we explain the crime of planning serious organized crime, with wider wiretaps to the voters back home?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST197"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S722",
+      "text": "Will you spend party credit on the Organized Crime Conspiracy Act?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST197"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S723",
+      "text": "Who bears the cost of a national registry giving same-sex couples partnership rights in this town?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST198"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S724",
+      "text": "People here ask whether same-sex couples and their families are the only ones who gain. Are they?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST198"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S725",
+      "text": "Which agency would run the Partnership Registration Act, and who checks its work?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST199"
+      ],
+      "asked_by": "OP86"
+    },
+    {
+      "id": "S726",
+      "text": "What in this bill stops it from leading to a split in public opinion?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST199"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "S727",
+      "text": "How will we explain a national registry giving same-sex couples partnership rights to the voters back home?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST200"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S728",
+      "text": "Will you spend party credit on the Partnership Registration Act?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST200"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S729",
+      "text": "How would we measure whether power kept longer than the crisis lasts is happening?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST201"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "S730",
+      "text": "Would emergency powers needing an Assembly vote deliver most of the benefit with less risk?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST201"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "S731",
+      "text": "Which agency would run the National Emergency Powers Act, and who checks its work?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST202"
+      ],
+      "asked_by": "OP04"
+    },
+    {
+      "id": "S732",
+      "text": "What in this bill stops it from leading to power kept longer than the crisis lasts?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST202"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "S733",
+      "text": "Is power kept longer than the crisis lasts the real story behind the National Emergency Powers Act?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST203"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S734",
+      "text": "Do you really have the votes to pass a 30-day national emergency that lets the Prime Minister govern by decree?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST203"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S735",
+      "text": "What in this bill stops it from leading to power kept longer than the crisis lasts?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST204"
+      ],
+      "asked_by": "OP49"
+    },
+    {
+      "id": "S736",
+      "text": "Which agency would run the National Emergency Powers Act, and who checks its work?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST204"
+      ],
+      "asked_by": "OP53"
+    },
+    {
+      "id": "S737",
+      "text": "Is power kept longer than the crisis lasts the biggest danger in the National Emergency Powers Act?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST205"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S738",
+      "text": "Which agency would run the National Emergency Powers Act, and who checks its work?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST206"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S739",
+      "text": "What in this bill stops it from leading to power kept longer than the crisis lasts?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST206"
+      ],
+      "asked_by": "OP54"
+    },
+    {
+      "id": "S740",
+      "text": "How will we explain a 30-day national emergency that lets the Prime Minister govern by decree to the voters back home?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST207"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S741",
+      "text": "Will you spend party credit on the National Emergency Powers Act?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST207"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S742",
+      "text": "How would we measure whether being drawn into a foreign conflict is happening?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST208"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "S743",
+      "text": "Would observer status at exercises deliver most of the benefit with less risk?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST208"
+      ],
+      "asked_by": "OP81"
+    },
+    {
+      "id": "S744",
+      "text": "Which agency would run the Yezo–US Security Consultation Agreement, and who checks its work?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST209"
+      ],
+      "asked_by": "OP95"
+    },
+    {
+      "id": "S745",
+      "text": "What in this bill stops it from leading to being drawn into a foreign conflict?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST209"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "S746",
+      "text": "Can you promise voters that this bill will not lead to being drawn into a foreign conflict?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST210"
+      ],
+      "asked_by": "OP111"
+    },
+    {
+      "id": "S747",
+      "text": "How much will annual defense talks and joint exercises with the United States cost, and who pays?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST210"
+      ],
+      "asked_by": "OP112"
+    },
+    {
+      "id": "S748",
+      "text": "What in this bill stops it from leading to being drawn into a foreign conflict?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST211"
+      ],
+      "asked_by": "OP57"
+    },
+    {
+      "id": "S749",
+      "text": "Which agency would run the Yezo–US Security Consultation Agreement, and who checks its work?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST211"
+      ],
+      "asked_by": "OP63"
+    },
+    {
+      "id": "S750",
+      "text": "Will you spend party credit on the Yezo–US Security Consultation Agreement?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST212"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S751",
+      "text": "How will we explain annual defense talks and joint exercises with the United States to the voters back home?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST212"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S752",
+      "text": "Who bears the cost: dairy and rural producers?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST214"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "S753",
+      "text": "What does the best evidence say about lower tariffs with the European Union on dairy, wine, machinery and cars?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST214"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "S754",
+      "text": "Why not phasing tariffs down over a long period instead of lower tariffs with the European Union on dairy, wine, machinery and cars?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST215"
+      ],
+      "asked_by": "OP82"
+    },
+    {
+      "id": "S755",
+      "text": "What is the full price of lower tariffs with the European Union on dairy, wine, machinery and cars, and where does the money come from?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST215"
+      ],
+      "asked_by": "OP89"
+    },
+    {
+      "id": "S756",
+      "text": "Which agency would run the Yezo–EU Economic Partnership Agreement, and who checks its work?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST216"
+      ],
+      "asked_by": "OP97"
+    },
+    {
+      "id": "S757",
+      "text": "What in this bill stops it from leading to foreign dairy undercutting local farms?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST216"
+      ],
+      "asked_by": "OP03"
+    },
+    {
+      "id": "S758",
+      "text": "How will we explain lower tariffs with the European Union on dairy, wine, machinery and cars to the voters back home?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST217"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S759",
+      "text": "Will you spend party credit on the Yezo–EU Economic Partnership Agreement?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST217"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S760",
+      "text": "How much will government review of foreign land purchases near ports, water and defense sites cost, and who pays?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST218"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "S761",
+      "text": "Can you promise voters that this bill will not lead to scaring off honest investment?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST218"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "S762",
+      "text": "Which agency would run the Strategic Land and Port Screening Act, and who checks its work?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST219"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S763",
+      "text": "What in this bill stops it from leading to scaring off honest investment?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST219"
+      ],
+      "asked_by": "OP67"
+    },
+    {
+      "id": "S764",
+      "text": "What is the full price of government review of foreign land purchases near ports, water and defense sites, and where does the money come from?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST220"
+      ],
+      "asked_by": "OP57"
+    },
+    {
+      "id": "S765",
+      "text": "Why not a registry of foreign owners without review instead of government review of foreign land purchases near ports, water and defense sites?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST220"
+      ],
+      "asked_by": "OP63"
+    },
+    {
+      "id": "S766",
+      "text": "What in this bill stops it from leading to scaring off honest investment?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST221"
+      ],
+      "asked_by": "OP19"
+    },
+    {
+      "id": "S767",
+      "text": "Which agency would run the Strategic Land and Port Screening Act, and who checks its work?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST221"
+      ],
+      "asked_by": "OP36"
+    },
+    {
+      "id": "S768",
+      "text": "Will you spend party credit on the Strategic Land and Port Screening Act?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST222"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S769",
+      "text": "How will we explain government review of foreign land purchases near ports, water and defense sites to the voters back home?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST222"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S770",
+      "text": "What is the full price of visa-free entry for tourists from Korea, Taiwan and Southeast Asia, and where does the money come from?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST223"
+      ],
+      "asked_by": "OP20"
+    },
+    {
+      "id": "S771",
+      "text": "Why not visa waivers for group tours only instead of visa-free entry for tourists from Korea, Taiwan and Southeast Asia?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST223"
+      ],
+      "asked_by": "OP38"
+    },
+    {
+      "id": "S772",
+      "text": "Critics say it opens the door too wide. Answer in twenty seconds.",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST224"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S773",
+      "text": "Why not visa waivers for group tours only instead of visa-free entry for tourists from Korea, Taiwan and Southeast Asia?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST225"
+      ],
+      "asked_by": "OP100"
+    },
+    {
+      "id": "S774",
+      "text": "What is the full price of visa-free entry for tourists from Korea, Taiwan and Southeast Asia, and where does the money come from?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST225"
+      ],
+      "asked_by": "OP16"
+    },
+    {
+      "id": "S775",
+      "text": "Members of our own party say it opens the door too wide. How do you answer them?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST226"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S776",
+      "text": "What is our plan if overcrowded resorts and strained services becomes the story?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST226"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S777",
+      "text": "Why not a fishing agreement without tourism instead of joint fishing and tourism zones with Russia on the southern Chishima islands?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST228"
+      ],
+      "asked_by": "OP72"
+    },
+    {
+      "id": "S778",
+      "text": "What is the full price of joint fishing and tourism zones with Russia on the southern Chishima islands, and where does the money come from?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST228"
+      ],
+      "asked_by": "OP82"
+    },
+    {
+      "id": "S779",
+      "text": "Members of our own party say it concedes what we have always claimed. How do you answer them?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST229"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S780",
+      "text": "What is our plan if weakening our claim to the islands becomes the story?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST229"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S781",
+      "text": "What in this bill stops it from leading to an accident after a quake?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST230"
+      ],
+      "asked_by": "OP01"
+    },
+    {
+      "id": "S782",
+      "text": "Which agency would run the Tomari Nuclear Restart Act, and who checks its work?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST230"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S783",
+      "text": "Why not a restart only after an outside safety review instead of restarting the Tomari nuclear plant?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST231"
+      ],
+      "asked_by": "OP68"
+    },
+    {
+      "id": "S784",
+      "text": "What is the full price of restarting the Tomari nuclear plant, and where does the money come from?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST231"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S785",
+      "text": "Members of our own party say it repeats the risks we promised to leave. How do you answer them?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST232"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S786",
+      "text": "What is our plan if an accident after a quake becomes the story?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST232"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S787",
+      "text": "Would a resort with no casino floor protect everyone's interests better?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST233"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "S788",
+      "text": "My members care about construction workers, hotels and the host town. What will the Integrated Resort Act do for them?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST233"
+      ],
+      "asked_by": "OP121"
+    },
+    {
+      "id": "S789",
+      "text": "Do you really have the votes to pass a licensed casino resort, with Tomakomai the leading site?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST234"
+      ],
+      "asked_by": "OP114"
+    },
+    {
+      "id": "S790",
+      "text": "Is gambling addiction and organized crime the real story behind the Integrated Resort Act?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST234"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S791",
+      "text": "What does the best evidence say about a licensed casino resort, with Tomakomai the leading site?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST235"
+      ],
+      "asked_by": "OP81"
+    },
+    {
+      "id": "S792",
+      "text": "Who bears the cost: neighbors and gambling-prone households?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST235"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "S793",
+      "text": "What is the full price of a licensed casino resort, with Tomakomai the leading site, and where does the money come from?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST236"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S794",
+      "text": "Why not a resort with no casino floor instead of a licensed casino resort, with Tomakomai the leading site?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST236"
+      ],
+      "asked_by": "OP19"
+    },
+    {
+      "id": "S795",
+      "text": "What in this bill stops it from leading to gambling addiction and organized crime?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST237"
+      ],
+      "asked_by": "OP07"
+    },
+    {
+      "id": "S796",
+      "text": "Which agency would run the Integrated Resort Act, and who checks its work?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST237"
+      ],
+      "asked_by": "OP32"
+    },
+    {
+      "id": "S797",
+      "text": "Will you spend party credit on the Integrated Resort Act?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST238"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S798",
+      "text": "How will we explain a licensed casino resort, with Tomakomai the leading site to the voters back home?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "stage_ids": [
+        "ST238"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S799",
+      "text": "Can you promise voters that this bill will not lead to exams that miss real-world skill?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST239"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "S800",
+      "text": "How much will competitive exams for all public hiring and a ban on referrals cost, and who pays?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST239"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "S801",
+      "text": "What in this bill stops it from leading to exams that miss real-world skill?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST240"
+      ],
+      "asked_by": "OP100"
+    },
+    {
+      "id": "S802",
+      "text": "Which agency would run the Civil Service Merit Act, and who checks its work?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST240"
+      ],
+      "asked_by": "OP16"
+    },
+    {
+      "id": "S803",
+      "text": "Why not exams for senior posts only instead of competitive exams for all public hiring and a ban on referrals?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST241"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "S804",
+      "text": "What is the full price of competitive exams for all public hiring and a ban on referrals, and where does the money come from?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST241"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S805",
+      "text": "Members of our own party say it makes public service a quiz. How do you answer them?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST242"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S806",
+      "text": "What is our plan if exams that miss real-world skill becomes the story?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST242"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S807",
+      "text": "Why not a lower rate in the poorest towns for a few years instead of one higher minimum wage across Hokkaido, Aomori and Chishima?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST244"
+      ],
+      "asked_by": "OP14"
+    },
+    {
+      "id": "S808",
+      "text": "What is the full price of one higher minimum wage across Hokkaido, Aomori and Chishima, and where does the money come from?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST244"
+      ],
+      "asked_by": "OP16"
+    },
+    {
+      "id": "S809",
+      "text": "In one sentence, why does the country need one higher minimum wage across Hokkaido, Aomori and Chishima?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST245"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S810",
+      "text": "What is the full price of one higher minimum wage across Hokkaido, Aomori and Chishima, and where does the money come from?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST246"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "S811",
+      "text": "Why not a lower rate in the poorest towns for a few years instead of one higher minimum wage across Hokkaido, Aomori and Chishima?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST246"
+      ],
+      "asked_by": "OP93"
+    },
+    {
+      "id": "S812",
+      "text": "What in this bill stops it from leading to closed shops and fewer jobs in poor towns?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST247"
+      ],
+      "asked_by": "OP05"
+    },
+    {
+      "id": "S813",
+      "text": "Which agency would run the Regional Minimum Wage Act, and who checks its work?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST247"
+      ],
+      "asked_by": "OP07"
+    },
+    {
+      "id": "S814",
+      "text": "Will you spend party credit on the Regional Minimum Wage Act?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST248"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S815",
+      "text": "How will we explain one higher minimum wage across Hokkaido, Aomori and Chishima to the voters back home?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST248"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S816",
+      "text": "Can you promise voters that this bill will not lead to an unelected commission with too much say?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST249"
+      ],
+      "asked_by": "OP117"
+    },
+    {
+      "id": "S817",
+      "text": "How much will a nonpartisan commission to draw districts and police campaign money cost, and who pays?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST249"
+      ],
+      "asked_by": "OP110"
+    },
+    {
+      "id": "S818",
+      "text": "What in this bill stops it from leading to an unelected commission with too much say?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST250"
+      ],
+      "asked_by": "OP76"
+    },
+    {
+      "id": "S819",
+      "text": "Which agency would run the Independent Election Commission Act, and who checks its work?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST250"
+      ],
+      "asked_by": "OP88"
+    },
+    {
+      "id": "S820",
+      "text": "Why not public hearings on redistricting instead of a nonpartisan commission to draw districts and police campaign money?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST251"
+      ],
+      "asked_by": "OP45"
+    },
+    {
+      "id": "S821",
+      "text": "What is the full price of a nonpartisan commission to draw districts and police campaign money, and where does the money come from?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST251"
+      ],
+      "asked_by": "OP50"
+    },
+    {
+      "id": "S822",
+      "text": "Members of our own party say it takes elections away from the elected. How do you answer them?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST252"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S823",
+      "text": "What is our plan if an unelected commission with too much say becomes the story?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST252"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S824",
+      "text": "Why not an optional ethics elective instead of compulsory graded ethics classes in schools?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST254"
+      ],
+      "asked_by": "OP37"
+    },
+    {
+      "id": "S825",
+      "text": "What is the full price of compulsory graded ethics classes in schools, and where does the money come from?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST254"
+      ],
+      "asked_by": "OP38"
+    },
+    {
+      "id": "S826",
+      "text": "Which agency would run the Moral Education Curriculum Act, and who checks its work?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST255"
+      ],
+      "asked_by": "OP96"
+    },
+    {
+      "id": "S827",
+      "text": "What in this bill stops it from leading to the state teaching one view of virtue?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST255"
+      ],
+      "asked_by": "OP02"
+    },
+    {
+      "id": "S828",
+      "text": "How will we explain compulsory graded ethics classes in schools to the voters back home?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST256"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S829",
+      "text": "Will you spend party credit on the Moral Education Curriculum Act?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST256"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S830",
+      "text": "How much will municipal voting rights for long-term foreign residents cost, and who pays?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST257"
+      ],
+      "asked_by": "OP115"
+    },
+    {
+      "id": "S831",
+      "text": "Can you promise voters that this bill will not lead to a backlash that harms community ties?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST257"
+      ],
+      "asked_by": "OP116"
+    },
+    {
+      "id": "S832",
+      "text": "Which agency would run the Foreign Resident Local Suffrage Act, and who checks its work?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST258"
+      ],
+      "asked_by": "OP28"
+    },
+    {
+      "id": "S833",
+      "text": "What in this bill stops it from leading to a backlash that harms community ties?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST258"
+      ],
+      "asked_by": "OP49"
+    },
+    {
+      "id": "S834",
+      "text": "How will we explain municipal voting rights for long-term foreign residents to the voters back home?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST259"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S835",
+      "text": "Will you spend party credit on the Foreign Resident Local Suffrage Act?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST259"
+      ],
+      "asked_by": "OP52"
     }
   ]
 }
