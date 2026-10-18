@@ -35181,6 +35181,3696 @@
         "ST254"
       ],
       "asked_by": "OP100"
+    },
+    {
+      "id": "S891",
+      "text": "Would co-official status mean Ainu on road signs in every town, or only where voters ask?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI01"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S892",
+      "text": "How would the claims process decide who owns land that was taken generations ago?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI01"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S893",
+      "text": "Will language schools reach Ainu children in the cities, or only on the coast?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI01"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S894",
+      "text": "If the government guarantees a floor, why would any farmer cut production?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI02"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S895",
+      "text": "Rice is cheaper abroad. Why should shoppers pay for the difference?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI02"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S896",
+      "text": "Does the floor help a ten-hectare dairy as much as a thousand-hectare estate?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI02"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S897",
+      "text": "Which labor rules would be relaxed inside the zones, and who decides?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI03"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S898",
+      "text": "If firms are drawn to Sapporo, what is left for the towns outside the zones?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI03"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S899",
+      "text": "Do zone investors have to hire locally, or can they bring their own workers?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI03"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S900",
+      "text": "Is moving up the Sapporo extension worth the debt it adds?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI04"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S901",
+      "text": "Who gets the freight capacity between Aomori and Hakodate, and who is left waiting?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI04"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S902",
+      "text": "Will tunnel towns see jobs, or just dust and trucks?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI04"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S903",
+      "text": "Do new radar stations deter Russian exercises, or invite them?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI05"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S904",
+      "text": "Can island residents count on evacuation plans if patrols fail?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI05"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S905",
+      "text": "Why not ask allies to share the cost of the patrol vessels?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI05"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S906",
+      "text": "If a worker stays five years, what happens to their family and their children's schooling?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI06"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S907",
+      "text": "What stops an employer from underpaying workers who cannot easily change jobs?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI06"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S908",
+      "text": "Why not raise wages enough that local workers apply?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI06"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S909",
+      "text": "Who pays for the interconnection lines, and who owns the power?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI07"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S910",
+      "text": "Can geothermal developers promise not to harm the hot springs towns?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI07"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S911",
+      "text": "If another quake hits, which towns would still have power under this bill?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI07"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S912",
+      "text": "Why not tax high incomes instead of every shopper?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI08"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S913",
+      "text": "How do you guarantee the new revenue reaches pensions and not the general budget?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI08"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S914",
+      "text": "What do you tell a small shop whose customers already feel the squeeze?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI08"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S915",
+      "text": "What happens to a poor prefecture if its revenue falls and the national government stops paying?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI09"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S916",
+      "text": "Who audits budgets that the prefectures write for themselves?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI09"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S917",
+      "text": "Will local assemblies tax more, or simply spend what they are handed?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI09"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S918",
+      "text": "Is 'effort' enough, or should the law set a number?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI10"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S919",
+      "text": "How would a party find enough women candidates in thin districts?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI10"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S920",
+      "text": "Does a quota help women, or label them?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI10"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S921",
+      "text": "What power would a joint commission have to settle a fishing dispute?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "bill_ids": [
+        "BI11"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S922",
+      "text": "Would ferry customs get faster, or just wait for another committee?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "bill_ids": [
+        "BI11"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S923",
+      "text": "Do we trust a shared body with waters our fishers depend on?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "bill_ids": [
+        "BI11"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S924",
+      "text": "Who appoints the people who appoint the judges?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "bill_ids": [
+        "BI12"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S925",
+      "text": "Why take a power the voters gave to elected leaders?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "bill_ids": [
+        "BI12"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S926",
+      "text": "Would an independent commission produce better judges, or only slower ones?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "bill_ids": [
+        "BI12"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S927",
+      "text": "Is paying for temple roofs a public good or a favor to one religion?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI13"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S928",
+      "text": "Which shrines would qualify, and who decides what counts as heritage?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI13"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S929",
+      "text": "Will restoration money reach small village shrines, or only the famous ones?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI13"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S930",
+      "text": "How do we stop a district grant from becoming a campaign gift?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI14"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S931",
+      "text": "Would a member in a poor district get as much as one in a rich district?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI14"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S932",
+      "text": "Why not let local councils decide where the money goes?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI14"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S933",
+      "text": "Why give tax breaks to data centers that employ few people?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI15"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S934",
+      "text": "Can cold towns supply enough power for data centers without raising household bills?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI15"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S935",
+      "text": "What would a national digital agency do that a ministry cannot?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI15"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S936",
+      "text": "How does a prosecutor tell planning a crime from talking about one?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "bill_ids": [
+        "BI16"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S937",
+      "text": "Could wiretaps be used on unions, protesters or journalists?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "bill_ids": [
+        "BI16"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S938",
+      "text": "What evidence shows that current laws are too weak?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "bill_ids": [
+        "BI16"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S939",
+      "text": "Would a registry give couples the same rights as marriage, or fewer?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI17"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S940",
+      "text": "What do you say to a family that sees this as a threat to tradition?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI17"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S941",
+      "text": "Why not let each prefecture decide for itself?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI17"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S942",
+      "text": "Who decides when a disaster has become a national emergency?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI18"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S943",
+      "text": "What stops thirty days from becoming sixty?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI18"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S944",
+      "text": "Could the Assembly vote on emergency powers within hours?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI18"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S945",
+      "text": "Would annual consultations make Yezo safer, or only more entangled?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI19"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S946",
+      "text": "What do joint exercises mean for fishing boats near the northern harbors?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI19"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S947",
+      "text": "Why consult one ally and not all of our neighbors?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI19"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S948",
+      "text": "What happens to our dairy farmers when European cheese costs less?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "bill_ids": [
+        "BI20"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S949",
+      "text": "Will cheaper cars and machinery cost Yezo factories their jobs?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "bill_ids": [
+        "BI20"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S950",
+      "text": "Which exports gain the most from this agreement?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "bill_ids": [
+        "BI20"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S951",
+      "text": "How would a review panel decide which foreign buyer is a threat?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI21"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S952",
+      "text": "Will honest investors be treated like spies?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI21"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S953",
+      "text": "Why not publish a registry of owners and leave sales alone?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI21"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S954",
+      "text": "Can ski towns handle the crowds visa-free travel could bring?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI22"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S955",
+      "text": "How do you stop overstays without checking everyone twice?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI22"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S956",
+      "text": "Will artisans and shops really see the extra spending?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI22"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S957",
+      "text": "Does joint fishing weaken our claim to the southern islands?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI23"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S958",
+      "text": "Which country's law applies to a boat in the joint zone?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI23"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S959",
+      "text": "What do islanders and their descendants say about sharing these waters?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI23"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S960",
+      "text": "What did the safety review find about the plant's earthquake risk?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI24"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S961",
+      "text": "Where would the waste go, and who would live next to it?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI24"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S962",
+      "text": "Is there a way to prevent a blackout without restarting Tomari?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI24"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S963",
+      "text": "How many jobs would the resort create, and how many would stay local?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "bill_ids": [
+        "BI25"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S964",
+      "text": "What protections would a gambler in debt have?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "bill_ids": [
+        "BI25"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S965",
+      "text": "Why Tomakomai, and who gets a say in that choice?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "bill_ids": [
+        "BI25"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S966",
+      "text": "Do written exams measure the skills a ward office really needs?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI26"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S967",
+      "text": "How do you stop favoritism if referrals simply go underground?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI26"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S968",
+      "text": "Would small towns find qualified applicants at all?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI26"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S969",
+      "text": "Can a small shop in Chishima pay what a Sapporo shop pays?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI27"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S970",
+      "text": "Would a single rate push jobs from poor towns to rich ones?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI27"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S971",
+      "text": "Why not raise wages region by region as local economies catch up?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI27"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S972",
+      "text": "Who would sit on the commission, and who chooses them?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI28"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S973",
+      "text": "Why take district lines out of elected hands?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI28"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S974",
+      "text": "How would the commission catch a campaign finance cheat?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI28"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S975",
+      "text": "Who writes the curriculum, and whose values go into it?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI29"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S976",
+      "text": "Would graded classes teach children to think, or to obey?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI29"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S977",
+      "text": "What do teachers do when students disagree with the lesson?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI29"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S978",
+      "text": "Why should someone who pays local taxes not vote on local budgets?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI30"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S979",
+      "text": "Could this lead to voting in national elections?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI30"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S980",
+      "text": "How long must a resident live here before voting?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI30"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S981",
+      "text": "What happens to a logging town when the forest around it is closed?",
+      "theme": "Wilderness and Wildlife Protection Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI31"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S982",
+      "text": "Who patrols the reserves, and how are rangers paid?",
+      "theme": "Wilderness and Wildlife Protection Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI31"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S983",
+      "text": "Will Ainu communities keep access to their traditional gathering grounds?",
+      "theme": "Wilderness and Wildlife Protection Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI31"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S984",
+      "text": "How do you recruit doctors to a town with one road and no high school?",
+      "theme": "Rural Hospital Network Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI32"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S985",
+      "text": "Is a small hospital safe for surgery, or only for first aid?",
+      "theme": "Rural Hospital Network Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI32"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S986",
+      "text": "Wouldn't traveling clinics reach more people at lower cost?",
+      "theme": "Rural Hospital Network Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI32"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S987",
+      "text": "What happens to my records if the system is hacked?",
+      "theme": "Digital Identity Card Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI33"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S988",
+      "text": "Do I have to carry the card to see a doctor?",
+      "theme": "Digital Identity Card Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI33"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S989",
+      "text": "Who can see my tax and health records on a single card?",
+      "theme": "Digital Identity Card Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI33"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S990",
+      "text": "If the board is not accountable to ministers, who is it accountable to?",
+      "theme": "Public Broadcasting Independence Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI34"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S991",
+      "text": "Would an independent broadcaster treat the government fairly, or only critically?",
+      "theme": "Public Broadcasting Independence Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI34"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S992",
+      "text": "How should the public broadcaster be funded if not by ministers?",
+      "theme": "Public Broadcasting Independence Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI34"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S993",
+      "text": "Would a donor cap just send money into unreported channels?",
+      "theme": "Political Donation Transparency Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI35"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S994",
+      "text": "Should a small local donation be published like a large one?",
+      "theme": "Political Donation Transparency Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI35"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S995",
+      "text": "Who enforces publication, and what is the penalty?",
+      "theme": "Political Donation Transparency Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI35"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S996",
+      "text": "If corporate taxes fall, which services take the cut?",
+      "theme": "Corporate Tax Reduction Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI36"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S997",
+      "text": "Would lower taxes bring investment, or only bigger dividends?",
+      "theme": "Corporate Tax Reduction Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI36"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S998",
+      "text": "Why a smaller cut for small firms, who employ most workers?",
+      "theme": "Corporate Tax Reduction Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI36"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S999",
+      "text": "A farmer heats a barn with oil. What does the levy do to that farmer?",
+      "theme": "Carbon Levy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI37"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1000",
+      "text": "How much of the revenue would come back to my household?",
+      "theme": "Carbon Levy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI37"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1001",
+      "text": "Would industry leave for places without a levy?",
+      "theme": "Carbon Levy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI37"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1002",
+      "text": "Can a family boat afford to keep its quota when a bigger buyer offers more?",
+      "theme": "Fisheries Quota Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI38"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1003",
+      "text": "Who checks the onboard reports, and what happens to a boat that lies?",
+      "theme": "Fisheries Quota Modernization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI38"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1004",
+      "text": "Why trade quotas at all instead of tightening the old limits?",
+      "theme": "Fisheries Quota Modernization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI38"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1005",
+      "text": "How do you stop guaranteed orders from becoming guaranteed waste?",
+      "theme": "Shipbuilding and Defense Industry Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI39"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1006",
+      "text": "Which towns would the shipyards actually employ?",
+      "theme": "Shipbuilding and Defense Industry Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI39"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1007",
+      "text": "Why not let yards bid openly for each contract?",
+      "theme": "Shipbuilding and Defense Industry Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI39"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1008",
+      "text": "Who would sit on the commission, and what are they allowed to propose?",
+      "theme": "Constitutional Review Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI40"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1009",
+      "text": "Does a standing commission make amendment more likely than a one-time study?",
+      "theme": "Constitutional Review Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI40"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1010",
+      "text": "What article of the constitution is actually broken?",
+      "theme": "Constitutional Review Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI40"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1011",
+      "text": "What data would be shared with Japan, and who can see it?",
+      "theme": "Japan Customs and Border Cooperation Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO28",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI41"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1012",
+      "text": "Would a merged check shorten the line at the ferry terminal?",
+      "theme": "Japan Customs and Border Cooperation Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO28",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI41"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1013",
+      "text": "Who controls the border if two countries share one process?",
+      "theme": "Japan Customs and Border Cooperation Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO28",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI41"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1014",
+      "text": "What would mining do to fishing grounds and sacred sites?",
+      "theme": "Chishima Resource Development Agreement Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "bill_ids": [
+        "BI42"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1015",
+      "text": "Who gets the revenue, and how much stays on the islands?",
+      "theme": "Chishima Resource Development Agreement Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "bill_ids": [
+        "BI42"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1016",
+      "text": "Why not develop the fishery alone and leave the seabed?",
+      "theme": "Chishima Resource Development Agreement Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "bill_ids": [
+        "BI42"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1017",
+      "text": "What leverage do we have if we depend on one buyer?",
+      "theme": "Yezo–China Trade Normalization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI43"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1018",
+      "text": "Which Yezo producers gain, and which lose to cheaper imports?",
+      "theme": "Yezo–China Trade Normalization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI43"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1019",
+      "text": "What happens to the licensing rules that protect consumers?",
+      "theme": "Yezo–China Trade Normalization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI43"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1020",
+      "text": "What if a grant recipient sells the farm after two years?",
+      "theme": "Farm Succession Support Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI44"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1021",
+      "text": "Does an inheritance cut help a family farm or a land speculator?",
+      "theme": "Farm Succession Support Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI44"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1022",
+      "text": "How do you help young people who own no land at all?",
+      "theme": "Farm Succession Support Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI44"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1023",
+      "text": "Who checks that doubled grants buy research and not buildings?",
+      "theme": "University Autonomy and Research Funding Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI45"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1024",
+      "text": "Why trust universities with budgets they could not manage as well?",
+      "theme": "University Autonomy and Research Funding Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI45"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1025",
+      "text": "Which research would you fund first?",
+      "theme": "University Autonomy and Research Funding Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI45"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1026",
+      "text": "How would a small shop with four employees comply?",
+      "theme": "Workplace Equality Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI46"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1027",
+      "text": "Who investigates a complaint, and how long does it take?",
+      "theme": "Workplace Equality Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI46"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1028",
+      "text": "Would penalties for repeat offenders make employers hire fewer people at risk of discrimination?",
+      "theme": "Workplace Equality Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI46"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1029",
+      "text": "How does a small firm cover two weeks when both parents are away?",
+      "theme": "Parental Leave and Childcare Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI47"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1030",
+      "text": "Who pays for the childcare subsidy, and for how long?",
+      "theme": "Parental Leave and Childcare Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI47"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1031",
+      "text": "Will fathers really take the leave, or will it fall to mothers as usual?",
+      "theme": "Parental Leave and Childcare Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI47"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1032",
+      "text": "How long is footage kept, and who can ask for it?",
+      "theme": "Public Safety Surveillance Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI48"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1033",
+      "text": "What is the error rate of facial recognition on people who look like me?",
+      "theme": "Public Safety Surveillance Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI48"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1034",
+      "text": "Would more officers on the platform do more good than more cameras?",
+      "theme": "Public Safety Surveillance Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI48"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1035",
+      "text": "When two towns merge, whose name goes on the town hall?",
+      "theme": "Local Government Mergers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI49"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1036",
+      "text": "Do mergers really save money, or just move it?",
+      "theme": "Local Government Mergers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI49"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1037",
+      "text": "Who speaks for a village when it is one voice among many?",
+      "theme": "Local Government Mergers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI49"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1038",
+      "text": "Would an open ballot give us leaders who listen, or leaders who campaign?",
+      "theme": "Party Leadership Selection Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI50"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1039",
+      "text": "How do you stop a well-funded faction from buying the membership?",
+      "theme": "Party Leadership Selection Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI50"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S1040",
+      "text": "Who counts as a member, and who checks?",
+      "theme": "Party Leadership Selection Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI50"
+      ],
+      "stage_ids": []
     }
   ]
 }
