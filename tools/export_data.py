@@ -737,6 +737,9 @@ SHEETS = {
             ("Threshold Rise Min", "threshold_rise_min", "int"),
             ("Threshold Rise Max", "threshold_rise_max", "int"),
             ("Threshold Cap", "threshold_cap", "int"),
+            # 2026-10-18: how many units of the game clock finishing this stage
+            # costs (blank = 1). Never shown to the player.
+            ("Time Units", "time_units", "int"),
             # 2026-10-18: the stage whose background picture this stage uses
             # when it has none of its own (a Town Hall about one bill uses
             # ST05's). Blank = its own ID only.
