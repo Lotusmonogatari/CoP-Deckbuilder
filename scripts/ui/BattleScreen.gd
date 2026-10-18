@@ -750,7 +750,7 @@ func _refresh_listening() -> void:
 	if _listening == null or engine == null:
 		return
 	var ids: Array = []
-	var question := engine.current_question()
+	var question := engine.turn_question()
 	for key: String in ["pleases_boosters", "displeases_boosters"]:
 		for booster_id: String in (question.get(key, []) as Array):
 			if not ids.has(booster_id):

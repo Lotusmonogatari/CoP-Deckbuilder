@@ -1097,6 +1097,17 @@ func test_answering_moves_on_to_the_next_question() -> void:
 	assert_eq(engine.questions_remaining(), 1)
 
 
+func test_the_turns_question_stays_the_same_after_a_card_is_played() -> void:
+	var engine := _start(_press())
+	engine.state.hand.assign(["GAIN3"])
+	assert_eq(engine.turn_question()["id"], "Q1")
+
+	engine.play_card("GAIN3")
+	assert_eq(engine.turn_question()["id"], "Q1", "same question until the turn ends")
+	assert_true(engine.answer_effect({"suit": "Earnest"}).is_empty(),
+		"nothing more to answer this turn")
+
+
 func test_answering_in_the_suit_invited_pleases_that_organisation() -> void:
 	# ATTACK3 is Data Driven, which is what the first question invites.
 	var engine := _start(_press())
