@@ -2961,5 +2961,645 @@
         "delta": -2
       }
     ]
+  },
+  {
+    "visitor_id": "VI71",
+    "name_en": "Agricultural Cooperatives Representative",
+    "name_jp": "農協の代表",
+    "romaji": "Nōkyō no Daihyō",
+    "title": "Agricultural Cooperatives Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI72",
+    "name_en": "Students United Representative",
+    "name_jp": "学生団体の代表",
+    "romaji": "Gakusei Dantai no Daihyō",
+    "title": "Students United Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO11",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI73",
+    "name_en": "Family Network Representative",
+    "name_jp": "子育て世代の会の代表",
+    "romaji": "Kosodate Sedai no Kai no Daihyō",
+    "title": "Family Network Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI74",
+    "name_en": "Yezo Artisans Guild Representative",
+    "name_jp": "職人組合の代表",
+    "romaji": "Shokunin Kumiai no Daihyō",
+    "title": "Yezo Artisans Guild Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO13",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO13",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI75",
+    "name_en": "Members of Parliament Representative",
+    "name_jp": "国会議員の代表",
+    "romaji": "Kokkai Giin no Daihyō",
+    "title": "Members of Parliament Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO17",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO17",
+        "delta": -3
+      },
+      {
+        "target": "BO08",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI76",
+    "name_en": "Shrine Association Representative",
+    "name_jp": "神社会の代表",
+    "romaji": "Jinja-kai no Daihyō",
+    "title": "Shrine Association Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO20",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO20",
+        "delta": -3
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI77",
+    "name_en": "Care and Welfare Council Representative",
+    "name_jp": "福祉協議会の代表",
+    "romaji": "Fukushi Kyōgikai no Daihyō",
+    "title": "Care and Welfare Council Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI78",
+    "name_en": "Urban Neighborhood Alliance Representative",
+    "name_jp": "都市部町内連合の代表",
+    "romaji": "Toshibu Chōnai Rengō no Daihyō",
+    "title": "Urban Neighborhood Alliance Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO27",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO14",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO27",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI79",
+    "name_en": "Ainu Language and Culture Foundation Representative",
+    "name_jp": "アイヌ語文化財団の代表",
+    "romaji": "Ainugo Bunka Zaidan no Daihyō",
+    "title": "Ainu Language and Culture Foundation Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO29",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO28",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO29",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI80",
+    "name_en": "Rural Revitalization Council Representative",
+    "name_jp": "地域振興会議の代表",
+    "romaji": "Chiiki Shinkō Kaigi no Daihyō",
+    "title": "Rural Revitalization Council Representative",
+    "stages": [
+      "ST07",
+      "ST101",
+      "ST102",
+      "ST103",
+      "ST104",
+      "ST105",
+      "ST106",
+      "ST107",
+      "ST108",
+      "ST109",
+      "ST110",
+      "ST111",
+      "ST112",
+      "ST113",
+      "ST114",
+      "ST115",
+      "ST116",
+      "ST117",
+      "ST118",
+      "ST119",
+      "ST120",
+      "ST121",
+      "ST145",
+      "ST153",
+      "ST170",
+      "ST176",
+      "ST181",
+      "ST193",
+      "ST213",
+      "ST227",
+      "ST243",
+      "ST253"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ]
   }
 ]

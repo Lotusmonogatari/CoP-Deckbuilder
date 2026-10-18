@@ -2923,6 +2923,885 @@
         "BO11"
       ],
       "asked_by": "OP106"
+    },
+    {
+      "id": "T105",
+      "text": "The co-op truck now drives forty minutes to find a buyer. What will you do about markets?",
+      "theme": "Farm markets",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T106",
+      "text": "Fertilizer costs doubled my grain budget. Can anyone help?",
+      "theme": "Farm input costs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T107",
+      "text": "My children left for the city. Why would anyone stay to farm?",
+      "theme": "Farm future",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T108",
+      "text": "Hail took half my harvest. Who covers that?",
+      "theme": "Harvest losses",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "T109",
+      "text": "Rents near campus keep rising. Whose side are you on, students or landlords?",
+      "theme": "Student housing",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "T110",
+      "text": "I will graduate owing more than I can repay. What is your answer?",
+      "theme": "Student debt",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "T111",
+      "text": "Why should young people pay for decisions older voters made?",
+      "theme": "Generational fairness",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T112",
+      "text": "My degree is in a field with few local jobs. Where do I go?",
+      "theme": "Graduate jobs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO13"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T113",
+      "text": "I cannot find a daycare place within an hour of home. What will you do?",
+      "theme": "Daycare access",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T114",
+      "text": "My child's school is closing. How do families cope?",
+      "theme": "School closures",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T115",
+      "text": "Both of us work and still cannot afford a home. Who is helping families like ours?",
+      "theme": "Family housing",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T116",
+      "text": "Who looks after my parents while I look after my children?",
+      "theme": "Caring for two generations",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T117",
+      "text": "My family has made lacquerware for six generations. Who will buy it?",
+      "theme": "Traditional crafts",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO11"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T118",
+      "text": "Young people do not want to apprentice. How do we keep the craft alive?",
+      "theme": "Craft apprenticeships",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T119",
+      "text": "Tourists buy cheap copies made elsewhere. Can you stop that?",
+      "theme": "Counterfeit crafts",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "T120",
+      "text": "A good workshop needs patient customers. How do we find them?",
+      "theme": "Craft markets",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "T121",
+      "text": "Members never seem to read the bills they pass. Is that true?",
+      "theme": "Members and bills",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "T122",
+      "text": "Why should I trust a member who changes their mind?",
+      "theme": "Changing positions",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T123",
+      "text": "What does a member actually do all week?",
+      "theme": "A member's week",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T124",
+      "text": "Members vote the party line. When did you last think for yourself?",
+      "theme": "Independent judgment",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO01"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T125",
+      "text": "Our shrine grove is where the neighborhood gathers. Who will protect it?",
+      "theme": "Shrine groves",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO06"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T126",
+      "text": "The festival needs volunteers and funds. How do we keep it going?",
+      "theme": "Community festivals",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO06",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T127",
+      "text": "Young people drift away from local customs. Is that a loss?",
+      "theme": "Community customs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T128",
+      "text": "Visitors fill the lanes at festival time. Who pays for the cleanup?",
+      "theme": "Festival crowds",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T129",
+      "text": "My mother needs help bathing and there is no one to send. What do I do?",
+      "theme": "Home care shortage",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T130",
+      "text": "The care home has a long waiting list. How long must we wait?",
+      "theme": "Care home waiting lists",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "T131",
+      "text": "Care workers are paid less than shop clerks. Is that right?",
+      "theme": "Care worker pay",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "T132",
+      "text": "I am old and alone. Who will look in on me?",
+      "theme": "Isolated elders",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "T133",
+      "text": "Buses in our district run half empty and then packed. What is the plan?",
+      "theme": "City bus service",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO14"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP102"
+    },
+    {
+      "id": "T134",
+      "text": "Apartments are small and rents high. What are you doing about housing?",
+      "theme": "City housing",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP103"
+    },
+    {
+      "id": "T135",
+      "text": "Noise from late-night bars is wearing us down. Who decides the rules?",
+      "theme": "Neighborhood noise",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO06"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP104"
+    },
+    {
+      "id": "T136",
+      "text": "Why do city taxes fund country roads?",
+      "theme": "City taxes",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "T137",
+      "text": "My grandmother is the last fluent speaker in our village. How do we record her?",
+      "theme": "Last speakers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP106"
+    },
+    {
+      "id": "T138",
+      "text": "School lessons in our language end at age twelve. Why?",
+      "theme": "Language in schools",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP107"
+    },
+    {
+      "id": "T139",
+      "text": "Place names should carry their original names. Do you agree?",
+      "theme": "Place names",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP108"
+    },
+    {
+      "id": "T140",
+      "text": "We want our stories taught as part of the region's history. Can you help?",
+      "theme": "Teaching local history",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "T141",
+      "text": "The last bus to our village now leaves at noon. How do we get to town?",
+      "theme": "Rural transport",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO14",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "T142",
+      "text": "Our clinic closed and the nearest doctor is an hour away. What will you do?",
+      "theme": "Rural clinics",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "T143",
+      "text": "Young people leave and the village empties. How do we keep it alive?",
+      "theme": "Village survival",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO10",
+        "BO04"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "T144",
+      "text": "Broadband stops at the edge of town. Is that fair?",
+      "theme": "Rural broadband",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP102"
     }
   ],
   "lobbyist_meeting": [
@@ -4570,6 +5449,662 @@
         "BO01"
       ],
       "asked_by": "OP122"
+    },
+    {
+      "id": "L79",
+      "text": "Our members need shared storage and drying plants. Will you back them?",
+      "theme": "Shared farm facilities",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L80",
+      "text": "Imported rice is cheaper at the store. How do farmers compete?",
+      "theme": "Import competition",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L81",
+      "text": "Will you stand with the co-ops when the budget is cut?",
+      "theme": "Co-op support",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L82",
+      "text": "Our union wants a seat on the university board. Will you support it?",
+      "theme": "Student representation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L83",
+      "text": "Will you fund campus mental health services or leave them to charity?",
+      "theme": "Campus wellbeing",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L84",
+      "text": "Our members are tired of being asked for votes and ignored. What changes?",
+      "theme": "Youth participation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L85",
+      "text": "Our network wants flexible hours protected in law. Will you back it?",
+      "theme": "Family-friendly work",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L86",
+      "text": "Parents are exhausted. Will you fund after-school programs?",
+      "theme": "After-school care",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L87",
+      "text": "Children's safety on the way to school is not a luxury. Will you act?",
+      "theme": "Safe routes to school",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO06"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L88",
+      "text": "Our guild wants a recognized quality mark. Will you support it?",
+      "theme": "Quality marks",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L89",
+      "text": "Rents for workshop space have tripled. Will you protect it?",
+      "theme": "Workshop space",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L90",
+      "text": "Will you fund master craftspeople to teach, not only to sell?",
+      "theme": "Master teachers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L91",
+      "text": "Members need staff to do the job well. Will you fund them?",
+      "theme": "Member staffing",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L92",
+      "text": "Committee work gets no credit. Will you rebalance the schedule?",
+      "theme": "Committee credit",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L93",
+      "text": "Members are under constant attack. Will you defend the institution?",
+      "theme": "Defending the Assembly",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L94",
+      "text": "Our association maintains old trees and stone paths. Will you help with the upkeep?",
+      "theme": "Grove upkeep",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L95",
+      "text": "Volunteers hold this community together. Will you recognize them?",
+      "theme": "Volunteer groups",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO06"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L96",
+      "text": "Will you protect festival routes from new building?",
+      "theme": "Festival routes",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L97",
+      "text": "Our staff are leaving the field. Will you raise care pay?",
+      "theme": "Care staffing",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L98",
+      "text": "Families give up work to care for relatives. Will you support them?",
+      "theme": "Family caregivers",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L99",
+      "text": "Will you protect care funding from budget cuts?",
+      "theme": "Care funding",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L100",
+      "text": "Our alliance wants zoning rules updated for mixed use. Will you back it?",
+      "theme": "Mixed-use zoning",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP120"
+    },
+    {
+      "id": "L101",
+      "text": "Parks and playgrounds are being squeezed out. Will you protect them?",
+      "theme": "Urban green space",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP121"
+    },
+    {
+      "id": "L102",
+      "text": "Will you fund bike lanes where the accident data points?",
+      "theme": "Bike safety",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO14"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP122"
+    },
+    {
+      "id": "L103",
+      "text": "Our foundation wants a language archive. Will you fund it?",
+      "theme": "Language archives",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP123"
+    },
+    {
+      "id": "L104",
+      "text": "Will you support teacher training for Ainu language instruction?",
+      "theme": "Language teachers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "L105",
+      "text": "Will you support broadcasts in Ainu on public media?",
+      "theme": "Language broadcasts",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO08",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP125"
+    },
+    {
+      "id": "L106",
+      "text": "Our council wants relocation grants for people who move to rural areas. Will you support them?",
+      "theme": "Relocation grants",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP118"
+    },
+    {
+      "id": "L107",
+      "text": "Will you protect rural schools from closure?",
+      "theme": "Rural schools",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP119"
+    },
+    {
+      "id": "L108",
+      "text": "Will you fund a rural revitalization office with real staff?",
+      "theme": "Revitalization offices",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP120"
     }
   ],
   "policy_study": [
@@ -5188,6 +6723,665 @@
         "BO30"
       ],
       "asked_by": "OP42"
+    },
+    {
+      "id": "B31",
+      "text": "What does the evidence say about price floors versus direct payments?",
+      "theme": "Farm support design",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP46"
+    },
+    {
+      "id": "B32",
+      "text": "How should water be shared among farms in a dry year?",
+      "theme": "Farm water rights",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "B33",
+      "text": "Which farm subsidies actually reach small farms?",
+      "theme": "Subsidy targeting",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "B34",
+      "text": "How do tuition levels compare with graduate earnings across regions?",
+      "theme": "Tuition value",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "B35",
+      "text": "What would a student loan forgiveness program cost per year?",
+      "theme": "Loan relief",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP81"
+    },
+    {
+      "id": "B36",
+      "text": "Do internships lead to jobs or only to free labor?",
+      "theme": "Internship rules",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "B37",
+      "text": "What does the research say about early childhood programs and later outcomes?",
+      "theme": "Early childhood evidence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP100"
+    },
+    {
+      "id": "B38",
+      "text": "How do school meals affect attendance and health?",
+      "theme": "School meals",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "B39",
+      "text": "Which family benefits reach the households that need them most?",
+      "theme": "Benefit targeting",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "B40",
+      "text": "How do craft exports compare with mass-produced goods in value per worker?",
+      "theme": "Craft economics",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP16"
+    },
+    {
+      "id": "B41",
+      "text": "What would a registry of traditional techniques cost and who keeps it?",
+      "theme": "Technique registry",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "B42",
+      "text": "Do heritage labels raise prices or only paperwork?",
+      "theme": "Heritage labels",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "asked_by": "OP42"
+    },
+    {
+      "id": "B43",
+      "text": "How do members' working hours compare with other legislatures?",
+      "theme": "Member workload",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP46"
+    },
+    {
+      "id": "B44",
+      "text": "What does research say about term length and legislative quality?",
+      "theme": "Term length",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "B45",
+      "text": "Which procedural reforms would speed lawmaking without silencing members?",
+      "theme": "Faster procedure",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "B46",
+      "text": "How much do local festivals contribute to town economies?",
+      "theme": "Festival economics",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "B47",
+      "text": "What do community volunteer groups save the public budget?",
+      "theme": "Volunteer value",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP81"
+    },
+    {
+      "id": "B48",
+      "text": "How should heritage groves be managed against development pressure?",
+      "theme": "Grove management",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO20",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "B49",
+      "text": "What are the projected care needs for the next ten years?",
+      "theme": "Care demand",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP100"
+    },
+    {
+      "id": "B50",
+      "text": "Do home visits cost less than hospital stays?",
+      "theme": "Home visit value",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "B51",
+      "text": "How could technology help carers without replacing them?",
+      "theme": "Care technology",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "B52",
+      "text": "How does density relate to per-person infrastructure cost?",
+      "theme": "Density costs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP16"
+    },
+    {
+      "id": "B53",
+      "text": "What does the evidence say about rent controls and supply?",
+      "theme": "Rent policy",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "B54",
+      "text": "Which transit investments move the most commuters per yen?",
+      "theme": "Transit value",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO14"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "asked_by": "OP42"
+    },
+    {
+      "id": "B55",
+      "text": "How many speakers does each Ainu dialect have, and what is the trend?",
+      "theme": "Dialect data",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP46"
+    },
+    {
+      "id": "B56",
+      "text": "What have language revival programs achieved elsewhere?",
+      "theme": "Revival lessons",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP59"
+    },
+    {
+      "id": "B57",
+      "text": "How much does a community language school cost per pupil?",
+      "theme": "Language school costs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "B58",
+      "text": "What does the evidence say about incentives that bring workers to rural areas?",
+      "theme": "Rural incentives",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "B59",
+      "text": "How do rural service costs compare with urban per resident?",
+      "theme": "Rural service costs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP81"
+    },
+    {
+      "id": "B60",
+      "text": "Which revitalization programs have kept their population?",
+      "theme": "What works rurally",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO24"
+      ],
+      "asked_by": "OP87"
     }
   ],
   "media_ambush": [
