@@ -3617,5 +3617,26 @@
     "english": "Winning this stage moves the bill's stakeholders: {changes}.",
     "placeholders": "changes",
     "notes": null
+  },
+  {
+    "key": "battle.read_card",
+    "where": "Battle: second tap on a card opens it; this button does the same",
+    "english": "Read",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "battle.taste_likes",
+    "where": "Battle: a backed organization's liked styles",
+    "english": "Likes {suits}",
+    "placeholders": "suits",
+    "notes": null
+  },
+  {
+    "key": "battle.taste_dislikes",
+    "where": "Battle: a backed organization's disliked styles",
+    "english": "Dislikes {suits}",
+    "placeholders": "suits",
+    "notes": null
   }
 ]

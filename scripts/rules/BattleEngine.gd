@@ -1249,6 +1249,24 @@ func _answer_question(card: Dictionary) -> Dictionary:
 	return {"grade": grade}
 
 
+## What answering the current question with this card WOULD tally, without
+## changing anything: {grade, pleased, displeased, opposed} (lists of
+## organisation ids). Empty when no question is open.
+func answer_effect(card: Dictionary) -> Dictionary:
+	var question := current_question()
+	if question.is_empty():
+		return {}
+	var grade := _grade_of(card, question)
+	var pleases: Array = question.get("pleases_boosters", [])
+	var out := {"grade": grade, "pleased": [], "displeased": [], "opposed": []}
+	if grade == "S":
+		out["pleased"] = pleases.duplicate()
+		out["opposed"] = (question.get("displeases_boosters", []) as Array).duplicate()
+	elif grade == "W":
+		out["displeased"] = pleases.duplicate()
+	return out
+
+
 ## Counts one answer toward an organisation's standing change this stage.
 func _tally_answer(booster_id: String, kind: String) -> void:
 	var row: Dictionary = state.booster_tally.get(booster_id,

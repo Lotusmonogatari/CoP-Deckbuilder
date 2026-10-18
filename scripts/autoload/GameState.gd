@@ -2131,6 +2131,17 @@ func stance_config() -> Dictionary:
 ## A stage's booster tally with the rhetoric rule applied: answers that would
 ## please an organization on the side against your lean count for less. A copy;
 ## the same tally the Outcome panel and the preview read.
+## The organisations whose backing the player owns (each owned modifier's
+## trigger organisations). Their tastes in rhetoric show on the battle screen.
+func backed_booster_ids() -> Array[String]:
+	var out: Array[String] = []
+	for mod_id: String in owned_modifiers:
+		for booster_id: String in (DataDB.get_modifier(mod_id).get("trigger_booster_ids", []) as Array):
+			if not out.has(booster_id):
+				out.append(booster_id)
+	return out
+
+
 func stance_adjust_tally(tally: Dictionary) -> Dictionary:
 	var lean := stance_lean()
 	if lean.is_empty() or tally.is_empty():

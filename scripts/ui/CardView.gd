@@ -27,6 +27,19 @@ signal chosen(card_id: String)
 ## The player dragged this card up far enough and let go: play it.
 signal flung(card_id: String)
 
+## Picked up (lifted off the hand) and put back down without playing.
+signal lifted(card_id: String)
+signal dropped(card_id: String)
+
+## Tapped once and waiting for a second tap or Read (BattleScreen).
+var selected := false:
+	set(value):
+		selected = value
+		if not _lifting:
+			self_modulate = SELECT_TINT if value else Color.WHITE
+
+const SELECT_TINT := Color(1.0, 0.92, 0.6)
+
 ## How far up a press must move before the card lifts, and how far it must
 ## rise before letting go plays it.
 const LIFT_START := 30.0
@@ -393,6 +406,7 @@ func _gui_input(event: InputEvent) -> void:
 
 func _lift() -> void:
 	_lifting = true
+	lifted.emit(card_id)
 	_rest_y = position.y
 	z_index = 20
 	# A lift is not a tap: forget the press, so letting go does not also open
@@ -409,7 +423,8 @@ func _lift() -> void:
 func _drop(risen: float) -> void:
 	_lifting = false
 	z_index = 0
-	self_modulate = Color.WHITE
+	self_modulate = SELECT_TINT if selected else Color.WHITE
+	dropped.emit(card_id)
 	var scroll := _hand_scroll()
 	if scroll != null:
 		scroll.clip_contents = true
