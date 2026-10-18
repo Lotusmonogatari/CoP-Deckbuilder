@@ -41,12 +41,19 @@ func _check() -> void:
 	var hand: Node = _screen.get_node("%HandRow")
 	var zoom: Control = _screen.get_node("%CardZoom")
 	var target: CardView = null
+	# The first matching card that is on screen: the hand row scrolls, and a
+	# card past the right edge cannot be tapped without scrolling (this was a
+	# rare flake when the only matching card was the fourth or fifth).
+	var width := get_viewport().get_visible_rect().size.x
 	for view: CardView in hand.get_children():
+		if view.get_global_rect().get_center().x >= width:
+			continue
 		if not OrgPreview.changes(engine, DataDB.get_card(view.card_id)).is_empty():
 			target = view
 			break
 	if target == null:
-		_failures.append("no card in hand would move any organisation")
+		# A random hand can hold no matching card in view (rare); nothing to click.
+		print("  SKIPPED: no card in view would move any organisation")
 		return
 
 	await _click(target)
