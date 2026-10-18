@@ -93,3 +93,26 @@ Quick wins that fit one sitting: items 1, 2, 4 and the dominated-card fixes in 8
 * **No test of the influence swing or Floor Vote difficulty beyond data**: votes have no win rate. Bills were audited for evenness only.
 * **Not covered:** visitor dilemmas (each choice was budgeted when written), cosmetic packages, staff costs against income, transitions and content depth (`tools/content_depth.py` covers the last).
 * Tooling added: `tools/balance_audit.sh`, `tools/balance_audit.py`, bot sweep mode (`PLAYTEST_TRIAL_SWEEP`, `PLAYTEST_TRIAL_KIT=starter|full`), economy trace (`ECON` lines) and card tally.
+
+## Re-run after the quick wins (2026-10-18)
+
+Applied: Town Hall threshold 60 to 50, Party Caucus 60 to 46, Steering Committee 60 to 40; rewards moved toward difficulty (Lobbyist XP 30 to 75 and 20,000 to 50,000 yen, Press XP 60, Floor Debate XP 80, Special Committee XP 70; Hearing, Committee, Policy Study and TV Debate trimmed); four card fixes (C05 loses its gaffe; C43 gains 1 guard; C20 gaffe 2 to 3; C21 cost 0 to 1, and its text now matches its numbers). Builder: `tools/workbook/archive/batch6_balance_quickwins_2026-10-18.py`. Full tables: `design/BALANCE_AUDIT_2026-10-18_after.md`.
+
+| Family | Starter before | Starter after | Full before | Full after |
+|---|---|---|---|---|
+| Town Hall (12) | 9% | 54% | 80% | 100% |
+| Party Caucus (21) | 3% | 71% | 44% | 100% |
+| Party Steering Committee | 0% | 41% | 0% | 58% |
+| Lobbyist Meeting (6) | 59% | 66% | 71% | 74% |
+| Press Conference (11) | 44% | 61% | 91% | 93% |
+| Floor Debate | 70% | 90% | 100% | 100% |
+| Committee of the Cabinet | 62% | 89% | 92% | 92% |
+| Hearing / Committee / Policy Study | 92-98% | 97-99% | 100% | 100% |
+| Media Ambush (left as designed) | 0% | 0% | 0% | 0% |
+| **All combat rooms, starter** | **52%** | **77%** | | |
+
+High flags fell from 6 to 3. The three walls are gone, but the fix **overshot the average**: the game is now easier overall (77% for a first-time player), and Hearings, Committees, Policy Studies and TV Debates are still automatic (item 3 of the recommendations was not applied). Two side effects to know about:
+* **Richer rewards made the economy saturate earlier.** All 54 cards are owned by about the 5th level (was about the 10th), Funds sit at the 100,000 cap from the start, Reputation and Constituency support hit 100 by about level 20 (was 40), and the bot bought 912 items.
+* **Reward still does not follow difficulty** (correlation -0.10, was -0.21): the hardest rooms are now the multi-opponent ones, and their rewards were not raised.
+
+Suggested next step (not applied): keep the three lower thresholds but raise them about 3 points each (Town Hall 53, Caucus 49, Steering 43) to bring the first-time average toward 65%; apply recommendations 3, 5 and 6 together (harder trivial rooms, a meta sink or slower climb, costlier cards) so the saturation does not move earlier; and raise Town Hall and Caucus rewards, since they are now the multi-opponent rooms.
