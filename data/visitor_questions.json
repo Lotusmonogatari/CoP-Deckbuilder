@@ -2280,6 +2280,10 @@
       {
         "target": "BO18",
         "delta": 2
+      },
+      {
+        "target": "BO31",
+        "delta": 1
       }
     ],
     "effects_b": [
@@ -2289,6 +2293,10 @@
       },
       {
         "target": "BO08",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
         "delta": 1
       }
     ],
@@ -2304,12 +2312,24 @@
       {
         "target": "BO17",
         "delta": -1
+      },
+      {
+        "target": "BO32",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
+        "delta": -1
       }
     ],
     "effects_d": [
       {
         "target": "BO01",
         "delta": -3
+      },
+      {
+        "target": "BO31",
+        "delta": 1
       }
     ],
     "response_a": "Your own way is not a party.",
@@ -2345,6 +2365,10 @@
       {
         "target": "BO18",
         "delta": 1
+      },
+      {
+        "target": "BO31",
+        "delta": 1
       }
     ],
     "effects_b": [
@@ -2359,6 +2383,14 @@
       {
         "target": "BO18",
         "delta": -1
+      },
+      {
+        "target": "BO32",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
+        "delta": -1
       }
     ],
     "effects_c": [
@@ -2369,6 +2401,14 @@
       {
         "target": "BO02",
         "delta": -1
+      },
+      {
+        "target": "BO32",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
+        "delta": -1
       }
     ],
     "effects_d": [
@@ -2378,6 +2418,10 @@
       },
       {
         "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
         "delta": 1
       }
     ],
@@ -2481,6 +2525,10 @@
       {
         "target": "BO01",
         "delta": -3
+      },
+      {
+        "target": "BO31",
+        "delta": 1
       }
     ],
     "effects_b": [
@@ -2501,6 +2549,14 @@
       {
         "target": "BO01",
         "delta": 1
+      },
+      {
+        "target": "BO32",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
+        "delta": -1
       }
     ],
     "effects_d": [
@@ -2565,6 +2621,10 @@
       {
         "target": "BO01",
         "delta": -2
+      },
+      {
+        "target": "BO31",
+        "delta": 1
       }
     ],
     "effects_d": [
@@ -2633,6 +2693,14 @@
       {
         "target": "BO01",
         "delta": 1
+      },
+      {
+        "target": "BO32",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
+        "delta": -1
       }
     ],
     "effects_d": [
@@ -3431,6 +3499,10 @@
       {
         "target": "BO01",
         "delta": -3
+      },
+      {
+        "target": "BO31",
+        "delta": 1
       }
     ],
     "effects_b": [
@@ -3441,6 +3513,14 @@
       {
         "target": "BO01",
         "delta": 1
+      },
+      {
+        "target": "BO32",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
+        "delta": -1
       }
     ],
     "effects_c": [
@@ -3454,6 +3534,14 @@
       },
       {
         "target": "BO18",
+        "delta": -1
+      },
+      {
+        "target": "BO32",
+        "delta": 1
+      },
+      {
+        "target": "BO31",
         "delta": -1
       }
     ],

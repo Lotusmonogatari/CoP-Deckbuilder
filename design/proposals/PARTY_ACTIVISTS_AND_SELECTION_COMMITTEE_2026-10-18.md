@@ -1,6 +1,6 @@
 # Two new Party Bodies: Party Activists and Candidate Selection Committee (plan, 2026-10-18)
 
-Status: **proposal, nothing built.** Names, numbers and pairings are drafts for Cameron to correct.
+Status: **built 2026-10-18 with Cameron's decisions (see CLAUDE.md); the text below is the original proposal.** Names, numbers and pairings are drafts for Cameron to correct.
 
 ## Summary
 

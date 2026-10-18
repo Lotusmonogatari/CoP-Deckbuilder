@@ -127,3 +127,23 @@ func test_the_taste_phrases_are_in_player_language() -> void:
 	assert_eq(Text.say("battle.taste_likes", {"styles": "divisive"}), "Likes divisive rhetoric.")
 	assert_eq(Text.say("battle.taste_dislikes", {"styles": "data driven and earnest"}),
 		"Dislikes data driven and earnest rhetoric.")
+
+
+func test_activists_like_divisive_rhetoric_and_the_committee_has_no_taste() -> void:
+	var suits: Array = DataDB.suits.map(func(s: Dictionary) -> String: return str(s["element"]))
+	var activists := BoosterSuitTendency.taste_of(DataDB.questions, "BO31", suits)
+	assert_eq(activists["likes"], ["Divisive"])
+	var committee := BoosterSuitTendency.taste_of(DataDB.questions, "BO32", suits)
+	assert_true((committee["likes"] as Array).is_empty(), "balanced: no liked style")
+	assert_true((committee["dislikes"] as Array).is_empty(), "balanced: no disliked style")
+
+
+func test_each_new_body_has_at_least_fifteen_questions_and_a_backing() -> void:
+	for id: String in ["BO31", "BO32"]:
+		var count := 0
+		for pool: Array in DataDB.questions.values():
+			for question: Dictionary in pool:
+				if (question.get("pleases_boosters", []) as Array).has(id):
+					count += 1
+		assert_gte(count, 15, "%s has enough questions" % id)
+		assert_false((DataDB.get_booster(id).get("linked_modifiers", []) as Array).is_empty())
