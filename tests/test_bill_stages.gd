@@ -75,3 +75,38 @@ func test_every_visitor_pinned_to_a_level_exists_and_is_eligible_for_that_slot()
 		var stage_id := _slot(DataDB.get_level(str(pin["level_id"])), int(pin["slot"]))
 		assert_true((visitor.get("stages", []) as Array).has(stage_id),
 			"%s is written for %s in %s" % [pin["visitor_id"], stage_id, pin["level_id"]])
+
+
+## Content 3 (2026-10-18): every bill-specific copy of a question-asking room
+## has questions written for that room alone.
+func test_every_bill_stage_copy_of_a_question_room_has_its_own_questions() -> void:
+	var asking := ["ST01", "ST03", "ST04", "ST05", "ST06", "ST09", "ST10", "ST11", "ST12",
+		"ST13", "ST14", "ST15", "ST16", "ST17", "ST18", "ST19", "ST20", "ST21"]
+	for stage: Dictionary in DataDB.stages:
+		var sid := str(stage.get("stage_id", ""))
+		if sid.length() < 5 or int(sid.substr(2)) < 121 or int(sid.substr(2)) > 259:
+			continue
+		if not asking.has(DataDB.stage_background_id(sid)):
+			continue
+		var own := 0
+		for q: Dictionary in DataDB.get_stage_questions(sid):
+			var ids: Array = q.get("stage_ids", [])
+			if ids.size() == 1:
+				own += 1
+		assert_gt(own, 0, "%s has no question written for it alone" % sid)
+
+
+## A bill-specific copy of a room asks from the same question pool as the room
+## it copies (the six Town Hall copies once had none, because the base room's
+## pool comes from a built-in default that copies do not inherit).
+func test_a_stage_copy_draws_from_its_families_question_pool() -> void:
+	for stage: Dictionary in DataDB.stages:
+		var sid := str(stage.get("stage_id", ""))
+		if sid.length() < 5 or int(sid.substr(2)) < 121 or int(sid.substr(2)) > 259:
+			continue
+		var base_id := DataDB.stage_background_id(sid)
+		var expected := str(BattleSetup.QUESTION_POOL_BY_STAGE.get(base_id, ""))
+		if expected.is_empty():
+			continue
+		var actual := str(stage.get("question_pool", "")).to_lower() if stage.get("question_pool") != null else ""
+		assert_eq(actual, expected, "%s should draw from the %s pool" % [sid, expected])
