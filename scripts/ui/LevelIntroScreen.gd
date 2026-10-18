@@ -76,8 +76,9 @@ func _ready() -> void:
 		if GameState.is_in_level() else level_id
 	_cues = LevelIntroCues.resolve(DataDB.level_intros, lid, GameState.staff_hired, DataDB.staff)
 	_bill = DataDB.get_floor_vote(lid)
-	_thought_text = LevelIntroCues.player_thought(DataDB.level_intro_thoughts, lid) \
-		if not _bill.is_empty() else ""
+	# The player's thought speaks on any level whose intro shows (2026-10-18),
+	# not only on a bill level; one of the level's rows is picked at random.
+	_thought_text = LevelIntroCues.player_thought(DataDB.level_intro_thoughts, lid)
 	_total_lines = _cues.size() + (1 if not _thought_text.is_empty() else 0)
 
 	if _cues.is_empty() and _bill.is_empty():

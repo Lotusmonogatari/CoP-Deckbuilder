@@ -2197,12 +2197,7 @@ def validate(data, report):
         lid = thought["level_id"]
         if lid not in level_ids:
             report.error("Level Intro Thoughts", f"{lid} is not in the Levels tab")
-        if lid in seen_thought_levels:
-            report.warn(
-                "Level Intro Thoughts",
-                f"{lid} has more than one row — the first one wins",
-            )
-        seen_thought_levels.add(lid)
+        seen_thought_levels.add(lid)  # several rows per level are allowed: one is picked at random
 
     # --- transition_cast / transition_backgrounds / transition_dialogue ----
     # The Stage Transition screen's three pools (§7.9). A blank Stage ID is
@@ -2249,9 +2244,9 @@ def validate(data, report):
             report.error("Transition Dialogue", f"{tdid} has Stance '{row['stance']}', which must be Support, Oppose or blank")
         if row.get("stance") and not row.get("bill_id"):
             report.error("Transition Dialogue", f"{tdid} has a Stance but no Bill ID")
-        stage_id = row.get("stage_id")
-        if stage_id and stage_id not in stage_ids:
-            report.error("Transition Dialogue", f"{tdid} names stage '{stage_id}', which is not in the Stages tab")
+        for stage_id in [x.strip() for x in str(row.get("stage_id") or "").split(";") if x.strip()]:
+            if stage_id not in stage_ids:
+                report.error("Transition Dialogue", f"{tdid} names stage '{stage_id}', which is not in the Stages tab")
         character_id = row.get("character_id") or ""
         kind = _character_kind(character_id)
         if kind == "opponent" and character_id not in opp_ids:
