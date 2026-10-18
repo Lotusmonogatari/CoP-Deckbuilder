@@ -2654,3 +2654,7 @@ Two new optional workbook columns, both **Duration Units** (whole numbers of gam
 - Header notes written for both. Tests: `tests/test_time_durations.gd`. No existing item or backing has a duration yet; filling the cell in is Cameron's to do.
 
 **The clock work is complete:** stage lengths (Stages "Time Units"), Special Levels on a countdown, cooldowns and decay on the clock, and optional item and backing durations.
+
+### The listening strip keeps one set of organizations for the whole turn (2026-10-18, Cameron)
+
+Playing a card moves the question queue on at once, so the strip showed the next question's organizations while the turn was still the same one. `BattleEngine.turn_question()` now returns the question the turn is about (the answered one, until the turn ends), and the strip reads it. `answer_effect()` returns nothing once the turn's question is answered, so a further card shows no preview. Test: `test_the_turns_question_stays_the_same_after_a_card_is_played`. `verify.sh` green.

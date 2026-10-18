@@ -1147,6 +1147,20 @@ func current_question() -> Dictionary:
 	return _questions[state.question_index]
 
 
+## The question this turn is about. Playing a card moves the queue on at once,
+## but the turn's question stays the same until the turn ends, so anything that
+## shows who is listening reads this instead of current_question().
+func turn_question() -> Dictionary:
+	if _questions.is_empty():
+		return {}
+	var per_turn := _questions_per_turn()
+	if state.questions_answered_this_turn >= per_turn:
+		var idx := state.question_index - state.questions_answered_this_turn
+		if idx >= 0 and idx < _questions.size():
+			return _questions[idx]
+	return current_question()
+
+
 ## How the currently drawn question treats this card's suit, as a second
 ## multiplier composed alongside stage affinity — 1.0 outside a
 ## question-asking room, or on a Medium grade.
@@ -1253,6 +1267,8 @@ func _answer_question(card: Dictionary) -> Dictionary:
 ## changing anything: {grade, pleased, displeased, opposed} (lists of
 ## organisation ids). Empty when no question is open.
 func answer_effect(card: Dictionary) -> Dictionary:
+	if state.questions_answered_this_turn >= _questions_per_turn():
+		return {}
 	var question := current_question()
 	if question.is_empty():
 		return {}
