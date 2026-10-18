@@ -44,5 +44,6 @@
   "standing_links_yen_per_point": 10000,
   "opponent_cues_general_pool_chance": 25,
   "special_level_delay": 5,
+  "decay_interval": 6,
   "xp_tiers": {}
 }

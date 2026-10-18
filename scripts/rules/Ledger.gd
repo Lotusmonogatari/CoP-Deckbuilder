@@ -407,26 +407,26 @@ static func level_unlock_refusal(level: Dictionary, unlocked: Array,
 	return ""
 
 
-## How many MORE level completions (win or loss — see the note on
-## GameState.levels_completed_count) must happen before this level is
-## playable again, or 0 when it is not on cooldown at all.
+## How many MORE units of the game clock must pass before this level is
+## playable again, or 0 when it is not on cooldown at all (2026-10-18: it used
+## to count other levels played). The player is only ever told "not available
+## yet", never the number.
 ##
-## `completed_count` is the running total of every level finished so far in
-## this sitting; `last_completed_at` is { level_id -> that total's value the
-## last time THIS level finished }. A level never played has no entry, so it
-## is never on cooldown regardless of its cooldown number.
-static func level_cooldown_remaining(level: Dictionary, completed_count: int,
-		last_completed_at: Dictionary) -> int:
+## `now_units` is the game clock; `last_cleared_units` is { level_id -> the
+## clock the last time THIS level finished, win or loss }. A level never
+## played has no entry, so it is never on cooldown regardless of its number.
+static func level_cooldown_remaining(level: Dictionary, now_units: int,
+		last_cleared_units: Dictionary) -> int:
 	var level_id := str(level.get("level_id", ""))
 	var cooldown := int(level.get("cooldown", 0))
 	if cooldown <= 0:
 		return 0
 
-	var last: Variant = last_completed_at.get(level_id)
+	var last: Variant = last_cleared_units.get(level_id)
 	if last == null:
 		return 0
 
-	var since := completed_count - int(last)
+	var since := now_units - int(last)
 	return maxi(cooldown - since, 0)
 
 

@@ -91,13 +91,13 @@ func test_the_engine_counts_every_strong_answer() -> void:
 	assert_eq(engine.pleased_boosters().size(), 1, "the icon list stays one per organization")
 
 
-func test_an_organization_nobody_dealt_with_drifts_toward_its_start_at_level_end() -> void:
+func test_an_organization_nobody_dealt_with_drifts_toward_its_start() -> void:
 	GameState.reset_booster_standing()
 	GameState.booster_standing["BO05"] = 50
 	GameState.booster_standing["BO09"] = 10
 	GameState.booster_standing["BO03"] = 50
-	GameState.last_booster_change = {"BO03": 5}
+	GameState.booster_moved_in_period = {"BO03": true}
 	GameState._apply_neglect_decay()
 	assert_eq(int(GameState.booster_standing["BO05"]), 49)
 	assert_eq(int(GameState.booster_standing["BO09"]), 11)
-	assert_eq(int(GameState.booster_standing["BO03"]), 50, "touched this level, so left alone")
+	assert_eq(int(GameState.booster_standing["BO03"]), 50, "dealt with since decay last ran, so left alone")

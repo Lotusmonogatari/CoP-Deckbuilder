@@ -537,7 +537,7 @@ func _choose_level() -> String:
 		if not Ledger.is_level_unlocked(level, GameState.levels_unlocked, GameState.staff_hired):
 			continue
 		var cooldown := Ledger.level_cooldown_remaining(
-			level, GameState.levels_completed_count, GameState.level_last_completed_at)
+			level, GameState.time_units, GameState.level_cleared_units)
 		if cooldown > 0:
 			continue
 		if first_playable.is_empty():

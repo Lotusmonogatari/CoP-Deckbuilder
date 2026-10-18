@@ -184,6 +184,20 @@ var levels_completed_count: int = 0
 ## on cooldown, no matter what its cooldown number says.
 var level_last_completed_at: Dictionary = {}
 
+## { level_id -> the game clock (time_units) when it last finished }. This is
+## what a level's cooldown is measured against (2026-10-18; it used to count
+## other levels played). Saved; cleared on a new run.
+var level_cleared_units: Dictionary = {}
+
+## The game-clock reading at which decay last ran; decay runs every Decay
+## Interval units from here (_apply_time_decays()). Saved.
+var last_decay_at := 0
+
+## Organizations whose standing moved (other than by decay) since decay last
+## ran -- the "dealt with" test for neglect decay. Saved.
+var booster_moved_in_period: Dictionary = {}
+var _decaying := false
+
 ## { level_id -> how many times that level has been WON }, unlike levels_
 ## completed_count above — this only counts a win, not any finish, and it's
 ## per level rather than one running total. "Your Record"'s own level-by-
@@ -346,7 +360,7 @@ const _SAVED_FIELDS := [
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
-	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared",
+	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
@@ -432,6 +446,9 @@ func drop_stale_ids() -> int:
 	for level_id: String in levels_cleared.keys():
 		if DataDB.get_level(level_id).is_empty():
 			levels_cleared.erase(level_id)
+	for level_id: String in level_cleared_units.keys():
+		if DataDB.get_level(level_id).is_empty():
+			level_cleared_units.erase(level_id)
 	if not card_draw.is_empty() and (DataDB.get_card(str(card_draw.get("card_id", ""))).is_empty() \
 			or DataDB.get_shop_item(str(card_draw.get("item_id", ""))).is_empty()):
 		card_draw = {}
@@ -481,6 +498,8 @@ func reset_crisis_triggers() -> void:
 	town_hall_active = false
 	steering_committee_active = false
 	time_units = 0
+	last_decay_at = 0
+	booster_moved_in_period = {}
 	special_levels = {}
 	special_forced = false
 	funding_frozen_active = false
@@ -506,6 +525,7 @@ func reset_levels() -> void:
 	levels_unlocked = []
 	levels_completed_count = 0
 	level_last_completed_at = {}
+	level_cleared_units = {}
 	levels_cleared = {}
 
 
@@ -772,6 +792,26 @@ func reset_booster_standing() -> void:
 		var own_start: Variant = booster.get("starting_standing")
 		booster_standing[str(booster.get("booster_id"))] = start if own_start == null else int(own_start)
 
+## Decay now runs on the game clock (2026-10-18): once for every Decay Interval
+## units (Balance tab; 0 = off) that have passed since it last ran. Organizations
+## nobody dealt with since then drift toward their starting standing, every
+## organization settles by its own Decay Percent, and meta values with a Decay
+## Percent settle. It used to run once at the end of every level.
+func _apply_time_decays() -> void:
+	var interval := int(DataDB.balance.get("decay_interval", 6))
+	if interval <= 0:
+		last_decay_at = time_units
+		return
+	while time_units - last_decay_at >= interval:
+		last_decay_at += interval
+		_decaying = true
+		_apply_neglect_decay()
+		_apply_standing_decay()
+		_apply_meta_decay()
+		_decaying = false
+		booster_moved_in_period = {}
+
+
 
 ## Neglect (2026-10-16, Cameron): at the end of a level, every organisation
 ## whose standing did not move at all this level (last_booster_change, which
@@ -782,7 +822,7 @@ func _apply_neglect_decay() -> void:
 	if step <= 0:
 		return
 	var default_start := int(DataDB.booster_standing.get("start", 30))
-	var touched := last_booster_change.keys()
+	var touched := booster_moved_in_period.keys()
 	var starts := {}
 	for booster: Dictionary in DataDB.boosters:
 		var own_start: Variant = booster.get("starting_standing")
@@ -971,6 +1011,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	# their own checks internally skip entering a zone when there is
 	# nowhere left to put one (level_runner.is_finished()) — leaving a zone
 	# never needs anywhere to put anything, so that half always fires.
+	_apply_time_decays()
 	_check_funding_freeze()
 	var level_id := str(level_runner.level.get("level_id", ""))
 	_check_town_hall()
@@ -986,19 +1027,11 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		if not level_id.is_empty():
 			levels_completed_count += 1
 			level_last_completed_at[level_id] = levels_completed_count
+			level_cleared_units[level_id] = time_units
 
 		# The level has concluded, success or failure: each Supplies item's
 		# Purchase Limit starts counting again, and level buffs run out.
 		_conclude_level_items()
-
-		# Organisations nobody dealt with this level drift back toward where
-		# they started (booster_standing.json `neglect_decay`).
-		_apply_neglect_decay()
-		# And every organization, moved or not, settles back a little at its
-		# own rate (Boosters tab, Decay Percent).
-		_apply_standing_decay()
-		# Meta values with a Decay Percent (the Sanban tab) settle back too.
-		_apply_meta_decay()
 
 		# Laws with an "each level" effect pay out at the end of every level
 		# after the one that passed them, win or loss (Law Effects tab).
@@ -2068,6 +2101,8 @@ func _apply_booster_delta(booster_id: String, delta: int) -> void:
 	var after := clampi(before + delta, low, high)
 	booster_standing[booster_id] = after
 	if after != before:
+		if not _decaying:
+			booster_moved_in_period[booster_id] = true
 		last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
 		_note_cause(last_booster_cause, booster_id, after - before)
 		_follow_links(booster_id, float(after - before))
