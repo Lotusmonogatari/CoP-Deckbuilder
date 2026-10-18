@@ -147,3 +147,16 @@ func test_each_new_body_has_at_least_fifteen_questions_and_a_backing() -> void:
 					count += 1
 		assert_gte(count, 15, "%s has enough questions" % id)
 		assert_false((DataDB.get_booster(id).get("linked_modifiers", []) as Array).is_empty())
+
+
+func test_the_activist_backing_adds_five_support_in_a_real_town_hall_and_caucus_only_while_they_hold() -> void:
+	GameState.owned_modifiers = ["M47"]
+	for stage_id: String in ["ST05", "ST03", "ST24"]:
+		var stage: Dictionary = DataDB.get_stage(stage_id)
+		GameState.booster_standing["BO31"] = 60
+		assert_eq(BattleSetup.backing_bonus(stage)["start_support"], 5, "%s with Activists at 60" % stage_id)
+		GameState.booster_standing["BO31"] = 5
+		assert_eq(BattleSetup.backing_bonus(stage)["start_support"], 0, "%s with Activists at 5" % stage_id)
+	GameState.booster_standing["BO31"] = 60
+	assert_eq(BattleSetup.backing_bonus(DataDB.get_stage("ST02"))["start_support"], 0, "not a Town Hall or Caucus")
+	GameState.owned_modifiers = []
