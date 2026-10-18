@@ -31346,6 +31346,1647 @@
         "ST259"
       ],
       "asked_by": "OP52"
+    },
+    {
+      "id": "S836",
+      "text": "Should members have to publish every gift they receive?",
+      "theme": "Gift disclosure",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST09",
+        "ST172",
+        "ST195",
+        "ST251"
+      ],
+      "asked_by": "OP69"
+    },
+    {
+      "id": "S837",
+      "text": "When a member is under investigation, who decides whether prosecutors may proceed?",
+      "theme": "Investigative independence",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST09",
+        "ST172",
+        "ST195",
+        "ST251"
+      ],
+      "asked_by": "OP81"
+    },
+    {
+      "id": "S838",
+      "text": "Would stronger protection for whistleblowers help this committee or hinder it?",
+      "theme": "Whistleblower protection",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO09",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST09",
+        "ST172",
+        "ST195",
+        "ST251"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S839",
+      "text": "Where is the line between a courtesy and a bribe?",
+      "theme": "Conflicts of interest",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO23",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST09",
+        "ST172",
+        "ST195",
+        "ST251"
+      ],
+      "asked_by": "OP91"
+    },
+    {
+      "id": "S840",
+      "text": "Who watches the people who watch the members?",
+      "theme": "Oversight of overseers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST09",
+        "ST172",
+        "ST195",
+        "ST251"
+      ],
+      "asked_by": "OP99"
+    },
+    {
+      "id": "S841",
+      "text": "How do we protect a river without closing the mill beside it?",
+      "theme": "River protection",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO28",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST10",
+        "ST33",
+        "ST54",
+        "ST126",
+        "ST150",
+        "ST177",
+        "ST230"
+      ],
+      "asked_by": "OP51"
+    },
+    {
+      "id": "S842",
+      "text": "Who pays to clean up damage that was legal when it was done?",
+      "theme": "Cleanup costs",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST10",
+        "ST33",
+        "ST54",
+        "ST126",
+        "ST150",
+        "ST177",
+        "ST230"
+      ],
+      "asked_by": "OP64"
+    },
+    {
+      "id": "S843",
+      "text": "Are wind farms worth the view they take from nearby towns?",
+      "theme": "Wind and view",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO06"
+      ],
+      "stage_ids": [
+        "ST10",
+        "ST33",
+        "ST54",
+        "ST126",
+        "ST150",
+        "ST177",
+        "ST230"
+      ],
+      "asked_by": "OP71"
+    },
+    {
+      "id": "S844",
+      "text": "What would you cut to meet an emissions target?",
+      "theme": "Emissions targets",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST10",
+        "ST33",
+        "ST54",
+        "ST126",
+        "ST150",
+        "ST177",
+        "ST230"
+      ],
+      "asked_by": "OP75"
+    },
+    {
+      "id": "S845",
+      "text": "How should this committee weigh a rare species against a hundred jobs?",
+      "theme": "Wildlife and jobs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO09"
+      ],
+      "stage_ids": [
+        "ST10",
+        "ST33",
+        "ST54",
+        "ST126",
+        "ST150",
+        "ST177",
+        "ST230"
+      ],
+      "asked_by": "OP92"
+    },
+    {
+      "id": "S846",
+      "text": "Is the defense budget buying readiness or only hardware?",
+      "theme": "Defense value",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST11",
+        "ST60",
+        "ST143",
+        "ST206",
+        "ST211",
+        "ST220"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S847",
+      "text": "Who answers for a mission that goes wrong?",
+      "theme": "Command accountability",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST11",
+        "ST60",
+        "ST143",
+        "ST206",
+        "ST211",
+        "ST220"
+      ],
+      "asked_by": "OP67"
+    },
+    {
+      "id": "S848",
+      "text": "Should reservists train more often, and who covers their employers' costs?",
+      "theme": "Reserve training",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST11",
+        "ST60",
+        "ST143",
+        "ST206",
+        "ST211",
+        "ST220"
+      ],
+      "asked_by": "OP73"
+    },
+    {
+      "id": "S849",
+      "text": "What do you tell the families of those serving about the risks?",
+      "theme": "Service families",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO12",
+        "BO21"
+      ],
+      "stage_ids": [
+        "ST11",
+        "ST60",
+        "ST143",
+        "ST206",
+        "ST211",
+        "ST220"
+      ],
+      "asked_by": "OP21"
+    },
+    {
+      "id": "S850",
+      "text": "How much should allies shape our own defense plans?",
+      "theme": "Allied planning",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST11",
+        "ST60",
+        "ST143",
+        "ST206",
+        "ST211",
+        "ST220"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S851",
+      "text": "Should committees meet in public unless there is a reason to close the doors?",
+      "theme": "Open committees",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO18",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST12",
+        "ST63",
+        "ST163",
+        "ST202",
+        "ST241",
+        "ST250"
+      ],
+      "asked_by": "OP04"
+    },
+    {
+      "id": "S852",
+      "text": "Who should decide which bills reach the floor?",
+      "theme": "Agenda control",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST12",
+        "ST63",
+        "ST163",
+        "ST202",
+        "ST241",
+        "ST250"
+      ],
+      "asked_by": "OP11"
+    },
+    {
+      "id": "S853",
+      "text": "Is the Assembly too slow, or is slow the point?",
+      "theme": "Pace of lawmaking",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO18",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST12",
+        "ST63",
+        "ST163",
+        "ST202",
+        "ST241",
+        "ST250"
+      ],
+      "asked_by": "OP12"
+    },
+    {
+      "id": "S854",
+      "text": "Should members have to read a bill before they vote on it?",
+      "theme": "Reading the bill",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO18",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST12",
+        "ST63",
+        "ST163",
+        "ST202",
+        "ST241",
+        "ST250"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S855",
+      "text": "How should the Assembly discipline a member who breaks its rules?",
+      "theme": "Discipline of members",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO01"
+      ],
+      "displeases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST12",
+        "ST63",
+        "ST163",
+        "ST202",
+        "ST241",
+        "ST250"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S856",
+      "text": "How can a young person afford to start a farm?",
+      "theme": "Starting a farm",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST13",
+        "ST31",
+        "ST57",
+        "ST77",
+        "ST127"
+      ],
+      "asked_by": "OP84"
+    },
+    {
+      "id": "S857",
+      "text": "Should the state set a floor under crop prices?",
+      "theme": "Crop price floors",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST13",
+        "ST31",
+        "ST57",
+        "ST77",
+        "ST127"
+      ],
+      "asked_by": "OP94"
+    },
+    {
+      "id": "S858",
+      "text": "What happens to a village when its last farm closes?",
+      "theme": "Village survival",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO10",
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST13",
+        "ST31",
+        "ST57",
+        "ST77",
+        "ST127"
+      ],
+      "asked_by": "OP98"
+    },
+    {
+      "id": "S859",
+      "text": "Who should carry the risk of a bad harvest?",
+      "theme": "Harvest risk",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST13",
+        "ST31",
+        "ST57",
+        "ST77",
+        "ST127"
+      ],
+      "asked_by": "OP06"
+    },
+    {
+      "id": "S860",
+      "text": "Should imported food face the same standards as local produce?",
+      "theme": "Food standards",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST13",
+        "ST31",
+        "ST57",
+        "ST77",
+        "ST127"
+      ],
+      "asked_by": "OP25"
+    },
+    {
+      "id": "S861",
+      "text": "How much say should a small country have when larger neighbors argue?",
+      "theme": "Small-state diplomacy",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST14",
+        "ST66",
+        "ST69",
+        "ST74",
+        "ST130",
+        "ST140",
+        "ST147",
+        "ST166",
+        "ST209",
+        "ST215",
+        "ST223",
+        "ST228"
+      ],
+      "asked_by": "OP72"
+    },
+    {
+      "id": "S862",
+      "text": "Should trade ever be used to punish another government?",
+      "theme": "Trade sanctions",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO25"
+      ],
+      "stage_ids": [
+        "ST14",
+        "ST66",
+        "ST69",
+        "ST74",
+        "ST130",
+        "ST140",
+        "ST147",
+        "ST166",
+        "ST209",
+        "ST215",
+        "ST223",
+        "ST228"
+      ],
+      "asked_by": "OP82"
+    },
+    {
+      "id": "S863",
+      "text": "Who should speak for Yezo when envoys and ministers disagree?",
+      "theme": "Speaking for Yezo",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST14",
+        "ST66",
+        "ST69",
+        "ST74",
+        "ST130",
+        "ST140",
+        "ST147",
+        "ST166",
+        "ST209",
+        "ST215",
+        "ST223",
+        "ST228"
+      ],
+      "asked_by": "OP89"
+    },
+    {
+      "id": "S864",
+      "text": "Are our alliances a shield or a leash?",
+      "theme": "Alliance value",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST14",
+        "ST66",
+        "ST69",
+        "ST74",
+        "ST130",
+        "ST140",
+        "ST147",
+        "ST166",
+        "ST209",
+        "ST215",
+        "ST223",
+        "ST228"
+      ],
+      "asked_by": "OP95"
+    },
+    {
+      "id": "S865",
+      "text": "What do we owe citizens caught in a crisis abroad?",
+      "theme": "Citizens abroad",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST14",
+        "ST66",
+        "ST69",
+        "ST74",
+        "ST130",
+        "ST140",
+        "ST147",
+        "ST166",
+        "ST209",
+        "ST215",
+        "ST223",
+        "ST228"
+      ],
+      "asked_by": "OP18"
+    },
+    {
+      "id": "S866",
+      "text": "Who should pay when a road project runs over budget?",
+      "theme": "Project overruns",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST15",
+        "ST27",
+        "ST132",
+        "ST139",
+        "ST151",
+        "ST183",
+        "ST191",
+        "ST221",
+        "ST231",
+        "ST236"
+      ],
+      "asked_by": "OP62"
+    },
+    {
+      "id": "S867",
+      "text": "How do we build faster without cutting corners on safety?",
+      "theme": "Building safely",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO14"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST15",
+        "ST27",
+        "ST132",
+        "ST139",
+        "ST151",
+        "ST183",
+        "ST191",
+        "ST221",
+        "ST231",
+        "ST236"
+      ],
+      "asked_by": "OP68"
+    },
+    {
+      "id": "S868",
+      "text": "Should big projects always go to the lowest bidder?",
+      "theme": "Bidding rules",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST15",
+        "ST27",
+        "ST132",
+        "ST139",
+        "ST151",
+        "ST183",
+        "ST191",
+        "ST221",
+        "ST231",
+        "ST236"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S869",
+      "text": "What do you say to families who must move for a new dam or road?",
+      "theme": "Resettlement",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO06",
+        "BO03"
+      ],
+      "stage_ids": [
+        "ST15",
+        "ST27",
+        "ST132",
+        "ST139",
+        "ST151",
+        "ST183",
+        "ST191",
+        "ST221",
+        "ST231",
+        "ST236"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S870",
+      "text": "Is maintenance less glamorous than ribbon-cutting, and does that matter?",
+      "theme": "Maintenance first",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST15",
+        "ST27",
+        "ST132",
+        "ST139",
+        "ST151",
+        "ST183",
+        "ST191",
+        "ST221",
+        "ST231",
+        "ST236"
+      ],
+      "asked_by": "OP13"
+    },
+    {
+      "id": "S871",
+      "text": "If you had to cut one budget line, which would it be?",
+      "theme": "Budget cuts",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO11"
+      ],
+      "stage_ids": [
+        "ST16",
+        "ST51",
+        "ST134",
+        "ST137",
+        "ST155",
+        "ST159",
+        "ST168",
+        "ST178",
+        "ST184",
+        "ST189",
+        "ST216",
+        "ST237",
+        "ST247"
+      ],
+      "asked_by": "OP47"
+    },
+    {
+      "id": "S872",
+      "text": "Is public debt a burden or a tool?",
+      "theme": "Public debt",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST16",
+        "ST51",
+        "ST134",
+        "ST137",
+        "ST155",
+        "ST159",
+        "ST168",
+        "ST178",
+        "ST184",
+        "ST189",
+        "ST216",
+        "ST237",
+        "ST247"
+      ],
+      "asked_by": "OP83"
+    },
+    {
+      "id": "S873",
+      "text": "Should tax breaks come with an expiry date?",
+      "theme": "Tax break limits",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST16",
+        "ST51",
+        "ST134",
+        "ST137",
+        "ST155",
+        "ST159",
+        "ST168",
+        "ST178",
+        "ST184",
+        "ST189",
+        "ST216",
+        "ST237",
+        "ST247"
+      ],
+      "asked_by": "OP97"
+    },
+    {
+      "id": "S874",
+      "text": "Who benefits most when the budget is balanced?",
+      "theme": "Balanced budgets",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO24",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO21"
+      ],
+      "stage_ids": [
+        "ST16",
+        "ST51",
+        "ST134",
+        "ST137",
+        "ST155",
+        "ST159",
+        "ST168",
+        "ST178",
+        "ST184",
+        "ST189",
+        "ST216",
+        "ST237",
+        "ST247"
+      ],
+      "asked_by": "OP03"
+    },
+    {
+      "id": "S875",
+      "text": "How much should the treasury keep in reserve for emergencies?",
+      "theme": "Emergency reserves",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO30",
+        "BO22"
+      ],
+      "stage_ids": [
+        "ST16",
+        "ST51",
+        "ST134",
+        "ST137",
+        "ST155",
+        "ST159",
+        "ST168",
+        "ST178",
+        "ST184",
+        "ST189",
+        "ST216",
+        "ST237",
+        "ST247"
+      ],
+      "asked_by": "OP05"
+    },
+    {
+      "id": "S876",
+      "text": "Why does a simple permit pass through so many offices?",
+      "theme": "Permit delays",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO05",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST17",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST123",
+        "ST146",
+        "ST158",
+        "ST162",
+        "ST199",
+        "ST204",
+        "ST225",
+        "ST240",
+        "ST246",
+        "ST255",
+        "ST258"
+      ],
+      "asked_by": "OP53"
+    },
+    {
+      "id": "S877",
+      "text": "Should civil servants rotate posts or stay where they are?",
+      "theme": "Civil service rotation",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST17",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST123",
+        "ST146",
+        "ST158",
+        "ST162",
+        "ST199",
+        "ST204",
+        "ST225",
+        "ST240",
+        "ST246",
+        "ST255",
+        "ST258"
+      ],
+      "asked_by": "OP78"
+    },
+    {
+      "id": "S878",
+      "text": "How do digital services reach people who avoid computers?",
+      "theme": "Digital access",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21",
+        "BO12",
+        "BO04"
+      ],
+      "stage_ids": [
+        "ST17",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST123",
+        "ST146",
+        "ST158",
+        "ST162",
+        "ST199",
+        "ST204",
+        "ST225",
+        "ST240",
+        "ST246",
+        "ST255",
+        "ST258"
+      ],
+      "asked_by": "OP80"
+    },
+    {
+      "id": "S879",
+      "text": "Who should audit a ministry that audits everyone else?",
+      "theme": "Auditing the auditors",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST17",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST123",
+        "ST146",
+        "ST158",
+        "ST162",
+        "ST199",
+        "ST204",
+        "ST225",
+        "ST240",
+        "ST246",
+        "ST255",
+        "ST258"
+      ],
+      "asked_by": "OP86"
+    },
+    {
+      "id": "S880",
+      "text": "Should local offices get more say over national rules?",
+      "theme": "Local flexibility",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO03",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST17",
+        "ST37",
+        "ST47",
+        "ST80",
+        "ST90",
+        "ST95",
+        "ST123",
+        "ST146",
+        "ST158",
+        "ST162",
+        "ST199",
+        "ST204",
+        "ST225",
+        "ST240",
+        "ST246",
+        "ST255",
+        "ST258"
+      ],
+      "asked_by": "OP87"
+    },
+    {
+      "id": "S881",
+      "text": "Does the Cabinet speak with one voice, or many?",
+      "theme": "Cabinet unity",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO01",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST18"
+      ],
+      "asked_by": "OP10"
+    },
+    {
+      "id": "S882",
+      "text": "When a minister makes a mistake, who pays?",
+      "theme": "Ministerial responsibility",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO18",
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST18"
+      ],
+      "asked_by": "OP27"
+    },
+    {
+      "id": "S883",
+      "text": "How much of the Cabinet's work should the public see?",
+      "theme": "Cabinet openness",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "stage_ids": [
+        "ST18"
+      ],
+      "asked_by": "OP29"
+    },
+    {
+      "id": "S884",
+      "text": "Should ministers answer questions in the Assembly more often?",
+      "theme": "Question time",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO08",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST18"
+      ],
+      "asked_by": "OP33"
+    },
+    {
+      "id": "S885",
+      "text": "What does the Cabinet owe a region that voted against it?",
+      "theme": "Governing for all",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO18",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST18"
+      ],
+      "asked_by": "OP36"
+    },
+    {
+      "id": "S886",
+      "text": "What makes a special committee worth the trouble?",
+      "theme": "Special committee purpose",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST01",
+        "ST219",
+        "ST244",
+        "ST254"
+      ],
+      "asked_by": "OP06"
+    },
+    {
+      "id": "S887",
+      "text": "Who should sit on a body that exists for one purpose?",
+      "theme": "Special committee membership",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST01",
+        "ST219",
+        "ST244",
+        "ST254"
+      ],
+      "asked_by": "OP07"
+    },
+    {
+      "id": "S888",
+      "text": "How do you keep a special inquiry from turning into a show?",
+      "theme": "Inquiries as theatre",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO23",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO31"
+      ],
+      "stage_ids": [
+        "ST01",
+        "ST219",
+        "ST244",
+        "ST254"
+      ],
+      "asked_by": "OP08"
+    },
+    {
+      "id": "S889",
+      "text": "Should the findings of a special committee bind anyone?",
+      "theme": "Binding findings",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST01",
+        "ST219",
+        "ST244",
+        "ST254"
+      ],
+      "asked_by": "OP09"
+    },
+    {
+      "id": "S890",
+      "text": "What would success look like for this committee?",
+      "theme": "Measuring success",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST01",
+        "ST219",
+        "ST244",
+        "ST254"
+      ],
+      "asked_by": "OP100"
     }
   ]
 }
