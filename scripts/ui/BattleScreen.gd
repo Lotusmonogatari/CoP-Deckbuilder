@@ -395,7 +395,7 @@ func _booster_names_for(ids: Array) -> String:
 	var named: Array[String] = []
 	for booster_id: String in ids:
 		named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-	return ", ".join(named)
+	return CauseLines.join(named)
 
 
 ## What just happened, in a question-asking room only: the opponent's own
@@ -497,7 +497,7 @@ func _room_lines(state: BattleState) -> Array[String]:
 			if share > 0.0:
 				parts.append("%d%% %s" % [roundi(share * 100.0), segment.get("name_en", "")])
 		if not parts.is_empty():
-			lines.append(Text.say("battle.room_mix", {"mix": ", ".join(parts)}))
+			lines.append(Text.say("battle.room_mix", {"mix": CauseLines.join(parts)}))
 
 	if state.bar != null and state.bar.model == BarModel.Model.SHARED_POOL:
 		lines.append(Text.say("battle.shared_pool_rules"))
@@ -563,7 +563,7 @@ func _refresh_details(state: BattleState) -> void:
 			var named: Array[String] = []
 			for booster_id: String in pleased:
 				named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-			after.append(Text.say("battle.pleased_so_far", {"names": ", ".join(named)}))
+			after.append(Text.say("battle.pleased_so_far", {"names": CauseLines.join(named)}))
 
 		# 2026-09-28, Cameron: a weak answer annoys the same organisation a
 		# strong one would have pleased — shown only once there is something
@@ -573,7 +573,7 @@ func _refresh_details(state: BattleState) -> void:
 			var annoyed_named: Array[String] = []
 			for booster_id: String in displeased:
 				annoyed_named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-			after.append(Text.say("battle.annoyed_so_far", {"names": ", ".join(annoyed_named)}))
+			after.append(Text.say("battle.annoyed_so_far", {"names": CauseLines.join(annoyed_named)}))
 
 	after.append("")
 	after.append_array(_room_lines(state))
@@ -772,9 +772,9 @@ func _tastes_for(ids: Array) -> Dictionary:
 			continue
 		var parts: Array[String] = []
 		if not likes.is_empty():
-			parts.append(Text.say("battle.taste_likes", {"suits": ", ".join(likes)}))
+			parts.append(Text.say("battle.taste_likes", {"suits": CauseLines.join(likes)}))
 		if not dislikes.is_empty():
-			parts.append(Text.say("battle.taste_dislikes", {"suits": ", ".join(dislikes)}))
+			parts.append(Text.say("battle.taste_dislikes", {"suits": CauseLines.join(dislikes)}))
 		out[booster_id] = "\n".join(parts)
 	return out
 

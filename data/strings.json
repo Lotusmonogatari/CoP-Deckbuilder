@@ -3131,14 +3131,14 @@
   {
     "key": "record.cause_stage_win",
     "where": "Your Record",
-    "english": "won {stage}",
+    "english": "winning {stage}",
     "placeholders": "stage",
     "notes": "2026-10-15 one-line cause beside each Your Record change."
   },
   {
     "key": "record.cause_stage_loss",
     "where": "Your Record",
-    "english": "lost {stage}",
+    "english": "losing {stage}",
     "placeholders": "stage",
     "notes": "2026-10-15 one-line cause beside each Your Record change."
   },
@@ -3173,14 +3173,14 @@
   {
     "key": "record.cause_law",
     "where": "Your Record",
-    "english": "the law: {bill}",
+    "english": "the effects of {bill}",
     "placeholders": "bill",
     "notes": "2026-10-15 one-line cause beside each Your Record change."
   },
   {
     "key": "record.cause_gaffes",
     "where": "Your Record",
-    "english": "too many gaffes this run",
+    "english": "your gaffes this run",
     "placeholders": null,
     "notes": "2026-10-15 one-line cause beside each Your Record change."
   },
@@ -3488,7 +3488,7 @@
   {
     "key": "record.cause_stance_switch",
     "where": "Your Record — Party support moved by switching your vote on a bill",
-    "english": "switching your vote on {bill}",
+    "english": "switching your stance on {bill}",
     "placeholders": "bill",
     "notes": null
   },
@@ -3637,6 +3637,97 @@
     "where": "Battle: a backed organization's disliked styles",
     "english": "Dislikes {suits}",
     "placeholders": "suits",
+    "notes": null
+  },
+  {
+    "key": "record.cause_other",
+    "where": "Your Record / Stakeholders: fallback reason",
+    "english": "other changes",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "record.cause_staff",
+    "where": "Reason: a staff reward",
+    "english": "your staff",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "record.cause_neglect",
+    "where": "Reason: standing drifting back from neglect",
+    "english": "going unvisited this level",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "record.cause_answers",
+    "where": "Reason: question answers in a stage",
+    "english": "your answers",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "record.cause_crush",
+    "where": "Reason: arguing an opponent down to nothing",
+    "english": "arguing one of their people out of the room",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "record.cause_party_lean",
+    "where": "Reason: a Party body following the player's party on a bill",
+    "english": "your party's position on {bill}",
+    "placeholders": "bill",
+    "notes": null
+  },
+  {
+    "key": "record.cause_stance_drift",
+    "where": "Reason: winning stages with a stance on a bill",
+    "english": "your stance on {bill}",
+    "placeholders": "bill",
+    "notes": null
+  },
+  {
+    "key": "record.cause_stance_vote",
+    "where": "Reason: the stance vote matching the lean",
+    "english": "your vote on {bill}",
+    "placeholders": "bill",
+    "notes": null
+  },
+  {
+    "key": "record.cause_visitor",
+    "where": "Reason: an Office Hours visitor's choice",
+    "english": "a visitor's request",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "record.cause_item",
+    "where": "Reason: using a shop item",
+    "english": "using {item}",
+    "placeholders": "item",
+    "notes": null
+  },
+  {
+    "key": "record.cause_amount",
+    "where": "One reason with its share of a change",
+    "english": "{cause} ({amount})",
+    "placeholders": "cause; amount",
+    "notes": null
+  },
+  {
+    "key": "record.join_two",
+    "where": "Two items in a list",
+    "english": "{a} and {b}",
+    "placeholders": "a; b",
+    "notes": null
+  },
+  {
+    "key": "record.join_many",
+    "where": "Three or more items in a list",
+    "english": "{list}, and {last}",
+    "placeholders": "list; last",
     "notes": null
   }
 ]

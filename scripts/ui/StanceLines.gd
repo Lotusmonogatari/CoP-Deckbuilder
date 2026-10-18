@@ -19,7 +19,7 @@ static func names_of(ids: Array) -> String:
 	var out: Array[String] = []
 	for id: Variant in ids:
 		out.append(str(names.get(str(id), str(id))))
-	return ", ".join(out)
+	return CauseLines.join(out)
 
 
 ## The two lines the Level Intro screen shows before the lean choice: whose
@@ -85,4 +85,4 @@ static func describe_changes(deltas: Dictionary, party_delta: int) -> String:
 			parts.append("%s %+d" % [str(names.get(str(id), str(id))), delta])
 	if party_delta != 0:
 		parts.append("%s %+d" % ["Party support", party_delta])
-	return ", ".join(parts) if not parts.is_empty() else Text.say("floor_vote.stance_none")
+	return CauseLines.join(parts) if not parts.is_empty() else Text.say("floor_vote.stance_none")
