@@ -9,7 +9,8 @@
     "cue_3": "How will you prove yourself?",
     "cue_4": "Stand up or stand aside.",
     "cue_5": "Who are you speaking to. Not me.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC02",
@@ -21,7 +22,8 @@
     "cue_3": "Who are you here for?",
     "cue_4": "Tell me the truth, not rhetoric.",
     "cue_5": "Strip away the noise.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC03",
@@ -33,7 +35,8 @@
     "cue_3": "It's not on me to prove your words.",
     "cue_4": "Look at the work, not the words.",
     "cue_5": "I let my results do the talking.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC04",
@@ -45,7 +48,8 @@
     "cue_3": "This is not abstract to us!",
     "cue_4": "Who fights for us in this room?",
     "cue_5": "Say it like you mean it!",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC05",
@@ -57,7 +61,8 @@
     "cue_3": "My heart says you are right!",
     "cue_4": "That is exactly what we needed!",
     "cue_5": "Finally, someone who feels this too!",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC06",
@@ -69,7 +74,8 @@
     "cue_3": "This matters too much to abandon!",
     "cue_4": "I stand with the people, period!",
     "cue_5": "No argument will cool my resolve!",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC07",
@@ -81,7 +87,8 @@
     "cue_3": "Solidarity means showing up, not just talking.",
     "cue_4": "Where do you stand with your own?",
     "cue_5": "We rise together, or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC08",
@@ -93,7 +100,8 @@
     "cue_3": "Welcome, truly, to the same side.",
     "cue_4": "This is how we look after our own.",
     "cue_5": "Together we can make this work.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC09",
@@ -105,7 +113,8 @@
     "cue_3": "You won't split us that easily.",
     "cue_4": "Our unity is stronger than your argument.",
     "cue_5": "We look out for each other, period.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC10",
@@ -117,7 +126,8 @@
     "cue_3": "Give me a document, not an opinion.",
     "cue_4": "Is that verified, or merely asserted?",
     "cue_5": "Where is the evidence for this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC11",
@@ -129,7 +139,8 @@
     "cue_3": "That is a verifiable, defensible claim.",
     "cue_4": "The evidence lines up with your point.",
     "cue_5": "Correct, by every measure available.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC12",
@@ -141,7 +152,8 @@
     "cue_3": "Show your work, or I concede nothing.",
     "cue_4": "One example proves nothing on its own.",
     "cue_5": "I deal in figures, not impressions.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC13",
@@ -153,7 +165,8 @@
     "cue_3": "You can't stand with both sides.",
     "cue_4": "Say plainly who you answer to.",
     "cue_5": "This room knows exactly whose side you're on.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC14",
@@ -165,7 +178,8 @@
     "cue_3": "You drew the line, and drew it well.",
     "cue_4": "Good, so we know who stands where.",
     "cue_5": "That is exactly the divide we needed named.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC15",
@@ -177,7 +191,8 @@
     "cue_3": "Labels don't decide where I stand.",
     "cue_4": "You don't get to sort me that way.",
     "cue_5": "My position isn't yours to assign.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC16",
@@ -189,7 +204,8 @@
     "cue_3": "It's possible something like that occurred.",
     "cue_4": "Details like that tend to get fuzzy.",
     "cue_5": "One hears things. One doesn't confirm them.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC17",
@@ -201,7 +217,8 @@
     "cue_3": "Something might be worked out, quietly.",
     "cue_4": "Consider it noted, generally speaking.",
     "cue_5": "It's not the worst idea we've heard.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC18",
@@ -213,7 +230,8 @@
     "cue_3": "It may or may not be accurate.",
     "cue_4": "One wouldn't want to overstate that.",
     "cue_5": "We'll get back to you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC19",
@@ -225,7 +243,8 @@
     "cue_3": "Tell that to the mothers here!",
     "cue_4": "This is about real lives, not points!",
     "cue_5": "People deserve better than you!",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC20",
@@ -237,7 +256,8 @@
     "cue_3": "My heart belongs to this community!",
     "cue_4": "Who here wants something better? I do!",
     "cue_5": "This is personal. Hard choices matter!",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC21",
@@ -249,7 +269,8 @@
     "cue_3": "Nothing you say can break me!",
     "cue_4": "My people stand behind me!",
     "cue_5": "Hit me as hard as you like!",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC22",
@@ -261,7 +282,8 @@
     "cue_3": "We both know where this ends.",
     "cue_4": "The room can see where you stand.",
     "cue_5": "I say this as a friend: step back.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC23",
@@ -273,7 +295,8 @@
     "cue_3": "We see when support is genuine.",
     "cue_4": "Stand with us, and we'll stand with you.",
     "cue_5": "This room agrees, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC24",
@@ -285,7 +308,8 @@
     "cue_3": "My friends won't let that stand.",
     "cue_4": "Cooler heads, everyone. We're all colleagues.",
     "cue_5": "Surely we can find common ground.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC25",
@@ -297,7 +321,8 @@
     "cue_3": "Can you cite a single source?",
     "cue_4": "The figures don't support you.",
     "cue_5": "What does your plan actually cost?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC26",
@@ -309,7 +334,8 @@
     "cue_3": "Every figure here checks out.",
     "cue_4": "Facts first. Then decide.",
     "cue_5": "Ask anyone to check my math.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC27",
@@ -321,7 +347,8 @@
     "cue_3": "What evidence do you have? None?",
     "cue_4": "The numbers hold up under scrutiny.",
     "cue_5": "Is that an argument or a feeling?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC28",
@@ -333,7 +360,8 @@
     "cue_3": "You don't speak for anyone here.",
     "cue_4": "Real voters see right through you.",
     "cue_5": "You're either with them or with us.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC29",
@@ -345,7 +373,8 @@
     "cue_3": "Anyone with sense stands over here.",
     "cue_4": "They won't fight for you. I will.",
     "cue_5": "This is our fight, not theirs.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC30",
@@ -357,7 +386,8 @@
     "cue_3": "Your crowd doesn't scare mine.",
     "cue_4": "I don't answer to your faction.",
     "cue_5": "Go ahead. Show them who you serve.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC31",
@@ -369,7 +399,8 @@
     "cue_3": "Some might question your judgment...",
     "cue_4": "People are saying things... not me, of course.",
     "cue_5": "Interesting choice... for someone in your position.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC32",
@@ -381,7 +412,8 @@
     "cue_3": "My door is open... for the right people.",
     "cue_4": "Consider it a gesture of goodwill...",
     "cue_5": "Everyone benefits... in a manner of speaking.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC33",
@@ -393,7 +425,8 @@
     "cue_3": "That will be looked into, certainly...",
     "cue_4": "It's being reviewed at the appropriate level.",
     "cue_5": "Let's not get into specifics...",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC34",
@@ -405,7 +438,8 @@
     "cue_3": "Own it, or don't say it.",
     "cue_4": "Give me a straight answer.",
     "cue_5": "Results, not promises. Show me.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC35",
@@ -417,7 +451,8 @@
     "cue_3": "Straight answer. That's rare, and welcome.",
     "cue_4": "No spin needed. That worked.",
     "cue_5": "That's someone I can trust.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC36",
@@ -429,7 +464,8 @@
     "cue_3": "Say what you like. Facts don't move.",
     "cue_4": "I answer for my own work only.",
     "cue_5": "Nothing to hide. Look as long as you want.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC37",
@@ -446,7 +482,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC38",
@@ -463,7 +500,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC39",
@@ -480,7 +518,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC40",
@@ -497,7 +536,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC41",
@@ -514,7 +554,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC42",
@@ -531,7 +572,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC43",
@@ -548,7 +590,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC44",
@@ -565,7 +608,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC45",
@@ -582,7 +626,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC46",
@@ -599,7 +644,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC47",
@@ -616,7 +662,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC48",
@@ -633,7 +680,8 @@
       "ST25",
       "ST26",
       "ST27"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC49",
@@ -650,7 +698,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC50",
@@ -667,7 +716,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC51",
@@ -684,7 +734,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC52",
@@ -701,7 +752,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC53",
@@ -718,7 +770,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC54",
@@ -735,7 +788,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC55",
@@ -752,7 +806,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC56",
@@ -769,7 +824,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC57",
@@ -786,7 +842,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC58",
@@ -803,7 +860,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC59",
@@ -820,7 +878,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC60",
@@ -837,7 +896,8 @@
       "ST29",
       "ST30",
       "ST31"
-    ]
+    ],
+    "bill_ids": null
   },
   {
     "cue_id": "OC61",
@@ -851,7 +911,8 @@
     "cue_3": "Local people were left out.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC62",
@@ -865,7 +926,8 @@
     "cue_3": "Neighbors will thank you for that.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC63",
@@ -879,7 +941,8 @@
     "cue_3": "Bring it to our meeting.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC64",
@@ -893,7 +956,8 @@
     "cue_3": "Our kitchen tables disagree with you.",
     "cue_4": "Think of the people you are failing.",
     "cue_5": "Does that not trouble you?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC65",
@@ -907,7 +971,8 @@
     "cue_3": "A kinder answer than most.",
     "cue_4": "Let me tell you who this affects.",
     "cue_5": "I came here with a heavy heart.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC66",
@@ -921,7 +986,8 @@
     "cue_3": "Not without childcare in the plan.",
     "cue_4": "Careful. Real lives are involved.",
     "cue_5": "I will not apologize for caring.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC67",
@@ -935,7 +1001,8 @@
     "cue_3": "Words are cheap. Tuition is not.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC68",
@@ -949,7 +1016,8 @@
     "cue_3": "Maybe the future has a seat after all.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC69",
@@ -963,7 +1031,8 @@
     "cue_3": "Not without student voices at the table.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC70",
@@ -977,7 +1046,8 @@
     "cue_3": "Speeches do not fix potholes.",
     "cue_4": "That number does not add up.",
     "cue_5": "Check your own data.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC71",
@@ -991,7 +1061,8 @@
     "cue_3": "Good. Plain talk helps.",
     "cue_4": "Every claim here is documented.",
     "cue_5": "The evidence is on my side.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC72",
@@ -1005,7 +1076,8 @@
     "cue_3": "Prove it where we live.",
     "cue_4": "That is not what the data shows.",
     "cue_5": "Source, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC73",
@@ -1019,7 +1091,8 @@
     "cue_3": "Come see how we live.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC74",
@@ -1033,7 +1106,8 @@
     "cue_3": "That is useful to us.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC75",
@@ -1047,7 +1121,8 @@
     "cue_3": "Talk is easy. Results are not.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC76",
@@ -1061,7 +1136,8 @@
     "cue_3": "I have heard this line.",
     "cue_4": "You are with us or against us.",
     "cue_5": "Pick a side. Now.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC77",
@@ -1075,7 +1151,8 @@
     "cue_3": "That sounds like someone who listens.",
     "cue_4": "This is us against them.",
     "cue_5": "Some will hate this. Good.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC78",
@@ -1089,7 +1166,8 @@
     "cue_3": "I will wait and see.",
     "cue_4": "Save the speech for your own side.",
     "cue_5": "That trick will not work on me.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC79",
@@ -1103,7 +1181,8 @@
     "cue_3": "We will remember how you vote.",
     "cue_4": "Check your own data.",
     "cue_5": "The figures say otherwise.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC80",
@@ -1117,7 +1196,8 @@
     "cue_3": "I can believe in that.",
     "cue_4": "The evidence is on my side.",
     "cue_5": "Here are the figures behind it.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC81",
@@ -1131,7 +1211,8 @@
     "cue_3": "I need more than promises.",
     "cue_4": "Source, please.",
     "cue_5": "Your sample is far too small.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC82",
@@ -1145,7 +1226,8 @@
     "cue_3": "Supporters deserve a real reply.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC83",
@@ -1159,7 +1241,8 @@
     "cue_3": "Good. We will say so.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC84",
@@ -1173,7 +1256,8 @@
     "cue_3": "We will not shift without cause.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC85",
@@ -1187,7 +1271,8 @@
     "cue_3": "That sounds like a favor, not policy.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC86",
@@ -1201,7 +1286,8 @@
     "cue_3": "Integrity makes a case stronger.",
     "cue_4": "I came here with a heavy heart.",
     "cue_5": "Listen to the room, not the rules.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC87",
@@ -1215,7 +1301,8 @@
     "cue_3": "Evidence first, opinions second.",
     "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC88",
@@ -1229,7 +1316,8 @@
     "cue_3": "Clean hands, or no vote from me.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC89",
@@ -1243,7 +1331,8 @@
     "cue_3": "Straight talk. I can work with it.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC90",
@@ -1257,7 +1346,8 @@
     "cue_3": "Prove it, and I will listen.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC91",
@@ -1271,7 +1361,8 @@
     "cue_3": "Who benefits? Say it plainly.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC92",
@@ -1285,7 +1376,8 @@
     "cue_3": "Honest answers matter to this committee.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC93",
@@ -1299,7 +1391,8 @@
     "cue_3": "I need the record on that point.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC94",
@@ -1313,7 +1406,8 @@
     "cue_3": "Rules apply to you as well.",
     "cue_4": "Ask anyone who has met you.",
     "cue_5": "Your friends are quiet, are they not?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC95",
@@ -1327,7 +1421,8 @@
     "cue_3": "That is the standard I expect.",
     "cue_4": "The mood is turning my way.",
     "cue_5": "Plenty of people share my view.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC96",
@@ -1341,7 +1436,8 @@
     "cue_3": "Careful. Every word is noted.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC97",
@@ -1355,7 +1451,8 @@
     "cue_3": "That sounds like a favor, not policy.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC98",
@@ -1369,7 +1466,8 @@
     "cue_3": "Integrity makes a case stronger.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC99",
@@ -1383,7 +1481,8 @@
     "cue_3": "Evidence first, opinions second.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC100",
@@ -1397,7 +1496,8 @@
     "cue_3": "Clean hands, or no vote from me.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC101",
@@ -1411,7 +1511,8 @@
     "cue_3": "Straight talk. I can work with it.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC102",
@@ -1425,7 +1526,8 @@
     "cue_3": "Prove it, and I will listen.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC103",
@@ -1439,7 +1541,8 @@
     "cue_3": "Who benefits? Say it plainly.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC104",
@@ -1453,7 +1556,8 @@
     "cue_3": "Honest answers matter to this committee.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC105",
@@ -1467,7 +1571,8 @@
     "cue_3": "I need the record on that point.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC106",
@@ -1481,7 +1586,8 @@
     "cue_3": "Rules apply to you as well.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC107",
@@ -1495,7 +1601,8 @@
     "cue_3": "That is the standard I expect.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC108",
@@ -1509,7 +1616,8 @@
     "cue_3": "Careful. Every word is noted.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC109",
@@ -1523,7 +1631,8 @@
     "cue_3": "That sounds like a favor, not policy.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC110",
@@ -1537,7 +1646,8 @@
     "cue_3": "Integrity makes a case stronger.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC111",
@@ -1551,7 +1661,8 @@
     "cue_3": "Evidence first, opinions second.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC112",
@@ -1565,7 +1676,8 @@
     "cue_3": "Clean hands, or no vote from me.",
     "cue_4": "Funny. That is not what you said in private.",
     "cue_5": "Convenient memory you have.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC113",
@@ -1579,7 +1691,8 @@
     "cue_3": "Straight talk. I can work with it.",
     "cue_4": "Let us call it a misunderstanding.",
     "cue_5": "I could not possibly comment.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC114",
@@ -1593,7 +1706,8 @@
     "cue_3": "Prove it, and I will listen.",
     "cue_4": "You must be mistaken.",
     "cue_5": "An interesting theory. Unproven.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC115",
@@ -1607,7 +1721,8 @@
     "cue_3": "Who benefits? Say it plainly.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC116",
@@ -1621,7 +1736,8 @@
     "cue_3": "Honest answers matter to this committee.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC117",
@@ -1635,7 +1751,8 @@
     "cue_3": "I need the record on that point.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC118",
@@ -1649,7 +1766,8 @@
     "cue_3": "Rules apply to you as well.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC119",
@@ -1663,7 +1781,8 @@
     "cue_3": "That is the standard I expect.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC120",
@@ -1677,7 +1796,8 @@
     "cue_3": "Careful. Every word is noted.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC121",
@@ -1691,7 +1811,8 @@
     "cue_3": "Nature does not negotiate. You do.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC122",
@@ -1705,7 +1826,8 @@
     "cue_3": "Sound ground for a lasting policy.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC123",
@@ -1719,7 +1841,8 @@
     "cue_3": "Protection comes first. Talk second.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC124",
@@ -1733,7 +1856,8 @@
     "cue_3": "Cheap here means costly downstream.",
     "cue_4": "Think of the people you are failing.",
     "cue_5": "Does that not trouble you?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC125",
@@ -1747,7 +1871,8 @@
     "cue_3": "That protects more than a single season.",
     "cue_4": "Let me tell you who this affects.",
     "cue_5": "I came here with a heavy heart.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC126",
@@ -1761,7 +1886,8 @@
     "cue_3": "Not at the expense of the coast.",
     "cue_4": "Careful. Real lives are involved.",
     "cue_5": "I will not apologize for caring.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC127",
@@ -1775,7 +1901,8 @@
     "cue_3": "The land cannot wait for your compromise.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC128",
@@ -1789,7 +1916,8 @@
     "cue_3": "The watershed thanks you for that.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC129",
@@ -1803,7 +1931,8 @@
     "cue_3": "I will not trade away clean water.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC130",
@@ -1817,7 +1946,8 @@
     "cue_3": "Where is the impact study?",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC131",
@@ -1831,7 +1961,8 @@
     "cue_3": "Good. Our forests need allies.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC132",
@@ -1845,7 +1976,8 @@
     "cue_3": "Show me the monitoring plan.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC133",
@@ -1859,7 +1991,8 @@
     "cue_3": "Nature does not negotiate. You do.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC134",
@@ -1873,7 +2006,8 @@
     "cue_3": "Sound ground for a lasting policy.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC135",
@@ -1887,7 +2021,8 @@
     "cue_3": "Protection comes first. Talk second.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC136",
@@ -1901,7 +2036,8 @@
     "cue_3": "Cheap here means costly downstream.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC137",
@@ -1915,7 +2051,8 @@
     "cue_3": "That protects more than a single season.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC138",
@@ -1929,7 +2066,8 @@
     "cue_3": "Not at the expense of the coast.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC139",
@@ -1943,7 +2081,8 @@
     "cue_3": "The land cannot wait for your compromise.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC140",
@@ -1957,7 +2096,8 @@
     "cue_3": "The watershed thanks you for that.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC141",
@@ -1971,7 +2111,8 @@
     "cue_3": "I will not trade away clean water.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC142",
@@ -1985,7 +2126,8 @@
     "cue_3": "Where is the impact study?",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC143",
@@ -1999,7 +2141,8 @@
     "cue_3": "Good. Our forests need allies.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC144",
@@ -2013,7 +2156,8 @@
     "cue_3": "Show me the monitoring plan.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC145",
@@ -2027,7 +2171,8 @@
     "cue_3": "Nature does not negotiate. You do.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC146",
@@ -2041,7 +2186,8 @@
     "cue_3": "Sound ground for a lasting policy.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC147",
@@ -2055,7 +2201,8 @@
     "cue_3": "Protection comes first. Talk second.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC148",
@@ -2069,7 +2216,8 @@
     "cue_3": "Cheap here means costly downstream.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC149",
@@ -2083,7 +2231,8 @@
     "cue_3": "That protects more than a single season.",
     "cue_4": "Look around. Friends are everywhere.",
     "cue_5": "I have good company on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC150",
@@ -2097,7 +2246,8 @@
     "cue_3": "Not at the expense of the coast.",
     "cue_4": "I speak for more than myself.",
     "cue_5": "You are in the minority here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC151",
@@ -2111,7 +2261,8 @@
     "cue_3": "The land cannot wait for your compromise.",
     "cue_4": "Your friends are quiet, are they not?",
     "cue_5": "Everyone here sees through that.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC152",
@@ -2125,7 +2276,8 @@
     "cue_3": "The watershed thanks you for that.",
     "cue_4": "Plenty of people share my view.",
     "cue_5": "Look around. Friends are everywhere.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC153",
@@ -2139,7 +2291,8 @@
     "cue_3": "I will not trade away clean water.",
     "cue_4": "Say that to their faces.",
     "cue_5": "I speak for more than myself.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC154",
@@ -2153,7 +2306,8 @@
     "cue_3": "Where is the impact study?",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC155",
@@ -2167,7 +2321,8 @@
     "cue_3": "Good. Our forests need allies.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC156",
@@ -2181,7 +2336,8 @@
     "cue_3": "Show me the monitoring plan.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC157",
@@ -2195,7 +2351,8 @@
     "cue_3": "Nature does not negotiate. You do.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC158",
@@ -2209,7 +2366,8 @@
     "cue_3": "Sound ground for a lasting policy.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC159",
@@ -2223,7 +2381,8 @@
     "cue_3": "Protection comes first. Talk second.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC160",
@@ -2237,7 +2396,8 @@
     "cue_3": "Strategy needs more than slogans.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC161",
@@ -2251,7 +2411,8 @@
     "cue_3": "That serves those in uniform.",
     "cue_4": "Look around. Friends are everywhere.",
     "cue_5": "I have good company on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC162",
@@ -2265,7 +2426,8 @@
     "cue_3": "No cuts to readiness. None.",
     "cue_4": "I speak for more than myself.",
     "cue_5": "You are in the minority here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC163",
@@ -2279,7 +2441,8 @@
     "cue_3": "Name the threat you are answering.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC164",
@@ -2293,7 +2456,8 @@
     "cue_3": "A firm line, fairly drawn.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC165",
@@ -2307,7 +2471,8 @@
     "cue_3": "Security is not up for trade.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC166",
@@ -2321,7 +2486,8 @@
     "cue_3": "Readiness is not a talking point.",
     "cue_4": "Ask anyone who has met you.",
     "cue_5": "Your friends are quiet, are they not?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC167",
@@ -2335,7 +2501,8 @@
     "cue_3": "Steady resolve. That reassures me.",
     "cue_4": "The mood is turning my way.",
     "cue_5": "Plenty of people share my view.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC168",
@@ -2349,7 +2516,8 @@
     "cue_3": "I will not weaken the guard.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC169",
@@ -2363,7 +2531,8 @@
     "cue_3": "Our defenses are not a debate prize.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC170",
@@ -2377,7 +2546,8 @@
     "cue_3": "Duty well stated. Noted.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC171",
@@ -2391,7 +2561,8 @@
     "cue_3": "Hold position and finish the briefing.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC172",
@@ -2405,7 +2576,8 @@
     "cue_3": "Strategy needs more than slogans.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC173",
@@ -2419,7 +2591,8 @@
     "cue_3": "That serves those in uniform.",
     "cue_4": "Look around. Friends are everywhere.",
     "cue_5": "I have good company on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC174",
@@ -2433,7 +2606,8 @@
     "cue_3": "No cuts to readiness. None.",
     "cue_4": "I speak for more than myself.",
     "cue_5": "You are in the minority here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC175",
@@ -2447,7 +2621,8 @@
     "cue_3": "Name the threat you are answering.",
     "cue_4": "Your friends are quiet, are they not?",
     "cue_5": "Everyone here sees through that.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC176",
@@ -2461,7 +2636,8 @@
     "cue_3": "A firm line, fairly drawn.",
     "cue_4": "Plenty of people share my view.",
     "cue_5": "Look around. Friends are everywhere.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC177",
@@ -2475,7 +2651,8 @@
     "cue_3": "Security is not up for trade.",
     "cue_4": "Say that to their faces.",
     "cue_5": "I speak for more than myself.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC178",
@@ -2489,7 +2666,8 @@
     "cue_3": "Readiness is not a talking point.",
     "cue_4": "Ask anyone who has met you.",
     "cue_5": "Your friends are quiet, are they not?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC179",
@@ -2503,7 +2681,8 @@
     "cue_3": "Steady resolve. That reassures me.",
     "cue_4": "The mood is turning my way.",
     "cue_5": "Plenty of people share my view.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC180",
@@ -2517,7 +2696,8 @@
     "cue_3": "I will not weaken the guard.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC181",
@@ -2531,7 +2711,8 @@
     "cue_3": "Our defenses are not a debate prize.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC182",
@@ -2545,7 +2726,8 @@
     "cue_3": "Duty well stated. Noted.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC183",
@@ -2559,7 +2741,8 @@
     "cue_3": "Hold position and finish the briefing.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC184",
@@ -2573,7 +2756,8 @@
     "cue_3": "Floor rules exist for a reason.",
     "cue_4": "Think of the people you are failing.",
     "cue_5": "Does that not trouble you?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC185",
@@ -2587,7 +2771,8 @@
     "cue_3": "Order and fairness together. Good.",
     "cue_4": "Let me tell you who this affects.",
     "cue_5": "I came here with a heavy heart.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC186",
@@ -2601,7 +2786,8 @@
     "cue_3": "I hold the line on procedure.",
     "cue_4": "Careful. Real lives are involved.",
     "cue_5": "I will not apologize for caring.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC187",
@@ -2615,7 +2801,8 @@
     "cue_3": "Count the seats, not the applause.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC188",
@@ -2629,7 +2816,8 @@
     "cue_3": "Members will remember that courtesy.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC189",
@@ -2643,7 +2831,8 @@
     "cue_3": "Not by a shortcut through the chamber.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC190",
@@ -2657,7 +2846,8 @@
     "cue_3": "The chamber deserves better than this.",
     "cue_4": "Ask anyone who has met you.",
     "cue_5": "Your friends are quiet, are they not?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC191",
@@ -2671,7 +2861,8 @@
     "cue_3": "Respect for the chamber. Welcome.",
     "cue_4": "The mood is turning my way.",
     "cue_5": "Plenty of people share my view.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC192",
@@ -2685,7 +2876,8 @@
     "cue_3": "The floor schedule will not bend.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC193",
@@ -2699,7 +2891,8 @@
     "cue_3": "That breaks with how we legislate.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC194",
@@ -2713,7 +2906,8 @@
     "cue_3": "That is how a bill earns votes.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC195",
@@ -2727,7 +2921,8 @@
     "cue_3": "Amend it properly and we vote.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC196",
@@ -2741,7 +2936,8 @@
     "cue_3": "Floor rules exist for a reason.",
     "cue_4": "Think of the people you are failing.",
     "cue_5": "Does that not trouble you?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC197",
@@ -2755,7 +2951,8 @@
     "cue_3": "Order and fairness together. Good.",
     "cue_4": "Let me tell you who this affects.",
     "cue_5": "I came here with a heavy heart.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC198",
@@ -2769,7 +2966,8 @@
     "cue_3": "I hold the line on procedure.",
     "cue_4": "Careful. Real lives are involved.",
     "cue_5": "I will not apologize for caring.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC199",
@@ -2783,7 +2981,8 @@
     "cue_3": "Count the seats, not the applause.",
     "cue_4": "Whose side are you really on?",
     "cue_5": "Funny. That is not what you said in private.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC200",
@@ -2797,7 +2996,8 @@
     "cue_3": "Members will remember that courtesy.",
     "cue_4": "There is more to this than meets the eye.",
     "cue_5": "Let us call it a misunderstanding.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC201",
@@ -2811,7 +3011,8 @@
     "cue_3": "Not by a shortcut through the chamber.",
     "cue_4": "That was taken out of context.",
     "cue_5": "You must be mistaken.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC202",
@@ -2825,7 +3026,8 @@
     "cue_3": "The chamber deserves better than this.",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC203",
@@ -2839,7 +3041,8 @@
     "cue_3": "Respect for the chamber. Welcome.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC204",
@@ -2853,7 +3056,8 @@
     "cue_3": "The floor schedule will not bend.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC205",
@@ -2867,7 +3071,8 @@
     "cue_3": "That breaks with how we legislate.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC206",
@@ -2881,7 +3086,8 @@
     "cue_3": "That is how a bill earns votes.",
     "cue_4": "I came here with a heavy heart.",
     "cue_5": "Listen to the room, not the rules.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC207",
@@ -2895,7 +3101,8 @@
     "cue_3": "Amend it properly and we vote.",
     "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC208",
@@ -2909,7 +3116,8 @@
     "cue_3": "Floor rules exist for a reason.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC209",
@@ -2923,7 +3131,8 @@
     "cue_3": "Order and fairness together. Good.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC210",
@@ -2937,7 +3146,8 @@
     "cue_3": "I hold the line on procedure.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC211",
@@ -2951,7 +3161,8 @@
     "cue_3": "Count the seats, not the applause.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC212",
@@ -2965,7 +3176,8 @@
     "cue_3": "Members will remember that courtesy.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC213",
@@ -2979,7 +3191,8 @@
     "cue_3": "Not by a shortcut through the chamber.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC214",
@@ -2993,7 +3206,8 @@
     "cue_3": "Visit a farm and decide fairly.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC215",
@@ -3007,7 +3221,8 @@
     "cue_3": "Good. Our growers need it.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC216",
@@ -3021,7 +3236,8 @@
     "cue_3": "I have watched this plan fail elsewhere.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC217",
@@ -3035,7 +3251,8 @@
     "cue_3": "The fields feel every cut you make.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC218",
@@ -3049,7 +3266,8 @@
     "cue_3": "That helps the next harvest.",
     "cue_4": "I came here with a heavy heart.",
     "cue_5": "Listen to the room, not the rules.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC219",
@@ -3063,7 +3281,8 @@
     "cue_3": "The land will not forgive carelessness.",
     "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC220",
@@ -3077,7 +3296,8 @@
     "cue_3": "Farmers cannot eat your promises.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC221",
@@ -3091,7 +3311,8 @@
     "cue_3": "Honest work deserves honest support.",
     "cue_4": "Look around. Friends are everywhere.",
     "cue_5": "I have good company on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC222",
@@ -3105,7 +3326,8 @@
     "cue_3": "Not while the co-ops are left out.",
     "cue_4": "I speak for more than myself.",
     "cue_5": "You are in the minority here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC223",
@@ -3119,7 +3341,8 @@
     "cue_3": "Rice prices are no joke.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC224",
@@ -3133,7 +3356,8 @@
     "cue_3": "The countryside hears that and nods.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC225",
@@ -3147,7 +3371,8 @@
     "cue_3": "Show the numbers to the farmers.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC226",
@@ -3161,7 +3386,8 @@
     "cue_3": "Visit a farm and decide fairly.",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC227",
@@ -3175,7 +3401,8 @@
     "cue_3": "Good. Our growers need it.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC228",
@@ -3189,7 +3416,8 @@
     "cue_3": "I have watched this plan fail elsewhere.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC229",
@@ -3203,7 +3431,8 @@
     "cue_3": "The fields feel every cut you make.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC230",
@@ -3217,7 +3446,8 @@
     "cue_3": "That helps the next harvest.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC231",
@@ -3231,7 +3461,8 @@
     "cue_3": "The land will not forgive carelessness.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC232",
@@ -3245,7 +3476,8 @@
     "cue_3": "Farmers cannot eat your promises.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC233",
@@ -3259,7 +3491,8 @@
     "cue_3": "Honest work deserves honest support.",
     "cue_4": "Look around. Friends are everywhere.",
     "cue_5": "I have good company on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC234",
@@ -3273,7 +3506,8 @@
     "cue_3": "Not while the co-ops are left out.",
     "cue_4": "I speak for more than myself.",
     "cue_5": "You are in the minority here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC235",
@@ -3287,7 +3521,8 @@
     "cue_3": "Rice prices are no joke.",
     "cue_4": "Your friends are quiet, are they not?",
     "cue_5": "Everyone here sees through that.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC236",
@@ -3301,7 +3536,8 @@
     "cue_3": "The countryside hears that and nods.",
     "cue_4": "Plenty of people share my view.",
     "cue_5": "Look around. Friends are everywhere.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC237",
@@ -3315,7 +3551,8 @@
     "cue_3": "Show the numbers to the farmers.",
     "cue_4": "Say that to their faces.",
     "cue_5": "I speak for more than myself.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC238",
@@ -3329,7 +3566,8 @@
     "cue_3": "Visit a farm and decide fairly.",
     "cue_4": "Ask anyone who has met you.",
     "cue_5": "Your friends are quiet, are they not?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC239",
@@ -3343,7 +3581,8 @@
     "cue_3": "Good. Our growers need it.",
     "cue_4": "The mood is turning my way.",
     "cue_5": "Plenty of people share my view.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC240",
@@ -3357,7 +3596,8 @@
     "cue_3": "I have watched this plan fail elsewhere.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC241",
@@ -3371,7 +3611,8 @@
     "cue_3": "The fields feel every cut you make.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC242",
@@ -3385,7 +3626,8 @@
     "cue_3": "That helps the next harvest.",
     "cue_4": "I came here with a heavy heart.",
     "cue_5": "Listen to the room, not the rules.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC243",
@@ -3399,7 +3641,8 @@
     "cue_3": "The land will not forgive carelessness.",
     "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC244",
@@ -3413,7 +3656,8 @@
     "cue_3": "Farmers cannot eat your promises.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC245",
@@ -3427,7 +3671,8 @@
     "cue_3": "Honest work deserves honest support.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC246",
@@ -3441,7 +3686,8 @@
     "cue_3": "Not while the co-ops are left out.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC247",
@@ -3455,7 +3701,8 @@
     "cue_3": "Diplomacy is not a slogan.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC248",
@@ -3469,7 +3716,8 @@
     "cue_3": "A calm line serves Yezo well.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC249",
@@ -3483,7 +3731,8 @@
     "cue_3": "Careful. The wrong phrase echoes abroad.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC250",
@@ -3497,7 +3746,8 @@
     "cue_3": "Allies expect more than speeches.",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC251",
@@ -3511,7 +3761,8 @@
     "cue_3": "Good. Our standing needs this.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC252",
@@ -3525,7 +3776,8 @@
     "cue_3": "No commitments without allied consent.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC253",
@@ -3539,7 +3791,8 @@
     "cue_3": "Our neighbors are reading every word.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC254",
@@ -3553,7 +3806,8 @@
     "cue_3": "Steady words build trust abroad.",
     "cue_4": "I came here with a heavy heart.",
     "cue_5": "Listen to the room, not the rules.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC255",
@@ -3567,7 +3821,8 @@
     "cue_3": "I will not hand rivals an opening.",
     "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC256",
@@ -3581,7 +3836,8 @@
     "cue_3": "This weakens us abroad. Explain.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC257",
@@ -3595,7 +3851,8 @@
     "cue_3": "That is how partners are kept.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC258",
@@ -3609,7 +3866,8 @@
     "cue_3": "Let the envoys weigh in first.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC259",
@@ -3623,7 +3881,8 @@
     "cue_3": "Diplomacy is not a slogan.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC260",
@@ -3637,7 +3896,8 @@
     "cue_3": "A calm line serves Yezo well.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC261",
@@ -3651,7 +3911,8 @@
     "cue_3": "Careful. The wrong phrase echoes abroad.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC262",
@@ -3665,7 +3926,8 @@
     "cue_3": "Allies expect more than speeches.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC263",
@@ -3679,7 +3941,8 @@
     "cue_3": "Good. Our standing needs this.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC264",
@@ -3693,7 +3956,8 @@
     "cue_3": "No commitments without allied consent.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC265",
@@ -3707,7 +3971,8 @@
     "cue_3": "Our neighbors are reading every word.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC266",
@@ -3721,7 +3986,8 @@
     "cue_3": "Steady words build trust abroad.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC267",
@@ -3735,7 +4001,8 @@
     "cue_3": "I will not hand rivals an opening.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC268",
@@ -3749,7 +4016,8 @@
     "cue_3": "This weakens us abroad. Explain.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC269",
@@ -3763,7 +4031,8 @@
     "cue_3": "That is how partners are kept.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC270",
@@ -3777,7 +4046,8 @@
     "cue_3": "Let the envoys weigh in first.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC271",
@@ -3791,7 +4061,8 @@
     "cue_3": "Diplomacy is not a slogan.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC272",
@@ -3805,7 +4076,8 @@
     "cue_3": "A calm line serves Yezo well.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC273",
@@ -3819,7 +4091,8 @@
     "cue_3": "Careful. The wrong phrase echoes abroad.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC274",
@@ -3833,7 +4106,8 @@
     "cue_3": "Allies expect more than speeches.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC275",
@@ -3847,7 +4121,8 @@
     "cue_3": "Good. Our standing needs this.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC276",
@@ -3861,7 +4136,8 @@
     "cue_3": "No commitments without allied consent.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC277",
@@ -3875,7 +4151,8 @@
     "cue_3": "Our neighbors are reading every word.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC278",
@@ -3889,7 +4166,8 @@
     "cue_3": "Steady words build trust abroad.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC279",
@@ -3903,7 +4181,8 @@
     "cue_3": "I will not hand rivals an opening.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC280",
@@ -3917,7 +4196,8 @@
     "cue_3": "This weakens us abroad. Explain.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC281",
@@ -3931,7 +4211,8 @@
     "cue_3": "That is how partners are kept.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC282",
@@ -3945,7 +4226,8 @@
     "cue_3": "Let the envoys weigh in first.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC283",
@@ -3959,7 +4241,8 @@
     "cue_3": "Delays cost towns their future.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC284",
@@ -3973,7 +4256,8 @@
     "cue_3": "Towns will see the difference.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC285",
@@ -3987,7 +4271,8 @@
     "cue_3": "Safety codes are not optional.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC286",
@@ -4001,7 +4286,8 @@
     "cue_3": "Your plan has no foundation.",
     "cue_4": "Ask anyone who has met you.",
     "cue_5": "Your friends are quiet, are they not?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC287",
@@ -4015,7 +4301,8 @@
     "cue_3": "Solid planning. I approve.",
     "cue_4": "The mood is turning my way.",
     "cue_5": "Plenty of people share my view.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC288",
@@ -4029,7 +4316,8 @@
     "cue_3": "Show me the schedule first.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC289",
@@ -4043,7 +4331,8 @@
     "cue_3": "Roads do not build themselves.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC290",
@@ -4057,7 +4346,8 @@
     "cue_3": "Good. Projects that last.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC291",
@@ -4071,7 +4361,8 @@
     "cue_3": "Not without a complete survey.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC292",
@@ -4085,7 +4376,8 @@
     "cue_3": "Where is the budget for the work?",
     "cue_4": "Think of the people you are failing.",
     "cue_5": "Does that not trouble you?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC293",
@@ -4099,7 +4391,8 @@
     "cue_3": "That builds something real.",
     "cue_4": "Let me tell you who this affects.",
     "cue_5": "I came here with a heavy heart.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC294",
@@ -4113,7 +4406,8 @@
     "cue_3": "I need the contractor figures.",
     "cue_4": "Careful. Real lives are involved.",
     "cue_5": "I will not apologize for caring.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC295",
@@ -4127,7 +4421,8 @@
     "cue_3": "Delays cost towns their future.",
     "cue_4": "Your friends are quiet, are they not?",
     "cue_5": "Everyone here sees through that.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC296",
@@ -4141,7 +4436,8 @@
     "cue_3": "Towns will see the difference.",
     "cue_4": "Plenty of people share my view.",
     "cue_5": "Look around. Friends are everywhere.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC297",
@@ -4155,7 +4451,8 @@
     "cue_3": "Safety codes are not optional.",
     "cue_4": "Say that to their faces.",
     "cue_5": "I speak for more than myself.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC298",
@@ -4169,7 +4466,8 @@
     "cue_3": "Your plan has no foundation.",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC299",
@@ -4183,7 +4481,8 @@
     "cue_3": "Solid planning. I approve.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC300",
@@ -4197,7 +4496,8 @@
     "cue_3": "Show me the schedule first.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC301",
@@ -4211,7 +4511,8 @@
     "cue_3": "Roads do not build themselves.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC302",
@@ -4225,7 +4526,8 @@
     "cue_3": "Good. Projects that last.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC303",
@@ -4239,7 +4541,8 @@
     "cue_3": "Not without a complete survey.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC304",
@@ -4253,7 +4556,8 @@
     "cue_3": "Spending without sources is fantasy.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC305",
@@ -4267,7 +4571,8 @@
     "cue_3": "A balanced case. Well done.",
     "cue_4": "Look around. Friends are everywhere.",
     "cue_5": "I have good company on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC306",
@@ -4281,7 +4586,8 @@
     "cue_3": "Show me the revenue line.",
     "cue_4": "I speak for more than myself.",
     "cue_5": "You are in the minority here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC307",
@@ -4295,7 +4601,8 @@
     "cue_3": "Your cost estimate is a guess.",
     "cue_4": "Your friends are quiet, are they not?",
     "cue_5": "Everyone here sees through that.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC308",
@@ -4309,7 +4616,8 @@
     "cue_3": "That is fiscal sense.",
     "cue_4": "Plenty of people share my view.",
     "cue_5": "Look around. Friends are everywhere.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC309",
@@ -4323,7 +4631,8 @@
     "cue_3": "No blank checks from this seat.",
     "cue_4": "Say that to their faces.",
     "cue_5": "I speak for more than myself.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC310",
@@ -4337,7 +4646,8 @@
     "cue_3": "The ledger does not add up.",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC311",
@@ -4351,7 +4661,8 @@
     "cue_3": "Sound figures. That I respect.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC312",
@@ -4365,7 +4676,8 @@
     "cue_3": "Hold the spending; cost it properly.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC313",
@@ -4379,7 +4691,8 @@
     "cue_3": "Who pays? Give me a number.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC314",
@@ -4393,7 +4706,8 @@
     "cue_3": "The books agree with you there.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC315",
@@ -4407,7 +4721,8 @@
     "cue_3": "I want the audit first.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC316",
@@ -4421,7 +4736,8 @@
     "cue_3": "Spending without sources is fantasy.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC317",
@@ -4435,7 +4751,8 @@
     "cue_3": "A balanced case. Well done.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC318",
@@ -4449,7 +4766,8 @@
     "cue_3": "Show me the revenue line.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC319",
@@ -4463,7 +4781,8 @@
     "cue_3": "Your cost estimate is a guess.",
     "cue_4": "Your friends are quiet, are they not?",
     "cue_5": "Everyone here sees through that.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC320",
@@ -4477,7 +4796,8 @@
     "cue_3": "That is fiscal sense.",
     "cue_4": "Plenty of people share my view.",
     "cue_5": "Look around. Friends are everywhere.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC321",
@@ -4491,7 +4811,8 @@
     "cue_3": "No blank checks from this seat.",
     "cue_4": "Say that to their faces.",
     "cue_5": "I speak for more than myself.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC322",
@@ -4505,7 +4826,8 @@
     "cue_3": "The ledger does not add up.",
     "cue_4": "Ask anyone who has met you.",
     "cue_5": "Your friends are quiet, are they not?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC323",
@@ -4519,7 +4841,8 @@
     "cue_3": "Sound figures. That I respect.",
     "cue_4": "The mood is turning my way.",
     "cue_5": "Plenty of people share my view.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC324",
@@ -4533,7 +4856,8 @@
     "cue_3": "Hold the spending; cost it properly.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC325",
@@ -4547,7 +4871,8 @@
     "cue_3": "Who pays? Give me a number.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC326",
@@ -4561,7 +4886,8 @@
     "cue_3": "The books agree with you there.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC327",
@@ -4575,7 +4901,8 @@
     "cue_3": "I want the audit first.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC328",
@@ -4589,7 +4916,8 @@
     "cue_3": "Spending without sources is fantasy.",
     "cue_4": "The figures say otherwise.",
     "cue_5": "Show me your source for that.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC329",
@@ -4603,7 +4931,8 @@
     "cue_3": "A balanced case. Well done.",
     "cue_4": "Here are the figures behind it.",
     "cue_5": "Run the numbers. They agree.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC330",
@@ -4617,7 +4946,8 @@
     "cue_3": "Show me the revenue line.",
     "cue_4": "Your sample is far too small.",
     "cue_5": "Facts do not bend, I am afraid.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC331",
@@ -4631,7 +4961,8 @@
     "cue_3": "Efficiency is the test. You fail it.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC332",
@@ -4645,7 +4976,8 @@
     "cue_3": "That is administration done properly.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC333",
@@ -4659,7 +4991,8 @@
     "cue_3": "Proper channels exist for a reason.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC334",
@@ -4673,7 +5006,8 @@
     "cue_3": "Show me the staffing plan first.",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC335",
@@ -4687,7 +5021,8 @@
     "cue_3": "Fair process earns my respect.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC336",
@@ -4701,7 +5036,8 @@
     "cue_3": "Not without a written standard.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC337",
@@ -4715,7 +5051,8 @@
     "cue_3": "Your plan adds paperwork, not service.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC338",
@@ -4729,7 +5066,8 @@
     "cue_3": "Clear rules help everyone here.",
     "cue_4": "I came here with a heavy heart.",
     "cue_5": "Listen to the room, not the rules.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC339",
@@ -4743,7 +5081,8 @@
     "cue_3": "Procedure protects us both. Keep to it.",
     "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC340",
@@ -4757,7 +5096,8 @@
     "cue_3": "Which office will run this? Name it.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC341",
@@ -4771,7 +5111,8 @@
     "cue_3": "Good. Orderly offices serve the public.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC342",
@@ -4785,7 +5126,8 @@
     "cue_3": "I will wait for the full report.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC343",
@@ -4799,7 +5141,8 @@
     "cue_3": "Efficiency is the test. You fail it.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC344",
@@ -4813,7 +5156,8 @@
     "cue_3": "That is administration done properly.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC345",
@@ -4827,7 +5171,8 @@
     "cue_3": "Proper channels exist for a reason.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC346",
@@ -4841,7 +5186,8 @@
     "cue_3": "Show me the staffing plan first.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC347",
@@ -4855,7 +5201,8 @@
     "cue_3": "Fair process earns my respect.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC348",
@@ -4869,7 +5216,8 @@
     "cue_3": "Not without a written standard.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC349",
@@ -4883,7 +5231,8 @@
     "cue_3": "Your plan adds paperwork, not service.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC350",
@@ -4897,7 +5246,8 @@
     "cue_3": "Clear rules help everyone here.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC351",
@@ -4911,7 +5261,8 @@
     "cue_3": "Procedure protects us both. Keep to it.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC352",
@@ -4925,7 +5276,8 @@
     "cue_3": "Which office will run this? Name it.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC353",
@@ -4939,7 +5291,8 @@
     "cue_3": "Good. Orderly offices serve the public.",
     "cue_4": "Look around. Friends are everywhere.",
     "cue_5": "I have good company on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC354",
@@ -4953,7 +5306,8 @@
     "cue_3": "I will wait for the full report.",
     "cue_4": "I speak for more than myself.",
     "cue_5": "You are in the minority here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC355",
@@ -4967,7 +5321,8 @@
     "cue_3": "Efficiency is the test. You fail it.",
     "cue_4": "Whose side are you really on?",
     "cue_5": "Funny. That is not what you said in private.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC356",
@@ -4981,7 +5336,8 @@
     "cue_3": "That is administration done properly.",
     "cue_4": "There is more to this than meets the eye.",
     "cue_5": "Let us call it a misunderstanding.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC357",
@@ -4995,7 +5351,8 @@
     "cue_3": "Proper channels exist for a reason.",
     "cue_4": "That was taken out of context.",
     "cue_5": "You must be mistaken.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC358",
@@ -5009,7 +5366,8 @@
     "cue_3": "Show me the staffing plan first.",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC359",
@@ -5023,7 +5381,8 @@
     "cue_3": "Fair process earns my respect.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC360",
@@ -5037,7 +5396,8 @@
     "cue_3": "Not without a written standard.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC361",
@@ -5051,7 +5411,8 @@
     "cue_3": "Your plan adds paperwork, not service.",
     "cue_4": "The room is not with you.",
     "cue_5": "Ask anyone who has met you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC362",
@@ -5065,7 +5426,8 @@
     "cue_3": "Clear rules help everyone here.",
     "cue_4": "I have good company on this.",
     "cue_5": "The mood is turning my way.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC363",
@@ -5079,7 +5441,8 @@
     "cue_3": "Procedure protects us both. Keep to it.",
     "cue_4": "You are in the minority here.",
     "cue_5": "That will not play well with this crowd.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC364",
@@ -5093,7 +5456,8 @@
     "cue_3": "Which office will run this? Name it.",
     "cue_4": "Say it honestly or not at all.",
     "cue_5": "I expected better from you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC365",
@@ -5107,7 +5471,8 @@
     "cue_3": "Good. Orderly offices serve the public.",
     "cue_4": "Hold me to what I say.",
     "cue_5": "Honesty has worked for me so far.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC366",
@@ -5121,7 +5486,8 @@
     "cue_3": "I will wait for the full report.",
     "cue_4": "That claim does not hold.",
     "cue_5": "Try a fairer question.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC367",
@@ -5135,7 +5501,8 @@
     "cue_3": "Efficiency is the test. You fail it.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC368",
@@ -5149,7 +5516,8 @@
     "cue_3": "That is administration done properly.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC369",
@@ -5163,7 +5531,8 @@
     "cue_3": "Proper channels exist for a reason.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC370",
@@ -5177,7 +5546,8 @@
     "cue_3": "Show me the staffing plan first.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC371",
@@ -5191,7 +5561,8 @@
     "cue_3": "Fair process earns my respect.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC372",
@@ -5205,7 +5576,8 @@
     "cue_3": "Not without a written standard.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC373",
@@ -5219,7 +5591,8 @@
     "cue_3": "Mind the limits of your office.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC374",
@@ -5233,7 +5606,8 @@
     "cue_3": "Measured and fair. Good.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC375",
@@ -5247,7 +5621,8 @@
     "cue_3": "No commitments from this room.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC376",
@@ -5261,7 +5636,8 @@
     "cue_3": "Care to explain that to the public?",
     "cue_4": "You are with us or against us.",
     "cue_5": "Pick a side. Now.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC377",
@@ -5275,7 +5651,8 @@
     "cue_3": "The public will like that answer.",
     "cue_4": "This is us against them.",
     "cue_5": "Some will hate this. Good.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC378",
@@ -5289,7 +5666,8 @@
     "cue_3": "Off the record, you hedged.",
     "cue_4": "Save the speech for your own side.",
     "cue_5": "That trick will not work on me.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC379",
@@ -5303,7 +5681,8 @@
     "cue_3": "I will quote you on that.",
     "cue_4": "Check your own data.",
     "cue_5": "The figures say otherwise.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC380",
@@ -5317,7 +5696,8 @@
     "cue_3": "That reads well in print.",
     "cue_4": "The evidence is on my side.",
     "cue_5": "Here are the figures behind it.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC381",
@@ -5331,7 +5711,8 @@
     "cue_3": "We will see what the facts say.",
     "cue_4": "Source, please.",
     "cue_5": "Your sample is far too small.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC382",
@@ -5345,7 +5726,8 @@
     "cue_3": "That answer dodges the question.",
     "cue_4": "I would not trust that smile.",
     "cue_5": "Whose side are you really on?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC383",
@@ -5359,7 +5741,8 @@
     "cue_3": "That is a headline.",
     "cue_4": "Everyone wins if you read it my way.",
     "cue_5": "There is more to this than meets the eye.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC384",
@@ -5373,7 +5756,8 @@
     "cue_3": "No comment is also a comment.",
     "cue_4": "I have no idea what you mean.",
     "cue_5": "That was taken out of context.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC385",
@@ -5387,7 +5771,8 @@
     "cue_3": "Our readers expect a straight reply.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC386",
@@ -5401,7 +5786,8 @@
     "cue_3": "Clear and quotable. Thank you.",
     "cue_4": "I came here with a heavy heart.",
     "cue_5": "Listen to the room, not the rules.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC387",
@@ -5415,7 +5801,8 @@
     "cue_3": "I will follow up on that.",
     "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC388",
@@ -5429,7 +5816,8 @@
     "cue_3": "Care to explain that to the public?",
     "cue_4": "You are with us or against us.",
     "cue_5": "Pick a side. Now.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC389",
@@ -5443,7 +5831,8 @@
     "cue_3": "The public will like that answer.",
     "cue_4": "This is us against them.",
     "cue_5": "Some will hate this. Good.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC390",
@@ -5457,7 +5846,8 @@
     "cue_3": "Off the record, you hedged.",
     "cue_4": "Save the speech for your own side.",
     "cue_5": "That trick will not work on me.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC391",
@@ -5471,7 +5861,8 @@
     "cue_3": "I will quote you on that.",
     "cue_4": "Whose side are you really on?",
     "cue_5": "Funny. That is not what you said in private.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC392",
@@ -5485,7 +5876,8 @@
     "cue_3": "That reads well in print.",
     "cue_4": "There is more to this than meets the eye.",
     "cue_5": "Let us call it a misunderstanding.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC393",
@@ -5499,7 +5891,8 @@
     "cue_3": "We will see what the facts say.",
     "cue_4": "That was taken out of context.",
     "cue_5": "You must be mistaken.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC394",
@@ -5513,7 +5906,8 @@
     "cue_3": "That answer dodges the question.",
     "cue_4": "That number does not add up.",
     "cue_5": "Check your own data.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC395",
@@ -5527,7 +5921,8 @@
     "cue_3": "That is a headline.",
     "cue_4": "Every claim here is documented.",
     "cue_5": "The evidence is on my side.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC396",
@@ -5541,7 +5936,8 @@
     "cue_3": "No comment is also a comment.",
     "cue_4": "That is not what the data shows.",
     "cue_5": "Source, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC397",
@@ -5555,7 +5951,8 @@
     "cue_3": "Our readers expect a straight reply.",
     "cue_4": "Does that not trouble you?",
     "cue_5": "Real families pay for your choices.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC398",
@@ -5569,7 +5966,8 @@
     "cue_3": "Clear and quotable. Thank you.",
     "cue_4": "I came here with a heavy heart.",
     "cue_5": "Listen to the room, not the rules.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC399",
@@ -5583,7 +5981,8 @@
     "cue_3": "I will follow up on that.",
     "cue_4": "I will not apologize for caring.",
     "cue_5": "Do not turn this into a numbers game.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC400",
@@ -5597,7 +5996,8 @@
     "cue_3": "Red tape strangles small firms.",
     "cue_4": "The figures say otherwise.",
     "cue_5": "Show me your source for that.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC401",
@@ -5611,7 +6011,8 @@
     "cue_3": "That invites investment.",
     "cue_4": "Here are the figures behind it.",
     "cue_5": "Run the numbers. They agree.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC402",
@@ -5625,7 +6026,8 @@
     "cue_3": "Show the impact on employers.",
     "cue_4": "Your sample is far too small.",
     "cue_5": "Facts do not bend, I am afraid.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC403",
@@ -5639,7 +6041,8 @@
     "cue_3": "Ask the shop floor, not the boardroom.",
     "cue_4": "Where is your heart in this?",
     "cue_5": "Think of the people you are failing.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC404",
@@ -5653,7 +6056,8 @@
     "cue_3": "Good for those who do the work.",
     "cue_4": "People feel this, and so do I.",
     "cue_5": "Let me tell you who this affects.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC405",
@@ -5667,7 +6071,8 @@
     "cue_3": "Put safety in writing first.",
     "cue_4": "You are missing the point entirely.",
     "cue_5": "Careful. Real lives are involved.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC406",
@@ -5681,7 +6086,8 @@
     "cue_3": "Fields need help, not lectures.",
     "cue_4": "Look me in the eye and answer.",
     "cue_5": "Plain truth, please.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC407",
@@ -5695,7 +6101,8 @@
     "cue_3": "A fair price makes good neighbors.",
     "cue_4": "My word is good here.",
     "cue_5": "I mean every word of this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC408",
@@ -5709,7 +6116,8 @@
     "cue_3": "Not without the growers heard.",
     "cue_4": "You will not get past honesty.",
     "cue_5": "I will not bend on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC409",
@@ -5723,7 +6131,8 @@
     "cue_3": "Harbor families bear this cost.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC410",
@@ -5737,7 +6146,8 @@
     "cue_3": "Boats will sail easier on that.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC411",
@@ -5751,7 +6161,8 @@
     "cue_3": "Keep the harbor working.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC412",
@@ -5765,7 +6176,8 @@
     "cue_3": "Mayors were not asked.",
     "cue_4": "Everyone here sees through that.",
     "cue_5": "The room is not with you.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC413",
@@ -5779,7 +6191,8 @@
     "cue_3": "Good. Local leaders will cooperate.",
     "cue_4": "Look around. Friends are everywhere.",
     "cue_5": "I have good company on this.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC414",
@@ -5793,7 +6206,8 @@
     "cue_3": "We want it in writing.",
     "cue_4": "I speak for more than myself.",
     "cue_5": "You are in the minority here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC415",
@@ -5807,7 +6221,8 @@
     "cue_3": "Meetings count. You skipped ours.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC416",
@@ -5821,7 +6236,8 @@
     "cue_3": "Community first. Well said.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC417",
@@ -5835,7 +6251,8 @@
     "cue_3": "Slow down and consult us.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC418",
@@ -5849,7 +6266,8 @@
     "cue_3": "My generation is paying for this.",
     "cue_4": "Real families pay for your choices.",
     "cue_5": "Where is your heart in this?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC419",
@@ -5863,7 +6281,8 @@
     "cue_3": "Someone who listens. Good.",
     "cue_4": "Listen to the room, not the rules.",
     "cue_5": "People feel this, and so do I.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC420",
@@ -5877,7 +6296,8 @@
     "cue_3": "Show us the plan, not a poster.",
     "cue_4": "Do not turn this into a numbers game.",
     "cue_5": "You are missing the point entirely.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC421",
@@ -5891,7 +6311,8 @@
     "cue_3": "Respect what the community keeps.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC422",
@@ -5905,7 +6326,8 @@
     "cue_3": "Good. Heritage deserves care.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC423",
@@ -5919,7 +6341,8 @@
     "cue_3": "Elders must be consulted first.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC424",
@@ -5933,7 +6356,8 @@
     "cue_3": "Where is the budget for the work?",
     "cue_4": "Think of the people you are failing.",
     "cue_5": "Does that not trouble you?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC425",
@@ -5947,7 +6371,8 @@
     "cue_3": "That builds something real.",
     "cue_4": "Let me tell you who this affects.",
     "cue_5": "I came here with a heavy heart.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC426",
@@ -5961,7 +6386,8 @@
     "cue_3": "I need the contractor figures.",
     "cue_4": "Careful. Real lives are involved.",
     "cue_5": "I will not apologize for caring.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC427",
@@ -5975,7 +6401,8 @@
     "cue_3": "Diplomacy is not a slogan.",
     "cue_4": "Plain truth, please.",
     "cue_5": "Say it honestly or not at all.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC428",
@@ -5989,7 +6416,8 @@
     "cue_3": "A calm line serves Yezo well.",
     "cue_4": "I mean every word of this.",
     "cue_5": "Hold me to what I say.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC429",
@@ -6003,7 +6431,8 @@
     "cue_3": "Careful. The wrong phrase echoes abroad.",
     "cue_4": "I will not bend on this.",
     "cue_5": "That claim does not hold.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC430",
@@ -6017,7 +6446,8 @@
     "cue_3": "The chamber deserves better than this.",
     "cue_4": "Ask anyone who has met you.",
     "cue_5": "Your friends are quiet, are they not?",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC431",
@@ -6031,7 +6461,8 @@
     "cue_3": "Respect for the chamber. Welcome.",
     "cue_4": "The mood is turning my way.",
     "cue_5": "Plenty of people share my view.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC432",
@@ -6045,7 +6476,8 @@
     "cue_3": "The floor schedule will not bend.",
     "cue_4": "That will not play well with this crowd.",
     "cue_5": "Say that to their faces.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC433",
@@ -6059,7 +6491,8 @@
     "cue_3": "That sounds like a favor, not policy.",
     "cue_4": "I expected better from you.",
     "cue_5": "Look me in the eye and answer.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC434",
@@ -6073,7 +6506,8 @@
     "cue_3": "Integrity makes a case stronger.",
     "cue_4": "Honesty has worked for me so far.",
     "cue_5": "My word is good here.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   },
   {
     "cue_id": "OC435",
@@ -6087,6 +6521,7 @@
     "cue_3": "Evidence first, opinions second.",
     "cue_4": "Try a fairer question.",
     "cue_5": "You will not get past honesty.",
-    "stage_ids": null
+    "stage_ids": null,
+    "bill_ids": null
   }
 ]

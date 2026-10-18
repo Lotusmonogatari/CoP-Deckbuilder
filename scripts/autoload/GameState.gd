@@ -278,6 +278,13 @@ var bills_flipped_by_influence: Array[String] = []
 ## for an entry's shape and record_floor_vote() for where it is written.
 var statute_book: Array = []
 
+## The stance taken on this level's bill (2026-10-18, BillStance): {} when the
+## level has no bill or no lean was picked; otherwise { "bill_id", "lean"
+## ("Support"/"Oppose"), "cost": { booster_id: how much the win drift has taken
+## from it this level }, "voted": bool }. Saved, so a resumed level keeps it;
+## cleared when a level begins, ends or is abandoned.
+var bill_stance: Dictionary = {}
+
 
 func _ready() -> void:
 	protagonist_id = str(DataDB.player.get("player_id", ""))
@@ -324,6 +331,7 @@ const _SAVED_FIELDS := [
 	"town_hall_active", "steering_committee_active", "funding_frozen_active",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
+	"bill_stance",
 ]
 
 
@@ -797,6 +805,7 @@ func reset_segment_favorability() -> void:
 ## Called by the Office when the player starts a level.
 func begin_level(runner: LevelRunner) -> void:
 	level_runner = runner
+	bill_stance = {}
 	mid_stage = false
 	last_level_outcome = ""
 	last_meta_change = {}
@@ -877,6 +886,8 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	_apply_stage_rewards(stage, outcome, score)
 	_apply_question_boosters(boosters, displeased_boosters, opposed_boosters, booster_tally)
 	_apply_instant_win_penalties(crushed_boosters)
+	if outcome == LevelRunner.WON and str(stage.get("mode", "")) == "Combat":
+		_apply_stance_win_drift()
 
 	level_runner.finish_stage(outcome, score, boosters)
 
@@ -1309,7 +1320,7 @@ func _apply_question_boosters(pleased: Array, displeased: Array,
 	# One shared piece of arithmetic (BoosterStanding) with the outcome panel,
 	# read against where each organisation stands right now.
 	for entry: Dictionary in BoosterChange.compute(pleased, displeased, [],
-			DataDB.booster_standing, opposed, tally, booster_standing):
+			DataDB.booster_standing, opposed, stance_adjust_tally(tally), booster_standing):
 		_apply_booster_delta(str(entry["booster_id"]), int(entry["net"]))
 
 
@@ -2065,6 +2076,113 @@ func _apply_party_tier_lean(bill_id: String, passed: bool) -> void:
 			_apply_booster_delta(str(booster.get("booster_id", "")), delta)
 
 
+# ---------------------------------------------------------------------------
+# A bill level's stance (BillStance, 2026-10-18)
+# ---------------------------------------------------------------------------
+
+## The Floor Vote bill the level in progress votes on ({} when it has none).
+func level_bill() -> Dictionary:
+	if level_runner == null:
+		return {}
+	return DataDB.get_floor_vote(str(level_runner.level.get("level_id", "")))
+
+
+## Records the lean picked on the Level Intro screen. Ignored for a bill with
+## nobody on either side to hear it.
+func set_bill_lean(bill_id: String, lean: String) -> void:
+	if bill_id.is_empty() or not BillStance.is_lean(lean):
+		return
+	bill_stance = {"bill_id": bill_id, "lean": lean, "cost": {}, "voted": false}
+
+
+func stance_lean() -> String:
+	return str(bill_stance.get("lean", ""))
+
+
+## { "supporters": [...], "opponents": [...] } for the stance's bill. Party
+## Bodies are left out: they follow your party, not the bill's Law Effects.
+func stance_sides() -> Dictionary:
+	if bill_stance.is_empty():
+		return {"supporters": [], "opponents": []}
+	var bill: Dictionary = DataDB.floor_votes.get(str(bill_stance.get("bill_id", "")), {})
+	return BillStance.sides(bill, DataDB.law_effects, _party_tier_booster_ids())
+
+
+func _party_tier_booster_ids() -> Array:
+	var ids: Array = []
+	for booster: Dictionary in DataDB.boosters:
+		if str(booster.get("tier", "")) == "Party":
+			ids.append(str(booster.get("booster_id", "")))
+	return ids
+
+
+## The Balance numbers BillStance.vote() reads.
+func stance_config() -> Dictionary:
+	var balance := DataDB.balance
+	return {
+		"vote_delta": int(balance.get("stance_vote_delta", 0)),
+		"abandoned_penalty": int(balance.get("stance_flip_abandoned_penalty", balance.get("stance_vote_delta", 0))),
+		"recovery_percent": int(balance.get("stance_flip_recovery_percent", 0)),
+		"party_away": int(balance.get("stance_flip_party_support_away", 0)),
+		"party_toward": int(balance.get("stance_flip_party_support_toward", 0)),
+	}
+
+
+## A stage's booster tally with the rhetoric rule applied: answers that would
+## please an organization on the side against your lean count for less. A copy;
+## the same tally the Outcome panel and the preview read.
+func stance_adjust_tally(tally: Dictionary) -> Dictionary:
+	var lean := stance_lean()
+	if lean.is_empty() or tally.is_empty():
+		return tally
+	return BillStance.adjust_tally(tally, BillStance.other_side(stance_sides(), lean),
+		int(DataDB.balance.get("stance_other_side_please_percent", 100)))
+
+
+## Winning a Combat stage in a bill level: the side against your lean loses,
+## your own side gains. What the far side lost is remembered, because a switch
+## at the vote can win a quarter of it back.
+func _apply_stance_win_drift() -> void:
+	var lean := stance_lean()
+	if lean.is_empty():
+		return
+	var drift := BillStance.win_drift(stance_sides(), lean, int(DataDB.balance.get("stance_win_drift", 0)))
+	var cost: Dictionary = bill_stance.get("cost", {})
+	for id: String in drift:
+		var delta := int(drift[id])
+		_apply_booster_delta(id, delta)
+		if delta < 0:
+			cost[id] = int(cost.get(id, 0)) - delta
+	bill_stance["cost"] = cost
+
+
+## Your own vote on the stance's bill: moves its supporters and opponents, and
+## prices a switch (the side you leave loses more, the side you join wins a
+## little back, Party support moves). Returns BillStance.vote()'s result, or {}
+## when there is no stance or it was already applied.
+func apply_stance_vote(choice: String) -> Dictionary:
+	if bill_stance.is_empty() or bool(bill_stance.get("voted", false)):
+		return {}
+	bill_stance["voted"] = true
+	var bill_id := str(bill_stance.get("bill_id", ""))
+	var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
+	var own := own_party_id()
+	var disposition := ""
+	for position: Dictionary in bill.get("positions", []):
+		if str(position.get("party_id", "")) == own:
+			disposition = str(position.get("disposition", ""))
+	var result := BillStance.vote(stance_sides(), stance_lean(), choice,
+		bill_stance.get("cost", {}), disposition, stance_config())
+	for id: String in (result["deltas"] as Dictionary):
+		_apply_booster_delta(id, int((result["deltas"] as Dictionary)[id]))
+	var party_delta := int(result["party_delta"])
+	if party_delta != 0:
+		apply_floor_vote_favorability({str(DataDB.player.get("party", "")): party_delta},
+			Text.say("record.cause_stance_switch", {"bill": str(bill.get("bill_name", ""))}))
+	result["bill_id"] = bill_id
+	return result
+
+
 ## bill_id -> "passed"/"failed", for Office Notices and the Ticker.
 func law_statuses() -> Dictionary:
 	return StatuteBook.status_map(statute_book)
@@ -2115,6 +2233,7 @@ func _resolve_delta(delta: Variant) -> int:
 ## Clears the level, on the way back to the Office.
 func end_level() -> void:
 	level_runner = null
+	bill_stance = {}
 	# Level buffs belong to the level; nothing else here to clear, since
 	# finish_stage() already reset the purchase counts when it concluded.
 	level_bonuses = {}
@@ -2139,6 +2258,7 @@ func end_level() -> void:
 ## never fire mid-stage by accident.
 func abandon_level() -> void:
 	level_runner = null
+	bill_stance = {}
 	level_bonuses = {}
 	shop_bought_this_level = {}
 

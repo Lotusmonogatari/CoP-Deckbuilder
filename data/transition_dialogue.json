@@ -4,3898 +4,5012 @@
     "character_id": "SF01",
     "stage_id": null,
     "character_line_en": "I have the briefing notes ready. Read the first page on your way in.",
-    "player_reply_en": "I will read it on the way."
+    "player_reply_en": "I will read it on the way.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD02",
     "character_id": "SF01",
     "stage_id": null,
     "character_line_en": "The research folder is thin on this one. Trust your instincts in there.",
-    "player_reply_en": "I usually do."
+    "player_reply_en": "I usually do.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD03",
     "character_id": "SF02",
     "stage_id": null,
     "character_line_en": "I double-checked the facts. They should hold up under pressure.",
-    "player_reply_en": "Good. That is all I need."
+    "player_reply_en": "Good. That is all I need.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD04",
     "character_id": "SF02",
     "stage_id": null,
     "character_line_en": "Whatever happens next, the numbers are on your side.",
-    "player_reply_en": "Let us hope they listen."
+    "player_reply_en": "Let us hope they listen.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD05",
     "character_id": "SF08",
     "stage_id": null,
     "character_line_en": "Your next hour is clear. Nothing else needs you.",
-    "player_reply_en": "Good. One thing at a time."
+    "player_reply_en": "Good. One thing at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD06",
     "character_id": "SF08",
     "stage_id": null,
     "character_line_en": "I have cleared your schedule. Focus on the room ahead.",
-    "player_reply_en": "Thank you. I will."
+    "player_reply_en": "Thank you. I will.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD07",
     "character_id": "SF09",
     "stage_id": null,
     "character_line_en": "Every word may be quoted. Choose them with care.",
-    "player_reply_en": "I will."
+    "player_reply_en": "I will.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD08",
     "character_id": "SF09",
     "stage_id": null,
     "character_line_en": "Nothing else is waiting on you. Only the room ahead.",
-    "player_reply_en": "Then I can give it everything."
+    "player_reply_en": "Then I can give it everything.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD09",
     "character_id": "SF15",
     "stage_id": null,
     "character_line_en": "Folks back home are watching how this goes. No pressure.",
-    "player_reply_en": "None at all, then."
+    "player_reply_en": "None at all, then.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD10",
     "character_id": "SF15",
     "stage_id": null,
     "character_line_en": "I brought word from the district. People are counting on you.",
-    "player_reply_en": "I will not let them down."
+    "player_reply_en": "I will not let them down.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD11",
     "character_id": "SF16",
     "stage_id": null,
     "character_line_en": "The district office sent tea. It is a long session ahead.",
-    "player_reply_en": "Tea first. Then the fight."
+    "player_reply_en": "Tea first. Then the fight.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD12",
     "character_id": "SF16",
     "stage_id": null,
     "character_line_en": "People in the district asked me to wish you luck.",
-    "player_reply_en": "Please thank them for me."
+    "player_reply_en": "Please thank them for me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD13",
     "character_id": "SF15",
     "stage_id": "ST03",
     "character_line_en": "This is your own party's room. They will notice every word.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD14",
     "character_id": "SF16",
     "stage_id": "ST03",
     "character_line_en": "Caucus members like a firm hand and a friendly tone.",
-    "player_reply_en": "Firm and friendly. Got it."
+    "player_reply_en": "Firm and friendly. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD15",
     "character_id": "SF08",
     "stage_id": "ST04",
     "character_line_en": "Pick three simple points. Say them and do not wander.",
-    "player_reply_en": "Three points. Then stop."
+    "player_reply_en": "Three points. Then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD16",
     "character_id": "SF09",
     "stage_id": "ST04",
     "character_line_en": "Journalists smell hesitation. Answer plainly and keep your composure.",
-    "player_reply_en": "Plain and calm. Ready."
+    "player_reply_en": "Plain and calm. Ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD17",
     "character_id": "SF01",
     "stage_id": "ST02",
     "character_line_en": "Count the seats as you rise. Every one matters.",
-    "player_reply_en": "I know the numbers."
+    "player_reply_en": "I know the numbers.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD18",
     "character_id": "SF02",
     "stage_id": "ST02",
     "character_line_en": "The chamber is full. Make the first minute count.",
-    "player_reply_en": "The first minute counts most."
+    "player_reply_en": "The first minute counts most.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD19",
     "character_id": "SF15",
     "stage_id": "ST24",
     "character_line_en": "Commuters have filled the hall. Fares are on everyone's mind.",
-    "player_reply_en": "Then fares are what we discuss."
+    "player_reply_en": "Then fares are what we discuss.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD20",
     "character_id": "SF16",
     "stage_id": "ST24",
     "character_line_en": "They want to hear about their own fares. Keep it human.",
-    "player_reply_en": "Human first, numbers second."
+    "player_reply_en": "Human first, numbers second.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD21",
     "character_id": "SF01",
     "stage_id": "ST25",
     "character_line_en": "The timetable data is in your folder. Every line is marked.",
-    "player_reply_en": "Good. Marked lines help."
+    "player_reply_en": "Good. Marked lines help.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD22",
     "character_id": "SF02",
     "stage_id": "ST25",
     "character_line_en": "This room rewards patience and precise answers.",
-    "player_reply_en": "Precise it is."
+    "player_reply_en": "Precise it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD23",
     "character_id": "SF08",
     "stage_id": "ST26",
     "character_line_en": "The fare rise is the only question they care about.",
-    "player_reply_en": "Then I will answer it."
+    "player_reply_en": "Then I will answer it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD24",
     "character_id": "SF09",
     "stage_id": "ST26",
     "character_line_en": "Say what you will protect, not just what you oppose.",
-    "player_reply_en": "Protect first. Oppose second."
+    "player_reply_en": "Protect first. Oppose second.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD25",
     "character_id": "SF01",
     "stage_id": "ST27",
     "character_line_en": "Safety records are public. Expect the members to quote them.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD26",
     "character_id": "SF02",
     "stage_id": "ST27",
     "character_line_en": "Be exact about inspections and costs. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD27",
     "character_id": "SF15",
     "stage_id": "ST28",
     "character_line_en": "The fisheries representative is blunt but fair. Meet that with plain talk.",
-    "player_reply_en": "Plain talk, then."
+    "player_reply_en": "Plain talk, then.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD28",
     "character_id": "SF16",
     "stage_id": "ST28",
     "character_line_en": "Quotas decide whether boats stay in business. Listen first.",
-    "player_reply_en": "Listening is my strength."
+    "player_reply_en": "Listening is my strength.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD29",
     "character_id": "SF15",
     "stage_id": "ST29",
     "character_line_en": "The harbor crowd is proud and tired. Show them respect.",
-    "player_reply_en": "Respect comes first."
+    "player_reply_en": "Respect comes first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD30",
     "character_id": "SF16",
     "stage_id": "ST29",
     "character_line_en": "It smells of salt and diesel in there. Do not mind it.",
-    "player_reply_en": "I like the harbor."
+    "player_reply_en": "I like the harbor.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD31",
     "character_id": "SF08",
     "stage_id": "ST30",
     "character_line_en": "Cameras are waiting at the dock. Stay calm and brief.",
-    "player_reply_en": "Calm and brief."
+    "player_reply_en": "Calm and brief.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD32",
     "character_id": "SF09",
     "stage_id": "ST30",
     "character_line_en": "They will ask about labels. Know where the catch comes from.",
-    "player_reply_en": "I will say what I know."
+    "player_reply_en": "I will say what I know.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD33",
     "character_id": "SF01",
     "stage_id": "ST31",
     "character_line_en": "The catch limits are in tab three. Read them first.",
-    "player_reply_en": "Tab three. Got it."
+    "player_reply_en": "Tab three. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD34",
     "character_id": "SF02",
     "stage_id": "ST31",
     "character_line_en": "Small boats against big fleets. Expect that fight in there.",
-    "player_reply_en": "I expect it."
+    "player_reply_en": "I expect it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD35",
     "character_id": "SF08",
     "stage_id": "ST32",
     "character_line_en": "Reporters will ask about the wilderness straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD36",
     "character_id": "SF09",
     "stage_id": "ST32",
     "character_line_en": "Say plainly where you stand on the wilderness.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD37",
     "character_id": "SF02",
     "stage_id": "ST32",
     "character_line_en": "Keep one clear number on the wilderness in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD38",
     "character_id": "SF01",
     "stage_id": "ST33",
     "character_line_en": "Members will quote the record on the wilderness.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD39",
     "character_id": "SF02",
     "stage_id": "ST33",
     "character_line_en": "Be exact about the wilderness. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD40",
     "character_id": "SF15",
     "stage_id": "ST33",
     "character_line_en": "People back home follow this hearing on the wilderness.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD41",
     "character_id": "SF15",
     "stage_id": "ST34",
     "character_line_en": "The hall is full of people worried about the wilderness.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD42",
     "character_id": "SF16",
     "stage_id": "ST34",
     "character_line_en": "Keep it human when they ask about the wilderness.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD43",
     "character_id": "SF01",
     "stage_id": "ST34",
     "character_line_en": "I marked the questions to expect on the wilderness.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD44",
     "character_id": "SF15",
     "stage_id": "ST35",
     "character_line_en": "Your own party is watching you on the wilderness.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD45",
     "character_id": "SF16",
     "stage_id": "ST35",
     "character_line_en": "Caucus members will test you on the wilderness.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD46",
     "character_id": "SF01",
     "stage_id": "ST35",
     "character_line_en": "Know where your party stands on the wilderness.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD47",
     "character_id": "SF15",
     "stage_id": "ST36",
     "character_line_en": "The hall is full of people worried about rural hospitals.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD48",
     "character_id": "SF16",
     "stage_id": "ST36",
     "character_line_en": "Keep it human when they ask about rural hospitals.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD49",
     "character_id": "SF01",
     "stage_id": "ST36",
     "character_line_en": "I marked the questions to expect on rural hospitals.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD50",
     "character_id": "SF01",
     "stage_id": "ST37",
     "character_line_en": "Members will quote the record on rural hospitals.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD51",
     "character_id": "SF02",
     "stage_id": "ST37",
     "character_line_en": "Be exact about rural hospitals. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD52",
     "character_id": "SF15",
     "stage_id": "ST37",
     "character_line_en": "People back home follow this hearing on rural hospitals.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD53",
     "character_id": "SF01",
     "stage_id": "ST38",
     "character_line_en": "The briefing on rural hospitals is in your folder.",
-    "player_reply_en": "I will read it."
+    "player_reply_en": "I will read it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD54",
     "character_id": "SF02",
     "stage_id": "ST38",
     "character_line_en": "Every figure on rural hospitals is checked and sourced.",
-    "player_reply_en": "Good. I will lean on them."
+    "player_reply_en": "Good. I will lean on them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD55",
     "character_id": "SF16",
     "stage_id": "ST38",
     "character_line_en": "Take your time with rural hospitals. Nobody is rushing you.",
-    "player_reply_en": "Patience helps."
+    "player_reply_en": "Patience helps.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD56",
     "character_id": "SF15",
     "stage_id": "ST39",
     "character_line_en": "Your own party is watching you on rural hospitals.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD57",
     "character_id": "SF16",
     "stage_id": "ST39",
     "character_line_en": "Caucus members will test you on rural hospitals.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD58",
     "character_id": "SF01",
     "stage_id": "ST39",
     "character_line_en": "Know where your party stands on rural hospitals.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD59",
     "character_id": "SF01",
     "stage_id": "ST40",
     "character_line_en": "The briefing on the identity card is in your folder.",
-    "player_reply_en": "I will read it."
+    "player_reply_en": "I will read it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD60",
     "character_id": "SF02",
     "stage_id": "ST40",
     "character_line_en": "Every figure on the identity card is checked and sourced.",
-    "player_reply_en": "Good. I will lean on them."
+    "player_reply_en": "Good. I will lean on them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD61",
     "character_id": "SF16",
     "stage_id": "ST40",
     "character_line_en": "Take your time with the identity card. Nobody is rushing you.",
-    "player_reply_en": "Patience helps."
+    "player_reply_en": "Patience helps.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD62",
     "character_id": "SF08",
     "stage_id": "ST41",
     "character_line_en": "The studio lights are hot. Keep calm on the identity card.",
-    "player_reply_en": "Calm it is."
+    "player_reply_en": "Calm it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD63",
     "character_id": "SF09",
     "stage_id": "ST41",
     "character_line_en": "The viewers care about the identity card. Speak to them.",
-    "player_reply_en": "Directly to them."
+    "player_reply_en": "Directly to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD64",
     "character_id": "SF02",
     "stage_id": "ST41",
     "character_line_en": "Keep your facts on the identity card short and sharp.",
-    "player_reply_en": "Short and sharp."
+    "player_reply_en": "Short and sharp.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD65",
     "character_id": "SF15",
     "stage_id": "ST42",
     "character_line_en": "Your own party is watching you on the identity card.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD66",
     "character_id": "SF16",
     "stage_id": "ST42",
     "character_line_en": "Caucus members will test you on the identity card.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD67",
     "character_id": "SF01",
     "stage_id": "ST42",
     "character_line_en": "Know where your party stands on the identity card.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD68",
     "character_id": "SF08",
     "stage_id": "ST43",
     "character_line_en": "Reporters will ask about the broadcaster straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD69",
     "character_id": "SF09",
     "stage_id": "ST43",
     "character_line_en": "Say plainly where you stand on the broadcaster.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD70",
     "character_id": "SF02",
     "stage_id": "ST43",
     "character_line_en": "Keep one clear number on the broadcaster in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD71",
     "character_id": "SF08",
     "stage_id": "ST44",
     "character_line_en": "The studio lights are hot. Keep calm on the broadcaster.",
-    "player_reply_en": "Calm it is."
+    "player_reply_en": "Calm it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD72",
     "character_id": "SF09",
     "stage_id": "ST44",
     "character_line_en": "The viewers care about the broadcaster. Speak to them.",
-    "player_reply_en": "Directly to them."
+    "player_reply_en": "Directly to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD73",
     "character_id": "SF02",
     "stage_id": "ST44",
     "character_line_en": "Keep your facts on the broadcaster short and sharp.",
-    "player_reply_en": "Short and sharp."
+    "player_reply_en": "Short and sharp.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD74",
     "character_id": "SF15",
     "stage_id": "ST45",
     "character_line_en": "Your own party is watching you on the broadcaster.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD75",
     "character_id": "SF16",
     "stage_id": "ST45",
     "character_line_en": "Caucus members will test you on the broadcaster.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD76",
     "character_id": "SF01",
     "stage_id": "ST45",
     "character_line_en": "Know where your party stands on the broadcaster.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD77",
     "character_id": "SF08",
     "stage_id": "ST46",
     "character_line_en": "Reporters will ask about political donations straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD78",
     "character_id": "SF09",
     "stage_id": "ST46",
     "character_line_en": "Say plainly where you stand on political donations.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD79",
     "character_id": "SF02",
     "stage_id": "ST46",
     "character_line_en": "Keep one clear number on political donations in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD80",
     "character_id": "SF01",
     "stage_id": "ST47",
     "character_line_en": "Members will quote the record on political donations.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD81",
     "character_id": "SF02",
     "stage_id": "ST47",
     "character_line_en": "Be exact about political donations. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD82",
     "character_id": "SF15",
     "stage_id": "ST47",
     "character_line_en": "People back home follow this hearing on political donations.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD83",
     "character_id": "SF15",
     "stage_id": "ST48",
     "character_line_en": "The lobbyist cares about political donations. Hear them out.",
-    "player_reply_en": "I will listen."
+    "player_reply_en": "I will listen.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD84",
     "character_id": "SF09",
     "stage_id": "ST48",
     "character_line_en": "Anything you promise on political donations may be repeated.",
-    "player_reply_en": "Then I promise little."
+    "player_reply_en": "Then I promise little.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD85",
     "character_id": "SF01",
     "stage_id": "ST48",
     "character_line_en": "I listed what each side wants on political donations.",
-    "player_reply_en": "Useful. Thank you."
+    "player_reply_en": "Useful. Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD86",
     "character_id": "SF15",
     "stage_id": "ST49",
     "character_line_en": "Your own party is watching you on political donations.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD87",
     "character_id": "SF16",
     "stage_id": "ST49",
     "character_line_en": "Caucus members will test you on political donations.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD88",
     "character_id": "SF01",
     "stage_id": "ST49",
     "character_line_en": "Know where your party stands on political donations.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD89",
     "character_id": "SF01",
     "stage_id": "ST50",
     "character_line_en": "The briefing on the tax cut is in your folder.",
-    "player_reply_en": "I will read it."
+    "player_reply_en": "I will read it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD90",
     "character_id": "SF02",
     "stage_id": "ST50",
     "character_line_en": "Every figure on the tax cut is checked and sourced.",
-    "player_reply_en": "Good. I will lean on them."
+    "player_reply_en": "Good. I will lean on them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD91",
     "character_id": "SF16",
     "stage_id": "ST50",
     "character_line_en": "Take your time with the tax cut. Nobody is rushing you.",
-    "player_reply_en": "Patience helps."
+    "player_reply_en": "Patience helps.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD92",
     "character_id": "SF01",
     "stage_id": "ST51",
     "character_line_en": "Members will quote the record on the tax cut.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD93",
     "character_id": "SF02",
     "stage_id": "ST51",
     "character_line_en": "Be exact about the tax cut. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD94",
     "character_id": "SF15",
     "stage_id": "ST51",
     "character_line_en": "People back home follow this hearing on the tax cut.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD95",
     "character_id": "SF15",
     "stage_id": "ST52",
     "character_line_en": "Your own party is watching you on the tax cut.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD96",
     "character_id": "SF16",
     "stage_id": "ST52",
     "character_line_en": "Caucus members will test you on the tax cut.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD97",
     "character_id": "SF01",
     "stage_id": "ST52",
     "character_line_en": "Know where your party stands on the tax cut.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD98",
     "character_id": "SF15",
     "stage_id": "ST53",
     "character_line_en": "The hall is full of people worried about the carbon levy.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD99",
     "character_id": "SF16",
     "stage_id": "ST53",
     "character_line_en": "Keep it human when they ask about the carbon levy.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD100",
     "character_id": "SF01",
     "stage_id": "ST53",
     "character_line_en": "I marked the questions to expect on the carbon levy.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD101",
     "character_id": "SF01",
     "stage_id": "ST54",
     "character_line_en": "Members will quote the record on the carbon levy.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD102",
     "character_id": "SF02",
     "stage_id": "ST54",
     "character_line_en": "Be exact about the carbon levy. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD103",
     "character_id": "SF15",
     "stage_id": "ST54",
     "character_line_en": "People back home follow this hearing on the carbon levy.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD104",
     "character_id": "SF08",
     "stage_id": "ST55",
     "character_line_en": "Reporters will ask about the carbon levy straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD105",
     "character_id": "SF09",
     "stage_id": "ST55",
     "character_line_en": "Say plainly where you stand on the carbon levy.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD106",
     "character_id": "SF02",
     "stage_id": "ST55",
     "character_line_en": "Keep one clear number on the carbon levy in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD107",
     "character_id": "SF15",
     "stage_id": "ST56",
     "character_line_en": "Your own party is watching you on the carbon levy.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD108",
     "character_id": "SF16",
     "stage_id": "ST56",
     "character_line_en": "Caucus members will test you on the carbon levy.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD109",
     "character_id": "SF01",
     "stage_id": "ST56",
     "character_line_en": "Know where your party stands on the carbon levy.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD110",
     "character_id": "SF01",
     "stage_id": "ST57",
     "character_line_en": "Members will quote the record on tradeable quotas.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD111",
     "character_id": "SF02",
     "stage_id": "ST57",
     "character_line_en": "Be exact about tradeable quotas. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD112",
     "character_id": "SF15",
     "stage_id": "ST57",
     "character_line_en": "People back home follow this hearing on tradeable quotas.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD113",
     "character_id": "SF15",
     "stage_id": "ST58",
     "character_line_en": "The hall is full of people worried about tradeable quotas.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD114",
     "character_id": "SF16",
     "stage_id": "ST58",
     "character_line_en": "Keep it human when they ask about tradeable quotas.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD115",
     "character_id": "SF01",
     "stage_id": "ST58",
     "character_line_en": "I marked the questions to expect on tradeable quotas.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD116",
     "character_id": "SF15",
     "stage_id": "ST59",
     "character_line_en": "Your own party is watching you on tradeable quotas.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD117",
     "character_id": "SF16",
     "stage_id": "ST59",
     "character_line_en": "Caucus members will test you on tradeable quotas.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD118",
     "character_id": "SF01",
     "stage_id": "ST59",
     "character_line_en": "Know where your party stands on tradeable quotas.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD119",
     "character_id": "SF01",
     "stage_id": "ST60",
     "character_line_en": "Members will quote the record on the shipyards.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD120",
     "character_id": "SF02",
     "stage_id": "ST60",
     "character_line_en": "Be exact about the shipyards. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD121",
     "character_id": "SF15",
     "stage_id": "ST60",
     "character_line_en": "People back home follow this hearing on the shipyards.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD122",
     "character_id": "SF15",
     "stage_id": "ST61",
     "character_line_en": "The hall is full of people worried about the shipyards.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD123",
     "character_id": "SF16",
     "stage_id": "ST61",
     "character_line_en": "Keep it human when they ask about the shipyards.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD124",
     "character_id": "SF01",
     "stage_id": "ST61",
     "character_line_en": "I marked the questions to expect on the shipyards.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD125",
     "character_id": "SF15",
     "stage_id": "ST62",
     "character_line_en": "Your own party is watching you on the shipyards.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD126",
     "character_id": "SF16",
     "stage_id": "ST62",
     "character_line_en": "Caucus members will test you on the shipyards.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD127",
     "character_id": "SF01",
     "stage_id": "ST62",
     "character_line_en": "Know where your party stands on the shipyards.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD128",
     "character_id": "SF01",
     "stage_id": "ST63",
     "character_line_en": "Members will quote the record on the review.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD129",
     "character_id": "SF02",
     "stage_id": "ST63",
     "character_line_en": "Be exact about the review. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD130",
     "character_id": "SF15",
     "stage_id": "ST63",
     "character_line_en": "People back home follow this hearing on the review.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD131",
     "character_id": "SF08",
     "stage_id": "ST64",
     "character_line_en": "Reporters will ask about the review straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD132",
     "character_id": "SF09",
     "stage_id": "ST64",
     "character_line_en": "Say plainly where you stand on the review.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD133",
     "character_id": "SF02",
     "stage_id": "ST64",
     "character_line_en": "Keep one clear number on the review in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD134",
     "character_id": "SF15",
     "stage_id": "ST65",
     "character_line_en": "Your own party is watching you on the review.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD135",
     "character_id": "SF16",
     "stage_id": "ST65",
     "character_line_en": "Caucus members will test you on the review.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD136",
     "character_id": "SF01",
     "stage_id": "ST65",
     "character_line_en": "Know where your party stands on the review.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD137",
     "character_id": "SF01",
     "stage_id": "ST66",
     "character_line_en": "Members will quote the record on border sharing.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD138",
     "character_id": "SF02",
     "stage_id": "ST66",
     "character_line_en": "Be exact about border sharing. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD139",
     "character_id": "SF15",
     "stage_id": "ST66",
     "character_line_en": "People back home follow this hearing on border sharing.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD140",
     "character_id": "SF15",
     "stage_id": "ST67",
     "character_line_en": "The lobbyist cares about border sharing. Hear them out.",
-    "player_reply_en": "I will listen."
+    "player_reply_en": "I will listen.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD141",
     "character_id": "SF09",
     "stage_id": "ST67",
     "character_line_en": "Anything you promise on border sharing may be repeated.",
-    "player_reply_en": "Then I promise little."
+    "player_reply_en": "Then I promise little.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD142",
     "character_id": "SF01",
     "stage_id": "ST67",
     "character_line_en": "I listed what each side wants on border sharing.",
-    "player_reply_en": "Useful. Thank you."
+    "player_reply_en": "Useful. Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD143",
     "character_id": "SF15",
     "stage_id": "ST68",
     "character_line_en": "Your own party is watching you on border sharing.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD144",
     "character_id": "SF16",
     "stage_id": "ST68",
     "character_line_en": "Caucus members will test you on border sharing.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD145",
     "character_id": "SF01",
     "stage_id": "ST68",
     "character_line_en": "Know where your party stands on border sharing.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD146",
     "character_id": "SF01",
     "stage_id": "ST69",
     "character_line_en": "Members will quote the record on the islands.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD147",
     "character_id": "SF02",
     "stage_id": "ST69",
     "character_line_en": "Be exact about the islands. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD148",
     "character_id": "SF15",
     "stage_id": "ST69",
     "character_line_en": "People back home follow this hearing on the islands.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD149",
     "character_id": "SF08",
     "stage_id": "ST70",
     "character_line_en": "Reporters will ask about the islands straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD150",
     "character_id": "SF09",
     "stage_id": "ST70",
     "character_line_en": "Say plainly where you stand on the islands.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD151",
     "character_id": "SF02",
     "stage_id": "ST70",
     "character_line_en": "Keep one clear number on the islands in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD152",
     "character_id": "SF15",
     "stage_id": "ST71",
     "character_line_en": "The lobbyist cares about the islands. Hear them out.",
-    "player_reply_en": "I will listen."
+    "player_reply_en": "I will listen.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD153",
     "character_id": "SF09",
     "stage_id": "ST71",
     "character_line_en": "Anything you promise on the islands may be repeated.",
-    "player_reply_en": "Then I promise little."
+    "player_reply_en": "Then I promise little.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD154",
     "character_id": "SF01",
     "stage_id": "ST71",
     "character_line_en": "I listed what each side wants on the islands.",
-    "player_reply_en": "Useful. Thank you."
+    "player_reply_en": "Useful. Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD155",
     "character_id": "SF15",
     "stage_id": "ST72",
     "character_line_en": "Your own party is watching you on the islands.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD156",
     "character_id": "SF16",
     "stage_id": "ST72",
     "character_line_en": "Caucus members will test you on the islands.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD157",
     "character_id": "SF01",
     "stage_id": "ST72",
     "character_line_en": "Know where your party stands on the islands.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD158",
     "character_id": "SF08",
     "stage_id": "ST73",
     "character_line_en": "The studio lights are hot. Keep calm on open trade.",
-    "player_reply_en": "Calm it is."
+    "player_reply_en": "Calm it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD159",
     "character_id": "SF09",
     "stage_id": "ST73",
     "character_line_en": "The viewers care about open trade. Speak to them.",
-    "player_reply_en": "Directly to them."
+    "player_reply_en": "Directly to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD160",
     "character_id": "SF02",
     "stage_id": "ST73",
     "character_line_en": "Keep your facts on open trade short and sharp.",
-    "player_reply_en": "Short and sharp."
+    "player_reply_en": "Short and sharp.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD161",
     "character_id": "SF01",
     "stage_id": "ST74",
     "character_line_en": "Members will quote the record on open trade.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD162",
     "character_id": "SF02",
     "stage_id": "ST74",
     "character_line_en": "Be exact about open trade. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD163",
     "character_id": "SF15",
     "stage_id": "ST74",
     "character_line_en": "People back home follow this hearing on open trade.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD164",
     "character_id": "SF15",
     "stage_id": "ST75",
     "character_line_en": "Your own party is watching you on open trade.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD165",
     "character_id": "SF16",
     "stage_id": "ST75",
     "character_line_en": "Caucus members will test you on open trade.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD166",
     "character_id": "SF01",
     "stage_id": "ST75",
     "character_line_en": "Know where your party stands on open trade.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD167",
     "character_id": "SF15",
     "stage_id": "ST76",
     "character_line_en": "The hall is full of people worried about family farms.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD168",
     "character_id": "SF16",
     "stage_id": "ST76",
     "character_line_en": "Keep it human when they ask about family farms.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD169",
     "character_id": "SF01",
     "stage_id": "ST76",
     "character_line_en": "I marked the questions to expect on family farms.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD170",
     "character_id": "SF01",
     "stage_id": "ST77",
     "character_line_en": "Members will quote the record on family farms.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD171",
     "character_id": "SF02",
     "stage_id": "ST77",
     "character_line_en": "Be exact about family farms. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD172",
     "character_id": "SF15",
     "stage_id": "ST77",
     "character_line_en": "People back home follow this hearing on family farms.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD173",
     "character_id": "SF15",
     "stage_id": "ST78",
     "character_line_en": "Your own party is watching you on family farms.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD174",
     "character_id": "SF16",
     "stage_id": "ST78",
     "character_line_en": "Caucus members will test you on family farms.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD175",
     "character_id": "SF01",
     "stage_id": "ST78",
     "character_line_en": "Know where your party stands on family farms.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD176",
     "character_id": "SF01",
     "stage_id": "ST79",
     "character_line_en": "The briefing on research funding is in your folder.",
-    "player_reply_en": "I will read it."
+    "player_reply_en": "I will read it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD177",
     "character_id": "SF02",
     "stage_id": "ST79",
     "character_line_en": "Every figure on research funding is checked and sourced.",
-    "player_reply_en": "Good. I will lean on them."
+    "player_reply_en": "Good. I will lean on them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD178",
     "character_id": "SF16",
     "stage_id": "ST79",
     "character_line_en": "Take your time with research funding. Nobody is rushing you.",
-    "player_reply_en": "Patience helps."
+    "player_reply_en": "Patience helps.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD179",
     "character_id": "SF01",
     "stage_id": "ST80",
     "character_line_en": "Members will quote the record on research funding.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD180",
     "character_id": "SF02",
     "stage_id": "ST80",
     "character_line_en": "Be exact about research funding. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD181",
     "character_id": "SF15",
     "stage_id": "ST80",
     "character_line_en": "People back home follow this hearing on research funding.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD182",
     "character_id": "SF15",
     "stage_id": "ST81",
     "character_line_en": "Your own party is watching you on research funding.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD183",
     "character_id": "SF16",
     "stage_id": "ST81",
     "character_line_en": "Caucus members will test you on research funding.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD184",
     "character_id": "SF01",
     "stage_id": "ST81",
     "character_line_en": "Know where your party stands on research funding.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD185",
     "character_id": "SF15",
     "stage_id": "ST82",
     "character_line_en": "The hall is full of people worried about equal treatment.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD186",
     "character_id": "SF16",
     "stage_id": "ST82",
     "character_line_en": "Keep it human when they ask about equal treatment.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD187",
     "character_id": "SF01",
     "stage_id": "ST82",
     "character_line_en": "I marked the questions to expect on equal treatment.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD188",
     "character_id": "SF08",
     "stage_id": "ST83",
     "character_line_en": "Reporters will ask about equal treatment straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD189",
     "character_id": "SF09",
     "stage_id": "ST83",
     "character_line_en": "Say plainly where you stand on equal treatment.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD190",
     "character_id": "SF02",
     "stage_id": "ST83",
     "character_line_en": "Keep one clear number on equal treatment in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD191",
     "character_id": "SF08",
     "stage_id": "ST84",
     "character_line_en": "The studio lights are hot. Keep calm on equal treatment.",
-    "player_reply_en": "Calm it is."
+    "player_reply_en": "Calm it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD192",
     "character_id": "SF09",
     "stage_id": "ST84",
     "character_line_en": "The viewers care about equal treatment. Speak to them.",
-    "player_reply_en": "Directly to them."
+    "player_reply_en": "Directly to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD193",
     "character_id": "SF02",
     "stage_id": "ST84",
     "character_line_en": "Keep your facts on equal treatment short and sharp.",
-    "player_reply_en": "Short and sharp."
+    "player_reply_en": "Short and sharp.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD194",
     "character_id": "SF15",
     "stage_id": "ST85",
     "character_line_en": "Your own party is watching you on equal treatment.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD195",
     "character_id": "SF16",
     "stage_id": "ST85",
     "character_line_en": "Caucus members will test you on equal treatment.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD196",
     "character_id": "SF01",
     "stage_id": "ST85",
     "character_line_en": "Know where your party stands on equal treatment.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD197",
     "character_id": "SF15",
     "stage_id": "ST86",
     "character_line_en": "The hall is full of people worried about parental leave.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD198",
     "character_id": "SF16",
     "stage_id": "ST86",
     "character_line_en": "Keep it human when they ask about parental leave.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD199",
     "character_id": "SF01",
     "stage_id": "ST86",
     "character_line_en": "I marked the questions to expect on parental leave.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD200",
     "character_id": "SF01",
     "stage_id": "ST87",
     "character_line_en": "The briefing on parental leave is in your folder.",
-    "player_reply_en": "I will read it."
+    "player_reply_en": "I will read it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD201",
     "character_id": "SF02",
     "stage_id": "ST87",
     "character_line_en": "Every figure on parental leave is checked and sourced.",
-    "player_reply_en": "Good. I will lean on them."
+    "player_reply_en": "Good. I will lean on them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD202",
     "character_id": "SF16",
     "stage_id": "ST87",
     "character_line_en": "Take your time with parental leave. Nobody is rushing you.",
-    "player_reply_en": "Patience helps."
+    "player_reply_en": "Patience helps.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD203",
     "character_id": "SF15",
     "stage_id": "ST88",
     "character_line_en": "The lobbyist cares about parental leave. Hear them out.",
-    "player_reply_en": "I will listen."
+    "player_reply_en": "I will listen.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD204",
     "character_id": "SF09",
     "stage_id": "ST88",
     "character_line_en": "Anything you promise on parental leave may be repeated.",
-    "player_reply_en": "Then I promise little."
+    "player_reply_en": "Then I promise little.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD205",
     "character_id": "SF01",
     "stage_id": "ST88",
     "character_line_en": "I listed what each side wants on parental leave.",
-    "player_reply_en": "Useful. Thank you."
+    "player_reply_en": "Useful. Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD206",
     "character_id": "SF15",
     "stage_id": "ST89",
     "character_line_en": "Your own party is watching you on parental leave.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD207",
     "character_id": "SF16",
     "stage_id": "ST89",
     "character_line_en": "Caucus members will test you on parental leave.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD208",
     "character_id": "SF01",
     "stage_id": "ST89",
     "character_line_en": "Know where your party stands on parental leave.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD209",
     "character_id": "SF01",
     "stage_id": "ST90",
     "character_line_en": "Members will quote the record on the cameras.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD210",
     "character_id": "SF02",
     "stage_id": "ST90",
     "character_line_en": "Be exact about the cameras. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD211",
     "character_id": "SF15",
     "stage_id": "ST90",
     "character_line_en": "People back home follow this hearing on the cameras.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD212",
     "character_id": "SF08",
     "stage_id": "ST91",
     "character_line_en": "The studio lights are hot. Keep calm on the cameras.",
-    "player_reply_en": "Calm it is."
+    "player_reply_en": "Calm it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD213",
     "character_id": "SF09",
     "stage_id": "ST91",
     "character_line_en": "The viewers care about the cameras. Speak to them.",
-    "player_reply_en": "Directly to them."
+    "player_reply_en": "Directly to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD214",
     "character_id": "SF02",
     "stage_id": "ST91",
     "character_line_en": "Keep your facts on the cameras short and sharp.",
-    "player_reply_en": "Short and sharp."
+    "player_reply_en": "Short and sharp.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD215",
     "character_id": "SF08",
     "stage_id": "ST92",
     "character_line_en": "Reporters will ask about the cameras straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD216",
     "character_id": "SF09",
     "stage_id": "ST92",
     "character_line_en": "Say plainly where you stand on the cameras.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD217",
     "character_id": "SF02",
     "stage_id": "ST92",
     "character_line_en": "Keep one clear number on the cameras in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD218",
     "character_id": "SF15",
     "stage_id": "ST93",
     "character_line_en": "Your own party is watching you on the cameras.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD219",
     "character_id": "SF16",
     "stage_id": "ST93",
     "character_line_en": "Caucus members will test you on the cameras.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD220",
     "character_id": "SF01",
     "stage_id": "ST93",
     "character_line_en": "Know where your party stands on the cameras.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD221",
     "character_id": "SF15",
     "stage_id": "ST94",
     "character_line_en": "The hall is full of people worried about town mergers.",
-    "player_reply_en": "Then I will listen first."
+    "player_reply_en": "Then I will listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD222",
     "character_id": "SF16",
     "stage_id": "ST94",
     "character_line_en": "Keep it human when they ask about town mergers.",
-    "player_reply_en": "Human first."
+    "player_reply_en": "Human first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD223",
     "character_id": "SF01",
     "stage_id": "ST94",
     "character_line_en": "I marked the questions to expect on town mergers.",
-    "player_reply_en": "Thank you."
+    "player_reply_en": "Thank you.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD224",
     "character_id": "SF01",
     "stage_id": "ST95",
     "character_line_en": "Members will quote the record on town mergers.",
-    "player_reply_en": "Then I will quote back."
+    "player_reply_en": "Then I will quote back.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD225",
     "character_id": "SF02",
     "stage_id": "ST95",
     "character_line_en": "Be exact about town mergers. They will check.",
-    "player_reply_en": "Exact. Noted."
+    "player_reply_en": "Exact. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD226",
     "character_id": "SF15",
     "stage_id": "ST95",
     "character_line_en": "People back home follow this hearing on town mergers.",
-    "player_reply_en": "Then I will be careful."
+    "player_reply_en": "Then I will be careful.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD227",
     "character_id": "SF01",
     "stage_id": "ST96",
     "character_line_en": "The briefing on town mergers is in your folder.",
-    "player_reply_en": "I will read it."
+    "player_reply_en": "I will read it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD228",
     "character_id": "SF02",
     "stage_id": "ST96",
     "character_line_en": "Every figure on town mergers is checked and sourced.",
-    "player_reply_en": "Good. I will lean on them."
+    "player_reply_en": "Good. I will lean on them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD229",
     "character_id": "SF16",
     "stage_id": "ST96",
     "character_line_en": "Take your time with town mergers. Nobody is rushing you.",
-    "player_reply_en": "Patience helps."
+    "player_reply_en": "Patience helps.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD230",
     "character_id": "SF15",
     "stage_id": "ST97",
     "character_line_en": "Your own party is watching you on town mergers.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD231",
     "character_id": "SF16",
     "stage_id": "ST97",
     "character_line_en": "Caucus members will test you on town mergers.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD232",
     "character_id": "SF01",
     "stage_id": "ST97",
     "character_line_en": "Know where your party stands on town mergers.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD233",
     "character_id": "SF08",
     "stage_id": "ST98",
     "character_line_en": "The studio lights are hot. Keep calm on open ballots.",
-    "player_reply_en": "Calm it is."
+    "player_reply_en": "Calm it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD234",
     "character_id": "SF09",
     "stage_id": "ST98",
     "character_line_en": "The viewers care about open ballots. Speak to them.",
-    "player_reply_en": "Directly to them."
+    "player_reply_en": "Directly to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD235",
     "character_id": "SF02",
     "stage_id": "ST98",
     "character_line_en": "Keep your facts on open ballots short and sharp.",
-    "player_reply_en": "Short and sharp."
+    "player_reply_en": "Short and sharp.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD236",
     "character_id": "SF08",
     "stage_id": "ST99",
     "character_line_en": "Reporters will ask about open ballots straight away.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD237",
     "character_id": "SF09",
     "stage_id": "ST99",
     "character_line_en": "Say plainly where you stand on open ballots.",
-    "player_reply_en": "Plainly. Understood."
+    "player_reply_en": "Plainly. Understood.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD238",
     "character_id": "SF02",
     "stage_id": "ST99",
     "character_line_en": "Keep one clear number on open ballots in mind.",
-    "player_reply_en": "One number. Got it."
+    "player_reply_en": "One number. Got it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD239",
     "character_id": "SF15",
     "stage_id": "ST100",
     "character_line_en": "Your own party is watching you on open ballots.",
-    "player_reply_en": "Then I will choose well."
+    "player_reply_en": "Then I will choose well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD240",
     "character_id": "SF16",
     "stage_id": "ST100",
     "character_line_en": "Caucus members will test you on open ballots.",
-    "player_reply_en": "I am ready."
+    "player_reply_en": "I am ready.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD241",
     "character_id": "SF01",
     "stage_id": "ST100",
     "character_line_en": "Know where your party stands on open ballots.",
-    "player_reply_en": "I will check."
+    "player_reply_en": "I will check.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD242",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Steady now. One room at a time.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD243",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "I know why I am here.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD244",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Breathe. Speak plainly. Listen well.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD245",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Every voice in there deserves an answer.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD246",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "If I stay honest, the rest will follow.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD247",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Whatever they ask, I have prepared.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD248",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "This is the work I chose.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD249",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Keep it simple. Keep it true.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD250",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Nerves are only energy. Use them.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD251",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "People are counting on this room.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD252",
     "character_id": "SF01",
     "stage_id": null,
     "character_line_en": "I marked the three pages worth your time.",
-    "player_reply_en": "Three pages. I can manage."
+    "player_reply_en": "Three pages. I can manage.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD253",
     "character_id": "SF01",
     "stage_id": null,
     "character_line_en": "Your folder is in order. Take it with you.",
-    "player_reply_en": "Thank you. I will."
+    "player_reply_en": "Thank you. I will.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD254",
     "character_id": "SF01",
     "stage_id": null,
     "character_line_en": "If you lose your place, glance at the first page.",
-    "player_reply_en": "The first page. Noted."
+    "player_reply_en": "The first page. Noted.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD255",
     "character_id": "SF01",
     "stage_id": null,
     "character_line_en": "I cross-checked every name in the notes.",
-    "player_reply_en": "Then I can trust them."
+    "player_reply_en": "Then I can trust them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD256",
     "character_id": "SF01",
     "stage_id": null,
     "character_line_en": "Keep your notes short. Short notes get used.",
-    "player_reply_en": "Short and usable."
+    "player_reply_en": "Short and usable.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD257",
     "character_id": "SF01",
     "stage_id": null,
     "character_line_en": "Nothing in there surprised me. That is a good sign.",
-    "player_reply_en": "Then I am prepared."
+    "player_reply_en": "Then I am prepared.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD258",
     "character_id": "SF02",
     "stage_id": null,
     "character_line_en": "The figures are verified and the sources are listed.",
-    "player_reply_en": "Then I can quote them freely."
+    "player_reply_en": "Then I can quote them freely.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD259",
     "character_id": "SF02",
     "stage_id": null,
     "character_line_en": "If a number looks odd, say you will check it.",
-    "player_reply_en": "Honest and safe."
+    "player_reply_en": "Honest and safe.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD260",
     "character_id": "SF02",
     "stage_id": null,
     "character_line_en": "I ran the totals twice. They agree.",
-    "player_reply_en": "Good. Two sums beat one."
+    "player_reply_en": "Good. Two sums beat one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD261",
     "character_id": "SF02",
     "stage_id": null,
     "character_line_en": "Lead with the figure that helps you most.",
-    "player_reply_en": "The strongest one first."
+    "player_reply_en": "The strongest one first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD262",
     "character_id": "SF02",
     "stage_id": null,
     "character_line_en": "Do not guess at a number. Nobody forgives a wrong one.",
-    "player_reply_en": "I will not guess."
+    "player_reply_en": "I will not guess.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD263",
     "character_id": "SF02",
     "stage_id": null,
     "character_line_en": "The data supports you on the main point.",
-    "player_reply_en": "Then the main point is mine."
+    "player_reply_en": "Then the main point is mine.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD264",
     "character_id": "SF08",
     "stage_id": null,
     "character_line_en": "Everything after this is cleared. The rest of the day is yours.",
-    "player_reply_en": "Then I will use it well."
+    "player_reply_en": "Then I will use it well.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD265",
     "character_id": "SF08",
     "stage_id": null,
     "character_line_en": "Your phone is off and your schedule is quiet.",
-    "player_reply_en": "Good. No interruptions."
+    "player_reply_en": "Good. No interruptions.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD266",
     "character_id": "SF08",
     "stage_id": null,
     "character_line_en": "I have kept the rest of the week flexible.",
-    "player_reply_en": "Flexible is good."
+    "player_reply_en": "Flexible is good.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD267",
     "character_id": "SF08",
     "stage_id": null,
     "character_line_en": "A glass of water is on the table. Use it.",
-    "player_reply_en": "I will."
+    "player_reply_en": "I will.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD268",
     "character_id": "SF08",
     "stage_id": null,
     "character_line_en": "Take a moment at the door. Nobody is timing you.",
-    "player_reply_en": "A moment is enough."
+    "player_reply_en": "A moment is enough.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD269",
     "character_id": "SF08",
     "stage_id": null,
     "character_line_en": "Whatever happens in there, the day goes on.",
-    "player_reply_en": "That helps."
+    "player_reply_en": "That helps.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD270",
     "character_id": "SF09",
     "stage_id": null,
     "character_line_en": "Say less than you know. It keeps you safe.",
-    "player_reply_en": "Less, then."
+    "player_reply_en": "Less, then.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD271",
     "character_id": "SF09",
     "stage_id": null,
     "character_line_en": "Choose one sentence you would be happy to see quoted.",
-    "player_reply_en": "I have one."
+    "player_reply_en": "I have one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD272",
     "character_id": "SF09",
     "stage_id": null,
     "character_line_en": "Do not promise what you cannot deliver.",
-    "player_reply_en": "Never."
+    "player_reply_en": "Never.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD273",
     "character_id": "SF09",
     "stage_id": null,
     "character_line_en": "If you are unsure, ask for the question to be repeated.",
-    "player_reply_en": "A fair trick."
+    "player_reply_en": "A fair trick.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD274",
     "character_id": "SF09",
     "stage_id": null,
     "character_line_en": "Keep your hands relaxed and your voice level.",
-    "player_reply_en": "Relaxed hands. Level voice."
+    "player_reply_en": "Relaxed hands. Level voice.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD275",
     "character_id": "SF09",
     "stage_id": null,
     "character_line_en": "A calm answer is stronger than a clever one.",
-    "player_reply_en": "Calm first, clever second."
+    "player_reply_en": "Calm first, clever second.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD276",
     "character_id": "SF15",
     "stage_id": null,
     "character_line_en": "I spoke to three families in the district this week.",
-    "player_reply_en": "Then I will carry their voices."
+    "player_reply_en": "Then I will carry their voices.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD277",
     "character_id": "SF15",
     "stage_id": null,
     "character_line_en": "The district is behind you, quietly but firmly.",
-    "player_reply_en": "That means a lot."
+    "player_reply_en": "That means a lot.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD278",
     "character_id": "SF15",
     "stage_id": null,
     "character_line_en": "Someone asked me to give you a jar of local honey.",
-    "player_reply_en": "Thank them. I will enjoy it."
+    "player_reply_en": "Thank them. I will enjoy it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD279",
     "character_id": "SF15",
     "stage_id": null,
     "character_line_en": "Your constituents judge you on small kindnesses.",
-    "player_reply_en": "Small kindnesses, then."
+    "player_reply_en": "Small kindnesses, then.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD280",
     "character_id": "SF15",
     "stage_id": null,
     "character_line_en": "A farmer at the office said you listen. Keep it up.",
-    "player_reply_en": "I will."
+    "player_reply_en": "I will.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD281",
     "character_id": "SF15",
     "stage_id": null,
     "character_line_en": "The district office is thinking of you today.",
-    "player_reply_en": "Tell them I am thinking of them."
+    "player_reply_en": "Tell them I am thinking of them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD282",
     "character_id": "SF16",
     "stage_id": null,
     "character_line_en": "The district office has a full pot of tea waiting for you.",
-    "player_reply_en": "Then I have something to look forward to."
+    "player_reply_en": "Then I have something to look forward to.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD283",
     "character_id": "SF16",
     "stage_id": null,
     "character_line_en": "People say your door is open to anyone. Keep it so.",
-    "player_reply_en": "It will stay open."
+    "player_reply_en": "It will stay open.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD284",
     "character_id": "SF16",
     "stage_id": null,
     "character_line_en": "I brought you a rice ball. Eat before you go in.",
-    "player_reply_en": "You think of everything."
+    "player_reply_en": "You think of everything.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD285",
     "character_id": "SF16",
     "stage_id": null,
     "character_line_en": "A long day is easier with a warm drink.",
-    "player_reply_en": "Pass the cup."
+    "player_reply_en": "Pass the cup.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD286",
     "character_id": "SF16",
     "stage_id": null,
     "character_line_en": "Every handshake at home counts for more than you think.",
-    "player_reply_en": "I will remember that."
+    "player_reply_en": "I will remember that.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD287",
     "character_id": "SF16",
     "stage_id": null,
     "character_line_en": "Take your time. Nobody here is rushing you.",
-    "player_reply_en": "Then I will not rush."
+    "player_reply_en": "Then I will not rush.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD288",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "The room will be what I make of it.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD289",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "I have done the reading. Now I listen.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD290",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "A good answer is a short answer.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD291",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Nobody in there is my enemy. They are only in my way.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD292",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "I want to be fair, even when it costs me.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD293",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "My nerves can wait outside the door.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD294",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "I say what I mean, and I mean what I say.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD295",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "The hard question is usually the honest one.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD296",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "I do not have to win every point. Only the right ones.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD297",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Somebody back home is counting on this.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD298",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "If I lose my place, I start with what I believe.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD299",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "A calm voice carries farther than a loud one.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD300",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "This is not about being liked. It is about being clear.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD301",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "I will give them a straight answer and let them judge it.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD302",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Even a small win here is worth having.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD303",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "One breath, then the first word.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD304",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "I was not sent here to be comfortable.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD305",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Let them test me. I know my own mind.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD306",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "There is more to say than I have time for. Pick the best of it.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD307",
     "character_id": "PLAYER",
     "stage_id": null,
     "character_line_en": "Whatever they throw at me, I stay on my feet.",
-    "player_reply_en": null
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD308",
     "character_id": "SF01",
     "stage_id": "ST09",
     "character_line_en": "The committee has a long list of questions on Ethics and Prosecution.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD309",
     "character_id": "SF02",
     "stage_id": "ST09",
     "character_line_en": "Keep every figure on Ethics and Prosecution within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD310",
     "character_id": "SF01",
     "stage_id": "ST10",
     "character_line_en": "The committee has a long list of questions on the Environment.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD311",
     "character_id": "SF02",
     "stage_id": "ST10",
     "character_line_en": "Keep every figure on the Environment within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD312",
     "character_id": "SF01",
     "stage_id": "ST11",
     "character_line_en": "The committee has a long list of questions on War.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD313",
     "character_id": "SF02",
     "stage_id": "ST11",
     "character_line_en": "Keep every figure on War within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD314",
     "character_id": "SF01",
     "stage_id": "ST12",
     "character_line_en": "The committee has a long list of questions on the National Assembly.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD315",
     "character_id": "SF02",
     "stage_id": "ST12",
     "character_line_en": "Keep every figure on the National Assembly within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD316",
     "character_id": "SF01",
     "stage_id": "ST13",
     "character_line_en": "The committee has a long list of questions on Agriculture.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD317",
     "character_id": "SF02",
     "stage_id": "ST13",
     "character_line_en": "Keep every figure on Agriculture within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD318",
     "character_id": "SF01",
     "stage_id": "ST14",
     "character_line_en": "The committee has a long list of questions on Foreign Affairs.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD319",
     "character_id": "SF02",
     "stage_id": "ST14",
     "character_line_en": "Keep every figure on Foreign Affairs within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD320",
     "character_id": "SF01",
     "stage_id": "ST15",
     "character_line_en": "The committee has a long list of questions on Construction and Development.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD321",
     "character_id": "SF02",
     "stage_id": "ST15",
     "character_line_en": "Keep every figure on Construction and Development within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD322",
     "character_id": "SF01",
     "stage_id": "ST16",
     "character_line_en": "The committee has a long list of questions on Finance.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD323",
     "character_id": "SF02",
     "stage_id": "ST16",
     "character_line_en": "Keep every figure on Finance within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD324",
     "character_id": "SF01",
     "stage_id": "ST17",
     "character_line_en": "The committee has a long list of questions on Government Administration.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD325",
     "character_id": "SF02",
     "stage_id": "ST17",
     "character_line_en": "Keep every figure on Government Administration within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD326",
     "character_id": "SF15",
     "stage_id": "ST24",
     "character_line_en": "Neighbors have brought their stories about Commuter Fares.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD327",
     "character_id": "SF16",
     "stage_id": "ST24",
     "character_line_en": "Small kindnesses will count most when Commuter Fares comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD328",
     "character_id": "SF01",
     "stage_id": "ST25",
     "character_line_en": "The background pack on Rail Timetables is thick but clear.",
-    "player_reply_en": "I will skim the clear parts."
+    "player_reply_en": "I will skim the clear parts.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD329",
     "character_id": "SF02",
     "stage_id": "ST25",
     "character_line_en": "Every table on Rail Timetables has a source note.",
-    "player_reply_en": "Good. Sources matter."
+    "player_reply_en": "Good. Sources matter.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD330",
     "character_id": "SF08",
     "stage_id": "ST26",
     "character_line_en": "Open with your main point on Raising Train Fares and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD331",
     "character_id": "SF09",
     "stage_id": "ST26",
     "character_line_en": "Do not guess on Raising Train Fares. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD332",
     "character_id": "SF01",
     "stage_id": "ST27",
     "character_line_en": "The committee has a long list of questions on Rail Safety.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD333",
     "character_id": "SF02",
     "stage_id": "ST27",
     "character_line_en": "Keep every figure on Rail Safety within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD334",
     "character_id": "SF15",
     "stage_id": "ST28",
     "character_line_en": "The lobbyist wants something specific on Fishing Quotas.",
-    "player_reply_en": "Then I will ask what."
+    "player_reply_en": "Then I will ask what.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD335",
     "character_id": "SF09",
     "stage_id": "ST28",
     "character_line_en": "Promise little on Fishing Quotas. Listen a lot.",
-    "player_reply_en": "Listen first."
+    "player_reply_en": "Listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD336",
     "character_id": "SF01",
     "stage_id": "ST31",
     "character_line_en": "The committee has a long list of questions on Fishery Quotas.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD337",
     "character_id": "SF02",
     "stage_id": "ST31",
     "character_line_en": "Keep every figure on Fishery Quotas within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD338",
     "character_id": "SF08",
     "stage_id": "ST32",
     "character_line_en": "Open with your main point on Wilderness Protection and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD339",
     "character_id": "SF09",
     "stage_id": "ST32",
     "character_line_en": "Do not guess on Wilderness Protection. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD340",
     "character_id": "SF01",
     "stage_id": "ST33",
     "character_line_en": "The committee has a long list of questions on Wilderness Protection.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD341",
     "character_id": "SF02",
     "stage_id": "ST33",
     "character_line_en": "Keep every figure on Wilderness Protection within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD342",
     "character_id": "SF15",
     "stage_id": "ST34",
     "character_line_en": "Neighbors have brought their stories about Wilderness Protection.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD343",
     "character_id": "SF16",
     "stage_id": "ST34",
     "character_line_en": "Small kindnesses will count most when Wilderness Protection comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD344",
     "character_id": "SF15",
     "stage_id": "ST35",
     "character_line_en": "Members at home are following your stand on Wilderness Protection.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD345",
     "character_id": "SF16",
     "stage_id": "ST35",
     "character_line_en": "Expect blunt talk on Wilderness Protection in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD346",
     "character_id": "SF15",
     "stage_id": "ST36",
     "character_line_en": "Neighbors have brought their stories about Rural Hospitals.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD347",
     "character_id": "SF16",
     "stage_id": "ST36",
     "character_line_en": "Small kindnesses will count most when Rural Hospitals comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD348",
     "character_id": "SF01",
     "stage_id": "ST37",
     "character_line_en": "The committee has a long list of questions on Rural Hospitals.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD349",
     "character_id": "SF02",
     "stage_id": "ST37",
     "character_line_en": "Keep every figure on Rural Hospitals within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD350",
     "character_id": "SF01",
     "stage_id": "ST38",
     "character_line_en": "The background pack on Rural Hospitals is thick but clear.",
-    "player_reply_en": "I will skim the clear parts."
+    "player_reply_en": "I will skim the clear parts.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD351",
     "character_id": "SF02",
     "stage_id": "ST38",
     "character_line_en": "Every table on Rural Hospitals has a source note.",
-    "player_reply_en": "Good. Sources matter."
+    "player_reply_en": "Good. Sources matter.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD352",
     "character_id": "SF15",
     "stage_id": "ST39",
     "character_line_en": "Members at home are following your stand on Rural Hospitals.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD353",
     "character_id": "SF16",
     "stage_id": "ST39",
     "character_line_en": "Expect blunt talk on Rural Hospitals in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD354",
     "character_id": "SF01",
     "stage_id": "ST40",
     "character_line_en": "The background pack on Digital Identity Cards is thick but clear.",
-    "player_reply_en": "I will skim the clear parts."
+    "player_reply_en": "I will skim the clear parts.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD355",
     "character_id": "SF02",
     "stage_id": "ST40",
     "character_line_en": "Every table on Digital Identity Cards has a source note.",
-    "player_reply_en": "Good. Sources matter."
+    "player_reply_en": "Good. Sources matter.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD356",
     "character_id": "SF08",
     "stage_id": "ST41",
     "character_line_en": "Open with your best point on Digital Identity Cards and keep it short.",
-    "player_reply_en": "Best point, then silence."
+    "player_reply_en": "Best point, then silence.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD357",
     "character_id": "SF09",
     "stage_id": "ST41",
     "character_line_en": "Speak to one person at home about Digital Identity Cards.",
-    "player_reply_en": "One person, one point."
+    "player_reply_en": "One person, one point.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD358",
     "character_id": "SF15",
     "stage_id": "ST42",
     "character_line_en": "Members at home are following your stand on Digital Identity Cards.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD359",
     "character_id": "SF16",
     "stage_id": "ST42",
     "character_line_en": "Expect blunt talk on Digital Identity Cards in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD360",
     "character_id": "SF08",
     "stage_id": "ST43",
     "character_line_en": "Open with your main point on Broadcaster Independence and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD361",
     "character_id": "SF09",
     "stage_id": "ST43",
     "character_line_en": "Do not guess on Broadcaster Independence. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD362",
     "character_id": "SF08",
     "stage_id": "ST44",
     "character_line_en": "Open with your best point on Broadcaster Independence and keep it short.",
-    "player_reply_en": "Best point, then silence."
+    "player_reply_en": "Best point, then silence.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD363",
     "character_id": "SF09",
     "stage_id": "ST44",
     "character_line_en": "Speak to one person at home about Broadcaster Independence.",
-    "player_reply_en": "One person, one point."
+    "player_reply_en": "One person, one point.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD364",
     "character_id": "SF15",
     "stage_id": "ST45",
     "character_line_en": "Members at home are following your stand on Broadcaster Independence.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD365",
     "character_id": "SF16",
     "stage_id": "ST45",
     "character_line_en": "Expect blunt talk on Broadcaster Independence in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD366",
     "character_id": "SF08",
     "stage_id": "ST46",
     "character_line_en": "Open with your main point on Donation Transparency and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD367",
     "character_id": "SF09",
     "stage_id": "ST46",
     "character_line_en": "Do not guess on Donation Transparency. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD368",
     "character_id": "SF01",
     "stage_id": "ST47",
     "character_line_en": "The committee has a long list of questions on Donation Transparency.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD369",
     "character_id": "SF02",
     "stage_id": "ST47",
     "character_line_en": "Keep every figure on Donation Transparency within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD370",
     "character_id": "SF15",
     "stage_id": "ST48",
     "character_line_en": "The lobbyist wants something specific on Donation Transparency.",
-    "player_reply_en": "Then I will ask what."
+    "player_reply_en": "Then I will ask what.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD371",
     "character_id": "SF09",
     "stage_id": "ST48",
     "character_line_en": "Promise little on Donation Transparency. Listen a lot.",
-    "player_reply_en": "Listen first."
+    "player_reply_en": "Listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD372",
     "character_id": "SF15",
     "stage_id": "ST49",
     "character_line_en": "Members at home are following your stand on Donation Transparency.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD373",
     "character_id": "SF16",
     "stage_id": "ST49",
     "character_line_en": "Expect blunt talk on Donation Transparency in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD374",
     "character_id": "SF01",
     "stage_id": "ST50",
     "character_line_en": "The background pack on Corporate Tax Cuts is thick but clear.",
-    "player_reply_en": "I will skim the clear parts."
+    "player_reply_en": "I will skim the clear parts.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD375",
     "character_id": "SF02",
     "stage_id": "ST50",
     "character_line_en": "Every table on Corporate Tax Cuts has a source note.",
-    "player_reply_en": "Good. Sources matter."
+    "player_reply_en": "Good. Sources matter.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD376",
     "character_id": "SF01",
     "stage_id": "ST51",
     "character_line_en": "The committee has a long list of questions on Corporate Tax Cuts.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD377",
     "character_id": "SF02",
     "stage_id": "ST51",
     "character_line_en": "Keep every figure on Corporate Tax Cuts within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD378",
     "character_id": "SF15",
     "stage_id": "ST52",
     "character_line_en": "Members at home are following your stand on Corporate Tax Cuts.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD379",
     "character_id": "SF16",
     "stage_id": "ST52",
     "character_line_en": "Expect blunt talk on Corporate Tax Cuts in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD380",
     "character_id": "SF15",
     "stage_id": "ST53",
     "character_line_en": "Neighbors have brought their stories about the Carbon Levy.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD381",
     "character_id": "SF16",
     "stage_id": "ST53",
     "character_line_en": "Small kindnesses will count most when the Carbon Levy comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD382",
     "character_id": "SF01",
     "stage_id": "ST54",
     "character_line_en": "The committee has a long list of questions on the Carbon Levy.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD383",
     "character_id": "SF02",
     "stage_id": "ST54",
     "character_line_en": "Keep every figure on the Carbon Levy within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD384",
     "character_id": "SF08",
     "stage_id": "ST55",
     "character_line_en": "Open with your main point on the Carbon Levy and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD385",
     "character_id": "SF09",
     "stage_id": "ST55",
     "character_line_en": "Do not guess on the Carbon Levy. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD386",
     "character_id": "SF15",
     "stage_id": "ST56",
     "character_line_en": "Members at home are following your stand on the Carbon Levy.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD387",
     "character_id": "SF16",
     "stage_id": "ST56",
     "character_line_en": "Expect blunt talk on the Carbon Levy in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD388",
     "character_id": "SF01",
     "stage_id": "ST57",
     "character_line_en": "The committee has a long list of questions on Fishing Quota Reform.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD389",
     "character_id": "SF02",
     "stage_id": "ST57",
     "character_line_en": "Keep every figure on Fishing Quota Reform within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD390",
     "character_id": "SF15",
     "stage_id": "ST58",
     "character_line_en": "Neighbors have brought their stories about Fishing Quota Reform.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD391",
     "character_id": "SF16",
     "stage_id": "ST58",
     "character_line_en": "Small kindnesses will count most when Fishing Quota Reform comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD392",
     "character_id": "SF15",
     "stage_id": "ST59",
     "character_line_en": "Members at home are following your stand on Fishing Quota Reform.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD393",
     "character_id": "SF16",
     "stage_id": "ST59",
     "character_line_en": "Expect blunt talk on Fishing Quota Reform in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD394",
     "character_id": "SF01",
     "stage_id": "ST60",
     "character_line_en": "The committee has a long list of questions on Shipbuilding Support.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD395",
     "character_id": "SF02",
     "stage_id": "ST60",
     "character_line_en": "Keep every figure on Shipbuilding Support within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD396",
     "character_id": "SF15",
     "stage_id": "ST61",
     "character_line_en": "Neighbors have brought their stories about Shipbuilding Support.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD397",
     "character_id": "SF16",
     "stage_id": "ST61",
     "character_line_en": "Small kindnesses will count most when Shipbuilding Support comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD398",
     "character_id": "SF15",
     "stage_id": "ST62",
     "character_line_en": "Members at home are following your stand on Shipbuilding Support.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD399",
     "character_id": "SF16",
     "stage_id": "ST62",
     "character_line_en": "Expect blunt talk on Shipbuilding Support in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD400",
     "character_id": "SF01",
     "stage_id": "ST63",
     "character_line_en": "The committee has a long list of questions on the Constitutional Review.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD401",
     "character_id": "SF02",
     "stage_id": "ST63",
     "character_line_en": "Keep every figure on the Constitutional Review within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD402",
     "character_id": "SF08",
     "stage_id": "ST64",
     "character_line_en": "Open with your main point on the Constitutional Review and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD403",
     "character_id": "SF09",
     "stage_id": "ST64",
     "character_line_en": "Do not guess on the Constitutional Review. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD404",
     "character_id": "SF15",
     "stage_id": "ST65",
     "character_line_en": "Members at home are following your stand on the Constitutional Review.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD405",
     "character_id": "SF16",
     "stage_id": "ST65",
     "character_line_en": "Expect blunt talk on the Constitutional Review in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD406",
     "character_id": "SF01",
     "stage_id": "ST66",
     "character_line_en": "The committee has a long list of questions on Border Cooperation.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD407",
     "character_id": "SF02",
     "stage_id": "ST66",
     "character_line_en": "Keep every figure on Border Cooperation within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD408",
     "character_id": "SF15",
     "stage_id": "ST67",
     "character_line_en": "The lobbyist wants something specific on Border Cooperation.",
-    "player_reply_en": "Then I will ask what."
+    "player_reply_en": "Then I will ask what.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD409",
     "character_id": "SF09",
     "stage_id": "ST67",
     "character_line_en": "Promise little on Border Cooperation. Listen a lot.",
-    "player_reply_en": "Listen first."
+    "player_reply_en": "Listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD410",
     "character_id": "SF15",
     "stage_id": "ST68",
     "character_line_en": "Members at home are following your stand on Border Cooperation.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD411",
     "character_id": "SF16",
     "stage_id": "ST68",
     "character_line_en": "Expect blunt talk on Border Cooperation in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD412",
     "character_id": "SF01",
     "stage_id": "ST69",
     "character_line_en": "The committee has a long list of questions on Chishima Development.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD413",
     "character_id": "SF02",
     "stage_id": "ST69",
     "character_line_en": "Keep every figure on Chishima Development within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD414",
     "character_id": "SF08",
     "stage_id": "ST70",
     "character_line_en": "Open with your main point on Chishima Development and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD415",
     "character_id": "SF09",
     "stage_id": "ST70",
     "character_line_en": "Do not guess on Chishima Development. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD416",
     "character_id": "SF15",
     "stage_id": "ST71",
     "character_line_en": "The lobbyist wants something specific on Chishima Development.",
-    "player_reply_en": "Then I will ask what."
+    "player_reply_en": "Then I will ask what.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD417",
     "character_id": "SF09",
     "stage_id": "ST71",
     "character_line_en": "Promise little on Chishima Development. Listen a lot.",
-    "player_reply_en": "Listen first."
+    "player_reply_en": "Listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD418",
     "character_id": "SF15",
     "stage_id": "ST72",
     "character_line_en": "Members at home are following your stand on Chishima Development.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD419",
     "character_id": "SF16",
     "stage_id": "ST72",
     "character_line_en": "Expect blunt talk on Chishima Development in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD420",
     "character_id": "SF08",
     "stage_id": "ST73",
     "character_line_en": "Open with your best point on China Trade and keep it short.",
-    "player_reply_en": "Best point, then silence."
+    "player_reply_en": "Best point, then silence.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD421",
     "character_id": "SF09",
     "stage_id": "ST73",
     "character_line_en": "Speak to one person at home about China Trade.",
-    "player_reply_en": "One person, one point."
+    "player_reply_en": "One person, one point.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD422",
     "character_id": "SF01",
     "stage_id": "ST74",
     "character_line_en": "The committee has a long list of questions on China Trade.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD423",
     "character_id": "SF02",
     "stage_id": "ST74",
     "character_line_en": "Keep every figure on China Trade within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD424",
     "character_id": "SF15",
     "stage_id": "ST75",
     "character_line_en": "Members at home are following your stand on China Trade.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD425",
     "character_id": "SF16",
     "stage_id": "ST75",
     "character_line_en": "Expect blunt talk on China Trade in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD426",
     "character_id": "SF15",
     "stage_id": "ST76",
     "character_line_en": "Neighbors have brought their stories about Farm Succession.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD427",
     "character_id": "SF16",
     "stage_id": "ST76",
     "character_line_en": "Small kindnesses will count most when Farm Succession comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD428",
     "character_id": "SF01",
     "stage_id": "ST77",
     "character_line_en": "The committee has a long list of questions on Farm Succession.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD429",
     "character_id": "SF02",
     "stage_id": "ST77",
     "character_line_en": "Keep every figure on Farm Succession within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD430",
     "character_id": "SF15",
     "stage_id": "ST78",
     "character_line_en": "Members at home are following your stand on Farm Succession.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD431",
     "character_id": "SF16",
     "stage_id": "ST78",
     "character_line_en": "Expect blunt talk on Farm Succession in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD432",
     "character_id": "SF01",
     "stage_id": "ST79",
     "character_line_en": "The background pack on University Research Funding is thick but clear.",
-    "player_reply_en": "I will skim the clear parts."
+    "player_reply_en": "I will skim the clear parts.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD433",
     "character_id": "SF02",
     "stage_id": "ST79",
     "character_line_en": "Every table on University Research Funding has a source note.",
-    "player_reply_en": "Good. Sources matter."
+    "player_reply_en": "Good. Sources matter.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD434",
     "character_id": "SF01",
     "stage_id": "ST80",
     "character_line_en": "The committee has a long list of questions on University Research Funding.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD435",
     "character_id": "SF02",
     "stage_id": "ST80",
     "character_line_en": "Keep every figure on University Research Funding within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD436",
     "character_id": "SF15",
     "stage_id": "ST81",
     "character_line_en": "Members at home are following your stand on University Research Funding.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD437",
     "character_id": "SF16",
     "stage_id": "ST81",
     "character_line_en": "Expect blunt talk on University Research Funding in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD438",
     "character_id": "SF15",
     "stage_id": "ST82",
     "character_line_en": "Neighbors have brought their stories about Workplace Equality.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD439",
     "character_id": "SF16",
     "stage_id": "ST82",
     "character_line_en": "Small kindnesses will count most when Workplace Equality comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD440",
     "character_id": "SF08",
     "stage_id": "ST83",
     "character_line_en": "Open with your main point on Workplace Equality and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD441",
     "character_id": "SF09",
     "stage_id": "ST83",
     "character_line_en": "Do not guess on Workplace Equality. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD442",
     "character_id": "SF08",
     "stage_id": "ST84",
     "character_line_en": "Open with your best point on Workplace Equality and keep it short.",
-    "player_reply_en": "Best point, then silence."
+    "player_reply_en": "Best point, then silence.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD443",
     "character_id": "SF09",
     "stage_id": "ST84",
     "character_line_en": "Speak to one person at home about Workplace Equality.",
-    "player_reply_en": "One person, one point."
+    "player_reply_en": "One person, one point.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD444",
     "character_id": "SF15",
     "stage_id": "ST85",
     "character_line_en": "Members at home are following your stand on Workplace Equality.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD445",
     "character_id": "SF16",
     "stage_id": "ST85",
     "character_line_en": "Expect blunt talk on Workplace Equality in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD446",
     "character_id": "SF15",
     "stage_id": "ST86",
     "character_line_en": "Neighbors have brought their stories about Parental Leave.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD447",
     "character_id": "SF16",
     "stage_id": "ST86",
     "character_line_en": "Small kindnesses will count most when Parental Leave comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD448",
     "character_id": "SF01",
     "stage_id": "ST87",
     "character_line_en": "The background pack on Parental Leave is thick but clear.",
-    "player_reply_en": "I will skim the clear parts."
+    "player_reply_en": "I will skim the clear parts.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD449",
     "character_id": "SF02",
     "stage_id": "ST87",
     "character_line_en": "Every table on Parental Leave has a source note.",
-    "player_reply_en": "Good. Sources matter."
+    "player_reply_en": "Good. Sources matter.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD450",
     "character_id": "SF15",
     "stage_id": "ST88",
     "character_line_en": "The lobbyist wants something specific on Parental Leave.",
-    "player_reply_en": "Then I will ask what."
+    "player_reply_en": "Then I will ask what.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD451",
     "character_id": "SF09",
     "stage_id": "ST88",
     "character_line_en": "Promise little on Parental Leave. Listen a lot.",
-    "player_reply_en": "Listen first."
+    "player_reply_en": "Listen first.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD452",
     "character_id": "SF15",
     "stage_id": "ST89",
     "character_line_en": "Members at home are following your stand on Parental Leave.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD453",
     "character_id": "SF16",
     "stage_id": "ST89",
     "character_line_en": "Expect blunt talk on Parental Leave in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD454",
     "character_id": "SF01",
     "stage_id": "ST90",
     "character_line_en": "The committee has a long list of questions on Surveillance Cameras.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD455",
     "character_id": "SF02",
     "stage_id": "ST90",
     "character_line_en": "Keep every figure on Surveillance Cameras within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD456",
     "character_id": "SF08",
     "stage_id": "ST91",
     "character_line_en": "Open with your best point on Surveillance Cameras and keep it short.",
-    "player_reply_en": "Best point, then silence."
+    "player_reply_en": "Best point, then silence.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD457",
     "character_id": "SF09",
     "stage_id": "ST91",
     "character_line_en": "Speak to one person at home about Surveillance Cameras.",
-    "player_reply_en": "One person, one point."
+    "player_reply_en": "One person, one point.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD458",
     "character_id": "SF08",
     "stage_id": "ST92",
     "character_line_en": "Open with your main point on Surveillance Cameras and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD459",
     "character_id": "SF09",
     "stage_id": "ST92",
     "character_line_en": "Do not guess on Surveillance Cameras. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD460",
     "character_id": "SF15",
     "stage_id": "ST93",
     "character_line_en": "Members at home are following your stand on Surveillance Cameras.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD461",
     "character_id": "SF16",
     "stage_id": "ST93",
     "character_line_en": "Expect blunt talk on Surveillance Cameras in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD462",
     "character_id": "SF15",
     "stage_id": "ST94",
     "character_line_en": "Neighbors have brought their stories about Town Mergers.",
-    "player_reply_en": "Then I will hear every one."
+    "player_reply_en": "Then I will hear every one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD463",
     "character_id": "SF16",
     "stage_id": "ST94",
     "character_line_en": "Small kindnesses will count most when Town Mergers comes up.",
-    "player_reply_en": "Then I will be kind."
+    "player_reply_en": "Then I will be kind.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD464",
     "character_id": "SF01",
     "stage_id": "ST95",
     "character_line_en": "The committee has a long list of questions on Town Mergers.",
-    "player_reply_en": "Then I will take them one at a time."
+    "player_reply_en": "Then I will take them one at a time.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD465",
     "character_id": "SF02",
     "stage_id": "ST95",
     "character_line_en": "Keep every figure on Town Mergers within reach.",
-    "player_reply_en": "They are within reach."
+    "player_reply_en": "They are within reach.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD466",
     "character_id": "SF01",
     "stage_id": "ST96",
     "character_line_en": "The background pack on Town Mergers is thick but clear.",
-    "player_reply_en": "I will skim the clear parts."
+    "player_reply_en": "I will skim the clear parts.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD467",
     "character_id": "SF02",
     "stage_id": "ST96",
     "character_line_en": "Every table on Town Mergers has a source note.",
-    "player_reply_en": "Good. Sources matter."
+    "player_reply_en": "Good. Sources matter.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD468",
     "character_id": "SF15",
     "stage_id": "ST97",
     "character_line_en": "Members at home are following your stand on Town Mergers.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD469",
     "character_id": "SF16",
     "stage_id": "ST97",
     "character_line_en": "Expect blunt talk on Town Mergers in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD470",
     "character_id": "SF08",
     "stage_id": "ST98",
     "character_line_en": "Open with your best point on Party Leadership Ballots and keep it short.",
-    "player_reply_en": "Best point, then silence."
+    "player_reply_en": "Best point, then silence.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD471",
     "character_id": "SF09",
     "stage_id": "ST98",
     "character_line_en": "Speak to one person at home about Party Leadership Ballots.",
-    "player_reply_en": "One person, one point."
+    "player_reply_en": "One person, one point.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD472",
     "character_id": "SF08",
     "stage_id": "ST99",
     "character_line_en": "Open with your main point on Party Leadership Ballots and stop.",
-    "player_reply_en": "Main point, then stop."
+    "player_reply_en": "Main point, then stop.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD473",
     "character_id": "SF09",
     "stage_id": "ST99",
     "character_line_en": "Do not guess on Party Leadership Ballots. Say you will find out.",
-    "player_reply_en": "I will find out."
+    "player_reply_en": "I will find out.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD474",
     "character_id": "SF15",
     "stage_id": "ST100",
     "character_line_en": "Members at home are following your stand on Party Leadership Ballots.",
-    "player_reply_en": "Then I will stand carefully."
+    "player_reply_en": "Then I will stand carefully.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD475",
     "character_id": "SF16",
     "stage_id": "ST100",
     "character_line_en": "Expect blunt talk on Party Leadership Ballots in there.",
-    "player_reply_en": "Blunt suits me."
+    "player_reply_en": "Blunt suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD476",
     "character_id": "OP52",
     "stage_id": "ST01",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD477",
     "character_id": "OP13",
     "stage_id": "ST01",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD478",
     "character_id": "OP06",
     "stage_id": "ST02",
     "character_line_en": "Let us see who the seats truly favor.",
-    "player_reply_en": "Let us."
+    "player_reply_en": "Let us.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD479",
     "character_id": "OP21",
     "stage_id": "ST02",
     "character_line_en": "The chamber is yours to win or lose.",
-    "player_reply_en": "Then I will win it."
+    "player_reply_en": "Then I will win it.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD480",
     "character_id": "OP114",
     "stage_id": "ST04",
     "character_line_en": "Do not dodge, and we will get along.",
-    "player_reply_en": "No dodging."
+    "player_reply_en": "No dodging.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD481",
     "character_id": "OP116",
     "stage_id": "ST04",
     "character_line_en": "My editor wants a clear answer today.",
-    "player_reply_en": "She will get one."
+    "player_reply_en": "She will get one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD482",
     "character_id": "OP107",
     "stage_id": "ST05",
     "character_line_en": "Everyone here has something to ask.",
-    "player_reply_en": "Then let us begin."
+    "player_reply_en": "Then let us begin.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD483",
     "character_id": "OP123",
     "stage_id": "ST05",
     "character_line_en": "Everyone here has something to ask.",
-    "player_reply_en": "Then let us begin."
+    "player_reply_en": "Then let us begin.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD484",
     "character_id": "OP91",
     "stage_id": "ST06",
     "character_line_en": "I plan to be brief and sharp tonight.",
-    "player_reply_en": "So will I."
+    "player_reply_en": "So will I.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD485",
     "character_id": "OP33",
     "stage_id": "ST06",
     "character_line_en": "I plan to be brief and sharp tonight.",
-    "player_reply_en": "So will I."
+    "player_reply_en": "So will I.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD486",
     "character_id": "OP34",
     "stage_id": "ST09",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD487",
     "character_id": "OP01",
     "stage_id": "ST10",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD488",
     "character_id": "OP67",
     "stage_id": "ST11",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD489",
     "character_id": "OP04",
     "stage_id": "ST12",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD490",
     "character_id": "OP29",
     "stage_id": "ST13",
     "character_line_en": "I have read your file. I have a few concerns.",
-    "player_reply_en": "Let us go through them."
+    "player_reply_en": "Let us go through them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD491",
     "character_id": "OP95",
     "stage_id": "ST14",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD492",
     "character_id": "OP19",
     "stage_id": "ST15",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD493",
     "character_id": "OP07",
     "stage_id": "ST16",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD494",
     "character_id": "OP87",
     "stage_id": "ST17",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD495",
     "character_id": "OP91",
     "stage_id": "ST18",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD496",
     "character_id": "OP82",
     "stage_id": "ST18",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD497",
     "character_id": "OP119",
     "stage_id": "ST20",
     "character_line_en": "Let us find where our interests meet.",
-    "player_reply_en": "Let us look."
+    "player_reply_en": "Let us look.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD498",
     "character_id": "OP120",
     "stage_id": "ST20",
     "character_line_en": "Let us find where our interests meet.",
-    "player_reply_en": "Let us look."
+    "player_reply_en": "Let us look.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD499",
     "character_id": "OP42",
     "stage_id": "ST21",
     "character_line_en": "Show me the numbers behind the promise.",
-    "player_reply_en": "Gladly."
+    "player_reply_en": "Gladly.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD500",
     "character_id": "OP12",
     "stage_id": "ST21",
     "character_line_en": "I have studied the briefing closely.",
-    "player_reply_en": "Then you will have sharp questions."
+    "player_reply_en": "Then you will have sharp questions.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD501",
     "character_id": "OP104",
     "stage_id": "ST24",
     "character_line_en": "I came to speak for my neighbors.",
-    "player_reply_en": "Then I will listen to them."
+    "player_reply_en": "Then I will listen to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD502",
     "character_id": "OP13",
     "stage_id": "ST25",
     "character_line_en": "I have studied the briefing closely.",
-    "player_reply_en": "Then you will have sharp questions."
+    "player_reply_en": "Then you will have sharp questions.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD503",
     "character_id": "OP114",
     "stage_id": "ST26",
     "character_line_en": "I have my questions ready. Keep your answers plain.",
-    "player_reply_en": "Plain answers, then."
+    "player_reply_en": "Plain answers, then.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD504",
     "character_id": "OP101",
     "stage_id": "ST27",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD505",
     "character_id": "OP120",
     "stage_id": "ST28",
     "character_line_en": "I will be direct about what my members need.",
-    "player_reply_en": "Direct suits me."
+    "player_reply_en": "Direct suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD506",
     "character_id": "OP108",
     "stage_id": "ST29",
     "character_line_en": "Everyone here has something to ask.",
-    "player_reply_en": "Then let us begin."
+    "player_reply_en": "Then let us begin.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD507",
     "character_id": "OP106",
     "stage_id": "ST29",
     "character_line_en": "Everyone here has something to ask.",
-    "player_reply_en": "Then let us begin."
+    "player_reply_en": "Then let us begin.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD508",
     "character_id": "OP70",
     "stage_id": "ST31",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD509",
     "character_id": "OP114",
     "stage_id": "ST32",
     "character_line_en": "I have my questions ready. Keep your answers plain.",
-    "player_reply_en": "Plain answers, then."
+    "player_reply_en": "Plain answers, then.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD510",
     "character_id": "OP37",
     "stage_id": "ST33",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD511",
     "character_id": "OP102",
     "stage_id": "ST34",
     "character_line_en": "We want answers, not speeches.",
-    "player_reply_en": "Answers it is."
+    "player_reply_en": "Answers it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD512",
     "character_id": "OP123",
     "stage_id": "ST36",
     "character_line_en": "I came to speak for my neighbors.",
-    "player_reply_en": "Then I will listen to them."
+    "player_reply_en": "Then I will listen to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD513",
     "character_id": "OP26",
     "stage_id": "ST37",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD514",
     "character_id": "OP16",
     "stage_id": "ST38",
     "character_line_en": "The details matter more than the slogans.",
-    "player_reply_en": "I agree."
+    "player_reply_en": "I agree.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD515",
     "character_id": "OP12",
     "stage_id": "ST40",
     "character_line_en": "The details matter more than the slogans.",
-    "player_reply_en": "I agree."
+    "player_reply_en": "I agree.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD516",
     "character_id": "OP33",
     "stage_id": "ST41",
     "character_line_en": "The audience at home will judge us both.",
-    "player_reply_en": "Then I will speak to them."
+    "player_reply_en": "Then I will speak to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD517",
     "character_id": "OP113",
     "stage_id": "ST43",
     "character_line_en": "My editor wants a clear answer today.",
-    "player_reply_en": "She will get one."
+    "player_reply_en": "She will get one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD518",
     "character_id": "OP27",
     "stage_id": "ST44",
     "character_line_en": "I plan to be brief and sharp tonight.",
-    "player_reply_en": "So will I."
+    "player_reply_en": "So will I.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD519",
     "character_id": "OP113",
     "stage_id": "ST46",
     "character_line_en": "I have my questions ready. Keep your answers plain.",
-    "player_reply_en": "Plain answers, then."
+    "player_reply_en": "Plain answers, then.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD520",
     "character_id": "OP28",
     "stage_id": "ST47",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD521",
     "character_id": "OP121",
     "stage_id": "ST48",
     "character_line_en": "I will be direct about what my members need.",
-    "player_reply_en": "Direct suits me."
+    "player_reply_en": "Direct suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD522",
     "character_id": "OP59",
     "stage_id": "ST50",
     "character_line_en": "I have studied the briefing closely.",
-    "player_reply_en": "Then you will have sharp questions."
+    "player_reply_en": "Then you will have sharp questions.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD523",
     "character_id": "OP05",
     "stage_id": "ST51",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD524",
     "character_id": "OP105",
     "stage_id": "ST53",
     "character_line_en": "I came to speak for my neighbors.",
-    "player_reply_en": "Then I will listen to them."
+    "player_reply_en": "Then I will listen to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD525",
     "character_id": "OP92",
     "stage_id": "ST54",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD526",
     "character_id": "OP113",
     "stage_id": "ST55",
     "character_line_en": "My editor wants a clear answer today.",
-    "player_reply_en": "She will get one."
+    "player_reply_en": "She will get one.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD527",
     "character_id": "OP70",
     "stage_id": "ST57",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD528",
     "character_id": "OP106",
     "stage_id": "ST58",
     "character_line_en": "We want answers, not speeches.",
-    "player_reply_en": "Answers it is."
+    "player_reply_en": "Answers it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD529",
     "character_id": "OP66",
     "stage_id": "ST60",
     "character_line_en": "I have read your file. I have a few concerns.",
-    "player_reply_en": "Let us go through them."
+    "player_reply_en": "Let us go through them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD530",
     "character_id": "OP123",
     "stage_id": "ST61",
     "character_line_en": "Everyone here has something to ask.",
-    "player_reply_en": "Then let us begin."
+    "player_reply_en": "Then let us begin.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD531",
     "character_id": "OP12",
     "stage_id": "ST63",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD532",
     "character_id": "OP112",
     "stage_id": "ST64",
     "character_line_en": "Do not dodge, and we will get along.",
-    "player_reply_en": "No dodging."
+    "player_reply_en": "No dodging.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD533",
     "character_id": "OP61",
     "stage_id": "ST66",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD534",
     "character_id": "OP120",
     "stage_id": "ST67",
     "character_line_en": "Let us find where our interests meet.",
-    "player_reply_en": "Let us look."
+    "player_reply_en": "Let us look.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD535",
     "character_id": "OP72",
     "stage_id": "ST69",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD536",
     "character_id": "OP114",
     "stage_id": "ST70",
     "character_line_en": "Do not dodge, and we will get along.",
-    "player_reply_en": "No dodging."
+    "player_reply_en": "No dodging.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD537",
     "character_id": "OP120",
     "stage_id": "ST71",
     "character_line_en": "I represent people who are paying attention.",
-    "player_reply_en": "Then I will pay attention too."
+    "player_reply_en": "Then I will pay attention too.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD538",
     "character_id": "OP47",
     "stage_id": "ST73",
     "character_line_en": "I plan to be brief and sharp tonight.",
-    "player_reply_en": "So will I."
+    "player_reply_en": "So will I.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD539",
     "character_id": "OP61",
     "stage_id": "ST74",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD540",
     "character_id": "OP124",
     "stage_id": "ST76",
     "character_line_en": "I came to speak for my neighbors.",
-    "player_reply_en": "Then I will listen to them."
+    "player_reply_en": "Then I will listen to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD541",
     "character_id": "OP94",
     "stage_id": "ST77",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD542",
     "character_id": "OP16",
     "stage_id": "ST79",
     "character_line_en": "The details matter more than the slogans.",
-    "player_reply_en": "I agree."
+    "player_reply_en": "I agree.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD543",
     "character_id": "OP08",
     "stage_id": "ST80",
     "character_line_en": "I have read your file. I have a few concerns.",
-    "player_reply_en": "Let us go through them."
+    "player_reply_en": "Let us go through them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD544",
     "character_id": "OP107",
     "stage_id": "ST82",
     "character_line_en": "Everyone here has something to ask.",
-    "player_reply_en": "Then let us begin."
+    "player_reply_en": "Then let us begin.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD545",
     "character_id": "OP117",
     "stage_id": "ST83",
     "character_line_en": "Do not dodge, and we will get along.",
-    "player_reply_en": "No dodging."
+    "player_reply_en": "No dodging.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD546",
     "character_id": "OP67",
     "stage_id": "ST84",
     "character_line_en": "I plan to be brief and sharp tonight.",
-    "player_reply_en": "So will I."
+    "player_reply_en": "So will I.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD547",
     "character_id": "OP102",
     "stage_id": "ST86",
     "character_line_en": "We want answers, not speeches.",
-    "player_reply_en": "Answers it is."
+    "player_reply_en": "Answers it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD548",
     "character_id": "OP46",
     "stage_id": "ST87",
     "character_line_en": "I have studied the briefing closely.",
-    "player_reply_en": "Then you will have sharp questions."
+    "player_reply_en": "Then you will have sharp questions.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD549",
     "character_id": "OP125",
     "stage_id": "ST88",
     "character_line_en": "I will be direct about what my members need.",
-    "player_reply_en": "Direct suits me."
+    "player_reply_en": "Direct suits me.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD550",
     "character_id": "OP80",
     "stage_id": "ST90",
     "character_line_en": "We will keep this orderly. Answer what is asked.",
-    "player_reply_en": "Ask, and I will answer."
+    "player_reply_en": "Ask, and I will answer.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD551",
     "character_id": "OP78",
     "stage_id": "ST91",
     "character_line_en": "The audience at home will judge us both.",
-    "player_reply_en": "Then I will speak to them."
+    "player_reply_en": "Then I will speak to them.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD552",
     "character_id": "OP110",
     "stage_id": "ST92",
     "character_line_en": "I have my questions ready. Keep your answers plain.",
-    "player_reply_en": "Plain answers, then."
+    "player_reply_en": "Plain answers, then.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD553",
     "character_id": "OP105",
     "stage_id": "ST94",
     "character_line_en": "We want answers, not speeches.",
-    "player_reply_en": "Answers it is."
+    "player_reply_en": "Answers it is.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD554",
     "character_id": "OP86",
     "stage_id": "ST95",
     "character_line_en": "Our questions are few but pointed.",
-    "player_reply_en": "Then my answers will be direct."
+    "player_reply_en": "Then my answers will be direct.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD555",
     "character_id": "OP16",
     "stage_id": "ST96",
     "character_line_en": "I have studied the briefing closely.",
-    "player_reply_en": "Then you will have sharp questions."
+    "player_reply_en": "Then you will have sharp questions.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD556",
     "character_id": "OP91",
     "stage_id": "ST98",
     "character_line_en": "I plan to be brief and sharp tonight.",
-    "player_reply_en": "So will I."
+    "player_reply_en": "So will I.",
+    "bill_id": null,
+    "stance": null
   },
   {
     "transition_dialogue_id": "TD557",
     "character_id": "OP116",
     "stage_id": "ST99",
     "character_line_en": "Do not dodge, and we will get along.",
-    "player_reply_en": "No dodging."
+    "player_reply_en": "No dodging.",
+    "bill_id": null,
+    "stance": null
   }
 ]

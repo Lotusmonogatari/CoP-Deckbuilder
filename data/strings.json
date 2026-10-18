@@ -3484,5 +3484,12 @@
     "english": "Standing: {changes}.",
     "placeholders": "changes",
     "notes": null
+  },
+  {
+    "key": "record.cause_stance_switch",
+    "where": "Your Record — Party support moved by switching your vote on a bill",
+    "english": "switching your vote on {bill}",
+    "placeholders": "bill",
+    "notes": null
   }
 ]

@@ -270,6 +270,11 @@ var _opponent_cues_by_opponent_stage_verb: Dictionary = {}
 ## Array of {"text", "line_id"}. An empty verb means any verb, and an empty
 ## stage means any stage.
 var _player_cue_lines: Dictionary = {}
+## Bill-scoped content (2026-10-18): rows whose Bill ID names a bill, kept apart
+## from the room-scoped indexes so they can never leak into another level.
+var _bill_player_cues: Dictionary = {}      ## "BI|suit|verb|stance" -> lines
+var _bill_opponent_cues: Dictionary = {}    ## "BI|opp_id or suit|verb" -> lines
+var _questions_by_bill: Dictionary = {}     ## "BI" -> questions
 ## Stage Questions (2026-10-12): stage_id -> the questions that name it.
 var _questions_by_stage: Dictionary = {}
 var _sanban_by_name: Dictionary = {}
@@ -624,52 +629,7 @@ func _build_lookups() -> void:
 				_questions_by_visitor[vid] = []
 			(_questions_by_visitor[vid] as Array).append(question)
 
-	_opponent_cues_by_suit_verb.clear()
-	_opponent_cues_by_opponent_verb.clear()
-	_opponent_cues_by_stage_suit_verb.clear()
-	_opponent_cues_by_opponent_stage_verb.clear()
-	for row: Dictionary in opponent_cues:
-		var suit := str(row.get("suit", ""))
-		var verb := str(row.get("verb", ""))
-		var lines: Array[String] = _cue_lines(row)
-		if lines.is_empty():
-			continue
-		# The <null> trap again (BarModel.for_stage()'s own comment): a blank
-		# "Opponent ID" cell exports as JSON null, not [] — the key IS
-		# present, so .get()'s default never fires. Every row in the real
-		# workbook is blank here today (the general pool), so this crashed
-		# on the first real Opponent Cues data the game ever loaded.
-		var opp_ids_raw: Variant = row.get("opponent_ids")
-		var opp_ids: Array = opp_ids_raw if opp_ids_raw is Array else []
-		# Optional Stage ID (2026-10-12), past the same <null> trap.
-		var stages_raw: Variant = row.get("stage_ids")
-		var stages: Array = stages_raw if stages_raw is Array else []
-		if opp_ids.is_empty():
-			# The general pool: every opponent with this suit draws from it
-			# for this verb — in every stage, or only the stages named.
-			if stages.is_empty():
-				var key := "%s|%s" % [suit, verb]
-				_opponent_cues_by_suit_verb[key] = (
-					_opponent_cues_by_suit_verb.get(key, []) as Array) + lines
-			else:
-				for stage_id: String in stages:
-					var stage_key := "%s|%s|%s" % [stage_id, suit, verb]
-					_opponent_cues_by_stage_suit_verb[stage_key] = (
-						_opponent_cues_by_stage_suit_verb.get(stage_key, []) as Array) + lines
-		else:
-			# A bespoke row: registered under EACH named opponent, never
-			# folded into the general pool.
-			for opp_id: String in opp_ids:
-				if stages.is_empty():
-					var opp_key := "%s|%s" % [opp_id, verb]
-					_opponent_cues_by_opponent_verb[opp_key] = (
-						_opponent_cues_by_opponent_verb.get(opp_key, []) as Array) + lines
-				else:
-					for stage_id: String in stages:
-						var opp_stage_key := "%s|%s|%s" % [opp_id, stage_id, verb]
-						_opponent_cues_by_opponent_stage_verb[opp_stage_key] = (
-							_opponent_cues_by_opponent_stage_verb.get(opp_stage_key, []) as Array) + lines
-
+	_index_opponent_cues()
 	_index_player_cues()
 	_index_stage_questions()
 
@@ -990,14 +950,116 @@ func get_player_cue_lines(suit: String, verb: String, stage_id: String = "") -> 
 	return []
 
 
+## What the player might say for this card, about this bill, from Player Cues
+## rows that name the bill (2026-10-18). Most specific first: this verb and
+## this stance, this verb any stance, any verb this stance, any verb any
+## stance. Empty when nothing is written for the bill.
+func get_bill_player_cue_lines(bill_id: String, suit: String, verb: String, stance: String) -> Array:
+	var keys: Array[String] = []
+	var verbs: Array[String] = []
+	if not verb.is_empty():
+		verbs.append(verb)
+	verbs.append("")
+	var stances: Array[String] = []
+	if not stance.is_empty():
+		stances.append(stance)
+	stances.append("")
+	for v in verbs:
+		for st in stances:
+			keys.append("%s|%s|%s|%s" % [bill_id, suit, v, st])
+	for key in keys:
+		var found: Array = _bill_player_cues.get(key, [])
+		if not found.is_empty():
+			return found.duplicate()
+	return []
+
+
+## An opponent's lines about a bill: this opponent's own rows, else the suit's.
+func get_bill_opponent_cue_lines(bill_id: String, opp_id: String, suit: String, verb: String) -> Array[String]:
+	var lines: Array[String] = []
+	for who in [opp_id, suit]:
+		if str(who).is_empty():
+			continue
+		var found: Array = _bill_opponent_cues.get("%s|%s|%s" % [bill_id, who, verb], [])
+		if not found.is_empty():
+			lines.assign(found)
+			return lines
+	return lines
+
+
+## Questions written about this bill (Stage Questions rows with a Bill ID).
+func get_bill_questions(bill_id: String) -> Array:
+	return (_questions_by_bill.get(bill_id, []) as Array).duplicate()
+
+
 ## The Stage Questions tab's questions that name this stage, asked before the
 ## room's own pool (BattleSetup). Empty for a stage with none written.
 func get_stage_questions(stage_id: String) -> Array:
 	return (_questions_by_stage.get(stage_id, []) as Array).duplicate()
 
 
+func _index_opponent_cues() -> void:
+	_bill_opponent_cues.clear()
+	_opponent_cues_by_suit_verb.clear()
+	_opponent_cues_by_opponent_verb.clear()
+	_opponent_cues_by_stage_suit_verb.clear()
+	_opponent_cues_by_opponent_stage_verb.clear()
+	for row: Dictionary in opponent_cues:
+		var suit := str(row.get("suit", ""))
+		var verb := str(row.get("verb", ""))
+		var lines: Array[String] = _cue_lines(row)
+		if lines.is_empty():
+			continue
+		# The <null> trap again (BarModel.for_stage()'s own comment): a blank
+		# "Opponent ID" cell exports as JSON null, not [] — the key IS
+		# present, so .get()'s default never fires. Every row in the real
+		# workbook is blank here today (the general pool), so this crashed
+		# on the first real Opponent Cues data the game ever loaded.
+		var opp_ids_raw: Variant = row.get("opponent_ids")
+		var opp_ids: Array = opp_ids_raw if opp_ids_raw is Array else []
+		# A row about a bill is filed under that bill only (2026-10-18).
+		var bills_raw: Variant = row.get("bill_ids")
+		var bills: Array = bills_raw if bills_raw is Array else []
+		if not bills.is_empty():
+			for bill_id: String in bills:
+				var who: Array = opp_ids if not opp_ids.is_empty() else [suit]
+				for who_key: String in who:
+					var bkey := "%s|%s|%s" % [bill_id, who_key, verb]
+					_bill_opponent_cues[bkey] = (_bill_opponent_cues.get(bkey, []) as Array) + lines
+			continue
+		# Optional Stage ID (2026-10-12), past the same <null> trap.
+		var stages_raw: Variant = row.get("stage_ids")
+		var stages: Array = stages_raw if stages_raw is Array else []
+		if opp_ids.is_empty():
+			# The general pool: every opponent with this suit draws from it
+			# for this verb — in every stage, or only the stages named.
+			if stages.is_empty():
+				var key := "%s|%s" % [suit, verb]
+				_opponent_cues_by_suit_verb[key] = (
+					_opponent_cues_by_suit_verb.get(key, []) as Array) + lines
+			else:
+				for stage_id: String in stages:
+					var stage_key := "%s|%s|%s" % [stage_id, suit, verb]
+					_opponent_cues_by_stage_suit_verb[stage_key] = (
+						_opponent_cues_by_stage_suit_verb.get(stage_key, []) as Array) + lines
+		else:
+			# A bespoke row: registered under EACH named opponent, never
+			# folded into the general pool.
+			for opp_id: String in opp_ids:
+				if stages.is_empty():
+					var opp_key := "%s|%s" % [opp_id, verb]
+					_opponent_cues_by_opponent_verb[opp_key] = (
+						_opponent_cues_by_opponent_verb.get(opp_key, []) as Array) + lines
+				else:
+					for stage_id: String in stages:
+						var opp_stage_key := "%s|%s|%s" % [opp_id, stage_id, verb]
+						_opponent_cues_by_opponent_stage_verb[opp_stage_key] = (
+							_opponent_cues_by_opponent_stage_verb.get(opp_stage_key, []) as Array) + lines
+
+
 func _index_player_cues() -> void:
 	_player_cue_lines.clear()
+	_bill_player_cues.clear()
 	for row: Variant in player_cues:
 		if not (row is Dictionary):
 			continue
@@ -1007,6 +1069,10 @@ func _index_player_cues() -> void:
 		var verb := "" if verb_raw == null else str(verb_raw).strip_edges()
 		var stages_raw: Variant = row.get("stage_ids")
 		var stages: Array = stages_raw if stages_raw is Array else []
+		var bills_raw: Variant = row.get("bill_ids")
+		var bills: Array = bills_raw if bills_raw is Array else []
+		var stance_raw: Variant = row.get("stance")
+		var stance := "" if stance_raw == null else str(stance_raw).strip_edges()
 		var lines: Array = []
 		for index in range(1, 6):
 			# A blank cell is JSON null, not "" (the <null> trap again).
@@ -1015,6 +1081,11 @@ func _index_player_cues() -> void:
 			if not line.is_empty():
 				lines.append({"text": line, "line_id": "%s_%d" % [cue_id, index]})
 		if lines.is_empty():
+			continue
+		if not bills.is_empty():
+			for bill_id: String in bills:
+				var bkey := "%s|%s|%s|%s" % [bill_id, suit, verb, stance]
+				_bill_player_cues[bkey] = (_bill_player_cues.get(bkey, []) as Array) + lines
 			continue
 		var keys: Array[String] = []
 		if stages.is_empty():
@@ -1028,6 +1099,7 @@ func _index_player_cues() -> void:
 
 func _index_stage_questions() -> void:
 	_questions_by_stage.clear()
+	_questions_by_bill.clear()
 	if not (questions is Dictionary):
 		return
 	for question: Variant in (questions.get("stage", []) as Array):
@@ -1035,6 +1107,15 @@ func _index_stage_questions() -> void:
 			continue
 		var stages_raw: Variant = question.get("stage_ids")
 		var stages: Array = stages_raw if stages_raw is Array else []
+		var bills_raw: Variant = question.get("bill_ids")
+		var bills: Array = bills_raw if bills_raw is Array else []
+		if not bills.is_empty():
+			# About a bill: asked in that bill's level, not in the room everywhere.
+			for bill_id: String in bills:
+				if not _questions_by_bill.has(bill_id):
+					_questions_by_bill[bill_id] = []
+				(_questions_by_bill[bill_id] as Array).append(question)
+			continue
 		for stage_id: String in stages:
 			if not _questions_by_stage.has(stage_id):
 				_questions_by_stage[stage_id] = []

@@ -294,7 +294,13 @@ SHEETS = {
             ("Stage ID", "stage_id", "str"),
             ("Character Line (EN)", "character_line_en", "str"),
             ("Player Reply (EN)", "player_reply_en", "str"),
+            # Optional (2026-10-18): only in the level that votes on this
+            # bill (one BIxx), and only for a player who leaned this way
+            # (Support or Oppose; blank = either).
+            ("Bill ID", "bill_id", "str"),
+            ("Stance", "stance", "str"),
         ],
+        "optional": ["Bill ID", "Stance"],
     },
     # Every line the game says to the player. Cameron's to reword; the code
     # asks for a Key and never holds a sentence of its own. A key the code
@@ -328,7 +334,7 @@ SHEETS = {
         "key": "cue_id",
         "id_pattern": r"^OC\d+$",
         "optional_sheet": True,
-        "optional": ["Stage ID"],
+        "optional": ["Stage ID", "Bill ID"],
         "columns": [
             ("Cue ID", "cue_id", "id"),
             ("Suit", "suit", "str"),
@@ -345,6 +351,9 @@ SHEETS = {
             # = said only in those rooms, and checked before the any-stage
             # lines (OpponentCues.gd).
             ("Stage ID", "stage_ids", "id_list"),
+            # Optional (2026-10-18): said only in the level that votes on
+            # this bill, checked before every other tier (OpponentCues.gd).
+            ("Bill ID", "bill_ids", "id_list"),
         ],
     },
     # Law Effects (2026-10-12): what a bill does once it has been voted on,
@@ -391,7 +400,12 @@ SHEETS = {
             ("Cue 3", "cue_3", "str"),
             ("Cue 4", "cue_4", "str"),
             ("Cue 5", "cue_5", "str"),
+            # Optional (2026-10-18): the bill(s) this line is about, and the
+            # lean it fits (Support, Oppose, or blank for either).
+            ("Bill ID", "bill_ids", "id_list"),
+            ("Stance", "stance", "str"),
         ],
+        "optional": ["Bill ID", "Stance"],
     },
     # Stage Questions (2026-10-12): questions that belong to particular
     # stages (a committee asking about its own subject, say), graded like the
@@ -401,12 +415,16 @@ SHEETS = {
     "Stage Questions": {
         "out": "q_stage.json",
         "key": "q_id",
-        "optional": ["Asked By Party"],
+        "optional": ["Asked By Party", "Bill ID"],
         "id_pattern": r"^[A-Z]\d+$",
         "optional_sheet": True,
         "columns": [
             ("Q ID", "q_id", "id"),
             ("Stage ID", "stage_ids", "id_list"),
+            # Optional (2026-10-18): a question about a bill, asked in the
+            # stages of the level that votes on it. With a Stage ID too it is
+            # asked only in those stages of that level.
+            ("Bill ID", "bill_ids", "id_list"),
             ("Question", "text", "str"),
             ("Theme", "theme", "str"),
             ("Earnest", "earnest", "str"),
@@ -858,7 +876,14 @@ SHEETS = {
             # A Supermajority bill needs Balance's supermajority_percent of the
             # whole house to pass.
             ("Vote Requirement", "vote_requirement", "str"),
+            # Optional (2026-10-18): the party whose bill this is (a PTxx) and an
+            # override for who counts as the bill's supporters (+) and
+            # opponents (-), e.g. "BO28+; BO29+; BO15-". Blank override means
+            # the stakeholders are read off the bill's Passed Law Effects row.
+            ("Proponent Party", "proponent_party", "str"),
+            ("Stakeholders Override", "stakeholders_override", "str"),
         ],
+        "optional": ["Proponent Party", "Stakeholders Override"],
     },
     # Six rows per bill above (one per party) — folded into that bill's own
     # "positions" list by fold_floor_votes() below, the same
@@ -1645,6 +1670,8 @@ def ids_from(records, key):
 def validate(data, report):
     suits = ids_from(data["suits"], "element")
     stage_ids = ids_from(data["stages"], "stage_id")
+    bill_ids_all = set((data.get("floor_votes") or {}).keys()) if isinstance(
+        data.get("floor_votes"), dict) else set()
     segment_names = {r["name_en"] for r in data["segments"] if r.get("name_en")}
     segment_ids = ids_from(data["segments"], "segment_id")
     card_ids = ids_from(data["cards"], "card_id")
@@ -1904,6 +1931,10 @@ def validate(data, report):
             if sid not in stage_ids:
                 report.error("opponent_cues",
                              f"{cue_id} names stage '{sid}', which is not in the Stages tab")
+        for bid in cue.get("bill_ids") or []:
+            if bid not in bill_ids_all:
+                report.error("opponent_cues",
+                             f"{cue_id} names bill '{bid}', which is not in Floor Vote Bills")
 
     # --- law effects (2026-10-12) -------------------------------------------
     bill_ids_known = {b.get("bill_id") for b in data.get("floor_vote_bills", [])} | set(
@@ -1956,6 +1987,15 @@ def validate(data, report):
             if sid not in stage_ids:
                 report.error("player_cues",
                              f"{cue_id} names stage '{sid}', which is not in the Stages tab")
+        for bid in cue.get("bill_ids") or []:
+            if bid not in bill_ids_all:
+                report.error("player_cues",
+                             f"{cue_id} names bill '{bid}', which is not in Floor Vote Bills")
+        if cue.get("stance") and cue["stance"] not in ("Support", "Oppose"):
+            report.error("player_cues",
+                         f"{cue_id} has Stance '{cue['stance']}', which must be Support, Oppose or blank")
+        if cue.get("stance") and not cue.get("bill_ids"):
+            report.error("player_cues", f"{cue_id} has a Stance but no Bill ID")
         if not any(cue.get(f"cue_{i}") for i in range(1, 6)):
             report.warn("player_cues", f"{cue_id} has no cue lines written")
 
@@ -2163,6 +2203,12 @@ def validate(data, report):
 
     for row in data.get("transition_dialogue", []):
         tdid = row["transition_dialogue_id"]
+        if row.get("bill_id") and row["bill_id"] not in bill_ids_all:
+            report.error("Transition Dialogue", f"{tdid} names bill '{row['bill_id']}', which is not in Floor Vote Bills")
+        if row.get("stance") and row["stance"] not in ("Support", "Oppose"):
+            report.error("Transition Dialogue", f"{tdid} has Stance '{row['stance']}', which must be Support, Oppose or blank")
+        if row.get("stance") and not row.get("bill_id"):
+            report.error("Transition Dialogue", f"{tdid} has a Stance but no Bill ID")
         stage_id = row.get("stage_id")
         if stage_id and stage_id not in stage_ids:
             report.error("Transition Dialogue", f"{tdid} names stage '{stage_id}', which is not in the Stages tab")
@@ -2524,6 +2570,23 @@ def fold_floor_votes(data, report):
                     f"{bill_id} {party_id}: Yes+No+Abstain is {split} but the party "
                     f"holds {int(seats[party_id])} seats")
 
+    # Proponent Party and Stakeholders Override (2026-10-18).
+    party_ids = {str(p.get("party_id")) for p in data.get("parties", []) if isinstance(p, dict)}
+    booster_ids = {str(b.get("booster_id")) for b in data.get("boosters", []) if isinstance(b, dict)}
+    for bill_id, bill in by_bill.items():
+        proponent = bill.get("proponent_party")
+        if proponent and proponent not in party_ids:
+            report.error("Floor Vote Bills", f"{bill_id} Proponent Party '{proponent}' is not a party_id")
+        override = bill.get("stakeholders_override")
+        if override:
+            for part in str(override).split(";"):
+                part = part.strip()
+                if not part:
+                    continue
+                if part[-1] not in "+-" or part[:-1] not in booster_ids:
+                    report.error("Floor Vote Bills", f"{bill_id} Stakeholders Override entry "
+                                 f"'{part}' must be a booster_id followed by + or -")
+
     data["floor_votes"] = by_bill
 
 
@@ -2667,9 +2730,17 @@ def fold_questions(data, report):
                     # A stage question asks in its own stage(s), and is asked
                     # by someone who sits in the first of them.
                     stages_named = row.get("stage_ids") or []
-                    if not stages_named:
+                    bills_named = row.get("bill_ids") or []
+                    if not stages_named and not bills_named:
                         report.error("Stage Questions",
-                                     f"question {row['q_id']} names no Stage ID")
+                                     f"question {row['q_id']} names no Stage ID or Bill ID")
+                    if bills_named:
+                        question["bill_ids"] = bills_named
+                        known_bills = {b.get("bill_id") for b in data.get("floor_vote_bills_raw", [])}
+                        for bid in bills_named:
+                            if bid not in known_bills:
+                                report.error("Stage Questions", f"question {row['q_id']} names bill "
+                                             f"'{bid}', which is not in Floor Vote Bills")
                     for sid in stages_named:
                         if sid not in stage_ids_known:
                             report.error("Stage Questions",

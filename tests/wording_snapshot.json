@@ -412,6 +412,7 @@
   "record.cause_level_win": "level win bonuses",
   "record.cause_stage_loss": "lost {stage}",
   "record.cause_stage_win": "won {stage}",
+  "record.cause_stance_switch": "switching your vote on {bill}",
   "record.cause_vote": "the vote on {bill}",
   "record.effect_line": "{name} {delta}",
   "record.law_each": "At the end of every later level:",

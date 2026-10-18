@@ -37,7 +37,9 @@
     "cue_2": "Let us be honest about the record.",
     "cue_3": "I have read the file. Have you?",
     "cue_4": "The facts do not support you.",
-    "cue_5": "With respect, that answer will not stand."
+    "cue_5": "With respect, that answer will not stand.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL02",
@@ -77,7 +79,9 @@
     "cue_2": "Here is exactly what I will do.",
     "cue_3": "Judge me by the commitments I make here.",
     "cue_4": "I have nothing to hide from this room.",
-    "cue_5": "Plainly put, this is my position."
+    "cue_5": "Plainly put, this is my position.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL03",
@@ -117,7 +121,9 @@
     "cue_2": "My position is clear and it is firm.",
     "cue_3": "My record is open to this committee.",
     "cue_4": "I will not dodge any question.",
-    "cue_5": "That charge does not hold up."
+    "cue_5": "That charge does not hold up.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL04",
@@ -157,7 +163,9 @@
     "cue_2": "How do you sleep at night?",
     "cue_3": "People are hurting. Do not shrug.",
     "cue_4": "Your numbers have names and faces.",
-    "cue_5": "Have you met anyone this affects?"
+    "cue_5": "Have you met anyone this affects?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL05",
@@ -197,7 +205,9 @@
     "cue_2": "I hear their stories in my district.",
     "cue_3": "Imagine your own family in their place.",
     "cue_4": "We owe them more than procedure.",
-    "cue_5": "This is personal for every household."
+    "cue_5": "This is personal for every household.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL06",
@@ -237,7 +247,9 @@
     "cue_2": "My heart is with them, not with politics.",
     "cue_3": "My care for them is real.",
     "cue_4": "I feel the weight of this vote.",
-    "cue_5": "I will not apologize for compassion."
+    "cue_5": "I will not apologize for compassion.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL07",
@@ -277,7 +289,9 @@
     "cue_2": "Even your colleagues are not convinced.",
     "cue_3": "This committee deserves a better proposal.",
     "cue_4": "Ask the room. They know.",
-    "cue_5": "Your allies are quieter than you think."
+    "cue_5": "Your allies are quieter than you think.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL08",
@@ -317,7 +331,9 @@
     "cue_2": "Let us find the common ground together.",
     "cue_3": "Every member here wants this to work.",
     "cue_4": "I am offering a way through.",
-    "cue_5": "Join me and we all come out ahead."
+    "cue_5": "Join me and we all come out ahead.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL09",
@@ -357,7 +373,9 @@
     "cue_2": "My door is open to you.",
     "cue_3": "We can find a compromise here.",
     "cue_4": "Let us not make this personal.",
-    "cue_5": "I respect you as a colleague."
+    "cue_5": "I respect you as a colleague.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL10",
@@ -397,7 +415,9 @@
     "cue_2": "Your costs look understated.",
     "cue_3": "Show me the data behind that claim.",
     "cue_4": "The trend line says otherwise.",
-    "cue_5": "That estimate does not survive scrutiny."
+    "cue_5": "That estimate does not survive scrutiny.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL11",
@@ -437,7 +457,9 @@
     "cue_2": "Here is the evidence, line by line.",
     "cue_3": "Every projection points the same way.",
     "cue_4": "The audit supports this approach.",
-    "cue_5": "Look at the results, not the rhetoric."
+    "cue_5": "Look at the results, not the rhetoric.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL12",
@@ -477,7 +499,9 @@
     "cue_2": "The method is set out in the appendix.",
     "cue_3": "The data speaks for itself.",
     "cue_4": "Any error is corrected on the record.",
-    "cue_5": "Read the footnote and object if you can."
+    "cue_5": "Read the footnote and object if you can.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL13",
@@ -517,7 +541,9 @@
     "cue_2": "This is what your side does.",
     "cue_3": "Whose interests are you really defending?",
     "cue_4": "We know which side you are on.",
-    "cue_5": "Do not lecture us about principles."
+    "cue_5": "Do not lecture us about principles.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL14",
@@ -557,7 +583,9 @@
     "cue_2": "This is a line we will not cross.",
     "cue_3": "We stand for those you left behind.",
     "cue_4": "Pick a side. We know ours.",
-    "cue_5": "Our supporters sent us here for this."
+    "cue_5": "Our supporters sent us here for this.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL15",
@@ -597,7 +625,9 @@
     "cue_2": "Your side has no standing to judge.",
     "cue_3": "Spare us the outrage.",
     "cue_4": "We will not be shamed by you.",
-    "cue_5": "I expect no better from your bench."
+    "cue_5": "I expect no better from your bench.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL16",
@@ -637,7 +667,9 @@
     "cue_2": "Others may see this differently.",
     "cue_3": "Perhaps the committee should see your notes.",
     "cue_4": "There are rumors about this deal.",
-    "cue_5": "Funny how positions can move."
+    "cue_5": "Funny how positions can move.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL17",
@@ -677,7 +709,9 @@
     "cue_2": "Let us say this was the plan.",
     "cue_3": "There may be room for a quiet arrangement.",
     "cue_4": "I can make sure the right people agree.",
-    "cue_5": "Consider that my settled view."
+    "cue_5": "Consider that my settled view.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL18",
@@ -717,7 +751,9 @@
     "cue_2": "That is a matter of interpretation.",
     "cue_3": "Words can be read many ways.",
     "cue_4": "I will have to check my records.",
-    "cue_5": "I would not put it quite that way."
+    "cue_5": "I would not put it quite that way.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL19",
@@ -733,7 +769,9 @@
     "cue_2": "Show me the ridership figures.",
     "cue_3": "Name the line that earns its subsidy.",
     "cue_4": "Cost per passenger. Give me the number.",
-    "cue_5": "Your timetable data does not add up."
+    "cue_5": "Your timetable data does not add up.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL20",
@@ -749,7 +787,9 @@
     "cue_2": "Where is the safety audit?",
     "cue_3": "The delay statistics tell a different story.",
     "cue_4": "Fares or service. You cannot cut both.",
-    "cue_5": "Publish the numbers or withdraw the claim."
+    "cue_5": "Publish the numbers or withdraw the claim.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL21",
@@ -765,7 +805,9 @@
     "cue_2": "Ridership data points one way.",
     "cue_3": "Run the numbers. They hold up.",
     "cue_4": "Every line on this chart is sourced.",
-    "cue_5": "The audit confirms the safety case."
+    "cue_5": "The audit confirms the safety case.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL22",
@@ -781,7 +823,9 @@
     "cue_2": "Delays fall when timetables follow demand.",
     "cue_3": "The evidence is in the appendix.",
     "cue_4": "A fare cap costs less than empty trains.",
-    "cue_5": "Check the figures. I will wait."
+    "cue_5": "Check the figures. I will wait.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL23",
@@ -797,7 +841,9 @@
     "cue_2": "The data does not support that claim.",
     "cue_3": "Read the source before you object.",
     "cue_4": "Cite the table. I will answer.",
-    "cue_5": "Averages hide the variation by line."
+    "cue_5": "Averages hide the variation by line.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL24",
@@ -813,7 +859,9 @@
     "cue_2": "Correlation is not cause on this chart.",
     "cue_3": "Ask the operator for the raw data.",
     "cue_4": "Your sample is too small to matter.",
-    "cue_5": "Check the denominator first."
+    "cue_5": "Check the denominator first.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL25",
@@ -829,7 +877,9 @@
     "cue_2": "Families are counting every yen!",
     "cue_3": "Seniors cannot climb those stairs!",
     "cue_4": "Students skip meals to afford fares!",
-    "cue_5": "Tell the commuters to their faces!"
+    "cue_5": "Tell the commuters to their faces!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL26",
@@ -845,7 +895,9 @@
     "cue_2": "A ticket is a week of groceries!",
     "cue_3": "Who speaks for the people on the platform?",
     "cue_4": "Explain this to a tired parent!",
-    "cue_5": "Remember who pays at the turnstile!"
+    "cue_5": "Remember who pays at the turnstile!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL27",
@@ -861,7 +913,9 @@
     "cue_2": "Every commuter deserves a safe platform!",
     "cue_3": "Together we keep the trains running!",
     "cue_4": "This fight is for every rider!",
-    "cue_5": "I will not let fares crush families!"
+    "cue_5": "I will not let fares crush families!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL28",
@@ -877,7 +931,9 @@
     "cue_2": "No one should dread the ticket machine!",
     "cue_3": "This is about dignity on the commute!",
     "cue_4": "Hear the riders. They are right!",
-    "cue_5": "Let us fix this together!"
+    "cue_5": "Let us fix this together!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL29",
@@ -893,7 +949,9 @@
     "cue_2": "I care about riders more than you know!",
     "cue_3": "Leave families out of your argument!",
     "cue_4": "My heart is with the commuters!",
-    "cue_5": "Do not twist their stories!"
+    "cue_5": "Do not twist their stories!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL30",
@@ -909,7 +967,9 @@
     "cue_2": "Riders deserve respect, not slogans!",
     "cue_3": "Their fears are real. Mine too!",
     "cue_4": "Do not wave their pain around!",
-    "cue_5": "I stand with them, whatever you say!"
+    "cue_5": "I stand with them, whatever you say!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL31",
@@ -925,7 +985,9 @@
     "cue_2": "I have read the quota report.",
     "cue_3": "The catch figures do not support you.",
     "cue_4": "Plainly, the quota system is failing.",
-    "cue_5": "Stand behind your label or remove it."
+    "cue_5": "Stand behind your label or remove it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL32",
@@ -941,7 +1003,9 @@
     "cue_2": "Small boats deserve a fair share.",
     "cue_3": "I will not accept hidden quotas.",
     "cue_4": "Own the problem. Then fix it.",
-    "cue_5": "Your plan leaves the harbors behind."
+    "cue_5": "Your plan leaves the harbors behind.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL33",
@@ -957,7 +1021,9 @@
     "cue_2": "Here is my plan for the quotas.",
     "cue_3": "Judge me by the catch limits.",
     "cue_4": "I will check every label myself.",
-    "cue_5": "Plainly: family boats come first."
+    "cue_5": "Plainly: family boats come first.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL34",
@@ -973,7 +1039,9 @@
     "cue_2": "My position on quotas is simple.",
     "cue_3": "I will answer to the harbor.",
     "cue_4": "No label should mislead a shopper.",
-    "cue_5": "I will keep this fair."
+    "cue_5": "I will keep this fair.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL35",
@@ -989,7 +1057,9 @@
     "cue_2": "I have nothing to hide on catch limits.",
     "cue_3": "The record on catch limits is public.",
     "cue_4": "I take responsibility for this plan.",
-    "cue_5": "Check the quota rules yourself."
+    "cue_5": "Check the quota rules yourself.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL36",
@@ -1005,7 +1075,9 @@
     "cue_2": "Fair quotas are the whole point.",
     "cue_3": "I will not dodge on labeling.",
     "cue_4": "The report says otherwise.",
-    "cue_5": "Honest labels protect honest fishers."
+    "cue_5": "Honest labels protect honest fishers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL37",
@@ -1021,7 +1093,9 @@
     "cue_2": "We all eat the catch. Be fair.",
     "cue_3": "Friends of the harbor know better.",
     "cue_4": "Surely we want fair labels together.",
-    "cue_5": "Good neighbors do not hide quotas."
+    "cue_5": "Good neighbors do not hide quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL38",
@@ -1037,7 +1111,9 @@
     "cue_2": "Our fishing towns deserve better from you.",
     "cue_3": "Be a friend to the harbor.",
     "cue_4": "Together we can do better than this.",
-    "cue_5": "A good turn deserves a fair quota."
+    "cue_5": "A good turn deserves a fair quota.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL39",
@@ -1053,7 +1129,9 @@
     "cue_2": "Together we protect the family boats.",
     "cue_3": "Our fishing towns are one family.",
     "cue_4": "We all gain from honest labels.",
-    "cue_5": "Let us steady the harbor together."
+    "cue_5": "Let us steady the harbor together.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL40",
@@ -1069,7 +1147,9 @@
     "cue_2": "We are stronger fishing as one.",
     "cue_3": "Stand with the harbor and with me.",
     "cue_4": "Our shared catch deserves our shared care.",
-    "cue_5": "I know we agree on the sea."
+    "cue_5": "I know we agree on the sea.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL41",
@@ -1085,7 +1165,9 @@
     "cue_2": "Let us not divide the harbor.",
     "cue_3": "We are all on the same boat.",
     "cue_4": "Our towns need calm, not quarrels.",
-    "cue_5": "We agree on more than we say."
+    "cue_5": "We agree on more than we say.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL42",
@@ -1101,7 +1183,9 @@
     "cue_2": "Do not turn friends against friends.",
     "cue_3": "Let us keep the harbor united.",
     "cue_4": "We share the same tide.",
-    "cue_5": "There is room for everyone's boat."
+    "cue_5": "There is room for everyone's boat.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL43",
@@ -1141,7 +1225,9 @@
     "cue_2": "Honest answers are owed to this committee.",
     "cue_3": "Which commitment will you actually keep?",
     "cue_4": "Own the failures in your own plan.",
-    "cue_5": "Members deserve more than assurances."
+    "cue_5": "Members deserve more than assurances.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL44",
@@ -1181,7 +1267,9 @@
     "cue_2": "I take this committee's concerns seriously.",
     "cue_3": "I will put my commitments in writing.",
     "cue_4": "Hold me accountable to this committee.",
-    "cue_5": "I answer for every word."
+    "cue_5": "I answer for every word.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL45",
@@ -1221,7 +1309,9 @@
     "cue_2": "The record is open for inspection.",
     "cue_3": "I admit the gaps and will close them.",
     "cue_4": "My answers are the same in any room.",
-    "cue_5": "I accept the committee's scrutiny."
+    "cue_5": "I accept the committee's scrutiny.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL46",
@@ -1261,7 +1351,9 @@
     "cue_2": "Do not treat families as statistics!",
     "cue_3": "Members, hear the people outside!",
     "cue_4": "Real lives ride on these words!",
-    "cue_5": "This is not an abstract exercise!"
+    "cue_5": "This is not an abstract exercise!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL47",
@@ -1301,7 +1393,9 @@
     "cue_2": "I speak for those with no seat here!",
     "cue_3": "Members, our decision touches real homes!",
     "cue_4": "I will not forget who is waiting!",
-    "cue_5": "This work matters to me personally!"
+    "cue_5": "This work matters to me personally!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL48",
@@ -1341,7 +1435,9 @@
     "cue_2": "Do not question my concern for people!",
     "cue_3": "I feel this responsibility keenly!",
     "cue_4": "Do not make this personal!",
-    "cue_5": "My commitment is genuine!"
+    "cue_5": "My commitment is genuine!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL49",
@@ -1381,7 +1477,9 @@
     "cue_2": "A cooperative committee gets better results.",
     "cue_3": "Surely we can find a middle path.",
     "cue_4": "Friends across the aisle, please reconsider.",
-    "cue_5": "Colleagues, we owe each other a hearing."
+    "cue_5": "Colleagues, we owe each other a hearing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL50",
@@ -1421,7 +1519,9 @@
     "cue_2": "Together we can improve the proposal.",
     "cue_3": "I value the committee's collective wisdom.",
     "cue_4": "Cooperation is how good law is made.",
-    "cue_5": "Let us shape this as colleagues."
+    "cue_5": "Let us shape this as colleagues.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL51",
@@ -1461,7 +1561,9 @@
     "cue_2": "We all want a workable result.",
     "cue_3": "There is goodwill in this room.",
     "cue_4": "Let us not harden positions.",
-    "cue_5": "I trust we can agree on more."
+    "cue_5": "I trust we can agree on more.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL52",
@@ -1501,7 +1603,9 @@
     "cue_2": "Give the committee the underlying data.",
     "cue_3": "How was the sample chosen?",
     "cue_4": "Is the cost figure net or gross?",
-    "cue_5": "Which assumption carries the most weight?"
+    "cue_5": "Which assumption carries the most weight?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL53",
@@ -1541,7 +1645,9 @@
     "cue_2": "Each figure is sourced and documented.",
     "cue_3": "Independent analysis supports this view.",
     "cue_4": "The appendix shows the full calculation.",
-    "cue_5": "The numbers hold under every scenario."
+    "cue_5": "The numbers hold under every scenario.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL54",
@@ -1581,7 +1687,9 @@
     "cue_2": "My sources are listed in the annex.",
     "cue_3": "The analysis was independently checked.",
     "cue_4": "That reading ignores the footnote.",
-    "cue_5": "The sample meets the standard."
+    "cue_5": "The sample meets the standard.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL55",
@@ -1621,7 +1729,9 @@
     "cue_2": "This is a choice between two camps.",
     "cue_3": "The opposition benches know what they want.",
     "cue_4": "Do not hide behind procedure.",
-    "cue_5": "Some members protect friends, not the public."
+    "cue_5": "Some members protect friends, not the public.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL56",
@@ -1661,7 +1771,9 @@
     "cue_2": "Let the committee divide on this.",
     "cue_3": "I welcome a clear vote.",
     "cue_4": "Supporters of reform are on one side.",
-    "cue_5": "The choice for members is plain."
+    "cue_5": "The choice for members is plain.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL57",
@@ -1701,7 +1813,9 @@
     "cue_2": "Labels will not settle this matter.",
     "cue_3": "Questioning motives is not an argument.",
     "cue_4": "I reject the idea of two camps.",
-    "cue_5": "Debate the policy, not the person."
+    "cue_5": "Debate the policy, not the person.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL58",
@@ -1741,7 +1855,9 @@
     "cue_2": "It is hard to say who benefits...",
     "cue_3": "A closed-door arrangement is suspected...",
     "cue_4": "The paperwork seems oddly incomplete...",
-    "cue_5": "Perhaps the minister knows more..."
+    "cue_5": "Perhaps the minister knows more...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL59",
@@ -1781,7 +1897,9 @@
     "cue_2": "Amendments may be possible, in principle...",
     "cue_3": "We are receptive to reasonable ideas...",
     "cue_4": "A compromise could emerge, perhaps...",
-    "cue_5": "I would not rule that out..."
+    "cue_5": "I would not rule that out...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL60",
@@ -1821,7 +1939,9 @@
     "cue_2": "The department would have that information...",
     "cue_3": "I am advised that is not settled...",
     "cue_4": "Records are being reviewed, I understand...",
-    "cue_5": "It would be premature to say..."
+    "cue_5": "It would be premature to say...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL61",
@@ -1861,7 +1981,9 @@
     "cue_2": "Your submission has gaps. Name them.",
     "cue_3": "I need a straight account of costs.",
     "cue_4": "Do not retreat into generalities.",
-    "cue_5": "Be specific about what you will do."
+    "cue_5": "Be specific about what you will do.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL62",
@@ -1901,7 +2023,9 @@
     "cue_2": "Here is what I commit to.",
     "cue_3": "I will report back on every point.",
     "cue_4": "I welcome the hard questions.",
-    "cue_5": "You have my full cooperation."
+    "cue_5": "You have my full cooperation.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL63",
@@ -1941,7 +2065,9 @@
     "cue_2": "I have provided everything requested.",
     "cue_3": "I will clarify any point on request.",
     "cue_4": "I disclosed the risks in my submission.",
-    "cue_5": "I will not overstate my case."
+    "cue_5": "I will not overstate my case.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL64",
@@ -1981,7 +2107,9 @@
     "cue_2": "This committee cannot look away!",
     "cue_3": "Think about who bears the cost!",
     "cue_4": "People are depending on a clear answer!",
-    "cue_5": "Do not bury this in procedure!"
+    "cue_5": "Do not bury this in procedure!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL65",
@@ -2021,7 +2149,9 @@
     "cue_2": "I speak for the people affected!",
     "cue_3": "This is why I do this work!",
     "cue_4": "Hear their voices in this room!",
-    "cue_5": "I will fight for a fair outcome!"
+    "cue_5": "I will fight for a fair outcome!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL66",
@@ -2061,7 +2191,9 @@
     "cue_2": "I will not be painted as indifferent!",
     "cue_3": "My concern for people is plain!",
     "cue_4": "Do not question my sincerity!",
-    "cue_5": "I deserve a fair hearing!"
+    "cue_5": "I deserve a fair hearing!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL67",
@@ -2101,7 +2233,9 @@
     "cue_2": "Let us not make this adversarial.",
     "cue_3": "Surely members share this concern.",
     "cue_4": "I would appeal to your better judgment.",
-    "cue_5": "A little cooperation would go far."
+    "cue_5": "A little cooperation would go far.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL68",
@@ -2141,7 +2275,9 @@
     "cue_2": "Let us build on common ground.",
     "cue_3": "I am grateful for the committee's help.",
     "cue_4": "Together we reach a better result.",
-    "cue_5": "I welcome constructive amendments."
+    "cue_5": "I welcome constructive amendments.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL69",
@@ -2181,7 +2317,9 @@
     "cue_2": "We can work through this together.",
     "cue_3": "Let us give each other the benefit of doubt.",
     "cue_4": "A fair compromise serves everyone.",
-    "cue_5": "I respect every view in this room."
+    "cue_5": "I respect every view in this room.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL70",
@@ -2221,7 +2359,9 @@
     "cue_2": "Is that figure adjusted for inflation?",
     "cue_3": "What is the baseline for that comparison?",
     "cue_4": "Cite the exact page, please.",
-    "cue_5": "Which dataset are you relying on?"
+    "cue_5": "Which dataset are you relying on?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL71",
@@ -2261,7 +2401,9 @@
     "cue_2": "The figures are adjusted and audited.",
     "cue_3": "Comparisons use a consistent method.",
     "cue_4": "The dataset is open to members.",
-    "cue_5": "I can cite chapter and verse."
+    "cue_5": "I can cite chapter and verse.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL72",
@@ -2301,7 +2443,9 @@
     "cue_2": "A single figure cannot settle this.",
     "cue_3": "The audit trail is complete.",
     "cue_4": "Ask for the working papers.",
-    "cue_5": "My calculation is reproducible."
+    "cue_5": "My calculation is reproducible.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL73",
@@ -2341,7 +2485,9 @@
     "cue_2": "There is no neutral ground on this.",
     "cue_3": "Whose interests does this really serve?",
     "cue_4": "Do not shelter behind vague wording.",
-    "cue_5": "The committee should name its allies."
+    "cue_5": "The committee should name its allies.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL74",
@@ -2381,7 +2527,9 @@
     "cue_2": "Members know where they stand.",
     "cue_3": "I welcome a recorded vote.",
     "cue_4": "Reform has supporters and obstructors.",
-    "cue_5": "Let each member show their position."
+    "cue_5": "Let each member show their position.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL75",
@@ -2421,7 +2569,9 @@
     "cue_2": "That framing helps no one.",
     "cue_3": "I resist the label you have chosen.",
     "cue_4": "Policy deserves better than tribal talk.",
-    "cue_5": "Judge the merits, not the sides."
+    "cue_5": "Judge the merits, not the sides.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL76",
@@ -2461,7 +2611,9 @@
     "cue_2": "Some members appear unusually quiet...",
     "cue_3": "Who drafted this section, one wonders...",
     "cue_4": "A convenient omission, perhaps...",
-    "cue_5": "The timeline seems conveniently vague..."
+    "cue_5": "The timeline seems conveniently vague...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL77",
@@ -2501,7 +2653,9 @@
     "cue_2": "A suitable amendment may be arranged...",
     "cue_3": "Concerns can be addressed, I trust...",
     "cue_4": "We will revisit the details, of course...",
-    "cue_5": "Flexibility is certainly possible..."
+    "cue_5": "Flexibility is certainly possible...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL78",
@@ -2541,7 +2695,9 @@
     "cue_2": "The relevant officials could say more...",
     "cue_3": "That is outside my brief, I believe...",
     "cue_4": "I will have my staff look into it...",
-    "cue_5": "Details are for the implementation stage..."
+    "cue_5": "Details are for the implementation stage...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL79",
@@ -2560,7 +2716,9 @@
     "cue_2": "I would rather be honest than polished.",
     "cue_3": "Say plainly what you believe.",
     "cue_4": "Your plan needs to survive scrutiny.",
-    "cue_5": "Defend your record in front of everyone."
+    "cue_5": "Defend your record in front of everyone.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL80",
@@ -2579,7 +2737,9 @@
     "cue_2": "Judge me on what I deliver.",
     "cue_3": "I speak the same on camera or off.",
     "cue_4": "Here is exactly where I stand.",
-    "cue_5": "I will answer every challenge."
+    "cue_5": "I will answer every challenge.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL81",
@@ -2598,7 +2758,9 @@
     "cue_2": "I stand by what I have said.",
     "cue_3": "I have no hidden position.",
     "cue_4": "Check my words against my actions.",
-    "cue_5": "I own my choices."
+    "cue_5": "I own my choices.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL82",
@@ -2617,7 +2779,9 @@
     "cue_2": "Families deserve better than slogans!",
     "cue_3": "Say that to the people watching!",
     "cue_4": "Real people are listening right here!",
-    "cue_5": "Do not hide behind talking points!"
+    "cue_5": "Do not hide behind talking points!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL83",
@@ -2636,7 +2800,9 @@
     "cue_2": "Viewers, I am fighting for you!",
     "cue_3": "Your struggles are why I am here!",
     "cue_4": "I feel what you feel!",
-    "cue_5": "Hold on, we will get through this!"
+    "cue_5": "Hold on, we will get through this!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL84",
@@ -2655,7 +2821,9 @@
     "cue_2": "I will not be mocked for caring!",
     "cue_3": "Viewers can see I mean it!",
     "cue_4": "My concern is genuine, not theater!",
-    "cue_5": "Do not twist their pain!"
+    "cue_5": "Do not twist their pain!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL85",
@@ -2674,7 +2842,9 @@
     "cue_2": "We all deserve a calmer debate.",
     "cue_3": "Be a friend to the voters.",
     "cue_4": "Neighbors across the country are watching.",
-    "cue_5": "Surely we can speak with respect."
+    "cue_5": "Surely we can speak with respect.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL86",
@@ -2693,7 +2863,9 @@
     "cue_2": "Let us speak as one country.",
     "cue_3": "I am glad to share this stage.",
     "cue_4": "Together we can fix this.",
-    "cue_5": "Welcome, everyone. Let us talk plainly."
+    "cue_5": "Welcome, everyone. Let us talk plainly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL87",
@@ -2712,7 +2884,9 @@
     "cue_2": "We can disagree and respect each other.",
     "cue_3": "The country wants calm, not shouting.",
     "cue_4": "Friends, let us lower the temperature.",
-    "cue_5": "There is common ground here."
+    "cue_5": "There is common ground here.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL88",
@@ -2731,7 +2905,9 @@
     "cue_2": "Give viewers the number, not a slogan.",
     "cue_3": "Is that claim true? Yes or no.",
     "cue_4": "Where do those statistics come from?",
-    "cue_5": "Show the evidence on screen."
+    "cue_5": "Show the evidence on screen.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL89",
@@ -2750,7 +2926,9 @@
     "cue_2": "Every claim here is sourced.",
     "cue_3": "The statistics support my case.",
     "cue_4": "Independent data says the same.",
-    "cue_5": "Look at the chart behind me."
+    "cue_5": "Look at the chart behind me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL90",
@@ -2769,7 +2947,9 @@
     "cue_2": "Read the full survey.",
     "cue_3": "Check the footnote on that number.",
     "cue_4": "Averages mislead on this question.",
-    "cue_5": "My figures are independently verified."
+    "cue_5": "My figures are independently verified.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL91",
@@ -2788,7 +2968,9 @@
     "cue_2": "Pick a side in front of the country.",
     "cue_3": "You speak for insiders, not voters.",
     "cue_4": "There is a clear choice here.",
-    "cue_5": "Be honest about who you protect."
+    "cue_5": "Be honest about who you protect.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL92",
@@ -2807,7 +2989,9 @@
     "cue_2": "The country must choose a direction.",
     "cue_3": "I stand with ordinary voters.",
     "cue_4": "My opponents defend the powerful.",
-    "cue_5": "Choose the side of the people."
+    "cue_5": "Choose the side of the people.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL93",
@@ -2826,7 +3010,9 @@
     "cue_2": "You cannot label your way out of this.",
     "cue_3": "Viewers see the name-calling for what it is.",
     "cue_4": "Debate the policy, not my loyalty.",
-    "cue_5": "Division is your tactic, not mine."
+    "cue_5": "Division is your tactic, not mine.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL94",
@@ -2845,7 +3031,9 @@
     "cue_2": "Perhaps you would care to clarify...",
     "cue_3": "Some interesting details seem to be missing...",
     "cue_4": "One might ask who is behind this...",
-    "cue_5": "That answer left a lot unsaid..."
+    "cue_5": "That answer left a lot unsaid...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL95",
@@ -2864,7 +3052,9 @@
     "cue_2": "We will certainly look into that...",
     "cue_3": "There may be room for agreement...",
     "cue_4": "I am confident things will work out...",
-    "cue_5": "Positions can evolve, as needed..."
+    "cue_5": "Positions can evolve, as needed...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL96",
@@ -2883,7 +3073,9 @@
     "cue_2": "That is not quite what I meant...",
     "cue_3": "The facts are emerging, I understand...",
     "cue_4": "I would not characterize it that way...",
-    "cue_5": "Others may know more about that..."
+    "cue_5": "Others may know more about that...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL97",
@@ -2907,7 +3099,9 @@
     "cue_2": "Plain answers, please. Folks here deserve them.",
     "cue_3": "Your promises need a price tag.",
     "cue_4": "I judge plans by what they deliver.",
-    "cue_5": "Say it straight so everyone can hear."
+    "cue_5": "Say it straight so everyone can hear.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL98",
@@ -2931,7 +3125,9 @@
     "cue_2": "Own your record or change it.",
     "cue_3": "Do not ask us to just trust you.",
     "cue_4": "Show your work to your neighbors.",
-    "cue_5": "Words are cheap. Show me results."
+    "cue_5": "Words are cheap. Show me results.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL99",
@@ -2955,7 +3151,9 @@
     "cue_2": "My word is only as good as my results.",
     "cue_3": "I will deliver what I promise here.",
     "cue_4": "Hold me to what I say.",
-    "cue_5": "I am here to listen and to act."
+    "cue_5": "I am here to listen and to act.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL100",
@@ -2979,7 +3177,9 @@
     "cue_2": "I will be straight with you.",
     "cue_3": "You will see my work, not just words.",
     "cue_4": "I own this plan, flaws and all.",
-    "cue_5": "Ask me anything. I will answer plainly."
+    "cue_5": "Ask me anything. I will answer plainly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL101",
@@ -3003,7 +3203,9 @@
     "cue_2": "I stand by what I have done.",
     "cue_3": "I will not dodge, and I will not spin.",
     "cue_4": "Fair question. Here is my honest answer.",
-    "cue_5": "I admit what went wrong and what I fixed."
+    "cue_5": "I admit what went wrong and what I fixed.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL102",
@@ -3027,7 +3229,9 @@
     "cue_2": "I have nothing to hide from you.",
     "cue_3": "I accept responsibility for my choices.",
     "cue_4": "Plain facts: this is what I did.",
-    "cue_5": "My answer does not change by audience."
+    "cue_5": "My answer does not change by audience.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL103",
@@ -3051,7 +3255,9 @@
     "cue_2": "Real people pay for your choices!",
     "cue_3": "My neighbors are hurting, and you shrug!",
     "cue_4": "Do you hear what they are saying?",
-    "cue_5": "People in this hall cannot wait!"
+    "cue_5": "People in this hall cannot wait!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL104",
@@ -3075,7 +3281,9 @@
     "cue_2": "Our town deserves better than this!",
     "cue_3": "You are playing with our livelihoods!",
     "cue_4": "Say that to the mothers in this hall!",
-    "cue_5": "Feel what we feel!"
+    "cue_5": "Feel what we feel!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL105",
@@ -3099,7 +3307,9 @@
     "cue_2": "Your stories keep me fighting!",
     "cue_3": "This is about our families!",
     "cue_4": "We will not leave anyone behind!",
-    "cue_5": "Thank you for trusting me with this!"
+    "cue_5": "Thank you for trusting me with this!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL106",
@@ -3123,7 +3333,9 @@
     "cue_2": "Our town matters to me!",
     "cue_3": "Every one of you counts!",
     "cue_4": "I fight for the people in this hall!",
-    "cue_5": "Together we are louder than doubt!"
+    "cue_5": "Together we are louder than doubt!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL107",
@@ -3147,7 +3359,9 @@
     "cue_2": "I feel this as deeply as you!",
     "cue_3": "Do not dismiss these families!",
     "cue_4": "My heart is in this town!",
-    "cue_5": "Respect the people who came here!"
+    "cue_5": "Respect the people who came here!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL108",
@@ -3171,7 +3385,9 @@
     "cue_2": "I will not be shouted down!",
     "cue_3": "These worries are real, and so is my effort!",
     "cue_4": "Do not mock honest concern!",
-    "cue_5": "I stand with this hall!"
+    "cue_5": "I stand with this hall!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL109",
@@ -3195,7 +3411,9 @@
     "cue_2": "We all want the same thing here.",
     "cue_3": "Neighbors would not treat us this way.",
     "cue_4": "Stand with your community, not against it.",
-    "cue_5": "A good neighbor listens first."
+    "cue_5": "A good neighbor listens first.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL110",
@@ -3219,7 +3437,9 @@
     "cue_2": "Help us, and we will help you.",
     "cue_3": "Do right by the people beside you.",
     "cue_4": "Our community deserves a friend.",
-    "cue_5": "Be one of us, not above us."
+    "cue_5": "Be one of us, not above us.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL111",
@@ -3243,7 +3463,9 @@
     "cue_2": "Friends, let us build this as one town.",
     "cue_3": "Together we will find a way.",
     "cue_4": "I am proud to stand with you.",
-    "cue_5": "Our town, our future, together."
+    "cue_5": "Our town, our future, together.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL112",
@@ -3267,7 +3489,9 @@
     "cue_2": "We all win when the town wins.",
     "cue_3": "Count on me as a friend.",
     "cue_4": "Let us work this out together.",
-    "cue_5": "Everyone has a place in this plan."
+    "cue_5": "Everyone has a place in this plan.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL113",
@@ -3291,7 +3515,9 @@
     "cue_2": "We are friends first and rivals second.",
     "cue_3": "We can disagree and stay neighbors.",
     "cue_4": "Keep the peace, and we all gain.",
-    "cue_5": "There is room for everyone here."
+    "cue_5": "There is room for everyone here.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL114",
@@ -3315,7 +3541,9 @@
     "cue_2": "We share more than we dispute.",
     "cue_3": "Friendly words go a long way.",
     "cue_4": "We are on the same side.",
-    "cue_5": "A kind word costs us nothing."
+    "cue_5": "A kind word costs us nothing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL115",
@@ -3339,7 +3567,9 @@
     "cue_2": "Where is the figure behind that claim?",
     "cue_3": "What is the cost per resident?",
     "cue_4": "Name the source for that number.",
-    "cue_5": "Which budget line pays for this?"
+    "cue_5": "Which budget line pays for this?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL116",
@@ -3363,7 +3593,9 @@
     "cue_2": "How was that estimate calculated?",
     "cue_3": "What is the margin of error?",
     "cue_4": "Show the table. I will read it.",
-    "cue_5": "Which of these figures is verified?"
+    "cue_5": "Which of these figures is verified?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL117",
@@ -3387,7 +3619,9 @@
     "cue_2": "Here are the figures, line by line.",
     "cue_3": "Every estimate is documented.",
     "cue_4": "Check the sources. They hold up.",
-    "cue_5": "The data points in one direction."
+    "cue_5": "The data points in one direction.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL118",
@@ -3411,7 +3645,9 @@
     "cue_2": "Independent figures agree with mine.",
     "cue_3": "The trend line favors this plan.",
     "cue_4": "I can show the calculation.",
-    "cue_5": "The evidence is on the table."
+    "cue_5": "The evidence is on the table.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL119",
@@ -3435,7 +3671,9 @@
     "cue_2": "Read the full table, not one line.",
     "cue_3": "Averages hide the real spread.",
     "cue_4": "That source is out of date.",
-    "cue_5": "Compare like with like."
+    "cue_5": "Compare like with like.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL120",
@@ -3459,7 +3697,9 @@
     "cue_2": "My method is on the record.",
     "cue_3": "Ask for the raw data.",
     "cue_4": "The sample is large enough.",
-    "cue_5": "Correct the units, then ask."
+    "cue_5": "Correct the units, then ask.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL121",
@@ -3483,7 +3723,9 @@
     "cue_2": "You stand with them, not with us.",
     "cue_3": "Pick a side. This town is watching.",
     "cue_4": "Friends of the powerful are no friends here.",
-    "cue_5": "Are you with the people or the insiders?"
+    "cue_5": "Are you with the people or the insiders?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL122",
@@ -3507,7 +3749,9 @@
     "cue_2": "There are two kinds of leaders here.",
     "cue_3": "You are either for us or against us.",
     "cue_4": "Outsiders do not speak for this town.",
-    "cue_5": "Choose your people."
+    "cue_5": "Choose your people.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL123",
@@ -3531,7 +3775,9 @@
     "cue_2": "The line is clear, and I am with you.",
     "cue_3": "We stand apart from the insiders.",
     "cue_4": "Real neighbors stick together.",
-    "cue_5": "I choose this town over the powerful."
+    "cue_5": "I choose this town over the powerful.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL124",
@@ -3555,7 +3801,9 @@
     "cue_2": "No more favors for the connected.",
     "cue_3": "Whoever stands with this town stands with me.",
     "cue_4": "The people come first, the elite second.",
-    "cue_5": "I draw the line with you."
+    "cue_5": "I draw the line with you.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL125",
@@ -3579,7 +3827,9 @@
     "cue_2": "Name-calling is all you have.",
     "cue_3": "Loyalty is not a slur.",
     "cue_4": "Find an argument, not an insult.",
-    "cue_5": "Spare us the camps and the slogans."
+    "cue_5": "Spare us the camps and the slogans.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL126",
@@ -3603,7 +3853,9 @@
     "cue_2": "Your labels say more about you.",
     "cue_3": "Draw lines elsewhere, not here.",
     "cue_4": "You question my loyalty? Examine yours.",
-    "cue_5": "Insiders love to accuse outsiders."
+    "cue_5": "Insiders love to accuse outsiders.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL127",
@@ -3627,7 +3879,9 @@
     "cue_2": "One wonders who benefits here...",
     "cue_3": "Mistakes may have been made...",
     "cue_4": "It is often said you know more...",
-    "cue_5": "Funny, how that detail is missing..."
+    "cue_5": "Funny, how that detail is missing...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL128",
@@ -3651,7 +3905,9 @@
     "cue_2": "I would not want to speculate, but...",
     "cue_3": "The record may need a second look...",
     "cue_4": "Perhaps this was overlooked on purpose...",
-    "cue_5": "Interesting what gets left unsaid..."
+    "cue_5": "Interesting what gets left unsaid...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL129",
@@ -3675,7 +3931,9 @@
     "cue_2": "A solution may well be found...",
     "cue_3": "Everything will be looked at carefully...",
     "cue_4": "Concerns have been noted, warmly...",
-    "cue_5": "I am sure it will work out..."
+    "cue_5": "I am sure it will work out...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL130",
@@ -3699,7 +3957,9 @@
     "cue_2": "That is under active consideration...",
     "cue_3": "We are open to many possibilities...",
     "cue_4": "Your point has been well taken...",
-    "cue_5": "It is being looked into, certainly..."
+    "cue_5": "It is being looked into, certainly...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL131",
@@ -3723,7 +3983,9 @@
     "cue_2": "That would be a matter for others...",
     "cue_3": "Mistakes are made by many people...",
     "cue_4": "I could not say with certainty...",
-    "cue_5": "The question is premature, perhaps..."
+    "cue_5": "The question is premature, perhaps...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL132",
@@ -3747,7 +4009,9 @@
     "cue_2": "Records can be read in many ways...",
     "cue_3": "I would need to check with others...",
     "cue_4": "Let us not rush to conclusions...",
-    "cue_5": "That is not my area, really..."
+    "cue_5": "That is not my area, really...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL133",
@@ -3780,7 +4044,9 @@
     "cue_2": "I have read the party platform. Have you?",
     "cue_3": "Our members expect honest results.",
     "cue_4": "Explain your plan to this room.",
-    "cue_5": "Own your numbers in front of us."
+    "cue_5": "Own your numbers in front of us.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL134",
@@ -3813,7 +4079,9 @@
     "cue_2": "I want commitments, not comfort.",
     "cue_3": "Loyalty means delivering, not posturing.",
     "cue_4": "Put your name to the plan.",
-    "cue_5": "Show the party you can deliver."
+    "cue_5": "Show the party you can deliver.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL135",
@@ -3846,7 +4114,9 @@
     "cue_2": "I will deliver for the party.",
     "cue_3": "You will see results from me.",
     "cue_4": "I put the team ahead of myself.",
-    "cue_5": "My commitment to the party is plain."
+    "cue_5": "My commitment to the party is plain.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL136",
@@ -3879,7 +4149,9 @@
     "cue_2": "Hold me to my word.",
     "cue_3": "I serve this party honestly.",
     "cue_4": "I will take the hard assignments.",
-    "cue_5": "Count my votes, not my speeches."
+    "cue_5": "Count my votes, not my speeches.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL137",
@@ -3912,7 +4184,9 @@
     "cue_2": "The record speaks for itself.",
     "cue_3": "I have kept faith with the party.",
     "cue_4": "I owe this room an honest account.",
-    "cue_5": "Ask me directly. I will answer."
+    "cue_5": "Ask me directly. I will answer.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL138",
@@ -3945,7 +4219,9 @@
     "cue_2": "I accept the party's judgment of my work.",
     "cue_3": "My work is open to review.",
     "cue_4": "I have been plain with everyone.",
-    "cue_5": "I do not hide behind the whip."
+    "cue_5": "I do not hide behind the whip.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL139",
@@ -3978,7 +4254,9 @@
     "cue_2": "Think of the voters who believe in us!",
     "cue_3": "Colleagues, hear the people back home!",
     "cue_4": "Do you feel nothing for our base?",
-    "cue_5": "Our supporters deserve better than this!"
+    "cue_5": "Our supporters deserve better than this!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL140",
@@ -4011,7 +4289,9 @@
     "cue_2": "Our members gave everything for this cause!",
     "cue_3": "Remember why we joined this party!",
     "cue_4": "We owe our people more!",
-    "cue_5": "This is not what our voters want!"
+    "cue_5": "This is not what our voters want!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL141",
@@ -4044,7 +4324,9 @@
     "cue_2": "We fight for those who trust us!",
     "cue_3": "Our cause is bigger than any of us!",
     "cue_4": "Together we carry their hopes!",
-    "cue_5": "I feel the weight of their trust!"
+    "cue_5": "I feel the weight of their trust!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL142",
@@ -4077,7 +4359,9 @@
     "cue_2": "I will not let our people down!",
     "cue_3": "Our members deserve a champion!",
     "cue_4": "I am proud to fight beside you!",
-    "cue_5": "Their faith in us drives me!"
+    "cue_5": "Their faith in us drives me!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL143",
@@ -4110,7 +4394,9 @@
     "cue_2": "I bleed for this cause!",
     "cue_3": "My dedication is not for sale!",
     "cue_4": "Spare me the lectures on loyalty!",
-    "cue_5": "I care more than you know!"
+    "cue_5": "I care more than you know!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL144",
@@ -4143,7 +4429,9 @@
     "cue_2": "Do not wound those who serve!",
     "cue_3": "I am hurt by that accusation!",
     "cue_4": "Respect the people who built this!",
-    "cue_5": "I give this party everything!"
+    "cue_5": "I give this party everything!",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL145",
@@ -4176,7 +4464,9 @@
     "cue_2": "The party is a family. Behave as one.",
     "cue_3": "Surely we can share the burden.",
     "cue_4": "Friends help friends in this room.",
-    "cue_5": "Stand with your team, please."
+    "cue_5": "Stand with your team, please.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL146",
@@ -4209,7 +4499,9 @@
     "cue_2": "I expected solidarity from you.",
     "cue_3": "A favor is owed to this team.",
     "cue_4": "Do not leave your colleagues exposed.",
-    "cue_5": "Unity is the party's strength."
+    "cue_5": "Unity is the party's strength.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL147",
@@ -4242,7 +4534,9 @@
     "cue_2": "Colleagues, let us pull together.",
     "cue_3": "I will back you, and you back me.",
     "cue_4": "Team first, and the rest follows.",
-    "cue_5": "Together we will carry this through."
+    "cue_5": "Together we will carry this through.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL148",
@@ -4275,7 +4569,9 @@
     "cue_2": "I am glad to stand with you.",
     "cue_3": "Friends, we have a good plan.",
     "cue_4": "Let us share the credit and the work.",
-    "cue_5": "Good colleagues make good laws."
+    "cue_5": "Good colleagues make good laws.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL149",
@@ -4308,7 +4604,9 @@
     "cue_2": "We can resolve this as colleagues.",
     "cue_3": "No need to air our differences.",
     "cue_4": "Unity matters more than winning an argument.",
-    "cue_5": "Let us find common ground."
+    "cue_5": "Let us find common ground.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL150",
@@ -4341,7 +4639,9 @@
     "cue_2": "We are one party, after all.",
     "cue_3": "Cooler heads help the whole team.",
     "cue_4": "Let us not wound each other.",
-    "cue_5": "A united room serves everyone."
+    "cue_5": "A united room serves everyone.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL151",
@@ -4374,7 +4674,9 @@
     "cue_2": "What does the polling actually show?",
     "cue_3": "Which members are counted as supporters?",
     "cue_4": "Show the whip count. Name names.",
-    "cue_5": "What is the budget impact for the party?"
+    "cue_5": "What is the budget impact for the party?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL152",
@@ -4407,7 +4709,9 @@
     "cue_2": "Is that vote total confirmed?",
     "cue_3": "How does this compare with the platform?",
     "cue_4": "Give the figures, not the feelings.",
-    "cue_5": "What are the odds this passes?"
+    "cue_5": "What are the odds this passes?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL153",
@@ -4440,7 +4744,9 @@
     "cue_2": "The polling backs the plan.",
     "cue_3": "The numbers are with us.",
     "cue_4": "Here is the vote tally, member by member.",
-    "cue_5": "The analysis is attached for all to read."
+    "cue_5": "The analysis is attached for all to read.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL154",
@@ -4473,7 +4779,9 @@
     "cue_2": "Support is higher than critics claim.",
     "cue_3": "The data shows steady backing.",
     "cue_4": "Seat estimates are conservative.",
-    "cue_5": "Check the tally. It adds up."
+    "cue_5": "Check the tally. It adds up.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL155",
@@ -4506,7 +4814,9 @@
     "cue_2": "The poll sample is too small.",
     "cue_3": "Margins of error matter here.",
     "cue_4": "Those totals ignore absentees.",
-    "cue_5": "Read the footnotes on that table."
+    "cue_5": "Read the footnotes on that table.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL156",
@@ -4539,7 +4849,9 @@
     "cue_2": "The model has been stress-tested.",
     "cue_3": "Different assumptions give different counts.",
     "cue_4": "Compare the full data, not a slice.",
-    "cue_5": "The projection stands."
+    "cue_5": "The projection stands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL157",
@@ -4572,7 +4884,9 @@
     "cue_2": "Whose side are you really on?",
     "cue_3": "Loyal members do not behave this way.",
     "cue_4": "Pick a faction and stand by it.",
-    "cue_5": "Some here serve themselves, not the party."
+    "cue_5": "Some here serve themselves, not the party.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL158",
@@ -4605,7 +4919,9 @@
     "cue_2": "You are either with us or a risk.",
     "cue_3": "The party knows who its friends are.",
     "cue_4": "Careerists and loyalists are not the same.",
-    "cue_5": "Choose: the party or yourself."
+    "cue_5": "Choose: the party or yourself.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL159",
@@ -4638,7 +4954,9 @@
     "cue_2": "The party is clear on who leads.",
     "cue_3": "Rebels have no place at this table.",
     "cue_4": "Real members stand with leadership.",
-    "cue_5": "We know our true friends."
+    "cue_5": "We know our true friends.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL160",
@@ -4671,7 +4989,9 @@
     "cue_2": "I stand with the party, not the critics.",
     "cue_3": "Loyalty will be recognized.",
     "cue_4": "The party is united against doubters.",
-    "cue_5": "Those who stay on side will be rewarded."
+    "cue_5": "Those who stay on side will be rewarded.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL161",
@@ -4704,7 +5024,9 @@
     "cue_2": "Calling me disloyal proves nothing.",
     "cue_3": "I know whose interests you serve.",
     "cue_4": "Faction games help only our rivals.",
-    "cue_5": "Find a better argument than loyalty."
+    "cue_5": "Find a better argument than loyalty.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL162",
@@ -4737,7 +5059,9 @@
     "cue_2": "Your accusations say more about you.",
     "cue_3": "I will not be sorted into a camp.",
     "cue_4": "Question the policy, not the member.",
-    "cue_5": "Rivals love this kind of quarrel."
+    "cue_5": "Rivals love this kind of quarrel.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL163",
@@ -4770,7 +5094,9 @@
     "cue_2": "It would be unfortunate if details leaked...",
     "cue_3": "A certain arrangement has been mentioned...",
     "cue_4": "One hears the leadership is not pleased...",
-    "cue_5": "Quiet conversations are taking place..."
+    "cue_5": "Quiet conversations are taking place...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL164",
@@ -4803,7 +5129,9 @@
     "cue_2": "I would not wish to name names...",
     "cue_3": "Loyalty can be flexible, I hear...",
     "cue_4": "Rumors say a deal is close...",
-    "cue_5": "It might be wise to reconsider..."
+    "cue_5": "It might be wise to reconsider...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL165",
@@ -4836,7 +5164,9 @@
     "cue_2": "Positions can be adjusted, if needed...",
     "cue_3": "Everyone will be looked after, naturally...",
     "cue_4": "Arrangements are being explored...",
-    "cue_5": "Your concerns will be kept in mind..."
+    "cue_5": "Your concerns will be kept in mind...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL166",
@@ -4869,7 +5199,9 @@
     "cue_2": "Perhaps a place can be found...",
     "cue_3": "Nothing is off the table, really...",
     "cue_4": "We may find a happy outcome...",
-    "cue_5": "A way forward is emerging, softly..."
+    "cue_5": "A way forward is emerging, softly...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL167",
@@ -4902,7 +5234,9 @@
     "cue_2": "My position has been misunderstood...",
     "cue_3": "I was not in that conversation...",
     "cue_4": "These things are rarely so simple...",
-    "cue_5": "That is a leadership matter, surely..."
+    "cue_5": "That is a leadership matter, surely...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL168",
@@ -4935,7 +5269,9 @@
     "cue_2": "I will consult others and then answer...",
     "cue_3": "Minutes can be read many ways...",
     "cue_4": "I could not confirm that, I fear...",
-    "cue_5": "Let us not put that in writing..."
+    "cue_5": "Let us not put that in writing...",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL169",
@@ -4951,7 +5287,9 @@
     "cue_2": "Say plainly what you mean about the wilderness.",
     "cue_3": "Be sincere with people about the wilderness.",
     "cue_4": "The wilderness is no place for games.",
-    "cue_5": "People deserve a straight answer on the wilderness."
+    "cue_5": "People deserve a straight answer on the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL170",
@@ -4967,7 +5305,9 @@
     "cue_2": "People can trust me on the wilderness.",
     "cue_3": "The wilderness matters to me personally.",
     "cue_4": "I will be honest about the wilderness.",
-    "cue_5": "Here is my honest view on the wilderness."
+    "cue_5": "Here is my honest view on the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL171",
@@ -4983,7 +5323,9 @@
     "cue_2": "You can ask me about the wilderness.",
     "cue_3": "I stand by what I said.",
     "cue_4": "Ask plainly. I will answer plainly.",
-    "cue_5": "My view on the wilderness is sincere."
+    "cue_5": "My view on the wilderness is sincere.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL172",
@@ -4999,7 +5341,9 @@
     "cue_2": "Look at the faces affected by the wilderness.",
     "cue_3": "The wilderness is about real people.",
     "cue_4": "Do you feel nothing about the wilderness?",
-    "cue_5": "Tell that to those hurt by the wilderness."
+    "cue_5": "Tell that to those hurt by the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL173",
@@ -5015,7 +5359,9 @@
     "cue_2": "The wilderness weighs on me.",
     "cue_3": "Their stories made me care about the wilderness.",
     "cue_4": "I carry those families with me.",
-    "cue_5": "Every family I met raised the wilderness."
+    "cue_5": "Every family I met raised the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL174",
@@ -5031,7 +5377,9 @@
     "cue_2": "Do not turn the wilderness into a game.",
     "cue_3": "I will not shrink their stories.",
     "cue_4": "These are people, not statistics.",
-    "cue_5": "Speak gently about the wilderness."
+    "cue_5": "Speak gently about the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL175",
@@ -5047,7 +5395,9 @@
     "cue_2": "Ask anyone in the street about the wilderness.",
     "cue_3": "The public wants less spin on the wilderness.",
     "cue_4": "Most people disagree with you on the wilderness.",
-    "cue_5": "Voters have spoken on the wilderness."
+    "cue_5": "Voters have spoken on the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL176",
@@ -5063,7 +5413,9 @@
     "cue_2": "Ordinary people want action on the wilderness.",
     "cue_3": "Voters keep raising the wilderness.",
     "cue_4": "Ask around. People care about the wilderness.",
-    "cue_5": "The public mood favors the wilderness."
+    "cue_5": "The public mood favors the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL177",
@@ -5079,7 +5431,9 @@
     "cue_2": "People are divided on the wilderness.",
     "cue_3": "Do not claim the crowd on the wilderness.",
     "cue_4": "Let the public decide the wilderness.",
-    "cue_5": "I hear all sides on the wilderness."
+    "cue_5": "I hear all sides on the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL178",
@@ -5095,7 +5449,9 @@
     "cue_2": "Your numbers on the wilderness do not hold.",
     "cue_3": "Show the evidence for the wilderness.",
     "cue_4": "What is the real cost of the wilderness?",
-    "cue_5": "Those the wilderness statistics are selective."
+    "cue_5": "Those the wilderness statistics are selective.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL179",
@@ -5111,7 +5467,9 @@
     "cue_2": "Here are the figures on the wilderness.",
     "cue_3": "Studies on the wilderness support this.",
     "cue_4": "The cost of the wilderness adds up.",
-    "cue_5": "The numbers on the wilderness hold."
+    "cue_5": "The numbers on the wilderness hold.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL180",
@@ -5127,7 +5485,9 @@
     "cue_2": "Those figures on the wilderness are misread.",
     "cue_3": "The data does not say that.",
     "cue_4": "Read the full report on the wilderness.",
-    "cue_5": "That is not what the data shows."
+    "cue_5": "That is not what the data shows.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL181",
@@ -5143,7 +5503,9 @@
     "cue_2": "Whose side are you on over the wilderness?",
     "cue_3": "You work against the public on the wilderness.",
     "cue_4": "This is a fight over the wilderness.",
-    "cue_5": "Wrong side of the wilderness. Own it."
+    "cue_5": "Wrong side of the wilderness. Own it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL182",
@@ -5159,7 +5521,9 @@
     "cue_2": "Some lose over the wilderness. So be it.",
     "cue_3": "The wilderness needs hard choices.",
     "cue_4": "There is no middle ground on the wilderness.",
-    "cue_5": "I will not please everyone on the wilderness."
+    "cue_5": "I will not please everyone on the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL183",
@@ -5175,7 +5539,9 @@
     "cue_2": "Spare me the sermon on the wilderness.",
     "cue_3": "Do not hide behind the wilderness.",
     "cue_4": "That jab on the wilderness fails.",
-    "cue_5": "Pick a side on the wilderness yourself."
+    "cue_5": "Pick a side on the wilderness yourself.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL184",
@@ -5191,7 +5557,9 @@
     "cue_2": "Who benefits from the wilderness, really?",
     "cue_3": "Your story on the wilderness has gaps.",
     "cue_4": "Convenient wording on the wilderness.",
-    "cue_5": "What are you leaving out on the wilderness?"
+    "cue_5": "What are you leaving out on the wilderness?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL185",
@@ -5207,7 +5575,9 @@
     "cue_2": "Everyone agrees on the wilderness, broadly.",
     "cue_3": "The wilderness is simpler than you think.",
     "cue_4": "I said what I said on the wilderness.",
-    "cue_5": "Trust me on the wilderness."
+    "cue_5": "Trust me on the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL186",
@@ -5223,7 +5593,9 @@
     "cue_2": "You misheard me on the wilderness.",
     "cue_3": "I take that as praise on the wilderness.",
     "cue_4": "A fair question on the wilderness. Next.",
-    "cue_5": "Let us move past the wilderness."
+    "cue_5": "Let us move past the wilderness.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL187",
@@ -5239,7 +5611,9 @@
     "cue_2": "Be sincere with people about rural hospitals.",
     "cue_3": "Rural hospitals is no place for games.",
     "cue_4": "People deserve a straight answer on rural hospitals.",
-    "cue_5": "Rural hospitals deserves honesty, not slogans."
+    "cue_5": "Rural hospitals deserves honesty, not slogans.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL188",
@@ -5255,7 +5629,9 @@
     "cue_2": "Rural hospitals matters to me personally.",
     "cue_3": "I will be honest about rural hospitals.",
     "cue_4": "Here is my honest view on rural hospitals.",
-    "cue_5": "I mean every word about rural hospitals."
+    "cue_5": "I mean every word about rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL189",
@@ -5271,7 +5647,9 @@
     "cue_2": "I stand by what I said.",
     "cue_3": "Ask plainly. I will answer plainly.",
     "cue_4": "My view on rural hospitals is sincere.",
-    "cue_5": "I will not dodge rural hospitals."
+    "cue_5": "I will not dodge rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL190",
@@ -5287,7 +5665,9 @@
     "cue_2": "Rural hospitals is about real people.",
     "cue_3": "Do you feel nothing about rural hospitals?",
     "cue_4": "Tell that to those hurt by rural hospitals.",
-    "cue_5": "Think of the families behind rural hospitals."
+    "cue_5": "Think of the families behind rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL191",
@@ -5303,7 +5683,9 @@
     "cue_2": "Their stories made me care about rural hospitals.",
     "cue_3": "I carry those families with me.",
     "cue_4": "Every family I met raised rural hospitals.",
-    "cue_5": "I have met people touched by rural hospitals."
+    "cue_5": "I have met people touched by rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL192",
@@ -5319,7 +5701,9 @@
     "cue_2": "I will not shrink their stories.",
     "cue_3": "These are people, not statistics.",
     "cue_4": "Speak gently about rural hospitals.",
-    "cue_5": "You cannot dismiss people over rural hospitals."
+    "cue_5": "You cannot dismiss people over rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL193",
@@ -5335,7 +5719,9 @@
     "cue_2": "The public wants less spin on rural hospitals.",
     "cue_3": "Most people disagree with you on rural hospitals.",
     "cue_4": "Voters have spoken on rural hospitals.",
-    "cue_5": "People want answers on rural hospitals."
+    "cue_5": "People want answers on rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL194",
@@ -5351,7 +5737,9 @@
     "cue_2": "Voters keep raising rural hospitals.",
     "cue_3": "Ask around. People care about rural hospitals.",
     "cue_4": "The public mood favors rural hospitals.",
-    "cue_5": "Most people I meet back rural hospitals."
+    "cue_5": "Most people I meet back rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL195",
@@ -5367,7 +5755,9 @@
     "cue_2": "Do not claim the crowd on rural hospitals.",
     "cue_3": "Let the public decide rural hospitals.",
     "cue_4": "I hear all sides on rural hospitals.",
-    "cue_5": "Do not speak for everyone on rural hospitals."
+    "cue_5": "Do not speak for everyone on rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL196",
@@ -5383,7 +5773,9 @@
     "cue_2": "Show the evidence for rural hospitals.",
     "cue_3": "What is the real cost of rural hospitals?",
     "cue_4": "Those rural hospitals statistics are selective.",
-    "cue_5": "Where are the figures on rural hospitals?"
+    "cue_5": "Where are the figures on rural hospitals?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL197",
@@ -5399,7 +5791,9 @@
     "cue_2": "Studies on rural hospitals support this.",
     "cue_3": "The cost of rural hospitals adds up.",
     "cue_4": "The numbers on rural hospitals hold.",
-    "cue_5": "The evidence on rural hospitals is clear."
+    "cue_5": "The evidence on rural hospitals is clear.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL198",
@@ -5415,7 +5809,9 @@
     "cue_2": "The data does not say that.",
     "cue_3": "Read the full report on rural hospitals.",
     "cue_4": "That is not what the data shows.",
-    "cue_5": "Check the source on rural hospitals."
+    "cue_5": "Check the source on rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL199",
@@ -5431,7 +5827,9 @@
     "cue_2": "You work against the public on rural hospitals.",
     "cue_3": "This is a fight over rural hospitals.",
     "cue_4": "Wrong side of rural hospitals. Own it.",
-    "cue_5": "Rural hospitals serves insiders, not you."
+    "cue_5": "Rural hospitals serves insiders, not you.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL200",
@@ -5447,7 +5845,9 @@
     "cue_2": "Rural hospitals needs hard choices.",
     "cue_3": "There is no middle ground on rural hospitals.",
     "cue_4": "I will not please everyone on rural hospitals.",
-    "cue_5": "We must choose a side on rural hospitals."
+    "cue_5": "We must choose a side on rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL201",
@@ -5463,7 +5863,9 @@
     "cue_2": "Do not hide behind rural hospitals.",
     "cue_3": "That jab on rural hospitals fails.",
     "cue_4": "Pick a side on rural hospitals yourself.",
-    "cue_5": "Your side caused this over rural hospitals."
+    "cue_5": "Your side caused this over rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL202",
@@ -5479,7 +5881,9 @@
     "cue_2": "Your story on rural hospitals has gaps.",
     "cue_3": "Convenient wording on rural hospitals.",
     "cue_4": "What are you leaving out on rural hospitals?",
-    "cue_5": "Funny how rural hospitals suits you so well."
+    "cue_5": "Funny how rural hospitals suits you so well.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL203",
@@ -5495,7 +5899,9 @@
     "cue_2": "Rural hospitals is simpler than you think.",
     "cue_3": "I said what I said on rural hospitals.",
     "cue_4": "Trust me on rural hospitals.",
-    "cue_5": "Let me reframe rural hospitals slightly."
+    "cue_5": "Let me reframe rural hospitals slightly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL204",
@@ -5511,7 +5917,9 @@
     "cue_2": "I take that as praise on rural hospitals.",
     "cue_3": "A fair question on rural hospitals. Next.",
     "cue_4": "Let us move past rural hospitals.",
-    "cue_5": "That is not my line on rural hospitals."
+    "cue_5": "That is not my line on rural hospitals.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL205",
@@ -5526,7 +5934,9 @@
     "cue_2": "The identity card is no place for games.",
     "cue_3": "People deserve a straight answer on the identity card.",
     "cue_4": "The identity card deserves honesty, not slogans.",
-    "cue_5": "Say plainly what you mean about the identity card."
+    "cue_5": "Say plainly what you mean about the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL206",
@@ -5541,7 +5951,9 @@
     "cue_2": "I will be honest about the identity card.",
     "cue_3": "Here is my honest view on the identity card.",
     "cue_4": "I mean every word about the identity card.",
-    "cue_5": "People can trust me on the identity card."
+    "cue_5": "People can trust me on the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL207",
@@ -5556,7 +5968,9 @@
     "cue_2": "Ask plainly. I will answer plainly.",
     "cue_3": "My view on the identity card is sincere.",
     "cue_4": "I will not dodge the identity card.",
-    "cue_5": "You can ask me about the identity card."
+    "cue_5": "You can ask me about the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL208",
@@ -5571,7 +5985,9 @@
     "cue_2": "Do you feel nothing about the identity card?",
     "cue_3": "Tell that to those hurt by the identity card.",
     "cue_4": "Think of the families behind the identity card.",
-    "cue_5": "Look at the faces affected by the identity card."
+    "cue_5": "Look at the faces affected by the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL209",
@@ -5586,7 +6002,9 @@
     "cue_2": "I carry those families with me.",
     "cue_3": "Every family I met raised the identity card.",
     "cue_4": "I have met people touched by the identity card.",
-    "cue_5": "The identity card weighs on me."
+    "cue_5": "The identity card weighs on me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL210",
@@ -5601,7 +6019,9 @@
     "cue_2": "These are people, not statistics.",
     "cue_3": "Speak gently about the identity card.",
     "cue_4": "You cannot dismiss people over the identity card.",
-    "cue_5": "Do not turn the identity card into a game."
+    "cue_5": "Do not turn the identity card into a game.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL211",
@@ -5616,7 +6036,9 @@
     "cue_2": "Most people disagree with you on the identity card.",
     "cue_3": "Voters have spoken on the identity card.",
     "cue_4": "People want answers on the identity card.",
-    "cue_5": "Ask anyone in the street about the identity card."
+    "cue_5": "Ask anyone in the street about the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL212",
@@ -5631,7 +6053,9 @@
     "cue_2": "Ask around. People care about the identity card.",
     "cue_3": "The public mood favors the identity card.",
     "cue_4": "Most people I meet back the identity card.",
-    "cue_5": "Ordinary people want action on the identity card."
+    "cue_5": "Ordinary people want action on the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL213",
@@ -5646,7 +6070,9 @@
     "cue_2": "Let the public decide the identity card.",
     "cue_3": "I hear all sides on the identity card.",
     "cue_4": "Do not speak for everyone on the identity card.",
-    "cue_5": "People are divided on the identity card."
+    "cue_5": "People are divided on the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL214",
@@ -5661,7 +6087,9 @@
     "cue_2": "What is the real cost of the identity card?",
     "cue_3": "Those the identity card statistics are selective.",
     "cue_4": "Where are the figures on the identity card?",
-    "cue_5": "Your numbers on the identity card do not hold."
+    "cue_5": "Your numbers on the identity card do not hold.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL215",
@@ -5676,7 +6104,9 @@
     "cue_2": "The cost of the identity card adds up.",
     "cue_3": "The numbers on the identity card hold.",
     "cue_4": "The evidence on the identity card is clear.",
-    "cue_5": "Here are the figures on the identity card."
+    "cue_5": "Here are the figures on the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL216",
@@ -5691,7 +6121,9 @@
     "cue_2": "Read the full report on the identity card.",
     "cue_3": "That is not what the data shows.",
     "cue_4": "Check the source on the identity card.",
-    "cue_5": "Those figures on the identity card are misread."
+    "cue_5": "Those figures on the identity card are misread.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL217",
@@ -5706,7 +6138,9 @@
     "cue_2": "This is a fight over the identity card.",
     "cue_3": "Wrong side of the identity card. Own it.",
     "cue_4": "The identity card serves insiders, not you.",
-    "cue_5": "Whose side are you on over the identity card?"
+    "cue_5": "Whose side are you on over the identity card?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL218",
@@ -5721,7 +6155,9 @@
     "cue_2": "There is no middle ground on the identity card.",
     "cue_3": "I will not please everyone on the identity card.",
     "cue_4": "We must choose a side on the identity card.",
-    "cue_5": "Some lose over the identity card. So be it."
+    "cue_5": "Some lose over the identity card. So be it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL219",
@@ -5736,7 +6172,9 @@
     "cue_2": "That jab on the identity card fails.",
     "cue_3": "Pick a side on the identity card yourself.",
     "cue_4": "Your side caused this over the identity card.",
-    "cue_5": "Spare me the sermon on the identity card."
+    "cue_5": "Spare me the sermon on the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL220",
@@ -5751,7 +6189,9 @@
     "cue_2": "Convenient wording on the identity card.",
     "cue_3": "What are you leaving out on the identity card?",
     "cue_4": "Funny how the identity card suits you so well.",
-    "cue_5": "Who benefits from the identity card, really?"
+    "cue_5": "Who benefits from the identity card, really?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL221",
@@ -5766,7 +6206,9 @@
     "cue_2": "I said what I said on the identity card.",
     "cue_3": "Trust me on the identity card.",
     "cue_4": "Let me reframe the identity card slightly.",
-    "cue_5": "Everyone agrees on the identity card, broadly."
+    "cue_5": "Everyone agrees on the identity card, broadly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL222",
@@ -5781,7 +6223,9 @@
     "cue_2": "A fair question on the identity card. Next.",
     "cue_3": "Let us move past the identity card.",
     "cue_4": "That is not my line on the identity card.",
-    "cue_5": "You misheard me on the identity card."
+    "cue_5": "You misheard me on the identity card.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL223",
@@ -5796,7 +6240,9 @@
     "cue_2": "People deserve a straight answer on the broadcaster.",
     "cue_3": "The broadcaster deserves honesty, not slogans.",
     "cue_4": "Say plainly what you mean about the broadcaster.",
-    "cue_5": "Be sincere with people about the broadcaster."
+    "cue_5": "Be sincere with people about the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL224",
@@ -5811,7 +6257,9 @@
     "cue_2": "Here is my honest view on the broadcaster.",
     "cue_3": "I mean every word about the broadcaster.",
     "cue_4": "People can trust me on the broadcaster.",
-    "cue_5": "The broadcaster matters to me personally."
+    "cue_5": "The broadcaster matters to me personally.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL225",
@@ -5826,7 +6274,9 @@
     "cue_2": "My view on the broadcaster is sincere.",
     "cue_3": "I will not dodge the broadcaster.",
     "cue_4": "You can ask me about the broadcaster.",
-    "cue_5": "I stand by what I said."
+    "cue_5": "I stand by what I said.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL226",
@@ -5841,7 +6291,9 @@
     "cue_2": "Tell that to those hurt by the broadcaster.",
     "cue_3": "Think of the families behind the broadcaster.",
     "cue_4": "Look at the faces affected by the broadcaster.",
-    "cue_5": "The broadcaster is about real people."
+    "cue_5": "The broadcaster is about real people.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL227",
@@ -5856,7 +6308,9 @@
     "cue_2": "Every family I met raised the broadcaster.",
     "cue_3": "I have met people touched by the broadcaster.",
     "cue_4": "The broadcaster weighs on me.",
-    "cue_5": "Their stories made me care about the broadcaster."
+    "cue_5": "Their stories made me care about the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL228",
@@ -5871,7 +6325,9 @@
     "cue_2": "Speak gently about the broadcaster.",
     "cue_3": "You cannot dismiss people over the broadcaster.",
     "cue_4": "Do not turn the broadcaster into a game.",
-    "cue_5": "I will not shrink their stories."
+    "cue_5": "I will not shrink their stories.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL229",
@@ -5886,7 +6342,9 @@
     "cue_2": "Voters have spoken on the broadcaster.",
     "cue_3": "People want answers on the broadcaster.",
     "cue_4": "Ask anyone in the street about the broadcaster.",
-    "cue_5": "The public wants less spin on the broadcaster."
+    "cue_5": "The public wants less spin on the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL230",
@@ -5901,7 +6359,9 @@
     "cue_2": "The public mood favors the broadcaster.",
     "cue_3": "Most people I meet back the broadcaster.",
     "cue_4": "Ordinary people want action on the broadcaster.",
-    "cue_5": "Voters keep raising the broadcaster."
+    "cue_5": "Voters keep raising the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL231",
@@ -5916,7 +6376,9 @@
     "cue_2": "I hear all sides on the broadcaster.",
     "cue_3": "Do not speak for everyone on the broadcaster.",
     "cue_4": "People are divided on the broadcaster.",
-    "cue_5": "Do not claim the crowd on the broadcaster."
+    "cue_5": "Do not claim the crowd on the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL232",
@@ -5931,7 +6393,9 @@
     "cue_2": "Those the broadcaster statistics are selective.",
     "cue_3": "Where are the figures on the broadcaster?",
     "cue_4": "Your numbers on the broadcaster do not hold.",
-    "cue_5": "Show the evidence for the broadcaster."
+    "cue_5": "Show the evidence for the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL233",
@@ -5946,7 +6410,9 @@
     "cue_2": "The numbers on the broadcaster hold.",
     "cue_3": "The evidence on the broadcaster is clear.",
     "cue_4": "Here are the figures on the broadcaster.",
-    "cue_5": "Studies on the broadcaster support this."
+    "cue_5": "Studies on the broadcaster support this.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL234",
@@ -5961,7 +6427,9 @@
     "cue_2": "That is not what the data shows.",
     "cue_3": "Check the source on the broadcaster.",
     "cue_4": "Those figures on the broadcaster are misread.",
-    "cue_5": "The data does not say that."
+    "cue_5": "The data does not say that.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL235",
@@ -5976,7 +6444,9 @@
     "cue_2": "Wrong side of the broadcaster. Own it.",
     "cue_3": "The broadcaster serves insiders, not you.",
     "cue_4": "Whose side are you on over the broadcaster?",
-    "cue_5": "You work against the public on the broadcaster."
+    "cue_5": "You work against the public on the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL236",
@@ -5991,7 +6461,9 @@
     "cue_2": "I will not please everyone on the broadcaster.",
     "cue_3": "We must choose a side on the broadcaster.",
     "cue_4": "Some lose over the broadcaster. So be it.",
-    "cue_5": "The broadcaster needs hard choices."
+    "cue_5": "The broadcaster needs hard choices.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL237",
@@ -6006,7 +6478,9 @@
     "cue_2": "Pick a side on the broadcaster yourself.",
     "cue_3": "Your side caused this over the broadcaster.",
     "cue_4": "Spare me the sermon on the broadcaster.",
-    "cue_5": "Do not hide behind the broadcaster."
+    "cue_5": "Do not hide behind the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL238",
@@ -6021,7 +6495,9 @@
     "cue_2": "What are you leaving out on the broadcaster?",
     "cue_3": "Funny how the broadcaster suits you so well.",
     "cue_4": "Who benefits from the broadcaster, really?",
-    "cue_5": "Your story on the broadcaster has gaps."
+    "cue_5": "Your story on the broadcaster has gaps.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL239",
@@ -6036,7 +6512,9 @@
     "cue_2": "Trust me on the broadcaster.",
     "cue_3": "Let me reframe the broadcaster slightly.",
     "cue_4": "Everyone agrees on the broadcaster, broadly.",
-    "cue_5": "The broadcaster is simpler than you think."
+    "cue_5": "The broadcaster is simpler than you think.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL240",
@@ -6051,7 +6529,9 @@
     "cue_2": "Let us move past the broadcaster.",
     "cue_3": "That is not my line on the broadcaster.",
     "cue_4": "You misheard me on the broadcaster.",
-    "cue_5": "I take that as praise on the broadcaster."
+    "cue_5": "I take that as praise on the broadcaster.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL241",
@@ -6067,7 +6547,9 @@
     "cue_2": "Political donations deserves honesty, not slogans.",
     "cue_3": "Say plainly what you mean about political donations.",
     "cue_4": "Be sincere with people about political donations.",
-    "cue_5": "Political donations is no place for games."
+    "cue_5": "Political donations is no place for games.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL242",
@@ -6083,7 +6565,9 @@
     "cue_2": "I mean every word about political donations.",
     "cue_3": "People can trust me on political donations.",
     "cue_4": "Political donations matters to me personally.",
-    "cue_5": "I will be honest about political donations."
+    "cue_5": "I will be honest about political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL243",
@@ -6099,7 +6583,9 @@
     "cue_2": "I will not dodge political donations.",
     "cue_3": "You can ask me about political donations.",
     "cue_4": "I stand by what I said.",
-    "cue_5": "Ask plainly. I will answer plainly."
+    "cue_5": "Ask plainly. I will answer plainly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL244",
@@ -6115,7 +6601,9 @@
     "cue_2": "Think of the families behind political donations.",
     "cue_3": "Look at the faces affected by political donations.",
     "cue_4": "Political donations is about real people.",
-    "cue_5": "Do you feel nothing about political donations?"
+    "cue_5": "Do you feel nothing about political donations?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL245",
@@ -6131,7 +6619,9 @@
     "cue_2": "I have met people touched by political donations.",
     "cue_3": "Political donations weighs on me.",
     "cue_4": "Their stories made me care about political donations.",
-    "cue_5": "I carry those families with me."
+    "cue_5": "I carry those families with me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL246",
@@ -6147,7 +6637,9 @@
     "cue_2": "You cannot dismiss people over political donations.",
     "cue_3": "Do not turn political donations into a game.",
     "cue_4": "I will not shrink their stories.",
-    "cue_5": "These are people, not statistics."
+    "cue_5": "These are people, not statistics.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL247",
@@ -6163,7 +6655,9 @@
     "cue_2": "People want answers on political donations.",
     "cue_3": "Ask anyone in the street about political donations.",
     "cue_4": "The public wants less spin on political donations.",
-    "cue_5": "Most people disagree with you on political donations."
+    "cue_5": "Most people disagree with you on political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL248",
@@ -6179,7 +6673,9 @@
     "cue_2": "Most people I meet back political donations.",
     "cue_3": "Ordinary people want action on political donations.",
     "cue_4": "Voters keep raising political donations.",
-    "cue_5": "Ask around. People care about political donations."
+    "cue_5": "Ask around. People care about political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL249",
@@ -6195,7 +6691,9 @@
     "cue_2": "Do not speak for everyone on political donations.",
     "cue_3": "People are divided on political donations.",
     "cue_4": "Do not claim the crowd on political donations.",
-    "cue_5": "Let the public decide political donations."
+    "cue_5": "Let the public decide political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL250",
@@ -6211,7 +6709,9 @@
     "cue_2": "Where are the figures on political donations?",
     "cue_3": "Your numbers on political donations do not hold.",
     "cue_4": "Show the evidence for political donations.",
-    "cue_5": "What is the real cost of political donations?"
+    "cue_5": "What is the real cost of political donations?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL251",
@@ -6227,7 +6727,9 @@
     "cue_2": "The evidence on political donations is clear.",
     "cue_3": "Here are the figures on political donations.",
     "cue_4": "Studies on political donations support this.",
-    "cue_5": "The cost of political donations adds up."
+    "cue_5": "The cost of political donations adds up.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL252",
@@ -6243,7 +6745,9 @@
     "cue_2": "Check the source on political donations.",
     "cue_3": "Those figures on political donations are misread.",
     "cue_4": "The data does not say that.",
-    "cue_5": "Read the full report on political donations."
+    "cue_5": "Read the full report on political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL253",
@@ -6259,7 +6763,9 @@
     "cue_2": "Political donations serves insiders, not you.",
     "cue_3": "Whose side are you on over political donations?",
     "cue_4": "You work against the public on political donations.",
-    "cue_5": "This is a fight over political donations."
+    "cue_5": "This is a fight over political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL254",
@@ -6275,7 +6781,9 @@
     "cue_2": "We must choose a side on political donations.",
     "cue_3": "Some lose over political donations. So be it.",
     "cue_4": "Political donations needs hard choices.",
-    "cue_5": "There is no middle ground on political donations."
+    "cue_5": "There is no middle ground on political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL255",
@@ -6291,7 +6799,9 @@
     "cue_2": "Your side caused this over political donations.",
     "cue_3": "Spare me the sermon on political donations.",
     "cue_4": "Do not hide behind political donations.",
-    "cue_5": "That jab on political donations fails."
+    "cue_5": "That jab on political donations fails.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL256",
@@ -6307,7 +6817,9 @@
     "cue_2": "Funny how political donations suits you so well.",
     "cue_3": "Who benefits from political donations, really?",
     "cue_4": "Your story on political donations has gaps.",
-    "cue_5": "Convenient wording on political donations."
+    "cue_5": "Convenient wording on political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL257",
@@ -6323,7 +6835,9 @@
     "cue_2": "Let me reframe political donations slightly.",
     "cue_3": "Everyone agrees on political donations, broadly.",
     "cue_4": "Political donations is simpler than you think.",
-    "cue_5": "I said what I said on political donations."
+    "cue_5": "I said what I said on political donations.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL258",
@@ -6339,7 +6853,9 @@
     "cue_2": "That is not my line on political donations.",
     "cue_3": "You misheard me on political donations.",
     "cue_4": "I take that as praise on political donations.",
-    "cue_5": "A fair question on political donations. Next."
+    "cue_5": "A fair question on political donations. Next.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL259",
@@ -6354,7 +6870,9 @@
     "cue_2": "Say plainly what you mean about the tax cut.",
     "cue_3": "Be sincere with people about the tax cut.",
     "cue_4": "The tax cut is no place for games.",
-    "cue_5": "People deserve a straight answer on the tax cut."
+    "cue_5": "People deserve a straight answer on the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL260",
@@ -6369,7 +6887,9 @@
     "cue_2": "People can trust me on the tax cut.",
     "cue_3": "The tax cut matters to me personally.",
     "cue_4": "I will be honest about the tax cut.",
-    "cue_5": "Here is my honest view on the tax cut."
+    "cue_5": "Here is my honest view on the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL261",
@@ -6384,7 +6904,9 @@
     "cue_2": "You can ask me about the tax cut.",
     "cue_3": "I stand by what I said.",
     "cue_4": "Ask plainly. I will answer plainly.",
-    "cue_5": "My view on the tax cut is sincere."
+    "cue_5": "My view on the tax cut is sincere.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL262",
@@ -6399,7 +6921,9 @@
     "cue_2": "Look at the faces affected by the tax cut.",
     "cue_3": "The tax cut is about real people.",
     "cue_4": "Do you feel nothing about the tax cut?",
-    "cue_5": "Tell that to those hurt by the tax cut."
+    "cue_5": "Tell that to those hurt by the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL263",
@@ -6414,7 +6938,9 @@
     "cue_2": "The tax cut weighs on me.",
     "cue_3": "Their stories made me care about the tax cut.",
     "cue_4": "I carry those families with me.",
-    "cue_5": "Every family I met raised the tax cut."
+    "cue_5": "Every family I met raised the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL264",
@@ -6429,7 +6955,9 @@
     "cue_2": "Do not turn the tax cut into a game.",
     "cue_3": "I will not shrink their stories.",
     "cue_4": "These are people, not statistics.",
-    "cue_5": "Speak gently about the tax cut."
+    "cue_5": "Speak gently about the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL265",
@@ -6444,7 +6972,9 @@
     "cue_2": "Ask anyone in the street about the tax cut.",
     "cue_3": "The public wants less spin on the tax cut.",
     "cue_4": "Most people disagree with you on the tax cut.",
-    "cue_5": "Voters have spoken on the tax cut."
+    "cue_5": "Voters have spoken on the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL266",
@@ -6459,7 +6989,9 @@
     "cue_2": "Ordinary people want action on the tax cut.",
     "cue_3": "Voters keep raising the tax cut.",
     "cue_4": "Ask around. People care about the tax cut.",
-    "cue_5": "The public mood favors the tax cut."
+    "cue_5": "The public mood favors the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL267",
@@ -6474,7 +7006,9 @@
     "cue_2": "People are divided on the tax cut.",
     "cue_3": "Do not claim the crowd on the tax cut.",
     "cue_4": "Let the public decide the tax cut.",
-    "cue_5": "I hear all sides on the tax cut."
+    "cue_5": "I hear all sides on the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL268",
@@ -6489,7 +7023,9 @@
     "cue_2": "Your numbers on the tax cut do not hold.",
     "cue_3": "Show the evidence for the tax cut.",
     "cue_4": "What is the real cost of the tax cut?",
-    "cue_5": "Those the tax cut statistics are selective."
+    "cue_5": "Those the tax cut statistics are selective.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL269",
@@ -6504,7 +7040,9 @@
     "cue_2": "Here are the figures on the tax cut.",
     "cue_3": "Studies on the tax cut support this.",
     "cue_4": "The cost of the tax cut adds up.",
-    "cue_5": "The numbers on the tax cut hold."
+    "cue_5": "The numbers on the tax cut hold.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL270",
@@ -6519,7 +7057,9 @@
     "cue_2": "Those figures on the tax cut are misread.",
     "cue_3": "The data does not say that.",
     "cue_4": "Read the full report on the tax cut.",
-    "cue_5": "That is not what the data shows."
+    "cue_5": "That is not what the data shows.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL271",
@@ -6534,7 +7074,9 @@
     "cue_2": "Whose side are you on over the tax cut?",
     "cue_3": "You work against the public on the tax cut.",
     "cue_4": "This is a fight over the tax cut.",
-    "cue_5": "Wrong side of the tax cut. Own it."
+    "cue_5": "Wrong side of the tax cut. Own it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL272",
@@ -6549,7 +7091,9 @@
     "cue_2": "Some lose over the tax cut. So be it.",
     "cue_3": "The tax cut needs hard choices.",
     "cue_4": "There is no middle ground on the tax cut.",
-    "cue_5": "I will not please everyone on the tax cut."
+    "cue_5": "I will not please everyone on the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL273",
@@ -6564,7 +7108,9 @@
     "cue_2": "Spare me the sermon on the tax cut.",
     "cue_3": "Do not hide behind the tax cut.",
     "cue_4": "That jab on the tax cut fails.",
-    "cue_5": "Pick a side on the tax cut yourself."
+    "cue_5": "Pick a side on the tax cut yourself.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL274",
@@ -6579,7 +7125,9 @@
     "cue_2": "Who benefits from the tax cut, really?",
     "cue_3": "Your story on the tax cut has gaps.",
     "cue_4": "Convenient wording on the tax cut.",
-    "cue_5": "What are you leaving out on the tax cut?"
+    "cue_5": "What are you leaving out on the tax cut?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL275",
@@ -6594,7 +7142,9 @@
     "cue_2": "Everyone agrees on the tax cut, broadly.",
     "cue_3": "The tax cut is simpler than you think.",
     "cue_4": "I said what I said on the tax cut.",
-    "cue_5": "Trust me on the tax cut."
+    "cue_5": "Trust me on the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL276",
@@ -6609,7 +7159,9 @@
     "cue_2": "You misheard me on the tax cut.",
     "cue_3": "I take that as praise on the tax cut.",
     "cue_4": "A fair question on the tax cut. Next.",
-    "cue_5": "Let us move past the tax cut."
+    "cue_5": "Let us move past the tax cut.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL277",
@@ -6625,7 +7177,9 @@
     "cue_2": "Be sincere with people about the carbon levy.",
     "cue_3": "The carbon levy is no place for games.",
     "cue_4": "People deserve a straight answer on the carbon levy.",
-    "cue_5": "The carbon levy deserves honesty, not slogans."
+    "cue_5": "The carbon levy deserves honesty, not slogans.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL278",
@@ -6641,7 +7195,9 @@
     "cue_2": "The carbon levy matters to me personally.",
     "cue_3": "I will be honest about the carbon levy.",
     "cue_4": "Here is my honest view on the carbon levy.",
-    "cue_5": "I mean every word about the carbon levy."
+    "cue_5": "I mean every word about the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL279",
@@ -6657,7 +7213,9 @@
     "cue_2": "I stand by what I said.",
     "cue_3": "Ask plainly. I will answer plainly.",
     "cue_4": "My view on the carbon levy is sincere.",
-    "cue_5": "I will not dodge the carbon levy."
+    "cue_5": "I will not dodge the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL280",
@@ -6673,7 +7231,9 @@
     "cue_2": "The carbon levy is about real people.",
     "cue_3": "Do you feel nothing about the carbon levy?",
     "cue_4": "Tell that to those hurt by the carbon levy.",
-    "cue_5": "Think of the families behind the carbon levy."
+    "cue_5": "Think of the families behind the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL281",
@@ -6689,7 +7249,9 @@
     "cue_2": "Their stories made me care about the carbon levy.",
     "cue_3": "I carry those families with me.",
     "cue_4": "Every family I met raised the carbon levy.",
-    "cue_5": "I have met people touched by the carbon levy."
+    "cue_5": "I have met people touched by the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL282",
@@ -6705,7 +7267,9 @@
     "cue_2": "I will not shrink their stories.",
     "cue_3": "These are people, not statistics.",
     "cue_4": "Speak gently about the carbon levy.",
-    "cue_5": "You cannot dismiss people over the carbon levy."
+    "cue_5": "You cannot dismiss people over the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL283",
@@ -6721,7 +7285,9 @@
     "cue_2": "The public wants less spin on the carbon levy.",
     "cue_3": "Most people disagree with you on the carbon levy.",
     "cue_4": "Voters have spoken on the carbon levy.",
-    "cue_5": "People want answers on the carbon levy."
+    "cue_5": "People want answers on the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL284",
@@ -6737,7 +7303,9 @@
     "cue_2": "Voters keep raising the carbon levy.",
     "cue_3": "Ask around. People care about the carbon levy.",
     "cue_4": "The public mood favors the carbon levy.",
-    "cue_5": "Most people I meet back the carbon levy."
+    "cue_5": "Most people I meet back the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL285",
@@ -6753,7 +7321,9 @@
     "cue_2": "Do not claim the crowd on the carbon levy.",
     "cue_3": "Let the public decide the carbon levy.",
     "cue_4": "I hear all sides on the carbon levy.",
-    "cue_5": "Do not speak for everyone on the carbon levy."
+    "cue_5": "Do not speak for everyone on the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL286",
@@ -6769,7 +7339,9 @@
     "cue_2": "Show the evidence for the carbon levy.",
     "cue_3": "What is the real cost of the carbon levy?",
     "cue_4": "Those the carbon levy statistics are selective.",
-    "cue_5": "Where are the figures on the carbon levy?"
+    "cue_5": "Where are the figures on the carbon levy?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL287",
@@ -6785,7 +7357,9 @@
     "cue_2": "Studies on the carbon levy support this.",
     "cue_3": "The cost of the carbon levy adds up.",
     "cue_4": "The numbers on the carbon levy hold.",
-    "cue_5": "The evidence on the carbon levy is clear."
+    "cue_5": "The evidence on the carbon levy is clear.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL288",
@@ -6801,7 +7375,9 @@
     "cue_2": "The data does not say that.",
     "cue_3": "Read the full report on the carbon levy.",
     "cue_4": "That is not what the data shows.",
-    "cue_5": "Check the source on the carbon levy."
+    "cue_5": "Check the source on the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL289",
@@ -6817,7 +7393,9 @@
     "cue_2": "You work against the public on the carbon levy.",
     "cue_3": "This is a fight over the carbon levy.",
     "cue_4": "Wrong side of the carbon levy. Own it.",
-    "cue_5": "The carbon levy serves insiders, not you."
+    "cue_5": "The carbon levy serves insiders, not you.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL290",
@@ -6833,7 +7411,9 @@
     "cue_2": "The carbon levy needs hard choices.",
     "cue_3": "There is no middle ground on the carbon levy.",
     "cue_4": "I will not please everyone on the carbon levy.",
-    "cue_5": "We must choose a side on the carbon levy."
+    "cue_5": "We must choose a side on the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL291",
@@ -6849,7 +7429,9 @@
     "cue_2": "Do not hide behind the carbon levy.",
     "cue_3": "That jab on the carbon levy fails.",
     "cue_4": "Pick a side on the carbon levy yourself.",
-    "cue_5": "Your side caused this over the carbon levy."
+    "cue_5": "Your side caused this over the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL292",
@@ -6865,7 +7447,9 @@
     "cue_2": "Your story on the carbon levy has gaps.",
     "cue_3": "Convenient wording on the carbon levy.",
     "cue_4": "What are you leaving out on the carbon levy?",
-    "cue_5": "Funny how the carbon levy suits you so well."
+    "cue_5": "Funny how the carbon levy suits you so well.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL293",
@@ -6881,7 +7465,9 @@
     "cue_2": "The carbon levy is simpler than you think.",
     "cue_3": "I said what I said on the carbon levy.",
     "cue_4": "Trust me on the carbon levy.",
-    "cue_5": "Let me reframe the carbon levy slightly."
+    "cue_5": "Let me reframe the carbon levy slightly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL294",
@@ -6897,7 +7483,9 @@
     "cue_2": "I take that as praise on the carbon levy.",
     "cue_3": "A fair question on the carbon levy. Next.",
     "cue_4": "Let us move past the carbon levy.",
-    "cue_5": "That is not my line on the carbon levy."
+    "cue_5": "That is not my line on the carbon levy.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL295",
@@ -6912,7 +7500,9 @@
     "cue_2": "Tradeable quotas is no place for games.",
     "cue_3": "People deserve a straight answer on tradeable quotas.",
     "cue_4": "Tradeable quotas deserves honesty, not slogans.",
-    "cue_5": "Say plainly what you mean about tradeable quotas."
+    "cue_5": "Say plainly what you mean about tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL296",
@@ -6927,7 +7517,9 @@
     "cue_2": "I will be honest about tradeable quotas.",
     "cue_3": "Here is my honest view on tradeable quotas.",
     "cue_4": "I mean every word about tradeable quotas.",
-    "cue_5": "People can trust me on tradeable quotas."
+    "cue_5": "People can trust me on tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL297",
@@ -6942,7 +7534,9 @@
     "cue_2": "Ask plainly. I will answer plainly.",
     "cue_3": "My view on tradeable quotas is sincere.",
     "cue_4": "I will not dodge tradeable quotas.",
-    "cue_5": "You can ask me about tradeable quotas."
+    "cue_5": "You can ask me about tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL298",
@@ -6957,7 +7551,9 @@
     "cue_2": "Do you feel nothing about tradeable quotas?",
     "cue_3": "Tell that to those hurt by tradeable quotas.",
     "cue_4": "Think of the families behind tradeable quotas.",
-    "cue_5": "Look at the faces affected by tradeable quotas."
+    "cue_5": "Look at the faces affected by tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL299",
@@ -6972,7 +7568,9 @@
     "cue_2": "I carry those families with me.",
     "cue_3": "Every family I met raised tradeable quotas.",
     "cue_4": "I have met people touched by tradeable quotas.",
-    "cue_5": "Tradeable quotas weighs on me."
+    "cue_5": "Tradeable quotas weighs on me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL300",
@@ -6987,7 +7585,9 @@
     "cue_2": "These are people, not statistics.",
     "cue_3": "Speak gently about tradeable quotas.",
     "cue_4": "You cannot dismiss people over tradeable quotas.",
-    "cue_5": "Do not turn tradeable quotas into a game."
+    "cue_5": "Do not turn tradeable quotas into a game.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL301",
@@ -7002,7 +7602,9 @@
     "cue_2": "Most people disagree with you on tradeable quotas.",
     "cue_3": "Voters have spoken on tradeable quotas.",
     "cue_4": "People want answers on tradeable quotas.",
-    "cue_5": "Ask anyone in the street about tradeable quotas."
+    "cue_5": "Ask anyone in the street about tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL302",
@@ -7017,7 +7619,9 @@
     "cue_2": "Ask around. People care about tradeable quotas.",
     "cue_3": "The public mood favors tradeable quotas.",
     "cue_4": "Most people I meet back tradeable quotas.",
-    "cue_5": "Ordinary people want action on tradeable quotas."
+    "cue_5": "Ordinary people want action on tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL303",
@@ -7032,7 +7636,9 @@
     "cue_2": "Let the public decide tradeable quotas.",
     "cue_3": "I hear all sides on tradeable quotas.",
     "cue_4": "Do not speak for everyone on tradeable quotas.",
-    "cue_5": "People are divided on tradeable quotas."
+    "cue_5": "People are divided on tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL304",
@@ -7047,7 +7653,9 @@
     "cue_2": "What is the real cost of tradeable quotas?",
     "cue_3": "Those tradeable quotas statistics are selective.",
     "cue_4": "Where are the figures on tradeable quotas?",
-    "cue_5": "Your numbers on tradeable quotas do not hold."
+    "cue_5": "Your numbers on tradeable quotas do not hold.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL305",
@@ -7062,7 +7670,9 @@
     "cue_2": "The cost of tradeable quotas adds up.",
     "cue_3": "The numbers on tradeable quotas hold.",
     "cue_4": "The evidence on tradeable quotas is clear.",
-    "cue_5": "Here are the figures on tradeable quotas."
+    "cue_5": "Here are the figures on tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL306",
@@ -7077,7 +7687,9 @@
     "cue_2": "Read the full report on tradeable quotas.",
     "cue_3": "That is not what the data shows.",
     "cue_4": "Check the source on tradeable quotas.",
-    "cue_5": "Those figures on tradeable quotas are misread."
+    "cue_5": "Those figures on tradeable quotas are misread.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL307",
@@ -7092,7 +7704,9 @@
     "cue_2": "This is a fight over tradeable quotas.",
     "cue_3": "Wrong side of tradeable quotas. Own it.",
     "cue_4": "Tradeable quotas serves insiders, not you.",
-    "cue_5": "Whose side are you on over tradeable quotas?"
+    "cue_5": "Whose side are you on over tradeable quotas?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL308",
@@ -7107,7 +7721,9 @@
     "cue_2": "There is no middle ground on tradeable quotas.",
     "cue_3": "I will not please everyone on tradeable quotas.",
     "cue_4": "We must choose a side on tradeable quotas.",
-    "cue_5": "Some lose over tradeable quotas. So be it."
+    "cue_5": "Some lose over tradeable quotas. So be it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL309",
@@ -7122,7 +7738,9 @@
     "cue_2": "That jab on tradeable quotas fails.",
     "cue_3": "Pick a side on tradeable quotas yourself.",
     "cue_4": "Your side caused this over tradeable quotas.",
-    "cue_5": "Spare me the sermon on tradeable quotas."
+    "cue_5": "Spare me the sermon on tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL310",
@@ -7137,7 +7755,9 @@
     "cue_2": "Convenient wording on tradeable quotas.",
     "cue_3": "What are you leaving out on tradeable quotas?",
     "cue_4": "Funny how tradeable quotas suits you so well.",
-    "cue_5": "Who benefits from tradeable quotas, really?"
+    "cue_5": "Who benefits from tradeable quotas, really?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL311",
@@ -7152,7 +7772,9 @@
     "cue_2": "I said what I said on tradeable quotas.",
     "cue_3": "Trust me on tradeable quotas.",
     "cue_4": "Let me reframe tradeable quotas slightly.",
-    "cue_5": "Everyone agrees on tradeable quotas, broadly."
+    "cue_5": "Everyone agrees on tradeable quotas, broadly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL312",
@@ -7167,7 +7789,9 @@
     "cue_2": "A fair question on tradeable quotas. Next.",
     "cue_3": "Let us move past tradeable quotas.",
     "cue_4": "That is not my line on tradeable quotas.",
-    "cue_5": "You misheard me on tradeable quotas."
+    "cue_5": "You misheard me on tradeable quotas.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL313",
@@ -7182,7 +7806,9 @@
     "cue_2": "People deserve a straight answer on the shipyards.",
     "cue_3": "The shipyards deserves honesty, not slogans.",
     "cue_4": "Say plainly what you mean about the shipyards.",
-    "cue_5": "Be sincere with people about the shipyards."
+    "cue_5": "Be sincere with people about the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL314",
@@ -7197,7 +7823,9 @@
     "cue_2": "Here is my honest view on the shipyards.",
     "cue_3": "I mean every word about the shipyards.",
     "cue_4": "People can trust me on the shipyards.",
-    "cue_5": "The shipyards matters to me personally."
+    "cue_5": "The shipyards matters to me personally.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL315",
@@ -7212,7 +7840,9 @@
     "cue_2": "My view on the shipyards is sincere.",
     "cue_3": "I will not dodge the shipyards.",
     "cue_4": "You can ask me about the shipyards.",
-    "cue_5": "I stand by what I said."
+    "cue_5": "I stand by what I said.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL316",
@@ -7227,7 +7857,9 @@
     "cue_2": "Tell that to those hurt by the shipyards.",
     "cue_3": "Think of the families behind the shipyards.",
     "cue_4": "Look at the faces affected by the shipyards.",
-    "cue_5": "The shipyards is about real people."
+    "cue_5": "The shipyards is about real people.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL317",
@@ -7242,7 +7874,9 @@
     "cue_2": "Every family I met raised the shipyards.",
     "cue_3": "I have met people touched by the shipyards.",
     "cue_4": "The shipyards weighs on me.",
-    "cue_5": "Their stories made me care about the shipyards."
+    "cue_5": "Their stories made me care about the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL318",
@@ -7257,7 +7891,9 @@
     "cue_2": "Speak gently about the shipyards.",
     "cue_3": "You cannot dismiss people over the shipyards.",
     "cue_4": "Do not turn the shipyards into a game.",
-    "cue_5": "I will not shrink their stories."
+    "cue_5": "I will not shrink their stories.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL319",
@@ -7272,7 +7908,9 @@
     "cue_2": "Voters have spoken on the shipyards.",
     "cue_3": "People want answers on the shipyards.",
     "cue_4": "Ask anyone in the street about the shipyards.",
-    "cue_5": "The public wants less spin on the shipyards."
+    "cue_5": "The public wants less spin on the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL320",
@@ -7287,7 +7925,9 @@
     "cue_2": "The public mood favors the shipyards.",
     "cue_3": "Most people I meet back the shipyards.",
     "cue_4": "Ordinary people want action on the shipyards.",
-    "cue_5": "Voters keep raising the shipyards."
+    "cue_5": "Voters keep raising the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL321",
@@ -7302,7 +7942,9 @@
     "cue_2": "I hear all sides on the shipyards.",
     "cue_3": "Do not speak for everyone on the shipyards.",
     "cue_4": "People are divided on the shipyards.",
-    "cue_5": "Do not claim the crowd on the shipyards."
+    "cue_5": "Do not claim the crowd on the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL322",
@@ -7317,7 +7959,9 @@
     "cue_2": "Those the shipyards statistics are selective.",
     "cue_3": "Where are the figures on the shipyards?",
     "cue_4": "Your numbers on the shipyards do not hold.",
-    "cue_5": "Show the evidence for the shipyards."
+    "cue_5": "Show the evidence for the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL323",
@@ -7332,7 +7976,9 @@
     "cue_2": "The numbers on the shipyards hold.",
     "cue_3": "The evidence on the shipyards is clear.",
     "cue_4": "Here are the figures on the shipyards.",
-    "cue_5": "Studies on the shipyards support this."
+    "cue_5": "Studies on the shipyards support this.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL324",
@@ -7347,7 +7993,9 @@
     "cue_2": "That is not what the data shows.",
     "cue_3": "Check the source on the shipyards.",
     "cue_4": "Those figures on the shipyards are misread.",
-    "cue_5": "The data does not say that."
+    "cue_5": "The data does not say that.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL325",
@@ -7362,7 +8010,9 @@
     "cue_2": "Wrong side of the shipyards. Own it.",
     "cue_3": "The shipyards serves insiders, not you.",
     "cue_4": "Whose side are you on over the shipyards?",
-    "cue_5": "You work against the public on the shipyards."
+    "cue_5": "You work against the public on the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL326",
@@ -7377,7 +8027,9 @@
     "cue_2": "I will not please everyone on the shipyards.",
     "cue_3": "We must choose a side on the shipyards.",
     "cue_4": "Some lose over the shipyards. So be it.",
-    "cue_5": "The shipyards needs hard choices."
+    "cue_5": "The shipyards needs hard choices.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL327",
@@ -7392,7 +8044,9 @@
     "cue_2": "Pick a side on the shipyards yourself.",
     "cue_3": "Your side caused this over the shipyards.",
     "cue_4": "Spare me the sermon on the shipyards.",
-    "cue_5": "Do not hide behind the shipyards."
+    "cue_5": "Do not hide behind the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL328",
@@ -7407,7 +8061,9 @@
     "cue_2": "What are you leaving out on the shipyards?",
     "cue_3": "Funny how the shipyards suits you so well.",
     "cue_4": "Who benefits from the shipyards, really?",
-    "cue_5": "Your story on the shipyards has gaps."
+    "cue_5": "Your story on the shipyards has gaps.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL329",
@@ -7422,7 +8078,9 @@
     "cue_2": "Trust me on the shipyards.",
     "cue_3": "Let me reframe the shipyards slightly.",
     "cue_4": "Everyone agrees on the shipyards, broadly.",
-    "cue_5": "The shipyards is simpler than you think."
+    "cue_5": "The shipyards is simpler than you think.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL330",
@@ -7437,7 +8095,9 @@
     "cue_2": "Let us move past the shipyards.",
     "cue_3": "That is not my line on the shipyards.",
     "cue_4": "You misheard me on the shipyards.",
-    "cue_5": "I take that as praise on the shipyards."
+    "cue_5": "I take that as praise on the shipyards.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL331",
@@ -7452,7 +8112,9 @@
     "cue_2": "The review deserves honesty, not slogans.",
     "cue_3": "Say plainly what you mean about the review.",
     "cue_4": "Be sincere with people about the review.",
-    "cue_5": "The review is no place for games."
+    "cue_5": "The review is no place for games.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL332",
@@ -7467,7 +8129,9 @@
     "cue_2": "I mean every word about the review.",
     "cue_3": "People can trust me on the review.",
     "cue_4": "The review matters to me personally.",
-    "cue_5": "I will be honest about the review."
+    "cue_5": "I will be honest about the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL333",
@@ -7482,7 +8146,9 @@
     "cue_2": "I will not dodge the review.",
     "cue_3": "You can ask me about the review.",
     "cue_4": "I stand by what I said.",
-    "cue_5": "Ask plainly. I will answer plainly."
+    "cue_5": "Ask plainly. I will answer plainly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL334",
@@ -7497,7 +8163,9 @@
     "cue_2": "Think of the families behind the review.",
     "cue_3": "Look at the faces affected by the review.",
     "cue_4": "The review is about real people.",
-    "cue_5": "Do you feel nothing about the review?"
+    "cue_5": "Do you feel nothing about the review?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL335",
@@ -7512,7 +8180,9 @@
     "cue_2": "I have met people touched by the review.",
     "cue_3": "The review weighs on me.",
     "cue_4": "Their stories made me care about the review.",
-    "cue_5": "I carry those families with me."
+    "cue_5": "I carry those families with me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL336",
@@ -7527,7 +8197,9 @@
     "cue_2": "You cannot dismiss people over the review.",
     "cue_3": "Do not turn the review into a game.",
     "cue_4": "I will not shrink their stories.",
-    "cue_5": "These are people, not statistics."
+    "cue_5": "These are people, not statistics.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL337",
@@ -7542,7 +8214,9 @@
     "cue_2": "People want answers on the review.",
     "cue_3": "Ask anyone in the street about the review.",
     "cue_4": "The public wants less spin on the review.",
-    "cue_5": "Most people disagree with you on the review."
+    "cue_5": "Most people disagree with you on the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL338",
@@ -7557,7 +8231,9 @@
     "cue_2": "Most people I meet back the review.",
     "cue_3": "Ordinary people want action on the review.",
     "cue_4": "Voters keep raising the review.",
-    "cue_5": "Ask around. People care about the review."
+    "cue_5": "Ask around. People care about the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL339",
@@ -7572,7 +8248,9 @@
     "cue_2": "Do not speak for everyone on the review.",
     "cue_3": "People are divided on the review.",
     "cue_4": "Do not claim the crowd on the review.",
-    "cue_5": "Let the public decide the review."
+    "cue_5": "Let the public decide the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL340",
@@ -7587,7 +8265,9 @@
     "cue_2": "Where are the figures on the review?",
     "cue_3": "Your numbers on the review do not hold.",
     "cue_4": "Show the evidence for the review.",
-    "cue_5": "What is the real cost of the review?"
+    "cue_5": "What is the real cost of the review?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL341",
@@ -7602,7 +8282,9 @@
     "cue_2": "The evidence on the review is clear.",
     "cue_3": "Here are the figures on the review.",
     "cue_4": "Studies on the review support this.",
-    "cue_5": "The cost of the review adds up."
+    "cue_5": "The cost of the review adds up.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL342",
@@ -7617,7 +8299,9 @@
     "cue_2": "Check the source on the review.",
     "cue_3": "Those figures on the review are misread.",
     "cue_4": "The data does not say that.",
-    "cue_5": "Read the full report on the review."
+    "cue_5": "Read the full report on the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL343",
@@ -7632,7 +8316,9 @@
     "cue_2": "The review serves insiders, not you.",
     "cue_3": "Whose side are you on over the review?",
     "cue_4": "You work against the public on the review.",
-    "cue_5": "This is a fight over the review."
+    "cue_5": "This is a fight over the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL344",
@@ -7647,7 +8333,9 @@
     "cue_2": "We must choose a side on the review.",
     "cue_3": "Some lose over the review. So be it.",
     "cue_4": "The review needs hard choices.",
-    "cue_5": "There is no middle ground on the review."
+    "cue_5": "There is no middle ground on the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL345",
@@ -7662,7 +8350,9 @@
     "cue_2": "Your side caused this over the review.",
     "cue_3": "Spare me the sermon on the review.",
     "cue_4": "Do not hide behind the review.",
-    "cue_5": "That jab on the review fails."
+    "cue_5": "That jab on the review fails.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL346",
@@ -7677,7 +8367,9 @@
     "cue_2": "Funny how the review suits you so well.",
     "cue_3": "Who benefits from the review, really?",
     "cue_4": "Your story on the review has gaps.",
-    "cue_5": "Convenient wording on the review."
+    "cue_5": "Convenient wording on the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL347",
@@ -7692,7 +8384,9 @@
     "cue_2": "Let me reframe the review slightly.",
     "cue_3": "Everyone agrees on the review, broadly.",
     "cue_4": "The review is simpler than you think.",
-    "cue_5": "I said what I said on the review."
+    "cue_5": "I said what I said on the review.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL348",
@@ -7707,7 +8401,9 @@
     "cue_2": "That is not my line on the review.",
     "cue_3": "You misheard me on the review.",
     "cue_4": "I take that as praise on the review.",
-    "cue_5": "A fair question on the review. Next."
+    "cue_5": "A fair question on the review. Next.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL349",
@@ -7722,7 +8418,9 @@
     "cue_2": "Say plainly what you mean about border sharing.",
     "cue_3": "Be sincere with people about border sharing.",
     "cue_4": "Border sharing is no place for games.",
-    "cue_5": "People deserve a straight answer on border sharing."
+    "cue_5": "People deserve a straight answer on border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL350",
@@ -7737,7 +8435,9 @@
     "cue_2": "People can trust me on border sharing.",
     "cue_3": "Border sharing matters to me personally.",
     "cue_4": "I will be honest about border sharing.",
-    "cue_5": "Here is my honest view on border sharing."
+    "cue_5": "Here is my honest view on border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL351",
@@ -7752,7 +8452,9 @@
     "cue_2": "You can ask me about border sharing.",
     "cue_3": "I stand by what I said.",
     "cue_4": "Ask plainly. I will answer plainly.",
-    "cue_5": "My view on border sharing is sincere."
+    "cue_5": "My view on border sharing is sincere.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL352",
@@ -7767,7 +8469,9 @@
     "cue_2": "Look at the faces affected by border sharing.",
     "cue_3": "Border sharing is about real people.",
     "cue_4": "Do you feel nothing about border sharing?",
-    "cue_5": "Tell that to those hurt by border sharing."
+    "cue_5": "Tell that to those hurt by border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL353",
@@ -7782,7 +8486,9 @@
     "cue_2": "Border sharing weighs on me.",
     "cue_3": "Their stories made me care about border sharing.",
     "cue_4": "I carry those families with me.",
-    "cue_5": "Every family I met raised border sharing."
+    "cue_5": "Every family I met raised border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL354",
@@ -7797,7 +8503,9 @@
     "cue_2": "Do not turn border sharing into a game.",
     "cue_3": "I will not shrink their stories.",
     "cue_4": "These are people, not statistics.",
-    "cue_5": "Speak gently about border sharing."
+    "cue_5": "Speak gently about border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL355",
@@ -7812,7 +8520,9 @@
     "cue_2": "Ask anyone in the street about border sharing.",
     "cue_3": "The public wants less spin on border sharing.",
     "cue_4": "Most people disagree with you on border sharing.",
-    "cue_5": "Voters have spoken on border sharing."
+    "cue_5": "Voters have spoken on border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL356",
@@ -7827,7 +8537,9 @@
     "cue_2": "Ordinary people want action on border sharing.",
     "cue_3": "Voters keep raising border sharing.",
     "cue_4": "Ask around. People care about border sharing.",
-    "cue_5": "The public mood favors border sharing."
+    "cue_5": "The public mood favors border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL357",
@@ -7842,7 +8554,9 @@
     "cue_2": "People are divided on border sharing.",
     "cue_3": "Do not claim the crowd on border sharing.",
     "cue_4": "Let the public decide border sharing.",
-    "cue_5": "I hear all sides on border sharing."
+    "cue_5": "I hear all sides on border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL358",
@@ -7857,7 +8571,9 @@
     "cue_2": "Your numbers on border sharing do not hold.",
     "cue_3": "Show the evidence for border sharing.",
     "cue_4": "What is the real cost of border sharing?",
-    "cue_5": "Those border sharing statistics are selective."
+    "cue_5": "Those border sharing statistics are selective.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL359",
@@ -7872,7 +8588,9 @@
     "cue_2": "Here are the figures on border sharing.",
     "cue_3": "Studies on border sharing support this.",
     "cue_4": "The cost of border sharing adds up.",
-    "cue_5": "The numbers on border sharing hold."
+    "cue_5": "The numbers on border sharing hold.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL360",
@@ -7887,7 +8605,9 @@
     "cue_2": "Those figures on border sharing are misread.",
     "cue_3": "The data does not say that.",
     "cue_4": "Read the full report on border sharing.",
-    "cue_5": "That is not what the data shows."
+    "cue_5": "That is not what the data shows.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL361",
@@ -7902,7 +8622,9 @@
     "cue_2": "Whose side are you on over border sharing?",
     "cue_3": "You work against the public on border sharing.",
     "cue_4": "This is a fight over border sharing.",
-    "cue_5": "Wrong side of border sharing. Own it."
+    "cue_5": "Wrong side of border sharing. Own it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL362",
@@ -7917,7 +8639,9 @@
     "cue_2": "Some lose over border sharing. So be it.",
     "cue_3": "Border sharing needs hard choices.",
     "cue_4": "There is no middle ground on border sharing.",
-    "cue_5": "I will not please everyone on border sharing."
+    "cue_5": "I will not please everyone on border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL363",
@@ -7932,7 +8656,9 @@
     "cue_2": "Spare me the sermon on border sharing.",
     "cue_3": "Do not hide behind border sharing.",
     "cue_4": "That jab on border sharing fails.",
-    "cue_5": "Pick a side on border sharing yourself."
+    "cue_5": "Pick a side on border sharing yourself.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL364",
@@ -7947,7 +8673,9 @@
     "cue_2": "Who benefits from border sharing, really?",
     "cue_3": "Your story on border sharing has gaps.",
     "cue_4": "Convenient wording on border sharing.",
-    "cue_5": "What are you leaving out on border sharing?"
+    "cue_5": "What are you leaving out on border sharing?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL365",
@@ -7962,7 +8690,9 @@
     "cue_2": "Everyone agrees on border sharing, broadly.",
     "cue_3": "Border sharing is simpler than you think.",
     "cue_4": "I said what I said on border sharing.",
-    "cue_5": "Trust me on border sharing."
+    "cue_5": "Trust me on border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL366",
@@ -7977,7 +8707,9 @@
     "cue_2": "You misheard me on border sharing.",
     "cue_3": "I take that as praise on border sharing.",
     "cue_4": "A fair question on border sharing. Next.",
-    "cue_5": "Let us move past border sharing."
+    "cue_5": "Let us move past border sharing.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL367",
@@ -7993,7 +8725,9 @@
     "cue_2": "Be sincere with people about the islands.",
     "cue_3": "The islands is no place for games.",
     "cue_4": "People deserve a straight answer on the islands.",
-    "cue_5": "The islands deserves honesty, not slogans."
+    "cue_5": "The islands deserves honesty, not slogans.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL368",
@@ -8009,7 +8743,9 @@
     "cue_2": "The islands matters to me personally.",
     "cue_3": "I will be honest about the islands.",
     "cue_4": "Here is my honest view on the islands.",
-    "cue_5": "I mean every word about the islands."
+    "cue_5": "I mean every word about the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL369",
@@ -8025,7 +8761,9 @@
     "cue_2": "I stand by what I said.",
     "cue_3": "Ask plainly. I will answer plainly.",
     "cue_4": "My view on the islands is sincere.",
-    "cue_5": "I will not dodge the islands."
+    "cue_5": "I will not dodge the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL370",
@@ -8041,7 +8779,9 @@
     "cue_2": "The islands is about real people.",
     "cue_3": "Do you feel nothing about the islands?",
     "cue_4": "Tell that to those hurt by the islands.",
-    "cue_5": "Think of the families behind the islands."
+    "cue_5": "Think of the families behind the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL371",
@@ -8057,7 +8797,9 @@
     "cue_2": "Their stories made me care about the islands.",
     "cue_3": "I carry those families with me.",
     "cue_4": "Every family I met raised the islands.",
-    "cue_5": "I have met people touched by the islands."
+    "cue_5": "I have met people touched by the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL372",
@@ -8073,7 +8815,9 @@
     "cue_2": "I will not shrink their stories.",
     "cue_3": "These are people, not statistics.",
     "cue_4": "Speak gently about the islands.",
-    "cue_5": "You cannot dismiss people over the islands."
+    "cue_5": "You cannot dismiss people over the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL373",
@@ -8089,7 +8833,9 @@
     "cue_2": "The public wants less spin on the islands.",
     "cue_3": "Most people disagree with you on the islands.",
     "cue_4": "Voters have spoken on the islands.",
-    "cue_5": "People want answers on the islands."
+    "cue_5": "People want answers on the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL374",
@@ -8105,7 +8851,9 @@
     "cue_2": "Voters keep raising the islands.",
     "cue_3": "Ask around. People care about the islands.",
     "cue_4": "The public mood favors the islands.",
-    "cue_5": "Most people I meet back the islands."
+    "cue_5": "Most people I meet back the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL375",
@@ -8121,7 +8869,9 @@
     "cue_2": "Do not claim the crowd on the islands.",
     "cue_3": "Let the public decide the islands.",
     "cue_4": "I hear all sides on the islands.",
-    "cue_5": "Do not speak for everyone on the islands."
+    "cue_5": "Do not speak for everyone on the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL376",
@@ -8137,7 +8887,9 @@
     "cue_2": "Show the evidence for the islands.",
     "cue_3": "What is the real cost of the islands?",
     "cue_4": "Those the islands statistics are selective.",
-    "cue_5": "Where are the figures on the islands?"
+    "cue_5": "Where are the figures on the islands?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL377",
@@ -8153,7 +8905,9 @@
     "cue_2": "Studies on the islands support this.",
     "cue_3": "The cost of the islands adds up.",
     "cue_4": "The numbers on the islands hold.",
-    "cue_5": "The evidence on the islands is clear."
+    "cue_5": "The evidence on the islands is clear.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL378",
@@ -8169,7 +8923,9 @@
     "cue_2": "The data does not say that.",
     "cue_3": "Read the full report on the islands.",
     "cue_4": "That is not what the data shows.",
-    "cue_5": "Check the source on the islands."
+    "cue_5": "Check the source on the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL379",
@@ -8185,7 +8941,9 @@
     "cue_2": "You work against the public on the islands.",
     "cue_3": "This is a fight over the islands.",
     "cue_4": "Wrong side of the islands. Own it.",
-    "cue_5": "The islands serves insiders, not you."
+    "cue_5": "The islands serves insiders, not you.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL380",
@@ -8201,7 +8959,9 @@
     "cue_2": "The islands needs hard choices.",
     "cue_3": "There is no middle ground on the islands.",
     "cue_4": "I will not please everyone on the islands.",
-    "cue_5": "We must choose a side on the islands."
+    "cue_5": "We must choose a side on the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL381",
@@ -8217,7 +8977,9 @@
     "cue_2": "Do not hide behind the islands.",
     "cue_3": "That jab on the islands fails.",
     "cue_4": "Pick a side on the islands yourself.",
-    "cue_5": "Your side caused this over the islands."
+    "cue_5": "Your side caused this over the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL382",
@@ -8233,7 +8995,9 @@
     "cue_2": "Your story on the islands has gaps.",
     "cue_3": "Convenient wording on the islands.",
     "cue_4": "What are you leaving out on the islands?",
-    "cue_5": "Funny how the islands suits you so well."
+    "cue_5": "Funny how the islands suits you so well.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL383",
@@ -8249,7 +9013,9 @@
     "cue_2": "The islands is simpler than you think.",
     "cue_3": "I said what I said on the islands.",
     "cue_4": "Trust me on the islands.",
-    "cue_5": "Let me reframe the islands slightly."
+    "cue_5": "Let me reframe the islands slightly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL384",
@@ -8265,7 +9031,9 @@
     "cue_2": "I take that as praise on the islands.",
     "cue_3": "A fair question on the islands. Next.",
     "cue_4": "Let us move past the islands.",
-    "cue_5": "That is not my line on the islands."
+    "cue_5": "That is not my line on the islands.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL385",
@@ -8280,7 +9048,9 @@
     "cue_2": "Open trade is no place for games.",
     "cue_3": "People deserve a straight answer on open trade.",
     "cue_4": "Open trade deserves honesty, not slogans.",
-    "cue_5": "Say plainly what you mean about open trade."
+    "cue_5": "Say plainly what you mean about open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL386",
@@ -8295,7 +9065,9 @@
     "cue_2": "I will be honest about open trade.",
     "cue_3": "Here is my honest view on open trade.",
     "cue_4": "I mean every word about open trade.",
-    "cue_5": "People can trust me on open trade."
+    "cue_5": "People can trust me on open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL387",
@@ -8310,7 +9082,9 @@
     "cue_2": "Ask plainly. I will answer plainly.",
     "cue_3": "My view on open trade is sincere.",
     "cue_4": "I will not dodge open trade.",
-    "cue_5": "You can ask me about open trade."
+    "cue_5": "You can ask me about open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL388",
@@ -8325,7 +9099,9 @@
     "cue_2": "Do you feel nothing about open trade?",
     "cue_3": "Tell that to those hurt by open trade.",
     "cue_4": "Think of the families behind open trade.",
-    "cue_5": "Look at the faces affected by open trade."
+    "cue_5": "Look at the faces affected by open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL389",
@@ -8340,7 +9116,9 @@
     "cue_2": "I carry those families with me.",
     "cue_3": "Every family I met raised open trade.",
     "cue_4": "I have met people touched by open trade.",
-    "cue_5": "Open trade weighs on me."
+    "cue_5": "Open trade weighs on me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL390",
@@ -8355,7 +9133,9 @@
     "cue_2": "These are people, not statistics.",
     "cue_3": "Speak gently about open trade.",
     "cue_4": "You cannot dismiss people over open trade.",
-    "cue_5": "Do not turn open trade into a game."
+    "cue_5": "Do not turn open trade into a game.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL391",
@@ -8370,7 +9150,9 @@
     "cue_2": "Most people disagree with you on open trade.",
     "cue_3": "Voters have spoken on open trade.",
     "cue_4": "People want answers on open trade.",
-    "cue_5": "Ask anyone in the street about open trade."
+    "cue_5": "Ask anyone in the street about open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL392",
@@ -8385,7 +9167,9 @@
     "cue_2": "Ask around. People care about open trade.",
     "cue_3": "The public mood favors open trade.",
     "cue_4": "Most people I meet back open trade.",
-    "cue_5": "Ordinary people want action on open trade."
+    "cue_5": "Ordinary people want action on open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL393",
@@ -8400,7 +9184,9 @@
     "cue_2": "Let the public decide open trade.",
     "cue_3": "I hear all sides on open trade.",
     "cue_4": "Do not speak for everyone on open trade.",
-    "cue_5": "People are divided on open trade."
+    "cue_5": "People are divided on open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL394",
@@ -8415,7 +9201,9 @@
     "cue_2": "What is the real cost of open trade?",
     "cue_3": "Those open trade statistics are selective.",
     "cue_4": "Where are the figures on open trade?",
-    "cue_5": "Your numbers on open trade do not hold."
+    "cue_5": "Your numbers on open trade do not hold.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL395",
@@ -8430,7 +9218,9 @@
     "cue_2": "The cost of open trade adds up.",
     "cue_3": "The numbers on open trade hold.",
     "cue_4": "The evidence on open trade is clear.",
-    "cue_5": "Here are the figures on open trade."
+    "cue_5": "Here are the figures on open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL396",
@@ -8445,7 +9235,9 @@
     "cue_2": "Read the full report on open trade.",
     "cue_3": "That is not what the data shows.",
     "cue_4": "Check the source on open trade.",
-    "cue_5": "Those figures on open trade are misread."
+    "cue_5": "Those figures on open trade are misread.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL397",
@@ -8460,7 +9252,9 @@
     "cue_2": "This is a fight over open trade.",
     "cue_3": "Wrong side of open trade. Own it.",
     "cue_4": "Open trade serves insiders, not you.",
-    "cue_5": "Whose side are you on over open trade?"
+    "cue_5": "Whose side are you on over open trade?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL398",
@@ -8475,7 +9269,9 @@
     "cue_2": "There is no middle ground on open trade.",
     "cue_3": "I will not please everyone on open trade.",
     "cue_4": "We must choose a side on open trade.",
-    "cue_5": "Some lose over open trade. So be it."
+    "cue_5": "Some lose over open trade. So be it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL399",
@@ -8490,7 +9286,9 @@
     "cue_2": "That jab on open trade fails.",
     "cue_3": "Pick a side on open trade yourself.",
     "cue_4": "Your side caused this over open trade.",
-    "cue_5": "Spare me the sermon on open trade."
+    "cue_5": "Spare me the sermon on open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL400",
@@ -8505,7 +9303,9 @@
     "cue_2": "Convenient wording on open trade.",
     "cue_3": "What are you leaving out on open trade?",
     "cue_4": "Funny how open trade suits you so well.",
-    "cue_5": "Who benefits from open trade, really?"
+    "cue_5": "Who benefits from open trade, really?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL401",
@@ -8520,7 +9320,9 @@
     "cue_2": "I said what I said on open trade.",
     "cue_3": "Trust me on open trade.",
     "cue_4": "Let me reframe open trade slightly.",
-    "cue_5": "Everyone agrees on open trade, broadly."
+    "cue_5": "Everyone agrees on open trade, broadly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL402",
@@ -8535,7 +9337,9 @@
     "cue_2": "A fair question on open trade. Next.",
     "cue_3": "Let us move past open trade.",
     "cue_4": "That is not my line on open trade.",
-    "cue_5": "You misheard me on open trade."
+    "cue_5": "You misheard me on open trade.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL403",
@@ -8550,7 +9354,9 @@
     "cue_2": "People deserve a straight answer on family farms.",
     "cue_3": "Family farms deserves honesty, not slogans.",
     "cue_4": "Say plainly what you mean about family farms.",
-    "cue_5": "Be sincere with people about family farms."
+    "cue_5": "Be sincere with people about family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL404",
@@ -8565,7 +9371,9 @@
     "cue_2": "Here is my honest view on family farms.",
     "cue_3": "I mean every word about family farms.",
     "cue_4": "People can trust me on family farms.",
-    "cue_5": "Family farms matters to me personally."
+    "cue_5": "Family farms matters to me personally.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL405",
@@ -8580,7 +9388,9 @@
     "cue_2": "My view on family farms is sincere.",
     "cue_3": "I will not dodge family farms.",
     "cue_4": "You can ask me about family farms.",
-    "cue_5": "I stand by what I said."
+    "cue_5": "I stand by what I said.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL406",
@@ -8595,7 +9405,9 @@
     "cue_2": "Tell that to those hurt by family farms.",
     "cue_3": "Think of the families behind family farms.",
     "cue_4": "Look at the faces affected by family farms.",
-    "cue_5": "Family farms is about real people."
+    "cue_5": "Family farms is about real people.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL407",
@@ -8610,7 +9422,9 @@
     "cue_2": "Every family I met raised family farms.",
     "cue_3": "I have met people touched by family farms.",
     "cue_4": "Family farms weighs on me.",
-    "cue_5": "Their stories made me care about family farms."
+    "cue_5": "Their stories made me care about family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL408",
@@ -8625,7 +9439,9 @@
     "cue_2": "Speak gently about family farms.",
     "cue_3": "You cannot dismiss people over family farms.",
     "cue_4": "Do not turn family farms into a game.",
-    "cue_5": "I will not shrink their stories."
+    "cue_5": "I will not shrink their stories.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL409",
@@ -8640,7 +9456,9 @@
     "cue_2": "Voters have spoken on family farms.",
     "cue_3": "People want answers on family farms.",
     "cue_4": "Ask anyone in the street about family farms.",
-    "cue_5": "The public wants less spin on family farms."
+    "cue_5": "The public wants less spin on family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL410",
@@ -8655,7 +9473,9 @@
     "cue_2": "The public mood favors family farms.",
     "cue_3": "Most people I meet back family farms.",
     "cue_4": "Ordinary people want action on family farms.",
-    "cue_5": "Voters keep raising family farms."
+    "cue_5": "Voters keep raising family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL411",
@@ -8670,7 +9490,9 @@
     "cue_2": "I hear all sides on family farms.",
     "cue_3": "Do not speak for everyone on family farms.",
     "cue_4": "People are divided on family farms.",
-    "cue_5": "Do not claim the crowd on family farms."
+    "cue_5": "Do not claim the crowd on family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL412",
@@ -8685,7 +9507,9 @@
     "cue_2": "Those family farms statistics are selective.",
     "cue_3": "Where are the figures on family farms?",
     "cue_4": "Your numbers on family farms do not hold.",
-    "cue_5": "Show the evidence for family farms."
+    "cue_5": "Show the evidence for family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL413",
@@ -8700,7 +9524,9 @@
     "cue_2": "The numbers on family farms hold.",
     "cue_3": "The evidence on family farms is clear.",
     "cue_4": "Here are the figures on family farms.",
-    "cue_5": "Studies on family farms support this."
+    "cue_5": "Studies on family farms support this.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL414",
@@ -8715,7 +9541,9 @@
     "cue_2": "That is not what the data shows.",
     "cue_3": "Check the source on family farms.",
     "cue_4": "Those figures on family farms are misread.",
-    "cue_5": "The data does not say that."
+    "cue_5": "The data does not say that.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL415",
@@ -8730,7 +9558,9 @@
     "cue_2": "Wrong side of family farms. Own it.",
     "cue_3": "Family farms serves insiders, not you.",
     "cue_4": "Whose side are you on over family farms?",
-    "cue_5": "You work against the public on family farms."
+    "cue_5": "You work against the public on family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL416",
@@ -8745,7 +9575,9 @@
     "cue_2": "I will not please everyone on family farms.",
     "cue_3": "We must choose a side on family farms.",
     "cue_4": "Some lose over family farms. So be it.",
-    "cue_5": "Family farms needs hard choices."
+    "cue_5": "Family farms needs hard choices.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL417",
@@ -8760,7 +9592,9 @@
     "cue_2": "Pick a side on family farms yourself.",
     "cue_3": "Your side caused this over family farms.",
     "cue_4": "Spare me the sermon on family farms.",
-    "cue_5": "Do not hide behind family farms."
+    "cue_5": "Do not hide behind family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL418",
@@ -8775,7 +9609,9 @@
     "cue_2": "What are you leaving out on family farms?",
     "cue_3": "Funny how family farms suits you so well.",
     "cue_4": "Who benefits from family farms, really?",
-    "cue_5": "Your story on family farms has gaps."
+    "cue_5": "Your story on family farms has gaps.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL419",
@@ -8790,7 +9626,9 @@
     "cue_2": "Trust me on family farms.",
     "cue_3": "Let me reframe family farms slightly.",
     "cue_4": "Everyone agrees on family farms, broadly.",
-    "cue_5": "Family farms is simpler than you think."
+    "cue_5": "Family farms is simpler than you think.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL420",
@@ -8805,7 +9643,9 @@
     "cue_2": "Let us move past family farms.",
     "cue_3": "That is not my line on family farms.",
     "cue_4": "You misheard me on family farms.",
-    "cue_5": "I take that as praise on family farms."
+    "cue_5": "I take that as praise on family farms.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL421",
@@ -8820,7 +9660,9 @@
     "cue_2": "Research funding deserves honesty, not slogans.",
     "cue_3": "Say plainly what you mean about research funding.",
     "cue_4": "Be sincere with people about research funding.",
-    "cue_5": "Research funding is no place for games."
+    "cue_5": "Research funding is no place for games.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL422",
@@ -8835,7 +9677,9 @@
     "cue_2": "I mean every word about research funding.",
     "cue_3": "People can trust me on research funding.",
     "cue_4": "Research funding matters to me personally.",
-    "cue_5": "I will be honest about research funding."
+    "cue_5": "I will be honest about research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL423",
@@ -8850,7 +9694,9 @@
     "cue_2": "I will not dodge research funding.",
     "cue_3": "You can ask me about research funding.",
     "cue_4": "I stand by what I said.",
-    "cue_5": "Ask plainly. I will answer plainly."
+    "cue_5": "Ask plainly. I will answer plainly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL424",
@@ -8865,7 +9711,9 @@
     "cue_2": "Think of the families behind research funding.",
     "cue_3": "Look at the faces affected by research funding.",
     "cue_4": "Research funding is about real people.",
-    "cue_5": "Do you feel nothing about research funding?"
+    "cue_5": "Do you feel nothing about research funding?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL425",
@@ -8880,7 +9728,9 @@
     "cue_2": "I have met people touched by research funding.",
     "cue_3": "Research funding weighs on me.",
     "cue_4": "Their stories made me care about research funding.",
-    "cue_5": "I carry those families with me."
+    "cue_5": "I carry those families with me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL426",
@@ -8895,7 +9745,9 @@
     "cue_2": "You cannot dismiss people over research funding.",
     "cue_3": "Do not turn research funding into a game.",
     "cue_4": "I will not shrink their stories.",
-    "cue_5": "These are people, not statistics."
+    "cue_5": "These are people, not statistics.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL427",
@@ -8910,7 +9762,9 @@
     "cue_2": "People want answers on research funding.",
     "cue_3": "Ask anyone in the street about research funding.",
     "cue_4": "The public wants less spin on research funding.",
-    "cue_5": "Most people disagree with you on research funding."
+    "cue_5": "Most people disagree with you on research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL428",
@@ -8925,7 +9779,9 @@
     "cue_2": "Most people I meet back research funding.",
     "cue_3": "Ordinary people want action on research funding.",
     "cue_4": "Voters keep raising research funding.",
-    "cue_5": "Ask around. People care about research funding."
+    "cue_5": "Ask around. People care about research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL429",
@@ -8940,7 +9796,9 @@
     "cue_2": "Do not speak for everyone on research funding.",
     "cue_3": "People are divided on research funding.",
     "cue_4": "Do not claim the crowd on research funding.",
-    "cue_5": "Let the public decide research funding."
+    "cue_5": "Let the public decide research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL430",
@@ -8955,7 +9813,9 @@
     "cue_2": "Where are the figures on research funding?",
     "cue_3": "Your numbers on research funding do not hold.",
     "cue_4": "Show the evidence for research funding.",
-    "cue_5": "What is the real cost of research funding?"
+    "cue_5": "What is the real cost of research funding?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL431",
@@ -8970,7 +9830,9 @@
     "cue_2": "The evidence on research funding is clear.",
     "cue_3": "Here are the figures on research funding.",
     "cue_4": "Studies on research funding support this.",
-    "cue_5": "The cost of research funding adds up."
+    "cue_5": "The cost of research funding adds up.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL432",
@@ -8985,7 +9847,9 @@
     "cue_2": "Check the source on research funding.",
     "cue_3": "Those figures on research funding are misread.",
     "cue_4": "The data does not say that.",
-    "cue_5": "Read the full report on research funding."
+    "cue_5": "Read the full report on research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL433",
@@ -9000,7 +9864,9 @@
     "cue_2": "Research funding serves insiders, not you.",
     "cue_3": "Whose side are you on over research funding?",
     "cue_4": "You work against the public on research funding.",
-    "cue_5": "This is a fight over research funding."
+    "cue_5": "This is a fight over research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL434",
@@ -9015,7 +9881,9 @@
     "cue_2": "We must choose a side on research funding.",
     "cue_3": "Some lose over research funding. So be it.",
     "cue_4": "Research funding needs hard choices.",
-    "cue_5": "There is no middle ground on research funding."
+    "cue_5": "There is no middle ground on research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL435",
@@ -9030,7 +9898,9 @@
     "cue_2": "Your side caused this over research funding.",
     "cue_3": "Spare me the sermon on research funding.",
     "cue_4": "Do not hide behind research funding.",
-    "cue_5": "That jab on research funding fails."
+    "cue_5": "That jab on research funding fails.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL436",
@@ -9045,7 +9915,9 @@
     "cue_2": "Funny how research funding suits you so well.",
     "cue_3": "Who benefits from research funding, really?",
     "cue_4": "Your story on research funding has gaps.",
-    "cue_5": "Convenient wording on research funding."
+    "cue_5": "Convenient wording on research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL437",
@@ -9060,7 +9932,9 @@
     "cue_2": "Let me reframe research funding slightly.",
     "cue_3": "Everyone agrees on research funding, broadly.",
     "cue_4": "Research funding is simpler than you think.",
-    "cue_5": "I said what I said on research funding."
+    "cue_5": "I said what I said on research funding.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL438",
@@ -9075,7 +9949,9 @@
     "cue_2": "That is not my line on research funding.",
     "cue_3": "You misheard me on research funding.",
     "cue_4": "I take that as praise on research funding.",
-    "cue_5": "A fair question on research funding. Next."
+    "cue_5": "A fair question on research funding. Next.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL439",
@@ -9091,7 +9967,9 @@
     "cue_2": "Say plainly what you mean about equal treatment.",
     "cue_3": "Be sincere with people about equal treatment.",
     "cue_4": "Equal treatment is no place for games.",
-    "cue_5": "People deserve a straight answer on equal treatment."
+    "cue_5": "People deserve a straight answer on equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL440",
@@ -9107,7 +9985,9 @@
     "cue_2": "People can trust me on equal treatment.",
     "cue_3": "Equal treatment matters to me personally.",
     "cue_4": "I will be honest about equal treatment.",
-    "cue_5": "Here is my honest view on equal treatment."
+    "cue_5": "Here is my honest view on equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL441",
@@ -9123,7 +10003,9 @@
     "cue_2": "You can ask me about equal treatment.",
     "cue_3": "I stand by what I said.",
     "cue_4": "Ask plainly. I will answer plainly.",
-    "cue_5": "My view on equal treatment is sincere."
+    "cue_5": "My view on equal treatment is sincere.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL442",
@@ -9139,7 +10021,9 @@
     "cue_2": "Look at the faces affected by equal treatment.",
     "cue_3": "Equal treatment is about real people.",
     "cue_4": "Do you feel nothing about equal treatment?",
-    "cue_5": "Tell that to those hurt by equal treatment."
+    "cue_5": "Tell that to those hurt by equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL443",
@@ -9155,7 +10039,9 @@
     "cue_2": "Equal treatment weighs on me.",
     "cue_3": "Their stories made me care about equal treatment.",
     "cue_4": "I carry those families with me.",
-    "cue_5": "Every family I met raised equal treatment."
+    "cue_5": "Every family I met raised equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL444",
@@ -9171,7 +10057,9 @@
     "cue_2": "Do not turn equal treatment into a game.",
     "cue_3": "I will not shrink their stories.",
     "cue_4": "These are people, not statistics.",
-    "cue_5": "Speak gently about equal treatment."
+    "cue_5": "Speak gently about equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL445",
@@ -9187,7 +10075,9 @@
     "cue_2": "Ask anyone in the street about equal treatment.",
     "cue_3": "The public wants less spin on equal treatment.",
     "cue_4": "Most people disagree with you on equal treatment.",
-    "cue_5": "Voters have spoken on equal treatment."
+    "cue_5": "Voters have spoken on equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL446",
@@ -9203,7 +10093,9 @@
     "cue_2": "Ordinary people want action on equal treatment.",
     "cue_3": "Voters keep raising equal treatment.",
     "cue_4": "Ask around. People care about equal treatment.",
-    "cue_5": "The public mood favors equal treatment."
+    "cue_5": "The public mood favors equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL447",
@@ -9219,7 +10111,9 @@
     "cue_2": "People are divided on equal treatment.",
     "cue_3": "Do not claim the crowd on equal treatment.",
     "cue_4": "Let the public decide equal treatment.",
-    "cue_5": "I hear all sides on equal treatment."
+    "cue_5": "I hear all sides on equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL448",
@@ -9235,7 +10129,9 @@
     "cue_2": "Your numbers on equal treatment do not hold.",
     "cue_3": "Show the evidence for equal treatment.",
     "cue_4": "What is the real cost of equal treatment?",
-    "cue_5": "Those equal treatment statistics are selective."
+    "cue_5": "Those equal treatment statistics are selective.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL449",
@@ -9251,7 +10147,9 @@
     "cue_2": "Here are the figures on equal treatment.",
     "cue_3": "Studies on equal treatment support this.",
     "cue_4": "The cost of equal treatment adds up.",
-    "cue_5": "The numbers on equal treatment hold."
+    "cue_5": "The numbers on equal treatment hold.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL450",
@@ -9267,7 +10165,9 @@
     "cue_2": "Those figures on equal treatment are misread.",
     "cue_3": "The data does not say that.",
     "cue_4": "Read the full report on equal treatment.",
-    "cue_5": "That is not what the data shows."
+    "cue_5": "That is not what the data shows.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL451",
@@ -9283,7 +10183,9 @@
     "cue_2": "Whose side are you on over equal treatment?",
     "cue_3": "You work against the public on equal treatment.",
     "cue_4": "This is a fight over equal treatment.",
-    "cue_5": "Wrong side of equal treatment. Own it."
+    "cue_5": "Wrong side of equal treatment. Own it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL452",
@@ -9299,7 +10201,9 @@
     "cue_2": "Some lose over equal treatment. So be it.",
     "cue_3": "Equal treatment needs hard choices.",
     "cue_4": "There is no middle ground on equal treatment.",
-    "cue_5": "I will not please everyone on equal treatment."
+    "cue_5": "I will not please everyone on equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL453",
@@ -9315,7 +10219,9 @@
     "cue_2": "Spare me the sermon on equal treatment.",
     "cue_3": "Do not hide behind equal treatment.",
     "cue_4": "That jab on equal treatment fails.",
-    "cue_5": "Pick a side on equal treatment yourself."
+    "cue_5": "Pick a side on equal treatment yourself.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL454",
@@ -9331,7 +10237,9 @@
     "cue_2": "Who benefits from equal treatment, really?",
     "cue_3": "Your story on equal treatment has gaps.",
     "cue_4": "Convenient wording on equal treatment.",
-    "cue_5": "What are you leaving out on equal treatment?"
+    "cue_5": "What are you leaving out on equal treatment?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL455",
@@ -9347,7 +10255,9 @@
     "cue_2": "Everyone agrees on equal treatment, broadly.",
     "cue_3": "Equal treatment is simpler than you think.",
     "cue_4": "I said what I said on equal treatment.",
-    "cue_5": "Trust me on equal treatment."
+    "cue_5": "Trust me on equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL456",
@@ -9363,7 +10273,9 @@
     "cue_2": "You misheard me on equal treatment.",
     "cue_3": "I take that as praise on equal treatment.",
     "cue_4": "A fair question on equal treatment. Next.",
-    "cue_5": "Let us move past equal treatment."
+    "cue_5": "Let us move past equal treatment.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL457",
@@ -9379,7 +10291,9 @@
     "cue_2": "Be sincere with people about parental leave.",
     "cue_3": "Parental leave is no place for games.",
     "cue_4": "People deserve a straight answer on parental leave.",
-    "cue_5": "Parental leave deserves honesty, not slogans."
+    "cue_5": "Parental leave deserves honesty, not slogans.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL458",
@@ -9395,7 +10309,9 @@
     "cue_2": "Parental leave matters to me personally.",
     "cue_3": "I will be honest about parental leave.",
     "cue_4": "Here is my honest view on parental leave.",
-    "cue_5": "I mean every word about parental leave."
+    "cue_5": "I mean every word about parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL459",
@@ -9411,7 +10327,9 @@
     "cue_2": "I stand by what I said.",
     "cue_3": "Ask plainly. I will answer plainly.",
     "cue_4": "My view on parental leave is sincere.",
-    "cue_5": "I will not dodge parental leave."
+    "cue_5": "I will not dodge parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL460",
@@ -9427,7 +10345,9 @@
     "cue_2": "Parental leave is about real people.",
     "cue_3": "Do you feel nothing about parental leave?",
     "cue_4": "Tell that to those hurt by parental leave.",
-    "cue_5": "Think of the families behind parental leave."
+    "cue_5": "Think of the families behind parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL461",
@@ -9443,7 +10363,9 @@
     "cue_2": "Their stories made me care about parental leave.",
     "cue_3": "I carry those families with me.",
     "cue_4": "Every family I met raised parental leave.",
-    "cue_5": "I have met people touched by parental leave."
+    "cue_5": "I have met people touched by parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL462",
@@ -9459,7 +10381,9 @@
     "cue_2": "I will not shrink their stories.",
     "cue_3": "These are people, not statistics.",
     "cue_4": "Speak gently about parental leave.",
-    "cue_5": "You cannot dismiss people over parental leave."
+    "cue_5": "You cannot dismiss people over parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL463",
@@ -9475,7 +10399,9 @@
     "cue_2": "The public wants less spin on parental leave.",
     "cue_3": "Most people disagree with you on parental leave.",
     "cue_4": "Voters have spoken on parental leave.",
-    "cue_5": "People want answers on parental leave."
+    "cue_5": "People want answers on parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL464",
@@ -9491,7 +10417,9 @@
     "cue_2": "Voters keep raising parental leave.",
     "cue_3": "Ask around. People care about parental leave.",
     "cue_4": "The public mood favors parental leave.",
-    "cue_5": "Most people I meet back parental leave."
+    "cue_5": "Most people I meet back parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL465",
@@ -9507,7 +10435,9 @@
     "cue_2": "Do not claim the crowd on parental leave.",
     "cue_3": "Let the public decide parental leave.",
     "cue_4": "I hear all sides on parental leave.",
-    "cue_5": "Do not speak for everyone on parental leave."
+    "cue_5": "Do not speak for everyone on parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL466",
@@ -9523,7 +10453,9 @@
     "cue_2": "Show the evidence for parental leave.",
     "cue_3": "What is the real cost of parental leave?",
     "cue_4": "Those parental leave statistics are selective.",
-    "cue_5": "Where are the figures on parental leave?"
+    "cue_5": "Where are the figures on parental leave?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL467",
@@ -9539,7 +10471,9 @@
     "cue_2": "Studies on parental leave support this.",
     "cue_3": "The cost of parental leave adds up.",
     "cue_4": "The numbers on parental leave hold.",
-    "cue_5": "The evidence on parental leave is clear."
+    "cue_5": "The evidence on parental leave is clear.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL468",
@@ -9555,7 +10489,9 @@
     "cue_2": "The data does not say that.",
     "cue_3": "Read the full report on parental leave.",
     "cue_4": "That is not what the data shows.",
-    "cue_5": "Check the source on parental leave."
+    "cue_5": "Check the source on parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL469",
@@ -9571,7 +10507,9 @@
     "cue_2": "You work against the public on parental leave.",
     "cue_3": "This is a fight over parental leave.",
     "cue_4": "Wrong side of parental leave. Own it.",
-    "cue_5": "Parental leave serves insiders, not you."
+    "cue_5": "Parental leave serves insiders, not you.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL470",
@@ -9587,7 +10525,9 @@
     "cue_2": "Parental leave needs hard choices.",
     "cue_3": "There is no middle ground on parental leave.",
     "cue_4": "I will not please everyone on parental leave.",
-    "cue_5": "We must choose a side on parental leave."
+    "cue_5": "We must choose a side on parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL471",
@@ -9603,7 +10543,9 @@
     "cue_2": "Do not hide behind parental leave.",
     "cue_3": "That jab on parental leave fails.",
     "cue_4": "Pick a side on parental leave yourself.",
-    "cue_5": "Your side caused this over parental leave."
+    "cue_5": "Your side caused this over parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL472",
@@ -9619,7 +10561,9 @@
     "cue_2": "Your story on parental leave has gaps.",
     "cue_3": "Convenient wording on parental leave.",
     "cue_4": "What are you leaving out on parental leave?",
-    "cue_5": "Funny how parental leave suits you so well."
+    "cue_5": "Funny how parental leave suits you so well.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL473",
@@ -9635,7 +10579,9 @@
     "cue_2": "Parental leave is simpler than you think.",
     "cue_3": "I said what I said on parental leave.",
     "cue_4": "Trust me on parental leave.",
-    "cue_5": "Let me reframe parental leave slightly."
+    "cue_5": "Let me reframe parental leave slightly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL474",
@@ -9651,7 +10597,9 @@
     "cue_2": "I take that as praise on parental leave.",
     "cue_3": "A fair question on parental leave. Next.",
     "cue_4": "Let us move past parental leave.",
-    "cue_5": "That is not my line on parental leave."
+    "cue_5": "That is not my line on parental leave.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL475",
@@ -9667,7 +10615,9 @@
     "cue_2": "The cameras is no place for games.",
     "cue_3": "People deserve a straight answer on the cameras.",
     "cue_4": "The cameras deserves honesty, not slogans.",
-    "cue_5": "Say plainly what you mean about the cameras."
+    "cue_5": "Say plainly what you mean about the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL476",
@@ -9683,7 +10633,9 @@
     "cue_2": "I will be honest about the cameras.",
     "cue_3": "Here is my honest view on the cameras.",
     "cue_4": "I mean every word about the cameras.",
-    "cue_5": "People can trust me on the cameras."
+    "cue_5": "People can trust me on the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL477",
@@ -9699,7 +10651,9 @@
     "cue_2": "Ask plainly. I will answer plainly.",
     "cue_3": "My view on the cameras is sincere.",
     "cue_4": "I will not dodge the cameras.",
-    "cue_5": "You can ask me about the cameras."
+    "cue_5": "You can ask me about the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL478",
@@ -9715,7 +10669,9 @@
     "cue_2": "Do you feel nothing about the cameras?",
     "cue_3": "Tell that to those hurt by the cameras.",
     "cue_4": "Think of the families behind the cameras.",
-    "cue_5": "Look at the faces affected by the cameras."
+    "cue_5": "Look at the faces affected by the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL479",
@@ -9731,7 +10687,9 @@
     "cue_2": "I carry those families with me.",
     "cue_3": "Every family I met raised the cameras.",
     "cue_4": "I have met people touched by the cameras.",
-    "cue_5": "The cameras weighs on me."
+    "cue_5": "The cameras weighs on me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL480",
@@ -9747,7 +10705,9 @@
     "cue_2": "These are people, not statistics.",
     "cue_3": "Speak gently about the cameras.",
     "cue_4": "You cannot dismiss people over the cameras.",
-    "cue_5": "Do not turn the cameras into a game."
+    "cue_5": "Do not turn the cameras into a game.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL481",
@@ -9763,7 +10723,9 @@
     "cue_2": "Most people disagree with you on the cameras.",
     "cue_3": "Voters have spoken on the cameras.",
     "cue_4": "People want answers on the cameras.",
-    "cue_5": "Ask anyone in the street about the cameras."
+    "cue_5": "Ask anyone in the street about the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL482",
@@ -9779,7 +10741,9 @@
     "cue_2": "Ask around. People care about the cameras.",
     "cue_3": "The public mood favors the cameras.",
     "cue_4": "Most people I meet back the cameras.",
-    "cue_5": "Ordinary people want action on the cameras."
+    "cue_5": "Ordinary people want action on the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL483",
@@ -9795,7 +10759,9 @@
     "cue_2": "Let the public decide the cameras.",
     "cue_3": "I hear all sides on the cameras.",
     "cue_4": "Do not speak for everyone on the cameras.",
-    "cue_5": "People are divided on the cameras."
+    "cue_5": "People are divided on the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL484",
@@ -9811,7 +10777,9 @@
     "cue_2": "What is the real cost of the cameras?",
     "cue_3": "Those the cameras statistics are selective.",
     "cue_4": "Where are the figures on the cameras?",
-    "cue_5": "Your numbers on the cameras do not hold."
+    "cue_5": "Your numbers on the cameras do not hold.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL485",
@@ -9827,7 +10795,9 @@
     "cue_2": "The cost of the cameras adds up.",
     "cue_3": "The numbers on the cameras hold.",
     "cue_4": "The evidence on the cameras is clear.",
-    "cue_5": "Here are the figures on the cameras."
+    "cue_5": "Here are the figures on the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL486",
@@ -9843,7 +10813,9 @@
     "cue_2": "Read the full report on the cameras.",
     "cue_3": "That is not what the data shows.",
     "cue_4": "Check the source on the cameras.",
-    "cue_5": "Those figures on the cameras are misread."
+    "cue_5": "Those figures on the cameras are misread.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL487",
@@ -9859,7 +10831,9 @@
     "cue_2": "This is a fight over the cameras.",
     "cue_3": "Wrong side of the cameras. Own it.",
     "cue_4": "The cameras serves insiders, not you.",
-    "cue_5": "Whose side are you on over the cameras?"
+    "cue_5": "Whose side are you on over the cameras?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL488",
@@ -9875,7 +10849,9 @@
     "cue_2": "There is no middle ground on the cameras.",
     "cue_3": "I will not please everyone on the cameras.",
     "cue_4": "We must choose a side on the cameras.",
-    "cue_5": "Some lose over the cameras. So be it."
+    "cue_5": "Some lose over the cameras. So be it.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL489",
@@ -9891,7 +10867,9 @@
     "cue_2": "That jab on the cameras fails.",
     "cue_3": "Pick a side on the cameras yourself.",
     "cue_4": "Your side caused this over the cameras.",
-    "cue_5": "Spare me the sermon on the cameras."
+    "cue_5": "Spare me the sermon on the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL490",
@@ -9907,7 +10885,9 @@
     "cue_2": "Convenient wording on the cameras.",
     "cue_3": "What are you leaving out on the cameras?",
     "cue_4": "Funny how the cameras suits you so well.",
-    "cue_5": "Who benefits from the cameras, really?"
+    "cue_5": "Who benefits from the cameras, really?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL491",
@@ -9923,7 +10903,9 @@
     "cue_2": "I said what I said on the cameras.",
     "cue_3": "Trust me on the cameras.",
     "cue_4": "Let me reframe the cameras slightly.",
-    "cue_5": "Everyone agrees on the cameras, broadly."
+    "cue_5": "Everyone agrees on the cameras, broadly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL492",
@@ -9939,7 +10921,9 @@
     "cue_2": "A fair question on the cameras. Next.",
     "cue_3": "Let us move past the cameras.",
     "cue_4": "That is not my line on the cameras.",
-    "cue_5": "You misheard me on the cameras."
+    "cue_5": "You misheard me on the cameras.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL493",
@@ -9955,7 +10939,9 @@
     "cue_2": "People deserve a straight answer on town mergers.",
     "cue_3": "Town mergers deserves honesty, not slogans.",
     "cue_4": "Say plainly what you mean about town mergers.",
-    "cue_5": "Be sincere with people about town mergers."
+    "cue_5": "Be sincere with people about town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL494",
@@ -9971,7 +10957,9 @@
     "cue_2": "Here is my honest view on town mergers.",
     "cue_3": "I mean every word about town mergers.",
     "cue_4": "People can trust me on town mergers.",
-    "cue_5": "Town mergers matters to me personally."
+    "cue_5": "Town mergers matters to me personally.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL495",
@@ -9987,7 +10975,9 @@
     "cue_2": "My view on town mergers is sincere.",
     "cue_3": "I will not dodge town mergers.",
     "cue_4": "You can ask me about town mergers.",
-    "cue_5": "I stand by what I said."
+    "cue_5": "I stand by what I said.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL496",
@@ -10003,7 +10993,9 @@
     "cue_2": "Tell that to those hurt by town mergers.",
     "cue_3": "Think of the families behind town mergers.",
     "cue_4": "Look at the faces affected by town mergers.",
-    "cue_5": "Town mergers is about real people."
+    "cue_5": "Town mergers is about real people.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL497",
@@ -10019,7 +11011,9 @@
     "cue_2": "Every family I met raised town mergers.",
     "cue_3": "I have met people touched by town mergers.",
     "cue_4": "Town mergers weighs on me.",
-    "cue_5": "Their stories made me care about town mergers."
+    "cue_5": "Their stories made me care about town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL498",
@@ -10035,7 +11029,9 @@
     "cue_2": "Speak gently about town mergers.",
     "cue_3": "You cannot dismiss people over town mergers.",
     "cue_4": "Do not turn town mergers into a game.",
-    "cue_5": "I will not shrink their stories."
+    "cue_5": "I will not shrink their stories.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL499",
@@ -10051,7 +11047,9 @@
     "cue_2": "Voters have spoken on town mergers.",
     "cue_3": "People want answers on town mergers.",
     "cue_4": "Ask anyone in the street about town mergers.",
-    "cue_5": "The public wants less spin on town mergers."
+    "cue_5": "The public wants less spin on town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL500",
@@ -10067,7 +11065,9 @@
     "cue_2": "The public mood favors town mergers.",
     "cue_3": "Most people I meet back town mergers.",
     "cue_4": "Ordinary people want action on town mergers.",
-    "cue_5": "Voters keep raising town mergers."
+    "cue_5": "Voters keep raising town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL501",
@@ -10083,7 +11083,9 @@
     "cue_2": "I hear all sides on town mergers.",
     "cue_3": "Do not speak for everyone on town mergers.",
     "cue_4": "People are divided on town mergers.",
-    "cue_5": "Do not claim the crowd on town mergers."
+    "cue_5": "Do not claim the crowd on town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL502",
@@ -10099,7 +11101,9 @@
     "cue_2": "Those town mergers statistics are selective.",
     "cue_3": "Where are the figures on town mergers?",
     "cue_4": "Your numbers on town mergers do not hold.",
-    "cue_5": "Show the evidence for town mergers."
+    "cue_5": "Show the evidence for town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL503",
@@ -10115,7 +11119,9 @@
     "cue_2": "The numbers on town mergers hold.",
     "cue_3": "The evidence on town mergers is clear.",
     "cue_4": "Here are the figures on town mergers.",
-    "cue_5": "Studies on town mergers support this."
+    "cue_5": "Studies on town mergers support this.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL504",
@@ -10131,7 +11137,9 @@
     "cue_2": "That is not what the data shows.",
     "cue_3": "Check the source on town mergers.",
     "cue_4": "Those figures on town mergers are misread.",
-    "cue_5": "The data does not say that."
+    "cue_5": "The data does not say that.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL505",
@@ -10147,7 +11155,9 @@
     "cue_2": "Wrong side of town mergers. Own it.",
     "cue_3": "Town mergers serves insiders, not you.",
     "cue_4": "Whose side are you on over town mergers?",
-    "cue_5": "You work against the public on town mergers."
+    "cue_5": "You work against the public on town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL506",
@@ -10163,7 +11173,9 @@
     "cue_2": "I will not please everyone on town mergers.",
     "cue_3": "We must choose a side on town mergers.",
     "cue_4": "Some lose over town mergers. So be it.",
-    "cue_5": "Town mergers needs hard choices."
+    "cue_5": "Town mergers needs hard choices.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL507",
@@ -10179,7 +11191,9 @@
     "cue_2": "Pick a side on town mergers yourself.",
     "cue_3": "Your side caused this over town mergers.",
     "cue_4": "Spare me the sermon on town mergers.",
-    "cue_5": "Do not hide behind town mergers."
+    "cue_5": "Do not hide behind town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL508",
@@ -10195,7 +11209,9 @@
     "cue_2": "What are you leaving out on town mergers?",
     "cue_3": "Funny how town mergers suits you so well.",
     "cue_4": "Who benefits from town mergers, really?",
-    "cue_5": "Your story on town mergers has gaps."
+    "cue_5": "Your story on town mergers has gaps.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL509",
@@ -10211,7 +11227,9 @@
     "cue_2": "Trust me on town mergers.",
     "cue_3": "Let me reframe town mergers slightly.",
     "cue_4": "Everyone agrees on town mergers, broadly.",
-    "cue_5": "Town mergers is simpler than you think."
+    "cue_5": "Town mergers is simpler than you think.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL510",
@@ -10227,7 +11245,9 @@
     "cue_2": "Let us move past town mergers.",
     "cue_3": "That is not my line on town mergers.",
     "cue_4": "You misheard me on town mergers.",
-    "cue_5": "I take that as praise on town mergers."
+    "cue_5": "I take that as praise on town mergers.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL511",
@@ -10242,7 +11262,9 @@
     "cue_2": "Open ballots deserves honesty, not slogans.",
     "cue_3": "Say plainly what you mean about open ballots.",
     "cue_4": "Be sincere with people about open ballots.",
-    "cue_5": "Open ballots is no place for games."
+    "cue_5": "Open ballots is no place for games.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL512",
@@ -10257,7 +11279,9 @@
     "cue_2": "I mean every word about open ballots.",
     "cue_3": "People can trust me on open ballots.",
     "cue_4": "Open ballots matters to me personally.",
-    "cue_5": "I will be honest about open ballots."
+    "cue_5": "I will be honest about open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL513",
@@ -10272,7 +11296,9 @@
     "cue_2": "I will not dodge open ballots.",
     "cue_3": "You can ask me about open ballots.",
     "cue_4": "I stand by what I said.",
-    "cue_5": "Ask plainly. I will answer plainly."
+    "cue_5": "Ask plainly. I will answer plainly.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL514",
@@ -10287,7 +11313,9 @@
     "cue_2": "Think of the families behind open ballots.",
     "cue_3": "Look at the faces affected by open ballots.",
     "cue_4": "Open ballots is about real people.",
-    "cue_5": "Do you feel nothing about open ballots?"
+    "cue_5": "Do you feel nothing about open ballots?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL515",
@@ -10302,7 +11330,9 @@
     "cue_2": "I have met people touched by open ballots.",
     "cue_3": "Open ballots weighs on me.",
     "cue_4": "Their stories made me care about open ballots.",
-    "cue_5": "I carry those families with me."
+    "cue_5": "I carry those families with me.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL516",
@@ -10317,7 +11347,9 @@
     "cue_2": "You cannot dismiss people over open ballots.",
     "cue_3": "Do not turn open ballots into a game.",
     "cue_4": "I will not shrink their stories.",
-    "cue_5": "These are people, not statistics."
+    "cue_5": "These are people, not statistics.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL517",
@@ -10332,7 +11364,9 @@
     "cue_2": "People want answers on open ballots.",
     "cue_3": "Ask anyone in the street about open ballots.",
     "cue_4": "The public wants less spin on open ballots.",
-    "cue_5": "Most people disagree with you on open ballots."
+    "cue_5": "Most people disagree with you on open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL518",
@@ -10347,7 +11381,9 @@
     "cue_2": "Most people I meet back open ballots.",
     "cue_3": "Ordinary people want action on open ballots.",
     "cue_4": "Voters keep raising open ballots.",
-    "cue_5": "Ask around. People care about open ballots."
+    "cue_5": "Ask around. People care about open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL519",
@@ -10362,7 +11398,9 @@
     "cue_2": "Do not speak for everyone on open ballots.",
     "cue_3": "People are divided on open ballots.",
     "cue_4": "Do not claim the crowd on open ballots.",
-    "cue_5": "Let the public decide open ballots."
+    "cue_5": "Let the public decide open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL520",
@@ -10377,7 +11415,9 @@
     "cue_2": "Where are the figures on open ballots?",
     "cue_3": "Your numbers on open ballots do not hold.",
     "cue_4": "Show the evidence for open ballots.",
-    "cue_5": "What is the real cost of open ballots?"
+    "cue_5": "What is the real cost of open ballots?",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL521",
@@ -10392,7 +11432,9 @@
     "cue_2": "The evidence on open ballots is clear.",
     "cue_3": "Here are the figures on open ballots.",
     "cue_4": "Studies on open ballots support this.",
-    "cue_5": "The cost of open ballots adds up."
+    "cue_5": "The cost of open ballots adds up.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL522",
@@ -10407,7 +11449,9 @@
     "cue_2": "Check the source on open ballots.",
     "cue_3": "Those figures on open ballots are misread.",
     "cue_4": "The data does not say that.",
-    "cue_5": "Read the full report on open ballots."
+    "cue_5": "Read the full report on open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL523",
@@ -10422,7 +11466,9 @@
     "cue_2": "Open ballots serves insiders, not you.",
     "cue_3": "Whose side are you on over open ballots?",
     "cue_4": "You work against the public on open ballots.",
-    "cue_5": "This is a fight over open ballots."
+    "cue_5": "This is a fight over open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL524",
@@ -10437,7 +11483,9 @@
     "cue_2": "We must choose a side on open ballots.",
     "cue_3": "Some lose over open ballots. So be it.",
     "cue_4": "Open ballots needs hard choices.",
-    "cue_5": "There is no middle ground on open ballots."
+    "cue_5": "There is no middle ground on open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL525",
@@ -10452,7 +11500,9 @@
     "cue_2": "Your side caused this over open ballots.",
     "cue_3": "Spare me the sermon on open ballots.",
     "cue_4": "Do not hide behind open ballots.",
-    "cue_5": "That jab on open ballots fails."
+    "cue_5": "That jab on open ballots fails.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL526",
@@ -10467,7 +11517,9 @@
     "cue_2": "Funny how open ballots suits you so well.",
     "cue_3": "Who benefits from open ballots, really?",
     "cue_4": "Your story on open ballots has gaps.",
-    "cue_5": "Convenient wording on open ballots."
+    "cue_5": "Convenient wording on open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL527",
@@ -10482,7 +11534,9 @@
     "cue_2": "Let me reframe open ballots slightly.",
     "cue_3": "Everyone agrees on open ballots, broadly.",
     "cue_4": "Open ballots is simpler than you think.",
-    "cue_5": "I said what I said on open ballots."
+    "cue_5": "I said what I said on open ballots.",
+    "bill_ids": null,
+    "stance": null
   },
   {
     "cue_id": "PL528",
@@ -10497,6 +11551,8 @@
     "cue_2": "That is not my line on open ballots.",
     "cue_3": "You misheard me on open ballots.",
     "cue_4": "I take that as praise on open ballots.",
-    "cue_5": "A fair question on open ballots. Next."
+    "cue_5": "A fair question on open ballots. Next.",
+    "bill_ids": null,
+    "stance": null
   }
 ]

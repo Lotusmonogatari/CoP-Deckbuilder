@@ -156,6 +156,8 @@ func _on_lean_chosen(lean: String) -> void:
 			own_position = position
 			break
 
+	GameState.set_bill_lean(str(_bill.get("bill_id", "")), lean)
+
 	var magnitude := int(DataDB.balance.get("lean_party_support_delta", 0))
 	var delta := BillLean.party_support_delta(own_position, lean, magnitude)
 	if delta != 0:

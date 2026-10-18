@@ -259,7 +259,8 @@ static func booster_changes(engine: BattleEngine) -> Array[Dictionary]:
 	for entry: Dictionary in BoosterChange.compute(
 			engine.pleased_boosters(), engine.displeased_boosters(),
 			engine.crushed_opponent_boosters(), DataDB.booster_standing,
-			engine.opposed_boosters(), engine.booster_tally(), GameState.booster_standing):
+			engine.opposed_boosters(), GameState.stance_adjust_tally(engine.booster_tally()),
+			GameState.booster_standing):
 		var booster_id := str(entry["booster_id"])
 		out.append({"booster_id": booster_id,
 			"name": str(names.get(booster_id, booster_id)), "net": int(entry["net"])})

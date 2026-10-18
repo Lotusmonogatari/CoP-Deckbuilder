@@ -329,6 +329,7 @@ func _on_vote(choice: String) -> void:
 		Text.say("record.cause_vote", {"bill": bill_name}))
 	# Into the statute book, applying the bill's own "once" Law Effects.
 	GameState.record_floor_vote(engine.bill(), result, choice)
+	var stance_result := GameState.apply_stance_vote(choice)
 
 	if bool(result.get("outcome_flipped_by_influence", false)):
 		var bill_id := str(engine.bill().get("bill_id", ""))

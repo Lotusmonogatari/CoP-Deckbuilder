@@ -731,7 +731,8 @@ func _play_selected() -> void:
 	# workbook; a card with none written yet puts what it did on the band
 	# instead, so every card still lands with a line.
 	var cue := CardCues.for_card(
-		card_id, str(_stage.get("stage_id", "")), engine.state.turn, applied)
+		card_id, str(_stage.get("stage_id", "")), engine.state.turn, applied,
+		_bill_id(), _lean())
 	var did := BattleNarration.player_move(
 		result, _stage, engine.state, acting_opponent_name)
 	var me := str(DataDB.player.get("name_en", ""))
@@ -742,6 +743,18 @@ func _play_selected() -> void:
 		Audio.say(CardCues.speaker(), str(cue["line_id"]))
 	else:
 		_banner.say(CueBanner.PLAYER, me, did)
+
+
+## The bill the level in progress is about ("" for any other level), and the
+## lean the player took on it ("" until one is picked).
+func _bill_id() -> String:
+	return str(_stage.get("bill_id", ""))
+
+
+func _lean() -> String:
+	if _bill_id().is_empty() or str(GameState.bill_stance.get("bill_id", "")) != _bill_id():
+		return ""
+	return GameState.stance_lean()
 
 
 func _on_end_turn() -> void:
@@ -794,7 +807,7 @@ func _on_end_turn() -> void:
 	# What they SAY, from the workbook's Opponent Cues tab.
 	var move_cue := OpponentCues.for_move(
 		acting_opponent, str(opponent_result.get("verb", "")),
-		str(_stage.get("stage_id", "")), engine.state.turn)
+		str(_stage.get("stage_id", "")), engine.state.turn, -1.0, -1.0, _bill_id())
 	var has_cue := not str(move_cue["text"]).is_empty()
 
 	# What the opponent did, narrated ("Them: 3 support won over.") — ONLY

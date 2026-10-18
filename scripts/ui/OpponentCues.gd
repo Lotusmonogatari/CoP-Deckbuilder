@@ -41,10 +41,23 @@ const TERTIARY_THRESHOLD := 0.95
 ## tests pass them in directly to pin which suit gets picked, the same way
 ## IntentRunner's tests pin its own rolls without touching randf() itself.
 static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn: int,
-		suit_roll: float = -1.0, other_suit_roll: float = -1.0) -> Dictionary:
+		suit_roll: float = -1.0, other_suit_roll: float = -1.0, bill_id: String = "") -> Dictionary:
 	var opp_id := str(opponent.get("opp_id", ""))
 	if opp_id.is_empty() or verb.is_empty():
 		return {"text": "", "line_id": ""}
+
+	# Lines written about this level's bill come before every other tier
+	# (2026-10-18): this opponent's own, then the suit's.
+	if not bill_id.is_empty():
+		if suit_roll < 0.0:
+			suit_roll = randf()
+		if other_suit_roll < 0.0:
+			other_suit_roll = randf()
+		var bill_suit := _suit_for_move(opponent, suit_roll, other_suit_roll)
+		var about_bill: Array[String] = DataDB.get_bill_opponent_cue_lines(bill_id, opp_id, bill_suit, verb)
+		if not about_bill.is_empty():
+			var picked := _index_for(opp_id, verb, stage_id, turn) % about_bill.size()
+			return {"text": about_bill[picked], "line_id": "%s_%s_%d" % [opp_id, verb, picked + 1]}
 
 	# Stage-specific rows first, inside each lookup (2026-10-12): this
 	# opponent in this stage, this opponent anywhere, then the suit's pool
