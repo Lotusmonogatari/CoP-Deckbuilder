@@ -111,6 +111,17 @@ var pending_level_bonuses: Dictionary = {}
 ## rest of the level). Cleared when the level concludes.
 var level_bonuses: Dictionary = {}
 
+## Item effects that last a number of game-clock units from use (the Shop
+## tab's Duration Units, 2026-10-18): [{"bonuses": {token: amount},
+## "expires_at": clock}]. Merged into every stage's item bonuses until they
+## run out (take_item_bonuses_for_stage()). Saved.
+var timed_bonuses: Array = []
+
+## { mod_id: the clock at which that bought backing lapses } for backings with
+## a Duration Units (the Modifiers tab). Saved; a lapsed backing leaves
+## owned_modifiers and can be bought again (_expire_modifiers()).
+var modifier_expires: Dictionary = {}
+
 ## Where the player stands with each of the ten organisations, by booster ID.
 ## Pleasing one at a press conference raises it, and it is held between
 ## levels — unlike the pleased list, which lasts one level.
@@ -360,7 +371,7 @@ const _SAVED_FIELDS := [
 	"inventory", "shop_bought_this_level", "card_draw",
 	"pending_stage_bonuses", "pending_level_bonuses", "level_bonuses",
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
-	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "last_decay_at", "booster_moved_in_period",
+	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
 	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
@@ -446,6 +457,9 @@ func drop_stale_ids() -> int:
 	for level_id: String in levels_cleared.keys():
 		if DataDB.get_level(level_id).is_empty():
 			levels_cleared.erase(level_id)
+	for mod_id: String in modifier_expires.keys():
+		if DataDB.get_modifier(mod_id).is_empty():
+			modifier_expires.erase(mod_id)
 	for level_id: String in level_cleared_units.keys():
 		if DataDB.get_level(level_id).is_empty():
 			level_cleared_units.erase(level_id)
@@ -500,6 +514,8 @@ func reset_crisis_triggers() -> void:
 	time_units = 0
 	last_decay_at = 0
 	booster_moved_in_period = {}
+	timed_bonuses = []
+	modifier_expires = {}
 	special_levels = {}
 	special_forced = false
 	funding_frozen_active = false
@@ -658,7 +674,24 @@ func buy_modifier(mod_id: String) -> String:
 			_move_meta(name, -cost)
 
 	owned_modifiers.append(mod_id)
+	var lasts := ModifierEffects.duration_units(modifier)
+	if lasts > 0:
+		modifier_expires[mod_id] = time_units + lasts
 	return ""
+
+
+## Backings with a Duration Units lapse once the clock reaches their expiry:
+## they leave owned_modifiers (and can be bought again), and the Office tells
+## the player which one lapsed. Runs each time the clock moves.
+func _expire_modifiers() -> void:
+	for mod_id: String in modifier_expires.keys():
+		if time_units < int(modifier_expires[mod_id]):
+			continue
+		modifier_expires.erase(mod_id)
+		if owned_modifiers.has(mod_id):
+			owned_modifiers.erase(mod_id)
+			pending_trigger_alerts.append({"kind": "backing_lapsed", "edge": "entered",
+				"name": str(DataDB.get_modifier(mod_id).get("name_en", mod_id))})
 
 
 ## Hires a candidate into their role, spending Funds, if the role is vacant
@@ -991,6 +1024,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 
 	var stage := level_runner.current_stage()
 	time_units += TimeClock.units_for_stage(stage)
+	_expire_modifiers()
 	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
 	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)
 
@@ -1612,6 +1646,9 @@ func _apply_reward_entries(entries: Array, chosen_target: String = "",
 			RewardTargets.MODIFIER:
 				if not owned_modifiers.has(target_id):
 					owned_modifiers.append(target_id)
+					var granted_for := ModifierEffects.duration_units(DataDB.get_modifier(target_id))
+					if granted_for > 0:
+						modifier_expires[target_id] = time_units + granted_for
 				applied.append({"kind": kind, "id": target_id, "delta": 0})
 			RewardTargets.SEGMENT:
 				var delta := _resolve_delta(resolved.get("delta")) + extra_delta
@@ -1981,9 +2018,16 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 			else Text.say("item.used", {"name": name}))}
 
 	var level := Items.duration(item) == Items.DURATION_LEVEL
+	var lasts := Items.duration_units(item)
 	var target := pending_level_bonuses if level else pending_stage_bonuses
+	if lasts > 0:
+		# A timed item runs from now for that many clock units, whichever
+		# stage or level it lands in (take_item_bonuses_for_stage()).
+		target = {}
 	for effect: Dictionary in _resolve_stage_effects(split["stage"]):
 		_add_bonus(target, str(effect["token"]), int(effect["amount"]))
+	if lasts > 0:
+		timed_bonuses.append({"bonuses": target, "expires_at": time_units + lasts})
 	if not outcome.is_empty():
 		return {"ok": true, "message": Text.say(
 			"item.queued_level_with_outcome" if level else "item.queued_with_outcome",
@@ -2019,7 +2063,13 @@ func use_item_in_stage(item_id: String, engine: BattleEngine, chosen_target: Str
 	_cause = Text.say("record.cause_item", {"item": str(item.get("name_en", ""))})
 	var applied := _apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
 	_cause = cause_before
-	if Items.duration(item) == Items.DURATION_LEVEL:
+	var stage_lasts := Items.duration_units(item)
+	if stage_lasts > 0:
+		var carried := {}
+		for effect: Dictionary in effects:
+			_add_bonus(carried, str(effect["token"]), int(effect["amount"]))
+		timed_bonuses.append({"bonuses": carried, "expires_at": time_units + stage_lasts})
+	elif Items.duration(item) == Items.DURATION_LEVEL:
 		for effect: Dictionary in effects:
 			_add_bonus(level_bonuses, str(effect["token"]), int(effect["amount"]))
 	var name := str(item.get("name", item_id))
@@ -2037,6 +2087,17 @@ func take_item_bonuses_for_stage() -> Dictionary:
 	for token: String in pending_stage_bonuses.keys():
 		_add_bonus(bonuses, token, int(pending_stage_bonuses[token]))
 	pending_stage_bonuses = {}
+	# Timed items still running (the rest are dropped as they run out).
+	var still_running: Array = []
+	for entry: Variant in timed_bonuses:
+		var timed: Dictionary = entry
+		if int(timed.get("expires_at", 0)) <= time_units:
+			continue
+		still_running.append(timed)
+		var carried: Dictionary = timed.get("bonuses", {})
+		for token: String in carried.keys():
+			_add_bonus(bonuses, token, int(carried[token]))
+	timed_bonuses = still_running
 	return bonuses
 
 

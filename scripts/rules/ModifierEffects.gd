@@ -185,3 +185,12 @@ static func level_win_resource_bonus(owned: Array, resource: String) -> int:
 	return total
 
 
+
+
+## Game-clock units a bought backing lasts (the Modifiers tab's Duration
+## Units, 2026-10-18); 0 = permanent. Never shown to the player.
+static func duration_units(modifier: Dictionary) -> int:
+	var raw: Variant = modifier.get("duration_units")
+	if raw == null or str(raw).strip_edges().is_empty():
+		return 0
+	return maxi(int(raw), 0)

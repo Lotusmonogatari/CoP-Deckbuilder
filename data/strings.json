@@ -3792,5 +3792,26 @@
     "english": "Go in",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "item.timing.timed_next",
+    "where": "Item pop-up — an item whose effect wears off by itself, used in the Office",
+    "english": "It starts with your next stage and wears off by itself.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "item.timing.timed_now",
+    "where": "Item pop-up — the same, used mid-stage",
+    "english": "It applies now and wears off by itself.",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.trigger.backing_lapsed.entered",
+    "where": "Office — crisis alert: a backing has run out",
+    "english": "{name}'s backing has lapsed.",
+    "placeholders": "name",
+    "notes": null
   }
 ]

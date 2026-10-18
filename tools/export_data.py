@@ -810,7 +810,11 @@ SHEETS = {
             ("Effect Type", "effect_type", "str"),
             ("Effect Target", "effect_target", "str"),
             ("Effect Value", "effect_value", "num"),
+            # 2026-10-18: units of the game clock the backing lasts once bought
+            # (blank = permanent).
+            ("Duration Units", "duration_units", "int"),
         ],
+        "optional": ["Duration Units"],
     },
     "Boosters": {
         "out": "boosters.json",
@@ -1155,7 +1159,7 @@ SHEETS = {
                      "Uses Per Turn", "Stack Cap", "Purchase Limit", "Player Choice",
                      "Bonus 1 Role", "Bonus 1 Min Tier", "Bonus 1 Amount",
                      "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
-                     "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Card Tier",
+                     "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Duration Units", "Card Tier",
                      "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase"],
         "columns": [
             ("Item ID", "item_id", "id"),
@@ -1190,6 +1194,9 @@ SHEETS = {
             ("Use In Office", "use_in_office", "str"),
             ("Use In Stage", "use_in_stage", "str"),
             ("Duration", "duration", "str"),
+            # 2026-10-18: game-clock units the effect lasts from use (blank =
+            # the Duration column decides).
+            ("Duration Units", "duration_units", "int"),
             ("Uses Per Turn", "uses_per_turn", "int"),
             ("Stack Cap", "stack_cap", "int"),
             ("Purchase Limit", "purchase_limit", "int"),

@@ -265,6 +265,7 @@ func _show_trigger_alerts_if_any() -> void:
 		rows.append(UiKit.line(Text.say(key, {
 			"count": int(alert.get("count", 0)),
 			"amount": int(alert.get("amount", 0)),
+			"name": str(alert.get("name", "")),
 		})))
 	GameState.pending_trigger_alerts = []
 

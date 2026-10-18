@@ -57,6 +57,13 @@ static func duration(item: Dictionary) -> String:
 	return DURATION_LEVEL if str(value).strip_edges().to_lower() == DURATION_LEVEL else DURATION_STAGE
 
 
+## Game-clock units its stage effects last from the moment of use (the Shop
+## tab's Duration Units, 2026-10-18); 0 = the Duration column decides (one
+## stage, or one level). Never shown to the player.
+static func duration_units(item: Dictionary) -> int:
+	return _positive_int(item.get("duration_units"), 0)
+
+
 ## How many times it may be used in one turn of a stage. Blank means once —
 ## Cameron's default, 2026-09-25.
 static func uses_per_turn(item: Dictionary) -> int:
@@ -205,6 +212,8 @@ static func timing_line(item: Dictionary, context: String, words: Phrase = null)
 	var say := words if words != null else Phrase.new()
 	if (split_grants(item)["stage"] as Array).is_empty():
 		return say.say("item.timing.now")
+	if duration_units(item) > 0:
+		return say.say("item.timing.timed_now" if context == STAGE else "item.timing.timed_next")
 	var level := duration(item) == DURATION_LEVEL
 	if context == STAGE:
 		return say.say("item.timing.level_now" if level else "item.timing.stage_now")
