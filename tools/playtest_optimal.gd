@@ -260,25 +260,39 @@ func _run_office_visit() -> void:
 	_buy_items()
 
 
+## New cards come only from Rhetoric Training (2026-09-27), so the bot buys them
+## the way a player does: a free coupon draw first, then the cheapest XP
+## session it can afford, passing a weak card while a pass is allowed
+## (2026-10-18, balance audit: it used to buy cards directly by their old
+## unlock price, which let it own all 54 by about the fifth level).
 func _unlock_affordable_cards() -> void:
-	var candidates: Array = []
-	for card: Dictionary in DataDB.cards:
-		if not GameState.owned_cards.has(str(card.get("card_id", ""))):
-			candidates.append(card)
-	# Cheapest first, so a small XP budget still buys something every visit.
-	candidates.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-		return int(a.get("xp_to_unlock", 0)) < int(b.get("xp_to_unlock", 0)))
-
-	for card: Dictionary in candidates:
-		var refusal := Ledger.card_refusal(card, GameState.owned_cards, GameState.xp)
-		if refusal.is_empty():
-			var bought := GameState.buy_card(str(card.get("card_id", "")))
-			if not bought.is_empty():
-				_bug("Ledger said %s was buyable (no refusal) but GameState.buy_card() refused: '%s'"
-					% [card.get("card_id"), bought])
-			else:
-				_log("  bought card %s (%s) for %d XP" % [
-					card.get("card_id"), card.get("name_en"), card.get("xp_to_unlock", 0)])
+	if GameState.item_count("SH21") > 0:
+		GameState.use_item_in_office("SH21")
+	var guard := 0
+	while guard < 60:
+		guard += 1
+		if GameState.card_draw.is_empty():
+			var started := false
+			var sessions: Array = DataDB.shop.filter(func(i: Dictionary) -> bool:
+				return i.get("card_tier") != null and int(i.get("cost_xp", 0)) > 0)
+			sessions.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+				return int(a.get("cost_xp", 0)) < int(b.get("cost_xp", 0)))
+			for item: Dictionary in sessions:
+				if GameState.xp >= int(item.get("cost_xp", 0)) \
+						and bool(GameState.offer_random_card(str(item["item_id"])).get("ok", false)):
+					started = true
+					break
+			if not started:
+				return
+		# A weak card is passed while passing is allowed; the last look is learned.
+		var shown := DataDB.get_card(str(GameState.card_draw.get("card_id", "")))
+		if GameState.can_pass_offered_card() and _card_strength(shown) < 1.5:
+			GameState.pass_offered_card()
+			continue
+		var learned := GameState.learn_offered_card()
+		if not bool(learned.get("ok", false)):
+			return
+		_log("  learned card %s (%s) in Rhetoric Training" % [shown.get("card_id"), shown.get("name_en")])
 
 
 ## Builds the best deck the collection allows, the way a player would: rank

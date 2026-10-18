@@ -781,6 +781,27 @@ func _apply_neglect_decay() -> void:
 			_links_suspended = false
 
 
+## Meta values that carry a Decay Percent on the Sanban tab (Reputation and
+## Constituency support today) settle back toward the protagonist's starting
+## value by that percent of the distance (at least 1 point) at the end of
+## every level (2026-10-18, balance audit: they sat at 100 from level 40).
+func _apply_meta_decay() -> void:
+	var starts := BattleSetup.starting_meta_for(DataDB.player)
+	for variable: Dictionary in DataDB.sanban:
+		var percent: Variant = variable.get("decay_percent")
+		if percent == null:
+			continue
+		var name := str(variable.get("name_en", ""))
+		var now := int(meta.get(name, 0))
+		var target := BoosterStanding.decayed_percent(now, int(starts.get(name, now)), float(percent))
+		if target != now:
+			_links_suspended = true
+			_cause = Text.say("record.cause_decay")
+			_apply_meta_reward(name, target - now)
+			_cause = ""
+			_links_suspended = false
+
+
 ## Every organization settles back toward its starting standing by its own
 ## Decay Percent of the distance (the Boosters tab; blank falls back to
 ## booster_standing.json's decay_percent). Triggers no Standing Links.
@@ -957,6 +978,8 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		# And every organization, moved or not, settles back a little at its
 		# own rate (Boosters tab, Decay Percent).
 		_apply_standing_decay()
+		# Meta values with a Decay Percent (the Sanban tab) settle back too.
+		_apply_meta_decay()
 
 		# Laws with an "each level" effect pay out at the end of every level
 		# after the one that passed them, win or loss (Law Effects tab).
