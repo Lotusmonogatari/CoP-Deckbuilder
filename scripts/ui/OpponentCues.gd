@@ -41,10 +41,13 @@ const TERTIARY_THRESHOLD := 0.95
 ## tests pass them in directly to pin which suit gets picked, the same way
 ## IntentRunner's tests pin its own rolls without touching randf() itself.
 static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn: int,
-		suit_roll: float = -1.0, other_suit_roll: float = -1.0, bill_id: String = "") -> Dictionary:
+		suit_roll: float = -1.0, other_suit_roll: float = -1.0, bill_id: String = "",
+		general_roll: float = -1.0) -> Dictionary:
 	var opp_id := str(opponent.get("opp_id", ""))
 	if opp_id.is_empty() or verb.is_empty():
 		return {"text": "", "line_id": ""}
+	if general_roll < 0.0:
+		general_roll = randf()
 
 	# Lines written about this level's bill come before every other tier
 	# (2026-10-18): this opponent's own, then the suit's.
@@ -60,16 +63,20 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 			return {"text": about_bill[picked], "line_id": "%s_%s_%d" % [opp_id, verb, picked + 1]}
 
 	# Stage-specific rows first, inside each lookup (2026-10-12): this
-	# opponent in this stage, this opponent anywhere, then the suit's pool
-	# in this stage, then the suit's pool anywhere.
-	var lines: Array[String] = DataDB.get_bespoke_opponent_cue_lines(opp_id, verb, stage_id)
-	if lines.is_empty():
-		if suit_roll < 0.0:
-			suit_roll = randf()
-		if other_suit_roll < 0.0:
-			other_suit_roll = randf()
-		var suit := _suit_for_move(opponent, suit_roll, other_suit_roll)
-		lines = DataDB.get_general_opponent_cue_lines(suit, verb, stage_id)
+	# opponent in this stage, this opponent in this style, this opponent
+	# anywhere, then the suit's pool in this stage, then the suit's pool
+	# anywhere.
+	if suit_roll < 0.0:
+		suit_roll = randf()
+	if other_suit_roll < 0.0:
+		other_suit_roll = randf()
+	var suit := _suit_for_move(opponent, suit_roll, other_suit_roll)
+	var lines: Array[String] = DataDB.get_bespoke_opponent_cue_lines(opp_id, verb, stage_id, suit)
+	var general: Array[String] = DataDB.get_general_opponent_cue_lines(suit, verb, stage_id)
+	# Now and then the style's shared pool speaks instead of the personal
+	# lines (2026-10-18), so a person is not only ever their own few lines.
+	if lines.is_empty() or (not general.is_empty() and general_roll < _general_chance()):
+		lines = general
 	if lines.is_empty():
 		return {"text": "", "line_id": ""}
 
@@ -78,6 +85,13 @@ static func for_move(opponent: Dictionary, verb: String, stage_id: String, turn:
 		"text": lines[which],
 		"line_id": "%s_%s_%d" % [opp_id, verb, which + 1],
 	}
+
+
+## Chance (0..1) that the style's shared pool speaks instead of an
+## opponent's personal lines; Balance lever "Opponent Cues: General Pool
+## Chance" (percent), 0 when absent.
+static func _general_chance() -> float:
+	return float(DataDB.balance.get("opponent_cues_general_pool_chance", 0)) / 100.0
 
 
 ## Which of the opponent's suits (or an outside one) this roll picked — the

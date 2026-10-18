@@ -13,14 +13,18 @@ extends GutTest
 ## so which suit gets drawn from is pinned rather than left to randf() — the
 ## same reason IntentRunner's own tests never let a real die decide.
 
+var _chance_before: Variant = 0
 var _cues_before: Array = []
 
 
 func before_each() -> void:
 	_cues_before = DataDB.opponent_cues.duplicate(true)
+	_chance_before = DataDB.balance.get("opponent_cues_general_pool_chance", 0)
+	DataDB.balance["opponent_cues_general_pool_chance"] = 0
 
 
 func after_each() -> void:
+	DataDB.balance["opponent_cues_general_pool_chance"] = _chance_before
 	DataDB.opponent_cues = _cues_before.duplicate(true)
 	DataDB._build_lookups()
 
@@ -226,3 +230,34 @@ func test_a_cue_row_with_blank_cells_never_yields_null_text() -> void:
 	assert_eq(lines.size(), 3)
 	for line in lines:
 		assert_ne(line, "<null>")
+
+
+func test_a_personal_line_for_the_style_rolled_wins_over_their_any_style_lines() -> void:
+	DataDB.opponent_cues = [
+		{"cue_id": "OC01", "suit": "Earnest", "verb": "attack", "opponent_ids": ["OP03"],
+			"cue_1": "OP03 earnest."},
+		{"cue_id": "OC02", "suit": "Divisive", "verb": "attack", "opponent_ids": ["OP03"],
+			"cue_1": "OP03 divisive."},
+	]
+	DataDB._build_lookups()
+	var opp := {"opp_id": "OP03", "suit_1": "Earnest", "suit_2": "Divisive", "suit_3": "Appeal"}
+	# 0.0 lands on suit_1, 0.6 on suit_2.
+	assert_eq(OpponentCues.for_move(opp, "attack", "ST02", 1, 0.0)["text"], "OP03 earnest.")
+	assert_eq(OpponentCues.for_move(opp, "attack", "ST02", 1, 0.6)["text"], "OP03 divisive.")
+	# A style with no row falls back to everything written for them.
+	var lines: String = OpponentCues.for_move(opp, "attack", "ST02", 1, 0.9)["text"]
+	assert_true(lines in ["OP03 earnest.", "OP03 divisive."])
+
+
+func test_the_shared_pool_speaks_now_and_then_when_the_lever_is_set() -> void:
+	DataDB.opponent_cues = [
+		{"cue_id": "OC01", "suit": "Earnest", "verb": "attack", "opponent_ids": [],
+			"cue_1": "Shared earnest line."},
+		{"cue_id": "OC02", "suit": "Earnest", "verb": "attack", "opponent_ids": ["OP03"],
+			"cue_1": "OP03's own line."},
+	]
+	DataDB._build_lookups()
+	DataDB.balance["opponent_cues_general_pool_chance"] = 25
+	var opp := {"opp_id": "OP03", "suit_1": "Earnest"}
+	assert_eq(OpponentCues.for_move(opp, "attack", "ST02", 1, 0.0, -1.0, "", 0.1)["text"], "Shared earnest line.")
+	assert_eq(OpponentCues.for_move(opp, "attack", "ST02", 1, 0.0, -1.0, "", 0.5)["text"], "OP03's own line.")

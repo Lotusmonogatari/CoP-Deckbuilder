@@ -264,6 +264,9 @@ var _questions_by_visitor: Dictionary = {}
 ## and never blended with the general pool (OpponentCues.gd).
 var _opponent_cues_by_suit_verb: Dictionary = {}
 var _opponent_cues_by_opponent_verb: Dictionary = {}
+## Personal rows filed by opponent, suit and verb (2026-10-18): lets one
+## opponent sound different when they roll their second or third style.
+var _opponent_cues_by_opponent_suit_verb: Dictionary = {}
 ## The same two, for rows that name a Stage ID (2026-10-12): keys carry the
 ## stage as well, "{stage}|{suit}|{verb}" and "{opp_id}|{stage}|{verb}".
 ## Checked before the any-stage tables above (OpponentCues.gd).
@@ -915,11 +918,16 @@ func get_questions_for_visitor(visitor_id: String) -> Array:
 ##
 ## With a stage_id, a row naming that stage wins over the any-stage rows.
 func get_bespoke_opponent_cue_lines(opponent_id: String, verb: String,
-		stage_id: String = "") -> Array[String]:
+		stage_id: String = "", suit: String = "") -> Array[String]:
 	var found: Array = []
 	if not stage_id.is_empty():
 		found = _opponent_cues_by_opponent_stage_verb.get(
 			"%s|%s|%s" % [opponent_id, stage_id, verb], [])
+	# This opponent speaking in this style (2026-10-18), before the lines
+	# written for them in any style.
+	if found.is_empty() and not suit.is_empty():
+		found = _opponent_cues_by_opponent_suit_verb.get(
+			"%s|%s|%s" % [opponent_id, suit, verb], [])
 	if found.is_empty():
 		found = _opponent_cues_by_opponent_verb.get("%s|%s" % [opponent_id, verb], [])
 	var lines: Array[String] = []
@@ -1016,6 +1024,7 @@ func _index_opponent_cues() -> void:
 	_bill_opponent_cues.clear()
 	_opponent_cues_by_suit_verb.clear()
 	_opponent_cues_by_opponent_verb.clear()
+	_opponent_cues_by_opponent_suit_verb.clear()
 	_opponent_cues_by_stage_suit_verb.clear()
 	_opponent_cues_by_opponent_stage_verb.clear()
 	for row: Dictionary in opponent_cues:
@@ -1064,6 +1073,10 @@ func _index_opponent_cues() -> void:
 					var opp_key := "%s|%s" % [opp_id, verb]
 					_opponent_cues_by_opponent_verb[opp_key] = (
 						_opponent_cues_by_opponent_verb.get(opp_key, []) as Array) + lines
+					if not suit.is_empty():
+						var suit_key := "%s|%s|%s" % [opp_id, suit, verb]
+						_opponent_cues_by_opponent_suit_verb[suit_key] = (
+							_opponent_cues_by_opponent_suit_verb.get(suit_key, []) as Array) + lines
 				else:
 					for stage_id: String in stages:
 						var opp_stage_key := "%s|%s|%s" % [opp_id, stage_id, verb]
