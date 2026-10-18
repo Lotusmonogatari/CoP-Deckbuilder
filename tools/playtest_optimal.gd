@@ -82,6 +82,10 @@ func _run() -> void:
 	GameState.start_new_run(_protagonist)
 	_log("Starting meta: %s   XP: %d" % [GameState.meta, GameState.xp])
 
+	var sweep := OS.get_environment("PLAYTEST_TRIAL_SWEEP")
+	if not sweep.is_empty():
+		_run_trial_sweep(int(sweep))
+		return
 	var trial := OS.get_environment("PLAYTEST_STAGE_TRIAL")
 	if not trial.is_empty():
 		_run_stage_trials(trial)
@@ -116,6 +120,52 @@ func _run() -> void:
 # Office: unlock cards, unlock the next level, hire cheap staff
 # ---------------------------------------------------------------------------
 
+## Every Combat stage, `trials` fights each (PLAYTEST_TRIAL_SWEEP=N), under the
+## kit PLAYTEST_TRIAL_KIT names ("starter" or "full"). One process, one
+## "SWEEP stage=... won=... of=... cards=... turns=..." line per stage, for
+## tools/balance_audit.py (2026-10-18).
+func _run_trial_sweep(trials: int) -> void:
+	var starter := OS.get_environment("PLAYTEST_TRIAL_KIT") == "starter"
+	if not starter:
+		for card: Dictionary in DataDB.cards:
+			var id := str(card.get("card_id", ""))
+			if not GameState.owned_cards.has(id):
+				GameState.owned_cards.append(id)
+		GameState.xp = 2000
+		for booster_id: String in GameState.booster_standing.keys():
+			GameState.booster_standing[booster_id] = 80
+		_rebuild_deck()
+		_buy_backing()
+		_buy_backing()
+	for row: Dictionary in DataDB.stages:
+		if str(row.get("mode", "")) != "Combat":
+			continue
+		var stage_id := str(row.get("stage_id", ""))
+		var won := 0
+		var cards_before := _cards_played
+		var turns_before := _turns_ended
+		for i in trials:
+			if not starter:
+				GameState.meta["Funds"] = 100000
+				GameState.meta["Constituency support"] = 80
+				GameState.meta["Reputation"] = 80
+				_buy_items()
+			var expanded := BattleSetup.expand_level({"level_id": "LVTRIAL", "stage_1": stage_id})
+			var runner := LevelRunner.new(expanded)
+			GameState.begin_level(runner)
+			_level_items_used.clear()
+			var before := _wins
+			_play_battle_stage(runner.current_stage())
+			if _wins > before:
+				won += 1
+			if GameState.is_in_level():
+				GameState.end_level()
+		_log("SWEEP stage=%s won=%d of=%d cards=%.1f turns=%.1f" % [stage_id, won, trials,
+			float(_cards_played - cards_before) / trials, float(_turns_ended - turns_before) / trials])
+	_log("CARD_TALLY %s" % [_card_tally])
+	get_tree().quit(0)
+
+
 ## One stage, many times, by a well-equipped player: a win-rate measurement,
 ## not a playthrough. PLAYTEST_STAGE_TRIAL="ST18:60" (stage:trials) or
 ## "ST18:60:65" (a third number overrides the stage's win threshold in
@@ -138,6 +188,16 @@ func _run_stage_trials(spec: String) -> void:
 					row["energy_per_turn"] = int(parts[3])
 					_log("Energy overridden to %d (memory only)" % int(parts[3]))
 
+	# PLAYTEST_TRIAL_KIT: "full" (default) owns every card, backing and items;
+	# "starter" fights with the opening deck only, no backing, no items and the
+	# run's own starting meta: the first time a fresh player reaches the room
+	# (balance audit, 2026-10-18).
+	var starter_kit := OS.get_environment("PLAYTEST_TRIAL_KIT") == "starter"
+	if starter_kit:
+		GameState.reset_collection()
+		_log("Starter kit: opening deck %s only" % [GameState.deck])
+		_run_trial_fights(stage_id, trials)
+		return
 	for card: Dictionary in DataDB.cards:
 		var id := str(card.get("card_id", ""))
 		if not GameState.owned_cards.has(id):
@@ -159,13 +219,21 @@ func _run_stage_trials(spec: String) -> void:
 	_log("Trial %s x%d — deck %s, backing %d, items held %s" % [
 		stage_id, trials, GameState.deck, GameState.owned_modifiers.size(), GameState.inventory])
 
+	_run_trial_fights(stage_id, trials, with_items)
+
+
+## The fights themselves. `with_items` re-buys items before each fight; the
+## starter kit leaves the player's meta and holdings exactly as they start.
+func _run_trial_fights(stage_id: String, trials: int, with_items: bool = false) -> void:
+	var starter := OS.get_environment("PLAYTEST_TRIAL_KIT") == "starter"
 	var won := 0
 	var turns_used: Array[int] = []
 	var scores: Array[int] = []
 	for i in trials:
-		GameState.meta["Funds"] = 100000
-		GameState.meta["Constituency support"] = 80
-		GameState.meta["Reputation"] = 80
+		if not starter:
+			GameState.meta["Funds"] = 100000
+			GameState.meta["Constituency support"] = 80
+			GameState.meta["Reputation"] = 80
 		if with_items:
 			_buy_items()
 		var expanded := BattleSetup.expand_level({"level_id": "LVTRIAL", "stage_1": stage_id})
@@ -497,6 +565,7 @@ func _play_level(level_id: String) -> void:
 			_: _play_battle_stage(stage)
 
 	_trace_party_bodies(level_id)
+	_trace_econ(level_id)
 	if guard >= 20:
 		_bug("%s did not finish within 20 stage iterations — possible infinite stage insertion" % level_id)
 
@@ -689,6 +758,7 @@ func _play_best_cards(engine: BattleEngine, repro: String) -> void:
 		_check_invariants(engine, repro, "play_card('%s')" % best_id)
 		played_this_turn += 1
 		_cards_played += 1
+		_card_tally[best_id] = int(_card_tally.get(best_id, 0)) + 1
 
 
 ## The first card of the best affordable, gaffe-safe combination in hand,
@@ -877,6 +947,9 @@ func _log(message: String) -> void:
 ## 2026-10-18: standing after each level, what moved them and why, and a
 ## sanity check that they stay in range and that the Committee follows its
 ## sources.
+## Balance audit (2026-10-18): how often each card was played, and a
+## per-level economy line (ECON ...) that tools/balance_audit.py reads.
+var _card_tally: Dictionary = {}
 var _party_trace: Array[String] = []
 var _party_range := {"BO31": [100, 0], "BO32": [100, 0]}
 
@@ -901,6 +974,20 @@ func _trace_party_bodies(level_id: String) -> void:
 	_log("  " + line)
 
 
+func _trace_econ(level_id: String) -> void:
+	var standings: Array[String] = []
+	var ids: Array = GameState.booster_standing.keys()
+	ids.sort()
+	for id: String in ids:
+		standings.append("%s:%d" % [id, int(GameState.booster_standing[id])])
+	_log("ECON level=%s attempt=%d xp=%d funds=%d jiban=%d rep=%d party=%d party_eff=%d cards=%d backing=%d items=%d standings=%s" % [
+		level_id, _level_attempts, GameState.xp, int(GameState.meta.get("Funds", 0)),
+		int(GameState.meta.get("Constituency support", 0)), int(GameState.meta.get("Reputation", 0)),
+		int(GameState.meta.get("Party support", 0)), GameState.party_support_effective(),
+		GameState.owned_cards.size(), GameState.owned_modifiers.size(), _items_bought,
+		",".join(standings)])
+
+
 func _bug(message: String) -> void:
 	var entry := "[level_attempt=%d stage=%d] %s" % [_level_attempts, _stages_played, message]
 	_bugs.append(entry)
@@ -923,6 +1010,7 @@ func _report() -> void:
 	_log("Lifetime gaffes: %d   Stages lost to gaffes: %d   Gaffe penalty applied: %s"
 		% [GameState.lifetime_gaffes, GameState.stages_lost_to_gaffes, GameState.gaffe_penalty_applied])
 	_log("stage_type_results: %s" % [GameState.stage_type_results])
+	_log("CARD_TALLY %s" % [_card_tally])
 	_log("Party bodies: Activists %s (low, high), Committee %s; backing M47 owned: %s, M48 owned: %s" % [
 		_party_range["BO31"], _party_range["BO32"],
 		GameState.owned_modifiers.has("M47"), GameState.owned_modifiers.has("M48")])
