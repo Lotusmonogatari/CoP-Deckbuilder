@@ -138,6 +138,14 @@ if command -v xvfb-run >/dev/null 2>&1; then
     failures=$((failures + 1))
   fi
 
+  # And special levels: the Special Levels block and the forced-in panel --
+  # 2026-10-18, new (game clock, step 2).
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/special_levels_test.tscn; then
+    echo ">> FAILED: special levels did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
   # And every screen shape at phone and tablet sizes: nothing runs off the
   # sides or the bottom -- 2026-10-14, new (dynamic screens plan, step 2).
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \

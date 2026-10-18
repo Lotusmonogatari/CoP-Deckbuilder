@@ -88,6 +88,7 @@ var _card_reveal_panel: Overlay
 ## progress — Resume the Level or Abandon the Level (Cameron, 2026-10-04).
 ## Built in code, the same way _trigger_alert_panel is.
 var _resume_choice_panel: Overlay
+var _special_forced_panel: Overlay
 
 ## New Game: the warning before a run is thrown away, and the choice of
 ## protagonist. Built in code, like the inventory.
@@ -166,6 +167,12 @@ func _ready() -> void:
 	_resume_choice_panel.dismissable = false
 	_resume_choice_panel.show_back = false
 	add_child(_resume_choice_panel)
+	_special_forced_panel = Overlay.new()
+	_special_forced_panel.name = "SpecialForcedPanel"
+	# The only way on is the button: a level that has come due cannot be waved away.
+	_special_forced_panel.dismissable = false
+	_special_forced_panel.show_back = false
+	add_child(_special_forced_panel)
 
 	_ticker = TickerPresenter.new(_ticker_strip, _ticker_label)
 
@@ -242,6 +249,7 @@ func _build() -> void:
 	_refresh_resources()
 	_show_trigger_alerts_if_any()
 	_show_resume_choice_if_in_level()
+	_show_forced_special_if_due()
 
 
 ## A crisis trigger firing or resolving since the last time the player was
@@ -296,6 +304,33 @@ func _show_resume_choice_if_in_level() -> void:
 	rows.append(abandon_button)
 
 	_resume_choice_panel.open(Text.say("office.resume_choice_title"), rows)
+
+
+## An ordinary level just ended with a special level due (GameState.special_forced):
+## one panel, one button, and the special level begins. Called last, so it is
+## the frontmost panel when alerts are showing too.
+func _show_forced_special_if_due() -> void:
+	if GameState.is_in_level():
+		return
+	var level := GameState.take_forced_special()
+	if level.is_empty():
+		return
+	var rows: Array[Control] = []
+	rows.append(UiKit.line(Text.say("office.special_forced_body",
+		{"level": str(level.get("description", ""))})))
+	var go := Button.new()
+	go.name = "SpecialForcedGoButton"
+	go.custom_minimum_size = Vector2(0, 110)
+	go.text = Text.say("office.special_forced_go")
+	go.pressed.connect(_on_forced_special_go.bind(level))
+	rows.append(go)
+	_special_forced_panel.open(Text.say("office.special_forced_title"), rows)
+
+
+func _on_forced_special_go(level: Dictionary) -> void:
+	_special_forced_panel.close()
+	_chosen_level = level
+	_on_start()
 
 
 func _on_resume_level_chosen() -> void:
@@ -1916,8 +1951,18 @@ func _show_levels() -> void:
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("office.levels_blurb")))
 
+	# Special levels that have come due sit above everything else.
+	var due_rows := GameState.due_special_level_rows()
+	if not due_rows.is_empty():
+		rows.append(UiKit.heading(Text.say("office.special_levels_heading")))
+		for special: Dictionary in due_rows:
+			rows.append(_level_row(special))
+
 	var by_tier := {}
 	for level: Dictionary in DataDB.levels:
+		# Special levels are listed above, and only once due.
+		if SpecialLevels.is_special(level):
+			continue
 		# A "One-Time (Yes/No)" level (levels.json's own "one_time" column)
 		# that has already been completed — win or loss — is left out of the
 		# list entirely, not shown-but-disabled like a locked or cooling-

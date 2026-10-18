@@ -1766,28 +1766,28 @@
   {
     "key": "office.trigger.town_hall.entered",
     "where": "Office — crisis alert",
-    "english": "Constituency support fell to {count} — a Town Hall has been added to your schedule.",
+    "english": "Constituency support fell to {count}. Your district is growing restless.",
     "placeholders": "count",
     "notes": null
   },
   {
     "key": "office.trigger.town_hall.left",
     "where": "Office — crisis alert",
-    "english": "Constituency support has recovered — no Town Hall is pending.",
+    "english": "Constituency support has recovered.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "office.trigger.steering_committee.entered",
     "where": "Office — crisis alert",
-    "english": "Party support fell to {count} — the Steering Committee wants to see you.",
+    "english": "Party support fell to {count}. The Steering Committee has noticed.",
     "placeholders": "count",
     "notes": null
   },
   {
     "key": "office.trigger.steering_committee.left",
     "where": "Office — crisis alert",
-    "english": "Party support has recovered — the Steering Committee is no longer waiting.",
+    "english": "Party support has recovered.",
     "placeholders": null,
     "notes": null
   },
@@ -3762,6 +3762,34 @@
     "key": "record.cause_decay",
     "where": "Reason: an organization settling back toward where it started",
     "english": "standing settling back over time",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.special_levels_heading",
+    "where": "Office — the heading above special levels in the level list",
+    "english": "Special Levels",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.special_forced_title",
+    "where": "Office — title of the panel that starts a special level",
+    "english": "Something needs you",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "office.special_forced_body",
+    "where": "Office — body of that panel",
+    "english": "{level} cannot wait. It is the next thing on your desk.",
+    "placeholders": "level",
+    "notes": null
+  },
+  {
+    "key": "office.special_forced_go",
+    "where": "Office — the button on that panel",
+    "english": "Go in",
     "placeholders": null,
     "notes": null
   }

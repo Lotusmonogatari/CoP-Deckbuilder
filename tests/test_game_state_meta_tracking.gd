@@ -196,33 +196,32 @@ func test_the_gaffe_penalty_never_fires_twice() -> void:
 # Town Hall / Steering Committee / Funding Freeze — enter, hold, leave
 # ---------------------------------------------------------------------------
 
-func test_town_hall_is_inserted_the_moment_jiban_crosses_the_threshold() -> void:
+func _stage_ids_in_level() -> Array:
+	var ids: Array = []
+	for stage: Dictionary in GameState.level_runner.stages:
+		ids.append(stage.get("stage_id"))
+	return ids
+
+
+func test_town_hall_countdown_starts_the_moment_jiban_crosses_the_threshold() -> void:
 	_begin_two_stage_level(15, 50)   # <= 15
 	GameState.finish_stage(LevelRunner.WON)
 
 	assert_true(GameState.town_hall_active)
-	var stage_ids: Array = []
-	for stage: Dictionary in GameState.level_runner.stages:
-		stage_ids.append(stage.get("stage_id"))
-	assert_true(stage_ids.has("ST05"), "a Town Hall was inserted: %s" % [stage_ids])
+	assert_true(GameState.special_levels.has("Town Hall"))
+	assert_false(_stage_ids_in_level().has("ST05"), "nothing is inserted into the level being played")
 
 
-func test_town_hall_does_not_insert_a_second_time_while_still_in_the_zone() -> void:
+func test_town_hall_does_not_restart_its_countdown_while_still_in_the_zone() -> void:
 	_begin_two_stage_level(15, 50)
 	GameState.finish_stage(LevelRunner.WON)   # fires, Jiban still <= 15 after
-	var count_after_first := 0
-	for stage: Dictionary in GameState.level_runner.stages:
-		if stage.get("stage_id") == "ST05":
-			count_after_first += 1
+	var armed_at := int(GameState.special_levels["Town Hall"]["armed_at"])
+	GameState.time_units += 3
 
 	GameState.finish_stage(LevelRunner.WON)   # still in the zone
 
-	var count_after_second := 0
-	for stage: Dictionary in GameState.level_runner.stages:
-		if stage.get("stage_id") == "ST05":
-			count_after_second += 1
-	assert_eq(count_after_second, count_after_first,
-		"losing/finishing the Town Hall while Jiban is still low must not queue another one")
+	assert_eq(int(GameState.special_levels["Town Hall"]["armed_at"]), armed_at,
+		"finishing stages while Jiban is still low must not restart the countdown")
 
 
 func test_town_hall_reports_leaving_the_zone_once_jiban_recovers() -> void:
@@ -269,24 +268,21 @@ func test_town_hall_fires_again_after_leaving_and_re_entering() -> void:
 	assert_true(GameState.town_hall_active)
 
 
-func test_steering_committee_inserts_st22_not_st08() -> void:
+func test_steering_committee_countdown_starts_and_inserts_nothing() -> void:
 	_begin_two_stage_level(50, 24)   # < 25
 	GameState.finish_stage(LevelRunner.WON)
 
 	assert_true(GameState.steering_committee_active)
-	var stage_ids: Array = []
-	for stage: Dictionary in GameState.level_runner.stages:
-		stage_ids.append(stage.get("stage_id"))
-	assert_true(stage_ids.has("ST22"), "the new check-in room: %s" % [stage_ids])
-	assert_false(stage_ids.has("ST08"),
+	assert_true(GameState.special_levels.has("Steering Committee"))
+	assert_false(_stage_ids_in_level().has("ST22"))
+	assert_false(_stage_ids_in_level().has("ST08"),
 		"ST08 is the hand-placed canon committee — never auto-inserted")
 
 
-func test_a_crisis_trigger_does_not_insert_into_a_level_that_just_ended() -> void:
-	# A single-stage level: finishing it ends the level on this exact call,
-	# so there is nowhere to put a forced-in stage. The trigger must not
-	# crash, and must not claim to have fired (no alert, flag stays false)
-	# — it gets the next opportunity instead, whenever that is.
+func test_a_crisis_trigger_fires_even_when_the_level_just_ended() -> void:
+	# Nothing is inserted any more, so a single-stage level ending on the very
+	# call that crosses the threshold still starts the countdown and tells the
+	# player when they are back in the Office.
 	GameState.meta["Constituency support"] = 5
 	GameState.meta["Party support"] = 50
 	var runner := LevelRunner.new({
@@ -297,8 +293,9 @@ func test_a_crisis_trigger_does_not_insert_into_a_level_that_just_ended() -> voi
 
 	GameState.finish_stage(LevelRunner.WON)
 
-	assert_false(GameState.town_hall_active)
-	assert_true(GameState.pending_trigger_alerts.is_empty())
+	assert_true(GameState.town_hall_active)
+	assert_true(GameState.special_levels.has("Town Hall"))
+	assert_false(GameState.pending_trigger_alerts.is_empty())
 
 
 # ---------------------------------------------------------------------------

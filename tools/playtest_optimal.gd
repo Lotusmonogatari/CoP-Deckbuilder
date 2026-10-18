@@ -105,7 +105,11 @@ func _run() -> void:
 	while _level_attempts < MAX_LEVEL_ATTEMPTS and _stages_played < MAX_STAGES:
 		_run_office_visit()
 
-		var level_id := _choose_level()
+		# A special level that came due after the last ordinary level is forced in
+		# (2026-10-18); the bot never picks one on its own, so this also proves
+		# the forcing rule over a whole run.
+		var forced := GameState.take_forced_special()
+		var level_id := str(forced.get("level_id", "")) if not forced.is_empty() else _choose_level()
 		if level_id.is_empty():
 			_log("No playable level found (all locked/on cooldown and unaffordable). Stopping.")
 			break
@@ -528,6 +532,8 @@ func _choose_level() -> String:
 	var first_playable := ""
 	for level: Dictionary in ordered:
 		var level_id := str(level.get("level_id", ""))
+		if SpecialLevels.is_special(level):
+			continue
 		if not Ledger.is_level_unlocked(level, GameState.levels_unlocked, GameState.staff_hired):
 			continue
 		var cooldown := Ledger.level_cooldown_remaining(
