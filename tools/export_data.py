@@ -1109,6 +1109,9 @@ SHEETS = {
             # first vote should be a one-time thing, not a replayable grind
             # for the same favorability payout.
             ("One-Time (Yes/No)", "one_time", "str"),
+            # 2026-10-18: Town Hall or Steering Committee marks a Special
+            # Level (GameState special levels); blank for every other level.
+            ("Special Trigger", "special_trigger", "str"),
         ],
     },
     # 3 roles (Policy Research Assistant, Media Spokesperson, District
@@ -2190,6 +2193,20 @@ def validate(data, report):
                 f"{lid} has more than one row for '{role}' — the first one wins",
             )
         seen_level_roles.add((lid, role))
+
+    # --- special levels (2026-10-18) -----------------------------------------
+    # A Levels row with a Special Trigger is a Special Level: at most one level
+    # per trigger, and the trigger must be one the game knows.
+    seen_triggers = {}
+    for level in data["levels"]:
+        trig = (level.get("special_trigger") or "").strip()
+        if not trig:
+            continue
+        if trig not in ("Town Hall", "Steering Committee"):
+            report.error("Levels", f"{level['level_id']} has Special Trigger '{trig}', which must be Town Hall, Steering Committee or blank")
+        elif trig in seen_triggers:
+            report.error("Levels", f"{level['level_id']} and {seen_triggers[trig]} both have Special Trigger '{trig}'")
+        seen_triggers[trig] = level["level_id"]
 
     # --- level_intro_thoughts ----------------------------------------------
     # The player's own internal thought about a level — one optional row

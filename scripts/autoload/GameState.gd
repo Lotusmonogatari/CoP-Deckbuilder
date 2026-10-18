@@ -245,6 +245,16 @@ var steering_committee_active := false
 ## Saved; cleared on a new run. Never shown to the player (TimeClock.gd).
 var time_units := 0
 
+## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
+## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
+## until that special level has been played, win or lose.
+var special_levels: Dictionary = {}
+
+## Set when an ordinary level finishes with a special level due: the Office
+## starts it at once the next time it opens (take_forced_special()). Saved, so
+## closing the app in between does not lose it.
+var special_forced := false
+
 ## Same shape, for the Funding Freeze (M32) — tracked here purely to detect
 ## the edge for the Office alert; the freeze's actual enforcement
 ## (MetaRules.party_support_modifiers()) is checked live and needs no latch.
@@ -338,7 +348,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -471,6 +481,8 @@ func reset_crisis_triggers() -> void:
 	town_hall_active = false
 	steering_committee_active = false
 	time_units = 0
+	special_levels = {}
+	special_forced = false
 	funding_frozen_active = false
 	pending_trigger_alerts = []
 	stage_type_results = {}
@@ -961,8 +973,8 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	# never needs anywhere to put anything, so that half always fires.
 	_check_funding_freeze()
 	var level_id := str(level_runner.level.get("level_id", ""))
-	_check_town_hall(level_id)
-	_check_steering_committee(level_id)
+	_check_town_hall()
+	_check_steering_committee()
 
 	if level_runner.is_finished():
 		last_level_outcome = level_runner.outcome()
@@ -1000,6 +1012,15 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 			_cause = ""
 			if not level_id.is_empty():
 				levels_cleared[level_id] = int(levels_cleared.get(level_id, 0)) + 1
+
+		# A special level, once played (win or lose), is done until its trigger
+		# comes round again; after an ordinary level, any special level that is
+		# due is forced in next.
+		var finished_trigger := SpecialLevels.trigger_of(DataDB.get_level(level_id))
+		if not finished_trigger.is_empty():
+			special_levels.erase(finished_trigger)
+		elif not due_special_levels().is_empty():
+			special_forced = true
 		SaveManager.autosave(true)
 		return true
 	SaveManager.autosave(true)
@@ -1058,45 +1079,70 @@ func _check_funding_freeze() -> void:
 		pending_trigger_alerts.append({"kind": "funding_freeze", "edge": "left"})
 
 
-## Inserts ST05 the moment Jiban first crosses the Town Hall threshold, and
-## says nothing further until Jiban has climbed back out again — losing the
-## inserted Town Hall while Jiban is still low must not immediately queue
-## a second one (Cameron, 2026-09-25). Entering with nowhere left to put a
-## stage (the level just ended) simply does nothing this call; the same
-## check runs again at the next finish_stage(), in the level after this one.
-func _check_town_hall(level_id: String) -> void:
+## Starts the Town Hall countdown the moment Constituency support first
+## crosses its threshold (2026-10-18, Cameron: it used to insert a Town Hall
+## into the level being played). The special level appears Special Level Delay
+## units of the game clock later (due_special_levels()). Says nothing further
+## until support has climbed back out again -- losing the Town Hall while
+## support is still low must not immediately start a second countdown
+## (Cameron, 2026-09-25).
+func _check_town_hall() -> void:
 	var jiban := int(meta.get("Constituency support", 0))
 	var triggered := MetaRules.town_hall_triggered(jiban, DataDB.balance)
 	if triggered and not town_hall_active:
-		if level_runner == null or level_runner.is_finished():
-			return
-		var inserted := BattleSetup.build_inserted_stage(level_id, "ST05")
-		level_runner.insert_stage(inserted, level_runner.index)
-		record_faced(inserted)
 		town_hall_active = true
+		_arm_special(SpecialLevels.TOWN_HALL)
 		pending_trigger_alerts.append({"kind": "town_hall", "edge": "entered", "count": jiban})
 	elif not triggered and town_hall_active:
 		town_hall_active = false
 		pending_trigger_alerts.append({"kind": "town_hall", "edge": "left"})
 
 
-## Same shape as _check_town_hall(), for the Party Steering Committee
-## check-in (ST22, Non-combat, VI04 — see design's Part D) forced in when
-## party support falls below its own threshold.
-func _check_steering_committee(level_id: String) -> void:
+## Same shape, for the Party Steering Committee Check-In, started when party
+## support falls below its own threshold.
+func _check_steering_committee() -> void:
 	var party_support := party_support_effective()
 	var triggered := MetaRules.steering_committee_triggered(party_support, DataDB.balance)
 	if triggered and not steering_committee_active:
-		if level_runner == null or level_runner.is_finished():
-			return
-		var inserted := BattleSetup.build_inserted_stage(level_id, "ST22")
-		level_runner.insert_stage(inserted, level_runner.index)
-		record_faced(inserted)
 		steering_committee_active = true
+		_arm_special(SpecialLevels.STEERING_COMMITTEE)
 		pending_trigger_alerts.append({"kind": "steering_committee", "edge": "entered", "count": party_support})
 	elif not triggered and steering_committee_active:
 		steering_committee_active = false
 		pending_trigger_alerts.append({"kind": "steering_committee", "edge": "left"})
+
+
+## Begins a special level's countdown on the game clock, unless one is
+## already running or waiting.
+func _arm_special(trigger: String) -> void:
+	if not special_levels.has(trigger):
+		special_levels[trigger] = {"armed_at": time_units}
+
+
+## The special levels whose countdown has run out, in the order they come due.
+func due_special_levels() -> Array[String]:
+	return SpecialLevels.due(special_levels, time_units,
+		int(DataDB.balance.get("special_level_delay", 5)))
+
+
+## The due special level rows, for the top of the level list.
+func due_special_level_rows() -> Array[Dictionary]:
+	var rows: Array[Dictionary] = []
+	for trigger: String in due_special_levels():
+		var level := SpecialLevels.level_for(trigger, DataDB.levels)
+		if not level.is_empty():
+			rows.append(level)
+	return rows
+
+
+## If an ordinary level just ended with a special level due, the one to start
+## now (and forget the order); {} otherwise. The Office calls this when it opens.
+func take_forced_special() -> Dictionary:
+	if not special_forced:
+		return {}
+	special_forced = false
+	var rows := due_special_level_rows()
+	return {} if rows.is_empty() else rows[0]
 
 
 ## Everything a finished stage is worth, in the order the brief sets out.
