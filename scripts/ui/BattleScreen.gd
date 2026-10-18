@@ -43,7 +43,6 @@ var _selected_card_id: String = ""
 ## The card tapped once, whose organisation preview is showing.
 var _previewed_card_id := ""
 var _listening: ListeningStrip = null
-var _read_button: Button = null
 
 ## False when the battle could not be set up. Everything that would touch
 ## the engine checks this first, so a stage that failed to start shows its
@@ -671,7 +670,6 @@ func _on_card_chosen(card_id: String) -> void:
 			_previewed_card_id = card_id
 			_hand.select_only(card_id)
 			_listening.preview(changes)
-			_read_button.show()
 			return
 	_open_card(card_id)
 
@@ -736,8 +734,6 @@ func _clear_preview() -> void:
 		_hand.select_only("")
 	if _listening != null:
 		_listening.clear_marks()
-	if _read_button != null:
-		_read_button.hide()
 
 
 ## The strip of listening organisations lives in the elastic table space.
@@ -746,15 +742,6 @@ func _build_listening() -> void:
 	_listening = ListeningStrip.new()
 	table.add_child(_listening)
 	_listening.hide()
-	_read_button = Button.new()
-	_read_button.name = "ReadButton"
-	_read_button.text = Text.say("battle.read_card")
-	_read_button.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	_read_button.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-	_read_button.grow_vertical = Control.GROW_DIRECTION_BEGIN
-	_read_button.hide()
-	_read_button.pressed.connect(func() -> void: _open_card(_previewed_card_id))
-	table.add_child(_read_button)
 
 
 ## Who is listening to this question: the organisations it pleases or sets

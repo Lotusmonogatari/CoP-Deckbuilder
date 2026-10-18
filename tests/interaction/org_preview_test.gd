@@ -52,9 +52,8 @@ func _check() -> void:
 	await _click(target)
 	if zoom.visible:
 		_failures.append("the first tap opened the card instead of previewing it")
-	var read: Button = _screen._read_button
-	if not read.visible:
-		_failures.append("the Read button did not appear after the first tap")
+	if not target.selected:
+		_failures.append("the card did not show Read after the first tap")
 	else:
 		print("  first tap previews and shows Read")
 
@@ -67,11 +66,11 @@ func _check() -> void:
 	else:
 		print("  %d organisation(s) marked" % marked)
 
-	await _click(read)
+	await _click(target)
 	if not zoom.visible:
-		_failures.append("Read did not open the card")
+		_failures.append("a second tap on the card did not open it")
 	else:
-		print("  Read opens the card")
+		print("  a second tap opens the card")
 
 
 func _click(control: Control) -> void:

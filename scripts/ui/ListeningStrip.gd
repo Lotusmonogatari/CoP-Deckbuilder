@@ -75,7 +75,7 @@ func flash(changes: Array) -> void:
 func clear_marks() -> void:
 	for booster_id: String in _tiles:
 		var tile: Dictionary = _tiles[booster_id]
-		(tile["shade"] as ColorRect).hide()
+		(tile["shade"] as TextureRect).hide()
 		(tile["mark"] as Label).hide()
 
 
@@ -88,16 +88,16 @@ func _mark(changes: Array, grey_the_rest: bool) -> void:
 	_fit()
 	for booster_id: String in _tiles:
 		var tile: Dictionary = _tiles[booster_id]
-		var shade := tile["shade"] as ColorRect
+		var shade := tile["shade"] as TextureRect
 		var mark := tile["mark"] as Label
 		if moved.has(booster_id):
 			var delta: int = moved[booster_id]
-			shade.color = GAIN if delta > 0 else LOSS
+			shade.modulate = GAIN if delta > 0 else LOSS
 			mark.text = ("+%d" if delta > 0 else "%d") % delta
 			shade.show()
 			mark.show()
 		elif grey_the_rest:
-			shade.color = NEUTRAL
+			shade.modulate = NEUTRAL
 			mark.text = "0"
 			shade.show()
 			mark.show()
@@ -121,7 +121,10 @@ func _add_tile(booster_id: String, taste: String) -> void:
 	icon.set_anchors_preset(Control.PRESET_FULL_RECT)
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_child(icon)
-	var shade := ColorRect.new()
+	var shade := TextureRect.new()
+	shade.texture = _soft_disc()
+	shade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	shade.stretch_mode = TextureRect.STRETCH_SCALE
 	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	shade.hide()
@@ -163,3 +166,21 @@ func _fit() -> void:
 		var tile: Dictionary = _tiles[booster_id]
 		(tile["box"] as Control).custom_minimum_size = Vector2(_icon_size, _icon_size)
 		(tile["taste"] as Label).custom_minimum_size.x = _icon_size + 20.0
+
+
+static var _disc: GradientTexture2D = null
+
+## A white disc whose edge fades to nothing; tinted by modulate.
+static func _soft_disc() -> GradientTexture2D:
+	if _disc == null:
+		var gradient := Gradient.new()
+		gradient.offsets = PackedFloat32Array([0.0, 0.55, 1.0])
+		gradient.colors = PackedColorArray([Color.WHITE, Color.WHITE, Color(1, 1, 1, 0)])
+		_disc = GradientTexture2D.new()
+		_disc.gradient = gradient
+		_disc.fill = GradientTexture2D.FILL_RADIAL
+		_disc.fill_from = Vector2(0.5, 0.5)
+		_disc.fill_to = Vector2(1.0, 0.5)
+		_disc.width = 128
+		_disc.height = 128
+	return _disc

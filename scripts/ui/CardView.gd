@@ -35,8 +35,14 @@ signal dropped(card_id: String)
 var selected := false:
 	set(value):
 		selected = value
+		if _read_tag != null:
+			_read_tag.visible = value
 		if not _lifting:
 			self_modulate = SELECT_TINT if value else Color.WHITE
+
+## The "Read" tag shown in the lower part of a selected card's text box:
+## tap the card again to open it.
+var _read_tag: Label = null
 
 const SELECT_TINT := Color(1.0, 0.92, 0.6)
 
@@ -251,6 +257,22 @@ func _build() -> void:
 	_art_label.add_theme_font_override("font", CARD_FONT)
 	_art_label.add_theme_font_size_override("font_size", 30)
 	add_child(_art_label)
+
+	_read_tag = Label.new()
+	place(_read_tag, Rect2(TEXT_RECT.position.x + 0.2, TEXT_RECT.position.y + TEXT_RECT.size.y - 0.048,
+		TEXT_RECT.size.x - 0.4, 0.048))
+	_read_tag.text = Text.say("battle.read_card")
+	_read_tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_read_tag.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_read_tag.add_theme_color_override("font_color", CREAM)
+	_read_tag.add_theme_font_override("font", CARD_FONT)
+	_read_tag.add_theme_font_size_override("font_size", 22)
+	var tag_box := StyleBoxFlat.new()
+	tag_box.bg_color = INK
+	tag_box.set_corner_radius_all(10)
+	_read_tag.add_theme_stylebox_override("normal", tag_box)
+	_read_tag.visible = selected
+	add_child(_read_tag)
 
 	_effect_label = Label.new()
 	place(_effect_label, TEXT_RECT)
