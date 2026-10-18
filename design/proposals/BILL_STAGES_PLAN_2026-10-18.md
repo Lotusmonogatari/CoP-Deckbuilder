@@ -1,0 +1,73 @@
+# Plan: every bill level gets bill-specific stages (2026-10-18)
+
+## Where things stand
+
+| | Count |
+|---|---|
+| Bill levels (a level that ends in a Floor Vote) | 50 (LV31-LV60 for BI01-BI30, LV63-LV82 for BI31-BI50) |
+| Stage slots in those levels | 279 |
+| Slots that use a **generic** stage (ST01-ST23) | **140**, all in the 30 older bill levels |
+| Slots already bill-specific | 139 (the 20 newer bill levels, stages ST32-ST120) |
+| Older levels with at least one generic stage | all 30 |
+
+The newer 20 levels already follow the scheme. The older 30 play generic rooms (a plain Party Caucus, a plain Press Conference, a Committee on Finance) with the bill's own content only arriving through the bill-scoped questions, cues and transitions of Batch 4.
+
+Backgrounds: `assets/backgrounds/` holds ST01-ST23, OFFICE and TITLE only. Every topic stage (ST24 onward, 97 stages) has **no** background file, so it shows a placeholder.
+
+## Definition
+
+A **bill-specific stage** is a stage ID that belongs to one bill: its name and Japanese name are about that bill's topic ("Town Hall on Ainu Heritage and Language"), the level that uses it names that bill, it carries the bill's content (the bill-scoped questions, cues, transitions already written), and it plays exactly like its generic family so the balance work done on the family carries over.
+
+## Approach: clone the family, change the topic
+
+For each of the 139 distinct (bill, generic stage) pairs in the 30 older bill levels, add one new stage that is a copy of the generic stage's row:
+
+* **Same numbers** as the base row at the time of copying (thresholds, energy, turns, opponent count, sequence mode, rewards, gaffe limit, question pool, transition flag). Anything retuned in the balance audit carries over, and a later retune of a family is a find-and-replace.
+* **Topic name** in English, Japanese and romaji: "{Family} on {Topic}" (for example "Press Conference on Agricultural Price Stabilization").
+* **The same people**: every opponent who lists the base stage also lists the clone, so a Committee on Finance clone still seats only Finance members and a Party Caucus clone still seats only the player's own party.
+* **The same shared content**: every table that names the base stage (Stage Questions, Player Cues, Opponent Cues, Transition Cast, Transition Dialogue, Transition Backgrounds, the Town Hall and Caucus backing M47) also names the clone.
+* The level's slot is switched from the generic ID to the clone (one clone per bill and base stage, reused if a level repeats it).
+
+The 11 older levels that use Office Hours (ST07) also get a **bill-specific Office Hours stage** with one bill-specific visitor (a representative of the organization the bill helps most, written without inventing a person) and two dilemma questions built from the bill's Law Effects winners and losers, pinned to that slot like LV63-LV82.
+
+## Backgrounds: every stage has a default background
+
+New Stages column **Background ID** (blank means the stage's own ID). `ArtLoader.background_path()` tries the stage's own file, then the file of its Background ID. Every clone and every existing topic stage is set to its generic stage:
+
+| Family | Default background |
+|---|---|
+| Town Hall | ST05 |
+| Party Caucus | ST03 |
+| Press Conference | ST04 |
+| Policy Study | ST21 |
+| TV Debate | ST06 |
+| Lobbyist Meeting | ST20 |
+| Media Ambush | ST19 |
+| Office Hours (topic) | ST07 |
+| Hearing | the committee's own stage: Environment ST10, War ST11, National Assembly ST12, Agriculture ST13, Foreign Affairs ST14, Construction ST15, Finance ST16, Government Administration ST17, Ethics ST09 |
+| Special Committee, Cabinet and the other generic rooms | their own file |
+
+A stage that later gets its own picture (`ST33.png`) uses it automatically. A test fails if any stage resolves to no background file.
+
+## Steps
+
+| # | Step | Where |
+|---|---|---|
+| 1 | Background ID column and `ArtLoader` fallback; set it on all 97 existing topic stages | exporter, `ArtLoader.gd`, workbook |
+| 2 | Clone builder: Stages rows, Affinity columns, Assets rows | `tools/workbook/archive/batch9_*.py` |
+| 3 | Extend every table that names a base stage (opponents, questions, cues, transitions, M47) | same script |
+| 4 | Switch the 139 level slots to the clones | Levels tab |
+| 5 | 11 Office Hours stages, visitors and dilemma questions, pinned to the level slots | Visitors, Visitor Questions, `level_visitor_overrides.json` |
+| 6 | Tests: no generic stage left in a bill level (except the vote), every stage has a background, clones match their base, every clone seats people, every bill level's content is reachable | `tests/test_bill_stages.gd` |
+| 7 | Audit: `tools/content_depth.py` (three-times rule), `tools/balance_audit.sh` sweep to confirm the clones play like their families, `tools/verify.sh` | tools |
+
+## Risks and answers
+
+* **Size:** 139 stages, about 700 new rows across tables. It is generated by one script from the base rows, so every clone is mechanically identical to its family; the content audit and a sweep confirm it.
+* **Repetition:** a clone shares its family's questions and cues, plus the bill's own, so a Party Caucus on one bill looks like a Party Caucus on another except for the bill content and the name. The bill-scoped questions are dealt first (up to half), which is where the topic comes through. Writing room-specific questions per clone is a later content pass.
+* **Opponent pools:** a family with a small pool (Party Caucus seats only your own party) now serves more rooms; the people-draw already leans toward people not yet met.
+* **Committee levels:** a clone of a specific committee keeps that committee's members, so the room is "a hearing on this bill before the Committee on Finance".
+
+## Decisions already made for you
+
+Use the clone approach (not new numbers per room); canon-safe visitor titles instead of invented names; Floor Vote stage (the bill itself) keeps ST23's background. Say if you would rather retune any family first: clones copy the base row when the script runs.

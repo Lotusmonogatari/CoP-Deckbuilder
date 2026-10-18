@@ -9,7 +9,8 @@
     "low_threshold": 20,
     "low_consequence": "LV10 cannot be activated.",
     "high_threshold": 80,
-    "high_consequence": null
+    "high_consequence": null,
+    "decay_percent": 10.0
   },
   {
     "name_en": "Reputation",
@@ -21,7 +22,8 @@
     "low_threshold": 20,
     "low_consequence": "LV05 cannot activate.",
     "high_threshold": 80,
-    "high_consequence": null
+    "high_consequence": null,
+    "decay_percent": 6.0
   },
   {
     "name_en": "Funds",
@@ -33,7 +35,8 @@
     "low_threshold": 50000,
     "low_consequence": null,
     "high_threshold": 950000,
-    "high_consequence": null
+    "high_consequence": null,
+    "decay_percent": null
   },
   {
     "name_en": "Party support",
@@ -45,6 +48,7 @@
     "low_threshold": 20,
     "low_consequence": "LV08 cannot activate.",
     "high_threshold": 85,
-    "high_consequence": null
+    "high_consequence": null,
+    "decay_percent": null
   }
 ]

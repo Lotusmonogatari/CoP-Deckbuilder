@@ -1328,6 +1328,10 @@ SHEETS = {
             ("Low consequence", "low_consequence", "str"),
             ("HighThreshold", "high_threshold", "int"),
             ("High consequence", "high_consequence", "str"),
+            # 2026-10-18: percent of the distance back toward the protagonist's
+            # starting value that this variable settles each level (blank =
+            # none), so a meta value cannot climb to its ceiling and stay.
+            ("Decay Percent", "decay_percent", "num"),
         ],
     },
 }
