@@ -160,6 +160,12 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 		elif seats < 0:
 			lines.append(Text.say("outcome.behind", {"count": -seats}))
 
+	if str(stage.get("mode", "")) == "Combat":
+		var drift := GameState.stance_drift_preview()
+		if not drift.is_empty():
+			lines.append("")
+			lines.append(Text.say("outcome.stance_drift", {"changes": StanceLines.describe_changes(drift, 0)}))
+
 	var changes := _what_it_was_worth(stage, score)
 	if not changes.is_empty():
 		lines.append("")
@@ -259,7 +265,8 @@ static func booster_changes(engine: BattleEngine) -> Array[Dictionary]:
 	for entry: Dictionary in BoosterChange.compute(
 			engine.pleased_boosters(), engine.displeased_boosters(),
 			engine.crushed_opponent_boosters(), DataDB.booster_standing,
-			engine.opposed_boosters(), engine.booster_tally(), GameState.booster_standing):
+			engine.opposed_boosters(), GameState.stance_adjust_tally(engine.booster_tally()),
+			GameState.booster_standing):
 		var booster_id := str(entry["booster_id"])
 		out.append({"booster_id": booster_id,
 			"name": str(names.get(booster_id, booster_id)), "net": int(entry["net"])})

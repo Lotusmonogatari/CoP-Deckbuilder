@@ -27,6 +27,25 @@ signal chosen(card_id: String)
 ## The player dragged this card up far enough and let go: play it.
 signal flung(card_id: String)
 
+## Picked up (lifted off the hand) and put back down without playing.
+signal lifted(card_id: String)
+signal dropped(card_id: String)
+
+## Tapped once and waiting for a second tap or Read (BattleScreen).
+var selected := false:
+	set(value):
+		selected = value
+		if _read_tag != null:
+			_read_tag.visible = value
+		if not _lifting:
+			self_modulate = SELECT_TINT if value else Color.WHITE
+
+## The "Read" tag shown in the lower part of a selected card's text box:
+## tap the card again to open it.
+var _read_tag: Label = null
+
+const SELECT_TINT := Color(1.0, 0.92, 0.6)
+
 ## How far up a press must move before the card lifts, and how far it must
 ## rise before letting go plays it.
 const LIFT_START := 30.0
@@ -239,6 +258,22 @@ func _build() -> void:
 	_art_label.add_theme_font_size_override("font_size", 30)
 	add_child(_art_label)
 
+	_read_tag = Label.new()
+	place(_read_tag, Rect2(TEXT_RECT.position.x + 0.2, TEXT_RECT.position.y + TEXT_RECT.size.y - 0.048,
+		TEXT_RECT.size.x - 0.4, 0.048))
+	_read_tag.text = Text.say("battle.read_card")
+	_read_tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_read_tag.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_read_tag.add_theme_color_override("font_color", CREAM)
+	_read_tag.add_theme_font_override("font", CARD_FONT)
+	_read_tag.add_theme_font_size_override("font_size", 22)
+	var tag_box := StyleBoxFlat.new()
+	tag_box.bg_color = INK
+	tag_box.set_corner_radius_all(10)
+	_read_tag.add_theme_stylebox_override("normal", tag_box)
+	_read_tag.visible = selected
+	add_child(_read_tag)
+
 	_effect_label = Label.new()
 	place(_effect_label, TEXT_RECT)
 	_effect_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -393,6 +428,7 @@ func _gui_input(event: InputEvent) -> void:
 
 func _lift() -> void:
 	_lifting = true
+	lifted.emit(card_id)
 	_rest_y = position.y
 	z_index = 20
 	# A lift is not a tap: forget the press, so letting go does not also open
@@ -409,7 +445,8 @@ func _lift() -> void:
 func _drop(risen: float) -> void:
 	_lifting = false
 	z_index = 0
-	self_modulate = Color.WHITE
+	self_modulate = SELECT_TINT if selected else Color.WHITE
+	dropped.emit(card_id)
 	var scroll := _hand_scroll()
 	if scroll != null:
 		scroll.clip_contents = true

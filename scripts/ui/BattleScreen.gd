@@ -40,6 +40,9 @@ var engine: BattleEngine = null
 
 var _stage: Dictionary = {}
 var _selected_card_id: String = ""
+## The card tapped once, whose organisation preview is showing.
+var _previewed_card_id := ""
+var _listening: ListeningStrip = null
 
 ## False when the battle could not be set up. Everything that would touch
 ## the engine checks this first, so a stage that failed to start shows its
@@ -128,6 +131,9 @@ func _ready() -> void:
 	_hand = HandPresenter.new(%HandRow)
 	_hand.card_chosen.connect(_on_card_chosen)
 	_hand.card_flung.connect(_on_card_flung)
+	_hand.card_lifted.connect(_on_card_lifted)
+	_hand.card_dropped.connect(_on_card_dropped)
+	_build_listening()
 	_messages = MessagePresenter.new(%Notice, get_tree())
 	_outcome = OutcomePresenter.new(
 		%OutcomePanel, %OutcomeTitle, %OutcomeHeadline, %OutcomeReason, %OutcomeClose,
@@ -321,6 +327,8 @@ func _refresh() -> void:
 	_refresh_energy(state)
 	_refresh_gaffe(state)
 	_hand.show_state(engine)
+	_clear_preview()
+	_refresh_listening()
 	# The Details panel is only rebuilt while it is open (2026-10-11,
 	# performance pass): it is hidden almost all the time. Opening it fills it.
 	if _details_panel.visible:
@@ -510,6 +518,13 @@ func _refresh_details(state: BattleState) -> void:
 			"deck": state.deck.size(), "hand": state.hand.size(), "discard": state.discard.size()}),
 		"Stage: %s" % str(_stage.get("name_en", "")),
 	])
+	if not _lean().is_empty():
+		var sides := GameState.stance_sides()
+		lines.append(Text.say("battle.stance_line", {
+			"bill": str(DataDB.get_bill(_bill_id()).get("bill_name", "")),
+			"lean": StanceLines.lean_name(_lean()),
+			"with": StanceLines.names_of(BillStance.my_side(sides, _lean())),
+			"against": StanceLines.names_of(BillStance.other_side(sides, _lean()))}))
 
 	_details_text.text = "\n".join(lines)
 
@@ -645,6 +660,22 @@ static func describe_question_for(multiplier: float) -> String:
 func _on_card_chosen(card_id: String) -> void:
 	if not _ready_to_play:
 		return
+	var card := DataDB.get_card(card_id)
+	# A first tap on a card that would move organisations shows what it would
+	# do to them; a second tap, or Read, opens the card. A card that moves
+	# nobody (or a room with no question) opens straight away.
+	if _previewed_card_id != card_id:
+		var changes := OrgPreview.changes(engine, card)
+		if not changes.is_empty():
+			_previewed_card_id = card_id
+			_hand.select_only(card_id)
+			_listening.preview(changes)
+			return
+	_open_card(card_id)
+
+
+func _open_card(card_id: String) -> void:
+	_clear_preview()
 	_selected_card_id = card_id
 	var card := DataDB.get_card(card_id)
 
@@ -682,6 +713,72 @@ func _on_card_flung(card_id: String) -> void:
 	_play_selected()
 
 
+## Holding a card up shows what it would do to the listening organisations.
+func _on_card_lifted(card_id: String) -> void:
+	if not _ready_to_play:
+		return
+	_listening.preview(OrgPreview.changes(engine, DataDB.get_card(card_id)))
+
+
+func _on_card_dropped(_card_id: String) -> void:
+	# A fling plays the card and redraws; a drop back just restores the view.
+	if _previewed_card_id.is_empty():
+		_listening.clear_marks()
+	else:
+		_listening.preview(OrgPreview.changes(engine, DataDB.get_card(_previewed_card_id)))
+
+
+func _clear_preview() -> void:
+	_previewed_card_id = ""
+	if _hand != null:
+		_hand.select_only("")
+	if _listening != null:
+		_listening.clear_marks()
+
+
+## The strip of listening organisations lives in the elastic table space.
+func _build_listening() -> void:
+	var table := $Safe/Column/VSpacer as Control
+	_listening = ListeningStrip.new()
+	table.add_child(_listening)
+	_listening.hide()
+
+
+## Who is listening to this question: the organisations it pleases or sets
+## back, and any already moved this stage. Backed ones also show their tastes.
+func _refresh_listening() -> void:
+	if _listening == null or engine == null:
+		return
+	var ids: Array = []
+	var question := engine.current_question()
+	for key: String in ["pleases_boosters", "displeases_boosters"]:
+		for booster_id: String in (question.get(key, []) as Array):
+			if not ids.has(booster_id):
+				ids.append(booster_id)
+	_listening.show_listeners(ids.slice(0, 6), _tastes_for(ids))
+
+
+func _tastes_for(ids: Array) -> Dictionary:
+	var out := {}
+	var backed := GameState.backed_booster_ids()
+	var suits: Array = DataDB.suits.map(func(s: Dictionary) -> String: return str(s.get("element", "")))
+	for booster_id: String in ids:
+		if not backed.has(booster_id):
+			continue
+		var taste := BoosterSuitTendency.taste_of(DataDB.questions, booster_id, suits)
+		var likes: Array = taste["likes"]
+		var dislikes: Array = taste["dislikes"]
+		if likes.is_empty() and dislikes.is_empty():
+			continue
+		var parts: Array[String] = []
+		if not likes.is_empty():
+			parts.append(Text.say("battle.taste_likes", {"suits": ", ".join(likes)}))
+		if not dislikes.is_empty():
+			parts.append(Text.say("battle.taste_dislikes", {"suits": ", ".join(dislikes)}))
+		out[booster_id] = "\n".join(parts)
+	return out
+
+
 func _play_selected() -> void:
 	_card_zoom.hide()
 	if not _ready_to_play or _selected_card_id.is_empty():
@@ -706,6 +803,7 @@ func _play_selected() -> void:
 	# NEW opponent as who the seats were "argued away from").
 	var acting_opponent_name := OpponentPresenter.display_name(engine)
 
+	var org_changes := OrgPreview.changes(engine, DataDB.get_card(card_id))
 	var result := engine.play_card(card_id)
 	if not result.get("ok", false):
 		_messages.say(str(result.get("reason", Text.say("battle.card_refused"))))
@@ -721,6 +819,7 @@ func _play_selected() -> void:
 	result["does_nothing"] = useless
 	EventBus.card_played.emit(card_id, result)
 	_refresh()
+	_listening.flash(org_changes)
 	var applied: Dictionary = result.get("applied", {})
 	if int(applied.get("opponent_lost", 0)) > 0:
 		_speaker.flinch()
@@ -731,7 +830,8 @@ func _play_selected() -> void:
 	# workbook; a card with none written yet puts what it did on the band
 	# instead, so every card still lands with a line.
 	var cue := CardCues.for_card(
-		card_id, str(_stage.get("stage_id", "")), engine.state.turn, applied)
+		card_id, str(_stage.get("stage_id", "")), engine.state.turn, applied,
+		_bill_id(), _lean())
 	var did := BattleNarration.player_move(
 		result, _stage, engine.state, acting_opponent_name)
 	var me := str(DataDB.player.get("name_en", ""))
@@ -742,6 +842,18 @@ func _play_selected() -> void:
 		Audio.say(CardCues.speaker(), str(cue["line_id"]))
 	else:
 		_banner.say(CueBanner.PLAYER, me, did)
+
+
+## The bill the level in progress is about ("" for any other level), and the
+## lean the player took on it ("" until one is picked).
+func _bill_id() -> String:
+	return str(_stage.get("bill_id", ""))
+
+
+func _lean() -> String:
+	if _bill_id().is_empty() or str(GameState.bill_stance.get("bill_id", "")) != _bill_id():
+		return ""
+	return GameState.stance_lean()
 
 
 func _on_end_turn() -> void:
@@ -794,7 +906,7 @@ func _on_end_turn() -> void:
 	# What they SAY, from the workbook's Opponent Cues tab.
 	var move_cue := OpponentCues.for_move(
 		acting_opponent, str(opponent_result.get("verb", "")),
-		str(_stage.get("stage_id", "")), engine.state.turn)
+		str(_stage.get("stage_id", "")), engine.state.turn, -1.0, -1.0, _bill_id())
 	var has_cue := not str(move_cue["text"]).is_empty()
 
 	# What the opponent did, narrated ("Them: 3 support won over.") — ONLY

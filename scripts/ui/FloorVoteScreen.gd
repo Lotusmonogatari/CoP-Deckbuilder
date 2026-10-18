@@ -213,6 +213,21 @@ func _show_influence_and_preview() -> void:
 	preview.text = "\n".join(lines)
 	column.add_child(preview)
 
+	if not GameState.stance_lean().is_empty():
+		var stance := Label.new()
+		stance.name = "StancePreview"
+		stance.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		var stance_lines: Array[String] = [Text.say("floor_vote.stance_heading", {
+			"lean": StanceLines.lean_name(GameState.stance_lean())})]
+		for choice: String in ["Yes", "No", "Abstain"]:
+			var trial := GameState.preview_stance_vote(choice)
+			stance_lines.append(Text.say("floor_vote.stance_line", {
+				"choice": labels[choice],
+				"changes": StanceLines.describe_changes(trial.get("deltas", {}), int(trial.get("party_delta", 0))),
+				"switch": Text.say("floor_vote.stance_switch") if bool(trial.get("flip", false)) else ""}))
+		stance.text = "\n".join(stance_lines)
+		column.add_child(stance)
+
 
 ## A trigger variable as the player knows it: a booster's name, or the meta
 ## variable's own name.
@@ -329,6 +344,11 @@ func _on_vote(choice: String) -> void:
 		Text.say("record.cause_vote", {"bill": bill_name}))
 	# Into the statute book, applying the bill's own "once" Law Effects.
 	GameState.record_floor_vote(engine.bill(), result, choice)
+	var stance_result := GameState.apply_stance_vote(choice)
+	var stance_note := ""
+	if not stance_result.is_empty():
+		stance_note = Text.say("floor_vote.stance_result", {"changes": StanceLines.describe_changes(
+			stance_result.get("deltas", {}), int(stance_result.get("party_delta", 0)))})
 
 	if bool(result.get("outcome_flipped_by_influence", false)):
 		var bill_id := str(engine.bill().get("bill_id", ""))
@@ -341,10 +361,10 @@ func _on_vote(choice: String) -> void:
 			Text.say("record.cause_influence", {"bill": bill_name}))
 		GameState.record_bill_flip(bill_id)
 
-	_show_outcome(result)
+	_show_outcome(result, stance_note)
 
 
-func _show_outcome(result: Dictionary) -> void:
+func _show_outcome(result: Dictionary, stance_note: String = "") -> void:
 	# The influence note and the choice preview are moot once the vote is cast,
 	# and would show through the result panel.
 	var info := find_child("InfoScroll", true, false) as Control
@@ -357,6 +377,8 @@ func _show_outcome(result: Dictionary) -> void:
 	_outcome_body.text = Text.say("floor_vote.passed" if passed else "floor_vote.failed", {
 		"yes": totals.get("Yes", 0), "no": totals.get("No", 0), "abstain": totals.get("Abstain", 0),
 	})
+	if not stance_note.is_empty():
+		_outcome_body.text += "\n" + stance_note
 
 	_show_result_summary(result, totals, passed)
 	_bar_yes.show_segments(_segments_for(result.get("positions", []), "votes_yes"))

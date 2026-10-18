@@ -35,8 +35,15 @@ static func speaker() -> String:
 ## the card fall back to its own five Flavor Text lines, so nothing goes
 ## quiet while the new tab is being filled in.
 static func for_card(card_id: String, stage_id: String, turn: int,
-		applied: Dictionary = {}) -> Dictionary:
+		applied: Dictionary = {}, bill_id: String = "", lean: String = "") -> Dictionary:
 	var suit := str(DataDB.get_card(card_id).get("suit", ""))
+	if not suit.is_empty() and not bill_id.is_empty():
+		# A level about a bill (2026-10-18): lines written for that bill, and
+		# for the lean the player took, come before every other tier.
+		var about_bill: Array = DataDB.get_bill_player_cue_lines(bill_id, suit, verb_for(applied), lean)
+		if not about_bill.is_empty():
+			var chosen: Dictionary = about_bill[_index_for(card_id, stage_id, turn) % about_bill.size()]
+			return {"text": str(chosen.get("text", "")), "line_id": str(chosen.get("line_id", ""))}
 	if not suit.is_empty():
 		var by_suit: Array = DataDB.get_player_cue_lines(suit, verb_for(applied), stage_id)
 		if not by_suit.is_empty():

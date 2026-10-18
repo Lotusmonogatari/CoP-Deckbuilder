@@ -9,6 +9,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI01",
@@ -82,6 +84,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI02",
@@ -155,6 +159,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI03",
@@ -228,6 +234,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI04",
@@ -301,6 +309,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI05",
@@ -374,6 +384,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI06",
@@ -447,6 +459,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI07",
@@ -520,6 +534,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI08",
@@ -593,6 +609,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI09",
@@ -666,6 +684,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI10",
@@ -739,6 +759,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT04",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI11",
@@ -812,6 +834,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI12",
@@ -885,6 +909,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI13",
@@ -958,6 +984,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT04",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI14",
@@ -1031,6 +1059,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI15",
@@ -1104,6 +1134,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI16",
@@ -1177,6 +1209,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI17",
@@ -1250,6 +1284,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI18",
@@ -1323,6 +1359,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI19",
@@ -1396,6 +1434,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI20",
@@ -1469,6 +1509,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT06",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI21",
@@ -1542,6 +1584,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI22",
@@ -1615,6 +1659,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI23",
@@ -1688,6 +1734,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT06",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI24",
@@ -1761,6 +1809,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI25",
@@ -1834,6 +1884,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI26",
@@ -1907,6 +1959,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI27",
@@ -1980,6 +2034,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI28",
@@ -2053,6 +2109,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT06",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI29",
@@ -2126,6 +2184,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI30",
@@ -2199,6 +2259,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI31",
@@ -2272,6 +2334,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI32",
@@ -2345,6 +2409,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI33",
@@ -2418,6 +2484,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT06",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI34",
@@ -2491,6 +2559,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI35",
@@ -2564,6 +2634,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT06",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI36",
@@ -2637,6 +2709,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI37",
@@ -2710,6 +2784,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI38",
@@ -2783,6 +2859,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT06",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI39",
@@ -2856,6 +2934,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI40",
@@ -2929,6 +3009,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI41",
@@ -3002,6 +3084,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI42",
@@ -3075,6 +3159,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI43",
@@ -3148,6 +3234,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI44",
@@ -3221,6 +3309,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT06",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI45",
@@ -3294,6 +3384,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT01",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI46",
@@ -3367,6 +3459,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT03",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI47",
@@ -3440,6 +3534,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI48",
@@ -3513,6 +3609,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT05",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI49",
@@ -3586,6 +3684,8 @@
     "influence_bonus_reputation": null,
     "influence_bonus_party_support": null,
     "vote_requirement": null,
+    "proponent_party": "PT02",
+    "stakeholders_override": null,
     "positions": [
       {
         "bill_id": "BI50",

@@ -58,7 +58,8 @@ func _ready() -> void:
 		hired_ids.append(str(GameState.staff_hired[role].get("staff_id", "")))
 	var result := StageTransition.resolve(
 		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng, hired_ids,
-		int(DataDB.balance.get("transition_player_thought_chance", 0)))
+		int(DataDB.balance.get("transition_player_thought_chance", 0)),
+		str(_stage.get("bill_id", "")), _lean())
 
 	if result.is_empty():
 		_on_continue()
@@ -156,3 +157,11 @@ func _on_continue() -> void:
 		get_tree().quit()
 		return
 	get_tree().change_scene_to_file(StageRouting.scene_for(GameState.level_runner.current_stage()))
+
+
+## The lean taken on the level's bill ("" when this level has none).
+func _lean() -> String:
+	var bill_id := str(_stage.get("bill_id", ""))
+	if bill_id.is_empty() or str(GameState.bill_stance.get("bill_id", "")) != bill_id:
+		return ""
+	return GameState.stance_lean()

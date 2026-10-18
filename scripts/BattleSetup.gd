@@ -77,6 +77,9 @@ static func expand_level(level: Dictionary) -> Dictionary:
 		if stage.is_empty():
 			continue
 		stage["seq"] = stages.size() + 1
+		var level_bill := str(DataDB.get_floor_vote(level_id).get("bill_id", ""))
+		if not level_bill.is_empty() and not stage.has("bill_id"):
+			stage["bill_id"] = level_bill
 		stages.append(stage)
 
 	var expanded := level.duplicate(true)
@@ -172,10 +175,26 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 	# pool's size (20) there made the press conference deal 20 questions
 	# against its 5-turn clock — "Question 6 of 20" on screen, then a loss
 	# on time with the questions nowhere near done.
+	# A level about a bill (2026-10-18) carries the bill's ID on its Combat
+	# stages, so the questions and lines written about that bill reach them.
+	var bill_id := str(DataDB.get_floor_vote(level_id).get("bill_id", ""))
+	if not bill_id.is_empty():
+		stage["bill_id"] = bill_id
 	stage["question_pool_size"] = (DataDB.questions.get(_question_pool_name(stage, stage_id), []).size()
-		+ DataDB.get_stage_questions(stage_id).size())
+		+ DataDB.get_stage_questions(stage_id).size() + bill_questions_for(bill_id, stage_id).size())
 
 	return stage
+
+
+## The questions written about a bill (Stage Questions rows with a Bill ID)
+## that this stage may ask: all of them, or only those whose Stage ID cell also
+## names this stage.
+static func bill_questions_for(bill_id: String, stage_id: String) -> Array:
+	if bill_id.is_empty():
+		return []
+	return DataDB.get_bill_questions(bill_id).filter(func(question: Dictionary) -> bool:
+		var named: Variant = question.get("stage_ids")
+		return not (named is Array) or (named as Array).is_empty() or (named as Array).has(stage_id))
 
 
 ## The same enrichment, for a stage forced into an ALREADY-RUNNING level by
@@ -565,6 +584,11 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 		# 2026-10-12): dealt before the room's own pool, and the only
 		# questions a stage with no room pool (a committee) asks.
 		"question_pool_first": questions_for_room(DataDB.get_stage_questions(stage_id), stage_id),
+		# Questions about the bill this level votes on (Bill ID column,
+		# 2026-10-18): up to bill_question_share_percent of the room's questions.
+		"question_pool_bill": questions_for_room(
+			bill_questions_for(str(stage.get("bill_id", "")), stage_id), stage_id),
+		"bill_question_share_percent": int(DataDB.balance.get("bill_question_share_percent", 50)),
 		# How often a weak answer actually costs tone (§9/§8, 2026-09-28,
 		# Cameron: 0.75) — the same number across every question-asking
 		# stage, rather than one per stage type. Defaults to 1.0 (always

@@ -16154,6 +16154,4926 @@
         "ST98"
       ],
       "asked_by": "OP33"
+    },
+    {
+      "id": "S365",
+      "text": "Who pays for the Ainu Heritage and Language Act, and why is that fair?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI01"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S366",
+      "text": "Is the Ainu Heritage and Language Act solving a real problem, or creating a new one?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI01"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S367",
+      "text": "Critics say the Ainu Heritage and Language Act goes too far. What do you tell them?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI01"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S368",
+      "text": "Backers say the Ainu Heritage and Language Act does not go far enough. Where do you stand?",
+      "theme": "Ainu Heritage and Language Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO29"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI01"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S369",
+      "text": "Who pays for the Agricultural Price Stabilization Act, and why is that fair?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI02"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S370",
+      "text": "Is the Agricultural Price Stabilization Act solving a real problem, or creating a new one?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI02"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S371",
+      "text": "Critics say the Agricultural Price Stabilization Act goes too far. What do you tell them?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI02"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S372",
+      "text": "Backers say the Agricultural Price Stabilization Act does not go far enough. Where do you stand?",
+      "theme": "Agricultural Price Stabilization Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI02"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S373",
+      "text": "Who pays for the Special Economic Zones Act, and why is that fair?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI03"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S374",
+      "text": "Is the Special Economic Zones Act solving a real problem, or creating a new one?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI03"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S375",
+      "text": "Critics say the Special Economic Zones Act goes too far. What do you tell them?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI03"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S376",
+      "text": "Backers say the Special Economic Zones Act does not go far enough. Where do you stand?",
+      "theme": "Special Economic Zones Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI03"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S377",
+      "text": "Who pays for the Hokkaido Shinkansen Acceleration Act, and why is that fair?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI04"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S378",
+      "text": "Is the Hokkaido Shinkansen Acceleration Act solving a real problem, or creating a new one?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI04"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S379",
+      "text": "Critics say the Hokkaido Shinkansen Acceleration Act goes too far. What do you tell them?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI04"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S380",
+      "text": "Backers say the Hokkaido Shinkansen Acceleration Act does not go far enough. Where do you stand?",
+      "theme": "Hokkaido Shinkansen Acceleration Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO05",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI04"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S381",
+      "text": "Who pays for the Chishima Coastal Defense Modernization Act, and why is that fair?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI05"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S382",
+      "text": "Is the Chishima Coastal Defense Modernization Act solving a real problem, or creating a new one?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI05"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S383",
+      "text": "Critics say the Chishima Coastal Defense Modernization Act goes too far. What do you tell them?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI05"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S384",
+      "text": "Backers say the Chishima Coastal Defense Modernization Act does not go far enough. Where do you stand?",
+      "theme": "Chishima Coastal Defense Modernization Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI05"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S385",
+      "text": "Who pays for the Specified Skilled Worker Visa Act, and why is that fair?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI06"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S386",
+      "text": "Is the Specified Skilled Worker Visa Act solving a real problem, or creating a new one?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI06"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S387",
+      "text": "Critics say the Specified Skilled Worker Visa Act goes too far. What do you tell them?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI06"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S388",
+      "text": "Backers say the Specified Skilled Worker Visa Act does not go far enough. Where do you stand?",
+      "theme": "Specified Skilled Worker Visa Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI06"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S389",
+      "text": "Who pays for the Grid Resilience and Renewable Energy Act, and why is that fair?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI07"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S390",
+      "text": "Is the Grid Resilience and Renewable Energy Act solving a real problem, or creating a new one?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI07"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S391",
+      "text": "Critics say the Grid Resilience and Renewable Energy Act goes too far. What do you tell them?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI07"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S392",
+      "text": "Backers say the Grid Resilience and Renewable Energy Act does not go far enough. Where do you stand?",
+      "theme": "Grid Resilience and Renewable Energy Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI07"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S393",
+      "text": "Who pays for the Consumption Tax Rate Act, and why is that fair?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI08"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S394",
+      "text": "Is the Consumption Tax Rate Act solving a real problem, or creating a new one?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI08"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S395",
+      "text": "Critics say the Consumption Tax Rate Act goes too far. What do you tell them?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI08"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S396",
+      "text": "Backers say the Consumption Tax Rate Act does not go far enough. Where do you stand?",
+      "theme": "Consumption Tax Rate Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO21"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI08"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S397",
+      "text": "Who pays for the Prefectural Fiscal Devolution Act, and why is that fair?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI09"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S398",
+      "text": "Is the Prefectural Fiscal Devolution Act solving a real problem, or creating a new one?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI09"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S399",
+      "text": "Critics say the Prefectural Fiscal Devolution Act goes too far. What do you tell them?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI09"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S400",
+      "text": "Backers say the Prefectural Fiscal Devolution Act does not go far enough. Where do you stand?",
+      "theme": "Prefectural Fiscal Devolution Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO04",
+        "BO23",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI09"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S401",
+      "text": "Who pays for the Candidate Gender Parity Act, and why is that fair?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI10"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S402",
+      "text": "Is the Candidate Gender Parity Act solving a real problem, or creating a new one?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI10"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S403",
+      "text": "Critics say the Candidate Gender Parity Act goes too far. What do you tell them?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI10"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S404",
+      "text": "Backers say the Candidate Gender Parity Act does not go far enough. Where do you stand?",
+      "theme": "Candidate Gender Parity Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI10"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S405",
+      "text": "Who pays for the Tsugaru Strait Joint Commission Act, and why is that fair?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "bill_ids": [
+        "BI11"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S406",
+      "text": "Is the Tsugaru Strait Joint Commission Act solving a real problem, or creating a new one?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "bill_ids": [
+        "BI11"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S407",
+      "text": "Critics say the Tsugaru Strait Joint Commission Act goes too far. What do you tell them?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "bill_ids": [
+        "BI11"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S408",
+      "text": "Backers say the Tsugaru Strait Joint Commission Act does not go far enough. Where do you stand?",
+      "theme": "Tsugaru Strait Joint Commission Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO14"
+      ],
+      "bill_ids": [
+        "BI11"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S409",
+      "text": "Who pays for the Judicial Appointments Commission Act, and why is that fair?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "bill_ids": [
+        "BI12"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S410",
+      "text": "Is the Judicial Appointments Commission Act solving a real problem, or creating a new one?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "bill_ids": [
+        "BI12"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S411",
+      "text": "Critics say the Judicial Appointments Commission Act goes too far. What do you tell them?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "bill_ids": [
+        "BI12"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S412",
+      "text": "Backers say the Judicial Appointments Commission Act does not go far enough. Where do you stand?",
+      "theme": "Judicial Appointments Commission Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08",
+        "BO26"
+      ],
+      "bill_ids": [
+        "BI12"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S413",
+      "text": "Who pays for the Temple and Shrine Heritage Act, and why is that fair?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI13"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S414",
+      "text": "Is the Temple and Shrine Heritage Act solving a real problem, or creating a new one?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI13"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S415",
+      "text": "Critics say the Temple and Shrine Heritage Act goes too far. What do you tell them?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI13"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S416",
+      "text": "Backers say the Temple and Shrine Heritage Act does not go far enough. Where do you stand?",
+      "theme": "Temple and Shrine Heritage Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO19",
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI13"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S417",
+      "text": "Who pays for the Constituency Development Grants Act, and why is that fair?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI14"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S418",
+      "text": "Is the Constituency Development Grants Act solving a real problem, or creating a new one?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI14"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S419",
+      "text": "Critics say the Constituency Development Grants Act goes too far. What do you tell them?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI14"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S420",
+      "text": "Backers say the Constituency Development Grants Act does not go far enough. Where do you stand?",
+      "theme": "Constituency Development Grants Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17",
+        "BO18",
+        "BO06",
+        "BO03"
+      ],
+      "displeases_boosters": [
+        "BO23",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI14"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S421",
+      "text": "Who pays for the Digital Economy Promotion Act, and why is that fair?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI15"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S422",
+      "text": "Is the Digital Economy Promotion Act solving a real problem, or creating a new one?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI15"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S423",
+      "text": "Critics say the Digital Economy Promotion Act goes too far. What do you tell them?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI15"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S424",
+      "text": "Backers say the Digital Economy Promotion Act does not go far enough. Where do you stand?",
+      "theme": "Digital Economy Promotion Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI15"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S425",
+      "text": "Who pays for the Organized Crime Conspiracy Act, and why is that fair?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "bill_ids": [
+        "BI16"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S426",
+      "text": "Is the Organized Crime Conspiracy Act solving a real problem, or creating a new one?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "bill_ids": [
+        "BI16"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S427",
+      "text": "Critics say the Organized Crime Conspiracy Act goes too far. What do you tell them?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "bill_ids": [
+        "BI16"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S428",
+      "text": "Backers say the Organized Crime Conspiracy Act does not go far enough. Where do you stand?",
+      "theme": "Organized Crime Conspiracy Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO24"
+      ],
+      "bill_ids": [
+        "BI16"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S429",
+      "text": "Who pays for the Partnership Registration Act, and why is that fair?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI17"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S430",
+      "text": "Is the Partnership Registration Act solving a real problem, or creating a new one?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI17"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S431",
+      "text": "Critics say the Partnership Registration Act goes too far. What do you tell them?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI17"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S432",
+      "text": "Backers say the Partnership Registration Act does not go far enough. Where do you stand?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI17"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S433",
+      "text": "Who pays for the National Emergency Powers Act, and why is that fair?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI18"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S434",
+      "text": "Is the National Emergency Powers Act solving a real problem, or creating a new one?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI18"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S435",
+      "text": "Critics say the National Emergency Powers Act goes too far. What do you tell them?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI18"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S436",
+      "text": "Backers say the National Emergency Powers Act does not go far enough. Where do you stand?",
+      "theme": "National Emergency Powers Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI18"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S437",
+      "text": "Who pays for the Yezo–US Security Consultation Agreement, and why is that fair?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI19"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S438",
+      "text": "Is the Yezo–US Security Consultation Agreement solving a real problem, or creating a new one?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI19"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S439",
+      "text": "Critics say the Yezo–US Security Consultation Agreement goes too far. What do you tell them?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI19"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S440",
+      "text": "Backers say the Yezo–US Security Consultation Agreement does not go far enough. Where do you stand?",
+      "theme": "Yezo–US Security Consultation Agreement debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22"
+      ],
+      "displeases_boosters": [
+        "BO09"
+      ],
+      "bill_ids": [
+        "BI19"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S441",
+      "text": "Who pays for the Yezo–EU Economic Partnership Agreement, and why is that fair?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "bill_ids": [
+        "BI20"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S442",
+      "text": "Is the Yezo–EU Economic Partnership Agreement solving a real problem, or creating a new one?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "bill_ids": [
+        "BI20"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S443",
+      "text": "Critics say the Yezo–EU Economic Partnership Agreement goes too far. What do you tell them?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "bill_ids": [
+        "BI20"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S444",
+      "text": "Backers say the Yezo–EU Economic Partnership Agreement does not go far enough. Where do you stand?",
+      "theme": "Yezo–EU Economic Partnership Agreement debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "bill_ids": [
+        "BI20"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S445",
+      "text": "Who pays for the Strategic Land and Port Screening Act, and why is that fair?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI21"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S446",
+      "text": "Is the Strategic Land and Port Screening Act solving a real problem, or creating a new one?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI21"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S447",
+      "text": "Critics say the Strategic Land and Port Screening Act goes too far. What do you tell them?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI21"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S448",
+      "text": "Backers say the Strategic Land and Port Screening Act does not go far enough. Where do you stand?",
+      "theme": "Strategic Land and Port Screening Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO07"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI21"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S449",
+      "text": "Who pays for the Inbound Tourism Visa Waiver Act, and why is that fair?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI22"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S450",
+      "text": "Is the Inbound Tourism Visa Waiver Act solving a real problem, or creating a new one?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI22"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S451",
+      "text": "Critics say the Inbound Tourism Visa Waiver Act goes too far. What do you tell them?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI22"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S452",
+      "text": "Backers say the Inbound Tourism Visa Waiver Act does not go far enough. Where do you stand?",
+      "theme": "Inbound Tourism Visa Waiver Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO25",
+        "BO13"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI22"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S453",
+      "text": "Who pays for the Chishima Joint Economic Activity Act, and why is that fair?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI23"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S454",
+      "text": "Is the Chishima Joint Economic Activity Act solving a real problem, or creating a new one?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI23"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S455",
+      "text": "Critics say the Chishima Joint Economic Activity Act goes too far. What do you tell them?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI23"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S456",
+      "text": "Backers say the Chishima Joint Economic Activity Act does not go far enough. Where do you stand?",
+      "theme": "Chishima Joint Economic Activity Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI23"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S457",
+      "text": "Who pays for the Tomari Nuclear Restart Act, and why is that fair?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI24"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S458",
+      "text": "Is the Tomari Nuclear Restart Act solving a real problem, or creating a new one?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI24"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S459",
+      "text": "Critics say the Tomari Nuclear Restart Act goes too far. What do you tell them?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI24"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S460",
+      "text": "Backers say the Tomari Nuclear Restart Act does not go far enough. Where do you stand?",
+      "theme": "Tomari Nuclear Restart Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI24"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S461",
+      "text": "Who pays for the Integrated Resort Act, and why is that fair?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "bill_ids": [
+        "BI25"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S462",
+      "text": "Is the Integrated Resort Act solving a real problem, or creating a new one?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "bill_ids": [
+        "BI25"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S463",
+      "text": "Critics say the Integrated Resort Act goes too far. What do you tell them?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "bill_ids": [
+        "BI25"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S464",
+      "text": "Backers say the Integrated Resort Act does not go far enough. Where do you stand?",
+      "theme": "Integrated Resort Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO25",
+        "BO23",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO19"
+      ],
+      "bill_ids": [
+        "BI25"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S465",
+      "text": "Who pays for the Civil Service Merit Act, and why is that fair?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI26"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S466",
+      "text": "Is the Civil Service Merit Act solving a real problem, or creating a new one?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI26"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S467",
+      "text": "Critics say the Civil Service Merit Act goes too far. What do you tell them?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI26"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S468",
+      "text": "Backers say the Civil Service Merit Act does not go far enough. Where do you stand?",
+      "theme": "Civil Service Merit Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO03"
+      ],
+      "bill_ids": [
+        "BI26"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S469",
+      "text": "Who pays for the Regional Minimum Wage Act, and why is that fair?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI27"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S470",
+      "text": "Is the Regional Minimum Wage Act solving a real problem, or creating a new one?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI27"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S471",
+      "text": "Critics say the Regional Minimum Wage Act goes too far. What do you tell them?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI27"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S472",
+      "text": "Backers say the Regional Minimum Wage Act does not go far enough. Where do you stand?",
+      "theme": "Regional Minimum Wage Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI27"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S473",
+      "text": "Who pays for the Independent Election Commission Act, and why is that fair?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI28"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S474",
+      "text": "Is the Independent Election Commission Act solving a real problem, or creating a new one?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI28"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S475",
+      "text": "Critics say the Independent Election Commission Act goes too far. What do you tell them?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI28"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S476",
+      "text": "Backers say the Independent Election Commission Act does not go far enough. Where do you stand?",
+      "theme": "Independent Election Commission Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI28"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S477",
+      "text": "Who pays for the Moral Education Curriculum Act, and why is that fair?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI29"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S478",
+      "text": "Is the Moral Education Curriculum Act solving a real problem, or creating a new one?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI29"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S479",
+      "text": "Critics say the Moral Education Curriculum Act goes too far. What do you tell them?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI29"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S480",
+      "text": "Backers say the Moral Education Curriculum Act does not go far enough. Where do you stand?",
+      "theme": "Moral Education Curriculum Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO15",
+        "BO20",
+        "BO19"
+      ],
+      "displeases_boosters": [
+        "BO27",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI29"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S481",
+      "text": "Who pays for the Foreign Resident Local Suffrage Act, and why is that fair?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI30"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S482",
+      "text": "Is the Foreign Resident Local Suffrage Act solving a real problem, or creating a new one?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI30"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S483",
+      "text": "Critics say the Foreign Resident Local Suffrage Act goes too far. What do you tell them?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI30"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S484",
+      "text": "Backers say the Foreign Resident Local Suffrage Act does not go far enough. Where do you stand?",
+      "theme": "Foreign Resident Local Suffrage Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI30"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S485",
+      "text": "Who pays for the Wilderness and Wildlife Protection Act, and why is that fair?",
+      "theme": "Wilderness and Wildlife Protection Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI31"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S486",
+      "text": "Is the Wilderness and Wildlife Protection Act solving a real problem, or creating a new one?",
+      "theme": "Wilderness and Wildlife Protection Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI31"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S487",
+      "text": "Critics say the Wilderness and Wildlife Protection Act goes too far. What do you tell them?",
+      "theme": "Wilderness and Wildlife Protection Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI31"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S488",
+      "text": "Backers say the Wilderness and Wildlife Protection Act does not go far enough. Where do you stand?",
+      "theme": "Wilderness and Wildlife Protection Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO28",
+        "BO20"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI31"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S489",
+      "text": "Who pays for the Rural Hospital Network Act, and why is that fair?",
+      "theme": "Rural Hospital Network Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI32"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S490",
+      "text": "Is the Rural Hospital Network Act solving a real problem, or creating a new one?",
+      "theme": "Rural Hospital Network Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI32"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S491",
+      "text": "Critics say the Rural Hospital Network Act goes too far. What do you tell them?",
+      "theme": "Rural Hospital Network Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI32"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S492",
+      "text": "Backers say the Rural Hospital Network Act does not go far enough. Where do you stand?",
+      "theme": "Rural Hospital Network Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO30",
+        "BO21",
+        "BO04"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI32"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S493",
+      "text": "Who pays for the Digital Identity Card Act, and why is that fair?",
+      "theme": "Digital Identity Card Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI33"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S494",
+      "text": "Is the Digital Identity Card Act solving a real problem, or creating a new one?",
+      "theme": "Digital Identity Card Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI33"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S495",
+      "text": "Critics say the Digital Identity Card Act goes too far. What do you tell them?",
+      "theme": "Digital Identity Card Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI33"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S496",
+      "text": "Backers say the Digital Identity Card Act does not go far enough. Where do you stand?",
+      "theme": "Digital Identity Card Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI33"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S497",
+      "text": "Who pays for the Public Broadcasting Independence Act, and why is that fair?",
+      "theme": "Public Broadcasting Independence Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI34"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S498",
+      "text": "Is the Public Broadcasting Independence Act solving a real problem, or creating a new one?",
+      "theme": "Public Broadcasting Independence Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI34"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S499",
+      "text": "Critics say the Public Broadcasting Independence Act goes too far. What do you tell them?",
+      "theme": "Public Broadcasting Independence Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI34"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S500",
+      "text": "Backers say the Public Broadcasting Independence Act does not go far enough. Where do you stand?",
+      "theme": "Public Broadcasting Independence Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO08"
+      ],
+      "bill_ids": [
+        "BI34"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S501",
+      "text": "Who pays for the Political Donation Transparency Act, and why is that fair?",
+      "theme": "Political Donation Transparency Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI35"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S502",
+      "text": "Is the Political Donation Transparency Act solving a real problem, or creating a new one?",
+      "theme": "Political Donation Transparency Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI35"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S503",
+      "text": "Critics say the Political Donation Transparency Act goes too far. What do you tell them?",
+      "theme": "Political Donation Transparency Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI35"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S504",
+      "text": "Backers say the Political Donation Transparency Act does not go far enough. Where do you stand?",
+      "theme": "Political Donation Transparency Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO26",
+        "BO23",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI35"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S505",
+      "text": "Who pays for the Corporate Tax Reduction Act, and why is that fair?",
+      "theme": "Corporate Tax Reduction Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI36"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S506",
+      "text": "Is the Corporate Tax Reduction Act solving a real problem, or creating a new one?",
+      "theme": "Corporate Tax Reduction Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI36"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S507",
+      "text": "Critics say the Corporate Tax Reduction Act goes too far. What do you tell them?",
+      "theme": "Corporate Tax Reduction Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI36"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S508",
+      "text": "Backers say the Corporate Tax Reduction Act does not go far enough. Where do you stand?",
+      "theme": "Corporate Tax Reduction Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05",
+        "BO25",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO21",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI36"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S509",
+      "text": "Who pays for the Carbon Levy Act, and why is that fair?",
+      "theme": "Carbon Levy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI37"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S510",
+      "text": "Is the Carbon Levy Act solving a real problem, or creating a new one?",
+      "theme": "Carbon Levy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI37"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S511",
+      "text": "Critics say the Carbon Levy Act goes too far. What do you tell them?",
+      "theme": "Carbon Levy Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI37"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S512",
+      "text": "Backers say the Carbon Levy Act does not go far enough. Where do you stand?",
+      "theme": "Carbon Levy Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO24",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI37"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S513",
+      "text": "Who pays for the Fisheries Quota Modernization Act, and why is that fair?",
+      "theme": "Fisheries Quota Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI38"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S514",
+      "text": "Is the Fisheries Quota Modernization Act solving a real problem, or creating a new one?",
+      "theme": "Fisheries Quota Modernization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI38"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S515",
+      "text": "Critics say the Fisheries Quota Modernization Act goes too far. What do you tell them?",
+      "theme": "Fisheries Quota Modernization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI38"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S516",
+      "text": "Backers say the Fisheries Quota Modernization Act does not go far enough. Where do you stand?",
+      "theme": "Fisheries Quota Modernization Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO07",
+        "BO26"
+      ],
+      "displeases_boosters": [
+        "BO25"
+      ],
+      "bill_ids": [
+        "BI38"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S517",
+      "text": "Who pays for the Shipbuilding and Defense Industry Act, and why is that fair?",
+      "theme": "Shipbuilding and Defense Industry Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI39"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S518",
+      "text": "Is the Shipbuilding and Defense Industry Act solving a real problem, or creating a new one?",
+      "theme": "Shipbuilding and Defense Industry Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI39"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S519",
+      "text": "Critics say the Shipbuilding and Defense Industry Act goes too far. What do you tell them?",
+      "theme": "Shipbuilding and Defense Industry Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI39"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S520",
+      "text": "Backers say the Shipbuilding and Defense Industry Act does not go far enough. Where do you stand?",
+      "theme": "Shipbuilding and Defense Industry Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO15",
+        "BO09",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI39"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S521",
+      "text": "Who pays for the Constitutional Review Commission Act, and why is that fair?",
+      "theme": "Constitutional Review Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI40"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S522",
+      "text": "Is the Constitutional Review Commission Act solving a real problem, or creating a new one?",
+      "theme": "Constitutional Review Commission Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI40"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S523",
+      "text": "Critics say the Constitutional Review Commission Act goes too far. What do you tell them?",
+      "theme": "Constitutional Review Commission Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI40"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S524",
+      "text": "Backers say the Constitutional Review Commission Act does not go far enough. Where do you stand?",
+      "theme": "Constitutional Review Commission Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI40"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S525",
+      "text": "Who pays for the Japan Customs and Border Cooperation Act, and why is that fair?",
+      "theme": "Japan Customs and Border Cooperation Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO28",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI41"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S526",
+      "text": "Is the Japan Customs and Border Cooperation Act solving a real problem, or creating a new one?",
+      "theme": "Japan Customs and Border Cooperation Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO28",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI41"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S527",
+      "text": "Critics say the Japan Customs and Border Cooperation Act goes too far. What do you tell them?",
+      "theme": "Japan Customs and Border Cooperation Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO28",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI41"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S528",
+      "text": "Backers say the Japan Customs and Border Cooperation Act does not go far enough. Where do you stand?",
+      "theme": "Japan Customs and Border Cooperation Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO28",
+        "BO15"
+      ],
+      "bill_ids": [
+        "BI41"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S529",
+      "text": "Who pays for the Chishima Resource Development Agreement Act, and why is that fair?",
+      "theme": "Chishima Resource Development Agreement Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "bill_ids": [
+        "BI42"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S530",
+      "text": "Is the Chishima Resource Development Agreement Act solving a real problem, or creating a new one?",
+      "theme": "Chishima Resource Development Agreement Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "bill_ids": [
+        "BI42"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S531",
+      "text": "Critics say the Chishima Resource Development Agreement Act goes too far. What do you tell them?",
+      "theme": "Chishima Resource Development Agreement Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "bill_ids": [
+        "BI42"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S532",
+      "text": "Backers say the Chishima Resource Development Agreement Act does not go far enough. Where do you stand?",
+      "theme": "Chishima Resource Development Agreement Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "bill_ids": [
+        "BI42"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S533",
+      "text": "Who pays for the Yezo–China Trade Normalization Act, and why is that fair?",
+      "theme": "Yezo–China Trade Normalization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI43"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S534",
+      "text": "Is the Yezo–China Trade Normalization Act solving a real problem, or creating a new one?",
+      "theme": "Yezo–China Trade Normalization Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI43"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S535",
+      "text": "Critics say the Yezo–China Trade Normalization Act goes too far. What do you tell them?",
+      "theme": "Yezo–China Trade Normalization Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI43"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S536",
+      "text": "Backers say the Yezo–China Trade Normalization Act does not go far enough. Where do you stand?",
+      "theme": "Yezo–China Trade Normalization Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO05",
+        "BO26",
+        "BO25"
+      ],
+      "displeases_boosters": [
+        "BO22",
+        "BO13"
+      ],
+      "bill_ids": [
+        "BI43"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S537",
+      "text": "Who pays for the Farm Succession Support Act, and why is that fair?",
+      "theme": "Farm Succession Support Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI44"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S538",
+      "text": "Is the Farm Succession Support Act solving a real problem, or creating a new one?",
+      "theme": "Farm Succession Support Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI44"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S539",
+      "text": "Critics say the Farm Succession Support Act goes too far. What do you tell them?",
+      "theme": "Farm Succession Support Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI44"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S540",
+      "text": "Backers say the Farm Succession Support Act does not go far enough. Where do you stand?",
+      "theme": "Farm Succession Support Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO10",
+        "BO30",
+        "BO15"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "bill_ids": [
+        "BI44"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S541",
+      "text": "Who pays for the University Autonomy and Research Funding Act, and why is that fair?",
+      "theme": "University Autonomy and Research Funding Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI45"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S542",
+      "text": "Is the University Autonomy and Research Funding Act solving a real problem, or creating a new one?",
+      "theme": "University Autonomy and Research Funding Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI45"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S543",
+      "text": "Critics say the University Autonomy and Research Funding Act goes too far. What do you tell them?",
+      "theme": "University Autonomy and Research Funding Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI45"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S544",
+      "text": "Backers say the University Autonomy and Research Funding Act does not go far enough. Where do you stand?",
+      "theme": "University Autonomy and Research Funding Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "bill_ids": [
+        "BI45"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S545",
+      "text": "Who pays for the Workplace Equality Act, and why is that fair?",
+      "theme": "Workplace Equality Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI46"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S546",
+      "text": "Is the Workplace Equality Act solving a real problem, or creating a new one?",
+      "theme": "Workplace Equality Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI46"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S547",
+      "text": "Critics say the Workplace Equality Act goes too far. What do you tell them?",
+      "theme": "Workplace Equality Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI46"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S548",
+      "text": "Backers say the Workplace Equality Act does not go far enough. Where do you stand?",
+      "theme": "Workplace Equality Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO09",
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO05"
+      ],
+      "bill_ids": [
+        "BI46"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S549",
+      "text": "Who pays for the Parental Leave and Childcare Act, and why is that fair?",
+      "theme": "Parental Leave and Childcare Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI47"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S550",
+      "text": "Is the Parental Leave and Childcare Act solving a real problem, or creating a new one?",
+      "theme": "Parental Leave and Childcare Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI47"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S551",
+      "text": "Critics say the Parental Leave and Childcare Act goes too far. What do you tell them?",
+      "theme": "Parental Leave and Childcare Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI47"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S552",
+      "text": "Backers say the Parental Leave and Childcare Act does not go far enough. Where do you stand?",
+      "theme": "Parental Leave and Childcare Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO12",
+        "BO21",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO25",
+        "BO16"
+      ],
+      "bill_ids": [
+        "BI47"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S553",
+      "text": "Who pays for the Public Safety Surveillance Act, and why is that fair?",
+      "theme": "Public Safety Surveillance Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI48"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S554",
+      "text": "Is the Public Safety Surveillance Act solving a real problem, or creating a new one?",
+      "theme": "Public Safety Surveillance Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI48"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S555",
+      "text": "Critics say the Public Safety Surveillance Act goes too far. What do you tell them?",
+      "theme": "Public Safety Surveillance Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI48"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S556",
+      "text": "Backers say the Public Safety Surveillance Act does not go far enough. Where do you stand?",
+      "theme": "Public Safety Surveillance Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO22",
+        "BO27",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO26",
+        "BO11"
+      ],
+      "bill_ids": [
+        "BI48"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S557",
+      "text": "Who pays for the Local Government Mergers Act, and why is that fair?",
+      "theme": "Local Government Mergers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI49"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S558",
+      "text": "Is the Local Government Mergers Act solving a real problem, or creating a new one?",
+      "theme": "Local Government Mergers Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI49"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S559",
+      "text": "Critics say the Local Government Mergers Act goes too far. What do you tell them?",
+      "theme": "Local Government Mergers Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI49"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S560",
+      "text": "Backers say the Local Government Mergers Act does not go far enough. Where do you stand?",
+      "theme": "Local Government Mergers Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23",
+        "BO05"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO18"
+      ],
+      "bill_ids": [
+        "BI49"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S561",
+      "text": "Who pays for the Party Leadership Selection Act, and why is that fair?",
+      "theme": "Party Leadership Selection Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI50"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S562",
+      "text": "Is the Party Leadership Selection Act solving a real problem, or creating a new one?",
+      "theme": "Party Leadership Selection Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI50"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S563",
+      "text": "Critics say the Party Leadership Selection Act goes too far. What do you tell them?",
+      "theme": "Party Leadership Selection Act debate",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI50"
+      ],
+      "stage_ids": []
+    },
+    {
+      "id": "S564",
+      "text": "Backers say the Party Leadership Selection Act does not go far enough. Where do you stand?",
+      "theme": "Party Leadership Selection Act debate",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08"
+      ],
+      "displeases_boosters": [
+        "BO17"
+      ],
+      "bill_ids": [
+        "BI50"
+      ],
+      "stage_ids": []
     }
   ]
 }

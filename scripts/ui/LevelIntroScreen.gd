@@ -133,6 +133,8 @@ func _show_player_speaker() -> void:
 
 func _show_lean_choice() -> void:
 	_lean_shown = true
+	_stance_note().text = "\n".join(StanceLines.intro_lines(_bill))
+	_stance_note().visible = not _stance_note().text.is_empty()
 	var own_party := DataDB.get_party(str(DataDB.player.get("party", "")))
 	var leader_id := str(own_party.get("leader_opp_id", ""))
 	_support_portrait.art_id = leader_id
@@ -156,6 +158,8 @@ func _on_lean_chosen(lean: String) -> void:
 			own_position = position
 			break
 
+	GameState.set_bill_lean(str(_bill.get("bill_id", "")), lean)
+
 	var magnitude := int(DataDB.balance.get("lean_party_support_delta", 0))
 	var delta := BillLean.party_support_delta(own_position, lean, magnitude)
 	if delta != 0:
@@ -163,6 +167,8 @@ func _on_lean_chosen(lean: String) -> void:
 			Text.say("record.cause_lean", {"bill": str(_bill.get("bill_name", ""))}))
 
 	_lean_row.visible = false
+	_stance_note().text = StanceLines.stance_line()
+	_stance_note().visible = not _stance_note().text.is_empty()
 	_continue_button.disabled = false
 
 
@@ -171,3 +177,19 @@ func _on_continue() -> void:
 		get_tree().quit()
 		return
 	get_tree().change_scene_to_file(StageRouting.scene_for(GameState.level_runner.current_stage()))
+
+
+## The label above the lean boxes: whose bill it is and where the player's
+## party stands, then (once a lean is picked) the stance and who is with and
+## against the player. Built on first use.
+func _stance_note() -> Label:
+	var note := _lean_row.get_parent().get_node_or_null("StanceNote") as Label
+	if note == null:
+		note = Label.new()
+		note.name = "StanceNote"
+		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		note.visible = false
+		_lean_row.get_parent().add_child(note)
+		_lean_row.get_parent().move_child(note, _lean_row.get_index())
+	return note

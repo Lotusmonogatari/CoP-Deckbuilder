@@ -474,3 +474,16 @@ A 21-room, 6-bill draft was audited against the live workbook and code. What it 
 ---
 
 **Editing tool.** To change the workbook programmatically use `tools/workbook/wbx.py` (raw-XML, never openpyxl save); see `tools/workbook/README.md`. The scripts that generated each earlier content batch are archived under `tools/workbook/archive/` as worked examples.
+
+## 2.10 Bill-scoped content (added 2026-10-18)
+
+A bill level can have content that belongs to that bill alone. Fill the optional **Bill ID** cell (and **Stance**, Support or Oppose, blank = both) on:
+
+| Tab | Effect |
+|---|---|
+| Stage Questions | Leave Stage ID blank and set Bill ID: the question is dealt in any Combat room of that bill's level, first, up to half the questions the room asks |
+| Player Cues | Played in that level's rooms, chosen by the lean the player took (Stance), before the room and general cues |
+| Opponent Cues | Suit-keyed (or Opponent ID) lines about the bill, tried before every other tier |
+| Transition Dialogue | Staff, opponent or PLAYER lines for that bill, filtered by Stance; bill rows are preferred over general ones |
+
+Write cue and question lines so they work whoever speaks them: a Support line is the player arguing for the bill, an Oppose line against it; opponent lines should probe, not state a party position (the opponent's own stance is not tied to the player's lean). Floor Vote Bills also takes **Proponent Party** (who introduced the bill) and an optional **Stakeholders Override** (`BO05+; BO28-`) if the winners and losers derived from Law Effects (Passed) are wrong. `tools/workbook/archive/batch4_bill_content_2026-10-18.py` is a worked example.

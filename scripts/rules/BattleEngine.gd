@@ -150,7 +150,9 @@ func setup(config: Dictionary) -> bool:
 	_questions = _stage.get("questions", [])
 	if _questions.is_empty():
 		_questions = _draw_questions(config.get("question_pool", []),
-			config.get("question_pool_first", []))
+			config.get("question_pool_first", []),
+			config.get("question_pool_bill", []),
+			int(config.get("bill_question_share_percent", 50)))
 	_question_strong_multiplier = float(config.get("question_strong_multiplier", 1.0))
 	_question_weak_multiplier = float(config.get("question_weak_multiplier", 1.0))
 
@@ -631,8 +633,8 @@ func _raise_threshold() -> int:
 ## `first` (2026-10-12) is the questions written for this stage itself
 ## (Stage Questions tab): they are dealt before any from the room's pool, and
 ## the dealt set is then shuffled so they don't always come first in play.
-func _draw_questions(pool: Array, first: Array = []) -> Array:
-	if pool.is_empty() and first.is_empty():
+func _draw_questions(pool: Array, first: Array = [], bill: Array = [], bill_share: int = 50) -> Array:
+	if pool.is_empty() and first.is_empty() and bill.is_empty():
 		return []
 
 	# How many this room asks. A stage that says so outright wins: these
@@ -642,16 +644,23 @@ func _draw_questions(pool: Array, first: Array = []) -> Array:
 	var wanted := int(_stage.get("questions_count", 0))
 	if wanted <= 0:
 		wanted = maxi(_questions_per_turn(), 1) * maxi(int(_stage.get("turn_limit", 0)), 1)
+	# Questions about the level's bill come first, up to their share of the
+	# room, so the stage is about the bill without losing its own variety.
+	var about_bill: Array = []
+	if not bill.is_empty():
+		var cap := int(ceil(float(wanted) * float(bill_share) / 100.0))
+		about_bill = _shuffled(bill).slice(0, mini(maxi(cap, 1), bill.size()))
 	var own := _shuffled(first)
 	var rest: Array = []
 	for question: Variant in pool:
-		if not own.has(question):
+		if not own.has(question) and not about_bill.has(question):
 			rest.append(question)
-	var bag := own + _shuffled(rest)
+	own = own.filter(func(question: Variant) -> bool: return not about_bill.has(question))
+	var bag := about_bill + own + _shuffled(rest)
 	var dealt := bag.slice(0, mini(wanted, bag.size()))
 	# Only worth a second shuffle when both kinds were dealt; a plain room
 	# pool keeps exactly the order (and so the seeded result) it always had.
-	if not own.is_empty() and dealt.size() > own.size():
+	if (not own.is_empty() or not about_bill.is_empty()) and dealt.size() > own.size():
 		dealt = _shuffled(dealt)
 	return dealt
 
@@ -1238,6 +1247,24 @@ func _answer_question(card: Dictionary) -> Dictionary:
 
 	state.question_index += 1
 	return {"grade": grade}
+
+
+## What answering the current question with this card WOULD tally, without
+## changing anything: {grade, pleased, displeased, opposed} (lists of
+## organisation ids). Empty when no question is open.
+func answer_effect(card: Dictionary) -> Dictionary:
+	var question := current_question()
+	if question.is_empty():
+		return {}
+	var grade := _grade_of(card, question)
+	var pleases: Array = question.get("pleases_boosters", [])
+	var out := {"grade": grade, "pleased": [], "displeased": [], "opposed": []}
+	if grade == "S":
+		out["pleased"] = pleases.duplicate()
+		out["opposed"] = (question.get("displeases_boosters", []) as Array).duplicate()
+	elif grade == "W":
+		out["displeased"] = pleases.duplicate()
+	return out
 
 
 ## Counts one answer toward an organisation's standing change this stage.

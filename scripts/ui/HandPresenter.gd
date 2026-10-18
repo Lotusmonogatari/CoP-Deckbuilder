@@ -21,6 +21,10 @@ signal card_chosen(card_id: String)
 ## The player dragged a card up and let go: play it now.
 signal card_flung(card_id: String)
 
+## A card lifted off the hand / put back without being played.
+signal card_lifted(card_id: String)
+signal card_dropped(card_id: String)
+
 var _row: HBoxContainer
 var _scroll: ScrollContainer
 
@@ -61,6 +65,8 @@ func show_state(engine: BattleEngine) -> void:
 			view = CardView.new()
 			view.chosen.connect(func(id: String) -> void: card_chosen.emit(id))
 			view.flung.connect(func(id: String) -> void: card_flung.emit(id))
+			view.lifted.connect(func(id: String) -> void: card_lifted.emit(id))
+			view.dropped.connect(func(id: String) -> void: card_dropped.emit(id))
 
 		# On screen first, then filled in. A CardView builds its labels when
 		# it enters the tree, and filling it before that means building them
@@ -104,6 +110,13 @@ func show_state(engine: BattleEngine) -> void:
 	for index in ordered.size():
 		if ordered[index].get_index() != index:
 			_row.move_child(ordered[index], index)
+
+
+## Marks the one selected card (or none, with "").
+func select_only(card_id: String) -> void:
+	for id: String in _views:
+		for view: CardView in _views[id]:
+			view.selected = (id == card_id and not card_id.is_empty())
 
 
 ## The view showing this card, if it is on screen. What an animation reaches

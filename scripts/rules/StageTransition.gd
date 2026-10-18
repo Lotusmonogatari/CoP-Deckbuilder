@@ -49,7 +49,8 @@ static func character_kind(character_id: String) -> String:
 ## rather than appearing silent. Sampled without replacement from the
 ## eligible cast pool, so the same transition never repeats a speaker.
 static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: String,
-		count: int, rng: RandomNumberGenerator, hired_staff_ids: Variant = null) -> Array[Dictionary]:
+		count: int, rng: RandomNumberGenerator, hired_staff_ids: Variant = null,
+		bill_id: String = "", lean: String = "") -> Array[Dictionary]:
 	var remaining := PoolPicker.eligible(cast_rows, "stage_id", stage_id)
 	# Staff are the player's own team: an SFxx cast member only speaks once
 	# hired. `hired_staff_ids` null means "no filter" (older callers, tests).
@@ -57,7 +58,10 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 		remaining = remaining.filter(func(row: Dictionary) -> bool:
 			var cid := str(row.get("character_id", ""))
 			return character_kind(cid) != "staff" or cid in hired_staff_ids)
-	var dialogue_here := PoolPicker.eligible(dialogue_rows, "stage_id", stage_id)
+	var dialogue_here := PoolPicker.eligible(scope_dialogue(dialogue_rows, bill_id, lean), "stage_id", stage_id)
+	# Lines about this level's bill are preferred to the general ones.
+	var about_bill := dialogue_here.filter(func(row: Dictionary) -> bool:
+		return not _blank(row.get("bill_id")))
 	var speakers: Array[Dictionary] = []
 
 	while speakers.size() < count and not remaining.is_empty():
@@ -66,7 +70,9 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 		var character_id := str(candidate.get("character_id", ""))
 		if character_id.is_empty():
 			continue
-		var exchange := PoolPicker.pick(dialogue_here, "character_id", character_id, rng)
+		var exchange := PoolPicker.pick(about_bill, "character_id", character_id, rng)
+		if exchange.is_empty():
+			exchange = PoolPicker.pick(dialogue_here, "character_id", character_id, rng)
 		if exchange.is_empty():
 			continue
 		speakers.append({
@@ -83,23 +89,24 @@ static func pick_speakers(cast_rows: Array, dialogue_rows: Array, stage_id: Stri
 ## one, or shows one but nobody eligible has anything written.
 static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
 		dialogue_rows: Array, rng: RandomNumberGenerator, hired_staff_ids: Variant = null,
-		thought_chance: int = 0) -> Dictionary:
+		thought_chance: int = 0, bill_id: String = "", lean: String = "") -> Dictionary:
 	if not should_show(stage):
 		return {}
 
 	var stage_id := str(stage.get("stage_id", ""))
-	var speakers := pick_speakers(cast_rows, dialogue_rows, stage_id, speaker_count(stage), rng, hired_staff_ids)
+	var speakers := pick_speakers(cast_rows, dialogue_rows, stage_id, speaker_count(stage), rng,
+		hired_staff_ids, bill_id, lean)
 	var thought := ""
 	if speakers.is_empty():
 		# Nobody is available to speak (no staff hired, no opponent cast):
 		# the player alone has a private thought, if one is written.
-		thought = player_thought(dialogue_rows, stage_id, rng)
+		thought = player_thought(scope_dialogue(dialogue_rows, bill_id, lean), stage_id, rng)
 		if thought.is_empty():
 			return {}
 	elif thought_chance > 0 and rng.randi_range(1, 100) <= thought_chance:
 		# Speakers are available, but the player sometimes opens with a
 		# private thought first (2026-10-15).
-		thought = player_thought(dialogue_rows, stage_id, rng)
+		thought = player_thought(scope_dialogue(dialogue_rows, bill_id, lean), stage_id, rng)
 
 	var background := PoolPicker.pick(background_rows, "stage_id", stage_id, rng)
 	return {
@@ -114,5 +121,24 @@ static func resolve(stage: Dictionary, cast_rows: Array, background_rows: Array,
 static func player_thought(dialogue_rows: Array, stage_id: String, rng: RandomNumberGenerator) -> String:
 	var mine := dialogue_rows.filter(func(row: Dictionary) -> bool:
 		return str(row.get("character_id", "")) == "PLAYER")
-	var row := PoolPicker.pick(mine, "stage_id", stage_id, rng)
+	# A thought about this level's bill (already scoped by the caller) is
+	# preferred to a general one.
+	var about_bill := mine.filter(func(row: Dictionary) -> bool: return not _blank(row.get("bill_id")))
+	var row := PoolPicker.pick(about_bill if not about_bill.is_empty() else mine, "stage_id", stage_id, rng)
 	return str(row.get("character_line_en", ""))
+
+
+## Rows that suit this level: the general ones (no Bill ID), plus rows about
+## `bill_id` whose Stance is blank or matches the player's `lean`. A level
+## without a bill (or a row about another bill) never sees bill rows.
+static func scope_dialogue(rows: Array, bill_id: String, lean: String) -> Array:
+	return rows.filter(func(row: Dictionary) -> bool:
+		if _blank(row.get("bill_id")):
+			return true
+		if str(row.get("bill_id")) != bill_id:
+			return false
+		return _blank(row.get("stance")) or str(row.get("stance")) == lean)
+
+
+static func _blank(value: Variant) -> bool:
+	return value == null or str(value).strip_edges().is_empty()

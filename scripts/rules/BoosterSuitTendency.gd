@@ -62,3 +62,47 @@ static func lines(questions: Dictionary, suits: Array, names: Dictionary) -> Arr
 		if not who.is_empty():
 			result.append("%s: %s" % [suit, ", ".join(who)])
 	return result
+
+
+## Every suit's average for ONE organisation, over every question that pleases
+## it: {suit: score} from -1 to +1. Unlike by_suit() this has no minimum
+## sample or cut-off; the battle screen uses it to show which styles a backed
+## organisation likes (2026-10-18, Cameron).
+static func scores_for(questions: Dictionary, booster_id: String, suits: Array) -> Dictionary:
+	var sums := {}
+	var count := 0
+	for pool in questions.values():
+		for question in (pool as Array):
+			if not (question.get("pleases_boosters", []) as Array).has(booster_id):
+				continue
+			count += 1
+			var grades: Dictionary = question.get("grades", {})
+			for suit: String in suits:
+				sums[suit] = float(sums.get(suit, 0.0)) + float(POINTS.get(str(grades.get(suit, "M")), 0.0))
+	var out := {}
+	if count == 0:
+		return out
+	for suit: String in suits:
+		out[suit] = float(sums.get(suit, 0.0)) / float(count)
+	return out
+
+
+## The suits an organisation likes and dislikes: {likes: [suit], dislikes:
+## [suit]}, each at most two, strongest first, only past `edge` (0.25).
+## Empty lists when fewer than MIN_QUESTIONS questions please it.
+static func taste_of(questions: Dictionary, booster_id: String, suits: Array,
+		edge: float = 0.25) -> Dictionary:
+	var scores := scores_for(questions, booster_id, suits)
+	var likes: Array = []
+	var dislikes: Array = []
+	if not scores.is_empty():
+		var ordered: Array = scores.keys()
+		ordered.sort_custom(func(a: String, b: String) -> bool: return scores[a] > scores[b])
+		for suit: String in ordered:
+			if scores[suit] >= edge and likes.size() < 2:
+				likes.append(suit)
+		ordered.reverse()
+		for suit: String in ordered:
+			if scores[suit] <= -edge and dislikes.size() < 2:
+				dislikes.append(suit)
+	return {"likes": likes, "dislikes": dislikes}
