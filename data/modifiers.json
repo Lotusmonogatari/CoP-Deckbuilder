@@ -901,5 +901,47 @@
     "trigger_booster_ids": [
       "BO18"
     ]
+  },
+  {
+    "mod_id": "M47",
+    "name_en": "Activist Ground Game",
+    "name_jp": "活動家の動員",
+    "romaji": "Katsudōka no Dōin",
+    "trigger_segment_or_booster": [
+      "BO31"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "+5 starting support at every Town Hall and Party Caucus.",
+    "reputation_cost": 10,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "STAGE_START_BONUS",
+    "effect_target": "ST03; ST05; ST24; ST29; ST34; ST35; ST36; ST39; ST42; ST45; ST49; ST52; ST53; ST56; ST58; ST59; ST61; ST62; ST65; ST68; ST72; ST75; ST76; ST78; ST81; ST82; ST85; ST86; ST89; ST93; ST94; ST97; ST100",
+    "effect_value": 5.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO31"
+    ]
+  },
+  {
+    "mod_id": "M48",
+    "name_en": "Selection Committee Endorsement",
+    "name_jp": "選考委員会の推薦",
+    "romaji": "Senkō Iinkai no Suisen",
+    "trigger_segment_or_booster": [
+      "BO32"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+5 Party support each time your influence turns a bill your party backs from failing to passing.",
+    "reputation_cost": 10,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "PARTY_BILL_FLIP_BONUS",
+    "effect_target": "PartySupport",
+    "effect_value": 5.0,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO32"
+    ]
   }
 ]

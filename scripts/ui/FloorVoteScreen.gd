@@ -360,6 +360,7 @@ func _on_vote(choice: String) -> void:
 		GameState.apply_floor_vote_influence_bonus(bonus["reputation"], bonus["party_support"],
 			Text.say("record.cause_influence", {"bill": bill_name}))
 		GameState.record_bill_flip(bill_id)
+		GameState.apply_flip_backing(engine.bill(), result)
 
 	_show_outcome(result, stance_note)
 

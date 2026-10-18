@@ -52,7 +52,8 @@ static func by_suit(questions: Dictionary, suits: Array) -> Dictionary:
 
 ## One line per suit: "Earnest: National Media, Ainu Language and Culture Foundation".
 ## A suit nobody leans towards is left out.
-static func lines(questions: Dictionary, suits: Array, names: Dictionary) -> Array[String]:
+static func lines(questions: Dictionary, suits: Array, names: Dictionary,
+		template: String = "{style}: {names}") -> Array[String]:
 	var table := by_suit(questions, suits)
 	var result: Array[String] = []
 	for suit: String in suits:
@@ -60,7 +61,7 @@ static func lines(questions: Dictionary, suits: Array, names: Dictionary) -> Arr
 		for row: Dictionary in (table.get(suit, []) as Array):
 			who.append(str(names.get(row["booster_id"], row["booster_id"])))
 		if not who.is_empty():
-			result.append("%s: %s" % [suit, ", ".join(who)])
+			result.append(template.replace("{style}", suit).replace("{names}", ", ".join(who)))
 	return result
 
 

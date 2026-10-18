@@ -53,10 +53,14 @@ const STAGE_START_BONUS := "STAGE_START_BONUS"
 const HAND_SIZE_BONUS := "HAND_SIZE_BONUS"
 const GAFFE_LIMIT_BONUS := "GAFFE_LIMIT_BONUS"
 const FUNDS_INCOME_FREEZE := "FUNDS_INCOME_FREEZE"
+## Target PartySupport, value a flat amount: paid at the vote when the
+## player's influence turns a bill their own party backs from failing to
+## passing (GameState.apply_flip_backing()).
+const PARTY_BILL_FLIP_BONUS := "PARTY_BILL_FLIP_BONUS"
 
 const KNOWN_TYPES := [
 	RESOURCE_BONUS_ON_WIN, STAGE_START_BONUS, HAND_SIZE_BONUS,
-	GAFFE_LIMIT_BONUS, FUNDS_INCOME_FREEZE,
+	GAFFE_LIMIT_BONUS, FUNDS_INCOME_FREEZE, PARTY_BILL_FLIP_BONUS,
 ]
 
 ## Which sanban.json meta-variable a RESOURCE_BONUS_ON_WIN target name means.
@@ -74,6 +78,17 @@ const RESOURCE_TARGET_TO_META := {
 static func value_of(modifier: Dictionary) -> float:
 	var value: Variant = modifier.get("effect_value")
 	return 0.0 if value == null else float(value)
+
+
+## The stages a stage-scoped modifier names: one STxx, or several separated
+## by semicolons ("ST03; ST05"), so one backing can cover a whole family of
+## rooms (2026-10-18).
+static func targets_of(modifier: Dictionary) -> Array[String]:
+	var out: Array[String] = []
+	for part: String in str(modifier.get("effect_target", "")).split(";"):
+		if not part.strip_edges().is_empty():
+			out.append(part.strip_edges())
+	return out
 
 
 static func type_of(modifier: Dictionary) -> String:
@@ -135,7 +150,7 @@ static func battle_start_bonus(active: Array, stage_id: String) -> Dictionary:
 	var bonus := {"start_support": 0, "hand_size_bonus": 0, "gaffe_limit_bonus": 0}
 
 	for modifier: Dictionary in active:
-		if target_of(modifier) != stage_id:
+		if not targets_of(modifier).has(stage_id):
 			continue
 		var value := int(round(value_of(modifier)))
 		match type_of(modifier):

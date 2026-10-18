@@ -737,14 +737,14 @@
   {
     "key": "office.orgs_blurb",
     "where": "Office — organizations",
-    "english": "Answering a reporter in the suit their question invites pleases the organization behind it, and that standing is carried between levels.",
+    "english": "Answering a reporter in the rhetorical style their question invites pleases the organization behind it, and that standing is carried between levels.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "office.backing_blurb",
     "where": "Office — backing",
-    "english": "An organization backs you once your standing with it is high enough. Answering a reporter in the suit their question invites is what raises it.",
+    "english": "An organization backs you once your standing with it is high enough. Answering a reporter in the rhetorical style their question invites is what raises it.",
     "placeholders": null,
     "notes": null
   },
@@ -2221,14 +2221,14 @@
   {
     "key": "card.room_greatly_enhanced",
     "where": "Card zoom — stage affinity line",
-    "english": "This room greatly favors this suit.",
+    "english": "This room greatly favors this rhetorical style.",
     "placeholders": null,
     "notes": "2026-10-01 audit: was BattleScreen.describe_room_for()'s own hardcoded text."
   },
   {
     "key": "card.room_enhanced",
     "where": "Card zoom — stage affinity line",
-    "english": "This room favors this suit.",
+    "english": "This room favors this rhetorical style.",
     "placeholders": null,
     "notes": null
   },
@@ -2242,14 +2242,14 @@
   {
     "key": "card.room_suppressed",
     "where": "Card zoom — stage affinity line",
-    "english": "This room resists this suit.",
+    "english": "This room resists this rhetorical style.",
     "placeholders": null,
     "notes": null
   },
   {
     "key": "card.room_greatly_suppressed",
     "where": "Card zoom — stage affinity line",
-    "english": "This room strongly resists this suit.",
+    "english": "This room strongly resists this rhetorical style.",
     "placeholders": null,
     "notes": null
   },
@@ -2291,7 +2291,7 @@
   {
     "key": "battle.question_invites",
     "where": "Battle screen — details panel",
-    "english": "This question invites a {suit} answer.",
+    "english": "This question invites {suit} rhetoric.",
     "placeholders": "suit",
     "notes": null
   },
@@ -3628,15 +3628,15 @@
   {
     "key": "battle.taste_likes",
     "where": "Battle: a backed organization's liked styles",
-    "english": "Likes {suits}",
-    "placeholders": "suits",
+    "english": "Likes {styles} rhetoric.",
+    "placeholders": "styles",
     "notes": null
   },
   {
     "key": "battle.taste_dislikes",
     "where": "Battle: a backed organization's disliked styles",
-    "english": "Dislikes {suits}",
-    "placeholders": "suits",
+    "english": "Dislikes {styles} rhetoric.",
+    "placeholders": "styles",
     "notes": null
   },
   {
@@ -3713,21 +3713,49 @@
     "key": "record.cause_amount",
     "where": "One reason with its share of a change",
     "english": "{cause} ({amount})",
-    "placeholders": "cause; amount",
+    "placeholders": "cause, amount",
     "notes": null
   },
   {
     "key": "record.join_two",
     "where": "Two items in a list",
     "english": "{a} and {b}",
-    "placeholders": "a; b",
+    "placeholders": "a, b",
     "notes": null
   },
   {
     "key": "record.join_many",
     "where": "Three or more items in a list",
     "english": "{list}, and {last}",
-    "placeholders": "list; last",
+    "placeholders": "list, last",
+    "notes": null
+  },
+  {
+    "key": "how_to_play.style_line",
+    "where": "How to Play: one rhetorical style and who it tends to please",
+    "english": "{style} rhetoric: {names}",
+    "placeholders": "style, names",
+    "notes": null
+  },
+  {
+    "key": "record.cause_link_follow",
+    "where": "Reason: an organization following another's standing or a meta value",
+    "english": "changes in {source}",
+    "placeholders": "source",
+    "notes": null
+  },
+  {
+    "key": "record.cause_link_rival",
+    "where": "Reason: a rivalry between two organizations",
+    "english": "its rivalry with {source}",
+    "placeholders": "source",
+    "notes": null
+  },
+  {
+    "key": "record.cause_flip_backing",
+    "where": "Reason: a backing paying out when influence turns a bill",
+    "english": "your influence turning {bill}",
+    "placeholders": "bill",
     "notes": null
   }
 ]

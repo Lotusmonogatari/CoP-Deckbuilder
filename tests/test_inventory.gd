@@ -29,7 +29,12 @@ extends GutTest
 var _saved: Dictionary = {}
 
 
+var _links_before: Array = []
+
+
 func before_each() -> void:
+	_links_before = DataDB.standing_links
+	DataDB.standing_links = []
 	_saved = {
 		"inventory": GameState.inventory.duplicate(),
 		"bought": GameState.shop_bought_this_level.duplicate(),
@@ -85,6 +90,7 @@ func before_each() -> void:
 
 
 func after_each() -> void:
+	DataDB.standing_links = _links_before
 	DataDB.shop = DataDB.shop.filter(
 		func(i: Dictionary) -> bool: return str(i.get("item_id", "")).begins_with("SHTEST_") == false)
 	DataDB._shop_by_id = DataDB._index(DataDB.shop, "item_id")
@@ -131,23 +137,34 @@ func test_the_stack_cap_stops_a_purchase() -> void:
 # Using in the Office
 # ---------------------------------------------------------------------------
 
+func _party_bodies_total() -> int:
+	var total := 0
+	for id: String in ["BO01", "BO02", "BO31", "BO32"]:
+		total += int(GameState.booster_standing[id])
+	return total
+
+
 func test_a_now_item_used_in_the_office_moves_one_booster_from_its_pool() -> void:
 	GameState.inventory["SH01"] = 1
 	GameState.booster_standing["BO01"] = 50
 	GameState.booster_standing["BO02"] = 50
+	GameState.booster_standing["BO31"] = 50
+	GameState.booster_standing["BO32"] = 50
 	assert_true(GameState.use_item_in_office("SH01")["ok"])
-	var moved := int(GameState.booster_standing["BO01"]) + int(GameState.booster_standing["BO02"]) - 100
+	var moved := _party_bodies_total() - 200
 	assert_eq(moved, 1)
 	assert_eq(GameState.item_count("SH01"), 0)
 
 
 func test_a_tier_pool_only_ever_moves_a_booster_of_that_tier() -> void:
-	# SH01's Grants is "TIER:Party +1" — Party is BO01/BO02 only; nothing
+	# SH01's Grants is "TIER:Party +1" — Party is BO01/BO02/BO31/BO32; nothing
 	# outside that tier should ever move.
 	for _i in 20:
 		GameState.inventory["SH01"] = 1
 		GameState.booster_standing["BO01"] = 50
 		GameState.booster_standing["BO02"] = 50
+		GameState.booster_standing["BO31"] = 50
+		GameState.booster_standing["BO32"] = 50
 		GameState.booster_standing["BO03"] = 50   # Constituency — not in the pool
 		GameState.use_item_in_office("SH01")
 		assert_eq(int(GameState.booster_standing["BO03"]), 50)
@@ -160,8 +177,10 @@ func test_a_random_grants_outcome_names_which_organisation_it_landed_on() -> voi
 	var result := GameState.use_item_in_office("SH01")
 	var bo01_name := str(DataDB.get_booster("BO01").get("name_en", "BO01"))
 	var bo02_name := str(DataDB.get_booster("BO02").get("name_en", "BO02"))
+	var bo31_name := str(DataDB.get_booster("BO31").get("name_en", "BO31"))
+	var bo32_name := str(DataDB.get_booster("BO32").get("name_en", "BO32"))
 	var message := str(result["message"])
-	assert_true(message.contains(bo01_name) or message.contains(bo02_name),
+	assert_true(message.contains(bo01_name) or message.contains(bo02_name) or message.contains(bo31_name) or message.contains(bo32_name),
 		"the message should name whichever Party organisation was picked")
 	assert_true(message.contains("+1"), "the message should carry the delta too")
 
@@ -174,8 +193,10 @@ func test_hiring_the_named_staff_at_tier_2_layers_the_bonus_on_top() -> void:
 	GameState.inventory["SH01"] = 1
 	GameState.booster_standing["BO01"] = 50
 	GameState.booster_standing["BO02"] = 50
+	GameState.booster_standing["BO31"] = 50
+	GameState.booster_standing["BO32"] = 50
 	GameState.use_item_in_office("SH01")
-	var moved := int(GameState.booster_standing["BO01"]) + int(GameState.booster_standing["BO02"]) - 100
+	var moved := _party_bodies_total() - 200
 	assert_eq(moved, 2, "base +1, Tier 2 bonus +1 more")
 
 
@@ -185,8 +206,10 @@ func test_hiring_the_staff_at_only_tier_1_does_not_reach_the_tier_2_bonus() -> v
 	GameState.inventory["SH01"] = 1
 	GameState.booster_standing["BO01"] = 50
 	GameState.booster_standing["BO02"] = 50
+	GameState.booster_standing["BO31"] = 50
+	GameState.booster_standing["BO32"] = 50
 	GameState.use_item_in_office("SH01")
-	var moved := int(GameState.booster_standing["BO01"]) + int(GameState.booster_standing["BO02"]) - 100
+	var moved := _party_bodies_total() - 200
 	assert_eq(moved, 1)
 
 
@@ -195,8 +218,10 @@ func test_hiring_a_different_role_does_not_trigger_the_bonus() -> void:
 	GameState.inventory["SH01"] = 1
 	GameState.booster_standing["BO01"] = 50
 	GameState.booster_standing["BO02"] = 50
+	GameState.booster_standing["BO31"] = 50
+	GameState.booster_standing["BO32"] = 50
 	GameState.use_item_in_office("SH01")
-	var moved := int(GameState.booster_standing["BO01"]) + int(GameState.booster_standing["BO02"]) - 100
+	var moved := _party_bodies_total() - 200
 	assert_eq(moved, 1)
 
 

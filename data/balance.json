@@ -41,5 +41,6 @@
   "stance_flip_party_support_away": 3,
   "stance_flip_party_support_toward": 1,
   "bill_question_share_percent": 50,
+  "standing_links_yen_per_point": 10000,
   "xp_tiers": {}
 }

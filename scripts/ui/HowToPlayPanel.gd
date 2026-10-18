@@ -49,7 +49,8 @@ static func data_tokens() -> Dictionary:
 	for row in DataDB.suits:
 		suit_names.append(str((row as Dictionary).get("element", "")))
 	return HowToPlay.live_tokens(DataDB.stages, DataDB.rules, DataDB.questions,
-		suit_names, BattleSetup.booster_names())
+		suit_names, BattleSetup.booster_names(),
+		Text.say("how_to_play.style_line", {"style": "{style}", "names": "{names}"}))
 
 
 ## The guide's content as rows for Overlay.open(). With nothing written yet,

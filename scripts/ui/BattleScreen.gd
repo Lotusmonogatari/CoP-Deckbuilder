@@ -758,6 +758,15 @@ func _refresh_listening() -> void:
 	_listening.show_listeners(ids.slice(0, 6), _tastes_for(ids))
 
 
+## "divisive", "earnest and divisive": the rhetorical styles as the player
+## knows them, lowercase, ready for "Likes {styles} rhetoric."
+func _style_names(suits: Array) -> String:
+	var lower: Array[String] = []
+	for suit: String in suits:
+		lower.append(suit.to_lower())
+	return CauseLines.join(lower)
+
+
 func _tastes_for(ids: Array) -> Dictionary:
 	var out := {}
 	var backed := GameState.backed_booster_ids()
@@ -772,9 +781,9 @@ func _tastes_for(ids: Array) -> Dictionary:
 			continue
 		var parts: Array[String] = []
 		if not likes.is_empty():
-			parts.append(Text.say("battle.taste_likes", {"suits": CauseLines.join(likes)}))
+			parts.append(Text.say("battle.taste_likes", {"styles": _style_names(likes)}))
 		if not dislikes.is_empty():
-			parts.append(Text.say("battle.taste_dislikes", {"suits": CauseLines.join(dislikes)}))
+			parts.append(Text.say("battle.taste_dislikes", {"styles": _style_names(dislikes)}))
 		out[booster_id] = "\n".join(parts)
 	return out
 

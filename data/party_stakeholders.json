@@ -382,5 +382,17 @@
     "booster_id": "BO16",
     "weight": -1.0,
     "note": null
+  },
+  {
+    "party_id": "OWN",
+    "booster_id": "BO31",
+    "weight": 2.0,
+    "note": "Your own party activists"
+  },
+  {
+    "party_id": "OWN",
+    "booster_id": "BO32",
+    "weight": 3.0,
+    "note": "Your own party candidate selection committee"
   }
 ]

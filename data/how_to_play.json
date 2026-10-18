@@ -91,9 +91,9 @@
     "entry_id": "HT09",
     "order": 90.0,
     "group": "Cards",
-    "heading_en": "Suits and rooms",
+    "heading_en": "Rhetorical styles and rooms",
     "heading_jp": null,
-    "body_en": "There are six suits of rhetoric. Each room favors some suits and suppresses others. Tap a card to see how this room treats it.",
+    "body_en": "There are six rhetorical styles. Each room favors some styles and suppresses others. Tap a card to see how this room treats it.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -126,7 +126,7 @@
     "group": "Cards",
     "heading_en": "Answering questions",
     "heading_jp": null,
-    "body_en": "In rooms that ask questions, the invited suit earns a bonus and pleases the organization asking. A weak answer weakens your card and annoys them.",
+    "body_en": "In rooms that ask questions, the rhetorical style the question invites earns a bonus and pleases the organization asking. A weak answer weakens your card and annoys them.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -214,7 +214,7 @@
     "group": "Cards",
     "heading_en": "Why a card is bigger or smaller",
     "heading_jp": null,
-    "body_en": "Two things scale a card's gain and how hard it hits your opponent. The room: each room favors some suits, so a card gets a larger boost in a room that suits its suit and is held back in a room that does not. The question: in rooms that ask questions, a card in the invited suit gets a moderate boost, a middling answer is left as it is, and a poor answer is reduced. Guard, drawing and gaffes are never scaled this way. Tap a card to read, in plain words, how the current room and question are affecting it. A greyed-out card does nothing in this room right now.",
+    "body_en": "Two things scale a card's gain and how hard it hits your opponent. The room: each room favors some rhetorical styles, so a card gets a larger boost in a room that favors its style and is held back in a room that does not. The question: in rooms that ask questions, a card in the invited style gets a moderate boost, a middling answer is left as it is, and a poor answer is reduced. Guard, drawing and gaffes are never scaled this way. Tap a card to read, in plain words, how the current room and question are affecting it. A greyed-out card does nothing in this room right now.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -223,9 +223,9 @@
     "entry_id": "HT21",
     "order": 123.0,
     "group": "Cards",
-    "heading_en": "Who is pleased by which suit",
+    "heading_en": "Who is pleased by which style",
     "heading_jp": null,
-    "body_en": "Each question in a room is tied to the organizations it concerns. Answer in a suit the question handles well (tap a card to see) and those organizations are pleased; answer badly and they are annoyed. Some questions also set other organizations back when answered well. No organization has a fixed favorite suit, but across many questions some suits please some organizations more often. A rough guide:\n{pleasing_table}\nThis is a tendency, not a rule: the card zoom shows how the question in front of you rates each card.",
+    "body_en": "Each question in a room is tied to the organizations it concerns. Answer in a style the question handles well (tap a card to see) and those organizations are pleased; answer badly and they are annoyed. Some questions also set other organizations back when answered well. No organization has a fixed favorite style, but across many questions some styles please some organizations more often. A rough guide:\n{pleasing_table}\nThis is a tendency, not a rule: the card zoom shows how the question in front of you rates each card.",
     "screenshot": null,
     "caption": null,
     "video": null

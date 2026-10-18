@@ -304,6 +304,7 @@ func start_new_run(player_id: String) -> bool:
 	if not DataDB.use_protagonist(player_id):
 		return false
 	protagonist_id = player_id
+	_link_carry = {}
 	level_runner = null
 	last_level_outcome = ""
 	mid_stage = false
@@ -774,8 +775,10 @@ func _apply_neglect_decay() -> void:
 		var now := int(booster_standing[booster_id])
 		var target := BoosterStanding.decayed(now, int(starts.get(booster_id, default_start)), step)
 		if target != now:
+			_links_suspended = true
 			_under_cause(Text.say("record.cause_neglect"),
 				func() -> void: _apply_booster_delta(booster_id, target - now))
+			_links_suspended = false
 
 
 ## The five parties the player isn't in, back to where party_standing.json
@@ -1287,6 +1290,35 @@ func _move_meta(name: String, delta: int) -> void:
 	EventBus.meta_changed.emit(name, after, after - before)
 
 
+## Standing Links (2026-10-18). Leftover fractions of a point, per target, so
+## small changes add up instead of vanishing.
+var _link_carry: Dictionary = {}
+## True while a link's own change is being applied (a followed change never
+## starts another link) and during neglect decay.
+var _links_suspended := false
+
+
+## The source moved by `points`: every link from it moves its target by
+## weight x points, a rivalry (negative weight) the other way.
+func _follow_links(source: String, points: float) -> void:
+	if _links_suspended or points == 0.0:
+		return
+	for row: Dictionary in StandingLinks.from_source(DataDB.standing_links, source):
+		var target := str(row.get("target", ""))
+		var weight := float(row.get("weight", 0.0))
+		var settled := StandingLinks.settle(points * weight, float(_link_carry.get(target, 0.0)))
+		_link_carry[target] = settled["carry"]
+		var whole: int = settled["whole"]
+		if whole == 0:
+			continue
+		var source_name := str(DataDB.get_booster(source).get("name_en", source))
+		var cause := Text.say("record.cause_link_rival" if weight < 0.0 else "record.cause_link_follow",
+			{"source": source_name})
+		_links_suspended = true
+		_under_cause(cause, func() -> void: _apply_booster_delta(target, whole))
+		_links_suspended = false
+
+
 ## Files `amount` under the current cause for `key`, summing with an earlier
 ## entry for the same cause so a reason appears once with its total.
 func _note_cause(store: Dictionary, key: String, amount: int) -> void:
@@ -1322,6 +1354,9 @@ func _record_meta_change(applied: Dictionary) -> void:
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
 		if int(applied[name]) != 0 and not _cause.is_empty():
 			_note_cause(last_meta_cause, name, int(applied[name]))
+		if int(applied[name]) != 0 and not DataDB.standing_links.is_empty():
+			_follow_links(name, StandingLinks.points_for_meta(name, int(applied[name]),
+				_sanban_row(name), int(DataDB.balance.get("standing_links_yen_per_point", 10000))))
 		# Announced as well as recorded. The recording is for the result
 		# screen, which asks afterwards; the announcement is for anything that
 		# wants to react as it happens — a sound, or the Office lighting up a
@@ -1933,6 +1968,7 @@ func _apply_booster_delta(booster_id: String, delta: int) -> void:
 	if after != before:
 		last_booster_change[booster_id] = int(last_booster_change.get(booster_id, 0)) + (after - before)
 		_note_cause(last_booster_cause, booster_id, after - before)
+		_follow_links(booster_id, float(after - before))
 
 
 ## Where the player stands with `party_name`. The player's own party reads
@@ -2068,6 +2104,32 @@ func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta
 	_cause = ""
 
 
+## M48-style backing (PARTY_BILL_FLIP_BONUS): when the player's influence
+## turns a bill their own party backs from failing to passing, an owned
+## backing whose organization still holds pays its Party support. Returns the
+## amount paid (0 when nothing applies).
+func apply_flip_backing(bill: Dictionary, result: Dictionary) -> int:
+	if not bool(result.get("outcome_flipped_by_influence", false)) or not bool(result.get("passed", false)):
+		return 0
+	var own := own_party_id()
+	var backed := false
+	for position: Dictionary in bill.get("positions", []):
+		if str(position.get("party_id", "")) == own and str(position.get("disposition", "")) == "Supportive":
+			backed = true
+	if not backed:
+		return 0
+	var total := 0
+	for modifier: Dictionary in _effectively_owned_modifiers():
+		if ModifierEffects.type_of(modifier) == ModifierEffects.PARTY_BILL_FLIP_BONUS \
+				and MetaRules.booster_trigger_met(modifier, booster_standing):
+			total += int(round(ModifierEffects.value_of(modifier)))
+	if total != 0:
+		_cause = Text.say("record.cause_flip_backing", {"bill": str(bill.get("bill_name", ""))})
+		_apply_meta_reward("Party support", total)
+		_cause = ""
+	return total
+
+
 ## Every bill_id the influence swing has flipped (§7.7), in the order they
 ## happened. A bill can only be voted once — every real Floor Vote level is
 ## One-Time (§8) — so this never needs deduplicating in practice, but
@@ -2101,6 +2163,11 @@ func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String) -> 
 ## where the player's own party stood on the bill, not to a fixed row, so
 ## each protagonist's party sees a bill differently. Sizes come from the
 ## Balance tab (law_lean_party_tier_pass_delta / law_lean_party_tier_fail_delta).
+func _lean_multiplier(booster: Dictionary) -> float:
+	var raw: Variant = booster.get("party_lean_multiplier")
+	return 1.0 if raw == null else float(raw)
+
+
 func _apply_party_tier_lean(bill_id: String, passed: bool) -> void:
 	var bill: Dictionary = DataDB.floor_votes.get(bill_id, {})
 	var own := own_party_id()
@@ -2118,8 +2185,11 @@ func _apply_party_tier_lean(bill_id: String, passed: bool) -> void:
 	for booster: Dictionary in DataDB.boosters:
 		if str(booster.get("tier", "")) == "Party":
 			var party_body := str(booster.get("booster_id", ""))
+			# Each Party Body reacts at its own strength (Boosters tab, Party
+			# Lean Multiplier; blank = 1.0).
+			var own_delta := PartySalience.scaled(delta, _lean_multiplier(booster))
 			_under_cause(Text.say("record.cause_party_lean", {"bill": str(bill.get("bill_name", ""))}),
-				func() -> void: _apply_booster_delta(party_body, delta))
+				func() -> void: _apply_booster_delta(party_body, own_delta))
 
 
 # ---------------------------------------------------------------------------
