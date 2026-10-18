@@ -2009,7 +2009,7 @@ func _level_row(level: Dictionary) -> Control:
 	if DataDB.get_rule("level_gating_enabled", false):
 		var level_id := str(level.get("level_id", ""))
 		var cooldown := Ledger.level_cooldown_remaining(
-			level, GameState.levels_completed_count, GameState.level_last_completed_at)
+			level, GameState.time_units, GameState.level_cleared_units)
 
 		if cooldown > 0:
 			button.text = Text.say("office.level_cooldown", {"count": cooldown})

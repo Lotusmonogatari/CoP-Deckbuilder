@@ -67,3 +67,66 @@ func test_a_new_run_starts_the_clock_at_zero() -> void:
 
 func test_the_clock_is_saved() -> void:
 	assert_true("time_units" in GameState._SAVED_FIELDS)
+
+
+func _two_organizations() -> void:
+	GameState.reset_booster_standing()
+	GameState.booster_standing["BO05"] = 50
+	GameState.booster_standing["BO09"] = 10
+	GameState.last_decay_at = GameState.time_units
+	GameState.booster_moved_in_period = {}
+
+
+func test_decay_waits_for_the_decay_interval() -> void:
+	var interval := int(DataDB.balance.get("decay_interval", 6))
+	_two_organizations()
+	GameState.time_units += interval - 1
+	GameState._apply_time_decays()
+	assert_eq(int(GameState.booster_standing["BO05"]), 50, "one unit short of the interval")
+	GameState.time_units += 1
+	GameState._apply_time_decays()
+	assert_lt(int(GameState.booster_standing["BO05"]), 50, "the interval has passed")
+	assert_gt(int(GameState.booster_standing["BO09"]), 10)
+
+
+func test_decay_catches_up_one_tick_per_interval_and_clears_the_moved_list() -> void:
+	var interval := int(DataDB.balance.get("decay_interval", 6))
+	_two_organizations()
+	GameState.booster_moved_in_period = {"BO09": true}
+	GameState.time_units += interval * 2
+	GameState._apply_time_decays()
+	assert_eq(GameState.last_decay_at, GameState.time_units)
+	assert_true(GameState.booster_moved_in_period.is_empty())
+
+
+func test_an_organization_moved_since_the_last_tick_is_spared_neglect_decay_once() -> void:
+	var interval := int(DataDB.balance.get("decay_interval", 6))
+	var steps_before := int(DataDB.booster_standing.get("neglect_decay", 0))
+	if steps_before <= 0:
+		pending("neglect decay is off")
+		return
+	_two_organizations()
+	GameState.booster_moved_in_period = {"BO09": true}
+	GameState.time_units += interval
+	GameState._apply_neglect_decay()
+	assert_eq(int(GameState.booster_standing["BO09"]), 10, "dealt with, so left alone")
+	assert_lt(int(GameState.booster_standing["BO05"]), 50)
+
+
+func test_a_cooldown_is_measured_in_clock_units() -> void:
+	var level := {"level_id": "LV_T", "cooldown": 12}
+	var cleared := {"LV_T": 30}
+	assert_eq(Ledger.level_cooldown_remaining(level, 30, cleared), 12)
+	assert_eq(Ledger.level_cooldown_remaining(level, 40, cleared), 2)
+	assert_eq(Ledger.level_cooldown_remaining(level, 42, cleared), 0)
+
+
+func test_finishing_a_level_records_the_clock_it_finished_at() -> void:
+	GameState.begin_level(LevelRunner.new({"level_id": "LV_REC", "stages": [
+		{"seq": 1, "stage_id": "ST05", "mode": "Combat", "time_units": 4}]}))
+	var before := GameState.time_units
+	GameState.finish_stage(LevelRunner.WON)
+	# the id is not a real level, but the record is keyed by the runner's level id
+	assert_eq(int(GameState.level_cleared_units.get("LV_REC", -1)), before + 4)
+	GameState.level_cleared_units.erase("LV_REC")
+	GameState.level_last_completed_at.erase("LV_REC")

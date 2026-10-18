@@ -1332,7 +1332,7 @@
   {
     "key": "office.level_cooldown",
     "where": "Office — levels",
-    "english": "{count} more level(s) first",
+    "english": "Not available yet",
     "placeholders": "count",
     "notes": "Shown on a level still on cooldown when level_gating_enabled is true."
   },

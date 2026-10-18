@@ -52,13 +52,10 @@ func test_a_lost_stage_moves_nobody() -> void:
 	GameState.set_bill_lean("BI01", "Oppose")
 	_win_next_stage()
 	GameState.finish_stage(LevelRunner.LOST)
-	# The lost Town Hall ended the level, and an organization nobody dealt
-	# with drifts toward where it started (neglect decay, then its own Decay
-	# Percent of the distance): that is all that moved, not the stance's two.
-	var start := int(DataDB.get_booster("BO28").get("starting_standing", 30)) if DataDB.get_booster("BO28").get("starting_standing") != null else 30
-	var expected := BoosterStanding.decayed(50, start, 1)
-	expected = BoosterStanding.decayed_percent(expected, start, float(DataDB.get_booster("BO28")["decay_percent"]))
-	assert_eq(GameState.booster_standing["BO28"], expected)
+	# Only a won Combat stage drifts the sides; the lost Town Hall moved
+	# nobody (decay runs on the game clock, and two units have not reached it).
+	assert_eq(GameState.booster_standing["BO28"], 50)
+	assert_eq(GameState.booster_standing["BO05"], 50)
 
 
 func test_the_whole_ainu_example_with_a_switch_at_the_vote() -> void:

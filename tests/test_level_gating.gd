@@ -89,15 +89,15 @@ func test_a_level_never_played_is_never_on_cooldown() -> void:
 	assert_eq(Ledger.level_cooldown_remaining(level, 50, {}), 0)
 
 
-func test_cooldown_counts_down_as_other_levels_are_completed() -> void:
+func test_cooldown_counts_down_as_the_game_clock_moves() -> void:
 	var level := {"level_id": "LV_TEST", "cooldown": 3}
 	var last_at := {"LV_TEST": 10}
 	assert_eq(Ledger.level_cooldown_remaining(level, 10, last_at), 3,
 		"just finished, all 3 still owed")
 	assert_eq(Ledger.level_cooldown_remaining(level, 12, last_at), 1,
-		"two other levels finished since")
+		"two units have passed since")
 	assert_eq(Ledger.level_cooldown_remaining(level, 13, last_at), 0,
-		"three finished since — off cooldown")
+		"three units have passed since — off cooldown")
 	assert_eq(Ledger.level_cooldown_remaining(level, 99, last_at), 0,
 		"never goes negative")
 

@@ -2,7 +2,7 @@
   {
     "level_id": "LV01",
     "description": "Talking with Constituents",
-    "cooldown": 2,
+    "cooldown": 12,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -54,7 +54,7 @@
   {
     "level_id": "LV02",
     "description": "Meeting Lobbyists",
-    "cooldown": 1,
+    "cooldown": 6,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -97,7 +97,7 @@
   {
     "level_id": "LV03",
     "description": "Policy Listening and Study",
-    "cooldown": 3,
+    "cooldown": 18,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -149,7 +149,7 @@
   {
     "level_id": "LV04",
     "description": "Hearing at the Committee on the Environment",
-    "cooldown": 3,
+    "cooldown": 18,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -213,7 +213,7 @@
   {
     "level_id": "LV05",
     "description": "Media Rounds",
-    "cooldown": 5,
+    "cooldown": 30,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -295,7 +295,7 @@
   {
     "level_id": "LV06",
     "description": "Providing the Party Agricultural Policy Support",
-    "cooldown": 7,
+    "cooldown": 42,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -377,7 +377,7 @@
   {
     "level_id": "LV07",
     "description": "Providing the Party Infrastructure Policy Support",
-    "cooldown": 10,
+    "cooldown": 60,
     "tier": 0,
     "unlock_cost_vacant": 25,
     "unlock_cost_tier_0": 20,
@@ -450,7 +450,7 @@
   {
     "level_id": "LV08",
     "description": "Fighting on the Floor for the Party",
-    "cooldown": 15,
+    "cooldown": 90,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 25,
@@ -517,7 +517,7 @@
   {
     "level_id": "LV09",
     "description": "Filling in at Committees",
-    "cooldown": 15,
+    "cooldown": 90,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 25,
@@ -578,7 +578,7 @@
   {
     "level_id": "LV10",
     "description": "Advancing a Bill to Protect Hometown Markets",
-    "cooldown": 20,
+    "cooldown": 120,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 25,
@@ -654,7 +654,7 @@
   {
     "level_id": "LV11",
     "description": "Meeting with Student Organizers",
-    "cooldown": 5,
+    "cooldown": 30,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -718,7 +718,7 @@
   {
     "level_id": "LV12",
     "description": "Family Outreach Tour",
-    "cooldown": 6,
+    "cooldown": 36,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -785,7 +785,7 @@
   {
     "level_id": "LV13",
     "description": "Backing the Local Artisans",
-    "cooldown": 6,
+    "cooldown": 36,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -849,7 +849,7 @@
   {
     "level_id": "LV14",
     "description": "Fixing the Daily Commute",
-    "cooldown": 8,
+    "cooldown": 48,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -913,7 +913,7 @@
   {
     "level_id": "LV15",
     "description": "Courting the Traditionalist Wing",
-    "cooldown": 10,
+    "cooldown": 60,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -980,7 +980,7 @@
   {
     "level_id": "LV16",
     "description": "Running with the Reform Caucus",
-    "cooldown": 12,
+    "cooldown": 72,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1047,7 +1047,7 @@
   {
     "level_id": "LV17",
     "description": "Building the Next-Generation Coalition",
-    "cooldown": 14,
+    "cooldown": 84,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1117,7 +1117,7 @@
   {
     "level_id": "LV18",
     "description": "Uniting Main Street and Transit Riders",
-    "cooldown": 15,
+    "cooldown": 90,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1187,7 +1187,7 @@
   {
     "level_id": "LV19",
     "description": "Bridging Old Guard and New Wave",
-    "cooldown": 15,
+    "cooldown": 90,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1257,7 +1257,7 @@
   {
     "level_id": "LV20",
     "description": "Rallying Youth and Labor",
-    "cooldown": 10,
+    "cooldown": 60,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1324,7 +1324,7 @@
   {
     "level_id": "LV21",
     "description": "A Neighborhood Family Compact",
-    "cooldown": 12,
+    "cooldown": 72,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1391,7 +1391,7 @@
   {
     "level_id": "LV22",
     "description": "A Small Business Coalition",
-    "cooldown": 15,
+    "cooldown": 90,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1458,7 +1458,7 @@
   {
     "level_id": "LV23",
     "description": "A Metro Infrastructure Push",
-    "cooldown": 20,
+    "cooldown": 120,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1525,7 +1525,7 @@
   {
     "level_id": "LV24",
     "description": "Guarding the Old Order",
-    "cooldown": 20,
+    "cooldown": 120,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1592,7 +1592,7 @@
   {
     "level_id": "LV25",
     "description": "Riding the Reform Wave",
-    "cooldown": 20,
+    "cooldown": 120,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1659,7 +1659,7 @@
   {
     "level_id": "LV26",
     "description": "Coalition Building 101",
-    "cooldown": 5,
+    "cooldown": 30,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1735,7 +1735,7 @@
   {
     "level_id": "LV27",
     "description": "Rural Youth Initiative",
-    "cooldown": 13,
+    "cooldown": 78,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1802,7 +1802,7 @@
   {
     "level_id": "LV28",
     "description": "Kōenkai Family Ties",
-    "cooldown": 15,
+    "cooldown": 90,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1869,7 +1869,7 @@
   {
     "level_id": "LV29",
     "description": "A Main Street Infrastructure Bill",
-    "cooldown": 17,
+    "cooldown": 102,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1939,7 +1939,7 @@
   {
     "level_id": "LV30",
     "description": "A Grand Bargain",
-    "cooldown": 18,
+    "cooldown": 108,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -2009,7 +2009,7 @@
   {
     "level_id": "LV31",
     "description": "Ainu Heritage and Language Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 40,
@@ -2052,7 +2052,7 @@
   {
     "level_id": "LV32",
     "description": "Agricultural Price Stabilization Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 40,
@@ -2095,7 +2095,7 @@
   {
     "level_id": "LV33",
     "description": "Special Economic Zones Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 40,
@@ -2138,7 +2138,7 @@
   {
     "level_id": "LV34",
     "description": "Hokkaido Shinkansen Acceleration Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 40,
@@ -2181,7 +2181,7 @@
   {
     "level_id": "LV35",
     "description": "Chishima Coastal Defense Modernization Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 40,
@@ -2224,7 +2224,7 @@
   {
     "level_id": "LV36",
     "description": "Specified Skilled Worker Visa Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2267,7 +2267,7 @@
   {
     "level_id": "LV37",
     "description": "Grid Resilience and Renewable Energy Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2310,7 +2310,7 @@
   {
     "level_id": "LV38",
     "description": "Consumption Tax Rate Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2353,7 +2353,7 @@
   {
     "level_id": "LV39",
     "description": "Prefectural Fiscal Devolution Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2396,7 +2396,7 @@
   {
     "level_id": "LV40",
     "description": "Candidate Gender Parity Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2439,7 +2439,7 @@
   {
     "level_id": "LV41",
     "description": "Tsugaru Strait Joint Commission Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2482,7 +2482,7 @@
   {
     "level_id": "LV42",
     "description": "Judicial Appointments Commission Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2525,7 +2525,7 @@
   {
     "level_id": "LV43",
     "description": "Temple and Shrine Heritage Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2568,7 +2568,7 @@
   {
     "level_id": "LV44",
     "description": "Constituency Development Grants Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2611,7 +2611,7 @@
   {
     "level_id": "LV45",
     "description": "Digital Economy Promotion Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2654,7 +2654,7 @@
   {
     "level_id": "LV46",
     "description": "Organized Crime Conspiracy Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2697,7 +2697,7 @@
   {
     "level_id": "LV47",
     "description": "Partnership Registration Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2740,7 +2740,7 @@
   {
     "level_id": "LV48",
     "description": "National Emergency Powers Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -2783,7 +2783,7 @@
   {
     "level_id": "LV49",
     "description": "Yezo–US Security Consultation Agreement",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -2826,7 +2826,7 @@
   {
     "level_id": "LV50",
     "description": "Yezo–EU Economic Partnership Agreement",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -2869,7 +2869,7 @@
   {
     "level_id": "LV51",
     "description": "Strategic Land and Port Screening Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -2912,7 +2912,7 @@
   {
     "level_id": "LV52",
     "description": "Inbound Tourism Visa Waiver Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -2955,7 +2955,7 @@
   {
     "level_id": "LV53",
     "description": "Chishima Joint Economic Activity Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -2998,7 +2998,7 @@
   {
     "level_id": "LV54",
     "description": "Tomari Nuclear Restart Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3041,7 +3041,7 @@
   {
     "level_id": "LV55",
     "description": "Integrated Resort Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3084,7 +3084,7 @@
   {
     "level_id": "LV56",
     "description": "Civil Service Merit Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3127,7 +3127,7 @@
   {
     "level_id": "LV57",
     "description": "Regional Minimum Wage Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3170,7 +3170,7 @@
   {
     "level_id": "LV58",
     "description": "Independent Election Commission Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3213,7 +3213,7 @@
   {
     "level_id": "LV59",
     "description": "Moral Education Curriculum Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3256,7 +3256,7 @@
   {
     "level_id": "LV60",
     "description": "Foreign Resident Local Suffrage Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3299,7 +3299,7 @@
   {
     "level_id": "LV61",
     "description": "Rail Fares and Timetables",
-    "cooldown": 8,
+    "cooldown": 48,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -3360,7 +3360,7 @@
   {
     "level_id": "LV62",
     "description": "Fishing Quotas and Harbors",
-    "cooldown": 8,
+    "cooldown": 48,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -3421,7 +3421,7 @@
   {
     "level_id": "LV63",
     "description": "Wilderness and Wildlife Protection Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -3464,7 +3464,7 @@
   {
     "level_id": "LV64",
     "description": "Rural Hospital Network Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3507,7 +3507,7 @@
   {
     "level_id": "LV65",
     "description": "Digital Identity Card Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3550,7 +3550,7 @@
   {
     "level_id": "LV66",
     "description": "Public Broadcasting Independence Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -3593,7 +3593,7 @@
   {
     "level_id": "LV67",
     "description": "Political Donation Transparency Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3636,7 +3636,7 @@
   {
     "level_id": "LV68",
     "description": "Corporate Tax Reduction Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3679,7 +3679,7 @@
   {
     "level_id": "LV69",
     "description": "Carbon Levy Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3722,7 +3722,7 @@
   {
     "level_id": "LV70",
     "description": "Fisheries Quota Modernization Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -3765,7 +3765,7 @@
   {
     "level_id": "LV71",
     "description": "Shipbuilding and Defense Industry Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3808,7 +3808,7 @@
   {
     "level_id": "LV72",
     "description": "Constitutional Review Commission Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -3851,7 +3851,7 @@
   {
     "level_id": "LV73",
     "description": "Japan Customs and Border Cooperation Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -3894,7 +3894,7 @@
   {
     "level_id": "LV74",
     "description": "Chishima Resource Development Agreement Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -3937,7 +3937,7 @@
   {
     "level_id": "LV75",
     "description": "Yezo–China Trade Normalization Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -3980,7 +3980,7 @@
   {
     "level_id": "LV76",
     "description": "Farm Succession Support Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -4023,7 +4023,7 @@
   {
     "level_id": "LV77",
     "description": "University Autonomy and Research Funding Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -4066,7 +4066,7 @@
   {
     "level_id": "LV78",
     "description": "Workplace Equality Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -4109,7 +4109,7 @@
   {
     "level_id": "LV79",
     "description": "Parental Leave and Childcare Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -4152,7 +4152,7 @@
   {
     "level_id": "LV80",
     "description": "Public Safety Surveillance Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 2,
     "unlock_cost_vacant": 200,
     "unlock_cost_tier_0": 150,
@@ -4195,7 +4195,7 @@
   {
     "level_id": "LV81",
     "description": "Local Government Mergers Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 1,
     "unlock_cost_vacant": 100,
     "unlock_cost_tier_0": 80,
@@ -4238,7 +4238,7 @@
   {
     "level_id": "LV82",
     "description": "Party Leadership Selection Act",
-    "cooldown": 999,
+    "cooldown": 5994,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 40,

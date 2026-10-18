@@ -281,7 +281,7 @@
   "office.how_to_play": "How to Play",
   "office.in_order": "The office is in order.",
   "office.level_cannot_start": "This level cannot start:\n• {problems}",
-  "office.level_cooldown": "{count} more level(s) first",
+  "office.level_cooldown": "Not available yet",
   "office.level_unlock_cost": "Unlock — {cost} XP",
   "office.levels_blurb": "Each level is a run of stages. Pick one and you will see what it holds before you commit.",
   "office.levels_title": "Levels",

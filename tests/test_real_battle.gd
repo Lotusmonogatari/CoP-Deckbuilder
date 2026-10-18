@@ -813,6 +813,11 @@ func test_pleasing_and_displeasing_the_same_organisation_in_one_stage_nets_out()
 
 
 func test_an_opposed_organisation_loses_per_opposed_standing() -> void:
+	# Standing Links would nudge the numbers (a followed change), so this test
+	# runs without them, as every test that pins exact standings does.
+	var links_before: Array = DataDB.standing_links
+	DataDB.standing_links = []
+	GameState.last_decay_at = GameState.time_units   # no decay tick inside this test
 	GameState.reset_booster_standing()
 	var before := int(GameState.booster_standing["BO03"])
 
@@ -822,6 +827,7 @@ func test_an_opposed_organisation_loses_per_opposed_standing() -> void:
 	assert_eq(int(GameState.booster_standing["BO03"]),
 		before - int(DataDB.booster_standing["per_opposed"]))
 
+	DataDB.standing_links = links_before
 	GameState.end_level()
 
 

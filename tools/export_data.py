@@ -1063,7 +1063,7 @@ SHEETS = {
         "columns": [
             ("Level ID", "level_id", "id"),
             ("Level Description", "description", "str"),
-            ("Cooldown Period  (# of other levels to play before this level is available to play again)",
+            ("Cooldown Period (game clock units before this level is available to play again)",
              "cooldown", "int"),
             ("Level Tier", "tier", "int"),
             ("Cost in XP to Unlock if Policy Research Assistant is Vacant", "unlock_cost_vacant", "int"),
