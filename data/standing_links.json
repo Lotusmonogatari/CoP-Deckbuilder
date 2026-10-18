@@ -3,70 +3,70 @@
     "link_id": "SL01",
     "source": "Reputation",
     "target": "BO32",
-    "weight": 0.25,
-    "note": "Draft 2026-10-18: reputation weighs heavily with the Candidate Selection Committee."
+    "weight": 0.15,
+    "note": "Draft 2026-10-18: reputation weighs heavily with the Candidate Selection Committee. Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL02",
     "source": "BO01",
     "target": "BO32",
-    "weight": 0.15,
-    "note": "Draft: Party Headquarters standing carries over."
+    "weight": 0.09,
+    "note": "Draft: Party Headquarters standing carries over. Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL03",
     "source": "BO03",
     "target": "BO32",
-    "weight": 0.15,
-    "note": "Draft: Local Kōenkai standing carries over."
+    "weight": 0.09,
+    "note": "Draft: Local Kōenkai standing carries over. Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL04",
     "source": "BO08",
     "target": "BO32",
-    "weight": 0.05,
-    "note": "Draft: National Media counts a little."
+    "weight": 0.03,
+    "note": "Draft: National Media counts a little. Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL05",
     "source": "Funds",
     "target": "BO32",
-    "weight": 0.1,
-    "note": "Draft: Funds counts less because it swings a lot (see Balance: Standing Links: Yen Per Point)."
+    "weight": 0.06,
+    "note": "Draft: Funds counts less because it swings a lot (see Balance: Standing Links: Yen Per Point). Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL06",
     "source": "BO18",
     "target": "BO32",
-    "weight": 0.25,
-    "note": "Draft: Constituency Voters weigh heavily."
+    "weight": 0.15,
+    "note": "Draft: Constituency Voters weigh heavily. Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL07",
     "source": "BO31",
     "target": "BO32",
-    "weight": -0.3,
-    "note": "Draft rivalry: what pleases the Activists sets the Committee back."
+    "weight": -0.18,
+    "note": "Draft rivalry: what pleases the Activists sets the Committee back. Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL08",
     "source": "BO32",
     "target": "BO31",
-    "weight": -0.3,
-    "note": "Draft rivalry: what pleases the Committee sets the Activists back."
+    "weight": -0.18,
+    "note": "Draft rivalry: what pleases the Committee sets the Activists back. Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL09",
     "source": "BO01",
     "target": "BO02",
-    "weight": -0.3,
-    "note": "Draft rivalry: Headquarters against the Faction."
+    "weight": -0.18,
+    "note": "Draft rivalry: Headquarters against the Faction. Scaled x0.6 on 2026-10-18 after the playtest."
   },
   {
     "link_id": "SL10",
     "source": "BO02",
     "target": "BO01",
-    "weight": -0.3,
-    "note": "Draft rivalry: the Faction against Headquarters."
+    "weight": -0.18,
+    "note": "Draft rivalry: the Faction against Headquarters. Scaled x0.6 on 2026-10-18 after the playtest."
   }
 ]

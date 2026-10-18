@@ -496,6 +496,7 @@ func _play_level(level_id: String) -> void:
 			"Vote": _play_vote_stage(stage)
 			_: _play_battle_stage(stage)
 
+	_trace_party_bodies(level_id)
 	if guard >= 20:
 		_bug("%s did not finish within 20 stage iterations — possible infinite stage insertion" % level_id)
 
@@ -872,6 +873,34 @@ func _log(message: String) -> void:
 	print(message)
 
 
+## Party Activists (BO31) and the Candidate Selection Committee (BO32),
+## 2026-10-18: standing after each level, what moved them and why, and a
+## sanity check that they stay in range and that the Committee follows its
+## sources.
+var _party_trace: Array[String] = []
+var _party_range := {"BO31": [100, 0], "BO32": [100, 0]}
+
+
+func _trace_party_bodies(level_id: String) -> void:
+	var parts: Array[String] = []
+	for id: String in ["BO31", "BO32"]:
+		var now := int(GameState.booster_standing.get(id, -1))
+		if now < 0 or now > 100:
+			_bug("%s standing %d is out of range after %s" % [id, now, level_id])
+		var span: Array = _party_range[id]
+		span[0] = mini(int(span[0]), now)
+		span[1] = maxi(int(span[1]), now)
+		var why := ""
+		for entry: Dictionary in GameState.last_booster_cause.get(id, []):
+			why += " [%s %+d]" % [entry["cause"], int(entry["amount"])]
+		parts.append("%s=%d%s" % [id, now, why])
+	var line := "party bodies after %s: %s | HQ=%d Faction=%d own-party opinion=%d" % [
+		level_id, "  ".join(parts), int(GameState.booster_standing.get("BO01", 0)),
+		int(GameState.booster_standing.get("BO02", 0)), GameState.party_support_effective()]
+	_party_trace.append(line)
+	_log("  " + line)
+
+
 func _bug(message: String) -> void:
 	var entry := "[level_attempt=%d stage=%d] %s" % [_level_attempts, _stages_played, message]
 	_bugs.append(entry)
@@ -894,6 +923,9 @@ func _report() -> void:
 	_log("Lifetime gaffes: %d   Stages lost to gaffes: %d   Gaffe penalty applied: %s"
 		% [GameState.lifetime_gaffes, GameState.stages_lost_to_gaffes, GameState.gaffe_penalty_applied])
 	_log("stage_type_results: %s" % [GameState.stage_type_results])
+	_log("Party bodies: Activists %s (low, high), Committee %s; backing M47 owned: %s, M48 owned: %s" % [
+		_party_range["BO31"], _party_range["BO32"],
+		GameState.owned_modifiers.has("M47"), GameState.owned_modifiers.has("M48")])
 	_log("")
 
 	if _bugs.is_empty():

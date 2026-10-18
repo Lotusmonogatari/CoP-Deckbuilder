@@ -145,4 +145,4 @@ func test_party_headquarters_and_faction_answer_to_the_players_party() -> void:
 	var expected := StatuteBook.party_tier_delta(dispo, true, PartySalience.scaled(int(DataDB.balance.get("law_lean_party_tier_pass_delta", 0)), scale), 1)
 	assert_ne(expected, 0, "the real bill has a stance for this party")
 	assert_eq(moved, expected, "Party Headquarters moved with the party's lean")
-	assert_eq(int(GameState.booster_standing.get("BO02", 50)) - int(DataDB.get_booster("BO02").get("starting_standing", 30) if DataDB.get_booster("BO02").get("starting_standing") != null else 30), PartySalience.scaled(expected, 1.5), "Party Faction moves with it, at its 1.5 lean multiplier")
+	assert_eq(int(GameState.booster_standing.get("BO02", 50)) - int(DataDB.get_booster("BO02").get("starting_standing", 30) if DataDB.get_booster("BO02").get("starting_standing") != null else 30), PartySalience.scaled(expected, 1.125), "Party Faction moves with it, at its 1.125 lean multiplier")

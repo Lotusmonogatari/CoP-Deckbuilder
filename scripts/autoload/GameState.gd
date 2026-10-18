@@ -781,6 +781,29 @@ func _apply_neglect_decay() -> void:
 			_links_suspended = false
 
 
+## Every organization settles back toward its starting standing by its own
+## Decay Percent of the distance (the Boosters tab; blank falls back to
+## booster_standing.json's decay_percent). Triggers no Standing Links.
+func _apply_standing_decay() -> void:
+	var default_percent := float(DataDB.booster_standing.get("decay_percent", 0))
+	var default_start := int(DataDB.booster_standing.get("start", 30))
+	for booster: Dictionary in DataDB.boosters:
+		var id := str(booster.get("booster_id", ""))
+		if not booster_standing.has(id):
+			continue
+		var own_start: Variant = booster.get("starting_standing")
+		var own_percent: Variant = booster.get("decay_percent")
+		var now := int(booster_standing[id])
+		var target := BoosterStanding.decayed_percent(now,
+			default_start if own_start == null else int(own_start),
+			default_percent if own_percent == null else float(own_percent))
+		if target != now:
+			_links_suspended = true
+			_under_cause(Text.say("record.cause_decay"),
+				func() -> void: _apply_booster_delta(id, target - now))
+			_links_suspended = false
+
+
 ## The five parties the player isn't in, back to where party_standing.json
 ## starts them. The player's own party is never in here — see
 ## party_favorability()'s own comment.
@@ -931,6 +954,9 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		# Organisations nobody dealt with this level drift back toward where
 		# they started (booster_standing.json `neglect_decay`).
 		_apply_neglect_decay()
+		# And every organization, moved or not, settles back a little at its
+		# own rate (Boosters tab, Decay Percent).
+		_apply_standing_decay()
 
 		# Laws with an "each level" effect pay out at the end of every level
 		# after the one that passed them, win or loss (Law Effects tab).
