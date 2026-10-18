@@ -82,7 +82,8 @@ static func fill_tokens(text: String, tokens: Dictionary) -> String:
 ## A number that cannot be found is simply left out (so its token stays
 ## visible in the text) rather than guessed.
 static func live_tokens(stages: Array, rules: Dictionary, questions: Dictionary = {},
-		suits: Array = [], booster_names: Dictionary = {}) -> Dictionary:
+		suits: Array = [], booster_names: Dictionary = {},
+		style_line: String = "{style}: {names}") -> Dictionary:
 	var tokens := {}
 
 	var gaffe_limits: Array[int] = []
@@ -103,7 +104,7 @@ static func live_tokens(stages: Array, rules: Dictionary, questions: Dictionary 
 
 	# {pleasing_table}: which organisations each suit tends to please, read
 	# from the questions themselves (BoosterSuitTendency).
-	var table := BoosterSuitTendency.lines(questions, suits, booster_names)
+	var table := BoosterSuitTendency.lines(questions, suits, booster_names, style_line)
 	if not table.is_empty():
 		tokens["pleasing_table"] = "\n".join(table)
 

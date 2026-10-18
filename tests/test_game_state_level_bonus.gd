@@ -10,13 +10,20 @@ var _change_before: Dictionary = {}
 var _boosters_before: Array = []
 
 
+var _links_before: Array = []
+
+
 func before_each() -> void:
+	# Standing Links would move other organizations alongside the one under test.
+	_links_before = DataDB.standing_links
+	DataDB.standing_links = []
 	_standing_before = GameState.booster_standing.duplicate(true)
 	_change_before = GameState.last_booster_change.duplicate(true)
 	_boosters_before = DataDB.boosters.duplicate(true)
 
 
 func after_each() -> void:
+	DataDB.standing_links = _links_before
 	GameState.booster_standing = _standing_before.duplicate(true)
 	GameState.last_booster_change = _change_before.duplicate(true)
 	DataDB.boosters = _boosters_before.duplicate(true)

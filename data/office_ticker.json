@@ -1142,5 +1142,37 @@
     "condition_op": "failed",
     "condition_value": null,
     "text_en": "Yezo News reports the Party Leadership Selection Act has been voted down. ☼"
+  },
+  {
+    "ticker_id": "TK144",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Party activists are planning a rally outside the party office. ☼"
+  },
+  {
+    "ticker_id": "TK145",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "The Candidate Selection Committee is reviewing candidate applications. ☼"
+  },
+  {
+    "ticker_id": "TK146",
+    "condition_type": "meta",
+    "condition_target": "Party support",
+    "condition_op": "<",
+    "condition_value": 25.0,
+    "text_en": "Party activists are calling the leadership out of touch. ☼"
+  },
+  {
+    "ticker_id": "TK147",
+    "condition_type": "meta",
+    "condition_target": "Reputation",
+    "condition_op": ">=",
+    "condition_value": 70.0,
+    "text_en": "Word is the Candidate Selection Committee has your name on its list. ☼"
   }
 ]

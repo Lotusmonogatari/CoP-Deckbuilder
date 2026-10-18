@@ -35,7 +35,7 @@ const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"floor_votes", "how_to_play", "law_effects", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
-	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders",
+	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders", "standing_links",
 	"player", "player_cues", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "strings",
@@ -81,6 +81,9 @@ var level_intro_thoughts: Array = []
 ## Party Standing tab (2026-10-10): which organisations each party's opinion of
 ## the player rests on, and with what weight (negative = rival). See PartyOpinion.gd.
 var party_stakeholders: Array = []
+## Standing Links tab (2026-10-18): one organization following or opposing
+## another organization or a meta-variable. StandingLinks.gd reads it.
+var standing_links: Array = []
 
 ## The How to Play guide's entries (workbook tab "How To Play"), in workbook
 ## order. HowToPlay.gd sorts and groups them.
@@ -334,6 +337,7 @@ func load_all() -> void:
 			"level_intros": level_intros = content if content is Array else []
 			"level_intro_thoughts": level_intro_thoughts = content if content is Array else []
 			"party_stakeholders": party_stakeholders = content if content is Array else []
+			"standing_links": standing_links = content if content is Array else []
 			"how_to_play": how_to_play = content if content is Array else []
 			"transition_cast": transition_cast = content if content is Array else []
 			"transition_backgrounds": transition_backgrounds = content if content is Array else []

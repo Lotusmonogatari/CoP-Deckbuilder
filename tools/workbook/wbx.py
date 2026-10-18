@@ -107,3 +107,51 @@ class WB:
             if isinstance(v,tuple): self.set_cell(name,r,col,v[0],formula=v[1],**kw)
             else: self.set_cell(name,r,col,v,**kw)
         return r
+
+
+def add_sheet(path, name, headers, rows, widths=None):
+    """Appends a whole new worksheet (inline strings only, sharedStrings.xml
+    untouched). `rows` is a list of lists; numbers stay numbers. Used for
+    Standing Links (2026-10-18)."""
+    z = zipfile.ZipFile(path)
+    infos = z.infolist()
+    files = {i.filename: z.read(i.filename) for i in infos}
+    z.close()
+    nums = [int(m) for n in files for m in re.findall(r'^xl/worksheets/sheet(\d+)\.xml$', n)]
+    n = max(nums) + 1
+    wbx = files['xl/workbook.xml'].decode()
+    rels = files['xl/_rels/workbook.xml.rels'].decode()
+    ct = files['[Content_Types].xml'].decode()
+    sheet_id = max(int(m) for m in re.findall(r'sheetId="(\d+)"', wbx)) + 1
+    rid = 'rId%d' % (max(int(m) for m in re.findall(r'Id="rId(\d+)"', rels)) + 1)
+    wbx = wbx.replace('</sheets>', '<sheet name="%s" sheetId="%d" r:id="%s"/></sheets>' % (escape(name), sheet_id, rid))
+    rels = rels.replace('</Relationships>', '<Relationship Id="%s" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet%d.xml"/></Relationships>' % (rid, n))
+    ct = ct.replace('</Types>', '<Override PartName="/xl/worksheets/sheet%d.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>' % n)
+
+    def cell(ref, v):
+        if v is None or v == '':
+            return ''
+        if isinstance(v, (int, float)):
+            return '<c r="%s"><v>%s</v></c>' % (ref, v)
+        return '<c r="%s" t="inlineStr"><is><t xml:space="preserve">%s</t></is></c>' % (ref, escape(str(v)))
+    body = ''
+    for r, row in enumerate([headers] + rows, start=1):
+        body += '<row r="%d">%s</row>' % (r, ''.join(cell(n2col(c) + str(r), v) for c, v in enumerate(row, start=1)))
+    widths = widths or [12] * len(headers)
+    cols = ''.join('<col min="%d" max="%d" width="%s" customWidth="1"/>' % (i, i, w) for i, w in enumerate(widths, start=1))
+    xml = ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'
+           '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
+           'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+           '<dimension ref="A1:%s%d"/><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>'
+           '<sheetFormatPr defaultRowHeight="15"/><cols>%s</cols><sheetData>%s</sheetData></worksheet>'
+           % (n2col(len(headers)), len(rows) + 1, cols, body))
+    files['xl/workbook.xml'] = wbx.encode()
+    files['xl/_rels/workbook.xml.rels'] = rels.encode()
+    files['[Content_Types].xml'] = ct.encode()
+    files['xl/worksheets/sheet%d.xml' % n] = xml.encode()
+    zo = zipfile.ZipFile(path + '.tmp', 'w', zipfile.ZIP_DEFLATED)
+    for it in infos:
+        zo.writestr(it, files[it.filename])
+    zo.writestr('xl/worksheets/sheet%d.xml' % n, files['xl/worksheets/sheet%d.xml' % n])
+    zo.close()
+    shutil.move(path + '.tmp', path)

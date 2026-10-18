@@ -602,6 +602,23 @@ SHEETS = {
             ("Note", "note", "str"),
         ],
     },
+    # Standing Links (2026-10-18): one organization's standing following (a
+    # positive weight) or opposing (negative, a rivalry) the movement of
+    # another organization or a meta-variable. Source is a BOxx or a Sanban
+    # name (Reputation, Funds ...); Target is a BOxx. Weight is the share of
+    # the source's change, in standing points, that the target takes.
+    "Standing Links": {
+        "out": "standing_links.json",
+        "optional_sheet": True,
+        "key": "link_id",
+        "columns": [
+            ("Link ID", "link_id", "id"),
+            ("Source", "source", "str"),
+            ("Target", "target", "id"),
+            ("Weight", "weight", "num"),
+            ("Note", "note", "str"),
+        ],
+    },
     "Text": {
         "out": "strings.json",
         "key": "key",
@@ -805,6 +822,10 @@ SHEETS = {
             # "start" — GameState.reset_booster_standing() reads this column
             # first, per booster, before the flat default.
             ("Starting Standing", "starting_standing", "int"),
+            # Party-tier organizations only (2026-10-18): how hard this body
+            # reacts when a bill goes for or against the player's party.
+            # Blank = 1.0 (GameState._apply_party_tier_lean()).
+            ("Party Lean Multiplier", "party_lean_multiplier", "num"),
         ],
     },
     # National Assembly Floor Voting (ST23, 2026-09-26): the six real-world
@@ -1793,7 +1814,7 @@ def validate(data, report):
     # --- modifiers ---------------------------------------------------------
     valid_effect_types = {
         "RESOURCE_BONUS_ON_WIN", "STAGE_START_BONUS", "HAND_SIZE_BONUS",
-        "GAFFE_LIMIT_BONUS", "FUNDS_INCOME_FREEZE",
+        "GAFFE_LIMIT_BONUS", "FUNDS_INCOME_FREEZE", "PARTY_BILL_FLIP_BONUS",
     }
     for mod in data["modifiers"]:
         mid = mod["mod_id"]
@@ -1828,12 +1849,16 @@ def validate(data, report):
                 f"{sorted(valid_effect_types)} (data guide §2.1)",
             )
         if mod["effect_type"] in ("STAGE_START_BONUS", "HAND_SIZE_BONUS", "GAFFE_LIMIT_BONUS"):
-            if mod["effect_target"] not in stage_ids:
-                report.error(
-                    "modifiers",
-                    f"{mid} ({mod['effect_type']}) targets '{mod['effect_target']}', "
-                    "which is not a stage in the Stages tab",
-                )
+            # One stage, or several separated by semicolons (2026-10-18).
+            for one_target in [t.strip() for t in str(mod["effect_target"] or "").split(";")]:
+                if one_target not in stage_ids:
+                    report.error(
+                        "modifiers",
+                        f"{mid} ({mod['effect_type']}) targets '{one_target}', "
+                        "which is not a stage in the Stages tab",
+                    )
+        if mod["effect_type"] == "PARTY_BILL_FLIP_BONUS" and mod["effect_target"] != "PartySupport":
+            report.error("modifiers", f"{mid} (PARTY_BILL_FLIP_BONUS) must target PartySupport")
         if mod["effect_type"] == "RESOURCE_BONUS_ON_WIN":
             if mod["effect_target"] not in ("XP", "Yen", "Jiban", "PartySupport"):
                 report.error(
@@ -2649,6 +2674,18 @@ def fold_questions(data, report):
         if (pid, bid) in seen_pairs:
             report.warn("Party Standing", f"{pid}/{bid} is listed twice; both weights add up")
         seen_pairs.add((pid, bid))
+
+    sanban_names = {row.get("name_en") for row in data.get("sanban", [])}
+    for row in data.get("standing_links", []):
+        lid = row.get("link_id")
+        if row.get("source") not in booster_ids and row.get("source") not in sanban_names:
+            report.error("Standing Links", f"{lid}: source '{row.get('source')}' is neither a booster ID nor a Sanban variable")
+        if row.get("target") not in booster_ids:
+            report.error("Standing Links", f"{lid}: target '{row.get('target')}' is not in the Boosters tab")
+        if row.get("source") == row.get("target"):
+            report.error("Standing Links", f"{lid}: an organization cannot link to itself")
+        if row.get("weight") is None:
+            report.warn("Standing Links", f"{lid} has no weight, so it counts as 0")
 
     # Who asks (2026-09-26, Cameron: "the databook is the governing data" —
     # call an opponent up by their own Stage ID, never a hand-maintained

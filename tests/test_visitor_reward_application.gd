@@ -13,7 +13,13 @@ var _pending_before: Dictionary = {}
 var _shop_before: Array = []
 
 
+var _links_before: Array = []
+
+
 func before_each() -> void:
+	# Standing Links would move other organizations alongside the one under test.
+	_links_before = DataDB.standing_links
+	DataDB.standing_links = []
 	_owned_before = GameState.owned_modifiers.duplicate()
 	_standing_before = GameState.booster_standing.duplicate(true)
 	_favorability_before = GameState.segment_favorability.duplicate(true)
@@ -23,6 +29,7 @@ func before_each() -> void:
 
 
 func after_each() -> void:
+	DataDB.standing_links = _links_before
 	GameState.owned_modifiers = _owned_before.duplicate()
 	GameState.booster_standing = _standing_before.duplicate(true)
 	GameState.segment_favorability = _favorability_before.duplicate(true)

@@ -195,7 +195,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO08"
+        "BO08",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -378,7 +379,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO01"
+        "BO01",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO02"
@@ -521,7 +523,8 @@
       },
       "pleases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11"
@@ -564,7 +567,8 @@
       },
       "pleases_boosters": [
         "BO02",
-        "BO01"
+        "BO01",
+        "BO32"
       ],
       "asked_by": "OP113"
     },
@@ -582,7 +586,8 @@
       },
       "pleases_boosters": [
         "BO02",
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO01",
@@ -604,7 +609,8 @@
       },
       "pleases_boosters": [
         "BO01",
-        "BO02"
+        "BO02",
+        "BO32"
       ],
       "asked_by": "OP115"
     },
@@ -900,7 +906,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO08"
+        "BO08",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -1115,7 +1122,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO06"
+        "BO06",
+        "BO31"
       ],
       "asked_by": "OP120"
     },
@@ -1219,7 +1227,8 @@
       },
       "pleases_boosters": [
         "BO03",
-        "BO28"
+        "BO28",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO15"
@@ -1592,7 +1601,8 @@
       },
       "pleases_boosters": [
         "BO17",
-        "BO22"
+        "BO22",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO18",
@@ -1720,7 +1730,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO15"
+        "BO15",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11"
@@ -2586,7 +2597,8 @@
       },
       "pleases_boosters": [
         "BO20",
-        "BO15"
+        "BO15",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11"
@@ -2628,7 +2640,8 @@
       },
       "pleases_boosters": [
         "BO15",
-        "BO17"
+        "BO17",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11",
@@ -2735,7 +2748,8 @@
       },
       "pleases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO30",
@@ -2881,7 +2895,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO11"
+        "BO11",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO15"
@@ -2901,7 +2916,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO15"
+        "BO15",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11"
@@ -3072,7 +3088,8 @@
       },
       "pleases_boosters": [
         "BO10",
-        "BO24"
+        "BO24",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO27",
@@ -3134,7 +3151,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO05"
+        "BO05",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO09"
@@ -3256,10 +3274,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO02"
-      ],
-      "displeases_boosters": [
-        "BO01"
+        "BO31"
       ],
       "asked_by": "OP118"
     },
@@ -3444,7 +3459,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO01"
+        "BO01",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO02"
@@ -3465,7 +3481,8 @@
       },
       "pleases_boosters": [
         "BO22",
-        "BO23"
+        "BO23",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11",
@@ -3573,7 +3590,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO17"
+        "BO17",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO18"
@@ -3615,7 +3633,8 @@
       },
       "pleases_boosters": [
         "BO17",
-        "BO22"
+        "BO22",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO18",
@@ -3656,7 +3675,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO15"
+        "BO15",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11"
@@ -3850,7 +3870,8 @@
       },
       "pleases_boosters": [
         "BO01",
-        "BO23"
+        "BO23",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO02",
@@ -3915,7 +3936,8 @@
         "BO13",
         "BO19",
         "BO20",
-        "BO29"
+        "BO29",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11",
@@ -4370,7 +4392,8 @@
       "pleases_boosters": [
         "BO15",
         "BO20",
-        "BO03"
+        "BO03",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11"
@@ -4540,7 +4563,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO02"
+        "BO02",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -5075,7 +5099,8 @@
       },
       "pleases_boosters": [
         "BO01",
-        "BO02"
+        "BO02",
+        "BO32"
       ],
       "asked_by": "OP11"
     },
@@ -5114,7 +5139,8 @@
       },
       "pleases_boosters": [
         "BO27",
-        "BO11"
+        "BO11",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO30",
@@ -5219,7 +5245,8 @@
       },
       "pleases_boosters": [
         "BO24",
-        "BO05"
+        "BO05",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO26",
@@ -5241,7 +5268,8 @@
       },
       "pleases_boosters": [
         "BO08",
-        "BO26"
+        "BO26",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01",
@@ -5322,7 +5350,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO02"
+        "BO02",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -5403,7 +5432,8 @@
       },
       "pleases_boosters": [
         "BO24",
-        "BO05"
+        "BO05",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO26",
@@ -5446,7 +5476,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO02"
+        "BO02",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -5466,7 +5497,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO08"
+        "BO08",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -5508,7 +5540,8 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO08"
+        "BO08",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -5652,7 +5685,8 @@
       },
       "pleases_boosters": [
         "BO15",
-        "BO17"
+        "BO17",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO11",
@@ -5674,7 +5708,8 @@
       },
       "pleases_boosters": [
         "BO02",
-        "BO01"
+        "BO01",
+        "BO32"
       ],
       "asked_by": "OP110"
     },
@@ -5692,7 +5727,8 @@
       },
       "pleases_boosters": [
         "BO02",
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO01",
@@ -5776,7 +5812,8 @@
       },
       "pleases_boosters": [
         "BO08",
-        "BO26"
+        "BO26",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01",
@@ -5798,7 +5835,8 @@
       },
       "pleases_boosters": [
         "BO03",
-        "BO28"
+        "BO28",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO15"
@@ -5934,7 +5972,8 @@
       },
       "pleases_boosters": [
         "BO17",
-        "BO08"
+        "BO08",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO18",
@@ -6137,7 +6176,8 @@
       },
       "pleases_boosters": [
         "BO17",
-        "BO22"
+        "BO22",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO18",
@@ -6163,7 +6203,8 @@
       },
       "pleases_boosters": [
         "BO17",
-        "BO23"
+        "BO23",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO18",
@@ -6214,7 +6255,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO18"
@@ -7367,7 +7409,8 @@
       },
       "pleases_boosters": [
         "BO26",
-        "BO07"
+        "BO07",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO24"
@@ -7391,7 +7434,8 @@
       },
       "pleases_boosters": [
         "BO26",
-        "BO07"
+        "BO07",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO24"
@@ -8656,10 +8700,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO02"
-      ],
-      "displeases_boosters": [
-        "BO01"
+        "BO31"
       ],
       "stage_ids": [
         "ST01",
@@ -12005,7 +12046,8 @@
       "pleases_boosters": [
         "BO11",
         "BO18",
-        "BO08"
+        "BO08",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO15",
@@ -12029,7 +12071,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO17"
+        "BO17",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO18"
@@ -12052,7 +12095,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO17"
+        "BO17",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO18"
@@ -12121,10 +12165,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO02"
-      ],
-      "displeases_boosters": [
-        "BO01"
+        "BO31"
       ],
       "stage_ids": [
         "ST02"
@@ -12169,7 +12210,8 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO08"
+        "BO08",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -12777,7 +12819,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO02"
+        "BO02",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -12907,7 +12950,8 @@
       },
       "pleases_boosters": [
         "BO01",
-        "BO02"
+        "BO02",
+        "BO32"
       ],
       "stage_ids": [
         "ST03",
@@ -13080,7 +13124,8 @@
       "pleases_boosters": [
         "BO11",
         "BO18",
-        "BO08"
+        "BO08",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO15",
@@ -13301,7 +13346,8 @@
       },
       "pleases_boosters": [
         "BO01",
-        "BO02"
+        "BO02",
+        "BO32"
       ],
       "stage_ids": [
         "ST03",
@@ -13430,7 +13476,8 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO01"
+        "BO01",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO02"
@@ -13561,7 +13608,8 @@
       },
       "pleases_boosters": [
         "BO02",
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO01",
@@ -13819,10 +13867,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO02"
-      ],
-      "displeases_boosters": [
-        "BO01"
+        "BO31"
       ],
       "stage_ids": [
         "ST03",
@@ -14258,7 +14303,8 @@
       },
       "pleases_boosters": [
         "BO02",
-        "BO01"
+        "BO01",
+        "BO32"
       ],
       "stage_ids": [
         "ST06",
@@ -14316,7 +14362,8 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO08"
+        "BO08",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO01"
@@ -14565,7 +14612,8 @@
       },
       "pleases_boosters": [
         "BO02",
-        "BO01"
+        "BO01",
+        "BO32"
       ],
       "stage_ids": [
         "ST08"
@@ -14726,7 +14774,8 @@
       "pleases_boosters": [
         "BO11",
         "BO18",
-        "BO08"
+        "BO08",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO15",
@@ -14774,7 +14823,8 @@
       },
       "pleases_boosters": [
         "BO02",
-        "BO17"
+        "BO17",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO01",
@@ -14798,7 +14848,8 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO01"
+        "BO01",
+        "BO31"
       ],
       "displeases_boosters": [
         "BO02"
@@ -15814,7 +15865,8 @@
       "pleases_boosters": [
         "BO11",
         "BO18",
-        "BO08"
+        "BO08",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO15",
@@ -15840,7 +15892,8 @@
       "pleases_boosters": [
         "BO11",
         "BO18",
-        "BO08"
+        "BO08",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO15",
@@ -16118,7 +16171,8 @@
       "pleases_boosters": [
         "BO11",
         "BO18",
-        "BO08"
+        "BO08",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO15",
@@ -16144,7 +16198,8 @@
       "pleases_boosters": [
         "BO11",
         "BO18",
-        "BO08"
+        "BO08",
+        "BO32"
       ],
       "displeases_boosters": [
         "BO15",
@@ -21074,6 +21129,747 @@
         "BI50"
       ],
       "stage_ids": []
+    },
+    {
+      "id": "S565",
+      "text": "Why does the party keep softening its message to please its critics?",
+      "theme": "Purity of the cause",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO31",
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S566",
+      "text": "Is compromise with the other side a betrayal of our members?",
+      "theme": "Compromise",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO31"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S567",
+      "text": "When will the party stop apologizing and start fighting?",
+      "theme": "Purity of the cause",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO31",
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S568",
+      "text": "Who is the establishment protecting, and who is it ignoring?",
+      "theme": "Establishment",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO31",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S569",
+      "text": "Will you stand with the members on the street, or with the people in suits?",
+      "theme": "Street mobilization",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO31",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S570",
+      "text": "Why should members trust leaders who answer to donors?",
+      "theme": "Establishment",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO31",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S571",
+      "text": "Can a movement win without a clear enemy?",
+      "theme": "Compromise",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO31"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S572",
+      "text": "What do you say to members who think the party has lost its nerve?",
+      "theme": "Purity of the cause",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO31",
+        "BO02"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP17"
+    },
+    {
+      "id": "S573",
+      "text": "Why should this committee choose you over a safer candidate?",
+      "theme": "Selection process",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP30"
+    },
+    {
+      "id": "S574",
+      "text": "How do you show a local record in a district that does not know you?",
+      "theme": "Local standing",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO03",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP31"
+    },
+    {
+      "id": "S575",
+      "text": "Would voters in your district describe you as one of them?",
+      "theme": "Local standing",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO03",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP52"
+    },
+    {
+      "id": "S576",
+      "text": "How much of your campaign can you fund without outside help?",
+      "theme": "Candidate finances",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP58"
+    },
+    {
+      "id": "S577",
+      "text": "Which of your past statements would you want this committee not to read?",
+      "theme": "Candidate vetting",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO08"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP66"
+    },
+    {
+      "id": "S578",
+      "text": "How will the press treat you once you are the party's candidate?",
+      "theme": "Candidate quality",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO08",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP77"
+    },
+    {
+      "id": "S579",
+      "text": "What will you do if the committee picks someone else?",
+      "theme": "Selection process",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP85"
+    },
+    {
+      "id": "S580",
+      "text": "Is the party better served by a loyalist or an independent voice?",
+      "theme": "Selection process",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "S",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO01"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP90"
+    },
+    {
+      "id": "S581",
+      "text": "How do you win both the party base and the undecided?",
+      "theme": "Candidate quality",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO08",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP101"
+    },
+    {
+      "id": "S582",
+      "text": "What has your work done for ordinary voters, beyond speeches?",
+      "theme": "Local standing",
+      "grades": {
+        "Earnest": "W",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO32",
+        "BO03",
+        "BO18"
+      ],
+      "stage_ids": [
+        "ST03",
+        "ST35",
+        "ST39",
+        "ST42",
+        "ST45",
+        "ST49",
+        "ST52",
+        "ST56",
+        "ST59",
+        "ST62",
+        "ST65",
+        "ST68",
+        "ST72",
+        "ST75",
+        "ST78",
+        "ST81",
+        "ST85",
+        "ST89",
+        "ST93",
+        "ST97",
+        "ST100"
+      ],
+      "asked_by": "OP17"
     }
   ]
 }
