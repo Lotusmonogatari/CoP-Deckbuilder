@@ -85,31 +85,24 @@ static func decline_cost(kind: String, balance: Dictionary) -> int:
 
 
 ## Swaps Amend allows. Favor: replace either of the two components with the
-## owner's third. Flagship: replace the ally's component with another of the
-## ally's. Returns [{"replace": id, "with": id}], leaving out components that
-## are already law (`enacted`) or already in the bill.
+## owner's spare from the same pool (slot V). Flagship: replace the ally's offer
+## with another of the ally's offers. Returns [{"replace": id, "with": id}],
+## leaving out components that are already law (`enacted`) or in the bill.
 static func amend_options(patron_bill: Dictionary, by_id: Dictionary, enacted: Array) -> Array:
 	var ids: Array = patron_bill.get("components", []) as Array
 	var out: Array = []
 	if ids.is_empty():
 		return out
-	var kind := str(patron_bill.get("kind", FAVOR))
-	var owner := str((by_id.get(str(ids[0]), {}) as Dictionary).get("owner", ""))
-	var replace_pool: Array = []
-	var from_owner := owner
-	if kind == FLAGSHIP and ids.size() >= 3:
+	var replace_pool: Array = ids.duplicate()
+	if str(patron_bill.get("kind", FAVOR)) == FLAGSHIP and ids.size() >= 3:
 		replace_pool = [ids[2]]
-		from_owner = str((by_id.get(str(ids[2]), {}) as Dictionary).get("owner", ""))
-	else:
-		replace_pool = ids.duplicate()
-	var candidates: Array = by_id.keys()
-	candidates.sort()
 	for replaced: Variant in replace_pool:
-		for candidate_id: String in candidates:
-			var candidate: Dictionary = by_id[candidate_id]
-			if str(candidate.get("owner", "")) == from_owner and not ids.has(candidate_id) \
-					and not enacted.has(candidate_id):
-				out.append({"replace": str(replaced), "with": candidate_id})
+		var component: Dictionary = by_id.get(str(replaced), {})
+		var owner := str(component.get("owner", ""))
+		var pool := ComposedBill.pool_of(str(component.get("slot", "")))
+		for candidate_id: Variant in ComposedBill.pool_members(owner, pool, by_id):
+			if not ids.has(candidate_id) and not enacted.has(candidate_id):
+				out.append({"replace": str(replaced), "with": str(candidate_id)})
 	return out
 
 

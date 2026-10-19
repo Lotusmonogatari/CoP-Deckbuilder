@@ -12,7 +12,32 @@ extends RefCounted
 ##
 ## Pure and UI-free (CLAUDE.md section 12).
 
-const SLOT_ORDER := ["X", "Y", "Z"]
+## Slots and the pool each belongs to (2026-10-19). A swap always stays inside
+## the pool: a Favor component for a Favor component, a Flagship's own for its
+## own, an ally offer for an ally offer. Order inside a pool is the order below.
+const POOLS := {
+	"favor": ["X", "Y", "V"],
+	"flagship": ["Z", "W"],
+	"offer": ["A", "B", "C", "D"],
+}
+
+
+static func pool_of(slot: String) -> String:
+	for pool: String in POOLS:
+		if (POOLS[pool] as Array).has(slot):
+			return pool
+	return ""
+
+
+## The owner's components in `pool`, in slot order, as component ids.
+static func pool_members(owner: String, pool: String, by_id: Dictionary) -> Array:
+	var out: Array = []
+	for slot: String in POOLS.get(pool, []):
+		for id: String in by_id:
+			var component: Dictionary = by_id[id]
+			if str(component.get("owner", "")) == owner and str(component.get("slot", "")) == slot:
+				out.append(id)
+	return out
 
 
 ## The bill's words: "A bill to {a} and {b}" or "A bill to {a}, {b} and {c}".
@@ -45,26 +70,24 @@ static func has_conflict(ids: Array, by_id: Dictionary) -> bool:
 
 
 ## Replaces every component in `ids` that is already law (`enacted`, an array
-## of component ids) with the same owner's first component, in slot order, that
-## is not law and not already in the bill. Returns {"ids": Array, "ok": bool};
-## ok is false when some repeat has nothing to replace it, in which case the
-## bill should not be offered.
+## of component ids) with the same owner's first component, in the same pool and
+## slot order, that is not law and not already in the bill. Returns {"ids":
+## Array, "ok": bool}; ok is false when some repeat has nothing to replace it,
+## in which case the bill should not be offered. (The workbook is checked at
+## export so this cannot happen: see "Option A coverage" in export_data.py.)
 static func substitute_enacted(ids: Array, by_id: Dictionary, enacted: Array) -> Dictionary:
 	var out: Array = ids.duplicate()
 	var ok := true
 	for i in range(out.size()):
 		if not enacted.has(out[i]):
 			continue
-		var owner := str((by_id.get(out[i], {}) as Dictionary).get("owner", ""))
+		var component: Dictionary = by_id.get(out[i], {})
+		var owner := str(component.get("owner", ""))
+		var pool := pool_of(str(component.get("slot", "")))
 		var swap := ""
-		for slot: String in SLOT_ORDER:
-			for candidate_id: String in by_id:
-				var candidate: Dictionary = by_id[candidate_id]
-				if str(candidate.get("owner", "")) == owner and str(candidate.get("slot", "")) == slot \
-						and not enacted.has(candidate_id) and not out.has(candidate_id):
-					swap = candidate_id
-					break
-			if swap != "":
+		for candidate_id: Variant in pool_members(owner, pool, by_id):
+			if not enacted.has(candidate_id) and not out.has(candidate_id):
+				swap = str(candidate_id)
 				break
 		if swap == "":
 			ok = false
@@ -96,9 +119,20 @@ static func merged_effects(ids: Array, by_id: Dictionary, percent: int) -> Array
 	return out
 
 
+## The seats each party's vote resistance lets the player's influence swing:
+## {party_id: floor(seats x (1 - resistance))}. A party without its own
+## Vote Resistance uses `default_resistance` (percent).
+static func swing_capacity(parties: Array, default_resistance: int) -> Dictionary:
+	var out := {}
+	for party: Dictionary in parties:
+		var resistance := int(party.get("vote_resistance", default_resistance)) if party.get("vote_resistance") != null else default_resistance
+		out[str(party.get("party_id", ""))] = floori(int(party.get("seats", 0)) * (1.0 - resistance / 100.0))
+	return out
+
+
 ## The bill record. `ctx` carries everything the bill needs from outside:
 ##   parties, salience (BillPositions.salience_table), threshold, yes_cap (-1 =
-##   none), template_2, template_3, bill_id, favorability {supportive, opposed,
+##   none), yes_floor (-1 = none), capacity (swing_capacity()), template_2, template_3, bill_id, favorability {supportive, opposed,
 ##   neutral}, law_scale_percent, proponent_party.
 static func compose(ids: Array, by_id: Dictionary, ctx: Dictionary) -> Dictionary:
 	var phrases: Array = []
@@ -130,5 +164,6 @@ static func compose(ids: Array, by_id: Dictionary, ctx: Dictionary) -> Dictionar
 		"effects": merged_effects(ids, by_id, int(ctx.get("law_scale_percent", 100))),
 		"positions": BillPositions.positions(tags, ctx.get("parties", []) as Array,
 				ctx.get("salience", {}) as Dictionary, float(ctx.get("threshold", 30)),
-				int(ctx.get("yes_cap", -1))),
+				int(ctx.get("yes_cap", -1)), {}, int(ctx.get("yes_floor", -1)),
+				ctx.get("capacity", {}) as Dictionary),
 	}

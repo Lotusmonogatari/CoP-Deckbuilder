@@ -63,5 +63,6 @@
   "custom_law_scale_percent": 50,
   "bill_position_lean_threshold": 30,
   "patron_rival_fail_standing": 1,
+  "patron_default_yes_floor": 44,
   "xp_tiers": {}
 }

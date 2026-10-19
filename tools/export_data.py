@@ -2860,14 +2860,21 @@ def fold_questions(data, report):
         return b is not None and str(b.get("tier") or "").strip() != "Party"
 
     seen_slots = set()
+    # Slots (2026-10-19): X, Y and V are the Favor pool (a Favor uses two, the
+    # third is the Amend spare); Z and W are the Flagship's own two; A-D are
+    # offers other organizations' Flagships may use as their ally component.
+    COMPONENT_SLOTS = ("X", "Y", "V", "Z", "W", "A", "B", "C", "D")
+    FAVOR_SLOTS = ("X", "Y", "V")
+    OWN_FLAGSHIP_SLOTS = ("Z", "W")
+    OFFER_SLOTS = ("A", "B", "C", "D")
     for cid, c in components.items():
         owner = c.get("owner")
         if owner not in booster_rows:
             report.error("Bill Components", f"{cid}: owner '{owner}' is not in the Boosters tab")
         elif not _non_party_org(owner):
             report.error("Bill Components", f"{cid}: {owner} is a Party Body; party bodies have no bills (Cameron, 2026-10-19)")
-        if c.get("slot") not in ("X", "Y", "Z"):
-            report.error("Bill Components", f"{cid}: Slot '{c.get('slot')}' must be X, Y or Z")
+        if c.get("slot") not in COMPONENT_SLOTS:
+            report.error("Bill Components", f"{cid}: Slot '{c.get('slot')}' must be one of {', '.join(COMPONENT_SLOTS)}")
         if (owner, c.get("slot")) in seen_slots:
             report.error("Bill Components", f"{cid}: {owner} already has a component in slot {c.get('slot')}")
         seen_slots.add((owner, c.get("slot")))
@@ -2930,8 +2937,14 @@ def fold_questions(data, report):
             if cid not in components:
                 report.error("Patron Bills", f"{pid_}: component '{cid}' does not exist")
         owners = [components[c].get("owner") for c in comp_list if c in components]
+        slots_used = [components[c].get("slot") for c in comp_list if c in components]
         if kind == "Favor" and any(o != org for o in owners):
             report.error("Patron Bills", f"{pid_}: a Favor bill uses only {org}'s own components")
+        if kind == "Favor" and any(s not in FAVOR_SLOTS for s in slots_used):
+            report.error("Patron Bills", f"{pid_}: a Favor bill uses slots {', '.join(FAVOR_SLOTS)} only")
+        if kind == "Flagship" and len(slots_used) == 3 and (
+                any(s not in OWN_FLAGSHIP_SLOTS for s in slots_used[:2]) or slots_used[2] not in OFFER_SLOTS):
+            report.error("Patron Bills", f"{pid_}: a Flagship uses {org}'s Z and W, then one of the ally's offers (A-D)")
         if kind == "Flagship":
             ally = r.get("ally")
             if not _non_party_org(ally) or ally == org:
@@ -2951,6 +2964,30 @@ def fold_questions(data, report):
                            ("pass_line", "Pass Line"), ("fail_line", "Fail Line")):
             if not r.get(col):
                 report.warn("Patron Bills", f"{pid_} has no {label}")
+    # Option A coverage (2026-10-19): enough alternatives that every patron
+    # bill can arise whatever order requests are accepted in, and can be
+    # amended. A Favor pool needs three (two used, one Amend spare); a
+    # Flagship needs its own two; an ally needs one offer per Flagship that
+    # names it plus one spare, so a repeat can always be swapped out.
+    if data.get("patron_bills"):
+        by_owner_slots = {}
+        for cid, c in components.items():
+            by_owner_slots.setdefault(c.get("owner"), []).append(c.get("slot"))
+        patrons = {r.get("organization") for r in data["patron_bills"]}
+        for org in sorted(patrons):
+            slots_here = by_owner_slots.get(org, [])
+            if sum(1 for s in slots_here if s in FAVOR_SLOTS) < 3:
+                report.error("Patron Bills", f"{org} needs three Favor-pool components (X, Y, V): two for the Favor, one spare for Amend")
+            if sum(1 for s in slots_here if s in OWN_FLAGSHIP_SLOTS) < 2:
+                report.error("Patron Bills", f"{org} needs its two Flagship components (Z, W)")
+        demand = {}
+        for r in data["patron_bills"]:
+            if r.get("kind") == "Flagship" and r.get("ally"):
+                demand[r["ally"]] = demand.get(r["ally"], 0) + 1
+        for ally, n in sorted(demand.items()):
+            have = sum(1 for s in by_owner_slots.get(ally, []) if s in OFFER_SLOTS)
+            if have < n + 1:
+                report.error("Patron Bills", f"{ally} is the ally of {n} Flagship bill(s) and needs {n + 1} offer components (A-D), has {have}")
     if data.get("patron_bills"):
         covered = {o for o, _ in patron_pairs}
         missing = [b for b, row in booster_rows.items() if _non_party_org(b) and b not in covered]

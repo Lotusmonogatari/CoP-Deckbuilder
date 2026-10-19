@@ -155,3 +155,26 @@ def add_sheet(path, name, headers, rows, widths=None):
     zo.writestr('xl/worksheets/sheet%d.xml' % n, files['xl/worksheets/sheet%d.xml' % n])
     zo.close()
     shutil.move(path + '.tmp', path)
+
+
+def replace_sheet_data(path, name, headers, rows):
+    """Rewrites every row of an existing sheet made by add_sheet() (header plus
+    `rows`, inline strings), keeping its columns and view. Used when a tab built
+    earlier is regenerated wholesale (Patron Bills library, 2026-10-19)."""
+    w = WB(path)
+    p = w.sheet[name]
+    x = w.files[p].decode()
+
+    def cell(ref, v):
+        if v is None or v == '':
+            return ''
+        if isinstance(v, (int, float)):
+            return '<c r="%s"><v>%s</v></c>' % (ref, v)
+        return '<c r="%s" t="inlineStr"><is><t xml:space="preserve">%s</t></is></c>' % (ref, escape(str(v)))
+    body = ''
+    for r, row in enumerate([headers] + rows, start=1):
+        body += '<row r="%d">%s</row>' % (r, ''.join(cell(n2col(c) + str(r), v) for c, v in enumerate(row, start=1)))
+    x = re.sub(r'<sheetData>.*</sheetData>', lambda m: '<sheetData>%s</sheetData>' % body, x, flags=re.S)
+    x = re.sub(r'<dimension ref="[^"]*"/>', '<dimension ref="A1:%s%d"/>' % (n2col(len(headers)), len(rows) + 1), x)
+    w.files[p] = x.encode()
+    w.save()

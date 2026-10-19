@@ -110,10 +110,22 @@ static func split(party_lean: float, seats: int, threshold: float) -> Dictionary
 ## Positions for every party in `parties` (parties.json rows: party_id, name,
 ## seats, r/g/b), in the shape FloorVoteEngine and BattleSetup read:
 ## party_id, party_name, party_color, votes_*, disposition, salience, cue_text.
-## `yes_cap` below zero means no cap (Draft a Bill); otherwise Yes above it is
-## moved to Abstain, weakest lean first. `cues` ({party_id: line}) is optional.
+##
+## Patron shaping, both optional:
+##   `yes_floor` (>= 0): a patron bill is one an organization thinks is worth
+##     carrying, so its default Yes never starts below this. Seats move from
+##     No, then Abstain, into Yes, the most favorable party first.
+##   `yes_cap` (>= 0): default Yes never starts above this (the votes needed
+##     minus a margin), so no patron bill passes without the player's
+##     influence. Excess Yes becomes Abstain. With `capacity` ({party_id: the
+##     seats that party's vote resistance lets the player swing}) the seats are
+##     taken where they leave the most recoverable by influence, because a
+##     party only gives up seats from the bucket it is mostly in; without it
+##     the weakest supporters go first.
+## `cues` ({party_id: line}) is optional.
 static func positions(tags: Dictionary, parties: Array, salience_by_party: Dictionary,
-		threshold: float, yes_cap: int = -1, cues: Dictionary = {}) -> Array:
+		threshold: float, yes_cap: int = -1, cues: Dictionary = {},
+		yes_floor: int = -1, capacity: Dictionary = {}) -> Array:
 	var out: Array = []
 	var leans := {}
 	for party: Dictionary in parties:
@@ -132,13 +144,37 @@ static func positions(tags: Dictionary, parties: Array, salience_by_party: Dicti
 			"salience": int(roundf(absf(party_lean))),
 			"cue_text": str(cues.get(party_id, "")),
 		})
+	if yes_floor >= 0:
+		raise_yes(out, leans, yes_floor)
 	if yes_cap >= 0:
-		cap_yes(out, leans, yes_cap)
+		if capacity.is_empty():
+			cap_yes(out, leans, yes_cap)
+		else:
+			cap_yes_recoverably(out, capacity, yes_cap)
 	return out
 
 
+## Lifts Yes to `yes_floor`: No seats first, then Abstain, from the party with
+## the highest lean down. Changes `positions_list` in place.
+static func raise_yes(positions_list: Array, leans: Dictionary, yes_floor: int) -> void:
+	var need := yes_floor - total_yes(positions_list)
+	if need <= 0:
+		return
+	var order := positions_list.duplicate()
+	order.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return float(leans.get(str(a.get("party_id", "")), 0.0)) > float(leans.get(str(b.get("party_id", "")), 0.0)))
+	for position: Dictionary in order:
+		for key: String in ["votes_no", "votes_abstain"]:
+			if need <= 0:
+				return
+			var moved := mini(need, int(position[key]))
+			position[key] = int(position[key]) - moved
+			position["votes_yes"] = int(position["votes_yes"]) + moved
+			need -= moved
+
+
 ## Moves Yes votes above `yes_cap` into Abstain, taking from the party with the
-## lowest lean first (the weakest supporters). Changes `positions` in place.
+## lowest lean first (the weakest supporters). Changes `positions_list` in place.
 static func cap_yes(positions_list: Array, leans: Dictionary, yes_cap: int) -> void:
 	var over := total_yes(positions_list) - yes_cap
 	if over <= 0:
@@ -155,6 +191,60 @@ static func cap_yes(positions_list: Array, leans: Dictionary, yes_cap: int) -> v
 		position["votes_yes"] = int(position["votes_yes"]) - moved
 		position["votes_abstain"] = int(position["votes_abstain"]) + moved
 		over -= moved
+
+
+## The cap again, but choosing which parties give up Yes seats so that the most
+## can be won back. A party only gives up seats from the bucket it is mostly
+## in, up to `capacity` of them, so turning a Yes-majority party into an
+## Abstain-majority one makes its seats recoverable, while taking a few seats
+## from a party that stays Yes-majority loses them for good. Dynamic
+## programming over the parties: for every total removed (at least what the cap
+## needs), the best sum of (recoverable seats - seats removed); ties keep more
+## Yes. Changes `positions_list` in place.
+static func cap_yes_recoverably(positions_list: Array, capacity: Dictionary, yes_cap: int) -> void:
+	var yes_now := total_yes(positions_list)
+	if yes_now <= yes_cap:
+		return
+	# best[t] = {"score": int, "removed": Array of per-party removals}
+	var best := {0: {"score": 0, "removed": []}}
+	for position: Dictionary in positions_list:
+		var party_capacity := int(capacity.get(str(position.get("party_id", "")), 0))
+		var yes := int(position["votes_yes"])
+		var no := int(position["votes_no"])
+		var abstain := int(position["votes_abstain"])
+		var next := {}
+		for total: int in best:
+			var entry: Dictionary = best[total]
+			for removed in range(0, yes + 1):
+				var buckets := {"Yes": yes - removed, "No": no, "Abstain": abstain + removed}
+				var majority := FloorVoteEngine.majority_bucket({
+					"votes_yes": buckets["Yes"], "votes_no": buckets["No"], "votes_abstain": buckets["Abstain"]})
+				var recoverable := 0
+				if majority != "Yes":
+					recoverable = mini(party_capacity, int(buckets[majority]))
+				var score: int = int(entry["score"]) - removed + recoverable
+				var key: int = total + removed
+				if not next.has(key) or score > int((next[key] as Dictionary)["score"]):
+					next[key] = {"score": score, "removed": (entry["removed"] as Array) + [removed]}
+		best = next
+	var chosen_total := -1
+	for total: int in best:
+		if yes_now - total > yes_cap:
+			continue
+		if chosen_total < 0:
+			chosen_total = total
+			continue
+		var score: int = int((best[total] as Dictionary)["score"])
+		var chosen_score: int = int((best[chosen_total] as Dictionary)["score"])
+		if score > chosen_score or (score == chosen_score and total < chosen_total):
+			chosen_total = total
+	if chosen_total < 0:
+		return
+	var plan: Array = (best[chosen_total] as Dictionary)["removed"]
+	for i in range(positions_list.size()):
+		var position: Dictionary = positions_list[i]
+		position["votes_yes"] = int(position["votes_yes"]) - int(plan[i])
+		position["votes_abstain"] = int(position["votes_abstain"]) + int(plan[i])
 
 
 static func total_yes(positions_list: Array) -> int:

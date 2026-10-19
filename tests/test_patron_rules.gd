@@ -10,6 +10,8 @@ func _ctx(extra: Dictionary = {}) -> Dictionary:
 		"salience": BillPositions.salience_table(DataDB.party_values),
 		"threshold": float(DataDB.balance.get("bill_position_lean_threshold", 30)),
 		"yes_cap": 51 - int(DataDB.balance.get("patron_default_margin", 6)),
+		"yes_floor": int(DataDB.balance.get("patron_default_yes_floor", -1)),
+		"capacity": ComposedBill.swing_capacity(DataDB.parties, int(DataDB.balance.get("vote_swing_resistance_default", 70))),
 		"template_2": "A bill to {a} and {b}",
 		"template_3": "A bill to {a}, {b} and {c}",
 		"bill_id": "PB_TEST",
@@ -46,9 +48,9 @@ func test_tags_parse_and_merge() -> void:
 func test_positions_match_the_python_model() -> void:
 	var by_id := _components()
 	# The Python reference was run with the original margin of 6 (cap 45).
-	var bill := ComposedBill.compose(["CB051", "CB052"], by_id, _ctx({"yes_cap": 45}))
+	var bill := ComposedBill.compose(["CB051", "CB052"], by_id, _ctx({"yes_cap": 45, "yes_floor": -1, "capacity": {}}))
 	assert_eq(_totals(bill["positions"]), [45, 30, 26])
-	var second := ComposedBill.compose(["CB071", "CB073", "CB101"], by_id, _ctx({"yes_cap": 45}))
+	var second := ComposedBill.compose(["CB071", "CB073", "CB101"], by_id, _ctx({"yes_cap": 45, "yes_floor": -1, "capacity": {}}))
 	assert_eq(_totals(second["positions"]), [45, 39, 17])
 
 
@@ -80,8 +82,11 @@ func test_repeats_are_swapped_for_the_owners_next_component() -> void:
 	var by_id := _components()
 	var swapped := ComposedBill.substitute_enacted(["CB051", "CB052"], by_id, ["CB051"])
 	assert_true(swapped["ok"])
-	assert_eq(swapped["ids"], ["CB053", "CB052"])
-	var nothing_left := ComposedBill.substitute_enacted(["CB051", "CB052"], by_id, ["CB051", "CB052", "CB053"])
+	assert_eq(swapped["ids"], ["CB055", "CB052"])   # the Favor pool's spare (V)
+	# Swaps stay inside the pool: an enacted offer is replaced by another offer.
+	var offer := ComposedBill.substitute_enacted(["CB053", "CB054", "CB246"], by_id, ["CB246"])
+	assert_eq(offer["ids"], ["CB053", "CB054", "CB247"])
+	var nothing_left := ComposedBill.substitute_enacted(["CB051", "CB052"], by_id, ["CB051", "CB052", "CB055"])
 	assert_false(nothing_left["ok"])
 
 
@@ -137,12 +142,10 @@ func test_amend_swaps_one_favor_component_or_the_flagship_allys() -> void:
 	var favor := {"kind": "Favor", "components": ["CB051", "CB052"]}
 	var options := PatronRequests.amend_options(favor, by_id, [])
 	assert_eq(options.size(), 2)
-	assert_eq(options[0]["with"], "CB053")
-	var flagship := {"kind": "Flagship", "components": ["CB051", "CB053", "CB241"]}
+	assert_eq(options[0]["with"], "CB055")
+	var flagship := {"kind": "Flagship", "components": ["CB053", "CB054", "CB246"]}
 	var ally_options := PatronRequests.amend_options(flagship, by_id, [])
-	for option: Dictionary in ally_options:
-		assert_eq(option["replace"], "CB241")
-		assert_true(str(option["with"]).begins_with("CB24"))
+	assert_eq(ally_options, [{"replace": "CB246", "with": "CB247"}])
 	assert_eq(PatronRequests.apply_amend(["A", "B"], "B", "C"), ["A", "C"])
 
 
@@ -191,3 +194,70 @@ func test_no_patron_bill_passes_alone_but_every_one_can_be_carried() -> void:
 			assert_true(carried.setup(config))
 			var result := carried.choose("Yes")
 			assert_true(result["passed"], "%s cannot be carried by %s: %s" % [patron_bill["patron_bill_id"], party_name, str(result["totals"])])
+
+
+## Option A coverage (2026-10-19): whatever order requests are accepted in, and
+## however each is amended, every patron bill can arise (nothing is left with no
+## component to swap in), every component in an offered bill has an Amend
+## alternative, and amending never picks a component that is already law.
+func test_every_patron_bill_can_arise_and_be_amended_in_any_order() -> void:
+	var by_id := _components()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 20261019
+	for trial in range(300):
+		var enacted: Array = []
+		var done := {}
+		var pending: Array = DataDB.patron_bills.duplicate()
+		while not pending.is_empty():
+			var available: Array = []
+			for bill: Dictionary in pending:
+				if bill["kind"] == "Favor" or done.has("%s|Favor" % bill["organization"]):
+					available.append(bill)
+			assert_false(available.is_empty())
+			var bill: Dictionary = available[rng.randi_range(0, available.size() - 1)]
+			pending.erase(bill)
+			var swapped := ComposedBill.substitute_enacted(bill["components"], by_id, enacted)
+			assert_true(swapped["ok"], "%s cannot arise (trial %d)" % [bill["patron_bill_id"], trial])
+			var live: Dictionary = bill.duplicate()
+			live["components"] = swapped["ids"]
+			var options := PatronRequests.amend_options(live, by_id, enacted)
+			var must_cover: Array = live["components"] if bill["kind"] == "Favor" else [live["components"][2]]
+			for component_id: String in must_cover:
+				var found := false
+				for option: Dictionary in options:
+					if option["replace"] == component_id:
+						found = true
+				assert_true(found, "%s has no amend option for %s" % [bill["patron_bill_id"], component_id])
+			var chosen: Array = live["components"]
+			if not options.is_empty() and rng.randf() < 0.5:
+				var option: Dictionary = options[rng.randi_range(0, options.size() - 1)]
+				assert_false(enacted.has(option["with"]))
+				chosen = PatronRequests.apply_amend(chosen, option["replace"], option["with"])
+			for id: String in chosen:
+				enacted.append(id)
+			done["%s|%s" % [bill["organization"], bill["kind"]]] = true
+
+
+## Every Amend variation of every patron bill must also be carryable and not
+## pass alone, so an amended bill never becomes trivially easy or impossible.
+func test_every_amended_variation_needs_influence_and_can_be_carried() -> void:
+	var by_id := _components()
+	var resistance := {}
+	for party: Dictionary in DataDB.parties:
+		resistance[str(party["name"])] = int(party["vote_resistance"])
+	var checked := 0
+	for patron_bill: Dictionary in DataDB.patron_bills:
+		var variants: Array = [patron_bill["components"]]
+		for option: Dictionary in PatronRequests.amend_options(patron_bill, by_id, []):
+			variants.append(PatronRequests.apply_amend(patron_bill["components"], option["replace"], option["with"]))
+		for ids: Array in variants:
+			var bill := ComposedBill.compose(ids, by_id, _ctx())
+			var quiet := FloorVoteEngine.new()
+			quiet.setup({"bill": bill.duplicate(true), "player_party": "Frontier Party"})
+			assert_false(quiet.choose("Yes")["passed"], "%s %s passes alone" % [patron_bill["patron_bill_id"], str(ids)])
+			var carried := FloorVoteEngine.new()
+			carried.setup({"bill": bill.duplicate(true), "player_party": "Frontier Party", "meta": {"Reputation": 100},
+					"triggers": [{"variable": "Reputation", "enabled": "Yes", "threshold": 1}], "resistance_by_party": resistance})
+			assert_true(carried.choose("Yes")["passed"], "%s %s cannot be carried" % [patron_bill["patron_bill_id"], str(ids)])
+			checked += 1
+	assert_gt(checked, 54)

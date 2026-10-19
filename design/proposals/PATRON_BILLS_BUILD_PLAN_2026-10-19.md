@@ -213,6 +213,20 @@ one over (Abstain seats are the easiest to swing, so this should hold).
 | Repeats | Built as option A (default, Cameron may change): a component already law is never offered again; `ComposedBill.substitute_enacted()` swaps in the same owner's next component, and a request with nothing left to swap in is not offered |
 | Default margin | `patron_default_margin` 6 became 3: with 6, two bills could not be carried by a full-strength player (49 of 51 Yes); with 3 every bill reaches 51 or more and none passes alone |
 
+## 10c. Option A coverage check and the 180-component library (2026-10-19)
+
+Cameron asked whether Option A has enough swaps for every patron bill to arise and every variation to be amendable. **It did not**: with three components per organization, a Flagship reused the Favor's core component, so once a Favor passed no Flagship could be offered (27 of 27 failed), and Amend had no spare in most cases. The library is now built to a counting rule the exporter enforces:
+
+| Pool | Slots | Used by | Needs |
+|---|---|---|---|
+| Favor | X, Y, V | A Favor uses X and Y; V is the Amend spare | 3 per organization |
+| Flagship own | Z, W | The organization's Flagship | 2 per organization |
+| Offers | A, B, C, D | Other organizations' Flagships as their ally component | One per Flagship naming the organization as ally, plus one spare |
+
+27 organizations x 5 own components + 45 offers = **180 components** (was 81); 54 bills unchanged in number. Swaps stay inside the pool. Proven in `tests/test_patron_rules.gd`: 300 random orders of accepting and amending every request (all 54 bills always arise, every component has an Amend alternative), and all 157 variations (the 54 bills plus every Amend choice) fail without influence and can be carried by a full-strength player of every protagonist's party. The component list in the workbook (Bill Components tab) replaces the appendix below, which shows the earlier 81-component draft.
+
+To make every variation carryable the vote model got two patron-only shaping rules and one lever each: `patron_default_yes_floor` (44: a patron bill's default Yes never starts below it) and the recoverable cap (when Yes above 48 is turned into Abstain, it is taken from the parties whose seats the player's influence can win back, which Cameron's Vote Resistance numbers otherwise make impossible).
+
 ## 11. Step 1 status (built 2026-10-19)
 
 | Item | Done |
