@@ -1,6 +1,6 @@
 # Patron Bills and Custom Bills: build plan (2026-10-19)
 
-Status: **approved 2026-10-19; step 1 (schema) built, see section 11.** Cameron's answers are applied below: decline costs 5 and 10, Amend swaps one component, **no party-body bills (28 organizations, 56 bills, 84 components)**, and **no patron bill passes without the player's influence**. It extends
+Status: **approved 2026-10-19; step 1 (schema) built, see section 11.** Cameron's answers are applied below: decline costs 5 and 10, Amend swaps one component, **no party-body bills (27 organizations, 54 bills, 81 components)**, and **no patron bill passes without the player's influence**. It extends
 `CUSTOM_BILL_MODE_2026-10-19.md` with the hybrid Cameron chose: one engine
 (bill components, assembled bills, levels built at runtime) that serves two
 entry points. **Patron Bills** are requests from an organization once its
@@ -13,7 +13,7 @@ to correct.
 | Item | Plan |
 |---|---|
 | Trigger | Standing **50** with an organization: a **Favor** request (2 components). Standing **70**: a **Flagship** request (3 components, the third from an ally organization) |
-| Count | 28 non-party organizations × 2 = **56 patron bills**, built from **84 components** (3 per organization). Party Headquarters, Party Faction, Party Activists and the Candidate Selection Committee have none. |
+| Count | 27 organizations × 2 = **54 patron bills**, built from **81 components** (3 per organization). Party Headquarters, Party Faction, Party Activists, the Candidate Selection Committee and Members of Parliament have none. |
 | Where it shows | A **Requests** block at the top of the level list, beside Special Levels, after the existing countdown (`special_level_delay`) |
 | Player choices | **Accept**, **Amend** (Favor: swap one of the two components; Flagship: swap the ally's component; rewards × 0.75), **Decline** (−5 Favor, −10 Flagship), or leave it waiting |
 | What is played | A short level from a template: a meeting with the patron, the hearing for the lead component's committee, a public room and your own Party Caucus (Flagship only), then the Floor Vote |
@@ -134,7 +134,7 @@ each component has at least its minimum content (section 7).
 
 ## 7. Content dependencies
 
-### Per component (84 components)
+### Per component (81 components)
 
 | Content | Count | Why that many |
 |---|---|---|
@@ -148,7 +148,7 @@ each component has at least its minimum content (section 7).
 Written about the component alone ("the rural bus routes", never "this bill" or
 another component), so any mix reads naturally.
 
-### Per patron bill (56 bills)
+### Per patron bill (54 bills)
 
 Request, Accept, Decline, Pass and Fail lines (5), and, for the patron meeting
 stage, the organization's representative visitor with one dilemma question
@@ -158,11 +158,11 @@ stage, the organization's representative visitor with one dilemma question
 
 | Content | Rows |
 |---|---|
-| Questions | 672 |
-| Player and opponent cue rows | 1,008 (5,040 lines) |
-| Transition and thought lines | 252 |
-| Question Themes rows | 84 |
-| Patron bill rows | 56 |
+| Questions | 648 |
+| Player and opponent cue rows | 972 (4,860 lines) |
+| Transition and thought lines | 243 |
+| Question Themes rows | 81 |
+| Patron bill rows | 54 |
 | New visitors and questions | up to 18 + 18 |
 
 Generated the same way as the 50 bills (archived batch scripts, then the tone,
@@ -203,6 +203,15 @@ one over (Abstain seats are the easiest to swing, so this should hold).
 | 7 | Up to 2 requests waiting at once. Yes |
 | 8 | Organization interests, allies and rivals: yes, and every one must be editable in the workbook (Bill Components: Owner, Gains, Loses; Patron Bills: Ally; rivals come from each component's Loses list) |
 
+## 10b. Revisions (2026-10-19)
+
+| Change | Detail |
+|---|---|
+| Members of Parliament cut | No bills (27 organizations remain) |
+| Small Business Owners | Ally is now the Yezo Artisans Guild (BO13), not a tax-cut ally; their Flagship no longer cuts the corporate tax rate |
+| Ainu groups compound | Council (BO28): harvest rights, community centers, land-use consultation. Foundation (BO29): translation of public documents, schools, broadcasting. Each pushed bill adds something different |
+| Open | Own-slot and ally components still repeat across bills (for example rice prices); a general fix is awaiting Cameron's choice |
+
 ## 11. Step 1 status (built 2026-10-19)
 
 | Item | Done |
@@ -217,7 +226,7 @@ one over (Abstain seats are the easiest to swing, so this should hold).
 
 **Not built, and why:** header notes on the four new tabs (a new tab has no notes part; add them in Excel with Insert Note, or I can build the parts if you want them).
 
-### Component library (84)
+### Component library (81)
 
 | ID | Owner | Slot | Phrase | Hearing | Value tags (draft) |
 |---|---|---|---|---|---|
@@ -263,9 +272,6 @@ one over (Abstain seats are the easiest to swing, so this should hold).
 | CB161 | BO16 | X | give a tax credit for research and development | Finance | Post-Industrialism +1.0, Taxation -0.4 |
 | CB162 | BO16 | Y | offer visas to start-up founders | Foreign Affairs | Immigration +0.7, Post-Industrialism +0.6 |
 | CB163 | BO16 | Z | move government services online | Govt Admin | Technocratic +0.9, Post-Industrialism +0.5 |
-| CB171 | BO17 | X | raise members' staff allowances | Natl Assembly | Federal Spending +0.5, Democratic Norms +0.3 |
-| CB172 | BO17 | Y | fund a committee research office | Natl Assembly | Technocratic +0.7, Democratic Norms +0.5 |
-| CB173 | BO17 | Z | create an independent parliamentary budget office | Natl Assembly | Technocratic +0.9, Democratic Norms +0.6 |
 | CB181 | BO18 | X | hold local referendums on large projects | Govt Admin | Democratic Norms +0.8, Localism +0.6 |
 | CB182 | BO18 | Y | require public consultation before new projects | Construction | Democratic Norms +0.7, Regulation +0.4 |
 | CB183 | BO18 | Z | let citizen petitions trigger committee hearings | Natl Assembly | Democratic Norms +1.0, Leadership Interest -0.4 |
@@ -299,14 +305,14 @@ one over (Abstain seats are the easiest to swing, so this should hold).
 | CB281 | BO28 | X | restore Ainu fishing and harvest rights | Agriculture | Ainu Enhancement +1.0, Minority Rights +0.6 |
 | CB282 | BO28 | Y | fund Ainu community centers | Govt Admin | Ainu Enhancement +0.8, Federal Spending +0.4 |
 | CB283 | BO28 | Z | require consultation with Ainu communities on land use | Construction | Ainu Enhancement +1.0, Minority Rights +0.7, Localism +0.3 |
-| CB291 | BO29 | X | teach the Ainu language in schools | Govt Admin | Ainu Enhancement +0.9, Ethnic Pluralism +0.5 |
-| CB292 | BO29 | Y | put Ainu names on public signs | Govt Admin | Ainu Enhancement +0.7, Ethnic Pluralism +0.5 |
+| CB291 | BO29 | X | expand Ainu-language translation of public documents | Govt Admin | Ainu Enhancement +0.8, Technocratic +0.3, Ethnic Pluralism +0.5 |
+| CB292 | BO29 | Y | teach the Ainu language in schools | Govt Admin | Ainu Enhancement +0.9, Ethnic Pluralism +0.5 |
 | CB293 | BO29 | Z | fund Ainu-language broadcasting | Govt Admin | Ainu Enhancement +0.9, Federal Spending +0.5 |
 | CB301 | BO30 | X | keep rural bus routes running | Construction | Rural Focus +0.9, Federal Spending +0.5 |
 | CB302 | BO30 | Y | pay grants to families moving to rural towns | Govt Admin | Rural Focus +0.9, Federal Spending +0.5 |
 | CB303 | BO30 | Z | bring broadband to every village | Construction | Rural Focus +0.8, Post-Industrialism +0.5, Federal Spending +0.6 |
 
-### Patron bills (56)
+### Patron bills (54)
 
 | ID | Organization | At | Kind | Bill (assembled name) | Components | Gains | Loses | Hearing | Party lean | Default vote (Aye-Nay-Abstain) |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -338,8 +344,6 @@ one over (Abstain seats are the easiest to swing, so this should hold).
 | PB152 | Our Traditional Society | 70 | Flagship | A bill to fund local festivals, create a national heritage register and support shrine festivals | CB151 + CB153 + CB201 | Our Traditional Society, Shrine Association | Students United | Govt Admin | BU:S YH:S FR:S FP:N KJ:N CI:S | 45-20-36 fails |
 | PB161 | Innovation Society | 50 | Favor | A bill to give a tax credit for research and development and offer visas to start-up founders | CB161 + CB162 | Innovation Society | Yezo Artisans Guild | Finance | BU:S YH:N FR:N FP:S KJ:S CI:O | 45-27-29 fails |
 | PB162 | Innovation Society | 70 | Flagship | A bill to give a tax credit for research and development, move government services online and cut the corporate tax rate | CB161 + CB163 + CB051 | Innovation Society, Chamber of Commerce | Yezo Artisans Guild | Finance | BU:N YH:O FR:S FP:S KJ:S CI:S | 45-23-33 fails |
-| PB171 | Members of Parliament | 50 | Favor | A bill to raise members' staff allowances and fund a committee research office | CB171 + CB172 | Members of Parliament | Taxpayers' Alliance | Natl Assembly | BU:N YH:N FR:S FP:N KJ:N CI:O | 45-22-34 fails |
-| PB172 | Members of Parliament | 70 | Flagship | A bill to raise members' staff allowances, create an independent parliamentary budget office and hold local referendums on large projects | CB171 + CB173 + CB181 | Members of Parliament, Constituency Voters | Taxpayers' Alliance | Natl Assembly | BU:N YH:S FR:S FP:S KJ:N CI:O | 45-21-35 fails |
 | PB181 | Constituency Voters | 50 | Favor | A bill to hold local referendums on large projects and require public consultation before new projects | CB181 + CB182 | Constituency Voters | Members of Parliament | Govt Admin | BU:S YH:S FR:S FP:S KJ:O CI:O | 45-36-20 fails |
 | PB182 | Constituency Voters | 70 | Flagship | A bill to hold local referendums on large projects, let citizen petitions trigger committee hearings and fund repairs to community halls | CB181 + CB183 + CB061 | Constituency Voters, Neighborhood Associations | Members of Parliament | Govt Admin | BU:N YH:S FR:S FP:S KJ:O CI:O | 45-32-24 fails |
 | PB191 | Buddhist Temples Association | 50 | Favor | A bill to fund temple preservation and keep the tax exemption on temple land | CB191 + CB192 | Buddhist Temples Association | Taxpayers' Alliance | Govt Admin | BU:S YH:S FR:S FP:S KJ:S CI:N | 45-20-36 fails |
@@ -355,16 +359,16 @@ one over (Abstain seats are the easiest to swing, so this should hold).
 | PB241 | Financial Industry Association | 50 | Favor | A bill to ease bank lending rules and create tax-free investment accounts | CB241 + CB242 | Financial Industry Association | Consumer Advocacy Network | Finance | BU:O YH:N FR:S FP:N KJ:S CI:S | 45-31-25 fails |
 | PB242 | Financial Industry Association | 70 | Flagship | A bill to ease bank lending rules, build a financial hub zone in Sapporo and cut the corporate tax rate | CB241 + CB243 + CB051 | Financial Industry Association, Chamber of Commerce | Consumer Advocacy Network | Finance | BU:O YH:O FR:S FP:S KJ:S CI:S | 45-30-26 fails |
 | PB251 | Small Business Owners' Association | 50 | Favor | A bill to cut taxes for small businesses and cut paperwork for small firms | CB251 + CB252 | Small Business Owners' Association | Labor Federation | Finance | BU:O YH:N FR:N FP:N KJ:S CI:S | 45-27-29 fails |
-| PB252 | Small Business Owners' Association | 70 | Flagship | A bill to cut taxes for small businesses, make large firms pay suppliers on time and cut the corporate tax rate | CB251 + CB253 + CB051 | Small Business Owners' Association, Chamber of Commerce | Labor Federation | Finance | BU:N YH:N FR:S FP:S KJ:N CI:S | 45-22-34 fails |
+| PB252 | Small Business Owners' Association | 70 | Flagship | A bill to cut taxes for small businesses, make large firms pay suppliers on time and certify local crafts with a protected label | CB251 + CB253 + CB131 | Small Business Owners' Association, Yezo Artisans Guild | Labor Federation | Finance | BU:S YH:S FR:S FP:S KJ:O CI:S | 45-41-15 fails |
 | PB261 | Consumer Advocacy Network | 50 | Favor | A bill to require clear price labels and give buyers a cooling-off period | CB261 + CB262 | Consumer Advocacy Network | Financial Industry Association | Govt Admin | BU:S YH:N FR:S FP:S KJ:O CI:O | 45-47-9 fails |
 | PB262 | Consumer Advocacy Network | 70 | Flagship | A bill to require clear price labels, cap bank fees and strengthen freedom of information requests | CB261 + CB263 + CB081 | Consumer Advocacy Network, National Media | Financial Industry Association | Govt Admin | BU:S YH:N FR:S FP:S KJ:O CI:O | 45-45-11 fails |
 | PB271 | Urban Neighborhood Alliance | 50 | Favor | A bill to set an affordable housing quota for new buildings and build more city parks | CB271 + CB272 | Urban Neighborhood Alliance | Rural Revitalization Council | Construction | BU:S YH:O FR:O FP:S KJ:O CI:O | 30-70-1 fails |
 | PB272 | Urban Neighborhood Alliance | 70 | Flagship | A bill to set an affordable housing quota for new buildings, cap rent rises in the cities and freeze commuter fares | CB271 + CB273 + CB141 | Urban Neighborhood Alliance, Commuter Committee | Rural Revitalization Council | Construction | BU:S YH:N FR:O FP:S KJ:O CI:O | 32-64-5 fails |
 | PB281 | Ainu Community Council | 50 | Favor | A bill to restore Ainu fishing and harvest rights and fund Ainu community centers | CB281 + CB282 | Ainu Community Council | Our Traditional Society | Agriculture | BU:S YH:S FR:S FP:N KJ:N CI:O | 45-34-22 fails |
-| PB282 | Ainu Community Council | 70 | Flagship | A bill to restore Ainu fishing and harvest rights, require consultation with Ainu communities on land use and teach the Ainu language in schools | CB281 + CB283 + CB291 | Ainu Community Council, Ainu Language and Culture Foundation | Our Traditional Society | Agriculture | BU:S YH:S FR:S FP:N KJ:O CI:O | 45-38-18 fails |
-| PB291 | Ainu Language and Culture Foundation | 50 | Favor | A bill to teach the Ainu language in schools and put Ainu names on public signs | CB291 + CB292 | Ainu Language and Culture Foundation | Our Traditional Society | Govt Admin | BU:N YH:S FR:O FP:O KJ:N CI:O | 37-45-19 fails |
-| PB292 | Ainu Language and Culture Foundation | 70 | Flagship | A bill to teach the Ainu language in schools, fund Ainu-language broadcasting and restore Ainu fishing and harvest rights | CB291 + CB293 + CB281 | Ainu Language and Culture Foundation, Ainu Community Council | Our Traditional Society | Govt Admin | BU:S YH:S FR:S FP:O KJ:N CI:O | 45-38-18 fails |
+| PB282 | Ainu Community Council | 70 | Flagship | A bill to restore Ainu fishing and harvest rights, require consultation with Ainu communities on land use and fund harbor repairs | CB281 + CB283 + CB071 | Ainu Community Council, Fisheries Cooperative | Our Traditional Society | Agriculture | BU:S YH:S FR:S FP:S KJ:O CI:O | 45-34-22 fails |
+| PB291 | Ainu Language and Culture Foundation | 50 | Favor | A bill to expand Ainu-language translation of public documents and teach the Ainu language in schools | CB291 + CB292 | Ainu Language and Culture Foundation | Our Traditional Society | Govt Admin | BU:N YH:S FR:N FP:O KJ:N CI:O | 29-46-26 fails |
+| PB292 | Ainu Language and Culture Foundation | 70 | Flagship | A bill to expand Ainu-language translation of public documents, fund Ainu-language broadcasting and strengthen freedom of information requests | CB291 + CB293 + CB081 | Ainu Language and Culture Foundation, National Media | Our Traditional Society | Govt Admin | BU:S YH:S FR:S FP:N KJ:S CI:O | 45-30-26 fails |
 | PB301 | Rural Revitalization Council | 50 | Favor | A bill to keep rural bus routes running and pay grants to families moving to rural towns | CB301 + CB302 | Rural Revitalization Council | Urban Neighborhood Alliance | Construction | BU:N YH:S FR:S FP:S KJ:O CI:O | 45-40-16 fails |
 | PB302 | Rural Revitalization Council | 70 | Flagship | A bill to keep rural bus routes running, bring broadband to every village and support the rice price | CB301 + CB303 + CB101 | Rural Revitalization Council, Agricultural Cooperatives | Urban Neighborhood Alliance | Construction | BU:S YH:S FR:S FP:S KJ:O CI:O | 45-32-24 fails |
 
-Default result without influence: 0 pass, 56 fail, 0 decided in caucus.
+Default result without influence: 0 pass, 54 fail, 0 decided in caucus.

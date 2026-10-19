@@ -122,7 +122,7 @@ ORGS = {
    ("ease bank lending rules", "ST16", {"Regulation": -0.8, "Economic Liberalization": 0.7}),
    ("create tax-free investment accounts", "ST16", {"Taxation": -0.6, "Economic Liberalization": 0.5}),
    ("build a financial hub zone in Sapporo", "ST16", {"Economic Liberalization": 0.9, "Globalism": 0.7})]),
- "BO25": ("BO09", "BO05", [
+ "BO25": ("BO09", "BO13", [
    ("cut taxes for small businesses", "ST16", {"Taxation": -0.8}),
    ("cut paperwork for small firms", "ST17", {"Regulation": -0.7}),
    ("make large firms pay suppliers on time", "ST16", {"Regulation": 0.5, "Economic Liberalization": -0.2})]),
@@ -134,13 +134,13 @@ ORGS = {
    ("set an affordable housing quota for new buildings", "ST15", {"Regulation": 0.6, "Federal Spending": 0.4, "Rural Focus": -0.5}),
    ("build more city parks", "ST10", {"Environmentalism": 0.6, "Rural Focus": -0.4}),
    ("cap rent rises in the cities", "ST15", {"Regulation": 0.9, "Economic Liberalization": -0.7})]),
- "BO28": ("BO15", "BO29", [
+ "BO28": ("BO15", "BO07", [
    ("restore Ainu fishing and harvest rights", "ST13", {"Ainu Enhancement": 1, "Minority Rights": 0.6}),
    ("fund Ainu community centers", "ST17", {"Ainu Enhancement": 0.8, "Federal Spending": 0.4}),
    ("require consultation with Ainu communities on land use", "ST15", {"Ainu Enhancement": 1, "Minority Rights": 0.7, "Localism": 0.3})]),
- "BO29": ("BO15", "BO28", [
+ "BO29": ("BO15", "BO08", [
+   ("expand Ainu-language translation of public documents", "ST17", {"Ainu Enhancement": 0.8, "Technocratic": 0.3, "Ethnic Pluralism": 0.5}),
    ("teach the Ainu language in schools", "ST17", {"Ainu Enhancement": 0.9, "Ethnic Pluralism": 0.5}),
-   ("put Ainu names on public signs", "ST17", {"Ainu Enhancement": 0.7, "Ethnic Pluralism": 0.5}),
    ("fund Ainu-language broadcasting", "ST17", {"Ainu Enhancement": 0.9, "Federal Spending": 0.5})]),
  "BO30": ("BO27", "BO10", [
    ("keep rural bus routes running", "ST15", {"Rural Focus": 0.9, "Federal Spending": 0.5}),
@@ -148,8 +148,8 @@ ORGS = {
    ("bring broadband to every village", "ST15", {"Rural Focus": 0.8, "Post-Industrialism": 0.5, "Federal Spending": 0.6})]),
 }
 
-PARTY_BODIES = ("BO01", "BO02", "BO31", "BO32")  # no bills of their own (Cameron, 2026-10-19)
-for _k in PARTY_BODIES: ORGS.pop(_k)
+NO_BILLS = ("BO01", "BO02", "BO31", "BO32", "BO17")  # party bodies and Members of Parliament: no bills (Cameron, 2026-10-19)
+for _k in NO_BILLS: ORGS.pop(_k)
 
 def name(o): return B[o]["name_en"]
 
