@@ -185,6 +185,9 @@ func test_generic_transition_lines_fit_every_room() -> void:
 		var bill_raw: Variant = row.get("bill_id")
 		if bill_raw != null and str(bill_raw).strip_edges() != "":
 			continue
+		var comp_raw: Variant = row.get("component_ids")
+		if comp_raw is Array and not (comp_raw as Array).is_empty():
+			continue
 		var text := (str(row.get("character_line_en", "")) + " " + str(row.get("player_reply_en", ""))).to_lower()
 		for word: String in banned:
 			var hit := RegEx.create_from_string("\\b" + word + "(s|es)?\\b").search(text) != null

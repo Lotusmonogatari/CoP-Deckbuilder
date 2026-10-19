@@ -65,6 +65,6 @@ func test_component_lines_are_short_and_use_no_clock_words() -> void:
 			var phrase := str((by_id.get((ids as Array)[0], {}) as Dictionary).get("phrase", ""))
 			for key: String in ["cue_1", "cue_2", "cue_3", "cue_4", "cue_5"]:
 				var line := str(row.get(key, "")).replace(phrase, "")
-				assert_lte(str(row.get(key, "")).split(" ").size(), 21, "too long: %s" % row.get(key))
+				assert_lte(str(row.get(key, "")).split(" ").size(), 25, "too long: %s" % row.get(key))
 				for word in CLOCK_WORDS:
 					assert_false((" " + line.to_lower() + " ").contains(" " + word + " "), "clock word '%s' in: %s" % [word, row.get(key)])

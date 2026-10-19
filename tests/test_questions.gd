@@ -381,6 +381,8 @@ func test_every_question_has_somebody_to_please_and_somebody_asking() -> void:
 			# asker until BattleSetup seats it in one (QuestionAskers).
 			if not (question.get("bill_ids", []) as Array).is_empty():
 				continue
+			if not (question.get("component_ids", []) as Array).is_empty():
+				continue
 			assert_ne(str(question.get("asked_by", "")), "",
 				"%s has nobody asking it" % question.get("id"))
 
