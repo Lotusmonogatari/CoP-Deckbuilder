@@ -28,6 +28,14 @@ const FLAGSHIP := "Flagship"
 const FLAGSHIP_DISCOUNT_AFTER_FAILED_FAVOR := 5
 
 
+## The lowest default Yes a bill of this kind may start with. A Flagship has its
+## own, lower floor (a harder vote); blank falls back to the Favor floor.
+static func default_yes_floor(kind: String, balance: Dictionary) -> int:
+	if kind == FLAGSHIP and balance.has("patron_flagship_default_yes_floor"):
+		return int(balance["patron_flagship_default_yes_floor"])
+	return int(balance.get("patron_default_yes_floor", -1))
+
+
 static func threshold_for(patron_bill: Dictionary, balance: Dictionary) -> int:
 	var cell: Variant = patron_bill.get("threshold")
 	if cell != null:

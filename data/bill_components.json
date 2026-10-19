@@ -432,7 +432,7 @@
     "phrase": "open a single window for business permits",
     "description": "Would open a single window for business permits.",
     "hearing_stage": "ST17",
-    "value_tags": "Regulation -0.6; Technocratic +0.5",
+    "value_tags": "Regulation -0.4; Technocratic +0.5; Democratic Norms +0.2",
     "gains": [
       {
         "target": "BO05",
@@ -507,7 +507,7 @@
     "phrase": "guarantee payment within sixty days on public contracts",
     "description": "Would guarantee payment within sixty days on public contracts.",
     "hearing_stage": "ST16",
-    "value_tags": "Regulation +0.3; Technocratic +0.4",
+    "value_tags": "Technocratic +0.5; Democratic Norms +0.3",
     "gains": [
       {
         "target": "BO05",
@@ -3357,7 +3357,7 @@
     "phrase": "add sunset clauses to new spending",
     "description": "Would add sunset clauses to new spending.",
     "hearing_stage": "ST16",
-    "value_tags": "Federal Spending -0.8; Technocratic +0.3",
+    "value_tags": "Technocratic +0.6; Democratic Norms +0.4; Federal Spending -0.2",
     "gains": [
       {
         "target": "BO23",
@@ -3382,7 +3382,7 @@
     "phrase": "require an audit of every large grant",
     "description": "Would require an audit of every large grant.",
     "hearing_stage": "ST16",
-    "value_tags": "Technocratic +0.7; Federal Spending -0.5",
+    "value_tags": "Technocratic +0.6; Democratic Norms +0.6",
     "gains": [
       {
         "target": "BO23",

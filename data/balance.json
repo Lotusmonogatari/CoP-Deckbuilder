@@ -64,5 +64,6 @@
   "bill_position_lean_threshold": 30,
   "patron_rival_fail_standing": 1,
   "patron_default_yes_floor": 44,
+  "patron_flagship_default_yes_floor": 34,
   "xp_tiers": {}
 }

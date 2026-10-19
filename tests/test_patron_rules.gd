@@ -176,7 +176,8 @@ func test_no_patron_bill_passes_alone_but_every_one_can_be_carried() -> void:
 	for patron_bill: Dictionary in DataDB.patron_bills:
 		var ids: Array = patron_bill["components"]
 		ids = ComposedBill.substitute_enacted(ids, by_id, [])["ids"]
-		var bill := ComposedBill.compose(ids, by_id, _ctx({"bill_id": str(patron_bill["patron_bill_id"])}))
+		var bill := ComposedBill.compose(ids, by_id, _ctx({"bill_id": str(patron_bill["patron_bill_id"]),
+				"yes_floor": PatronRequests.default_yes_floor(str(patron_bill["kind"]), DataDB.balance)}))
 		for player in DataDB.protagonists:
 			var party_name := str(player.get("party", ""))
 			var config := {
@@ -251,7 +252,8 @@ func test_every_amended_variation_needs_influence_and_can_be_carried() -> void:
 		for option: Dictionary in PatronRequests.amend_options(patron_bill, by_id, []):
 			variants.append(PatronRequests.apply_amend(patron_bill["components"], option["replace"], option["with"]))
 		for ids: Array in variants:
-			var bill := ComposedBill.compose(ids, by_id, _ctx())
+			var bill := ComposedBill.compose(ids, by_id, _ctx({
+					"yes_floor": PatronRequests.default_yes_floor(str(patron_bill["kind"]), DataDB.balance)}))
 			var quiet := FloorVoteEngine.new()
 			quiet.setup({"bill": bill.duplicate(true), "player_party": "Frontier Party"})
 			assert_false(quiet.choose("Yes")["passed"], "%s %s passes alone" % [patron_bill["patron_bill_id"], str(ids)])
