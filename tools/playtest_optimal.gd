@@ -209,6 +209,9 @@ func _run_stage_trials(spec: String) -> void:
 	if starter_kit:
 		GameState.reset_collection()
 		_log("Starter kit: opening deck %s only" % [GameState.deck])
+		if stage_id == MpVisit.FIGHT_STAGE:
+			_run_visit_trial(trials)
+			return
 		_run_trial_fights(stage_id, trials)
 		return
 	for card: Dictionary in DataDB.cards:
@@ -232,7 +235,46 @@ func _run_stage_trials(spec: String) -> void:
 	_log("Trial %s x%d — deck %s, backing %d, items held %s" % [
 		stage_id, trials, GameState.deck, GameState.owned_modifiers.size(), GameState.inventory])
 
+	if stage_id == MpVisit.FIGHT_STAGE:
+		_run_visit_trial(trials)
+		return
 	_run_trial_fights(stage_id, trials, with_items)
+
+
+## ST261 only exists inside a sponsored-bill level (its opponent is the member
+## the visit chose, and rapport changes the starting support), so it cannot be
+## trialled as a bare stage. Builds a real Flagship level for each fight, sets
+## the rapport, and reports the win rate for every rapport from -3 to +3.
+func _run_visit_trial(trials: int) -> void:
+	var patron_bill := "PB052"
+	for rapport in range(-3, 4):
+		var won := 0
+		for i in trials:
+			GameState.meta["Funds"] = 100000
+			GameState.patron_requests.clear()
+			GameState.patron_runtime = {}
+			GameState.level_runner = null
+			if not GameState.start_patron_level(patron_bill):
+				_bug("could not start %s for the visit trial" % patron_bill)
+				return
+			var visit := GameState.current_visit()
+			if visit.is_empty():
+				_bug("%s has no member visit" % patron_bill)
+				return
+			visit["rapport"] = rapport
+			var runner := GameState.level_runner
+			for n in runner.stages.size():
+				if str((runner.stages[n] as Dictionary).get("stage_id", "")) == MpVisit.FIGHT_STAGE:
+					runner.index = n
+			_level_items_used.clear()
+			var before := _wins
+			_play_battle_stage(runner.current_stage())
+			if _wins > before:
+				won += 1
+			GameState.abandon_level()
+			GameState.patron_runtime = {}
+		_log("VISIT TRIAL rapport %+d: %d / %d won (%d%%)" % [rapport, won, trials, int(100.0 * won / maxi(trials, 1))])
+	_report()
 
 
 ## The fights themselves. `with_items` re-buys items before each fight; the
