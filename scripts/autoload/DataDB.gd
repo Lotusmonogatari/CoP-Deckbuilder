@@ -34,7 +34,7 @@ const DATA_PATH := "res://data/"
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
 	"bill_components", "bill_level_templates", "patron_bills", "party_values",
-	"visit_questions", "visit_answers",
+	"visit_questions", "visit_answers", "trade_questions",
 	"floor_votes", "how_to_play", "law_effects", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders", "standing_links",
@@ -233,6 +233,7 @@ var bill_level_templates: Array = []
 var party_values: Array = []
 var visit_questions: Array = []
 var visit_answers: Array = []
+var trade_questions: Array = []
 
 ## The questions each kind of room can ask, by stage type, from the five
 ## question tabs. A stage draws from the pool for its type rather than
@@ -374,6 +375,7 @@ func load_all() -> void:
 			"party_values": party_values = content if content is Array else []
 			"visit_questions": visit_questions = content if content is Array else []
 			"visit_answers": visit_answers = content if content is Array else []
+			"trade_questions": trade_questions = content if content is Array else []
 			"questions": questions = content
 			"sounds":
 				sounds = _map_under(content, file_name, "sounds")

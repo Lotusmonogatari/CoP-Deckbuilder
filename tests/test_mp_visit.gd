@@ -137,7 +137,7 @@ func test_a_flagship_level_carries_a_visit_and_a_favor_does_not() -> void:
 	assert_eq((visit["questions"] as Array).size(), 3)
 	var runner := LevelRunner.new(BattleSetup.expand_level(level))
 	assert_eq(runner.problems().size(), 0, str(runner.problems()))
-	assert_eq(runner.stages.size(), 7)
+	assert_true(runner.stages.size() in [7, 8], "with the visit, and a lobbyist trade when one is offered")
 	var visit_stage: Dictionary = runner.stages[2]
 	var fight_stage: Dictionary = runner.stages[3]
 	assert_eq(str(visit_stage["stage_id"]), MpVisit.VISIT_STAGE)

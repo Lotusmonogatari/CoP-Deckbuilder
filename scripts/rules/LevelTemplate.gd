@@ -27,7 +27,7 @@ const MAX_SLOTS := 10
 ## drops the token. Returns [] when a token cannot be resolved, so a
 ## half-written template never produces a broken level.
 static func stages(template: Dictionary, hearing_stage: String, owner_tier: String,
-		visit_offered: bool = false) -> Array:
+		visit_offered: bool = false, trade_offered: bool = false) -> Array:
 	var out: Array = []
 	for slot in range(1, MAX_SLOTS + 1):
 		var token: Variant = template.get("stage_%d" % slot)
@@ -37,6 +37,10 @@ static func stages(template: Dictionary, hearing_stage: String, owner_tier: Stri
 			if visit_offered:
 				out.append(MpVisit.VISIT_STAGE)
 				out.append(MpVisit.FIGHT_STAGE)
+			continue
+		if str(token).strip_edges() == "LOBBYIST_TRADE":
+			if trade_offered:
+				out.append(LobbyistTrade.TRADE_STAGE)
 			continue
 		var stage_id := _resolve(str(token).strip_edges(), hearing_stage, owner_tier)
 		if stage_id.is_empty():

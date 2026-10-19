@@ -42,12 +42,14 @@ static func pool_members(owner: String, pool: String, by_id: Dictionary) -> Arra
 
 ## The bill's words: "A bill to {a} and {b}" or "A bill to {a}, {b} and {c}".
 ## `template_2`/`template_3` come from the Text tab (custom_bill.name_2/3).
-static func bill_name(phrases: Array, template_2: String, template_3: String) -> String:
+static func bill_name(phrases: Array, template_2: String, template_3: String, template_1: String = "") -> String:
 	if phrases.size() == 2:
 		return template_2.replace("{a}", str(phrases[0])).replace("{b}", str(phrases[1]))
 	if phrases.size() >= 3:
 		return template_3.replace("{a}", str(phrases[0])).replace("{b}", str(phrases[1])).replace("{c}", str(phrases[2]))
-	return str(phrases[0]) if phrases.size() == 1 else ""
+	if phrases.size() == 1:
+		return template_1.replace("{a}", str(phrases[0])) if not template_1.is_empty() else str(phrases[0])
+	return ""
 
 
 ## Components by id.
@@ -148,7 +150,7 @@ static func compose(ids: Array, by_id: Dictionary, ctx: Dictionary) -> Dictionar
 	var first: Dictionary = by_id.get(str(ids[0]), {}) if not ids.is_empty() else {}
 	return {
 		"bill_id": str(ctx.get("bill_id", "")),
-		"bill_name": bill_name(phrases, str(ctx.get("template_2", "")), str(ctx.get("template_3", ""))),
+		"bill_name": bill_name(phrases, str(ctx.get("template_2", "")), str(ctx.get("template_3", "")), str(ctx.get("template_1", ""))),
 		"bill_description": " ".join(descriptions),
 		"favorability_delta_supportive": int(favorability.get("supportive", 1)),
 		"favorability_delta_opposed": int(favorability.get("opposed", -1)),

@@ -4023,5 +4023,278 @@
     "english": "{staff} leans in. \"{name} tends to respond to {first} and {second}. They will hear out {third}, and they are cold to the rest.\"",
     "placeholders": "staff, name, first, second, third",
     "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "custom_bill.name_1",
+    "where": "Patron bills",
+    "english": "A bill to {a}",
+    "placeholders": "a",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.offer_title",
+    "where": "Lobbyist trade",
+    "english": "A lobbyist calls",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.offer_text",
+    "where": "Lobbyist trade",
+    "english": "{name}, speaking for {org}, has come to bargain over your bill. Hear them out?",
+    "placeholders": "name, org",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.hear",
+    "where": "Lobbyist trade",
+    "english": "Hear them out",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.refuse",
+    "where": "Lobbyist trade",
+    "english": "Refuse to meet",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.pick_text",
+    "where": "Lobbyist trade",
+    "english": "Which part of the bill will you trade away? {hint}",
+    "placeholders": "hint",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.asked_hint",
+    "where": "Lobbyist trade",
+    "english": "They want the plan to {component} gone.",
+    "placeholders": "component",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.keep_all",
+    "where": "Lobbyist trade",
+    "english": "Keep the whole bill (end the meeting)",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.caption",
+    "where": "Lobbyist trade",
+    "english": "Round {number} of {total}",
+    "placeholders": "number, total",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.leverage",
+    "where": "Lobbyist trade",
+    "english": "Leverage: {leverage} of 100",
+    "placeholders": "leverage",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.package_text",
+    "where": "Lobbyist trade",
+    "english": "Leverage {leverage}. Choose what you want in return; the cost so far is {cost}.",
+    "placeholders": "leverage, cost",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.reward_donation",
+    "where": "Lobbyist trade",
+    "english": "An office donation (cost {cost})",
+    "placeholders": "cost",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.reward_sentiment",
+    "where": "Lobbyist trade",
+    "english": "Their goodwill (cost {cost})",
+    "placeholders": "cost",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.reward_party_favor",
+    "where": "Lobbyist trade",
+    "english": "A party's favor (cost {cost})",
+    "placeholders": "cost",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.reward_help",
+    "where": "Lobbyist trade",
+    "english": "Help working the bill (cost {cost})",
+    "placeholders": "cost",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.chosen",
+    "where": "Lobbyist trade",
+    "english": "{label} - chosen",
+    "placeholders": "label",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.make_deal",
+    "where": "Lobbyist trade",
+    "english": "Make the deal",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.walk_away",
+    "where": "Lobbyist trade",
+    "english": "Walk away",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.done_deal_title",
+    "where": "Lobbyist trade",
+    "english": "A deal is made",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.done_deal_body",
+    "where": "Lobbyist trade",
+    "english": "You give up the plan to {component}. {name} agrees to: {gains}.",
+    "placeholders": "component, name, gains",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.done_nodeal_title",
+    "where": "Lobbyist trade",
+    "english": "No agreement",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.done_nodeal_body",
+    "where": "Lobbyist trade",
+    "english": "You and {name} could not agree. {cost}",
+    "placeholders": "name, cost",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.done_refused_title",
+    "where": "Lobbyist trade",
+    "english": "You refused to meet",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.done_refused_body",
+    "where": "Lobbyist trade",
+    "english": "{name} leaves unhappy. {cost}",
+    "placeholders": "name, cost",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.cost_seats",
+    "where": "Lobbyist trade",
+    "english": "Their lobbying costs your side on the floor: -{count}.",
+    "placeholders": "count",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.cost_none",
+    "where": "Lobbyist trade",
+    "english": "It costs you nothing this time.",
+    "placeholders": null,
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.gain_donation",
+    "where": "Lobbyist trade",
+    "english": "a donation of {funds} and {xp} XP",
+    "placeholders": "funds, xp",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.gain_sentiment",
+    "where": "Lobbyist trade",
+    "english": "better standing with {org}",
+    "placeholders": "org",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.gain_party_favor",
+    "where": "Lobbyist trade",
+    "english": "the favor of {party}",
+    "placeholders": "party",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.gain_help",
+    "where": "Lobbyist trade",
+    "english": "help with the vote (+{count} on the floor)",
+    "placeholders": "count",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_strong_1",
+    "where": "Lobbyist trade",
+    "english": "{name} nods. That is a fair point.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_strong_2",
+    "where": "Lobbyist trade",
+    "english": "{name} sits back, impressed.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_strong_3",
+    "where": "Lobbyist trade",
+    "english": "{name} concedes the point with a thin smile.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_medium_1",
+    "where": "Lobbyist trade",
+    "english": "{name} considers it and gives nothing away.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_medium_2",
+    "where": "Lobbyist trade",
+    "english": "{name} taps the table. Not bad, not enough.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_medium_3",
+    "where": "Lobbyist trade",
+    "english": "{name} shrugs. They have heard it before.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_weak_1",
+    "where": "Lobbyist trade",
+    "english": "{name} scowls. That did not help.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_weak_2",
+    "where": "Lobbyist trade",
+    "english": "{name} pushes the paper back across the table.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "trade.react_weak_3",
+    "where": "Lobbyist trade",
+    "english": "{name} looks at the clock. You have lost ground.",
+    "placeholders": "name",
+    "notes": "2026-10-19 lobbyist trade (patron bills)."
   }
 ]

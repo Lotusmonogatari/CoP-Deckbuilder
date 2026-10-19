@@ -13,6 +13,7 @@ const BATTLE_SCENE := "res://scenes/battle/BattleScreen.tscn"
 const VISITOR_SCENE := "res://scenes/office_hours/VisitorScreen.tscn"
 const FLOOR_VOTE_SCENE := "res://scenes/office_hours/FloorVoteScreen.tscn"
 const VISIT_SCENE := "res://scenes/office_hours/VisitScreen.tscn"
+const TRADE_SCENE := "res://scenes/office_hours/TradeScreen.tscn"
 const OFFICE_SCENE := "res://scenes/office_hours/OfficeScreen.tscn"
 
 ## Not a stage in its own right — a level-level beat (2026-09-27) shown once,
@@ -36,6 +37,7 @@ static func scene_for(stage: Dictionary) -> String:
 		"Non-combat": return VISITOR_SCENE
 		"Vote": return FLOOR_VOTE_SCENE
 		"Visit": return VISIT_SCENE
+		"Trade": return TRADE_SCENE
 		_: return BATTLE_SCENE
 
 

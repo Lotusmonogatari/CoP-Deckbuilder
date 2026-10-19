@@ -42,15 +42,16 @@ func _play_to_the_vote() -> void:
 		GameState.finish_stage(LevelRunner.WON)
 
 
-func test_accepting_builds_a_three_stage_level_that_is_not_in_the_levels_list() -> void:
+func test_accepting_builds_a_short_level_that_is_not_in_the_levels_list() -> void:
 	assert_true(GameState.start_patron_level("PB051"))
 	assert_true(GameState.is_in_level())
 	var stages := GameState.level_runner.stages
-	assert_eq(stages.size(), 3)
+	assert_true(stages.size() in [3, 4], "a Favor: meeting, hearing, an optional lobbyist trade, the vote")
 	assert_eq(str(stages[0]["stage_id"]), "ST20")
 	assert_eq(str(stages[1]["stage_id"]), "ST16")
-	assert_eq(str(stages[2]["mode"]), "Vote")
-	assert_eq(str(stages[2]["floor_vote"]["bill_id"]), "PB051")
+	var last: Dictionary = stages[stages.size() - 1]
+	assert_eq(str(last["mode"]), "Vote")
+	assert_eq(str(last["floor_vote"]["bill_id"]), "PB051")
 	assert_eq(str(stages[0]["bill_id"]), "PB051")
 	for level: Dictionary in DataDB.levels:
 		assert_ne(str(level["level_id"]), "PL_PB051")
@@ -160,7 +161,7 @@ func test_a_flagship_follows_a_resolved_favor_and_pays_its_ally() -> void:
 	assert_true(GameState.patron_bills_due().has("PB052"))
 	var ally_before := int(GameState.booster_standing["BO24"])
 	GameState.start_patron_level("PB052")
-	assert_true(GameState.level_runner.stages.size() in [5, 7])
+	assert_true(GameState.level_runner.stages.size() in [5, 6, 7, 8])
 	_play_to_the_vote()
 	assert_true(_vote("Yes")["passed"])
 	GameState.finish_stage(LevelRunner.WON)
@@ -267,11 +268,11 @@ func test_every_patron_bill_builds_a_playable_level() -> void:
 		var runner := LevelRunner.new(expanded)
 		assert_eq(runner.problems().size(), 0, "%s: %s" % [id, str(runner.problems())])
 		if row["kind"] == "Favor":
-			assert_eq(runner.stages.size(), 3, id)
+			assert_true(runner.stages.size() in [3, 4], id)
 		else:
 			# A Flagship gains the optional member visit (two stages) when a
 			# listed party still has seats outside the player's side.
-			assert_true(runner.stages.size() in [5, 7], id)
+			assert_true(runner.stages.size() in [5, 6, 7, 8], id)
 		for stage: Dictionary in runner.stages:
 			if str(stage.get("mode", "")) == "Combat":
 				assert_gt((stage["opponents"] as Array).size(), 0, "%s %s has opponents" % [id, stage["stage_id"]])

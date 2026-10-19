@@ -2854,3 +2854,122 @@ func skip_member_visit() -> void:
 	if str(level_runner.current_stage().get("stage_id", "")) == MpVisit.FIGHT_STAGE:
 		level_runner.finish_stage(LevelRunner.WON)
 	SaveManager.autosave(true)
+
+
+# ---------------------------------------------------------------------------
+# The lobbyist trade (influence building step C, 2026-10-19)
+# ---------------------------------------------------------------------------
+
+## The trade in progress, or {} (the level's own dictionary, so changes are saved).
+func current_trade() -> Dictionary:
+	var level: Variant = patron_runtime.get("level")
+	if level is Dictionary and (level as Dictionary).get("trade") is Dictionary:
+		return (level as Dictionary)["trade"]
+	return {}
+
+
+func _patron_kind() -> String:
+	return str(PatronLevel.patron_bill(str(patron_runtime.get("patron_bill_id", ""))).get("kind", PatronRequests.FAVOR))
+
+
+## The bill's party positions as they stand now (the trade may have recomposed it).
+func _bill_positions() -> Array:
+	return DataDB.get_bill(str(patron_runtime.get("patron_bill_id", ""))).get("positions", []) as Array
+
+
+## The player met the lobbyist (or refused to) and no deal was made: on a
+## Flagship the lobbyists take seats from the bill (BillAssist worked_against),
+## fewer for meeting than for refusing; on a Favor, none by default. Returns
+## {"seats", "party_id"}.
+func conclude_trade_without_deal(refused: bool) -> Dictionary:
+	var trade := current_trade()
+	if trade.is_empty() or bool(trade.get("done", false)):
+		return {"seats": 0, "party_id": ""}
+	trade["done"] = true
+	trade["deal"] = false
+	var seats := LobbyistTrade.seats_lost(_patron_kind(), refused, DataDB.balance)
+	var party_id := LobbyistTrade.party_for_org(str(trade.get("org", "")), DataDB.party_stakeholders, _bill_positions())
+	if seats > 0 and not party_id.is_empty():
+		add_worked_against(party_id, seats)
+	else:
+		seats = 0
+	return {"seats": seats, "party_id": party_id}
+
+
+## A deal: `dropped_id` leaves the bill, and the chosen `rewards` (LobbyistTrade
+## DONATION, SENTIMENT, PARTY_FAVOR, HELP) are paid, if `leverage` covers them.
+## The bill is recomposed without the component and the vote stage is updated.
+## Returns {"ok", "gains": [{...}]}; ok is false (nothing changes) when the
+## deal is not allowed.
+func conclude_trade_deal(dropped_id: String, rewards: Array, leverage: int) -> Dictionary:
+	var trade := current_trade()
+	var patron_bill_id := str(patron_runtime.get("patron_bill_id", ""))
+	if trade.is_empty() or bool(trade.get("done", false)) or not patron_requests.has(patron_bill_id):
+		return {"ok": false, "gains": []}
+	var state: Dictionary = patron_requests[patron_bill_id]
+	var ids: Array = (state.get("components", []) as Array).duplicate()
+	if not (trade.get("drops", []) as Array).has(dropped_id) or not ids.has(dropped_id) \
+			or not LobbyistTrade.can_close(rewards, leverage, DataDB.balance):
+		return {"ok": false, "gains": []}
+
+	var row := PatronLevel.patron_bill(patron_bill_id)
+	var org := str(trade.get("org", ""))
+	var ally := str(row.get("ally", "")) if row.get("ally") != null else ""
+	var by_id := ComposedBill.index(DataDB.bill_components)
+	var dropped_owner := str((by_id.get(dropped_id, {}) as Dictionary).get("owner", ""))
+	var phrase := str((by_id.get(dropped_id, {}) as Dictionary).get("phrase", ""))
+
+	# The party each reward works on is chosen against the bill as it stands.
+	var ties := DataDB.party_stakeholders
+	var positions := _bill_positions()
+	var help_party := LobbyistTrade.party_for_help(org, ties, positions)
+	var favor_party_id := LobbyistTrade.party_for_org(org, ties, positions)
+	if favor_party_id.is_empty():
+		favor_party_id = help_party
+
+	ids.erase(dropped_id)
+	var bill := PatronLevel.compose_ids(patron_bill_id, ids)
+	DataDB.register_runtime_bill(bill, ids)
+	patron_composed[patron_bill_id] = {"bill": bill, "component_ids": ids}
+	state["components"] = ids
+	patron_requests[patron_bill_id] = state
+	_refresh_vote_stage(patron_bill_id)
+
+	for entry: Dictionary in LobbyistTrade.drop_costs(dropped_owner, str(row.get("organization", "")), ally, DataDB.balance):
+		_apply_booster_delta(str(entry["target"]), int(entry["delta"]))
+
+	var gains: Array = []
+	for reward: Variant in rewards:
+		match str(reward):
+			LobbyistTrade.DONATION:
+				var funds := int(DataDB.balance.get("trade_donation_funds", 10000))
+				var xp_gain := int(DataDB.balance.get("trade_donation_xp", 20))
+				_apply_meta_reward("Funds", funds)
+				_move_xp(xp_gain)
+				gains.append({"type": LobbyistTrade.DONATION, "funds": funds, "xp": xp_gain})
+			LobbyistTrade.SENTIMENT:
+				_apply_booster_delta(org, int(DataDB.balance.get("trade_sentiment_standing", 5)))
+				gains.append({"type": LobbyistTrade.SENTIMENT, "org": org})
+			LobbyistTrade.PARTY_FAVOR:
+				var party := DataDB.get_party_by_id(favor_party_id)
+				if not party.is_empty():
+					apply_floor_vote_favorability({str(party.get("name", "")): int(DataDB.balance.get("trade_party_favor", 3))})
+					gains.append({"type": LobbyistTrade.PARTY_FAVOR, "party": str(party.get("name", ""))})
+			LobbyistTrade.HELP:
+				var seats := int(DataDB.balance.get("trade_help_seats", 1))
+				if not help_party.is_empty():
+					add_won_over(help_party, seats)
+					gains.append({"type": LobbyistTrade.HELP, "count": seats})
+	trade["done"] = true
+	trade["deal"] = true
+	return {"ok": true, "gains": gains, "dropped": phrase}
+
+
+## The vote stage was built when the level began; after a trade it must carry
+## the recomposed bill.
+func _refresh_vote_stage(patron_bill_id: String) -> void:
+	if level_runner == null:
+		return
+	for stage: Dictionary in level_runner.stages:
+		if str(stage.get("mode", "")) == "Vote":
+			stage["floor_vote"] = BattleSetup.enriched_floor_vote(DataDB.get_bill(patron_bill_id))
