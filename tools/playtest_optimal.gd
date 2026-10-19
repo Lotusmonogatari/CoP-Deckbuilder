@@ -66,6 +66,12 @@ var _protagonist := "PC02"
 ## multi-opponent stage too).
 var _expected_card_total := -1
 
+## Patron bills (influence building, 2026-10-19): what the bot did with them.
+## PLAYTEST_PATRON=0 turns the whole thing off (the bot then behaves as before).
+var _patron_on := true
+var _patron := {"accepted": 0, "passed": 0, "failed": 0, "lost": 0, "visits": 0, "visit_wins": 0,
+		"trades": 0, "no_deal": 0, "help_seats": 0, "worked_against": 0}
+
 
 func _ready() -> void:
 	_run.call_deferred()
@@ -73,6 +79,7 @@ func _ready() -> void:
 
 func _run() -> void:
 	_random_moves = OS.get_environment("PLAYTEST_RANDOM_MOVES") == "1"
+	_patron_on = OS.get_environment("PLAYTEST_PATRON") != "0"
 	var protagonist_override := OS.get_environment("PLAYTEST_PROTAGONIST")
 	if not protagonist_override.is_empty():
 		_protagonist = protagonist_override
@@ -108,6 +115,8 @@ func _run() -> void:
 		# A special level that came due after the last ordinary level is forced in
 		# (2026-10-18); the bot never picks one on its own, so this also proves
 		# the forcing rule over a whole run.
+		_play_patron_requests()
+
 		var forced := GameState.take_forced_special()
 		var level_id := str(forced.get("level_id", "")) if not forced.is_empty() else _choose_level()
 		if level_id.is_empty():
@@ -570,6 +579,11 @@ func _play_level(level_id: String) -> void:
 
 	_log("--- Level %s (%s), %d stage(s) ---" % [level_id, level.get("name_en", ""), runner.stage_count()])
 	GameState.begin_level(runner)
+	_play_current_level(level_id)
+
+
+## Plays the level GameState.begin_level() just began, stage by stage.
+func _play_current_level(level_id: String) -> void:
 	_level_items_used.clear()
 
 	var guard := 0
@@ -582,6 +596,8 @@ func _play_level(level_id: String) -> void:
 		match str(stage.get("mode", "")):
 			"Non-combat": _play_visitor_stage(stage)
 			"Vote": _play_vote_stage(stage)
+			"Visit": _play_visit_stage(stage)
+			"Trade": _play_trade_stage(stage)
 			_: _play_battle_stage(stage)
 
 	_trace_party_bodies(level_id)
@@ -709,7 +725,24 @@ func _play_vote_stage(stage: Dictionary) -> void:
 	var stage_id := str(stage.get("stage_id", ""))
 	var engine := FloorVoteEngine.new()
 	var player_party := str(DataDB.player.get("party", ""))
-	if not engine.setup({"bill": stage.get("floor_vote", {}), "player_party": player_party}):
+	var patron_bill := str((stage.get("floor_vote", {}) as Dictionary).get("bill_id", "")).begins_with("PB")
+	var vote_config := {"bill": stage.get("floor_vote", {}), "player_party": player_party}
+	if patron_bill:
+		# A sponsored bill is carried: Yes, with every bit of influence the
+		# player has, as FloorVoteScreen configures it.
+		var resistance := {}
+		for party: Dictionary in DataDB.parties:
+			if party.get("vote_resistance") != null:
+				resistance[str(party.get("name", ""))] = int(party["vote_resistance"])
+		vote_config.merge({
+			"meta": GameState.effective_meta(), "booster_standing": GameState.booster_standing,
+			"triggers": DataDB.vote_influence_triggers,
+			"default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
+			"resistance_by_party": resistance,
+			"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
+			"assist": GameState.bill_assist,
+		})
+	if not engine.setup(vote_config):
 		_bug("%s: FloorVoteEngine.setup() failed: %s" % [stage_id, engine.setup_problems])
 		_force_end_stage(LevelRunner.LOST)
 		return
@@ -720,6 +753,10 @@ func _play_vote_stage(stage: Dictionary) -> void:
 			own_position = position
 	var choice := (FloorVoteEngine.majority_bucket(own_position) if not own_position.is_empty()
 		else "Abstain")
+	if patron_bill:
+		choice = "Yes"
+		_patron["help_seats"] += BillAssist.total(GameState.bill_assist, "won_over")
+		_patron["worked_against"] += BillAssist.total(GameState.bill_assist, "worked_against")
 	var result := engine.choose(choice)
 	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}))
 	GameState.record_floor_vote(engine.bill(), result, choice)
@@ -731,6 +768,105 @@ func _play_vote_stage(stage: Dictionary) -> void:
 
 	# Cannot be lost (§7.7) — always scored WON, same as VisitorScreen.gd.
 	_wins += 1
+	var level_over := GameState.finish_stage(LevelRunner.WON)
+	if level_over:
+		GameState.end_level()
+
+
+## Accepts every patron request that is due (no Amend) and plays its level.
+func _play_patron_requests() -> void:
+	if not _patron_on:
+		return
+	var guard := 0
+	while guard < 6:
+		guard += 1
+		var due := GameState.patron_bills_due()
+		var open_ids: Array = []
+		for id: Variant in GameState.patron_requests:
+			if GameState.patron_requests[id]["status"] in [PatronRequests.WAITING, PatronRequests.OPEN]:
+				open_ids.append(id)
+		var candidates: Array = open_ids.duplicate()
+		for id: Variant in due:
+			if not candidates.has(id):
+				candidates.append(id)
+		if candidates.is_empty():
+			return
+		var id := str(candidates[0])
+		if GameState.is_in_level():
+			return
+		if not GameState.start_patron_level(id):
+			_bug("a due patron bill (%s) could not be started" % id)
+			GameState.decline_patron_bill(id)
+			continue
+		_patron["accepted"] += 1
+		_log("--- Patron bill %s (%s) ---" % [id, DataDB.get_bill(id).get("bill_name", "")])
+		_level_attempts += 1
+		_play_current_level(id)
+		var status := str((GameState.patron_requests.get(id, {}) as Dictionary).get("status", ""))
+		if status == PatronRequests.PASSED:
+			_patron["passed"] += 1
+		elif status == PatronRequests.FAILED:
+			_patron["failed"] += 1
+		else:
+			_patron["lost"] += 1
+
+
+## The member visit: take it, give the best answer each time, move on.
+func _play_visit_stage(stage: Dictionary) -> void:
+	var visit := GameState.current_visit()
+	if visit.is_empty():
+		_bug("a Visit stage has no member to visit")
+		_force_end_stage(LevelRunner.WON)
+		return
+	_patron["visits"] += 1
+	visit["taken"] = true
+	for question: Dictionary in visit.get("questions", []):
+		var best := {}
+		for choice: Dictionary in question.get("choices", []):
+			if best.is_empty() or MpVisit.points(str(choice["grade"]), 1, 0, -1) > MpVisit.points(str(best["grade"]), 1, 0, -1):
+				best = choice
+		visit["rapport"] = int(visit.get("rapport", 0)) + MpVisit.points(str(best.get("grade", "W")),
+			int(DataDB.balance.get("mp_visit_strong_points", 1)), int(DataDB.balance.get("mp_visit_medium_points", 0)),
+			int(DataDB.balance.get("mp_visit_weak_points", -1)))
+	_log("  %s: visited %s, rapport %+d" % [stage.get("stage_id", ""), visit.get("member_name", ""), int(visit["rapport"])])
+	var level_over := GameState.finish_stage(LevelRunner.WON)
+	if level_over:
+		GameState.end_level()
+
+
+## The lobbyist trade: drop what they asked for (or the first safe component),
+## answer well, then buy the most useful reward the leverage allows, or walk away.
+func _play_trade_stage(stage: Dictionary) -> void:
+	var trade := GameState.current_trade()
+	if trade.is_empty():
+		_bug("a Trade stage has no lobbyist")
+		_force_end_stage(LevelRunner.WON)
+		return
+	var drops: Array = trade.get("drops", [])
+	var asked := str(trade.get("asked", ""))
+	var dropped := asked if drops.has(asked) else str(drops[0])
+	var leverage := LobbyistTrade.starting_leverage(int(GameState.booster_standing.get(str(trade.get("org", "")), 0)),
+			dropped == asked, DataDB.balance)
+	for question: Dictionary in trade.get("questions", []):
+		var best := MpVisit.WEAK
+		for choice: Dictionary in question.get("choices", []):
+			if str(choice["grade"]) == MpVisit.STRONG or (str(choice["grade"]) == MpVisit.MEDIUM and best == MpVisit.WEAK):
+				best = str(choice["grade"])
+		leverage = LobbyistTrade.after_answer(leverage, best, DataDB.balance)
+	var chosen: Array = []
+	for reward: String in [LobbyistTrade.HELP, LobbyistTrade.PARTY_FAVOR, LobbyistTrade.SENTIMENT, LobbyistTrade.DONATION]:
+		if LobbyistTrade.can_close(chosen + [reward], leverage, DataDB.balance):
+			chosen.append(reward)
+	if chosen.is_empty():
+		var result := GameState.conclude_trade_without_deal(false)
+		_patron["no_deal"] += 1
+		_log("  %s: no agreement (leverage %d), %d seats lost" % [stage.get("stage_id", ""), leverage, int(result["seats"])])
+	else:
+		var deal := GameState.conclude_trade_deal(dropped, chosen, leverage)
+		_patron["trades"] += 1
+		_log("  %s: traded away %s for %s (leverage %d)" % [stage.get("stage_id", ""), dropped, chosen, leverage])
+		if not bool(deal.get("ok", false)):
+			_bug("the bot's trade was refused by GameState.conclude_trade_deal()")
 	var level_over := GameState.finish_stage(LevelRunner.WON)
 	if level_over:
 		GameState.end_level()
@@ -1026,6 +1162,14 @@ func _report() -> void:
 		GameState.owned_cards.size(), DataDB.cards.size(), GameState.deck.size()])
 	_log("Backing taken: %d (owned %d)   Items bought: %d   Items used: %d" % [
 		_backing_bought, GameState.owned_modifiers.size(), _items_bought, _items_used])
+	if _patron_on:
+		_log("PATRON %s   requests seen: %d" % [_patron, GameState.patron_requests.size()])
+		var statuses := {}
+		for id: Variant in GameState.patron_requests:
+			var status := str(GameState.patron_requests[id]["status"])
+			statuses[status] = int(statuses.get(status, 0)) + 1
+		_log("Patron request statuses: %s   enacted components: %d   news running: %s" % [
+			statuses, GameState.enacted_components.size(), GameState.active_news()])
 	_log("Staff hired: %d / %d roles" % [GameState.staff_hired.size(), Ledger.STAFF_ROLES.size()])
 	_log("Lifetime gaffes: %d   Stages lost to gaffes: %d   Gaffe penalty applied: %s"
 		% [GameState.lifetime_gaffes, GameState.stages_lost_to_gaffes, GameState.gaffe_penalty_applied])
