@@ -763,7 +763,70 @@ func get_opponents_for_stage(stage_id: String) -> Array:
 
 ## A level row from levels.json, by its LV-number ID.
 func get_level(level_id: String) -> Dictionary:
+	if _runtime_levels.has(level_id):
+		return _runtime_levels[level_id]
 	return _lookup(_levels_by_id, level_id, "level")
+
+
+# ---------------------------------------------------------------------------
+# Runtime bills and levels (Patron Bills step 3, 2026-10-19)
+# ---------------------------------------------------------------------------
+# A patron bill is composed from components when the player accepts it, so
+# neither the bill nor its level exists in the workbook. They are registered
+# here for the run: the bill in floor_votes (so every bill lookup finds it),
+# the level apart from levels.json (so it never shows in the Levels list), and
+# the bill's components remembered so content written about a component is
+# found by the bill's own id.
+var _runtime_levels: Dictionary = {}
+var _runtime_components: Dictionary = {}    ## bill_id -> Array of component ids
+
+
+func register_runtime_bill(bill: Dictionary, component_ids: Array) -> void:
+	var bill_id := str(bill.get("bill_id", ""))
+	if bill_id.is_empty():
+		return
+	floor_votes[bill_id] = bill
+	_runtime_components[bill_id] = component_ids.duplicate()
+
+
+func register_runtime_level(level: Dictionary) -> void:
+	var level_id := str(level.get("level_id", ""))
+	if not level_id.is_empty():
+		_runtime_levels[level_id] = level
+
+
+## Forgets every runtime bill and level (a new run, or a test's cleanup).
+func clear_runtime() -> void:
+	for bill_id: String in _runtime_components.keys():
+		floor_votes.erase(bill_id)
+	_runtime_components.clear()
+	_runtime_levels.clear()
+
+
+func is_runtime_level(level_id: String) -> bool:
+	return _runtime_levels.has(level_id)
+
+
+## The component ids a runtime bill was composed from ([] for an ordinary bill).
+func component_ids_of(bill_id: String) -> Array:
+	return (_runtime_components.get(bill_id, []) as Array).duplicate()
+
+
+## Every key content about a bill may be filed under: the bill's own id, then
+## (for a composed bill) each of its components'.
+func content_keys(bill_id: String) -> Array:
+	return [bill_id] + component_ids_of(bill_id)
+
+
+## A row's scope ids: the Bill IDs and Component IDs it names (either may be
+## blank, which exports as JSON null).
+static func scope_ids(row: Dictionary) -> Array:
+	var out: Array = []
+	for column: String in ["bill_ids", "component_ids"]:
+		var raw: Variant = row.get(column)
+		if raw is Array:
+			out.append_array(raw)
+	return out
 
 
 ## A party row from parties.json, by its own free-text "Party Name" — the
@@ -990,7 +1053,6 @@ func get_player_cue_lines(suit: String, verb: String, stage_id: String = "") -> 
 ## this stance, this verb any stance, any verb this stance, any verb any
 ## stance. Empty when nothing is written for the bill.
 func get_bill_player_cue_lines(bill_id: String, suit: String, verb: String, stance: String) -> Array:
-	var keys: Array[String] = []
 	var verbs: Array[String] = []
 	if not verb.is_empty():
 		verbs.append(verb)
@@ -999,32 +1061,57 @@ func get_bill_player_cue_lines(bill_id: String, suit: String, verb: String, stan
 	if not stance.is_empty():
 		stances.append(stance)
 	stances.append("")
-	for v in verbs:
-		for st in stances:
-			keys.append("%s|%s|%s|%s" % [bill_id, suit, v, st])
-	for key in keys:
-		var found: Array = _bill_player_cues.get(key, [])
-		if not found.is_empty():
-			return found.duplicate()
-	return []
+	var out: Array = []
+	# A composed bill pools the lines of each of its components (and its own).
+	for scope: String in content_keys(bill_id):
+		for v in verbs:
+			var hit := false
+			for st in stances:
+				var found: Array = _bill_player_cues.get("%s|%s|%s|%s" % [scope, suit, v, st], [])
+				if not found.is_empty():
+					out.append_array(found)
+					hit = true
+					break
+			if hit:
+				break
+	return out
 
 
 ## An opponent's lines about a bill: this opponent's own rows, else the suit's.
 func get_bill_opponent_cue_lines(bill_id: String, opp_id: String, suit: String, verb: String) -> Array[String]:
 	var lines: Array[String] = []
-	for who in [opp_id, suit]:
-		if str(who).is_empty():
-			continue
-		var found: Array = _bill_opponent_cues.get("%s|%s|%s" % [bill_id, who, verb], [])
-		if not found.is_empty():
-			lines.assign(found)
-			return lines
+	for scope: String in content_keys(bill_id):
+		for who in [opp_id, suit]:
+			if str(who).is_empty():
+				continue
+			var found: Array = _bill_opponent_cues.get("%s|%s|%s" % [scope, who, verb], [])
+			if not found.is_empty():
+				lines.append_array(found)
+				break
 	return lines
 
 
-## Questions written about this bill (Stage Questions rows with a Bill ID).
+## Questions written about this bill (Stage Questions rows with a Bill ID, or
+## with the Component ID of one of its components). A composed bill's
+## questions are dealt round-robin across its components, so any prefix of the
+## list is an even mix of them.
 func get_bill_questions(bill_id: String) -> Array:
-	return (_questions_by_bill.get(bill_id, []) as Array).duplicate()
+	var per_key: Array = []
+	for scope: String in content_keys(bill_id):
+		var list: Array = _questions_by_bill.get(scope, [])
+		if not list.is_empty():
+			per_key.append(list)
+	var out: Array = []
+	var round_index := 0
+	var more := true
+	while more:
+		more = false
+		for list: Array in per_key:
+			if round_index < list.size():
+				out.append(list[round_index])
+				more = true
+		round_index += 1
+	return out
 
 
 ## The Stage Questions tab's questions that name this stage, asked before the
@@ -1054,8 +1141,7 @@ func _index_opponent_cues() -> void:
 		var opp_ids_raw: Variant = row.get("opponent_ids")
 		var opp_ids: Array = opp_ids_raw if opp_ids_raw is Array else []
 		# A row about a bill is filed under that bill only (2026-10-18).
-		var bills_raw: Variant = row.get("bill_ids")
-		var bills: Array = bills_raw if bills_raw is Array else []
+		var bills: Array = scope_ids(row)
 		if not bills.is_empty():
 			for bill_id: String in bills:
 				var who: Array = opp_ids if not opp_ids.is_empty() else [suit]
@@ -1109,8 +1195,7 @@ func _index_player_cues() -> void:
 		var verb := "" if verb_raw == null else str(verb_raw).strip_edges()
 		var stages_raw: Variant = row.get("stage_ids")
 		var stages: Array = stages_raw if stages_raw is Array else []
-		var bills_raw: Variant = row.get("bill_ids")
-		var bills: Array = bills_raw if bills_raw is Array else []
+		var bills: Array = scope_ids(row)
 		var stance_raw: Variant = row.get("stance")
 		var stance := "" if stance_raw == null else str(stance_raw).strip_edges()
 		var lines: Array = []
@@ -1147,8 +1232,7 @@ func _index_stage_questions() -> void:
 			continue
 		var stages_raw: Variant = question.get("stage_ids")
 		var stages: Array = stages_raw if stages_raw is Array else []
-		var bills_raw: Variant = question.get("bill_ids")
-		var bills: Array = bills_raw if bills_raw is Array else []
+		var bills: Array = scope_ids(question)
 		if not bills.is_empty():
 			# About a bill: asked in that bill's level, not in the room everywhere.
 			for bill_id: String in bills:

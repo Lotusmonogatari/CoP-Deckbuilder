@@ -227,6 +227,10 @@ Cameron asked whether Option A has enough swaps for every patron bill to arise a
 
 To make every variation carryable the vote model got two patron-only shaping rules and one lever each: `patron_default_yes_floor` (44: a patron bill's default Yes never starts below it) and the recoverable cap (when Yes above 48 is turned into Abstain, it is taken from the parties whose seats the player's influence can win back, which Cameron's Vote Resistance numbers otherwise make impossible).
 
+## 10d. Step 3 status (built 2026-10-19)
+
+Runtime registry, `PatronLevel`, component-keyed content, `GameState` request state, vote resolution, save/resume and the statute book are built and tested (`tests/test_patron_level.gd`). Steps 4 to 7 remain. The influence-building ideas Cameron pinned for later are in `INFLUENCE_BUILDING_IDEAS_2026-10-19.md`.
+
 ## 11. Step 1 status (built 2026-10-19)
 
 | Item | Done |

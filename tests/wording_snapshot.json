@@ -116,6 +116,8 @@
   "carried.pleased": "Pleased at the press conference: {names}.",
   "carried.went_badly": "{name} went badly: you start {count} behind.",
   "carried.went_well": "{name} went well: you start {count} ahead.",
+  "custom_bill.name_2": "A bill to {a} and {b}",
+  "custom_bill.name_3": "A bill to {a}, {b} and {c}",
   "floor_vote.bar_abstain": "Abstain Votes",
   "floor_vote.bar_aye": "Aye Votes",
   "floor_vote.bar_nay": "Nay Votes",

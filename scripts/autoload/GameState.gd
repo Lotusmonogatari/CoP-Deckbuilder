@@ -322,6 +322,18 @@ var bills_flipped_by_influence: Array[String] = []
 ## for an entry's shape and record_floor_vote() for where it is written.
 var statute_book: Array = []
 
+## Patron Bills (2026-10-19). patron_requests: {patron_bill_id: {"status",
+## "components", "amended", "tries"}} (statuses are PatronRequests.*);
+## enacted_components: every component that has become law (Option A never
+## offers one again); patron_runtime: the level in progress, {"patron_bill_id",
+## "level"} ({} when none); patron_composed: {patron_bill_id: the composed bill
+## and its components}, kept so the statute book can name a bill after the run
+## is saved and reloaded.
+var patron_requests: Dictionary = {}
+var enacted_components: Array = []
+var patron_runtime: Dictionary = {}
+var patron_composed: Dictionary = {}
+
 ## The stance taken on this level's bill (2026-10-18, BillStance): {} when the
 ## level has no bill or no lean was picked; otherwise { "bill_id", "lean"
 ## ("Support"/"Oppose"), "cost": { booster_id: how much the win drift has taken
@@ -377,6 +389,7 @@ const _SAVED_FIELDS := [
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
+	"patron_requests", "enacted_components", "patron_runtime", "patron_composed",
 ]
 
 
@@ -415,10 +428,13 @@ func load_save(saved: Dictionary) -> void:
 		elif typeof(current) == typeof(value):
 			set(field, value)
 
+	_register_saved_patron_bills()
 	var runner: Variant = saved.get("level_runner")
 	level_runner = LevelRunner.restored(runner) if runner is Dictionary else null
 	if level_runner != null and level_runner.is_finished():
 		level_runner = null
+	if level_runner == null:
+		patron_runtime = {}
 	drop_stale_ids()
 
 
@@ -526,6 +542,11 @@ func reset_crisis_triggers() -> void:
 	gaffe_penalty_applied = false
 	bills_flipped_by_influence = []
 	statute_book = []
+	patron_requests = {}
+	enacted_components = []
+	patron_runtime = {}
+	patron_composed = {}
+	DataDB.clear_runtime()
 
 
 ## Every Staff role back to vacant, every firing forgotten, and recruitment
@@ -1058,7 +1079,8 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		# levels_completed_count) — recorded here regardless of which way
 		# last_level_outcome comes out, right where the level as a whole (not
 		# just the stage just played) is known to be over.
-		if not level_id.is_empty():
+		var patron_level := DataDB.is_runtime_level(level_id)
+		if not level_id.is_empty() and not patron_level:
 			levels_completed_count += 1
 			level_last_completed_at[level_id] = levels_completed_count
 			level_cleared_units[level_id] = time_units
@@ -1077,8 +1099,10 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 			_pay_level_rewards()
 			_apply_level_bonus_win(level_runner.level)
 			_cause = ""
-			if not level_id.is_empty():
+			if not level_id.is_empty() and not patron_level:
 				levels_cleared[level_id] = int(levels_cleared.get(level_id, 0)) + 1
+		if patron_level:
+			_conclude_patron_level()
 
 		# A special level, once played (win or lose), is done until its trigger
 		# comes round again; after an ordinary level, any special level that is
@@ -2355,6 +2379,8 @@ func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String) -> 
 	_apply_law_effect_rows(StatuteBook.effects_for(
 		DataDB.law_effects, bill_id, bool(law["passed"]), StatuteBook.ONCE))
 	_apply_party_tier_lean(bill_id, bool(law["passed"]))
+	if patron_requests.has(bill_id):
+		_resolve_patron_vote(bill_id, bool(law["passed"]))
 
 
 ## Party-tier organisations (Party Headquarters, Party Faction) answer to
@@ -2586,6 +2612,7 @@ func _resolve_delta(delta: Variant) -> int:
 ## Clears the level, on the way back to the Office.
 func end_level() -> void:
 	level_runner = null
+	patron_runtime = {}
 	bill_stance = {}
 	# Level buffs belong to the level; nothing else here to clear, since
 	# finish_stage() already reset the purchase counts when it concluded.
@@ -2610,6 +2637,12 @@ func end_level() -> void:
 ## returns to the Office until a level actually concludes, so this can
 ## never fire mid-stage by accident.
 func abandon_level() -> void:
+	if not patron_runtime.is_empty():
+		# An abandoned patron level leaves the request open to accept again.
+		var abandoned := str(patron_runtime.get("patron_bill_id", ""))
+		if patron_requests.has(abandoned) and patron_requests[abandoned]["status"] == PatronRequests.ACCEPTED:
+			patron_requests[abandoned]["status"] = PatronRequests.OPEN
+		patron_runtime = {}
 	level_runner = null
 	bill_stance = {}
 	level_bonuses = {}
@@ -2619,3 +2652,123 @@ func abandon_level() -> void:
 func _conclude_level_items() -> void:
 	shop_bought_this_level = {}
 	level_bonuses = {}
+
+
+# ---------------------------------------------------------------------------
+# Patron Bills (2026-10-19)
+# ---------------------------------------------------------------------------
+
+## Patron bills that are due now: standing high enough, not yet asked, a
+## Flagship only after its organization's Favor is resolved. Step 4's Requests
+## block reads this; it moves nothing.
+func patron_bills_due() -> Array:
+	var statuses := {}
+	for id: String in patron_requests:
+		statuses[id] = str((patron_requests[id] as Dictionary).get("status", ""))
+	return PatronRequests.due(DataDB.patron_bills, booster_standing, statuses, DataDB.balance)
+
+
+## Accepts a patron bill (optionally amended) and starts its level. Returns
+## false, changing nothing, when a level is already running or the bill cannot
+## be composed. `replace`/`with_id` are an Amend swap, both blank for none.
+func start_patron_level(patron_bill_id: String, replace: String = "", with_id: String = "") -> bool:
+	if is_in_level():
+		return false
+	var current := str((patron_requests.get(patron_bill_id, {}) as Dictionary).get("status", ""))
+	if current in [PatronRequests.PASSED, PatronRequests.FAILED, PatronRequests.DECLINED, PatronRequests.LAPSED]:
+		return false
+	var built := PatronLevel.register(patron_bill_id, enacted_components, replace, with_id)
+	if not built["ok"]:
+		return false
+	var tries := int((patron_requests.get(patron_bill_id, {}) as Dictionary).get("tries", 0))
+	patron_requests[patron_bill_id] = {
+		"status": PatronRequests.ACCEPTED, "components": built["component_ids"],
+		"amended": built["amended"], "tries": tries,
+	}
+	patron_composed[patron_bill_id] = {"bill": built["bill"], "component_ids": built["component_ids"]}
+	patron_runtime = {"patron_bill_id": patron_bill_id, "level": built["level"]}
+	var runner := LevelRunner.new(BattleSetup.expand_level(built["level"] as Dictionary))
+	begin_level(runner)
+	SaveManager.autosave(true)
+	return true
+
+
+## Declines a request: the organization's standing drops and the request is
+## gone for the run.
+func decline_patron_bill(patron_bill_id: String) -> void:
+	var row := PatronLevel.patron_bill(patron_bill_id)
+	if row.is_empty():
+		return
+	for entry: Dictionary in PatronRequests.decline_deltas(row, DataDB.balance):
+		_apply_booster_delta(str(entry["target"]), int(entry["delta"]))
+	patron_requests[patron_bill_id] = {"status": PatronRequests.DECLINED, "components": [], "amended": false, "tries": 0}
+	SaveManager.autosave(true)
+
+
+## The vote on a patron bill has happened: standing moves for the patron, the
+## ally and the organizations the bill hurts, the components' own effects
+## apply, and a passed bill's components become law.
+func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
+	var state: Dictionary = patron_requests[patron_bill_id]
+	var row := PatronLevel.patron_bill(patron_bill_id)
+	var bill: Dictionary = (patron_composed.get(patron_bill_id, {}) as Dictionary).get("bill", {})
+	var ally := str(row.get("ally", "")) if row.get("ally") != null else ""
+	var org := str(row.get("organization", ""))
+	var effects: Array = bill.get("effects", []) as Array
+	var rivals := PatronRequests.rivals_of(effects, org, ally)
+	var outcome := PatronRequests.outcome(row, ally, rivals, passed, bool(state.get("amended", false)), DataDB.balance)
+	for entry: Dictionary in (outcome["standing"] as Array):
+		_apply_booster_delta(str(entry["target"]), int(entry["delta"]))
+	if passed:
+		_apply_reward_entries(effects)
+		for component_id: Variant in (state.get("components", []) as Array):
+			if not enacted_components.has(component_id):
+				enacted_components.append(component_id)
+		_grant_free_backing(org, int(outcome["free_backing_units"]))
+	state["status"] = PatronRequests.PASSED if passed else PatronRequests.FAILED
+	patron_requests[patron_bill_id] = state
+
+
+## A passed Flagship gives the patron's backing for free for a while, using the
+## same clock-expiry machinery as a timed backing.
+func _grant_free_backing(org: String, units: int) -> void:
+	if units <= 0:
+		return
+	for mod_id: Variant in (DataDB.get_booster(org).get("linked_modifiers", []) as Array):
+		var id := str(mod_id)
+		if owned_modifiers.has(id):
+			continue
+		owned_modifiers.append(id)
+		modifier_expires[id] = time_units + units
+
+
+## A patron level ended. If the vote never happened (a stage lost ended the
+## level first) the request returns once; a second time it lapses.
+func _conclude_patron_level() -> void:
+	var patron_bill_id := str(patron_runtime.get("patron_bill_id", ""))
+	patron_runtime = {}
+	if not patron_requests.has(patron_bill_id):
+		return
+	var state: Dictionary = patron_requests[patron_bill_id]
+	if state["status"] != PatronRequests.ACCEPTED:
+		return
+	state["tries"] = int(state.get("tries", 0)) + 1
+	if int(state["tries"]) >= 2:
+		state["status"] = PatronRequests.LAPSED
+		_apply_booster_delta(str(PatronLevel.patron_bill(patron_bill_id).get("organization", "")),
+				-int(DataDB.balance.get("patron_fail_standing", 2)))
+	else:
+		state["status"] = PatronRequests.WAITING
+	patron_requests[patron_bill_id] = state
+
+
+## Re-files every composed bill (and the level in progress) with DataDB after a
+## load, so the statute book can name them and a resumed level finds its bill.
+func _register_saved_patron_bills() -> void:
+	DataDB.clear_runtime()
+	for patron_bill_id: String in patron_composed:
+		var entry: Dictionary = patron_composed[patron_bill_id]
+		DataDB.register_runtime_bill(entry.get("bill", {}) as Dictionary, entry.get("component_ids", []) as Array)
+	var level: Variant = patron_runtime.get("level")
+	if level is Dictionary:
+		DataDB.register_runtime_level(level as Dictionary)

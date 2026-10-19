@@ -59,7 +59,7 @@ func _ready() -> void:
 	var result := StageTransition.resolve(
 		_stage, DataDB.transition_cast, DataDB.transition_backgrounds, DataDB.transition_dialogue, rng, hired_ids,
 		int(DataDB.balance.get("transition_player_thought_chance", 0)),
-		str(_stage.get("bill_id", "")), _lean())
+		str(_stage.get("bill_id", "")), _lean(), DataDB.component_ids_of(str(_stage.get("bill_id", ""))))
 
 	if result.is_empty():
 		_on_continue()
