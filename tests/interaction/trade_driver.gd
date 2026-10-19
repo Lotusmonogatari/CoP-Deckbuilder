@@ -34,6 +34,9 @@ func _finish() -> void:
 func _start_trade_level() -> bool:
 	DataDB.clear_runtime()
 	GameState.start_new_run("PC01")
+	# The lobbyist's favored styles are random, so three blind answers can end
+	# with little leverage; this test checks the paying, not the price.
+	DataDB.balance["trade_cost_donation"] = 0
 	_bill_id = ""
 	for row: Dictionary in DataDB.patron_bills:
 		var built := PatronLevel.register(str(row["patron_bill_id"]), [])
