@@ -42,8 +42,6 @@ func _run() -> void:
 	await _click(get_tree().current_scene.find_child("DraftOrg_BO07", true, false) as Button)
 	await _click(get_tree().current_scene.find_child("DraftPart_CB071", true, false) as Button)
 	await _click(get_tree().current_scene.find_child("DraftOrgsBack", true, false) as Button)
-	if not _has_prefix(panel, "The bill: A bill to"):
-		_failures.append("the panel did not show the bill's name once two parts were chosen")
 	if not _has_prefix(panel, "As things stand the vote runs"):
 		_failures.append("the panel did not preview the vote")
 	go = get_tree().current_scene.find_child("DraftGoButton", true, false) as Button

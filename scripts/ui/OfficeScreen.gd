@@ -2067,8 +2067,6 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 	var bill: Dictionary = composed["bill"]
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("request.line", {"org": org_name, "bill": str(bill.get("bill_name", ""))})))
-	rows.append(UiKit.line(Text.say("request.parts", {"parts": RequestLines.parts_line(
-		composed["component_ids"] as Array, DataDB.bill_components)})))
 	rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
 	rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
 	var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
@@ -2136,7 +2134,6 @@ func _open_draft(fresh: bool = false) -> void:
 
 	if _draft_ids.size() >= DraftBill.MIN_PARTS:
 		var bill := DraftBill.bill_for(_draft_ids)
-		rows.append(UiKit.line(Text.say("draft.bill_name", {"name": str(bill.get("bill_name", ""))})))
 		rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
 		rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
 		var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
