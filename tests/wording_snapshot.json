@@ -137,7 +137,7 @@
   "draft.orgs_heading": "Add a part from",
   "draft.part_chosen": "{phrase} (chosen)",
   "draft.part_row": "{phrase}",
-  "draft.part_selected": "{phrase}. Tap to take it out.",
+  "draft.part_selected": "{phrase}",
   "draft.parts_heading": "Your bill",
   "draft.repeat": "{part} is already law.",
   "draft.title": "Draft a Bill",

@@ -4636,7 +4636,7 @@
   {
     "key": "draft.part_selected",
     "where": "Draft a Bill",
-    "english": "{phrase}. Tap to take it out.",
+    "english": "{phrase}",
     "placeholders": "label, phrase",
     "notes": "2026-10-19 Draft a Bill (draft)."
   },
