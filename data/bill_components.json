@@ -1,0 +1,377 @@
+[
+  {
+    "component_id": "CB051",
+    "owner": "BO05",
+    "slot": "X",
+    "short_label": "Cut the corporate tax rate",
+    "phrase": "cut the corporate tax rate",
+    "description": "Would cut the corporate tax rate.",
+    "hearing_stage": "ST16",
+    "value_tags": "Taxation -1; Economic Liberalization +0.7",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB052",
+    "owner": "BO05",
+    "slot": "Y",
+    "short_label": "Simplify business licensing",
+    "phrase": "simplify business licensing",
+    "description": "Would simplify business licensing.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation -0.8; Economic Liberalization +0.5",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB053",
+    "owner": "BO05",
+    "slot": "Z",
+    "short_label": "Open special economic zones",
+    "phrase": "open special economic zones",
+    "description": "Would open special economic zones.",
+    "hearing_stage": "ST16",
+    "value_tags": "Economic Liberalization +1; Globalism +0.5; Industrialism +0.4",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB071",
+    "owner": "BO07",
+    "slot": "X",
+    "short_label": "Fund harbor repairs",
+    "phrase": "fund harbor repairs",
+    "description": "Would fund harbor repairs.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.6; Rural Focus +0.7",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB072",
+    "owner": "BO07",
+    "slot": "Y",
+    "short_label": "Subsidize fuel for fishing boats",
+    "phrase": "subsidize fuel for fishing boats",
+    "description": "Would subsidize fuel for fishing boats.",
+    "hearing_stage": "ST13",
+    "value_tags": "Federal Spending +0.6; Agrarianism +0.5; Environmentalism -0.4",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB073",
+    "owner": "BO07",
+    "slot": "Z",
+    "short_label": "Hold fishing quotas through local cooperatives",
+    "phrase": "hold fishing quotas through local cooperatives",
+    "description": "Would hold fishing quotas through local cooperatives.",
+    "hearing_stage": "ST13",
+    "value_tags": "Localism +0.7; Economic Liberalization -0.5; Rural Focus +0.5",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB101",
+    "owner": "BO10",
+    "slot": "X",
+    "short_label": "Support the rice price",
+    "phrase": "support the rice price",
+    "description": "Would support the rice price.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +1; Federal Spending +0.5; Economic Liberalization -0.4",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB102",
+    "owner": "BO10",
+    "slot": "Y",
+    "short_label": "Subsidize farm machinery",
+    "phrase": "subsidize farm machinery",
+    "description": "Would subsidize farm machinery.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +0.8; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB103",
+    "owner": "BO10",
+    "slot": "Z",
+    "short_label": "Restrict foreign food imports",
+    "phrase": "restrict foreign food imports",
+    "description": "Would restrict foreign food imports.",
+    "hearing_stage": "ST14",
+    "value_tags": "Globalism -1; Agrarianism +0.8; Economic Liberalization -0.5",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB241",
+    "owner": "BO24",
+    "slot": "X",
+    "short_label": "Ease bank lending rules",
+    "phrase": "ease bank lending rules",
+    "description": "Would ease bank lending rules.",
+    "hearing_stage": "ST16",
+    "value_tags": "Regulation -0.8; Economic Liberalization +0.7",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB242",
+    "owner": "BO24",
+    "slot": "Y",
+    "short_label": "Create tax-free investment accounts",
+    "phrase": "create tax-free investment accounts",
+    "description": "Would create tax-free investment accounts.",
+    "hearing_stage": "ST16",
+    "value_tags": "Taxation -0.6; Economic Liberalization +0.5",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB243",
+    "owner": "BO24",
+    "slot": "Z",
+    "short_label": "Build a financial hub zone in Sapporo",
+    "phrase": "build a financial hub zone in Sapporo",
+    "description": "Would build a financial hub zone in Sapporo.",
+    "hearing_stage": "ST16",
+    "value_tags": "Economic Liberalization +0.9; Globalism +0.7",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB301",
+    "owner": "BO30",
+    "slot": "X",
+    "short_label": "Keep rural bus routes running",
+    "phrase": "keep rural bus routes running",
+    "description": "Would keep rural bus routes running.",
+    "hearing_stage": "ST15",
+    "value_tags": "Rural Focus +0.9; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB302",
+    "owner": "BO30",
+    "slot": "Y",
+    "short_label": "Pay grants to families moving to rural towns",
+    "phrase": "pay grants to families moving to rural towns",
+    "description": "Would pay grants to families moving to rural towns.",
+    "hearing_stage": "ST17",
+    "value_tags": "Rural Focus +0.9; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB303",
+    "owner": "BO30",
+    "slot": "Z",
+    "short_label": "Bring broadband to every village",
+    "phrase": "bring broadband to every village",
+    "description": "Would bring broadband to every village.",
+    "hearing_stage": "ST15",
+    "value_tags": "Rural Focus +0.8; Post-Industrialism +0.5; Federal Spending +0.6",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  }
+]

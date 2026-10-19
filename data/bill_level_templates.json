@@ -1,0 +1,24 @@
+[
+  {
+    "template_id": "BT01",
+    "kind": "Favor",
+    "level_tier": 1,
+    "stage_1": "PATRON_MEETING",
+    "stage_2": "HEARING",
+    "stage_3": "VOTE",
+    "stage_4": null,
+    "stage_5": null,
+    "note": "Draft: a meeting with the organization, the committee hearing for the first component, the Floor Vote."
+  },
+  {
+    "template_id": "BT02",
+    "kind": "Flagship",
+    "level_tier": 2,
+    "stage_1": "PATRON_MEETING",
+    "stage_2": "HEARING",
+    "stage_3": "PUBLIC",
+    "stage_4": "CAUCUS",
+    "stage_5": "VOTE",
+    "note": "Draft: adds a public room (Town Hall for a Constituency organization, Press Conference for a National one) and your own Party Caucus."
+  }
+]

@@ -1,0 +1,187 @@
+[
+  {
+    "patron_bill_id": "PB051",
+    "organization": "BO05",
+    "kind": "Favor",
+    "threshold": null,
+    "components": [
+      "CB051",
+      "CB052"
+    ],
+    "ally": null,
+    "template_id": "BT01",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB052",
+    "organization": "BO05",
+    "kind": "Flagship",
+    "threshold": null,
+    "components": [
+      "CB051",
+      "CB053",
+      "CB241"
+    ],
+    "ally": "BO24",
+    "template_id": "BT02",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB071",
+    "organization": "BO07",
+    "kind": "Favor",
+    "threshold": null,
+    "components": [
+      "CB071",
+      "CB072"
+    ],
+    "ally": null,
+    "template_id": "BT01",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB072",
+    "organization": "BO07",
+    "kind": "Flagship",
+    "threshold": null,
+    "components": [
+      "CB071",
+      "CB073",
+      "CB101"
+    ],
+    "ally": "BO10",
+    "template_id": "BT02",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB101",
+    "organization": "BO10",
+    "kind": "Favor",
+    "threshold": null,
+    "components": [
+      "CB101",
+      "CB102"
+    ],
+    "ally": null,
+    "template_id": "BT01",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB102",
+    "organization": "BO10",
+    "kind": "Flagship",
+    "threshold": null,
+    "components": [
+      "CB101",
+      "CB103",
+      "CB301"
+    ],
+    "ally": "BO30",
+    "template_id": "BT02",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB241",
+    "organization": "BO24",
+    "kind": "Favor",
+    "threshold": null,
+    "components": [
+      "CB241",
+      "CB242"
+    ],
+    "ally": null,
+    "template_id": "BT01",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB242",
+    "organization": "BO24",
+    "kind": "Flagship",
+    "threshold": null,
+    "components": [
+      "CB241",
+      "CB243",
+      "CB051"
+    ],
+    "ally": "BO05",
+    "template_id": "BT02",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB301",
+    "organization": "BO30",
+    "kind": "Favor",
+    "threshold": null,
+    "components": [
+      "CB301",
+      "CB302"
+    ],
+    "ally": null,
+    "template_id": "BT01",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  },
+  {
+    "patron_bill_id": "PB302",
+    "organization": "BO30",
+    "kind": "Flagship",
+    "threshold": null,
+    "components": [
+      "CB301",
+      "CB303",
+      "CB101"
+    ],
+    "ally": "BO10",
+    "template_id": "BT02",
+    "request_line": "{org} asks you to carry a bill: {bill}. Will you?",
+    "accept_line": "You take it on. {org} is counting on you.",
+    "decline_line": "You tell {org} you cannot carry it. They do not hide their disappointment.",
+    "pass_line": "The bill passes, and {org} will not forget who carried it.",
+    "fail_line": "The bill falls short, and {org} knows you tried.",
+    "note": "Draft 2026-10-19: lines use {org} and {bill}; Cameron to rewrite."
+  }
+]

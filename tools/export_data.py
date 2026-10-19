@@ -299,8 +299,11 @@ SHEETS = {
             # (Support or Oppose; blank = either).
             ("Bill ID", "bill_id", "str"),
             ("Stance", "stance", "str"),
+            # Optional (2026-10-19, Patron Bills): the bill component(s) this
+            # line is about (CBxx), used in levels built from components.
+            ("Component ID", "component_ids", "id_list"),
         ],
-        "optional": ["Bill ID", "Stance"],
+        "optional": ["Bill ID", "Stance", "Component ID"],
     },
     # Every line the game says to the player. Cameron's to reword; the code
     # asks for a Key and never holds a sentence of its own. A key the code
@@ -334,7 +337,7 @@ SHEETS = {
         "key": "cue_id",
         "id_pattern": r"^OC\d+$",
         "optional_sheet": True,
-        "optional": ["Stage ID", "Bill ID"],
+        "optional": ["Stage ID", "Bill ID", "Component ID"],
         "columns": [
             ("Cue ID", "cue_id", "id"),
             ("Suit", "suit", "str"),
@@ -354,6 +357,9 @@ SHEETS = {
             # Optional (2026-10-18): said only in the level that votes on
             # this bill, checked before every other tier (OpponentCues.gd).
             ("Bill ID", "bill_ids", "id_list"),
+            # Optional (2026-10-19, Patron Bills): said only in levels built
+            # from this bill component (CBxx).
+            ("Component ID", "component_ids", "id_list"),
         ],
     },
     # Law Effects (2026-10-12): what a bill does once it has been voted on,
@@ -404,8 +410,11 @@ SHEETS = {
             # lean it fits (Support, Oppose, or blank for either).
             ("Bill ID", "bill_ids", "id_list"),
             ("Stance", "stance", "str"),
+            # Optional (2026-10-19, Patron Bills): the bill component(s) this
+            # line is about (CBxx), used in levels built from components.
+            ("Component ID", "component_ids", "id_list"),
         ],
-        "optional": ["Bill ID", "Stance"],
+        "optional": ["Bill ID", "Stance", "Component ID"],
     },
     # Stage Questions (2026-10-12): questions that belong to particular
     # stages (a committee asking about its own subject, say), graded like the
@@ -415,7 +424,7 @@ SHEETS = {
     "Stage Questions": {
         "out": "q_stage.json",
         "key": "q_id",
-        "optional": ["Asked By Party", "Bill ID"],
+        "optional": ["Asked By Party", "Bill ID", "Component ID"],
         "id_pattern": r"^[A-Z]\d+$",
         "optional_sheet": True,
         "columns": [
@@ -436,6 +445,9 @@ SHEETS = {
             # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
             # party. Only someone from one of these parties may ask it.
             ("Asked By Party", "asked_by_parties", "id_list"),
+            # Optional (2026-10-19, Patron Bills): a question about one bill
+            # component (CBxx), asked in levels built from components.
+            ("Component ID", "component_ids", "id_list"),
         ],
     },
     # Press Questions: 20 questions for the press conference stage type, each graded
@@ -617,6 +629,101 @@ SHEETS = {
             ("Target", "target", "id"),
             ("Weight", "weight", "num"),
             ("Note", "note", "str"),
+        ],
+    },
+    # Patron Bills and Custom Bills (2026-10-19, plan: design/proposals/
+    # PATRON_BILLS_BUILD_PLAN_2026-10-19.md). Four new tabs, all optional and
+    # shipped small; nothing reads them yet (step 1: schema only).
+    #
+    # Bill Components: the pieces a bill is assembled from. Each non-party
+    # organization owns three (Slot X core, Y modest, Z ambitious). Phrase
+    # fills "A bill to {a} and {b}". Value Tags ("Taxation -0.8; Federal
+    # Spending 0.5") name Party Values dimensions and decide how each party
+    # leans. Gains/Loses are organization effects ("BO07 +3"). Excludes and
+    # Amend Options are lists of CBxx.
+    "Bill Components": {
+        "out": "bill_components.json",
+        "key": "component_id",
+        "id_pattern": r"^CB\d+$",
+        "optional_sheet": True,
+        "optional": ["Excludes", "Each Level Effect", "Amend Options"],
+        "columns": [
+            ("Component ID", "component_id", "id"),
+            ("Owner", "owner", "str"),
+            ("Slot", "slot", "str"),
+            ("Short Label", "short_label", "str"),
+            ("Phrase", "phrase", "str"),
+            ("Description", "description", "str"),
+            ("Hearing Committee", "hearing_stage", "str"),
+            ("Value Tags", "value_tags", "str"),
+            ("Gains", "gains", "target_delta_list"),
+            ("Loses", "loses", "target_delta_list"),
+            ("Excludes", "excludes", "id_list"),
+            ("Each Level Effect", "each_level_effect", "target_delta_list"),
+            ("Amend Options", "amend_options", "id_list"),
+        ],
+    },
+    # Patron Bills: the request an organization makes at a standing level.
+    # Kind is Favor (two of the organization's own components) or Flagship
+    # (the organization's X and Z plus its ally's X). Threshold blank = the
+    # Balance lever for that kind.
+    "Patron Bills": {
+        "out": "patron_bills.json",
+        "key": "patron_bill_id",
+        "id_pattern": r"^PB\d+$",
+        "optional_sheet": True,
+        "optional": ["Threshold", "Note"],
+        "columns": [
+            ("Patron Bill ID", "patron_bill_id", "id"),
+            ("Organization", "organization", "str"),
+            ("Kind", "kind", "str"),
+            ("Threshold", "threshold", "int"),
+            ("Components", "components", "id_list"),
+            ("Ally", "ally", "str"),
+            ("Template ID", "template_id", "str"),
+            ("Request Line", "request_line", "str"),
+            ("Accept Line", "accept_line", "str"),
+            ("Decline Line", "decline_line", "str"),
+            ("Pass Line", "pass_line", "str"),
+            ("Fail Line", "fail_line", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
+    # Bill Level Templates: the stages a built level plays, as family tokens
+    # (PATRON_MEETING, HEARING, PUBLIC, CAUCUS, VOTE). The code turns a token
+    # into a real stage (the lead component's committee for HEARING; Town
+    # Hall for a Constituency organization and a Press Conference for a
+    # National one for PUBLIC).
+    "Bill Level Templates": {
+        "out": "bill_level_templates.json",
+        "key": "template_id",
+        "id_pattern": r"^BT\d+$",
+        "optional_sheet": True,
+        "optional": ["Stage 4", "Stage 5", "Note"],
+        "columns": [
+            ("Template ID", "template_id", "id"),
+            ("Kind", "kind", "str"),
+            ("Level Tier", "level_tier", "int"),
+            ("Stage 1", "stage_1", "str"),
+            ("Stage 2", "stage_2", "str"),
+            ("Stage 3", "stage_3", "str"),
+            ("Stage 4", "stage_4", "str"),
+            ("Stage 5", "stage_5", "str"),
+            ("Note", "note", "str"),
+        ],
+    },
+    # Party Values: Cameron's 34-dimension table in long form (one row per
+    # party and dimension), so the game can compute how each party leans on a
+    # bill from its components' Value Tags. Salience = Value x Priority.
+    "Party Values": {
+        "out": "party_values.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Party ID", "party_id", "str"),
+            ("Dimension", "dimension", "str"),
+            ("Value", "value", "int"),
+            ("Priority", "priority", "int"),
+            ("Salience", "salience", "int"),
         ],
     },
     "Text": {
@@ -2724,6 +2831,140 @@ def fold_questions(data, report):
         if row.get("weight") is None:
             report.warn("Standing Links", f"{lid} has no weight, so it counts as 0")
 
+    # --- Patron Bills and Custom Bills (2026-10-19) ---------------------------
+    # Schema only so far: nothing in the game reads these tabs yet, so these
+    # checks are what keep the data coherent while it is being written.
+    stage_ids_pb = {row["stage_id"] for row in data.get("stages", [])}
+    components = {c["component_id"]: c for c in data.get("bill_components", [])}
+    booster_rows = {b.get("booster_id"): b for b in data.get("boosters", [])}
+    party_ids_pv = {r["party_id"] for r in data.get("parties", []) if r.get("party_id")}
+    pv_rows = data.get("party_values", [])
+    pv_dims = {r.get("dimension") for r in pv_rows}
+    for r in pv_rows:
+        if r.get("party_id") not in party_ids_pv:
+            report.error("Party Values", f"'{r.get('party_id')}' is not a party_id (dimension {r.get('dimension')})")
+        if None not in (r.get("value"), r.get("priority"), r.get("salience")) \
+                and r["value"] * r["priority"] != r["salience"]:
+            report.warn("Party Values", f"{r.get('party_id')} / {r.get('dimension')}: salience "
+                        f"{r['salience']} is not value x priority ({r['value'] * r['priority']})")
+    if pv_rows:
+        per_party = {}
+        for r in pv_rows:
+            per_party.setdefault(r.get("party_id"), set()).add(r.get("dimension"))
+        for pid_, dims in per_party.items():
+            if dims != pv_dims:
+                report.warn("Party Values", f"{pid_} is missing dimensions: {', '.join(sorted(pv_dims - dims))}")
+
+    def _non_party_org(oid):
+        b = booster_rows.get(oid)
+        return b is not None and str(b.get("tier") or "").strip() != "Party"
+
+    seen_slots = set()
+    for cid, c in components.items():
+        owner = c.get("owner")
+        if owner not in booster_rows:
+            report.error("Bill Components", f"{cid}: owner '{owner}' is not in the Boosters tab")
+        elif not _non_party_org(owner):
+            report.error("Bill Components", f"{cid}: {owner} is a Party Body; party bodies have no bills (Cameron, 2026-10-19)")
+        if c.get("slot") not in ("X", "Y", "Z"):
+            report.error("Bill Components", f"{cid}: Slot '{c.get('slot')}' must be X, Y or Z")
+        if (owner, c.get("slot")) in seen_slots:
+            report.error("Bill Components", f"{cid}: {owner} already has a component in slot {c.get('slot')}")
+        seen_slots.add((owner, c.get("slot")))
+        if not c.get("phrase"):
+            report.error("Bill Components", f"{cid} has no Phrase (it fills 'A bill to ...')")
+        if c.get("hearing_stage") not in stage_ids_pb:
+            report.error("Bill Components", f"{cid}: Hearing Committee '{c.get('hearing_stage')}' is not in the Stages tab")
+        tags = [t.strip() for t in str(c.get("value_tags") or "").split(";") if t.strip()]
+        if not tags:
+            report.warn("Bill Components", f"{cid} has no Value Tags, so every party will read it as Neutral")
+        for t in tags:
+            dim, _, num = t.rpartition(" ")
+            try:
+                weight = float(num)
+            except ValueError:
+                report.error("Bill Components", f"{cid}: Value Tag '{t}' must read 'Dimension 0.8'")
+                continue
+            if pv_dims and dim not in pv_dims:
+                report.error("Bill Components", f"{cid}: Value Tag dimension '{dim}' is not in Party Values")
+            if abs(weight) > 1:
+                report.warn("Bill Components", f"{cid}: Value Tag '{t}' is outside -1 to 1")
+        for col, positive in (("gains", True), ("loses", False)):
+            for entry in c.get(col) or []:
+                if entry.get("target") not in booster_rows:
+                    report.error("Bill Components", f"{cid}: {col} names '{entry.get('target')}', which is not in the Boosters tab")
+                elif (entry.get("delta") or 0) * (1 if positive else -1) <= 0:
+                    report.warn("Bill Components", f"{cid}: {col} entry {entry.get('target')} {entry.get('delta')} has the wrong sign")
+        for col in ("excludes", "amend_options"):
+            for other in c.get(col) or []:
+                if other not in components:
+                    report.error("Bill Components", f"{cid}: {col} names '{other}', which is not a component")
+                elif other == cid:
+                    report.error("Bill Components", f"{cid}: {col} names itself")
+    template_rows = {t["template_id"]: t for t in data.get("bill_level_templates", [])}
+    template_tokens = {"PATRON_MEETING", "HEARING", "PUBLIC", "CAUCUS", "VOTE"}
+    for tid, t in template_rows.items():
+        if t.get("kind") not in ("Favor", "Flagship"):
+            report.error("Bill Level Templates", f"{tid}: Kind '{t.get('kind')}' must be Favor or Flagship")
+        slots = [t.get(f"stage_{i}") for i in range(1, 6) if t.get(f"stage_{i}")]
+        for tok in slots:
+            if tok not in template_tokens:
+                report.error("Bill Level Templates", f"{tid}: '{tok}' is not one of {', '.join(sorted(template_tokens))}")
+        if slots and slots[-1] != "VOTE":
+            report.error("Bill Level Templates", f"{tid}: the last stage must be VOTE")
+    patron_pairs = set()
+    for r in data.get("patron_bills", []):
+        pid_ = r["patron_bill_id"]; org = r.get("organization"); kind = r.get("kind")
+        if not _non_party_org(org):
+            report.error("Patron Bills", f"{pid_}: organization '{org}' is missing or a Party Body")
+        if kind not in ("Favor", "Flagship"):
+            report.error("Patron Bills", f"{pid_}: Kind '{kind}' must be Favor or Flagship")
+        if (org, kind) in patron_pairs:
+            report.error("Patron Bills", f"{pid_}: {org} already has a {kind} bill")
+        patron_pairs.add((org, kind))
+        comp_list = r.get("components") or []
+        want = 2 if kind == "Favor" else 3
+        if len(comp_list) != want:
+            report.error("Patron Bills", f"{pid_}: a {kind} bill has {want} components, not {len(comp_list)}")
+        for cid in comp_list:
+            if cid not in components:
+                report.error("Patron Bills", f"{pid_}: component '{cid}' does not exist")
+        owners = [components[c].get("owner") for c in comp_list if c in components]
+        if kind == "Favor" and any(o != org for o in owners):
+            report.error("Patron Bills", f"{pid_}: a Favor bill uses only {org}'s own components")
+        if kind == "Flagship":
+            ally = r.get("ally")
+            if not _non_party_org(ally) or ally == org:
+                report.error("Patron Bills", f"{pid_}: Ally '{ally}' must be a different non-party organization")
+            if len(owners) == 3 and not (owners[0] == org and owners[1] == org and owners[2] == ally):
+                report.error("Patron Bills", f"{pid_}: a Flagship uses two of {org}'s components, then one of {ally}'s")
+        for cid in comp_list:
+            for other in (components.get(cid, {}).get("excludes") or []):
+                if other in comp_list:
+                    report.error("Patron Bills", f"{pid_}: {cid} excludes {other}, but both are in the bill")
+        t = template_rows.get(r.get("template_id"))
+        if t is None:
+            report.error("Patron Bills", f"{pid_}: Template ID '{r.get('template_id')}' is not in Bill Level Templates")
+        elif t.get("kind") != kind:
+            report.error("Patron Bills", f"{pid_}: template {t['template_id']} is for {t.get('kind')} bills, not {kind}")
+        for col, label in (("request_line", "Request Line"), ("accept_line", "Accept Line"), ("decline_line", "Decline Line"),
+                           ("pass_line", "Pass Line"), ("fail_line", "Fail Line")):
+            if not r.get(col):
+                report.warn("Patron Bills", f"{pid_} has no {label}")
+    if data.get("patron_bills"):
+        covered = {o for o, _ in patron_pairs}
+        missing = [b for b, row in booster_rows.items() if _non_party_org(b) and b not in covered]
+        if missing:
+            report.note(f"Patron Bills: {len(missing)} of {sum(1 for b in booster_rows if _non_party_org(b))} "
+                        "non-party organizations have no patron bills yet")
+    # Content tagged with a component must name a real one.
+    for table in ("player_cues", "opponent_cues", "transition_dialogue", "q_stage"):
+        for row in data.get(table, []):
+            for cid in row.get("component_ids") or []:
+                if cid not in components:
+                    report.error(table, f"{row.get('cue_id') or row.get('transition_dialogue_id') or row.get('q_id')} "
+                                 f"names component '{cid}', which is not in Bill Components")
+
     # Who asks (2026-09-26, Cameron: "the databook is the governing data" —
     # call an opponent up by their own Stage ID, never a hand-maintained
     # placeholder roster or a text description). Every opponent whose own
@@ -2805,9 +3046,12 @@ def fold_questions(data, report):
                     # by someone who sits in the first of them.
                     stages_named = row.get("stage_ids") or []
                     bills_named = row.get("bill_ids") or []
-                    if not stages_named and not bills_named:
+                    components_named = row.get("component_ids") or []
+                    if not stages_named and not bills_named and not components_named:
                         report.error("Stage Questions",
-                                     f"question {row['q_id']} names no Stage ID or Bill ID")
+                                     f"question {row['q_id']} names no Stage ID, Bill ID or Component ID")
+                    if components_named:
+                        question["component_ids"] = components_named
                     if bills_named:
                         question["bill_ids"] = bills_named
                         known_bills = {b.get("bill_id") for b in data.get("floor_vote_bills_raw", [])}

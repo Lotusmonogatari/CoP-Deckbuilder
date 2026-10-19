@@ -90,7 +90,7 @@ ORGS = {
    ("give a tax credit for research and development", "ST16", {"Post-Industrialism": 1, "Taxation": -0.4}),
    ("offer visas to start-up founders", "ST14", {"Immigration": 0.7, "Post-Industrialism": 0.6}),
    ("move government services online", "ST17", {"Technocratic": 0.9, "Post-Industrialism": 0.5})]),
- "BO17": ("BO23", "BO02", [
+ "BO17": ("BO23", "BO18", [
    ("raise members' staff allowances", "ST12", {"Federal Spending": 0.5, "Democratic Norms": 0.3}),
    ("fund a committee research office", "ST12", {"Technocratic": 0.7, "Democratic Norms": 0.5}),
    ("create an independent parliamentary budget office", "ST12", {"Technocratic": 0.9, "Democratic Norms": 0.6})]),
@@ -148,6 +148,9 @@ ORGS = {
    ("bring broadband to every village", "ST15", {"Rural Focus": 0.8, "Post-Industrialism": 0.5, "Federal Spending": 0.6})]),
 }
 
+PARTY_BODIES = ("BO01", "BO02", "BO31", "BO32")  # no bills of their own (Cameron, 2026-10-19)
+for _k in PARTY_BODIES: ORGS.pop(_k)
+
 def name(o): return B[o]["name_en"]
 
 def merge(tags_list):
@@ -157,12 +160,25 @@ def merge(tags_list):
             out[k] = out.get(k, 0) + v
     return out
 
+YES_NEEDED = 51
+MARGIN = 6   # draft lever patron_default_margin: default Yes sits this far below 51
+
 def tally(tags):
-    tot = [0, 0, 0]; disp = {}
+    """Same lean model as Batch 2, then the patron rule: Yes above the cap
+    (51 - MARGIN) is turned into Abstain, weakest supporters first, so no patron
+    bill passes without the player's influence."""
+    votes = {}; lean = {}
     for pid in PID:
         d, v, s = split(tags, pid)
-        disp[pid] = d[0]  # S / O / N
-        for i in range(3): tot[i] += v[i]
+        votes[pid] = list(v); lean[pid] = (d[0], s)
+    cap = YES_NEEDED - MARGIN
+    over = sum(v[0] for v in votes.values()) - cap
+    for pid in sorted(PID, key=lambda p: lean[p][1]):
+        if over <= 0: break
+        mv = min(over, votes[pid][0])
+        votes[pid][0] -= mv; votes[pid][2] += mv; over -= mv
+    tot = [sum(v[i] for v in votes.values()) for i in range(3)]
+    disp = {p: lean[p][0] for p in PID}
     return disp, tot
 
 def bill_name(phrases):
@@ -170,17 +186,15 @@ def bill_name(phrases):
     return "A bill to %s, %s and %s" % tuple(phrases)
 
 comp_ids = {}
-n = 0
 rows_c, rows_b = [], []
 for o, (rival, ally, comps) in ORGS.items():
     for i, c in enumerate(comps):
-        n += 1; cid = "CB%02d" % n; comp_ids[(o, i)] = cid
+        cid = "CB%02d%d" % (int(o[2:]), i + 1); comp_ids[(o, i)] = cid
         rows_c.append((cid, o, "XYZ"[i], c[0], CMT[c[1]], ", ".join("%s %+.1f" % kv for kv in c[2].items())))
-pb = 0
 for o, (rival, ally, comps) in ORGS.items():
-    party_tier = B[o]["tier"] == "Party"
-    for kind, idx, thr in (("Favor", [(o, 0), (o, 1)], 50), ("Flagship", [(o, 0), (o, 2), (ally, 0)], 70)):
-        pb += 1
+    party_tier = False
+    for ki, (kind, idx, thr) in enumerate((("Favor", [(o, 0), (o, 1)], 50), ("Flagship", [(o, 0), (o, 2), (ally, 0)], 70)), start=1):
+        pb = "%02d%d" % (int(o[2:]), ki)
         phrases = [ORGS[k][2][i][0] for k, i in idx]
         tags = merge([ORGS[k][2][i][2] for k, i in idx])
         cids = " + ".join(comp_ids[k] for k in idx)
@@ -191,13 +205,15 @@ for o, (rival, ally, comps) in ORGS.items():
             disp, tot = tally(tags)
             outcome = "%d-%d-%d %s" % (tot[0], tot[1], tot[2], "passes" if tot[0] >= 51 else "fails")
             lean = " ".join("%s:%s" % (SHORT[p], disp[p]) for p in PID)
-        rows_b.append(("PB%02d" % pb, name(o), thr, kind, bill_name(phrases), cids, ", ".join(gains), name(rival), CMT[ORGS[o][2][0][1]], lean, outcome))
+        rows_b.append(("PB" + pb, name(o), thr, kind, bill_name(phrases), cids, ", ".join(gains), name(rival), CMT[ORGS[o][2][0][1]], lean, outcome))
 
-print("### Component library (%d)\n" % len(rows_c))
-print("| ID | Owner | Slot | Phrase | Hearing | Value tags (draft) |\n|---|---|---|---|---|---|")
-for r in rows_c: print("| %s | %s | %s | %s | %s | %s |" % (r[0], r[1], r[2], r[3], r[4], r[5]))
-print("\n### Patron bills (%d)\n" % len(rows_b))
-print("| ID | Organization | At | Kind | Bill (assembled name) | Components | Gains | Loses | Hearing | Party lean | Default vote (Aye-Nay-Abstain) |\n|---|---|---|---|---|---|---|---|---|---|---|")
-for r in rows_b: print("| %s | %s | %d | %s | %s | %s | %s | %s | %s | %s | %s |" % r)
-p = sum(1 for r in rows_b if r[10].endswith("passes")); f = sum(1 for r in rows_b if r[10].endswith("fails"))
-print("\nDefault result without influence: %d pass, %d fail, %d decided in caucus." % (p, f, len(rows_b) - p - f))
+if __name__ == "__main__":
+    print("### Component library (%d)\n" % len(rows_c))
+    print("| ID | Owner | Slot | Phrase | Hearing | Value tags (draft) |\n|---|---|---|---|---|---|")
+    for r in rows_c: print("| %s | %s | %s | %s | %s | %s |" % (r[0], r[1], r[2], r[3], r[4], r[5]))
+    print("\n### Patron bills (%d)\n" % len(rows_b))
+    print("| ID | Organization | At | Kind | Bill (assembled name) | Components | Gains | Loses | Hearing | Party lean | Default vote (Aye-Nay-Abstain) |\n|---|---|---|---|---|---|---|---|---|---|---|")
+    for r in rows_b: print("| %s | %s | %d | %s | %s | %s | %s | %s | %s | %s | %s |" % r)
+    p = sum(1 for r in rows_b if r[10].endswith("passes")); f = sum(1 for r in rows_b if r[10].endswith("fails"))
+    print("\nDefault result without influence: %d pass, %d fail, %d decided in caucus." % (p, f, len(rows_b) - p - f))
+
