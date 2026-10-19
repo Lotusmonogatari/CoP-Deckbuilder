@@ -122,7 +122,7 @@ func _add_tile(booster_id: String, taste: String) -> void:
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_child(icon)
 	var shade := TextureRect.new()
-	shade.texture = _soft_disc()
+	shade.texture = soft_disc()
 	shade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	shade.stretch_mode = TextureRect.STRETCH_SCALE
 	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -171,7 +171,7 @@ func _fit() -> void:
 static var _disc: GradientTexture2D = null
 
 ## A white disc whose edge fades to nothing; tinted by modulate.
-static func _soft_disc() -> GradientTexture2D:
+static func soft_disc() -> GradientTexture2D:
 	if _disc == null:
 		var gradient := Gradient.new()
 		gradient.offsets = PackedFloat32Array([0.0, 0.55, 1.0])

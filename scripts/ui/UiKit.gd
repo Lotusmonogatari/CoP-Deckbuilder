@@ -39,6 +39,10 @@ static func heading(text: String) -> Label:
 ## changed in any way.
 static func wrap_all(root: Node) -> void:
 	for node in root.find_children("*", "Control", true, false):
+		# A card draws its own text to fit its own boxes; wrapping those
+		# labels pushed a card's name out of its one-line bar.
+		if _inside_card(node, root):
+			continue
 		if node is Label:
 			var label := node as Label
 			if label.autowrap_mode == TextServer.AUTOWRAP_OFF:
@@ -54,6 +58,16 @@ static func wrap_all(root: Node) -> void:
 		(root as Label).autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	elif root is Button and (root as Button).autowrap_mode == TextServer.AUTOWRAP_OFF:
 		(root as Button).autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+
+
+## True when `node` is part of a CardView or CardBackView below `root`.
+static func _inside_card(node: Node, root: Node) -> bool:
+	var parent := node.get_parent()
+	while parent != null and parent != root:
+		if parent is CardView or parent is CardBackView:
+			return true
+		parent = parent.get_parent()
+	return false
 
 
 ## A button that says `ok_text` and calls `on_press` — or, when `refusal` is

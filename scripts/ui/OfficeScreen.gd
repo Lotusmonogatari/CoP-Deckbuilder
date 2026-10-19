@@ -1555,18 +1555,24 @@ func _show_card_offer() -> void:
 	if card.is_empty():
 		return
 
+	# Both faces are shown at twice the card's battle size (Cameron,
+	# 2026-10-19). The front is a fixed-size card, so it is scaled inside a
+	# box of the doubled size; the back lays its text out from its own size.
+	var scale_up := 2.0
 	var front := CardView.new()
 	front.show_card(card)
 	front.disabled = true   # a preview, not a hand — tapping it does nothing
+	front.scale = Vector2(scale_up, scale_up)
+	var front_box := Control.new()
+	front_box.custom_minimum_size = Vector2(CardView.WIDTH, CardView.HEIGHT) * scale_up
+	front_box.add_child(front)
 	var front_frame := CenterContainer.new()
-	front_frame.add_child(front)
+	front_frame.add_child(front_box)
 
 	# Sized to match the front's own height, so the pair reads as one card
-	# shown both sides rather than a small card under a much bigger one —
-	# CardBackView otherwise has no size of its own (see BattleScreen's own
-	# 1250-tall zoom, which has the whole screen to fill; this popup does not).
+	# shown both sides rather than a small card under a much bigger one.
 	var back := CardBackView.new()
-	back.custom_minimum_size = Vector2(CardView.HEIGHT * CardBackView.ASPECT, CardView.HEIGHT)
+	back.custom_minimum_size = Vector2(CardView.HEIGHT * CardBackView.ASPECT, CardView.HEIGHT) * scale_up
 	back.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	# No battle room to describe an effect "here" or narrate — just the card
 	# as printed, the same as looking at it in the deck screen.

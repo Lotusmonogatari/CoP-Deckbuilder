@@ -99,6 +99,8 @@ const WIDTH := HEIGHT * ASPECT
 const COST_RECT := Rect2(0.0588, 0.0330, 0.0980, 0.0705)
 const COST_LABEL_LIFT := 0.008
 const NAME_RECT := Rect2(0.215, 0.032, 0.655, 0.056)
+const NAME_FONT_SIZE := 26
+const NAME_FONT_SIZE_MIN := 14
 
 ## Where the art sits, measured from every front template's OWN transparent
 ## window (tools/measure at the time was a one-off script over each PNG's
@@ -242,7 +244,7 @@ func _build() -> void:
 	_name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_name_label.add_theme_color_override("font_color", INK)
 	_name_label.add_theme_font_override("font", CARD_FONT)
-	_name_label.add_theme_font_size_override("font_size", 26)
+	_name_label.add_theme_font_size_override("font_size", NAME_FONT_SIZE)
 	_name_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	add_child(_name_label)
 
@@ -299,6 +301,7 @@ func show_card(card_row: Dictionary) -> void:
 	show_cost(int(card_row.get("cost", 0)))
 	_name_label.text = str(card_row.get("name_en", "Unnamed"))
 	_art_label.text = str(card_row.get("name_jp", ""))
+	_fit_name_label()
 	_effect_label.text = str(card_row.get("effect_text", ""))
 	_frame.texture = frame_for(str(card_row.get("suit", "")))
 	# By card ID (data/art.json's `card` folder) when it has been drawn;
@@ -309,6 +312,17 @@ func show_card(card_row: Dictionary) -> void:
 	_fit_effect_label.call_deferred()
 
 	tooltip_text = "%s — %s" % [card_row.get("name_en", ""), card_row.get("effect_text", "")]
+
+
+## Shrinks the name until it fits its one-line bar, so a long name such as
+## "Drown Them in Detail" is read in full instead of ending in "...".
+func _fit_name_label() -> void:
+	var available := (size.x if size.x > 0.0 else WIDTH) * NAME_RECT.size.x - 8.0
+	var font_size := NAME_FONT_SIZE
+	while font_size > NAME_FONT_SIZE_MIN and CARD_FONT.get_string_size(
+			_name_label.text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > available:
+		font_size -= 1
+	_name_label.add_theme_font_size_override("font_size", font_size)
 
 
 ## What this card costs RIGHT NOW, which is not always what is printed on it.

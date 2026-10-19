@@ -173,3 +173,30 @@ func test_icons_show_and_a_tap_names_the_organisation_with_its_net_change() -> v
 	assert_string_contains(popup.text, "-2")
 	var body := presenter.call("_body_for", engine, stage) as String
 	assert_false(body.contains("Argued out"), "names move from the body to the icons")
+
+
+func test_organization_icons_run_from_biggest_gain_to_biggest_loss() -> void:
+	var changes: Array[Dictionary] = [
+		{"booster_id": "BO01", "name": "A", "net": -2},
+		{"booster_id": "BO02", "name": "B", "net": 3},
+		{"booster_id": "BO03", "name": "C", "net": 0},
+		{"booster_id": "BO04", "name": "D", "net": 3},
+		{"booster_id": "BO05", "name": "E", "net": -5}]
+	var sorted := OutcomePresenter._sorted_by_net(changes)
+	var order: Array = []
+	for entry: Dictionary in sorted:
+		order.append(entry["booster_id"])
+	assert_eq(order, ["BO02", "BO04", "BO03", "BO01", "BO05"], "gains first, ties keep their order, losses last")
+
+
+func test_an_organization_icon_is_shaded_by_its_outcome() -> void:
+	var box := VBoxContainer.new()
+	add_child_autofree(box)
+	var presenter := OutcomePresenter.new(_panel, _title, _headline, _body, _button, box)
+	for net: int in [4, -3, 0]:
+		var button := Button.new()
+		box.add_child(button)
+		presenter.call("_add_shade", button, net)
+		var shade := button.get_node("Shade") as TextureRect
+		var want := ListeningStrip.GAIN if net > 0 else (ListeningStrip.LOSS if net < 0 else ListeningStrip.NEUTRAL)
+		assert_eq(shade.modulate, want)
