@@ -334,6 +334,12 @@ var enacted_components: Array = []
 var patron_runtime: Dictionary = {}
 var patron_composed: Dictionary = {}
 
+## Help and hindrance on the vote in front of the player (BillAssist), cleared
+## when the vote has resolved. patron_news: {story key: clock units it runs
+## until}; the Office ticker shows a line for each story running.
+var bill_assist: Dictionary = BillAssist.empty()
+var patron_news: Dictionary = {}
+
 ## The stance taken on this level's bill (2026-10-18, BillStance): {} when the
 ## level has no bill or no lean was picked; otherwise { "bill_id", "lean"
 ## ("Support"/"Oppose"), "cost": { booster_id: how much the win drift has taken
@@ -390,6 +396,7 @@ const _SAVED_FIELDS := [
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed",
+	"bill_assist", "patron_news",
 ]
 
 
@@ -546,6 +553,8 @@ func reset_crisis_triggers() -> void:
 	enacted_components = []
 	patron_runtime = {}
 	patron_composed = {}
+	bill_assist = BillAssist.empty()
+	patron_news = {}
 	DataDB.clear_runtime()
 
 
@@ -971,6 +980,7 @@ func reset_segment_favorability() -> void:
 func begin_level(runner: LevelRunner) -> void:
 	level_runner = runner
 	bill_stance = {}
+	bill_assist = BillAssist.empty()
 	mid_stage = false
 	last_level_outcome = ""
 	last_meta_change = {}
@@ -2613,6 +2623,7 @@ func _resolve_delta(delta: Variant) -> int:
 func end_level() -> void:
 	level_runner = null
 	patron_runtime = {}
+	bill_assist = BillAssist.empty()
 	bill_stance = {}
 	# Level buffs belong to the level; nothing else here to clear, since
 	# finish_stage() already reset the purchase counts when it concluded.
@@ -2643,6 +2654,7 @@ func abandon_level() -> void:
 		if patron_requests.has(abandoned) and patron_requests[abandoned]["status"] == PatronRequests.ACCEPTED:
 			patron_requests[abandoned]["status"] = PatronRequests.OPEN
 		patron_runtime = {}
+	bill_assist = BillAssist.empty()
 	level_runner = null
 	bill_stance = {}
 	level_bonuses = {}
@@ -2727,6 +2739,13 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 		_grant_free_backing(org, int(outcome["free_backing_units"]))
 	state["status"] = PatronRequests.PASSED if passed else PatronRequests.FAILED
 	patron_requests[patron_bill_id] = state
+	# What the special stages did for (or against) this vote becomes a news
+	# story the Office ticker runs for a while, then the record is spent.
+	if BillAssist.total(bill_assist, "won_over") > 0:
+		record_news("visit_success")
+	if BillAssist.total(bill_assist, "worked_against") > 0:
+		record_news("lobbyist_work")
+	bill_assist = BillAssist.empty()
 
 
 ## A passed Flagship gives the patron's backing for free for a while, using the
@@ -2772,3 +2791,35 @@ func _register_saved_patron_bills() -> void:
 	var level: Variant = patron_runtime.get("level")
 	if level is Dictionary:
 		DataDB.register_runtime_level(level as Dictionary)
+
+
+## A story about the player's sponsored legislation starts running on the
+## Office ticker for `news_ticker_units` clock units.
+func record_news(key: String) -> void:
+	patron_news[key] = time_units + int(DataDB.balance.get("news_ticker_units", 12))
+
+
+## The stories still running (expired ones are dropped).
+func active_news() -> Array:
+	for key: String in patron_news.keys():
+		if int(patron_news[key]) <= time_units:
+			patron_news.erase(key)
+	return patron_news.keys()
+
+
+## What ticker rows and Office notices test their conditions against: the
+## laws on the books, plus "news:<key>" for each story running.
+func ticker_facts() -> Dictionary:
+	var facts := law_statuses()
+	for key: Variant in active_news():
+		facts["news:%s" % str(key)] = "active"
+	return facts
+
+
+## Seats a visit or a lobbyist adds to or takes from the vote (BillAssist).
+func add_won_over(party_id: String, seats: int = 1) -> void:
+	BillAssist.add(bill_assist, "won_over", party_id, seats)
+
+
+func add_worked_against(party_id: String, seats: int = 1) -> void:
+	BillAssist.add(bill_assist, "worked_against", party_id, seats)

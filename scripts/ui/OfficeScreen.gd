@@ -370,7 +370,7 @@ func _refresh_resources() -> void:
 func _refresh_notices() -> void:
 	var lines := OfficeNotices.resolve(
 		DataDB.office_notices, GameState.staff_hired, GameState.meta, DataDB.staff,
-		GameState.law_statuses())
+		GameState.ticker_facts())
 	_notices_label.visible = not lines.is_empty()
 	_notices_label.text = "\n".join(lines)
 

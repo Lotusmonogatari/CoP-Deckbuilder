@@ -2,6 +2,25 @@
 
 Status: **ideation only, nothing built.** Expands the two ideas pinned in `INFLUENCE_BUILDING_IDEAS_2026-10-19.md`. Every number is a first draft and would be a Balance lever.
 
+## Decisions (Cameron, 2026-10-19), which override the drafts below
+
+| Topic | Decision |
+|---|---|
+| MP visit: who is offered | A visit is offered for a party **unless it is maxed out** (nothing left outside your pick). The point is to **guarantee +1 seat** on top of the influence swing, so it takes a seat from the party's larger non-pick bucket, ignoring the gate and Vote Resistance |
+| MP visit: what +1 means | **One seat** |
+| MP visit: a lost fight | No cost other than the stage |
+| MP visit: optional | Yes, the player may skip it |
+| MP visit: which bills | **Patron (player-sponsored) bills only.** Existing bills get a different form of the idea later (pinned below) |
+| Policy Researcher briefing | A hired **Policy Research Assistant at staff rank 2 or 3** briefs the player first, in natural speech, on the visiting member's preferred styles. Below rank 2, or nobody hired: no briefing |
+| News ticker (visit) | After the bill's outcome, a success shows on the Office ticker: "Sources say {player} was working hard to win over individual members of parliament for their latest sponsored legislation. - Yezo News Nightly" |
+| Lobbyist leverage | A **budget** the player spends |
+| Lobbyist refusal | Favor bill: free. **Flagship: refusing costs 2 seats; meeting without reaching an agreement costs 1 seat** |
+| News ticker (lobbyist) | Shown the same way: "Reports from within Parliament indicate strong lobbyist work against {player}'s recent sponsored legislation. - Yezo News Nightly" |
+| Lobbyist: which component | Any except the last, as recommended |
+| Lobbyist: help | **A seat** |
+
+Pinned for later: **a visit-style influence stage for the existing (not player-sponsored) bills, in another form.**
+
 ## Executive summary
 
 | | Idea 1: MP visit | Idea 2: Lobbyist trade |

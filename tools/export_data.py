@@ -2133,6 +2133,12 @@ def validate(data, report):
                     report.error(table, f"{row.get('notice_id') or row.get('ticker_id')}: a law "
                                  "condition's condition_op must be passed or failed")
 
+    for table in ("office_notices", "office_ticker"):
+        for row in data.get(table, []):
+            if row.get("condition_type") == "news" and row.get("condition_target") not in ("visit_success", "lobbyist_work"):
+                report.error(table, f"{row.get('notice_id') or row.get('ticker_id')} names news story "
+                             f"'{row.get('condition_target')}'; it must be visit_success or lobbyist_work")
+
     # --- player cues (2026-10-12) -------------------------------------------
     # Verb blank = the line fits whatever the card did.
     for cue in data.get("player_cues", []):

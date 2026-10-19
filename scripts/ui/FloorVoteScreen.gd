@@ -112,6 +112,7 @@ func start_voting() -> void:
 		"resistance_by_party": _resistance_by_party(),
 		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
 		"supermajority_percent": int(DataDB.balance.get("supermajority_percent", 67)),
+		"assist": GameState.bill_assist,
 	}):
 		_ready_to_play = false
 		_vote_yes.disabled = true
@@ -191,6 +192,22 @@ func _show_influence_and_preview() -> void:
 			needs.append(Text.say("floor_vote.influence_more", {"more": gaps.size() - 3}))
 		influence.text = Text.say("floor_vote.influence_not_ready", {"needs": ", ".join(needs)})
 	column.add_child(influence)
+
+	# Members won over and lobbyists at work, when a patron bill's stages left any.
+	var won := BillAssist.total(GameState.bill_assist, "won_over")
+	var against := BillAssist.total(GameState.bill_assist, "worked_against")
+	if won > 0:
+		var won_label := Label.new()
+		won_label.name = "AssistWon"
+		won_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		won_label.text = Text.say("floor_vote.assist_won", {"count": won})
+		column.add_child(won_label)
+	if against > 0:
+		var against_label := Label.new()
+		against_label.name = "AssistAgainst"
+		against_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		against_label.text = Text.say("floor_vote.assist_against", {"count": against})
+		column.add_child(against_label)
 
 	var preview := Label.new()
 	preview.name = "VotePreview"

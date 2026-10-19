@@ -48,6 +48,10 @@ static func condition_met(row: Dictionary, staff_hired: Dictionary, meta: Dictio
 		"law":
 			var status := str(laws.get(str(row.get("condition_target", "")), ""))
 			return not status.is_empty() and status == str(row.get("condition_op", "")).strip_edges().to_lower()
+		"news":
+			# A line about the player's own sponsored legislation (2026-10-19).
+			# GameState.ticker_facts() adds "news:<key>" for each story running.
+			return laws.has("news:%s" % str(row.get("condition_target", "")))
 		"always":
 			return true
 		_:
