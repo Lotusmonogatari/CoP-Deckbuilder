@@ -210,7 +210,8 @@ one over (Abstain seats are the easiest to swing, so this should hold).
 | Members of Parliament cut | No bills (27 organizations remain) |
 | Small Business Owners | Ally is now the Yezo Artisans Guild (BO13), not a tax-cut ally; their Flagship no longer cuts the corporate tax rate |
 | Ainu groups compound | Council (BO28): harvest rights, community centers, land-use consultation. Foundation (BO29): translation of public documents, schools, broadcasting. Each pushed bill adds something different |
-| Open | Own-slot and ally components still repeat across bills (for example rice prices); a general fix is awaiting Cameron's choice |
+| Repeats | Built as option A (default, Cameron may change): a component already law is never offered again; `ComposedBill.substitute_enacted()` swaps in the same owner's next component, and a request with nothing left to swap in is not offered |
+| Default margin | `patron_default_margin` 6 became 3: with 6, two bills could not be carried by a full-strength player (49 of 51 Yes); with 3 every bill reaches 51 or more and none passes alone |
 
 ## 11. Step 1 status (built 2026-10-19)
 

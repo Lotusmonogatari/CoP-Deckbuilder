@@ -33,6 +33,7 @@ const DATA_PATH := "res://data/"
 ## rare case the dynamic "every eligible opponent" pick should not decide.
 const REQUIRED_FILES := [
 	"affinity", "art", "balance", "booster_standing", "boosters", "cards",
+	"bill_components", "bill_level_templates", "patron_bills", "party_values",
 	"floor_votes", "how_to_play", "law_effects", "level_intro_thoughts", "level_intros", "level_opponent_overrides",
 	"level_visitor_overrides", "levels",
 	"modifiers", "opponent_cues", "opponents", "parties", "party_standing", "party_stakeholders", "standing_links",
@@ -222,6 +223,14 @@ var player_cues: Array = []
 ## vote or after every later level. See StatuteBook.gd.
 var law_effects: Array = []
 
+## Patron Bills (2026-10-19): the component library, the patron bills built
+## from it, the level templates and the party-values table the lean model
+## reads. See ComposedBill.gd, PatronRequests.gd, BillPositions.gd.
+var bill_components: Array = []
+var patron_bills: Array = []
+var bill_level_templates: Array = []
+var party_values: Array = []
+
 ## The questions each kind of room can ask, by stage type, from the five
 ## question tabs. A stage draws from the pool for its type rather than
 ## naming its own, so a new question is one row in the workbook.
@@ -356,6 +365,10 @@ func load_all() -> void:
 			"opponent_cues": opponent_cues = content if content is Array else []
 			"player_cues": player_cues = content if content is Array else []
 			"law_effects": law_effects = content if content is Array else []
+			"bill_components": bill_components = content if content is Array else []
+			"patron_bills": patron_bills = content if content is Array else []
+			"bill_level_templates": bill_level_templates = content if content is Array else []
+			"party_values": party_values = content if content is Array else []
 			"questions": questions = content
 			"sounds":
 				sounds = _map_under(content, file_name, "sounds")
