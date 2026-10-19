@@ -31,5 +31,38 @@
       "PT02"
     ],
     "note": "Draft: adds an optional member visit (MP_VISIT), a public room (Town Hall for a Constituency organization, Press Conference for a National one), your own Party Caucus and an optional lobbyist trade."
+  },
+  {
+    "template_id": "BT03",
+    "kind": "Favor",
+    "level_tier": 1,
+    "stage_1": "HEARING",
+    "stage_2": "LOBBYIST_TRADE",
+    "stage_3": "VOTE",
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "visit_parties": null,
+    "note": "Draft a Bill, two parts: the hearing for the first part, an optional lobbyist trade, the Floor Vote."
+  },
+  {
+    "template_id": "BT04",
+    "kind": "Flagship",
+    "level_tier": 2,
+    "stage_1": "HEARING",
+    "stage_2": "MP_VISIT",
+    "stage_3": "PUBLIC",
+    "stage_4": "CAUCUS",
+    "stage_5": "LOBBYIST_TRADE",
+    "stage_6": "VOTE",
+    "stage_7": null,
+    "stage_8": null,
+    "visit_parties": [
+      "PT04",
+      "PT02"
+    ],
+    "note": "Draft a Bill, three parts: the hearing, an optional member visit, a public room, your own Party Caucus, an optional lobbyist trade, the Floor Vote."
   }
 ]

@@ -92,6 +92,9 @@ var _special_forced_panel: Overlay
 ## A patron bill's Request panel (Accept, Amend, Decline) and the Amend swap
 ## being previewed ("" when none).
 var _request_panel: Overlay
+var _draft_panel: Overlay
+var _draft_ids: Array = []
+var _draft_org := ""
 var _request_replace := ""
 var _request_with := ""
 
@@ -181,6 +184,9 @@ func _ready() -> void:
 	_request_panel = Overlay.new()
 	_request_panel.name = "RequestPanel"
 	add_child(_request_panel)
+	_draft_panel = Overlay.new()
+	_draft_panel.name = "DraftPanel"
+	add_child(_draft_panel)
 
 	_ticker = TickerPresenter.new(_ticker_strip, _ticker_label)
 
@@ -1985,6 +1991,11 @@ func _show_levels() -> void:
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("office.levels_blurb")))
 
+	# Drafting your own bill (patron step 7).
+	var draft_button := UiKit.action_button(Text.say("draft.button"), "", _open_draft.bind(true), 100.0)
+	draft_button.name = "DraftBillButton"
+	rows.append(draft_button)
+
 	# Organizations asking the player to carry a bill sit first (patron step 4).
 	var shown := GameState.patron_requests_shown()
 	if not shown.is_empty():
@@ -2097,6 +2108,108 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 	decline.name = "RequestDeclineButton"
 	rows.append(decline)
 	_request_panel.open(Text.say("request.title"), rows)
+
+
+## Draft a Bill: the chosen parts, a preview of the bill, the Draft button,
+## then the organizations to take parts from (and one organization's parts
+## when it is open). `fresh` starts over with nothing chosen.
+func _open_draft(fresh: bool = false) -> void:
+	if fresh:
+		_draft_ids = []
+		_draft_org = ""
+	var by_id := ComposedBill.index(DataDB.bill_components)
+	var rows: Array[Control] = []
+	rows.append(UiKit.line(Text.say("draft.intro", {
+		"xp": int(DataDB.balance.get("draft_bill_cost_xp", 350)),
+		"funds": Phrase.with_separators(int(DataDB.balance.get("draft_bill_cost_funds", 300000)))})))
+
+	rows.append(UiKit.heading(Text.say("draft.parts_heading")))
+	if _draft_ids.is_empty():
+		rows.append(UiKit.line(Text.say("draft.no_parts"), "SmallLabel"))
+	for id: Variant in _draft_ids:
+		var part: Dictionary = by_id.get(str(id), {})
+		var remove := UiKit.action_button(Text.say("draft.part_selected", {
+			"label": str(part.get("short_label", id)), "phrase": str(part.get("phrase", ""))}), "",
+			_draft_toggle.bind(str(id)), 90.0)
+		remove.name = "DraftRemove_" + str(id)
+		rows.append(remove)
+
+	if _draft_ids.size() >= DraftBill.MIN_PARTS:
+		var bill := DraftBill.bill_for(_draft_ids)
+		rows.append(UiKit.line(Text.say("draft.bill_name", {"name": str(bill.get("bill_name", ""))})))
+		rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
+		rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
+		var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
+		if not own.is_empty():
+			rows.append(UiKit.line(own))
+		rows.append(UiKit.line(Text.say("draft.effects_heading"), "SmallLabel"))
+		for effect: Dictionary in (bill.get("effects", []) as Array):
+			var org_id := str(effect.get("target", ""))
+			if DataDB.get_booster(org_id).is_empty():
+				continue
+			rows.append(UiKit.line(Text.say("draft.effect", {
+				"org": str(DataDB.get_booster(org_id).get("name_en", org_id)),
+				"change": "%+d" % int(effect.get("delta", 0))}), "SmallLabel"))
+	var go := UiKit.action_button(Text.say("draft.go"), GameState.draft_refusal(_draft_ids), _on_draft_go, 110.0)
+	go.name = "DraftGoButton"
+	rows.append(go)
+
+	if _draft_org.is_empty():
+		rows.append(UiKit.heading(Text.say("draft.orgs_heading")))
+		var owners := {}
+		for component: Dictionary in DataDB.bill_components:
+			owners[str(component.get("owner", ""))] = true
+		var org_ids: Array = owners.keys()
+		org_ids.sort_custom(func(a: String, b: String) -> bool:
+			return int(GameState.booster_standing.get(a, 0)) > int(GameState.booster_standing.get(b, 0)))
+		for org_id: String in org_ids:
+			var button := UiKit.action_button(Text.say("draft.org_row", {
+				"org": str(DataDB.get_booster(org_id).get("name_en", org_id)),
+				"standing": int(GameState.booster_standing.get(org_id, 0))}), "",
+				_draft_open_org.bind(org_id), 90.0)
+			button.name = "DraftOrg_" + org_id
+			rows.append(_with_booster_icon(org_id, button))
+	else:
+		var back := UiKit.action_button(Text.say("draft.back_to_orgs"), "", _draft_open_org.bind(""), 90.0)
+		back.name = "DraftOrgsBack"
+		rows.append(back)
+		rows.append(UiKit.heading(str(DataDB.get_booster(_draft_org).get("name_en", _draft_org))))
+		for component: Dictionary in DataDB.bill_components:
+			if str(component.get("owner", "")) != _draft_org:
+				continue
+			var id := str(component.get("component_id", ""))
+			var chosen := _draft_ids.has(id)
+			var part_button := UiKit.action_button(Text.say(
+				"draft.part_chosen" if chosen else "draft.part_row", {
+					"label": str(component.get("short_label", id)), "phrase": str(component.get("phrase", ""))}), "",
+				_draft_toggle.bind(id), 90.0)
+			part_button.name = "DraftPart_" + id
+			rows.append(part_button)
+	_draft_panel.open(Text.say("draft.title"), rows)
+
+
+func _draft_open_org(org_id: String) -> void:
+	_draft_org = org_id
+	_open_draft()
+
+
+## Takes a part in or out of the draft (three at most).
+func _draft_toggle(component_id: String) -> void:
+	if _draft_ids.has(component_id):
+		_draft_ids.erase(component_id)
+	elif _draft_ids.size() < DraftBill.MAX_PARTS:
+		_draft_ids.append(component_id)
+	_open_draft()
+
+
+func _on_draft_go() -> void:
+	if not GameState.start_draft(_draft_ids):
+		_report.text = Text.say("draft.cannot_start")
+		_draft_panel.close()
+		return
+	_draft_panel.close()
+	_levels_panel.close()
+	get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
 
 
 func _on_request_accept(patron_bill_id: String) -> void:

@@ -4597,5 +4597,173 @@
     "english": "Stands to leave.",
     "placeholders": null,
     "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "draft.button",
+    "where": "Levels list",
+    "english": "Draft a Bill",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.title",
+    "where": "Draft a Bill",
+    "english": "Draft a Bill",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.intro",
+    "where": "Draft a Bill",
+    "english": "Pick two or three parts from any organizations and carry the bill yourself. It costs {xp} XP and {funds}円.",
+    "placeholders": "xp, funds",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.parts_heading",
+    "where": "Draft a Bill",
+    "english": "Your bill",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.no_parts",
+    "where": "Draft a Bill",
+    "english": "No parts chosen yet.",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.part_selected",
+    "where": "Draft a Bill",
+    "english": "{phrase}. Tap to take it out.",
+    "placeholders": "label, phrase",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.part_row",
+    "where": "Draft a Bill",
+    "english": "{phrase}",
+    "placeholders": "label, phrase",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.part_chosen",
+    "where": "Draft a Bill",
+    "english": "{phrase} (chosen)",
+    "placeholders": "label, phrase",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.orgs_heading",
+    "where": "Draft a Bill",
+    "english": "Add a part from",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.org_row",
+    "where": "Draft a Bill",
+    "english": "{org} (standing {standing})",
+    "placeholders": "org, standing",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.back_to_orgs",
+    "where": "Draft a Bill",
+    "english": "Back to the organizations",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.bill_name",
+    "where": "Draft a Bill",
+    "english": "The bill: {name}",
+    "placeholders": "name",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.effect",
+    "where": "Draft a Bill",
+    "english": "{org} {change}",
+    "placeholders": "org, change",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.effects_heading",
+    "where": "Draft a Bill",
+    "english": "If it passes",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.go",
+    "where": "Draft a Bill",
+    "english": "Draft this bill",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.busy",
+    "where": "Draft a Bill",
+    "english": "Finish the level you are in first.",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.too_few",
+    "where": "Draft a Bill",
+    "english": "Choose at least two parts.",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.too_many",
+    "where": "Draft a Bill",
+    "english": "A bill carries three parts at most.",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.repeat",
+    "where": "Draft a Bill",
+    "english": "{part} is already law.",
+    "placeholders": "part",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.conflict",
+    "where": "Draft a Bill",
+    "english": "Two of these parts work against each other.",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.cooldown",
+    "where": "Draft a Bill",
+    "english": "You have only just drafted a bill. Give it room.",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.cost",
+    "where": "Draft a Bill",
+    "english": "Drafting needs {xp} XP and {funds}円.",
+    "placeholders": "xp, funds",
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.not_winnable",
+    "where": "Draft a Bill",
+    "english": "As drafted this bill would either pass without a fight or could never pass. Change a part.",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "draft.cannot_start",
+    "where": "Draft a Bill",
+    "english": "The bill could not be drafted.",
+    "placeholders": null,
+    "notes": "2026-10-19 Draft a Bill (draft)."
   }
 ]
