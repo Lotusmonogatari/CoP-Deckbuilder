@@ -9,7 +9,7 @@
 | What is still extreme? | **ST19 Media Ambush** 0-15% (you chose to leave it), **ST20 Lobbyist Meeting** 85-95%, and **ST18 Cabinet** 100% (you chose to leave it). |
 | Content numbers changed? | **None.** No room needs a content-side fix. The trials show the opposite problem: everything is easy for a fully equipped bot. |
 | Biggest problem in the tiers? | **Bill levels do not pay more in higher tiers.** A Tier 2 bill level pays 278 XP; a Tier 0 bill level pays 300. Its unlock cost is 4x higher (200 vs 50 XP). Free-form levels do scale (346 / 398 / 560 XP). |
-| Second problem | Tier 0 holds the two hardest-feeling room kinds (TV Debate, Media Ambush) while Tier 2 holds many short, cheap bill levels (4-5 stages). Length and difficulty do not rise with tier for bill levels. |
+| Second problem | Tier 0 holds the hardest-feeling room kinds (TV Debate, Media Ambush) while Tier 2 holds many short, cheap bill levels (4-5 stages). Length and difficulty do not rise with tier for bill levels. |
 | Recommendation | Scale **bill-level rewards by tier** (workbook edit, about 60 cells) and re-sort 8 levels (tables below). Nothing applied yet. |
 
 ## 1. Stage trials (bot upper bound, 20 fights, PC01 and PC04)
@@ -94,7 +94,7 @@ Effect of the moves (LV35, LV65, LV79, LV53, LV10): Tier 0 bill levels become ea
 
 | Tier | Now | Suggestion |
 |---|---|---|
-| 0 | Floor, Caucus, committees, Press, TV Debate, Media Ambush all appear | Move TV Debate and Media Ambush out of Tier 0 free levels; keep Press, Caucus, Town Hall, one committee |
+| 0 | Floor, Caucus, committees, Press, TV Debate, Media Ambush all appear | Move TV Debate out of Tier 0 free levels if wanted. **Media Ambush stays in Tier 0 (Cameron: it can be lost freely).** |
 | 1 | Mix of everything, 5.4 combat stages | Fine; add one Lobbyist Meeting stage to bill levels that have none, since it is the one non-trivial room |
 | 2 | Free levels are long (7.3 combat); bill levels are short (3.9) | Raise bill levels to 5 combat stages by adding a second committee or hearing stage on the 12 shortest |
 
@@ -102,7 +102,7 @@ Effect of the moves (LV35, LV65, LV79, LV53, LV10): Tier 0 bill levels become ea
 
 | Item | Option |
 |---|---|
-| ST18 Cabinet overpays | Cut its win payout to about 120 XP / 60k, or keep (you chose to leave it) |
+| ST18 Cabinet overpays | **Done 2026-10-19: win XP cut 200 to 120** (Funds payout unchanged at 100,000円) |
 | Media Ambush at 0-15% for the bot | Keep (you chose to leave it) |
 | ST08 is now easy | Optionally raise its threshold; the static index (1.2) was never a real win rate |
 | ST260-ST262 (patron stages) pay nothing and use 0 time | By design: the patron vote carries the reward. Worth reviewing once real play data exists. |
