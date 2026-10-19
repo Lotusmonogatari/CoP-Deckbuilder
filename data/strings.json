@@ -4464,5 +4464,33 @@
     "english": "failed",
     "placeholders": null,
     "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.outcome_heading",
+    "where": "Floor Vote result (sponsored bill)",
+    "english": "The bill you carried:",
+    "placeholders": null,
+    "notes": "2026-10-19 patron outcome pop-up."
+  },
+  {
+    "key": "request.outcome_standing",
+    "where": "Floor Vote result (sponsored bill)",
+    "english": "{org} {change}.",
+    "placeholders": "org, change",
+    "notes": "2026-10-19 patron outcome pop-up."
+  },
+  {
+    "key": "request.outcome_backing",
+    "where": "Floor Vote result (sponsored bill)",
+    "english": "You may call on {org}'s backing at no cost.",
+    "placeholders": "org",
+    "notes": "2026-10-19 patron outcome pop-up."
+  },
+  {
+    "key": "request.outcome_law",
+    "where": "Floor Vote result (sponsored bill)",
+    "english": "Now law: {parts}.",
+    "placeholders": "parts",
+    "notes": "2026-10-19 patron outcome pop-up."
   }
 ]

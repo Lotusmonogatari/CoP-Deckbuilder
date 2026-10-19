@@ -53,3 +53,32 @@ static func reward_lines(row: Dictionary, ally: String, amended: bool) -> Array[
 			lines.append(Text.say("request.reward_pass", {"org": str(DataDB.get_booster(str(entry["target"])).get("name_en", entry["target"])),
 				"count": delta}))
 	return lines
+
+
+## What a sponsored bill's vote did: who thinks more or less of you, what is
+## now law, and any backing granted. One line each; empty for any other vote.
+static func outcome_lines(outcome: Dictionary) -> Array[String]:
+	var lines: Array[String] = []
+	if outcome.is_empty():
+		return lines
+	lines.append(Text.say("request.outcome_heading"))
+	for entry: Dictionary in (outcome.get("standing", []) as Array):
+		var delta := int(entry.get("delta", 0))
+		if delta == 0:
+			continue
+		lines.append(Text.say("request.outcome_standing", {
+			"org": str(DataDB.get_booster(str(entry["target"])).get("name_en", entry["target"])),
+			"change": "%+d" % delta}))
+	var backing_org := str(outcome.get("backing_org", ""))
+	if not backing_org.is_empty():
+		lines.append(Text.say("request.outcome_backing", {
+			"org": str(DataDB.get_booster(backing_org).get("name_en", backing_org))}))
+	if bool(outcome.get("passed", false)):
+		var parts: Array[String] = []
+		for component_id: Variant in (outcome.get("components", []) as Array):
+			var phrase := str(ComposedBill.index(DataDB.bill_components).get(component_id, {}).get("phrase", ""))
+			if not phrase.is_empty():
+				parts.append(phrase)
+		if not parts.is_empty():
+			lines.append(Text.say("request.outcome_law", {"parts": "; ".join(parts)}))
+	return lines

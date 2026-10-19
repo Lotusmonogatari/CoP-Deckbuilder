@@ -146,6 +146,18 @@ func test_passing_the_vote_pays_the_patron_and_makes_the_components_law() -> voi
 	assert_false(GameState.level_last_completed_at.has("PL_PB051"))
 
 
+func test_a_sponsored_bills_vote_leaves_lines_for_the_result_pop_up() -> void:
+	GameState.start_patron_level("PB051")
+	_play_to_the_vote()
+	_vote("Yes")
+	var lines := RequestLines.outcome_lines(GameState.last_patron_outcome)
+	assert_gt(lines.size(), 2, "a heading, the patron's change and what is now law")
+	var joined := "\n".join(lines)
+	assert_string_contains(joined, "Chamber of Commerce +")
+	assert_string_contains(joined, "Now law:")
+	assert_eq(RequestLines.outcome_lines({}).size(), 0, "another vote shows nothing")
+
+
 func test_a_failed_vote_costs_the_patron_and_leaves_the_components_open() -> void:
 	var before := int(GameState.booster_standing["BO05"])
 	GameState.start_patron_level("PB051")
