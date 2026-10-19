@@ -397,6 +397,8 @@ func _show_outcome(result: Dictionary, stance_note: String = "") -> void:
 	})
 	if not stance_note.is_empty():
 		_outcome_body.text += "\n" + stance_note
+	for line: String in RequestLines.outcome_lines(GameState.last_patron_outcome):
+		_outcome_body.text += "\n" + line
 
 	_show_result_summary(result, totals, passed)
 	_bar_yes.show_segments(_segments_for(result.get("positions", []), "votes_yes"))

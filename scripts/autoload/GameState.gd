@@ -334,6 +334,9 @@ var enacted_components: Array = []
 var patron_runtime: Dictionary = {}
 ## When each request's countdown began ({patron_bill_id: clock units}); a
 ## request shows once special_level_delay units have run (step 4).
+## What the latest sponsored-bill vote did (empty otherwise); read once by the
+## Floor Vote result and never saved.
+var last_patron_outcome: Dictionary = {}
 var patron_armed: Dictionary = {}
 var patron_composed: Dictionary = {}
 
@@ -2385,6 +2388,7 @@ func record_bill_flip(bill_id: String) -> void:
 ## the book is ignored, so a replayed screen can never apply it twice.
 ## Called from FloorVoteScreen._on_vote() (and the playtest bot).
 func record_floor_vote(bill: Dictionary, result: Dictionary, choice: String) -> void:
+	last_patron_outcome = {}
 	var bill_id := str(bill.get("bill_id", ""))
 	if bill_id.is_empty() or StatuteBook.has_bill(statute_book, bill_id):
 		return
@@ -2770,6 +2774,12 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 	var outcome := PatronRequests.outcome(row, ally, rivals, passed, bool(state.get("amended", false)), DataDB.balance)
 	for entry: Dictionary in (outcome["standing"] as Array):
 		_apply_booster_delta(str(entry["target"]), int(entry["delta"]))
+	# What the vote did, for the result pop-up. Not saved: it is only read
+	# right after the vote, on the same screen.
+	last_patron_outcome = {"patron_bill_id": patron_bill_id, "passed": passed,
+		"standing": (outcome["standing"] as Array).duplicate(true),
+		"backing_org": org if passed and int(outcome["free_backing_units"]) > 0 else "",
+		"components": (state.get("components", []) as Array).duplicate()}
 	if passed:
 		_apply_reward_entries(effects)
 		for component_id: Variant in (state.get("components", []) as Array):
