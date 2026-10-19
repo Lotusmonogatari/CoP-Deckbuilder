@@ -288,6 +288,9 @@ func _build_booster_icons(engine: BattleEngine) -> void:
 	var changes := booster_changes(engine)
 	if changes.is_empty():
 		return
+	# Biggest gain first, biggest loss last (stable, so a tie keeps the order
+	# the organizations were touched in).
+	changes = _sorted_by_net(changes)
 	var hint := Label.new()
 	hint.text = Text.say("outcome.booster_hint")
 	hint.theme_type_variation = &"SmallLabel"
@@ -308,8 +311,51 @@ func _build_booster_icons(engine: BattleEngine) -> void:
 		button.expand_icon = true
 		button.custom_minimum_size = Vector2(120, 120)
 		button.pressed.connect(_on_booster_icon.bind(button, change))
+		_add_shade(button, int(change["net"]))
 		row.add_child(button)
 	_boosters_box.show()
+
+
+## Highest net change first, lowest last; ties keep their incoming order.
+static func _sorted_by_net(changes: Array[Dictionary]) -> Array[Dictionary]:
+	var indexed: Array = []
+	for i in changes.size():
+		indexed.append([i, changes[i]])
+	indexed.sort_custom(func(a: Array, b: Array) -> bool:
+		var net_a := int((a[1] as Dictionary)["net"])
+		var net_b := int((b[1] as Dictionary)["net"])
+		return net_a > net_b or (net_a == net_b and int(a[0]) < int(b[0])))
+	var out: Array[Dictionary] = []
+	for pair: Array in indexed:
+		out.append(pair[1])
+	return out
+
+
+## The same soft green / red / grey layer the listening strip uses, over the
+## icon, with the signed number on it: green for a gain, red for a loss,
+## grey for no change.
+func _add_shade(button: Button, net: int) -> void:
+	var shade := TextureRect.new()
+	shade.name = "Shade"
+	shade.texture = ListeningStrip.soft_disc()
+	shade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	shade.stretch_mode = TextureRect.STRETCH_SCALE
+	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	shade.modulate = ListeningStrip.GAIN if net > 0 else (ListeningStrip.LOSS if net < 0 else ListeningStrip.NEUTRAL)
+	button.add_child(shade)
+	var mark := Label.new()
+	mark.name = "Mark"
+	mark.set_anchors_preset(Control.PRESET_FULL_RECT)
+	mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	mark.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	mark.text = "%+d" % net if net != 0 else "0"
+	mark.add_theme_font_size_override("font_size", 40)
+	mark.add_theme_color_override("font_color", Color.WHITE)
+	mark.add_theme_color_override("font_outline_color", Color.BLACK)
+	mark.add_theme_constant_override("outline_size", 8)
+	button.add_child(mark)
 
 
 func _on_booster_icon(button: Button, change: Dictionary) -> void:
