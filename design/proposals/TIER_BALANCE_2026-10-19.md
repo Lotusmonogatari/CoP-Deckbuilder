@@ -110,3 +110,11 @@ Effect of the moves (LV35, LV65, LV79, LV53, LV10): Tier 0 bill levels become ea
 ## 5. How this was measured
 
 `PLAYTEST_STAGE_TRIAL="STxx:20"` for PC01 and PC04 (one run after another), plus a static pass over `data/levels.json` and `data/stages.json` for stage counts, rewards, unlock costs and the difficulty index above. All numbers are drafts for the designer to correct; nothing in the workbook or game data was changed by this evaluation.
+
+## 6. Applied 2026-10-19 (Cameron: "proceed with recommendations"; 4d needs no action)
+
+| Change | Detail |
+|---|---|
+| Bill-level bonus rewards | Levels tab "Bonus Win Range": Tier 1 bill levels XP 80-120 and 30,000-50,000円; Tier 2 bill levels XP 200-300 and 80,000-120,000円 (45 levels, rolled each win; averages match the table in 4a). Tier 0 unchanged. |
+| Re-sorted | LV35, LV65, LV79, LV53 moved to Tier 1 (unlock costs copied from Tier 1 bill levels: 100 / 80 / 60 / 40 XP by assistant rank); LV10 moved to Tier 1 (unlock costs copied from Tier 1 free levels: 150 / 100 / 50 / 10). |
+| Not applied | LV60 extra stage, shorter-Tier-2 fifth combat stage and the Lobbyist stage additions need new stage rows and room content (a content batch); TV Debate stays in Tier 0 (optional). Media Ambush stays in Tier 0. |
