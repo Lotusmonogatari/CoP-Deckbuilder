@@ -1516,7 +1516,7 @@ func _follow_links(source: String, points: float) -> void:
 		var whole: int = settled["whole"]
 		if whole == 0:
 			continue
-		var source_name := str(DataDB.get_booster(source).get("name_en", source))
+		var source_name := source if not source.begins_with("BO") else str(DataDB.get_booster(source).get("name_en", source))
 		var cause := Text.say("record.cause_link_rival" if weight < 0.0 else "record.cause_link_follow",
 			{"source": source_name})
 		_links_suspended = true
