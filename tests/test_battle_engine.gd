@@ -1097,15 +1097,48 @@ func test_answering_moves_on_to_the_next_question() -> void:
 	assert_eq(engine.questions_remaining(), 1)
 
 
+func _data_driven_card() -> Dictionary:
+	return TestFixtures.card({"card_id": "DD", "suit": "Data Driven", "self_plus": 3})
+
+
+func _three_turn_press() -> BattleEngine:
+	var config := _press()
+	config["stage"]["turn_limit"] = 3
+	config["stage"]["question_strong_multiplier"] = 1.3
+	return _start(config)
+
+
 func test_the_turns_question_stays_the_same_after_a_card_is_played() -> void:
-	var engine := _start(_press())
-	engine.state.hand.assign(["GAIN3"])
+	var engine := _three_turn_press()
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
 	assert_eq(engine.turn_question()["id"], "Q1")
+	assert_true(engine.question_open())
 
 	engine.play_card("GAIN3")
 	assert_eq(engine.turn_question()["id"], "Q1", "same question until the turn ends")
+	assert_false(engine.question_open(), "the turn's question is answered")
 	assert_true(engine.answer_effect({"suit": "Earnest"}).is_empty(),
 		"nothing more to answer this turn")
+
+
+func test_a_second_card_in_a_turn_uses_no_question_multiplier_or_answer_flag() -> void:
+	var engine := _three_turn_press()
+	engine.state.hand.assign(["GAIN3", "ATTACK3"])
+	engine.play_card("GAIN3")
+	# Q2 would grade a card, but it is not this turn's question.
+	assert_eq(engine.question_multiplier_for(_data_driven_card()), 1.0)
+	assert_false(bool(engine.preview(_data_driven_card()).get("answers_question", true)))
+
+
+func test_the_next_turn_picks_up_the_next_question() -> void:
+	var engine := _three_turn_press()
+	engine.state.hand.assign(["GAIN3", "GAIN3"])
+	engine.play_card("GAIN3")
+
+	engine.end_turn()
+	assert_false(engine.state.is_over(), "the conference goes on")
+	assert_eq(engine.turn_question()["id"], "Q2", "the next turn asks the next question")
+	assert_true(engine.question_open(), "and it can be answered")
 
 
 func test_answering_in_the_suit_invited_pleases_that_organisation() -> void:

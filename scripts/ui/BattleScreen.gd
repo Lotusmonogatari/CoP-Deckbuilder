@@ -368,7 +368,7 @@ func _announce_question() -> void:
 	# A press conference asks its questions the same way (2026-10-16).
 	if not (_stage_asks_questions() or (engine != null and engine.is_press_conference())):
 		return
-	var question := engine.current_question()
+	var question := engine.turn_question()
 	if question.is_empty():
 		return
 	_banner.say(CueBanner.OPPONENT, OpponentPresenter.question_speaker_name(engine),
@@ -551,7 +551,7 @@ func _refresh_details(state: BattleState) -> void:
 	var after: Array[String] = []
 	if engine.questions_remaining() > 0 or not engine.pleased_boosters().is_empty():
 		after.append("")
-		var question_now := engine.current_question()
+		var question_now := engine.turn_question()
 		if not question_now.is_empty():
 			after.append_array(_question_concerns_lines(question_now))
 		var pleased := engine.pleased_boosters()
@@ -696,7 +696,7 @@ func _open_card(card_id: String) -> void:
 		%ZoomColumn.move_child(_card_back, 0)
 
 	var question_line := (describe_question_for(engine.question_multiplier_for(card))
-		if not engine.current_question().is_empty() else "")
+		if engine.question_open() else "")
 	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card),
 		describe_room_for(engine.affinity_for(card)), question_line)
 

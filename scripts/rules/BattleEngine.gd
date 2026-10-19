@@ -1116,7 +1116,7 @@ func preview(card: Dictionary) -> Dictionary:
 	# Every card answers the question in front of you, whatever else it does
 	# — so a card whose numbers are all inert here still spends a question.
 	# The card face has to say so, or spending one is an accident.
-	effect["answers_question"] = not current_question().is_empty()
+	effect["answers_question"] = question_open()
 
 	return effect
 
@@ -1165,6 +1165,8 @@ func turn_question() -> Dictionary:
 ## multiplier composed alongside stage affinity — 1.0 outside a
 ## question-asking room, or on a Medium grade.
 func question_multiplier_for(card: Dictionary) -> float:
+	if not question_open():
+		return 1.0
 	var question := current_question()
 	if question.is_empty():
 		return 1.0
@@ -1172,6 +1174,15 @@ func question_multiplier_for(card: Dictionary) -> float:
 		"S": return _question_strong_multiplier
 		"W": return _question_weak_multiplier
 	return 1.0
+
+
+## True while a card played now would still answer this turn's question.
+## Once the turn's question is answered, further cards answer nothing and
+## nothing about the next question is shown or applied until the turn ends.
+func question_open() -> bool:
+	if _questions.is_empty() or current_question().is_empty():
+		return false
+	return state.questions_answered_this_turn < _questions_per_turn()
 
 
 func questions_remaining() -> int:
@@ -1206,7 +1217,9 @@ func question_caption() -> String:
 	if _questions.is_empty():
 		return ""
 	return _words.say("caption.question", {
-		"number": mini(state.question_index + 1, _questions.size()),
+		"number": mini(state.question_index - (state.questions_answered_this_turn
+			if state.questions_answered_this_turn >= _questions_per_turn() else 0) + 1,
+			_questions.size()),
 		"total": _questions.size()})
 
 
