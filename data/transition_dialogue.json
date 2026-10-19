@@ -15428,5 +15428,6485 @@
     "bill_id": "BI50",
     "stance": "Oppose",
     "component_ids": null
+  },
+  {
+    "transition_dialogue_id": "TD1544",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should raise allowances for district offices. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB031"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1545",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will raise allowances for district offices.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB031"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1546",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Taxpayers' Alliance will say if we raise allowances for district offices.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB031"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1547",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will ease the rules on constituent gatherings.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB032"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1548",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to ease the rules on constituent gatherings is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB032"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1549",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we ease the rules on constituent gatherings, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB032"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1550",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will let district offices hold open town days.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB035"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1551",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to let district offices hold open town days is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB035"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1552",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Taxpayers' Alliance will say if we let district offices hold open town days.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB035"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1553",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give towns unconditional block grants.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB041"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1554",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to give towns unconditional block grants is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB041"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1555",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Mayors' Network's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB041"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1556",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to let towns borrow for local projects is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB042"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1557",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let towns borrow for local projects. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB042"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1558",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To let towns borrow for local projects will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB042"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1559",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund town planning staff is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB045"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1560",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund town planning staff. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB045"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1561",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Mayors' Network's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB045"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1562",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to cut the corporate tax rate is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB051"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1563",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should cut the corporate tax rate. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB051"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1564",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Labor Federation will say if we cut the corporate tax rate.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB051"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1565",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should simplify business licensing. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB052"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1566",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will simplify business licensing.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB052"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1567",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we simplify business licensing, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB052"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1568",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should end paper filing for company registration. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB055"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1569",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will end paper filing for company registration.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB055"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1570",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Labor Federation will say if we end paper filing for company registration.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB055"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1571",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund repairs to community halls. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB061"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1572",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund repairs to community halls.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB061"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1573",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Neighborhood Associations's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB061"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1574",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will support neighborhood watch groups.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB062"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1575",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to support neighborhood watch groups is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB062"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1576",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To support neighborhood watch groups will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB062"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1577",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund street lighting in residential blocks.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB065"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1578",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund street lighting in residential blocks is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB065"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1579",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Neighborhood Associations's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB065"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1580",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund harbor repairs.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB071"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1581",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund harbor repairs is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB071"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1582",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Consumer Advocacy Network will say if we fund harbor repairs.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB071"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1583",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to subsidize fuel for fishing boats is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB072"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1584",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should subsidize fuel for fishing boats. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB072"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1585",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we subsidize fuel for fishing boats, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB072"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1586",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund new cold storage at fishing ports is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB075"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1587",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund new cold storage at fishing ports. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB075"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1588",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Consumer Advocacy Network will say if we fund new cold storage at fishing ports.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB075"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1589",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to strengthen freedom of information requests is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB081"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1590",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should strengthen freedom of information requests. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB081"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1591",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for National Media's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB081"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1592",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should protect reporters' confidential sources. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB082"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1593",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will protect reporters' confidential sources.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB082"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1594",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To protect reporters' confidential sources will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB082"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1595",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should protect journalists from lawsuits meant to silence them. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB085"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1596",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will protect journalists from lawsuits meant to silence them.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB085"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1597",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for National Media's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB085"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1598",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should raise the minimum wage. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB091"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1599",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will raise the minimum wage.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB091"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1600",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Chamber of Commerce will say if we raise the minimum wage.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB091"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1601",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will enforce overtime pay.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB092"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1602",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to enforce overtime pay is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB092"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1603",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we enforce overtime pay, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB092"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1604",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will ban unpaid trial work.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB095"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1605",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to ban unpaid trial work is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB095"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1606",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Chamber of Commerce will say if we ban unpaid trial work.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB095"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1607",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will support the rice price.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB101"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1608",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to support the rice price is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB101"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1609",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Agricultural Cooperatives's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB101"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1610",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to subsidize farm machinery is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB102"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1611",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should subsidize farm machinery. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB102"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1612",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To subsidize farm machinery will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB102"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1613",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund grain storage for farm cooperatives is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB105"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1614",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund grain storage for farm cooperatives. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB105"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1615",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Agricultural Cooperatives's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB105"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1616",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to cap university tuition is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB111"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1617",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should cap university tuition. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB111"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1618",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Our Traditional Society will say if we cap university tuition.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB111"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1619",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should give students discounted transit. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB112"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1620",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give students discounted transit.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB112"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1621",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we give students discounted transit, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB112"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1622",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund scholarships for first-generation students. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB115"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1623",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund scholarships for first-generation students.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB115"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1624",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Our Traditional Society will say if we fund scholarships for first-generation students.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB115"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1625",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should raise the child allowance. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB121"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1626",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will raise the child allowance.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB121"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1627",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Family Network's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB121"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1628",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will extend paid parental leave.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB122"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1629",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to extend paid parental leave is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB122"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1630",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To extend paid parental leave will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB122"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1631",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give families a tax deduction for each child.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB125"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1632",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to give families a tax deduction for each child is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB125"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1633",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Family Network's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB125"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1634",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will certify local crafts with a protected label.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB131"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1635",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to certify local crafts with a protected label is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB131"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1636",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Innovation Society will say if we certify local crafts with a protected label.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB131"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1637",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to give tax relief for craft apprenticeships is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB132"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1638",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should give tax relief for craft apprenticeships. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB132"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1639",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we give tax relief for craft apprenticeships, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB132"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1640",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to waive fees at craft fairs for small makers is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB135"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1641",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should waive fees at craft fairs for small makers. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB135"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1642",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Innovation Society will say if we waive fees at craft fairs for small makers.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB135"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1643",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to freeze commuter fares is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB141"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1644",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should freeze commuter fares. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB141"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1645",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Commuter Committee's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB141"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1646",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should run late-night commuter trains. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB142"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1647",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will run late-night commuter trains.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB142"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1648",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To run late-night commuter trains will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB142"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1649",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should cap the monthly cost of a commuter pass. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB145"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1650",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will cap the monthly cost of a commuter pass.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB145"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1651",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Commuter Committee's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB145"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1652",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund local festivals. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB151"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1653",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund local festivals.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB151"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1654",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Students United will say if we fund local festivals.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB151"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1655",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will protect historic districts from redevelopment.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB152"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1656",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to protect historic districts from redevelopment is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB152"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1657",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we protect historic districts from redevelopment, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB152"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1658",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund the repair of old wooden buildings.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB155"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1659",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund the repair of old wooden buildings is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB155"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1660",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Students United will say if we fund the repair of old wooden buildings.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB155"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1661",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give a tax credit for research and development.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB161"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1662",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to give a tax credit for research and development is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB161"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1663",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Innovation Society's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB161"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1664",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to offer visas to start-up founders is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB162"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1665",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should offer visas to start-up founders. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB162"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1666",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To offer visas to start-up founders will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB162"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1667",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund university spin-off labs is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB165"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1668",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund university spin-off labs. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB165"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1669",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Innovation Society's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB165"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1670",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should hold local referendums on large projects. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB181"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1671",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will hold local referendums on large projects.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB181"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1672",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Constituency Voters's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB181"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1673",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will require public consultation before new projects.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB182"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1674",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to require public consultation before new projects is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB182"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1675",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To require public consultation before new projects will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB182"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1676",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will hold public question time with local officials.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB185"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1677",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to hold public question time with local officials is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB185"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1678",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Constituency Voters's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB185"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1679",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund temple preservation.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB191"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1680",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund temple preservation is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB191"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1681",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Taxpayers' Alliance will say if we fund temple preservation.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB191"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1682",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to keep the tax exemption on temple land is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB192"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1683",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should keep the tax exemption on temple land. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB192"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1684",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we keep the tax exemption on temple land, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB192"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1685",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to let temples run public meditation and care programs is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB195"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1686",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let temples run public meditation and care programs. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB195"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1687",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Taxpayers' Alliance will say if we let temples run public meditation and care programs.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB195"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1688",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to support shrine festivals is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB201"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1689",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should support shrine festivals. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB201"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1690",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Shrine Association's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB201"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1691",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should protect shrine forests from development. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB202"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1692",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will protect shrine forests from development.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB202"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1693",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To protect shrine forests from development will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB202"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1694",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund shrine-led community cleanups. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB205"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1695",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund shrine-led community cleanups.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB205"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1696",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Shrine Association's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB205"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1697",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should raise care workers' wages. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB211"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1698",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will raise care workers' wages.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB211"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1699",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Taxpayers' Alliance will say if we raise care workers' wages.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB211"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1700",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund home care visits.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB212"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1701",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund home care visits is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB212"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1702",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we fund home care visits, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB212"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1703",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will cap the cost of nursing home beds for families.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB215"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1704",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to cap the cost of nursing home beds for families is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB215"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1705",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Taxpayers' Alliance will say if we cap the cost of nursing home beds for families.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB215"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1706",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will raise veterans' pensions.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB221"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1707",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to raise veterans' pensions is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB221"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1708",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Veterans' Association's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB221"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1709",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to expand veterans' medical care is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB222"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1710",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should expand veterans' medical care. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB222"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1711",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To expand veterans' medical care will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB222"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1712",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to maintain war memorials and cemeteries is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB225"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1713",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should maintain war memorials and cemeteries. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB225"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1714",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Veterans' Association's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB225"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1715",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to cap growth in government spending is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB231"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1716",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should cap growth in government spending. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB231"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1717",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Care and Welfare Council will say if we cap growth in government spending.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB231"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1718",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should publish the full cost of every bill. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB232"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1719",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will publish the full cost of every bill.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB232"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1720",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we publish the full cost of every bill, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB232"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1721",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should post government spending online by project. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB235"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1722",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will post government spending online by project.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB235"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1723",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Care and Welfare Council will say if we post government spending online by project.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB235"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1724",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should ease bank lending rules. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB241"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1725",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will ease bank lending rules.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB241"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1726",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Financial Industry Association's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB241"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1727",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will create tax-free investment accounts.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB242"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1728",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to create tax-free investment accounts is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB242"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1729",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To create tax-free investment accounts will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB242"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1730",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will simplify the registration of investment funds.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB245"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1731",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to simplify the registration of investment funds is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB245"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1732",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Financial Industry Association's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB245"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1733",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will cut taxes for small businesses.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB251"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1734",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to cut taxes for small businesses is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB251"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1735",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Labor Federation will say if we cut taxes for small businesses.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB251"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1736",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to cut paperwork for small firms is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB252"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1737",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should cut paperwork for small firms. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB252"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1738",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we cut paperwork for small firms, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB252"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1739",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to waive licensing fees for micro-enterprises is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB255"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1740",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should waive licensing fees for micro-enterprises. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB255"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1741",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Labor Federation will say if we waive licensing fees for micro-enterprises.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB255"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1742",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to require clear price labels is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB261"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1743",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should require clear price labels. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB261"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1744",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Consumer Advocacy Network's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB261"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1745",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should give buyers a cooling-off period. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB262"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1746",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give buyers a cooling-off period.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB262"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1747",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To give buyers a cooling-off period will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB262"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1748",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should require plain-language contracts. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB265"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1749",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will require plain-language contracts.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB265"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1750",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Consumer Advocacy Network's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB265"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1751",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should set an affordable housing quota for new buildings. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB271"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1752",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will set an affordable housing quota for new buildings.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB271"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1753",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Rural Revitalization Council will say if we set an affordable housing quota for new buildings.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB271"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1754",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will build more city parks.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB272"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1755",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to build more city parks is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB272"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1756",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we build more city parks, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB272"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1757",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund bike lanes in city centers.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB275"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1758",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund bike lanes in city centers is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB275"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1759",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Rural Revitalization Council will say if we fund bike lanes in city centers.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB275"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1760",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will restore Ainu fishing and harvest rights.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB281"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1761",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to restore Ainu fishing and harvest rights is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB281"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1762",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Ainu Community Council's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB281"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1763",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund Ainu community centers is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB282"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1764",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund Ainu community centers. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB282"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1765",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To fund Ainu community centers will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB282"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1766",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund Ainu elders' knowledge programs is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB285"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1767",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund Ainu elders' knowledge programs. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB285"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1768",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Ainu Community Council's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB285"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1769",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to expand Ainu-language translation of public documents is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB291"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1770",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should expand Ainu-language translation of public documents. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB291"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1771",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Our Traditional Society will say if we expand Ainu-language translation of public documents.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB291"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1772",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should teach the Ainu language in schools. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB292"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1773",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will teach the Ainu language in schools.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB292"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1774",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we teach the Ainu language in schools, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB292"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1775",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should support Ainu language classes for adults. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB295"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1776",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will support Ainu language classes for adults.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB295"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1777",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Our Traditional Society will say if we support Ainu language classes for adults.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB295"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1778",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should keep rural bus routes running. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB301"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1779",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will keep rural bus routes running.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB301"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1780",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Rural Revitalization Council's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB301"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1781",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will pay grants to families moving to rural towns.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB302"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1782",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to pay grants to families moving to rural towns is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB302"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1783",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To pay grants to families moving to rural towns will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB302"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1784",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give tax breaks to firms opening in rural towns.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB305"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1785",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to give tax breaks to firms opening in rural towns is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB305"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1786",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Rural Revitalization Council's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB305"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1787",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to create a constituency development fund is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB033"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1788",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should create a constituency development fund. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB033"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1789",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Local Kōenkai's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB033"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1790",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund district office staff training. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB034"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1791",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund district office staff training.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB034"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1792",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To fund district office staff training will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB034"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1793",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund district offices that help citizens file paperwork is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB036"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1794",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund district offices that help citizens file paperwork. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB036"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1795",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we fund district offices that help citizens file paperwork, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB036"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1796",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should publish a directory of district services. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB037"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1797",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will publish a directory of district services.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB037"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1798",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Local Kōenkai's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB037"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1799",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should give towns their own tax-setting powers. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB043"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1800",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give towns their own tax-setting powers.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB043"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1801",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Taxpayers' Alliance will say if we give towns their own tax-setting powers.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB043"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1802",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will let towns merge services across borders.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB044"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1803",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to let towns merge services across borders is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB044"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1804",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we let towns merge services across borders, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB044"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1805",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will open special economic zones.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB053"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1806",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to open special economic zones is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB053"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1807",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Chamber of Commerce's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB053"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1808",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to speed up customs clearance at Hokkaido ports is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB054"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1809",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should speed up customs clearance at Hokkaido ports. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB054"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1810",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To speed up customs clearance at Hokkaido ports will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB054"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1811",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will open a single window for business permits.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB056"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1812",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to open a single window for business permits is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB056"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1813",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we open a single window for business permits, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB056"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1814",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to let businesses take on apprentices without extra forms is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB057"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1815",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let businesses take on apprentices without extra forms. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB057"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1816",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Chamber of Commerce's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB057"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1817",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should give new firms a tax holiday in their first year. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB058"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1818",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give new firms a tax holiday in their first year.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB058"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1819",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To give new firms a tax holiday in their first year will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB058"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1820",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will guarantee payment within sixty days on public contracts.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB059"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1821",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to guarantee payment within sixty days on public contracts is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB059"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1822",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Labor Federation will say if we guarantee payment within sixty days on public contracts.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB059"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1823",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to give neighborhood associations legal standing in planning is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB063"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1824",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should give neighborhood associations legal standing in planning. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB063"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1825",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Chamber of Commerce will say if we give neighborhood associations legal standing in planning.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB063"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1826",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should give neighborhood associations a seat on planning boards. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB064"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1827",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give neighborhood associations a seat on planning boards.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB064"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1828",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we give neighborhood associations a seat on planning boards, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB064"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1829",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund neighborhood cleanup days is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB066"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1830",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund neighborhood cleanup days. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB066"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1831",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To fund neighborhood cleanup days will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB066"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1832",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let neighborhood associations run small local grants. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB067"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1833",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will let neighborhood associations run small local grants.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB067"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1834",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Chamber of Commerce will say if we let neighborhood associations run small local grants.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB067"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1835",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should hold fishing quotas through local cooperatives. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB073"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1836",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will hold fishing quotas through local cooperatives.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB073"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1837",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Fisheries Cooperative's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB073"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1838",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will set up a fisheries disaster relief fund.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB074"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1839",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to set up a fisheries disaster relief fund is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB074"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1840",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To set up a fisheries disaster relief fund will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB074"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1841",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should protect coastal fishing grounds from industrial dumping. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB076"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1842",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will protect coastal fishing grounds from industrial dumping.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB076"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1843",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we protect coastal fishing grounds from industrial dumping, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB076"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1844",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will support direct sales of catch to local markets.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB077"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1845",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to support direct sales of catch to local markets is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB077"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1846",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Fisheries Cooperative's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB077"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1847",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will open every committee hearing to the press.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB083"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1848",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to open every committee hearing to the press is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB083"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1849",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Party Headquarters will say if we open every committee hearing to the press.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB083"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1850",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to require government data to be published in open formats is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB084"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1851",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should require government data to be published in open formats. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB084"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1852",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we require government data to be published in open formats, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB084"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1853",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will guarantee press access to public meetings.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB086"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1854",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to guarantee press access to public meetings is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB086"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1855",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To guarantee press access to public meetings will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB086"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1856",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund local news outlets in small towns is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB087"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1857",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund local news outlets in small towns. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB087"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1858",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Party Headquarters will say if we fund local news outlets in small towns.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB087"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1859",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should require disclosure of who pays for political advertising. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB088"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1860",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will require disclosure of who pays for political advertising.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB088"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1861",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we require disclosure of who pays for political advertising, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB088"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1862",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to protect collective bargaining rights is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB093"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1863",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should protect collective bargaining rights. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB093"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1864",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Labor Federation's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB093"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1865",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should guarantee a living wage on public contracts. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB094"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1866",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will guarantee a living wage on public contracts.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB094"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1867",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To guarantee a living wage on public contracts will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB094"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1868",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should restrict foreign food imports. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB103"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1869",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will restrict foreign food imports.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB103"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1870",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Urban Neighborhood Alliance will say if we restrict foreign food imports.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB103"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1871",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will pay farmers to keep paddies in use.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB104"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1872",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to pay farmers to keep paddies in use is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB104"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1873",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we pay farmers to keep paddies in use, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB104"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1874",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should start a farm-to-school lunch program. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB106"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1875",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will start a farm-to-school lunch program.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB106"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1876",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To start a farm-to-school lunch program will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB106"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1877",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will insure farmers against bad harvests.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB107"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1878",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to insure farmers against bad harvests is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB107"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1879",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Urban Neighborhood Alliance will say if we insure farmers against bad harvests.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB107"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1880",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to support farmers' direct sales at city markets is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB108"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1881",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should support farmers' direct sales at city markets. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB108"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1882",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we support farmers' direct sales at city markets, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB108"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1883",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will build public student housing.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB113"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1884",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to build public student housing is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB113"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1885",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Students United's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB113"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1886",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to forgive student loans for graduates who work in rural towns is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB114"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1887",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should forgive student loans for graduates who work in rural towns. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB114"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1888",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To forgive student loans for graduates who work in rural towns will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB114"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1889",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to open more public childcare places is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB123"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1890",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should open more public childcare places. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB123"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1891",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Small Business Owners' Association will say if we open more public childcare places.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB123"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1892",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should make school lunches free. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB124"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1893",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will make school lunches free.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB124"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1894",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we make school lunches free, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB124"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1895",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund after-school care in every district is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB126"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1896",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund after-school care in every district. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB126"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1897",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To fund after-school care in every district will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB126"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1898",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let parents work shorter hours while children are young. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB127"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1899",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will let parents work shorter hours while children are young.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB127"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1900",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Small Business Owners' Association will say if we let parents work shorter hours while children are young.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB127"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1901",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should promote craft exports abroad. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB133"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1902",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will promote craft exports abroad.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB133"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1903",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Yezo Artisans Guild's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB133"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1904",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund craft workshops in vacant shopfronts.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB134"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1905",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund craft workshops in vacant shopfronts is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB134"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1906",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To fund craft workshops in vacant shopfronts will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB134"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1907",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should register master craftspeople as cultural assets. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB136"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1908",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will register master craftspeople as cultural assets.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB136"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1909",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we register master craftspeople as cultural assets, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB136"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1910",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund a national craft museum.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB137"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1911",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund a national craft museum is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB137"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1912",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Yezo Artisans Guild's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB137"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1913",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will make every station step-free.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB143"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1914",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to make every station step-free is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB143"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1915",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Rural Revitalization Council will say if we make every station step-free.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB143"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1916",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to build park-and-ride lots at commuter stations is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB144"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1917",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should build park-and-ride lots at commuter stations. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB144"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1918",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we build park-and-ride lots at commuter stations, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB144"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1919",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will publish real-time delay data for every line.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB146"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1920",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to publish real-time delay data for every line is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB146"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1921",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To publish real-time delay data for every line will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB146"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1922",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to refund fares for long delays is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB147"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1923",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should refund fares for long delays. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB147"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1924",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Rural Revitalization Council will say if we refund fares for long delays.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB147"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1925",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to create a national heritage register is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB153"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1926",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should create a national heritage register. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB153"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1927",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Our Traditional Society's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB153"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1928",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should teach local traditions in schools. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB154"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1929",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will teach local traditions in schools.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB154"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1930",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To teach local traditions in schools will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB154"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1931",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to support traditional crafts in school clubs is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB156"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1932",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should support traditional crafts in school clubs. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB156"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1933",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we support traditional crafts in school clubs, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB156"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1934",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should protect old town names on maps and signs. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB157"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1935",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will protect old town names on maps and signs.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB157"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1936",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Our Traditional Society's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB157"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1937",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give grants to preserve traditional farmhouses.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB158"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1938",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to give grants to preserve traditional farmhouses is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB158"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1939",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To give grants to preserve traditional farmhouses will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB158"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1940",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to restore old rail stations as community landmarks is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB159"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1941",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should restore old rail stations as community landmarks. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB159"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1942",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Students United will say if we restore old rail stations as community landmarks.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB159"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1943",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should move government services online. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB163"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1944",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will move government services online.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB163"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1945",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Yezo Artisans Guild will say if we move government services online.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB163"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1946",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will open public data to start-ups.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB164"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1947",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to open public data to start-ups is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB164"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1948",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we open public data to start-ups, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB164"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1949",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let start-ups test products in regulatory sandboxes. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB166"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1950",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will let start-ups test products in regulatory sandboxes.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB166"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1951",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To let start-ups test products in regulatory sandboxes will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB166"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1952",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund coworking hubs in regional cities.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB167"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1953",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund coworking hubs in regional cities is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB167"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1954",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Yezo Artisans Guild will say if we fund coworking hubs in regional cities.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB167"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1955",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to let citizen petitions trigger committee hearings is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB183"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1956",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let citizen petitions trigger committee hearings. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB183"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1957",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Members of Parliament will say if we let citizen petitions trigger committee hearings.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB183"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1958",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should publish every project's full costs for public comment. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB184"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1959",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will publish every project's full costs for public comment.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB184"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1960",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we publish every project's full costs for public comment, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB184"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1961",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to let residents vote on local budget priorities is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB186"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1962",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let residents vote on local budget priorities. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB186"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1963",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To let residents vote on local budget priorities will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB186"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1964",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should require open hearings before closing local services. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB187"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1965",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will require open hearings before closing local services.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB187"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1966",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Members of Parliament will say if we require open hearings before closing local services.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB187"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1967",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should designate temples as disaster shelters. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB193"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1968",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will designate temples as disaster shelters.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB193"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1969",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Buddhist Temples Association's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB193"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1970",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund repairs to temple halls damaged by weather.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB194"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1971",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund repairs to temple halls damaged by weather is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB194"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1972",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To fund repairs to temple halls damaged by weather will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB194"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1973",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will list shrine grounds on the heritage register.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB203"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1974",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to list shrine grounds on the heritage register is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB203"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1975",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Chamber of Commerce will say if we list shrine grounds on the heritage register.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB203"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1976",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to waive permit fees for shrine festival stalls is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB204"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1977",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should waive permit fees for shrine festival stalls. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB204"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1978",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we waive permit fees for shrine festival stalls, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB204"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1979",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will protect sacred groves in national planning.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB206"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1980",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to protect sacred groves in national planning is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB206"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1981",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To protect sacred groves in national planning will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB206"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1982",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to record festival music and dance as living heritage is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB207"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1983",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should record festival music and dance as living heritage. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB207"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1984",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Chamber of Commerce will say if we record festival music and dance as living heritage.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB207"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1985",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let festival organizers close streets without extra fees. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB208"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1986",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will let festival organizers close streets without extra fees.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB208"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1987",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we let festival organizers close streets without extra fees, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB208"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1988",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to open dementia care centers in every district is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB213"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1989",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should open dementia care centers in every district. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB213"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1990",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Care and Welfare Council's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB213"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1991",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should train and certify more care workers. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB214"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1992",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will train and certify more care workers.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB214"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1993",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To train and certify more care workers will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB214"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1994",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund respite care for family caregivers is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB216"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1995",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund respite care for family caregivers. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB216"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1996",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we fund respite care for family caregivers, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB216"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1997",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should send local care teams to visit isolated elders. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB217"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1998",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will send local care teams to visit isolated elders.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB217"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD1999",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Care and Welfare Council's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB217"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2000",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund care worker housing near facilities.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB218"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2001",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund care worker housing near facilities is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB218"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2002",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To fund care worker housing near facilities will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB218"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2003",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should give veterans hiring preference in public jobs. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB223"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2004",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give veterans hiring preference in public jobs.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB223"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2005",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Students United will say if we give veterans hiring preference in public jobs.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB223"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2006",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund mental health care for veterans.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB224"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2007",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund mental health care for veterans is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB224"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2008",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we fund mental health care for veterans, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB224"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2009",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will add sunset clauses to new spending.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB233"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2010",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to add sunset clauses to new spending is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB233"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2011",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Taxpayers' Alliance's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB233"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2012",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to require an audit of every large grant is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB234"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2013",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should require an audit of every large grant. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB234"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2014",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To require an audit of every large grant will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB234"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2015",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to build a financial hub zone in Sapporo is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB243"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2016",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should build a financial hub zone in Sapporo. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB243"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2017",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Consumer Advocacy Network will say if we build a financial hub zone in Sapporo.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB243"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2018",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let foreign banks open branches in Hokkaido. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB244"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2019",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will let foreign banks open branches in Hokkaido.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB244"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2020",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we let foreign banks open branches in Hokkaido, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB244"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2021",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to speed approval of new financial products is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB246"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2022",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should speed approval of new financial products. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB246"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2023",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To speed approval of new financial products will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB246"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2024",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund financial literacy classes in schools. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB247"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2025",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund financial literacy classes in schools.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB247"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2026",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Consumer Advocacy Network will say if we fund financial literacy classes in schools.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB247"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2027",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should make large firms pay suppliers on time. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB253"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2028",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will make large firms pay suppliers on time.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB253"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2029",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Small Business Owners' Association's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB253"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2030",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will give small firms cheap loans for equipment.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB254"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2031",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to give small firms cheap loans for equipment is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB254"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2032",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To give small firms cheap loans for equipment will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB254"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2033",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will cap bank fees.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB263"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2034",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to cap bank fees is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB263"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2035",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Financial Industry Association will say if we cap bank fees.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB263"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2036",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to let consumers sue together over defective goods is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB264"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2037",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should let consumers sue together over defective goods. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB264"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2038",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we let consumers sue together over defective goods, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB264"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2039",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will publish product safety recalls in one public list.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB266"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2040",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to publish product safety recalls in one public list is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB266"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2041",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To publish product safety recalls in one public list will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB266"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2042",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to set up a free consumer complaint line is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB267"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2043",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should set up a free consumer complaint line. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB267"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2044",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Financial Industry Association will say if we set up a free consumer complaint line.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB267"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2045",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to cap rent rises in the cities is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB273"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2046",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should cap rent rises in the cities. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB273"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2047",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Urban Neighborhood Alliance's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB273"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2048",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should allow denser housing near stations. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB274"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2049",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will allow denser housing near stations.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB274"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2050",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To allow denser housing near stations will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB274"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2051",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund street trees and shade in city centers is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB276"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2052",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund street trees and shade in city centers. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB276"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2053",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we fund street trees and shade in city centers, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB276"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2054",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should open vacant city lots to community gardens. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB277"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2055",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will open vacant city lots to community gardens.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB277"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2056",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Urban Neighborhood Alliance's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB277"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2057",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should require consultation with Ainu communities on land use. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB283"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2058",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will require consultation with Ainu communities on land use.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB283"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2059",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Our Traditional Society will say if we require consultation with Ainu communities on land use.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB283"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2060",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will return ceremonial sites to Ainu stewardship.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB284"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2061",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to return ceremonial sites to Ainu stewardship is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB284"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2062",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we return ceremonial sites to Ainu stewardship, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB284"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2063",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund Ainu-language broadcasting.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB293"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2064",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund Ainu-language broadcasting is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB293"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2065",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "Someone has to speak for Ainu Language and Culture Foundation's members. It may as well be me.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB293"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2066",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to fund museum exhibits and archives on Ainu culture is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB294"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2067",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund museum exhibits and archives on Ainu culture. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB294"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2068",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To fund museum exhibits and archives on Ainu culture will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB294"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2069",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to bring broadband to every village is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB303"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2070",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should bring broadband to every village. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB303"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2071",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Urban Neighborhood Alliance will say if we bring broadband to every village.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB303"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2072",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund clinics in rural towns. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB304"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2073",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund clinics in rural towns.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB304"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2074",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we fund clinics in rural towns, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB304"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2075",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to support small-town shops with rent grants is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB306"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2076",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should support small-town shops with rent grants. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB306"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2077",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "To support small-town shops with rent grants will make friends and enemies. I should count both.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB306"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2078",
+    "character_id": "SF08",
+    "stage_id": null,
+    "character_line_en": "Someone will ask why we should fund rural school buses. Have a short answer ready.",
+    "player_reply_en": "I will keep it short.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB307"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2079",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will fund rural school buses.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB307"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2080",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "I wonder what Urban Neighborhood Alliance will say if we fund rural school buses.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB307"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2081",
+    "character_id": "SF15",
+    "stage_id": null,
+    "character_line_en": "People at home are asking whether we will support remote work hubs in villages.",
+    "player_reply_en": "Then I owe them a plain answer.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB308"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2082",
+    "character_id": "SF01",
+    "stage_id": null,
+    "character_line_en": "The research on a plan to support remote work hubs in villages is thin in places. Start with the numbers.",
+    "player_reply_en": "Numbers first.",
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB308"
+    ]
+  },
+  {
+    "transition_dialogue_id": "TD2083",
+    "character_id": "PLAYER",
+    "stage_id": null,
+    "character_line_en": "If we support remote work hubs in villages, I should be ready to answer for every part of it.",
+    "player_reply_en": null,
+    "bill_id": null,
+    "stance": null,
+    "component_ids": [
+      "CB308"
+    ]
   }
 ]

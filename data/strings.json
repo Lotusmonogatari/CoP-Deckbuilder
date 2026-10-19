@@ -3768,7 +3768,7 @@
   {
     "key": "office.special_levels_heading",
     "where": "Office — the heading above special levels in the level list",
-    "english": "Special Levels",
+    "english": "Urgent Matters",
     "placeholders": null,
     "notes": null
   },
@@ -4300,14 +4300,14 @@
   {
     "key": "office.requests_heading",
     "where": "Office - Levels",
-    "english": "Requests",
+    "english": "Sponsored Bills",
     "placeholders": null,
     "notes": "2026-10-19 patron requests (step 4)."
   },
   {
     "key": "office.requests_hint",
     "where": "Office - Levels",
-    "english": "Organizations that think well of you are asking you to carry a bill.",
+    "english": "Organizations that think well of you are asking you to sponsor a bill.",
     "placeholders": null,
     "notes": "2026-10-19 patron requests (step 4)."
   },

@@ -89,13 +89,21 @@ func test_content_about_a_component_reaches_its_bill_and_nothing_else() -> void:
 	GameState.start_patron_level("PB051")
 	var ids: Array = []
 	for question: Dictionary in DataDB.get_bill_questions("PB051"):
-		ids.append(question["id"])
+		# The real library now has questions about CB051 too; this test only
+		# follows its own three.
+		if str(question["id"]).begins_with("TQ_"):
+			ids.append(question["id"])
 	assert_eq(ids, ["TQ_A", "TQ_B", "TQ_C"], "components alternate, so any prefix is an even mix")
 	assert_eq(DataDB.get_bill_questions("BI01").size(), DataDB.get_bill_questions("BI01").size())
 	for question: Dictionary in DataDB.get_stage_questions("ST16"):
 		assert_false(["TQ_A", "TQ_B", "TQ_C"].has(question["id"]), "not in the general room pool")
-	assert_eq(DataDB.get_bill_player_cue_lines("PB051", "Earnest", "attack", "").size(), 1)
-	assert_eq(DataDB.get_bill_player_cue_lines("PB071", "Earnest", "attack", "").size(), 0)
+	var own := 0
+	for line: Dictionary in DataDB.get_bill_player_cue_lines("PB051", "Earnest", "attack", ""):
+		if str(line["text"]) == "Cut it now.":
+			own += 1
+	assert_eq(own, 1)
+	for line: Dictionary in DataDB.get_bill_player_cue_lines("PB071", "Earnest", "attack", ""):
+		assert_ne(str(line["text"]), "Cut it now.")
 	for line: Dictionary in DataDB.get_player_cue_lines("Earnest", "attack", "ST16"):
 		assert_ne(str(line["text"]), "Cut it now.", "never in the general cue pool")
 
