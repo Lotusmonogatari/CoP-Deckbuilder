@@ -175,7 +175,7 @@ func _resolve_from(index: int) -> Dictionary:
 	for step in _pattern.size():
 		var at := posmod(index + step, _pattern.size())
 		var move := _roll(_pattern[at])
-		if int(move.get("value", 0)) != 0:
+		if SafeNum.to_int(move.get("value")) != 0:
 			return {"move": move, "index": at}
 
 	return {"move": _waiting(), "index": posmod(index, _pattern.size())}
@@ -255,11 +255,11 @@ static func describe(move: Dictionary, words: Phrase = null) -> String:
 ## What this move could come out as: one number, or a low and a high.
 static func _shape_of(move: Dictionary) -> Array:
 	if not move.has("min") or not move.has("max"):
-		return [int(move.get("value", 0))]
+		return [SafeNum.to_int(move.get("value"))]
 
 	# Never below 1: see describe().
-	var low := maxi(int(move["min"]), 1)
-	var high := int(move["max"])
+	var low := maxi(SafeNum.to_int(move["min"]), 1)
+	var high := SafeNum.to_int(move["max"])
 	if high <= low:
 		return [high if high > 0 else low]
 	return [low, high]

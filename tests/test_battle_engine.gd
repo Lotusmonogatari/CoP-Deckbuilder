@@ -2244,3 +2244,32 @@ func test_an_extra_energy_item_widens_the_pips_now_and_next_turn() -> void:
 	engine.end_turn()
 	assert_eq(engine.state.energy, base + 1, "the next turn refills to the raised allowance")
 	assert_eq(engine.state.energy_max, base + 1, "and the row stays that wide")
+
+
+func test_a_negative_attack_never_adds_guard() -> void:
+	# Review R6: a bad data row (an attack of -3) must not become free guard.
+	var engine := _start({"stage": TestFixtures.stage({"stage_id": "PT_S1"})})
+	engine.state.block = 2
+	var result := engine._resolve_intent({"verb": "attack", "value": -3})
+	assert_eq(engine.state.block, 2, "guard is untouched")
+	assert_eq(int(result["damage"]), 0)
+
+
+func test_a_new_committee_bout_starts_with_a_clean_turn_count() -> void:
+	# Review R5: cards played against the last opponent must not hide a pass
+	# against the next one.
+	var engine := _start({
+		"stage": TestFixtures.stage({
+			"stage_id": "PT_S1", "sequence_mode": "reset", "win_threshold": 45,
+		}),
+		"opponents": [
+			{"opp_id": "A", "name": "A", "intent_pattern": [["block", 1]]},
+			{"opp_id": "B", "name": "B", "intent_pattern": [["block", 1]]},
+		],
+	})
+	engine.state.cards_played_this_turn = 2
+	engine.state.bar.player = 45
+	engine._check_outcome()
+	assert_eq(engine.state.opponent_index, 1)
+	assert_eq(engine.state.cards_played_this_turn, 0)
+	assert_eq(engine.state.questions_answered_this_turn, 0)

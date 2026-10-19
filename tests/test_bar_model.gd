@@ -391,3 +391,12 @@ func test_a_single_bar_records_its_whole_rise() -> void:
 
 	assert_eq(bar.last_gain["from_undecided"], 3)
 	assert_eq(bar.last_gain["from_other_side"], 0)
+
+
+func test_a_zero_move_clears_the_last_gain() -> void:
+	# Review R7: last_gain went stale after a move of nothing.
+	var bar := _floor_debate()
+	bar.player_gains(5)
+	assert_gt(int(bar.last_gain["from_undecided"]), 0)
+	bar.player_gains(0)
+	assert_eq(int(bar.last_gain["from_undecided"]), 0)

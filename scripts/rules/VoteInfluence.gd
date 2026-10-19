@@ -58,7 +58,7 @@ static func gate_passed(triggers: Array, meta: Dictionary,
 		var threshold_cell: Variant = row.get("threshold")
 		var threshold := default_threshold if threshold_cell == null else int(threshold_cell)
 
-		var value := int(meta[variable]) if meta.has(variable) else int(booster_standing.get(variable, 0))
+		var value := SafeNum.to_int(meta[variable]) if meta.has(variable) else SafeNum.to_int(booster_standing.get(variable))
 		if value < threshold:
 			return false
 
@@ -87,7 +87,7 @@ static func status(triggers: Array, meta: Dictionary, booster_standing: Dictiona
 		var variable := str(row.get("variable", ""))
 		var cell: Variant = row.get("threshold")
 		var threshold := default_threshold if cell == null else int(cell)
-		var value := int(meta[variable]) if meta.has(variable) else int(booster_standing.get(variable, 0))
+		var value := SafeNum.to_int(meta[variable]) if meta.has(variable) else SafeNum.to_int(booster_standing.get(variable))
 		if value < threshold and not seen.has(variable):
 			seen[variable] = true
 			missing.append({"variable": variable, "value": value, "threshold": threshold})

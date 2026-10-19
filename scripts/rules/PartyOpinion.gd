@@ -55,7 +55,7 @@ static func stakeholder(rows: Array, standing: Dictionary, default_standing: int
 	var contributions: Array[Dictionary] = []
 	var sum := 0.0
 	for booster_id: String in weights.keys():
-		var here := int(standing.get(booster_id, default_standing))
+		var here := SafeNum.to_int(standing.get(booster_id), default_standing)
 		var weight := float(weights[booster_id])
 		var effect := weight * float(here - 50) / total_abs
 		sum += effect
@@ -76,13 +76,13 @@ static func opinion(direct: int, stakeholder_score: int, balance: Dictionary) ->
 
 ## "hostile" .. "allied" for a score, from the Balance tab's cut-offs.
 static func band(score: int, balance: Dictionary) -> String:
-	if score < int(balance.get("party_opinion_hostile_below", 20)):
+	if score < SafeNum.to_int(balance.get("party_opinion_hostile_below"), 20):
 		return "hostile"
-	if score < int(balance.get("party_opinion_cold_below", 40)):
+	if score < SafeNum.to_int(balance.get("party_opinion_cold_below"), 40):
 		return "cold"
-	if score < int(balance.get("party_opinion_neutral_below", 60)):
+	if score < SafeNum.to_int(balance.get("party_opinion_neutral_below"), 60):
 		return "neutral"
-	if score < int(balance.get("party_opinion_warm_below", 80)):
+	if score < SafeNum.to_int(balance.get("party_opinion_warm_below"), 80):
 		return "warm"
 	return "allied"
 
