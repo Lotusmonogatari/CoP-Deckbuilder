@@ -3827,5 +3827,19 @@
     "english": "A bill to {a}, {b} and {c}",
     "placeholders": "a, b, c",
     "notes": "2026-10-19 the name of a bill composed from two or three components (patron bills, Draft a Bill)."
+  },
+  {
+    "key": "floor_vote.assist_won",
+    "where": "Floor Vote",
+    "english": "Members you won over: +{count}.",
+    "placeholders": "count",
+    "notes": "2026-10-19 patron bill: seats won over by visits / taken by lobbyists, shown under the bill before the vote."
+  },
+  {
+    "key": "floor_vote.assist_against",
+    "where": "Floor Vote",
+    "english": "Lobbyists working against you: -{count}.",
+    "placeholders": "count",
+    "notes": "2026-10-19 patron bill: seats won over by visits / taken by lobbyists, shown under the bill before the vote."
   }
 ]

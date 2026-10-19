@@ -243,7 +243,9 @@ func choose(choice: String) -> Dictionary:
 		var baseline_totals := _totals()
 		var baseline_passed: bool = passes(baseline_totals)
 
+		_apply_won_over(picked)
 		_influence_gate_passed = _apply_influence_swing(picked)
+		_apply_worked_against(picked)
 
 		var final_totals := _totals()
 		_outcome_flipped_by_influence = passes(final_totals) != baseline_passed
@@ -284,6 +286,59 @@ func influence_status() -> Dictionary:
 	for position: Dictionary in _positions:
 		ids.append(str(position.get("party_id", "")))
 	return VoteInfluence.status(_triggers, _meta, _booster_standing, _default_threshold, ids)
+
+
+## Members the player won over (BillAssist "won_over"): each is one seat that
+## goes to `picked`, taken from the party's larger bucket of the two it is not
+## already in, with no gate and no Vote Resistance. A party with nothing left
+## outside `picked` gives nothing.
+func _apply_won_over(picked: String) -> void:
+	var won: Variant = (_config.get("assist", {}) as Dictionary).get("won_over", {})
+	if not (won is Dictionary):
+		return
+	for index in _positions.size():
+		var position: Dictionary = _positions[index]
+		var seats := int((won as Dictionary).get(str(position.get("party_id", "")), 0))
+		if seats <= 0:
+			continue
+		# One seat at a time, each from whichever bucket outside the pick is
+		# larger at that moment, so a party's seats are all winnable.
+		for _seat in range(seats):
+			var best := ""
+			var best_count := 0
+			for bucket: String in ["Abstain", "No", "Yes"]:
+				if bucket == picked:
+					continue
+				var count := int(position.get("votes_%s" % bucket.to_lower(), 0))
+				if count > best_count:
+					best = bucket
+					best_count = count
+			if best.is_empty():
+				break
+			position["votes_%s" % best.to_lower()] = best_count - 1
+			position["votes_%s" % picked.to_lower()] = int(position.get("votes_%s" % picked.to_lower(), 0)) + 1
+		_positions[index] = position
+
+
+## Lobbyists working against the player (BillAssist "worked_against"): seats in
+## the named party leave `picked` for its opposite (Yes and No swap; an
+## Abstain pick loses them to No). Applied after the influence swing, so it
+## cannot be won back.
+func _apply_worked_against(picked: String) -> void:
+	var against: Variant = (_config.get("assist", {}) as Dictionary).get("worked_against", {})
+	if not (against is Dictionary):
+		return
+	var opposite := "No" if picked != "No" else "Yes"
+	for index in _positions.size():
+		var position: Dictionary = _positions[index]
+		var seats := int((against as Dictionary).get(str(position.get("party_id", "")), 0))
+		if seats <= 0:
+			continue
+		var from_key := "votes_%s" % picked.to_lower()
+		var moved := mini(seats, int(position.get(from_key, 0)))
+		position[from_key] = int(position.get(from_key, 0)) - moved
+		position["votes_%s" % opposite.to_lower()] = int(position.get("votes_%s" % opposite.to_lower(), 0)) + moved
+		_positions[index] = position
 
 
 func _normalise(choice: String) -> String:
