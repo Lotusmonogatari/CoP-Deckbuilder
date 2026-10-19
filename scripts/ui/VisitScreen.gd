@@ -10,6 +10,18 @@ extends Control
 
 const OFFICE_SCENE := StageRouting.OFFICE_SCENE
 
+## Text-tab keys, written out so the exporter can check each one exists.
+const STYLE_KEYS := {
+	"Earnest": "visit.style.earnest", "Emotional": "visit.style.emotional", "Appeal": "visit.style.appeal",
+	"Data Driven": "visit.style.data_driven", "Divisive": "visit.style.divisive", "Duplicitous": "visit.style.duplicitous",
+}
+const BRIEF_KEYS := ["visit.brief_1", "visit.brief_2", "visit.brief_3"]
+const REACT_KEYS := {
+	"strong": ["visit.react_strong_1", "visit.react_strong_2", "visit.react_strong_3"],
+	"medium": ["visit.react_medium_1", "visit.react_medium_2", "visit.react_medium_3"],
+	"weak": ["visit.react_weak_1", "visit.react_weak_2", "visit.react_weak_3"],
+}
+
 var _stage: Dictionary = {}
 var _visit: Dictionary = {}
 var _member: Dictionary = {}
@@ -125,11 +137,11 @@ func briefing_text() -> String:
 		return ""
 	var phrases: Array[String] = []
 	for style: String in styles:
-		phrases.append(Text.say("visit.style.%s" % style.to_lower().replace(" ", "_")))
+		phrases.append(Text.say(STYLE_KEYS[style]))
 	var args := {"staff": _researcher_name(), "name": str(_visit.get("member_name", ""))}
 	for position in range(phrases.size()):
 		args[["first", "second", "third"][position]] = phrases[position]
-	return Text.say("visit.brief_%d" % phrases.size(), args)
+	return Text.say(BRIEF_KEYS[phrases.size() - 1], args)
 
 
 func _researcher_name() -> String:
@@ -190,7 +202,7 @@ func _on_choice(letter: String) -> void:
 	_portrait.expression = ArtLoader.GAINING if grade == MpVisit.STRONG else (ArtLoader.NEUTRAL if grade == MpVisit.MEDIUM else ArtLoader.DAMAGED)
 	var tone := "strong" if grade == MpVisit.STRONG else ("medium" if grade == MpVisit.MEDIUM else "weak")
 	_banner.say(CueBanner.OPPONENT, str(_visit.get("member_name", "")),
-		Text.say("visit.react_%s_%d" % [tone, randi_range(1, 3)], {"name": str(_visit.get("member_name", ""))}))
+		Text.say((REACT_KEYS[tone] as Array)[randi_range(0, 2)], {"name": str(_visit.get("member_name", ""))}))
 
 
 func _on_continue() -> void:
