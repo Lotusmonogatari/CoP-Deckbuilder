@@ -332,6 +332,9 @@ var statute_book: Array = []
 var patron_requests: Dictionary = {}
 var enacted_components: Array = []
 var patron_runtime: Dictionary = {}
+## When each request's countdown began ({patron_bill_id: clock units}); a
+## request shows once special_level_delay units have run (step 4).
+var patron_armed: Dictionary = {}
 var patron_composed: Dictionary = {}
 
 ## Help and hindrance on the vote in front of the player (BillAssist), cleared
@@ -395,7 +398,7 @@ const _SAVED_FIELDS := [
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
-	"patron_requests", "enacted_components", "patron_runtime", "patron_composed",
+	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
 	"bill_assist", "patron_news",
 ]
 
@@ -553,6 +556,7 @@ func reset_crisis_triggers() -> void:
 	enacted_components = []
 	patron_runtime = {}
 	patron_composed = {}
+	patron_armed = {}
 	bill_assist = BillAssist.empty()
 	patron_news = {}
 	DataDB.clear_runtime()
@@ -1079,6 +1083,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	# nowhere left to put one (level_runner.is_finished()) — leaving a zone
 	# never needs anywhere to put anything, so that half always fires.
 	_apply_time_decays()
+	arm_patron_requests()
 	_check_funding_freeze()
 	var level_id := str(level_runner.level.get("level_id", ""))
 	_check_town_hall()
@@ -2680,6 +2685,38 @@ func patron_bills_due() -> Array:
 	for id: String in patron_requests:
 		statuses[id] = str((patron_requests[id] as Dictionary).get("status", ""))
 	return PatronRequests.due(DataDB.patron_bills, booster_standing, statuses, DataDB.balance)
+
+
+## Starts the countdown for every request that has just become due (idempotent).
+func arm_patron_requests() -> void:
+	for id: String in patron_bills_due():
+		if not patron_armed.has(id):
+			patron_armed[id] = time_units
+
+
+## The requests the Requests block shows right now, oldest first: those whose
+## countdown has run out, plus any returned to the queue, up to
+## `patron_requests_waiting_at_once`. Requests that cannot be composed (every
+## alternative already law) are left out. Moves nothing but the countdown.
+func patron_requests_shown() -> Array:
+	arm_patron_requests()
+	var delay := int(DataDB.balance.get("special_level_delay", 5))
+	var candidates: Array = []
+	for id: String in patron_armed:
+		var status := str((patron_requests.get(id, {}) as Dictionary).get("status", ""))
+		var ready: bool = status == "" and time_units - int(patron_armed[id]) >= delay
+		if ready or status == PatronRequests.WAITING or status == PatronRequests.OPEN:
+			candidates.append(id)
+	candidates.sort_custom(func(a: String, b: String) -> bool:
+		return int(patron_armed[a]) < int(patron_armed[b]) or (int(patron_armed[a]) == int(patron_armed[b]) and a < b))
+	var out: Array = []
+	var cap := int(DataDB.balance.get("patron_requests_waiting_at_once", 2))
+	for id: String in candidates:
+		if out.size() >= cap:
+			break
+		if bool(PatronLevel.compose(id, enacted_components)["ok"]):
+			out.append(id)
+	return out
 
 
 ## Accepts a patron bill (optionally amended) and starts its level. Returns
