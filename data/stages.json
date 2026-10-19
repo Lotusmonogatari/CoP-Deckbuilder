@@ -1008,7 +1008,7 @@
     "win_delta_jiban": 0,
     "win_delta_yen": 100000,
     "win_delta_reputation": 15,
-    "win_delta_xp": 200,
+    "win_delta_xp": 120,
     "win_delta_party_support": 15,
     "loss_delta_jiban": 0,
     "loss_delta_yen": 0,
