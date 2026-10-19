@@ -142,6 +142,14 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		stage["floor_vote"] = bill
 		stage["question_pool_size"] = 0
 		return stage
+	elif str(stage.get("mode", "")) == "Visit":
+		# A member visit (influence building, 2026-10-19): the member and the
+		# questions were drawn when the patron level was built (PatronLevel).
+		stage["opponents"] = []
+		stage["visitors"] = []
+		stage["visit"] = (DataDB.get_level(level_id).get("visit", {}) as Dictionary).duplicate(true)
+		stage["question_pool_size"] = 0
+		return stage
 	elif str(stage.get("mode", "")) == "Non-combat":
 		# Office Hours (and the Steering Committee check-in, ST22): not a
 		# battle, so no opponent at all — a drawn pool of visitors instead,
@@ -162,6 +170,11 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		# eligible pool and fight them one at a time, not a special branch.
 		stage["opponents"] = _opponents_for(level_id, stage_id, slot, _opponent_count(stage))
 		stage["visitors"] = []
+		if stage_id == MpVisit.FIGHT_STAGE:
+			# The one-on-one fight is against the member who visited.
+			var visit: Dictionary = DataDB.get_level(level_id).get("visit", {})
+			var member := DataDB.get_opponent(str(visit.get("opp_id", ""))) if not visit.is_empty() else {}
+			stage["opponents"] = [member] if not member.is_empty() else []
 
 	# LevelRunner.problems() needs to know whether a stage has anything to
 	# push back with — opponents, or questions — before it can be played,
@@ -559,6 +572,9 @@ static func for_playtest_stage(stage: Dictionary, buffs: Dictionary = {},
 	var bonus := backing_bonus(stage)
 
 	var start_adjustment := int(buffs.get("support_bonus", 0)) + int(bonus.get("start_support", 0))
+	if stage_id == MpVisit.FIGHT_STAGE:
+		# Rapport built in the visit changes how the fight opens.
+		start_adjustment += PatronLevel.visit_start_bonus()
 	# Reputation opens a press stage for or against the player — the same
 	# effect from_row() used to apply for the workbook's module route, now
 	# folded in here since a level's expanded stages are real ST04/ST06 rows.

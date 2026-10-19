@@ -1061,6 +1061,8 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.
+	if outcome == LevelRunner.WON and str(stage.get("stage_id", "")) == MpVisit.FIGHT_STAGE:
+		_won_over_member()
 	_apply_stage_rewards(stage, outcome, score)
 	_apply_question_boosters(boosters, displeased_boosters, opposed_boosters, booster_tally)
 	_apply_instant_win_penalties(crushed_boosters)
@@ -2823,3 +2825,32 @@ func add_won_over(party_id: String, seats: int = 1) -> void:
 
 func add_worked_against(party_id: String, seats: int = 1) -> void:
 	BillAssist.add(bill_assist, "worked_against", party_id, seats)
+
+
+## The visit in progress, or {} (the dictionary is the level's own, so changes
+## to it are saved with the patron level).
+func current_visit() -> Dictionary:
+	var level: Variant = patron_runtime.get("level")
+	if level is Dictionary and (level as Dictionary).get("visit") is Dictionary:
+		return (level as Dictionary)["visit"]
+	return {}
+
+
+## The one-on-one fight was won: the member is won over for this vote.
+func _won_over_member() -> void:
+	var visit := current_visit()
+	if visit.is_empty() or bool(visit.get("won", false)):
+		return
+	visit["won"] = true
+	add_won_over(str(visit.get("party_id", "")), int(DataDB.balance.get("mp_visit_seats_won", 1)))
+
+
+## The player declined the visit: both of its stages pass with nothing earned
+## (no rewards, no fight, no cost, no time).
+func skip_member_visit() -> void:
+	if level_runner == null or str(level_runner.current_stage().get("stage_id", "")) != MpVisit.VISIT_STAGE:
+		return
+	level_runner.finish_stage(LevelRunner.WON)
+	if str(level_runner.current_stage().get("stage_id", "")) == MpVisit.FIGHT_STAGE:
+		level_runner.finish_stage(LevelRunner.WON)
+	SaveManager.autosave(true)

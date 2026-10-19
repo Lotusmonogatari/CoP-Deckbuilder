@@ -76,6 +76,7 @@ func problems() -> PackedStringArray:
 		# explicitly declares itself Non-combat or Vote is exempt, not merely
 		# "not declared Combat".
 		if str(stage.get("mode", "")) != "Non-combat" and str(stage.get("mode", "")) != "Vote" \
+				and str(stage.get("mode", "")) != "Visit" \
 				and stage.get("opponents", []).is_empty() and not _asks_questions(stage):
 			found.append("stage %d has neither opponents nor questions" % seq)
 
@@ -86,6 +87,11 @@ func problems() -> PackedStringArray:
 		# than a quiet empty screen.
 		if str(stage.get("mode", "")) == "Non-combat" and stage.get("visitors", []).is_empty():
 			found.append("stage %d has no eligible visitors" % seq)
+
+		# A member visit (influence building, 2026-10-19) carries its own
+		# questions in stage["visit"].
+		if str(stage.get("mode", "")) == "Visit" and (stage.get("visit", {}) as Dictionary).is_empty():
+			found.append("stage %d has no member to visit" % seq)
 
 		# A Vote stage's own equivalent (ST23, National Assembly Floor
 		# Voting): its bill comes from floor_votes.json by level_id, not a

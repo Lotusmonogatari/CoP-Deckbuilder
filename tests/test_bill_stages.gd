@@ -59,6 +59,10 @@ func test_a_bill_specific_copy_plays_like_its_family() -> void:
 		var base := DataDB.stage_background_id(stage_id)
 		if int(stage_id.substr(2)) < 121 or base.is_empty() or int(base.substr(2)) > 23:
 			continue
+		# The member visit's two stages borrow a family's picture but play
+		# differently on purpose (influence building step B).
+		if stage_id == MpVisit.VISIT_STAGE or stage_id == MpVisit.FIGHT_STAGE:
+			continue
 		var generic := DataDB.get_stage(base)
 		assert_eq(stage["mode"], generic["mode"], stage_id)
 		assert_eq(stage.get("sequence_mode"), generic.get("sequence_mode"), stage_id)

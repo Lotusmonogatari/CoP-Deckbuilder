@@ -37,8 +37,9 @@ static func context(kind: String, patron_bill_id: String) -> Dictionary:
 		"yes_floor": PatronRequests.default_yes_floor(kind, balance),
 		"capacity": ComposedBill.swing_capacity(DataDB.parties,
 				int(balance.get("vote_swing_resistance_default", 70))),
-		"template_2": Text.say("custom_bill.name_2"),
-		"template_3": Text.say("custom_bill.name_3"),
+		# The raw rows, braces and all: ComposedBill fills {a}, {b} and {c}.
+		"template_2": str(DataDB.strings.get("custom_bill.name_2", "A bill to {a} and {b}")),
+		"template_3": str(DataDB.strings.get("custom_bill.name_3", "A bill to {a}, {b} and {c}")),
 		"law_scale_percent": int(balance.get("custom_law_scale_percent", 50)),
 	}
 
@@ -90,13 +91,17 @@ static func _stakeholders(effects: Array) -> String:
 
 ## A levels.json-shaped row: the template's stages in order, the last slot
 ## holding the bill's id (the Floor Vote), as every bill level does.
-static func level_row(row: Dictionary, bill: Dictionary) -> Dictionary:
+static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenerator = null) -> Dictionary:
+	if rng == null:
+		rng = RandomNumberGenerator.new()
+		rng.randomize()
 	var template: Dictionary = {}
 	for candidate: Dictionary in DataDB.bill_level_templates:
 		if str(candidate.get("template_id", "")) == str(row.get("template_id", "")):
 			template = candidate
 	var owner_tier := str(DataDB.get_booster(str(row.get("organization", ""))).get("tier", ""))
-	var stages := LevelTemplate.stages(template, str(bill.get("hearing_stage", "")), owner_tier)
+	var visit := build_visit(template, bill, rng)
+	var stages := LevelTemplate.stages(template, str(bill.get("hearing_stage", "")), owner_tier, not visit.is_empty())
 	if stages.is_empty():
 		return {}
 	stages[stages.size() - 1] = str(bill.get("bill_id", ""))
@@ -106,9 +111,60 @@ static func level_row(row: Dictionary, bill: Dictionary) -> Dictionary:
 		"tier": template.get("level_tier"),
 		"patron_bill_id": str(row.get("patron_bill_id", "")),
 	}
+	if not visit.is_empty():
+		level["visit"] = visit
 	for index in range(stages.size()):
 		level["stage_%d" % (index + 1)] = stages[index]
 	return level
+
+
+## The member visit for a level built from `template`, or {} when the template
+## has none or no listed party has a seat outside the player's side. The party
+## is the first in the template's Visit Parties with seats outside Yes (the
+## sponsor votes Yes); the member and the questions are drawn now and kept
+## with the level so a saved level resumes with the same visit.
+static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumberGenerator) -> Dictionary:
+	var has_token := false
+	for slot in range(1, LevelTemplate.MAX_SLOTS + 1):
+		if str(template.get("stage_%d" % slot, "")) == "MP_VISIT":
+			has_token = true
+	if not has_token:
+		return {}
+	var parties: Array = template.get("visit_parties", []) as Array if template.get("visit_parties") is Array else []
+	var party_id := MpVisit.pick_party(parties, bill.get("positions", []) as Array)
+	if party_id.is_empty():
+		return {}
+	var party := DataDB.get_party_by_id(party_id)
+	var committee := str(DataDB.get_stage(str(bill.get("hearing_stage", ""))).get("name_en", ""))
+	var opponents: Array = []
+	for opponent: Dictionary in DataDB.opponents:
+		opponents.append(opponent)
+	var member := MpVisit.pick_member(opponents, str(party.get("name", "")), committee, GameState.faced_people, rng)
+	if member.is_empty():
+		return {}
+	var phrase := ""
+	var first_ids: Array = bill.get("component_ids", []) as Array
+	if not first_ids.is_empty():
+		phrase = str(ComposedBill.index(DataDB.bill_components).get(str(first_ids[0]), {}).get("phrase", ""))
+	var questions := MpVisit.build_questions(member, DataDB.visit_questions, DataDB.visit_answers,
+			int(DataDB.balance.get("mp_visit_questions", 3)), phrase, rng)
+	if questions.is_empty():
+		return {}
+	return {
+		"party_id": party_id, "party_name": str(party.get("name", "")),
+		"opp_id": str(member.get("opp_id", "")), "member_name": str(member.get("name", "")),
+		"questions": questions, "rapport": 0, "taken": false, "won": false,
+	}
+
+
+## Starting support the one-on-one fight gives the player from the visit's
+## rapport (0 when no visit is in progress).
+static func visit_start_bonus() -> int:
+	var level: Variant = GameState.patron_runtime.get("level")
+	if not (level is Dictionary):
+		return 0
+	var visit: Dictionary = (level as Dictionary).get("visit", {})
+	return MpVisit.start_bonus(int(visit.get("rapport", 0)), int(DataDB.balance.get("mp_visit_rapport_start_per_point", 5)))
 
 
 ## Composes the bill, builds its level and files both with DataDB for the run.

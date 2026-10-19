@@ -66,5 +66,12 @@
   "patron_default_yes_floor": 44,
   "patron_flagship_default_yes_floor": 34,
   "news_ticker_units": 12,
+  "mp_visit_questions": 3,
+  "mp_visit_rapport_start_per_point": 5,
+  "mp_visit_strong_points": 1,
+  "mp_visit_medium_points": 0,
+  "mp_visit_weak_points": -1,
+  "mp_visit_seats_won": 1,
+  "mp_visit_briefing_staff_rank": 2,
   "xp_tiers": {}
 }

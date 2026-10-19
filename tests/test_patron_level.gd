@@ -160,7 +160,7 @@ func test_a_flagship_follows_a_resolved_favor_and_pays_its_ally() -> void:
 	assert_true(GameState.patron_bills_due().has("PB052"))
 	var ally_before := int(GameState.booster_standing["BO24"])
 	GameState.start_patron_level("PB052")
-	assert_eq(GameState.level_runner.stages.size(), 5)
+	assert_true(GameState.level_runner.stages.size() in [5, 7])
 	_play_to_the_vote()
 	assert_true(_vote("Yes")["passed"])
 	GameState.finish_stage(LevelRunner.WON)
@@ -266,8 +266,12 @@ func test_every_patron_bill_builds_a_playable_level() -> void:
 		var expanded := BattleSetup.expand_level(built["level"] as Dictionary)
 		var runner := LevelRunner.new(expanded)
 		assert_eq(runner.problems().size(), 0, "%s: %s" % [id, str(runner.problems())])
-		var wanted := 3 if row["kind"] == "Favor" else 5
-		assert_eq(runner.stages.size(), wanted, id)
+		if row["kind"] == "Favor":
+			assert_eq(runner.stages.size(), 3, id)
+		else:
+			# A Flagship gains the optional member visit (two stages) when a
+			# listed party still has seats outside the player's side.
+			assert_true(runner.stages.size() in [5, 7], id)
 		for stage: Dictionary in runner.stages:
 			if str(stage.get("mode", "")) == "Combat":
 				assert_gt((stage["opponents"] as Array).size(), 0, "%s %s has opponents" % [id, stage["stage_id"]])

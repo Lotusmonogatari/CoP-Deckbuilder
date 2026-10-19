@@ -8,6 +8,10 @@
     "stage_3": "VOTE",
     "stage_4": null,
     "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "visit_parties": null,
     "note": "Draft: a meeting with the organization, the committee hearing for the first component, the Floor Vote."
   },
   {
@@ -16,9 +20,16 @@
     "level_tier": 2,
     "stage_1": "PATRON_MEETING",
     "stage_2": "HEARING",
-    "stage_3": "PUBLIC",
-    "stage_4": "CAUCUS",
-    "stage_5": "VOTE",
-    "note": "Draft: adds a public room (Town Hall for a Constituency organization, Press Conference for a National one) and your own Party Caucus."
+    "stage_3": "MP_VISIT",
+    "stage_4": "PUBLIC",
+    "stage_5": "CAUCUS",
+    "stage_6": "VOTE",
+    "stage_7": null,
+    "stage_8": null,
+    "visit_parties": [
+      "PT04",
+      "PT02"
+    ],
+    "note": "Draft: adds an optional member visit (MP_VISIT: a visit, then a one-on-one fight, for the first party in Visit Parties that still has seats outside your side), a public room (Town Hall for a Constituency organization, Press Conference for a National one) and your own Party Caucus."
   }
 ]
