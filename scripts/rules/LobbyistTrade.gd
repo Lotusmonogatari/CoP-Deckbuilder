@@ -152,3 +152,33 @@ static func drop_costs(dropped_owner: String, patron: String, ally: String, leve
 	elif dropped_owner == ally and not ally.is_empty():
 		out.append({"target": ally, "delta": -int(levers.get("trade_ally_cost", 1))})
 	return out
+
+
+## The party "help working the bill" works on: the one best tied to the
+## organization (highest Party Standing weight) that has at least one seat
+## OUTSIDE `pick`, so there is a seat to win. Falls back to any party with
+## seats outside `pick`; "" when every party is entirely on the player's side.
+static func party_for_help(org: String, ties: Array, positions: Array, pick: String = "Yes") -> String:
+	var outside := {}
+	for position: Dictionary in positions:
+		var seats := 0
+		for bucket: String in FloorVoteEngine.BUCKETS:
+			if bucket != pick:
+				seats += int(position.get("votes_%s" % bucket.to_lower(), 0))
+		if seats > 0:
+			outside[str(position.get("party_id", ""))] = seats
+	var best := ""
+	var best_weight := -INF
+	for row: Dictionary in ties:
+		var party_id := str(row.get("party_id", ""))
+		if str(row.get("booster_id", "")) == org and outside.has(party_id) and float(row.get("weight", 0.0)) > best_weight:
+			best = party_id
+			best_weight = float(row.get("weight", 0.0))
+	if not best.is_empty():
+		return best
+	var most := 0
+	for party_id: String in outside:
+		if int(outside[party_id]) > most:
+			best = party_id
+			most = int(outside[party_id])
+	return best

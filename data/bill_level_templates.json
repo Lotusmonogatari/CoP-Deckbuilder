@@ -5,14 +5,14 @@
     "level_tier": 1,
     "stage_1": "PATRON_MEETING",
     "stage_2": "HEARING",
-    "stage_3": "VOTE",
-    "stage_4": null,
+    "stage_3": "LOBBYIST_TRADE",
+    "stage_4": "VOTE",
     "stage_5": null,
     "stage_6": null,
     "stage_7": null,
     "stage_8": null,
     "visit_parties": null,
-    "note": "Draft: a meeting with the organization, the committee hearing for the first component, the Floor Vote."
+    "note": "Draft: a meeting with the organization, the committee hearing for the first component, an optional lobbyist trade (LOBBYIST_TRADE, offered when a lobbyist speaks for an organization the bill hurts), the Floor Vote."
   },
   {
     "template_id": "BT02",
@@ -23,13 +23,13 @@
     "stage_3": "MP_VISIT",
     "stage_4": "PUBLIC",
     "stage_5": "CAUCUS",
-    "stage_6": "VOTE",
-    "stage_7": null,
+    "stage_6": "LOBBYIST_TRADE",
+    "stage_7": "VOTE",
     "stage_8": null,
     "visit_parties": [
       "PT04",
       "PT02"
     ],
-    "note": "Draft: adds an optional member visit (MP_VISIT: a visit, then a one-on-one fight, for the first party in Visit Parties that still has seats outside your side), a public room (Town Hall for a Constituency organization, Press Conference for a National one) and your own Party Caucus."
+    "note": "Draft: adds an optional member visit (MP_VISIT), a public room (Town Hall for a Constituency organization, Press Conference for a National one), your own Party Caucus and an optional lobbyist trade."
   }
 ]

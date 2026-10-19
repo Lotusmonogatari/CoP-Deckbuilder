@@ -87,6 +87,20 @@ static func expand_level(level: Dictionary) -> Dictionary:
 	return expanded
 
 
+## A bill with each position carrying what the Floor Vote screen needs: the
+## party's name and colour, and how strongly it reacts (salience factor).
+static func enriched_floor_vote(source: Dictionary) -> Dictionary:
+	var bill := source.duplicate(true)
+	var positions: Array = (bill.get("positions", []) as Array).duplicate(true)
+	for position: Dictionary in positions:
+		var party := DataDB.get_party_by_id(str(position.get("party_id", "")))
+		position["party_name"] = str(party.get("name", ""))
+		position["party_color"] = [party.get("r", 128), party.get("g", 128), party.get("b", 128)]
+		position["favorability_factor"] = salience_factor(position)
+	bill["positions"] = positions
+	return bill
+
+
 ## True for a "BIxx" value — a bill, not a Stage ID. A level's own stage
 ## sequence can hold either kind of thing in any slot (2026-09-27 pull);
 ## this is the one place both this file and DataDB.gd tell them apart.
@@ -131,15 +145,15 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		# same separation BattleEngine/CardResolver already keep.
 		stage["opponents"] = []
 		stage["visitors"] = []
-		var bill := DataDB.get_floor_vote(level_id).duplicate(true)
-		var positions: Array = (bill.get("positions", []) as Array).duplicate(true)
-		for position: Dictionary in positions:
-			var party := DataDB.get_party_by_id(str(position.get("party_id", "")))
-			position["party_name"] = str(party.get("name", ""))
-			position["party_color"] = [party.get("r", 128), party.get("g", 128), party.get("b", 128)]
-			position["favorability_factor"] = salience_factor(position)
-		bill["positions"] = positions
-		stage["floor_vote"] = bill
+		stage["floor_vote"] = enriched_floor_vote(DataDB.get_floor_vote(level_id))
+		stage["question_pool_size"] = 0
+		return stage
+	elif str(stage.get("mode", "")) == "Trade":
+		# A lobbyist's trade (influence building step C): the lobbyist and the
+		# questions were drawn when the patron level was built.
+		stage["opponents"] = []
+		stage["visitors"] = []
+		stage["trade"] = (DataDB.get_level(level_id).get("trade", {}) as Dictionary).duplicate(true)
 		stage["question_pool_size"] = 0
 		return stage
 	elif str(stage.get("mode", "")) == "Visit":

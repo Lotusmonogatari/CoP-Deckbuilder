@@ -728,6 +728,14 @@ SHEETS = {
             ("Text (EN)", "text_en", "str"),
         ],
     },
+    "Trade Questions": {
+        "out": "trade_questions.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Question ID", "question_id", "id"),
+            ("Text (EN)", "text_en", "str"),
+        ],
+    },
     "Visit Answers": {
         "out": "visit_answers.json",
         "optional_sheet": True,
@@ -2940,7 +2948,7 @@ def fold_questions(data, report):
                 elif other == cid:
                     report.error("Bill Components", f"{cid}: {col} names itself")
     template_rows = {t["template_id"]: t for t in data.get("bill_level_templates", [])}
-    template_tokens = {"PATRON_MEETING", "HEARING", "PUBLIC", "CAUCUS", "VOTE", "MP_VISIT"}
+    template_tokens = {"PATRON_MEETING", "HEARING", "PUBLIC", "CAUCUS", "VOTE", "MP_VISIT", "LOBBYIST_TRADE"}
     for tid, t in template_rows.items():
         if t.get("kind") not in ("Favor", "Flagship"):
             report.error("Bill Level Templates", f"{tid}: Kind '{t.get('kind')}' must be Favor or Flagship")

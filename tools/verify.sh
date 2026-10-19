@@ -124,6 +124,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     failures=$((failures + 1))
   fi
 
+  # And the lobbyist trade (influence building step C, 2026-10-19).
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/trade_test.tscn; then
+    echo ">> FAILED: the lobbyist trade did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
   # And the Level Intro screen — 2026-09-28, new.
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
         "$GODOT" --path . tests/interaction/level_intro_test.tscn; then

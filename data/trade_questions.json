@@ -1,0 +1,50 @@
+[
+  {
+    "question_id": "TQ01",
+    "text_en": "My members cannot accept the plan to {component}. What will you give us?"
+  },
+  {
+    "question_id": "TQ02",
+    "text_en": "Why should we accept the plan to {component} when it costs us so much?"
+  },
+  {
+    "question_id": "TQ03",
+    "text_en": "Everyone says the plan to {component} is fair. Is it fair to us?"
+  },
+  {
+    "question_id": "TQ04",
+    "text_en": "What would you say to our people about the plan to {component}?"
+  },
+  {
+    "question_id": "TQ05",
+    "text_en": "We would rather you took out the plan to {component}. What is in it for you if you do?"
+  },
+  {
+    "question_id": "TQ06",
+    "text_en": "How do I explain the plan to {component} to the people I speak for?"
+  },
+  {
+    "question_id": "TQ07",
+    "text_en": "If the plan to {component} stays, who protects our interests?"
+  },
+  {
+    "question_id": "TQ08",
+    "text_en": "Can you show me that the plan to {component} will not hurt us?"
+  },
+  {
+    "question_id": "TQ09",
+    "text_en": "Tell me why the plan to {component} is worth the damage."
+  },
+  {
+    "question_id": "TQ10",
+    "text_en": "What would it take for us to live with the plan to {component}?"
+  },
+  {
+    "question_id": "TQ11",
+    "text_en": "You are asking a lot with the plan to {component}. What are you offering?"
+  },
+  {
+    "question_id": "TQ12",
+    "text_en": "Will you stand by us if the plan to {component} goes badly?"
+  }
+]

@@ -38,6 +38,7 @@ static func context(kind: String, patron_bill_id: String) -> Dictionary:
 		"capacity": ComposedBill.swing_capacity(DataDB.parties,
 				int(balance.get("vote_swing_resistance_default", 70))),
 		# The raw rows, braces and all: ComposedBill fills {a}, {b} and {c}.
+		"template_1": str(DataDB.strings.get("custom_bill.name_1", "A bill to {a}")),
 		"template_2": str(DataDB.strings.get("custom_bill.name_2", "A bill to {a} and {b}")),
 		"template_3": str(DataDB.strings.get("custom_bill.name_3", "A bill to {a}, {b} and {c}")),
 		"law_scale_percent": int(balance.get("custom_law_scale_percent", 50)),
@@ -69,12 +70,19 @@ static func compose(patron_bill_id: String, enacted: Array, replace: String = ""
 			return {"ok": false, "bill": {}, "component_ids": ids, "amended": false}
 		ids = PatronRequests.apply_amend(ids, replace, with_id)
 		amended = true
+	return {"ok": bool(swapped["ok"]), "bill": compose_ids(patron_bill_id, ids), "component_ids": ids, "amended": amended}
+
+
+## The bill for an explicit list of components (no Option A swaps, no Amend):
+## what a lobbyist trade recomposes after a component is dropped.
+static func compose_ids(patron_bill_id: String, ids: Array) -> Dictionary:
+	var row := patron_bill(patron_bill_id)
 	var kind := str(row.get("kind", PatronRequests.FAVOR))
-	var bill := ComposedBill.compose(ids, by_id, context(kind, patron_bill_id))
+	var bill := ComposedBill.compose(ids, ComposedBill.index(DataDB.bill_components), context(kind, patron_bill_id))
 	bill["patron_bill_id"] = patron_bill_id
 	bill["patron_kind"] = kind
 	bill["stakeholders_override"] = _stakeholders(bill["effects"] as Array)
-	return {"ok": bool(swapped["ok"]), "bill": bill, "component_ids": ids, "amended": amended}
+	return bill
 
 
 ## "BO05+; BO09-": the organizations the bill helps and hurts, in the form
@@ -101,7 +109,9 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 			template = candidate
 	var owner_tier := str(DataDB.get_booster(str(row.get("organization", ""))).get("tier", ""))
 	var visit := build_visit(template, bill, rng)
-	var stages := LevelTemplate.stages(template, str(bill.get("hearing_stage", "")), owner_tier, not visit.is_empty())
+	var trade := build_trade(template, row, bill, rng)
+	var stages := LevelTemplate.stages(template, str(bill.get("hearing_stage", "")), owner_tier,
+			not visit.is_empty(), not trade.is_empty())
 	if stages.is_empty():
 		return {}
 	stages[stages.size() - 1] = str(bill.get("bill_id", ""))
@@ -113,6 +123,8 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 	}
 	if not visit.is_empty():
 		level["visit"] = visit
+	if not trade.is_empty():
+		level["trade"] = trade
 	for index in range(stages.size()):
 		level["stage_%d" % (index + 1)] = stages[index]
 	return level
@@ -154,6 +166,84 @@ static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumbe
 		"party_id": party_id, "party_name": str(party.get("name", "")),
 		"opp_id": str(member.get("opp_id", "")), "member_name": str(member.get("name", "")),
 		"questions": questions, "rapport": 0, "taken": false, "won": false,
+	}
+
+
+## True when a full-strength player (every influence gate open) could still
+## carry `bill`, and the bill does not pass without influence. Used to offer
+## only trades that leave the bill winnable.
+static func carryable(bill: Dictionary) -> bool:
+	var resistance := {}
+	for party: Dictionary in DataDB.parties:
+		if party.get("vote_resistance") != null:
+			resistance[str(party.get("name", ""))] = int(party["vote_resistance"])
+	var player_party := str(DataDB.player.get("party", ""))
+	if player_party.is_empty():
+		player_party = str((DataDB.parties[0] as Dictionary).get("name", ""))
+	var alone := FloorVoteEngine.new()
+	if not alone.setup({"bill": bill.duplicate(true), "player_party": player_party}):
+		return false
+	if bool(alone.choose("Yes").get("passed", false)):
+		return false
+	var carried := FloorVoteEngine.new()
+	carried.setup({
+		"bill": bill.duplicate(true), "player_party": player_party, "meta": {"Reputation": 100},
+		"triggers": [{"variable": "Reputation", "enabled": "Yes", "threshold": 1}],
+		"resistance_by_party": resistance,
+		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
+	})
+	return bool(carried.choose("Yes").get("passed", false))
+
+
+## The components the player may trade away: each one whose removal leaves a
+## bill that is still carryable.
+static func safe_drops(patron_bill_id: String, ids: Array) -> Array:
+	var out: Array = []
+	for dropped: Variant in LobbyistTrade.drop_options(ids):
+		var rest := ids.duplicate()
+		rest.erase(dropped)
+		if carryable(compose_ids(patron_bill_id, rest)):
+			out.append(dropped)
+	return out
+
+
+## The lobbyist's trade for a level built from `template`, or {} when the
+## template has none or no organization the bill hurts has a representative.
+## The lobbyist, the component they most want gone and the negotiation
+## questions are drawn now and kept with the level (the dropped component's
+## words are filled in when the player chooses it).
+static func build_trade(template: Dictionary, row: Dictionary, bill: Dictionary,
+		rng: RandomNumberGenerator) -> Dictionary:
+	var has_token := false
+	for slot in range(1, LevelTemplate.MAX_SLOTS + 1):
+		if str(template.get("stage_%d" % slot, "")) == "LOBBYIST_TRADE":
+			has_token = true
+	var drops := safe_drops(str(row.get("patron_bill_id", "")), bill.get("component_ids", []) as Array) if has_token else []
+	if drops.is_empty():
+		return {}
+	var lobbyists: Array = []
+	for opponent: Dictionary in DataDB.opponents:
+		var party: Variant = opponent.get("party")
+		var role := str(opponent.get("role", ""))
+		if (party == null or str(party).strip_edges().is_empty()) and opponent.get("affiliation") != null \
+				and role != "Journalist" and role != "Constituent":
+			lobbyists.append(opponent)
+	var ally := str(row.get("ally", "")) if row.get("ally") != null else ""
+	var picked := LobbyistTrade.pick_lobbyist(bill.get("effects", []) as Array, str(row.get("organization", "")),
+			ally, lobbyists, GameState.faced_people, rng)
+	if picked.is_empty():
+		return {}
+	var lobbyist: Dictionary = picked["lobbyist"]
+	var asked := LobbyistTrade.asked_component(bill.get("component_ids", []) as Array,
+			ComposedBill.index(DataDB.bill_components), str(picked["org"]))
+	var questions := MpVisit.build_questions(lobbyist, DataDB.trade_questions, DataDB.visit_answers,
+			int(DataDB.balance.get("trade_rounds", 3)), "{component}", rng)
+	if questions.is_empty():
+		return {}
+	return {
+		"org": str(picked["org"]), "opp_id": str(lobbyist.get("opp_id", "")),
+		"lobbyist_name": str(lobbyist.get("name", "")), "asked": asked, "drops": drops,
+		"questions": questions, "done": false, "deal": false,
 	}
 
 
