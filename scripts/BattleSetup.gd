@@ -91,7 +91,10 @@ static func expand_level(level: Dictionary) -> Dictionary:
 ## sequence can hold either kind of thing in any slot (2026-09-27 pull);
 ## this is the one place both this file and DataDB.gd tell them apart.
 static func _is_bill_id(value: String) -> bool:
-	return value.begins_with("BI") and value.length() > 2 and value.substr(2).is_valid_int()
+	if value.begins_with("BI") and value.length() > 2 and value.substr(2).is_valid_int():
+		return true
+	# A composed (patron) bill registered for this run.
+	return not DataDB.component_ids_of(value).is_empty()
 
 
 ## Enriches a bare stages.json row into a battle/visitor-ready stage dict —

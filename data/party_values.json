@@ -1,0 +1,1430 @@
+[
+  {
+    "party_id": "PT01",
+    "dimension": "Civil Liberties",
+    "value": 4,
+    "priority": 1,
+    "salience": 4
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Democratic Norms",
+    "value": 20,
+    "priority": 1,
+    "salience": 20
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Ethnic Pluralism",
+    "value": 3,
+    "priority": 1,
+    "salience": 3
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Judicial Independence",
+    "value": -16,
+    "priority": 2,
+    "salience": -32
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Minority Rights",
+    "value": 21,
+    "priority": 3,
+    "salience": 63
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Religious Traditionalism",
+    "value": 22,
+    "priority": 4,
+    "salience": 88
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Regulation",
+    "value": 17,
+    "priority": 3,
+    "salience": 51
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Gender Equality",
+    "value": 21,
+    "priority": 3,
+    "salience": 63
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Immigration",
+    "value": 14,
+    "priority": 2,
+    "salience": 28
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Clientelism",
+    "value": 16,
+    "priority": 2,
+    "salience": 32
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Federal Spending",
+    "value": 16,
+    "priority": 2,
+    "salience": 32
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Taxation",
+    "value": 9,
+    "priority": 1,
+    "salience": 9
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Leadership Interest",
+    "value": -5,
+    "priority": 2,
+    "salience": -10
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Economic Liberalization",
+    "value": -15,
+    "priority": 1,
+    "salience": -15
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Liberal Rights",
+    "value": 15,
+    "priority": 1,
+    "salience": 15
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Traditional Values",
+    "value": 8,
+    "priority": 4,
+    "salience": 32
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Militarism",
+    "value": -38,
+    "priority": 1,
+    "salience": -38
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Rural Focus",
+    "value": -8,
+    "priority": 4,
+    "salience": -32
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Localism",
+    "value": -7,
+    "priority": 3,
+    "salience": -21
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Technocratic",
+    "value": -13,
+    "priority": 1,
+    "salience": -13
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Globalism",
+    "value": 11,
+    "priority": 2,
+    "salience": 22
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Ainu Enhancement",
+    "value": 3,
+    "priority": 1,
+    "salience": 3
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Environmentalism",
+    "value": 30,
+    "priority": 4,
+    "salience": 120
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Agrarianism",
+    "value": 26,
+    "priority": 4,
+    "salience": 104
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Industrialism",
+    "value": -8,
+    "priority": 2,
+    "salience": -16
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Post-Industrialism",
+    "value": 12,
+    "priority": 2,
+    "salience": 24
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Unification with Japan Desire",
+    "value": 11,
+    "priority": 2,
+    "salience": 22
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "USA Alignment",
+    "value": 2,
+    "priority": 1,
+    "salience": 2
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Europe Alignment",
+    "value": 6,
+    "priority": 1,
+    "salience": 6
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "China Alignment",
+    "value": -3,
+    "priority": 3,
+    "salience": -9
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Non-China Asia Alignment",
+    "value": 18,
+    "priority": 3,
+    "salience": 54
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Modern Russia Alignment",
+    "value": -15,
+    "priority": 1,
+    "salience": -15
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "USSR Alignment",
+    "value": -30,
+    "priority": 2,
+    "salience": -60
+  },
+  {
+    "party_id": "PT01",
+    "dimension": "Japan Alignment",
+    "value": 16,
+    "priority": 2,
+    "salience": 32
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Civil Liberties",
+    "value": -4,
+    "priority": 1,
+    "salience": -4
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Democratic Norms",
+    "value": -5,
+    "priority": 2,
+    "salience": -10
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Ethnic Pluralism",
+    "value": -13,
+    "priority": 2,
+    "salience": -26
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Judicial Independence",
+    "value": -8,
+    "priority": 1,
+    "salience": -8
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Minority Rights",
+    "value": -7,
+    "priority": 1,
+    "salience": -7
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Religious Traditionalism",
+    "value": 6,
+    "priority": 1,
+    "salience": 6
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Regulation",
+    "value": -8,
+    "priority": 3,
+    "salience": -24
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Gender Equality",
+    "value": -7,
+    "priority": 2,
+    "salience": -14
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Immigration",
+    "value": -34,
+    "priority": 4,
+    "salience": -136
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Clientelism",
+    "value": 8,
+    "priority": 2,
+    "salience": 16
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Federal Spending",
+    "value": -25,
+    "priority": 5,
+    "salience": -125
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Taxation",
+    "value": -23,
+    "priority": 5,
+    "salience": -115
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Leadership Interest",
+    "value": 17,
+    "priority": 4,
+    "salience": 68
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Economic Liberalization",
+    "value": 16,
+    "priority": 1,
+    "salience": 16
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Liberal Rights",
+    "value": -6,
+    "priority": 5,
+    "salience": -30
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Traditional Values",
+    "value": 13,
+    "priority": 5,
+    "salience": 65
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Militarism",
+    "value": 4,
+    "priority": 1,
+    "salience": 4
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Rural Focus",
+    "value": 11,
+    "priority": 3,
+    "salience": 33
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Localism",
+    "value": -4,
+    "priority": 3,
+    "salience": -12
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Technocratic",
+    "value": -17,
+    "priority": 2,
+    "salience": -34
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Globalism",
+    "value": -10,
+    "priority": 1,
+    "salience": -10
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Ainu Enhancement",
+    "value": -13,
+    "priority": 2,
+    "salience": -26
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Environmentalism",
+    "value": -20,
+    "priority": 1,
+    "salience": -20
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Agrarianism",
+    "value": 3,
+    "priority": 4,
+    "salience": 12
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Industrialism",
+    "value": 34,
+    "priority": 4,
+    "salience": 136
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Post-Industrialism",
+    "value": -11,
+    "priority": 2,
+    "salience": -22
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Unification with Japan Desire",
+    "value": 21,
+    "priority": 2,
+    "salience": 42
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "USA Alignment",
+    "value": -6,
+    "priority": 5,
+    "salience": -30
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Europe Alignment",
+    "value": -13,
+    "priority": 2,
+    "salience": -26
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "China Alignment",
+    "value": -19,
+    "priority": 4,
+    "salience": -76
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Non-China Asia Alignment",
+    "value": -10,
+    "priority": 2,
+    "salience": -20
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Modern Russia Alignment",
+    "value": -31,
+    "priority": 1,
+    "salience": -31
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "USSR Alignment",
+    "value": -28,
+    "priority": 3,
+    "salience": -84
+  },
+  {
+    "party_id": "PT06",
+    "dimension": "Japan Alignment",
+    "value": 9,
+    "priority": 3,
+    "salience": 27
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Civil Liberties",
+    "value": 9,
+    "priority": 1,
+    "salience": 9
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Democratic Norms",
+    "value": 40,
+    "priority": 0,
+    "salience": 0
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Ethnic Pluralism",
+    "value": 3,
+    "priority": 3,
+    "salience": 9
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Judicial Independence",
+    "value": 6,
+    "priority": 4,
+    "salience": 24
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Minority Rights",
+    "value": 13,
+    "priority": 2,
+    "salience": 26
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Religious Traditionalism",
+    "value": 5,
+    "priority": 3,
+    "salience": 15
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Regulation",
+    "value": 18,
+    "priority": 2,
+    "salience": 36
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Gender Equality",
+    "value": 13,
+    "priority": 1,
+    "salience": 13
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Immigration",
+    "value": 9,
+    "priority": 1,
+    "salience": 9
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Clientelism",
+    "value": 36,
+    "priority": 5,
+    "salience": 180
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Federal Spending",
+    "value": 16,
+    "priority": 3,
+    "salience": 48
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Taxation",
+    "value": 0,
+    "priority": 1,
+    "salience": 0
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Leadership Interest",
+    "value": 0,
+    "priority": 3,
+    "salience": 0
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Economic Liberalization",
+    "value": 16,
+    "priority": 3,
+    "salience": 48
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Liberal Rights",
+    "value": 10,
+    "priority": 1,
+    "salience": 10
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Traditional Values",
+    "value": -10,
+    "priority": 2,
+    "salience": -20
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Militarism",
+    "value": 3,
+    "priority": 1,
+    "salience": 3
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Rural Focus",
+    "value": 0,
+    "priority": 2,
+    "salience": 0
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Localism",
+    "value": 35,
+    "priority": 3,
+    "salience": 105
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Technocratic",
+    "value": -15,
+    "priority": 1,
+    "salience": -15
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Globalism",
+    "value": 0,
+    "priority": 1,
+    "salience": 0
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Ainu Enhancement",
+    "value": -28,
+    "priority": 1,
+    "salience": -28
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Environmentalism",
+    "value": 0,
+    "priority": 3,
+    "salience": 0
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Agrarianism",
+    "value": 7,
+    "priority": 2,
+    "salience": 14
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Industrialism",
+    "value": -4,
+    "priority": 2,
+    "salience": -8
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Post-Industrialism",
+    "value": 12,
+    "priority": 2,
+    "salience": 24
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Unification with Japan Desire",
+    "value": 5,
+    "priority": 1,
+    "salience": 5
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "USA Alignment",
+    "value": 0,
+    "priority": 1,
+    "salience": 0
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Europe Alignment",
+    "value": -5,
+    "priority": 1,
+    "salience": -5
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "China Alignment",
+    "value": -10,
+    "priority": 1,
+    "salience": -10
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Non-China Asia Alignment",
+    "value": 0,
+    "priority": 1,
+    "salience": 0
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Modern Russia Alignment",
+    "value": -10,
+    "priority": 1,
+    "salience": -10
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "USSR Alignment",
+    "value": -15,
+    "priority": 1,
+    "salience": -15
+  },
+  {
+    "party_id": "PT04",
+    "dimension": "Japan Alignment",
+    "value": 10,
+    "priority": 1,
+    "salience": 10
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Civil Liberties",
+    "value": 12,
+    "priority": 1,
+    "salience": 12
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Democratic Norms",
+    "value": 34,
+    "priority": 2,
+    "salience": 68
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Ethnic Pluralism",
+    "value": -11,
+    "priority": 1,
+    "salience": -11
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Judicial Independence",
+    "value": -8,
+    "priority": 3,
+    "salience": -24
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Minority Rights",
+    "value": 24,
+    "priority": 3,
+    "salience": 72
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Religious Traditionalism",
+    "value": 12,
+    "priority": 2,
+    "salience": 24
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Regulation",
+    "value": 6,
+    "priority": 4,
+    "salience": 24
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Gender Equality",
+    "value": 24,
+    "priority": 2,
+    "salience": 48
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Immigration",
+    "value": 8,
+    "priority": 3,
+    "salience": 24
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Clientelism",
+    "value": 20,
+    "priority": 3,
+    "salience": 60
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Federal Spending",
+    "value": 23,
+    "priority": 5,
+    "salience": 115
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Taxation",
+    "value": -10,
+    "priority": 4,
+    "salience": -40
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Leadership Interest",
+    "value": 14,
+    "priority": 4,
+    "salience": 56
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Economic Liberalization",
+    "value": 7,
+    "priority": 4,
+    "salience": 28
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Liberal Rights",
+    "value": 14,
+    "priority": 4,
+    "salience": 56
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Traditional Values",
+    "value": -4,
+    "priority": 2,
+    "salience": -8
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Militarism",
+    "value": 0,
+    "priority": 1,
+    "salience": 0
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Rural Focus",
+    "value": 37,
+    "priority": 5,
+    "salience": 185
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Localism",
+    "value": 16,
+    "priority": 4,
+    "salience": 64
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Technocratic",
+    "value": 6,
+    "priority": 3,
+    "salience": 18
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Globalism",
+    "value": 6,
+    "priority": 2,
+    "salience": 12
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Ainu Enhancement",
+    "value": -7,
+    "priority": 2,
+    "salience": -14
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Environmentalism",
+    "value": -5,
+    "priority": 5,
+    "salience": -25
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Agrarianism",
+    "value": 42,
+    "priority": 5,
+    "salience": 210
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Industrialism",
+    "value": -11,
+    "priority": 3,
+    "salience": -33
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Post-Industrialism",
+    "value": -4,
+    "priority": 3,
+    "salience": -12
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Unification with Japan Desire",
+    "value": -4,
+    "priority": 1,
+    "salience": -4
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "USA Alignment",
+    "value": -4,
+    "priority": 3,
+    "salience": -12
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Europe Alignment",
+    "value": -6,
+    "priority": 1,
+    "salience": -6
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "China Alignment",
+    "value": -14,
+    "priority": 3,
+    "salience": -42
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Non-China Asia Alignment",
+    "value": 4,
+    "priority": 3,
+    "salience": 12
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Modern Russia Alignment",
+    "value": -12,
+    "priority": 1,
+    "salience": -12
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "USSR Alignment",
+    "value": -8,
+    "priority": 1,
+    "salience": -8
+  },
+  {
+    "party_id": "PT03",
+    "dimension": "Japan Alignment",
+    "value": 6,
+    "priority": 2,
+    "salience": 12
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Civil Liberties",
+    "value": 22,
+    "priority": 3,
+    "salience": 66
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Democratic Norms",
+    "value": 12,
+    "priority": 3,
+    "salience": 36
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Ethnic Pluralism",
+    "value": 6,
+    "priority": 3,
+    "salience": 18
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Judicial Independence",
+    "value": 26,
+    "priority": 1,
+    "salience": 26
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Minority Rights",
+    "value": 9,
+    "priority": 2,
+    "salience": 18
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Religious Traditionalism",
+    "value": 6,
+    "priority": 1,
+    "salience": 6
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Regulation",
+    "value": -45,
+    "priority": 5,
+    "salience": -225
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Gender Equality",
+    "value": 14,
+    "priority": 1,
+    "salience": 14
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Immigration",
+    "value": -2,
+    "priority": 1,
+    "salience": -2
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Clientelism",
+    "value": 9,
+    "priority": 1,
+    "salience": 9
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Federal Spending",
+    "value": 6,
+    "priority": 5,
+    "salience": 30
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Taxation",
+    "value": -5,
+    "priority": 5,
+    "salience": -25
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Leadership Interest",
+    "value": 35,
+    "priority": 5,
+    "salience": 175
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Economic Liberalization",
+    "value": 30,
+    "priority": 5,
+    "salience": 150
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Liberal Rights",
+    "value": 10,
+    "priority": 2,
+    "salience": 20
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Traditional Values",
+    "value": -6,
+    "priority": 1,
+    "salience": -6
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Militarism",
+    "value": -3,
+    "priority": 1,
+    "salience": -3
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Rural Focus",
+    "value": -22,
+    "priority": 2,
+    "salience": -44
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Localism",
+    "value": -14,
+    "priority": 3,
+    "salience": -42
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Technocratic",
+    "value": -10,
+    "priority": 4,
+    "salience": -40
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Globalism",
+    "value": 14,
+    "priority": 5,
+    "salience": 70
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Ainu Enhancement",
+    "value": -20,
+    "priority": 1,
+    "salience": -20
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Environmentalism",
+    "value": -14,
+    "priority": 2,
+    "salience": -28
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Agrarianism",
+    "value": -8,
+    "priority": 1,
+    "salience": -8
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Industrialism",
+    "value": 13,
+    "priority": 3,
+    "salience": 39
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Post-Industrialism",
+    "value": 22,
+    "priority": 5,
+    "salience": 110
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Unification with Japan Desire",
+    "value": -12,
+    "priority": 3,
+    "salience": -36
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "USA Alignment",
+    "value": 17,
+    "priority": 3,
+    "salience": 51
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Europe Alignment",
+    "value": 17,
+    "priority": 2,
+    "salience": 34
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "China Alignment",
+    "value": -10,
+    "priority": 4,
+    "salience": -40
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Non-China Asia Alignment",
+    "value": 1,
+    "priority": 2,
+    "salience": 2
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Modern Russia Alignment",
+    "value": -8,
+    "priority": 1,
+    "salience": -8
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "USSR Alignment",
+    "value": -24,
+    "priority": 4,
+    "salience": -96
+  },
+  {
+    "party_id": "PT05",
+    "dimension": "Japan Alignment",
+    "value": -6,
+    "priority": 3,
+    "salience": -18
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Civil Liberties",
+    "value": -18,
+    "priority": 1,
+    "salience": -18
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Democratic Norms",
+    "value": 9,
+    "priority": 1,
+    "salience": 9
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Ethnic Pluralism",
+    "value": 20,
+    "priority": 4,
+    "salience": 80
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Judicial Independence",
+    "value": -23,
+    "priority": 2,
+    "salience": -46
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Minority Rights",
+    "value": 6,
+    "priority": 1,
+    "salience": 6
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Religious Traditionalism",
+    "value": 12,
+    "priority": 1,
+    "salience": 12
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Regulation",
+    "value": 2,
+    "priority": 1,
+    "salience": 2
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Gender Equality",
+    "value": 4,
+    "priority": 1,
+    "salience": 4
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Immigration",
+    "value": -20,
+    "priority": 1,
+    "salience": -20
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Clientelism",
+    "value": 11,
+    "priority": 2,
+    "salience": 22
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Federal Spending",
+    "value": 22,
+    "priority": 3,
+    "salience": 66
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Taxation",
+    "value": 7,
+    "priority": 1,
+    "salience": 7
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Leadership Interest",
+    "value": -12,
+    "priority": 3,
+    "salience": -36
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Economic Liberalization",
+    "value": -7,
+    "priority": 2,
+    "salience": -14
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Liberal Rights",
+    "value": 4,
+    "priority": 1,
+    "salience": 4
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Traditional Values",
+    "value": 6,
+    "priority": 4,
+    "salience": 24
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Militarism",
+    "value": -28,
+    "priority": 1,
+    "salience": -28
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Rural Focus",
+    "value": 21,
+    "priority": 5,
+    "salience": 105
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Localism",
+    "value": 22,
+    "priority": 4,
+    "salience": 88
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Technocratic",
+    "value": -22,
+    "priority": 1,
+    "salience": -22
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Globalism",
+    "value": -10,
+    "priority": 2,
+    "salience": -20
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Ainu Enhancement",
+    "value": 39,
+    "priority": 5,
+    "salience": 195
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Environmentalism",
+    "value": 15,
+    "priority": 4,
+    "salience": 60
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Agrarianism",
+    "value": 20,
+    "priority": 5,
+    "salience": 100
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Industrialism",
+    "value": 3,
+    "priority": 2,
+    "salience": 6
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Post-Industrialism",
+    "value": 5,
+    "priority": 1,
+    "salience": 5
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Unification with Japan Desire",
+    "value": -27,
+    "priority": 3,
+    "salience": -81
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "USA Alignment",
+    "value": -1,
+    "priority": 1,
+    "salience": -1
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Europe Alignment",
+    "value": -2,
+    "priority": 1,
+    "salience": -2
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "China Alignment",
+    "value": -6,
+    "priority": 1,
+    "salience": -6
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Non-China Asia Alignment",
+    "value": 2,
+    "priority": 2,
+    "salience": 4
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Modern Russia Alignment",
+    "value": -14,
+    "priority": 1,
+    "salience": -14
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "USSR Alignment",
+    "value": -10,
+    "priority": 1,
+    "salience": -10
+  },
+  {
+    "party_id": "PT02",
+    "dimension": "Japan Alignment",
+    "value": -25,
+    "priority": 1,
+    "salience": -25
+  }
+]

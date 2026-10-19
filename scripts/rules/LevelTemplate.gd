@@ -1,0 +1,45 @@
+class_name LevelTemplate
+extends RefCounted
+## Turns a Bill Level Template row (data/bill_level_templates.json) and a
+## composed bill into an ordered list of real stage ids (2026-10-19). The
+## template names families, not stages: a meeting with the patron, the
+## committee hearing for the bill's lead component, a public room, your own
+## caucus, the floor vote. The stage numbers come from the generic rooms of
+## those families, the same rooms the bill-specific copies were cloned from, so
+## the existing bot trials apply.
+##
+## Pure and UI-free (CLAUDE.md section 12).
+
+## Token -> generic room. HEARING and PUBLIC are decided per bill (below).
+const FIXED := {
+	"PATRON_MEETING": "ST20",
+	"CAUCUS": "ST03",
+	"STEERING": "ST08",
+	"VOTE": "ST23",
+}
+const PUBLIC_BY_TIER := {"Constituency": "ST05", "National": "ST04"}
+const MAX_SLOTS := 10
+
+
+## `hearing_stage` is the lead component's committee; `owner_tier` is the
+## patron organization's Boosters-tab tier. Returns [] when a token cannot be
+## resolved, so a half-written template never produces a broken level.
+static func stages(template: Dictionary, hearing_stage: String, owner_tier: String) -> Array:
+	var out: Array = []
+	for slot in range(1, MAX_SLOTS + 1):
+		var token: Variant = template.get("stage_%d" % slot)
+		if token == null or str(token).strip_edges().is_empty():
+			continue
+		var stage_id := _resolve(str(token).strip_edges(), hearing_stage, owner_tier)
+		if stage_id.is_empty():
+			return []
+		out.append(stage_id)
+	return out
+
+
+static func _resolve(token: String, hearing_stage: String, owner_tier: String) -> String:
+	if token == "HEARING":
+		return hearing_stage
+	if token == "PUBLIC":
+		return str(PUBLIC_BY_TIER.get(owner_tier, ""))
+	return str(FIXED.get(token, ""))

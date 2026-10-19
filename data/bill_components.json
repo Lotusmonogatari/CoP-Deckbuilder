@@ -1,0 +1,4502 @@
+[
+  {
+    "component_id": "CB031",
+    "owner": "BO03",
+    "slot": "X",
+    "short_label": "Raise allowances for district offices",
+    "phrase": "raise allowances for district offices",
+    "description": "Would raise allowances for district offices.",
+    "hearing_stage": "ST12",
+    "value_tags": "Federal Spending +0.6; Localism +0.6; Clientelism +0.4",
+    "gains": [
+      {
+        "target": "BO03",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB032",
+    "owner": "BO03",
+    "slot": "Y",
+    "short_label": "Ease the rules on constituent gatherings",
+    "phrase": "ease the rules on constituent gatherings",
+    "description": "Would ease the rules on constituent gatherings.",
+    "hearing_stage": "ST12",
+    "value_tags": "Localism +0.6; Regulation -0.4",
+    "gains": [
+      {
+        "target": "BO03",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB035",
+    "owner": "BO03",
+    "slot": "V",
+    "short_label": "Let district offices hold open town days",
+    "phrase": "let district offices hold open town days",
+    "description": "Would let district offices hold open town days.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.6",
+    "gains": [
+      {
+        "target": "BO03",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB033",
+    "owner": "BO03",
+    "slot": "Z",
+    "short_label": "Create a constituency development fund",
+    "phrase": "create a constituency development fund",
+    "description": "Would create a constituency development fund.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.9; Clientelism +0.7; Localism +0.5",
+    "gains": [
+      {
+        "target": "BO03",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB034",
+    "owner": "BO03",
+    "slot": "W",
+    "short_label": "Fund district office staff training",
+    "phrase": "fund district office staff training",
+    "description": "Would fund district office staff training.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.5; Technocratic +0.3",
+    "gains": [
+      {
+        "target": "BO03",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB036",
+    "owner": "BO03",
+    "slot": "A",
+    "short_label": "Fund district offices that help citizens file paperwork",
+    "phrase": "fund district offices that help citizens file paperwork",
+    "description": "Would fund district offices that help citizens file paperwork.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.6; Technocratic +0.3",
+    "gains": [
+      {
+        "target": "BO03",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB037",
+    "owner": "BO03",
+    "slot": "B",
+    "short_label": "Publish a directory of district services",
+    "phrase": "publish a directory of district services",
+    "description": "Would publish a directory of district services.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.5; Democratic Norms +0.3",
+    "gains": [
+      {
+        "target": "BO03",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB041",
+    "owner": "BO04",
+    "slot": "X",
+    "short_label": "Give towns unconditional block grants",
+    "phrase": "give towns unconditional block grants",
+    "description": "Would give towns unconditional block grants.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +1; Federal Spending +0.6",
+    "gains": [
+      {
+        "target": "BO04",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB042",
+    "owner": "BO04",
+    "slot": "Y",
+    "short_label": "Let towns borrow for local projects",
+    "phrase": "let towns borrow for local projects",
+    "description": "Would let towns borrow for local projects.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.8; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO04",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB045",
+    "owner": "BO04",
+    "slot": "V",
+    "short_label": "Fund town planning staff",
+    "phrase": "fund town planning staff",
+    "description": "Would fund town planning staff.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.5; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO04",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB043",
+    "owner": "BO04",
+    "slot": "Z",
+    "short_label": "Give towns their own tax-setting powers",
+    "phrase": "give towns their own tax-setting powers",
+    "description": "Would give towns their own tax-setting powers.",
+    "hearing_stage": "ST16",
+    "value_tags": "Localism +1; Taxation +0.3",
+    "gains": [
+      {
+        "target": "BO04",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB044",
+    "owner": "BO04",
+    "slot": "W",
+    "short_label": "Let towns merge services across borders",
+    "phrase": "let towns merge services across borders",
+    "description": "Would let towns merge services across borders.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.7; Technocratic +0.3",
+    "gains": [
+      {
+        "target": "BO04",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB051",
+    "owner": "BO05",
+    "slot": "X",
+    "short_label": "Cut the corporate tax rate",
+    "phrase": "cut the corporate tax rate",
+    "description": "Would cut the corporate tax rate.",
+    "hearing_stage": "ST16",
+    "value_tags": "Taxation -1; Economic Liberalization +0.7",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB052",
+    "owner": "BO05",
+    "slot": "Y",
+    "short_label": "Simplify business licensing",
+    "phrase": "simplify business licensing",
+    "description": "Would simplify business licensing.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation -0.8; Economic Liberalization +0.5",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB055",
+    "owner": "BO05",
+    "slot": "V",
+    "short_label": "End paper filing for company registration",
+    "phrase": "end paper filing for company registration",
+    "description": "Would end paper filing for company registration.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation -0.6; Technocratic +0.4",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB053",
+    "owner": "BO05",
+    "slot": "Z",
+    "short_label": "Open special economic zones",
+    "phrase": "open special economic zones",
+    "description": "Would open special economic zones.",
+    "hearing_stage": "ST16",
+    "value_tags": "Economic Liberalization +1; Globalism +0.5; Industrialism +0.4",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB054",
+    "owner": "BO05",
+    "slot": "W",
+    "short_label": "Speed up customs clearance at Hokkaido ports",
+    "phrase": "speed up customs clearance at Hokkaido ports",
+    "description": "Would speed up customs clearance at Hokkaido ports.",
+    "hearing_stage": "ST14",
+    "value_tags": "Globalism +0.6; Regulation -0.5; Economic Liberalization +0.5",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB056",
+    "owner": "BO05",
+    "slot": "A",
+    "short_label": "Open a single window for business permits",
+    "phrase": "open a single window for business permits",
+    "description": "Would open a single window for business permits.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation -0.4; Technocratic +0.5; Democratic Norms +0.2",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB057",
+    "owner": "BO05",
+    "slot": "B",
+    "short_label": "Let businesses take on apprentices without extra forms",
+    "phrase": "let businesses take on apprentices without extra forms",
+    "description": "Would let businesses take on apprentices without extra forms.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation -0.5; Economic Liberalization +0.3",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB058",
+    "owner": "BO05",
+    "slot": "C",
+    "short_label": "Give new firms a tax holiday in their first year",
+    "phrase": "give new firms a tax holiday in their first year",
+    "description": "Would give new firms a tax holiday in their first year.",
+    "hearing_stage": "ST16",
+    "value_tags": "Taxation -0.6; Economic Liberalization +0.4",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB059",
+    "owner": "BO05",
+    "slot": "D",
+    "short_label": "Guarantee payment within sixty days on public contracts",
+    "phrase": "guarantee payment within sixty days on public contracts",
+    "description": "Would guarantee payment within sixty days on public contracts.",
+    "hearing_stage": "ST16",
+    "value_tags": "Technocratic +0.5; Democratic Norms +0.3",
+    "gains": [
+      {
+        "target": "BO05",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB061",
+    "owner": "BO06",
+    "slot": "X",
+    "short_label": "Fund repairs to community halls",
+    "phrase": "fund repairs to community halls",
+    "description": "Would fund repairs to community halls.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.5; Localism +0.7",
+    "gains": [
+      {
+        "target": "BO06",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB062",
+    "owner": "BO06",
+    "slot": "Y",
+    "short_label": "Support neighborhood watch groups",
+    "phrase": "support neighborhood watch groups",
+    "description": "Would support neighborhood watch groups.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.6; Traditional Values +0.3",
+    "gains": [
+      {
+        "target": "BO06",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB065",
+    "owner": "BO06",
+    "slot": "V",
+    "short_label": "Fund street lighting in residential blocks",
+    "phrase": "fund street lighting in residential blocks",
+    "description": "Would fund street lighting in residential blocks.",
+    "hearing_stage": "ST15",
+    "value_tags": "Localism +0.4; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO06",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB063",
+    "owner": "BO06",
+    "slot": "Z",
+    "short_label": "Give neighborhood associations legal standing in planning",
+    "phrase": "give neighborhood associations legal standing in planning",
+    "description": "Would give neighborhood associations legal standing in planning.",
+    "hearing_stage": "ST15",
+    "value_tags": "Localism +1; Regulation +0.4",
+    "gains": [
+      {
+        "target": "BO06",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB064",
+    "owner": "BO06",
+    "slot": "W",
+    "short_label": "Give neighborhood associations a seat on planning boards",
+    "phrase": "give neighborhood associations a seat on planning boards",
+    "description": "Would give neighborhood associations a seat on planning boards.",
+    "hearing_stage": "ST15",
+    "value_tags": "Localism +0.8; Democratic Norms +0.4",
+    "gains": [
+      {
+        "target": "BO06",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB066",
+    "owner": "BO06",
+    "slot": "A",
+    "short_label": "Fund neighborhood cleanup days",
+    "phrase": "fund neighborhood cleanup days",
+    "description": "Would fund neighborhood cleanup days.",
+    "hearing_stage": "ST10",
+    "value_tags": "Localism +0.5; Environmentalism +0.3",
+    "gains": [
+      {
+        "target": "BO06",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB067",
+    "owner": "BO06",
+    "slot": "B",
+    "short_label": "Let neighborhood associations run small local grants",
+    "phrase": "let neighborhood associations run small local grants",
+    "description": "Would let neighborhood associations run small local grants.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.7",
+    "gains": [
+      {
+        "target": "BO06",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB071",
+    "owner": "BO07",
+    "slot": "X",
+    "short_label": "Fund harbor repairs",
+    "phrase": "fund harbor repairs",
+    "description": "Would fund harbor repairs.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.6; Rural Focus +0.7",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB072",
+    "owner": "BO07",
+    "slot": "Y",
+    "short_label": "Subsidize fuel for fishing boats",
+    "phrase": "subsidize fuel for fishing boats",
+    "description": "Would subsidize fuel for fishing boats.",
+    "hearing_stage": "ST13",
+    "value_tags": "Federal Spending +0.6; Agrarianism +0.5; Environmentalism -0.4",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB075",
+    "owner": "BO07",
+    "slot": "V",
+    "short_label": "Fund new cold storage at fishing ports",
+    "phrase": "fund new cold storage at fishing ports",
+    "description": "Would fund new cold storage at fishing ports.",
+    "hearing_stage": "ST13",
+    "value_tags": "Federal Spending +0.5; Rural Focus +0.5",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB073",
+    "owner": "BO07",
+    "slot": "Z",
+    "short_label": "Hold fishing quotas through local cooperatives",
+    "phrase": "hold fishing quotas through local cooperatives",
+    "description": "Would hold fishing quotas through local cooperatives.",
+    "hearing_stage": "ST13",
+    "value_tags": "Localism +0.7; Economic Liberalization -0.5; Rural Focus +0.5",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB074",
+    "owner": "BO07",
+    "slot": "W",
+    "short_label": "Set up a fisheries disaster relief fund",
+    "phrase": "set up a fisheries disaster relief fund",
+    "description": "Would set up a fisheries disaster relief fund.",
+    "hearing_stage": "ST13",
+    "value_tags": "Federal Spending +0.6; Rural Focus +0.6",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB076",
+    "owner": "BO07",
+    "slot": "A",
+    "short_label": "Protect coastal fishing grounds from industrial dumping",
+    "phrase": "protect coastal fishing grounds from industrial dumping",
+    "description": "Would protect coastal fishing grounds from industrial dumping.",
+    "hearing_stage": "ST10",
+    "value_tags": "Environmentalism +0.7; Rural Focus +0.4",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB077",
+    "owner": "BO07",
+    "slot": "B",
+    "short_label": "Support direct sales of catch to local markets",
+    "phrase": "support direct sales of catch to local markets",
+    "description": "Would support direct sales of catch to local markets.",
+    "hearing_stage": "ST13",
+    "value_tags": "Localism +0.5; Rural Focus +0.5",
+    "gains": [
+      {
+        "target": "BO07",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB081",
+    "owner": "BO08",
+    "slot": "X",
+    "short_label": "Strengthen freedom of information requests",
+    "phrase": "strengthen freedom of information requests",
+    "description": "Would strengthen freedom of information requests.",
+    "hearing_stage": "ST17",
+    "value_tags": "Civil Liberties +0.8; Democratic Norms +0.6",
+    "gains": [
+      {
+        "target": "BO08",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB082",
+    "owner": "BO08",
+    "slot": "Y",
+    "short_label": "Protect reporters' confidential sources",
+    "phrase": "protect reporters' confidential sources",
+    "description": "Would protect reporters' confidential sources.",
+    "hearing_stage": "ST09",
+    "value_tags": "Civil Liberties +1; Judicial Independence +0.3",
+    "gains": [
+      {
+        "target": "BO08",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB085",
+    "owner": "BO08",
+    "slot": "V",
+    "short_label": "Protect journalists from lawsuits meant to silence them",
+    "phrase": "protect journalists from lawsuits meant to silence them",
+    "description": "Would protect journalists from lawsuits meant to silence them.",
+    "hearing_stage": "ST09",
+    "value_tags": "Civil Liberties +0.8; Judicial Independence +0.3",
+    "gains": [
+      {
+        "target": "BO08",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB083",
+    "owner": "BO08",
+    "slot": "Z",
+    "short_label": "Open every committee hearing to the press",
+    "phrase": "open every committee hearing to the press",
+    "description": "Would open every committee hearing to the press.",
+    "hearing_stage": "ST12",
+    "value_tags": "Democratic Norms +0.9; Leadership Interest -0.5",
+    "gains": [
+      {
+        "target": "BO08",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB084",
+    "owner": "BO08",
+    "slot": "W",
+    "short_label": "Require government data to be published in open formats",
+    "phrase": "require government data to be published in open formats",
+    "description": "Would require government data to be published in open formats.",
+    "hearing_stage": "ST17",
+    "value_tags": "Technocratic +0.6; Democratic Norms +0.6",
+    "gains": [
+      {
+        "target": "BO08",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB086",
+    "owner": "BO08",
+    "slot": "A",
+    "short_label": "Guarantee press access to public meetings",
+    "phrase": "guarantee press access to public meetings",
+    "description": "Would guarantee press access to public meetings.",
+    "hearing_stage": "ST12",
+    "value_tags": "Democratic Norms +0.7; Civil Liberties +0.4",
+    "gains": [
+      {
+        "target": "BO08",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB087",
+    "owner": "BO08",
+    "slot": "B",
+    "short_label": "Fund local news outlets in small towns",
+    "phrase": "fund local news outlets in small towns",
+    "description": "Would fund local news outlets in small towns.",
+    "hearing_stage": "ST17",
+    "value_tags": "Federal Spending +0.4; Localism +0.4; Civil Liberties +0.3",
+    "gains": [
+      {
+        "target": "BO08",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB088",
+    "owner": "BO08",
+    "slot": "C",
+    "short_label": "Require disclosure of who pays for political advertising",
+    "phrase": "require disclosure of who pays for political advertising",
+    "description": "Would require disclosure of who pays for political advertising.",
+    "hearing_stage": "ST09",
+    "value_tags": "Democratic Norms +0.8; Regulation +0.3",
+    "gains": [
+      {
+        "target": "BO08",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO01",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB091",
+    "owner": "BO09",
+    "slot": "X",
+    "short_label": "Raise the minimum wage",
+    "phrase": "raise the minimum wage",
+    "description": "Would raise the minimum wage.",
+    "hearing_stage": "ST16",
+    "value_tags": "Regulation +0.8; Economic Liberalization -0.7",
+    "gains": [
+      {
+        "target": "BO09",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB092",
+    "owner": "BO09",
+    "slot": "Y",
+    "short_label": "Enforce overtime pay",
+    "phrase": "enforce overtime pay",
+    "description": "Would enforce overtime pay.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.7",
+    "gains": [
+      {
+        "target": "BO09",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB095",
+    "owner": "BO09",
+    "slot": "V",
+    "short_label": "Ban unpaid trial work",
+    "phrase": "ban unpaid trial work",
+    "description": "Would ban unpaid trial work.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.6",
+    "gains": [
+      {
+        "target": "BO09",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB093",
+    "owner": "BO09",
+    "slot": "Z",
+    "short_label": "Protect collective bargaining rights",
+    "phrase": "protect collective bargaining rights",
+    "description": "Would protect collective bargaining rights.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.6; Liberal Rights +0.4; Economic Liberalization -0.6",
+    "gains": [
+      {
+        "target": "BO09",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB094",
+    "owner": "BO09",
+    "slot": "W",
+    "short_label": "Guarantee a living wage on public contracts",
+    "phrase": "guarantee a living wage on public contracts",
+    "description": "Would guarantee a living wage on public contracts.",
+    "hearing_stage": "ST16",
+    "value_tags": "Regulation +0.6; Federal Spending +0.4; Economic Liberalization -0.5",
+    "gains": [
+      {
+        "target": "BO09",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB101",
+    "owner": "BO10",
+    "slot": "X",
+    "short_label": "Support the rice price",
+    "phrase": "support the rice price",
+    "description": "Would support the rice price.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +1; Federal Spending +0.5; Economic Liberalization -0.4",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB102",
+    "owner": "BO10",
+    "slot": "Y",
+    "short_label": "Subsidize farm machinery",
+    "phrase": "subsidize farm machinery",
+    "description": "Would subsidize farm machinery.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +0.8; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB105",
+    "owner": "BO10",
+    "slot": "V",
+    "short_label": "Fund grain storage for farm cooperatives",
+    "phrase": "fund grain storage for farm cooperatives",
+    "description": "Would fund grain storage for farm cooperatives.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +0.6; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB103",
+    "owner": "BO10",
+    "slot": "Z",
+    "short_label": "Restrict foreign food imports",
+    "phrase": "restrict foreign food imports",
+    "description": "Would restrict foreign food imports.",
+    "hearing_stage": "ST14",
+    "value_tags": "Globalism -1; Agrarianism +0.8; Economic Liberalization -0.5",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB104",
+    "owner": "BO10",
+    "slot": "W",
+    "short_label": "Pay farmers to keep paddies in use",
+    "phrase": "pay farmers to keep paddies in use",
+    "description": "Would pay farmers to keep paddies in use.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +0.8; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB106",
+    "owner": "BO10",
+    "slot": "A",
+    "short_label": "Start a farm-to-school lunch program",
+    "phrase": "start a farm-to-school lunch program",
+    "description": "Would start a farm-to-school lunch program.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +0.6; Localism +0.4",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB107",
+    "owner": "BO10",
+    "slot": "B",
+    "short_label": "Insure farmers against bad harvests",
+    "phrase": "insure farmers against bad harvests",
+    "description": "Would insure farmers against bad harvests.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +0.7; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB108",
+    "owner": "BO10",
+    "slot": "C",
+    "short_label": "Support farmers' direct sales at city markets",
+    "phrase": "support farmers' direct sales at city markets",
+    "description": "Would support farmers' direct sales at city markets.",
+    "hearing_stage": "ST13",
+    "value_tags": "Agrarianism +0.5; Rural Focus +0.4",
+    "gains": [
+      {
+        "target": "BO10",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB111",
+    "owner": "BO11",
+    "slot": "X",
+    "short_label": "Cap university tuition",
+    "phrase": "cap university tuition",
+    "description": "Would cap university tuition.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.7; Post-Industrialism +0.5",
+    "gains": [
+      {
+        "target": "BO11",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB112",
+    "owner": "BO11",
+    "slot": "Y",
+    "short_label": "Give students discounted transit",
+    "phrase": "give students discounted transit",
+    "description": "Would give students discounted transit.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO11",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB115",
+    "owner": "BO11",
+    "slot": "V",
+    "short_label": "Fund scholarships for first-generation students",
+    "phrase": "fund scholarships for first-generation students",
+    "description": "Would fund scholarships for first-generation students.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.5; Liberal Rights +0.2",
+    "gains": [
+      {
+        "target": "BO11",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB113",
+    "owner": "BO11",
+    "slot": "Z",
+    "short_label": "Build public student housing",
+    "phrase": "build public student housing",
+    "description": "Would build public student housing.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.8; Post-Industrialism +0.4",
+    "gains": [
+      {
+        "target": "BO11",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB114",
+    "owner": "BO11",
+    "slot": "W",
+    "short_label": "Forgive student loans for graduates who work in rural towns",
+    "phrase": "forgive student loans for graduates who work in rural towns",
+    "description": "Would forgive student loans for graduates who work in rural towns.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.6; Rural Focus +0.4; Post-Industrialism +0.3",
+    "gains": [
+      {
+        "target": "BO11",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB121",
+    "owner": "BO12",
+    "slot": "X",
+    "short_label": "Raise the child allowance",
+    "phrase": "raise the child allowance",
+    "description": "Would raise the child allowance.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.8; Traditional Values +0.3",
+    "gains": [
+      {
+        "target": "BO12",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB122",
+    "owner": "BO12",
+    "slot": "Y",
+    "short_label": "Extend paid parental leave",
+    "phrase": "extend paid parental leave",
+    "description": "Would extend paid parental leave.",
+    "hearing_stage": "ST17",
+    "value_tags": "Gender Equality +0.7; Regulation +0.5",
+    "gains": [
+      {
+        "target": "BO12",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB125",
+    "owner": "BO12",
+    "slot": "V",
+    "short_label": "Give families a tax deduction for each child",
+    "phrase": "give families a tax deduction for each child",
+    "description": "Would give families a tax deduction for each child.",
+    "hearing_stage": "ST16",
+    "value_tags": "Taxation -0.4; Traditional Values +0.3",
+    "gains": [
+      {
+        "target": "BO12",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB123",
+    "owner": "BO12",
+    "slot": "Z",
+    "short_label": "Open more public childcare places",
+    "phrase": "open more public childcare places",
+    "description": "Would open more public childcare places.",
+    "hearing_stage": "ST17",
+    "value_tags": "Federal Spending +0.8; Gender Equality +0.5",
+    "gains": [
+      {
+        "target": "BO12",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB124",
+    "owner": "BO12",
+    "slot": "W",
+    "short_label": "Make school lunches free",
+    "phrase": "make school lunches free",
+    "description": "Would make school lunches free.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.7",
+    "gains": [
+      {
+        "target": "BO12",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB126",
+    "owner": "BO12",
+    "slot": "A",
+    "short_label": "Fund after-school care in every district",
+    "phrase": "fund after-school care in every district",
+    "description": "Would fund after-school care in every district.",
+    "hearing_stage": "ST17",
+    "value_tags": "Federal Spending +0.5; Localism +0.3",
+    "gains": [
+      {
+        "target": "BO12",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB127",
+    "owner": "BO12",
+    "slot": "B",
+    "short_label": "Let parents work shorter hours while children are young",
+    "phrase": "let parents work shorter hours while children are young",
+    "description": "Would let parents work shorter hours while children are young.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.5; Gender Equality +0.4",
+    "gains": [
+      {
+        "target": "BO12",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB131",
+    "owner": "BO13",
+    "slot": "X",
+    "short_label": "Certify local crafts with a protected label",
+    "phrase": "certify local crafts with a protected label",
+    "description": "Would certify local crafts with a protected label.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.6; Localism +0.5",
+    "gains": [
+      {
+        "target": "BO13",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB132",
+    "owner": "BO13",
+    "slot": "Y",
+    "short_label": "Give tax relief for craft apprenticeships",
+    "phrase": "give tax relief for craft apprenticeships",
+    "description": "Would give tax relief for craft apprenticeships.",
+    "hearing_stage": "ST16",
+    "value_tags": "Taxation -0.4; Traditional Values +0.5",
+    "gains": [
+      {
+        "target": "BO13",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB135",
+    "owner": "BO13",
+    "slot": "V",
+    "short_label": "Waive fees at craft fairs for small makers",
+    "phrase": "waive fees at craft fairs for small makers",
+    "description": "Would waive fees at craft fairs for small makers.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.4; Regulation -0.3",
+    "gains": [
+      {
+        "target": "BO13",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB133",
+    "owner": "BO13",
+    "slot": "Z",
+    "short_label": "Promote craft exports abroad",
+    "phrase": "promote craft exports abroad",
+    "description": "Would promote craft exports abroad.",
+    "hearing_stage": "ST14",
+    "value_tags": "Globalism +0.6; Traditional Values +0.4",
+    "gains": [
+      {
+        "target": "BO13",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB134",
+    "owner": "BO13",
+    "slot": "W",
+    "short_label": "Fund craft workshops in vacant shopfronts",
+    "phrase": "fund craft workshops in vacant shopfronts",
+    "description": "Would fund craft workshops in vacant shopfronts.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.5; Localism +0.5; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO13",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB136",
+    "owner": "BO13",
+    "slot": "A",
+    "short_label": "Register master craftspeople as cultural assets",
+    "phrase": "register master craftspeople as cultural assets",
+    "description": "Would register master craftspeople as cultural assets.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.7",
+    "gains": [
+      {
+        "target": "BO13",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB137",
+    "owner": "BO13",
+    "slot": "B",
+    "short_label": "Fund a national craft museum",
+    "phrase": "fund a national craft museum",
+    "description": "Would fund a national craft museum.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.6; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO13",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB141",
+    "owner": "BO14",
+    "slot": "X",
+    "short_label": "Freeze commuter fares",
+    "phrase": "freeze commuter fares",
+    "description": "Would freeze commuter fares.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.6; Rural Focus -0.5",
+    "gains": [
+      {
+        "target": "BO14",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB142",
+    "owner": "BO14",
+    "slot": "Y",
+    "short_label": "Run late-night commuter trains",
+    "phrase": "run late-night commuter trains",
+    "description": "Would run late-night commuter trains.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.5; Post-Industrialism +0.4",
+    "gains": [
+      {
+        "target": "BO14",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB145",
+    "owner": "BO14",
+    "slot": "V",
+    "short_label": "Cap the monthly cost of a commuter pass",
+    "phrase": "cap the monthly cost of a commuter pass",
+    "description": "Would cap the monthly cost of a commuter pass.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.4; Regulation +0.3",
+    "gains": [
+      {
+        "target": "BO14",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB143",
+    "owner": "BO14",
+    "slot": "Z",
+    "short_label": "Make every station step-free",
+    "phrase": "make every station step-free",
+    "description": "Would make every station step-free.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.8; Minority Rights +0.4",
+    "gains": [
+      {
+        "target": "BO14",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB144",
+    "owner": "BO14",
+    "slot": "W",
+    "short_label": "Build park-and-ride lots at commuter stations",
+    "phrase": "build park-and-ride lots at commuter stations",
+    "description": "Would build park-and-ride lots at commuter stations.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.5; Rural Focus +0.3",
+    "gains": [
+      {
+        "target": "BO14",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB146",
+    "owner": "BO14",
+    "slot": "A",
+    "short_label": "Publish real-time delay data for every line",
+    "phrase": "publish real-time delay data for every line",
+    "description": "Would publish real-time delay data for every line.",
+    "hearing_stage": "ST17",
+    "value_tags": "Technocratic +0.6; Democratic Norms +0.3",
+    "gains": [
+      {
+        "target": "BO14",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB147",
+    "owner": "BO14",
+    "slot": "B",
+    "short_label": "Refund fares for long delays",
+    "phrase": "refund fares for long delays",
+    "description": "Would refund fares for long delays.",
+    "hearing_stage": "ST15",
+    "value_tags": "Regulation +0.5",
+    "gains": [
+      {
+        "target": "BO14",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB151",
+    "owner": "BO15",
+    "slot": "X",
+    "short_label": "Fund local festivals",
+    "phrase": "fund local festivals",
+    "description": "Would fund local festivals.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.8; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB152",
+    "owner": "BO15",
+    "slot": "Y",
+    "short_label": "Protect historic districts from redevelopment",
+    "phrase": "protect historic districts from redevelopment",
+    "description": "Would protect historic districts from redevelopment.",
+    "hearing_stage": "ST15",
+    "value_tags": "Traditional Values +0.8; Regulation +0.5",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB155",
+    "owner": "BO15",
+    "slot": "V",
+    "short_label": "Fund the repair of old wooden buildings",
+    "phrase": "fund the repair of old wooden buildings",
+    "description": "Would fund the repair of old wooden buildings.",
+    "hearing_stage": "ST15",
+    "value_tags": "Traditional Values +0.6; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB153",
+    "owner": "BO15",
+    "slot": "Z",
+    "short_label": "Create a national heritage register",
+    "phrase": "create a national heritage register",
+    "description": "Would create a national heritage register.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +1; Religious Traditionalism +0.3",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB154",
+    "owner": "BO15",
+    "slot": "W",
+    "short_label": "Teach local traditions in schools",
+    "phrase": "teach local traditions in schools",
+    "description": "Would teach local traditions in schools.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.8; Localism +0.4",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB156",
+    "owner": "BO15",
+    "slot": "A",
+    "short_label": "Support traditional crafts in school clubs",
+    "phrase": "support traditional crafts in school clubs",
+    "description": "Would support traditional crafts in school clubs.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.6",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB157",
+    "owner": "BO15",
+    "slot": "B",
+    "short_label": "Protect old town names on maps and signs",
+    "phrase": "protect old town names on maps and signs",
+    "description": "Would protect old town names on maps and signs.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.7; Localism +0.4",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB158",
+    "owner": "BO15",
+    "slot": "C",
+    "short_label": "Give grants to preserve traditional farmhouses",
+    "phrase": "give grants to preserve traditional farmhouses",
+    "description": "Would give grants to preserve traditional farmhouses.",
+    "hearing_stage": "ST15",
+    "value_tags": "Traditional Values +0.6; Rural Focus +0.4; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB159",
+    "owner": "BO15",
+    "slot": "D",
+    "short_label": "Restore old rail stations as community landmarks",
+    "phrase": "restore old rail stations as community landmarks",
+    "description": "Would restore old rail stations as community landmarks.",
+    "hearing_stage": "ST15",
+    "value_tags": "Traditional Values +0.5; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB161",
+    "owner": "BO16",
+    "slot": "X",
+    "short_label": "Give a tax credit for research and development",
+    "phrase": "give a tax credit for research and development",
+    "description": "Would give a tax credit for research and development.",
+    "hearing_stage": "ST16",
+    "value_tags": "Post-Industrialism +1; Taxation -0.4",
+    "gains": [
+      {
+        "target": "BO16",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB162",
+    "owner": "BO16",
+    "slot": "Y",
+    "short_label": "Offer visas to start-up founders",
+    "phrase": "offer visas to start-up founders",
+    "description": "Would offer visas to start-up founders.",
+    "hearing_stage": "ST14",
+    "value_tags": "Immigration +0.7; Post-Industrialism +0.6",
+    "gains": [
+      {
+        "target": "BO16",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB165",
+    "owner": "BO16",
+    "slot": "V",
+    "short_label": "Fund university spin-off labs",
+    "phrase": "fund university spin-off labs",
+    "description": "Would fund university spin-off labs.",
+    "hearing_stage": "ST16",
+    "value_tags": "Post-Industrialism +0.7; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO16",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB163",
+    "owner": "BO16",
+    "slot": "Z",
+    "short_label": "Move government services online",
+    "phrase": "move government services online",
+    "description": "Would move government services online.",
+    "hearing_stage": "ST17",
+    "value_tags": "Technocratic +0.9; Post-Industrialism +0.5",
+    "gains": [
+      {
+        "target": "BO16",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB164",
+    "owner": "BO16",
+    "slot": "W",
+    "short_label": "Open public data to start-ups",
+    "phrase": "open public data to start-ups",
+    "description": "Would open public data to start-ups.",
+    "hearing_stage": "ST17",
+    "value_tags": "Technocratic +0.6; Post-Industrialism +0.6",
+    "gains": [
+      {
+        "target": "BO16",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB166",
+    "owner": "BO16",
+    "slot": "A",
+    "short_label": "Let start-ups test products in regulatory sandboxes",
+    "phrase": "let start-ups test products in regulatory sandboxes",
+    "description": "Would let start-ups test products in regulatory sandboxes.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation -0.5; Post-Industrialism +0.7",
+    "gains": [
+      {
+        "target": "BO16",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB167",
+    "owner": "BO16",
+    "slot": "B",
+    "short_label": "Fund coworking hubs in regional cities",
+    "phrase": "fund coworking hubs in regional cities",
+    "description": "Would fund coworking hubs in regional cities.",
+    "hearing_stage": "ST16",
+    "value_tags": "Post-Industrialism +0.6; Rural Focus +0.3; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO16",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB181",
+    "owner": "BO18",
+    "slot": "X",
+    "short_label": "Hold local referendums on large projects",
+    "phrase": "hold local referendums on large projects",
+    "description": "Would hold local referendums on large projects.",
+    "hearing_stage": "ST17",
+    "value_tags": "Democratic Norms +0.8; Localism +0.6",
+    "gains": [
+      {
+        "target": "BO18",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB182",
+    "owner": "BO18",
+    "slot": "Y",
+    "short_label": "Require public consultation before new projects",
+    "phrase": "require public consultation before new projects",
+    "description": "Would require public consultation before new projects.",
+    "hearing_stage": "ST15",
+    "value_tags": "Democratic Norms +0.7; Regulation +0.4",
+    "gains": [
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB185",
+    "owner": "BO18",
+    "slot": "V",
+    "short_label": "Hold public question time with local officials",
+    "phrase": "hold public question time with local officials",
+    "description": "Would hold public question time with local officials.",
+    "hearing_stage": "ST17",
+    "value_tags": "Democratic Norms +0.6; Localism +0.4",
+    "gains": [
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB183",
+    "owner": "BO18",
+    "slot": "Z",
+    "short_label": "Let citizen petitions trigger committee hearings",
+    "phrase": "let citizen petitions trigger committee hearings",
+    "description": "Would let citizen petitions trigger committee hearings.",
+    "hearing_stage": "ST12",
+    "value_tags": "Democratic Norms +1; Leadership Interest -0.4",
+    "gains": [
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB184",
+    "owner": "BO18",
+    "slot": "W",
+    "short_label": "Publish every project's full costs for public comment",
+    "phrase": "publish every project's full costs for public comment",
+    "description": "Would publish every project's full costs for public comment.",
+    "hearing_stage": "ST17",
+    "value_tags": "Democratic Norms +0.7; Technocratic +0.4",
+    "gains": [
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB186",
+    "owner": "BO18",
+    "slot": "A",
+    "short_label": "Let residents vote on local budget priorities",
+    "phrase": "let residents vote on local budget priorities",
+    "description": "Would let residents vote on local budget priorities.",
+    "hearing_stage": "ST17",
+    "value_tags": "Democratic Norms +0.8; Localism +0.6",
+    "gains": [
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB187",
+    "owner": "BO18",
+    "slot": "B",
+    "short_label": "Require open hearings before closing local services",
+    "phrase": "require open hearings before closing local services",
+    "description": "Would require open hearings before closing local services.",
+    "hearing_stage": "ST12",
+    "value_tags": "Democratic Norms +0.6; Localism +0.5",
+    "gains": [
+      {
+        "target": "BO18",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO17",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB191",
+    "owner": "BO19",
+    "slot": "X",
+    "short_label": "Fund temple preservation",
+    "phrase": "fund temple preservation",
+    "description": "Would fund temple preservation.",
+    "hearing_stage": "ST17",
+    "value_tags": "Religious Traditionalism +0.8; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO19",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB192",
+    "owner": "BO19",
+    "slot": "Y",
+    "short_label": "Keep the tax exemption on temple land",
+    "phrase": "keep the tax exemption on temple land",
+    "description": "Would keep the tax exemption on temple land.",
+    "hearing_stage": "ST16",
+    "value_tags": "Religious Traditionalism +0.7; Taxation -0.4",
+    "gains": [
+      {
+        "target": "BO19",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB195",
+    "owner": "BO19",
+    "slot": "V",
+    "short_label": "Let temples run public meditation and care programs",
+    "phrase": "let temples run public meditation and care programs",
+    "description": "Would let temples run public meditation and care programs.",
+    "hearing_stage": "ST17",
+    "value_tags": "Religious Traditionalism +0.6; Liberal Rights +0.2",
+    "gains": [
+      {
+        "target": "BO19",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB193",
+    "owner": "BO19",
+    "slot": "Z",
+    "short_label": "Designate temples as disaster shelters",
+    "phrase": "designate temples as disaster shelters",
+    "description": "Would designate temples as disaster shelters.",
+    "hearing_stage": "ST15",
+    "value_tags": "Religious Traditionalism +0.5; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO19",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB194",
+    "owner": "BO19",
+    "slot": "W",
+    "short_label": "Fund repairs to temple halls damaged by weather",
+    "phrase": "fund repairs to temple halls damaged by weather",
+    "description": "Would fund repairs to temple halls damaged by weather.",
+    "hearing_stage": "ST15",
+    "value_tags": "Religious Traditionalism +0.6; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO19",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB201",
+    "owner": "BO20",
+    "slot": "X",
+    "short_label": "Support shrine festivals",
+    "phrase": "support shrine festivals",
+    "description": "Would support shrine festivals.",
+    "hearing_stage": "ST17",
+    "value_tags": "Religious Traditionalism +0.8; Traditional Values +0.5",
+    "gains": [
+      {
+        "target": "BO20",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB202",
+    "owner": "BO20",
+    "slot": "Y",
+    "short_label": "Protect shrine forests from development",
+    "phrase": "protect shrine forests from development",
+    "description": "Would protect shrine forests from development.",
+    "hearing_stage": "ST10",
+    "value_tags": "Environmentalism +0.7; Religious Traditionalism +0.5",
+    "gains": [
+      {
+        "target": "BO20",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB205",
+    "owner": "BO20",
+    "slot": "V",
+    "short_label": "Fund shrine-led community cleanups",
+    "phrase": "fund shrine-led community cleanups",
+    "description": "Would fund shrine-led community cleanups.",
+    "hearing_stage": "ST10",
+    "value_tags": "Religious Traditionalism +0.4; Localism +0.4",
+    "gains": [
+      {
+        "target": "BO20",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB203",
+    "owner": "BO20",
+    "slot": "Z",
+    "short_label": "List shrine grounds on the heritage register",
+    "phrase": "list shrine grounds on the heritage register",
+    "description": "Would list shrine grounds on the heritage register.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.8; Religious Traditionalism +0.6",
+    "gains": [
+      {
+        "target": "BO20",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB204",
+    "owner": "BO20",
+    "slot": "W",
+    "short_label": "Waive permit fees for shrine festival stalls",
+    "phrase": "waive permit fees for shrine festival stalls",
+    "description": "Would waive permit fees for shrine festival stalls.",
+    "hearing_stage": "ST17",
+    "value_tags": "Religious Traditionalism +0.6; Regulation -0.4",
+    "gains": [
+      {
+        "target": "BO20",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB206",
+    "owner": "BO20",
+    "slot": "A",
+    "short_label": "Protect sacred groves in national planning",
+    "phrase": "protect sacred groves in national planning",
+    "description": "Would protect sacred groves in national planning.",
+    "hearing_stage": "ST10",
+    "value_tags": "Religious Traditionalism +0.7; Environmentalism +0.6",
+    "gains": [
+      {
+        "target": "BO20",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB207",
+    "owner": "BO20",
+    "slot": "B",
+    "short_label": "Record festival music and dance as living heritage",
+    "phrase": "record festival music and dance as living heritage",
+    "description": "Would record festival music and dance as living heritage.",
+    "hearing_stage": "ST17",
+    "value_tags": "Traditional Values +0.7; Religious Traditionalism +0.5",
+    "gains": [
+      {
+        "target": "BO20",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB208",
+    "owner": "BO20",
+    "slot": "C",
+    "short_label": "Let festival organizers close streets without extra fees",
+    "phrase": "let festival organizers close streets without extra fees",
+    "description": "Would let festival organizers close streets without extra fees.",
+    "hearing_stage": "ST17",
+    "value_tags": "Localism +0.5; Regulation -0.4; Traditional Values +0.3",
+    "gains": [
+      {
+        "target": "BO20",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB211",
+    "owner": "BO21",
+    "slot": "X",
+    "short_label": "Raise care workers' wages",
+    "phrase": "raise care workers' wages",
+    "description": "Would raise care workers' wages.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.8; Regulation +0.3",
+    "gains": [
+      {
+        "target": "BO21",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB212",
+    "owner": "BO21",
+    "slot": "Y",
+    "short_label": "Fund home care visits",
+    "phrase": "fund home care visits",
+    "description": "Would fund home care visits.",
+    "hearing_stage": "ST17",
+    "value_tags": "Federal Spending +0.7",
+    "gains": [
+      {
+        "target": "BO21",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB215",
+    "owner": "BO21",
+    "slot": "V",
+    "short_label": "Cap the cost of nursing home beds for families",
+    "phrase": "cap the cost of nursing home beds for families",
+    "description": "Would cap the cost of nursing home beds for families.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.6; Regulation +0.4",
+    "gains": [
+      {
+        "target": "BO21",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB213",
+    "owner": "BO21",
+    "slot": "Z",
+    "short_label": "Open dementia care centers in every district",
+    "phrase": "open dementia care centers in every district",
+    "description": "Would open dementia care centers in every district.",
+    "hearing_stage": "ST17",
+    "value_tags": "Federal Spending +0.9; Localism +0.3",
+    "gains": [
+      {
+        "target": "BO21",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB214",
+    "owner": "BO21",
+    "slot": "W",
+    "short_label": "Train and certify more care workers",
+    "phrase": "train and certify more care workers",
+    "description": "Would train and certify more care workers.",
+    "hearing_stage": "ST17",
+    "value_tags": "Federal Spending +0.6; Technocratic +0.3",
+    "gains": [
+      {
+        "target": "BO21",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB216",
+    "owner": "BO21",
+    "slot": "A",
+    "short_label": "Fund respite care for family caregivers",
+    "phrase": "fund respite care for family caregivers",
+    "description": "Would fund respite care for family caregivers.",
+    "hearing_stage": "ST17",
+    "value_tags": "Federal Spending +0.6; Gender Equality +0.3",
+    "gains": [
+      {
+        "target": "BO21",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB217",
+    "owner": "BO21",
+    "slot": "B",
+    "short_label": "Send local care teams to visit isolated elders",
+    "phrase": "send local care teams to visit isolated elders",
+    "description": "Would send local care teams to visit isolated elders.",
+    "hearing_stage": "ST17",
+    "value_tags": "Federal Spending +0.5; Localism +0.4",
+    "gains": [
+      {
+        "target": "BO21",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB218",
+    "owner": "BO21",
+    "slot": "C",
+    "short_label": "Fund care worker housing near facilities",
+    "phrase": "fund care worker housing near facilities",
+    "description": "Would fund care worker housing near facilities.",
+    "hearing_stage": "ST15",
+    "value_tags": "Federal Spending +0.6; Localism +0.3",
+    "gains": [
+      {
+        "target": "BO21",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB221",
+    "owner": "BO22",
+    "slot": "X",
+    "short_label": "Raise veterans' pensions",
+    "phrase": "raise veterans' pensions",
+    "description": "Would raise veterans' pensions.",
+    "hearing_stage": "ST11",
+    "value_tags": "Militarism +0.6; Federal Spending +0.6",
+    "gains": [
+      {
+        "target": "BO22",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB222",
+    "owner": "BO22",
+    "slot": "Y",
+    "short_label": "Expand veterans' medical care",
+    "phrase": "expand veterans' medical care",
+    "description": "Would expand veterans' medical care.",
+    "hearing_stage": "ST11",
+    "value_tags": "Militarism +0.5; Federal Spending +0.6",
+    "gains": [
+      {
+        "target": "BO22",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB225",
+    "owner": "BO22",
+    "slot": "V",
+    "short_label": "Maintain war memorials and cemeteries",
+    "phrase": "maintain war memorials and cemeteries",
+    "description": "Would maintain war memorials and cemeteries.",
+    "hearing_stage": "ST11",
+    "value_tags": "Militarism +0.4; Traditional Values +0.5",
+    "gains": [
+      {
+        "target": "BO22",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB223",
+    "owner": "BO22",
+    "slot": "Z",
+    "short_label": "Give veterans hiring preference in public jobs",
+    "phrase": "give veterans hiring preference in public jobs",
+    "description": "Would give veterans hiring preference in public jobs.",
+    "hearing_stage": "ST11",
+    "value_tags": "Militarism +0.8; Regulation +0.3",
+    "gains": [
+      {
+        "target": "BO22",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB224",
+    "owner": "BO22",
+    "slot": "W",
+    "short_label": "Fund mental health care for veterans",
+    "phrase": "fund mental health care for veterans",
+    "description": "Would fund mental health care for veterans.",
+    "hearing_stage": "ST11",
+    "value_tags": "Militarism +0.5; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO22",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB231",
+    "owner": "BO23",
+    "slot": "X",
+    "short_label": "Cap growth in government spending",
+    "phrase": "cap growth in government spending",
+    "description": "Would cap growth in government spending.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending -1",
+    "gains": [
+      {
+        "target": "BO23",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB232",
+    "owner": "BO23",
+    "slot": "Y",
+    "short_label": "Publish the full cost of every bill",
+    "phrase": "publish the full cost of every bill",
+    "description": "Would publish the full cost of every bill.",
+    "hearing_stage": "ST16",
+    "value_tags": "Technocratic +0.6; Democratic Norms +0.4",
+    "gains": [
+      {
+        "target": "BO23",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB235",
+    "owner": "BO23",
+    "slot": "V",
+    "short_label": "Post government spending online by project",
+    "phrase": "post government spending online by project",
+    "description": "Would post government spending online by project.",
+    "hearing_stage": "ST16",
+    "value_tags": "Technocratic +0.6; Democratic Norms +0.4",
+    "gains": [
+      {
+        "target": "BO23",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB233",
+    "owner": "BO23",
+    "slot": "Z",
+    "short_label": "Add sunset clauses to new spending",
+    "phrase": "add sunset clauses to new spending",
+    "description": "Would add sunset clauses to new spending.",
+    "hearing_stage": "ST16",
+    "value_tags": "Technocratic +0.6; Democratic Norms +0.4; Federal Spending -0.2",
+    "gains": [
+      {
+        "target": "BO23",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB234",
+    "owner": "BO23",
+    "slot": "W",
+    "short_label": "Require an audit of every large grant",
+    "phrase": "require an audit of every large grant",
+    "description": "Would require an audit of every large grant.",
+    "hearing_stage": "ST16",
+    "value_tags": "Technocratic +0.6; Democratic Norms +0.6",
+    "gains": [
+      {
+        "target": "BO23",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB241",
+    "owner": "BO24",
+    "slot": "X",
+    "short_label": "Ease bank lending rules",
+    "phrase": "ease bank lending rules",
+    "description": "Would ease bank lending rules.",
+    "hearing_stage": "ST16",
+    "value_tags": "Regulation -0.8; Economic Liberalization +0.7",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB242",
+    "owner": "BO24",
+    "slot": "Y",
+    "short_label": "Create tax-free investment accounts",
+    "phrase": "create tax-free investment accounts",
+    "description": "Would create tax-free investment accounts.",
+    "hearing_stage": "ST16",
+    "value_tags": "Taxation -0.6; Economic Liberalization +0.5",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB245",
+    "owner": "BO24",
+    "slot": "V",
+    "short_label": "Simplify the registration of investment funds",
+    "phrase": "simplify the registration of investment funds",
+    "description": "Would simplify the registration of investment funds.",
+    "hearing_stage": "ST16",
+    "value_tags": "Regulation -0.6; Economic Liberalization +0.4",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB243",
+    "owner": "BO24",
+    "slot": "Z",
+    "short_label": "Build a financial hub zone in Sapporo",
+    "phrase": "build a financial hub zone in Sapporo",
+    "description": "Would build a financial hub zone in Sapporo.",
+    "hearing_stage": "ST16",
+    "value_tags": "Economic Liberalization +0.9; Globalism +0.7",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB244",
+    "owner": "BO24",
+    "slot": "W",
+    "short_label": "Let foreign banks open branches in Hokkaido",
+    "phrase": "let foreign banks open branches in Hokkaido",
+    "description": "Would let foreign banks open branches in Hokkaido.",
+    "hearing_stage": "ST14",
+    "value_tags": "Globalism +0.7; Economic Liberalization +0.6; Regulation -0.4",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB246",
+    "owner": "BO24",
+    "slot": "A",
+    "short_label": "Speed approval of new financial products",
+    "phrase": "speed approval of new financial products",
+    "description": "Would speed approval of new financial products.",
+    "hearing_stage": "ST16",
+    "value_tags": "Regulation -0.5; Economic Liberalization +0.5",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB247",
+    "owner": "BO24",
+    "slot": "B",
+    "short_label": "Fund financial literacy classes in schools",
+    "phrase": "fund financial literacy classes in schools",
+    "description": "Would fund financial literacy classes in schools.",
+    "hearing_stage": "ST17",
+    "value_tags": "Technocratic +0.4; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO24",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB251",
+    "owner": "BO25",
+    "slot": "X",
+    "short_label": "Cut taxes for small businesses",
+    "phrase": "cut taxes for small businesses",
+    "description": "Would cut taxes for small businesses.",
+    "hearing_stage": "ST16",
+    "value_tags": "Taxation -0.8",
+    "gains": [
+      {
+        "target": "BO25",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB252",
+    "owner": "BO25",
+    "slot": "Y",
+    "short_label": "Cut paperwork for small firms",
+    "phrase": "cut paperwork for small firms",
+    "description": "Would cut paperwork for small firms.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation -0.7",
+    "gains": [
+      {
+        "target": "BO25",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB255",
+    "owner": "BO25",
+    "slot": "V",
+    "short_label": "Waive licensing fees for micro-enterprises",
+    "phrase": "waive licensing fees for micro-enterprises",
+    "description": "Would waive licensing fees for micro-enterprises.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation -0.5; Taxation -0.3",
+    "gains": [
+      {
+        "target": "BO25",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB253",
+    "owner": "BO25",
+    "slot": "Z",
+    "short_label": "Make large firms pay suppliers on time",
+    "phrase": "make large firms pay suppliers on time",
+    "description": "Would make large firms pay suppliers on time.",
+    "hearing_stage": "ST16",
+    "value_tags": "Regulation +0.5; Economic Liberalization -0.2",
+    "gains": [
+      {
+        "target": "BO25",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB254",
+    "owner": "BO25",
+    "slot": "W",
+    "short_label": "Give small firms cheap loans for equipment",
+    "phrase": "give small firms cheap loans for equipment",
+    "description": "Would give small firms cheap loans for equipment.",
+    "hearing_stage": "ST16",
+    "value_tags": "Federal Spending +0.4; Economic Liberalization +0.3",
+    "gains": [
+      {
+        "target": "BO25",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB261",
+    "owner": "BO26",
+    "slot": "X",
+    "short_label": "Require clear price labels",
+    "phrase": "require clear price labels",
+    "description": "Would require clear price labels.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.7",
+    "gains": [
+      {
+        "target": "BO26",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB262",
+    "owner": "BO26",
+    "slot": "Y",
+    "short_label": "Give buyers a cooling-off period",
+    "phrase": "give buyers a cooling-off period",
+    "description": "Would give buyers a cooling-off period.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.6; Liberal Rights +0.3",
+    "gains": [
+      {
+        "target": "BO26",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB265",
+    "owner": "BO26",
+    "slot": "V",
+    "short_label": "Require plain-language contracts",
+    "phrase": "require plain-language contracts",
+    "description": "Would require plain-language contracts.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.5; Technocratic +0.3",
+    "gains": [
+      {
+        "target": "BO26",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB263",
+    "owner": "BO26",
+    "slot": "Z",
+    "short_label": "Cap bank fees",
+    "phrase": "cap bank fees",
+    "description": "Would cap bank fees.",
+    "hearing_stage": "ST16",
+    "value_tags": "Regulation +0.8; Economic Liberalization -0.6",
+    "gains": [
+      {
+        "target": "BO26",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB264",
+    "owner": "BO26",
+    "slot": "W",
+    "short_label": "Let consumers sue together over defective goods",
+    "phrase": "let consumers sue together over defective goods",
+    "description": "Would let consumers sue together over defective goods.",
+    "hearing_stage": "ST09",
+    "value_tags": "Regulation +0.6; Liberal Rights +0.5",
+    "gains": [
+      {
+        "target": "BO26",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB266",
+    "owner": "BO26",
+    "slot": "A",
+    "short_label": "Publish product safety recalls in one public list",
+    "phrase": "publish product safety recalls in one public list",
+    "description": "Would publish product safety recalls in one public list.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.5; Technocratic +0.5",
+    "gains": [
+      {
+        "target": "BO26",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB267",
+    "owner": "BO26",
+    "slot": "B",
+    "short_label": "Set up a free consumer complaint line",
+    "phrase": "set up a free consumer complaint line",
+    "description": "Would set up a free consumer complaint line.",
+    "hearing_stage": "ST17",
+    "value_tags": "Regulation +0.4; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO26",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB271",
+    "owner": "BO27",
+    "slot": "X",
+    "short_label": "Set an affordable housing quota for new buildings",
+    "phrase": "set an affordable housing quota for new buildings",
+    "description": "Would set an affordable housing quota for new buildings.",
+    "hearing_stage": "ST15",
+    "value_tags": "Regulation +0.6; Federal Spending +0.4; Rural Focus -0.5",
+    "gains": [
+      {
+        "target": "BO27",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB272",
+    "owner": "BO27",
+    "slot": "Y",
+    "short_label": "Build more city parks",
+    "phrase": "build more city parks",
+    "description": "Would build more city parks.",
+    "hearing_stage": "ST10",
+    "value_tags": "Environmentalism +0.6; Rural Focus -0.4",
+    "gains": [
+      {
+        "target": "BO27",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB275",
+    "owner": "BO27",
+    "slot": "V",
+    "short_label": "Fund bike lanes in city centers",
+    "phrase": "fund bike lanes in city centers",
+    "description": "Would fund bike lanes in city centers.",
+    "hearing_stage": "ST15",
+    "value_tags": "Environmentalism +0.5; Post-Industrialism +0.4",
+    "gains": [
+      {
+        "target": "BO27",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB273",
+    "owner": "BO27",
+    "slot": "Z",
+    "short_label": "Cap rent rises in the cities",
+    "phrase": "cap rent rises in the cities",
+    "description": "Would cap rent rises in the cities.",
+    "hearing_stage": "ST15",
+    "value_tags": "Regulation +0.9; Economic Liberalization -0.7",
+    "gains": [
+      {
+        "target": "BO27",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB274",
+    "owner": "BO27",
+    "slot": "W",
+    "short_label": "Allow denser housing near stations",
+    "phrase": "allow denser housing near stations",
+    "description": "Would allow denser housing near stations.",
+    "hearing_stage": "ST15",
+    "value_tags": "Regulation -0.4; Post-Industrialism +0.6; Rural Focus -0.4",
+    "gains": [
+      {
+        "target": "BO27",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB276",
+    "owner": "BO27",
+    "slot": "A",
+    "short_label": "Fund street trees and shade in city centers",
+    "phrase": "fund street trees and shade in city centers",
+    "description": "Would fund street trees and shade in city centers.",
+    "hearing_stage": "ST10",
+    "value_tags": "Environmentalism +0.6; Post-Industrialism +0.3",
+    "gains": [
+      {
+        "target": "BO27",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB277",
+    "owner": "BO27",
+    "slot": "B",
+    "short_label": "Open vacant city lots to community gardens",
+    "phrase": "open vacant city lots to community gardens",
+    "description": "Would open vacant city lots to community gardens.",
+    "hearing_stage": "ST15",
+    "value_tags": "Localism +0.5; Environmentalism +0.3",
+    "gains": [
+      {
+        "target": "BO27",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB281",
+    "owner": "BO28",
+    "slot": "X",
+    "short_label": "Restore Ainu fishing and harvest rights",
+    "phrase": "restore Ainu fishing and harvest rights",
+    "description": "Would restore Ainu fishing and harvest rights.",
+    "hearing_stage": "ST13",
+    "value_tags": "Ainu Enhancement +1; Minority Rights +0.6",
+    "gains": [
+      {
+        "target": "BO28",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB282",
+    "owner": "BO28",
+    "slot": "Y",
+    "short_label": "Fund Ainu community centers",
+    "phrase": "fund Ainu community centers",
+    "description": "Would fund Ainu community centers.",
+    "hearing_stage": "ST17",
+    "value_tags": "Ainu Enhancement +0.8; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO28",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB285",
+    "owner": "BO28",
+    "slot": "V",
+    "short_label": "Fund Ainu elders' knowledge programs",
+    "phrase": "fund Ainu elders' knowledge programs",
+    "description": "Would fund Ainu elders' knowledge programs.",
+    "hearing_stage": "ST17",
+    "value_tags": "Ainu Enhancement +0.7; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO28",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB283",
+    "owner": "BO28",
+    "slot": "Z",
+    "short_label": "Require consultation with Ainu communities on land use",
+    "phrase": "require consultation with Ainu communities on land use",
+    "description": "Would require consultation with Ainu communities on land use.",
+    "hearing_stage": "ST15",
+    "value_tags": "Ainu Enhancement +1; Minority Rights +0.7; Localism +0.3",
+    "gains": [
+      {
+        "target": "BO28",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB284",
+    "owner": "BO28",
+    "slot": "W",
+    "short_label": "Return ceremonial sites to Ainu stewardship",
+    "phrase": "return ceremonial sites to Ainu stewardship",
+    "description": "Would return ceremonial sites to Ainu stewardship.",
+    "hearing_stage": "ST15",
+    "value_tags": "Ainu Enhancement +1; Minority Rights +0.6; Traditional Values +0.3",
+    "gains": [
+      {
+        "target": "BO28",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB291",
+    "owner": "BO29",
+    "slot": "X",
+    "short_label": "Expand Ainu-language translation of public documents",
+    "phrase": "expand Ainu-language translation of public documents",
+    "description": "Would expand Ainu-language translation of public documents.",
+    "hearing_stage": "ST17",
+    "value_tags": "Ainu Enhancement +0.8; Technocratic +0.3; Ethnic Pluralism +0.5",
+    "gains": [
+      {
+        "target": "BO29",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB292",
+    "owner": "BO29",
+    "slot": "Y",
+    "short_label": "Teach the Ainu language in schools",
+    "phrase": "teach the Ainu language in schools",
+    "description": "Would teach the Ainu language in schools.",
+    "hearing_stage": "ST17",
+    "value_tags": "Ainu Enhancement +0.9; Ethnic Pluralism +0.5",
+    "gains": [
+      {
+        "target": "BO29",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB295",
+    "owner": "BO29",
+    "slot": "V",
+    "short_label": "Support Ainu language classes for adults",
+    "phrase": "support Ainu language classes for adults",
+    "description": "Would support Ainu language classes for adults.",
+    "hearing_stage": "ST17",
+    "value_tags": "Ainu Enhancement +0.7; Federal Spending +0.3",
+    "gains": [
+      {
+        "target": "BO29",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB293",
+    "owner": "BO29",
+    "slot": "Z",
+    "short_label": "Fund Ainu-language broadcasting",
+    "phrase": "fund Ainu-language broadcasting",
+    "description": "Would fund Ainu-language broadcasting.",
+    "hearing_stage": "ST17",
+    "value_tags": "Ainu Enhancement +0.9; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO29",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB294",
+    "owner": "BO29",
+    "slot": "W",
+    "short_label": "Fund museum exhibits and archives on Ainu culture",
+    "phrase": "fund museum exhibits and archives on Ainu culture",
+    "description": "Would fund museum exhibits and archives on Ainu culture.",
+    "hearing_stage": "ST17",
+    "value_tags": "Ainu Enhancement +0.8; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO29",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB301",
+    "owner": "BO30",
+    "slot": "X",
+    "short_label": "Keep rural bus routes running",
+    "phrase": "keep rural bus routes running",
+    "description": "Would keep rural bus routes running.",
+    "hearing_stage": "ST15",
+    "value_tags": "Rural Focus +0.9; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 3
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB302",
+    "owner": "BO30",
+    "slot": "Y",
+    "short_label": "Pay grants to families moving to rural towns",
+    "phrase": "pay grants to families moving to rural towns",
+    "description": "Would pay grants to families moving to rural towns.",
+    "hearing_stage": "ST17",
+    "value_tags": "Rural Focus +0.9; Federal Spending +0.5",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB305",
+    "owner": "BO30",
+    "slot": "V",
+    "short_label": "Give tax breaks to firms opening in rural towns",
+    "phrase": "give tax breaks to firms opening in rural towns",
+    "description": "Would give tax breaks to firms opening in rural towns.",
+    "hearing_stage": "ST16",
+    "value_tags": "Rural Focus +0.7; Taxation -0.4",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB303",
+    "owner": "BO30",
+    "slot": "Z",
+    "short_label": "Bring broadband to every village",
+    "phrase": "bring broadband to every village",
+    "description": "Would bring broadband to every village.",
+    "hearing_stage": "ST15",
+    "value_tags": "Rural Focus +0.8; Post-Industrialism +0.5; Federal Spending +0.6",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB304",
+    "owner": "BO30",
+    "slot": "W",
+    "short_label": "Fund clinics in rural towns",
+    "phrase": "fund clinics in rural towns",
+    "description": "Would fund clinics in rural towns.",
+    "hearing_stage": "ST17",
+    "value_tags": "Rural Focus +0.9; Federal Spending +0.6",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB306",
+    "owner": "BO30",
+    "slot": "A",
+    "short_label": "Support small-town shops with rent grants",
+    "phrase": "support small-town shops with rent grants",
+    "description": "Would support small-town shops with rent grants.",
+    "hearing_stage": "ST16",
+    "value_tags": "Rural Focus +0.7; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB307",
+    "owner": "BO30",
+    "slot": "B",
+    "short_label": "Fund rural school buses",
+    "phrase": "fund rural school buses",
+    "description": "Would fund rural school buses.",
+    "hearing_stage": "ST15",
+    "value_tags": "Rural Focus +0.7; Federal Spending +0.4",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  },
+  {
+    "component_id": "CB308",
+    "owner": "BO30",
+    "slot": "C",
+    "short_label": "Support remote work hubs in villages",
+    "phrase": "support remote work hubs in villages",
+    "description": "Would support remote work hubs in villages.",
+    "hearing_stage": "ST17",
+    "value_tags": "Rural Focus +0.6; Post-Industrialism +0.5",
+    "gains": [
+      {
+        "target": "BO30",
+        "delta": 2
+      }
+    ],
+    "loses": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "excludes": null,
+    "each_level_effect": null,
+    "amend_options": null
+  }
+]
