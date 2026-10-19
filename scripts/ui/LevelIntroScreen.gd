@@ -136,7 +136,7 @@ func _show_lean_choice() -> void:
 	_lean_shown = true
 	# A bill an organization asked the player to carry is carried: the lean is
 	# Support and there is nothing to choose (patron step 4).
-	if str(_bill.get("bill_id", "")).begins_with("PB"):
+	if str(_bill.get("bill_id", "")).begins_with("PB") or str(_bill.get("bill_id", "")).begins_with(DraftBill.PREFIX):
 		_on_lean_chosen(BillLean.SUPPORT)
 		return
 	_stance_note().text = "\n".join(StanceLines.intro_lines(_bill))

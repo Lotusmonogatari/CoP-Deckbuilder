@@ -18,7 +18,8 @@ static func patron_bill(patron_bill_id: String) -> Dictionary:
 	for row: Dictionary in DataDB.patron_bills:
 		if str(row.get("patron_bill_id", "")) == patron_bill_id:
 			return row
-	return {}
+	# A bill the player drafted themselves (Draft a Bill).
+	return GameState.patron_drafts.get(patron_bill_id, {})
 
 
 static func level_id_for(patron_bill_id: String) -> String:
@@ -114,7 +115,13 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 	for candidate: Dictionary in DataDB.bill_level_templates:
 		if str(candidate.get("template_id", "")) == str(row.get("template_id", "")):
 			template = candidate
-	var owner_tier := str(DataDB.get_booster(str(row.get("organization", ""))).get("tier", ""))
+	var owner_org := str(row.get("organization", ""))
+	if owner_org.is_empty():
+		# A drafted bill has no patron: its first part's organization sets the public room.
+		var first_ids: Array = bill.get("component_ids", []) as Array
+		if not first_ids.is_empty():
+			owner_org = str(ComposedBill.index(DataDB.bill_components).get(str(first_ids[0]), {}).get("owner", ""))
+	var owner_tier := str(DataDB.get_booster(owner_org).get("tier", ""))
 	var visit := build_visit(template, bill, rng)
 	var trade := build_trade(template, row, bill, rng)
 	var stages := LevelTemplate.stages(template, str(bill.get("hearing_stage", "")), owner_tier,

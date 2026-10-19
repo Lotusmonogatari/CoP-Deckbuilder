@@ -143,21 +143,23 @@ static func outcome(patron_bill: Dictionary, ally: String, rivals: Array, passed
 	var scale := int(balance.get("patron_amend_reward_percent", 75)) / 100.0 if amended else 1.0
 	if passed:
 		var pass_key := "patron_flagship_pass_standing" if flagship else "patron_favor_pass_standing"
-		standing.append({"target": org, "delta": PartySalience.scaled(int(balance.get(pass_key, 6)), scale)})
+		if not org.is_empty():
+			standing.append({"target": org, "delta": PartySalience.scaled(int(balance.get(pass_key, 6)), scale)})
 		if flagship and not ally.is_empty():
 			standing.append({"target": ally, "delta": PartySalience.scaled(int(balance.get("patron_ally_pass_standing", 4)), scale)})
 		var rival_key := "patron_flagship_rival_penalty" if flagship else "patron_favor_rival_penalty"
 		for rival: String in rivals:
 			standing.append({"target": rival, "delta": -int(balance.get(rival_key, 2))})
 	else:
-		standing.append({"target": org, "delta": -int(balance.get("patron_fail_standing", 2))})
+		if not org.is_empty():
+			standing.append({"target": org, "delta": -int(balance.get("patron_fail_standing", 2))})
 		if flagship and not ally.is_empty():
 			standing.append({"target": ally, "delta": -int(balance.get("patron_ally_fail_standing", 1))})
 		for rival: String in rivals:
 			standing.append({"target": rival, "delta": int(balance.get("patron_rival_fail_standing", 1))})
 	return {
 		"standing": standing,
-		"free_backing_units": int(balance.get("patron_free_backing_units", 30)) if passed and flagship else 0,
+		"free_backing_units": int(balance.get("patron_free_backing_units", 30)) if passed and flagship and not org.is_empty() else 0,
 		"remember_failed_favor": (not passed) and not flagship,
 	}
 

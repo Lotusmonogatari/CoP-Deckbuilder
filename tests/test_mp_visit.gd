@@ -115,7 +115,7 @@ func test_only_a_senior_enough_researcher_briefs() -> void:
 func test_the_template_adds_the_visit_only_when_one_is_offered() -> void:
 	var flagship: Dictionary = {}
 	for template: Dictionary in DataDB.bill_level_templates:
-		if template["kind"] == "Flagship":
+		if template["template_id"] == "BT02":
 			flagship = template
 	assert_eq(LevelTemplate.stages(flagship, "ST16", "National", true),
 			["ST263", "ST16", "ST260", "ST261", "ST04", "ST03", "ST23"])

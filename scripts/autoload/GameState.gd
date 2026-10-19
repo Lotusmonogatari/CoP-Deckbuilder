@@ -337,6 +337,12 @@ var patron_runtime: Dictionary = {}
 ## What the latest sponsored-bill vote did (empty otherwise); read once by the
 ## Floor Vote result and never saved.
 var last_patron_outcome: Dictionary = {}
+## Draft a Bill (2026-10-19): the player's own bills as runtime patron rows
+## ({id: row}), how many have been drafted, and the clock when the last was
+## (-1 for never). Saved.
+var patron_drafts: Dictionary = {}
+var draft_counter := 0
+var last_draft_at := -1
 var patron_armed: Dictionary = {}
 var patron_composed: Dictionary = {}
 
@@ -402,7 +408,7 @@ const _SAVED_FIELDS := [
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
 	"patron_requests", "enacted_components", "patron_runtime", "patron_composed", "patron_armed",
-	"bill_assist", "patron_news",
+	"bill_assist", "patron_news", "patron_drafts", "draft_counter", "last_draft_at",
 ]
 
 
@@ -560,6 +566,9 @@ func reset_crisis_triggers() -> void:
 	patron_runtime = {}
 	patron_composed = {}
 	patron_armed = {}
+	patron_drafts = {}
+	draft_counter = 0
+	last_draft_at = -1
 	bill_assist = BillAssist.empty()
 	patron_news = {}
 	DataDB.clear_runtime()
@@ -2663,7 +2672,8 @@ func abandon_level() -> void:
 		# An abandoned patron level leaves the request open to accept again.
 		var abandoned := str(patron_runtime.get("patron_bill_id", ""))
 		if patron_requests.has(abandoned) and patron_requests[abandoned]["status"] == PatronRequests.ACCEPTED:
-			patron_requests[abandoned]["status"] = PatronRequests.OPEN
+			# A drafted bill cannot be offered again: its cost is spent.
+			patron_requests[abandoned]["status"] = PatronRequests.LAPSED if patron_drafts.has(abandoned) else PatronRequests.OPEN
 		patron_runtime = {}
 	bill_assist = BillAssist.empty()
 	level_runner = null
@@ -2797,6 +2807,29 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 	bill_assist = BillAssist.empty()
 
 
+## Why a bill of `ids` cannot be drafted now ("" when it can).
+func draft_refusal(ids: Array) -> String:
+	return DraftBill.refusal(ids, {"enacted": enacted_components, "xp": xp, "funds": int(meta.get("Funds", 0)),
+		"time_units": time_units, "last_draft_at": last_draft_at, "in_level": is_in_level()})
+
+
+## Drafts a bill from `ids`: pays the cost, files it as a runtime patron row
+## and starts its level. False (nothing paid) when it cannot be drafted.
+func start_draft(ids: Array) -> bool:
+	if not draft_refusal(ids).is_empty():
+		return false
+	var draft_id := DraftBill.id_for(draft_counter + 1)
+	patron_drafts[draft_id] = DraftBill.row_for(draft_id, ids)
+	if not start_patron_level(draft_id):
+		patron_drafts.erase(draft_id)
+		return false
+	draft_counter += 1
+	last_draft_at = time_units
+	_move_xp(-int(DataDB.balance.get("draft_bill_cost_xp", 350)))
+	_move_meta("Funds", -int(DataDB.balance.get("draft_bill_cost_funds", 300000)))
+	return true
+
+
 ## A passed Flagship gives the patron's backing for free for a while, using the
 ## same clock-expiry machinery as a timed backing.
 func _grant_free_backing(org: String, units: int) -> void:
@@ -2819,6 +2852,11 @@ func _conclude_patron_level() -> void:
 		return
 	var state: Dictionary = patron_requests[patron_bill_id]
 	if state["status"] != PatronRequests.ACCEPTED:
+		return
+	if patron_drafts.has(patron_bill_id):
+		# A drafted bill that never reached its vote is lost; no organization is owed anything.
+		state["status"] = PatronRequests.LAPSED
+		patron_requests[patron_bill_id] = state
 		return
 	state["tries"] = int(state.get("tries", 0)) + 1
 	if int(state["tries"]) >= 2:

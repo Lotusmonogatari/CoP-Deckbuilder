@@ -95,5 +95,8 @@
   "trade_flagship_no_deal_seats": 1,
   "trade_patron_cost": 3,
   "trade_ally_cost": 1,
+  "draft_bill_xp_cost": 350,
+  "draft_bill_funds_cost": 300000,
+  "draft_bill_cooldown_units": 30,
   "xp_tiers": {}
 }

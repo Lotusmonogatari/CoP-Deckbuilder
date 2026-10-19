@@ -168,6 +168,14 @@ if command -v xvfb-run >/dev/null 2>&1; then
     failures=$((failures + 1))
   fi
 
+  # And Draft a Bill: pick parts, preview, draft, start the level --
+  # 2026-10-19, new (patron step 7).
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/draft_test.tscn; then
+    echo ">> FAILED: Draft a Bill did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
   # And every screen shape at phone and tablet sizes: nothing runs off the
   # sides or the bottom -- 2026-10-14, new (dynamic screens plan, step 2).
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
