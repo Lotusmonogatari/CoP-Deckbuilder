@@ -4492,5 +4492,110 @@
     "english": "Now law: {parts}.",
     "placeholders": "parts",
     "notes": "2026-10-19 patron outcome pop-up."
+  },
+  {
+    "key": "patron_visit.name",
+    "where": "Patron Visit stage",
+    "english": "{org} Representative",
+    "placeholders": "org",
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.question_first",
+    "where": "Patron Visit stage",
+    "english": "We are counting on you to {phrase}. Will you stand with us?",
+    "placeholders": "phrase",
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.question_second",
+    "where": "Patron Visit stage",
+    "english": "And the other part: {phrase}. Can we count on that too?",
+    "placeholders": "phrase",
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.choice_a",
+    "where": "Patron Visit stage",
+    "english": "Yes. I will put my name to it.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.choice_b",
+    "where": "Patron Visit stage",
+    "english": "Yes, with changes to protect others.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.choice_c",
+    "where": "Patron Visit stage",
+    "english": "Not this time. Ask me again later.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.choice_d",
+    "where": "Patron Visit stage",
+    "english": "No. I will not carry it.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.response_a",
+    "where": "Patron Visit stage",
+    "english": "Then we have a sponsor. Thank you.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.response_b",
+    "where": "Patron Visit stage",
+    "english": "Changes we can discuss. You are still with us.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.response_c",
+    "where": "Patron Visit stage",
+    "english": "We hoped for more. Others will listen.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.response_d",
+    "where": "Patron Visit stage",
+    "english": "I will remember this.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.reaction_a",
+    "where": "Patron Visit stage",
+    "english": "Smiles and shakes your hand.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.reaction_b",
+    "where": "Patron Visit stage",
+    "english": "Nods slowly.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.reaction_c",
+    "where": "Patron Visit stage",
+    "english": "Folds the papers away.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
+  },
+  {
+    "key": "patron_visit.reaction_d",
+    "where": "Patron Visit stage",
+    "english": "Stands to leave.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron visit stage (draft)."
   }
 ]

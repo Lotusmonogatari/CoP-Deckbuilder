@@ -98,7 +98,7 @@ func test_merged_effects_are_scaled_and_never_round_to_nothing() -> void:
 
 func test_template_resolves_real_rooms() -> void:
 	var favor := DataDB.bill_level_templates[0] as Dictionary
-	assert_eq(LevelTemplate.stages(favor, "ST16", "National"), ["ST20", "ST16", "ST23"])
+	assert_eq(LevelTemplate.stages(favor, "ST16", "National"), ["ST263", "ST16", "ST23"])
 	var broken := {"stage_1": "NOT_A_TOKEN"}
 	assert_eq(LevelTemplate.stages(broken, "ST16", "National"), [])
 	var flagship := {"stage_1": "PATRON_MEETING", "stage_2": "HEARING", "stage_3": "PUBLIC", "stage_4": "CAUCUS", "stage_5": "VOTE"}

@@ -109,8 +109,8 @@ func test_the_template_adds_the_trade_stage_only_when_offered() -> void:
 	for template: Dictionary in DataDB.bill_level_templates:
 		if template["kind"] == "Favor":
 			favor = template
-	assert_eq(LevelTemplate.stages(favor, "ST16", "National", false, true), ["ST20", "ST16", "ST262", "ST23"])
-	assert_eq(LevelTemplate.stages(favor, "ST16", "National", false, false), ["ST20", "ST16", "ST23"])
+	assert_eq(LevelTemplate.stages(favor, "ST16", "National", false, true), ["ST263", "ST16", "ST262", "ST23"])
+	assert_eq(LevelTemplate.stages(favor, "ST16", "National", false, false), ["ST263", "ST16", "ST23"])
 
 
 func _level_with_trade() -> String:

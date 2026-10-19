@@ -47,7 +47,7 @@ func test_accepting_builds_a_short_level_that_is_not_in_the_levels_list() -> voi
 	assert_true(GameState.is_in_level())
 	var stages := GameState.level_runner.stages
 	assert_true(stages.size() in [3, 4], "a Favor: meeting, hearing, an optional lobbyist trade, the vote")
-	assert_eq(str(stages[0]["stage_id"]), "ST20")
+	assert_eq(str(stages[0]["stage_id"]), "ST263")
 	assert_eq(str(stages[1]["stage_id"]), "ST16")
 	var last: Dictionary = stages[stages.size() - 1]
 	assert_eq(str(last["mode"]), "Vote")

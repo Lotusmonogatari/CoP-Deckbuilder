@@ -118,9 +118,9 @@ func test_the_template_adds_the_visit_only_when_one_is_offered() -> void:
 		if template["kind"] == "Flagship":
 			flagship = template
 	assert_eq(LevelTemplate.stages(flagship, "ST16", "National", true),
-			["ST20", "ST16", "ST260", "ST261", "ST04", "ST03", "ST23"])
+			["ST263", "ST16", "ST260", "ST261", "ST04", "ST03", "ST23"])
 	assert_eq(LevelTemplate.stages(flagship, "ST16", "National", false),
-			["ST20", "ST16", "ST04", "ST03", "ST23"])
+			["ST263", "ST16", "ST04", "ST03", "ST23"])
 
 
 func test_a_flagship_level_carries_a_visit_and_a_favor_does_not() -> void:
