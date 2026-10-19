@@ -696,7 +696,7 @@ func _open_card(card_id: String) -> void:
 		%ZoomColumn.move_child(_card_back, 0)
 
 	var question_line := (describe_question_for(engine.question_multiplier_for(card))
-		if engine.question_open() else "")
+		if not engine.active_question().is_empty() else "")
 	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card),
 		describe_room_for(engine.affinity_for(card)), question_line)
 

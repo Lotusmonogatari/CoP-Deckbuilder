@@ -1104,7 +1104,7 @@ func _data_driven_card() -> Dictionary:
 func _three_turn_press() -> BattleEngine:
 	var config := _press()
 	config["stage"]["turn_limit"] = 3
-	config["stage"]["question_strong_multiplier"] = 1.3
+	config["question_strong_multiplier"] = 1.3
 	return _start(config)
 
 
@@ -1117,17 +1117,24 @@ func test_the_turns_question_stays_the_same_after_a_card_is_played() -> void:
 	engine.play_card("GAIN3")
 	assert_eq(engine.turn_question()["id"], "Q1", "same question until the turn ends")
 	assert_false(engine.question_open(), "the turn's question is answered")
-	assert_true(engine.answer_effect({"suit": "Earnest"}).is_empty(),
-		"nothing more to answer this turn")
+	assert_false(engine.answer_effect(_data_driven_card()).is_empty(),
+		"later cards still count toward this turn's question")
 
 
-func test_a_second_card_in_a_turn_uses_no_question_multiplier_or_answer_flag() -> void:
+func test_every_card_in_a_turn_answers_the_same_question() -> void:
 	var engine := _three_turn_press()
-	engine.state.hand.assign(["GAIN3", "ATTACK3"])
+	engine.state.hand.assign(["GAIN3", "ATTACK3", "ATTACK3"])
 	engine.play_card("GAIN3")
-	# Q2 would grade a card, but it is not this turn's question.
-	assert_eq(engine.question_multiplier_for(_data_driven_card()), 1.0)
-	assert_false(bool(engine.preview(_data_driven_card()).get("answers_question", true)))
+	var index_after_first := engine.state.question_index
+	# Q1 invites Data Driven: each later Data Driven card is a strong answer to Q1.
+	assert_eq(engine.question_multiplier_for(_data_driven_card()), 1.3)
+	assert_true(bool(engine.preview(_data_driven_card()).get("answers_question", false)))
+	engine.play_card("ATTACK3")
+	engine.play_card("ATTACK3")
+	assert_eq(engine.state.question_index, index_after_first, "the queue moves once per turn")
+	assert_eq(engine.state.booster_tally.get("BO08", {}).get("pleased", 0), 2,
+		"both strong answers count for the organization")
+	assert_eq(engine.turn_question()["id"], "Q1")
 
 
 func test_the_next_turn_picks_up_the_next_question() -> void:

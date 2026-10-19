@@ -376,9 +376,11 @@ func play_card(card_id: String) -> Dictionary:
 		state.next_intent_revealed = true
 
 	var question_answer := {}
-	if not _questions.is_empty() and state.questions_answered_this_turn < _questions_per_turn():
-		question_answer = _answer_question(card)
-		state.questions_answered_this_turn += 1
+	if not _questions.is_empty() and not active_question().is_empty():
+		var opens_question := question_open()
+		question_answer = _answer_question(card, opens_question)
+		if opens_question:
+			state.questions_answered_this_turn += 1
 
 	# Who was in front of us before the outcome was checked. If a card
 	# finishes a debater the whole room changes underneath the player, and
@@ -1116,7 +1118,7 @@ func preview(card: Dictionary) -> Dictionary:
 	# Every card answers the question in front of you, whatever else it does
 	# — so a card whose numbers are all inert here still spends a question.
 	# The card face has to say so, or spending one is an accident.
-	effect["answers_question"] = question_open()
+	effect["answers_question"] = not active_question().is_empty()
 
 	return effect
 
@@ -1165,15 +1167,27 @@ func turn_question() -> Dictionary:
 ## multiplier composed alongside stage affinity — 1.0 outside a
 ## question-asking room, or on a Medium grade.
 func question_multiplier_for(card: Dictionary) -> float:
-	if not question_open():
-		return 1.0
-	var question := current_question()
+	var question := active_question()
 	if question.is_empty():
 		return 1.0
 	match _grade_of(card, question):
 		"S": return _question_strong_multiplier
 		"W": return _question_weak_multiplier
 	return 1.0
+
+
+## The question a card played now is answered against: the one in front of
+## you while it is open, otherwise the one already answered this turn, since
+## every card played in a turn counts toward that turn's question
+## (Cameron, 2026-10-19). Empty when the room asks nothing.
+func active_question() -> Dictionary:
+	if question_open():
+		return current_question()
+	if state.questions_answered_this_turn > 0:
+		var idx := state.question_index - 1
+		if idx >= 0 and idx < _questions.size():
+			return _questions[idx]
+	return {}
 
 
 ## True while a card played now would still answer this turn's question.
@@ -1234,8 +1248,8 @@ func question_caption() -> String:
 ## the standing weak-answer counter.
 ##
 ## Returns { "grade": "S"/"M"/"W" }.
-func _answer_question(card: Dictionary) -> Dictionary:
-	var question := current_question()
+func _answer_question(card: Dictionary, advance := true) -> Dictionary:
+	var question := active_question()
 	if question.is_empty():
 		return {}
 
@@ -1272,7 +1286,8 @@ func _answer_question(card: Dictionary) -> Dictionary:
 					state.displeased_boosters.append(booster)
 			state.weak_answers += 1
 
-	state.question_index += 1
+	if advance:
+		state.question_index += 1
 	return {"grade": grade}
 
 
@@ -1280,9 +1295,7 @@ func _answer_question(card: Dictionary) -> Dictionary:
 ## changing anything: {grade, pleased, displeased, opposed} (lists of
 ## organisation ids). Empty when no question is open.
 func answer_effect(card: Dictionary) -> Dictionary:
-	if state.questions_answered_this_turn >= _questions_per_turn():
-		return {}
-	var question := current_question()
+	var question := active_question()
 	if question.is_empty():
 		return {}
 	var grade := _grade_of(card, question)
