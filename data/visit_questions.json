@@ -1,0 +1,98 @@
+[
+  {
+    "question_id": "MV01",
+    "text_en": "Why should I back a bill that would {component}?"
+  },
+  {
+    "question_id": "MV02",
+    "text_en": "Who in my district actually benefits if we {component}?"
+  },
+  {
+    "question_id": "MV03",
+    "text_en": "My voters did not send me here to {component}. Convince me."
+  },
+  {
+    "question_id": "MV04",
+    "text_en": "What happens to the people left out if we {component}?"
+  },
+  {
+    "question_id": "MV05",
+    "text_en": "Is {component} really the best use of the Assembly's time?"
+  },
+  {
+    "question_id": "MV06",
+    "text_en": "Would you still push to {component} if it cost you votes at home?"
+  },
+  {
+    "question_id": "MV07",
+    "text_en": "Tell me how the plan to {component} is paid for."
+  },
+  {
+    "question_id": "MV08",
+    "text_en": "Why not wait, instead of moving now to {component}?"
+  },
+  {
+    "question_id": "MV09",
+    "text_en": "What do you say to those who oppose any move to {component}?"
+  },
+  {
+    "question_id": "MV10",
+    "text_en": "Convince me this is not just a favor for one group when you {component}."
+  },
+  {
+    "question_id": "MV11",
+    "text_en": "How would you explain it to my party if I stood with you to {component}?"
+  },
+  {
+    "question_id": "MV12",
+    "text_en": "What is the first thing that goes wrong if we {component}?"
+  },
+  {
+    "question_id": "MV13",
+    "text_en": "What makes you think {component} will work here?"
+  },
+  {
+    "question_id": "MV14",
+    "text_en": "Who asked you to {component}, and why should I trust them?"
+  },
+  {
+    "question_id": "MV15",
+    "text_en": "If I backed you to {component}, what would you owe me?"
+  },
+  {
+    "question_id": "MV16",
+    "text_en": "What would it take for me to stand with you on {component}?"
+  },
+  {
+    "question_id": "MV17",
+    "text_en": "Do you really believe in {component}, or is it convenient?"
+  },
+  {
+    "question_id": "MV18",
+    "text_en": "Is there a smaller step than {component} that we could agree on?"
+  },
+  {
+    "question_id": "MV19",
+    "text_en": "How do I know you will not drop {component} when it gets hard?"
+  },
+  {
+    "question_id": "MV20",
+    "text_en": "Why should a member from my party take a risk to {component}?"
+  },
+  {
+    "question_id": "MV21",
+    "text_en": "Give me one reason my constituents would thank me for {component}."
+  },
+  {
+    "question_id": "MV22",
+    "text_en": "What do the experts say about {component}, and do you agree?"
+  },
+  {
+    "question_id": "MV23",
+    "text_en": "Is {component} fair to the next generation?"
+  },
+  {
+    "question_id": "MV24",
+    "text_en": "Do you have the votes to {component}, or are you counting on me?"
+  }
+]

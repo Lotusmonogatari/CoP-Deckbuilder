@@ -1,0 +1,182 @@
+[
+  {
+    "answer_id": "MA01",
+    "style": "Earnest",
+    "line_en": "I will be straight with you: I believe this is right, and I will say so to anyone."
+  },
+  {
+    "answer_id": "MA02",
+    "style": "Earnest",
+    "line_en": "I am not asking for a favor. I am asking you to look at it honestly with me."
+  },
+  {
+    "answer_id": "MA03",
+    "style": "Earnest",
+    "line_en": "You deserve a plain answer, so here it is: I think it helps, and I will own it if it does not."
+  },
+  {
+    "answer_id": "MA04",
+    "style": "Earnest",
+    "line_en": "I have nothing to hide here. Ask me anything and I will answer."
+  },
+  {
+    "answer_id": "MA05",
+    "style": "Earnest",
+    "line_en": "I came to do what I think is right, and this is what I think is right."
+  },
+  {
+    "answer_id": "MA06",
+    "style": "Earnest",
+    "line_en": "If I am wrong, tell me where, and I will listen."
+  },
+  {
+    "answer_id": "MA07",
+    "style": "Emotional",
+    "line_en": "Think of the families who live with this. That is who I am doing it for."
+  },
+  {
+    "answer_id": "MA08",
+    "style": "Emotional",
+    "line_en": "I have sat in their kitchens. I cannot walk away from what I heard there."
+  },
+  {
+    "answer_id": "MA09",
+    "style": "Emotional",
+    "line_en": "This is about people, not paper, and I think you know it."
+  },
+  {
+    "answer_id": "MA10",
+    "style": "Emotional",
+    "line_en": "When I picture the people waiting on this, I cannot say no."
+  },
+  {
+    "answer_id": "MA11",
+    "style": "Emotional",
+    "line_en": "Someone is hurting right now, and we can end it."
+  },
+  {
+    "answer_id": "MA12",
+    "style": "Emotional",
+    "line_en": "I know it moves you too. I saw it on your face when we began."
+  },
+  {
+    "answer_id": "MA13",
+    "style": "Appeal",
+    "line_en": "People across the country want this, and they will remember who helped."
+  },
+  {
+    "answer_id": "MA14",
+    "style": "Appeal",
+    "line_en": "It is popular for a reason, and it will be remembered as a win."
+  },
+  {
+    "answer_id": "MA15",
+    "style": "Appeal",
+    "line_en": "Stand with the crowd on this one. They are on your side."
+  },
+  {
+    "answer_id": "MA16",
+    "style": "Appeal",
+    "line_en": "Your voters will cheer when they see this come through."
+  },
+  {
+    "answer_id": "MA17",
+    "style": "Appeal",
+    "line_en": "This is the kind of result everyone wants to be a part of."
+  },
+  {
+    "answer_id": "MA18",
+    "style": "Appeal",
+    "line_en": "Be on the side people applaud. It will be a good day for your name."
+  },
+  {
+    "answer_id": "MA19",
+    "style": "Data Driven",
+    "line_en": "The numbers back it. Let me walk you through the figures."
+  },
+  {
+    "answer_id": "MA20",
+    "style": "Data Driven",
+    "line_en": "Here is the cost, the saving and the timeline, line by line."
+  },
+  {
+    "answer_id": "MA21",
+    "style": "Data Driven",
+    "line_en": "The evidence from elsewhere points one way."
+  },
+  {
+    "answer_id": "MA22",
+    "style": "Data Driven",
+    "line_en": "I brought the projections. Every one of them holds up."
+  },
+  {
+    "answer_id": "MA23",
+    "style": "Data Driven",
+    "line_en": "Look at the data from places that have tried it."
+  },
+  {
+    "answer_id": "MA24",
+    "style": "Data Driven",
+    "line_en": "Run the figures yourself. I am confident in what you will find."
+  },
+  {
+    "answer_id": "MA25",
+    "style": "Divisive",
+    "line_en": "Some people want this to fail. Which side are you on?"
+  },
+  {
+    "answer_id": "MA26",
+    "style": "Divisive",
+    "line_en": "The opposition will fight us on it. We should not blink."
+  },
+  {
+    "answer_id": "MA27",
+    "style": "Divisive",
+    "line_en": "There are winners and there are those who stand in the way. Choose."
+  },
+  {
+    "answer_id": "MA28",
+    "style": "Divisive",
+    "line_en": "Anyone who blocks this is protecting their own comfort. You are better than that."
+  },
+  {
+    "answer_id": "MA29",
+    "style": "Divisive",
+    "line_en": "This is a fight worth having. I would rather have you in it with me."
+  },
+  {
+    "answer_id": "MA30",
+    "style": "Divisive",
+    "line_en": "Let them complain. We know who this serves, and who it threatens."
+  },
+  {
+    "answer_id": "MA31",
+    "style": "Duplicitous",
+    "line_en": "Say yes for your own reasons, and let the credit sort itself out."
+  },
+  {
+    "answer_id": "MA32",
+    "style": "Duplicitous",
+    "line_en": "Let us just say it helps your district, and leave the details out of it."
+  },
+  {
+    "answer_id": "MA33",
+    "style": "Duplicitous",
+    "line_en": "No one needs to know what we agreed in this room."
+  },
+  {
+    "answer_id": "MA34",
+    "style": "Duplicitous",
+    "line_en": "Let us call it something that sounds smaller, and it will pass quietly."
+  },
+  {
+    "answer_id": "MA35",
+    "style": "Duplicitous",
+    "line_en": "You can tell your party whatever you like. I will not contradict you."
+  },
+  {
+    "answer_id": "MA36",
+    "style": "Duplicitous",
+    "line_en": "Between us, there is room to rearrange this so everyone gets what they need."
+  }
+]

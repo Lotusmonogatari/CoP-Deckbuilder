@@ -699,7 +699,7 @@ SHEETS = {
         "key": "template_id",
         "id_pattern": r"^BT\d+$",
         "optional_sheet": True,
-        "optional": ["Stage 4", "Stage 5", "Note"],
+        "optional": ["Stage 4", "Stage 5", "Stage 6", "Stage 7", "Stage 8", "Visit Parties", "Note"],
         "columns": [
             ("Template ID", "template_id", "id"),
             ("Kind", "kind", "str"),
@@ -709,7 +709,32 @@ SHEETS = {
             ("Stage 3", "stage_3", "str"),
             ("Stage 4", "stage_4", "str"),
             ("Stage 5", "stage_5", "str"),
+            ("Stage 6", "stage_6", "str"),
+            ("Stage 7", "stage_7", "str"),
+            ("Stage 8", "stage_8", "str"),
+            ("Visit Parties", "visit_parties", "id_list"),
             ("Note", "note", "str"),
+        ],
+    },
+    # Visit Questions and Visit Answers: what a member says when they visit a
+    # patron Flagship (the MP visit, 2026-10-19). A stem is the member's
+    # question ({component} is the bill's lead component); an answer is one
+    # way of replying in one rhetorical style, and the game offers four.
+    "Visit Questions": {
+        "out": "visit_questions.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Question ID", "question_id", "id"),
+            ("Text (EN)", "text_en", "str"),
+        ],
+    },
+    "Visit Answers": {
+        "out": "visit_answers.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Answer ID", "answer_id", "id"),
+            ("Style", "style", "str"),
+            ("Line (EN)", "line_en", "str"),
         ],
     },
     # Party Values: Cameron's 34-dimension table in long form (one row per
@@ -2915,16 +2940,28 @@ def fold_questions(data, report):
                 elif other == cid:
                     report.error("Bill Components", f"{cid}: {col} names itself")
     template_rows = {t["template_id"]: t for t in data.get("bill_level_templates", [])}
-    template_tokens = {"PATRON_MEETING", "HEARING", "PUBLIC", "CAUCUS", "VOTE"}
+    template_tokens = {"PATRON_MEETING", "HEARING", "PUBLIC", "CAUCUS", "VOTE", "MP_VISIT"}
     for tid, t in template_rows.items():
         if t.get("kind") not in ("Favor", "Flagship"):
             report.error("Bill Level Templates", f"{tid}: Kind '{t.get('kind')}' must be Favor or Flagship")
-        slots = [t.get(f"stage_{i}") for i in range(1, 6) if t.get(f"stage_{i}")]
+        slots = [t.get(f"stage_{i}") for i in range(1, 9) if t.get(f"stage_{i}")]
+        for party in t.get("visit_parties") or []:
+            if party not in {p_.get("party_id") for p_ in data.get("parties", [])}:
+                report.error("Bill Level Templates", f"{tid}: Visit Parties names '{party}', which is not a party_id")
+        if "MP_VISIT" in slots and not t.get("visit_parties"):
+            report.warn("Bill Level Templates", f"{tid} has MP_VISIT but no Visit Parties, so no visit will ever be offered")
         for tok in slots:
             if tok not in template_tokens:
                 report.error("Bill Level Templates", f"{tid}: '{tok}' is not one of {', '.join(sorted(template_tokens))}")
         if slots and slots[-1] != "VOTE":
             report.error("Bill Level Templates", f"{tid}: the last stage must be VOTE")
+    visit_styles = {s.get("element") or s.get("suit") for s in data.get("suits", [])} if isinstance(data.get("suits"), list) else set()
+    for ans in data.get("visit_answers", []):
+        if visit_styles and ans.get("style") not in visit_styles:
+            report.error("Visit Answers", f"{ans.get('answer_id')}: Style '{ans.get('style')}' is not a rhetorical style")
+    for style_name in visit_styles:
+        if data.get("visit_answers") and sum(1 for a_ in data["visit_answers"] if a_.get("style") == style_name) < 2:
+            report.warn("Visit Answers", f"{style_name} has fewer than two answers, so a visit can repeat a line")
     patron_pairs = set()
     for r in data.get("patron_bills", []):
         pid_ = r["patron_bill_id"]; org = r.get("organization"); kind = r.get("kind")

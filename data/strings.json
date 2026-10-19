@@ -3841,5 +3841,187 @@
     "english": "Lobbyists working against you: -{count}.",
     "placeholders": "count",
     "notes": "2026-10-19 patron bill: seats won over by visits / taken by lobbyists, shown under the bill before the vote."
+  },
+  {
+    "key": "visit.offer_title",
+    "where": "A visit",
+    "english": "Member Visit",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.offer_text",
+    "where": "A visit",
+    "english": "{name} of {party} has come to talk. Win them over, and they stand with you on this vote. Take the visit?",
+    "placeholders": "name, party",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.take",
+    "where": "A visit",
+    "english": "Take the visit",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.skip",
+    "where": "A visit",
+    "english": "Skip it",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.caption",
+    "where": "A visit",
+    "english": "Question {number} of {total}",
+    "placeholders": "number, total",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.continue",
+    "where": "A visit",
+    "english": "Continue",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.done_title",
+    "where": "A visit",
+    "english": "The visit is over",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.done_body",
+    "where": "A visit",
+    "english": "Rapport with {name}: {rapport}. The fight begins with {bonus} support for you.",
+    "placeholders": "name, rapport, bonus",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_strong_1",
+    "where": "A visit",
+    "english": "{name} nods slowly. That is the kind of answer they respect.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_strong_2",
+    "where": "A visit",
+    "english": "{name} leans forward, interested at last.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_strong_3",
+    "where": "A visit",
+    "english": "{name} almost smiles. That landed.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_medium_1",
+    "where": "A visit",
+    "english": "{name} listens, unmoved but polite.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_medium_2",
+    "where": "A visit",
+    "english": "{name} shrugs. Not wrong, not convincing.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_medium_3",
+    "where": "A visit",
+    "english": "{name} makes a note and says nothing.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_weak_1",
+    "where": "A visit",
+    "english": "{name} frowns. That did not land.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_weak_2",
+    "where": "A visit",
+    "english": "{name} folds their arms and looks away.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.react_weak_3",
+    "where": "A visit",
+    "english": "{name} sighs. You have lost some ground.",
+    "placeholders": "name",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.style.earnest",
+    "where": "A visit",
+    "english": "an honest, plain answer",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.style.emotional",
+    "where": "A visit",
+    "english": "a story that touches the heart",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.style.appeal",
+    "where": "A visit",
+    "english": "something the crowd will cheer",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.style.data_driven",
+    "where": "A visit",
+    "english": "hard numbers and evidence",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.style.divisive",
+    "where": "A visit",
+    "english": "a firm line against the other side",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.style.duplicitous",
+    "where": "A visit",
+    "english": "a quiet, clever arrangement",
+    "placeholders": null,
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.brief_1",
+    "where": "A visit",
+    "english": "{staff} leans in. \"{name} only really listens to {first}. Anything else, they tune out.\"",
+    "placeholders": "staff, name, first",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.brief_2",
+    "where": "A visit",
+    "english": "{staff} leans in. \"{name} tends to respond to {first}, and will hear out {second}. Anything else, they tune out.\"",
+    "placeholders": "staff, name, first, second",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
+  },
+  {
+    "key": "visit.brief_3",
+    "where": "A visit",
+    "english": "{staff} leans in. \"{name} tends to respond to {first} and {second}. They will hear out {third}, and they are cold to the rest.\"",
+    "placeholders": "staff, name, first, second, third",
+    "notes": "2026-10-19 MP visit (patron Flagships)."
   }
 ]
