@@ -358,6 +358,8 @@ func _reallocate_player_vote(picked: String) -> void:
 	var moved: Dictionary = _positions[index]
 	var from_key := "votes_%s" % assumed.to_lower()
 	var to_key := "votes_%s" % picked.to_lower()
+	if int(moved.get(from_key, 0)) <= 0:
+		return   # nobody in that bucket to move: never create a seat
 	moved[from_key] = maxi(int(moved.get(from_key, 0)) - 1, 0)
 	moved[to_key] = int(moved.get(to_key, 0)) + 1
 	_positions[index] = moved

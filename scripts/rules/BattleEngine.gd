@@ -755,7 +755,8 @@ func _decline_question() -> void:
 
 
 func _resolve_intent(intent: Dictionary) -> Dictionary:
-	var value := int(intent.get("value", 0))
+	# Never negative: a bad data row must not turn an attack into free guard.
+	var value := maxi(SafeNum.to_int(intent.get("value")), 0)
 
 	match str(intent.get("verb", "none")):
 		"attack":
@@ -1422,6 +1423,11 @@ func _reset_for_new_bout() -> void:
 	state.next_card_discount = 0
 	state.next_intent_revealed = false
 	state.turn = 1
+	# A fresh bout is a fresh turn: what was played against the last opponent
+	# must not hide a pass against this one.
+	state.cards_played_this_turn = 0
+	state.items_used_this_turn = {}
+	state.questions_answered_this_turn = 0
 
 	state.energy = state.energy_max
 	if state.energy_mode != "pool":

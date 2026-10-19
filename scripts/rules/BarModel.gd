@@ -163,10 +163,9 @@ static func for_stage(stage: Dictionary) -> Model:
 ##
 ## On a single bar there is nobody to buy anyone from, so a point is a point.
 func player_gains(amount: int) -> int:
+	last_gain = {"from_undecided": 0, "from_other_side": 0, "wasted": 0}
 	if amount <= 0:
 		return 0
-
-	last_gain = {"from_undecided": 0, "from_other_side": 0, "wasted": 0}
 
 	if model != Model.SHARED_POOL:
 		var before := player
