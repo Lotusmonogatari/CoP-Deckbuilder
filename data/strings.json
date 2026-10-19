@@ -4296,5 +4296,173 @@
     "english": "{name} looks at the clock. You have lost ground.",
     "placeholders": "name",
     "notes": "2026-10-19 lobbyist trade (patron bills)."
+  },
+  {
+    "key": "office.requests_heading",
+    "where": "Office - Levels",
+    "english": "Requests",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "office.requests_hint",
+    "where": "Office - Levels",
+    "english": "Organizations that think well of you are asking you to carry a bill.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.row",
+    "where": "Request panel",
+    "english": "{org}: {bill}",
+    "placeholders": "org, bill",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.title",
+    "where": "Request panel",
+    "english": "A bill to carry",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.line",
+    "where": "Request panel",
+    "english": "{org} asks you to carry a bill: {bill}. Will you?",
+    "placeholders": "org, bill",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.parts",
+    "where": "Request panel",
+    "english": "What it does: {parts}.",
+    "placeholders": "parts",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.default_vote",
+    "where": "Request panel",
+    "english": "As things stand the vote runs {yes} Aye, {no} Nay and {abstain} abstaining; {needed} Aye are needed.",
+    "placeholders": "yes, no, abstain, needed",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.influence_needed",
+    "where": "Request panel",
+    "english": "It will not pass unless you can sway other members.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.stance_supportive",
+    "where": "Request panel",
+    "english": "{party} backs this bill.",
+    "placeholders": "party",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.stance_opposed",
+    "where": "Request panel",
+    "english": "{party} is against this bill.",
+    "placeholders": "party",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.stance_neutral",
+    "where": "Request panel",
+    "english": "{party} has no position on this bill.",
+    "placeholders": "party",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.reward_pass",
+    "where": "Request panel",
+    "english": "If it passes, {org} will think more of you (+{count}).",
+    "placeholders": "org, count",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.amended",
+    "where": "Request panel",
+    "english": "Amended: the rewards are {percent}% of the usual.",
+    "placeholders": "percent",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.accept",
+    "where": "Request panel",
+    "english": "Carry this bill",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.amend_title",
+    "where": "Request panel",
+    "english": "Or change one part",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.amend_note",
+    "where": "Request panel",
+    "english": "An amended bill earns {percent}% of the usual reward.",
+    "placeholders": "percent",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.amend_option",
+    "where": "Request panel",
+    "english": "Swap \"{old}\" for \"{new}\"",
+    "placeholders": "old, new",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.amend_undo",
+    "where": "Request panel",
+    "english": "Back to the original bill",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.decline",
+    "where": "Request panel",
+    "english": "Decline (costs {count} standing with {org})",
+    "placeholders": "count, org",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "request.cannot_start",
+    "where": "Request panel",
+    "english": "That request cannot be started right now.",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "record.carried_heading",
+    "where": "Your Record",
+    "english": "Bills you carried",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "record.carried_line",
+    "where": "Your Record",
+    "english": "{name}: {result}",
+    "placeholders": "name, result",
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "record.carried_passed",
+    "where": "Your Record",
+    "english": "passed",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
+  },
+  {
+    "key": "record.carried_failed",
+    "where": "Your Record",
+    "english": "failed",
+    "placeholders": null,
+    "notes": "2026-10-19 patron requests (step 4)."
   }
 ]

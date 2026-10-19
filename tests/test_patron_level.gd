@@ -280,3 +280,29 @@ func test_every_patron_bill_builds_a_playable_level() -> void:
 				var engine := FloorVoteEngine.new()
 				assert_true(engine.setup({"bill": stage["floor_vote"], "player_party": "Frontier Party"}), id)
 		DataDB.clear_runtime()
+
+
+func test_a_request_shows_only_after_its_countdown() -> void:
+	GameState.booster_standing["BO05"] = 55
+	assert_false(GameState.patron_requests_shown().has("PB051"), "armed, not yet due")
+	GameState.time_units += int(DataDB.balance["special_level_delay"])
+	assert_true(GameState.patron_requests_shown().has("PB051"))
+	GameState.decline_patron_bill("PB051")
+	assert_false(GameState.patron_requests_shown().has("PB051"), "declined requests are gone")
+
+
+func test_no_more_requests_show_than_the_lever_allows() -> void:
+	for org: String in ["BO05", "BO07", "BO10", "BO24"]:
+		GameState.booster_standing[org] = 60
+	GameState.arm_patron_requests()
+	GameState.time_units += 20
+	assert_lte(GameState.patron_requests_shown().size(), int(DataDB.balance["patron_requests_waiting_at_once"]))
+
+
+func test_the_countdown_survives_a_save() -> void:
+	GameState.booster_standing["BO05"] = 55
+	GameState.arm_patron_requests()
+	var saved := GameState.to_save()
+	GameState.start_new_run("PC01")
+	GameState.load_save(saved)
+	assert_true(GameState.patron_armed.has("PB051"))

@@ -1,0 +1,55 @@
+class_name RequestLines
+extends RefCounted
+## What the Request panel says about a patron bill (patron step 4, 2026-10-19):
+## the bill's parts, the default vote, where the player's own party stands and
+## what passing or declining would do. Reads the composed bill and the Balance
+## levers it is given; the words come from the Text tab.
+
+const STANCE_KEYS := {
+	"Supportive": "request.stance_supportive",
+	"Opposed": "request.stance_opposed",
+	"Neutral": "request.stance_neutral",
+}
+
+
+## "Fund harbor repairs; Cap fishing quotas": the bill's parts by short label.
+static func parts_line(component_ids: Array, components: Array) -> String:
+	var by_id := ComposedBill.index(components)
+	var labels: Array[String] = []
+	for id: Variant in component_ids:
+		labels.append(str((by_id.get(str(id), {}) as Dictionary).get("short_label", id)))
+	return "; ".join(labels)
+
+
+## The vote if nobody is swayed: "46 Aye, 30 Nay, 25 abstaining; 51 Aye needed."
+static func default_vote_line(bill: Dictionary) -> String:
+	var totals := {"Yes": 0, "No": 0, "Abstain": 0}
+	for position: Dictionary in (bill.get("positions", []) as Array):
+		totals["Yes"] += int(position.get("votes_yes", 0))
+		totals["No"] += int(position.get("votes_no", 0))
+		totals["Abstain"] += int(position.get("votes_abstain", 0))
+	return Text.say("request.default_vote", {"yes": totals["Yes"], "no": totals["No"],
+		"abstain": totals["Abstain"], "needed": FloorVoteEngine.yes_needed(totals,
+			FloorVoteEngine.requirement_of(bill), int(DataDB.balance.get("supermajority_percent", 67)))})
+
+
+## Where the player's own party stands on the bill ("" if it has no position).
+static func own_party_line(bill: Dictionary, party_name: String) -> String:
+	var own_id := str(DataDB.get_party(party_name).get("party_id", ""))
+	for position: Dictionary in (bill.get("positions", []) as Array):
+		if str(position.get("party_id", "")) == own_id:
+			var key: String = STANCE_KEYS.get(str(position.get("disposition", "Neutral")), "request.stance_neutral")
+			return Text.say(key, {"party": party_name})
+	return ""
+
+
+## What passing would do for the patron and the ally: one line each.
+static func reward_lines(row: Dictionary, ally: String, amended: bool) -> Array[String]:
+	var lines: Array[String] = []
+	var result := PatronRequests.outcome(row, ally, [], true, amended, DataDB.balance)
+	for entry: Dictionary in (result["standing"] as Array):
+		var delta := int(entry["delta"])
+		if delta > 0:
+			lines.append(Text.say("request.reward_pass", {"org": str(DataDB.get_booster(str(entry["target"])).get("name_en", entry["target"])),
+				"count": delta}))
+	return lines

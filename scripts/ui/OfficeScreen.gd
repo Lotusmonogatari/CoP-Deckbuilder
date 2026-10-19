@@ -89,6 +89,11 @@ var _card_reveal_panel: Overlay
 ## Built in code, the same way _trigger_alert_panel is.
 var _resume_choice_panel: Overlay
 var _special_forced_panel: Overlay
+## A patron bill's Request panel (Accept, Amend, Decline) and the Amend swap
+## being previewed ("" when none).
+var _request_panel: Overlay
+var _request_replace := ""
+var _request_with := ""
 
 ## New Game: the warning before a run is thrown away, and the choice of
 ## protagonist. Built in code, like the inventory.
@@ -173,6 +178,9 @@ func _ready() -> void:
 	_special_forced_panel.dismissable = false
 	_special_forced_panel.show_back = false
 	add_child(_special_forced_panel)
+	_request_panel = Overlay.new()
+	_request_panel.name = "RequestPanel"
+	add_child(_request_panel)
 
 	_ticker = TickerPresenter.new(_ticker_strip, _ticker_label)
 
@@ -939,6 +947,25 @@ func _show_record() -> void:
 				}), "", _show_law.bind(law), 100.0)
 			button.name = "Law_" + law_id
 			rows.append(button)
+
+	# Bills organizations asked the player to carry (patron step 4).
+	var carried: Array[Control] = []
+	for patron_id: String in GameState.patron_requests:
+		var status := str((GameState.patron_requests[patron_id] as Dictionary).get("status", ""))
+		if status != PatronRequests.PASSED and status != PatronRequests.FAILED:
+			continue
+		var patron_row := PatronLevel.patron_bill(patron_id)
+		var org_id := str(patron_row.get("organization", ""))
+		var bill_name := str((GameState.patron_composed.get(patron_id, {}) as Dictionary).get("bill", {}).get("bill_name", patron_id))
+		var line_key := "pass_line" if status == PatronRequests.PASSED else "fail_line"
+		carried.append(UiKit.line(Text.say("record.carried_line", {"name": bill_name,
+			"result": Text.say("record.carried_passed" if status == PatronRequests.PASSED else "record.carried_failed")})))
+		var story := str(patron_row.get(line_key, ""))
+		if not story.is_empty():
+			carried.append(UiKit.line(story.replace("{org}", str(DataDB.get_booster(org_id).get("name_en", org_id))).replace("{bill}", bill_name), "SmallLabel"))
+	if not carried.is_empty():
+		rows.append(UiKit.heading(Text.say("record.carried_heading")))
+		rows.append_array(carried)
 
 	rows.append(UiKit.heading(Text.say("office.record_tiers_heading")))
 	var tiers: Array = []
@@ -1952,6 +1979,14 @@ func _show_levels() -> void:
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("office.levels_blurb")))
 
+	# Organizations asking the player to carry a bill sit first (patron step 4).
+	var shown := GameState.patron_requests_shown()
+	if not shown.is_empty():
+		rows.append(UiKit.heading(Text.say("office.requests_heading")))
+		rows.append(UiKit.line(Text.say("office.requests_hint"), "SmallLabel"))
+		for patron_id: String in shown:
+			rows.append(_request_row(patron_id))
+
 	# Special levels that have come due sit above everything else.
 	var due_rows := GameState.due_special_level_rows()
 	if not due_rows.is_empty():
@@ -1985,6 +2020,94 @@ func _show_levels() -> void:
 			rows.append(_level_row(level))
 
 	_levels_panel.open(Text.say("office.levels_title"), rows)
+
+
+## One request in the Requests block: the organization's icon and a button.
+func _request_row(patron_bill_id: String) -> Control:
+	var row := PatronLevel.patron_bill(patron_bill_id)
+	var org := str(row.get("organization", ""))
+	var composed := PatronLevel.compose(patron_bill_id, GameState.enacted_components)
+	var button := UiKit.action_button(Text.say("request.row", {
+			"org": str(DataDB.get_booster(org).get("name_en", org)),
+			"bill": str((composed["bill"] as Dictionary).get("bill_name", ""))}), "",
+			_open_request.bind(patron_bill_id, "", ""), 100.0)
+	button.name = "Request_" + patron_bill_id
+	return _with_booster_icon(org, button)
+
+
+## The Request panel: what is asked, what the vote looks like, the rewards,
+## and the three answers. `replace`/`with_id` is an Amend swap being previewed.
+func _open_request(patron_bill_id: String, replace: String, with_id: String) -> void:
+	_request_replace = replace
+	_request_with = with_id
+	var row := PatronLevel.patron_bill(patron_bill_id)
+	var org := str(row.get("organization", ""))
+	var org_name := str(DataDB.get_booster(org).get("name_en", org))
+	var ally := str(row.get("ally", "")) if row.get("ally") != null else ""
+	var composed := PatronLevel.compose(patron_bill_id, GameState.enacted_components, replace, with_id)
+	if not bool(composed["ok"]):
+		return
+	var bill: Dictionary = composed["bill"]
+	var rows: Array[Control] = []
+	rows.append(UiKit.line(Text.say("request.line", {"org": org_name, "bill": str(bill.get("bill_name", ""))})))
+	rows.append(UiKit.line(Text.say("request.parts", {"parts": RequestLines.parts_line(
+		composed["component_ids"] as Array, DataDB.bill_components)})))
+	rows.append(UiKit.line(RequestLines.default_vote_line(bill)))
+	rows.append(UiKit.line(Text.say("request.influence_needed"), "SmallLabel"))
+	var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
+	if not own.is_empty():
+		rows.append(UiKit.line(own))
+	for line: String in RequestLines.reward_lines(row, ally, bool(composed["amended"])):
+		rows.append(UiKit.line(line))
+	if bool(composed["amended"]):
+		rows.append(UiKit.line(Text.say("request.amended", {"percent": int(DataDB.balance.get("patron_amend_reward_percent", 75))}), "SmallLabel"))
+
+	var accept := UiKit.action_button(Text.say("request.accept"), "", _on_request_accept.bind(patron_bill_id), 110.0)
+	accept.name = "RequestAcceptButton"
+	rows.append(accept)
+
+	var live := row.duplicate()
+	live["components"] = PatronLevel.compose(patron_bill_id, GameState.enacted_components)["component_ids"]
+	var options := PatronRequests.amend_options(live, ComposedBill.index(DataDB.bill_components), GameState.enacted_components)
+	if not options.is_empty() and replace.is_empty():
+		rows.append(UiKit.heading(Text.say("request.amend_title")))
+		rows.append(UiKit.line(Text.say("request.amend_note", {"percent": int(DataDB.balance.get("patron_amend_reward_percent", 75))}), "SmallLabel"))
+		var by_id := ComposedBill.index(DataDB.bill_components)
+		for option: Dictionary in options:
+			var swap := UiKit.action_button(Text.say("request.amend_option", {
+				"old": str((by_id.get(option["replace"], {}) as Dictionary).get("short_label", option["replace"])),
+				"new": str((by_id.get(option["with"], {}) as Dictionary).get("short_label", option["with"]))}), "",
+				_open_request.bind(patron_bill_id, str(option["replace"]), str(option["with"])), 90.0)
+			swap.name = "RequestAmend_" + str(option["with"])
+			rows.append(swap)
+	elif not replace.is_empty():
+		var undo := UiKit.action_button(Text.say("request.amend_undo"), "", _open_request.bind(patron_bill_id, "", ""), 90.0)
+		undo.name = "RequestAmendUndoButton"
+		rows.append(undo)
+
+	var decline := UiKit.action_button(Text.say("request.decline", {"count": PatronRequests.decline_cost(
+		str(row.get("kind", PatronRequests.FAVOR)), DataDB.balance), "org": org_name}), "",
+		_on_request_decline.bind(patron_bill_id), 90.0)
+	decline.name = "RequestDeclineButton"
+	rows.append(decline)
+	_request_panel.open(Text.say("request.title"), rows)
+
+
+func _on_request_accept(patron_bill_id: String) -> void:
+	if not GameState.start_patron_level(patron_bill_id, _request_replace, _request_with):
+		_request_panel.close()
+		_report.text = Text.say("request.cannot_start")
+		return
+	_request_panel.close()
+	_levels_panel.close()
+	get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
+
+
+func _on_request_decline(patron_bill_id: String) -> void:
+	GameState.decline_patron_bill(patron_bill_id)
+	_request_panel.close()
+	_show_levels()
+	_refresh_resources()
 
 
 func _level_row(level: Dictionary) -> Control:
