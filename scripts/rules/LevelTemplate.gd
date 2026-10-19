@@ -13,6 +13,7 @@ extends RefCounted
 ## Token -> generic room. HEARING and PUBLIC are decided per bill (below).
 const FIXED := {
 	"PATRON_MEETING": "ST20",
+	"PATRON_VISIT": "ST263",
 	"CAUCUS": "ST03",
 	"STEERING": "ST08",
 	"VOTE": "ST23",

@@ -172,10 +172,16 @@ static func build_stage_for_slot(level_id: String, stage_id: String, slot: int) 
 		# are.
 		stage["opponents"] = []
 		var drawn_visitors: Array = []
-		for visitor: Dictionary in _visitors_for(level_id, stage_id, slot, _opponent_count(stage)):
-			var with_question := visitor.duplicate(true)
-			with_question["question"] = _question_for_visitor(str(visitor.get("visitor_id", "")))
-			drawn_visitors.append(with_question)
+		if stage_id == PatronVisit.STAGE:
+			# The sponsoring organization's representative, built with the
+			# level (PatronVisit), each entry with its question attached.
+			var patron_visit: Dictionary = DataDB.get_level(level_id).get("patron_visit", {})
+			drawn_visitors = (patron_visit.get("visitors", []) as Array).duplicate(true)
+		else:
+			for visitor: Dictionary in _visitors_for(level_id, stage_id, slot, _opponent_count(stage)):
+				var with_question := visitor.duplicate(true)
+				with_question["question"] = _question_for_visitor(str(visitor.get("visitor_id", "")))
+				drawn_visitors.append(with_question)
 		stage["visitors"] = drawn_visitors
 	else:
 		# A committee stage (ST01, ST09-ST18) is an ordinary Combat stage

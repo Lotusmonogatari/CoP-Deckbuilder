@@ -85,6 +85,13 @@ static func compose_ids(patron_bill_id: String, ids: Array) -> Dictionary:
 	return bill
 
 
+static func _template_has(template: Dictionary, token: String) -> bool:
+	for slot in range(1, LevelTemplate.MAX_SLOTS + 1):
+		if str(template.get("stage_%d" % slot, "")).strip_edges() == token:
+			return true
+	return false
+
+
 ## "BO05+; BO09-": the organizations the bill helps and hurts, in the form
 ## BillStance reads, so the lean choice works for a composed bill.
 static func _stakeholders(effects: Array) -> String:
@@ -123,6 +130,12 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 	}
 	if not visit.is_empty():
 		level["visit"] = visit
+	# The opening visitor from the sponsoring organization, when the template
+	# opens with one (PATRON_VISIT).
+	if _template_has(template, "PATRON_VISIT"):
+		var patron_visit := PatronVisit.build(str(row.get("organization", "")), bill.get("component_ids", []) as Array)
+		if not patron_visit.is_empty():
+			level["patron_visit"] = patron_visit
 	if not trade.is_empty():
 		level["trade"] = trade
 	for index in range(stages.size()):
