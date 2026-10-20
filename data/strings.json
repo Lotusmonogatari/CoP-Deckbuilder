@@ -2557,7 +2557,7 @@
   {
     "key": "outcome.booster_hint",
     "where": "Outcome panel, above the organization icons",
-    "english": "Tap an organization to see how its standing moved.",
+    "english": "Tap an organization to see its name.",
     "placeholders": null,
     "notes": "One line above the row of organization icons shown when a stage touched any."
   },
@@ -4765,5 +4765,26 @@
     "english": "The bill could not be drafted.",
     "placeholders": null,
     "notes": "2026-10-19 Draft a Bill (draft)."
+  },
+  {
+    "key": "briefing.sides_for",
+    "where": "Level briefing, above the organizations for the bill",
+    "english": "For it:",
+    "placeholders": null,
+    "notes": "2026-10-20 organization chips."
+  },
+  {
+    "key": "briefing.sides_against",
+    "where": "Level briefing, above the organizations against the bill",
+    "english": "Against it:",
+    "placeholders": null,
+    "notes": "2026-10-20 organization chips."
+  },
+  {
+    "key": "request.reward_heading",
+    "where": "Request panel, above the organizations the bill would please",
+    "english": "If it passes, they will think more of you:",
+    "placeholders": null,
+    "notes": "2026-10-20 organization chips."
   }
 ]

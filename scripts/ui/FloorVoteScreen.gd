@@ -43,6 +43,8 @@ var _voted := false
 @onready var _outcome_panel: PanelContainer = %OutcomePanel
 @onready var _outcome_title: Label = %OutcomeTitle
 @onready var _outcome_body: Label = %OutcomeBody
+## The organization changes of the player's stance at the vote, as chips.
+var _stance_chips: Array = []
 @onready var _bar_yes: PartyVoteBar = %BarYes
 @onready var _bar_no: PartyVoteBar = %BarNo
 @onready var _bar_abstain: PartyVoteBar = %BarAbstain
@@ -231,18 +233,26 @@ func _show_influence_and_preview() -> void:
 	column.add_child(preview)
 
 	if not GameState.stance_lean().is_empty():
-		var stance := Label.new()
+		var stance := VBoxContainer.new()
 		stance.name = "StancePreview"
-		stance.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		var stance_lines: Array[String] = [Text.say("floor_vote.stance_heading", {
-			"lean": StanceLines.lean_name(GameState.stance_lean())})]
+		var heading := Label.new()
+		heading.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		heading.text = Text.say("floor_vote.stance_heading", {
+			"lean": StanceLines.lean_name(GameState.stance_lean())})
+		stance.add_child(heading)
 		for choice: String in ["Yes", "No", "Abstain"]:
 			var trial := GameState.preview_stance_vote(choice)
-			stance_lines.append(Text.say("floor_vote.stance_line", {
+			var chips := StanceLines.chip_entries(trial.get("deltas", {}))
+			var party := int(trial.get("party_delta", 0))
+			var line := Label.new()
+			line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			line.text = Text.say("floor_vote.stance_line", {
 				"choice": labels[choice],
-				"changes": StanceLines.describe_changes(trial.get("deltas", {}), int(trial.get("party_delta", 0))),
-				"switch": Text.say("floor_vote.stance_switch") if bool(trial.get("flip", false)) else ""}))
-		stance.text = "\n".join(stance_lines)
+				"changes": StanceLines.describe_changes({}, party) if (party != 0 or chips.is_empty()) else "",
+				"switch": Text.say("floor_vote.stance_switch") if bool(trial.get("flip", false)) else ""})
+			stance.add_child(line)
+			if not chips.is_empty():
+				stance.add_child(OrgChip.row(chips, true, 90.0))
 		column.add_child(stance)
 
 
@@ -364,8 +374,10 @@ func _on_vote(choice: String) -> void:
 	var stance_result := GameState.apply_stance_vote(choice)
 	var stance_note := ""
 	if not stance_result.is_empty():
-		stance_note = Text.say("floor_vote.stance_result", {"changes": StanceLines.describe_changes(
-			stance_result.get("deltas", {}), int(stance_result.get("party_delta", 0)))})
+		_stance_chips = StanceLines.chip_entries(stance_result.get("deltas", {}))
+		if int(stance_result.get("party_delta", 0)) != 0 or _stance_chips.is_empty():
+			stance_note = Text.say("floor_vote.stance_result", {"changes": StanceLines.describe_changes(
+				{}, int(stance_result.get("party_delta", 0)))})
 
 	if bool(result.get("outcome_flipped_by_influence", false)):
 		var bill_id := str(engine.bill().get("bill_id", ""))
@@ -380,6 +392,19 @@ func _on_vote(choice: String) -> void:
 		GameState.apply_flip_backing(engine.bill(), result)
 
 	_show_outcome(result, stance_note)
+
+
+## The organization chips under the outcome text, rebuilt each time.
+func _show_outcome_chips(entries: Array) -> void:
+	var old := _outcome_body.get_parent().get_node_or_null("OutcomeChips")
+	if old != null:
+		old.free()
+	if entries.is_empty():
+		return
+	var chips := OrgChip.row(OrgChip.merged(entries))
+	chips.name = "OutcomeChips"
+	_outcome_body.get_parent().add_child(chips)
+	_outcome_body.get_parent().move_child(chips, _outcome_body.get_index() + 1)
 
 
 func _show_outcome(result: Dictionary, stance_note: String = "") -> void:
@@ -400,6 +425,7 @@ func _show_outcome(result: Dictionary, stance_note: String = "") -> void:
 	for line: String in RequestLines.outcome_lines(GameState.last_patron_outcome):
 		_outcome_body.text += "\n" + line
 
+	_show_outcome_chips(RequestLines.outcome_entries(GameState.last_patron_outcome) + _stance_chips)
 	_show_result_summary(result, totals, passed)
 	_bar_yes.show_segments(_segments_for(result.get("positions", []), "votes_yes"))
 	_bar_no.show_segments(_segments_for(result.get("positions", []), "votes_no"))

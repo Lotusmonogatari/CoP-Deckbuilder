@@ -191,12 +191,12 @@ func _on_choice(letter: String) -> void:
 	# effect lands the instant it is played rather than at end of turn.
 	var entries: Array = result.get("reward", []) if correct else result.get("penalty", [])
 	if not entries.is_empty():
-		var changes := GameState.apply_visitor_reward_entries(entries)
-		if not changes.is_empty():
-			_messages.say(Text.say("office_hours.effects", {"changes": changes}))
+		GameState.apply_visitor_reward_entries(entries)
+		_show_effect_chips(GameState.last_visitor_effects)
 
 
 func _on_continue() -> void:
+	_clear_effect_chips()
 	if not _ready_to_play or not _answered or engine == null:
 		return
 	engine.advance()
@@ -221,7 +221,32 @@ func _show_outcome() -> void:
 	_outcome_panel.show()
 
 
+## The organizations an answer moved, as chips under the visitor's reply. They
+## stay until the next answer or the end of the room.
+func _show_effect_chips(effects: Array) -> void:
+	_clear_effect_chips()
+	var merged := OrgChip.merged(effects)
+	if merged.is_empty():
+		return
+	var chips := OrgChip.row(merged)
+	chips.name = "EffectChips"
+	chips.anchor_left = 0.5
+	chips.anchor_right = 0.5
+	chips.offset_left = -400.0
+	chips.offset_right = 400.0
+	chips.offset_top = 300.0
+	chips.alignment = FlowContainer.ALIGNMENT_CENTER
+	add_child(chips)
+
+
+func _clear_effect_chips() -> void:
+	var old := get_node_or_null("EffectChips")
+	if old != null:
+		old.free()
+
+
 func _on_outcome_closed() -> void:
+	_clear_effect_chips()
 	_messages.clear()
 	_banner.clear()
 

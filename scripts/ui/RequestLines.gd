@@ -43,16 +43,27 @@ static func own_party_line(bill: Dictionary, party_name: String) -> String:
 	return ""
 
 
-## What passing would do for the patron and the ally: one line each.
-static func reward_lines(row: Dictionary, ally: String, amended: bool) -> Array[String]:
-	var lines: Array[String] = []
+## What passing would do for the patron and the ally: one entry each
+## ({ "id", "delta" }), drawn as organization chips.
+static func reward_entries(row: Dictionary, ally: String, amended: bool) -> Array:
+	var entries: Array = []
 	var result := PatronRequests.outcome(row, ally, [], true, amended, DataDB.balance)
 	for entry: Dictionary in (result["standing"] as Array):
 		var delta := int(entry["delta"])
 		if delta > 0:
-			lines.append(Text.say("request.reward_pass", {"org": str(DataDB.get_booster(str(entry["target"])).get("name_en", entry["target"])),
-				"count": delta}))
-	return lines
+			entries.append({"id": str(entry["target"]), "delta": delta})
+	return entries
+
+
+## Who thinks more or less of you after a sponsored bill's vote, as chip
+## entries; empty for any other vote.
+static func outcome_entries(outcome: Dictionary) -> Array:
+	var entries: Array = []
+	for entry: Dictionary in (outcome.get("standing", []) as Array):
+		var delta := int(entry.get("delta", 0))
+		if delta != 0:
+			entries.append({"id": str(entry["target"]), "delta": delta})
+	return entries
 
 
 ## What a sponsored bill's vote did: who thinks more or less of you, what is
@@ -62,13 +73,6 @@ static func outcome_lines(outcome: Dictionary) -> Array[String]:
 	if outcome.is_empty():
 		return lines
 	lines.append(Text.say("request.outcome_heading"))
-	for entry: Dictionary in (outcome.get("standing", []) as Array):
-		var delta := int(entry.get("delta", 0))
-		if delta == 0:
-			continue
-		lines.append(Text.say("request.outcome_standing", {
-			"org": str(DataDB.get_booster(str(entry["target"])).get("name_en", entry["target"])),
-			"change": "%+d" % delta}))
 	var backing_org := str(outcome.get("backing_org", ""))
 	if not backing_org.is_empty():
 		lines.append(Text.say("request.outcome_backing", {

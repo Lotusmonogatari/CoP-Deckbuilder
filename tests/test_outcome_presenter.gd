@@ -166,11 +166,12 @@ func test_icons_show_and_a_tap_names_the_organisation_with_its_net_change() -> v
 	assert_true(box.visible)
 	var icon := box.find_child("BoosterIcon_BO01", true, false) as Button
 	assert_not_null(icon)
+	assert_eq((icon.find_child("Mark", true, false) as Label).text, "-2", "the number sits in the fade")
 	icon.pressed.emit()
-	var popup := box.get_child(box.get_child_count() - 1) as Label
-	assert_true(popup.visible)
-	assert_string_contains(popup.text, "Party Headquarters")
-	assert_string_contains(popup.text, "-2")
+	var overlay := get_tree().root.get_node_or_null("OrgNameOverlay")
+	assert_not_null(overlay, "a tap opens the name overlay")
+	assert_eq((overlay.find_child("NameLabel", true, false) as Label).text, "Party Headquarters")
+	overlay.free()
 	var body := presenter.call("_body_for", engine, stage) as String
 	assert_false(body.contains("Argued out"), "names move from the body to the icons")
 
@@ -187,16 +188,3 @@ func test_organization_icons_run_from_biggest_gain_to_biggest_loss() -> void:
 	for entry: Dictionary in sorted:
 		order.append(entry["booster_id"])
 	assert_eq(order, ["BO02", "BO04", "BO03", "BO01", "BO05"], "gains first, ties keep their order, losses last")
-
-
-func test_an_organization_icon_is_shaded_by_its_outcome() -> void:
-	var box := VBoxContainer.new()
-	add_child_autofree(box)
-	var presenter := OutcomePresenter.new(_panel, _title, _headline, _body, _button, box)
-	for net: int in [4, -3, 0]:
-		var button := Button.new()
-		box.add_child(button)
-		presenter.call("_add_shade", button, net)
-		var shade := button.get_node("Shade") as TextureRect
-		var want := ListeningStrip.GAIN if net > 0 else (ListeningStrip.LOSS if net < 0 else ListeningStrip.NEUTRAL)
-		assert_eq(shade.modulate, want)

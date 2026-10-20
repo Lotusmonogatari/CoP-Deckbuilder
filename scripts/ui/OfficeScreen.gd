@@ -1035,15 +1035,19 @@ func _show_law(law: Dictionary) -> void:
 	if bool(law.get("flipped_by_influence", false)):
 		rows.append(UiKit.line(Text.say("record.law_flipped")))
 
+	var any_effect := false
 	for timing: Array in [[StatuteBook.ONCE, "record.law_now"], [StatuteBook.EACH_LEVEL, "record.law_each"]]:
 		var lines := _law_effect_lines(bill_id, passed, str(timing[0]))
-		if lines.is_empty():
+		var chips := OrgChip.merged(_law_effect_chips(bill_id, passed, str(timing[0])))
+		if lines.is_empty() and chips.is_empty():
 			continue
+		any_effect = true
 		rows.append(UiKit.heading(Text.say(str(timing[1]))))
+		if not chips.is_empty():
+			rows.append(OrgChip.row(chips))
 		for line: String in lines:
 			rows.append(UiKit.line(line))
-	if _law_effect_lines(bill_id, passed, StatuteBook.ONCE).is_empty() \
-			and _law_effect_lines(bill_id, passed, StatuteBook.EACH_LEVEL).is_empty():
+	if not any_effect:
 		rows.append(UiKit.line(Text.say("record.law_no_effects")))
 
 	_law_panel.open(str(bill.get("bill_name", bill_id)), rows)
@@ -1057,15 +1061,6 @@ func _show_law(law: Dictionary) -> void:
 func _law_effect_lines(bill_id: String, passed: bool, timing: String) -> Array[String]:
 	var lines: Array[String] = []
 	for row: Dictionary in StatuteBook.effects_for(DataDB.law_effects, bill_id, passed, timing):
-		var entries: Variant = row.get("effects")
-		if entries is Array:
-			for entry: Dictionary in entries:
-				var target := str(entry.get("target", ""))
-				var named := str(DataDB.get_booster(target).get("name_en", "")) if target.begins_with("BO") \
-					else str(DataDB.get_segment(target).get("name_en", target))
-				if named.is_empty():
-					named = target
-				lines.append(_effect_line(named, int(entry.get("delta", 0))))
 		var deltas := StatuteBook.meta_deltas(row)
 		for name: String in deltas:
 			lines.append(_effect_line(name, int(deltas[name])))
@@ -1073,6 +1068,18 @@ func _law_effect_lines(bill_id: String, passed: bool, timing: String) -> Array[S
 		if xp != 0:
 			lines.append(_effect_line("XP", xp))
 	return lines
+
+
+## The organization and audience-group changes of the same rows, as chip
+## entries ({ "id", "delta" }); everything else stays a line above.
+func _law_effect_chips(bill_id: String, passed: bool, timing: String) -> Array:
+	var chips: Array = []
+	for row: Dictionary in StatuteBook.effects_for(DataDB.law_effects, bill_id, passed, timing):
+		var entries: Variant = row.get("effects")
+		if entries is Array:
+			for entry: Dictionary in entries:
+				chips.append({"id": str(entry.get("target", "")), "delta": int(entry.get("delta", 0))})
+	return chips
 
 
 func _effect_line(name: String, delta: int) -> String:
@@ -2072,8 +2079,10 @@ func _open_request(patron_bill_id: String, replace: String, with_id: String) -> 
 	var own := RequestLines.own_party_line(bill, str(DataDB.player.get("party", "")))
 	if not own.is_empty():
 		rows.append(UiKit.line(own))
-	for line: String in RequestLines.reward_lines(row, ally, bool(composed["amended"])):
-		rows.append(UiKit.line(line))
+	var reward_chips := RequestLines.reward_entries(row, ally, bool(composed["amended"]))
+	if not reward_chips.is_empty():
+		rows.append(UiKit.line(Text.say("request.reward_heading")))
+		rows.append(OrgChip.row(reward_chips, true))
 	if bool(composed["amended"]):
 		rows.append(UiKit.line(Text.say("request.amended", {"percent": int(DataDB.balance.get("patron_amend_reward_percent", 75))}), "SmallLabel"))
 
@@ -2140,13 +2149,14 @@ func _open_draft(fresh: bool = false) -> void:
 		if not own.is_empty():
 			rows.append(UiKit.line(own))
 		rows.append(UiKit.line(Text.say("draft.effects_heading"), "SmallLabel"))
+		var draft_chips: Array = []
 		for effect: Dictionary in (bill.get("effects", []) as Array):
 			var org_id := str(effect.get("target", ""))
 			if DataDB.get_booster(org_id).is_empty():
 				continue
-			rows.append(UiKit.line(Text.say("draft.effect", {
-				"org": str(DataDB.get_booster(org_id).get("name_en", org_id)),
-				"change": "%+d" % int(effect.get("delta", 0))}), "SmallLabel"))
+			draft_chips.append({"id": org_id, "delta": int(effect.get("delta", 0))})
+		if not draft_chips.is_empty():
+			rows.append(OrgChip.row(OrgChip.merged(draft_chips), true))
 	var go := UiKit.action_button(Text.say("draft.go"), GameState.draft_refusal(_draft_ids), _on_draft_go, 110.0)
 	go.name = "DraftGoButton"
 	rows.append(go)
@@ -2303,6 +2313,7 @@ func _show_briefing() -> void:
 	# A level about a bill says whose bill it is and who is for and against it.
 	for bill_line: String in StanceLines.briefing_lines(DataDB.get_floor_vote(str(_chosen_level.get("level_id", "")))):
 		rows.append(UiKit.line(bill_line, "SmallLabel"))
+	rows.append_array(StanceLines.briefing_sides(DataDB.get_floor_vote(str(_chosen_level.get("level_id", "")))))
 
 	for stage: Dictionary in stages:
 		if not _reveal_in_briefing(stage):
