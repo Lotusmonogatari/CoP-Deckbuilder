@@ -36,6 +36,7 @@ var _showing_item := ""
 
 ## What the last Use said, shown once at the top of the grid.
 var _notice := ""
+var _notice_effects: Array = []
 
 
 func _ready() -> void:
@@ -53,6 +54,9 @@ func inventory_rows() -> Array[Control]:
 	if not _notice.is_empty():
 		rows.append(UiKit.line(_notice))
 		_notice = ""
+		if not _notice_effects.is_empty():
+			rows.append(OrgChip.row(OrgChip.merged(_notice_effects)))
+		_notice_effects = []
 
 	var held := _held_items()
 	if held.is_empty():
@@ -194,7 +198,9 @@ func _use(item_id: String, chosen_target: String) -> void:
 		result = GameState.use_item_in_stage(item_id, engine, chosen_target)
 	else:
 		result = GameState.use_item_in_office(item_id, chosen_target)
-	_notice = str(result.get("message", ""))
+	_notice_effects = result.get("effects", []) as Array
+	_notice = str(result.get("plain", result.get("message", ""))) if not _notice_effects.is_empty() \
+		else str(result.get("message", ""))
 	if on_used.is_valid():
 		on_used.call(result)
 	if reopen.is_valid():

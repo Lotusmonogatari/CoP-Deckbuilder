@@ -151,9 +151,11 @@ func test_a_sponsored_bills_vote_leaves_lines_for_the_result_pop_up() -> void:
 	_play_to_the_vote()
 	_vote("Yes")
 	var lines := RequestLines.outcome_lines(GameState.last_patron_outcome)
-	assert_gt(lines.size(), 2, "a heading, the patron's change and what is now law")
+	assert_gt(lines.size(), 1, "a heading and what is now law")
 	var joined := "\n".join(lines)
-	assert_string_contains(joined, "Chamber of Commerce +")
+	var chips := RequestLines.outcome_entries(GameState.last_patron_outcome)
+	assert_true(chips.any(func(e: Dictionary) -> bool: return e["id"] == "BO05" and int(e["delta"]) > 0),
+		"the patron's change is a chip")
 	assert_string_contains(joined, "Now law:")
 	assert_eq(RequestLines.outcome_lines({}).size(), 0, "another vote shows nothing")
 

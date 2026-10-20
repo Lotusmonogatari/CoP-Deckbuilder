@@ -336,6 +336,9 @@ var patron_runtime: Dictionary = {}
 ## request shows once special_level_delay units have run (step 4).
 ## What the latest sponsored-bill vote did (empty otherwise); read once by the
 ## Floor Vote result and never saved.
+## The organization/audience changes of the latest visitor answer, for the
+## chip row. Not saved.
+var last_visitor_effects: Array = []
 var last_patron_outcome: Dictionary = {}
 ## Draft a Bill (2026-10-19): the player's own bills as runtime patron rows
 ## ({id: row}), how many have been drafted, and the clock when the last was
@@ -1642,6 +1645,7 @@ func apply_visitor_reward_entries(entries: Array) -> String:
 	_cause = Text.say("record.cause_visitor")
 	var applied := _apply_reward_entries(entries)
 	_cause = before
+	last_visitor_effects = _effect_chips(applied)
 	return _describe_grant_outcomes(applied)
 
 
@@ -1724,6 +1728,16 @@ func _apply_reward_entries(entries: Array, chosen_target: String = "",
 ## kinds are ever picked at random (a modifier or a shop item's own name
 ## already says exactly what was granted), so this is deliberately narrow:
 ## it answers "which one did the roll land on," not "what did I get."
+## The standing changes in `applied` as chip entries ({ "id", "delta" }):
+## organizations and audience groups only.
+func _effect_chips(applied: Array) -> Array:
+	var out: Array = []
+	for entry: Dictionary in applied:
+		if str(entry.get("kind", "")) in [RewardTargets.BOOSTER, RewardTargets.SEGMENT]:
+			out.append({"id": str(entry.get("id", "")), "delta": int(entry.get("delta", 0))})
+	return out
+
+
 func _describe_grant_outcomes(applied: Array) -> String:
 	var parts: Array[String] = []
 	for entry: Dictionary in applied:
@@ -2068,7 +2082,8 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 	if (split["stage"] as Array).is_empty():
 		return {"ok": true, "message": (Text.say("item.used_with_outcome",
 			{"name": name, "outcome": outcome}) if not outcome.is_empty()
-			else Text.say("item.used", {"name": name}))}
+			else Text.say("item.used", {"name": name})),
+			"plain": Text.say("item.used", {"name": name}), "effects": _effect_chips(applied)}
 
 	var level := Items.duration(item) == Items.DURATION_LEVEL
 	var lasts := Items.duration_units(item)
@@ -2084,7 +2099,9 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 	if not outcome.is_empty():
 		return {"ok": true, "message": Text.say(
 			"item.queued_level_with_outcome" if level else "item.queued_with_outcome",
-			{"name": name, "outcome": outcome})}
+			{"name": name, "outcome": outcome}),
+			"plain": Text.say("item.queued_level" if level else "item.queued", {"name": name}),
+			"effects": _effect_chips(applied)}
 	return {"ok": true, "message": Text.say(
 		"item.queued_level" if level else "item.queued", {"name": name})}
 
@@ -2128,7 +2145,8 @@ func use_item_in_stage(item_id: String, engine: BattleEngine, chosen_target: Str
 	var name := str(item.get("name", item_id))
 	var outcome := _describe_grant_outcomes(applied)
 	if not outcome.is_empty():
-		return {"ok": true, "message": Text.say("item.used_with_outcome", {"name": name, "outcome": outcome})}
+		return {"ok": true, "message": Text.say("item.used_with_outcome", {"name": name, "outcome": outcome}),
+			"plain": Text.say("item.used", {"name": name}), "effects": _effect_chips(applied)}
 	return {"ok": true, "message": Text.say("item.used", {"name": name})}
 
 

@@ -21,7 +21,6 @@ var _button: Button
 ## Where the organisation icons go (optional; without it the names are
 ## written into the body instead).
 var _boosters_box: VBoxContainer
-var _booster_popup: Label
 
 
 func _init(panel: PanelContainer, title: Label, headline: Label,
@@ -282,7 +281,6 @@ func _build_booster_icons(engine: BattleEngine) -> void:
 	for child in _boosters_box.get_children():
 		child.queue_free()
 	_boosters_box.hide()
-	_booster_popup = null
 	if not GameState.is_in_level():
 		return
 	var changes := booster_changes(engine)
@@ -299,20 +297,10 @@ func _build_booster_icons(engine: BattleEngine) -> void:
 	var row := HFlowContainer.new()
 	row.add_theme_constant_override("h_separation", 12)
 	_boosters_box.add_child(row)
-	var popup := Label.new()
-	popup.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	popup.hide()
-	_boosters_box.add_child(popup)
-	_booster_popup = popup
 	for change: Dictionary in changes:
-		var button := Button.new()
-		button.name = "BoosterIcon_%s" % change["booster_id"]
-		button.icon = ArtLoader.icon(str(change["booster_id"]))
-		button.expand_icon = true
-		button.custom_minimum_size = Vector2(120, 120)
-		button.pressed.connect(_on_booster_icon.bind(button, change))
-		_add_shade(button, int(change["net"]))
-		row.add_child(button)
+		var chip := OrgChip.make(str(change["booster_id"]), int(change["net"]))
+		chip.name = "BoosterIcon_%s" % change["booster_id"]
+		row.add_child(chip)
 	_boosters_box.show()
 
 
@@ -329,40 +317,3 @@ static func _sorted_by_net(changes: Array[Dictionary]) -> Array[Dictionary]:
 	for pair: Array in indexed:
 		out.append(pair[1])
 	return out
-
-
-## The same soft green / red / grey layer the listening strip uses, over the
-## icon, with the signed number on it: green for a gain, red for a loss,
-## grey for no change.
-func _add_shade(button: Button, net: int) -> void:
-	var shade := TextureRect.new()
-	shade.name = "Shade"
-	shade.texture = ListeningStrip.soft_disc()
-	shade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	shade.stretch_mode = TextureRect.STRETCH_SCALE
-	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
-	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	shade.modulate = ListeningStrip.GAIN if net > 0 else (ListeningStrip.LOSS if net < 0 else ListeningStrip.NEUTRAL)
-	button.add_child(shade)
-	var mark := Label.new()
-	mark.name = "Mark"
-	mark.set_anchors_preset(Control.PRESET_FULL_RECT)
-	mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	mark.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	mark.text = "%+d" % net if net != 0 else "0"
-	mark.add_theme_font_size_override("font_size", 40)
-	mark.add_theme_color_override("font_color", Color.WHITE)
-	mark.add_theme_color_override("font_outline_color", Color.BLACK)
-	mark.add_theme_constant_override("outline_size", 8)
-	button.add_child(mark)
-
-
-func _on_booster_icon(button: Button, change: Dictionary) -> void:
-	var text := Text.say("outcome.booster_change",
-		{"name": change["name"], "change": "%+d" % int(change["net"])})
-	if _booster_popup.visible and _booster_popup.text == text:
-		_booster_popup.hide()
-	else:
-		_booster_popup.text = text
-		_booster_popup.show()
