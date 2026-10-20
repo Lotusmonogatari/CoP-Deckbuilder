@@ -4786,5 +4786,47 @@
     "english": "If it passes, they will think more of you:",
     "placeholders": null,
     "notes": "2026-10-20 organization chips."
+  },
+  {
+    "key": "level_intro.stance_head",
+    "where": "Level Intro, after the lean is picked",
+    "english": "Your stance: {lean}.",
+    "placeholders": "lean",
+    "notes": "2026-10-20 organization chips."
+  },
+  {
+    "key": "stance.with_you",
+    "where": "Above the organizations on the player's side of a bill",
+    "english": "With you:",
+    "placeholders": null,
+    "notes": "2026-10-20 organization chips."
+  },
+  {
+    "key": "stance.against_you",
+    "where": "Above the organizations against the player on a bill",
+    "english": "Against you:",
+    "placeholders": null,
+    "notes": "2026-10-20 organization chips."
+  },
+  {
+    "key": "battle.stance_head",
+    "where": "Battle Details, the bill stance",
+    "english": "Stance on {bill}: {lean}.",
+    "placeholders": "bill, lean",
+    "notes": "2026-10-20 organization chips."
+  },
+  {
+    "key": "battle.pleased_heading",
+    "where": "Battle Details, above organizations pleased so far",
+    "english": "Pleased so far:",
+    "placeholders": null,
+    "notes": "2026-10-20 organization chips."
+  },
+  {
+    "key": "battle.annoyed_heading",
+    "where": "Battle Details, above organizations annoyed so far",
+    "english": "Annoyed so far:",
+    "placeholders": null,
+    "notes": "2026-10-20 organization chips."
   }
 ]

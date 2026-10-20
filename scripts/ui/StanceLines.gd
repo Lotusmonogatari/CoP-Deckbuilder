@@ -53,8 +53,39 @@ static func stance_line() -> String:
 	var theirs := BillStance.other_side(sides, lean)
 	if mine.is_empty() and theirs.is_empty():
 		return Text.say("level_intro.stance_alone", {"lean": lean_name(lean)})
-	return Text.say("level_intro.stance_taken", {
-		"lean": lean_name(lean), "with": names_of(mine), "against": names_of(theirs)})
+	return Text.say("level_intro.stance_head", {"lean": lean_name(lean)})
+
+
+## The chip rows under the stance sentence: who is with the player and who is
+## against, each under a short heading. Empty with no stance or nobody on a side.
+static func stance_chip_rows() -> Array[Control]:
+	var rows: Array[Control] = []
+	var lean := GameState.stance_lean()
+	if lean.is_empty():
+		return rows
+	var sides := GameState.stance_sides()
+	for group: Array in [[BillStance.my_side(sides, lean), true, "stance.with_you"],
+			[BillStance.other_side(sides, lean), false, "stance.against_you"]]:
+		var ids: Array = group[0]
+		if ids.is_empty():
+			continue
+		var heading := UiKit.line(Text.say(str(group[2])), "SmallLabel")
+		heading.custom_minimum_size = Vector2.ZERO
+		rows.append(heading)
+		rows.append(OrgChip.side_row(ids, bool(group[1])))
+	return rows
+
+
+## A heading and a green or red row of organizations, for a list of ids.
+static func org_group(heading_key: String, ids: Array, supports: bool) -> Array[Control]:
+	var rows: Array[Control] = []
+	if ids.is_empty():
+		return rows
+	var heading := UiKit.line(Text.say(heading_key), "SmallLabel")
+	heading.custom_minimum_size = Vector2.ZERO
+	rows.append(heading)
+	rows.append(OrgChip.side_row(ids, supports, 80.0))
+	return rows
 
 
 ## The same, for the briefing: the bill and who is for and against it.

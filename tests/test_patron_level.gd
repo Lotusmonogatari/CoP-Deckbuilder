@@ -328,3 +328,14 @@ func test_the_countdown_survives_a_save() -> void:
 	GameState.start_new_run("PC01")
 	GameState.load_save(saved)
 	assert_true(GameState.patron_armed.has("PB051"))
+
+
+func test_a_favor_with_nothing_left_to_swap_is_closed_so_the_flagship_is_not_held_up() -> void:
+	# The Favor needs two of the organization's three Favor-pool components;
+	# once two are law (say, through a drafted bill) it can never be offered.
+	GameState.enacted_components = ["CB051", "CB052"]
+	GameState.booster_standing["BO05"] = 80
+	GameState.arm_patron_requests()
+	assert_eq(str(GameState.patron_requests["PB051"]["status"]), PatronRequests.LAPSED)
+	assert_true(GameState.patron_armed.has("PB052"), "the Flagship is due once the Favor is closed")
+	assert_false(GameState.patron_armed.has("PB051"))
