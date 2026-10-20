@@ -2721,6 +2721,19 @@ func patron_bills_due() -> Array:
 
 ## Starts the countdown for every request that has just become due (idempotent).
 func arm_patron_requests() -> void:
+	# A due request whose every alternative component is already law can never
+	# be offered. It is closed (lapsed, with no standing cost: it was never
+	# shown), so an organization's Flagship, which waits for its Favor to be
+	# resolved, is not held up behind it forever.
+	for retired: int in range(8):
+		var closed_one := false
+		for id: String in patron_bills_due():
+			if not bool(PatronLevel.compose(id, enacted_components)["ok"]):
+				patron_requests[id] = {"status": PatronRequests.LAPSED, "components": [], "amended": false, "tries": 0}
+				patron_armed.erase(id)
+				closed_one = true
+		if not closed_one:
+			break
 	for id: String in patron_bills_due():
 		if not patron_armed.has(id):
 			patron_armed[id] = time_units

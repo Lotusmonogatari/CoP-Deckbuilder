@@ -175,6 +175,7 @@ func _on_lean_chosen(lean: String) -> void:
 	_lean_row.visible = false
 	_stance_note().text = StanceLines.stance_line()
 	_stance_note().visible = not _stance_note().text.is_empty()
+	_show_stance_chips()
 	_continue_button.disabled = false
 
 
@@ -183,6 +184,24 @@ func _on_continue() -> void:
 		get_tree().quit()
 		return
 	get_tree().change_scene_to_file(StageRouting.scene_for(GameState.level_runner.current_stage()))
+
+
+## Who is with and against the player, as chips under the stance sentence.
+func _show_stance_chips() -> void:
+	var parent := _lean_row.get_parent()
+	var old := parent.get_node_or_null("StanceChips")
+	if old != null:
+		old.free()
+	var rows := StanceLines.stance_chip_rows()
+	if rows.is_empty():
+		return
+	var box := VBoxContainer.new()
+	box.name = "StanceChips"
+	box.alignment = BoxContainer.ALIGNMENT_CENTER
+	for row: Control in rows:
+		box.add_child(row)
+	parent.add_child(box)
+	parent.move_child(box, _stance_note().get_index() + 1)
 
 
 ## The label above the lean boxes: whose bill it is and where the player's

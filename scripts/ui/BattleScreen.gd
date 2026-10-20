@@ -519,12 +519,9 @@ func _refresh_details(state: BattleState) -> void:
 		"Stage: %s" % str(_stage.get("name_en", "")),
 	])
 	if not _lean().is_empty():
-		var sides := GameState.stance_sides()
-		lines.append(Text.say("battle.stance_line", {
+		lines.append(Text.say("battle.stance_head", {
 			"bill": str(DataDB.get_bill(_bill_id()).get("bill_name", "")),
-			"lean": StanceLines.lean_name(_lean()),
-			"with": StanceLines.names_of(BillStance.my_side(sides, _lean())),
-			"against": StanceLines.names_of(BillStance.other_side(sides, _lean()))}))
+			"lean": StanceLines.lean_name(_lean())}))
 
 	_details_text.text = "\n".join(lines)
 
@@ -554,26 +551,8 @@ func _refresh_details(state: BattleState) -> void:
 		var question_now := engine.turn_question()
 		if not question_now.is_empty():
 			after.append_array(_question_concerns_lines(question_now))
-		var pleased := engine.pleased_boosters()
-		if pleased.is_empty():
+		if engine.pleased_boosters().is_empty():
 			after.append(Text.say("battle.nobody_pleased"))
-		else:
-			# Organisations by name, not by the ID the data files use: the
-			# player has no way of knowing what BO08 is.
-			var named: Array[String] = []
-			for booster_id: String in pleased:
-				named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-			after.append(Text.say("battle.pleased_so_far", {"names": CauseLines.join(named)}))
-
-		# 2026-09-28, Cameron: a weak answer annoys the same organisation a
-		# strong one would have pleased — shown only once there is something
-		# to show, the same "no news is no line" rule pleased_boosters uses.
-		var displeased := engine.displeased_boosters()
-		if not displeased.is_empty():
-			var annoyed_named: Array[String] = []
-			for booster_id: String in displeased:
-				annoyed_named.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
-			after.append(Text.say("battle.annoyed_so_far", {"names": CauseLines.join(annoyed_named)}))
 
 	after.append("")
 	after.append_array(_room_lines(state))
@@ -611,6 +590,29 @@ func _refresh_details(state: BattleState) -> void:
 		after.append(rule)
 
 	_details_text_after.text = "\n".join(after)
+	_refresh_details_orgs(engine)
+
+
+## The organization chips in the Details panel: who is with and against the
+## player's bill stance, and who the answers have pleased or annoyed so far.
+func _refresh_details_orgs(engine: BattleEngine) -> void:
+	var column := _details_text_after.get_parent()
+	var old := column.get_node_or_null("DetailsOrgs")
+	if old != null:
+		old.free()
+	var rows: Array[Control] = []
+	if not _lean().is_empty():
+		rows.append_array(StanceLines.stance_chip_rows())
+	rows.append_array(StanceLines.org_group("battle.pleased_heading", engine.pleased_boosters(), true))
+	rows.append_array(StanceLines.org_group("battle.annoyed_heading", engine.displeased_boosters(), false))
+	if rows.is_empty():
+		return
+	var box := VBoxContainer.new()
+	box.name = "DetailsOrgs"
+	for row: Control in rows:
+		box.add_child(row)
+	column.add_child(box)
+	column.move_child(box, _details_text_after.get_index())
 
 
 ## Fills a "You"/"Opponent" party label, or hides it when there is no

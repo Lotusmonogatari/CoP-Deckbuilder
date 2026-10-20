@@ -1,6 +1,6 @@
 # Patron Bills and Custom Bills: build plan (2026-10-19)
 
-Status: **approved 2026-10-19; step 1 (schema) built, see section 11.** Cameron's answers are applied below: decline costs 5 and 10, Amend swaps one component, **no party-body bills (27 organizations, 54 bills, 81 components)**, and **no patron bill passes without the player's influence**. It extends
+Status: **approved 2026-10-19; steps 1 to 7 built (2026-10-19 to 2026-10-20), see sections 10d to 12.** Component supply is analyzed in PATRON_COMPONENT_SUPPLY_2026-10-20.md. Cameron's answers are applied below: decline costs 5 and 10, Amend swaps one component, **no party-body bills (27 organizations, 54 bills, 81 components)**, and **no patron bill passes without the player's influence**. It extends
 `CUSTOM_BILL_MODE_2026-10-19.md` with the hybrid Cameron chose: one engine
 (bill components, assembled bills, levels built at runtime) that serves two
 entry points. **Patron Bills** are requests from an organization once its
@@ -229,7 +229,7 @@ To make every variation carryable the vote model got two patron-only shaping rul
 
 ## 10d. Step 3 status (built 2026-10-19)
 
-Runtime registry, `PatronLevel`, component-keyed content, `GameState` request state, vote resolution, save/resume and the statute book are built and tested (`tests/test_patron_level.gd`). Steps 4 to 7 remain. The influence-building ideas Cameron pinned for later are in `INFLUENCE_BUILDING_IDEAS_2026-10-19.md`.
+Runtime registry, `PatronLevel`, component-keyed content, `GameState` request state, vote resolution, save/resume and the statute book are built and tested (`tests/test_patron_level.gd`). Steps 4 to 7 were built afterwards (see section 12). The influence-building ideas Cameron pinned for later are in `INFLUENCE_BUILDING_IDEAS_2026-10-19.md`.
 
 ## 11. Step 1 status (built 2026-10-19)
 
@@ -391,3 +391,18 @@ Runtime registry, `PatronLevel`, component-keyed content, `GameState` request st
 | PB302 | Rural Revitalization Council | 70 | Flagship | A bill to keep rural bus routes running, bring broadband to every village and support the rice price | CB301 + CB303 + CB101 | Rural Revitalization Council, Agricultural Cooperatives | Urban Neighborhood Alliance | Construction | BU:S YH:S FR:S FP:S KJ:O CI:O | 45-32-24 fails |
 
 Default result without influence: 0 pass, 54 fail, 0 decided in caucus.
+
+## 12. Status: all seven steps built (2026-10-20)
+
+| Step | Built | Notes |
+|---|---|---|
+| 1 Schema | Yes | Four tabs, Component ID columns, levers, exporter checks. Header notes for the four new tabs added 2026-10-20 (`tools/workbook/add_notes_new_tabs.py`). |
+| 2 Rules | Yes | `BillPositions`, `ComposedBill`, `PatronRequests`, `LevelTemplate`; every bill provably needs influence. |
+| 3 Runtime level | Yes | Registry, content keyed by component, save/resume, statute book. |
+| 4 UI | Yes | Sponsored Bills block, Request panel (Carry, Swap one part, Decline), outcome pop-up, Your Record list. |
+| 5 and 6 Content | Yes (drafts) | 180 components, 54 bills, 1,440 questions, cues and transition lines; Patron Visit stage ST263. |
+| 7 Draft a Bill | Yes | 350 XP, 300,000円, cooldown 30 units. |
+| Extras | Yes | Member visit (ST260, ST261), lobbyist trade (ST262), BillAssist, ticker stories. |
+| Organization chips | Yes | Standing changes drawn as icon chips on every screen listed in the chip evaluation. |
+
+Open: balance numbers are yours to tune in the workbook; Japanese bill names, repeal and a real-device pass are held.

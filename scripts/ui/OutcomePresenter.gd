@@ -67,7 +67,7 @@ func show_outcome(engine: BattleEngine, stage: Dictionary) -> void:
 		_headline.hide()
 
 	_body.text = _body_for(engine, stage)
-	_build_booster_icons(engine)
+	_build_booster_icons(engine, stage)
 	_panel.show()
 
 	# Say what happens next, so the button is not a leap in the dark.
@@ -158,12 +158,6 @@ func _body_for(engine: BattleEngine, stage: Dictionary) -> String:
 			lines.append(Text.say("outcome.ahead", {"count": seats}))
 		elif seats < 0:
 			lines.append(Text.say("outcome.behind", {"count": -seats}))
-
-	if str(stage.get("mode", "")) == "Combat":
-		var drift := GameState.stance_drift_preview()
-		if not drift.is_empty():
-			lines.append("")
-			lines.append(Text.say("outcome.stance_drift", {"changes": StanceLines.describe_changes(drift, 0)}))
 
 	var changes := _what_it_was_worth(stage, score)
 	if not changes.is_empty():
@@ -272,10 +266,28 @@ static func booster_changes(engine: BattleEngine) -> Array[Dictionary]:
 	return out
 
 
+## The bill-stance drift a won Combat stage adds (organization -> delta) folded
+## into the per-organization changes, so the icons show what really lands.
+static func with_drift(changes: Array[Dictionary], drift: Dictionary) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var names := BattleSetup.booster_names()
+	var seen := {}
+	for change: Dictionary in changes:
+		var merged := change.duplicate()
+		var id := str(change["booster_id"])
+		seen[id] = true
+		merged["net"] = int(change["net"]) + int(drift.get(id, 0))
+		out.append(merged)
+	for id: Variant in drift.keys():
+		if not seen.has(str(id)) and int(drift[id]) != 0:
+			out.append({"booster_id": str(id), "name": str(names.get(str(id), str(id))), "net": int(drift[id])})
+	return out
+
+
 ## One icon per organisation the stage touched. Tapping an icon shows its name
 ## and the net change; tapping it again hides that. An organisation can be both
 ## pleased and annoyed, which is why the number is the aggregate.
-func _build_booster_icons(engine: BattleEngine) -> void:
+func _build_booster_icons(engine: BattleEngine, stage: Dictionary = {}) -> void:
 	if _boosters_box == null:
 		return
 	for child in _boosters_box.get_children():
@@ -284,6 +296,8 @@ func _build_booster_icons(engine: BattleEngine) -> void:
 	if not GameState.is_in_level():
 		return
 	var changes := booster_changes(engine)
+	if str(stage.get("mode", "")) == "Combat":
+		changes = with_drift(changes, GameState.stance_drift_preview())
 	if changes.is_empty():
 		return
 	# Biggest gain first, biggest loss last (stable, so a tie keeps the order
