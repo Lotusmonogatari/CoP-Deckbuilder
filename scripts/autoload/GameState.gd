@@ -648,19 +648,6 @@ func reset_collection() -> void:
 # what the rules would have refused. Each returns the refusal reason, or an
 # empty string when it went through.
 
-## Spends XP on a card. The card joins the collection, not the deck: what
-## you take in is a separate decision, made on the deck screen.
-func buy_card(card_id: String) -> String:
-	var card := DataDB.get_card(card_id)
-	var refusal := Ledger.card_refusal(card, owned_cards, xp, Text.phrase())
-	if not refusal.is_empty():
-		return refusal
-
-	_move_xp(-Ledger.card_cost(card))
-	owned_cards.append(card_id)
-	return ""
-
-
 ## Spends Funds and/or XP on a cosmetic package — purely decorative, no
 ## gameplay effect. Buying does not equip it: see equip_cosmetic().
 func buy_cosmetic_package(package_id: String) -> String:

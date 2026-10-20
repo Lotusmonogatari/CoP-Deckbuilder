@@ -658,13 +658,6 @@
     "notes": null
   },
   {
-    "key": "office.xp_buys",
-    "where": "Office — management",
-    "english": "Earned by winning stages. Buys new cards.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
     "key": "office.funds",
     "where": "Office — management",
     "english": "Funds {count}円",
@@ -1137,13 +1130,6 @@
     "key": "battle.default_pattern",
     "where": "Battle · details panel",
     "english": "This opponent has no move pattern of their own yet, so they are using the shared default from rules.json and playing generically.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "battle.last_question",
-    "where": "Battle · press conference",
-    "english": "That was the last question.",
     "placeholders": null,
     "notes": null
   },
@@ -2289,31 +2275,10 @@
     "notes": "Shown only for a shared-pool bar."
   },
   {
-    "key": "battle.question_invites",
-    "where": "Battle screen — details panel",
-    "english": "This question invites {suit} rhetoric.",
-    "placeholders": "suit",
-    "notes": null
-  },
-  {
     "key": "battle.nobody_pleased",
     "where": "Battle screen — details panel",
     "english": "Nobody pleased yet.",
     "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "battle.pleased_so_far",
-    "where": "Battle screen — details panel",
-    "english": "Pleased so far: {names}.",
-    "placeholders": "names",
-    "notes": null
-  },
-  {
-    "key": "battle.annoyed_so_far",
-    "where": "Battle screen — details panel",
-    "english": "Annoyed so far: {names}.",
-    "placeholders": "names",
     "notes": null
   },
   {
@@ -2562,13 +2527,6 @@
     "notes": "One line above the row of organization icons shown when a stage touched any."
   },
   {
-    "key": "outcome.booster_change",
-    "where": "Outcome panel, after tapping an organization icon",
-    "english": "{name}: {change}",
-    "placeholders": "change, name",
-    "notes": "The net standing change for that organization this stage; {change} already carries its + or - sign."
-  },
-  {
     "key": "briefing.loss_ends_level",
     "where": "Office · level briefing, per stage",
     "english": "Losing this stage ends the level.",
@@ -2672,20 +2630,6 @@
     "english": "Votes and rewards {direct} · Stakeholders {stakeholder}",
     "placeholders": "direct, stakeholder",
     "notes": "Stakeholders shows a dash where no organization is tied to the party."
-  },
-  {
-    "key": "party_opinion.helping",
-    "where": "Parties page, small line",
-    "english": "Helping: {names}.",
-    "placeholders": "names",
-    "notes": null
-  },
-  {
-    "key": "party_opinion.hurting",
-    "where": "Parties page, small line",
-    "english": "Hurting: {names}.",
-    "placeholders": "names",
-    "notes": null
   },
   {
     "key": "party_opinion.band_hostile",
@@ -3042,20 +2986,6 @@
     "where": "Office — Administration",
     "english": "No backup has been made yet.",
     "placeholders": null,
-    "notes": "2026-10-15 manual backup slot / save flash."
-  },
-  {
-    "key": "office.backup_when",
-    "where": "Office — Administration",
-    "english": "Backup made {when}",
-    "placeholders": "when",
-    "notes": "2026-10-15 manual backup slot / save flash. Shown under the buttons."
-  },
-  {
-    "key": "office.backup_restore_warning",
-    "where": "Office — Administration",
-    "english": "This replaces your current run with the backup made {when}. Anything done since is lost.",
-    "placeholders": "when",
     "notes": "2026-10-15 manual backup slot / save flash."
   },
   {
@@ -3479,13 +3409,6 @@
     "notes": null
   },
   {
-    "key": "office_hours.effects",
-    "where": "Office Hours — what a visitor choice did to standing",
-    "english": "Standing: {changes}.",
-    "placeholders": "changes",
-    "notes": null
-  },
-  {
     "key": "record.cause_stance_switch",
     "where": "Your Record — Party support moved by switching your vote on a bill",
     "english": "switching your stance on {bill}",
@@ -3542,13 +3465,6 @@
     "notes": null
   },
   {
-    "key": "level_intro.stance_taken",
-    "where": "Level Intro — after the lean is chosen",
-    "english": "Your stance: {lean}. With you: {with}. Against you: {against}.",
-    "placeholders": "lean, with, against",
-    "notes": null
-  },
-  {
     "key": "level_intro.stance_alone",
     "where": "Level Intro — after the lean, when nobody is on either side",
     "english": "Your stance: {lean}.",
@@ -3560,20 +3476,6 @@
     "where": "Level briefing — the bill the level is about",
     "english": "This level is about {bill}, brought by {party}.",
     "placeholders": "bill, party",
-    "notes": null
-  },
-  {
-    "key": "briefing.bill_sides",
-    "where": "Level briefing — who is for and against the bill",
-    "english": "For it: {for}. Against it: {against}.",
-    "placeholders": "for, against",
-    "notes": null
-  },
-  {
-    "key": "battle.stance_line",
-    "where": "Battle Details — the player's stance on the level's bill",
-    "english": "Stance on {bill}: {lean}. With you: {with}. Against you: {against}.",
-    "placeholders": "bill, lean, with, against",
     "notes": null
   },
   {
@@ -3608,13 +3510,6 @@
     "key": "floor_vote.stance_result",
     "where": "Vote result — what your vote did to the stakeholders",
     "english": "Your vote moved: {changes}.",
-    "placeholders": "changes",
-    "notes": null
-  },
-  {
-    "key": "outcome.stance_drift",
-    "where": "Outcome panel — what winning this stage does to the bill's stakeholders",
-    "english": "Winning this stage moves the bill's stakeholders: {changes}.",
     "placeholders": "changes",
     "notes": null
   },
@@ -3843,13 +3738,6 @@
     "notes": "2026-10-19 patron bill: seats won over by visits / taken by lobbyists, shown under the bill before the vote."
   },
   {
-    "key": "visit.offer_title",
-    "where": "A visit",
-    "english": "Member Visit",
-    "placeholders": null,
-    "notes": "2026-10-19 MP visit (patron Flagships)."
-  },
-  {
     "key": "visit.offer_text",
     "where": "A visit",
     "english": "{name} of {party} has come to talk. Win them over, and they stand with you on this vote. Take the visit?",
@@ -4029,13 +3917,6 @@
     "where": "Patron bills",
     "english": "A bill to {a}",
     "placeholders": "a",
-    "notes": "2026-10-19 lobbyist trade (patron bills)."
-  },
-  {
-    "key": "trade.offer_title",
-    "where": "Lobbyist trade",
-    "english": "A lobbyist calls",
-    "placeholders": null,
     "notes": "2026-10-19 lobbyist trade (patron bills)."
   },
   {
@@ -4333,13 +4214,6 @@
     "notes": "2026-10-19 patron requests (step 4)."
   },
   {
-    "key": "request.parts",
-    "where": "Request panel",
-    "english": "What it does: {parts}.",
-    "placeholders": "parts",
-    "notes": "2026-10-19 patron requests (step 4)."
-  },
-  {
     "key": "request.default_vote",
     "where": "Request panel",
     "english": "As things stand the vote runs {yes} Aye, {no} Nay and {abstain} abstaining; {needed} Aye are needed.",
@@ -4372,13 +4246,6 @@
     "where": "Request panel",
     "english": "{party} has no position on this bill.",
     "placeholders": "party",
-    "notes": "2026-10-19 patron requests (step 4)."
-  },
-  {
-    "key": "request.reward_pass",
-    "where": "Request panel",
-    "english": "If it passes, {org} will think more of you (+{count}).",
-    "placeholders": "org, count",
     "notes": "2026-10-19 patron requests (step 4)."
   },
   {
@@ -4470,13 +4337,6 @@
     "where": "Floor Vote result (sponsored bill)",
     "english": "The bill you carried:",
     "placeholders": null,
-    "notes": "2026-10-19 patron outcome pop-up."
-  },
-  {
-    "key": "request.outcome_standing",
-    "where": "Floor Vote result (sponsored bill)",
-    "english": "{org} {change}.",
-    "placeholders": "org, change",
     "notes": "2026-10-19 patron outcome pop-up."
   },
   {
@@ -4673,20 +4533,6 @@
     "where": "Draft a Bill",
     "english": "Back to the organizations",
     "placeholders": null,
-    "notes": "2026-10-19 Draft a Bill (draft)."
-  },
-  {
-    "key": "draft.bill_name",
-    "where": "Draft a Bill",
-    "english": "The bill: {name}",
-    "placeholders": "name",
-    "notes": "2026-10-19 Draft a Bill (draft)."
-  },
-  {
-    "key": "draft.effect",
-    "where": "Draft a Bill",
-    "english": "{org} {change}",
-    "placeholders": "org, change",
     "notes": "2026-10-19 Draft a Bill (draft)."
   },
   {

@@ -12,15 +12,6 @@ const STANCE_KEYS := {
 }
 
 
-## "Fund harbor repairs; Cap fishing quotas": the bill's parts by short label.
-static func parts_line(component_ids: Array, components: Array) -> String:
-	var by_id := ComposedBill.index(components)
-	var labels: Array[String] = []
-	for id: Variant in component_ids:
-		labels.append(str((by_id.get(str(id), {}) as Dictionary).get("short_label", id)))
-	return "; ".join(labels)
-
-
 ## The vote if nobody is swayed: "46 Aye, 30 Nay, 25 abstaining; 51 Aye needed."
 static func default_vote_line(bill: Dictionary) -> String:
 	var totals := {"Yes": 0, "No": 0, "Abstain": 0}
