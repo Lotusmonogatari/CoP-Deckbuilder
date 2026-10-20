@@ -78,7 +78,10 @@ func _add_portrait_row(parent: Control) -> void:
 	portrait.name = "Portrait"
 	portrait.set_script(load(PLACEHOLDER_SCRIPT))
 	portrait.custom_minimum_size = Vector2(260, 380)
-	portrait.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	# Fills the free height (three parts to each spacer's one) so the speaker is drawn large.
+	portrait.size_flags_horizontal = Control.SIZE_FILL
+	portrait.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	portrait.size_flags_stretch_ratio = 3.0
 	_adopt(portrait, parent, true)
 
 	var name_label := Label.new()

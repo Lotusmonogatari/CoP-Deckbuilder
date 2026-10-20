@@ -46,7 +46,9 @@ mouse_filter = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(260, 380)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 script = ExtResource("2_peovp")
 
 [node name="StaffName" type="Label" parent="Safe/Column"]
