@@ -30,6 +30,9 @@ func before_each() -> void:
 func after_each() -> void:
 	EventBus.gaffe_changed.disconnect(_note_gaffe)
 	EventBus.card_played.disconnect(_note_card)
+	# Let the screen's queued frees (cards and pips it removed) run, so they
+	# are not counted as orphans.
+	await wait_frames(2)
 
 
 func _note_gaffe(value: int, delta: int, limit: int, final: bool) -> void:

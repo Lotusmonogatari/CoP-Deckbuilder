@@ -56,13 +56,13 @@ func test_a_real_levels_floor_debate_can_be_set_up() -> void:
 
 	var stage: Dictionary = config["stage"]
 	assert_eq(stage["stage_id"], "ST02")
-	assert_eq(stage["bar_max"], 101, "the house has 101 seats")
-	assert_eq(stage["win_threshold"], 51, "a majority is 51")
+	assert_eq(int(stage["bar_max"]), 101, "the house has 101 seats")
+	assert_eq(int(stage["win_threshold"]), 51, "a majority is 51")
 
 	var engine := BattleEngine.new()
 	assert_true(_setup(engine, config), "the battle starts: %s" % [engine.setup_problems])
-	assert_eq(engine.state.hand.size(), stage["hand_size"])
-	assert_eq(engine.state.energy, stage["energy_per_turn"])
+	assert_eq(engine.state.hand.size(), int(stage["hand_size"]))
+	assert_eq(engine.state.energy, int(stage["energy_per_turn"]))
 
 
 func test_the_starter_deck_comes_from_the_workbook() -> void:

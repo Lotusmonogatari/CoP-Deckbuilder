@@ -118,26 +118,6 @@ func say(speaker_id: String, line_id: String) -> void:
 
 
 # ---------------------------------------------------------------------------
-# Mixing
-# ---------------------------------------------------------------------------
-# The three buses are controlled by name rather than by index, because a bus
-# that is not in the layout resolves to Master and must not silence the game
-# by being volume-adjusted into nothing.
-
-## Sets a bus's volume, 0.0 silent to 1.0 full.
-func set_volume(bus: String, linear: float) -> void:
-	var index := AudioServer.get_bus_index(bus)
-	if index >= 0:
-		AudioServer.set_bus_volume_db(index, linear_to_db(clampf(linear, 0.0, 1.0)))
-
-
-func set_muted(bus: String, muted: bool) -> void:
-	var index := AudioServer.get_bus_index(bus)
-	if index >= 0:
-		AudioServer.set_bus_mute(index, muted)
-
-
-# ---------------------------------------------------------------------------
 # Listening
 # ---------------------------------------------------------------------------
 # One place where a thing that happened becomes a thing that is heard. Adding

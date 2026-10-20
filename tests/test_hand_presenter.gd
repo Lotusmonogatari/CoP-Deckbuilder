@@ -19,6 +19,11 @@ var _hand: HandPresenter
 var _engine: BattleEngine
 
 
+func after_each() -> void:
+	# Let the presenter's queued frees run, so removed cards are not counted as orphans.
+	await wait_frames(2)
+
+
 func before_each() -> void:
 	# The real shape: HandPresenter finds its ScrollContainer by asking the
 	# row for its parent, so the row cannot stand on its own.

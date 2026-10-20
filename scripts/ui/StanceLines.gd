@@ -11,17 +11,6 @@ static func lean_name(lean: String) -> String:
 	return Text.say("stance.support" if lean == BillStance.SUPPORT else "stance.oppose")
 
 
-## "A, B and C", or "nobody in particular" for an empty list.
-static func names_of(ids: Array) -> String:
-	if ids.is_empty():
-		return Text.say("stance.nobody")
-	var names := BattleSetup.booster_names()
-	var out: Array[String] = []
-	for id: Variant in ids:
-		out.append(str(names.get(str(id), str(id))))
-	return CauseLines.join(out)
-
-
 ## The two lines the Level Intro screen shows before the lean choice: whose
 ## bill it is, and where the player's own party stands on it.
 static func intro_lines(bill: Dictionary) -> Array[String]:
