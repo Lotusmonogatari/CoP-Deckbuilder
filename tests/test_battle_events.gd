@@ -102,8 +102,17 @@ func test_the_warning_turning_on_is_worth_announcing() -> void:
 # Playing a card
 # ---------------------------------------------------------------------------
 
+## A card from the hand that plays straight away: not one that asks for
+## discards first (the shuffle can deal any card).
+func _plain_card() -> String:
+	for id: String in _screen.engine.state.hand:
+		if _screen.engine.discard_required(DataDB.get_card(id)) == 0:
+			return id
+	return str(_screen.engine.state.hand[0])
+
+
 func test_what_a_card_did_reaches_the_noticeboard() -> void:
-	var card_id := str(_screen.engine.state.hand[0])
+	var card_id := _plain_card()
 	_screen._selected_card_id = card_id
 	_screen._play_selected()
 
@@ -116,7 +125,7 @@ func test_the_announcement_says_whether_the_room_cared() -> void:
 	# only preview() works it out — so anything reading it off the result got
 	# false every time and could never tell a card that landed from one the
 	# room ignores. The screen puts it in.
-	var card_id := str(_screen.engine.state.hand[0])
+	var card_id := _plain_card()
 	_screen._selected_card_id = card_id
 	_screen._play_selected()
 
