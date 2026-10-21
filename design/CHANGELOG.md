@@ -2295,3 +2295,7 @@ In a bill level the card cue pool for each style and lean grew from 5 to **15 li
 ### Level Intro: a larger speaker portrait (2026-10-20, Cameron)
 
 The speaker on the Level Intro screen was a fixed 260 x 380 box. The portrait now fills the free height (stretch ratio 3 against one each for the spacers above and below), so at 1080 x 2340 the character is about three times larger and the name card sits just under the feet, above "Let's go". `scenes/office_hours/LevelIntroScreen.tscn` and `tools/build_level_intro_scene.gd` carry the same setting. The cue banner still crosses the middle of the screen while a line is showing, as it does everywhere else.
+
+### How to Play revised for the current mechanics (2026-10-21, Cameron)
+
+Every guide entry is now at most three sentences (`test_every_guide_entry_is_at_most_three_sentences`). Updated: HT01 (levels about bills), HT06 (threshold wording), HT12 (every card in a turn answers that turn's question; the organization preview), HT13 (urgent levels and the forced Town Hall / Steering Committee check-in), HT14 (standing, neglect, Boosters, sponsored bills), HT15 (training coupon), HT16 (staff ranks, pressure supplies), HT17 (Aye/Nay, the whole-house majority, Your Record), HT18 (the backup slot) and the three long card entries HT19 to HT21 (shortened). New group **Bills and Parties**: HT22 taking a side on a bill, HT23 sponsored bills, HT24 drafting and winning votes (member visit, lobbyist trade), HT25 how the parties see you. No clock or time terms appear in the guide.

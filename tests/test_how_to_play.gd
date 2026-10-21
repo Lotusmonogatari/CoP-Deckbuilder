@@ -99,3 +99,13 @@ func test_the_real_guide_mentions_winning_and_losing() -> void:
 		if str(entry.get("group", "")).to_lower().contains("losing"):
 			found = true
 	assert_true(found, "the guide has a Winning and Losing section")
+
+
+func test_every_guide_entry_is_at_most_three_sentences() -> void:
+	for entry: Dictionary in DataDB.how_to_play:
+		var body := str(entry.get("body_en", ""))
+		var sentences := 0
+		for ch: String in [".", "!", "?"]:
+			sentences += body.count(ch + " ") + (1 if body.ends_with(ch) else 0)
+		sentences += body.count(".\n") + body.count("!\n") + body.count("?\n")
+		assert_lte(sentences, 3, "%s has %d sentences" % [entry.get("entry_id", ""), sentences])

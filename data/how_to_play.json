@@ -5,7 +5,7 @@
     "group": "The Goal",
     "heading_en": "You are a legislator",
     "heading_jp": null,
-    "body_en": "Play rhetorical stages in Yezo's parliament using a hand of argument cards. Stages chain into levels, and your standing carries from one to the next.",
+    "body_en": "Play rhetorical stages in Yezo's parliament using a hand of argument cards. Stages chain into levels, many built around a single bill. Your standing carries from one level to the next.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -60,7 +60,7 @@
     "group": "Winning and Losing",
     "heading_en": "TV debates",
     "heading_jp": null,
-    "body_en": "Stay at or above the win mark at the end of every turn. In some TV debates the mark rises a little after each turn; the stage screen tells you the new number before you play.",
+    "body_en": "Stay at or above the threshold at the end of every turn. In some TV debates the threshold rises after each turn, and the stage screen announces the new number.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -126,7 +126,7 @@
     "group": "Cards",
     "heading_en": "Answering questions",
     "heading_jp": null,
-    "body_en": "In rooms that ask questions, the rhetorical style the question invites earns a bonus and pleases the organization asking. A weak answer weakens your card and annoys them.",
+    "body_en": "In rooms that ask questions, every card you play in a turn answers that turn's question. A card in the style the question invites gets a boost and pleases the organizations it concerns, while a weak answer reduces your card and annoys them. Lift a card, or tap it once, to preview what it would do to each organization before you play it.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -137,7 +137,7 @@
     "group": "Between Levels",
     "heading_en": "Your four standings",
     "heading_jp": null,
-    "body_en": "Constituency support, Reputation, Funds and Party support. Stages move them. If Constituency support gets very low, a Town Hall is forced on you. If Party support hits zero, your Funds stop coming in.",
+    "body_en": "Constituency support, Reputation, Funds and Party support are your four standings, and stages move them. If Constituency support or Party support falls very low, an urgent level (a Town Hall or a Party Steering Committee check-in) appears at the top of the level list, and it is forced on you after your next level if you leave it. If Party support reaches zero, your Funds stop coming in.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -148,7 +148,7 @@
     "group": "Between Levels",
     "heading_en": "Important Stakeholders",
     "heading_jp": null,
-    "body_en": "Organizations remember how you treated them. Pleasing one helps you later.",
+    "body_en": "Every organization keeps a standing with you. Strong answers please the organizations a question concerns, weak ones annoy them, and some answers set rivals back; organizations you neglect drift back toward where they started. A high standing lets you take an organization's backing in Boosters and may bring a sponsored bill.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -159,7 +159,7 @@
     "group": "Between Levels",
     "heading_en": "XP and cards",
     "heading_jp": null,
-    "body_en": "XP buys Rhetoric Training sessions, where you draw a card and decide whether to learn it. Build your deck on the deck screen.",
+    "body_en": "XP buys Rhetoric Training sessions, where you draw a card and decide whether to learn it. A Training Session Coupon gives you one draw free. Build your deck on the deck screen.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -170,7 +170,7 @@
     "group": "Between Levels",
     "heading_en": "Marketplace and staff",
     "heading_jp": null,
-    "body_en": "Spend Funds and XP on supplies and hires that help you in a stage or across a whole level.",
+    "body_en": "Spend Funds and XP on supplies and hires that help you in a stage or across a whole level. Tap a staff member to see what each rank gives before you hire. Some supplies pressure organizations instead, so read an item before you use it.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -181,7 +181,7 @@
     "group": "Between Levels",
     "heading_en": "Office Hours and Floor Votes",
     "heading_jp": null,
-    "body_en": "Office Hours are conversations with visitors. A Floor Vote is a single Yes, No or Abstain decision that changes how parties see you.",
+    "body_en": "Office Hours are conversations with visitors, and each answer can raise some organizations and lower others. A Floor Vote is a single Aye, Nay or Abstain decision, and a bill passes only when its Aye votes reach a majority of the whole house ({majority} of {seats}). A bill you vote on becomes law and is recorded in Your Record.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -192,7 +192,7 @@
     "group": "Saving",
     "heading_en": "Resume or abandon",
     "heading_jp": null,
-    "body_en": "The game saves after each stage. Reopen it mid-level and you can resume or abandon the level. A stage in progress starts over.",
+    "body_en": "The game saves after each stage. Reopen it mid-level and you can resume or abandon the level, and a stage in progress starts over. Administration lets you keep one separate backup to save to and load from.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -203,7 +203,7 @@
     "group": "Cards",
     "heading_en": "Card numbers change as you play",
     "heading_jp": null,
-    "body_en": "The numbers on a card are not fixed. Each time you play a card, every card left in your hand is worked out again for the situation you are now in, so what a card shows is what it will do right now. A card that leaves a boost for your next card raises that next card's gain, this turn only. A card that lowers your next card's cost makes it cheaper, this turn only. Some cards give extra only while your gaffe meter is clean, and others only while you are behind in support, so playing a card that adds a gaffe, or one that pulls you level, can take that extra away from another card. It comes back when the condition does. Cards aimed at one audience give extra only when enough of the room is that audience, and the mix of a room does not change during a stage.",
+    "body_en": "The numbers on a card are worked out again after every card you play, so what a card shows is what it will do right now. Boosts and discounts from one card apply to your next card this turn only, and some cards give extra only while your gaffe meter is clean or while you are behind. Cards aimed at one audience give extra only when enough of the room is that audience.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -214,7 +214,7 @@
     "group": "Cards",
     "heading_en": "Why a card is bigger or smaller",
     "heading_jp": null,
-    "body_en": "Two things scale a card's gain and how hard it hits your opponent. The room: each room favors some rhetorical styles, so a card gets a larger boost in a room that favors its style and is held back in a room that does not. The question: in rooms that ask questions, a card in the invited style gets a moderate boost, a middling answer is left as it is, and a poor answer is reduced. Guard, drawing and gaffes are never scaled this way. Tap a card to read, in plain words, how the current room and question are affecting it. A greyed-out card does nothing in this room right now.",
+    "body_en": "Two things scale a card's gain and how hard it hits your opponent: the room and the question. A room favors some rhetorical styles and holds others back, and a question boosts the style it invites and reduces a poor answer; guard, drawing and gaffes are never scaled. Tap a card for a plain-words reading, and a greyed-out card does nothing here right now.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -225,7 +225,51 @@
     "group": "Cards",
     "heading_en": "Who is pleased by which style",
     "heading_jp": null,
-    "body_en": "Each question in a room is tied to the organizations it concerns. Answer in a style the question handles well (tap a card to see) and those organizations are pleased; answer badly and they are annoyed. Some questions also set other organizations back when answered well. No organization has a fixed favorite style, but across many questions some styles please some organizations more often. A rough guide:\n{pleasing_table}\nThis is a tendency, not a rule: the card zoom shows how the question in front of you rates each card.",
+    "body_en": "Each question concerns certain organizations: answer in a style it handles well and they are pleased, answer badly and they are annoyed. Some styles tend to please some organizations more often, as a rough guide:\n{pleasing_table}\nThe card zoom shows how the question in front of you rates each card.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT22",
+    "order": 175.0,
+    "group": "Bills and Parties",
+    "heading_en": "Taking a side on a bill",
+    "heading_jp": null,
+    "body_en": "In a level about a bill you choose to lean Support or Oppose before it begins. Winning stages pushes your side's organizations up and the other side's down, and your vote then moves them again. Switching sides costs the side you abandon, and going against your party costs Party support.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT23",
+    "order": 176.0,
+    "group": "Bills and Parties",
+    "heading_en": "Sponsored bills",
+    "heading_jp": null,
+    "body_en": "When an organization thinks highly enough of you, it may ask you to carry a bill under Sponsored Bills in the level list. You can carry it, swap one of its parts, or decline at a cost to its standing. No sponsored bill passes on its own: you need enough influence to swing other parties.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT24",
+    "order": 177.0,
+    "group": "Bills and Parties",
+    "heading_en": "Drafting and winning votes",
+    "heading_jp": null,
+    "body_en": "Draft a Bill lets you combine two or three parts from any organizations into a bill of your own, for XP and Funds. Optional stages before the vote let you visit a member to win a seat, and meet a lobbyist who may trade you help for dropping one part. You can carry only one drafted bill at a time.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT25",
+    "order": 178.0,
+    "group": "Bills and Parties",
+    "heading_en": "How the parties see you",
+    "heading_jp": null,
+    "body_en": "Each of the six parties rates you from your votes and from how the organizations tied to it feel about you, and the Parties page shows its allies and rivals. Pleasing a rival organization can lower a party's opinion of you. Your own party's opinion drives the urgent levels and the influence you need to swing a vote.",
     "screenshot": null,
     "caption": null,
     "video": null
