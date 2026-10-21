@@ -210,7 +210,7 @@ func _bench_battle() -> void:
 func _affordable_card(engine: BattleEngine) -> String:
 	for card_id: String in engine.state.hand:
 		var card := DataDB.get_card(card_id)
-		if int(card.get("cost", 99)) <= engine.state.energy:
+		if int(card.get("cost", 99)) <= engine.state.energy and engine.discard_required(card) == 0:
 			return card_id
 	return ""
 

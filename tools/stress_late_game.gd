@@ -293,7 +293,8 @@ func _play_turn(engine: BattleEngine, repro: String) -> void:
 		guard += 1
 		var picked := ""
 		for card_id: String in engine.state.hand:
-			if int(DataDB.get_card(card_id).get("cost", 99)) <= engine.state.energy:
+			if int(DataDB.get_card(card_id).get("cost", 99)) <= engine.state.energy \
+					and engine.discard_required(DataDB.get_card(card_id)) == 0:
 				picked = card_id
 				break
 		if picked.is_empty():

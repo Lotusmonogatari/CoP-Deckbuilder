@@ -35,16 +35,24 @@ signal dropped(card_id: String)
 var selected := false:
 	set(value):
 		selected = value
-		if _read_tag != null:
-			_read_tag.visible = value
+		_update_tag()
 		if not _lifting:
-			self_modulate = SELECT_TINT if value else Color.WHITE
+			self_modulate = PICK_TINT if picked else (SELECT_TINT if value else Color.WHITE)
+
+## Chosen as a card to discard for another card (BattleScreen's pick step).
+var picked := false:
+	set(value):
+		picked = value
+		_update_tag()
+		if not _lifting:
+			self_modulate = PICK_TINT if value else (SELECT_TINT if selected else Color.WHITE)
 
 ## The "Read" tag shown in the lower part of a selected card's text box:
 ## tap the card again to open it.
 var _read_tag: Label = null
 
 const SELECT_TINT := Color(1.0, 0.92, 0.6)
+const PICK_TINT := Color(1.0, 0.62, 0.62)
 
 ## How far up a press must move before the card lifts, and how far it must
 ## rise before letting go plays it.
@@ -273,8 +281,8 @@ func _build() -> void:
 	tag_box.bg_color = INK
 	tag_box.set_corner_radius_all(10)
 	_read_tag.add_theme_stylebox_override("normal", tag_box)
-	_read_tag.visible = selected
 	add_child(_read_tag)
+	_update_tag()
 
 	_effect_label = Label.new()
 	place(_effect_label, TEXT_RECT)
@@ -337,6 +345,15 @@ func show_cost(cost: int) -> void:
 		_cost_label.text = str(cost)
 
 
+## The tag in the lower text box: "Read" for a selected card, "Discard" for a
+## card picked to be thrown away.
+func _update_tag() -> void:
+	if _read_tag == null:
+		return
+	_read_tag.visible = selected or picked
+	_read_tag.text = Text.say("battle.discard_tag" if picked else "battle.read_card")
+
+
 ## Replaces the printed text with what this card will actually do here.
 ##
 ## The workbook's effect_text is what the card says on paper. The room
@@ -389,6 +406,19 @@ static func describe_effect(effect: Dictionary, card_row: Dictionary) -> String:
 	var draw := int(effect.get("draw", 0))
 	var gaffe := int(effect.get("gaffe", 0))
 
+	# What this card makes you throw away, and whether you can right now.
+	var to_play := _count(card_row.get("discard_to_play"))
+	if to_play > 0:
+		parts.append(Text.say("card.discard_play_one" if to_play == 1 else "card.discard_play_many",
+			{"count": to_play}))
+	elif _count(card_row.get("discard_for_draw")) > 0:
+		parts.append(Text.say("card.discard_draw_one"))
+	match str(effect.get("play_block", "")):
+		"few_cards":
+			parts.append(Text.say("card.blocked_few", {"count": int(effect.get("needs_discard", 0))}))
+		"no_refill":
+			parts.append(Text.say("card.blocked_no_refill"))
+
 	if self_plus != 0:
 		parts.append(Text.say("card.gain", {"count": self_plus}))
 	if opp_minus != 0 and bool(effect.get("opp_minus_counts", true)):
@@ -410,6 +440,11 @@ static func describe_effect(effect: Dictionary, card_row: Dictionary) -> String:
 	if parts.is_empty():
 		return str(card_row.get("effect_text", ""))
 	return " ".join(parts)
+
+
+## A blank workbook cell is null: read it as 0.
+static func _count(value: Variant) -> int:
+	return 0 if value == null else int(value)
 
 
 # ---------------------------------------------------------------------------

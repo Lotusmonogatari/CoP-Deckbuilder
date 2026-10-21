@@ -4597,5 +4597,82 @@
     "english": "Other",
     "placeholders": null,
     "notes": "2026-10-21 the rest of the audience, so the mix adds to 100."
+  },
+  {
+    "key": "card.discard_play_one",
+    "where": "Card face and zoom, a card that costs a discard",
+    "english": "Discard 1 other card to play.",
+    "placeholders": null,
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "card.discard_play_many",
+    "where": "Card face and zoom, a card that costs discards",
+    "english": "Discard {count} other cards to play.",
+    "placeholders": "count",
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "card.discard_draw_one",
+    "where": "Card face and zoom, a cycling card",
+    "english": "Discard 1 other card.",
+    "placeholders": null,
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "card.blocked_few",
+    "where": "Card zoom, cannot be played yet",
+    "english": "Needs {count} other cards in your hand.",
+    "placeholders": "count",
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "card.blocked_no_refill",
+    "where": "Card zoom, cannot be played here",
+    "english": "Not playable here: this room does not refill your hand.",
+    "placeholders": null,
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "battle.discard_tag",
+    "where": "Card tag, a card picked to be thrown away",
+    "english": "Discard",
+    "placeholders": null,
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "discard.prompt_one",
+    "where": "Battle, the discard step",
+    "english": "Choose 1 other card to discard.",
+    "placeholders": null,
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "discard.prompt_many",
+    "where": "Battle, the discard step",
+    "english": "Choose {count} other cards to discard.",
+    "placeholders": "count",
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "discard.chosen",
+    "where": "Battle, the discard step",
+    "english": "{have} of {need} chosen.",
+    "placeholders": "have, need",
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "discard.confirm",
+    "where": "Battle, the discard step button",
+    "english": "Discard and play",
+    "placeholders": null,
+    "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "discard.cancel",
+    "where": "Battle, the discard step button",
+    "english": "Cancel",
+    "placeholders": null,
+    "notes": "2026-10-21 discard cards."
   }
 ]

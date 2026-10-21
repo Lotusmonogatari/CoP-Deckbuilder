@@ -983,6 +983,14 @@ func _best_first_card(engine: BattleEngine) -> String:
 			gaffes.append(0)
 			order_keys.append(0.0)
 			continue
+		# The bot does not play cards that make it discard (2026-10-21): it would
+		# have to choose which of its own planned cards to throw away.
+		if engine.discard_required(card) > 0:
+			costs.append(99)
+			values.append(-INF)
+			gaffes.append(0)
+			order_keys.append(0.0)
+			continue
 		var fx := engine.preview(card)
 		var value := float(fx.get("self_plus", 0))
 		if fx.get("opp_minus_counts", true):
@@ -1065,7 +1073,7 @@ func _play_random_cards(engine: BattleEngine, repro: String) -> void:
 		var affordable: Array[String] = []
 		for card_id: String in state.hand:
 			var card := DataDB.get_card(card_id)
-			if not card.is_empty() and engine.card_cost(card) <= state.energy:
+			if not card.is_empty() and engine.card_cost(card) <= state.energy and engine.discard_required(card) == 0:
 				affordable.append(card_id)
 		if affordable.is_empty():
 			return

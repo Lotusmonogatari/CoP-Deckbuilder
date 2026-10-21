@@ -49,7 +49,12 @@ const KNOWN_KEYS := [
 	"bonus_if_self_gaffe_0",
 	"bonus_if_behind",
 	"discount_next_card_this_turn",
+	"scale_per_20_target_segment",
 ]
+
+## The most the audience scale can add or take away (2026-10-21): at 20% a
+## step, a room that is wholly the card's audience is five steps.
+const MAX_SCALE_BONUS := 5
 
 
 ## Applies a card's special effect to the numbers already worked out for it.
@@ -151,6 +156,17 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			# most of the time.
 			if int(context.get("player_support", 0)) < int(context.get("opponent_support", 0)):
 				result["self_plus"] = int(result.get("self_plus", 0)) + amount
+				result["flags"]["special_triggered"] = true
+
+		"scale_per_20_target_segment":
+			# "+N more to gain for every 20% of the audience (up to +5)."
+			# `special_value` is N per step and may be negative, so a card can
+			# also be a gamble on a small audience; the total never goes past
+			# plus or minus MAX_SCALE_BONUS.
+			var steps := int(floor(share / 0.2 + 0.000001))
+			var bonus := clampi(steps * amount, -MAX_SCALE_BONUS, MAX_SCALE_BONUS)
+			if bonus != 0:
+				result["self_plus"] = int(result.get("self_plus", 0)) + bonus
 				result["flags"]["special_triggered"] = true
 
 		"discount_next_card_this_turn":

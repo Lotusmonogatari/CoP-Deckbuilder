@@ -899,7 +899,8 @@ SHEETS = {
         #
         # "XP to unlock" is optional: the economy is being priced by
         # playtest rather than by the sheet, so a missing column is fine.
-        "optional": ["XP to unlock", "Special", "Special value", "Special note"],
+        "optional": ["XP to unlock", "Special", "Special value", "Special note",
+                     "Discard To Play", "Discard For Draw"],
         "columns": [
             ("Card ID", "card_id", "id"),
             ("Name (EN)", "name_en", "str"),
@@ -921,6 +922,11 @@ SHEETS = {
             ("Special", "special", "str"),
             ("Special value", "special_value", "num"),
             ("Special note", "special_note", "str"),
+            # 2026-10-21: how many OTHER cards from hand the player discards to
+            # play this card (cost), or discards as part of its effect before
+            # the Draw column's cards are drawn. Blank = 0.
+            ("Discard To Play", "discard_to_play", "int"),
+            ("Discard For Draw", "discard_for_draw", "int"),
         ],
     },
     "Modifiers": {
@@ -1909,6 +1915,25 @@ def validate(data, report):
             report.error("cards", f"{cid} has type '{card['type']}', which is not in the Lists tab")
         if card["cost"] is None:
             report.error("cards", f"{cid} has no cost")
+        # Discard cards (2026-10-21): only Tier 1 and 2, only these four suits.
+        # Tier 1 discards 2 to play or cycles 1-for-1; Tier 2 discards 1 to play
+        # or cycles 1 for up to 2.
+        to_play = card.get("discard_to_play") or 0
+        for_draw = card.get("discard_for_draw") or 0
+        if to_play or for_draw:
+            if card["suit"] not in ("Duplicitous", "Divisive", "Emotional", "Data Driven"):
+                report.error("cards", f"{cid} discards cards, which only Duplicitous, Divisive, Emotional and Data Driven cards do")
+            if card["tier"] not in ("1", "2"):
+                report.error("cards", f"{cid} discards cards, which only Tier 1 and Tier 2 cards do")
+            if to_play and for_draw:
+                report.error("cards", f"{cid} has both Discard To Play and Discard For Draw")
+            required = {"1": 2, "2": 1}.get(card["tier"])
+            if to_play and to_play != required:
+                report.error("cards", f"{cid} discards {to_play} to play, but a Tier {card['tier']} card discards {required}")
+            if for_draw:
+                limit = {"1": 1, "2": 2}.get(card["tier"], 0)
+                if for_draw != 1 or not (1 <= (card.get("draw") or 0) <= limit):
+                    report.error("cards", f"{cid} cycles {for_draw} for {card.get('draw')}, but a Tier {card['tier']} card discards 1 and draws 1 to {limit}")
 
     # --- affinity ----------------------------------------------------------
     for row in data["affinity"]:

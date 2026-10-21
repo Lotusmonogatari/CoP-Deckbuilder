@@ -203,7 +203,7 @@
     "group": "Cards",
     "heading_en": "Card numbers change as you play",
     "heading_jp": null,
-    "body_en": "The numbers on a card are worked out again after every card you play, so what a card shows is what it will do right now. Boosts and discounts from one card apply to your next card this turn only, and some cards give extra only while your gaffe meter is clean or while you are behind. Cards aimed at one audience give extra only when enough of the room is that audience.",
+    "body_en": "The numbers on a card are worked out again after every card you play, so what a card shows is what it will do right now. Boosts and discounts from one card apply to your next card this turn only, and some cards give extra only while your gaffe meter is clean or while you are behind. Cards aimed at one audience can give extra as that audience grows in the room, and Room rules shows the mix.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -281,6 +281,17 @@
     "heading_en": "Winning over voters",
     "heading_jp": null,
     "body_en": "Winning over somebody undecided costs one point; somebody already against you costs one, two or three. You find out which as you go, and points you cannot spend are lost.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT27",
+    "order": 124.0,
+    "group": "Cards",
+    "heading_en": "Discarding cards",
+    "heading_jp": null,
+    "body_en": "Some Tier 1 and Tier 2 cards make you discard other cards from your hand, either to play them or to cycle your hand for new ones. You choose which cards to throw away, and you can cancel before you confirm. They cannot be played in a room that does not refill your hand.",
     "screenshot": null,
     "caption": null,
     "video": null
