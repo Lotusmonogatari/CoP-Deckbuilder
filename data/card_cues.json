@@ -430,5 +430,133 @@
     "cue_3": "No names, no notes. Understood?",
     "cue_4": "This stays in the room.",
     "cue_5": "You can't quote me, but here's the truth."
+  },
+  {
+    "card_id": "C55",
+    "cue_1": "Cut what the data does not support.",
+    "cue_2": "Strip it down to the evidence.",
+    "cue_3": "Fewer pages, sharper figures.",
+    "cue_4": "Drop the filler and show the numbers.",
+    "cue_5": "Only the relevant tables stay."
+  },
+  {
+    "card_id": "C56",
+    "cue_1": "Let me go back through the record.",
+    "cue_2": "The full record tells a different story.",
+    "cue_3": "I have read every page closely.",
+    "cue_4": "Check the record against the claim.",
+    "cue_5": "Pull the files and compare them."
+  },
+  {
+    "card_id": "C57",
+    "cue_1": "That draft goes in the fire.",
+    "cue_2": "Scrap it. Choose a side.",
+    "cue_3": "No compromise text. Choose a camp.",
+    "cue_4": "Burn the draft and name names.",
+    "cue_5": "Half measures end here."
+  },
+  {
+    "card_id": "C58",
+    "cue_1": "Drop the weak ones and press on.",
+    "cue_2": "Some arguments are not worth saving.",
+    "cue_3": "Cut loose what drags us down.",
+    "cue_4": "Better to lose one than all.",
+    "cue_5": "Leave the doubters behind."
+  },
+  {
+    "card_id": "C59",
+    "cue_1": "Some things have to be let go.",
+    "cue_2": "Let it go and speak plainly.",
+    "cue_3": "I set that burden down.",
+    "cue_4": "Put the pain aside and listen.",
+    "cue_5": "Release it, and say what matters."
+  },
+  {
+    "card_id": "C60",
+    "cue_1": "Let us rebuild from the heart.",
+    "cue_2": "Start fresh with what we feel.",
+    "cue_3": "New hope begins with honesty.",
+    "cue_4": "Open a clean page for them.",
+    "cue_5": "We can begin together."
+  },
+  {
+    "card_id": "C61",
+    "cue_1": "Let me find the right page.",
+    "cue_2": "Papers have a way of moving.",
+    "cue_3": "Which file was that, exactly?",
+    "cue_4": "A busy desk hides many things.",
+    "cue_5": "Let me check my notes."
+  },
+  {
+    "card_id": "C62",
+    "cue_1": "I seem to have misplaced that.",
+    "cue_2": "The file is not where I left it.",
+    "cue_3": "Records go missing in every office.",
+    "cue_4": "I cannot find that document.",
+    "cue_5": "Evidence is a heavy word."
+  },
+  {
+    "card_id": "C63",
+    "cue_1": "I have a full file on this.",
+    "cue_2": "Every fact, in one folder.",
+    "cue_3": "The dossier is complete.",
+    "cue_4": "All the documents, side by side.",
+    "cue_5": "Here is everything you missed."
+  },
+  {
+    "card_id": "C64",
+    "cue_1": "Open every ledger, line by line.",
+    "cue_2": "We will audit all of it.",
+    "cue_3": "Nothing is exempt from review.",
+    "cue_4": "Let the auditors go through everything.",
+    "cue_5": "Every figure will be checked."
+  },
+  {
+    "card_id": "C65",
+    "cue_1": "No road back after this.",
+    "cue_2": "I cut every tie to this.",
+    "cue_3": "Choose now. The bridge is gone.",
+    "cue_4": "There is no middle path left.",
+    "cue_5": "I am done with half-friends."
+  },
+  {
+    "card_id": "C66",
+    "cue_1": "I will show no mercy here.",
+    "cue_2": "No compromise, no apology.",
+    "cue_3": "They asked for a fight.",
+    "cue_4": "Spare nobody who stands in the way.",
+    "cue_5": "This ends with a clear winner."
+  },
+  {
+    "card_id": "C67",
+    "cue_1": "I will give everything I have.",
+    "cue_2": "Take all of it, for them.",
+    "cue_3": "Nothing held back for myself.",
+    "cue_4": "My whole heart is on the table.",
+    "cue_5": "I give it all to this cause."
+  },
+  {
+    "card_id": "C68",
+    "cue_1": "These words come from my soul.",
+    "cue_2": "I speak from the deepest place.",
+    "cue_3": "Hear what my heart is saying.",
+    "cue_4": "Nothing here is rehearsed.",
+    "cue_5": "This is who I am."
+  },
+  {
+    "card_id": "C69",
+    "cue_1": "A quiet word settles most things.",
+    "cue_2": "We can arrange this privately.",
+    "cue_3": "Nobody needs to know the details.",
+    "cue_4": "Let us keep this between us.",
+    "cue_5": "Discretion serves everyone here."
+  },
+  {
+    "card_id": "C70",
+    "cue_1": "The real deal is made in private.",
+    "cue_2": "Step into the back room.",
+    "cue_3": "I will trade favors for votes.",
+    "cue_4": "Every door has a quiet side.",
+    "cue_5": "Let us talk where no one listens."
   }
 ]

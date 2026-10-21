@@ -40,6 +40,15 @@ var engine: BattleEngine = null
 
 var _stage: Dictionary = {}
 var _selected_card_id: String = ""
+
+## The step where a card that makes you discard waits for its discards
+## (2026-10-21): the card, the cards chosen so far, and how many it needs.
+var _pick_card_id := ""
+var _picks: Array = []
+var _pick_need := 0
+var _pick_bar: HBoxContainer
+var _pick_label: Label
+var _pick_confirm: Button
 ## The card tapped once, whose organisation preview is showing.
 var _previewed_card_id := ""
 var _listening: ListeningStrip = null
@@ -136,6 +145,7 @@ func _ready() -> void:
 	_hand.card_lifted.connect(_on_card_lifted)
 	_hand.card_dropped.connect(_on_card_dropped)
 	_build_listening()
+	_build_pick_bar()
 	_messages = MessagePresenter.new(%Notice, get_tree())
 	_outcome = OutcomePresenter.new(
 		%OutcomePanel, %OutcomeTitle, %OutcomeHeadline, %OutcomeReason, %OutcomeClose,
@@ -344,6 +354,8 @@ func _refresh() -> void:
 	_refresh_energy(state)
 	_refresh_gaffe(state)
 	_hand.show_state(engine)
+	if not _pick_card_id.is_empty():
+		_hand.set_picks(_pick_card_id, _picks)
 	_clear_preview()
 	_refresh_listening()
 	# The Details panel is only rebuilt while it is open (2026-10-11,
@@ -668,6 +680,9 @@ static func describe_question_for(multiplier: float) -> String:
 func _on_card_chosen(card_id: String) -> void:
 	if not _ready_to_play:
 		return
+	if not _pick_card_id.is_empty():
+		_toggle_pick(card_id)
+		return
 	var card := DataDB.get_card(card_id)
 	# A first tap on a card that would move organisations shows what it would
 	# do to them; a second tap, or Read, opens the card. A card that moves
@@ -708,14 +723,15 @@ func _open_card(card_id: String) -> void:
 	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card),
 		describe_room_for(engine.affinity_for(card)), question_line)
 
-	%ZoomPlay.disabled = engine.card_cost(card) > engine.state.energy
+	%ZoomPlay.disabled = (engine.card_cost(card) > engine.state.energy
+		or not engine.play_block(card).is_empty())
 	_card_zoom.show()
 
 
 ## A card dragged up out of the hand and let go: played straight away, the
 ## same as opening it and pressing Play.
 func _on_card_flung(card_id: String) -> void:
-	if not _ready_to_play:
+	if not _ready_to_play or not _pick_card_id.is_empty():
 		return
 	_selected_card_id = card_id
 	_play_selected()
@@ -723,7 +739,7 @@ func _on_card_flung(card_id: String) -> void:
 
 ## Holding a card up shows what it would do to the listening organisations.
 func _on_card_lifted(card_id: String) -> void:
-	if not _ready_to_play:
+	if not _ready_to_play or not _pick_card_id.is_empty():
 		return
 	_listening.preview(OrgPreview.changes(engine, DataDB.get_card(card_id)))
 
@@ -796,12 +812,116 @@ func _tastes_for(ids: Array) -> Dictionary:
 	return out
 
 
+## The bar above the hand while a discard is being chosen.
+func _build_pick_bar() -> void:
+	var column := %HandRow.get_parent().get_parent()
+	_pick_bar = HBoxContainer.new()
+	_pick_bar.name = "PickBar"
+	_pick_bar.add_theme_constant_override("separation", 16)
+	_pick_label = Label.new()
+	_pick_label.name = "PickLabel"
+	_pick_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_pick_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_pick_confirm = Button.new()
+	_pick_confirm.name = "PickConfirm"
+	_pick_confirm.text = Text.say("discard.confirm")
+	_pick_confirm.pressed.connect(_confirm_pick)
+	var cancel := Button.new()
+	cancel.name = "PickCancel"
+	cancel.text = Text.say("discard.cancel")
+	cancel.set_meta("cancel", true)
+	cancel.pressed.connect(_end_pick)
+	_pick_bar.add_child(_pick_label)
+	_pick_bar.add_child(_pick_confirm)
+	_pick_bar.add_child(cancel)
+	column.add_child(_pick_bar)
+	column.move_child(_pick_bar, %HandRow.get_parent().get_index())
+	_pick_bar.hide()
+
+
+func _begin_pick(card_id: String) -> void:
+	_clear_preview()
+	_pick_card_id = card_id
+	_picks = []
+	_pick_need = engine.discard_required(DataDB.get_card(card_id))
+	_update_pick()
+	_pick_bar.show()
+
+
+## Tap a card to add it to the discards, tap it again to take it back.
+func _toggle_pick(card_id: String) -> void:
+	var at := _picks.find(card_id)
+	if at >= 0:
+		_picks.remove_at(at)
+	else:
+		var available := 0
+		for id: String in engine.state.hand:
+			if id == card_id:
+				available += 1
+		if card_id == _pick_card_id:
+			available -= 1
+		if _picks.size() >= _pick_need or _count_of(_picks, card_id) >= available:
+			return
+		_picks.append(card_id)
+	_update_pick()
+
+
+func _count_of(list: Array, value: String) -> int:
+	var n := 0
+	for item: Variant in list:
+		if str(item) == value:
+			n += 1
+	return n
+
+
+func _update_pick() -> void:
+	var prompt := Text.say("discard.prompt_one" if _pick_need == 1 else "discard.prompt_many",
+		{"count": _pick_need})
+	_pick_label.text = "%s %s" % [prompt, Text.say("discard.chosen", {"have": _picks.size(), "need": _pick_need})]
+	_pick_confirm.disabled = _picks.size() != _pick_need
+	_hand.set_picks(_pick_card_id, _picks)
+
+
+func _confirm_pick() -> void:
+	if _pick_card_id.is_empty() or _picks.size() != _pick_need:
+		return
+	var card_id := _pick_card_id
+	var picks := _picks.duplicate()
+	_end_pick()
+	_selected_card_id = card_id
+	_play_card_now(card_id, picks)
+
+
+## Leaves the pick step without playing anything.
+func _end_pick() -> void:
+	if _pick_card_id.is_empty():
+		return
+	_pick_card_id = ""
+	_picks = []
+	_pick_need = 0
+	_pick_bar.hide()
+	_hand.set_picks("", [])
+	if engine != null:
+		_refresh()
+
+
 func _play_selected() -> void:
 	_card_zoom.hide()
 	if not _ready_to_play or _selected_card_id.is_empty():
 		return
 
 	var card_id := _selected_card_id
+	# A card that makes you discard first asks which cards to throw away.
+	var played_card := DataDB.get_card(card_id)
+	if engine.discard_required(played_card) > 0:
+		if engine.play_block(played_card).is_empty():
+			_begin_pick(card_id)
+		return
+	_play_card_now(card_id, [])
+
+
+## Plays `card_id` now, throwing away `discards` (already chosen).
+func _play_card_now(card_id: String, discards: Array) -> void:
 
 	# Asked BEFORE the card is played, while it is still in hand. The engine
 	# works out whether a card does anything in this room in preview() and
@@ -821,7 +941,7 @@ func _play_selected() -> void:
 	var acting_opponent_name := OpponentPresenter.display_name(engine)
 
 	var org_changes := OrgPreview.changes(engine, DataDB.get_card(card_id))
-	var result := engine.play_card(card_id)
+	var result := engine.play_card(card_id, discards)
 	if not result.get("ok", false):
 		_messages.say(str(result.get("reason", Text.say("battle.card_refused"))))
 		return
@@ -876,6 +996,7 @@ func _lean() -> String:
 func _on_end_turn() -> void:
 	if not _ready_to_play:
 		return
+	_end_pick()
 	var result := engine.end_turn()
 	if not result.get("ok", false):
 		return

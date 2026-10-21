@@ -326,7 +326,7 @@ func _setup_deck(config: Dictionary) -> void:
 ##
 ## Returns what happened: `ok` is false with a `reason` when the card cannot
 ## be played, and the battle is left untouched.
-func play_card(card_id: String) -> Dictionary:
+func play_card(card_id: String, discard_ids: Array = []) -> Dictionary:
 	if state.is_over():
 		return _refused("the battle is already over")
 	if not state.hand.has(card_id):
@@ -335,6 +335,25 @@ func play_card(card_id: String) -> Dictionary:
 	var card: Dictionary = _cards.get(card_id, {})
 	if card.is_empty():
 		return _refused("there is no card with the ID '%s'" % card_id)
+
+	# A card that makes you discard (2026-10-21): the discards are chosen by the
+	# player and must come from the rest of the hand.
+	var needed := discard_required(card)
+	if needed > 0:
+		var block := play_block(card)
+		if not block.is_empty():
+			return _refused("this card cannot be played now (%s)" % block)
+		var rest: Array = state.hand.duplicate()
+		rest.erase(card_id)
+		if discard_ids.size() != needed:
+			return _refused("this card needs %d other cards to discard" % needed)
+		for chosen: Variant in discard_ids:
+			var at := rest.find(chosen)
+			if at < 0:
+				return _refused("a card to discard is not in hand")
+			rest.remove_at(at)
+	elif not discard_ids.is_empty():
+		return _refused("this card does not discard anything")
 
 	# A discount left behind by an earlier card this turn. Never below zero:
 	# a card cannot pay you to play it.
@@ -355,6 +374,9 @@ func play_card(card_id: String) -> Dictionary:
 	# Paying for it, and taking it out of hand.
 	state.energy -= cost
 	state.hand.erase(card_id)
+	for chosen: Variant in discard_ids:
+		state.hand.erase(chosen)
+		state.discard.append(str(chosen))
 	state.cards_played_this_turn += 1
 	state.next_card_bonus = 0     # a carried bonus is spent by the card using it
 	state.next_card_discount = 0  # and so is a carried discount
@@ -398,6 +420,8 @@ func play_card(card_id: String) -> Dictionary:
 		"applied": applied,
 		"energy_left": state.energy,
 	}
+	if not discard_ids.is_empty():
+		result["discarded"] = discard_ids.duplicate()
 	if not question_answer.is_empty():
 		result["question_answer"] = question_answer
 	if state.opponent_index != was_facing:
@@ -464,6 +488,28 @@ func _apply_effect(effect: Dictionary) -> Dictionary:
 	applied["drawn"] = _draw(int(effect.get("draw", 0)))
 
 	return applied
+
+
+## How many OTHER cards from hand this card makes you discard: to pay for it
+## (Discard To Play) or as part of its effect before it draws (Discard For Draw).
+func discard_required(card: Dictionary) -> int:
+	var to_play: Variant = card.get("discard_to_play")
+	var for_draw: Variant = card.get("discard_for_draw")
+	return (0 if to_play == null else int(to_play)) + (0 if for_draw == null else int(for_draw))
+
+
+## "" when the card can be played as far as discarding goes, else why not:
+## "no_refill" in a room whose hand is never refilled, "few_cards" when the
+## rest of the hand is too small. The screen words these; the rules only name them.
+func play_block(card: Dictionary) -> String:
+	var needed := discard_required(card)
+	if needed <= 0:
+		return ""
+	if state.draw_mode == "none":
+		return "no_refill"
+	if state.hand.size() - 1 < needed:
+		return "few_cards"
+	return ""
 
 
 func _refused(reason: String) -> Dictionary:
@@ -1120,6 +1166,10 @@ func preview(card: Dictionary) -> Dictionary:
 	# — so a card whose numbers are all inert here still spends a question.
 	# The card face has to say so, or spending one is an accident.
 	effect["answers_question"] = not active_question().is_empty()
+
+	# Cards that make you discard: how many, and whether that is possible now.
+	effect["needs_discard"] = discard_required(card)
+	effect["play_block"] = play_block(card)
 
 	return effect
 

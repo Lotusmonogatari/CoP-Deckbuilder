@@ -233,6 +233,8 @@ func _play_affordable_cards(screen: Node) -> void:
 			# card you can afford loses on gaffes rather than on the bar,
 			# which would make this a test of that mistake instead of the
 			# loop. A person would not do it either.
+			if screen.engine.discard_required((card as CardView).card) > 0:
+				continue   # a discard card opens a pick step; discard_test.gd covers it
 			var gaffe := int((card as CardView).card.get("gaffe", 0))
 			if state.gaffe + gaffe >= state.gaffe_limit:
 				continue

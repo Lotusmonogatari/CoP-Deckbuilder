@@ -96,7 +96,8 @@ func show_state(engine: BattleEngine) -> void:
 		# the card can no longer say "2" while being playable on 1 energy.
 		var cost := engine.card_cost(card)
 		view.show_cost(cost)
-		view.set_affordable(cost <= state.energy and not state.is_over())
+		view.set_affordable(cost <= state.energy and not state.is_over()
+			and str(effect.get("play_block", "")).is_empty())
 		view.set_useless_here(bool(effect.get("does_nothing", false)))
 
 	# Whatever this hand did not want.
@@ -117,6 +118,27 @@ func select_only(card_id: String) -> void:
 	for id: String in _views:
 		for view: CardView in _views[id]:
 			view.selected = (id == card_id and not card_id.is_empty())
+
+
+## Marks the cards chosen to be discarded for `played_id`, and dims that card
+## while the player chooses. An ID held twice marks only as many copies as were
+## chosen. `picks` empty and `played_id` "" clears everything.
+func set_picks(played_id: String, picks: Array) -> void:
+	var wanted := {}
+	for id: Variant in picks:
+		wanted[str(id)] = int(wanted.get(str(id), 0)) + 1
+	var played_dimmed := false
+	for id: String in _views:
+		var left := int(wanted.get(id, 0))
+		for view: CardView in _views[id]:
+			if id == played_id and not played_dimmed:
+				played_dimmed = true
+				view.picked = false
+				view.modulate = Color(1, 1, 1, 0.55)
+				continue
+			view.picked = left > 0
+			if left > 0:
+				left -= 1
 
 
 ## The view showing this card, if it is on screen. What an animation reaches

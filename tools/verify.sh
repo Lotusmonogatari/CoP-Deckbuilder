@@ -152,6 +152,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     failures=$((failures + 1))
   fi
 
+  # And the discard step for cards that cost a discard -- 2026-10-21, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/discard_test.tscn; then
+    echo ">> FAILED: the discard step did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
   # And special levels: the Special Levels block and the forced-in panel --
   # 2026-10-18, new (game clock, step 2).
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \

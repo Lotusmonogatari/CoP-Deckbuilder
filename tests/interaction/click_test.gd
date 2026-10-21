@@ -179,7 +179,10 @@ func _check_drag_card_to_play() -> void:
 	var hand: Control = _screen.get_node("%HandRow")
 	var card: CardView = null
 	for child in hand.get_children():
+		# A card that makes you discard opens a pick step instead of playing
+		# (discard_test.gd covers that), so a plain card is needed here.
 		if child is CardView and not (child as CardView).disabled \
+				and engine.discard_required(DataDB.get_card((child as CardView).card_id)) == 0 \
 				and (child as Control).get_global_rect().get_center().x < 1000:
 			card = child
 			break
