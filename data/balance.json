@@ -98,5 +98,7 @@
   "draft_bill_xp_cost": 350,
   "draft_bill_funds_cost": 300000,
   "draft_bill_cooldown_units": 30,
+  "brief_standard_energy": 3,
+  "brief_standard_hand": 5,
   "xp_tiers": {}
 }

@@ -180,51 +180,59 @@ func test_a_level_can_sign_off_on_a_loss() -> void:
 	GameState.end_level()
 
 
-func test_the_room_brief_covers_every_rule_of_the_room() -> void:
-	# Each bullet must reach the screen carrying the stage's real number.
-	# What the words around the number are is Cameron's.
+func test_the_room_brief_carries_the_stages_real_numbers() -> void:
+	# The key numbers share one row; a number that differs from the standard
+	# room (energy 4 against the standard 3, a hand of 6 against 5) is printed.
 	var stage := {
-		"turn_limit": 15, "energy_per_turn": 3, "gaffe_limit": 5,
-		"hand_size": 5, "win_threshold": 51, "bar_unit": "Seats",
+		"turn_limit": 15, "energy_per_turn": 4, "gaffe_limit": 5,
+		"hand_size": 6, "win_threshold": 51, "bar_unit": "Seats",
 	}
-	var lines := StageBrief.how_this_room_works(stage)
+	var lines := StageBrief.headline(stage)
 
-	assert_eq(lines[0], Text.say("brief.heading"), "the heading comes first")
-	var expected := {
-		"brief.label.turns": "15",
-		"brief.label.energy": "3",
-		"brief.label.gaffes": "5",
-		"brief.label.hand": "5",
-		"brief.label.winning": "51",
+	assert_eq(lines.size(), 2, "one row of numbers, one line on winning")
+	assert_string_contains(lines[0], Text.say("brief.stat.turns", {"count": 15}))
+	assert_string_contains(lines[0], Text.say("brief.stat.gaffes", {"count": 5}))
+	assert_string_contains(lines[0], Text.say("brief.stat.energy", {"count": 4}))
+	assert_string_contains(lines[0], Text.say("brief.stat.hand", {"count": 6}))
+	assert_string_contains(lines[1], "51")
+
+
+func test_a_standard_room_leaves_out_energy_and_hand() -> void:
+	var stage := {
+		"turn_limit": 7, "energy_per_turn": 3, "gaffe_limit": 5,
+		"hand_size": 5, "win_threshold": 20, "bar_unit": "Members",
 	}
-	for label_key: String in expected.keys():
-		var found := ""
-		for line: String in lines:
-			if line.contains(Text.say(label_key)):
-				found = line
-		assert_ne(found, "", "the brief should have a %s line" % label_key)
-		assert_string_contains(found, str(expected[label_key]))
+	var row := StageBrief.headline(stage)[0]
+	assert_false(row.contains(Text.say("brief.stat.energy", {"count": 3})), "the usual energy is in How to Play")
+	assert_false(row.contains(Text.say("brief.stat.hand", {"count": 5})), "the usual hand is in How to Play")
 
 
 func test_the_brief_explains_a_pool_of_energy() -> void:
-	# The sentence a playtest asked for: a policy study only refills energy
-	# when it is spent, so it looked finite.
+	# A policy study only refills energy when it is spent, so it looked finite.
 	var stage := {"energy_mode": "pool", "energy_pool": 6, "turn_limit": 0}
-	var lines := StageBrief.how_this_room_works(stage)
+	var row := StageBrief.headline(stage)[0]
 
-	var turns := ""
-	var energy := ""
-	for line: String in lines:
-		if line.contains(Text.say("brief.label.turns")):
-			turns = line
-		if line.contains(Text.say("brief.label.energy")):
-			energy = line
-
-	assert_string_contains(turns, Text.say("brief.turns.none"),
+	assert_string_contains(row, Text.say("brief.stat.turns_none"),
 		"a stage with no turn limit should say so rather than showing a 0")
-	assert_string_contains(energy, "6")
-	assert_ne(energy, Text.say("brief.energy.per_turn", {"count": 6}),
-		"a pool is explained differently from an allowance each turn")
+	assert_string_contains(row, Text.say("brief.stat.energy_pool", {"count": 6, "left": ""}))
+
+
+func test_questions_and_their_skip_cost_are_in_the_room_rules() -> void:
+	var stage := {"questions": [{}, {}, {}], "questions_per_turn": 1, "decline_tone_cost": 3}
+	var lines := StageBrief.details(stage)
+	assert_eq(lines.size(), 1)
+	assert_string_contains(lines[0], "3")
+	assert_string_contains(lines[0], Text.say("brief.q.skip_costs", {"count": 3}))
+
+
+func test_a_committee_says_everything_starts_over_and_a_floor_debate_names_support() -> void:
+	var committee := {"sequence_mode": "reset", "opponent_count": {"min": 3, "max": 3}}
+	assert_eq(CarryOverLines.for_stage(committee), [Text.say("briefing.between_all")])
+	var floor_debate := {"sequence_mode": "continuous", "opponent_count": {"min": 2, "max": 2}}
+	var lines := CarryOverLines.for_stage(floor_debate)
+	assert_eq(lines.size(), 1)
+	assert_string_contains(lines[0], Text.say("briefing.res_support"))
+	assert_eq(CarryOverLines.for_stage({"sequence_mode": "single"}), [])
 
 
 func test_each_kind_of_room_says_how_winning_works() -> void:

@@ -115,7 +115,7 @@
     "group": "Cards",
     "heading_en": "Guard",
     "heading_jp": null,
-    "body_en": "Guard soaks up attacks, stacks up to {guard_cap}, and carries between turns.",
+    "body_en": "Guard soaks up attacks, stacks up to {guard_cap}, and carries between turns. Only an attack takes it, and it is spent stopping one.",
     "screenshot": null,
     "caption": null,
     "video": null
@@ -270,6 +270,17 @@
     "heading_en": "How the parties see you",
     "heading_jp": null,
     "body_en": "Each of the six parties rates you from your votes and from how the organizations tied to it feel about you, and the Parties page shows its allies and rivals. Pleasing a rival organization can lower a party's opinion of you. Your own party's opinion drives the urgent levels and the influence you need to swing a vote.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT26",
+    "order": 45.0,
+    "group": "Winning and Losing",
+    "heading_en": "Winning over voters",
+    "heading_jp": null,
+    "body_en": "Winning over somebody undecided costs one point; somebody already against you costs one, two or three. You find out which as you go, and points you cannot spend are lost.",
     "screenshot": null,
     "caption": null,
     "video": null

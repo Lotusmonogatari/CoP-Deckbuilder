@@ -20,98 +20,80 @@ extends RefCounted
 ## briefing screen can print the same sentences rather than drifting apart.
 
 
-## One line per rule of the room, ready to join with newlines.
-##
-## `state` may be null: the briefing screen describes a stage before there is
-## a battle, and then only the things written on the stage can be said.
-static func how_this_room_works(stage: Dictionary, state: BattleState = null) -> Array[String]:
-	var lines: Array[String] = [Text.say("brief.heading")]
-
-	lines.append(_bullet("brief.label.turns", _turns(stage)))
-	lines.append(_bullet("brief.label.energy", _energy(stage, state)))
-
-	var questions: Array = stage.get("questions", [])
-	if not questions.is_empty():
-		lines.append(_bullet("brief.label.questions", _questions(stage, questions.size())))
-
-	lines.append(_bullet("brief.label.gaffes", _gaffes(stage)))
-	lines.append(_bullet("brief.label.guard", _guard(state)))
-	lines.append(_bullet("brief.label.hand", _hand(stage)))
-	lines.append(_bullet("brief.label.winning", _winning(stage)))
-
-	var decay := int(stage.get("affinity_decay", 0))
-	if decay > 0:
-		lines.append(_bullet("brief.label.decay",
-			Text.say("brief.decay", {"count": decay})))
-
+## The two lines that always show: the key numbers on one row, then what
+## winning means in this room. Short by design (2026-10-21): rules every room
+## shares (guard, the usual energy and hand) are in How to Play, and a number
+## is printed only when this room differs from the standard one.
+static func headline(stage: Dictionary, state: BattleState = null) -> Array[String]:
+	var lines: Array[String] = [" · ".join(_stats(stage, state))]
+	lines.append(_winning(stage))
 	return lines
 
 
-## One line of the list: its label and what it says.
-static func _bullet(label_key: String, detail: String) -> String:
-	return Text.say("brief.bullet",
-		{"label": Text.say(label_key), "detail": detail})
+## The rest of the room's rules, shown behind the Room rules toggle: how many
+## questions it asks and what skipping one costs, and any cooling of interest.
+static func details(stage: Dictionary, _state: BattleState = null) -> Array[String]:
+	var lines: Array[String] = []
+	var questions: Array = stage.get("questions", [])
+	if not questions.is_empty():
+		lines.append(_questions(stage, questions.size()))
+	var decay := int(stage.get("affinity_decay", 0))
+	if decay > 0:
+		lines.append(Text.say("brief.decay", {"count": decay}))
+	return lines
 
 
-static func _turns(stage: Dictionary) -> String:
+## Every line, headline first. `state` may be null: the briefing screen
+## describes a stage before there is a battle.
+static func how_this_room_works(stage: Dictionary, state: BattleState = null) -> Array[String]:
+	var lines := headline(stage, state)
+	lines.append_array(details(stage, state))
+	return lines
+
+
+## "Turns 7 · Gaffes 5 = loss", plus Energy and Hand only where this room
+## differs from the standard (Balance: Brief: Standard Energy / Hand).
+static func _stats(stage: Dictionary, state: BattleState) -> Array[String]:
+	var stats: Array[String] = []
 	var limit := int(stage.get("turn_limit", 0))
-	if limit <= 0:
-		return Text.say("brief.turns.none")
-	return Text.say("brief.turns.limit", {"count": limit})
+	stats.append(Text.say("brief.stat.turns", {"count": limit}) if limit > 0
+		else Text.say("brief.stat.turns_none"))
 
+	var gaffe_limit := int(stage.get("gaffe_limit", 5))
+	var multiplier := maxi(int(stage.get("gaffe_multiplier", 1)), 1)
+	stats.append(Text.say("brief.stat.gaffes_multiplied",
+		{"count": gaffe_limit, "multiplier": multiplier}) if multiplier > 1
+		else Text.say("brief.stat.gaffes", {"count": gaffe_limit}))
 
-static func _energy(stage: Dictionary, state: BattleState) -> String:
 	if str(stage.get("energy_mode", "per_turn")) == "pool":
-		var pool := int(stage.get("energy_pool", 0))
 		var left := ("" if state == null
 			else Text.say("brief.energy.left", {"count": state.energy}))
-		return Text.say("brief.energy.pool", {"count": pool, "left": left})
+		stats.append(Text.say("brief.stat.energy_pool",
+			{"count": int(stage.get("energy_pool", 0)), "left": left}))
+	else:
+		var energy := int(stage.get("energy_per_turn", 3))
+		if energy != int(DataDB.balance.get("brief_standard_energy", 3)):
+			stats.append(Text.say("brief.stat.energy", {"count": energy}))
 
-	# The sentence that prompted all of this: "when you end the turn" is the
-	# step the player could not see.
-	return Text.say("brief.energy.per_turn",
-		{"count": int(stage.get("energy_per_turn", 3))})
+	if str(stage.get("draw_mode", "refill")) == "none":
+		stats.append(Text.say("brief.stat.hand_none", {"count": int(stage.get("opening_hand", 8))}))
+	else:
+		var hand := int(stage.get("hand_size", 5))
+		if hand != int(DataDB.balance.get("brief_standard_hand", 5)):
+			stats.append(Text.say("brief.stat.hand", {"count": hand}))
+	return stats
 
 
 static func _questions(stage: Dictionary, total: int) -> String:
 	var per_turn := maxi(int(stage.get("questions_per_turn", 1)), 1)
-	var sentence := ""
-	if per_turn == 1:
-		sentence = Text.say("brief.questions.one_a_turn", {"total": total})
-	else:
-		sentence = Text.say("brief.questions.several",
-			{"per_turn": per_turn, "total": total})
-
-	sentence += Text.say("brief.questions.decline")
+	var sentence := (Text.say("brief.q.one_a_turn", {"total": total}) if per_turn == 1
+		else Text.say("brief.q.several", {"per_turn": per_turn, "total": total}))
 	if bool(stage.get("decline_ends_stage", false)):
-		return sentence + Text.say("brief.questions.ends_stage")
-
+		return sentence + " " + Text.say("brief.q.skip_ends")
 	var cost := int(stage.get("decline_tone_cost", 3))
 	if cost > 0:
-		return sentence + Text.say("brief.questions.costs", {"count": cost})
-	return sentence + Text.say("brief.questions.free")
-
-
-static func _gaffes(stage: Dictionary) -> String:
-	var limit := int(stage.get("gaffe_limit", 5))
-	var multiplier := maxi(int(stage.get("gaffe_multiplier", 1)), 1)
-	if multiplier > 1:
-		return Text.say("brief.gaffes.multiplied",
-			{"count": limit, "multiplier": multiplier})
-	return Text.say("brief.gaffes.plain", {"count": limit})
-
-
-static func _guard(state: BattleState) -> String:
-	var cap := 5 if state == null else state.guard_cap
-	return Text.say("brief.guard", {"count": cap})
-
-
-static func _hand(stage: Dictionary) -> String:
-	if str(stage.get("draw_mode", "refill")) == "none":
-		return Text.say("brief.hand.none",
-			{"count": int(stage.get("opening_hand", 8))})
-	return Text.say("brief.hand.refill",
-		{"count": int(stage.get("hand_size", 5))})
+		return sentence + " " + Text.say("brief.q.skip_costs", {"count": cost})
+	return sentence + " " + Text.say("brief.q.skip_free")
 
 
 static func _winning(stage: Dictionary) -> String:
