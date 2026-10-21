@@ -119,6 +119,7 @@ func _check_card_double_drag() -> void:
 	var card: CardView = null
 	for child in hand.get_children():
 		if child is CardView and not (child as CardView).disabled \
+				and engine.discard_required(DataDB.get_card((child as CardView).card_id)) == 0 \
 				and (child as Control).get_global_rect().get_center().x < 1000:
 			card = child
 			break
