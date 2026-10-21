@@ -101,6 +101,8 @@ var _opponent_row: HBoxContainer
 var _opponent_name_label: Label
 var _opponent_party_label: Label
 var _details_text_after: Label
+var _rules_toggle: Button
+var _rules_text: Label
 @onready var _card_zoom: PanelContainer = %CardZoom
 
 ## The inventory, opened from its button in the header.
@@ -171,12 +173,27 @@ func _ready() -> void:
 	_details_text_after.theme_type_variation = &"SmallLabel"
 	_details_text_after.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
+	_rules_toggle = Button.new()
+	_rules_toggle.name = "RulesToggle"
+	_rules_toggle.text = Text.say("details.rules_show")
+	_rules_toggle.pressed.connect(_toggle_rules)
+	_rules_text = Label.new()
+	_rules_text.name = "RulesText"
+	_rules_text.theme_type_variation = &"SmallLabel"
+	_rules_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_rules_text.visible = false
+
 	details_column.add_child(_you_row)
 	details_column.move_child(_you_row, _details_text.get_index() + 1)
 	details_column.add_child(_opponent_row)
 	details_column.move_child(_opponent_row, _you_row.get_index() + 1)
 	details_column.add_child(_details_text_after)
 	details_column.move_child(_details_text_after, _opponent_row.get_index() + 1)
+	details_column.add_child(_rules_toggle)
+	details_column.add_child(_rules_text)
+	# Under the details, above the Back button.
+	details_column.move_child(_rules_toggle, _details_text_after.get_index() + 1)
+	details_column.move_child(_rules_text, _rules_toggle.get_index() + 1)
 
 	_details_panel.hide()
 	_card_zoom.hide()
@@ -499,9 +516,6 @@ func _room_lines(state: BattleState) -> Array[String]:
 		if not parts.is_empty():
 			lines.append(Text.say("battle.room_mix", {"mix": CauseLines.join(parts)}))
 
-	if state.bar != null and state.bar.model == BarModel.Model.SHARED_POOL:
-		lines.append(Text.say("battle.shared_pool_rules"))
-
 	return lines
 
 
@@ -510,14 +524,7 @@ func _refresh_details(state: BattleState) -> void:
 	# now differ in how they hand out energy, how many questions they ask and
 	# what winning means, and this panel used to explain only the two cases
 	# that were unusual — so a policy study looked like it had finite energy.
-	var lines: Array[String] = StageBrief.how_this_room_works(_stage, state)
-
-	lines.append("")
-	lines.append_array([
-		Text.say("battle.deck_hand_discard", {
-			"deck": state.deck.size(), "hand": state.hand.size(), "discard": state.discard.size()}),
-		"Stage: %s" % str(_stage.get("name_en", "")),
-	])
+	var lines: Array[String] = StageBrief.headline(_stage, state)
 	if not _lean().is_empty():
 		lines.append(Text.say("battle.stance_head", {
 			"bill": str(DataDB.get_bill(_bill_id()).get("bill_name", "")),
@@ -554,20 +561,6 @@ func _refresh_details(state: BattleState) -> void:
 		if engine.pleased_boosters().is_empty():
 			after.append(Text.say("battle.nobody_pleased"))
 
-	after.append("")
-	after.append_array(_room_lines(state))
-
-	# How many there are to get through. How they follow one another is a row
-	# in the table above, so only the count belongs here.
-	if state.opponent_count > 1:
-		after.append("")
-		after.append(Text.say("battle.one_at_a_time", {
-			"count": state.opponent_count,
-			"number": state.opponent_index + 1,
-		}))
-		for between: String in CarryOverLines.for_stage(_stage):
-			after.append(between)
-
 	# Asked, not sniffed. This used to test whether the sentence began with
 	# "Nothing", so rewording that line would have silently hidden the block.
 	if GameState.is_in_level() and GameState.level_runner.anything_carried():
@@ -575,7 +568,8 @@ func _refresh_details(state: BattleState) -> void:
 		after.append(GameState.level_runner.describe_carried_buffs(
 			BattleSetup.booster_names(), Text.phrase()))
 
-	if engine.used_default_intent_pattern:
+	# A developer note about missing data, not something a player can act on.
+	if engine.used_default_intent_pattern and OS.is_debug_build():
 		after.append("")
 		after.append(Text.say("battle.default_pattern"))
 
@@ -590,7 +584,23 @@ func _refresh_details(state: BattleState) -> void:
 		after.append(rule)
 
 	_details_text_after.text = "\n".join(after)
+	_rules_text.text = "\n".join(_rules_lines(state))
 	_refresh_details_orgs(engine)
+
+
+## The lines behind the Room rules toggle: how many questions and what
+## skipping one costs, the deck counts, and who is in the room.
+func _rules_lines(state: BattleState) -> Array[String]:
+	var lines: Array[String] = StageBrief.details(_stage, state)
+	lines.append(Text.say("battle.deck_hand_discard", {
+		"deck": state.deck.size(), "hand": state.hand.size(), "discard": state.discard.size()}))
+	lines.append_array(_room_lines(state))
+	return lines
+
+
+func _toggle_rules() -> void:
+	_rules_text.visible = not _rules_text.visible
+	_rules_toggle.text = Text.say("details.rules_hide" if _rules_text.visible else "details.rules_show")
 
 
 ## The organization chips in the Details panel: who is with and against the
