@@ -40,6 +40,11 @@ static func details(stage: Dictionary, _state: BattleState = null) -> Array[Stri
 	var decay := int(stage.get("affinity_decay", 0))
 	if decay > 0:
 		lines.append(Text.say("brief.decay", {"count": decay}))
+	# Anything unusual about how a loss is treated is said here, not left for
+	# the player to find out: a few rooms (the press conference, the media
+	# ambush) cost you but do not end the level.
+	if str(stage.get("mode", "")) == "Combat" and not LevelRunner.loss_ends_level(stage):
+		lines.append(Text.say("briefing.loss_continues"))
 	return lines
 
 

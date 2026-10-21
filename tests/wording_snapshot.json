@@ -27,6 +27,7 @@
   "battle.question_stakes": "A strong answer pleases them. A weak one annoys them.",
   "battle.read_card": "Read",
   "battle.room_mix": "In the room: {mix}.",
+  "battle.room_mix_other": "Other",
   "battle.speaker_and_org": "{who} — {org}",
   "battle.stance_head": "Stance on {bill}: {lean}.",
   "battle.taste_dislikes": "Dislikes {styles} rhetoric.",

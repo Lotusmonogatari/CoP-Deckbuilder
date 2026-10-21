@@ -506,15 +506,11 @@ func _refresh_gaffe(state: BattleState) -> void:
 func _room_lines(state: BattleState) -> Array[String]:
 	var lines: Array[String] = []
 
-	var mix: Dictionary = _stage.get("segment_mix", {})
-	if not mix.is_empty():
-		var parts: Array[String] = []
-		for segment: Dictionary in DataDB.segments:
-			var share := float(mix.get(segment.get("segment_id"), 0.0))
-			if share > 0.0:
-				parts.append("%d%% %s" % [roundi(share * 100.0), segment.get("name_en", "")])
-		if not parts.is_empty():
-			lines.append(Text.say("battle.room_mix", {"mix": CauseLines.join(parts)}))
+	var parts: Array[String] = []
+	for entry: Dictionary in RoomMix.entries(_stage, DataDB.segments, Text.say("battle.room_mix_other")):
+		parts.append("%d%% %s" % [int(entry["pct"]), str(entry["name"])])
+	if not parts.is_empty():
+		lines.append(Text.say("battle.room_mix", {"mix": CauseLines.join(parts)}))
 
 	return lines
 
