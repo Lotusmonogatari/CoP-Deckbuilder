@@ -247,3 +247,9 @@ func test_each_kind_of_room_says_how_winning_works() -> void:
 	assert_string_contains(reset, "51 seats")
 	assert_string_contains(single, "51 seats")
 	assert_false(score.contains("51"), "a scored room has nothing to reach")
+
+
+func test_a_room_where_a_loss_does_not_end_the_level_says_so() -> void:
+	var lines := StageBrief.details({"mode": "Combat", "loss_ends_level": "No"})
+	assert_true(lines.has(Text.say("briefing.loss_continues")))
+	assert_eq(StageBrief.details({"mode": "Combat"}).size(), 0, "the standard room has nothing to add")

@@ -4590,5 +4590,12 @@
     "english": "Hide room rules",
     "placeholders": null,
     "notes": "2026-10-21 concise stage text."
+  },
+  {
+    "key": "battle.room_mix_other",
+    "where": "Room rules, the audience mix",
+    "english": "Other",
+    "placeholders": null,
+    "notes": "2026-10-21 the rest of the audience, so the mix adds to 100."
   }
 ]
