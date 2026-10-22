@@ -4699,14 +4699,14 @@
   {
     "key": "floor_vote.whip_less",
     "where": "Floor Vote, whip button",
-    "english": "Whip fewer",
+    "english": "Fewer",
     "placeholders": null,
     "notes": "2026-10-22 vote whipping."
   },
   {
     "key": "floor_vote.whip_more",
     "where": "Floor Vote, whip button",
-    "english": "Whip more",
+    "english": "More",
     "placeholders": null,
     "notes": "2026-10-22 vote whipping."
   },

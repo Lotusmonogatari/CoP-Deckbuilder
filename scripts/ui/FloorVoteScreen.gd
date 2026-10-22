@@ -319,6 +319,9 @@ func _build_whip_row(column: VBoxContainer) -> void:
 		var count := Label.new()
 		count.name = "WhipCount"
 		count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		count.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		count.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		count.custom_minimum_size = Vector2(0, 0)
 		count.text = Text.say("floor_vote.whip_count", {"count": _whips, "max": most})
 		var more := Button.new()
 		more.name = "WhipMore"
