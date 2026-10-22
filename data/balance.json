@@ -100,5 +100,9 @@
   "draft_bill_cooldown_units": 30,
   "brief_standard_energy": 3,
   "brief_standard_hand": 5,
+  "whip_base_cost": 10,
+  "whip_against_party_multiplier": 3,
+  "whip_max_per_vote": 3,
+  "whip_party_support_floor": 30,
   "xp_tiers": {}
 }

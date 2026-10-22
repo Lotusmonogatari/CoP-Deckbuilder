@@ -295,5 +295,16 @@
     "screenshot": null,
     "caption": null,
     "video": null
+  },
+  {
+    "entry_id": "HT28",
+    "order": 175.0,
+    "group": "Bills and Parties",
+    "heading_en": "Whipping the vote",
+    "heading_jp": null,
+    "body_en": "On a bill vote you can spend Party support to whip extra members of your own party to your pick. Each extra vote has a price shown on the screen, and costs far more when your vote goes against your party's position. You cannot spend Party support below a floor, and you can only whip members who are not already with you.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
   }
 ]

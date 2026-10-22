@@ -2360,6 +2360,21 @@ func apply_floor_vote_influence_bonus(reputation_delta: int, party_support_delta
 	_cause = ""
 
 
+## Spends stored Party support (whipping a vote, 2026-10-22). Refused, changing
+## nothing, when it would leave less than the floor (Balance: Whip: Party
+## Support Floor) so a whip can never push the player into the party crisis.
+func spend_party_support(amount: int, cause: String = "") -> bool:
+	if amount <= 0:
+		return true
+	var floor_value := int(DataDB.balance.get("whip_party_support_floor", 30))
+	if int(meta.get("Party support", 0)) - amount < floor_value:
+		return false
+	_cause = cause
+	_apply_meta_reward("Party support", -amount)
+	_cause = ""
+	return true
+
+
 ## M48-style backing (PARTY_BILL_FLIP_BONUS): when the player's influence
 ## turns a bill their own party backs from failing to passing, an owned
 ## backing whose organization still holds pays its Party support. Returns the
