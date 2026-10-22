@@ -35,7 +35,7 @@ So "spend party sentiment" should mean **spend the stored Party support**. Becau
 | One extra card on the first turn only (new) | a one-time opening draw; new token | "A strong opening" |
 | Start each stage with 2 Guard | token GUARD | "Whips shield you" |
 
-Draft prices (stored Party support, all Balance levers): extra vote 8 (up to 3 a vote), +1 energy 15, +1 card 12, +1 turn 10, +1 gaffe 10, opening card 6, guard 8.
+Draft prices (stored Party support, all Balance levers): extra vote 10 (Cameron, 2026-10-22; 30 when the vote goes against the party) (up to 3 a vote), +1 energy 15, +1 card 12, +1 turn 10, +1 gaffe 10, opening card 6, guard 8.
 
 ## Where it could live
 
@@ -54,7 +54,7 @@ Draft prices (stored Party support, all Balance levers): extra vote 8 (up to 3 a
 
 | Lever | Effect |
 |---|---|
-| **The player's party's position on the bill** | Supportive: the boosts cost the base price. Neutral: base price. Opposed: double, or unavailable ("your own party will not whip for this") |
+| **The player's party's position on the bill** | Supportive: the boosts cost the base price. Neutral: base price. Against the party's position: triple (Cameron, 2026-10-22) |
 | **The bill's salience for that party** (`PartySalience`, 0.5 to 2.0) | Scales the price: a bill the party cares about is cheaper to rally for |
 | **The lean the player took** | Leaning with the party: normal price. Leaning against it: costlier |
 | **Seats available** | An extra vote is limited by how many of your party's seats are not already on your side; at some point there is nobody left to whip |
@@ -76,6 +76,10 @@ Draft prices (stored Party support, all Balance levers): extra vote 8 (up to 3 a
 | 1 | Spend the stored Party support (not a new currency)? | Yes |
 | 2 | Floor for spending (stored Party support never goes below)? | 30, a Balance lever |
 | 3 | One level-wide boost per level, or several? | One |
-| 4 | May a player whose party **opposes** the bill still whip? | Yes, at double price |
+| 4 | May a player whose party **opposes** the bill still whip? | Yes, at triple price (Cameron, 2026-10-22: a whip going against the party costs 3x the base) |
 | 5 | Do bought votes count as "your influence" for the flip cue and the Vote Influence Cues? | Yes (they already do for assist seats) |
 | 6 | Start with options 1 and 2? | Yes |
+
+## Status (2026-10-22)
+
+Option 2, **Whip the vote**, is built: base cost 10 per extra vote, 3x (30) when the vote goes against the player's party's position, at most 3 extra votes per vote, stored Party support may not drop below 30. See `design/CHANGELOG.md`. Options 1 and 3 to 8 are not built.

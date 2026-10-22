@@ -4674,5 +4674,75 @@
     "english": "Cancel",
     "placeholders": null,
     "notes": "2026-10-21 discard cards."
+  },
+  {
+    "key": "floor_vote.whip_heading",
+    "where": "Floor Vote, whip the vote",
+    "english": "Whip the vote: pull more members of your own party to your side.",
+    "placeholders": null,
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "floor_vote.whip_cost",
+    "where": "Floor Vote, whip the vote",
+    "english": "Each extra vote costs {base} Party support, or {against} if your vote goes against your party's position. You have {have} and cannot spend below {floor}.",
+    "placeholders": "base, against, have, floor",
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "floor_vote.whip_none",
+    "where": "Floor Vote, whip the vote",
+    "english": "Nobody in your party is left to whip, or you cannot spare the Party support.",
+    "placeholders": null,
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "floor_vote.whip_less",
+    "where": "Floor Vote, whip button",
+    "english": "Whip fewer",
+    "placeholders": null,
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "floor_vote.whip_more",
+    "where": "Floor Vote, whip button",
+    "english": "Whip more",
+    "placeholders": null,
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "floor_vote.whip_count",
+    "where": "Floor Vote, whip the vote",
+    "english": "Extra votes: {count} of {max}",
+    "placeholders": "count, max",
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "floor_vote.vote_with_whip",
+    "where": "Floor Vote, vote button while whipping",
+    "english": "{vote} (spend {cost} Party support)",
+    "placeholders": "vote, cost",
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "floor_vote.preview_whip",
+    "where": "Floor Vote, preview line while whipping",
+    "english": "Whip cost {cost}.",
+    "placeholders": "cost",
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "floor_vote.whip_result",
+    "where": "Floor Vote, result",
+    "english": "You whipped {count} extra votes, spending {cost} Party support.",
+    "placeholders": "count, cost",
+    "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "record.cause_whip",
+    "where": "Your Record, why Party support fell",
+    "english": "whipping the vote on {bill}",
+    "placeholders": "bill",
+    "notes": "2026-10-22 vote whipping."
   }
 ]

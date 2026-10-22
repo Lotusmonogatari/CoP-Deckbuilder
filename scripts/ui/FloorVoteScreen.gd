@@ -45,6 +45,11 @@ var _voted := false
 @onready var _outcome_body: Label = %OutcomeBody
 ## The organization changes of the player's stance at the vote, as chips.
 var _stance_chips: Array = []
+
+## Extra votes the player has chosen to whip, and the vote buttons' own words.
+var _whips := 0
+var _whip_note := ""
+var _vote_words := {}
 @onready var _bar_yes: PartyVoteBar = %BarYes
 @onready var _bar_no: PartyVoteBar = %BarNo
 @onready var _bar_abstain: PartyVoteBar = %BarAbstain
@@ -135,6 +140,7 @@ func start_voting() -> void:
 	_vote_yes.text = Text.say("floor_vote.vote_yes")
 	_vote_no.text = Text.say("floor_vote.vote_no")
 	_vote_abstain.text = Text.say("floor_vote.vote_abstain")
+	_vote_words = {"Yes": _vote_yes.text, "No": _vote_no.text, "Abstain": _vote_abstain.text}
 	_show_parties(engine.positions())
 	_show_influence_and_preview()
 
@@ -211,11 +217,14 @@ func _show_influence_and_preview() -> void:
 		against_label.text = Text.say("floor_vote.assist_against", {"count": against})
 		column.add_child(against_label)
 
+	_build_whip_row(column)
+
 	var preview := Label.new()
 	preview.name = "VotePreview"
 	preview.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var lines: Array[String] = [Text.say("floor_vote.preview_heading")]
-	var labels := {"Yes": _vote_yes.text, "No": _vote_no.text, "Abstain": _vote_abstain.text}
+	var labels := _vote_words.duplicate()
+	engine.set_whips(_whips)
 	for choice: String in labels:
 		var trial := engine.preview(choice)
 		if trial.is_empty():
@@ -229,6 +238,9 @@ func _show_influence_and_preview() -> void:
 			"choice": labels[choice],
 			"yes": totals.get("Yes", 0), "no": totals.get("No", 0),
 			"abstain": totals.get("Abstain", 0), "result": result}))
+		if _whips > 0:
+			lines[-1] += " " + Text.say("floor_vote.preview_whip",
+				{"cost": int(_whip_numbers(choice)["unit"]) * _whips})
 	preview.text = "\n".join(lines)
 	column.add_child(preview)
 
@@ -254,6 +266,96 @@ func _show_influence_and_preview() -> void:
 			if not chips.is_empty():
 				stance.add_child(OrgChip.row(chips, true, 90.0))
 		column.add_child(stance)
+
+
+## What a whipped vote costs and allows for `choice`: the price of one extra
+## vote and how many may be whipped (Balance levers; VoteWhip is the arithmetic).
+func _whip_numbers(choice: String) -> Dictionary:
+	var unit := VoteWhip.unit_cost(engine.own_disposition(), choice,
+		int(DataDB.balance.get("whip_base_cost", 10)),
+		int(DataDB.balance.get("whip_against_multiplier", 3)))
+	var allowed := VoteWhip.max_whips(unit, int(GameState.meta.get("Party support", 0)),
+		int(DataDB.balance.get("whip_party_support_floor", 30)), engine.whip_capacity(choice),
+		int(DataDB.balance.get("whip_max_per_vote", 3)))
+	return {"unit": unit, "allowed": allowed}
+
+
+## "Whip the vote": fewer / more extra votes from your own party, with the
+## price. The vote buttons carry the cost for the choice they make.
+func _build_whip_row(column: VBoxContainer) -> void:
+	var most := 0
+	for choice: String in ["Yes", "No", "Abstain"]:
+		most = maxi(most, int(_whip_numbers(choice)["allowed"]))
+	_whips = mini(_whips, most)
+
+	var box := VBoxContainer.new()
+	box.name = "WhipRow"
+	var heading := Label.new()
+	heading.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	heading.text = Text.say("floor_vote.whip_heading")
+	box.add_child(heading)
+	var base := int(DataDB.balance.get("whip_base_cost", 10))
+	var info := Label.new()
+	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	info.theme_type_variation = &"SmallLabel"
+	info.text = Text.say("floor_vote.whip_cost", {
+		"base": base, "against": base * int(DataDB.balance.get("whip_against_multiplier", 3)),
+		"have": int(GameState.meta.get("Party support", 0)),
+		"floor": int(DataDB.balance.get("whip_party_support_floor", 30))})
+	box.add_child(info)
+	if most <= 0:
+		var none := Label.new()
+		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		none.text = Text.say("floor_vote.whip_none")
+		box.add_child(none)
+	else:
+		var controls := HBoxContainer.new()
+		controls.add_theme_constant_override("separation", 16)
+		var less := Button.new()
+		less.name = "WhipLess"
+		less.text = Text.say("floor_vote.whip_less")
+		less.disabled = _whips <= 0
+		less.pressed.connect(_on_whip_changed.bind(-1))
+		var count := Label.new()
+		count.name = "WhipCount"
+		count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		count.text = Text.say("floor_vote.whip_count", {"count": _whips, "max": most})
+		var more := Button.new()
+		more.name = "WhipMore"
+		more.text = Text.say("floor_vote.whip_more")
+		more.disabled = _whips >= most
+		more.pressed.connect(_on_whip_changed.bind(1))
+		controls.add_child(less)
+		controls.add_child(count)
+		controls.add_child(more)
+		box.add_child(controls)
+	column.add_child(box)
+	_refresh_vote_buttons()
+
+
+func _on_whip_changed(step: int) -> void:
+	if _voted:
+		return
+	_whips = maxi(_whips + step, 0)
+	_show_influence_and_preview()
+
+
+## The vote buttons name what whipping costs for their choice, and are greyed
+## when the player cannot afford that many whips for it.
+func _refresh_vote_buttons() -> void:
+	var buttons := {"Yes": _vote_yes, "No": _vote_no, "Abstain": _vote_abstain}
+	for choice: String in buttons:
+		var button: Button = buttons[choice]
+		# Wraps, so a long price line never widens the whole screen.
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		var numbers := _whip_numbers(choice)
+		if _whips > 0:
+			button.text = Text.say("floor_vote.vote_with_whip",
+				{"vote": _vote_words[choice], "cost": int(numbers["unit"]) * _whips})
+			button.disabled = _voted or _whips > int(numbers["allowed"])
+		else:
+			button.text = _vote_words[choice]
+			button.disabled = _voted
 
 
 ## A trigger variable as the player knows it: a booster's name, or the meta
@@ -360,13 +462,22 @@ func _party_color(position: Dictionary) -> Color:
 func _on_vote(choice: String) -> void:
 	if not _ready_to_play or _voted or engine == null:
 		return
+	var numbers := _whip_numbers(choice)
+	if _whips > int(numbers["allowed"]):
+		return   # the button is greyed for this; belt and braces
 	_voted = true
 	_vote_yes.disabled = true
 	_vote_no.disabled = true
 	_vote_abstain.disabled = true
 
+	engine.set_whips(_whips)
 	var result := engine.choose(choice)
 	var bill_name := str(engine.bill().get("bill_name", ""))
+	var whipped := int(result.get("whips_applied", 0))
+	var whip_cost := whipped * int(numbers["unit"])
+	if whipped > 0:
+		GameState.spend_party_support(whip_cost, Text.say("record.cause_whip", {"bill": bill_name}))
+		_whip_note = Text.say("floor_vote.whip_result", {"count": whipped, "cost": whip_cost})
 	GameState.apply_floor_vote_favorability(result.get("favorability_deltas", {}),
 		Text.say("record.cause_vote", {"bill": bill_name}))
 	# Into the statute book, applying the bill's own "once" Law Effects.
@@ -422,6 +533,8 @@ func _show_outcome(result: Dictionary, stance_note: String = "") -> void:
 	})
 	if not stance_note.is_empty():
 		_outcome_body.text += "\n" + stance_note
+	if not _whip_note.is_empty():
+		_outcome_body.text += "\n" + _whip_note
 	for line: String in RequestLines.outcome_lines(GameState.last_patron_outcome):
 		_outcome_body.text += "\n" + line
 

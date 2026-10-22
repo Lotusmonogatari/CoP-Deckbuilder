@@ -63,6 +63,11 @@ const SUPERMAJORITY := "Supermajority"
 var _resolved := false
 var _config: Dictionary = {}
 
+## Extra votes the player whips from their own party (2026-10-22): set before
+## choose()/preview(); `whips_applied()` says how many seats really moved.
+var _whips := 0
+var _whips_applied := 0
+
 var _meta: Dictionary = {}
 var _booster_standing: Dictionary = {}
 var _triggers: Array = []
@@ -244,6 +249,7 @@ func choose(choice: String) -> Dictionary:
 		var baseline_passed: bool = passes(baseline_totals)
 
 		_apply_won_over(picked)
+		_whips_applied = _apply_whips(picked)
 		_influence_gate_passed = _apply_influence_swing(picked)
 		_apply_worked_against(picked)
 
@@ -261,6 +267,7 @@ func choose(choice: String) -> Dictionary:
 		"favorability_deltas": _favorability_deltas(),
 		"influence_gate_passed": _influence_gate_passed,
 		"outcome_flipped_by_influence": _outcome_flipped_by_influence,
+		"whips_applied": _whips_applied,
 	}
 
 
@@ -271,6 +278,7 @@ func preview(choice: String) -> Dictionary:
 	var trial := FloorVoteEngine.new()
 	if not trial.setup(_config):
 		return {}
+	trial._whips = _whips
 	var result := trial.choose(choice)
 	return {
 		"totals": result.get("totals", {}),
@@ -278,6 +286,68 @@ func preview(choice: String) -> Dictionary:
 		"yes_needed": result.get("yes_needed", 0),
 		"flipped_by_influence": result.get("outcome_flipped_by_influence", false),
 	}
+
+
+## How many extra votes the player whips from their own party.
+func set_whips(count: int) -> void:
+	_whips = maxi(count, 0)
+
+
+func whips_applied() -> int:
+	return _whips_applied
+
+
+## The player's own party's position on this bill ("Supportive", "Opposed",
+## "Neutral"), or "" when it has none.
+func own_disposition() -> String:
+	return str(_position_for(_player_party).get("disposition", ""))
+
+
+## Seats of the player's own party that a whip could still move to `choice`:
+## those not already in that bucket, once the player's own seat has moved.
+func whip_capacity(choice: String) -> int:
+	if _player_party.is_empty():
+		return 0
+	var trial := FloorVoteEngine.new()
+	if not trial.setup(_config):
+		return 0
+	var picked := _normalise(choice)
+	trial._reallocate_player_vote(picked)
+	var position := trial._position_for(_player_party)
+	var outside := 0
+	for bucket: String in ["Yes", "No", "Abstain"]:
+		if bucket != picked:
+			outside += int(position.get("votes_%s" % bucket.to_lower(), 0))
+	return outside
+
+
+## Moves the whipped seats from the player's own party to `picked`, one at a
+## time from whichever other bucket is larger. Returns how many moved.
+func _apply_whips(picked: String) -> int:
+	if _whips <= 0 or _player_party.is_empty():
+		return 0
+	var index := _positions.find(_position_for(_player_party))
+	if index < 0:
+		return 0
+	var position: Dictionary = _positions[index]
+	var moved := 0
+	for _seat in range(_whips):
+		var best := ""
+		var best_count := 0
+		for bucket: String in ["Abstain", "No", "Yes"]:
+			if bucket == picked:
+				continue
+			var count := int(position.get("votes_%s" % bucket.to_lower(), 0))
+			if count > best_count:
+				best = bucket
+				best_count = count
+		if best.is_empty():
+			break
+		position["votes_%s" % best.to_lower()] = best_count - 1
+		position["votes_%s" % picked.to_lower()] = int(position.get("votes_%s" % picked.to_lower(), 0)) + 1
+		moved += 1
+	_positions[index] = position
+	return moved
 
 
 ## Where the player stands against the influence gate (see VoteInfluence.status()).

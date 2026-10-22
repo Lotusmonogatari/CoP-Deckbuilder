@@ -152,6 +152,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     failures=$((failures + 1))
   fi
 
+  # And whipping the vote: the Whip row, the priced vote button, the spend -- 2026-10-22, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/whip_test.tscn; then
+    echo ">> FAILED: whipping the vote did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
   # And the discard step for cards that cost a discard -- 2026-10-21, new.
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
         "$GODOT" --path . tests/interaction/discard_test.tscn; then
