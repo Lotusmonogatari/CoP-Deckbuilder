@@ -1244,23 +1244,31 @@ func _show_election() -> void:
 	rows.append(UiKit.line(Text.say("election.potential_line",
 		{"value": roundi(GameState.election_potential())}), "SmallLabel"))
 
+	rows.append(UiKit.heading(Text.say("election.inputs_heading")))
+	var part_names := {
+		"constituency": Text.say("election.c_constituency"), "organizations": Text.say("election.c_organizations"),
+		"war_chest": Text.say("election.c_war_chest"), "experience": Text.say("election.c_experience"),
+		"record": Text.say("election.c_record"), "party": Text.say("election.c_party")}
 	var meter_names := {"district": Text.say("awareness.district"), "national": Text.say("awareness.national")}
+	var parts := GameState.election_parts()
+	# The two awareness meters come first, each a bar with what it adds, so
+	# neither reads as the only one that counts; the other six inputs follow.
 	for meter: String in ["district", "national"]:
 		var value := int(GameState.awareness.get(meter, 0))
-		var meter_line := Text.say("election.meter_line", {"name": meter_names[meter], "value": value})
+		var points := {}
+		for part: Dictionary in parts:
+			if str(part["id"]) == meter:
+				points = part
+		var meter_line := Text.say("election.meter_line", {"name": meter_names[meter], "value": value,
+			"points": "%.1f" % float(points.get("points", 0.0)), "max": roundi(float(points.get("max", 0.0)))})
 		var meter_change := int(GameState.last_awareness_change.get(meter, 0))
 		if meter_change != 0:
 			meter_line += "  (%+d)" % meter_change
 		rows.append(UiKit.line(meter_line))
 		rows.append(_colour_bar(value, colour))
-
-	rows.append(UiKit.heading(Text.say("election.inputs_heading")))
-	var part_names := {
-		"district": Text.say("election.c_district"), "national": Text.say("election.c_national"),
-		"constituency": Text.say("election.c_constituency"), "organizations": Text.say("election.c_organizations"),
-		"war_chest": Text.say("election.c_war_chest"), "experience": Text.say("election.c_experience"),
-		"record": Text.say("election.c_record"), "party": Text.say("election.c_party")}
-	for part: Dictionary in GameState.election_parts():
+	for part: Dictionary in parts:
+		if not part_names.has(str(part["id"])):
+			continue
 		rows.append(UiKit.line(Text.say("election.component_line", {
 			"name": part_names[str(part["id"])], "points": "%.1f" % float(part["points"]),
 			"max": roundi(float(part["max"]))}), "SmallLabel"))

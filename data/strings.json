@@ -4979,7 +4979,7 @@
   {
     "key": "election.bar_line",
     "where": "Election Strength page, the bar caption",
-    "english": "Election Strength {value} / 100",
+    "english": "Election strength: {value} / 100",
     "placeholders": "value",
     "notes": "2026-10-23 election strength."
   },
@@ -4993,7 +4993,7 @@
   {
     "key": "election.potential_line",
     "where": "Election Strength page, what the inputs add up to right now",
-    "english": "Right now your campaign is worth {value} of 100. Strength grows slowly toward that, a little each week.",
+    "english": "Your campaign is heading toward {value} of 100. Strength moves toward that slowly, a little each week.",
     "placeholders": "value",
     "notes": "2026-10-23 election strength."
   },
@@ -5378,14 +5378,14 @@
   {
     "key": "election.meter_line",
     "where": "Election Strength page, an awareness meter",
-    "english": "{name}: {value} / 100",
-    "placeholders": "name, value",
+    "english": "{name}: {value} / 100. Adds {points} of {max} points.",
+    "placeholders": "name, value, points, max",
     "notes": "2026-10-23 election strength."
   },
   {
     "key": "election.inputs_heading",
     "where": "Election Strength page, section heading",
-    "english": "What counts toward it",
+    "english": "What feeds it",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   }
