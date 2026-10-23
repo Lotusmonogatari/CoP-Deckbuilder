@@ -98,6 +98,7 @@ var _draft_panel: Overlay
 ## and the three panels that carry the week's decisions.
 var _calendar_square: PanelContainer
 var _week_button: Button
+var _dues_label: Label
 var _week_confirm_panel: Overlay
 var _week_over_panel: Overlay
 var _new_week_panel: Overlay
@@ -288,12 +289,19 @@ func _build_week_controls() -> void:
 		_calendar_square = CalendarSquare.make()
 		spacer.add_child(_calendar_square)
 
+	_dues_label = Label.new()
+	_dues_label.name = "DuesLabel"
+	_dues_label.theme_type_variation = &"SmallLabel"
+	_dues_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_start_button.get_parent().add_child(_dues_label)
+	_start_button.get_parent().move_child(_dues_label, _start_button.get_index() + 1)
+
 	_week_button = Button.new()
 	_week_button.name = "WeekButton"
 	_week_button.custom_minimum_size = Vector2(0, 100)
 	_week_button.pressed.connect(_on_week_button_pressed)
 	_start_button.get_parent().add_child(_week_button)
-	_start_button.get_parent().move_child(_week_button, _start_button.get_index() + 1)
+	_start_button.get_parent().move_child(_week_button, _dues_label.get_index() + 1)
 
 	_week_confirm_panel = Overlay.new()
 	_week_confirm_panel.name = "WeekConfirmPanel"
@@ -328,6 +336,11 @@ func _refresh_calendar() -> void:
 		_week_button.visible = not mid_level
 	else:
 		_week_button.visible = false
+	_dues_label.visible = _week_button.visible or (GameState.work_week_is_full() and not mid_level)
+	if _dues_label.visible:
+		var due := GameState.dues_preview()
+		_dues_label.text = Text.say("dues.preview_owed" if int(due["owed"]) > 0 else "dues.preview", {
+			"yen_total": int(due["total"]), "yen_owed": int(due["owed"]), "yen_funds": int(due["funds"])})
 
 
 func _on_week_button_pressed() -> void:
@@ -382,7 +395,28 @@ func _go_home() -> void:
 	_build()
 	var rows: Array[Control] = [UiKit.line(Text.say("office.new_week_body",
 		{"date": str(result.get("date", ""))}))]
+	rows.append_array(_dues_report_rows(result.get("dues", {})))
 	_new_week_panel.open(Text.say("office.new_week_title"), rows, Text.say("office.new_week_go"))
+
+
+## What the party took at the week's end, as lines for the new-week popup.
+func _dues_report_rows(report: Dictionary) -> Array[Control]:
+	var rows: Array[Control] = []
+	if report.is_empty():
+		return rows
+	if int(report.get("total", 0)) <= 0:
+		rows.append(UiKit.line(Text.say("dues.none_line"), "SmallLabel"))
+		return rows
+	rows.append(UiKit.line(Text.say("dues.paid_line", {"yen_paid": int(report.get("paid", 0))}), "SmallLabel"))
+	if int(report.get("owed", 0)) > 0:
+		rows.append(UiKit.line(Text.say("dues.owed_line", {"yen_owed": int(report["owed"])}), "SmallLabel"))
+	if bool(report.get("penalized", false)):
+		rows.append(UiKit.line(Text.say("dues.penalty_line"), "SmallLabel"))
+		var withdrawn: Array = report.get("withdrawn", [])
+		if not withdrawn.is_empty():
+			rows.append(UiKit.line(Text.say("dues.cancelled_line",
+				{"names": ", ".join(PackedStringArray(withdrawn))}), "SmallLabel"))
+	return rows
 
 
 ## A crisis trigger firing or resolving since the last time the player was

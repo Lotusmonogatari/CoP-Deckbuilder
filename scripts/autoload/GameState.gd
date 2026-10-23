@@ -277,6 +277,12 @@ var calendar: Dictionary = WeekCalendar.fresh()
 ## Scales decay steps while the week-end decay runs; 1.0 the rest of the time.
 var _decay_scale := 1.0
 
+## Party dues (PartyDues.gd, 2026-10-23): the Funds earned Monday to Friday this
+## week (the share that adds to the dues), and the balance carried over from
+## weeks the dues were not paid in full. Both saved; cleared on a new run.
+var week_funds_earned := 0
+var dues_balance := 0
+
 ## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
 ## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
 ## until that special level has been played, win or lose.
@@ -413,7 +419,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -559,6 +565,8 @@ func reset_crisis_triggers() -> void:
 	steering_committee_active = false
 	time_units = 0
 	calendar = WeekCalendar.fresh()
+	week_funds_earned = 0
+	dues_balance = 0
 	last_decay_at = 0
 	booster_moved_in_period = {}
 	timed_bonuses = []
@@ -980,11 +988,70 @@ func end_work_week() -> void:
 func go_home() -> Dictionary:
 	if not in_weekend():
 		end_work_week()
+	var dues := _settle_dues()
 	var moved := WeekCalendar.go_home(calendar, calendar_config())
 	calendar = moved["state"]
 	_advance_clock(int(moved["skipped"]))
 	_apply_week_decay()
-	return {"date": calendar_date_text()}
+	return {"date": calendar_date_text(), "dues": dues}
+
+
+## What the awareness effects take off the base dues (National Awareness at 80
+## or more). Filled in with the Awareness Effects tab; nothing yet.
+func _dues_reduction() -> int:
+	return 0
+
+
+## What the party is owed at this week's end: { week_dues, owed (carried),
+## total, funds }. Shown above the week button.
+func dues_preview() -> Dictionary:
+	var cfg := PartyDues.settings(DataDB.balance)
+	var week_dues := PartyDues.week_dues(cfg, int(meta.get("Party support", 0)),
+		week_funds_earned, _dues_reduction())
+	return {"week_dues": week_dues, "owed": dues_balance, "total": week_dues + dues_balance,
+		"funds": int(meta.get("Funds", 0))}
+
+
+## Pays the party at the week's end with whatever Funds there are. Anything
+## unpaid rolls over; an unpaid week costs Party support, withdraws the
+## party's backings, and applies the scaled overdue penalties.
+## Returns { week_dues, carried, total, paid, owed, penalized, withdrawn }.
+func _settle_dues() -> Dictionary:
+	var cfg := PartyDues.settings(DataDB.balance)
+	var preview := dues_preview()
+	var settled := PartyDues.settle(int(preview["total"]), int(preview["funds"]))
+	var report := {"week_dues": int(preview["week_dues"]), "carried": dues_balance,
+		"total": int(preview["total"]), "paid": int(settled["paid"]),
+		"owed": int(settled["owed"]), "penalized": false, "withdrawn": []}
+	var cause := Text.say("record.cause_dues")
+	if int(settled["paid"]) > 0:
+		# Paying the party is not "spending Funds" to the Standing Links.
+		_links_suspended = true
+		_under_cause(cause, func() -> void: _apply_meta_reward("Funds", -int(settled["paid"])))
+		_links_suspended = false
+	dues_balance = int(settled["owed"])
+	week_funds_earned = 0
+	if dues_balance <= 0:
+		return report
+
+	var penalties := PartyDues.overdue_penalties(cfg, dues_balance)
+	report["penalized"] = true
+	_under_cause(cause, func() -> void:
+		_apply_meta_reward("Party support", -int(penalties["party_support"]))
+		_apply_booster_delta("BO01", -int(penalties["hq"]))
+		_apply_booster_delta("BO32", -int(penalties["selection"])))
+	var own_party := str(DataDB.player.get("party", ""))
+	for party: Dictionary in DataDB.parties:
+		var party_name := str(party.get("name", ""))
+		if not party_name.is_empty() and party_name != own_party:
+			_apply_party_delta(party_name, int(penalties["other_parties"]))
+	var withdrawn: Array = []
+	for mod_id: String in PartyDues.party_backings(owned_modifiers, DataDB.modifiers, DataDB.boosters):
+		owned_modifiers.erase(mod_id)
+		modifier_expires.erase(mod_id)
+		withdrawn.append(str(DataDB.get_modifier(mod_id).get("name_en", mod_id)))
+	report["withdrawn"] = withdrawn
+	return report
 
 
 ## Decay at a week's end, in bigger steps (Week Decay Multiplier) because a
@@ -1687,6 +1754,9 @@ func _under_cause(cause: String, change: Callable) -> void:
 func _record_meta_change(applied: Dictionary) -> void:
 	for name: String in applied.keys():
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
+		# Funds earned on a weekday add to that week's dues (PartyDues.gd).
+		if name == "Funds" and int(applied[name]) > 0 and not in_weekend():
+			week_funds_earned += int(applied[name])
 		if int(applied[name]) != 0 and not _cause.is_empty():
 			_note_cause(last_meta_cause, name, int(applied[name]))
 		if int(applied[name]) != 0 and not DataDB.standing_links.is_empty():

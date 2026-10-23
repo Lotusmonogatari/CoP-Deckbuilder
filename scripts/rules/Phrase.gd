@@ -95,6 +95,7 @@ func _fill(template: String, values: Dictionary, key: String) -> String:
 ## Money-sized numbers read with thousands separators ("1,000,000 Yen"). Only
 ## the placeholders that carry an amount are touched, and only whole numbers
 ## of four digits or more, so a seat count or a year is never altered.
+## A placeholder named yen_something is an amount too (2026-10-23).
 const AMOUNT_NAMES := ["count", "cost", "price"]
 
 
@@ -124,7 +125,7 @@ static func meta_amount(variable: String, amount: int, signed: bool = false) -> 
 
 
 static func _shown(name: String, value: Variant) -> String:
-	if name in AMOUNT_NAMES and (value is int or (value is float and value == floorf(value))):
+	if (name in AMOUNT_NAMES or name.begins_with("yen_")) and (value is int or (value is float and value == floorf(value))):
 		if absi(int(value)) >= 1000:
 			return with_separators(int(value))
 	return str(value)

@@ -4856,5 +4856,61 @@
     "english": "Start the Week",
     "placeholders": null,
     "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "record.cause_dues",
+    "where": "Your Record, cause of a Funds or standing change at week end",
+    "english": "Party dues",
+    "placeholders": null,
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.preview",
+    "where": "Office, line above the week button",
+    "english": "Party dues this week: {yen_total}円 (you have {yen_funds}円).",
+    "placeholders": "yen_total, yen_funds",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.preview_owed",
+    "where": "Office, line above the week button when dues are overdue",
+    "english": "Party dues this week: {yen_total}円, including {yen_owed}円 overdue (you have {yen_funds}円).",
+    "placeholders": "yen_total, yen_owed, yen_funds",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.paid_line",
+    "where": "New week popup, dues paid",
+    "english": "Party dues paid: {yen_paid}円.",
+    "placeholders": "yen_paid",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.owed_line",
+    "where": "New week popup, balance still owed",
+    "english": "You could not pay in full. {yen_owed}円 rolls over to next week.",
+    "placeholders": "yen_owed",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.penalty_line",
+    "where": "New week popup, penalties for unpaid dues",
+    "english": "The party is furious. Party support falls and its backings are withdrawn.",
+    "placeholders": null,
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.cancelled_line",
+    "where": "New week popup, which backings were withdrawn",
+    "english": "Withdrawn: {names}.",
+    "placeholders": "names",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.none_line",
+    "where": "New week popup, nothing was due",
+    "english": "No party dues were due.",
+    "placeholders": null,
+    "notes": "2026-10-23 party dues."
   }
 ]
