@@ -112,7 +112,7 @@
   "calendar_start_month": 10,
   "calendar_start_day": 1,
   "week_decay_multiplier": 2.5,
-  "dues_base": 100000,
+  "dues_base": 50000,
   "dues_reward_percent": 30,
   "dues_party_support_start": 40,
   "dues_party_support_step": 15,

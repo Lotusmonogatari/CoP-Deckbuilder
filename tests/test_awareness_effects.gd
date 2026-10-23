@@ -101,7 +101,7 @@ func test_district_80_earns_a_free_training_coupon_at_week_end() -> void:
 
 
 func test_high_national_awareness_lowers_the_dues_in_the_game() -> void:
-	GameState.meta["Party support"] = 40
+	GameState.meta["Party support"] = 70
 	GameState.awareness = {"district": 0, "national": 10}
 	var before := int(GameState.dues_preview()["week_dues"])
 	GameState.awareness = {"district": 0, "national": 85}

@@ -3601,5 +3601,407 @@
         "delta": -2
       }
     ]
+  },
+  {
+    "visitor_id": "VI81",
+    "name_en": "Takashi Hamada",
+    "name_jp": "浜田孝",
+    "romaji": "Takashi Hamada",
+    "title": "Neighborhood Festival Committee Chair",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO06",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO06",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI82",
+    "name_en": "Michiko Sasaki",
+    "name_jp": "佐々木美智子",
+    "romaji": "Michiko Sasaki",
+    "title": "Shrine Caretaker",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO20",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO20",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI83",
+    "name_en": "Daisuke Kondo",
+    "name_jp": "近藤大輔",
+    "romaji": "Daisuke Kondo",
+    "title": "Town Office Clerk",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI84",
+    "name_en": "Ichiro Watanabe",
+    "name_jp": "渡辺一郎",
+    "romaji": "Ichiro Watanabe",
+    "title": "Mountain Village Headman",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI85",
+    "name_en": "Yoshie Narita",
+    "name_jp": "成田良江",
+    "romaji": "Yoshie Narita",
+    "title": "Apple Orchard Farmer",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI86",
+    "name_en": "Kazuo Abe",
+    "name_jp": "阿部和夫",
+    "romaji": "Kazuo Abe",
+    "title": "Hunting Club Member",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI87",
+    "name_en": "Akemi Fujiwara",
+    "name_jp": "藤原明美",
+    "romaji": "Akemi Fujiwara",
+    "title": "Onsen Town Ryokan Owner",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO13",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI88",
+    "name_en": "Hiroshi Kimura",
+    "name_jp": "木村博",
+    "romaji": "Hiroshi Kimura",
+    "title": "Ski Resort Manager",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO24",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI89",
+    "name_en": "Rina Kurosawa",
+    "name_jp": "黒沢里奈",
+    "romaji": "Rina Kurosawa",
+    "title": "Mountain Guide and Hut Keeper",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI90",
+    "name_en": "Noboru Ishikawa",
+    "name_jp": "石川昇",
+    "romaji": "Noboru Ishikawa",
+    "title": "Scenic Park Ranger",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI91",
+    "name_en": "Fumiko Sato",
+    "name_jp": "佐藤文子",
+    "romaji": "Fumiko Sato",
+    "title": "Fisheries Cooperative Stallholder",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO07",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI92",
+    "name_en": "Tetsuya Ota",
+    "name_jp": "太田哲也",
+    "romaji": "Tetsuya Ota",
+    "title": "Snow Removal Contractor",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI93",
+    "name_en": "Haruko Mori",
+    "name_jp": "森春子",
+    "romaji": "Haruko Mori",
+    "title": "Retired Schoolteacher",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI94",
+    "name_en": "Yuto Matsuda",
+    "name_jp": "松田裕斗",
+    "romaji": "Yuto Matsuda",
+    "title": "Returnee Remote Worker",
+    "stages": [
+      "ST264"
+    ],
+    "reward": [
+      {
+        "target": "BO16",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO16",
+        "delta": -3
+      }
+    ]
   }
 ]

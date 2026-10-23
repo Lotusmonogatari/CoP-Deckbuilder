@@ -2376,3 +2376,14 @@ An event is a screen of flavor text and two to four fixed choices; each choice r
 | Calendar | Events spend hours like a stage does; a weekend event must fit the hours left; a finished work week takes none. |
 
 Shop items SH19 (dinner) and SH20 (walking tour) are unchanged; the new Events duplicate their idea with choices. Tests: `tests/test_events.gd`, real-click `tests/interaction/event_test.tscn` (in `tools/verify.sh`, which now sets `COP_NO_RANDOM_EVENTS` so a chance pop-up never lands on another test's click). How to Play entries HT29 to HT33 cover the week, dues, awareness, events and election strength.
+
+## Dues baseline 50,000円; weekend levels; "Attend a Local Festival" (2026-10-23, Cameron)
+
+| Change | Detail |
+|---|---|
+| Dues | Balance "Dues: Base" is now 50,000円 (was 100,000円); the 50,000円-per-15-Party-support steps and the 30% share are unchanged. Tests updated. |
+| LV85 "A Quiet Word with a Lobbyist" | One Lobbyist Meeting stage (ST20), no Media Ambush after it. Weekend OK. |
+| LV86 "Weekend Office Hours" | One Office Hours stage (ST07), 2 hours. Weekend OK. |
+| LV87 "Attend a Local Festival" and ST264 | A new Office Hours variant seating **ten** constituents (4 hours, Weekend OK). Wins pay District Awareness +3 and Constituency support +6. It draws from a pool of 14 new local visitors (VI81 to VI94) with 28 draft dilemmas (VQ222 to VQ249) on festivals, shrines, bears, vacant houses and the tax base, trash, village snow removal, overtourism, and publicizing ski resorts, onsen, mountains and scenic parks. The pool is festival-only (not in ordinary Office Hours). |
+
+All three levels have cooldowns (16, 8 and 24 hours). Every dilemma obeys the existing content budget (each choice 2 to 7 points, any gaining choice also costs something, one strongly pleasing choice). Tests: `tests/test_weekend_levels.gd`.

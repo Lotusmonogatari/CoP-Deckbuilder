@@ -2,7 +2,7 @@ class_name PartyDues
 extends RefCounted
 ## Party dues (2026-10-23, Cameron). At each week end the player owes the party:
 ##
-##   base 100,000円, plus 50,000円 for every full 15 points of Party support above 40,
+##   base 50,000円, plus 50,000円 for every full 15 points of Party support above 40,
 ##   plus 30% of the Funds earned Monday to Friday that week,
 ##   minus whatever the awareness effects take off the base (National Awareness).
 ##
@@ -14,7 +14,7 @@ extends RefCounted
 
 static func settings(balance: Dictionary) -> Dictionary:
 	return {
-		"base": int(balance.get("dues_base", 100000)),
+		"base": int(balance.get("dues_base", 50000)),
 		"reward_percent": float(balance.get("dues_reward_percent", 30)),
 		"support_start": int(balance.get("dues_party_support_start", 40)),
 		"support_step": maxi(1, int(balance.get("dues_party_support_step", 15))),
