@@ -2415,3 +2415,21 @@ Four background assets, shown behind every hosted dinner and walking tour (the S
 Cosmetic package icons: `assets/icons/Dining_Alt.png` and `assets/icons/Tour_Alt.png`. All six are listed in the workbook's Assets tab (1080 x 2340 for backgrounds, 256 x 256 for icons).
 
 Schema: Cosmetic Packages gains **Dining Variant** and **Tour Variant** (two new equip slots, "Dining room" and "Walking route", in Cosmetics); Shop and Events gain an **Image** column (SH19 and EV02 use DINING, SH20 and EV01 use TOUR). Each of those has a header note. Tests: `tests/test_dining_and_tour_images.gd`; the events real-click test checks the popup.
+
+## The walking tour and the dinner are guest events (2026-10-23, Cameron)
+
+SH20 (Host a District Walking Tour) and SH19 (Host a Dinner) now start two different three-screen events instead of applying +1 / +2 standing to the organization you pick. Choosing the organization still decides who your patron is and who most of the guests are; **what comes of it depends on how the guests react**.
+
+| Screen | Walking tour (HE01, District Awareness) | Dinner (HE02, National Awareness) | After the screen |
+|---|---|---|---|
+| 1 | Where to go: the shrine, an orchard and farm, a manufacturing plant, the shotengai, a neighborhood, or the fishing port | The menu: an entree, a drink and a side, each from five dishes (Hakodate scallops, Japanese tuna, Australian beef, local pork cutlet, Aomori apple vegetables; French wine, local sake, Aomori apple juice, craft beer, barley tea; and so on) | Each guest reacts |
+| 2 | A policy topic (eight, mirroring the organizations) | Same | Each guest reacts |
+| 3 | A modest promise (cut business taxes, a crypto-yen, leave the alliances, more trade agreements, fund shrine restoration, protect farmland, a modest wage rise, rural broadband) | Same | Each guest reacts |
+
+**How reactions work.** Every option carries tags; every organization likes and dislikes tags (new Organization Tastes tab, all 32 organizations); a guest reacts +1 for each liked tag and -1 for each disliked tag over what was chosen, kept to -2 to +2, shown with one of five wordings (Reaction Lines). A farm cooperative guest served French wine or Australian beef is offended; apple juice delights them.
+
+**Who comes.** Up to five guests: the patron organization's own characters first (opponents by affiliation, visitors by the organizations they please), then characters of allied organizations (those sharing a party in Party Stakeholders). Party bodies never attend.
+
+**What the evening does.** Each guest's organization moves by their reactions (the patron's own guests count double, capped at 6 per organization); the awareness meter moves by the total reactions divided by 2 (from -3 to +6); a very good evening adds 1 Reputation and a very bad one costs 1. It takes 4 hours, and hosting an organization still reveals one of its hidden bill levels at the end. All numbers are Balance levers ("Hosted: ...").
+
+New tabs: **Hosted Events**, **Event Options**, **Organization Tastes**, **Reaction Lines** (all with header notes); new Shop column **Hosted Event**. The earlier stand-alone walking tour and charity dinner events (EV01, EV02) are retired. Open choices I made on Cameron's behalf, to confirm: tags rather than a per-guest table, five guests, commitments having no lasting effect, and a small Reputation effect only on a clearly good or bad evening. A hosted evening is not saved midway: closing the app during one uses up the item. Tests: `tests/test_hosted_event.gd` and the real-click `tests/interaction/hosted_test.tscn` (in `tools/verify.sh`). The Marketplace test now expects no automatic +2.

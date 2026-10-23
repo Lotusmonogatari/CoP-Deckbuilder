@@ -41,7 +41,7 @@ const REQUIRED_FILES := [
 	"player", "player_cues", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "strings",
-	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues", "awareness_effects", "events", "event_choices",
+	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues", "awareness_effects", "events", "event_choices", "hosted_events", "event_options", "organization_tastes", "reaction_lines",
 	"cosmetic_packages", "transition_cast", "transition_backgrounds", "transition_dialogue",
 ]
 
@@ -107,6 +107,10 @@ var vote_influence_triggers: Array = []
 var awareness_effects: Array = []
 var events: Array = []
 var event_choices: Array = []
+var hosted_events: Array = []
+var event_options: Array = []
+var organization_tastes: Array = []
+var reaction_lines: Array = []
 
 ## The optional cutscene line for a bill the influence swing above flipped —
 ## one row per (bill_id, outcome_direction) pair. See VoteInfluenceCues.gd.
@@ -365,6 +369,10 @@ func load_all() -> void:
 			"awareness_effects": awareness_effects = content if content is Array else []
 			"events": events = content if content is Array else []
 			"event_choices": event_choices = content if content is Array else []
+			"hosted_events": hosted_events = content if content is Array else []
+			"event_options": event_options = content if content is Array else []
+			"organization_tastes": organization_tastes = content if content is Array else []
+			"reaction_lines": reaction_lines = content if content is Array else []
 			"vote_influence_cues": vote_influence_cues = content if content is Array else []
 			"cosmetic_packages": cosmetic_packages = content if content is Array else []
 			"parties": parties = content if content is Array else []

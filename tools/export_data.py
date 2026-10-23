@@ -1178,6 +1178,55 @@ SHEETS = {
             ("Unlocks Level", "unlocks_level", "str"),
         ],
     },
+    # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each
+    # three screens of choices (what to do, a policy topic, a modest promise)
+    # followed by guest reactions. Options carry tags; organizations like and
+    # dislike tags; reactions are scored from that. See HostedEvent.gd.
+    "Hosted Events": {
+        "out": "hosted_events.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Hosted ID", "hosted_id", "str"),
+            ("Item ID", "item_id", "str"),
+            ("Title", "title", "str"),
+            ("Intro", "intro", "str"),
+            ("Image", "image", "str"),
+            ("Awareness Meter", "meter", "str"),
+            ("Step 1 Prompt", "prompt_1", "str"),
+            ("Step 2 Prompt", "prompt_2", "str"),
+            ("Step 3 Prompt", "prompt_3", "str"),
+        ],
+    },
+    "Event Options": {
+        "out": "event_options.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Hosted ID", "hosted_id", "str"),
+            ("Step", "step", "int"),
+            ("Slot", "slot", "str"),
+            ("Option ID", "option_id", "str"),
+            ("Choice Text", "choice_text", "str"),
+            ("Tags", "tags", "id_list"),
+            ("Flavor", "flavor", "str"),
+        ],
+    },
+    "Organization Tastes": {
+        "out": "organization_tastes.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Booster ID", "booster_id", "str"),
+            ("Likes", "likes", "id_list"),
+            ("Dislikes", "dislikes", "id_list"),
+        ],
+    },
+    "Reaction Lines": {
+        "out": "reaction_lines.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Level", "level", "str"),
+            ("Line", "line", "str"),
+        ],
+    },
     # The optional cutscene line shown when the influence swing above
     # actually flips a bill's own pass/fail outcome — one row per (Bill ID,
     # Outcome Direction) pair, entirely optional the same way Level Intro
@@ -1433,6 +1482,8 @@ SHEETS = {
             ("Hours", "hours", "int"),
             # 2026-10-23: the picture shown when the item is used (a background ID).
             ("Image", "image", "str"),
+            # 2026-10-23: a hosted event (Hosted Events tab) this item starts.
+            ("Hosted Event", "hosted_event", "str"),
             ("Uses Per Turn", "uses_per_turn", "int"),
             ("Stack Cap", "stack_cap", "int"),
             ("Purchase Limit", "purchase_limit", "int"),
@@ -2647,6 +2698,45 @@ def validate(data, report):
                 report.warn("levels", f"{lid} has a Host Org but is not marked Needs Discovery, so hosting reveals nothing")
         if gated and not org and lid not in revealed_by_event:
             report.error("levels", f"{lid} needs discovery but no event choice unlocks it and it has no Host Org")
+
+    # --- hosted events ---------------------------------------------------------
+    shop_ids = {row["item_id"] for row in data.get("shop", [])}
+    hosted_ids = set()
+    for row in data.get("hosted_events", []):
+        hid = row["hosted_id"]
+        hosted_ids.add(hid)
+        if row["item_id"] not in shop_ids:
+            report.error("Hosted Events", f"{hid} names item '{row['item_id']}', which is not in the Shop tab")
+        if row["meter"] not in ("District", "National"):
+            report.error("Hosted Events", f"{hid} has Awareness Meter '{row['meter']}' — expected District or National")
+    option_steps = {}
+    for row in data.get("event_options", []):
+        if row["hosted_id"] not in hosted_ids:
+            report.error("Event Options", f"{row['option_id']} names hosted event '{row['hosted_id']}', which is not in Hosted Events")
+        if row["step"] not in (1, 2, 3):
+            report.error("Event Options", f"{row['option_id']} has Step {row['step']} — expected 1, 2 or 3")
+        option_steps.setdefault(row["hosted_id"], set()).add(row["step"])
+        if not row.get("tags"):
+            report.warn("Event Options", f"{row['option_id']} has no Tags, so every guest reacts neutrally")
+    for hid in hosted_ids:
+        if option_steps.get(hid, set()) != {1, 2, 3}:
+            report.error("Hosted Events", f"{hid} needs options for steps 1, 2 and 3 in Event Options")
+    taste_ids = set()
+    for row in data.get("organization_tastes", []):
+        taste_ids.add(row["booster_id"])
+        if row["booster_id"] not in booster_ids:
+            report.error("Organization Tastes", f"'{row['booster_id']}' is not a booster_id in the Boosters tab")
+    cared = set()
+    for row in data.get("organization_tastes", []):
+        cared.update(row.get("likes") or [])
+        cared.update(row.get("dislikes") or [])
+    for row in data.get("event_options", []):
+        for tag in row.get("tags") or []:
+            if tag not in cared:
+                report.warn("Event Options", f"{row['option_id']} has tag '{tag}', which no organization likes or dislikes")
+    for level in ("Delighted", "Pleased", "Neutral", "Uneasy", "Offended"):
+        if not any(r["level"] == level for r in data.get("reaction_lines", [])):
+            report.warn("Reaction Lines", f"no line for the level '{level}'")
 
     # --- vote_influence_cues -------------------------------------------------
     # The optional cutscene line for a bill the influence swing flipped —

@@ -1,0 +1,62 @@
+[
+  {
+    "level": "Delighted",
+    "line": "{name} breaks into a smile and nods firmly."
+  },
+  {
+    "level": "Delighted",
+    "line": "{name} leans forward, plainly delighted."
+  },
+  {
+    "level": "Delighted",
+    "line": "{name} says it is exactly what they hoped for."
+  },
+  {
+    "level": "Pleased",
+    "line": "{name} nods, quietly pleased."
+  },
+  {
+    "level": "Pleased",
+    "line": "{name} looks content."
+  },
+  {
+    "level": "Pleased",
+    "line": "{name} gives a small, approving smile."
+  },
+  {
+    "level": "Neutral",
+    "line": "{name} listens politely and says nothing."
+  },
+  {
+    "level": "Neutral",
+    "line": "{name} shrugs, unmoved."
+  },
+  {
+    "level": "Neutral",
+    "line": "{name} gives no sign either way."
+  },
+  {
+    "level": "Uneasy",
+    "line": "{name} shifts in their seat."
+  },
+  {
+    "level": "Uneasy",
+    "line": "{name} frowns slightly and looks at the table."
+  },
+  {
+    "level": "Uneasy",
+    "line": "{name} says nothing, but does not look happy."
+  },
+  {
+    "level": "Offended",
+    "line": "{name} stiffens and visibly stops listening."
+  },
+  {
+    "level": "Offended",
+    "line": "{name} puts down their cup and looks away."
+  },
+  {
+    "level": "Offended",
+    "line": "{name} makes it very clear this was a mistake."
+  }
+]

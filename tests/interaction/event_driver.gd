@@ -49,14 +49,14 @@ func _walking_tour() -> void:
 	await get_tree().process_frame
 	var list := _screen().get_node("EventsPanel") as Overlay
 	_expect(list.visible, "the Events list opens")
-	var arrange := list.find_child("Arrange_EV01", true, false) as Button
-	_expect(arrange != null and not arrange.disabled, "the walking tour can be arranged")
-	var weekend_only := list.find_child("Arrange_EV02", true, false) as Button
-	_expect(weekend_only != null and weekend_only.disabled and weekend_only.text == "Weekend only", "the charity dinner waits for the weekend")
+	var arrange := list.find_child("Arrange_EV32", true, false) as Button
+	_expect(arrange != null and not arrange.disabled, "the sports sponsorship can be arranged")
+	var weekend_only := list.find_child("Arrange_EV34", true, false) as Button
+	_expect(weekend_only != null and weekend_only.disabled and weekend_only.text == "Weekend only", "the office open day waits for the weekend")
 	arrange.pressed.emit()
 	await get_tree().process_frame
 	await get_tree().create_timer(0.3).timeout
-	_expect(int(GameState.meta["Funds"]) == 90000, "the 10,000円 price is paid, got %d" % int(GameState.meta["Funds"]))
+	_expect(int(GameState.meta["Funds"]) == 80000, "the 20,000円 price is paid, got %d" % int(GameState.meta["Funds"]))
 	var panel := _screen().get_node("EventPanel") as Overlay
 	_expect(panel.visible, "the event screen opens")
 	var choice := panel.find_child("EventChoice_A", true, false) as Button
@@ -66,7 +66,7 @@ func _walking_tour() -> void:
 		choice.pressed.emit()
 	await get_tree().process_frame
 	await get_tree().create_timer(0.3).timeout
-	_expect(int(GameState.calendar["hours"]) == 4, "the tour takes 4 hours, got %d" % int(GameState.calendar["hours"]))
+	_expect(int(GameState.calendar["hours"]) == 2, "the event takes 2 hours, got %d" % int(GameState.calendar["hours"]))
 	_expect(int(GameState.awareness["district"]) >= 22, "District Awareness rose")
 	var done := panel.find_child("EventContinueButton", true, false) as Button
 	_expect(done != null, "the result has a Continue button")

@@ -105,6 +105,7 @@ var _events_button: Button
 var _events_panel: Overlay
 var _event_panel: Overlay
 var _gathering_panel: Overlay
+var _hosted_panel: HostedEventPanel
 var _week_confirm_panel: Overlay
 var _week_over_panel: Overlay
 var _new_week_panel: Overlay
@@ -335,6 +336,10 @@ func _build_week_controls() -> void:
 	_events_panel = Overlay.new()
 	_events_panel.name = "EventsPanel"
 	add_child(_events_panel)
+	_hosted_panel = HostedEventPanel.new()
+	_hosted_panel.name = "HostedEventPanel"
+	add_child(_hosted_panel)
+	_hosted_panel.closed.connect(_on_hosted_closed)
 	_gathering_panel = Overlay.new()
 	_gathering_panel.name = "GatheringPanel"
 	_gathering_panel.show_back = false
@@ -481,6 +486,13 @@ func _on_arrange_event(event_id: String) -> void:
 	SaveManager.autosave()
 	_build()
 	_present_event(event_id, false)
+
+
+## The evening is over: refresh what it changed.
+func _on_hosted_closed() -> void:
+	_refresh_resources()
+	SaveManager.autosave()
+	_build()
 
 
 ## The picture behind a gathering you hosted, with what came of it (2026-10-23):
@@ -1082,8 +1094,11 @@ func _build_inventory() -> void:
 		# A Training Session Coupon starts a free draw: show the card now.
 		if bool(result.get("opens_draw", false)):
 			_show_card_offer.call_deferred()
-		# A dinner or a walking tour shows its own picture.
-		if bool(result.get("ok", false)) and not str(result.get("image", "")).is_empty():
+		# A dinner or a walking tour starts its own three-screen event.
+		if bool(result.get("ok", false)) and not str(result.get("opens_hosted", "")).is_empty():
+			_hosted_panel.begin.call_deferred()
+		# Any other item with a picture shows it.
+		elif bool(result.get("ok", false)) and not str(result.get("image", "")).is_empty():
 			_show_gathering.call_deferred(result)
 	# Using an item from the Marketplace must reopen the WHOLE Marketplace
 	# (grid + Supplies), not narrow back to InventoryPanel's own plain grid

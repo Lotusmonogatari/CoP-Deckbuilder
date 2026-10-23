@@ -1,35 +1,5 @@
 [
   {
-    "event_id": "EV01",
-    "title": "Host a District Walking Tour",
-    "flavor": "Neighborhood leaders walk you down the shopping street: shutters, shop signs, and a great many questions.",
-    "trigger": "Buyable",
-    "available": "Both",
-    "hours": 4,
-    "cost_funds": 10000,
-    "cost_xp": null,
-    "weight": null,
-    "cooldown_hours": null,
-    "min_district_awareness": null,
-    "min_national_awareness": null,
-    "image": "TOUR"
-  },
-  {
-    "event_id": "EV02",
-    "title": "Charity Dinner",
-    "flavor": "A long table, a modest hall and a guest list of local business owners who would like to be seen with you.",
-    "trigger": "Buyable",
-    "available": "Weekend",
-    "hours": 4,
-    "cost_funds": 20000,
-    "cost_xp": null,
-    "weight": null,
-    "cooldown_hours": null,
-    "min_district_awareness": null,
-    "min_national_awareness": null,
-    "image": "DINING"
-  },
-  {
     "event_id": "EV03",
     "title": "Local Newspaper Advertisement",
     "flavor": "The regional paper offers a half page. The sales representative is very persuasive.",

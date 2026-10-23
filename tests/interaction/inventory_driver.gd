@@ -215,13 +215,18 @@ func _walk_choice_picker(office: Node) -> bool:
 	if GameState.item_count(DINNER) != 0:
 		_failures.append("choosing a booster did not use the Booster Dinner")
 		return false
-	if int(GameState.booster_standing[chosen_id]) != 52:
-		_failures.append("the chosen booster did not gain the Dinner's +2")
+	# The dinner now starts a hosted event (2026-10-23): the choice moves nothing
+	# by itself, and the evening opens on its own panel.
+	if int(GameState.booster_standing[chosen_id]) != 50 or int(GameState.booster_standing[other_id]) != 50:
+		_failures.append("choosing a booster moved standing before the guests had reacted")
 		return false
-	if int(GameState.booster_standing[other_id]) != 50:
-		_failures.append("a booster nobody picked moved anyway")
+	if GameState.hosted_session.is_empty():
+		_failures.append("using the Booster Dinner did not start the evening")
 		return false
-	print("  used the Booster Dinner; the chosen booster (only) gained +2")
+	print("  used the Booster Dinner; it opened the hosted evening, with no automatic bonus")
+	var hosted := office.get_node("HostedEventPanel") as Overlay
+	hosted.close()
+	GameState.hosted_session = {}
 	inventory.close()
 	await _wait(0.2)
 	return true

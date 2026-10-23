@@ -70,13 +70,6 @@ func test_buying_the_dining_room_costs_yen_and_the_route_costs_xp() -> void:
 	assert_true(GameState.owned_cosmetic_packages.has("CP03") and GameState.owned_cosmetic_packages.has("CP04"))
 
 
-func test_hosting_shows_the_matching_picture() -> void:
-	GameState.inventory["SH19"] = 1
-	assert_eq(str(GameState.use_item_in_office("SH19", "BO05")["image"]), "DINING")
-	GameState.inventory["SH20"] = 1
-	assert_eq(str(GameState.use_item_in_office("SH20", "BO07")["image"]), "TOUR")
-
-
-func test_the_tour_and_dinner_events_carry_the_pictures_too() -> void:
-	assert_eq(str(GameState.get_event("EV01")["image"]), "TOUR")
-	assert_eq(str(GameState.get_event("EV02")["image"]), "DINING")
+func test_the_hosted_events_carry_the_pictures() -> void:
+	assert_eq(str(GameState.get_hosted_event("HE01")["image"]), "TOUR")
+	assert_eq(str(GameState.get_hosted_event("HE02")["image"]), "DINING")

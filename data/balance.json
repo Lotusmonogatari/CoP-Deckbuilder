@@ -145,5 +145,13 @@
   "election_record_target": 30,
   "event_random_chance_percent": 35,
   "event_default_cooldown_hours": 24,
+  "hosted_roster_size": 5,
+  "hosted_patron_weight": 2,
+  "hosted_org_standing_cap": 6,
+  "hosted_awareness_divisor": 2,
+  "hosted_awareness_max": 6,
+  "hosted_awareness_min": -3,
+  "hosted_good_evening_net": 6,
+  "hosted_bad_evening_net": -4,
   "xp_tiers": {}
 }
