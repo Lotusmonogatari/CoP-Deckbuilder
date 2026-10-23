@@ -10,7 +10,7 @@ Nothing here is started. Review means reading and flagging; nothing is changed u
 | How | Four passes: **(1)** automated checks for the mechanical problems, **(2)** a reading review of each content kind against a written rubric, **(3)** a cross-content coherence pass, **(4)** a "does it work on screen" pass in the real game |
 | What you get | One findings report per content kind (a table: ID, problem, severity, suggested fix), then a single fix batch applied only for the items you approve |
 | Never done without you | Canon (names, parties, positions), political stance, and anything where a rewrite changes what the content means |
-| Cost | Pass 1 is cheap. Pass 2 is the big one: about 10 review batches. Pass 3 and 4 are small |
+| Cost | Pass 1 is cheap. Pass 2 is the big one: every row read, about 31 reviewers in waves. Passes 3 and 4 are small |
 
 ## What is in scope
 
@@ -51,30 +51,33 @@ Severity: **A** wrong or misleading (contradicts the numbers, breaks canon, unre
 | **4. In-game check** | Play-through screenshots of each content kind at the large text size, plus the click tests, to see overflow, clipped text and wrong conditions | A screenshot set and a defect list |
 | **5. Fix and verify** | Apply approved fixes in batches, rerun the exporter and the full check, merge | One changelog entry per batch |
 
-## Slices for pass 2
+## Slices for pass 2: every row is read
+
+No sampling (Cameron, 2026-10-23). Every row of every kind is read by a reviewer against the rubric, in slices of about 400 to 500 rows so each reviewer can hold the group's voice in mind. Pass 1 (automated) runs first so reviewers spend their attention on sense, tone and logic rather than typos.
 
 | # | Slice | Rows | Reviewers |
 |---|---|---|---|
-| 1 | Text tab and How to Play | 806 | 1 |
-| 2 | Opponent cues, first half by party | about 1,550 | 2 |
-| 3 | Opponent cues, second half | about 1,550 | 2 |
-| 4 | Player cues | 3,516 | 3 |
-| 5 | Transition dialogue | 2,083 | 2 |
-| 6 | Visitors and questions (original, festival, district) | 559 | 3 |
-| 7 | Level intros, ticker, notices | 415 | 1 |
-| 8 | Events, hosted events, tastes, reaction lines | about 250 | 1 |
-| 9 | Bills, law effects, components, patron bills | about 390 | 2 |
-| 10 | Room questions and Player Thoughts | small | 1 |
+| 1 | Text tab and How to Play | 806 | 2 |
+| 2 | Opponent cues, by party (six parties plus independents) | 3,108 | 7 |
+| 3 | Player cues, by style and room family | 3,516 | 8 |
+| 4 | Transition dialogue, by stage | 2,083 | 5 |
+| 5 | Visitors and questions: original fifteen plus Office Hours | about 200 | 1 |
+| 6 | Visitors and questions: festival and the four district activities | about 360 | 2 |
+| 7 | Level intros | 246 | 1 |
+| 8 | Ticker and notices | 169 | 1 |
+| 9 | Events, hosted events, tastes, reaction lines | about 250 | 1 |
+| 10 | Bills, law effects, components, patron bills | about 390 | 2 |
+| 11 | Room questions and Player Thoughts | small | 1 |
 
-Because the cue banks are large and repetitive, pass 1 does most of the work there. Pass 2 reads a **full** pass of the smaller, more consequential kinds (visitors, events, bills, intros) and a **sample of 25 percent** of the very large cue banks plus every row pass 1 flagged. If the sample finds problems at more than 5 percent, I widen it to a full read.
+About 31 reviewers in all, run in waves of about eight. Each returns a findings table. A second reviewer re-reads every severity-A finding before it reaches you, to drop false alarms. Pass 3 (cross-content coherence) starts only after all slices are in.
 
 ## What I need from you
 
 | # | Decision | My default |
 |---|---|---|
 | 1 | Scope: everything above, or a priority order? | Order: visitors and events (players read every word), then bills and intros, then the cue banks |
-| 2 | Sampling for the three biggest banks (25 percent, then widen if needed), or read all 8,700 rows? | Sample |
+| 2 | Sampling | Decided: none, every row is read |
 | 3 | Do fixes that only affect grammar and spelling go in without your review? | Yes, shown in the report, not individually asked |
 | 4 | Anything that changes meaning (a different choice, a different reward, a character's stance) | Always listed for you, never applied |
 | 5 | Spelling standard and terminology list | American spelling, and the 2026-10-16 terminology pass as the glossary |
-| 6 | Run it as a workflow with reviewers in parallel, or in my own session one slice at a time? | Parallel reviewers, since this is a large read. This is your call because it uses many agents |
+| 6 | Run it as a workflow with about 31 reviewers in parallel waves, or in my own session one slice at a time (far slower)? | Parallel. This uses many agents, so I will not start without your yes |
