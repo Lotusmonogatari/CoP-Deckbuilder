@@ -74,7 +74,7 @@ static func card(card_id: String) -> Texture2D:
 
 
 ## A stage background, by stage ID (or OFFICE). A cosmetic background piece
-## (2026-09-28) is tried first, only for OFFICE and only when one is
+## (2026-09-28) is tried first, only for OFFICE, DINING and TOUR and only when one is
 ## equipped — see _background_variant(). Other stages are untouched; this
 ## build only covers the Office (CLAUDE.md's cosmetics plan).
 static func background(stage_id: String) -> Texture2D:
@@ -187,9 +187,16 @@ static func _outfit_variant(character_id: String) -> String:
 ## The equipped background's filename token, or "" — only ever non-empty
 ## for the Office (this build's own scope; see background()'s own comment).
 static func _background_variant(stage_id: String) -> String:
-	if stage_id != "OFFICE":
-		return ""
-	return _piece_field(CosmeticPieces.BACKGROUND, "background_variant")
+	match stage_id:
+		"OFFICE":
+			return _piece_field(CosmeticPieces.BACKGROUND, "background_variant")
+		# The dining room and the walking route have their own purchasable
+		# alternatives (2026-10-23): DINING_ALT.png, TOUR_ALT.png.
+		"DINING":
+			return _piece_field(CosmeticPieces.DINING, "dining_variant")
+		"TOUR":
+			return _piece_field(CosmeticPieces.TOUR, "tour_variant")
+	return ""
 
 
 static func _piece_field(slot: String, key: String) -> String:

@@ -1,0 +1,697 @@
+[
+  {
+    "hosted_id": "HE01",
+    "step": 1,
+    "slot": null,
+    "option_id": "T1",
+    "choice_text": "Tour the shrine grounds",
+    "tags": [
+      "shrine",
+      "heritage",
+      "traditional",
+      "local"
+    ],
+    "flavor": "You walk under the old gate, and nobody talks for a little while."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 1,
+    "slot": null,
+    "option_id": "T2",
+    "choice_text": "Visit an orchard and a farm",
+    "tags": [
+      "farm",
+      "rural",
+      "local",
+      "humble"
+    ],
+    "flavor": "Boots in the mud, a basket of apples handed round."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 1,
+    "slot": null,
+    "option_id": "T3",
+    "choice_text": "Walk through a manufacturing plant",
+    "tags": [
+      "factory",
+      "industry",
+      "labor",
+      "modern"
+    ],
+    "flavor": "Noise, hard hats, and a proud foreman."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 1,
+    "slot": null,
+    "option_id": "T4",
+    "choice_text": "Stroll the shotengai",
+    "tags": [
+      "shotengai",
+      "small_business",
+      "local",
+      "neighborhood"
+    ],
+    "flavor": "Shop owners step out to wave. Someone gives you a croquette."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 1,
+    "slot": null,
+    "option_id": "T5",
+    "choice_text": "Walk a residential neighborhood",
+    "tags": [
+      "neighborhood",
+      "family",
+      "humble",
+      "local"
+    ],
+    "flavor": "Washing on balconies, children on bicycles, and a lot of opinions about the bin collection."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 1,
+    "slot": null,
+    "option_id": "T6",
+    "choice_text": "Visit the fishing port",
+    "tags": [
+      "fishing",
+      "seafood",
+      "rural",
+      "humble"
+    ],
+    "flavor": "Gulls, ice and a tall stack of crates."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 2,
+    "slot": null,
+    "option_id": "TP1",
+    "choice_text": "Farm prices and the rural economy",
+    "tags": [
+      "farm",
+      "protect",
+      "rural"
+    ],
+    "flavor": "You say the word 'price' more often than anyone expected."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 2,
+    "slot": null,
+    "option_id": "TP2",
+    "choice_text": "Relief for small businesses",
+    "tags": [
+      "small_business",
+      "tax_cut",
+      "local"
+    ],
+    "flavor": "A small business owner nods very slowly."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 2,
+    "slot": null,
+    "option_id": "TP3",
+    "choice_text": "Promoting regional tourism",
+    "tags": [
+      "tourism",
+      "local",
+      "small_business"
+    ],
+    "flavor": "You talk about visitors, and who actually benefits."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 2,
+    "slot": null,
+    "option_id": "TP4",
+    "choice_text": "Heritage, shrines and festivals",
+    "tags": [
+      "heritage",
+      "traditional",
+      "local"
+    ],
+    "flavor": "You talk about what is worth keeping."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 2,
+    "slot": null,
+    "option_id": "TP5",
+    "choice_text": "Wages and working conditions",
+    "tags": [
+      "labor",
+      "welfare",
+      "spending"
+    ],
+    "flavor": "You talk about shifts, and the people who work them."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 2,
+    "slot": null,
+    "option_id": "TP6",
+    "choice_text": "Digital economy and new business",
+    "tags": [
+      "tech",
+      "modern",
+      "reform"
+    ],
+    "flavor": "Half the group looks interested, half checks the time."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 2,
+    "slot": null,
+    "option_id": "TP7",
+    "choice_text": "Child and elder care",
+    "tags": [
+      "family",
+      "welfare",
+      "spending"
+    ],
+    "flavor": "Several heads nod at once."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 2,
+    "slot": null,
+    "option_id": "TP8",
+    "choice_text": "Keeping spending in check",
+    "tags": [
+      "tax_cut",
+      "humble",
+      "finance"
+    ],
+    "flavor": "You talk about the bill that never gets paid."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC1",
+    "choice_text": "Cut taxes on local business",
+    "tags": [
+      "tax_cut",
+      "small_business",
+      "finance"
+    ],
+    "flavor": "A promise you can count."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC2",
+    "choice_text": "Invest Yezo's finances in a crypto-yen",
+    "tags": [
+      "finance",
+      "tech",
+      "risky"
+    ],
+    "flavor": "The silence is educational."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC3",
+    "choice_text": "Pull Yezo out of its alliances",
+    "tags": [
+      "isolation",
+      "protect",
+      "risky"
+    ],
+    "flavor": "You say it quietly. It is not received quietly."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC4",
+    "choice_text": "Join more trade agreements",
+    "tags": [
+      "trade_open",
+      "foreign",
+      "finance"
+    ],
+    "flavor": "A promise with a lot of footnotes."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC5",
+    "choice_text": "Fund shrine and festival restoration",
+    "tags": [
+      "heritage",
+      "traditional",
+      "spending"
+    ],
+    "flavor": "A small, specific promise that lands well in the right circles."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC6",
+    "choice_text": "Protect local farmland from sale",
+    "tags": [
+      "farm",
+      "protect",
+      "rural"
+    ],
+    "flavor": "Several farmers shake your hand."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC7",
+    "choice_text": "Raise the minimum wage modestly",
+    "tags": [
+      "labor",
+      "welfare",
+      "spending"
+    ],
+    "flavor": "A cautious promise, measured to the yen."
+  },
+  {
+    "hosted_id": "HE01",
+    "step": 3,
+    "slot": null,
+    "option_id": "TC8",
+    "choice_text": "Fund rural broadband",
+    "tags": [
+      "tech",
+      "rural",
+      "spending"
+    ],
+    "flavor": "Fifty meters of cable would have made the difference."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Entree",
+    "option_id": "DE1",
+    "choice_text": "Hakodate scallops",
+    "tags": [
+      "seafood",
+      "local",
+      "luxury"
+    ],
+    "flavor": "Butter, a little salt and a very good scallop."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Entree",
+    "option_id": "DE2",
+    "choice_text": "Japanese tuna sashimi",
+    "tags": [
+      "seafood",
+      "luxury",
+      "traditional"
+    ],
+    "flavor": "A plate that says you meant it."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Entree",
+    "option_id": "DE3",
+    "choice_text": "Australian beef steak",
+    "tags": [
+      "meat",
+      "foreign",
+      "luxury"
+    ],
+    "flavor": "Well cooked, and from the other side of the world."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Entree",
+    "option_id": "DE4",
+    "choice_text": "Local pork cutlet with miso",
+    "tags": [
+      "meat",
+      "local",
+      "humble"
+    ],
+    "flavor": "Crisp, plain, filling."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Entree",
+    "option_id": "DE5",
+    "choice_text": "Aomori apple-braised vegetables",
+    "tags": [
+      "farm",
+      "local",
+      "humble"
+    ],
+    "flavor": "Autumn on a plate."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Drink",
+    "option_id": "DD1",
+    "choice_text": "French wine",
+    "tags": [
+      "wine",
+      "foreign",
+      "luxury"
+    ],
+    "flavor": "A good vintage, with a label that is hard to read."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Drink",
+    "option_id": "DD2",
+    "choice_text": "Local sake",
+    "tags": [
+      "sake",
+      "local",
+      "traditional"
+    ],
+    "flavor": "A masu cup, a gentle pour."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Drink",
+    "option_id": "DD3",
+    "choice_text": "Aomori apple juice",
+    "tags": [
+      "juice",
+      "local",
+      "farm",
+      "humble"
+    ],
+    "flavor": "Cold and clear, and exactly what the orchard grows."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Drink",
+    "option_id": "DD4",
+    "choice_text": "Hokkaido craft beer",
+    "tags": [
+      "local",
+      "modern",
+      "sake"
+    ],
+    "flavor": "A brewer's name on the glass."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Drink",
+    "option_id": "DD5",
+    "choice_text": "Barley tea",
+    "tags": [
+      "humble",
+      "traditional"
+    ],
+    "flavor": "Nobody has ever been offended by barley tea."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Side",
+    "option_id": "DS1",
+    "choice_text": "Pickled vegetables",
+    "tags": [
+      "traditional",
+      "farm",
+      "humble"
+    ],
+    "flavor": "Crunch and salt, served in small dishes."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Side",
+    "option_id": "DS2",
+    "choice_text": "Imported cheese board",
+    "tags": [
+      "foreign",
+      "luxury",
+      "modern"
+    ],
+    "flavor": "Three cheeses and a very small knife."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Side",
+    "option_id": "DS3",
+    "choice_text": "Seaweed and cucumber salad",
+    "tags": [
+      "seafood",
+      "traditional",
+      "local"
+    ],
+    "flavor": "Cold and sharp."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Side",
+    "option_id": "DS4",
+    "choice_text": "Tofu from local soybeans",
+    "tags": [
+      "farm",
+      "local",
+      "traditional"
+    ],
+    "flavor": "Fresh, soft, simple."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 1,
+    "slot": "Side",
+    "option_id": "DS5",
+    "choice_text": "Potato salad",
+    "tags": [
+      "farm",
+      "local",
+      "humble"
+    ],
+    "flavor": "The potatoes are from two valleys over."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 2,
+    "slot": null,
+    "option_id": "DP1",
+    "choice_text": "Farm prices and the rural economy",
+    "tags": [
+      "farm",
+      "protect",
+      "rural"
+    ],
+    "flavor": "The farmers lean forward."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 2,
+    "slot": null,
+    "option_id": "DP2",
+    "choice_text": "Relief for small businesses",
+    "tags": [
+      "small_business",
+      "tax_cut",
+      "local"
+    ],
+    "flavor": "A few knives are put down."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 2,
+    "slot": null,
+    "option_id": "DP3",
+    "choice_text": "Promoting regional tourism",
+    "tags": [
+      "tourism",
+      "local",
+      "small_business"
+    ],
+    "flavor": "You talk about the empty rooms in the off season."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 2,
+    "slot": null,
+    "option_id": "DP4",
+    "choice_text": "Heritage, shrines and festivals",
+    "tags": [
+      "heritage",
+      "traditional",
+      "local"
+    ],
+    "flavor": "You talk about what is worth keeping."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 2,
+    "slot": null,
+    "option_id": "DP5",
+    "choice_text": "Wages and working conditions",
+    "tags": [
+      "labor",
+      "welfare",
+      "spending"
+    ],
+    "flavor": "The union man has a pen."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 2,
+    "slot": null,
+    "option_id": "DP6",
+    "choice_text": "Digital economy and new business",
+    "tags": [
+      "tech",
+      "modern",
+      "reform"
+    ],
+    "flavor": "Phones come out of pockets, in a good way."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 2,
+    "slot": null,
+    "option_id": "DP7",
+    "choice_text": "Child and elder care",
+    "tags": [
+      "family",
+      "welfare",
+      "spending"
+    ],
+    "flavor": "The table is very attentive."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 2,
+    "slot": null,
+    "option_id": "DP8",
+    "choice_text": "Keeping spending in check",
+    "tags": [
+      "tax_cut",
+      "humble",
+      "finance"
+    ],
+    "flavor": "A banker finishes his glass."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC1",
+    "choice_text": "Cut taxes on business",
+    "tags": [
+      "tax_cut",
+      "small_business",
+      "finance"
+    ],
+    "flavor": "A promise you can count."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC2",
+    "choice_text": "Invest Yezo's finances in a crypto-yen",
+    "tags": [
+      "finance",
+      "tech",
+      "risky"
+    ],
+    "flavor": "The silence is educational."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC3",
+    "choice_text": "Pull Yezo out of its alliances",
+    "tags": [
+      "isolation",
+      "protect",
+      "risky"
+    ],
+    "flavor": "It is not received quietly."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC4",
+    "choice_text": "Join more trade agreements",
+    "tags": [
+      "trade_open",
+      "foreign",
+      "finance"
+    ],
+    "flavor": "A promise with a lot of footnotes."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC5",
+    "choice_text": "Fund shrine and festival restoration",
+    "tags": [
+      "heritage",
+      "traditional",
+      "spending"
+    ],
+    "flavor": "A small, specific promise."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC6",
+    "choice_text": "Protect local farmland from sale",
+    "tags": [
+      "farm",
+      "protect",
+      "rural"
+    ],
+    "flavor": "Several farmers raise a glass."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC7",
+    "choice_text": "Raise the minimum wage modestly",
+    "tags": [
+      "labor",
+      "welfare",
+      "spending"
+    ],
+    "flavor": "Measured to the yen."
+  },
+  {
+    "hosted_id": "HE02",
+    "step": 3,
+    "slot": null,
+    "option_id": "DC8",
+    "choice_text": "Fund rural broadband",
+    "tags": [
+      "tech",
+      "rural",
+      "spending"
+    ],
+    "flavor": "A small, practical promise."
+  }
+]

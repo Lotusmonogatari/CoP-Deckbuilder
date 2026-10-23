@@ -70,12 +70,23 @@ func test_hosting_reveals_one_hidden_level_at_a_time() -> void:
 	assert_eq(GameState.reveal_by_hosting("BO15"), "", "an organization with none")
 
 
+func _host_to_the_end(item_id: String, org: String) -> Dictionary:
+	GameState.inventory[item_id] = 1
+	var started := GameState.use_item_in_office(item_id, org)
+	assert_true(started["ok"])
+	for step in [1, 2, 3]:
+		var picks: Array = []
+		var hosted_id := str(GameState.hosted_session["hosted_id"])
+		for slot: String in HostedEvent.slots_for(DataDB.event_options, hosted_id, step):
+			picks.append(str(GameState.hosted_options(step, slot)[0]["option_id"]))
+		GameState.hosted_record_step(step, picks)
+	return GameState.finish_hosted_event()
+
+
 func test_the_dinner_takes_four_hours_and_can_reveal_a_bill() -> void:
-	GameState.inventory["SH19"] = 1
-	var result := GameState.use_item_in_office("SH19", "BO16")
-	assert_true(result["ok"])
+	var result := _host_to_the_end("SH19", "BO16")
 	assert_eq(int(GameState.calendar["hours"]), 4)
-	assert_true(str(result["message"]).contains("Grid Resilience") or str(result["message"]).contains("Carbon Levy") or str(result["message"]).contains("Digital"), result["message"])
+	assert_ne(str(result["revealed"]), "")
 	assert_eq(GameState.discovered_levels.size(), 1)
 
 
@@ -92,6 +103,7 @@ func test_a_gathering_must_fit_the_weekend_hours_left() -> void:
 	assert_false(GameState.use_item_in_office("SH20", "BO07")["ok"])
 	GameState.calendar = {"week": 0, "phase": "weekend", "hours": 4}
 	assert_true(GameState.use_item_in_office("SH20", "BO07")["ok"])
+	GameState.hosted_session = {}
 
 
 func test_the_new_short_levels_fit_a_weekend_day() -> void:

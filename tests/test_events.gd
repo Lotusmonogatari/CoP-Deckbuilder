@@ -51,7 +51,7 @@ func test_the_tabs_ship_events_with_choices() -> void:
 
 func test_choices_come_back_in_letter_order() -> void:
 	var letters: Array = []
-	for row: Dictionary in EventEngine.choices_for(DataDB.event_choices, "EV01"):
+	for row: Dictionary in EventEngine.choices_for(DataDB.event_choices, "EV32"):
 		letters.append(str(row["choice"]))
 	assert_eq(letters, ["A", "B", "C"])
 
@@ -100,33 +100,30 @@ func test_a_weighted_pick_follows_the_roll() -> void:
 
 
 func test_arranging_an_event_charges_its_price() -> void:
-	assert_true(GameState.start_event("EV01"))
-	assert_eq(int(GameState.meta["Funds"]), 190000)
+	assert_true(GameState.start_event("EV32"))
+	assert_eq(int(GameState.meta["Funds"]), 180000)
 	GameState.meta["Funds"] = 100
-	assert_false(GameState.start_event("EV01"), "cannot afford it")
+	assert_false(GameState.start_event("EV32"), "cannot afford it")
 	assert_eq(int(GameState.meta["Funds"]), 100)
 
 
 func test_a_choice_applies_its_rewards_and_spends_the_hours() -> void:
 	GameState.awareness = {"district": 20, "national": 10}
-	var xp_before := GameState.xp
-	var result := GameState.apply_event_choice("EV01", "A")
+	var result := GameState.apply_event_choice("EV32", "A")
 	assert_true(result["ok"])
-	assert_eq(int(GameState.calendar["hours"]), 4)
+	assert_eq(int(GameState.calendar["hours"]), 2)
 	assert_gte(int(GameState.awareness["district"]), 22)
-	assert_lte(int(GameState.awareness["district"]), 24)
-	assert_gte(GameState.xp - xp_before, 10)
-	assert_lte(GameState.xp - xp_before, 20)
+	assert_lte(int(GameState.awareness["district"]), 23)
 	assert_gt((result["lines"] as Array).size(), 0)
-	assert_true(GameState.event_last_at.has("EV01"))
+	assert_true(GameState.event_last_at.has("EV32"))
 
 
 func test_a_choice_with_a_price_needs_the_money() -> void:
 	GameState.meta["Funds"] = 1000
-	assert_false(GameState.apply_event_choice("EV01", "C")["ok"], "the reporter costs 5,000")
+	assert_false(GameState.apply_event_choice("EV31", "C")["ok"], "the whole week of spots costs 10,000")
 	assert_eq(int(GameState.calendar["hours"]), 0, "nothing happened")
-	GameState.meta["Funds"] = 10000
-	assert_true(GameState.apply_event_choice("EV01", "C")["ok"])
+	GameState.meta["Funds"] = 15000
+	assert_true(GameState.apply_event_choice("EV31", "C")["ok"])
 
 
 func test_a_choice_can_reveal_a_level_that_stays_hidden_until_then() -> void:
@@ -152,7 +149,7 @@ func test_a_quiet_roll_consumes_the_chance() -> void:
 
 func test_events_are_saved_with_the_run() -> void:
 	GameState.discovered_levels = ["LV34"]
-	GameState.event_last_at = {"EV01": 12}
+	GameState.event_last_at = {"EV32": 12}
 	var saved := GameState.to_save()
 	assert_eq((saved["discovered_levels"] as Array), ["LV34"])
-	assert_eq(int((saved["event_last_at"] as Dictionary)["EV01"]), 12)
+	assert_eq(int((saved["event_last_at"] as Dictionary)["EV32"]), 12)

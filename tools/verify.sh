@@ -168,6 +168,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     failures=$((failures + 1))
   fi
 
+  # And hosting: a dinner's three screens, the guests' reactions and the result -- 2026-10-23, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/hosted_test.tscn; then
+    echo ">> FAILED: hosting a dinner did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
   # And events: the Events list, arranging one, choosing, a level an event reveals -- 2026-10-23, new.
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
         "$GODOT" --path . tests/interaction/event_test.tscn; then

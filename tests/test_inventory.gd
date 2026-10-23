@@ -245,9 +245,14 @@ func test_a_player_choice_item_moves_exactly_the_chosen_booster() -> void:
 	GameState.booster_standing["BO08"] = 50
 	var result := GameState.use_item_in_office("SH19", "BO08")
 	assert_true(result.get("ok", false))
-	assert_eq(int(GameState.booster_standing["BO08"]), 52, "SH19's own +2")
+	# The dinner starts a hosted event now (2026-10-23): nothing moves until the
+	# guests have reacted, so the choice itself gives no automatic bonus.
+	assert_eq(str(result.get("opens_hosted", "")), "HE02")
+	assert_eq(str(GameState.hosted_session.get("org", "")), "BO08")
+	assert_eq(int(GameState.booster_standing["BO08"]), 50, "no automatic +2")
 	assert_eq(int(GameState.booster_standing["BO05"]), 50, "not the chosen one — untouched")
 	assert_eq(GameState.item_count("SH19"), 0)
+	GameState.hosted_session = {}
 
 
 func test_choice_options_lists_every_booster_of_the_items_tier() -> void:

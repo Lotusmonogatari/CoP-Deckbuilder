@@ -304,6 +304,10 @@ var event_last_at: Dictionary = {}
 var discovered_levels: Array[String] = []
 var event_roll_due := false
 
+## A dinner or walking tour in progress (HostedEvent.gd): { hosted_id, org, roster,
+## hours, results: {step: [scored]}, tags: {step: [tag lists]} }. Not saved.
+var hosted_session: Dictionary = {}
+
 ## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
 ## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
 ## until that special level has been played, win or lose.
@@ -1162,6 +1166,120 @@ func is_level_discovered(level: Dictionary) -> bool:
 	if str(level.get("needs_discovery", "")).strip_edges().to_lower() != "yes":
 		return true
 	return discovered_levels.has(str(level.get("level_id", "")))
+
+
+# ---------------------------------------------------------------------------
+# Hosted events (2026-10-23, Cameron): the walking tour and the dinner.
+
+func get_hosted_event(hosted_id: String) -> Dictionary:
+	for row: Dictionary in DataDB.hosted_events:
+		if str(row.get("hosted_id", "")) == hosted_id:
+			return row
+	return {}
+
+
+## Every character who could be a guest, by organization: opponents by their
+## Affiliation, visitors by the organizations their reward pleases. Party
+## bodies are left out. { org_id: [{ id, name, title, org }] }.
+func hosted_people_by_org() -> Dictionary:
+	var party_orgs := {}
+	for booster: Dictionary in DataDB.boosters:
+		if str(booster.get("tier", "")) == HostedEvent.PARTY_TIER:
+			party_orgs[str(booster.get("booster_id", ""))] = true
+	var found := {}
+	for opponent: Dictionary in DataDB.opponents:
+		var org := str(opponent.get("affiliation", "")) if opponent.get("affiliation") != null else ""
+		if org.is_empty() or party_orgs.has(org):
+			continue
+		if not found.has(org):
+			found[org] = []
+		(found[org] as Array).append({"id": str(opponent.get("opp_id", "")),
+			"name": str(opponent.get("name", "")), "title": OpponentDisplay.title_for(opponent), "org": org})
+	for visitor: Dictionary in DataDB.visitors:
+		var rewards: Variant = visitor.get("reward")
+		if not (rewards is Array):
+			continue
+		var seen := {}
+		for entry: Variant in (rewards as Array):
+			var target := str((entry as Dictionary).get("target", ""))
+			if not RewardTargets.is_booster(target) or party_orgs.has(target) or seen.has(target):
+				continue
+			seen[target] = true
+			if not found.has(target):
+				found[target] = []
+			(found[target] as Array).append({"id": str(visitor.get("visitor_id", "")),
+				"name": str(visitor.get("name_en", "")), "title": str(visitor.get("title", "")), "org": target})
+	return found
+
+
+## Starts the evening: picks the guests. `hours` is spent when it ends.
+func begin_hosted_event(hosted_id: String, org_id: String, hours: int = 0) -> Dictionary:
+	var cfg := HostedEvent.settings(DataDB.balance)
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	var allies := HostedEvent.allies(org_id, DataDB.party_stakeholders, DataDB.boosters)
+	var roster := HostedEvent.pick_roster(org_id, hosted_people_by_org(), allies, int(cfg["roster"]), rng)
+	hosted_session = {"hosted_id": hosted_id, "org": org_id, "roster": roster, "hours": hours,
+		"results": {}, "tags": {}}
+	return hosted_session
+
+
+## The options a screen offers: step 1 to 3, and a slot ("Entree") where the step has them.
+func hosted_options(step: int, slot: String = "") -> Array:
+	return HostedEvent.options_for_slot(DataDB.event_options, str(hosted_session.get("hosted_id", "")), step, slot)
+
+
+## The guests' reactions to what was picked on a step (`option_ids`), kept for
+## the evening's total. Returns [{ guest, reaction, level, line }].
+func hosted_record_step(step: int, option_ids: Array) -> Array:
+	var tag_lists: Array = []
+	for row: Dictionary in DataDB.event_options:
+		if str(row.get("hosted_id", "")) == str(hosted_session.get("hosted_id", "")) \
+				and option_ids.has(str(row.get("option_id", ""))):
+			tag_lists.append(row.get("tags", []) if row.get("tags") != null else [])
+	var scored := HostedEvent.score_step(hosted_session.get("roster", []) as Array,
+		DataDB.organization_tastes, tag_lists)
+	(hosted_session["results"] as Dictionary)[step] = scored
+	(hosted_session["tags"] as Dictionary)[step] = tag_lists
+	var shown: Array = []
+	var pick := 0
+	for entry: Dictionary in scored:
+		var guest: Dictionary = entry["guest"]
+		var level := HostedEvent.level_of(int(entry["reaction"]))
+		shown.append({"guest": guest, "reaction": int(entry["reaction"]), "level": level,
+			"line": HostedEvent.line_for(DataDB.reaction_lines, level, str(guest.get("name", "")), step + pick)})
+		pick += 1
+	return shown
+
+
+## The evening ends: standing moves with the guests, awareness and Reputation
+## with the total, the hours pass, and a hidden bill may come up (the patron's
+## Host Org). Returns { net, deltas, awareness, meter, reputation, revealed, hours, lines }.
+func finish_hosted_event() -> Dictionary:
+	if hosted_session.is_empty():
+		return {}
+	var session := hosted_session
+	hosted_session = {}
+	var cfg := HostedEvent.settings(DataDB.balance)
+	var results: Array = []
+	for step: Variant in (session["results"] as Dictionary).keys():
+		results.append((session["results"] as Dictionary)[step])
+	var org := str(session["org"])
+	var total := HostedEvent.totals(results, org, cfg)
+	var cause := Text.say("record.cause_hosted")
+	for guest_org: String in (total["org_deltas"] as Dictionary).keys():
+		var change := int((total["org_deltas"] as Dictionary)[guest_org])
+		if change != 0:
+			_under_cause(cause, func() -> void: _apply_booster_delta(guest_org, change))
+	var meter := str(get_hosted_event(str(session["hosted_id"])).get("meter", "District")).to_lower()
+	apply_awareness_delta(meter, int(total["awareness"]))
+	if int(total["reputation"]) != 0:
+		_under_cause(cause, func() -> void: _apply_meta_reward("Reputation", int(total["reputation"])))
+	var hours := int(session.get("hours", 0))
+	spend_hours(hours)
+	var revealed := reveal_by_hosting(org)
+	return {"net": int(total["net"]), "deltas": total["org_deltas"], "awareness": int(total["awareness"]),
+		"meter": meter, "reputation": int(total["reputation"]), "revealed": revealed, "hours": hours}
 
 
 # ---------------------------------------------------------------------------
@@ -2580,6 +2698,13 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 		return {"ok": false, "message": hours_refusal}
 
 	var name := str(item.get("name", item_id))
+	# A dinner or a walking tour starts a hosted event: what comes of it depends
+	# on how the guests react, not on whom you chose (Cameron, 2026-10-23).
+	var hosted_id := str(item.get("hosted_event", "")) if item.get("hosted_event") != null else ""
+	if not hosted_id.is_empty():
+		_take_item(item_id)
+		begin_hosted_event(hosted_id, chosen_target, hours)
+		return {"ok": true, "opens_hosted": hosted_id, "org": chosen_target, "message": ""}
 	if _is_free_draw(item):
 		# A Training Session Coupon: a free Rhetoric Training draw. Refused
 		# (coupon kept) while another draw is open or no card of the tier is left.
@@ -2608,7 +2733,8 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 		return {"ok": true, "message": (Text.say("item.used_with_outcome",
 			{"name": name, "outcome": outcome}) if not outcome.is_empty()
 			else Text.say("item.used", {"name": name})) + gathering,
-			"plain": Text.say("item.used", {"name": name}), "effects": _effect_chips(applied)}
+			"plain": Text.say("item.used", {"name": name}), "effects": _effect_chips(applied),
+			"image": str(item.get("image", "")) if item.get("image") != null else ""}
 
 	var level := Items.duration(item) == Items.DURATION_LEVEL
 	var lasts := Items.duration_units(item)

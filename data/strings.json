@@ -5234,5 +5234,131 @@
     "english": "Not enough hours left for that.",
     "placeholders": null,
     "notes": "2026-10-23 hosting."
+  },
+  {
+    "key": "office.cosmetics_slot_dining",
+    "where": "Office, Cosmetics, slot heading for the dining room you host dinners in",
+    "english": "Dining room",
+    "placeholders": null,
+    "notes": "2026-10-23 dining and tour images."
+  },
+  {
+    "key": "office.cosmetics_slot_tour",
+    "where": "Office, Cosmetics, slot heading for the walking route",
+    "english": "Walking route",
+    "placeholders": null,
+    "notes": "2026-10-23 dining and tour images."
+  },
+  {
+    "key": "event.gathering_title",
+    "where": "Office, heading of the popup after hosting a dinner or a walking tour",
+    "english": "You hosted a gathering",
+    "placeholders": null,
+    "notes": "2026-10-23 dining and tour images."
+  },
+  {
+    "key": "hosted.pick_slot",
+    "where": "Hosted event, heading for picking one dish",
+    "english": "Choose the {slot}.",
+    "placeholders": "slot",
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.guests_heading",
+    "where": "Hosted event, heading above the guest list",
+    "english": "Your guests",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.guest_line",
+    "where": "Hosted event, one guest in the list",
+    "english": "{name}, {title}",
+    "placeholders": "name, title",
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.reactions_heading",
+    "where": "Hosted event, heading above guest reactions",
+    "english": "How your guests took it",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.next",
+    "where": "Hosted event, button after the reactions",
+    "english": "Next",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.finish",
+    "where": "Hosted event, button after the last reactions",
+    "english": "See how the evening went",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.result_title",
+    "where": "Hosted event, result heading",
+    "english": "How it went",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.net_good",
+    "where": "Hosted event, result line for a good evening",
+    "english": "A good evening. People will talk about it.",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.net_bad",
+    "where": "Hosted event, result line for a poor evening",
+    "english": "It did not go well, and everyone knows it.",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.net_even",
+    "where": "Hosted event, result line for an ordinary evening",
+    "english": "A quiet success. Nobody went home angry.",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.awareness_line",
+    "where": "Hosted event, awareness change",
+    "english": "{name} {change}",
+    "placeholders": "name, change",
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.reputation_line",
+    "where": "Hosted event, Reputation change",
+    "english": "Reputation {change}",
+    "placeholders": "change",
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.hours_line",
+    "where": "Hosted event, hours it took",
+    "english": "It took {hours} hours.",
+    "placeholders": "hours",
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "hosted.no_guests",
+    "where": "Hosted event, no guests could be found",
+    "english": "No one could come, but the host still stayed the evening.",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "record.cause_hosted",
+    "where": "Your Record, cause of a change from a hosted dinner or walking tour",
+    "english": "A hosted gathering",
+    "placeholders": null,
+    "notes": "2026-10-23 hosted events."
   }
 ]

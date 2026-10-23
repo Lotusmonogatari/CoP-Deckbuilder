@@ -18,6 +18,7 @@ func _run() -> void:
 	await _open_office()
 	await _walking_tour()
 	await _street_question()
+	await _gathering_picture()
 	print("")
 	if _failures.is_empty():
 		print("EVENT TEST: PASS")
@@ -48,14 +49,14 @@ func _walking_tour() -> void:
 	await get_tree().process_frame
 	var list := _screen().get_node("EventsPanel") as Overlay
 	_expect(list.visible, "the Events list opens")
-	var arrange := list.find_child("Arrange_EV01", true, false) as Button
-	_expect(arrange != null and not arrange.disabled, "the walking tour can be arranged")
-	var weekend_only := list.find_child("Arrange_EV02", true, false) as Button
-	_expect(weekend_only != null and weekend_only.disabled and weekend_only.text == "Weekend only", "the charity dinner waits for the weekend")
+	var arrange := list.find_child("Arrange_EV32", true, false) as Button
+	_expect(arrange != null and not arrange.disabled, "the sports sponsorship can be arranged")
+	var weekend_only := list.find_child("Arrange_EV34", true, false) as Button
+	_expect(weekend_only != null and weekend_only.disabled and weekend_only.text == "Weekend only", "the office open day waits for the weekend")
 	arrange.pressed.emit()
 	await get_tree().process_frame
 	await get_tree().create_timer(0.3).timeout
-	_expect(int(GameState.meta["Funds"]) == 90000, "the 10,000円 price is paid, got %d" % int(GameState.meta["Funds"]))
+	_expect(int(GameState.meta["Funds"]) == 80000, "the 20,000円 price is paid, got %d" % int(GameState.meta["Funds"]))
 	var panel := _screen().get_node("EventPanel") as Overlay
 	_expect(panel.visible, "the event screen opens")
 	var choice := panel.find_child("EventChoice_A", true, false) as Button
@@ -65,7 +66,7 @@ func _walking_tour() -> void:
 		choice.pressed.emit()
 	await get_tree().process_frame
 	await get_tree().create_timer(0.3).timeout
-	_expect(int(GameState.calendar["hours"]) == 4, "the tour takes 4 hours, got %d" % int(GameState.calendar["hours"]))
+	_expect(int(GameState.calendar["hours"]) == 2, "the event takes 2 hours, got %d" % int(GameState.calendar["hours"]))
 	_expect(int(GameState.awareness["district"]) >= 22, "District Awareness rose")
 	var done := panel.find_child("EventContinueButton", true, false) as Button
 	_expect(done != null, "the result has a Continue button")
@@ -93,6 +94,23 @@ func _street_question() -> void:
 	await get_tree().process_frame
 	_expect(GameState.discovered_levels.has("LV34"), "the event revealed the train bill level")
 	_expect(_levels_text(screen).contains("Shinkansen"), "and it now shows in the levels list")
+
+
+## The dinner and tour popup shows its own picture (a labelled placeholder until
+## the art is drawn): DINING, or TOUR.
+func _gathering_picture() -> void:
+	var screen := _screen()
+	screen._show_gathering({"image": "DINING", "message": "A fine evening."})
+	await get_tree().process_frame
+	var panel := screen.get_node("GatheringPanel") as Overlay
+	_expect(panel.visible, "the gathering popup opens")
+	_expect(panel.find_child("Picture_DINING", true, false) != null, "it shows the DINING picture")
+	_save_shot("event_gathering")
+	var done := panel.find_child("GatheringContinueButton", true, false) as Button
+	if done != null:
+		done.pressed.emit()
+	await get_tree().process_frame
+	_expect(not panel.visible, "Continue closes it")
 
 
 func _levels_text(screen: Node) -> String:

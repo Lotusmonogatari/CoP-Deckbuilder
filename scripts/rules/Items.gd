@@ -113,6 +113,9 @@ static func has_effect(item: Dictionary) -> bool:
 	# A Training Session Coupon's effect is a free card draw, not a grant.
 	if item.get("free_card_tier") != null:
 		return true
+	# A dinner or a walking tour: its effect is the hosted event it starts.
+	if item.get("hosted_event") != null and not str(item.get("hosted_event")).is_empty():
+		return true
 	var split := split_grants(item)
 	return not ((split["meta"] as Array).is_empty() and (split["stage"] as Array).is_empty())
 

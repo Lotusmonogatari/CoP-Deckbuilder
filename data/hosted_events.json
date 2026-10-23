@@ -1,0 +1,24 @@
+[
+  {
+    "hosted_id": "HE01",
+    "item_id": "SH20",
+    "title": "Host a District Walking Tour",
+    "intro": "You have invited your guests to walk a part of the district with you. Everyone is in comfortable shoes, and everyone is watching where you take them.",
+    "image": "TOUR",
+    "meter": "District",
+    "prompt_1": "Where do you take them?",
+    "prompt_2": "Along the way the conversation turns to policy. What do you talk about?",
+    "prompt_3": "At the end of the walk someone asks what you will do about it. What do you promise?"
+  },
+  {
+    "hosted_id": "HE02",
+    "item_id": "SH19",
+    "title": "Host a Dinner",
+    "intro": "The table is set and the guests are arriving. You have chosen the menu yourself, and each guest will notice what is, and is not, on it.",
+    "image": "DINING",
+    "meter": "National",
+    "prompt_1": "Choose the menu.",
+    "prompt_2": "Over dinner the talk turns to policy. What do you bring up?",
+    "prompt_3": "Over tea someone asks what you will do about it. What do you promise?"
+  }
+]

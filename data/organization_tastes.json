@@ -1,0 +1,450 @@
+[
+  {
+    "booster_id": "BO01",
+    "likes": [
+      "tradition_party",
+      "humble"
+    ],
+    "dislikes": [
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO02",
+    "likes": [
+      "humble",
+      "traditional"
+    ],
+    "dislikes": [
+      "risky",
+      "reform"
+    ]
+  },
+  {
+    "booster_id": "BO03",
+    "likes": [
+      "local",
+      "neighborhood",
+      "humble",
+      "farm",
+      "rural"
+    ],
+    "dislikes": [
+      "luxury",
+      "foreign"
+    ]
+  },
+  {
+    "booster_id": "BO04",
+    "likes": [
+      "local",
+      "neighborhood",
+      "spending",
+      "rural"
+    ],
+    "dislikes": [
+      "luxury"
+    ]
+  },
+  {
+    "booster_id": "BO05",
+    "likes": [
+      "tax_cut",
+      "small_business",
+      "finance",
+      "trade_open",
+      "shotengai",
+      "luxury"
+    ],
+    "dislikes": [
+      "protect",
+      "isolation",
+      "labor"
+    ]
+  },
+  {
+    "booster_id": "BO06",
+    "likes": [
+      "neighborhood",
+      "local",
+      "humble",
+      "family",
+      "shotengai"
+    ],
+    "dislikes": [
+      "luxury",
+      "foreign",
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO07",
+    "likes": [
+      "fishing",
+      "seafood",
+      "local",
+      "rural",
+      "protect"
+    ],
+    "dislikes": [
+      "foreign",
+      "luxury",
+      "meat"
+    ]
+  },
+  {
+    "booster_id": "BO08",
+    "likes": [
+      "reform",
+      "modern",
+      "tech",
+      "media",
+      "foreign"
+    ],
+    "dislikes": [
+      "humble",
+      "isolation"
+    ]
+  },
+  {
+    "booster_id": "BO09",
+    "likes": [
+      "labor",
+      "welfare",
+      "spending",
+      "factory",
+      "industry"
+    ],
+    "dislikes": [
+      "tax_cut",
+      "finance",
+      "luxury"
+    ]
+  },
+  {
+    "booster_id": "BO10",
+    "likes": [
+      "farm",
+      "rural",
+      "local",
+      "protect",
+      "humble",
+      "juice"
+    ],
+    "dislikes": [
+      "foreign",
+      "wine",
+      "meat",
+      "trade_open",
+      "luxury"
+    ]
+  },
+  {
+    "booster_id": "BO11",
+    "likes": [
+      "youth",
+      "reform",
+      "modern",
+      "tech",
+      "welfare"
+    ],
+    "dislikes": [
+      "traditional",
+      "luxury"
+    ]
+  },
+  {
+    "booster_id": "BO12",
+    "likes": [
+      "family",
+      "welfare",
+      "neighborhood",
+      "humble",
+      "spending"
+    ],
+    "dislikes": [
+      "risky",
+      "luxury"
+    ]
+  },
+  {
+    "booster_id": "BO13",
+    "likes": [
+      "heritage",
+      "traditional",
+      "sake",
+      "local",
+      "small_business"
+    ],
+    "dislikes": [
+      "modern",
+      "foreign",
+      "factory"
+    ]
+  },
+  {
+    "booster_id": "BO14",
+    "likes": [
+      "neighborhood",
+      "spending",
+      "local",
+      "humble"
+    ],
+    "dislikes": [
+      "isolation",
+      "tax_cut"
+    ]
+  },
+  {
+    "booster_id": "BO15",
+    "likes": [
+      "traditional",
+      "heritage",
+      "shrine",
+      "sake",
+      "protect",
+      "local"
+    ],
+    "dislikes": [
+      "modern",
+      "foreign",
+      "reform",
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO16",
+    "likes": [
+      "tech",
+      "modern",
+      "reform",
+      "trade_open",
+      "foreign",
+      "finance"
+    ],
+    "dislikes": [
+      "traditional",
+      "protect",
+      "isolation"
+    ]
+  },
+  {
+    "booster_id": "BO17",
+    "likes": [
+      "reform",
+      "local",
+      "spending",
+      "luxury"
+    ],
+    "dislikes": [
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO18",
+    "likes": [
+      "local",
+      "humble",
+      "neighborhood",
+      "welfare",
+      "spending"
+    ],
+    "dislikes": [
+      "luxury",
+      "foreign"
+    ]
+  },
+  {
+    "booster_id": "BO19",
+    "likes": [
+      "heritage",
+      "traditional",
+      "humble",
+      "shrine"
+    ],
+    "dislikes": [
+      "luxury",
+      "foreign",
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO20",
+    "likes": [
+      "shrine",
+      "heritage",
+      "traditional",
+      "sake",
+      "local"
+    ],
+    "dislikes": [
+      "foreign",
+      "modern",
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO21",
+    "likes": [
+      "welfare",
+      "family",
+      "spending",
+      "humble"
+    ],
+    "dislikes": [
+      "tax_cut",
+      "luxury",
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO22",
+    "likes": [
+      "security",
+      "veterans",
+      "protect",
+      "traditional",
+      "spending"
+    ],
+    "dislikes": [
+      "isolation",
+      "reform"
+    ]
+  },
+  {
+    "booster_id": "BO23",
+    "likes": [
+      "tax_cut",
+      "humble",
+      "finance",
+      "local"
+    ],
+    "dislikes": [
+      "spending",
+      "luxury",
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO24",
+    "likes": [
+      "finance",
+      "trade_open",
+      "foreign",
+      "luxury",
+      "tech",
+      "tax_cut"
+    ],
+    "dislikes": [
+      "protect",
+      "isolation",
+      "labor"
+    ]
+  },
+  {
+    "booster_id": "BO25",
+    "likes": [
+      "small_business",
+      "tourism",
+      "shotengai",
+      "local",
+      "tax_cut"
+    ],
+    "dislikes": [
+      "foreign",
+      "luxury"
+    ]
+  },
+  {
+    "booster_id": "BO26",
+    "likes": [
+      "reform",
+      "humble",
+      "welfare",
+      "local"
+    ],
+    "dislikes": [
+      "luxury",
+      "risky",
+      "finance"
+    ]
+  },
+  {
+    "booster_id": "BO27",
+    "likes": [
+      "modern",
+      "neighborhood",
+      "reform",
+      "welfare",
+      "tech"
+    ],
+    "dislikes": [
+      "traditional",
+      "protect"
+    ]
+  },
+  {
+    "booster_id": "BO28",
+    "likes": [
+      "heritage",
+      "local",
+      "traditional",
+      "seafood",
+      "rural"
+    ],
+    "dislikes": [
+      "foreign",
+      "luxury",
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO29",
+    "likes": [
+      "heritage",
+      "traditional",
+      "local"
+    ],
+    "dislikes": [
+      "foreign",
+      "modern"
+    ]
+  },
+  {
+    "booster_id": "BO30",
+    "likes": [
+      "rural",
+      "local",
+      "spending",
+      "farm",
+      "tourism",
+      "tech"
+    ],
+    "dislikes": [
+      "luxury",
+      "foreign",
+      "isolation"
+    ]
+  },
+  {
+    "booster_id": "BO31",
+    "likes": [
+      "humble",
+      "local"
+    ],
+    "dislikes": [
+      "risky"
+    ]
+  },
+  {
+    "booster_id": "BO32",
+    "likes": [
+      "traditional",
+      "humble"
+    ],
+    "dislikes": [
+      "risky",
+      "reform"
+    ]
+  }
+]
