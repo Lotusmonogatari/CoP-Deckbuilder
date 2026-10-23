@@ -4979,8 +4979,8 @@
   {
     "key": "election.bar_line",
     "where": "Election Strength page, the bar caption",
-    "english": "Election strength: {value} / 100",
-    "placeholders": "value",
+    "english": "Election strength",
+    "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
   {

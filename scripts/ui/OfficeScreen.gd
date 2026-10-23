@@ -1235,12 +1235,11 @@ func _colour_bar(value: float, fill: Color) -> ProgressBar:
 
 ## Election strength in the standard gold, then every value that feeds it as a
 ## bar in the colour of the player's own party: the two awareness meters (0-100)
-## and each other input as its share of its own maximum. Only names and the two
-## real 0-100 values are written; no points.
+## and each other input as its share of its own maximum. Names only, no numbers.
 func _show_election() -> void:
 	var colour := PartyDisplay.color_for(DataDB.get_party(str(DataDB.player.get("party", ""))))
 	var rows: Array[Control] = []
-	rows.append(UiKit.line(Text.say("election.bar_line", {"value": roundi(GameState.election_strength)})))
+	rows.append(UiKit.line(Text.say("election.bar_line")))
 	rows.append(_colour_bar(GameState.election_strength, CueBanner.EDGE_COLOUR))
 
 	var names := {
@@ -1253,10 +1252,6 @@ func _show_election() -> void:
 		var share := 100.0 * float(part["points"]) / maxf(1.0, float(part["max"]))
 		var caption := str(names[id])
 		if id == "district" or id == "national":
-			caption = Text.say("election.meter_line", {"name": caption, "value": int(GameState.awareness.get(id, 0))})
-			var meter_change := int(GameState.last_awareness_change.get(id, 0))
-			if meter_change != 0:
-				caption += "  (%+d)" % meter_change
 			share = float(GameState.awareness.get(id, 0))
 		rows.append(UiKit.line(caption))
 		rows.append(_colour_bar(share, colour))

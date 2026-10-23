@@ -158,7 +158,7 @@
   "dues.penalty_line": "The party is furious. Party support falls and its backings are withdrawn.",
   "dues.preview": "Party dues this week: {yen_total}円 (you have {yen_funds}円).",
   "dues.preview_owed": "Party dues this week: {yen_total}円, including {yen_owed}円 overdue (you have {yen_funds}円).",
-  "election.bar_line": "Election strength: {value} / 100",
+  "election.bar_line": "Election strength",
   "election.c_constituency": "Constituency support",
   "election.c_district": "District Awareness",
   "election.c_experience": "Experience",
