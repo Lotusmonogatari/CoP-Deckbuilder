@@ -1136,6 +1136,47 @@ SHEETS = {
             ("Note", "note", "str"),
         ],
     },
+    # Events (2026-10-23, Cameron): a screen of flavor text and fixed choices
+    # with variable rewards, bought (Buyable) or arriving on their own
+    # (Random). Choices live in Event Choices. See EventEngine.gd.
+    "Events": {
+        "out": "events.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Event ID", "event_id", "str"),
+            ("Title", "title", "str"),
+            ("Flavor Text", "flavor", "str"),
+            ("Trigger", "trigger", "str"),
+            ("Available", "available", "str"),
+            ("Hours", "hours", "int"),
+            ("Cost (Funds)", "cost_funds", "int"),
+            ("Cost (XP)", "cost_xp", "int"),
+            ("Weight", "weight", "int"),
+            ("Cooldown Hours", "cooldown_hours", "int"),
+            ("Min District Awareness", "min_district_awareness", "int"),
+            ("Min National Awareness", "min_national_awareness", "int"),
+        ],
+    },
+    "Event Choices": {
+        "out": "event_choices.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Event ID", "event_id", "str"),
+            ("Choice", "choice", "str"),
+            ("Choice Text", "choice_text", "str"),
+            ("Result Text", "result_text", "str"),
+            ("Funds Cost", "funds_cost", "int"),
+            ("Funds Δ", "funds_delta", "range"),
+            ("XP Δ", "xp_delta", "range"),
+            ("Constituency support Δ", "constituency_delta", "range"),
+            ("Reputation Δ", "reputation_delta", "range"),
+            ("Party support Δ", "party_support_delta", "range"),
+            ("District Awareness Δ", "district_delta", "range"),
+            ("National Awareness Δ", "national_delta", "range"),
+            ("Rewards", "rewards", "target_delta_list"),
+            ("Unlocks Level", "unlocks_level", "str"),
+        ],
+    },
     # The optional cutscene line shown when the influence swing above
     # actually flips a bill's own pass/fail outcome — one row per (Bill ID,
     # Outcome Direction) pair, entirely optional the same way Level Intro
@@ -1298,6 +1339,7 @@ SHEETS = {
             # for the same favorability payout.
             ("One-Time (Yes/No)", "one_time", "str"),
             ("Weekend OK (Yes/No)", "weekend_ok", "str"),
+            ("Needs Discovery (Yes/No)", "needs_discovery", "str"),
             # 2026-10-18: Town Hall or Steering Committee marks a Special
             # Level (GameState special levels); blank for every other level.
             ("Special Trigger", "special_trigger", "str"),
@@ -2544,6 +2586,37 @@ def validate(data, report):
                 report.error("Awareness Effects", f"{eid} targets stage '{target}', which is not in the Stages tab")
             if row["effect_type"] == "STANDING_CHANGE" and target not in booster_ids and not target.startswith("TIER:"):
                 report.error("Awareness Effects", f"{eid} targets '{target}', which is not a booster_id or TIER:<tier>")
+
+    # --- events --------------------------------------------------------------
+    event_ids = set()
+    for row in data.get("events", []):
+        eid = row["event_id"]
+        event_ids.add(eid)
+        if row["trigger"] not in ("Buyable", "Random"):
+            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable or Random")
+        if row["available"] not in ("Weekday", "Weekend", "Both"):
+            report.error("Events", f"{eid} has Available '{row['available']}' — expected Weekday, Weekend or Both")
+        if row["hours"] is None or row["hours"] < 0:
+            report.error("Events", f"{eid} needs Hours (0 or more)")
+        if row["trigger"] == "Random" and not row.get("weight"):
+            report.warn("Events", f"{eid} is Random but has no Weight, so it never arrives")
+    letters_seen = {}
+    level_ids_here = {lv["level_id"] for lv in data["levels"]}
+    for row in data.get("event_choices", []):
+        eid = row["event_id"]
+        if eid not in event_ids:
+            report.error("Event Choices", f"{eid} is not an Event ID in the Events tab")
+        if row["choice"] not in ("A", "B", "C", "D"):
+            report.error("Event Choices", f"{eid} has Choice '{row['choice']}' — expected A to D")
+        key = (eid, row["choice"])
+        if key in letters_seen:
+            report.error("Event Choices", f"{eid} has two choices lettered {row['choice']}")
+        letters_seen[key] = True
+        if row.get("unlocks_level") and row["unlocks_level"] not in level_ids_here:
+            report.error("Event Choices", f"{eid} {row['choice']} unlocks '{row['unlocks_level']}', which is not a Level ID")
+    for eid in event_ids:
+        if not any(k[0] == eid for k in letters_seen):
+            report.error("Events", f"{eid} has no choices in the Event Choices tab")
 
     # --- vote_influence_cues -------------------------------------------------
     # The optional cutscene line for a bill the influence swing flipped —

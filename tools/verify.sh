@@ -11,6 +11,8 @@
 #
 # Exits non-zero if any of them fail, so it can be wired into a build server.
 set -uo pipefail
+# Random events are chance pop-ups; the real-click tests switch them off (GameState.roll_random_event).
+export COP_NO_RANDOM_EVENTS=1
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
@@ -163,6 +165,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
         "$GODOT" --path . tests/interaction/week_test.tscn; then
     echo ">> FAILED: the week calendar did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
+  # And events: the Events list, arranging one, choosing, a level an event reveals -- 2026-10-23, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/event_test.tscn; then
+    echo ">> FAILED: events did not work with real clicks."
     failures=$((failures + 1))
   fi
 

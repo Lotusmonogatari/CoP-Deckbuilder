@@ -2362,3 +2362,17 @@ New files: `scripts/rules/WeekCalendar.gd`, `scripts/ui/CalendarSquare.gd`. Test
 | **Election strength** | Built and shown, fires nothing. Eight inputs (District and National Awareness, Constituency support, organizations on side, war chest, experience, legislative record, party backing) add to a "potential" of 100; the strength moves toward it by at most 2.5 a week (falls at most 1.5), so even an easy start climbs slowly. A bar on the Office; each input on Your Record. | `ElectionStrength.gd`, Balance "Election: ..." levers |
 
 New workbook tab **Awareness Effects** (header notes included). Tests: `test_party_dues.gd`, `test_awareness.gd`, `test_awareness_effects.gd`, `test_election_strength.gd`, and the real-click `week_test` now covers paying and falling short.
+
+## Events: arranged or arriving, with fixed choices and variable rewards (2026-10-23, Cameron) -- step 6
+
+An event is a screen of flavor text and two to four fixed choices; each choice rolls its own ranges. Two new workbook tabs, **Events** and **Event Choices**, both with header notes, hold the content (12 events and 31 choices, all drafts for Cameron to rewrite; no named characters).
+
+| Piece | Detail |
+|---|---|
+| Buyable events | A new **Events** button on the Office lists them with hours and price (walking tour 4h and 10,000円, charity dinner and rally weekend only, newspaper ad, national TV spot, community grant). The price is paid when arranged, the hours when a choice is made. |
+| Random events | After a level or a week end there is a Balance chance (Event: Random Chance Percent, 35) that one arrives, weighted, off cooldown, only at the right time of the week, and only once the player is known enough (Min District/National Awareness). |
+| Choices | Each choice can cost Funds, roll Funds/XP/Constituency support/Reputation/Party support/District and National Awareness ranges, grant organization standing and items in the usual Rewards format, and **reveal a level**. |
+| Revealing a level | New Levels column **Needs Discovery (Yes/No)**: such a level stays out of the list until an event reveals it, then shows with its normal XP price. LV34 (Hokkaido Shinkansen) is flagged as the first example, revealed by the "A Question About the Street" event. Clear its flag to show it from the start. |
+| Calendar | Events spend hours like a stage does; a weekend event must fit the hours left; a finished work week takes none. |
+
+Shop items SH19 (dinner) and SH20 (walking tour) are unchanged; the new Events duplicate their idea with choices. Tests: `tests/test_events.gd`, real-click `tests/interaction/event_test.tscn` (in `tools/verify.sh`, which now sets `COP_NO_RANDOM_EVENTS` so a chance pop-up never lands on another test's click). How to Play entries HT29 to HT33 cover the week, dues, awareness, events and election strength.
