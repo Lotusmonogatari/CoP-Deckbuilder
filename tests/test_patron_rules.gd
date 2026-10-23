@@ -154,7 +154,7 @@ func test_outcomes() -> void:
 	var flagship := {"organization": "BO05", "kind": "Flagship"}
 	var win := PatronRequests.outcome(flagship, "BO24", ["BO09"], true, false, balance)
 	assert_eq(win["standing"], [{"target": "BO05", "delta": 10}, {"target": "BO24", "delta": 4}, {"target": "BO09", "delta": -3}])
-	assert_eq(win["free_backing_units"], 30)
+	assert_eq(win["free_backing_units"], int(balance.get("patron_free_backing_units", 30)))
 	var amended := PatronRequests.outcome({"organization": "BO05", "kind": "Favor"}, "", [], true, true, balance)
 	assert_eq(amended["standing"], [{"target": "BO05", "delta": 5}])
 	var lost := PatronRequests.outcome({"organization": "BO05", "kind": "Favor"}, "", ["BO09"], false, false, balance)

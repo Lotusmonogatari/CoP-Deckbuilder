@@ -93,6 +93,14 @@ var _special_forced_panel: Overlay
 ## being previewed ("" when none).
 var _request_panel: Overlay
 var _draft_panel: Overlay
+
+## The week calendar (2026-10-23): the gold square, the Friday / weekend button,
+## and the three panels that carry the week's decisions.
+var _calendar_square: PanelContainer
+var _week_button: Button
+var _week_confirm_panel: Overlay
+var _week_over_panel: Overlay
+var _new_week_panel: Overlay
 var _draft_ids: Array = []
 var _draft_org := ""
 var _request_replace := ""
@@ -187,6 +195,7 @@ func _ready() -> void:
 	_draft_panel = Overlay.new()
 	_draft_panel.name = "DraftPanel"
 	add_child(_draft_panel)
+	_build_week_controls()
 
 	_ticker = TickerPresenter.new(_ticker_strip, _ticker_label)
 
@@ -261,9 +270,119 @@ func _build() -> void:
 		"office.resume_level" if GameState.is_in_level() else "office.choose_level")
 	_report.text = _last_level_report()
 	_refresh_resources()
+	_refresh_calendar()
 	_show_trigger_alerts_if_any()
 	_show_resume_choice_if_in_level()
+	_show_week_over_if_due()
 	_show_forced_special_if_due()
+
+
+# ---------------------------------------------------------------------------
+# The week (2026-10-23, Cameron): a gold calendar square in the unused lower
+# space, a button on Friday to end the work week early, a weekend that is
+# optional, and "Pay Party Dues and Go Home" to end the week.
+
+func _build_week_controls() -> void:
+	var spacer := get_node_or_null("Safe/Column/VSpacer")
+	if spacer != null:
+		_calendar_square = CalendarSquare.make()
+		spacer.add_child(_calendar_square)
+
+	_week_button = Button.new()
+	_week_button.name = "WeekButton"
+	_week_button.custom_minimum_size = Vector2(0, 100)
+	_week_button.pressed.connect(_on_week_button_pressed)
+	_start_button.get_parent().add_child(_week_button)
+	_start_button.get_parent().move_child(_week_button, _start_button.get_index() + 1)
+
+	_week_confirm_panel = Overlay.new()
+	_week_confirm_panel.name = "WeekConfirmPanel"
+	add_child(_week_confirm_panel)
+	_week_confirm_panel.confirmed.connect(_on_end_work_week_confirmed)
+	_week_over_panel = Overlay.new()
+	_week_over_panel.name = "WeekOverPanel"
+	# The work week has no hours left: weekend or home are the only ways on.
+	_week_over_panel.dismissable = false
+	_week_over_panel.show_back = false
+	add_child(_week_over_panel)
+	_new_week_panel = Overlay.new()
+	_new_week_panel.name = "NewWeekPanel"
+	_new_week_panel.dismissable = false
+	_new_week_panel.show_back = false
+	add_child(_new_week_panel)
+
+
+## The square's two rows, and the one week button that fits today: "End the
+## Work Week" on a Friday with hours left, "Pay Party Dues and Go Home" in
+## the weekend, nothing otherwise (and nothing mid-level).
+func _refresh_calendar() -> void:
+	CalendarSquare.refresh(_calendar_square)
+	if _week_button == null:
+		return
+	var mid_level := GameState.is_in_level()
+	if GameState.in_weekend():
+		_week_button.text = Text.say("office.go_home")
+		_week_button.visible = not mid_level
+	elif GameState.can_end_work_week_early():
+		_week_button.text = Text.say("office.end_work_week")
+		_week_button.visible = not mid_level
+	else:
+		_week_button.visible = false
+
+
+func _on_week_button_pressed() -> void:
+	if GameState.in_weekend():
+		_go_home()
+		return
+	var rows: Array[Control] = [UiKit.line(Text.say("office.end_work_week_body",
+		{"hours": GameState.work_hours_left()}))]
+	_week_confirm_panel.open(Text.say("office.end_work_week_title"), rows,
+		Text.say("office.end_work_week_yes"))
+
+
+func _on_end_work_week_confirmed() -> void:
+	GameState.end_work_week()
+	SaveManager.autosave()
+	_build()
+
+
+## The work week ran out of hours: the player chooses the weekend or home.
+func _show_week_over_if_due() -> void:
+	if GameState.is_in_level() or not GameState.work_week_is_full():
+		return
+	var rows: Array[Control] = [UiKit.line(Text.say("office.week_over_body"))]
+	var weekend := Button.new()
+	weekend.name = "WorkWeekendButton"
+	weekend.custom_minimum_size = Vector2(0, 110)
+	weekend.text = Text.say("office.weekend_work")
+	weekend.pressed.connect(_on_work_weekend)
+	rows.append(weekend)
+	var home := Button.new()
+	home.name = "GoHomeButton"
+	home.custom_minimum_size = Vector2(0, 110)
+	home.text = Text.say("office.go_home")
+	home.pressed.connect(_go_home)
+	rows.append(home)
+	_week_over_panel.open(Text.say("office.week_over_title"), rows)
+
+
+func _on_work_weekend() -> void:
+	_week_over_panel.close()
+	GameState.end_work_week()
+	SaveManager.autosave()
+	_build()
+
+
+## Ends the week: a cue popup on this same screen says a new week begins.
+func _go_home() -> void:
+	_week_over_panel.close()
+	_week_confirm_panel.close()
+	var result := GameState.go_home()
+	SaveManager.autosave()
+	_build()
+	var rows: Array[Control] = [UiKit.line(Text.say("office.new_week_body",
+		{"date": str(result.get("date", ""))}))]
+	_new_week_panel.open(Text.say("office.new_week_title"), rows, Text.say("office.new_week_go"))
 
 
 ## A crisis trigger firing or resolving since the last time the player was
@@ -2250,6 +2369,15 @@ func _level_row(level: Dictionary) -> Control:
 
 	var button := Button.new()
 	button.custom_minimum_size = Vector2(0, 90)
+
+	# The calendar comes first: a weekend takes only weekend levels that fit,
+	# and a finished work week takes none.
+	var calendar_refusal := GameState.level_calendar_refusal(level)
+	if not calendar_refusal.is_empty():
+		button.text = calendar_refusal
+		button.disabled = true
+		box.add_child(button)
+		return box
 
 	# A locked or cooling-down level is SHOWN, not hidden — the same choice
 	# the card and Staff shops make: a player should see what is coming, not

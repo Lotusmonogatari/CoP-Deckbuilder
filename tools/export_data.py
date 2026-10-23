@@ -1275,6 +1275,7 @@ SHEETS = {
             # first vote should be a one-time thing, not a replayable grind
             # for the same favorability payout.
             ("One-Time (Yes/No)", "one_time", "str"),
+            ("Weekend OK (Yes/No)", "weekend_ok", "str"),
             # 2026-10-18: Town Hall or Steering Committee marks a Special
             # Level (GameState special levels); blank for every other level.
             ("Special Trigger", "special_trigger", "str"),

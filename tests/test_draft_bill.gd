@@ -68,7 +68,7 @@ func test_the_refusals_say_why() -> void:
 	assert_eq(GameState.draft_refusal(pair), "")
 	GameState.last_draft_at = GameState.time_units
 	assert_ne(GameState.draft_refusal(pair), "", "the cooldown blocks a second draft")
-	GameState.time_units += 30
+	GameState.time_units += int(DataDB.balance.get("draft_bill_cooldown_units", 30))
 	assert_eq(GameState.draft_refusal(pair), "")
 
 

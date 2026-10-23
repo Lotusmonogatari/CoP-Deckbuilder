@@ -2,7 +2,7 @@
   {
     "level_id": "LV01",
     "description": "Talking with Constituents",
-    "cooldown": 12,
+    "cooldown": 36,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -65,12 +65,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV02",
     "description": "Meeting Lobbyists",
-    "cooldown": 6,
+    "cooldown": 18,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -124,12 +125,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV03",
     "description": "Policy Listening and Study",
-    "cooldown": 18,
+    "cooldown": 54,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -192,12 +194,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV04",
     "description": "Hearing at the Committee on the Environment",
-    "cooldown": 18,
+    "cooldown": 54,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -272,12 +275,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV05",
     "description": "Media Rounds",
-    "cooldown": 30,
+    "cooldown": 90,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -370,12 +374,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV06",
     "description": "Providing the Party Agricultural Policy Support",
-    "cooldown": 42,
+    "cooldown": 126,
     "tier": 0,
     "unlock_cost_vacant": 0,
     "unlock_cost_tier_0": 0,
@@ -468,12 +473,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV07",
     "description": "Providing the Party Infrastructure Policy Support",
-    "cooldown": 60,
+    "cooldown": 180,
     "tier": 0,
     "unlock_cost_vacant": 25,
     "unlock_cost_tier_0": 20,
@@ -557,12 +563,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV08",
     "description": "Fighting on the Floor for the Party",
-    "cooldown": 90,
+    "cooldown": 270,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 25,
@@ -640,12 +647,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV09",
     "description": "Filling in at Committees",
-    "cooldown": 90,
+    "cooldown": 270,
     "tier": 0,
     "unlock_cost_vacant": 50,
     "unlock_cost_tier_0": 25,
@@ -717,12 +725,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV10",
     "description": "Advancing a Bill to Protect Hometown Markets",
-    "cooldown": 120,
+    "cooldown": 360,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -809,12 +818,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV11",
     "description": "Meeting with Student Organizers",
-    "cooldown": 30,
+    "cooldown": 90,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -889,12 +899,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV12",
     "description": "Family Outreach Tour",
-    "cooldown": 36,
+    "cooldown": 108,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -972,12 +983,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV13",
     "description": "Backing the Local Artisans",
-    "cooldown": 36,
+    "cooldown": 108,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1052,12 +1064,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV14",
     "description": "Fixing the Daily Commute",
-    "cooldown": 48,
+    "cooldown": 144,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1132,12 +1145,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV15",
     "description": "Courting the Traditionalist Wing",
-    "cooldown": 60,
+    "cooldown": 180,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1215,12 +1229,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV16",
     "description": "Running with the Reform Caucus",
-    "cooldown": 72,
+    "cooldown": 216,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1298,12 +1313,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV17",
     "description": "Building the Next-Generation Coalition",
-    "cooldown": 84,
+    "cooldown": 252,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1384,12 +1400,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV18",
     "description": "Uniting Main Street and Transit Riders",
-    "cooldown": 90,
+    "cooldown": 270,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1470,12 +1487,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV19",
     "description": "Bridging Old Guard and New Wave",
-    "cooldown": 90,
+    "cooldown": 270,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -1556,12 +1574,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV20",
     "description": "Rallying Youth and Labor",
-    "cooldown": 60,
+    "cooldown": 180,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1639,12 +1658,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV21",
     "description": "A Neighborhood Family Compact",
-    "cooldown": 72,
+    "cooldown": 216,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1722,12 +1742,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV22",
     "description": "A Small Business Coalition",
-    "cooldown": 90,
+    "cooldown": 270,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1805,12 +1826,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV23",
     "description": "A Metro Infrastructure Push",
-    "cooldown": 120,
+    "cooldown": 360,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1888,12 +1910,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV24",
     "description": "Guarding the Old Order",
-    "cooldown": 120,
+    "cooldown": 360,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -1971,12 +1994,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV25",
     "description": "Riding the Reform Wave",
-    "cooldown": 120,
+    "cooldown": 360,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -2054,12 +2078,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV26",
     "description": "Coalition Building 101",
-    "cooldown": 30,
+    "cooldown": 90,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -2146,12 +2171,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV27",
     "description": "Rural Youth Initiative",
-    "cooldown": 78,
+    "cooldown": 234,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -2229,12 +2255,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV28",
     "description": "Kōenkai Family Ties",
-    "cooldown": 90,
+    "cooldown": 270,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -2312,12 +2339,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV29",
     "description": "A Main Street Infrastructure Bill",
-    "cooldown": 102,
+    "cooldown": 306,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -2398,12 +2426,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV30",
     "description": "A Grand Bargain",
-    "cooldown": 108,
+    "cooldown": 324,
     "tier": 2,
     "unlock_cost_vacant": 300,
     "unlock_cost_tier_0": 250,
@@ -2484,6 +2513,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -2549,6 +2579,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -2608,6 +2639,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -2667,6 +2699,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -2726,6 +2759,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -2794,6 +2828,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -2859,6 +2894,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -2924,6 +2960,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -2992,6 +3029,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3057,6 +3095,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3122,6 +3161,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3187,6 +3227,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3252,6 +3293,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3323,6 +3365,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3394,6 +3437,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3459,6 +3503,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3527,6 +3572,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3592,6 +3638,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3663,6 +3710,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3731,6 +3779,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3796,6 +3845,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3864,6 +3914,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3932,6 +3983,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -3997,6 +4049,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4062,6 +4115,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4127,6 +4181,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4198,6 +4253,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4263,6 +4319,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4331,6 +4388,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4396,6 +4454,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4467,12 +4526,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV61",
     "description": "Rail Fares and Timetables",
-    "cooldown": 48,
+    "cooldown": 144,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -4544,12 +4604,13 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
     "level_id": "LV62",
     "description": "Fishing Quotas and Harbors",
-    "cooldown": 48,
+    "cooldown": 144,
     "tier": 1,
     "unlock_cost_vacant": 150,
     "unlock_cost_tier_0": 100,
@@ -4621,6 +4682,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4692,6 +4754,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4763,6 +4826,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4828,6 +4892,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4893,6 +4958,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -4964,6 +5030,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5035,6 +5102,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5100,6 +5168,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5165,6 +5234,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5233,6 +5303,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5301,6 +5372,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5369,6 +5441,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5434,6 +5507,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5499,6 +5573,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5564,6 +5639,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5629,6 +5705,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5694,6 +5771,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5759,6 +5837,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5830,6 +5909,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5898,6 +5978,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -5957,6 +6038,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "Yes",
+    "weekend_ok": null,
     "special_trigger": null
   },
   {
@@ -6016,6 +6098,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": "Yes",
     "special_trigger": "Town Hall"
   },
   {
@@ -6075,6 +6158,7 @@
     "win_delta_bo31": null,
     "win_delta_bo32": null,
     "one_time": "No",
+    "weekend_ok": "Yes",
     "special_trigger": "Steering Committee"
   }
 ]
