@@ -2484,3 +2484,16 @@ Follow-up (2026-10-23): the Election Strength page was confusing. The bar read 0
 Follow-up (2026-10-23, Cameron): the Election Strength page is now nine bars and almost no text. Election strength is a bar in the standard gold (the cue-banner gold); District and National Awareness and the six other inputs are each a bar in the player's party colour (the six as their share of their own maximum). No points, no "adds", no "heading toward" line and no "What feeds it" heading.
 
 Follow-up (2026-10-23, Cameron): the Election Strength page carries no numbers at all for now, only a name over each bar (including the awareness meters and the recent-change figure).
+
+## Dated events: a scripted event on a calendar date (2026-10-23, Cameron)
+
+| Piece | Detail |
+|---|---|
+| **Trigger = Dated** | A new Trigger value in the Events tab, with two new columns: **On Date** (DD.MM.YY, the same form the calendar square shows) and **Speaker Title** (optional). Export checks that the date is real and that some opponent carries the Speaker Title in its Title column. |
+| **When it fires** | Forced. It opens by itself the first time the Office is open on or after its date, so a long level cannot make the player miss it. It never opens mid-level, and it plays once per run (saved as `dated_events_done`). If the screen is closed without choosing, it comes back at the next Office visit. |
+| **The speaker** | The first opponent whose Title lists the Speaker Title ("Prime Minister" finds OP10 Aki Rono). The screen shows their picture and "Name, Title" under a "Scheduled for DD.MM.YY" line. |
+| **Content** | The ordinary Event Choices tab: hours, Funds, XP, Party support, awareness, organization effects, and Unlocks Level. |
+| **First example** | EV47 "The Prime Minister's Opening Address", 09.10.18 (Tuesday of week 2), 2 hours, three draft choices. |
+| **One-off** | No yearly repeat; the game has no fixed election date. |
+
+Tests: five new cases in `test_events.gd` and a real-click step in `event_test` (nothing on Monday, the address on Tuesday with the speaker's picture, played once). Real-click tests keep dated events off with the same `COP_NO_RANDOM_EVENTS` switch as random ones. The Events tab has no header notes yet, so the two new columns are described here.

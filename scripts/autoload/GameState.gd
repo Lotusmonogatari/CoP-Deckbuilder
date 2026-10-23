@@ -302,6 +302,8 @@ var xp_earned_total := 0
 ## next time the Office opens (not saved).
 var event_last_at: Dictionary = {}
 var discovered_levels: Array[String] = []
+## Dated events already played (2026-10-23).
+var dated_events_done: Array[String] = []
 var event_roll_due := false
 
 ## A dinner or walking tour in progress (HostedEvent.gd): { hosted_id, org, roster,
@@ -444,7 +446,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "dated_events_done", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -597,6 +599,7 @@ func reset_crisis_triggers() -> void:
 	xp_earned_total = 0
 	event_last_at = {}
 	discovered_levels = []
+	dated_events_done = []
 	event_roll_due = false
 	last_decay_at = 0
 	booster_moved_in_period = {}
@@ -1038,6 +1041,20 @@ func get_event(event_id: String) -> Dictionary:
 	return {}
 
 
+## The dated event due today, as an Event ID; "" when none is. It stays due
+## until the player has made its choice.
+func due_dated_event() -> String:
+	var today := WeekCalendar.today_number(calendar, calendar_config())
+	var due := EventEngine.due_dated(DataDB.events, today, dated_events_done)
+	return str(due[0].get("event_id", "")) if not due.is_empty() else ""
+
+
+## The opponent row an event is about (its Speaker Title), or {}.
+func event_speaker(event_id: String) -> Dictionary:
+	var title: Variant = get_event(event_id).get("speaker_title")
+	return EventEngine.speaker(DataDB.opponents, "" if title == null else str(title))
+
+
 ## The Buyable events, in workbook order.
 func buyable_events() -> Array:
 	var found: Array = []
@@ -1164,6 +1181,8 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	var hours := EventEngine.hours_of(event)
 	spend_hours(hours)
 	event_last_at[event_id] = time_units
+	if str(event.get("trigger", "")) == "Dated" and not dated_events_done.has(event_id):
+		dated_events_done.append(event_id)
 	return {"ok": true, "result_text": str(chosen.get("result_text", "")), "lines": lines,
 		"chips": chips, "revealed": revealed, "hours": hours}
 

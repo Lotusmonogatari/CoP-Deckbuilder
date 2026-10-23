@@ -5388,5 +5388,19 @@
     "english": "What feeds it",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "event.heading_dated",
+    "where": "Event screen, a scheduled event's date",
+    "english": "Scheduled for {date}",
+    "placeholders": "date",
+    "notes": "2026-10-23 dated events."
+  },
+  {
+    "key": "event.speaker_line",
+    "where": "Event screen, who is speaking",
+    "english": "{name}, {title}",
+    "placeholders": "name, title",
+    "notes": "2026-10-23 dated events."
   }
 ]

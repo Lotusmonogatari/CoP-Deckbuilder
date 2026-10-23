@@ -98,6 +98,36 @@ static func eligible_random(events: Array, ctx: Dictionary) -> Array:
 	return found
 
 
+## Dated events (2026-10-23): an event with Trigger "Dated" happens on its On
+## Date. It is due once that day has come (or passed, if the player was busy in a
+## level), and only once: `done` lists the Event IDs already played. The earliest
+## date first. `today` is a WeekCalendar day number.
+static func due_dated(events: Array, today: int, done: Array) -> Array:
+	var found: Array = []
+	for event: Dictionary in events:
+		if str(event.get("trigger", "")) != "Dated" or done.has(str(event.get("event_id", ""))):
+			continue
+		var when := WeekCalendar.parse_date(str(event.get("on_date", "")))
+		if when >= 0 and when <= today:
+			found.append(event)
+	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return WeekCalendar.parse_date(str(a["on_date"])) < WeekCalendar.parse_date(str(b["on_date"])))
+	return found
+
+
+## The character an event is about: the first opponent whose Title (a
+## "; "-separated list) names `speaker_title`. {} when none does or none is asked for.
+static func speaker(opponents: Array, speaker_title: String) -> Dictionary:
+	var wanted := speaker_title.strip_edges().to_lower()
+	if wanted.is_empty():
+		return {}
+	for opponent: Dictionary in opponents:
+		for part: String in str(opponent.get("title", "")).split(";"):
+			if part.strip_edges().to_lower() == wanted:
+				return opponent
+	return {}
+
+
 ## One event by weight; `roll` is a number from 0 up to (not including) 1.
 static func pick_weighted(events: Array, roll: float) -> Dictionary:
 	var total := 0

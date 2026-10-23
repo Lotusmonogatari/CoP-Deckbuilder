@@ -10,6 +10,7 @@ var _discovered_before: Array = []
 var _last_before: Dictionary = {}
 var _awareness_before: Dictionary = {}
 var _dues_before := 0
+var _dated_before: Array = []
 
 
 func before_each() -> void:
@@ -21,6 +22,7 @@ func before_each() -> void:
 	_last_before = GameState.event_last_at.duplicate()
 	_awareness_before = GameState.awareness.duplicate()
 	_dues_before = GameState.dues_balance
+	_dated_before = GameState.dated_events_done.duplicate()
 	GameState.calendar = WeekCalendar.fresh()
 	GameState.event_last_at = {}
 	GameState.discovered_levels = []
@@ -36,6 +38,7 @@ func after_each() -> void:
 	GameState.event_last_at = _last_before
 	GameState.awareness = _awareness_before
 	GameState.dues_balance = _dues_before
+	GameState.dated_events_done.assign(_dated_before)
 
 
 func _ctx(over: Dictionary = {}) -> Dictionary:
@@ -187,3 +190,39 @@ func test_a_dues_change_does_nothing_when_nothing_is_owed() -> void:
 	assert_eq(GameState.dues_balance, 0)
 	for line: String in result["lines"]:
 		assert_false(line.begins_with("Dues owed"))
+
+
+func test_dates_read_as_the_calendar_square_shows_them() -> void:
+	var cfg := WeekCalendar.settings(DataDB.balance)
+	assert_eq(WeekCalendar.parse_date("01.10.18"), WeekCalendar.today_number(WeekCalendar.fresh(), cfg))
+	assert_eq(WeekCalendar.parse_date("09.10.18") - WeekCalendar.parse_date("01.10.18"), 8)
+	assert_eq(WeekCalendar.parse_date("31.02.18"), -1, "not a real date")
+	assert_eq(WeekCalendar.parse_date("nonsense"), -1)
+
+
+func test_a_dated_event_is_due_from_its_day_and_only_once() -> void:
+	var events := [{"event_id": "E1", "trigger": "Dated", "on_date": "09.10.18"},
+		{"event_id": "E2", "trigger": "Random", "on_date": "09.10.18"}]
+	var day := WeekCalendar.parse_date("09.10.18")
+	assert_eq(EventEngine.due_dated(events, day - 1, []).size(), 0, "the day before")
+	assert_eq(EventEngine.due_dated(events, day, []).size(), 1, "the day itself, and never a Random one")
+	assert_eq(EventEngine.due_dated(events, day + 20, []).size(), 1, "still due after being busy in a level")
+	assert_eq(EventEngine.due_dated(events, day, ["E1"]).size(), 0, "already played")
+
+
+func test_the_prime_ministers_address_waits_for_october_9() -> void:
+	GameState.dated_events_done = []
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	assert_eq(GameState.due_dated_event(), "", "Monday 08.10.18")
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 8}
+	assert_eq(GameState.due_dated_event(), "EV47", "Tuesday 09.10.18")
+	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
+	assert_eq(GameState.due_dated_event(), "", "played once")
+	assert_true(GameState.dated_events_done.has("EV47"))
+	assert_true((GameState.to_save()["dated_events_done"] as Array).has("EV47"))
+
+
+func test_the_speaker_is_found_by_the_titles_column() -> void:
+	var speaker := GameState.event_speaker("EV47")
+	assert_eq(str(speaker.get("opp_id", "")), "OP10")
+	assert_true(GameState.event_speaker("EV31").is_empty(), "an event with no speaker")

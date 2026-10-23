@@ -13,7 +13,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV04",
@@ -29,7 +31,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV05",
@@ -45,7 +49,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV06",
@@ -61,7 +67,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV11",
@@ -77,7 +85,9 @@
     "min_district_awareness": null,
     "min_national_awareness": 15,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV12",
@@ -93,7 +103,9 @@
     "min_district_awareness": 10,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV13",
@@ -109,7 +121,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV14",
@@ -125,7 +139,9 @@
     "min_district_awareness": null,
     "min_national_awareness": 20,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV15",
@@ -141,7 +157,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV16",
@@ -157,7 +175,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV17",
@@ -173,7 +193,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV18",
@@ -189,7 +211,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV19",
@@ -205,7 +229,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV20",
@@ -221,7 +247,9 @@
     "min_district_awareness": null,
     "min_national_awareness": 15,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV21",
@@ -237,7 +265,9 @@
     "min_district_awareness": null,
     "min_national_awareness": 20,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV22",
@@ -253,7 +283,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV23",
@@ -269,7 +301,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV24",
@@ -285,7 +319,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV25",
@@ -301,7 +337,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV26",
@@ -317,7 +355,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV27",
@@ -333,7 +373,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV31",
@@ -349,7 +391,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV32",
@@ -365,7 +409,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV33",
@@ -381,7 +427,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV34",
@@ -397,7 +445,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV35",
@@ -413,7 +463,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV36",
@@ -429,7 +481,9 @@
     "min_district_awareness": null,
     "min_national_awareness": 20,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV37",
@@ -445,7 +499,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV38",
@@ -461,7 +517,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV39",
@@ -477,7 +535,9 @@
     "min_district_awareness": 30,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV40",
@@ -493,7 +553,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV41",
@@ -509,7 +571,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV42",
@@ -525,7 +589,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV43",
@@ -541,7 +607,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV44",
@@ -557,7 +625,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": "Yes"
+    "needs_dues_owed": "Yes",
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV45",
@@ -573,7 +643,9 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
   },
   {
     "event_id": "EV46",
@@ -589,6 +661,26 @@
     "min_district_awareness": null,
     "min_national_awareness": null,
     "image": null,
-    "needs_dues_owed": null
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null
+  },
+  {
+    "event_id": "EV47",
+    "title": "The Prime Minister's Opening Address",
+    "flavor": "The National Assembly is full for the opening of the session. The Prime Minister rises to set out the government's agenda, and every party is watching how the others take it.",
+    "trigger": "Dated",
+    "available": "Weekday",
+    "hours": 2,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": null,
+    "cooldown_hours": null,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": null,
+    "needs_dues_owed": null,
+    "on_date": "09.10.18",
+    "speaker_title": "Prime Minister"
   }
 ]

@@ -26,6 +26,7 @@ DataDB.gd runs inside the game, so a problem gets caught here — at your desk,
 with a readable message — rather than as a crash on a phone.
 """
 
+import datetime
 import json
 import re
 import sys
@@ -1159,6 +1160,8 @@ SHEETS = {
             ("Min National Awareness", "min_national_awareness", "int"),
             ("Image", "image", "str"),
             ("Needs Dues Owed", "needs_dues_owed", "str"),
+            ("On Date", "on_date", "str"),
+            ("Speaker Title", "speaker_title", "str"),
         ],
     },
     "Event Choices": {
@@ -2656,8 +2659,23 @@ def validate(data, report):
     for row in data.get("events", []):
         eid = row["event_id"]
         event_ids.add(eid)
-        if row["trigger"] not in ("Buyable", "Random"):
-            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable or Random")
+        if row["trigger"] not in ("Buyable", "Random", "Dated"):
+            report.error("Events", f"{eid} has Trigger '{row['trigger']}' — expected Buyable, Random or Dated")
+        if row["trigger"] == "Dated":
+            ok_date = False
+            try:
+                d, m, y = (int(x) for x in str(row.get("on_date") or "").split("."))
+                datetime.date(2000 + y, m, d)
+                ok_date = True
+            except ValueError:
+                pass
+            if not ok_date:
+                report.error("Events", f"{eid} is Dated but its On Date '{row.get('on_date')}' is not a real DD.MM.YY date")
+        if row.get("speaker_title"):
+            wanted = str(row["speaker_title"]).strip().lower()
+            titles = {t.strip().lower() for o in data.get("opponents", []) for t in str(o.get("title") or "").split(";")}
+            if wanted not in titles:
+                report.error("Events", f"{eid} has Speaker Title '{row['speaker_title']}', which no opponent carries in the Title column")
         if row["available"] not in ("Weekday", "Weekend", "Both"):
             report.error("Events", f"{eid} has Available '{row['available']}' — expected Weekday, Weekend or Both")
         if row["hours"] is None or row["hours"] < 0:

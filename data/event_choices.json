@@ -2372,5 +2372,68 @@
     "rewards": null,
     "unlocks_level": null,
     "dues_delta": null
+  },
+  {
+    "event_id": "EV47",
+    "choice": "A",
+    "choice_text": "Sit with your party in the chamber",
+    "result_text": "You sit shoulder to shoulder with your colleagues. When it is over, reporters ask what you made of it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV47",
+    "choice": "B",
+    "choice_text": "Follow it from your office and take notes",
+    "result_text": "You catch every line and miss the room. The notes will be useful later.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": {
+      "min": 10,
+      "max": 20
+    },
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV47",
+    "choice": "C",
+    "choice_text": "Keep your appointments and read the text tonight",
+    "result_text": "The chamber is full without you. Someone in the party notices.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": -1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
   }
 ]

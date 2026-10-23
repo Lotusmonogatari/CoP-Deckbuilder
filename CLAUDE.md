@@ -674,3 +674,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Decisions batch: tiered backings, whip discount, tier 0 shown, dues events (2026-10-23, Cameron)
 - District activities: four single-stage outings (2026-10-23, Cameron)
 - Election Strength gets its own page in Reputation and Results (2026-10-23, Cameron)
+- Dated events: a scripted event on a calendar date (2026-10-23, Cameron)

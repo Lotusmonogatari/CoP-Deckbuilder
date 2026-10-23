@@ -280,7 +280,8 @@ func _build() -> void:
 	_refresh_calendar()
 	_show_trigger_alerts_if_any()
 	_show_resume_choice_if_in_level()
-	_show_random_event_if_due()
+	if not _show_dated_event_if_due():
+		_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
 
@@ -502,6 +503,19 @@ func _picture_row(art_id: String) -> Control:
 	return art
 
 
+## A dated event whose day has come opens at once (2026-10-23), the first time
+## the Office is open on or after its date. Real-click tests switch it off with
+## the same switch as the random events. True when one was shown.
+func _show_dated_event_if_due() -> bool:
+	if GameState.is_in_level() or OS.has_environment("COP_NO_RANDOM_EVENTS"):
+		return false
+	var event_id := GameState.due_dated_event()
+	if event_id.is_empty():
+		return false
+	_present_event(event_id, false)
+	return true
+
+
 ## A random event may arrive now (never while a choice about the week is pending).
 func _show_random_event_if_due() -> void:
 	if GameState.is_in_level() or GameState.work_week_is_full():
@@ -519,7 +533,19 @@ func _present_event(event_id: String, arrived: bool) -> void:
 	var rows: Array[Control] = []
 	if event.get("image") != null and not str(event["image"]).is_empty():
 		rows.append(_picture_row(str(event["image"])))
-	if arrived:
+	if str(event.get("trigger", "")) == "Dated":
+		rows.append(UiKit.line(Text.say("event.heading_dated", {"date": str(event.get("on_date", ""))}), "SmallLabel"))
+		var speaker := GameState.event_speaker(event_id)
+		if not speaker.is_empty():
+			var face := PlaceholderArt.new()
+			face.name = "Speaker_" + str(speaker.get("opp_id", ""))
+			face.kind = PlaceholderArt.Kind.CHARACTER
+			face.art_id = str(speaker.get("opp_id", ""))
+			face.custom_minimum_size = Vector2(0, 420)
+			rows.append(face)
+			rows.append(UiKit.line(Text.say("event.speaker_line", {
+				"name": str(speaker.get("name", "")), "title": OpponentDisplay.title_for(speaker)}), "SmallLabel"))
+	elif arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
 	rows.append(UiKit.line(str(event.get("flavor", ""))))
 	for choice: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):

@@ -19,6 +19,7 @@ func _run() -> void:
 	await _walking_tour()
 	await _street_question()
 	await _gathering_picture()
+	await _dated_address()
 	print("")
 	if _failures.is_empty():
 		print("EVENT TEST: PASS")
@@ -136,3 +137,32 @@ func _save_shot(name: String) -> void:
 func _expect(ok: bool, what: String) -> void:
 	if not ok:
 		_failures.append(what)
+
+
+## The Prime Minister's opening address (09.10.18): nothing on Monday, then on
+## Tuesday the Office opens it by itself, with the speaker's picture and a
+## "Scheduled for" line, and a choice plays it once.
+func _dated_address() -> void:
+	OS.unset_environment("COP_NO_RANDOM_EVENTS")
+	GameState.dated_events_done = []
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
+	await _open_office()
+	var panel := _screen().get_node("EventPanel") as Overlay
+	_expect(not panel.visible, "nothing opens on Monday 08.10.18")
+	GameState.calendar = {"week": 1, "phase": "work", "hours": 8}
+	await _open_office()
+	panel = _screen().get_node("EventPanel") as Overlay
+	_expect(panel.visible, "the address opens on Tuesday 09.10.18")
+	_expect(panel.find_child("Speaker_OP10", true, false) != null, "the Prime Minister is shown")
+	_expect(_label_text(panel).contains("Scheduled for 09.10.18"), "the date is named")
+	DirAccess.make_dir_recursive_absolute("user://shots")
+	get_viewport().get_texture().get_image().save_png("user://shots/dated_event.png")
+	var choice := panel.find_child("EventChoice_A", true, false) as Button
+	_expect(choice != null, "the address offers its choices")
+	if choice != null:
+		choice.pressed.emit()
+	await get_tree().process_frame
+	_expect(GameState.dated_events_done.has("EV47"), "choosing plays it")
+	await _open_office()
+	_expect(not (_screen().get_node("EventPanel") as Overlay).visible, "it does not come back")
+	OS.set_environment("COP_NO_RANDOM_EVENTS", "1")
