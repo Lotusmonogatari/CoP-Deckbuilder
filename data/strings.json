@@ -5360,5 +5360,19 @@
     "english": "A hosted gathering",
     "placeholders": null,
     "notes": "2026-10-23 hosted events."
+  },
+  {
+    "key": "floor_vote.whip_discount",
+    "where": "Floor Vote, whip the vote",
+    "english": "{orgs} are in your corner: every extra vote costs {amount} less.",
+    "placeholders": "orgs, amount",
+    "notes": "2026-10-23 whip discount."
+  },
+  {
+    "key": "event.dues_line",
+    "where": "Event result, dues written down",
+    "english": "Dues owed {change}",
+    "placeholders": "change",
+    "notes": "2026-10-23 scheduled dues events."
   }
 ]

@@ -318,3 +318,18 @@ func test_an_affordable_firing_is_allowed() -> void:
 func test_firing_says_how_many_yen_short() -> void:
 	var candidate := _candidate({"firing_cost_yen": 5000})
 	assert_eq(Ledger.staff_fire_refusal(candidate, 1000, _words()), "4,000円 short.")
+
+
+func test_the_modifiers_own_required_standing_wins() -> void:
+	var settings := {"required_standing": 60, "required_standing_by_modifier": {"M01": 80}}
+	assert_eq(Ledger.standing_needed(_modifier({"required_standing": 45}), settings), 45)
+	assert_eq(Ledger.standing_needed(_modifier({"required_standing": null}), settings), 80)
+
+
+func test_real_backings_are_tiered_by_the_workbook() -> void:
+	var needed := {}
+	for modifier: Dictionary in DataDB.modifiers:
+		if modifier.get("required_standing") != null:
+			needed[str(modifier["mod_id"])] = int(modifier["required_standing"])
+	assert_eq(int(needed.get("M08", 0)), 50)
+	assert_eq(int(needed.get("M22", 0)), 45)

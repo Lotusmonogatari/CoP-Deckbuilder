@@ -79,8 +79,8 @@ func _walking_tour() -> void:
 
 func _street_question() -> void:
 	var screen := _screen()
-	_expect(not _levels_text(screen).contains("Shinkansen"), "the train bill is hidden before the event")
-	screen._present_event("EV12", true)
+	_expect(not _levels_text(screen).contains("Coastal Defense"), "the coastal bill is hidden before the event")
+	screen._present_event("EV17", true)
 	await get_tree().process_frame
 	var panel := screen.get_node("EventPanel") as Overlay
 	var choice := panel.find_child("EventChoice_A", true, false) as Button
@@ -92,8 +92,8 @@ func _street_question() -> void:
 	if done != null:
 		done.pressed.emit()
 	await get_tree().process_frame
-	_expect(GameState.discovered_levels.has("LV34"), "the event revealed the train bill level")
-	_expect(_levels_text(screen).contains("Shinkansen"), "and it now shows in the levels list")
+	_expect(GameState.discovered_levels.has("LV35"), "the event revealed the coastal bill level")
+	_expect(_levels_text(screen).contains("Coastal Defense"), "and it now shows in the levels list")
 
 
 ## The dinner and tour popup shows its own picture (a labelled placeholder until

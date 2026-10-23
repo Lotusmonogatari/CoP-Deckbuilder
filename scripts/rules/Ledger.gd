@@ -119,6 +119,10 @@ static func is_for_sale(modifier: Dictionary) -> bool:
 ## have given it reason to, which is what the press conference has been
 ## earning all along and had nowhere to spend.
 static func standing_needed(modifier: Dictionary, settings: Dictionary) -> int:
+	# The Modifiers tab's own Required Standing column wins (2026-10-23: strong
+	# payouts stay at 60, middling start and hand bonuses ask 50, narrow ones 45).
+	if modifier.get("required_standing") != null:
+		return int(modifier["required_standing"])
 	var per_modifier: Dictionary = settings.get("required_standing_by_modifier", {})
 	var mod_id := str(modifier.get("mod_id", ""))
 	if per_modifier.has(mod_id):

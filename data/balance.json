@@ -153,5 +153,8 @@
   "hosted_awareness_min": -3,
   "hosted_good_evening_net": 6,
   "hosted_bad_evening_net": -4,
+  "whip_discount_amount": 1,
+  "whip_discount_standing": 65,
+  "whip_discount_floor": 5,
   "xp_tiers": {}
 }

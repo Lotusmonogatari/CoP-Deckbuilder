@@ -273,11 +273,22 @@ func _show_influence_and_preview() -> void:
 func _whip_numbers(choice: String) -> Dictionary:
 	var unit := VoteWhip.unit_cost(engine.own_disposition(), choice,
 		int(DataDB.balance.get("whip_base_cost", 10)),
-		int(DataDB.balance.get("whip_against_multiplier", 3)))
+		int(DataDB.balance.get("whip_against_party_multiplier", 3)))
+	unit = VoteWhip.discounted_unit(unit, _discount_orgs().size(),
+		int(DataDB.balance.get("whip_discount_amount", 1)),
+		int(DataDB.balance.get("whip_discount_floor", 5)))
 	var allowed := VoteWhip.max_whips(unit, int(GameState.meta.get("Party support", 0)),
 		int(DataDB.balance.get("whip_party_support_floor", 30)), engine.whip_capacity(choice),
 		int(DataDB.balance.get("whip_max_per_vote", 3)))
 	return {"unit": unit, "allowed": allowed}
+
+
+## The organizations whose goodwill discounts the whip (see VoteWhip).
+func _discount_orgs() -> Array[String]:
+	return VoteWhip.discount_orgs(DataDB.party_stakeholders, DataDB.vote_influence_triggers,
+		GameState.booster_standing, GameState.own_party_id(),
+		int(DataDB.balance.get("whip_discount_standing", 65)),
+		int(DataDB.booster_standing.get("start", 30)))
 
 
 ## "Whip the vote": fewer / more extra votes from your own party, with the
@@ -299,10 +310,21 @@ func _build_whip_row(column: VBoxContainer) -> void:
 	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	info.theme_type_variation = &"SmallLabel"
 	info.text = Text.say("floor_vote.whip_cost", {
-		"base": base, "against": base * int(DataDB.balance.get("whip_against_multiplier", 3)),
+		"base": base, "against": base * int(DataDB.balance.get("whip_against_party_multiplier", 3)),
 		"have": int(GameState.meta.get("Party support", 0)),
 		"floor": int(DataDB.balance.get("whip_party_support_floor", 30))})
 	box.add_child(info)
+	var friends := _discount_orgs()
+	if not friends.is_empty():
+		var names: Array[String] = []
+		for booster_id: String in friends:
+			names.append(str(DataDB.get_booster(booster_id).get("name_en", booster_id)))
+		var perk := Label.new()
+		perk.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		perk.theme_type_variation = &"SmallLabel"
+		perk.text = Text.say("floor_vote.whip_discount", {
+			"orgs": ", ".join(names), "amount": int(DataDB.balance.get("whip_discount_amount", 1))})
+		box.add_child(perk)
 	if most <= 0:
 		var none := Label.new()
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

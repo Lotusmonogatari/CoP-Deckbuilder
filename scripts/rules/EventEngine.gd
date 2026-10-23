@@ -7,7 +7,7 @@ extends RefCounted
 ## through `ctx`:
 ##   { weekend: bool, week_full: bool, hours_left: int, funds: int, xp: int,
 ##     now: int (the clock), last_at: { event_id: clock at last use },
-##     default_cooldown: int, district: int, national: int }
+##     default_cooldown: int, district: int, national: int, dues_owed: int }
 
 const REFUSE_WEEK_OVER := "week_over"
 const REFUSE_WEEKDAY := "weekday"
@@ -85,6 +85,8 @@ static func eligible_random(events: Array, ctx: Dictionary) -> Array:
 		if int(event.get("weight", 0) if event.get("weight") != null else 0) <= 0:
 			continue
 		if not available_now(event, weekend) or not _cooldown_over(event, ctx):
+			continue
+		if str(event.get("needs_dues_owed", "")) == "Yes" and int(ctx.get("dues_owed", 0)) <= 0:
 			continue
 		if event.get("min_district_awareness") != null \
 				and int(ctx.get("district", 0)) < int(event["min_district_awareness"]):
