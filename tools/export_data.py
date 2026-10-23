@@ -1340,6 +1340,7 @@ SHEETS = {
             ("One-Time (Yes/No)", "one_time", "str"),
             ("Weekend OK (Yes/No)", "weekend_ok", "str"),
             ("Needs Discovery (Yes/No)", "needs_discovery", "str"),
+            ("Host Org (BOxx)", "host_org", "str"),
             # 2026-10-18: Town Hall or Steering Committee marks a Special
             # Level (GameState special levels); blank for every other level.
             ("Special Trigger", "special_trigger", "str"),
@@ -1424,6 +1425,8 @@ SHEETS = {
             # 2026-10-18: game-clock units the effect lasts from use (blank =
             # the Duration column decides).
             ("Duration Units", "duration_units", "int"),
+            # 2026-10-23: hours an item takes to use in the Office (blank = none).
+            ("Hours", "hours", "int"),
             ("Uses Per Turn", "uses_per_turn", "int"),
             ("Stack Cap", "stack_cap", "int"),
             ("Purchase Limit", "purchase_limit", "int"),
@@ -2617,6 +2620,27 @@ def validate(data, report):
     for eid in event_ids:
         if not any(k[0] == eid for k in letters_seen):
             report.error("Events", f"{eid} has no choices in the Event Choices tab")
+
+    # --- gated levels (2026-10-23) -------------------------------------------
+    # A level marked Needs Discovery stays hidden until an event choice reveals
+    # it (Unlocks Level) or hosting its Host Org (a National organization via
+    # the dinner, a Constituency one via the walking tour) does. One with
+    # neither could never be played, so it is an error.
+    revealed_by_event = {row["unlocks_level"] for row in data.get("event_choices", []) if row.get("unlocks_level")}
+    tier_of = {b["booster_id"]: b.get("tier") for b in data["boosters"]}
+    for lv in data["levels"]:
+        lid = lv["level_id"]
+        gated = (lv.get("needs_discovery") or "").strip().lower() == "yes"
+        org = (lv.get("host_org") or "").strip()
+        if org:
+            if org not in tier_of:
+                report.error("levels", f"{lid} has Host Org '{org}', which is not a booster_id")
+            elif tier_of[org] not in ("National", "Constituency"):
+                report.error("levels", f"{lid} has Host Org '{org}', but only National (dinner) and Constituency (walking tour) organizations can be hosted")
+            if not gated:
+                report.warn("levels", f"{lid} has a Host Org but is not marked Needs Discovery, so hosting reveals nothing")
+        if gated and not org and lid not in revealed_by_event:
+            report.error("levels", f"{lid} needs discovery but no event choice unlocks it and it has no Host Org")
 
     # --- vote_influence_cues -------------------------------------------------
     # The optional cutscene line for a bill the influence swing flipped —

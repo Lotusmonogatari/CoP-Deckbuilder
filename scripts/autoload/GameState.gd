@@ -2484,7 +2484,7 @@ func buy_random_level(item_id: String) -> Dictionary:
 	var tier := int(item.get("level_tier", 0))
 	var choices: Array[String] = []
 	for level: Dictionary in DataDB.levels:
-		if int(level.get("tier", -1)) == tier \
+		if int(level.get("tier", -1)) == tier and is_level_discovered(level) \
 				and not Ledger.is_level_unlocked(level, levels_unlocked, staff_hired):
 			choices.append(str(level.get("level_id", "")))
 	if choices.is_empty():
@@ -2573,6 +2573,12 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 	if Items.is_player_choice(item) and chosen_target.is_empty():
 		return {"ok": false, "needs_choice": true}
 
+	# Some Office items take time (the dinner and the walking tour: Shop "Hours").
+	var hours := int(item.get("hours", 0)) if item.get("hours") != null else 0
+	var hours_refusal := _hours_refusal(hours)
+	if not hours_refusal.is_empty():
+		return {"ok": false, "message": hours_refusal}
+
 	var name := str(item.get("name", item_id))
 	if _is_free_draw(item):
 		# A Training Session Coupon: a free Rhetoric Training draw. Refused
@@ -2595,10 +2601,13 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 	var applied := _apply_reward_entries(split["meta"], chosen_target, _staff_bonus_total(item))
 	_cause = cause_before
 	var outcome := _describe_grant_outcomes(applied)
+	# A gathering takes its hours, and hosting an organization can bring up a
+	# bill that was hidden until now (a level's Host Org).
+	var gathering := _after_gathering(hours, chosen_target)
 	if (split["stage"] as Array).is_empty():
 		return {"ok": true, "message": (Text.say("item.used_with_outcome",
 			{"name": name, "outcome": outcome}) if not outcome.is_empty()
-			else Text.say("item.used", {"name": name})),
+			else Text.say("item.used", {"name": name})) + gathering,
 			"plain": Text.say("item.used", {"name": name}), "effects": _effect_chips(applied)}
 
 	var level := Items.duration(item) == Items.DURATION_LEVEL
@@ -2620,6 +2629,45 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 			"effects": _effect_chips(applied)}
 	return {"ok": true, "message": Text.say(
 		"item.queued_level" if level else "item.queued", {"name": name})}
+
+
+## Why an item that takes `hours` cannot be used now, as a sentence; "" when it can.
+func _hours_refusal(hours: int) -> String:
+	if hours <= 0:
+		return ""
+	if work_week_is_full():
+		return Text.say("item.refuse_week_over")
+	if in_weekend() and hours > work_hours_left():
+		return Text.say("item.refuse_hours")
+	return ""
+
+
+## What happens after a gathering: its hours pass, and hosting the organization
+## `chosen_target` may reveal a level. Returns the sentences to add to the
+## item's message ("" when there is nothing to add).
+func _after_gathering(hours: int, chosen_target: String) -> String:
+	if hours <= 0:
+		return ""
+	spend_hours(hours)
+	var text := " " + Text.say("item.hosted_hours", {"hours": hours})
+	var revealed := reveal_by_hosting(chosen_target)
+	if not revealed.is_empty():
+		text += " " + Text.say("item.hosted_reveal", {"name": revealed})
+	return text
+
+
+## Hosting `org_id` reveals the first hidden level naming it as its Host Org.
+## Returns that level's name, or "" when there is none left.
+func reveal_by_hosting(org_id: String) -> String:
+	if org_id.is_empty():
+		return ""
+	for level: Dictionary in DataDB.levels:
+		if str(level.get("host_org", "")) != org_id or is_level_discovered(level):
+			continue
+		var level_id := str(level.get("level_id", ""))
+		discovered_levels.append(level_id)
+		return str(level.get("description", level_id))
+	return ""
 
 
 ## Uses one item during a stage. Its stage effects land on the battle now

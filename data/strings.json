@@ -5206,5 +5206,33 @@
     "english": "Arrange it",
     "placeholders": null,
     "notes": "2026-10-23 events."
+  },
+  {
+    "key": "item.hosted_reveal",
+    "where": "Item result, a bill raised at a gathering you hosted",
+    "english": "Over the evening a bill comes up: {name}. It is now open to you.",
+    "placeholders": "name",
+    "notes": "2026-10-23 hosting."
+  },
+  {
+    "key": "item.hosted_hours",
+    "where": "Item result, hours a gathering took",
+    "english": "It took {hours} hours.",
+    "placeholders": "hours",
+    "notes": "2026-10-23 hosting."
+  },
+  {
+    "key": "item.refuse_week_over",
+    "where": "Item refused, the work week is over",
+    "english": "The work week is over.",
+    "placeholders": null,
+    "notes": "2026-10-23 hosting."
+  },
+  {
+    "key": "item.refuse_hours",
+    "where": "Item refused, not enough weekend hours left",
+    "english": "Not enough hours left for that.",
+    "placeholders": null,
+    "notes": "2026-10-23 hosting."
   }
 ]

@@ -43,7 +43,7 @@ func _ctx(over: Dictionary = {}) -> Dictionary:
 
 
 func test_the_tabs_ship_events_with_choices() -> void:
-	assert_eq(DataDB.events.size(), 12)
+	assert_gte(DataDB.events.size(), 12)
 	for event: Dictionary in DataDB.events:
 		var found := EventEngine.choices_for(DataDB.event_choices, str(event["event_id"]))
 		assert_gt(found.size(), 1, "%s has choices" % event["event_id"])

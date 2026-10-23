@@ -670,3 +670,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - The week calendar: hours, a work week, an optional weekend (2026-10-23, Cameron)
 - Party dues, name awareness and election strength (2026-10-23, Cameron)
 - Events: arranged or arriving, with fixed choices and variable rewards (2026-10-23, Cameron)
+- Gated bill levels, hosting that reveals bills, and a content build-out (2026-10-23, Cameron)
