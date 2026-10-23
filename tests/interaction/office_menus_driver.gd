@@ -239,8 +239,8 @@ func _check_backing_prices(office: Node) -> void:
 	panel.hide()
 
 
-## The Election Strength page (2026-10-23): three bars (strength and the two
-## awareness meters) in the player's party colour, and no bar left on the Office.
+## The Election Strength page (2026-10-23): nine bars (a gold strength bar, then the eight
+## inputs) in the player's party colour, and no bar left on the Office.
 func _check_election_page(office: Node) -> void:
 	if office.find_child("ElectionBar", true, false) != null:
 		_failures.append("the Office still carries an election bar")
@@ -250,16 +250,17 @@ func _check_election_page(office: Node) -> void:
 	await get_tree().create_timer(0.3).timeout
 	var panel := office.find_child("ElectionPanel", true, false) as Control
 	var bars: Array[Node] = panel.find_children("*", "ProgressBar", true, false)
-	if bars.size() != 3:
-		_failures.append("the Election Strength page has %d bars, not 3" % bars.size())
+	if bars.size() != 9:
+		_failures.append("the Election Strength page has %d bars, not 9" % bars.size())
 	var party := DataDB.get_party(str(DataDB.player.get("party", "")))
 	var want := PartyDisplay.color_for(party)
-	for bar: Node in bars:
-		var fill := (bar as ProgressBar).get_theme_stylebox("fill") as StyleBoxFlat
-		if fill == null or not fill.bg_color.is_equal_approx(want):
-			_failures.append("an election bar is not in the party colour")
+	for index in bars.size():
+		var fill := (bars[index] as ProgressBar).get_theme_stylebox("fill") as StyleBoxFlat
+		var expected: Color = CueBanner.EDGE_COLOUR if index == 0 else want
+		if fill == null or not fill.bg_color.is_equal_approx(expected):
+			_failures.append("election bar %d has the wrong colour" % index)
 	DirAccess.make_dir_recursive_absolute("user://shots")
 	get_viewport().get_texture().get_image().save_png("user://shots/election_page.png")
-	print("  the Election Strength page shows three party-coloured bars")
+	print("  the Election Strength page shows a gold strength bar and eight party-coloured bars")
 	await _click_back(panel as Overlay)
 	await _click_back(office.find_child("ReputationMenuPanel", true, false) as Overlay)

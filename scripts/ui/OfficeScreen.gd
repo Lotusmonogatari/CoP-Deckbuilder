@@ -1233,45 +1233,33 @@ func _colour_bar(value: float, fill: Color) -> ProgressBar:
 	return bar
 
 
-## Election strength and the two awareness meters, each a bar in the colour of
-## the player's own party, then what the strength is made of. The input lines
-## say "points from ..." so they are never mistaken for the meters themselves.
+## Election strength in the standard gold, then every value that feeds it as a
+## bar in the colour of the player's own party: the two awareness meters (0-100)
+## and each other input as its share of its own maximum. Only names and the two
+## real 0-100 values are written; no points.
 func _show_election() -> void:
 	var colour := PartyDisplay.color_for(DataDB.get_party(str(DataDB.player.get("party", ""))))
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("election.bar_line", {"value": roundi(GameState.election_strength)})))
-	rows.append(_colour_bar(GameState.election_strength, colour))
-	rows.append(UiKit.line(Text.say("election.potential_line",
-		{"value": roundi(GameState.election_potential())}), "SmallLabel"))
+	rows.append(_colour_bar(GameState.election_strength, CueBanner.EDGE_COLOUR))
 
-	rows.append(UiKit.heading(Text.say("election.inputs_heading")))
-	var part_names := {
+	var names := {
+		"district": Text.say("awareness.district"), "national": Text.say("awareness.national"),
 		"constituency": Text.say("election.c_constituency"), "organizations": Text.say("election.c_organizations"),
 		"war_chest": Text.say("election.c_war_chest"), "experience": Text.say("election.c_experience"),
 		"record": Text.say("election.c_record"), "party": Text.say("election.c_party")}
-	var meter_names := {"district": Text.say("awareness.district"), "national": Text.say("awareness.national")}
-	var parts := GameState.election_parts()
-	# The two awareness meters come first, each a bar with what it adds, so
-	# neither reads as the only one that counts; the other six inputs follow.
-	for meter: String in ["district", "national"]:
-		var value := int(GameState.awareness.get(meter, 0))
-		var points := {}
-		for part: Dictionary in parts:
-			if str(part["id"]) == meter:
-				points = part
-		var meter_line := Text.say("election.meter_line", {"name": meter_names[meter], "value": value,
-			"points": "%.1f" % float(points.get("points", 0.0)), "max": roundi(float(points.get("max", 0.0)))})
-		var meter_change := int(GameState.last_awareness_change.get(meter, 0))
-		if meter_change != 0:
-			meter_line += "  (%+d)" % meter_change
-		rows.append(UiKit.line(meter_line))
-		rows.append(_colour_bar(value, colour))
-	for part: Dictionary in parts:
-		if not part_names.has(str(part["id"])):
-			continue
-		rows.append(UiKit.line(Text.say("election.component_line", {
-			"name": part_names[str(part["id"])], "points": "%.1f" % float(part["points"]),
-			"max": roundi(float(part["max"]))}), "SmallLabel"))
+	for part: Dictionary in GameState.election_parts():
+		var id := str(part["id"])
+		var share := 100.0 * float(part["points"]) / maxf(1.0, float(part["max"]))
+		var caption := str(names[id])
+		if id == "district" or id == "national":
+			caption = Text.say("election.meter_line", {"name": caption, "value": int(GameState.awareness.get(id, 0))})
+			var meter_change := int(GameState.last_awareness_change.get(id, 0))
+			if meter_change != 0:
+				caption += "  (%+d)" % meter_change
+			share = float(GameState.awareness.get(id, 0))
+		rows.append(UiKit.line(caption))
+		rows.append(_colour_bar(share, colour))
 	_election_panel.open(Text.say("election.title"), rows)
 
 

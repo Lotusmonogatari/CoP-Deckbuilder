@@ -5007,14 +5007,14 @@
   {
     "key": "election.c_district",
     "where": "Election Strength page, input name",
-    "english": "Points from district awareness",
+    "english": "District Awareness",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
   {
     "key": "election.c_national",
     "where": "Election Strength page, input name",
-    "english": "Points from national awareness",
+    "english": "National Awareness",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
@@ -5378,8 +5378,8 @@
   {
     "key": "election.meter_line",
     "where": "Election Strength page, an awareness meter",
-    "english": "{name}: {value} / 100. Adds {points} of {max} points.",
-    "placeholders": "name, value, points, max",
+    "english": "{name}: {value} / 100",
+    "placeholders": "name, value",
     "notes": "2026-10-23 election strength."
   },
   {

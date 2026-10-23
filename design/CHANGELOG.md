@@ -2480,3 +2480,5 @@ Built from the approved design (`design/proposals/DISTRICT_ACTIVITIES_2026-10-23
 The Office-menus click test now opens the new page and checks it has three bars in the party colour.
 
 Follow-up (2026-10-23): the Election Strength page was confusing. The bar read 0 while a line said 10 (the target it grows toward), and each awareness meter appeared twice. Now: the line says "heading toward 10 of 100"; the heading "What feeds it" holds District Awareness and National Awareness once each, as bars that say what they add ("Adds 3.0 of 15 points"), followed by the other six inputs.
+
+Follow-up (2026-10-23, Cameron): the Election Strength page is now nine bars and almost no text. Election strength is a bar in the standard gold (the cue-banner gold); District and National Awareness and the six other inputs are each a bar in the player's party colour (the six as their share of their own maximum). No points, no "adds", no "heading toward" line and no "What feeds it" heading.
