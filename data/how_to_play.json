@@ -306,5 +306,60 @@
     "screenshot": null,
     "caption": null,
     "video": null
+  },
+  {
+    "entry_id": "HT29",
+    "order": 161.0,
+    "group": "Between Levels",
+    "heading_en": "The week and the calendar",
+    "heading_jp": null,
+    "body_en": "Time passes in hours. A work week is five 8-hour days; the weekend is an optional two 4-hour days, and only short levels and events fit in it. On Friday you may end the work week early, and \"Pay Party Dues and Go Home\" ends the week.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT30",
+    "order": 162.0,
+    "group": "Between Levels",
+    "heading_en": "Party dues",
+    "heading_jp": null,
+    "body_en": "At the end of every week you pay the party a base amount plus a share of what you earned from Monday to Friday. The base rises as your Party support does. Dues you cannot pay roll over, cost you Party support and standing, and the party withdraws its backings.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT31",
+    "order": 163.0,
+    "group": "Between Levels",
+    "heading_en": "Name awareness",
+    "heading_jp": null,
+    "body_en": "District and National Awareness measure how many people know your name. Winning rooms and carrying bills raises them, and gaffes left on your counter at the end of a room lower them. High awareness brings rewards and low awareness costs you each week.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT32",
+    "order": 164.0,
+    "group": "Between Levels",
+    "heading_en": "Events",
+    "heading_jp": null,
+    "body_en": "Arrange an event from the Events button, or one may turn up on its own after a level or a week. Each has a few choices with different payoffs, and takes hours. Some events can reveal a new bill level.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
+  },
+  {
+    "entry_id": "HT33",
+    "order": 165.0,
+    "group": "Between Levels",
+    "heading_en": "Election strength",
+    "heading_jp": null,
+    "body_en": "Election strength shows how ready your campaign is. It grows slowly toward what your awareness, support, organizations, funds, experience, laws and party standing add up to. Nothing is decided by it yet.",
+    "screenshot": null,
+    "caption": null,
+    "video": null
   }
 ]

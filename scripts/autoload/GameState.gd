@@ -297,6 +297,13 @@ var awareness_streaks: Dictionary = {}
 var election_strength := 0.0
 var xp_earned_total := 0
 
+## Events (EventEngine.gd, 2026-10-23): the clock when each event last happened,
+## the levels an event has revealed, and whether a random event may arrive the
+## next time the Office opens (not saved).
+var event_last_at: Dictionary = {}
+var discovered_levels: Array[String] = []
+var event_roll_due := false
+
 ## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
 ## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
 ## until that special level has been played, win or lose.
@@ -433,7 +440,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "event_last_at", "discovered_levels", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -584,6 +591,9 @@ func reset_crisis_triggers() -> void:
 	reset_awareness()
 	election_strength = 0.0
 	xp_earned_total = 0
+	event_last_at = {}
+	discovered_levels = []
+	event_roll_due = false
 	last_decay_at = 0
 	booster_moved_in_period = {}
 	timed_bonuses = []
@@ -998,6 +1008,163 @@ func _update_election_strength() -> void:
 
 
 # ---------------------------------------------------------------------------
+# Events (2026-10-23, Cameron): bought or arriving on their own.
+
+## Time spent outside a stage (an event): hours off the calendar and onto the clock.
+func spend_hours(hours: int) -> void:
+	if hours <= 0:
+		return
+	calendar = WeekCalendar.advance(calendar, hours, calendar_config())
+	_advance_clock(hours)
+
+
+func event_context() -> Dictionary:
+	var cfg := calendar_config()
+	return {"weekend": in_weekend(), "week_full": work_week_is_full(),
+		"hours_left": WeekCalendar.hours_left(calendar, cfg),
+		"funds": int(meta.get("Funds", 0)), "xp": xp, "now": time_units, "last_at": event_last_at,
+		"default_cooldown": int(DataDB.balance.get("event_default_cooldown_hours", 24)),
+		"district": int(awareness.get("district", 0)), "national": int(awareness.get("national", 0))}
+
+
+func get_event(event_id: String) -> Dictionary:
+	for event: Dictionary in DataDB.events:
+		if str(event.get("event_id", "")) == event_id:
+			return event
+	return {}
+
+
+## The Buyable events, in workbook order.
+func buyable_events() -> Array:
+	var found: Array = []
+	for event: Dictionary in DataDB.events:
+		if str(event.get("trigger", "")) == "Buyable":
+			found.append(event)
+	return found
+
+
+## Why this event cannot be arranged right now, as a sentence; "" when it can.
+func event_refusal(event: Dictionary) -> String:
+	match EventEngine.refusal(event, event_context()):
+		EventEngine.REFUSE_WEEK_OVER: return Text.say("event.refuse_week_over")
+		EventEngine.REFUSE_WEEKDAY: return Text.say("event.refuse_weekday")
+		EventEngine.REFUSE_WEEKEND: return Text.say("event.refuse_weekend")
+		EventEngine.REFUSE_HOURS: return Text.say("event.refuse_hours")
+		EventEngine.REFUSE_COOLDOWN: return Text.say("event.refuse_cooldown")
+		EventEngine.REFUSE_FUNDS: return Text.say("event.refuse_funds")
+		EventEngine.REFUSE_XP: return Text.say("event.refuse_xp")
+	return ""
+
+
+## Arranges a bought event: its price is paid now. False (nothing paid) when it
+## cannot be arranged.
+func start_event(event_id: String) -> bool:
+	var event := get_event(event_id)
+	if event.is_empty() or not event_refusal(event).is_empty():
+		return false
+	var cost_funds := int(event.get("cost_funds", 0)) if event.get("cost_funds") != null else 0
+	var cost_xp := int(event.get("cost_xp", 0)) if event.get("cost_xp") != null else 0
+	_links_suspended = true
+	_under_cause(Text.say("record.cause_event"), func() -> void:
+		if cost_funds > 0:
+			_apply_meta_reward("Funds", -cost_funds))
+	_links_suspended = false
+	if cost_xp > 0:
+		_move_xp(-cost_xp)
+	return true
+
+
+## At the Office after a level or a week end: maybe an event arrives. Returns
+## its id, or "" for a quiet day. Consumes the roll either way.
+func roll_random_event() -> String:
+	if not event_roll_due:
+		return ""
+	event_roll_due = false
+	# Real-click tests turn random events off (tools/verify.sh) so a chance
+	# pop-up never lands on top of the button they are about to press.
+	if OS.has_environment("COP_NO_RANDOM_EVENTS"):
+		return ""
+	if randf() * 100.0 >= float(DataDB.balance.get("event_random_chance_percent", 0)):
+		return ""
+	var pool := EventEngine.eligible_random(DataDB.events, event_context())
+	return str(EventEngine.pick_weighted(pool, randf()).get("event_id", ""))
+
+
+## The player's choice: pays any choice price, rolls and applies every reward,
+## reveals a level, spends the event's hours and starts its cooldown.
+## Returns { ok, result_text, lines: [String], chips: [..], revealed: level name }.
+func apply_event_choice(event_id: String, letter: String) -> Dictionary:
+	var event := get_event(event_id)
+	var chosen := {}
+	for row: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
+		if str(row.get("choice", "")) == letter:
+			chosen = row
+	if event.is_empty() or chosen.is_empty():
+		return {"ok": false}
+	var price := int(chosen.get("funds_cost", 0)) if chosen.get("funds_cost") != null else 0
+	if price > 0 and int(meta.get("Funds", 0)) < price:
+		return {"ok": false}
+
+	var lines: Array[String] = []
+	var cause := Text.say("record.cause_event")
+	if price > 0:
+		_links_suspended = true
+		_under_cause(cause, func() -> void: _apply_meta_reward("Funds", -price))
+		_links_suspended = false
+	var meta_columns := {"funds_delta": "Funds", "constituency_delta": "Constituency support",
+		"reputation_delta": "Reputation", "party_support_delta": "Party support"}
+	for column: String in meta_columns.keys():
+		var rolled := _roll_range(chosen.get(column))
+		if rolled == 0:
+			continue
+		var variable: String = meta_columns[column]
+		_under_cause(cause, func() -> void: _apply_meta_reward(variable, rolled))
+		lines.append(Text.say("event.effect_line", {"name": variable,
+			"change": Phrase.meta_amount(variable, rolled, true)}))
+	var xp_rolled := _roll_range(chosen.get("xp_delta"))
+	if xp_rolled != 0:
+		_move_xp(xp_rolled)
+		lines.append(Text.say("event.effect_line", {"name": "XP", "change": "%+d" % xp_rolled}))
+	for meter: String in ["district", "national"]:
+		var meter_rolled := _roll_range(chosen.get(meter + "_delta"))
+		if meter_rolled == 0:
+			continue
+		apply_awareness_delta(meter, meter_rolled)
+		lines.append(Text.say("event.effect_line", {"change": "%+d" % meter_rolled,
+			"name": Text.say("awareness.district") if meter == "district" else Text.say("awareness.national")}))
+
+	var chips: Array = []
+	var rewards: Variant = chosen.get("rewards")
+	if rewards is Array and not (rewards as Array).is_empty():
+		var before := _cause
+		_cause = cause
+		chips = _effect_chips(_apply_reward_entries(rewards as Array))
+		_cause = before
+
+	var revealed := ""
+	var unlock: Variant = chosen.get("unlocks_level")
+	if unlock != null and not str(unlock).is_empty():
+		var level_id := str(unlock)
+		if not discovered_levels.has(level_id):
+			discovered_levels.append(level_id)
+		revealed = str(DataDB.get_level(level_id).get("description", level_id))
+
+	var hours := EventEngine.hours_of(event)
+	spend_hours(hours)
+	event_last_at[event_id] = time_units
+	return {"ok": true, "result_text": str(chosen.get("result_text", "")), "lines": lines,
+		"chips": chips, "revealed": revealed, "hours": hours}
+
+
+## Whether a level an event can reveal is open to the player. Levels not
+## marked "Needs Discovery" always are.
+func is_level_discovered(level: Dictionary) -> bool:
+	if str(level.get("needs_discovery", "")).strip_edges().to_lower() != "yes":
+		return true
+	return discovered_levels.has(str(level.get("level_id", "")))
+
+
+# ---------------------------------------------------------------------------
 # The week calendar (2026-10-23, Cameron). WeekCalendar.gd holds the rules;
 # these are the run's own entry points.
 
@@ -1094,6 +1261,7 @@ func go_home() -> Dictionary:
 	calendar = moved["state"]
 	_advance_clock(int(moved["skipped"]))
 	_apply_week_decay()
+	event_roll_due = true
 	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines}
 
 
@@ -1448,6 +1616,7 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 
 	if level_runner.is_finished():
 		last_level_outcome = level_runner.outcome()
+		event_roll_due = true
 
 		# Cooldown counts every completion, win or loss (see the comment on
 		# levels_completed_count) — recorded here regardless of which way

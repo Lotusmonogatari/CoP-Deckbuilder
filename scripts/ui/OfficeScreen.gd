@@ -101,6 +101,9 @@ var _week_button: Button
 var _dues_label: Label
 var _election_label: Label
 var _election_bar: ProgressBar
+var _events_button: Button
+var _events_panel: Overlay
+var _event_panel: Overlay
 var _week_confirm_panel: Overlay
 var _week_over_panel: Overlay
 var _new_week_panel: Overlay
@@ -276,6 +279,7 @@ func _build() -> void:
 	_refresh_calendar()
 	_show_trigger_alerts_if_any()
 	_show_resume_choice_if_in_level()
+	_show_random_event_if_due()
 	_show_week_over_if_due()
 	_show_forced_special_if_due()
 
@@ -318,6 +322,24 @@ func _build_week_controls() -> void:
 	_week_button.pressed.connect(_on_week_button_pressed)
 	_start_button.get_parent().add_child(_week_button)
 	_start_button.get_parent().move_child(_week_button, _dues_label.get_index() + 1)
+
+	_events_button = Button.new()
+	_events_button.name = "EventsButton"
+	_events_button.custom_minimum_size = Vector2(0, 100)
+	_events_button.text = Text.say("event.menu_button")
+	_events_button.pressed.connect(_show_events_list)
+	_start_button.get_parent().add_child(_events_button)
+	_start_button.get_parent().move_child(_events_button, _start_button.get_index() + 1)
+
+	_events_panel = Overlay.new()
+	_events_panel.name = "EventsPanel"
+	add_child(_events_panel)
+	_event_panel = Overlay.new()
+	_event_panel.name = "EventPanel"
+	# Once an event is on screen the only way on is a choice.
+	_event_panel.dismissable = false
+	_event_panel.show_back = false
+	add_child(_event_panel)
 
 	_week_confirm_panel = Overlay.new()
 	_week_confirm_panel.name = "WeekConfirmPanel"
@@ -418,6 +440,105 @@ func _go_home() -> void:
 	for awareness_line: String in result.get("awareness", []):
 		rows.append(UiKit.line(awareness_line, "SmallLabel"))
 	_new_week_panel.open(Text.say("office.new_week_title"), rows, Text.say("office.new_week_go"))
+
+
+# ---------------------------------------------------------------------------
+# Events (2026-10-23, Cameron): arranged from the Events list, or arriving on
+# their own after a level or a week end. Flavor text, a few fixed choices,
+# variable rewards (GameState.apply_event_choice).
+
+func _show_events_list() -> void:
+	var rows: Array[Control] = [UiKit.line(Text.say("event.list_hint"), "SmallLabel")]
+	var events := GameState.buyable_events()
+	if events.is_empty():
+		rows.append(UiKit.line(Text.say("event.none")))
+	for event: Dictionary in events:
+		var cost: Variant = event.get("cost_funds")
+		var title_line := Text.say("event.row", {"title": str(event.get("title", "")),
+			"hours": EventEngine.hours_of(event), "cost": int(cost)}) if cost != null and int(cost) > 0 \
+			else Text.say("event.row_free", {"title": str(event.get("title", "")),
+				"hours": EventEngine.hours_of(event)})
+		var box := UiKit.tight_column()
+		box.add_child(UiKit.line(title_line))
+		var button := UiKit.action_button(Text.say("event.arrange"), GameState.event_refusal(event),
+			_on_arrange_event.bind(str(event.get("event_id", ""))), 90.0)
+		button.name = "Arrange_" + str(event.get("event_id", ""))
+		box.add_child(button)
+		rows.append(box)
+	_events_panel.open(Text.say("event.list_title"), rows)
+
+
+func _on_arrange_event(event_id: String) -> void:
+	if not GameState.start_event(event_id):
+		_show_events_list()
+		return
+	_events_panel.close()
+	SaveManager.autosave()
+	_build()
+	_present_event(event_id, false)
+
+
+## A random event may arrive now (never while a choice about the week is pending).
+func _show_random_event_if_due() -> void:
+	if GameState.is_in_level() or GameState.work_week_is_full():
+		return
+	var event_id := GameState.roll_random_event()
+	if not event_id.is_empty():
+		_present_event(event_id, true)
+
+
+## The event screen: its title, flavor text and one button per choice.
+func _present_event(event_id: String, arrived: bool) -> void:
+	var event := GameState.get_event(event_id)
+	if event.is_empty():
+		return
+	var rows: Array[Control] = []
+	if arrived:
+		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
+	rows.append(UiKit.line(str(event.get("flavor", ""))))
+	for choice: Dictionary in EventEngine.choices_for(DataDB.event_choices, event_id):
+		var price: Variant = choice.get("funds_cost")
+		var label := str(choice.get("choice_text", ""))
+		var refusal := ""
+		if price != null and int(price) > 0:
+			label = Text.say("event.choice_cost", {"text": label, "cost": int(price)})
+			if int(GameState.meta.get("Funds", 0)) < int(price):
+				refusal = Text.say("event.refuse_funds")
+		var letter := str(choice.get("choice", ""))
+		var button := UiKit.action_button(label, refusal, _on_event_choice.bind(event_id, letter), 100.0)
+		button.name = "EventChoice_" + letter
+		rows.append(button)
+	_event_panel.open(str(event.get("title", "")), rows)
+
+
+func _on_event_choice(event_id: String, letter: String) -> void:
+	var result := GameState.apply_event_choice(event_id, letter)
+	if not bool(result.get("ok", false)):
+		return
+	var rows: Array[Control] = [UiKit.line(str(result.get("result_text", "")))]
+	for line: String in result.get("lines", []):
+		rows.append(UiKit.line(line, "SmallLabel"))
+	var chips := OrgChip.merged(result.get("chips", []))
+	if not chips.is_empty():
+		rows.append(OrgChip.row(chips))
+	var revealed := str(result.get("revealed", ""))
+	if not revealed.is_empty():
+		rows.append(UiKit.line(Text.say("event.level_revealed", {"name": revealed}), "SmallLabel"))
+	if int(result.get("hours", 0)) > 0:
+		rows.append(UiKit.line(Text.say("event.hours_line", {"hours": int(result["hours"])}), "SmallLabel"))
+	var done := Button.new()
+	done.name = "EventContinueButton"
+	done.custom_minimum_size = Vector2(0, 100)
+	done.text = Text.say("event.continue")
+	done.pressed.connect(_on_event_done)
+	rows.append(done)
+	_event_panel.open(str(GameState.get_event(event_id).get("title", "")), rows)
+
+
+func _on_event_done() -> void:
+	_event_panel.close()
+	SaveManager.autosave()
+	_build()
 
 
 ## What the party took at the week's end, as lines for the new-week popup.
@@ -2227,6 +2348,9 @@ func _show_levels() -> void:
 		# Independent of "level_gating_enabled" below, which only gates
 		# cost/cooldown, not this.
 		if Ledger.level_is_hidden(level, GameState.level_last_completed_at):
+			continue
+		# A level only an event can reveal ("Needs Discovery") stays out of sight until then.
+		if not GameState.is_level_discovered(level):
 			continue
 		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):

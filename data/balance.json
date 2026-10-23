@@ -143,5 +143,7 @@
   "election_war_chest_target": 500000,
   "election_experience_target": 25000,
   "election_record_target": 30,
+  "event_random_chance_percent": 35,
+  "event_default_cooldown_hours": 24,
   "xp_tiers": {}
 }

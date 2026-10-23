@@ -5059,5 +5059,152 @@
     "english": "Party backing",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "event.menu_button",
+    "where": "Office, button that opens the list of events you can arrange",
+    "english": "Events",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.list_title",
+    "where": "Events list heading",
+    "english": "Events",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.list_hint",
+    "where": "Events list, line under the heading",
+    "english": "Arrange an event. It costs money and hours, and what comes of it depends on what you choose to do.",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.row",
+    "where": "Events list, one event button",
+    "english": "{title} ({hours} hours, {cost}円)",
+    "placeholders": "title, hours, cost",
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.row_free",
+    "where": "Events list, one event button with no cost",
+    "english": "{title} ({hours} hours)",
+    "placeholders": "title, hours",
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.refuse_weekday",
+    "where": "Events list, an event only for weekdays",
+    "english": "Weekdays only",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.refuse_weekend",
+    "where": "Events list, an event only for the weekend",
+    "english": "Weekend only",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.refuse_hours",
+    "where": "Events list, not enough hours left",
+    "english": "Not enough hours left",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.refuse_funds",
+    "where": "Events list, not enough Funds",
+    "english": "Not enough Funds",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.refuse_xp",
+    "where": "Events list, not enough XP",
+    "english": "Not enough XP",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.refuse_week_over",
+    "where": "Events list, the work week is over",
+    "english": "The work week is over",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.refuse_cooldown",
+    "where": "Events list, too soon to repeat it",
+    "english": "Too soon to do this again",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.none",
+    "where": "Events list, nothing to arrange right now",
+    "english": "Nothing to arrange right now.",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.choice_cost",
+    "where": "Event choice button, with its price",
+    "english": "{text} ({cost}円)",
+    "placeholders": "text, cost",
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.continue",
+    "where": "Event panel, button that closes the result",
+    "english": "Continue",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.effect_line",
+    "where": "Event result, one thing that changed",
+    "english": "{name} {change}",
+    "placeholders": "name, change",
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.level_revealed",
+    "where": "Event result, a level is now open to the player",
+    "english": "A new level is open to you: {name}.",
+    "placeholders": "name",
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.hours_line",
+    "where": "Event result, hours it took",
+    "english": "It took {hours} hours.",
+    "placeholders": "hours",
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.heading_arrives",
+    "where": "Event panel heading for an event that arrives on its own",
+    "english": "Something comes up",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "record.cause_event",
+    "where": "Your Record, cause of a change from an event",
+    "english": "An event",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
+  },
+  {
+    "key": "event.arrange",
+    "where": "Events list, button to arrange the event",
+    "english": "Arrange it",
+    "placeholders": null,
+    "notes": "2026-10-23 events."
   }
 ]

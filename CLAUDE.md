@@ -669,3 +669,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Organization value pass: bigger backings, second backings, newer organizations' level rewards (2026-10-23, Cameron)
 - The week calendar: hours, a work week, an optional weekend (2026-10-23, Cameron)
 - Party dues, name awareness and election strength (2026-10-23, Cameron)
+- Events: arranged or arriving, with fixed choices and variable rewards (2026-10-23, Cameron)
