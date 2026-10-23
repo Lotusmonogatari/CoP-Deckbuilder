@@ -396,6 +396,8 @@ func _go_home() -> void:
 	var rows: Array[Control] = [UiKit.line(Text.say("office.new_week_body",
 		{"date": str(result.get("date", ""))}))]
 	rows.append_array(_dues_report_rows(result.get("dues", {})))
+	for awareness_line: String in result.get("awareness", []):
+		rows.append(UiKit.line(awareness_line, "SmallLabel"))
 	_new_week_panel.open(Text.say("office.new_week_title"), rows, Text.say("office.new_week_go"))
 
 

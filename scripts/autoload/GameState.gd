@@ -289,6 +289,9 @@ var dues_balance := 0
 var awareness: Dictionary = {"district": 0, "national": 0}
 var last_awareness_change: Dictionary = {}
 
+## Consecutive weeks each Week-end awareness effect has held { effect_id: n }.
+var awareness_streaks: Dictionary = {}
+
 ## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
 ## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
 ## until that special level has been played, win or lose.
@@ -425,7 +428,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -915,6 +918,7 @@ func reset_awareness() -> void:
 		"national": clampi(int(DataDB.balance.get("awareness_start_national", 10)), 0, awareness_max()),
 	}
 	last_awareness_change = {}
+	awareness_streaks = {}
 
 
 func awareness_max() -> int:
@@ -1033,17 +1037,76 @@ func go_home() -> Dictionary:
 	if not in_weekend():
 		end_work_week()
 	var dues := _settle_dues()
+	var awareness_lines := _apply_awareness_week_end()
 	var moved := WeekCalendar.go_home(calendar, calendar_config())
 	calendar = moved["state"]
 	_advance_clock(int(moved["skipped"]))
 	_apply_week_decay()
-	return {"date": calendar_date_text(), "dues": dues}
+	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines}
 
 
 ## What the awareness effects take off the base dues (National Awareness at 80
 ## or more). Filled in with the Awareness Effects tab; nothing yet.
 func _dues_reduction() -> int:
-	return 0
+	return AwarenessEffects.dues_reduction(DataDB.awareness_effects, awareness)
+
+
+## Starting support a room gets from awareness (State rows), for BattleSetup.
+func awareness_start_bonus(stage_id: String) -> int:
+	return AwarenessEffects.stage_start_bonus(DataDB.awareness_effects, awareness, stage_id)
+
+
+## At each week end, once the dues are settled: standing, XP and coupons the
+## awareness meters earn or cost. Returns lines for the popup (Text rows).
+func _apply_awareness_week_end() -> Array[String]:
+	var lines: Array[String] = []
+	var result := AwarenessEffects.week_end(DataDB.awareness_effects, awareness, awareness_streaks)
+	awareness_streaks = result["streaks"]
+	for entry: Dictionary in result["applied"]:
+		var effect: Dictionary = entry["effect"]
+		var amount := int(entry["amount"])
+		match str(effect.get("effect_type", "")):
+			AwarenessEffects.STANDING_CHANGE:
+				var names: Array[String] = []
+				for id: String in _awareness_standing_targets(effect):
+					_under_cause(Text.say("record.cause_awareness"),
+						func() -> void: _apply_booster_delta(id, amount))
+					names.append(str(DataDB.get_booster(id).get("name_en", id)))
+				if not names.is_empty():
+					lines.append(Text.say("awareness.week_standing",
+						{"names": ", ".join(PackedStringArray(names)), "count": amount}))
+			AwarenessEffects.XP_CHANGE:
+				_move_xp(amount)
+				lines.append(Text.say("awareness.week_xp", {"count": amount}))
+			AwarenessEffects.FREE_TRAINING_COUPON:
+				if _give_training_coupons(amount):
+					lines.append(Text.say("awareness.week_coupon"))
+	return lines
+
+
+## The organization ids a STANDING_CHANGE row hits: named ids, or every
+## organization of a tier ("TIER:National").
+func _awareness_standing_targets(effect: Dictionary) -> Array[String]:
+	var found: Array[String] = []
+	for target: String in AwarenessEffects.targets_of(effect):
+		if target.begins_with("TIER:"):
+			for booster: Dictionary in DataDB.boosters:
+				if str(booster.get("tier", "")) == target.substr(5):
+					found.append(str(booster.get("booster_id", "")))
+		else:
+			found.append(target)
+	return found
+
+
+## Adds Training Session Coupons (SH21) up to the item's own stack cap.
+func _give_training_coupons(count: int) -> bool:
+	var item := DataDB.get_shop_item("SH21")
+	if item.is_empty() or count <= 0:
+		return false
+	var cap := int(item.get("stack_cap", 5)) if item.get("stack_cap") != null else 5
+	var before := int(inventory.get("SH21", 0))
+	inventory["SH21"] = mini(cap, before + count)
+	return int(inventory["SH21"]) > before
 
 
 ## What the party is owed at this week's end: { week_dues, owed (carried),

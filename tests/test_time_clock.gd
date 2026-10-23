@@ -5,12 +5,22 @@ var _units_before := 0
 var _runner_before: LevelRunner = null
 var _interval_before: Variant = null
 var _calendar_before: Dictionary = {}
+var _awareness_before: Dictionary = {}
+var _meta_before: Dictionary = {}
+var _party_before: Dictionary = {}
+var _owned_before: Array = []
 
 
 func before_each() -> void:
 	_units_before = GameState.time_units
 	_interval_before = DataDB.balance.get("decay_interval")
 	_calendar_before = GameState.calendar.duplicate()
+	_awareness_before = GameState.awareness.duplicate()
+	_meta_before = GameState.meta.duplicate()
+	_party_before = GameState.party_standing.duplicate()
+	_owned_before = GameState.owned_modifiers.duplicate()
+	# Neutral awareness, so a week end in these tests applies no awareness effects.
+	GameState.awareness = {"district": 60, "national": 50}
 	# Decay by hours is off in the shipped data (it runs at week end now); these
 	# tests exercise the optional interval path, so they turn it on.
 	DataDB.balance["decay_interval"] = 6
@@ -21,6 +31,10 @@ func before_each() -> void:
 func after_each() -> void:
 	GameState.time_units = _units_before
 	GameState.calendar = _calendar_before
+	GameState.awareness = _awareness_before
+	GameState.meta = _meta_before
+	GameState.party_standing = _party_before
+	GameState.owned_modifiers.assign(_owned_before)
 	DataDB.balance["decay_interval"] = _interval_before
 	GameState.level_runner = _runner_before
 

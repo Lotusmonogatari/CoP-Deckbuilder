@@ -4940,5 +4940,33 @@
     "english": "Gaffes left at the end of a stage",
     "placeholders": null,
     "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "record.cause_awareness",
+    "where": "Your Record, cause of a standing change from name awareness",
+    "english": "Name awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.week_standing",
+    "where": "New week popup, standing moved by awareness",
+    "english": "Name recognition: standing with {names} changes by {count}.",
+    "placeholders": "names, count",
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.week_xp",
+    "where": "New week popup, XP moved by awareness",
+    "english": "Name recognition: {count} XP.",
+    "placeholders": "count",
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.week_coupon",
+    "where": "New week popup, a free coupon",
+    "english": "Your name is known at home: a free Training Session Coupon.",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
   }
 ]

@@ -41,7 +41,7 @@ const REQUIRED_FILES := [
 	"player", "player_cues", "playtest_cards", "playtest_level", "rules", "sanban", "office_notices", "office_ticker",
 	"card_cues", "questions", "shop", "visitors", "visitor_questions",
 	"sounds", "staff", "strings",
-	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues",
+	"segments", "stages", "suits", "vote_influence_triggers", "vote_influence_cues", "awareness_effects",
 	"cosmetic_packages", "transition_cast", "transition_backgrounds", "transition_dialogue",
 ]
 
@@ -104,6 +104,7 @@ var transition_dialogue: Array = []
 ## values or booster standings count as trigger variables, each switched on
 ## or off and given its own threshold. See VoteInfluence.gd.
 var vote_influence_triggers: Array = []
+var awareness_effects: Array = []
 
 ## The optional cutscene line for a bill the influence swing above flipped —
 ## one row per (bill_id, outcome_direction) pair. See VoteInfluenceCues.gd.
@@ -359,6 +360,7 @@ func load_all() -> void:
 			"transition_backgrounds": transition_backgrounds = content if content is Array else []
 			"transition_dialogue": transition_dialogue = content if content is Array else []
 			"vote_influence_triggers": vote_influence_triggers = content if content is Array else []
+			"awareness_effects": awareness_effects = content if content is Array else []
 			"vote_influence_cues": vote_influence_cues = content if content is Array else []
 			"cosmetic_packages": cosmetic_packages = content if content is Array else []
 			"parties": parties = content if content is Array else []
