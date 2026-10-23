@@ -2350,3 +2350,15 @@ The quiet game clock became a player-facing calendar. Hours, not units: **Stages
 | Decay | Standing and meta decay moved to each week end (Decay Interval is now 0). A new lever, Week Decay Multiplier (2.5, draft), scales the percent and neglect steps because a week is about 2.4 levels. |
 
 New files: `scripts/rules/WeekCalendar.gd`, `scripts/ui/CalendarSquare.gd`. Tests: `tests/test_week_calendar.gd`, additions to `tests/test_time_clock.gd`, and the real-click `tests/interaction/week_test.tscn` (in `tools/verify.sh`). The playtest bot goes home when the work week is full.
+
+## Party dues, name awareness and election strength (2026-10-23, Cameron) -- steps 3, 4, 5 and the strength bar
+
+| Piece | What it does | Where |
+|---|---|---|
+| **Party dues** | At each week end ("Pay Party Dues and Go Home") the party takes 100,000円, plus 50,000円 for every full 15 points of Party support above 40, plus 30% of the Funds earned Monday to Friday that week, less whatever National Awareness takes off. Paid from Funds as far as they go. | `PartyDues.gd`, `GameState._settle_dues()`, Balance "Dues: ..." levers |
+| **Overdue** | Anything unpaid rolls over. A short week costs 10 Party support, withdraws the party's backings (any backing triggered by a Party-tier organization), and applies -20 Party HQ, -5 Selection Committee and +5 to each other party, all multiplied by 1.5 for every full 100,000円 owed. | same |
+| **Awareness meters** | District and National, 0 to 100. Gaffes left at a Combat stage's end cost one point each on both (a stage lost to gaffes costs the whole limit). Stage wins add awareness through two new Stages columns (Win ΔDistrict / ΔNational Awareness, draft values by room type); a bill flipped by influence and a bill the player carried that passes add through Balance levers. | `GameState.apply_awareness_*`, Stages columns |
+| **Awareness Effects tab** | Seven rows: National 80+ cuts dues by 100,000円; District 80+ earns a free Training Session Coupon at each week end; National 65+ starts Media Ambush, Press Conference and TV Debate rooms 5 ahead; District 65+ starts Town Halls 5 ahead; District 50 or less costs the Selection Committee 10; District 25 or less costs 50 XP; National 40 or less costs every National organization 5, growing by 5 for each consecutive week ("Escalating", a draft reading of "additive"). Rows are data: new ones need no code. | `AwarenessEffects.gd`, `data/awareness_effects.json` |
+| **Election strength** | Built and shown, fires nothing. Eight inputs (District and National Awareness, Constituency support, organizations on side, war chest, experience, legislative record, party backing) add to a "potential" of 100; the strength moves toward it by at most 2.5 a week (falls at most 1.5), so even an easy start climbs slowly. A bar on the Office; each input on Your Record. | `ElectionStrength.gd`, Balance "Election: ..." levers |
+
+New workbook tab **Awareness Effects** (header notes included). Tests: `test_party_dues.gd`, `test_awareness.gd`, `test_awareness_effects.gd`, `test_election_strength.gd`, and the real-click `week_test` now covers paying and falling short.

@@ -99,6 +99,8 @@ var _draft_panel: Overlay
 var _calendar_square: PanelContainer
 var _week_button: Button
 var _dues_label: Label
+var _election_label: Label
+var _election_bar: ProgressBar
 var _week_confirm_panel: Overlay
 var _week_over_panel: Overlay
 var _new_week_panel: Overlay
@@ -289,6 +291,20 @@ func _build_week_controls() -> void:
 		_calendar_square = CalendarSquare.make()
 		spacer.add_child(_calendar_square)
 
+	# Election strength: a caption and a bar under the Office's own notices.
+	_election_label = Label.new()
+	_election_label.name = "ElectionLabel"
+	_election_label.theme_type_variation = &"SmallLabel"
+	_election_bar = ProgressBar.new()
+	_election_bar.name = "ElectionBar"
+	_election_bar.min_value = 0
+	_election_bar.max_value = 100
+	_election_bar.show_percentage = false
+	_election_bar.custom_minimum_size = Vector2(0, 22)
+	var text_column := _resources.get_parent()
+	text_column.add_child(_election_label)
+	text_column.add_child(_election_bar)
+
 	_dues_label = Label.new()
 	_dues_label.name = "DuesLabel"
 	_dues_label.theme_type_variation = &"SmallLabel"
@@ -325,6 +341,9 @@ func _build_week_controls() -> void:
 ## the weekend, nothing otherwise (and nothing mid-level).
 func _refresh_calendar() -> void:
 	CalendarSquare.refresh(_calendar_square)
+	if _election_bar != null:
+		_election_bar.value = GameState.election_strength
+		_election_label.text = Text.say("election.bar_line", {"value": roundi(GameState.election_strength)})
 	if _week_button == null:
 		return
 	var mid_level := GameState.is_in_level()
@@ -1083,6 +1102,20 @@ func _show_record() -> void:
 			if not because.is_empty():
 				line += "  " + because
 		rows.append(UiKit.line(line))
+
+	rows.append(UiKit.heading(Text.say("election.record_heading")))
+	rows.append(UiKit.line(Text.say("election.bar_line", {"value": roundi(GameState.election_strength)})))
+	rows.append(UiKit.line(Text.say("election.potential_line",
+		{"value": roundi(GameState.election_potential())}), "SmallLabel"))
+	var part_names := {
+		"district": Text.say("election.c_district"), "national": Text.say("election.c_national"),
+		"constituency": Text.say("election.c_constituency"), "organizations": Text.say("election.c_organizations"),
+		"war_chest": Text.say("election.c_war_chest"), "experience": Text.say("election.c_experience"),
+		"record": Text.say("election.c_record"), "party": Text.say("election.c_party")}
+	for part: Dictionary in GameState.election_parts():
+		rows.append(UiKit.line(Text.say("election.component_line", {
+			"name": part_names[str(part["id"])], "points": "%.1f" % float(part["points"]),
+			"max": roundi(float(part["max"]))}), "SmallLabel"))
 
 	var meter_names := {"district": Text.say("awareness.district"), "national": Text.say("awareness.national")}
 	for meter: String in ["district", "national"]:

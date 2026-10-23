@@ -292,6 +292,11 @@ var last_awareness_change: Dictionary = {}
 ## Consecutive weeks each Week-end awareness effect has held { effect_id: n }.
 var awareness_streaks: Dictionary = {}
 
+## Election strength (ElectionStrength.gd, 2026-10-23): a slow stock from 0 to 100,
+## and the lifetime XP earned (spending XP does not lower it). Both saved.
+var election_strength := 0.0
+var xp_earned_total := 0
+
 ## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
 ## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
 ## until that special level has been played, win or lose.
@@ -428,7 +433,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -577,6 +582,8 @@ func reset_crisis_triggers() -> void:
 	week_funds_earned = 0
 	dues_balance = 0
 	reset_awareness()
+	election_strength = 0.0
+	xp_earned_total = 0
 	last_decay_at = 0
 	booster_moved_in_period = {}
 	timed_bonuses = []
@@ -947,6 +954,50 @@ func apply_awareness_gaffes(gaffes: int) -> void:
 
 
 # ---------------------------------------------------------------------------
+# Election strength (2026-10-23, Cameron): built and shown, fires no outcome.
+
+## What the campaign's inputs read right now (ElectionStrength.components()).
+func election_inputs() -> Dictionary:
+	var cfg := ElectionStrength.settings(DataDB.balance)
+	var on_side := 0
+	for id: String in booster_standing.keys():
+		if int(booster_standing[id]) >= int(cfg["org_standing"]):
+			on_side += 1
+	var laws := 0
+	for law: Dictionary in statute_book:
+		if bool(law.get("passed", false)):
+			laws += 1
+	return {
+		"district": int(awareness.get("district", 0)),
+		"national": int(awareness.get("national", 0)),
+		"constituency": int(meta.get("Constituency support", 0)),
+		"org_share": float(on_side) / maxf(1.0, float(booster_standing.size())),
+		"funds": int(meta.get("Funds", 0)),
+		"xp_earned": xp_earned_total,
+		"laws_passed": laws,
+		"party_support": int(meta.get("Party support", 0)),
+		"dues_overdue": dues_balance > 0,
+	}
+
+
+## Each input's points and maximum, for the Your Record page.
+func election_parts() -> Array:
+	return ElectionStrength.components(ElectionStrength.settings(DataDB.balance), election_inputs())
+
+
+## What the inputs add up to right now (the strength grows toward this).
+func election_potential() -> float:
+	return ElectionStrength.potential(election_parts())
+
+
+## At each week end the strength moves toward the potential, by at most the
+## weekly cap.
+func _update_election_strength() -> void:
+	election_strength = ElectionStrength.step(election_strength, election_potential(),
+		ElectionStrength.settings(DataDB.balance))
+
+
+# ---------------------------------------------------------------------------
 # The week calendar (2026-10-23, Cameron). WeekCalendar.gd holds the rules;
 # these are the run's own entry points.
 
@@ -1038,6 +1089,7 @@ func go_home() -> Dictionary:
 		end_work_week()
 	var dues := _settle_dues()
 	var awareness_lines := _apply_awareness_week_end()
+	_update_election_strength()
 	var moved := WeekCalendar.go_home(calendar, calendar_config())
 	calendar = moved["state"]
 	_advance_clock(int(moved["skipped"]))
@@ -1781,6 +1833,8 @@ func _move_xp(delta: int) -> void:
 	if delta == 0:
 		return
 	xp += delta
+	if delta > 0:
+		xp_earned_total += delta
 	EventBus.xp_changed.emit(xp, delta)
 
 

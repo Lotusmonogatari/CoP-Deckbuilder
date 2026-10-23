@@ -4968,5 +4968,96 @@
     "english": "Your name is known at home: a free Training Session Coupon.",
     "placeholders": null,
     "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "election.title",
+    "where": "Office, label above the election strength bar",
+    "english": "Election Strength",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.bar_line",
+    "where": "Office, the bar caption",
+    "english": "Election Strength {value} / 100",
+    "placeholders": "value",
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.record_heading",
+    "where": "Your Record, section heading",
+    "english": "Election strength",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.potential_line",
+    "where": "Your Record, what the inputs add up to right now",
+    "english": "Right now your campaign is worth {value} of 100. Strength grows slowly toward that, a little each week.",
+    "placeholders": "value",
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.component_line",
+    "where": "Your Record, one input",
+    "english": "{name}: {points} of {max}",
+    "placeholders": "name, points, max",
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_district",
+    "where": "Your Record, input name",
+    "english": "District Awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_national",
+    "where": "Your Record, input name",
+    "english": "National Awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_constituency",
+    "where": "Your Record, input name",
+    "english": "Constituency support",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_organizations",
+    "where": "Your Record, input name",
+    "english": "Organizations on side",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_war_chest",
+    "where": "Your Record, input name",
+    "english": "War chest",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_experience",
+    "where": "Your Record, input name",
+    "english": "Experience",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_record",
+    "where": "Your Record, input name",
+    "english": "Legislative record",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_party",
+    "where": "Your Record, input name",
+    "english": "Party backing",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
   }
 ]
