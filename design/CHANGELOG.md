@@ -2334,3 +2334,19 @@ An analysis of what each organization is worth found the Yen and XP win payouts 
 | Levels tab: Win ΔBO17 to Win ΔBO32 | Sixteen new columns in the same range format as Win ΔBO01 to BO16 (columns AP to BE). The engine already read any `win_delta_boNN` column; the exporter's column list and check now cover all 32 organizations. 22 bill levels carry draft 0-1 values for the organizations their bill favors. |
 
 Not built (not approved): the vote-whip discount for ungated organizations, and the tiered standing needed to buy a backing. Test: `test_game_state_level_bonus.gd` covers the new columns on real levels.
+
+## The week calendar: hours, a work week, an optional weekend (2026-10-23, Cameron) -- steps 1 and 2
+
+The quiet game clock became a player-facing calendar. Hours, not units: **Stages Time Units are now hours** (2 for Lobbyist Meeting, Town Hall, Office Hours, Press Conference, Policy Study, Check-In and the member/patron rooms; 4 for committees, Party Caucus, Party Steering Committee and Floor Debate; 3 for TV Debate; 1 for a Floor Vote and Media Ambush). `WeekCalendar.gd` (pure) holds the rules; `GameState.calendar` is `{ week, phase, hours }`, saved.
+
+| Rule | Detail |
+|---|---|
+| Work week | Five 8-hour days pooled into 40 hours. A stage that runs past a day spills into the next. Hours past the pool are lost; the week does not cross over. |
+| Friday | When Friday has hours left, "End the Work Week" asks first (it names the hours left). No bonus or penalty. |
+| Weekend | Optional. Two 4-hour days. Only levels flagged **Weekend OK** (new Levels column; LV83 and LV84 for now) that fit in the hours left can be started. |
+| Going home | "Pay Party Dues and Go Home" (weekend, or the choice when the work week is full) starts the next Monday with a popup on the Office. Unused hours still count as time passing, so cooldowns keep running. Dues come in step 3. |
+| Calendar square | Gold-edged (the cue banner's gold), lower left of the Office: DD.MM.YY, and the hours left today. The run starts Monday 01.10.18 (Balance levers). |
+| Time numbers (x3) | Cooldowns, Special Level Delay (15), News Ticker (36), Patron Free Backing Units (90), Draft Bill Cooldown (90). |
+| Decay | Standing and meta decay moved to each week end (Decay Interval is now 0). A new lever, Week Decay Multiplier (2.5, draft), scales the percent and neglect steps because a week is about 2.4 levels. |
+
+New files: `scripts/rules/WeekCalendar.gd`, `scripts/ui/CalendarSquare.gd`. Tests: `tests/test_week_calendar.gd`, additions to `tests/test_time_clock.gd`, and the real-click `tests/interaction/week_test.tscn` (in `tools/verify.sh`). The playtest bot goes home when the work week is full.

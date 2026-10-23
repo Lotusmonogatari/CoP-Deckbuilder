@@ -3,16 +3,25 @@ extends GutTest
 
 var _units_before := 0
 var _runner_before: LevelRunner = null
+var _interval_before: Variant = null
+var _calendar_before: Dictionary = {}
 
 
 func before_each() -> void:
 	_units_before = GameState.time_units
+	_interval_before = DataDB.balance.get("decay_interval")
+	_calendar_before = GameState.calendar.duplicate()
+	# Decay by hours is off in the shipped data (it runs at week end now); these
+	# tests exercise the optional interval path, so they turn it on.
+	DataDB.balance["decay_interval"] = 6
 	_runner_before = GameState.level_runner
 	GameState.time_units = 0
 
 
 func after_each() -> void:
 	GameState.time_units = _units_before
+	GameState.calendar = _calendar_before
+	DataDB.balance["decay_interval"] = _interval_before
 	GameState.level_runner = _runner_before
 
 
@@ -130,3 +139,33 @@ func test_finishing_a_level_records_the_clock_it_finished_at() -> void:
 	assert_eq(int(GameState.level_cleared_units.get("LV_REC", -1)), before + 4)
 	GameState.level_cleared_units.erase("LV_REC")
 	GameState.level_last_completed_at.erase("LV_REC")
+
+
+func test_week_end_decay_pulls_standing_back_once_per_week() -> void:
+	DataDB.balance["decay_interval"] = 0
+	_two_organizations()
+	GameState.go_home()
+	assert_lt(int(GameState.booster_standing["BO05"]), 50, "standing settles at the week end")
+	assert_gt(int(GameState.booster_standing["BO09"]), 10)
+	assert_true(GameState.booster_moved_in_period.is_empty())
+
+
+func test_going_home_moves_to_the_next_monday_and_counts_skipped_hours() -> void:
+	DataDB.balance["decay_interval"] = 0
+	GameState.calendar = WeekCalendar.fresh()
+	GameState.time_units = 0
+	var result := GameState.go_home()
+	assert_eq(int(GameState.calendar["week"]), 1)
+	assert_eq(str(GameState.calendar["phase"]), WeekCalendar.WORK)
+	assert_eq(str(result["date"]), "08.10.18")
+	assert_eq(GameState.time_units, 40 + 8, "an unplayed work week and weekend still pass")
+
+
+func test_a_finished_stage_uses_up_calendar_hours() -> void:
+	GameState.calendar = WeekCalendar.fresh()
+	GameState.begin_level(LevelRunner.new({"level_id": "LV_CAL", "stages": [
+		{"seq": 1, "stage_id": "ST05", "mode": "Combat", "time_units": 4}]}))
+	GameState.finish_stage(LevelRunner.WON)
+	assert_eq(int(GameState.calendar["hours"]), 4)
+	GameState.level_cleared_units.erase("LV_CAL")
+	GameState.level_last_completed_at.erase("LV_CAL")

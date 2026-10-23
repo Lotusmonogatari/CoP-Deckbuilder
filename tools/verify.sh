@@ -159,6 +159,13 @@ if command -v xvfb-run >/dev/null 2>&1; then
     failures=$((failures + 1))
   fi
 
+  # And the week: the calendar square, ending the work week, the weekend, going home -- 2026-10-23, new.
+  if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
+        "$GODOT" --path . tests/interaction/week_test.tscn; then
+    echo ">> FAILED: the week calendar did not work with real clicks."
+    failures=$((failures + 1))
+  fi
+
   # And the discard step for cards that cost a discard -- 2026-10-21, new.
   if ! xvfb-run -a --server-args="-screen 0 1080x2340x24" \
         "$GODOT" --path . tests/interaction/discard_test.tscn; then

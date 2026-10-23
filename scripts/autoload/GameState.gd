@@ -270,6 +270,13 @@ var steering_committee_active := false
 ## Saved; cleared on a new run. Never shown to the player (TimeClock.gd).
 var time_units := 0
 
+## The week calendar (WeekCalendar.gd, 2026-10-23): { week, phase, hours }.
+## Saved; cleared on a new run. Time units keep counting every hour too.
+var calendar: Dictionary = WeekCalendar.fresh()
+
+## Scales decay steps while the week-end decay runs; 1.0 the rest of the time.
+var _decay_scale := 1.0
+
 ## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
 ## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
 ## until that special level has been played, win or lose.
@@ -406,7 +413,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -449,6 +456,7 @@ func load_save(saved: Dictionary) -> void:
 					(current as Dictionary)[key] = (value as Dictionary)[key]
 		elif typeof(current) == typeof(value):
 			set(field, value)
+	calendar = WeekCalendar.normalized(calendar)
 
 	_register_saved_patron_bills()
 	var runner: Variant = saved.get("level_runner")
@@ -550,6 +558,7 @@ func reset_crisis_triggers() -> void:
 	town_hall_active = false
 	steering_committee_active = false
 	time_units = 0
+	calendar = WeekCalendar.fresh()
 	last_decay_at = 0
 	booster_moved_in_period = {}
 	timed_bonuses = []
@@ -881,6 +890,117 @@ func _apply_time_decays() -> void:
 		booster_moved_in_period = {}
 
 
+# ---------------------------------------------------------------------------
+# The week calendar (2026-10-23, Cameron). WeekCalendar.gd holds the rules;
+# these are the run's own entry points.
+
+func calendar_config() -> Dictionary:
+	return WeekCalendar.settings(DataDB.balance)
+
+
+## "DD.MM.YY" for the Office's calendar square.
+func calendar_date_text() -> String:
+	return WeekCalendar.date_text(calendar, calendar_config())
+
+
+## The calendar square's bottom row: hours left today.
+func calendar_hours_text() -> String:
+	var weekend := str(calendar["phase"]) == WeekCalendar.WEEKEND
+	return Text.say("calendar.hours_weekend" if weekend else "calendar.hours_work",
+		{"hours": WeekCalendar.hours_left_today(calendar, calendar_config())})
+
+
+func in_weekend() -> bool:
+	return str(calendar["phase"]) == WeekCalendar.WEEKEND
+
+
+## The work week has run out of hours (finished, not ended early).
+func work_week_is_full() -> bool:
+	return not in_weekend() and WeekCalendar.is_full(calendar, calendar_config())
+
+
+func work_hours_left() -> int:
+	return WeekCalendar.hours_left(calendar, calendar_config())
+
+
+func can_end_work_week_early() -> bool:
+	return WeekCalendar.can_end_work_week_early(calendar, calendar_config())
+
+
+## How many hours a level takes: the Stages tab's hours for each room, with a
+## bill vote counting as the Floor Vote room (ST23).
+func level_hours(level: Dictionary) -> int:
+	var total := 0
+	for slot_number in range(1, 11):
+		var raw: Variant = level.get("stage_%d" % slot_number)
+		if raw == null:
+			continue
+		var slot := str(raw)
+		if slot.is_empty() or slot == "N/A":
+			continue
+		if slot.begins_with("BI"):
+			slot = "ST23"
+		total += TimeClock.units_for_stage(DataDB.get_stage(slot))
+	return total
+
+
+## Why this level cannot be started on the calendar right now, as a sentence;
+## "" when it can.
+func level_calendar_refusal(level: Dictionary) -> String:
+	var weekend_ok := str(level.get("weekend_ok", "")).strip_edges().to_lower() == "yes"
+	match WeekCalendar.level_refusal(calendar, calendar_config(), level_hours(level), weekend_ok):
+		WeekCalendar.REFUSE_WEEK_OVER:
+			return Text.say("calendar.refuse_week_over")
+		WeekCalendar.REFUSE_NOT_WEEKEND:
+			return Text.say("calendar.refuse_not_weekend")
+		WeekCalendar.REFUSE_TOO_LONG:
+			return Text.say("calendar.refuse_too_long")
+	return ""
+
+
+## Time passing with no stage played (hours skipped at a week's end).
+func _advance_clock(hours: int) -> void:
+	time_units += maxi(0, hours)
+	_expire_modifiers()
+
+
+## The work week is over, finished or ended early on Friday: the weekend starts.
+## Unused work hours still count as time passing (cooldowns keep running).
+func end_work_week() -> void:
+	if in_weekend():
+		return
+	var moved := WeekCalendar.end_work_week(calendar, calendar_config())
+	calendar = moved["state"]
+	_advance_clock(int(moved["skipped"]))
+
+
+## "Pay Party Dues and Go Home": the weekend (played or not) ends and a new
+## week begins on Monday. Standing and meta decay run here, once a week.
+## Returns what the popup needs: { date }.
+func go_home() -> Dictionary:
+	if not in_weekend():
+		end_work_week()
+	var moved := WeekCalendar.go_home(calendar, calendar_config())
+	calendar = moved["state"]
+	_advance_clock(int(moved["skipped"]))
+	_apply_week_decay()
+	return {"date": calendar_date_text()}
+
+
+## Decay at a week's end, in bigger steps (Week Decay Multiplier) because a
+## week is about two and a half levels. Replaces the per-hour decay interval
+## (Balance "Decay Interval", now 0).
+func _apply_week_decay() -> void:
+	_decay_scale = maxf(0.0, float(DataDB.balance.get("week_decay_multiplier", 1.0)))
+	_decaying = true
+	_apply_neglect_decay()
+	_apply_standing_decay()
+	_apply_meta_decay()
+	_decaying = false
+	_decay_scale = 1.0
+	booster_moved_in_period = {}
+
+
 
 ## Neglect (2026-10-16, Cameron): at the end of a level, every organisation
 ## whose standing did not move at all this level (last_booster_change, which
@@ -890,6 +1010,7 @@ func _apply_neglect_decay() -> void:
 	var step := int(DataDB.booster_standing.get("neglect_decay", 0))
 	if step <= 0:
 		return
+	step = maxi(1, roundi(step * _decay_scale))
 	var default_start := int(DataDB.booster_standing.get("start", 30))
 	var touched := booster_moved_in_period.keys()
 	var starts := {}
@@ -920,7 +1041,7 @@ func _apply_meta_decay() -> void:
 			continue
 		var name := str(variable.get("name_en", ""))
 		var now := int(meta.get(name, 0))
-		var target := BoosterStanding.decayed_percent(now, int(starts.get(name, now)), float(percent))
+		var target := BoosterStanding.decayed_percent(now, int(starts.get(name, now)), float(percent) * _decay_scale)
 		if target != now:
 			_links_suspended = true
 			_cause = Text.say("record.cause_decay")
@@ -944,7 +1065,7 @@ func _apply_standing_decay() -> void:
 		var now := int(booster_standing[id])
 		var target := BoosterStanding.decayed_percent(now,
 			default_start if own_start == null else int(own_start),
-			default_percent if own_percent == null else float(own_percent))
+			(default_percent if own_percent == null else float(own_percent)) * _decay_scale)
 		if target != now:
 			_links_suspended = true
 			_under_cause(Text.say("record.cause_decay"),
@@ -1060,7 +1181,9 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 		return true
 
 	var stage := level_runner.current_stage()
-	time_units += TimeClock.units_for_stage(stage)
+	var stage_hours := TimeClock.units_for_stage(stage)
+	time_units += stage_hours
+	calendar = WeekCalendar.advance(calendar, stage_hours, calendar_config())
 	_expire_modifiers()
 	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
 	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)

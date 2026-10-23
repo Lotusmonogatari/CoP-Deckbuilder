@@ -576,6 +576,10 @@ func _use_held_items(engine: BattleEngine, repro: String) -> void:
 ## Funds/XP (or the cooldown countdown, which only advances by finishing
 ## ANY level) the next one needs.
 func _choose_level() -> String:
+	# The bot works the weekdays and skips the weekend: when the work week is
+	# full it goes home, which is where standing now decays (2026-10-23).
+	if GameState.work_week_is_full():
+		GameState.go_home()
 	var ordered: Array = DataDB.levels.duplicate()
 	ordered.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return str(a.get("level_id", "")) < str(b.get("level_id", "")))

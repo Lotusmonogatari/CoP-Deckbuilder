@@ -4744,5 +4744,117 @@
     "english": "whipping the vote on {bill}",
     "placeholders": "bill",
     "notes": "2026-10-22 vote whipping."
+  },
+  {
+    "key": "calendar.hours_work",
+    "where": "Office, calendar square, bottom row on a weekday",
+    "english": "{hours} Work Hours",
+    "placeholders": "hours",
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "calendar.hours_weekend",
+    "where": "Office, calendar square, bottom row on a weekend day",
+    "english": "{hours} Weekend Hours",
+    "placeholders": "hours",
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "calendar.refuse_week_over",
+    "where": "Levels list, a level that cannot start because the work week is over",
+    "english": "The work week is over",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "calendar.refuse_not_weekend",
+    "where": "Levels list, a level that cannot be played at the weekend",
+    "english": "Not a weekend level",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "calendar.refuse_too_long",
+    "where": "Levels list, a level longer than the hours left",
+    "english": "Too long for the hours left",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.end_work_week",
+    "where": "Office, button on Friday",
+    "english": "End the Work Week",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.end_work_week_title",
+    "where": "Office, confirm panel heading",
+    "english": "End the work week?",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.end_work_week_body",
+    "where": "Office, confirm panel text",
+    "english": "You still have {hours} work hours this week. End the work week now?",
+    "placeholders": "hours",
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.end_work_week_yes",
+    "where": "Office, confirm panel button",
+    "english": "End the Work Week",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.week_over_title",
+    "where": "Office, panel heading when the work week has ended",
+    "english": "The work week is over",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.week_over_body",
+    "where": "Office, panel text when the work week has ended",
+    "english": "The work week is over. Work the weekend, or go home?",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.weekend_work",
+    "where": "Office, panel button to play the weekend",
+    "english": "Work the Weekend",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.go_home",
+    "where": "Office, button and panel button that end the week",
+    "english": "Pay Party Dues and Go Home",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.new_week_title",
+    "where": "Office, popup heading when a new week starts",
+    "english": "A new week",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.new_week_body",
+    "where": "Office, popup text when a new week starts",
+    "english": "The week is over. A new week begins on {date}.",
+    "placeholders": "date",
+    "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "office.new_week_go",
+    "where": "Office, popup button when a new week starts",
+    "english": "Start the Week",
+    "placeholders": null,
+    "notes": "2026-10-23 calendar."
   }
 ]
