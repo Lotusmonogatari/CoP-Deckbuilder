@@ -2407,10 +2407,10 @@ Four background assets, shown behind every hosted dinner and walking tour (the S
 
 | Asset ID | File | What it is | How you get it |
 |---|---|---|---|
-| `DINING` | `assets/backgrounds/DINING.png` | The default dining room | Always |
-| `DINING_ALT` | `assets/backgrounds/DINING_ALT.png` | Garden Pavilion Dining Room | Buy **CP03** for **50,000円** |
-| `TOUR` | `assets/backgrounds/TOUR.png` | The default walking route | Always |
-| `TOUR_ALT` | `assets/backgrounds/TOUR_ALT.png` | Mountain Trail Route | Buy **CP04** for **75 XP** |
+| `DINING` | `assets/backgrounds/DINING.png` | Tasteful Dining Hall (default) | Always |
+| `DINING_ALT` | `assets/backgrounds/DINING_ALT.png` | Grand Lakeside Dining Hall | Buy **CP03** for **50,000円** |
+| `TOUR` | `assets/backgrounds/TOUR.png` | Suburban Street Tour (default) | Always |
+| `TOUR_ALT` | `assets/backgrounds/TOUR_ALT.png` | City Corridor Tour | Buy **CP04** for **75 XP** |
 
 Cosmetic package icons: `assets/icons/Dining_Alt.png` and `assets/icons/Tour_Alt.png`. All six are listed in the workbook's Assets tab (1080 x 2340 for backgrounds, 256 x 256 for icons).
 
