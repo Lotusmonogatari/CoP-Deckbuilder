@@ -1251,6 +1251,22 @@ SHEETS = {
             ("Win ΔBO14", "win_delta_bo14", "range"),
             ("Win ΔBO15", "win_delta_bo15", "range"),
             ("Win ΔBO16", "win_delta_bo16", "range"),
+            ("Win ΔBO17", "win_delta_bo17", "range"),
+            ("Win ΔBO18", "win_delta_bo18", "range"),
+            ("Win ΔBO19", "win_delta_bo19", "range"),
+            ("Win ΔBO20", "win_delta_bo20", "range"),
+            ("Win ΔBO21", "win_delta_bo21", "range"),
+            ("Win ΔBO22", "win_delta_bo22", "range"),
+            ("Win ΔBO23", "win_delta_bo23", "range"),
+            ("Win ΔBO24", "win_delta_bo24", "range"),
+            ("Win ΔBO25", "win_delta_bo25", "range"),
+            ("Win ΔBO26", "win_delta_bo26", "range"),
+            ("Win ΔBO27", "win_delta_bo27", "range"),
+            ("Win ΔBO28", "win_delta_bo28", "range"),
+            ("Win ΔBO29", "win_delta_bo29", "range"),
+            ("Win ΔBO30", "win_delta_bo30", "range"),
+            ("Win ΔBO31", "win_delta_bo31", "range"),
+            ("Win ΔBO32", "win_delta_bo32", "range"),
             # Blank/No (the default) behaves exactly as before: a completed
             # level is still shown, cooldown and all. "Yes" is the new
             # exception — a level marked this way disappears from the
@@ -2293,7 +2309,7 @@ def validate(data, report):
             )
 
     # --- levels --------------------------------------------------------------
-    booster_delta_keys = [f"win_delta_bo{n:02d}" for n in range(1, 17)]
+    booster_delta_keys = [f"win_delta_bo{n:02d}" for n in range(1, 33)]
     bills_used_by = {}   # bill_id -> the level(s) that name it, for the duplicate check below
     for level in data["levels"]:
         lid = level["level_id"]

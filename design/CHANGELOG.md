@@ -2321,3 +2321,16 @@ Plan: `design/proposals/DISCARD_CARDS_PLAN_2026-10-21.md` (approved).
 ### Whip the vote (2026-10-22, Cameron)
 
 Plan: `design/proposals/PARTY_CAPITAL_IDEATION_2026-10-22.md` (option 2). On the Floor Vote screen of any bill the player can spend **stored Party support** to whip extra members of their own party to their pick. **Base cost 10 per extra vote; 3x (30) when the pick goes against the party's position on the bill** (Supportive party: anything but Aye; Opposed party: anything but Nay; a Neutral party has no position to go against). New Balance levers: `Whip: Base Cost` 10, `Whip: Against Party Multiplier` 3, `Whip: Max Per Vote` 3, `Whip: Party Support Floor` 30 (drafts for the last two): stored Party support may never be spent below the floor, so a whip cannot push the player into the party crisis. Pure arithmetic in `VoteWhip`; `FloorVoteEngine.set_whips()`, `whip_capacity()` (the party's seats outside the pick), `own_disposition()` and `whips_applied()` (whipped seats move before the influence swing, like won-over seats, and count as influence for the flip cue); `GameState.spend_party_support()` records "whipping the vote on {bill}" in Your Record. UI: a "Whip the vote" row with Whip fewer / Whip more, the preview lines add the whip cost, and each vote button names its price (greyed when unaffordable); the result says how many were whipped and what it cost. The vote buttons now wrap their text so a long price line cannot widen the screen. Tests: `tests/test_vote_whip.gd`, `tests/interaction/whip_test.tscn` (real clicks, in `verify.sh`); How to Play HT28. Not built: the other opportunities in the ideation (Level Intro boosts, a whip button in battle, a party-whip visitor, a backing, a shop item).
+
+## Organization value pass: bigger backings, second backings, newer organizations' level rewards (2026-10-23, Cameron)
+
+An analysis of what each organization is worth found the Yen and XP win payouts were 0.5 to 3% of a level's income (about 195,000 Yen and 460 XP per won level), and eight organizations' backings reached 9% of levels or fewer. All workbook values, no new mechanics.
+
+| Change | Detail |
+|---|---|
+| Payouts raised | M20 2,500 to 20,000 Yen; M38 3,000 to 25,000; M15 2,000 to 15,000; M05 1,000 to 8,000; M28 1,500 to 12,000; M06 15 to 45 XP; M43 10 to 30 XP. M20 and M38 cost 5 more Reputation to activate. |
+| Start bonuses raised | M22, M37, M42, M36, M30 from +10 to +15; M29 from +5 to +10. |
+| Eight second backings (M49 to M56) | Draft names and values, each a win payout: BO07 +1 Constituency support, BO23 +12,000 Yen, BO30 +1, BO06 +1, BO14 +1, BO22 +25 XP, BO15 +1 Party support, BO28 +20 XP. Linked in the Boosters tab. |
+| Levels tab: Win ΔBO17 to Win ΔBO32 | Sixteen new columns in the same range format as Win ΔBO01 to BO16 (columns AP to BE). The engine already read any `win_delta_boNN` column; the exporter's column list and check now cover all 32 organizations. 22 bill levels carry draft 0-1 values for the organizations their bill favors. |
+
+Not built (not approved): the vote-whip discount for ungated organizations, and the tiered standing needed to buy a backing. Test: `test_game_state_level_bonus.gd` covers the new columns on real levels.

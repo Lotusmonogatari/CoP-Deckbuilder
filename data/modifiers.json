@@ -96,13 +96,13 @@
       "BO10"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "Funds +1,000円 after successful completion of a level.",
+    "effect": "Funds +8,000円 after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
-    "effect_value": 1000.0,
+    "effect_value": 8000.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -118,13 +118,13 @@
       "BO09"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "+15 XP after successful completion of a level.",
+    "effect": "+45 XP after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "XP",
-    "effect_value": 15.0,
+    "effect_value": 45.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -272,13 +272,13 @@
       "BO10"
     ],
     "trigger_min_pct": 25.0,
-    "effect": "Funds +2,000円 after successful completion of a level.",
+    "effect": "Funds +15,000円 after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
-    "effect_value": 2000.0,
+    "effect_value": 15000.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -382,13 +382,13 @@
       "BO05"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "Funds +2,500円 after successful completion of a level.",
-    "reputation_cost": 5,
+    "effect": "Funds +20,000円 after successful completion of a level.",
+    "reputation_cost": 10,
     "jiban_cost": 0,
     "funds_cost": 0,
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
-    "effect_value": 2500.0,
+    "effect_value": 20000.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -426,13 +426,13 @@
       "BO07"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "ST13 Committee on Agriculture starts with +10 Favorability.",
+    "effect": "ST13 Committee on Agriculture starts with +15 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST13; ST127",
-    "effect_value": 10.0,
+    "effect_value": 15.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -558,13 +558,13 @@
       "BO13"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "Funds +1,500円 after successful completion of a level.",
+    "effect": "Funds +12,000円 after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
-    "effect_value": 1500.0,
+    "effect_value": 12000.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -580,13 +580,13 @@
       "BO14"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "ST01 Special Committee starts with +5 Members.",
+    "effect": "ST01 Special Committee starts with +10 Members.",
     "reputation_cost": 0,
     "jiban_cost": 5,
     "funds_cost": 0,
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST01; ST219; ST244; ST254",
-    "effect_value": 5.0,
+    "effect_value": 10.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -602,13 +602,13 @@
       "BO15"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "ST18 Committee of the Cabinet starts with +10 Consensus.",
+    "effect": "ST18 Committee of the Cabinet starts with +15 Consensus.",
     "reputation_cost": 10,
     "jiban_cost": 10,
     "funds_cost": 0,
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST18",
-    "effect_value": 10.0,
+    "effect_value": 15.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -712,13 +712,13 @@
       "BO22"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "ST11 Committee on War starts with +10 Favorability.",
+    "effect": "ST11 Committee on War starts with +15 Favorability.",
     "reputation_cost": 10,
     "jiban_cost": 5,
     "funds_cost": 0,
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST11; ST143; ST206; ST211; ST220",
-    "effect_value": 10.0,
+    "effect_value": 15.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -734,13 +734,13 @@
       "BO23"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "ST09 Committee on Ethics and Prosecution starts with +10 Favorability.",
+    "effect": "ST09 Committee on Ethics and Prosecution starts with +15 Favorability.",
     "reputation_cost": 5,
     "jiban_cost": 5,
     "funds_cost": 0,
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST09; ST172; ST195; ST251",
-    "effect_value": 10.0,
+    "effect_value": 15.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -756,13 +756,13 @@
       "BO24"
     ],
     "trigger_min_pct": 30.0,
-    "effect": "Funds +3,000円 after successful completion of a level.",
-    "reputation_cost": 10,
+    "effect": "Funds +25,000円 after successful completion of a level.",
+    "reputation_cost": 15,
     "jiban_cost": 0,
     "funds_cost": 0,
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "Yen",
-    "effect_value": 3000.0,
+    "effect_value": 25000.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -844,13 +844,13 @@
       "BO28"
     ],
     "trigger_min_pct": 20.0,
-    "effect": "ST12 Committee on the National Assembly starts with +10 Favorability.",
+    "effect": "ST12 Committee on the National Assembly starts with +15 Favorability.",
     "reputation_cost": 10,
     "jiban_cost": 5,
     "funds_cost": 0,
     "effect_type": "STAGE_START_BONUS",
     "effect_target": "ST12; ST163; ST202; ST241; ST250",
-    "effect_value": 10.0,
+    "effect_value": 15.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -866,13 +866,13 @@
       "BO29"
     ],
     "trigger_min_pct": 15.0,
-    "effect": "+10 XP after successful completion of a level.",
+    "effect": "+30 XP after successful completion of a level.",
     "reputation_cost": 5,
     "jiban_cost": 0,
     "funds_cost": 0,
     "effect_type": "RESOURCE_BONUS_ON_WIN",
     "effect_target": "XP",
-    "effect_value": 10.0,
+    "effect_value": 30.0,
     "duration_units": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
@@ -987,6 +987,182 @@
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO32"
+    ]
+  },
+  {
+    "mod_id": "M49",
+    "name_en": "Fishing Port Subsidies",
+    "name_jp": "漁港への助成",
+    "romaji": "Gyokō e no Josei",
+    "trigger_segment_or_booster": [
+      "BO07"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+1 Constituency support after successful completion of a level.",
+    "reputation_cost": 0,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "Jiban",
+    "effect_value": 1.0,
+    "duration_units": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO07"
+    ]
+  },
+  {
+    "mod_id": "M50",
+    "name_en": "Taxpayers' Dividend",
+    "name_jp": "納税者への還元",
+    "romaji": "Nōzeisha e no Kangen",
+    "trigger_segment_or_booster": [
+      "BO23"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "Funds +12,000円 after successful completion of a level.",
+    "reputation_cost": 5,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "Yen",
+    "effect_value": 12000.0,
+    "duration_units": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO23"
+    ]
+  },
+  {
+    "mod_id": "M51",
+    "name_en": "Rural Revival Fund",
+    "name_jp": "地域再生基金",
+    "romaji": "Chiiki Saisei Kikin",
+    "trigger_segment_or_booster": [
+      "BO30"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+1 Constituency support after successful completion of a level.",
+    "reputation_cost": 0,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "Jiban",
+    "effect_value": 1.0,
+    "duration_units": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO30"
+    ]
+  },
+  {
+    "mod_id": "M52",
+    "name_en": "Neighborhood Goodwill",
+    "name_jp": "町内会の信頼",
+    "romaji": "Chōnaikai no Shinrai",
+    "trigger_segment_or_booster": [
+      "BO06"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+1 Constituency support after successful completion of a level.",
+    "reputation_cost": 0,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "Jiban",
+    "effect_value": 1.0,
+    "duration_units": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO06"
+    ]
+  },
+  {
+    "mod_id": "M53",
+    "name_en": "Commuter Goodwill",
+    "name_jp": "通勤者の信頼",
+    "romaji": "Tsūkinsha no Shinrai",
+    "trigger_segment_or_booster": [
+      "BO14"
+    ],
+    "trigger_min_pct": 15.0,
+    "effect": "+1 Constituency support after successful completion of a level.",
+    "reputation_cost": 0,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "Jiban",
+    "effect_value": 1.0,
+    "duration_units": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO14"
+    ]
+  },
+  {
+    "mod_id": "M54",
+    "name_en": "Veterans' Counsel",
+    "name_jp": "退役軍人会の助言",
+    "romaji": "Taieki Gunjinkai no Jogen",
+    "trigger_segment_or_booster": [
+      "BO22"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "+25 XP after successful completion of a level.",
+    "reputation_cost": 5,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "XP",
+    "effect_value": 25.0,
+    "duration_units": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO22"
+    ]
+  },
+  {
+    "mod_id": "M55",
+    "name_en": "Traditionalist Whip Support",
+    "name_jp": "伝統派の支持",
+    "romaji": "Dentōha no Shiji",
+    "trigger_segment_or_booster": [
+      "BO15"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "+1 Party support after successful completion of a level.",
+    "reputation_cost": 0,
+    "jiban_cost": 5,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "PartySupport",
+    "effect_value": 1.0,
+    "duration_units": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO15"
+    ]
+  },
+  {
+    "mod_id": "M56",
+    "name_en": "Ainu Council Counsel",
+    "name_jp": "アイヌ評議会の助言",
+    "romaji": "Ainu Hyōgikai no Jogen",
+    "trigger_segment_or_booster": [
+      "BO28"
+    ],
+    "trigger_min_pct": 20.0,
+    "effect": "+20 XP after successful completion of a level.",
+    "reputation_cost": 5,
+    "jiban_cost": 0,
+    "funds_cost": 0,
+    "effect_type": "RESOURCE_BONUS_ON_WIN",
+    "effect_target": "XP",
+    "effect_value": 20.0,
+    "duration_units": null,
+    "trigger_segment_ids": [],
+    "trigger_booster_ids": [
+      "BO28"
     ]
   }
 ]

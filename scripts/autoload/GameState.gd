@@ -1360,7 +1360,7 @@ func _pay_level_rewards() -> void:
 		_apply_meta_reward(name, ModifierEffects.level_win_resource_bonus(owned, name))
 
 
-## The level's own "bonus_win_range_*" and "win_delta_bo01..16" columns,
+## The level's own "bonus_win_range_*" and "win_delta_bo01..32" columns,
 ## rolled and applied. Called on the same LEVEL win as _pay_level_rewards().
 ##
 ## [DEFAULT] "bonus win" is not a concept CLAUDE.md or the rest of the code
