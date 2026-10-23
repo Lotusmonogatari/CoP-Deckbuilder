@@ -880,6 +880,9 @@ SHEETS = {
             # 2026-10-18: how many units of the game clock finishing this stage
             # costs (blank = 1). Never shown to the player.
             ("Time Units", "time_units", "int"),
+            # 2026-10-23: name awareness a WIN of this stage earns (blank = 0).
+            ("Win ΔDistrict Awareness", "win_delta_awareness_district", "int"),
+            ("Win ΔNational Awareness", "win_delta_awareness_national", "int"),
             # 2026-10-18: the stage whose background picture this stage uses
             # when it has none of its own (a Town Hall about one bill uses
             # ST05's). Blank = its own ID only.

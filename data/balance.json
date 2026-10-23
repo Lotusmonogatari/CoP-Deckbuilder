@@ -126,5 +126,8 @@
   "awareness_start_district": 20,
   "awareness_start_national": 10,
   "awareness_maximum": 100,
+  "awareness_flipped_bill_national": 3,
+  "awareness_passed_own_bill_national": 5,
+  "awareness_passed_own_bill_district": 2,
   "xp_tiers": {}
 }

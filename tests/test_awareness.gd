@@ -64,3 +64,28 @@ func test_a_non_combat_stage_never_costs_awareness() -> void:
 func test_awareness_is_saved_with_the_run() -> void:
 	GameState.apply_awareness_delta("district", 7)
 	assert_eq(int((GameState.to_save()["awareness"] as Dictionary)["district"]), 27)
+
+
+func test_winning_a_town_hall_raises_district_awareness() -> void:
+	GameState.begin_level(LevelRunner.new(BattleSetup.expand_level({"level_id": "LVAW3", "stage_1": "ST05"})))
+	GameState.finish_stage(LevelRunner.WON, 0, [], false, 0)
+	assert_eq(int(GameState.awareness["district"]), 22)
+	assert_eq(int(GameState.awareness["national"]), 10)
+	GameState.level_cleared_units.erase("LVAW3")
+	GameState.level_last_completed_at.erase("LVAW3")
+
+
+func test_losing_a_press_conference_earns_no_national_awareness() -> void:
+	GameState.begin_level(LevelRunner.new(BattleSetup.expand_level({"level_id": "LVAW4", "stage_1": "ST04"})))
+	GameState.finish_stage(LevelRunner.LOST, 0, [], false, 0)
+	assert_eq(int(GameState.awareness["national"]), 10)
+	GameState.level_cleared_units.erase("LVAW4")
+	GameState.level_last_completed_at.erase("LVAW4")
+
+
+func test_a_flipped_bill_adds_national_awareness() -> void:
+	var before := int(GameState.awareness["national"])
+	GameState.bills_flipped_by_influence.erase("BI99")
+	GameState.record_bill_flip("BI99")
+	assert_eq(int(GameState.awareness["national"]), before + 3)
+	GameState.bills_flipped_by_influence.erase("BI99")

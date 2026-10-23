@@ -1370,6 +1370,9 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	if outcome == LevelRunner.WON and str(stage.get("stage_id", "")) == MpVisit.FIGHT_STAGE:
 		_won_over_member()
 	_apply_stage_rewards(stage, outcome, score)
+	if outcome == LevelRunner.WON:
+		apply_awareness_delta("district", MetaRules.stage_delta(stage, "win_delta_awareness_district"))
+		apply_awareness_delta("national", MetaRules.stage_delta(stage, "win_delta_awareness_national"))
 	_apply_question_boosters(boosters, displeased_boosters, opposed_boosters, booster_tally)
 	_apply_instant_win_penalties(crushed_boosters)
 	if outcome == LevelRunner.WON and str(stage.get("mode", "")) == "Combat":
@@ -2713,6 +2716,7 @@ func record_bill_flip(bill_id: String) -> void:
 	if bill_id.is_empty() or bills_flipped_by_influence.has(bill_id):
 		return
 	bills_flipped_by_influence.append(bill_id)
+	apply_awareness_delta("national", int(DataDB.balance.get("awareness_flipped_bill_national", 0)))
 
 
 ## Writes one Floor Vote into the statute book and applies that bill's
@@ -3127,6 +3131,8 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 		"backing_org": org if passed and int(outcome["free_backing_units"]) > 0 else "",
 		"components": (state.get("components", []) as Array).duplicate()}
 	if passed:
+		apply_awareness_delta("national", int(DataDB.balance.get("awareness_passed_own_bill_national", 0)))
+		apply_awareness_delta("district", int(DataDB.balance.get("awareness_passed_own_bill_district", 0)))
 		_apply_reward_entries(effects)
 		for component_id: Variant in (state.get("components", []) as Array):
 			if not enacted_components.has(component_id):
