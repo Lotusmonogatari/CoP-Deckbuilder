@@ -4483,5 +4483,1629 @@
         "delta": -3
       }
     ]
+  },
+  {
+    "visitor_id": "VI111",
+    "name_en": "Haruo Kimura",
+    "name_jp": "木村春男",
+    "romaji": "Haruo Kimura",
+    "title": "Bakery Owner",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI112",
+    "name_en": "Emi Sasaki",
+    "name_jp": "佐々木恵美",
+    "romaji": "Emi Sasaki",
+    "title": "Commuter Waiting for the Bus",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO14",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI113",
+    "name_en": "Ryo Takeda",
+    "name_jp": "武田亮",
+    "romaji": "Ryo Takeda",
+    "title": "Convenience Store Clerk",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI114",
+    "name_en": "Sachiko Ono",
+    "name_jp": "小野幸子",
+    "romaji": "Sachiko Ono",
+    "title": "Retired Schoolteacher",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO06",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI115",
+    "name_en": "Daichi Mori",
+    "name_jp": "森大地",
+    "romaji": "Daichi Mori",
+    "title": "Delivery Driver",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO14",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI116",
+    "name_en": "Mayumi Hayashi",
+    "name_jp": "林真由美",
+    "romaji": "Mayumi Hayashi",
+    "title": "Fishmonger",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI117",
+    "name_en": "Kenta Yamaguchi",
+    "name_jp": "山口健太",
+    "romaji": "Kenta Yamaguchi",
+    "title": "Student Walking Home",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO11",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI118",
+    "name_en": "Fumiko Inoue",
+    "name_jp": "井上文子",
+    "romaji": "Fumiko Inoue",
+    "title": "Florist",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI119",
+    "name_en": "Takuya Fujita",
+    "name_jp": "藤田拓也",
+    "romaji": "Takuya Fujita",
+    "title": "Taxi Driver",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO14",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI120",
+    "name_en": "Yoshie Nakajima",
+    "name_jp": "中島良枝",
+    "romaji": "Yoshie Nakajima",
+    "title": "Grandmother with a Shopping Cart",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI121",
+    "name_en": "Shinji Ishikawa",
+    "name_jp": "石川慎二",
+    "romaji": "Shinji Ishikawa",
+    "title": "Barber",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI122",
+    "name_en": "Reiko Tanabe",
+    "name_jp": "田辺玲子",
+    "romaji": "Reiko Tanabe",
+    "title": "Pharmacist",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI123",
+    "name_en": "Masato Kondo",
+    "name_jp": "近藤正人",
+    "romaji": "Masato Kondo",
+    "title": "Construction Worker on Break",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO06",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI124",
+    "name_en": "Michiko Aoki",
+    "name_jp": "青木美智子",
+    "romaji": "Michiko Aoki",
+    "title": "Café Owner",
+    "stages": [
+      "ST267"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI125",
+    "name_en": "Kaori Matsuda",
+    "name_jp": "松田香織",
+    "romaji": "Kaori Matsuda",
+    "title": "Night-Shift Nurse",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI126",
+    "name_en": "Tetsuo Nishida",
+    "name_jp": "西田哲夫",
+    "romaji": "Tetsuo Nishida",
+    "title": "Retired Fisherman with a Bad Back",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI127",
+    "name_en": "Yuko Sakamoto",
+    "name_jp": "坂本裕子",
+    "romaji": "Yuko Sakamoto",
+    "title": "Mother with a Feverish Toddler",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI128",
+    "name_en": "Hiroshi Ueda",
+    "name_jp": "上田浩",
+    "romaji": "Hiroshi Ueda",
+    "title": "Clinic Director",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI129",
+    "name_en": "Natsuki Hirano",
+    "name_jp": "平野夏樹",
+    "romaji": "Natsuki Hirano",
+    "title": "Home-Care Worker",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI130",
+    "name_en": "Genji Okada",
+    "name_jp": "岡田源二",
+    "romaji": "Genji Okada",
+    "title": "Farm Cooperative Member, Knee Pain",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI131",
+    "name_en": "Ayako Kudo",
+    "name_jp": "工藤綾子",
+    "romaji": "Ayako Kudo",
+    "title": "Social Worker",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI132",
+    "name_en": "Katsumi Shimizu",
+    "name_jp": "清水勝美",
+    "romaji": "Katsumi Shimizu",
+    "title": "Ambulance Driver",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI133",
+    "name_en": "Megumi Ishii",
+    "name_jp": "石井恵",
+    "romaji": "Megumi Ishii",
+    "title": "Dentist",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI134",
+    "name_en": "Taro Yoshida",
+    "name_jp": "吉田太郎",
+    "romaji": "Taro Yoshida",
+    "title": "Hospital Cleaner",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO09",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI135",
+    "name_en": "Satomi Morita",
+    "name_jp": "森田里美",
+    "romaji": "Satomi Morita",
+    "title": "Pregnant Woman at the Check-up",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI136",
+    "name_en": "Isamu Hasegawa",
+    "name_jp": "長谷川勇",
+    "romaji": "Isamu Hasegawa",
+    "title": "Retired Teacher in a Wheelchair",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI137",
+    "name_en": "Noriko Maeda",
+    "name_jp": "前田典子",
+    "romaji": "Noriko Maeda",
+    "title": "Pharmacy Assistant",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI138",
+    "name_en": "Ichiro Kawai",
+    "name_jp": "河合一郎",
+    "romaji": "Ichiro Kawai",
+    "title": "Elderly Man Waiting for a Blood Test",
+    "stages": [
+      "ST268"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI139",
+    "name_en": "Akemi Suzuki",
+    "name_jp": "鈴木明美",
+    "romaji": "Akemi Suzuki",
+    "title": "Elementary Teacher",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI140",
+    "name_en": "Masao Taniguchi",
+    "name_jp": "谷口正夫",
+    "romaji": "Masao Taniguchi",
+    "title": "Principal",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO15",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI141",
+    "name_en": "Chihiro Endo",
+    "name_jp": "遠藤千尋",
+    "romaji": "Chihiro Endo",
+    "title": "Parent of Three",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI142",
+    "name_en": "Ryuji Sugiyama",
+    "name_jp": "杉山龍二",
+    "romaji": "Ryuji Sugiyama",
+    "title": "Cram School Tutor",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO11",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI143",
+    "name_en": "Mika Kobayashi",
+    "name_jp": "小林美香",
+    "romaji": "Mika Kobayashi",
+    "title": "School Nurse",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI144",
+    "name_en": "Taiga Ogawa",
+    "name_jp": "小川大雅",
+    "romaji": "Taiga Ogawa",
+    "title": "High School Student Council President",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO11",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI145",
+    "name_en": "Hanae Hirata",
+    "name_jp": "平田花恵",
+    "romaji": "Hanae Hirata",
+    "title": "PTA Chair",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI146",
+    "name_en": "Kazuo Hayakawa",
+    "name_jp": "早川和夫",
+    "romaji": "Kazuo Hayakawa",
+    "title": "Retired Principal",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO15",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI147",
+    "name_en": "Sayaka Matsumoto",
+    "name_jp": "松本さやか",
+    "romaji": "Sayaka Matsumoto",
+    "title": "Young Teacher on Contract",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO09",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI148",
+    "name_en": "Eiji Nakamura",
+    "name_jp": "中村英二",
+    "romaji": "Eiji Nakamura",
+    "title": "School Bus Driver",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO06",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI149",
+    "name_en": "Yoko Takeuchi",
+    "name_jp": "竹内洋子",
+    "romaji": "Yoko Takeuchi",
+    "title": "Librarian",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO11",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI150",
+    "name_en": "Satoshi Yamamoto",
+    "name_jp": "山本聡",
+    "romaji": "Satoshi Yamamoto",
+    "title": "Special Needs Teacher",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI151",
+    "name_en": "Rina Fukuda",
+    "name_jp": "福田莉奈",
+    "romaji": "Rina Fukuda",
+    "title": "Board-of-Education Member",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO04",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO04",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI152",
+    "name_en": "Misaki Hori",
+    "name_jp": "堀美咲",
+    "romaji": "Misaki Hori",
+    "title": "Kindergarten Teacher",
+    "stages": [
+      "ST269"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI153",
+    "name_en": "Shigeru Ito",
+    "name_jp": "伊藤茂",
+    "romaji": "Shigeru Ito",
+    "title": "Potato Grower",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI154",
+    "name_en": "Kimiko Hasegawa",
+    "name_jp": "長谷川君子",
+    "romaji": "Kimiko Hasegawa",
+    "title": "Dairy Farmer",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI155",
+    "name_en": "Tadashi Kato",
+    "name_jp": "加藤正",
+    "romaji": "Tadashi Kato",
+    "title": "Scallop Fisher",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO07",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI156",
+    "name_en": "Hiromi Sakurai",
+    "name_jp": "桜井裕美",
+    "romaji": "Hiromi Sakurai",
+    "title": "Market Stall Vendor (Pickles)",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI157",
+    "name_en": "Mamoru Tsuchiya",
+    "name_jp": "土屋守",
+    "romaji": "Mamoru Tsuchiya",
+    "title": "Apple Orchardist",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI158",
+    "name_en": "Etsuko Oshima",
+    "name_jp": "大島悦子",
+    "romaji": "Etsuko Oshima",
+    "title": "Co-op Clerk",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI159",
+    "name_en": "Kenzo Ikeda",
+    "name_jp": "池田健三",
+    "romaji": "Kenzo Ikeda",
+    "title": "Rice Farmer",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI160",
+    "name_en": "Yumiko Hoshino",
+    "name_jp": "星野由美子",
+    "romaji": "Yumiko Hoshino",
+    "title": "Seaweed Producer",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO07",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI161",
+    "name_en": "Goro Hamamoto",
+    "name_jp": "浜本吾郎",
+    "romaji": "Goro Hamamoto",
+    "title": "Sheep Farmer",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI162",
+    "name_en": "Chieko Wakabayashi",
+    "name_jp": "若林千恵子",
+    "romaji": "Chieko Wakabayashi",
+    "title": "Direct-Sales Roadside Stand",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI163",
+    "name_en": "Haruki Nagano",
+    "name_jp": "長野春樹",
+    "romaji": "Haruki Nagano",
+    "title": "Young Farmer, New Arrival",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO30",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI164",
+    "name_en": "Setsuko Omura",
+    "name_jp": "大村節子",
+    "romaji": "Setsuko Omura",
+    "title": "Cheese Maker",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI165",
+    "name_en": "Toshio Kuroda",
+    "name_jp": "黒田敏夫",
+    "romaji": "Toshio Kuroda",
+    "title": "Wholesale Market Buyer",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI166",
+    "name_en": "Yasuo Noda",
+    "name_jp": "野田安雄",
+    "romaji": "Yasuo Noda",
+    "title": "Sake Brewer",
+    "stages": [
+      "ST270"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 2
+        }
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ]
   }
 ]
