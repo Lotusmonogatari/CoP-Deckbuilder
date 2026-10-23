@@ -2608,7 +2608,8 @@ func use_item_in_office(item_id: String, chosen_target: String = "") -> Dictiona
 		return {"ok": true, "message": (Text.say("item.used_with_outcome",
 			{"name": name, "outcome": outcome}) if not outcome.is_empty()
 			else Text.say("item.used", {"name": name})) + gathering,
-			"plain": Text.say("item.used", {"name": name}), "effects": _effect_chips(applied)}
+			"plain": Text.say("item.used", {"name": name}), "effects": _effect_chips(applied),
+			"image": str(item.get("image", "")) if item.get("image") != null else ""}
 
 	var level := Items.duration(item) == Items.DURATION_LEVEL
 	var lasts := Items.duration_units(item)

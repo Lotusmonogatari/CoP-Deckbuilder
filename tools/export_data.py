@@ -1155,6 +1155,7 @@ SHEETS = {
             ("Cooldown Hours", "cooldown_hours", "int"),
             ("Min District Awareness", "min_district_awareness", "int"),
             ("Min National Awareness", "min_national_awareness", "int"),
+            ("Image", "image", "str"),
         ],
     },
     "Event Choices": {
@@ -1216,6 +1217,9 @@ SHEETS = {
             ("Background Variant", "background_variant", "str"),
             ("Music: Office Sound", "music_office_sound", "str"),
             ("Music: Battle Sound", "music_battle_sound", "str"),
+            # 2026-10-23: purchasable alternatives for the dinner and the walking tour.
+            ("Dining Variant", "dining_variant", "str"),
+            ("Tour Variant", "tour_variant", "str"),
         ],
     },
     "Opponents": {
@@ -1427,6 +1431,8 @@ SHEETS = {
             ("Duration Units", "duration_units", "int"),
             # 2026-10-23: hours an item takes to use in the Office (blank = none).
             ("Hours", "hours", "int"),
+            # 2026-10-23: the picture shown when the item is used (a background ID).
+            ("Image", "image", "str"),
             ("Uses Per Turn", "uses_per_turn", "int"),
             ("Stack Cap", "stack_cap", "int"),
             ("Purchase Limit", "purchase_limit", "int"),

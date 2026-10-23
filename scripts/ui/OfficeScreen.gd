@@ -104,6 +104,7 @@ var _election_bar: ProgressBar
 var _events_button: Button
 var _events_panel: Overlay
 var _event_panel: Overlay
+var _gathering_panel: Overlay
 var _week_confirm_panel: Overlay
 var _week_over_panel: Overlay
 var _new_week_panel: Overlay
@@ -334,6 +335,10 @@ func _build_week_controls() -> void:
 	_events_panel = Overlay.new()
 	_events_panel.name = "EventsPanel"
 	add_child(_events_panel)
+	_gathering_panel = Overlay.new()
+	_gathering_panel.name = "GatheringPanel"
+	_gathering_panel.show_back = false
+	add_child(_gathering_panel)
 	_event_panel = Overlay.new()
 	_event_panel.name = "EventPanel"
 	# Once an event is on screen the only way on is a choice.
@@ -478,6 +483,31 @@ func _on_arrange_event(event_id: String) -> void:
 	_present_event(event_id, false)
 
 
+## The picture behind a gathering you hosted, with what came of it (2026-10-23):
+## DINING or TOUR, or the purchased alternative (CP03, CP04).
+func _show_gathering(result: Dictionary) -> void:
+	var rows: Array[Control] = [_picture_row(str(result.get("image", "")))]
+	rows.append(UiKit.line(str(result.get("message", ""))))
+	var done := Button.new()
+	done.name = "GatheringContinueButton"
+	done.custom_minimum_size = Vector2(0, 100)
+	done.text = Text.say("event.continue")
+	done.pressed.connect(_gathering_panel.close)
+	rows.append(done)
+	_gathering_panel.open(Text.say("event.gathering_title"), rows)
+
+
+## A background picture as a row in a panel; a missing picture shows a
+## placeholder labelled with its asset ID.
+func _picture_row(art_id: String) -> Control:
+	var art := PlaceholderArt.new()
+	art.name = "Picture_" + art_id
+	art.kind = PlaceholderArt.Kind.BACKGROUND
+	art.art_id = art_id
+	art.custom_minimum_size = Vector2(0, 420)
+	return art
+
+
 ## A random event may arrive now (never while a choice about the week is pending).
 func _show_random_event_if_due() -> void:
 	if GameState.is_in_level() or GameState.work_week_is_full():
@@ -493,6 +523,8 @@ func _present_event(event_id: String, arrived: bool) -> void:
 	if event.is_empty():
 		return
 	var rows: Array[Control] = []
+	if event.get("image") != null and not str(event["image"]).is_empty():
+		rows.append(_picture_row(str(event["image"])))
 	if arrived:
 		rows.append(UiKit.line(Text.say("event.heading_arrives"), "SmallLabel"))
 	rows.append(UiKit.line(str(event.get("flavor", ""))))
@@ -515,7 +547,11 @@ func _on_event_choice(event_id: String, letter: String) -> void:
 	var result := GameState.apply_event_choice(event_id, letter)
 	if not bool(result.get("ok", false)):
 		return
-	var rows: Array[Control] = [UiKit.line(str(result.get("result_text", "")))]
+	var rows: Array[Control] = []
+	var event_image: Variant = GameState.get_event(event_id).get("image")
+	if event_image != null and not str(event_image).is_empty():
+		rows.append(_picture_row(str(event_image)))
+	rows.append(UiKit.line(str(result.get("result_text", ""))))
 	for line: String in result.get("lines", []):
 		rows.append(UiKit.line(line, "SmallLabel"))
 	var chips := OrgChip.merged(result.get("chips", []))
@@ -1046,6 +1082,9 @@ func _build_inventory() -> void:
 		# A Training Session Coupon starts a free draw: show the card now.
 		if bool(result.get("opens_draw", false)):
 			_show_card_offer.call_deferred()
+		# A dinner or a walking tour shows its own picture.
+		if bool(result.get("ok", false)) and not str(result.get("image", "")).is_empty():
+			_show_gathering.call_deferred(result)
 	# Using an item from the Marketplace must reopen the WHOLE Marketplace
 	# (grid + Supplies), not narrow back to InventoryPanel's own plain grid
 	# view — see reopen's own doc comment.
@@ -1699,6 +1738,8 @@ func _cosmetics_slot_label(slot: String) -> String:
 		CosmeticPieces.OUTFIT: return Text.say("office.cosmetics_slot_outfit")
 		CosmeticPieces.BACKGROUND: return Text.say("office.cosmetics_slot_background")
 		CosmeticPieces.MUSIC: return Text.say("office.cosmetics_slot_music")
+		CosmeticPieces.DINING: return Text.say("office.cosmetics_slot_dining")
+		CosmeticPieces.TOUR: return Text.say("office.cosmetics_slot_tour")
 	return slot
 
 

@@ -5234,5 +5234,26 @@
     "english": "Not enough hours left for that.",
     "placeholders": null,
     "notes": "2026-10-23 hosting."
+  },
+  {
+    "key": "office.cosmetics_slot_dining",
+    "where": "Office, Cosmetics, slot heading for the dining room you host dinners in",
+    "english": "Dining room",
+    "placeholders": null,
+    "notes": "2026-10-23 dining and tour images."
+  },
+  {
+    "key": "office.cosmetics_slot_tour",
+    "where": "Office, Cosmetics, slot heading for the walking route",
+    "english": "Walking route",
+    "placeholders": null,
+    "notes": "2026-10-23 dining and tour images."
+  },
+  {
+    "key": "event.gathering_title",
+    "where": "Office, heading of the popup after hosting a dinner or a walking tour",
+    "english": "You hosted a gathering",
+    "placeholders": null,
+    "notes": "2026-10-23 dining and tour images."
   }
 ]

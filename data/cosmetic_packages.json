@@ -10,7 +10,9 @@
     "outfit_variant": "RED",
     "background_variant": null,
     "music_office_sound": null,
-    "music_battle_sound": null
+    "music_battle_sound": null,
+    "dining_variant": null,
+    "tour_variant": null
   },
   {
     "package_id": "CP02",
@@ -23,6 +25,38 @@
     "outfit_variant": null,
     "background_variant": "UPGRADED",
     "music_office_sound": null,
-    "music_battle_sound": null
+    "music_battle_sound": null,
+    "dining_variant": null,
+    "tour_variant": null
+  },
+  {
+    "package_id": "CP03",
+    "name_en": "Garden Pavilion Dining Room",
+    "name_jp": "庭園の座敷",
+    "description": "A quieter dining room that looks onto a garden, for the dinners you host.",
+    "icon": "Dining_Alt",
+    "cost_xp": null,
+    "cost_yen": 50000,
+    "outfit_variant": null,
+    "background_variant": null,
+    "music_office_sound": null,
+    "music_battle_sound": null,
+    "dining_variant": "ALT",
+    "tour_variant": null
+  },
+  {
+    "package_id": "CP04",
+    "name_en": "Mountain Trail Route",
+    "name_jp": "山道の散策路",
+    "description": "A scenic trail for the walking tours you host.",
+    "icon": "Tour_Alt",
+    "cost_xp": 75,
+    "cost_yen": null,
+    "outfit_variant": null,
+    "background_variant": null,
+    "music_office_sound": null,
+    "music_battle_sound": null,
+    "dining_variant": null,
+    "tour_variant": "ALT"
   }
 ]

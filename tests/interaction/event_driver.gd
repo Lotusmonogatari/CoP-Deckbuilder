@@ -18,6 +18,7 @@ func _run() -> void:
 	await _open_office()
 	await _walking_tour()
 	await _street_question()
+	await _gathering_picture()
 	print("")
 	if _failures.is_empty():
 		print("EVENT TEST: PASS")
@@ -93,6 +94,23 @@ func _street_question() -> void:
 	await get_tree().process_frame
 	_expect(GameState.discovered_levels.has("LV34"), "the event revealed the train bill level")
 	_expect(_levels_text(screen).contains("Shinkansen"), "and it now shows in the levels list")
+
+
+## The dinner and tour popup shows its own picture (a labelled placeholder until
+## the art is drawn): DINING, or TOUR.
+func _gathering_picture() -> void:
+	var screen := _screen()
+	screen._show_gathering({"image": "DINING", "message": "A fine evening."})
+	await get_tree().process_frame
+	var panel := screen.get_node("GatheringPanel") as Overlay
+	_expect(panel.visible, "the gathering popup opens")
+	_expect(panel.find_child("Picture_DINING", true, false) != null, "it shows the DINING picture")
+	_save_shot("event_gathering")
+	var done := panel.find_child("GatheringContinueButton", true, false) as Button
+	if done != null:
+		done.pressed.emit()
+	await get_tree().process_frame
+	_expect(not panel.visible, "Continue closes it")
 
 
 func _levels_text(screen: Node) -> String:

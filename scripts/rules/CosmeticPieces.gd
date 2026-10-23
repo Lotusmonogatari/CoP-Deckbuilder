@@ -15,7 +15,10 @@ extends RefCounted
 const OUTFIT := "outfit"
 const BACKGROUND := "background"
 const MUSIC := "music"
-const SLOTS := [OUTFIT, BACKGROUND, MUSIC]
+## The room dinners are hosted in, and the route walking tours take (2026-10-23).
+const DINING := "dining"
+const TOUR := "tour"
+const SLOTS := [OUTFIT, BACKGROUND, MUSIC, DINING, TOUR]
 
 
 ## A blank-safe string read: a JSON null cell (a genuinely blank workbook
@@ -38,6 +41,10 @@ static func has_piece(package: Dictionary, slot: String) -> bool:
 		MUSIC:
 			return not field(package, "music_office_sound").is_empty() \
 				or not field(package, "music_battle_sound").is_empty()
+		DINING:
+			return not field(package, "dining_variant").is_empty()
+		TOUR:
+			return not field(package, "tour_variant").is_empty()
 	return false
 
 

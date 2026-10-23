@@ -2400,3 +2400,18 @@ All three levels have cooldowns (16, 8 and 24 hours). Every dilemma obeys the ex
 | **Festival content** | The two new festivals seat ten constituents each. Each has 8 new seasonal visitors (VI95 to VI102 harvest, VI103 to VI110 winter) with two dilemmas apiece (VQ250 to VQ281); the original 14 local visitors (VI81 to VI94) also appear at all three festivals, so each draw is ten from a pool of 22. |
 
 All text is draft for Cameron to rewrite. Tests: `tests/test_gated_levels.gd` (half per tier, every gated level reachable, hosting reveals one at a time, the dinner and tour take four hours and respect the calendar, all festivals seat ten distinct constituents).
+
+## Dining room and walking route pictures, with purchasable alternatives (2026-10-23, Cameron)
+
+Four background assets, shown behind every hosted dinner and walking tour (the SH19 and SH20 result popup and the dinner and tour events). A missing picture shows a placeholder labelled with its ID until the art is drawn.
+
+| Asset ID | File | What it is | How you get it |
+|---|---|---|---|
+| `DINING` | `assets/backgrounds/DINING.png` | The default dining room | Always |
+| `DINING_ALT` | `assets/backgrounds/DINING_ALT.png` | Garden Pavilion Dining Room | Buy **CP03** for **50,000円** |
+| `TOUR` | `assets/backgrounds/TOUR.png` | The default walking route | Always |
+| `TOUR_ALT` | `assets/backgrounds/TOUR_ALT.png` | Mountain Trail Route | Buy **CP04** for **75 XP** |
+
+Cosmetic package icons: `assets/icons/Dining_Alt.png` and `assets/icons/Tour_Alt.png`. All six are listed in the workbook's Assets tab (1080 x 2340 for backgrounds, 256 x 256 for icons).
+
+Schema: Cosmetic Packages gains **Dining Variant** and **Tour Variant** (two new equip slots, "Dining room" and "Walking route", in Cosmetics); Shop and Events gain an **Image** column (SH19 and EV02 use DINING, SH20 and EV01 use TOUR). Each of those has a header note. Tests: `tests/test_dining_and_tour_images.gd`; the events real-click test checks the popup.
