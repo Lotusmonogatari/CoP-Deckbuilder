@@ -1,0 +1,86 @@
+[
+  {
+    "effect_id": "AE01",
+    "meter": "National",
+    "condition": "At least",
+    "threshold": 80,
+    "effect_type": "DUES_REDUCTION",
+    "target": null,
+    "value": 100000,
+    "timing": "State",
+    "stacking": "Flat",
+    "note": "Cameron 2026-10-23. National Awareness at 80 or more takes 100,000円 off the base party dues."
+  },
+  {
+    "effect_id": "AE02",
+    "meter": "District",
+    "condition": "At least",
+    "threshold": 80,
+    "effect_type": "FREE_TRAINING_COUPON",
+    "target": null,
+    "value": 1,
+    "timing": "Week end",
+    "stacking": "Flat",
+    "note": "Cameron 2026-10-23. District Awareness at 80 or more earns one free card gacha (a Training Session Coupon) at each week end."
+  },
+  {
+    "effect_id": "AE03",
+    "meter": "National",
+    "condition": "At least",
+    "threshold": 65,
+    "effect_type": "STAGE_START_BONUS",
+    "target": "ST04; ST06; ST19; ST26; ST30; ST32; ST41; ST43; ST44; ST46; ST55; ST64; ST70; ST73; ST83; ST84; ST91; ST92; ST98; ST99; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST188; ST190; ST194; ST196; ST203; ST205; ST210; ST218; ST224; ST234; ST239; ST245; ST249; ST257",
+    "value": 5,
+    "timing": "State",
+    "stacking": "Flat",
+    "note": "Cameron 2026-10-23. National Awareness at 65 or more: +5 starting support in Media Ambush, Press Conference and TV Debate rooms."
+  },
+  {
+    "effect_id": "AE04",
+    "meter": "District",
+    "condition": "At least",
+    "threshold": 65,
+    "effect_type": "STAGE_START_BONUS",
+    "target": "ST05; ST24; ST29; ST34; ST36; ST53; ST58; ST61; ST76; ST82; ST86; ST94; ST122; ST136; ST149; ST174; ST180; ST198",
+    "value": 5,
+    "timing": "State",
+    "stacking": "Flat",
+    "note": "Cameron 2026-10-23. District Awareness at 65 or more: +5 starting support in Town Hall rooms."
+  },
+  {
+    "effect_id": "AE05",
+    "meter": "District",
+    "condition": "At most",
+    "threshold": 50,
+    "effect_type": "STANDING_CHANGE",
+    "target": "BO32",
+    "value": -10,
+    "timing": "Week end",
+    "stacking": "Flat",
+    "note": "Cameron 2026-10-23. District Awareness at 50 or less: -10 standing with the Candidate Selection Committee at each week end."
+  },
+  {
+    "effect_id": "AE06",
+    "meter": "District",
+    "condition": "At most",
+    "threshold": 25,
+    "effect_type": "XP_CHANGE",
+    "target": null,
+    "value": -50,
+    "timing": "Week end",
+    "stacking": "Flat",
+    "note": "Cameron 2026-10-23. District Awareness at 25 or less: -50 XP at each week end."
+  },
+  {
+    "effect_id": "AE07",
+    "meter": "National",
+    "condition": "At most",
+    "threshold": 40,
+    "effect_type": "STANDING_CHANGE",
+    "target": "TIER:National",
+    "value": -5,
+    "timing": "Week end",
+    "stacking": "Escalating",
+    "note": "Cameron 2026-10-23. National Awareness at 40 or less: -5 standing with every National-tier organization, added for each consecutive week that ends below 40 (so -5, then -10, then -15). Draft reading of \"additive\": Cameron to confirm."
+  }
+]

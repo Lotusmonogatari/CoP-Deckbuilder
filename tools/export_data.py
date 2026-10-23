@@ -880,6 +880,9 @@ SHEETS = {
             # 2026-10-18: how many units of the game clock finishing this stage
             # costs (blank = 1). Never shown to the player.
             ("Time Units", "time_units", "int"),
+            # 2026-10-23: name awareness a WIN of this stage earns (blank = 0).
+            ("Win ΔDistrict Awareness", "win_delta_awareness_district", "int"),
+            ("Win ΔNational Awareness", "win_delta_awareness_national", "int"),
             # 2026-10-18: the stage whose background picture this stage uses
             # when it has none of its own (a Town Hall about one bill uses
             # ST05's). Blank = its own ID only.
@@ -1112,6 +1115,25 @@ SHEETS = {
             ("Enabled", "enabled", "str"),
             ("Threshold", "threshold", "int"),
             ("Applies To Parties", "applies_to_parties", "id_list"),
+        ],
+    },
+    # What a name-awareness level does (2026-10-23, Cameron): one row per effect,
+    # each tied to one meter (District or National), a condition and a number.
+    # See AwarenessEffects.gd. Blank-tolerant: no rows, no effects.
+    "Awareness Effects": {
+        "out": "awareness_effects.json",
+        "optional_sheet": True,
+        "columns": [
+            ("Effect ID", "effect_id", "str"),
+            ("Meter", "meter", "str"),
+            ("Condition", "condition", "str"),
+            ("Threshold", "threshold", "int"),
+            ("Effect Type", "effect_type", "str"),
+            ("Target", "target", "str"),
+            ("Value", "value", "int"),
+            ("Timing", "timing", "str"),
+            ("Stacking", "stacking", "str"),
+            ("Note", "note", "str"),
         ],
     },
     # The optional cutscene line shown when the influence swing above
@@ -2501,6 +2523,27 @@ def validate(data, report):
                     f"'{variable}' names party '{scoped_party}' in Applies To Parties, "
                     "which is not a party_id in the Parties tab",
                 )
+
+    # --- awareness_effects ---------------------------------------------------
+    awareness_types = {"DUES_REDUCTION", "FREE_TRAINING_COUPON", "STAGE_START_BONUS",
+                       "STANDING_CHANGE", "XP_CHANGE"}
+    for row in data.get("awareness_effects", []):
+        eid = row["effect_id"]
+        if row["meter"] not in ("District", "National"):
+            report.error("Awareness Effects", f"{eid} has Meter '{row['meter']}' — expected District or National")
+        if row["condition"] not in ("At least", "At most"):
+            report.error("Awareness Effects", f"{eid} has Condition '{row['condition']}' — expected At least or At most")
+        if row["effect_type"] not in awareness_types:
+            report.error("Awareness Effects", f"{eid} has Effect Type '{row['effect_type']}' — expected one of {', '.join(sorted(awareness_types))}")
+        if row["timing"] not in ("State", "Week end"):
+            report.error("Awareness Effects", f"{eid} has Timing '{row['timing']}' — expected State or Week end")
+        if row["stacking"] not in (None, "Flat", "Escalating"):
+            report.error("Awareness Effects", f"{eid} has Stacking '{row['stacking']}' — expected Flat, Escalating or blank")
+        for target in [t.strip() for t in str(row.get("target") or "").split(";") if t.strip()]:
+            if row["effect_type"] == "STAGE_START_BONUS" and target not in stage_ids:
+                report.error("Awareness Effects", f"{eid} targets stage '{target}', which is not in the Stages tab")
+            if row["effect_type"] == "STANDING_CHANGE" and target not in booster_ids and not target.startswith("TIER:"):
+                report.error("Awareness Effects", f"{eid} targets '{target}', which is not a booster_id or TIER:<tier>")
 
     # --- vote_influence_cues -------------------------------------------------
     # The optional cutscene line for a bill the influence swing flipped —

@@ -277,6 +277,26 @@ var calendar: Dictionary = WeekCalendar.fresh()
 ## Scales decay steps while the week-end decay runs; 1.0 the rest of the time.
 var _decay_scale := 1.0
 
+## Party dues (PartyDues.gd, 2026-10-23): the Funds earned Monday to Friday this
+## week (the share that adds to the dues), and the balance carried over from
+## weeks the dues were not paid in full. Both saved; cleared on a new run.
+var week_funds_earned := 0
+var dues_balance := 0
+
+## Name awareness (2026-10-23): how many people know the player, in their
+## district and nationally, 0 to 100 each. Saved; cleared on a new run.
+## `last_awareness_change` is the last stage's own movement, not saved.
+var awareness: Dictionary = {"district": 0, "national": 0}
+var last_awareness_change: Dictionary = {}
+
+## Consecutive weeks each Week-end awareness effect has held { effect_id: n }.
+var awareness_streaks: Dictionary = {}
+
+## Election strength (ElectionStrength.gd, 2026-10-23): a slow stock from 0 to 100,
+## and the lifetime XP earned (spending XP does not lower it). Both saved.
+var election_strength := 0.0
+var xp_earned_total := 0
+
 ## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
 ## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
 ## until that special level has been played, win or lose.
@@ -413,7 +433,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "awareness_streaks", "election_strength", "xp_earned_total", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -559,6 +579,11 @@ func reset_crisis_triggers() -> void:
 	steering_committee_active = false
 	time_units = 0
 	calendar = WeekCalendar.fresh()
+	week_funds_earned = 0
+	dues_balance = 0
+	reset_awareness()
+	election_strength = 0.0
+	xp_earned_total = 0
 	last_decay_at = 0
 	booster_moved_in_period = {}
 	timed_bonuses = []
@@ -891,6 +916,88 @@ func _apply_time_decays() -> void:
 
 
 # ---------------------------------------------------------------------------
+# Name awareness (2026-10-23, Cameron): two meters, district and national.
+
+## Both meters back to their starting values (Balance), for a fresh run.
+func reset_awareness() -> void:
+	awareness = {
+		"district": clampi(int(DataDB.balance.get("awareness_start_district", 20)), 0, awareness_max()),
+		"national": clampi(int(DataDB.balance.get("awareness_start_national", 10)), 0, awareness_max()),
+	}
+	last_awareness_change = {}
+	awareness_streaks = {}
+
+
+func awareness_max() -> int:
+	return maxi(1, int(DataDB.balance.get("awareness_maximum", 100)))
+
+
+## Moves one meter ("district" or "national"), clamped to 0 to the maximum.
+func apply_awareness_delta(meter: String, delta: int) -> void:
+	if delta == 0 or not awareness.has(meter):
+		return
+	var before := int(awareness[meter])
+	var after := clampi(before + delta, 0, awareness_max())
+	awareness[meter] = after
+	if after != before:
+		last_awareness_change[meter] = int(last_awareness_change.get(meter, 0)) + (after - before)
+
+
+## Gaffes still on the counter when a stage ends count against BOTH meters, one
+## point each. A player who clears them before the end loses nothing; a stage
+## lost to gaffes costs the stage's whole gaffe limit.
+func apply_awareness_gaffes(gaffes: int) -> void:
+	if gaffes <= 0:
+		return
+	apply_awareness_delta("district", -gaffes)
+	apply_awareness_delta("national", -gaffes)
+
+
+# ---------------------------------------------------------------------------
+# Election strength (2026-10-23, Cameron): built and shown, fires no outcome.
+
+## What the campaign's inputs read right now (ElectionStrength.components()).
+func election_inputs() -> Dictionary:
+	var cfg := ElectionStrength.settings(DataDB.balance)
+	var on_side := 0
+	for id: String in booster_standing.keys():
+		if int(booster_standing[id]) >= int(cfg["org_standing"]):
+			on_side += 1
+	var laws := 0
+	for law: Dictionary in statute_book:
+		if bool(law.get("passed", false)):
+			laws += 1
+	return {
+		"district": int(awareness.get("district", 0)),
+		"national": int(awareness.get("national", 0)),
+		"constituency": int(meta.get("Constituency support", 0)),
+		"org_share": float(on_side) / maxf(1.0, float(booster_standing.size())),
+		"funds": int(meta.get("Funds", 0)),
+		"xp_earned": xp_earned_total,
+		"laws_passed": laws,
+		"party_support": int(meta.get("Party support", 0)),
+		"dues_overdue": dues_balance > 0,
+	}
+
+
+## Each input's points and maximum, for the Your Record page.
+func election_parts() -> Array:
+	return ElectionStrength.components(ElectionStrength.settings(DataDB.balance), election_inputs())
+
+
+## What the inputs add up to right now (the strength grows toward this).
+func election_potential() -> float:
+	return ElectionStrength.potential(election_parts())
+
+
+## At each week end the strength moves toward the potential, by at most the
+## weekly cap.
+func _update_election_strength() -> void:
+	election_strength = ElectionStrength.step(election_strength, election_potential(),
+		ElectionStrength.settings(DataDB.balance))
+
+
+# ---------------------------------------------------------------------------
 # The week calendar (2026-10-23, Cameron). WeekCalendar.gd holds the rules;
 # these are the run's own entry points.
 
@@ -980,11 +1087,130 @@ func end_work_week() -> void:
 func go_home() -> Dictionary:
 	if not in_weekend():
 		end_work_week()
+	var dues := _settle_dues()
+	var awareness_lines := _apply_awareness_week_end()
+	_update_election_strength()
 	var moved := WeekCalendar.go_home(calendar, calendar_config())
 	calendar = moved["state"]
 	_advance_clock(int(moved["skipped"]))
 	_apply_week_decay()
-	return {"date": calendar_date_text()}
+	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines}
+
+
+## What the awareness effects take off the base dues (National Awareness at 80
+## or more). Filled in with the Awareness Effects tab; nothing yet.
+func _dues_reduction() -> int:
+	return AwarenessEffects.dues_reduction(DataDB.awareness_effects, awareness)
+
+
+## Starting support a room gets from awareness (State rows), for BattleSetup.
+func awareness_start_bonus(stage_id: String) -> int:
+	return AwarenessEffects.stage_start_bonus(DataDB.awareness_effects, awareness, stage_id)
+
+
+## At each week end, once the dues are settled: standing, XP and coupons the
+## awareness meters earn or cost. Returns lines for the popup (Text rows).
+func _apply_awareness_week_end() -> Array[String]:
+	var lines: Array[String] = []
+	var result := AwarenessEffects.week_end(DataDB.awareness_effects, awareness, awareness_streaks)
+	awareness_streaks = result["streaks"]
+	for entry: Dictionary in result["applied"]:
+		var effect: Dictionary = entry["effect"]
+		var amount := int(entry["amount"])
+		match str(effect.get("effect_type", "")):
+			AwarenessEffects.STANDING_CHANGE:
+				var names: Array[String] = []
+				for id: String in _awareness_standing_targets(effect):
+					_under_cause(Text.say("record.cause_awareness"),
+						func() -> void: _apply_booster_delta(id, amount))
+					names.append(str(DataDB.get_booster(id).get("name_en", id)))
+				if not names.is_empty():
+					lines.append(Text.say("awareness.week_standing",
+						{"names": ", ".join(PackedStringArray(names)), "count": amount}))
+			AwarenessEffects.XP_CHANGE:
+				_move_xp(amount)
+				lines.append(Text.say("awareness.week_xp", {"count": amount}))
+			AwarenessEffects.FREE_TRAINING_COUPON:
+				if _give_training_coupons(amount):
+					lines.append(Text.say("awareness.week_coupon"))
+	return lines
+
+
+## The organization ids a STANDING_CHANGE row hits: named ids, or every
+## organization of a tier ("TIER:National").
+func _awareness_standing_targets(effect: Dictionary) -> Array[String]:
+	var found: Array[String] = []
+	for target: String in AwarenessEffects.targets_of(effect):
+		if target.begins_with("TIER:"):
+			for booster: Dictionary in DataDB.boosters:
+				if str(booster.get("tier", "")) == target.substr(5):
+					found.append(str(booster.get("booster_id", "")))
+		else:
+			found.append(target)
+	return found
+
+
+## Adds Training Session Coupons (SH21) up to the item's own stack cap.
+func _give_training_coupons(count: int) -> bool:
+	var item := DataDB.get_shop_item("SH21")
+	if item.is_empty() or count <= 0:
+		return false
+	var cap := int(item.get("stack_cap", 5)) if item.get("stack_cap") != null else 5
+	var before := int(inventory.get("SH21", 0))
+	inventory["SH21"] = mini(cap, before + count)
+	return int(inventory["SH21"]) > before
+
+
+## What the party is owed at this week's end: { week_dues, owed (carried),
+## total, funds }. Shown above the week button.
+func dues_preview() -> Dictionary:
+	var cfg := PartyDues.settings(DataDB.balance)
+	var week_dues := PartyDues.week_dues(cfg, int(meta.get("Party support", 0)),
+		week_funds_earned, _dues_reduction())
+	return {"week_dues": week_dues, "owed": dues_balance, "total": week_dues + dues_balance,
+		"funds": int(meta.get("Funds", 0))}
+
+
+## Pays the party at the week's end with whatever Funds there are. Anything
+## unpaid rolls over; an unpaid week costs Party support, withdraws the
+## party's backings, and applies the scaled overdue penalties.
+## Returns { week_dues, carried, total, paid, owed, penalized, withdrawn }.
+func _settle_dues() -> Dictionary:
+	var cfg := PartyDues.settings(DataDB.balance)
+	var preview := dues_preview()
+	var settled := PartyDues.settle(int(preview["total"]), int(preview["funds"]))
+	var report := {"week_dues": int(preview["week_dues"]), "carried": dues_balance,
+		"total": int(preview["total"]), "paid": int(settled["paid"]),
+		"owed": int(settled["owed"]), "penalized": false, "withdrawn": []}
+	var cause := Text.say("record.cause_dues")
+	if int(settled["paid"]) > 0:
+		# Paying the party is not "spending Funds" to the Standing Links.
+		_links_suspended = true
+		_under_cause(cause, func() -> void: _apply_meta_reward("Funds", -int(settled["paid"])))
+		_links_suspended = false
+	dues_balance = int(settled["owed"])
+	week_funds_earned = 0
+	if dues_balance <= 0:
+		return report
+
+	var penalties := PartyDues.overdue_penalties(cfg, dues_balance)
+	report["penalized"] = true
+	_under_cause(cause, func() -> void:
+		_apply_meta_reward("Party support", -int(penalties["party_support"]))
+		_apply_booster_delta("BO01", -int(penalties["hq"]))
+		_apply_booster_delta("BO32", -int(penalties["selection"])))
+	var own_party := str(DataDB.player.get("party", ""))
+	for party: Dictionary in DataDB.parties:
+		var party_name := str(party.get("name", ""))
+		if not party_name.is_empty() and party_name != own_party:
+			_apply_party_delta(party_name, int(penalties["other_parties"]))
+	var withdrawn: Array = []
+	for mod_id: String in PartyDues.party_backings(owned_modifiers, DataDB.modifiers, DataDB.boosters):
+		owned_modifiers.erase(mod_id)
+		modifier_expires.erase(mod_id)
+		withdrawn.append(str(DataDB.get_modifier(mod_id).get("name_en", mod_id)))
+	report["withdrawn"] = withdrawn
+	return report
 
 
 ## Decay at a week's end, in bigger steps (Week Decay Multiplier) because a
@@ -1187,12 +1413,18 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	_expire_modifiers()
 	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
 	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)
+	last_awareness_change = {}
+	if str(stage.get("mode", "")) == "Combat":
+		apply_awareness_gaffes(gaffes)
 
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.
 	if outcome == LevelRunner.WON and str(stage.get("stage_id", "")) == MpVisit.FIGHT_STAGE:
 		_won_over_member()
 	_apply_stage_rewards(stage, outcome, score)
+	if outcome == LevelRunner.WON:
+		apply_awareness_delta("district", MetaRules.stage_delta(stage, "win_delta_awareness_district"))
+		apply_awareness_delta("national", MetaRules.stage_delta(stage, "win_delta_awareness_national"))
 	_apply_question_boosters(boosters, displeased_boosters, opposed_boosters, booster_tally)
 	_apply_instant_win_penalties(crushed_boosters)
 	if outcome == LevelRunner.WON and str(stage.get("mode", "")) == "Combat":
@@ -1601,6 +1833,8 @@ func _move_xp(delta: int) -> void:
 	if delta == 0:
 		return
 	xp += delta
+	if delta > 0:
+		xp_earned_total += delta
 	EventBus.xp_changed.emit(xp, delta)
 
 
@@ -1687,6 +1921,9 @@ func _under_cause(cause: String, change: Callable) -> void:
 func _record_meta_change(applied: Dictionary) -> void:
 	for name: String in applied.keys():
 		last_meta_change[name] = int(last_meta_change.get(name, 0)) + int(applied[name])
+		# Funds earned on a weekday add to that week's dues (PartyDues.gd).
+		if name == "Funds" and int(applied[name]) > 0 and not in_weekend():
+			week_funds_earned += int(applied[name])
 		if int(applied[name]) != 0 and not _cause.is_empty():
 			_note_cause(last_meta_cause, name, int(applied[name]))
 		if int(applied[name]) != 0 and not DataDB.standing_links.is_empty():
@@ -2533,6 +2770,7 @@ func record_bill_flip(bill_id: String) -> void:
 	if bill_id.is_empty() or bills_flipped_by_influence.has(bill_id):
 		return
 	bills_flipped_by_influence.append(bill_id)
+	apply_awareness_delta("national", int(DataDB.balance.get("awareness_flipped_bill_national", 0)))
 
 
 ## Writes one Floor Vote into the statute book and applies that bill's
@@ -2947,6 +3185,8 @@ func _resolve_patron_vote(patron_bill_id: String, passed: bool) -> void:
 		"backing_org": org if passed and int(outcome["free_backing_units"]) > 0 else "",
 		"components": (state.get("components", []) as Array).duplicate()}
 	if passed:
+		apply_awareness_delta("national", int(DataDB.balance.get("awareness_passed_own_bill_national", 0)))
+		apply_awareness_delta("district", int(DataDB.balance.get("awareness_passed_own_bill_district", 0)))
 		_apply_reward_entries(effects)
 		for component_id: Variant in (state.get("components", []) as Array):
 			if not enacted_components.has(component_id):

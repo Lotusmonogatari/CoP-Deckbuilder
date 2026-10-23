@@ -98,6 +98,9 @@ var _draft_panel: Overlay
 ## and the three panels that carry the week's decisions.
 var _calendar_square: PanelContainer
 var _week_button: Button
+var _dues_label: Label
+var _election_label: Label
+var _election_bar: ProgressBar
 var _week_confirm_panel: Overlay
 var _week_over_panel: Overlay
 var _new_week_panel: Overlay
@@ -288,12 +291,33 @@ func _build_week_controls() -> void:
 		_calendar_square = CalendarSquare.make()
 		spacer.add_child(_calendar_square)
 
+	# Election strength: a caption and a bar under the Office's own notices.
+	_election_label = Label.new()
+	_election_label.name = "ElectionLabel"
+	_election_label.theme_type_variation = &"SmallLabel"
+	_election_bar = ProgressBar.new()
+	_election_bar.name = "ElectionBar"
+	_election_bar.min_value = 0
+	_election_bar.max_value = 100
+	_election_bar.show_percentage = false
+	_election_bar.custom_minimum_size = Vector2(0, 22)
+	var text_column := _resources.get_parent()
+	text_column.add_child(_election_label)
+	text_column.add_child(_election_bar)
+
+	_dues_label = Label.new()
+	_dues_label.name = "DuesLabel"
+	_dues_label.theme_type_variation = &"SmallLabel"
+	_dues_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_start_button.get_parent().add_child(_dues_label)
+	_start_button.get_parent().move_child(_dues_label, _start_button.get_index() + 1)
+
 	_week_button = Button.new()
 	_week_button.name = "WeekButton"
 	_week_button.custom_minimum_size = Vector2(0, 100)
 	_week_button.pressed.connect(_on_week_button_pressed)
 	_start_button.get_parent().add_child(_week_button)
-	_start_button.get_parent().move_child(_week_button, _start_button.get_index() + 1)
+	_start_button.get_parent().move_child(_week_button, _dues_label.get_index() + 1)
 
 	_week_confirm_panel = Overlay.new()
 	_week_confirm_panel.name = "WeekConfirmPanel"
@@ -317,6 +341,9 @@ func _build_week_controls() -> void:
 ## the weekend, nothing otherwise (and nothing mid-level).
 func _refresh_calendar() -> void:
 	CalendarSquare.refresh(_calendar_square)
+	if _election_bar != null:
+		_election_bar.value = GameState.election_strength
+		_election_label.text = Text.say("election.bar_line", {"value": roundi(GameState.election_strength)})
 	if _week_button == null:
 		return
 	var mid_level := GameState.is_in_level()
@@ -328,6 +355,11 @@ func _refresh_calendar() -> void:
 		_week_button.visible = not mid_level
 	else:
 		_week_button.visible = false
+	_dues_label.visible = _week_button.visible or (GameState.work_week_is_full() and not mid_level)
+	if _dues_label.visible:
+		var due := GameState.dues_preview()
+		_dues_label.text = Text.say("dues.preview_owed" if int(due["owed"]) > 0 else "dues.preview", {
+			"yen_total": int(due["total"]), "yen_owed": int(due["owed"]), "yen_funds": int(due["funds"])})
 
 
 func _on_week_button_pressed() -> void:
@@ -382,7 +414,30 @@ func _go_home() -> void:
 	_build()
 	var rows: Array[Control] = [UiKit.line(Text.say("office.new_week_body",
 		{"date": str(result.get("date", ""))}))]
+	rows.append_array(_dues_report_rows(result.get("dues", {})))
+	for awareness_line: String in result.get("awareness", []):
+		rows.append(UiKit.line(awareness_line, "SmallLabel"))
 	_new_week_panel.open(Text.say("office.new_week_title"), rows, Text.say("office.new_week_go"))
+
+
+## What the party took at the week's end, as lines for the new-week popup.
+func _dues_report_rows(report: Dictionary) -> Array[Control]:
+	var rows: Array[Control] = []
+	if report.is_empty():
+		return rows
+	if int(report.get("total", 0)) <= 0:
+		rows.append(UiKit.line(Text.say("dues.none_line"), "SmallLabel"))
+		return rows
+	rows.append(UiKit.line(Text.say("dues.paid_line", {"yen_paid": int(report.get("paid", 0))}), "SmallLabel"))
+	if int(report.get("owed", 0)) > 0:
+		rows.append(UiKit.line(Text.say("dues.owed_line", {"yen_owed": int(report["owed"])}), "SmallLabel"))
+	if bool(report.get("penalized", false)):
+		rows.append(UiKit.line(Text.say("dues.penalty_line"), "SmallLabel"))
+		var withdrawn: Array = report.get("withdrawn", [])
+		if not withdrawn.is_empty():
+			rows.append(UiKit.line(Text.say("dues.cancelled_line",
+				{"names": ", ".join(PackedStringArray(withdrawn))}), "SmallLabel"))
+	return rows
 
 
 ## A crisis trigger firing or resolving since the last time the player was
@@ -1047,6 +1102,29 @@ func _show_record() -> void:
 			if not because.is_empty():
 				line += "  " + because
 		rows.append(UiKit.line(line))
+
+	rows.append(UiKit.heading(Text.say("election.record_heading")))
+	rows.append(UiKit.line(Text.say("election.bar_line", {"value": roundi(GameState.election_strength)})))
+	rows.append(UiKit.line(Text.say("election.potential_line",
+		{"value": roundi(GameState.election_potential())}), "SmallLabel"))
+	var part_names := {
+		"district": Text.say("election.c_district"), "national": Text.say("election.c_national"),
+		"constituency": Text.say("election.c_constituency"), "organizations": Text.say("election.c_organizations"),
+		"war_chest": Text.say("election.c_war_chest"), "experience": Text.say("election.c_experience"),
+		"record": Text.say("election.c_record"), "party": Text.say("election.c_party")}
+	for part: Dictionary in GameState.election_parts():
+		rows.append(UiKit.line(Text.say("election.component_line", {
+			"name": part_names[str(part["id"])], "points": "%.1f" % float(part["points"]),
+			"max": roundi(float(part["max"]))}), "SmallLabel"))
+
+	var meter_names := {"district": Text.say("awareness.district"), "national": Text.say("awareness.national")}
+	for meter: String in ["district", "national"]:
+		var meter_line := Text.say("new_game.stat_line", {
+			"name": meter_names[meter], "value": int(GameState.awareness.get(meter, 0))})
+		var meter_change := int(GameState.last_awareness_change.get(meter, 0))
+		if meter_change != 0:
+			meter_line += "  (%+d)" % meter_change
+		rows.append(UiKit.line(meter_line))
 
 	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))
 	if GameState.bills_flipped_by_influence.is_empty():

@@ -659,14 +659,14 @@ static func backing_bonus(stage: Dictionary) -> Dictionary:
 		if not modifier.is_empty():
 			owned.append(modifier)
 
-	var empty := {"start_support": 0, "hand_size_bonus": 0, "gaffe_limit_bonus": 0}
-	if owned.is_empty():
-		return empty
-
-	var active := MetaRules.active_modifiers(owned, with_audience(stage), "Player", GameState.booster_standing)
-	if active.is_empty():
-		return empty
-	return ModifierEffects.battle_start_bonus(active, str(stage.get("stage_id", "")))
+	var bonus := {"start_support": 0, "hand_size_bonus": 0, "gaffe_limit_bonus": 0}
+	if not owned.is_empty():
+		var active := MetaRules.active_modifiers(owned, with_audience(stage), "Player", GameState.booster_standing)
+		if not active.is_empty():
+			bonus = ModifierEffects.battle_start_bonus(active, str(stage.get("stage_id", "")))
+	# Name awareness (Awareness Effects tab): a well-known player starts some rooms ahead.
+	bonus["start_support"] += GameState.awareness_start_bonus(str(stage.get("stage_id", "")))
+	return bonus
 
 
 ## Fills the tokens a stage name may carry.

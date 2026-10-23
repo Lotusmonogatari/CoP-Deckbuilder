@@ -4856,5 +4856,208 @@
     "english": "Start the Week",
     "placeholders": null,
     "notes": "2026-10-23 calendar."
+  },
+  {
+    "key": "record.cause_dues",
+    "where": "Your Record, cause of a Funds or standing change at week end",
+    "english": "Party dues",
+    "placeholders": null,
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.preview",
+    "where": "Office, line above the week button",
+    "english": "Party dues this week: {yen_total}円 (you have {yen_funds}円).",
+    "placeholders": "yen_total, yen_funds",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.preview_owed",
+    "where": "Office, line above the week button when dues are overdue",
+    "english": "Party dues this week: {yen_total}円, including {yen_owed}円 overdue (you have {yen_funds}円).",
+    "placeholders": "yen_total, yen_owed, yen_funds",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.paid_line",
+    "where": "New week popup, dues paid",
+    "english": "Party dues paid: {yen_paid}円.",
+    "placeholders": "yen_paid",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.owed_line",
+    "where": "New week popup, balance still owed",
+    "english": "You could not pay in full. {yen_owed}円 rolls over to next week.",
+    "placeholders": "yen_owed",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.penalty_line",
+    "where": "New week popup, penalties for unpaid dues",
+    "english": "The party is furious. Party support falls and its backings are withdrawn.",
+    "placeholders": null,
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.cancelled_line",
+    "where": "New week popup, which backings were withdrawn",
+    "english": "Withdrawn: {names}.",
+    "placeholders": "names",
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "dues.none_line",
+    "where": "New week popup, nothing was due",
+    "english": "No party dues were due.",
+    "placeholders": null,
+    "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "awareness.district",
+    "where": "Reputation and Results, Office: the district meter",
+    "english": "District Awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.national",
+    "where": "Reputation and Results, Office: the national meter",
+    "english": "National Awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.gaffe_line",
+    "where": "Stage result panel, awareness lost to gaffes left at the end",
+    "english": "Gaffes left at the end cost you awareness: -{count} District, -{count} National.",
+    "placeholders": "count",
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "record.cause_gaffe_awareness",
+    "where": "Your Record, cause of an awareness drop",
+    "english": "Gaffes left at the end of a stage",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "record.cause_awareness",
+    "where": "Your Record, cause of a standing change from name awareness",
+    "english": "Name awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.week_standing",
+    "where": "New week popup, standing moved by awareness",
+    "english": "Name recognition: standing with {names} changes by {count}.",
+    "placeholders": "names, count",
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.week_xp",
+    "where": "New week popup, XP moved by awareness",
+    "english": "Name recognition: {count} XP.",
+    "placeholders": "count",
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.week_coupon",
+    "where": "New week popup, a free coupon",
+    "english": "Your name is known at home: a free Training Session Coupon.",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "election.title",
+    "where": "Office, label above the election strength bar",
+    "english": "Election Strength",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.bar_line",
+    "where": "Office, the bar caption",
+    "english": "Election Strength {value} / 100",
+    "placeholders": "value",
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.record_heading",
+    "where": "Your Record, section heading",
+    "english": "Election strength",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.potential_line",
+    "where": "Your Record, what the inputs add up to right now",
+    "english": "Right now your campaign is worth {value} of 100. Strength grows slowly toward that, a little each week.",
+    "placeholders": "value",
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.component_line",
+    "where": "Your Record, one input",
+    "english": "{name}: {points} of {max}",
+    "placeholders": "name, points, max",
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_district",
+    "where": "Your Record, input name",
+    "english": "District Awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_national",
+    "where": "Your Record, input name",
+    "english": "National Awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_constituency",
+    "where": "Your Record, input name",
+    "english": "Constituency support",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_organizations",
+    "where": "Your Record, input name",
+    "english": "Organizations on side",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_war_chest",
+    "where": "Your Record, input name",
+    "english": "War chest",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_experience",
+    "where": "Your Record, input name",
+    "english": "Experience",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_record",
+    "where": "Your Record, input name",
+    "english": "Legislative record",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.c_party",
+    "where": "Your Record, input name",
+    "english": "Party backing",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
   }
 ]
