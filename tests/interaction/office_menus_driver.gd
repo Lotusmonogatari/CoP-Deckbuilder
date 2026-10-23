@@ -60,9 +60,11 @@ func _walk() -> void:
 
 	await _menu(office, "ReputationButton", "ReputationMenuPanel",
 		[["OrganisationsButton", "OrganisationsPanel"], ["BackingButton", "BackingPanel"],
-		["PartiesButton", "PartiesPanel"], ["RecordButton", "RecordPanel"]])
+		["PartiesButton", "PartiesPanel"], ["ElectionButton", "ElectionPanel"],
+		["RecordButton", "RecordPanel"]])
 	await _menu(office, "AdministrationButton", "AdministrationMenuPanel",
 		[["CosmeticsButton", "CosmeticsPanel"], ["HowToPlayButton", "HowToPlayPanel"]])
+	await _check_election_page(office)
 	await _check_allies_popup(office)
 	await _check_text_size(office)
 	_check_backing_prices(office)
@@ -235,3 +237,29 @@ func _check_backing_prices(office: Node) -> void:
 	else:
 		print("  backing prices are written with thousands separators")
 	panel.hide()
+
+
+## The Election Strength page (2026-10-23): three bars (strength and the two
+## awareness meters) in the player's party colour, and no bar left on the Office.
+func _check_election_page(office: Node) -> void:
+	if office.find_child("ElectionBar", true, false) != null:
+		_failures.append("the Office still carries an election bar")
+	await _click(office.find_child("ReputationButton", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
+	await _click(office.find_child("ElectionButton", true, false) as Control)
+	await get_tree().create_timer(0.3).timeout
+	var panel := office.find_child("ElectionPanel", true, false) as Control
+	var bars: Array[Node] = panel.find_children("*", "ProgressBar", true, false)
+	if bars.size() != 3:
+		_failures.append("the Election Strength page has %d bars, not 3" % bars.size())
+	var party := DataDB.get_party(str(DataDB.player.get("party", "")))
+	var want := PartyDisplay.color_for(party)
+	for bar: Node in bars:
+		var fill := (bar as ProgressBar).get_theme_stylebox("fill") as StyleBoxFlat
+		if fill == null or not fill.bg_color.is_equal_approx(want):
+			_failures.append("an election bar is not in the party colour")
+	DirAccess.make_dir_recursive_absolute("user://shots")
+	get_viewport().get_texture().get_image().save_png("user://shots/election_page.png")
+	print("  the Election Strength page shows three party-coloured bars")
+	await _click_back(panel as Overlay)
+	await _click_back(office.find_child("ReputationMenuPanel", true, false) as Overlay)

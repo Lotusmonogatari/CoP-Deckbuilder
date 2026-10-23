@@ -2466,3 +2466,15 @@ Built from the approved design (`design/proposals/DISTRICT_ACTIVITIES_2026-10-23
 | **No more stock lines** | All 112 district-activity questions (VQ282 to VQ393) now carry their own fourth choice, their own responses to the wrong answers, and their own reactions for every choice. Before, those were four rotating lines reused across every question. The wrong-answer responses react to the mood of a dismissive reply rather than to each choice line by line, so they are the first thing to polish |
 | **Pictures** | Your uploaded `DINING`, `Dining_alt`, `Tour` and `Tour_alt` backgrounds are in. The game looks files up by exact ID, so three were renamed to `TOUR.png`, `DINING_ALT.png` and `TOUR_ALT.png` |
 | **Alternative icons** | CP03 and CP04 now use the main item icons (`booster_dinner`, `walking_tour`) instead of `Dining_Alt` and `Tour_Alt`, which were never drawn |
+
+## Election Strength moves to its own page (2026-10-23, Cameron)
+
+| Change | Detail |
+|---|---|
+| **Off the Office screen** | The election bar and its caption are gone from the Office. |
+| **Its own button** | "Election Strength" sits in Reputation and Results, between Parties and Your Record. |
+| **Three bars in the party colour** | Election strength, District Awareness and National Awareness are each a continuous 0-100 bar in the official colour of the player's own party, the same look as the allies popup. The awareness lines keep their "(+N)" recent change. |
+| **No more two "National Awareness" numbers** | The meter (for example 10 / 100) and the points it feeds the strength (1.5 of 15) both carried the same name. The points are now "Points from district awareness" and "Points from national awareness", under the heading "What counts toward it". |
+| **Your Record** | The election and awareness lines moved out of Your Record to the new page. |
+
+The Office-menus click test now opens the new page and checks it has three bars in the party colour.

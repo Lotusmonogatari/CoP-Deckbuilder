@@ -4971,50 +4971,50 @@
   },
   {
     "key": "election.title",
-    "where": "Office, label above the election strength bar",
+    "where": "Reputation and Results, button and page title",
     "english": "Election Strength",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
   {
     "key": "election.bar_line",
-    "where": "Office, the bar caption",
+    "where": "Election Strength page, the bar caption",
     "english": "Election Strength {value} / 100",
     "placeholders": "value",
     "notes": "2026-10-23 election strength."
   },
   {
     "key": "election.record_heading",
-    "where": "Your Record, section heading",
+    "where": "(unused)",
     "english": "Election strength",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
   {
     "key": "election.potential_line",
-    "where": "Your Record, what the inputs add up to right now",
+    "where": "Election Strength page, what the inputs add up to right now",
     "english": "Right now your campaign is worth {value} of 100. Strength grows slowly toward that, a little each week.",
     "placeholders": "value",
     "notes": "2026-10-23 election strength."
   },
   {
     "key": "election.component_line",
-    "where": "Your Record, one input",
+    "where": "Election Strength page, one input",
     "english": "{name}: {points} of {max}",
     "placeholders": "name, points, max",
     "notes": "2026-10-23 election strength."
   },
   {
     "key": "election.c_district",
-    "where": "Your Record, input name",
-    "english": "District Awareness",
+    "where": "Election Strength page, input name",
+    "english": "Points from district awareness",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
   {
     "key": "election.c_national",
-    "where": "Your Record, input name",
-    "english": "National Awareness",
+    "where": "Election Strength page, input name",
+    "english": "Points from national awareness",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
@@ -5374,5 +5374,19 @@
     "english": "Dues owed {change}",
     "placeholders": "change",
     "notes": "2026-10-23 scheduled dues events."
+  },
+  {
+    "key": "election.meter_line",
+    "where": "Election Strength page, an awareness meter",
+    "english": "{name}: {value} / 100",
+    "placeholders": "name, value",
+    "notes": "2026-10-23 election strength."
+  },
+  {
+    "key": "election.inputs_heading",
+    "where": "Election Strength page, section heading",
+    "english": "What counts toward it",
+    "placeholders": null,
+    "notes": "2026-10-23 election strength."
   }
 ]
