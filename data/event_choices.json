@@ -676,5 +676,1553 @@
       }
     ],
     "unlocks_level": null
+  },
+  {
+    "event_id": "EV17",
+    "choice": "A",
+    "choice_text": "Ask for a meeting with the hall and its members",
+    "result_text": "They bring photographs and a long list. A coastal defense bill is being drafted.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO22",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV35"
+  },
+  {
+    "event_id": "EV17",
+    "choice": "B",
+    "choice_text": "Send a short thank-you note",
+    "result_text": "A polite reply comes back within the week.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV17",
+    "choice": "C",
+    "choice_text": "Pass it to a staffer",
+    "result_text": "The letter is answered, correctly, by someone else.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV18",
+    "choice": "A",
+    "choice_text": "Give them ten minutes and ask what they want written down",
+    "result_text": "They want three things on one page. A bill on fiscal devolution is taking shape.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV39"
+  },
+  {
+    "event_id": "EV18",
+    "choice": "B",
+    "choice_text": "Promise a call next week",
+    "result_text": "You keep the promise. It is a short call.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO04",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV18",
+    "choice": "C",
+    "choice_text": "Refer them to the party office",
+    "result_text": "The party office is not thrilled.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV19",
+    "choice": "A",
+    "choice_text": "Hear them both out together",
+    "result_text": "They disagree about the gate and agree about almost everything else. A heritage bill is being drafted.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO19",
+        "delta": 1
+      },
+      {
+        "target": "BO20",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV43"
+  },
+  {
+    "event_id": "EV19",
+    "choice": "B",
+    "choice_text": "Visit the gate yourself",
+    "result_text": "It is a very old gate.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV19",
+    "choice": "C",
+    "choice_text": "Say it is a local matter",
+    "result_text": "They thank you stiffly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO20",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV20",
+    "choice": "A",
+    "choice_text": "Listen all the way to the next station",
+    "result_text": "A digital-economy bill is starting to make sense.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": {
+      "min": 10,
+      "max": 20
+    },
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "rewards": [
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV45"
+  },
+  {
+    "event_id": "EV20",
+    "choice": "B",
+    "choice_text": "Take his card",
+    "result_text": "Nothing comes of it, but it is a good card.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV20",
+    "choice": "C",
+    "choice_text": "Say you are busy",
+    "result_text": "He closes the laptop and glares at the window.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV21",
+    "choice": "A",
+    "choice_text": "Attend and stay to the end",
+    "result_text": "Three retired officers take you aside. A security agreement is under discussion.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "rewards": [
+      {
+        "target": "BO22",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV49"
+  },
+  {
+    "event_id": "EV21",
+    "choice": "B",
+    "choice_text": "Send regrets",
+    "result_text": "The card on your desk stays unopened.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV21",
+    "choice": "C",
+    "choice_text": "Attend and leave early",
+    "result_text": "You are noticed leaving.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV22",
+    "choice": "A",
+    "choice_text": "Walk the empty floors with her",
+    "result_text": "The visa rules are the problem, not the hotel. A tourism bill is on the table.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV52"
+  },
+  {
+    "event_id": "EV22",
+    "choice": "B",
+    "choice_text": "Suggest she raise wages",
+    "result_text": "She laughs politely.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV22",
+    "choice": "C",
+    "choice_text": "Write it up for the ministry",
+    "result_text": "The ministry sends a form.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV23",
+    "choice": "A",
+    "choice_text": "Ask her about her whole shift pattern",
+    "result_text": "The wage is only half of it. A minimum-wage bill is being prepared.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV57"
+  },
+  {
+    "event_id": "EV23",
+    "choice": "B",
+    "choice_text": "Say prices are up for everyone",
+    "result_text": "She nods and puts the slip back in her bag.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV23",
+    "choice": "C",
+    "choice_text": "Take a photo of the slip, with her permission",
+    "result_text": "She asks you not to post it. You do not.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV24",
+    "choice": "A",
+    "choice_text": "Stay and take every question",
+    "result_text": "An education bill about moral instruction is being drafted, and these parents have views.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV59"
+  },
+  {
+    "event_id": "EV24",
+    "choice": "B",
+    "choice_text": "Give a short speech and leave",
+    "result_text": "They clap, politely.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV24",
+    "choice": "C",
+    "choice_text": "Decline to comment on schools",
+    "result_text": "A parent says it is not a very good answer.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV25",
+    "choice": "A",
+    "choice_text": "Sit with him and ask what it has cost him",
+    "result_text": "A local-voting bill is being drafted. Some will say you should not touch it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO27",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV60"
+  },
+  {
+    "event_id": "EV25",
+    "choice": "B",
+    "choice_text": "Say it is a national matter",
+    "result_text": "He nods slowly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV25",
+    "choice": "C",
+    "choice_text": "Offer a letter of support for something else",
+    "result_text": "He thanks you and does not mention it again.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV26",
+    "choice": "A",
+    "choice_text": "Offer to drive out to the clinic yourself",
+    "result_text": "A rural hospital bill is already half written; the nurse knows who to ask.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV64"
+  },
+  {
+    "event_id": "EV26",
+    "choice": "B",
+    "choice_text": "Write to the prefecture",
+    "result_text": "A reply arrives, in due course.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV26",
+    "choice": "C",
+    "choice_text": "Say the clinic should find its own funding",
+    "result_text": "She says nothing and leaves.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV27",
+    "choice": "A",
+    "choice_text": "Visit the harbor office",
+    "result_text": "A border-cooperation bill might actually fix this, and he has details.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": "LV73"
+  },
+  {
+    "event_id": "EV27",
+    "choice": "B",
+    "choice_text": "Forward it to the ministry",
+    "result_text": "Nothing happens quickly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV27",
+    "choice": "C",
+    "choice_text": "Keep the letter",
+    "result_text": "It is a nice letter.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV31",
+    "choice": "A",
+    "choice_text": "Read a prepared message",
+    "result_text": "Your voice is warm, and a little stiff.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV31",
+    "choice": "B",
+    "choice_text": "Answer listener calls live",
+    "result_text": "Four callers, one of them cross.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 3,
+      "max": 4
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV31",
+    "choice": "C",
+    "choice_text": "Buy the whole week of spots",
+    "result_text": "Your voice is everywhere, which has costs.",
+    "funds_cost": 10000,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 4,
+      "max": 6
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV32",
+    "choice": "A",
+    "choice_text": "Pay for shirts and the van",
+    "result_text": "The team plays well and loses cheerfully.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV32",
+    "choice": "B",
+    "choice_text": "Pay and ask for a photo with the team",
+    "result_text": "The photo does well locally.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 3,
+      "max": 4
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV32",
+    "choice": "C",
+    "choice_text": "Pay anonymously",
+    "result_text": "The coach knows. So does the whole town.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV33",
+    "choice": "A",
+    "choice_text": "Be warm and personal",
+    "result_text": "The host asks what you do on weekends.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV33",
+    "choice": "B",
+    "choice_text": "Stick to one policy",
+    "result_text": "Listeners write in about the policy.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV33",
+    "choice": "C",
+    "choice_text": "Take on a tricky question",
+    "result_text": "The clip circulates. Opinions differ.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -1,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 3,
+      "max": 5
+    },
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV34",
+    "choice": "A",
+    "choice_text": "Meet everyone who comes",
+    "result_text": "A morning of small problems, and one large one.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": {
+      "min": 10,
+      "max": 20
+    },
+    "constituency_delta": {
+      "min": 1,
+      "max": 3
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV34",
+    "choice": "B",
+    "choice_text": "Hold a short Q and A",
+    "result_text": "Forty people stay for the answers.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV34",
+    "choice": "C",
+    "choice_text": "Invite local groups to tea",
+    "result_text": "The tea does most of the work.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV35",
+    "choice": "A",
+    "choice_text": "Back the lead float",
+    "result_text": "Your name goes on a banner. The float stays upright.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV35",
+    "choice": "B",
+    "choice_text": "Sponsor a drum group",
+    "result_text": "The drummers are loud and well liked.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 2,
+      "max": 4
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV35",
+    "choice": "C",
+    "choice_text": "Pay for cleanup volunteers",
+    "result_text": "Nobody notices until the next morning.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV36",
+    "choice": "A",
+    "choice_text": "Take the call",
+    "result_text": "Seven minutes of live radio. One good line.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV36",
+    "choice": "B",
+    "choice_text": "Ask for a pre-arranged slot instead",
+    "result_text": "The host agrees, a bit reluctantly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV36",
+    "choice": "C",
+    "choice_text": "Decline",
+    "result_text": "The host fills the time with music.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV37",
+    "choice": "A",
+    "choice_text": "Take every child's question",
+    "result_text": "One asks if the Assembly has a roof. You say yes, and fix the leak next month.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": {
+      "min": 10,
+      "max": 20
+    },
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV37",
+    "choice": "B",
+    "choice_text": "Give a short talk",
+    "result_text": "The children are polite.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV37",
+    "choice": "C",
+    "choice_text": "Send a staff member",
+    "result_text": "The teacher writes a gentle reply.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV38",
+    "choice": "A",
+    "choice_text": "Convene both neighborhoods in one room",
+    "result_text": "It is loud for two hours and civil for the last ten minutes.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV38",
+    "choice": "B",
+    "choice_text": "Say it should go to the other neighborhood",
+    "result_text": "Whoever you named is furious.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV38",
+    "choice": "C",
+    "choice_text": "Commission a study",
+    "result_text": "A study. It takes a year.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV39",
+    "choice": "A",
+    "choice_text": "Post a short thank-you",
+    "result_text": "It does well and stays civil.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "national_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV39",
+    "choice": "B",
+    "choice_text": "Ignore it",
+    "result_text": "The picture fades by Thursday.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV39",
+    "choice": "C",
+    "choice_text": "Reply to every message",
+    "result_text": "It takes four evenings. It works.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 3,
+      "max": 4
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV40",
+    "choice": "A",
+    "choice_text": "Attend and speak about what he did",
+    "result_text": "The room is small and the speech is short. People remember it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV40",
+    "choice": "B",
+    "choice_text": "Send flowers",
+    "result_text": "They arrive.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV40",
+    "choice": "C",
+    "choice_text": "Skip it",
+    "result_text": "Someone notes your chair.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV41",
+    "choice": "A",
+    "choice_text": "Ring the prefecture and stay on the line",
+    "result_text": "A plow is sent. You are thanked in a very understated way.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV41",
+    "choice": "B",
+    "choice_text": "Send a message of support",
+    "result_text": "They read it out at the village office.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV41",
+    "choice": "C",
+    "choice_text": "Say it is the prefecture's job",
+    "result_text": "It is, but it does not read well.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV42",
+    "choice": "A",
+    "choice_text": "Go to the school at once",
+    "result_text": "You stand at the gate with the principal. The bear is gone by the time anyone arrives.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV42",
+    "choice": "B",
+    "choice_text": "Call the prefecture",
+    "result_text": "A team is dispatched, eventually.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV42",
+    "choice": "C",
+    "choice_text": "Say it is a wildlife matter",
+    "result_text": "The principal thanks you for nothing.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -1,
+      "max": 0
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV43",
+    "choice": "A",
+    "choice_text": "Invite them in and hear every petition",
+    "result_text": "It takes an hour and a half. They leave less cold.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV43",
+    "choice": "B",
+    "choice_text": "Receive the folders at the door",
+    "result_text": "The folders are received.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null
+  },
+  {
+    "event_id": "EV43",
+    "choice": "C",
+    "choice_text": "Ask them to book an appointment",
+    "result_text": "They write one. It is a very long queue.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null
   }
 ]

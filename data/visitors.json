@@ -3609,7 +3609,9 @@
     "romaji": "Takashi Hamada",
     "title": "Neighborhood Festival Committee Chair",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3638,7 +3640,9 @@
     "romaji": "Michiko Sasaki",
     "title": "Shrine Caretaker",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3667,7 +3671,9 @@
     "romaji": "Daisuke Kondo",
     "title": "Town Office Clerk",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3696,7 +3702,9 @@
     "romaji": "Ichiro Watanabe",
     "title": "Mountain Village Headman",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3725,7 +3733,9 @@
     "romaji": "Yoshie Narita",
     "title": "Apple Orchard Farmer",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3750,7 +3760,9 @@
     "romaji": "Kazuo Abe",
     "title": "Hunting Club Member",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3779,7 +3791,9 @@
     "romaji": "Akemi Fujiwara",
     "title": "Onsen Town Ryokan Owner",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3808,7 +3822,9 @@
     "romaji": "Hiroshi Kimura",
     "title": "Ski Resort Manager",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3837,7 +3853,9 @@
     "romaji": "Rina Kurosawa",
     "title": "Mountain Guide and Hut Keeper",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3866,7 +3884,9 @@
     "romaji": "Noboru Ishikawa",
     "title": "Scenic Park Ranger",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3895,7 +3915,9 @@
     "romaji": "Fumiko Sato",
     "title": "Fisheries Cooperative Stallholder",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3924,7 +3946,9 @@
     "romaji": "Tetsuya Ota",
     "title": "Snow Removal Contractor",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3953,7 +3977,9 @@
     "romaji": "Haruko Mori",
     "title": "Retired Schoolteacher",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -3982,7 +4008,9 @@
     "romaji": "Yuto Matsuda",
     "title": "Returnee Remote Worker",
     "stages": [
-      "ST264"
+      "ST264",
+      "ST265",
+      "ST266"
     ],
     "reward": [
       {
@@ -4000,6 +4028,458 @@
     "penalty": [
       {
         "target": "BO16",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI95",
+    "name_en": "Masaru Takeda",
+    "name_jp": "武田勝",
+    "romaji": "Masaru Takeda",
+    "title": "Rice Farmer",
+    "stages": [
+      "ST265"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI96",
+    "name_en": "Chiyo Hayashi",
+    "name_jp": "林千代",
+    "romaji": "Chiyo Hayashi",
+    "title": "Potato Grower",
+    "stages": [
+      "ST265"
+    ],
+    "reward": [
+      {
+        "target": "BO10",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI97",
+    "name_en": "Genji Endo",
+    "name_jp": "遠藤源治",
+    "romaji": "Genji Endo",
+    "title": "Sake Brewer",
+    "stages": [
+      "ST265"
+    ],
+    "reward": [
+      {
+        "target": "BO13",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO13",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI98",
+    "name_en": "Shinobu Kikuchi",
+    "name_jp": "菊地忍",
+    "romaji": "Shinobu Kikuchi",
+    "title": "Salmon Fisher",
+    "stages": [
+      "ST265"
+    ],
+    "reward": [
+      {
+        "target": "BO07",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI99",
+    "name_en": "Emi Yoshida",
+    "name_jp": "吉田恵美",
+    "romaji": "Emi Yoshida",
+    "title": "School Lunch Dietitian",
+    "stages": [
+      "ST265"
+    ],
+    "reward": [
+      {
+        "target": "BO12",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO12",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI100",
+    "name_en": "Kenta Aoki",
+    "name_jp": "青木健太",
+    "romaji": "Kenta Aoki",
+    "title": "Scarecrow Festival Organizer",
+    "stages": [
+      "ST265"
+    ],
+    "reward": [
+      {
+        "target": "BO06",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO06",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI101",
+    "name_en": "Sachiko Nomura",
+    "name_jp": "野村幸子",
+    "romaji": "Sachiko Nomura",
+    "title": "Farmers' Market Manager",
+    "stages": [
+      "ST265"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI102",
+    "name_en": "Tomekichi Sakai",
+    "name_jp": "酒井留吉",
+    "romaji": "Tomekichi Sakai",
+    "title": "Eighty-Four-Year-Old Farmer",
+    "stages": [
+      "ST265"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI103",
+    "name_en": "Ryo Hasegawa",
+    "name_jp": "長谷川亮",
+    "romaji": "Ryo Hasegawa",
+    "title": "Ice Sculptor",
+    "stages": [
+      "ST266"
+    ],
+    "reward": [
+      {
+        "target": "BO13",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO13",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI104",
+    "name_en": "Misao Ogawa",
+    "name_jp": "小川操",
+    "romaji": "Misao Ogawa",
+    "title": "Snow Festival Treasurer",
+    "stages": [
+      "ST266"
+    ],
+    "reward": [
+      {
+        "target": "BO06",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO06",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI105",
+    "name_en": "Noriko Taniguchi",
+    "name_jp": "谷口紀子",
+    "romaji": "Noriko Taniguchi",
+    "title": "Village Nurse",
+    "stages": [
+      "ST266"
+    ],
+    "reward": [
+      {
+        "target": "BO21",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO21",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI106",
+    "name_en": "Satoru Imai",
+    "name_jp": "今井悟",
+    "romaji": "Satoru Imai",
+    "title": "Ice Fishing Guide",
+    "stages": [
+      "ST266"
+    ],
+    "reward": [
+      {
+        "target": "BO07",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI107",
+    "name_en": "Kunio Fukuda",
+    "name_jp": "福田邦夫",
+    "romaji": "Kunio Fukuda",
+    "title": "Rural Bus Driver",
+    "stages": [
+      "ST266"
+    ],
+    "reward": [
+      {
+        "target": "BO14",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO14",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI108",
+    "name_en": "Mai Nishimura",
+    "name_jp": "西村舞",
+    "romaji": "Mai Nishimura",
+    "title": "Ski School Instructor",
+    "stages": [
+      "ST266"
+    ],
+    "reward": [
+      {
+        "target": "BO25",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO25",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI109",
+    "name_en": "Isamu Kato",
+    "name_jp": "加藤勇",
+    "romaji": "Isamu Kato",
+    "title": "Hotel Heating Manager",
+    "stages": [
+      "ST266"
+    ],
+    "reward": [
+      {
+        "target": "BO26",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO26",
+        "delta": -3
+      }
+    ]
+  },
+  {
+    "visitor_id": "VI110",
+    "name_en": "Reiko Shimizu",
+    "name_jp": "清水玲子",
+    "romaji": "Reiko Shimizu",
+    "title": "Drift-Ice Tour Operator",
+    "stages": [
+      "ST266"
+    ],
+    "reward": [
+      {
+        "target": "BO07",
+        "delta": {
+          "min": 1,
+          "max": 3
+        }
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "penalty": [
+      {
+        "target": "BO07",
         "delta": -3
       }
     ]

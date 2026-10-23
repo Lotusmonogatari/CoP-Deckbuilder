@@ -16919,5 +16919,2093 @@
     "reaction_b": "Smirks.",
     "reaction_c": "Sighs.",
     "reaction_d": "Lights up."
+  },
+  {
+    "question_id": "VQ250",
+    "visitor_ids": [
+      "VI95"
+    ],
+    "question_text": "The combine is ready and the hands are not. Half my neighbors are over seventy.",
+    "choice_a": "Back a shared harvest-crew program with training and pay from the prefecture.",
+    "choice_b": "Raise the price of rice.",
+    "choice_c": "Ask the young to come back and help.",
+    "choice_d": "Let the fields go fallow.",
+    "correct_choice": "A",
+    "response_right": "A crew that moves from farm to farm. That would do it.",
+    "response_wrong": "Prices are not the problem.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Shrugs.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO26",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -1
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "A crew that moves from farm to farm. That would do it.",
+    "response_b": "Prices are not the problem.",
+    "response_c": "The young have jobs.",
+    "response_d": "Fallow fields do not pay the loan.",
+    "reaction_a": "Nods.",
+    "reaction_b": "Shrugs.",
+    "reaction_c": "Sighs.",
+    "reaction_d": "Stares."
+  },
+  {
+    "question_id": "VQ251",
+    "visitor_ids": [
+      "VI95"
+    ],
+    "question_text": "The co-op takes a large cut. Direct sales to restaurants would pay me more.",
+    "choice_a": "It is a private matter.",
+    "choice_b": "Support a direct-sale registry with co-op fees reviewed openly.",
+    "choice_c": "Tell farmers to stay with the co-op.",
+    "choice_d": "Abolish the co-op fee.",
+    "correct_choice": "B",
+    "response_right": "A registry we can all read. Fair.",
+    "response_wrong": "Private for you, not for me.",
+    "reaction_right": "Smiles.",
+    "reaction_wrong": "Turns away.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "response_a": "Private for you, not for me.",
+    "response_b": "A registry we can all read. Fair.",
+    "response_c": "Stay and be squeezed?",
+    "response_d": "Without the co-op, who stores the rice?",
+    "reaction_a": "Turns away.",
+    "reaction_b": "Smiles.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Looks startled."
+  },
+  {
+    "question_id": "VQ252",
+    "visitor_ids": [
+      "VI96"
+    ],
+    "question_text": "Imported potatoes undercut me by a third. Supermarkets want a cheaper price every year.",
+    "choice_a": "Tell growers to diversify.",
+    "choice_b": "Raise tariffs sharply.",
+    "choice_c": "Support local-supply contracts for supermarkets with a fair minimum price.",
+    "choice_d": "Cut tariffs further.",
+    "correct_choice": "C",
+    "response_right": "A fair minimum. We can build a year on that.",
+    "response_wrong": "Diversify into what?",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Sighs.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ],
+    "response_a": "Diversify into what?",
+    "response_b": "That helps me and hurts the shoppers.",
+    "response_c": "A fair minimum. We can build a year on that.",
+    "response_d": "That cuts my price again.",
+    "reaction_a": "Sighs.",
+    "reaction_b": "Hesitates.",
+    "reaction_c": "Brightens.",
+    "reaction_d": "Winces."
+  },
+  {
+    "question_id": "VQ253",
+    "visitor_ids": [
+      "VI96"
+    ],
+    "question_text": "A third of what I grow never leaves the field because it is the wrong shape.",
+    "choice_a": "Ask shoppers to buy ugly potatoes.",
+    "choice_b": "Subsidize disposal.",
+    "choice_c": "Throw it away.",
+    "choice_d": "Back a misshapen-produce channel for school lunches and processing.",
+    "correct_choice": "D",
+    "response_right": "A channel. Somebody will eat these.",
+    "response_wrong": "Shoppers will not choose them.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Shrugs.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Shoppers will not choose them.",
+    "response_b": "Disposal is paying to lose.",
+    "response_c": "That is the waste I am talking about.",
+    "response_d": "A channel. Somebody will eat these.",
+    "reaction_a": "Shrugs.",
+    "reaction_b": "Grimaces.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Nods."
+  },
+  {
+    "question_id": "VQ254",
+    "visitor_ids": [
+      "VI97"
+    ],
+    "question_text": "A small brewery pays the same excise paperwork as a large one. We are four people.",
+    "choice_a": "Support a simplified filing system for small breweries.",
+    "choice_b": "Leave the paperwork as it is.",
+    "choice_c": "Tell us to merge.",
+    "choice_d": "Cut the tax for everyone.",
+    "correct_choice": "A",
+    "response_right": "One page, not forty. That would save a week a month.",
+    "response_wrong": "Forty pages, four people.",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Stares.",
+    "effects_a": [
+      {
+        "target": "BO13",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO13",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO13",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO13",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "response_a": "One page, not forty. That would save a week a month.",
+    "response_b": "Forty pages, four people.",
+    "response_c": "Merge with whom?",
+    "response_d": "That helps the giants as much as us.",
+    "reaction_a": "Brightens.",
+    "reaction_b": "Stares.",
+    "reaction_c": "Throws up hands.",
+    "reaction_d": "Frowns."
+  },
+  {
+    "question_id": "VQ255",
+    "visitor_ids": [
+      "VI97"
+    ],
+    "question_text": "Foreign buyers love our sake and cannot pronounce its name.",
+    "choice_a": "Raise export duties.",
+    "choice_b": "Fund a regional label scheme and a joint overseas tasting trip.",
+    "choice_c": "Let each brewer promote his own.",
+    "choice_d": "Rename it for export.",
+    "correct_choice": "B",
+    "response_right": "A shared label. Yes.",
+    "response_wrong": "That is the opposite of selling.",
+    "reaction_right": "Lights up.",
+    "reaction_wrong": "Looks incredulous.",
+    "effects_a": [
+      {
+        "target": "BO13",
+        "delta": -3
+      },
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO13",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO13",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "response_a": "That is the opposite of selling.",
+    "response_b": "A shared label. Yes.",
+    "response_c": "We cannot afford the plane tickets.",
+    "response_d": "Our name is the thing.",
+    "reaction_a": "Looks incredulous.",
+    "reaction_b": "Lights up.",
+    "reaction_c": "Sighs.",
+    "reaction_d": "Winces."
+  },
+  {
+    "question_id": "VQ256",
+    "visitor_ids": [
+      "VI98"
+    ],
+    "question_text": "The salmon run has halved in ten years. The hatchery says it needs a new tank.",
+    "choice_a": "Let nature decide.",
+    "choice_b": "Import more salmon.",
+    "choice_c": "Support hatchery funding tied to monitoring and a catch review.",
+    "choice_d": "Cut the catch quota to zero.",
+    "correct_choice": "C",
+    "response_right": "A tank and a number we can read.",
+    "response_wrong": "Nature already did decide.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Shrugs.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      }
+    ],
+    "response_a": "Nature already did decide.",
+    "response_b": "Whose salmon will that be?",
+    "response_c": "A tank and a number we can read.",
+    "response_d": "Zero is the end of us.",
+    "reaction_a": "Shrugs.",
+    "reaction_b": "Grimaces.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Goes pale."
+  },
+  {
+    "question_id": "VQ257",
+    "visitor_ids": [
+      "VI98"
+    ],
+    "question_text": "The old fishing boats are retiring faster than the crews.",
+    "choice_a": "Ban new boats.",
+    "choice_b": "Tell crews to move inland.",
+    "choice_c": "Raise licence fees.",
+    "choice_d": "Support a boat-sharing and apprenticeship program.",
+    "correct_choice": "D",
+    "response_right": "Share a boat, learn a trade. That works.",
+    "response_wrong": "Ban? The sea is wide.",
+    "reaction_right": "Smiles.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Ban? The sea is wide.",
+    "response_b": "Inland? We are fishers.",
+    "response_c": "With what money?",
+    "response_d": "Share a boat, learn a trade. That works.",
+    "reaction_a": "Frowns.",
+    "reaction_b": "Looks insulted.",
+    "reaction_c": "Throws up hands.",
+    "reaction_d": "Smiles."
+  },
+  {
+    "question_id": "VQ258",
+    "visitor_ids": [
+      "VI99"
+    ],
+    "question_text": "I want half the school lunch to be local, but the budget is by the lowest bid.",
+    "choice_a": "Support a local-purchase rule with a modest price allowance.",
+    "choice_b": "Keep lowest-bid purchasing.",
+    "choice_c": "Ban imported ingredients.",
+    "choice_d": "Ask parents to donate vegetables.",
+    "correct_choice": "A",
+    "response_right": "A fair allowance. We can tell the farmers.",
+    "response_wrong": "The lowest bid has never tasted a daikon.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Sighs.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 2
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO26",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A fair allowance. We can tell the farmers.",
+    "response_b": "The lowest bid has never tasted a daikon.",
+    "response_c": "A ban would empty the pantry.",
+    "response_d": "Parents already do so much.",
+    "reaction_a": "Nods.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Winces.",
+    "reaction_d": "Shakes head."
+  },
+  {
+    "question_id": "VQ259",
+    "visitor_ids": [
+      "VI99"
+    ],
+    "question_text": "The new allergy rules make the school harvest stall almost impossible to run.",
+    "choice_a": "Move it indoors.",
+    "choice_b": "Support a simple one-page certificate and training for stall volunteers.",
+    "choice_c": "Ban the stall.",
+    "choice_d": "Ignore the rules.",
+    "correct_choice": "B",
+    "response_right": "One page, a morning of training. That is doable.",
+    "response_wrong": "Indoors is no festival.",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Shrugs.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO26",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "response_a": "Indoors is no festival.",
+    "response_b": "One page, a morning of training. That is doable.",
+    "response_c": "The stall is the harvest festival.",
+    "response_d": "Ignore it and a child gets hurt.",
+    "reaction_a": "Shrugs.",
+    "reaction_b": "Brightens.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Looks alarmed."
+  },
+  {
+    "question_id": "VQ260",
+    "visitor_ids": [
+      "VI100"
+    ],
+    "question_text": "Our scarecrow contest has fifty entries and a prize worth three thousand yen. Who pays?",
+    "choice_a": "Cancel it.",
+    "choice_b": "Take it out of the festival insurance.",
+    "choice_c": "Ask local shops to sponsor it, with a modest town grant.",
+    "choice_d": "Charge entrants.",
+    "correct_choice": "C",
+    "response_right": "Sponsored scarecrows. Everyone has a shop.",
+    "response_wrong": "Fifty scarecrows, and you want me to say no?",
+    "reaction_right": "Laughs.",
+    "reaction_wrong": "Looks stricken.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Fifty scarecrows, and you want me to say no?",
+    "response_b": "The insurance does not cover that.",
+    "response_c": "Sponsored scarecrows. Everyone has a shop.",
+    "response_d": "Entry fees make it a business.",
+    "reaction_a": "Looks stricken.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Laughs.",
+    "reaction_d": "Frowns."
+  },
+  {
+    "question_id": "VQ261",
+    "visitor_ids": [
+      "VI100"
+    ],
+    "question_text": "Every year fewer people carry the shrine. This autumn I counted nineteen.",
+    "choice_a": "Hire carriers.",
+    "choice_b": "Shorten the route.",
+    "choice_c": "Do it every second year.",
+    "choice_d": "Pair elders with students and publish a roster at the school.",
+    "correct_choice": "D",
+    "response_right": "A roster at the school. That is how we got started.",
+    "response_wrong": "Hired hands do not know the song.",
+    "reaction_right": "Writes down names.",
+    "reaction_wrong": "Shakes head.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO15",
+        "delta": -1
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Hired hands do not know the song.",
+    "response_b": "A shorter route is a shorter festival.",
+    "response_c": "Every second year is no festival at all.",
+    "response_d": "A roster at the school. That is how we got started.",
+    "reaction_a": "Shakes head.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Turns away.",
+    "reaction_d": "Writes down names."
+  },
+  {
+    "question_id": "VQ262",
+    "visitor_ids": [
+      "VI101"
+    ],
+    "question_text": "The market's stall fees went up and half the older vendors quit.",
+    "choice_a": "Support a tiered fee that favors small and local vendors.",
+    "choice_b": "Raise fees more.",
+    "choice_c": "Close the market.",
+    "choice_d": "Let vendors fight it out.",
+    "correct_choice": "A",
+    "response_right": "A tier by size. That is how it should have been.",
+    "response_wrong": "More fees, fewer vendors.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Winces.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "A tier by size. That is how it should have been.",
+    "response_b": "More fees, fewer vendors.",
+    "response_c": "The market is the town.",
+    "response_d": "A fight is not a market.",
+    "reaction_a": "Nods.",
+    "reaction_b": "Winces.",
+    "reaction_c": "Looks stricken.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ263",
+    "visitor_ids": [
+      "VI101"
+    ],
+    "question_text": "Visitors fill the parking lot and nobody on our street can get home.",
+    "choice_a": "Do nothing.",
+    "choice_b": "Support a shuttle from the station and resident permits.",
+    "choice_c": "Build more parking.",
+    "choice_d": "Close the market on weekends.",
+    "correct_choice": "B",
+    "response_right": "Shuttle and permits. Residents will accept that.",
+    "response_wrong": "Residents will complain, and rightly.",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Sighs.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO14",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "response_a": "Residents will complain, and rightly.",
+    "response_b": "Shuttle and permits. Residents will accept that.",
+    "response_c": "More parking, more cars.",
+    "response_d": "Weekends are the market.",
+    "reaction_a": "Sighs.",
+    "reaction_b": "Brightens.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Looks pained."
+  },
+  {
+    "question_id": "VQ264",
+    "visitor_ids": [
+      "VI102"
+    ],
+    "question_text": "I am eighty-four and I have no one to take the farm. The family wants to sell.",
+    "choice_a": "Tell the family to take over.",
+    "choice_b": "Leave it to chance.",
+    "choice_c": "Support a farm-succession matching program and a retirement-fund option.",
+    "choice_d": "Tell him to sell.",
+    "correct_choice": "C",
+    "response_right": "Someone who wants the land, and a pension to fund it.",
+    "response_wrong": "The family has their own lives.",
+    "reaction_right": "Smiles.",
+    "reaction_wrong": "Sighs.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": -1
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "response_a": "The family has their own lives.",
+    "response_b": "Chance never planted a row.",
+    "response_c": "Someone who wants the land, and a pension to fund it.",
+    "response_d": "I have been told to sell by experts.",
+    "reaction_a": "Sighs.",
+    "reaction_b": "Looks away.",
+    "reaction_c": "Smiles.",
+    "reaction_d": "Shakes head."
+  },
+  {
+    "question_id": "VQ265",
+    "visitor_ids": [
+      "VI102"
+    ],
+    "question_text": "My pension does not cover the heating, the tax and the repairs. The farm is all I have.",
+    "choice_a": "Raise the pension.",
+    "choice_b": "Sell the farm.",
+    "choice_c": "It is not the state's job.",
+    "choice_d": "Support a small farmland-tax relief for elderly owner-operators.",
+    "correct_choice": "D",
+    "response_right": "A small relief. That keeps me on the land.",
+    "response_wrong": "Everyone says that.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Smiles faintly.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 2
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "response_a": "Everyone says that.",
+    "response_b": "I came here with a spade.",
+    "response_c": "That is what they said to my father.",
+    "response_d": "A small relief. That keeps me on the land.",
+    "reaction_a": "Smiles faintly.",
+    "reaction_b": "Looks hurt.",
+    "reaction_c": "Stares.",
+    "reaction_d": "Nods."
+  },
+  {
+    "question_id": "VQ266",
+    "visitor_ids": [
+      "VI103"
+    ],
+    "question_text": "The snow festival's sculpture budget is half what it was. I have six blocks of ice and two assistants.",
+    "choice_a": "Support a small arts grant and a corporate sponsorship scheme.",
+    "choice_b": "Cancel the sculptures.",
+    "choice_c": "Ask for volunteers.",
+    "choice_d": "Use plastic.",
+    "correct_choice": "A",
+    "response_right": "A grant and a sponsor. That is a plan.",
+    "response_wrong": "Cancel? We have been carving since before you were born.",
+    "reaction_right": "Beams.",
+    "reaction_wrong": "Stares.",
+    "effects_a": [
+      {
+        "target": "BO13",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO13",
+        "delta": -3
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO13",
+        "delta": -3
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "response_a": "A grant and a sponsor. That is a plan.",
+    "response_b": "Cancel? We have been carving since before you were born.",
+    "response_c": "Volunteers do not carry chisels.",
+    "response_d": "Plastic does not melt, and that is the point.",
+    "reaction_a": "Beams.",
+    "reaction_b": "Stares.",
+    "reaction_c": "Sighs.",
+    "reaction_d": "Winces."
+  },
+  {
+    "question_id": "VQ267",
+    "visitor_ids": [
+      "VI103"
+    ],
+    "question_text": "Cold-weather safety rules are changing and nobody told the carvers.",
+    "choice_a": "Charge for permits.",
+    "choice_b": "Support a regular briefing and a free safety kit for carvers.",
+    "choice_c": "Ignore the rules.",
+    "choice_d": "Ban night carving.",
+    "correct_choice": "B",
+    "response_right": "A briefing and a kit. That is respectful.",
+    "response_wrong": "Another fee.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Sighs.",
+    "effects_a": [
+      {
+        "target": "BO13",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO13",
+        "delta": 3
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO26",
+        "delta": -3
+      },
+      {
+        "target": "BO13",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO13",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "response_a": "Another fee.",
+    "response_b": "A briefing and a kit. That is respectful.",
+    "response_c": "Ignore it and someone is hurt.",
+    "response_d": "Night is when the lights are best.",
+    "reaction_a": "Sighs.",
+    "reaction_b": "Nods.",
+    "reaction_c": "Looks alarmed.",
+    "reaction_d": "Frowns."
+  },
+  {
+    "question_id": "VQ268",
+    "visitor_ids": [
+      "VI104"
+    ],
+    "question_text": "Hauling snow for the festival costs more than the sculptures. Who should pay?",
+    "choice_a": "Skip the hauling.",
+    "choice_b": "Ask for donations.",
+    "choice_c": "Support a shared prefectural snow-hauling fund for community events.",
+    "choice_d": "Charge the committee.",
+    "correct_choice": "C",
+    "response_right": "A fund. The festival cannot stand the haul alone.",
+    "response_wrong": "No hauling, no festival.",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Looks stricken.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": -3
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "response_a": "No hauling, no festival.",
+    "response_b": "Donations tapped out in November.",
+    "response_c": "A fund. The festival cannot stand the haul alone.",
+    "response_d": "We have already sold every raffle ticket.",
+    "reaction_a": "Looks stricken.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Brightens.",
+    "reaction_d": "Frowns."
+  },
+  {
+    "question_id": "VQ269",
+    "visitor_ids": [
+      "VI104"
+    ],
+    "question_text": "A sponsor wants a banner bigger than the sculptures.",
+    "choice_a": "Refuse any sponsor.",
+    "choice_b": "Let the sponsor decide.",
+    "choice_c": "Sell the whole festival.",
+    "choice_d": "Accept the sponsor with a size cap agreed with the committee.",
+    "correct_choice": "D",
+    "response_right": "A cap on size. That is fair.",
+    "response_wrong": "We need the money.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Sighs.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "response_a": "We need the money.",
+    "response_b": "They would block the view.",
+    "response_c": "Then it is not our festival.",
+    "response_d": "A cap on size. That is fair.",
+    "reaction_a": "Sighs.",
+    "reaction_b": "Winces.",
+    "reaction_c": "Looks furious.",
+    "reaction_d": "Nods."
+  },
+  {
+    "question_id": "VQ270",
+    "visitor_ids": [
+      "VI105"
+    ],
+    "question_text": "Three of my patients were hurt shoveling this winter. All of them are over seventy-five.",
+    "choice_a": "Support a village shoveling-support program with paid neighbors.",
+    "choice_b": "Tell them to hire contractors.",
+    "choice_c": "Tell them to stop shoveling.",
+    "choice_d": "Do nothing.",
+    "correct_choice": "A",
+    "response_right": "Neighbors, paid properly. That is what the village needs.",
+    "response_wrong": "Contractors do not come to the end of the road.",
+    "reaction_right": "Nods firmly.",
+    "reaction_wrong": "Winces.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      }
+    ],
+    "response_a": "Neighbors, paid properly. That is what the village needs.",
+    "response_b": "Contractors do not come to the end of the road.",
+    "response_c": "Stop shoveling and the door is stuck for a week.",
+    "response_d": "Then I see them in March in a cast.",
+    "reaction_a": "Nods firmly.",
+    "reaction_b": "Winces.",
+    "reaction_c": "Shakes head.",
+    "reaction_d": "Looks tired."
+  },
+  {
+    "question_id": "VQ271",
+    "visitor_ids": [
+      "VI105"
+    ],
+    "question_text": "The heating bill is eating my elderly patients' pensions.",
+    "choice_a": "It is the market.",
+    "choice_b": "Support a targeted winter heating allowance with a simple application.",
+    "choice_c": "Raise pensions across the board.",
+    "choice_d": "Ask them to wear more clothes.",
+    "correct_choice": "B",
+    "response_right": "A simple form. They cannot cope with a complex one.",
+    "response_wrong": "The market never visited a village in January.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Sighs.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -3
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      }
+    ],
+    "response_a": "The market never visited a village in January.",
+    "response_b": "A simple form. They cannot cope with a complex one.",
+    "response_c": "Across the board costs us all.",
+    "response_d": "They already wear everything they own.",
+    "reaction_a": "Sighs.",
+    "reaction_b": "Nods.",
+    "reaction_c": "Hesitates.",
+    "reaction_d": "Looks pained."
+  },
+  {
+    "question_id": "VQ272",
+    "visitor_ids": [
+      "VI106"
+    ],
+    "question_text": "The lake ice is thinner each year. Tourists rent holes by the hour, and some walk out too far.",
+    "choice_a": "Let tourists take their chances.",
+    "choice_b": "Raise rental prices.",
+    "choice_c": "Support a guide-certification and daily ice-thickness reporting scheme.",
+    "choice_d": "Ban ice fishing.",
+    "correct_choice": "C",
+    "response_right": "A guide, a number, a flag. That is the rule I want.",
+    "response_wrong": "Someone will go through.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Shakes head.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": -1
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "Someone will go through.",
+    "response_b": "Prices will not stop them.",
+    "response_c": "A guide, a number, a flag. That is the rule I want.",
+    "response_d": "That ends the season.",
+    "reaction_a": "Shakes head.",
+    "reaction_b": "Shrugs.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Goes pale."
+  },
+  {
+    "question_id": "VQ273",
+    "visitor_ids": [
+      "VI106"
+    ],
+    "question_text": "Rental shops with no license are undercutting the guides.",
+    "choice_a": "Leave it alone.",
+    "choice_b": "Ban rentals.",
+    "choice_c": "Ask the guides to cut prices.",
+    "choice_d": "Support a simple license for rental shops with a safety checklist.",
+    "correct_choice": "D",
+    "response_right": "A license, a checklist. That is a start.",
+    "response_wrong": "Then I am out of business.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Then I am out of business.",
+    "response_b": "No rentals, no ice fishing.",
+    "response_c": "We already cut to the bone.",
+    "response_d": "A license, a checklist. That is a start.",
+    "reaction_a": "Frowns.",
+    "reaction_b": "Looks stricken.",
+    "reaction_c": "Sighs.",
+    "reaction_d": "Nods."
+  },
+  {
+    "question_id": "VQ274",
+    "visitor_ids": [
+      "VI107"
+    ],
+    "question_text": "The valley bus runs three times a day and ice delays all of them.",
+    "choice_a": "Support a winter-contingency fund and a dedicated plow for bus routes.",
+    "choice_b": "Cut the route.",
+    "choice_c": "Raise fares.",
+    "choice_d": "Use taxis.",
+    "correct_choice": "A",
+    "response_right": "A plow for the route. Everyone gets home.",
+    "response_wrong": "Cut it and the valley shrinks.",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Stares.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -1
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ],
+    "response_a": "A plow for the route. Everyone gets home.",
+    "response_b": "Cut it and the valley shrinks.",
+    "response_c": "Fares will empty the bus.",
+    "response_d": "A taxi is the same road.",
+    "reaction_a": "Brightens.",
+    "reaction_b": "Stares.",
+    "reaction_c": "Winces.",
+    "reaction_d": "Shrugs."
+  },
+  {
+    "question_id": "VQ275",
+    "visitor_ids": [
+      "VI107"
+    ],
+    "question_text": "Ridership is down and the town wants to cut the village route.",
+    "choice_a": "Ask villagers to carpool.",
+    "choice_b": "Support a minimum service guarantee for remote routes.",
+    "choice_c": "Let it be cut.",
+    "choice_d": "Replace it with a shared taxi program.",
+    "correct_choice": "B",
+    "response_right": "A guarantee. The school bus needs it too.",
+    "response_wrong": "Half of them cannot drive.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": -1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -3
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Half of them cannot drive.",
+    "response_b": "A guarantee. The school bus needs it too.",
+    "response_c": "Cut and they leave.",
+    "response_d": "A shared taxi. That could work if it is paid for.",
+    "reaction_a": "Frowns.",
+    "reaction_b": "Nods.",
+    "reaction_c": "Looks pained.",
+    "reaction_d": "Hmms."
+  },
+  {
+    "question_id": "VQ276",
+    "visitor_ids": [
+      "VI108"
+    ],
+    "question_text": "Seasonal instructors cannot find rooms. The resort wants a full season of work with no housing.",
+    "choice_a": "Let instructors commute.",
+    "choice_b": "Hire from abroad.",
+    "choice_c": "Support workforce housing tied to the visitor levy.",
+    "choice_d": "Raise wages only.",
+    "correct_choice": "C",
+    "response_right": "Housing, paid by those who ski. Fair.",
+    "response_wrong": "Ninety minutes each way?",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Winces.",
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO14",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "Ninety minutes each way?",
+    "response_b": "Then local children lose the job.",
+    "response_c": "Housing, paid by those who ski. Fair.",
+    "response_d": "Higher wages do not make rooms.",
+    "reaction_a": "Winces.",
+    "reaction_b": "Shakes head.",
+    "reaction_c": "Brightens.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ277",
+    "visitor_ids": [
+      "VI108"
+    ],
+    "question_text": "Lessons for local children cost as much as a tourist's. Families are dropping out.",
+    "choice_a": "Cut the price for everyone.",
+    "choice_b": "Do nothing.",
+    "choice_c": "Ban foreign skiers from lessons.",
+    "choice_d": "Support a small subsidy for resident children tied to the resort levy.",
+    "correct_choice": "D",
+    "response_right": "A resident rate. Children should ski where they live.",
+    "response_wrong": "Everyone cheaper, nobody paid.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Frowns.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO26",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Everyone cheaper, nobody paid.",
+    "response_b": "Then the children stop.",
+    "response_c": "That is not what I asked.",
+    "response_d": "A resident rate. Children should ski where they live.",
+    "reaction_a": "Frowns.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Looks alarmed.",
+    "reaction_d": "Nods."
+  },
+  {
+    "question_id": "VQ278",
+    "visitor_ids": [
+      "VI109"
+    ],
+    "question_text": "Fuel prices doubled and the old boiler is the largest cost in my hotel.",
+    "choice_a": "Support a low-interest loan for renewable heating retrofits.",
+    "choice_b": "Raise prices.",
+    "choice_c": "Switch to electric heaters.",
+    "choice_d": "Close in winter.",
+    "correct_choice": "A",
+    "response_right": "A loan to retire the boiler. That pays back in six winters.",
+    "response_wrong": "The guests will go next door.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Sighs.",
+    "effects_a": [
+      {
+        "target": "BO26",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO26",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "A loan to retire the boiler. That pays back in six winters.",
+    "response_b": "The guests will go next door.",
+    "response_c": "The grid cannot take it.",
+    "response_d": "Then my staff goes home for the winter.",
+    "reaction_a": "Nods.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Winces.",
+    "reaction_d": "Stares."
+  },
+  {
+    "question_id": "VQ279",
+    "visitor_ids": [
+      "VI109"
+    ],
+    "question_text": "My staff want a thermostat they can control. The guests want the rooms warm.",
+    "choice_a": "Let it be.",
+    "choice_b": "Support a local energy-saving advice scheme with a free audit.",
+    "choice_c": "Ignore the staff.",
+    "choice_d": "Ignore the guests.",
+    "correct_choice": "B",
+    "response_right": "An audit would end the argument.",
+    "response_wrong": "The bills do not wait.",
+    "reaction_right": "Brightens.",
+    "reaction_wrong": "Shrugs.",
+    "effects_a": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO26",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO26",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "response_a": "The bills do not wait.",
+    "response_b": "An audit would end the argument.",
+    "response_c": "Staff leave.",
+    "response_d": "Guests leave.",
+    "reaction_a": "Shrugs.",
+    "reaction_b": "Brightens.",
+    "reaction_c": "Frowns.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ280",
+    "visitor_ids": [
+      "VI110"
+    ],
+    "question_text": "The drift ice arrives later and leaves earlier each year. My season has shrunk by a month.",
+    "choice_a": "Cancel winter tours.",
+    "choice_b": "Move to summer cruises.",
+    "choice_c": "Support a shoulder-season package with the regional tourism board.",
+    "choice_d": "Raise tour prices.",
+    "correct_choice": "C",
+    "response_right": "A season that does not depend on one month of ice.",
+    "response_wrong": "Cancel and I close.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Looks stricken.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -1
+      },
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "response_a": "Cancel and I close.",
+    "response_b": "Summer is already full.",
+    "response_c": "A season that does not depend on one month of ice.",
+    "response_d": "Higher prices, fewer riders.",
+    "reaction_a": "Looks stricken.",
+    "reaction_b": "Shrugs.",
+    "reaction_c": "Nods.",
+    "reaction_d": "Sighs."
+  },
+  {
+    "question_id": "VQ281",
+    "visitor_ids": [
+      "VI110"
+    ],
+    "question_text": "On the best days there are four hundred people on the shore and no toilets.",
+    "choice_a": "Close the shore.",
+    "choice_b": "Hope visitors cope.",
+    "choice_c": "Ask local shops to provide it.",
+    "choice_d": "Support a visitor-funded facility and ranger posts for the peak weeks.",
+    "correct_choice": "D",
+    "response_right": "A facility and a ranger. Visitors pay for it.",
+    "response_wrong": "Close it and the coast empties.",
+    "reaction_right": "Nods.",
+    "reaction_wrong": "Winces.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "response_a": "Close it and the coast empties.",
+    "response_b": "They will not cope.",
+    "response_c": "Shops cannot carry that.",
+    "response_d": "A facility and a ranger. Visitors pay for it.",
+    "reaction_a": "Winces.",
+    "reaction_b": "Shakes head.",
+    "reaction_c": "Sighs.",
+    "reaction_d": "Nods."
   }
 ]

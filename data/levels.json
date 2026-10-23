@@ -67,6 +67,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -128,6 +129,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -198,6 +200,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -280,6 +283,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -380,6 +384,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -480,6 +485,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -571,6 +577,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -656,6 +663,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -735,6 +743,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -829,6 +838,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -911,6 +921,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -996,6 +1007,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1078,6 +1090,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1160,6 +1173,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1245,6 +1259,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1330,6 +1345,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1418,6 +1434,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1506,6 +1523,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1594,6 +1612,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1679,6 +1698,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1764,6 +1784,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1849,6 +1870,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -1934,6 +1956,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2019,6 +2042,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2104,6 +2128,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2198,6 +2223,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2283,6 +2309,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2368,6 +2395,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2456,6 +2484,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2544,6 +2573,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2611,6 +2641,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2672,6 +2703,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2732,7 +2764,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO05",
     "special_trigger": null
   },
   {
@@ -2794,6 +2827,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2863,7 +2897,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2931,6 +2966,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -2997,7 +3033,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO16",
     "special_trigger": null
   },
   {
@@ -3068,6 +3105,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3134,7 +3172,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3202,6 +3241,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3268,7 +3308,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO07",
     "special_trigger": null
   },
   {
@@ -3336,6 +3377,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3408,7 +3450,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3482,6 +3525,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3548,7 +3592,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3619,6 +3664,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3685,7 +3731,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO27",
     "special_trigger": null
   },
   {
@@ -3759,6 +3806,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3828,7 +3876,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3896,6 +3945,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -3966,6 +4016,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4035,7 +4086,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4103,6 +4155,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4170,6 +4223,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4236,7 +4290,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO05",
     "special_trigger": null
   },
   {
@@ -4310,6 +4365,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4376,7 +4432,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4447,6 +4504,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4513,7 +4571,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4586,7 +4645,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4666,6 +4726,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4745,6 +4806,7 @@
     "one_time": "No",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4818,6 +4880,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4890,7 +4953,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -4957,7 +5021,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO24",
     "special_trigger": null
   },
   {
@@ -5025,6 +5090,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5098,6 +5164,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5171,6 +5238,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5237,7 +5305,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO16",
     "special_trigger": null
   },
   {
@@ -5304,7 +5373,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO07",
     "special_trigger": null
   },
   {
@@ -5375,6 +5445,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5445,6 +5516,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5514,7 +5586,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5582,6 +5655,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5648,7 +5722,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO05",
     "special_trigger": null
   },
   {
@@ -5715,7 +5790,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO10",
     "special_trigger": null
   },
   {
@@ -5783,6 +5859,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5850,6 +5927,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -5916,7 +5994,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO12",
     "special_trigger": null
   },
   {
@@ -5990,6 +6069,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -6059,7 +6139,8 @@
     "win_delta_bo32": null,
     "one_time": "Yes",
     "weekend_ok": null,
-    "needs_discovery": null,
+    "needs_discovery": "Yes",
+    "host_org": "BO23",
     "special_trigger": null
   },
   {
@@ -6121,6 +6202,7 @@
     "one_time": "Yes",
     "weekend_ok": null,
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -6182,6 +6264,7 @@
     "one_time": "No",
     "weekend_ok": "Yes",
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": "Town Hall"
   },
   {
@@ -6243,6 +6326,7 @@
     "one_time": "No",
     "weekend_ok": "Yes",
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": "Steering Committee"
   },
   {
@@ -6304,6 +6388,7 @@
     "one_time": "No",
     "weekend_ok": "Yes",
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -6365,6 +6450,7 @@
     "one_time": "No",
     "weekend_ok": "Yes",
     "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   },
   {
@@ -6426,6 +6512,379 @@
     "one_time": "No",
     "weekend_ok": "Yes",
     "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null
+  },
+  {
+    "level_id": "LV88",
+    "description": "A Press Gaggle",
+    "cooldown": 12,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST04",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null
+  },
+  {
+    "level_id": "LV89",
+    "description": "A Town Hall on Local Issues",
+    "cooldown": 12,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST05",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null
+  },
+  {
+    "level_id": "LV90",
+    "description": "A Policy Study Evening",
+    "cooldown": 12,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST21",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null
+  },
+  {
+    "level_id": "LV91",
+    "description": "A Late TV Interview",
+    "cooldown": 16,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST06",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null
+  },
+  {
+    "level_id": "LV92",
+    "description": "Attend the Autumn Harvest Festival",
+    "cooldown": 24,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST265",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
+    "special_trigger": null
+  },
+  {
+    "level_id": "LV93",
+    "description": "Attend the Winter Snow Festival",
+    "cooldown": 24,
+    "tier": 0,
+    "unlock_cost_vacant": 0,
+    "unlock_cost_tier_0": 0,
+    "unlock_cost_tier_1": 0,
+    "unlock_cost_tier_2": 0,
+    "stage_1": "ST266",
+    "stage_2": null,
+    "stage_3": null,
+    "stage_4": null,
+    "stage_5": null,
+    "stage_6": null,
+    "stage_7": null,
+    "stage_8": null,
+    "stage_9": null,
+    "stage_10": null,
+    "bonus_win_range_jiban": null,
+    "bonus_win_range_yen": null,
+    "bonus_win_range_reputation": null,
+    "bonus_win_range_xp": null,
+    "bonus_win_range_party_support": null,
+    "win_delta_bo01": null,
+    "win_delta_bo02": null,
+    "win_delta_bo03": null,
+    "win_delta_bo04": null,
+    "win_delta_bo05": null,
+    "win_delta_bo06": null,
+    "win_delta_bo07": null,
+    "win_delta_bo08": null,
+    "win_delta_bo09": null,
+    "win_delta_bo10": null,
+    "win_delta_bo11": null,
+    "win_delta_bo12": null,
+    "win_delta_bo13": null,
+    "win_delta_bo14": null,
+    "win_delta_bo15": null,
+    "win_delta_bo16": null,
+    "win_delta_bo17": null,
+    "win_delta_bo18": null,
+    "win_delta_bo19": null,
+    "win_delta_bo20": null,
+    "win_delta_bo21": null,
+    "win_delta_bo22": null,
+    "win_delta_bo23": null,
+    "win_delta_bo24": null,
+    "win_delta_bo25": null,
+    "win_delta_bo26": null,
+    "win_delta_bo27": null,
+    "win_delta_bo28": null,
+    "win_delta_bo29": null,
+    "win_delta_bo30": null,
+    "win_delta_bo31": null,
+    "win_delta_bo32": null,
+    "one_time": "No",
+    "weekend_ok": "Yes",
+    "needs_discovery": null,
+    "host_org": null,
     "special_trigger": null
   }
 ]
