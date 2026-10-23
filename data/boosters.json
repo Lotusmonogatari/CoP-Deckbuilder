@@ -74,7 +74,8 @@
     "romaji": "Chōnaikai",
     "tier": "Constituency",
     "linked_modifiers": [
-      "M21"
+      "M21",
+      "M52"
     ],
     "starting_standing": 35,
     "party_lean_multiplier": null,
@@ -87,7 +88,8 @@
     "romaji": "Gyokyō",
     "tier": "Constituency",
     "linked_modifiers": [
-      "M22"
+      "M22",
+      "M49"
     ],
     "starting_standing": 15,
     "party_lean_multiplier": null,
@@ -182,7 +184,8 @@
     "romaji": "Tsūkinsha Renmei",
     "tier": "Constituency",
     "linked_modifiers": [
-      "M29"
+      "M29",
+      "M53"
     ],
     "starting_standing": 20,
     "party_lean_multiplier": null,
@@ -195,7 +198,8 @@
     "romaji": "Dentō Hoshu no Kai",
     "tier": "National",
     "linked_modifiers": [
-      "M30"
+      "M30",
+      "M55"
     ],
     "starting_standing": 15,
     "party_lean_multiplier": null,
@@ -286,7 +290,8 @@
     "romaji": "Taieki Gunjin-kai",
     "tier": "National",
     "linked_modifiers": [
-      "M36"
+      "M36",
+      "M54"
     ],
     "starting_standing": null,
     "party_lean_multiplier": null,
@@ -299,7 +304,8 @@
     "romaji": "Nōzeisha Renmei",
     "tier": "National",
     "linked_modifiers": [
-      "M37"
+      "M37",
+      "M50"
     ],
     "starting_standing": null,
     "party_lean_multiplier": null,
@@ -364,7 +370,8 @@
     "romaji": "Ainu Kyōgikai",
     "tier": "Constituency",
     "linked_modifiers": [
-      "M42"
+      "M42",
+      "M56"
     ],
     "starting_standing": null,
     "party_lean_multiplier": null,
@@ -390,7 +397,8 @@
     "romaji": "Chiiki Shinkō Kaigi",
     "tier": "Constituency",
     "linked_modifiers": [
-      "M44"
+      "M44",
+      "M51"
     ],
     "starting_standing": null,
     "party_lean_multiplier": null,

@@ -666,3 +666,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Draft a Bill: the player's own bill (patron step 7, 2026-10-19, Cameron)
 - Organization chips, patron tab notes, component supply (2026-10-20, Cameron)
 - Bill player cues: fifteen lines per style and lean, leans read differently (2026-10-20, Cameron)
+- Organization value pass: bigger backings, second backings, newer organizations' level rewards (2026-10-23, Cameron)

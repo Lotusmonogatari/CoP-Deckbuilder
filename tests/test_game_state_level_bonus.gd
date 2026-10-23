@@ -71,3 +71,17 @@ func test_a_level_with_no_booster_columns_moves_nothing() -> void:
 
 	for booster: Dictionary in DataDB.boosters:
 		assert_eq(int(GameState.booster_standing[str(booster.get("booster_id", ""))]), 50)
+
+
+## The workbook's Win ΔBO17 to BO32 columns (2026-10-23) reach the real
+## levels: LV31's draft values move the two Ainu organizations, and a level
+## with none of them leaves the rest alone.
+func test_real_levels_carry_columns_for_the_newer_organizations() -> void:
+	var lv31: Dictionary = DataDB.get_level("LV31")
+	assert_true(lv31.has("win_delta_bo28"), "LV31 should carry a BO28 column")
+	assert_eq(int((lv31["win_delta_bo28"] as Dictionary).get("max", 0)), 1)
+	for key: String in DataDB.get_level("LV01").keys():
+		if key.begins_with("win_delta_bo") and int(key.substr(12)) >= 17:
+			var cell: Variant = DataDB.get_level("LV01")[key]
+			assert_true(cell == null or int((cell as Dictionary).get("max", 0)) == 0,
+				"%s should be blank on LV01" % key)
