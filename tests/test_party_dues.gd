@@ -39,20 +39,21 @@ func after_each() -> void:
 
 
 func test_base_dues_rise_50000_for_each_15_points_above_40() -> void:
-	assert_eq(PartyDues.base_dues(_cfg, 40), 100000)
-	assert_eq(PartyDues.base_dues(_cfg, 54), 100000, "14 above 40 is not a full step")
-	assert_eq(PartyDues.base_dues(_cfg, 55), 150000)
-	assert_eq(PartyDues.base_dues(_cfg, 70), 200000)
-	assert_eq(PartyDues.base_dues(_cfg, 100), 300000, "100 is four steps")
-	assert_eq(PartyDues.base_dues(_cfg, 10), 100000, "below 40 adds nothing")
+	assert_eq(PartyDues.base_dues(_cfg, 40), 50000)
+	assert_eq(PartyDues.base_dues(_cfg, 54), 50000, "14 above 40 is not a full step")
+	assert_eq(PartyDues.base_dues(_cfg, 55), 100000)
+	assert_eq(PartyDues.base_dues(_cfg, 70), 150000)
+	assert_eq(PartyDues.base_dues(_cfg, 100), 250000, "100 is four steps")
+	assert_eq(PartyDues.base_dues(_cfg, 10), 50000, "below 40 adds nothing")
 
 
 func test_weekday_rewards_add_30_percent() -> void:
-	assert_eq(PartyDues.week_dues(_cfg, 40, 400000), 100000 + 120000)
+	assert_eq(PartyDues.week_dues(_cfg, 40, 400000), 50000 + 120000)
 
 
 func test_national_awareness_can_cut_the_base() -> void:
-	assert_eq(PartyDues.base_dues(_cfg, 40, 100000), 0)
+	assert_eq(PartyDues.base_dues(_cfg, 40, 50000), 0)
+	assert_eq(PartyDues.base_dues(_cfg, 70, 100000), 50000)
 	assert_eq(PartyDues.base_dues(_cfg, 40, 250000), 0, "never below nothing")
 
 
@@ -86,9 +87,9 @@ func test_a_week_end_with_enough_funds_pays_in_full() -> void:
 	GameState.meta["Party support"] = 40
 	GameState.week_funds_earned = 200000
 	var report := GameState._settle_dues()
-	assert_eq(report["total"], 160000)
-	assert_eq(report["paid"], 160000)
-	assert_eq(int(GameState.meta["Funds"]), 240000)
+	assert_eq(report["total"], 110000)
+	assert_eq(report["paid"], 110000)
+	assert_eq(int(GameState.meta["Funds"]), 290000)
 	assert_eq(GameState.dues_balance, 0)
 	assert_eq(GameState.week_funds_earned, 0)
 	assert_false(report["penalized"])
@@ -102,8 +103,8 @@ func test_a_short_week_rolls_over_and_costs_the_party_its_backings() -> void:
 	GameState.owned_modifiers.append("M11")
 	var report := GameState._settle_dues()
 	assert_eq(report["paid"], 20000)
-	assert_eq(report["owed"], 80000)
-	assert_eq(GameState.dues_balance, 80000)
+	assert_eq(report["owed"], 30000)
+	assert_eq(GameState.dues_balance, 30000)
 	assert_true(report["penalized"])
 	assert_eq(int(GameState.meta["Funds"]), 0)
 	assert_eq(int(GameState.meta["Party support"]), 30, "-10")
@@ -118,7 +119,7 @@ func test_the_carried_balance_is_added_next_week() -> void:
 	GameState.meta["Party support"] = 40
 	GameState.meta["Funds"] = 500000
 	var report := GameState._settle_dues()
-	assert_eq(report["total"], 180000)
+	assert_eq(report["total"], 130000)
 	assert_eq(GameState.dues_balance, 0)
 
 

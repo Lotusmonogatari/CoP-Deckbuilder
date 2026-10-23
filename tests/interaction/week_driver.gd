@@ -54,6 +54,7 @@ func _check_monday() -> void:
 func _friday_flow() -> void:
 	GameState.calendar = {"week": 0, "phase": "work", "hours": 34}
 	GameState.meta["Funds"] = 100000
+	GameState.meta["Party support"] = 40
 	await _open_office()
 	var button := _screen().find_child("WeekButton", true, false) as Button
 	_expect(button != null and button.visible and button.text == "End the Work Week", "Friday shows End the Work Week")
@@ -85,8 +86,8 @@ func _friday_flow() -> void:
 	var popup := _screen().get_node("NewWeekPanel") as Overlay
 	_expect(popup.visible, "a popup announces the new week")
 	_expect(_label_text(popup).contains("08.10.18"), "the popup names the new date")
-	_expect(_label_text(popup).contains("Party dues paid: 100,000"), "the popup reports the dues paid, got: %s" % _label_text(popup))
-	_expect(int(GameState.meta["Funds"]) == 0, "PC01's 100,000 went to the party, got %d" % int(GameState.meta["Funds"]))
+	_expect(_label_text(popup).contains("Party dues paid: 50,000"), "the popup reports the dues paid, got: %s" % _label_text(popup))
+	_expect(int(GameState.meta["Funds"]) == 50000, "50,000 of PC01's 100,000 went to the party, got %d" % int(GameState.meta["Funds"]))
 	_expect(not GameState.in_weekend() and int(GameState.calendar["week"]) == 1, "back to a work week")
 	_save_shot("week_new")
 	var go := _find_button(popup, "Start the Week")
@@ -113,22 +114,22 @@ func _week_over_flow() -> void:
 ## Too little Funds at the week end: the popup says so and the balance rolls over.
 func _short_on_funds_flow() -> void:
 	GameState.calendar = {"week": 2, "phase": "weekend", "hours": 4}
-	GameState.meta["Funds"] = 30000
+	GameState.meta["Funds"] = 20000
 	GameState.meta["Party support"] = 40
 	GameState.dues_balance = 0
 	GameState.week_funds_earned = 0
 	await _open_office()
 	var label := _screen().find_child("DuesLabel", true, false) as Label
-	_expect(label != null and label.visible and label.text.contains("100,000"), "the dues line shows what is owed")
+	_expect(label != null and label.visible and label.text.contains("50,000"), "the dues line shows what is owed")
 	var button := _screen().find_child("WeekButton", true, false) as Button
 	button.pressed.emit()
 	await get_tree().process_frame
 	await get_tree().create_timer(0.3).timeout
 	var popup := _screen().get_node("NewWeekPanel") as Overlay
 	var text := _label_text(popup)
-	_expect(text.contains("70,000円 rolls over"), "the popup says what rolls over, got: %s" % text)
+	_expect(text.contains("30,000円 rolls over"), "the popup says what rolls over, got: %s" % text)
 	_expect(text.contains("furious"), "and that the party is displeased")
-	_expect(GameState.dues_balance == 70000, "the balance is carried")
+	_expect(GameState.dues_balance == 30000, "the balance is carried")
 	_save_shot("week_overdue")
 
 

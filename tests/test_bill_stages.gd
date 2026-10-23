@@ -63,6 +63,10 @@ func test_a_bill_specific_copy_plays_like_its_family() -> void:
 		# differently on purpose (influence building step B).
 		if stage_id == MpVisit.VISIT_STAGE or stage_id == MpVisit.FIGHT_STAGE or stage_id == LobbyistTrade.TRADE_STAGE or stage_id == PatronVisit.STAGE:
 			continue
+		# "Attend a Local Festival" borrows Office Hours' picture but seats ten
+		# constituents instead of five, on purpose (2026-10-23).
+		if stage_id == "ST264":
+			continue
 		var generic := DataDB.get_stage(base)
 		assert_eq(stage["mode"], generic["mode"], stage_id)
 		assert_eq(stage.get("sequence_mode"), generic.get("sequence_mode"), stage_id)
