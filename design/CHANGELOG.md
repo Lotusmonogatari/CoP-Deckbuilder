@@ -2458,3 +2458,11 @@ Built from the approved design (`design/proposals/DISTRICT_ACTIVITIES_2026-10-23
 | Farmers' Market Stall | ST270 / LV97 | 4 | 10 | 14 | 24 | Funds +10,000円, District Awareness +2 |
 
 56 visitors (VI111 to VI166) and 112 dilemma questions (VQ282 to VQ393), all inside the content budget. Visitors are generic local roles; names, wording and organization effects are a draft for Cameron to rewrite. The test `test_district_activities.gd` checks the shape; `test_bill_stages.gd` exempts the four stages from the Office Hours seat-count rule, as it does the festival.
+
+## Written district-activity answers, and the dining and tour pictures (2026-10-23, Cameron)
+
+| Change | Detail |
+|---|---|
+| **No more stock lines** | All 112 district-activity questions (VQ282 to VQ393) now carry their own fourth choice, their own responses to the wrong answers, and their own reactions for every choice. Before, those were four rotating lines reused across every question. The wrong-answer responses react to the mood of a dismissive reply rather than to each choice line by line, so they are the first thing to polish |
+| **Pictures** | Your uploaded `DINING`, `Dining_alt`, `Tour` and `Tour_alt` backgrounds are in. The game looks files up by exact ID, so three were renamed to `TOUR.png`, `DINING_ALT.png` and `TOUR_ALT.png` |
+| **Alternative icons** | CP03 and CP04 now use the main item icons (`booster_dinner`, `walking_tour`) instead of `Dining_Alt` and `Tour_Alt`, which were never drawn |
