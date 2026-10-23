@@ -19007,5 +19007,7845 @@
     "reaction_b": "Shakes head.",
     "reaction_c": "Sighs.",
     "reaction_d": "Nods."
+  },
+  {
+    "question_id": "VQ282",
+    "visitor_ids": [
+      "VI111"
+    ],
+    "question_text": "The flour price has gone up three times since spring and my regulars notice every yen. What can you do?",
+    "choice_a": "Push for a fuel and flour cost review and report back in a month.",
+    "choice_b": "Say prices follow the market and nobody can change that.",
+    "choice_c": "Suggest I raise my own prices and be done with it.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A date and a number. That I can use.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A date and a number. That I can use.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ283",
+    "visitor_ids": [
+      "VI111"
+    ],
+    "question_text": "My shop is the last on this block with a bell on the door. The landlord wants to sell. Will you speak up?",
+    "choice_a": "Call the landlord with me and ask what would keep us here.",
+    "choice_b": "Say property rights are the landlord's business.",
+    "choice_c": "Tell me chain stores bring more jobs anyway.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Nobody has offered to do that before.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Nobody has offered to do that before.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ284",
+    "visitor_ids": [
+      "VI112"
+    ],
+    "question_text": "The 7:40 bus has been cut to every second day. I have a job on the other side of town. What do I do?",
+    "choice_a": "Ride along with me one morning and bring the timetable to the council.",
+    "choice_b": "Say the bus company has to make its own decisions.",
+    "choice_c": "Tell me to buy a car like everyone else.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "You would really ride it? Fine, tomorrow.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "You would really ride it? Fine, tomorrow.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ285",
+    "visitor_ids": [
+      "VI112"
+    ],
+    "question_text": "The stop has no roof and it snows here half the year. Is that too much to ask?",
+    "choice_a": "Ask the city for a shelter this winter and name a date.",
+    "choice_b": "Say shelters are a matter for the ward office.",
+    "choice_c": "Tell me waiting builds character.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A roof. Such a small thing, and so rare.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "A roof. Such a small thing, and so rare.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ286",
+    "visitor_ids": [
+      "VI113"
+    ],
+    "question_text": "I work nights alone and the street gets rough after midnight. Who looks out for people like me?",
+    "choice_a": "Raise the lighting and patrol schedule with the ward and ask the store about a second clerk.",
+    "choice_b": "Say the police have their own priorities.",
+    "choice_c": "Suggest I find a day job.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "At least someone noticed the night shift.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "response_a": "At least someone noticed the night shift.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ287",
+    "visitor_ids": [
+      "VI113"
+    ],
+    "question_text": "The store's rent just doubled. We may close at the end of the year. Can the city help?",
+    "choice_a": "Look at whether a rent support scheme fits shops like this one.",
+    "choice_b": "Say the market sets rents.",
+    "choice_c": "Say shops come and shops go.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A scheme? Tell me where to sign.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "response_a": "A scheme? Tell me where to sign.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ288",
+    "visitor_ids": [
+      "VI114"
+    ],
+    "question_text": "This ward used to hold a summer cleanup every year. Nobody organizes it now. Will you?",
+    "choice_a": "Help me set a date and bring volunteers from three blocks.",
+    "choice_b": "Say it is a private matter for the neighborhood.",
+    "choice_c": "Say the city already pays people to clean.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Three blocks. I can knock on doors for that.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "Three blocks. I can knock on doors for that.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ289",
+    "visitor_ids": [
+      "VI114"
+    ],
+    "question_text": "The playground swings were removed and never replaced. The children have nowhere to go. What now?",
+    "choice_a": "Walk the site with me and ask the ward office for a budget line.",
+    "choice_b": "Say playgrounds are not a priority.",
+    "choice_c": "Say children can use the school yard.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A budget line. You speak our language.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A budget line. You speak our language.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ290",
+    "visitor_ids": [
+      "VI115"
+    ],
+    "question_text": "Half my day is spent circling for a legal place to park. Who plans this?",
+    "choice_a": "Ask the ward for loading bays on the main street and a timed pilot.",
+    "choice_b": "Say parking rules are the police's concern.",
+    "choice_c": "Tell me to deliver on foot.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A pilot I can test. Good.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "A pilot I can test. Good.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ291",
+    "visitor_ids": [
+      "VI115"
+    ],
+    "question_text": "The road outside the depot is cracked and my van bounces over it all day. What can you do?",
+    "choice_a": "Report it to the road office with a photo and follow up in a week.",
+    "choice_b": "Say roads are a prefectural matter.",
+    "choice_c": "Say potholes are part of the job.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Photo in the cab. Done.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "Photo in the cab. Done.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ292",
+    "visitor_ids": [
+      "VI116"
+    ],
+    "question_text": "The market hall has an expensive new lease. We sell fish, not diamonds. Will you ask them to reconsider?",
+    "choice_a": "Ask the hall for a phased lease and ask the stall holders to join the talk.",
+    "choice_b": "Say the hall must be able to pay its bills.",
+    "choice_c": "Say the market is dying anyway.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "If they all come, they'll listen.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "If they all come, they'll listen.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ293",
+    "visitor_ids": [
+      "VI116"
+    ],
+    "question_text": "Young people do not want to stand in the cold at five in the morning. How do we keep the trade alive?",
+    "choice_a": "Pair stalls with apprentices and ask the council to pay part of the wage.",
+    "choice_b": "Say that is just how the trade is.",
+    "choice_c": "Say the trade belongs to the past.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A paid apprentice. Why did no one think of it?",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A paid apprentice. Why did no one think of it?",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ294",
+    "visitor_ids": [
+      "VI117"
+    ],
+    "question_text": "The only cheap lunch near campus closed. Is the city going to do anything for students?",
+    "choice_a": "Ask the university and the ward about a lunch hall for students.",
+    "choice_b": "Say lunch is a personal responsibility.",
+    "choice_c": "Tell me to cook at home.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A hall would change everything.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "A hall would change everything.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ295",
+    "visitor_ids": [
+      "VI117"
+    ],
+    "question_text": "I took on three part-time jobs to pay rent. I can't study. What do I do?",
+    "choice_a": "Press for a ward housing supplement and share what I learn with you.",
+    "choice_b": "Say all students have it hard.",
+    "choice_c": "Say it builds independence.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Supplement. I will look it up tonight.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "Supplement. I will look it up tonight.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ296",
+    "visitor_ids": [
+      "VI118"
+    ],
+    "question_text": "Everyone buys flowers online now. My shop has three customers a day. What can you do?",
+    "choice_a": "Help set up a shared local delivery with the neighboring shops.",
+    "choice_b": "Say online shopping is the future.",
+    "choice_c": "Say flowers are a luxury.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Together we might survive.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Together we might survive.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ297",
+    "visitor_ids": [
+      "VI118"
+    ],
+    "question_text": "The shotengai lights are half dead and the street looks abandoned at dusk. Can it be fixed?",
+    "choice_a": "Ask the council for replacement lights and a shotengai committee seat.",
+    "choice_b": "Say the committee should pay.",
+    "choice_c": "Say the street is not worth saving.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A seat. That is more than we hoped for.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A seat. That is more than we hoped for.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ298",
+    "visitor_ids": [
+      "VI119"
+    ],
+    "question_text": "Ride-share apps take my fares and none of the risk. Is that fair?",
+    "choice_a": "Raise it in committee and ask for rules that cover everyone equally.",
+    "choice_b": "Say competition is good for passengers.",
+    "choice_c": "Say drivers should adapt.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "Equal rules. That is all anyone wants.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "response_a": "Equal rules. That is all anyone wants.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ299",
+    "visitor_ids": [
+      "VI119"
+    ],
+    "question_text": "The station taxi rank was moved to the far corner. Passengers do not find us. Can you ask for it back?",
+    "choice_a": "Call the station manager with me and ask for a trial.",
+    "choice_b": "Say the station decides its own layout.",
+    "choice_c": "Tell me to find fares elsewhere.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "You would call him with me? That helps.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO14",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO14",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO14",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "response_a": "You would call him with me? That helps.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ300",
+    "visitor_ids": [
+      "VI120"
+    ],
+    "question_text": "The nearest supermarket is a twenty-minute walk and I have a bad knee. What are my options?",
+    "choice_a": "Ask about a community bus or a delivery partnership with local shops.",
+    "choice_b": "Say you cannot fix everything.",
+    "choice_c": "Say people should move closer to shops.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A little bus. My knee would thank you.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A little bus. My knee would thank you.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ301",
+    "visitor_ids": [
+      "VI120"
+    ],
+    "question_text": "My daughter works late and cannot watch my grandson. The day nursery has a long waiting list. Help?",
+    "choice_a": "Ask the ward how many places are open and press for another group.",
+    "choice_b": "Say nursery places are limited.",
+    "choice_c": "Say families should manage themselves.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "Another group. That is something.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Another group. That is something.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ302",
+    "visitor_ids": [
+      "VI121"
+    ],
+    "question_text": "Customers talk politics in my chair all day. What is the one thing you would tell them?",
+    "choice_a": "That I am here to listen before I talk, and I will be back next month.",
+    "choice_b": "That politics is complicated and I cannot explain it quickly.",
+    "choice_c": "That they should read the papers.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "Come back and I will keep the second chair warm.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Come back and I will keep the second chair warm.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ303",
+    "visitor_ids": [
+      "VI121"
+    ],
+    "question_text": "My son wants to take over but the shop barely pays the rent. Is there help for a family business?",
+    "choice_a": "Ask about succession support for small shops and put you in touch.",
+    "choice_b": "Say family shops have to stand on their own.",
+    "choice_c": "Say your son should look for a salaried job.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Succession support. I never heard of it.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Succession support. I never heard of it.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ304",
+    "visitor_ids": [
+      "VI122"
+    ],
+    "question_text": "Half my customers are elderly and cannot get to a clinic. Is there any way to bring care to them?",
+    "choice_a": "Ask the ward about home visits and a pharmacy-clinic referral line.",
+    "choice_b": "Say healthcare is a prefectural matter.",
+    "choice_c": "Say people should plan ahead.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A referral line. I would staff it myself.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "A referral line. I would staff it myself.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ305",
+    "visitor_ids": [
+      "VI122"
+    ],
+    "question_text": "Medicine prices change every year and I cannot explain why. Will you look into it?",
+    "choice_a": "Ask the ministry for a simple explainer for patients and shops.",
+    "choice_b": "Say prices are set in Tokyo.",
+    "choice_c": "Say people should ask their doctor.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "An explainer. I will hand them out.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "An explainer. I will hand them out.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ306",
+    "visitor_ids": [
+      "VI123"
+    ],
+    "question_text": "The building boom noise starts at seven. People in the ward are fed up. Who sets those limits?",
+    "choice_a": "Ask the ward to review hours and publish the rules at every site.",
+    "choice_b": "Say building brings jobs.",
+    "choice_c": "Say people should buy earplugs.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "Published rules. Even I would follow those.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "Published rules. Even I would follow those.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ307",
+    "visitor_ids": [
+      "VI123"
+    ],
+    "question_text": "A new apartment block is going up and none of it is affordable for locals. Is that right?",
+    "choice_a": "Press the council for an affordability share in every new block.",
+    "choice_b": "Say the market decides.",
+    "choice_c": "Say affordability is not the city's job.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A share. That is practical.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "A share. That is practical.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ308",
+    "visitor_ids": [
+      "VI124"
+    ],
+    "question_text": "I lost customers when the road was dug up for six months. Who pays for that?",
+    "choice_a": "Ask the road office to give notice and consider relief for shops on closed streets.",
+    "choice_b": "Say road works benefit everyone in the end.",
+    "choice_c": "Say that is just business.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Relief. Even a small one would matter.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "response_a": "Relief. Even a small one would matter.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ309",
+    "visitor_ids": [
+      "VI124"
+    ],
+    "question_text": "Tourists come for the view and never buy a coffee. How do we turn visits into sales?",
+    "choice_a": "Work with the shotengai on a stamp card and a map that sends them in.",
+    "choice_b": "Say tourism is up to the tourists.",
+    "choice_c": "Say we should stop caring about tourists.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A stamp card! They love those.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO27",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO27",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "response_a": "A stamp card! They love those.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ310",
+    "visitor_ids": [
+      "VI125"
+    ],
+    "question_text": "We are three nurses short on every ward and everyone is exhausted. What will you do?",
+    "choice_a": "Press for a staffing standard and bring the figures to the next committee.",
+    "choice_b": "Say hiring is the hospital's decision.",
+    "choice_c": "Say nursing has always been hard.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A standard. Finally, something written down.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "response_a": "A standard. Finally, something written down.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ311",
+    "visitor_ids": [
+      "VI125"
+    ],
+    "question_text": "I cannot get a childcare place for night shifts. Is there any help?",
+    "choice_a": "Ask the ward about extended-hours care for medical staff.",
+    "choice_b": "Say night childcare is too costly.",
+    "choice_c": "Say I should have chosen day shifts.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Extended hours. That would keep me working.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO09",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "response_a": "Extended hours. That would keep me working.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ312",
+    "visitor_ids": [
+      "VI126"
+    ],
+    "question_text": "The nearest specialist is four hours away by bus. How is an old man to get there?",
+    "choice_a": "Ask for a visiting specialist day and a patient shuttle for rural patients.",
+    "choice_b": "Say rural care is expensive.",
+    "choice_c": "Say old men should stay near the city.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A shuttle. I would ride it.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "response_a": "A shuttle. I would ride it.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ313",
+    "visitor_ids": [
+      "VI126"
+    ],
+    "question_text": "I do not trust the new online booking. Can I still just walk in?",
+    "choice_a": "Ask the clinic to keep a walk-in morning and a phone line.",
+    "choice_b": "Say everything is online now.",
+    "choice_c": "Say people should learn the computer.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A phone line. I can use a phone.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO07",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO07",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "response_a": "A phone line. I can use a phone.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ314",
+    "visitor_ids": [
+      "VI127"
+    ],
+    "question_text": "We waited five hours with a feverish child. Why is the paediatric ward so slow?",
+    "choice_a": "Ask the hospital for a triage nurse in the waiting room and report the wait times.",
+    "choice_b": "Say the hospital is doing its best.",
+    "choice_c": "Say children get sick, it is normal.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "Wait times in public. Maybe it will change.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "Wait times in public. Maybe it will change.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ315",
+    "visitor_ids": [
+      "VI127"
+    ],
+    "question_text": "Is there anything that would help a family afford the medicine when both of us work?",
+    "choice_a": "Look at the family medical expense subsidy and explain how to apply.",
+    "choice_b": "Say subsidies are limited.",
+    "choice_c": "Say families should budget better.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Subsidy. Nobody told us.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "Subsidy. Nobody told us.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ316",
+    "visitor_ids": [
+      "VI128"
+    ],
+    "question_text": "Our clinic is aging and our equipment is older than the staff. Is there any capital support?",
+    "choice_a": "Ask for a regional clinic equipment grant and help with the application.",
+    "choice_b": "Say the budget is tight.",
+    "choice_c": "Say clinics should merge.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A grant. That could replace the scanner.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "response_a": "A grant. That could replace the scanner.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ317",
+    "visitor_ids": [
+      "VI128"
+    ],
+    "question_text": "The new rules require paperwork that takes longer than the appointment. Can that change?",
+    "choice_a": "Press the ministry for a simpler form and a trial at this clinic.",
+    "choice_b": "Say rules are rules.",
+    "choice_c": "Say paperwork protects patients.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A trial here. I will keep notes.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "response_a": "A trial here. I will keep notes.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ318",
+    "visitor_ids": [
+      "VI129"
+    ],
+    "question_text": "I visit eight households a day and there is never time to listen. What can change?",
+    "choice_a": "Ask for a visit-time standard and a pay review for home-care work.",
+    "choice_b": "Say home care is a private service.",
+    "choice_c": "Say care workers choose the job.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A standard would help. Thank you.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A standard would help. Thank you.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ319",
+    "visitor_ids": [
+      "VI129"
+    ],
+    "question_text": "Families pay out of pocket for gaps in the insurance. Is there any fix?",
+    "choice_a": "Ask about a gap fund and a clearer list of what is covered.",
+    "choice_b": "Say insurance has limits.",
+    "choice_c": "Say families should save more.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A clear list. Even that would help.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A clear list. Even that would help.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ320",
+    "visitor_ids": [
+      "VI130"
+    ],
+    "question_text": "The village clinic closes at noon on Fridays. Where do I go if my knee gives out?",
+    "choice_a": "Ask for a visiting nurse on Friday afternoons and a clinic phone number on the bus.",
+    "choice_b": "Say rural clinics are costly.",
+    "choice_c": "Say villagers should plan their injuries.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A visiting nurse. That is progress.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A visiting nurse. That is progress.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ321",
+    "visitor_ids": [
+      "VI130"
+    ],
+    "question_text": "Young people leave because there is no doctor. Can you help the village keep one?",
+    "choice_a": "Ask about a rural doctor program with housing and a mentor.",
+    "choice_b": "Say doctors choose where they work.",
+    "choice_c": "Say villages may have to shrink.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "Housing and a mentor. That is realistic.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "Housing and a mentor. That is realistic.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ322",
+    "visitor_ids": [
+      "VI131"
+    ],
+    "question_text": "People fall between the clinic and the ward office every day. Can you connect them?",
+    "choice_a": "Ask for a shared case-worker line between the clinic and the ward.",
+    "choice_b": "Say agencies are separate.",
+    "choice_c": "Say people should keep their own records.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A line between the two. Just one.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "A line between the two. Just one.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ323",
+    "visitor_ids": [
+      "VI131"
+    ],
+    "question_text": "A man in my caseload sleeps in his car. The shelter is full. What happens to him?",
+    "choice_a": "Press the ward for winter beds and visit the shelter with me.",
+    "choice_b": "Say shelters are not the city's job.",
+    "choice_c": "Say he made his choices.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Visit it with me. You would see.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "Visit it with me. You would see.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ324",
+    "visitor_ids": [
+      "VI132"
+    ],
+    "question_text": "The ambulance depot is ten minutes farther from the east villages than it should be. Who decides?",
+    "choice_a": "Ask for a response-time review and a satellite post to the east.",
+    "choice_b": "Say depots are a prefectural affair.",
+    "choice_c": "Say villages should accept the risk.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A review. People will want to see it.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "A review. People will want to see it.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ325",
+    "visitor_ids": [
+      "VI132"
+    ],
+    "question_text": "We drive long distances to hospitals that are full. Is there any regional planning?",
+    "choice_a": "Ask for a regional bed-sharing plan and publish the numbers.",
+    "choice_b": "Say hospitals plan alone.",
+    "choice_c": "Say demand will drop on its own.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "The numbers. We have been asking.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "The numbers. We have been asking.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ326",
+    "visitor_ids": [
+      "VI133"
+    ],
+    "question_text": "Many patients skip dental care because they cannot afford it. What can be done?",
+    "choice_a": "Ask about a school and elderly dental screening scheme.",
+    "choice_b": "Say dental care is optional.",
+    "choice_c": "Say people neglect themselves.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "Screening! Early care saves more.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "response_a": "Screening! Early care saves more.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ327",
+    "visitor_ids": [
+      "VI133"
+    ],
+    "question_text": "My clinic cannot hire a hygienist. Pay is better in the city. How do we compete?",
+    "choice_a": "Ask about a rural hygienist grant and a paid training place.",
+    "choice_b": "Say pay follows the market.",
+    "choice_c": "Say rural clinics will close.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A paid place. I will post the notice today.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "response_a": "A paid place. I will post the notice today.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ328",
+    "visitor_ids": [
+      "VI134"
+    ],
+    "question_text": "Contract cleaners get half the pay of hospital staff for the same shifts. Is that right?",
+    "choice_a": "Ask for equal-pay review of contract staff on public sites.",
+    "choice_b": "Say contracts are contracts.",
+    "choice_c": "Say cleaning is not skilled.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A review is a start.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "A review is a start.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ329",
+    "visitor_ids": [
+      "VI134"
+    ],
+    "question_text": "We work in infection wards without enough protective gear. Who checks?",
+    "choice_a": "Ask the hospital for a gear audit and publish the results.",
+    "choice_b": "Say safety is the contractor's job.",
+    "choice_c": "Say staff should buy their own gear.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "An audit. We will help.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "An audit. We will help.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ330",
+    "visitor_ids": [
+      "VI135"
+    ],
+    "question_text": "The maternity ward in the next town closes next spring. Where do I give birth?",
+    "choice_a": "Press for a regional maternity plan and a transport allowance.",
+    "choice_b": "Say the ward is closing for good reasons.",
+    "choice_c": "Say mothers can go to the city.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A plan. And a ride for the hard weeks.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "A plan. And a ride for the hard weeks.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ331",
+    "visitor_ids": [
+      "VI135"
+    ],
+    "question_text": "Can fathers take leave without being whispered about at work?",
+    "choice_a": "Ask the council to praise employers who allow paternity leave.",
+    "choice_b": "Say leave is a private deal.",
+    "choice_c": "Say fathers should work and not complain.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Praise helps. Some bosses need it.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "Praise helps. Some bosses need it.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ332",
+    "visitor_ids": [
+      "VI136"
+    ],
+    "question_text": "The clinic ramp is too steep and the lift breaks often. Can you help?",
+    "choice_a": "Raise it with the ward and ask for a funded repair this season.",
+    "choice_b": "Say repairs take time.",
+    "choice_c": "Say the building is old.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A funded repair. Not another promise.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A funded repair. Not another promise.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ333",
+    "visitor_ids": [
+      "VI136"
+    ],
+    "question_text": "I volunteer at the community room but no taxis take wheelchairs. How do I get there?",
+    "choice_a": "Ask about an accessible taxi voucher and a local volunteer driver list.",
+    "choice_b": "Say vouchers cost too much.",
+    "choice_c": "Say you should stay home.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A volunteer list. I know a few names.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A volunteer list. I know a few names.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ334",
+    "visitor_ids": [
+      "VI137"
+    ],
+    "question_text": "Many customers ask us questions we cannot answer. Is there a place they can ask for free?",
+    "choice_a": "Ask for a free health consultation counter staffed twice a week.",
+    "choice_b": "Say consultation is the doctor's job.",
+    "choice_c": "Say people should use the internet.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A counter. We would send everyone there.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "A counter. We would send everyone there.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ335",
+    "visitor_ids": [
+      "VI137"
+    ],
+    "question_text": "Our shelves empty fast during flu season. Why can't supply keep up?",
+    "choice_a": "Ask the ministry for stock figures and an early-warning scheme.",
+    "choice_b": "Say supply chains are complicated.",
+    "choice_c": "Say customers should buy early.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Early warning. That is what we need.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "Early warning. That is what we need.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ336",
+    "visitor_ids": [
+      "VI138"
+    ],
+    "question_text": "I have come here every month for twenty years and the waiting room gets smaller. Is the clinic closing?",
+    "choice_a": "Ask the ward for the clinic's plan and publish it at the front desk.",
+    "choice_b": "Say clinics close when they cannot pay.",
+    "choice_c": "Say old patients should accept change.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Publish it. We deserve to know.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "Publish it. We deserve to know.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ337",
+    "visitor_ids": [
+      "VI138"
+    ],
+    "question_text": "My wife has dementia and I cannot leave her alone. Who can sit with her for an afternoon?",
+    "choice_a": "Ask about a respite-care scheme and a volunteer visitor list.",
+    "choice_b": "Say families should cope.",
+    "choice_c": "Say nursing homes exist.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A visitor list. I would write the first name.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO21",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -2
+      }
+    ],
+    "response_a": "A visitor list. I would write the first name.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ338",
+    "visitor_ids": [
+      "VI139"
+    ],
+    "question_text": "My class has thirty-eight children and one aide on a good day. How do you teach like that?",
+    "choice_a": "Press for a class-size ceiling and a funded aide for every large class.",
+    "choice_b": "Say budgets are tight.",
+    "choice_c": "Say teachers should manage.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A ceiling. Thank you for saying the number.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "response_a": "A ceiling. Thank you for saying the number.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ339",
+    "visitor_ids": [
+      "VI139"
+    ],
+    "question_text": "Parents want daily reports but I have no time to write them. What can change?",
+    "choice_a": "Ask for an admin-support position at the school office.",
+    "choice_b": "Say parents deserve reports.",
+    "choice_c": "Say teaching is a vocation.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Support at the office. A relief.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO11",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "response_a": "Support at the office. A relief.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ340",
+    "visitor_ids": [
+      "VI140"
+    ],
+    "question_text": "Half the school building is older than I am. The roof leaks in the gym. Will it be fixed?",
+    "choice_a": "Ask the board for a repair schedule and report the date to the parents.",
+    "choice_b": "Say buildings are costly.",
+    "choice_c": "Say children are resilient.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A date. Parents will hold us to it.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A date. Parents will hold us to it.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ341",
+    "visitor_ids": [
+      "VI140"
+    ],
+    "question_text": "We are asked to teach more every year with the same hours. What gives?",
+    "choice_a": "Ask the board to name what can be dropped and what must be protected.",
+    "choice_b": "Say schools must adapt.",
+    "choice_c": "Say hours cannot change.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "Naming it is half the battle.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "Naming it is half the battle.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ342",
+    "visitor_ids": [
+      "VI141"
+    ],
+    "question_text": "School lunch fees went up again. We have three children. Is there any relief?",
+    "choice_a": "Look at a sibling discount and a ward-funded lunch support.",
+    "choice_b": "Say fees are fair.",
+    "choice_c": "Say families should pack lunches.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A sibling discount. That helps a lot.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A sibling discount. That helps a lot.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ343",
+    "visitor_ids": [
+      "VI141"
+    ],
+    "question_text": "My daughter is bullied online and the school says it is not their business. Whose is it?",
+    "choice_a": "Press for a school-and-ward protocol and clear contacts for parents.",
+    "choice_b": "Say it is a family matter.",
+    "choice_c": "Say children should toughen up.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Contacts. Finally, someone to call.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Contacts. Finally, someone to call.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ344",
+    "visitor_ids": [
+      "VI142"
+    ],
+    "question_text": "Students come to me because school moves too fast. Is that a problem you can see?",
+    "choice_a": "Ask the board for free after-school study for children who fall behind.",
+    "choice_b": "Say tutoring is a private business.",
+    "choice_c": "Say kids should try harder.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Free study would empty my classroom, and that would be fine.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "Free study would empty my classroom, and that would be fine.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ345",
+    "visitor_ids": [
+      "VI142"
+    ],
+    "question_text": "Entrance exams stress everyone out. Does anyone care?",
+    "choice_a": "Ask for a review of exam load and mental-health support in schools.",
+    "choice_b": "Say exams are fair.",
+    "choice_c": "Say the pressure builds character.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A review. Maybe the pressure will ease.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A review. Maybe the pressure will ease.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ346",
+    "visitor_ids": [
+      "VI143"
+    ],
+    "question_text": "Children come to me every morning without breakfast. What can the school do?",
+    "choice_a": "Ask for a school breakfast scheme and funding for a nurse every day.",
+    "choice_b": "Say parents provide breakfast.",
+    "choice_c": "Say hunger is a lesson.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "Breakfast and a nurse. Everything follows.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "Breakfast and a nurse. Everything follows.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ347",
+    "visitor_ids": [
+      "VI143"
+    ],
+    "question_text": "I am the only counselor for six hundred pupils. Is there support?",
+    "choice_a": "Ask for a part-time counselor and a referral pathway.",
+    "choice_b": "Say counseling is a luxury.",
+    "choice_c": "Say pupils should manage alone.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A pathway. Please.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "A pathway. Please.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ348",
+    "visitor_ids": [
+      "VI144"
+    ],
+    "question_text": "We asked for a say in the uniform rules and were ignored. Do students count?",
+    "choice_a": "Ask the school to hold a student-staff panel on rules once a term.",
+    "choice_b": "Say rules are for adults.",
+    "choice_c": "Say you will understand when you are older.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A panel. We will prepare for it.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A panel. We will prepare for it.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ349",
+    "visitor_ids": [
+      "VI144"
+    ],
+    "question_text": "Our club room is a storeroom and the budget is a cardboard box. Anything we can do?",
+    "choice_a": "Ask the board for a modest club budget line and a real room.",
+    "choice_b": "Say clubs are not a priority.",
+    "choice_c": "Say students should fundraise.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A real room. We could rehearse.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A real room. We could rehearse.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ350",
+    "visitor_ids": [
+      "VI145"
+    ],
+    "question_text": "Our PTA has three volunteers left. Are we supposed to hold the school up?",
+    "choice_a": "Ask the school to reduce PTA tasks and the ward to support volunteer coordination.",
+    "choice_b": "Say PTAs are tradition.",
+    "choice_c": "Say parents should volunteer.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "Fewer tasks. We would stay.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Fewer tasks. We would stay.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ351",
+    "visitor_ids": [
+      "VI145"
+    ],
+    "question_text": "The road outside school has no crossing guard. A child nearly got hit. Will you act?",
+    "choice_a": "Ask the ward for a crossing guard and a speed limit review.",
+    "choice_b": "Say roads are a prefectural matter.",
+    "choice_c": "Say parents should walk children.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A guard by next term. That is something.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A guard by next term. That is something.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ352",
+    "visitor_ids": [
+      "VI146"
+    ],
+    "question_text": "Children no longer say hello in the street. Has respect left us?",
+    "choice_a": "Ask the schools to restore a greeting week and invite neighbors in.",
+    "choice_b": "Say the world has changed.",
+    "choice_c": "Say that is parents' fault.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A week. I will help.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A week. I will help.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ353",
+    "visitor_ids": [
+      "VI146"
+    ],
+    "question_text": "Local history is almost gone from the curriculum. Is it important?",
+    "choice_a": "Ask the board for a local-history unit and invite elders to teach.",
+    "choice_b": "Say the curriculum is crowded.",
+    "choice_c": "Say history is for specialists.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "Elders as teachers. That would fill the hall.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO15",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO15",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO15",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "Elders as teachers. That would fill the hall.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ354",
+    "visitor_ids": [
+      "VI147"
+    ],
+    "question_text": "I have been on a one-year contract for six years. Can I ever settle?",
+    "choice_a": "Ask the board for a path to permanent posts for long-term contract staff.",
+    "choice_b": "Say contracts are standard.",
+    "choice_c": "Say no one is owed a post.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A path. Even a slow one.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A path. Even a slow one.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ355",
+    "visitor_ids": [
+      "VI147"
+    ],
+    "question_text": "Overtime is expected and never paid. What can I do?",
+    "choice_a": "Ask for an overtime recording system and a review of unpaid hours.",
+    "choice_b": "Say teaching is a calling.",
+    "choice_c": "Say overtime is voluntary.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Recording would change the culture.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO09",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO09",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO09",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "Recording would change the culture.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ356",
+    "visitor_ids": [
+      "VI148"
+    ],
+    "question_text": "Our route was cut and children now walk through the dark. What happens in winter?",
+    "choice_a": "Ask the board to restore the route or fund a safe walking path.",
+    "choice_b": "Say routes are costly.",
+    "choice_c": "Say children should be tougher.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A path. I would help paint the lines.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A path. I would help paint the lines.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ357",
+    "visitor_ids": [
+      "VI148"
+    ],
+    "question_text": "The bus is twenty years old and the heater is broken. Who replaces it?",
+    "choice_a": "Ask for a replacement plan and a published schedule.",
+    "choice_b": "Say buses last longer than that.",
+    "choice_c": "Say children will manage.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A plan. At last.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO06",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO06",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A plan. At last.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ358",
+    "visitor_ids": [
+      "VI149"
+    ],
+    "question_text": "The school library budget was cut to nothing. What will children read?",
+    "choice_a": "Ask for a book budget line and a community donation drive.",
+    "choice_b": "Say libraries are optional.",
+    "choice_c": "Say children use phones now.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A drive. We have shelves waiting.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "response_a": "A drive. We have shelves waiting.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ359",
+    "visitor_ids": [
+      "VI149"
+    ],
+    "question_text": "Our reading room is closed on weekends. Families want to use it. Can it open?",
+    "choice_a": "Ask the ward for volunteer weekend hours.",
+    "choice_b": "Say staff cannot work weekends.",
+    "choice_c": "Say weekends are for families.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Volunteers! We have a list.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO11",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO11",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO11",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "response_a": "Volunteers! We have a list.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ360",
+    "visitor_ids": [
+      "VI150"
+    ],
+    "question_text": "Special classes get the oldest rooms and fewest staff. Why?",
+    "choice_a": "Ask the board for an equity review of resources by class.",
+    "choice_b": "Say funds are limited.",
+    "choice_c": "Say special classes cost more.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A review would shine a light.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "A review would shine a light.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ361",
+    "visitor_ids": [
+      "VI150"
+    ],
+    "question_text": "Parents ask me every week where their children will go after school. What do I say?",
+    "choice_a": "Ask for a regional transition plan with employers and day centres.",
+    "choice_b": "Say that is a social matter.",
+    "choice_c": "Say families should look after them.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A plan to hand parents. Thank you.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "response_a": "A plan to hand parents. Thank you.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ362",
+    "visitor_ids": [
+      "VI151"
+    ],
+    "question_text": "Our school board argues in circles. How do you get decisions made?",
+    "choice_a": "Ask for a simple agenda, a time limit and a published decision list.",
+    "choice_b": "Say boards take time.",
+    "choice_c": "Say politics is politics.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A published list. We could be held to it.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO04",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO04",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO04",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO04",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A published list. We could be held to it.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ363",
+    "visitor_ids": [
+      "VI151"
+    ],
+    "question_text": "Closing a small school saves money but kills a village. How do you decide?",
+    "choice_a": "Ask for a fair test and a real chance for the community to answer.",
+    "choice_b": "Say budgets must balance.",
+    "choice_c": "Say small schools will go anyway.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A real chance. That would change the mood.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO04",
+        "delta": 3
+      },
+      {
+        "target": "BO12",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO04",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO04",
+        "delta": -2
+      },
+      {
+        "target": "BO12",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO04",
+        "delta": -3
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "response_a": "A real chance. That would change the mood.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ364",
+    "visitor_ids": [
+      "VI152"
+    ],
+    "question_text": "Every autumn the kindergarten has fewer children. How long can we stay open?",
+    "choice_a": "Ask the ward to keep small kindergartens open with a flat operating grant.",
+    "choice_b": "Say numbers decide.",
+    "choice_c": "Say the town is shrinking.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A flat grant. We could plan.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A flat grant. We could plan.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ365",
+    "visitor_ids": [
+      "VI152"
+    ],
+    "question_text": "Parents want longer hours and I cannot stay later. How do we help working families?",
+    "choice_a": "Ask for an after-care budget and a part-time helper.",
+    "choice_b": "Say hours are the school's choice.",
+    "choice_c": "Say working parents should arrange care.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A helper would change everything.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO12",
+        "delta": 3
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO12",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO12",
+        "delta": -3
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "response_a": "A helper would change everything.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ366",
+    "visitor_ids": [
+      "VI153"
+    ],
+    "question_text": "Fertilizer prices doubled and the potato price did not. What do I do?",
+    "choice_a": "Press for a fertilizer subsidy and a fairer price floor.",
+    "choice_b": "Say farmers must adapt to the market.",
+    "choice_c": "Say farming is a risky business.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A floor. It would change my year.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "A floor. It would change my year.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ367",
+    "visitor_ids": [
+      "VI153"
+    ],
+    "question_text": "My son does not want the farm. Who will take it when I stop?",
+    "choice_a": "Ask about farm succession support and a matching service for new farmers.",
+    "choice_b": "Say farms consolidate.",
+    "choice_c": "Say you cannot force anyone to farm.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A matching service. We could try that.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "A matching service. We could try that.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ368",
+    "visitor_ids": [
+      "VI154"
+    ],
+    "question_text": "Milk prices are set far away and my costs never stop. Will anyone speak up?",
+    "choice_a": "Ask for a dairy cost review and bring the figures to the committee.",
+    "choice_b": "Say prices are set by the market.",
+    "choice_c": "Say dairy should be larger.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A review with figures. Thank you.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "A review with figures. Thank you.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ369",
+    "visitor_ids": [
+      "VI154"
+    ],
+    "question_text": "Cows need milking at five and I have not had a day off in a year. Is there relief?",
+    "choice_a": "Ask about a relief-helper scheme and a shared rota among farms.",
+    "choice_b": "Say dairy is hard work.",
+    "choice_c": "Say you should hire a helper.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A rota! Nobody offered it before.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "A rota! Nobody offered it before.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ370",
+    "visitor_ids": [
+      "VI155"
+    ],
+    "question_text": "The scallop catch is down and fuel is up. What can the city do?",
+    "choice_a": "Ask for fuel cost support and a stock survey for the season.",
+    "choice_b": "Say the sea is unpredictable.",
+    "choice_c": "Say fishing is in decline.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A survey. Everyone argues without one.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A survey. Everyone argues without one.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ371",
+    "visitor_ids": [
+      "VI155"
+    ],
+    "question_text": "Imported seafood undercuts our price. Is that fair?",
+    "choice_a": "Ask for clear origin labels and support for local brands.",
+    "choice_b": "Say trade is free.",
+    "choice_c": "Say consumers decide.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "Labels. People will pay for local.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "Labels. People will pay for local.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ372",
+    "visitor_ids": [
+      "VI156"
+    ],
+    "question_text": "Health inspectors come twice a month. I wash my hands more than a surgeon. Can it be simplified?",
+    "choice_a": "Ask for a single combined inspection per month.",
+    "choice_b": "Say inspections are essential.",
+    "choice_c": "Say small stalls are a risk.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "One inspection. That is plenty.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "One inspection. That is plenty.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ373",
+    "visitor_ids": [
+      "VI156"
+    ],
+    "question_text": "My pickles win prizes but nobody outside this town knows them. How do I reach buyers?",
+    "choice_a": "Ask the prefecture for a local-brand fair and a shared online shopfront.",
+    "choice_b": "Say marketing is up to me.",
+    "choice_c": "Say food is a crowded field.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A shared shopfront. I would join.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A shared shopfront. I would join.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ374",
+    "visitor_ids": [
+      "VI157"
+    ],
+    "question_text": "The frost came late and half the blossom died. Is there insurance for that?",
+    "choice_a": "Ask for a crop-loss scheme that pays quickly for small growers.",
+    "choice_b": "Say insurance is complicated.",
+    "choice_c": "Say frost is part of farming.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "Quickly. That is the key word.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "Quickly. That is the key word.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ375",
+    "visitor_ids": [
+      "VI157"
+    ],
+    "question_text": "I cannot find pickers for the harvest. Foreign workers are hard to hire. What can be done?",
+    "choice_a": "Ask for a simple seasonal visa pathway and a local housing scheme.",
+    "choice_b": "Say rules are rules.",
+    "choice_c": "Say wages should rise first.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "Housing is the missing piece.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "Housing is the missing piece.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ376",
+    "visitor_ids": [
+      "VI158"
+    ],
+    "question_text": "Paperwork for subsidies takes me weeks. Farmers give up. Can it be simpler?",
+    "choice_a": "Ask for a one-page form and a help desk at the co-op.",
+    "choice_b": "Say rules protect everyone.",
+    "choice_c": "Say farmers should learn the forms.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A help desk. We would run it.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "A help desk. We would run it.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ377",
+    "visitor_ids": [
+      "VI158"
+    ],
+    "question_text": "The co-op shop is losing customers to the supermarket. Any ideas?",
+    "choice_a": "Ask the ward for a shared local-food label and a weekend market slot.",
+    "choice_b": "Say supermarkets are better.",
+    "choice_c": "Say the co-op should close.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A weekend slot. We could fill it.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "A weekend slot. We could fill it.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ378",
+    "visitor_ids": [
+      "VI159"
+    ],
+    "question_text": "Rice acreage rules keep changing and I cannot plan. Who is steering?",
+    "choice_a": "Ask for a five-year plan with notice before any change.",
+    "choice_b": "Say policy follows the market.",
+    "choice_c": "Say farmers are never satisfied.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "Five years. I could plan around that.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "response_a": "Five years. I could plan around that.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ379",
+    "visitor_ids": [
+      "VI159"
+    ],
+    "question_text": "Young people leave for the city. Is there any hope for the village?",
+    "choice_a": "Ask about a farm-stay and a first-year support scheme for newcomers.",
+    "choice_b": "Say villages age.",
+    "choice_c": "Say you cannot stop people leaving.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A farm-stay. We have a spare room.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO15",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO15",
+        "delta": -2
+      }
+    ],
+    "response_a": "A farm-stay. We have a spare room.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ380",
+    "visitor_ids": [
+      "VI160"
+    ],
+    "question_text": "My drying racks are on the beach and the storm took half. Can the city help?",
+    "choice_a": "Ask for a storm-damage fund and a shared drying shed.",
+    "choice_b": "Say storms are an act of nature.",
+    "choice_c": "Say it is not worth rebuilding.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A shared shed. We could split the cost.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "A shared shed. We could split the cost.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ381",
+    "visitor_ids": [
+      "VI160"
+    ],
+    "question_text": "Everyone wants fresh fish, nobody wants kelp. How do I sell it?",
+    "choice_a": "Ask for a local menu campaign and a school lunch trial.",
+    "choice_b": "Say tastes change.",
+    "choice_c": "Say kelp is a niche.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "School lunch! The children would eat it.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO07",
+        "delta": 3
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO07",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO07",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO07",
+        "delta": -3
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "response_a": "School lunch! The children would eat it.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ382",
+    "visitor_ids": [
+      "VI161"
+    ],
+    "question_text": "Wolves have not been seen in a century but bears come into the paddock. What do I do?",
+    "choice_a": "Ask for fencing support and a prompt response team for bear sightings.",
+    "choice_b": "Say bears are protected.",
+    "choice_c": "Say farmers should move.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A team. I will keep the phone number.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A team. I will keep the phone number.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ383",
+    "visitor_ids": [
+      "VI161"
+    ],
+    "question_text": "Tourists photograph the sheep and never buy a thing. How do I make visits pay?",
+    "choice_a": "Ask for a farm-visit scheme and a shared booking site.",
+    "choice_b": "Say tourists are not customers.",
+    "choice_c": "Say farming is not tourism.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A shared booking site. I will list myself.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A shared booking site. I will list myself.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ384",
+    "visitor_ids": [
+      "VI162"
+    ],
+    "question_text": "Our roadside stand was moved off the main road and sales dropped by half. Why?",
+    "choice_a": "Ask the road office to consider a marked stand zone with parking.",
+    "choice_b": "Say the road must stay clear.",
+    "choice_c": "Say stands are a nuisance.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A zone. We could sign.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "A zone. We could sign.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ385",
+    "visitor_ids": [
+      "VI162"
+    ],
+    "question_text": "Customers expect card payments now. The machine costs more than I earn on a Sunday. Help?",
+    "choice_a": "Ask for a shared payment terminal pilot for roadside stands.",
+    "choice_b": "Say card fees are a private matter.",
+    "choice_c": "Say customers should bring cash.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A shared terminal. Good thinking.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO30",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO30",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "response_a": "A shared terminal. Good thinking.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ386",
+    "visitor_ids": [
+      "VI163"
+    ],
+    "question_text": "I moved here to farm and nobody will lease me land. What am I missing?",
+    "choice_a": "Ask for a land-matching board and an elder mentor for newcomers.",
+    "choice_b": "Say land is private.",
+    "choice_c": "Say you should have known.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A mentor. That would open doors.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A mentor. That would open doors.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ387",
+    "visitor_ids": [
+      "VI163"
+    ],
+    "question_text": "Banks laugh at a first-year farm loan. How can I start?",
+    "choice_a": "Ask for a start-up loan guarantee for new farmers.",
+    "choice_b": "Say banks are cautious.",
+    "choice_c": "Say start-ups fail.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A guarantee. That might do it.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO30",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO30",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A guarantee. That might do it.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ388",
+    "visitor_ids": [
+      "VI164"
+    ],
+    "question_text": "Our cheese wins medals and still loses to cheap imports on the shelf. Why?",
+    "choice_a": "Ask for a quality-mark scheme and a joint stand at the regional fair.",
+    "choice_b": "Say imports are cheaper.",
+    "choice_c": "Say customers buy on price.",
+    "choice_d": "I cannot help with that.",
+    "correct_choice": "A",
+    "response_right": "A quality mark. People trust a mark.",
+    "response_wrong": "Easy for you to say.",
+    "reaction_right": "Leans in to listen.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "response_a": "A quality mark. People trust a mark.",
+    "response_b": "Easy for you to say.",
+    "response_c": "That is not much of an answer.",
+    "response_d": "I expected more than that.",
+    "reaction_a": "Leans in to listen.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
+  },
+  {
+    "question_id": "VQ389",
+    "visitor_ids": [
+      "VI164"
+    ],
+    "question_text": "The dairy hygiene rules are expensive for a small maker like me. Can they be scaled?",
+    "choice_a": "Ask for a small-producer track with a fair standard.",
+    "choice_b": "Say rules are the same for everyone.",
+    "choice_c": "Say small makers should close.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A fair standard. I can meet that.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "response_a": "A fair standard. I can meet that.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ390",
+    "visitor_ids": [
+      "VI165"
+    ],
+    "question_text": "Cold storage is full and expensive. Fresh produce spoils before it sells. Is there a shared option?",
+    "choice_a": "Ask for a shared cold-store at the market hall.",
+    "choice_b": "Say storage is private.",
+    "choice_c": "Say spoilage is a cost of trade.",
+    "choice_d": "Not my problem.",
+    "correct_choice": "A",
+    "response_right": "A shared store would transform the stalls.",
+    "response_wrong": "That is not much of an answer.",
+    "reaction_right": "Writes it down.",
+    "reaction_wrong": "Frowns, unconvinced.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A shared store would transform the stalls.",
+    "response_b": "That is not much of an answer.",
+    "response_c": "I expected more than that.",
+    "response_d": "Hm. If you say so.",
+    "reaction_a": "Writes it down.",
+    "reaction_b": "Frowns, unconvinced.",
+    "reaction_c": "Shrugs and looks away.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ391",
+    "visitor_ids": [
+      "VI165"
+    ],
+    "question_text": "Farmers and shops never meet. I spend my day as the go-between. Can you bring us together?",
+    "choice_a": "Ask the ward to host a monthly producers-and-buyers meeting.",
+    "choice_b": "Say markets sort themselves out.",
+    "choice_c": "Say buyers should go to the farms.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A monthly meeting. I will bring the tea.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO10",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO23",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": -2
+      },
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "response_a": "A monthly meeting. I will bring the tea.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ392",
+    "visitor_ids": [
+      "VI166"
+    ],
+    "question_text": "Young drinkers prefer beer and wine. Our brewery is a hundred and ten years old. Will it last?",
+    "choice_a": "Ask for a regional sake campaign and a joint stand at fairs.",
+    "choice_b": "Say tastes change.",
+    "choice_c": "Say sake is a hobby.",
+    "choice_d": "Let someone else deal with it.",
+    "correct_choice": "A",
+    "response_right": "A joint stand. We could share the cost.",
+    "response_wrong": "I expected more than that.",
+    "reaction_right": "Nods slowly.",
+    "reaction_wrong": "Shrugs and looks away.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "response_a": "A joint stand. We could share the cost.",
+    "response_b": "I expected more than that.",
+    "response_c": "Hm. If you say so.",
+    "response_d": "Easy for you to say.",
+    "reaction_a": "Nods slowly.",
+    "reaction_b": "Shrugs and looks away.",
+    "reaction_c": "Folds arms.",
+    "reaction_d": "Frowns, unconvinced."
+  },
+  {
+    "question_id": "VQ393",
+    "visitor_ids": [
+      "VI166"
+    ],
+    "question_text": "The tax on sake is the same for the big breweries and for me. Is that fair?",
+    "choice_a": "Raise a small-brewer tax review with the committee.",
+    "choice_b": "Say tax rules are uniform.",
+    "choice_c": "Say small breweries should merge.",
+    "choice_d": "That is how it is.",
+    "correct_choice": "A",
+    "response_right": "A review. That would be fair.",
+    "response_wrong": "Hm. If you say so.",
+    "reaction_right": "Smiles for the first time.",
+    "reaction_wrong": "Folds arms.",
+    "effects_a": [
+      {
+        "target": "BO10",
+        "delta": 3
+      },
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO16",
+        "delta": 1
+      },
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO10",
+        "delta": -2
+      },
+      {
+        "target": "BO16",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO10",
+        "delta": -3
+      },
+      {
+        "target": "BO16",
+        "delta": -2
+      }
+    ],
+    "response_a": "A review. That would be fair.",
+    "response_b": "Hm. If you say so.",
+    "response_c": "Easy for you to say.",
+    "response_d": "That is not much of an answer.",
+    "reaction_a": "Smiles for the first time.",
+    "reaction_b": "Folds arms.",
+    "reaction_c": "Frowns, unconvinced.",
+    "reaction_d": "Shrugs and looks away."
   }
 ]

@@ -2445,3 +2445,16 @@ New tabs: **Hosted Events**, **Event Options**, **Organization Tastes**, **React
 | **District activities** | Design only, awaiting approval: `design/proposals/DISTRICT_ACTIVITIES_2026-10-23.md` |
 
 Tests: `test_vote_whip.gd`, `test_ledger.gd`, `test_events.gd`, `test_gated_levels.gd` updated and extended. The Events and Event Choices tabs have no header notes yet (the two new columns are described here).
+
+## District activities: four single-stage outings (2026-10-23, Cameron)
+
+Built from the approved design (`design/proposals/DISTRICT_ACTIVITIES_2026-10-23.md`, all four, defaults). Each is an Office Hours clone with its own pool of local visitors, open from the start and weekend-ready.
+
+| Activity | Stage / Level | Hours | Seats | Pool | Cooldown | Main reward |
+|---|---|---|---|---|---|---|
+| Constituency Walkabout | ST267 / LV94 | 2 | 6 | 14 | 8 | District Awareness +2 |
+| Community Clinic Day | ST268 / LV95 | 3 | 6 | 14 | 16 | Constituency support +5 |
+| School Visit | ST269 / LV96 | 2 | 8 | 14 | 12 | Reputation +1 |
+| Farmers' Market Stall | ST270 / LV97 | 4 | 10 | 14 | 24 | Funds +10,000円, District Awareness +2 |
+
+56 visitors (VI111 to VI166) and 112 dilemma questions (VQ282 to VQ393), all inside the content budget. Visitors are generic local roles; names, wording and organization effects are a draft for Cameron to rewrite. The test `test_district_activities.gd` checks the shape; `test_bill_stages.gd` exempts the four stages from the Office Hours seat-count rule, as it does the festival.

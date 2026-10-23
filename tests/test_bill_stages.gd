@@ -65,7 +65,7 @@ func test_a_bill_specific_copy_plays_like_its_family() -> void:
 			continue
 		# The festival stages borrow Office Hours' picture but seats ten
 		# constituents instead of five, on purpose (2026-10-23).
-		if ["ST264", "ST265", "ST266"].has(stage_id):
+		if ["ST264", "ST265", "ST266", "ST267", "ST268", "ST269", "ST270"].has(stage_id):
 			continue
 		var generic := DataDB.get_stage(base)
 		assert_eq(stage["mode"], generic["mode"], stage_id)

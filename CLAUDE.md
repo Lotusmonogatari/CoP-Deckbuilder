@@ -672,3 +672,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Events: arranged or arriving, with fixed choices and variable rewards (2026-10-23, Cameron)
 - Gated bill levels, hosting that reveals bills, and a content build-out (2026-10-23, Cameron)
 - Decisions batch: tiered backings, whip discount, tier 0 shown, dues events (2026-10-23, Cameron)
+- District activities: four single-stage outings (2026-10-23, Cameron)
