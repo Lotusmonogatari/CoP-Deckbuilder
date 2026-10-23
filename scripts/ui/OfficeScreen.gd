@@ -1082,6 +1082,15 @@ func _show_record() -> void:
 				line += "  " + because
 		rows.append(UiKit.line(line))
 
+	var meter_names := {"district": Text.say("awareness.district"), "national": Text.say("awareness.national")}
+	for meter: String in ["district", "national"]:
+		var meter_line := Text.say("new_game.stat_line", {
+			"name": meter_names[meter], "value": int(GameState.awareness.get(meter, 0))})
+		var meter_change := int(GameState.last_awareness_change.get(meter, 0))
+		if meter_change != 0:
+			meter_line += "  (%+d)" % meter_change
+		rows.append(UiKit.line(meter_line))
+
 	rows.append(UiKit.heading(Text.say("office.record_bills_heading")))
 	if GameState.bills_flipped_by_influence.is_empty():
 		rows.append(UiKit.line(Text.say("office.record_bills_empty")))

@@ -283,6 +283,12 @@ var _decay_scale := 1.0
 var week_funds_earned := 0
 var dues_balance := 0
 
+## Name awareness (2026-10-23): how many people know the player, in their
+## district and nationally, 0 to 100 each. Saved; cleared on a new run.
+## `last_awareness_change` is the last stage's own movement, not saved.
+var awareness: Dictionary = {"district": 0, "national": 0}
+var last_awareness_change: Dictionary = {}
+
 ## Special Levels waiting on a countdown or due: { trigger: {"armed_at": clock
 ## units} } (SpecialLevels.gd). Saved; cleared on a new run. An entry stays
 ## until that special level has been played, win or lose.
@@ -419,7 +425,7 @@ const _SAVED_FIELDS := [
 	"booster_standing", "segment_favorability", "party_standing", "staff_hired", "staff_fired",
 	"levels_unlocked", "levels_completed_count", "level_last_completed_at", "levels_cleared", "level_cleared_units", "timed_bonuses", "modifier_expires", "last_decay_at", "booster_moved_in_period",
 	"staff_recruitment_tier", "funds_cap_bonus",
-	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "special_levels", "special_forced",
+	"town_hall_active", "steering_committee_active", "funding_frozen_active", "time_units", "calendar", "week_funds_earned", "dues_balance", "awareness", "special_levels", "special_forced",
 	"stage_type_results", "lifetime_gaffes", "stages_lost_to_gaffes",
 	"gaffe_penalty_applied", "bills_flipped_by_influence", "statute_book", "faced_people",
 	"bill_stance",
@@ -567,6 +573,7 @@ func reset_crisis_triggers() -> void:
 	calendar = WeekCalendar.fresh()
 	week_funds_earned = 0
 	dues_balance = 0
+	reset_awareness()
 	last_decay_at = 0
 	booster_moved_in_period = {}
 	timed_bonuses = []
@@ -896,6 +903,43 @@ func _apply_time_decays() -> void:
 		_apply_meta_decay()
 		_decaying = false
 		booster_moved_in_period = {}
+
+
+# ---------------------------------------------------------------------------
+# Name awareness (2026-10-23, Cameron): two meters, district and national.
+
+## Both meters back to their starting values (Balance), for a fresh run.
+func reset_awareness() -> void:
+	awareness = {
+		"district": clampi(int(DataDB.balance.get("awareness_start_district", 20)), 0, awareness_max()),
+		"national": clampi(int(DataDB.balance.get("awareness_start_national", 10)), 0, awareness_max()),
+	}
+	last_awareness_change = {}
+
+
+func awareness_max() -> int:
+	return maxi(1, int(DataDB.balance.get("awareness_maximum", 100)))
+
+
+## Moves one meter ("district" or "national"), clamped to 0 to the maximum.
+func apply_awareness_delta(meter: String, delta: int) -> void:
+	if delta == 0 or not awareness.has(meter):
+		return
+	var before := int(awareness[meter])
+	var after := clampi(before + delta, 0, awareness_max())
+	awareness[meter] = after
+	if after != before:
+		last_awareness_change[meter] = int(last_awareness_change.get(meter, 0)) + (after - before)
+
+
+## Gaffes still on the counter when a stage ends count against BOTH meters, one
+## point each. A player who clears them before the end loses nothing; a stage
+## lost to gaffes costs the stage's whole gaffe limit.
+func apply_awareness_gaffes(gaffes: int) -> void:
+	if gaffes <= 0:
+		return
+	apply_awareness_delta("district", -gaffes)
+	apply_awareness_delta("national", -gaffes)
 
 
 # ---------------------------------------------------------------------------
@@ -1254,6 +1298,9 @@ func finish_stage(outcome: String, score: int = 0, boosters: Array = [],
 	_expire_modifiers()
 	_record_stage_type_result(str(stage.get("stage_id", "")), outcome)
 	_record_lifetime_gaffes(gaffes, outcome, gaffe_caused_loss)
+	last_awareness_change = {}
+	if str(stage.get("mode", "")) == "Combat":
+		apply_awareness_gaffes(gaffes)
 
 	# What the stage just played did to the player's standing, before the
 	# runner moves on and current_stage() becomes the next one.

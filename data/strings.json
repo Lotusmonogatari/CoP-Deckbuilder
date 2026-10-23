@@ -4912,5 +4912,33 @@
     "english": "No party dues were due.",
     "placeholders": null,
     "notes": "2026-10-23 party dues."
+  },
+  {
+    "key": "awareness.district",
+    "where": "Reputation and Results, Office: the district meter",
+    "english": "District Awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.national",
+    "where": "Reputation and Results, Office: the national meter",
+    "english": "National Awareness",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "awareness.gaffe_line",
+    "where": "Stage result panel, awareness lost to gaffes left at the end",
+    "english": "Gaffes left at the end cost you awareness: -{count} District, -{count} National.",
+    "placeholders": "count",
+    "notes": "2026-10-23 awareness."
+  },
+  {
+    "key": "record.cause_gaffe_awareness",
+    "where": "Your Record, cause of an awareness drop",
+    "english": "Gaffes left at the end of a stage",
+    "placeholders": null,
+    "notes": "2026-10-23 awareness."
   }
 ]

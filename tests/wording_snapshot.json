@@ -1,4 +1,7 @@
 {
+  "awareness.district": "District Awareness",
+  "awareness.gaffe_line": "Gaffes left at the end cost you awareness: -{count} District, -{count} National.",
+  "awareness.national": "National Awareness",
   "backing.standing": "{name}  ·  standing {have}",
   "backing.standing_needs": "{name}  ·  standing {have}, needs {needed}",
   "bar.one_sided": "{unit} {count} of {total}",
@@ -508,6 +511,7 @@
   "record.cause_decay": "standing settling back over time",
   "record.cause_dues": "Party dues",
   "record.cause_flip_backing": "your influence turning {bill}",
+  "record.cause_gaffe_awareness": "Gaffes left at the end of a stage",
   "record.cause_gaffes": "your gaffes this run",
   "record.cause_influence": "your influence on {bill}",
   "record.cause_item": "using {item}",

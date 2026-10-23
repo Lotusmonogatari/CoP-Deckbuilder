@@ -123,5 +123,8 @@
   "dues_overdue_selection_committee": 5,
   "dues_overdue_scale_per": 100000,
   "dues_overdue_scale_factor": 1.5,
+  "awareness_start_district": 20,
+  "awareness_start_national": 10,
+  "awareness_maximum": 100,
   "xp_tiers": {}
 }
