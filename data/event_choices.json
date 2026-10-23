@@ -16,7 +16,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV03",
@@ -38,7 +39,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV04",
@@ -57,7 +59,8 @@
       "max": 6
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV04",
@@ -79,7 +82,8 @@
       "max": 5
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV04",
@@ -101,7 +105,8 @@
       "max": 7
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV05",
@@ -128,7 +133,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV05",
@@ -152,7 +158,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV05",
@@ -174,7 +181,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV06",
@@ -199,7 +207,8 @@
       "max": 2
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV06",
@@ -221,7 +230,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV11",
@@ -243,7 +253,8 @@
       "max": 2
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV11",
@@ -259,7 +270,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV11",
@@ -281,7 +293,8 @@
       "max": 3
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV12",
@@ -300,7 +313,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": "LV34"
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV12",
@@ -319,7 +333,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV12",
@@ -341,7 +356,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV13",
@@ -365,7 +381,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV13",
@@ -387,7 +404,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV14",
@@ -406,7 +424,8 @@
       "max": 0
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV14",
@@ -428,7 +447,8 @@
       "max": 1
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV14",
@@ -450,7 +470,8 @@
       "max": 1
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV15",
@@ -472,7 +493,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV15",
@@ -491,7 +513,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV16",
@@ -510,7 +533,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV16",
@@ -534,7 +558,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV17",
@@ -558,7 +583,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV35"
+    "unlocks_level": "LV35",
+    "dues_delta": null
   },
   {
     "event_id": "EV17",
@@ -577,7 +603,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV17",
@@ -593,7 +620,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV18",
@@ -617,7 +645,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV39"
+    "unlocks_level": "LV39",
+    "dues_delta": null
   },
   {
     "event_id": "EV18",
@@ -638,7 +667,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV18",
@@ -657,7 +687,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV19",
@@ -682,7 +713,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV43"
+    "unlocks_level": "LV43",
+    "dues_delta": null
   },
   {
     "event_id": "EV19",
@@ -704,7 +736,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV19",
@@ -725,7 +758,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV20",
@@ -752,7 +786,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV45"
+    "unlocks_level": "LV45",
+    "dues_delta": null
   },
   {
     "event_id": "EV20",
@@ -768,7 +803,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV20",
@@ -789,7 +825,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV21",
@@ -816,7 +853,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV49"
+    "unlocks_level": "LV49",
+    "dues_delta": null
   },
   {
     "event_id": "EV21",
@@ -832,7 +870,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV21",
@@ -851,7 +890,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV22",
@@ -878,7 +918,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV52"
+    "unlocks_level": "LV52",
+    "dues_delta": null
   },
   {
     "event_id": "EV22",
@@ -899,7 +940,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV22",
@@ -918,7 +960,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV23",
@@ -942,7 +985,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV57"
+    "unlocks_level": "LV57",
+    "dues_delta": null
   },
   {
     "event_id": "EV23",
@@ -961,7 +1005,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV23",
@@ -980,7 +1025,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV24",
@@ -1007,7 +1053,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV59"
+    "unlocks_level": "LV59",
+    "dues_delta": null
   },
   {
     "event_id": "EV24",
@@ -1026,7 +1073,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV24",
@@ -1045,7 +1093,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV25",
@@ -1069,7 +1118,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV60"
+    "unlocks_level": "LV60",
+    "dues_delta": null
   },
   {
     "event_id": "EV25",
@@ -1085,7 +1135,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV25",
@@ -1104,7 +1155,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV26",
@@ -1135,7 +1187,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV64"
+    "unlocks_level": "LV64",
+    "dues_delta": null
   },
   {
     "event_id": "EV26",
@@ -1154,7 +1207,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV26",
@@ -1178,7 +1232,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV27",
@@ -1199,7 +1254,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": "LV73"
+    "unlocks_level": "LV73",
+    "dues_delta": null
   },
   {
     "event_id": "EV27",
@@ -1215,7 +1271,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV27",
@@ -1231,7 +1288,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV31",
@@ -1250,7 +1308,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV31",
@@ -1272,7 +1331,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV31",
@@ -1294,7 +1354,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV32",
@@ -1321,7 +1382,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV32",
@@ -1340,7 +1402,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV32",
@@ -1367,7 +1430,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV33",
@@ -1386,7 +1450,8 @@
       "max": 3
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV33",
@@ -1408,7 +1473,8 @@
       "max": 2
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV33",
@@ -1430,7 +1496,8 @@
       "max": 5
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV34",
@@ -1455,7 +1522,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV34",
@@ -1477,7 +1545,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV34",
@@ -1501,7 +1570,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV35",
@@ -1528,7 +1598,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV35",
@@ -1547,7 +1618,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV35",
@@ -1574,7 +1646,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV36",
@@ -1596,7 +1669,8 @@
       "max": 3
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV36",
@@ -1615,7 +1689,8 @@
       "max": 1
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV36",
@@ -1631,7 +1706,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV37",
@@ -1658,7 +1734,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV37",
@@ -1677,7 +1754,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV37",
@@ -1698,7 +1776,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV38",
@@ -1722,7 +1801,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV38",
@@ -1746,7 +1826,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV38",
@@ -1762,7 +1843,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV39",
@@ -1784,7 +1866,8 @@
       "max": 1
     },
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV39",
@@ -1800,7 +1883,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV39",
@@ -1819,7 +1903,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV40",
@@ -1846,7 +1931,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV40",
@@ -1862,7 +1948,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV40",
@@ -1883,7 +1970,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV41",
@@ -1914,7 +2002,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV41",
@@ -1933,7 +2022,8 @@
     },
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV41",
@@ -1957,7 +2047,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV42",
@@ -1984,7 +2075,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV42",
@@ -2000,7 +2092,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV42",
@@ -2024,7 +2117,8 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV43",
@@ -2045,7 +2139,8 @@
         "delta": 1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV43",
@@ -2061,7 +2156,8 @@
     "district_delta": null,
     "national_delta": null,
     "rewards": null,
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
   },
   {
     "event_id": "EV43",
@@ -2082,6 +2178,199 @@
         "delta": -1
       }
     ],
-    "unlocks_level": null
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV44",
+    "choice": "A",
+    "choice_text": "Pay part of it from your own pocket",
+    "result_text": "The clerk writes you a receipt. It is a modest relief, and a visible one.",
+    "funds_cost": 10000,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": {
+      "min": -30000,
+      "max": -30000
+    }
+  },
+  {
+    "event_id": "EV44",
+    "choice": "B",
+    "choice_text": "Write back asking for more time",
+    "result_text": "They reply politely. Politeness is not the same as patience.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": -1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV44",
+    "choice": "C",
+    "choice_text": "Ignore it and hope the week goes well",
+    "result_text": "The envelope sits on the desk, looking back at you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -1,
+      "max": -1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV45",
+    "choice": "A",
+    "choice_text": "Go through the receipts together",
+    "result_text": "He finds two errors in your favor and one against. The books look cleaner afterwards.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": {
+      "min": -20000,
+      "max": -20000
+    }
+  },
+  {
+    "event_id": "EV45",
+    "choice": "B",
+    "choice_text": "Ask what the party spends the dues on",
+    "result_text": "He answers at length. Some of it is fair, some of it is not, and he knows which.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV45",
+    "choice": "C",
+    "choice_text": "Say you are busy and send him away",
+    "result_text": "He nods without surprise and writes something in the margin.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": -1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV46",
+    "choice": "A",
+    "choice_text": "Buy a ticket and sit at the head table",
+    "result_text": "You shake a great many hands. The bill arrives with the dessert.",
+    "funds_cost": 20000,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": {
+      "min": 2,
+      "max": 3
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV46",
+    "choice": "B",
+    "choice_text": "Buy a cheaper seat near the door",
+    "result_text": "The food is the same, and so are the conversations that matter, just fewer of them.",
+    "funds_cost": 8000,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV46",
+    "choice": "C",
+    "choice_text": "Send your regrets",
+    "result_text": "A polite note goes back. Your place is given to someone else.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -1,
+      "max": -1
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
   }
 ]

@@ -12,7 +12,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV04",
@@ -27,7 +28,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV05",
@@ -42,7 +44,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV06",
@@ -57,7 +60,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV11",
@@ -72,7 +76,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": 15,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV12",
@@ -87,7 +92,8 @@
     "cooldown_hours": null,
     "min_district_awareness": 10,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV13",
@@ -102,7 +108,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV14",
@@ -117,7 +124,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": 20,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV15",
@@ -132,7 +140,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV16",
@@ -147,7 +156,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV17",
@@ -162,7 +172,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV18",
@@ -177,7 +188,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV19",
@@ -192,7 +204,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV20",
@@ -207,7 +220,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": 15,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV21",
@@ -222,7 +236,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": 20,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV22",
@@ -237,7 +252,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV23",
@@ -252,7 +268,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV24",
@@ -267,7 +284,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV25",
@@ -282,7 +300,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV26",
@@ -297,7 +316,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV27",
@@ -312,7 +332,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV31",
@@ -327,7 +348,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV32",
@@ -342,7 +364,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV33",
@@ -357,7 +380,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV34",
@@ -372,7 +396,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV35",
@@ -387,7 +412,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV36",
@@ -402,7 +428,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": 20,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV37",
@@ -417,7 +444,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV38",
@@ -432,7 +460,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV39",
@@ -447,7 +476,8 @@
     "cooldown_hours": null,
     "min_district_awareness": 30,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV40",
@@ -462,7 +492,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV41",
@@ -477,7 +508,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV42",
@@ -492,7 +524,8 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
   },
   {
     "event_id": "EV43",
@@ -507,6 +540,55 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null
+    "image": null,
+    "needs_dues_owed": null
+  },
+  {
+    "event_id": "EV44",
+    "title": "A Reminder From Party Headquarters",
+    "flavor": "An envelope with the party crest, addressed in a clerk's careful hand. Inside is a statement of what your account still owes, and a line asking when it might be settled.",
+    "trigger": "Random",
+    "available": "Weekday",
+    "hours": 1,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 10,
+    "cooldown_hours": 24,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": null,
+    "needs_dues_owed": "Yes"
+  },
+  {
+    "event_id": "EV45",
+    "title": "The Party Treasurer Drops By",
+    "flavor": "The treasurer is passing through the district and has asked for ten minutes. A folder of receipts is tucked under one arm.",
+    "trigger": "Random",
+    "available": "Weekday",
+    "hours": 1,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 5,
+    "cooldown_hours": 48,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": null,
+    "needs_dues_owed": null
+  },
+  {
+    "event_id": "EV46",
+    "title": "An Invitation to the Party Fundraiser",
+    "flavor": "A printed card for the regional fundraising dinner. Tickets are not cheap, but the head table seats people who matter.",
+    "trigger": "Random",
+    "available": "Weekday",
+    "hours": 2,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 4,
+    "cooldown_hours": 72,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": null,
+    "needs_dues_owed": null
   }
 ]

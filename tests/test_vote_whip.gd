@@ -83,3 +83,29 @@ func test_spending_party_support_respects_the_floor() -> void:
 	assert_true(GameState.spend_party_support(20, "whipping a vote"))
 	assert_eq(int(GameState.meta["Party support"]), 35)
 	GameState.load_save(saved)
+
+
+func test_a_discount_needs_an_organization_with_a_stake_and_standing() -> void:
+	var stakes := [
+		{"party_id": "OWN", "booster_id": "BO01", "weight": 5.0},
+		{"party_id": "OWN", "booster_id": "BO02", "weight": 4.0},
+		{"party_id": "PT09", "booster_id": "BO05", "weight": 5.0},
+		{"party_id": "OWN", "booster_id": "BO17", "weight": 0.0}]
+	var standing := {"BO01": 70, "BO02": 80, "BO05": 90, "BO17": 90}
+	var gate := [{"variable": "BO02", "enabled": "Yes", "threshold": 75, "applies_to_parties": null}]
+	var found := VoteWhip.discount_orgs(stakes, gate, standing, "PT01", 65, 30)
+	assert_eq(found, ["BO01"] as Array[String], "BO02 is a gate row, BO05 is another party's, BO17 has no weight")
+	var off := [{"variable": "BO02", "enabled": "No", "threshold": 75, "applies_to_parties": null}]
+	assert_eq(VoteWhip.discount_orgs(stakes, off, standing, "PT01", 65, 30).size(), 2, "a switched-off gate row does not exclude")
+	var scoped := [{"variable": "BO02", "enabled": "Yes", "threshold": 75, "applies_to_parties": ["PT04"]}]
+	assert_eq(VoteWhip.discount_orgs(stakes, scoped, standing, "PT01", 65, 30).size(), 2, "a row scoped to another party does not exclude")
+	assert_eq(VoteWhip.discount_orgs(stakes, [], {"BO01": 64, "BO02": 64}, "PT01", 65, 30).size(), 0)
+
+
+func test_the_discount_is_a_flat_one_not_per_organization() -> void:
+	assert_eq(VoteWhip.discounted_unit(10, 1, 1, 5), 9)
+	assert_eq(VoteWhip.discounted_unit(10, 4, 1, 5), 9, "four organizations still take off one")
+	assert_eq(VoteWhip.discounted_unit(10, 0, 1, 5), 10)
+	assert_eq(VoteWhip.discounted_unit(30, 2, 1, 5), 29)
+	assert_eq(VoteWhip.discounted_unit(5, 2, 1, 5), 5, "never below the floor")
+	assert_eq(VoteWhip.discounted_unit(3, 2, 1, 5), 3, "never raised to the floor")

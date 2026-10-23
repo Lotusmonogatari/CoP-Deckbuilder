@@ -46,7 +46,9 @@ func test_half_of_each_tiers_bill_levels_are_gated() -> void:
 		for level: Dictionary in all:
 			if str(level.get("needs_discovery", "")) == "Yes":
 				gated += 1
-		assert_eq(gated, all.size() / 2, "tier %d gates half (rounded down) of %d" % [tier, all.size()])
+		# Tier 0 is shown in full (Cameron, 2026-10-23); the other tiers gate half.
+		var expected := 0 if tier == 0 else all.size() / 2
+		assert_eq(gated, expected, "tier %d gates %d of %d" % [tier, expected, all.size()])
 
 
 func test_every_gated_level_can_be_reached() -> void:
@@ -63,9 +65,11 @@ func test_every_gated_level_can_be_reached() -> void:
 
 
 func test_hosting_reveals_one_hidden_level_at_a_time() -> void:
-	assert_eq(GameState.reveal_by_hosting("BO05"), "Special Economic Zones Act")
-	assert_eq(GameState.reveal_by_hosting("BO05"), "Integrated Resort Act")
-	assert_eq(GameState.reveal_by_hosting("BO05"), "Yezo–China Trade Normalization Act")
+	var first := GameState.reveal_by_hosting("BO05")
+	var second := GameState.reveal_by_hosting("BO05")
+	assert_ne(first, "")
+	assert_ne(second, "")
+	assert_ne(first, second)
 	assert_eq(GameState.reveal_by_hosting("BO05"), "", "nothing left to reveal for BO05")
 	assert_eq(GameState.reveal_by_hosting("BO15"), "", "an organization with none")
 

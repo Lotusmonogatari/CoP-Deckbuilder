@@ -16,6 +16,7 @@
     "effect_target": "XP",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [
       "SG03"
     ],
@@ -38,6 +39,7 @@
     "effect_target": "Yen",
     "effect_value": 1500.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [
       "SG04"
     ],
@@ -60,6 +62,7 @@
     "effect_target": "ST04; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST190; ST196; ST210; ST218; ST239; ST249; ST257",
     "effect_value": 5.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [
       "SG01"
     ],
@@ -82,6 +85,7 @@
     "effect_target": "ST06; ST205; ST224; ST245",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [
       "SG01"
     ],
@@ -104,6 +108,7 @@
     "effect_target": "Yen",
     "effect_value": 8000.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO10"
@@ -126,6 +131,7 @@
     "effect_target": "XP",
     "effect_value": 45.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO09"
@@ -148,6 +154,7 @@
     "effect_target": "ST06; ST205; ST224; ST245",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO08"
@@ -170,6 +177,7 @@
     "effect_target": "ST03; ST124; ST128; ST135; ST141; ST144; ST148; ST152; ST156; ST160; ST164; ST169; ST173; ST179; ST185; ST192; ST197; ST200; ST207; ST212; ST217; ST222; ST226; ST229; ST232; ST238; ST242; ST248; ST252; ST256; ST259",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO02"
@@ -192,6 +200,7 @@
     "effect_target": "PartySupport",
     "effect_value": 5.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [
       "SG02"
     ],
@@ -214,6 +223,7 @@
     "effect_target": "Jiban",
     "effect_value": 2.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO01"
@@ -236,6 +246,7 @@
     "effect_target": "ST15; ST132; ST139; ST151; ST183; ST191; ST221; ST231; ST236",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO04"
@@ -258,6 +269,7 @@
     "effect_target": "ST05; ST122; ST136; ST149; ST174; ST180; ST198",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [
       "SG03"
     ],
@@ -280,6 +292,7 @@
     "effect_target": "Yen",
     "effect_value": 15000.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO10"
@@ -302,6 +315,7 @@
     "effect_target": "ST08",
     "effect_value": 15.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO01"
@@ -324,6 +338,7 @@
     "effect_target": "PartySupport",
     "effect_value": 3.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO02"
@@ -346,6 +361,7 @@
     "effect_target": "Jiban",
     "effect_value": 2.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO03"
@@ -368,6 +384,7 @@
     "effect_target": "ST17; ST123; ST146; ST158; ST162; ST199; ST204; ST225; ST240; ST246; ST255; ST258",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO04"
@@ -390,6 +407,7 @@
     "effect_target": "Yen",
     "effect_value": 20000.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO05"
@@ -412,6 +430,7 @@
     "effect_target": "ST01; ST219; ST244; ST254",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO06"
@@ -434,6 +453,7 @@
     "effect_target": "ST13; ST127",
     "effect_value": 15.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO07"
@@ -456,6 +476,7 @@
     "effect_target": "ST04; ST125; ST129; ST142; ST157; ST161; ST167; ST171; ST182; ST190; ST196; ST210; ST218; ST239; ST249; ST257",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO08"
@@ -478,6 +499,7 @@
     "effect_target": "ST02",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO09"
@@ -500,6 +522,7 @@
     "effect_target": "ST10; ST126; ST150; ST177; ST230",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO10"
@@ -522,6 +545,7 @@
     "effect_target": "ST21; ST131; ST187; ST201; ST208; ST214; ST235",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO11"
@@ -544,6 +568,7 @@
     "effect_target": "ST05; ST122; ST136; ST149; ST174; ST180; ST198",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO12"
@@ -566,6 +591,7 @@
     "effect_target": "Yen",
     "effect_value": 12000.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO13"
@@ -588,6 +614,7 @@
     "effect_target": "ST01; ST219; ST244; ST254",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO14"
@@ -610,6 +637,7 @@
     "effect_target": "ST18",
     "effect_value": 15.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO15"
@@ -632,6 +660,7 @@
     "effect_target": "ST16; ST134; ST137; ST155; ST159; ST168; ST178; ST184; ST189; ST216; ST237; ST247",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO16"
@@ -654,6 +683,7 @@
     "effect_target": "ST05; ST122; ST136; ST149; ST174; ST180; ST198",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO19"
@@ -676,6 +706,7 @@
     "effect_target": "Jiban",
     "effect_value": 2.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO20"
@@ -698,6 +729,7 @@
     "effect_target": "ST21; ST131; ST187; ST201; ST208; ST214; ST235",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO21"
@@ -720,6 +752,7 @@
     "effect_target": "ST11; ST143; ST206; ST211; ST220",
     "effect_value": 15.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO22"
@@ -742,6 +775,7 @@
     "effect_target": "ST09; ST172; ST195; ST251",
     "effect_value": 15.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO23"
@@ -764,6 +798,7 @@
     "effect_target": "Yen",
     "effect_value": 25000.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO24"
@@ -786,6 +821,7 @@
     "effect_target": "ST20; ST133; ST138; ST154; ST165; ST175; ST186; ST233",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO25"
@@ -808,6 +844,7 @@
     "effect_target": "ST05; ST122; ST136; ST149; ST174; ST180; ST198",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO26"
@@ -830,6 +867,7 @@
     "effect_target": "ST17; ST123; ST146; ST158; ST162; ST199; ST204; ST225; ST240; ST246; ST255; ST258",
     "effect_value": 10.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO27"
@@ -852,6 +890,7 @@
     "effect_target": "ST12; ST163; ST202; ST241; ST250",
     "effect_value": 15.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO28"
@@ -874,6 +913,7 @@
     "effect_target": "XP",
     "effect_value": 30.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO29"
@@ -896,6 +936,7 @@
     "effect_target": "ST13; ST127",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO30"
@@ -918,6 +959,7 @@
     "effect_target": "ST02",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 50,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO17"
@@ -940,6 +982,7 @@
     "effect_target": "Jiban",
     "effect_value": 3.0,
     "duration_units": null,
+    "required_standing": null,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO18"
@@ -962,6 +1005,7 @@
     "effect_target": "ST03; ST05; ST24; ST29; ST34; ST35; ST36; ST39; ST42; ST45; ST49; ST52; ST53; ST56; ST58; ST59; ST61; ST62; ST65; ST68; ST72; ST75; ST76; ST78; ST81; ST82; ST85; ST86; ST89; ST93; ST94; ST97; ST100; ST122; ST136; ST149; ST174; ST180; ST198; ST124; ST128; ST135; ST141; ST144; ST148; ST152; ST156; ST160; ST164; ST169; ST173; ST179; ST185; ST192; ST197; ST200; ST207; ST212; ST217; ST222; ST226; ST229; ST232; ST238; ST242; ST248; ST252; ST256; ST259",
     "effect_value": 5.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO31"
@@ -984,6 +1028,7 @@
     "effect_target": "PartySupport",
     "effect_value": 5.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO32"
@@ -1006,6 +1051,7 @@
     "effect_target": "Jiban",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO07"
@@ -1028,6 +1074,7 @@
     "effect_target": "Yen",
     "effect_value": 12000.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO23"
@@ -1050,6 +1097,7 @@
     "effect_target": "Jiban",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO30"
@@ -1072,6 +1120,7 @@
     "effect_target": "Jiban",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO06"
@@ -1094,6 +1143,7 @@
     "effect_target": "Jiban",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO14"
@@ -1116,6 +1166,7 @@
     "effect_target": "XP",
     "effect_value": 25.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO22"
@@ -1138,6 +1189,7 @@
     "effect_target": "PartySupport",
     "effect_value": 1.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO15"
@@ -1160,6 +1212,7 @@
     "effect_target": "XP",
     "effect_value": 20.0,
     "duration_units": null,
+    "required_standing": 45,
     "trigger_segment_ids": [],
     "trigger_booster_ids": [
       "BO28"

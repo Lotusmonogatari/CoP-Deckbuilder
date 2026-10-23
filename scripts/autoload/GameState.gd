@@ -1028,7 +1028,7 @@ func event_context() -> Dictionary:
 		"hours_left": WeekCalendar.hours_left(calendar, cfg),
 		"funds": int(meta.get("Funds", 0)), "xp": xp, "now": time_units, "last_at": event_last_at,
 		"default_cooldown": int(DataDB.balance.get("event_default_cooldown_hours", 24)),
-		"district": int(awareness.get("district", 0)), "national": int(awareness.get("national", 0))}
+		"district": int(awareness.get("district", 0)), "national": int(awareness.get("national", 0)), "dues_owed": dues_balance}
 
 
 func get_event(event_id: String) -> Dictionary:
@@ -1136,6 +1136,14 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 		apply_awareness_delta(meter, meter_rolled)
 		lines.append(Text.say("event.effect_line", {"change": "%+d" % meter_rolled,
 			"name": Text.say("awareness.district") if meter == "district" else Text.say("awareness.national")}))
+
+	# A negative Dues change writes down the balance carried over from an
+	# unpaid week (never below nothing); a positive one is ignored.
+	var dues_rolled := _roll_range(chosen.get("dues_delta"))
+	if dues_rolled < 0 and dues_balance > 0:
+		var cleared := mini(-dues_rolled, dues_balance)
+		dues_balance -= cleared
+		lines.append(Text.say("event.dues_line", {"change": Phrase.meta_amount("Funds", -cleared, true)}))
 
 	var chips: Array = []
 	var rewards: Variant = chosen.get("rewards")

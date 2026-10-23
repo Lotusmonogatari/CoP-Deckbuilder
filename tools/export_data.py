@@ -962,7 +962,9 @@ SHEETS = {
             # 2026-10-18: units of the game clock the backing lasts once bought
             # (blank = permanent).
             ("Duration Units", "duration_units", "int"),
-        ],
+            # 2026-10-23: standing needed to buy this backing (blank = the flat 60).
+            ("Required Standing", "required_standing", "int"),
+            ],
         "optional": ["Duration Units"],
     },
     "Boosters": {
@@ -1156,6 +1158,7 @@ SHEETS = {
             ("Min District Awareness", "min_district_awareness", "int"),
             ("Min National Awareness", "min_national_awareness", "int"),
             ("Image", "image", "str"),
+            ("Needs Dues Owed", "needs_dues_owed", "str"),
         ],
     },
     "Event Choices": {
@@ -1176,6 +1179,7 @@ SHEETS = {
             ("National Awareness Δ", "national_delta", "range"),
             ("Rewards", "rewards", "target_delta_list"),
             ("Unlocks Level", "unlocks_level", "str"),
+            ("Dues Δ", "dues_delta", "range"),
         ],
     },
     # Hosted events (2026-10-23, Cameron): the walking tour and the dinner, each

@@ -9,6 +9,7 @@ var _units_before := 0
 var _discovered_before: Array = []
 var _last_before: Dictionary = {}
 var _awareness_before: Dictionary = {}
+var _dues_before := 0
 
 
 func before_each() -> void:
@@ -19,6 +20,7 @@ func before_each() -> void:
 	_discovered_before = GameState.discovered_levels.duplicate()
 	_last_before = GameState.event_last_at.duplicate()
 	_awareness_before = GameState.awareness.duplicate()
+	_dues_before = GameState.dues_balance
 	GameState.calendar = WeekCalendar.fresh()
 	GameState.event_last_at = {}
 	GameState.discovered_levels = []
@@ -33,6 +35,7 @@ func after_each() -> void:
 	GameState.discovered_levels.assign(_discovered_before)
 	GameState.event_last_at = _last_before
 	GameState.awareness = _awareness_before
+	GameState.dues_balance = _dues_before
 
 
 func _ctx(over: Dictionary = {}) -> Dictionary:
@@ -127,12 +130,12 @@ func test_a_choice_with_a_price_needs_the_money() -> void:
 
 
 func test_a_choice_can_reveal_a_level_that_stays_hidden_until_then() -> void:
-	var level := DataDB.get_level("LV34")
-	assert_false(GameState.is_level_discovered(level), "LV34 needs discovering")
-	var result := GameState.apply_event_choice("EV12", "A")
+	var level := DataDB.get_level("LV35")
+	assert_false(GameState.is_level_discovered(level), "LV35 needs discovering")
+	var result := GameState.apply_event_choice("EV17", "A")
 	assert_ne(str(result["revealed"]), "")
 	assert_true(GameState.is_level_discovered(level))
-	assert_true(GameState.discovered_levels.has("LV34"))
+	assert_true(GameState.discovered_levels.has("LV35"))
 
 
 func test_ordinary_levels_are_always_discovered() -> void:
@@ -153,3 +156,34 @@ func test_events_are_saved_with_the_run() -> void:
 	var saved := GameState.to_save()
 	assert_eq((saved["discovered_levels"] as Array), ["LV34"])
 	assert_eq(int((saved["event_last_at"] as Dictionary)["EV32"]), 12)
+
+
+func test_the_overdue_reminder_only_arrives_while_dues_are_owed() -> void:
+	var found := func(ctx: Dictionary) -> bool:
+		for event: Dictionary in EventEngine.eligible_random(DataDB.events, _ctx(ctx)):
+			if str(event["event_id"]) == "EV44":
+				return true
+		return false
+	assert_false(found.call({"dues_owed": 0}))
+	assert_true(found.call({"dues_owed": 40000}))
+	assert_true(GameState.event_context().has("dues_owed"))
+
+
+func test_paying_part_of_the_dues_writes_down_the_carried_balance() -> void:
+	GameState.dues_balance = 100000
+	var result := GameState.apply_event_choice("EV44", "A")
+	assert_true(result["ok"])
+	assert_eq(GameState.dues_balance, 70000)
+	assert_eq(int(GameState.meta["Funds"]), 190000, "the choice costs 10,000")
+	GameState.dues_balance = 10000
+	GameState.event_last_at = {}
+	GameState.apply_event_choice("EV44", "A")
+	assert_eq(GameState.dues_balance, 0, "never below nothing")
+
+
+func test_a_dues_change_does_nothing_when_nothing_is_owed() -> void:
+	GameState.dues_balance = 0
+	var result := GameState.apply_event_choice("EV45", "A")
+	assert_eq(GameState.dues_balance, 0)
+	for line: String in result["lines"]:
+		assert_false(line.begins_with("Dues owed"))
