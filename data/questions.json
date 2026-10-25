@@ -429,7 +429,7 @@
     },
     {
       "id": "Q22",
-      "text": "Why should the Ainu get protections that others do not?",
+      "text": "What do you say to a neighbor who feels the Ainu get something they do not?",
       "theme": "Ainu fairness",
       "grades": {
         "Earnest": "S",
@@ -849,7 +849,7 @@
     },
     {
       "id": "T08",
-      "text": "Why does it feel like nobody hears us?",
+      "text": "When did you last visit the villages past the highway?",
       "theme": "Neglect",
       "grades": {
         "Earnest": "M",
@@ -980,7 +980,7 @@
     },
     {
       "id": "T14",
-      "text": "Are you on our side or theirs?",
+      "text": "When party leaders and our town disagree, whose side do you take?",
       "theme": "Loyalty",
       "grades": {
         "Earnest": "W",
@@ -1024,7 +1024,7 @@
     },
     {
       "id": "T16",
-      "text": "How can we trust politicians at all?",
+      "text": "What would make you different from the politicians who let us down?",
       "theme": "Trust",
       "grades": {
         "Earnest": "S",
@@ -1154,7 +1154,7 @@
     },
     {
       "id": "T22",
-      "text": "How do you uplift our voices within the National Assembly?",
+      "text": "How do you make our town heard in the National Assembly?",
       "theme": "Representation",
       "grades": {
         "Earnest": "S",
@@ -3413,7 +3413,7 @@
     },
     {
       "id": "T126",
-      "text": "The festival needs volunteers and funds. How do we keep it going?",
+      "text": "Our festival needs more volunteers. How do we keep it going?",
       "theme": "Community festivals",
       "grades": {
         "Earnest": "S",
@@ -4073,7 +4073,7 @@
     },
     {
       "id": "L12",
-      "text": "Can we draft an amendment together?",
+      "text": "Would you accept our staff's draft wording?",
       "theme": "Drafting",
       "grades": {
         "Earnest": "M",
@@ -4134,7 +4134,7 @@
     },
     {
       "id": "L15",
-      "text": "Is there anything we can do for you?",
+      "text": "What would it take for our members to earn a meeting after hours?",
       "theme": "Inducement",
       "grades": {
         "Earnest": "S",
@@ -4212,7 +4212,7 @@
     },
     {
       "id": "L19",
-      "text": "Can we keep this conversation between us?",
+      "text": "Will this stay between you and me?",
       "theme": "Secrecy",
       "grades": {
         "Earnest": "S",
@@ -5155,7 +5155,7 @@
     },
     {
       "id": "L62",
-      "text": "Our members worry preferential rights will come out of their budgets. Will they?",
+      "text": "People worry preferential rights will come out of their budgets. Will they?",
       "theme": "Ainu preferential cost",
       "grades": {
         "Earnest": "S",
@@ -7738,7 +7738,7 @@
     },
     {
       "id": "A14",
-      "text": "Is anyone in your party loyal to you?",
+      "text": "Which of your colleagues will still stand next to you tomorrow?",
       "theme": "Isolation",
       "grades": {
         "Earnest": "M",
@@ -7861,7 +7861,7 @@
     },
     {
       "id": "A20",
-      "text": "Why should anyone take you seriously?",
+      "text": "What have you actually accomplished to earn a hearing?",
       "theme": "Credibility",
       "grades": {
         "Earnest": "S",
@@ -8033,7 +8033,7 @@
     },
     {
       "id": "A28",
-      "text": "Is it true you have been avoiding the press?",
+      "text": "Why do your aides block every reporter's call?",
       "theme": "Evasion",
       "grades": {
         "Earnest": "S",
@@ -8118,7 +8118,7 @@
     },
     {
       "id": "A32",
-      "text": "Did you read the bill before you voted?",
+      "text": "Which clause of this bill would you change first?",
       "theme": "Competence",
       "grades": {
         "Earnest": "S",
@@ -8138,7 +8138,7 @@
     },
     {
       "id": "A33",
-      "text": "Will you resign if this goes wrong?",
+      "text": "Who in your party takes the blame if this goes wrong?",
       "theme": "Accountability",
       "grades": {
         "Earnest": "S",
