@@ -139,6 +139,13 @@ func set_picks(played_id: String, picks: Array) -> void:
 			view.picked = left > 0
 			if left > 0:
 				left -= 1
+	# While choosing discards every other card can be picked, playable or not
+	# (2026-10-23, Cameron's playtest): a discard costs nothing, so a card the
+	# player cannot afford this turn is still a fair one to throw away.
+	if not played_id.is_empty():
+		for id: String in _views:
+			for view: CardView in _views[id]:
+				view.disabled = false
 
 
 ## The view showing this card, if it is on screen. What an animation reaches

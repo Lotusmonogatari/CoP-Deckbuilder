@@ -458,7 +458,12 @@ func _apply_effect(effect: Dictionary) -> Dictionary:
 		int(effect.get("flags", {}).get("pierce_guard", 0)), state.opponent_block)
 	state.opponent_block -= pierced
 
-	var stopped := mini(state.opponent_block, opp_minus)
+	# Where arguing the opposition down does nothing at all (a press
+	# conference, a scored caucus) there is no attack for their guard to meet:
+	# it is not spent and nothing is reported as stopped (2026-10-23, Cameron's
+	# press playtest: the screen said their guard stopped part of an attack
+	# that never counted).
+	var stopped := 0 if state.bar.reduce_does_nothing() else mini(state.opponent_block, opp_minus)
 	state.opponent_block -= stopped
 	applied["guard_pierced"] = pierced
 	applied["guard_stopped"] = stopped

@@ -2273,3 +2273,26 @@ func test_a_new_committee_bout_starts_with_a_clean_turn_count() -> void:
 	assert_eq(engine.state.opponent_index, 1)
 	assert_eq(engine.state.cards_played_this_turn, 0)
 	assert_eq(engine.state.questions_answered_this_turn, 0)
+
+
+# A reporter's guard has nothing to stop in a press conference (2026-10-23,
+# Cameron's playtest): arguing the opposition down does nothing there, so
+# the card meets no attack. Their guard is neither spent nor reported.
+func test_a_press_conference_guard_stops_nothing_and_is_not_spent() -> void:
+	var engine := _start(_press())
+	_force_into_hand(engine, "ATTACK3")
+	engine.state.opponent_block = 3
+	var result := engine.play_card("ATTACK3")
+	assert_true(result["ok"])
+	assert_eq(int(result["applied"]["guard_stopped"]), 0)
+	assert_eq(engine.state.opponent_block, 3, "their guard is untouched")
+
+
+func test_a_floor_debate_guard_still_stops_an_attack() -> void:
+	var engine := _start()
+	_force_into_hand(engine, "ATTACK3")
+	engine.state.opponent_block = 2
+	var result := engine.play_card("ATTACK3")
+	assert_true(result["ok"])
+	assert_eq(int(result["applied"]["guard_stopped"]), 2)
+	assert_eq(engine.state.opponent_block, 0)
