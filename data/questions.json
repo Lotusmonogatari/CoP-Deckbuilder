@@ -722,7 +722,7 @@
       "text": "Why should working people believe you?",
       "theme": "Trust",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "M",
         "Appeal": "S",
         "Data Driven": "S",
@@ -768,8 +768,8 @@
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
-        "Appeal": "S",
-        "Data Driven": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
         "Divisive": "W",
         "Duplicitous": "M"
       },
@@ -812,9 +812,9 @@
       "theme": "Resolve",
       "grades": {
         "Earnest": "W",
-        "Emotional": "W",
+        "Emotional": "S",
         "Appeal": "M",
-        "Data Driven": "S",
+        "Data Driven": "W",
         "Divisive": "M",
         "Duplicitous": "S"
       },
@@ -941,7 +941,7 @@
       "text": "Why should we support you?",
       "theme": "Trust",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "W",
         "Appeal": "S",
         "Data Driven": "M",
@@ -1462,7 +1462,7 @@
         "Earnest": "M",
         "Emotional": "W",
         "Appeal": "M",
-        "Data Driven": "W",
+        "Data Driven": "S",
         "Divisive": "S",
         "Duplicitous": "S"
       },
@@ -1484,8 +1484,8 @@
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
-        "Appeal": "S",
-        "Data Driven": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
         "Divisive": "W",
         "Duplicitous": "M"
       },
@@ -1505,9 +1505,9 @@
       "theme": "Public debt",
       "grades": {
         "Earnest": "M",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "W",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "S",
         "Duplicitous": "W"
       },
@@ -5766,8 +5766,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO17",
-        "BO08"
+        "BO17"
       ],
       "displeases_boosters": [
         "BO08",
@@ -5832,8 +5831,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO20",
-        "BO27"
+        "BO20"
       ],
       "displeases_boosters": [
         "BO11",
@@ -6737,8 +6735,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO10",
-        "BO23"
+        "BO10"
       ],
       "displeases_boosters": [
         "BO26",
@@ -6781,8 +6778,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO10",
-        "BO23"
+        "BO10"
       ],
       "displeases_boosters": [
         "BO26",
@@ -6935,8 +6931,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO13",
-        "BO05"
+        "BO13"
       ],
       "displeases_boosters": [
         "BO16",
@@ -7132,8 +7127,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO21",
-        "BO23"
+        "BO21"
       ],
       "displeases_boosters": [
         "BO23",
@@ -7158,7 +7152,6 @@
         "BO23"
       ],
       "displeases_boosters": [
-        "BO23",
         "BO24"
       ],
       "asked_by": "OP11"
@@ -7330,8 +7323,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO30",
-        "BO24"
+        "BO30"
       ],
       "displeases_boosters": [
         "BO27",
@@ -8102,8 +8094,6 @@
       ],
       "stage_ids": [
         "ST01",
-        "ST219",
-        "ST244",
         "ST254"
       ],
       "asked_by": "OP01"
@@ -8129,8 +8119,6 @@
       ],
       "stage_ids": [
         "ST01",
-        "ST219",
-        "ST244",
         "ST254"
       ],
       "asked_by": "OP02"
@@ -8156,7 +8144,6 @@
       "stage_ids": [
         "ST01",
         "ST219",
-        "ST244",
         "ST254"
       ],
       "asked_by": "OP03"
@@ -8537,7 +8524,6 @@
       ],
       "stage_ids": [
         "ST13",
-        "ST57",
         "ST77",
         "ST127"
       ],
@@ -8932,8 +8918,6 @@
       ],
       "stage_ids": [
         "ST17",
-        "ST37",
-        "ST47",
         "ST80",
         "ST90",
         "ST95",
@@ -21193,10 +21177,10 @@
     },
     {
       "id": "S368",
-      "text": "Backers say the Ainu Heritage and Language Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Ainu Heritage and Language Act does not go far enough. Where do you stand?",
       "theme": "Ainu Heritage and Language Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -21293,10 +21277,10 @@
     },
     {
       "id": "S372",
-      "text": "Backers say the Agricultural Price Stabilization Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Agricultural Price Stabilization Act does not go far enough. Where do you stand?",
       "theme": "Agricultural Price Stabilization Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -21396,10 +21380,10 @@
     },
     {
       "id": "S376",
-      "text": "Backers say the Special Economic Zones Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Special Economic Zones Act does not go far enough. Where do you stand?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -21497,10 +21481,10 @@
     },
     {
       "id": "S380",
-      "text": "Backers say the Hokkaido Shinkansen Acceleration Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Hokkaido Shinkansen Acceleration Act does not go far enough. Where do you stand?",
       "theme": "Hokkaido Shinkansen Acceleration Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -21597,10 +21581,10 @@
     },
     {
       "id": "S384",
-      "text": "Backers say the Chishima Coastal Defense Modernization Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Chishima Coastal Defense Modernization Act does not go far enough. Where do you stand?",
       "theme": "Chishima Coastal Defense Modernization Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -21697,10 +21681,10 @@
     },
     {
       "id": "S388",
-      "text": "Backers say the Specified Skilled Worker Visa Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Specified Skilled Worker Visa Act does not go far enough. Where do you stand?",
       "theme": "Specified Skilled Worker Visa Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -21800,10 +21784,10 @@
     },
     {
       "id": "S392",
-      "text": "Backers say the Grid Resilience and Renewable Energy Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Grid Resilience and Renewable Energy Act does not go far enough. Where do you stand?",
       "theme": "Grid Resilience and Renewable Energy Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -21898,10 +21882,10 @@
     },
     {
       "id": "S396",
-      "text": "Backers say the Consumption Tax Rate Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Consumption Tax Rate Act does not go far enough. Where do you stand?",
       "theme": "Consumption Tax Rate Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -21988,10 +21972,10 @@
     },
     {
       "id": "S400",
-      "text": "Backers say the Prefectural Fiscal Devolution Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Prefectural Fiscal Devolution Act does not go far enough. Where do you stand?",
       "theme": "Prefectural Fiscal Devolution Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22070,10 +22054,10 @@
     },
     {
       "id": "S404",
-      "text": "Backers say the Candidate Gender Parity Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Candidate Gender Parity Act does not go far enough. Where do you stand?",
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22153,10 +22137,10 @@
     },
     {
       "id": "S408",
-      "text": "Backers say the Tsugaru Strait Joint Commission Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Tsugaru Strait Joint Commission Act does not go far enough. Where do you stand?",
       "theme": "Tsugaru Strait Joint Commission Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22237,10 +22221,10 @@
     },
     {
       "id": "S412",
-      "text": "Backers say the Judicial Appointments Commission Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Judicial Appointments Commission Act does not go far enough. Where do you stand?",
       "theme": "Judicial Appointments Commission Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22324,10 +22308,10 @@
     },
     {
       "id": "S416",
-      "text": "Backers say the Temple and Shrine Heritage Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Temple and Shrine Heritage Act does not go far enough. Where do you stand?",
       "theme": "Temple and Shrine Heritage Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22427,10 +22411,10 @@
     },
     {
       "id": "S420",
-      "text": "Backers say the Constituency Development Grants Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Constituency Development Grants Act does not go far enough. Where do you stand?",
       "theme": "Constituency Development Grants Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22529,10 +22513,10 @@
     },
     {
       "id": "S424",
-      "text": "Backers say the Digital Economy Promotion Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Digital Economy Promotion Act does not go far enough. Where do you stand?",
       "theme": "Digital Economy Promotion Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22629,10 +22613,10 @@
     },
     {
       "id": "S428",
-      "text": "Backers say the Organized Crime Conspiracy Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Organized Crime Conspiracy Act does not go far enough. Where do you stand?",
       "theme": "Organized Crime Conspiracy Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22729,10 +22713,10 @@
     },
     {
       "id": "S432",
-      "text": "Backers say the Partnership Registration Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Partnership Registration Act does not go far enough. Where do you stand?",
       "theme": "Partnership Registration Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22829,10 +22813,10 @@
     },
     {
       "id": "S436",
-      "text": "Backers say the National Emergency Powers Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the National Emergency Powers Act does not go far enough. Where do you stand?",
       "theme": "National Emergency Powers Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -22923,10 +22907,10 @@
     },
     {
       "id": "S440",
-      "text": "Backers say the Yezo–US Security Consultation Agreement does not go far enough. Where do you stand?",
+      "text": "Supporters say the Yezo–US Security Consultation Agreement does not go far enough. Where do you stand?",
       "theme": "Yezo–US Security Consultation Agreement debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23024,10 +23008,10 @@
     },
     {
       "id": "S444",
-      "text": "Backers say the Yezo–EU Economic Partnership Agreement does not go far enough. Where do you stand?",
+      "text": "Supporters say the Yezo–EU Economic Partnership Agreement does not go far enough. Where do you stand?",
       "theme": "Yezo–EU Economic Partnership Agreement debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23128,10 +23112,10 @@
     },
     {
       "id": "S448",
-      "text": "Backers say the Strategic Land and Port Screening Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Strategic Land and Port Screening Act does not go far enough. Where do you stand?",
       "theme": "Strategic Land and Port Screening Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23226,10 +23210,10 @@
     },
     {
       "id": "S452",
-      "text": "Backers say the Inbound Tourism Visa Waiver Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Inbound Tourism Visa Waiver Act does not go far enough. Where do you stand?",
       "theme": "Inbound Tourism Visa Waiver Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23325,10 +23309,10 @@
     },
     {
       "id": "S456",
-      "text": "Backers say the Chishima Joint Economic Activity Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Chishima Joint Economic Activity Act does not go far enough. Where do you stand?",
       "theme": "Chishima Joint Economic Activity Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23425,10 +23409,10 @@
     },
     {
       "id": "S460",
-      "text": "Backers say the Tomari Nuclear Restart Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Tomari Nuclear Restart Act does not go far enough. Where do you stand?",
       "theme": "Tomari Nuclear Restart Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23531,10 +23515,10 @@
     },
     {
       "id": "S464",
-      "text": "Backers say the Integrated Resort Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Integrated Resort Act does not go far enough. Where do you stand?",
       "theme": "Integrated Resort Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23636,10 +23620,10 @@
     },
     {
       "id": "S468",
-      "text": "Backers say the Civil Service Merit Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Civil Service Merit Act does not go far enough. Where do you stand?",
       "theme": "Civil Service Merit Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23737,10 +23721,10 @@
     },
     {
       "id": "S472",
-      "text": "Backers say the Regional Minimum Wage Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Regional Minimum Wage Act does not go far enough. Where do you stand?",
       "theme": "Regional Minimum Wage Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23834,10 +23818,10 @@
     },
     {
       "id": "S476",
-      "text": "Backers say the Independent Election Commission Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Independent Election Commission Act does not go far enough. Where do you stand?",
       "theme": "Independent Election Commission Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -23936,10 +23920,10 @@
     },
     {
       "id": "S480",
-      "text": "Backers say the Moral Education Curriculum Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Moral Education Curriculum Act does not go far enough. Where do you stand?",
       "theme": "Moral Education Curriculum Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24037,10 +24021,10 @@
     },
     {
       "id": "S484",
-      "text": "Backers say the Foreign Resident Local Suffrage Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Foreign Resident Local Suffrage Act does not go far enough. Where do you stand?",
       "theme": "Foreign Resident Local Suffrage Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24137,10 +24121,10 @@
     },
     {
       "id": "S488",
-      "text": "Backers say the Wilderness and Wildlife Protection Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Wilderness and Wildlife Protection Act does not go far enough. Where do you stand?",
       "theme": "Wilderness and Wildlife Protection Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24237,10 +24221,10 @@
     },
     {
       "id": "S492",
-      "text": "Backers say the Rural Hospital Network Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Rural Hospital Network Act does not go far enough. Where do you stand?",
       "theme": "Rural Hospital Network Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24337,10 +24321,10 @@
     },
     {
       "id": "S496",
-      "text": "Backers say the Digital Identity Card Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Digital Identity Card Act does not go far enough. Where do you stand?",
       "theme": "Digital Identity Card Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24422,10 +24406,10 @@
     },
     {
       "id": "S500",
-      "text": "Backers say the Public Broadcasting Independence Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Public Broadcasting Independence Act does not go far enough. Where do you stand?",
       "theme": "Public Broadcasting Independence Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24520,10 +24504,10 @@
     },
     {
       "id": "S504",
-      "text": "Backers say the Political Donation Transparency Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Political Donation Transparency Act does not go far enough. Where do you stand?",
       "theme": "Political Donation Transparency Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24627,10 +24611,10 @@
     },
     {
       "id": "S508",
-      "text": "Backers say the Corporate Tax Reduction Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Corporate Tax Reduction Act does not go far enough. Where do you stand?",
       "theme": "Corporate Tax Reduction Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24732,10 +24716,10 @@
     },
     {
       "id": "S512",
-      "text": "Backers say the Carbon Levy Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Carbon Levy Act does not go far enough. Where do you stand?",
       "theme": "Carbon Levy Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24830,10 +24814,10 @@
     },
     {
       "id": "S516",
-      "text": "Backers say the Fisheries Quota Modernization Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Fisheries Quota Modernization Act does not go far enough. Where do you stand?",
       "theme": "Fisheries Quota Modernization Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -24935,10 +24919,10 @@
     },
     {
       "id": "S520",
-      "text": "Backers say the Shipbuilding and Defense Industry Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Shipbuilding and Defense Industry Act does not go far enough. Where do you stand?",
       "theme": "Shipbuilding and Defense Industry Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25022,10 +25006,10 @@
     },
     {
       "id": "S524",
-      "text": "Backers say the Constitutional Review Commission Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Constitutional Review Commission Act does not go far enough. Where do you stand?",
       "theme": "Constitutional Review Commission Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25114,10 +25098,10 @@
     },
     {
       "id": "S528",
-      "text": "Backers say the Japan Customs and Border Cooperation Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Japan Customs and Border Cooperation Act does not go far enough. Where do you stand?",
       "theme": "Japan Customs and Border Cooperation Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25210,10 +25194,10 @@
     },
     {
       "id": "S532",
-      "text": "Backers say the Chishima Resource Development Agreement Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Chishima Resource Development Agreement Act does not go far enough. Where do you stand?",
       "theme": "Chishima Resource Development Agreement Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25312,10 +25296,10 @@
     },
     {
       "id": "S536",
-      "text": "Backers say the Yezo–China Trade Normalization Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Yezo–China Trade Normalization Act does not go far enough. Where do you stand?",
       "theme": "Yezo–China Trade Normalization Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25413,10 +25397,10 @@
     },
     {
       "id": "S540",
-      "text": "Backers say the Farm Succession Support Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Farm Succession Support Act does not go far enough. Where do you stand?",
       "theme": "Farm Succession Support Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25501,10 +25485,10 @@
     },
     {
       "id": "S544",
-      "text": "Backers say the University Autonomy and Research Funding Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the University Autonomy and Research Funding Act does not go far enough. Where do you stand?",
       "theme": "University Autonomy and Research Funding Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25603,10 +25587,10 @@
     },
     {
       "id": "S548",
-      "text": "Backers say the Workplace Equality Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Workplace Equality Act does not go far enough. Where do you stand?",
       "theme": "Workplace Equality Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25708,10 +25692,10 @@
     },
     {
       "id": "S552",
-      "text": "Backers say the Parental Leave and Childcare Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Parental Leave and Childcare Act does not go far enough. Where do you stand?",
       "theme": "Parental Leave and Childcare Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25812,10 +25796,10 @@
     },
     {
       "id": "S556",
-      "text": "Backers say the Public Safety Surveillance Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Public Safety Surveillance Act does not go far enough. Where do you stand?",
       "theme": "Public Safety Surveillance Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -25913,10 +25897,10 @@
     },
     {
       "id": "S560",
-      "text": "Backers say the Local Government Mergers Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Local Government Mergers Act does not go far enough. Where do you stand?",
       "theme": "Local Government Mergers Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -26013,10 +25997,10 @@
     },
     {
       "id": "S564",
-      "text": "Backers say the Party Leadership Selection Act does not go far enough. Where do you stand?",
+      "text": "Supporters say the Party Leadership Selection Act does not go far enough. Where do you stand?",
       "theme": "Party Leadership Selection Act debate",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "S",
         "Appeal": "M",
         "Data Driven": "W",
@@ -27319,7 +27303,7 @@
     },
     {
       "id": "S583",
-      "text": "Who bears the cost of co-official status for Ainu in willing towns in this town?",
+      "text": "Who bears the cost of co-official status for Ainu in willing towns?",
       "theme": "Ainu Heritage and Language Act debate",
       "grades": {
         "Earnest": "S",
@@ -27695,7 +27679,7 @@
     },
     {
       "id": "S598",
-      "text": "Supporters say deregulated investment zones near Sapporo, Tomakomai and Hakodate does not go far enough. Do you agree?",
+      "text": "Supporters say deregulated investment zones near Sapporo, Tomakomai and Hakodate do not go far enough. Do you agree?",
       "theme": "Special Economic Zones Act debate",
       "grades": {
         "Earnest": "M",
@@ -28583,7 +28567,7 @@
     },
     {
       "id": "S633",
-      "text": "What is our plan if exploitation of workers and strained housing becomes the story?",
+      "text": "What is our plan if exploitation of workers and strained housing become the story?",
       "theme": "Specified Skilled Worker Visa Act debate",
       "grades": {
         "Earnest": "S",
@@ -28633,7 +28617,7 @@
     },
     {
       "id": "S635",
-      "text": "What does grid links and local wind and geothermal power change for turbines, power lines and blackout plans?",
+      "text": "What do grid links and local wind and geothermal power change for turbines, power lines and blackout plans?",
       "theme": "Grid Resilience and Renewable Energy Act debate",
       "grades": {
         "Earnest": "M",
@@ -28889,7 +28873,7 @@
     },
     {
       "id": "S645",
-      "text": "Why not a tax on the largest incomes instead instead of a consumption tax rise from 8 to 10 percent for pensions?",
+      "text": "Why not a tax on the largest incomes instead of a consumption tax rise from 8 to 10 percent for pensions?",
       "theme": "Consumption Tax Rate Act debate",
       "grades": {
         "Earnest": "M",
@@ -28985,7 +28969,7 @@
     },
     {
       "id": "S649",
-      "text": "Supporters say revenue and budget powers for the three prefectural assemblies does not go far enough. Do you agree?",
+      "text": "Supporters say revenue and budget powers for the three prefectural assemblies do not go far enough. Do you agree?",
       "theme": "Prefectural Fiscal Devolution Act debate",
       "grades": {
         "Earnest": "M",
@@ -29029,7 +29013,7 @@
     },
     {
       "id": "S651",
-      "text": "Why not devolving one budget line as a trial instead of revenue and budget powers for the three prefectural assemblies?",
+      "text": "Why not devolve one budget line as a trial instead of revenue and budget powers for the three prefectural assemblies?",
       "theme": "Prefectural Fiscal Devolution Act debate",
       "grades": {
         "Earnest": "M",
@@ -29181,7 +29165,7 @@
     },
     {
       "id": "S658",
-      "text": "Can you promise voters that this bill will not lead to qualified candidates passed over?",
+      "text": "Can you promise voters that this bill will not lead to qualified candidates being passed over?",
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
         "Earnest": "S",
@@ -29221,7 +29205,7 @@
     },
     {
       "id": "S660",
-      "text": "What in this bill stops it from leading to qualified candidates passed over?",
+      "text": "What in this bill stops it from leading to qualified candidates being passed over?",
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
         "Earnest": "S",
@@ -29281,7 +29265,7 @@
     },
     {
       "id": "S663",
-      "text": "What is our plan if qualified candidates passed over becomes the story?",
+      "text": "What is our plan if qualified candidates being passed over becomes the story?",
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
         "Earnest": "S",
@@ -29384,7 +29368,7 @@
     },
     {
       "id": "S668",
-      "text": "Why not an annual meeting instead of a standing body instead of a standing Yezo-Japan commission on the Tsugaru Strait?",
+      "text": "Why not an annual meeting instead of a standing Yezo-Japan commission on the Tsugaru Strait?",
       "theme": "Tsugaru Strait Joint Commission Act debate",
       "grades": {
         "Earnest": "M",
@@ -29447,7 +29431,7 @@
     },
     {
       "id": "S671",
-      "text": "Why not an annual meeting instead of a standing body instead of a standing Yezo-Japan commission on the Tsugaru Strait?",
+      "text": "Why not an annual meeting instead of a standing Yezo-Japan commission on the Tsugaru Strait?",
       "theme": "Tsugaru Strait Joint Commission Act debate",
       "grades": {
         "Earnest": "M",
@@ -30272,7 +30256,7 @@
     },
     {
       "id": "S706",
-      "text": "Is subsidies for firms that would come anyway the real story behind the Digital Economy Promotion Act?",
+      "text": "Are subsidies for firms that would come anyway the real story behind the Digital Economy Promotion Act?",
       "theme": "Digital Economy Promotion Act debate",
       "grades": {
         "Earnest": "S",
@@ -30622,7 +30606,7 @@
     },
     {
       "id": "S720",
-      "text": "Supporters say the crime of planning serious organized crime, with wider wiretaps does not go far enough. Do you agree?",
+      "text": "Supporters say the crime of planning serious organized crime, with wider wiretaps, does not go far enough. Do you agree?",
       "theme": "Organized Crime Conspiracy Act debate",
       "grades": {
         "Earnest": "M",
@@ -31454,7 +31438,7 @@
     },
     {
       "id": "S754",
-      "text": "Why not phasing tariffs down over a long period instead of lower tariffs with the European Union on dairy, wine, machinery and cars?",
+      "text": "Why not phase tariffs down over a long period instead of lower tariffs with the European Union on dairy, wine, machinery and cars?",
       "theme": "Yezo–EU Economic Partnership Agreement debate",
       "grades": {
         "Earnest": "M",
@@ -32014,7 +31998,7 @@
     },
     {
       "id": "S776",
-      "text": "What is our plan if overcrowded resorts and strained services becomes the story?",
+      "text": "What is our plan if overcrowded resorts and strained services become the story?",
       "theme": "Inbound Tourism Visa Waiver Act debate",
       "grades": {
         "Earnest": "S",
@@ -32369,7 +32353,7 @@
     },
     {
       "id": "S790",
-      "text": "Is gambling addiction and organized crime the real story behind the Integrated Resort Act?",
+      "text": "Are gambling addiction and organized crime the real story behind the Integrated Resort Act?",
       "theme": "Integrated Resort Act debate",
       "grades": {
         "Earnest": "S",
@@ -32794,7 +32778,7 @@
     },
     {
       "id": "S806",
-      "text": "What is our plan if exams that miss real-world skill becomes the story?",
+      "text": "What is our plan if exams that miss real-world skill become the story?",
       "theme": "Civil Service Merit Act debate",
       "grades": {
         "Earnest": "S",
@@ -34686,9 +34670,9 @@
       "theme": "Balanced budgets",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -35165,8 +35149,8 @@
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
-        "Appeal": "S",
-        "Data Driven": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
         "Divisive": "W",
         "Duplicitous": "S"
       },
@@ -35853,7 +35837,7 @@
     },
     {
       "id": "S918",
-      "text": "Is 'effort' enough, or should the law set a number?",
+      "text": "Is \"effort\" enough, or should the law set a number?",
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
         "Earnest": "M",
@@ -35877,9 +35861,9 @@
       "theme": "Candidate Gender Parity Act debate",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -35938,9 +35922,9 @@
       "theme": "Tsugaru Strait Joint Commission Act debate",
       "grades": {
         "Earnest": "M",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "S",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -36192,7 +36176,7 @@
         "Earnest": "M",
         "Emotional": "M",
         "Appeal": "S",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "S",
         "Duplicitous": "W"
       },
@@ -36315,9 +36299,9 @@
       "theme": "Organized Crime Conspiracy Act debate",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -36364,11 +36348,11 @@
       "text": "What do you say to a family that sees this as a threat to tradition?",
       "theme": "Partnership Registration Act debate",
       "grades": {
-        "Earnest": "M",
-        "Emotional": "M",
+        "Earnest": "S",
+        "Emotional": "S",
         "Appeal": "S",
         "Data Driven": "M",
-        "Divisive": "S",
+        "Divisive": "W",
         "Duplicitous": "W"
       },
       "pleases_boosters": [
@@ -36611,9 +36595,9 @@
       "theme": "Yezo–EU Economic Partnership Agreement debate",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -36937,9 +36921,9 @@
       "theme": "Integrated Resort Act debate",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -37219,9 +37203,9 @@
       "theme": "Independent Election Commission Act debate",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -37866,9 +37850,9 @@
       "theme": "Carbon Levy Act debate",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -38111,9 +38095,9 @@
       "theme": "Constitutional Review Commission Act debate",
       "grades": {
         "Earnest": "S",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "M",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
