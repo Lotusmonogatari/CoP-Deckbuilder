@@ -89,3 +89,10 @@ Grade changes to the candidate-selection and caucus questions (S566-S582) change
 | Set up a free consumer complaint line | Annoys | BO24 | BO05 |
 
 Also: the 32 transition lines for BI07, BI21, BI41 and BI45 now name the bill instead of saying 'this bill'.
+
+## Decisions 6 and 7 (later the same day)
+| Decision | What was done |
+|---|---|
+| 6: re-cast askers | New optional column **Asked By Organization** on every question tab (exporter rule, warning when nobody in the room belongs, test). Set on 19 lobbyist, 10 town hall and 7 committee questions; five first-person lines reworded where no matching asker exists (L85, L88, L97, L103, and T-rows T20, T84, T92, T97, T111). |
+| 7: near-duplicates | 15 reworded: A14, A20, A28, A32, A33, T08, T14, T16, T22, T126, L12, L15, L19, L62, Q22. Sibling-stage duplicates (S600/S603/S608 and similar) not done. |
+| 7: vary templates | 540 new topic-specific questions replace frames 1, 3 and 7 of 180 themes. Before/after table: `REWRITTEN_QUESTIONS_2026-10-25.md`. Draft text. |
