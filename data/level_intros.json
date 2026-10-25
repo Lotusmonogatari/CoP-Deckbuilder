@@ -22,7 +22,7 @@
   {
     "level_id": "LV02",
     "role": "Media Spokesperson",
-    "cue_text": "Expect a busy day. Stay calm whatever comes."
+    "cue_text": "Lobbyists talk fast and quote faster. Stay calm and say little."
   },
   {
     "level_id": "LV02",
@@ -537,7 +537,7 @@
   {
     "level_id": "LV36",
     "role": "District Representative",
-    "cue_text": "Remember who the skilled worker visas touches back home."
+    "cue_text": "Remember who the skilled worker visas touch back home."
   },
   {
     "level_id": "LV37",
@@ -617,7 +617,7 @@
   {
     "level_id": "LV42",
     "role": "Policy Research Assistant",
-    "cue_text": "Judicial appointments looks simple on paper and is not."
+    "cue_text": "Judicial appointments look simple on paper and are not."
   },
   {
     "level_id": "LV42",
@@ -657,7 +657,7 @@
   {
     "level_id": "LV44",
     "role": "District Representative",
-    "cue_text": "Remember who development grants touches back home."
+    "cue_text": "Remember who development grants touch back home."
   },
   {
     "level_id": "LV45",
@@ -717,7 +717,7 @@
   {
     "level_id": "LV48",
     "role": "District Representative",
-    "cue_text": "Remember who emergency powers touches back home."
+    "cue_text": "Remember who emergency powers touch back home."
   },
   {
     "level_id": "LV49",
@@ -837,7 +837,7 @@
   {
     "level_id": "LV56",
     "role": "District Representative",
-    "cue_text": "Remember who civil service merit rules touches back home."
+    "cue_text": "Remember who civil service merit rules touch back home."
   },
   {
     "level_id": "LV57",
@@ -947,7 +947,7 @@
   {
     "level_id": "LV64",
     "role": "Policy Research Assistant",
-    "cue_text": "Rural hospitals looks simple on paper and is not."
+    "cue_text": "Rural hospitals look simple on paper and are not."
   },
   {
     "level_id": "LV64",
@@ -1047,7 +1047,7 @@
   {
     "level_id": "LV70",
     "role": "District Representative",
-    "cue_text": "Remember who tradeable quotas touches back home."
+    "cue_text": "Remember who tradeable quotas touch back home."
   },
   {
     "level_id": "LV71",
@@ -1067,17 +1067,17 @@
   {
     "level_id": "LV72",
     "role": "Policy Research Assistant",
-    "cue_text": "The review looks simple on paper and is not."
+    "cue_text": "The constitutional review looks simple on paper and is not."
   },
   {
     "level_id": "LV72",
     "role": "Media Spokesperson",
-    "cue_text": "Reporters will be watching how you handle the review."
+    "cue_text": "Reporters will be watching how you handle the constitutional review."
   },
   {
     "level_id": "LV72",
     "role": "District Representative",
-    "cue_text": "The district will judge you on the review."
+    "cue_text": "The district will judge you on the constitutional review."
   },
   {
     "level_id": "LV73",
@@ -1097,17 +1097,17 @@
   {
     "level_id": "LV74",
     "role": "Policy Research Assistant",
-    "cue_text": "Know the details of the islands cold before you go in."
+    "cue_text": "Know the details of the Chishima resource agreement cold before you go in."
   },
   {
     "level_id": "LV74",
     "role": "Media Spokesperson",
-    "cue_text": "Whatever you say about the islands will be quoted."
+    "cue_text": "Whatever you say about the Chishima resource agreement will be quoted."
   },
   {
     "level_id": "LV74",
     "role": "District Representative",
-    "cue_text": "Remember who the islands touches back home."
+    "cue_text": "Remember who the Chishima resource agreement touches back home."
   },
   {
     "level_id": "LV75",
@@ -1127,7 +1127,7 @@
   {
     "level_id": "LV76",
     "role": "Policy Research Assistant",
-    "cue_text": "Family farms looks simple on paper and is not."
+    "cue_text": "Family farms look simple on paper and are not."
   },
   {
     "level_id": "LV76",
@@ -1187,22 +1187,22 @@
   {
     "level_id": "LV80",
     "role": "Policy Research Assistant",
-    "cue_text": "The cameras looks simple on paper and is not."
+    "cue_text": "The surveillance bill looks simple on paper and is not."
   },
   {
     "level_id": "LV80",
     "role": "Media Spokesperson",
-    "cue_text": "Reporters will be watching how you handle the cameras."
+    "cue_text": "Reporters will be watching how you handle the surveillance bill."
   },
   {
     "level_id": "LV80",
     "role": "District Representative",
-    "cue_text": "The district will judge you on the cameras."
+    "cue_text": "The district will judge you on the surveillance bill."
   },
   {
     "level_id": "LV81",
     "role": "Policy Research Assistant",
-    "cue_text": "Town mergers is a question of cost and fairness."
+    "cue_text": "Town mergers are a question of cost and fairness."
   },
   {
     "level_id": "LV81",
@@ -1217,16 +1217,16 @@
   {
     "level_id": "LV82",
     "role": "Policy Research Assistant",
-    "cue_text": "Know the details of open ballots cold before you go in."
+    "cue_text": "Know the details of party leadership selection cold before you go in."
   },
   {
     "level_id": "LV82",
     "role": "Media Spokesperson",
-    "cue_text": "Whatever you say about open ballots will be quoted."
+    "cue_text": "Whatever you say about party leadership selection will be quoted."
   },
   {
     "level_id": "LV82",
     "role": "District Representative",
-    "cue_text": "Remember who open ballots touches back home."
+    "cue_text": "Remember who party leadership selection touches back home."
   }
 ]

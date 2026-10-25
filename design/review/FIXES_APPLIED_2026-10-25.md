@@ -96,3 +96,28 @@ Also: the 32 transition lines for BI07, BI21, BI41 and BI45 now name the bill in
 | 6: re-cast askers | New optional column **Asked By Organization** on every question tab (exporter rule, warning when nobody in the room belongs, test). Set on 19 lobbyist, 10 town hall and 7 committee questions; five first-person lines reworded where no matching asker exists (L85, L88, L97, L103, and T-rows T20, T84, T92, T97, T111). |
 | 7: near-duplicates | 15 reworded: A14, A20, A28, A32, A33, T08, T14, T16, T22, T126, L12, L15, L19, L62, Q22. Sibling-stage duplicates (S600/S603/S608 and similar) not done. |
 | 7: vary templates | 540 new topic-specific questions replace frames 1, 3 and 7 of 180 themes. Before/after table: `REWRITTEN_QUESTIONS_2026-10-25.md`. Draft text. |
+
+## Card, shop and taste decisions (after the first merge to main)
+| Item | Decision (Cameron) | Done |
+|---|---|---|
+| C04 Return to First Principles | Lower to 6 | Self + 6; text "Gain 6; +2 more if Constituents ≥ 30%." |
+| C12 Ask Who's With You | Reveal the move after this one | Text "Draw 2. Reveal the opponent's move after this one." |
+| Guard wording (C02, C21, C22, C50, C54) | Drop "this turn" | Done |
+| SH09-SH11 | Delete if no code relies on them | **Not deleted: they ARE the XP Rhetoric Training sessions (Office screen lists every shop row with a Card Tier; tests cover them).** Their stale description was reworded instead. |
+| SH13 | Rename | "Fund Limit Increase Petition" |
+| Party Activists | Add Duplicitous | Duplicitous raised to S on 26 questions that please them; their liked styles are now Divisive and Duplicitous; test updated |
+| Names (Yumi Satou, Rika Ashikaga, Cabinet Legislation Bureau, idol fame, etc.) | Keep as written | No change |
+
+## Grammar, stance and visitor-reply pass (after the second merge)
+Per Cameron: all text is edited in the workbook; fix grammar and agreement in context; fix stance arguments; fix visitor replies in context. Place names and other proper names are kept exactly as written (a guard rejects any rewrite that drops one).
+
+| Area | Rows read | Lines changed | Notes |
+|---|---|---|---|
+| Opponent cues (OC) | all 3,108 rows | about 1,000 | plural topic subjects, "Our the", organization verbs and articles ("The Chamber of Commerce is worried..."), broken noun slots ("Those who live with who decides..."), Divisive "we/us" voice, role voice |
+| Player cues (PL) | all 3,516 rows | about 1,300 | capitalization after sentence ends, double possessives, agreement, Support/Oppose lines that argued the other side. Bill cues kept to the 20-word and no-"still" rules |
+| Transition dialogue (TD) | all 2,083 rows | about 270 | "She will get one" gender assumption, tense, "why we should" presuming support became "whether we should", articles, speaker voice |
+| Level intros and thoughts (LV) | all 247 + 247 rows | about 30 | plural verbs; vague bill nouns named |
+| Visitor dilemmas (VQ) | all 393 | about 390 fields | responses now answer their own choice; D choices made clearly worst; American spelling; stock Act-template replies made first-person ("We will remember that.") |
+| UI text | 4 sentences | 4 | battle.passed (next turn), HT17 (a bill that passes becomes law), two developer-speak lines |
+
+Rewrites that tried to drop a place or proper name (Hokkaido, Sapporo, Tokyo, Russia, Mongolia, Honshu, "prefecture", Obaachan, shotengai, a year) were rejected automatically (about 450 across all passes).
