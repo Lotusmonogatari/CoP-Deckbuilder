@@ -142,7 +142,7 @@
   {
     "key": "battle.passed",
     "where": "Battle — notices",
-    "english": "You said nothing. One less energy this turn.",
+    "english": "You passed. You start next turn with one less energy.",
     "placeholders": null,
     "notes": "Ending a turn having played no cards, outside a press conference."
   },
@@ -583,7 +583,7 @@
   {
     "key": "office.not_active_yet",
     "where": "Office — backing",
-    "english": "Not active yet — this effect is still to be built.",
+    "english": "Not available yet.",
     "placeholders": null,
     "notes": "Six of the fifteen organizations' effects need machinery that is not built."
   },
@@ -947,7 +947,7 @@
   {
     "key": "battle.default_pattern",
     "where": "Battle · details panel",
-    "english": "This opponent has no move pattern of their own yet, so they are using the shared default from rules.json and playing generically.",
+    "english": "This opponent has no move pattern of their own yet, so they are playing the shared default.",
     "placeholders": null,
     "notes": null
   },

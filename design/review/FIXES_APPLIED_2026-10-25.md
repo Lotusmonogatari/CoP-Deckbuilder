@@ -107,3 +107,17 @@ Also: the 32 transition lines for BI07, BI21, BI41 and BI45 now name the bill in
 | SH13 | Rename | "Fund Limit Increase Petition" |
 | Party Activists | Add Duplicitous | Duplicitous raised to S on 26 questions that please them; their liked styles are now Divisive and Duplicitous; test updated |
 | Names (Yumi Satou, Rika Ashikaga, Cabinet Legislation Bureau, idol fame, etc.) | Keep as written | No change |
+
+## Grammar, stance and visitor-reply pass (after the second merge)
+Per Cameron: all text is edited in the workbook; fix grammar and agreement in context; fix stance arguments; fix visitor replies in context. Place names and other proper names are kept exactly as written (a guard rejects any rewrite that drops one).
+
+| Area | Rows read | Lines changed | Notes |
+|---|---|---|---|
+| Opponent cues (OC) | all 3,108 rows | about 1,000 | plural topic subjects, "Our the", organization verbs and articles ("The Chamber of Commerce is worried..."), broken noun slots ("Those who live with who decides..."), Divisive "we/us" voice, role voice |
+| Player cues (PL) | all 3,516 rows | about 1,300 | capitalization after sentence ends, double possessives, agreement, Support/Oppose lines that argued the other side. Bill cues kept to the 20-word and no-"still" rules |
+| Transition dialogue (TD) | all 2,083 rows | about 270 | "She will get one" gender assumption, tense, "why we should" presuming support became "whether we should", articles, speaker voice |
+| Level intros and thoughts (LV) | all 247 + 247 rows | about 30 | plural verbs; vague bill nouns named |
+| Visitor dilemmas (VQ) | all 393 | about 390 fields | responses now answer their own choice; D choices made clearly worst; American spelling; stock Act-template replies made first-person ("We will remember that.") |
+| UI text | 4 sentences | 4 | battle.passed (next turn), HT17 (a bill that passes becomes law), two developer-speak lines |
+
+Rewrites that tried to drop a place or proper name (Hokkaido, Sapporo, Tokyo, Russia, Mongolia, Honshu, "prefecture", Obaachan, shotengai, a year) were rejected automatically (about 450 across all passes).
