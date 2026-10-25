@@ -446,6 +446,10 @@ SHEETS = {
             # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
             # party. Only someone from one of these parties may ask it.
             ("Asked By Party", "asked_by_parties", "id_list"),
+            # Optional (2026-10-25): BOxx organizations. Only someone whose
+            # Affiliation is one of these may ask it (falls back to the normal
+            # rotation, with a warning, when nobody in the room qualifies).
+            ("Asked By Organization", "asked_by_orgs", "id_list"),
             # Optional (2026-10-19, Patron Bills): a question about one bill
             # component (CBxx), asked in levels built from components.
             ("Component ID", "component_ids", "id_list"),
@@ -472,6 +476,10 @@ SHEETS = {
             # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
             # party. Only someone from one of these parties may ask it.
             ("Asked By Party", "asked_by_parties", "id_list"),
+            # Optional (2026-10-25): BOxx organizations. Only someone whose
+            # Affiliation is one of these may ask it (falls back to the normal
+            # rotation, with a warning, when nobody in the room qualifies).
+            ("Asked By Organization", "asked_by_orgs", "id_list"),
         ],
     },
     # Town Hall Questions: 20 questions for the town hall stage type, each graded
@@ -495,6 +503,10 @@ SHEETS = {
             # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
             # party. Only someone from one of these parties may ask it.
             ("Asked By Party", "asked_by_parties", "id_list"),
+            # Optional (2026-10-25): BOxx organizations. Only someone whose
+            # Affiliation is one of these may ask it (falls back to the normal
+            # rotation, with a warning, when nobody in the room qualifies).
+            ("Asked By Organization", "asked_by_orgs", "id_list"),
         ],
     },
     # Lobbyist Questions: 20 questions for the lobbyist meeting stage type, each graded
@@ -518,6 +530,10 @@ SHEETS = {
             # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
             # party. Only someone from one of these parties may ask it.
             ("Asked By Party", "asked_by_parties", "id_list"),
+            # Optional (2026-10-25): BOxx organizations. Only someone whose
+            # Affiliation is one of these may ask it (falls back to the normal
+            # rotation, with a warning, when nobody in the room qualifies).
+            ("Asked By Organization", "asked_by_orgs", "id_list"),
         ],
     },
     # Study Session Questions: 20 questions for the policy study stage type, each graded
@@ -541,6 +557,10 @@ SHEETS = {
             # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
             # party. Only someone from one of these parties may ask it.
             ("Asked By Party", "asked_by_parties", "id_list"),
+            # Optional (2026-10-25): BOxx organizations. Only someone whose
+            # Affiliation is one of these may ask it (falls back to the normal
+            # rotation, with a warning, when nobody in the room qualifies).
+            ("Asked By Organization", "asked_by_orgs", "id_list"),
         ],
     },
     # Media Ambush Questions: 20 questions for the media ambush stage type, each graded
@@ -564,6 +584,10 @@ SHEETS = {
             # Optional (2026-10-12): PTxx party IDs, or OWN for the player's own
             # party. Only someone from one of these parties may ask it.
             ("Asked By Party", "asked_by_parties", "id_list"),
+            # Optional (2026-10-25): BOxx organizations. Only someone whose
+            # Affiliation is one of these may ask it (falls back to the normal
+            # rotation, with a warning, when nobody in the room qualifies).
+            ("Asked By Organization", "asked_by_orgs", "id_list"),
         ],
     },
     # Which organisation cares about each question theme. A DRAFT: Claude
@@ -3393,6 +3417,9 @@ def fold_questions(data, report):
                         for p in data.get("parties", []) if isinstance(p, dict)}
     party_by_opp = {row["opp_id"]: str(row.get("party") or "")
                     for row in data.get("opponents", [])}
+    booster_ids_known = {b.get("booster_id") for b in data.get("boosters", [])}
+    org_by_opp = {row["opp_id"]: str(row.get("affiliation") or "")
+                  for row in data.get("opponents", [])}
 
     pools = {}
     for source, stage_type in QUESTION_TABS.items():
@@ -3475,6 +3502,22 @@ def fold_questions(data, report):
                                      f"{', '.join(parties)}, but nobody from that party sits "
                                      f"in the room it is asked in")
                         askers = []
+                # Asked By Organization (2026-10-25): narrow to opponents who
+                # belong to a named organization.
+                orgs = [o.strip() for o in (row.get("asked_by_orgs") or []) if o.strip()]
+                if orgs:
+                    question["asked_by_orgs"] = orgs
+                    for org_id in orgs:
+                        if org_id not in booster_ids_known:
+                            report.error(source, f"question {row['q_id']} Asked By Organization "
+                                         f"names '{org_id}', which is not a booster_id")
+                    belonging = [a for a in askers if org_by_opp.get(a) in orgs]
+                    if belonging:
+                        askers = belonging
+                    else:
+                        report.warn(source, f"question {row['q_id']} wants an asker from "
+                                    f"{', '.join(orgs)}, but nobody from there sits in its room; "
+                                    f"the usual rotation is used")
                 if askers:
                     question["asked_by"] = askers[len(pool) % len(askers)]
                 pool.append(question)

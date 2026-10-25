@@ -93,3 +93,21 @@ func test_real_questions_only_ever_name_someone_in_the_room() -> void:
 			if not room.is_empty() and not asker.is_empty():
 				assert_true(room.has(asker), "%s %s is asked by %s, who sits in the room" % [stage_id, question.get("id"), asker])
 	GameState.start_new_run("PC02")
+
+
+## A question that names an organization (Asked By Organization, 2026-10-25) is
+## asked by someone from it, wherever the room has such a person.
+func test_a_question_that_names_an_organization_gets_someone_from_it() -> void:
+	var affiliation := {}
+	for opp in DataDB.opponents:
+		affiliation[str(opp.get("opp_id"))] = str(opp.get("affiliation", ""))
+	var checked := 0
+	for pool in DataDB.questions.values():
+		for q in pool:
+			var orgs: Array = q.get("asked_by_orgs", [])
+			if orgs.is_empty() or str(q.get("asked_by", "")) == "":
+				continue
+			checked += 1
+			assert_true(orgs.has(affiliation.get(str(q["asked_by"]), "")),
+				"%s should be asked by someone from %s" % [q["id"], orgs])
+	assert_gt(checked, 20, "the column is used on real questions")

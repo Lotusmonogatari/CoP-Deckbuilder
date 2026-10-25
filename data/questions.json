@@ -1111,7 +1111,7 @@
     },
     {
       "id": "T20",
-      "text": "Why should young people care about this?",
+      "text": "Why should young people care about politics at all?",
       "theme": "Stakes",
       "grades": {
         "Earnest": "M",
@@ -1125,7 +1125,10 @@
         "BO06",
         "BO31"
       ],
-      "asked_by": "OP120"
+      "asked_by_orgs": [
+        "BO11"
+      ],
+      "asked_by": "OP109"
     },
     {
       "id": "T21",
@@ -2433,7 +2436,10 @@
       "pleases_boosters": [
         "BO07"
       ],
-      "asked_by": "OP105"
+      "asked_by_orgs": [
+        "BO10"
+      ],
+      "asked_by": "OP120"
     },
     {
       "id": "T82",
@@ -2477,7 +2483,7 @@
     },
     {
       "id": "T84",
-      "text": "Station stairs are impossible with a pram or a wheelchair. Who fixes that?",
+      "text": "Parents with prams and people in wheelchairs cannot use our trains. Who fixes that?",
       "theme": "Station access",
       "grades": {
         "Earnest": "S",
@@ -2493,7 +2499,10 @@
       "displeases_boosters": [
         "BO30"
       ],
-      "asked_by": "OP108"
+      "asked_by_orgs": [
+        "BO12"
+      ],
+      "asked_by": "OP104"
     },
     {
       "id": "T85",
@@ -2651,7 +2660,7 @@
     },
     {
       "id": "T92",
-      "text": "My family has made this craft for six generations. Will it survive?",
+      "text": "Fewer people buy handmade goods every year. Will our craft survive?",
       "theme": "Traditional crafts",
       "grades": {
         "Earnest": "S",
@@ -2669,7 +2678,10 @@
         "BO16",
         "BO11"
       ],
-      "asked_by": "OP105"
+      "asked_by_orgs": [
+        "BO03"
+      ],
+      "asked_by": "OP102"
     },
     {
       "id": "T93",
@@ -2759,7 +2771,7 @@
     },
     {
       "id": "T97",
-      "text": "Fuel prices are killing our boats. Will you help?",
+      "text": "Fuel prices are killing our farms. Will you help?",
       "theme": "Fuel subsidy",
       "grades": {
         "Earnest": "S",
@@ -2775,6 +2787,9 @@
       ],
       "displeases_boosters": [
         "BO27"
+      ],
+      "asked_by_orgs": [
+        "BO10"
       ],
       "asked_by": "OP120"
     },
@@ -2988,7 +3003,10 @@
         "BO26",
         "BO23"
       ],
-      "asked_by": "OP109"
+      "asked_by_orgs": [
+        "BO10"
+      ],
+      "asked_by": "OP120"
     },
     {
       "id": "T108",
@@ -3057,7 +3075,7 @@
     },
     {
       "id": "T111",
-      "text": "Why should young people pay for decisions older voters made?",
+      "text": "Who will pay for the choices older voters made when I am their age?",
       "theme": "Generational fairness",
       "grades": {
         "Earnest": "M",
@@ -3074,7 +3092,10 @@
         "BO15",
         "BO05"
       ],
-      "asked_by": "OP102"
+      "asked_by_orgs": [
+        "BO11"
+      ],
+      "asked_by": "OP124"
     },
     {
       "id": "T112",
@@ -3096,7 +3117,10 @@
         "BO15",
         "BO13"
       ],
-      "asked_by": "OP103"
+      "asked_by_orgs": [
+        "BO11"
+      ],
+      "asked_by": "OP105"
     },
     {
       "id": "T113",
@@ -3140,7 +3164,10 @@
         "BO05",
         "BO25"
       ],
-      "asked_by": "OP105"
+      "asked_by_orgs": [
+        "BO12"
+      ],
+      "asked_by": "OP104"
     },
     {
       "id": "T115",
@@ -3537,7 +3564,10 @@
         "BO23",
         "BO24"
       ],
-      "asked_by": "OP124"
+      "asked_by_orgs": [
+        "BO18"
+      ],
+      "asked_by": "OP108"
     },
     {
       "id": "T133",
@@ -3888,7 +3918,10 @@
       "displeases_boosters": [
         "BO15"
       ],
-      "asked_by": "OP121"
+      "asked_by_orgs": [
+        "BO05"
+      ],
+      "asked_by": "OP118"
     },
     {
       "id": "L05",
@@ -4172,7 +4205,10 @@
       "pleases_boosters": [
         "BO06"
       ],
-      "asked_by": "OP119"
+      "asked_by_orgs": [
+        "BO05"
+      ],
+      "asked_by": "OP118"
     },
     {
       "id": "L19",
@@ -4539,7 +4575,10 @@
       "displeases_boosters": [
         "BO05"
       ],
-      "asked_by": "OP120"
+      "asked_by_orgs": [
+        "BO05"
+      ],
+      "asked_by": "OP118"
     },
     {
       "id": "L36",
@@ -4733,7 +4772,10 @@
       "displeases_boosters": [
         "BO09"
       ],
-      "asked_by": "OP121"
+      "asked_by_orgs": [
+        "BO05"
+      ],
+      "asked_by": "OP118"
     },
     {
       "id": "L45",
@@ -4910,7 +4952,10 @@
         "BO30",
         "BO17"
       ],
-      "asked_by": "OP121"
+      "asked_by_orgs": [
+        "BO04"
+      ],
+      "asked_by": "OP122"
     },
     {
       "id": "L53",
@@ -5146,7 +5191,10 @@
       "pleases_boosters": [
         "BO07"
       ],
-      "asked_by": "OP124"
+      "asked_by_orgs": [
+        "BO07"
+      ],
+      "asked_by": "OP121"
     },
     {
       "id": "L65",
@@ -5188,6 +5236,9 @@
         "BO13",
         "BO15"
       ],
+      "asked_by_orgs": [
+        "BO05"
+      ],
       "asked_by": "OP118"
     },
     {
@@ -5210,7 +5261,10 @@
         "BO13",
         "BO26"
       ],
-      "asked_by": "OP119"
+      "asked_by_orgs": [
+        "BO05"
+      ],
+      "asked_by": "OP118"
     },
     {
       "id": "L68",
@@ -5277,7 +5331,10 @@
       "displeases_boosters": [
         "BO11"
       ],
-      "asked_by": "OP122"
+      "asked_by_orgs": [
+        "BO15"
+      ],
+      "asked_by": "OP125"
     },
     {
       "id": "L71",
@@ -5298,7 +5355,10 @@
       "displeases_boosters": [
         "BO27"
       ],
-      "asked_by": "OP123"
+      "asked_by_orgs": [
+        "BO10"
+      ],
+      "asked_by": "OP120"
     },
     {
       "id": "L72",
@@ -5363,6 +5423,9 @@
       "displeases_boosters": [
         "BO16",
         "BO27"
+      ],
+      "asked_by_orgs": [
+        "BO05"
       ],
       "asked_by": "OP118"
     },
@@ -5470,7 +5533,10 @@
         "BO26",
         "BO23"
       ],
-      "asked_by": "OP123"
+      "asked_by_orgs": [
+        "BO10"
+      ],
+      "asked_by": "OP120"
     },
     {
       "id": "L80",
@@ -5533,7 +5599,10 @@
         "BO15",
         "BO05"
       ],
-      "asked_by": "OP118"
+      "asked_by_orgs": [
+        "BO09"
+      ],
+      "asked_by": "OP119"
     },
     {
       "id": "L83",
@@ -5577,11 +5646,14 @@
         "BO15",
         "BO05"
       ],
-      "asked_by": "OP120"
+      "asked_by_orgs": [
+        "BO06"
+      ],
+      "asked_by": "OP123"
     },
     {
       "id": "L85",
-      "text": "Our network wants flexible hours protected in law. Will you back it?",
+      "text": "Our members want flexible hours protected in law. Will you back it?",
       "theme": "Family-friendly work",
       "grades": {
         "Earnest": "M",
@@ -5646,7 +5718,7 @@
     },
     {
       "id": "L88",
-      "text": "Our guild wants a recognized quality mark. Will you support it?",
+      "text": "Our association wants a recognized quality mark. Will you support it?",
       "theme": "Quality marks",
       "grades": {
         "Earnest": "S",
@@ -5664,7 +5736,10 @@
         "BO16",
         "BO05"
       ],
-      "asked_by": "OP124"
+      "asked_by_orgs": [
+        "BO05"
+      ],
+      "asked_by": "OP118"
     },
     {
       "id": "L89",
@@ -5794,7 +5869,10 @@
         "BO11",
         "BO27"
       ],
-      "asked_by": "OP122"
+      "asked_by_orgs": [
+        "BO15"
+      ],
+      "asked_by": "OP125"
     },
     {
       "id": "L95",
@@ -5841,7 +5919,7 @@
     },
     {
       "id": "L97",
-      "text": "Our staff are leaving the field. Will you raise care pay?",
+      "text": "Care staff are leaving the field. Will you raise care pay?",
       "theme": "Care staffing",
       "grades": {
         "Earnest": "S",
@@ -5924,7 +6002,10 @@
         "BO30",
         "BO10"
       ],
-      "asked_by": "OP120"
+      "asked_by_orgs": [
+        "BO06"
+      ],
+      "asked_by": "OP123"
     },
     {
       "id": "L101",
@@ -5972,7 +6053,7 @@
     },
     {
       "id": "L103",
-      "text": "Our foundation wants a language archive. Will you fund it?",
+      "text": "Our members want a language archive. Will you fund it?",
       "theme": "Language archives",
       "grades": {
         "Earnest": "S",
@@ -5990,7 +6071,10 @@
         "BO15",
         "BO05"
       ],
-      "asked_by": "OP123"
+      "asked_by_orgs": [
+        "BO15"
+      ],
+      "asked_by": "OP125"
     },
     {
       "id": "L104",
@@ -6058,7 +6142,10 @@
         "BO27",
         "BO24"
       ],
-      "asked_by": "OP118"
+      "asked_by_orgs": [
+        "BO04"
+      ],
+      "asked_by": "OP122"
     },
     {
       "id": "L107",
@@ -27883,7 +27970,10 @@
       "stage_ids": [
         "ST133"
       ],
-      "asked_by": "OP122"
+      "asked_by_orgs": [
+        "BO05"
+      ],
+      "asked_by": "OP118"
     },
     {
       "id": "S606",
@@ -28138,7 +28228,10 @@
       "stage_ids": [
         "ST138"
       ],
-      "asked_by": "OP124"
+      "asked_by_orgs": [
+        "BO04"
+      ],
+      "asked_by": "OP122"
     },
     {
       "id": "S616",
@@ -28163,7 +28256,10 @@
       "stage_ids": [
         "ST138"
       ],
-      "asked_by": "OP125"
+      "asked_by_orgs": [
+        "BO04"
+      ],
+      "asked_by": "OP122"
     },
     {
       "id": "S617",
@@ -28869,7 +28965,10 @@
       "stage_ids": [
         "ST154"
       ],
-      "asked_by": "OP121"
+      "asked_by_orgs": [
+        "BO09"
+      ],
+      "asked_by": "OP119"
     },
     {
       "id": "S645",
@@ -29322,7 +29421,10 @@
       "stage_ids": [
         "ST165"
       ],
-      "asked_by": "OP118"
+      "asked_by_orgs": [
+        "BO07"
+      ],
+      "asked_by": "OP121"
     },
     {
       "id": "S666",
@@ -29703,7 +29805,10 @@
       "stage_ids": [
         "ST175"
       ],
-      "asked_by": "OP120"
+      "asked_by_orgs": [
+        "BO15"
+      ],
+      "asked_by": "OP125"
     },
     {
       "id": "S684",
@@ -32322,7 +32427,10 @@
       "stage_ids": [
         "ST233"
       ],
-      "asked_by": "OP121"
+      "asked_by_orgs": [
+        "BO09"
+      ],
+      "asked_by": "OP119"
     },
     {
       "id": "S789",
