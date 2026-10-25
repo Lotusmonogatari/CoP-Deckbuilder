@@ -1264,7 +1264,7 @@
     {
       "id": "T27",
       "text": "When will Parliament restore long-term working visas for the service industry?",
-      "theme": "Livelihood",
+      "theme": "Visas for service jobs",
       "grades": {
         "Earnest": "W",
         "Emotional": "W",
@@ -1274,13 +1274,11 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO07",
-        "BO10",
-        "BO13",
-        "BO30"
+        "BO05",
+        "BO25"
       ],
       "displeases_boosters": [
-        "BO27"
+        "BO15"
       ],
       "asked_by": "OP106"
     },
@@ -1723,7 +1721,7 @@
     {
       "id": "T48",
       "text": "How will you fill labor gaps without leaving newcomers on their own?",
-      "theme": "Immigration",
+      "theme": "Welcoming newcomers",
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
@@ -1733,18 +1731,18 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO15",
-        "BO31"
+        "BO11",
+        "BO09"
       ],
       "displeases_boosters": [
-        "BO11"
+        "BO15"
       ],
       "asked_by": "OP105"
     },
     {
       "id": "T49",
       "text": "What rules will protect residents and workers when more people come from abroad?",
-      "theme": "Integration",
+      "theme": "Integration (no foundation)",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -1754,8 +1752,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO15",
-        "BO29"
+        "BO15"
       ],
       "displeases_boosters": [
         "BO11"
@@ -4560,7 +4557,7 @@
     {
       "id": "L35",
       "text": "Our industry can't find workers. Will you open the door wider?",
-      "theme": "Labor",
+      "theme": "Hiring workers from abroad",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -4570,10 +4567,11 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09"
+        "BO05",
+        "BO25"
       ],
       "displeases_boosters": [
-        "BO05"
+        "BO09"
       ],
       "asked_by_orgs": [
         "BO05"
@@ -4733,7 +4731,7 @@
     {
       "id": "L43",
       "text": "Will you subsidize domestic semiconductor production?",
-      "theme": "Subsidy",
+      "theme": "Chip subsidies",
       "grades": {
         "Earnest": "W",
         "Emotional": "W",
@@ -4743,11 +4741,10 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO10",
-        "BO05"
+        "BO05",
+        "BO16"
       ],
       "displeases_boosters": [
-        "BO27",
         "BO09"
       ],
       "asked_by": "OP120"
@@ -9266,7 +9263,7 @@
     },
     {
       "id": "S38",
-      "text": "Will you promise no fare increases in your term?",
+      "text": "Will you promise commuters a say before any fare rises?",
       "theme": "Commuter fares",
       "grades": {
         "Earnest": "W",
@@ -10020,7 +10017,7 @@
       "theme": "Cost",
       "grades": {
         "Earnest": "M",
-        "Emotional": "S",
+        "Emotional": "W",
         "Appeal": "W",
         "Data Driven": "S",
         "Divisive": "M",
@@ -10126,7 +10123,7 @@
     {
       "id": "S71",
       "text": "What evidence supports the claims you are making?",
-      "theme": "Evidence",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -10136,10 +10133,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST01",
@@ -10450,7 +10444,7 @@
     {
       "id": "S74",
       "text": "Is this plan realistic with the people and money available?",
-      "theme": "Feasibility",
+      "theme": "Implementation",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -10561,7 +10555,7 @@
       "theme": "Oversight",
       "grades": {
         "Earnest": "M",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "W",
         "Data Driven": "S",
         "Divisive": "M",
@@ -10776,9 +10770,9 @@
     {
       "id": "S77",
       "text": "Where does this proposal stop? What is outside it?",
-      "theme": "Scope",
+      "theme": "General evidence",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "W",
         "Appeal": "M",
         "Data Driven": "S",
@@ -10786,10 +10780,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST01",
@@ -10994,7 +10985,7 @@
       "text": "How do you define the key terms you rely on?",
       "theme": "Definitions",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "W",
         "Appeal": "W",
         "Data Driven": "S",
@@ -11101,7 +11092,7 @@
     {
       "id": "S80",
       "text": "What number tells us this has worked?",
-      "theme": "Metrics",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -11111,10 +11102,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST01",
@@ -11424,8 +11412,8 @@
       "text": "How do the agencies involved work together on this?",
       "theme": "Coordination",
       "grades": {
-        "Earnest": "W",
-        "Emotional": "W",
+        "Earnest": "M",
+        "Emotional": "M",
         "Appeal": "S",
         "Data Driven": "S",
         "Divisive": "M",
@@ -11526,7 +11514,7 @@
     {
       "id": "S84",
       "text": "What is the worst that could happen, and are you prepared for it?",
-      "theme": "Risk",
+      "theme": "Risk review",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -11536,12 +11524,11 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09",
-        "BO24"
+        "BO26",
+        "BO09"
       ],
       "displeases_boosters": [
-        "BO05",
-        "BO26"
+        "BO24"
       ],
       "stage_ids": [
         "ST01",
@@ -11739,7 +11726,7 @@
     {
       "id": "S86",
       "text": "In one sentence, what is this proposal for?",
-      "theme": "Purpose",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -11749,10 +11736,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST01",
@@ -11846,7 +11830,7 @@
     {
       "id": "S87",
       "text": "Is this within the law as it stands? Who says so?",
-      "theme": "Legality",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -11856,10 +11840,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST01",
@@ -11953,7 +11934,7 @@
     {
       "id": "S88",
       "text": "Which clause worries you most in your own draft?",
-      "theme": "Drafting",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -11963,10 +11944,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST01",
@@ -12167,7 +12145,7 @@
     {
       "id": "S90",
       "text": "Members across the table doubt you. What would change their minds?",
-      "theme": "Trust",
+      "theme": "Public trust",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -12177,12 +12155,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO03",
-        "BO28",
-        "BO19"
-      ],
-      "displeases_boosters": [
-        "BO15"
+        "BO18"
       ],
       "stage_ids": [
         "ST01",
@@ -12592,7 +12565,7 @@
     {
       "id": "S94",
       "text": "What alternatives did you reject, and why?",
-      "theme": "Feasibility",
+      "theme": "Implementation",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -12807,7 +12780,7 @@
     {
       "id": "S96",
       "text": "When should this committee review the results?",
-      "theme": "Metrics",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "W",
         "Emotional": "M",
@@ -12817,10 +12790,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST01",
@@ -12914,7 +12884,7 @@
     {
       "id": "S97",
       "text": "Is this fair to everyone it touches?",
-      "theme": "Impact",
+      "theme": "Fairness",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -13041,7 +13011,7 @@
     {
       "id": "S99",
       "text": "Which lines would see the biggest increases?",
-      "theme": "Rail operator costs",
+      "theme": "Commuter fares (2)",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -13051,12 +13021,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO05",
-        "BO23"
-      ],
-      "displeases_boosters": [
-        "BO09",
-        "BO21"
+        "BO14",
+        "BO30"
       ],
       "stage_ids": [
         "ST26"
@@ -13216,9 +13182,9 @@
       "theme": "Fare relief",
       "grades": {
         "Earnest": "W",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "S",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "W",
         "Duplicitous": "M"
       },
@@ -13362,7 +13328,7 @@
     {
       "id": "S112",
       "text": "Loggers will lose work. What do you say to them?",
-      "theme": "Logging jobs",
+      "theme": "Logging work",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -13372,11 +13338,10 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO05",
+        "BO09",
         "BO30"
       ],
       "displeases_boosters": [
-        "BO09",
         "BO27"
       ],
       "stage_ids": [
@@ -13389,7 +13354,7 @@
     {
       "id": "S113",
       "text": "Who pays for the new ranger stations?",
-      "theme": "Logging jobs",
+      "theme": "Ranger funding",
       "grades": {
         "Earnest": "W",
         "Emotional": "M",
@@ -13399,12 +13364,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO05",
-        "BO30"
-      ],
-      "displeases_boosters": [
-        "BO09",
-        "BO27"
+        "BO23"
       ],
       "stage_ids": [
         "ST33",
@@ -13543,7 +13503,7 @@
     {
       "id": "S119",
       "text": "Could small clinics close after the first few years?",
-      "theme": "Hospital funding",
+      "theme": "Hospital funding (scrutiny)",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -13554,9 +13514,6 @@
       },
       "pleases_boosters": [
         "BO23"
-      ],
-      "displeases_boosters": [
-        "BO21"
       ],
       "stage_ids": [
         "ST36",
@@ -13644,7 +13601,7 @@
     },
     {
       "id": "S123",
-      "text": "What happens to my records if the system is hacked?",
+      "text": "What happens to citizens' records if the system is hacked?",
       "theme": "Data security",
       "grades": {
         "Earnest": "S",
@@ -13669,7 +13626,7 @@
     },
     {
       "id": "S124",
-      "text": "Who will see my data, and who can sell it?",
+      "text": "Who will see people's data, and who can sell it?",
       "theme": "Data security",
       "grades": {
         "Earnest": "M",
@@ -13695,20 +13652,22 @@
     {
       "id": "S125",
       "text": "Is the card compulsory for the elderly?",
-      "theme": "Personal privacy",
+      "theme": "Data security",
       "grades": {
-        "Earnest": "W",
+        "Earnest": "M",
         "Emotional": "W",
-        "Appeal": "S",
+        "Appeal": "M",
         "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO24"
+        "BO08",
+        "BO26"
       ],
       "displeases_boosters": [
-        "BO08"
+        "BO01",
+        "BO24"
       ],
       "stage_ids": [
         "ST40"
@@ -13718,7 +13677,7 @@
     {
       "id": "S126",
       "text": "Why should I trust the state with everything in one place?",
-      "theme": "Personal privacy",
+      "theme": "Data security",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -13728,10 +13687,12 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO24"
+        "BO08",
+        "BO26"
       ],
       "displeases_boosters": [
-        "BO08"
+        "BO01",
+        "BO24"
       ],
       "stage_ids": [
         "ST40"
@@ -13741,7 +13702,7 @@
     {
       "id": "S127",
       "text": "How is independence not just a blank check?",
-      "theme": "Broadcaster funding",
+      "theme": "Broadcaster funding (scrutiny)",
       "grades": {
         "Earnest": "W",
         "Emotional": "S",
@@ -13753,9 +13714,6 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "displeases_boosters": [
-        "BO21"
-      ],
       "stage_ids": [
         "ST43"
       ],
@@ -13763,7 +13721,7 @@
     },
     {
       "id": "S128",
-      "text": "Who watches the watchers on the new board?",
+      "text": "Who sits on the new board, and who appoints them?",
       "theme": "Regional coverage",
       "grades": {
         "Earnest": "S",
@@ -13810,7 +13768,7 @@
     {
       "id": "S130",
       "text": "Why should anyone hide who pays for a campaign?",
-      "theme": "Campaign finance",
+      "theme": "Campaign finance (scrutiny)",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -13825,8 +13783,7 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO24",
-        "BO21"
+        "BO24"
       ],
       "stage_ids": [
         "ST46",
@@ -13838,7 +13795,7 @@
     {
       "id": "S131",
       "text": "Will published donor lists end back-room deals?",
-      "theme": "Campaign finance",
+      "theme": "Campaign finance (scrutiny)",
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
@@ -13853,8 +13810,7 @@
         "BO08"
       ],
       "displeases_boosters": [
-        "BO24",
-        "BO21"
+        "BO24"
       ],
       "stage_ids": [
         "ST47",
@@ -13915,7 +13871,7 @@
     {
       "id": "S134",
       "text": "Who audits the new reports, and who audits the auditor?",
-      "theme": "Member fundraising",
+      "theme": "Member fundraising (scrutiny)",
       "grades": {
         "Earnest": "W",
         "Emotional": "W",
@@ -13941,7 +13897,7 @@
     {
       "id": "S135",
       "text": "Why punish members for money their voters give freely?",
-      "theme": "Member fundraising",
+      "theme": "Member fundraising (scrutiny)",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -14021,7 +13977,7 @@
     {
       "id": "S138",
       "text": "Who makes up the lost revenue when taxes fall?",
-      "theme": "Public revenue",
+      "theme": "Tax revenue gap",
       "grades": {
         "Earnest": "W",
         "Emotional": "M",
@@ -14032,11 +13988,10 @@
       },
       "pleases_boosters": [
         "BO04",
-        "BO11",
-        "BO24"
+        "BO11"
       ],
       "displeases_boosters": [
-        "BO15"
+        "BO05"
       ],
       "stage_ids": [
         "ST50",
@@ -14047,7 +14002,7 @@
     {
       "id": "S139",
       "text": "Do big firms get a gift while small shops wait?",
-      "theme": "Public revenue",
+      "theme": "Big firms and small shops",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -14057,12 +14012,10 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO04",
-        "BO11",
-        "BO24"
+        "BO25"
       ],
       "displeases_boosters": [
-        "BO15"
+        "BO05"
       ],
       "stage_ids": [
         "ST50",
@@ -14073,7 +14026,7 @@
     {
       "id": "S140",
       "text": "Why cut taxes when schools are short of money?",
-      "theme": "Small shop fairness",
+      "theme": "Tax cut priorities",
       "grades": {
         "Earnest": "W",
         "Emotional": "M",
@@ -14083,11 +14036,10 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO05",
-        "BO25"
+        "BO04"
       ],
       "displeases_boosters": [
-        "BO04"
+        "BO05"
       ],
       "stage_ids": [
         "ST51"
@@ -14097,7 +14049,7 @@
     {
       "id": "S141",
       "text": "What stops firms from pocketing the cut and leaving anyway?",
-      "theme": "Small shop fairness",
+      "theme": "Business investment",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -14107,11 +14059,13 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
+        "BO23",
         "BO05",
         "BO25"
       ],
       "displeases_boosters": [
-        "BO04"
+        "BO21",
+        "BO09"
       ],
       "stage_ids": [
         "ST50",
@@ -14153,7 +14107,7 @@
       "theme": "Clean air",
       "grades": {
         "Earnest": "M",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "W",
         "Data Driven": "S",
         "Divisive": "M",
@@ -14178,7 +14132,7 @@
     {
       "id": "S144",
       "text": "Farmers and fishers burn fuel for a living. Who protects them?",
-      "theme": "Household energy costs",
+      "theme": "Farm and boat fuel",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -14188,11 +14142,11 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO05",
-        "BO07"
+        "BO07",
+        "BO10"
       ],
       "displeases_boosters": [
-        "BO09"
+        "BO05"
       ],
       "stage_ids": [
         "ST53",
@@ -14204,7 +14158,7 @@
     {
       "id": "S145",
       "text": "Why tax a family before the factories change?",
-      "theme": "Household energy costs",
+      "theme": "Household energy tax",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -14214,11 +14168,10 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO05",
-        "BO07"
+        "BO18"
       ],
       "displeases_boosters": [
-        "BO09"
+        "BO16"
       ],
       "stage_ids": [
         "ST53",
@@ -14229,7 +14182,7 @@
     {
       "id": "S146",
       "text": "Is this a climate measure or a tax grab?",
-      "theme": "Fuel for farms and boats",
+      "theme": "Clean air",
       "grades": {
         "Earnest": "W",
         "Emotional": "M",
@@ -14239,11 +14192,13 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
+        "BO16",
         "BO27",
         "BO11"
       ],
       "displeases_boosters": [
-        "BO05"
+        "BO13",
+        "BO30"
       ],
       "stage_ids": [
         "ST53",
@@ -14254,7 +14209,7 @@
     {
       "id": "S147",
       "text": "Will other countries do the same, or are we alone?",
-      "theme": "Fuel for farms and boats",
+      "theme": "Clean air",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -14264,11 +14219,13 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
+        "BO16",
         "BO27",
         "BO11"
       ],
       "displeases_boosters": [
-        "BO05"
+        "BO13",
+        "BO30"
       ],
       "stage_ids": [
         "ST53",
@@ -14304,7 +14261,7 @@
     {
       "id": "S149",
       "text": "How will onboard reporting catch cheats at sea?",
-      "theme": "Quota trading",
+      "theme": "Catch monitoring",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -14314,11 +14271,10 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO07",
-        "BO26"
+        "BO25"
       ],
       "displeases_boosters": [
-        "BO24"
+        "BO09"
       ],
       "stage_ids": [
         "ST57",
@@ -14328,7 +14284,7 @@
     },
     {
       "id": "S150",
-      "text": "Who owns a quota if my father's boat is sold?",
+      "text": "Who owns a quota if a family boat is sold?",
       "theme": "Catch monitoring",
       "grades": {
         "Earnest": "S",
@@ -14353,7 +14309,7 @@
     {
       "id": "S151",
       "text": "Do the new limits follow science or politics?",
-      "theme": "Catch monitoring",
+      "theme": "Catch limits",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -14363,10 +14319,11 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO25"
+        "BO07",
+        "BO26"
       ],
       "displeases_boosters": [
-        "BO09"
+        "BO24"
       ],
       "stage_ids": [
         "ST57",
@@ -14377,7 +14334,7 @@
     {
       "id": "S152",
       "text": "Why must small harbors pay for monitoring equipment?",
-      "theme": "Family boats",
+      "theme": "Catch monitoring costs",
       "grades": {
         "Earnest": "W",
         "Emotional": "S",
@@ -14387,10 +14344,10 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO26"
+        "BO25"
       ],
       "displeases_boosters": [
-        "BO25"
+        "BO24"
       ],
       "stage_ids": [
         "ST57",
@@ -14427,10 +14384,10 @@
       "text": "How many yard jobs does a guaranteed order really protect?",
       "theme": "Shipyard jobs",
       "grades": {
-        "Earnest": "S",
+        "Earnest": "M",
         "Emotional": "W",
         "Appeal": "S",
-        "Data Driven": "M",
+        "Data Driven": "S",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -14440,8 +14397,7 @@
         "BO09"
       ],
       "displeases_boosters": [
-        "BO11",
-        "BO28"
+        "BO11"
       ],
       "stage_ids": [
         "ST60",
@@ -14467,8 +14423,7 @@
         "BO09"
       ],
       "displeases_boosters": [
-        "BO11",
-        "BO28"
+        "BO11"
       ],
       "stage_ids": [
         "ST60",
@@ -14479,7 +14434,7 @@
     {
       "id": "S156",
       "text": "Why guarantee profits to defense firms with public money?",
-      "theme": "Shipbuilding subsidies",
+      "theme": "Defense contracts",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -14489,13 +14444,13 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
+        "BO23",
         "BO11",
-        "BO21",
-        "BO05"
+        "BO21"
       ],
       "displeases_boosters": [
-        "BO15",
-        "BO23"
+        "BO22",
+        "BO15"
       ],
       "stage_ids": [
         "ST60",
@@ -14506,7 +14461,7 @@
     {
       "id": "S157",
       "text": "Could the same money build clinics instead?",
-      "theme": "Shipbuilding subsidies",
+      "theme": "Defense contracts",
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
@@ -14516,13 +14471,13 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
+        "BO23",
         "BO11",
-        "BO21",
-        "BO05"
+        "BO21"
       ],
       "displeases_boosters": [
-        "BO15",
-        "BO23"
+        "BO22",
+        "BO15"
       ],
       "stage_ids": [
         "ST60",
@@ -14533,7 +14488,7 @@
     {
       "id": "S158",
       "text": "Will the yards depend on exports to stay busy?",
-      "theme": "Contract oversight",
+      "theme": "Export dependence",
       "grades": {
         "Earnest": "W",
         "Emotional": "W",
@@ -14606,7 +14561,7 @@
     {
       "id": "S161",
       "text": "Who will sit on the commission, and who picks them?",
-      "theme": "Constitutional reform",
+      "theme": "Citizen input",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -14616,9 +14571,6 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO17"
-      ],
-      "displeases_boosters": [
         "BO18"
       ],
       "stage_ids": [
@@ -14628,8 +14580,8 @@
     },
     {
       "id": "S162",
-      "text": "Could the review be used to weaken my rights?",
-      "theme": "Commission membership",
+      "text": "Could the review be used to weaken citizens' rights?",
+      "theme": "Citizen rights review",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -14639,10 +14591,7 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO23"
-      ],
-      "displeases_boosters": [
-        "BO21"
+        "BO18"
       ],
       "stage_ids": [
         "ST63"
@@ -14652,7 +14601,7 @@
     {
       "id": "S163",
       "text": "How long will the commission study before it reports?",
-      "theme": "Commission membership",
+      "theme": "Constitutional reform",
       "grades": {
         "Earnest": "W",
         "Emotional": "M",
@@ -14662,10 +14611,10 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO23"
+        "BO17"
       ],
       "displeases_boosters": [
-        "BO21"
+        "BO18"
       ],
       "stage_ids": [
         "ST63",
@@ -14676,7 +14625,7 @@
     {
       "id": "S164",
       "text": "Will ordinary citizens have any say in the findings?",
-      "theme": "Citizen rights",
+      "theme": "Citizen input",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -14686,9 +14635,6 @@
         "Duplicitous": "S"
       },
       "pleases_boosters": [
-        "BO17"
-      ],
-      "displeases_boosters": [
         "BO18"
       ],
       "stage_ids": [
@@ -14943,7 +14889,7 @@
     {
       "id": "S175",
       "text": "Will island residents share the profits?",
-      "theme": "Fishing waters",
+      "theme": "Island benefits",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -14967,7 +14913,7 @@
     {
       "id": "S176",
       "text": "Who guards the islands if tensions rise?",
-      "theme": "Island security",
+      "theme": "Island defense",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -14977,10 +14923,11 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO16"
+        "BO22",
+        "BO07"
       ],
       "displeases_boosters": [
-        "BO07"
+        "BO11"
       ],
       "stage_ids": [
         "ST69"
@@ -14990,7 +14937,7 @@
     {
       "id": "S177",
       "text": "Could this deal anger a bigger neighbor?",
-      "theme": "Island security",
+      "theme": "Island defense",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -15000,10 +14947,11 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO16"
+        "BO22",
+        "BO07"
       ],
       "displeases_boosters": [
-        "BO07"
+        "BO11"
       ],
       "stage_ids": [
         "ST69",
@@ -15117,21 +15065,21 @@
     {
       "id": "S182",
       "text": "Do we ignore human rights for cheaper goods?",
-      "theme": "Trade dependence",
+      "theme": "Human rights",
       "grades": {
-        "Earnest": "W",
-        "Emotional": "M",
+        "Earnest": "S",
+        "Emotional": "S",
         "Appeal": "W",
-        "Data Driven": "S",
-        "Divisive": "S",
-        "Duplicitous": "M"
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO26",
-        "BO25"
+        "BO09",
+        "BO26"
       ],
       "displeases_boosters": [
-        "BO09"
+        "BO05"
       ],
       "stage_ids": [
         "ST74"
@@ -15141,7 +15089,7 @@
     {
       "id": "S183",
       "text": "Who protects workers if a factory closes?",
-      "theme": "Trade dependence",
+      "theme": "Worker protection",
       "grades": {
         "Earnest": "S",
         "Emotional": "W",
@@ -15151,11 +15099,10 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO26",
-        "BO25"
+        "BO09"
       ],
       "displeases_boosters": [
-        "BO09"
+        "BO25"
       ],
       "stage_ids": [
         "ST74"
@@ -15186,7 +15133,10 @@
         "ST76",
         "ST77"
       ],
-      "asked_by": "OP109"
+      "asked_by_orgs": [
+        "BO10"
+      ],
+      "asked_by": "OP120"
     },
     {
       "id": "S185",
@@ -15194,9 +15144,9 @@
       "theme": "Young farmers",
       "grades": {
         "Earnest": "M",
-        "Emotional": "S",
+        "Emotional": "M",
         "Appeal": "S",
-        "Data Driven": "W",
+        "Data Driven": "S",
         "Divisive": "W",
         "Duplicitous": "M"
       },
@@ -15241,7 +15191,7 @@
     {
       "id": "S187",
       "text": "Does an inheritance tax cut only help the wealthy landowner?",
-      "theme": "Farm subsidies",
+      "theme": "Farm subsidies (scrutiny)",
       "grades": {
         "Earnest": "M",
         "Emotional": "W",
@@ -15252,9 +15202,6 @@
       },
       "pleases_boosters": [
         "BO23"
-      ],
-      "displeases_boosters": [
-        "BO21"
       ],
       "stage_ids": [
         "ST76",
@@ -15364,7 +15311,7 @@
     {
       "id": "S192",
       "text": "Who audits a university that controls its own budget?",
-      "theme": "University spending",
+      "theme": "University spending (scrutiny)",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -15376,9 +15323,6 @@
       "pleases_boosters": [
         "BO23"
       ],
-      "displeases_boosters": [
-        "BO21"
-      ],
       "stage_ids": [
         "ST79",
         "ST80"
@@ -15388,7 +15332,7 @@
     {
       "id": "S193",
       "text": "Why spend on laboratories while schools lack teachers?",
-      "theme": "University spending",
+      "theme": "University spending (scrutiny)",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -15399,9 +15343,6 @@
       },
       "pleases_boosters": [
         "BO23"
-      ],
-      "displeases_boosters": [
-        "BO21"
       ],
       "stage_ids": [
         "ST79",
@@ -15666,7 +15607,7 @@
         "Earnest": "S",
         "Emotional": "M",
         "Appeal": "S",
-        "Data Driven": "W",
+        "Data Driven": "M",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -15790,7 +15731,7 @@
     },
     {
       "id": "S209",
-      "text": "How long is my face stored by the police?",
+      "text": "How long is a person's face stored by the police?",
       "theme": "Public safety",
       "grades": {
         "Earnest": "M",
@@ -15974,9 +15915,9 @@
       "theme": "Local identity",
       "grades": {
         "Earnest": "S",
-        "Emotional": "W",
+        "Emotional": "S",
         "Appeal": "M",
-        "Data Driven": "S",
+        "Data Driven": "W",
         "Divisive": "M",
         "Duplicitous": "W"
       },
@@ -15994,7 +15935,7 @@
     {
       "id": "S217",
       "text": "What happens to the town hall staff?",
-      "theme": "Local identity",
+      "theme": "Town hall staff",
       "grades": {
         "Earnest": "S",
         "Emotional": "S",
@@ -16004,8 +15945,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO04",
-        "BO06"
+        "BO09"
       ],
       "stage_ids": [
         "ST94",
@@ -16017,7 +15957,7 @@
     {
       "id": "S218",
       "text": "Who speaks for a small village inside a big town?",
-      "theme": "Village representation",
+      "theme": "Village representation (2)",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -16027,10 +15967,8 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO05"
-      ],
-      "displeases_boosters": [
-        "BO04"
+        "BO04",
+        "BO06"
       ],
       "stage_ids": [
         "ST94",
@@ -16065,7 +16003,7 @@
     },
     {
       "id": "S220",
-      "text": "Would open ballots end back-room deals?",
+      "text": "Would open ballots make leadership races more honest?",
       "theme": "Internal democracy",
       "grades": {
         "Earnest": "S",
@@ -16186,7 +16124,7 @@
     },
     {
       "id": "S225",
-      "text": "What does your side give up to reach a majority?",
+      "text": "Which part of this bill is not negotiable?",
       "theme": "Compromise",
       "grades": {
         "Earnest": "S",
@@ -16256,7 +16194,7 @@
     {
       "id": "S228",
       "text": "What do you say to members who feel left out of this?",
-      "theme": "Representation",
+      "theme": "Party democracy",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -16266,12 +16204,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO03",
-        "BO28",
-        "BO29"
-      ],
-      "displeases_boosters": [
-        "BO15"
+        "BO11",
+        "BO18"
       ],
       "stage_ids": [
         "ST02"
@@ -16421,7 +16355,7 @@
     {
       "id": "S235",
       "text": "Why should smaller parties accept this?",
-      "theme": "Representation",
+      "theme": "Party democracy",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -16431,12 +16365,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO03",
-        "BO28",
-        "BO29"
-      ],
-      "displeases_boosters": [
-        "BO15"
+        "BO11",
+        "BO18"
       ],
       "stage_ids": [
         "ST02"
@@ -16565,7 +16495,7 @@
     {
       "id": "S241",
       "text": "Do you have the numbers, or only the speech?",
-      "theme": "Metrics",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -16575,10 +16505,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST02"
@@ -16611,7 +16538,7 @@
     {
       "id": "S243",
       "text": "Will you accept amendments, or is this take it or leave it?",
-      "theme": "Flexibility",
+      "theme": "Implementation",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -16621,8 +16548,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO25",
-        "BO05"
+        "BO04",
+        "BO25"
       ],
       "displeases_boosters": [
         "BO09"
@@ -16657,7 +16584,7 @@
     },
     {
       "id": "S245",
-      "text": "Who drafted this, and whom did they consult?",
+      "text": "What did the drafters change after they consulted?",
       "theme": "Consultation",
       "grades": {
         "Earnest": "S",
@@ -16679,7 +16606,7 @@
     {
       "id": "S246",
       "text": "How does this look to the member on the back bench?",
-      "theme": "Participation",
+      "theme": "Party democracy",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -16689,13 +16616,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO03",
         "BO11",
-        "BO28",
-        "BO29"
-      ],
-      "displeases_boosters": [
-        "BO15"
+        "BO18"
       ],
       "stage_ids": [
         "ST02"
@@ -16751,7 +16673,7 @@
     {
       "id": "S249",
       "text": "What is the strongest argument against your own position?",
-      "theme": "Evidence",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -16761,10 +16683,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST02"
@@ -16794,7 +16713,7 @@
     {
       "id": "S251",
       "text": "If you win this vote, what will you do with it?",
-      "theme": "Purpose",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "M",
         "Emotional": "M",
@@ -16804,10 +16723,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST02"
@@ -17354,7 +17270,7 @@
     {
       "id": "S260",
       "text": "Is the leadership listening to the backbench?",
-      "theme": "Internal democracy",
+      "theme": "Party democracy",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -17365,13 +17281,7 @@
       },
       "pleases_boosters": [
         "BO11",
-        "BO18",
-        "BO08",
-        "BO32"
-      ],
-      "displeases_boosters": [
-        "BO15",
-        "BO17"
+        "BO18"
       ],
       "stage_ids": [
         "ST03",
@@ -17579,7 +17489,7 @@
     {
       "id": "S263",
       "text": "Who speaks for the members who disagree?",
-      "theme": "Representation",
+      "theme": "Party democracy",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -17589,12 +17499,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO03",
-        "BO28",
-        "BO29"
-      ],
-      "displeases_boosters": [
-        "BO15"
+        "BO11",
+        "BO18"
       ],
       "stage_ids": [
         "ST03",
@@ -17872,7 +17778,7 @@
     {
       "id": "S267",
       "text": "Does the caucus get a say, or only a notice?",
-      "theme": "Participation",
+      "theme": "Party democracy",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -17882,13 +17788,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO03",
         "BO11",
-        "BO28",
-        "BO29"
-      ],
-      "displeases_boosters": [
-        "BO15"
+        "BO18"
       ],
       "stage_ids": [
         "ST03",
@@ -18022,7 +17923,7 @@
     {
       "id": "S269",
       "text": "Do you have the numbers to carry this room?",
-      "theme": "Metrics",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -18032,10 +17933,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST03",
@@ -18752,7 +18650,7 @@
     {
       "id": "S279",
       "text": "What is the strongest case against our own position?",
-      "theme": "Evidence",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -18762,10 +18660,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST03",
@@ -19176,7 +19071,7 @@
     {
       "id": "S287",
       "text": "Your last answer had no numbers. Give us one.",
-      "theme": "Metrics",
+      "theme": "General evidence",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -19186,10 +19081,7 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09"
-      ],
-      "displeases_boosters": [
-        "BO05"
+        "BO26"
       ],
       "stage_ids": [
         "ST06",
@@ -19208,7 +19100,7 @@
     {
       "id": "S288",
       "text": "Why should the public believe a politician on this?",
-      "theme": "Trust",
+      "theme": "Public trust",
       "grades": {
         "Earnest": "M",
         "Emotional": "S",
@@ -19218,12 +19110,7 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO03",
-        "BO28",
-        "BO19"
-      ],
-      "displeases_boosters": [
-        "BO15"
+        "BO18"
       ],
       "stage_ids": [
         "ST06",
@@ -19341,7 +19228,7 @@
     {
       "id": "S292",
       "text": "Who pays if you are wrong?",
-      "theme": "Risk",
+      "theme": "Risk review",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -19351,12 +19238,11 @@
         "Duplicitous": "W"
       },
       "pleases_boosters": [
-        "BO09",
-        "BO24"
+        "BO26",
+        "BO09"
       ],
       "displeases_boosters": [
-        "BO05",
-        "BO26"
+        "BO24"
       ],
       "stage_ids": [
         "ST06",
@@ -19886,7 +19772,7 @@
     {
       "id": "S313",
       "text": "Where does our party stand on Wilderness Protection, and will you hold that line?",
-      "theme": "Wilderness protection",
+      "theme": "Party democracy",
       "grades": {
         "Earnest": "S",
         "Emotional": "M",
@@ -19896,11 +19782,8 @@
         "Duplicitous": "M"
       },
       "pleases_boosters": [
-        "BO28",
-        "BO20"
-      ],
-      "displeases_boosters": [
-        "BO15"
+        "BO11",
+        "BO18"
       ],
       "stage_ids": [
         "ST35"
@@ -20301,8 +20184,7 @@
         "BO09"
       ],
       "displeases_boosters": [
-        "BO11",
-        "BO28"
+        "BO11"
       ],
       "stage_ids": [
         "ST62"
@@ -20327,8 +20209,7 @@
         "BO09"
       ],
       "displeases_boosters": [
-        "BO11",
-        "BO28"
+        "BO11"
       ],
       "stage_ids": [
         "ST62"
