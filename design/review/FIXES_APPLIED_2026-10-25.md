@@ -96,3 +96,14 @@ Also: the 32 transition lines for BI07, BI21, BI41 and BI45 now name the bill in
 | 6: re-cast askers | New optional column **Asked By Organization** on every question tab (exporter rule, warning when nobody in the room belongs, test). Set on 19 lobbyist, 10 town hall and 7 committee questions; five first-person lines reworded where no matching asker exists (L85, L88, L97, L103, and T-rows T20, T84, T92, T97, T111). |
 | 7: near-duplicates | 15 reworded: A14, A20, A28, A32, A33, T08, T14, T16, T22, T126, L12, L15, L19, L62, Q22. Sibling-stage duplicates (S600/S603/S608 and similar) not done. |
 | 7: vary templates | 540 new topic-specific questions replace frames 1, 3 and 7 of 180 themes. Before/after table: `REWRITTEN_QUESTIONS_2026-10-25.md`. Draft text. |
+
+## Card, shop and taste decisions (after the first merge to main)
+| Item | Decision (Cameron) | Done |
+|---|---|---|
+| C04 Return to First Principles | Lower to 6 | Self + 6; text "Gain 6; +2 more if Constituents ≥ 30%." |
+| C12 Ask Who's With You | Reveal the move after this one | Text "Draw 2. Reveal the opponent's move after this one." |
+| Guard wording (C02, C21, C22, C50, C54) | Drop "this turn" | Done |
+| SH09-SH11 | Delete if no code relies on them | **Not deleted: they ARE the XP Rhetoric Training sessions (Office screen lists every shop row with a Card Tier; tests cover them).** Their stale description was reworded instead. |
+| SH13 | Rename | "Fund Limit Increase Petition" |
+| Party Activists | Add Duplicitous | Duplicitous raised to S on 26 questions that please them; their liked styles are now Divisive and Duplicitous; test updated |
+| Names (Yumi Satou, Rika Ashikaga, Cabinet Legislation Bureau, idol fame, etc.) | Keep as written | No change |

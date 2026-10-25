@@ -192,7 +192,7 @@
         "Appeal": "M",
         "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO08",
@@ -376,7 +376,7 @@
         "Appeal": "S",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO01",
@@ -903,7 +903,7 @@
         "Appeal": "M",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "W"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO08",
@@ -1119,7 +1119,7 @@
         "Appeal": "W",
         "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "W"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO06",
@@ -1226,7 +1226,7 @@
         "Appeal": "M",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "W"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO03",
@@ -2602,7 +2602,7 @@
         "Appeal": "M",
         "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO20",
@@ -2907,7 +2907,7 @@
         "Appeal": "M",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO11",
@@ -4060,7 +4060,7 @@
         "Appeal": "M",
         "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO05",
@@ -4371,7 +4371,7 @@
         "Appeal": "W",
         "Data Driven": "S",
         "Divisive": "M",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO01",
@@ -4544,7 +4544,7 @@
         "Appeal": "M",
         "Data Driven": "S",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO17",
@@ -4850,7 +4850,7 @@
         "Appeal": "S",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO15",
@@ -5502,7 +5502,7 @@
         "Appeal": "S",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO02",
@@ -6755,7 +6755,7 @@
         "Appeal": "M",
         "Data Driven": "S",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO27",
@@ -7620,7 +7620,7 @@
         "Appeal": "S",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO02",
@@ -7701,7 +7701,7 @@
         "Appeal": "M",
         "Data Driven": "S",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO24",
@@ -7746,7 +7746,7 @@
         "Appeal": "S",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO02",
@@ -7767,7 +7767,7 @@
         "Appeal": "M",
         "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO08",
@@ -8081,7 +8081,7 @@
         "Appeal": "W",
         "Data Driven": "S",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO08",
@@ -8104,7 +8104,7 @@
         "Appeal": "M",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO03",
@@ -16124,7 +16124,7 @@
         "Appeal": "M",
         "Data Driven": "S",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO17",
@@ -16194,7 +16194,7 @@
         "Appeal": "S",
         "Data Driven": "M",
         "Divisive": "W",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO31"
@@ -16848,7 +16848,7 @@
         "Appeal": "S",
         "Data Driven": "M",
         "Divisive": "W",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO02",
@@ -18616,7 +18616,7 @@
         "Appeal": "S",
         "Data Driven": "M",
         "Divisive": "W",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO31"
@@ -26258,7 +26258,7 @@
         "Appeal": "S",
         "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO31",
@@ -26471,7 +26471,7 @@
         "Appeal": "S",
         "Data Driven": "M",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO31",
@@ -26542,7 +26542,7 @@
         "Appeal": "M",
         "Data Driven": "W",
         "Divisive": "S",
-        "Duplicitous": "M"
+        "Duplicitous": "S"
       },
       "pleases_boosters": [
         "BO31"

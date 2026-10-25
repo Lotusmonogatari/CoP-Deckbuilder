@@ -130,10 +130,10 @@ func test_the_taste_phrases_are_in_player_language() -> void:
 		"Dislikes data driven and earnest rhetoric.")
 
 
-func test_activists_like_divisive_rhetoric_and_the_committee_has_no_taste() -> void:
+func test_activists_like_divisive_and_duplicitous_rhetoric_and_the_committee_has_no_taste() -> void:
 	var suits: Array = DataDB.suits.map(func(s: Dictionary) -> String: return str(s["element"]))
 	var activists := BoosterSuitTendency.taste_of(DataDB.questions, "BO31", suits)
-	assert_eq(activists["likes"], ["Divisive"])
+	assert_eq(activists["likes"], ["Divisive", "Duplicitous"])  # Duplicitous added 2026-10-25, Cameron
 	var committee := BoosterSuitTendency.taste_of(DataDB.questions, "BO32", suits)
 	assert_true((committee["likes"] as Array).is_empty(), "balanced: no liked style")
 	assert_true((committee["dislikes"] as Array).is_empty(), "balanced: no disliked style")
