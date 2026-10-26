@@ -2497,3 +2497,10 @@ Follow-up (2026-10-23, Cameron): the Election Strength page carries no numbers a
 | **One-off** | No yearly repeat; the game has no fixed election date. |
 
 Tests: five new cases in `test_events.gd` and a real-click step in `event_test` (nothing on Monday, the address on Tuesday with the speaker's picture, played once). Real-click tests keep dated events off with the same `COP_NO_RANDOM_EVENTS` switch as random ones. The Events tab has no header notes yet, so the two new columns are described here.
+
+### Singular hours, a YY.MM.DD calendar with the weekday, and two calendar packages (2026-10-26, Cameron)
+- **"1 hour"**: every line that prints a number of hours (calendar square, end-work-week prompt, event list, "It took N hours", hosted events) now has a `.one` row in the Text tab and the code passes `count`. Test: `test_week_calendar.gd`.
+- **Calendar square**: the date reads `YY.MM.DD` (dated events show their date the same way; the Events tab "On Date" column is still typed DD.MM.YY). A third row shows the weekday in English and Japanese ("Monday 月曜日").
+- **Card back**: the "This question doesn't care how you answer it." line is gone (a medium-graded question now says nothing).
+- **Era Name calendar (CP05, 2,000円) and Ainu calendar (CP06, 2,000円)**: cosmetic packages with a new *Calendar* slot (`Calendar Style` column: `era` / `ainu`), bought and switched like any other package from Appearance and Music. Era style writes `平成30年10月1日` with the weekday in kanji only; the era changes to 令和 on 2019-05-01 (first year written 元年). The era table is `data/rules.json`'s `calendar_eras`. Ainu style writes `2018.ウレポク.01` on two levels (no weekday, since no Ainu day names were given); the twelve month names are Text rows `calendar.ainu_month_01..12`, taken in order as January to December. Icons: `tools/icons/make_calendar_icons.py` draws `calendar_era.png` and `calendar_ainu.png` in the existing icon palette. Rules: `scripts/rules/CalendarStyles.gd`; tests: `tests/test_calendar_styles.gd`.
+- **Audio plan**: `design/proposals/AUDIO_PLAN_2026-10-26.md` (nothing built yet; waiting on decisions).

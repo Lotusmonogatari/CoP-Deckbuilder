@@ -1776,6 +1776,7 @@ func _cosmetics_slot_label(slot: String) -> String:
 		CosmeticPieces.MUSIC: return Text.say("office.cosmetics_slot_music")
 		CosmeticPieces.DINING: return Text.say("office.cosmetics_slot_dining")
 		CosmeticPieces.TOUR: return Text.say("office.cosmetics_slot_tour")
+		CosmeticPieces.CALENDAR: return Text.say("office.cosmetics_slot_calendar")
 	return slot
 
 

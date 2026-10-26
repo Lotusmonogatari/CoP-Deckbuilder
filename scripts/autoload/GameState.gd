@@ -1317,14 +1317,52 @@ func calendar_config() -> Dictionary:
 	return WeekCalendar.settings(DataDB.balance)
 
 
-## "DD.MM.YY" for the Office's calendar square.
+## The Office calendar's date row, in the equipped calendar style
+## (CalendarStyles): plain "YY.MM.DD", Japanese era years, or the Ainu form.
 func calendar_date_text() -> String:
-	return WeekCalendar.date_text(calendar, calendar_config())
+	var style := calendar_style()
+	if style == CalendarStyles.GREGORIAN:
+		return WeekCalendar.date_text(calendar, calendar_config())
+	var date := WeekCalendar.civil_from_days(WeekCalendar.today_number(calendar, calendar_config()))
+	if style == CalendarStyles.AINU:
+		return CalendarStyles.ainu_text(date, [
+			Text.say("calendar.ainu_month_01"), Text.say("calendar.ainu_month_02"),
+			Text.say("calendar.ainu_month_03"), Text.say("calendar.ainu_month_04"),
+			Text.say("calendar.ainu_month_05"), Text.say("calendar.ainu_month_06"),
+			Text.say("calendar.ainu_month_07"), Text.say("calendar.ainu_month_08"),
+			Text.say("calendar.ainu_month_09"), Text.say("calendar.ainu_month_10"),
+			Text.say("calendar.ainu_month_11"), Text.say("calendar.ainu_month_12")])
+	var eras: Array = DataDB.rules.get("calendar_eras", {}).get("eras", [])
+	var parts := CalendarStyles.era_parts(date, eras,
+		str(DataDB.rules.get("calendar_eras", {}).get("first_year_word", "")))
+	if parts.is_empty():
+		return WeekCalendar.date_text(calendar, calendar_config())
+	return Text.say("calendar.era_date", parts)
+
+
+## Which calendar style is equipped: "" (plain), "era" or "ainu".
+func calendar_style() -> String:
+	var package_id := str(active_cosmetics.get(CosmeticPieces.CALENDAR, ""))
+	if package_id.is_empty():
+		return CalendarStyles.GREGORIAN
+	return CosmeticPieces.field(DataDB.get_cosmetic_package(package_id), "calendar_style")
 
 
 ## The calendar square's third row: the day of the week in English and
 ## Japanese, from the Text tab ("Tuesday 火曜日").
 func calendar_weekday_text() -> String:
+	var style := calendar_style()
+	if style == CalendarStyles.AINU:
+		return ""   # two levels only: no Ainu day names have been given
+	if style == CalendarStyles.ERA:
+		match WeekCalendar.weekday_index(calendar, calendar_config()):
+			0: return Text.say("calendar.weekday_jp_sun")
+			1: return Text.say("calendar.weekday_jp_mon")
+			2: return Text.say("calendar.weekday_jp_tue")
+			3: return Text.say("calendar.weekday_jp_wed")
+			4: return Text.say("calendar.weekday_jp_thu")
+			5: return Text.say("calendar.weekday_jp_fri")
+			_: return Text.say("calendar.weekday_jp_sat")
 	match WeekCalendar.weekday_index(calendar, calendar_config()):
 		0: return Text.say("calendar.weekday_sun")
 		1: return Text.say("calendar.weekday_mon")

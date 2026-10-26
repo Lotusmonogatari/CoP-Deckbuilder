@@ -1300,6 +1300,8 @@ SHEETS = {
             # 2026-10-23: purchasable alternatives for the dinner and the walking tour.
             ("Dining Variant", "dining_variant", "str"),
             ("Tour Variant", "tour_variant", "str"),
+            # 2026-10-26: how the Office calendar is written: "era" or "ainu".
+            ("Calendar Style", "calendar_style", "str"),
         ],
     },
     "Opponents": {

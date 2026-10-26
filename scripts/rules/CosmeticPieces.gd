@@ -18,7 +18,9 @@ const MUSIC := "music"
 ## The room dinners are hosted in, and the route walking tours take (2026-10-23).
 const DINING := "dining"
 const TOUR := "tour"
-const SLOTS := [OUTFIT, BACKGROUND, MUSIC, DINING, TOUR]
+## How the Office calendar is written (Era Name, Ainu): see CalendarStyles.
+const CALENDAR := "calendar"
+const SLOTS := [OUTFIT, BACKGROUND, MUSIC, DINING, TOUR, CALENDAR]
 
 
 ## A blank-safe string read: a JSON null cell (a genuinely blank workbook
@@ -45,6 +47,8 @@ static func has_piece(package: Dictionary, slot: String) -> bool:
 			return not field(package, "dining_variant").is_empty()
 		TOUR:
 			return not field(package, "tour_variant").is_empty()
+		CALENDAR:
+			return not field(package, "calendar_style").is_empty()
 	return false
 
 

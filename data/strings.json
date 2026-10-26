@@ -5507,5 +5507,152 @@
     "english": "Saturday 土曜日",
     "placeholders": null,
     "notes": "English and Japanese on one line (2026-10-26, Cameron)."
+  },
+  {
+    "key": "office.cosmetics_slot_calendar",
+    "where": "Cosmetics, equip slot label",
+    "english": "Calendar",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "calendar.era_date",
+    "where": "Office, calendar square, Era Name calendar",
+    "english": "{era}{year}年{month}月{day}日",
+    "placeholders": "era, year, month, day",
+    "notes": "Japanese era date. Year is 元 for an era's first year. Era names and start dates: data/rules.json calendar_eras."
+  },
+  {
+    "key": "calendar.weekday_jp_sun",
+    "where": "Office, calendar square, Era Name calendar third row",
+    "english": "日曜日",
+    "placeholders": null,
+    "notes": "Kanji only (Cameron, 2026-10-26)."
+  },
+  {
+    "key": "calendar.weekday_jp_mon",
+    "where": "Office, calendar square, Era Name calendar third row",
+    "english": "月曜日",
+    "placeholders": null,
+    "notes": "Kanji only (Cameron, 2026-10-26)."
+  },
+  {
+    "key": "calendar.weekday_jp_tue",
+    "where": "Office, calendar square, Era Name calendar third row",
+    "english": "火曜日",
+    "placeholders": null,
+    "notes": "Kanji only (Cameron, 2026-10-26)."
+  },
+  {
+    "key": "calendar.weekday_jp_wed",
+    "where": "Office, calendar square, Era Name calendar third row",
+    "english": "水曜日",
+    "placeholders": null,
+    "notes": "Kanji only (Cameron, 2026-10-26)."
+  },
+  {
+    "key": "calendar.weekday_jp_thu",
+    "where": "Office, calendar square, Era Name calendar third row",
+    "english": "木曜日",
+    "placeholders": null,
+    "notes": "Kanji only (Cameron, 2026-10-26)."
+  },
+  {
+    "key": "calendar.weekday_jp_fri",
+    "where": "Office, calendar square, Era Name calendar third row",
+    "english": "金曜日",
+    "placeholders": null,
+    "notes": "Kanji only (Cameron, 2026-10-26)."
+  },
+  {
+    "key": "calendar.weekday_jp_sat",
+    "where": "Office, calendar square, Era Name calendar third row",
+    "english": "土曜日",
+    "placeholders": null,
+    "notes": "Kanji only (Cameron, 2026-10-26)."
+  },
+  {
+    "key": "calendar.ainu_month_01",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "イノミチュㇷ゚",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_02",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "タㇱクㇽチュㇷ゚",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_03",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "トエタンネ",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_04",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "キウタチプ",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_05",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "シキウタチプ",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_06",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "モマウタチプ",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_07",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "シマウタチプ",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_08",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "モニヲラク",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_09",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "シニヲラク",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_10",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "ウレポク",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_11",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "シネアンチプ",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_month_12",
+    "where": "Office, calendar square, Ainu calendar",
+    "english": "クイカイ",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
   }
 ]

@@ -12,7 +12,8 @@
     "music_office_sound": null,
     "music_battle_sound": null,
     "dining_variant": null,
-    "tour_variant": null
+    "tour_variant": null,
+    "calendar_style": null
   },
   {
     "package_id": "CP02",
@@ -27,7 +28,8 @@
     "music_office_sound": null,
     "music_battle_sound": null,
     "dining_variant": null,
-    "tour_variant": null
+    "tour_variant": null,
+    "calendar_style": null
   },
   {
     "package_id": "CP03",
@@ -42,7 +44,8 @@
     "music_office_sound": null,
     "music_battle_sound": null,
     "dining_variant": "ALT",
-    "tour_variant": null
+    "tour_variant": null,
+    "calendar_style": null
   },
   {
     "package_id": "CP04",
@@ -57,6 +60,39 @@
     "music_office_sound": null,
     "music_battle_sound": null,
     "dining_variant": null,
-    "tour_variant": "ALT"
+    "tour_variant": "ALT",
+    "calendar_style": null
+  },
+  {
+    "package_id": "CP05",
+    "name_en": "Era Name Calendar",
+    "name_jp": "元号カレンダー",
+    "description": "Writes the Office calendar in Japanese era years, with the weekday in kanji.",
+    "icon": "calendar_era",
+    "cost_xp": null,
+    "cost_yen": 2000,
+    "outfit_variant": null,
+    "background_variant": null,
+    "music_office_sound": null,
+    "music_battle_sound": null,
+    "dining_variant": null,
+    "tour_variant": null,
+    "calendar_style": "era"
+  },
+  {
+    "package_id": "CP06",
+    "name_en": "Ainu Calendar",
+    "name_jp": "アイヌのカレンダー",
+    "description": "Writes the Office calendar with Ainu month names.",
+    "icon": "calendar_ainu",
+    "cost_xp": null,
+    "cost_yen": 2000,
+    "outfit_variant": null,
+    "background_variant": null,
+    "music_office_sound": null,
+    "music_battle_sound": null,
+    "dining_variant": null,
+    "tour_variant": null,
+    "calendar_style": "ainu"
   }
 ]

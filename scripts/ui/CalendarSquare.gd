@@ -50,4 +50,6 @@ static func refresh(square: PanelContainer) -> void:
 		return
 	(square.get_node("Rows/CalendarDate") as Label).text = GameState.calendar_date_text()
 	(square.get_node("Rows/CalendarHours") as Label).text = GameState.calendar_hours_text()
-	(square.get_node("Rows/CalendarWeekday") as Label).text = GameState.calendar_weekday_text()
+	var weekday := square.get_node("Rows/CalendarWeekday") as Label
+	weekday.text = GameState.calendar_weekday_text()
+	weekday.visible = not weekday.text.is_empty()   # the Ainu calendar has two levels only

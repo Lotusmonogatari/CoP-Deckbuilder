@@ -237,5 +237,13 @@
       "100000": "Cameron, 2026-10-04: one clean 100,000-yen tier above the 50,000 starting Funds. SH13's own 100,000-per-purchase increase then ratchets the cap up in nine more steps to the 1,000,000 ceiling.",
       "200000": "Generous early room — two tiers before the player has to think about the cap at all."
     }
+  },
+  "calendar_eras": {
+    "_": "The Japanese era names the Era Name calendar writes, in order (Cameron, 2026-10-26). A date belongs to the last era that starts on or before it. The first year of an era is written with first_year_word (元年) instead of 1. Add a row here when a new era begins.",
+    "first_year_word": "元",
+    "eras": [
+      {"name": "平成", "year": 1989, "month": 1, "day": 8},
+      {"name": "令和", "year": 2019, "month": 5, "day": 1}
+    ]
   }
 }
