@@ -121,3 +121,17 @@ Per Cameron: all text is edited in the workbook; fix grammar and agreement in co
 | UI text | 4 sentences | 4 | battle.passed (next turn), HT17 (a bill that passes becomes law), two developer-speak lines |
 
 Rewrites that tried to drop a place or proper name (Hokkaido, Sapporo, Tokyo, Russia, Mongolia, Honshu, "prefecture", Obaachan, shotengai, a year) were rejected automatically (about 450 across all passes).
+
+## Approved decisions applied (2026-10-26)
+Cameron approved the recommendations for items 1, 2, 4, 5, 6, 7, 8 and 10; items 3 and 9 stay open; the "no-decision" action list is on hold.
+
+| Item | What was done |
+|---|---|
+| 1 Organization effects | Room questions: 33 new or re-pointed themes and about 75 questions moved onto them (S112-S219 swaps, neutral questions given one related organization, data-privacy pair made consistent, Care and Welfare removed where it had no stake); L35, L43, T27, T48, T49 re-paired; S184 asker set. Visitors: 65 effects changed (unexplained +3 on dismissive B choices dropped, reversed BO31/BO32/BO08/BO23/BO11 effects fixed, filler effects removed). **Not done** because the content-budget test needs them: VQ04 D, VQ09 C, VQ15 A, VQ18 C, VQ26 D, VQ35 C, VQ43 D, VQ44 D, VQ60 D, VQ86 B, VQ88 A. **Not attempted** (need your numbers): VQ105, VQ131-134, VQ46-48 reward/penalty. |
+| 2 Spread objections | 85 themes changed. Taxpayers' Alliance displeased 525 to 260 (pleased 204); Party Headquarters 159 to 37. Side effect: the Chamber of Commerce is now displeased 381 times against 256 pleased. |
+| 4 Floor Vote leader cues | 9 cues rewritten (BI13, 15, 20, 25, 28, 29, 30, 33, 48); labels and vote numbers untouched. |
+| 5 Neutral wording | 1,503 generic Data Driven and Appeal cue lines across 360 rows rewritten to stay neutral about whether to do the plan (no stance gate built). |
+| 6 Law Effects | 24 notes corrected to match what the effects do. |
+| 7 Candidate-selection grades | S566, S567, S568, S569, S570, S572 corrected. S573, S574, S579, S582 left because they feed the Candidate Selection Committee, whose "no taste" is pinned by a test. |
+| 8 Opponent cue organizations | 257 lines re-paired to the organizations the Question Themes now use for that topic. |
+| 10 T32 | Kept as a conspiracy constituent. |
