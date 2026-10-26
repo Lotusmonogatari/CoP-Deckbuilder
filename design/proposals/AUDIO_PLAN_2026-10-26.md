@@ -76,3 +76,12 @@ Why separate buses: each slider then maps to exactly one bus, so there is no spe
 | 4 | Default levels above? | Use them as a starting point and retune by ear on a phone. |
 | 5 | Where do the sounds come from: commissioned, licensed library, or generated placeholders for now? | Placeholders now (step 2), licensed or commissioned for release. |
 | 6 | Phone vibration (haptics) with confirm and cancel taps? | Not now; add after sounds are chosen. |
+
+## 9. Decisions made (Cameron, 2026-10-26)
+| Question | Answer | What it means for the plan |
+|---|---|---|
+| Cues | One slider | Banner sound and any future voice lines share the Cues bus and slider |
+| Battle effects | Own slider | Stays separate from the interface sounds |
+| Slider count | Fewer | **Five sliders**: Master, Music, Cues, Effects, and one **Interface** slider covering click and confirm, cancel and back, and stage change. The per-sound entries in `sounds.json` keep their own small `trim` offsets so one loud file can be tamed. |
+| Sound source | Commissioned | No placeholder tones are needed; the game stays silent until the commissioned files arrive. A short brief for the composer or sound designer (formats, loudness targets, the list of moments) is the next useful document. |
+| Default levels, haptics | Not yet asked | Open |
