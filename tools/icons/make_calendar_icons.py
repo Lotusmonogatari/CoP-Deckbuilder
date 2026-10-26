@@ -1,4 +1,4 @@
-"""Draws the two calendar icons for the Era Name and Ainu calendar packages
+"""Draws the two calendar icons (both with their name on the face) for the Era Name and Ainu calendar packages
 (2026-10-26), in the palette and shape language of the existing item icons:
 256x256, transparent, flat soft colours, a cream edge and a dark offset shadow.
 
@@ -61,5 +61,5 @@ def calendar(header_text, face_text, face_size, header_size, name):
 
 # Era calendar: a blank calendar with 元号 on its face.
 calendar("", "元号", 52, 0, "calendar_era")
-# Ainu calendar: a blank face with アイヌ across the top.
-calendar("アイヌ", "", 0, 34, "calendar_ainu")
+# Ainu calendar: アイヌ on the face, the same way as the era calendar.
+calendar("", "アイヌ", 40, 0, "calendar_ainu")
