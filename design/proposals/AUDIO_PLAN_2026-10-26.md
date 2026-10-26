@@ -84,4 +84,6 @@ Why separate buses: each slider then maps to exactly one bus, so there is no spe
 | Battle effects | Own slider | Stays separate from the interface sounds |
 | Slider count | Fewer | **Five sliders**: Master, Music, Cues, Effects, and one **Interface** slider covering click and confirm, cancel and back, and stage change. The per-sound entries in `sounds.json` keep their own small `trim` offsets so one loud file can be tamed. |
 | Sound source | Commissioned | No placeholder tones are needed; the game stays silent until the commissioned files arrive. A short brief for the composer or sound designer (formats, loudness targets, the list of moments) is the next useful document. |
-| Default levels, haptics | Not yet asked | Open |
+| Starting volume | 50% | Every slider starts at 50 (kept in `data/rules.json`, not in scripts); replaces the first-draft defaults in section 3 |
+| Haptics | Not yet asked | Open |
+| Brief | Written | `design/proposals/AUDIO_BRIEF_2026-10-26.md` |
