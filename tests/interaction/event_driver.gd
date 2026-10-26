@@ -139,7 +139,7 @@ func _expect(ok: bool, what: String) -> void:
 		_failures.append(what)
 
 
-## The Prime Minister's opening address (09.10.18): nothing on Monday, then on
+## The Prime Minister's opening address (18.10.09): nothing on Monday, then on
 ## Tuesday the Office opens it by itself, with the speaker's picture and a
 ## "Scheduled for" line, and a choice plays it once.
 func _dated_address() -> void:
@@ -148,13 +148,13 @@ func _dated_address() -> void:
 	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
 	await _open_office()
 	var panel := _screen().get_node("EventPanel") as Overlay
-	_expect(not panel.visible, "nothing opens on Monday 08.10.18")
+	_expect(not panel.visible, "nothing opens on Monday 18.10.08")
 	GameState.calendar = {"week": 1, "phase": "work", "hours": 8}
 	await _open_office()
 	panel = _screen().get_node("EventPanel") as Overlay
-	_expect(panel.visible, "the address opens on Tuesday 09.10.18")
+	_expect(panel.visible, "the address opens on Tuesday 18.10.09")
 	_expect(panel.find_child("Speaker_OP10", true, false) != null, "the Prime Minister is shown")
-	_expect(_label_text(panel).contains("Scheduled for 09.10.18"), "the date is named")
+	_expect(_label_text(panel).contains("Scheduled for 18.10.09"), "the date is named")
 	DirAccess.make_dir_recursive_absolute("user://shots")
 	get_viewport().get_texture().get_image().save_png("user://shots/dated_event.png")
 	var choice := panel.find_child("EventChoice_A", true, false) as Button

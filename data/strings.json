@@ -5402,5 +5402,110 @@
     "english": "{name}, {title}",
     "placeholders": "name, title",
     "notes": "2026-10-23 dated events."
+  },
+  {
+    "key": "calendar.hours_work.one",
+    "where": "Office, calendar square, bottom row on a weekday",
+    "english": "{hours} Work Hour",
+    "placeholders": "hours",
+    "notes": "Singular for exactly one hour (2026-10-26, Cameron)."
+  },
+  {
+    "key": "calendar.hours_weekend.one",
+    "where": "Office, calendar square, bottom row on a weekend day",
+    "english": "{hours} Weekend Hour",
+    "placeholders": "hours",
+    "notes": "Singular for exactly one hour (2026-10-26, Cameron)."
+  },
+  {
+    "key": "office.end_work_week_body.one",
+    "where": "Office, confirm panel text",
+    "english": "You still have {hours} work hour this week. End the work week now?",
+    "placeholders": "hours",
+    "notes": "Singular for exactly one hour (2026-10-26, Cameron)."
+  },
+  {
+    "key": "event.row.one",
+    "where": "Events list, one event button",
+    "english": "{title} ({hours} hour, {cost}円)",
+    "placeholders": "title, hours, cost",
+    "notes": "Singular for exactly one hour (2026-10-26, Cameron)."
+  },
+  {
+    "key": "event.row_free.one",
+    "where": "Events list, one event button with no cost",
+    "english": "{title} ({hours} hour)",
+    "placeholders": "title, hours",
+    "notes": "Singular for exactly one hour (2026-10-26, Cameron)."
+  },
+  {
+    "key": "event.hours_line.one",
+    "where": "Event result, hours it took",
+    "english": "It took {hours} hour.",
+    "placeholders": "hours",
+    "notes": "Singular for exactly one hour (2026-10-26, Cameron)."
+  },
+  {
+    "key": "item.hosted_hours.one",
+    "where": "Item result, hours a gathering took",
+    "english": "It took {hours} hour.",
+    "placeholders": "hours",
+    "notes": "Singular for exactly one hour (2026-10-26, Cameron)."
+  },
+  {
+    "key": "hosted.hours_line.one",
+    "where": "Hosted event, hours it took",
+    "english": "It took {hours} hour.",
+    "placeholders": "hours",
+    "notes": "Singular for exactly one hour (2026-10-26, Cameron)."
+  },
+  {
+    "key": "calendar.weekday_sun",
+    "where": "Office, calendar square, third row",
+    "english": "Sunday 日曜日",
+    "placeholders": null,
+    "notes": "English and Japanese on one line (2026-10-26, Cameron)."
+  },
+  {
+    "key": "calendar.weekday_mon",
+    "where": "Office, calendar square, third row",
+    "english": "Monday 月曜日",
+    "placeholders": null,
+    "notes": "English and Japanese on one line (2026-10-26, Cameron)."
+  },
+  {
+    "key": "calendar.weekday_tue",
+    "where": "Office, calendar square, third row",
+    "english": "Tuesday 火曜日",
+    "placeholders": null,
+    "notes": "English and Japanese on one line (2026-10-26, Cameron)."
+  },
+  {
+    "key": "calendar.weekday_wed",
+    "where": "Office, calendar square, third row",
+    "english": "Wednesday 水曜日",
+    "placeholders": null,
+    "notes": "English and Japanese on one line (2026-10-26, Cameron)."
+  },
+  {
+    "key": "calendar.weekday_thu",
+    "where": "Office, calendar square, third row",
+    "english": "Thursday 木曜日",
+    "placeholders": null,
+    "notes": "English and Japanese on one line (2026-10-26, Cameron)."
+  },
+  {
+    "key": "calendar.weekday_fri",
+    "where": "Office, calendar square, third row",
+    "english": "Friday 金曜日",
+    "placeholders": null,
+    "notes": "English and Japanese on one line (2026-10-26, Cameron)."
+  },
+  {
+    "key": "calendar.weekday_sat",
+    "where": "Office, calendar square, third row",
+    "english": "Saturday 土曜日",
+    "placeholders": null,
+    "notes": "English and Japanese on one line (2026-10-26, Cameron)."
   }
 ]

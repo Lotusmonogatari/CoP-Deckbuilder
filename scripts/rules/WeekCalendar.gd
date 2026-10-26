@@ -177,7 +177,7 @@ static func today_number(state: Dictionary, cfg: Dictionary) -> int:
 	return start + day_offset(state, cfg)
 
 
-## "DD.MM.YY" (as the calendar square shows it) as a day number; -1 when it is
+## "DD.MM.YY" (as typed in the Events tab's On Date column) as a day number; -1 when it is
 ## not a real date. Two-digit years are 20xx.
 static func parse_date(text: String) -> int:
 	var parts := text.strip_edges().split(".")
@@ -193,8 +193,21 @@ static func parse_date(text: String) -> int:
 	return number if int(back[0]) == year and int(back[1]) == month and int(back[2]) == day else -1
 
 
-## "DD.MM.YY", for the calendar square.
+## A day number as the calendar square writes it, "YY.MM.DD".
+static func date_label(number: int) -> String:
+	var date := civil_from_days(number)
+	return "%02d.%02d.%02d" % [int(date[0]) % 100, int(date[1]), int(date[2])]
+
+
+## "YY.MM.DD", for the calendar square (Cameron, 2026-10-26). The Events tab's
+## "On Date" column is still typed DD.MM.YY (parse_date), as it always was.
 static func date_text(state: Dictionary, cfg: Dictionary) -> String:
 	var start := days_from_civil(int(cfg["start_year"]), int(cfg["start_month"]), int(cfg["start_day"]))
 	var date := civil_from_days(start + day_offset(state, cfg))
-	return "%02d.%02d.%02d" % [int(date[2]), int(date[1]), int(date[0]) % 100]
+	return "%02d.%02d.%02d" % [int(date[0]) % 100, int(date[1]), int(date[2])]
+
+
+## Today's day of the week, 0 = Sunday ... 6 = Saturday.
+static func weekday_index(state: Dictionary, cfg: Dictionary) -> int:
+	# Day 0 of days_from_civil is 1970-01-01, a Thursday.
+	return posmod(today_number(state, cfg) + 4, 7)

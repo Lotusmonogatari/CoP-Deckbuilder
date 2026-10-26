@@ -1,13 +1,14 @@
 class_name CalendarSquare
 extends RefCounted
 ## The Office's small calendar square (2026-10-23, Cameron): the date on the top
-## row (DD.MM.YY), the hours left today on the bottom row, in a gold-edged box
+## row (YY.MM.DD since 2026-10-26), the hours left today in the middle, and the
+## day of the week in English and Japanese on a third row, in a gold-edged box
 ## (the same gold as the title screen's buttons and the cue banner).
 ##
 ## Built in code like OrgChip, so the Office scene needs no edit. The square
 ## sits in the Office's unused lower space, bottom left.
 
-const SIZE := Vector2(330, 130)
+const SIZE := Vector2(330, 170)
 const EDGE_WIDTH := 4
 
 
@@ -29,12 +30,12 @@ static func make() -> PanelContainer:
 	rows.alignment = BoxContainer.ALIGNMENT_CENTER
 	rows.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	square.add_child(rows)
-	for row_name: String in ["CalendarDate", "CalendarHours"]:
+	for row_name: String in ["CalendarDate", "CalendarHours", "CalendarWeekday"]:
 		var label := Label.new()
 		label.name = row_name
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		if row_name == "CalendarHours":
+		if row_name != "CalendarDate":
 			label.theme_type_variation = &"SmallLabel"
 		rows.add_child(label)
 	# Bottom left of whatever holds it, growing up and to the right.
@@ -49,3 +50,4 @@ static func refresh(square: PanelContainer) -> void:
 		return
 	(square.get_node("Rows/CalendarDate") as Label).text = GameState.calendar_date_text()
 	(square.get_node("Rows/CalendarHours") as Label).text = GameState.calendar_hours_text()
+	(square.get_node("Rows/CalendarWeekday") as Label).text = GameState.calendar_weekday_text()

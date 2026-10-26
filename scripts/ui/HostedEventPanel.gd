@@ -141,7 +141,7 @@ func _show_result() -> void:
 	if not revealed.is_empty():
 		rows.append(UiKit.line(Text.say("item.hosted_reveal", {"name": revealed}), "SmallLabel"))
 	if int(result.get("hours", 0)) > 0:
-		rows.append(UiKit.line(Text.say("hosted.hours_line", {"hours": int(result["hours"])}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("hosted.hours_line", {"hours": int(result["hours"]), "count": int(result["hours"])}), "SmallLabel"))
 	var done := Button.new()
 	done.name = "HostedDoneButton"
 	done.custom_minimum_size = Vector2(0, 100)

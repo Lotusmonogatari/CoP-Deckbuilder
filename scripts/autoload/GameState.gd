@@ -1322,11 +1322,24 @@ func calendar_date_text() -> String:
 	return WeekCalendar.date_text(calendar, calendar_config())
 
 
-## The calendar square's bottom row: hours left today.
+## The calendar square's third row: the day of the week in English and
+## Japanese, from the Text tab ("Tuesday 火曜日").
+func calendar_weekday_text() -> String:
+	match WeekCalendar.weekday_index(calendar, calendar_config()):
+		0: return Text.say("calendar.weekday_sun")
+		1: return Text.say("calendar.weekday_mon")
+		2: return Text.say("calendar.weekday_tue")
+		3: return Text.say("calendar.weekday_wed")
+		4: return Text.say("calendar.weekday_thu")
+		5: return Text.say("calendar.weekday_fri")
+		_: return Text.say("calendar.weekday_sat")
+
+
+## The calendar square's second row: hours left today.
 func calendar_hours_text() -> String:
 	var weekend := str(calendar["phase"]) == WeekCalendar.WEEKEND
 	return Text.say("calendar.hours_weekend" if weekend else "calendar.hours_work",
-		{"hours": WeekCalendar.hours_left_today(calendar, calendar_config())})
+		{"hours": WeekCalendar.hours_left_today(calendar, calendar_config()), "count": WeekCalendar.hours_left_today(calendar, calendar_config())})
 
 
 func in_weekend() -> bool:
@@ -2802,7 +2815,7 @@ func _after_gathering(hours: int, chosen_target: String) -> String:
 	if hours <= 0:
 		return ""
 	spend_hours(hours)
-	var text := " " + Text.say("item.hosted_hours", {"hours": hours})
+	var text := " " + Text.say("item.hosted_hours", {"hours": hours, "count": hours})
 	var revealed := reveal_by_hosting(chosen_target)
 	if not revealed.is_empty():
 		text += " " + Text.say("item.hosted_reveal", {"name": revealed})

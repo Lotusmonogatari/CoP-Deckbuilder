@@ -45,7 +45,7 @@ func _screen() -> Node:
 func _check_monday() -> void:
 	var date := _screen().find_child("CalendarDate", true, false) as Label
 	var hours := _screen().find_child("CalendarHours", true, false) as Label
-	_expect(date != null and date.text == "01.10.18", "calendar date starts at 01.10.18, got %s" % (date.text if date else "none"))
+	_expect(date != null and date.text == "18.10.01", "calendar date starts at 18.10.01, got %s" % (date.text if date else "none"))
 	_expect(hours != null and hours.text == "8 Work Hours", "bottom row reads 8 Work Hours, got %s" % (hours.text if hours else "none"))
 	var button := _screen().find_child("WeekButton", true, false) as Button
 	_expect(button != null and not button.visible, "no week button on a Monday")
@@ -73,7 +73,7 @@ func _friday_flow() -> void:
 	_expect(GameState.in_weekend(), "the weekend begins")
 	_expect(GameState.time_units == 6, "the 6 unused work hours still pass, got %d" % GameState.time_units)
 	var date := _screen().find_child("CalendarDate", true, false) as Label
-	_expect(date.text == "06.10.18", "Saturday is 06.10.18, got %s" % date.text)
+	_expect(date.text == "18.10.06", "Saturday is 18.10.06, got %s" % date.text)
 	_expect((_screen().find_child("CalendarHours", true, false) as Label).text == "4 Weekend Hours", "weekend hours row")
 	_expect(GameState.level_calendar_refusal(DataDB.get_level("LV01")) == "Not a weekend level", "ordinary levels wait for the work week")
 	_expect(GameState.level_calendar_refusal(DataDB.get_level("LV83")) == "", "the Town Hall special level is weekend-OK")
@@ -85,7 +85,7 @@ func _friday_flow() -> void:
 	await get_tree().create_timer(0.3).timeout
 	var popup := _screen().get_node("NewWeekPanel") as Overlay
 	_expect(popup.visible, "a popup announces the new week")
-	_expect(_label_text(popup).contains("08.10.18"), "the popup names the new date")
+	_expect(_label_text(popup).contains("18.10.08"), "the popup names the new date")
 	_expect(_label_text(popup).contains("Party dues paid: 50,000"), "the popup reports the dues paid, got: %s" % _label_text(popup))
 	_expect(int(GameState.meta["Funds"]) == 50000, "50,000 of PC01's 100,000 went to the party, got %d" % int(GameState.meta["Funds"]))
 	_expect(not GameState.in_weekend() and int(GameState.calendar["week"]) == 1, "back to a work week")
@@ -94,7 +94,7 @@ func _friday_flow() -> void:
 	if go != null:
 		go.pressed.emit()
 	await get_tree().process_frame
-	_expect((_screen().find_child("CalendarDate", true, false) as Label).text == "08.10.18", "the square shows Monday 08.10.18")
+	_expect((_screen().find_child("CalendarDate", true, false) as Label).text == "18.10.08", "the square shows Monday 18.10.08")
 
 
 func _week_over_flow() -> void:

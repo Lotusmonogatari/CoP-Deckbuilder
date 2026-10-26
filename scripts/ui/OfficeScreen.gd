@@ -382,7 +382,7 @@ func _on_week_button_pressed() -> void:
 		_go_home()
 		return
 	var rows: Array[Control] = [UiKit.line(Text.say("office.end_work_week_body",
-		{"hours": GameState.work_hours_left()}))]
+		{"hours": GameState.work_hours_left(), "count": GameState.work_hours_left()}))]
 	_week_confirm_panel.open(Text.say("office.end_work_week_title"), rows,
 		Text.say("office.end_work_week_yes"))
 
@@ -448,9 +448,9 @@ func _show_events_list() -> void:
 	for event: Dictionary in events:
 		var cost: Variant = event.get("cost_funds")
 		var title_line := Text.say("event.row", {"title": str(event.get("title", "")),
-			"hours": EventEngine.hours_of(event), "cost": int(cost)}) if cost != null and int(cost) > 0 \
+			"hours": EventEngine.hours_of(event), "count": EventEngine.hours_of(event), "cost": int(cost)}) if cost != null and int(cost) > 0 \
 			else Text.say("event.row_free", {"title": str(event.get("title", "")),
-				"hours": EventEngine.hours_of(event)})
+				"hours": EventEngine.hours_of(event), "count": EventEngine.hours_of(event)})
 		var box := UiKit.tight_column()
 		box.add_child(UiKit.line(title_line))
 		var button := UiKit.action_button(Text.say("event.arrange"), GameState.event_refusal(event),
@@ -534,7 +534,7 @@ func _present_event(event_id: String, arrived: bool) -> void:
 	if event.get("image") != null and not str(event["image"]).is_empty():
 		rows.append(_picture_row(str(event["image"])))
 	if str(event.get("trigger", "")) == "Dated":
-		rows.append(UiKit.line(Text.say("event.heading_dated", {"date": str(event.get("on_date", ""))}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("event.heading_dated", {"date": _event_date_label(str(event.get("on_date", "")))}), "SmallLabel"))
 		var speaker := GameState.event_speaker(event_id)
 		if not speaker.is_empty():
 			var face := PlaceholderArt.new()
@@ -581,7 +581,7 @@ func _on_event_choice(event_id: String, letter: String) -> void:
 	if not revealed.is_empty():
 		rows.append(UiKit.line(Text.say("event.level_revealed", {"name": revealed}), "SmallLabel"))
 	if int(result.get("hours", 0)) > 0:
-		rows.append(UiKit.line(Text.say("event.hours_line", {"hours": int(result["hours"])}), "SmallLabel"))
+		rows.append(UiKit.line(Text.say("event.hours_line", {"hours": int(result["hours"]), "count": int(result["hours"])}), "SmallLabel"))
 	var done := Button.new()
 	done.name = "EventContinueButton"
 	done.custom_minimum_size = Vector2(0, 100)
@@ -2852,3 +2852,9 @@ func _on_start() -> void:
 		get_tree().change_scene_to_file(StageRouting.scene_for(runner.current_stage()))
 	else:
 		get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
+
+
+## An event's typed date (DD.MM.YY in the workbook) as the calendar square shows it.
+func _event_date_label(typed: String) -> String:
+	var number := WeekCalendar.parse_date(typed)
+	return typed if number < 0 else WeekCalendar.date_label(number)

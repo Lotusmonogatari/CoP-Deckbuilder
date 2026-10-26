@@ -171,7 +171,7 @@ func test_going_home_moves_to_the_next_monday_and_counts_skipped_hours() -> void
 	var result := GameState.go_home()
 	assert_eq(int(GameState.calendar["week"]), 1)
 	assert_eq(str(GameState.calendar["phase"]), WeekCalendar.WORK)
-	assert_eq(str(result["date"]), "08.10.18")
+	assert_eq(str(result["date"]), "18.10.08")
 	assert_eq(GameState.time_units, 40 + 8, "an unplayed work week and weekend still pass")
 
 

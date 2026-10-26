@@ -672,7 +672,9 @@ static func describe_question_for(multiplier: float) -> String:
 		return Text.say("card.question_strong")
 	if multiplier < 1.0:
 		return Text.say("card.question_weak")
-	return Text.say("card.question_medium")
+	# Medium says nothing (Cameron, 2026-10-26): "doesn't care how you answer"
+	# read as a preference and clashed with the other preference lines.
+	return ""
 
 
 ## Tapping a card opens the zoom view. Nothing is played until the player
