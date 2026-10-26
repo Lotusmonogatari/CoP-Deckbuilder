@@ -949,7 +949,7 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our temples are fine as they are.",
+        "cue_text": "Our temples matter, but we want to hear from the towns first.",
         "salience": 17
       },
       {
@@ -1099,7 +1099,7 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our districts see little in this.",
+        "cue_text": "We'll wait to see whether our districts gain from this.",
         "salience": 33
       },
       {
@@ -1474,7 +1474,7 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our districts see little in Brussels.",
+        "cue_text": "Cheaper trade could help, but we'll wait for our districts' view.",
         "salience": 19
       },
       {
@@ -1829,7 +1829,7 @@
         "votes_no": 8,
         "votes_abstain": 0,
         "disposition": "Opposed",
-        "cue_text": "The Tomakomai proposal might work.",
+        "cue_text": "A casino at Tomakomai will cost us more than it pays.",
         "salience": 24
       },
       {
@@ -2074,7 +2074,7 @@
         "votes_no": 1,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "Our districts work fine as drawn.",
+        "cue_text": "Fairer lines might help us, or they might not.",
         "salience": 7
       },
       {
@@ -2159,7 +2159,7 @@
         "votes_no": 16,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "This Prime Minister dictating ethics? Vote no.",
+        "cue_text": "Ethics in school, perhaps, but who writes the lessons?",
         "salience": 13
       },
       {
@@ -2224,7 +2224,7 @@
         "votes_no": 3,
         "votes_abstain": 0,
         "disposition": "Neutral",
-        "cue_text": "Every resident of our towns deserves a voice.",
+        "cue_text": "Residents deserve a say, but our towns are split on this.",
         "salience": 18
       },
       {
@@ -2449,7 +2449,7 @@
         "votes_no": 2,
         "votes_abstain": 2,
         "disposition": "Neutral",
-        "cue_text": "One card, one more thing to lose.",
+        "cue_text": "One card is convenient, but is it safe?",
         "salience": 9
       },
       {
@@ -3554,7 +3554,7 @@
         "votes_no": 4,
         "votes_abstain": 5,
         "disposition": "Neutral",
-        "cue_text": "Watching everyone makes no one safer.",
+        "cue_text": "Safer streets are welcome, but so is our privacy.",
         "salience": 8
       },
       {
