@@ -27,7 +27,7 @@ Paste this (or point the assistant at it) at the start of a new chat. The fuller
 
 | Thing | Where |
 |---|---|
-| Source of truth for all content | `design/CoP_Starter_Card_Stage_Data.xlsx` (the workbook), exported by `python3 tools/export_data.py` into `data/*.json` |
+| Source of truth for all content | `design/Game_Workbook.xlsx` (the workbook), exported by `python3 tools/export_data.py` into `data/*.json` |
 | Rules (no UI) | `scripts/rules/` (BattleEngine, FloorVoteEngine, MetaRules, Ledger, ...) |
 | Screens | `scripts/ui/` and `scenes/` |
 | Game state, data, saves, layout, audio | autoloads in `scripts/autoload/` (GameState, DataDB, SaveManager, Layout, Audio, Text) |

@@ -13,7 +13,7 @@ slots = sys.argv[1]
 comps = json.load(open('data/bill_components.json'))
 boosters = json.load(open('data/boosters.json')); boosters = boosters if isinstance(boosters, list) else list(boosters.values())
 org = {b['booster_id']: b['name_en'] for b in boosters}
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 
 def nxt(tab, prefix, col='A'):
     rows = w.rows(tab)

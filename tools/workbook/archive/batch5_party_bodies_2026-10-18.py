@@ -6,7 +6,7 @@ import json, sys
 sys.path.insert(0, 'tools/workbook')
 from wbx import WB, add_sheet
 
-PATH = 'design/CoP_Starter_Card_Stage_Data.xlsx'
+PATH = 'design/Game_Workbook.xlsx'
 stages = json.load(open('data/stages.json'))
 rooms = [s['stage_id'] for s in stages if 'Town Hall' in s['name_en'] or 'Caucus' in s['name_en']]
 

@@ -169,7 +169,7 @@ fam = {}
 for s in stages:
     b = s.get('background_id') or s['stage_id']
     fam.setdefault(b, []).append(s['stage_id'])
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 rows = w.rows('Player Cues')
 nid = max(int(v['A'][2:]) for v in rows.values() if (v.get('A') or '').startswith('PL') and v['A'][2:].isdigit()) + 1
 last = max(rows)

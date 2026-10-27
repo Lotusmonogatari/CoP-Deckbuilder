@@ -6,7 +6,7 @@ import sys
 sys.path.insert(0, "tools/workbook")
 from wbx import WB, add_sheet, replace_sheet_data, n2col, col2n
 
-PATH = "design/CoP_Starter_Card_Stage_Data.xlsx"
+PATH = "design/Game_Workbook.xlsx"
 
 def num(v):
     try:

@@ -33,7 +33,7 @@ def five(frames, bid, k):
         if f not in chosen:
             chosen.append(f)
     return chosen
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 n_p = n_o = 0
 for r, v in w.rows('Player Cues').items():
     bid = v.get('J'); st = v.get('K')

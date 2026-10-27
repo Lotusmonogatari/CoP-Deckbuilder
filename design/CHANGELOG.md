@@ -690,7 +690,7 @@ before, it correctly said "argued away from Ayala Taiyounokage" (who
 was actually beaten) — the exact bug, reproduced and confirmed fixed.
 
 **A lesson worth keeping for later workbook edits**: `openpyxl` is safe
-for *reading* `design/CoP_Starter_Card_Stage_Data.xlsx`, but a direct
+for *reading* `design/Game_Workbook.xlsx`, but a direct
 `load_workbook()` → edit → `save()` round-trip silently corrupted the
 Sanban tab's start/min/max values this session — caught only by
 `export_data.py`'s own validation (3 errors), not by a before/after diff
@@ -1802,7 +1802,7 @@ Cameron supplied the six parties' values on 34 dimensions (civil liberties throu
 
 ### Batch 1 adopted into the master workbook (2026-10-13, Cameron)
 
-Cameron: "Adopt batch one." `design/drafts/CoP_Batch1_Draft_2026-10-13.xlsx` (built on the master as it stood after the Special Committee/Cabinet seating change) is now `design/CoP_Starter_Card_Stage_Data.xlsx`, re-exported (31 stages, 62 levels, 125 opponents; export clean). The README tab's counts were refreshed (31 stages, 62 levels, 212 themes, 33 Media Ambush questions). Verified after adoption: GUT 1044/1044, `tools/verify.sh` green, `tools/content_depth.py` shows 9 measures short, all of them people (8 new characters would fix it). The draft file stays in `design/drafts/` as the record of the batch. Next, per Cameron: bills first (they inform what makes each stage unique), toward 50 bills and 100 stages.
+Cameron: "Adopt batch one." `design/drafts/CoP_Batch1_Draft_2026-10-13.xlsx` (built on the master as it stood after the Special Committee/Cabinet seating change) is now `design/Game_Workbook.xlsx`, re-exported (31 stages, 62 levels, 125 opponents; export clean). The README tab's counts were refreshed (31 stages, 62 levels, 212 themes, 33 Media Ambush questions). Verified after adoption: GUT 1044/1044, `tools/verify.sh` green, `tools/content_depth.py` shows 9 measures short, all of them people (8 new characters would fix it). The draft file stays in `design/drafts/` as the record of the batch. Next, per Cameron: bills first (they inform what makes each stage unique), toward 50 bills and 100 stages.
 
 ### Batch 2 draft: twenty new bills, BI31-BI50 (2026-10-13, Cameron)
 
@@ -2290,7 +2290,7 @@ In a bill level the card cue pool for each style and lean grew from 5 to **15 li
 
 ### Repo cleanup (2026-10-20, Cameron)
 
-`CLAUDE.md` went from 350 KB to about 73 KB: the dated build notes moved here, and its section 14 (working notes) and 15 (change log index) were added. 22 unused Text-tab rows were removed (the eight `office.trigger.*` rows look unused to the exporter but are read through a built-up key in `OfficeScreen`, so they stay). Five unused functions were removed (`StanceLines.names_of`, `RequestLines.parts_line`, `Audio.set_volume`, `Audio.set_muted`, `GameState.buy_card`; `Ledger.card_refusal` stays, it is tested). `design/CoP_Starter_Card_Stage_Data.backup.xlsx` and `design/CoP_Cards.xlsx` were deleted (git history has them); the 60 MB of raw balance-audit logs became `design/bench/balance_logs_2026-10.tar.gz`; the three adopted batch workbooks moved to `design/archive/`. Two tests that left orphan nodes now wait for queued frees (`test_battle_events.gd`, `test_hand_presenter.gd`), and four float/int comparisons in `test_real_battle.gd` were made explicit.
+`CLAUDE.md` went from 350 KB to about 73 KB: the dated build notes moved here, and its section 14 (working notes) and 15 (change log index) were added. 22 unused Text-tab rows were removed (the eight `office.trigger.*` rows look unused to the exporter but are read through a built-up key in `OfficeScreen`, so they stay). Five unused functions were removed (`StanceLines.names_of`, `RequestLines.parts_line`, `Audio.set_volume`, `Audio.set_muted`, `GameState.buy_card`; `Ledger.card_refusal` stays, it is tested). `design/Game_Workbook.backup.xlsx` and `design/CoP_Cards.xlsx` were deleted (git history has them); the 60 MB of raw balance-audit logs became `design/bench/balance_logs_2026-10.tar.gz`; the three adopted batch workbooks moved to `design/archive/`. Two tests that left orphan nodes now wait for queued frees (`test_battle_events.gd`, `test_hand_presenter.gd`), and four float/int comparisons in `test_real_battle.gd` were made explicit.
 
 ### Level Intro: a larger speaker portrait (2026-10-20, Cameron)
 
@@ -2531,3 +2531,6 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 ## Excel repair message on opening the workbook (2026-10-27, Cameron)
 - Excel reported "Removed Records: Shared formula from sheet20.xml" and "Formula from calcChain.xml". Cause: on the Press Questions tab the "Strong total" row (row 36) had a shared formula whose range was written as D22:I22 instead of D36:I36, and the calcChain cache still listed formula cells (in four question tabs and Vote Tally & Swing) that had since become plain text. Both are old, not from a recent edit.
 - Fixed: the range is corrected and calcChain.xml is removed (Excel rebuilds it silently). `WB.save()` now drops it on every save, and `tools/workbook/check_formulas.py`, run by `tools/verify.sh`, fails if either problem comes back. No data changed.
+
+## The workbook is now Game_Workbook.xlsx (2026-10-27, Cameron)
+- `design/CoP_Starter_Card_Stage_Data.xlsx` is renamed `design/Game_Workbook.xlsx`; every reference in the exporter, the workbook tools, the docs and the archived batch scripts now uses the new name. Older entries in this log that mention the old name mean this file. Data and content are unchanged.

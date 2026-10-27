@@ -4,7 +4,7 @@ from wbx import *
 from content import *
 import openpyxl
 
-MASTER='/home/user/CoP-Deckbuilder/design/CoP_Starter_Card_Stage_Data.xlsx'
+MASTER='/home/user/CoP-Deckbuilder/design/Game_Workbook.xlsx'
 OUT='/tmp/claude-0/b1/draft.xlsx'
 shutil.copy(MASTER,OUT)
 w=WB(OUT)

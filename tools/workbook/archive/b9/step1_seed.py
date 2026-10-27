@@ -10,7 +10,7 @@ from wbx import WB, add_sheet, n2col
 from add_notes import add_notes
 import patron_plan as P
 
-PATH = "design/CoP_Starter_Card_Stage_Data.xlsx"
+PATH = "design/Game_Workbook.xlsx"
 SEED = ["BO05", "BO07", "BO10", "BO24", "BO30"]
 PIDS = {"Butsutou": "PT01", "Yezo Heritage Party": "PT02", "Frontier Party": "PT03",
         "Five Point Independents": "PT04", "Keizaijiyuutou": "PT05", "Country Initiative": "PT06"}

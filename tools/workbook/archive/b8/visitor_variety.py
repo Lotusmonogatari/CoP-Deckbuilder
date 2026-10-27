@@ -272,7 +272,7 @@ Q = {
 ],
 }
 EFF = {'F': "{W} +3; {F} +1; {R} -1", 'R': "{R} +3; {W} -2", 'M': "{W} +1; {R} -1", 'X': "{W} -3; {F} -1"}
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 qrows = w.rows('Visitor Questions')
 qtop = max(int(v['A'][2:]) for v in qrows.values() if (v.get('A') or '').startswith('VQ') and v['A'][2:].isdigit())
 for vid, qs in Q.items():

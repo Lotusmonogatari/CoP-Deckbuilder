@@ -5,7 +5,7 @@ import re, sys
 sys.path.insert(0, 'tools/workbook')
 from wbx import WB
 
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 s = w.rows('Stages')
 cache = []
 for row in sorted(s):

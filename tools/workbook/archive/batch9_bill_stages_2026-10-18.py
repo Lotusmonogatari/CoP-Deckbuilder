@@ -9,7 +9,7 @@ sys.path.insert(0, 'tools/workbook')
 from wbx import WB, n2col, col2n
 import openpyxl
 
-PATH = 'design/CoP_Starter_Card_Stage_Data.xlsx'
+PATH = 'design/Game_Workbook.xlsx'
 tmp = PATH + '.read.xlsx'
 shutil.copy(PATH, tmp)
 ox = openpyxl.load_workbook(tmp, read_only=True, data_only=True)

@@ -9,7 +9,7 @@ import re
 import sys
 import zipfile
 
-PATH = "design/CoP_Starter_Card_Stage_Data.xlsx"
+PATH = "design/Game_Workbook.xlsx"
 
 
 def col2n(col):

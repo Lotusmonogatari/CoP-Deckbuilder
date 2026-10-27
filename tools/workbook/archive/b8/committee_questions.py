@@ -94,7 +94,7 @@ fam = {}
 for s in stages:
     b = s.get('background_id') or s['stage_id']
     fam.setdefault(b, []).append(s['stage_id'])
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 rows = w.rows('Stage Questions'); last = max(rows)
 nid = max(int(v['A'][1:]) for v in rows.values() if (v.get('A') or '').startswith('S') and v['A'][1:].isdigit()) + 1
 themes = {v.get('A') for v in w.rows('Question Themes').values()}

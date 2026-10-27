@@ -11,7 +11,7 @@ import json, sys
 sys.path.insert(0, 'tools/workbook')
 from wbx import WB
 
-PATH = 'design/CoP_Starter_Card_Stage_Data.xlsx'
+PATH = 'design/Game_Workbook.xlsx'
 SUITS = ['Earnest', 'Emotional', 'Appeal', 'Data Driven', 'Divisive', 'Duplicitous']
 PARTY_TIER = {'BO01', 'BO02'}
 

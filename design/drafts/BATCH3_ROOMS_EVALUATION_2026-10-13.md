@@ -1,6 +1,6 @@
 # Batch 3 draft: rooms and levels for the twenty new bills (2026-10-13)
 
-Draft workbook: `design/drafts/CoP_Batch3_Rooms_Draft_2026-10-13.xlsx` (the master after Batch 2 plus this batch). **The master workbook is unchanged.** Everything is a draft for Cameron to rewrite. To adopt: copy it over `design/CoP_Starter_Card_Stage_Data.xlsx` and run `python3 tools/export_data.py`.
+Draft workbook: `design/drafts/CoP_Batch3_Rooms_Draft_2026-10-13.xlsx` (the master after Batch 2 plus this batch). **The master workbook is unchanged.** Everything is a draft for Cameron to rewrite. To adopt: copy it over `design/Game_Workbook.xlsx` and run `python3 tools/export_data.py`.
 
 ## Executive summary
 

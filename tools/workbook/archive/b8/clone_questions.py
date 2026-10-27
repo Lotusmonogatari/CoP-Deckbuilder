@@ -90,7 +90,7 @@ for l in levels:
         if s and s.startswith('ST') and 121 <= int(s[2:]) <= 259:
             room_bill[s] = bill
 
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 rows = w.rows('Stage Questions')
 nid = max(int(v['A'][1:]) for v in rows.values() if (v.get('A') or '').startswith('S') and v['A'][1:].isdigit()) + 1
 last = max(rows)

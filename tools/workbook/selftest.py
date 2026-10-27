@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from wbx import WB
 
-SRC = ROOT / "design" / "CoP_Starter_Card_Stage_Data.xlsx"
+SRC = ROOT / "design" / "Game_Workbook.xlsx"
 
 with tempfile.TemporaryDirectory() as tmp:
     copy = Path(tmp) / "copy.xlsx"

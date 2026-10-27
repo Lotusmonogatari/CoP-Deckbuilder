@@ -14,7 +14,7 @@ def fill(frame, bid):
     f = dict(facets[bid]); f['b'] = short(bid)
     s = frame.format(**f)
     return s[0].upper() + s[1:]
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 rows = w.rows('Player Cues')
 # 1. the lines that read the same under both leans
 replaced = 0

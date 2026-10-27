@@ -4,7 +4,7 @@ Turns the design workbook into the JSON files the game reads.
 
     python3 tools/export_data.py
 
-Reads  design/CoP_Starter_Card_Stage_Data.xlsx
+Reads  design/Game_Workbook.xlsx
 Writes data/*.json
 Prints a validation report, and exits non-zero if there are errors.
 
@@ -42,7 +42,7 @@ except ImportError:
     )
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-WORKBOOK = REPO_ROOT / "design" / "CoP_Starter_Card_Stage_Data.xlsx"
+WORKBOOK = REPO_ROOT / "design" / "Game_Workbook.xlsx"
 DATA_DIR = REPO_ROOT / "data"
 
 # Cells that mean "no value here". The workbook uses a few different spellings
