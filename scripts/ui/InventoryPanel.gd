@@ -62,16 +62,25 @@ func inventory_rows() -> Array[Control]:
 	if held.is_empty():
 		rows.append(UiKit.line(Text.say("inventory.empty")))
 	else:
-		var grid := GridContainer.new()
-		grid.name = "Items"
-		# Two across at Large text: a long word (COMMISSION) does not fit a
-		# three-across tile there, and tiles need to be taller for wrapped names.
-		grid.columns = 2 if Layout.text_size_setting == TextScale.LARGE else 3
-		grid.add_theme_constant_override("h_separation", 16)
-		grid.add_theme_constant_override("v_separation", 16)
+		# One sideways-scrolling row, so many kinds of item never push the
+		# Marketplace down the screen. Tiles show the icon and quantity only;
+		# the name is in the pop-up a tap opens.
+		var scroll := ScrollContainer.new()
+		scroll.name = "ItemsScroll"
+		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+		scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		# A real width: the panel centers its rows at their minimum size, so 0 here
+		# would collapse the strip to nothing.
+		scroll.custom_minimum_size = Vector2(760, 260)
+		scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var strip := HBoxContainer.new()
+		strip.name = "Items"
+		strip.add_theme_constant_override("separation", 16)
 		for item_id: String in held:
-			grid.add_child(_item_button(item_id))
-		rows.append(grid)
+			strip.add_child(_item_button(item_id))
+		scroll.add_child(strip)
+		DragScroll.attach(scroll, false)
+		rows.append(scroll)
 
 	return rows
 
@@ -229,11 +238,8 @@ func _item_button(item_id: String) -> Button:
 	button.add_theme_constant_override("icon_max_width", 200)
 	button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
-	button.custom_minimum_size = Vector2(300, 440 if Layout.text_size_setting == TextScale.LARGE else 300)
-	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	button.text = Text.say("inventory.entry", {
-		"name": item.get("name", item_id), "count": GameState.item_count(item_id)})
+	button.custom_minimum_size = Vector2(240, 240)
+	button.text = Text.say("inventory.entry", {"count": GameState.item_count(item_id)})
 	button.pressed.connect(show_item.bind(item_id))
 	return button
 

@@ -303,7 +303,7 @@
   "intro.title": "Coliseum of Parliament",
   "inventory.button": "Inventory",
   "inventory.empty": "Nothing here yet. Supplies you buy or are given will appear here.",
-  "inventory.entry": "{name} ×{count}",
+  "inventory.entry": "×{count}",
   "inventory.title": "Inventory",
   "item.choose_heading": "{name}  —  choose a group",
   "item.close": "Close",
