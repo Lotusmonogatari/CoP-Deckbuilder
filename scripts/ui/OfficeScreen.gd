@@ -1786,7 +1786,9 @@ func _cosmetics_slot_label(slot: String) -> String:
 ## to a generic refusal string (UiKit.action_button's usual "greyed-out
 ## reason" shape would otherwise replace "Neon Ambition" with "Equipped").
 func _cosmetics_slot_row(slot: String) -> Control:
-	var row := HBoxContainer.new()
+	# A column, not a row: with many owned packages (or long names) a row
+	# squeezed every button to a sliver that wrapped one letter per line.
+	var row := VBoxContainer.new()
 	row.name = "CosmeticSlot_" + slot
 	row.add_theme_constant_override("separation", 12)
 
