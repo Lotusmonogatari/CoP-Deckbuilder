@@ -37,3 +37,8 @@ func test_every_balance_key_the_scripts_read_is_in_the_workbook() -> void:
 func test_every_rules_key_the_scripts_read_is_in_the_workbook() -> void:
 	var missing := _missing("DataDB\\.rules\\.get\\(\"([A-Za-z_0-9]+)\"", DataDB.rules)
 	assert_eq(missing, [] as Array[String], "rules keys with no row")
+
+
+func test_every_lever_a_rules_file_asks_levers_for_is_in_the_workbook() -> void:
+	var missing := _missing("Levers\\.(?:num|whole)\\(\"([A-Za-z_0-9]+)\"", DataDB.balance)
+	assert_eq(missing, [] as Array[String], "Levers keys with no Balance row")

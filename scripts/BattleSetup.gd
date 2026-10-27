@@ -533,43 +533,29 @@ static func _question_for_visitor(visitor_id: String) -> Dictionary:
 ## asked on the CueBanner itself, as its own default content
 ## (_announce_question()), rather than swapping the opponent row for a
 ## reporter the way a press conference does.
-const QUESTION_POOL_BY_STAGE := {
-	"ST04": "press_conference",
-	"ST05": "town_hall",
-	"ST19": "media_ambush",
-	"ST20": "lobbyist_meeting",
-	"ST21": "policy_study",
-}
-
-## The fallback for _reputation_affects_start() below, for a stage row with
-## no "reputation_affects_start" column of its own — every canon row today.
-const REPUTATION_START_STAGE_IDS := ["ST04", "ST06"]
-
 
 ## Which of data/questions.json's five pools a stage draws from: its own
-## "question_pool" column (a proposed stages.json addition) if set, else
-## QUESTION_POOL_BY_STAGE's fallback for a canon row with neither. Each
+## "question_pool" column (every stages.json row carries it, blank for none). Each
 ## field is read past the <null> trap (BarModel.for_stage()'s own comment)
 ## separately, empty treated as absent same as there.
 static func _question_pool_name(stage: Dictionary, stage_id: String) -> String:
 	var pool_value: Variant = stage.get("question_pool")
 	if pool_value != null and not str(pool_value).is_empty():
 		return str(pool_value).to_lower()
-	return str(QUESTION_POOL_BY_STAGE.get(stage_id, ""))
+	return ""
 
 
 ## Whether Reputation nudges this stage's opening bar. Checks the stage's own
 ## "reputation_affects_start" (Yes/No, from a proposed stages.json column,
 ## read past the <null> trap — BarModel.for_stage()'s own comment — then
-## trimmed, unlike that one) first; REPUTATION_START_STAGE_IDS is the
-## fallback for a row with no column at all, which is every canon row today.
+## trimmed, unlike that one); a blank or absent cell means No.
 static func _reputation_affects_start(stage: Dictionary, stage_id: String) -> bool:
 	var raw: Variant = stage.get("reputation_affects_start")
 	if raw != null:
 		var declared := str(raw).strip_edges()
 		if not declared.is_empty():
 			return declared.to_lower() == "yes"
-	return REPUTATION_START_STAGE_IDS.has(stage_id)
+	return false
 
 
 ## Builds a battle from one stage — a canon stages.json row, whether it

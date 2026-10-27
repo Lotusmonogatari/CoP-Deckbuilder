@@ -29,10 +29,16 @@ extends RefCounted
 ## growing set, and the deck is a fixed size, so taking a new card in means
 ## leaving one out. That trade is the whole point of the deck screen.
 
-## The Staff roles, and the order the Recruitment shop lists them in — the
-## same order data/staff.json's own SF01-21 rows come in (see the workbook's
-## Staff tab), not a rule this file invented.
-const STAFF_ROLES := ["Policy Research Assistant", "Media Spokesperson", "District Representative"]
+## The Staff roles, in the order they first appear in the workbook's Staff
+## tab (the order the Recruitment shop lists them). `staff_rows` is
+## data/staff.json; a new role added to the tab needs no code.
+static func staff_roles(staff_rows: Array) -> Array[String]:
+	var roles: Array[String] = []
+	for row: Variant in staff_rows:
+		var role := str((row as Dictionary).get("role", "")) if row is Dictionary else ""
+		if not role.is_empty() and not roles.has(role):
+			roles.append(role)
+	return roles
 
 ## Why a purchase was refused, in words a screen can show as-is.
 const AFFORDABLE := ""
@@ -361,10 +367,9 @@ static func can_fire_staff(candidate: Dictionary, funds: int,
 ## _tier_0, _tier_1, _tier_2 — see data/levels.json).
 const LEVEL_UNLOCK_MAX_TIER := 2
 
-## The Staff role whose tier decides a level's unlock price — see
-## data/levels.json's own unlock_cost_vacant/_tier_0/_1/_2 columns and
-## Ledger.STAFF_ROLES.
-const LEVEL_UNLOCK_ROLE := "Policy Research Assistant"
+## The Staff role whose tier decides a level's unlock price is the first role
+## in the Staff tab (the Policy Research Assistant today) — see
+## data/levels.json's own unlock_cost_vacant/_tier_0/_1/_2 columns.
 
 
 ## What unlocking a level costs right now, in XP, given who (if anyone) is
@@ -374,7 +379,7 @@ const LEVEL_UNLOCK_ROLE := "Policy Research Assistant"
 ## unlock_cost_tier_N matches their CURRENT tier, clamped to the highest tier
 ## the workbook prices (a PRA tier above that just keeps the cheapest price).
 static func level_unlock_cost(level: Dictionary, staff_hired: Dictionary) -> int:
-	var hired: Dictionary = staff_hired.get(LEVEL_UNLOCK_ROLE, {})
+	var hired: Dictionary = staff_hired.get(Levers.unlock_role, {})
 	if hired.is_empty():
 		return int(level.get("unlock_cost_vacant", 0))
 	var tier: int = clampi(int(hired.get("tier", 0)), 0, LEVEL_UNLOCK_MAX_TIER)

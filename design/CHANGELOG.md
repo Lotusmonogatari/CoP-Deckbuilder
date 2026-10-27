@@ -2508,3 +2508,9 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 ## Marketplace item tiles show the quantity only, in a sideways row (2026-10-27, Cameron)
 - A held item's tile in the Marketplace and inventory now shows its icon and "×count" only; the name is in the pop-up a tap opens (Text row `inventory.entry`, now just the count).
 - The tiles sit in one row that scrolls sideways (`InventoryPanel.inventory_rows()`), so many kinds of item no longer lengthen the panel. The interaction driver now scrolls every ancestor scroller into view before clicking.
+
+## Hard-coded numbers and lists moved to the workbook (2026-10-27, Cameron)
+- Three Balance levers were misspelt in code (draft-bill costs, supermajority share) so workbook edits were ignored; fixed, and `tests/test_balance_keys.gd` now fails on any key the scripts read that the workbook lacks (Balance, Rules and `Levers`).
+- 29 new Balance rows: win-over odds and Undecided cost, press reputation bonus, patron visit deltas, Flagship discount after a failed Favor, tendency cutoffs, ally neutral band, hosted guest share, audience scale cap. Rules files read them through `Levers` (filled by DataDB), with no fallback number.
+- Staff roles come from the Staff tab, suit names from `suits.json`, card frames per suit from `data/art.json`. ST05 gained its Question Pool cell; the BattleSetup fallback tables are gone.
+- Audit: `design/review/HARDCODED_AUDIT_2026-10-27.md`.

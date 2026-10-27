@@ -23,9 +23,8 @@ const LAPSED := "lapsed"
 const FAVOR := "Favor"
 const FLAGSHIP := "Flagship"
 
-## A failed Favor lowers that organization's Flagship threshold by this much
-## (the attempt is remembered). A lever in the workbook would be a later step.
-const FLAGSHIP_DISCOUNT_AFTER_FAILED_FAVOR := 5
+## A failed Favor lowers that organization's Flagship threshold by the Balance
+## lever "Patron: Flagship discount after failed Favor" (the attempt is remembered).
 
 
 ## The lowest default Yes a bill of this kind may start with. A Flagship has its
@@ -63,7 +62,7 @@ static func due(patron_bills: Array, standing: Dictionary, statuses: Dictionary,
 			if favor_status == "" or favor_status == WAITING or favor_status == OPEN or favor_status == ACCEPTED:
 				continue
 			if favor_status == FAILED:
-				needed -= FLAGSHIP_DISCOUNT_AFTER_FAILED_FAVOR
+				needed -= Levers.whole("patron_flagship_discount_after_failed_favor")
 		if int(standing.get(org, 0)) >= needed:
 			out.append(id)
 	out.sort()

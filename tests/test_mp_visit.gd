@@ -96,7 +96,7 @@ func test_questions_are_built_from_the_real_pools() -> void:
 
 func test_the_real_pools_are_big_enough_for_the_three_times_rule() -> void:
 	assert_gte(DataDB.visit_questions.size(), 3 * int(DataDB.balance["mp_visit_questions"]))
-	for style: String in MpVisit.STYLES:
+	for style: String in MpVisit.styles():
 		var count := 0
 		for row: Dictionary in DataDB.visit_answers:
 			if row["style"] == style:

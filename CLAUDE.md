@@ -677,3 +677,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Dated events: a scripted event on a calendar date (2026-10-23, Cameron)
 - Singular hours, a YY.MM.DD calendar with the weekday, and two calendar packages (2026-10-26, Cameron)
 - Marketplace item tiles show the quantity only, in a sideways row (2026-10-27, Cameron)
+- Hard-coded numbers and lists moved to the workbook (2026-10-27, Cameron)

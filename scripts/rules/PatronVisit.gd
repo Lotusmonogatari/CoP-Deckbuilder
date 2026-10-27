@@ -11,9 +11,9 @@ const CHOICES := ["a", "b", "c", "d"]
 
 ## Standing moved by each choice for the patron, and for the component's
 ## first friend and first rival. A friend-pleaser, a hedge, a snub, a refusal.
-const PATRON_DELTAS := {"a": 4, "b": 2, "c": -2, "d": -4}
-const FRIEND_DELTAS := {"a": 1, "b": 0, "c": 0, "d": 0}
-const RIVAL_DELTAS := {"a": -2, "b": 1, "c": 2, "d": 0}
+## The numbers are Balance-tab levers ("Patron visit: Patron A" and so on).
+static func delta(who: String, key: String) -> int:
+	return Levers.whole("patron_visit_%s_%s" % [who, key])
 
 
 ## {"visitor": {...}, "visitors": [two entries, one question each]} for the
@@ -58,11 +58,11 @@ static func _question(org_id: String, component: Dictionary, index: int) -> Dict
 		question["choice_%s" % key] = str(words[key]["choice"])
 		question["response_%s" % key] = str(words[key]["response"])
 		question["reaction_%s" % key] = str(words[key]["reaction"])
-		var effects: Array = [{"target": org_id, "delta": int(PATRON_DELTAS[key])}]
-		if not friend.is_empty() and int(FRIEND_DELTAS[key]) != 0:
-			effects.append({"target": friend, "delta": int(FRIEND_DELTAS[key])})
-		if not rival.is_empty() and int(RIVAL_DELTAS[key]) != 0:
-			effects.append({"target": rival, "delta": int(RIVAL_DELTAS[key])})
+		var effects: Array = [{"target": org_id, "delta": delta("patron", key)}]
+		if not friend.is_empty() and delta("friend", key) != 0:
+			effects.append({"target": friend, "delta": delta("friend", key)})
+		if not rival.is_empty() and delta("rival", key) != 0:
+			effects.append({"target": rival, "delta": delta("rival", key)})
 		question["effects_%s" % key] = effects
 	return question
 

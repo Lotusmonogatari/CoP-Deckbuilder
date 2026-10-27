@@ -206,10 +206,11 @@ static func press_start_adjustment(kanban: int, sanban_rows: Array) -> int:
 	var low := int(reputation.get("low_threshold", 20))
 	var high := int(reputation.get("high_threshold", 80))
 
+	var bonus := Levers.whole("press_start_reputation_bonus")
 	if kanban >= high:
-		return 5
+		return bonus
 	if kanban <= low:
-		return -5
+		return -bonus
 	return 0
 
 

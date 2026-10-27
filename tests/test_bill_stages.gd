@@ -113,7 +113,11 @@ func test_a_stage_copy_draws_from_its_families_question_pool() -> void:
 		if sid.length() < 5 or int(sid.substr(2)) < 121 or int(sid.substr(2)) > 259:
 			continue
 		var base_id := DataDB.stage_background_id(sid)
-		var expected := str(BattleSetup.QUESTION_POOL_BY_STAGE.get(base_id, ""))
+		var base_row: Dictionary = {}
+		for candidate: Dictionary in DataDB.stages:
+			if str(candidate.get("stage_id", "")) == base_id:
+				base_row = candidate
+		var expected := str(base_row.get("question_pool", "")).to_lower() if base_row.get("question_pool") != null else ""
 		if expected.is_empty():
 			continue
 		var actual := str(stage.get("question_pool", "")).to_lower() if stage.get("question_pool") != null else ""

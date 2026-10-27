@@ -10,14 +10,14 @@ extends RefCounted
 ## the average is its score for that suit (-1 to +1). Pure arithmetic, no UI;
 ## the How to Play guide quotes the result, so it follows the workbook.
 
-## An organisation counts for a suit when its average is at least this.
-const MIN_SCORE := 0.4
-## ...and only when at least this many questions please it (a thin sample proves nothing).
-const MIN_QUESTIONS := 5
-## The guide stays concise: at most this many organisations per suit.
-const MAX_PER_SUIT := 4
-
-const POINTS := {"S": 1.0, "M": 0.0, "W": -1.0}
+## All of these are Balance-tab levers ("Tendency: ..."): the minimum average
+## for a suit, the minimum questions (a thin sample proves nothing), the most
+## organisations per suit (the guide stays concise) and what S/M/W are worth.
+static func points(grade: String) -> float:
+	match grade:
+		"S": return Levers.num("tendency_strong_points")
+		"W": return Levers.num("tendency_weak_points")
+	return Levers.num("tendency_medium_points")
 
 
 ## {suit: [{booster_id, score}]} best first, for the suits given. `questions`
@@ -34,19 +34,19 @@ static func by_suit(questions: Dictionary, suits: Array) -> Dictionary:
 					totals[booster_id] = {}
 				for suit: String in suits:
 					var sums: Dictionary = totals[booster_id]
-					sums[suit] = float(sums.get(suit, 0.0)) + float(POINTS.get(str(grades.get(suit, "M")), 0.0))
+					sums[suit] = float(sums.get(suit, 0.0)) + points(str(grades.get(suit, "M")))
 
 	var out := {}
 	for suit: String in suits:
 		var rows: Array[Dictionary] = []
 		for booster_id: String in counts:
-			if int(counts[booster_id]) < MIN_QUESTIONS:
+			if int(counts[booster_id]) < Levers.whole("tendency_minimum_questions"):
 				continue
 			var score := float((totals[booster_id] as Dictionary).get(suit, 0.0)) / float(counts[booster_id])
-			if score >= MIN_SCORE:
+			if score >= Levers.num("tendency_minimum_score"):
 				rows.append({"booster_id": booster_id, "score": score})
 		rows.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return a["score"] > b["score"])
-		out[suit] = rows.slice(0, MAX_PER_SUIT)
+		out[suit] = rows.slice(0, Levers.whole("tendency_most_organizations_per_suit"))
 	return out
 
 
@@ -79,7 +79,7 @@ static func scores_for(questions: Dictionary, booster_id: String, suits: Array) 
 			count += 1
 			var grades: Dictionary = question.get("grades", {})
 			for suit: String in suits:
-				sums[suit] = float(sums.get(suit, 0.0)) + float(POINTS.get(str(grades.get(suit, "M")), 0.0))
+				sums[suit] = float(sums.get(suit, 0.0)) + points(str(grades.get(suit, "M")))
 	var out := {}
 	if count == 0:
 		return out

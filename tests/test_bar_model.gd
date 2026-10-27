@@ -151,7 +151,7 @@ func test_the_odds_add_up_to_certainty() -> void:
 	# Guards the table itself: a percentile that fell through every band
 	# would silently return the last cost.
 	var total := 0
-	for band: Dictionary in BarModel.OPPONENT_COST_ODDS:
+	for band: Dictionary in BarModel.opponent_cost_odds():
 		total += int(band["chance"])
 	assert_eq(total, 100, "every roll lands in exactly one band")
 

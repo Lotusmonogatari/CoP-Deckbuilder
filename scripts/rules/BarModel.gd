@@ -30,12 +30,18 @@ enum Model { SHARED_POOL, SINGLE, SURVIVAL }
 ## harder varies from person to person: usually one point, sometimes two,
 ## occasionally three. That is what makes the end of a debate slower than
 ## the start even though the numbers look the same.
-const UNDECIDED_COST := 1
-const OPPONENT_COST_ODDS := [
-	{"cost": 1, "chance": 60},
-	{"cost": 2, "chance": 30},
-	{"cost": 3, "chance": 10},
-]
+## The numbers are Balance-tab levers (Levers): Undecided cost, and the
+## chance (percent, adding to 100) of each price for an opposed person.
+static func undecided_cost() -> int:
+	return Levers.whole("win_over_undecided_cost")
+
+
+static func opponent_cost_odds() -> Array[Dictionary]:
+	return [
+		{"cost": 1, "chance": Levers.whole("win_over_opposed_1_point_chance")},
+		{"cost": 2, "chance": Levers.whole("win_over_opposed_2_points_chance")},
+		{"cost": 3, "chance": Levers.whole("win_over_opposed_3_points_chance")},
+	]
 
 var model: Model = Model.SHARED_POOL
 var maximum := 100      ## seats or supporters in the room
@@ -180,9 +186,9 @@ func player_gains(amount: int) -> int:
 
 	while budget > 0:
 		if undecided > 0:
-			if budget < UNDECIDED_COST:
+			if budget < undecided_cost():
 				break
-			budget -= UNDECIDED_COST
+			budget -= undecided_cost()
 			undecided -= 1
 			player += 1
 			moved += 1
@@ -209,11 +215,12 @@ func player_gains(amount: int) -> int:
 func roll_opponent_cost() -> int:
 	var roll := _roll_percent()
 	var seen := 0
-	for band: Dictionary in OPPONENT_COST_ODDS:
+	var odds := opponent_cost_odds()
+	for band: Dictionary in odds:
 		seen += int(band["chance"])
 		if roll < seen:
 			return int(band["cost"])
-	return int(OPPONENT_COST_ODDS[-1]["cost"])
+	return int(odds[-1]["cost"])
 
 
 ## A number from 0 to 99, from the battle's generator where there is one.

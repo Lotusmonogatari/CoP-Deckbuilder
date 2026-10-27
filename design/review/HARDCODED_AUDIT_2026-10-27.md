@@ -50,3 +50,13 @@ New test `tests/test_balance_keys.gd` fails if any script reads a Balance or Rul
 - About 165 levers are read with a typed fallback number that repeats the workbook value. Harmless today but the two can drift; a boot warning for a missing row would be safer than a silent fallback.
 - Balance rows nothing reads: `xp_tiers` (empty). The `trade_*_seats` rows are used through a built key, so they are live.
 - Layout, timing, colour and font numbers in the UI are presentation, not content, and stay in code.
+
+## E. Follow-up applied (2026-10-27, Cameron: "Go")
+| Item | Result |
+|---|---|
+| Table B numbers (opposed-cost odds and Undecided cost, press reputation bonus, patron visit deltas, Flagship discount, tendency cutoffs and grade points, ally neutral band, hosted guest share, audience scale cap) | 29 new Balance rows; scripts read them through the new `Levers` class (no fallback number in code). |
+| Staff role names | Read from the Staff tab (`Ledger.staff_roles()`); the level-unlock role is the first role listed. |
+| Suit names in the member visit | Read from `suits.json`. |
+| Card frames per suit | Moved to `data/art.json` ("card_frames"). |
+| BattleSetup fallback tables | Removed. The fallback was **not** dead for ST05 (its Question Pool cell was blank), so ST05 now says "town_hall" in the Stages tab. |
+| Left alone | Segment and standing starts of 50 (engine-wide defaults), slot cap 10, public room per tier, `LEVEL_UNLOCK_MAX_TIER`, FloorVote influence defaults (already fed from Balance), allied-buff default 75. |

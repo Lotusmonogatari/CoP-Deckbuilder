@@ -14,15 +14,15 @@ const IMPROVING := "improving"
 const NEUTRAL := "neutral"
 const REDUCING := "reducing"
 
-## Below this many points either way an organisation is not moving the score.
-const NEUTRAL_BAND := 0.5
+## Below the Balance lever "Ally: Neutral band" (points either way) an
+## organisation is not moving the score.
 
 
 ## "improving" / "neutral" / "reducing" for one contribution's `effect`.
 static func tag_for(effect: float) -> String:
-	if effect >= NEUTRAL_BAND:
+	if effect >= Levers.num("ally_neutral_band"):
 		return IMPROVING
-	if effect <= -NEUTRAL_BAND:
+	if effect <= -Levers.num("ally_neutral_band"):
 		return REDUCING
 	return NEUTRAL
 

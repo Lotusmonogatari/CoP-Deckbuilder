@@ -151,7 +151,7 @@ static func pick_roster(org_id: String, people_by_org: Dictionary, ally_ids: Arr
 	var roster: Array = []
 	var used := {}
 	var own: Array = _shuffled(people_by_org.get(org_id, []), rng)
-	var own_limit := mini(maxi(1, int(ceil(size * 0.6))), size)
+	var own_limit := mini(maxi(1, int(ceil(size * Levers.num("hosted_event_own_organization_guest_percent") / 100.0))), size)
 	for person: Dictionary in own:
 		if roster.size() >= own_limit:
 			break
