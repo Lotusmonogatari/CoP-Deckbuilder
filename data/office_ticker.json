@@ -5,7 +5,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "“The National Assembly returns, but is Prime Minister Rono losing steam?” - Sapporo Digital Networks ☼"
+    "text_en": "“The National Assembly returns, but is Prime Minister Rono losing steam?” - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK02",
@@ -13,7 +17,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Yumi Satou-san will interview new Assembly Members this evening on Sapporo Broadcasting Center. ☼"
+    "text_en": "Yumi Satou-san will interview new Assembly Members this evening on Sapporo Broadcasting Center. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK03",
@@ -21,7 +29,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "“Reporters following the National Assembly are eager for breaking news, but the walls of parliament are not budging.” - Sapporo Digital Networks ☼"
+    "text_en": "“Reporters following the National Assembly are eager for breaking news, but the walls of parliament are not budging.” - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK04",
@@ -29,7 +41,11 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "“I hear voters are souring on their new Assembly Member.” - Otaru Radio 今日 ☼"
+    "text_en": "“I hear voters are souring on their new Assembly Member.” - Otaru Radio 今日 ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK05",
@@ -37,7 +53,11 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 45.0,
-    "text_en": "“Parliament insiders say that their new colleague needs to plan rather than rush through their work.” - Sapporo Digital Networks ☼"
+    "text_en": "“Parliament insiders say that their new colleague needs to plan rather than rush through their work.” - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK06",
@@ -45,7 +65,11 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 40.0,
-    "text_en": "“Can a reputation improve? Yes. However, it frequently requires a Member of Parliament to step back and consider the cards they can play, figuratively speaking.” - Yezo Political Insider ☼"
+    "text_en": "“Can a reputation improve? Yes. However, it frequently requires a Member of Parliament to step back and consider the cards they can play, figuratively speaking.” - Yezo Political Insider ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK07",
@@ -53,7 +77,11 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 25.0,
-    "text_en": "“A sinking reputation will be troublesome for that new Member of Parliament...” - Yezo Political Insider ☼"
+    "text_en": "“A sinking reputation will be troublesome for that new Member of Parliament...” - Yezo Political Insider ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK08",
@@ -61,7 +89,11 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 30.0,
-    "text_en": "“People like winners. Neighborhood groups, associations, and others won’t reward an Assembly Member with a low reputation.” - Sapporo Digital Networks ☼"
+    "text_en": "“People like winners. Neighborhood groups, associations, and others won’t reward an Assembly Member with a low reputation.” - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK09",
@@ -69,7 +101,11 @@
     "condition_target": "Reputation",
     "condition_op": "=",
     "condition_value": 50.0,
-    "text_en": "“A middling reputation is not bad.” - Sapporo Digital Networks ☼"
+    "text_en": "“A middling reputation is not bad.” - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK10",
@@ -77,7 +113,11 @@
     "condition_target": "Reputation",
     "condition_op": "=",
     "condition_value": 50.0,
-    "text_en": "“I would rather be one of those no-name Members of Parliament than the Prime Minister right now.” - Otaru Radio 今日 ☼"
+    "text_en": "“I would rather be one of those no-name Members of Parliament than the Prime Minister right now.” - Otaru Radio 今日 ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK11",
@@ -85,7 +125,11 @@
     "condition_target": "Reputation",
     "condition_op": "=",
     "condition_value": 50.0,
-    "text_en": "“Among the top five Assembly Members? Minister Haibi, certainly. Because of the idol fame.” - Yezo Political Insider ☼"
+    "text_en": "“Among the top five Assembly Members? Minister Haibi, certainly. Because of the idol fame.” - Yezo Political Insider ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK12",
@@ -93,7 +137,11 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 55.0,
-    "text_en": "Sapporo Broadcasting Center's commentators are asking for the rationale behind your statements. - ☼"
+    "text_en": "Sapporo Broadcasting Center's commentators are asking for the rationale behind your statements. - ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK13",
@@ -101,7 +149,11 @@
     "condition_target": "Reputation",
     "condition_op": ">",
     "condition_value": 45.0,
-    "text_en": "“That one Member of Parliament had a handful of decent speeches and a recognizable presence in committee.” - Yezo Political Insider ☼"
+    "text_en": "“That one Member of Parliament had a handful of decent speeches and a recognizable presence in committee.” - Yezo Political Insider ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK14",
@@ -109,7 +161,11 @@
     "condition_target": "Reputation",
     "condition_op": ">",
     "condition_value": 45.0,
-    "text_en": "“Minister Resu is not as popular inside the building as outside.” - Yezo Political Insider ☼"
+    "text_en": "“Minister Resu is not as popular inside the building as outside.” - Yezo Political Insider ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK15",
@@ -117,7 +173,11 @@
     "condition_target": "Reputation",
     "condition_op": ">",
     "condition_value": 55.0,
-    "text_en": "“Supposedly, five or six Members of Parliament are punching above their weight in committees.” - Sapporo Digital Networks ☼"
+    "text_en": "“Supposedly, five or six Members of Parliament are punching above their weight in committees.” - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK16",
@@ -125,7 +185,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "“財務大臣拝眉氏が昨日またサイン会をさせられました.” - Otaru Radio 今日  ☼"
+    "text_en": "“財務大臣拝眉氏が昨日またサイン会をさせられました.” - Otaru Radio 今日  ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK17",
@@ -133,7 +197,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "“政党は弱くなって続けるので後援会での講演会が予定を交換しています.” - Yezo Political Insider ☼"
+    "text_en": "“政党は弱くなって続けるので後援会での講演会が予定を交換しています.” - Yezo Political Insider ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK18",
@@ -141,7 +209,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "“政治家のチームは大事な規定.” - 青森の青空109.9! ☼"
+    "text_en": "“政治家のチームは大事な規定.” - 青森の青空109.9! ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK19",
@@ -149,7 +221,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "“The newest university graduates to earn a chance working for the government tell us about needing to find fax machines to file their applications.” - Aomori’s Morning Mori ☼"
+    "text_en": "“The newest university graduates to earn a chance working for the government tell us about needing to find fax machines to file their applications.” - Aomori’s Morning Mori ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK20",
@@ -157,7 +233,11 @@
     "condition_target": "Funds",
     "condition_op": "<=",
     "condition_value": 20000.0,
-    "text_en": "“Rumor has it a certain Member of Parliament is broke.” - Aomori’s Morning Mori ☼"
+    "text_en": "“Rumor has it a certain Member of Parliament is broke.” - Aomori’s Morning Mori ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK21",
@@ -165,7 +245,11 @@
     "condition_target": "Funds",
     "condition_op": "<=",
     "condition_value": 30000.0,
-    "text_en": "The evening broadcast will gather a panel of former chiefs of staff to discuss why a political office's budget cannot plummet to zero. - Sapporo Digital Networks ☼"
+    "text_en": "The evening broadcast will gather a panel of former chiefs of staff to discuss why a political office's budget cannot plummet to zero. - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK22",
@@ -173,7 +257,11 @@
     "condition_target": "Funds",
     "condition_op": "<=",
     "condition_value": 35000.0,
-    "text_en": "Yumi Satou-san will interview Butsutou Party Leader Utemaru Naizen again this week for an ongoing discussion about ethics in political office spending. - Sapporo Broadcasting Center ☼"
+    "text_en": "Yumi Satou-san will interview Butsutou Party Leader Utemaru Naizen again this week for an ongoing discussion about ethics in political office spending. - Sapporo Broadcasting Center ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK23",
@@ -181,7 +269,11 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 500000.0,
-    "text_en": "Minister of Ethics and Prosecution Naizen speaks out against bloated office funds. - Otaru Radio 今日 ☼"
+    "text_en": "Minister of Ethics and Prosecution Naizen speaks out against bloated office funds. - Otaru Radio 今日 ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK24",
@@ -189,7 +281,11 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 700000.0,
-    "text_en": "Minister of Ethics and Prosecution Naizen speaks out against political offices that accumulate wealth without intending to fund local projects and wellbeing programs. “Stealing from future generations,” alleged the minister. - Otaru Radio 今日 ☼"
+    "text_en": "Minister of Ethics and Prosecution Naizen speaks out against political offices that accumulate wealth without intending to fund local projects and wellbeing programs. “Stealing from future generations,” alleged the minister. - Otaru Radio 今日 ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK25",
@@ -197,7 +293,11 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 20000.0,
-    "text_en": "Yezo Political Insider reporters are cataloging Members of Parliament's office funds and what these funds are buying. ☼"
+    "text_en": "Yezo Political Insider reporters are cataloging Members of Parliament's office funds and what these funds are buying. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK26",
@@ -205,7 +305,11 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 30000.0,
-    "text_en": "This evening, our broadcasters will further discuss calls from constituents about legislators withholding office funds. - Sapporo Digital Networks ☼"
+    "text_en": "This evening, our broadcasters will further discuss calls from constituents about legislators withholding office funds. - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK27",
@@ -213,7 +317,11 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 75000.0,
-    "text_en": "Sources say Party Leader Hideriai is criticizing legislators who focus on raising funds rather than raising Yezo’s cultural heritage. - Sapporo Digital Networks ☼"
+    "text_en": "Sources say Party Leader Hideriai is criticizing legislators who focus on raising funds rather than raising Yezo’s cultural heritage. - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK28",
@@ -221,7 +329,11 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 500000.0,
-    "text_en": "“Why do we have legislators hoarding funds?” - Aomori’s Morning Mori ☼"
+    "text_en": "“Why do we have legislators hoarding funds?” - Aomori’s Morning Mori ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK29",
@@ -229,7 +341,11 @@
     "condition_target": "Funds",
     "condition_op": ">=",
     "condition_value": 700000.0,
-    "text_en": "“政治家が私たちのお金を盗んでいませんか.” - 青森の青空109.9! ☼"
+    "text_en": "“政治家が私たちのお金を盗んでいませんか.” - 青森の青空109.9! ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK30",
@@ -237,7 +353,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Sources say ministers sparsely attended this week’s cabinet session. - Sapporo Digital Networks ☼"
+    "text_en": "Sources say ministers sparsely attended this week’s cabinet session. - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK31",
@@ -245,7 +365,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "{player}'s latest speech is spreading across social media. - Aomori’s Morning Mori ☼"
+    "text_en": "{player}'s latest speech is spreading across social media. - Aomori’s Morning Mori ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK32",
@@ -253,7 +377,11 @@
     "condition_target": "Reputation",
     "condition_op": "<",
     "condition_value": 40.0,
-    "text_en": "\"We need to see more meaningful rhetoric from {player}.\" - Aomori’s Morning Mori ☼"
+    "text_en": "\"We need to see more meaningful rhetoric from {player}.\" - Aomori’s Morning Mori ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK33",
@@ -261,7 +389,11 @@
     "condition_target": "Reputation",
     "condition_op": ">=",
     "condition_value": 65.0,
-    "text_en": "\"Sources indicate growing respect for {player} within the National Assembly.\" - Yezo Political Insider ☼"
+    "text_en": "\"Sources indicate growing respect for {player} within the National Assembly.\" - Yezo Political Insider ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK34",
@@ -269,7 +401,11 @@
     "condition_target": "Party support",
     "condition_op": "<=",
     "condition_value": 45.0,
-    "text_en": "Otaru Radio 今日 is reporting that {player}’s party leaders are continuing to sour on earlier expectations. ☼"
+    "text_en": "Otaru Radio 今日 is reporting that {player}’s party leaders are continuing to sour on earlier expectations. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK35",
@@ -277,7 +413,11 @@
     "condition_target": "Party support",
     "condition_op": "<=",
     "condition_value": 30.0,
-    "text_en": "Yumi Satou-san will interview {player}’s party members regarding recent performance and what it means for the party’s reputation. - Sapporo Broadcasting Center ☼"
+    "text_en": "Yumi Satou-san will interview {player}’s party members regarding recent performance and what it means for the party’s reputation. - Sapporo Broadcasting Center ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK36",
@@ -285,7 +425,11 @@
     "condition_target": "Party support",
     "condition_op": ">",
     "condition_value": 75.0,
-    "text_en": "“{player} is establishing their presence in the higher-tier of influential Assembly Members.” - Yezo Political Insider ☼"
+    "text_en": "“{player} is establishing their presence in the higher-tier of influential Assembly Members.” - Yezo Political Insider ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK37",
@@ -293,7 +437,11 @@
     "condition_target": "Party support",
     "condition_op": ">",
     "condition_value": 60.0,
-    "text_en": "Yumi Satou-san will broadcast from the National Assembly with a panel of insiders about the rising profile of {player}. - Sapporo Broadcasting Center ☼"
+    "text_en": "Yumi Satou-san will broadcast from the National Assembly with a panel of insiders about the rising profile of {player}. - Sapporo Broadcasting Center ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK38",
@@ -301,7 +449,11 @@
     "condition_target": "Media Spokesperson",
     "condition_op": "hired",
     "condition_value": null,
-    "text_en": "Tomorrow morning, our breakfast show will hear from {player}’s press secretary about recent speeches and meetings. - Aomori’s Morning Mori ☼"
+    "text_en": "Tomorrow morning, our breakfast show will hear from {player}’s press secretary about recent speeches and meetings. - Aomori’s Morning Mori ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK39",
@@ -309,7 +461,11 @@
     "condition_target": "Media Spokesperson",
     "condition_op": "not_hired",
     "condition_value": null,
-    "text_en": "“Our requests to hear from {player} remain unanswered. Is there anyone working in that office?” - Otaru Radio 今日 ☼"
+    "text_en": "“Our requests to hear from {player} remain unanswered. Is there anyone working in that office?” - Otaru Radio 今日 ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK40",
@@ -317,7 +473,11 @@
     "condition_target": "Media Spokesperson",
     "condition_op": "not_hired",
     "condition_value": null,
-    "text_en": "“A politician who refuses to hire staff and meet with the press is dodging transparency and truth!” - Sapporo Digital Networks ☼"
+    "text_en": "“A politician who refuses to hire staff and meet with the press is dodging transparency and truth!” - Sapporo Digital Networks ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK41",
@@ -325,7 +485,11 @@
     "condition_target": "Constituency support",
     "condition_op": "<=",
     "condition_value": 30.0,
-    "text_en": "Constituents of {player} call in to ask, “Who did we vote for?” - Otaru Radio 今日 ☼"
+    "text_en": "Constituents of {player} call in to ask, “Who did we vote for?” - Otaru Radio 今日 ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK42",
@@ -333,7 +497,11 @@
     "condition_target": "Constituency support",
     "condition_op": ">=",
     "condition_value": 60.0,
-    "text_en": "{player}の後援会は「庶民の成功のための勝利」と言っていました - 青森の青空109.9! ☼"
+    "text_en": "{player}の後援会は「庶民の成功のための勝利」と言っていました - 青森の青空109.9! ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK43",
@@ -341,7 +509,11 @@
     "condition_target": "Constituency support",
     "condition_op": ">=",
     "condition_value": 90.0,
-    "text_en": "Yezo Political Insider is reporting that {player} has secured a formidable base of support among district voters. ☼"
+    "text_en": "Yezo Political Insider is reporting that {player} has secured a formidable base of support among district voters. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK44",
@@ -349,7 +521,11 @@
     "condition_target": "BI01",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Ainu Heritage and Language Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Ainu Heritage and Language Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK45",
@@ -357,7 +533,11 @@
     "condition_target": "BI01",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Ainu Heritage and Language Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Ainu Heritage and Language Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK46",
@@ -365,7 +545,11 @@
     "condition_target": "BI02",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Agricultural Price Stabilization Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Agricultural Price Stabilization Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK47",
@@ -373,7 +557,11 @@
     "condition_target": "BI02",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Agricultural Price Stabilization Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Agricultural Price Stabilization Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK48",
@@ -381,7 +569,11 @@
     "condition_target": "BI03",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Special Economic Zones Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Special Economic Zones Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK49",
@@ -389,7 +581,11 @@
     "condition_target": "BI03",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Special Economic Zones Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Special Economic Zones Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK50",
@@ -397,7 +593,11 @@
     "condition_target": "BI04",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Hokkaido Shinkansen Acceleration Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Hokkaido Shinkansen Acceleration Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK51",
@@ -405,7 +605,11 @@
     "condition_target": "BI04",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Hokkaido Shinkansen Acceleration Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Hokkaido Shinkansen Acceleration Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK52",
@@ -413,7 +617,11 @@
     "condition_target": "BI05",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Chishima Coastal Defense Modernization Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Chishima Coastal Defense Modernization Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK53",
@@ -421,7 +629,11 @@
     "condition_target": "BI05",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Chishima Coastal Defense Modernization Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Chishima Coastal Defense Modernization Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK54",
@@ -429,7 +641,11 @@
     "condition_target": "BI06",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Specified Skilled Worker Visa Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Specified Skilled Worker Visa Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK55",
@@ -437,7 +653,11 @@
     "condition_target": "BI06",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Specified Skilled Worker Visa Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Specified Skilled Worker Visa Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK56",
@@ -445,7 +665,11 @@
     "condition_target": "BI07",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Grid Resilience and Renewable Energy Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Grid Resilience and Renewable Energy Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK57",
@@ -453,7 +677,11 @@
     "condition_target": "BI07",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Grid Resilience and Renewable Energy Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Grid Resilience and Renewable Energy Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK58",
@@ -461,7 +689,11 @@
     "condition_target": "BI08",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Consumption Tax Rate Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Consumption Tax Rate Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK59",
@@ -469,7 +701,11 @@
     "condition_target": "BI08",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Consumption Tax Rate Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Consumption Tax Rate Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK60",
@@ -477,7 +713,11 @@
     "condition_target": "BI09",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Prefectural Fiscal Devolution Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Prefectural Fiscal Devolution Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK61",
@@ -485,7 +725,11 @@
     "condition_target": "BI09",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Prefectural Fiscal Devolution Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Prefectural Fiscal Devolution Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK62",
@@ -493,7 +737,11 @@
     "condition_target": "BI10",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Candidate Gender Parity Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Candidate Gender Parity Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK63",
@@ -501,7 +749,11 @@
     "condition_target": "BI10",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Candidate Gender Parity Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Candidate Gender Parity Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK64",
@@ -509,7 +761,11 @@
     "condition_target": "BI11",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Tsugaru Strait Joint Commission Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Tsugaru Strait Joint Commission Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK65",
@@ -517,7 +773,11 @@
     "condition_target": "BI11",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Tsugaru Strait Joint Commission Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Tsugaru Strait Joint Commission Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK66",
@@ -525,7 +785,11 @@
     "condition_target": "BI12",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Judicial Appointments Commission Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Judicial Appointments Commission Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK67",
@@ -533,7 +797,11 @@
     "condition_target": "BI12",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Judicial Appointments Commission Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Judicial Appointments Commission Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK68",
@@ -541,7 +809,11 @@
     "condition_target": "BI13",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Temple and Shrine Heritage Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Temple and Shrine Heritage Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK69",
@@ -549,7 +821,11 @@
     "condition_target": "BI13",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Temple and Shrine Heritage Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Temple and Shrine Heritage Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK70",
@@ -557,7 +833,11 @@
     "condition_target": "BI14",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Constituency Development Grants Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Constituency Development Grants Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK71",
@@ -565,7 +845,11 @@
     "condition_target": "BI14",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Constituency Development Grants Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Constituency Development Grants Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK72",
@@ -573,7 +857,11 @@
     "condition_target": "BI15",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Digital Economy Promotion Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Digital Economy Promotion Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK73",
@@ -581,7 +869,11 @@
     "condition_target": "BI15",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Digital Economy Promotion Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Digital Economy Promotion Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK74",
@@ -589,7 +881,11 @@
     "condition_target": "BI16",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Organized Crime Conspiracy Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Organized Crime Conspiracy Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK75",
@@ -597,7 +893,11 @@
     "condition_target": "BI16",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Organized Crime Conspiracy Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Organized Crime Conspiracy Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK76",
@@ -605,7 +905,11 @@
     "condition_target": "BI17",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Partnership Registration Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Partnership Registration Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK77",
@@ -613,7 +917,11 @@
     "condition_target": "BI17",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Partnership Registration Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Partnership Registration Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK78",
@@ -621,7 +929,11 @@
     "condition_target": "BI18",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The National Emergency Powers Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The National Emergency Powers Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK79",
@@ -629,7 +941,11 @@
     "condition_target": "BI18",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the National Emergency Powers Act has been voted down. ☼"
+    "text_en": "Yezo News reports the National Emergency Powers Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK80",
@@ -637,7 +953,11 @@
     "condition_target": "BI19",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Yezo–US Security Consultation Agreement is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Yezo–US Security Consultation Agreement is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK81",
@@ -645,7 +965,11 @@
     "condition_target": "BI19",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Yezo–US Security Consultation Agreement, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Yezo–US Security Consultation Agreement, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK82",
@@ -653,7 +977,11 @@
     "condition_target": "BI20",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Yezo–EU Economic Partnership Agreement. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Yezo–EU Economic Partnership Agreement. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK83",
@@ -661,7 +989,11 @@
     "condition_target": "BI20",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Yezo–EU Economic Partnership Agreement leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Yezo–EU Economic Partnership Agreement leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK84",
@@ -669,7 +1001,11 @@
     "condition_target": "BI21",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Strategic Land and Port Screening Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Strategic Land and Port Screening Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK85",
@@ -677,7 +1013,11 @@
     "condition_target": "BI21",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Strategic Land and Port Screening Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Strategic Land and Port Screening Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK86",
@@ -685,7 +1025,11 @@
     "condition_target": "BI22",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Inbound Tourism Visa Waiver Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Inbound Tourism Visa Waiver Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK87",
@@ -693,7 +1037,11 @@
     "condition_target": "BI22",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Inbound Tourism Visa Waiver Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Inbound Tourism Visa Waiver Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK88",
@@ -701,7 +1049,11 @@
     "condition_target": "BI23",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Chishima Joint Economic Activity Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Chishima Joint Economic Activity Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK89",
@@ -709,7 +1061,11 @@
     "condition_target": "BI23",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Chishima Joint Economic Activity Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Chishima Joint Economic Activity Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK90",
@@ -717,7 +1073,11 @@
     "condition_target": "BI24",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Tomari Nuclear Restart Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Tomari Nuclear Restart Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK91",
@@ -725,7 +1085,11 @@
     "condition_target": "BI24",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Tomari Nuclear Restart Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Tomari Nuclear Restart Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK92",
@@ -733,7 +1097,11 @@
     "condition_target": "BI25",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Integrated Resort Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Integrated Resort Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK93",
@@ -741,7 +1109,11 @@
     "condition_target": "BI25",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Integrated Resort Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Integrated Resort Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK94",
@@ -749,7 +1121,11 @@
     "condition_target": "BI26",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Civil Service Merit Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Civil Service Merit Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK95",
@@ -757,7 +1133,11 @@
     "condition_target": "BI26",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Civil Service Merit Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Civil Service Merit Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK96",
@@ -765,7 +1145,11 @@
     "condition_target": "BI27",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Regional Minimum Wage Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Regional Minimum Wage Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK97",
@@ -773,7 +1157,11 @@
     "condition_target": "BI27",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Regional Minimum Wage Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Regional Minimum Wage Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK98",
@@ -781,7 +1169,11 @@
     "condition_target": "BI28",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Independent Election Commission Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Independent Election Commission Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK99",
@@ -789,7 +1181,11 @@
     "condition_target": "BI28",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Independent Election Commission Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Independent Election Commission Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK100",
@@ -797,7 +1193,11 @@
     "condition_target": "BI29",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Moral Education Curriculum Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Moral Education Curriculum Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK101",
@@ -805,7 +1205,11 @@
     "condition_target": "BI29",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Moral Education Curriculum Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Moral Education Curriculum Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK102",
@@ -813,7 +1217,11 @@
     "condition_target": "BI30",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Foreign Resident Local Suffrage Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Foreign Resident Local Suffrage Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK103",
@@ -821,7 +1229,11 @@
     "condition_target": "BI30",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Foreign Resident Local Suffrage Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Foreign Resident Local Suffrage Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK104",
@@ -829,7 +1241,11 @@
     "condition_target": "BI31",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Wilderness and Wildlife Protection Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Wilderness and Wildlife Protection Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK105",
@@ -837,7 +1253,11 @@
     "condition_target": "BI31",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Wilderness and Wildlife Protection Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Wilderness and Wildlife Protection Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK106",
@@ -845,7 +1265,11 @@
     "condition_target": "BI32",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Rural Hospital Network Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Rural Hospital Network Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK107",
@@ -853,7 +1277,11 @@
     "condition_target": "BI32",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Rural Hospital Network Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Rural Hospital Network Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK108",
@@ -861,7 +1289,11 @@
     "condition_target": "BI33",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Digital Identity Card Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Digital Identity Card Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK109",
@@ -869,7 +1301,11 @@
     "condition_target": "BI33",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Digital Identity Card Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Digital Identity Card Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK110",
@@ -877,7 +1313,11 @@
     "condition_target": "BI34",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Public Broadcasting Independence Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Public Broadcasting Independence Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK111",
@@ -885,7 +1325,11 @@
     "condition_target": "BI34",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Public Broadcasting Independence Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Public Broadcasting Independence Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK112",
@@ -893,7 +1337,11 @@
     "condition_target": "BI35",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Political Donation Transparency Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Political Donation Transparency Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK113",
@@ -901,7 +1349,11 @@
     "condition_target": "BI35",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Political Donation Transparency Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Political Donation Transparency Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK114",
@@ -909,7 +1361,11 @@
     "condition_target": "BI36",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Corporate Tax Reduction Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Corporate Tax Reduction Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK115",
@@ -917,7 +1373,11 @@
     "condition_target": "BI36",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Corporate Tax Reduction Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Corporate Tax Reduction Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK116",
@@ -925,7 +1385,11 @@
     "condition_target": "BI37",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Carbon Levy Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Carbon Levy Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK117",
@@ -933,7 +1397,11 @@
     "condition_target": "BI37",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Carbon Levy Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Carbon Levy Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK118",
@@ -941,7 +1409,11 @@
     "condition_target": "BI38",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Fisheries Quota Modernization Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Fisheries Quota Modernization Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK119",
@@ -949,7 +1421,11 @@
     "condition_target": "BI38",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Fisheries Quota Modernization Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Fisheries Quota Modernization Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK120",
@@ -957,7 +1433,11 @@
     "condition_target": "BI39",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Shipbuilding and Defense Industry Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Shipbuilding and Defense Industry Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK121",
@@ -965,7 +1445,11 @@
     "condition_target": "BI39",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Shipbuilding and Defense Industry Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Shipbuilding and Defense Industry Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK122",
@@ -973,7 +1457,11 @@
     "condition_target": "BI40",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Constitutional Review Commission Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Constitutional Review Commission Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK123",
@@ -981,7 +1469,11 @@
     "condition_target": "BI40",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Constitutional Review Commission Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Constitutional Review Commission Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK124",
@@ -989,7 +1481,11 @@
     "condition_target": "BI41",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Japan Customs and Border Cooperation Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Japan Customs and Border Cooperation Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK125",
@@ -997,7 +1493,11 @@
     "condition_target": "BI41",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Japan Customs and Border Cooperation Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Japan Customs and Border Cooperation Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK126",
@@ -1005,7 +1505,11 @@
     "condition_target": "BI42",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Chishima Resource Development Agreement Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Chishima Resource Development Agreement Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK127",
@@ -1013,7 +1517,11 @@
     "condition_target": "BI42",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Chishima Resource Development Agreement Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Chishima Resource Development Agreement Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK128",
@@ -1021,7 +1529,11 @@
     "condition_target": "BI43",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Yezo–China Trade Normalization Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Yezo–China Trade Normalization Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK129",
@@ -1029,7 +1541,11 @@
     "condition_target": "BI43",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Yezo–China Trade Normalization Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Yezo–China Trade Normalization Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK130",
@@ -1037,7 +1553,11 @@
     "condition_target": "BI44",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Farm Succession Support Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Farm Succession Support Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK131",
@@ -1045,7 +1565,11 @@
     "condition_target": "BI44",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Farm Succession Support Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Farm Succession Support Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK132",
@@ -1053,7 +1577,11 @@
     "condition_target": "BI45",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the University Autonomy and Research Funding Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the University Autonomy and Research Funding Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK133",
@@ -1061,7 +1589,11 @@
     "condition_target": "BI45",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The University Autonomy and Research Funding Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The University Autonomy and Research Funding Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK134",
@@ -1069,7 +1601,11 @@
     "condition_target": "BI46",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Workplace Equality Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Workplace Equality Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK135",
@@ -1077,7 +1613,11 @@
     "condition_target": "BI46",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Workplace Equality Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Workplace Equality Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK136",
@@ -1085,7 +1625,11 @@
     "condition_target": "BI47",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Yezo News reports that the Parental Leave and Childcare Act is law, with {player} on the record. ☼"
+    "text_en": "Yezo News reports that the Parental Leave and Childcare Act is law, with {player} on the record. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK137",
@@ -1093,7 +1637,11 @@
     "condition_target": "BI47",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "After the failed Parental Leave and Childcare Act, {player} is asked what comes next. ☼"
+    "text_en": "After the failed Parental Leave and Childcare Act, {player} is asked what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK138",
@@ -1101,7 +1649,11 @@
     "condition_target": "BI48",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Offices across Yezo are reading the fine print of the new Public Safety Surveillance Act. ☼"
+    "text_en": "Offices across Yezo are reading the fine print of the new Public Safety Surveillance Act. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK139",
@@ -1109,7 +1661,11 @@
     "condition_target": "BI48",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The defeat of the Public Safety Surveillance Act leaves a gap that someone will try to fill. ☼"
+    "text_en": "The defeat of the Public Safety Surveillance Act leaves a gap that someone will try to fill. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK140",
@@ -1117,7 +1673,11 @@
     "condition_target": "BI49",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "Parliament has enacted the Local Government Mergers Act. Commentators are weighing what comes next. ☼"
+    "text_en": "Parliament has enacted the Local Government Mergers Act. Commentators are weighing what comes next. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK141",
@@ -1125,7 +1685,11 @@
     "condition_target": "BI49",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "The Local Government Mergers Act failed on the floor. Its backers say they will regroup. ☼"
+    "text_en": "The Local Government Mergers Act failed on the floor. Its backers say they will regroup. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK142",
@@ -1133,7 +1697,11 @@
     "condition_target": "BI50",
     "condition_op": "passed",
     "condition_value": null,
-    "text_en": "The Party Leadership Selection Act is now law in Yezo, and its critics are regrouping. ☼"
+    "text_en": "The Party Leadership Selection Act is now law in Yezo, and its critics are regrouping. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK143",
@@ -1141,7 +1709,11 @@
     "condition_target": "BI50",
     "condition_op": "failed",
     "condition_value": null,
-    "text_en": "Yezo News reports the Party Leadership Selection Act has been voted down. ☼"
+    "text_en": "Yezo News reports the Party Leadership Selection Act has been voted down. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK144",
@@ -1149,7 +1721,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Party activists are planning a rally outside the party office. ☼"
+    "text_en": "Party activists are planning a rally outside the party office. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK145",
@@ -1157,7 +1733,11 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "The Candidate Selection Committee is reviewing candidate applications. ☼"
+    "text_en": "The Candidate Selection Committee is reviewing candidate applications. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK146",
@@ -1165,7 +1745,11 @@
     "condition_target": "Party support",
     "condition_op": "<",
     "condition_value": 25.0,
-    "text_en": "Party activists are calling the leadership out of touch. ☼"
+    "text_en": "Party activists are calling the leadership out of touch. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK147",
@@ -1173,7 +1757,11 @@
     "condition_target": "Reputation",
     "condition_op": ">=",
     "condition_value": 70.0,
-    "text_en": "Word is the Candidate Selection Committee has your name on its list. ☼"
+    "text_en": "Word is the Candidate Selection Committee has your name on its list. ☼",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK148",
@@ -1181,7 +1769,11 @@
     "condition_target": "visit_success",
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Sources say {player} was working hard to win over individual members of parliament for their latest sponsored legislation. - Yezo News Nightly"
+    "text_en": "Sources say {player} was working hard to win over individual members of parliament for their latest sponsored legislation. - Yezo News Nightly",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
   },
   {
     "ticker_id": "TK149",
@@ -1189,6 +1781,89 @@
     "condition_target": "lobbyist_work",
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Reports from within Parliament indicate strong lobbyist work against {player}'s recent sponsored legislation. - Yezo News Nightly"
+    "text_en": "Reports from within Parliament indicate strong lobbyist work against {player}'s recent sponsored legislation. - Yezo News Nightly",
+    "weekdays": null,
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
+  },
+  {
+    "ticker_id": "TK150",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Weekday template: it is Friday, the last sitting day of the week at the National Assembly. ☼",
+    "weekdays": [
+      "Fri"
+    ],
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
+  },
+  {
+    "ticker_id": "TK151",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Weekend template: the Assembly is quiet, but the district offices keep their doors open. ☼",
+    "weekdays": [
+      "Sat",
+      "Sun"
+    ],
+    "from_date": null,
+    "to_date": null,
+    "yearly": null
+  },
+  {
+    "ticker_id": "TK152",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Single-day template: today the Assembly marks the Prime Minister's opening address. ☼",
+    "weekdays": null,
+    "from_date": "18.10.09",
+    "to_date": "18.10.09",
+    "yearly": null
+  },
+  {
+    "ticker_id": "TK153",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Date-range template: the autumn session is in full swing, with committees meeting daily. ☼",
+    "weekdays": null,
+    "from_date": "18.10.01",
+    "to_date": "18.11.30",
+    "yearly": null
+  },
+  {
+    "ticker_id": "TK154",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Yearly template: the year-end recess begins; members head home for the holidays. ☼",
+    "weekdays": null,
+    "from_date": "18.12.24",
+    "to_date": "19.01.03",
+    "yearly": "Yes"
+  },
+  {
+    "ticker_id": "TK155",
+    "condition_type": "always",
+    "condition_target": null,
+    "condition_op": null,
+    "condition_value": null,
+    "text_en": "Combined template: it is a Monday in October and the Assembly has a fresh agenda. ☼",
+    "weekdays": [
+      "Mon"
+    ],
+    "from_date": "18.10.01",
+    "to_date": "18.10.31",
+    "yearly": null
   }
 ]

@@ -187,6 +187,12 @@ SHEETS = {
             ("condition_op", "condition_op", "str"),
             ("condition_value", "condition_value", "num"),
             ("text_en", "text_en", "str"),
+            # Optional calendar gates (2026-10-27): days of the week and an
+            # inclusive date range, ANDed with the condition above.
+            ("weekdays", "weekdays", "id_list"),
+            ("from_date", "from_date", "str"),
+            ("to_date", "to_date", "str"),
+            ("yearly", "yearly", "str"),
         ],
     },
     # A hired staff member's own line about the level the player is about to
@@ -2355,6 +2361,34 @@ def validate(data, report):
                 report.warn(table, f"{row.get('notice_id') or row.get('ticker_id')} names the staff role "
                             f"'{row.get('condition_target')}', which is not in the Staff tab "
                             f"({', '.join(sorted(known_roles))}), so it can never be hired")
+    # Ticker calendar gates (2026-10-27): weekday names and YY.MM.DD dates.
+    day_names = {"mon", "tue", "wed", "thu", "fri", "sat", "sun"}
+    for row in data.get("office_ticker", []):
+        tid = row.get("ticker_id")
+        for name in (row.get("weekdays") or []):
+            if str(name).strip()[:3].lower() not in day_names:
+                report.error("office_ticker", f"{tid} names the day '{name}'; use Mon, Tue, Wed, Thu, Fri, Sat or Sun")
+        bounds = []
+        for column in ("from_date", "to_date"):
+            text = str(row.get(column) or "").strip()
+            if not text:
+                continue
+            parts = text.split(".")
+            ok = len(parts) == 3 and all(part.isdigit() for part in parts)
+            if ok:
+                try:
+                    bounds.append(datetime.date(2000 + int(parts[0]), int(parts[1]), int(parts[2])))
+                except ValueError:
+                    ok = False
+            if not ok:
+                report.error("office_ticker", f"{tid}'s {column} '{text}' is not a real date written YY.MM.DD")
+        yearly = str(row.get("yearly") or "").strip().lower()
+        if yearly not in ("", "yes", "no"):
+            report.error("office_ticker", f"{tid}'s yearly is '{row.get('yearly')}'; use Yes, No or leave it blank")
+        if yearly == "yes" and len(bounds) != 2:
+            report.error("office_ticker", f"{tid} repeats yearly, so it needs both a from_date and a to_date")
+        if len(bounds) == 2 and bounds[0] > bounds[1] and yearly != "yes":
+            report.error("office_ticker", f"{tid}'s from_date is after its to_date")
     for table in ("office_notices", "office_ticker"):
         for row in data.get(table, []):
             if row.get("condition_type") == "law":
@@ -2690,13 +2724,13 @@ def validate(data, report):
         if row["trigger"] == "Dated":
             ok_date = False
             try:
-                d, m, y = (int(x) for x in str(row.get("on_date") or "").split("."))
+                y, m, d = (int(x) for x in str(row.get("on_date") or "").split("."))
                 datetime.date(2000 + y, m, d)
                 ok_date = True
             except ValueError:
                 pass
             if not ok_date:
-                report.error("Events", f"{eid} is Dated but its On Date '{row.get('on_date')}' is not a real DD.MM.YY date")
+                report.error("Events", f"{eid} is Dated but its On Date '{row.get('on_date')}' is not a real YY.MM.DD date")
         if row.get("speaker_title"):
             wanted = str(row["speaker_title"]).strip().lower()
             titles = {t.strip().lower() for o in data.get("opponents", []) for t in str(o.get("title") or "").split(";")}

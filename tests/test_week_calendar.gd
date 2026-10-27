@@ -107,3 +107,10 @@ func test_exactly_one_hour_is_written_in_the_singular() -> void:
 	assert_eq(phrase.say("office.end_work_week_body", {"hours": 1, "count": 1}),
 		"You still have 1 work hour this week. End the work week now?")
 	assert_eq(phrase.say("event.row_free", {"title": "Tea", "hours": 1, "count": 1}), "Tea (1 hour)")
+
+
+func test_ymd_dates_parse_the_way_the_square_writes_them() -> void:
+	var start := WeekCalendar.today_number(WeekCalendar.fresh(), _cfg)
+	assert_eq(WeekCalendar.parse_date("18.10.01"), start)
+	assert_eq(WeekCalendar.parse_date("18.10.32"), -1)
+	assert_eq(WeekCalendar.parse_date("nonsense"), -1)

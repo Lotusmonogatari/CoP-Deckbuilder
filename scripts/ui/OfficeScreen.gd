@@ -2864,7 +2864,7 @@ func _on_start() -> void:
 		get_tree().change_scene_to_file(StageRouting.LEVEL_INTRO_SCENE)
 
 
-## An event's typed date (DD.MM.YY in the workbook) as the calendar square shows it.
+## An event's typed date (YY.MM.DD in the workbook) as the calendar square shows it.
 func _event_date_label(typed: String) -> String:
 	var number := WeekCalendar.parse_date(typed)
 	return typed if number < 0 else WeekCalendar.date_label(number)

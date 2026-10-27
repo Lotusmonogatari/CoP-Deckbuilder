@@ -41,13 +41,66 @@ static func fill_tokens(text: String, player_name: String) -> String:
 	return text.replace("{player}", player_name)
 
 
+const DAY_CODES := ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+
+
+## The optional calendar gates on a row (2026-10-27): "weekdays" (Mon, Tue, ...,
+## semicolon list), "from_date" and "to_date" (YY.MM.DD, inclusive). Blank means
+## no limit. `facts` carries "today" (a WeekCalendar day number) and "weekday"
+## (0 = Sunday); a row with a gate and no calendar facts does not show.
+static func calendar_met(row: Dictionary, facts: Dictionary) -> bool:
+	var days: Variant = row.get("weekdays")
+	var from_text := "" if row.get("from_date") == null else str(row.get("from_date")).strip_edges()
+	var to_text := "" if row.get("to_date") == null else str(row.get("to_date")).strip_edges()
+	var has_days := days is Array and not (days as Array).is_empty()
+	if not has_days and from_text.is_empty() and to_text.is_empty():
+		return true
+	if not facts.has("today") or not facts.has("weekday"):
+		return false
+	if has_days:
+		var code: String = DAY_CODES[int(facts["weekday"])]
+		var listed := false
+		for name: Variant in (days as Array):
+			if str(name).strip_edges().substr(0, 3).to_lower() == code:
+				listed = true
+		if not listed:
+			return false
+	var today := int(facts["today"])
+	var from_day := WeekCalendar.parse_date(from_text) if not from_text.is_empty() else -1
+	var to_day := WeekCalendar.parse_date(to_text) if not to_text.is_empty() else -1
+	# Yearly: only the month and day count, so a window may cross New Year.
+	if str(row.get("yearly", "")).strip_edges().to_lower() == "yes" and from_day >= 0 and to_day >= 0:
+		return _in_yearly_window(today, from_day, to_day)
+	if not from_text.is_empty() and today < from_day:
+		return false
+	if not to_text.is_empty() and today > to_day:
+		return false
+	return true
+
+
+## Month-and-day comparison for a yearly line; a window whose end falls before
+## its start (24 December to 3 January) wraps over the new year.
+static func _in_yearly_window(today: int, from_day: int, to_day: int) -> bool:
+	var now := _month_day(today)
+	var start := _month_day(from_day)
+	var end := _month_day(to_day)
+	if start <= end:
+		return now >= start and now <= end
+	return now >= start or now <= end
+
+
+static func _month_day(day_number: int) -> int:
+	var date := WeekCalendar.civil_from_days(day_number)
+	return int(date[1]) * 100 + int(date[2])
+
+
 ## Every row whose condition currently holds, in workbook order, with any
 ## token already filled in.
 static func eligible_lines(rows: Array, staff_hired: Dictionary, meta: Dictionary,
 		player_name: String = "", laws: Dictionary = {}) -> Array[String]:
 	var lines: Array[String] = []
 	for row: Dictionary in rows:
-		if OfficeNotices.condition_met(row, staff_hired, meta, laws):
+		if calendar_met(row, laws) and OfficeNotices.condition_met(row, staff_hired, meta, laws):
 			lines.append(fill_tokens(str(row.get("text_en", "")), player_name))
 	return lines
 

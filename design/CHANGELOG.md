@@ -2517,3 +2517,13 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 
 ## Ainu weekday names (2026-10-27, Cameron)
 - The Ainu calendar's third row now shows the day name in katakana (Text rows `calendar.ainu_weekday_sun..sat`): Monday クンネチュㇷ゚ト, Tuesday アペト, Wednesday ワッカト, Thursday ニト, Friday コンカネト, Saturday トイト, Sunday トカㇷ゚チュㇷ゚ト. Thursday has two names in Cameron's list (nito, cikunito); ニト is shown.
+
+## Ticker lines for specific days and date ranges (2026-10-27, Cameron)
+- Three optional columns on the Office Ticker tab: `weekdays` (Mon; Tue; ... or full names), `from_date` and `to_date` (YY.MM.DD, as the calendar square writes it, inclusive). Blank means no limit; they combine (AND) with the existing condition, so a line can be "always, but only on Fridays" or "when Funds is high, between 18.12.24 and 18.12.26". A single day is the same date in both columns.
+- `OfficeTicker.calendar_met()` reads today from `GameState.ticker_facts()` (`today`, `weekday`). The exporter checks day names, real dates and that From is not after To. Tests: `tests/test_ticker_calendar.gd`.
+- Dates are one-off (the run's own year); a yearly repeat such as 25 December every year is not built. Events' "On Date" column is still typed DD.MM.YY, unlike this one.
+
+## One date format, template ticker dates, and a yearly repeat (2026-10-27, Cameron)
+- **One format everywhere: YY.MM.DD.** The Events tab's On Date column now uses it too (EV47 is `18.10.09`); `WeekCalendar.parse_date()` is the single parser (the separate `parse_ymd` is gone), and the exporter checks Events dates the same way. Earlier notes above that say the Events column is DD.MM.YY are superseded.
+- **Yearly option:** a `yearly` column on Office Ticker (Yes, No or blank). With Yes the year in From/To is ignored, so `18.12.24` to `19.01.03` means 24 December to 3 January every year, and a window crossing New Year works. It needs both dates; the exporter says so if one is missing.
+- **Six template rows** (TK150-TK155) show each choice: one weekday, a weekend, a single day, a date range, a yearly window, and weekday plus range combined. Their text is plainly labelled "template"; edit or delete them.

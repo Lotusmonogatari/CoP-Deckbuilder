@@ -3724,6 +3724,10 @@ func ticker_facts() -> Dictionary:
 	var facts := law_statuses()
 	for key: Variant in active_news():
 		facts["news:%s" % str(key)] = "active"
+	# Today, for ticker lines gated to days or dates (OfficeTicker.calendar_met).
+	var cfg := calendar_config()
+	facts["today"] = WeekCalendar.today_number(calendar, cfg)
+	facts["weekday"] = WeekCalendar.weekday_index(calendar, cfg)
 	return facts
 
 

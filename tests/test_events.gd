@@ -194,16 +194,16 @@ func test_a_dues_change_does_nothing_when_nothing_is_owed() -> void:
 
 func test_dates_read_as_the_calendar_square_shows_them() -> void:
 	var cfg := WeekCalendar.settings(DataDB.balance)
-	assert_eq(WeekCalendar.parse_date("01.10.18"), WeekCalendar.today_number(WeekCalendar.fresh(), cfg))
-	assert_eq(WeekCalendar.parse_date("09.10.18") - WeekCalendar.parse_date("01.10.18"), 8)
-	assert_eq(WeekCalendar.parse_date("31.02.18"), -1, "not a real date")
+	assert_eq(WeekCalendar.parse_date("18.10.01"), WeekCalendar.today_number(WeekCalendar.fresh(), cfg))
+	assert_eq(WeekCalendar.parse_date("18.10.09") - WeekCalendar.parse_date("18.10.01"), 8)
+	assert_eq(WeekCalendar.parse_date("18.02.31"), -1, "not a real date")
 	assert_eq(WeekCalendar.parse_date("nonsense"), -1)
 
 
 func test_a_dated_event_is_due_from_its_day_and_only_once() -> void:
-	var events := [{"event_id": "E1", "trigger": "Dated", "on_date": "09.10.18"},
-		{"event_id": "E2", "trigger": "Random", "on_date": "09.10.18"}]
-	var day := WeekCalendar.parse_date("09.10.18")
+	var events := [{"event_id": "E1", "trigger": "Dated", "on_date": "18.10.09"},
+		{"event_id": "E2", "trigger": "Random", "on_date": "18.10.09"}]
+	var day := WeekCalendar.parse_date("18.10.09")
 	assert_eq(EventEngine.due_dated(events, day - 1, []).size(), 0, "the day before")
 	assert_eq(EventEngine.due_dated(events, day, []).size(), 1, "the day itself, and never a Random one")
 	assert_eq(EventEngine.due_dated(events, day + 20, []).size(), 1, "still due after being busy in a level")
@@ -215,7 +215,7 @@ func test_the_prime_ministers_address_waits_for_october_9() -> void:
 	GameState.calendar = {"week": 1, "phase": "work", "hours": 0}
 	assert_eq(GameState.due_dated_event(), "", "Monday 08.10.18")
 	GameState.calendar = {"week": 1, "phase": "work", "hours": 8}
-	assert_eq(GameState.due_dated_event(), "EV47", "Tuesday 09.10.18")
+	assert_eq(GameState.due_dated_event(), "EV47", "Tuesday 18.10.09")
 	assert_true(GameState.apply_event_choice("EV47", "A")["ok"])
 	assert_eq(GameState.due_dated_event(), "", "played once")
 	assert_true(GameState.dated_events_done.has("EV47"))
