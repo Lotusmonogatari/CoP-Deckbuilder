@@ -25,9 +25,25 @@ class WB:
         self.ss=[unescape(re.sub(r'<[^>]+>','',m)) for m in re.findall(r'<si>(.*?)</si>',ss,re.S)]
     def save(self,out=None):
         out=out or self.path
+        self._drop_calc_chain()
         zo=zipfile.ZipFile(out+'.tmp','w',zipfile.ZIP_DEFLATED)
-        for it in self.infos: zo.writestr(it,self.files[it.filename])
+        for it in self.infos:
+            if it.filename in self.files: zo.writestr(it,self.files[it.filename])
         zo.close(); shutil.move(out+'.tmp',out)
+    def _drop_calc_chain(self):
+        """calcChain.xml is only a cache of which cells hold formulas. After an edit
+        it can name cells that no longer have one, and Excel then reports "Removed
+        Records: Formula from /xl/calcChain.xml". Without it Excel rebuilds the
+        chain silently, so it is dropped on every save."""
+        name='xl/calcChain.xml'
+        if name not in self.files: return
+        del self.files[name]
+        rels='xl/_rels/workbook.xml.rels'
+        if rels in self.files:
+            self.files[rels]=re.sub(rb'<Relationship [^>]*calcChain[^>]*/>',b'',self.files[rels])
+        ct='[Content_Types].xml'
+        if ct in self.files:
+            self.files[ct]=re.sub(rb'<Override [^>]*calcChain[^>]*/>',b'',self.files[ct])
     # ---- reading
     def _x(self,name): return self.files[self.sheet[name]].decode()
     def text(self,attrs,body):

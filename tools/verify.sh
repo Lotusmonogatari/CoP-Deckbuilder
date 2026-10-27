@@ -44,6 +44,13 @@ if ! python3 tools/export_data.py; then
   failures=$((failures + 1))
 fi
 
+# Excel's "repair" prompt on opening the workbook comes from broken formula
+# records; catch them here (2026-10-27).
+if ! python3 tools/workbook/check_formulas.py; then
+  echo ">> FAILED: the workbook has formula records Excel would repair."
+  failures=$((failures + 1))
+fi
+
 # A new class_name script is only known to the project once Godot has
 # scanned it; without this a fresh class fails to resolve (2026-10-14).
 "$GODOT" --headless --path . --import >/dev/null 2>&1 || true

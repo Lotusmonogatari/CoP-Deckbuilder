@@ -43,3 +43,7 @@ Historical record, **not runnable as they stand** (they hard-code scratch paths 
 | `audits/` | Read-only audit scripts (content gaps, tone, depth, consistency) |
 
 Guides for writing the content itself: `design/WORKBOOK_EXPANSION_GUIDE.md`, `design/EDITING_TEXT.md`.
+
+## Excel's "repair" message
+
+`python3 tools/workbook/check_formulas.py` finds what makes Excel say "Removed Records: Shared formula ..." or "Formula from /xl/calcChain.xml": a shared formula whose range does not contain its own cells, or a calcChain entry for a cell that no longer holds a formula. `WB.save()` now drops `calcChain.xml` on every save (Excel rebuilds it silently); `tools/verify.sh` runs the check.
