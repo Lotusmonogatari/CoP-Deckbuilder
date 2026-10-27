@@ -2517,3 +2517,8 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 
 ## Ainu weekday names (2026-10-27, Cameron)
 - The Ainu calendar's third row now shows the day name in katakana (Text rows `calendar.ainu_weekday_sun..sat`): Monday クンネチュㇷ゚ト, Tuesday アペト, Wednesday ワッカト, Thursday ニト, Friday コンカネト, Saturday トイト, Sunday トカㇷ゚チュㇷ゚ト. Thursday has two names in Cameron's list (nito, cikunito); ニト is shown.
+
+## Ticker lines for specific days and date ranges (2026-10-27, Cameron)
+- Three optional columns on the Office Ticker tab: `weekdays` (Mon; Tue; ... or full names), `from_date` and `to_date` (YY.MM.DD, as the calendar square writes it, inclusive). Blank means no limit; they combine (AND) with the existing condition, so a line can be "always, but only on Fridays" or "when Funds is high, between 18.12.24 and 18.12.26". A single day is the same date in both columns.
+- `OfficeTicker.calendar_met()` reads today from `GameState.ticker_facts()` (`today`, `weekday`). The exporter checks day names, real dates and that From is not after To. Tests: `tests/test_ticker_calendar.gd`.
+- Dates are one-off (the run's own year); a yearly repeat such as 25 December every year is not built. Events' "On Date" column is still typed DD.MM.YY, unlike this one.

@@ -92,7 +92,7 @@ contains 60 levels, 23 canon stages, 18 boosters, 32 modifiers, 54 cards,
 | `questions.json` | stage type | The questions each kind of room can ask, graded S/M/W per suit. `asked_by` is an opp_id, resolved dynamically from whichever opponents.json rows list that room's stage_id in their own `stages` — never a hardcoded reporter list (`export_data.py`'s `fold_questions()`) |
 | `player.json` | player_id | The four choosable protagonists (PC01–PC04), all cast with real names and parties as of the 2026-09-26 databook. New fields beyond name/party/blurb are display-only for now (Cameron's call) |
 | `office_notices.json` | notice_id | One line of Office-screen flavor text per slot, conditioned on staff hired or a meta-variable threshold — see §13-adjacent `OfficeNotices.gd` |
-| `office_ticker.json` | ticker_id | Lines for the Office screen's scrolling news strip, same condition schema as office_notices.json (or `always`), but every eligible line cycles rather than one winner per slot — see the 2026-09-28 mobile playtest fixes, `OfficeTicker.gd` |
+| `office_ticker.json` | ticker_id | Lines for the Office screen's scrolling news strip, same condition schema as office_notices.json (or `always`), but every eligible line cycles rather than one winner per slot; optional `weekdays`, `from_date`, `to_date` columns (YY.MM.DD, inclusive) gate a line to days or a date range, ANDed with the condition — see the 2026-09-28 mobile playtest fixes, `OfficeTicker.gd` |
 | `parties.json` | party_id | The six real parties: name, official RGB colour, seat count (the real Sep-18 session, summing to 101), Leader Opp ID (blank until Cameron casts one), `vote_resistance` (blank = the flat default) — §7.7 |
 | `floor_votes.json` | bill_id (BIxx) | National Assembly Floor Voting (ST23) bills: bill text, per-disposition favorability deltas, a `positions` list (one per party), and an optional influence-swing bonus (`influence_bonus_reputation`/`influence_bonus_party_support`, blank = none). No level link on the bill itself — see §7.7 |
 | `level_intros.json` | level_id + role | A hired staff member's own line about a specific level, shown on the Level Intro screen between the Office and that level's first stage. Flat rows, entirely optional per (level, role) pair — see §7.8 |
@@ -678,3 +678,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Singular hours, a YY.MM.DD calendar with the weekday, and two calendar packages (2026-10-26, Cameron)
 - Marketplace item tiles show the quantity only, in a sideways row (2026-10-27, Cameron)
 - Hard-coded numbers and lists moved to the workbook (2026-10-27, Cameron)
+- Ticker lines for specific days and date ranges (2026-10-27, Cameron)

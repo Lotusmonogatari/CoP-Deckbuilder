@@ -187,6 +187,11 @@ SHEETS = {
             ("condition_op", "condition_op", "str"),
             ("condition_value", "condition_value", "num"),
             ("text_en", "text_en", "str"),
+            # Optional calendar gates (2026-10-27): days of the week and an
+            # inclusive date range, ANDed with the condition above.
+            ("weekdays", "weekdays", "id_list"),
+            ("from_date", "from_date", "str"),
+            ("to_date", "to_date", "str"),
         ],
     },
     # A hired staff member's own line about the level the player is about to
@@ -2355,6 +2360,29 @@ def validate(data, report):
                 report.warn(table, f"{row.get('notice_id') or row.get('ticker_id')} names the staff role "
                             f"'{row.get('condition_target')}', which is not in the Staff tab "
                             f"({', '.join(sorted(known_roles))}), so it can never be hired")
+    # Ticker calendar gates (2026-10-27): weekday names and YY.MM.DD dates.
+    day_names = {"mon", "tue", "wed", "thu", "fri", "sat", "sun"}
+    for row in data.get("office_ticker", []):
+        tid = row.get("ticker_id")
+        for name in (row.get("weekdays") or []):
+            if str(name).strip()[:3].lower() not in day_names:
+                report.error("office_ticker", f"{tid} names the day '{name}'; use Mon, Tue, Wed, Thu, Fri, Sat or Sun")
+        bounds = []
+        for column in ("from_date", "to_date"):
+            text = str(row.get(column) or "").strip()
+            if not text:
+                continue
+            parts = text.split(".")
+            ok = len(parts) == 3 and all(part.isdigit() for part in parts)
+            if ok:
+                try:
+                    bounds.append(datetime.date(2000 + int(parts[0]), int(parts[1]), int(parts[2])))
+                except ValueError:
+                    ok = False
+            if not ok:
+                report.error("office_ticker", f"{tid}'s {column} '{text}' is not a real date written YY.MM.DD")
+        if len(bounds) == 2 and bounds[0] > bounds[1]:
+            report.error("office_ticker", f"{tid}'s from_date is after its to_date")
     for table in ("office_notices", "office_ticker"):
         for row in data.get(table, []):
             if row.get("condition_type") == "law":
