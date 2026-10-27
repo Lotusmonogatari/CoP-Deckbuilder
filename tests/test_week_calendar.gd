@@ -111,6 +111,6 @@ func test_exactly_one_hour_is_written_in_the_singular() -> void:
 
 func test_ymd_dates_parse_the_way_the_square_writes_them() -> void:
 	var start := WeekCalendar.today_number(WeekCalendar.fresh(), _cfg)
-	assert_eq(WeekCalendar.parse_ymd("18.10.01"), start)
-	assert_eq(WeekCalendar.parse_ymd("18.10.32"), -1)
-	assert_eq(WeekCalendar.parse_ymd("nonsense"), -1)
+	assert_eq(WeekCalendar.parse_date("18.10.01"), start)
+	assert_eq(WeekCalendar.parse_date("18.10.32"), -1)
+	assert_eq(WeekCalendar.parse_date("nonsense"), -1)

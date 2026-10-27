@@ -66,11 +66,32 @@ static func calendar_met(row: Dictionary, facts: Dictionary) -> bool:
 		if not listed:
 			return false
 	var today := int(facts["today"])
-	if not from_text.is_empty() and today < WeekCalendar.parse_ymd(from_text):
+	var from_day := WeekCalendar.parse_date(from_text) if not from_text.is_empty() else -1
+	var to_day := WeekCalendar.parse_date(to_text) if not to_text.is_empty() else -1
+	# Yearly: only the month and day count, so a window may cross New Year.
+	if str(row.get("yearly", "")).strip_edges().to_lower() == "yes" and from_day >= 0 and to_day >= 0:
+		return _in_yearly_window(today, from_day, to_day)
+	if not from_text.is_empty() and today < from_day:
 		return false
-	if not to_text.is_empty() and today > WeekCalendar.parse_ymd(to_text):
+	if not to_text.is_empty() and today > to_day:
 		return false
 	return true
+
+
+## Month-and-day comparison for a yearly line; a window whose end falls before
+## its start (24 December to 3 January) wraps over the new year.
+static func _in_yearly_window(today: int, from_day: int, to_day: int) -> bool:
+	var now := _month_day(today)
+	var start := _month_day(from_day)
+	var end := _month_day(to_day)
+	if start <= end:
+		return now >= start and now <= end
+	return now >= start or now <= end
+
+
+static func _month_day(day_number: int) -> int:
+	var date := WeekCalendar.civil_from_days(day_number)
+	return int(date[1]) * 100 + int(date[2])
 
 
 ## Every row whose condition currently holds, in workbook order, with any

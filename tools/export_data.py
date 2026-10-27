@@ -192,6 +192,7 @@ SHEETS = {
             ("weekdays", "weekdays", "id_list"),
             ("from_date", "from_date", "str"),
             ("to_date", "to_date", "str"),
+            ("yearly", "yearly", "str"),
         ],
     },
     # A hired staff member's own line about the level the player is about to
@@ -2381,7 +2382,12 @@ def validate(data, report):
                     ok = False
             if not ok:
                 report.error("office_ticker", f"{tid}'s {column} '{text}' is not a real date written YY.MM.DD")
-        if len(bounds) == 2 and bounds[0] > bounds[1]:
+        yearly = str(row.get("yearly") or "").strip().lower()
+        if yearly not in ("", "yes", "no"):
+            report.error("office_ticker", f"{tid}'s yearly is '{row.get('yearly')}'; use Yes, No or leave it blank")
+        if yearly == "yes" and len(bounds) != 2:
+            report.error("office_ticker", f"{tid} repeats yearly, so it needs both a from_date and a to_date")
+        if len(bounds) == 2 and bounds[0] > bounds[1] and yearly != "yes":
             report.error("office_ticker", f"{tid}'s from_date is after its to_date")
     for table in ("office_notices", "office_ticker"):
         for row in data.get(table, []):
@@ -2718,13 +2724,13 @@ def validate(data, report):
         if row["trigger"] == "Dated":
             ok_date = False
             try:
-                d, m, y = (int(x) for x in str(row.get("on_date") or "").split("."))
+                y, m, d = (int(x) for x in str(row.get("on_date") or "").split("."))
                 datetime.date(2000 + y, m, d)
                 ok_date = True
             except ValueError:
                 pass
             if not ok_date:
-                report.error("Events", f"{eid} is Dated but its On Date '{row.get('on_date')}' is not a real DD.MM.YY date")
+                report.error("Events", f"{eid} is Dated but its On Date '{row.get('on_date')}' is not a real YY.MM.DD date")
         if row.get("speaker_title"):
             wanted = str(row["speaker_title"]).strip().lower()
             titles = {t.strip().lower() for o in data.get("opponents", []) for t in str(o.get("title") or "").split(";")}

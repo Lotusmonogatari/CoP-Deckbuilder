@@ -2,7 +2,7 @@ extends GutTest
 ## Ticker lines gated to days of the week and date ranges (2026-10-27).
 
 func _facts(date: String, weekday: int) -> Dictionary:
-	return {"today": WeekCalendar.parse_ymd(date), "weekday": weekday}
+	return {"today": WeekCalendar.parse_date(date), "weekday": weekday}
 
 
 func _row(extra: Dictionary) -> Dictionary:
@@ -50,5 +50,24 @@ func test_days_and_dates_and_the_condition_all_have_to_hold() -> void:
 func test_the_live_facts_carry_today_and_the_weekday() -> void:
 	GameState.calendar = WeekCalendar.fresh()
 	var facts := GameState.ticker_facts()
-	assert_eq(int(facts["today"]), WeekCalendar.parse_ymd("18.10.01"))
+	assert_eq(int(facts["today"]), WeekCalendar.parse_date("18.10.01"))
 	assert_eq(int(facts["weekday"]), 1, "the run starts on a Monday")
+
+
+func test_a_yearly_window_ignores_the_year_and_wraps_over_new_year() -> void:
+	var row := _row({"from_date": "18.12.24", "to_date": "19.01.03", "yearly": "Yes"})
+	assert_true(OfficeTicker.calendar_met(row, _facts("18.12.25", 2)))
+	assert_true(OfficeTicker.calendar_met(row, _facts("21.01.02", 6)), "three years later")
+	assert_false(OfficeTicker.calendar_met(row, _facts("21.06.15", 2)))
+	assert_false(OfficeTicker.calendar_met(row, _facts("21.12.23", 4)))
+
+
+func test_a_yearly_window_inside_one_year_still_works() -> void:
+	var row := _row({"from_date": "18.03.01", "to_date": "18.03.31", "yearly": "Yes"})
+	assert_true(OfficeTicker.calendar_met(row, _facts("20.03.15", 0)))
+	assert_false(OfficeTicker.calendar_met(row, _facts("20.04.01", 0)))
+
+
+func test_without_yearly_the_exact_years_are_required() -> void:
+	var row := _row({"from_date": "18.12.24", "to_date": "19.01.03"})
+	assert_false(OfficeTicker.calendar_met(row, _facts("21.01.02", 6)))

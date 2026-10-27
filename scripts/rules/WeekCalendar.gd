@@ -177,25 +177,10 @@ static func today_number(state: Dictionary, cfg: Dictionary) -> int:
 	return start + day_offset(state, cfg)
 
 
-## "DD.MM.YY" (as typed in the Events tab's On Date column) as a day number; -1 when it is
-## not a real date. Two-digit years are 20xx.
+## "YY.MM.DD" as a day number; -1 when it is not a real date. This is the one
+## date format everywhere: the calendar square, the Events tab's On Date column
+## and the Office Ticker's date columns. Two-digit years are 20xx.
 static func parse_date(text: String) -> int:
-	var parts := text.strip_edges().split(".")
-	if parts.size() != 3 or not (parts[0].is_valid_int() and parts[1].is_valid_int() and parts[2].is_valid_int()):
-		return -1
-	var day := int(parts[0])
-	var month := int(parts[1])
-	var year := 2000 + int(parts[2])
-	if month < 1 or month > 12 or day < 1 or day > 31:
-		return -1
-	var number := days_from_civil(year, month, day)
-	var back := civil_from_days(number)
-	return number if int(back[0]) == year and int(back[1]) == month and int(back[2]) == day else -1
-
-
-## "YY.MM.DD" (the calendar square's own format) as a day number; -1 when it
-## is not a real date. Two-digit years are 20xx.
-static func parse_ymd(text: String) -> int:
 	var parts := text.strip_edges().split(".")
 	if parts.size() != 3 or not (parts[0].is_valid_int() and parts[1].is_valid_int() and parts[2].is_valid_int()):
 		return -1
@@ -216,7 +201,6 @@ static func date_label(number: int) -> String:
 
 
 ## "YY.MM.DD", for the calendar square (Cameron, 2026-10-26). The Events tab's
-## "On Date" column is still typed DD.MM.YY (parse_date), as it always was.
 static func date_text(state: Dictionary, cfg: Dictionary) -> String:
 	var start := days_from_civil(int(cfg["start_year"]), int(cfg["start_month"]), int(cfg["start_day"]))
 	var date := civil_from_days(start + day_offset(state, cfg))
