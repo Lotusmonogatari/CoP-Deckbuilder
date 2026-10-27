@@ -1,7 +1,7 @@
 import sys; sys.path.insert(0,'.')
 from load import *
 import collections
-M=openpyxl.load_workbook('/home/user/CoP-Deckbuilder/design/CoP_Starter_Card_Stage_Data.xlsx',read_only=True)
+M=openpyxl.load_workbook('/home/user/CoP-Deckbuilder/design/Game_Workbook.xlsx',read_only=True)
 def mt(n):
     rs=[r for r in M[n].iter_rows(values_only=True) if any(c is not None for c in r)]
     h=list(rs[0]); return h,[{k:v for k,v in zip(h,r) if k} for r in rs[1:]]

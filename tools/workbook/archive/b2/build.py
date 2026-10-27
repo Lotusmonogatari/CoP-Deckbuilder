@@ -2,7 +2,7 @@ import sys,shutil
 sys.path.insert(0,'/tmp/claude-0/b1'); sys.path.insert(0,'/tmp/claude-0/b2')
 from wbx import WB
 from model import *; from bills import BILLS; from bills2 import L,FLIP,LAW
-MASTER='/home/user/CoP-Deckbuilder/design/CoP_Starter_Card_Stage_Data.xlsx'
+MASTER='/home/user/CoP-Deckbuilder/design/Game_Workbook.xlsx'
 OUT='/tmp/claude-0/b2/draft2.xlsx'
 shutil.copy(MASTER,OUT); w=WB(OUT)
 DELTA={1:(1,-1),3:(3,-2),5:(5,-5)}

@@ -2,7 +2,7 @@ import sys, json, re, random
 sys.path.insert(0,'/tmp/claude-0/b1'); sys.path.insert(0,'/tmp/claude-0/b6')
 import wbx
 from content import *; from content2 import *
-P='design/CoP_Starter_Card_Stage_Data.xlsx'
+P='design/Game_Workbook.xlsx'
 w=wbx.WB(P)
 st=json.load(open('data/stages.json')); st=st if isinstance(st,list) else list(st.values())
 S={s['stage_id']:s for s in st}

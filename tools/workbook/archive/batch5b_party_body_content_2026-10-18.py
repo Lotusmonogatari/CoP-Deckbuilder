@@ -7,7 +7,7 @@ import json, sys
 sys.path.insert(0, 'tools/workbook')
 from wbx import WB
 
-PATH = 'design/CoP_Starter_Card_Stage_Data.xlsx'
+PATH = 'design/Game_Workbook.xlsx'
 stages = json.load(open('data/stages.json'))
 caucuses = '; '.join(s['stage_id'] for s in stages if 'Caucus' in s['name_en'])
 

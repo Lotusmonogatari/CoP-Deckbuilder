@@ -135,7 +135,7 @@ ORG = {
 ]),
 }
 # the theme names with BOxx in 'also' were typos of org ids only; keep ids.
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 sheets = {T: ('Town Hall Questions', 'T'), L: ('Lobbyist Questions', 'L'), B: ('Study Session Questions', 'B')}
 next_id = {}
 for pool, (sheet, pre) in sheets.items():

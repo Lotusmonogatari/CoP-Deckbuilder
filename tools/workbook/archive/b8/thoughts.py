@@ -68,7 +68,7 @@ for l in levels:
             bill_level[v] = l['level_id']
 
 def cap(t): return t[0].upper() + t[1:]
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 # 1. Level Intro Thoughts
 added_l = 0
 for lid, ts in LEVEL.items():

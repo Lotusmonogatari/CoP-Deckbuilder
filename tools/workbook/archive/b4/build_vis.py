@@ -4,7 +4,7 @@ from wbx import *
 from visitors import V
 from spec import B
 import openpyxl
-REPO='/home/user/CoP-Deckbuilder'; P=REPO+'/design/CoP_Starter_Card_Stage_Data.xlsx'
+REPO='/home/user/CoP-Deckbuilder'; P=REPO+'/design/Game_Workbook.xlsx'
 w=WB(P); ox=openpyxl.load_workbook(P,read_only=True,data_only=True)
 orows=lambda n:[list(r) for r in ox[n].iter_rows(values_only=True)]
 le=json.load(open(REPO+'/data/law_effects.json'))

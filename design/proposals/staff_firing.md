@@ -51,7 +51,7 @@ that price should be normal).
 
 | File | Change |
 |---|---|
-| `design/CoP_Starter_Card_Stage_Data.xlsx` (Staff tab) | New column M, `Firing Cost from Funds (Yen)` — every existing row priced at 10% of its hiring cost, Cameron's to retune per candidate. Four new Text-tab rows (`office.fire_staff`, `office.fire_staff_warning`, `office.fire_staff_confirm`, `office.staff_fired`) and a rewritten `office.staff_blurb`. |
+| `design/Game_Workbook.xlsx` (Staff tab) | New column M, `Firing Cost from Funds (Yen)` — every existing row priced at 10% of its hiring cost, Cameron's to retune per candidate. Four new Text-tab rows (`office.fire_staff`, `office.fire_staff_warning`, `office.fire_staff_confirm`, `office.staff_fired`) and a rewritten `office.staff_blurb`. |
 | `tools/export_data.py` | Staff column mapping reads `firing_cost_yen` from the new column. |
 | `scripts/rules/Ledger.gd` | `staff_firing_cost()` (the workbook column, falling back to 10% of hiring cost for a hand-built candidate that lacks it), `staff_fire_refusal()`/`can_fire_staff()`. `staff_hire_refusal()`/`can_hire_staff()` gained a `fired` parameter — a fired candidate refuses with `office.staff_fired`, checked before every other reason. |
 | `scripts/autoload/GameState.gd` | New `staff_fired: Dictionary` (staff_id → true, persisted in `_SAVED_FIELDS`), cleared by `reset_staff()`. New `fire_staff(role)`: pays the severance, empties the role, marks the candidate fired. Nothing about `hire_staff()`/`upgrade_staff()`'s spending or rewards changed. |

@@ -14,7 +14,7 @@ def ctx(c):
     losers = [x['target'] for x in (c.get('loses') or []) if x['target'] in org]
     return dict(p=c['phrase'], owner=owner, rival=org[losers[0]] if losers else 'its critics',
                 owner_s=owner + ("'" if owner.endswith('s') else "'s"))
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 n = 0
 for tab, frames in (('Player Cues', PLAYER), ('Opponent Cues', OPPONENT)):
     for r, v in w.rows(tab).items():

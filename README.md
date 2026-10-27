@@ -30,7 +30,7 @@ tools/verify.sh
 | | |
 |---|---|
 | `data/*.json` | The source of truth for all content, exported from the design workbook. Never hand-edited except a few files `tools/export_data.py`'s own comments mark as hand-maintained. |
-| `design/CoP_Starter_Card_Stage_Data.xlsx` | The design workbook itself. Cameron's. |
+| `design/Game_Workbook.xlsx` | The design workbook itself. Cameron's. |
 | `design/proposals/` | Design docs and plans written for Cameron's review, one per feature area. |
 | `scripts/rules/` | The battle and meta rules, as plain GDScript with no scene or autoload access — provably headless. |
 | `scripts/autoload/` | Game state, the data loader, and the other singletons the screens read from. |

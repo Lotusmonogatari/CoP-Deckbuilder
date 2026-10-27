@@ -5,7 +5,7 @@ sys.path.insert(0, "tools/workbook"); sys.path.insert(0, "tools/workbook/archive
 from wbx import WB
 from oc_styles import STYLE, TOPIC, CARE
 opps = json.load(open("data/opponents.json"))
-w = WB("design/CoP_Starter_Card_Stage_Data.xlsx")
+w = WB("design/Game_Workbook.xlsx")
 rows = w.rows("Opponent Cues")
 last = max(rows)
 nid = max(int(v["A"][2:]) for v in rows.values() if v.get("A", "").startswith("OC")) + 1

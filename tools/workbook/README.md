@@ -1,13 +1,13 @@
 # Editing the design workbook safely
 
-The workbook (`design/CoP_Starter_Card_Stage_Data.xlsx`) is the source of truth for all content. **Never save it with openpyxl**: a load/save round trip silently corrupts cached values (it wiped the Stages tab's formula results and altered Sanban numbers). openpyxl is fine for *reading*.
+The workbook (`design/Game_Workbook.xlsx`) is the source of truth for all content. **Never save it with openpyxl**: a load/save round trip silently corrupts cached values (it wiped the Stages tab's formula results and altered Sanban numbers). openpyxl is fine for *reading*.
 
 `wbx.py` edits the raw XML instead, so only the cells you touch change:
 
 ```python
 import sys; sys.path.insert(0, "tools/workbook")
 from wbx import WB
-w = WB("design/CoP_Starter_Card_Stage_Data.xlsx")
+w = WB("design/Game_Workbook.xlsx")
 w.rows("Modifiers")                                   # {row: {column letter: text}}
 w.find_row("Boosters", "BO19")                        # row number of a key
 w.set_cell("Boosters", w.find_row("Boosters", "BO19"), "F", "M33", style_from=4)
@@ -43,3 +43,7 @@ Historical record, **not runnable as they stand** (they hard-code scratch paths 
 | `audits/` | Read-only audit scripts (content gaps, tone, depth, consistency) |
 
 Guides for writing the content itself: `design/WORKBOOK_EXPANSION_GUIDE.md`, `design/EDITING_TEXT.md`.
+
+## Excel's "repair" message
+
+`python3 tools/workbook/check_formulas.py` finds what makes Excel say "Removed Records: Shared formula ..." or "Formula from /xl/calcChain.xml": a shared formula whose range does not contain its own cells, or a calcChain entry for a cell that no longer holds a formula. `WB.save()` now drops `calcChain.xml` on every save (Excel rebuilds it silently); `tools/verify.sh` runs the check.

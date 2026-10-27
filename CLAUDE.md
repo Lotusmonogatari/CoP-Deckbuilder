@@ -63,7 +63,7 @@ Expressions for character art (data/art.json): `neutral`, `attacking`, `guarding
 
 ## 6. Data contract
 
-The design workbook (`design/CoP_Starter_Card_Stage_Data.xlsx`) is exported by
+The design workbook (`design/Game_Workbook.xlsx`) is exported by
 `tools/export_data.py`. The exporter maps workbook tabs into JSON files; some
 outputs are objects or nested structures rather than arrays, and some runtime
 files are maintained by hand. Follow the exporter and the `_README` fields in
@@ -498,7 +498,7 @@ so a card that is played is a node that can still be animated.
 ## 14. Working notes that still apply
 
 - **The change log.** Dated build notes (what each feature does, its levers and tests) are in `design/CHANGELOG.md`, in the order they were written; search it by system name (Special Levels, game clock, patron bills, organization chips, party opinion, bill stance, and so on). The list of its sections is at the end of this file.
-- **Workbook edits.** Never save `design/CoP_Starter_Card_Stage_Data.xlsx` with openpyxl (it corrupts values and wipes formula caches). Edit raw XML with `tools/workbook/wbx.py` (`tools/workbook/README.md`); brand-new tabs get header notes from `tools/workbook/add_notes_new_tabs.py`, older tabs from `add_notes.py`. After every edit run `python3 tools/export_data.py` (it must say "No errors"); `--accept-wording` refreshes `tests/wording_snapshot.json` when Text-tab rows change.
+- **Workbook edits.** Never save `design/Game_Workbook.xlsx` with openpyxl (it corrupts values and wipes formula caches). Edit raw XML with `tools/workbook/wbx.py` (`tools/workbook/README.md`); brand-new tabs get header notes from `tools/workbook/add_notes_new_tabs.py`, older tabs from `add_notes.py`. After every edit run `python3 tools/export_data.py` (it must say "No errors"); `--accept-wording` refreshes `tests/wording_snapshot.json` when Text-tab rows change.
 - **Every sentence is a Text-tab row** and the exporter requires literal keys (`Text.say("a.b")`, never a built-up key).
 - **New `class_name` scripts** need `.tools/godot --headless --path . --import` before GUT will see them.
 - **Verification.** GUT: `.tools/godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit`. Full gate: `tools/verify.sh` (about 10 to 15 minutes; run it in the background and wait for "All checks passed"). Merge the working branch to `main` only after it passes.

@@ -1,6 +1,6 @@
 # Expanding the workbook: a guide for an assistant
 
-For an assistant (human or AI) adding content to `design/CoP_Starter_Card_Stage_Data.xlsx`: new stages, questions tied to them, spoken cues, opponents, bills and their effects. It explains how the pieces connect, what each number does to play, and how to phrase writing so it fits where it can appear.
+For an assistant (human or AI) adding content to `design/Game_Workbook.xlsx`: new stages, questions tied to them, spoken cues, opponents, bills and their effects. It explains how the pieces connect, what each number does to play, and how to phrase writing so it fits where it can appear.
 
 Read with: `design/EDITING_TEXT.md` (tab-by-tab editing), `design/CONTENT_PROMPT.md` (a batch-drafting prompt), the **Tone Guide** tab, and the header notes on every column (hover a header cell in Excel). Written 2026-10-12, revised the same day and again on 2026-10-13 after a review of a 21-room draft (see §2.7, §2.8, §3 and §10). **Ground rule (Cameron, 2026-10-13): an expansion adds content, never mechanics.** Every room, existing or new, may draw on the base (generic) content and on stage-specific content where it applies; new rooms are built like an existing room of their kind against the code and workbook as they stand (23 stages, 60 levels, 30 organisations, 125 opponents, 39 visitors, 30 bills, 201 question themes).
 

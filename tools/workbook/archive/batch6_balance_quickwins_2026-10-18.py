@@ -5,7 +5,7 @@ import re, sys
 sys.path.insert(0, 'tools/workbook')
 from wbx import WB
 
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 s = w.rows('Stages')
 THRESH = {'Town Hall': 50, 'Party Caucus': 46, 'Party Steering Committee': 40}
 def r5(v): return int(round(v / 5.0)) * 5

@@ -14,7 +14,7 @@ from wbx import replace_sheet_data
 with contextlib.redirect_stdout(io.StringIO()):
     import patron_plan as P
 
-PATH = "design/CoP_Starter_Card_Stage_Data.xlsx"
+PATH = "design/Game_Workbook.xlsx"
 # org: (W, V, [offers])   each = (phrase, committee stage, tags)
 EXTRA = {
  "BO03": (("fund district office staff training", "ST17", {"Localism": 0.5, "Technocratic": 0.3}),

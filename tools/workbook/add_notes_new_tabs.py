@@ -18,7 +18,7 @@ sys.path.insert(0, __file__.rsplit("/", 1)[0])
 from wbx import col2n  # noqa: E402
 from add_notes import _sheet_part  # noqa: E402
 
-PATH = "design/CoP_Starter_Card_Stage_Data.xlsx"
+PATH = "design/Game_Workbook.xlsx"
 
 NOTES = {
     "Bill Components": [

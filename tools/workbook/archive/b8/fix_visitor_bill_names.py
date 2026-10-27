@@ -14,7 +14,7 @@ for o in ov:
     if not l: continue
     b = next((l.get(f'stage_{i}') for i in range(1, 11) if str(l.get(f'stage_{i}') or '').startswith('BI')), None)
     if b: vis_bill[o['visitor_id']] = name[b]
-w = WB('design/CoP_Starter_Card_Stage_Data.xlsx')
+w = WB('design/Game_Workbook.xlsx')
 n = 0
 for r, v in w.rows('Visitor Questions').items():
     vid = v.get('B'); t = v.get('C') or ''

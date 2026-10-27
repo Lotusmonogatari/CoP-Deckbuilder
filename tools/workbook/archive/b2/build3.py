@@ -3,7 +3,7 @@ sys.path.insert(0,'/tmp/claude-0/b1'); sys.path.insert(0,'/tmp/claude-0/b2')
 from wbx import WB
 from model import SEATS
 from ovr import OVR
-MASTER='/home/user/CoP-Deckbuilder/design/CoP_Starter_Card_Stage_Data.xlsx'; OUT='/tmp/claude-0/b2/draft3.xlsx'
+MASTER='/home/user/CoP-Deckbuilder/design/Game_Workbook.xlsx'; OUT='/tmp/claude-0/b2/draft3.xlsx'
 shutil.copy(MASTER,OUT); w=WB(OUT)
 # 1. Balance levers
 w.append_row('Balance',{'A':'Law lean: Party-tier Pass Delta','B':3,'C':'Party Headquarters and Party Faction (the Boosters tab\'s tier "Party") move by this when a bill passes, from where the PLAYER\'S OWN party stood on it: up if the party backed it, down if it opposed it. A Neutral party moves nothing. Replaces fixed Law Effects rows for those two organisations.'})
