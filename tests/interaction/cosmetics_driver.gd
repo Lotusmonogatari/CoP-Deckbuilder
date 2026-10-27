@@ -197,6 +197,25 @@ func _walk() -> void:
 		return
 	print("  equipped the test package's music independently of the outfit slot (already un-equipped)")
 
+	# --- A calendar package changes the live calendar square at once ---------
+	# (2026-10-27, Cameron: it only changed after a level was started).
+	GameState.owned_cosmetic_packages.append("CP05")
+	office.call("_show_cosmetics")
+	await _wait(0.2)
+	panel = office.get_node("CosmeticsPanel") as Overlay
+	var calendar_row := panel.find_child("CosmeticSlot_calendar", true, false)
+	var calendar_choice := _button_with_text(calendar_row, CosmeticPieces.field(DataDB.get_cosmetic_package("CP05"), "name_en")) if calendar_row != null else null
+	if calendar_choice == null:
+		_failures.append("no Calendar equip button appeared for an owned calendar package")
+		return
+	await _click(calendar_choice)
+	var square_date := office.find_child("CalendarDate", true, false) as Label
+	if square_date == null or not square_date.text.begins_with("平成"):
+		_failures.append("equipping the Era Name calendar did not change the live calendar square (got %s)"
+			% [square_date.text if square_date else "null"])
+		return
+	print("  equipped a calendar package and the live calendar square changed at once")
+
 	panel.close()
 	await _wait(0.2)
 

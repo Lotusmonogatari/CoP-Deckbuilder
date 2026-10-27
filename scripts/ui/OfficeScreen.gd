@@ -1835,6 +1835,13 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 	if slot == CosmeticPieces.OUTFIT and _portrait is PlaceholderArt:
 		var art := _portrait as PlaceholderArt
 		art.art_id = art.art_id
+	# The calendar square and the Office music read the equipped package only
+	# when asked, so they are asked again now (2026-10-27, Cameron: a new
+	# calendar only appeared after starting a level).
+	if slot == CosmeticPieces.CALENDAR:
+		_refresh_calendar()
+	if slot == CosmeticPieces.MUSIC:
+		Audio.play_music("music_office")
 	_show_cosmetics()
 
 
