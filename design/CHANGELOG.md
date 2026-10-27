@@ -2514,3 +2514,6 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 - 29 new Balance rows: win-over odds and Undecided cost, press reputation bonus, patron visit deltas, Flagship discount after a failed Favor, tendency cutoffs, ally neutral band, hosted guest share, audience scale cap. Rules files read them through `Levers` (filled by DataDB), with no fallback number.
 - Staff roles come from the Staff tab, suit names from `suits.json`, card frames per suit from `data/art.json`. ST05 gained its Question Pool cell; the BattleSetup fallback tables are gone.
 - Audit: `design/review/HARDCODED_AUDIT_2026-10-27.md`.
+
+## Ainu weekday names (2026-10-27, Cameron)
+- The Ainu calendar's third row now shows the day name in katakana (Text rows `calendar.ainu_weekday_sun..sat`): Monday クンネチュㇷ゚ト, Tuesday アペト, Wednesday ワッカト, Thursday ニト, Friday コンカネト, Saturday トイト, Sunday トカㇷ゚チュㇷ゚ト. Thursday has two names in Cameron's list (nito, cikunito); ニト is shown.

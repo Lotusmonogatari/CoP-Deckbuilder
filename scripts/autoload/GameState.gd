@@ -1353,7 +1353,14 @@ func calendar_style() -> String:
 func calendar_weekday_text() -> String:
 	var style := calendar_style()
 	if style == CalendarStyles.AINU:
-		return ""   # two levels only: no Ainu day names have been given
+		match WeekCalendar.weekday_index(calendar, calendar_config()):
+			0: return Text.say("calendar.ainu_weekday_sun")
+			1: return Text.say("calendar.ainu_weekday_mon")
+			2: return Text.say("calendar.ainu_weekday_tue")
+			3: return Text.say("calendar.ainu_weekday_wed")
+			4: return Text.say("calendar.ainu_weekday_thu")
+			5: return Text.say("calendar.ainu_weekday_fri")
+			_: return Text.say("calendar.ainu_weekday_sat")
 	if style == CalendarStyles.ERA:
 		match WeekCalendar.weekday_index(calendar, calendar_config()):
 			0: return Text.say("calendar.weekday_jp_sun")

@@ -68,7 +68,7 @@ func test_the_two_calendars_cost_2000_yen_and_can_be_switched_back_and_forth() -
 	assert_eq(GameState.buy_cosmetic_package("CP06"), "")
 	GameState.equip_cosmetic(CosmeticPieces.CALENDAR, "CP06")
 	assert_eq(GameState.calendar_date_text(), "2018.ウレポク.01")
-	assert_eq(GameState.calendar_weekday_text(), "", "the Ainu calendar has two levels")
+	assert_eq(GameState.calendar_weekday_text(), "クンネチュㇷ゚ト", "Monday in Ainu, katakana")
 	GameState.equip_cosmetic(CosmeticPieces.CALENDAR, "")
 
 
