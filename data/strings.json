@@ -1184,9 +1184,9 @@
   },
   {
     "key": "inventory.entry",
-    "where": "Inventory panel, one item's button",
-    "english": "{name} ×{count}",
-    "placeholders": "name, count",
+    "where": "Inventory panel, one item's button (quantity only; the name is in the pop-up)",
+    "english": "×{count}",
+    "placeholders": "count",
     "notes": null
   },
   {

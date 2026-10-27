@@ -339,13 +339,15 @@ func _click(control: Control) -> void:
 	await get_tree().process_frame
 	# Overlay content scrolls; bring the target into view the way a player
 	# would by scrolling, or a click aimed at it lands somewhere else.
+	# Every scroller on the way up (the item strip scrolls sideways inside
+	# the panel, which scrolls down), not just the nearest.
 	var parent := control.get_parent()
-	while parent != null and not (parent is ScrollContainer):
+	while parent != null:
+		if parent is ScrollContainer:
+			(parent as ScrollContainer).ensure_control_visible(control)
+			await get_tree().process_frame
+			await get_tree().process_frame
 		parent = parent.get_parent()
-	if parent is ScrollContainer:
-		(parent as ScrollContainer).ensure_control_visible(control)
-		await get_tree().process_frame
-		await get_tree().process_frame
 
 	var rect := control.get_global_rect()
 	if rect.size.x <= 0.0 or rect.size.y <= 0.0:
