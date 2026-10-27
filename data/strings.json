@@ -5654,5 +5654,54 @@
     "english": "クイカイ",
     "placeholders": null,
     "notes": "Cameron's list, 2026-10-26, taken in order as January to December. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_weekday_sun",
+    "where": "Office, calendar square, Ainu calendar third row",
+    "english": "トカㇷ゚チュㇷ゚ト",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-27: tokapcupto. Katakana. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_weekday_mon",
+    "where": "Office, calendar square, Ainu calendar third row",
+    "english": "クンネチュㇷ゚ト",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-27: kunnecupto. Katakana. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_weekday_tue",
+    "where": "Office, calendar square, Ainu calendar third row",
+    "english": "アペト",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-27: apeto. Katakana. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_weekday_wed",
+    "where": "Office, calendar square, Ainu calendar third row",
+    "english": "ワッカト",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-27: wakkato. Katakana. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_weekday_thu",
+    "where": "Office, calendar square, Ainu calendar third row",
+    "english": "ニト",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-27: nito (also cikunito, チクニト). Katakana. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_weekday_fri",
+    "where": "Office, calendar square, Ainu calendar third row",
+    "english": "コンカネト",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-27: konkaneto. Katakana. Edit freely."
+  },
+  {
+    "key": "calendar.ainu_weekday_sat",
+    "where": "Office, calendar square, Ainu calendar third row",
+    "english": "トイト",
+    "placeholders": null,
+    "notes": "Cameron's list, 2026-10-27: toyto. Katakana. Edit freely."
   }
 ]
