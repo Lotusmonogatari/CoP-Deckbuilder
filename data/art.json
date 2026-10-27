@@ -57,7 +57,6 @@
     "tools/art_checklist.py writes design/ART_CHECKLIST.md: every file the",
     "data asks for, and which are drawn."
   ],
-
   "folders": {
     "protagonist": "res://assets/characters/protagonists/",
     "opponent": "res://assets/characters/opponents/",
@@ -67,25 +66,49 @@
     "background": "res://assets/backgrounds/",
     "icon": "res://assets/icons/"
   },
-
   "character_prefixes": {
     "PC": "protagonist",
     "OP": "opponent",
     "SF": "staff",
     "VI": "visitor"
   },
-
-  "expressions": ["neutral", "attacking", "guarding", "gaining", "damaged"],
-
-  "optional_expressions": ["defeated", "victory"],
-
+  "expressions": [
+    "neutral",
+    "attacking",
+    "guarding",
+    "gaining",
+    "damaged"
+  ],
+  "optional_expressions": [
+    "defeated",
+    "victory"
+  ],
   "expression_fallbacks": {
     "defeated": "damaged",
     "victory": "gaining"
   },
-
   "legacy_folders": {
     "character": "res://assets/characters/",
     "card": "res://assets/cards/"
+  },
+  "card_frames": {
+    "_README": "The card frame picture for each suit, front and back. A suit not listed uses the fallback suit's frame. Hand-written; edit here, no code.",
+    "fallback_suit": "Data Driven",
+    "front": {
+      "Earnest": "res://assets/cards/front_sumo.png",
+      "Emotional": "res://assets/cards/front_sakura.png",
+      "Appeal": "res://assets/cards/front_ukiyoe.png",
+      "Data Driven": "res://assets/cards/frame_front_shoji.png",
+      "Divisive": "res://assets/cards/front_castle.png",
+      "Duplicitous": "res://assets/cards/front_ninja.png"
+    },
+    "back": {
+      "Earnest": "res://assets/cards/back_sumo.png",
+      "Emotional": "res://assets/cards/back_sakura.png",
+      "Appeal": "res://assets/cards/back_ukiyoe.png",
+      "Data Driven": "res://assets/cards/frame_back_shoji.png",
+      "Divisive": "res://assets/cards/back_castle.png",
+      "Duplicitous": "res://assets/cards/back_ninja.png"
+    }
   }
 }

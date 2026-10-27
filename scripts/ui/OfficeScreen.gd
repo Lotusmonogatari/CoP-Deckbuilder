@@ -1415,7 +1415,7 @@ func _show_law(law: Dictionary) -> void:
 	var needed := int(law.get("yes_needed", 0))
 	if needed <= 0:   # a law recorded before the requirement was saved
 		needed = FloorVoteEngine.yes_needed(totals, requirement,
-			int(DataDB.balance.get("supermajority_percent", 67)))
+			int(DataDB.balance.get("supermajority_percent_of_house", 67)))
 	var house: int = totals["Yes"] + totals["No"] + totals["Abstain"]
 	rows.append(UiKit.line(Text.say("floor_vote.req_line", {
 		"requirement": VoteWords.requirement_label(requirement),
@@ -2189,7 +2189,7 @@ func _on_buy_modifier(mod_id: String) -> void:
 
 ## The Recruitment shop: one hired staff member per role, paid from Funds.
 ##
-## Three roles, always shown in the same order (Ledger.STAFF_ROLES). A vacant
+## Three roles, always shown in the same order (Ledger.staff_roles(DataDB.staff)). A vacant
 ## role lists its seven candidates as hire choices — greyed out, with no Hire
 ## button, for anyone fired earlier this run (GameState.staff_fired); a
 ## filled role shows who is there, the upgrade to their next tier where one
@@ -2202,7 +2202,7 @@ func _show_staff() -> void:
 	rows.append(UiKit.line(Text.say("office.funds",
 		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 
-	for role: String in Ledger.STAFF_ROLES:
+	for role: String in Ledger.staff_roles(DataDB.staff):
 		rows.append(UiKit.heading(role))
 		var hired: Dictionary = GameState.staff_hired.get(role, {})
 		if hired.is_empty():
@@ -2528,8 +2528,8 @@ func _open_draft(fresh: bool = false) -> void:
 	var by_id := ComposedBill.index(DataDB.bill_components)
 	var rows: Array[Control] = []
 	rows.append(UiKit.line(Text.say("draft.intro", {
-		"xp": int(DataDB.balance.get("draft_bill_cost_xp", 350)),
-		"funds": Phrase.with_separators(int(DataDB.balance.get("draft_bill_cost_funds", 300000)))})))
+		"xp": int(DataDB.balance.get("draft_bill_xp_cost", 350)),
+		"funds": Phrase.with_separators(int(DataDB.balance.get("draft_bill_funds_cost", 300000)))})))
 
 	rows.append(UiKit.heading(Text.say("draft.parts_heading")))
 	if _draft_ids.is_empty():

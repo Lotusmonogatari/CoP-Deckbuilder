@@ -15,7 +15,11 @@ extends RefCounted
 
 const VISIT_STAGE := "ST260"
 const FIGHT_STAGE := "ST261"
-const STYLES := ["Earnest", "Emotional", "Appeal", "Data Driven", "Divisive", "Duplicitous"]
+## The six suits, in suits.json order.
+static func styles() -> Array[String]:
+	return Levers.suit_names
+
+
 const STRONG := "S"
 const MEDIUM := "M"
 const WEAK := "W"
@@ -83,9 +87,9 @@ static func choose_styles(member: Dictionary, rng: RandomNumberGenerator) -> Arr
 	var favored: Array = []
 	for key: String in ["suit_1", "suit_2"]:
 		var style := str(member.get(key, ""))
-		if STYLES.has(style) and not favored.has(style):
+		if styles().has(style) and not favored.has(style):
 			favored.append(style)
-	var pool: Array = STYLES.duplicate()
+	var pool: Array = styles().duplicate()
 	_shuffle(pool, rng)
 	var chosen: Array = []
 	if not favored.is_empty():
@@ -135,7 +139,7 @@ static func favored_styles(member: Dictionary) -> Array:
 	var out: Array = []
 	for key: String in ["suit_1", "suit_2", "suit_3"]:
 		var style := str(member.get(key, ""))
-		if STYLES.has(style) and not out.has(style):
+		if styles().has(style) and not out.has(style):
 			out.append(style)
 	return out
 

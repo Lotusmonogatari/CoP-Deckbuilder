@@ -19,21 +19,13 @@ extends Control
 ## it, which costs a little wrapping code and buys exact registration: the
 ## title can be twice the size of the body and nothing under it moves.
 
-## Paths, loaded on first use (see CardView.FRAME_BY_SUIT).
-const FRAME_BACK_BY_SUIT: Dictionary = {
-	"Earnest": "res://assets/cards/back_sumo.png",
-	"Emotional": "res://assets/cards/back_sakura.png",
-	"Appeal": "res://assets/cards/back_ukiyoe.png",
-	"Data Driven": "res://assets/cards/frame_back_shoji.png",
-	"Divisive": "res://assets/cards/back_castle.png",
-	"Duplicitous": "res://assets/cards/back_ninja.png",
-}
+## Paths come from data/art.json ("card_frames"), loaded on first use.
 
 
 ## The back frame for a suit, loaded the first time it is needed, then held.
 static var _backs: Dictionary = {}
 static func back_for(suit: String) -> Texture2D:
-	var path: String = FRAME_BACK_BY_SUIT.get(suit, FRAME_BACK_BY_SUIT["Data Driven"])
+	var path := CardView.frame_path("back", suit)
 	if not _backs.has(path):
 		_backs[path] = load(path)
 	return _backs[path]
@@ -85,7 +77,7 @@ func _build() -> void:
 		return
 
 	_frame = TextureRect.new()
-	_frame.texture = back_for("Data Driven")
+	_frame.texture = back_for("")
 	_frame.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_frame.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_frame.stretch_mode = TextureRect.STRETCH_SCALE

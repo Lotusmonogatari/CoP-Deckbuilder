@@ -198,6 +198,16 @@ var parties: Array = []
 ## fold_floor_votes().
 var floor_votes: Dictionary = {}
 
+## The suit names in suits.json's own order, for Levers.
+static func _suit_names(rows: Variant) -> Array[String]:
+	var out: Array[String] = []
+	if rows is Array:
+		for row: Variant in rows:
+			if row is Dictionary and not str(row.get("element", "")).is_empty():
+				out.append(str(row["element"]))
+	return out
+
+
 ## Where art lives and what it is called (data/art.json). ArtLoader reads it.
 var art: Dictionary = {}
 
@@ -333,7 +343,9 @@ func load_all() -> void:
 		match file_name:
 			"cards": cards = content
 			"stages": stages = content
-			"suits": suits = content
+			"suits":
+				suits = content
+				Levers.suit_names = _suit_names(content)
 			"segments": segments = content
 			"modifiers": modifiers = content
 			"boosters": boosters = content
@@ -341,8 +353,13 @@ func load_all() -> void:
 			"sanban": sanban = content
 			"affinity": affinity = content
 			"art": art = content if content is Dictionary else {}
-			"staff": staff = content
-			"balance": balance = content
+			"staff":
+				staff = content
+				var roles := Ledger.staff_roles(staff)
+				Levers.unlock_role = roles[0] if not roles.is_empty() else ""
+			"balance":
+				balance = content
+				Levers.balance = content if content is Dictionary else {}
 			"rules": rules = _flatten_rules(content)
 			"playtest_level": playtest_level = content
 			# 2026-09-22: the workbook's Levels tab exports straight to
@@ -1605,9 +1622,10 @@ func _validate() -> void:
 		# 2026-09-25 follow-up): each named role has to be a real Staff role,
 		# or the bonus can never actually trigger.
 		for row: Dictionary in Items.staff_bonus_rows(item):
-			if not Ledger.STAFF_ROLES.has(row["role"]):
+			var roles := Ledger.staff_roles(staff)
+			if not roles.has(row["role"]):
 				errors.append("Shop item %s names Staff role '%s', which is not %s"
-					% [iid, row["role"], ", ".join(Ledger.STAFF_ROLES)])
+					% [iid, row["role"], ", ".join(roles)])
 
 	_validate_rules()
 

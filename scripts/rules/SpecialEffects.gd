@@ -52,9 +52,9 @@ const KNOWN_KEYS := [
 	"scale_per_20_target_segment",
 ]
 
-## The most the audience scale can add or take away (2026-10-21): at 20% a
-## step, a room that is wholly the card's audience is five steps.
-const MAX_SCALE_BONUS := 5
+## The most the audience scale can add or take away (2026-10-21) is the
+## Balance lever "Audience scale: Largest bonus": at 20% a step, a room that
+## is wholly the card's audience is five steps.
 
 
 ## Applies a card's special effect to the numbers already worked out for it.
@@ -162,9 +162,9 @@ static func apply(key: Variant, value: Variant, effect: Dictionary, context: Dic
 			# "+N more to gain for every 20% of the audience (up to +5)."
 			# `special_value` is N per step and may be negative, so a card can
 			# also be a gamble on a small audience; the total never goes past
-			# plus or minus MAX_SCALE_BONUS.
+			# plus or minus the largest-bonus lever.
 			var steps := int(floor(share / 0.2 + 0.000001))
-			var bonus := clampi(steps * amount, -MAX_SCALE_BONUS, MAX_SCALE_BONUS)
+			var bonus := clampi(steps * amount, -Levers.whole("audience_scale_largest_bonus"), Levers.whole("audience_scale_largest_bonus"))
 			if bonus != 0:
 				result["self_plus"] = int(result.get("self_plus", 0)) + bonus
 				result["flags"]["special_triggered"] = true

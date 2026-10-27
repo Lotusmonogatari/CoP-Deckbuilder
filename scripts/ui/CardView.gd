@@ -77,20 +77,17 @@ const PLACEHOLDER_CARD_ART: Texture2D = preload("res://assets/cards/card_tempora
 ## the moment any card script was first seen, though a screen usually shows
 ## two or three suits. frame_for() loads a frame the first time a card of
 ## that suit is drawn; Godot keeps it cached from then on.
-const FRAME_BY_SUIT := {
-	"Earnest": "res://assets/cards/front_sumo.png",
-	"Emotional": "res://assets/cards/front_sakura.png",
-	"Appeal": "res://assets/cards/front_ukiyoe.png",
-	"Data Driven": "res://assets/cards/frame_front_shoji.png",
-	"Divisive": "res://assets/cards/front_castle.png",
-	"Duplicitous": "res://assets/cards/front_ninja.png",
-}
+## The picture for each suit lives in data/art.json ("card_frames").
+static func frame_path(side: String, suit: String) -> String:
+	var frames: Dictionary = DataDB.art.get("card_frames", {})
+	var table: Dictionary = frames.get(side, {})
+	return str(table.get(suit, table.get(str(frames.get("fallback_suit", "")), "")))
 
 ## The front frame for a suit, loaded the first time it is needed and then
 ## held, so a suit that leaves the hand is not reloaded when it comes back.
 static var _frames: Dictionary = {}
 static func frame_for(suit: String) -> Texture2D:
-	var path: String = FRAME_BY_SUIT.get(suit, FRAME_BY_SUIT["Data Driven"])
+	var path := frame_path("front", suit)
 	if not _frames.has(path):
 		_frames[path] = load(path)
 	return _frames[path]
