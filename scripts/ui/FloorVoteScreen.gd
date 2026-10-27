@@ -118,7 +118,7 @@ func start_voting() -> void:
 		"default_threshold": int(DataDB.balance.get("vote_influence_default_threshold", 85)),
 		"resistance_by_party": _resistance_by_party(),
 		"default_resistance": int(DataDB.balance.get("vote_swing_resistance_default", 70)),
-		"supermajority_percent": int(DataDB.balance.get("supermajority_percent", 67)),
+		"supermajority_percent": int(DataDB.balance.get("supermajority_percent_of_house", 67)),
 		"assist": GameState.bill_assist,
 	}):
 		_ready_to_play = false

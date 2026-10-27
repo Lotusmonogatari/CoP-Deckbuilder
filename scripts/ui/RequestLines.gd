@@ -21,7 +21,7 @@ static func default_vote_line(bill: Dictionary) -> String:
 		totals["Abstain"] += int(position.get("votes_abstain", 0))
 	return Text.say("request.default_vote", {"yes": totals["Yes"], "no": totals["No"],
 		"abstain": totals["Abstain"], "needed": FloorVoteEngine.yes_needed(totals,
-			FloorVoteEngine.requirement_of(bill), int(DataDB.balance.get("supermajority_percent", 67)))})
+			FloorVoteEngine.requirement_of(bill), int(DataDB.balance.get("supermajority_percent_of_house", 67)))})
 
 
 ## Where the player's own party stands on the bill ("" if it has no position).

@@ -3642,8 +3642,8 @@ func start_draft(ids: Array) -> bool:
 		return false
 	draft_counter += 1
 	last_draft_at = time_units
-	_move_xp(-int(DataDB.balance.get("draft_bill_cost_xp", 350)))
-	_move_meta("Funds", -int(DataDB.balance.get("draft_bill_cost_funds", 300000)))
+	_move_xp(-int(DataDB.balance.get("draft_bill_xp_cost", 350)))
+	_move_meta("Funds", -int(DataDB.balance.get("draft_bill_funds_cost", 300000)))
 	return true
 
 

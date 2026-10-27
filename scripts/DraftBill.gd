@@ -65,8 +65,8 @@ static func refusal(ids: Array, state: Dictionary) -> String:
 	var cooldown := int(DataDB.balance.get("draft_bill_cooldown_units", 30))
 	if last >= 0 and int(state.get("time_units", 0)) - last < cooldown:
 		return Text.say("draft.cooldown")
-	var xp_cost := int(DataDB.balance.get("draft_bill_cost_xp", 350))
-	var funds_cost := int(DataDB.balance.get("draft_bill_cost_funds", 300000))
+	var xp_cost := int(DataDB.balance.get("draft_bill_xp_cost", 350))
+	var funds_cost := int(DataDB.balance.get("draft_bill_funds_cost", 300000))
 	if int(state.get("xp", 0)) < xp_cost or int(state.get("funds", 0)) < funds_cost:
 		return Text.say("draft.cost", {"xp": xp_cost, "funds": funds_cost})
 	if not PatronLevel.carryable(bill_for(ids)):
