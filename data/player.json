@@ -44,7 +44,7 @@
     },
     {
       "player_id": "PC03",
-      "name_en": "Edward Grinner",
+      "name_en": "Arata Ran",
       "party": "Keizaijiyuutou",
       "blurb": "An uphill climb from day one. Hard difficulty.",
       "starting_meta": {
@@ -55,12 +55,12 @@
       },
       "starting_xp": 0,
       "gender": "F",
-      "committee": "Committee on Construction and Development",
-      "positioning": "Technocratic",
-      "element_1": "Emotional",
-      "element_2": "Data Driven",
-      "region": "Kushiro",
-      "district_name": "Kushiro Proportional Block 4",
+      "committee": "Committee on Agriculture",
+      "positioning": "Capitalist",
+      "element_1": "Appeal",
+      "element_2": "Emotional",
+      "region": "Sapporo",
+      "district_name": "Sapporo Proportional Block 6",
       "district_type": "Proportional Block"
     },
     {

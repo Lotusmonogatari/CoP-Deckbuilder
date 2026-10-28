@@ -1793,7 +1793,7 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Weekday template: it is Friday, the last sitting day of the week at the National Assembly. ☼",
+    "text_en": "It is Friday, the last sitting day of the week at the National Assembly. ☼",
     "weekdays": [
       "Fri"
     ],
@@ -1807,7 +1807,7 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Weekend template: the Assembly is quiet, but the district offices keep their doors open. ☼",
+    "text_en": "Members should be in their district connecting with their voters. ☼",
     "weekdays": [
       "Sat",
       "Sun"
@@ -1834,7 +1834,7 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Date-range template: the autumn session is in full swing, with committees meeting daily. ☼",
+    "text_en": "The autumn forecast expects a pleasant season for festivals and outings. ☼",
     "weekdays": null,
     "from_date": "18.10.01",
     "to_date": "18.11.30",
@@ -1846,7 +1846,7 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Yearly template: the year-end recess begins; members head home for the holidays. ☼",
+    "text_en": "The New Year is a time for family, the first shrine visit, and starting anew. ☼",
     "weekdays": null,
     "from_date": "18.12.24",
     "to_date": "19.01.03",
@@ -1858,7 +1858,7 @@
     "condition_target": null,
     "condition_op": null,
     "condition_value": null,
-    "text_en": "Combined template: it is a Monday in October and the Assembly has a fresh agenda. ☼",
+    "text_en": "Monday's in October are when we expect the most favorable announcements and news events. ☼",
     "weekdays": [
       "Mon"
     ],

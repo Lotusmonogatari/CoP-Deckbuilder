@@ -1,33 +1,5 @@
 [
   {
-    "booster_id": "BO01",
-    "name_en": "Party Headquarters",
-    "name_jp": "党本部",
-    "romaji": "Tōhonbu",
-    "tier": "Party",
-    "linked_modifiers": [
-      "M11",
-      "M16"
-    ],
-    "starting_standing": 30,
-    "party_lean_multiplier": 0.75,
-    "decay_percent": 5.0
-  },
-  {
-    "booster_id": "BO02",
-    "name_en": "Party Faction",
-    "name_jp": "派閥",
-    "romaji": "Habatsu",
-    "tier": "Party",
-    "linked_modifiers": [
-      "M08",
-      "M17"
-    ],
-    "starting_standing": 35,
-    "party_lean_multiplier": 1.125,
-    "decay_percent": 5.0
-  },
-  {
     "booster_id": "BO03",
     "name_en": "Local Kōenkai",
     "name_jp": "後援会",
@@ -38,7 +10,7 @@
     ],
     "starting_standing": 45,
     "party_lean_multiplier": null,
-    "decay_percent": 5.0
+    "decay_percent": 2.0
   },
   {
     "booster_id": "BO04",
@@ -52,20 +24,7 @@
     ],
     "starting_standing": 20,
     "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
-    "booster_id": "BO05",
-    "name_en": "Chamber of Commerce",
-    "name_jp": "商工会議所",
-    "romaji": "Shōkō Kaigisho",
-    "tier": "National",
-    "linked_modifiers": [
-      "M20"
-    ],
-    "starting_standing": 20,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
+    "decay_percent": 2.0
   },
   {
     "booster_id": "BO06",
@@ -79,7 +38,7 @@
     ],
     "starting_standing": 35,
     "party_lean_multiplier": null,
-    "decay_percent": 5.0
+    "decay_percent": 2.0
   },
   {
     "booster_id": "BO07",
@@ -92,6 +51,139 @@
       "M49"
     ],
     "starting_standing": 15,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO11",
+    "name_en": "Students United",
+    "name_jp": "学生団体",
+    "romaji": "Gakusei Dantai",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M26"
+    ],
+    "starting_standing": 10,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO12",
+    "name_en": "Family Network",
+    "name_jp": "子育て世代の会",
+    "romaji": "Kosodate Sedai no Kai",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M27"
+    ],
+    "starting_standing": 20,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO14",
+    "name_en": "Commuter Committee",
+    "name_jp": "通勤者連盟",
+    "romaji": "Tsūkinsha Renmei",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M29",
+      "M53"
+    ],
+    "starting_standing": 20,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO18",
+    "name_en": "Constituency Voters",
+    "name_jp": "選挙区の有権者",
+    "romaji": "Senkyoku no Yūkensha",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M46"
+    ],
+    "starting_standing": 35,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO25",
+    "name_en": "Small Business Owners' Association",
+    "name_jp": "中小企業主会",
+    "romaji": "Chūshō Kigyōnushi-kai",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M39"
+    ],
+    "starting_standing": 25,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO26",
+    "name_en": "Consumer Advocacy Network",
+    "name_jp": "消費者ネットワーク",
+    "romaji": "Shōhisha Nettowāku",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M40"
+    ],
+    "starting_standing": 20,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO27",
+    "name_en": "Urban Neighborhood Alliance",
+    "name_jp": "都市部町内連合",
+    "romaji": "Toshibu Chōnai Rengō",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M41"
+    ],
+    "starting_standing": 30,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO28",
+    "name_en": "Ainu Community Council",
+    "name_jp": "アイヌ協議会",
+    "romaji": "Ainu Kyōgikai",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M42",
+      "M56"
+    ],
+    "starting_standing": 25,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO30",
+    "name_en": "Rural Revitalization Council",
+    "name_jp": "地域振興会議",
+    "romaji": "Chiiki Shinkō Kaigi",
+    "tier": "Constituency",
+    "linked_modifiers": [
+      "M44",
+      "M51"
+    ],
+    "starting_standing": 15,
+    "party_lean_multiplier": null,
+    "decay_percent": 2.0
+  },
+  {
+    "booster_id": "BO05",
+    "name_en": "Chamber of Commerce",
+    "name_jp": "商工会議所",
+    "romaji": "Shōkō Kaigisho",
+    "tier": "National",
+    "linked_modifiers": [
+      "M20"
+    ],
+    "starting_standing": 20,
     "party_lean_multiplier": null,
     "decay_percent": 5.0
   },
@@ -139,32 +231,6 @@
     "decay_percent": 5.0
   },
   {
-    "booster_id": "BO11",
-    "name_en": "Students United",
-    "name_jp": "学生団体",
-    "romaji": "Gakusei Dantai",
-    "tier": "Constituency",
-    "linked_modifiers": [
-      "M26"
-    ],
-    "starting_standing": 10,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
-    "booster_id": "BO12",
-    "name_en": "Family Network",
-    "name_jp": "子育て世代の会",
-    "romaji": "Kosodate Sedai no Kai",
-    "tier": "Constituency",
-    "linked_modifiers": [
-      "M27"
-    ],
-    "starting_standing": 20,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
     "booster_id": "BO13",
     "name_en": "Yezo Artisans Guild",
     "name_jp": "職人組合",
@@ -172,20 +238,6 @@
     "tier": "National",
     "linked_modifiers": [
       "M28"
-    ],
-    "starting_standing": 20,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
-    "booster_id": "BO14",
-    "name_en": "Commuter Committee",
-    "name_jp": "通勤者連盟",
-    "romaji": "Tsūkinsha Renmei",
-    "tier": "Constituency",
-    "linked_modifiers": [
-      "M29",
-      "M53"
     ],
     "starting_standing": 20,
     "party_lean_multiplier": null,
@@ -232,19 +284,6 @@
     "decay_percent": 5.0
   },
   {
-    "booster_id": "BO18",
-    "name_en": "Constituency Voters",
-    "name_jp": "選挙区の有権者",
-    "romaji": "Senkyoku no Yūkensha",
-    "tier": "Constituency",
-    "linked_modifiers": [
-      "M46"
-    ],
-    "starting_standing": 35,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
     "booster_id": "BO19",
     "name_en": "Buddhist Temples Association",
     "name_jp": "仏教寺院連合",
@@ -253,7 +292,7 @@
     "linked_modifiers": [
       "M33"
     ],
-    "starting_standing": null,
+    "starting_standing": 20,
     "party_lean_multiplier": null,
     "decay_percent": 5.0
   },
@@ -266,7 +305,7 @@
     "linked_modifiers": [
       "M34"
     ],
-    "starting_standing": null,
+    "starting_standing": 20,
     "party_lean_multiplier": null,
     "decay_percent": 5.0
   },
@@ -279,7 +318,7 @@
     "linked_modifiers": [
       "M35"
     ],
-    "starting_standing": null,
+    "starting_standing": 25,
     "party_lean_multiplier": null,
     "decay_percent": 5.0
   },
@@ -293,7 +332,7 @@
       "M36",
       "M54"
     ],
-    "starting_standing": null,
+    "starting_standing": 15,
     "party_lean_multiplier": null,
     "decay_percent": 5.0
   },
@@ -307,7 +346,7 @@
       "M37",
       "M50"
     ],
-    "starting_standing": null,
+    "starting_standing": 10,
     "party_lean_multiplier": null,
     "decay_percent": 5.0
   },
@@ -320,60 +359,7 @@
     "linked_modifiers": [
       "M38"
     ],
-    "starting_standing": null,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
-    "booster_id": "BO25",
-    "name_en": "Small Business Owners' Association",
-    "name_jp": "中小企業主会",
-    "romaji": "Chūshō Kigyōnushi-kai",
-    "tier": "Constituency",
-    "linked_modifiers": [
-      "M39"
-    ],
-    "starting_standing": null,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
-    "booster_id": "BO26",
-    "name_en": "Consumer Advocacy Network",
-    "name_jp": "消費者ネットワーク",
-    "romaji": "Shōhisha Nettowāku",
-    "tier": "Constituency",
-    "linked_modifiers": [
-      "M40"
-    ],
-    "starting_standing": null,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
-    "booster_id": "BO27",
-    "name_en": "Urban Neighborhood Alliance",
-    "name_jp": "都市部町内連合",
-    "romaji": "Toshibu Chōnai Rengō",
-    "tier": "Constituency",
-    "linked_modifiers": [
-      "M41"
-    ],
-    "starting_standing": null,
-    "party_lean_multiplier": null,
-    "decay_percent": 5.0
-  },
-  {
-    "booster_id": "BO28",
-    "name_en": "Ainu Community Council",
-    "name_jp": "アイヌ協議会",
-    "romaji": "Ainu Kyōgikai",
-    "tier": "Constituency",
-    "linked_modifiers": [
-      "M42",
-      "M56"
-    ],
-    "starting_standing": null,
+    "starting_standing": 10,
     "party_lean_multiplier": null,
     "decay_percent": 5.0
   },
@@ -386,23 +372,37 @@
     "linked_modifiers": [
       "M43"
     ],
-    "starting_standing": null,
+    "starting_standing": 25,
     "party_lean_multiplier": null,
     "decay_percent": 5.0
   },
   {
-    "booster_id": "BO30",
-    "name_en": "Rural Revitalization Council",
-    "name_jp": "地域振興会議",
-    "romaji": "Chiiki Shinkō Kaigi",
-    "tier": "Constituency",
+    "booster_id": "BO01",
+    "name_en": "Party Headquarters",
+    "name_jp": "党本部",
+    "romaji": "Tōhonbu",
+    "tier": "Party",
     "linked_modifiers": [
-      "M44",
-      "M51"
+      "M11",
+      "M16"
     ],
-    "starting_standing": null,
-    "party_lean_multiplier": null,
+    "starting_standing": 30,
+    "party_lean_multiplier": 0.75,
     "decay_percent": 5.0
+  },
+  {
+    "booster_id": "BO02",
+    "name_en": "Party Faction",
+    "name_jp": "派閥",
+    "romaji": "Habatsu",
+    "tier": "Party",
+    "linked_modifiers": [
+      "M08",
+      "M17"
+    ],
+    "starting_standing": 35,
+    "party_lean_multiplier": 1.125,
+    "decay_percent": 2.0
   },
   {
     "booster_id": "BO31",

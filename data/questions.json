@@ -2,7 +2,7 @@
   "press_conference": [
     {
       "id": "Q01",
-      "text": "What will this legislation mean for ordinary families?",
+      "text": "What will current legislation mean for ordinary families?",
       "theme": "Impact",
       "grades": {
         "Earnest": "S",
@@ -19,7 +19,7 @@
     },
     {
       "id": "Q02",
-      "text": "Where exactly do you stand on this bill?",
+      "text": "Where exactly do you stand on tax reduction bills?",
       "theme": "Position",
       "grades": {
         "Earnest": "S",
@@ -39,7 +39,7 @@
     },
     {
       "id": "Q03",
-      "text": "Some call this bill reckless. How do you respond?",
+      "text": "Some call new bills reckless. How do you respond?",
       "theme": "Criticism",
       "grades": {
         "Earnest": "M",
@@ -59,7 +59,7 @@
     },
     {
       "id": "Q04",
-      "text": "Do you have the votes to pass this?",
+      "text": "Do you have the votes to pass bills?",
       "theme": "Votes",
       "grades": {
         "Earnest": "W",
@@ -79,7 +79,7 @@
     },
     {
       "id": "Q05",
-      "text": "Who really benefits from this legislation?",
+      "text": "Who really benefits from your legislation?",
       "theme": "Beneficiaries",
       "grades": {
         "Earnest": "M",
@@ -100,7 +100,7 @@
     },
     {
       "id": "Q06",
-      "text": "Is your party truly united behind this?",
+      "text": "Is your party truly united behind ongoing legislation?",
       "theme": "Unity",
       "grades": {
         "Earnest": "M",
@@ -142,7 +142,7 @@
     },
     {
       "id": "Q08",
-      "text": "What evidence supports this approach?",
+      "text": "What evidence supports your approach?",
       "theme": "Evidence",
       "grades": {
         "Earnest": "M",
@@ -162,7 +162,7 @@
     },
     {
       "id": "Q09",
-      "text": "Yes or no: will you see this through?",
+      "text": "Yes or no: will you see this term through?",
       "theme": "Commitment",
       "grades": {
         "Earnest": "S",
@@ -184,7 +184,7 @@
     },
     {
       "id": "Q10",
-      "text": "Is this about the public, or about politics?",
+      "text": "Is this about the public or about politics?",
       "theme": "Motive",
       "grades": {
         "Earnest": "S",
@@ -205,7 +205,7 @@
     },
     {
       "id": "Q11",
-      "text": "Some say this goes too far. Your answer?",
+      "text": "Some say your party goes too far. Your answer?",
       "theme": "Scope",
       "grades": {
         "Earnest": "M",
@@ -225,7 +225,7 @@
     },
     {
       "id": "Q12",
-      "text": "Some say this is too timid. Your answer?",
+      "text": "Some say your work is too timid. Your answer?",
       "theme": "Scope",
       "grades": {
         "Earnest": "M",
@@ -245,7 +245,7 @@
     },
     {
       "id": "Q13",
-      "text": "Will you work with the opposition on this?",
+      "text": "Will you work with your party's opposition?",
       "theme": "Cooperation",
       "grades": {
         "Earnest": "S",
@@ -265,7 +265,7 @@
     },
     {
       "id": "Q14",
-      "text": "Are special interests shaping this legislation?",
+      "text": "Are special interests shaping your legislation?",
       "theme": "Influence",
       "grades": {
         "Earnest": "S",
@@ -302,7 +302,7 @@
     },
     {
       "id": "Q16",
-      "text": "Will you take responsibility if this fails?",
+      "text": "Will you take responsibility if your party fails?",
       "theme": "Accountability",
       "grades": {
         "Earnest": "S",
@@ -346,7 +346,7 @@
     },
     {
       "id": "Q18",
-      "text": "Is there something in this bill you're not telling us?",
+      "text": "Is there something in on the table you're not telling us?",
       "theme": "Transparency",
       "grades": {
         "Earnest": "S",
@@ -3696,7 +3696,7 @@
     },
     {
       "id": "T139",
-      "text": "Place names should carry their original names. Do you agree?",
+      "text": "Place names should carry their historic names. Do you agree?",
       "theme": "Place names",
       "grades": {
         "Earnest": "S",
@@ -8605,7 +8605,7 @@
         "ST77",
         "ST127"
       ],
-      "asked_by": "OP46"
+      "asked_by": "OP74"
     },
     {
       "id": "S17",
@@ -8633,7 +8633,7 @@
         "ST77",
         "ST127"
       ],
-      "asked_by": "OP70"
+      "asked_by": "OP79"
     },
     {
       "id": "S18",
@@ -8660,7 +8660,7 @@
         "ST77",
         "ST127"
       ],
-      "asked_by": "OP74"
+      "asked_by": "OP84"
     },
     {
       "id": "S19",
@@ -8796,7 +8796,7 @@
         "ST231",
         "ST236"
       ],
-      "asked_by": "OP101"
+      "asked_by": "OP62"
     },
     {
       "id": "S23",
@@ -8828,7 +8828,7 @@
         "ST231",
         "ST236"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP68"
     },
     {
       "id": "S24",
@@ -8860,7 +8860,7 @@
         "ST231",
         "ST236"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP77"
     },
     {
       "id": "S25",
@@ -9954,7 +9954,7 @@
       "stage_ids": [
         "ST31"
       ],
-      "asked_by": "OP06"
+      "asked_by": "OP15"
     },
     {
       "id": "S68",
@@ -12662,7 +12662,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP06"
+      "asked_by": "OP07"
     },
     {
       "id": "S95",
@@ -12769,7 +12769,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP07"
+      "asked_by": "OP08"
     },
     {
       "id": "S96",
@@ -12873,7 +12873,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP08"
+      "asked_by": "OP09"
     },
     {
       "id": "S97",
@@ -12977,7 +12977,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP09"
+      "asked_by": "OP100"
     },
     {
       "id": "S98",
@@ -16183,7 +16183,7 @@
       "stage_ids": [
         "ST02"
       ],
-      "asked_by": "OP06"
+      "asked_by": "OP07"
     },
     {
       "id": "S228",
@@ -16204,7 +16204,7 @@
       "stage_ids": [
         "ST02"
       ],
-      "asked_by": "OP07"
+      "asked_by": "OP09"
     },
     {
       "id": "S229",
@@ -16227,7 +16227,7 @@
       "stage_ids": [
         "ST02"
       ],
-      "asked_by": "OP09"
+      "asked_by": "OP13"
     },
     {
       "id": "S230",
@@ -16250,7 +16250,7 @@
       "stage_ids": [
         "ST02"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP15"
     },
     {
       "id": "S231",
@@ -16504,7 +16504,7 @@
       "stage_ids": [
         "ST02"
       ],
-      "asked_by": "OP06"
+      "asked_by": "OP07"
     },
     {
       "id": "S242",
@@ -16527,7 +16527,7 @@
       "stage_ids": [
         "ST02"
       ],
-      "asked_by": "OP07"
+      "asked_by": "OP09"
     },
     {
       "id": "S243",
@@ -16551,7 +16551,7 @@
       "stage_ids": [
         "ST02"
       ],
-      "asked_by": "OP09"
+      "asked_by": "OP13"
     },
     {
       "id": "S244",
@@ -16574,7 +16574,7 @@
       "stage_ids": [
         "ST02"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP15"
     },
     {
       "id": "S245",
@@ -27536,7 +27536,7 @@
       "stage_ids": [
         "ST127"
       ],
-      "asked_by": "OP94"
+      "asked_by": "OP43"
     },
     {
       "id": "S594",
@@ -27561,7 +27561,7 @@
       "stage_ids": [
         "ST127"
       ],
-      "asked_by": "OP98"
+      "asked_by": "OP46"
     },
     {
       "id": "S595",
@@ -27793,7 +27793,7 @@
       "stage_ids": [
         "ST132"
       ],
-      "asked_by": "OP101"
+      "asked_by": "OP15"
     },
     {
       "id": "S604",
@@ -27819,7 +27819,7 @@
       "stage_ids": [
         "ST132"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP19"
     },
     {
       "id": "S605",
@@ -28714,7 +28714,7 @@
       "stage_ids": [
         "ST151"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP68"
     },
     {
       "id": "S640",
@@ -28740,7 +28740,7 @@
       "stage_ids": [
         "ST151"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP77"
     },
     {
       "id": "S641",
@@ -29972,7 +29972,7 @@
       "stage_ids": [
         "ST183"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP68"
     },
     {
       "id": "S696",
@@ -29999,7 +29999,7 @@
       "stage_ids": [
         "ST183"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP77"
     },
     {
       "id": "S697",
@@ -30382,7 +30382,7 @@
       "stage_ids": [
         "ST191"
       ],
-      "asked_by": "OP36"
+      "asked_by": "OP68"
     },
     {
       "id": "S712",
@@ -30407,7 +30407,7 @@
       "stage_ids": [
         "ST191"
       ],
-      "asked_by": "OP62"
+      "asked_by": "OP77"
     },
     {
       "id": "S713",
@@ -31752,7 +31752,7 @@
       "stage_ids": [
         "ST221"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP62"
     },
     {
       "id": "S767",
@@ -31778,7 +31778,7 @@
       "stage_ids": [
         "ST221"
       ],
-      "asked_by": "OP36"
+      "asked_by": "OP68"
     },
     {
       "id": "S768",
@@ -32440,7 +32440,7 @@
       "stage_ids": [
         "ST236"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP101"
     },
     {
       "id": "S794",
@@ -32467,7 +32467,7 @@
       "stage_ids": [
         "ST236"
       ],
-      "asked_by": "OP19"
+      "asked_by": "OP13"
     },
     {
       "id": "S795",
@@ -32808,7 +32808,7 @@
       "stage_ids": [
         "ST244"
       ],
-      "asked_by": "OP14"
+      "asked_by": "OP15"
     },
     {
       "id": "S808",
@@ -34099,7 +34099,7 @@
         "ST77",
         "ST127"
       ],
-      "asked_by": "OP84"
+      "asked_by": "OP74"
     },
     {
       "id": "S857",
@@ -34128,7 +34128,7 @@
         "ST77",
         "ST127"
       ],
-      "asked_by": "OP94"
+      "asked_by": "OP79"
     },
     {
       "id": "S858",
@@ -34154,7 +34154,7 @@
         "ST77",
         "ST127"
       ],
-      "asked_by": "OP98"
+      "asked_by": "OP84"
     },
     {
       "id": "S859",
@@ -34182,7 +34182,7 @@
         "ST77",
         "ST127"
       ],
-      "asked_by": "OP06"
+      "asked_by": "OP94"
     },
     {
       "id": "S860",
@@ -34210,7 +34210,7 @@
         "ST77",
         "ST127"
       ],
-      "asked_by": "OP25"
+      "asked_by": "OP98"
     },
     {
       "id": "S861",
@@ -34408,7 +34408,7 @@
         "ST231",
         "ST236"
       ],
-      "asked_by": "OP62"
+      "asked_by": "OP13"
     },
     {
       "id": "S867",
@@ -34441,7 +34441,7 @@
         "ST231",
         "ST236"
       ],
-      "asked_by": "OP68"
+      "asked_by": "OP15"
     },
     {
       "id": "S868",
@@ -34474,7 +34474,7 @@
         "ST231",
         "ST236"
       ],
-      "asked_by": "OP77"
+      "asked_by": "OP19"
     },
     {
       "id": "S869",
@@ -34505,7 +34505,7 @@
         "ST231",
         "ST236"
       ],
-      "asked_by": "OP101"
+      "asked_by": "OP36"
     },
     {
       "id": "S870",
@@ -34535,7 +34535,7 @@
         "ST231",
         "ST236"
       ],
-      "asked_by": "OP13"
+      "asked_by": "OP62"
     },
     {
       "id": "S871",
@@ -35047,7 +35047,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP06"
+      "asked_by": "OP07"
     },
     {
       "id": "S887",
@@ -35071,7 +35071,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP07"
+      "asked_by": "OP08"
     },
     {
       "id": "S888",
@@ -35099,7 +35099,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP08"
+      "asked_by": "OP09"
     },
     {
       "id": "S889",
@@ -35123,7 +35123,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP09"
+      "asked_by": "OP100"
     },
     {
       "id": "S890",
@@ -35147,7 +35147,7 @@
         "ST244",
         "ST254"
       ],
-      "asked_by": "OP100"
+      "asked_by": "OP101"
     },
     {
       "id": "S891",

@@ -2410,7 +2410,7 @@
   {
     "key": "party_opinion.blurb",
     "where": "Parties page, top",
-    "english": "How each party sees you: its mood about your votes and rewards, blended with how its stakeholder organizations feel about you.",
+    "english": "How each party sees you.",
     "placeholders": null,
     "notes": null
   },
@@ -2851,7 +2851,7 @@
   {
     "key": "floor_vote.preview_flips",
     "where": "Floor Vote",
-    "english": "Your influence turns the result.",
+    "english": "Your influence swings the result.",
     "placeholders": null,
     "notes": "2026-10-15 Floor Vote preview and influence readiness."
   },
@@ -5712,17 +5712,17 @@
     "notes": "2026-10-28 dues and funds box."
   },
   {
-    "key": "event.refuse_no_staff",
-    "where": "Events and visitor choices that send a staff member, none hired",
-    "english": "No staff hired",
-    "placeholders": null,
-    "notes": "2026-10-28 staff delegation gate."
-  },
-  {
     "key": "dues.box_funds",
     "where": "Office, box beside the calendar, second line",
     "english": "Office Funds: {funds}",
     "placeholders": "funds",
     "notes": "2026-10-28 dues and funds box."
+  },
+  {
+    "key": "event.refuse_no_staff",
+    "where": "Events and visitor choices that send a staff member, none hired",
+    "english": "No staff hired",
+    "placeholders": null,
+    "notes": "2026-10-28 staff delegation gate."
   }
 ]

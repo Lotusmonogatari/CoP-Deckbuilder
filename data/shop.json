@@ -439,7 +439,7 @@
     "item_id": "SH12",
     "name": "Staff Training Consultancy Session",
     "description": "Unlocks the next rank of staff recruitment, allowing higher-rank staff hires.",
-    "cost_xp": 500,
+    "cost_xp": 250,
     "cost_yen": 0,
     "bonus_condition_1": null,
     "bonus_condition_2": null,
@@ -714,7 +714,7 @@
   },
   {
     "item_id": "SH19",
-    "name": "Host a Dinner for a National Booster",
+    "name": "National Organization Outreach Dinner",
     "description": "Host a dinner for a National booster group you choose. You pick the menu, a topic and a promise, and your guests react to every choice. It takes 4 hours, and a bill may come up over the evening.",
     "cost_xp": 20,
     "cost_yen": 20000,
@@ -755,7 +755,7 @@
   },
   {
     "item_id": "SH20",
-    "name": "Host a District Walking Tour for a Constituency Booster",
+    "name": "Host a Constituency Group Walking Tour",
     "description": "Host a walking tour for a Constituency booster group you choose. You pick where to go, a topic and a promise, and your guests react to every choice. It takes 4 hours, and a bill may come up along the way.",
     "cost_xp": 10,
     "cost_yen": 10000,
