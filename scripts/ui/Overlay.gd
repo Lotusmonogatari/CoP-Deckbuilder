@@ -37,6 +37,10 @@ signal confirmed
 ## Learn it (or Pass, while passes remain), never in simply backing out.
 @export var show_back := true
 
+## True for a panel whose content starts at the top of the screen instead of
+## being centred up and down (the staff profile, 2026-10-28).
+@export var top_aligned := false
+
 ## The screen behind has to be covered, not tinted: this sits over a portrait
 ## and a heading, and a half-transparent panel makes both unreadable.
 ##
@@ -163,6 +167,17 @@ func open(heading: String, rows: Array[Control], confirm_text: String = "",
 	_back.visible = show_back
 
 	show()
+	# Filling the scroll area's height is what pins the content to the top: the
+	# centring container has no room left to centre it in.
+	_body.custom_minimum_size.y = 0.0
+	if top_aligned:
+		_pin_to_top.call_deferred()
+
+
+func _pin_to_top() -> void:
+	var scroll := _body.get_parent().get_parent() as ScrollContainer
+	if scroll != null and visible:
+		_body.custom_minimum_size.y = scroll.size.y
 
 
 func _on_confirmed() -> void:

@@ -103,6 +103,9 @@ var _dues_label: Label
 var _dues_box: PanelContainer
 ## Set when the briefing's Go In button was pressed (see _on_briefing_closed).
 var _briefing_went_in := false
+## The biggest a staff picture is drawn on the profile, and the gap above it.
+const STAFF_PORTRAIT_MAX := Vector2(480, 860)
+const STAFF_TOP_GAP := 2.0
 var _election_panel: Overlay
 var _events_button: Button
 var _events_panel: Overlay
@@ -2292,12 +2295,16 @@ func _show_staff_profile(staff_id: String) -> void:
 	# Top left, the full picture of the person; top right, the hiring
 	# information (name, role, cost); under both, a biography line when the
 	# Staff tab has one; then the tiers and the buttons (Cameron, 2026-10-28).
+	# A little air so the picture's top sits just below the screen's top edge.
+	var top_gap := Control.new()
+	top_gap.custom_minimum_size = Vector2(0, STAFF_TOP_GAP)
+	rows.append(top_gap)
 	var head := HBoxContainer.new()
 	head.name = "StaffHead"
 	head.add_theme_constant_override("separation", 24)
 	var portrait := PlaceholderArt.new()
 	portrait.name = "StaffPortrait"
-	portrait.custom_minimum_size = Vector2(480, 720)
+	portrait.custom_minimum_size = _staff_portrait_size(staff_id)
 	portrait.kind = PlaceholderArt.Kind.CHARACTER
 	portrait.art_id = staff_id
 	head.add_child(portrait)
@@ -2315,6 +2322,10 @@ func _show_staff_profile(staff_id: String) -> void:
 		who.add_child(flavor)
 	who.add_child(UiKit.line(Text.say("staff.profile_cost",
 		{"cost": int(candidate.get("hiring_cost_yen", 0))})))
+	# UiKit.line forces a full-column minimum width; in this narrower column
+	# that pushed the buttons off the right edge, so let these wrap instead.
+	for label: Node in who.get_children():
+		(label as Control).custom_minimum_size.x = 0
 	head.add_child(who)
 	rows.append(head)
 
@@ -2360,7 +2371,21 @@ func _show_staff_profile(staff_id: String) -> void:
 		hire.name = "ProfileHireButton"
 		rows.append(hire)
 
+	_staff_profile_panel.top_aligned = true
 	_staff_profile_panel.open("", rows)
+
+
+## The picture's box: the drawing fitted into STAFF_PORTRAIT_MAX with no
+## empty margin, so every drawing's top sits at the same height (Cameron,
+## 2026-10-28). A missing picture gets the full box.
+func _staff_portrait_size(staff_id: String) -> Vector2:
+	var path := ArtLoader.character_path(staff_id)
+	var texture := load(path) as Texture2D if not path.is_empty() else null
+	if texture == null or texture.get_height() <= 0:
+		return STAFF_PORTRAIT_MAX
+	var aspect := float(texture.get_width()) / float(texture.get_height())
+	var width := minf(STAFF_PORTRAIT_MAX.x, STAFF_PORTRAIT_MAX.y * aspect)
+	return Vector2(width, width / aspect)
 
 
 ## "Tier 1 · upgrade cost 30000 Yen", "Tier 0 · given when hired", and so on.
