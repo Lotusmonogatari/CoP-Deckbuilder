@@ -164,6 +164,10 @@ static func character_path_candidates(character_id: String, expression: String =
 			if not stage_id.is_empty():
 				candidates.append(where + "%s_%s_%s.png" % [character_id, stage_id, face])
 			candidates.append(where + "%s_%s.png" % [character_id, face])
+	# Last of all, a picture with no expression tag at all ({ID}.png, e.g. the
+	# staff portraits SF01.png ...) serves every expression (Cameron, 2026-10-28).
+	for where: String in folders:
+		candidates.append(where + "%s.png" % character_id)
 	return candidates
 
 

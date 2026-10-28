@@ -182,3 +182,14 @@ func test_a_music_only_package_never_touches_the_outfit_or_background_slots() ->
 		"CPTEST2 has no outfit_variant, so the plain (no-variant) chain is untouched")
 	assert_eq(office_with_music_only, office_with_nothing_equipped,
 		"CPTEST2 has no background_variant, so the Office background is untouched")
+
+
+func test_a_plain_id_picture_is_the_last_resort_for_any_expression() -> void:
+	var candidates := ArtLoader.character_path_candidates("SF01", "attacking")
+	assert_eq(candidates[candidates.size() - 2], "res://assets/characters/staff/SF01.png")
+	assert_true(candidates.find("res://assets/characters/staff/SF01_neutral.png")
+		< candidates.find("res://assets/characters/staff/SF01.png"), "a tagged face still wins")
+
+
+func test_the_real_staff_portraits_resolve_without_an_expression_tag() -> void:
+	assert_eq(ArtLoader.character_path("SF01", "damaged"), "res://assets/characters/staff/SF01.png")
