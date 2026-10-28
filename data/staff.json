@@ -17,7 +17,8 @@
     ],
     "tier_1_reward": null,
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF02",
@@ -46,7 +47,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF03",
@@ -71,7 +73,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF04",
@@ -113,7 +116,8 @@
         "target": "BO02"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF05",
@@ -133,7 +137,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF06",
@@ -175,7 +180,8 @@
         "target": "BO01"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF07",
@@ -208,7 +214,8 @@
         "target": "SG04"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF08",
@@ -228,7 +235,8 @@
     ],
     "tier_1_reward": null,
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF09",
@@ -257,7 +265,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF10",
@@ -282,7 +291,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF11",
@@ -324,7 +334,8 @@
         "target": "BO08"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF12",
@@ -344,7 +355,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF13",
@@ -386,7 +398,8 @@
         "target": "BO01"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF14",
@@ -419,7 +432,8 @@
         "target": "SG04"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF15",
@@ -439,7 +453,8 @@
     ],
     "tier_1_reward": null,
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF16",
@@ -468,7 +483,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF17",
@@ -493,7 +509,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF18",
@@ -535,7 +552,8 @@
         "target": "BO04"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF19",
@@ -555,7 +573,8 @@
       }
     ],
     "tier_2_reward": null,
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF20",
@@ -597,7 +616,8 @@
         "target": "BO03"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   },
   {
     "staff_id": "SF21",
@@ -630,6 +650,7 @@
         "target": "SG03"
       }
     ],
-    "biography": null
+    "biography": null,
+    "role_flavor": null
   }
 ]

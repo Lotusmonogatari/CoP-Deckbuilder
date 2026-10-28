@@ -2307,6 +2307,12 @@ func _show_staff_profile(staff_id: String) -> void:
 	who.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	who.add_child(UiKit.line(str(candidate.get("name", staff_id)), "HeaderLabel"))
 	who.add_child(UiKit.line(role, "SmallLabel"))
+	# Flavor text about the role, from the Staff tab; no row when blank.
+	var role_flavor := str(candidate.get("role_flavor", "")).strip_edges() if candidate.get("role_flavor") != null else ""
+	if not role_flavor.is_empty():
+		var flavor := UiKit.line(role_flavor, "SmallLabel")
+		flavor.name = "StaffRoleFlavor"
+		who.add_child(flavor)
 	who.add_child(UiKit.line(Text.say("staff.profile_cost",
 		{"cost": int(candidate.get("hiring_cost_yen", 0))})))
 	head.add_child(who)

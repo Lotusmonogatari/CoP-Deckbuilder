@@ -1465,8 +1465,11 @@ SHEETS = {
             ("Staff Role Tier 2 Reward", "tier_2_reward", "reward_list"),
             # One line about the person, shown on their profile (2026-10-28).
             ("Biography", "biography", "str"),
+            # Flavor text about what the role does, shown under the role line
+            # on the profile (2026-10-28).
+            ("Role Flavor Text", "role_flavor", "str"),
         ],
-        "optional": ["Biography"],
+        "optional": ["Biography", "Role Flavor Text"],
     },
     # Bonus Condition 1/2 are free text in three shapes (a staff-tier gate,
     # an unlock gate, a stacking-buff rule) plus literal "N/A" — not a fixed
