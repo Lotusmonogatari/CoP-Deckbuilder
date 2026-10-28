@@ -146,7 +146,6 @@ var _frame: TextureRect
 var _art_image: TextureRect
 var _cost_label: Label
 var _name_label: Label
-var _art_label: Label
 var _effect_label: Label
 
 var _press_at := Vector2.ZERO
@@ -253,18 +252,6 @@ func _build() -> void:
 	_name_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	add_child(_name_label)
 
-	# The art window is empty until there is art. The Japanese name sits in
-	# it rather than crowding the name bar, which holds one line.
-	_art_label = Label.new()
-	place(_art_label, ART_RECT)
-	_art_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_art_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_art_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_art_label.add_theme_color_override("font_color", Color(0.45, 0.38, 0.30, 0.85))
-	_art_label.add_theme_font_override("font", CARD_FONT)
-	_art_label.add_theme_font_size_override("font_size", 30)
-	add_child(_art_label)
-
 	_read_tag = Label.new()
 	place(_read_tag, Rect2(TEXT_RECT.position.x + 0.2, TEXT_RECT.position.y + TEXT_RECT.size.y - 0.048,
 		TEXT_RECT.size.x - 0.4, 0.048))
@@ -305,7 +292,6 @@ func show_card(card_row: Dictionary) -> void:
 	# has made this card cheaper than the workbook says.
 	show_cost(int(card_row.get("cost", 0)))
 	_name_label.text = str(card_row.get("name_en", "Unnamed"))
-	_art_label.text = str(card_row.get("name_jp", ""))
 	_fit_name_label()
 	_effect_label.text = str(card_row.get("effect_text", ""))
 	_frame.texture = frame_for(str(card_row.get("suit", "")))

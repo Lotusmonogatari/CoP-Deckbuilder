@@ -187,6 +187,7 @@
   "draft.title": "Draft a Bill",
   "draft.too_few": "Choose at least two parts.",
   "draft.too_many": "A bill carries three parts at most.",
+  "dues.box": "Party Dues: {dues} / Office Funds: {funds}",
   "dues.cancelled_line": "Withdrawn: {names}.",
   "dues.none_line": "No party dues were due.",
   "dues.owed_line": "You could not pay in full. {yen_owed}円 rolls over to next week.",

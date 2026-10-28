@@ -5703,5 +5703,12 @@
     "english": "トイト",
     "placeholders": null,
     "notes": "Cameron's list, 2026-10-27: toyto. Katakana. Edit freely."
+  },
+  {
+    "key": "dues.box",
+    "where": "Office, box beside the calendar",
+    "english": "Party Dues: {dues} / Office Funds: {funds}",
+    "placeholders": "dues, funds",
+    "notes": "2026-10-28 dues and funds box."
   }
 ]

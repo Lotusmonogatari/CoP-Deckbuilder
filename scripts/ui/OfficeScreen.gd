@@ -99,6 +99,10 @@ var _draft_panel: Overlay
 var _calendar_square: PanelContainer
 var _week_button: Button
 var _dues_label: Label
+## The Party Dues / Office Funds box beside the calendar (2026-10-28).
+var _dues_box: PanelContainer
+## Set when the briefing's Go In button was pressed (see _on_briefing_closed).
+var _briefing_went_in := false
 var _election_panel: Overlay
 var _events_button: Button
 var _events_panel: Overlay
@@ -152,6 +156,7 @@ func _ready() -> void:
 
 	_start_button.pressed.connect(_on_start_pressed)
 	_briefing_panel.confirmed.connect(_on_start)
+	_briefing_panel.closed.connect(_on_briefing_closed)
 	_deck_panel.confirmed.connect(_on_deck_confirmed)
 	_reputation_button.pressed.connect(_show_reputation_menu)
 	_management_button.pressed.connect(_show_management)
@@ -296,6 +301,8 @@ func _build_week_controls() -> void:
 	if spacer != null:
 		_calendar_square = CalendarSquare.make()
 		spacer.add_child(_calendar_square)
+		_dues_box = DuesBox.make()
+		spacer.add_child(_dues_box)
 
 	_dues_label = Label.new()
 	_dues_label.name = "DuesLabel"
@@ -359,6 +366,7 @@ func _build_week_controls() -> void:
 ## the weekend, nothing otherwise (and nothing mid-level).
 func _refresh_calendar() -> void:
 	CalendarSquare.refresh(_calendar_square)
+	DuesBox.refresh(_dues_box)
 	if _week_button == null:
 		return
 	var mid_level := GameState.is_in_level()
@@ -2837,7 +2845,22 @@ func _on_start_pressed() -> void:
 	_show_levels()
 
 
+## Back from a level's briefing returns to the list of levels, not the bare
+## Office (2026-10-28, Cameron). Going in also closes the panel, and closed
+## fires before confirmed, so the check waits a frame and reads the flag
+## _on_start() sets.
+func _on_briefing_closed() -> void:
+	_briefing_went_in = false
+	_back_to_levels_if_not_started.call_deferred()
+
+
+func _back_to_levels_if_not_started() -> void:
+	if not _briefing_went_in:
+		_show_levels()
+
+
 func _on_start() -> void:
+	_briefing_went_in = true
 	var expanded := BattleSetup.expand_level(_chosen_level)
 	var runner := LevelRunner.new(expanded)
 	if not runner.is_valid():
