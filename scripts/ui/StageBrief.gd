@@ -48,14 +48,6 @@ static func details(stage: Dictionary, _state: BattleState = null) -> Array[Stri
 	return lines
 
 
-## Every line, headline first. `state` may be null: the briefing screen
-## describes a stage before there is a battle.
-static func how_this_room_works(stage: Dictionary, state: BattleState = null) -> Array[String]:
-	var lines := headline(stage, state)
-	lines.append_array(details(stage, state))
-	return lines
-
-
 ## "Turns 7 · Gaffes 5 = loss", plus Energy and Hand only where this room
 ## differs from the standard (Balance: Brief: Standard Energy / Hand).
 static func _stats(stage: Dictionary, state: BattleState) -> Array[String]:

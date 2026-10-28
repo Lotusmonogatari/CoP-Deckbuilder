@@ -42,7 +42,8 @@ Paste this (or point the assistant at it) at the start of a new chat. The fuller
 tools/get_godot.sh                     # if .tools/godot is missing
 .tools/godot --headless --import       # needed after adding a new class_name script
 python3 tools/export_data.py           # workbook -> data/*.json (must say "No errors")
-tools/verify.sh                        # the whole gate; merge only on "All checks passed"
+tools/verify.sh                        # the whole gate, about 2 to 3 minutes; merge only on "All checks passed"
+tools/verify.sh --quick                # data, boot and unit tests only, about 1 minute
 tools/stress.sh                        # slow: fuzzers + late-game stress, before releases
 .tools/godot --headless --path . -s addons/gut/gut_cmdln.gd -gtest=res://tests/test_x.gd -gexit
 xvfb-run -a --server-args="-screen 0 1080x2340x24" .tools/godot --path . --resolution 1080x2340 <scene>
