@@ -649,34 +649,6 @@ func _show_party_line(label: Label, party: String) -> void:
 # Input
 # ---------------------------------------------------------------------------
 
-## How this room is treating this suit, in words rather than a multiplier.
-##
-## "×0.80" is precise and means nothing at the table. What a player needs to
-## know is whether the room is with them, and roughly how much.
-static func describe_room_for(affinity: float) -> String:
-	if affinity >= 1.51:
-		return Text.say("card.room_greatly_enhanced")
-	if affinity > 1.0:
-		return Text.say("card.room_enhanced")
-	if affinity < 0.5:
-		return Text.say("card.room_greatly_suppressed")
-	if affinity < 1.0:
-		return Text.say("card.room_suppressed")
-	return Text.say("card.room_neutral")
-
-
-## How the currently drawn question treats this card, in words — a second,
-## separate line from the stage's own affinity above (2026-09-28, Cameron).
-static func describe_question_for(multiplier: float) -> String:
-	if multiplier > 1.0:
-		return Text.say("card.question_strong")
-	if multiplier < 1.0:
-		return Text.say("card.question_weak")
-	# Medium says nothing (Cameron, 2026-10-26): "doesn't care how you answer"
-	# read as a preference and clashed with the other preference lines.
-	return ""
-
-
 ## Tapping a card opens the zoom view. Nothing is played until the player
 ## confirms there, so a mis-tap never costs a turn.
 func _on_card_chosen(card_id: String) -> void:
@@ -720,10 +692,7 @@ func _open_card(card_id: String) -> void:
 		%ZoomColumn.add_child(_card_back)
 		%ZoomColumn.move_child(_card_back, 0)
 
-	var question_line := (describe_question_for(engine.question_multiplier_for(card))
-		if not engine.active_question().is_empty() else "")
-	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card),
-		describe_room_for(engine.affinity_for(card)), question_line)
+	_card_back.show_card(card, CardView.describe_effect(engine.preview(card), card))
 
 	%ZoomPlay.disabled = (engine.card_cost(card) > engine.state.energy
 		or not engine.play_block(card).is_empty())

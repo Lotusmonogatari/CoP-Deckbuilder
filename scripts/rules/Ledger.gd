@@ -362,11 +362,6 @@ static func can_fire_staff(candidate: Dictionary, funds: int,
 # stays open today) — see GameState.gd's levels_unlocked/levels_completed_count
 # and OfficeScreen.gd's _level_row().
 
-## What each staff tier count costs to unlock a level, when unlock_cost_2 is
-## the last tier the workbook prices (LV01-30 all have exactly _vacant,
-## _tier_0, _tier_1, _tier_2 — see data/levels.json).
-const LEVEL_UNLOCK_MAX_TIER := 2
-
 ## The Staff role whose tier decides a level's unlock price is the first role
 ## in the Staff tab (the Policy Research Assistant today) — see
 ## data/levels.json's own unlock_cost_vacant/_tier_0/_1/_2 columns.
@@ -377,12 +372,13 @@ const LEVEL_UNLOCK_MAX_TIER := 2
 ##
 ## A vacant role charges unlock_cost_vacant; a hired one charges whichever
 ## unlock_cost_tier_N matches their CURRENT tier, clamped to the highest tier
-## the workbook prices (a PRA tier above that just keeps the cheapest price).
+## the workbook prices: a hired member's tier is already capped by their own
+## listed maximum (staff.json's highest_tier), so no cap lives here.
 static func level_unlock_cost(level: Dictionary, staff_hired: Dictionary) -> int:
 	var hired: Dictionary = staff_hired.get(Levers.unlock_role, {})
 	if hired.is_empty():
 		return int(level.get("unlock_cost_vacant", 0))
-	var tier: int = clampi(int(hired.get("tier", 0)), 0, LEVEL_UNLOCK_MAX_TIER)
+	var tier: int = maxi(int(hired.get("tier", 0)), 0)
 	return int(level.get("unlock_cost_tier_%d" % tier, 0))
 
 

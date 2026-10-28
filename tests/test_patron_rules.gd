@@ -101,7 +101,7 @@ func test_template_resolves_real_rooms() -> void:
 	assert_eq(LevelTemplate.stages(favor, "ST16", "National"), ["ST263", "ST16", "ST23"])
 	var broken := {"stage_1": "NOT_A_TOKEN"}
 	assert_eq(LevelTemplate.stages(broken, "ST16", "National"), [])
-	var flagship := {"stage_1": "PATRON_MEETING", "stage_2": "HEARING", "stage_3": "PUBLIC", "stage_4": "CAUCUS", "stage_5": "VOTE"}
+	var flagship := {"stage_1": "PATRON_MEETING", "stage_2": "HEARING", "stage_3": "PUBLIC", "stage_4": "CAUCUS", "stage_5": "VOTE", "public_room_constituency": "ST05", "public_room_national": "ST04"}
 	assert_eq(LevelTemplate.stages(flagship, "ST13", "Constituency"), ["ST20", "ST13", "ST05", "ST03", "ST23"])
 	assert_eq(LevelTemplate.stages(flagship, "ST13", "National")[2], "ST04")
 

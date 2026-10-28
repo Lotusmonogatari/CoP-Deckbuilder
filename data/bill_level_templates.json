@@ -12,7 +12,9 @@
     "stage_7": null,
     "stage_8": null,
     "visit_parties": null,
-    "note": "Draft: a meeting with the organization, the committee hearing for the first component, an optional lobbyist trade (LOBBYIST_TRADE, offered when a lobbyist speaks for an organization the bill hurts), the Floor Vote."
+    "note": "Draft: a meeting with the organization, the committee hearing for the first component, an optional lobbyist trade (LOBBYIST_TRADE, offered when a lobbyist speaks for an organization the bill hurts), the Floor Vote.",
+    "public_room_constituency": "ST05",
+    "public_room_national": "ST04"
   },
   {
     "template_id": "BT02",
@@ -30,7 +32,9 @@
       "PT04",
       "PT02"
     ],
-    "note": "Draft: adds an optional member visit (MP_VISIT), a public room (Town Hall for a Constituency organization, Press Conference for a National one), your own Party Caucus and an optional lobbyist trade."
+    "note": "Draft: adds an optional member visit (MP_VISIT), a public room (Town Hall for a Constituency organization, Press Conference for a National one), your own Party Caucus and an optional lobbyist trade.",
+    "public_room_constituency": "ST05",
+    "public_room_national": "ST04"
   },
   {
     "template_id": "BT03",
@@ -45,7 +49,9 @@
     "stage_7": null,
     "stage_8": null,
     "visit_parties": null,
-    "note": "Draft a Bill, two parts: the hearing for the first part, an optional lobbyist trade, the Floor Vote."
+    "note": "Draft a Bill, two parts: the hearing for the first part, an optional lobbyist trade, the Floor Vote.",
+    "public_room_constituency": "ST05",
+    "public_room_national": "ST04"
   },
   {
     "template_id": "BT04",
@@ -63,6 +69,8 @@
       "PT04",
       "PT02"
     ],
-    "note": "Draft a Bill, three parts: the hearing, an optional member visit, a public room, your own Party Caucus, an optional lobbyist trade, the Floor Vote."
+    "note": "Draft a Bill, three parts: the hearing, an optional member visit, a public room, your own Party Caucus, an optional lobbyist trade, the Floor Vote.",
+    "public_room_constituency": "ST05",
+    "public_room_national": "ST04"
   }
 ]

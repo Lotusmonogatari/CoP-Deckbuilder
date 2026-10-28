@@ -18,7 +18,6 @@ const FIXED := {
 	"STEERING": "ST08",
 	"VOTE": "ST23",
 }
-const PUBLIC_BY_TIER := {"Constituency": "ST05", "National": "ST04"}
 
 
 ## `hearing_stage` is the lead component's committee; `owner_tier` is the
@@ -42,18 +41,19 @@ static func stages(template: Dictionary, hearing_stage: String, owner_tier: Stri
 			if trade_offered:
 				out.append(LobbyistTrade.TRADE_STAGE)
 			continue
-		var stage_id := _resolve(str(token).strip_edges(), hearing_stage, owner_tier)
+		var stage_id := _resolve(template, str(token).strip_edges(), hearing_stage, owner_tier)
 		if stage_id.is_empty():
 			return []
 		out.append(stage_id)
 	return out
 
 
-static func _resolve(token: String, hearing_stage: String, owner_tier: String) -> String:
+static func _resolve(template: Dictionary, token: String, hearing_stage: String, owner_tier: String) -> String:
 	if token == "HEARING":
 		return hearing_stage
 	if token == "PUBLIC":
-		return str(PUBLIC_BY_TIER.get(owner_tier, ""))
+		# The Bill Level Templates tab names the room for each tier.
+		return str(template.get("public_room_%s" % owner_tier.to_lower(), "")) if owner_tier != "" else ""
 	return str(FIXED.get(token, ""))
 
 

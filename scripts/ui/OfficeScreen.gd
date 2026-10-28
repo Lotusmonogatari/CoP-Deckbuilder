@@ -2005,7 +2005,7 @@ func _show_card_offer() -> void:
 	back.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	# No battle room to describe an effect "here" or narrate — just the card
 	# as printed, the same as looking at it in the deck screen.
-	back.show_card(card, "", "")
+	back.show_card(card, "")
 	var back_frame := CenterContainer.new()
 	back_frame.add_child(back)
 

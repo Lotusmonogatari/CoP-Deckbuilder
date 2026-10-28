@@ -730,7 +730,7 @@ SHEETS = {
         "key": "template_id",
         "id_pattern": r"^BT\d+$",
         "optional_sheet": True,
-        "optional": ["Stage 4", "Stage 5", "Stage 6", "Stage 7", "Stage 8", "Visit Parties", "Note"],
+        "optional": ["Stage 4", "Stage 5", "Stage 6", "Stage 7", "Stage 8", "Visit Parties", "Note", "Public Room (Constituency)", "Public Room (National)"],
         "columns": [
             ("Template ID", "template_id", "id"),
             ("Kind", "kind", "str"),
@@ -745,6 +745,10 @@ SHEETS = {
             ("Stage 8", "stage_8", "str"),
             ("Visit Parties", "visit_parties", "id_list"),
             ("Note", "note", "str"),
+            # The room a PUBLIC stage becomes, by the patron organization's tier
+            # (2026-10-28, Cameron; first defaults Town Hall and Press Conference).
+            ("Public Room (Constituency)", "public_room_constituency", "str"),
+            ("Public Room (National)", "public_room_national", "str"),
         ],
     },
     # Visit Questions and Visit Answers: what a member says when they visit a
@@ -3323,6 +3327,12 @@ def fold_questions(data, report):
                 report.error("Bill Level Templates", f"{tid}: '{tok}' is not one of {', '.join(sorted(template_tokens))}")
         if slots and slots[-1] != "VOTE":
             report.error("Bill Level Templates", f"{tid}: the last stage must be VOTE")
+        stage_ids = {st.get("stage_id") for st in data.get("stages", [])} if isinstance(data.get("stages"), list) else set()
+        for col in ("public_room_constituency", "public_room_national"):
+            if "PUBLIC" in slots and not t.get(col):
+                report.warn("Bill Level Templates", f"{tid} has PUBLIC but no {col.replace('_', ' ')}, so a patron of that tier gets no level")
+            elif t.get(col) and stage_ids and t.get(col) not in stage_ids:
+                report.error("Bill Level Templates", f"{tid}: {col.replace('_', ' ')} names '{t.get(col)}', which is not a stage")
     visit_styles = {s.get("element") or s.get("suit") for s in data.get("suits", [])} if isinstance(data.get("suits"), list) else set()
     for ans in data.get("visit_answers", []):
         if visit_styles and ans.get("style") not in visit_styles:
