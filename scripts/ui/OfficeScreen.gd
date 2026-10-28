@@ -2289,20 +2289,34 @@ func _show_staff_profile(staff_id: String) -> void:
 	var current_tier := int(hired.get("tier", 0)) if is_hired else -1
 	var rows: Array[Control] = []
 
+	# Top left, the full picture of the person; top right, the hiring
+	# information (name, role, cost); under both, a biography line when the
+	# Staff tab has one; then the tiers and the buttons (Cameron, 2026-10-28).
 	var head := HBoxContainer.new()
-	head.add_theme_constant_override("separation", 20)
+	head.name = "StaffHead"
+	head.add_theme_constant_override("separation", 24)
 	var portrait := PlaceholderArt.new()
-	portrait.custom_minimum_size = Vector2(200, 260)
+	portrait.name = "StaffPortrait"
+	portrait.custom_minimum_size = Vector2(480, 720)
 	portrait.kind = PlaceholderArt.Kind.CHARACTER
 	portrait.art_id = staff_id
 	head.add_child(portrait)
 	var who := UiKit.tight_column()
+	who.name = "StaffHiring"
 	who.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	who.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	who.add_child(UiKit.line(str(candidate.get("name", staff_id)), "HeaderLabel"))
 	who.add_child(UiKit.line(role, "SmallLabel"))
 	who.add_child(UiKit.line(Text.say("staff.profile_cost",
 		{"cost": int(candidate.get("hiring_cost_yen", 0))})))
 	head.add_child(who)
 	rows.append(head)
+
+	var biography := str(candidate.get("biography", "")).strip_edges() if candidate.get("biography") != null else ""
+	if not biography.is_empty():
+		var bio := UiKit.line(biography)
+		bio.name = "StaffBiography"
+		rows.append(bio)
 
 	rows.append(UiKit.heading(Text.say("staff.tiers_heading")))
 	for entry: Dictionary in StaffProfile.tiers(candidate, DataDB.boosters, DataDB.segments, Text.phrase()):
@@ -2340,7 +2354,7 @@ func _show_staff_profile(staff_id: String) -> void:
 		hire.name = "ProfileHireButton"
 		rows.append(hire)
 
-	_staff_profile_panel.open(str(candidate.get("name", staff_id)), rows)
+	_staff_profile_panel.open("", rows)
 
 
 ## "Tier 1 · upgrade cost 30000 Yen", "Tier 0 · given when hired", and so on.

@@ -1463,7 +1463,10 @@ SHEETS = {
             ("Staff Role Tier 0 Reward", "tier_0_reward", "reward_list"),
             ("Staff Role Tier 1 Reward", "tier_1_reward", "reward_list"),
             ("Staff Role Tier 2 Reward", "tier_2_reward", "reward_list"),
+            # One line about the person, shown on their profile (2026-10-28).
+            ("Biography", "biography", "str"),
         ],
+        "optional": ["Biography"],
     },
     # Bonus Condition 1/2 are free text in three shapes (a staff-tier gate,
     # an unlock gate, a stacking-buff rule) plus literal "N/A" — not a fixed

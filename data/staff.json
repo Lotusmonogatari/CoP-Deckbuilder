@@ -16,7 +16,8 @@
       }
     ],
     "tier_1_reward": null,
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF02",
@@ -44,7 +45,8 @@
         "target": "SG01"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF03",
@@ -68,7 +70,8 @@
         "target": "BO05"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF04",
@@ -109,7 +112,8 @@
         "delta": 2,
         "target": "BO02"
       }
-    ]
+    ],
+    "biography": null
   },
   {
     "staff_id": "SF05",
@@ -128,7 +132,8 @@
         "target": "SG04"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF06",
@@ -169,7 +174,8 @@
         "delta": 2,
         "target": "BO01"
       }
-    ]
+    ],
+    "biography": null
   },
   {
     "staff_id": "SF07",
@@ -201,7 +207,8 @@
         "delta": 4,
         "target": "SG04"
       }
-    ]
+    ],
+    "biography": null
   },
   {
     "staff_id": "SF08",
@@ -220,7 +227,8 @@
       }
     ],
     "tier_1_reward": null,
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF09",
@@ -248,7 +256,8 @@
         "target": "SG01"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF10",
@@ -272,7 +281,8 @@
         "target": "BO08"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF11",
@@ -313,7 +323,8 @@
         "delta": 2,
         "target": "BO08"
       }
-    ]
+    ],
+    "biography": null
   },
   {
     "staff_id": "SF12",
@@ -332,7 +343,8 @@
         "target": "SG01"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF13",
@@ -373,7 +385,8 @@
         "delta": 2,
         "target": "BO01"
       }
-    ]
+    ],
+    "biography": null
   },
   {
     "staff_id": "SF14",
@@ -405,7 +418,8 @@
         "delta": 4,
         "target": "SG04"
       }
-    ]
+    ],
+    "biography": null
   },
   {
     "staff_id": "SF15",
@@ -424,7 +438,8 @@
       }
     ],
     "tier_1_reward": null,
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF16",
@@ -452,7 +467,8 @@
         "target": "SG03"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF17",
@@ -476,7 +492,8 @@
         "target": "BO03"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF18",
@@ -517,7 +534,8 @@
         "delta": 2,
         "target": "BO04"
       }
-    ]
+    ],
+    "biography": null
   },
   {
     "staff_id": "SF19",
@@ -536,7 +554,8 @@
         "target": "SG03"
       }
     ],
-    "tier_2_reward": null
+    "tier_2_reward": null,
+    "biography": null
   },
   {
     "staff_id": "SF20",
@@ -577,7 +596,8 @@
         "delta": 2,
         "target": "BO03"
       }
-    ]
+    ],
+    "biography": null
   },
   {
     "staff_id": "SF21",
@@ -609,6 +629,7 @@
         "delta": 4,
         "target": "SG03"
       }
-    ]
+    ],
+    "biography": null
   }
 ]
