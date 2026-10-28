@@ -124,6 +124,30 @@ class WB:
             else: self.set_cell(name,r,col,v,**kw)
         return r
 
+    def delete_row(self,name,rownum):
+        """Removes one row and moves every row below it up by one (2026-10-28).
+        Refuses a sheet that has formulas, merged cells, conditional formats,
+        data validations or hyperlinks, because their cell references would
+        need rewriting too; those sheets need a hand edit. Text, Cards and the
+        other plain data tabs are fine. Nothing is written until save()."""
+        p=self.sheet[name]; x=self.files[p].decode()
+        for tag in ('<f>','<f ','<mergeCell','<conditionalFormatting','<dataValidation','<hyperlink'):
+            if tag in x:
+                raise ValueError("%s has %s; delete_row cannot shift it safely" % (name,tag))
+        rm=re.search(r'<row r="%d"[^>]*?(?:/>|>.*?</row>)'%rownum,x,re.S)
+        if not rm: raise KeyError((name,rownum))
+        x=x[:rm.start()]+x[rm.end():]
+        def shift_row(m):
+            n=int(m.group(1))
+            if n<=rownum: return m.group(0)
+            body=re.sub(r'(<c r="[A-Z]+)(\d+)"',lambda c:'%s%d"'%(c.group(1),int(c.group(2))-1),m.group(0))
+            return body.replace('<row r="%d"'%n,'<row r="%d"'%(n-1),1)
+        x=re.sub(r'<row r="(\d+)"[^>]*?(?:/>|>.*?</row>)',shift_row,x,flags=re.S)
+        dm=re.search(r'<dimension ref="A1:([A-Z]+)(\d+)"/>',x)
+        if dm and int(dm.group(2))>1:
+            x=x.replace(dm.group(0),'<dimension ref="A1:%s%d"/>'%(dm.group(1),int(dm.group(2))-1))
+        self.files[p]=x.encode()
+
 
 def add_sheet(path, name, headers, rows, widths=None):
     """Appends a whole new worksheet (inline strings only, sharedStrings.xml

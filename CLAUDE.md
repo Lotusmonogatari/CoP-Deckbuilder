@@ -679,3 +679,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Marketplace item tiles show the quantity only, in a sideways row (2026-10-27, Cameron)
 - Hard-coded numbers and lists moved to the workbook (2026-10-27, Cameron)
 - Ticker lines for specific days and date ranges (2026-10-27, Cameron)
+- Office dues box, staff gate, profile layout, faster verify, outside backgrounds (2026-10-28, Cameron)

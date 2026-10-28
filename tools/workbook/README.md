@@ -13,6 +13,7 @@ w.find_row("Boosters", "BO19")                        # row number of a key
 w.set_cell("Boosters", w.find_row("Boosters", "BO19"), "F", "M33", style_from=4)
 w.append_row("Modifiers", {"A": "M99", "B": "Name", "M": 1}, style_row=w.last_data_row("Modifiers"))
 w.save()
+w.delete_row("Text", w.find_row("Text", "some.key"))   # removes the row and moves the rows below it up; plain data tabs only
 ```
 
 Text goes in as inline strings; `sharedStrings.xml` is never touched. Numbers go in as numbers (not text).

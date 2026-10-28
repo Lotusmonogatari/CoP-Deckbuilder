@@ -66,7 +66,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_STREET",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -102,7 +102,7 @@
     "cooldown_hours": null,
     "min_district_awareness": 10,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_STREET",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -120,7 +120,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_FESTIVAL",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -228,7 +228,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_SHRINE",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -408,7 +408,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_NEIGHBORHOOD",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -462,7 +462,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_FESTIVAL",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -498,7 +498,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_SCHOOL",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -516,7 +516,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_NEIGHBORHOOD",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -570,7 +570,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_NEIGHBORHOOD",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -588,7 +588,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_SCHOOL",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -606,7 +606,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": null,
+    "image": "OUT_STREET",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null

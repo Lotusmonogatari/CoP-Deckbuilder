@@ -57,7 +57,12 @@
     "new folders when convenient.",
     "",
     "tools/art_checklist.py writes design/ART_CHECKLIST.md: every file the",
-    "data asks for, and which are drawn."
+    "data asks for, and which are drawn.",
+    "",
+    "OUTSIDE BACKGROUNDS (2026-10-28): a Background ID or an Events Image of the form OUT_xxx",
+    "names a generic outdoor scene (outdoor_scenes below). Until OUT_xxx.png is drawn it shows",
+    "outdoor_background_fallback (the Town Hall, ST05), so nothing is ever blank.",
+    "tools/outdoor_backgrounds.py lists each scene, who uses it, and a ready art prompt."
   ],
   "folders": {
     "protagonist": "res://assets/characters/protagonists/",
@@ -111,6 +116,105 @@
       "Data Driven": "res://assets/cards/frame_back_shoji.png",
       "Divisive": "res://assets/cards/back_castle.png",
       "Duplicitous": "res://assets/cards/back_ninja.png"
+    }
+  },
+  "outdoor_background_prefix": "OUT_",
+  "outdoor_background_fallback": "ST05",
+  "outdoor_scenes": {
+    "OUT_FESTIVAL": {
+      "label": "Festival grounds",
+      "keywords": [
+        "festival",
+        "float",
+        "matsuri"
+      ],
+      "place": "a neighborhood festival: lanterns, stalls, a small shrine float, crowds out of frame",
+      "mood": "warm early-evening light, lively but empty of people"
+    },
+    "OUT_HARBOR": {
+      "label": "Harbor and fishing port",
+      "keywords": [
+        "harbor",
+        "fishing",
+        "fish",
+        "port",
+        "coast",
+        "seafood"
+      ],
+      "place": "a small northern fishing port: boats, crates, a cannery roof, gulls",
+      "mood": "cool morning light, salt haze"
+    },
+    "OUT_LAKESIDE": {
+      "label": "Lakeside and river bank",
+      "keywords": [
+        "lake",
+        "river",
+        "shore",
+        "lakeside"
+      ],
+      "place": "a calm lake shore with a footpath, reeds and distant hills",
+      "mood": "still, clear, late-afternoon light"
+    },
+    "OUT_FARM": {
+      "label": "Farm and orchard",
+      "keywords": [
+        "farm",
+        "orchard",
+        "rural",
+        "field",
+        "agricultur"
+      ],
+      "place": "farm fields and an orchard with a barn and a gravel track",
+      "mood": "open sky, soft midday light"
+    },
+    "OUT_SCHOOL": {
+      "label": "School grounds",
+      "keywords": [
+        "school",
+        "student",
+        "class",
+        "teacher"
+      ],
+      "place": "a school yard with a gate, a low building and a bicycle rack",
+      "mood": "bright, quiet, between lessons"
+    },
+    "OUT_SHRINE": {
+      "label": "Shrine grounds",
+      "keywords": [
+        "shrine",
+        "gate",
+        "heritage",
+        "priest"
+      ],
+      "place": "an old shrine approach: stone lanterns, a torii gate and cedar trees",
+      "mood": "hushed, dappled light"
+    },
+    "OUT_STREET": {
+      "label": "Shotengai and town street",
+      "keywords": [
+        "shotengai",
+        "street",
+        "market",
+        "rally",
+        "delegation",
+        "station"
+      ],
+      "place": "a covered shopping street and a town square with shop fronts",
+      "mood": "busy-looking daytime, no one in frame"
+    },
+    "OUT_NEIGHBORHOOD": {
+      "label": "Residential neighborhood",
+      "keywords": [
+        "neighborhood",
+        "residential",
+        "snow",
+        "road",
+        "trash",
+        "sports",
+        "clinic"
+      ],
+      "place": "a quiet residential lane with houses, a utility pole and a small park",
+      "mood": "overcast, everyday light"
     }
   }
 }

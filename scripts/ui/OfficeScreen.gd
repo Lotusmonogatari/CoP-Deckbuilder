@@ -105,7 +105,7 @@ var _dues_box: PanelContainer
 var _briefing_went_in := false
 ## The biggest a staff picture is drawn on the profile, and the gap above it.
 const STAFF_PORTRAIT_MAX := Vector2(480, 860)
-const STAFF_TOP_GAP := 2.0
+const STAFF_TOP_GAP := 88.0
 var _election_panel: Overlay
 var _events_button: Button
 var _events_panel: Overlay
@@ -2295,7 +2295,7 @@ func _show_staff_profile(staff_id: String) -> void:
 	# Top left, the full picture of the person; top right, the hiring
 	# information (name, role, cost); under both, a biography line when the
 	# Staff tab has one; then the tiers and the buttons (Cameron, 2026-10-28).
-	# A little air so the picture's top sits just below the screen's top edge.
+	# Air above the picture (the panel has no heading bar) so its top sits at 146 px.
 	var top_gap := Control.new()
 	top_gap.custom_minimum_size = Vector2(0, STAFF_TOP_GAP)
 	rows.append(top_gap)

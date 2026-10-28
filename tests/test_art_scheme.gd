@@ -193,3 +193,18 @@ func test_a_plain_id_picture_is_the_last_resort_for_any_expression() -> void:
 
 func test_the_real_staff_portraits_resolve_without_an_expression_tag() -> void:
 	assert_eq(ArtLoader.character_path("SF01", "damaged"), "res://assets/characters/staff/SF01.png")
+
+
+func test_an_undrawn_outside_scene_shows_the_town_hall() -> void:
+	assert_eq(ArtLoader.background_path("OUT_HARBOR"), "res://assets/backgrounds/ST05.png")
+	assert_eq(ArtLoader.background_path("ST05"), "res://assets/backgrounds/ST05.png")
+	assert_eq(ArtLoader.background_path("NOT_A_SCENE"), "", "only OUT_ ids borrow the Town Hall")
+
+
+func test_every_outside_scene_has_a_label_keywords_and_a_place() -> void:
+	var scenes: Dictionary = DataDB.art.get("outdoor_scenes", {})
+	assert_gt(scenes.size(), 0)
+	for id: String in scenes.keys():
+		assert_true(id.begins_with(str(DataDB.art.get("outdoor_background_prefix", "?"))), id)
+		for field in ["label", "keywords", "place", "mood"]:
+			assert_true(scenes[id].has(field), "%s lacks %s" % [id, field])

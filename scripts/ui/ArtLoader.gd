@@ -97,6 +97,13 @@ static func background_path(stage_id: String) -> String:
 	var borrowed := DataDB.stage_background_id(stage_id)
 	if not borrowed.is_empty() and borrowed != stage_id:
 		candidates.append(folder("background") + borrowed + ".png")
+	# An outside scene (OUT_FESTIVAL ...) that has not been drawn yet shows the
+	# Town Hall instead (data/art.json outdoor_background_*; Cameron, 2026-10-28).
+	var prefix := str(_art().get("outdoor_background_prefix", ""))
+	var fallback := str(_art().get("outdoor_background_fallback", ""))
+	if not prefix.is_empty() and not fallback.is_empty() \
+			and (stage_id.begins_with(prefix) or borrowed.begins_with(prefix)):
+		candidates.append(folder("background") + fallback + ".png")
 	return _first_existing(candidates)
 
 

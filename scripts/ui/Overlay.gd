@@ -148,6 +148,8 @@ func open(heading: String, rows: Array[Control], confirm_text: String = "",
 		back_text: String = "") -> void:
 	_build()
 	_title.text = heading
+	# A panel with no heading (the staff profile) shows no empty bar.
+	_title.visible = not heading.is_empty()
 	_back.text = back_text if not back_text.is_empty() else Text.say("ui.back")
 
 	for child in _body.get_children():
