@@ -87,7 +87,7 @@ static func compose_ids(patron_bill_id: String, ids: Array) -> Dictionary:
 
 
 static func _template_has(template: Dictionary, token: String) -> bool:
-	for slot in range(1, LevelTemplate.MAX_SLOTS + 1):
+	for slot in LevelTemplate.slot_numbers(template):
 		if str(template.get("stage_%d" % slot, "")).strip_edges() == token:
 			return true
 	return false
@@ -157,7 +157,7 @@ static func level_row(row: Dictionary, bill: Dictionary, rng: RandomNumberGenera
 ## with the level so a saved level resumes with the same visit.
 static func build_visit(template: Dictionary, bill: Dictionary, rng: RandomNumberGenerator) -> Dictionary:
 	var has_token := false
-	for slot in range(1, LevelTemplate.MAX_SLOTS + 1):
+	for slot in LevelTemplate.slot_numbers(template):
 		if str(template.get("stage_%d" % slot, "")) == "MP_VISIT":
 			has_token = true
 	if not has_token:
@@ -235,7 +235,7 @@ static func safe_drops(patron_bill_id: String, ids: Array) -> Array:
 static func build_trade(template: Dictionary, row: Dictionary, bill: Dictionary,
 		rng: RandomNumberGenerator) -> Dictionary:
 	var has_token := false
-	for slot in range(1, LevelTemplate.MAX_SLOTS + 1):
+	for slot in LevelTemplate.slot_numbers(template):
 		if str(template.get("stage_%d" % slot, "")) == "LOBBYIST_TRADE":
 			has_token = true
 	var drops := safe_drops(str(row.get("patron_bill_id", "")), bill.get("component_ids", []) as Array) if has_token else []

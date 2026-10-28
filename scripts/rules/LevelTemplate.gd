@@ -19,7 +19,6 @@ const FIXED := {
 	"VOTE": "ST23",
 }
 const PUBLIC_BY_TIER := {"Constituency": "ST05", "National": "ST04"}
-const MAX_SLOTS := 10
 
 
 ## `hearing_stage` is the lead component's committee; `owner_tier` is the
@@ -30,7 +29,7 @@ const MAX_SLOTS := 10
 static func stages(template: Dictionary, hearing_stage: String, owner_tier: String,
 		visit_offered: bool = false, trade_offered: bool = false) -> Array:
 	var out: Array = []
-	for slot in range(1, MAX_SLOTS + 1):
+	for slot in slot_numbers(template):
 		var token: Variant = template.get("stage_%d" % slot)
 		if token == null or str(token).strip_edges().is_empty():
 			continue
@@ -56,3 +55,15 @@ static func _resolve(token: String, hearing_stage: String, owner_tier: String) -
 	if token == "PUBLIC":
 		return str(PUBLIC_BY_TIER.get(owner_tier, ""))
 	return str(FIXED.get(token, ""))
+
+
+## The template's own stage_N columns, in numeric order. The levels pull from
+## whatever stages the row has; no fixed slot count lives in code.
+static func slot_numbers(template: Dictionary) -> Array[int]:
+	var numbers: Array[int] = []
+	for key: Variant in template.keys():
+		var text := str(key)
+		if text.begins_with("stage_") and text.substr(6).is_valid_int():
+			numbers.append(text.substr(6).to_int())
+	numbers.sort()
+	return numbers
