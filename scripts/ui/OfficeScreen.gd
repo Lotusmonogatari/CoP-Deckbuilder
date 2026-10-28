@@ -564,6 +564,9 @@ func _present_event(event_id: String, arrived: bool) -> void:
 			label = Text.say("event.choice_cost", {"text": label, "cost": int(price)})
 			if int(GameState.meta.get("Funds", 0)) < int(price):
 				refusal = Text.say("event.refuse_funds")
+		if refusal.is_empty() and StaffDelegation.blocked(str(choice.get("choice_text", "")),
+				DataDB.rules.get("staff_delegation_phrases", []), GameState.staff_hired):
+			refusal = Text.say("event.refuse_no_staff")
 		var letter := str(choice.get("choice", ""))
 		var button := UiKit.action_button(label, refusal, _on_event_choice.bind(event_id, letter), 100.0)
 		button.name = "EventChoice_" + letter

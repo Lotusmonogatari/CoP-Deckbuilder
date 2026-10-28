@@ -164,7 +164,9 @@ func _show_visitor() -> void:
 	_choice_c.text = str(question.get("choice_c", ""))
 	_choice_d.text = str(question.get("choice_d", ""))
 	for choice: Button in [_choice_a, _choice_b, _choice_c, _choice_d]:
-		choice.disabled = false
+		# "Send a staff member" cannot be picked with no staff hired.
+		choice.disabled = StaffDelegation.blocked(choice.text,
+			DataDB.rules.get("staff_delegation_phrases", []), GameState.staff_hired)
 
 	_continue_button.disabled = true
 	_continue_button.text = Text.say("office_hours.continue")

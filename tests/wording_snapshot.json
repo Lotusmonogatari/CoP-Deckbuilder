@@ -228,6 +228,7 @@
   "event.refuse_cooldown": "Too soon to do this again",
   "event.refuse_funds": "Not enough Funds",
   "event.refuse_hours": "Not enough hours left",
+  "event.refuse_no_staff": "No staff hired",
   "event.refuse_week_over": "The work week is over",
   "event.refuse_weekday": "Weekdays only",
   "event.refuse_weekend": "Weekend only",

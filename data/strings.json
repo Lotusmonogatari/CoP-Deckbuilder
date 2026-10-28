@@ -5710,5 +5710,12 @@
     "english": "Party Dues: {dues} / Office Funds: {funds}",
     "placeholders": "dues, funds",
     "notes": "2026-10-28 dues and funds box."
+  },
+  {
+    "key": "event.refuse_no_staff",
+    "where": "Events and visitor choices that send a staff member, none hired",
+    "english": "No staff hired",
+    "placeholders": null,
+    "notes": "2026-10-28 staff delegation gate."
   }
 ]

@@ -242,8 +242,27 @@
     "_": "The Japanese era names the Era Name calendar writes, in order (Cameron, 2026-10-26). A date belongs to the last era that starts on or before it. The first year of an era is written with first_year_word (元年) instead of 1. Add a row here when a new era begins.",
     "first_year_word": "元",
     "eras": [
-      {"name": "平成", "year": 1989, "month": 1, "day": 8},
-      {"name": "令和", "year": 2019, "month": 5, "day": 1}
+      {
+        "name": "平成",
+        "year": 1989,
+        "month": 1,
+        "day": 8
+      },
+      {
+        "name": "令和",
+        "year": 2019,
+        "month": 5,
+        "day": 1
+      }
     ]
+  },
+  "staff_delegation_phrases": {
+    "value": [
+      "a staff member",
+      "a staffer",
+      "a deputy"
+    ],
+    "options": "any list of lowercase phrases",
+    "notes": "A choice whose text contains one of these hands the job to a staff member, so it is greyed out when no staff is hired (Cameron, 2026-10-28). Matching is by wording; reword a choice and it may need a phrase here."
   }
 }
