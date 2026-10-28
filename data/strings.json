@@ -5705,10 +5705,10 @@
     "notes": "Cameron's list, 2026-10-27: toyto. Katakana. Edit freely."
   },
   {
-    "key": "dues.box",
+    "key": "dues.box_dues",
     "where": "Office, box beside the calendar",
-    "english": "Party Dues: {dues} / Office Funds: {funds}",
-    "placeholders": "dues, funds",
+    "english": "Party Dues: {dues}",
+    "placeholders": "dues",
     "notes": "2026-10-28 dues and funds box."
   },
   {
@@ -5717,5 +5717,12 @@
     "english": "No staff hired",
     "placeholders": null,
     "notes": "2026-10-28 staff delegation gate."
+  },
+  {
+    "key": "dues.box_funds",
+    "where": "Office, box beside the calendar, second line",
+    "english": "Office Funds: {funds}",
+    "placeholders": "funds",
+    "notes": "2026-10-28 dues and funds box."
   }
 ]
