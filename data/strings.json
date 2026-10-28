@@ -5707,14 +5707,14 @@
   {
     "key": "dues.box_dues",
     "where": "Office, box beside the calendar",
-    "english": "Party Dues: {dues}",
+    "english": "Party Dues: {dues}円",
     "placeholders": "dues",
     "notes": "2026-10-28 dues and funds box."
   },
   {
     "key": "dues.box_funds",
     "where": "Office, box beside the calendar, second line",
-    "english": "Office Funds: {funds}",
+    "english": "Office Funds: {funds}円",
     "placeholders": "funds",
     "notes": "2026-10-28 dues and funds box."
   },
