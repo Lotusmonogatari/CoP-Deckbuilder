@@ -2224,7 +2224,7 @@ func test_a_battle_engine_is_freed_when_nothing_holds_it() -> void:
 		"opponents": [{"opp_id": "A", "name": "A", "intent_pattern": [["block", 1]]}],
 	})
 	engine.end_turn()
-	var ref := weakref(engine)
+	var ref: WeakRef = weakref(engine)
 	engine = null
 	assert_null(ref.get_ref(), "the engine was released")
 

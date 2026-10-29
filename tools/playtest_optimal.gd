@@ -416,7 +416,7 @@ func _unlock_next_level_if_affordable() -> void:
 
 
 func _hire_cheap_staff() -> void:
-	for role: String in Ledger.STAFF_ROLES:
+	for role: String in Ledger.staff_roles(DataDB.staff):
 		if not GameState.staff_hired.get(role, {}).is_empty():
 			continue
 		var candidates: Array = DataDB.get_staff_by_role(role)
@@ -1224,7 +1224,7 @@ func _report() -> void:
 			statuses[status] = int(statuses.get(status, 0)) + 1
 		_log("Patron request statuses: %s   enacted components: %d   news running: %s" % [
 			statuses, GameState.enacted_components.size(), GameState.active_news()])
-	_log("Staff hired: %d / %d roles" % [GameState.staff_hired.size(), Ledger.STAFF_ROLES.size()])
+	_log("Staff hired: %d / %d roles" % [GameState.staff_hired.size(), Ledger.staff_roles(DataDB.staff).size()])
 	_log("Lifetime gaffes: %d   Stages lost to gaffes: %d   Gaffe penalty applied: %s"
 		% [GameState.lifetime_gaffes, GameState.stages_lost_to_gaffes, GameState.gaffe_penalty_applied])
 	_log("stage_type_results: %s" % [GameState.stage_type_results])

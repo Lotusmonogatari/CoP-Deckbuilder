@@ -7,7 +7,8 @@
 #
 # It does four things:
 #   1. Re-exports the workbook and validates every cross-reference in it.
-#   2. Boots the game and confirms the data, font and art loaders all work.
+#   2. Boots the game and confirms the data, font and art loaders all work, and
+#      that every script in scripts/, tools/ and tests/ compiles.
 #   3. Runs the unit tests (tests/, every folder).
 #   4. Clicks the buttons, for real, to prove no screen can trap the player.
 #      Every tests/interaction/*_test.tscn is found and run by itself, so a new
@@ -66,6 +67,10 @@ step "2/4  Booting the game"
 # The boot check scene is named explicitly: the main scene is the battle, and
 # running that here would silently stop checking the data and the font.
 "$GODOT" --headless --path . scenes/menus/BootCheck.tscn --quit-after 3 || fail "the game did not start cleanly."
+
+# Every script under scripts/, tools/ and tests/ must compile, so a removed
+# constant in a tool nobody runs daily still fails the build (2026-10-29).
+"$GODOT" --headless --path . tools/compile_check.tscn || fail "a script does not compile (see DID NOT LOAD above)."
 
 # The click tests need a screen (xvfb gives an invisible one). Start them now,
 # in the background, so they overlap with the unit tests below.
