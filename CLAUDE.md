@@ -68,8 +68,10 @@ The design workbook (`design/Game_Workbook.xlsx`) is exported by
 outputs are objects or nested structures rather than arrays, and some runtime
 files are maintained by hand. Follow the exporter and the `_README` fields in
 the current data files when changing the data contract. The checked-in snapshot
-contains 60 levels, 23 canon stages, 18 boosters, 32 modifiers, 54 cards,
-125 opponents, 6 real parties, 30 Floor Vote bills, and 2 cosmetic packages.
+(2026-10-29) contains 97 levels, 270 stages, 32 boosters, 53 modifiers, 70 cards,
+125 opponents, 6 real parties, 50 Floor Vote bills, 166 visitors, 38 events and 6
+cosmetic packages; `design/NEW_CHAT_STARTUP.md` keeps the current counts. How to add
+levels, stages, events and their dependent content: `design/CONTENT_GUIDE.md`.
 
 | File | Key | Purpose |
 |---|---|---|
@@ -182,7 +184,7 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 - Content guidance: `design/CONTENT_GUIDE.md` (section 7.4). The tab exists in the workbook today with no rows — Cameron's to write.
 
 ### 7.9 Stage Transition screen (built 2026-10-01, Cameron)
-- A short beat between two stages of the SAME level — distinct from §7.8's Level Intro, which only ever plays once, before a level's first stage. Opt-in per stage: `stages.json`'s new `Show Transition` column (blank = No, every existing stage ships off) and `Transition Speaker Count` (blank = 1, how many distinct characters speak). `scenes/office_hours/StageTransitionScreen.tscn` / `scripts/ui/StageTransitionScreen.gd`, built by `tools/build_stage_transition_scene.gd` the same way the other two screen-builder tools are.
+- A short beat between two stages of the SAME level — distinct from §7.8's Level Intro, which only ever plays once, before a level's first stage. Opt-in per stage: `stages.json`'s new `Show Transition` column (blank = No; it shipped off everywhere and is Yes on most stages today) and `Transition Speaker Count` (blank = 1, how many distinct characters speak). `scenes/office_hours/StageTransitionScreen.tscn` / `scripts/ui/StageTransitionScreen.gd`, built by `tools/build_stage_transition_scene.gd` the same way the other two screen-builder tools are.
 - **Three new workbook pools**, all flat and blank-tolerant, a row's own `Stage ID` left blank making it usable for ANY stage's transition (a wildcard): **Transition Cast** (`data/transition_cast.json` — which OPxx/SFxx characters are eligible), **Transition Backgrounds** (`data/transition_backgrounds.json`), **Transition Dialogue** (`data/transition_dialogue.json` — a `Character ID`-scoped paired exchange, `Character Line (EN)` + `Player Reply (EN)`). All three ship empty — Cameron's to write, the same "nothing written yet" bargain Level Intro Cues shipped with.
 - **One reusable pool-of-choices function**, not three: `scripts/rules/PoolPicker.gd` (new, pure) generalizes `OfficeTicker.gd`'s own eligible-then-random-pick — filter a table to rows whose scope field is blank or matches, then pick one at random, never repeating the excluded row unless it's the only option. Character selection, background selection, and dialogue selection all go through this one function.
 - **`scripts/rules/StageTransition.gd`** (new, pure) composes the picks: samples up to `Transition Speaker Count` distinct characters from Transition Cast — only ever counting one that ALSO has an eligible Transition Dialogue exchange (a cast candidate with nothing written for them simply doesn't speak, rather than appearing silent) — then one background. `resolve()` returns `{}` whenever the stage doesn't show a transition, or shows one but nobody eligible has anything written, so a half-authored pool never blocks the game.
@@ -501,7 +503,7 @@ so a card that is played is a node that can still be animated.
 - **Workbook edits.** Never save `design/Game_Workbook.xlsx` with openpyxl (it corrupts values and wipes formula caches). Edit raw XML with `tools/workbook/wbx.py` (`tools/workbook/README.md`); brand-new tabs get header notes from `tools/workbook/add_notes_new_tabs.py`, older tabs from `add_notes.py`. After every edit run `python3 tools/export_data.py` (it must say "No errors"); `--accept-wording` refreshes `tests/wording_snapshot.json` when Text-tab rows change.
 - **Every sentence is a Text-tab row** and the exporter requires literal keys (`Text.say("a.b")`, never a built-up key).
 - **New `class_name` scripts** need `.tools/godot --headless --path . --import` before GUT will see them.
-- **Verification.** GUT: `.tools/godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit`. Full gate: `tools/verify.sh` (about 10 to 15 minutes; run it in the background and wait for "All checks passed"). Merge the working branch to `main` only after it passes.
+- **Verification.** GUT: `.tools/godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit`. Full gate: `tools/verify.sh` (about 2 minutes: it compiles every script, runs the unit tests and runs the real-click tests four at a time; `--quick` skips the click tests; wait for the real "All checks passed" line). The guide for writing levels, stages, events and their content is `design/CONTENT_GUIDE.md`. Merge the working branch to `main` only after it passes.
 - **Screenshots** need a real display (`xvfb-run -a -s "-screen 0 1080x2340x24" ... --path .`), not `--headless`.
 - **Memory leaks.** A lambda stored in a long-lived object must capture the thing it needs, not `self`; a Node must not `await` a timer.
 - **Scene builders.** Only the builders listed in section 13 as safe may be rerun; the Office and battle scenes are edited by hand.

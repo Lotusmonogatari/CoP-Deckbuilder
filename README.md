@@ -18,12 +18,17 @@ one into `.tools/` if it is not. The main scene is the Office
 (`scenes/office_hours/OfficeScreen.tscn`).
 
 To check the whole project in one go — re-exports the workbook, boots the
-game, runs the rules engine's GUT tests, and clicks through the UI with a
-real display (needs `xvfb-run`) — run:
+game, checks every script compiles, runs the GUT tests, and clicks through the
+UI with a real display (needs `xvfb-run`, about 2 minutes) — run:
 
 ```
-tools/verify.sh
+tools/verify.sh            # everything
+tools/verify.sh --quick    # data, boot, compile and unit tests only
 ```
+
+Starting points: `design/NEW_CHAT_STARTUP.md` (the current state and working
+rules), `design/CONTENT_GUIDE.md` (how to write levels, stages, events and the
+content they depend on) and `design/EDITING_TEXT.md` (rewording existing text).
 
 ## Where things live
 

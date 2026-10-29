@@ -1,10 +1,13 @@
 # Coliseum of Parliament — Game Design, As It Currently Stands
 
 *A description of what the game does and how its systems connect, written
-for a reader rather than a build tool. Numbers below reflect the current
-checked-in data (54 cards, 125 opponents, 60 levels, 23 canon rooms, 18
-organisations, 32 modifiers, 6 real parties, 30 Floor Vote bills, 2
-cosmetic packages) and current behaviour, not the long-term vision — where
+for a reader rather than a build tool. **Dated: written in late September
+2026.** Its counts (54 cards, 60 levels, 23 rooms, 30 bills) and its systems
+predate the week calendar and party dues, events, patron and drafted bills,
+bill-specific rooms, outside pictures and the Decline choice; for the current
+state see `design/NEW_CHAT_STARTUP.md`, `design/CONTENT_GUIDE.md` and
+`design/CHANGELOG.md`. The numbers below reflected the then-current data and
+behaviour, not the long-term vision — where
 a system is designed but not yet switched on, that's said plainly at the
 point it comes up, and gathered again at the end.*
 

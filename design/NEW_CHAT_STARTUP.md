@@ -10,7 +10,7 @@ Point the assistant at this file at the start of a new session. The fuller recor
 | Repo and branches | `lotusmonogatari/cop-deckbuilder`. Work on the designated session branch; merge to `main` only after `tools/verify.sh` says "All checks passed". Everything to date is merged; the branch is level with `main`. |
 | Workbook | `design/Game_Workbook.xlsx` (renamed 2026-10-27 from `CoP_Starter_Card_Stage_Data.xlsx`). |
 | Content (`data/`) | 270 stage rows (226 combat), 97 levels, 70 cards, 32 organizations, 125 opponents, 50 floor-vote bills, 166 visitors, 38 events, 155 ticker lines, 6 cosmetic packages. |
-| Tests | About 1,542 GUT tests (120 scripts) and 27 real-click interaction tests. `tools/verify.sh` passes in about 2 minutes. |
+| Tests | About 1,551 GUT tests (120 scripts) and 27 real-click interaction tests. `tools/verify.sh` (which also compiles every script) passes in about 2 minutes. |
 | Missing | All audio files, most character and card art, 97 topic-room backgrounds, the eight generic outside scenes (`OUT_*`, show the Town Hall until drawn). No real-phone build yet (milestone M6). |
 
 ## 2. The person and the working rules
@@ -63,10 +63,14 @@ xvfb-run -a -s "-screen 0 1080x2340x24" .tools/godot --path . --resolution 1080x
 7. Content-budget tests pin visitor choice values and per-organization tastes; a content edit can trip them (`tests/test_content_budget*.gd`, `test_party_bodies.gd`, `test_bill_player_cues.gd`).
 8. Agent-written text edits need guards: keep place names and proper names, keep digits, enforce word limits.
 9. Staff pictures resolve `SF01_{expression}.png` first and a plain `SF01.png` last; an `OUT_*` background id shows the Town Hall until its own picture exists.
+10. Copying a workbook row with `wbx` turns numbers into text (`rows()` returns strings); convert them, and write plain values instead of formulas. See `design/CONTENT_GUIDE.md` section 4.4 and `tools/workbook/README.md`.
+11. A new copy of a family room (a topic Town Hall, caucus, committee) must be added to the Modifiers tab's Effect Target cells that name its family, or its backings silently do nothing there. Only one test checks this.
+12. The export saying "No errors" is not the whole check: a room with no visitors or a bad Background ID now errors, but a thin cue pool or a missing level does not. Run `tools/verify.sh`, `python3 tools/content_depth.py` and a bot trial for new rooms.
+13. The Decline generator (`tools/workbook/archive/b9/decline_options.py`) is a one-off for 17 events; add a new event's Decline by hand.
 
-## 6. What was done most recently (2026-10-27 to 2026-10-28)
+## 6. What was done most recently (2026-10-27 to 2026-10-29)
 
-The Party Dues / Office Funds box (two lines, with 円); the Japanese name off card fronts; two lines off card backs; "send a staff member" choices greyed out with no staff; level briefing Back returns to the levels list; public room per tier moved to the Bill Level Templates tab and the unlock-tier and slot caps removed; staff pictures fall back to a plain `SF##.png`; the staff profile rearranged (picture, hiring info, biography, role flavor, tiers, buttons) with two new Staff columns; a faster `verify.sh` (about 2 minutes, `--quick`); eight generic outside background scenes with a Town Hall fallback and eleven outdoor events pointed at them; a delete-row helper; `design/CLEANUP_CANDIDATES.md`. See the last entry of `design/CHANGELOG.md`.
+The Party Dues / Office Funds box (two lines, with 円); the Japanese name off card fronts; two lines off card backs; "send a staff member" choices greyed out with no staff; level briefing Back returns to the levels list; public room per tier moved to the Bill Level Templates tab and the unlock-tier and slot caps removed; staff pictures fall back to a plain `SF##.png`; the staff profile rearranged (picture, hiring info, biography, role flavor, tiers, buttons) with two new Staff columns; a faster `verify.sh` (about 2 minutes, `--quick`); eight generic outside background scenes with a Town Hall fallback and eleven outdoor events pointed at them; a delete-row helper; `design/CLEANUP_CANDIDATES.md`. Then, on 10-29: several pictures per event and per stage with picture terms (winter, snow), the Marketplace Funds/limit line, a View button and no-scroll offer in the deck and Rhetoric Training, centered card titles, a Decline choice on 17 Random events (wording in the Text tab, `@key` cells), a compile check in `verify.sh`, one content guide (`design/CONTENT_GUIDE.md`, tried out in a dry run) replacing the older expansion guide and prompts, and export checks for visitorless rooms and bad Background IDs. See the last entries of `design/CHANGELOG.md`.
 
 ## 7. Open items
 

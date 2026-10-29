@@ -18,6 +18,10 @@ w.delete_row("Text", w.find_row("Text", "some.key"))   # removes the row and mov
 
 Text goes in as inline strings; `sharedStrings.xml` is never touched. Numbers go in as numbers (not text).
 
+## Copying a row
+
+`w.rows()` gives every cell as text, so writing a copied row back with `append_row` would store numbers as text. Convert numeric-looking values first (`int(v)` / `float(v)`; keep ranges like `2-3` and IDs as text), skip formula cells (the Stages tab's Segment check and Favored suit are formulas on older rows; write plain values), give the row its own ID, and `w.save()`. `design/CONTENT_GUIDE.md` section 4.4 has the full recipe.
+
 ## After every edit
 
 1. `python3 tools/export_data.py` must end with "No errors".
