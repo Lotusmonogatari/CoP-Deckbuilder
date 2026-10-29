@@ -101,8 +101,21 @@ def main():
         body.extend(section + [""])
 
     flat("Card art", "card", [(c["card_id"], c.get("name_en", "")) for c in load("cards")], "card")
+    # A stage whose Background ID cell is filled borrows that picture (a generic
+    # room or an OUT_ pool), so only the blank ones need a file of their own; the
+    # OUT_ pictures named by stages or events are listed once each.
+    out_ids = []
+    for row in load("stages") + load("events"):
+        for cell in (row.get("background_id"), row.get("image")):
+            for part in str(cell or "").replace("|", ";").split(";"):
+                part = part.strip()
+                if part.startswith("OUT_") and part not in out_ids:
+                    out_ids.append(part)
     flat("Backgrounds", "background",
-         [("OFFICE", "The Office")] + [(s["stage_id"], s.get("name_en", "")) for s in load("stages")])
+         [("OFFICE", "The Office")]
+         + [(s["stage_id"], s.get("name_en", "")) for s in load("stages")
+            if not str(s.get("background_id") or "").strip()]
+         + [(i, "Outside scene") for i in sorted(out_ids)])
     flat("Organisation icons", "icon", [(b["booster_id"], b.get("name_en", "")) for b in load("boosters")])
 
     flat("Audience icons (Boosters panel)", "icon",

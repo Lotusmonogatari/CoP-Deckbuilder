@@ -7,15 +7,15 @@ in `data/art.json`.
 | Kind | Drawn |
 |---|---|
 | Protagonists | 11 / 28 |
-| Opponents | 3 / 625 |
+| Opponents | 7 / 625 |
 | Staff | 0 / 105 |
-| Visitors | 0 / 295 |
-| Card art | 0 / 54 |
-| Backgrounds | 24 / 121 |
+| Visitors | 0 / 830 |
+| Card art | 70 / 70 |
+| Backgrounds | 41 / 42 |
 | Organisation icons | 32 / 32 |
 | Audience icons (Boosters panel) | 5 / 5 |
 | Shop item icons | 21 / 21 |
-| Cosmetic package icons | 2 / 2 |
+| Cosmetic package icons | 6 / 6 |
 
 ## Protagonists — `assets/characters/protagonists/`
 
@@ -23,13 +23,25 @@ in `data/art.json`.
 |---|---|---|---|---|---|---|---|---|
 | PC01 | Kenshin Sako | ✓ | ✓ | ✓ | ✓ | ☐ | ☐ | ✓ |
 | PC02 | Haru Yashi | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| PC03 | Edward Grinner | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| PC03 | Arata Ran | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 | PC04 | Jyurou Nishihara | ✓ | ✓ | ✓ | ✓ | ✓ | ☐ | ✓ |
 
 ## Opponents — `assets/characters/opponents/`
 
 | ID | Name | neutral | attacking | guarding | gaining | damaged |
 |---|---|---|---|---|---|---|
+| OP110 | Kenta Aoshima | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP67 | Okabe Hideriai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP80 | Soma Umehori | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP83 | Teinei Macmillan | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP29 | Imekanu Resu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP36 | Kakuei Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP91 | Utemaru Naizen | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP47 | Kitahime Haibi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP82 | Tama Tsujikonou | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP78 | Siatuy Sanota | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP33 | Juba Kasumu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP57 | Masanori Shizugata | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP103 | Daichi Moribe | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP104 | Haruna Sekiguchi | ✓ | ☐ | ☐ | ☐ | ☐ |
 | OP105 | Ryusei Tobata | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -37,7 +49,6 @@ in `data/art.json`.
 | OP107 | Motoharu Zenke | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP108 | Sachiko Endou | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP109 | Renji Kobata | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP102 | Emi Katsuragawa | ✓ | ☐ | ☐ | ☐ | ☐ |
 | OP14 | Donald Shibata | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP34 | Tae-jun Jung | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP60 | Migimura Okamuradonzai | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -48,7 +59,6 @@ in `data/art.json`.
 | OP50 | Kokuni Yatsumachi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP09 | Atsushi Fujioka | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP85 | Tobira Hideyoshi | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP91 | Utemaru Naizen | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP81 | Taiyou Nigate | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP17 | Furukawa Hideki | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP23 | Harumi Asato | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -57,20 +67,17 @@ in `data/art.json`.
 | OP64 | Noah Kain | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP75 | Seta Anramasu | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP92 | Walter Peard | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP01 | Ayala Taiyounokage | ✓ | ☐ | ☐ | ☐ | ☐ |
+| OP01 | Ayala Taiyounokage | ✓ | ✓ | ✓ | ✓ | ✓ |
 | OP51 | Kotake Kasumu | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP30 | Isoroku Adams | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP33 | Juba Kasumu | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP42 | Keu Shibatani | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP71 | Ran Sachiko | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP54 | Luo Guang | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP63 | Namgung Ryung | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP73 | Lee-min Seong | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP21 | Hee-seop Han | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP67 | Okabe Hideriai | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP52 | Koyki Kurasno | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP66 | Nonaka Yoshie | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP57 | Masanori Shizugata | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP48 | Kiyabu Waritai | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP76 | Shiba Momoe | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP88 | Tsukuhito Keri | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -78,7 +85,6 @@ in `data/art.json`.
 | OP31 | Iwao Nagamine | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP58 | Masato Maruyama | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP90 | Tsutomu Hirano | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP27 | Ichizaki Namu | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP11 | Barclay Brigham | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP12 | Chi Zoku | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP25 | Hikari Suimoto | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -90,7 +96,6 @@ in `data/art.json`.
 | OP98 | Yoshida Cho | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP06 | Arata Ran | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP43 | Kimiko Chinen | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP29 | Imekanu Resu | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP46 | Kisar Masayoshi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP20 | Gorou Kon | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP44 | Kina Kewtum | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -101,7 +106,6 @@ in `data/art.json`.
 | OP38 | Katsumiko Yamamura | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP72 | Sadao Nishikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP56 | Mao Saeki | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP82 | Tama Tsujikonou | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP18 | Gavin Ronaldson | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP59 | Masayoshi Sera | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP19 | Goko Morino | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -109,7 +113,6 @@ in `data/art.json`.
 | OP13 | Cyril Slater | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP101 | Yuriko Mayeda | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP77 | Shizutake Matsumae | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP36 | Kakuei Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP62 | Minami Okirasnunipa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP05 | Aptoas Ahun | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP32 | Jiayi Gong | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -118,24 +121,18 @@ in `data/art.json`.
 | OP97 | Yoshi Toda | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP03 | Ani Aman | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP07 | Arisu Fukunaga | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP83 | Teinei Macmillan | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP47 | Kitahime Haibi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP49 | Kiyomi Gima | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP53 | Leonard Ridgway | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP86 | Tomihisa Shimao | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP93 | Xiang Huang | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP96 | Yakuwakka Yayarini | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP80 | Soma Umehori | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP08 | Atsuko Takeo | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP28 | Iida Eri | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP02 | Amaya Matsumae | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP26 | Hyun-jae Hyeong | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP78 | Siatuy Sanota | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP100 | Yuki Kasukasa | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP16 | Eiji Fujioka | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP87 | Tomio Katayama | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP10 | Aki Rono | ☐ | ☐ | ☐ | ☐ | ☐ |
-| OP110 | Kenta Aoshima | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP111 | Reiko Habutae | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP112 | Julian Beckett | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP113 | Miyu Katsuranagi | ☐ | ☐ | ☐ | ☐ | ☐ |
@@ -155,6 +152,9 @@ in `data/art.json`.
 | OP22 | Haru Yashi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP35 | Jyurou Nishihara | ☐ | ☐ | ☐ | ☐ | ☐ |
 | OP40 | Kenshin Sako | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP27 | Ichizaki Namu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| OP102 | Emi Katsuragawa | ✓ | ☐ | ☐ | ☐ | ☐ |
+| OP10 | Aki Rono | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Staff — `assets/characters/staff/`
 
@@ -245,65 +245,188 @@ in `data/art.json`.
 | VI57 | Mitsuru Aoyagi | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI58 | Fumiko Daidoji | ☐ | ☐ | ☐ | ☐ | ☐ |
 | VI59 | Jun Ogasawara | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI60 | Ainu Community Council Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI61 | Agricultural Cooperatives Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI62 | Care and Welfare Council Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI63 | National Media Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI64 | Buddhist Temples Association Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI65 | Members of Parliament Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI66 | Veterans' Association Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI67 | Chamber of Commerce Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI68 | Fisheries Cooperative Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI69 | Labor Federation Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI70 | Our Traditional Society Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI71 | Agricultural Cooperatives Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI72 | Students United Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI73 | Family Network Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI74 | Yezo Artisans Guild Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI75 | Members of Parliament Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI76 | Shrine Association Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI77 | Care and Welfare Council Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI78 | Urban Neighborhood Alliance Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI79 | Ainu Language and Culture Foundation Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI80 | Rural Revitalization Council Representative | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI81 | Takashi Hamada | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI82 | Michiko Sasaki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI83 | Daisuke Kondo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI84 | Ichiro Watanabe | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI85 | Yoshie Narita | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI86 | Kazuo Abe | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI87 | Akemi Fujiwara | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI88 | Hiroshi Kimura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI89 | Rina Kurosawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI90 | Noboru Ishikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI91 | Fumiko Sato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI92 | Tetsuya Ota | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI93 | Haruko Mori | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI94 | Yuto Matsuda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI95 | Masaru Takeda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI96 | Chiyo Hayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI97 | Genji Endo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI98 | Shinobu Kikuchi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI99 | Emi Yoshida | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI100 | Kenta Aoki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI101 | Sachiko Nomura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI102 | Tomekichi Sakai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI103 | Ryo Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI104 | Misao Ogawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI105 | Noriko Taniguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI106 | Satoru Imai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI107 | Kunio Fukuda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI108 | Mai Nishimura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI109 | Isamu Kato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI110 | Reiko Shimizu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI111 | Haruo Kimura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI112 | Emi Sasaki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI113 | Ryo Takeda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI114 | Sachiko Ono | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI115 | Daichi Mori | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI116 | Mayumi Hayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI117 | Kenta Yamaguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI118 | Fumiko Inoue | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI119 | Takuya Fujita | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI120 | Yoshie Nakajima | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI121 | Shinji Ishikawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI122 | Reiko Tanabe | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI123 | Masato Kondo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI124 | Michiko Aoki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI125 | Kaori Matsuda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI126 | Tetsuo Nishida | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI127 | Yuko Sakamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI128 | Hiroshi Ueda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI129 | Natsuki Hirano | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI130 | Genji Okada | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI131 | Ayako Kudo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI132 | Katsumi Shimizu | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI133 | Megumi Ishii | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI134 | Taro Yoshida | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI135 | Satomi Morita | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI136 | Isamu Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI137 | Noriko Maeda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI138 | Ichiro Kawai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI139 | Akemi Suzuki | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI140 | Masao Taniguchi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI141 | Chihiro Endo | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI142 | Ryuji Sugiyama | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI143 | Mika Kobayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI144 | Taiga Ogawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI145 | Hanae Hirata | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI146 | Kazuo Hayakawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI147 | Sayaka Matsumoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI148 | Eiji Nakamura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI149 | Yoko Takeuchi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI150 | Satoshi Yamamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI151 | Rina Fukuda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI152 | Misaki Hori | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI153 | Shigeru Ito | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI154 | Kimiko Hasegawa | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI155 | Tadashi Kato | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI156 | Hiromi Sakurai | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI157 | Mamoru Tsuchiya | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI158 | Etsuko Oshima | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI159 | Kenzo Ikeda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI160 | Yumiko Hoshino | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI161 | Goro Hamamoto | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI162 | Chieko Wakabayashi | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI163 | Haruki Nagano | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI164 | Setsuko Omura | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI165 | Toshio Kuroda | ☐ | ☐ | ☐ | ☐ | ☐ |
+| VI166 | Yasuo Noda | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 ## Card art — `assets/cards/art/`
 
 | File | For | Drawn |
 |---|---|---|
-| C01.png | Record of Service | ☐ |
-| C02.png | Sincere Answer | ☐ |
-| C03.png | Formal Apology | ☐ |
-| C04.png | Return to First Principles | ☐ |
-| C05.png | Impassioned Speech | ☐ |
-| C06.png | Tearful Appeal | ☐ |
-| C07.png | Rousing Applause | ☐ |
-| C08.png | Speech from the Soul | ☐ |
-| C09.png | Call for Unity | ☐ |
-| C10.png | Voice of the Hometown | ☐ |
-| C11.png | Work the Room First | ☐ |
-| C12.png | Ask Who's With You | ☐ |
-| C13.png | Present the Stats | ☐ |
-| C14.png | Document Request | ☐ |
-| C15.png | Pursue the Contradiction | ☐ |
-| C16.png | Table the White Paper | ☐ |
-| C17.png | Labeling | ☐ |
-| C18.png | Drawing Battle Lines | ☐ |
-| C19.png | Agitation | ☐ |
-| C20.png | Loyalty Test | ☐ |
-| C21.png | Iridescent Answer | ☐ |
-| C22.png | "I Have No Recollection" | ☐ |
-| C23.png | Shifting the Issue | ☐ |
-| C24.png | Offer a Quiet Assurance | ☐ |
-| C25.png | Point to the Promise Kept | ☐ |
-| C26.png | Own the Mistake | ☐ |
-| C27.png | Appeal Across the Aisle | ☐ |
-| C28.png | Read the Letters Aloud | ☐ |
-| C29.png | Appeal to Conscience | ☐ |
-| C30.png | Rally the Faithful | ☐ |
-| C31.png | Righteous Anger | ☐ |
-| C32.png | Raise Your Voice | ☐ |
-| C33.png | Refuse to Yield | ☐ |
-| C34.png | Bring the Room to Its Feet | ☐ |
-| C35.png | Invoke Party Discipline | ☐ |
-| C36.png | Offer a Private Word | ☐ |
-| C37.png | Call for Common Cause | ☐ |
-| C38.png | Call In a Favor | ☐ |
-| C39.png | We Have the Votes | ☐ |
-| C40.png | Question the Funding | ☐ |
-| C41.png | Set the Record Straight | ☐ |
-| C42.png | Press for a Straight Answer | ☐ |
-| C43.png | Check Their Facts | ☐ |
-| C44.png | Demand an Outside Review | ☐ |
-| C45.png | Name and Shame | ☐ |
-| C46.png | Force the Choice | ☐ |
-| C47.png | Question Their Loyalty | ☐ |
-| C48.png | Media Appeal | ☐ |
-| C49.png | Declare Them Unfit | ☐ |
-| C50.png | Take It Under Advisement | ☐ |
-| C51.png | Feed the Press a Line | ☐ |
-| C52.png | Drown Them in Detail | ☐ |
-| C53.png | Tell the Room What It Wants | ☐ |
-| C54.png | Off the Record | ☐ |
+| C01.png | Record of Service | ✓ |
+| C02.png | Sincere Answer | ✓ |
+| C03.png | Formal Apology | ✓ |
+| C04.png | Return to First Principles | ✓ |
+| C05.png | Impassioned Speech | ✓ |
+| C06.png | Tearful Appeal | ✓ |
+| C07.png | Rousing Applause | ✓ |
+| C08.png | Speech from the Soul | ✓ |
+| C09.png | Call for Unity | ✓ |
+| C10.png | Voice of the Hometown | ✓ |
+| C11.png | Work the Room First | ✓ |
+| C12.png | Ask Who's With You | ✓ |
+| C13.png | Present the Stats | ✓ |
+| C14.png | Document Request | ✓ |
+| C15.png | Pursue the Contradiction | ✓ |
+| C16.png | Table the White Paper | ✓ |
+| C17.png | Labeling | ✓ |
+| C18.png | Drawing Battle Lines | ✓ |
+| C19.png | Agitation | ✓ |
+| C20.png | Loyalty Test | ✓ |
+| C21.png | Iridescent Answer | ✓ |
+| C22.png | "I Have No Recollection" | ✓ |
+| C23.png | Shifting the Issue | ✓ |
+| C24.png | Offer a Quiet Assurance | ✓ |
+| C25.png | Point to the Promise Kept | ✓ |
+| C26.png | Own the Mistake | ✓ |
+| C27.png | Appeal Across the Aisle | ✓ |
+| C28.png | Read the Letters Aloud | ✓ |
+| C29.png | Appeal to Conscience | ✓ |
+| C30.png | Rally the Faithful | ✓ |
+| C31.png | Righteous Anger | ✓ |
+| C32.png | Raise Your Voice | ✓ |
+| C33.png | Refuse to Yield | ✓ |
+| C34.png | Bring the Room to Its Feet | ✓ |
+| C35.png | Invoke Party Discipline | ✓ |
+| C36.png | Offer a Private Word | ✓ |
+| C37.png | Call for Common Cause | ✓ |
+| C38.png | Call In a Favor | ✓ |
+| C39.png | We Have the Votes | ✓ |
+| C40.png | Question the Funding | ✓ |
+| C41.png | Set the Record Straight | ✓ |
+| C42.png | Press for a Straight Answer | ✓ |
+| C43.png | Check Their Facts | ✓ |
+| C44.png | Demand an Outside Review | ✓ |
+| C45.png | Name and Shame | ✓ |
+| C46.png | Force the Choice | ✓ |
+| C47.png | Question Their Loyalty | ✓ |
+| C48.png | Media Appeal | ✓ |
+| C49.png | Declare Them Unfit | ✓ |
+| C50.png | Take It Under Advisement | ✓ |
+| C51.png | Feed the Press a Line | ✓ |
+| C52.png | Drown Them in Detail | ✓ |
+| C53.png | Tell the Room What It Wants | ✓ |
+| C54.png | Off the Record | ✓ |
+| C55.png | Trim the Appendix | ✓ |
+| C56.png | Review the Record | ✓ |
+| C57.png | Burn the Draft | ✓ |
+| C58.png | Cut Your Losses | ✓ |
+| C59.png | Let It Go | ✓ |
+| C60.png | A Fresh Start | ✓ |
+| C61.png | Shuffle the Papers | ✓ |
+| C62.png | Lose the Evidence | ✓ |
+| C63.png | Compile the Dossier | ✓ |
+| C64.png | The Full Audit | ✓ |
+| C65.png | Burn the Bridge | ✓ |
+| C66.png | No Quarter | ✓ |
+| C67.png | Give Everything | ✓ |
+| C68.png | Words From the Soul | ✓ |
+| C69.png | The Quiet Deal | ✓ |
+| C70.png | Back-Room Bargain | ✓ |
 
 ## Backgrounds — `assets/backgrounds/`
 
@@ -333,138 +456,59 @@ in `data/art.json`.
 | ST21.png | Policy Study Session | ✓ |
 | ST22.png | Party Steering Committee Check-In | ✓ |
 | ST23.png | National Assembly Floor Voting | ✓ |
-| ST24.png | Town Hall on Commuter Fares | ☐ |
-| ST25.png | Policy Study on Rail Timetables | ☐ |
-| ST26.png | Press Conference on Raising Train Fares | ☐ |
-| ST27.png | Hearing on Rail Safety | ☐ |
-| ST28.png | Lobbyist Meeting on Fishing Quotas | ☐ |
-| ST29.png | Town Hall at the Harbor | ☐ |
-| ST30.png | Media Ambush on Seafood Labeling | ☐ |
-| ST31.png | Hearing on Fishery Quotas | ☐ |
-| ST32.png | Press Conference on Wilderness Protection | ☐ |
-| ST33.png | Hearing on Wilderness Protection | ☐ |
-| ST34.png | Town Hall on Wilderness Protection | ☐ |
-| ST35.png | Party Caucus on Wilderness Protection | ☐ |
-| ST36.png | Town Hall on Rural Hospitals | ☐ |
-| ST37.png | Hearing on Rural Hospitals | ☐ |
-| ST38.png | Policy Study on Rural Hospitals | ☐ |
-| ST39.png | Party Caucus on Rural Hospitals | ☐ |
-| ST40.png | Policy Study on Digital Identity Cards | ☐ |
-| ST41.png | TV Debate on Digital Identity Cards | ☐ |
-| ST42.png | Party Caucus on Digital Identity Cards | ☐ |
-| ST43.png | Press Conference on Broadcaster Independence | ☐ |
-| ST44.png | TV Debate on Broadcaster Independence | ☐ |
-| ST45.png | Party Caucus on Broadcaster Independence | ☐ |
-| ST46.png | Press Conference on Donation Transparency | ☐ |
-| ST47.png | Hearing on Donation Transparency | ☐ |
-| ST48.png | Lobbyist Meeting on Donation Transparency | ☐ |
-| ST49.png | Party Caucus on Donation Transparency | ☐ |
-| ST50.png | Policy Study on Corporate Tax Cuts | ☐ |
-| ST51.png | Hearing on Corporate Tax Cuts | ☐ |
-| ST52.png | Party Caucus on Corporate Tax Cuts | ☐ |
-| ST53.png | Town Hall on the Carbon Levy | ☐ |
-| ST54.png | Hearing on the Carbon Levy | ☐ |
-| ST55.png | Press Conference on the Carbon Levy | ☐ |
-| ST56.png | Party Caucus on the Carbon Levy | ☐ |
-| ST57.png | Hearing on Fishing Quota Reform | ☐ |
-| ST58.png | Town Hall on Fishing Quota Reform | ☐ |
-| ST59.png | Party Caucus on Fishing Quota Reform | ☐ |
-| ST60.png | Hearing on Shipbuilding Support | ☐ |
-| ST61.png | Town Hall on Shipbuilding Support | ☐ |
-| ST62.png | Party Caucus on Shipbuilding Support | ☐ |
-| ST63.png | Hearing on the Constitutional Review | ☐ |
-| ST64.png | Press Conference on the Constitutional Review | ☐ |
-| ST65.png | Party Caucus on the Constitutional Review | ☐ |
-| ST66.png | Hearing on Border Cooperation | ☐ |
-| ST67.png | Lobbyist Meeting on Border Cooperation | ☐ |
-| ST68.png | Party Caucus on Border Cooperation | ☐ |
-| ST69.png | Hearing on Chishima Development | ☐ |
-| ST70.png | Press Conference on Chishima Development | ☐ |
-| ST71.png | Lobbyist Meeting on Chishima Development | ☐ |
-| ST72.png | Party Caucus on Chishima Development | ☐ |
-| ST73.png | TV Debate on China Trade | ☐ |
-| ST74.png | Hearing on China Trade | ☐ |
-| ST75.png | Party Caucus on China Trade | ☐ |
-| ST76.png | Town Hall on Farm Succession | ☐ |
-| ST77.png | Hearing on Farm Succession | ☐ |
-| ST78.png | Party Caucus on Farm Succession | ☐ |
-| ST79.png | Policy Study on University Research Funding | ☐ |
-| ST80.png | Hearing on University Research Funding | ☐ |
-| ST81.png | Party Caucus on University Research Funding | ☐ |
-| ST82.png | Town Hall on Workplace Equality | ☐ |
-| ST83.png | Press Conference on Workplace Equality | ☐ |
-| ST84.png | TV Debate on Workplace Equality | ☐ |
-| ST85.png | Party Caucus on Workplace Equality | ☐ |
-| ST86.png | Town Hall on Parental Leave | ☐ |
-| ST87.png | Policy Study on Parental Leave | ☐ |
-| ST88.png | Lobbyist Meeting on Parental Leave | ☐ |
-| ST89.png | Party Caucus on Parental Leave | ☐ |
-| ST90.png | Hearing on Surveillance Cameras | ☐ |
-| ST91.png | TV Debate on Surveillance Cameras | ☐ |
-| ST92.png | Press Conference on Surveillance Cameras | ☐ |
-| ST93.png | Party Caucus on Surveillance Cameras | ☐ |
-| ST94.png | Town Hall on Town Mergers | ☐ |
-| ST95.png | Hearing on Town Mergers | ☐ |
-| ST96.png | Policy Study on Town Mergers | ☐ |
-| ST97.png | Party Caucus on Town Mergers | ☐ |
-| ST98.png | TV Debate on Party Leadership Ballots | ☐ |
-| ST99.png | Press Conference on Party Leadership Ballots | ☐ |
-| ST100.png | Party Caucus on Party Leadership Ballots | ☐ |
-| ST101.png | Office Hours: Wilderness Protection | ☐ |
-| ST102.png | Office Hours: Rural Hospitals | ☐ |
-| ST103.png | Office Hours: Digital Identity Cards | ☐ |
-| ST104.png | Office Hours: Broadcaster Independence | ☐ |
-| ST105.png | Office Hours: Donation Transparency | ☐ |
-| ST106.png | Office Hours: Corporate Tax Cuts | ☐ |
-| ST107.png | Office Hours: the Carbon Levy | ☐ |
-| ST108.png | Office Hours: Fishing Quota Reform | ☐ |
-| ST109.png | Office Hours: Shipbuilding Support | ☐ |
-| ST110.png | Office Hours: the Constitutional Review | ☐ |
-| ST111.png | Office Hours: Border Cooperation | ☐ |
-| ST112.png | Office Hours: Chishima Development | ☐ |
-| ST113.png | Office Hours: China Trade | ☐ |
-| ST114.png | Office Hours: Farm Succession | ☐ |
-| ST115.png | Office Hours: University Research Funding | ☐ |
-| ST116.png | Office Hours: Workplace Equality | ☐ |
-| ST117.png | Office Hours: Parental Leave | ☐ |
-| ST118.png | Office Hours: Surveillance Cameras | ☐ |
-| ST119.png | Office Hours: Town Mergers | ☐ |
-| ST120.png | Office Hours: Party Leadership Ballots | ☐ |
+| OUT_COAST_BATTERY.png | Outside scene | ✓ |
+| OUT_FARM_1.png | Outside scene | ✓ |
+| OUT_FARM_2.png | Outside scene | ✓ |
+| OUT_FESTIVAL_1.png | Outside scene | ✓ |
+| OUT_FESTIVAL_2_REGULAR.png | Outside scene | ✓ |
+| OUT_FESTIVAL_2_WINTER.png | Outside scene | ✓ |
+| OUT_HARBOR_1.png | Outside scene | ✓ |
+| OUT_HARBOR_2.png | Outside scene | ✓ |
+| OUT_NEIGHBORHOOD.png | Outside scene | ☐ |
+| OUT_SCHOOL_1.png | Outside scene | ✓ |
+| OUT_SCHOOL_2.png | Outside scene | ✓ |
+| OUT_SHRINE_1.png | Outside scene | ✓ |
+| OUT_SHRINE_2.png | Outside scene | ✓ |
+| OUT_STREET_1.png | Outside scene | ✓ |
+| OUT_STREET_2.png | Outside scene | ✓ |
+| OUT_STREET_3.png | Outside scene | ✓ |
+| OUT_VILLAGE_ROAD_SNOW_1.png | Outside scene | ✓ |
+| OUT_VILLAGE_ROAD_SNOW_2.png | Outside scene | ✓ |
 
 ## Organisation icons — `assets/icons/`
 
 | File | For | Drawn |
 |---|---|---|
-| BO01.png | Party Headquarters | ✓ |
-| BO02.png | Party Faction | ✓ |
 | BO03.png | Local Kōenkai | ✓ |
 | BO04.png | Mayors' Network | ✓ |
-| BO05.png | Chamber of Commerce | ✓ |
 | BO06.png | Neighborhood Associations | ✓ |
 | BO07.png | Fisheries Cooperative | ✓ |
+| BO11.png | Students United | ✓ |
+| BO12.png | Family Network | ✓ |
+| BO14.png | Commuter Committee | ✓ |
+| BO18.png | Constituency Voters | ✓ |
+| BO25.png | Small Business Owners' Association | ✓ |
+| BO26.png | Consumer Advocacy Network | ✓ |
+| BO27.png | Urban Neighborhood Alliance | ✓ |
+| BO28.png | Ainu Community Council | ✓ |
+| BO30.png | Rural Revitalization Council | ✓ |
+| BO05.png | Chamber of Commerce | ✓ |
 | BO08.png | National Media | ✓ |
 | BO09.png | Labor Federation | ✓ |
 | BO10.png | Agricultural Cooperatives | ✓ |
-| BO11.png | Students United | ✓ |
-| BO12.png | Family Network | ✓ |
 | BO13.png | Yezo Artisans Guild | ✓ |
-| BO14.png | Commuter Committee | ✓ |
 | BO15.png | Our Traditional Society | ✓ |
 | BO16.png | Innovation Society | ✓ |
 | BO17.png | Members of Parliament | ✓ |
-| BO18.png | Constituency Voters | ✓ |
 | BO19.png | Buddhist Temples Association | ✓ |
 | BO20.png | Shrine Association | ✓ |
 | BO21.png | Care and Welfare Council | ✓ |
 | BO22.png | Veterans' Association | ✓ |
 | BO23.png | Taxpayers' Alliance | ✓ |
 | BO24.png | Financial Industry Association | ✓ |
-| BO25.png | Small Business Owners' Association | ✓ |
-| BO26.png | Consumer Advocacy Network | ✓ |
-| BO27.png | Urban Neighborhood Alliance | ✓ |
-| BO28.png | Ainu Community Council | ✓ |
 | BO29.png | Ainu Language and Culture Foundation | ✓ |
-| BO30.png | Rural Revitalization Council | ✓ |
+| BO01.png | Party Headquarters | ✓ |
+| BO02.png | Party Faction | ✓ |
 | BO31.png | Party Activists | ✓ |
 | BO32.png | Candidate Selection Committee | ✓ |
 
@@ -494,14 +538,14 @@ in `data/art.json`.
 | unlock_card_t2.png | Unlock Random Tier 2 Card | ✓ |
 | unlock_card_t3.png | Unlock Random Tier 3 Card | ✓ |
 | staff_tier.png | Staff Training Consultancy Session | ✓ |
-| funds_cap.png | Office Fund Bank Limit Petition | ✓ |
+| funds_cap.png | Fund Limit Increase Petition | ✓ |
 | buff_draw.png | Commission a Speech Trainer | ✓ |
 | buff_energy.png | Kaiju Sized “ね3” Coffee | ✓ |
 | buff_guard.png | Automated Dear Colleague Letters | ✓ |
 | buff_gaffe_cap.png | Kaiju Sized “ミレニ姫” Tea | ✓ |
 | buff_turn.png | AI Powered Clock | ✓ |
-| booster_dinner.png | Host a Dinner for a National Booster | ✓ |
-| walking_tour.png | Host a District Walking Tour for a Constituency Booster | ✓ |
+| booster_dinner.png | National Organization Outreach Dinner | ✓ |
+| walking_tour.png | Host a Constituency Group Walking Tour | ✓ |
 | BO01.png | Public Rebuke | ✓ |
 
 ## Cosmetic package icons — `assets/icons/`
@@ -510,3 +554,7 @@ in `data/art.json`.
 |---|---|---|
 | Workplace_Casual.png | Workplace Casual | ✓ |
 | Workplace_Modern.png | Modern Workplace | ✓ |
+| booster_dinner.png | Grand Lakeside Dining Hall | ✓ |
+| walking_tour.png | City Corridor Tour | ✓ |
+| calendar_era.png | Era Name Calendar | ✓ |
+| calendar_ainu.png | Ainu Calendar | ✓ |
