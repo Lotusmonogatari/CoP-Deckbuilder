@@ -299,7 +299,13 @@ func show_card(card_row: Dictionary) -> void:
 	# PLACEHOLDER_CARD_ART otherwise, the one shared stand-in every undrawn
 	# card uses (see its own comment above).
 	var drawn_path := ArtLoader.card_path(card_id)
-	_art_image.texture = load(drawn_path) as Texture2D if not drawn_path.is_empty() else PLACEHOLDER_CARD_ART
+	var drawn: Texture2D = load(drawn_path) as Texture2D if not drawn_path.is_empty() else null
+	if not drawn_path.is_empty() and drawn == null:
+		# The file is listed but would not load (a stale or failed import, or
+		# out of memory on a phone): say so once per card, and show the stand-in
+		# rather than an empty box (2026-10-29).
+		push_warning("Card art %s exists but failed to load: %s" % [card_id, drawn_path])
+	_art_image.texture = drawn if drawn != null else PLACEHOLDER_CARD_ART
 	_fit_effect_label.call_deferred()
 
 	tooltip_text = "%s — %s" % [card_row.get("name_en", ""), card_row.get("effect_text", "")]
