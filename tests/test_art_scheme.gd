@@ -196,8 +196,9 @@ func test_the_real_staff_portraits_resolve_without_an_expression_tag() -> void:
 
 
 func test_an_undrawn_outside_scene_shows_the_town_hall() -> void:
-	assert_eq(ArtLoader.background_path("OUT_LAKESIDE"), "res://assets/backgrounds/ST05.png")
-	assert_eq(ArtLoader.background_path("ST05"), "res://assets/backgrounds/ST05.png")
+	var fallback := "res://assets/backgrounds/%s.png" % str(DataDB.art.get("outdoor_background_fallback", ""))
+	assert_eq(ArtLoader.background_path("OUT_NEVER_DRAWN"), fallback)
+	assert_eq(ArtLoader.background_path(str(DataDB.art.get("outdoor_background_fallback", ""))), fallback)
 	assert_eq(ArtLoader.background_path("NOT_A_SCENE"), "", "only OUT_ ids borrow the Town Hall")
 
 

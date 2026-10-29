@@ -3317,6 +3317,14 @@ def fold_questions(data, report):
                     report.error("Bill Components", f"{cid}: {col} names '{other}', which is not a component")
                 elif other == cid:
                     report.error("Bill Components", f"{cid}: {col} names itself")
+    # An event's Image cell may list several background IDs (semicolons). A
+    # picture that is not drawn is only a warning: an OUT_ scene shows the
+    # fallback, anything else shows a labelled placeholder.
+    bg_dir = REPO_ROOT / "assets" / "backgrounds"
+    for ev in data.get("events", []):
+        for pic in [p_.strip() for p_ in str(ev.get("image") or "").replace("|", ";").split(";") if p_.strip()]:
+            if not (bg_dir / f"{pic}.png").exists() and not pic.startswith("OUT_"):
+                report.warn("Events", f"{ev.get('event_id')}: Image '{pic}' has no file in assets/backgrounds")
     template_rows = {t["template_id"]: t for t in data.get("bill_level_templates", [])}
     template_tokens = {"PATRON_MEETING", "PATRON_VISIT", "HEARING", "PUBLIC", "CAUCUS", "VOTE", "MP_VISIT", "LOBBYIST_TRADE"}
     for tid, t in template_rows.items():
