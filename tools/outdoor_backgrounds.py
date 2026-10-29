@@ -15,7 +15,8 @@ this shows:
     are worth drawing first,
   - a ready-to-paste art prompt in the house format (design/ART_PROMPT_TEMPLATE.md).
 To use a scene for a stage, put OUT_xxx in its Background ID cell (Stages tab);
-for an event, in its Image cell (Events tab). Reads data/*.json only.
+for an event, in its Image cell (Events tab). An Image cell may list several
+pictures separated by semicolons (OUT_HARBOR_1; OUT_HARBOR_2); one is picked at random each time. Reads data/*.json only.
 """
 import json
 import pathlib
@@ -50,7 +51,8 @@ def main():
     prompts = []
     for sid, sc in scenes.items():
         drawn = (folder / f"{sid}.png").exists()
-        users = [e["event_id"] for e in events if e.get("image") == sid] + \
+        users = [e["event_id"] for e in events
+                 if sid in [i.strip() for i in str(e.get("image") or "").replace("|", ";").split(";")]] + \
                 [s["stage_id"] for s in stages if s.get("background_id") == sid]
         hits = 0
         for _kind, items in sources:

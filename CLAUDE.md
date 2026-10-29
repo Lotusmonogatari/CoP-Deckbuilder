@@ -680,3 +680,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Hard-coded numbers and lists moved to the workbook (2026-10-27, Cameron)
 - Ticker lines for specific days and date ranges (2026-10-27, Cameron)
 - Office dues box, staff gate, profile layout, faster verify, outside backgrounds (2026-10-28, Cameron)
+- Marketplace limit line, and several pictures for one event (2026-10-29, Cameron)

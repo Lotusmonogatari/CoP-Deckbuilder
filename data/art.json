@@ -62,7 +62,12 @@
     "OUTSIDE BACKGROUNDS (2026-10-28): a Background ID or an Events Image of the form OUT_xxx",
     "names a generic outdoor scene (outdoor_scenes below). Until OUT_xxx.png is drawn it shows",
     "outdoor_background_fallback (the Town Hall, ST05), so nothing is ever blank.",
-    "tools/outdoor_backgrounds.py lists each scene, who uses it, and a ready art prompt."
+    "tools/outdoor_backgrounds.py lists each scene, who uses it, and a ready art prompt.",
+    "",
+    "SEVERAL PICTURES FOR ONE EVENT (2026-10-29): an Events Image cell may list IDs",
+    "separated by semicolons, e.g. OUT_HARBOR_1; OUT_HARBOR_2. One is picked at random each time",
+    "the event comes up. Each is a normal background ID (assets/backgrounds/OUT_HARBOR_1.png);",
+    "an undrawn OUT_ one shows the Town Hall."
   ],
   "folders": {
     "protagonist": "res://assets/characters/protagonists/",

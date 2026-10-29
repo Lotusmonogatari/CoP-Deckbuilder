@@ -103,6 +103,8 @@ var _dues_label: Label
 var _dues_box: PanelContainer
 ## Set when the briefing's Go In button was pressed (see _on_briefing_closed).
 var _briefing_went_in := false
+## The picture chosen for each event as it was shown, reused on its result screen.
+var _event_pictures: Dictionary = {}
 ## The biggest a staff picture is drawn on the profile, and the gap above it.
 const STAFF_PORTRAIT_MAX := Vector2(480, 860)
 const STAFF_TOP_GAP := 88.0
@@ -542,8 +544,12 @@ func _present_event(event_id: String, arrived: bool) -> void:
 	if event.is_empty():
 		return
 	var rows: Array[Control] = []
-	if event.get("image") != null and not str(event["image"]).is_empty():
-		rows.append(_picture_row(str(event["image"])))
+	# An Image cell may list several pictures; one is picked each time the event
+	# comes up and kept for its result screen.
+	var picture := EventPicture.pick(event.get("image"))
+	_event_pictures[event_id] = picture
+	if not picture.is_empty():
+		rows.append(_picture_row(picture))
 	if str(event.get("trigger", "")) == "Dated":
 		rows.append(UiKit.line(Text.say("event.heading_dated", {"date": _event_date_label(str(event.get("on_date", "")))}), "SmallLabel"))
 		var speaker := GameState.event_speaker(event_id)
@@ -582,9 +588,9 @@ func _on_event_choice(event_id: String, letter: String) -> void:
 	if not bool(result.get("ok", false)):
 		return
 	var rows: Array[Control] = []
-	var event_image: Variant = GameState.get_event(event_id).get("image")
-	if event_image != null and not str(event_image).is_empty():
-		rows.append(_picture_row(str(event_image)))
+	var event_picture := str(_event_pictures.get(event_id, ""))
+	if not event_picture.is_empty():
+		rows.append(_picture_row(event_picture))
 	rows.append(UiKit.line(str(result.get("result_text", ""))))
 	for line: String in result.get("lines", []):
 		rows.append(UiKit.line(line, "SmallLabel"))
