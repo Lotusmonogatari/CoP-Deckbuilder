@@ -4,14 +4,16 @@ Until a scene is drawn, the ST05 picture shows in its place.
 
 | Scene | Drawn | Used by (now) | Content mentions |
 |---|---|---|---|
-| OUT_FESTIVAL Festival grounds | no | EV13, EV35 | 12 |
-| OUT_HARBOR Harbor and fishing port | no | - | 34 |
+| OUT_FESTIVAL Festival grounds | yes | EV13, EV35 | 12 |
+| OUT_HARBOR Harbor and fishing port | yes | EV27 | 34 |
 | OUT_LAKESIDE Lakeside and river bank | no | - | 0 |
-| OUT_FARM Farm and orchard | no | - | 29 |
-| OUT_SCHOOL School grounds | no | EV37, EV42 | 6 |
-| OUT_SHRINE Shrine grounds | no | EV19 | 18 |
-| OUT_STREET Shotengai and town street | no | EV06, EV12, EV43 | 14 |
-| OUT_NEIGHBORHOOD Residential neighborhood | no | EV32, EV38, EV41 | 19 |
+| OUT_FARM Farm and orchard | yes | - | 29 |
+| OUT_SCHOOL School grounds | yes | EV24, EV37, EV42 | 6 |
+| OUT_SHRINE Shrine grounds | yes | EV19 | 18 |
+| OUT_STREET Shotengai and town street | yes | EV06, EV12, EV39, EV43 | 14 |
+| OUT_NEIGHBORHOOD Residential neighborhood | no | EV32, EV38 | 19 |
+| OUT_COAST_BATTERY Old coastal battery | yes | EV17 | 5 |
+| OUT_VILLAGE_ROAD_SNOW Village road in snow | yes | EV41 | 7 |
 
 ## OUT_FESTIVAL.png  (Festival grounds)
 STYLE: {HOUSE_STYLE}
@@ -59,4 +61,16 @@ Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, open uppe
 STYLE: {HOUSE_STYLE}
 CANON GUARD: fictional nation Yezo; no real people or logos; no readable text anywhere.
 Empty outdoor scene for constituency events: a quiet residential lane with houses, a utility pole and a small park. Mood: overcast, everyday light.
+Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, open upper-middle for two characters in the bottom corners.
+
+## OUT_COAST_BATTERY.png  (Old coastal battery)
+STYLE: {HOUSE_STYLE}
+CANON GUARD: fictional nation Yezo; no real people or logos; no readable text anywhere.
+Empty outdoor scene for constituency events: an old coastal gun battery: weathered concrete emplacements above the sea. Mood: windswept, grey sea light.
+Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, open upper-middle for two characters in the bottom corners.
+
+## OUT_VILLAGE_ROAD_SNOW.png  (Village road in snow)
+STYLE: {HOUSE_STYLE}
+CANON GUARD: fictional nation Yezo; no real people or logos; no readable text anywhere.
+Empty outdoor scene for constituency events: a snowed-in village road with a bus stop, a clinic sign and hills beyond. Mood: muffled, pale winter light.
 Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, open upper-middle for two characters in the bottom corners.

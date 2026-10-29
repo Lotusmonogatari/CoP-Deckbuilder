@@ -28,4 +28,14 @@ func test_a_list_only_ever_yields_its_own_ids_and_uses_them_all() -> void:
 
 
 func test_an_undrawn_numbered_outside_scene_shows_the_town_hall() -> void:
-	assert_eq(ArtLoader.background_path("OUT_HARBOR_2"), "res://assets/backgrounds/ST05.png")
+	assert_eq(ArtLoader.background_path("OUT_LAKESIDE_2"), "res://assets/backgrounds/ST05.png")
+
+
+func test_every_picture_an_event_names_resolves_to_a_file() -> void:
+	for event: Dictionary in DataDB.events:
+		for id: String in EventPicture.options(event.get("image")):
+			assert_ne(ArtLoader.background_path(id), "", "%s names %s, which shows nothing" % [event.get("event_id"), id])
+
+
+func test_the_drawn_harbor_pictures_are_used_not_the_town_hall() -> void:
+	assert_eq(ArtLoader.background_path("OUT_HARBOR_1"), "res://assets/backgrounds/OUT_HARBOR_1.png")

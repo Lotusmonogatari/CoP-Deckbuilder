@@ -220,6 +220,28 @@
       ],
       "place": "a quiet residential lane with houses, a utility pole and a small park",
       "mood": "overcast, everyday light"
+    },
+    "OUT_COAST_BATTERY": {
+      "label": "Old coastal battery",
+      "keywords": [
+        "battery",
+        "batteries",
+        "coastal defense",
+        "veteran"
+      ],
+      "place": "an old coastal gun battery: weathered concrete emplacements above the sea",
+      "mood": "windswept, grey sea light"
+    },
+    "OUT_VILLAGE_ROAD_SNOW": {
+      "label": "Village road in snow",
+      "keywords": [
+        "snow",
+        "valley",
+        "village",
+        "clinic"
+      ],
+      "place": "a snowed-in village road with a bus stop, a clinic sign and hills beyond",
+      "mood": "muffled, pale winter light"
     }
   }
 }

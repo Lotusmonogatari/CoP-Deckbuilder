@@ -7,7 +7,7 @@ Usage:  python3 tools/outdoor_backgrounds.py            # report to the screen
 The scenes (OUT_FESTIVAL, OUT_HARBOR, ...) are listed in data/art.json under
 "outdoor_scenes", each with a label, keywords, a place and a mood. For each one
 this shows:
-  - whether assets/backgrounds/OUT_xxx.png is drawn yet (until it is, the Town
+  - whether assets/backgrounds/OUT_xxx.png (or numbered OUT_xxx_1.png ...) is drawn yet (until it is, the Town
     Hall picture shows in its place),
   - who uses it now (Events whose Image names it, Stages whose Background ID does),
   - how much existing content mentions its keywords (stage names, event titles
@@ -50,9 +50,10 @@ def main():
            "| Scene | Drawn | Used by (now) | Content mentions |", "|---|---|---|---|"]
     prompts = []
     for sid, sc in scenes.items():
-        drawn = (folder / f"{sid}.png").exists()
+        drawn = (folder / f"{sid}.png").exists() or bool(list(folder.glob(f"{sid}_*.png")))
         users = [e["event_id"] for e in events
-                 if sid in [i.strip() for i in str(e.get("image") or "").replace("|", ";").split(";")]] + \
+                 if any(i.strip() == sid or i.strip().startswith(sid + "_")
+                       for i in str(e.get("image") or "").replace("|", ";").split(";"))] + \
                 [s["stage_id"] for s in stages if s.get("background_id") == sid]
         hits = 0
         for _kind, items in sources:
