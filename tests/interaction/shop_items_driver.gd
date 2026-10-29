@@ -95,6 +95,15 @@ func _walk() -> void:
 		_failures.append("SH13: expected funds_cap_bonus 100000, got %d" % GameState.funds_cap_bonus)
 		return
 
+	# --- A purchase paid in Funds: the Office's funds box must follow it -------
+	# (_buy checks the box against the live Funds after the click.)
+	var before_funds := int(GameState.meta.get("Funds", 0))
+	if not await _buy(supplies, "SH04"):
+		return
+	if int(GameState.meta.get("Funds", 0)) >= before_funds:
+		_failures.append("SH04: buying it did not spend any Funds, so the funds-box check proved nothing")
+		return
+
 	print("  bought SH12 and SH13; each took effect on the spot")
 	supplies.close()
 	await _wait(0.2)
@@ -307,6 +316,13 @@ func _buy(supplies: Overlay, item_id: String) -> bool:
 	if message.is_empty():
 		_failures.append("%s: buying it left no report message" % item_id)
 		return false
+	# The Office's funds box (under the calendar) must show the Funds left after
+	# the purchase, without leaving the Office to see it update.
+	var funds_line := (get_tree().current_scene as Control).find_child("FundsLine", true, false) as Label
+	var shown := Phrase.with_separators(int(GameState.meta.get("Funds", 0)))
+	if funds_line == null or not funds_line.text.contains(shown):
+		_failures.append("%s: the Office funds box did not update after buying (shows '%s', Funds is %s)"
+			% [item_id, "" if funds_line == null else funds_line.text, shown])
 	if message.contains("can't be used here") or message.contains("cannot be used"):
 		_failures.append("%s: still shows the old 'can't be used here' refusal — %s"
 			% [item_id, message])

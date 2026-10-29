@@ -2569,3 +2569,6 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 ## Commas on the Marketplace funds line and the draft cost (2026-10-29, Cameron)
 - `Phrase` adds thousands separators only to placeholders named `count`, `cost`, `price` or starting `yen_`. The Marketplace line used `{funds}`/`{limit}`, so it showed "100000円"; it now uses `{yen_funds}`/`{yen_limit}`. The "Drafting needs ... XP and ...円" message passed a raw number the same way and now formats it. New Text rows with an amount should use a `yen_` or `cost` name, or pass `Phrase.with_separators()`.
 
+## The Office funds box now follows purchases (2026-10-29, Cameron)
+- The Party Dues / Office Funds box was refreshed only when the Office was rebuilt, so buying in the Marketplace left it showing the old Funds until you left and came back. `OfficeScreen._refresh_resources()` (called after every purchase, hire, upgrade, backing, item use and deck change) now refreshes it. `tests/interaction/shop_items_driver.gd` buys a Funds-priced supply (SH04) and checks the box against the live Funds; it fails without the fix.
+

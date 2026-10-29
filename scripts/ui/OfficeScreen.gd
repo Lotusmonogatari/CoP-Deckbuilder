@@ -747,6 +747,8 @@ func _on_abandon_level_chosen() -> void:
 ## What stays out here is the warning. A deck that is not legal cannot start
 ## a level, and a player must not have to open a panel to discover that.
 func _refresh_resources() -> void:
+	# The funds box under the calendar shows Funds, which every purchase changes.
+	DuesBox.refresh(_dues_box)
 	var refusal := Ledger.deck_refusal(GameState.deck, GameState.owned_cards, DataDB.balance, Text.phrase())
 	if refusal.is_empty():
 		_resources.text = Text.say("office.in_order")
