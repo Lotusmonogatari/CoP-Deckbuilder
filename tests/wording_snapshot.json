@@ -703,7 +703,7 @@
   "shop.card_unlocked": "{name} unlocked and added to your collection.",
   "shop.funds_cap_increased": "Funds cap raised by {count}円.",
   "shop.funds_cap_maxed": "The Funds cap is already at its maximum.",
-  "shop.funds_limit": "Funds limit {count}円",
+  "shop.funds_limit": "Funds {funds}円 / Limit {limit}円",
   "shop.funds_short": "{count}円 short.",
   "shop.in_twice": "{card} is in twice.",
   "shop.item_bought": "{name} added to your inventory.",

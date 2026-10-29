@@ -5727,9 +5727,9 @@
   },
   {
     "key": "shop.funds_limit",
-    "where": "Marketplace, second line at the top",
-    "english": "Funds limit {count}円",
-    "placeholders": "count",
+    "where": "Marketplace, first line at the top",
+    "english": "Funds {funds}円 / Limit {limit}円",
+    "placeholders": "funds, limit",
     "notes": "2026-10-29 Funds limit shown on the Marketplace."
   }
 ]
