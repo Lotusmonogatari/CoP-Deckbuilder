@@ -61,7 +61,7 @@ Adding a Party-tier organization is mostly workbook data. These existing mechani
 * **Rivalry.** On Activists' themes, list BO32 under **Annoys** for about 10 of them and the reverse for about 5, so a strong divisive answer cheers the Activists and sets the Committee back: the moderate-versus-extreme tension, using the existing Annoys column.
 * **How To Play:** nothing to edit: the suit table (HT21) recomputes. The Divisive line may fill (the four-per-suit cap), so one existing organization could drop off it.
 
-**Visitor dilemmas.** About eight party visitors (VI16-VI39) gain choices that please one body and set the other back (a firebrand's demand versus a procedural answer). Stay inside the dilemma budget in `design/VISITOR_DILEMMA_GUIDE.md`.
+**Visitor dilemmas.** About eight party visitors (VI16-VI39) gain choices that please one body and set the other back (a firebrand's demand versus a procedural answer). Stay inside the dilemma budget in `design/CONTENT_GUIDE.md (section 9.3)`.
 
 **Ticker (examples):** "Party activists are already planning the next rally." (no time words: "Party activists are planning a rally.") and "The Candidate Selection Committee is reviewing its shortlist." Gate them on the standing falling below 30, or `always`.
 
@@ -88,7 +88,7 @@ Check with `python3 tools/merge_icons.py <folder>`, then `.tools/godot --headles
 
 * Any test that counts organizations (30 today), and `test_every_organisation_has_a_backing` (covers BO17-BO30 by name; extend to BO31-BO32).
 * `tests/test_booster_suit_tendency.gd`: add a check that BO31 reads as Divisive-liking and BO32 as no taste.
-* `design/ART_CHECKLIST.md` (re-run `python3 tools/art_checklist.py`), README tab counts, CLAUDE.md dated entry, `design/WORKBOOK_EXPANSION_GUIDE.md` organization count.
+* `design/ART_CHECKLIST.md` (re-run `python3 tools/art_checklist.py`), README tab counts, CLAUDE.md dated entry, `design/CONTENT_GUIDE.md` organization count.
 * Rubric line D8 already skips Party-tier organizations; no change.
 
 ## Risks

@@ -4,7 +4,7 @@ Every word the game says comes out of `design/Game_Workbook.xlsx`.
 Nothing is typed into the code. This says which tab holds what, and what to
 run afterwards. For adding whole new stages, questions and cues (how the
 systems connect and how to phrase lines by scope), see
-`design/WORKBOOK_EXPANSION_GUIDE.md`.
+`design/CONTENT_GUIDE.md`.
 
 ---
 

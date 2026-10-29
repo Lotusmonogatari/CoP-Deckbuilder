@@ -1052,7 +1052,7 @@ SHEETS = {
             # The real Sep-18 session of parliament (2026-09-26, Cameron —
             # an earlier May-18 snapshot he sent was a prior, superseded
             # session). Fixed per party across every bill, not re-rolled per
-            # vote — see design/FLOOR_VOTE_PROMPT.md's own open question,
+            # vote — see the open question in the 2026-09-26 changelog entry,
             # now answered. Sums to CLAUDE.md §4's 101 seats.
             ("Seats", "seats", "int"),
             # The Floor Vote influence swing's own per-party override

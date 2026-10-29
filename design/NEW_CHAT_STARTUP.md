@@ -34,7 +34,7 @@ Point the assistant at this file at the start of a new session. The fuller recor
 | State, data, saves, audio, text | autoloads in `scripts/autoload/` (GameState, DataDB, SaveManager, Layout, Audio, Text) |
 | Workbook tools | `tools/workbook/` (`wbx.py` with `delete_row`, `add_notes.py`, `check_formulas.py`, README, and the archive of past batch scripts) |
 | Plans and reviews | `design/proposals/` (the audio plan and composer brief are `AUDIO_PLAN_2026-10-26.md` and `AUDIO_BRIEF_2026-10-26.md`), `design/review/` (content review, decisions, fixes log, `HARDCODED_AUDIT_2026-10-27.md`) |
-| Guides | `design/WORKBOOK_EXPANSION_GUIDE.md`, `design/EDITING_TEXT.md`, `design/PLAYTEST_CHECKLIST.md`, `design/ART_CHECKLIST.md`, `design/OUTDOOR_BACKGROUNDS.md`, `design/CLEANUP_CANDIDATES.md` |
+| Guides | `design/CONTENT_GUIDE.md`, `design/EDITING_TEXT.md`, `design/PLAYTEST_CHECKLIST.md`, `design/ART_CHECKLIST.md`, `design/OUTDOOR_BACKGROUNDS.md`, `design/CLEANUP_CANDIDATES.md` |
 
 ## 4. Commands
 

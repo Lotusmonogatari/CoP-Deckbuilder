@@ -43,7 +43,7 @@ Historical record, **not runnable as they stand** (they hard-code scratch paths 
 | `b6/` | Gap-filling batch: questions, transitions, ticker |
 | `audits/` | Read-only audit scripts (content gaps, tone, depth, consistency) |
 
-Guides for writing the content itself: `design/WORKBOOK_EXPANSION_GUIDE.md`, `design/EDITING_TEXT.md`.
+Guides for writing the content itself: `design/CONTENT_GUIDE.md`, `design/EDITING_TEXT.md`.
 
 ## Excel's "repair" message
 

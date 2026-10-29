@@ -179,7 +179,7 @@ Opponents use **scripted intent ranges**, not deck AI. Their attack, gain, and b
 - Entirely data-driven and blank-tolerant: `data/level_intros.json` is flat rows of `(level_id, role, cue_text)`, from the workbook's new **Level Intro Cues** tab — most (level, role) combinations will have no row at all, and that role simply stays silent for that level. `LevelIntroCues.resolve()` (`scripts/rules/LevelIntroCues.gd`, pure/UI-free per §12, mirrors `OfficeNotices.gd`) returns one entry per role that is BOTH hired AND has a written line for this level, in `staff.json`'s own row order.
 - **Skipped entirely when there's nothing to say**: `OfficeScreen._on_start()` resolves the cues before changing scene — a non-empty result routes to `StageRouting.LEVEL_INTRO_SCENE` instead of straight to the first stage; an empty one goes straight to the first stage exactly as before this feature existed, so no level regresses until Cameron actually writes a row for it. Resuming a level already in progress never shows this screen — it is a start-of-level beat only.
 - **Every qualifying role speaks, one after another** (not just the first, unlike Office Notices) — a level briefing can genuinely have more than one person weigh in. Lines queue on the same `CueBanner` every other spoken line uses, from the player's own (blue) side — staff are the player's own team, not an opponent. The portrait swaps to match whoever is currently speaking.
-- Content prompt: `design/LEVEL_INTRO_PROMPT.md`. The tab exists in the workbook today with no rows — Cameron's to write.
+- Content guidance: `design/CONTENT_GUIDE.md` (section 7.4). The tab exists in the workbook today with no rows — Cameron's to write.
 
 ### 7.9 Stage Transition screen (built 2026-10-01, Cameron)
 - A short beat between two stages of the SAME level — distinct from §7.8's Level Intro, which only ever plays once, before a level's first stage. Opt-in per stage: `stages.json`'s new `Show Transition` column (blank = No, every existing stage ships off) and `Transition Speaker Count` (blank = 1, how many distinct characters speak). `scenes/office_hours/StageTransitionScreen.tscn` / `scripts/ui/StageTransitionScreen.gd`, built by `tools/build_stage_transition_scene.gd` the same way the other two screen-builder tools are.
@@ -681,3 +681,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Ticker lines for specific days and date ranges (2026-10-27, Cameron)
 - Office dues box, staff gate, profile layout, faster verify, outside backgrounds (2026-10-28, Cameron)
 - Marketplace limit line, and several pictures for one event (2026-10-29, Cameron)
+- One content guide replaces the older content documents (2026-10-29, Cameron)

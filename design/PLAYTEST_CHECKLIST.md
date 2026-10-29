@@ -101,7 +101,7 @@ Any Floor Vote level (LV31-60) — pick one whose bill you haven't seen.
 ## Level Intro screen
 
 Needs at least one row in the workbook's Level Intro Cues tab
-(`design/LEVEL_INTRO_PROMPT.md`) naming a level you have a staffer hired
+(`design/CONTENT_GUIDE.md`, section 7.4) naming a level you have a staffer hired
 for.
 - [ ] Starting that level shows the intro screen with the real staffer's
   portrait, name, and line before the first stage.
