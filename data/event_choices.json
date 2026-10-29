@@ -2435,5 +2435,430 @@
     "rewards": null,
     "unlocks_level": null,
     "dues_delta": null
+  },
+  {
+    "event_id": "EV12",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to take it on. He says nothing more about the street, and a few people nearby notice.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV13",
+    "choice": "C",
+    "choice_text": "Decline",
+    "result_text": "You decline the invitation. The head table has one empty chair, and people notice whose.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -3,
+      "max": -3
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV15",
+    "choice": "C",
+    "choice_text": "Decline",
+    "result_text": "You set the letter aside without answering. The resident notices when no reply comes.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV16",
+    "choice": "C",
+    "choice_text": "Decline",
+    "result_text": "You decline to discuss it. The treasurer leaves a note and a cooler goodbye.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV17",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to engage. The hall secretary will remember that nobody answered.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO22",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV18",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to see them. The mayors leave without their ten minutes.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO04",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV19",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to get involved. The priest and the caretaker leave as they came.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO19",
+        "delta": -2
+      },
+      {
+        "target": "BO20",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV22",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to take it up. The owner thanks you and goes back to two shut floors.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV23",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to look at the slip. She puts it away without a word.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV25",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to discuss it. He says he understands, in the tone of someone who does not.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO27",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV26",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to act. The nurse says the doctor's Fridays will stay empty.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -3,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO21",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV27",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to take it further. The harbor office hears nothing back.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV37",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the visit. The class waits for an answer that never comes.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -3,
+      "max": -2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": -3
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV38",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to get involved. Both neighborhoods hear that you stayed out.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV41",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to take the call. The village office is left to ring around.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -3,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": -2
+      },
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV42",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to respond. The school manages without you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -3,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -3,
+      "max": -2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO12",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV43",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline to receive them. The folders stay in their plastic.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO09",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
   }
 ]
