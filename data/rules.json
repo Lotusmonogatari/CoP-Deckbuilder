@@ -264,5 +264,12 @@
     ],
     "options": "any list of lowercase phrases",
     "notes": "A choice whose text contains one of these hands the job to a staff member, so it is greyed out when no staff is hired (Cameron, 2026-10-28). Matching is by wording; reword a choice and it may need a phrase here."
+  },
+  "rooms_without_visitors": {
+    "value": [
+      "ST263"
+    ],
+    "options": "stage ids",
+    "notes": "Non-combat rooms that never seat Office Hours visitors (the patron visit is run by the patron machinery). The export errors on any other Non-combat room with no visitor listing it (Cameron, 2026-10-29)."
   }
 }

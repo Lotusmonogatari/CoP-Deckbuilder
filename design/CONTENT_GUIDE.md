@@ -300,9 +300,9 @@ A visitor question has **no right answer**: each of the four choices carries its
 | Same hand/energy/gaffe numbers on every new room | Vary inside the family's range |
 | Amounts without commas ("100000円") | `cost`/`price`/`count`/`yen_` placeholder names |
 | A picture name that never loads | IDs are exact; a typo only warns for non-`OUT_` pictures |
-| An Office Hours room with no seated visitor | The export says "No errors"; only `test_every_real_level_is_usable` fails. Run the unit tests, not just the export |
-| A stage's Background ID with a typo or a list on a new non-bill room | No export warning. `test_a_bill_specific_copy_plays_like_its_family` hard-codes the outing stages ST264-ST270 and the patron rooms, so a new stage with a picture list (or any non-stage Background ID) can crash that test; ask Cameron before editing the test |
-| A new outing or festival | `test_district_activities.gd` and `test_weekend_levels.gd` name their stages, so a new one is not covered by them; bring its pool (more visitors than seats, two dilemmas each) up by hand |
+| An Office Hours room with no seated visitor, or fewer visitors than seats | The export now **errors** on a Non-combat room no visitor lists (rooms in `data/rules.json` `rooms_without_visitors`, today the patron visit ST263, are exempt) and warns when visitors are fewer than seats |
+| A stage's Background ID with a typo | The export now **errors** unless every entry is a stage, an outside scene (`OUT_`) or a file in `assets/backgrounds` |
+| A new outing or festival | `tests/test_district_activities.gd` is data-driven: any single-stage, Weekend OK, non-crisis Non-combat level is checked for a pool at least as big as its seats, two questions for each visitor written for that room alone, distinct visitors with questions, and a weekend-sized duration |
 | `content_depth.py` on a brand-new room | It has no measured plays for it and assumes a default; run `tools/measure_plays.sh` for a real figure |
 
 ---

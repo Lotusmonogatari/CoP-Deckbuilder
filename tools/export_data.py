@@ -2975,6 +2975,46 @@ def fold_event_text(data, report):
                     row[field] = strings[key]
 
 
+def check_rooms(data, report):
+    """Two mistakes the other checks cannot see (2026-10-29).
+
+    1. A Non-combat (Office Hours style) room needs visitors: one whose Stage
+       cell lists it, or the level that holds it cannot be played. Fewer
+       visitors than the room's seats is a warning. Rooms in rules.json's
+       rooms_without_visitors (the patron visit) are exempt.
+    2. A stage's Background ID (one picture, or several separated by
+       semicolons) must be a stage, an outside scene (the art.json prefix,
+       OUT_) or a file in assets/backgrounds; anything else is a typo that
+       would otherwise show a placeholder with no warning.
+    """
+    stages = data.get("stages") or []
+    stage_ids = {s["stage_id"] for s in stages}
+    exempt = set(data.get("rules", {}).get("rooms_without_visitors") or [])
+    seated = {}
+    for visitor in data.get("visitors") or []:
+        for sid in visitor.get("stages") or []:
+            seated[sid] = seated.get(sid, 0) + 1
+    art_path = DATA_DIR / "art.json"
+    prefix = ""
+    if art_path.exists():
+        prefix = str(json.loads(art_path.read_text(encoding="utf-8")).get("outdoor_background_prefix", ""))
+    bg_dir = REPO_ROOT / "assets" / "backgrounds"
+    for stage in stages:
+        sid = stage["stage_id"]
+        if stage.get("mode") == "Non-combat" and sid not in exempt:
+            seats = stage.get("opponent_count")
+            seats = seats["max"] if isinstance(seats, dict) else (seats or 1)
+            if not seated.get(sid):
+                report.error("Stages", f"{sid} is a Non-combat room but no visitor lists it in the Visitors tab Stage cell")
+            elif seated[sid] < seats:
+                report.warn("Stages", f"{sid} seats {seats} visitors but only {seated[sid]} list it")
+        raw = str(stage.get("background_id") or "").replace("|", ";")
+        for pic in [x.strip() for x in raw.split(";") if x.strip()]:
+            if pic in stage_ids or (prefix and pic.startswith(prefix)) or (bg_dir / f"{pic}.png").exists():
+                continue
+            report.error("Stages", f"{sid} Background ID '{pic}' is not a stage, an outside scene or a picture in assets/backgrounds")
+
+
 def check_text_keys(data, report):
     """Every key the code asks for must be a row in the Text tab.
 
@@ -3833,6 +3873,7 @@ def main():
     fold_floor_votes(data, report)
     fold_event_text(data, report)
     validate(data, report)
+    check_rooms(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)

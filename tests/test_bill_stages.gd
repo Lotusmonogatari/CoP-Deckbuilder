@@ -57,15 +57,14 @@ func test_a_bill_specific_copy_plays_like_its_family() -> void:
 	for stage: Dictionary in DataDB.stages:
 		var stage_id := str(stage["stage_id"])
 		var base := DataDB.stage_background_id(stage_id)
-		if int(stage_id.substr(2)) < 121 or base.is_empty() or int(base.substr(2)) > 23:
+		# Only a copy of a family room (its Background ID is a base stage ST01-ST23);
+		# a picture or a list of pictures (an outside scene, an outing) is not one.
+		if int(stage_id.substr(2)) < 121 or base.is_empty() or not base.begins_with("ST") \
+				or not base.substr(2).is_valid_int() or int(base.substr(2)) > 23:
 			continue
 		# The member visit's two stages borrow a family's picture but play
 		# differently on purpose (influence building step B).
 		if stage_id == MpVisit.VISIT_STAGE or stage_id == MpVisit.FIGHT_STAGE or stage_id == LobbyistTrade.TRADE_STAGE or stage_id == PatronVisit.STAGE:
-			continue
-		# The festival stages borrow Office Hours' picture but seats ten
-		# constituents instead of five, on purpose (2026-10-23).
-		if ["ST264", "ST265", "ST266", "ST267", "ST268", "ST269", "ST270"].has(stage_id):
 			continue
 		var generic := DataDB.get_stage(base)
 		assert_eq(stage["mode"], generic["mode"], stage_id)
