@@ -1874,12 +1874,19 @@ func _on_equip_cosmetic(slot: String, package_id: String) -> void:
 ## always has.
 func _show_marketplace() -> void:
 	var rows: Array[Control] = []
+	# Funds and the current Funds limit sit at the very top; the limit is read
+	# fresh every time the page is built, so buying a limit increase updates it.
+	var funds_line := UiKit.line(Text.say("office.funds",
+		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel")
+	funds_line.name = "MarketFunds"
+	rows.append(funds_line)
+	var limit_line := UiKit.line(Text.say("shop.funds_limit", {"count": GameState.funds_limit()}), "SmallLabel")
+	limit_line.name = "MarketFundsLimit"
+	rows.append(limit_line)
 	rows.append(UiKit.line(Text.say("shop.supplies_blurb")))
 	rows.append_array(_inventory_panel.inventory_rows())
 	rows.append(UiKit.heading(Text.say("office.marketplace")))
 	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
-	rows.append(UiKit.line(Text.say("office.funds",
-		{"count": int(GameState.meta.get("Funds", 0))}), "HeaderLabel"))
 	for item: Dictionary in DataDB.shop:
 		# Card sessions live in Rhetoric Training, not here.
 		if item.get("card_tier") == null:

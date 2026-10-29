@@ -5724,5 +5724,12 @@
     "english": "No staff hired",
     "placeholders": null,
     "notes": "2026-10-28 staff delegation gate."
+  },
+  {
+    "key": "shop.funds_limit",
+    "where": "Marketplace, second line at the top",
+    "english": "Funds limit {count}円",
+    "placeholders": "count",
+    "notes": "2026-10-29 Funds limit shown on the Marketplace."
   }
 ]

@@ -2178,6 +2178,13 @@ func _funds_hard_max() -> int:
 	return int(DataDB.get_sanban("Funds").get("max", 0))
 
 
+## The most Funds the player can hold right now: the starting cap plus every
+## Funds-cap increase bought, never past the hard ceiling. Shown at the top of
+## the Marketplace, so it follows a purchase automatically.
+func funds_limit() -> int:
+	return int(_sanban_row("Funds").get("max", 0))
+
+
 ## DataDB.sanban, with Funds' own "max" replaced by _sanban_row()'s own
 ## already-correct current-cap version — the same adjustment _sanban_row()
 ## already makes for a single lookup, but MetaRules.apply_win_deltas()/
