@@ -83,6 +83,18 @@ static func frame_path(side: String, suit: String) -> String:
 	var table: Dictionary = frames.get(side, {})
 	return str(table.get(suit, table.get(str(frames.get("fallback_suit", "")), "")))
 
+## The title plate's top and height (fractions of the card height) for a suit:
+## each frame paints its plate a little differently, so the title is centered in
+## the plate the suit actually has (data/art.json "card_frames" -> "name_box").
+static func name_box_for(suit: String) -> Vector2:
+	var frames: Dictionary = DataDB.art.get("card_frames", {})
+	var boxes: Dictionary = frames.get("name_box", {})
+	var entry: Variant = boxes.get(suit, boxes.get(str(frames.get("fallback_suit", ""))))
+	if entry is Array and (entry as Array).size() >= 2:
+		return Vector2(float((entry as Array)[0]), float((entry as Array)[1]))
+	return Vector2(NAME_RECT.position.y, NAME_RECT.size.y)
+
+
 ## The front frame for a suit, loaded the first time it is needed and then
 ## held, so a suit that leaves the hand is not reloaded when it comes back.
 static var _frames: Dictionary = {}
@@ -295,6 +307,9 @@ func show_card(card_row: Dictionary) -> void:
 	_fit_name_label()
 	_effect_label.text = str(card_row.get("effect_text", ""))
 	_frame.texture = frame_for(str(card_row.get("suit", "")))
+	var name_box := name_box_for(str(card_row.get("suit", "")))
+	_name_label.anchor_top = name_box.x
+	_name_label.anchor_bottom = name_box.x + name_box.y
 	# By card ID (data/art.json's `card` folder) when it has been drawn;
 	# PLACEHOLDER_CARD_ART otherwise, the one shared stand-in every undrawn
 	# card uses (see its own comment above).

@@ -427,6 +427,7 @@
   "office.deck_count": "Deck {count} of {size}",
   "office.deck_ready": "Ready to go in.",
   "office.deck_tap": "Tap a card to take it in or leave it out.",
+  "office.deck_view": "View",
   "office.deck_warning": "Your deck: {reason}  —  see Office Management.",
   "office.deck_warning_suffix": "—  {reason}",
   "office.end_work_week": "End the Work Week",

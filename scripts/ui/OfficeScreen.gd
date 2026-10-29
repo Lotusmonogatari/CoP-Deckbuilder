@@ -83,6 +83,8 @@ var _administration_menu: Overlay
 ## than a database write; and 2026-09-27, it is shown BEFORE paying, with
 ## Learn it / Pass. Built in code, the same reason _inventory_panel is.
 var _card_reveal_panel: Overlay
+## Front and back of one card, opened from the deck screen's View button.
+var _card_look_panel: Overlay
 
 ## The forced choice when the app is reopened with a level still in
 ## progress — Resume the Level or Abandon the Level (Cameron, 2026-10-04).
@@ -192,6 +194,9 @@ func _ready() -> void:
 	_card_reveal_panel.show_back = false
 	add_child(_card_reveal_panel)
 	_card_reveal_panel.confirmed.connect(_on_learn_confirmed)
+	_card_look_panel = Overlay.new()
+	_card_look_panel.name = "CardLookPanel"
+	add_child(_card_look_panel)
 	_resume_choice_panel = Overlay.new()
 	_resume_choice_panel.name = "ResumeChoicePanel"
 	# Resume or Abandon are the only ways on — a real decision, not chrome
@@ -1998,10 +2003,49 @@ func _show_card_offer() -> void:
 	if card.is_empty():
 		return
 
-	# Both faces are shown at twice the card's battle size (Cameron,
-	# 2026-10-19). The front is a fixed-size card, so it is scaled inside a
-	# box of the doubled size; the back lays its text out from its own size.
-	var scale_up := 2.0
+	# Both faces are stacked at the largest size that lets the whole pop-up
+	# (heading, counter, two cards and two buttons) fit the screen with no
+	# scrolling (Cameron, 2026-10-29; it was a fixed 2x and ran off the bottom).
+	var faces := _card_faces(card, CARD_OFFER_CHROME)
+
+	# "2/3": which look of the draw this is (rules.json card_training_looks).
+	var counter := UiKit.line(Text.say("rhetoric.counter", {
+		"number": int(draw.get("look", 1)), "total": GameState.card_training_looks()}), "HeaderLabel")
+	counter.name = "LookCounter"
+	counter.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+	var rows: Array[Control] = [counter]
+	rows.append_array(faces)
+	# Pass only while it is not the draw's last look. It sits above Learn it,
+	# which the panel always places last.
+	if GameState.can_pass_offered_card():
+		var pass_button := Button.new()
+		pass_button.name = "Pass"
+		pass_button.text = Text.say("rhetoric.pass")
+		pass_button.custom_minimum_size = Vector2(0, 110)
+		pass_button.pressed.connect(_on_pass_card)
+		rows.append(pass_button)
+	_card_reveal_panel.open(Text.say("rhetoric.offer_title"), rows,
+		Text.say("rhetoric.learn", {"price": _price_text(
+			DataDB.get_shop_item(str(draw.get("item_id", ""))))}))
+
+
+## How much of the screen's height the card pop-ups spend on everything that
+## is not a card: margins, heading, counter, buttons and the gaps between them.
+const CARD_OFFER_CHROME := 700.0
+const CARD_LOOK_CHROME := 470.0
+const CARD_SCALE_MAX := 2.0
+const CARD_SCALE_MIN := 1.0
+
+
+## The card's front and back, one above the other, scaled so the pair fits the
+## screen's height once `chrome` pixels are set aside for everything else.
+## The front is a fixed-size card, so it is scaled inside a box of the scaled
+## size; the back lays its text out from its own size. Both read straight off
+## the card's own ID, so real art and real text show the moment they exist.
+func _card_faces(card: Dictionary, chrome: float) -> Array[Control]:
+	var available := get_viewport_rect().size.y - chrome
+	var scale_up := clampf(available / (2.0 * CardView.HEIGHT), CARD_SCALE_MIN, CARD_SCALE_MAX)
 	var front := CardView.new()
 	front.show_card(card)
 	front.disabled = true   # a preview, not a hand — tapping it does nothing
@@ -2022,26 +2066,18 @@ func _show_card_offer() -> void:
 	back.show_card(card, "")
 	var back_frame := CenterContainer.new()
 	back_frame.add_child(back)
+	return [front_frame, back_frame]
 
-	# "2/3": which look of the draw this is (rules.json card_training_looks).
-	var counter := UiKit.line(Text.say("rhetoric.counter", {
-		"number": int(draw.get("look", 1)), "total": GameState.card_training_looks()}), "HeaderLabel")
-	counter.name = "LookCounter"
-	counter.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
-	var rows: Array[Control] = [counter, front_frame, back_frame]
-	# Pass only while it is not the draw's last look. It sits above Learn it,
-	# which the panel always places last.
-	if GameState.can_pass_offered_card():
-		var pass_button := Button.new()
-		pass_button.name = "Pass"
-		pass_button.text = Text.say("rhetoric.pass")
-		pass_button.custom_minimum_size = Vector2(0, 110)
-		pass_button.pressed.connect(_on_pass_card)
-		rows.append(pass_button)
-	_card_reveal_panel.open(Text.say("rhetoric.offer_title"), rows,
-		Text.say("rhetoric.learn", {"price": _price_text(
-			DataDB.get_shop_item(str(draw.get("item_id", ""))))}))
+## The deck screen's View button: the card's front and back in a pop-up that
+## closes with Back, leaving the deck as it was.
+func _show_card_look(card_id: String) -> void:
+	var card := DataDB.get_card(card_id)
+	if card.is_empty():
+		return
+	var rows: Array[Control] = []
+	rows.append_array(_card_faces(card, CARD_LOOK_CHROME))
+	_card_look_panel.open(str(card.get("name_en", card_id)), rows)
 
 
 ## The deck: which of the cards you own are going in.
@@ -2096,7 +2132,18 @@ func _deck_row(card: Dictionary, card_id: String) -> Control:
 		"✓" if chosen else "–", int(card.get("cost", 0)), card.get("name_en", card_id)]
 	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	button.pressed.connect(_on_toggle_card.bind(card_id))
-	box.add_child(button)
+	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# View sits beside the pick/drop button and shows both faces of the card.
+	var view := Button.new()
+	view.name = "ViewCard_" + card_id
+	view.text = Text.say("office.deck_view")
+	view.custom_minimum_size = Vector2(190, 80)
+	view.pressed.connect(_show_card_look.bind(card_id))
+	var line := HBoxContainer.new()
+	line.add_theme_constant_override("separation", 12)
+	line.add_child(button)
+	line.add_child(view)
+	box.add_child(line)
 
 	var effect := UiKit.line(str(card.get("effect_text", "")), "SmallLabel")
 	box.add_child(effect)

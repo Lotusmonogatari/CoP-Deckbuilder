@@ -126,6 +126,33 @@
       "Data Driven": "res://assets/cards/frame_back_shoji.png",
       "Divisive": "res://assets/cards/back_castle.png",
       "Duplicitous": "res://assets/cards/back_ninja.png"
+    },
+    "name_box": {
+      "_README": "Where each suit's painted title plate sits, as fractions of the card height: [top, height], measured off the frame picture so the title is centered in the plate. A suit not listed uses the default box in CardView. Hand-written.",
+      "Earnest": [
+        0.0343,
+        0.0771
+      ],
+      "Emotional": [
+        0.0419,
+        0.0619
+      ],
+      "Appeal": [
+        0.05,
+        0.0486
+      ],
+      "Data Driven": [
+        0.0375,
+        0.0645
+      ],
+      "Divisive": [
+        0.0357,
+        0.0681
+      ],
+      "Duplicitous": [
+        0.0419,
+        0.0619
+      ]
     }
   },
   "outdoor_background_prefix": "OUT_",
