@@ -20,7 +20,12 @@ Text goes in as inline strings; `sharedStrings.xml` is never touched. Numbers go
 
 ## Copying a row
 
-`w.rows()` gives every cell as text, so writing a copied row back with `append_row` would store numbers as text. Convert numeric-looking values first (`int(v)` / `float(v)`; keep ranges like `2-3` and IDs as text), skip formula cells (the Stages tab's Segment check and Favored suit are formulas on older rows; write plain values), give the row its own ID, and `w.save()`. `design/CONTENT_GUIDE.md` section 4.4 has the full recipe.
+```python
+new_row = w.copy_row("Stages", "ST05", {"A": "ST272", "Stage (EN)": "Town Hall on Harbor Dredging", "Background ID": "ST05"})
+w.save()
+```
+
+`copy_row(name, from_key, overrides)` appends a copy of the row whose key is `from_key` and returns its row number. Numbers stay numbers (`w.rows()` gives text, so a hand copy would turn them into text), formula cells become their plain values (the Stages tab's Segment check and Favored suit are formulas on older rows, and hand-copied shared formulas make Excel ask to repair the file), `overrides` takes a column letter or the header text from row 1 (None blanks a cell), and a new key is required. `typed_row(name, row)` reads a row with real types. `python3 tools/workbook/selftest.py` covers both. A new Combat stage still needs its Affinity column; `design/CONTENT_GUIDE.md` section 4.4 has the full recipe.
 
 ## After every edit
 

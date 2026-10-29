@@ -114,6 +114,45 @@ class WB:
             mc=max(col2n(dm.group(1)),col2n(col)); mr=max(int(dm.group(2)),rownum)
             x=x.replace(dm.group(0),f'<dimension ref="A1:{n2col(mc)}{mr}"/>')
         self.files[p]=x.encode()
+    def typed_row(self,name,rownum):
+        """{col: value} for one row with real types: numbers come back as int or
+        float, text as str, and a formula cell as its last calculated value
+        (the formula itself is not carried). Blank cells are left out."""
+        x=self._x(name); rm=re.search(r'<row r="%d"[^>]*?(?:/>|>(.*?)</row>)'%rownum,x,re.S)
+        out={}
+        for c in CELL.finditer(rm.group(1) or '') if rm else []:
+            attrs,body=c.group(3),c.group(4) or ''
+            text=self.text(attrs,body)
+            if text in (None,''): continue
+            is_text='t="s"' in attrs or 'inlineStr' in attrs or 't="str"' in attrs or 't="b"' in attrs
+            if is_text: out[c.group(1)]=text; continue
+            try:
+                f=float(text); out[c.group(1)]=int(f) if f==int(f) and 'e' not in text.lower() and '.' not in text else f
+            except ValueError:
+                out[c.group(1)]=text
+        return out
+    def copy_row(self,name,from_key,overrides=None,keycol='A'):
+        """Appends a copy of the row whose key (column A unless keycol says
+        otherwise) is `from_key`, and returns the new row number.
+
+        Types are kept (numbers stay numbers, which a plain rows()/append_row
+        round trip would turn into text) and formulas are replaced by their
+        plain values, because hand-copied shared formulas are what makes Excel
+        ask to repair the file. `overrides` maps a column letter OR the header
+        text from row 1 to the new value; a value of None blanks the cell. A new
+        key must be given for the key column or the copy would duplicate the
+        original. Nothing is written until save()."""
+        src=self.typed_row(name,self.find_row(name,from_key,keycol))
+        headers=self.rows(name).get(1,{})
+        by_header={v:k for k,v in headers.items()}
+        for k,v in (overrides or {}).items():
+            col=k if k in headers or re.fullmatch(r'[A-Z]+',k) else by_header.get(k)
+            if col is None: raise KeyError((name,k))
+            if v is None: src.pop(col,None)
+            else: src[col]=v
+        if src.get(keycol)==from_key:
+            raise ValueError("copy_row needs a new value for column %s (it still holds %r)"%(keycol,from_key))
+        return self.append_row(name,src,style_row=self.find_row(name,from_key,keycol),keycol=keycol)
     def append_row(self,name,values,style_row=None,keycol='A'):
         """values: {col: value or (value, formula)}; returns row number."""
         r=self.last_data_row(name,keycol)+1

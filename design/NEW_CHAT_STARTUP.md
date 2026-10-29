@@ -63,7 +63,7 @@ xvfb-run -a -s "-screen 0 1080x2340x24" .tools/godot --path . --resolution 1080x
 7. Content-budget tests pin visitor choice values and per-organization tastes; a content edit can trip them (`tests/test_content_budget*.gd`, `test_party_bodies.gd`, `test_bill_player_cues.gd`).
 8. Agent-written text edits need guards: keep place names and proper names, keep digits, enforce word limits.
 9. Staff pictures resolve `SF01_{expression}.png` first and a plain `SF01.png` last; an `OUT_*` background id shows the Town Hall until its own picture exists.
-10. Copying a workbook row with `wbx` turns numbers into text (`rows()` returns strings); convert them, and write plain values instead of formulas. See `design/CONTENT_GUIDE.md` section 4.4 and `tools/workbook/README.md`.
+10. Copy a workbook row with `w.copy_row(...)` in `wbx`, not by reading `rows()` and writing it back (that turns numbers into text and drags formulas along). See `design/CONTENT_GUIDE.md` section 4.4 and `tools/workbook/README.md`.
 11. A new copy of a family room (a topic Town Hall, caucus, committee) must be added to the Modifiers tab's Effect Target cells that name its family, or its backings silently do nothing there. Only one test checks this.
 12. The export saying "No errors" is not the whole check: a room with no visitors or a bad Background ID now errors, but a thin cue pool or a missing level does not. Run `tools/verify.sh`, `python3 tools/content_depth.py` and a bot trial for new rooms.
 13. The Decline generator (`tools/workbook/archive/b9/decline_options.py`) is a one-off for 17 events; add a new event's Decline by hand.
