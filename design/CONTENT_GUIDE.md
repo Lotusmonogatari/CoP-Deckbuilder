@@ -80,7 +80,7 @@ A level is a row of up to ten stage slots plus rewards, cost and availability.
 
 ## 4. Stages (Stages tab)
 
-A stage is one room. **Mode**: `Combat` (card battle), `Non-combat` (Office Hours-style visitor room), `Vote` (ST23 only), `Visit` and `Trade` (the patron member visit and lobbyist trade, run by the patron machinery). Next free ID: **ST271**.
+A stage is one room. **Mode**: `Combat` (card battle), `Non-combat` (Office Hours-style visitor room), `Vote` (ST23 only), `Visit` and `Trade` (the patron member visit and lobbyist trade, run by the patron machinery). Next free ID: **ST271**. Other next-free IDs today: stage questions **S2481**, player cues **PL3517**, opponent cues **OC3109**, transition dialogue **TD2084**, transition cast **TC223**, transition backgrounds **TB79**, ticker **TK156**.
 
 ### 4.1 The columns that matter
 
@@ -92,7 +92,7 @@ A stage is one room. **Mode**: `Combat` (card battle), `Non-combat` (Office Hour
 | **Energy Mode / Pool** | `per_turn` or a stage-long `pool`. |
 | **Sequence Mode** | `single`, `reset` (committees: everything restarts per opponent), `stream` (town hall: clock and gaffes carry), `continuous` (floor debate, caucus). |
 | **Opponent Count** | A number or range. On a Non-combat room it counts **visitors**. More than one opponent in a Combat room needs a non-`single` sequence mode. |
-| **Question Pool** | `press_conference`, `town_hall`, `media_ambush`, `lobbyist_meeting`, `policy_study`, or blank (a blank uses the built-in default only where one exists; otherwise only Stage Questions). |
+| **Question Pool** | `press_conference`, `town_hall`, `media_ambush`, `lobbyist_meeting`, `policy_study`, or blank. **Blank means no pool**: only Stage Questions are asked (the old built-in defaults were removed on 2026-10-27, so a copy of a pooled room such as ST05 must set the cell, e.g. `town_hall`). |
 | **Own Party Only** | Yes: seats only the player's own party (the caucus family). |
 | **Reveal In Briefing / Loss Ends Level** | `No` hides a surprise room; Loss Ends Level blank = Yes (press conference and ambush are No). |
 | **Show Transition / Transition Speaker Count** | A beat before the room when it is not a level's first slot. Yes on 219 stages today; blank is No. Media Ambush rooms show none. |
@@ -121,8 +121,10 @@ A room's picture is `assets/backgrounds/{STAGE_ID}.png` if drawn; otherwise it *
 
 ### 4.4 Recipe: a new room
 
+**Copying a row with `wbx` (read this first).** `w.rows()` returns every cell as text, so writing a copied row back with `append_row` stores numbers as text. Convert numeric-looking strings to numbers before writing (`int(v)` or `float(v)`), keep ranges such as `2-3` and IDs as text, skip formula cells (see step 2), and give the new row its own ID, name and Background ID. Always `w.save()` and re-run the export.
+
 1. Choose the family and read its live row. Add a Stages row (copy it), next `STxx`, named for the topic.
-2. **Affinity tab**: add the `STxx` column (export error for Combat otherwise): two suits at 1.5 and 1.3, two at 0.5 and 0.7, two at 1.0, chosen from what the room rewards. Paste formulas for the Stages tab's Favored suit / Segment check if you extend the grid.
+2. **Affinity tab**: add the `STxx` column (export error for Combat otherwise): two suits at 1.5 and 1.3, two at 0.5 and 0.7, two at 1.0, chosen from what the room rewards. Do **not** paste formulas into the new Stages row: its Segment check (W) and Favored suit (X) cells are formulas on older rows, but the Favored suit formula only reads Affinity columns B to V and already shows "—" for every stage from ST24 on. Write the audience shares so they add to 1 (the export errors otherwise), put `1` in Segment check and `—` in Favored suit as plain values. Shared formulas copied by hand are what made Excel ask to repair the file.
 3. **Opponents tab**: add the `STxx` to the Stage cell of the people who belong there (existing people only; section 5). Or, for Non-combat, the Visitors tab.
 4. Questions (section 6), cues (section 7), transitions (section 7), picture (4.3).
 5. Put it in a level (section 3). A Combat room needs at least its Opponent Count of seated people.
@@ -243,7 +245,7 @@ An event is a screen of flavor text with two to four fixed choices; each choice 
 | **Unlocks Level** | Reveals a gated level (the event is one way in) |
 | Dues Δ | A negative number writes down the carried balance |
 
-**Rules.** Every event needs at least one choice and every choice lettered once. A choice whose text contains one of `data/rules.json` `staff_delegation_phrases` ("a staff member", "a staffer", "a deputy") is greyed out with "No staff hired" when nobody is hired, so word a send-staff option with one of those phrases. **Decline:** a Random event whose choices have no decline-like option gets a **Decline** choice whose penalty is **1.5 x the shortfall of sending staff against accepting** (choice A), applied as a loss and rounded half up; an event with no send-staff choice counts staff as giving nothing. Scale Constituency, Reputation, Party, District, National and organization standing; never XP, Funds, dues or unlocks. Label `@event.decline`, result `@event.decline.EVxx`. The generator and worked rule are in `tools/workbook/archive/b9/decline_options.py`. Keep every event inside the content budget used by Office Hours (below): meaningful rewards cost something somewhere.
+**Rules.** Every event needs at least one choice and every choice lettered once. A choice whose text contains one of `data/rules.json` `staff_delegation_phrases` ("a staff member", "a staffer", "a deputy") is greyed out with "No staff hired" when nobody is hired, so word a send-staff option with one of those phrases. **Decline:** a Random event whose choices have no decline-like option gets a **Decline** choice whose penalty is **1.5 x the shortfall of sending staff against accepting** (choice A), applied as a loss and rounded half up; an event with no send-staff choice counts staff as giving nothing. Scale Constituency, Reputation, Party, District, National and organization standing; never XP, Funds, dues or unlocks. Label `@event.decline`, result `@event.decline.EVxx`. The one-off generator in `tools/workbook/archive/b9/decline_options.py` is **not reusable as it stands**: its Decline wording is a fixed table of the 17 events, so a new event stops it with a `KeyError`; for a new event add the Decline row by hand (or add the event's line to that table first) using the rule above. It reads `data/*.json`, so export before running it. Keep every event inside the content budget used by Office Hours (below): meaningful rewards cost something somewhere.
 
 ### 9.2 Hosted events, shop events and the week
 
@@ -263,7 +265,7 @@ A visitor question has **no right answer**: each of the four choices carries its
 
 | You add | Also needed |
 |---|---|
-| A **stage** | Stages row; Affinity column (Combat); seated people (Opponents Stage cell, or Visitors); Background ID; appear in a level; questions/cues/transition rows as sized; Assets row only for new art files |
+| A **stage** | Stages row; Affinity column (Combat); seated people (Opponents Stage cell, or Visitors, enough of them for the room's seats); Background ID; appear in a level; questions/cues/transition rows as sized; Assets row only for new art files. **Modifiers tab, Effect Target cell**: a backing that applies to a family of rooms lists their stage IDs (`ST05; ST122; ...`); a new copy of a family room must be appended to every modifier that names its family or the backing silently does nothing there (one test, `test_party_bodies.gd`, checks only M47: every stage named "Town Hall" or "Caucus") |
 | A **bill-specific room copy** | the above, plus its name added to every table that names the family room, bill-scoped rows, and a Background ID of the family room |
 | A **level** | stage slots reachable; tier, cooldown, costs as numbers; Level Intro Cues + Thought; if gated, an event Unlock or Host Org; if a bill level, section 8 |
 | An **opponent** | Opponents row (Stage cell, suits, ranges), Assets rows (six expressions), cue rows if they should sound distinct, name identical in both tabs |
@@ -280,7 +282,7 @@ A visitor question has **no right answer**: each of the four choices carries its
 3. `python3 tools/content_depth.py` (the **three-times rule**: every room holds at least three times the content a run meets: questions 3 x turn limit, people 3 x opponent count, each cue cell 3 x its moments, transitions at least 3 exchanges). One general question or cue row can serve many rooms by listing them in its Stage ID cell.
 4. A new or changed room: `PLAYTEST_PROTAGONIST=PC02 PLAYTEST_STAGE_TRIAL="STxx:40" .tools/godot --headless --path . tools/playtest_optimal.tscn` and report the win rate (a fair room is won roughly half to most of the time; questions make a room easier).
 5. Anything touching organizations, bills or votes: `xvfb-run .tools/godot --path . tools/rubric_playtest.tscn` still scores full marks.
-6. Mark new rows as drafts where a Why/Note cell exists; numbers are numbers (text-typed numbers are a defect); re-read current values from today's workbook before editing existing rows.
+6. **README tab**: Cameron's overview still says "259 stages, 82 levels"; update its counts when you add stages or levels. Mark new rows as drafts where a Why/Note cell exists; keep numbers as numbers (the master has a few hundred text-typed numbers the export tolerates, but do not add more); re-read current values from today's workbook before editing existing rows.
 7. Hand over an audit: ID ranges and collisions, seat totals per bill, default outcome against cue direction, Strong/Weak share per suit, questions per room against turn limit, cue lines per (suit, verb) cell, transition word counts, rooms in no level, seated people per room against Opponent Count, and every new place or institution listed for Cameron.
 
 ### 10.3 Pitfalls that have happened
@@ -298,6 +300,10 @@ A visitor question has **no right answer**: each of the four choices carries its
 | Same hand/energy/gaffe numbers on every new room | Vary inside the family's range |
 | Amounts without commas ("100000円") | `cost`/`price`/`count`/`yen_` placeholder names |
 | A picture name that never loads | IDs are exact; a typo only warns for non-`OUT_` pictures |
+| An Office Hours room with no seated visitor | The export says "No errors"; only `test_every_real_level_is_usable` fails. Run the unit tests, not just the export |
+| A stage's Background ID with a typo or a list on a new non-bill room | No export warning. `test_a_bill_specific_copy_plays_like_its_family` hard-codes the outing stages ST264-ST270 and the patron rooms, so a new stage with a picture list (or any non-stage Background ID) can crash that test; ask Cameron before editing the test |
+| A new outing or festival | `test_district_activities.gd` and `test_weekend_levels.gd` name their stages, so a new one is not covered by them; bring its pool (more visitors than seats, two dilemmas each) up by hand |
+| `content_depth.py` on a brand-new room | It has no measured plays for it and assumes a default; run `tools/measure_plays.sh` for a real figure |
 
 ---
 
