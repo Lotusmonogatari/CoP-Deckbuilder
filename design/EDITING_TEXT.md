@@ -290,3 +290,10 @@ Everything in one go, including the tests:
 python3 tools/export_data.py
 tools/verify.sh
 ```
+
+---
+
+## Event choices that read their wording from the Text tab
+
+An Event Choices cell (Choice Text or Result Text) may hold `@some.key` instead of sentences; the export replaces it with the Text tab's English for that key and errors if the key is missing. The Decline choices use this: the label is `event.decline` (edit it once for every event) and each result is `event.decline.EVxx`. To do the same elsewhere, add the Text row, then type `@that.key` in the Event Choices cell.
+

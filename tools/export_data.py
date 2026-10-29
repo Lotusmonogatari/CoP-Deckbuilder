@@ -2953,6 +2953,28 @@ TEXT_KEY_CALLS = [
 TEXT_DYNAMIC = "text-key-built-at-runtime"
 
 
+# Event Choices cells may hold "@text.key" instead of wording: the exporter
+# swaps in the Text tab's English for that key (2026-10-29, so one line, such
+# as the shared "Decline" label, is edited in one place). Keys used this way
+# count as asked-for in check_text_keys.
+TEXT_KEYS_FROM_DATA = set()
+
+
+def fold_event_text(data, report):
+    strings = {str(r.get("key", "")): r.get("english") for r in data.get("strings") or []}
+    for row in data.get("event_choices", []):
+        for field in ("choice_text", "result_text"):
+            value = row.get(field)
+            if isinstance(value, str) and value.startswith("@"):
+                key = value[1:].strip()
+                if strings.get(key) is None:
+                    report.error("Event Choices", f"{row.get('event_id')} {row.get('choice')} {field} "
+                                 f"asks for Text key '{key}', which is not in the Text tab")
+                else:
+                    TEXT_KEYS_FROM_DATA.add(key)
+                    row[field] = strings[key]
+
+
 def check_text_keys(data, report):
     """Every key the code asks for must be a row in the Text tab.
 
@@ -2997,7 +3019,7 @@ def check_text_keys(data, report):
             key + ".one" in in_sheet and key + ".other" in in_sheet)
 
     def wanted(row_key):
-        if row_key in asked_for:
+        if row_key in asked_for or row_key in TEXT_KEYS_FROM_DATA:
             return True
         base, _, suffix = row_key.rpartition(".")
         return suffix in ("one", "other") and base in asked_for
@@ -3809,6 +3831,7 @@ def main():
     fold_player(data, report)
     fold_questions(data, report)
     fold_floor_votes(data, report)
+    fold_event_text(data, report)
     validate(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)

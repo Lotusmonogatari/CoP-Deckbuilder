@@ -5738,5 +5738,138 @@
     "english": "View",
     "placeholders": null,
     "notes": "2026-10-29 see both faces of a card."
+  },
+  {
+    "key": "event.decline",
+    "where": "Event Choices: the Decline choice's label (every event)",
+    "english": "Decline",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline choice (Cameron)."
+  },
+  {
+    "key": "event.decline.EV36",
+    "where": "Event Choices: the result of declining EV36",
+    "english": "The host fills the time with music.",
+    "placeholders": null,
+    "notes": "2026-10-29 EV36's original Decline result line (Cameron's own wording), moved here unchanged; EV36 keeps its original, penalty-free Decline."
+  },
+  {
+    "key": "event.decline.EV12",
+    "where": "Event Choices: the result of declining EV12",
+    "english": "You decline to take it on. He says nothing more about the street, and a few people nearby notice.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV13",
+    "where": "Event Choices: the result of declining EV13",
+    "english": "You decline the invitation. The head table has one empty chair, and people notice whose.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV15",
+    "where": "Event Choices: the result of declining EV15",
+    "english": "You set the letter aside without answering. The resident notices when no reply comes.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV16",
+    "where": "Event Choices: the result of declining EV16",
+    "english": "You decline to discuss it. The treasurer leaves a note and a cooler goodbye.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV17",
+    "where": "Event Choices: the result of declining EV17",
+    "english": "You decline to engage. The hall secretary will remember that nobody answered.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV18",
+    "where": "Event Choices: the result of declining EV18",
+    "english": "You decline to see them. The mayors leave without their ten minutes.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV19",
+    "where": "Event Choices: the result of declining EV19",
+    "english": "You decline to get involved. The priest and the caretaker leave as they came.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV22",
+    "where": "Event Choices: the result of declining EV22",
+    "english": "You decline to take it up. The owner thanks you and goes back to two shut floors.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV23",
+    "where": "Event Choices: the result of declining EV23",
+    "english": "You decline to look at the slip. She puts it away without a word.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV25",
+    "where": "Event Choices: the result of declining EV25",
+    "english": "You decline to discuss it. He says he understands, in the tone of someone who does not.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV26",
+    "where": "Event Choices: the result of declining EV26",
+    "english": "You decline to act. The nurse says the doctor's Fridays will stay empty.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV27",
+    "where": "Event Choices: the result of declining EV27",
+    "english": "You decline to take it further. The harbor office hears nothing back.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV37",
+    "where": "Event Choices: the result of declining EV37",
+    "english": "You decline the visit. The class waits for an answer that never comes.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV38",
+    "where": "Event Choices: the result of declining EV38",
+    "english": "You decline to get involved. Both neighborhoods hear that you stayed out.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV41",
+    "where": "Event Choices: the result of declining EV41",
+    "english": "You decline to take the call. The village office is left to ring around.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV42",
+    "where": "Event Choices: the result of declining EV42",
+    "english": "You decline to respond. The school manages without you.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV43",
+    "where": "Event Choices: the result of declining EV43",
+    "english": "You decline to receive them. The folders stay in their plastic.",
+    "placeholders": null,
+    "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
   }
 ]
