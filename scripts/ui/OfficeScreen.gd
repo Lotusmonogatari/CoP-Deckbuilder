@@ -1889,7 +1889,7 @@ func _show_marketplace() -> void:
 	# Funds and the current Funds limit share the top line; the limit is read
 	# fresh every time the page is built, so buying a limit increase updates it.
 	var funds_line := UiKit.line(Text.say("shop.funds_limit", {
-		"funds": int(GameState.meta.get("Funds", 0)), "limit": GameState.funds_limit()}), "HeaderLabel")
+		"yen_funds": int(GameState.meta.get("Funds", 0)), "yen_limit": GameState.funds_limit()}), "HeaderLabel")
 	funds_line.name = "MarketFunds"
 	rows.append(funds_line)
 	rows.append(UiKit.line(Text.say("shop.supplies_blurb")))

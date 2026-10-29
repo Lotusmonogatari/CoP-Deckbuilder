@@ -2566,3 +2566,6 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 - **Rhetoric Training offer fits the screen.** The front and back were a fixed 2x and ran off the bottom on a phone (the Learn button needed a scroll). `OfficeScreen._card_faces()` now picks the largest scale (between 1x and 2x) that fits the screen height after setting aside room for the heading, counter and buttons (`CARD_OFFER_CHROME`).
 - **View on the deck screen.** Each deck row has a View button beside its pick/drop button (Text row `office.deck_view`) that opens the card's front and back in a pop-up (`_card_look_panel`, closes with Back, deck unchanged), sized the same way.
 
+## Commas on the Marketplace funds line and the draft cost (2026-10-29, Cameron)
+- `Phrase` adds thousands separators only to placeholders named `count`, `cost`, `price` or starting `yen_`. The Marketplace line used `{funds}`/`{limit}`, so it showed "100000円"; it now uses `{yen_funds}`/`{yen_limit}`. The "Drafting needs ... XP and ...円" message passed a raw number the same way and now formats it. New Text rows with an amount should use a `yen_` or `cost` name, or pass `Phrase.with_separators()`.
+

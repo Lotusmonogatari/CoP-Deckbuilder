@@ -68,7 +68,7 @@ static func refusal(ids: Array, state: Dictionary) -> String:
 	var xp_cost := int(DataDB.balance.get("draft_bill_xp_cost", 350))
 	var funds_cost := int(DataDB.balance.get("draft_bill_funds_cost", 300000))
 	if int(state.get("xp", 0)) < xp_cost or int(state.get("funds", 0)) < funds_cost:
-		return Text.say("draft.cost", {"xp": xp_cost, "funds": funds_cost})
+		return Text.say("draft.cost", {"xp": xp_cost, "funds": Phrase.with_separators(funds_cost)})
 	if not PatronLevel.carryable(bill_for(ids)):
 		return Text.say("draft.not_winnable")
 	return ""
