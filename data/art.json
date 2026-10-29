@@ -67,7 +67,12 @@
     "SEVERAL PICTURES FOR ONE EVENT (2026-10-29): an Events Image cell may list IDs",
     "separated by semicolons, e.g. OUT_HARBOR_1; OUT_HARBOR_2. One is picked at random each time",
     "the event comes up. Each is a normal background ID (assets/backgrounds/OUT_HARBOR_1.png);",
-    "an undrawn OUT_ one shows the Town Hall."
+    "an undrawn OUT_ one shows the Town Hall.",
+    "",
+    "TERMS IN PICTURE NAMES (2026-10-29): a picture whose name carries a term (OUT_FESTIVAL_2_WINTER",
+    "carries WINTER) is only used when the event's title/flavor or the stage's name contains that term",
+    "or a related word listed in image_terms. Pictures with no term are used otherwise. Add terms and",
+    "related words here; the list is yours to edit. A Stages Background ID cell may list several pictures too."
   ],
   "folders": {
     "protagonist": "res://assets/characters/protagonists/",
@@ -243,5 +248,57 @@
       "place": "a snowed-in village road with a bus stop, a clinic sign and hills beyond",
       "mood": "muffled, pale winter light"
     }
+  },
+  "image_terms": {
+    "WINTER": [
+      "winter",
+      "snow",
+      "snowed",
+      "snowy",
+      "blizzard",
+      "frost",
+      "icy",
+      "cold"
+    ],
+    "SNOW": [
+      "snow",
+      "snowed",
+      "snowy",
+      "blizzard",
+      "winter",
+      "drift"
+    ],
+    "AUTUMN": [
+      "autumn",
+      "fall",
+      "harvest",
+      "foliage"
+    ],
+    "SPRING": [
+      "spring",
+      "blossom",
+      "cherry",
+      "thaw"
+    ],
+    "SUMMER": [
+      "summer",
+      "heat",
+      "midsummer",
+      "sunny"
+    ],
+    "NIGHT": [
+      "night",
+      "evening",
+      "late",
+      "dusk",
+      "lantern"
+    ],
+    "RAIN": [
+      "rain",
+      "rainy",
+      "storm",
+      "flood",
+      "typhoon"
+    ]
   }
 }

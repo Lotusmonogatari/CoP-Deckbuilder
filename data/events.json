@@ -120,7 +120,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR",
+    "image": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR; OUT_FESTIVAL_2_WINTER",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null
@@ -462,7 +462,7 @@
     "cooldown_hours": null,
     "min_district_awareness": null,
     "min_national_awareness": null,
-    "image": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR",
+    "image": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR; OUT_FESTIVAL_2_WINTER",
     "needs_dues_owed": null,
     "on_date": null,
     "speaker_title": null

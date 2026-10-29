@@ -546,7 +546,8 @@ func _present_event(event_id: String, arrived: bool) -> void:
 	var rows: Array[Control] = []
 	# An Image cell may list several pictures; one is picked each time the event
 	# comes up and kept for its result screen.
-	var picture := EventPicture.pick(event.get("image"))
+	var picture := EventPicture.pick(event.get("image"),
+		"%s %s" % [event.get("title", ""), event.get("flavor", "")], DataDB.art.get("image_terms", {}))
 	_event_pictures[event_id] = picture
 	if not picture.is_empty():
 		rows.append(_picture_row(picture))

@@ -1721,7 +1721,7 @@
     "time_units": 2,
     "win_delta_awareness_district": 2,
     "win_delta_awareness_national": null,
-    "background_id": "ST05",
+    "background_id": "OUT_HARBOR_1; OUT_HARBOR_2",
     "segment_mix": {
       "SG01": 0.05,
       "SG02": 0.05,
@@ -15821,7 +15821,7 @@
     "time_units": 4,
     "win_delta_awareness_district": 3,
     "win_delta_awareness_national": null,
-    "background_id": "ST07",
+    "background_id": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR; OUT_FESTIVAL_2_WINTER",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,
@@ -15881,7 +15881,7 @@
     "time_units": 4,
     "win_delta_awareness_district": 3,
     "win_delta_awareness_national": null,
-    "background_id": "ST07",
+    "background_id": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR; OUT_FARM_1; OUT_FARM_2",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,
@@ -15941,7 +15941,7 @@
     "time_units": 4,
     "win_delta_awareness_district": 3,
     "win_delta_awareness_national": null,
-    "background_id": "ST07",
+    "background_id": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR; OUT_FESTIVAL_2_WINTER",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,
@@ -16001,7 +16001,7 @@
     "time_units": 2,
     "win_delta_awareness_district": 2,
     "win_delta_awareness_national": null,
-    "background_id": "ST07",
+    "background_id": "OUT_STREET_1; OUT_STREET_2; OUT_STREET_3",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,
@@ -16061,7 +16061,7 @@
     "time_units": 3,
     "win_delta_awareness_district": 1,
     "win_delta_awareness_national": null,
-    "background_id": "ST07",
+    "background_id": "OUT_NEIGHBORHOOD",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,
@@ -16121,7 +16121,7 @@
     "time_units": 2,
     "win_delta_awareness_district": 1,
     "win_delta_awareness_national": null,
-    "background_id": "ST07",
+    "background_id": "OUT_SCHOOL_1; OUT_SCHOOL_2",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,
@@ -16181,7 +16181,7 @@
     "time_units": 4,
     "win_delta_awareness_district": 2,
     "win_delta_awareness_national": null,
-    "background_id": "ST07",
+    "background_id": "OUT_STREET_1; OUT_STREET_2; OUT_STREET_3; OUT_FARM_1; OUT_FARM_2",
     "segment_mix": {
       "SG01": 0.0,
       "SG02": 0.0,

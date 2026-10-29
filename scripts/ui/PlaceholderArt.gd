@@ -26,6 +26,8 @@ enum Kind { CHARACTER, CARD, BACKGROUND, ICON }
 @export var art_id: String = "":
 	set(value):
 		art_id = value
+		# A stage listing several pictures draws a fresh one when its picture is set.
+		ArtLoader.forget_pick(value)
 		_refresh()
 
 ## Only used for characters: neutral, attacking, guarding, gaining, damaged

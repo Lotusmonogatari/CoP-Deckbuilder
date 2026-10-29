@@ -94,7 +94,7 @@ static func background_path(stage_id: String) -> String:
 	# A stage with no picture of its own borrows its default's (Stages tab,
 	# Background ID), so a topic room never shows a placeholder where its
 	# family already has a background.
-	var borrowed := DataDB.stage_background_id(stage_id)
+	var borrowed := _stage_choice(stage_id, DataDB.stage_background_id(stage_id))
 	if not borrowed.is_empty() and borrowed != stage_id:
 		candidates.append(folder("background") + borrowed + ".png")
 	# An outside scene (OUT_FESTIVAL ...) that has not been drawn yet shows the
@@ -105,6 +105,26 @@ static func background_path(stage_id: String) -> String:
 			and (stage_id.begins_with(prefix) or borrowed.begins_with(prefix)):
 		candidates.append(folder("background") + fallback + ".png")
 	return _first_existing(candidates)
+
+
+## A stage whose Background ID lists several pictures shows one of them,
+## fixed for as long as the stage is on screen (every refresh asks again) and
+## drawn afresh each time the stage's picture is set (PlaceholderArt calls
+## forget_pick). Term pictures obey the stage's name (EventPicture).
+static var _picks: Dictionary = {}
+
+
+static func _stage_choice(stage_id: String, cell: String) -> String:
+	if not cell.contains(";") and not cell.contains("|"):
+		return cell
+	if not _picks.has(stage_id):
+		var context := str(DataDB.get_stage(stage_id).get("name_en", ""))
+		_picks[stage_id] = EventPicture.pick(cell, context, _art().get("image_terms", {}))
+	return str(_picks[stage_id])
+
+
+static func forget_pick(stage_id: String) -> void:
+	_picks.erase(stage_id)
 
 
 ## An icon — an organisation, a suit, a meta-variable.
