@@ -60,6 +60,13 @@ window/handheld/orientation=1
 
 theme/custom="res://theme/cop_theme.tres"
 
+[input_devices]
+
+; Image Pan (2026-10-30) reads the phone's tilt; these two sensors are off
+; unless asked for.
+sensors/enable_accelerometer=true
+sensors/enable_gravity=true
+
 [rendering]
 
 ; GL Compatibility is the safest renderer for the range of Android and iOS

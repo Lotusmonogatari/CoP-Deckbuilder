@@ -5871,5 +5871,33 @@
     "english": "You decline to receive them. The folders stay in their plastic.",
     "placeholders": null,
     "notes": "2026-10-29 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "office.image_scroll",
+    "where": "Administration menu, Image Scroll switch (drag an event picture to see the rest of it)",
+    "english": "Image Scroll: {state}",
+    "placeholders": "state",
+    "notes": null
+  },
+  {
+    "key": "office.image_pan",
+    "where": "Administration menu, Image Pan switch (an event picture drifts as the phone tilts)",
+    "english": "Image Pan: {state}",
+    "placeholders": "state",
+    "notes": null
+  },
+  {
+    "key": "settings.on",
+    "where": "A settings switch, the word for on",
+    "english": "On",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "settings.off",
+    "where": "A settings switch, the word for off",
+    "english": "Off",
+    "placeholders": null,
+    "notes": null
   }
 ]

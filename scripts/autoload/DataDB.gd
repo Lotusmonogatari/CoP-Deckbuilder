@@ -1697,6 +1697,8 @@ func _validate_rules() -> void:
 		"opponent_engine": ["intent_patterns", "deck_ai"],
 		"press_answer_timer": [true, false],
 		"discard_hand_end_of_turn": [true, false],
+		"image_scroll_default": [true, false],
+		"image_pan_default": [true, false],
 	}
 	for flag: String in allowed.keys():
 		if not rules.has(flag):

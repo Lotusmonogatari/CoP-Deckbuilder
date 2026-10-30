@@ -184,5 +184,7 @@
   "hosted_event_own_organization_guest_percent": 60,
   "audience_scale_largest_bonus": 5,
   "event_picture_height": 640,
+  "image_pan_tilt_strength": 2.5,
+  "image_pan_follow_speed": 6,
   "xp_tiers": {}
 }

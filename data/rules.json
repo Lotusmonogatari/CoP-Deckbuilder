@@ -271,5 +271,29 @@
     ],
     "options": "stage ids",
     "notes": "Non-combat rooms that never seat Office Hours visitors (the patron visit is run by the patron machinery). The export errors on any other Non-combat room with no visitor listing it (Cameron, 2026-10-29)."
+  },
+  "image_scroll_default": {
+    "value": true,
+    "options": [
+      true,
+      false
+    ],
+    "question": "On a new install, can the player drag an event's picture to see the rest of it? (Administration > Image Scroll; the player's own choice is remembered after that.)",
+    "means": {
+      "true": "Image Scroll starts on.",
+      "false": "Image Scroll starts off."
+    }
+  },
+  "image_pan_default": {
+    "value": true,
+    "options": [
+      true,
+      false
+    ],
+    "question": "On a new install, does an event's picture drift as the phone tilts? (Administration > Image Pan; the player's own choice is remembered after that.)",
+    "means": {
+      "true": "Image Pan starts on.",
+      "false": "Image Pan starts off (gentler for anyone bothered by motion)."
+    }
   }
 }

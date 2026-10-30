@@ -513,12 +513,8 @@ func _show_gathering(result: Dictionary) -> void:
 ## A background picture as a row in a panel; a missing picture shows a
 ## placeholder labelled with its asset ID.
 func _picture_row(art_id: String) -> Control:
-	var art := PlaceholderArt.new()
-	art.name = "Picture_" + art_id
-	art.kind = PlaceholderArt.Kind.BACKGROUND
-	art.art_id = art_id
-	art.custom_minimum_size = Vector2(0, int(DataDB.balance.get("event_picture_height", 640)))
-	return art
+	# A drawn picture can be dragged and tilted (PanPicture, 2026-10-30).
+	return PanPicture.make(art_id, float(DataDB.balance.get("event_picture_height", 640)))
 
 
 ## A dated event whose day has come opens at once (2026-10-23), the first time
@@ -1578,6 +1574,8 @@ func _show_administration_menu() -> void:
 		_menu_button("HowToPlayButton", "office.how_to_play",
 			HowToPlayPanel.open.bind(_how_to_play_panel), _how_to_play_panel),
 		_text_size_button(),
+		_image_scroll_button(),
+		_image_pan_button(),
 	]
 	# The save buttons sit directly in the menu's row list, so the gap between
 	# them is the same as between every other menu button.
@@ -1696,6 +1694,30 @@ func _text_size_button() -> Button:
 		Layout.cycle_text_size()
 		_show_administration_menu(), 100.0)
 	button.name = "TextSizeButton"
+	button.custom_minimum_size.x = UiKit.LINE_WIDTH
+	return button
+
+
+## "Image Scroll: On" -- one tap turns dragging event pictures on or off.
+func _image_scroll_button() -> Button:
+	var state := Text.say("settings.on") if Layout.image_scroll_enabled else Text.say("settings.off")
+	return _setting_button("ImageScrollButton", Text.say("office.image_scroll", {"state": state}),
+		Layout.toggle_image_scroll)
+
+
+## "Image Pan: On" -- one tap turns tilting event pictures on or off.
+func _image_pan_button() -> Button:
+	var state := Text.say("settings.on") if Layout.image_pan_enabled else Text.say("settings.off")
+	return _setting_button("ImagePanButton", Text.say("office.image_pan", {"state": state}),
+		Layout.toggle_image_pan)
+
+
+## A settings button that flips something, then redraws the menu to show it.
+func _setting_button(node_name: String, label: String, flip: Callable) -> Button:
+	var button := UiKit.action_button(label, "", func() -> void:
+		flip.call()
+		_show_administration_menu(), 100.0)
+	button.name = node_name
 	button.custom_minimum_size.x = UiKit.LINE_WIDTH
 	return button
 

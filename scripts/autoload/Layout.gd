@@ -18,6 +18,11 @@ const MAX_COLUMN := 1080.0
 const SETTINGS_PATH := "user://settings.json"
 
 var text_size_setting := TextScale.NORMAL
+## Event pictures (2026-10-30): drag one to see the rest of it (Image Scroll),
+## and let it drift as the phone tilts (Image Pan). Starting values come from
+## rules.json; PanPicture reads these.
+var image_scroll_enabled := true
+var image_pan_enabled := true
 ## The theme's own font sizes as authored, so scaling is never compounded.
 var _original_sizes := {}   # "Type/name" -> int
 var _original_default := 0
@@ -79,6 +84,8 @@ func flash(text: String) -> void:
 
 
 func _ready() -> void:
+	image_scroll_enabled = bool(DataDB.rules.get("image_scroll_default", true))
+	image_pan_enabled = bool(DataDB.rules.get("image_pan_default", true))
 	_load_settings()
 	apply_text_scale()
 	_build_button_outlines()
@@ -143,6 +150,20 @@ func cycle_text_size() -> String:
 	return text_size_setting
 
 
+## Turns Image Scroll on or off and remembers it.
+func toggle_image_scroll() -> bool:
+	image_scroll_enabled = not image_scroll_enabled
+	_save_settings()
+	return image_scroll_enabled
+
+
+## Turns Image Pan on or off and remembers it.
+func toggle_image_pan() -> bool:
+	image_pan_enabled = not image_pan_enabled
+	_save_settings()
+	return image_pan_enabled
+
+
 ## Multiplies every font size in the project theme by the chosen factor, from
 ## the authored sizes (so Small then Large is not Small-of-Large).
 func apply_text_scale() -> void:
@@ -169,14 +190,21 @@ func _load_settings() -> void:
 	if file == null:
 		return
 	var parsed: Variant = JSON.parse_string(file.get_as_text())
-	if parsed is Dictionary and str(parsed.get("text_size", "")) in TextScale.ORDER:
+	if not (parsed is Dictionary):
+		return
+	if str(parsed.get("text_size", "")) in TextScale.ORDER:
 		text_size_setting = str(parsed["text_size"])
+	if parsed.get("image_scroll") is bool:
+		image_scroll_enabled = parsed["image_scroll"]
+	if parsed.get("image_pan") is bool:
+		image_pan_enabled = parsed["image_pan"]
 
 
 func _save_settings() -> void:
 	var file := FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
 	if file != null:
-		file.store_string(JSON.stringify({"text_size": text_size_setting}))
+		file.store_string(JSON.stringify({"text_size": text_size_setting,
+			"image_scroll": image_scroll_enabled, "image_pan": image_pan_enabled}))
 
 
 ## One set of outlined style boxes for ordinary buttons (party colour) and a

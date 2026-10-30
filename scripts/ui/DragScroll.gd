@@ -67,7 +67,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
 		var button := event as InputEventMouseButton
 		if button.pressed:
-			if _scroll.get_global_rect().has_point(button.position):
+			if _scroll.get_global_rect().has_point(button.position) \
+					and not _claimed_at(button.position):
 				_tracking = true
 				_dragging = false
 				_start = button.position
@@ -145,6 +146,16 @@ func _cancel_press() -> void:
 		if not button.disabled:
 			button.disabled = true
 			button.disabled = false
+
+
+## True when the press lands on something that handles its own drag (an
+## event picture with Image Scroll on, PanPicture.DRAG_GROUP).
+func _claimed_at(point: Vector2) -> bool:
+	for node in get_tree().get_nodes_in_group("drag_claimers"):
+		if node is Control and (node as Control).is_visible_in_tree() \
+				and (node as Control).get_global_rect().has_point(point):
+			return true
+	return false
 
 
 static func _buttons_at(point: Vector2, root: Node) -> Array[BaseButton]:
