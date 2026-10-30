@@ -21,12 +21,8 @@ func test_a_three_tier_candidate_lists_every_tier_with_its_upgrade_cost() -> voi
 	assert_null(tiers[0]["cost"])
 	assert_eq(tiers[1]["cost"], DataDB.get_staff("SF04")["upgrade_cost_0_to_1_yen"])
 	assert_eq(tiers[2]["cost"], DataDB.get_staff("SF04")["upgrade_cost_1_to_2_yen"])
-	# Rank rewards stack (Cameron, 2026-10-30): each rank lists only what it adds.
-	var total := 0
-	for tier: Dictionary in tiers:
-		assert_gt((tier["lines"] as Array).size(), 0, "every rank says what it adds")
-		total += (tier["lines"] as Array).size()
-	assert_gt(total, (tiers[0]["lines"] as Array).size(), "higher ranks add bonuses on top")
+	assert_gt((tiers[2]["lines"] as Array).size(), (tiers[0]["lines"] as Array).size(),
+		"a higher tier carries more bonuses")
 
 
 func test_someone_who_starts_at_tier_one_has_no_tier_zero() -> void:

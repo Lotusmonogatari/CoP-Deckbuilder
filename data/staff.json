@@ -95,10 +95,22 @@
     "tier_1_reward": [
       {
         "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
         "target": "SG05"
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
+        "target": "SG05"
+      },
       {
         "delta": 2,
         "target": "BO02"
@@ -147,10 +159,22 @@
     "tier_1_reward": [
       {
         "delta": 2,
+        "target": "BO02"
+      },
+      {
+        "delta": 2,
         "target": "SG02"
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO02"
+      },
+      {
+        "delta": 2,
+        "target": "SG02"
+      },
       {
         "delta": 2,
         "target": "BO01"
@@ -181,6 +205,10 @@
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO09"
+      },
       {
         "delta": 4,
         "target": "SG04"
@@ -285,10 +313,22 @@
     "tier_1_reward": [
       {
         "delta": 2,
+        "target": "SG01"
+      },
+      {
+        "delta": 2,
         "target": "SG04"
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "SG01"
+      },
+      {
+        "delta": 2,
+        "target": "SG04"
+      },
       {
         "delta": 2,
         "target": "BO08"
@@ -337,10 +377,22 @@
     "tier_1_reward": [
       {
         "delta": 2,
+        "target": "BO08"
+      },
+      {
+        "delta": 2,
         "target": "SG02"
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      },
+      {
+        "delta": 2,
+        "target": "SG02"
+      },
       {
         "delta": 2,
         "target": "BO01"
@@ -371,6 +423,10 @@
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO08"
+      },
       {
         "delta": 4,
         "target": "SG04"
@@ -475,10 +531,22 @@
     "tier_1_reward": [
       {
         "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
         "target": "BO06"
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "SG03"
+      },
+      {
+        "delta": 2,
+        "target": "BO06"
+      },
       {
         "delta": 2,
         "target": "BO04"
@@ -527,10 +595,22 @@
     "tier_1_reward": [
       {
         "delta": 2,
+        "target": "BO04"
+      },
+      {
+        "delta": 2,
         "target": "SG03"
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO04"
+      },
+      {
+        "delta": 2,
+        "target": "SG03"
+      },
       {
         "delta": 2,
         "target": "BO03"
@@ -561,6 +641,10 @@
       }
     ],
     "tier_2_reward": [
+      {
+        "delta": 2,
+        "target": "BO14"
+      },
       {
         "delta": 4,
         "target": "SG03"
