@@ -1,8 +1,9 @@
 class_name ImagePanDriver
 extends Node
-## Real drags on an event picture (2026-10-30): with Image Scroll on, dragging
-## the picture moves it and leaves the panel's own scrolling alone; with it
-## off (switched from Administration), the same drag moves nothing. Image Pan
+## Real drags on pictures (2026-10-30): dragging bare Office background moves
+## it; with Image Scroll on, dragging an event picture moves it and leaves the
+## panel's own scrolling (and the Office behind) alone; with it off (switched
+## from Administration), the same drag moves nothing. Image Pan
 ## is switched off and on from Administration too. The player's own settings
 ## are put back at the end.
 
@@ -31,6 +32,15 @@ func _run() -> void:
 	await get_tree().create_timer(0.6).timeout
 	var office := get_tree().current_scene
 
+	var background := office.get_node("%Background") as PlaceholderArt
+	var bare := _bare_point(background)
+	_expect(bare != Vector2.INF, "the Office has some bare background to press on")
+	if bare != Vector2.INF:
+		await _drag_at(bare, Vector2(-160, 0))
+		_expect(background.offset().x < -40.0 or background.offset().x > 40.0,
+			"dragging bare Office background moves it (offset %s)" % background.offset())
+	var office_offset := background.offset()
+
 	var picture := await _open_event(office)
 	if picture == null:
 		return _finish()
@@ -40,6 +50,7 @@ func _run() -> void:
 	_expect(picture.offset().y > 40.0, "dragging down shows more of the picture (offset %s)" % picture.offset())
 	if scroll != null:
 		_expect(scroll.scroll_vertical == scroll_at, "the panel did not scroll under the drag")
+	_expect(background.offset() == office_offset, "the Office behind the panel did not move")
 	_close_event(office)
 
 	await _click(office.find_child("AdministrationButton", true, false))
@@ -67,14 +78,14 @@ func _run() -> void:
 	_finish()
 
 
-func _open_event(office: Node) -> PanPicture:
+func _open_event(office: Node) -> PlaceholderArt:
 	office._present_event(EVENT, true)
 	await get_tree().create_timer(0.4).timeout
 	var found := office.get_node("EventPanel").find_child("Picture_*", true, false)
-	if not (found is PanPicture):
-		_failures.append("%s's picture is not a draggable picture (%s)" % [EVENT, found])
+	if not (found is PlaceholderArt) or (found as PlaceholderArt).is_placeholder():
+		_failures.append("%s's picture is not a drawn picture (%s)" % [EVENT, found])
 		return null
-	return found as PanPicture
+	return found as PlaceholderArt
 
 
 func _close_event(office: Node) -> void:
@@ -86,9 +97,23 @@ func _panel_scroll(office: Node) -> ScrollContainer:
 	return null if found.is_empty() else found[0] as ScrollContainer
 
 
+## A point on `art` with nothing in front of it that takes the mouse.
+func _bare_point(art: PlaceholderArt) -> Vector2:
+	var rect := art.get_global_rect()
+	for y in range(int(rect.position.y) + 40, int(rect.end.y) - 40, 60):
+		for x in range(int(rect.position.x) + 200, int(rect.end.x) - 200, 60):
+			if not art._covered_at(Vector2(x, y)):
+				return Vector2(x, y)
+	return Vector2.INF
+
+
 func _drag(control: Control, by: Vector2) -> void:
 	await get_tree().process_frame
-	var start: Vector2 = get_viewport().get_screen_transform() * control.get_global_rect().get_center()
+	await _drag_at(control.get_global_rect().get_center(), by)
+
+
+func _drag_at(point: Vector2, by: Vector2) -> void:
+	var start: Vector2 = get_viewport().get_screen_transform() * point
 	var press := InputEventMouseButton.new()
 	press.button_index = MOUSE_BUTTON_LEFT
 	press.pressed = true

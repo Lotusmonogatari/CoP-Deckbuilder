@@ -14,6 +14,16 @@ extends Control
 ##     portrait.kind = PlaceholderArt.Kind.CHARACTER
 ##     portrait.art_id = "OP03"
 ##     portrait.expression = "neutral"
+##
+## A drawn BACKGROUND can be moved (Cameron, 2026-10-30): it fills its box
+## (cover: nothing bare, the overflow cropped), and the player can drag it to
+## see the cropped part (Image Scroll) and it drifts as the phone tilts
+## (Image Pan); both switches live in Administration (Layout keeps them).
+## That covers every room, the Office, visitors, votes, transitions and event
+## pictures alike. A drag counts only when the press lands on nothing in front
+## of the picture that takes the mouse (a button, a list, an open panel), so
+## buttons, lists and the hand behave exactly as before. Characters, cards
+## and icons never move. The arithmetic is PanMath (tested).
 
 enum Kind { CHARACTER, CARD, BACKGROUND, ICON }
 
@@ -54,14 +64,36 @@ enum Kind { CHARACTER, CARD, BACKGROUND, ICON }
 		show_label = value
 		_refresh()
 
+## Lists leave alone a press on a picture in this group (DragScroll), so a
+## picture inside a scrolling panel can be dragged without scrolling it.
+const DRAG_GROUP := "drag_claimers"
+## How far a press must travel before it counts as dragging the picture, the
+## same as a list's (DragScroll.DRAG_START), so a tap is still a tap.
+const DRAG_START := 24.0
+## Gravity in the units the sensors report (m/s²), so a reading becomes g.
+const STANDARD_GRAVITY := 9.81
+## A reading weaker than this is no sensor at all (a desktop reports zero).
+const NO_SENSOR := 0.5
+
 var _texture_rect: TextureRect
 var _label: Label
 var _is_placeholder := false
+
+## True while this is a drawn background that can be dragged and tilted.
+var _pans := false
+var _drag := Vector2.ZERO
+var _tilt := Vector2.ZERO
+var _baseline := Vector2.ZERO
+var _has_baseline := false
+var _tracking := false
+var _dragging := false
+var _press_at := Vector2.ZERO
 
 
 func _ready() -> void:
 	_build()
 	_refresh()
+	resized.connect(_place)
 
 
 func _build() -> void:
@@ -108,6 +140,7 @@ func _refresh() -> void:
 	if art_id.is_empty():
 		_texture_rect.texture = null
 		_label.text = ""
+		_set_panning(false)
 		return
 
 	_is_placeholder = not ArtLoader.exists(_found_path())
@@ -131,6 +164,117 @@ func _refresh() -> void:
 
 	_label.visible = _is_placeholder and show_label
 	_label.text = _label_text() if _is_placeholder else ""
+	_set_panning(kind == Kind.BACKGROUND and not _is_placeholder
+		and _texture_rect.texture != null and not Engine.is_editor_hint())
+
+
+## Switches between a fixed picture and one that can be dragged and tilted.
+## A new picture always starts centred.
+func _set_panning(on: bool) -> void:
+	_drag = Vector2.ZERO
+	_tilt = Vector2.ZERO
+	_has_baseline = false
+	_tracking = false
+	_dragging = false
+	_pans = on
+	# The picture hangs past the box on the side it can move towards; only
+	# the box itself is ever drawn.
+	clip_contents = on
+	set_process(on)
+	set_process_input(on)
+	if on:
+		_texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
+		_texture_rect.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		if not is_in_group(DRAG_GROUP):
+			add_to_group(DRAG_GROUP)
+		_place()
+	else:
+		if is_in_group(DRAG_GROUP):
+			remove_from_group(DRAG_GROUP)
+		_texture_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+
+
+## How far the shown window has moved from the centre of the picture, drag
+## and tilt together (PanMath's offset: +x shows more of the right).
+func offset() -> Vector2:
+	return PanMath.clamp_offset(_drag + _tilt, _room())
+
+
+func _room() -> Vector2:
+	if not _pans or _texture_rect.texture == null:
+		return Vector2.ZERO
+	return PanMath.spare(size, _texture_rect.texture.get_size())
+
+
+func _place() -> void:
+	if not _pans or _texture_rect == null or _texture_rect.texture == null:
+		return
+	var picture := _texture_rect.texture.get_size()
+	var scaled := picture * PanMath.cover_scale(size, picture)
+	_drag = PanMath.clamp_offset(_drag, _room())
+	_texture_rect.size = scaled
+	_texture_rect.position = PanMath.picture_position(size, scaled, offset())
+
+
+func _input(event: InputEvent) -> void:
+	if not _pans or not Layout.image_scroll_enabled or not is_visible_in_tree():
+		_tracking = false
+		_dragging = false
+		return
+	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+		var button := event as InputEventMouseButton
+		# The press itself is never taken: a tap still reaches whatever it
+		# landed on.
+		_tracking = button.pressed and get_global_rect().has_point(button.position) \
+			and not _covered_at(button.position)
+		_dragging = false
+		_press_at = button.position
+		return
+	if event is InputEventMouseMotion and _tracking:
+		var motion := event as InputEventMouseMotion
+		if not _dragging:
+			if motion.position.distance_to(_press_at) < DRAG_START:
+				return
+			_dragging = true
+		# The window moves the way the finger does (drag right to see more of
+		# the right), the house convention for lists too.
+		_drag += motion.relative
+		_place()
+		get_viewport().set_input_as_handled()
+
+
+## True when something in front of this picture takes the mouse at `point`:
+## a button, a list, a card, an open panel. Only a press on bare picture (or
+## on a label or layout box, which let the mouse through) drags it.
+func _covered_at(point: Vector2) -> bool:
+	for node in get_tree().root.find_children("*", "Control", true, false):
+		var control := node as Control
+		if control == self or control.mouse_filter != Control.MOUSE_FILTER_STOP \
+				or not control.is_visible_in_tree() or control.is_ancestor_of(self) \
+				or not control.get_global_rect().has_point(point):
+			continue
+		if is_ancestor_of(control) or control.is_greater_than(self):
+			return true
+	return false
+
+
+func _process(delta: float) -> void:
+	var target := Vector2.ZERO
+	if Layout.image_pan_enabled:
+		var reading := Input.get_gravity()
+		if reading.length() < NO_SENSOR:
+			reading = Input.get_accelerometer()
+		if reading.length() >= NO_SENSOR:
+			if not _has_baseline:
+				_baseline = Vector2(reading.x, reading.y)
+				_has_baseline = true
+			var tilt := (Vector2(reading.x, reading.y) - _baseline) / STANDARD_GRAVITY
+			target = PanMath.tilt_offset(Vector2(tilt.x, -tilt.y),
+				float(DataDB.balance.get("image_pan_tilt_strength", 2.5)), _room())
+	if _tilt.is_equal_approx(target):
+		return
+	_tilt = PanMath.follow(_tilt, target, float(DataDB.balance.get("image_pan_follow_speed", 6)), delta)
+	_place()
 
 
 ## The drawing actually shown, after fallbacks, or "" for none.

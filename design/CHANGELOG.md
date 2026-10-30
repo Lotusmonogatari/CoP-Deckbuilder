@@ -2614,3 +2614,10 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 - **Switches:** Administration has "Image Scroll: On/Off" and "Image Pan: On/Off", remembered in the player's settings file with the text size (`Layout`). Starting values are `rules.json`'s `image_scroll_default` and `image_pan_default` (both on).
 - **Levers and text:** Balance rows "Image pan: Tilt strength" (2.5) and "Image pan: Follow speed" (6); Text rows `office.image_scroll`, `office.image_pan`, `settings.on`, `settings.off`.
 - **Tests:** `test_pan_math.gd` (the arithmetic in `scripts/rules/PanMath.gd`) and the click test `image_pan_test.tscn` (a real drag moves the picture and not the panel; both switches flip from Administration; with Image Scroll off the drag does nothing).
+
+## Image Scroll and Image Pan on every background (2026-10-30, Cameron)
+- The drag and tilt moved from the event-only `PanPicture` (removed) into `PlaceholderArt` itself, so every drawn BACKGROUND moves: battle rooms, the Office, Office Hours visitors, the Floor Vote, transitions, Level Intro, member visits and lobbyist trades, the title screen, hosted gatherings and event pictures. Characters, cards and icons never move.
+- A drag counts only when the press lands on bare picture: `PlaceholderArt._covered_at()` refuses a press with a button, list, card or open panel in front (any visible control that takes the mouse and is drawn in front). A press is never taken, so taps behave as before; a drag starts after the same 24 px a list needs. `DragScroll` now leaves a press alone only for a picture inside its own list.
+- A moving picture clips to its own box (`clip_contents`); `aspect_matrix_test` skips controls inside a clipping box, since whatever hangs past it is never drawn.
+- `image_pan_test` also drags bare Office background, and checks the Office behind an open event does not move.
+- One full gate failed once on `mash_test` (card double-drag) and passed on the rerun; it passed twice on its own. Watch for it.

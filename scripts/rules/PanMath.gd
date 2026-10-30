@@ -2,7 +2,7 @@ class_name PanMath
 extends RefCounted
 ## The arithmetic behind a picture the player can drag (Image Scroll) or that
 ## drifts as the phone tilts (Image Pan) -- Cameron, 2026-10-30. Pure: no
-## nodes and no input, so the tests can prove it; PanPicture does the drawing.
+## nodes and no input, so the tests can prove it; PlaceholderArt does the drawing.
 ##
 ## An OFFSET is how far the visible window has moved from the centred
 ## position, in pixels: positive x shows more of the right of the picture,

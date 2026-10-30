@@ -513,8 +513,12 @@ func _show_gathering(result: Dictionary) -> void:
 ## A background picture as a row in a panel; a missing picture shows a
 ## placeholder labelled with its asset ID.
 func _picture_row(art_id: String) -> Control:
-	# A drawn picture can be dragged and tilted (PanPicture, 2026-10-30).
-	return PanPicture.make(art_id, float(DataDB.balance.get("event_picture_height", 640)))
+	var art := PlaceholderArt.new()
+	art.name = "Picture_" + art_id
+	art.kind = PlaceholderArt.Kind.BACKGROUND
+	art.art_id = art_id
+	art.custom_minimum_size = Vector2(0, int(DataDB.balance.get("event_picture_height", 640)))
+	return art
 
 
 ## A dated event whose day has come opens at once (2026-10-23), the first time

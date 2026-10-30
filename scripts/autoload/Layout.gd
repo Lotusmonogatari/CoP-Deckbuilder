@@ -20,7 +20,7 @@ const SETTINGS_PATH := "user://settings.json"
 var text_size_setting := TextScale.NORMAL
 ## Event pictures (2026-10-30): drag one to see the rest of it (Image Scroll),
 ## and let it drift as the phone tilts (Image Pan). Starting values come from
-## rules.json; PanPicture reads these.
+## rules.json; PlaceholderArt reads these for every drawn background.
 var image_scroll_enabled := true
 var image_pan_enabled := true
 ## The theme's own font sizes as authored, so scaling is never compounded.

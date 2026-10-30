@@ -149,10 +149,10 @@ func _cancel_press() -> void:
 
 
 ## True when the press lands on something that handles its own drag (an
-## event picture with Image Scroll on, PanPicture.DRAG_GROUP).
+## drawn picture inside this list, PlaceholderArt.DRAG_GROUP).
 func _claimed_at(point: Vector2) -> bool:
 	for node in get_tree().get_nodes_in_group("drag_claimers"):
-		if node is Control and (node as Control).is_visible_in_tree() \
+		if node is Control and _scroll.is_ancestor_of(node) and (node as Control).is_visible_in_tree() \
 				and (node as Control).get_global_rect().has_point(point):
 			return true
 	return false

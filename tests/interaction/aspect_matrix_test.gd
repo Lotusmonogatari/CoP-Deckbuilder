@@ -89,7 +89,8 @@ func _check(screen_name: String, path: String, size: Vector2i, shots: String) ->
 	var label := "%s at %dx%d" % [screen_name, size.x, size.y]
 	var limit := float(size.x) + 1.0
 	for control: Control in scene.find_children("*", "Control", true, false):
-		if not control.is_visible_in_tree() or _scrolls_sideways(control, scene):
+		if not control.is_visible_in_tree() or _scrolls_sideways(control, scene) \
+				or _clipped(control, scene):
 			continue
 		var rect := control.get_global_rect()
 		if rect.size.x <= 0.0 or rect.size.y <= 0.0:
@@ -116,6 +117,18 @@ func _check(screen_name: String, path: String, size: Vector2i, shots: String) ->
 
 
 ## True for a control that sits inside a scroll container meant to scroll sideways.
+## Inside a box that clips its contents (a background picture that can be
+## dragged, 2026-10-30): whatever hangs past that box is never drawn, and the
+## box itself is checked on its own.
+func _clipped(control: Control, root: Node) -> bool:
+	var node: Node = control.get_parent()
+	while node != null and node != root:
+		if node is Control and (node as Control).clip_contents:
+			return true
+		node = node.get_parent()
+	return false
+
+
 func _scrolls_sideways(control: Control, root: Node) -> bool:
 	var node: Node = control
 	while node != null and node != root:
