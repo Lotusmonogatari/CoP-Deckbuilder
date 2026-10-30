@@ -5,20 +5,20 @@
     "name": "Hana Takahashi",
     "starting_tier": 0,
     "highest_tier": 0,
-    "hiring_cost_yen": 10000,
+    "hiring_cost_yen": 40000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 1000,
+    "firing_cost_yen": 4000,
     "tier_0_reward": [
       {
-        "delta": 1,
-        "target": "SG03"
+        "delta": 2,
+        "target": "BO21"
       }
     ],
     "tier_1_reward": null,
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Hana volunteered two winters at a Sapporo elder-care home, then rewrote its meal-subsidy application herself. It got funded.",
+    "role_flavor": "Welfare and elder-care programs are her beat as a policy researcher."
   },
   {
     "staff_id": "SF02",
@@ -26,29 +26,29 @@
     "name": "Yui Kobayashi",
     "starting_tier": 0,
     "highest_tier": 1,
-    "hiring_cost_yen": 25000,
-    "upgrade_cost_0_to_1_yen": 50000,
+    "hiring_cost_yen": 30000,
+    "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 2500,
+    "firing_cost_yen": 3000,
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "BO05"
+        "target": "BO23"
       }
     ],
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "BO04"
+        "target": "BO24"
       },
       {
         "delta": 2,
-        "target": "SG01"
+        "target": "BO16"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Yui caught a ¥40 million double-count in last year’s budget draft. The Taxpayers’ Alliance still quotes her memo.",
+    "role_flavor": "Budget analyst covering taxes, spending, and economic growth."
   },
   {
     "staff_id": "SF03",
@@ -56,25 +56,29 @@
     "name": "Sheen Donalds",
     "starting_tier": 0,
     "highest_tier": 1,
-    "hiring_cost_yen": 25000,
-    "upgrade_cost_0_to_1_yen": 50000,
+    "hiring_cost_yen": 30000,
+    "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 2500,
+    "firing_cost_yen": 3000,
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "BO05"
+        "target": "BO10"
       }
     ],
     "tier_1_reward": [
       {
-        "delta": 4,
-        "target": "BO05"
+        "delta": 2,
+        "target": "BO10"
+      },
+      {
+        "delta": 2,
+        "target": "BO16"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Sheen grew up on a Tokachi dairy farm and wired its milking barn with sensors before finishing high school.",
+    "role_flavor": "On farming and agritech, he’s the office’s go-to researcher."
   },
   {
     "staff_id": "SF04",
@@ -89,35 +93,35 @@
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "SG05"
       }
     ],
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "SG05"
       },
       {
         "delta": 2,
-        "target": "SG05"
+        "target": "BO21"
       }
     ],
     "tier_2_reward": [
       {
         "delta": 2,
-        "target": "SG03"
-      },
-      {
-        "delta": 2,
         "target": "SG05"
       },
       {
         "delta": 2,
-        "target": "BO02"
+        "target": "BO21"
+      },
+      {
+        "delta": 2,
+        "target": "BO17"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Marcus spent six years as a Welfare Ministry clerk. He knows which deputy director actually reads the briefing binders.",
+    "role_flavor": "Liaison to the ministries and members of Parliament."
   },
   {
     "staff_id": "SF05",
@@ -132,13 +136,17 @@
     "tier_0_reward": null,
     "tier_1_reward": [
       {
-        "delta": 3,
-        "target": "SG04"
+        "delta": 2,
+        "target": "BO23"
+      },
+      {
+        "delta": 2,
+        "target": "BO24"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Stephen flagged his Hakodate bank’s thin loan-loss reserves to regulators, then left. He’ll tell you the story twice.",
+    "role_flavor": "Tax and banking regulation analyst, by way of a regional bank."
   },
   {
     "staff_id": "SF06",
@@ -163,7 +171,7 @@
       },
       {
         "delta": 2,
-        "target": "SG02"
+        "target": "BO32"
       }
     ],
     "tier_2_reward": [
@@ -173,15 +181,15 @@
       },
       {
         "delta": 2,
-        "target": "SG02"
+        "target": "BO32"
       },
       {
         "delta": 2,
-        "target": "BO01"
+        "target": "BO17"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Hiromi caught notable gaffes in the party's original 2018 election platform overnight, and cleared out all copies distributed before the media caught on.",
+    "role_flavor": "Party platforms and candidate vetting fall to this policy adviser."
   },
   {
     "staff_id": "SF07",
@@ -197,25 +205,25 @@
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "BO09"
+        "target": "BO05"
       },
       {
         "delta": 2,
-        "target": "SG04"
+        "target": "BO09"
       }
     ],
     "tier_2_reward": [
       {
         "delta": 2,
-        "target": "BO09"
+        "target": "BO05"
       },
       {
         "delta": 4,
-        "target": "SG04"
+        "target": "BO09"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Ako brokered the Muroran steelworks wage deal by getting union and management to share one lunch table.",
+    "role_flavor": "A negotiator who works both sides of labor and business."
   },
   {
     "staff_id": "SF08",
@@ -223,31 +231,31 @@
     "name": "Aoi Suzuki",
     "starting_tier": 0,
     "highest_tier": 0,
-    "hiring_cost_yen": 10000,
+    "hiring_cost_yen": 40000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 1000,
+    "firing_cost_yen": 4000,
     "tier_0_reward": [
       {
-        "delta": 1,
-        "target": "SG01"
+        "delta": 2,
+        "target": "BO11"
       }
     ],
     "tier_1_reward": null,
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Aoi ran her university’s campus radio show, and her interview with the education minister went viral among students.",
+    "role_flavor": "Press aide for youth and student media."
   },
   {
     "staff_id": "SF09",
     "role": "Media Spokesperson",
-    "name": "Suzu Kobayashi",
+    "name": "Isela Kobayashi",
     "starting_tier": 0,
     "highest_tier": 1,
-    "hiring_cost_yen": 25000,
-    "upgrade_cost_0_to_1_yen": 50000,
+    "hiring_cost_yen": 30000,
+    "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 2500,
+    "firing_cost_yen": 3000,
     "tier_0_reward": [
       {
         "delta": 2,
@@ -257,16 +265,16 @@
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "BO01"
+        "target": "BO11"
       },
       {
         "delta": 2,
-        "target": "SG01"
+        "target": "BO26"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Isela designed the Sapporo Daily’s monthly opinion poll; it called several 2018 single member district seats within two points.",
+    "role_flavor": "Polls and public opinion are what this media strategist tracks."
   },
   {
     "staff_id": "SF10",
@@ -274,25 +282,29 @@
     "name": "Himari Sato",
     "starting_tier": 0,
     "highest_tier": 1,
-    "hiring_cost_yen": 25000,
-    "upgrade_cost_0_to_1_yen": 50000,
+    "hiring_cost_yen": 30000,
+    "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 2500,
+    "firing_cost_yen": 3000,
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "BO08"
+        "target": "BO13"
       }
     ],
     "tier_1_reward": [
       {
-        "delta": 4,
-        "target": "BO08"
+        "delta": 2,
+        "target": "BO13"
+      },
+      {
+        "delta": 2,
+        "target": "BO29"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Himari’s photo essay on Nibutani woodcarvers filled the Artisans Guild’s gallery and doubled its apprenticeship applications.",
+    "role_flavor": "For arts, crafts, and Ainu culture coverage, she’s the spokesperson."
   },
   {
     "staff_id": "SF11",
@@ -317,7 +329,7 @@
       },
       {
         "delta": 2,
-        "target": "SG04"
+        "target": "BO08"
       }
     ],
     "tier_2_reward": [
@@ -327,15 +339,15 @@
       },
       {
         "delta": 2,
-        "target": "SG04"
+        "target": "BO08"
       },
       {
         "delta": 2,
-        "target": "BO08"
+        "target": "BO26"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Alejandro covered the Kushiro food-recall scandal as a reporter. Half the press gallery still owes him a favor.",
+    "role_flavor": "Handles the reporters and the press gallery as lead spokesman."
   },
   {
     "staff_id": "SF12",
@@ -350,13 +362,17 @@
     "tier_0_reward": null,
     "tier_1_reward": [
       {
-        "delta": 3,
-        "target": "SG01"
+        "delta": 2,
+        "target": "BO15"
+      },
+      {
+        "delta": 2,
+        "target": "BO22"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Santiago wrote the speech for the Veterans’ Association’s 75th memorial at Asahikawa; three ministers asked for copies.",
+    "role_flavor": "Veterans and traditional-values messaging run through this speechwriter."
   },
   {
     "staff_id": "SF13",
@@ -371,35 +387,35 @@
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "BO08"
+        "target": "BO01"
       }
     ],
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "BO08"
+        "target": "BO01"
       },
       {
         "delta": 2,
-        "target": "SG02"
+        "target": "BO31"
       }
     ],
     "tier_2_reward": [
       {
         "delta": 2,
-        "target": "BO08"
+        "target": "BO01"
+      },
+      {
+        "delta": 2,
+        "target": "BO31"
       },
       {
         "delta": 2,
         "target": "SG02"
-      },
-      {
-        "delta": 2,
-        "target": "BO01"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Kenta wrote the slogan on every party poster in the 2015 election, and activists still chant it at rallies.",
+    "role_flavor": "Communications lead for party messaging and activist outreach."
   },
   {
     "staff_id": "SF14",
@@ -415,25 +431,25 @@
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "BO08"
+        "target": "BO19"
       },
       {
         "delta": 2,
-        "target": "SG04"
+        "target": "BO20"
       }
     ],
     "tier_2_reward": [
       {
         "delta": 2,
-        "target": "BO08"
+        "target": "BO19"
       },
       {
         "delta": 4,
-        "target": "SG04"
+        "target": "BO20"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Honoka organized a joint temple-and-shrine relief kitchen after the a recent earthquake; both associations still call her first.",
+    "role_flavor": "Faith outreach to temples and shrines is her portfolio as a spokesperson."
   },
   {
     "staff_id": "SF15",
@@ -441,20 +457,20 @@
     "name": "Miharu Daitani",
     "starting_tier": 0,
     "highest_tier": 0,
-    "hiring_cost_yen": 10000,
+    "hiring_cost_yen": 40000,
     "upgrade_cost_0_to_1_yen": null,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 1000,
+    "firing_cost_yen": 4000,
     "tier_0_reward": [
       {
-        "delta": 1,
-        "target": "BO03"
+        "delta": 2,
+        "target": "BO18"
       }
     ],
     "tier_1_reward": null,
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Miharu knocked on 4,000 doors during her first campaign and remembers which households keep a dog.",
+    "role_flavor": "Field organizer running door-to-door voter contact."
   },
   {
     "staff_id": "SF16",
@@ -462,29 +478,29 @@
     "name": "Hiroki Shitamachi",
     "starting_tier": 0,
     "highest_tier": 1,
-    "hiring_cost_yen": 25000,
-    "upgrade_cost_0_to_1_yen": 50000,
+    "hiring_cost_yen": 30000,
+    "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 2500,
+    "firing_cost_yen": 3000,
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "BO03"
+        "target": "BO14"
       }
     ],
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "BO04"
+        "target": "BO27"
       },
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "BO12"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Hiroki got the night bus route to Sapporo’s Higashi ward restored by riding it with the transit director.",
+    "role_flavor": "Commuters, families, and city wards rely on this district caseworker."
   },
   {
     "staff_id": "SF17",
@@ -492,25 +508,29 @@
     "name": "Grant Stark",
     "starting_tier": 0,
     "highest_tier": 1,
-    "hiring_cost_yen": 25000,
-    "upgrade_cost_0_to_1_yen": 50000,
+    "hiring_cost_yen": 30000,
+    "upgrade_cost_0_to_1_yen": 60000,
     "upgrade_cost_1_to_2_yen": null,
-    "firing_cost_yen": 2500,
+    "firing_cost_yen": 3000,
     "tier_0_reward": [
       {
         "delta": 2,
-        "target": "BO03"
+        "target": "BO07"
       }
     ],
     "tier_1_reward": [
       {
-        "delta": 4,
-        "target": "BO03"
+        "delta": 2,
+        "target": "BO07"
+      },
+      {
+        "delta": 2,
+        "target": "BO30"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Grant crewed a Nemuro kelp boat for three seasons, then won the fisheries cooperative a new cold-storage grant.",
+    "role_flavor": "In the fishing ports and farm towns, he’s the district’s representative."
   },
   {
     "staff_id": "SF18",
@@ -549,16 +569,16 @@
       },
       {
         "delta": 2,
-        "target": "BO04"
+        "target": "BO27"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Leo turned a vacant Aomori lot into a community garden, and its volunteers became the ward’s first neighborhood association.",
+    "role_flavor": "Neighborhood associations owe their start to this community organizer."
   },
   {
     "staff_id": "SF19",
     "role": "District Representative",
-    "name": "Lisa Namamura",
+    "name": "Kanima Namamura",
     "starting_tier": 1,
     "highest_tier": 1,
     "hiring_cost_yen": 75000,
@@ -568,13 +588,17 @@
     "tier_0_reward": null,
     "tier_1_reward": [
       {
-        "delta": 3,
-        "target": "SG03"
+        "delta": 2,
+        "target": "BO28"
+      },
+      {
+        "delta": 2,
+        "target": "BO30"
       }
     ],
     "tier_2_reward": null,
-    "biography": null,
-    "role_flavor": null
+    "biography": "Kanima drove the Shiraoi elders to every council hearing on the land-use plan until it included Ainu place names.",
+    "role_flavor": "Local liaison to rural towns and Ainu communities."
   },
   {
     "staff_id": "SF20",
@@ -599,7 +623,7 @@
       },
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "BO03"
       }
     ],
     "tier_2_reward": [
@@ -609,20 +633,20 @@
       },
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "BO03"
       },
       {
         "delta": 2,
-        "target": "BO03"
+        "target": "BO18"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Haruka managed three mayoral campaigns in Otaru and won all three; the Kōenkai treasurer calls her before every fundraiser.",
+    "role_flavor": "Works the mayors and the Kōenkai as the district’s political operative."
   },
   {
     "staff_id": "SF21",
     "role": "District Representative",
-    "name": "Yuka Inamu",
+    "name": "Ari Inamu",
     "starting_tier": 1,
     "highest_tier": 2,
     "hiring_cost_yen": 100000,
@@ -633,24 +657,24 @@
     "tier_1_reward": [
       {
         "delta": 2,
-        "target": "BO14"
+        "target": "BO25"
       },
       {
         "delta": 2,
-        "target": "SG03"
+        "target": "SG04"
       }
     ],
     "tier_2_reward": [
       {
         "delta": 2,
-        "target": "BO14"
+        "target": "BO25"
       },
       {
         "delta": 4,
-        "target": "SG03"
+        "target": "SG04"
       }
     ],
-    "biography": null,
-    "role_flavor": null
+    "biography": "Ari ran her family’s Obihiro bakery for a decade and recruited forty shop owners into the Small Business Association.",
+    "role_flavor": "Small business owners and backers have her as their district contact."
   }
 ]

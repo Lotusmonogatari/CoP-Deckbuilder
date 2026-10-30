@@ -2600,3 +2600,7 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 
 ## Staff rank rewards: the 2026-10-30 edit was reversed (Cameron)
 - Cameron's rule is that each rank's reward list is a stacked package: a higher rank lists the lower ranks' rewards and adds its own. The edit above that stripped the repeated lines was a misreading and is undone: the Staff tab cells, the test and the Profile display are back to their earlier state. Not changed: `GameState._apply_staff_reward()` still pays the newly reached rank's whole list on an upgrade, so an upgrade pays the lower rank's lines again; Cameron has not said whether that is intended.
+
+## Staff biographies and role flavor text now reach the profile (2026-10-30, Cameron)
+- The Staff Profile screen already draws the Biography and Role Flavor Text columns; they were blank in the checked-in workbook. Cameron's new workbook upload fills both for all 21 staff (and retunes staff costs and rewards), so the merged export now carries them. His file also arrived with stale calc-chain entries (Excel "repair" check), cleared by a plain `wbx` save.
+- `test_game_state_staff.gd` and `test_staff_profile.gd` read the staff rewards from the data instead of typing the old numbers, so a retune does not break them.

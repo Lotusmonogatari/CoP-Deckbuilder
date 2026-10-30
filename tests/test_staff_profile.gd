@@ -34,16 +34,18 @@ func test_someone_who_starts_at_tier_one_has_no_tier_zero() -> void:
 
 
 func test_a_bonus_line_names_the_organisation_and_the_audience_in_words() -> void:
-	# SF02 tier 0 gives +2 with BO05; tier 1 adds an SG01 audience bonus.
+	# SF04 tier 0 is an audience (SGxx) line and SF02 tier 0 an organisation
+	# (BOxx) line; the names are read from the data so a retune keeps this true.
+	var org: Dictionary = (DataDB.get_staff("SF02")["tier_0_reward"] as Array)[0]
 	var first := _tiers("SF02")[0]["lines"] as Array
 	assert_eq(first.size(), 1)
 	assert_string_contains(first[0], "+2")
-	assert_string_contains(first[0], str(DataDB.get_booster("BO05").get("name_en")))
-	assert_false((first[0] as String).contains("BO05"), "no raw ID reaches the player")
+	assert_string_contains(first[0], str(DataDB.get_booster(str(org["target"])).get("name_en")))
+	assert_false((first[0] as String).contains(str(org["target"])), "no raw ID reaches the player")
 
-	var second := _tiers("SF02")[1]["lines"] as Array
-	var joined := " ".join(second)
-	assert_string_contains(joined, str(DataDB.get_segment("SG01").get("name_en")))
+	var aud: Dictionary = (DataDB.get_staff("SF04")["tier_0_reward"] as Array)[0]
+	var audience := _tiers("SF04")[0]["lines"] as Array
+	assert_string_contains(" ".join(audience), str(DataDB.get_segment(str(aud["target"])).get("name_en")))
 
 
 func test_a_tier_with_no_reward_says_so_rather_than_showing_nothing() -> void:

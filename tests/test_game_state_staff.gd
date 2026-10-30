@@ -95,27 +95,34 @@ func test_hiring_without_enough_funds_is_refused_and_spends_nothing() -> void:
 # ---------------------------------------------------------------------------
 
 func test_hiring_applies_a_boxx_reward_to_booster_standing() -> void:
-	# SF02's tier_0_reward is [{"delta": 2, "target": "BO05"}] in the real data.
-	var before := int(GameState.booster_standing.get("BO05", 50))
+	# SF02's tier 0 reward is one BOxx line in the real data; read it, never
+	# type it here, so a workbook retune does not break the test.
+	var reward: Dictionary = (DataDB.get_staff("SF02")["tier_0_reward"] as Array)[0]
+	var target := str(reward["target"])
+	var before := int(GameState.booster_standing.get(target, 50))
 	GameState.meta["Funds"] = 999999
 
 	GameState.hire_staff("SF02")
 
-	assert_eq(int(GameState.booster_standing.get("BO05")), before + 2)
+	assert_eq(int(GameState.booster_standing.get(target)), before + int(reward["delta"]))
 
 
 func test_hiring_applies_an_sgxx_reward_to_segment_favorability() -> void:
-	# SF01's tier_0_reward is [{"delta": 1, "target": "SG03"}] — no BOxx at
-	# all, and should move segment_favorability without touching any booster.
+	# SF04's tier 0 reward is a single SGxx line (no BOxx at all) in the real
+	# data; it should move segment_favorability without touching any booster.
+	var reward: Dictionary = (DataDB.get_staff("SF04")["tier_0_reward"] as Array)[0]
+	var target := str(reward["target"])
+	var delta := int(reward["delta"])
+	assert_true(target.begins_with("SG"), "SF04 is the SGxx-only example")
 	var standing_before := GameState.booster_standing.duplicate(true)
-	var before := int(GameState.segment_favorability.get("SG03", 50))
+	var before := int(GameState.segment_favorability.get(target, 50))
 	GameState.meta["Funds"] = 999999
 
-	var refusal := GameState.hire_staff("SF01")
+	var refusal := GameState.hire_staff("SF04")
 
 	assert_eq(refusal, "")
-	assert_eq(int(GameState.segment_favorability.get("SG03")), before + 1)
-	assert_eq(int(GameState.last_segment_change.get("SG03")), 1)
+	assert_eq(int(GameState.segment_favorability.get(target)), before + delta)
+	assert_eq(int(GameState.last_segment_change.get(target)), delta)
 	assert_eq(GameState.booster_standing, standing_before,
 		"an SGxx-only reward touches no booster")
 
@@ -214,13 +221,15 @@ func test_firing_does_not_claw_back_the_reward_already_earned() -> void:
 	# SF02's tier_0_reward is [{"delta": 2, "target": "BO05"}] — Cameron's
 	# decision, 2026-09-25 (design/proposals/staff_firing.md): firing never
 	# refunds Funds spent or the standing/favourability already granted.
-	var before := int(GameState.booster_standing.get("BO05", 50))
+	var reward: Dictionary = (DataDB.get_staff("SF02")["tier_0_reward"] as Array)[0]
+	var target := str(reward["target"])
+	var before := int(GameState.booster_standing.get(target, 50))
 	var role := str(DataDB.get_staff("SF02").get("role"))
 	GameState.meta["Funds"] = 999999
 	GameState.hire_staff("SF02")
 	GameState.fire_staff(role)
 
-	assert_eq(int(GameState.booster_standing.get("BO05")), before + 2,
+	assert_eq(int(GameState.booster_standing.get(target)), before + int(reward["delta"]),
 		"the reward from hiring SF02 stands, even after firing them")
 
 
