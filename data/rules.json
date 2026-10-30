@@ -295,5 +295,33 @@
       "true": "Image Pan starts on.",
       "false": "Image Pan starts off (gentler for anyone bothered by motion)."
     }
+  },
+  "seasons": {
+    "value": {
+      "Spring": [
+        3,
+        4,
+        5
+      ],
+      "Summer": [
+        6,
+        7,
+        8
+      ],
+      "Autumn": [
+        9,
+        10,
+        11
+      ],
+      "Winter": [
+        12,
+        1,
+        2
+      ]
+    },
+    "question": "Which calendar months make up each season? A level or event with a Seasons cell (Levels and Events tabs) only shows in the months of the seasons it names.",
+    "means": {
+      "value": "Season name -> month numbers (1 = January). The names are what the Seasons cells use. First draft: the usual three-month seasons; Yezo's winter may want to run longer."
+    }
   }
 }

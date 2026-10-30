@@ -5899,5 +5899,33 @@
     "english": "Off",
     "placeholders": null,
     "notes": null
+  },
+  {
+    "key": "briefing.level_hours",
+    "where": "Level briefing, under the title: how long the whole level takes on the calendar",
+    "english": "This level takes {count} hours.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "briefing.level_hours.one",
+    "where": "Level briefing, the same line for exactly one hour",
+    "english": "This level takes {count} hour.",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "briefing.stage_hours",
+    "where": "Level briefing, under each stage's name: how long that stage takes",
+    "english": "{count} hours",
+    "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "briefing.stage_hours.one",
+    "where": "Level briefing, the same line for exactly one hour",
+    "english": "{count} hour",
+    "placeholders": "count",
+    "notes": null
   }
 ]

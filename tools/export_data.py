@@ -149,7 +149,11 @@ SHEETS = {
             ("Region", "region", "str"),
             ("District Name", "district_name", "str"),
             ("District Type", "district_type", "str"),
+            # 2026-10-30: what a new run with this protagonist starts holding,
+            # "SH21 x1; SH15 x2" (fold_player checks the items exist).
+            ("Starting Items", "starting_items", "str"),
         ],
+        "optional": ["Starting Items"],
     },
     # The Office's own dynamic flavor lines (design proposal, 2026-09-26):
     # a notice shows when its one condition (a staff role hired/not-hired, or
@@ -1196,7 +1200,11 @@ SHEETS = {
             ("Needs Dues Owed", "needs_dues_owed", "str"),
             ("On Date", "on_date", "str"),
             ("Speaker Title", "speaker_title", "str"),
+            # 2026-10-30: the seasons an event can be arranged or arrive in
+            # (rules.json "seasons"; blank = all year).
+            ("Seasons", "seasons", "id_list"),
         ],
+        "optional": ["Seasons"],
     },
     "Event Choices": {
         "out": "event_choices.json",
@@ -1440,7 +1448,11 @@ SHEETS = {
             # 2026-10-18: Town Hall or Steering Committee marks a Special
             # Level (GameState special levels); blank for every other level.
             ("Special Trigger", "special_trigger", "str"),
+            # 2026-10-30: the seasons a level shows in, semicolon-separated
+            # names from rules.json's "seasons" (blank = all year).
+            ("Seasons", "seasons", "id_list"),
         ],
+        "optional": ["Seasons"],
     },
     # 3 roles (Policy Research Assistant, Media Spokesperson, District
     # Representative) x 7 starting/upgrade tier configs each. The Reward
@@ -1490,7 +1502,8 @@ SHEETS = {
                      "Bonus 1 Role", "Bonus 1 Min Tier", "Bonus 1 Amount",
                      "Bonus 2 Role", "Bonus 2 Min Tier", "Bonus 2 Amount",
                      "Bonus 3 Role", "Bonus 3 Min Tier", "Bonus 3 Amount", "Duration Units", "Card Tier",
-                     "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase"],
+                     "Level Tier", "Unlocks Recruitment Tier", "Funds Cap Increase",
+                     "In Marketplace (Yes/No)"],
         "columns": [
             ("Item ID", "item_id", "id"),
             ("Item Name", "name", "str"),
@@ -1581,6 +1594,9 @@ SHEETS = {
             # the Office starts a free Rhetoric Training draw at this tier
             # (no price, same looks and Pass rules). Blank on every other row.
             ("Free Card Tier", "free_card_tier", "int"),
+            # 2026-10-30: "No" keeps an item out of the Marketplace's buy list
+            # (it can still be given and used); blank = Yes.
+            ("In Marketplace (Yes/No)", "in_marketplace", "str"),
         ],
     },
     # 2026-09-25: replaces the old 2-choice/raw-delta sketch (CLAUDE.md's
@@ -3123,6 +3139,41 @@ STANDING_NAMES = {
 }
 
 
+def _starting_items(cell, player_id, data, report):
+    """ "SH21 x1; SH15 x2" -> {"SH21": 1, "SH15": 2}. A bare ID means one."""
+    items = {}
+    shop_ids = {str(r.get("item_id")) for r in data.get("shop", [])}
+    for clause in str(cell or "").split(";"):
+        clause = clause.strip()
+        if not clause:
+            continue
+        match = re.match(r"^(SH\d+)(?:\s*[x×]\s*(\d+))?$", clause, re.IGNORECASE)
+        if not match:
+            report.error(f"Player {player_id} Starting Items", f"{clause!r} is not 'SHxx x2'")
+            continue
+        item_id = match.group(1).upper()
+        if item_id not in shop_ids:
+            report.error(f"Player {player_id} Starting Items", f"{item_id} is not a Shop item")
+            continue
+        items[item_id] = items.get(item_id, 0) + int(match.group(2) or 1)
+    return items
+
+
+def check_seasons(data, report):
+    """Every name in a Levels or Events Seasons cell must be one of rules.json's seasons."""
+    try:
+        rules = json.loads((DATA_DIR / "rules.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return
+    names = set((rules.get("seasons", {}).get("value") or {}).keys())
+    for table, key in (("levels", "level_id"), ("events", "event_id")):
+        for row in data.get(table, []):
+            for season in row.get("seasons") or []:
+                if season not in names:
+                    report.error(f"{table} {row.get(key)} Seasons",
+                                 f"{season!r} is not a season in rules.json ({', '.join(sorted(names))})")
+
+
 def fold_player(data, report):
     """The Player tab (2026-09-26 pull) becomes {"protagonists": [...]},
     with the four meta columns folded into one starting_meta dict per row —
@@ -3154,6 +3205,7 @@ def fold_player(data, report):
             "region": row["region"],
             "district_name": row["district_name"],
             "district_type": row["district_type"],
+            "starting_items": _starting_items(row.get("starting_items"), row["player_id"], data, report),
         })
     if not protagonists:
         report.error("Player", "no protagonists found")
@@ -3874,6 +3926,7 @@ def main():
     fold_event_text(data, report)
     validate(data, report)
     check_rooms(data, report)
+    check_seasons(data, report)
     check_text_keys(data, report)
     check_standing_names(data, report)
     check_wording_snapshot(data, report, accept="--accept-wording" in sys.argv)

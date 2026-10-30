@@ -15,7 +15,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV04",
@@ -33,7 +34,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV05",
@@ -51,7 +53,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV06",
@@ -69,7 +72,8 @@
     "image": "OUT_STREET_1; OUT_STREET_2; OUT_STREET_3",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV11",
@@ -87,7 +91,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV12",
@@ -105,7 +110,8 @@
     "image": "OUT_STREET_1; OUT_STREET_2; OUT_STREET_3",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV13",
@@ -123,7 +129,8 @@
     "image": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR; OUT_FESTIVAL_2_WINTER",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV14",
@@ -141,7 +148,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV15",
@@ -159,7 +167,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV16",
@@ -177,7 +186,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV17",
@@ -195,7 +205,8 @@
     "image": "OUT_COAST_BATTERY",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV18",
@@ -213,7 +224,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV19",
@@ -231,7 +243,8 @@
     "image": "OUT_SHRINE_1; OUT_SHRINE_2",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV20",
@@ -249,7 +262,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV21",
@@ -267,7 +281,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV22",
@@ -285,7 +300,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV23",
@@ -303,7 +319,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV24",
@@ -321,7 +338,8 @@
     "image": "OUT_SCHOOL_1; OUT_SCHOOL_2",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV25",
@@ -339,7 +357,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV26",
@@ -357,7 +376,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV27",
@@ -375,7 +395,8 @@
     "image": "OUT_HARBOR_1; OUT_HARBOR_2",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV31",
@@ -393,7 +414,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV32",
@@ -411,7 +433,8 @@
     "image": "OUT_NEIGHBORHOOD",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV33",
@@ -429,7 +452,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV34",
@@ -447,7 +471,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV35",
@@ -465,7 +490,8 @@
     "image": "OUT_FESTIVAL_1; OUT_FESTIVAL_2_REGULAR; OUT_FESTIVAL_2_WINTER",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV36",
@@ -483,7 +509,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV37",
@@ -501,7 +528,8 @@
     "image": "OUT_SCHOOL_1; OUT_SCHOOL_2",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV38",
@@ -519,7 +547,8 @@
     "image": "OUT_NEIGHBORHOOD",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV39",
@@ -537,7 +566,8 @@
     "image": "OUT_STREET_1; OUT_STREET_2; OUT_STREET_3",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV40",
@@ -555,7 +585,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV41",
@@ -573,7 +604,10 @@
     "image": "OUT_VILLAGE_ROAD_SNOW_1; OUT_VILLAGE_ROAD_SNOW_2",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": [
+      "Winter"
+    ]
   },
   {
     "event_id": "EV42",
@@ -591,7 +625,8 @@
     "image": "OUT_SCHOOL_1; OUT_SCHOOL_2",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV43",
@@ -609,7 +644,8 @@
     "image": "OUT_STREET_1; OUT_STREET_2; OUT_STREET_3",
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV44",
@@ -627,7 +663,8 @@
     "image": null,
     "needs_dues_owed": "Yes",
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV45",
@@ -645,7 +682,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV46",
@@ -663,7 +701,8 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": null,
-    "speaker_title": null
+    "speaker_title": null,
+    "seasons": null
   },
   {
     "event_id": "EV47",
@@ -681,6 +720,7 @@
     "image": null,
     "needs_dues_owed": null,
     "on_date": "18.10.09",
-    "speaker_title": "Prime Minister"
+    "speaker_title": "Prime Minister",
+    "seasons": null
   }
 ]

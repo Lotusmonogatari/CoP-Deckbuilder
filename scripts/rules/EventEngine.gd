@@ -75,7 +75,8 @@ static func refusal(event: Dictionary, ctx: Dictionary) -> String:
 
 
 ## The Random events that could arrive now: right time of the week, off
-## cooldown, and the player known enough (Min District/National Awareness).
+## cooldown, in season (a Seasons cell, 2026-10-30), and the player known
+## enough (Min District/National Awareness).
 static func eligible_random(events: Array, ctx: Dictionary) -> Array:
 	var found: Array = []
 	var weekend := bool(ctx.get("weekend", false))
@@ -85,6 +86,8 @@ static func eligible_random(events: Array, ctx: Dictionary) -> Array:
 		if int(event.get("weight", 0) if event.get("weight") != null else 0) <= 0:
 			continue
 		if not available_now(event, weekend) or not _cooldown_over(event, ctx):
+			continue
+		if ctx.has("month") and not Seasons.in_season(event, int(ctx["month"]), ctx.get("seasons", {})):
 			continue
 		if str(event.get("needs_dues_owed", "")) == "Yes" and int(ctx.get("dues_owed", 0)) <= 0:
 			continue

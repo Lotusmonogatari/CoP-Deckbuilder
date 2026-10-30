@@ -34,3 +34,7 @@ The stress, benchmark and playtest scripts (`stress*.sh/.gd`, `benchmark.gd`, `r
 ## Tests
 
 No test was found that covers a removed feature. The two click tests that `verify.sh` never ran (`intro_test`, `mash_test`) now run and pass, so they are not candidates either.
+
+## Added 2026-10-30 (playtest fixes)
+- Text rows no longer asked for: `briefing.against_one`, `briefing.against_many`, `briefing.reporters_ask` (the briefing no longer names opponents) and `dues.preview`, `dues.preview_owed` (the Friday dues line is gone; the Party Dues box shows it).
+- Balance lever "Starting Training Session Coupons" (now 0): replaced by the Player tab's Starting Items; the code still adds it on top.

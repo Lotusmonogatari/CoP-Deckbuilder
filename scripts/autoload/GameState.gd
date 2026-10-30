@@ -681,10 +681,17 @@ func reset_collection() -> void:
 				owned_cards.append(card_id)
 	owned_modifiers = []
 	inventory = {}
-	# A new run starts with some free Rhetoric Training draws (Balance lever).
+	# A new run starts with the protagonist's own Starting Items (the Player
+	# tab, 2026-10-30: a coupon and some drinks), plus any free Rhetoric
+	# Training draws from the older Balance lever (0 since then).
+	var starting: Variant = DataDB.player.get("starting_items")
+	if starting is Dictionary:
+		for item_id: String in starting:
+			if not DataDB.get_shop_item(item_id).is_empty():
+				inventory[item_id] = int(inventory.get(item_id, 0)) + int(starting[item_id])
 	var coupons := int(DataDB.balance.get("starting_training_session_coupons", 0))
 	if coupons > 0 and not DataDB.get_shop_item("SH21").is_empty():
-		inventory["SH21"] = coupons
+		inventory["SH21"] = int(inventory.get("SH21", 0)) + coupons
 	shop_bought_this_level = {}
 	card_draw = {}
 	pending_stage_bonuses = {}
@@ -1031,7 +1038,18 @@ func event_context() -> Dictionary:
 		"hours_left": WeekCalendar.hours_left(calendar, cfg),
 		"funds": int(meta.get("Funds", 0)), "xp": xp, "now": time_units, "last_at": event_last_at,
 		"default_cooldown": int(DataDB.balance.get("event_default_cooldown_hours", 24)),
-		"district": int(awareness.get("district", 0)), "national": int(awareness.get("national", 0)), "dues_owed": dues_balance}
+		"district": int(awareness.get("district", 0)), "national": int(awareness.get("national", 0)), "dues_owed": dues_balance,
+		"month": current_month(), "seasons": DataDB.rules.get("seasons", {})}
+
+
+## Today's calendar month, 1-12 (for seasonal levels and events).
+func current_month() -> int:
+	return int(WeekCalendar.civil_from_days(WeekCalendar.today_number(calendar, calendar_config()))[1])
+
+
+## True when a seasonal level or event (its Seasons cell) may show today.
+func in_season(row: Dictionary) -> bool:
+	return Seasons.in_season(row, current_month(), DataDB.rules.get("seasons", {}))
 
 
 func get_event(event_id: String) -> Dictionary:
@@ -1059,7 +1077,7 @@ func event_speaker(event_id: String) -> Dictionary:
 func buyable_events() -> Array:
 	var found: Array = []
 	for event: Dictionary in DataDB.events:
-		if str(event.get("trigger", "")) == "Buyable":
+		if str(event.get("trigger", "")) == "Buyable" and in_season(event):
 			found.append(event)
 	return found
 

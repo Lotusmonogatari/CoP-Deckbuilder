@@ -119,8 +119,9 @@ func _short_on_funds_flow() -> void:
 	GameState.dues_balance = 0
 	GameState.week_funds_earned = 0
 	await _open_office()
-	var label := _screen().find_child("DuesLabel", true, false) as Label
-	_expect(label != null and label.visible and label.text.contains("50,000"), "the dues line shows what is owed")
+	var label := _screen().find_child("DuesLine", true, false) as Label
+	_expect(label != null and label.visible and label.text.contains("50,000"), "the Party Dues box shows what is owed")
+	_expect(_screen().find_child("DuesLabel", true, false) == null, "no separate dues line repeats it (2026-10-30)")
 	var button := _screen().find_child("WeekButton", true, false) as Button
 	button.pressed.emit()
 	await get_tree().process_frame

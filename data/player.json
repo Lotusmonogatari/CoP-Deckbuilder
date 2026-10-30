@@ -19,7 +19,12 @@
       "element_2": "Emotional",
       "region": "Sōya",
       "district_name": "Sōya - Wakkanai",
-      "district_type": "Single Member"
+      "district_type": "Single Member",
+      "starting_items": {
+        "SH21": 1,
+        "SH15": 2,
+        "SH17": 2
+      }
     },
     {
       "player_id": "PC02",
@@ -40,7 +45,12 @@
       "element_2": "Divisive",
       "region": "Iburi",
       "district_name": "Tomakomai City",
-      "district_type": "Single Member"
+      "district_type": "Single Member",
+      "starting_items": {
+        "SH21": 1,
+        "SH15": 1,
+        "SH17": 1
+      }
     },
     {
       "player_id": "PC03",
@@ -61,7 +71,11 @@
       "element_2": "Emotional",
       "region": "Sapporo",
       "district_name": "Sapporo Proportional Block 6",
-      "district_type": "Proportional Block"
+      "district_type": "Proportional Block",
+      "starting_items": {
+        "SH21": 1,
+        "SH04": 2
+      }
     },
     {
       "player_id": "PC04",
@@ -82,7 +96,10 @@
       "element_2": "Duplicitous",
       "region": "Aomori",
       "district_name": "Aomori Proportional Block 3",
-      "district_type": "Proportional Block"
+      "district_type": "Proportional Block",
+      "starting_items": {
+        "SH21": 1
+      }
     }
   ]
 }

@@ -2621,3 +2621,11 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 - A moving picture clips to its own box (`clip_contents`); `aspect_matrix_test` skips controls inside a clipping box, since whatever hangs past it is never drawn.
 - `image_pan_test` also drags bare Office background, and checks the Office behind an open event does not move.
 - One full gate failed once on `mash_test` (card double-drag) and passed on the rerun; it passed twice on its own. Watch for it.
+
+## Playtest fixes: briefing names, seasons, dues line, hours, starting items (2026-10-30, Cameron)
+1. **No opponent names in the level briefing.** The opponents for a stage are drawn when it starts, so the briefing could name someone else (seen on TV Debate). The line is gone.
+2. **Seasonal levels and events.** New Seasons column on the Levels and Events tabs (semicolon list; blank = all year); `rules.json` `seasons` maps each season to its months (first draft: Spring 3-5, Summer 6-8, Autumn 9-11, Winter 12-2). Filled: LV92 Attend the Autumn Harvest Festival (Autumn), LV93 Attend the Winter Snow Festival (Winter), EV41 Heavy Snow Closes the Road (Winter). An out-of-season level is left off the list, a Buyable event off the Events list, and a Random event never arrives (`Seasons.gd`, `GameState.in_season()`, `EventEngine.eligible_random()`). The export errors on a season name rules.json does not have.
+3. **The Friday dues line is gone**; the Party Dues box shows the dues all week.
+4. **Hours in the briefing**: "This level takes N hours." under the title and "N hours" under each stage (the Stages tab's Time Units; `GameState.level_hours()`).
+5. **Starting items per protagonist, and no coupon in the Marketplace.** New Player tab column Starting Items ("SH21 x1; SH15 x2"): PC01 coupon, 2 Kaiju coffee, 2 Kaiju tea; PC02 coupon, 1 Kaiju coffee, 1 Kaiju tea; PC03 coupon, 2 coffee; PC04 coupon. New Shop column In Marketplace (Yes/No): SH21 is No, so the coupon can be held and used but not bought. The Balance lever "Starting Training Session Coupons" is now 0 (it would double the coupon).
+- Tests: `test_seasons.gd`; `test_training_coupon.gd` and `test_protagonists.gd` follow the Starting Items; `week_driver` checks the Party Dues box and that the old line is gone.

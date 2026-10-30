@@ -100,7 +100,6 @@ var _draft_panel: Overlay
 ## and the three panels that carry the week's decisions.
 var _calendar_square: PanelContainer
 var _week_button: Button
-var _dues_label: Label
 ## The Party Dues / Office Funds box beside the calendar (2026-10-28).
 var _dues_box: PanelContainer
 ## Set when the briefing's Go In button was pressed (see _on_briefing_closed).
@@ -314,19 +313,12 @@ func _build_week_controls() -> void:
 		_dues_box = DuesBox.make()
 		spacer.add_child(_dues_box)
 
-	_dues_label = Label.new()
-	_dues_label.name = "DuesLabel"
-	_dues_label.theme_type_variation = &"SmallLabel"
-	_dues_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_start_button.get_parent().add_child(_dues_label)
-	_start_button.get_parent().move_child(_dues_label, _start_button.get_index() + 1)
-
 	_week_button = Button.new()
 	_week_button.name = "WeekButton"
 	_week_button.custom_minimum_size = Vector2(0, 100)
 	_week_button.pressed.connect(_on_week_button_pressed)
 	_start_button.get_parent().add_child(_week_button)
-	_start_button.get_parent().move_child(_week_button, _dues_label.get_index() + 1)
+	_start_button.get_parent().move_child(_week_button, _start_button.get_index() + 1)
 
 	_events_button = Button.new()
 	_events_button.name = "EventsButton"
@@ -388,11 +380,8 @@ func _refresh_calendar() -> void:
 		_week_button.visible = not mid_level
 	else:
 		_week_button.visible = false
-	_dues_label.visible = _week_button.visible or (GameState.work_week_is_full() and not mid_level)
-	if _dues_label.visible:
-		var due := GameState.dues_preview()
-		_dues_label.text = Text.say("dues.preview_owed" if int(due["owed"]) > 0 else "dues.preview", {
-			"yen_total": int(due["total"]), "yen_owed": int(due["owed"]), "yen_funds": int(due["funds"])})
+	# The dues themselves are always on show in the Party Dues box beside the
+	# calendar; the Friday line that repeated them is gone (2026-10-30).
 
 
 func _on_week_button_pressed() -> void:
@@ -1925,8 +1914,9 @@ func _show_marketplace() -> void:
 	rows.append(UiKit.heading(Text.say("office.marketplace")))
 	rows.append(UiKit.line(Text.say("office.xp", {"count": GameState.xp}), "HeaderLabel"))
 	for item: Dictionary in DataDB.shop:
-		# Card sessions live in Rhetoric Training, not here.
-		if item.get("card_tier") == null:
+		# Card sessions live in Rhetoric Training, not here; an item marked
+		# "In Marketplace: No" (the Training Session Coupon) is only ever given.
+		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no":
 			rows.append(_supply_row(item))
 	_inventory_panel.open(Text.say("shop.supplies"), rows)
 
@@ -2581,6 +2571,9 @@ func _show_levels() -> void:
 		# A level only an event can reveal ("Needs Discovery") stays out of sight until then.
 		if not GameState.is_level_discovered(level):
 			continue
+		# A seasonal level (its Seasons cell) only shows in its season (2026-10-30).
+		if not GameState.in_season(level):
+			continue
 		var tier := int(level.get("tier", 0))
 		if not by_tier.has(tier):
 			by_tier[tier] = []
@@ -2869,6 +2862,10 @@ func _show_briefing() -> void:
 	var stages: Array = expanded.get("stages", [])
 	var anything_set := false
 
+	# How long the whole level takes on the calendar (2026-10-30).
+	rows.append(UiKit.line(Text.say("briefing.level_hours",
+		{"count": GameState.level_hours(_chosen_level)}), "HeaderLabel"))
+
 	# A level about a bill says whose bill it is and who is for and against it.
 	for bill_line: String in StanceLines.briefing_lines(DataDB.get_floor_vote(str(_chosen_level.get("level_id", "")))):
 		rows.append(UiKit.line(bill_line, "SmallLabel"))
@@ -2885,9 +2882,11 @@ func _show_briefing() -> void:
 			continue
 
 		rows.append(UiKit.heading(str(stage.get("name_en", Text.say("briefing.stage_fallback")))))
-		var who := _opponents_line(stage)
-		if not who.is_empty():
-			rows.append(UiKit.line(who, "SmallLabel"))
+		# How long the stage takes on the calendar. Opponents are not named
+		# here (Cameron, 2026-10-30): who turns up is drawn when the stage
+		# starts, so a name here could be the wrong one.
+		rows.append(UiKit.line(Text.say("briefing.stage_hours",
+			{"count": TimeClock.units_for_stage(stage)}), "SmallLabel"))
 		if str(stage.get("mode", "")) == "Combat":
 			rows.append(UiKit.line(Text.say("briefing.loss_ends_level"
 				if LevelRunner.loss_ends_level(stage) else "briefing.loss_continues"), "SmallLabel"))
@@ -2949,25 +2948,6 @@ func _reveal_in_briefing(stage: Dictionary) -> bool:
 	if value == null:
 		return true
 	return str(value).strip_edges().to_lower() != "no"
-
-
-## "Against Opponent A, Opponent B and Opponent C" — who is waiting.
-func _opponents_line(stage: Dictionary) -> String:
-	var names: Array[String] = []
-	for entry: Variant in stage.get("opponents", []):
-		if typeof(entry) != TYPE_DICTIONARY:
-			continue
-		var name := str(entry.get("name", "")).strip_edges()
-		if not name.is_empty():
-			names.append(name)
-
-	if names.is_empty():
-		return Text.say("briefing.reporters_ask") if not stage.get(
-			"questions", []).is_empty() else ""
-	if names.size() == 1:
-		return Text.say("briefing.against_one", {"name": names[0]})
-	return Text.say("briefing.against_many", {
-		"names": ", ".join(names.slice(0, -1)), "last": names[-1]})
 
 
 ## Start: choose a level — or, when a saved run stopped between the stages

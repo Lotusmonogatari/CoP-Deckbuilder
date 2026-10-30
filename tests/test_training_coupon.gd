@@ -46,7 +46,24 @@ func test_it_is_refused_and_kept_when_no_card_is_left_at_its_tier() -> void:
 	assert_eq(GameState.item_count("SH21"), 1)
 
 
-func test_a_new_run_starts_with_the_balance_lever_s_coupons() -> void:
-	var want := int(DataDB.balance.get("starting_training_session_coupons", 0))
-	assert_gt(want, 0)
-	assert_eq(GameState.item_count("SH21"), want)
+func test_a_new_run_starts_with_the_protagonist_s_starting_items() -> void:
+	# The Player tab's Starting Items (2026-10-30), plus the old Balance lever.
+	var want: Dictionary = (DataDB.player.get("starting_items", {}) as Dictionary).duplicate()
+	want["SH21"] = int(want.get("SH21", 0)) + int(DataDB.balance.get("starting_training_session_coupons", 0))
+	GameState.start_new_run(str(DataDB.player.get("player_id")))
+	assert_gt(int(want["SH21"]), 0, "every protagonist starts with a coupon")
+	for item_id: String in want:
+		assert_eq(GameState.item_count(item_id), int(want[item_id]), item_id)
+
+
+func test_every_protagonist_lists_starting_items_the_shop_has() -> void:
+	for protagonist: Dictionary in DataDB.protagonists:
+		var items: Variant = protagonist.get("starting_items")
+		assert_true(items is Dictionary and (items as Dictionary).has("SH21"),
+			"%s starts with a coupon" % protagonist.get("player_id"))
+		for item_id: String in (items as Dictionary):
+			assert_false(DataDB.get_shop_item(item_id).is_empty(), item_id)
+
+
+func test_the_coupon_is_not_sold_in_the_marketplace() -> void:
+	assert_eq(str(DataDB.get_shop_item("SH21").get("in_marketplace")), "No")
