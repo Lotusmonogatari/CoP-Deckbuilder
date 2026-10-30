@@ -241,6 +241,8 @@
   "event.decline.EV41": "You decline to take the call. The village office is left to ring around.",
   "event.decline.EV42": "You decline to respond. The school manages without you.",
   "event.decline.EV43": "You decline to receive them. The folders stay in their plastic.",
+  "event.decline.EV48": "You decline the invitation. The group counts one fewer in the front row, and someone notices.",
+  "event.decline.EV49": "You decline the invitation. The seat set aside for you is quietly given away.",
   "event.dues_line": "Dues owed {change}",
   "event.effect_line": "{name} {change}",
   "event.gathering_title": "You hosted a gathering",

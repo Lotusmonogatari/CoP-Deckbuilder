@@ -5955,5 +5955,19 @@
     "english": "● {line}",
     "placeholders": "line",
     "notes": null
+  },
+  {
+    "key": "event.decline.EV48",
+    "where": "Event Choices: the result of declining EV48",
+    "english": "You decline the invitation. The group counts one fewer in the front row, and someone notices.",
+    "placeholders": null,
+    "notes": "2026-10-30 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV49",
+    "where": "Event Choices: the result of declining EV49",
+    "english": "You decline the invitation. The seat set aside for you is quietly given away.",
+    "placeholders": null,
+    "notes": "2026-10-30 Decline result line, Claude's draft for Cameron to rewrite."
   }
 ]

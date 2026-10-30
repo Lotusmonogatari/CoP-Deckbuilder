@@ -63,10 +63,18 @@ def main():
                     hits += 1
         out.append(f"| {sid} {sc['label']} | {'yes' if drawn else 'no'} | {', '.join(users) or '-'} | {hits} |")
         prompts.append(
-            f"## {sid}.png  ({sc['label']})\n{STYLE}\n"
+            f"## {sid}{'_1' if sc.get('variants') else ''}.png  ({sc['label']})\n{STYLE}\n"
             f"Empty outdoor scene for constituency events: {sc['place']}. Mood: {sc['mood']}.\n"
             "Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, "
             "open upper-middle for two characters in the bottom corners.\n")
+        # A scene may list term pictures under "variants" (2026-10-30): each
+        # is its own file with its own place and mood.
+        for vid, variant in sc.get("variants", {}).items():
+            prompts.append(
+                f"## {vid}.png  ({sc['label']}, variant)\n{STYLE}\n"
+                f"Empty outdoor scene for constituency events: {variant['place']}. Mood: {variant['mood']}.\n"
+                "Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, "
+                "open upper-middle for two characters in the bottom corners.\n")
     text = "\n".join(out) + "\n\n" + "\n".join(prompts)
     print(text)
     if "--write" in sys.argv:

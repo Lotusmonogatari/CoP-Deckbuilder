@@ -190,7 +190,17 @@
         "lakeside"
       ],
       "place": "a calm lake shore with a footpath, reeds and distant hills",
-      "mood": "still, clear, late-afternoon light"
+      "mood": "still, clear, late-afternoon light",
+      "variants": {
+        "OUT_LAKESIDE_2_MORNING": {
+          "place": "dawn mist over a paved lakeside promenade with open space where a group could stand in rows, a portable speaker on a bench, folding chairs",
+          "mood": "cool, quiet, first light, mist on the water"
+        },
+        "OUT_LAKESIDE_3_AINU": {
+          "place": "a lakeside lawn with an open-air stage, banners and tents, and a traditional thatched house (a cise) near the shore",
+          "mood": "bright, festive, mid-afternoon light"
+        }
+      }
     },
     "OUT_FARM": {
       "label": "Farm and orchard",
@@ -326,6 +336,19 @@
       "storm",
       "flood",
       "typhoon"
+    ],
+    "MORNING": [
+      "morning",
+      "dawn",
+      "sunrise",
+      "early",
+      "radio",
+      "exercise"
+    ],
+    "AINU": [
+      "ainu",
+      "cise",
+      "showcase"
     ]
   }
 }

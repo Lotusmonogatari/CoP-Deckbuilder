@@ -6,12 +6,12 @@ Until a scene is drawn, the ST05 picture shows in its place.
 |---|---|---|---|
 | OUT_FESTIVAL Festival grounds | yes | EV13, EV35 | 12 |
 | OUT_HARBOR Harbor and fishing port | yes | EV27 | 34 |
-| OUT_LAKESIDE Lakeside and river bank | no | - | 0 |
+| OUT_LAKESIDE Lakeside and river bank | no | EV48, EV49 | 2 |
 | OUT_FARM Farm and orchard | yes | - | 29 |
 | OUT_SCHOOL School grounds | yes | EV24, EV37, EV42 | 6 |
 | OUT_SHRINE Shrine grounds | yes | EV19 | 18 |
 | OUT_STREET Shotengai and town street | yes | EV06, EV12, EV39, EV43 | 14 |
-| OUT_NEIGHBORHOOD Residential neighborhood | no | EV32, EV38 | 19 |
+| OUT_NEIGHBORHOOD Residential neighborhood | no | EV32, EV38, ST268 | 19 |
 | OUT_COAST_BATTERY Old coastal battery | yes | EV17 | 5 |
 | OUT_VILLAGE_ROAD_SNOW Village road in snow | yes | EV41 | 7 |
 
@@ -27,10 +27,22 @@ CANON GUARD: fictional nation Yezo; no real people or logos; no readable text an
 Empty outdoor scene for constituency events: a small northern fishing port: boats, crates, a cannery roof, gulls. Mood: cool morning light, salt haze.
 Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, open upper-middle for two characters in the bottom corners.
 
-## OUT_LAKESIDE.png  (Lakeside and river bank)
+## OUT_LAKESIDE_1.png  (Lakeside and river bank)
 STYLE: {HOUSE_STYLE}
 CANON GUARD: fictional nation Yezo; no real people or logos; no readable text anywhere.
 Empty outdoor scene for constituency events: a calm lake shore with a footpath, reeds and distant hills. Mood: still, clear, late-afternoon light.
+Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, open upper-middle for two characters in the bottom corners.
+
+## OUT_LAKESIDE_2_MORNING.png  (Lakeside and river bank, variant)
+STYLE: {HOUSE_STYLE}
+CANON GUARD: fictional nation Yezo; no real people or logos; no readable text anywhere.
+Empty outdoor scene for constituency events: dawn mist over a paved lakeside promenade with open space where a group could stand in rows, a portable speaker on a bench, folding chairs. Mood: cool, quiet, first light, mist on the water.
+Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, open upper-middle for two characters in the bottom corners.
+
+## OUT_LAKESIDE_3_AINU.png  (Lakeside and river bank, variant)
+STYLE: {HOUSE_STYLE}
+CANON GUARD: fictional nation Yezo; no real people or logos; no readable text anywhere.
+Empty outdoor scene for constituency events: a lakeside lawn with an open-air stage, banners and tents, and a traditional thatched house (a cise) near the shore. Mood: bright, festive, mid-afternoon light.
 Canvas 1080 x 2340 portrait, no people, calmer and darker lower third, open upper-middle for two characters in the bottom corners.
 
 ## OUT_FARM.png  (Farm and orchard)

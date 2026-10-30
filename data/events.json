@@ -722,5 +722,50 @@
     "on_date": "18.10.09",
     "speaker_title": "Prime Minister",
     "seasons": null
+  },
+  {
+    "event_id": "EV48",
+    "title": "Morning Radio Exercises by the Lake",
+    "flavor": "A group of elders has done the same radio exercises on the lake path every morning for decades. The organizer asks whether you would join them for the first set.",
+    "trigger": "Random",
+    "available": "Both",
+    "hours": 1,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 6,
+    "cooldown_hours": null,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": "OUT_LAKESIDE_1; OUT_LAKESIDE_2_MORNING",
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null,
+    "seasons": [
+      "Spring",
+      "Summer",
+      "Autumn"
+    ]
+  },
+  {
+    "event_id": "EV49",
+    "title": "Ainu Cultural Showcase Day at the Lake",
+    "flavor": "The lakeside community is holding its cultural showcase day: songs, dance, embroidery and food. The elders have asked whether you will come.",
+    "trigger": "Random",
+    "available": "Weekend",
+    "hours": 2,
+    "cost_funds": null,
+    "cost_xp": null,
+    "weight": 5,
+    "cooldown_hours": null,
+    "min_district_awareness": null,
+    "min_national_awareness": null,
+    "image": "OUT_LAKESIDE_1; OUT_LAKESIDE_3_AINU",
+    "needs_dues_owed": null,
+    "on_date": null,
+    "speaker_title": null,
+    "seasons": [
+      "Summer",
+      "Autumn"
+    ]
   }
 ]

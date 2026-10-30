@@ -2860,5 +2860,238 @@
     ],
     "unlocks_level": null,
     "dues_delta": null
+  },
+  {
+    "event_id": "EV48",
+    "choice": "A",
+    "choice_text": "Join the front row and follow the instructor",
+    "result_text": "You are one beat behind the whole way through. Afterwards an elder says the first week is the hardest, and the group claims you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO21",
+        "delta": 1
+      },
+      {
+        "target": "BO06",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": 2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV48",
+    "choice": "B",
+    "choice_text": "Send a staff member in your place",
+    "result_text": "Your staffer is given a place in the front row and a flask of tea.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV48",
+    "choice": "C",
+    "choice_text": "Stop by, say thanks and leave",
+    "result_text": "You stay for the bows at the end. They wave you off as you go.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV48",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the invitation. The group counts one fewer in the front row, and someone notices.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO21",
+        "delta": -2
+      },
+      {
+        "target": "BO06",
+        "delta": -2
+      },
+      {
+        "target": "BO15",
+        "delta": -3
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV49",
+    "choice": "A",
+    "choice_text": "Stay all afternoon and listen to the elders",
+    "result_text": "You hear the old songs and a long story told in two languages. The elders say you listened properly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO28",
+        "delta": 1
+      },
+      {
+        "target": "BO29",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV49",
+    "choice": "B",
+    "choice_text": "Send a staff member to represent you",
+    "result_text": "Your staffer is seated with the elders and takes careful notes.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO29",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV49",
+    "choice": "C",
+    "choice_text": "Give a short speech on the heritage bill",
+    "result_text": "You speak for three minutes about the heritage bill. The applause is warm, and not unanimous.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO28",
+        "delta": 1
+      },
+      {
+        "target": "BO29",
+        "delta": 1
+      },
+      {
+        "target": "BO15",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
+  },
+  {
+    "event_id": "EV49",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the invitation. The seat set aside for you is quietly given away.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": -2
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO28",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null
   }
 ]
