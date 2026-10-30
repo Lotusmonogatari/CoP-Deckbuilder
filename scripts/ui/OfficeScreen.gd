@@ -2858,85 +2858,84 @@ func _show_briefing() -> void:
 		_report.text = Text.say("office.level_cannot_start", {"problems": "\n• ".join(Array(runner.problems()))})
 		return
 
+	# The briefing follows Cameron's template (2026-10-30): the level's title,
+	# its total hours and total rewards; then, between gold lines, each stage
+	# with its hours and rewards. A level that is one stage named like the
+	# level shows just that stage. Rewards run Reputation, Constituency
+	# support, Party support, then XP and Funds last (BriefingSummary).
+	var shown: Array = []
+	for stage: Dictionary in expanded.get("stages", []):
+		# A stage marked "No" (Media Ambush, an ambush by name) is left out
+		# entirely, its rewards too, so nothing gives away it is there
+		# (2026-09-28, Cameron).
+		if _reveal_in_briefing(stage):
+			shown.append(stage)
+
+	var level_name := str(_chosen_level.get("description", "")).strip_edges()
+	if level_name.is_empty():
+		level_name = Text.say("office.briefing_fallback_title")
+	var just_the_stage := BriefingSummary.is_just_its_stage(level_name, shown)
 	var rows: Array[Control] = []
-	var stages: Array = expanded.get("stages", [])
 	var anything_set := false
 
-	# How long the whole level takes on the calendar (2026-10-30).
-	rows.append(UiKit.line(Text.say("briefing.level_hours",
-		{"count": GameState.level_hours(_chosen_level)}), "HeaderLabel"))
+	if not just_the_stage:
+		rows.append(UiKit.line(Text.say("briefing.level_hours",
+			{"count": GameState.level_hours(_chosen_level)}), "HeaderLabel"))
+		var total := BriefingSummary.total_rewards(shown)
+		if not total.is_empty():
+			rows.append(UiKit.line(Text.say("briefing.total_rewards")))
+			rows.append_array(_reward_bullets(total))
 
-	# A level about a bill says whose bill it is and who is for and against it.
-	for bill_line: String in StanceLines.briefing_lines(DataDB.get_floor_vote(str(_chosen_level.get("level_id", "")))):
-		rows.append(UiKit.line(bill_line, "SmallLabel"))
-	rows.append_array(StanceLines.briefing_sides(DataDB.get_floor_vote(str(_chosen_level.get("level_id", "")))))
-
-	for stage: Dictionary in stages:
-		if not _reveal_in_briefing(stage):
-			# A stage marked "No" (Media Ambush, an ambush by name) is left
-			# out of the briefing entirely — 2026-09-28, Cameron: no heading,
-			# no rewards, no "if you lose" line, nothing that gives away it
-			# is even there. An earlier pass still showed its win/loss
-			# numbers so the player could weigh the risk; this replaces that
-			# with a real, total surprise instead.
-			continue
-
-		rows.append(UiKit.heading(str(stage.get("name_en", Text.say("briefing.stage_fallback")))))
-		# How long the stage takes on the calendar. Opponents are not named
-		# here (Cameron, 2026-10-30): who turns up is drawn when the stage
-		# starts, so a name here could be the wrong one.
+	for stage: Dictionary in shown:
+		if not just_the_stage:
+			rows.append(_gold_rule())
+			rows.append(UiKit.heading(str(stage.get("name_en", Text.say("briefing.stage_fallback")))))
 		rows.append(UiKit.line(Text.say("briefing.stage_hours",
-			{"count": TimeClock.units_for_stage(stage)}), "SmallLabel"))
-		if str(stage.get("mode", "")) == "Combat":
-			rows.append(UiKit.line(Text.say("briefing.loss_ends_level"
-				if LevelRunner.loss_ends_level(stage) else "briefing.loss_continues"), "SmallLabel"))
-		for between: String in CarryOverLines.for_stage(stage):
-			rows.append(UiKit.line(between, "SmallLabel"))
-
+			{"count": TimeClock.units_for_stage(stage)})))
 		if LevelRunner.rewards_are_unset(stage):
 			rows.append(UiKit.line(Text.say("reward.stage_not_set"), "SmallLabel"))
-		else:
-			anything_set = true
-			for name: String in LevelRunner.win_rewards(stage).keys():
-				rows.append(UiKit.line(Text.say("reward.delta", {
-					"name": name,
-					"amount": Phrase.meta_amount(name, int(LevelRunner.win_rewards(stage)[name]), true),
-				})))
-			var xp := MetaRules.stage_delta(stage, "win_delta_xp")
-			if xp > 0:
-				rows.append(UiKit.line(Text.say("outcome.xp", {"count": xp})))
-			for line: String in LevelRunner.variable_rewards(stage, Text.phrase()):
-				rows.append(UiKit.line(line, "SmallLabel"))
-
-		# What losing it costs, from the stage's own loss_delta_* columns, so
-		# the player knows what they are risking before they go in.
-		var if_lost := _loss_line(stage)
-		if not if_lost.is_empty():
-			rows.append(UiKit.line(if_lost, "SmallLabel"))
+			continue
+		anything_set = true
+		var rewards := BriefingSummary.stage_rewards(stage)
+		if not rewards.is_empty():
+			rows.append(UiKit.line(Text.say("briefing.rewards")))
+			rows.append_array(_reward_bullets(rewards))
 
 	if not anything_set:
 		rows.append(UiKit.line(""))
 		rows.append(UiKit.line(Text.say("reward.nothing_set")))
 
-	var briefing_title := str(_chosen_level.get("description", "")).strip_edges()
-	_briefing_panel.open(
-		briefing_title if not briefing_title.is_empty() else Text.say("office.briefing_fallback_title"),
-		rows, Text.say("office.go_in"))
+	var title := level_name
+	if just_the_stage:
+		title = str((shown[0] as Dictionary).get("name_en", level_name))
+	_briefing_panel.open(title, rows, Text.say("office.go_in"))
 
 
-## "If you lose: Party support -2, Reputation -1, 1 XP" — or "" for a stage
-## whose loss columns are all blank.
-func _loss_line(stage: Dictionary) -> String:
-	var parts: Array[String] = []
-	var penalties := LevelRunner.loss_penalties(stage)
-	for name: String in penalties.keys():
-		parts.append(Text.say("reward.delta", {"name": name, "amount": Phrase.meta_amount(name, int(penalties[name]), true)}))
-	var xp := MetaRules.stage_delta(stage, "loss_delta_xp")
-	if xp > 0:
-		parts.append(Text.say("outcome.xp", {"count": xp}))
-	if parts.is_empty():
-		return ""
-	return Text.say("reward.if_lost", {"changes": ", ".join(parts)})
+## One bullet per reward, in briefing order: "● Reputation +1" ... "● XP
+## Growth +60", "● Funds +30,000円".
+func _reward_bullets(rewards: Dictionary) -> Array[Control]:
+	var lines: Array[Control] = []
+	for name: String in BriefingSummary.ordered(rewards):
+		var amount := int(rewards[name])
+		var text := Text.say("briefing.xp_growth", {"amount": Phrase.meta_amount(name, amount, true)}) \
+			if name == BriefingSummary.XP else Text.say("reward.delta",
+				{"name": name, "amount": Phrase.meta_amount(name, amount, true)})
+		lines.append(UiKit.line(Text.say("briefing.bullet", {"line": text})))
+	return lines
+
+
+## A gold line between the stages of a briefing, the same gold as the cue
+## banner's edge and the title screen's button outlines.
+func _gold_rule() -> Control:
+	var rule := HSeparator.new()
+	rule.name = "GoldRule"
+	var style := StyleBoxLine.new()
+	style.color = CueBanner.EDGE_COLOUR
+	style.thickness = 4
+	rule.add_theme_stylebox_override("separator", style)
+	rule.add_theme_constant_override("separation", 24)
+	rule.custom_minimum_size = Vector2(UiKit.LINE_WIDTH, 24)
+	return rule
 
 
 ## True unless the Stages tab's "Reveal In Briefing" column is explicitly

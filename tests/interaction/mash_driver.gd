@@ -131,6 +131,13 @@ func _check_card_double_drag() -> void:
 
 	var hand_before: Array[String] = engine.state.hand.duplicate()
 	var energy_before := engine.state.energy
+	# Every card's price as it stands BEFORE the drags: once a card has been
+	# played, card_cost() reflects that play (a "next card costs 1 less" card
+	# such as C36 discounts whatever follows it), so reading it afterwards
+	# would accuse the game of a bug it does not have.
+	var cost_before := {}
+	for card_id: String in hand_before:
+		cost_before[card_id] = engine.card_cost(DataDB.get_card(card_id))
 	var start := card.get_global_rect().get_center()
 	var lift := start + Vector2(0, -(CardView.PLAY_LIFT + 120))
 
@@ -153,13 +160,17 @@ func _check_card_double_drag() -> void:
 		left_hand.erase(card_id)   # multiset difference: hand_before - hand_after
 
 	var expected_spend := 0
+	var discount := 0
 	for card_id: String in left_hand:
-		expected_spend += engine.card_cost(DataDB.get_card(card_id))
+		expected_spend += int(cost_before[card_id])
+		var played := DataDB.get_card(card_id)
+		if str(played.get("special", "")) == "discount_next_card_this_turn" and left_hand.size() > 1:
+			discount += int(played.get("special_value", 0))
 	var actual_spend := energy_before - engine.state.energy
 
 	if left_hand.is_empty():
 		_failures.append("card double-drag: two drags on a playable card left nothing played at all")
-	elif actual_spend != expected_spend:
+	elif actual_spend != expected_spend and actual_spend != maxi(0, expected_spend - discount):
 		_failures.append(
 			("card double-drag: %d energy spent playing %s, expected exactly %d " +
 				"(a card was charged without leaving the hand, or charged twice)")

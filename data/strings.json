@@ -5903,29 +5903,57 @@
   {
     "key": "briefing.level_hours",
     "where": "Level briefing, under the title: how long the whole level takes on the calendar",
-    "english": "This level takes {count} hours.",
+    "english": "Total Workload Duration: {count} Hours",
     "placeholders": "count",
     "notes": null
   },
   {
     "key": "briefing.level_hours.one",
     "where": "Level briefing, the same line for exactly one hour",
-    "english": "This level takes {count} hour.",
+    "english": "Total Workload Duration: {count} Hour",
     "placeholders": "count",
     "notes": null
   },
   {
     "key": "briefing.stage_hours",
     "where": "Level briefing, under each stage's name: how long that stage takes",
-    "english": "{count} hours",
+    "english": "Duration: {count} Hours",
     "placeholders": "count",
     "notes": null
   },
   {
     "key": "briefing.stage_hours.one",
     "where": "Level briefing, the same line for exactly one hour",
-    "english": "{count} hour",
+    "english": "Duration: {count} Hour",
     "placeholders": "count",
+    "notes": null
+  },
+  {
+    "key": "briefing.total_rewards",
+    "where": "Level briefing, above the bullets of every stage's rewards added together",
+    "english": "Total Rewards:",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "briefing.rewards",
+    "where": "Level briefing, above one stage's reward bullets",
+    "english": "Rewards:",
+    "placeholders": null,
+    "notes": null
+  },
+  {
+    "key": "briefing.xp_growth",
+    "where": "Level briefing, the XP reward bullet; {amount} carries its sign",
+    "english": "XP Growth {amount}",
+    "placeholders": "amount",
+    "notes": null
+  },
+  {
+    "key": "briefing.bullet",
+    "where": "Level briefing, one reward as a bullet point",
+    "english": "● {line}",
+    "placeholders": "line",
     "notes": null
   }
 ]
