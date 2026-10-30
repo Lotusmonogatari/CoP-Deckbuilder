@@ -517,7 +517,7 @@ func _picture_row(art_id: String) -> Control:
 	art.name = "Picture_" + art_id
 	art.kind = PlaceholderArt.Kind.BACKGROUND
 	art.art_id = art_id
-	art.custom_minimum_size = Vector2(0, 420)
+	art.custom_minimum_size = Vector2(0, int(DataDB.balance.get("event_picture_height", 640)))
 	return art
 
 

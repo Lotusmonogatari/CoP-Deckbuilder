@@ -2604,3 +2604,6 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 ## Staff biographies and role flavor text now reach the profile (2026-10-30, Cameron)
 - The Staff Profile screen already draws the Biography and Role Flavor Text columns; they were blank in the checked-in workbook. Cameron's new workbook upload fills both for all 21 staff (and retunes staff costs and rewards), so the merged export now carries them. His file also arrived with stale calc-chain entries (Excel "repair" check), cleared by a plain `wbx` save.
 - `test_game_state_staff.gd` and `test_staff_profile.gd` read the staff rewards from the data instead of typing the old numbers, so a retune does not break them.
+
+## Taller event pictures (2026-10-30, Cameron)
+- The picture at the top of an event, an event result and a hosted gathering was a fixed 420 px tall, which cropped square drawings to a thin strip. It is now a Balance lever, "Event picture: Height" (`event_picture_height`, 640), read by `OfficeScreen._picture_row()`. Change the number in the workbook to resize it.
