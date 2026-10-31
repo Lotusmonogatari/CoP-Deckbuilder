@@ -225,16 +225,6 @@ func test_questions_and_their_skip_cost_are_in_the_room_rules() -> void:
 	assert_string_contains(lines[0], Text.say("brief.q.skip_costs", {"count": 3}))
 
 
-func test_a_committee_says_everything_starts_over_and_a_floor_debate_names_support() -> void:
-	var committee := {"sequence_mode": "reset", "opponent_count": {"min": 3, "max": 3}}
-	assert_eq(CarryOverLines.for_stage(committee), [Text.say("briefing.between_all")])
-	var floor_debate := {"sequence_mode": "continuous", "opponent_count": {"min": 2, "max": 2}}
-	var lines := CarryOverLines.for_stage(floor_debate)
-	assert_eq(lines.size(), 1)
-	assert_string_contains(lines[0], Text.say("briefing.res_support"))
-	assert_eq(CarryOverLines.for_stage({"sequence_mode": "single"}), [])
-
-
 func test_each_kind_of_room_says_how_winning_works() -> void:
 	# Three different rooms, three different explanations — and the two that
 	# name a threshold carry its real number.

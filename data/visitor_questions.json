@@ -7603,16 +7603,16 @@
     ],
     "effects_b": [
       {
+        "target": "BO21",
+        "delta": 3
+      },
+      {
         "target": "BO23",
         "delta": 1
       },
       {
         "target": "BO05",
-        "delta": 1
-      },
-      {
-        "target": "BO21",
-        "delta": 2
+        "delta": -2
       }
     ],
     "effects_c": [
@@ -7633,6 +7633,10 @@
       {
         "target": "BO05",
         "delta": 1
+      },
+      {
+        "target": "BO21",
+        "delta": -2
       }
     ],
     "commitment_a": null,

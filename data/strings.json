@@ -1729,13 +1729,6 @@
     "notes": null
   },
   {
-    "key": "reward.if_lost",
-    "where": "Office — level briefing, per stage",
-    "english": "If you lose: {changes}",
-    "placeholders": "changes",
-    "notes": "The stage's own loss penalties, from its Loss Δ columns."
-  },
-  {
     "key": "outcome.reason.conference_short",
     "where": "Battle — outcome panel",
     "english": "{stage} closed on {count} {unit}, short of the {threshold} it needed.",
@@ -1925,27 +1918,6 @@
     "notes": null
   },
   {
-    "key": "card.question_strong",
-    "where": "Card zoom — the drawn question's own effect on this card (2026-09-28)",
-    "english": "This question plays right into your hands.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "card.question_medium",
-    "where": "Card zoom — the drawn question's own effect on this card (2026-09-28)",
-    "english": "This question doesn't care how you answer it.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "card.question_weak",
-    "where": "Card zoom — the drawn question's own effect on this card (2026-09-28)",
-    "english": "This question works against you here.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
     "key": "outcome.displeased",
     "where": "End of stage — what it was worth",
     "english": "Annoyed: {names}.",
@@ -2021,41 +1993,6 @@
     "english": "Continue",
     "placeholders": null,
     "notes": "2026-10-01: the Stage Transition screen's own footer button, between two stages of a level."
-  },
-  {
-    "key": "card.room_greatly_enhanced",
-    "where": "Card zoom — stage affinity line",
-    "english": "This room greatly favors this rhetorical style.",
-    "placeholders": null,
-    "notes": "2026-10-01 audit: was BattleScreen.describe_room_for()'s own hardcoded text."
-  },
-  {
-    "key": "card.room_enhanced",
-    "where": "Card zoom — stage affinity line",
-    "english": "This room favors this rhetorical style.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "card.room_neutral",
-    "where": "Card zoom — stage affinity line",
-    "english": "Landing as written here.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "card.room_suppressed",
-    "where": "Card zoom — stage affinity line",
-    "english": "This room resists this rhetorical style.",
-    "placeholders": null,
-    "notes": null
-  },
-  {
-    "key": "card.room_greatly_suppressed",
-    "where": "Card zoom — stage affinity line",
-    "english": "This room strongly resists this rhetorical style.",
-    "placeholders": null,
-    "notes": null
   },
   {
     "key": "battle.gaffes_status",
@@ -2336,13 +2273,6 @@
     "english": "Tap an organization to see its name.",
     "placeholders": null,
     "notes": "One line above the row of organization icons shown when a stage touched any."
-  },
-  {
-    "key": "briefing.loss_ends_level",
-    "where": "Office · level briefing, per stage",
-    "english": "Losing this stage ends the level.",
-    "placeholders": null,
-    "notes": "Shown for a stage whose loss sends you back to the Office."
   },
   {
     "key": "briefing.loss_continues",
@@ -2693,27 +2623,6 @@
     "english": "{name}  ·  standing {have}, needs {needed}",
     "placeholders": "name, have, needed",
     "notes": "2026-10-15 text pass: was typed in OfficeScreen.gd."
-  },
-  {
-    "key": "briefing.against_one",
-    "where": "Level briefing — who a stage is against (one person)",
-    "english": "Against {name}",
-    "placeholders": "name",
-    "notes": "2026-10-15 text pass."
-  },
-  {
-    "key": "briefing.against_many",
-    "where": "Level briefing — who a stage is against (several)",
-    "english": "Against {names} and {last}",
-    "placeholders": "names, last",
-    "notes": "2026-10-15 text pass. {names} is the first ones, comma separated."
-  },
-  {
-    "key": "briefing.reporters_ask",
-    "where": "Level briefing — a room where reporters ask the questions",
-    "english": "The reporters ask the questions here.",
-    "placeholders": null,
-    "notes": "2026-10-15 text pass."
   },
   {
     "key": "briefing.stage_fallback",
@@ -4865,20 +4774,6 @@
     "notes": "2026-10-23 party dues."
   },
   {
-    "key": "dues.preview",
-    "where": "Office, line above the week button",
-    "english": "Party dues this week: {yen_total}円 (you have {yen_funds}円).",
-    "placeholders": "yen_total, yen_funds",
-    "notes": "2026-10-23 party dues."
-  },
-  {
-    "key": "dues.preview_owed",
-    "where": "Office, line above the week button when dues are overdue",
-    "english": "Party dues this week: {yen_total}円, including {yen_owed}円 overdue (you have {yen_funds}円).",
-    "placeholders": "yen_total, yen_owed, yen_funds",
-    "notes": "2026-10-23 party dues."
-  },
-  {
     "key": "dues.paid_line",
     "where": "New week popup, dues paid",
     "english": "Party dues paid: {yen_paid}円.",
@@ -4935,13 +4830,6 @@
     "notes": "2026-10-23 awareness."
   },
   {
-    "key": "record.cause_gaffe_awareness",
-    "where": "Your Record, cause of an awareness drop",
-    "english": "Gaffes left at the end of a stage",
-    "placeholders": null,
-    "notes": "2026-10-23 awareness."
-  },
-  {
     "key": "record.cause_awareness",
     "where": "Your Record, cause of a standing change from name awareness",
     "english": "Name awareness",
@@ -4980,41 +4868,6 @@
     "key": "election.bar_line",
     "where": "Election Strength page, the bar caption",
     "english": "Election strength",
-    "placeholders": null,
-    "notes": "2026-10-23 election strength."
-  },
-  {
-    "key": "election.record_heading",
-    "where": "(unused)",
-    "english": "Election strength",
-    "placeholders": null,
-    "notes": "2026-10-23 election strength."
-  },
-  {
-    "key": "election.potential_line",
-    "where": "Election Strength page, what the inputs add up to right now",
-    "english": "Your campaign is heading toward {value} of 100. Strength moves toward that slowly, a little each week.",
-    "placeholders": "value",
-    "notes": "2026-10-23 election strength."
-  },
-  {
-    "key": "election.component_line",
-    "where": "Election Strength page, one input",
-    "english": "{name}: {points} of {max}",
-    "placeholders": "name, points, max",
-    "notes": "2026-10-23 election strength."
-  },
-  {
-    "key": "election.c_district",
-    "where": "Election Strength page, input name",
-    "english": "District Awareness",
-    "placeholders": null,
-    "notes": "2026-10-23 election strength."
-  },
-  {
-    "key": "election.c_national",
-    "where": "Election Strength page, input name",
-    "english": "National Awareness",
     "placeholders": null,
     "notes": "2026-10-23 election strength."
   },
@@ -5374,20 +5227,6 @@
     "english": "Dues owed {change}",
     "placeholders": "change",
     "notes": "2026-10-23 scheduled dues events."
-  },
-  {
-    "key": "election.meter_line",
-    "where": "Election Strength page, an awareness meter",
-    "english": "{name}: {value} / 100",
-    "placeholders": "name, value",
-    "notes": "2026-10-23 election strength."
-  },
-  {
-    "key": "election.inputs_heading",
-    "where": "Election Strength page, section heading",
-    "english": "What feeds it",
-    "placeholders": null,
-    "notes": "2026-10-23 election strength."
   },
   {
     "key": "event.heading_dated",

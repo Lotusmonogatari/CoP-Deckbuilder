@@ -64,8 +64,17 @@ func test_district_65_starts_town_halls_five_ahead() -> void:
 	assert_eq(AwarenessEffects.stage_start_bonus(_effects, {"national": 0, "district": 64}, "ST05"), 0)
 
 
+## A row's own threshold from the Awareness Effects tab (the numbers are
+## Cameron's to move; the penalty lines were halved on 2026-10-31).
+func _threshold(effect_id: String) -> int:
+	for row: Dictionary in _effects:
+		if str(row.get("effect_id", "")) == effect_id:
+			return int(row.get("threshold", 0))
+	return 0
+
+
 func test_a_week_of_low_national_awareness_escalates() -> void:
-	var low := {"national": 30, "district": 60}
+	var low := {"national": _threshold("AE07") - 5, "district": 60}
 	var streaks := {}
 	for week in [1, 2, 3]:
 		var result := AwarenessEffects.week_end(_effects, low, streaks)
@@ -81,15 +90,16 @@ func test_a_week_of_low_national_awareness_escalates() -> void:
 
 func test_a_week_end_in_the_game_applies_the_penalties() -> void:
 	GameState.calendar = {"week": 0, "phase": "weekend", "hours": 0}
-	GameState.awareness = {"district": 20, "national": 30}
+	GameState.awareness = {"district": mini(_threshold("AE05"), _threshold("AE06")) - 3,
+		"national": _threshold("AE07") - 5}
 	GameState.xp = 100
 	GameState.booster_standing["BO32"] = 60
 	GameState.booster_standing["BO05"] = 60
 	GameState.meta["Funds"] = 0
 	var lines := GameState._apply_awareness_week_end()
-	assert_eq(GameState.xp, 50, "district 25 or less: -50 XP")
-	assert_lt(int(GameState.booster_standing["BO32"]), 60, "district 50 or less: the Selection Committee")
-	assert_eq(int(GameState.booster_standing["BO05"]), 55, "national 40 or less: a National organization")
+	assert_eq(GameState.xp, 50, "district at or below AE06: -50 XP")
+	assert_lt(int(GameState.booster_standing["BO32"]), 60, "district at or below AE05: the Selection Committee")
+	assert_eq(int(GameState.booster_standing["BO05"]), 55, "national at or below AE07: a National organization")
 	assert_gt(lines.size(), 0)
 
 

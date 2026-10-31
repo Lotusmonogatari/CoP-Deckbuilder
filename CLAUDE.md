@@ -711,3 +711,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Commitments, phase 4 and follow-ups (2026-10-31, Cameron away; interim choices in `design/review/OPEN_ITEMS_2026-10-31.md`)
 - Mechanics audit (2026-10-31, Cameron)
 - Open items closed (2026-10-31, Cameron)
+- Cleanup pass (2026-10-31, Cameron)

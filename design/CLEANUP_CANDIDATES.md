@@ -39,3 +39,11 @@ No test was found that covers a removed feature. The two click tests that `verif
 - Text rows no longer asked for: `briefing.against_one`, `briefing.against_many`, `briefing.reporters_ask` (the briefing no longer names opponents) and `dues.preview`, `dues.preview_owed` (the Friday dues line is gone; the Party Dues box shows it).
 - Balance lever "Starting Training Session Coupons" (now 0): replaced by the Player tab's Starting Items; no longer read by the code (2026-10-31).
 - Text rows no longer asked for after the briefing template (2026-10-30): `briefing.loss_ends_level`, `reward.if_lost` (the briefing no longer lists loss costs, carry-over lines, bill sides or "standing with whichever organizations"). `CarryOverLines.gd` and `StanceLines.briefing_lines()/briefing_sides()` may now be unused by the briefing; check other callers before removing.
+
+## Cleanup pass (2026-10-31, approved by Cameron item by item)
+
+**Removed:** the Text rows `briefing.against_one`, `briefing.against_many`, `briefing.reporters_ask`, `briefing.loss_ends_level`, `reward.if_lost`, `card.room_*` (5), `card.question_*` (3), `dues.preview`, `dues.preview_owed`, `election.c_district`, `election.c_national`, `election.component_line`, `election.inputs_heading`, `election.meter_line`, `election.potential_line`, `election.record_heading` and `record.cause_gaffe_awareness`; `scripts/ui/CarryOverLines.gd` and its test; `StanceLines.briefing_lines()` and `briefing_sides()`; `tools/build_floor_vote_scene.gd`; and the Balance row "Starting Training Session Coupons".
+
+**Kept, in use:** the `office.trigger.*` rows. The Office builds their keys at runtime (`"office.trigger.%s.%s"`), so the exporter's "nothing asks for" note about them is a false alarm. **Kept by choice:** `tools/art_prompt.py` and `tools/content_lint.py`, which are run by hand.
+
+**New candidates (left unused by the removals above; not yet approved):** the Text rows `briefing.between_all`, `briefing.between_resets`, `briefing.res_energy`, `briefing.res_gaffes`, `briefing.res_guard`, `briefing.res_hand`, `briefing.res_support` and `briefing.res_turns` (CarryOverLines' lines); and `briefing.bill_line`, `briefing.sides_for`, `briefing.sides_against` and `stance.nobody` (the StanceLines briefing helpers' lines).

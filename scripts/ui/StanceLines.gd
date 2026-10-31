@@ -77,33 +77,6 @@ static func org_group(heading_key: String, ids: Array, supports: bool) -> Array[
 	return rows
 
 
-## The same, for the briefing: the bill and who is for and against it.
-static func briefing_lines(bill: Dictionary) -> Array[String]:
-	var lines: Array[String] = []
-	if bill.is_empty():
-		return lines
-	var proponent := DataDB.get_party_by_id(str(bill.get("proponent_party", "")))
-	lines.append(Text.say("briefing.bill_line", {
-		"bill": str(bill.get("bill_name", "")),
-		"party": str(proponent.get("name", Text.say("stance.nobody")))}))
-	return lines
-
-
-## The briefing's two chip rows: who is for the bill and who is against it,
-## each under a short heading. Empty when the bill touches nobody.
-static func briefing_sides(bill: Dictionary) -> Array[Control]:
-	var rows: Array[Control] = []
-	if bill.is_empty():
-		return rows
-	var sides := BillStance.sides(bill, DataDB.law_effects, GameState._party_tier_booster_ids())
-	for group: Array in [["supporters", true, "briefing.sides_for"], ["opponents", false, "briefing.sides_against"]]:
-		var ids: Array = sides[group[0]]
-		if ids.is_empty():
-			continue
-		rows.append(UiKit.line(Text.say(str(group[2])), "SmallLabel"))
-		rows.append(OrgChip.side_row(ids, bool(group[1])))
-	return rows
-
 
 ## "Ainu Community Council +5, Chamber of Commerce -5, Party support -3".
 static func describe_changes(deltas: Dictionary, party_delta: int) -> String:
