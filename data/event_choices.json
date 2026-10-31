@@ -49,7 +49,7 @@
   {
     "event_id": "EV04",
     "choice": "A",
-    "choice_text": "A warm biography",
+    "choice_text": "Air a warm biography spot",
     "result_text": "Thirty seconds of a woman who looks like she cares.",
     "funds_cost": null,
     "funds_delta": null,
@@ -71,7 +71,7 @@
   {
     "event_id": "EV04",
     "choice": "B",
-    "choice_text": "A policy spot",
+    "choice_text": "Air a clear policy spot",
     "result_text": "A clear voice and one number; people remember the number.",
     "funds_cost": null,
     "funds_delta": null,
@@ -96,7 +96,7 @@
   {
     "event_id": "EV04",
     "choice": "C",
-    "choice_text": "A sharp attack spot",
+    "choice_text": "Air a sharp attack spot",
     "result_text": "It is noticed. Not everyone approves of how.",
     "funds_cost": null,
     "funds_delta": null,
@@ -256,7 +256,7 @@
   {
     "event_id": "EV11",
     "choice": "A",
-    "choice_text": "Give a short quote",
+    "choice_text": "Give the journalist a short quote",
     "result_text": "Two sentences, accurately printed.",
     "funds_cost": null,
     "funds_delta": null,
@@ -281,7 +281,7 @@
   {
     "event_id": "EV11",
     "choice": "B",
-    "choice_text": "Decline politely",
+    "choice_text": "Decline to comment, politely",
     "result_text": "The reporter thanks you and, a little coolly, goes away.",
     "funds_cost": null,
     "funds_delta": null,
@@ -300,7 +300,7 @@
   {
     "event_id": "EV11",
     "choice": "C",
-    "choice_text": "Offer an exclusive",
+    "choice_text": "Offer the journalist an exclusive",
     "result_text": "The story runs on the front page. It is slightly longer than you expected.",
     "funds_cost": null,
     "funds_delta": null,
@@ -446,7 +446,7 @@
   {
     "event_id": "EV14",
     "choice": "A",
-    "choice_text": "Ignore it",
+    "choice_text": "Let it pass without comment",
     "result_text": "The rumor outlives the week.",
     "funds_cost": null,
     "funds_delta": null,
@@ -468,7 +468,7 @@
   {
     "event_id": "EV14",
     "choice": "B",
-    "choice_text": "Address it directly",
+    "choice_text": "Address the rumor directly in public",
     "result_text": "A short, plain statement. Some believe it.",
     "funds_cost": null,
     "funds_delta": null,
@@ -513,7 +513,12 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "funds",
+        "amount": 20000
+      }
+    ]
   },
   {
     "event_id": "EV15",
@@ -614,7 +619,7 @@
   {
     "event_id": "EV17",
     "choice": "A",
-    "choice_text": "Ask for a meeting with the hall and its members",
+    "choice_text": "Ask to meet the hall and members",
     "result_text": "They bring photographs and a long list. A coastal defense bill is being drafted.",
     "funds_cost": null,
     "funds_delta": null,
@@ -682,7 +687,7 @@
   {
     "event_id": "EV18",
     "choice": "A",
-    "choice_text": "Give them ten minutes and ask what they want written down",
+    "choice_text": "Give them ten minutes and take notes",
     "result_text": "They want three things on one page. A bill on fiscal devolution is taking shape.",
     "funds_cost": null,
     "funds_delta": null,
@@ -709,7 +714,7 @@
   {
     "event_id": "EV18",
     "choice": "B",
-    "choice_text": "Promise a call next week",
+    "choice_text": "Promise them a call next week",
     "result_text": "You keep the promise. It is a short call.",
     "funds_cost": null,
     "funds_delta": null,
@@ -837,7 +842,7 @@
   {
     "event_id": "EV20",
     "choice": "A",
-    "choice_text": "Listen all the way to the next station",
+    "choice_text": "Listen until the next station",
     "result_text": "A digital-economy bill is starting to make sense.",
     "funds_cost": null,
     "funds_delta": null,
@@ -867,7 +872,7 @@
   {
     "event_id": "EV20",
     "choice": "B",
-    "choice_text": "Take his card",
+    "choice_text": "Take his card and call later",
     "result_text": "Nothing comes of it, but it is a good card.",
     "funds_cost": null,
     "funds_delta": null,
@@ -886,7 +891,7 @@
   {
     "event_id": "EV20",
     "choice": "C",
-    "choice_text": "Say you are busy",
+    "choice_text": "Say you are busy today",
     "result_text": "He closes the laptop and glares at the window.",
     "funds_cost": null,
     "funds_delta": null,
@@ -940,7 +945,7 @@
   {
     "event_id": "EV21",
     "choice": "B",
-    "choice_text": "Send regrets",
+    "choice_text": "Send your regrets with a note",
     "result_text": "The card on your desk stays unopened.",
     "funds_cost": null,
     "funds_delta": null,
@@ -959,7 +964,7 @@
   {
     "event_id": "EV21",
     "choice": "C",
-    "choice_text": "Attend and leave early",
+    "choice_text": "Attend, then leave early",
     "result_text": "You are noticed leaving.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1299,12 +1304,17 @@
     "unlocks_level": "LV64",
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "hours",
+        "amount": 2
+      }
+    ]
   },
   {
     "event_id": "EV26",
     "choice": "B",
-    "choice_text": "Write to the prefecture",
+    "choice_text": "Write to the prefecture about it",
     "result_text": "A reply arrives, in due course.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1377,7 +1387,7 @@
   {
     "event_id": "EV27",
     "choice": "B",
-    "choice_text": "Forward it to the ministry",
+    "choice_text": "Forward the letter to the ministry",
     "result_text": "Nothing happens quickly.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1396,7 +1406,7 @@
   {
     "event_id": "EV27",
     "choice": "C",
-    "choice_text": "Keep the letter",
+    "choice_text": "Keep the letter on file",
     "result_text": "It is a nice letter.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1487,7 +1497,7 @@
   {
     "event_id": "EV32",
     "choice": "A",
-    "choice_text": "Pay for shirts and the van",
+    "choice_text": "Pay for the shirts and the van",
     "result_text": "The team plays well and loses cheerfully.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1517,7 +1527,7 @@
   {
     "event_id": "EV32",
     "choice": "B",
-    "choice_text": "Pay and ask for a photo with the team",
+    "choice_text": "Pay and ask for a team photo",
     "result_text": "The photo does well locally.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1539,7 +1549,7 @@
   {
     "event_id": "EV32",
     "choice": "C",
-    "choice_text": "Pay anonymously",
+    "choice_text": "Pay, but keep your name out of it",
     "result_text": "The coach knows. So does the whole town.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1803,7 +1813,7 @@
   {
     "event_id": "EV36",
     "choice": "A",
-    "choice_text": "Take the call",
+    "choice_text": "Take the call, live",
     "result_text": "You are on air before you have taken your coat off.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1972,7 +1982,7 @@
   {
     "event_id": "EV38",
     "choice": "B",
-    "choice_text": "Say it should go to the other neighborhood",
+    "choice_text": "Say the other neighborhood should host it",
     "result_text": "Whoever you named is furious.",
     "funds_cost": null,
     "funds_delta": null,
@@ -1999,7 +2009,7 @@
   {
     "event_id": "EV38",
     "choice": "C",
-    "choice_text": "Commission a study",
+    "choice_text": "Commission an independent site study",
     "result_text": "A study. It takes a year.",
     "funds_cost": null,
     "funds_delta": null,
@@ -2048,7 +2058,7 @@
   {
     "event_id": "EV39",
     "choice": "B",
-    "choice_text": "Ignore it",
+    "choice_text": "Leave the messages unanswered",
     "result_text": "The picture fades by Thursday.",
     "funds_cost": null,
     "funds_delta": null,
@@ -2067,7 +2077,7 @@
   {
     "event_id": "EV39",
     "choice": "C",
-    "choice_text": "Reply to every message",
+    "choice_text": "Reply to every single message",
     "result_text": "It takes four evenings. It works.",
     "funds_cost": null,
     "funds_delta": null,
@@ -2143,7 +2153,7 @@
   {
     "event_id": "EV40",
     "choice": "C",
-    "choice_text": "Skip it",
+    "choice_text": "Skip it and send a card later",
     "result_text": "Someone notes your chair.",
     "funds_cost": null,
     "funds_delta": null,
@@ -2275,12 +2285,17 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ]
   },
   {
     "event_id": "EV42",
     "choice": "B",
-    "choice_text": "Call the prefecture",
+    "choice_text": "Call the prefecture's wildlife office",
     "result_text": "A team is dispatched, eventually.",
     "funds_cost": null,
     "funds_delta": null,
@@ -2534,7 +2549,7 @@
   {
     "event_id": "EV46",
     "choice": "A",
-    "choice_text": "Buy a ticket and sit at the head table",
+    "choice_text": "Buy a seat at the head table",
     "result_text": "You shake a great many hands. The bill arrives with the dessert.",
     "funds_cost": 20000,
     "funds_delta": null,
@@ -2559,7 +2574,7 @@
   {
     "event_id": "EV46",
     "choice": "B",
-    "choice_text": "Buy a cheaper seat near the door",
+    "choice_text": "Buy a cheaper seat by the door",
     "result_text": "The food is the same, and so are the conversations that matter, just fewer of them.",
     "funds_cost": 8000,
     "funds_delta": null,
@@ -2581,7 +2596,7 @@
   {
     "event_id": "EV46",
     "choice": "C",
-    "choice_text": "Send your regrets",
+    "choice_text": "Send your regrets with a card",
     "result_text": "A polite note goes back. Your place is given to someone else.",
     "funds_cost": null,
     "funds_delta": null,
@@ -3861,7 +3876,7 @@
   {
     "event_id": "EV55",
     "choice": "A",
-    "choice_text": "Sit for the interview",
+    "choice_text": "Sit for the full interview",
     "result_text": "The piece is fair, mostly. The photo is not your best.",
     "funds_cost": null,
     "funds_delta": null,
@@ -3888,7 +3903,7 @@
   {
     "event_id": "EV55",
     "choice": "B",
-    "choice_text": "Send a staff member to brief the reporter",
+    "choice_text": "Have a staff member brief the reporter",
     "result_text": "The profile runs with a file photo and a careful quote.",
     "funds_cost": null,
     "funds_delta": null,
@@ -4353,7 +4368,7 @@
   {
     "event_id": "EV60",
     "choice": "A",
-    "choice_text": "Chair the roundtable",
+    "choice_text": "Chair the roundtable yourself",
     "result_text": "The bankers talk about risk. The shop owners talk about rent. You keep them in the room.",
     "funds_cost": null,
     "funds_delta": null,
