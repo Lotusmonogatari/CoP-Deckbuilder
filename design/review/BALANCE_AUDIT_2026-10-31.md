@@ -146,3 +146,16 @@ events BO15 + ['EV24', 'EV48'] - ['EV48', 'EV49']
 3. **Visitors rarely touch** Buddhist Temples (1 level) and Small Business Owners (8 levels); every other organization appears in 43-50.
 4. **Events**: Chamber of Commerce, National Media, Agricultural Cooperatives, Artisans Guild, Commuter Committee, Taxpayers, Financial Industry and Consumer Advocacy appear in no event; Neighborhood Associations in 6.
 5. **Parties**: by weighted direct rewards Five Point Independents lead (300 over 35 levels) and Yezo Heritage Party trail (103 over 21). Country Initiative's organizations are rewarded by 28 levels (128 weighted) and its laws favor it in 37 bill outcomes.
+
+## 6. Cameron's decisions (2026-10-31) and what changed
+
+| Item | Decision | Done |
+|---|---|---|
+| OP15 in Agriculture fishing hearings | Remove; use an Agriculture member. (Edward Grinner is not PC03 — PC03 is Arata Ran; the audit's note was wrong.) | OP15 off ST31 and ST57; OP06 (Committee on Agriculture, seated nowhere before) added to both |
+| Campus Q&A questions | Its own questions only | Town Hall pool switched off for ST273; 33 more student questions (45 in all, 3x its 15 turns) |
+| Uneven level rewards | Draft rewards so each organization is raised by 3+ levels | 22 Win ΔBO cells on fitting generic levels and outings; every organization now 3+ (drafts) |
+| Questions annoy Chamber / Financial / Traditional Society more than they please | Leave as is | — |
+| Visitors rarely touch Temples and Small Business Owners | Draft dilemmas | VQ394-VQ397 (Shop Owner x2, Granny Chiyo, Shrine Priest), inside the Office Hours budget: Temples 1 to 43 levels, Small Business Owners 8 to 48 |
+| Eight organizations with no event | One event each | EV54-EV61 (Chamber, National Media, Agricultural Co-ops, Artisans, Commuters, Taxpayers, Financial Industry, Consumer Advocacy), each with a send-staff choice and a Decline by the 1.5x rule |
+| Party balance | Leave as is | — |
+| Student names | Cameron names them | Placeholders stay |

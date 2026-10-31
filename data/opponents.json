@@ -3020,7 +3020,10 @@
     "party_acronym": "KJT",
     "affiliation": "BO17",
     "role": "Committee on Agriculture",
-    "stages": null,
+    "stages": [
+      "ST31",
+      "ST57"
+    ],
     "suit_1": "Appeal",
     "suit_2": "Emotional",
     "suit_3": "Data Driven",
@@ -5728,8 +5731,6 @@
     "stages": [
       "ST02",
       "ST01",
-      "ST31",
-      "ST57",
       "ST219",
       "ST244",
       "ST254",

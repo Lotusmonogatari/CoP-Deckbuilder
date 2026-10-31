@@ -80,8 +80,16 @@ func test_real_levels_carry_columns_for_the_newer_organizations() -> void:
 	var lv31: Dictionary = DataDB.get_level("LV31")
 	assert_true(lv31.has("win_delta_bo28"), "LV31 should carry a BO28 column")
 	assert_eq(int((lv31["win_delta_bo28"] as Dictionary).get("max", 0)), 1)
-	for key: String in DataDB.get_level("LV01").keys():
-		if key.begins_with("win_delta_bo") and int(key.substr(12)) >= 17:
-			var cell: Variant = DataDB.get_level("LV01")[key]
-			assert_true(cell == null or int((cell as Dictionary).get("max", 0)) == 0,
-				"%s should be blank on LV01" % key)
+	# Every newer-organization cell the workbook fills reads as a range, and a
+	# blank one as nothing (which levels carry which is the workbook's, never
+	# typed here: 2026-10-31).
+	var filled := 0
+	for level: Dictionary in DataDB.levels:
+		for key: String in level.keys():
+			if not (key.begins_with("win_delta_bo") and int(key.substr(12)) >= 17):
+				continue
+			var cell: Variant = level[key]
+			assert_true(cell == null or cell is Dictionary, "%s %s is a range or blank" % [level.get("level_id"), key])
+			if cell is Dictionary and int((cell as Dictionary).get("max", 0)) > 0:
+				filled += 1
+	assert_gt(filled, 0, "some level rewards a newer organization")

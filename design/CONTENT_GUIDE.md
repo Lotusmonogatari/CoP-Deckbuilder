@@ -80,7 +80,7 @@ A level is a row of up to ten stage slots plus rewards, cost and availability.
 
 ## 4. Stages (Stages tab)
 
-A stage is one room. **Mode**: `Combat` (card battle), `Non-combat` (Office Hours-style visitor room), `Vote` (ST23 only), `Visit` and `Trade` (the patron member visit and lobbyist trade, run by the patron machinery). Next free ID: **ST274**. Other next-free IDs today: stage questions **S2507**, player cues **PL3517**, opponent cues **OC3109**, transition dialogue **TD2084**, transition cast **TC223**, transition backgrounds **TB79**, ticker **TK156**.
+A stage is one room. **Mode**: `Combat` (card battle), `Non-combat` (Office Hours-style visitor room), `Vote` (ST23 only), `Visit` and `Trade` (the patron member visit and lobbyist trade, run by the patron machinery). Next free ID: **ST274**. Other next-free IDs today: stage questions **S2540**, player cues **PL3517**, opponent cues **OC3109**, transition dialogue **TD2084**, transition cast **TC223**, transition backgrounds **TB79**, ticker **TK156**.
 
 ### 4.1 The columns that matter
 
@@ -225,7 +225,7 @@ A transition plays before a stage that is **not first in its level**, shows one 
 
 ### 9.1 Events (Events and Event Choices tabs)
 
-An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV54**.
+An event is a screen of flavor text with two to four fixed choices; each choice rolls its own ranges. Next free **EV62**.
 
 | Events column | Meaning |
 |---|---|

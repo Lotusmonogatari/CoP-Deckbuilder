@@ -16348,7 +16348,7 @@
       "min": 3,
       "max": 3
     },
-    "question_pool": "town_hall",
+    "question_pool": null,
     "reputation_affects_start": "No",
     "reveal_in_briefing": null,
     "loss_ends_level": null,

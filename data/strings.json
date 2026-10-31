@@ -6025,5 +6025,61 @@
     "english": "You decline to attend. The cooperative notes who stayed away.",
     "placeholders": null,
     "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV54",
+    "where": "Event Choices: the result of declining EV54",
+    "english": "You decline the breakfast. The Chamber fills the slot with someone from another party.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV55",
+    "where": "Event Choices: the result of declining EV55",
+    "english": "You decline the profile. The paper runs it anyway, from other people's quotes.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV56",
+    "where": "Event Choices: the result of declining EV56",
+    "english": "You decline the invitation. The cooperative brings the harvest in without you.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV57",
+    "where": "Event Choices: the result of declining EV57",
+    "english": "You decline the opening. The ribbon is cut by the guild's oldest member.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV58",
+    "where": "Event Choices: the result of declining EV58",
+    "english": "You decline the ride. The committee posts the empty space where you would have stood.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV59",
+    "where": "Event Choices: the result of declining EV59",
+    "english": "You decline the scorecard. The Alliance gives you an incomplete.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV60",
+    "where": "Event Choices: the result of declining EV60",
+    "english": "You decline the roundtable. The association holds it with a ministry official.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
+  },
+  {
+    "key": "event.decline.EV61",
+    "where": "Event Choices: the result of declining EV61",
+    "english": "You decline the file. The network carries it to the next office down the corridor.",
+    "placeholders": null,
+    "notes": "2026-10-31 Decline result line, Claude's draft for Cameron to rewrite."
   }
 ]

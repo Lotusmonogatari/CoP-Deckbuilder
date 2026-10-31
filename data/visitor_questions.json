@@ -26611,5 +26611,261 @@
     "reaction_b": "Narrows his eyes.",
     "reaction_c": "Shrugs.",
     "reaction_d": "Turns away."
+  },
+  {
+    "question_id": "VQ394",
+    "visitor_ids": [
+      "VI13"
+    ],
+    "question_text": "The card company takes a fee on every sale. Small shops pay the most. Will you act?",
+    "choice_a": "I will push to cap card fees for small shops.",
+    "choice_b": "Fees pay for the system.",
+    "choice_c": "I will ask the banks to talk to you.",
+    "choice_d": "Cash is old-fashioned anyway.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO26",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO24",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "response_a": "That would keep my lights on.",
+    "response_b": "The system pays itself well.",
+    "response_c": "They never answer me. Maybe you.",
+    "response_d": "Half my customers still use it.",
+    "reaction_a": "Lights up.",
+    "reaction_b": "Frowns.",
+    "reaction_c": "Nods slowly.",
+    "reaction_d": "Folds arms."
+  },
+  {
+    "question_id": "VQ395",
+    "visitor_ids": [
+      "VI13"
+    ],
+    "question_text": "Hiring one part-timer takes me a whole day of forms. Can it be simpler?",
+    "choice_a": "I will push to cut paperwork for small firms.",
+    "choice_b": "Rules protect workers.",
+    "choice_c": "My office has a help sheet. I will send it.",
+    "choice_d": "Then hire fewer people.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO25",
+        "delta": 3
+      },
+      {
+        "target": "BO05",
+        "delta": 1
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO25",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO25",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO25",
+        "delta": -3
+      },
+      {
+        "target": "BO09",
+        "delta": -1
+      }
+    ],
+    "response_a": "Then I could hire two.",
+    "response_b": "I protect them too. I pay them.",
+    "response_c": "A sheet is something.",
+    "response_d": "That is how shops close.",
+    "reaction_a": "Exhales.",
+    "reaction_b": "Sighs.",
+    "reaction_c": "Takes a pen.",
+    "reaction_d": "Stares."
+  },
+  {
+    "question_id": "VQ396",
+    "visitor_ids": [
+      "VI18"
+    ],
+    "question_text": "The temple that keeps our family graves cannot afford a new roof. Should the town help?",
+    "choice_a": "I will look for a heritage grant for the temple.",
+    "choice_b": "Public money should stay out of religion.",
+    "choice_c": "I will ask the temple association what they need.",
+    "choice_d": "Old buildings cannot all be saved.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO19",
+        "delta": 3
+      },
+      {
+        "target": "BO18",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO19",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO19",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO19",
+        "delta": -3
+      },
+      {
+        "target": "BO18",
+        "delta": -1
+      }
+    ],
+    "response_a": "My husband rests there. Thank you.",
+    "response_b": "It is our history, not just religion.",
+    "response_c": "The priest will be glad of a call.",
+    "response_d": "That one should be.",
+    "reaction_a": "Bows deeply.",
+    "reaction_b": "Purses lips.",
+    "reaction_c": "Pats your hand.",
+    "reaction_d": "Looks away."
+  },
+  {
+    "question_id": "VQ397",
+    "visitor_ids": [
+      "VI10"
+    ],
+    "question_text": "The temple and the shrine want one joint festival. Will you speak at it?",
+    "choice_a": "Yes, gladly, at both.",
+    "choice_b": "I keep out of religious events.",
+    "choice_c": "I will send a message to be read out.",
+    "choice_d": "Pick one festival, not two.",
+    "correct_choice": "A",
+    "response_right": null,
+    "response_wrong": null,
+    "reaction_right": null,
+    "reaction_wrong": null,
+    "effects_a": [
+      {
+        "target": "BO19",
+        "delta": 3
+      },
+      {
+        "target": "BO20",
+        "delta": 1
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "effects_b": [
+      {
+        "target": "BO19",
+        "delta": -2
+      }
+    ],
+    "effects_c": [
+      {
+        "target": "BO19",
+        "delta": 1
+      },
+      {
+        "target": "BO20",
+        "delta": -1
+      }
+    ],
+    "effects_d": [
+      {
+        "target": "BO19",
+        "delta": -3
+      },
+      {
+        "target": "BO20",
+        "delta": -1
+      }
+    ],
+    "response_a": "The whole town will come.",
+    "response_b": "It is a town event as much as anything.",
+    "response_c": "Better than nothing.",
+    "response_d": "That is the whole point of it.",
+    "reaction_a": "Smiles.",
+    "reaction_b": "Raises an eyebrow.",
+    "reaction_c": "Nods politely.",
+    "reaction_d": "Shakes head."
   }
 ]

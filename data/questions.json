@@ -9954,7 +9954,7 @@
       "stage_ids": [
         "ST31"
       ],
-      "asked_by": "OP15"
+      "asked_by": "OP06"
     },
     {
       "id": "S68",
@@ -71994,6 +71994,796 @@
         "ST29"
       ],
       "asked_by": "OP121"
+    },
+    {
+      "id": "S2507",
+      "text": "Will a degree from a Yezo university still be worth anything in ten years?",
+      "theme": "Tuition value",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO24"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP127"
+    },
+    {
+      "id": "S2508",
+      "text": "Why is the student housing waiting list longer than my degree?",
+      "theme": "Student housing",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP128"
+    },
+    {
+      "id": "S2509",
+      "text": "Rent near campus doubled in five years. Will you cap rent rises in the cities?",
+      "theme": "Cap rent rises in the cities",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP129"
+    },
+    {
+      "id": "S2510",
+      "text": "I owe more than my parents earn in a year. Is that normal to you?",
+      "theme": "Student debt",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO12"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP130"
+    },
+    {
+      "id": "S2511",
+      "text": "Should graduates who teach in rural schools have their loans forgiven?",
+      "theme": "Forgive student loans for graduates who work in rural towns",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP131"
+    },
+    {
+      "id": "S2512",
+      "text": "Interns here work full weeks for nothing. Will you change the internship rules?",
+      "theme": "Internship rules",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S2513",
+      "text": "Will you ban unpaid trial shifts? Half of us have done one.",
+      "theme": "Ban unpaid trial work",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S2514",
+      "text": "Our part-time pay has not moved in three years. Will the minimum wage rise?",
+      "theme": "Raise the minimum wage",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO09"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S2515",
+      "text": "Where are the research jobs for people who stay in Yezo?",
+      "theme": "Research funding",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO13",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP126"
+    },
+    {
+      "id": "S2516",
+      "text": "Would you fund spin-off labs so we can start companies here?",
+      "theme": "Fund university spin-off labs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP127"
+    },
+    {
+      "id": "S2517",
+      "text": "Should a start-up founder from abroad get a visa to build a company with us?",
+      "theme": "Offer visas to start-up founders",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP128"
+    },
+    {
+      "id": "S2518",
+      "text": "Why do we pay more for the train than people who drive?",
+      "theme": "Transit value",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO27",
+        "BO14"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP129"
+    },
+    {
+      "id": "S2519",
+      "text": "Would you run late trains so evening students can get home?",
+      "theme": "Run late-night commuter trains",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14"
+      ],
+      "displeases_boosters": [
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP130"
+    },
+    {
+      "id": "S2520",
+      "text": "Every exam season the bus is full and we stand for an hour. Who fixes that?",
+      "theme": "Transit",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO14",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO30",
+        "BO10"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP131"
+    },
+    {
+      "id": "S2521",
+      "text": "Will you treat the energy transition as our future or as a cost?",
+      "theme": "Energy transition",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO13",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S2522",
+      "text": "Do you support a carbon levy, yes or no?",
+      "theme": "Carbon Levy Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO27",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO05",
+        "BO24"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S2523",
+      "text": "Why should anyone our age bother voting?",
+      "theme": "Youth participation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "S",
+        "Data Driven": "W",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S2524",
+      "text": "Should students have a vote on the university board?",
+      "theme": "Student representation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP126"
+    },
+    {
+      "id": "S2525",
+      "text": "Your party picks candidates behind closed doors. When will members get a say?",
+      "theme": "Internal democracy",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "M",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO18",
+        "BO08",
+        "BO32"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO17"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP127"
+    },
+    {
+      "id": "S2526",
+      "text": "Should partners who cannot marry be able to register their partnership?",
+      "theme": "Partnership Registration Act debate",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO27"
+      ],
+      "displeases_boosters": [
+        "BO20",
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP128"
+    },
+    {
+      "id": "S2527",
+      "text": "Would you back equal rights protections that cover everyone on this campus?",
+      "theme": "Equal rights",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO15"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP129"
+    },
+    {
+      "id": "S2528",
+      "text": "My friends from Ainu families want to study in their own language. Will you help?",
+      "theme": "Language in schools",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP130"
+    },
+    {
+      "id": "S2529",
+      "text": "Should the university hire Ainu-language teachers?",
+      "theme": "Language teachers",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP131"
+    },
+    {
+      "id": "S2530",
+      "text": "Should the state archive recordings of Ainu elders before they are lost?",
+      "theme": "Language archives",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "W",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO29",
+        "BO28"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP105"
+    },
+    {
+      "id": "S2531",
+      "text": "Students from rural towns spend hours on buses. Who is thinking about them?",
+      "theme": "Rural students",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO12"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP109"
+    },
+    {
+      "id": "S2532",
+      "text": "Would you bring broadband to every village so we can study from home?",
+      "theme": "Bring broadband to every village",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "M"
+      },
+      "pleases_boosters": [
+        "BO30"
+      ],
+      "displeases_boosters": [
+        "BO27"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP124"
+    },
+    {
+      "id": "S2533",
+      "text": "Would you fund coworking hubs so graduates can work from regional cities?",
+      "theme": "Fund coworking hubs in regional cities",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO16",
+        "BO30"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP126"
+    },
+    {
+      "id": "S2534",
+      "text": "Should apprenticeships in traditional crafts count as much as a degree?",
+      "theme": "Craft apprenticeships",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO13",
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO16",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP127"
+    },
+    {
+      "id": "S2535",
+      "text": "Is the money for research going into labs, or into the president's new building?",
+      "theme": "University spending",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "M",
+        "Duplicitous": "S"
+      },
+      "pleases_boosters": [
+        "BO23"
+      ],
+      "displeases_boosters": [
+        "BO21"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP128"
+    },
+    {
+      "id": "S2536",
+      "text": "When the university cuts a department, should students be consulted?",
+      "theme": "Student representation",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "M",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP129"
+    },
+    {
+      "id": "S2537",
+      "text": "Would you fund scholarships for students who are the first in their family to study?",
+      "theme": "Fund scholarships for first-generation students",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "S",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "W",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO23"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP130"
+    },
+    {
+      "id": "S2538",
+      "text": "Why are ministries hiring fewer graduates than they did ten years ago?",
+      "theme": "Graduate jobs",
+      "grades": {
+        "Earnest": "M",
+        "Emotional": "W",
+        "Appeal": "M",
+        "Data Driven": "S",
+        "Divisive": "S",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11",
+        "BO16"
+      ],
+      "displeases_boosters": [
+        "BO15",
+        "BO13"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP131"
+    },
+    {
+      "id": "S2539",
+      "text": "Is it fair that we pay full fares when pensioners ride for less?",
+      "theme": "Give students discounted transit",
+      "grades": {
+        "Earnest": "S",
+        "Emotional": "M",
+        "Appeal": "S",
+        "Data Driven": "M",
+        "Divisive": "M",
+        "Duplicitous": "W"
+      },
+      "pleases_boosters": [
+        "BO11"
+      ],
+      "displeases_boosters": [
+        "BO05"
+      ],
+      "stage_ids": [
+        "ST273"
+      ],
+      "asked_by": "OP105"
     }
   ]
 }

@@ -2676,3 +2676,12 @@ Tests: five new cases in `test_events.gd` and a real-click step in `event_test` 
 ## Six more students; a room cast audit and an organization balance audit (2026-10-31, Cameron)
 - **Students.** Six placeholder Students United members, OP126-OP131 "Student A" to "Student F" (names for Cameron to cast), each sharing the suits and cue lines of one of the three existing students (OP105, OP109, OP124) with their own intent ranges. All six sit in Campus Q&A (now 9 people for 3 seats, meeting the three-times rule); two of them (A, D) also in the youth-relevant town halls (Commuter Fares ST24, Carbon Levy ST53, Workplace Equality ST82, Ainu Heritage and Language ST122, Partnership Registration ST198), so ordinary town halls do not become student-heavy. Assets rows added (six expressions each, undrawn).
 - **Audits** written to `design/review/BALANCE_AUDIT_2026-10-31.md`: every combat room's cast against its family (committees seat their committee, press rooms journalists, town halls community members, lobbyist rooms organization representatives), seats against people, and questions naming an organization nobody in the room belongs to; then, per organization and per party, how many levels raise or lower it on a win, which bill outcomes help or hurt it, how often questions and visitors can please or annoy it, and which events touch it. Findings are listed for Cameron; nothing was rebalanced.
+
+## Audit decisions applied (2026-10-31, Cameron)
+- OP15 Edward Grinner off the two Agriculture fishing hearings (ST31, ST57); OP06 (Agriculture, previously seated nowhere) takes his place. Correction: Edward Grinner is not PC03 (PC03 is Arata Ran).
+- Campus Q&A asks only its own questions: Town Hall pool off, 33 more student questions (S2507-S2539; 45 in all).
+- Level win rewards drafted so every organization is raised by at least 3 levels (22 Win ΔBO cells on LV01, LV06-LV09, LV11, LV15, LV20-LV22, LV24, LV26, LV27, LV87, LV94, LV95, LV97).
+- Visitor dilemmas VQ394-VQ397 touching Buddhist Temples and Small Business Owners (now 43 and 48 levels).
+- Events EV54-EV61, one for each organization that had none.
+- Left as is by decision: the question annoy skew and party balance. Details in `design/review/BALANCE_AUDIT_2026-10-31.md` section 6. All new text and numbers are drafts.
+- `test_game_state_level_bonus.gd` no longer pins LV01 to having no newer-organization rewards (it now checks every filled cell reads as a range).

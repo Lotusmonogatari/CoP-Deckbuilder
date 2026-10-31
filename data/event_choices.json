@@ -3595,5 +3595,749 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null
+  },
+  {
+    "event_id": "EV54",
+    "choice": "A",
+    "choice_text": "Give the speech and take questions",
+    "result_text": "They want shorter permits and fewer surprises. They clap for both.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV54",
+    "choice": "B",
+    "choice_text": "Send a staff member with your notes",
+    "result_text": "Your staffer reads the speech well. Nobody asks a question.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV54",
+    "choice": "C",
+    "choice_text": "Ask them to send their questions in writing",
+    "result_text": "A thick envelope arrives a week later.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV54",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the breakfast. The Chamber fills the slot with someone from another party.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO05",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV55",
+    "choice": "A",
+    "choice_text": "Sit for the interview",
+    "result_text": "The piece is fair, mostly. The photo is not your best.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "rewards": [
+      {
+        "target": "BO08",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV55",
+    "choice": "B",
+    "choice_text": "Send a staff member to brief the reporter",
+    "result_text": "The profile runs with a file photo and a careful quote.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV55",
+    "choice": "C",
+    "choice_text": "Offer a short written answer",
+    "result_text": "They print two lines of it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV55",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the profile. The paper runs it anyway, from other people's quotes.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "rewards": [
+      {
+        "target": "BO08",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV56",
+    "choice": "A",
+    "choice_text": "Join the harvest crew in the fields",
+    "result_text": "Your back aches for two days. They talk about it for longer.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO10",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV56",
+    "choice": "B",
+    "choice_text": "Send a staff member to help",
+    "result_text": "Your staffer works hard and is invited back.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV56",
+    "choice": "C",
+    "choice_text": "Stop by for photos at the end",
+    "result_text": "The photos are fine. The farmers notice the clean boots.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO10",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV56",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the invitation. The cooperative brings the harvest in without you.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO10",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV57",
+    "choice": "A",
+    "choice_text": "Cut the ribbon and stay to talk",
+    "result_text": "You leave with a small carved bear and a list of complaints about rent.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 1,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO13",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV57",
+    "choice": "B",
+    "choice_text": "Send a staff member to cut the ribbon",
+    "result_text": "Your staffer cuts it neatly.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV57",
+    "choice": "C",
+    "choice_text": "Send flowers and a card",
+    "result_text": "The flowers last a week in the window.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV57",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the opening. The ribbon is cut by the guild's oldest member.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO13",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV58",
+    "choice": "A",
+    "choice_text": "Ride the packed train with them",
+    "result_text": "You are pressed against a door for forty minutes. They film all of it.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO14",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV58",
+    "choice": "B",
+    "choice_text": "Send a staff member to ride it",
+    "result_text": "Your staffer survives and writes a very honest note.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV58",
+    "choice": "C",
+    "choice_text": "Say you will study the timetable",
+    "result_text": "The committee posts your answer on the station board.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO14",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV58",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the ride. The committee posts the empty space where you would have stood.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO14",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV59",
+    "choice": "A",
+    "choice_text": "Answer every question on the scorecard",
+    "result_text": "You score better than you expected and worse than you hoped.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV59",
+    "choice": "B",
+    "choice_text": "Have a staff member fill it in",
+    "result_text": "Your staffer's answers are careful and dull. So is your grade.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV59",
+    "choice": "C",
+    "choice_text": "Say the scorecard is biased",
+    "result_text": "They print that, in bold, next to your blank grade.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV59",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the scorecard. The Alliance gives you an incomplete.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": {
+      "min": -2,
+      "max": 0
+    },
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO23",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV60",
+    "choice": "A",
+    "choice_text": "Chair the roundtable",
+    "result_text": "The bankers talk about risk. The shop owners talk about rent. You keep them in the room.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": 1
+      },
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV60",
+    "choice": "B",
+    "choice_text": "Send a staff member to take notes",
+    "result_text": "Your staffer comes back with twelve pages and one good idea.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO25",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV60",
+    "choice": "C",
+    "choice_text": "Ask for a written brief instead",
+    "result_text": "The brief is forty pages long.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV60",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the roundtable. The association holds it with a ministry official.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO24",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV61",
+    "choice": "A",
+    "choice_text": "Take the file and promise a reply",
+    "result_text": "You read the first fifty. They are all about the same three companies.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO26",
+        "delta": 1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV61",
+    "choice": "B",
+    "choice_text": "Have a staff member log every complaint",
+    "result_text": "Your staffer builds a spreadsheet the network can use.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": null,
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV61",
+    "choice": "C",
+    "choice_text": "Forward it to the ministry unread",
+    "result_text": "The ministry thanks you for your interest.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO26",
+        "delta": -1
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
+  },
+  {
+    "event_id": "EV61",
+    "choice": "D",
+    "choice_text": "Decline",
+    "result_text": "You decline the file. The network carries it to the next office down the corridor.",
+    "funds_cost": null,
+    "funds_delta": null,
+    "xp_delta": null,
+    "constituency_delta": null,
+    "reputation_delta": null,
+    "party_support_delta": null,
+    "district_delta": null,
+    "national_delta": null,
+    "rewards": [
+      {
+        "target": "BO26",
+        "delta": -2
+      }
+    ],
+    "unlocks_level": null,
+    "dues_delta": null,
+    "starts_level": null
   }
 ]
