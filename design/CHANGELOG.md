@@ -2770,3 +2770,14 @@ Two buttons at the top of the Marketplace, **Personal Inventory** and **Office I
 - `InventoryPanel.inventory_rows(tab)` filters the strip; `OfficeScreen._market_tab` remembers the tab while the Marketplace is rebuilt.
 - New Text rows: `shop.tab_personal`, `shop.tab_office`, `shop.office_blurb`.
 - Tests: `test_inventory.gd` (the column, and no Office item can be Used), `tests/interaction/market_tabs_test.tscn` (real clicks on both tabs).
+
+### Event choices match their outcomes (2026-10-31, Cameron)
+
+A review of all 56 events against the rewritten choice wording. Cameron approved 18 changes, all workbook edits on the Event Choices tab.
+
+| Group | Changes |
+|---|---|
+| Text that contradicted the choice | EV04 A no longer assumes the protagonist is a woman. EV18 B no longer says the promise is already kept, and its BO04 +1 now comes only from keeping it. EV21 B's regrets are read out. EV57 C's result describes the caramels (it said flowers) and now gives BO13 +1. |
+| Costs that bought nothing | EV38 C's 30,000円 study now gives Reputation +1, BO06 0..1 and BO23 -1. EV40 B's apples now give Constituency 0..1 and BO30 +1. EV39 C (four evenings) costs 2 hours; EV43 A (an hour and a half) costs 1. |
+| Promises in name only | EV12 A, EV20 B (BO16), EV53 C (BO07, its -1 dropped) and EV61 A (BO26) are now real promises with deadlines. |
+| One-sided outcomes made mixed | EV13 B BO06 -1; EV51 B Reputation -1..0; EV52 C BO11 -1; EV31 C Reputation -1..0 (was 0..1); EV22 B adds BO09 +1; EV26 C adds BO23 +1. |

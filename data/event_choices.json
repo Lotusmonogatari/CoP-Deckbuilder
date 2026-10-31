@@ -50,7 +50,7 @@
     "event_id": "EV04",
     "choice": "A",
     "choice_text": "Air a warm biography spot",
-    "result_text": "Thirty seconds of a woman who looks like she cares.",
+    "result_text": "Thirty seconds of someone who looks like they care.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -342,7 +342,13 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168
+      }
+    ]
   },
   {
     "event_id": "EV12",
@@ -437,7 +443,12 @@
       "max": 1
     },
     "national_delta": null,
-    "rewards": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": -1
+      }
+    ],
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
@@ -710,7 +721,7 @@
     "event_id": "EV18",
     "choice": "B",
     "choice_text": "Promise them a call next week",
-    "result_text": "You keep the promise. It is a short call.",
+    "result_text": "They take your number. The call is on your list now.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -719,12 +730,7 @@
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": null,
-    "rewards": [
-      {
-        "target": "BO04",
-        "delta": 1
-      }
-    ],
+    "rewards": null,
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
@@ -875,7 +881,7 @@
     "event_id": "EV20",
     "choice": "B",
     "choice_text": "Take his card and call later",
-    "result_text": "Nothing comes of it, but it is a good card.",
+    "result_text": "You pocket the card. You owe him a call.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -888,7 +894,14 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO16"
+      }
+    ]
   },
   {
     "event_id": "EV20",
@@ -948,7 +961,7 @@
     "event_id": "EV21",
     "choice": "B",
     "choice_text": "Send your regrets with a note",
-    "result_text": "The card on your desk stays unopened.",
+    "result_text": "Your note is read out with the other apologies.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -1039,6 +1052,10 @@
       {
         "target": "BO25",
         "delta": -1
+      },
+      {
+        "target": "BO09",
+        "delta": 1
       }
     ],
     "unlocks_level": null,
@@ -1362,6 +1379,10 @@
       {
         "target": "BO30",
         "delta": -1
+      },
+      {
+        "target": "BO23",
+        "delta": 1
       }
     ],
     "unlocks_level": null,
@@ -1494,8 +1515,8 @@
     "xp_delta": null,
     "constituency_delta": null,
     "reputation_delta": {
-      "min": 0,
-      "max": 1
+      "min": -1,
+      "max": 0
     },
     "party_support_delta": null,
     "district_delta": {
@@ -2036,11 +2057,26 @@
     "funds_delta": null,
     "xp_delta": null,
     "constituency_delta": null,
-    "reputation_delta": null,
+    "reputation_delta": {
+      "min": 1,
+      "max": 1
+    },
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": null,
-    "rewards": null,
+    "rewards": [
+      {
+        "target": "BO06",
+        "delta": {
+          "min": 0,
+          "max": 1
+        }
+      },
+      {
+        "target": "BO23",
+        "delta": -1
+      }
+    ],
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
@@ -2115,7 +2151,12 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "hours",
+        "amount": 2
+      }
+    ]
   },
   {
     "event_id": "EV40",
@@ -2151,16 +2192,24 @@
     "event_id": "EV40",
     "choice": "B",
     "choice_text": "Send his family a box of Aomori apples",
-    "result_text": "They arrive.",
+    "result_text": "His family writes to thank you.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
-    "constituency_delta": null,
+    "constituency_delta": {
+      "min": 0,
+      "max": 1
+    },
     "reputation_delta": null,
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": null,
-    "rewards": null,
+    "rewards": [
+      {
+        "target": "BO30",
+        "delta": 1
+      }
+    ],
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
@@ -2381,7 +2430,12 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "hours",
+        "amount": 1
+      }
+    ]
   },
   {
     "event_id": "EV43",
@@ -3569,7 +3623,10 @@
     "funds_delta": null,
     "xp_delta": null,
     "constituency_delta": null,
-    "reputation_delta": null,
+    "reputation_delta": {
+      "min": -1,
+      "max": 0
+    },
     "party_support_delta": null,
     "district_delta": {
       "min": 0,
@@ -3685,7 +3742,12 @@
       "max": 1
     },
     "national_delta": null,
-    "rewards": null,
+    "rewards": [
+      {
+        "target": "BO11",
+        "delta": -1
+      }
+    ],
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
@@ -3774,16 +3836,18 @@
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": null,
-    "rewards": [
-      {
-        "target": "BO07",
-        "delta": -1
-      }
-    ],
+    "rewards": null,
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 168,
+        "for": "BO07"
+      }
+    ]
   },
   {
     "event_id": "EV53",
@@ -4157,7 +4221,7 @@
     "event_id": "EV57",
     "choice": "C",
     "choice_text": "Send a tin of milk caramels and a card",
-    "result_text": "The flowers last a week in the window.",
+    "result_text": "The tin sits open on the counter, your card propped against it.",
     "funds_cost": null,
     "funds_delta": null,
     "xp_delta": null,
@@ -4166,7 +4230,12 @@
     "party_support_delta": null,
     "district_delta": null,
     "national_delta": null,
-    "rewards": null,
+    "rewards": [
+      {
+        "target": "BO13",
+        "delta": 1
+      }
+    ],
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
@@ -4518,7 +4587,14 @@
     "unlocks_level": null,
     "dues_delta": null,
     "starts_level": null,
-    "commitment": null
+    "commitment": [
+      {
+        "kind": "promise_hours",
+        "amount": 1,
+        "within": 120,
+        "for": "BO26"
+      }
+    ]
   },
   {
     "event_id": "EV61",
