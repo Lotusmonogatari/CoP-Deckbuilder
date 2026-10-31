@@ -2809,3 +2809,11 @@ A review of the walking tour (HE01) and the dinner (HE02): 53 options checked ag
 | Step-3 promises are real | A new **Commitment** column on Event Options (the Event Choices grammar, with a header note). Every step-3 pick is `Promise Hours 1 within 168`, owed to the guest organization whose standing rose most that evening, else the host's chosen organization (`HostedEvent.most_pleased()`, `GameState.hosted_commitments()`). The buttons show the cost, and the result screen says what was promised. The exporter checks item IDs in the new column. |
 
 Left as is: the name "Japanese tuna sashimi" (DE2), and no critic for the craft beer. Tests (`test_hosted_event.gd`): the step-3 promise and who it is owed to, the fallback to the host's organization, and a guard that every guest organization's liked tag appears on some option.
+
+### Open items answered; titles and themes laid out (2026-10-31, Cameron)
+
+- **Student names kept:** OP126-OP131's names are final; the Assets notes say so.
+- **Second cleanup pass:** the 12 Text rows left unused by the first pass are deleted (nothing used them, even by a built-up key).
+- **Unnamed promises confirmed:** VQ15 B and VQ58 B cost Reputation only.
+- **Draft content confirmed as is.**
+- **Titles and Question Themes:** laid out for review in `design/review/TITLES_AND_THEMES_2026-10-31.md` (nothing changed). Cameron's rule: party leader is the only canon title to preserve.

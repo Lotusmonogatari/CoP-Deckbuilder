@@ -716,3 +716,4 @@ Sections of `design/CHANGELOG.md`, oldest first:
 - Event choices match their outcomes (2026-10-31, Cameron)
 - Visitor choices match their outcomes (2026-10-31, Cameron)
 - Hosted event choices match their outcomes (2026-10-31, Cameron)
+- Open items answered; titles and themes laid out (2026-10-31, Cameron)
