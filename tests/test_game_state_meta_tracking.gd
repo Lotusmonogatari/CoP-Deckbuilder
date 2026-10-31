@@ -412,3 +412,28 @@ func test_a_vote_files_its_change_under_a_cause() -> void:
 	GameState.apply_floor_vote_favorability({str(DataDB.player.get("party", "")): 2},
 		"the vote on X")
 	assert_eq(GameState.last_meta_cause.get("Party support").size(), 1, "same cause once")
+
+
+func test_funding_freeze_also_zeroes_the_level_win_bonus() -> void:
+	# Cameron, 2026-10-31: the freeze covers stage AND level rewards.
+	GameState.meta["Constituency support"] = 50
+	GameState.meta["Party support"] = 0
+	GameState.meta["Funds"] = 0
+	GameState.begin_level(LevelRunner.new({
+		"level_id": "TEST_BONUS",
+		"bonus_win_range_yen": {"min": 5000, "max": 5000},
+		"stages": [{"seq": 1, "stage_id": "ST02", "name_en": "Only", "opponents": [{"opp_id": "A"}]}],
+	}))
+	GameState.finish_stage(LevelRunner.WON)
+	assert_eq(int(GameState.meta["Funds"]), 0)
+
+
+func test_crisis_triggers_react_to_office_time_without_a_stage() -> void:
+	# Mechanics audit (2026-10-31): a value pushed over a line outside a stage
+	# starts its countdown straight away, not at the next stage's end.
+	GameState.level_runner = null
+	GameState.meta["Constituency support"] = 50
+	GameState.meta["Party support"] = 10
+	GameState.spend_hours(1)
+	assert_true(GameState.steering_committee_active)
+	assert_true(GameState.special_levels.has("Steering Committee"))

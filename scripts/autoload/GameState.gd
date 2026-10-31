@@ -1221,6 +1221,7 @@ func apply_event_choice(event_id: String, letter: String) -> Dictionary:
 	event_last_at[event_id] = time_units
 	if str(event.get("trigger", "")) == "Dated" and not dated_events_done.has(event_id):
 		dated_events_done.append(event_id)
+	check_crisis_triggers()
 	return {"ok": true, "result_text": str(chosen.get("result_text", "")), "lines": lines,
 		"chips": chips, "revealed": revealed, "hours": hours,
 		"starts_level": event_choice_level(chosen)}
@@ -1538,6 +1539,18 @@ func _advance_clock(hours: int) -> void:
 	time_units += maxi(0, hours)
 	_expire_modifiers()
 	_break_overdue_promises()
+	check_crisis_triggers()
+
+
+## The three crisis triggers (Funding Freeze, Town Hall, Steering Committee),
+## checked whenever the values they watch can have moved: after a stage, and
+## (Cameron, 2026-10-31) straight after Office time, an event, a kept promise
+## or the week's end, so a line crossed outside a stage starts its freeze or
+## countdown at once. Each check only acts on an edge, so repeats are harmless.
+func check_crisis_triggers() -> void:
+	_check_funding_freeze()
+	_check_town_hall()
+	_check_steering_committee()
 
 
 ## Promises that fell due unkept are broken: the organization they were made
@@ -1604,6 +1617,7 @@ func keep_promise(promise_id: String) -> String:
 			_under_cause(Text.say("record.cause_promise_kept"), func() -> void: _apply_booster_delta(org, gain))
 		if str(promise.get("kind", "")) == Promises.PROMISE_HOURS:
 			spend_hours(int(promise.get("hours", 0)))
+		check_crisis_triggers()
 		return ""
 	return ""
 
@@ -1649,6 +1663,7 @@ func go_home() -> Dictionary:
 	calendar = moved["state"]
 	_advance_clock(int(moved["skipped"]))
 	_apply_week_decay()
+	check_crisis_triggers()
 	event_roll_due = true
 	return {"date": calendar_date_text(), "dues": dues, "awareness": awareness_lines}
 
@@ -2206,7 +2221,7 @@ func _apply_stage_rewards(stage: Dictionary, outcome: String, score: int) -> voi
 		# own threshold. Zeroed at the source rather than undone afterward,
 		# so this is the one and only place Funds income can be frozen. Only
 		# INCOME freezes: a Funds penalty for losing still lands.
-		if "M32" in MetaRules.party_support_modifiers(party_support_effective(), DataDB.balance) \
+		if funds_frozen() \
 				and MetaRules.stage_delta(stage, side + "_delta_yen") > 0:
 			paid_stage = stage.duplicate(true)
 			paid_stage[side + "_delta_yen"] = 0
@@ -2271,7 +2286,7 @@ func _pay_level_rewards() -> void:
 		last_xp_gained += xp_bonus
 
 	for name: String in ["Funds", "Constituency support", "Party support"]:
-		_apply_meta_reward(name, ModifierEffects.level_win_resource_bonus(owned, name))
+		_apply_meta_reward(name, _unless_frozen(name, ModifierEffects.level_win_resource_bonus(owned, name)))
 
 
 ## The level's own "bonus_win_range_*" and "win_delta_bo01..32" columns,
@@ -2294,7 +2309,7 @@ func _apply_level_bonus_win(level: Dictionary) -> void:
 		"bonus_win_range_party_support": "Party support",
 	}
 	for key: String in RANGE_TO_META.keys():
-		_apply_meta_reward(RANGE_TO_META[key], _roll_range(level.get(key)))
+		_apply_meta_reward(RANGE_TO_META[key], _unless_frozen(RANGE_TO_META[key], _roll_range(level.get(key))))
 
 	var xp_amount := _roll_range(level.get("bonus_win_range_xp"))
 	if xp_amount != 0:
@@ -2339,6 +2354,18 @@ func _roll_range(range_value: Variant) -> int:
 	if high <= low:
 		return low
 	return randi_range(low, high)
+
+
+## True while Party support has the Funding Freeze (M32) on.
+func funds_frozen() -> bool:
+	return "M32" in MetaRules.party_support_modifiers(party_support_effective(), DataDB.balance)
+
+
+## A stage or level reward amount, or 0 when it is Funds income during the
+## Funding Freeze (Cameron, 2026-10-31: the freeze covers stage and level
+## rewards; events, visitors and laws still pay). Costs still land.
+func _unless_frozen(name: String, amount: int) -> int:
+	return 0 if name == "Funds" and amount > 0 and funds_frozen() else amount
 
 
 func _sanban_row(name: String) -> Dictionary:
