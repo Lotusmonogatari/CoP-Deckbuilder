@@ -1460,8 +1460,9 @@ func _show_record() -> void:
 		var change := (GameState.party_support_change_this_level()
 			if is_party else int(GameState.last_meta_change.get(name, 0)))
 		if change != 0:
-			line += "  (%+d)" % change
-			var because := CauseLines.because(GameState.last_meta_cause.get(name, []))
+			# Commas and the 円 mark, as everywhere else (Cameron, 2026-10-31).
+			line += "  (%s)" % Phrase.meta_amount(name, change, true)
+			var because := CauseLines.because(GameState.last_meta_cause.get(name, []), name)
 			if not because.is_empty():
 				line += "  " + because
 		rows.append(UiKit.line(line))
@@ -2064,7 +2065,8 @@ func _show_marketplace() -> void:
 		# Card sessions live in Rhetoric Training, not here; an item marked
 		# "In Marketplace: No" (the Training Session Coupon) is only ever given.
 		if item.get("card_tier") == null and str(item.get("in_marketplace", "")).strip_edges().to_lower() != "no" \
-				and Items.inventory_tab(item) == _market_tab:
+				and Items.inventory_tab(item) == _market_tab \
+				and not (Items.is_yes(item.get("unlocks_recruitment_tier")) and GameState.staff_recruitment_maxed()):
 			rows.append(_supply_row(item))
 	_inventory_panel.open(Text.say("shop.supplies"), rows)
 

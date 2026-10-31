@@ -600,3 +600,18 @@ func test_the_inventory_column_picks_the_marketplace_tab() -> void:
 		if Items.inventory_tab(item) == Items.OFFICE_INVENTORY:
 			assert_false(Items.usable_in(item, Items.OFFICE) or Items.usable_in(item, Items.STAGE),
 				"%s is on the Office tab but can be Used" % item["item_id"])
+
+
+func test_recruitment_tops_out_at_the_highest_staff_tier_in_the_data() -> void:
+	# Cameron, 2026-10-31: the Staff Training Consultancy Session leaves the
+	# Marketplace at the top tier, read from the Staff tab, not a fixed number.
+	var top := 0
+	for candidate: Dictionary in DataDB.staff:
+		top = maxi(top, int(candidate.get("highest_tier", 0)))
+	var before := GameState.staff_recruitment_tier
+	GameState.staff_recruitment_tier = top - 1
+	assert_false(GameState.staff_recruitment_maxed())
+	GameState.staff_recruitment_tier = top
+	assert_true(GameState.staff_recruitment_maxed())
+	assert_eq(GameState.staff_recruitment_max(), top)
+	GameState.staff_recruitment_tier = before

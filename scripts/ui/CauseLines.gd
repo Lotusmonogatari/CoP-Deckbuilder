@@ -26,7 +26,9 @@ static func join(parts: Array) -> String:
 
 
 ## The full phrase, or "" when nothing is recorded.
-static func because(entries: Array) -> String:
+## `variable` is the Sanban name the amounts belong to, so a Funds share reads
+## "+30,000円" rather than "+30000" (2026-10-31).
+static func because(entries: Array, variable: String = "") -> String:
 	if entries.is_empty():
 		return ""
 	var parts: Array[String] = []
@@ -35,5 +37,5 @@ static func because(entries: Array) -> String:
 			parts.append(str(entry["cause"]))
 		else:
 			parts.append(Text.say("record.cause_amount", {
-				"cause": entry["cause"], "amount": "%+d" % int(entry["amount"])}))
+				"cause": entry["cause"], "amount": Phrase.meta_amount(variable, int(entry["amount"]), true)}))
 	return Text.say("record.because", {"causes": join(parts)})

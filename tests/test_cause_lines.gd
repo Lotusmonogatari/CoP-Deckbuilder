@@ -53,3 +53,10 @@ func test_a_stance_vote_files_its_reason_for_each_organization() -> void:
 	assert_string_contains(entry["cause"], "switching your stance")
 	assert_string_contains(entry["cause"], "Ainu Heritage")
 	GameState.abandon_level()
+
+
+func test_funds_shares_read_with_commas_and_the_yen_mark() -> void:
+	# Cameron's playtest (2026-10-31): Your Record's Funds reasons lacked commas.
+	var line := CauseLines.because([{"cause": "a", "amount": 30000}, {"cause": "b", "amount": -1500}], "Funds")
+	assert_string_contains(line, "+30,000円")
+	assert_string_contains(line, "-1,500円")

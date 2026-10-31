@@ -2865,3 +2865,12 @@ All 117 promises in the game now have a **Promise Kept Text**: the line shown in
 - New columns: **Promise Kept Text A-D** on Visitor Questions, and **Promise Kept Text** on Event Options, each with a header note. Event Choices already had its column.
 - `VisitorScreen` and the hosted evening (`GameState.hosted_promise_terms()`) now pass their kept line to the promise, as event choices already did.
 - The exporter warns about any promise without a kept line, and gives an error for a kept line on a choice that makes no promise. A test (`test_promises.gd`) fails if any promise lacks one.
+
+### Playtest fixes: victory pose, staff training at the top tier, image directions, Your Record commas (2026-10-31, Cameron)
+
+| # | Note | Fix |
+|---|---|---|
+| 1 | The victory pose (e.g. PC01_victory.png) never appeared | The winning card's own reaction (a "gaining" flash) ran just after the victory pose was set, replaced it, then faded back to neutral. `PlayerPortraitPresenter` now marks the pose as settled on victory or defeat and ignores later flashes until the next stage. Test: `test_player_portrait.gd`. |
+| 2 | Staff Training Consultancy Session should leave the Marketplace at the top staff tier | Hidden once recruitment reaches the highest tier any Staff-tab candidate has (`GameState.staff_recruitment_max()` / `staff_recruitment_maxed()`). Adding a higher tier in the workbook brings it back. Test: `test_inventory.gd`. |
+| 3 | Invert image scroll and tilt | Balance "Image pan: Tilt strength" is now -1.5 (it was 1.5). A new lever, **Image scroll: Drag direction** (-1), reverses dragging; 1 restores the old way. The image-pan click test reads the lever. |
+| 5 | Your Record's Funds changes had no commas | The "(+N)" after each value and the amounts in the "because of ..." list now use the game's money format: "+30,000円". Test: `test_cause_lines.gd`. |

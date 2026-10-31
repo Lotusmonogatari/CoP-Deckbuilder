@@ -40,3 +40,18 @@ func test_the_opponent_gaining_or_blocking_is_not_a_hit_on_the_player() -> void:
 		{"verb": "gain", "gained": 5}), PlayerPortraitPresenter.NEUTRAL)
 	assert_eq(PlayerPortraitPresenter.face_for_opponent_move(
 		{"verb": "block", "guard": 3}), PlayerPortraitPresenter.NEUTRAL)
+
+
+func test_the_victory_pose_survives_the_winning_card_s_own_reaction() -> void:
+	# Cameron's playtest (2026-10-31): the winning card's "gaining" flash came
+	# after show_victory() and faded the pose back to neutral.
+	var art := PlaceholderArt.new()
+	add_child_autofree(art)
+	var presenter := PlayerPortraitPresenter.new(art)
+	presenter.show_state("ST02")
+	presenter.show_victory()
+	presenter.react_to_card({"gained": 5})
+	presenter.react_to_opponent({"verb": "attack", "damage": 3})
+	assert_eq(art.expression, PlayerPortraitPresenter.VICTORY)
+	presenter.show_state("ST03")
+	assert_eq(art.expression, PlayerPortraitPresenter.NEUTRAL, "a new stage starts at rest again")

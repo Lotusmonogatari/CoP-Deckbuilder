@@ -47,7 +47,9 @@ func _run() -> void:
 	var scroll := _panel_scroll(office)
 	var scroll_at := scroll.scroll_vertical if scroll != null else 0
 	await _drag(picture, Vector2(0, 160))
-	_expect(picture.offset().y > 40.0, "dragging down shows more of the picture (offset %s)" % picture.offset())
+	# The direction follows the Balance lever "Image scroll: Drag direction".
+	var direction := signf(float(DataDB.balance.get("image_scroll_drag_direction", 1)))
+	_expect(picture.offset().y * direction > 40.0, "dragging moves the picture the lever's way (offset %s)" % picture.offset())
 	if scroll != null:
 		_expect(scroll.scroll_vertical == scroll_at, "the panel did not scroll under the drag")
 	_expect(background.offset() == office_offset, "the Office behind the panel did not move")

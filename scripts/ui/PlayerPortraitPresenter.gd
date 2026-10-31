@@ -26,6 +26,10 @@ const FLINCH_SECONDS := 1.8
 
 var _portrait: Control
 var _stage_id := ""
+## True once the stage has ended on victory or defeat: that pose stays, and
+## the winning card's own reaction (which arrives just after) cannot replace
+## it and fade back to neutral (Cameron's playtest, 2026-10-31).
+var settled := false
 
 
 func _init(portrait: Control) -> void:
@@ -36,6 +40,7 @@ func _init(portrait: Control) -> void:
 ## resting neutral face for whoever the protagonist is and this stage.
 func show_state(stage_id: String = "") -> void:
 	_stage_id = stage_id
+	settled = false
 	_wear(NEUTRAL)
 
 
@@ -58,12 +63,14 @@ func react_to_opponent(opponent_result: Dictionary) -> void:
 ## to neutral, the same way OpponentPresenter settles a beaten opponent on
 ## DEFEATED.
 func show_victory() -> void:
+	settled = true
 	_wear(VICTORY)
 
 
 ## The stage just ended in a loss: settle on DEFEATED (a face that is not
 ## drawn falls back to damaged, then neutral, like every other expression).
 func show_defeat() -> void:
+	settled = true
 	_wear(DEFEATED)
 
 
@@ -95,6 +102,8 @@ static func face_for_opponent_move(opponent_result: Dictionary) -> String:
 
 
 func _flash(expression: String) -> void:
+	if settled:
+		return
 	_wear(expression)
 	if not (_portrait is PlaceholderArt) or not _portrait.is_inside_tree():
 		return

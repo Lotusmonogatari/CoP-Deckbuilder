@@ -236,9 +236,9 @@ func _input(event: InputEvent) -> void:
 			if motion.position.distance_to(_press_at) < DRAG_START:
 				return
 			_dragging = true
-		# The window moves the way the finger does (drag right to see more of
-		# the right), the house convention for lists too.
-		_drag += motion.relative
+		# Which way the picture slides under the finger is a Balance lever
+		# (Image scroll: Drag direction; -1 since Cameron's 2026-10-31 playtest).
+		_drag += motion.relative * signf(float(DataDB.balance.get("image_scroll_drag_direction", 1)))
 		_place()
 		get_viewport().set_input_as_handled()
 

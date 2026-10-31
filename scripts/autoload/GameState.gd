@@ -2986,6 +2986,21 @@ func buy_random_level(item_id: String) -> Dictionary:
 ## staff_recruitment_tier by 1 — Ledger.staff_hire_refusal() is where that
 ## actually opens up candidates. Refuses once every candidate's own
 ## highest_tier is already open, rather than let a purchase do nothing.
+## The highest staff rank any candidate can reach (the Staff tab's own
+## Highest Tier), so a new tier added to the workbook raises the ceiling.
+func staff_recruitment_max() -> int:
+	var highest := 0
+	for candidate: Dictionary in DataDB.staff:
+		highest = maxi(highest, int(candidate.get("highest_tier", 0)))
+	return highest
+
+
+## True once recruitment has reached the top tier: the Staff Training
+## Consultancy Session leaves the Marketplace (Cameron, 2026-10-31).
+func staff_recruitment_maxed() -> bool:
+	return staff_recruitment_tier >= staff_recruitment_max()
+
+
 func buy_staff_recruitment_tier(item_id: String) -> Dictionary:
 	var item := DataDB.get_shop_item(item_id)
 	var refusal := Items.buy_refusal(item, item_count(item_id),
@@ -2993,10 +3008,7 @@ func buy_staff_recruitment_tier(item_id: String) -> Dictionary:
 	if not refusal.is_empty():
 		return {"ok": false, "message": refusal}
 
-	var highest := 0
-	for candidate: Dictionary in DataDB.staff:
-		highest = maxi(highest, int(candidate.get("highest_tier", 0)))
-	if staff_recruitment_tier >= highest:
+	if staff_recruitment_maxed():
 		return {"ok": false, "message": Text.say("shop.recruitment_tier_maxed")}
 
 	var price := Items.costs(item)
